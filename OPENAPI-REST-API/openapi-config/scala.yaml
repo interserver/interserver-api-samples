@@ -1,0 +1,89 @@
+# OpenAPI Generator Config for Scala HTTP Client with Circe
+# Optimized for pure FP (Functional Programming) with sttp client
+
+# ============================================
+# Generator Selection
+# ============================================
+# Using scala-sttp4 because:
+# - scala-http4s doesn't support Circe (only json4s/Jackson)
+# - scala-sttp4 supports Circe for pure FP JSON handling
+# - sttp is a mature, pure FP HTTP client
+
+# ============================================
+# Package Naming (Scala Convention)
+# ============================================
+# Top-level package for all generated code
+mainPackage: org.interserver.api.client
+
+# Model classes package
+modelPackage: org.interserver.api.client.model
+
+# API classes package  
+apiPackage: org.interserver.api.client.api
+
+# Source folder structure
+sourceFolder: src/main/scala
+
+# ============================================
+# JSON & Serialization - Circe for Pure FP
+# ============================================
+# Use Circe instead of json4s for pure FP JSON handling
+jsonLibrary: circe
+
+# Circe version (stable)
+circeVersion: 0.14.10
+
+
+
+# ============================================
+# Date/Time Handling
+# ============================================
+dateLibrary: java8
+
+# ============================================
+# HTTP Client - sttp Configuration
+# ============================================
+
+
+# Separate error channel for pure FP error handling
+# Returns F[Either[ResponseError[ErrorType], ReturnType]] instead of raising errors
+separateErrorChannel: true
+
+# ============================================
+# Naming Conventions (Scala Standard)
+# ============================================
+# PascalCase for model properties (Scala convention)
+modelPropertyNaming: PascalCase
+
+# ============================================
+# Code Quality & Safety
+# ============================================
+# Sort required params first for better readability
+sortParamsByRequiredFlag: true
+
+# Sort required model properties first
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure unique parameter names in operations
+ensureUniqueParams: true
+
+# Prepend form/body params to parameter list
+prependFormOrBodyParameters: true
+
+# Disallow additional properties if not explicitly defined in schema
+disallowAdditionalPropertiesIfNotPresent: false
+
+# Handle unknown enum cases gracefully
+enumUnknownDefaultCase: false
+
+# Legacy discriminator behavior (set to false for better OAS compliance)
+legacyDiscriminatorBehavior: false
+
+# Allow unicode identifiers in names
+allowUnicodeIdentifiers: true
+
+# ============================================
+# Generation Output Control
+# ============================================
+# Hide the generation timestamp in generated files
+hideGenerationTimestamp: true

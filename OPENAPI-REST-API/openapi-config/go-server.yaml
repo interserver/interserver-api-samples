@@ -1,0 +1,35 @@
+# OpenAPI Generator Go-Server Configuration
+# Optimized for interserver-api-samples project
+
+# Go package name (convention: lowercase)
+packageName: interserverapi
+
+# Go package version
+packageVersion: 1.0.0
+
+# Hide generation timestamp to keep diffs clean
+hideGenerationTimestamp: true
+
+# Source folder for generated code
+sourceFolder: go
+
+# Use mux router (standard, widely compatible)
+router: mux
+
+# Default server port
+serverPort: 8080
+
+# Disable CORS (can be enabled per-endpoint if needed)
+featureCORS: false
+
+# Don't prefix enum values with class name
+enumClassPrefix: false
+
+# Don't add response headers to ImplResponse
+addResponseHeaders: false
+
+# Generate full implementation, not just interfaces
+onlyInterfaces: false
+
+# Generate main.go, go.mod, and Dockerfile (full application)
+outputAsLibrary: false

@@ -1,0 +1,41 @@
+# OpenAPI Generator Configuration for Kotlin-Server (Ktor)
+# Optimized for Interserver API
+
+# Source folder structure
+sourceFolder: src/main/kotlin
+
+# Package naming - reflects API organization
+packageName: com.interserver.api
+
+# Maven coordinates
+groupId: com.interserver
+artifactId: interserver-api-server
+artifactVersion: 1.0.0
+
+# Enum naming convention
+enumPropertyNaming: PascalCase
+
+# Model settings
+modelMutable: false
+
+# API organization - use tags for cleaner class naming
+useTags: true
+
+# Library - Ktor framework
+library: ktor
+
+# Ktor feature flags
+featureAutoHead: true
+featureConditionalHeaders: false
+featureHSTS: true
+featureCORS: true
+featureCompression: true
+featureResources: true
+featureMetrics: true
+
+# Pattern settings
+delegatePattern: true
+implicitHeaders: false
+
+# Gradle settings
+omitGradleWrapper: false
