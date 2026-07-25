@@ -18,4 +18,3 @@ case class MailStatsTypeVolumeTo(
   salescompany_com: Option[Int] = None,
   clientanothersite_com: Option[Int] = None
 )
-

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailBlockClickHouse } from './api';
+import { MailBlockClickHouse } from '@interserver/myadmin-client';
 
 const instance: MailBlockClickHouse = {
     date,

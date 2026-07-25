@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.server_order_memory_li import ServerOrderMemoryLi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.server_order_memory_li import ServerOrderMemoryLi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestServerOrderMemoryLi(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestServerOrderMemoryLi(unittest.TestCase):
     def testServerOrderMemoryLi(self):
         """Test ServerOrderMemoryLi"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.server_order_memory_li.ServerOrderMemoryLi()  # noqa: E501
+        # model = interserver_api_client.models.server_order_memory_li.ServerOrderMemoryLi()  # noqa: E501
         pass
 
 

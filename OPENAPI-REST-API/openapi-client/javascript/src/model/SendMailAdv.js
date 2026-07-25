@@ -18,7 +18,7 @@ import MailAttachment from './MailAttachment';
 /**
  * The SendMailAdv model module.
  * @module model/SendMailAdv
- * @version 0.9.0
+ * @version 1.0.0
  */
 class SendMailAdv {
     /**

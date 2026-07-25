@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerIpmiLiveInfo = Initialize-PSOpenAPIToolsServerIpmiLiveInfo  -Text null `
+$ServerIpmiLiveInfo = Initialize-InterserverApiServerIpmiLiveInfo  -Text null `
  -PublicIp null `
  -AllowedIp null `
  -ClientUsername null `

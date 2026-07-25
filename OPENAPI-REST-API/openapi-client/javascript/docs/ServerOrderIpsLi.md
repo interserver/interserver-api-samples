@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerOrderIpsLi
+# InterserverApiClient.ServerOrderIpsLi
 
 ## Properties
 

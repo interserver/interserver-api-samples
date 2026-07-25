@@ -405,7 +405,7 @@ ApiClient <- R6::R6Class(
       } else if (is.null(return_type)) {
         return(text)
       }
-      return(self$deserialize(text, return_type, loadNamespace("openapi")))
+      return(self$deserialize(text, return_type, loadNamespace("interserverapi")))
     },
 
     #' @description

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AccountInfoDataEmailSettings model module.
  * @module model/AccountInfoDataEmailSettings
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AccountInfoDataEmailSettings {
     /**

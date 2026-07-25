@@ -12,4 +12,8 @@ IP address information table for a QuickServer service.
 |**rows** | [**List&lt;QuickserverIpTableRow&gt;**](QuickserverIpTableRow.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

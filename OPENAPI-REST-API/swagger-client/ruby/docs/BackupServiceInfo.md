@@ -1,4 +1,4 @@
-# SwaggerClient::BackupServiceInfo
+# InterserverApiClient::BackupServiceInfo
 
 ## Properties
 Name | Type | Description | Notes

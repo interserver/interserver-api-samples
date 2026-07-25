@@ -26,7 +26,7 @@ import io.swagger.model.DomainSearchResponse;
 
 import io.swagger.model.DomainWhoisPrivacyRequest;
 
-import io.swagger.model.InlineResponse2002;
+import io.swagger.model.InlineResponse2003;
 
 import io.swagger.model.InlineResponse401;
 
@@ -50,9 +50,9 @@ import java.util.Map;
 public class DomainsApiController implements DomainsApi {
 
     @Override
-    public Single<HttpResponse<ServiceOrderPostResponse>> addDomain() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addDomain(@NotNull @Valid Map<String, Object> body) {
         // TODO: Implement me
-        return DomainsApi.super.addDomain();
+        return DomainsApi.super.addDomain(body);
     }
 
     @Override
@@ -80,15 +80,15 @@ public class DomainsApiController implements DomainsApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse2002>> cancelDomain(Integer id) {
+    public Single<HttpResponse<InlineResponse2003>> cancelDomain(Integer id) {
         // TODO: Implement me
         return DomainsApi.super.cancelDomain(id);
     }
 
     @Override
-    public Single<HttpResponse<SuccessTextResponse>> deleteDomainDnssec(Integer id, @NotNull String action) {
+    public Single<HttpResponse<SuccessTextResponse>> deleteDomainDnssec(Integer id) {
         // TODO: Implement me
-        return DomainsApi.super.deleteDomainDnssec(id, action);
+        return DomainsApi.super.deleteDomainDnssec(id);
     }
 
     @Override
@@ -134,18 +134,6 @@ public class DomainsApiController implements DomainsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> getDomainOrderFields(String domain, String regType) {
-        // TODO: Implement me
-        return DomainsApi.super.getDomainOrderFields(domain, regType);
-    }
-
-    @Override
-    public Single<HttpResponse<Void>> getDomainOrderSearchResults(String domain) {
-        // TODO: Implement me
-        return DomainsApi.super.getDomainOrderSearchResults(domain);
-    }
-
-    @Override
     public Single<HttpResponse<SuccessTextResponse>> getDomainRenewal(Integer id) {
         // TODO: Implement me
         return DomainsApi.super.getDomainRenewal(id);
@@ -188,9 +176,9 @@ public class DomainsApiController implements DomainsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> patchDomains() {
+    public Single<HttpResponse<Void>> patchDomains(@NotNull @Valid Map<String, Object> body) {
         // TODO: Implement me
-        return DomainsApi.super.patchDomains();
+        return DomainsApi.super.patchDomains(body);
     }
 
     @Override
@@ -200,15 +188,21 @@ public class DomainsApiController implements DomainsApi {
     }
 
     @Override
+    public Single<HttpResponse<Void>> postDomainSearch(String name) {
+        // TODO: Implement me
+        return DomainsApi.super.postDomainSearch(name);
+    }
+
+    @Override
     public Single<HttpResponse<SuccessTextResponse>> postDomainTransfer(Integer id) {
         // TODO: Implement me
         return DomainsApi.super.postDomainTransfer(id);
     }
 
     @Override
-    public Single<HttpResponse<Void>> putDomains() {
+    public Single<HttpResponse<Void>> putDomains(@NotNull @Valid Map<String, Object> body) {
         // TODO: Implement me
-        return DomainsApi.super.putDomains();
+        return DomainsApi.super.putDomains(body);
     }
 
     @Override
@@ -224,7 +218,7 @@ public class DomainsApiController implements DomainsApi {
     }
 
     @Override
-    public Single<HttpResponse<SuccessTextResponse>> updateDomainInfo(String id) {
+    public Single<HttpResponse<SuccessTextResponse>> updateDomainInfo(Integer id) {
         // TODO: Implement me
         return DomainsApi.super.updateDomainInfo(id);
     }

@@ -1,4 +1,4 @@
-# openapi::LoginSubmissionExample
+# interserverapi::LoginSubmissionExample
 
 The data to submit in the login request.
 

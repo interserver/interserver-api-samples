@@ -1,4 +1,4 @@
-# openapi::VpsPlesk12Data
+# interserverapi::VpsPlesk12Data
 
 
 ## Properties

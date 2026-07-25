@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverIpTableRow
+# InterserverApiClient.QuickserverIpTableRow
 
 ## Properties
 

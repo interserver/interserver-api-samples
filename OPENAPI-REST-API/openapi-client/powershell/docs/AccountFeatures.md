@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountFeatures = Initialize-PSOpenAPIToolsAccountFeatures  -DisableReset null `
+$AccountFeatures = Initialize-InterserverApiAccountFeatures  -DisableReset null `
  -DisableReinstall null
 ```
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CancelScrubIp200Response = Initialize-PSOpenAPIToolsCancelScrubIp200Response  -Success true `
+$CancelScrubIp200Response = Initialize-InterserverApiCancelScrubIp200Response  -Success true `
  -Text Scrub Ips is canceled.
 ```
 

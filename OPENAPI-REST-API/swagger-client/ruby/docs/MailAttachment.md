@@ -1,4 +1,4 @@
-# SwaggerClient::MailAttachment
+# InterserverApiClient::MailAttachment
 
 ## Properties
 Name | Type | Description | Notes

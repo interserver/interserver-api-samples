@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QuickserverOrderDistroSel();
+    instance = new InterserverApiClient.QuickserverOrderDistroSel();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('QuickserverOrderDistroSel', function() {
     it('should create an instance of QuickserverOrderDistroSel', function() {
       // uncomment below and update the code to test QuickserverOrderDistroSel
-      //var instance = new InterServerManagementApi.QuickserverOrderDistroSel();
-      //expect(instance).to.be.a(InterServerManagementApi.QuickserverOrderDistroSel);
+      //var instance = new InterserverApiClient.QuickserverOrderDistroSel();
+      //expect(instance).to.be.a(InterserverApiClient.QuickserverOrderDistroSel);
     });
 
     it('should have the property Ubuntu (base name: "Ubuntu")', function() {
       // uncomment below and update the code to test the property Ubuntu
-      //var instance = new InterServerManagementApi.QuickserverOrderDistroSel();
+      //var instance = new InterserverApiClient.QuickserverOrderDistroSel();
       //expect(instance).to.be();
     });
 

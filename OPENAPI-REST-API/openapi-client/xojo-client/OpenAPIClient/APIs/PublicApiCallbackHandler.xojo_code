@@ -1,6 +1,18 @@
 #tag Interface
 Protected Interface PublicApiCallbackHandler
 	#tag Method, Flags = &h0
+		Sub GetAccountCurrenciesCallback(status As OpenAPIClient.OpenAPIClientException, data() As String)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub GetAccountLocalesCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As Dictionary)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub GetCaptchaCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.CaptchaResponse)
 		  
 		End Sub

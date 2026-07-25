@@ -24,4 +24,8 @@ Contact details for the registered domain owner.
 |**address1** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

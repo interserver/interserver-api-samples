@@ -1,4 +1,4 @@
-# openapi::AddServer200Response
+# interserverapi::AddServer200Response
 
 
 ## Properties

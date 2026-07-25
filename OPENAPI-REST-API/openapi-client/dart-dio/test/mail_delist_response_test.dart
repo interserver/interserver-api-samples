@@ -1,38 +1,38 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailDelistResponse
 void main() {
-  final instance = MailDelistResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final MailDelistResponse? instance = /* MailDelistResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(MailDelistResponse, () {
     // Mail service ID.
-    // int id
+    // Optional<int?> id
     test('to test the property `id`', () async {
       // TODO
     });
 
     // Local blocklist entries.
-    // BuiltList<JsonObject> local
+    // Optional<List<Object>?> local
     test('to test the property `local`', () async {
       // TODO
     });
 
     // MailBaby trap block entries.
-    // BuiltList<JsonObject> mbtrap
+    // Optional<List<Object>?> mbtrap
     test('to test the property `mbtrap`', () async {
       // TODO
     });
 
     // Subject-based block entries.
-    // BuiltList<JsonObject> subject
+    // Optional<List<Object>?> subject
     test('to test the property `subject`', () async {
       // TODO
     });
 
     // Manually blocked entries.
-    // BuiltList<JsonObject> manual
+    // Optional<List<Object>?> manual
     test('to test the property `manual`', () async {
       // TODO
     });

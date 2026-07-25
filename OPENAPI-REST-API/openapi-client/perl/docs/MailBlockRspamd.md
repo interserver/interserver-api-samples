@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailBlockRspamd
+# InterServerAPI::Object::MailBlockRspamd
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailBlockRspamd;
+use InterServerAPI::Object::MailBlockRspamd;
 ```
 
 ## Properties

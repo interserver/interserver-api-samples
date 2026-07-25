@@ -1,4 +1,4 @@
-# InterServerManagementApi.TicketCustomFieldDetails
+# InterserverApiClient.TicketCustomFieldDetails
 
 ## Properties
 
@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 * `y` (value: `"y"`)
 
 * `n` (value: `"n"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 
 

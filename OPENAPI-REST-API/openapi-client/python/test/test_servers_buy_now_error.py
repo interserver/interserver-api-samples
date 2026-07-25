@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.servers_buy_now_error import ServersBuyNowError
+from interserver_api_client.models.servers_buy_now_error import ServersBuyNowError
 
 class TestServersBuyNowError(unittest.TestCase):
     """ServersBuyNowError unit test stubs"""

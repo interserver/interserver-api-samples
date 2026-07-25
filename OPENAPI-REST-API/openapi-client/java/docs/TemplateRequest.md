@@ -13,4 +13,8 @@ VPS OS Template Request
 |**password** | **String** | Password for Root / Administrator Account. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,18 +1,18 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for AccountFeatures
 void main() {
-  final instance = AccountFeaturesBuilder();
-  // TODO add properties to the builder and call build()
+  final AccountFeatures? instance = /* AccountFeatures(...) */ null;
+  // TODO add properties to the entity
 
   group(AccountFeatures, () {
-    // int disableReset
+    // Optional<int?> disableReset
     test('to test the property `disableReset`', () async {
       // TODO
     });
 
-    // int disableReinstall
+    // Optional<int?> disableReinstall
     test('to test the property `disableReinstall`', () async {
       // TODO
     });

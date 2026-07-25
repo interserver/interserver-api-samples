@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BackupsOrderServiceTypes
+# InterServerAPI::Object::BackupsOrderServiceTypes
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BackupsOrderServiceTypes;
+use InterServerAPI::Object::BackupsOrderServiceTypes;
 ```
 
 ## Properties

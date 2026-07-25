@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerIpmiLiveRequest
+# InterServerAPI::Object::ServerIpmiLiveRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerIpmiLiveRequest;
+use InterServerAPI::Object::ServerIpmiLiveRequest;
 ```
 
 ## Properties

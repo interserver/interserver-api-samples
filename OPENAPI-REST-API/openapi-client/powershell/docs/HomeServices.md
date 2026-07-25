@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeServices = Initialize-PSOpenAPIToolsHomeServices  -Domains null `
+$HomeServices = Initialize-InterserverApiHomeServices  -Domains null `
  -Webhosting null `
  -Vps null `
  -Licenses null `

@@ -1,4 +1,4 @@
-# openapi::WebsitesOrder
+# interserverapi::WebsitesOrder
 
 Schema for the WebsitesOrder object
 

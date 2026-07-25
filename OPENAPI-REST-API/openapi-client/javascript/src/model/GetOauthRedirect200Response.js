@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetOauthRedirect200Response model module.
  * @module model/GetOauthRedirect200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetOauthRedirect200Response {
     /**

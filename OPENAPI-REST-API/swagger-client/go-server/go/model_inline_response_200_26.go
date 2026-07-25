@@ -10,8 +10,6 @@
 package myadmin-client-go-server
 
 type InlineResponse20026 struct {
-	// Confirmation message.
-	Text string `json:"text,omitempty"`
-	// The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
-	Ticket int32 `json:"ticket,omitempty"`
+	// A map of IP addresses to their current reverse DNS hostnames.
+	Ips map[string]string `json:"ips,omitempty"`
 }

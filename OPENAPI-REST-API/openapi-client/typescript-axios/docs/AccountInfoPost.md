@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoPost } from './api';
+import { AccountInfoPost } from '@interserver/myadmin-client';
 
 const instance: AccountInfoPost = {
     name,

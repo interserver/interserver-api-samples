@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DownloadQsBackup200Response model module.
  * @module model/DownloadQsBackup200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DownloadQsBackup200Response {
     /**

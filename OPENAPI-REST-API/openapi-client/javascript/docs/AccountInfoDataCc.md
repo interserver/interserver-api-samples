@@ -1,4 +1,4 @@
-# InterServerManagementApi.AccountInfoDataCc
+# InterserverApiClient.AccountInfoDataCc
 
 ## Properties
 

@@ -27,28 +27,25 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20019 : IEquatable<InlineResponse20019>
     { 
         /// <summary>
-        /// Status message.
+        /// Gets or Sets PackageCosts
         /// </summary>
-        /// <value>Status message.</value>
 
-        [DataMember(Name="text")]
-        public string Text { get; set; }
+        [DataMember(Name="packageCosts")]
+        public InlineResponse20019PackageCosts PackageCosts { get; set; }
 
         /// <summary>
-        /// Invoice ID for payment.
+        /// Gets or Sets ServiceTypes
         /// </summary>
-        /// <value>Invoice ID for payment.</value>
 
-        [DataMember(Name="invoice")]
-        public int? Invoice { get; set; }
+        [DataMember(Name="serviceTypes")]
+        public List<InlineResponse20019ServiceTypes> ServiceTypes { get; set; }
 
         /// <summary>
-        /// Server order ID.
+        /// Gets or Sets Ips
         /// </summary>
-        /// <value>Server order ID.</value>
 
-        [DataMember(Name="order")]
-        public int? Order { get; set; }
+        [DataMember(Name="ips")]
+        public List<InlineResponse20019Ips> Ips { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -58,9 +55,9 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20019 {\n");
-            sb.Append("  Text: ").Append(Text).Append("\n");
-            sb.Append("  Invoice: ").Append(Invoice).Append("\n");
-            sb.Append("  Order: ").Append(Order).Append("\n");
+            sb.Append("  PackageCosts: ").Append(PackageCosts).Append("\n");
+            sb.Append("  ServiceTypes: ").Append(ServiceTypes).Append("\n");
+            sb.Append("  Ips: ").Append(Ips).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,19 +95,19 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
+                    PackageCosts == other.PackageCosts ||
+                    PackageCosts != null &&
+                    PackageCosts.Equals(other.PackageCosts)
                 ) && 
                 (
-                    Invoice == other.Invoice ||
-                    Invoice != null &&
-                    Invoice.Equals(other.Invoice)
+                    ServiceTypes == other.ServiceTypes ||
+                    ServiceTypes != null &&
+                    ServiceTypes.SequenceEqual(other.ServiceTypes)
                 ) && 
                 (
-                    Order == other.Order ||
-                    Order != null &&
-                    Order.Equals(other.Order)
+                    Ips == other.Ips ||
+                    Ips != null &&
+                    Ips.SequenceEqual(other.Ips)
                 );
         }
 
@@ -124,12 +121,12 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Text != null)
-                    hashCode = hashCode * 59 + Text.GetHashCode();
-                    if (Invoice != null)
-                    hashCode = hashCode * 59 + Invoice.GetHashCode();
-                    if (Order != null)
-                    hashCode = hashCode * 59 + Order.GetHashCode();
+                    if (PackageCosts != null)
+                    hashCode = hashCode * 59 + PackageCosts.GetHashCode();
+                    if (ServiceTypes != null)
+                    hashCode = hashCode * 59 + ServiceTypes.GetHashCode();
+                    if (Ips != null)
+                    hashCode = hashCode * 59 + Ips.GetHashCode();
                 return hashCode;
             }
         }

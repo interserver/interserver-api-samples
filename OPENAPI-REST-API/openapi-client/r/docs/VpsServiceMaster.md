@@ -1,4 +1,4 @@
-# openapi::VpsServiceMaster
+# interserverapi::VpsServiceMaster
 
 Information about the host node (hypervisor) running this VPS, including hardware specs and resource utilization.
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsTrafficUsageAverageSectionResponse } from './api';
+import { VpsTrafficUsageAverageSectionResponse } from '@interserver/myadmin-client';
 
 const instance: VpsTrafficUsageAverageSectionResponse = {
     total,

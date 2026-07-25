@@ -1,4 +1,4 @@
-# InterServerManagementApi.CreateGeoRule400Response
+# InterserverApiClient.CreateGeoRule400Response
 
 ## Properties
 

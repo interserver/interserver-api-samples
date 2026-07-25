@@ -12,9 +12,10 @@ import io.swagger.model.*;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBackupsBody;
-import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse20011;
+import io.swagger.model.InlineResponse20012;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.QsOrderRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.Quickserver;
 import io.swagger.model.QuickserverOrder;
@@ -37,7 +38,8 @@ public class QsController  {
    **/
 
   /*
-    public ResponseContext addQs(RequestContext request ) {
+    public ResponseContext addQs(RequestContext request , QsOrderRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -127,6 +129,13 @@ public class QsController  {
 
   /*
     public ResponseContext getNewQs(RequestContext request ) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext getQsBackup(RequestContext request , Integer id 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -238,13 +247,6 @@ public class QsController  {
 
   /*
     public ResponseContext getQsWelcomeEmail(RequestContext request , String id 
-) {
-        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
-    }
-  */
-
-  /*
-    public ResponseContext postQsBackup(RequestContext request , Integer id 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
@@ -363,7 +365,8 @@ public class QsController  {
   */
 
   /*
-    public ResponseContext putQs(RequestContext request ) {
+    public ResponseContext putQs(RequestContext request , QsOrderRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

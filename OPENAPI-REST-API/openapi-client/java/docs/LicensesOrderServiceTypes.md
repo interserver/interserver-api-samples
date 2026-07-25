@@ -11,4 +11,8 @@ Types of license services
 |**licensesOrderServiceTypes11482** | [**LicensesOrderServiceTypes11482**](LicensesOrderServiceTypes11482.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

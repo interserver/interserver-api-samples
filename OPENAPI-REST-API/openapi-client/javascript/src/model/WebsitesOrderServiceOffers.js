@@ -17,7 +17,7 @@ import WebsitesOrderServiceOffer from './WebsitesOrderServiceOffer';
 /**
  * The WebsitesOrderServiceOffers model module.
  * @module model/WebsitesOrderServiceOffers
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsitesOrderServiceOffers {
     /**

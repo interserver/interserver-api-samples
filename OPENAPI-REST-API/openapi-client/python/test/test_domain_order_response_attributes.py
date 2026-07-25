@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_order_response_attributes import DomainOrderResponseAttributes
+from interserver_api_client.models.domain_order_response_attributes import DomainOrderResponseAttributes
 
 class TestDomainOrderResponseAttributes(unittest.TestCase):
     """DomainOrderResponseAttributes unit test stubs"""

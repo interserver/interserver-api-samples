@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.hostname_object import HostnameObject
+from interserver_api_client.models.hostname_object import HostnameObject
 
 class TestHostnameObject(unittest.TestCase):
     """HostnameObject unit test stubs"""

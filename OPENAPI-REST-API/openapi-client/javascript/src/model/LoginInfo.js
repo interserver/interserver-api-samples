@@ -17,7 +17,7 @@ import LoginServiceCounts from './LoginServiceCounts';
 /**
  * The LoginInfo model module.
  * @module model/LoginInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LoginInfo {
     /**

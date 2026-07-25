@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.domain_prov_process_pending import DomainProvProcessPending  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.domain_prov_process_pending import DomainProvProcessPending  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestDomainProvProcessPending(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestDomainProvProcessPending(unittest.TestCase):
     def testDomainProvProcessPending(self):
         """Test DomainProvProcessPending"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.domain_prov_process_pending.DomainProvProcessPending()  # noqa: E501
+        # model = interserver_api_client.models.domain_prov_process_pending.DomainProvProcessPending()  # noqa: E501
         pass
 
 

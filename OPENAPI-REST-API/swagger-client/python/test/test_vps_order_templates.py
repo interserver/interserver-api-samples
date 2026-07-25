@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.vps_order_templates import VpsOrderTemplates  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.vps_order_templates import VpsOrderTemplates  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestVpsOrderTemplates(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestVpsOrderTemplates(unittest.TestCase):
     def testVpsOrderTemplates(self):
         """Test VpsOrderTemplates"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.vps_order_templates.VpsOrderTemplates()  # noqa: E501
+        # model = interserver_api_client.models.vps_order_templates.VpsOrderTemplates()  # noqa: E501
         pass
 
 

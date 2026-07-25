@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PostOauthCallback200Response = Initialize-PSOpenAPIToolsPostOauthCallback200Response  -Login null `
+$PostOauthCallback200Response = Initialize-InterserverApiPostOauthCallback200Response  -Login null `
  -Signup null `
  -Linked null `
  -AccountId null `

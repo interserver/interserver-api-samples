@@ -1,4 +1,4 @@
-# SwaggerClient::UpdateTicket
+# InterserverApiClient::UpdateTicket
 
 ## Properties
 Name | Type | Description | Notes

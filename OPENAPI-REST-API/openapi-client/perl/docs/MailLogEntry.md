@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailLogEntry
+# InterServerAPI::Object::MailLogEntry
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailLogEntry;
+use InterServerAPI::Object::MailLogEntry;
 ```
 
 ## Properties

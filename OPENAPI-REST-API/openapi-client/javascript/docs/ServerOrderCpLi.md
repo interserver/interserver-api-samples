@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerOrderCpLi
+# InterserverApiClient.ServerOrderCpLi
 
 ## Properties
 

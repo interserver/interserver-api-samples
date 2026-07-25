@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LoginSubmissionExampleGRecaptchaResponseDep } from './api';
+import { LoginSubmissionExampleGRecaptchaResponseDep } from '@interserver/myadmin-client';
 
 const instance: LoginSubmissionExampleGRecaptchaResponseDep = {
     w,

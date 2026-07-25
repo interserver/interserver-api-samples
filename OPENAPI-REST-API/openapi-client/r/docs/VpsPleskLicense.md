@@ -1,4 +1,4 @@
-# openapi::VpsPleskLicense
+# interserverapi::VpsPleskLicense
 
 
 ## Properties

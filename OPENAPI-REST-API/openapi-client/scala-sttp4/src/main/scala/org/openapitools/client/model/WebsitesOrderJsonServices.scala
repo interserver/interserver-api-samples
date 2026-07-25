@@ -19,4 +19,3 @@ case class WebsitesOrderJsonServices(
   /* JSON services description */
   `11447`: String
 )
-

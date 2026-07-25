@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateFilter500Response = Initialize-PSOpenAPIToolsCreateFilter500Response  -Success false `
+$CreateFilter500Response = Initialize-InterserverApiCreateFilter500Response  -Success false `
  -Text Unable to create new filter.
 ```
 

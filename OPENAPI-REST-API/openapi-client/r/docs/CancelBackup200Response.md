@@ -1,4 +1,4 @@
-# openapi::CancelBackup200Response
+# interserverapi::CancelBackup200Response
 
 
 ## Properties

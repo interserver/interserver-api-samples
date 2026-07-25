@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsDALicense
+# InterserverApiClient.VpsDALicense
 
 ## Properties
 

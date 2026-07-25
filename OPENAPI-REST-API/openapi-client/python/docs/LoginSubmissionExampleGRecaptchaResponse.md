@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.login_submission_example_g_recaptcha_response import LoginSubmissionExampleGRecaptchaResponse
+from interserver_api_client.models.login_submission_example_g_recaptcha_response import LoginSubmissionExampleGRecaptchaResponse
 
 # TODO update the JSON string below
 json = "{}"

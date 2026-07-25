@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.domain_prov_process_pending_attributes import DomainProvProcessPendingAttributes
+from interserver_api_client.models.domain_prov_process_pending_attributes import DomainProvProcessPendingAttributes
 
 # TODO update the JSON string below
 json = "{}"

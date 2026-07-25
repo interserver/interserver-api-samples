@@ -1,4 +1,4 @@
-# openapi::VpsOrderPostRequest
+# interserverapi::VpsOrderPostRequest
 
 request to validate a vps order
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BillingPrepayRequest } from './api';
+import { BillingPrepayRequest } from '@interserver/myadmin-client';
 
 const instance: BillingPrepayRequest = {
     module,

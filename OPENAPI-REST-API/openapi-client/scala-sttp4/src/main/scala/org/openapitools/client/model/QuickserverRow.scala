@@ -30,4 +30,3 @@ case class QuickserverRow(
   /* The comment of the qs. */
   qs_comment: String
 )
-

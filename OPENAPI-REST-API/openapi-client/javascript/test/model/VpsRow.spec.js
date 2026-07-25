@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsRow();
+    instance = new InterserverApiClient.VpsRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('VpsRow', function() {
     it('should create an instance of VpsRow', function() {
       // uncomment below and update the code to test VpsRow
-      //var instance = new InterServerManagementApi.VpsRow();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsRow);
+      //var instance = new InterserverApiClient.VpsRow();
+      //expect(instance).to.be.a(InterserverApiClient.VpsRow);
     });
 
     it('should have the property vps_id (base name: "vps_id")', function() {
       // uncomment below and update the code to test the property vps_id
-      //var instance = new InterServerManagementApi.VpsRow();
+      //var instance = new InterserverApiClient.VpsRow();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_name (base name: "vps_name")', function() {
       // uncomment below and update the code to test the property vps_name
-      //var instance = new InterServerManagementApi.VpsRow();
+      //var instance = new InterserverApiClient.VpsRow();
       //expect(instance).to.be();
     });
 
     it('should have the property repeat_invoices_cost (base name: "repeat_invoices_cost")', function() {
       // uncomment below and update the code to test the property repeat_invoices_cost
-      //var instance = new InterServerManagementApi.VpsRow();
+      //var instance = new InterserverApiClient.VpsRow();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_hostname (base name: "vps_hostname")', function() {
       // uncomment below and update the code to test the property vps_hostname
-      //var instance = new InterServerManagementApi.VpsRow();
+      //var instance = new InterserverApiClient.VpsRow();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_ip (base name: "vps_ip")', function() {
       // uncomment below and update the code to test the property vps_ip
-      //var instance = new InterServerManagementApi.VpsRow();
+      //var instance = new InterserverApiClient.VpsRow();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_status (base name: "vps_status")', function() {
       // uncomment below and update the code to test the property vps_status
-      //var instance = new InterServerManagementApi.VpsRow();
+      //var instance = new InterserverApiClient.VpsRow();
       //expect(instance).to.be();
     });
 
     it('should have the property services_name (base name: "services_name")', function() {
       // uncomment below and update the code to test the property services_name
-      //var instance = new InterServerManagementApi.VpsRow();
+      //var instance = new InterserverApiClient.VpsRow();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_comment (base name: "vps_comment")', function() {
       // uncomment below and update the code to test the property vps_comment
-      //var instance = new InterServerManagementApi.VpsRow();
+      //var instance = new InterserverApiClient.VpsRow();
       //expect(instance).to.be();
     });
 

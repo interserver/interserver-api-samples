@@ -27,20 +27,12 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20026 : IEquatable<InlineResponse20026>
     { 
         /// <summary>
-        /// Confirmation message.
+        /// A map of IP addresses to their current reverse DNS hostnames.
         /// </summary>
-        /// <value>Confirmation message.</value>
+        /// <value>A map of IP addresses to their current reverse DNS hostnames.</value>
 
-        [DataMember(Name="text")]
-        public string Text { get; set; }
-
-        /// <summary>
-        /// The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.
-        /// </summary>
-        /// <value>The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.</value>
-
-        [DataMember(Name="ticket")]
-        public int? Ticket { get; set; }
+        [DataMember(Name="ips")]
+        public Dictionary<string, string> Ips { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,8 +42,7 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20026 {\n");
-            sb.Append("  Text: ").Append(Text).Append("\n");
-            sb.Append("  Ticket: ").Append(Ticket).Append("\n");
+            sb.Append("  Ips: ").Append(Ips).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -89,14 +80,9 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
-                ) && 
-                (
-                    Ticket == other.Ticket ||
-                    Ticket != null &&
-                    Ticket.Equals(other.Ticket)
+                    Ips == other.Ips ||
+                    Ips != null &&
+                    Ips.SequenceEqual(other.Ips)
                 );
         }
 
@@ -110,10 +96,8 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Text != null)
-                    hashCode = hashCode * 59 + Text.GetHashCode();
-                    if (Ticket != null)
-                    hashCode = hashCode * 59 + Ticket.GetHashCode();
+                    if (Ips != null)
+                    hashCode = hashCode * 59 + Ips.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsTrafficUsageAverageSectionResponse
+# InterServerAPI::Object::VpsTrafficUsageAverageSectionResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsTrafficUsageAverageSectionResponse;
+use InterServerAPI::Object::VpsTrafficUsageAverageSectionResponse;
 ```
 
 ## Properties

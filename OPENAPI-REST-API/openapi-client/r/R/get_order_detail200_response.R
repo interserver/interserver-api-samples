@@ -126,10 +126,10 @@ GetOrderDetail200Response <- R6::R6Class(
         self$`packageCosts` <- `packagecosts_object`
       }
       if (!is.null(this_object$`serviceTypes`)) {
-        self$`serviceTypes` <- ApiClient$new()$deserializeObj(this_object$`serviceTypes`, "array[GetOrderDetail200ResponseServiceTypesInner]", loadNamespace("openapi"))
+        self$`serviceTypes` <- ApiClient$new()$deserializeObj(this_object$`serviceTypes`, "array[GetOrderDetail200ResponseServiceTypesInner]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`ips`)) {
-        self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[GetOrderDetail200ResponseIpsInner]", loadNamespace("openapi"))
+        self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[GetOrderDetail200ResponseIpsInner]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -153,8 +153,8 @@ GetOrderDetail200Response <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`packageCosts` <- GetOrderDetail200ResponsePackageCosts$new()$fromJSON(jsonlite::toJSON(this_object$`packageCosts`, auto_unbox = TRUE, digits = NA))
-      self$`serviceTypes` <- ApiClient$new()$deserializeObj(this_object$`serviceTypes`, "array[GetOrderDetail200ResponseServiceTypesInner]", loadNamespace("openapi"))
-      self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[GetOrderDetail200ResponseIpsInner]", loadNamespace("openapi"))
+      self$`serviceTypes` <- ApiClient$new()$deserializeObj(this_object$`serviceTypes`, "array[GetOrderDetail200ResponseServiceTypesInner]", loadNamespace("interserverapi"))
+      self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[GetOrderDetail200ResponseIpsInner]", loadNamespace("interserverapi"))
       self
     },
 

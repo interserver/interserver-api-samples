@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServiceOrderPostResponse');
+use_ok('InterServerAPI::Object::ServiceOrderPostResponse');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServiceOrderPostResponse->new();
+#my $instance = InterServerAPI::Object::ServiceOrderPostResponse->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServiceOrderPostResponse');
+#isa_ok($instance, 'InterServerAPI::Object::ServiceOrderPostResponse');
 
 
 done_testing();

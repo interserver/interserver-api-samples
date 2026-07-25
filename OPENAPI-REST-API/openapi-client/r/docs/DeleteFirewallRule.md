@@ -1,4 +1,4 @@
-# openapi::DeleteFirewallRule
+# interserverapi::DeleteFirewallRule
 
 Delete firewall rule for your ip
 

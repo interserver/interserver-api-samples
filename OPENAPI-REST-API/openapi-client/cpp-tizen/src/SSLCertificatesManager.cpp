@@ -109,7 +109,7 @@ static bool addSslProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, v
 }
 
 static bool addSslHelper(char * accessToken,
-	
+	std::shared_ptr<SslOrderRequest> sslOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -129,6 +129,19 @@ static bool addSslHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("SslOrderRequest")) {
+		node = converttoJson(&sslOrderRequest, "SslOrderRequest", "");
+	}
+	
+	char *jsonStr =  sslOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/ssl/order");
 	int pos;
@@ -180,22 +193,22 @@ static bool addSslHelper(char * accessToken,
 
 
 bool SSLCertificatesManager::addSslAsync(char * accessToken,
-	
+	std::shared_ptr<SslOrderRequest> sslOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addSslHelper(accessToken,
-	
+	sslOrderRequest, 
 	handler, userData, true);
 }
 
 bool SSLCertificatesManager::addSslSync(char * accessToken,
-	
+	std::shared_ptr<SslOrderRequest> sslOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addSslHelper(accessToken,
-	
+	sslOrderRequest, 
 	handler, userData, false);
 }
 
@@ -969,7 +982,7 @@ static bool putSslProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, v
 }
 
 static bool putSslHelper(char * accessToken,
-	
+	std::shared_ptr<SslOrderRequest> sslOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -989,6 +1002,19 @@ static bool putSslHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("SslOrderRequest")) {
+		node = converttoJson(&sslOrderRequest, "SslOrderRequest", "");
+	}
+	
+	char *jsonStr =  sslOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/ssl/order");
 	int pos;
@@ -1040,22 +1066,22 @@ static bool putSslHelper(char * accessToken,
 
 
 bool SSLCertificatesManager::putSslAsync(char * accessToken,
-	
+	std::shared_ptr<SslOrderRequest> sslOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putSslHelper(accessToken,
-	
+	sslOrderRequest, 
 	handler, userData, true);
 }
 
 bool SSLCertificatesManager::putSslSync(char * accessToken,
-	
+	std::shared_ptr<SslOrderRequest> sslOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putSslHelper(accessToken,
-	
+	sslOrderRequest, 
 	handler, userData, false);
 }
 

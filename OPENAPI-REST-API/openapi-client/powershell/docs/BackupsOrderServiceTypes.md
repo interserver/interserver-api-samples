@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupsOrderServiceTypes = Initialize-PSOpenAPIToolsBackupsOrderServiceTypes  -Var11006 null
+$BackupsOrderServiceTypes = Initialize-InterserverApiBackupsOrderServiceTypes  -Var11006 null
 ```
 
 - Convert the resource to JSON

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.CreateRule400Response();
+    instance = new InterserverApiClient.CreateRule400Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('CreateRule400Response', function() {
     it('should create an instance of CreateRule400Response', function() {
       // uncomment below and update the code to test CreateRule400Response
-      //var instance = new InterServerManagementApi.CreateRule400Response();
-      //expect(instance).to.be.a(InterServerManagementApi.CreateRule400Response);
+      //var instance = new InterserverApiClient.CreateRule400Response();
+      //expect(instance).to.be.a(InterserverApiClient.CreateRule400Response);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.CreateRule400Response();
+      //var instance = new InterserverApiClient.CreateRule400Response();
       //expect(instance).to.be();
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.CreateRule400Response();
+      //var instance = new InterserverApiClient.CreateRule400Response();
       //expect(instance).to.be();
     });
 
     it('should have the property errors (base name: "errors")', function() {
       // uncomment below and update the code to test the property errors
-      //var instance = new InterServerManagementApi.CreateRule400Response();
+      //var instance = new InterserverApiClient.CreateRule400Response();
       //expect(instance).to.be();
     });
 

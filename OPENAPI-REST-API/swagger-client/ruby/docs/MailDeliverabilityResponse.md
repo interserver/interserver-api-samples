@@ -1,4 +1,4 @@
-# SwaggerClient::MailDeliverabilityResponse
+# InterserverApiClient::MailDeliverabilityResponse
 
 ## Properties
 Name | Type | Description | Notes

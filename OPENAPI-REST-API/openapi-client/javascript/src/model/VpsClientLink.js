@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsClientLink model module.
  * @module model/VpsClientLink
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsClientLink {
     /**

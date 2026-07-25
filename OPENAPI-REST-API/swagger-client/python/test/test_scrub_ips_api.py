@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.scrub_ips_api import ScrubIpsApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.scrub_ips_api import ScrubIpsApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestScrubIpsApi(unittest.TestCase):
@@ -31,112 +31,119 @@ class TestScrubIpsApi(unittest.TestCase):
     def test_cancel_scrub_ip(self):
         """Test case for cancel_scrub_ip
 
-        Cancel Scrub IP Service  # noqa: E501
+        Cancel a Scrub IP service and stop its recurring DDoS billing  # noqa: E501
         """
         pass
 
     def test_create_filter(self):
         """Test case for create_filter
 
-        Create Traffic Filter  # noqa: E501
+        Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port  # noqa: E501
         """
         pass
 
     def test_create_geo_rule(self):
         """Test case for create_geo_rule
 
-        Create Geo Firewall Rule  # noqa: E501
+        Add a geographic firewall rule (block/allow by country code or ASN)  # noqa: E501
         """
         pass
 
     def test_create_rule(self):
         """Test case for create_rule
 
-        Create Firewall Rule  # noqa: E501
+        Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)  # noqa: E501
         """
         pass
 
     def test_delete_filter(self):
         """Test case for delete_filter
 
-        Delete Traffic Filter  # noqa: E501
+        Remove a scrubbing filter by matching filter_type and port  # noqa: E501
         """
         pass
 
     def test_disable_scrub(self):
         """Test case for disable_scrub
 
-        Disable Scrub Protection  # noqa: E501
+        Disable DDoS scrubbing and remove the BGP announcement on the IP  # noqa: E501
         """
         pass
 
     def test_enable_scrub(self):
         """Test case for enable_scrub
 
-        Enable Scrub Protection  # noqa: E501
+        Enable DDoS scrubbing (BGP announcement) on the service's protected IP  # noqa: E501
         """
         pass
 
     def test_get_order_detail(self):
         """Test case for get_order_detail
 
-        Get Scrub IP Ordering Information  # noqa: E501
+        Get plans, pricing, and eligible IPs for a new Scrub IP order  # noqa: E501
         """
         pass
 
     def test_get_scrub_ip_details(self):
         """Test case for get_scrub_ip_details
 
-        Get Scrub IP Details  # noqa: E501
+        Get full Scrub IP service detail (rules + geo + filters)  # noqa: E501
         """
         pass
 
     def test_get_scrub_ip_filter_types(self):
         """Test case for get_scrub_ip_filter_types
 
-        List Scrub Filter Types  # noqa: E501
+        List enabled traffic filter profiles available for createFilter  # noqa: E501
         """
         pass
 
     def test_get_scrub_ip_invoices(self):
         """Test case for get_scrub_ip_invoices
 
-        Get ScrubIp Invoices  # noqa: E501
+        List recurring and one-time invoices billed for this Scrub IP service  # noqa: E501
         """
         pass
 
     def test_get_scrub_ip_logs(self):
         """Test case for get_scrub_ip_logs
 
-        Get Scrub IP Logs  # noqa: E501
+        Get last 50000 packet/event log entries for the protected IP  # noqa: E501
         """
         pass
 
     def test_get_scrub_ips_list(self):
         """Test case for get_scrub_ips_list
 
-        List Scrub IP Services  # noqa: E501
+        List all Scrub IP DDoS protection services on the authenticated account  # noqa: E501
         """
         pass
 
     def test_place_scrub_order(self):
         """Test case for place_scrub_order
 
-        Place Scrub IP Order  # noqa: E501
+        Place a new Scrub IP DDoS protection order and generate an invoice  # noqa: E501
+        """
+        pass
+
+    def test_put_scrub_ips(self):
+        """Test case for put_scrub_ips
+
+        Validate a Scrub IP order and return effective pricing without billing  # noqa: E501
         """
         pass
 
     def test_scrub_ips_delete_geo_rule(self):
         """Test case for scrub_ips_delete_geo_rule
 
-        Delete Geo Firewall Rule  # noqa: E501
+        Delete a geo firewall rule by rule_id from getScrubIpDetails  # noqa: E501
         """
         pass
 
     def test_scrub_ips_delete_rule(self):
         """Test case for scrub_ips_delete_rule
 
-        Delete Firewall Rule  # noqa: E501
+        Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails  # noqa: E501
         """
         pass
 

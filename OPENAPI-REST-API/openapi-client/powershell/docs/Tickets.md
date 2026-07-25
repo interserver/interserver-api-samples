@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Tickets = Initialize-PSOpenAPIToolsTickets  -Ima null `
+$Tickets = Initialize-InterserverApiTickets  -Ima null `
  -Custid null `
  -View null `
  -CurrentPage null `

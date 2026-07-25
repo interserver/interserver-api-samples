@@ -15,29 +15,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse20025   {
   
-  @Schema(description = "")
-  private String message = null;
-  
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   private Boolean success = null;
- /**
-   * Get message
-   * @return message
-  **/
-  @JsonProperty("message")
-  public String getMessage() {
-    return message;
-  }
-
-  public void setMessage(String message) {
-    this.message = message;
-  }
-
-  public InlineResponse20025 message(String message) {
-    this.message = message;
-    return this;
-  }
-
+  
+  @Schema(required = true, description = "")
+  private String text = null;
  /**
    * Get success
    * @return success
@@ -56,14 +38,32 @@ public class InlineResponse20025   {
     return this;
   }
 
+ /**
+   * Get text
+   * @return text
+  **/
+  @JsonProperty("text")
+  public String getText() {
+    return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  public InlineResponse20025 text(String text) {
+    this.text = text;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20025 {\n");
     
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }

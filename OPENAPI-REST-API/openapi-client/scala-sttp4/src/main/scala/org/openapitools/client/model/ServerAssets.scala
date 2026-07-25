@@ -24,4 +24,3 @@ case class ServerAssets(
   /* The rows of the assets table. */
   rows: Option[Seq[Seq[String]]] = None
 )
-

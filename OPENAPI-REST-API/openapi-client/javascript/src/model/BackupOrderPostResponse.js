@@ -17,7 +17,7 @@ import BackupOrderPostResponseCjParams from './BackupOrderPostResponseCjParams';
 /**
  * The BackupOrderPostResponse model module.
  * @module model/BackupOrderPostResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BackupOrderPostResponse {
     /**

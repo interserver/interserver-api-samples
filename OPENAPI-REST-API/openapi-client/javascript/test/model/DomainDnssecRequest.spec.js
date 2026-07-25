@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainDnssecRequest();
+    instance = new InterserverApiClient.DomainDnssecRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('DomainDnssecRequest', function() {
     it('should create an instance of DomainDnssecRequest', function() {
       // uncomment below and update the code to test DomainDnssecRequest
-      //var instance = new InterServerManagementApi.DomainDnssecRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainDnssecRequest);
+      //var instance = new InterserverApiClient.DomainDnssecRequest();
+      //expect(instance).to.be.a(InterserverApiClient.DomainDnssecRequest);
     });
 
     it('should have the property algorithm (base name: "algorithm")', function() {
       // uncomment below and update the code to test the property algorithm
-      //var instance = new InterServerManagementApi.DomainDnssecRequest();
+      //var instance = new InterserverApiClient.DomainDnssecRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property digest_type (base name: "digest_type")', function() {
       // uncomment below and update the code to test the property digest_type
-      //var instance = new InterServerManagementApi.DomainDnssecRequest();
+      //var instance = new InterserverApiClient.DomainDnssecRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property digest (base name: "digest")', function() {
       // uncomment below and update the code to test the property digest
-      //var instance = new InterServerManagementApi.DomainDnssecRequest();
+      //var instance = new InterserverApiClient.DomainDnssecRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property key_tag (base name: "key_tag")', function() {
       // uncomment below and update the code to test the property key_tag
-      //var instance = new InterServerManagementApi.DomainDnssecRequest();
+      //var instance = new InterserverApiClient.DomainDnssecRequest();
       //expect(instance).to.be();
     });
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.account_info_oauth_config_providers import AccountInfoOauthConfigProviders
+from interserver_api_client.models.account_info_oauth_config_providers import AccountInfoOauthConfigProviders
 
 # TODO update the JSON string below
 json = "{}"

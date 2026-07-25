@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetScrubIpDetails200ResponseFilterFirewallFiltersInner = Initialize-PSOpenAPIToolsGetScrubIpDetails200ResponseFilterFirewallFiltersInner  -Daddr null `
+$GetScrubIpDetails200ResponseFilterFirewallFiltersInner = Initialize-InterserverApiGetScrubIpDetails200ResponseFilterFirewallFiltersInner  -Daddr null `
  -Dest null `
  -FilterName null `
  -DestinationIp null `

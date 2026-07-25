@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_order_server_details381 import QuickserverOrderServerDetails381
+from interserver_api_client.models.quickserver_order_server_details381 import QuickserverOrderServerDetails381
 
 class TestQuickserverOrderServerDetails381(unittest.TestCase):
     """QuickserverOrderServerDetails381 unit test stubs"""

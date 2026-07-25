@@ -11,4 +11,8 @@
 |**_2faGoogleSplit** | **String** | Human-readable formatted key (chunks of 4 characters). |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

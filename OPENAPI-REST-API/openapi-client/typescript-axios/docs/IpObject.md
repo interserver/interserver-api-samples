@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { IpObject } from './api';
+import { IpObject } from '@interserver/myadmin-client';
 
 const instance: IpObject = {
     ip,

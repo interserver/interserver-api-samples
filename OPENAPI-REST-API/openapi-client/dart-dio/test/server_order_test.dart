@@ -1,65 +1,65 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerOrder
 void main() {
-  final instance = ServerOrderBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerOrder? instance = /* ServerOrder(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerOrder, () {
-    // ServerOrderFormValues formValues
+    // Optional<ServerOrderFormValues?> formValues
     test('to test the property `formValues`', () async {
       // TODO
     });
 
-    // ServerOrderConfigIds configIds
+    // Optional<ServerOrderConfigIds?> configIds
     test('to test the property `configIds`', () async {
       // TODO
     });
 
     // Number of CPUs for the server order.
-    // int cpu
+    // Optional<int?> cpu
     test('to test the property `cpu`', () async {
       // TODO
     });
 
-    // ServerOrderFieldLabels fieldLabel
+    // Optional<ServerOrderFieldLabels?> fieldLabel
     test('to test the property `fieldLabel`', () async {
       // TODO
     });
 
-    // ServerOrderCpuLi cpuLi
+    // Optional<ServerOrderCpuLi?> cpuLi
     test('to test the property `cpuLi`', () async {
       // TODO
     });
 
-    // ServerOrderMemoryLi memoryLi
+    // Optional<ServerOrderMemoryLi?> memoryLi
     test('to test the property `memoryLi`', () async {
       // TODO
     });
 
-    // ServerOrderBandwidthLi bandwidthLi
+    // Optional<ServerOrderBandwidthLi?> bandwidthLi
     test('to test the property `bandwidthLi`', () async {
       // TODO
     });
 
-    // ServerOrderIpsLi ipsLi
+    // Optional<ServerOrderIpsLi?> ipsLi
     test('to test the property `ipsLi`', () async {
       // TODO
     });
 
-    // ServerOrderOsLi osLi
+    // Optional<ServerOrderOsLi?> osLi
     test('to test the property `osLi`', () async {
       // TODO
     });
 
-    // ServerOrderCpLi cpLi
+    // Optional<ServerOrderCpLi?> cpLi
     test('to test the property `cpLi`', () async {
       // TODO
     });
 
     // RAID options for the server order.
-    // BuiltList<ServerOrderRAID> raidLi
+    // Optional<List<ServerOrderRAID>?> raidLi
     test('to test the property `raidLi`', () async {
       // TODO
     });

@@ -2,13 +2,13 @@ package io.swagger.server.model
 
 
 /**
- * @param text Status message. for example: ''Order Completed''
- * @param invoice Invoice ID for payment.
- * @param order Server order ID.
+ * @param packageCosts 
+ * @param serviceTypes 
+ * @param ips 
  */
 case class Inline_response_200_19 (
-  text: Option[String],
-  invoice: Option[Int],
-  order: Option[Int]
+  packageCosts: Option[inline_response_200_19_packageCosts],
+  serviceTypes: Option[List[inline_response_200_19_serviceTypes]],
+  ips: Option[List[inline_response_200_19_ips]]
 )
 

@@ -34,4 +34,3 @@ case class ServerSwitchport(
   /* List of IPv6 VLANs associated with the switchport. */
   vlans6: Option[Seq[String]] = None
 )
-

@@ -10,4 +10,8 @@ Marketplace buy it now servers list
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **oPSVersion** | **string** |  | [optional]
-**attributes** | [**\Interserver\MyAdmin\Model\DomainAllInfoAttributes**](DomainAllInfoAttributes.md) |  | [optional]
+**attributes** | [**\Interserver\\MyAdmin\Model\DomainAllInfoAttributes**](DomainAllInfoAttributes.md) |  | [optional]
 **object** | **string** |  | [optional]
 **protocol** | **string** |  | [optional]
 **responseText** | **string** |  | [optional]

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CaptchaResponse } from './api';
+import { CaptchaResponse } from '@interserver/myadmin-client';
 
 const instance: CaptchaResponse = {
     captcha,

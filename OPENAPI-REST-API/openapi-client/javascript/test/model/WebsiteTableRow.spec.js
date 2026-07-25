@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.WebsiteTableRow();
+    instance = new InterserverApiClient.WebsiteTableRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('WebsiteTableRow', function() {
     it('should create an instance of WebsiteTableRow', function() {
       // uncomment below and update the code to test WebsiteTableRow
-      //var instance = new InterServerManagementApi.WebsiteTableRow();
-      //expect(instance).to.be.a(InterServerManagementApi.WebsiteTableRow);
+      //var instance = new InterserverApiClient.WebsiteTableRow();
+      //expect(instance).to.be.a(InterserverApiClient.WebsiteTableRow);
     });
 
     it('should have the property desc (base name: "desc")', function() {
       // uncomment below and update the code to test the property desc
-      //var instance = new InterServerManagementApi.WebsiteTableRow();
+      //var instance = new InterserverApiClient.WebsiteTableRow();
       //expect(instance).to.be();
     });
 
     it('should have the property value (base name: "value")', function() {
       // uncomment below and update the code to test the property value
-      //var instance = new InterServerManagementApi.WebsiteTableRow();
+      //var instance = new InterserverApiClient.WebsiteTableRow();
       //expect(instance).to.be();
     });
 

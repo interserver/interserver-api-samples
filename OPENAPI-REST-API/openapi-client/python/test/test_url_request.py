@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.url_request import UrlRequest
+from interserver_api_client.models.url_request import UrlRequest
 
 class TestUrlRequest(unittest.TestCase):
     """UrlRequest unit test stubs"""

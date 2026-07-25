@@ -1,4 +1,4 @@
-# openapi::AffiliateBannerRow
+# interserverapi::AffiliateBannerRow
 
 An affiliate banner image details.
 

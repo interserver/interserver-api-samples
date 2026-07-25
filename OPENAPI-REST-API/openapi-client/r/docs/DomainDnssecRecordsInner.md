@@ -1,4 +1,4 @@
-# openapi::DomainDnssecRecordsInner
+# interserverapi::DomainDnssecRecordsInner
 
 
 ## Properties

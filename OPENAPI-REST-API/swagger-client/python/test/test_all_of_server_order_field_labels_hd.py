@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.all_of_server_order_field_labels_hd import AllOfServerOrderFieldLabelsHd  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.all_of_server_order_field_labels_hd import AllOfServerOrderFieldLabelsHd  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestAllOfServerOrderFieldLabelsHd(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestAllOfServerOrderFieldLabelsHd(unittest.TestCase):
     def testAllOfServerOrderFieldLabelsHd(self):
         """Test AllOfServerOrderFieldLabelsHd"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.all_of_server_order_field_labels_hd.AllOfServerOrderFieldLabelsHd()  # noqa: E501
+        # model = interserver_api_client.models.all_of_server_order_field_labels_hd.AllOfServerOrderFieldLabelsHd()  # noqa: E501
         pass
 
 

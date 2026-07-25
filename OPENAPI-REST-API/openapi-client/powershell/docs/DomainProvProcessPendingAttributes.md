@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainProvProcessPendingAttributes = Initialize-PSOpenAPIToolsDomainProvProcessPendingAttributes  -Id null `
+$DomainProvProcessPendingAttributes = Initialize-InterserverApiDomainProvProcessPendingAttributes  -Id null `
  -OrderId null `
  -RegistrationExpirationDate null `
  -FAutoRenew null

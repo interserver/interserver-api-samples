@@ -19,4 +19,3 @@ package org.openapitools.client.model
 case class DeleteGeoFirewallRule(
   rule_id: Int
 )
-

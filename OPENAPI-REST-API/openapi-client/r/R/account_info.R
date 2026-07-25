@@ -268,7 +268,7 @@ AccountInfo <- R6::R6Class(
         self$`oauthconfig` <- `oauthconfig_object`
       }
       if (!is.null(this_object$`oauthadapters`)) {
-        self$`oauthadapters` <- ApiClient$new()$deserializeObj(this_object$`oauthadapters`, "array[character]", loadNamespace("openapi"))
+        self$`oauthadapters` <- ApiClient$new()$deserializeObj(this_object$`oauthadapters`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`limits`)) {
         `limits_object` <- AccountInfoLimits$new()
@@ -319,7 +319,7 @@ AccountInfo <- R6::R6Class(
       self$`ip` <- this_object$`ip`
       self$`oauthproviders` <- AccountInfoOauthproviders$new()$fromJSON(jsonlite::toJSON(this_object$`oauthproviders`, auto_unbox = TRUE, digits = NA))
       self$`oauthconfig` <- AccountInfoOauthConfig$new()$fromJSON(jsonlite::toJSON(this_object$`oauthconfig`, auto_unbox = TRUE, digits = NA))
-      self$`oauthadapters` <- ApiClient$new()$deserializeObj(this_object$`oauthadapters`, "array[character]", loadNamespace("openapi"))
+      self$`oauthadapters` <- ApiClient$new()$deserializeObj(this_object$`oauthadapters`, "array[character]", loadNamespace("interserverapi"))
       self$`limits` <- AccountInfoLimits$new()$fromJSON(jsonlite::toJSON(this_object$`limits`, auto_unbox = TRUE, digits = NA))
       self$`language` <- this_object$`language`
       self$`countryCurrencies` <- AccountInfoCountryCurrencies$new()$fromJSON(jsonlite::toJSON(this_object$`countryCurrencies`, auto_unbox = TRUE, digits = NA))

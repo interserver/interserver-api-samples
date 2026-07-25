@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeServicesDomains = Initialize-PSOpenAPIToolsHomeServicesDomains  -Links null `
+$HomeServicesDomains = Initialize-InterserverApiHomeServicesDomains  -Links null `
  -Count 5
 ```
 

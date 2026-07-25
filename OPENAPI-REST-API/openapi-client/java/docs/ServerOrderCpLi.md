@@ -11,4 +11,8 @@ Control Panel options for the server order.
 |**_9** | [**ServerOrderControlPanel**](ServerOrderControlPanel.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

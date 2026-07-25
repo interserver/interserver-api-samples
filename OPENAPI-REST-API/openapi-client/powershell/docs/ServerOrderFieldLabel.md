@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderFieldLabel = Initialize-PSOpenAPIToolsServerOrderFieldLabel  -Name Bandwidth `
+$ServerOrderFieldLabel = Initialize-InterserverApiServerOrderFieldLabel  -Name Bandwidth `
  -Active 1
 ```
 

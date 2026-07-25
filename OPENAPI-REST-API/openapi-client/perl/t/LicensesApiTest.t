@@ -24,16 +24,17 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::LicensesApi');
+use_ok('InterServerAPI::LicensesApi');
 
-my $api = OpenAPIClient::LicensesApi->new();
-isa_ok($api, 'OpenAPIClient::LicensesApi');
+my $api = InterServerAPI::LicensesApi->new();
+isa_ok($api, 'InterServerAPI::LicensesApi');
 
 #
 # add_license test
 #
 # uncomment below and update the test
-#my $add_license_result = $api->add_license();
+#my $add_license_license_order_request = undef; # replace NULL with a proper value
+#my $add_license_result = $api->add_license(license_order_request => $add_license_license_order_request);
 
 #
 # get_license_info test
@@ -54,13 +55,6 @@ isa_ok($api, 'OpenAPIClient::LicensesApi');
 #
 # uncomment below and update the test
 #my $get_license_list_result = $api->get_license_list();
-
-#
-# get_license_order_cat_tag_info test
-#
-# uncomment below and update the test
-#my $get_license_order_cat_tag_info_cat_tag = undef; # replace NULL with a proper value
-#my $get_license_order_cat_tag_info_result = $api->get_license_order_cat_tag_info(cat_tag => $get_license_order_cat_tag_info_cat_tag);
 
 #
 # get_licenses_welcome_email test
@@ -94,7 +88,8 @@ isa_ok($api, 'OpenAPIClient::LicensesApi');
 # put_licenses test
 #
 # uncomment below and update the test
-#my $put_licenses_result = $api->put_licenses();
+#my $put_licenses_license_order_request = undef; # replace NULL with a proper value
+#my $put_licenses_result = $api->put_licenses(license_order_request => $put_licenses_license_order_request);
 
 #
 # update_license_info test

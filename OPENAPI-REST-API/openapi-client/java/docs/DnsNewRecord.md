@@ -15,4 +15,8 @@ Request data for a new DNS record.
 |**prio** | **Integer** | Priority |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

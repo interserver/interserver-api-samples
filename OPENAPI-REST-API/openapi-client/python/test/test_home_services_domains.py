@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_services_domains import HomeServicesDomains
+from interserver_api_client.models.home_services_domains import HomeServicesDomains
 
 class TestHomeServicesDomains(unittest.TestCase):
     """HomeServicesDomains unit test stubs"""
@@ -36,7 +36,7 @@ class TestHomeServicesDomains(unittest.TestCase):
         model = HomeServicesDomains()
         if include_optional:
             return HomeServicesDomains(
-                links = openapi_client.models.home_services_domains_links.HomeServicesDomainsLinks(
+                links = interserver_api_client.models.home_services_domains_links.HomeServicesDomainsLinks(
                     376114 = 'pimpmy.website', 
                     376503 = 'hostingenuity.com', 
                     592337 = 'detain.dev', ),

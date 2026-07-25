@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class VpsOrderTemplates(
   hyperv: Option[VpsOrderTemplatesHyperv] = None
 )
-

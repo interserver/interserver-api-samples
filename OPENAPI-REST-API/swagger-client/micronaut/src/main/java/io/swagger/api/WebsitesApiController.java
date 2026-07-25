@@ -6,13 +6,13 @@ import io.swagger.model.IdBuyIpBody;
 
 import io.swagger.model.IdMigrationBody;
 
-import io.swagger.model.InlineResponse20023;
-
-import io.swagger.model.InlineResponse20024;
-
 import io.swagger.model.InlineResponse20025;
 
 import io.swagger.model.InlineResponse20026;
+
+import io.swagger.model.InlineResponse20027;
+
+import io.swagger.model.InlineResponse20028;
 
 import io.swagger.model.InlineResponse401;
 
@@ -29,6 +29,10 @@ import io.swagger.model.Website;
 import io.swagger.model.WebsiteBackups;
 
 import io.swagger.model.WebsiteLoginResponse;
+
+import io.swagger.model.WebsiteOrderPostRequest;
+
+import io.swagger.model.WebsiteOrderPutRequest;
 
 import io.swagger.model.WebsiteRow;
 
@@ -48,9 +52,9 @@ import java.util.Map;
 public class WebsitesApiController implements WebsitesApi {
 
     @Override
-    public Single<HttpResponse<ServiceOrderPostResponse>> addWebsite() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addWebsite(@NotNull @Valid WebsiteOrderPostRequest body) {
         // TODO: Implement me
-        return WebsitesApi.super.addWebsite();
+        return WebsitesApi.super.addWebsite(body);
     }
 
     @Override
@@ -60,7 +64,7 @@ public class WebsitesApiController implements WebsitesApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20024>> getWebsiteBuyIp(Integer id) {
+    public Single<HttpResponse<InlineResponse20026>> getWebsiteBuyIp(Integer id) {
         // TODO: Implement me
         return WebsitesApi.super.getWebsiteBuyIp(id);
     }
@@ -108,25 +112,25 @@ public class WebsitesApiController implements WebsitesApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20025>> postWebsiteBuyIp(@NotNull @Valid IdBuyIpBody body, Integer id) {
+    public Single<HttpResponse<InlineResponse20027>> postWebsiteBuyIp(@NotNull @Valid IdBuyIpBody body, Integer id) {
         // TODO: Implement me
         return WebsitesApi.super.postWebsiteBuyIp(body, id);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20025>> postWebsiteBuyIp(@NotNull Map<String, String> ips, Integer id) {
+    public Single<HttpResponse<InlineResponse20027>> postWebsiteBuyIp(@NotNull Map<String, String> ips, Integer id) {
         // TODO: Implement me
         return WebsitesApi.super.postWebsiteBuyIp(ips, id);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20026>> postWebsiteMigration(@NotNull @Valid IdMigrationBody body, Integer id) {
+    public Single<HttpResponse<InlineResponse20028>> postWebsiteMigration(@NotNull @Valid IdMigrationBody body, Integer id) {
         // TODO: Implement me
         return WebsitesApi.super.postWebsiteMigration(body, id);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20026>> postWebsiteMigration(@NotNull String custPortal, @NotNull String regEmail, @NotNull String password, @NotNull String ctrlPanel, @NotNull String ftpUsername, @NotNull String ftpPassword, @NotNull String siteBusyMig, @NotNull String splReqMig, @NotNull String domainReg, @NotNull String dataMig, @NotNull String domainRegPortal, @NotNull String domainRegEmail, @NotNull String domainRegPassword, Integer id) {
+    public Single<HttpResponse<InlineResponse20028>> postWebsiteMigration(@NotNull String custPortal, @NotNull String regEmail, @NotNull String password, @NotNull String ctrlPanel, @NotNull String ftpUsername, @NotNull String ftpPassword, @NotNull String siteBusyMig, @NotNull String splReqMig, @NotNull String domainReg, @NotNull String dataMig, @NotNull String domainRegPortal, @NotNull String domainRegEmail, @NotNull String domainRegPassword, Integer id) {
         // TODO: Implement me
         return WebsitesApi.super.postWebsiteMigration(custPortal, regEmail, password, ctrlPanel, ftpUsername, ftpPassword, siteBusyMig, splReqMig, domainReg, dataMig, domainRegPortal, domainRegEmail, domainRegPassword, id);
     }
@@ -144,9 +148,9 @@ public class WebsitesApiController implements WebsitesApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> putWebsites() {
+    public Single<HttpResponse<Void>> putWebsites(@NotNull @Valid WebsiteOrderPutRequest body) {
         // TODO: Implement me
-        return WebsitesApi.super.putWebsites();
+        return WebsitesApi.super.putWebsites(body);
     }
 
     @Override
@@ -156,7 +160,7 @@ public class WebsitesApiController implements WebsitesApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20023>> webhostingCancel(String id) {
+    public Single<HttpResponse<InlineResponse20025>> webhostingCancel(String id) {
         // TODO: Implement me
         return WebsitesApi.super.webhostingCancel(id);
     }

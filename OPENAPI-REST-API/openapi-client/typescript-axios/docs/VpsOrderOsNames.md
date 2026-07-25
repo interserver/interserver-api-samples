@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsOrderOsNames } from './api';
+import { VpsOrderOsNames } from '@interserver/myadmin-client';
 
 const instance: VpsOrderOsNames = {
     opensuse,

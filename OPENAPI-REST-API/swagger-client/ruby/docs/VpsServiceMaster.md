@@ -1,4 +1,4 @@
-# SwaggerClient::VpsServiceMaster
+# InterserverApiClient::VpsServiceMaster
 
 ## Properties
 Name | Type | Description | Notes

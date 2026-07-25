@@ -1,8 +1,8 @@
-# openapi.model.SendMail
+# interserver_api.model.SendMail
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

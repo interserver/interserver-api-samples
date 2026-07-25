@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_name_server import DomainNameServer
+from interserver_api_client.models.domain_name_server import DomainNameServer
 
 class TestDomainNameServer(unittest.TestCase):
     """DomainNameServer unit test stubs"""

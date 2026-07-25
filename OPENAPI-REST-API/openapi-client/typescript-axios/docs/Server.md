@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { Server } from './api';
+import { Server } from '@interserver/myadmin-client';
 
 const instance: Server = {
     ipmiAuth,

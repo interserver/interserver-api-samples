@@ -24,4 +24,3 @@ case class TemplateRequest(
   /* Password for Root / Administrator Account. */
   password: Option[String] = None
 )
-

@@ -14,4 +14,8 @@ VPS Traffic Totals Section
 |**all** | [**VpsTrafficTotalsSectionResponse**](VpsTrafficTotalsSectionResponse.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

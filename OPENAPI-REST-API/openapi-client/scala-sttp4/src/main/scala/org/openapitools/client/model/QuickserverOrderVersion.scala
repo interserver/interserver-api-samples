@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class QuickserverOrderVersion(
   centosstream_8: Option[QuickserverOrderVersionCentosstream8] = None
 )
-

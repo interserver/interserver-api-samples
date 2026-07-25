@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderMemoryLi254 = Initialize-PSOpenAPIToolsServerOrderMemoryLi254  -Var65 null
+$ServerOrderMemoryLi254 = Initialize-InterserverApiServerOrderMemoryLi254  -Var65 null
 ```
 
 - Convert the resource to JSON

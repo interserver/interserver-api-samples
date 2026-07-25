@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.initiate_payment200_response import InitiatePayment200Response
+from interserver_api_client.models.initiate_payment200_response import InitiatePayment200Response
 
 class TestInitiatePayment200Response(unittest.TestCase):
     """InitiatePayment200Response unit test stubs"""

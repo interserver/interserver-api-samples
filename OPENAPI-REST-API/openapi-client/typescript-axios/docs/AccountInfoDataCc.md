@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoDataCc } from './api';
+import { AccountInfoDataCc } from '@interserver/myadmin-client';
 
 const instance: AccountInfoDataCc = {
     cc,

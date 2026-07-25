@@ -1,10 +1,11 @@
 package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse2004;
+import io.swagger.model.InlineResponse2005;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
 import io.swagger.model.License;
+import io.swagger.model.LicenseOrderRequest;
 import io.swagger.model.LicenseRow;
 import io.swagger.model.LicensesOrder;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -28,8 +29,9 @@ class LicensesApiControllerTest {
 
     @Test
     void addLicenseTest() {
+        LicenseOrderRequest body = null;
         try {
-            //TODO: api.addLicense().blockingGet();
+            //TODO: api.addLicense(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -59,16 +61,6 @@ class LicensesApiControllerTest {
     void getLicenseListTest() {
         try {
             //TODO: api.getLicenseList().blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
-    void getLicenseOrderCatTagInfoTest() {
-        String catTag = null;
-        try {
-            //TODO: api.getLicenseOrderCatTagInfo(catTag).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -116,8 +108,9 @@ class LicensesApiControllerTest {
 
     @Test
     void putLicensesTest() {
+        LicenseOrderRequest body = null;
         try {
-            //TODO: api.putLicenses().blockingGet();
+            //TODO: api.putLicenses(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

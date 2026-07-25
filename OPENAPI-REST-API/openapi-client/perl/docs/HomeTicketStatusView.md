@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::HomeTicketStatusView
+# InterServerAPI::Object::HomeTicketStatusView
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::HomeTicketStatusView;
+use InterServerAPI::Object::HomeTicketStatusView;
 ```
 
 ## Properties

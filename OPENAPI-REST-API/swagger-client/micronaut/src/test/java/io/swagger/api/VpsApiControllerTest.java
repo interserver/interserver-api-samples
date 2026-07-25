@@ -3,8 +3,8 @@ package io.swagger.api;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.HostnameObject;
 import io.swagger.model.IdBackupsBody2;
-import io.swagger.model.InlineResponse20011;
-import io.swagger.model.InlineResponse20022;
+import io.swagger.model.InlineResponse20012;
+import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.QueueResponse;
@@ -166,6 +166,16 @@ class VpsApiControllerTest {
     }
 
     @Test
+    void getVpsBackupTest() {
+        Integer id = null;
+        try {
+            //TODO: api.getVpsBackup(id).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
     void getVpsBackupsTest() {
         Integer id = null;
         String all = null;
@@ -197,6 +207,26 @@ class VpsApiControllerTest {
     }
 
     @Test
+    void getVpsChangeHostnameTest() {
+        Integer id = null;
+        try {
+            //TODO: api.getVpsChangeHostname(id).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void getVpsChangeRootPasswordTest() {
+        Integer id = null;
+        try {
+            //TODO: api.getVpsChangeRootPassword(id).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
     void getVpsChangeTimezoneTest() {
         Integer id = null;
         try {
@@ -211,6 +241,16 @@ class VpsApiControllerTest {
         Integer id = null;
         try {
             //TODO: api.getVpsInfo(id).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void getVpsInsertCdTest() {
+        Integer id = null;
+        try {
+            //TODO: api.getVpsInsertCd(id).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -240,6 +280,16 @@ class VpsApiControllerTest {
         Integer id = null;
         try {
             //TODO: api.getVpsReinstallOs(id).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void getVpsResetPasswordTest() {
+        Integer id = null;
+        try {
+            //TODO: api.getVpsResetPassword(id).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -300,16 +350,6 @@ class VpsApiControllerTest {
         String id = null;
         try {
             //TODO: api.getVpsWelcomeEmail(id).blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
-    void postVpsBackupTest() {
-        Integer id = null;
-        try {
-            //TODO: api.postVpsBackup(id).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -456,6 +496,16 @@ class VpsApiControllerTest {
     }
 
     @Test
+    void postVpsTrafficUsageTest() {
+        Integer id = null;
+        try {
+            //TODO: api.postVpsTrafficUsage(id).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
     void postVpsViewDesktopTest() {
         Integer id = null;
         try {
@@ -470,6 +520,16 @@ class VpsApiControllerTest {
         VpsOrderPutRequest body = null;
         try {
             //TODO: api.putVps(body).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void putVpsBuyHdSpaceTest() {
+        Integer id = null;
+        try {
+            //TODO: api.putVpsBuyHdSpace(id).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

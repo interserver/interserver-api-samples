@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The WebsiteServiceInfo model module.
  * @module model/WebsiteServiceInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsiteServiceInfo {
     /**

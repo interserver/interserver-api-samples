@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LoginServiceCounts = Initialize-PSOpenAPIToolsLoginServiceCounts  -Vps 205172 `
+$LoginServiceCounts = Initialize-InterserverApiLoginServiceCounts  -Vps 205172 `
  -Websites 205172 `
  -Servers 205172
 ```

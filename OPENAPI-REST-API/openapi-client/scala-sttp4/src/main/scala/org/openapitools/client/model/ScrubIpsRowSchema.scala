@@ -19,4 +19,3 @@ case class ScrubIpsRowSchema(
   scrub_ip_status: Option[String] = None,
   services_name: Option[String] = None
 )
-

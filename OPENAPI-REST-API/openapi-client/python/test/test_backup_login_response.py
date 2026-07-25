@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_login_response import BackupLoginResponse
+from interserver_api_client.models.backup_login_response import BackupLoginResponse
 
 class TestBackupLoginResponse(unittest.TestCase):
     """BackupLoginResponse unit test stubs"""

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.quickserver_addons_row import QuickserverAddonsRow
+from interserver_api_client.models.quickserver_addons_row import QuickserverAddonsRow
 
 # TODO update the JSON string below
 json = "{}"

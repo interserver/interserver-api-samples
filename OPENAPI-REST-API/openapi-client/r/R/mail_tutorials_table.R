@@ -114,7 +114,7 @@ MailTutorialsTable <- R6::R6Class(
         self$`title` <- this_object$`title`
       }
       if (!is.null(this_object$`rows`)) {
-        self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[MailTutorialsTableRow]", loadNamespace("openapi"))
+        self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[MailTutorialsTableRow]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -138,7 +138,7 @@ MailTutorialsTable <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`title` <- this_object$`title`
-      self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[MailTutorialsTableRow]", loadNamespace("openapi"))
+      self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[MailTutorialsTableRow]", loadNamespace("interserverapi"))
       self
     },
 

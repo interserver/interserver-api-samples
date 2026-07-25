@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CreateFilter
+# InterServerAPI::Object::CreateFilter
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CreateFilter;
+use InterServerAPI::Object::CreateFilter;
 ```
 
 ## Properties

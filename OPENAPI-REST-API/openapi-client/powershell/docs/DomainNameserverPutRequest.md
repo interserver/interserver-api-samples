@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainNameserverPutRequest = Initialize-PSOpenAPIToolsDomainNameserverPutRequest  -Nameserver null
+$DomainNameserverPutRequest = Initialize-InterserverApiDomainNameserverPutRequest  -Nameserver null
 ```
 
 - Convert the resource to JSON

@@ -11,11 +11,12 @@ import Foundation
 
 public struct InlineResponse20024: Codable {
 
-    /** A map of IP addresses to their current reverse DNS hostnames. */
-    public var ips: [String:String]?
+    public var success: Bool
+    public var text: String
 
-    public init(ips: [String:String]? = nil) {
-        self.ips = ips
+    public init(success: Bool, text: String) {
+        self.success = success
+        self.text = text
     }
 
 

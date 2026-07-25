@@ -24,16 +24,17 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::MailApi');
+use_ok('InterServerAPI::MailApi');
 
-my $api = OpenAPIClient::MailApi->new();
-isa_ok($api, 'OpenAPIClient::MailApi');
+my $api = InterServerAPI::MailApi->new();
+isa_ok($api, 'InterServerAPI::MailApi');
 
 #
 # add_mail test
 #
 # uncomment below and update the test
-#my $add_mail_result = $api->add_mail();
+#my $add_mail_mail_order_request = undef; # replace NULL with a proper value
+#my $add_mail_result = $api->add_mail(mail_order_request => $add_mail_mail_order_request);
 
 #
 # add_rule test
@@ -56,8 +57,8 @@ isa_ok($api, 'OpenAPIClient::MailApi');
 #
 # uncomment below and update the test
 #my $delete_mail_alert_id = undef; # replace NULL with a proper value
-#my $delete_mail_alert_alert_id = undef; # replace NULL with a proper value
-#my $delete_mail_alert_result = $api->delete_mail_alert(id => $delete_mail_alert_id, alert_id => $delete_mail_alert_alert_id);
+#my $delete_mail_alert_delete_mail_alert_request = undef; # replace NULL with a proper value
+#my $delete_mail_alert_result = $api->delete_mail_alert(id => $delete_mail_alert_id, delete_mail_alert_request => $delete_mail_alert_delete_mail_alert_request);
 
 #
 # delete_rule test
@@ -170,7 +171,8 @@ isa_ok($api, 'OpenAPIClient::MailApi');
 # put_mail test
 #
 # uncomment below and update the test
-#my $put_mail_result = $api->put_mail();
+#my $put_mail_mail_order_request = undef; # replace NULL with a proper value
+#my $put_mail_result = $api->put_mail(mail_order_request => $put_mail_mail_order_request);
 
 #
 # reset_mail_password test
@@ -209,6 +211,15 @@ isa_ok($api, 'OpenAPIClient::MailApi');
 # uncomment below and update the test
 #my $update_mail_info_id = undef; # replace NULL with a proper value
 #my $update_mail_info_result = $api->update_mail_info(id => $update_mail_info_id);
+
+#
+# update_rule test
+#
+# uncomment below and update the test
+#my $update_rule_id = undef; # replace NULL with a proper value
+#my $update_rule_rule = undef; # replace NULL with a proper value
+#my $update_rule_deny_rule_new = undef; # replace NULL with a proper value
+#my $update_rule_result = $api->update_rule(id => $update_rule_id, rule => $update_rule_rule, deny_rule_new => $update_rule_deny_rule_new);
 
 #
 # view_mail_log test

@@ -1,7 +1,8 @@
 package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse2003;
+import io.swagger.model.FloatingIpOrderRequest;
+import io.swagger.model.InlineResponse2004;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -25,8 +26,9 @@ class FloatingIpsApiControllerTest {
 
     @Test
     void addFloatingIpTest() {
+        FloatingIpOrderRequest body = null;
         try {
-            //TODO: api.addFloatingIp().blockingGet();
+            //TODO: api.addFloatingIp(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -103,8 +105,9 @@ class FloatingIpsApiControllerTest {
 
     @Test
     void putFloatingIpsTest() {
+        FloatingIpOrderRequest body = null;
         try {
-            //TODO: api.putFloatingIps().blockingGet();
+            //TODO: api.putFloatingIps(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

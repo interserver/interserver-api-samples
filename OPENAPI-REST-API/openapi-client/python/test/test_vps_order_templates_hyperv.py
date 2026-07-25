@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_order_templates_hyperv import VpsOrderTemplatesHyperv
+from interserver_api_client.models.vps_order_templates_hyperv import VpsOrderTemplatesHyperv
 
 class TestVpsOrderTemplatesHyperv(unittest.TestCase):
     """VpsOrderTemplatesHyperv unit test stubs"""
@@ -36,7 +36,7 @@ class TestVpsOrderTemplatesHyperv(unittest.TestCase):
         model = VpsOrderTemplatesHyperv()
         if include_optional:
             return VpsOrderTemplatesHyperv(
-                windows = openapi_client.models.vps_order_templates_hyperv_windows.VpsOrder_templates_hyperv_windows(
+                windows = interserver_api_client.models.vps_order_templates_hyperv_windows.VpsOrder_templates_hyperv_windows(
                     windows2019_standard = '2019 Standard', 
                     windows2022 = '2022', )
             )

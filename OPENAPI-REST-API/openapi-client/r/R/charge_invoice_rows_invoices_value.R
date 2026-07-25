@@ -239,7 +239,7 @@ ChargeInvoiceRowsInvoicesValue <- R6::R6Class(
         self$`invoices_date_formatted` <- this_object$`invoices_date_formatted`
       }
       if (!is.null(this_object$`paid_invoices`)) {
-        self$`paid_invoices` <- ApiClient$new()$deserializeObj(this_object$`paid_invoices`, "map(ChargeInvoiceRowsInvoicesValuePaidInvoicesValue)", loadNamespace("openapi"))
+        self$`paid_invoices` <- ApiClient$new()$deserializeObj(this_object$`paid_invoices`, "map(ChargeInvoiceRowsInvoicesValuePaidInvoicesValue)", loadNamespace("interserverapi"))
       }
       self
     },
@@ -274,7 +274,7 @@ ChargeInvoiceRowsInvoicesValue <- R6::R6Class(
       self$`invoices_currency` <- this_object$`invoices_currency`
       self$`currency_symbol` <- this_object$`currency_symbol`
       self$`invoices_date_formatted` <- this_object$`invoices_date_formatted`
-      self$`paid_invoices` <- ApiClient$new()$deserializeObj(this_object$`paid_invoices`, "map(ChargeInvoiceRowsInvoicesValuePaidInvoicesValue)", loadNamespace("openapi"))
+      self$`paid_invoices` <- ApiClient$new()$deserializeObj(this_object$`paid_invoices`, "map(ChargeInvoiceRowsInvoicesValuePaidInvoicesValue)", loadNamespace("interserverapi"))
       self
     },
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsDAData } from './api';
+import { VpsDAData } from '@interserver/myadmin-client';
 
 const instance: VpsDAData = {
     free,

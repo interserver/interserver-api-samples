@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JObject
 
   /**
    * BillingInvoiceList
@@ -18,8 +19,7 @@ package org.openapitools.client.model
    */
 case class BillingInvoiceList(
   /* Invoice rows returned for the account. */
-  rows: Option[Seq[Any]] = None,
+  rows: Option[Seq[org.json4s.JObject]] = None,
   /* Totals and summary data for the invoices list. */
-  summary: Option[Any] = None
+  summary: Option[org.json4s.JObject] = None
 )
-

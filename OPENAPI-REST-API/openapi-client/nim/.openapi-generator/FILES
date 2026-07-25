@@ -43,8 +43,6 @@ openapiclient/models/model_affiliate_dock_setup.nim
 openapiclient/models/model_affiliate_payment_setup.nim
 openapiclient/models/model_affiliate_traffic_row.nim
 openapiclient/models/model_any_type.nim
-openapiclient/models/model_asset_server.nim
-openapiclient/models/model_asset_server_cpu_inner.nim
 openapiclient/models/model_backup.nim
 openapiclient/models/model_backup_billing_details.nim
 openapiclient/models/model_backup_client_link.nim
@@ -62,7 +60,6 @@ openapiclient/models/model_backup_service_master.nim
 openapiclient/models/model_backups_order.nim
 openapiclient/models/model_backups_order_package_costs.nim
 openapiclient/models/model_backups_order_service_types.nim
-openapiclient/models/model_bandwidth.nim
 openapiclient/models/model_billing_add_cc_request.nim
 openapiclient/models/model_billing_invoice_detail.nim
 openapiclient/models/model_billing_invoice_list.nim
@@ -88,11 +85,6 @@ openapiclient/models/model_charge_invoice_rows_invoices_value.nim
 openapiclient/models/model_charge_invoice_rows_invoices_value_paid_invoices_value.nim
 openapiclient/models/model_charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.nim
 openapiclient/models/model_close_ticket_response_schema.nim
-openapiclient/models/model_config_ids.nim
-openapiclient/models/model_config_lists.nim
-openapiclient/models/model_control_panel.nim
-openapiclient/models/model_cpu.nim
-openapiclient/models/model_cpu_with_defaults.nim
 openapiclient/models/model_create_filter.nim
 openapiclient/models/model_create_filter201response.nim
 openapiclient/models/model_create_filter400response.nim
@@ -108,6 +100,7 @@ openapiclient/models/model_delete_filter400response.nim
 openapiclient/models/model_delete_filter500response.nim
 openapiclient/models/model_delete_firewall_rule.nim
 openapiclient/models/model_delete_geo_firewall_rule.nim
+openapiclient/models/model_delete_mail_alert_request.nim
 openapiclient/models/model_deny_rule_new.nim
 openapiclient/models/model_deny_rule_record.nim
 openapiclient/models/model_disable_scrub200response.nim
@@ -138,11 +131,11 @@ openapiclient/models/model_domain_nameserver_get_response_inner.nim
 openapiclient/models/model_domain_nameserver_post_request.nim
 openapiclient/models/model_domain_nameserver_put_request.nim
 openapiclient/models/model_domain_order.nim
+openapiclient/models/model_domain_order_request.nim
 openapiclient/models/model_domain_order_response.nim
 openapiclient/models/model_domain_order_response_attributes.nim
 openapiclient/models/model_domain_order_services.nim
 openapiclient/models/model_domain_order_services10001.nim
-openapiclient/models/model_domain_order_tld_services.nim
 openapiclient/models/model_domain_owner_contact.nim
 openapiclient/models/model_domain_prov_process_pending.nim
 openapiclient/models/model_domain_prov_process_pending_attributes.nim
@@ -158,12 +151,13 @@ openapiclient/models/model_email_address.nim
 openapiclient/models/model_email_address_name.nim
 openapiclient/models/model_enable_scrub200response.nim
 openapiclient/models/model_enable_scrub500response.nim
-openapiclient/models/model_field_label.nim
+openapiclient/models/model_floating_ip_order_request.nim
 openapiclient/models/model_floating_ips_cancel200response.nim
-openapiclient/models/model_form_values.nim
 openapiclient/models/model_generic_response.nim
 openapiclient/models/model_get_account_info401response.nim
+openapiclient/models/model_get_account_locales200response_value.nim
 openapiclient/models/model_get_account_tfa_setup200response.nim
+openapiclient/models/model_get_affiliate_signups200response.nim
 openapiclient/models/model_get_oauth_redirect200response.nim
 openapiclient/models/model_get_order_detail200response.nim
 openapiclient/models/model_get_order_detail200response_ips_inner.nim
@@ -180,7 +174,6 @@ openapiclient/models/model_get_scrub_ip_details200response_filter_firewall_filte
 openapiclient/models/model_get_scrub_ip_details200response_filter_firewall_rules_inner.nim
 openapiclient/models/model_get_scrub_ip_details200response_service_info.nim
 openapiclient/models/model_get_website_buy_ip200response.nim
-openapiclient/models/model_hard_drive.nim
 openapiclient/models/model_home.nim
 openapiclient/models/model_home_details.nim
 openapiclient/models/model_home_details_modules.nim
@@ -207,10 +200,6 @@ openapiclient/models/model_home_ticket_status.nim
 openapiclient/models/model_home_ticket_status_view.nim
 openapiclient/models/model_hostname_object.nim
 openapiclient/models/model_initiate_payment200response.nim
-openapiclient/models/model_inline_object.nim
-openapiclient/models/model_invoice.nim
-openapiclient/models/model_invoice_row.nim
-openapiclient/models/model_ip_block.nim
 openapiclient/models/model_ip_limit_range.nim
 openapiclient/models/model_ip_object.nim
 openapiclient/models/model_license.nim
@@ -219,6 +208,7 @@ openapiclient/models/model_license_client_link.nim
 openapiclient/models/model_license_extra_info_tables.nim
 openapiclient/models/model_license_ip_info.nim
 openapiclient/models/model_license_ip_info_row.nim
+openapiclient/models/model_license_order_request.nim
 openapiclient/models/model_license_row.nim
 openapiclient/models/model_license_service_info.nim
 openapiclient/models/model_license_service_type.nim
@@ -255,6 +245,7 @@ openapiclient/models/model_mail_extra_info_table_row.nim
 openapiclient/models/model_mail_log.nim
 openapiclient/models/model_mail_log_entry.nim
 openapiclient/models/model_mail_order.nim
+openapiclient/models/model_mail_order_request.nim
 openapiclient/models/model_mail_row.nim
 openapiclient/models/model_mail_schema.nim
 openapiclient/models/model_mail_schema_extra_info_tables.nim
@@ -267,16 +258,14 @@ openapiclient/models/model_mail_stats_type_volume_ip.nim
 openapiclient/models/model_mail_stats_type_volume_to.nim
 openapiclient/models/model_mail_tutorials_table.nim
 openapiclient/models/model_mail_tutorials_table_row.nim
-openapiclient/models/model_memory_option.nim
 openapiclient/models/model_module_settings.nim
 openapiclient/models/model_modules.nim
 openapiclient/models/model_monthly_counts.nim
 openapiclient/models/model_object.nim
-openapiclient/models/model_operating_system.nim
 openapiclient/models/model_password_request.nim
+openapiclient/models/model_patch_billing_credit_card_verify_request.nim
 openapiclient/models/model_patch_oauth_two_factor200response.nim
 openapiclient/models/model_patch_oauth_two_factor_request.nim
-openapiclient/models/model_payment_invoice_rows.nim
 openapiclient/models/model_place_buy_now_server_request.nim
 openapiclient/models/model_place_scrub_order201response.nim
 openapiclient/models/model_place_scrub_order201response_order_details.nim
@@ -287,6 +276,8 @@ openapiclient/models/model_post_website_buy_ip200response.nim
 openapiclient/models/model_post_website_buy_ip_request.nim
 openapiclient/models/model_post_website_migration200response.nim
 openapiclient/models/model_post_website_migration_request.nim
+openapiclient/models/model_put_scrub_ips200response.nim
+openapiclient/models/model_qs_order_request.nim
 openapiclient/models/model_queue_response.nim
 openapiclient/models/model_quickserver.nim
 openapiclient/models/model_quickserver_addons.nim
@@ -310,8 +301,6 @@ openapiclient/models/model_quickserver_service_extra.nim
 openapiclient/models/model_quickserver_service_info.nim
 openapiclient/models/model_quickserver_service_master.nim
 openapiclient/models/model_quickservers_cancel200response.nim
-openapiclient/models/model_raid_option.nim
-openapiclient/models/model_region.nim
 openapiclient/models/model_reply_ticket_request.nim
 openapiclient/models/model_reply_ticket_response_schema.nim
 openapiclient/models/model_restore_request.nim
@@ -331,6 +320,8 @@ openapiclient/models/model_server.nim
 openapiclient/models/model_server_asset.nim
 openapiclient/models/model_server_assets.nim
 openapiclient/models/model_server_billing_details.nim
+openapiclient/models/model_server_bulk_ipmi_power_response.nim
+openapiclient/models/model_server_bulk_ipmi_power_response_results_inner.nim
 openapiclient/models/model_server_client_link.nim
 openapiclient/models/model_server_extra_info_tables.nim
 openapiclient/models/model_server_ipmi_live_info.nim
@@ -353,7 +344,6 @@ openapiclient/models/model_server_order_cpu_li.nim
 openapiclient/models/model_server_order_field_label.nim
 openapiclient/models/model_server_order_field_labels.nim
 openapiclient/models/model_server_order_form_values.nim
-openapiclient/models/model_server_order_get_response.nim
 openapiclient/models/model_server_order_ip.nim
 openapiclient/models/model_server_order_ips_li.nim
 openapiclient/models/model_server_order_memory.nim
@@ -361,6 +351,8 @@ openapiclient/models/model_server_order_memory_li.nim
 openapiclient/models/model_server_order_memory_li254.nim
 openapiclient/models/model_server_order_os.nim
 openapiclient/models/model_server_order_os_li.nim
+openapiclient/models/model_server_order_post_request.nim
+openapiclient/models/model_server_order_post_request_hd.nim
 openapiclient/models/model_server_order_raid.nim
 openapiclient/models/model_server_row.nim
 openapiclient/models/model_server_service_info.nim
@@ -378,6 +370,7 @@ openapiclient/models/model_service_types.nim
 openapiclient/models/model_services.nim
 openapiclient/models/model_services_info.nim
 openapiclient/models/model_ssl_cancel200response.nim
+openapiclient/models/model_ssl_order_request.nim
 openapiclient/models/model_status_monthly_breakdown.nim
 openapiclient/models/model_success_text_response.nim
 openapiclient/models/model_template_request.nim
@@ -436,7 +429,6 @@ openapiclient/models/model_vps_service_master.nim
 openapiclient/models/model_vps_snapshot.nim
 openapiclient/models/model_vps_template_row.nim
 openapiclient/models/model_vps_templates_list.nim
-openapiclient/models/model_vps_traffic_data_data_response.nim
 openapiclient/models/model_vps_traffic_data_data_section_response.nim
 openapiclient/models/model_vps_traffic_data_data_section_response_inner.nim
 openapiclient/models/model_vps_traffic_data_section_response.nim
@@ -457,6 +449,8 @@ openapiclient/models/model_website_billing_details.nim
 openapiclient/models/model_website_client_link.nim
 openapiclient/models/model_website_extra_info_tables.nim
 openapiclient/models/model_website_login_response.nim
+openapiclient/models/model_website_order_post_request.nim
+openapiclient/models/model_website_order_put_request.nim
 openapiclient/models/model_website_row.nim
 openapiclient/models/model_website_service_info.nim
 openapiclient/models/model_website_service_master.nim

@@ -13,4 +13,8 @@ Ordering metadata for domain registration and transfers.
 |**tldServices** | **Object** | Map of TLDs to domain service IDs. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

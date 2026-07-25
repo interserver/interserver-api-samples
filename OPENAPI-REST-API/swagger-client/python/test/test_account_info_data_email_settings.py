@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.account_info_data_email_settings import AccountInfoDataEmailSettings  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.account_info_data_email_settings import AccountInfoDataEmailSettings  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestAccountInfoDataEmailSettings(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestAccountInfoDataEmailSettings(unittest.TestCase):
     def testAccountInfoDataEmailSettings(self):
         """Test AccountInfoDataEmailSettings"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.account_info_data_email_settings.AccountInfoDataEmailSettings()  # noqa: E501
+        # model = interserver_api_client.models.account_info_data_email_settings.AccountInfoDataEmailSettings()  # noqa: E501
         pass
 
 

@@ -1,4 +1,4 @@
-# openapi::ServerOrderConfigIds
+# interserverapi::ServerOrderConfigIds
 
 Configuration IDs for the server order.
 

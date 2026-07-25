@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_services_webhosting import HomeServicesWebhosting
+from interserver_api_client.models.home_services_webhosting import HomeServicesWebhosting
 
 class TestHomeServicesWebhosting(unittest.TestCase):
     """HomeServicesWebhosting unit test stubs"""
@@ -36,7 +36,7 @@ class TestHomeServicesWebhosting(unittest.TestCase):
         model = HomeServicesWebhosting()
         if include_optional:
             return HomeServicesWebhosting(
-                links = openapi_client.models.home_services_webhosting_links.HomeServicesWebhostingLinks(
+                links = interserver_api_client.models.home_services_webhosting_links.HomeServicesWebhostingLinks(
                     376359 = 'Doefamily.com', 
                     376473 = 'fancytush.com', 
                     386218 = 'admincoded.net', ),

@@ -19,4 +19,3 @@ case class LoginSubmissionExampleGRecaptchaResponse(
   _rawValue: Option[String] = None,
   _value: Option[String] = None
 )
-

@@ -11,4 +11,8 @@ Distribution selection.
 |**ubuntu** | [**QuickserverOrderDistroSelUbuntu**](QuickserverOrderDistroSelUbuntu.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

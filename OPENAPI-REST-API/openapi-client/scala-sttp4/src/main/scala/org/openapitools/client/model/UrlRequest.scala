@@ -19,4 +19,3 @@ package org.openapitools.client.model
 case class UrlRequest(
   url: Option[String] = None
 )
-

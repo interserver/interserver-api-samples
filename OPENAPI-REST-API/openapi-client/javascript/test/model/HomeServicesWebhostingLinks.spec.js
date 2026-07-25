@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.HomeServicesWebhostingLinks();
+    instance = new InterserverApiClient.HomeServicesWebhostingLinks();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('HomeServicesWebhostingLinks', function() {
     it('should create an instance of HomeServicesWebhostingLinks', function() {
       // uncomment below and update the code to test HomeServicesWebhostingLinks
-      //var instance = new InterServerManagementApi.HomeServicesWebhostingLinks();
-      //expect(instance).to.be.a(InterServerManagementApi.HomeServicesWebhostingLinks);
+      //var instance = new InterserverApiClient.HomeServicesWebhostingLinks();
+      //expect(instance).to.be.a(InterserverApiClient.HomeServicesWebhostingLinks);
     });
 
     it('should have the property _376359 (base name: "376359")', function() {
       // uncomment below and update the code to test the property _376359
-      //var instance = new InterServerManagementApi.HomeServicesWebhostingLinks();
+      //var instance = new InterserverApiClient.HomeServicesWebhostingLinks();
       //expect(instance).to.be();
     });
 
     it('should have the property _376473 (base name: "376473")', function() {
       // uncomment below and update the code to test the property _376473
-      //var instance = new InterServerManagementApi.HomeServicesWebhostingLinks();
+      //var instance = new InterserverApiClient.HomeServicesWebhostingLinks();
       //expect(instance).to.be();
     });
 
     it('should have the property _386218 (base name: "386218")', function() {
       // uncomment below and update the code to test the property _386218
-      //var instance = new InterServerManagementApi.HomeServicesWebhostingLinks();
+      //var instance = new InterserverApiClient.HomeServicesWebhostingLinks();
       //expect(instance).to.be();
     });
 

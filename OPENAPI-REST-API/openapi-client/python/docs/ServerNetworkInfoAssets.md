@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.server_network_info_assets import ServerNetworkInfoAssets
+from interserver_api_client.models.server_network_info_assets import ServerNetworkInfoAssets
 
 # TODO update the JSON string below
 json = "{}"

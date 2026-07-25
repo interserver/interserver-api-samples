@@ -36,17 +36,19 @@ import myadmin-client-kotlin-server.infrastructure.ApiPrincipal
 
 import io.swagger.server.models.BuyItNowList
 import io.swagger.server.models.ChargeInvoiceRows
-import io.swagger.server.models.InlineResponse20019
-import io.swagger.server.models.InlineResponse20020
-import io.swagger.server.models.InlineResponse20027
+import io.swagger.server.models.InlineResponse20021
+import io.swagger.server.models.InlineResponse20022
+import io.swagger.server.models.InlineResponse20029
 import io.swagger.server.models.InlineResponse401
 import io.swagger.server.models.OrderBuyNowServerBody
 import io.swagger.server.models.ReverseDnsEntries
 import io.swagger.server.models.Server
+import io.swagger.server.models.ServerBulkIpmiPowerResponse
 import io.swagger.server.models.ServerIpmiLiveInfo
 import io.swagger.server.models.ServerIpmiLiveRequest
 import io.swagger.server.models.ServerIpmiPowerRequest
 import io.swagger.server.models.ServerOrder
+import io.swagger.server.models.ServerOrderPostRequest
 import io.swagger.server.models.ServerRow
 import io.swagger.server.models.ServersBuyNowError
 import io.swagger.server.models.ServersBuyNowResponse
@@ -674,13 +676,31 @@ fun Route.ServersApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
-    put<Paths.putServers> {  _: Paths.putServers ->
+    get<Paths.serverBulkIpmiPowerGet> {  _: Paths.serverBulkIpmiPowerGet ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "results" : [ {
+    "id" : 2313,
+    "asset" : 5432,
+    "text" : "Chassis Power is on"
+  }, {
+    "id" : 2314,
+    "error" : "Service is not active"
+  }, {
+    "id" : 2315,
+    "error" : "Invalid Service Passed"
+  } ]
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
     }
     get<Paths.serverIpmiLiveGet> {  _: Paths.serverIpmiLiveGet ->
         val principal = call.authentication.principal<ApiPrincipal>()

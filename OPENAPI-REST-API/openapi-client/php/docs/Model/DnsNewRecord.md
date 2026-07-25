@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Name part of record |
-**type** | [**\Interserver\MyAdmin\Model\DnsRecordType**](DnsRecordType.md) |  |
+**type** | [**\Interserver\\MyAdmin\Model\DnsRecordType**](DnsRecordType.md) |  |
 **content** | **string** | Content of record |
 **ttl** | **int** | Time-to-live | [optional] [default to 86400]
 **prio** | **int** | Priority | [optional] [default to 0]

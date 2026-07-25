@@ -14,44 +14,24 @@ class InlineResponse2009(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, type: str=None, redirect: str=None, action: str=None, method: str=None, items: object=None, text: str=None):  # noqa: E501
+    def __init__(self, success: bool=None, text: str=None):  # noqa: E501
         """InlineResponse2009 - a model defined in Swagger
 
-        :param type: The type of this InlineResponse2009.  # noqa: E501
-        :type type: str
-        :param redirect: The redirect of this InlineResponse2009.  # noqa: E501
-        :type redirect: str
-        :param action: The action of this InlineResponse2009.  # noqa: E501
-        :type action: str
-        :param method: The method of this InlineResponse2009.  # noqa: E501
-        :type method: str
-        :param items: The items of this InlineResponse2009.  # noqa: E501
-        :type items: object
+        :param success: The success of this InlineResponse2009.  # noqa: E501
+        :type success: bool
         :param text: The text of this InlineResponse2009.  # noqa: E501
         :type text: str
         """
         self.swagger_types = {
-            'type': str,
-            'redirect': str,
-            'action': str,
-            'method': str,
-            'items': object,
+            'success': bool,
             'text': str
         }
 
         self.attribute_map = {
-            'type': 'type',
-            'redirect': 'redirect',
-            'action': 'action',
-            'method': 'method',
-            'items': 'items',
+            'success': 'success',
             'text': 'text'
         }
-        self._type = type
-        self._redirect = redirect
-        self._action = action
-        self._method = method
-        self._items = items
+        self._success = success
         self._text = text
 
     @classmethod
@@ -66,131 +46,32 @@ class InlineResponse2009(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def type(self) -> str:
-        """Gets the type of this InlineResponse2009.
+    def success(self) -> bool:
+        """Gets the success of this InlineResponse2009.
 
-        The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).  # noqa: E501
 
-        :return: The type of this InlineResponse2009.
-        :rtype: str
+        :return: The success of this InlineResponse2009.
+        :rtype: bool
         """
-        return self._type
+        return self._success
 
-    @type.setter
-    def type(self, type: str):
-        """Sets the type of this InlineResponse2009.
+    @success.setter
+    def success(self, success: bool):
+        """Sets the success of this InlineResponse2009.
 
-        The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).  # noqa: E501
 
-        :param type: The type of this InlineResponse2009.
-        :type type: str
+        :param success: The success of this InlineResponse2009.
+        :type success: bool
         """
-        allowed_values = ["redirect", "submit", "single"]  # noqa: E501
-        if type not in allowed_values:
-            raise ValueError(
-                "Invalid value for `type` ({0}), must be one of {1}"
-                .format(type, allowed_values)
-            )
+        if success is None:
+            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
 
-        self._type = type
-
-    @property
-    def redirect(self) -> str:
-        """Gets the redirect of this InlineResponse2009.
-
-        URL to redirect the user to for payment (when type is `redirect`).  # noqa: E501
-
-        :return: The redirect of this InlineResponse2009.
-        :rtype: str
-        """
-        return self._redirect
-
-    @redirect.setter
-    def redirect(self, redirect: str):
-        """Sets the redirect of this InlineResponse2009.
-
-        URL to redirect the user to for payment (when type is `redirect`).  # noqa: E501
-
-        :param redirect: The redirect of this InlineResponse2009.
-        :type redirect: str
-        """
-
-        self._redirect = redirect
-
-    @property
-    def action(self) -> str:
-        """Gets the action of this InlineResponse2009.
-
-        Form action URL (when type is `submit`).  # noqa: E501
-
-        :return: The action of this InlineResponse2009.
-        :rtype: str
-        """
-        return self._action
-
-    @action.setter
-    def action(self, action: str):
-        """Sets the action of this InlineResponse2009.
-
-        Form action URL (when type is `submit`).  # noqa: E501
-
-        :param action: The action of this InlineResponse2009.
-        :type action: str
-        """
-
-        self._action = action
-
-    @property
-    def method(self) -> str:
-        """Gets the method of this InlineResponse2009.
-
-        HTTP method for the form submission (when type is `submit`).  # noqa: E501
-
-        :return: The method of this InlineResponse2009.
-        :rtype: str
-        """
-        return self._method
-
-    @method.setter
-    def method(self, method: str):
-        """Sets the method of this InlineResponse2009.
-
-        HTTP method for the form submission (when type is `submit`).  # noqa: E501
-
-        :param method: The method of this InlineResponse2009.
-        :type method: str
-        """
-
-        self._method = method
-
-    @property
-    def items(self) -> object:
-        """Gets the items of this InlineResponse2009.
-
-        Form field name-value pairs to submit (when type is `submit`).  # noqa: E501
-
-        :return: The items of this InlineResponse2009.
-        :rtype: object
-        """
-        return self._items
-
-    @items.setter
-    def items(self, items: object):
-        """Sets the items of this InlineResponse2009.
-
-        Form field name-value pairs to submit (when type is `submit`).  # noqa: E501
-
-        :param items: The items of this InlineResponse2009.
-        :type items: object
-        """
-
-        self._items = items
+        self._success = success
 
     @property
     def text(self) -> str:
         """Gets the text of this InlineResponse2009.
 
-        Status or result text.  # noqa: E501
 
         :return: The text of this InlineResponse2009.
         :rtype: str
@@ -201,10 +82,11 @@ class InlineResponse2009(Model):
     def text(self, text: str):
         """Sets the text of this InlineResponse2009.
 
-        Status or result text.  # noqa: E501
 
         :param text: The text of this InlineResponse2009.
         :type text: str
         """
+        if text is None:
+            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
 
         self._text = text

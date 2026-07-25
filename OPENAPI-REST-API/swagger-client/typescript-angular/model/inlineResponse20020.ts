@@ -11,6 +11,10 @@
  */
 
 export interface InlineResponse20020 { 
-    success: boolean;
-    text: string;
+    _continue?: boolean;
+    errors?: Array<string>;
+    serviceType?: number;
+    serviceCost?: number;
+    originalCost?: number;
+    repeatServiceCost?: number;
 }

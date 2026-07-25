@@ -10,6 +10,8 @@
 package myadmin-client-go-server
 
 type InlineResponse2005 struct {
-	// The URL to redirect the user to for OAuth authentication.
-	RedirectUrl string `json:"redirect_url,omitempty"`
+
+	Success bool `json:"success"`
+
+	Text string `json:"text"`
 }

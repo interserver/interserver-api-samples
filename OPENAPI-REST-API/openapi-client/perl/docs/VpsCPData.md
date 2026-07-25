@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsCPData
+# InterServerAPI::Object::VpsCPData
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsCPData;
+use InterServerAPI::Object::VpsCPData;
 ```
 
 ## Properties

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.floating_ips_api import FloatingIPsApi
+from interserver_api_client.api.floating_ips_api import FloatingIPsApi
 
 
 class TestFloatingIPsApi(unittest.TestCase):
@@ -30,70 +30,70 @@ class TestFloatingIPsApi(unittest.TestCase):
     def test_add_floating_ip(self) -> None:
         """Test case for add_floating_ip
 
-        Place Floating IP Order
+        Place a real Floating IP order, create billing records, and provision the service
         """
         pass
 
     def test_floating_ips_cancel(self) -> None:
         """Test case for floating_ips_cancel
 
-        Cancel Floating IP
+        Cancel a Floating IP service and release the IP — destructive, billing stops
         """
         pass
 
     def test_get_floating_ip_info(self) -> None:
         """Test case for get_floating_ip_info
 
-        View Floating IP
+        Fetch full details for one Floating IP service, including current target IP
         """
         pass
 
     def test_get_floating_ip_invoices(self) -> None:
         """Test case for get_floating_ip_invoices
 
-        Get Floating IP Invoices
+        List all billing invoices charged against a specific Floating IP service
         """
         pass
 
     def test_get_floating_ips_list(self) -> None:
         """Test case for get_floating_ips_list
 
-        List Floating IPs
+        List all Floating IP services on the authenticated customer's account
         """
         pass
 
     def test_get_floating_ips_welcome_email(self) -> None:
         """Test case for get_floating_ips_welcome_email
 
-        Resend Floating IPs Welcome Email
+        Resend the Floating IP welcome / setup email to the account contact
         """
         pass
 
     def test_get_new_floating_ip(self) -> None:
         """Test case for get_new_floating_ip
 
-        Get Floating IP Ordering Information
+        Get pricing and service-type options for ordering a new Floating IP
         """
         pass
 
     def test_post_floating_ips_change_ip(self) -> None:
         """Test case for post_floating_ips_change_ip
 
-        Change Floating IP Target
+        Re-point a Floating IP to a different target IP on one of the customer's services
         """
         pass
 
     def test_put_floating_ips(self) -> None:
         """Test case for put_floating_ips
 
-        Validate Floating IP Order
+        Validate a Floating IP order and price it without charging the customer
         """
         pass
 
     def test_update_floating_ip_info(self) -> None:
         """Test case for update_floating_ip_info
 
-        Update Floating IP
+        Update a Floating IP service's editable settings (label / metadata)
         """
         pass
 

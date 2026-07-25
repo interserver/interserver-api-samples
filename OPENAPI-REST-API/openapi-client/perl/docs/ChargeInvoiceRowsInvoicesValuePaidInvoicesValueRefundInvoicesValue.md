@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue
+# InterServerAPI::Object::ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue;
+use InterServerAPI::Object::ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue;
 ```
 
 ## Properties

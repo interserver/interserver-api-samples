@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainClientLink model module.
  * @module model/DomainClientLink
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainClientLink {
     /**

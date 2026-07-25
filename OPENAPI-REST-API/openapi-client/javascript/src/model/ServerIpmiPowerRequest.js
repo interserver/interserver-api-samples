@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerIpmiPowerRequest model module.
  * @module model/ServerIpmiPowerRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerIpmiPowerRequest {
     /**
@@ -136,7 +136,13 @@ ServerIpmiPowerRequest['ActionEnum'] = {
      * value: "soft"
      * @const
      */
-    "soft": "soft"
+    "soft": "soft",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 

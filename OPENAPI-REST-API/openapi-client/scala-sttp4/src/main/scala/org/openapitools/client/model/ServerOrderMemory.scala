@@ -41,4 +41,3 @@ case class ServerOrderMemory(
   /* Display of monthly memory price. */
   monthly_price_display: Option[String] = None
 )
-

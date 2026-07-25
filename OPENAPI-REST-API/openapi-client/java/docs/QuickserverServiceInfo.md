@@ -35,4 +35,8 @@ Core service record for a QuickServer including ID, status, IP, OS, and billing 
 |**qsPlatform** | **String** | Platform (null) |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

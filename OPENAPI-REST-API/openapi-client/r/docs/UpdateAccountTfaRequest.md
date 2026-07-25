@@ -1,4 +1,4 @@
-# openapi::UpdateAccountTfaRequest
+# interserverapi::UpdateAccountTfaRequest
 
 
 ## Properties

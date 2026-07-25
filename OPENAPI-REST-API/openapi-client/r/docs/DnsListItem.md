@@ -1,4 +1,4 @@
-# openapi::DnsListItem
+# interserverapi::DnsListItem
 
 A DNS zone entry with its ID, domain name, and record content.
 

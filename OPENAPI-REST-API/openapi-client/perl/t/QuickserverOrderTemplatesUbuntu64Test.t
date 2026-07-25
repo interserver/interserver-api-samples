@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::QuickserverOrderTemplatesUbuntu64');
+use_ok('InterServerAPI::Object::QuickserverOrderTemplatesUbuntu64');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::QuickserverOrderTemplatesUbuntu64->new();
+#my $instance = InterServerAPI::Object::QuickserverOrderTemplatesUbuntu64->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::QuickserverOrderTemplatesUbuntu64');
+#isa_ok($instance, 'InterServerAPI::Object::QuickserverOrderTemplatesUbuntu64');
 
 
 done_testing();

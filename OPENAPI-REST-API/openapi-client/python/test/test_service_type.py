@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.service_type import ServiceType
+from interserver_api_client.models.service_type import ServiceType
 
 class TestServiceType(unittest.TestCase):
     """ServiceType unit test stubs"""

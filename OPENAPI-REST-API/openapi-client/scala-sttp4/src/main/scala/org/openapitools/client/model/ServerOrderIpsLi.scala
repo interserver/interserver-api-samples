@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class ServerOrderIpsLi(
   `9`: Option[ServerOrderIP] = None
 )
-

@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsOrderLocationStock
 void main() {
-  final instance = VpsOrderLocationStockBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsOrderLocationStock? instance = /* VpsOrderLocationStock(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsOrderLocationStock, () {
-    // VpsOrderLocationStock1 n1
+    // Optional<VpsOrderLocationStock1?> n1
     test('to test the property `n1`', () async {
       // TODO
     });

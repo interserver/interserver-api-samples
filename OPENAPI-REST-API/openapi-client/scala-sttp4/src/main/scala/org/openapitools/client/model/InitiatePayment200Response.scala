@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JObject
 
 case class InitiatePayment200Response(
   /* The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result). */
@@ -22,18 +23,36 @@ case class InitiatePayment200Response(
   /* HTTP method for the form submission (when type is `submit`). */
   method: Option[String] = None,
   /* Form field name-value pairs to submit (when type is `submit`). */
-  items: Option[Any] = None,
+  items: Option[org.json4s.JObject] = None,
   /* Status or result text. */
   text: Option[String] = None
 )
-
 object InitiatePayment200ResponseEnums {
 
-  type `Type` = `Type`.Value
-  object `Type` extends Enumeration {
-    val Redirect = Value("redirect")
-    val Submit = Value("submit")
-    val Single = Value("single")
-  }
+  sealed trait `Type`
+  object `Type` {
+    case object Redirect extends `Type`
+    case object Submit extends `Type`
+    case object Single extends `Type`
 
+    import org.json4s._
+
+    implicit object `Type`Serializer extends Serializer[`Type`] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), `Type`] = {
+        case (TypeInfo(clazz, _), json) if classOf[`Type`].isAssignableFrom(clazz) =>
+          json match {
+            case JString("redirect") => Redirect
+            case JString("submit") => Submit
+            case JString("single") => Single
+            case other => throw new MappingException(s"Invalid `Type`: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case Redirect => JString("redirect")
+        case Submit => JString("submit")
+        case Single => JString("single")
+      }
+    }
+  }
 }

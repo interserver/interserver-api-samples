@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainTechContact
+# InterserverApiClient.DomainTechContact
 
 ## Properties
 

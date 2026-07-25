@@ -16,10 +16,10 @@
 #' \dontrun{
 #' ####################  AddVps  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_vps_order_post_request <- VpsOrderPostRequest$new("osDistro_example", 123, "kvm", 123, 123, "osVersion_example", "hostname_example", "rootpass_example", "none", "coupon_example", "comment_example") # VpsOrderPostRequest |  (Optional)
 #'
-#' #Place VPS Order
+#' #Place a new VPS order, create the invoice, and queue provisioning
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -39,12 +39,12 @@
 #'
 #' ####################  DeleteVpsBackup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_file <- "file_example" # character | The backup filename to delete.
 #' var_all <- "all_example" # character | Set to `1` to list all backups across all services, not just the ones for the given VPS. (Optional)
 #'
-#' #Delete VPS Backup
+#' #Permanently delete a VPS backup file by name (irreversible)
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -64,10 +64,10 @@
 #'
 #' ####################  DoVpsBlockSmtp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number.
 #'
-#' #Blocks SMTP
+#' #Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -87,10 +87,10 @@
 #'
 #' ####################  DoVpsDisableCd  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number.
 #'
-#' #Disable CD Drive
+#' #Remove the virtual CD/DVD device entirely from the VPS configuration
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -110,10 +110,10 @@
 #'
 #' ####################  DoVpsDisableQuota  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number.
 #'
-#' #Disable Quotas
+#' #Disable per-user disk quota enforcement inside the VPS guest OS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -133,10 +133,10 @@
 #'
 #' ####################  DoVpsEjectCd  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number.
 #'
-#' #Eject CD Drive
+#' #Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -156,10 +156,10 @@
 #'
 #' ####################  DoVpsEnableQuota  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number.
 #'
-#' #Enable Quotas
+#' #Enable per-user disk quota enforcement inside the VPS guest OS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -179,10 +179,10 @@
 #'
 #' ####################  DoVpsRestart  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number.
 #'
-#' #Restart VPS
+#' #Reboot the VPS — preferred over stop+start for software changes
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -202,10 +202,10 @@
 #'
 #' ####################  DoVpsStart  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number.
 #'
-#' #Start VPS
+#' #Power on a stopped VPS instance
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -225,10 +225,10 @@
 #'
 #' ####################  DoVpsStop  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number.
 #'
-#' #Stop VPS
+#' #Power off a running VPS — billing continues until cancellation
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -248,12 +248,12 @@
 #'
 #' ####################  DownloadVpsBackup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_download_qs_backup_request <- downloadQsBackup_request$new("file_example") # DownloadQsBackupRequest | 
 #' var_all <- "all_example" # character | Set to `1` to list all backups across all services, not just the ones for the given VPS. (Optional)
 #'
-#' #Download VPS Backup
+#' #Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -273,9 +273,9 @@
 #'
 #' ####################  GetNewVps  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #VPS Ordering Information
+#' #Get the VPS order catalog — platforms, OS templates, locations, pricing
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -293,13 +293,36 @@
 #' dput(result)
 #'
 #'
+#' ####################  GetVpsBackup  ####################
+#'
+#' library(interserverapi)
+#' var_id <- 56 # integer | VPS ID number
+#'
+#' #Trigger a manual on-demand snapshot/backup of the VPS
+#' api_instance <- VPSApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$GetVpsBackup(var_iddata_file = "result.txt")
+#' result <- api_instance$GetVpsBackup(var_id)
+#' dput(result)
+#'
+#'
 #' ####################  GetVpsBackups  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_all <- "all_example" # character | Set to `1` to list all backups across all services, not just the ones for the given VPS. (Optional)
 #'
-#' #Get VPS Backups List
+#' #List existing backups for the VPS across Swift, MinIO, and ZFS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -319,10 +342,10 @@
 #'
 #' ####################  GetVpsBuyHdSpace  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #HD Space Addon Info
+#' #Get current additional disk size and per-GB monthly cost for the VPS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -339,10 +362,10 @@
 #'
 #' ####################  GetVpsBuyIp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Additional IP Addon Info
+#' #Read current additional IPs, cap, and per-IP monthly cost for the VPS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -357,12 +380,52 @@
 #' api_instance$GetVpsBuyIp(var_id)
 #'
 #'
-#' ####################  GetVpsChangeTimezone  ####################
+#' ####################  GetVpsChangeHostname  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Get Timezone Info
+#' #Read the VPS's current hostname before changing it
+#' api_instance <- VPSApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' api_instance$GetVpsChangeHostname(var_id)
+#'
+#'
+#' ####################  GetVpsChangeRootPassword  ####################
+#'
+#' library(interserverapi)
+#' var_id <- 56 # integer | VPS ID number
+#'
+#' #Pre-flight check before changing the VPS root password
+#' api_instance <- VPSApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' api_instance$GetVpsChangeRootPassword(var_id)
+#'
+#'
+#' ####################  GetVpsChangeTimezone  ####################
+#'
+#' library(interserverapi)
+#' var_id <- 56 # integer | VPS ID number
+#'
+#' #List IANA timezones supported by the VPS guest OS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -382,10 +445,10 @@
 #'
 #' ####################  GetVpsInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Get VPS Order
+#' #Get full details for one VPS — IPs, hostname, OS, slices, status, addons
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -403,12 +466,32 @@
 #' dput(result)
 #'
 #'
-#' ####################  GetVpsInvoices  ####################
+#' ####################  GetVpsInsertCd  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Get VPS Invoices
+#' #List ISO templates that can be mounted in the VPS virtual CD drive
+#' api_instance <- VPSApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' api_instance$GetVpsInsertCd(var_id)
+#'
+#'
+#' ####################  GetVpsInvoices  ####################
+#'
+#' library(interserverapi)
+#' var_id <- 56 # integer | VPS ID number
+#'
+#' #List all billing invoices associated with this specific VPS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -428,9 +511,9 @@
 #'
 #' ####################  GetVpsList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List VPS Orders
+#' #List all VPS services on the customer's account
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -450,10 +533,10 @@
 #'
 #' ####################  GetVpsReinstallOs  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #VPS Reinstall OS Options
+#' #List OS templates compatible with this VPS's hypervisor for reinstall
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -471,12 +554,32 @@
 #' dput(result)
 #'
 #'
-#' ####################  GetVpsReverseDns  ####################
+#' ####################  GetVpsResetPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Reverse DNS Info
+#' #Pre-flight check before resetting the VPS root password to a random value
+#' api_instance <- VPSApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' api_instance$GetVpsResetPassword(var_id)
+#'
+#'
+#' ####################  GetVpsReverseDns  ####################
+#'
+#' library(interserverapi)
+#' var_id <- 56 # integer | VPS ID number
+#'
+#' #Read the current PTR (reverse-DNS) records for every IP on the VPS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -496,10 +599,10 @@
 #'
 #' ####################  GetVpsSetupVnc  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #VNC Setup Info
+#' #Read current VNC console connection info for the VPS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -516,10 +619,10 @@
 #'
 #' ####################  GetVpsSlices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Slice Upgrade Info
+#' #Read current slice count, min/max range, and prorated per-slice upgrade cost
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -536,10 +639,10 @@
 #'
 #' ####################  GetVpsTrafficUsage  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Get Traffic Usage
+#' #Read bandwidth traffic usage data for the VPS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -559,10 +662,10 @@
 #'
 #' ####################  GetVpsViewDesktop  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Get View Desktop Info
+#' #Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -579,10 +682,10 @@
 #'
 #' ####################  GetVpsWelcomeEmail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "4813" # character | VPS ID
 #'
-#' #Resend VPS Welcome Email
+#' #Resend the welcome email containing VPS IP, hostname, and root credentials
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -600,35 +703,12 @@
 #' dput(result)
 #'
 #'
-#' ####################  PostVpsBackup  ####################
-#'
-#' library(openapi)
-#' var_id <- 56 # integer | VPS ID number
-#'
-#' #Start a VPS Backup
-#' api_instance <- VPSApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$PostVpsBackup(var_iddata_file = "result.txt")
-#' result <- api_instance$PostVpsBackup(var_id)
-#' dput(result)
-#'
-#'
 #' ####################  PostVpsBuyHdSpace  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Purchase HD Space Addon
+#' #Buy or resize the VPS additional-disk addon and create a prorated invoice
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -645,10 +725,10 @@
 #'
 #' ####################  PostVpsBuyIp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Purchase Additional IP
+#' #Purchase one additional IP for the VPS and create the invoice
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -665,11 +745,11 @@
 #'
 #' ####################  PostVpsChangeHostname  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_hostname <- "hostname_example" # character |  (Optional)
 #'
-#' #Update VPS Hostname
+#' #Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -689,11 +769,11 @@
 #'
 #' ####################  PostVpsChangeRootPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_password <- "password_example" # character | 
 #'
-#' #Change VPS Root Password
+#' #Set a specific new root/Administrator password on the VPS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -713,11 +793,11 @@
 #'
 #' ####################  PostVpsChangeTimezone  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_timezone <- "timezone_example" # character | The time zone
 #'
-#' #Change VPS Timezone
+#' #Set the system timezone on the VPS guest OS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -737,11 +817,11 @@
 #'
 #' ####################  PostVpsChangeWebuzoPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_password <- "password_example" # character | 
 #'
-#' #Change Webuzo Password
+#' #Rotate the Webuzo control panel admin password (re-auth required)
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -761,11 +841,11 @@
 #'
 #' ####################  PostVpsInsertCd  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_url <- "url_example" # character |  (Optional)
 #'
-#' #Insert CD in VPS
+#' #Mount an ISO image in the VPS virtual CD drive from a URL
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -785,13 +865,13 @@
 #'
 #' ####################  PostVpsReinstallOs  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_template <- "template_example" # character | OS Template Filename
 #' var_local_password <- "local_password_example" # character | Password for this account.
 #' var_password <- "password_example" # character | Password for Root / Administrator Account. (Optional)
 #'
-#' #Reinstall VPS OS
+#' #Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -811,10 +891,10 @@
 #'
 #' ####################  PostVpsResetPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Reset VPS Password
+#' #Reset the VPS root password to a server-generated random value
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -834,11 +914,11 @@
 #'
 #' ####################  PostVpsRestore  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_restore_request <- RestoreRequest$new("backup_example", "password_example") # RestoreRequest | VPS Restore request
 #'
-#' #Restore VPS from Backup
+#' #Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -858,11 +938,11 @@
 #'
 #' ####################  PostVpsReverseDns  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #' var_reverse_dns_entries <- ReverseDnsEntries$new(c(key = TODO)) # ReverseDnsEntries | 
 #'
-#' #Update Reverse DNS
+#' #Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -882,10 +962,10 @@
 #'
 #' ####################  PostVpsSetupVnc  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Setup VNC
+#' #Provision or refresh the VNC console endpoint for the VPS
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -905,10 +985,10 @@
 #'
 #' ####################  PostVpsSlices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Purchase Slice Upgrade
+#' #Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -923,12 +1003,32 @@
 #' api_instance$PostVpsSlices(var_id)
 #'
 #'
-#' ####################  PostVpsViewDesktop  ####################
+#' ####################  PostVpsTrafficUsage  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Update View Desktop
+#' #Search/filter VPS bandwidth usage with custom criteria (reserved)
+#' api_instance <- VPSApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' api_instance$PostVpsTrafficUsage(var_id)
+#'
+#'
+#' ####################  PostVpsViewDesktop  ####################
+#'
+#' library(interserverapi)
+#' var_id <- 56 # integer | VPS ID number
+#'
+#' #Refresh the remote-desktop session connection info after IP/hostname changes
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -945,10 +1045,10 @@
 #'
 #' ####################  PutVps  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_vps_order_put_request <- VpsOrderPutRequest$new("osDistro_example", 123, "kvm", 123, 123, "osVersion_example", "hostname_example", "rootpass_example", "none", "coupon_example", "comment_example") # VpsOrderPutRequest |  (Optional)
 #'
-#' #Validate VPS Order
+#' #Validate a VPS order configuration and quote the cost — dry run, no charge
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -966,12 +1066,32 @@
 #' dput(result)
 #'
 #'
+#' ####################  PutVpsBuyHdSpace  ####################
+#'
+#' library(interserverapi)
+#' var_id <- 56 # integer | VPS ID number
+#'
+#' #Preview cost to set additional VPS disk to a target GB size — dry run
+#' api_instance <- VPSApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' api_instance$PutVpsBuyHdSpace(var_id)
+#'
+#'
 #' ####################  UpdateVpsInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "id_example" # character | VPS ID number.
 #'
-#' #Update VPS Order
+#' #Update editable settings on a VPS service record
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -991,10 +1111,10 @@
 #'
 #' ####################  VPSCancel  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | VPS ID number
 #'
-#' #Cancel VPS Service
+#' #Cancel a VPS service at the end of the current billing cycle
 #' api_instance <- VPSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -1034,7 +1154,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place VPS Order
+    #' Place a new VPS order, create the invoice, and queue provisioning
     #'
     #' @param vps_order_post_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
@@ -1056,7 +1176,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place VPS Order
+    #' Place a new VPS order, create the invoice, and queue provisioning
     #'
     #' @param vps_order_post_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
@@ -1152,7 +1272,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete VPS Backup
+    #' Permanently delete a VPS backup file by name (irreversible)
     #'
     #' @param id VPS ID number
     #' @param file The backup filename to delete.
@@ -1176,7 +1296,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete VPS Backup
+    #' Permanently delete a VPS backup file by name (irreversible)
     #'
     #' @param id VPS ID number
     #' @param file The backup filename to delete.
@@ -1295,7 +1415,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Blocks SMTP
+    #' Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1317,7 +1437,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Blocks SMTP
+    #' Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1415,7 +1535,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable CD Drive
+    #' Remove the virtual CD/DVD device entirely from the VPS configuration
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1437,7 +1557,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable CD Drive
+    #' Remove the virtual CD/DVD device entirely from the VPS configuration
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1535,7 +1655,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable Quotas
+    #' Disable per-user disk quota enforcement inside the VPS guest OS
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1557,7 +1677,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable Quotas
+    #' Disable per-user disk quota enforcement inside the VPS guest OS
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1655,7 +1775,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Eject CD Drive
+    #' Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1677,7 +1797,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Eject CD Drive
+    #' Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1775,7 +1895,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Enable Quotas
+    #' Enable per-user disk quota enforcement inside the VPS guest OS
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1797,7 +1917,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Enable Quotas
+    #' Enable per-user disk quota enforcement inside the VPS guest OS
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1895,7 +2015,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Restart VPS
+    #' Reboot the VPS — preferred over stop+start for software changes
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1917,7 +2037,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Restart VPS
+    #' Reboot the VPS — preferred over stop+start for software changes
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -2015,7 +2135,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Start VPS
+    #' Power on a stopped VPS instance
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -2037,7 +2157,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Start VPS
+    #' Power on a stopped VPS instance
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -2135,7 +2255,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Stop VPS
+    #' Power off a running VPS — billing continues until cancellation
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -2157,7 +2277,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Stop VPS
+    #' Power off a running VPS — billing continues until cancellation
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -2255,7 +2375,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Download VPS Backup
+    #' Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
     #'
     #' @param id VPS ID number
     #' @param download_qs_backup_request 
@@ -2279,7 +2399,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Download VPS Backup
+    #' Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
     #'
     #' @param id VPS ID number
     #' @param download_qs_backup_request 
@@ -2402,7 +2522,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' VPS Ordering Information
+    #' Get the VPS order catalog — platforms, OS templates, locations, pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2423,7 +2543,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' VPS Ordering Information
+    #' Get the VPS order catalog — platforms, OS templates, locations, pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2508,7 +2628,127 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get VPS Backups List
+    #' Trigger a manual on-demand snapshot/backup of the VPS
+    #'
+    #' @param id VPS ID number
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return QueueResponse
+    GetVpsBackup = function(id, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$GetVpsBackupWithHttpInfo(id, data_file = data_file, ..., .parse = .parse)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Trigger a manual on-demand snapshot/backup of the VPS
+    #'
+    #' @param id VPS ID number
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return API response (QueueResponse) with additional information such as HTTP status code, headers
+    GetVpsBackupWithHttpInfo = function(id, data_file = NULL, ..., .parse = TRUE) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling VPSApi$GetVpsBackup, `id` is not nullable")
+      }
+
+      local_var_url_path <- "/vps/{id}/backup"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "QueueResponse"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' List existing backups for the VPS across Swift, MinIO, and ZFS
     #'
     #' @param id VPS ID number
     #' @param all (optional) Set to `1` to list all backups across all services, not just the ones for the given VPS.
@@ -2531,7 +2771,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get VPS Backups List
+    #' List existing backups for the VPS across Swift, MinIO, and ZFS
     #'
     #' @param id VPS ID number
     #' @param all (optional) Set to `1` to list all backups across all services, not just the ones for the given VPS.
@@ -2639,7 +2879,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' HD Space Addon Info
+    #' Get current additional disk size and per-GB monthly cost for the VPS
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -2659,7 +2899,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' HD Space Addon Info
+    #' Get current additional disk size and per-GB monthly cost for the VPS
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -2740,7 +2980,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Additional IP Addon Info
+    #' Read current additional IPs, cap, and per-IP monthly cost for the VPS
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -2760,7 +3000,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Additional IP Addon Info
+    #' Read current additional IPs, cap, and per-IP monthly cost for the VPS
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -2841,7 +3081,209 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Timezone Info
+    #' Read the VPS's current hostname before changing it
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return void
+    GetVpsChangeHostname = function(id, ...) {
+      local_var_response <- self$GetVpsChangeHostnameWithHttpInfo(id, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Read the VPS's current hostname before changing it
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (void) with additional information such as HTTP status code, headers
+    GetVpsChangeHostnameWithHttpInfo = function(id, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling VPSApi$GetVpsChangeHostname, `id` is not nullable")
+      }
+
+      local_var_url_path <- "/vps/{id}/change_hostname"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        local_var_resp$content <- NULL
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' Pre-flight check before changing the VPS root password
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return void
+    GetVpsChangeRootPassword = function(id, ...) {
+      local_var_response <- self$GetVpsChangeRootPasswordWithHttpInfo(id, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Pre-flight check before changing the VPS root password
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (void) with additional information such as HTTP status code, headers
+    GetVpsChangeRootPasswordWithHttpInfo = function(id, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling VPSApi$GetVpsChangeRootPassword, `id` is not nullable")
+      }
+
+      local_var_url_path <- "/vps/{id}/change_root_password"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        local_var_resp$content <- NULL
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' List IANA timezones supported by the VPS guest OS
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -2863,7 +3305,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Timezone Info
+    #' List IANA timezones supported by the VPS guest OS
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -2961,7 +3403,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get VPS Order
+    #' Get full details for one VPS — IPs, hostname, OS, slices, status, addons
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -2983,7 +3425,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get VPS Order
+    #' Get full details for one VPS — IPs, hostname, OS, slices, status, addons
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3081,7 +3523,108 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get VPS Invoices
+    #' List ISO templates that can be mounted in the VPS virtual CD drive
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return void
+    GetVpsInsertCd = function(id, ...) {
+      local_var_response <- self$GetVpsInsertCdWithHttpInfo(id, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' List ISO templates that can be mounted in the VPS virtual CD drive
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (void) with additional information such as HTTP status code, headers
+    GetVpsInsertCdWithHttpInfo = function(id, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling VPSApi$GetVpsInsertCd, `id` is not nullable")
+      }
+
+      local_var_url_path <- "/vps/{id}/insert_cd"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        local_var_resp$content <- NULL
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' List all billing invoices associated with this specific VPS
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3103,7 +3646,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get VPS Invoices
+    #' List all billing invoices associated with this specific VPS
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3201,7 +3744,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' List VPS Orders
+    #' List all VPS services on the customer's account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -3222,7 +3765,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' List VPS Orders
+    #' List all VPS services on the customer's account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -3307,7 +3850,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' VPS Reinstall OS Options
+    #' List OS templates compatible with this VPS's hypervisor for reinstall
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3329,7 +3872,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' VPS Reinstall OS Options
+    #' List OS templates compatible with this VPS's hypervisor for reinstall
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3427,7 +3970,108 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reverse DNS Info
+    #' Pre-flight check before resetting the VPS root password to a random value
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return void
+    GetVpsResetPassword = function(id, ...) {
+      local_var_response <- self$GetVpsResetPasswordWithHttpInfo(id, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Pre-flight check before resetting the VPS root password to a random value
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (void) with additional information such as HTTP status code, headers
+    GetVpsResetPasswordWithHttpInfo = function(id, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling VPSApi$GetVpsResetPassword, `id` is not nullable")
+      }
+
+      local_var_url_path <- "/vps/{id}/reset_password"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        local_var_resp$content <- NULL
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' Read the current PTR (reverse-DNS) records for every IP on the VPS
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3449,7 +4093,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reverse DNS Info
+    #' Read the current PTR (reverse-DNS) records for every IP on the VPS
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3547,7 +4191,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' VNC Setup Info
+    #' Read current VNC console connection info for the VPS
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -3567,7 +4211,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' VNC Setup Info
+    #' Read current VNC console connection info for the VPS
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -3648,7 +4292,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Slice Upgrade Info
+    #' Read current slice count, min/max range, and prorated per-slice upgrade cost
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -3668,7 +4312,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Slice Upgrade Info
+    #' Read current slice count, min/max range, and prorated per-slice upgrade cost
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -3749,7 +4393,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Traffic Usage
+    #' Read bandwidth traffic usage data for the VPS
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3771,7 +4415,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Traffic Usage
+    #' Read bandwidth traffic usage data for the VPS
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3869,7 +4513,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get View Desktop Info
+    #' Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -3889,7 +4533,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get View Desktop Info
+    #' Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -3970,7 +4614,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend VPS Welcome Email
+    #' Resend the welcome email containing VPS IP, hostname, and root credentials
     #'
     #' @param id VPS ID
     #' @param data_file (optional) name of the data file to save the result
@@ -3992,7 +4636,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend VPS Welcome Email
+    #' Resend the welcome email containing VPS IP, hostname, and root credentials
     #'
     #' @param id VPS ID
     #' @param data_file (optional) name of the data file to save the result
@@ -4090,127 +4734,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Start a VPS Backup
-    #'
-    #' @param id VPS ID number
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return QueueResponse
-    PostVpsBackup = function(id, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$PostVpsBackupWithHttpInfo(id, data_file = data_file, ..., .parse = .parse)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Start a VPS Backup
-    #'
-    #' @param id VPS ID number
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return API response (QueueResponse) with additional information such as HTTP status code, headers
-    PostVpsBackupWithHttpInfo = function(id, data_file = NULL, ..., .parse = TRUE) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`id`)) {
-        stop("Missing required parameter `id`.")
-      }
-
-      if (!missing(`id`) && is.null(`id`)) {
-        stop("Invalid value for `id` when calling VPSApi$PostVpsBackup, `id` is not nullable")
-      }
-
-      local_var_url_path <- "/vps/{id}/backup"
-      if (!missing(`id`)) {
-        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
-      }
-
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-        if (!.parse) {
-          local_var_resp$content <- local_var_resp$response_as_text()
-          return(local_var_resp)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "QueueResponse"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Purchase HD Space Addon
+    #' Buy or resize the VPS additional-disk addon and create a prorated invoice
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -4230,7 +4754,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Purchase HD Space Addon
+    #' Buy or resize the VPS additional-disk addon and create a prorated invoice
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -4311,7 +4835,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Purchase Additional IP
+    #' Purchase one additional IP for the VPS and create the invoice
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -4331,7 +4855,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Purchase Additional IP
+    #' Purchase one additional IP for the VPS and create the invoice
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -4412,7 +4936,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update VPS Hostname
+    #' Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
     #'
     #' @param id VPS ID number
     #' @param hostname (optional) No description
@@ -4435,7 +4959,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update VPS Hostname
+    #' Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
     #'
     #' @param id VPS ID number
     #' @param hostname (optional) No description
@@ -4539,7 +5063,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change VPS Root Password
+    #' Set a specific new root/Administrator password on the VPS
     #'
     #' @param id VPS ID number
     #' @param password 
@@ -4562,7 +5086,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change VPS Root Password
+    #' Set a specific new root/Administrator password on the VPS
     #'
     #' @param id VPS ID number
     #' @param password 
@@ -4670,7 +5194,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change VPS Timezone
+    #' Set the system timezone on the VPS guest OS
     #'
     #' @param id VPS ID number
     #' @param timezone The time zone
@@ -4693,7 +5217,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change VPS Timezone
+    #' Set the system timezone on the VPS guest OS
     #'
     #' @param id VPS ID number
     #' @param timezone The time zone
@@ -4801,7 +5325,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Webuzo Password
+    #' Rotate the Webuzo control panel admin password (re-auth required)
     #'
     #' @param id VPS ID number
     #' @param password 
@@ -4824,7 +5348,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Webuzo Password
+    #' Rotate the Webuzo control panel admin password (re-auth required)
     #'
     #' @param id VPS ID number
     #' @param password 
@@ -4932,7 +5456,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Insert CD in VPS
+    #' Mount an ISO image in the VPS virtual CD drive from a URL
     #'
     #' @param id VPS ID number
     #' @param url (optional) No description
@@ -4955,7 +5479,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Insert CD in VPS
+    #' Mount an ISO image in the VPS virtual CD drive from a URL
     #'
     #' @param id VPS ID number
     #' @param url (optional) No description
@@ -5059,7 +5583,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reinstall VPS OS
+    #' Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
     #'
     #' @param id VPS ID number
     #' @param template OS Template Filename
@@ -5084,7 +5608,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reinstall VPS OS
+    #' Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
     #'
     #' @param id VPS ID number
     #' @param template OS Template Filename
@@ -5211,7 +5735,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reset VPS Password
+    #' Reset the VPS root password to a server-generated random value
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -5233,7 +5757,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reset VPS Password
+    #' Reset the VPS root password to a server-generated random value
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -5331,7 +5855,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Restore VPS from Backup
+    #' Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
     #'
     #' @param id VPS ID number
     #' @param restore_request VPS Restore request
@@ -5354,7 +5878,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Restore VPS from Backup
+    #' Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
     #'
     #' @param id VPS ID number
     #' @param restore_request VPS Restore request
@@ -5467,7 +5991,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Reverse DNS
+    #' Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
     #'
     #' @param id VPS ID number
     #' @param reverse_dns_entries 
@@ -5490,7 +6014,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Reverse DNS
+    #' Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
     #'
     #' @param id VPS ID number
     #' @param reverse_dns_entries 
@@ -5603,7 +6127,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Setup VNC
+    #' Provision or refresh the VNC console endpoint for the VPS
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -5625,7 +6149,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Setup VNC
+    #' Provision or refresh the VNC console endpoint for the VPS
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -5723,7 +6247,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Purchase Slice Upgrade
+    #' Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -5743,7 +6267,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Purchase Slice Upgrade
+    #' Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -5824,7 +6348,108 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update View Desktop
+    #' Search/filter VPS bandwidth usage with custom criteria (reserved)
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return void
+    PostVpsTrafficUsage = function(id, ...) {
+      local_var_response <- self$PostVpsTrafficUsageWithHttpInfo(id, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Search/filter VPS bandwidth usage with custom criteria (reserved)
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (void) with additional information such as HTTP status code, headers
+    PostVpsTrafficUsageWithHttpInfo = function(id, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling VPSApi$PostVpsTrafficUsage, `id` is not nullable")
+      }
+
+      local_var_url_path <- "/vps/{id}/traffic_usage"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "POST",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        local_var_resp$content <- NULL
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' Refresh the remote-desktop session connection info after IP/hostname changes
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -5844,7 +6469,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update View Desktop
+    #' Refresh the remote-desktop session connection info after IP/hostname changes
     #'
     #' @param id VPS ID number
     #' @param ... Other optional arguments
@@ -5925,7 +6550,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate VPS Order
+    #' Validate a VPS order configuration and quote the cost — dry run, no charge
     #'
     #' @param vps_order_put_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
@@ -5947,7 +6572,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate VPS Order
+    #' Validate a VPS order configuration and quote the cost — dry run, no charge
     #'
     #' @param vps_order_put_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
@@ -6043,7 +6668,108 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update VPS Order
+    #' Preview cost to set additional VPS disk to a target GB size — dry run
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return void
+    PutVpsBuyHdSpace = function(id, ...) {
+      local_var_response <- self$PutVpsBuyHdSpaceWithHttpInfo(id, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Preview cost to set additional VPS disk to a target GB size — dry run
+    #'
+    #' @param id VPS ID number
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (void) with additional information such as HTTP status code, headers
+    PutVpsBuyHdSpaceWithHttpInfo = function(id, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling VPSApi$PutVpsBuyHdSpace, `id` is not nullable")
+      }
+
+      local_var_url_path <- "/vps/{id}/buy_hd_space"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "PUT",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        local_var_resp$content <- NULL
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' Update editable settings on a VPS service record
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -6065,7 +6791,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update VPS Order
+    #' Update editable settings on a VPS service record
     #'
     #' @param id VPS ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -6163,7 +6889,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel VPS Service
+    #' Cancel a VPS service at the end of the current billing cycle
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -6185,7 +6911,7 @@ VPSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel VPS Service
+    #' Cancel a VPS service at the end of the current billing cycle
     #'
     #' @param id VPS ID number
     #' @param data_file (optional) name of the data file to save the result

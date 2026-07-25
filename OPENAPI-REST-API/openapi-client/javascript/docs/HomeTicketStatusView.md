@@ -1,4 +1,4 @@
-# InterServerManagementApi.HomeTicketStatusView
+# InterserverApiClient.HomeTicketStatusView
 
 ## Properties
 

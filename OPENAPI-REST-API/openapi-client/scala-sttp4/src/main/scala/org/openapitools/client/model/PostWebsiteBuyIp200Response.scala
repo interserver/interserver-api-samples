@@ -16,4 +16,3 @@ case class PostWebsiteBuyIp200Response(
   message: Option[String] = None,
   success: Option[Boolean] = None
 )
-

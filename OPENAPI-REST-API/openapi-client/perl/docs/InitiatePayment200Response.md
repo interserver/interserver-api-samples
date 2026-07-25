@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::InitiatePayment200Response
+# InterServerAPI::Object::InitiatePayment200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::InitiatePayment200Response;
+use InterServerAPI::Object::InitiatePayment200Response;
 ```
 
 ## Properties

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_traffic_totals_resposne import VpsTrafficTotalsResposne
+from interserver_api_client.models.vps_traffic_totals_resposne import VpsTrafficTotalsResposne
 
 class TestVpsTrafficTotalsResposne(unittest.TestCase):
     """VpsTrafficTotalsResposne unit test stubs"""

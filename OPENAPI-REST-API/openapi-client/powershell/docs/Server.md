@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Server = Initialize-PSOpenAPIToolsServer  -IpmiAuth null `
+$Server = Initialize-InterserverApiServer  -IpmiAuth null `
  -ClientLinks null `
  -BillingDetails null `
  -CustCurrency null `

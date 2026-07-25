@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_memory import ServerOrderMemory
+from interserver_api_client.models.server_order_memory import ServerOrderMemory
 
 class TestServerOrderMemory(unittest.TestCase):
     """ServerOrderMemory unit test stubs"""

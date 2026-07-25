@@ -16,4 +16,3 @@ case class CreateFilter201Response(
   success: Option[Boolean] = None,
   text: Option[String] = None
 )
-

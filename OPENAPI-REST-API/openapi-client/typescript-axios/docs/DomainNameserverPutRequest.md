@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainNameserverPutRequest } from './api';
+import { DomainNameserverPutRequest } from '@interserver/myadmin-client';
 
 const instance: DomainNameserverPutRequest = {
     nameserver,

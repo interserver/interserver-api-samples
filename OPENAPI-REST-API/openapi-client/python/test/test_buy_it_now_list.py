@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.buy_it_now_list import BuyItNowList
+from interserver_api_client.models.buy_it_now_list import BuyItNowList
 
 class TestBuyItNowList(unittest.TestCase):
     """BuyItNowList unit test stubs"""

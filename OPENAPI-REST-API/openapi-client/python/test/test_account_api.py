@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.account_api import AccountApi
+from interserver_api_client.api.account_api import AccountApi
 
 
 class TestAccountApi(unittest.TestCase):
@@ -27,122 +27,115 @@ class TestAccountApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_change_account_username(self) -> None:
-        """Test case for change_account_username
-
-        Change Account Username
-        """
-        pass
-
     def test_delete_account_oauth_name(self) -> None:
         """Test case for delete_account_oauth_name
 
-        Unlink OAuth Account
+        Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
         """
         pass
 
     def test_delete_account_tfa(self) -> None:
         """Test case for delete_account_tfa
 
-        Disable Two-Factor Authentication
+        Disable two-factor authentication and remove the TOTP secret
         """
         pass
 
     def test_delete_ip_limit(self) -> None:
         """Test case for delete_ip_limit
 
-        Remove IP Access Restriction
+        Remove one IP range from the account allow-list (PATCH on /account/iplimits)
         """
         pass
 
     def test_get_account_info(self) -> None:
         """Test case for get_account_info
 
-        Retrieve Account Details
+        Read full account profile, billing address, and security settings
         """
         pass
 
     def test_get_account_tfa_setup(self) -> None:
         """Test case for get_account_tfa_setup
 
-        Get Two-Factor Setup Data
+        Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
         """
         pass
 
     def test_get_home(self) -> None:
         """Test case for get_home
 
-        Get Home Data
+        Aggregate dashboard payload — service counts, recent activity, alerts
         """
         pass
 
     def test_get_search(self) -> None:
         """Test case for get_search
 
-        Search Autocomplete
+        Global autocomplete across the caller's services, domains, and records
         """
         pass
 
     def test_logout(self) -> None:
         """Test case for logout
 
-        Log Out
+        Destroy the current API/web session — token becomes unusable
         """
         pass
 
     def test_logout_account_oauth(self) -> None:
         """Test case for logout_account_oauth
 
-        Logout of OAuth
+        Sign out of the upstream OAuth provider session (does not unlink the account)
         """
         pass
 
     def test_update_account_api_key(self) -> None:
         """Test case for update_account_api_key
 
-        Generate New API Key
+        Rotate the account's REST/MCP API key — old key is invalidated immediately
         """
         pass
 
     def test_update_account_features(self) -> None:
         """Test case for update_account_features
 
-        Update Account Feature Flags
+        Toggle account-wide safety locks for password reset and OS reinstall
         """
         pass
 
     def test_update_account_info(self) -> None:
         """Test case for update_account_info
 
-        Update Account Information
+        Update contact and billing-address fields on the customer profile
         """
         pass
 
     def test_update_account_ip_limits(self) -> None:
         """Test case for update_account_ip_limits
 
-        Add IP Access Restriction
+        Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
         """
         pass
 
     def test_update_account_password(self) -> None:
         """Test case for update_account_password
 
-        Change Account Password
+        Change the account login password (verifies current, kills other sessions)
         """
         pass
 
     def test_update_account_ssh_key(self) -> None:
         """Test case for update_account_ssh_key
 
-        Update SSH Keys
+        Set the account-level SSH public key auto-installed on new VPS/dedicated orders
         """
         pass
 
     def test_update_account_tfa(self) -> None:
         """Test case for update_account_tfa
 
-        Enable Two-Factor Authentication
+        Verify TOTP code and enable two-factor authentication on the account
         """
         pass
 

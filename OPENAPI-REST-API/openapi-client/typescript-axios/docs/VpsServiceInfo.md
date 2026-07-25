@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsServiceInfo } from './api';
+import { VpsServiceInfo } from '@interserver/myadmin-client';
 
 const instance: VpsServiceInfo = {
     vps_id,

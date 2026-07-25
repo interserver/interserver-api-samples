@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.create_rule201_response import CreateRule201Response
+from interserver_api_client.models.create_rule201_response import CreateRule201Response
 
 # TODO update the JSON string below
 json = "{}"

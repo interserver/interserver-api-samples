@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BackupBillingDetails model module.
  * @module model/BackupBillingDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BackupBillingDetails {
     /**

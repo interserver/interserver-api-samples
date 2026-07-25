@@ -1,4 +1,4 @@
-# openapi::HomeServicesServersLinks
+# interserverapi::HomeServicesServersLinks
 
 Map of dedicated server service IDs to their hostnames for the account dashboard.
 

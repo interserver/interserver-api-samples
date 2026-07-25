@@ -1,4 +1,4 @@
-# openapi::SearchAutocompleteResponse
+# interserverapi::SearchAutocompleteResponse
 
 Autocomplete search results for the authenticated account.
 

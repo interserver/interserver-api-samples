@@ -16,9 +16,10 @@
 #' \dontrun{
 #' ####################  AddWebsite  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_website_order_post_request <- WebsiteOrderPostRequest$new("hostname_example", 123, "rootpass_example", 123, "coupon_example", 123, 123, "comment_example", "registerDomain_example") # WebsiteOrderPostRequest | 
 #'
-#' #Place Website Order
+#' #Place a new webhosting order, create the invoice, and queue provisioning
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -31,16 +32,16 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$AddWebsite(data_file = "result.txt")
-#' result <- api_instance$AddWebsite()
+#' # result <- api_instance$AddWebsite(var_website_order_post_requestdata_file = "result.txt")
+#' result <- api_instance$AddWebsite(var_website_order_post_request)
 #' dput(result)
 #'
 #'
 #' ####################  GetNewWebsite  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Website Ordering Information
+#' #Read the webhosting order catalog — plans, packages, promo offers, pricing
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -60,10 +61,10 @@
 #'
 #' ####################  GetWebsiteBuyIp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The website service ID. Use `website_id` from `GET /websites`.
 #'
-#' #Get Website IP Information
+#' #Read website IPs, current reverse DNS, and additional-IP pricing
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -83,10 +84,10 @@
 #'
 #' ####################  GetWebsiteInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The website service ID. Use `website_id` from `GET /websites`.
 #'
-#' #Get Website Order
+#' #Read full configuration and status detail for one webhosting service
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -106,10 +107,10 @@
 #'
 #' ####################  GetWebsiteInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The website service ID. Use `website_id` from `GET /websites`.
 #'
-#' #Get Website Invoices
+#' #List all billing invoices and recurring charges scoped to one website
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -129,9 +130,9 @@
 #'
 #' ####################  GetWebsiteList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Website Listing
+#' #List the caller's webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -151,10 +152,10 @@
 #'
 #' ####################  GetWebsitesBackups  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The website service ID. Use `website_id` from `GET /websites`.
 #'
-#' #Get Website Backups
+#' #List off-site cpmove backups stored in Swift — list or inline-download archive
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -174,10 +175,10 @@
 #'
 #' ####################  GetWebsitesLogin  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The website service ID. Use `website_id` from `GET /websites`.
 #'
-#' #Hosting Panel Auto Login
+#' #Get a one-time auto-login URL for the website's control panel
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -197,10 +198,10 @@
 #'
 #' ####################  GetWebsitesWelcomeEmail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The website service ID. Use `website_id` from `GET /websites`.
 #'
-#' #Resend Website Welcome Email
+#' #Resend the webhosting welcome email with control-panel credentials and URL
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -220,10 +221,10 @@
 #'
 #' ####################  GettWebsiteReverseDns  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The website service ID. Use `website_id` from `GET /websites`.
 #'
-#' #Get Website Reverse DNS
+#' #Read current reverse-DNS (PTR) records for the website's IPs
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -243,11 +244,11 @@
 #'
 #' ####################  PostWebsiteBuyIp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The website service ID. Use `website_id` from `GET /websites`.
 #' var_post_website_buy_ip_request <- postWebsiteBuyIp_request$new(c(key = "inner_example")) # PostWebsiteBuyIpRequest | 
 #'
-#' #Update Website IP DNS
+#' #Buy an additional IP for the website OR update reverse DNS records
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -267,11 +268,11 @@
 #'
 #' ####################  PostWebsiteMigration  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The website service ID. Use `website_id` from `GET /websites`.
 #' var_post_website_migration_request <- postWebsiteMigration_request$new("custPortal_example", "regEmail_example", "password_example", "ctrlPanel_example", "ftpUsername_example", "ftpPassword_example", "siteBusyMig_example", "splReqMig_example", "domainReg_example", "dataMig_example", "domainRegPortal_example", "domainRegEmail_example", "domainRegPassword_example") # PostWebsiteMigrationRequest | 
 #'
-#' #Request Website Migration
+#' #Submit a request for InterServer staff to migrate a website from another host
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -291,11 +292,11 @@
 #'
 #' ####################  PostWebsitesReverseDns  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The website service ID. Use `website_id` from `GET /websites`.
 #' var_reverse_dns_entries <- ReverseDnsEntries$new(c(key = TODO)) # ReverseDnsEntries | 
 #'
-#' #Update Website Reverse DNS
+#' #Bulk-update reverse-DNS (PTR) records for one or more website IPs
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -315,9 +316,10 @@
 #'
 #' ####################  PutWebsites  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_website_order_put_request <- WebsiteOrderPutRequest$new("hostname_example", 123, "rootpass_example", 123, "coupon_example", 123, 123, "comment_example", "registerDomain_example") # WebsiteOrderPutRequest | 
 #'
-#' #Validate Webhosting Order
+#' #Validate a webhosting order and preview cost — dry run, no charge
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -329,15 +331,15 @@
 #' # Configure API key authorization: sessionIdHeaderAuth
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$PutWebsites()
+#' api_instance$PutWebsites(var_website_order_put_request)
 #'
 #'
 #' ####################  UpdateWebsiteInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "id_example" # character | The website service ID. Use `website_id` from `GET /websites`.
 #'
-#' #Update Website Order
+#' #POST mutation hook for the website detail page (use dedicated ops where possible)
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -357,10 +359,10 @@
 #'
 #' ####################  WebhostingCancel  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "123" # character | The website service ID. Use `website_id` from `GET /websites`.
 #'
-#' #Cancel Website
+#' #Schedule termination of a webhosting service — wipes panel account at cycle end
 #' api_instance <- WebhostingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -400,15 +402,16 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Website Order
+    #' Place a new webhosting order, create the invoice, and queue provisioning
     #'
+    #' @param website_order_post_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return ServiceOrderPostResponse
-    AddWebsite = function(data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$AddWebsiteWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+    AddWebsite = function(website_order_post_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$AddWebsiteWithHttpInfo(website_order_post_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -421,14 +424,15 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Website Order
+    #' Place a new webhosting order, create the invoice, and queue provisioning
     #'
+    #' @param website_order_post_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (ServiceOrderPostResponse) with additional information such as HTTP status code, headers
-    AddWebsiteWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+    AddWebsiteWithHttpInfo = function(website_order_post_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -437,6 +441,20 @@ WebhostingApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`website_order_post_request`)) {
+        stop("Missing required parameter `website_order_post_request`.")
+      }
+
+      if (!missing(`website_order_post_request`) && is.null(`website_order_post_request`)) {
+        stop("Invalid value for `website_order_post_request` when calling WebhostingApi$AddWebsite, `website_order_post_request` is not nullable")
+      }
+
+      if (!is.null(`website_order_post_request`)) {
+        local_var_body <- `website_order_post_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/websites/order"
       # API key authentication
@@ -453,7 +471,7 @@ WebhostingApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -506,7 +524,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Website Ordering Information
+    #' Read the webhosting order catalog — plans, packages, promo offers, pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -527,7 +545,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Website Ordering Information
+    #' Read the webhosting order catalog — plans, packages, promo offers, pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -612,7 +630,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website IP Information
+    #' Read website IPs, current reverse DNS, and additional-IP pricing
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -634,7 +652,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website IP Information
+    #' Read website IPs, current reverse DNS, and additional-IP pricing
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -732,7 +750,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website Order
+    #' Read full configuration and status detail for one webhosting service
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -754,7 +772,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website Order
+    #' Read full configuration and status detail for one webhosting service
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -852,7 +870,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website Invoices
+    #' List all billing invoices and recurring charges scoped to one website
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -874,7 +892,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website Invoices
+    #' List all billing invoices and recurring charges scoped to one website
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -972,7 +990,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website Listing
+    #' List the caller's webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -993,7 +1011,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website Listing
+    #' List the caller's webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1078,7 +1096,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website Backups
+    #' List off-site cpmove backups stored in Swift — list or inline-download archive
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1100,7 +1118,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website Backups
+    #' List off-site cpmove backups stored in Swift — list or inline-download archive
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1198,7 +1216,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Hosting Panel Auto Login
+    #' Get a one-time auto-login URL for the website's control panel
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1220,7 +1238,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Hosting Panel Auto Login
+    #' Get a one-time auto-login URL for the website's control panel
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1318,7 +1336,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Website Welcome Email
+    #' Resend the webhosting welcome email with control-panel credentials and URL
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1340,7 +1358,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Website Welcome Email
+    #' Resend the webhosting welcome email with control-panel credentials and URL
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1438,7 +1456,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website Reverse DNS
+    #' Read current reverse-DNS (PTR) records for the website's IPs
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1460,7 +1478,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Website Reverse DNS
+    #' Read current reverse-DNS (PTR) records for the website's IPs
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1558,7 +1576,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Website IP DNS
+    #' Buy an additional IP for the website OR update reverse DNS records
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param post_website_buy_ip_request 
@@ -1581,7 +1599,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Website IP DNS
+    #' Buy an additional IP for the website OR update reverse DNS records
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param post_website_buy_ip_request 
@@ -1694,7 +1712,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Request Website Migration
+    #' Submit a request for InterServer staff to migrate a website from another host
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param post_website_migration_request 
@@ -1717,7 +1735,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Request Website Migration
+    #' Submit a request for InterServer staff to migrate a website from another host
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param post_website_migration_request 
@@ -1830,7 +1848,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Website Reverse DNS
+    #' Bulk-update reverse-DNS (PTR) records for one or more website IPs
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param reverse_dns_entries 
@@ -1853,7 +1871,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Website Reverse DNS
+    #' Bulk-update reverse-DNS (PTR) records for one or more website IPs
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param reverse_dns_entries 
@@ -1966,13 +1984,14 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Webhosting Order
+    #' Validate a webhosting order and preview cost — dry run, no charge
     #'
+    #' @param website_order_put_request 
     #' @param ... Other optional arguments
     #'
     #' @return void
-    PutWebsites = function(...) {
-      local_var_response <- self$PutWebsitesWithHttpInfo(...)
+    PutWebsites = function(website_order_put_request, ...) {
+      local_var_response <- self$PutWebsitesWithHttpInfo(website_order_put_request, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1985,12 +2004,13 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Webhosting Order
+    #' Validate a webhosting order and preview cost — dry run, no charge
     #'
+    #' @param website_order_put_request 
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    PutWebsitesWithHttpInfo = function(...) {
+    PutWebsitesWithHttpInfo = function(website_order_put_request, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1999,6 +2019,20 @@ WebhostingApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`website_order_put_request`)) {
+        stop("Missing required parameter `website_order_put_request`.")
+      }
+
+      if (!missing(`website_order_put_request`) && is.null(`website_order_put_request`)) {
+        stop("Invalid value for `website_order_put_request` when calling WebhostingApi$PutWebsites, `website_order_put_request` is not nullable")
+      }
+
+      if (!is.null(`website_order_put_request`)) {
+        local_var_body <- `website_order_put_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/websites/order"
       # API key authentication
@@ -2015,7 +2049,7 @@ WebhostingApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "PUT",
@@ -2053,7 +2087,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Website Order
+    #' POST mutation hook for the website detail page (use dedicated ops where possible)
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2075,7 +2109,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Website Order
+    #' POST mutation hook for the website detail page (use dedicated ops where possible)
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2173,7 +2207,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Website
+    #' Schedule termination of a webhosting service — wipes panel account at cycle end
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2195,7 +2229,7 @@ WebhostingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Website
+    #' Schedule termination of a webhosting service — wipes panel account at cycle end
     #'
     #' @param id The website service ID. Use `website_id` from `GET /websites`.
     #' @param data_file (optional) name of the data file to save the result

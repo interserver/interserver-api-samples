@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.search_autocomplete_response import SearchAutocompleteResponse
+from interserver_api_client.models.search_autocomplete_response import SearchAutocompleteResponse
 
 class TestSearchAutocompleteResponse(unittest.TestCase):
     """SearchAutocompleteResponse unit test stubs"""

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TicketsCountArray = Initialize-PSOpenAPIToolsTicketsCountArray  -Open null `
+$TicketsCountArray = Initialize-InterserverApiTicketsCountArray  -Open null `
  -OnHold null `
  -Closed null
 ```

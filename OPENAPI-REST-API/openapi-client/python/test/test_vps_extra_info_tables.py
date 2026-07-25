@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_extra_info_tables import VpsExtraInfoTables
+from interserver_api_client.models.vps_extra_info_tables import VpsExtraInfoTables
 
 class TestVpsExtraInfoTables(unittest.TestCase):
     """VpsExtraInfoTables unit test stubs"""
@@ -36,10 +36,10 @@ class TestVpsExtraInfoTables(unittest.TestCase):
         model = VpsExtraInfoTables()
         if include_optional:
             return VpsExtraInfoTables(
-                ip_info = openapi_client.models.vps_ip_info.VpsIPInfo(
+                ip_info = interserver_api_client.models.vps_ip_info.VpsIPInfo(
                     title = 'IP Information', 
                     rows = [
-                        openapi_client.models.vps_ip_info_row.VpsIPInfoRow(
+                        interserver_api_client.models.vps_ip_info_row.VpsIPInfoRow(
                             desc = '', 
                             value = '', )
                         ], )

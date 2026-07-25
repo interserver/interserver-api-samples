@@ -1,4 +1,4 @@
-# InterServerManagementApi.CreateRule400Response
+# InterserverApiClient.CreateRule400Response
 
 ## Properties
 

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The WebhostingCancel200Response model module.
  * @module model/WebhostingCancel200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebhostingCancel200Response {
     /**

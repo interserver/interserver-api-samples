@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.inline_response20014 import InlineResponse20014  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.inline_response20014 import InlineResponse20014  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestInlineResponse20014(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestInlineResponse20014(unittest.TestCase):
     def testInlineResponse20014(self):
         """Test InlineResponse20014"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.inline_response20014.InlineResponse20014()  # noqa: E501
+        # model = interserver_api_client.models.inline_response20014.InlineResponse20014()  # noqa: E501
         pass
 
 

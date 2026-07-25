@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DisableScrub500Response');
+use_ok('InterServerAPI::Object::DisableScrub500Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DisableScrub500Response->new();
+#my $instance = InterServerAPI::Object::DisableScrub500Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DisableScrub500Response');
+#isa_ok($instance, 'InterServerAPI::Object::DisableScrub500Response');
 
 
 done_testing();

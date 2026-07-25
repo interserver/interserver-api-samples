@@ -1,4 +1,4 @@
-# openapi::DomainProvProcessPending
+# interserverapi::DomainProvProcessPending
 
 Provisioning status data for a pending domain order.
 

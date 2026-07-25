@@ -1,2 +1,2 @@
-testCase,httpStatusCode,id,id,id,id,id,id,id,id,postWebsiteBuyIpRequest,id,postWebsiteMigrationRequest,id,reverseDnsEntries,id,id
-Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,websiteOrderPostRequest,id,id,id,id,id,id,id,postWebsiteBuyIpRequest,id,postWebsiteMigrationRequest,id,reverseDnsEntries,id,websiteOrderPutRequest,id,id
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

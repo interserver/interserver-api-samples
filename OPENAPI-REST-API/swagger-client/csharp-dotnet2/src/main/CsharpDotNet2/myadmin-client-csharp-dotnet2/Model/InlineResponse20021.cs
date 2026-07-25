@@ -13,18 +13,28 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse20021 {
     /// <summary>
-    /// Gets or Sets Success
+    /// Status message.
     /// </summary>
-    [DataMember(Name="success", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "success")]
-    public bool? Success { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Text
-    /// </summary>
+    /// <value>Status message.</value>
     [DataMember(Name="text", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "text")]
     public string Text { get; set; }
+
+    /// <summary>
+    /// Invoice ID for payment.
+    /// </summary>
+    /// <value>Invoice ID for payment.</value>
+    [DataMember(Name="invoice", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "invoice")]
+    public int? Invoice { get; set; }
+
+    /// <summary>
+    /// Server order ID.
+    /// </summary>
+    /// <value>Server order ID.</value>
+    [DataMember(Name="order", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "order")]
+    public int? Order { get; set; }
 
 
     /// <summary>
@@ -34,8 +44,9 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse20021 {\n");
-      sb.Append("  Success: ").Append(Success).Append("\n");
       sb.Append("  Text: ").Append(Text).Append("\n");
+      sb.Append("  Invoice: ").Append(Invoice).Append("\n");
+      sb.Append("  Order: ").Append(Order).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

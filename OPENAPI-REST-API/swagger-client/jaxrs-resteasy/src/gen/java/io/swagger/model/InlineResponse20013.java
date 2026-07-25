@@ -5,38 +5,122 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.InlineResponse20013BillingDetails;
+import io.swagger.model.InlineResponse20013ClientLinks;
+import io.swagger.model.InlineResponse20013ExtraInfoTables;
+import io.swagger.model.InlineResponse20013FilterFirewall;
+import io.swagger.model.InlineResponse20013ServiceInfo;
+import java.util.List;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
 public class InlineResponse20013   {
-  private Boolean success = null;  private String text = null;
+  private InlineResponse20013ServiceInfo serviceInfo = null;  private List<InlineResponse20013ClientLinks> clientLinks = new ArrayList<InlineResponse20013ClientLinks>();  private InlineResponse20013BillingDetails billingDetails = null;  private String custCurrency = null;  private String custCurrencySymbol = null;  private String _package = null;  private InlineResponse20013ExtraInfoTables extraInfoTables = null;  private InlineResponse20013FilterFirewall filterFirewall = null;
 
   /**
    **/
   
-  @Schema(example = "true", required = true, description = "")
-  @JsonProperty("success")
+  @Schema(description = "")
+  @JsonProperty("serviceInfo")
   @NotNull
-  public Boolean isSuccess() {
-    return success;
+  public InlineResponse20013ServiceInfo getServiceInfo() {
+    return serviceInfo;
   }
-  public void setSuccess(Boolean success) {
-    this.success = success;
+  public void setServiceInfo(InlineResponse20013ServiceInfo serviceInfo) {
+    this.serviceInfo = serviceInfo;
   }
 
   /**
    **/
   
-  @Schema(example = "Scrub Ips is canceled.", required = true, description = "")
-  @JsonProperty("text")
+  @Schema(description = "")
+  @JsonProperty("client_links")
   @NotNull
-  public String getText() {
-    return text;
+  public List<InlineResponse20013ClientLinks> getClientLinks() {
+    return clientLinks;
   }
-  public void setText(String text) {
-    this.text = text;
+  public void setClientLinks(List<InlineResponse20013ClientLinks> clientLinks) {
+    this.clientLinks = clientLinks;
+  }
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("billingDetails")
+  @NotNull
+  public InlineResponse20013BillingDetails getBillingDetails() {
+    return billingDetails;
+  }
+  public void setBillingDetails(InlineResponse20013BillingDetails billingDetails) {
+    this.billingDetails = billingDetails;
+  }
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("custCurrency")
+  @NotNull
+  public String getCustCurrency() {
+    return custCurrency;
+  }
+  public void setCustCurrency(String custCurrency) {
+    this.custCurrency = custCurrency;
+  }
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("custCurrencySymbol")
+  @NotNull
+  public String getCustCurrencySymbol() {
+    return custCurrencySymbol;
+  }
+  public void setCustCurrencySymbol(String custCurrencySymbol) {
+    this.custCurrencySymbol = custCurrencySymbol;
+  }
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("package")
+  @NotNull
+  public String getPackage() {
+    return _package;
+  }
+  public void setPackage(String _package) {
+    this._package = _package;
+  }
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("extraInfoTables")
+  @NotNull
+  public InlineResponse20013ExtraInfoTables getExtraInfoTables() {
+    return extraInfoTables;
+  }
+  public void setExtraInfoTables(InlineResponse20013ExtraInfoTables extraInfoTables) {
+    this.extraInfoTables = extraInfoTables;
+  }
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("filter_firewall")
+  @NotNull
+  public InlineResponse20013FilterFirewall getFilterFirewall() {
+    return filterFirewall;
+  }
+  public void setFilterFirewall(InlineResponse20013FilterFirewall filterFirewall) {
+    this.filterFirewall = filterFirewall;
   }
 
 
@@ -49,13 +133,19 @@ public class InlineResponse20013   {
       return false;
     }
     InlineResponse20013 inlineResponse20013 = (InlineResponse20013) o;
-    return Objects.equals(success, inlineResponse20013.success) &&
-        Objects.equals(text, inlineResponse20013.text);
+    return Objects.equals(serviceInfo, inlineResponse20013.serviceInfo) &&
+        Objects.equals(clientLinks, inlineResponse20013.clientLinks) &&
+        Objects.equals(billingDetails, inlineResponse20013.billingDetails) &&
+        Objects.equals(custCurrency, inlineResponse20013.custCurrency) &&
+        Objects.equals(custCurrencySymbol, inlineResponse20013.custCurrencySymbol) &&
+        Objects.equals(_package, inlineResponse20013._package) &&
+        Objects.equals(extraInfoTables, inlineResponse20013.extraInfoTables) &&
+        Objects.equals(filterFirewall, inlineResponse20013.filterFirewall);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, text);
+    return Objects.hash(serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, _package, extraInfoTables, filterFirewall);
   }
 
   @Override
@@ -63,8 +153,14 @@ public class InlineResponse20013   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20013 {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    serviceInfo: ").append(toIndentedString(serviceInfo)).append("\n");
+    sb.append("    clientLinks: ").append(toIndentedString(clientLinks)).append("\n");
+    sb.append("    billingDetails: ").append(toIndentedString(billingDetails)).append("\n");
+    sb.append("    custCurrency: ").append(toIndentedString(custCurrency)).append("\n");
+    sb.append("    custCurrencySymbol: ").append(toIndentedString(custCurrencySymbol)).append("\n");
+    sb.append("    _package: ").append(toIndentedString(_package)).append("\n");
+    sb.append("    extraInfoTables: ").append(toIndentedString(extraInfoTables)).append("\n");
+    sb.append("    filterFirewall: ").append(toIndentedString(filterFirewall)).append("\n");
     sb.append("}");
     return sb.toString();
   }

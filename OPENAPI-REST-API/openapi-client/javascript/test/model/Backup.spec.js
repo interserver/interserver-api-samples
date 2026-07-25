@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.Backup();
+    instance = new InterserverApiClient.Backup();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,61 +50,61 @@
   describe('Backup', function() {
     it('should create an instance of Backup', function() {
       // uncomment below and update the code to test Backup
-      //var instance = new InterServerManagementApi.Backup();
-      //expect(instance).to.be.a(InterServerManagementApi.Backup);
+      //var instance = new InterserverApiClient.Backup();
+      //expect(instance).to.be.a(InterserverApiClient.Backup);
     });
 
     it('should have the property serviceInfo (base name: "serviceInfo")', function() {
       // uncomment below and update the code to test the property serviceInfo
-      //var instance = new InterServerManagementApi.Backup();
+      //var instance = new InterserverApiClient.Backup();
       //expect(instance).to.be();
     });
 
     it('should have the property client_links (base name: "client_links")', function() {
       // uncomment below and update the code to test the property client_links
-      //var instance = new InterServerManagementApi.Backup();
+      //var instance = new InterserverApiClient.Backup();
       //expect(instance).to.be();
     });
 
     it('should have the property billingDetails (base name: "billingDetails")', function() {
       // uncomment below and update the code to test the property billingDetails
-      //var instance = new InterServerManagementApi.Backup();
+      //var instance = new InterserverApiClient.Backup();
       //expect(instance).to.be();
     });
 
     it('should have the property custCurrency (base name: "custCurrency")', function() {
       // uncomment below and update the code to test the property custCurrency
-      //var instance = new InterServerManagementApi.Backup();
+      //var instance = new InterserverApiClient.Backup();
       //expect(instance).to.be();
     });
 
     it('should have the property custCurrencySymbol (base name: "custCurrencySymbol")', function() {
       // uncomment below and update the code to test the property custCurrencySymbol
-      //var instance = new InterServerManagementApi.Backup();
+      //var instance = new InterserverApiClient.Backup();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceMaster (base name: "serviceMaster")', function() {
       // uncomment below and update the code to test the property serviceMaster
-      //var instance = new InterServerManagementApi.Backup();
+      //var instance = new InterserverApiClient.Backup();
       //expect(instance).to.be();
     });
 
     it('should have the property _package (base name: "package")', function() {
       // uncomment below and update the code to test the property _package
-      //var instance = new InterServerManagementApi.Backup();
+      //var instance = new InterserverApiClient.Backup();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceExtra (base name: "serviceExtra")', function() {
       // uncomment below and update the code to test the property serviceExtra
-      //var instance = new InterServerManagementApi.Backup();
+      //var instance = new InterserverApiClient.Backup();
       //expect(instance).to.be();
     });
 
     it('should have the property extraInfoTables (base name: "extraInfoTables")', function() {
       // uncomment below and update the code to test the property extraInfoTables
-      //var instance = new InterServerManagementApi.Backup();
+      //var instance = new InterserverApiClient.Backup();
       //expect(instance).to.be();
     });
 

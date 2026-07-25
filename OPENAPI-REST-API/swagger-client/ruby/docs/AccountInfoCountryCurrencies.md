@@ -1,4 +1,4 @@
-# SwaggerClient::AccountInfoCountryCurrencies
+# InterserverApiClient::AccountInfoCountryCurrencies
 
 ## Properties
 Name | Type | Description | Notes

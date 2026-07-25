@@ -16,5 +16,4 @@ package org.openapitools.client.model
    * The modules and settings.
    */
 case class Modules(
-)
-
+) extends Map[String, ModuleSettings]

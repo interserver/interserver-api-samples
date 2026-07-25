@@ -2,11 +2,11 @@ package io.swagger.server.model
 
 
 /**
- * @param message 
  * @param success 
+ * @param text 
  */
 case class Inline_response_200_25 (
-  message: Option[String],
-  success: Option[Boolean]
+  success: Boolean,
+  text: String
 )
 

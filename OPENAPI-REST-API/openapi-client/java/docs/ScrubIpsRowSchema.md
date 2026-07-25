@@ -14,4 +14,8 @@
 |**servicesName** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,4 +1,4 @@
-# openapi::DomainNameServer
+# interserverapi::DomainNameServer
 
 A single registered nameserver entry with glue IPs.
 

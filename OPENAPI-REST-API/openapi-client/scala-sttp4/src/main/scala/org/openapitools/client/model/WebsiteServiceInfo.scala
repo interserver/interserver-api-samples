@@ -44,4 +44,3 @@ case class WebsiteServiceInfo(
   /* Server status of the website */
   website_server_status: Option[String] = None
 )
-

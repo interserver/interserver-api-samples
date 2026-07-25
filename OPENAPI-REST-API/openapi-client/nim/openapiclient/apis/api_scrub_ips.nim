@@ -48,6 +48,7 @@ import ../models/model_get_account_info401response
 import ../models/model_get_order_detail200response
 import ../models/model_get_scrub_ip_details200response
 import ../models/model_place_scrub_order201response
+import ../models/model_put_scrub_ips200response
 import ../models/model_scrub_ips_delete_rule200response
 import ../models/model_scrub_ips_delete_rule400response
 import ../models/model_scrub_ips_delete_rule500response
@@ -68,14 +69,14 @@ template constructResult[T](response: Response): untyped =
 
 
 proc cancelScrubIp*(httpClient: HttpClient, id: int): (Option[cancelScrubIp_200_response], Response) =
-  ## Cancel Scrub IP Service
+  ## Cancel a Scrub IP service and stop its recurring DDoS billing
 
   let response = httpClient.delete(basepath & fmt"/scrub_ips/{id}")
   constructResult[cancelScrubIp_200_response](response)
 
 
 proc createFilter*(httpClient: HttpClient, id: int, createFilter: CreateFilter): (Option[createFilter_201_response], Response) =
-  ## Create Traffic Filter
+  ## Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/scrub_ips/{id}/create_filter", $(%createFilter))
@@ -83,7 +84,7 @@ proc createFilter*(httpClient: HttpClient, id: int, createFilter: CreateFilter):
 
 
 proc createGeoRule*(httpClient: HttpClient, id: int, createGeoFirewallRule: CreateGeoFirewallRule): (Option[createRule_201_response], Response) =
-  ## Create Geo Firewall Rule
+  ## Add a geographic firewall rule (block/allow by country code or ASN)
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/scrub_ips/{id}/create_geo_rule", $(%createGeoFirewallRule))
@@ -91,7 +92,7 @@ proc createGeoRule*(httpClient: HttpClient, id: int, createGeoFirewallRule: Crea
 
 
 proc createRule*(httpClient: HttpClient, id: int, createFirewallRule: CreateFirewallRule): (Option[createRule_201_response], Response) =
-  ## Create Firewall Rule
+  ## Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/scrub_ips/{id}/create_rule", $(%createFirewallRule))
@@ -99,7 +100,7 @@ proc createRule*(httpClient: HttpClient, id: int, createFirewallRule: CreateFire
 
 
 proc deleteFilter*(httpClient: HttpClient, id: int, createFilter: CreateFilter): (Option[deleteFilter_200_response], Response) =
-  ## Delete Traffic Filter
+  ## Remove a scrubbing filter by matching filter_type and port
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/scrub_ips/{id}/delete_filter", $(%createFilter))
@@ -107,71 +108,79 @@ proc deleteFilter*(httpClient: HttpClient, id: int, createFilter: CreateFilter):
 
 
 proc disableScrub*(httpClient: HttpClient, id: int): (Option[disableScrub_200_response], Response) =
-  ## Disable Scrub Protection
+  ## Disable DDoS scrubbing and remove the BGP announcement on the IP
 
   let response = httpClient.get(basepath & fmt"/scrub_ips/{id}/disable")
   constructResult[disableScrub_200_response](response)
 
 
 proc enableScrub*(httpClient: HttpClient, id: int): (Option[enableScrub_200_response], Response) =
-  ## Enable Scrub Protection
+  ## Enable DDoS scrubbing (BGP announcement) on the service's protected IP
 
   let response = httpClient.get(basepath & fmt"/scrub_ips/{id}/enable")
   constructResult[enableScrub_200_response](response)
 
 
 proc getOrderDetail*(httpClient: HttpClient): (Option[getOrderDetail_200_response], Response) =
-  ## Get Scrub IP Ordering Information
+  ## Get plans, pricing, and eligible IPs for a new Scrub IP order
 
   let response = httpClient.get(basepath & "/scrub_ips/order")
   constructResult[getOrderDetail_200_response](response)
 
 
 proc getScrubIpDetails*(httpClient: HttpClient, id: int): (Option[getScrubIpDetails_200_response], Response) =
-  ## Get Scrub IP Details
+  ## Get full Scrub IP service detail (rules + geo + filters)
 
   let response = httpClient.get(basepath & fmt"/scrub_ips/{id}")
   constructResult[getScrubIpDetails_200_response](response)
 
 
 proc getScrubIpFilterTypes*(httpClient: HttpClient): (Option[ScrubIpFilterTypes], Response) =
-  ## List Scrub Filter Types
+  ## List enabled traffic filter profiles available for createFilter
 
   let response = httpClient.get(basepath & "/scrub_ips/filter_types")
   constructResult[ScrubIpFilterTypes](response)
 
 
 proc getScrubIpInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get ScrubIp Invoices
+  ## List recurring and one-time invoices billed for this Scrub IP service
 
   let response = httpClient.get(basepath & fmt"/scrub_ips/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getScrubIpLogs*(httpClient: HttpClient, id: string): (Option[seq[ScrubIpsLogRowSchema]], Response) =
-  ## Get Scrub IP Logs
+  ## Get last 50000 packet/event log entries for the protected IP
 
   let response = httpClient.get(basepath & fmt"/scrub_ips/{id}/logs")
   constructResult[seq[ScrubIpsLogRowSchema]](response)
 
 
 proc getScrubIpsList*(httpClient: HttpClient): (Option[seq[ScrubIpsRowSchema]], Response) =
-  ## List Scrub IP Services
+  ## List all Scrub IP DDoS protection services on the authenticated account
 
   let response = httpClient.get(basepath & "/scrub_ips")
   constructResult[seq[ScrubIpsRowSchema]](response)
 
 
 proc placeScrubOrder*(httpClient: HttpClient, scrubIpPlaceOrder: ScrubIpPlaceOrder): (Option[placeScrubOrder_201_response], Response) =
-  ## Place Scrub IP Order
+  ## Place a new Scrub IP DDoS protection order and generate an invoice
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & "/scrub_ips/order", $(%scrubIpPlaceOrder))
   constructResult[placeScrubOrder_201_response](response)
 
 
+proc putScrubIps*(httpClient: HttpClient, scrubIpPlaceOrder: ScrubIpPlaceOrder): (Option[putScrubIps_200_response], Response) =
+  ## Validate a Scrub IP order and return effective pricing without billing
+  httpClient.headers["Content-Type"] = "application/json"
+
+  let response = httpClient.put(basepath & "/scrub_ips/order", $(%scrubIpPlaceOrder))
+  constructResult[putScrubIps_200_response](response)
+
+
 proc scrubIpsDeleteGeoRule*(httpClient: HttpClient, id: int, deleteGeoFirewallRule: DeleteGeoFirewallRule): (Option[scrubIpsDeleteRule_200_response], Response) =
-  ## Delete Geo Firewall Rule
+  ## Delete a geo firewall rule by rule_id from getScrubIpDetails
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/scrub_ips/{id}/delete_geo_rule", $(%deleteGeoFirewallRule))
@@ -179,7 +188,7 @@ proc scrubIpsDeleteGeoRule*(httpClient: HttpClient, id: int, deleteGeoFirewallRu
 
 
 proc scrubIpsDeleteRule*(httpClient: HttpClient, id: int, deleteFirewallRule: DeleteFirewallRule): (Option[scrubIpsDeleteRule_200_response], Response) =
-  ## Delete Firewall Rule
+  ## Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/scrub_ips/{id}/delete_rule", $(%deleteFirewallRule))

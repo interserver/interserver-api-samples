@@ -11,17 +11,14 @@ import Foundation
 
 public struct InlineResponse20019: Codable {
 
-    /** Status message. */
-    public var text: String?
-    /** Invoice ID for payment. */
-    public var invoice: Int?
-    /** Server order ID. */
-    public var order: Int?
+    public var packageCosts: InlineResponse20019PackageCosts?
+    public var serviceTypes: [InlineResponse20019ServiceTypes]?
+    public var ips: [InlineResponse20019Ips]?
 
-    public init(text: String? = nil, invoice: Int? = nil, order: Int? = nil) {
-        self.text = text
-        self.invoice = invoice
-        self.order = order
+    public init(packageCosts: InlineResponse20019PackageCosts? = nil, serviceTypes: [InlineResponse20019ServiceTypes]? = nil, ips: [InlineResponse20019Ips]? = nil) {
+        self.packageCosts = packageCosts
+        self.serviceTypes = serviceTypes
+        self.ips = ips
     }
 
 

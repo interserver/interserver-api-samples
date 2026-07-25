@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoLimits } from './api';
+import { AccountInfoLimits } from '@interserver/myadmin-client';
 
 const instance: AccountInfoLimits = {
 };

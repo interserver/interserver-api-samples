@@ -1,4 +1,4 @@
-# openapi::TicketCustomFieldDetails
+# interserverapi::TicketCustomFieldDetails
 
 Optional fields providing additional info in ticket
 

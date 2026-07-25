@@ -15,4 +15,8 @@ Blocklist status information for a mail service.
 |**manual** | **List&lt;Object&gt;** | Manually blocked entries. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

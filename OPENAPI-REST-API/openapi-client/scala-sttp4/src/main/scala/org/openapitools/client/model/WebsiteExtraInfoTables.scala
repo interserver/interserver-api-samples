@@ -20,4 +20,3 @@ case class WebsiteExtraInfoTables(
   preview: Option[WebsiteTable] = None,
   dns: Option[WebsiteTable] = None
 )
-

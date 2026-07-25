@@ -17,7 +17,7 @@ import AccountInfoMaxMindResponseRiskScore from './AccountInfoMaxMindResponseRis
 /**
  * The AccountInfoMaxMindResponse model module.
  * @module model/AccountInfoMaxMindResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AccountInfoMaxMindResponse {
     /**

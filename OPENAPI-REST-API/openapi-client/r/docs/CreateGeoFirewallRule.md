@@ -1,4 +1,4 @@
-# openapi::CreateGeoFirewallRule
+# interserverapi::CreateGeoFirewallRule
 
 Create firewall rule for your ip
 

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BuyItNowRow = Initialize-PSOpenAPIToolsBuyItNowRow  -ServerId 11432 `
+$BuyItNowRow = Initialize-InterserverApiBuyItNowRow  -ServerId 11432 `
  -Cpu null `
  -Memory 64GB `
  -Disk null `

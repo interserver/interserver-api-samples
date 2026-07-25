@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+    instance = new InterserverApiClient.PostWebsiteMigrationRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,85 +50,85 @@
   describe('PostWebsiteMigrationRequest', function() {
     it('should create an instance of PostWebsiteMigrationRequest', function() {
       // uncomment below and update the code to test PostWebsiteMigrationRequest
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.PostWebsiteMigrationRequest);
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
+      //expect(instance).to.be.a(InterserverApiClient.PostWebsiteMigrationRequest);
     });
 
     it('should have the property custPortal (base name: "custPortal")', function() {
       // uncomment below and update the code to test the property custPortal
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property regEmail (base name: "regEmail")', function() {
       // uncomment below and update the code to test the property regEmail
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property password (base name: "password")', function() {
       // uncomment below and update the code to test the property password
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property ctrlPanel (base name: "ctrlPanel")', function() {
       // uncomment below and update the code to test the property ctrlPanel
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property ftpUsername (base name: "ftpUsername")', function() {
       // uncomment below and update the code to test the property ftpUsername
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property ftpPassword (base name: "ftpPassword")', function() {
       // uncomment below and update the code to test the property ftpPassword
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property siteBusyMig (base name: "siteBusyMig")', function() {
       // uncomment below and update the code to test the property siteBusyMig
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property splReqMig (base name: "splReqMig")', function() {
       // uncomment below and update the code to test the property splReqMig
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domainReg (base name: "domainReg")', function() {
       // uncomment below and update the code to test the property domainReg
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property dataMig (base name: "dataMig")', function() {
       // uncomment below and update the code to test the property dataMig
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domainRegPortal (base name: "domainRegPortal")', function() {
       // uncomment below and update the code to test the property domainRegPortal
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domainRegEmail (base name: "domainRegEmail")', function() {
       // uncomment below and update the code to test the property domainRegEmail
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domainRegPassword (base name: "domainRegPassword")', function() {
       // uncomment below and update the code to test the property domainRegPassword
-      //var instance = new InterServerManagementApi.PostWebsiteMigrationRequest();
+      //var instance = new InterserverApiClient.PostWebsiteMigrationRequest();
       //expect(instance).to.be();
     });
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AffiliatePaymentSetup();
+    instance = new InterserverApiClient.AffiliatePaymentSetup();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('AffiliatePaymentSetup', function() {
     it('should create an instance of AffiliatePaymentSetup', function() {
       // uncomment below and update the code to test AffiliatePaymentSetup
-      //var instance = new InterServerManagementApi.AffiliatePaymentSetup();
-      //expect(instance).to.be.a(InterServerManagementApi.AffiliatePaymentSetup);
+      //var instance = new InterserverApiClient.AffiliatePaymentSetup();
+      //expect(instance).to.be.a(InterserverApiClient.AffiliatePaymentSetup);
     });
 
     it('should have the property affiliate_paypal (base name: "affiliate_paypal")', function() {
       // uncomment below and update the code to test the property affiliate_paypal
-      //var instance = new InterServerManagementApi.AffiliatePaymentSetup();
+      //var instance = new InterserverApiClient.AffiliatePaymentSetup();
       //expect(instance).to.be();
     });
 
     it('should have the property affiliate_payment_method (base name: "affiliate_payment_method")', function() {
       // uncomment below and update the code to test the property affiliate_payment_method
-      //var instance = new InterServerManagementApi.AffiliatePaymentSetup();
+      //var instance = new InterserverApiClient.AffiliatePaymentSetup();
       //expect(instance).to.be();
     });
 

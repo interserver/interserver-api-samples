@@ -1,63 +1,63 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for AccountInfoDataCc
 void main() {
-  final instance = AccountInfoDataCcBuilder();
-  // TODO add properties to the builder and call build()
+  final AccountInfoDataCc? instance = /* AccountInfoDataCc(...) */ null;
+  // TODO add properties to the entity
 
   group(AccountInfoDataCc, () {
-    // String cc
+    // Optional<String?> cc
     test('to test the property `cc`', () async {
       // TODO
     });
 
-    // String ccExp
+    // Optional<String?> ccExp
     test('to test the property `ccExp`', () async {
       // TODO
     });
 
-    // String name
+    // Optional<String?> name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // String address
+    // Optional<String?> address
     test('to test the property `address`', () async {
       // TODO
     });
 
-    // String city
+    // Optional<String?> city
     test('to test the property `city`', () async {
       // TODO
     });
 
-    // String state
+    // Optional<String?> state
     test('to test the property `state`', () async {
       // TODO
     });
 
-    // String zip
+    // Optional<String?> zip
     test('to test the property `zip`', () async {
       // TODO
     });
 
-    // String country
+    // Optional<String?> country
     test('to test the property `country`', () async {
       // TODO
     });
 
-    // String maxmindRiskscore
+    // Optional<String?> maxmindRiskscore
     test('to test the property `maxmindRiskscore`', () async {
       // TODO
     });
 
-    // AccountInfoMaxMindResponse maxmind
+    // Optional<AccountInfoMaxMindResponse?> maxmind
     test('to test the property `maxmind`', () async {
       // TODO
     });
 
-    // bool verified
+    // Optional<bool?> verified
     test('to test the property `verified`', () async {
       // TODO
     });

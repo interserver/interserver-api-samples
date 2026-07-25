@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountSshKey();
+    instance = new InterserverApiClient.AccountSshKey();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('AccountSshKey', function() {
     it('should create an instance of AccountSshKey', function() {
       // uncomment below and update the code to test AccountSshKey
-      //var instance = new InterServerManagementApi.AccountSshKey();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountSshKey);
+      //var instance = new InterserverApiClient.AccountSshKey();
+      //expect(instance).to.be.a(InterserverApiClient.AccountSshKey);
     });
 
     it('should have the property ssh_key (base name: "ssh_key")', function() {
       // uncomment below and update the code to test the property ssh_key
-      //var instance = new InterServerManagementApi.AccountSshKey();
+      //var instance = new InterserverApiClient.AccountSshKey();
       //expect(instance).to.be();
     });
 

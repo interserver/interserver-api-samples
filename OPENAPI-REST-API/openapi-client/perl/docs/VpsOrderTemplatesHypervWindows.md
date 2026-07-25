@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsOrderTemplatesHypervWindows
+# InterServerAPI::Object::VpsOrderTemplatesHypervWindows
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsOrderTemplatesHypervWindows;
+use InterServerAPI::Object::VpsOrderTemplatesHypervWindows;
 ```
 
 ## Properties

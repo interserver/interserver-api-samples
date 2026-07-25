@@ -68,4 +68,3 @@ case class VpsServiceInfo(
   /* Maximum disk space available */
   vps_diskmax: Option[String] = None
 )
-

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LicensesCancel200Response model module.
  * @module model/LicensesCancel200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicensesCancel200Response {
     /**

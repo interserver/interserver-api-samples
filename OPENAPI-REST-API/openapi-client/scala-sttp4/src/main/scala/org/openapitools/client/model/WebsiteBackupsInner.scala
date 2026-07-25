@@ -16,4 +16,3 @@ case class WebsiteBackupsInner(
   name: String,
   size: Option[Int] = None
 )
-

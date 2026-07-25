@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WebsiteTableRow } from './api';
+import { WebsiteTableRow } from '@interserver/myadmin-client';
 
 const instance: WebsiteTableRow = {
     desc,

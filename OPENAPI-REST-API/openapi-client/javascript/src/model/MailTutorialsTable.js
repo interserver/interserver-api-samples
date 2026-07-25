@@ -17,7 +17,7 @@ import MailTutorialsTableRow from './MailTutorialsTableRow';
 /**
  * The MailTutorialsTable model module.
  * @module model/MailTutorialsTable
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailTutorialsTable {
     /**

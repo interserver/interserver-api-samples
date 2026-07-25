@@ -511,6 +511,33 @@ void OpenAPIScrubIpsApi::OnPlaceScrubOrderResponse(FHttpRequestPtr HttpRequest, 
 	Delegate.ExecuteIfBound(Response);
 }
 
+FHttpRequestPtr OpenAPIScrubIpsApi::PutScrubIps(const PutScrubIpsRequest& Request, const FPutScrubIpsDelegate& Delegate /*= FPutScrubIpsDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIScrubIpsApi::OnPutScrubIpsResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIScrubIpsApi::OnPutScrubIpsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPutScrubIpsDelegate Delegate) const
+{
+	PutScrubIpsResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 FHttpRequestPtr OpenAPIScrubIpsApi::ScrubIpsDeleteGeoRule(const ScrubIpsDeleteGeoRuleRequest& Request, const FScrubIpsDeleteGeoRuleDelegate& Delegate /*= FScrubIpsDeleteGeoRuleDelegate()*/) const
 {
 	if (!IsValid())

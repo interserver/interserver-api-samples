@@ -16,4 +16,8 @@ Affiliate Web Traffic Entry
 |**trafficTimestamp** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

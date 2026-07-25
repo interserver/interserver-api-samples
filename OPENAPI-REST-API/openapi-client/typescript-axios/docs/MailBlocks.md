@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailBlocks } from './api';
+import { MailBlocks } from '@interserver/myadmin-client';
 
 const instance: MailBlocks = {
     local,

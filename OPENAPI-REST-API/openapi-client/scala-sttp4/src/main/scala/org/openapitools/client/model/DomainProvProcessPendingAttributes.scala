@@ -18,4 +18,3 @@ case class DomainProvProcessPendingAttributes(
   registration_expiration_date: Option[String] = None,
   f_auto_renew: Option[String] = None
 )
-

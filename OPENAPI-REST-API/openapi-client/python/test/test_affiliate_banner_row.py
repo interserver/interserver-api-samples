@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.affiliate_banner_row import AffiliateBannerRow
+from interserver_api_client.models.affiliate_banner_row import AffiliateBannerRow
 
 class TestAffiliateBannerRow(unittest.TestCase):
     """AffiliateBannerRow unit test stubs"""

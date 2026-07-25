@@ -16,4 +16,3 @@ case class GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner(
   desc: Option[String] = None,
   value: Option[String] = None
 )
-

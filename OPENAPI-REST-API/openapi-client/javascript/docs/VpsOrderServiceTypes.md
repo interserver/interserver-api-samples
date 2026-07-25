@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsOrderServiceTypes
+# InterserverApiClient.VpsOrderServiceTypes
 
 ## Properties
 

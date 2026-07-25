@@ -1,48 +1,48 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DnsUpdateRecord
 void main() {
-  final instance = DnsUpdateRecordBuilder();
-  // TODO add properties to the builder and call build()
+  final DnsUpdateRecord? instance = /* DnsUpdateRecord(...) */ null;
+  // TODO add properties to the entity
 
   group(DnsUpdateRecord, () {
-    // String name
+    // Optional<String?> name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // DnsRecordType type
+    // Optional<DnsRecordType?> type
     test('to test the property `type`', () async {
       // TODO
     });
 
-    // String content
+    // Optional<String?> content
     test('to test the property `content`', () async {
       // TODO
     });
 
-    // String ttl
+    // Optional<String?> ttl
     test('to test the property `ttl`', () async {
       // TODO
     });
 
-    // String prio
+    // Optional<String?> prio
     test('to test the property `prio`', () async {
       // TODO
     });
 
-    // String disabled
+    // Optional<String?> disabled
     test('to test the property `disabled`', () async {
       // TODO
     });
 
-    // String ordername
+    // Optional<String?> ordername
     test('to test the property `ordername`', () async {
       // TODO
     });
 
-    // String auth
+    // Optional<String?> auth
     test('to test the property `auth`', () async {
       // TODO
     });

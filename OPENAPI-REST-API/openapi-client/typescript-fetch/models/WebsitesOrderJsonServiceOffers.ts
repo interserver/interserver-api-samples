@@ -39,7 +39,7 @@ export interface WebsitesOrderJsonServiceOffers {
  * Check if a given object implements the WebsitesOrderJsonServiceOffers interface.
  */
 export function instanceOfWebsitesOrderJsonServiceOffers(value: object): value is WebsitesOrderJsonServiceOffers {
-    if (!('_1026' in value) || value['_1026'] === undefined) return false;
+    if ((!('_1026' in (value as Record<string, any>)) && !('1026' in (value as Record<string, any>))) || ((value as Record<string, any>)['_1026'] === undefined && (value as Record<string, any>)['1026'] === undefined)) return false;
     return true;
 }
 

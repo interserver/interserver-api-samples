@@ -22,4 +22,3 @@ case class ScrubIpsLogRowSchema(
   byte_count: Option[Double] = None,
   xdp_action: Option[String] = None
 )
-

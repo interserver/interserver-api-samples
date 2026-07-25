@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PlaceBuyNowServerRequest = Initialize-PSOpenAPIToolsPlaceBuyNowServerRequest  -ServerId 2343 `
+$PlaceBuyNowServerRequest = Initialize-InterserverApiPlaceBuyNowServerRequest  -ServerId 2343 `
  -ServerHostname server.int.com `
  -ServerRootPassword uD1c!@cgD
 ```

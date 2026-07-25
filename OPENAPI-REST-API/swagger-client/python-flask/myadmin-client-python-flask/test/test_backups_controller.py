@@ -13,7 +13,7 @@ from myadmin-client-python-flask.models.backup_order_put_response import BackupO
 from myadmin-client-python-flask.models.backup_row import BackupRow  # noqa: E501
 from myadmin-client-python-flask.models.backups_order import BackupsOrder  # noqa: E501
 from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoiceRows  # noqa: E501
-from myadmin-client-python-flask.models.inline_response2001 import InlineResponse2001  # noqa: E501
+from myadmin-client-python-flask.models.inline_response2002 import InlineResponse2002  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
 from myadmin-client-python-flask.test import BaseTestCase
@@ -25,7 +25,7 @@ class TestBackupsController(BaseTestCase):
     def test_add_backup(self):
         """Test case for add_backup
 
-        Place Backup Order
+        Place a new off-site backup storage order and generate the invoice
         """
         body = BackupOrderPutRequest()
         data = dict(validate_only=true,
@@ -43,7 +43,7 @@ class TestBackupsController(BaseTestCase):
     def test_cancel_backup(self):
         """Test case for cancel_backup
 
-        Cancel Backup Service
+        Cancel an off-site backup storage subscription
         """
         response = self.client.open(
             '/apiv2/backups/{id}'.format(id=56),
@@ -54,7 +54,7 @@ class TestBackupsController(BaseTestCase):
     def test_get_backup_info(self):
         """Test case for get_backup_info
 
-        Get Backup Service Details
+        Get details of a specific off-site backup storage service
         """
         response = self.client.open(
             '/apiv2/backups/{id}'.format(id=56),
@@ -65,7 +65,7 @@ class TestBackupsController(BaseTestCase):
     def test_get_backup_invoices(self):
         """Test case for get_backup_invoices
 
-        Get Backup Order Invoices
+        List invoices for a single backup-storage subscription
         """
         response = self.client.open(
             '/apiv2/backups/{id}/invoices'.format(id=56),
@@ -76,7 +76,7 @@ class TestBackupsController(BaseTestCase):
     def test_get_backup_login(self):
         """Test case for get_backup_login
 
-        Get Backup Storage Panel Login
+        Open a single sign-on session URL for the backup storage panel
         """
         response = self.client.open(
             '/apiv2/backups/{id}/login'.format(id=56),
@@ -87,7 +87,7 @@ class TestBackupsController(BaseTestCase):
     def test_get_backups_list(self):
         """Test case for get_backups_list
 
-        List Backup Services
+        List off-site backup storage subscriptions on the authenticated account
         """
         response = self.client.open(
             '/apiv2/backups',
@@ -98,7 +98,7 @@ class TestBackupsController(BaseTestCase):
     def test_get_backups_welcome_email(self):
         """Test case for get_backups_welcome_email
 
-        Resend Backup Welcome Email
+        Resend the welcome email for an off-site backup storage service
         """
         response = self.client.open(
             '/apiv2/backups/{id}/welcome_email'.format(id=56),
@@ -109,7 +109,7 @@ class TestBackupsController(BaseTestCase):
     def test_get_new_backup(self):
         """Test case for get_new_backup
 
-        Get Backup Order Form Data
+        Get backup-storage order form metadata and pricing tiers
         """
         response = self.client.open(
             '/apiv2/backups/order',
@@ -120,7 +120,7 @@ class TestBackupsController(BaseTestCase):
     def test_update_backup_info(self):
         """Test case for update_backup_info
 
-        Update Backup Information
+        Update stored metadata for a backup-storage subscription
         """
         response = self.client.open(
             '/apiv2/backups/{id}'.format(id=56),
@@ -131,7 +131,7 @@ class TestBackupsController(BaseTestCase):
     def test_validate_backup_order(self):
         """Test case for validate_backup_order
 
-        Validate Backup Order
+        Validate a backup-storage order and preview pricing without charging
         """
         body = BackupOrderPutRequest()
         data = dict(validate_only=true,

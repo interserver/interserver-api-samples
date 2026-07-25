@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.webhosting_api import WebhostingApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.webhosting_api import WebhostingApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestWebhostingApi(unittest.TestCase):
@@ -31,112 +31,112 @@ class TestWebhostingApi(unittest.TestCase):
     def test_add_website(self):
         """Test case for add_website
 
-        Place Website Order  # noqa: E501
+        Place a new webhosting order, create the invoice, and queue provisioning  # noqa: E501
         """
         pass
 
     def test_get_new_website(self):
         """Test case for get_new_website
 
-        Website Ordering Information  # noqa: E501
+        Read the webhosting order catalog — plans, packages, promo offers, pricing  # noqa: E501
         """
         pass
 
     def test_get_website_buy_ip(self):
         """Test case for get_website_buy_ip
 
-        Get Website IP Information  # noqa: E501
+        Read website IPs, current reverse DNS, and additional-IP pricing  # noqa: E501
         """
         pass
 
     def test_get_website_info(self):
         """Test case for get_website_info
 
-        Get Website Order  # noqa: E501
+        Read full configuration and status detail for one webhosting service  # noqa: E501
         """
         pass
 
     def test_get_website_invoices(self):
         """Test case for get_website_invoices
 
-        Get Website Invoices  # noqa: E501
+        List all billing invoices and recurring charges scoped to one website  # noqa: E501
         """
         pass
 
     def test_get_website_list(self):
         """Test case for get_website_list
 
-        Get Website Listing  # noqa: E501
+        List the caller's webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services  # noqa: E501
         """
         pass
 
     def test_get_websites_backups(self):
         """Test case for get_websites_backups
 
-        Get Website Backups  # noqa: E501
+        List off-site cpmove backups stored in Swift — list or inline-download archive  # noqa: E501
         """
         pass
 
     def test_get_websites_login(self):
         """Test case for get_websites_login
 
-        Hosting Panel Auto Login  # noqa: E501
+        Get a one-time auto-login URL for the website's control panel  # noqa: E501
         """
         pass
 
     def test_get_websites_welcome_email(self):
         """Test case for get_websites_welcome_email
 
-        Resend Website Welcome Email  # noqa: E501
+        Resend the webhosting welcome email with control-panel credentials and URL  # noqa: E501
         """
         pass
 
     def test_gett_website_reverse_dns(self):
         """Test case for gett_website_reverse_dns
 
-        Get Website Reverse DNS  # noqa: E501
+        Read current reverse-DNS (PTR) records for the website's IPs  # noqa: E501
         """
         pass
 
     def test_post_website_buy_ip(self):
         """Test case for post_website_buy_ip
 
-        Update Website IP DNS  # noqa: E501
+        Buy an additional IP for the website OR update reverse DNS records  # noqa: E501
         """
         pass
 
     def test_post_website_migration(self):
         """Test case for post_website_migration
 
-        Request Website Migration  # noqa: E501
+        Submit a request for InterServer staff to migrate a website from another host  # noqa: E501
         """
         pass
 
     def test_post_websites_reverse_dns(self):
         """Test case for post_websites_reverse_dns
 
-        Update Website Reverse DNS  # noqa: E501
+        Bulk-update reverse-DNS (PTR) records for one or more website IPs  # noqa: E501
         """
         pass
 
     def test_put_websites(self):
         """Test case for put_websites
 
-        Validate Webhosting Order  # noqa: E501
+        Validate a webhosting order and preview cost — dry run, no charge  # noqa: E501
         """
         pass
 
     def test_update_website_info(self):
         """Test case for update_website_info
 
-        Update Website Order  # noqa: E501
+        POST mutation hook for the website detail page (use dedicated ops where possible)  # noqa: E501
         """
         pass
 
     def test_webhosting_cancel(self):
         """Test case for webhosting_cancel
 
-        Cancel Website  # noqa: E501
+        Schedule termination of a webhosting service — wipes panel account at cycle end  # noqa: E501
         """
         pass
 

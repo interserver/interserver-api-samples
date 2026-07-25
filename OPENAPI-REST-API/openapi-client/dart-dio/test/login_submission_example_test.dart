@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LoginSubmissionExample
 void main() {
-  final instance = LoginSubmissionExampleBuilder();
-  // TODO add properties to the builder and call build()
+  final LoginSubmissionExample? instance = /* LoginSubmissionExample(...) */ null;
+  // TODO add properties to the entity
 
   group(LoginSubmissionExample, () {
     // String login
@@ -17,18 +17,18 @@ void main() {
       // TODO
     });
 
-    // String remember
+    // Optional<String?> remember
     test('to test the property `remember`', () async {
       // TODO
     });
 
-    // LoginSubmissionExampleGRecaptchaResponse gRecaptchaResponse
+    // Optional<LoginSubmissionExampleGRecaptchaResponse?> gRecaptchaResponse
     test('to test the property `gRecaptchaResponse`', () async {
       // TODO
     });
 
     // Two Factor Authentication Response.
-    // String tfa
+    // Optional<String?> tfa
     test('to test the property `tfa`', () async {
       // TODO
     });

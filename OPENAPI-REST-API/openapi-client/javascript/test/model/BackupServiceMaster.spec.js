@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BackupServiceMaster();
+    instance = new InterserverApiClient.BackupServiceMaster();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,67 +50,67 @@
   describe('BackupServiceMaster', function() {
     it('should create an instance of BackupServiceMaster', function() {
       // uncomment below and update the code to test BackupServiceMaster
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
-      //expect(instance).to.be.a(InterServerManagementApi.BackupServiceMaster);
+      //var instance = new InterserverApiClient.BackupServiceMaster();
+      //expect(instance).to.be.a(InterserverApiClient.BackupServiceMaster);
     });
 
     it('should have the property backup_id (base name: "backup_id")', function() {
       // uncomment below and update the code to test the property backup_id
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
+      //var instance = new InterserverApiClient.BackupServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_name (base name: "backup_name")', function() {
       // uncomment below and update the code to test the property backup_name
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
+      //var instance = new InterserverApiClient.BackupServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_ip (base name: "backup_ip")', function() {
       // uncomment below and update the code to test the property backup_ip
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
+      //var instance = new InterserverApiClient.BackupServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_type (base name: "backup_type")', function() {
       // uncomment below and update the code to test the property backup_type
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
+      //var instance = new InterserverApiClient.BackupServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_hdsize (base name: "backup_hdsize")', function() {
       // uncomment below and update the code to test the property backup_hdsize
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
+      //var instance = new InterserverApiClient.BackupServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_hdfree (base name: "backup_hdfree")', function() {
       // uncomment below and update the code to test the property backup_hdfree
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
+      //var instance = new InterserverApiClient.BackupServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_last_update (base name: "backup_last_update")', function() {
       // uncomment below and update the code to test the property backup_last_update
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
+      //var instance = new InterserverApiClient.BackupServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_available (base name: "backup_available")', function() {
       // uncomment below and update the code to test the property backup_available
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
+      //var instance = new InterserverApiClient.BackupServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_iowait (base name: "backup_iowait")', function() {
       // uncomment below and update the code to test the property backup_iowait
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
+      //var instance = new InterserverApiClient.BackupServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_order (base name: "backup_order")', function() {
       // uncomment below and update the code to test the property backup_order
-      //var instance = new InterServerManagementApi.BackupServiceMaster();
+      //var instance = new InterserverApiClient.BackupServiceMaster();
       //expect(instance).to.be();
     });
 

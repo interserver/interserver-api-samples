@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The WebsiteRow model module.
  * @module model/WebsiteRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsiteRow {
     /**

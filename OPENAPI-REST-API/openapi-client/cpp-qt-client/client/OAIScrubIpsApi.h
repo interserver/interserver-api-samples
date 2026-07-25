@@ -44,6 +44,7 @@
 #include "OAIGetOrderDetail_200_response.h"
 #include "OAIGetScrubIpDetails_200_response.h"
 #include "OAIPlaceScrubOrder_201_response.h"
+#include "OAIPutScrubIps_200_response.h"
 #include "OAIScrubIpFilterTypes.h"
 #include "OAIScrubIpPlaceOrder.h"
 #include "OAIScrubIpsDeleteRule_200_response.h"
@@ -159,6 +160,11 @@ public:
     virtual void placeScrubOrder(const OAIScrubIpPlaceOrder &oai_scrub_ip_place_order);
 
     /**
+    * @param[in]  oai_scrub_ip_place_order OAIScrubIpPlaceOrder [required]
+    */
+    virtual void putScrubIps(const OAIScrubIpPlaceOrder &oai_scrub_ip_place_order);
+
+    /**
     * @param[in]  id qint32 [required]
     * @param[in]  oai_delete_geo_firewall_rule OAIDelete_Geo_Firewall_Rule [required]
     */
@@ -214,6 +220,7 @@ private:
     void getScrubIpLogsCallback(OAIHttpRequestWorker *worker);
     void getScrubIpsListCallback(OAIHttpRequestWorker *worker);
     void placeScrubOrderCallback(OAIHttpRequestWorker *worker);
+    void putScrubIpsCallback(OAIHttpRequestWorker *worker);
     void scrubIpsDeleteGeoRuleCallback(OAIHttpRequestWorker *worker);
     void scrubIpsDeleteRuleCallback(OAIHttpRequestWorker *worker);
 
@@ -233,6 +240,7 @@ Q_SIGNALS:
     void getScrubIpLogsSignal(QList<OAIScrubIpsLogRowSchema> summary);
     void getScrubIpsListSignal(QList<OAIScrubIpsRowSchema> summary);
     void placeScrubOrderSignal(OAIPlaceScrubOrder_201_response summary);
+    void putScrubIpsSignal(OAIPutScrubIps_200_response summary);
     void scrubIpsDeleteGeoRuleSignal(OAIScrubIpsDeleteRule_200_response summary);
     void scrubIpsDeleteRuleSignal(OAIScrubIpsDeleteRule_200_response summary);
 
@@ -251,6 +259,7 @@ Q_SIGNALS:
     void getScrubIpLogsSignalFull(OAIHttpRequestWorker *worker, QList<OAIScrubIpsLogRowSchema> summary);
     void getScrubIpsListSignalFull(OAIHttpRequestWorker *worker, QList<OAIScrubIpsRowSchema> summary);
     void placeScrubOrderSignalFull(OAIHttpRequestWorker *worker, OAIPlaceScrubOrder_201_response summary);
+    void putScrubIpsSignalFull(OAIHttpRequestWorker *worker, OAIPutScrubIps_200_response summary);
     void scrubIpsDeleteGeoRuleSignalFull(OAIHttpRequestWorker *worker, OAIScrubIpsDeleteRule_200_response summary);
     void scrubIpsDeleteRuleSignalFull(OAIHttpRequestWorker *worker, OAIScrubIpsDeleteRule_200_response summary);
 
@@ -268,6 +277,7 @@ Q_SIGNALS:
     void getScrubIpLogsSignalError(QList<OAIScrubIpsLogRowSchema> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getScrubIpsListSignalError(QList<OAIScrubIpsRowSchema> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void placeScrubOrderSignalError(OAIPlaceScrubOrder_201_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void putScrubIpsSignalError(OAIPutScrubIps_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void scrubIpsDeleteGeoRuleSignalError(OAIScrubIpsDeleteRule_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void scrubIpsDeleteRuleSignalError(OAIScrubIpsDeleteRule_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
@@ -285,6 +295,7 @@ Q_SIGNALS:
     void getScrubIpLogsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getScrubIpsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void placeScrubOrderSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void putScrubIpsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void scrubIpsDeleteGeoRuleSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void scrubIpsDeleteRuleSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 

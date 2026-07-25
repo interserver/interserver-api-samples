@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DnsListItem = Initialize-PSOpenAPIToolsDnsListItem  -Id null `
+$DnsListItem = Initialize-InterserverApiDnsListItem  -Id null `
  -Name null `
  -Content null
 ```

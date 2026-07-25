@@ -16,4 +16,8 @@ A result row from the `Webhosting` `GET` request.
 |**websiteComment** | **String** | The comment of the website. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

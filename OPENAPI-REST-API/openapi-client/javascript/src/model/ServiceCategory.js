@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServiceCategory model module.
  * @module model/ServiceCategory
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServiceCategory {
     /**

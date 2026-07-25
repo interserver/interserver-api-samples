@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.affiliate_dock_setup import AffiliateDockSetup
+from interserver_api_client.models.affiliate_dock_setup import AffiliateDockSetup
 
 # TODO update the JSON string below
 json = "{}"

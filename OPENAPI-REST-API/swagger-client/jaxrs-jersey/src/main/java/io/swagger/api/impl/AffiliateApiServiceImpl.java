@@ -7,6 +7,7 @@ import io.swagger.model.AffiliateBannerRow;
 import io.swagger.model.AffiliateDockSetup;
 import io.swagger.model.AffiliatePaymentSetup;
 import io.swagger.model.AffiliateTrafficRow;
+import io.swagger.model.InlineResponse2001;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.MonthlyCounts;
 import io.swagger.model.StatusMonthlyBreakdown;
@@ -31,6 +32,11 @@ public class AffiliateApiServiceImpl extends AffiliateApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
+    public Response getAffiliateDownload( String st,  String ex,  Integer year, SecurityContext securityContext) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
     public Response getAffiliateRichReport(SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -41,7 +47,7 @@ public class AffiliateApiServiceImpl extends AffiliateApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response getAffiliateSalesReport(SecurityContext securityContext) throws NotFoundException {
+    public Response getAffiliateSignups( String st, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -62,16 +68,6 @@ public class AffiliateApiServiceImpl extends AffiliateApiService {
     }
     @Override
     public Response updateAffiliateDockSetup(AffiliateDockSetup body, SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-    }
-    @Override
-    public Response updateAffiliateLandingPage(String affiliateDockTitle, String affiliateDockDescription, String referrerCoupon, SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-    }
-    @Override
-    public Response updateAffiliateLandingPage(AffiliateDockSetup body, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }

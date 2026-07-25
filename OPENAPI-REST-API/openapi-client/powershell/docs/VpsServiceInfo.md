@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsServiceInfo = Initialize-PSOpenAPIToolsVpsServiceInfo  -VpsId 85872 `
+$VpsServiceInfo = Initialize-InterserverApiVpsServiceInfo  -VpsId 85872 `
  -VpsCustid 223513 `
  -VpsServer 2439 `
  -VpsIp 1.2.3.4 `

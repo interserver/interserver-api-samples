@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServersBuyNowError model module.
  * @module model/ServersBuyNowError
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServersBuyNowError {
     /**

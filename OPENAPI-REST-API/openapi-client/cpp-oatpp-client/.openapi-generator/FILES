@@ -42,8 +42,6 @@ model/AffiliateBannerRow.hpp
 model/AffiliateDockSetup.hpp
 model/AffiliatePaymentSetup.hpp
 model/AffiliateTrafficRow.hpp
-model/AssetServer.hpp
-model/AssetServer_CPU_inner.hpp
 model/Backup.hpp
 model/BackupBillingDetails.hpp
 model/BackupClientLink.hpp
@@ -62,7 +60,6 @@ model/BackupsOrder.hpp
 model/BackupsOrderPackageCosts.hpp
 model/BackupsOrderServiceTypes.hpp
 model/BackupsOrder_serviceTypes.hpp
-model/Bandwidth.hpp
 model/BillingAddCcRequest.hpp
 model/BillingInvoiceDetail.hpp
 model/BillingInvoiceList.hpp
@@ -88,11 +85,6 @@ model/ChargeInvoiceRows_invoices_value.hpp
 model/ChargeInvoiceRows_invoices_value_paid_invoices_value.hpp
 model/ChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value.hpp
 model/CloseTicketResponseSchema.hpp
-model/ConfigIds.hpp
-model/ConfigLists.hpp
-model/ControlPanel.hpp
-model/Cpu.hpp
-model/CpuWithDefaults.hpp
 model/CreateFilter.hpp
 model/CreateFilter_201_response.hpp
 model/CreateFilter_400_response.hpp
@@ -106,6 +98,7 @@ model/CreateRule_500_response.hpp
 model/DeleteFilter_200_response.hpp
 model/DeleteFilter_400_response.hpp
 model/DeleteFilter_500_response.hpp
+model/DeleteMailAlert_request.hpp
 model/Delete_Firewall_Rule.hpp
 model/Delete_Geo_Firewall_Rule.hpp
 model/DenyRuleNew.hpp
@@ -138,10 +131,10 @@ model/DomainNameserverGetResponse_inner.hpp
 model/DomainNameserverPostRequest.hpp
 model/DomainNameserverPutRequest.hpp
 model/DomainOrder.hpp
+model/DomainOrderRequest.hpp
 model/DomainOrderResponse.hpp
 model/DomainOrderResponse_attributes.hpp
 model/DomainOrderServices10001.hpp
-model/DomainOrderTldServices.hpp
 model/DomainOrder_services.hpp
 model/DomainOwnerContact.hpp
 model/DomainProvProcessPending.hpp
@@ -158,12 +151,13 @@ model/EmailAddress.hpp
 model/EmailAddressName.hpp
 model/EnableScrub_200_response.hpp
 model/EnableScrub_500_response.hpp
-model/FieldLabel.hpp
+model/FloatingIpOrderRequest.hpp
 model/Floating_ipsCancel_200_response.hpp
-model/FormValues.hpp
 model/GenericResponse.hpp
 model/GetAccountInfo_401_response.hpp
+model/GetAccountLocales_200_response_value.hpp
 model/GetAccountTfaSetup_200_response.hpp
+model/GetAffiliateSignups_200_response.hpp
 model/GetOauthRedirect_200_response.hpp
 model/GetOrderDetail_200_response.hpp
 model/GetOrderDetail_200_response_ips_inner.hpp
@@ -180,7 +174,6 @@ model/GetScrubIpDetails_200_response_filter_firewall_filters_inner.hpp
 model/GetScrubIpDetails_200_response_filter_firewall_rules_inner.hpp
 model/GetScrubIpDetails_200_response_serviceInfo.hpp
 model/GetWebsiteBuyIp_200_response.hpp
-model/HardDrive.hpp
 model/Home.hpp
 model/HomeDetailsModulesBackups.hpp
 model/HomeDetailsModulesDomains.hpp
@@ -207,10 +200,6 @@ model/Home_ticketStatus.hpp
 model/Home_ticketStatusView.hpp
 model/HostnameObject.hpp
 model/InitiatePayment_200_response.hpp
-model/Inline_object.hpp
-model/Invoice.hpp
-model/InvoiceRow.hpp
-model/IpBlock.hpp
 model/IpLimitRange.hpp
 model/IpObject.hpp
 model/License.hpp
@@ -218,6 +207,7 @@ model/LicenseBillingDetails.hpp
 model/LicenseClientLink.hpp
 model/LicenseIpInfo.hpp
 model/LicenseIpInfoRow.hpp
+model/LicenseOrderRequest.hpp
 model/LicenseRow.hpp
 model/LicenseServiceInfo.hpp
 model/LicenseServiceType.hpp
@@ -255,6 +245,7 @@ model/MailExtraInfoTableRow.hpp
 model/MailLog.hpp
 model/MailLogEntry.hpp
 model/MailOrder.hpp
+model/MailOrderRequest.hpp
 model/MailRow.hpp
 model/MailSchema.hpp
 model/MailSchema_extraInfoTables.hpp
@@ -267,15 +258,13 @@ model/MailStatsType_volume_ip.hpp
 model/MailStatsType_volume_to.hpp
 model/MailTutorialsTable.hpp
 model/MailTutorialsTableRow.hpp
-model/MemoryOption.hpp
 model/ModuleSettings.hpp
 model/Modules.hpp
 model/MonthlyCounts.hpp
-model/OperatingSystem.hpp
 model/PasswordRequest.hpp
+model/PatchBillingCreditCardVerify_request.hpp
 model/PatchOauthTwoFactor_200_response.hpp
 model/PatchOauthTwoFactor_request.hpp
-model/PaymentInvoiceRows.hpp
 model/PlaceBuyNowServer_request.hpp
 model/PlaceScrubOrder_201_response.hpp
 model/PlaceScrubOrder_201_response_order_details.hpp
@@ -286,6 +275,8 @@ model/PostWebsiteBuyIp_200_response.hpp
 model/PostWebsiteBuyIp_request.hpp
 model/PostWebsiteMigration_200_response.hpp
 model/PostWebsiteMigration_request.hpp
+model/PutScrubIps_200_response.hpp
+model/QsOrderRequest.hpp
 model/QueueResponse.hpp
 model/Quickserver.hpp
 model/QuickserverAddons.hpp
@@ -310,8 +301,6 @@ model/QuickserverServiceMaster.hpp
 model/Quickserver_extraInfoTables.hpp
 model/Quickserver_serviceExtra.hpp
 model/QuickserversCancel_200_response.hpp
-model/RaidOption.hpp
-model/Region.hpp
 model/ReplyTicketRequest.hpp
 model/ReplyTicketResponseSchema.hpp
 model/RestoreRequest.hpp
@@ -331,6 +320,8 @@ model/Server.hpp
 model/ServerAsset.hpp
 model/ServerAssets.hpp
 model/ServerBillingDetails.hpp
+model/ServerBulkIpmiPowerResponse.hpp
+model/ServerBulkIpmiPowerResponse_results_inner.hpp
 model/ServerClientLink.hpp
 model/ServerExtraInfoTables.hpp
 model/ServerIpmiLiveInfo.hpp
@@ -349,10 +340,11 @@ model/ServerOrderControlPanel.hpp
 model/ServerOrderFieldLabel.hpp
 model/ServerOrderFieldLabels.hpp
 model/ServerOrderFormValues.hpp
-model/ServerOrderGetResponse.hpp
 model/ServerOrderIP.hpp
 model/ServerOrderMemory.hpp
 model/ServerOrderOS.hpp
+model/ServerOrderPostRequest.hpp
+model/ServerOrderPostRequest_hd.hpp
 model/ServerOrderRAID.hpp
 model/ServerOrder_bandwidth_li.hpp
 model/ServerOrder_cp_li.hpp
@@ -378,6 +370,7 @@ model/ServiceTypes.hpp
 model/Services.hpp
 model/ServicesInfo.hpp
 model/SslCancel_200_response.hpp
+model/SslOrderRequest.hpp
 model/StatusMonthlyBreakdown.hpp
 model/SuccessTextResponse.hpp
 model/TemplateRequest.hpp
@@ -438,7 +431,6 @@ model/VpsServiceMaster.hpp
 model/VpsSnapshot.hpp
 model/VpsTemplateRow.hpp
 model/VpsTemplatesList.hpp
-model/VpsTrafficDataDataResponse.hpp
 model/VpsTrafficDataSectionResponse.hpp
 model/VpsTrafficHistoryResponse.hpp
 model/VpsTrafficHistorySectionDataResponse.hpp
@@ -457,6 +449,8 @@ model/WebsiteBillingDetails.hpp
 model/WebsiteClientLink.hpp
 model/WebsiteExtraInfoTables.hpp
 model/WebsiteLoginResponse.hpp
+model/WebsiteOrderPostRequest.hpp
+model/WebsiteOrderPutRequest.hpp
 model/WebsiteRow.hpp
 model/WebsiteServiceInfo.hpp
 model/WebsiteServiceMaster.hpp

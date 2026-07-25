@@ -1,4 +1,4 @@
-# openapi::VpsOrderPutResponse
+# interserverapi::VpsOrderPutResponse
 
 Response from VPS order validation request
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeleteFilter500Response = Initialize-PSOpenAPIToolsDeleteFilter500Response  -Success false `
+$DeleteFilter500Response = Initialize-InterserverApiDeleteFilter500Response  -Success false `
  -Text Unable to delete filter.
 ```
 

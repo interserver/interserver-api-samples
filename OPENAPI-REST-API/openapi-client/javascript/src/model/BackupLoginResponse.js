@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BackupLoginResponse model module.
  * @module model/BackupLoginResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BackupLoginResponse {
     /**

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailSchemaExtraInfoTables } from './api';
+import { MailSchemaExtraInfoTables } from '@interserver/myadmin-client';
 
 const instance: MailSchemaExtraInfoTables = {
     mail,

@@ -1,4 +1,4 @@
-# SwaggerClient::Account2faBody1
+# InterserverApiClient::Account2faBody1
 
 ## Properties
 Name | Type | Description | Notes

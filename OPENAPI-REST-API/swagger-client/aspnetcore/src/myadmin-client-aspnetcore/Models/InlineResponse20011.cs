@@ -27,19 +27,20 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20011 : IEquatable<InlineResponse20011>
     { 
         /// <summary>
+        /// Gets or Sets Success
+        /// </summary>
+        [Required]
+
+        [DataMember(Name="success")]
+        public bool? Success { get; set; }
+
+        /// <summary>
         /// Gets or Sets Text
         /// </summary>
+        [Required]
 
         [DataMember(Name="text")]
         public string Text { get; set; }
-
-        /// <summary>
-        /// A pre-signed download URL valid for 24 hours.
-        /// </summary>
-        /// <value>A pre-signed download URL valid for 24 hours.</value>
-
-        [DataMember(Name="url")]
-        public string Url { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -49,8 +50,8 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20011 {\n");
+            sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("  Text: ").Append(Text).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,14 +89,14 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
+                    Success == other.Success ||
+                    Success != null &&
+                    Success.Equals(other.Success)
+                ) && 
+                (
                     Text == other.Text ||
                     Text != null &&
                     Text.Equals(other.Text)
-                ) && 
-                (
-                    Url == other.Url ||
-                    Url != null &&
-                    Url.Equals(other.Url)
                 );
         }
 
@@ -109,10 +110,10 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
+                    if (Success != null)
+                    hashCode = hashCode * 59 + Success.GetHashCode();
                     if (Text != null)
                     hashCode = hashCode * 59 + Text.GetHashCode();
-                    if (Url != null)
-                    hashCode = hashCode * 59 + Url.GetHashCode();
                 return hashCode;
             }
         }

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeDetailsModules = Initialize-PSOpenAPIToolsHomeDetailsModules  -Domains null `
+$HomeDetailsModules = Initialize-InterserverApiHomeDetailsModules  -Domains null `
  -Webhosting null `
  -Vps null `
  -Licenses null `

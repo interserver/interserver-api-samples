@@ -109,7 +109,7 @@ static bool addFloatingIpProcessor(MemoryStruct_s p_chunk, long code, char* erro
 }
 
 static bool addFloatingIpHelper(char * accessToken,
-	
+	std::shared_ptr<FloatingIpOrderRequest> floatingIpOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -129,6 +129,19 @@ static bool addFloatingIpHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("FloatingIpOrderRequest")) {
+		node = converttoJson(&floatingIpOrderRequest, "FloatingIpOrderRequest", "");
+	}
+	
+	char *jsonStr =  floatingIpOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/floating_ips/order");
 	int pos;
@@ -180,22 +193,22 @@ static bool addFloatingIpHelper(char * accessToken,
 
 
 bool FloatingIPsManager::addFloatingIpAsync(char * accessToken,
-	
+	std::shared_ptr<FloatingIpOrderRequest> floatingIpOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addFloatingIpHelper(accessToken,
-	
+	floatingIpOrderRequest, 
 	handler, userData, true);
 }
 
 bool FloatingIPsManager::addFloatingIpSync(char * accessToken,
-	
+	std::shared_ptr<FloatingIpOrderRequest> floatingIpOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addFloatingIpHelper(accessToken,
-	
+	floatingIpOrderRequest, 
 	handler, userData, false);
 }
 
@@ -1298,7 +1311,7 @@ static bool putFloatingIpsProcessor(MemoryStruct_s p_chunk, long code, char* err
 }
 
 static bool putFloatingIpsHelper(char * accessToken,
-	
+	std::shared_ptr<FloatingIpOrderRequest> floatingIpOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -1318,6 +1331,19 @@ static bool putFloatingIpsHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("FloatingIpOrderRequest")) {
+		node = converttoJson(&floatingIpOrderRequest, "FloatingIpOrderRequest", "");
+	}
+	
+	char *jsonStr =  floatingIpOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/floating_ips/order");
 	int pos;
@@ -1369,22 +1395,22 @@ static bool putFloatingIpsHelper(char * accessToken,
 
 
 bool FloatingIPsManager::putFloatingIpsAsync(char * accessToken,
-	
+	std::shared_ptr<FloatingIpOrderRequest> floatingIpOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putFloatingIpsHelper(accessToken,
-	
+	floatingIpOrderRequest, 
 	handler, userData, true);
 }
 
 bool FloatingIPsManager::putFloatingIpsSync(char * accessToken,
-	
+	std::shared_ptr<FloatingIpOrderRequest> floatingIpOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putFloatingIpsHelper(accessToken,
-	
+	floatingIpOrderRequest, 
 	handler, userData, false);
 }
 

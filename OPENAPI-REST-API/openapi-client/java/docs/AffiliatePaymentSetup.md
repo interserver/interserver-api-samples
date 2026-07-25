@@ -12,4 +12,8 @@ Affiliate Payment Setup.  Here you can set if you want the payments to go to `pr
 |**affiliatePaymentMethod** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

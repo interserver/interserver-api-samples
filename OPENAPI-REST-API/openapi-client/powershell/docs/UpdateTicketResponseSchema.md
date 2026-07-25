@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateTicketResponseSchema = Initialize-PSOpenAPIToolsUpdateTicketResponseSchema  -Success null `
+$UpdateTicketResponseSchema = Initialize-InterserverApiUpdateTicketResponseSchema  -Success null `
  -Message null
 ```
 

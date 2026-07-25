@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerNetworkInfoSwitchports
+# InterserverApiClient.ServerNetworkInfoSwitchports
 
 ## Properties
 

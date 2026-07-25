@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LicenseServiceInfo();
+    instance = new InterserverApiClient.LicenseServiceInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,79 +50,79 @@
   describe('LicenseServiceInfo', function() {
     it('should create an instance of LicenseServiceInfo', function() {
       // uncomment below and update the code to test LicenseServiceInfo
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.LicenseServiceInfo);
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
+      //expect(instance).to.be.a(InterserverApiClient.LicenseServiceInfo);
     });
 
     it('should have the property license_id (base name: "license_id")', function() {
       // uncomment below and update the code to test the property license_id
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_type (base name: "license_type")', function() {
       // uncomment below and update the code to test the property license_type
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_currency (base name: "license_currency")', function() {
       // uncomment below and update the code to test the property license_currency
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_order_date (base name: "license_order_date")', function() {
       // uncomment below and update the code to test the property license_order_date
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_custid (base name: "license_custid")', function() {
       // uncomment below and update the code to test the property license_custid
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_ip (base name: "license_ip")', function() {
       // uncomment below and update the code to test the property license_ip
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_status (base name: "license_status")', function() {
       // uncomment below and update the code to test the property license_status
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_invoice (base name: "license_invoice")', function() {
       // uncomment below and update the code to test the property license_invoice
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_coupon (base name: "license_coupon")', function() {
       // uncomment below and update the code to test the property license_coupon
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_hostname (base name: "license_hostname")', function() {
       // uncomment below and update the code to test the property license_hostname
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_key (base name: "license_key")', function() {
       // uncomment below and update the code to test the property license_key
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property license_extra (base name: "license_extra")', function() {
       // uncomment below and update the code to test the property license_extra
-      //var instance = new InterServerManagementApi.LicenseServiceInfo();
+      //var instance = new InterserverApiClient.LicenseServiceInfo();
       //expect(instance).to.be();
     });
 

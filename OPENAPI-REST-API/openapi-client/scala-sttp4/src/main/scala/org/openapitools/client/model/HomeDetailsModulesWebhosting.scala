@@ -27,4 +27,3 @@ case class HomeDetailsModulesWebhosting(
   /* Link to view websites list. */
   list_link: Option[String] = None
 )
-

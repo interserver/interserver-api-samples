@@ -17,5 +17,4 @@ import scala.collection.mutable.ListBuffer
    * List of registered nameserver hosts with glue record metadata.
    */
 case class DomainNameserverGetResponse(
-)
-
+) extends ListBuffer[DomainNameserverGetResponseInner]

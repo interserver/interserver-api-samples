@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerRow = Initialize-PSOpenAPIToolsServerRow  -ServerId 8404 `
+$ServerRow = Initialize-InterserverApiServerRow  -ServerId 8404 `
  -AccountLid detain@interserver.net `
  -ServerHostname testsignup.is.net `
  -ServerStatus deleted

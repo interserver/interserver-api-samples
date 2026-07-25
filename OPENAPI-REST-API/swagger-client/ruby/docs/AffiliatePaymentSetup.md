@@ -1,4 +1,4 @@
-# SwaggerClient::AffiliatePaymentSetup
+# InterserverApiClient::AffiliatePaymentSetup
 
 ## Properties
 Name | Type | Description | Notes

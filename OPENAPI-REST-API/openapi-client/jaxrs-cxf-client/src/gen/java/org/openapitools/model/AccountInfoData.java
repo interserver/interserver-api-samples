@@ -1358,7 +1358,7 @@ public class AccountInfoData  {
    * @return _2faGoogleEnabled
   **/
   @JsonProperty("2fa_google_enabled")
-  public Boolean get2faGoogleEnabled() {
+  public Boolean is2faGoogleEnabled() {
     return _2faGoogleEnabled;
   }
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.dns_list_item import DnsListItem
+from interserver_api_client.models.dns_list_item import DnsListItem
 
 # TODO update the JSON string below
 json = "{}"

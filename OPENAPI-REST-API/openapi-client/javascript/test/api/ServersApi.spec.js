@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServersApi();
+    instance = new InterserverApiClient.ServersApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -158,10 +158,10 @@
         done();
       });
     });
-    describe('putServers', function() {
-      it('should call putServers successfully', function(done) {
-        //uncomment below and update the code to test putServers
-        //instance.putServers(function(error) {
+    describe('serverBulkIpmiPowerGet', function() {
+      it('should call serverBulkIpmiPowerGet successfully', function(done) {
+        //uncomment below and update the code to test serverBulkIpmiPowerGet
+        //instance.serverBulkIpmiPowerGet(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

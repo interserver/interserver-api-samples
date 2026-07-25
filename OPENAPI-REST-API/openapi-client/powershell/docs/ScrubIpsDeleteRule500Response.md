@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ScrubIpsDeleteRule500Response = Initialize-PSOpenAPIToolsScrubIpsDeleteRule500Response  -Success false `
+$ScrubIpsDeleteRule500Response = Initialize-InterserverApiScrubIpsDeleteRule500Response  -Success false `
  -Text Unable to deleted firewall rule.
 ```
 

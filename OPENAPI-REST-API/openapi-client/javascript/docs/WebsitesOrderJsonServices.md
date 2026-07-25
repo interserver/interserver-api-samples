@@ -1,4 +1,4 @@
-# InterServerManagementApi.WebsitesOrderJsonServices
+# InterserverApiClient.WebsitesOrderJsonServices
 
 ## Properties
 

@@ -24,10 +24,10 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::ScrubIpsApi');
+use_ok('InterServerAPI::ScrubIpsApi');
 
-my $api = OpenAPIClient::ScrubIpsApi->new();
-isa_ok($api, 'OpenAPIClient::ScrubIpsApi');
+my $api = InterServerAPI::ScrubIpsApi->new();
+isa_ok($api, 'InterServerAPI::ScrubIpsApi');
 
 #
 # cancel_scrub_ip test
@@ -127,6 +127,13 @@ isa_ok($api, 'OpenAPIClient::ScrubIpsApi');
 # uncomment below and update the test
 #my $place_scrub_order_scrub_ip_place_order = undef; # replace NULL with a proper value
 #my $place_scrub_order_result = $api->place_scrub_order(scrub_ip_place_order => $place_scrub_order_scrub_ip_place_order);
+
+#
+# put_scrub_ips test
+#
+# uncomment below and update the test
+#my $put_scrub_ips_scrub_ip_place_order = undef; # replace NULL with a proper value
+#my $put_scrub_ips_result = $api->put_scrub_ips(scrub_ip_place_order => $put_scrub_ips_scrub_ip_place_order);
 
 #
 # scrub_ips_delete_geo_rule test

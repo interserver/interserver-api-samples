@@ -11,21 +11,12 @@ import Foundation
 public struct InlineResponse20027: Codable {
 
 
-    public var bandwidth: [InlineResponse20027Bandwidth]?
+    public var message: String?
 
-    public var ips: [InlineResponse20027Ips]?
-
-    public var os: [InlineResponse20027Os]?
-
-    public var cp: [InlineResponse20027Cp]?
-
-    public var raid: [InlineResponse20027Raid]?
-    public init(bandwidth: [InlineResponse20027Bandwidth]? = nil, ips: [InlineResponse20027Ips]? = nil, os: [InlineResponse20027Os]? = nil, cp: [InlineResponse20027Cp]? = nil, raid: [InlineResponse20027Raid]? = nil) { 
-        self.bandwidth = bandwidth
-        self.ips = ips
-        self.os = os
-        self.cp = cp
-        self.raid = raid
+    public var success: Bool?
+    public init(message: String? = nil, success: Bool? = nil) { 
+        self.message = message
+        self.success = success
     }
 
 }

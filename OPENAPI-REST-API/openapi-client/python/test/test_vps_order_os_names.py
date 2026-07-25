@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_order_os_names import VpsOrderOsNames
+from interserver_api_client.models.vps_order_os_names import VpsOrderOsNames
 
 class TestVpsOrderOsNames(unittest.TestCase):
     """VpsOrderOsNames unit test stubs"""

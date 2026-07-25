@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.vps_order_location_stock import VpsOrderLocationStock  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.vps_order_location_stock import VpsOrderLocationStock  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestVpsOrderLocationStock(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestVpsOrderLocationStock(unittest.TestCase):
     def testVpsOrderLocationStock(self):
         """Test VpsOrderLocationStock"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.vps_order_location_stock.VpsOrderLocationStock()  # noqa: E501
+        # model = interserver_api_client.models.vps_order_location_stock.VpsOrderLocationStock()  # noqa: E501
         pass
 
 

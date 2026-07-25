@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QuickserverOrder();
+    instance = new InterserverApiClient.QuickserverOrder();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('QuickserverOrder', function() {
     it('should create an instance of QuickserverOrder', function() {
       // uncomment below and update the code to test QuickserverOrder
-      //var instance = new InterServerManagementApi.QuickserverOrder();
-      //expect(instance).to.be.a(InterServerManagementApi.QuickserverOrder);
+      //var instance = new InterserverApiClient.QuickserverOrder();
+      //expect(instance).to.be.a(InterserverApiClient.QuickserverOrder);
     });
 
     it('should have the property qs_id (base name: "qs_id")', function() {
       // uncomment below and update the code to test the property qs_id
-      //var instance = new InterServerManagementApi.QuickserverOrder();
+      //var instance = new InterserverApiClient.QuickserverOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property server_details (base name: "server_details")', function() {
       // uncomment below and update the code to test the property server_details
-      //var instance = new InterServerManagementApi.QuickserverOrder();
+      //var instance = new InterserverApiClient.QuickserverOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property templates (base name: "templates")', function() {
       // uncomment below and update the code to test the property templates
-      //var instance = new InterServerManagementApi.QuickserverOrder();
+      //var instance = new InterserverApiClient.QuickserverOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property version (base name: "version")', function() {
       // uncomment below and update the code to test the property version
-      //var instance = new InterServerManagementApi.QuickserverOrder();
+      //var instance = new InterserverApiClient.QuickserverOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property distro_sel (base name: "distro_sel")', function() {
       // uncomment below and update the code to test the property distro_sel
-      //var instance = new InterServerManagementApi.QuickserverOrder();
+      //var instance = new InterserverApiClient.QuickserverOrder();
       //expect(instance).to.be();
     });
 

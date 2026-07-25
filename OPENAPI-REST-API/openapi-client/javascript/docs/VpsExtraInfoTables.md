@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsExtraInfoTables
+# InterserverApiClient.VpsExtraInfoTables
 
 ## Properties
 

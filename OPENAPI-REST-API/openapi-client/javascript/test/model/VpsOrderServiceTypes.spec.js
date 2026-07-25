@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsOrderServiceTypes();
+    instance = new InterserverApiClient.VpsOrderServiceTypes();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('VpsOrderServiceTypes', function() {
     it('should create an instance of VpsOrderServiceTypes', function() {
       // uncomment below and update the code to test VpsOrderServiceTypes
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsOrderServiceTypes);
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes();
+      //expect(instance).to.be.a(InterserverApiClient.VpsOrderServiceTypes);
     });
 
     it('should have the property _32 (base name: "32")', function() {
       // uncomment below and update the code to test the property _32
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes();
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes();
       //expect(instance).to.be();
     });
 

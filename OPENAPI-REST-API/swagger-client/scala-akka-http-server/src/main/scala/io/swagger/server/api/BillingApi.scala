@@ -16,12 +16,13 @@ import io.swagger.server.model.BillingInvoiceList
 import io.swagger.server.model.BillingPaymentMethodRequest
 import io.swagger.server.model.BillingPrepayRequest
 import io.swagger.server.model.BillingVerifyCcRequest
-import io.swagger.server.model.Invoice
+import io.swagger.server.model.Id_verify_body
 import io.swagger.server.model.MonthlyCounts
 import io.swagger.server.model.StatusMonthlyBreakdown
 import io.swagger.server.model.SuccessTextResponse
 import io.swagger.server.model.TextResponse
-import io.swagger.server.model.inline_response_200_9
+import io.swagger.server.model.inline_response_200_1
+import io.swagger.server.model.inline_response_200_10
 import io.swagger.server.model.inline_response_401
 
 class BillingApi(
@@ -31,21 +32,6 @@ class BillingApi(
   import billingMarshaller._
 
   lazy val route: Route =
-    path() { 
-      post {
-        
-          
-            formFields("name".as[String], "address".as[String], "city".as[String], "state".as[String], "country".as[String], "zip".as[String], "cc".as[String], "cc_exp".as[String], "cc_ccv2".as[String]) { (name, address, city, state, country, zip, cc, ccExp, ccCcv2) =>
-              
-                entity(as[BillingAddCcRequest]){ body =>
-                  billingService.addAccountCreditCard(name = name, address = address, city = city, state = state, country = country, zip = zip, cc = cc, ccExp = ccExp, ccCcv2 = ccCcv2, body = body)
-                }
-             
-            }
-         
-       
-      }
-    } ~
     path() { 
       post {
         
@@ -72,21 +58,6 @@ class BillingApi(
                 }
              
             }
-         
-       
-      }
-    } ~
-    path() { (id) => 
-      delete {
-        
-          
-            
-              
-                
-                  billingService.deleteAccountCreditCard(id = id)
-               
-             
-           
          
        
       }
@@ -153,6 +124,21 @@ class BillingApi(
     } ~
     path() { 
       get {
+        parameters("st".as[String].?, "ex".as[String].?, "year".as[Int].?) { (st, ex, year) =>
+          
+            
+              
+                
+                  billingService.getAffiliateDownload(st = st, ex = ex, year = year)
+               
+             
+           
+         
+        }
+      }
+    } ~
+    path() { 
+      get {
         
           
             
@@ -183,17 +169,17 @@ class BillingApi(
     } ~
     path() { 
       get {
-        
+        parameters("st".as[String].?) { (st) =>
           
             
               
                 
-                  billingService.getAffiliateSalesReport()
+                  billingService.getAffiliateSignups(st = st)
                
              
            
          
-       
+        }
       }
     } ~
     path() { 
@@ -301,21 +287,6 @@ class BillingApi(
        
       }
     } ~
-    path() { 
-      get {
-        parameters("searchString".as[String].?, "skip".as[Int].?, "limit".as[Int].?) { (searchString, skip, limit) =>
-          
-            
-              
-                
-                  billingService.getInvoices(searchString = searchString, skip = skip, limit = limit)
-               
-             
-           
-         
-        }
-      }
-    } ~
     path() { (method, invoices) => 
       get {
         
@@ -327,6 +298,21 @@ class BillingApi(
                
              
            
+         
+       
+      }
+    } ~
+    path() { (id) => 
+      patch {
+        
+          
+            formFields("cc_ccv2".as[String]) { (ccCcv2) =>
+              
+                entity(as[Id_verify_body]){ body =>
+                  billingService.patchBillingCreditCardVerify(body = body, ccCcv2 = ccCcv2, id = id)
+                }
+             
+            }
          
        
       }
@@ -346,21 +332,6 @@ class BillingApi(
        
       }
     } ~
-    path() { (id) => 
-      post {
-        
-          
-            
-              
-                
-                  billingService.updateAccountCreditCard(id = id)
-               
-             
-           
-         
-       
-      }
-    } ~
     path() { 
       post {
         
@@ -369,21 +340,6 @@ class BillingApi(
               
                 entity(as[AffiliateDockSetup]){ body =>
                   billingService.updateAffiliateDockSetup(affiliateDockTitle = affiliateDockTitle, affiliateDockDescription = affiliateDockDescription, referrerCoupon = referrerCoupon, body = body)
-                }
-             
-            }
-         
-       
-      }
-    } ~
-    path() { 
-      post {
-        
-          
-            formFields("affiliate_dock_title".as[String], "affiliate_dock_description".as[String], "referrer_coupon".as[String]) { (affiliateDockTitle, affiliateDockDescription, referrerCoupon) =>
-              
-                entity(as[AffiliateDockSetup]){ body =>
-                  billingService.updateAffiliateLandingPage(affiliateDockTitle = affiliateDockTitle, affiliateDockDescription = affiliateDockDescription, referrerCoupon = referrerCoupon, body = body)
                 }
              
             }
@@ -440,17 +396,6 @@ class BillingApi(
 
 trait BillingApiService {
 
-  def addAccountCreditCard200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
-    complete((200, responseSuccessTextResponse))
-  def addAccountCreditCard401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((401, responseinline_response_401))
-  /**
-   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
-   * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   */
-  def addAccountCreditCard(name: String, address: String, city: String, state: String, country: String, zip: String, cc: String, ccExp: String, ccCcv2: String, body: BillingAddCcRequest)
-      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
-
   def addBillingCreditCard200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
   def addBillingCreditCard401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -472,17 +417,6 @@ trait BillingApiService {
    */
   def addBillingPrepay(body: BillingPrepayRequest, module: String, amount: String, automaticUse: String)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
-
-  def deleteAccountCreditCard200(responseString: String): Route =
-    complete((200, responseString))
-  def deleteAccountCreditCard401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((401, responseinline_response_401))
-  /**
-   * Code: 200, Message: Simple string response, DataType: String
-   * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   */
-  def deleteAccountCreditCard(id: String)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def deleteBillingCreditCard200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
@@ -528,6 +462,17 @@ trait BillingApiService {
   def getAffiliateBanners()
       (implicit toEntityMarshallerAffiliateBannerRowarray: ToEntityMarshaller[List[AffiliateBannerRow]], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def getAffiliateDownload200: Route =
+    complete((200, "Affiliate report file download. The response Content-Type matches the requested format (text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, or application/pdf)."))
+  def getAffiliateDownload401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Affiliate report file download. The response Content-Type matches the requested format (text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, or application/pdf).
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def getAffiliateDownload(st: Option[String], ex: Option[String], year: Option[Int])
+      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
   def getAffiliateRichReport200(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
     complete((200, responseTextResponse))
   def getAffiliateRichReport401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -550,16 +495,16 @@ trait BillingApiService {
   def getAffiliateSalesGraph(days: Option[Int])
       (implicit toEntityMarshallerStatusMonthlyBreakdown: ToEntityMarshaller[StatusMonthlyBreakdown], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def getAffiliateSalesReport200(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
-    complete((200, responseTextResponse))
-  def getAffiliateSalesReport401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+  def getAffiliateSignups200(responseinline_response_200_1: inline_response_200_1)(implicit toEntityMarshallerinline_response_200_1: ToEntityMarshaller[inline_response_200_1]): Route =
+    complete((200, responseinline_response_200_1))
+  def getAffiliateSignups401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Response with a text message field., DataType: TextResponse
+   * Code: 200, Message: Affiliate signup statistics., DataType: inline_response_200_1
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def getAffiliateSalesReport()
-      (implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+  def getAffiliateSignups(st: Option[String])
+      (implicit toEntityMarshallerinline_response_200_1: ToEntityMarshaller[inline_response_200_1], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getAffiliateTrafficGraph200(responseMonthlyCounts: MonthlyCounts)(implicit toEntityMarshallerMonthlyCounts: ToEntityMarshaller[MonthlyCounts]): Route =
     complete((200, responseMonthlyCounts))
@@ -638,33 +583,27 @@ trait BillingApiService {
   def getBillingPrePays()
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def getInvoices200(responseInvoicearray: List[Invoice])(implicit toEntityMarshallerInvoicearray: ToEntityMarshaller[List[Invoice]]): Route =
-    complete((200, responseInvoicearray))
-  def getInvoices400: Route =
-    complete((400, "bad input parameter"))
-  def getInvoices401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((401, responseinline_response_401))
-  def getInvoices404(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((404, responseinline_response_401))
-  /**
-   * Code: 200, Message: search results matching criteria, DataType: List[Invoice]
-   * Code: 400, Message: bad input parameter
-   * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   * Code: 404, Message: Unauthorized, DataType: inline_response_401
-   */
-  def getInvoices(searchString: Option[String], skip: Option[Int], limit: Option[Int])
-      (implicit toEntityMarshallerInvoicearray: ToEntityMarshaller[List[Invoice]], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
-
-  def initiatePayment200(responseinline_response_200_9: inline_response_200_9)(implicit toEntityMarshallerinline_response_200_9: ToEntityMarshaller[inline_response_200_9]): Route =
-    complete((200, responseinline_response_200_9))
+  def initiatePayment200(responseinline_response_200_10: inline_response_200_10)(implicit toEntityMarshallerinline_response_200_10: ToEntityMarshaller[inline_response_200_10]): Route =
+    complete((200, responseinline_response_200_10))
   def initiatePayment401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Payment initiation response with redirect or form data., DataType: inline_response_200_9
+   * Code: 200, Message: Payment initiation response with redirect or form data., DataType: inline_response_200_10
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def initiatePayment(method: String, invoices: String)
-      (implicit toEntityMarshallerinline_response_200_9: ToEntityMarshaller[inline_response_200_9], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_10: ToEntityMarshaller[inline_response_200_10], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
+  def patchBillingCreditCardVerify200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
+    complete((200, responseSuccessTextResponse))
+  def patchBillingCreditCardVerify401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def patchBillingCreditCardVerify(body: Id_verify_body, ccCcv2: String, id: Int)
+      (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def postBillingCreditCardVerify200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
@@ -677,17 +616,6 @@ trait BillingApiService {
   def postBillingCreditCardVerify(body: BillingVerifyCcRequest, idx: Int, ccCcv2: String, ccAmount1: String, ccAmount2: String, terms: Boolean, id: Int)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def updateAccountCreditCard200(responseString: String): Route =
-    complete((200, responseString))
-  def updateAccountCreditCard401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((401, responseinline_response_401))
-  /**
-   * Code: 200, Message: Simple string response, DataType: String
-   * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   */
-  def updateAccountCreditCard(id: Int)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
-
   def updateAffiliateDockSetup200(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
     complete((200, responseTextResponse))
   def updateAffiliateDockSetup401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -697,17 +625,6 @@ trait BillingApiService {
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def updateAffiliateDockSetup(affiliateDockTitle: String, affiliateDockDescription: String, referrerCoupon: String, body: AffiliateDockSetup)
-      (implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
-
-  def updateAffiliateLandingPage200(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
-    complete((200, responseTextResponse))
-  def updateAffiliateLandingPage401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((401, responseinline_response_401))
-  /**
-   * Code: 200, Message: Response with a text message field., DataType: TextResponse
-   * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   */
-  def updateAffiliateLandingPage(affiliateDockTitle: String, affiliateDockDescription: String, referrerCoupon: String, body: AffiliateDockSetup)
       (implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def updateAffiliatePaymentSetup200(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
@@ -752,6 +669,8 @@ trait BillingApiMarshaller {
 
   implicit def fromRequestUnmarshallerBillingPaymentMethodRequest: FromRequestUnmarshaller[BillingPaymentMethodRequest]
 
+  implicit def fromRequestUnmarshallerId_verify_body: FromRequestUnmarshaller[Id_verify_body]
+
   implicit def fromRequestUnmarshallerBillingAddCcRequest: FromRequestUnmarshaller[BillingAddCcRequest]
 
   implicit def fromRequestUnmarshallerBillingPrepayRequest: FromRequestUnmarshaller[BillingPrepayRequest]
@@ -771,12 +690,6 @@ trait BillingApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
-  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
-
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
   implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
@@ -789,6 +702,8 @@ trait BillingApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
   implicit def toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
@@ -797,7 +712,7 @@ trait BillingApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]
+  implicit def toEntityMarshallerinline_response_200_1: ToEntityMarshaller[inline_response_200_1]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -825,13 +740,7 @@ trait BillingApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerInvoicearray: ToEntityMarshaller[List[Invoice]]
-
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
-  implicit def toEntityMarshallerinline_response_200_9: ToEntityMarshaller[inline_response_200_9]
+  implicit def toEntityMarshallerinline_response_200_10: ToEntityMarshaller[inline_response_200_10]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -839,9 +748,7 @@ trait BillingApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
-  implicit def toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]
+  implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

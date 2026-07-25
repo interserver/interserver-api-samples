@@ -32,4 +32,8 @@ Response from VPS order validation request
 |**rootpass** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

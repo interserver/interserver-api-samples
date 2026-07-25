@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailAlertsResponse } from './api';
+import { MailAlertsResponse } from '@interserver/myadmin-client';
 
 const instance: MailAlertsResponse = {
 };

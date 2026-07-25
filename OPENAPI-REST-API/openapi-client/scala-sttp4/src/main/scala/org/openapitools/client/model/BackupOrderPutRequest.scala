@@ -21,4 +21,3 @@ case class BackupOrderPutRequest(
   serviceType: Option[Int] = None,
   coupon: Option[String] = None
 )
-

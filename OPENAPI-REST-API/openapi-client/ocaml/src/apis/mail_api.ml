@@ -5,13 +5,28 @@
  *
  *)
 
-let add_mail () =
+let add_mail ~mail_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/mail/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Mail_order_request.to_yojson
+    
+    
+    
+ mail_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Service_order_post_response.of_yojson) resp body
 
 let add_rule ~id ~deny_rule_new_t =
@@ -92,7 +107,7 @@ let create_mail_alert ~id ~mail_alert_request_t =
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
-let delete_mail_alert ~id ~alert_id =
+let delete_mail_alert ~id ~delete_mail_alert_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/mail/{id}/alerts" in
     let headers = Request.default_headers in
@@ -113,22 +128,22 @@ let delete_mail_alert ~id ~alert_id =
         
         
  id in
-    let uri = Request.add_query_param uri "alert_id"     
-    Int32.to_string
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    let body = Request.
         
-        
- alert_id in
-    Cohttp_lwt_unix.Client.call `DELETE uri ~headers >>= fun (resp, body) ->
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Delete_mail_alert_request.to_yojson
+    
+    
+    
+ delete_mail_alert_request_t
+    in
+    Cohttp_lwt_unix.Client.call `DELETE uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
 let delete_rule ~id ~rule =
@@ -511,13 +526,28 @@ let post_mail_delist ~id ~mail_delist_request_t =
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
-let put_mail () =
+let put_mail ~mail_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/mail/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `PUT uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Mail_order_request.to_yojson
+    
+    
+    
+ mail_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `PUT uri ~headers ~body >>= fun (resp, body) ->
     Request.handle_unit_response resp
 
 let reset_mail_password ~id =
@@ -684,6 +714,60 @@ let update_mail_info ~id =
  id in
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
+
+let update_rule ~id ~rule ~deny_rule_new_t =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/mail/{id}/rules/{rule}" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ id in
+    let uri = Request.replace_path_param uri "rule"     
+    
+    
+    
+    
+    
+    
+    
+    
+    (fun x -> x)
+    
+    
+        
+        
+ rule in
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Deny_rule_new.to_yojson
+    
+    
+    
+ deny_rule_new_t
+    in
+    Cohttp_lwt_unix.Client.call `PUT uri ~headers ~body >>= fun (resp, body) ->
+    Request.read_json_body_as (JsonSupport.unwrap Generic_response.of_yojson) resp body
 
 let view_mail_log ~id ?id2 ?origin ?mx ?from ?_to ?subject ?mailid ?message_id ?replyto ?headerfrom ?delivered ?(skip = 00l) ?(limit = 100100l) ?start_date ?end_date ?(sort = `Time) ?(dir = `Desc) ?(groupby = `Recipient) () =
     let open Lwt.Infix in

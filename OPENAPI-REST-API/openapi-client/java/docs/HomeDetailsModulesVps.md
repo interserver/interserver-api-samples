@@ -15,4 +15,8 @@ Dashboard module configuration for VPS services.
 |**listLink** | **String** | Link to view VPS list. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

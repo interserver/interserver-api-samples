@@ -16,4 +16,3 @@ case class MailStatsTypeVolumeFrom(
   billingsomedomain_com: Option[Int] = None,
   salessomedomain_com: Option[Int] = None
 )
-

@@ -17,9 +17,9 @@ class BackupOrderPostResponseCjParams {
     this.CID,
     this.OID,
     this.TYPE,
-    this.iTEM1,
-    this.aMT1,
-    this.qTY1,
+    this.ITEM1,
+    this.AMT1,
+    this.QTY1,
     this.CURRENCY,
   });
 
@@ -61,7 +61,7 @@ class BackupOrderPostResponseCjParams {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? iTEM1;
+  String? ITEM1;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -69,7 +69,7 @@ class BackupOrderPostResponseCjParams {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? aMT1;
+  String? AMT1;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -77,7 +77,7 @@ class BackupOrderPostResponseCjParams {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  int? qTY1;
+  int? QTY1;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -93,9 +93,9 @@ class BackupOrderPostResponseCjParams {
     other.CID == CID &&
     other.OID == OID &&
     other.TYPE == TYPE &&
-    other.iTEM1 == iTEM1 &&
-    other.aMT1 == aMT1 &&
-    other.qTY1 == qTY1 &&
+    other.ITEM1 == ITEM1 &&
+    other.AMT1 == AMT1 &&
+    other.QTY1 == QTY1 &&
     other.CURRENCY == CURRENCY;
 
   @override
@@ -105,13 +105,13 @@ class BackupOrderPostResponseCjParams {
     (CID == null ? 0 : CID!.hashCode) +
     (OID == null ? 0 : OID!.hashCode) +
     (TYPE == null ? 0 : TYPE!.hashCode) +
-    (iTEM1 == null ? 0 : iTEM1!.hashCode) +
-    (aMT1 == null ? 0 : aMT1!.hashCode) +
-    (qTY1 == null ? 0 : qTY1!.hashCode) +
+    (ITEM1 == null ? 0 : ITEM1!.hashCode) +
+    (AMT1 == null ? 0 : AMT1!.hashCode) +
+    (QTY1 == null ? 0 : QTY1!.hashCode) +
     (CURRENCY == null ? 0 : CURRENCY!.hashCode);
 
   @override
-  String toString() => 'BackupOrderPostResponseCjParams[containerTagId=$containerTagId, CID=$CID, OID=$OID, TYPE=$TYPE, iTEM1=$iTEM1, aMT1=$aMT1, qTY1=$qTY1, CURRENCY=$CURRENCY]';
+  String toString() => 'BackupOrderPostResponseCjParams[containerTagId=$containerTagId, CID=$CID, OID=$OID, TYPE=$TYPE, ITEM1=$ITEM1, AMT1=$AMT1, QTY1=$QTY1, CURRENCY=$CURRENCY]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -135,18 +135,18 @@ class BackupOrderPostResponseCjParams {
     } else {
       json[r'TYPE'] = null;
     }
-    if (this.iTEM1 != null) {
-      json[r'ITEM1'] = this.iTEM1;
+    if (this.ITEM1 != null) {
+      json[r'ITEM1'] = this.ITEM1;
     } else {
       json[r'ITEM1'] = null;
     }
-    if (this.aMT1 != null) {
-      json[r'AMT1'] = this.aMT1;
+    if (this.AMT1 != null) {
+      json[r'AMT1'] = this.AMT1;
     } else {
       json[r'AMT1'] = null;
     }
-    if (this.qTY1 != null) {
-      json[r'QTY1'] = this.qTY1;
+    if (this.QTY1 != null) {
+      json[r'QTY1'] = this.QTY1;
     } else {
       json[r'QTY1'] = null;
     }
@@ -177,9 +177,9 @@ class BackupOrderPostResponseCjParams {
         CID: mapValueOfType<String>(json, r'CID'),
         OID: mapValueOfType<String>(json, r'OID'),
         TYPE: mapValueOfType<String>(json, r'TYPE'),
-        iTEM1: mapValueOfType<String>(json, r'ITEM1'),
-        aMT1: mapValueOfType<String>(json, r'AMT1'),
-        qTY1: mapValueOfType<int>(json, r'QTY1'),
+        ITEM1: mapValueOfType<String>(json, r'ITEM1'),
+        AMT1: mapValueOfType<String>(json, r'AMT1'),
+        QTY1: mapValueOfType<int>(json, r'QTY1'),
         CURRENCY: mapValueOfType<String>(json, r'CURRENCY'),
       );
     }

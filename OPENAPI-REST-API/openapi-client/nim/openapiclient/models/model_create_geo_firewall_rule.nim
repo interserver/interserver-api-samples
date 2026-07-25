@@ -16,6 +16,7 @@ import options
 type XdpAction* {.pure.} = enum
   `0`
   `1`
+  UnknownDefaultOpenApi
 
 type CreateGeoFirewallRule* = object
   ## Create firewall rule for your ip
@@ -28,10 +29,12 @@ func `%`*(v: XdpAction): JsonNode =
   result = case v:
     of XdpAction.`0`: %"0"
     of XdpAction.`1`: %"1"
+    of XdpAction.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: XdpAction): string =
   result = case v:
     of XdpAction.`0`: $("0")
     of XdpAction.`1`: $("1")
+    of XdpAction.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[XdpAction]): XdpAction =
   if node.kind != JString:
@@ -42,6 +45,8 @@ proc to*(node: JsonNode, T: typedesc[XdpAction]): XdpAction =
     return XdpAction.`0`
   of $("1"):
     return XdpAction.`1`
+  of $("11184809"):
+    return XdpAction.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for XdpAction: " & strVal)
 

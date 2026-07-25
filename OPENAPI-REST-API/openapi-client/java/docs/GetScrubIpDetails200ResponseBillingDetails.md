@@ -17,4 +17,8 @@
 |**serviceCostInfo** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

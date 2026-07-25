@@ -14,40 +14,20 @@ class InlineResponse2006(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, login: bool=None, signup: bool=None, linked: bool=None, account_id: int=None, error_code: str=None):  # noqa: E501
+    def __init__(self, redirect_url: str=None):  # noqa: E501
         """InlineResponse2006 - a model defined in Swagger
 
-        :param login: The login of this InlineResponse2006.  # noqa: E501
-        :type login: bool
-        :param signup: The signup of this InlineResponse2006.  # noqa: E501
-        :type signup: bool
-        :param linked: The linked of this InlineResponse2006.  # noqa: E501
-        :type linked: bool
-        :param account_id: The account_id of this InlineResponse2006.  # noqa: E501
-        :type account_id: int
-        :param error_code: The error_code of this InlineResponse2006.  # noqa: E501
-        :type error_code: str
+        :param redirect_url: The redirect_url of this InlineResponse2006.  # noqa: E501
+        :type redirect_url: str
         """
         self.swagger_types = {
-            'login': bool,
-            'signup': bool,
-            'linked': bool,
-            'account_id': int,
-            'error_code': str
+            'redirect_url': str
         }
 
         self.attribute_map = {
-            'login': 'login',
-            'signup': 'signup',
-            'linked': 'linked',
-            'account_id': 'account_id',
-            'error_code': 'error_code'
+            'redirect_url': 'redirect_url'
         }
-        self._login = login
-        self._signup = signup
-        self._linked = linked
-        self._account_id = account_id
-        self._error_code = error_code
+        self._redirect_url = redirect_url
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse2006':
@@ -61,116 +41,24 @@ class InlineResponse2006(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def login(self) -> bool:
-        """Gets the login of this InlineResponse2006.
+    def redirect_url(self) -> str:
+        """Gets the redirect_url of this InlineResponse2006.
 
-        Whether the user was logged in to an existing account.  # noqa: E501
+        The URL to redirect the user to for OAuth authentication.  # noqa: E501
 
-        :return: The login of this InlineResponse2006.
-        :rtype: bool
-        """
-        return self._login
-
-    @login.setter
-    def login(self, login: bool):
-        """Sets the login of this InlineResponse2006.
-
-        Whether the user was logged in to an existing account.  # noqa: E501
-
-        :param login: The login of this InlineResponse2006.
-        :type login: bool
-        """
-
-        self._login = login
-
-    @property
-    def signup(self) -> bool:
-        """Gets the signup of this InlineResponse2006.
-
-        Whether a new account was created.  # noqa: E501
-
-        :return: The signup of this InlineResponse2006.
-        :rtype: bool
-        """
-        return self._signup
-
-    @signup.setter
-    def signup(self, signup: bool):
-        """Sets the signup of this InlineResponse2006.
-
-        Whether a new account was created.  # noqa: E501
-
-        :param signup: The signup of this InlineResponse2006.
-        :type signup: bool
-        """
-
-        self._signup = signup
-
-    @property
-    def linked(self) -> bool:
-        """Gets the linked of this InlineResponse2006.
-
-        Whether the OAuth provider was linked to an existing account.  # noqa: E501
-
-        :return: The linked of this InlineResponse2006.
-        :rtype: bool
-        """
-        return self._linked
-
-    @linked.setter
-    def linked(self, linked: bool):
-        """Sets the linked of this InlineResponse2006.
-
-        Whether the OAuth provider was linked to an existing account.  # noqa: E501
-
-        :param linked: The linked of this InlineResponse2006.
-        :type linked: bool
-        """
-
-        self._linked = linked
-
-    @property
-    def account_id(self) -> int:
-        """Gets the account_id of this InlineResponse2006.
-
-        The account ID associated with the OAuth login.  # noqa: E501
-
-        :return: The account_id of this InlineResponse2006.
-        :rtype: int
-        """
-        return self._account_id
-
-    @account_id.setter
-    def account_id(self, account_id: int):
-        """Sets the account_id of this InlineResponse2006.
-
-        The account ID associated with the OAuth login.  # noqa: E501
-
-        :param account_id: The account_id of this InlineResponse2006.
-        :type account_id: int
-        """
-
-        self._account_id = account_id
-
-    @property
-    def error_code(self) -> str:
-        """Gets the error_code of this InlineResponse2006.
-
-        Error code if additional verification is needed (e.g. `2fa_required`).  # noqa: E501
-
-        :return: The error_code of this InlineResponse2006.
+        :return: The redirect_url of this InlineResponse2006.
         :rtype: str
         """
-        return self._error_code
+        return self._redirect_url
 
-    @error_code.setter
-    def error_code(self, error_code: str):
-        """Sets the error_code of this InlineResponse2006.
+    @redirect_url.setter
+    def redirect_url(self, redirect_url: str):
+        """Sets the redirect_url of this InlineResponse2006.
 
-        Error code if additional verification is needed (e.g. `2fa_required`).  # noqa: E501
+        The URL to redirect the user to for OAuth authentication.  # noqa: E501
 
-        :param error_code: The error_code of this InlineResponse2006.
-        :type error_code: str
+        :param redirect_url: The redirect_url of this InlineResponse2006.
+        :type redirect_url: str
         """
 
-        self._error_code = error_code
+        self._redirect_url = redirect_url

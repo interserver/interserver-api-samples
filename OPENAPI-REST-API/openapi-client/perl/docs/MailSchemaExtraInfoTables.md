@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailSchemaExtraInfoTables
+# InterServerAPI::Object::MailSchemaExtraInfoTables
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailSchemaExtraInfoTables;
+use InterServerAPI::Object::MailSchemaExtraInfoTables;
 ```
 
 ## Properties

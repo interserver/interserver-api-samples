@@ -15,4 +15,3 @@ package org.openapitools.client.model
 case class ServerExtraInfoTables(
   assets: ServerAssets
 )
-

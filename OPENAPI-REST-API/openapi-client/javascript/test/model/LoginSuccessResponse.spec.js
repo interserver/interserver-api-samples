@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LoginSuccessResponse();
+    instance = new InterserverApiClient.LoginSuccessResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('LoginSuccessResponse', function() {
     it('should create an instance of LoginSuccessResponse', function() {
       // uncomment below and update the code to test LoginSuccessResponse
-      //var instance = new InterServerManagementApi.LoginSuccessResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.LoginSuccessResponse);
+      //var instance = new InterserverApiClient.LoginSuccessResponse();
+      //expect(instance).to.be.a(InterserverApiClient.LoginSuccessResponse);
     });
 
     it('should have the property sessionId (base name: "sessionId")', function() {
       // uncomment below and update the code to test the property sessionId
-      //var instance = new InterServerManagementApi.LoginSuccessResponse();
+      //var instance = new InterserverApiClient.LoginSuccessResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property account_id (base name: "account_id")', function() {
       // uncomment below and update the code to test the property account_id
-      //var instance = new InterServerManagementApi.LoginSuccessResponse();
+      //var instance = new InterserverApiClient.LoginSuccessResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property account_lid (base name: "account_lid")', function() {
       // uncomment below and update the code to test the property account_lid
-      //var instance = new InterServerManagementApi.LoginSuccessResponse();
+      //var instance = new InterserverApiClient.LoginSuccessResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ima (base name: "ima")', function() {
       // uncomment below and update the code to test the property ima
-      //var instance = new InterServerManagementApi.LoginSuccessResponse();
+      //var instance = new InterserverApiClient.LoginSuccessResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property gravatar (base name: "gravatar")', function() {
       // uncomment below and update the code to test the property gravatar
-      //var instance = new InterServerManagementApi.LoginSuccessResponse();
+      //var instance = new InterserverApiClient.LoginSuccessResponse();
       //expect(instance).to.be();
     });
 

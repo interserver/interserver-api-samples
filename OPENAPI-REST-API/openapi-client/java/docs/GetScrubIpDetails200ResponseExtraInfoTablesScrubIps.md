@@ -11,4 +11,8 @@
 |**rows** | [**List&lt;GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner&gt;**](GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

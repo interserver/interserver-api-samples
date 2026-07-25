@@ -1,4 +1,4 @@
-# openapi::DownloadQsBackupRequest
+# interserverapi::DownloadQsBackupRequest
 
 
 ## Properties

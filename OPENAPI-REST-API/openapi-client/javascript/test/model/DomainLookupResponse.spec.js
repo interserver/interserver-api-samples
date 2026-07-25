@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainLookupResponse();
+    instance = new InterserverApiClient.DomainLookupResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,73 +50,73 @@
   describe('DomainLookupResponse', function() {
     it('should create an instance of DomainLookupResponse', function() {
       // uncomment below and update the code to test DomainLookupResponse
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainLookupResponse);
+      //var instance = new InterserverApiClient.DomainLookupResponse();
+      //expect(instance).to.be.a(InterserverApiClient.DomainLookupResponse);
     });
 
     it('should have the property available (base name: "available")', function() {
       // uncomment below and update the code to test the property available
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property premium (base name: "premium")', function() {
       // uncomment below and update the code to test the property premium
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property website (base name: "website")', function() {
       // uncomment below and update the code to test the property website
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_service (base name: "domain_service")', function() {
       // uncomment below and update the code to test the property domain_service
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property service (base name: "service")', function() {
       // uncomment below and update the code to test the property service
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property whois_privacy (base name: "whois_privacy")', function() {
       // uncomment below and update the code to test the property whois_privacy
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property _new (base name: "new")', function() {
       // uncomment below and update the code to test the property _new
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property renewal (base name: "renewal")', function() {
       // uncomment below and update the code to test the property renewal
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property transfer (base name: "transfer")', function() {
       // uncomment below and update the code to test the property transfer
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property fields (base name: "fields")', function() {
       // uncomment below and update the code to test the property fields
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property currencies (base name: "currencies")', function() {
       // uncomment below and update the code to test the property currencies
-      //var instance = new InterServerManagementApi.DomainLookupResponse();
+      //var instance = new InterserverApiClient.DomainLookupResponse();
       //expect(instance).to.be();
     });
 

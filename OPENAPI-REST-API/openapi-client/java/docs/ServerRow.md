@@ -14,4 +14,8 @@ A result row from the `Servers` `GET` request.
 |**serverStatus** | **String** | The status of the server. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

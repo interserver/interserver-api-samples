@@ -2,10 +2,10 @@ FROM alpine:3.12.0
 
 RUN apk add --update --no-cache curl ca-certificates bash bash-completion zsh curl git vim ncurses util-linux
 
-ADD client.sh /usr/bin/client.sh
-ADD _client.sh /usr/local/share/zsh/site-functions/_client.sh
-ADD client.sh.bash-completion /etc/bash-completion.d/client.sh
-RUN chmod 755 /usr/bin/client.sh
+ADD interserver-api /usr/bin/interserver-api
+ADD _interserver-api /usr/local/share/zsh/site-functions/_interserver-api
+ADD interserver-api.bash-completion /etc/bash-completion.d/interserver-api
+RUN chmod 755 /usr/bin/interserver-api
 
 #
 # Install oh-my-zsh
@@ -17,7 +17,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh
 #
 RUN echo '\n\
 . /etc/bash_completion\n\
-source /etc/bash-completion.d/client.sh\n\
+source /etc/bash-completion.d/interserver-api\n\
 ' >> ~/.bashrc
 
 #
@@ -36,21 +36,21 @@ line REST client for $(tput setaf 6)InterServer Management API$(tput sgr0).\n\
 \n\
 For convenience, you can export the following environment variables:\n\
 \n\
-
-$(tput setaf 3)false$(tput sgr0) - access token, e.g. "ASDASHJDG63456asdASSD"\n\
-$(tput setaf 3)false$(tput sgr0) - access token, e.g. "ASDASHJDG63456asdASSD"\n\
-$(tput setaf 3)false$(tput sgr0) - access token, e.g. "ASDASHJDG63456asdASSD"\n\
+$(tput setaf 3)INTERSERVER_API_HOST$(tput sgr0) - server URL, e.g. https://example.com:8080\n\
+$(tput setaf 3)INTERSERVER_API_KEY$(tput sgr0) - access token, e.g. "ASDASHJDG63456asdASSD"\n\
+$(tput setaf 3)INTERSERVER_API_KEY$(tput sgr0) - access token, e.g. "ASDASHJDG63456asdASSD"\n\
+$(tput setaf 3)INTERSERVER_API_KEY$(tput sgr0) - access token, e.g. "ASDASHJDG63456asdASSD"\n\
 \n\
 $(tput setaf 7)Basic usage:$(tput sgr0)\n\
 \n\
 $(tput setaf 3)Print the list of operations available on the service$(tput sgr0)\n\
-$ client.sh -h\n\
+$ interserver-api -h\n\
 \n\
 $(tput setaf 3)Print the service description$(tput sgr0)\n\
-$ client.sh --about\n\
+$ interserver-api --about\n\
 \n\
 $(tput setaf 3)Print detailed information about specific operation$(tput sgr0)\n\
-$ client.sh <operationId> -h\n\
+$ interserver-api <operationId> -h\n\
 \n\
 By default you are logged into Zsh with full autocompletion for your REST API,\n\
 but you can switch to Bash, where basic autocompletion is also supported.\n\

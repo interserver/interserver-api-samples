@@ -14,25 +14,25 @@ class InlineResponse20025(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, message: str=None, success: bool=None):  # noqa: E501
+    def __init__(self, success: bool=None, text: str=None):  # noqa: E501
         """InlineResponse20025 - a model defined in Swagger
 
-        :param message: The message of this InlineResponse20025.  # noqa: E501
-        :type message: str
         :param success: The success of this InlineResponse20025.  # noqa: E501
         :type success: bool
+        :param text: The text of this InlineResponse20025.  # noqa: E501
+        :type text: str
         """
         self.swagger_types = {
-            'message': str,
-            'success': bool
+            'success': bool,
+            'text': str
         }
 
         self.attribute_map = {
-            'message': 'message',
-            'success': 'success'
+            'success': 'success',
+            'text': 'text'
         }
-        self._message = message
         self._success = success
+        self._text = text
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20025':
@@ -44,27 +44,6 @@ class InlineResponse20025(Model):
         :rtype: InlineResponse20025
         """
         return util.deserialize_model(dikt, cls)
-
-    @property
-    def message(self) -> str:
-        """Gets the message of this InlineResponse20025.
-
-
-        :return: The message of this InlineResponse20025.
-        :rtype: str
-        """
-        return self._message
-
-    @message.setter
-    def message(self, message: str):
-        """Sets the message of this InlineResponse20025.
-
-
-        :param message: The message of this InlineResponse20025.
-        :type message: str
-        """
-
-        self._message = message
 
     @property
     def success(self) -> bool:
@@ -84,5 +63,30 @@ class InlineResponse20025(Model):
         :param success: The success of this InlineResponse20025.
         :type success: bool
         """
+        if success is None:
+            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
 
         self._success = success
+
+    @property
+    def text(self) -> str:
+        """Gets the text of this InlineResponse20025.
+
+
+        :return: The text of this InlineResponse20025.
+        :rtype: str
+        """
+        return self._text
+
+    @text.setter
+    def text(self, text: str):
+        """Sets the text of this InlineResponse20025.
+
+
+        :param text: The text of this InlineResponse20025.
+        :type text: str
+        """
+        if text is None:
+            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
+
+        self._text = text

@@ -16,4 +16,3 @@ case class QuickserverExtraInfoTables(
   ip_info: Option[QuickserverIpInfo] = None,
   addons: Option[QuickserverAddons] = None
 )
-

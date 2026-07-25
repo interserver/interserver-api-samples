@@ -26,6 +26,8 @@ import ../models/model_text_response
 import ../models/model_website
 import ../models/model_website_backups
 import ../models/model_website_login_response
+import ../models/model_website_order_post_request
+import ../models/model_website_order_put_request
 import ../models/model_website_row
 import ../models/model_websites_order
 import ../models/model_get_account_info401response
@@ -52,78 +54,79 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addWebsite*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
-  ## Place Website Order
+proc addWebsite*(httpClient: HttpClient, websiteOrderPostRequest: WebsiteOrderPostRequest): (Option[ServiceOrderPostResponse], Response) =
+  ## Place a new webhosting order, create the invoice, and queue provisioning
+  httpClient.headers["Content-Type"] = "application/json"
 
-  let response = httpClient.post(basepath & "/websites/order")
+  let response = httpClient.post(basepath & "/websites/order", $(%websiteOrderPostRequest))
   constructResult[ServiceOrderPostResponse](response)
 
 
 proc getNewWebsite*(httpClient: HttpClient): (Option[WebsitesOrder], Response) =
-  ## Website Ordering Information
+  ## Read the webhosting order catalog — plans, packages, promo offers, pricing
 
   let response = httpClient.get(basepath & "/websites/order")
   constructResult[WebsitesOrder](response)
 
 
 proc getWebsiteBuyIp*(httpClient: HttpClient, id: int): (Option[getWebsiteBuyIp_200_response], Response) =
-  ## Get Website IP Information
+  ## Read website IPs, current reverse DNS, and additional-IP pricing
 
   let response = httpClient.get(basepath & fmt"/websites/{id}/buy_ip")
   constructResult[getWebsiteBuyIp_200_response](response)
 
 
 proc getWebsiteInfo*(httpClient: HttpClient, id: int): (Option[Website], Response) =
-  ## Get Website Order
+  ## Read full configuration and status detail for one webhosting service
 
   let response = httpClient.get(basepath & fmt"/websites/{id}")
   constructResult[Website](response)
 
 
 proc getWebsiteInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get Website Invoices
+  ## List all billing invoices and recurring charges scoped to one website
 
   let response = httpClient.get(basepath & fmt"/websites/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getWebsiteList*(httpClient: HttpClient): (Option[seq[WebsiteRow]], Response) =
-  ## Get Website Listing
+  ## List the caller's webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
 
   let response = httpClient.get(basepath & "/websites")
   constructResult[seq[WebsiteRow]](response)
 
 
 proc getWebsitesBackups*(httpClient: HttpClient, id: int): (Option[seq[WebsiteBackups_inner]], Response) =
-  ## Get Website Backups
+  ## List off-site cpmove backups stored in Swift — list or inline-download archive
 
   let response = httpClient.get(basepath & fmt"/websites/{id}/backups")
   constructResult[seq[WebsiteBackups_inner]](response)
 
 
 proc getWebsitesLogin*(httpClient: HttpClient, id: int): (Option[WebsiteLoginResponse], Response) =
-  ## Hosting Panel Auto Login
+  ## Get a one-time auto-login URL for the website's control panel
 
   let response = httpClient.get(basepath & fmt"/websites/{id}/login")
   constructResult[WebsiteLoginResponse](response)
 
 
 proc getWebsitesWelcomeEmail*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Resend Website Welcome Email
+  ## Resend the webhosting welcome email with control-panel credentials and URL
 
   let response = httpClient.get(basepath & fmt"/websites/{id}/welcome_email")
   constructResult[SuccessTextResponse](response)
 
 
 proc gettWebsiteReverseDns*(httpClient: HttpClient, id: int): (Option[ReverseDnsEntries], Response) =
-  ## Get Website Reverse DNS
+  ## Read current reverse-DNS (PTR) records for the website's IPs
 
   let response = httpClient.get(basepath & fmt"/websites/{id}/reverse_dns")
   constructResult[ReverseDnsEntries](response)
 
 
 proc postWebsiteBuyIp*(httpClient: HttpClient, id: int, postWebsiteBuyIpRequest: PostWebsiteBuyIpRequest): (Option[postWebsiteBuyIp_200_response], Response) =
-  ## Update Website IP DNS
+  ## Buy an additional IP for the website OR update reverse DNS records
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/websites/{id}/buy_ip", $(%postWebsiteBuyIpRequest))
@@ -131,7 +134,7 @@ proc postWebsiteBuyIp*(httpClient: HttpClient, id: int, postWebsiteBuyIpRequest:
 
 
 proc postWebsiteMigration*(httpClient: HttpClient, id: int, postWebsiteMigrationRequest: PostWebsiteMigrationRequest): (Option[postWebsiteMigration_200_response], Response) =
-  ## Request Website Migration
+  ## Submit a request for InterServer staff to migrate a website from another host
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/websites/{id}/migration", $(%postWebsiteMigrationRequest))
@@ -139,28 +142,29 @@ proc postWebsiteMigration*(httpClient: HttpClient, id: int, postWebsiteMigration
 
 
 proc postWebsitesReverseDns*(httpClient: HttpClient, id: int, reverseDnsEntries: ReverseDnsEntries): (Option[TextResponse], Response) =
-  ## Update Website Reverse DNS
+  ## Bulk-update reverse-DNS (PTR) records for one or more website IPs
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/websites/{id}/reverse_dns", $(%reverseDnsEntries))
   constructResult[TextResponse](response)
 
 
-proc putWebsites*(httpClient: HttpClient): Response =
-  ## Validate Webhosting Order
-  httpClient.put(basepath & "/websites/order")
+proc putWebsites*(httpClient: HttpClient, websiteOrderPutRequest: WebsiteOrderPutRequest): Response =
+  ## Validate a webhosting order and preview cost — dry run, no charge
+  httpClient.headers["Content-Type"] = "application/json"
+  httpClient.put(basepath & "/websites/order", $(%websiteOrderPutRequest))
 
 
 
 proc updateWebsiteInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Update Website Order
+  ## POST mutation hook for the website detail page (use dedicated ops where possible)
 
   let response = httpClient.post(basepath & fmt"/websites/{id}")
   constructResult[SuccessTextResponse](response)
 
 
 proc webhostingCancel*(httpClient: HttpClient, id: string): (Option[webhostingCancel_200_response], Response) =
-  ## Cancel Website
+  ## Schedule termination of a webhosting service — wipes panel account at cycle end
 
   let response = httpClient.delete(basepath & fmt"/websites/{id}")
   constructResult[webhostingCancel_200_response](response)

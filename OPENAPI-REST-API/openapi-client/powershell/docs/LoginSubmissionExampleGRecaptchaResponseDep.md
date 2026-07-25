@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LoginSubmissionExampleGRecaptchaResponseDep = Initialize-PSOpenAPIToolsLoginSubmissionExampleGRecaptchaResponseDep  -W null `
+$LoginSubmissionExampleGRecaptchaResponseDep = Initialize-InterserverApiLoginSubmissionExampleGRecaptchaResponseDep  -W null `
  -N null
 ```
 

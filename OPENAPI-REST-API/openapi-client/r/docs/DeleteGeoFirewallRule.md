@@ -1,4 +1,4 @@
-# openapi::DeleteGeoFirewallRule
+# interserverapi::DeleteGeoFirewallRule
 
 Delete geo firewall rule for your scrub ip
 

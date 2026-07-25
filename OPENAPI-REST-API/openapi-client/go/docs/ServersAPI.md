@@ -4,32 +4,32 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddServer**](ServersAPI.md#AddServer) | **Post** /servers/order | Place Server Order
-[**BuyItNowServerOrder**](ServersAPI.md#BuyItNowServerOrder) | **Get** /servers/order/buy_now_server | Get Buy Now Server Options
-[**GetMPServers**](ServersAPI.md#GetMPServers) | **Get** /buy_now_servers_list | List Marketplace Servers
-[**GetNewServer**](ServersAPI.md#GetNewServer) | **Get** /servers/order | Server Ordering Information
-[**GetServerInfo**](ServersAPI.md#GetServerInfo) | **Get** /servers/{id} | Get Server Order
-[**GetServerInvoices**](ServersAPI.md#GetServerInvoices) | **Get** /servers/{id}/invoices | Get Server Invoices
-[**GetServerList**](ServersAPI.md#GetServerList) | **Get** /servers | List Servers
-[**GetServerReverseDns**](ServersAPI.md#GetServerReverseDns) | **Get** /servers/{id}/reverse_dns | Reverse DNS Info
-[**GetServersWelcomeEmail**](ServersAPI.md#GetServersWelcomeEmail) | **Get** /servers/{id}/welcome_email | Resend Server Welcome Email
-[**PlaceBuyNowServer**](ServersAPI.md#PlaceBuyNowServer) | **Post** /servers/order/buy_now_server | Place Buy Now Server Order
-[**PostServerReverseDns**](ServersAPI.md#PostServerReverseDns) | **Post** /servers/{id}/reverse_dns | Update Reverse DNS
-[**PutServers**](ServersAPI.md#PutServers) | **Put** /servers/order | Validate Server Order
-[**ServerIpmiLiveGet**](ServersAPI.md#ServerIpmiLiveGet) | **Get** /servers/{id}/ipmi_live | Server IPMI Live Information
-[**ServerIpmiLivePost**](ServersAPI.md#ServerIpmiLivePost) | **Post** /servers/{id}/ipmi_live | Server IPMI Live Setup
-[**ServerIpmiPowerGet**](ServersAPI.md#ServerIpmiPowerGet) | **Get** /servers/{id}/ipmi_power | Get IPMI Power Status
-[**ServerIpmiPowerPost**](ServersAPI.md#ServerIpmiPowerPost) | **Post** /servers/{id}/ipmi_power | Server IPMI Power
-[**ServersCancel**](ServersAPI.md#ServersCancel) | **Delete** /servers/{id} | Cancel Server Service
-[**UpdateServerInfo**](ServersAPI.md#UpdateServerInfo) | **Post** /servers/{id} | Update Server Order
+[**AddServer**](ServersAPI.md#AddServer) | **Post** /servers/order | Place a custom dedicated server order, creating a real billable invoice
+[**BuyItNowServerOrder**](ServersAPI.md#BuyItNowServerOrder) | **Get** /servers/order/buy_now_server | Get configurable options for a Rapid Deploy / coupon dedicated server
+[**GetMPServers**](ServersAPI.md#GetMPServers) | **Get** /buy_now_servers_list | List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+[**GetNewServer**](ServersAPI.md#GetNewServer) | **Get** /servers/order | Get custom dedicated server ordering options, regions, and pricing
+[**GetServerInfo**](ServersAPI.md#GetServerInfo) | **Get** /servers/{id} | Get full hardware, network, and lifecycle details for a dedicated server
+[**GetServerInvoices**](ServersAPI.md#GetServerInvoices) | **Get** /servers/{id}/invoices | List billing invoices (charges + payments) tied to one dedicated server
+[**GetServerList**](ServersAPI.md#GetServerList) | **Get** /servers | List all dedicated servers owned by the authenticated customer
+[**GetServerReverseDns**](ServersAPI.md#GetServerReverseDns) | **Get** /servers/{id}/reverse_dns | List current reverse-DNS (PTR) records for a dedicated server&#39;s IPs
+[**GetServersWelcomeEmail**](ServersAPI.md#GetServersWelcomeEmail) | **Get** /servers/{id}/welcome_email | Resend the dedicated server welcome email with setup credentials
+[**PlaceBuyNowServer**](ServersAPI.md#PlaceBuyNowServer) | **Post** /servers/order/buy_now_server | Place a Rapid Deploy / coupon dedicated server order; creates real invoice
+[**PostServerReverseDns**](ServersAPI.md#PostServerReverseDns) | **Post** /servers/{id}/reverse_dns | Update reverse-DNS (PTR) hostnames on a dedicated server&#39;s IPs
+[**ServerBulkIpmiPowerGet**](ServersAPI.md#ServerBulkIpmiPowerGet) | **Get** /servers/bulk/ipmi_power | Read IPMI chassis power status for many dedicated servers in one call
+[**ServerIpmiLiveGet**](ServersAPI.md#ServerIpmiLiveGet) | **Get** /servers/{id}/ipmi_live | Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
+[**ServerIpmiLivePost**](ServersAPI.md#ServerIpmiLivePost) | **Post** /servers/{id}/ipmi_live | Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
+[**ServerIpmiPowerGet**](ServersAPI.md#ServerIpmiPowerGet) | **Get** /servers/{id}/ipmi_power | Read IPMI chassis power status for a dedicated server (single)
+[**ServerIpmiPowerPost**](ServersAPI.md#ServerIpmiPowerPost) | **Post** /servers/{id}/ipmi_power | DESTRUCTIVE — change chassis power state on a bare-metal server
+[**ServersCancel**](ServersAPI.md#ServersCancel) | **Delete** /servers/{id} | Cancel a dedicated server service at the end of the current billing cycle
+[**UpdateServerInfo**](ServersAPI.md#UpdateServerInfo) | **Post** /servers/{id} | Update settings on a dedicated server order (shares handler with view)
 
 
 
 ## AddServer
 
-> AddServer200Response AddServer(ctx).Execute()
+> AddServer200Response AddServer(ctx).ServerOrderPostRequest(serverOrderPostRequest).Execute()
 
-Place Server Order
+Place a custom dedicated server order, creating a real billable invoice
 
 
 
@@ -46,10 +46,11 @@ import (
 )
 
 func main() {
+	serverOrderPostRequest := *openapiclient.NewServerOrderPostRequest(int32(123), openapiclient.ServerOrderPostRequest_hd{ArrayOfInt32: new([]int32)}, int32(123), int32(123), int32(123), int32(123), int32(123), int32(123), int32(123), "Servername_example", "Rootpass_example", false) // ServerOrderPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServersAPI.AddServer(context.Background()).Execute()
+	resp, r, err := apiClient.ServersAPI.AddServer(context.Background()).ServerOrderPostRequest(serverOrderPostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServersAPI.AddServer``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,12 +62,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAddServerRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **serverOrderPostRequest** | [**ServerOrderPostRequest**](ServerOrderPostRequest.md) |  | 
 
 ### Return type
 
@@ -78,7 +83,7 @@ Other parameters are passed through a pointer to a apiAddServerRequest struct vi
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -90,7 +95,7 @@ Other parameters are passed through a pointer to a apiAddServerRequest struct vi
 
 > BuyItNowServerOrder200Response BuyItNowServerOrder(ctx).Execute()
 
-Get Buy Now Server Options
+Get configurable options for a Rapid Deploy / coupon dedicated server
 
 
 
@@ -151,7 +156,7 @@ Other parameters are passed through a pointer to a apiBuyItNowServerOrderRequest
 
 > BuyItNowList GetMPServers(ctx).Execute()
 
-List Marketplace Servers
+List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 
 
 
@@ -212,7 +217,7 @@ Other parameters are passed through a pointer to a apiGetMPServersRequest struct
 
 > ServerOrder GetNewServer(ctx).Execute()
 
-Server Ordering Information
+Get custom dedicated server ordering options, regions, and pricing
 
 
 
@@ -273,7 +278,7 @@ Other parameters are passed through a pointer to a apiGetNewServerRequest struct
 
 > Server GetServerInfo(ctx, id).Execute()
 
-Get Server Order
+Get full hardware, network, and lifecycle details for a dedicated server
 
 
 
@@ -343,7 +348,7 @@ Name | Type | Description  | Notes
 
 > ChargeInvoiceRows GetServerInvoices(ctx, id).Execute()
 
-Get Server Invoices
+List billing invoices (charges + payments) tied to one dedicated server
 
 
 
@@ -413,7 +418,7 @@ Name | Type | Description  | Notes
 
 > []ServerRow GetServerList(ctx).Execute()
 
-List Servers
+List all dedicated servers owned by the authenticated customer
 
 
 
@@ -474,7 +479,7 @@ Other parameters are passed through a pointer to a apiGetServerListRequest struc
 
 > ReverseDnsEntries GetServerReverseDns(ctx, id).Execute()
 
-Reverse DNS Info
+List current reverse-DNS (PTR) records for a dedicated server's IPs
 
 
 
@@ -544,7 +549,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse GetServersWelcomeEmail(ctx, id).Execute()
 
-Resend Server Welcome Email
+Resend the dedicated server welcome email with setup credentials
 
 
 
@@ -614,7 +619,7 @@ Name | Type | Description  | Notes
 
 > ServersBuyNowResponse PlaceBuyNowServer(ctx).PlaceBuyNowServerRequest(placeBuyNowServerRequest).Execute()
 
-Place Buy Now Server Order
+Place a Rapid Deploy / coupon dedicated server order; creates real invoice
 
 
 
@@ -680,7 +685,7 @@ Name | Type | Description  | Notes
 
 > TextResponse PostServerReverseDns(ctx, id).ReverseDnsEntries(reverseDnsEntries).Execute()
 
-Update Reverse DNS
+Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
 
 
 
@@ -748,11 +753,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PutServers
+## ServerBulkIpmiPowerGet
 
-> PutServers(ctx).Execute()
+> ServerBulkIpmiPowerResponse ServerBulkIpmiPowerGet(ctx).Ids(ids).Execute()
 
-Validate Server Order
+Read IPMI chassis power status for many dedicated servers in one call
 
 
 
@@ -769,29 +774,36 @@ import (
 )
 
 func main() {
+	ids := "2313,2314,2315" // string | Comma-separated list of Server IDs to query (e.g. `2313,2314,2315`). May also be passed as repeated `ids[]` query parameters.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ServersAPI.PutServers(context.Background()).Execute()
+	resp, r, err := apiClient.ServersAPI.ServerBulkIpmiPowerGet(context.Background()).Ids(ids).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServersAPI.PutServers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServersAPI.ServerBulkIpmiPowerGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `ServerBulkIpmiPowerGet`: ServerBulkIpmiPowerResponse
+	fmt.Fprintf(os.Stdout, "Response from `ServersAPI.ServerBulkIpmiPowerGet`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPutServersRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiServerBulkIpmiPowerGetRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ids** | **string** | Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters. | 
 
 ### Return type
 
- (empty response body)
+[**ServerBulkIpmiPowerResponse**](ServerBulkIpmiPowerResponse.md)
 
 ### Authorization
 
@@ -811,7 +823,7 @@ Other parameters are passed through a pointer to a apiPutServersRequest struct v
 
 > ServerIpmiLiveInfo ServerIpmiLiveGet(ctx, id).Execute()
 
-Server IPMI Live Information
+Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
 
 
 
@@ -881,7 +893,7 @@ Name | Type | Description  | Notes
 
 > ServerIpmiLiveInfo ServerIpmiLivePost(ctx, id).Ip(ip).Asset(asset).Execute()
 
-Server IPMI Live Setup
+Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
 
 
 
@@ -955,7 +967,7 @@ Name | Type | Description  | Notes
 
 > TextResponse ServerIpmiPowerGet(ctx, id).Execute()
 
-Get IPMI Power Status
+Read IPMI chassis power status for a dedicated server (single)
 
 
 
@@ -1025,7 +1037,7 @@ Name | Type | Description  | Notes
 
 > TextResponse ServerIpmiPowerPost(ctx, id).Action(action).Asset(asset).Execute()
 
-Server IPMI Power
+DESTRUCTIVE — change chassis power state on a bare-metal server
 
 
 
@@ -1099,7 +1111,7 @@ Name | Type | Description  | Notes
 
 > ServersCancel200Response ServersCancel(ctx, id).Execute()
 
-Cancel Server Service
+Cancel a dedicated server service at the end of the current billing cycle
 
 
 
@@ -1169,7 +1181,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateServerInfo(ctx, id).Execute()
 
-Update Server Order
+Update settings on a dedicated server order (shares handler with view)
 
 
 

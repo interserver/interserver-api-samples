@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailDelistRequest = Initialize-PSOpenAPIToolsMailDelistRequest  -Unblock null
+$MailDelistRequest = Initialize-InterserverApiMailDelistRequest  -Unblock null
 ```
 
 - Convert the resource to JSON

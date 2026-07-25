@@ -1,4 +1,4 @@
-# openapi::IpLimitRange
+# interserverapi::IpLimitRange
 
 The lower and upper bounds of an ip range.
 

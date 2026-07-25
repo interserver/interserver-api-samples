@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PostWebsiteBuyIp200Response = Initialize-PSOpenAPIToolsPostWebsiteBuyIp200Response  -Message null `
+$PostWebsiteBuyIp200Response = Initialize-InterserverApiPostWebsiteBuyIp200Response  -Message null `
  -Success null
 ```
 

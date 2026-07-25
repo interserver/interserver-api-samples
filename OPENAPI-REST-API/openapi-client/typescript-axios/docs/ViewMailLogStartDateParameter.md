@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ViewMailLogStartDateParameter } from './api';
+import { ViewMailLogStartDateParameter } from '@interserver/myadmin-client';
 
 const instance: ViewMailLogStartDateParameter = {
 };

@@ -1,4 +1,4 @@
-# openapi::QuickserverExtraInfoTables
+# interserverapi::QuickserverExtraInfoTables
 
 
 ## Properties

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::UpdateTicketResponseSchema
+# InterServerAPI::Object::UpdateTicketResponseSchema
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::UpdateTicketResponseSchema;
+use InterServerAPI::Object::UpdateTicketResponseSchema;
 ```
 
 ## Properties

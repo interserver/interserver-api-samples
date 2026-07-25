@@ -60,7 +60,7 @@ public class InlineResponse20014   {
    * @return text
    **/
   @JsonProperty("text")
-  @Schema(example = "Scrub is enabled on your IP.", required = true, description = "")
+  @Schema(example = "Scrub Ips is canceled.", required = true, description = "")
   @NotNull
   public String getText() {
     return text;

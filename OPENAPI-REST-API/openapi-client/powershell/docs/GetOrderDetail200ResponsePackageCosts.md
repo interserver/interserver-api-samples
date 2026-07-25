@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetOrderDetail200ResponsePackageCosts = Initialize-PSOpenAPIToolsGetOrderDetail200ResponsePackageCosts  -PackageId 11552 `
+$GetOrderDetail200ResponsePackageCosts = Initialize-InterserverApiGetOrderDetail200ResponsePackageCosts  -PackageId 11552 `
  -PackageCost 5 `
  -Currency USD `
  -CurrencySymbol $

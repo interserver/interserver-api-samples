@@ -12,4 +12,8 @@ Error resposne during login indicating further action.
 |**field** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

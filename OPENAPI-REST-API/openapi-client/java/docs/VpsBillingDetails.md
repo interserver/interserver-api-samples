@@ -21,4 +21,8 @@ Billing information for a VPS service including payment status, billing cycle, a
 |**serviceExtraJson** | **String** | Additional information in JSON format |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::LicenseClientLink
+# InterServerAPI::Object::LicenseClientLink
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::LicenseClientLink;
+use InterServerAPI::Object::LicenseClientLink;
 ```
 
 ## Properties

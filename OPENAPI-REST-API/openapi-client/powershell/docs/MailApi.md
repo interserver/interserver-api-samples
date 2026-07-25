@@ -1,44 +1,46 @@
-# PSOpenAPITools.PSOpenAPITools\Api.MailApi
+# InterserverApi.InterserverApi\Api.MailApi
 
 All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**Add-Mail**](MailApi.md#Add-Mail) | **POST** /mail/order | Place Mail Order
-[**Add-Rule**](MailApi.md#Add-Rule) | **POST** /mail/{id}/rules | Create Deny Rule
-[**New-MailAlert**](MailApi.md#New-MailAlert) | **POST** /mail/{id}/alerts | Create Mail Alert
-[**Invoke-DeleteMailAlert**](MailApi.md#Invoke-DeleteMailAlert) | **DELETE** /mail/{id}/alerts | Delete Mail Alert
-[**Invoke-DeleteRule**](MailApi.md#Invoke-DeleteRule) | **DELETE** /mail/{id}/rules/{rule} | Delete Deny Rule
-[**Invoke-DelistBlock**](MailApi.md#Invoke-DelistBlock) | **POST** /mail/{id}/blocks/delete | Remove Email Address from Block List
-[**Get-MailAlerts**](MailApi.md#Get-MailAlerts) | **GET** /mail/{id}/alerts | List Mail Alerts
-[**Get-MailBlocks**](MailApi.md#Get-MailBlocks) | **GET** /mail/{id}/blocks | List Blocked Email Addresses
-[**Get-MailDelist**](MailApi.md#Get-MailDelist) | **GET** /mail/{id}/delist | Get Delist Status
-[**Get-MailDeliverability**](MailApi.md#Get-MailDeliverability) | **GET** /mail/{id}/deliverability | Get Deliverability Metrics
-[**Get-MailInfo**](MailApi.md#Get-MailInfo) | **GET** /mail/{id} | Get Mail Order
-[**Get-MailInvoices**](MailApi.md#Get-MailInvoices) | **GET** /mail/{id}/invoices | Get Mail Invoices
-[**Get-MailList**](MailApi.md#Get-MailList) | **GET** /mail | List Mail Orders
-[**Get-MailWelcomeEmail**](MailApi.md#Get-MailWelcomeEmail) | **GET** /mail/{id}/welcome_email | Resend Mail Welcome Email
-[**Get-NewMail**](MailApi.md#Get-NewMail) | **GET** /mail/order | Get Mail Ordering Information
-[**Get-Rules**](MailApi.md#Get-Rules) | **GET** /mail/{id}/rules | List Deny Rules
-[**Get-Stats**](MailApi.md#Get-Stats) | **GET** /mail/{id}/stats | Get Mail Usage Statistics
-[**Send-Cancel**](MailApi.md#Send-Cancel) | **DELETE** /mail/{id} | Cancel Mail
-[**Submit-MailDelist**](MailApi.md#Submit-MailDelist) | **POST** /mail/{id}/delist | Delist a Blocked Sender
-[**Send-Mail**](MailApi.md#Send-Mail) | **PUT** /mail/order | Validate Mail Order
-[**Reset-MailPassword**](MailApi.md#Reset-MailPassword) | **GET** /mail/{id}/reset_password | Reset Mail Password
-[**Send-AdvMail**](MailApi.md#Send-AdvMail) | **POST** /mail/{id}/advsend | Send Email with Advanced Options
-[**Send-Mail**](MailApi.md#Send-Mail) | **POST** /mail/{id}/send | Send Email
-[**Update-MailAlert**](MailApi.md#Update-MailAlert) | **PUT** /mail/{id}/alerts | Update Mail Alert
-[**Update-MailInfo**](MailApi.md#Update-MailInfo) | **POST** /mail/{id} | Update Mail Order
-[**Invoke-ViewMailLog**](MailApi.md#Invoke-ViewMailLog) | **GET** /mail/{id}/log | View Mail Log
+[**Add-Mail**](MailApi.md#Add-Mail) | **POST** /mail/order | Place a new Mail Baby order, generate invoice, and queue provisioning
+[**Add-Rule**](MailApi.md#Add-Rule) | **POST** /mail/{id}/rules | Create a new deny rule to auto-block matching submissions
+[**New-MailAlert**](MailApi.md#New-MailAlert) | **POST** /mail/{id}/alerts | Create a new Mail Baby alert for delivery, bounce, or quota events
+[**Invoke-DeleteMailAlert**](MailApi.md#Invoke-DeleteMailAlert) | **DELETE** /mail/{id}/alerts | Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+[**Invoke-DeleteRule**](MailApi.md#Invoke-DeleteRule) | **DELETE** /mail/{id}/rules/{rule} | Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
+[**Invoke-DelistBlock**](MailApi.md#Invoke-DelistBlock) | **POST** /mail/{id}/blocks/delete | Delist a sender email from rspamd / mailchannels / mailbaby block lists
+[**Get-MailAlerts**](MailApi.md#Get-MailAlerts) | **GET** /mail/{id}/alerts | List configured delivery/bounce/quota alerts for one Mail Baby service
+[**Get-MailBlocks**](MailApi.md#Get-MailBlocks) | **GET** /mail/{id}/blocks | List recent local-blocklist hits and spam-trap captures for the mail user
+[**Get-MailDelist**](MailApi.md#Get-MailDelist) | **GET** /mail/{id}/delist | Read blocklist diagnostics and find senders eligible for delisting
+[**Get-MailDeliverability**](MailApi.md#Get-MailDeliverability) | **GET** /mail/{id}/deliverability | Read delivered vs bounced totals broken down by sender (or by recipient domain)
+[**Get-MailInfo**](MailApi.md#Get-MailInfo) | **GET** /mail/{id} | Read full detail for one Mail Baby service including SMTP credentials
+[**Get-MailInvoices**](MailApi.md#Get-MailInvoices) | **GET** /mail/{id}/invoices | List billing invoices linked to this Mail Baby service
+[**Get-MailList**](MailApi.md#Get-MailList) | **GET** /mail | List every Mail Baby SMTP relay service on the account
+[**Get-MailWelcomeEmail**](MailApi.md#Get-MailWelcomeEmail) | **GET** /mail/{id}/welcome_email | Resend the Mail Baby welcome email with SMTP credentials and setup info
+[**Get-NewMail**](MailApi.md#Get-NewMail) | **GET** /mail/order | Read the Mail Baby order catalog — plans, package costs, service-type metadata
+[**Get-Rules**](MailApi.md#Get-Rules) | **GET** /mail/{id}/rules | List configured deny rules (sender/recipient blocks) for a Mail Baby service
+[**Get-Stats**](MailApi.md#Get-Stats) | **GET** /mail/{id}/stats | Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
+[**Send-Cancel**](MailApi.md#Send-Cancel) | **DELETE** /mail/{id} | Cancel a Mail Baby service and stop the recurring invoice
+[**Submit-MailDelist**](MailApi.md#Submit-MailDelist) | **POST** /mail/{id}/delist | Delist a sender from rspamd / mailchannels / mailbaby block lists
+[**Send-Mail**](MailApi.md#Send-Mail) | **PUT** /mail/order | Validate Mail Baby order, quote pricing, and verify coupon — no charge
+[**Reset-MailPassword**](MailApi.md#Reset-MailPassword) | **GET** /mail/{id}/reset_password | Rotate the SMTP password and email the new credential to the account owner
+[**Send-AdvMail**](MailApi.md#Send-AdvMail) | **POST** /mail/{id}/advsend | Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
+[**Send-Mail**](MailApi.md#Send-Mail) | **POST** /mail/{id}/send | Send a simple single-recipient email through the Mail Baby SMTP relay
+[**Update-MailAlert**](MailApi.md#Update-MailAlert) | **PUT** /mail/{id}/alerts | Update an existing Mail Baby alert by alert_id
+[**Update-MailInfo**](MailApi.md#Update-MailInfo) | **POST** /mail/{id} | POST mutation hook for the Mail Baby service detail page
+[**Update-Rule**](MailApi.md#Update-Rule) | **PUT** /mail/{id}/rules/{rule} | Update an existing Mail Baby deny rule&#39;s type and match data
+[**Invoke-ViewMailLog**](MailApi.md#Invoke-ViewMailLog) | **GET** /mail/{id}/log | Search and paginate per-message Mail Baby delivery log entries
 
 
 <a id="Add-Mail"></a>
 # **Add-Mail**
 > ServiceOrderPostResponse Add-Mail<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MailOrderRequest] <PSCustomObject><br>
 
-Place Mail Order
+Place a new Mail Baby order, generate invoice, and queue provisioning
 
-Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
+Step 3 of the Mail Baby order flow. Revalidates via `validate_buy_mail()`, then calls `place_buy_mail()` to create a `Repeat_Invoice` recurring billing row, an initial `invoices` row, and a `mail` service record in pending status. SMTP credentials become active once the activation worker runs the welcome email (after the invoice is paid). **Real money** — call `putMail` first. Sibling ops: `getNewMail`, `putMail`, `getMailInfo`, `initiatePayment`.  **Body fields:** - `serviceType` (integer, required) — plan id from `getNewMail`. - `coupon` (string, optional). - `comment` (string, optional) — saved on the order row.  **Returns** (on success): `{continue: true, total_cost, iid, iids, real_iids, serviceId (new mail_id), invoice_description, cj_params}` — pass `real_iids` to `initiatePayment`. On validation failure: `{continue: false, errors: [...]}` with HTTP 200.  **Side effects:** - Inserts `mail` service row in `pending` status. - Inserts `repeat_invoices` + `invoices` rows.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **Pay:** `initiatePayment` with `real_iids`. - **Confirm activation:** `getMailInfo` (poll until `mail_status=='active'`). - **Resend credentials:** `getMailWelcomeEmail`.  **Full ordering happy path:** ```text GET /mail/order                                    -> catalog (getNewMail) PUT /mail/order { serviceType, coupon? }           -> quote (putMail) POST /mail/order { serviceType, coupon?, comment? } -> { serviceId, real_iids } GET /billing/pay/cc/{real_iids[0]}                 -> pay (initiatePayment) GET /mail/{serviceId}                              -> poll until mail_status=='active' ``` 
 
 ### Example
 ```powershell
@@ -59,10 +61,11 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
+$MailOrderRequest = Initialize-MailOrderRequest -ServiceType 0 -Coupon "MyCoupon" -Comment "MyComment" # MailOrderRequest | 
 
-# Place Mail Order
+# Place a new Mail Baby order, generate invoice, and queue provisioning
 try {
-    $Result = Add-Mail
+    $Result = Add-Mail -MailOrderRequest $MailOrderRequest
 } catch {
     Write-Host ("Exception occurred when calling Add-Mail: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -70,7 +73,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **MailOrderRequest** | [**MailOrderRequest**](MailOrderRequest.md)|  | 
 
 ### Return type
 
@@ -82,7 +88,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -93,9 +99,9 @@ This endpoint does not need any parameter.
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DenyRuleNew] <PSCustomObject><br>
 
-Create Deny Rule
+Create a new deny rule to auto-block matching submissions
 
-Adds a new deny rule to automatically block emails that match the specified criteria.
+Inserts a new `mail_spam` row scoped to this service's `mail_username` so the relay drops matching submissions. Sibling ops: `getRules`, `updateRule`, `deleteRule`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (schema `DenyRuleNew`):** - `type` (string, required) — `domain` / `email` / `startswith` / `destination`. - `data` (string, required) — literal value matched; validation: no quotes, valid domain for `type=domain`, valid email for `type=email`, `[A-Z0-9+_.-]+` for `startswith`.  **Returns:** `""Spam Block Added""`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** field-level errors on validation failure, `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -119,7 +125,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 $DenyRuleNew = Initialize-DenyRuleNew -User "mb20682" -Type "domain" -VarData "domeinwo@server.guesshost.net" # DenyRuleNew | These are the fields needed to create a new email deny rule.
 
-# Create Deny Rule
+# Create a new deny rule to auto-block matching submissions
 try {
     $Result = Add-Rule -Id $Id -DenyRuleNew $DenyRuleNew
 } catch {
@@ -156,9 +162,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MailAlertRequest] <PSCustomObject><br>
 
-Create Mail Alert
+Create a new Mail Baby alert for delivery, bounce, or quota events
 
-Creates a new alert for the mail service, such as delivery or quota notifications.
+Inserts a new alert row via the `Alert` ORM. The new `alert_id` is retrievable via `getMailAlerts`. Sibling ops: `getMailAlerts`, `updateMailAlert`, `deleteMailAlert`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (schema `MailAlertRequest`):** - `type` (string, required). - `value` (string/numeric, required) — threshold. - `to` (string, required) — notification email; validated via `FILTER_VALIDATE_EMAIL`. - `enabled` (bool, optional).  **Returns:** `SuccessTextResponse`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** field-level errors for missing/invalid body, `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -182,7 +188,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 $MailAlertRequest = Initialize-MailAlertRequest -Type "MyType" -Value "MyValue" -To "MyTo" -Enabled "MyEnabled" # MailAlertRequest | 
 
-# Create Mail Alert
+# Create a new Mail Baby alert for delivery, bounce, or quota events
 try {
     $Result = New-MailAlert -Id $Id -MailAlertRequest $MailAlertRequest
 } catch {
@@ -217,11 +223,11 @@ Name | Type | Description  | Notes
 # **Invoke-DeleteMailAlert**
 > SuccessTextResponse Invoke-DeleteMailAlert<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-AlertId] <Int32><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DeleteMailAlertRequest] <PSCustomObject><br>
 
-Delete Mail Alert
+Delete a Mail Baby alert by alert_id (hard delete — no recovery)
 
-Deletes an existing alert definition for the mail service.
+Hard-deletes a single alert row. Handler verifies the alert belongs to this service+module before deleting. **Irreversible** — no history is preserved; recreate via `createMailAlert` if needed. Sibling ops: `getMailAlerts`, `createMailAlert`, `updateMailAlert`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields:** - `alert_id` (integer, required) — from `getMailAlerts`.  **Returns:** `SuccessTextResponse`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `Invalid alert!` (alert not owned), `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -243,11 +249,11 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
-$AlertId = 56 # Int32 | Alert ID to delete.
+$DeleteMailAlertRequest = Initialize-DeleteMailAlertRequest -AlertId 0 # DeleteMailAlertRequest | 
 
-# Delete Mail Alert
+# Delete a Mail Baby alert by alert_id (hard delete — no recovery)
 try {
-    $Result = Invoke-DeleteMailAlert -Id $Id -AlertId $AlertId
+    $Result = Invoke-DeleteMailAlert -Id $Id -DeleteMailAlertRequest $DeleteMailAlertRequest
 } catch {
     Write-Host ("Exception occurred when calling Invoke-DeleteMailAlert: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -259,7 +265,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **Id** | **Int32**| The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. | 
- **AlertId** | **Int32**| Alert ID to delete. | 
+ **DeleteMailAlertRequest** | [**DeleteMailAlertRequest**](DeleteMailAlertRequest.md)|  | 
 
 ### Return type
 
@@ -271,7 +277,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json, multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -282,9 +288,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Rule] <String><br>
 
-Delete Deny Rule
+Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
 
-Removes a deny rule from the mail service.
+Hard-deletes a single `mail_spam` row scoped to this service's `mail_username`. **Irreversible** — no audit copy preserved. Query filter `id={rule} AND user='{mail_username}'` prevents cross-tenant deletes; passing a `rule` belonging to a different mail order is silently a no-op (still returns success). Sibling ops: `getRules`, `addRule`, `updateRule`.  **Path params:** - `id` (integer, required) — `mail_id` from `getMailList`. - `rule` (string, required) — rule id from `getRules`.  **Returns:** `""Block deleted successfully.""`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -308,7 +314,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 $Rule = "34" # String | The ID of the Rules entry.
 
-# Delete Deny Rule
+# Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
 try {
     $Result = Invoke-DeleteRule -Id $Id -Rule $Rule
 } catch {
@@ -345,9 +351,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Email] <String><br>
 
-Remove Email Address from Block List
+Delist a sender email from rspamd / mailchannels / mailbaby block lists
 
-Removes an email address from the mail service's block lists.
+Removes block rows for the supplied email across the three reputation stores: `rspamd` (by `fromemail`), `mailchannels` (by `email`), `mailbaby` (by `emailfrom`). Functionally equivalent to `postMailDelist` but uses `email` parameter naming and returns 400 (not error JSON) for an invalid address. Sibling ops: `getMailBlocks`, `getMailDelist`, `postMailDelist`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (schema `EmailAddress`):** - `email` (string, required) — sender address; validated via `FILTER_VALIDATE_EMAIL`.  **Returns:** `{status: ""ok"", text: ""Email '...' removed from block list""}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `400` invalid email, `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -371,7 +377,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 $Email = "MyEmail" # String | an email address (optional)
 
-# Remove Email Address from Block List
+# Delist a sender email from rspamd / mailchannels / mailbaby block lists
 try {
     $Result = Invoke-DelistBlock -Id $Id -Email $Email
 } catch {
@@ -407,9 +413,9 @@ Name | Type | Description  | Notes
 > MailAlertsResponse Get-MailAlerts<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 
-List Mail Alerts
+List configured delivery/bounce/quota alerts for one Mail Baby service
 
-Returns the alert configuration for the mail service. Use the alert IDs from this response with PUT or DELETE to update or remove alerts.
+Returns every alert row from `alerts` matching this service. Each row carries `alert_id` (use with PUT/DELETE), `alert_type`, `alert_value` (threshold), `alert_to` (notification email), `alert_enabled`, and timestamps. Sibling ops: `createMailAlert`, `updateMailAlert`, `deleteMailAlert`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns** (schema `MailAlertsResponse`): array of alert rows.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -432,7 +438,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# List Mail Alerts
+# List configured delivery/bounce/quota alerts for one Mail Baby service
 try {
     $Result = Get-MailAlerts -Id $Id
 } catch {
@@ -467,9 +473,9 @@ Name | Type | Description  | Notes
 > MailBlocks Get-MailBlocks<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 
-List Blocked Email Addresses
+List recent local-blocklist hits and spam-trap captures for the mail user
 
-Displays a listing of the blocked email addresses
+Returns relay-side block events for the SMTP user behind `mail_id` — the last 24 hours of `LOCAL_BL_RCPT` and `MBTRAP` rspamd hits, plus a 3-day window of suspicious-subject hits (credential-leak heuristic firing on subjects containing `@` / `smtp` / `socks5` / `socks4` more than 4 times). Use the `from` value with `delistBlock` or `postMailDelist` to clear a block. Sibling ops: `delistBlock`, `getMailDelist`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns** (schema `MailBlocks`): - `local` (array) — rspamd `LOCAL_BL_RCPT` hits: `{date, from, messageId, subject, to}`. - `mbtrap` (array) — spam-trap captures (`MBTRAP` symbol): same shape. - `subject` (array) — senders flagged by subject-line heuristic: `{from, subject}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `401` — unauthenticated. - `404` — `id` not owned by caller. - `409` — `mail_status != ""active""`.  **Related calls:** - **Clear a block:** `delistBlock` (POST `/mail/{id}/blocks/delete`). - **Broader delist UI:** `getMailDelist`, `postMailDelist`. 
 
 ### Example
 ```powershell
@@ -492,7 +498,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# List Blocked Email Addresses
+# List recent local-blocklist hits and spam-trap captures for the mail user
 try {
     $Result = Get-MailBlocks -Id $Id
 } catch {
@@ -527,9 +533,9 @@ Name | Type | Description  | Notes
 > MailDelistResponse Get-MailDelist<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 
-Get Delist Status
+Read blocklist diagnostics and find senders eligible for delisting
 
-Returns the current blocklist and delisting information for the mail service, including recent local and trap blocks.
+Returns a richer diagnostic snapshot than `getMailBlocks` — intended for the delist UI. Use any `SMTPFrom`/`from` value as the `unblock` field for `postMailDelist`. Sibling ops: `postMailDelist`, `getMailBlocks`, `delistBlock`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns** (schema `MailDelistResponse`): - `id` (integer) — `mail_id` echo. - `local`, `mbtrap` (array) — last 24h rspamd hits with capitalized keys (`Date`, `SMTPFrom`, `MessageId`, `Subject`, `MimeRecipients`). - `subject` (array) — credential-leak-heuristic firings (3-day window). - `manual` (array) — manually added blocks.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -552,7 +558,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# Get Delist Status
+# Read blocklist diagnostics and find senders eligible for delisting
 try {
     $Result = Get-MailDelist -Id $Id
 } catch {
@@ -587,9 +593,9 @@ Name | Type | Description  | Notes
 > MailDeliverabilityResponse Get-MailDeliverability<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 
-Get Deliverability Metrics
+Read delivered vs bounced totals broken down by sender (or by recipient domain)
 
-Returns deliverability statistics such as delivered vs. bounced counts and percentages. Use query filters to pivot the response by domain or sender.
+Returns deliverability analytics from `MailDeliveryStats` (Dragonfly cache) for the SMTP user behind `mail_id`. Default pivot is by sender; pass `?filter_domain=1` to pivot by recipient domain for the current year instead. Use to drive analytics dashboards. Sibling ops: `getStats`, `viewMailLog`, `getMailBlocks`, `getMailDelist`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Query params:** - `filter_domain` (string `1`, optional) — pivot by recipient domain instead of sender.  **Returns** (schema `MailDeliverabilityResponse`): - `stat`: `{delivered, bounced, percent}` — totals and bounce ratio. - `header` (string), `col1` (string) — table headers. - `table_data` (array) — rows of `[<sender-or-domain>, bounced, delivered, bouncePercent]`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -612,7 +618,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# Get Deliverability Metrics
+# Read delivered vs bounced totals broken down by sender (or by recipient domain)
 try {
     $Result = Get-MailDeliverability -Id $Id
 } catch {
@@ -647,9 +653,9 @@ Name | Type | Description  | Notes
 > MailSchema Get-MailInfo<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 
-Get Mail Order
+Read full detail for one Mail Baby service including SMTP credentials
 
-Returns detailed information for the mail service, including credentials and service metadata required to configure your sending client.
+Returns the full `ViewMail` payload for one Mail Baby service — `serviceInfo`, `serviceType`, and `client_links` (URLs rewritten to API paths, e.g. `view_mail_log` → `log`). Admin fields (`admin_links`, `settings`, `csrf`) stripped. Use to render a service dashboard or retrieve SMTP host/username for MTA configuration. Sibling ops: `getMailList`, `updateMailInfo`, `mailCancel`, `resetMailPassword`, `getMailWelcomeEmail`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns** (schema `MailSchema`): - `serviceInfo` — `mail_id`, `mail_username` (e.g. `mb1234`), `mail_status`, `mail_invoice`, `mail_custid`, dates, currency. - `serviceType` — plan row (`services_ourcost` stripped). - `client_links` (array) — action URLs (log, alerts, blocks, etc.).  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `401` — unauthenticated. - `404` — `id` not owned by caller.  **Related calls:** - **Send:** `sendMail` / `sendAdvMail`. - **Rotate password:** `resetMailPassword`. - **Reset credentials:** `getMailWelcomeEmail`. - **Cancel:** `mailCancel`. 
 
 ### Example
 ```powershell
@@ -672,7 +678,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# Get Mail Order
+# Read full detail for one Mail Baby service including SMTP credentials
 try {
     $Result = Get-MailInfo -Id $Id
 } catch {
@@ -707,9 +713,9 @@ Name | Type | Description  | Notes
 > ChargeInvoiceRows Get-MailInvoices<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 
-Get Mail Invoices
+List billing invoices linked to this Mail Baby service
 
-Retrieves invoices associated with the mail service. Use these invoices to validate billing status or initiate payment.
+Returns every invoice associated with this `mail_id` via the shared `InvoicesList` workflow. Use to render per-service billing history or find unpaid invoices to pay via `initiatePayment`. Sibling ops: `getBillingInvoice`, `initiatePayment`, `addMail`, `mailCancel`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns:** `ChargeInvoiceRows` — array of `{id, amount, currency, paid, date, due_date, description, module: ""mail"", service}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404 Invalid Service`. 
 
 ### Example
 ```powershell
@@ -732,7 +738,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# Get Mail Invoices
+# List billing invoices linked to this Mail Baby service
 try {
     $Result = Get-MailInvoices -Id $Id
 } catch {
@@ -766,9 +772,9 @@ Name | Type | Description  | Notes
 # **Get-MailList**
 > MailRow[] Get-MailList<br>
 
-List Mail Orders
+List every Mail Baby SMTP relay service on the account
 
-Returns the Mail Baby services on your account. Use the `mail_id` from this list with `/mail/{id}` to retrieve service details, and with `/mail/{id}/stats` or `/mail/{id}/log` to review delivery statistics.
+Enumerates every Mail Baby SMTP relay service owned by the authenticated customer. Canonical entry point for finding a `mail_id` to pass to other Mail endpoints. Filtered server-side by `mail_custid`. Sibling ops: `getMailInfo`, `getStats`, `viewMailLog`, `getMailDeliverability`, `getMailBlocks`, `getMailInvoices`, `addMail`.  **Path/Query/Body:** None.  **Returns:** Array of `MailRow`: - `mail_id` (integer) — canonical id. - `mail_username` (string) — SMTP username (e.g. `mb1234`). - `mail_status` (string enum) — `active` / `pending` / `canceled` / `suspended`. - `services_name` (string) — plan label. - `repeat_invoices_cost` (decimal string) — recurring cost.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **Per-service detail:** `getMailInfo`. - **Send mail:** `sendMail` / `sendAdvMail`. - **Reputation:** `getMailDeliverability` / `getMailBlocks` / `getMailDelist`. - **Order a new service:** `getNewMail` → `putMail` → `addMail`. 
 
 ### Example
 ```powershell
@@ -790,7 +796,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
 
-# List Mail Orders
+# List every Mail Baby SMTP relay service on the account
 try {
     $Result = Get-MailList
 } catch {
@@ -822,9 +828,9 @@ This endpoint does not need any parameter.
 > SuccessTextResponse Get-MailWelcomeEmail<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 
-Resend Mail Welcome Email
+Resend the Mail Baby welcome email with SMTP credentials and setup info
 
-Resends the welcome email for the Mail Baby service. The email contains SMTP credentials and configuration instructions.
+Re-runs the `mail_welcome_email` plugin function — composes and sends the standard welcome email (SMTP host `relay.mailbaby.net`, port, username `mb{mail_id}`, current password, configuration tips) to the account-on-file. Use after `resetMailPassword` to redeliver the rotated credential, or when a customer reports losing the original setup email. Idempotent. Sibling ops: `resetMailPassword`, `getMailInfo`. Cross-module welcome-email endpoints: `getVpsWelcomeEmail`, `getWebsitesWelcomeEmail`, `getDomainsWelcomeEmail`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns:** `{text: ""Welcome Email has been resent.""}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -847,7 +853,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# Resend Mail Welcome Email
+# Resend the Mail Baby welcome email with SMTP credentials and setup info
 try {
     $Result = Get-MailWelcomeEmail -Id $Id
 } catch {
@@ -881,9 +887,9 @@ Name | Type | Description  | Notes
 # **Get-NewMail**
 > MailOrder Get-NewMail<br>
 
-Get Mail Ordering Information
+Read the Mail Baby order catalog — plans, package costs, service-type metadata
 
-Returns available Mail Baby plans and ordering metadata. Use the service type IDs from this response when validating or placing a new mail order.
+Step 1 of the Mail Baby order flow. Returns the catalog used to bootstrap an order form: `packageCosts` keyed by `services_id` (only buyable services where `services_buyable=1`) and the full `serviceTypes` map. Read-only. Pricing is normalized to the customer's currency via `getCurrency()`. Sibling ops: `putMail`, `addMail`, `getMailList`.  **Path/Query/Body:** None.  **Returns** (schema `MailOrder`): - `packageCosts` (object) — `{<services_id>: <cost>}` per buyable plan. - `serviceTypes` (object) — full service-types registry (plan metadata).  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **Next:** `putMail` (validate + quote — no charge), `addMail` (place order). 
 
 ### Example
 ```powershell
@@ -905,7 +911,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
 
-# Get Mail Ordering Information
+# Read the Mail Baby order catalog — plans, package costs, service-type metadata
 try {
     $Result = Get-NewMail
 } catch {
@@ -937,9 +943,9 @@ This endpoint does not need any parameter.
 > DenyRuleRecord[] Get-Rules<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 
-List Deny Rules
+List configured deny rules (sender/recipient blocks) for a Mail Baby service
 
-Returns a listing of all the deny block rules configured for this mail service.
+Returns every `mail_spam` row scoped to this service's `mail_username` — local sender/recipient block rules the customer has configured. Sibling ops: `addRule`, `updateRule`, `deleteRule`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns:** Array of `DenyRuleRecord` — `{id, user, type, data, created}`. `type` values: - `domain` — block by sender domain. - `email` — block by exact sender email. - `startswith` — block when sender local-part starts with a string. - `destination` — block by recipient email.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -962,7 +968,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# List Deny Rules
+# List configured deny rules (sender/recipient blocks) for a Mail Baby service
 try {
     $Result = Get-Rules -Id $Id
 } catch {
@@ -998,9 +1004,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Time] <String><br>
 
-Get Mail Usage Statistics
+Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
 
-Returns usage statistics for the mail service over the requested time period, including send counts, delivery rates, and quota consumption.
+Returns aggregate usage and cost metrics for the SMTP user behind `mail_id` from the ZoneMTA `mail_messagestore` / `mail_senderdelivered` tables. Use to drive an analytics dashboard or to project end-of-cycle cost. Sibling ops: `viewMailLog`, `getMailDeliverability`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Query params:** - `time` (string enum, optional, default `1h`) — window: `all` / `billing` (current invoice cycle) / `month` / `7d` / `24h` / `1d` / `1h`.  **Returns** (schema `MailStatsType`): - `time` (string) — echo of selected window. - `usage` (integer) — full-billing-cycle send count. - `currency`, `currencySymbol` (string). - `cost` (decimal) — projected = base + `$0.20 / 1000 emails`. - `received`, `sent` (integer). - `volume.to`, `volume.from`, `volume.ip` (object) — top-500 destinations / senders / origin IPs by count.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `Invalid or missing mail order id`, `401`. 
 
 ### Example
 ```powershell
@@ -1024,7 +1030,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 $Time = "all" # String | The timeframe for the statistics. (optional)
 
-# Get Mail Usage Statistics
+# Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
 try {
     $Result = Get-Stats -Id $Id -Time $Time
 } catch {
@@ -1060,9 +1066,9 @@ Name | Type | Description  | Notes
 > MailCancel200Response Send-Cancel<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 
-Cancel Mail
+Cancel a Mail Baby service and stop the recurring invoice
 
-Cancels a Mail Baby service. After cancellation the mail credentials are deactivated and the service transitions to a canceled status. No further billing charges will be incurred.
+Cancels the Mail Baby service through the shared `Billing\CancelService::go($id)` flow with `module='mail'`. SMTP credentials are deactivated, the service transitions to canceled, the `repeat_invoice` is stopped, and queued submissions stop being accepted. **Irreversible via API** — re-activation requires placing a new order via `addMail`. Sibling ops: `getMailInfo`, `getMailInvoices`, `addMail`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns:** `MailCancelResponse`.  **Side effects:** - Sets `mail_status='canceled'`. - Marks `repeat_invoices` non-renewing. - ZoneMTA-side: stops accepting new submissions for `mb{mail_id}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `401` — unauthenticated. - `404` — `id` not owned by caller.  **Related calls:** - **Sibling cancels:** `VPSCancel`, `CancelDomain`, `webhostingCancel`, etc. - **Re-provision:** `addMail`. 
 
 ### Example
 ```powershell
@@ -1085,7 +1091,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# Cancel Mail
+# Cancel a Mail Baby service and stop the recurring invoice
 try {
     $Result = Send-Cancel -Id $Id
 } catch {
@@ -1121,9 +1127,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MailDelistRequest] <PSCustomObject><br>
 
-Delist a Blocked Sender
+Delist a sender from rspamd / mailchannels / mailbaby block lists
 
-Removes an email address from blocklists for the mail service. Provide the `unblock` email address from the delist status response.
+Removes all block rows for one sender email across three reputation stores: `rspamd` (by `fromemail`), `mailchannels` (by `email`), `mailbaby` (by `emailfrom`). Effect is global per-address across all three tables; takes effect immediately for new submissions. Sibling ops: `getMailDelist`, `delistBlock` (alias at `/mail/{id}/blocks/delete`), `getMailBlocks`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (schema `MailDelistRequest`):** - `unblock` (string, required) — sender email from `getMailDelist`/`getMailBlocks`.  **Returns:** `SuccessTextResponse`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `Missing parameter unblock`, `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -1147,7 +1153,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 $MailDelistRequest = Initialize-MailDelistRequest -Unblock "MyUnblock" # MailDelistRequest | 
 
-# Delist a Blocked Sender
+# Delist a sender from rspamd / mailchannels / mailbaby block lists
 try {
     $Result = Submit-MailDelist -Id $Id -MailDelistRequest $MailDelistRequest
 } catch {
@@ -1181,10 +1187,11 @@ Name | Type | Description  | Notes
 <a id="Send-Mail"></a>
 # **Send-Mail**
 > void Send-Mail<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MailOrderRequest] <PSCustomObject><br>
 
-Validate Mail Order
+Validate Mail Baby order, quote pricing, and verify coupon — no charge
 
-Validates a Mail Baby order and returns pricing or errors. Use this before placing the final order.
+Step 2 of the Mail Baby order flow. Dry-runs the order through `validate_buy_mail()` without creating invoices. Returns the cost preview, coupon resolution, and validation errors. The endpoint also auto-generates an SMTP password preview the order will use. Use to surface live pricing in the UI before `addMail`. Sibling ops: `getNewMail`, `addMail`.  **Body fields:** - `serviceType` (integer, required) — plan id from `getNewMail.packageCosts` keys. - `coupon` (string, optional) — coupon code.  **Returns:** - `continue` (bool) — `true` if order can safely be POSTed. - `errors` (array) — validation messages. - `serviceType`, `serviceCost`, `originalCost`, `repeatServiceCost` (numeric). - `password` (string) — auto-generated SMTP password preview. - `introFrequency` (integer). - `coupon`, `couponCode` (string/integer) — resolved coupon.  **Auth:** Session/API key.  **Errors:** - `200` with `continue=false` and `errors[]` — validation problems. - `401` — unauthenticated.  **Related calls:** - **Prerequisite:** `getNewMail` (catalog). - **Place order:** `addMail`. 
 
 ### Example
 ```powershell
@@ -1205,10 +1212,11 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 #$Configuration.ApiKeyPrefix.sessionid = "Bearer"
 
+$MailOrderRequest = Initialize-MailOrderRequest -ServiceType 0 -Coupon "MyCoupon" -Comment "MyComment" # MailOrderRequest | 
 
-# Validate Mail Order
+# Validate Mail Baby order, quote pricing, and verify coupon — no charge
 try {
-    $Result = Send-Mail
+    $Result = Send-Mail -MailOrderRequest $MailOrderRequest
 } catch {
     Write-Host ("Exception occurred when calling Send-Mail: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
     Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
@@ -1216,7 +1224,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **MailOrderRequest** | [**MailOrderRequest**](MailOrderRequest.md)|  | 
 
 ### Return type
 
@@ -1228,7 +1239,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -1238,9 +1249,9 @@ void (empty response body)
 > SuccessTextResponse Reset-MailPassword<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 
-Reset Mail Password
+Rotate the SMTP password and email the new credential to the account owner
 
-Resets the Mail Baby service password and emails the new password to the account owner. Use `/mail/{id}` to retrieve updated credential data after the reset.
+Generates a new 20-char SMTP password (lower/upper/digits via `generate_password`), writes it to the ZoneMTA Mongo `users` collection for username `mb{mail_id}`, logs the change to `App::history()`, and emails the result to the account-on-file via `client_email.tpl`. **Any MTA, app, or saved client still using the old password will start failing auth immediately.** The new password is **not** returned in the response — fetch via `getMailWelcomeEmail` or `getMailInfo`. Sibling ops: `getMailWelcomeEmail`, `getMailInfo`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns:** `SuccessTextResponse`.  **Side effects:** - Mongo update on ZoneMTA `users` for `mb{mail_id}`. - `App::history()` audit entry. - Email sent to account owner.  **Auth:** Session/API key. Ownership enforced.  **Errors:** Mongo update modified 0 rows → error text; `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -1263,7 +1274,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# Reset Mail Password
+# Rotate the SMTP password and email the new credential to the account owner
 try {
     $Result = Reset-MailPassword -Id $Id
 } catch {
@@ -1299,9 +1310,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SendMailAdv] <PSCustomObject><br>
 
-Send Email with Advanced Options
+Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
 
-Sends an email through one of your mail orders with support for file attachments, CC, BCC, and other advanced options. For simple single-recipient sends, use `POST /mail/{id}/send`.
+Submits an outbound message through `relay.mailbaby.net:25` using the service's SMTP credentials (fetched via `mail_get_password`). Use for multi-recipient sends, named addresses, CC/BCC, ReplyTo, or attachments. For single-recipient plain sends, `sendMail` is the lighter option. Sibling ops: `sendMail`, `viewMailLog` (find queued message), `getMailDeliverability` (analyze bounces).  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (JSON or form-urlencoded, schema `SendMailAdv`):** - `from` (string or `{email, name}`, required). - `to` (array of strings or `{email, name}` objects, required). - `subject` (string, required). - `body` (string, required) — HTML auto-detected when tags are present. - `replyto` (array, optional) — same shape as `to`. - `cc`, `bcc` (array, optional) — same shape as `to`. - `attachments` (array, optional) — each `{filename, data}` where `data` is base64-encoded; added via `addStringAttachment`.  **Returns:** `{status: ""ok"", text: ""Email queued successfully""}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `400` with PHPMailer `ErrorInfo` on send failure or missing required field. - `401` — unauthenticated. - `404 Invalid Service Passed`. - `409 Service is not active`. 
 
 ### Example
 ```powershell
@@ -1327,7 +1338,7 @@ $EmailAddressName = Initialize-EmailAddressName -Email "user@domain.com" -Name "
 $MailAttachment = Initialize-MailAttachment -Filename "message.txt" -VarData "aGVsbG8gdGhlcmUK"
 $SendMailAdv = Initialize-SendMailAdv -Subject "Your Package has been Delivered!" -Body "The package you ordered on 2021-01-23 has been delivered. If the package is broken into many pieces, please blaim someone else." -VarFrom $EmailAddressName -To $EmailAddressName -Replyto $EmailAddressName -Cc $EmailAddressName -Bcc $EmailAddressName -Attachments $MailAttachment -Id 5000 # SendMailAdv | 
 
-# Send Email with Advanced Options
+# Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
 try {
     $Result = Send-AdvMail -Id $Id -SendMailAdv $SendMailAdv
 } catch {
@@ -1364,9 +1375,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-SendMail] <PSCustomObject><br>
 
-Send Email
+Send a simple single-recipient email through the Mail Baby SMTP relay
 
-Sends an email through one of your mail orders. For multiple recipients or file attachments, use `POST /mail/{id}/advsend` instead.
+Sends a single-recipient transactional email through `relay.mailbaby.net:25` authenticated as this `mail_id`. Body fields are the minimum needed for a plain send; Reply-To is auto-set to `from`. For multi-recipient sends, CC/BCC, named addresses, or attachments use `sendAdvMail` instead. Sibling ops: `sendAdvMail`, `viewMailLog`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (JSON or form-urlencoded, schema `SendMail`):** - `to` (string, required) — recipient email. - `from` (string, required) — sender email. - `subject` (string, required). - `body` (string, required) — HTML auto-detected when tags are present.  **Returns:** `{status: ""ok"", text: ""Email queued successfully""}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `400` with PHPMailer `ErrorInfo` on send failure or missing required field, `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -1390,7 +1401,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 $SendMail = Initialize-SendMail -To "johndoe@company.com" -VarFrom "janedoe@company.com" -Subject "Attention Client" -Body "This is an email to inform you that something noteworthy happened." # SendMail | 
 
-# Send Email
+# Send a simple single-recipient email through the Mail Baby SMTP relay
 try {
     $Result = Send-Mail -Id $Id -SendMail $SendMail
 } catch {
@@ -1427,9 +1438,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-MailAlertUpdateRequest] <PSCustomObject><br>
 
-Update Mail Alert
+Update an existing Mail Baby alert by alert_id
 
-Updates an existing alert definition for the mail service. Provide the `alert_id` returned by the list response along with updated fields.
+Updates a single alert row by `alert_id`. Handler verifies the alert belongs to this service+module before writing. Sibling ops: `getMailAlerts`, `createMailAlert`, `deleteMailAlert`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (schema `MailAlertUpdateRequest`):** - `alert_id` (integer, required) — from `getMailAlerts`. - `type` (string, required). - `value` (string/numeric, required) — threshold. - `to` (string, required) — notification email; validated via `FILTER_VALIDATE_EMAIL`. - `enabled` (bool, optional).  **Returns:** `SuccessTextResponse`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `Invalid alert!` (alert not owned), field-level errors for missing/invalid body, `401`, `404`, `409 not active`. 
 
 ### Example
 ```powershell
@@ -1453,7 +1464,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 $Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
 $MailAlertUpdateRequest = Initialize-MailAlertUpdateRequest -AlertId 0 -Type "MyType" -Value "MyValue" -To "MyTo" -Enabled "MyEnabled" # MailAlertUpdateRequest | 
 
-# Update Mail Alert
+# Update an existing Mail Baby alert by alert_id
 try {
     $Result = Update-MailAlert -Id $Id -MailAlertUpdateRequest $MailAlertUpdateRequest
 } catch {
@@ -1489,9 +1500,9 @@ Name | Type | Description  | Notes
 > SuccessTextResponse Update-MailInfo<br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <String><br>
 
-Update Mail Order
+POST mutation hook for the Mail Baby service detail page
 
-Updates mail service metadata for the order, such as stored settings or account details.
+POST mutation hook for the Mail Baby service detail page. Currently delegates to the same `View::go()` handler as `getMailInfo` — placeholder for future field updates. Does NOT rotate credentials (use `resetMailPassword`) and does NOT change billing (use `/billing` endpoints). Sibling ops: `getMailInfo`, `mailCancel`, `resetMailPassword`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body:** Form fields.  **Returns:** `SuccessTextResponse`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `401` — unauthenticated. - `404` — `id` not owned by caller. - `409` — `mail_status != ""active""`.  **Related calls:** - **Read:** `getMailInfo`. - **Rotate password:** `resetMailPassword`. 
 
 ### Example
 ```powershell
@@ -1514,7 +1525,7 @@ $Configuration.ApiKey.sessionid = "YOUR_API_KEY"
 
 $Id = "MyId" # String | The mail service ID. Use `mail_id` from `GET /mail`.
 
-# Update Mail Order
+# POST mutation hook for the Mail Baby service detail page
 try {
     $Result = Update-MailInfo -Id $Id
 } catch {
@@ -1544,6 +1555,72 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+<a id="Update-Rule"></a>
+# **Update-Rule**
+> GenericResponse Update-Rule<br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Id] <Int32><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Rule] <String><br>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-DenyRuleNew] <PSCustomObject><br>
+
+Update an existing Mail Baby deny rule's type and match data
+
+Updates `type` and `data` on a single `mail_spam` row. Query is bounded by `id={rule} AND user='{mail_username}'` so cross-tenant updates are impossible. Same validation rules as `addRule`. Sibling ops: `getRules`, `addRule`, `deleteRule`.  **Path params:** - `id` (integer, required) — `mail_id` from `getMailList`. - `rule` (string, required) — rule id from `getRules`.  **Body fields (schema `DenyRuleNew`):** - `type` (string, required) — `domain` / `email` / `startswith` / `destination`. - `data` (string, required) — see `addRule` for type-specific validation.  **Returns:** `""Record updated successfully.""`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** field-level errors on validation failure, `401`, `404`, `409 not active`. 
+
+### Example
+```powershell
+# general setting of the PowerShell module, e.g. base URL, authentication, etc
+$Configuration = Get-Configuration
+# Configure API key authorization: sessionIdCookieAuth
+$Configuration.ApiKey.sessionid = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.sessionid = "Bearer"
+
+# Configure API key authorization: apiKeyAuth
+$Configuration.ApiKey.X-API-KEY = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.X-API-KEY = "Bearer"
+
+# Configure API key authorization: sessionIdHeaderAuth
+$Configuration.ApiKey.sessionid = "YOUR_API_KEY"
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$Configuration.ApiKeyPrefix.sessionid = "Bearer"
+
+$Id = 56 # Int32 | The mail service ID. Use `mail_id` from `GET /mail`.
+$Rule = "MyRule" # String | The ID of the deny rule to update.
+$DenyRuleNew = Initialize-DenyRuleNew -User "mb20682" -Type "domain" -VarData "domeinwo@server.guesshost.net" # DenyRuleNew | 
+
+# Update an existing Mail Baby deny rule's type and match data
+try {
+    $Result = Update-Rule -Id $Id -Rule $Rule -DenyRuleNew $DenyRuleNew
+} catch {
+    Write-Host ("Exception occurred when calling Update-Rule: {0}" -f ($_.ErrorDetails | ConvertFrom-Json))
+    Write-Host ("Response headers: {0}" -f ($_.Exception.Response.Headers | ConvertTo-Json))
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **Id** | **Int32**| The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. | 
+ **Rule** | **String**| The ID of the deny rule to update. | 
+ **DenyRuleNew** | [**DenyRuleNew**](DenyRuleNew.md)|  | 
+
+### Return type
+
+[**GenericResponse**](GenericResponse.md) (PSCustomObject)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a id="Invoke-ViewMailLog"></a>
 # **Invoke-ViewMailLog**
 > MailLog Invoke-ViewMailLog<br>
@@ -1567,9 +1644,9 @@ Name | Type | Description  | Notes
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Dir] <String><br>
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[-Groupby] <String><br>
 
-View Mail Log
+Search and paginate per-message Mail Baby delivery log entries
 
-Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
+Paginated search over ZoneMTA's `mail_messagestore` joined with `mail_senderdelivered` and `mail_queuerelease`. Supports envelope, header, and metadata filters; sortable; choose recipient-level or message-level grouping. Use to investigate delivery issues, find specific messages by Message-ID, audit bounce rates, or feed an analytics dashboard. Sibling ops: `getStats`, `getMailDeliverability`, `delistBlock` (clear a block surfaced by a bounce).  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList` (omit to span all owned mail users — admin-only).  **Query params:** - `from`, `to` (string) — envelope address, exact match. - `headerfrom`, `replyto` (string) — header address, exact match; validated as email. - `subject` (string) — LIKE match on subject. - `mailid` (string, 18–19 chars) — relay id, exact. - `messageId` (string) — Message-ID header, substring match. - `origin` (string) — submitter IP, exact. - `mx` (string) — destination MX hostname, LIKE. - `delivered` (integer 0/1). - `startDate`, `endDate` (Unix timestamp or `strtotime`-parseable string). - `skip` (integer, default 0), `limit` (integer 1–10000, default 100). - `sort` (`time`), `dir` (`asc`/`desc`, default `desc`). - `groupby` (`recipient` default — one row per delivery attempt; `message` — one row per `_id`).  **Returns** (schema `MailLog`): `{total, skip, limit, emails: [{id, _id, from, to, subject, messageId, time, mxHostname, delivered, code, response, recipient, ...}]}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `400` bad input, `401`. 
 
 ### Example
 ```powershell
@@ -1610,7 +1687,7 @@ $Sort = "time" # String | Field to sort results by.  Currently only `time` is su
 $Dir = "asc" # String | Sort direction.  `desc` returns newest first (default), `asc` returns oldest first. (optional) (default to "desc")
 $Groupby = "message" # String | Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode. (optional) (default to "recipient")
 
-# View Mail Log
+# Search and paginate per-message Mail Baby delivery log entries
 try {
     $Result = Invoke-ViewMailLog -Id $Id -Id2 $Id2 -Origin $Origin -Mx $Mx -From $From -To $To -Subject $Subject -Mailid $Mailid -MessageId $MessageId -Replyto $Replyto -Headerfrom $Headerfrom -Delivered $Delivered -Skip $Skip -Limit $Limit -StartDate $StartDate -EndDate $EndDate -Sort $Sort -Dir $Dir -Groupby $Groupby
 } catch {

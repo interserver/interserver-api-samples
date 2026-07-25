@@ -2,13 +2,11 @@ package io.swagger.server.model
 
 
 /**
- * @param packageCosts 
- * @param serviceTypes 
- * @param ips 
+ * @param success  for example: ''true''
+ * @param text  for example: ''Filter is deleted.''
  */
 case class Inline_response_200_18 (
-  packageCosts: Option[inline_response_200_18_packageCosts],
-  serviceTypes: Option[List[inline_response_200_18_serviceTypes]],
-  ips: Option[List[inline_response_200_18_ips]]
+  success: Option[Boolean],
+  text: Option[String]
 )
 

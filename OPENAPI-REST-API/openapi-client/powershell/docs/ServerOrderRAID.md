@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderRAID = Initialize-PSOpenAPIToolsServerOrderRAID  -Id 7 `
+$ServerOrderRAID = Initialize-InterserverApiServerOrderRAID  -Id 7 `
  -Price 50 `
  -Img raid.png `
  -ShortDesc Hardware Raid 5 `

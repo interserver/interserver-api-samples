@@ -10,10 +10,10 @@
 package myadmin-client-go-server
 
 type InlineResponse20019 struct {
-	// Status message.
-	Text string `json:"text,omitempty"`
-	// Invoice ID for payment.
-	Invoice int32 `json:"invoice,omitempty"`
-	// Server order ID.
-	Order int32 `json:"order,omitempty"`
+
+	PackageCosts *InlineResponse20019PackageCosts `json:"packageCosts,omitempty"`
+
+	ServiceTypes []InlineResponse20019ServiceTypes `json:"serviceTypes,omitempty"`
+
+	Ips []InlineResponse20019Ips `json:"ips,omitempty"`
 }

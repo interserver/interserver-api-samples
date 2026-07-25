@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_ip_table_row import QuickserverIpTableRow
+from interserver_api_client.models.quickserver_ip_table_row import QuickserverIpTableRow
 
 class TestQuickserverIpTableRow(unittest.TestCase):
     """QuickserverIpTableRow unit test stubs"""

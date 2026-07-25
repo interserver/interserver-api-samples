@@ -29,6 +29,7 @@ local openapiclient_vps_templates_list = require "openapiclient.model.vps_templa
 local openapiclient_download_qs_backup_200_response = require "openapiclient.model.download_qs_backup_200_response"
 local openapiclient_download_qs_backup_request = require "openapiclient.model.download_qs_backup_request"
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
+local openapiclient_qs_order_request = require "openapiclient.model.qs_order_request"
 local openapiclient_quickservers_cancel_200_response = require "openapiclient.model.quickservers_cancel_200_response"
 local openapiclient_restore_request = require "openapiclient.model.restore_request"
 local openapiclient_reverse_dns_entries = require "openapiclient.model.reverse_dns_entries"
@@ -59,7 +60,7 @@ local function new_quick_servers_api(authority, basePath, schemes)
 	}, quick_servers_api_mt)
 end
 
-function quick_servers_api:add_qs()
+function quick_servers_api:add_qs(qs_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -70,9 +71,15 @@ function quick_servers_api:add_qs()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "POST")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(qs_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -702,6 +709,60 @@ function quick_servers_api:get_new_qs()
 			return nil, err3
 		end
 		return openapiclient_quickserver_order.cast(result), headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
+function quick_servers_api:get_qs_backup(id)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/qs/%s/backup",
+			self.basePath, id);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "GET")
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_queue_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -1492,60 +1553,6 @@ function quick_servers_api:get_qs_welcome_email(id)
 	end
 end
 
-function quick_servers_api:post_qs_backup(id)
-	local req = http_request.new_from_uri({
-		scheme = self.default_scheme;
-		host = self.host;
-		port = self.port;
-		path = string.format("%s/qs/%s/backup",
-			self.basePath, id);
-	})
-
-	-- set HTTP verb
-	req.headers:upsert(":method", "POST")
-	-- TODO: create a function to select proper content-type
-	--local var_accept = { "application/json" }
-	req.headers:upsert("content-type", "application/json")
-
-	-- api key in headers 'X-API-KEY'
-	if self.api_key['X-API-KEY'] then
-		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
-	end
-	-- api key in headers 'sessionid'
-	if self.api_key['sessionid'] then
-		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
-	end
-
-	-- make the HTTP call
-	local headers, stream, errno = req:go()
-	if not headers then
-		return nil, stream, errno
-	end
-	local http_status = headers:get(":status")
-	if http_status:sub(1,1) == "2" then
-		local body, err, errno2 = stream:get_body_as_string()
-		-- exception when getting the HTTP body
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		local result, _, err3 = dkjson.decode(body)
-		-- exception when decoding the HTTP body
-		if result == nil then
-			return nil, err3
-		end
-		return openapiclient_queue_response.cast(result), headers
-	else
-		local body, err, errno2 = stream:get_body_as_string()
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		-- return the error message (http body)
-		return nil, http_status, body
-	end
-end
-
 function quick_servers_api:post_qs_change_hostname(id)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
@@ -2191,7 +2198,7 @@ function quick_servers_api:post_quick_server_restore(id, restore_request)
 	end
 end
 
-function quick_servers_api:put_qs()
+function quick_servers_api:put_qs(qs_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -2202,9 +2209,15 @@ function quick_servers_api:put_qs()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "PUT")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(qs_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then

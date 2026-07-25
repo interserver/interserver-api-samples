@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailServiceType } from './api';
+import { MailServiceType } from '@interserver/myadmin-client';
 
 const instance: MailServiceType = {
     services_id,

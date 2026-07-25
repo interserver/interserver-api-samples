@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverExtraInfoTables
+# InterserverApiClient.QuickserverExtraInfoTables
 
 ## Properties
 

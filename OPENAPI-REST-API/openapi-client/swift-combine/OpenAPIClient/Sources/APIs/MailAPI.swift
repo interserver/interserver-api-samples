@@ -39,9 +39,9 @@ open class MailAPI {
         }
     }
 
-    /// Place Mail Order
+    /// Place a new Mail Baby order, generate invoice, and queue provisioning
     /// - POST /mail/order
-    /// - Places a Mail Baby order. On success, invoices are created for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
+    /// - Step 3 of the Mail Baby order flow. Revalidates via `validate_buy_mail()`, then calls `place_buy_mail()` to create a `Repeat_Invoice` recurring billing row, an initial `invoices` row, and a `mail` service record in pending status. SMTP credentials become active once the activation worker runs the welcome email (after the invoice is paid). **Real money** — call `putMail` first. Sibling ops: `getNewMail`, `putMail`, `getMailInfo`, `initiatePayment`.  **Body fields:** - `serviceType` (integer, required) — plan id from `getNewMail`. - `coupon` (string, optional). - `comment` (string, optional) — saved on the order row.  **Returns** (on success): `{continue: true, total_cost, iid, iids, real_iids, serviceId (new mail_id), invoice_description, cj_params}` — pass `real_iids` to `initiatePayment`. On validation failure: `{continue: false, errors: [...]}` with HTTP 200.  **Side effects:** - Inserts `mail` service row in `pending` status. - Inserts `repeat_invoices` + `invoices` rows.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **Pay:** `initiatePayment` with `real_iids`. - **Confirm activation:** `getMailInfo` (poll until `mail_status=='active'`). - **Resend credentials:** `getMailWelcomeEmail`.  **Full ordering happy path:** ```text GET /mail/order                                    -> catalog (getNewMail) PUT /mail/order { serviceType, coupon? }           -> quote (putMail) POST /mail/order { serviceType, coupon?, comment? } -> { serviceId, real_iids } GET /billing/pay/cc/{real_iids[0]}                 -> pay (initiatePayment) GET /mail/{serviceId}                              -> poll until mail_status=='active' ``` 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -51,8 +51,9 @@ open class MailAPI {
     /// - API Key:
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
+    /// - parameter mailOrderRequest: (body)  
     /// - returns: AnyPublisher<ServiceOrderPostResponse, Error> 
-    open func addMail() -> AnyPublisher<ServiceOrderPostResponse, Error> {
+    open func addMail(mailOrderRequest: MailOrderRequest) -> AnyPublisher<ServiceOrderPostResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -66,6 +67,8 @@ open class MailAPI {
                 }
                 var request = URLRequest(url: requestURL)
                 request.httpMethod = "POST"
+                request.httpBody = try self.encoder.encode(mailOrderRequest)
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 return request
             }.publisher
         }.flatMap { request -> AnyPublisher<ServiceOrderPostResponse, Error> in 
@@ -108,9 +111,9 @@ open class MailAPI {
         }
     }
 
-    /// Create Deny Rule
+    /// Create a new deny rule to auto-block matching submissions
     /// - POST /mail/{id}/rules
-    /// - Adds a new deny rule to automatically block emails that match the specified criteria.
+    /// - Inserts a new `mail_spam` row scoped to this service's `mail_username` so the relay drops matching submissions. Sibling ops: `getRules`, `updateRule`, `deleteRule`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (schema `DenyRuleNew`):** - `type` (string, required) — `domain` / `email` / `startswith` / `destination`. - `data` (string, required) — literal value matched; validation: no quotes, valid domain for `type=domain`, valid email for `type=email`, `[A-Z0-9+_.-]+` for `startswith`.  **Returns:** `\"Spam Block Added\"`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** field-level errors on validation failure, `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -190,9 +193,9 @@ open class MailAPI {
         }
     }
 
-    /// Create Mail Alert
+    /// Create a new Mail Baby alert for delivery, bounce, or quota events
     /// - POST /mail/{id}/alerts
-    /// - Creates a new alert for the mail service, such as delivery or quota notifications.
+    /// - Inserts a new alert row via the `Alert` ORM. The new `alert_id` is retrievable via `getMailAlerts`. Sibling ops: `getMailAlerts`, `updateMailAlert`, `deleteMailAlert`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (schema `MailAlertRequest`):** - `type` (string, required). - `value` (string/numeric, required) — threshold. - `to` (string, required) — notification email; validated via `FILTER_VALIDATE_EMAIL`. - `enabled` (bool, optional).  **Returns:** `SuccessTextResponse`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** field-level errors for missing/invalid body, `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -256,9 +259,9 @@ open class MailAPI {
         }
     }
 
-    /// Delete Mail Alert
+    /// Delete a Mail Baby alert by alert_id (hard delete — no recovery)
     /// - DELETE /mail/{id}/alerts
-    /// - Deletes an existing alert definition for the mail service.
+    /// - Hard-deletes a single alert row. Handler verifies the alert belongs to this service+module before deleting. **Irreversible** — no history is preserved; recreate via `createMailAlert` if needed. Sibling ops: `getMailAlerts`, `createMailAlert`, `updateMailAlert`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields:** - `alert_id` (integer, required) — from `getMailAlerts`.  **Returns:** `SuccessTextResponse`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `Invalid alert!` (alert not owned), `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -269,9 +272,9 @@ open class MailAPI {
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
     /// - parameter id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
-    /// - parameter alertId: (query) Alert ID to delete. 
+    /// - parameter deleteMailAlertRequest: (body)  
     /// - returns: AnyPublisher<SuccessTextResponse, Error> 
-    open func deleteMailAlert(id: Int, alertId: Int) -> AnyPublisher<SuccessTextResponse, Error> {
+    open func deleteMailAlert(id: Int, deleteMailAlertRequest: DeleteMailAlertRequest) -> AnyPublisher<SuccessTextResponse, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -280,15 +283,14 @@ open class MailAPI {
                 var localVarPath = "/mail/{id}/alerts"
                 localVarPath = localVarPath.replacingOccurrences(of: "{id}", with: "\(id)")
                 let localVarURL = baseURL.appendingPathComponent(localVarPath)
-                var components = URLComponents(url: localVarURL, resolvingAgainstBaseURL: false)
-                var queryItems: [URLQueryItem] = []
-                queryItems.append(URLQueryItem(name: "alert_id", value: "\(alertId)"))
-                components?.queryItems = queryItems
+                let components = URLComponents(url: localVarURL, resolvingAgainstBaseURL: false)
                 guard let requestURL = components?.url else {
                     throw OpenAPITransportError.badURLError()
                 }
                 var request = URLRequest(url: requestURL)
                 request.httpMethod = "DELETE"
+                request.httpBody = try self.encoder.encode(deleteMailAlertRequest)
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 return request
             }.publisher
         }.flatMap { request -> AnyPublisher<SuccessTextResponse, Error> in 
@@ -331,9 +333,9 @@ open class MailAPI {
         }
     }
 
-    /// Delete Deny Rule
+    /// Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
     /// - DELETE /mail/{id}/rules/{rule}
-    /// - Removes a deny rule from the mail service.
+    /// - Hard-deletes a single `mail_spam` row scoped to this service's `mail_username`. **Irreversible** — no audit copy preserved. Query filter `id={rule} AND user='{mail_username}'` prevents cross-tenant deletes; passing a `rule` belonging to a different mail order is silently a no-op (still returns success). Sibling ops: `getRules`, `addRule`, `updateRule`.  **Path params:** - `id` (integer, required) — `mail_id` from `getMailList`. - `rule` (string, required) — rule id from `getRules`.  **Returns:** `\"Block deleted successfully.\"`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -420,9 +422,9 @@ open class MailAPI {
         }
     }
 
-    /// Remove Email Address from Block List
+    /// Delist a sender email from rspamd / mailchannels / mailbaby block lists
     /// - POST /mail/{id}/blocks/delete
-    /// - Removes an email address from the mail service's block lists.
+    /// - Removes block rows for the supplied email across the three reputation stores: `rspamd` (by `fromemail`), `mailchannels` (by `email`), `mailbaby` (by `emailfrom`). Functionally equivalent to `postMailDelist` but uses `email` parameter naming and returns 400 (not error JSON) for an invalid address. Sibling ops: `getMailBlocks`, `getMailDelist`, `postMailDelist`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (schema `EmailAddress`):** - `email` (string, required) — sender address; validated via `FILTER_VALIDATE_EMAIL`.  **Returns:** `{status: \"ok\", text: \"Email '...' removed from block list\"}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `400` invalid email, `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -514,9 +516,9 @@ open class MailAPI {
         }
     }
 
-    /// List Mail Alerts
+    /// List configured delivery/bounce/quota alerts for one Mail Baby service
     /// - GET /mail/{id}/alerts
-    /// - Returns the alert configuration for the mail service. Use the alert IDs from this response with PUT or DELETE to update or remove alerts.
+    /// - Returns every alert row from `alerts` matching this service. Each row carries `alert_id` (use with PUT/DELETE), `alert_type`, `alert_value` (threshold), `alert_to` (notification email), `alert_enabled`, and timestamps. Sibling ops: `createMailAlert`, `updateMailAlert`, `deleteMailAlert`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns** (schema `MailAlertsResponse`): array of alert rows.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -581,9 +583,9 @@ open class MailAPI {
         }
     }
 
-    /// List Blocked Email Addresses
+    /// List recent local-blocklist hits and spam-trap captures for the mail user
     /// - GET /mail/{id}/blocks
-    /// - Displays a listing of the blocked email addresses
+    /// - Returns relay-side block events for the SMTP user behind `mail_id` — the last 24 hours of `LOCAL_BL_RCPT` and `MBTRAP` rspamd hits, plus a 3-day window of suspicious-subject hits (credential-leak heuristic firing on subjects containing `@` / `smtp` / `socks5` / `socks4` more than 4 times). Use the `from` value with `delistBlock` or `postMailDelist` to clear a block. Sibling ops: `delistBlock`, `getMailDelist`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns** (schema `MailBlocks`): - `local` (array) — rspamd `LOCAL_BL_RCPT` hits: `{date, from, messageId, subject, to}`. - `mbtrap` (array) — spam-trap captures (`MBTRAP` symbol): same shape. - `subject` (array) — senders flagged by subject-line heuristic: `{from, subject}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `401` — unauthenticated. - `404` — `id` not owned by caller. - `409` — `mail_status != \"active\"`.  **Related calls:** - **Clear a block:** `delistBlock` (POST `/mail/{id}/blocks/delete`). - **Broader delist UI:** `getMailDelist`, `postMailDelist`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -652,9 +654,9 @@ open class MailAPI {
         }
     }
 
-    /// Get Delist Status
+    /// Read blocklist diagnostics and find senders eligible for delisting
     /// - GET /mail/{id}/delist
-    /// - Returns the current blocklist and delisting information for the mail service, including recent local and trap blocks.
+    /// - Returns a richer diagnostic snapshot than `getMailBlocks` — intended for the delist UI. Use any `SMTPFrom`/`from` value as the `unblock` field for `postMailDelist`. Sibling ops: `postMailDelist`, `getMailBlocks`, `delistBlock`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns** (schema `MailDelistResponse`): - `id` (integer) — `mail_id` echo. - `local`, `mbtrap` (array) — last 24h rspamd hits with capitalized keys (`Date`, `SMTPFrom`, `MessageId`, `Subject`, `MimeRecipients`). - `subject` (array) — credential-leak-heuristic firings (3-day window). - `manual` (array) — manually added blocks.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -715,9 +717,9 @@ open class MailAPI {
         }
     }
 
-    /// Get Deliverability Metrics
+    /// Read delivered vs bounced totals broken down by sender (or by recipient domain)
     /// - GET /mail/{id}/deliverability
-    /// - Returns deliverability statistics such as delivered vs. bounced counts and percentages. Use query filters to pivot the response by domain or sender.
+    /// - Returns deliverability analytics from `MailDeliveryStats` (Dragonfly cache) for the SMTP user behind `mail_id`. Default pivot is by sender; pass `?filter_domain=1` to pivot by recipient domain for the current year instead. Use to drive analytics dashboards. Sibling ops: `getStats`, `viewMailLog`, `getMailBlocks`, `getMailDelist`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Query params:** - `filter_domain` (string `1`, optional) — pivot by recipient domain instead of sender.  **Returns** (schema `MailDeliverabilityResponse`): - `stat`: `{delivered, bounced, percent}` — totals and bounce ratio. - `header` (string), `col1` (string) — table headers. - `table_data` (array) — rows of `[<sender-or-domain>, bounced, delivered, bouncePercent]`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -778,9 +780,9 @@ open class MailAPI {
         }
     }
 
-    /// Get Mail Order
+    /// Read full detail for one Mail Baby service including SMTP credentials
     /// - GET /mail/{id}
-    /// - Returns detailed information for the mail service, including credentials and service metadata required to configure your sending client.
+    /// - Returns the full `ViewMail` payload for one Mail Baby service — `serviceInfo`, `serviceType`, and `client_links` (URLs rewritten to API paths, e.g. `view_mail_log` → `log`). Admin fields (`admin_links`, `settings`, `csrf`) stripped. Use to render a service dashboard or retrieve SMTP host/username for MTA configuration. Sibling ops: `getMailList`, `updateMailInfo`, `mailCancel`, `resetMailPassword`, `getMailWelcomeEmail`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns** (schema `MailSchema`): - `serviceInfo` — `mail_id`, `mail_username` (e.g. `mb1234`), `mail_status`, `mail_invoice`, `mail_custid`, dates, currency. - `serviceType` — plan row (`services_ourcost` stripped). - `client_links` (array) — action URLs (log, alerts, blocks, etc.).  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `401` — unauthenticated. - `404` — `id` not owned by caller.  **Related calls:** - **Send:** `sendMail` / `sendAdvMail`. - **Rotate password:** `resetMailPassword`. - **Reset credentials:** `getMailWelcomeEmail`. - **Cancel:** `mailCancel`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -841,9 +843,9 @@ open class MailAPI {
         }
     }
 
-    /// Get Mail Invoices
+    /// List billing invoices linked to this Mail Baby service
     /// - GET /mail/{id}/invoices
-    /// - Retrieves invoices associated with the mail service. Use these invoices to validate billing status or initiate payment.
+    /// - Returns every invoice associated with this `mail_id` via the shared `InvoicesList` workflow. Use to render per-service billing history or find unpaid invoices to pay via `initiatePayment`. Sibling ops: `getBillingInvoice`, `initiatePayment`, `addMail`, `mailCancel`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns:** `ChargeInvoiceRows` — array of `{id, amount, currency, paid, date, due_date, description, module: \"mail\", service}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404 Invalid Service`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -904,9 +906,9 @@ open class MailAPI {
         }
     }
 
-    /// List Mail Orders
+    /// List every Mail Baby SMTP relay service on the account
     /// - GET /mail
-    /// - Returns the Mail Baby services on your account. Use the `mail_id` from this list with `/mail/{id}` to retrieve service details, and with `/mail/{id}/stats` or `/mail/{id}/log` to review delivery statistics.
+    /// - Enumerates every Mail Baby SMTP relay service owned by the authenticated customer. Canonical entry point for finding a `mail_id` to pass to other Mail endpoints. Filtered server-side by `mail_custid`. Sibling ops: `getMailInfo`, `getStats`, `viewMailLog`, `getMailDeliverability`, `getMailBlocks`, `getMailInvoices`, `addMail`.  **Path/Query/Body:** None.  **Returns:** Array of `MailRow`: - `mail_id` (integer) — canonical id. - `mail_username` (string) — SMTP username (e.g. `mb1234`). - `mail_status` (string enum) — `active` / `pending` / `canceled` / `suspended`. - `services_name` (string) — plan label. - `repeat_invoices_cost` (decimal string) — recurring cost.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **Per-service detail:** `getMailInfo`. - **Send mail:** `sendMail` / `sendAdvMail`. - **Reputation:** `getMailDeliverability` / `getMailBlocks` / `getMailDelist`. - **Order a new service:** `getNewMail` → `putMail` → `addMail`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -965,9 +967,9 @@ open class MailAPI {
         }
     }
 
-    /// Resend Mail Welcome Email
+    /// Resend the Mail Baby welcome email with SMTP credentials and setup info
     /// - GET /mail/{id}/welcome_email
-    /// - Resends the welcome email for the Mail Baby service. The email contains SMTP credentials and configuration instructions.
+    /// - Re-runs the `mail_welcome_email` plugin function — composes and sends the standard welcome email (SMTP host `relay.mailbaby.net`, port, username `mb{mail_id}`, current password, configuration tips) to the account-on-file. Use after `resetMailPassword` to redeliver the rotated credential, or when a customer reports losing the original setup email. Idempotent. Sibling ops: `resetMailPassword`, `getMailInfo`. Cross-module welcome-email endpoints: `getVpsWelcomeEmail`, `getWebsitesWelcomeEmail`, `getDomainsWelcomeEmail`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns:** `{text: \"Welcome Email has been resent.\"}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1028,9 +1030,9 @@ open class MailAPI {
         }
     }
 
-    /// Get Mail Ordering Information
+    /// Read the Mail Baby order catalog — plans, package costs, service-type metadata
     /// - GET /mail/order
-    /// - Returns available Mail Baby plans and ordering metadata. Use the service type IDs from this response when validating or placing a new mail order.
+    /// - Step 1 of the Mail Baby order flow. Returns the catalog used to bootstrap an order form: `packageCosts` keyed by `services_id` (only buyable services where `services_buyable=1`) and the full `serviceTypes` map. Read-only. Pricing is normalized to the customer's currency via `getCurrency()`. Sibling ops: `putMail`, `addMail`, `getMailList`.  **Path/Query/Body:** None.  **Returns** (schema `MailOrder`): - `packageCosts` (object) — `{<services_id>: <cost>}` per buyable plan. - `serviceTypes` (object) — full service-types registry (plan metadata).  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **Next:** `putMail` (validate + quote — no charge), `addMail` (place order). 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1093,9 +1095,9 @@ open class MailAPI {
         }
     }
 
-    /// List Deny Rules
+    /// List configured deny rules (sender/recipient blocks) for a Mail Baby service
     /// - GET /mail/{id}/rules
-    /// - Returns a listing of all the deny block rules configured for this mail service.
+    /// - Returns every `mail_spam` row scoped to this service's `mail_username` — local sender/recipient block rules the customer has configured. Sibling ops: `addRule`, `updateRule`, `deleteRule`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns:** Array of `DenyRuleRecord` — `{id, user, type, data, created}`. `type` values: - `domain` — block by sender domain. - `email` — block by exact sender email. - `startswith` — block when sender local-part starts with a string. - `destination` — block by recipient email.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1180,9 +1182,9 @@ open class MailAPI {
         }
     }
 
-    /// Get Mail Usage Statistics
+    /// Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
     /// - GET /mail/{id}/stats
-    /// - Returns usage statistics for the mail service over the requested time period, including send counts, delivery rates, and quota consumption.
+    /// - Returns aggregate usage and cost metrics for the SMTP user behind `mail_id` from the ZoneMTA `mail_messagestore` / `mail_senderdelivered` tables. Use to drive an analytics dashboard or to project end-of-cycle cost. Sibling ops: `viewMailLog`, `getMailDeliverability`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Query params:** - `time` (string enum, optional, default `1h`) — window: `all` / `billing` (current invoice cycle) / `month` / `7d` / `24h` / `1d` / `1h`.  **Returns** (schema `MailStatsType`): - `time` (string) — echo of selected window. - `usage` (integer) — full-billing-cycle send count. - `currency`, `currencySymbol` (string). - `cost` (decimal) — projected = base + `$0.20 / 1000 emails`. - `received`, `sent` (integer). - `volume.to`, `volume.from`, `volume.ip` (object) — top-500 destinations / senders / origin IPs by count.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `Invalid or missing mail order id`, `401`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1255,9 +1257,9 @@ open class MailAPI {
         }
     }
 
-    /// Cancel Mail
+    /// Cancel a Mail Baby service and stop the recurring invoice
     /// - DELETE /mail/{id}
-    /// - Cancels a Mail Baby service. After cancellation the mail credentials are deactivated and the service transitions to a canceled status. No further billing charges will be incurred.
+    /// - Cancels the Mail Baby service through the shared `Billing\\CancelService::go($id)` flow with `module='mail'`. SMTP credentials are deactivated, the service transitions to canceled, the `repeat_invoice` is stopped, and queued submissions stop being accepted. **Irreversible via API** — re-activation requires placing a new order via `addMail`. Sibling ops: `getMailInfo`, `getMailInvoices`, `addMail`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns:** `MailCancelResponse`.  **Side effects:** - Sets `mail_status='canceled'`. - Marks `repeat_invoices` non-renewing. - ZoneMTA-side: stops accepting new submissions for `mb{mail_id}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `401` — unauthenticated. - `404` — `id` not owned by caller.  **Related calls:** - **Sibling cancels:** `VPSCancel`, `CancelDomain`, `webhostingCancel`, etc. - **Re-provision:** `addMail`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1318,9 +1320,9 @@ open class MailAPI {
         }
     }
 
-    /// Delist a Blocked Sender
+    /// Delist a sender from rspamd / mailchannels / mailbaby block lists
     /// - POST /mail/{id}/delist
-    /// - Removes an email address from blocklists for the mail service. Provide the `unblock` email address from the delist status response.
+    /// - Removes all block rows for one sender email across three reputation stores: `rspamd` (by `fromemail`), `mailchannels` (by `email`), `mailbaby` (by `emailfrom`). Effect is global per-address across all three tables; takes effect immediately for new submissions. Sibling ops: `getMailDelist`, `delistBlock` (alias at `/mail/{id}/blocks/delete`), `getMailBlocks`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (schema `MailDelistRequest`):** - `unblock` (string, required) — sender email from `getMailDelist`/`getMailBlocks`.  **Returns:** `SuccessTextResponse`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `Missing parameter unblock`, `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1384,9 +1386,9 @@ open class MailAPI {
         }
     }
 
-    /// Validate Mail Order
+    /// Validate Mail Baby order, quote pricing, and verify coupon — no charge
     /// - PUT /mail/order
-    /// - Validates a Mail Baby order and returns pricing or errors. Use this before placing the final order.
+    /// - Step 2 of the Mail Baby order flow. Dry-runs the order through `validate_buy_mail()` without creating invoices. Returns the cost preview, coupon resolution, and validation errors. The endpoint also auto-generates an SMTP password preview the order will use. Use to surface live pricing in the UI before `addMail`. Sibling ops: `getNewMail`, `addMail`.  **Body fields:** - `serviceType` (integer, required) — plan id from `getNewMail.packageCosts` keys. - `coupon` (string, optional) — coupon code.  **Returns:** - `continue` (bool) — `true` if order can safely be POSTed. - `errors` (array) — validation messages. - `serviceType`, `serviceCost`, `originalCost`, `repeatServiceCost` (numeric). - `password` (string) — auto-generated SMTP password preview. - `introFrequency` (integer). - `coupon`, `couponCode` (string/integer) — resolved coupon.  **Auth:** Session/API key.  **Errors:** - `200` with `continue=false` and `errors[]` — validation problems. - `401` — unauthenticated.  **Related calls:** - **Prerequisite:** `getNewMail` (catalog). - **Place order:** `addMail`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1396,8 +1398,9 @@ open class MailAPI {
     /// - API Key:
     /// - type: apiKey sessionid (HEADER)
     /// - name: sessionIdHeaderAuth
+    /// - parameter mailOrderRequest: (body)  
     /// - returns: AnyPublisher<Void, Error> 
-    open func putMail() -> AnyPublisher<Void, Error> {
+    open func putMail(mailOrderRequest: MailOrderRequest) -> AnyPublisher<Void, Error> {
         Deferred {
             Result<URLRequest, Error> {
                 guard let baseURL = self.transport.baseURL ?? self.baseURL else {
@@ -1411,6 +1414,8 @@ open class MailAPI {
                 }
                 var request = URLRequest(url: requestURL)
                 request.httpMethod = "PUT"
+                request.httpBody = try self.encoder.encode(mailOrderRequest)
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 return request
             }.publisher
         }.flatMap { request -> AnyPublisher<Void, Error> in 
@@ -1445,9 +1450,9 @@ open class MailAPI {
         }
     }
 
-    /// Reset Mail Password
+    /// Rotate the SMTP password and email the new credential to the account owner
     /// - GET /mail/{id}/reset_password
-    /// - Resets the Mail Baby service password and emails the new password to the account owner. Use `/mail/{id}` to retrieve updated credential data after the reset.
+    /// - Generates a new 20-char SMTP password (lower/upper/digits via `generate_password`), writes it to the ZoneMTA Mongo `users` collection for username `mb{mail_id}`, logs the change to `App::history()`, and emails the result to the account-on-file via `client_email.tpl`. **Any MTA, app, or saved client still using the old password will start failing auth immediately.** The new password is **not** returned in the response — fetch via `getMailWelcomeEmail` or `getMailInfo`. Sibling ops: `getMailWelcomeEmail`, `getMailInfo`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Returns:** `SuccessTextResponse`.  **Side effects:** - Mongo update on ZoneMTA `users` for `mb{mail_id}`. - `App::history()` audit entry. - Email sent to account owner.  **Auth:** Session/API key. Ownership enforced.  **Errors:** Mongo update modified 0 rows → error text; `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1516,9 +1521,9 @@ open class MailAPI {
         }
     }
 
-    /// Send Email with Advanced Options
+    /// Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
     /// - POST /mail/{id}/advsend
-    /// - Sends an email through one of your mail orders with support for file attachments, CC, BCC, and other advanced options. For simple single-recipient sends, use `POST /mail/{id}/send`.
+    /// - Submits an outbound message through `relay.mailbaby.net:25` using the service's SMTP credentials (fetched via `mail_get_password`). Use for multi-recipient sends, named addresses, CC/BCC, ReplyTo, or attachments. For single-recipient plain sends, `sendMail` is the lighter option. Sibling ops: `sendMail`, `viewMailLog` (find queued message), `getMailDeliverability` (analyze bounces).  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (JSON or form-urlencoded, schema `SendMailAdv`):** - `from` (string or `{email, name}`, required). - `to` (array of strings or `{email, name}` objects, required). - `subject` (string, required). - `body` (string, required) — HTML auto-detected when tags are present. - `replyto` (array, optional) — same shape as `to`. - `cc`, `bcc` (array, optional) — same shape as `to`. - `attachments` (array, optional) — each `{filename, data}` where `data` is base64-encoded; added via `addStringAttachment`.  **Returns:** `{status: \"ok\", text: \"Email queued successfully\"}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `400` with PHPMailer `ErrorInfo` on send failure or missing required field. - `401` — unauthenticated. - `404 Invalid Service Passed`. - `409 Service is not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1606,9 +1611,9 @@ open class MailAPI {
         }
     }
 
-    /// Send Email
+    /// Send a simple single-recipient email through the Mail Baby SMTP relay
     /// - POST /mail/{id}/send
-    /// - Sends an email through one of your mail orders. For multiple recipients or file attachments, use `POST /mail/{id}/advsend` instead.
+    /// - Sends a single-recipient transactional email through `relay.mailbaby.net:25` authenticated as this `mail_id`. Body fields are the minimum needed for a plain send; Reply-To is auto-set to `from`. For multi-recipient sends, CC/BCC, named addresses, or attachments use `sendAdvMail` instead. Sibling ops: `sendAdvMail`, `viewMailLog`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (JSON or form-urlencoded, schema `SendMail`):** - `to` (string, required) — recipient email. - `from` (string, required) — sender email. - `subject` (string, required). - `body` (string, required) — HTML auto-detected when tags are present.  **Returns:** `{status: \"ok\", text: \"Email queued successfully\"}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `400` with PHPMailer `ErrorInfo` on send failure or missing required field, `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1688,9 +1693,9 @@ open class MailAPI {
         }
     }
 
-    /// Update Mail Alert
+    /// Update an existing Mail Baby alert by alert_id
     /// - PUT /mail/{id}/alerts
-    /// - Updates an existing alert definition for the mail service. Provide the `alert_id` returned by the list response along with updated fields.
+    /// - Updates a single alert row by `alert_id`. Handler verifies the alert belongs to this service+module before writing. Sibling ops: `getMailAlerts`, `createMailAlert`, `deleteMailAlert`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body fields (schema `MailAlertUpdateRequest`):** - `alert_id` (integer, required) — from `getMailAlerts`. - `type` (string, required). - `value` (string/numeric, required) — threshold. - `to` (string, required) — notification email; validated via `FILTER_VALIDATE_EMAIL`. - `enabled` (bool, optional).  **Returns:** `SuccessTextResponse`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `Invalid alert!` (alert not owned), field-level errors for missing/invalid body, `401`, `404`, `409 not active`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1754,9 +1759,9 @@ open class MailAPI {
         }
     }
 
-    /// Update Mail Order
+    /// POST mutation hook for the Mail Baby service detail page
     /// - POST /mail/{id}
-    /// - Updates mail service metadata for the order, such as stored settings or account details.
+    /// - POST mutation hook for the Mail Baby service detail page. Currently delegates to the same `View::go()` handler as `getMailInfo` — placeholder for future field updates. Does NOT rotate credentials (use `resetMailPassword`) and does NOT change billing (use `/billing` endpoints). Sibling ops: `getMailInfo`, `mailCancel`, `resetMailPassword`.  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList`.  **Body:** Form fields.  **Returns:** `SuccessTextResponse`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `401` — unauthenticated. - `404` — `id` not owned by caller. - `409` — `mail_status != \"active\"`.  **Related calls:** - **Read:** `getMailInfo`. - **Rotate password:** `resetMailPassword`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth
@@ -1805,6 +1810,98 @@ open class MailAPI {
         }.eraseToAnyPublisher()
     }
 
+    public enum UpdateRuleError: Error, CustomStringConvertible {
+        // The specified resource was not found
+        case code400Error(GetAccountInfo401Response)
+        // Unauthorized
+        case code401Error(GetAccountInfo401Response)
+        // The specified resource was not found
+        case code404Error(GetAccountInfo401Response)
+
+        public var description: String {
+            switch self {
+            case .code400Error(let object):
+                return "UpdateRuleError: The specified resource was not found: \(object)"
+            case .code401Error(let object):
+                return "UpdateRuleError: Unauthorized: \(object)"
+            case .code404Error(let object):
+                return "UpdateRuleError: The specified resource was not found: \(object)"
+            }
+        }
+    }
+
+    /// Update an existing Mail Baby deny rule's type and match data
+    /// - PUT /mail/{id}/rules/{rule}
+    /// - Updates `type` and `data` on a single `mail_spam` row. Query is bounded by `id={rule} AND user='{mail_username}'` so cross-tenant updates are impossible. Same validation rules as `addRule`. Sibling ops: `getRules`, `addRule`, `deleteRule`.  **Path params:** - `id` (integer, required) — `mail_id` from `getMailList`. - `rule` (string, required) — rule id from `getRules`.  **Body fields (schema `DenyRuleNew`):** - `type` (string, required) — `domain` / `email` / `startswith` / `destination`. - `data` (string, required) — see `addRule` for type-specific validation.  **Returns:** `\"Record updated successfully.\"`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** field-level errors on validation failure, `401`, `404`, `409 not active`. 
+    /// - API Key:
+    /// - type: apiKey sessionid 
+    /// - name: sessionIdCookieAuth
+    /// - API Key:
+    /// - type: apiKey X-API-KEY (HEADER)
+    /// - name: apiKeyAuth
+    /// - API Key:
+    /// - type: apiKey sessionid (HEADER)
+    /// - name: sessionIdHeaderAuth
+    /// - parameter id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
+    /// - parameter rule: (path) The ID of the deny rule to update. 
+    /// - parameter denyRuleNew: (body)  
+    /// - returns: AnyPublisher<GenericResponse, Error> 
+    open func updateRule(id: Int, rule: String, denyRuleNew: DenyRuleNew) -> AnyPublisher<GenericResponse, Error> {
+        Deferred {
+            Result<URLRequest, Error> {
+                guard let baseURL = self.transport.baseURL ?? self.baseURL else {
+                    throw OpenAPITransportError.badURLError()
+                }
+                var localVarPath = "/mail/{id}/rules/{rule}"
+                localVarPath = localVarPath.replacingOccurrences(of: "{id}", with: "\(id)")
+                localVarPath = localVarPath.replacingOccurrences(of: "{rule}", with: rule)
+                let localVarURL = baseURL.appendingPathComponent(localVarPath)
+                let components = URLComponents(url: localVarURL, resolvingAgainstBaseURL: false)
+                guard let requestURL = components?.url else {
+                    throw OpenAPITransportError.badURLError()
+                }
+                var request = URLRequest(url: requestURL)
+                request.httpMethod = "PUT"
+                request.httpBody = try self.encoder.encode(denyRuleNew)
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                return request
+            }.publisher
+        }.flatMap { request -> AnyPublisher<GenericResponse, Error> in 
+            return self.transport.send(request: request)
+                .mapError { transportError -> Error in 
+                    if transportError.statusCode == 400 {
+                        do {
+                            let error = try self.decoder.decode(GetAccountInfo401Response.self, from: transportError.data)
+                            return UpdateRuleError.code400Error(error)
+                        } catch {
+                            return error
+                        }
+                    }
+                    if transportError.statusCode == 401 {
+                        do {
+                            let error = try self.decoder.decode(GetAccountInfo401Response.self, from: transportError.data)
+                            return UpdateRuleError.code401Error(error)
+                        } catch {
+                            return error
+                        }
+                    }
+                    if transportError.statusCode == 404 {
+                        do {
+                            let error = try self.decoder.decode(GetAccountInfo401Response.self, from: transportError.data)
+                            return UpdateRuleError.code404Error(error)
+                        } catch {
+                            return error
+                        }
+                    }
+                    return transportError
+                }
+                .tryMap { response in
+                    try self.decoder.decode(GenericResponse.self, from: response.data)
+                }
+                .eraseToAnyPublisher()
+        }.eraseToAnyPublisher()
+    }
+
     ///
     /// Enum for parameter delivered
     ///
@@ -1844,9 +1941,9 @@ open class MailAPI {
         }
     }
 
-    /// View Mail Log
+    /// Search and paginate per-message Mail Baby delivery log entries
     /// - GET /mail/{id}/log
-    /// - Returns a paginated log of emails sent through this mail service, with optional filtering by sender, recipient, date range, and delivery status.  **Row grouping** is controlled by the `groupby` parameter.  By default (`groupby=recipient`), the response contains one row per delivery attempt — so a single message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and `mxHostname` values.  Set `groupby=message` to collapse to one row per message (delivery fields will reflect one arbitrary recipient).  **Pagination** is controlled by `skip` and `limit`.  The `total` in the response reflects the row count **after** grouping, so it matches the number of pages you need to fetch.  **Date filtering** accepts either a Unix timestamp (integer) or a date string parseable by PHP `strtotime()` such as `2024-01-15`, `last monday`, or `2024-01-01 00:00:00`.  Examples: `startDate=1704067200&endDate=1706745599` or `startDate=2024-01-01&endDate=2024-01-31`.  **Sorting** is controlled by `sort` and `dir`.  Currently the only sort key is `time` (default), which orders by internal row ID.  **Delivery status** can be filtered with the `delivered` parameter: `delivered=1` returns only successfully delivered messages; `delivered=0` returns messages still in queue or that failed.  **Address filtering** distinguishes between the SMTP envelope address (`from`, `to`) and message headers (`headerfrom` for the `From:` header, `replyto` for `Reply-To:`). These may differ when a message is sent on behalf of another address.  The `mailid` parameter corresponds to the `id` field in the returned `MailLogEntry` objects, **not** the `_id` field.  It also matches the transaction ID returned in the `text` field of a successful send response.  The `messageId` parameter searches the `Message-ID` email header (case-insensitive substring match). 
+    /// - Paginated search over ZoneMTA's `mail_messagestore` joined with `mail_senderdelivered` and `mail_queuerelease`. Supports envelope, header, and metadata filters; sortable; choose recipient-level or message-level grouping. Use to investigate delivery issues, find specific messages by Message-ID, audit bounce rates, or feed an analytics dashboard. Sibling ops: `getStats`, `getMailDeliverability`, `delistBlock` (clear a block surfaced by a bounce).  **Path param:** - `id` (integer, required) — `mail_id` from `getMailList` (omit to span all owned mail users — admin-only).  **Query params:** - `from`, `to` (string) — envelope address, exact match. - `headerfrom`, `replyto` (string) — header address, exact match; validated as email. - `subject` (string) — LIKE match on subject. - `mailid` (string, 18–19 chars) — relay id, exact. - `messageId` (string) — Message-ID header, substring match. - `origin` (string) — submitter IP, exact. - `mx` (string) — destination MX hostname, LIKE. - `delivered` (integer 0/1). - `startDate`, `endDate` (Unix timestamp or `strtotime`-parseable string). - `skip` (integer, default 0), `limit` (integer 1–10000, default 100). - `sort` (`time`), `dir` (`asc`/`desc`, default `desc`). - `groupby` (`recipient` default — one row per delivery attempt; `message` — one row per `_id`).  **Returns** (schema `MailLog`): `{total, skip, limit, emails: [{id, _id, from, to, subject, messageId, time, mxHostname, delivered, code, response, recipient, ...}]}`.  **Auth:** Session/API key. Ownership enforced.  **Errors:** `400` bad input, `401`. 
     /// - API Key:
     /// - type: apiKey sessionid 
     /// - name: sessionIdCookieAuth

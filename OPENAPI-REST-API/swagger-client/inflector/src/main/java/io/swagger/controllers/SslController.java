@@ -11,9 +11,10 @@ import java.util.List;
 import io.swagger.model.*;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20023;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ServiceOrderPostResponse;
+import io.swagger.model.SslOrderRequest;
 import io.swagger.model.SuccessTextResponse;
 
 
@@ -25,7 +26,8 @@ public class SslController  {
    **/
 
   /*
-    public ResponseContext addSsl(RequestContext request ) {
+    public ResponseContext addSsl(RequestContext request , SslOrderRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -64,7 +66,8 @@ public class SslController  {
   */
 
   /*
-    public ResponseContext putSsl(RequestContext request ) {
+    public ResponseContext putSsl(RequestContext request , SslOrderRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

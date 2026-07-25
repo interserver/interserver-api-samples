@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for WebsitesOrderServiceOffer
 void main() {
-  final instance = WebsitesOrderServiceOfferBuilder();
-  // TODO add properties to the builder and call build()
+  final WebsitesOrderServiceOffer? instance = /* WebsitesOrderServiceOffer(...) */ null;
+  // TODO add properties to the entity
 
   group(WebsitesOrderServiceOffer, () {
     // The ID of the service offer.
@@ -62,13 +62,13 @@ void main() {
     });
 
     // The update timestamp of the service offer.
-    // String updatedAt
+    // Optional<String?> updatedAt
     test('to test the property `updatedAt`', () async {
       // TODO
     });
 
     // The deletion timestamp of the service offer.
-    // String deletedAt
+    // Optional<String?> deletedAt
     test('to test the property `deletedAt`', () async {
       // TODO
     });

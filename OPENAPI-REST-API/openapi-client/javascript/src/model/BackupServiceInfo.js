@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BackupServiceInfo model module.
  * @module model/BackupServiceInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BackupServiceInfo {
     /**

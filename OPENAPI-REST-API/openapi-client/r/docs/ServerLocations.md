@@ -1,4 +1,4 @@
-# openapi::ServerLocations
+# interserverapi::ServerLocations
 
 
 ## Properties

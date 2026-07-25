@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DownloadQsBackupRequest = Initialize-PSOpenAPIToolsDownloadQsBackupRequest  -File null
+$DownloadQsBackupRequest = Initialize-InterserverApiDownloadQsBackupRequest  -File null
 ```
 
 - Convert the resource to JSON

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_billing_details import VpsBillingDetails
+from interserver_api_client.models.vps_billing_details import VpsBillingDetails
 
 class TestVpsBillingDetails(unittest.TestCase):
     """VpsBillingDetails unit test stubs"""
@@ -45,10 +45,10 @@ class TestVpsBillingDetails(unittest.TestCase):
                 service_currency_symbol = '$',
                 service_coupon = 'TheCouponIUsed',
                 service_cost_info = '0.00',
-                service_extra = openapi_client.models.vps_service_extra.VpsServiceExtra(
+                service_extra = interserver_api_client.models.vps_service_extra.VpsServiceExtra(
                     spice = 5903, 
                     snapshots = [
-                        openapi_client.models.vps_snapshot.VpsSnapshot(
+                        interserver_api_client.models.vps_snapshot.VpsSnapshot(
                             name = '', 
                             used = 56, 
                             date = 56, )

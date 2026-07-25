@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailStatsTypeVolumeFrom();
+    instance = new InterserverApiClient.MailStatsTypeVolumeFrom();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('MailStatsTypeVolumeFrom', function() {
     it('should create an instance of MailStatsTypeVolumeFrom', function() {
       // uncomment below and update the code to test MailStatsTypeVolumeFrom
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeFrom();
-      //expect(instance).to.be.a(InterServerManagementApi.MailStatsTypeVolumeFrom);
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeFrom();
+      //expect(instance).to.be.a(InterserverApiClient.MailStatsTypeVolumeFrom);
     });
 
     it('should have the property billingsomedomain_com (base name: "billing@somedomain.com")', function() {
       // uncomment below and update the code to test the property billingsomedomain_com
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeFrom();
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeFrom();
       //expect(instance).to.be();
     });
 
     it('should have the property salessomedomain_com (base name: "sales@somedomain.com")', function() {
       // uncomment below and update the code to test the property salessomedomain_com
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeFrom();
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeFrom();
       //expect(instance).to.be();
     });
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LicenseIpInfo } from './api';
+import { LicenseIpInfo } from '@interserver/myadmin-client';
 
 const instance: LicenseIpInfo = {
     title,

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The PostWebsiteMigration200Response model module.
  * @module model/PostWebsiteMigration200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class PostWebsiteMigration200Response {
     /**

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::MailBillingDetails');
+use_ok('InterServerAPI::Object::MailBillingDetails');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::MailBillingDetails->new();
+#my $instance = InterServerAPI::Object::MailBillingDetails->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::MailBillingDetails');
+#isa_ok($instance, 'InterServerAPI::Object::MailBillingDetails');
 
 
 done_testing();

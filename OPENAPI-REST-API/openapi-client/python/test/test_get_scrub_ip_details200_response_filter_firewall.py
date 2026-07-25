@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_scrub_ip_details200_response_filter_firewall import GetScrubIpDetails200ResponseFilterFirewall
+from interserver_api_client.models.get_scrub_ip_details200_response_filter_firewall import GetScrubIpDetails200ResponseFilterFirewall
 
 class TestGetScrubIpDetails200ResponseFilterFirewall(unittest.TestCase):
     """GetScrubIpDetails200ResponseFilterFirewall unit test stubs"""
@@ -37,7 +37,7 @@ class TestGetScrubIpDetails200ResponseFilterFirewall(unittest.TestCase):
         if include_optional:
             return GetScrubIpDetails200ResponseFilterFirewall(
                 rules = [
-                    openapi_client.models.get_scrub_ip_details_200_response_filter_firewall_rules_inner.getScrubIpDetails_200_response_filter_firewall_rules_inner(
+                    interserver_api_client.models.get_scrub_ip_details_200_response_filter_firewall_rules_inner.getScrubIpDetails_200_response_filter_firewall_rules_inner(
                         id = '', 
                         source_ip = '', 
                         destination_ip = '', 
@@ -48,7 +48,7 @@ class TestGetScrubIpDetails200ResponseFilterFirewall(unittest.TestCase):
                         global_drop = '', )
                     ],
                 filters = [
-                    openapi_client.models.get_scrub_ip_details_200_response_filter_firewall_filters_inner.getScrubIpDetails_200_response_filter_firewall_filters_inner(
+                    interserver_api_client.models.get_scrub_ip_details_200_response_filter_firewall_filters_inner.getScrubIpDetails_200_response_filter_firewall_filters_inner(
                         daddr = '', 
                         dest = '', 
                         filter_name = '', 

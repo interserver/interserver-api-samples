@@ -12,4 +12,8 @@ Account Features data.
 |**disableReinstall** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

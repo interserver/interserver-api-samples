@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class ServerOrderBandwidthLi(
   `15`: Option[ServerOrderBandwidth] = None
 )
-

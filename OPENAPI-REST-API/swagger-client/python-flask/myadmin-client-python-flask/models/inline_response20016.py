@@ -63,6 +63,8 @@ class InlineResponse20016(Model):
         :param success: The success of this InlineResponse20016.
         :type success: bool
         """
+        if success is None:
+            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
 
         self._success = success
 
@@ -84,5 +86,7 @@ class InlineResponse20016(Model):
         :param text: The text of this InlineResponse20016.
         :type text: str
         """
+        if text is None:
+            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
 
         self._text = text

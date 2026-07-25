@@ -31,7 +31,7 @@ export interface WebsitesOrderPackages {
  * Check if a given object implements the WebsitesOrderPackages interface.
  */
 export function instanceOfWebsitesOrderPackages(value: object): value is WebsitesOrderPackages {
-    if (!('_11447' in value) || value['_11447'] === undefined) return false;
+    if ((!('_11447' in (value as Record<string, any>)) && !('11447' in (value as Record<string, any>))) || ((value as Record<string, any>)['_11447'] === undefined && (value as Record<string, any>)['11447'] === undefined)) return false;
     return true;
 }
 

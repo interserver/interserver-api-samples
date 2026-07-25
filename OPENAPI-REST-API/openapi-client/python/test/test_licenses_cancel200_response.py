@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.licenses_cancel200_response import LicensesCancel200Response
+from interserver_api_client.models.licenses_cancel200_response import LicensesCancel200Response
 
 class TestLicensesCancel200Response(unittest.TestCase):
     """LicensesCancel200Response unit test stubs"""

@@ -1,4 +1,4 @@
-# InterServerManagementApi.DeleteGeoFirewallRule
+# InterserverApiClient.DeleteGeoFirewallRule
 
 ## Properties
 

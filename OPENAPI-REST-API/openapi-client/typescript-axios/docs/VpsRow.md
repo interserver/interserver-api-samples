@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsRow } from './api';
+import { VpsRow } from '@interserver/myadmin-client';
 
 const instance: VpsRow = {
     vps_id,

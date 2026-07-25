@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **serviceCurrency** | **string** | Currency | [optional]
 **serviceCurrencySymbol** | **string** | Currency symbol | [optional]
 **serviceCostInfo** | **string** | Cost information | [optional]
-**serviceExtra** | [**\Interserver\MyAdmin\Model\QuickserverServiceExtra**](QuickserverServiceExtra.md) |  | [optional]
+**serviceExtra** | [**\Interserver\\MyAdmin\Model\QuickserverServiceExtra**](QuickserverServiceExtra.md) |  | [optional]
 **serviceExtraJson** | **string** | Extra information (JSON format) | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

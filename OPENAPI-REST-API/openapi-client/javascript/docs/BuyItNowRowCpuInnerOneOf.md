@@ -1,4 +1,4 @@
-# InterServerManagementApi.BuyItNowRowCpuInnerOneOf
+# InterserverApiClient.BuyItNowRowCpuInnerOneOf
 
 ## Properties
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GenericResponse();
+    instance = new InterserverApiClient.GenericResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('GenericResponse', function() {
     it('should create an instance of GenericResponse', function() {
       // uncomment below and update the code to test GenericResponse
-      //var instance = new InterServerManagementApi.GenericResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.GenericResponse);
+      //var instance = new InterserverApiClient.GenericResponse();
+      //expect(instance).to.be.a(InterserverApiClient.GenericResponse);
     });
 
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
-      //var instance = new InterServerManagementApi.GenericResponse();
+      //var instance = new InterserverApiClient.GenericResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.GenericResponse();
+      //var instance = new InterserverApiClient.GenericResponse();
       //expect(instance).to.be();
     });
 

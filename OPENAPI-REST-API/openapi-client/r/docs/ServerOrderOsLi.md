@@ -1,4 +1,4 @@
-# openapi::ServerOrderOsLi
+# interserverapi::ServerOrderOsLi
 
 Operating System options for the server order.
 

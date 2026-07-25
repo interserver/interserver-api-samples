@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_ip_info import VpsIPInfo
+from interserver_api_client.models.vps_ip_info import VpsIPInfo
 
 # TODO update the JSON string below
 json = "{}"

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.close_ticket_response_schema import CloseTicketResponseSchema
+from interserver_api_client.models.close_ticket_response_schema import CloseTicketResponseSchema
 
 # TODO update the JSON string below
 json = "{}"

@@ -1,4 +1,4 @@
-# SwaggerClient::TextResponse
+# InterserverApiClient::TextResponse
 
 ## Properties
 Name | Type | Description | Notes

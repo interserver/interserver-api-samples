@@ -1,4 +1,6 @@
 module.exports = {
+    "getAccountLocales_200_response_valueSample": 
+        {"en":{"name":"English","local_name":"English"},"es":{"name":"Spanish","local_name":"español"},"fr":{"name":"French","local_name":"français"}},
     "CaptchaResponseSample": 
         {"captcha":"data:image/jpeg;base64,/9j/4AAQ"},
     "ServicesInfoSample": 

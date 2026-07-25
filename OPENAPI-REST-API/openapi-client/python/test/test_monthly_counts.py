@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.monthly_counts import MonthlyCounts
+from interserver_api_client.models.monthly_counts import MonthlyCounts
 
 class TestMonthlyCounts(unittest.TestCase):
     """MonthlyCounts unit test stubs"""

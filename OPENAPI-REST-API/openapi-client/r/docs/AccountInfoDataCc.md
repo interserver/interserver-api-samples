@@ -1,4 +1,4 @@
-# openapi::AccountInfoDataCc
+# interserverapi::AccountInfoDataCc
 
 Credit card information stored on the account.
 

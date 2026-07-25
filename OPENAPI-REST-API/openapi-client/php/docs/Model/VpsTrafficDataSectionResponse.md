@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
-**data** | [**\Interserver\MyAdmin\Model\VPSTrafficDataDataSectionResponse[]**](VPSTrafficDataDataSectionResponse.md) |  |
+**data** | [**\Interserver\\MyAdmin\Model\VPSTrafficDataDataSectionResponse[]**](VPSTrafficDataDataSectionResponse.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -19,4 +19,3 @@ case class ScrubIpFilterTypes(
   success: Option[Boolean] = None,
   filters: Option[Map[String, ScrubIpFilterTypesFiltersValue]] = None
 )
-

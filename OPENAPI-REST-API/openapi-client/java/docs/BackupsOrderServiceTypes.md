@@ -10,4 +10,8 @@
 |**_11006** | [**BackupsOrderServiceTypes**](BackupsOrderServiceTypes.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DnsListItem model module.
  * @module model/DnsListItem
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DnsListItem {
     /**

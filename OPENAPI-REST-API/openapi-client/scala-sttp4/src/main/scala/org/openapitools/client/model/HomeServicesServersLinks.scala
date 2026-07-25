@@ -19,4 +19,3 @@ case class HomeServicesServersLinks(
   /* Link to a server. */
   `16058`: Option[String] = None
 )
-

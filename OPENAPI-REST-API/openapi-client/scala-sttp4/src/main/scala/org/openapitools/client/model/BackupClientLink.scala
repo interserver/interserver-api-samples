@@ -29,4 +29,3 @@ case class BackupClientLink(
   /* Other attributes of the client link. */
   other_attr: Option[String] = None
 )
-

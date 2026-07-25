@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for TicketNew
 void main() {
-  final instance = TicketNewBuilder();
-  // TODO add properties to the builder and call build()
+  final TicketNew? instance = /* TicketNew(...) */ null;
+  // TODO add properties to the entity
 
   group(TicketNew, () {
     // String subject
@@ -17,12 +17,12 @@ void main() {
       // TODO
     });
 
-    // int serviceId
+    // Optional<int?> serviceId
     test('to test the property `serviceId`', () async {
       // TODO
     });
 
-    // String serviceModule
+    // Optional<String?> serviceModule
     test('to test the property `serviceModule`', () async {
       // TODO
     });

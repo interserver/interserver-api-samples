@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerAssets = Initialize-PSOpenAPIToolsServerAssets  -Title Assets `
+$ServerAssets = Initialize-InterserverApiServerAssets  -Title Assets `
  -Size 2 `
  -Type table `
  -Header null `

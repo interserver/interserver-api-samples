@@ -39,4 +39,3 @@ case class LicenseServiceInfo(
   /* Additional license information */
   license_extra: Option[String] = None
 )
-

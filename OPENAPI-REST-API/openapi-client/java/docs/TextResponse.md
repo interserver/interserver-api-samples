@@ -12,4 +12,8 @@ Text Response Object
 |**message** | **String** | Response message |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

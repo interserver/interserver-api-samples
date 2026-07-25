@@ -22,6 +22,7 @@ local openapiclient_success_text_response = require "openapiclient.model.success
 local openapiclient_todo_object_mapping = require "openapiclient.model.todo_object_mapping"
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
 local openapiclient_ssl_cancel_200_response = require "openapiclient.model.ssl_cancel_200_response"
+local openapiclient_ssl_order_request = require "openapiclient.model.ssl_order_request"
 
 local ssl_certificates_api = {}
 local ssl_certificates_api_mt = {
@@ -49,7 +50,7 @@ local function new_ssl_certificates_api(authority, basePath, schemes)
 	}, ssl_certificates_api_mt)
 end
 
-function ssl_certificates_api:add_ssl()
+function ssl_certificates_api:add_ssl(ssl_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -60,9 +61,15 @@ function ssl_certificates_api:add_ssl()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "POST")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(ssl_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -362,7 +369,7 @@ function ssl_certificates_api:get_ssl_welcome_email(id)
 	end
 end
 
-function ssl_certificates_api:put_ssl()
+function ssl_certificates_api:put_ssl(ssl_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -373,9 +380,15 @@ function ssl_certificates_api:put_ssl()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "PUT")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(ssl_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then

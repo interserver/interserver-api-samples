@@ -1,4 +1,4 @@
-# SwaggerClient::BackupLoginResponse
+# InterserverApiClient::BackupLoginResponse
 
 ## Properties
 Name | Type | Description | Notes

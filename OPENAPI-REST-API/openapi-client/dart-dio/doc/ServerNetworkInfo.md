@@ -1,15 +1,15 @@
-# openapi.model.ServerNetworkInfo
+# interserver_api.model.ServerNetworkInfo
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**vlans** | **BuiltList&lt;String&gt;** | List of VLANs. | 
-**vlans6** | **BuiltList&lt;String&gt;** | List of IPv6 VLANs. | 
+**vlans** | **List&lt;String&gt;** | List of VLANs. | 
+**vlans6** | **List&lt;String&gt;** | List of IPv6 VLANs. | 
 **assets** | [**ServerNetworkInfoAssets**](ServerNetworkInfoAssets.md) |  | 
 **switchports** | [**ServerNetworkInfoSwitchports**](ServerNetworkInfoSwitchports.md) |  | 
 

@@ -1,4 +1,4 @@
-# openapi::AccountInfoOauthConfig
+# interserverapi::AccountInfoOauthConfig
 
 OAuth integration configuration including callback URL and available providers.
 

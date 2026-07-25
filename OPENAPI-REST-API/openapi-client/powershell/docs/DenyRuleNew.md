@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DenyRuleNew = Initialize-PSOpenAPIToolsDenyRuleNew  -User mb20682 `
+$DenyRuleNew = Initialize-InterserverApiDenyRuleNew  -User mb20682 `
  -Type email `
  -VarData domeinwo@server.guesshost.net
 ```

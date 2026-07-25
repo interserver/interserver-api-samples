@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsOrderTemplatesHyperv
 void main() {
-  final instance = VpsOrderTemplatesHypervBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsOrderTemplatesHyperv? instance = /* VpsOrderTemplatesHyperv(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsOrderTemplatesHyperv, () {
-    // VpsOrderTemplatesHypervWindows windows
+    // Optional<VpsOrderTemplatesHypervWindows?> windows
     test('to test the property `windows`', () async {
       // TODO
     });

@@ -23,7 +23,7 @@ import io.swagger.model.DomainOrder;
 import io.swagger.model.DomainRow;
 import io.swagger.model.DomainSearchResponse;
 import io.swagger.model.DomainWhoisPrivacyRequest;
-import io.swagger.model.InlineResponse2002;
+import io.swagger.model.InlineResponse2003;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
@@ -38,7 +38,8 @@ public class DomainsController  {
    **/
 
   /*
-    public ResponseContext addDomain(RequestContext request ) {
+    public ResponseContext addDomain(RequestContext request , Map<String, Object> body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -88,7 +89,6 @@ public class DomainsController  {
 
   /*
     public ResponseContext deleteDomainDnssec(RequestContext request , Integer id 
-, String action 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
@@ -145,21 +145,6 @@ public class DomainsController  {
   */
 
   /*
-    public ResponseContext getDomainOrderFields(RequestContext request , String domain 
-, String regType 
-) {
-        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
-    }
-  */
-
-  /*
-    public ResponseContext getDomainOrderSearchResults(RequestContext request , String domain 
-) {
-        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
-    }
-  */
-
-  /*
     public ResponseContext getDomainRenewal(RequestContext request , Integer id 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
@@ -207,13 +192,21 @@ public class DomainsController  {
   */
 
   /*
-    public ResponseContext patchDomains(RequestContext request ) {
+    public ResponseContext patchDomains(RequestContext request , Map<String, Object> body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
 
   /*
     public ResponseContext postDomainRenewal(RequestContext request , Integer id 
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext postDomainSearch(RequestContext request , String name 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
@@ -227,7 +220,8 @@ public class DomainsController  {
   */
 
   /*
-    public ResponseContext putDomains(RequestContext request ) {
+    public ResponseContext putDomains(RequestContext request , Map<String, Object> body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -262,7 +256,7 @@ public class DomainsController  {
   */
 
   /*
-    public ResponseContext updateDomainInfo(RequestContext request , String id 
+    public ResponseContext updateDomainInfo(RequestContext request , Integer id 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }

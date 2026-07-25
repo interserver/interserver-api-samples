@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PasswordRequest = Initialize-PSOpenAPIToolsPasswordRequest  -Password null
+$PasswordRequest = Initialize-InterserverApiPasswordRequest  -Password null
 ```
 
 - Convert the resource to JSON

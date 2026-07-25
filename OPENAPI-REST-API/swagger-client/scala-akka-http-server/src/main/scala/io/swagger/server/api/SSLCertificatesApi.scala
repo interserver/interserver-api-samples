@@ -7,8 +7,9 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
 import io.swagger.server.model.ChargeInvoiceRows
 import io.swagger.server.model.ServiceOrderPostResponse
+import io.swagger.server.model.SslOrderRequest
 import io.swagger.server.model.SuccessTextResponse
-import io.swagger.server.model.inline_response_200_21
+import io.swagger.server.model.inline_response_200_23
 import io.swagger.server.model.inline_response_401
 
 class SSLCertificatesApi(
@@ -24,9 +25,9 @@ class SSLCertificatesApi(
           
             
               
-                
-                  sSLCertificatesService.addSsl()
-               
+                entity(as[SslOrderRequest]){ body =>
+                  sSLCertificatesService.addSsl(body = body)
+                }
              
            
          
@@ -114,9 +115,9 @@ class SSLCertificatesApi(
           
             
               
-                
-                  sSLCertificatesService.putSsl()
-               
+                entity(as[SslOrderRequest]){ body =>
+                  sSLCertificatesService.putSsl(body = body)
+                }
              
            
          
@@ -162,10 +163,10 @@ trait SSLCertificatesApiService {
   def addSsl401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
+   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def addSsl()
+  def addSsl(body: SslOrderRequest)
       (implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getNewSsl200(responseObject: Object): Route =
@@ -234,19 +235,19 @@ trait SSLCertificatesApiService {
    * Code: 200, Message: Validate SSL Order response
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def putSsl()
+  def putSsl(body: SslOrderRequest)
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def sslCancel200(responseinline_response_200_21: inline_response_200_21)(implicit toEntityMarshallerinline_response_200_21: ToEntityMarshaller[inline_response_200_21]): Route =
-    complete((200, responseinline_response_200_21))
+  def sslCancel200(responseinline_response_200_23: inline_response_200_23)(implicit toEntityMarshallerinline_response_200_23: ToEntityMarshaller[inline_response_200_23]): Route =
+    complete((200, responseinline_response_200_23))
   def sslCancel401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: SSL Cancel, DataType: inline_response_200_21
+   * Code: 200, Message: SSL Cancel, DataType: inline_response_200_23
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def sslCancel(id: Int)
-      (implicit toEntityMarshallerinline_response_200_21: ToEntityMarshaller[inline_response_200_21], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_23: ToEntityMarshaller[inline_response_200_23], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def updateSslInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
@@ -262,6 +263,8 @@ trait SSLCertificatesApiService {
 }
 
 trait SSLCertificatesApiMarshaller {
+  implicit def fromRequestUnmarshallerSslOrderRequest: FromRequestUnmarshaller[SslOrderRequest]
+
 
   implicit def toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse]
 
@@ -283,7 +286,7 @@ trait SSLCertificatesApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_21: ToEntityMarshaller[inline_response_200_21]
+  implicit def toEntityMarshallerinline_response_200_23: ToEntityMarshaller[inline_response_200_23]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

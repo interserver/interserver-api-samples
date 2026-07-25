@@ -8,8 +8,7 @@
 
 #' InlineResponse2001 Class
 #'
-#' @field success 
-#' @field text 
+#' @field data 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,51 +16,41 @@
 InlineResponse2001 <- R6::R6Class(
   'InlineResponse2001',
   public = list(
-    `success` = NULL,
-    `text` = NULL,
-    initialize = function(`success`, `text`){
-      if (!missing(`success`)) {
-        self$`success` <- `success`
-      }
-      if (!missing(`text`)) {
-        stopifnot(is.character(`text`), length(`text`) == 1)
-        self$`text` <- `text`
+    `data` = NULL,
+    initialize = function(`data`){
+      if (!missing(`data`)) {
+        stopifnot(R6::is.R6(`data`))
+        self$`data` <- `data`
       }
     },
     toJSON = function() {
       InlineResponse2001Object <- list()
-      if (!is.null(self$`success`)) {
-        InlineResponse2001Object[['success']] <- self$`success`
-      }
-      if (!is.null(self$`text`)) {
-        InlineResponse2001Object[['text']] <- self$`text`
+      if (!is.null(self$`data`)) {
+        InlineResponse2001Object[['data']] <- self$`data`$toJSON()
       }
 
       InlineResponse2001Object
     },
     fromJSON = function(InlineResponse2001Json) {
       InlineResponse2001Object <- jsonlite::fromJSON(InlineResponse2001Json)
-      if (!is.null(InlineResponse2001Object$`success`)) {
-        self$`success` <- InlineResponse2001Object$`success`
-      }
-      if (!is.null(InlineResponse2001Object$`text`)) {
-        self$`text` <- InlineResponse2001Object$`text`
+      if (!is.null(InlineResponse2001Object$`data`)) {
+        dataObject <- TODO_OBJECT_MAPPING$new()
+        dataObject$fromJSON(jsonlite::toJSON(InlineResponse2001Object$data, auto_unbox = TRUE))
+        self$`data` <- dataObject
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "success": %s,
-           "text": %s
+           "data": %s
         }',
-        self$`success`,
-        self$`text`
+        self$`data`$toJSON()
       )
     },
     fromJSONString = function(InlineResponse2001Json) {
       InlineResponse2001Object <- jsonlite::fromJSON(InlineResponse2001Json)
-      self$`success` <- InlineResponse2001Object$`success`
-      self$`text` <- InlineResponse2001Object$`text`
+      TODO_OBJECT_MAPPINGObject <- TODO_OBJECT_MAPPING$new()
+      self$`data` <- TODO_OBJECT_MAPPINGObject$fromJSON(jsonlite::toJSON(InlineResponse2001Object$data, auto_unbox = TRUE))
     }
   )
 )

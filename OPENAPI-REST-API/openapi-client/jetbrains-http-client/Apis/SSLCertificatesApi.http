@@ -1,73 +1,132 @@
 ## SSLCertificatesApi
 
-### Place SSL Cert Order
-## Place SSL Cert Order
+### Place a new SSL certificate order - creates invoice and queues issuance
+## Place a new SSL certificate order - creates invoice and queues issuance
 POST https://my.interserver.net/apiv2/ssl/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### SSL Cert Ordering Information
-## SSL Cert Ordering Information
+{
+ "ssl": "<number>",
+ "hostname": "<string>",
+ "approver_email": "<string>",
+ "frequency": "<number>",
+ "coupon": "<string>",
+ "csr_type": "<string>",
+ "csr": "<string>",
+ "firstname": "<string>",
+ "lastname": "<string>",
+ "email": "<string>",
+ "address": "<string>",
+ "city": "<string>",
+ "state": "<string>",
+ "zip": "<string>",
+ "country": "<string>",
+ "phone": "<string>",
+ "company": "<string>",
+ "department": "<string>",
+ "agency": "<string>",
+ "business_category": "<string>"
+}
+
+
+### Get available SSL certificate packages and pricing for placing a new order
+## Get available SSL certificate packages and pricing for placing a new order
 GET https://my.interserver.net/apiv2/ssl/order
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get SSL Cert Info
-## Get SSL Cert Info
+### Get full details for one SSL certificate by id - status, expiration, links
+## Get full details for one SSL certificate by id - status, expiration, links
 GET https://my.interserver.net/apiv2/ssl/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get SSL Cert Invoices
-## Get SSL Cert Invoices
+### List all billing invoices and charges tied to one SSL certificate by id
+## List all billing invoices and charges tied to one SSL certificate by id
 GET https://my.interserver.net/apiv2/ssl/{{id}}/invoices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List SSL Certs
-## List SSL Certs
+### List all SSL certificates on the authenticated customer account with status and hostname
+## List all SSL certificates on the authenticated customer account with status and hostname
 GET https://my.interserver.net/apiv2/ssl
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Resend SSL Welcome Email
-## Resend SSL Welcome Email
+### Resend the SSL welcome email with cert credentials and install instructions
+## Resend the SSL welcome email with cert credentials and install instructions
 GET https://my.interserver.net/apiv2/ssl/{{id}}/welcome_email
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Validate SSL Cert Order
-## Validate SSL Cert Order
+### Validate an SSL certificate order without charging - dry-run before addSsl
+## Validate an SSL certificate order without charging - dry-run before addSsl
 PUT https://my.interserver.net/apiv2/ssl/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Cancel SSL Certificate Service
-## Cancel SSL Certificate Service
+{
+ "ssl": "<number>",
+ "hostname": "<string>",
+ "approver_email": "<string>",
+ "frequency": "<number>",
+ "coupon": "<string>",
+ "csr_type": "<string>",
+ "csr": "<string>",
+ "firstname": "<string>",
+ "lastname": "<string>",
+ "email": "<string>",
+ "address": "<string>",
+ "city": "<string>",
+ "state": "<string>",
+ "zip": "<string>",
+ "country": "<string>",
+ "phone": "<string>",
+ "company": "<string>",
+ "department": "<string>",
+ "agency": "<string>",
+ "business_category": "<string>"
+}
+
+
+### Cancel an SSL certificate service - stops renewals at end of billing cycle
+## Cancel an SSL certificate service - stops renewals at end of billing cycle
 DELETE https://my.interserver.net/apiv2/ssl/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update SSL Cert Order
-## Update SSL Cert Order
+### Update mutable settings on an existing SSL certificate order by id
+## Update mutable settings on an existing SSL certificate order by id
 POST https://my.interserver.net/apiv2/ssl/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

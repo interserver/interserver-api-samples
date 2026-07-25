@@ -5,10 +5,10 @@ import io.swagger.model.AccountFeatures;
 import io.swagger.model.AccountInfo;
 import io.swagger.model.AccountInfoPost;
 import io.swagger.model.AccountSshKey;
-import io.swagger.model.BillingAddCcRequest;
 import io.swagger.model.GenericResponse;
 import io.swagger.model.InlineResponse200;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.InlineResponseMap200;
 import io.swagger.model.IpLimitRange;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.SuccessTextResponse;
@@ -29,43 +29,6 @@ class AccountApiControllerTest {
 
     @Inject
     private AccountApi api;
-
-    @Test
-    void addAccountCreditCardFormTest() {
-        String name = null;
-        String address = null;
-        String city = null;
-        String state = null;
-        String country = null;
-        String zip = null;
-        String cc = null;
-        String ccExp = null;
-        String ccCcv2 = null;
-        try {
-            //TODO: api.addAccountCreditCard(name, address, city, state, country, zip, cc, ccExp, ccCcv2).blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
-    void changeAccountUsernameTest() {
-        try {
-            //TODO: api.changeAccountUsername().blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
-    void deleteAccountCreditCardTest() {
-        String id = null;
-        try {
-            //TODO: api.deleteAccountCreditCard(id).blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
 
     @Test
     void deleteAccountOauthNameTest() {
@@ -97,9 +60,27 @@ class AccountApiControllerTest {
     }
 
     @Test
+    void getAccountCurrenciesTest() {
+        try {
+            //TODO: api.getAccountCurrencies().blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
     void getAccountInfoTest() {
         try {
             //TODO: api.getAccountInfo().blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void getAccountLocalesTest() {
+        try {
+            //TODO: api.getAccountLocales().blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -147,16 +128,6 @@ class AccountApiControllerTest {
     void updateAccountApiKeyTest() {
         try {
             //TODO: api.updateAccountApiKey().blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
-    void updateAccountCreditCardTest() {
-        Integer id = null;
-        try {
-            //TODO: api.updateAccountCreditCard(id).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

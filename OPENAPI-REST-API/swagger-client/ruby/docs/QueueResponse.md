@@ -1,4 +1,4 @@
-# SwaggerClient::QueueResponse
+# InterserverApiClient::QueueResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -27,20 +27,12 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse2008 : IEquatable<InlineResponse2008>
     { 
         /// <summary>
-        /// Gets or Sets Success
+        /// Whether the 2FA verification succeeded and the user is now logged in.
         /// </summary>
-        [Required]
+        /// <value>Whether the 2FA verification succeeded and the user is now logged in.</value>
 
-        [DataMember(Name="success")]
-        public bool? Success { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Text
-        /// </summary>
-        [Required]
-
-        [DataMember(Name="text")]
-        public string Text { get; set; }
+        [DataMember(Name="login")]
+        public bool? Login { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,8 +42,7 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse2008 {\n");
-            sb.Append("  Success: ").Append(Success).Append("\n");
-            sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  Login: ").Append(Login).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -89,14 +80,9 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Success == other.Success ||
-                    Success != null &&
-                    Success.Equals(other.Success)
-                ) && 
-                (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
+                    Login == other.Login ||
+                    Login != null &&
+                    Login.Equals(other.Login)
                 );
         }
 
@@ -110,10 +96,8 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Success != null)
-                    hashCode = hashCode * 59 + Success.GetHashCode();
-                    if (Text != null)
-                    hashCode = hashCode * 59 + Text.GetHashCode();
+                    if (Login != null)
+                    hashCode = hashCode * 59 + Login.GetHashCode();
                 return hashCode;
             }
         }

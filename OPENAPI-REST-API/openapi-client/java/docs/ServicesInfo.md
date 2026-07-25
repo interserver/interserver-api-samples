@@ -14,4 +14,8 @@ Contains the complete catalog of available modules, services, service types, and
 |**serviceCategories** | **ServiceCategories** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

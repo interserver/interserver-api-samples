@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BuyItNowRowCpuInner = Initialize-PSOpenAPIToolsBuyItNowRowCpuInner  -Img xeon-e3.png `
+$BuyItNowRowCpuInner = Initialize-InterserverApiBuyItNowRowCpuInner  -Img xeon-e3.png `
  -Type XEON `
  -Speed  `
  -NumCpus 1 `

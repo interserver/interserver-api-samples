@@ -1,4 +1,4 @@
-# SwaggerClient::DnsRecord
+# InterserverApiClient::DnsRecord
 
 ## Properties
 Name | Type | Description | Notes

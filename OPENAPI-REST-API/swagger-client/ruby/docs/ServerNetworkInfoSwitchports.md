@@ -1,4 +1,4 @@
-# SwaggerClient::ServerNetworkInfoSwitchports
+# InterserverApiClient::ServerNetworkInfoSwitchports
 
 ## Properties
 Name | Type | Description | Notes

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.patch_oauth_two_factor_request import PatchOauthTwoFactorRequest
+from interserver_api_client.models.patch_oauth_two_factor_request import PatchOauthTwoFactorRequest
 
 class TestPatchOauthTwoFactorRequest(unittest.TestCase):
     """PatchOauthTwoFactorRequest unit test stubs"""

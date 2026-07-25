@@ -1,4 +1,4 @@
-# SwaggerClient::LoginSuccessResponse
+# InterserverApiClient::LoginSuccessResponse
 
 ## Properties
 Name | Type | Description | Notes

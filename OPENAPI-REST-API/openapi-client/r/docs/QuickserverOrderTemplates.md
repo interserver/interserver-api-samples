@@ -1,4 +1,4 @@
-# openapi::QuickserverOrderTemplates
+# interserverapi::QuickserverOrderTemplates
 
 Templates details.
 

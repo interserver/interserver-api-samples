@@ -14,6 +14,7 @@
             [inter-server-management-api.specs.enable-scrub-500-response :refer :all]
             [inter-server-management-api.specs.login-error-response :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall-rules-inner :refer :all]
+            [inter-server-management-api.specs.server-order-post-request :refer :all]
             [inter-server-management-api.specs.account-info-data-extra :refer :all]
             [inter-server-management-api.specs.server-order-memory-li-254 :refer :all]
             [inter-server-management-api.specs.affiliate-traffic-row :refer :all]
@@ -23,6 +24,7 @@
             [inter-server-management-api.specs.quickserver-order-distro-sel-ubuntu :refer :all]
             [inter-server-management-api.specs.domain :refer :all]
             [inter-server-management-api.specs.generic-response :refer :all]
+            [inter-server-management-api.specs.floating-ip-order-request :refer :all]
             [inter-server-management-api.specs.mail-blocks :refer :all]
             [inter-server-management-api.specs.update-account-tfa-request :refer :all]
             [inter-server-management-api.specs.billing-invoice-detail :refer :all]
@@ -34,13 +36,14 @@
             [inter-server-management-api.specs.licenses-cancel-200-response :refer :all]
             [inter-server-management-api.specs.text-response :refer :all]
             [inter-server-management-api.specs.server-network-info :refer :all]
-            [inter-server-management-api.specs.hard-drive :refer :all]
             [inter-server-management-api.specs.account-info-oauth-config-providers :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall :refer :all]
             [inter-server-management-api.specs.success-text-response :refer :all]
             [inter-server-management-api.specs.server-order-control-panel :refer :all]
+            [inter-server-management-api.specs.get-affiliate-signups-200-response :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall-filters-inner :refer :all]
             [inter-server-management-api.specs.websites-order-json-service-offers-item :refer :all]
+            [inter-server-management-api.specs.put-scrub-ips-200-response :refer :all]
             [inter-server-management-api.specs.ticket-post-details-inner :refer :all]
             [inter-server-management-api.specs.website :refer :all]
             [inter-server-management-api.specs.reverse-dns-entries :refer :all]
@@ -50,14 +53,13 @@
             [inter-server-management-api.specs.post-website-buy-ip-request :refer :all]
             [inter-server-management-api.specs.domain-prov-process-pending-attributes :refer :all]
             [inter-server-management-api.specs.create-filter-201-response :refer :all]
-            [inter-server-management-api.specs.asset-server-cpu-inner :refer :all]
             [inter-server-management-api.specs.websites-order :refer :all]
             [inter-server-management-api.specs.ticket-details :refer :all]
             [inter-server-management-api.specs.webhosting-cancel-200-response :refer :all]
-            [inter-server-management-api.specs.field-label :refer :all]
             [inter-server-management-api.specs.download-qs-backup-200-response :refer :all]
             [inter-server-management-api.specs.vps-traffic-data-data-section-response :refer :all]
             [inter-server-management-api.specs.send-mail-adv :refer :all]
+            [inter-server-management-api.specs.license-order-request :refer :all]
             [inter-server-management-api.specs.domain-all-info-attributes :refer :all]
             [inter-server-management-api.specs.server-order :refer :all]
             [inter-server-management-api.specs.service-category :refer :all]
@@ -98,10 +100,10 @@
             [inter-server-management-api.specs.scrub-ips-log-row-schema :refer :all]
             [inter-server-management-api.specs.website-table :refer :all]
             [inter-server-management-api.specs.domain-name-server :refer :all]
-            [inter-server-management-api.specs.config-ids :refer :all]
             [inter-server-management-api.specs.ticket-new-response :refer :all]
             [inter-server-management-api.specs.affiliate-dock-setup :refer :all]
             [inter-server-management-api.specs.server-order-os :refer :all]
+            [inter-server-management-api.specs.website-order-put-request :refer :all]
             [inter-server-management-api.specs.account-info-max-mind-response-risk-score :refer :all]
             [inter-server-management-api.specs.billing-add-cc-request :refer :all]
             [inter-server-management-api.specs.account-info-max-mind-response :refer :all]
@@ -112,6 +114,7 @@
             [inter-server-management-api.specs.billing-payment-method-request :refer :all]
             [inter-server-management-api.specs.home :refer :all]
             [inter-server-management-api.specs.server-locations :refer :all]
+            [inter-server-management-api.specs.ssl-order-request :refer :all]
             [inter-server-management-api.specs.service :refer :all]
             [inter-server-management-api.specs.server-order-os-li :refer :all]
             [inter-server-management-api.specs.vps :refer :all]
@@ -119,6 +122,7 @@
             [inter-server-management-api.specs.backup :refer :all]
             [inter-server-management-api.specs.account-info-data-ccs :refer :all]
             [inter-server-management-api.specs.disable-scrub-400-response :refer :all]
+            [inter-server-management-api.specs.mail-order-request :refer :all]
             [inter-server-management-api.specs.websites-order-packages :refer :all]
             [inter-server-management-api.specs.quickserver-billing-details :refer :all]
             [inter-server-management-api.specs.get-oauth-redirect-200-response :refer :all]
@@ -127,6 +131,7 @@
             [inter-server-management-api.specs.server-service-info :refer :all]
             [inter-server-management-api.specs.home-details-modules-vps :refer :all]
             [inter-server-management-api.specs.backup-order-put-response :refer :all]
+            [inter-server-management-api.specs.website-order-post-request :refer :all]
             [inter-server-management-api.specs.scrub-ip-filter-types-filters-value :refer :all]
             [inter-server-management-api.specs.patch-oauth-two-factor-request :refer :all]
             [inter-server-management-api.specs.home-ticket-status-view :refer :all]
@@ -136,6 +141,7 @@
             [inter-server-management-api.specs.create-geo-firewall-rule :refer :all]
             [inter-server-management-api.specs.create-rule-400-response :refer :all]
             [inter-server-management-api.specs.account-info-data-email-settings :refer :all]
+            [inter-server-management-api.specs.qs-order-request :refer :all]
             [inter-server-management-api.specs.mail-delist-response :refer :all]
             [inter-server-management-api.specs.server-order-cpu :refer :all]
             [inter-server-management-api.specs.domain-nameserver-post-request :refer :all]
@@ -150,16 +156,16 @@
             [inter-server-management-api.specs.domain-service-info :refer :all]
             [inter-server-management-api.specs.scrub-ips-delete-rule-200-response :refer :all]
             [inter-server-management-api.specs.server-extra-info-tables :refer :all]
-            [inter-server-management-api.specs.asset-server :refer :all]
             [inter-server-management-api.specs.dns-record-type :refer :all]
             [inter-server-management-api.specs.domain-nameserver-get-response :refer :all]
             [inter-server-management-api.specs.licenses-order-service-categories :refer :all]
+            [inter-server-management-api.specs.server-bulk-ipmi-power-response :refer :all]
             [inter-server-management-api.specs.vps-order-platform-names :refer :all]
             [inter-server-management-api.specs.quickserver-order :refer :all]
             [inter-server-management-api.specs.websites-order-packges :refer :all]
             [inter-server-management-api.specs.servers-buy-now-error :refer :all]
-            [inter-server-management-api.specs.cpu-with-defaults :refer :all]
             [inter-server-management-api.specs.close-ticket-response-schema :refer :all]
+            [inter-server-management-api.specs.server-order-post-request-hd :refer :all]
             [inter-server-management-api.specs.quickserver-order-templates-ubuntu64 :refer :all]
             [inter-server-management-api.specs.vps-extra-info-tables :refer :all]
             [inter-server-management-api.specs.home-services-licenses :refer :all]
@@ -169,7 +175,7 @@
             [inter-server-management-api.specs.mail-log :refer :all]
             [inter-server-management-api.specs.domain-prov-process-pending :refer :all]
             [inter-server-management-api.specs.domain-lookup-response :refer :all]
-            [inter-server-management-api.specs.operating-system :refer :all]
+            [inter-server-management-api.specs.domain-order-request :refer :all]
             [inter-server-management-api.specs.dns-record :refer :all]
             [inter-server-management-api.specs.vps-order-os-names :refer :all]
             [inter-server-management-api.specs.vps-traffic-totals-section-response :refer :all]
@@ -177,13 +183,11 @@
             [inter-server-management-api.specs.buy-it-now-row-cpu-inner :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-extra-info-tables :refer :all]
-            [inter-server-management-api.specs.inline-object :refer :all]
             [inter-server-management-api.specs.vps-cp-data :refer :all]
             [inter-server-management-api.specs.server-order-cpu-li :refer :all]
             [inter-server-management-api.specs.domain-order-services :refer :all]
             [inter-server-management-api.specs.login-info :refer :all]
             [inter-server-management-api.specs.home-services-vps-links :refer :all]
-            [inter-server-management-api.specs.cpu :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-row :refer :all]
             [inter-server-management-api.specs.website-service-info :refer :all]
@@ -211,10 +215,8 @@
             [inter-server-management-api.specs.server-ipmi-power-request :refer :all]
             [inter-server-management-api.specs.quickservers-cancel-200-response :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response-ips-inner :refer :all]
-            [inter-server-management-api.specs.form-values :refer :all]
             [inter-server-management-api.specs.service-type :refer :all]
             [inter-server-management-api.specs.vps-snapshot :refer :all]
-            [inter-server-management-api.specs.raid-option :refer :all]
             [inter-server-management-api.specs.service-categories :refer :all]
             [inter-server-management-api.specs.vps-order :refer :all]
             [inter-server-management-api.specs.backup-service-extra :refer :all]
@@ -229,10 +231,8 @@
             [inter-server-management-api.specs.vps-order-templates :refer :all]
             [inter-server-management-api.specs.restore-request :refer :all]
             [inter-server-management-api.specs.account-info :refer :all]
-            [inter-server-management-api.specs.control-panel :refer :all]
             [inter-server-management-api.specs.backup-extra-info-tables :refer :all]
             [inter-server-management-api.specs.send-mail :refer :all]
-            [inter-server-management-api.specs.ip-block :refer :all]
             [inter-server-management-api.specs.servers-buy-now-response :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response-ips-inner :refer :all]
             [inter-server-management-api.specs.domain-billing-details :refer :all]
@@ -259,10 +259,10 @@
             [inter-server-management-api.specs.create-filter :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response-raid-inner :refer :all]
             [inter-server-management-api.specs.vps-traffic-totals-resposne :refer :all]
+            [inter-server-management-api.specs.server-bulk-ipmi-power-response-results-inner :refer :all]
             [inter-server-management-api.specs.dns-list-item :refer :all]
             [inter-server-management-api.specs.cancel-domain-200-response :refer :all]
             [inter-server-management-api.specs.home-details :refer :all]
-            [inter-server-management-api.specs.domain-order-tld-services :refer :all]
             [inter-server-management-api.specs.server-ipmi-live-info :refer :all]
             [inter-server-management-api.specs.home-services-domains-links :refer :all]
             [inter-server-management-api.specs.home-services :refer :all]
@@ -271,7 +271,7 @@
             [inter-server-management-api.specs.account-info-limits :refer :all]
             [inter-server-management-api.specs.queue-response :refer :all]
             [inter-server-management-api.specs.cancel-scrub-ip-200-response :refer :all]
-            [inter-server-management-api.specs.bandwidth :refer :all]
+            [inter-server-management-api.specs.delete-mail-alert-request :refer :all]
             [inter-server-management-api.specs.services :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response-package-costs :refer :all]
             [inter-server-management-api.specs.domain-client-link :refer :all]
@@ -283,7 +283,6 @@
             [inter-server-management-api.specs.vps-order-location-names :refer :all]
             [inter-server-management-api.specs.get-website-buy-ip-200-response :refer :all]
             [inter-server-management-api.specs.licenses-order-service-categories509 :refer :all]
-            [inter-server-management-api.specs.memory-option :refer :all]
             [inter-server-management-api.specs.domain-all-info :refer :all]
             [inter-server-management-api.specs.login-service-counts :refer :all]
             [inter-server-management-api.specs.domain-dnssec-records :refer :all]
@@ -302,7 +301,6 @@
             [inter-server-management-api.specs.websites-order-json-service-offers :refer :all]
             [inter-server-management-api.specs.domain-owner-contact :refer :all]
             [inter-server-management-api.specs.mail-tutorials-table :refer :all]
-            [inter-server-management-api.specs.region :refer :all]
             [inter-server-management-api.specs.domain-admin-contact :refer :all]
             [inter-server-management-api.specs.vps-traffic-usage-response :refer :all]
             [inter-server-management-api.specs.service-order-post-response :refer :all]
@@ -324,6 +322,7 @@
             [inter-server-management-api.specs.quickserver-ip-table-row :refer :all]
             [inter-server-management-api.specs.email-address :refer :all]
             [inter-server-management-api.specs.vps-plesk-license :refer :all]
+            [inter-server-management-api.specs.get-account-locales-200-response-value :refer :all]
             [inter-server-management-api.specs.vps-traffic-history-section-data-response :refer :all]
             [inter-server-management-api.specs.backup-service-master :refer :all]
             [inter-server-management-api.specs.vps-traffic-history-response :refer :all]
@@ -394,8 +393,6 @@
             [inter-server-management-api.specs.quickserver :refer :all]
             [inter-server-management-api.specs.reply-ticket-response-schema :refer :all]
             [inter-server-management-api.specs.vps-order-put-request :refer :all]
-            [inter-server-management-api.specs.vps-traffic-data-data-response :refer :all]
-            [inter-server-management-api.specs.server-order-get-response :refer :all]
             [inter-server-management-api.specs.mail-stats-type-volume-from :refer :all]
             [inter-server-management-api.specs.mail-alerts-response-inner :refer :all]
             [inter-server-management-api.specs.domain-tech-contact :refer :all]
@@ -407,7 +404,6 @@
             [inter-server-management-api.specs.billing-verify-cc-request :refer :all]
             [inter-server-management-api.specs.vps-order-service-types :refer :all]
             [inter-server-management-api.specs.mail-attachment :refer :all]
-            [inter-server-management-api.specs.invoice-row :refer :all]
             [inter-server-management-api.specs.place-scrub-order-201-response-order-details-cj-params :refer :all]
             [inter-server-management-api.specs.delete-firewall-rule :refer :all]
             [inter-server-management-api.specs.tickets :refer :all]
@@ -422,13 +418,13 @@
             [inter-server-management-api.specs.timezone-update :refer :all]
             [inter-server-management-api.specs.servers-cancel-200-response :refer :all]
             [inter-server-management-api.specs.server-order-memory :refer :all]
-            [inter-server-management-api.specs.config-lists :refer :all]
             [inter-server-management-api.specs.website-backups :refer :all]
             [inter-server-management-api.specs.vps-ip-info :refer :all]
             [inter-server-management-api.specs.domain-billing-extra :refer :all]
             [inter-server-management-api.specs.backup-order-post-response :refer :all]
             [inter-server-management-api.specs.scrub-ips-row-schema :refer :all]
             [inter-server-management-api.specs.scrub-ip-place-order :refer :all]
+            [inter-server-management-api.specs.patch-billing-credit-card-verify-request :refer :all]
             [inter-server-management-api.specs.license-service-info :refer :all]
             [inter-server-management-api.specs.server-lease :refer :all]
             [inter-server-management-api.specs.charge-invoice-rows-invoices-value-paid-invoices-value-refund-invoices-value :refer :all]
@@ -446,13 +442,11 @@
             [inter-server-management-api.specs.post-website-migration-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-ip-info :refer :all]
             [inter-server-management-api.specs.licenses-order :refer :all]
-            [inter-server-management-api.specs.payment-invoice-rows :refer :all]
             [inter-server-management-api.specs.license-row :refer :all]
             [inter-server-management-api.specs.server-order-bandwidth :refer :all]
             [inter-server-management-api.specs.quickserver-service-extra :refer :all]
             [inter-server-management-api.specs.quickserver-client-link :refer :all]
             [inter-server-management-api.specs.download-qs-backup-request :refer :all]
-            [inter-server-management-api.specs.invoice :refer :all]
             [inter-server-management-api.specs.licenses-order-service-types :refer :all]
             [inter-server-management-api.specs.mail-tutorials-table-row :refer :all]
             [inter-server-management-api.specs.vps-service-extra :refer :all]
@@ -461,8 +455,8 @@
 
 
 (defn-spec add-new-ticket-with-http-info any?
-  "Create New Ticket
-  Creates a new support ticket. Optionally link it to a specific service by providing the service ID and module."
+  "Open a new helpdesk ticket, optionally linked to a service and attachments
+  Use when the customer wants to contact support. Creates the Kayako ticket in the 'New Unassigned' department (id 18). Body (form): subject (string, required), body (string, required), product (string, optional, format '{module}-{service_id}' from getNewTicket), service_id+service_module (alternative to product), attachments[] (optional, each {name, type, content base64}), and optional server-access custom fields ip, root_pass, sudo_user, sudo_pass, port_no, server_access (passwords are AES-encrypted with a generated auth_key). Returns: {success: true, text, ticket: ticketmaskid}. Errors: 400 missing subject or body; 401 unauthorized; 422 ticket creation failure. Sibling: getNewTicket for product list, getTicketInfo to view, ReplyTicket to add replies."
   [ticket-new ticket-new]
   (check-required-params ticket-new)
   (call-api "/tickets/new" :post
@@ -476,8 +470,8 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec add-new-ticket ticket-new-response-spec
-  "Create New Ticket
-  Creates a new support ticket. Optionally link it to a specific service by providing the service ID and module."
+  "Open a new helpdesk ticket, optionally linked to a service and attachments
+  Use when the customer wants to contact support. Creates the Kayako ticket in the 'New Unassigned' department (id 18). Body (form): subject (string, required), body (string, required), product (string, optional, format '{module}-{service_id}' from getNewTicket), service_id+service_module (alternative to product), attachments[] (optional, each {name, type, content base64}), and optional server-access custom fields ip, root_pass, sudo_user, sudo_pass, port_no, server_access (passwords are AES-encrypted with a generated auth_key). Returns: {success: true, text, ticket: ticketmaskid}. Errors: 400 missing subject or body; 401 unauthorized; 422 ticket creation failure. Sibling: getNewTicket for product list, getTicketInfo to view, ReplyTicket to add replies."
   [ticket-new ticket-new]
   (let [res (:data (add-new-ticket-with-http-info ticket-new))]
     (if (:decode-models *api-context*)
@@ -486,8 +480,8 @@
 
 
 (defn-spec close-ticket-with-http-info any?
-  "Close Ticket
-  Closes the specified support ticket. Closed tickets can still be viewed but will no longer appear in the active inbox."
+  "Close an open support ticket via simple GET request (no body required)
+  Use to close a ticket from a link or one-click action — closure-only equivalent of deleteTicketInfo with friendlier semantics. Calls Ticket::closeTicket on the resolved ticket and leaves the record fully readable; closed tickets disappear from the active inbox but remain in getTicketsList when view=Closed. Path: id (int ticket ID, e.g. 1511222). Body: none. Returns: {success: true, text: 'Ticket is closed!'} or {success: false, text: 'Unable to close ticket'}. Errors: 401 unauthorized; 404 implied via 'Unable to close ticket' when id is unknown or cross-account. Idempotent on already-closed tickets. Siblings: deleteTicketInfo (DELETE /tickets/{id} — same effect), getTicketInfo to confirm new status."
   [id string?]
   (check-required-params id)
   (call-api "/tickets/{id}/close" :get
@@ -500,8 +494,8 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec close-ticket close-ticket-response-schema-spec
-  "Close Ticket
-  Closes the specified support ticket. Closed tickets can still be viewed but will no longer appear in the active inbox."
+  "Close an open support ticket via simple GET request (no body required)
+  Use to close a ticket from a link or one-click action — closure-only equivalent of deleteTicketInfo with friendlier semantics. Calls Ticket::closeTicket on the resolved ticket and leaves the record fully readable; closed tickets disappear from the active inbox but remain in getTicketsList when view=Closed. Path: id (int ticket ID, e.g. 1511222). Body: none. Returns: {success: true, text: 'Ticket is closed!'} or {success: false, text: 'Unable to close ticket'}. Errors: 401 unauthorized; 404 implied via 'Unable to close ticket' when id is unknown or cross-account. Idempotent on already-closed tickets. Siblings: deleteTicketInfo (DELETE /tickets/{id} — same effect), getTicketInfo to confirm new status."
   [id string?]
   (let [res (:data (close-ticket-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -510,8 +504,8 @@
 
 
 (defn-spec delete-ticket-info-with-http-info any?
-  "Close Ticket
-  Closes the support ticket."
+  "Close a customer ticket via DELETE verb (closes only, never destroys data)
+  Use when the customer marks a ticket resolved. IMPORTANT: despite the DELETE verb this only CLOSES the ticket via Ticket::closeTicket — no data is destroyed. Closed tickets remain readable through getTicketInfo and appear in getTicketsList when view=Closed. Path: id (int ticket ID). Body: none. Returns: 'Ticket is closed!' string on success. Errors: 401 unauthorized; 404/422 'Invalid ticket!' when id is unknown or owned by another account. Idempotent on already-closed tickets. Siblings: CloseTicket (GET /tickets/{id}/close — same effect, simpler URL), ReplyTicket to add a final reply before closing, getTicketInfo to verify state."
   [id float?]
   (check-required-params id)
   (call-api "/tickets/{id}" :delete
@@ -524,8 +518,8 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec delete-ticket-info view-ticket-response-spec
-  "Close Ticket
-  Closes the support ticket."
+  "Close a customer ticket via DELETE verb (closes only, never destroys data)
+  Use when the customer marks a ticket resolved. IMPORTANT: despite the DELETE verb this only CLOSES the ticket via Ticket::closeTicket — no data is destroyed. Closed tickets remain readable through getTicketInfo and appear in getTicketsList when view=Closed. Path: id (int ticket ID). Body: none. Returns: 'Ticket is closed!' string on success. Errors: 401 unauthorized; 404/422 'Invalid ticket!' when id is unknown or owned by another account. Idempotent on already-closed tickets. Siblings: CloseTicket (GET /tickets/{id}/close — same effect, simpler URL), ReplyTicket to add a final reply before closing, getTicketInfo to verify state."
   [id float?]
   (let [res (:data (delete-ticket-info-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -534,8 +528,10 @@
 
 
 (defn-spec get-new-ticket-with-http-info any?
-  "Gets Information for creating a new ticket.
-  Returns the form data needed to create a new support ticket, such as available departments and service categories."
+  "Fetch services and product options to populate the new-ticket form
+  Use to populate dropdowns before calling addNewTicket. Returns the customer's services grouped by product type so the user can attach a ticket to a specific resource. Iterates all enabled modules (vps, webhosting, domains, mail, etc.; mailbaby instances see only mail) and filters out services with status canceled, deleted, or fraud. Params: none. Body: none. Returns: object keyed by product TITLE (e.g. 'Vps', 'Webhosting'), each value a map of '{module}-{service_id}' to a description string including title, type/plan, VPS hypervisor name where applicable, and uppercase status tag. Errors: 401 unauthorized. Use the returned product key as the 'product' field on addNewTicket.
+
+Sibling ops: `addNewTicket` (consumes the product key), `getTicketsList`."
   []
   (call-api "/tickets/new" :get
             {:path-params   {}
@@ -547,8 +543,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-new-ticket any?
-  "Gets Information for creating a new ticket.
-  Returns the form data needed to create a new support ticket, such as available departments and service categories."
+  "Fetch services and product options to populate the new-ticket form
+  Use to populate dropdowns before calling addNewTicket. Returns the customer's services grouped by product type so the user can attach a ticket to a specific resource. Iterates all enabled modules (vps, webhosting, domains, mail, etc.; mailbaby instances see only mail) and filters out services with status canceled, deleted, or fraud. Params: none. Body: none. Returns: object keyed by product TITLE (e.g. 'Vps', 'Webhosting'), each value a map of '{module}-{service_id}' to a description string including title, type/plan, VPS hypervisor name where applicable, and uppercase status tag. Errors: 401 unauthorized. Use the returned product key as the 'product' field on addNewTicket.
+
+Sibling ops: `addNewTicket` (consumes the product key), `getTicketsList`."
   []
   (let [res (:data (get-new-ticket-with-http-info))]
     (if (:decode-models *api-context*)
@@ -557,8 +555,8 @@
 
 
 (defn-spec get-ticket-info-with-http-info any?
-  "Get Ticket Information
-  Returns the full details of a support ticket including its history of replies."
+  "Get full ticket details including subject, status, and the reply thread
+  Use to render a ticket page or feed full context to an LLM. Path: id (int, ticket ID, e.g. 1511222). Returns ticket header (subject, status, department, dates), the ordered post/reply history, attachments, and any custom-field values. Resolved via Ticket::getTicket(id, account_lid) so cross-account access returns Invalid ticket. Body: none. Errors: 401 unauthorized; 404/422 'Invalid ticket!' when the id is unknown or owned by another account. Caveats: the same path with POST appends a reply (postTicketInfo) and DELETE closes the ticket (deleteTicketInfo) — it does not destroy data. Siblings: ReplyTicket, updateTicketInfo, CloseTicket, getTicketsList."
   [id float?]
   (check-required-params id)
   (call-api "/tickets/{id}" :get
@@ -571,8 +569,8 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-ticket-info view-ticket-response-spec
-  "Get Ticket Information
-  Returns the full details of a support ticket including its history of replies."
+  "Get full ticket details including subject, status, and the reply thread
+  Use to render a ticket page or feed full context to an LLM. Path: id (int, ticket ID, e.g. 1511222). Returns ticket header (subject, status, department, dates), the ordered post/reply history, attachments, and any custom-field values. Resolved via Ticket::getTicket(id, account_lid) so cross-account access returns Invalid ticket. Body: none. Errors: 401 unauthorized; 404/422 'Invalid ticket!' when the id is unknown or owned by another account. Caveats: the same path with POST appends a reply (postTicketInfo) and DELETE closes the ticket (deleteTicketInfo) — it does not destroy data. Siblings: ReplyTicket, updateTicketInfo, CloseTicket, getTicketsList."
   [id float?]
   (let [res (:data (get-ticket-info-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -581,8 +579,10 @@
 
 
 (defn-spec get-tickets-list-with-http-info any?
-  "List Support Tickets
-  Returns a paginated list of support tickets on the account. Filter by status and time period."
+  "List the authenticated account's support tickets with status and date filters
+  Use to browse the customer's helpdesk tickets, paginated, with optional status and recency filters. Returns tickets where email matches the session account_lid. Query params: page (int, default 1, 50 per page), period (string: '30', '90', '365', '1825', or 'all' days back; default '30'), view (string: 'Open', 'Closed', 'On Hold', 'In Progress'; omit for all). Body: none. Returns: object with tickets[], total, pages, currentPage, st_count[] (counts grouped by status: Open/On Hold/Closed), selected_period, view. Errors: 401 unauthorized session. Note ticketstatusid mapping (Open=4, On Hold=5, Closed=6, In Progress=7). To search by subject/email/mask use postTicketsList. To open a ticket detail use getTicketInfo with the returned id. To create a new ticket see addNewTicket.
+
+Sibling ops: `getTicketInfo` (detail), `postTicketsList` (search), `addNewTicket` (open new)."
   ([] (get-tickets-list-with-http-info nil))
   ([{:keys [page period view]} (s/map-of keyword? any?)]
    (call-api "/tickets" :get
@@ -595,8 +595,10 @@
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
 (defn-spec get-tickets-list tickets-spec
-  "List Support Tickets
-  Returns a paginated list of support tickets on the account. Filter by status and time period."
+  "List the authenticated account's support tickets with status and date filters
+  Use to browse the customer's helpdesk tickets, paginated, with optional status and recency filters. Returns tickets where email matches the session account_lid. Query params: page (int, default 1, 50 per page), period (string: '30', '90', '365', '1825', or 'all' days back; default '30'), view (string: 'Open', 'Closed', 'On Hold', 'In Progress'; omit for all). Body: none. Returns: object with tickets[], total, pages, currentPage, st_count[] (counts grouped by status: Open/On Hold/Closed), selected_period, view. Errors: 401 unauthorized session. Note ticketstatusid mapping (Open=4, On Hold=5, Closed=6, In Progress=7). To search by subject/email/mask use postTicketsList. To open a ticket detail use getTicketInfo with the returned id. To create a new ticket see addNewTicket.
+
+Sibling ops: `getTicketInfo` (detail), `postTicketsList` (search), `addNewTicket` (open new)."
   ([] (get-tickets-list nil))
   ([optional-params any?]
    (let [res (:data (get-tickets-list-with-http-info optional-params))]
@@ -606,8 +608,8 @@
 
 
 (defn-spec post-ticket-info-with-http-info any?
-  "Reply To Ticket
-  Adds a reply to an existing support ticket."
+  "Append a reply (and optional attachment, server-access fields) to a ticket
+  Use to post a customer reply on an existing ticket. Path: id (int ticket ID). Body: body (string reply text; trimmed to first 500 words), file_attachment (multipart upload, optional), and the server-access custom fields ip/root_pass/sudo_user/sudo_pass/port_no/server_access (passwords AES-encrypted with auth_key=7). Either body OR an attachment is required. Notifies any swticketwatchers staff via templated email after posting. Returns: {status: 'success', message: 'Reply posted successfully'}. Errors: 400 'Please enter a message or attach a file'; 401 unauthorized; 404/422 'Invalid ticket!' when id missing or cross-account. Sibling: ReplyTicket (cleaner JSON-only reply at /tickets/{id}/reply), updateTicketInfo, getTicketInfo, deleteTicketInfo."
   [id float?]
   (check-required-params id)
   (call-api "/tickets/{id}" :post
@@ -620,8 +622,8 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec post-ticket-info view-ticket-response-spec
-  "Reply To Ticket
-  Adds a reply to an existing support ticket."
+  "Append a reply (and optional attachment, server-access fields) to a ticket
+  Use to post a customer reply on an existing ticket. Path: id (int ticket ID). Body: body (string reply text; trimmed to first 500 words), file_attachment (multipart upload, optional), and the server-access custom fields ip/root_pass/sudo_user/sudo_pass/port_no/server_access (passwords AES-encrypted with auth_key=7). Either body OR an attachment is required. Notifies any swticketwatchers staff via templated email after posting. Returns: {status: 'success', message: 'Reply posted successfully'}. Errors: 400 'Please enter a message or attach a file'; 401 unauthorized; 404/422 'Invalid ticket!' when id missing or cross-account. Sibling: ReplyTicket (cleaner JSON-only reply at /tickets/{id}/reply), updateTicketInfo, getTicketInfo, deleteTicketInfo."
   [id float?]
   (let [res (:data (post-ticket-info-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -630,8 +632,10 @@
 
 
 (defn-spec post-tickets-list-with-http-info any?
-  "Search Support Tickets
-  Searches support tickets by email, subject, or ticket mask ID."
+  "Search the authenticated account's tickets by subject, email, or mask ID
+  Use when the user supplies a search term (subject keyword, email substring, or full ticket mask ID like 'ABC-123-456'). Scoped to tickets owned by the session account_lid. Body (form): search (string, required). If the term contains exactly two hyphens it is treated as an exact ticketmaskid match; otherwise a LIKE search runs across subject, email, and ticketmaskid. Returns: array of up to 25 matching ticket rows ordered by lastactivity DESC, each enriched with lastactivity_time (human-relative). Errors: 400 if search is empty or missing; 401 unauthorized. Caveat: this is a POST that reads, not a creator. To create see addNewTicket. To paginate full inbox use getTicketsList. To open one use getTicketInfo.
+
+Sibling ops: `getTicketsList` (full inbox), `getTicketInfo` (detail), `addNewTicket` (open new)."
   []
   (call-api "/tickets" :post
             {:path-params   {}
@@ -643,8 +647,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec post-tickets-list tickets-spec
-  "Search Support Tickets
-  Searches support tickets by email, subject, or ticket mask ID."
+  "Search the authenticated account's tickets by subject, email, or mask ID
+  Use when the user supplies a search term (subject keyword, email substring, or full ticket mask ID like 'ABC-123-456'). Scoped to tickets owned by the session account_lid. Body (form): search (string, required). If the term contains exactly two hyphens it is treated as an exact ticketmaskid match; otherwise a LIKE search runs across subject, email, and ticketmaskid. Returns: array of up to 25 matching ticket rows ordered by lastactivity DESC, each enriched with lastactivity_time (human-relative). Errors: 400 if search is empty or missing; 401 unauthorized. Caveat: this is a POST that reads, not a creator. To create see addNewTicket. To paginate full inbox use getTicketsList. To open one use getTicketInfo.
+
+Sibling ops: `getTicketsList` (full inbox), `getTicketInfo` (detail), `addNewTicket` (open new)."
   []
   (let [res (:data (post-tickets-list-with-http-info))]
     (if (:decode-models *api-context*)
@@ -653,8 +659,8 @@
 
 
 (defn-spec put-ticket-info-with-http-info any?
-  "Update Ticket
-  Updates a support ticket's properties such as subject or status."
+  "Update a ticket's properties such as subject or status (stub, not implemented)
+  Reserved for future use to update ticket subject/status. The PHP handler is currently an empty stub that returns no body, so callers should not rely on it in production. Path: id (int). Body: would carry subject/status fields when implemented. Returns: undefined behavior today. Errors: 401 unauthorized; expect 404/422 when implemented if id is invalid or not owned. Caveats: prefer updateTicketInfo (POST /tickets/{id}/update) for editing custom-field values today, postTicketInfo to add a reply, CloseTicket or deleteTicketInfo to close. Avoid scripting against this endpoint until the handler ships. Siblings: getTicketInfo, ReplyTicket."
   [id float?]
   (check-required-params id)
   (call-api "/tickets/{id}" :put
@@ -667,8 +673,8 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec put-ticket-info view-ticket-response-spec
-  "Update Ticket
-  Updates a support ticket's properties such as subject or status."
+  "Update a ticket's properties such as subject or status (stub, not implemented)
+  Reserved for future use to update ticket subject/status. The PHP handler is currently an empty stub that returns no body, so callers should not rely on it in production. Path: id (int). Body: would carry subject/status fields when implemented. Returns: undefined behavior today. Errors: 401 unauthorized; expect 404/422 when implemented if id is invalid or not owned. Caveats: prefer updateTicketInfo (POST /tickets/{id}/update) for editing custom-field values today, postTicketInfo to add a reply, CloseTicket or deleteTicketInfo to close. Avoid scripting against this endpoint until the handler ships. Siblings: getTicketInfo, ReplyTicket."
   [id float?]
   (let [res (:data (put-ticket-info-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -677,8 +683,8 @@
 
 
 (defn-spec reply-ticket-with-http-info any?
-  "Reply Ticket
-  Posts a reply to an existing support ticket thread."
+  "Post a simple text reply to an existing ticket thread (no attachments)
+  Use this lightweight endpoint to add a reply to an existing ticket without attachments or server-access fields. Cleaner alternative to postTicketInfo when only text is being submitted. Path: id (int ticket ID). Body (form): content (string, required reply body). Returns: {success: true, post_id: int} on success or {success: false, text: 'Reply content cannot be empty!' | 'Unable to reply ticket'}. Errors: 401 unauthorized; 404 implied via 'Unable to reply ticket' when id is invalid or owned by another account. Siblings: postTicketInfo (POST /tickets/{id}, supports attachments + custom fields), updateTicketInfo (custom fields only), CloseTicket, getTicketInfo to verify the new post_id appears in the thread."
   ([id float?, ] (reply-ticket-with-http-info id nil))
   ([id float?, {:keys [reply-ticket-request]} (s/map-of keyword? any?)]
    (check-required-params id)
@@ -693,8 +699,8 @@
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
 (defn-spec reply-ticket reply-ticket-response-schema-spec
-  "Reply Ticket
-  Posts a reply to an existing support ticket thread."
+  "Post a simple text reply to an existing ticket thread (no attachments)
+  Use this lightweight endpoint to add a reply to an existing ticket without attachments or server-access fields. Cleaner alternative to postTicketInfo when only text is being submitted. Path: id (int ticket ID). Body (form): content (string, required reply body). Returns: {success: true, post_id: int} on success or {success: false, text: 'Reply content cannot be empty!' | 'Unable to reply ticket'}. Errors: 401 unauthorized; 404 implied via 'Unable to reply ticket' when id is invalid or owned by another account. Siblings: postTicketInfo (POST /tickets/{id}, supports attachments + custom fields), updateTicketInfo (custom fields only), CloseTicket, getTicketInfo to verify the new post_id appears in the thread."
   ([id float?, ] (reply-ticket id nil))
   ([id float?, optional-params any?]
    (let [res (:data (reply-ticket-with-http-info id optional-params))]
@@ -704,8 +710,10 @@
 
 
 (defn-spec update-ticket-info-with-http-info any?
-  "Update Ticket
-  Updates a support ticket's subject or body content."
+  "Update a ticket's custom field values (server-access details, etc.)
+  Use to save or change the structured custom-field values attached to a ticket — typically server-access details supplied by the customer. Path: id (int ticket ID). Body (form): one field per custom-field title, lowercased with spaces replaced by underscores (e.g. ip, root_pass, sudo_user, sudo_pass, port_no, server_access). Field id 7 (auth_key) is skipped — never set it directly. Returns: {success: true, text: 'Ticket is updated!'} or {success: false, text: 'Unable to update ticket'}. Errors: 401 unauthorized; 404 invalid or non-owned ticket. Caveats: this updates metadata only — to add a reply use ReplyTicket, to close use CloseTicket, to read current state use getTicketInfo.
+
+Sibling ops: `getTicketInfo` (read), `ReplyTicket` (reply), `CloseTicket` (close)."
   ([id float?, ] (update-ticket-info-with-http-info id nil))
   ([id float?, {:keys [update-ticket]} (s/map-of keyword? any?)]
    (check-required-params id)
@@ -720,8 +728,10 @@
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
 (defn-spec update-ticket-info update-ticket-response-schema-spec
-  "Update Ticket
-  Updates a support ticket's subject or body content."
+  "Update a ticket's custom field values (server-access details, etc.)
+  Use to save or change the structured custom-field values attached to a ticket — typically server-access details supplied by the customer. Path: id (int ticket ID). Body (form): one field per custom-field title, lowercased with spaces replaced by underscores (e.g. ip, root_pass, sudo_user, sudo_pass, port_no, server_access). Field id 7 (auth_key) is skipped — never set it directly. Returns: {success: true, text: 'Ticket is updated!'} or {success: false, text: 'Unable to update ticket'}. Errors: 401 unauthorized; 404 invalid or non-owned ticket. Caveats: this updates metadata only — to add a reply use ReplyTicket, to close use CloseTicket, to read current state use getTicketInfo.
+
+Sibling ops: `getTicketInfo` (read), `ReplyTicket` (reply), `CloseTicket` (close)."
   ([id float?, ] (update-ticket-info id nil))
   ([id float?, optional-params any?]
    (let [res (:data (update-ticket-info-with-http-info id optional-params))]

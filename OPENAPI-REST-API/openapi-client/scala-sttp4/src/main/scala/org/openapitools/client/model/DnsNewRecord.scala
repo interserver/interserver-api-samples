@@ -28,7 +28,5 @@ case class DnsNewRecord(
   /* Priority */
   prio: Option[Int] = None
 )
-
 object DnsNewRecordEnums {
-
 }

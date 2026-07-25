@@ -19,7 +19,7 @@ import DomainTechContact from './DomainTechContact';
 /**
  * The DomainAllInfoAttributesContactSet model module.
  * @module model/DomainAllInfoAttributesContactSet
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainAllInfoAttributesContactSet {
     /**

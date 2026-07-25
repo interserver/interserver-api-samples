@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::SearchAutocompleteResponse');
+use_ok('InterServerAPI::Object::SearchAutocompleteResponse');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::SearchAutocompleteResponse->new();
+#my $instance = InterServerAPI::Object::SearchAutocompleteResponse->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::SearchAutocompleteResponse');
+#isa_ok($instance, 'InterServerAPI::Object::SearchAutocompleteResponse');
 
 
 done_testing();

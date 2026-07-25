@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetScrubIpDetails200ResponseFilterFirewallFiltersInner } from './api';
+import { GetScrubIpDetails200ResponseFilterFirewallFiltersInner } from '@interserver/myadmin-client';
 
 const instance: GetScrubIpDetails200ResponseFilterFirewallFiltersInner = {
     daddr,

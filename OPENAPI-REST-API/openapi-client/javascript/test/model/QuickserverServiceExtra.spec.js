@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QuickserverServiceExtra();
+    instance = new InterserverApiClient.QuickserverServiceExtra();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('QuickserverServiceExtra', function() {
     it('should create an instance of QuickserverServiceExtra', function() {
       // uncomment below and update the code to test QuickserverServiceExtra
-      //var instance = new InterServerManagementApi.QuickserverServiceExtra();
-      //expect(instance).to.be.a(InterServerManagementApi.QuickserverServiceExtra);
+      //var instance = new InterserverApiClient.QuickserverServiceExtra();
+      //expect(instance).to.be.a(InterserverApiClient.QuickserverServiceExtra);
     });
 
     it('should have the property platform (base name: "platform")', function() {
       // uncomment below and update the code to test the property platform
-      //var instance = new InterServerManagementApi.QuickserverServiceExtra();
+      //var instance = new InterserverApiClient.QuickserverServiceExtra();
       //expect(instance).to.be();
     });
 

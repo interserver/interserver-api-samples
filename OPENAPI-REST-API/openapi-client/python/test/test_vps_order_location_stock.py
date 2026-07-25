@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_order_location_stock import VpsOrderLocationStock
+from interserver_api_client.models.vps_order_location_stock import VpsOrderLocationStock
 
 class TestVpsOrderLocationStock(unittest.TestCase):
     """VpsOrderLocationStock unit test stubs"""
@@ -36,7 +36,7 @@ class TestVpsOrderLocationStock(unittest.TestCase):
         model = VpsOrderLocationStock()
         if include_optional:
             return VpsOrderLocationStock(
-                var_1 = openapi_client.models.vps_order_location_stock_1.VpsOrder_locationStock_1(
+                var_1 = interserver_api_client.models.vps_order_location_stock_1.VpsOrder_locationStock_1(
                     kvm = True, 
                     kvmstorage = True, 
                     hyperv = True, )

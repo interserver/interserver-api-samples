@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BillingApi();
+    instance = new InterserverApiClient.BillingApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -48,16 +48,6 @@
   }
 
   describe('BillingApi', function() {
-    describe('addAccountCreditCard', function() {
-      it('should call addAccountCreditCard successfully', function(done) {
-        //uncomment below and update the code to test addAccountCreditCard
-        //instance.addAccountCreditCard(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('addBillingCreditCard', function() {
       it('should call addBillingCreditCard successfully', function(done) {
         //uncomment below and update the code to test addBillingCreditCard
@@ -72,16 +62,6 @@
       it('should call addBillingPrepay successfully', function(done) {
         //uncomment below and update the code to test addBillingPrepay
         //instance.addBillingPrepay(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('deleteAccountCreditCard', function() {
-      it('should call deleteAccountCreditCard successfully', function(done) {
-        //uncomment below and update the code to test deleteAccountCreditCard
-        //instance.deleteAccountCreditCard(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -128,6 +108,16 @@
         done();
       });
     });
+    describe('getAffiliateDownload', function() {
+      it('should call getAffiliateDownload successfully', function(done) {
+        //uncomment below and update the code to test getAffiliateDownload
+        //instance.getAffiliateDownload(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getAffiliateRichReport', function() {
       it('should call getAffiliateRichReport successfully', function(done) {
         //uncomment below and update the code to test getAffiliateRichReport
@@ -148,10 +138,10 @@
         done();
       });
     });
-    describe('getAffiliateSalesReport', function() {
-      it('should call getAffiliateSalesReport successfully', function(done) {
-        //uncomment below and update the code to test getAffiliateSalesReport
-        //instance.getAffiliateSalesReport(function(error) {
+    describe('getAffiliateSignups', function() {
+      it('should call getAffiliateSignups successfully', function(done) {
+        //uncomment below and update the code to test getAffiliateSignups
+        //instance.getAffiliateSignups(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -228,20 +218,20 @@
         done();
       });
     });
-    describe('getInvoices', function() {
-      it('should call getInvoices successfully', function(done) {
-        //uncomment below and update the code to test getInvoices
-        //instance.getInvoices(function(error) {
+    describe('initiatePayment', function() {
+      it('should call initiatePayment successfully', function(done) {
+        //uncomment below and update the code to test initiatePayment
+        //instance.initiatePayment(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
         done();
       });
     });
-    describe('initiatePayment', function() {
-      it('should call initiatePayment successfully', function(done) {
-        //uncomment below and update the code to test initiatePayment
-        //instance.initiatePayment(function(error) {
+    describe('patchBillingCreditCardVerify', function() {
+      it('should call patchBillingCreditCardVerify successfully', function(done) {
+        //uncomment below and update the code to test patchBillingCreditCardVerify
+        //instance.patchBillingCreditCardVerify(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -258,30 +248,10 @@
         done();
       });
     });
-    describe('updateAccountCreditCard', function() {
-      it('should call updateAccountCreditCard successfully', function(done) {
-        //uncomment below and update the code to test updateAccountCreditCard
-        //instance.updateAccountCreditCard(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('updateAffiliateDockSetup', function() {
       it('should call updateAffiliateDockSetup successfully', function(done) {
         //uncomment below and update the code to test updateAffiliateDockSetup
         //instance.updateAffiliateDockSetup(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('updateAffiliateLandingPage', function() {
-      it('should call updateAffiliateLandingPage successfully', function(done) {
-        //uncomment below and update the code to test updateAffiliateLandingPage
-        //instance.updateAffiliateLandingPage(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

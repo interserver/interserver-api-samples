@@ -1,4 +1,4 @@
-# openapi::WebsiteTable
+# interserverapi::WebsiteTable
 
 
 ## Properties

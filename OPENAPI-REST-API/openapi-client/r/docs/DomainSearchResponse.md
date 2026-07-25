@@ -1,4 +1,4 @@
-# openapi::DomainSearchResponse
+# interserverapi::DomainSearchResponse
 
 Lookup and suggestion results returned for a domain search.
 

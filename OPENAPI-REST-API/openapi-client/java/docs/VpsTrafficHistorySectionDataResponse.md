@@ -10,4 +10,8 @@ VPS Traffic Hisotrty Data Row of Hour/Day Section
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

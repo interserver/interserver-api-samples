@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BillingInvoiceList = Initialize-PSOpenAPIToolsBillingInvoiceList  -Rows null `
+$BillingInvoiceList = Initialize-InterserverApiBillingInvoiceList  -Rows null `
  -Summary null
 ```
 

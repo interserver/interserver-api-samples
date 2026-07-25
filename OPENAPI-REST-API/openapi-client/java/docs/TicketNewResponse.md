@@ -13,4 +13,8 @@ Response returned after creating a new support ticket.
 |**ticketId** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

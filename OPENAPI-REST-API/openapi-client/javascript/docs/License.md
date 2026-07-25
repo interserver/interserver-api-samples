@@ -1,4 +1,4 @@
-# InterServerManagementApi.License
+# InterserverApiClient.License
 
 ## Properties
 

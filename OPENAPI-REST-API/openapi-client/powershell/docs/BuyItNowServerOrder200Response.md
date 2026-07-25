@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BuyItNowServerOrder200Response = Initialize-PSOpenAPIToolsBuyItNowServerOrder200Response  -Bandwidth null `
+$BuyItNowServerOrder200Response = Initialize-InterserverApiBuyItNowServerOrder200Response  -Bandwidth null `
  -Ips null `
  -Os null `
  -Cp null `

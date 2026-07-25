@@ -1,4 +1,4 @@
-# openapi::MailBlockClickHouse
+# interserverapi::MailBlockClickHouse
 
 A block entry from the clickhouse mailblocks server.
 

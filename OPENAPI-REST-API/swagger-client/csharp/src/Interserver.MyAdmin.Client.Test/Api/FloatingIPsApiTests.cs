@@ -69,7 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddFloatingIpTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.AddFloatingIp();
+            //FloatingIpOrderRequest body = null;
+            //var response = instance.AddFloatingIp(body);
             //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
@@ -81,7 +82,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.FloatingIpsCancel(id);
-            //Assert.IsInstanceOf<InlineResponse2003> (response, "response is InlineResponse2003");
+            //Assert.IsInstanceOf<InlineResponse2004> (response, "response is InlineResponse2004");
         }
         /// <summary>
         /// Test GetFloatingIpInfo
@@ -155,7 +156,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void PutFloatingIpsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PutFloatingIps();
+            //FloatingIpOrderRequest body = null;
+            //instance.PutFloatingIps(body);
             
         }
         /// <summary>

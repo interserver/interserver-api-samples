@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainAllInfoAttributes
+# InterServerAPI::Object::DomainAllInfoAttributes
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainAllInfoAttributes;
+use InterServerAPI::Object::DomainAllInfoAttributes;
 ```
 
 ## Properties

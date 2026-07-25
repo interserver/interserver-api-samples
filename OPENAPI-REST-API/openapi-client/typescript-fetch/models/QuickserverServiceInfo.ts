@@ -192,7 +192,7 @@ export function QuickserverServiceInfoFromJSONTyped(json: any, ignoreDiscriminat
         'qs_custid': json['qs_custid'] == null ? undefined : json['qs_custid'],
         'qs_server': json['qs_server'] == null ? undefined : json['qs_server'],
         'qs_ip': json['qs_ip'] == null ? undefined : json['qs_ip'],
-        'qs_ipv6': json['qs_ipv6'] == null ? undefined : json['qs_ipv6'],
+        'qs_ipv6': json['qs_ipv6'] === undefined ? undefined : json['qs_ipv6'] === null ? null : json['qs_ipv6'],
         'qs_vzid': json['qs_vzid'] == null ? undefined : json['qs_vzid'],
         'qs_currency': json['qs_currency'] == null ? undefined : json['qs_currency'],
         'qs_type': json['qs_type'] == null ? undefined : json['qs_type'],
@@ -206,13 +206,13 @@ export function QuickserverServiceInfoFromJSONTyped(json: any, ignoreDiscriminat
         'qs_comment': json['qs_comment'] == null ? undefined : json['qs_comment'],
         'qs_slices': json['qs_slices'] == null ? undefined : json['qs_slices'],
         'qs_vnc': json['qs_vnc'] == null ? undefined : json['qs_vnc'],
-        'qs_vnc_port': json['qs_vnc_port'] == null ? undefined : json['qs_vnc_port'],
+        'qs_vnc_port': json['qs_vnc_port'] === undefined ? undefined : json['qs_vnc_port'] === null ? null : json['qs_vnc_port'],
         'qs_rootpass': json['qs_rootpass'] == null ? undefined : json['qs_rootpass'],
         'qs_mac': json['qs_mac'] == null ? undefined : json['qs_mac'],
         'qs_os': json['qs_os'] == null ? undefined : json['qs_os'],
         'qs_version': json['qs_version'] == null ? undefined : json['qs_version'],
         'qs_location': json['qs_location'] == null ? undefined : json['qs_location'],
-        'qs_platform': json['qs_platform'] == null ? undefined : json['qs_platform'],
+        'qs_platform': json['qs_platform'] === undefined ? undefined : json['qs_platform'] === null ? null : json['qs_platform'],
     };
 }
 

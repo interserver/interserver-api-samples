@@ -1,4 +1,4 @@
-# InterServerManagementApi.LoginErrorResponse
+# InterserverApiClient.LoginErrorResponse
 
 ## Properties
 

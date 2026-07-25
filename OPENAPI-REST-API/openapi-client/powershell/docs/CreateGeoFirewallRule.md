@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateGeoFirewallRule = Initialize-PSOpenAPIToolsCreateGeoFirewallRule  -DestinationPort 22 `
+$CreateGeoFirewallRule = Initialize-InterserverApiCreateGeoFirewallRule  -DestinationPort 22 `
  -CountryCode 10 `
  -Asn 1331 `
  -XdpAction 1

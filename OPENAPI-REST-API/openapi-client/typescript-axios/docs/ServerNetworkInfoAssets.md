@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerNetworkInfoAssets } from './api';
+import { ServerNetworkInfoAssets } from '@interserver/myadmin-client';
 
 const instance: ServerNetworkInfoAssets = {
     _3497,

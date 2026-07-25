@@ -1,4 +1,4 @@
-# openapi::DomainLookupResponse
+# interserverapi::DomainLookupResponse
 
 Availability, pricing, and order-field metadata for a domain lookup.
 

@@ -17,4 +17,3 @@ case class DomainAllInfoAttributesContactSet(
   admin: Option[DomainAdminContact] = None,
   tech: Option[DomainTechContact] = None
 )
-

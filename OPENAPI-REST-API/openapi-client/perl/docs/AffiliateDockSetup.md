@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AffiliateDockSetup
+# InterServerAPI::Object::AffiliateDockSetup
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AffiliateDockSetup;
+use InterServerAPI::Object::AffiliateDockSetup;
 ```
 
 ## Properties

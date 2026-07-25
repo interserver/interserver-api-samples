@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for License
 void main() {
-  final instance = LicenseBuilder();
-  // TODO add properties to the builder and call build()
+  final License? instance = /* License(...) */ null;
+  // TODO add properties to the entity
 
   group(License, () {
     // LicenseServiceInfo serviceInfo
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<LicenseClientLink> clientLinks
+    // List<LicenseClientLink> clientLinks
     test('to test the property `clientLinks`', () async {
       // TODO
     });
@@ -41,7 +41,7 @@ void main() {
     });
 
     // Extra service information
-    // BuiltList<String> serviceExtra
+    // List<String> serviceExtra
     test('to test the property `serviceExtra`', () async {
       // TODO
     });

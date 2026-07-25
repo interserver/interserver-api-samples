@@ -12,8 +12,8 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.HostnameObject;
 import io.swagger.model.IdBackupsBody2;
-import io.swagger.model.InlineResponse20011;
-import io.swagger.model.InlineResponse20022;
+import io.swagger.model.InlineResponse20012;
+import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.QueueResponse;
@@ -101,6 +101,10 @@ public class VpsApiServiceImpl implements VpsApi {
       // do some magic!
       return Response.ok().build();
   }
+      public Response getVpsBackup(Integer id,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
       public Response getVpsBackups(Integer id,String all,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
@@ -113,11 +117,23 @@ public class VpsApiServiceImpl implements VpsApi {
       // do some magic!
       return Response.ok().build();
   }
+      public Response getVpsChangeHostname(Integer id,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response getVpsChangeRootPassword(Integer id,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
       public Response getVpsChangeTimezone(Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
       public Response getVpsInfo(Integer id,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response getVpsInsertCd(Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -130,6 +146,10 @@ public class VpsApiServiceImpl implements VpsApi {
       return Response.ok().build();
   }
       public Response getVpsReinstallOs(Integer id,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response getVpsResetPassword(Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -154,10 +174,6 @@ public class VpsApiServiceImpl implements VpsApi {
       return Response.ok().build();
   }
       public Response getVpsWelcomeEmail(String id,SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
-      public Response postVpsBackup(Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -245,6 +261,10 @@ public class VpsApiServiceImpl implements VpsApi {
       // do some magic!
       return Response.ok().build();
   }
+      public Response postVpsTrafficUsage(Integer id,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
       public Response postVpsViewDesktop(Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
@@ -254,6 +274,10 @@ public class VpsApiServiceImpl implements VpsApi {
       return Response.ok().build();
   }
       public Response putVps(String osDistro,Integer slices,String vpsPlatform,String controlpanel,Integer period,Integer location,String osVersion,String hostname,String coupon,String rootpass,String comment,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response putVpsBuyHdSpace(Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

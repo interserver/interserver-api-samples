@@ -1,26 +1,26 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServersBuyNowError
 void main() {
-  final instance = ServersBuyNowErrorBuilder();
-  // TODO add properties to the builder and call build()
+  final ServersBuyNowError? instance = /* ServersBuyNowError(...) */ null;
+  // TODO add properties to the entity
 
   group(ServersBuyNowError, () {
     // Always false for error responses.
-    // bool success
+    // Optional<bool?> success
     test('to test the property `success`', () async {
       // TODO
     });
 
     // Human-readable error summary.
-    // String text
+    // Optional<String?> text
     test('to test the property `text`', () async {
       // TODO
     });
 
     // List of specific validation error messages.
-    // BuiltList<String> errors
+    // Optional<List<String>?> errors
     test('to test the property `errors`', () async {
       // TODO
     });

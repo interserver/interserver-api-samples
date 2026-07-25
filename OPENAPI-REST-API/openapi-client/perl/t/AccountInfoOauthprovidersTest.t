@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::AccountInfoOauthproviders');
+use_ok('InterServerAPI::Object::AccountInfoOauthproviders');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::AccountInfoOauthproviders->new();
+#my $instance = InterServerAPI::Object::AccountInfoOauthproviders->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::AccountInfoOauthproviders');
+#isa_ok($instance, 'InterServerAPI::Object::AccountInfoOauthproviders');
 
 
 done_testing();

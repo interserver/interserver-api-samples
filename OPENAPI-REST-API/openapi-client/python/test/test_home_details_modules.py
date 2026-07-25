@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_details_modules import HomeDetailsModules
+from interserver_api_client.models.home_details_modules import HomeDetailsModules
 
 class TestHomeDetailsModules(unittest.TestCase):
     """HomeDetailsModules unit test stubs"""
@@ -36,43 +36,43 @@ class TestHomeDetailsModules(unittest.TestCase):
         model = HomeDetailsModules()
         if include_optional:
             return HomeDetailsModules(
-                domains = openapi_client.models.home_details_modules_domains.HomeDetailsModulesDomains(
+                domains = interserver_api_client.models.home_details_modules_domains.HomeDetailsModulesDomains(
                     icon = 'globe', 
                     view_link = 'view_domain', 
                     heading = 'Domains', 
                     buy_link = 'domain_order', 
                     list_link = 'view_domains_list', ),
-                webhosting = openapi_client.models.home_details_modules_webhosting.HomeDetailsModulesWebhosting(
+                webhosting = interserver_api_client.models.home_details_modules_webhosting.HomeDetailsModulesWebhosting(
                     icon = 'window-maximize', 
                     view_link = 'view_website', 
                     heading = 'Web Hosting', 
                     buy_link = 'order_website', 
                     list_link = 'view_websites_list', ),
-                vps = openapi_client.models.home_details_modules_vps.HomeDetailsModulesVps(
+                vps = interserver_api_client.models.home_details_modules_vps.HomeDetailsModulesVps(
                     icon = 'cloud-meatball', 
                     view_link = 'view_vps', 
                     heading = 'VPS', 
                     buy_link = 'order_vps', 
                     list_link = 'view_vps_list', ),
-                licenses = openapi_client.models.home_details_modules_licenses.HomeDetailsModulesLicenses(
+                licenses = interserver_api_client.models.home_details_modules_licenses.HomeDetailsModulesLicenses(
                     icon = 'id-card', 
                     view_link = 'view_license', 
                     heading = 'Licenses', 
                     buy_link = 'order_license', 
                     list_link = 'view_licenses_list', ),
-                backups = openapi_client.models.home_details_modules_backups.HomeDetailsModulesBackups(
+                backups = interserver_api_client.models.home_details_modules_backups.HomeDetailsModulesBackups(
                     icon = 'warehouse', 
                     view_link = 'view_backup', 
                     heading = 'Storages', 
                     buy_link = 'order_storage', 
                     list_link = 'view_backups_list', ),
-                servers = openapi_client.models.home_details_modules_servers.HomeDetailsModulesServers(
+                servers = interserver_api_client.models.home_details_modules_servers.HomeDetailsModulesServers(
                     icon = 'server', 
                     view_link = 'view_server', 
                     heading = 'Dedicated Servers', 
                     buy_link = 'order_server', 
                     list_link = 'view_servers_list', ),
-                quickservers = openapi_client.models.home_details_modules_quickservers.HomeDetailsModulesQuickservers(
+                quickservers = interserver_api_client.models.home_details_modules_quickservers.HomeDetailsModulesQuickservers(
                     icon = 'database', 
                     view_link = 'view_qs', 
                     heading = 'Quick Servers', 

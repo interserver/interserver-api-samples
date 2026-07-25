@@ -73,8 +73,5 @@ export class TicketCustomFieldDetails {
     }
 }
 
-export enum TicketCustomFieldDetailsCustomerServerAccessEnum {
-    Y = 'y',
-    N = 'n'
-}
+    export type TicketCustomFieldDetailsCustomerServerAccessEnum = "y" | "n" ;
 

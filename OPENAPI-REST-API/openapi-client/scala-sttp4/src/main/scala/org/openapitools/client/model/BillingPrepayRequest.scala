@@ -24,4 +24,3 @@ case class BillingPrepayRequest(
   /* Whether the prepay balance should be used automatically. */
   automatic_use: Option[String] = None
 )
-

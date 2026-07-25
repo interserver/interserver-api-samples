@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class QuickserverOrderDistroSel(
   Ubuntu: Option[QuickserverOrderDistroSelUbuntu] = None
 )
-

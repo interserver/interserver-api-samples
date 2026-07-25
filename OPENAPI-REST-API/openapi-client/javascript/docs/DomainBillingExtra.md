@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainBillingExtra
+# InterserverApiClient.DomainBillingExtra
 
 ## Properties
 

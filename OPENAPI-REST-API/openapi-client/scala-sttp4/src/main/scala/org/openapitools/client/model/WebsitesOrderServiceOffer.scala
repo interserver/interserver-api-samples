@@ -36,4 +36,3 @@ case class WebsitesOrderServiceOffer(
   /* The deletion timestamp of the service offer. */
   deleted_at: Option[String] = None
 )
-

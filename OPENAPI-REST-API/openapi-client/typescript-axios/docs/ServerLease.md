@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerLease } from './api';
+import { ServerLease } from '@interserver/myadmin-client';
 
 const instance: ServerLease = {
     mac,

@@ -1,4 +1,4 @@
-# openapi::WebsitesOrderPackages
+# interserverapi::WebsitesOrderPackages
 
 Schema for the packages field in WebsitesOrder
 

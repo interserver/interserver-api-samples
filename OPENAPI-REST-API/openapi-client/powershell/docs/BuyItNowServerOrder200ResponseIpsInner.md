@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BuyItNowServerOrder200ResponseIpsInner = Initialize-PSOpenAPIToolsBuyItNowServerOrder200ResponseIpsInner  -Id 9 `
+$BuyItNowServerOrder200ResponseIpsInner = Initialize-InterserverApiBuyItNowServerOrder200ResponseIpsInner  -Id 9 `
  -ShortDesc 1 Vlan Ip (/30) `
  -LongDesc 1 IP In personal Vlan `
  -MonthlyPrice 0

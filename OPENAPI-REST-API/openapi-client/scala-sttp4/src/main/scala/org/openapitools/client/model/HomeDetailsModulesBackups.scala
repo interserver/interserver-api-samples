@@ -27,4 +27,3 @@ case class HomeDetailsModulesBackups(
   /* Link to view backups list. */
   list_link: Option[String] = None
 )
-

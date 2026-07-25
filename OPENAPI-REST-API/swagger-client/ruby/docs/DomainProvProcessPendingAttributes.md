@@ -1,4 +1,4 @@
-# SwaggerClient::DomainProvProcessPendingAttributes
+# InterserverApiClient::DomainProvProcessPendingAttributes
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# SwaggerClient::BillingAddCcRequest
+# InterserverApiClient::BillingAddCcRequest
 
 ## Properties
 Name | Type | Description | Notes

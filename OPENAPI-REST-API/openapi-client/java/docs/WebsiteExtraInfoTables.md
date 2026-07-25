@@ -13,4 +13,8 @@ Supplementary information tables displayed for a webhosting service (links, DNS,
 |**dns** | [**WebsiteTable**](WebsiteTable.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -22,8 +22,6 @@ export * from '../models/AffiliateBannerRow';
 export * from '../models/AffiliateDockSetup';
 export * from '../models/AffiliatePaymentSetup';
 export * from '../models/AffiliateTrafficRow';
-export * from '../models/AssetServer';
-export * from '../models/AssetServerCPUInner';
 export * from '../models/Backup';
 export * from '../models/BackupBillingDetails';
 export * from '../models/BackupClientLink';
@@ -41,7 +39,6 @@ export * from '../models/BackupServiceMaster';
 export * from '../models/BackupsOrder';
 export * from '../models/BackupsOrderPackageCosts';
 export * from '../models/BackupsOrderServiceTypes';
-export * from '../models/Bandwidth';
 export * from '../models/BillingAddCcRequest';
 export * from '../models/BillingInvoiceDetail';
 export * from '../models/BillingInvoiceList';
@@ -67,11 +64,6 @@ export * from '../models/ChargeInvoiceRowsInvoicesValue';
 export * from '../models/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue';
 export * from '../models/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue';
 export * from '../models/CloseTicketResponseSchema';
-export * from '../models/ConfigIds';
-export * from '../models/ConfigLists';
-export * from '../models/ControlPanel';
-export * from '../models/Cpu';
-export * from '../models/CpuWithDefaults';
 export * from '../models/CreateFilter';
 export * from '../models/CreateFilter201Response';
 export * from '../models/CreateFilter400Response';
@@ -87,6 +79,7 @@ export * from '../models/DeleteFilter400Response';
 export * from '../models/DeleteFilter500Response';
 export * from '../models/DeleteFirewallRule';
 export * from '../models/DeleteGeoFirewallRule';
+export * from '../models/DeleteMailAlertRequest';
 export * from '../models/DenyRuleNew';
 export * from '../models/DenyRuleRecord';
 export * from '../models/DisableScrub200Response';
@@ -117,11 +110,11 @@ export * from '../models/DomainNameserverGetResponseInner';
 export * from '../models/DomainNameserverPostRequest';
 export * from '../models/DomainNameserverPutRequest';
 export * from '../models/DomainOrder';
+export * from '../models/DomainOrderRequest';
 export * from '../models/DomainOrderResponse';
 export * from '../models/DomainOrderResponseAttributes';
 export * from '../models/DomainOrderServices';
 export * from '../models/DomainOrderServices10001';
-export * from '../models/DomainOrderTldServices';
 export * from '../models/DomainOwnerContact';
 export * from '../models/DomainProvProcessPending';
 export * from '../models/DomainProvProcessPendingAttributes';
@@ -137,12 +130,13 @@ export * from '../models/EmailAddress';
 export * from '../models/EmailAddressName';
 export * from '../models/EnableScrub200Response';
 export * from '../models/EnableScrub500Response';
-export * from '../models/FieldLabel';
+export * from '../models/FloatingIpOrderRequest';
 export * from '../models/FloatingIpsCancel200Response';
-export * from '../models/FormValues';
 export * from '../models/GenericResponse';
 export * from '../models/GetAccountInfo401Response';
+export * from '../models/GetAccountLocales200ResponseValue';
 export * from '../models/GetAccountTfaSetup200Response';
+export * from '../models/GetAffiliateSignups200Response';
 export * from '../models/GetOauthRedirect200Response';
 export * from '../models/GetOrderDetail200Response';
 export * from '../models/GetOrderDetail200ResponseIpsInner';
@@ -159,7 +153,6 @@ export * from '../models/GetScrubIpDetails200ResponseFilterFirewallFiltersInner'
 export * from '../models/GetScrubIpDetails200ResponseFilterFirewallRulesInner';
 export * from '../models/GetScrubIpDetails200ResponseServiceInfo';
 export * from '../models/GetWebsiteBuyIp200Response';
-export * from '../models/HardDrive';
 export * from '../models/Home';
 export * from '../models/HomeDetails';
 export * from '../models/HomeDetailsModules';
@@ -186,10 +179,6 @@ export * from '../models/HomeTicketStatus';
 export * from '../models/HomeTicketStatusView';
 export * from '../models/HostnameObject';
 export * from '../models/InitiatePayment200Response';
-export * from '../models/InlineObject';
-export * from '../models/Invoice';
-export * from '../models/InvoiceRow';
-export * from '../models/IpBlock';
 export * from '../models/IpLimitRange';
 export * from '../models/IpObject';
 export * from '../models/License';
@@ -198,6 +187,7 @@ export * from '../models/LicenseClientLink';
 export * from '../models/LicenseExtraInfoTables';
 export * from '../models/LicenseIpInfo';
 export * from '../models/LicenseIpInfoRow';
+export * from '../models/LicenseOrderRequest';
 export * from '../models/LicenseRow';
 export * from '../models/LicenseServiceInfo';
 export * from '../models/LicenseServiceType';
@@ -234,6 +224,7 @@ export * from '../models/MailExtraInfoTableRow';
 export * from '../models/MailLog';
 export * from '../models/MailLogEntry';
 export * from '../models/MailOrder';
+export * from '../models/MailOrderRequest';
 export * from '../models/MailRow';
 export * from '../models/MailSchema';
 export * from '../models/MailSchemaExtraInfoTables';
@@ -246,15 +237,13 @@ export * from '../models/MailStatsTypeVolumeIp';
 export * from '../models/MailStatsTypeVolumeTo';
 export * from '../models/MailTutorialsTable';
 export * from '../models/MailTutorialsTableRow';
-export * from '../models/MemoryOption';
 export * from '../models/ModuleSettings';
 export * from '../models/Modules';
 export * from '../models/MonthlyCounts';
-export * from '../models/OperatingSystem';
 export * from '../models/PasswordRequest';
+export * from '../models/PatchBillingCreditCardVerifyRequest';
 export * from '../models/PatchOauthTwoFactor200Response';
 export * from '../models/PatchOauthTwoFactorRequest';
-export * from '../models/PaymentInvoiceRows';
 export * from '../models/PlaceBuyNowServerRequest';
 export * from '../models/PlaceScrubOrder201Response';
 export * from '../models/PlaceScrubOrder201ResponseOrderDetails';
@@ -265,6 +254,8 @@ export * from '../models/PostWebsiteBuyIp200Response';
 export * from '../models/PostWebsiteBuyIpRequest';
 export * from '../models/PostWebsiteMigration200Response';
 export * from '../models/PostWebsiteMigrationRequest';
+export * from '../models/PutScrubIps200Response';
+export * from '../models/QsOrderRequest';
 export * from '../models/QueueResponse';
 export * from '../models/Quickserver';
 export * from '../models/QuickserverAddons';
@@ -288,8 +279,6 @@ export * from '../models/QuickserverServiceExtra';
 export * from '../models/QuickserverServiceInfo';
 export * from '../models/QuickserverServiceMaster';
 export * from '../models/QuickserversCancel200Response';
-export * from '../models/RaidOption';
-export * from '../models/Region';
 export * from '../models/ReplyTicketRequest';
 export * from '../models/ReplyTicketResponseSchema';
 export * from '../models/RestoreRequest';
@@ -309,6 +298,8 @@ export * from '../models/Server';
 export * from '../models/ServerAsset';
 export * from '../models/ServerAssets';
 export * from '../models/ServerBillingDetails';
+export * from '../models/ServerBulkIpmiPowerResponse';
+export * from '../models/ServerBulkIpmiPowerResponseResultsInner';
 export * from '../models/ServerClientLink';
 export * from '../models/ServerExtraInfoTables';
 export * from '../models/ServerIpmiLiveInfo';
@@ -331,7 +322,6 @@ export * from '../models/ServerOrderCpuLi';
 export * from '../models/ServerOrderFieldLabel';
 export * from '../models/ServerOrderFieldLabels';
 export * from '../models/ServerOrderFormValues';
-export * from '../models/ServerOrderGetResponse';
 export * from '../models/ServerOrderIP';
 export * from '../models/ServerOrderIpsLi';
 export * from '../models/ServerOrderMemory';
@@ -339,6 +329,8 @@ export * from '../models/ServerOrderMemoryLi';
 export * from '../models/ServerOrderMemoryLi254';
 export * from '../models/ServerOrderOS';
 export * from '../models/ServerOrderOsLi';
+export * from '../models/ServerOrderPostRequest';
+export * from '../models/ServerOrderPostRequestHd';
 export * from '../models/ServerOrderRAID';
 export * from '../models/ServerRow';
 export * from '../models/ServerServiceInfo';
@@ -356,6 +348,7 @@ export * from '../models/ServiceTypes';
 export * from '../models/Services';
 export * from '../models/ServicesInfo';
 export * from '../models/SslCancel200Response';
+export * from '../models/SslOrderRequest';
 export * from '../models/StatusMonthlyBreakdown';
 export * from '../models/SuccessTextResponse';
 export * from '../models/TemplateRequest';
@@ -416,7 +409,6 @@ export * from '../models/VpsServiceMaster';
 export * from '../models/VpsSnapshot';
 export * from '../models/VpsTemplateRow';
 export * from '../models/VpsTemplatesList';
-export * from '../models/VpsTrafficDataDataResponse';
 export * from '../models/VpsTrafficDataSectionResponse';
 export * from '../models/VpsTrafficHistoryResponse';
 export * from '../models/VpsTrafficHistorySectionDataResponse';
@@ -435,6 +427,8 @@ export * from '../models/WebsiteBillingDetails';
 export * from '../models/WebsiteClientLink';
 export * from '../models/WebsiteExtraInfoTables';
 export * from '../models/WebsiteLoginResponse';
+export * from '../models/WebsiteOrderPostRequest';
+export * from '../models/WebsiteOrderPutRequest';
 export * from '../models/WebsiteRow';
 export * from '../models/WebsiteServiceInfo';
 export * from '../models/WebsiteServiceMaster';
@@ -475,8 +469,6 @@ import { AffiliateBannerRow } from '../models/AffiliateBannerRow';
 import { AffiliateDockSetup } from '../models/AffiliateDockSetup';
 import { AffiliatePaymentSetup } from '../models/AffiliatePaymentSetup';
 import { AffiliateTrafficRow } from '../models/AffiliateTrafficRow';
-import { AssetServer } from '../models/AssetServer';
-import { AssetServerCPUInnerClass } from '../models/AssetServerCPUInner';
 import { Backup } from '../models/Backup';
 import { BackupBillingDetails } from '../models/BackupBillingDetails';
 import { BackupClientLink } from '../models/BackupClientLink';
@@ -494,7 +486,6 @@ import { BackupServiceMaster } from '../models/BackupServiceMaster';
 import { BackupsOrder } from '../models/BackupsOrder';
 import { BackupsOrderPackageCosts } from '../models/BackupsOrderPackageCosts';
 import { BackupsOrderServiceTypes } from '../models/BackupsOrderServiceTypes';
-import { Bandwidth } from '../models/Bandwidth';
 import { BillingAddCcRequest } from '../models/BillingAddCcRequest';
 import { BillingInvoiceDetail } from '../models/BillingInvoiceDetail';
 import { BillingInvoiceList } from '../models/BillingInvoiceList';
@@ -520,11 +511,6 @@ import { ChargeInvoiceRowsInvoicesValue    , ChargeInvoiceRowsInvoicesValueInvoi
 import { ChargeInvoiceRowsInvoicesValuePaidInvoicesValue } from '../models/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue';
 import { ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue } from '../models/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue';
 import { CloseTicketResponseSchema } from '../models/CloseTicketResponseSchema';
-import { ConfigIds } from '../models/ConfigIds';
-import { ConfigLists } from '../models/ConfigLists';
-import { ControlPanel } from '../models/ControlPanel';
-import { Cpu } from '../models/Cpu';
-import { CpuWithDefaults } from '../models/CpuWithDefaults';
 import { CreateFilter } from '../models/CreateFilter';
 import { CreateFilter201Response } from '../models/CreateFilter201Response';
 import { CreateFilter400Response } from '../models/CreateFilter400Response';
@@ -540,6 +526,7 @@ import { DeleteFilter400Response } from '../models/DeleteFilter400Response';
 import { DeleteFilter500Response } from '../models/DeleteFilter500Response';
 import { DeleteFirewallRule } from '../models/DeleteFirewallRule';
 import { DeleteGeoFirewallRule } from '../models/DeleteGeoFirewallRule';
+import { DeleteMailAlertRequest } from '../models/DeleteMailAlertRequest';
 import { DenyRuleNew, DenyRuleNewTypeEnum     } from '../models/DenyRuleNew';
 import { DenyRuleRecord, DenyRuleRecordTypeEnum       } from '../models/DenyRuleRecord';
 import { DisableScrub200Response } from '../models/DisableScrub200Response';
@@ -570,11 +557,11 @@ import { DomainNameserverGetResponseInner  , DomainNameserverGetResponseInnerCan
 import { DomainNameserverPostRequest } from '../models/DomainNameserverPostRequest';
 import { DomainNameserverPutRequest } from '../models/DomainNameserverPutRequest';
 import { DomainOrder } from '../models/DomainOrder';
+import { DomainOrderRequest , DomainOrderRequestTypeEnum   , DomainOrderRequestWhoisPrivacyEnum   } from '../models/DomainOrderRequest';
 import { DomainOrderResponse } from '../models/DomainOrderResponse';
 import { DomainOrderResponseAttributes } from '../models/DomainOrderResponseAttributes';
 import { DomainOrderServices } from '../models/DomainOrderServices';
 import { DomainOrderServices10001 } from '../models/DomainOrderServices10001';
-import { DomainOrderTldServices } from '../models/DomainOrderTldServices';
 import { DomainOwnerContact } from '../models/DomainOwnerContact';
 import { DomainProvProcessPending } from '../models/DomainProvProcessPending';
 import { DomainProvProcessPendingAttributes } from '../models/DomainProvProcessPendingAttributes';
@@ -590,12 +577,13 @@ import { EmailAddress } from '../models/EmailAddress';
 import { EmailAddressName } from '../models/EmailAddressName';
 import { EnableScrub200Response } from '../models/EnableScrub200Response';
 import { EnableScrub500Response } from '../models/EnableScrub500Response';
-import { FieldLabel } from '../models/FieldLabel';
+import { FloatingIpOrderRequest } from '../models/FloatingIpOrderRequest';
 import { FloatingIpsCancel200Response } from '../models/FloatingIpsCancel200Response';
-import { FormValues } from '../models/FormValues';
 import { GenericResponse } from '../models/GenericResponse';
 import { GetAccountInfo401Response } from '../models/GetAccountInfo401Response';
+import { GetAccountLocales200ResponseValue } from '../models/GetAccountLocales200ResponseValue';
 import { GetAccountTfaSetup200Response } from '../models/GetAccountTfaSetup200Response';
+import { GetAffiliateSignups200Response } from '../models/GetAffiliateSignups200Response';
 import { GetOauthRedirect200Response } from '../models/GetOauthRedirect200Response';
 import { GetOrderDetail200Response } from '../models/GetOrderDetail200Response';
 import { GetOrderDetail200ResponseIpsInner } from '../models/GetOrderDetail200ResponseIpsInner';
@@ -612,7 +600,6 @@ import { GetScrubIpDetails200ResponseFilterFirewallFiltersInner } from '../model
 import { GetScrubIpDetails200ResponseFilterFirewallRulesInner } from '../models/GetScrubIpDetails200ResponseFilterFirewallRulesInner';
 import { GetScrubIpDetails200ResponseServiceInfo       , GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum       } from '../models/GetScrubIpDetails200ResponseServiceInfo';
 import { GetWebsiteBuyIp200Response } from '../models/GetWebsiteBuyIp200Response';
-import { HardDrive } from '../models/HardDrive';
 import { Home } from '../models/Home';
 import { HomeDetails } from '../models/HomeDetails';
 import { HomeDetailsModules } from '../models/HomeDetailsModules';
@@ -639,10 +626,6 @@ import { HomeTicketStatus } from '../models/HomeTicketStatus';
 import { HomeTicketStatusView } from '../models/HomeTicketStatusView';
 import { HostnameObject } from '../models/HostnameObject';
 import { InitiatePayment200Response, InitiatePayment200ResponseTypeEnum        } from '../models/InitiatePayment200Response';
-import { InlineObject } from '../models/InlineObject';
-import { Invoice } from '../models/Invoice';
-import { InvoiceRow } from '../models/InvoiceRow';
-import { IpBlock } from '../models/IpBlock';
 import { IpLimitRange } from '../models/IpLimitRange';
 import { IpObject } from '../models/IpObject';
 import { License } from '../models/License';
@@ -651,6 +634,7 @@ import { LicenseClientLink } from '../models/LicenseClientLink';
 import { LicenseExtraInfoTables } from '../models/LicenseExtraInfoTables';
 import { LicenseIpInfo } from '../models/LicenseIpInfo';
 import { LicenseIpInfoRow } from '../models/LicenseIpInfoRow';
+import { LicenseOrderRequest } from '../models/LicenseOrderRequest';
 import { LicenseRow } from '../models/LicenseRow';
 import { LicenseServiceInfo } from '../models/LicenseServiceInfo';
 import { LicenseServiceType } from '../models/LicenseServiceType';
@@ -687,6 +671,7 @@ import { MailExtraInfoTableRow } from '../models/MailExtraInfoTableRow';
 import { MailLog } from '../models/MailLog';
 import { MailLogEntry } from '../models/MailLogEntry';
 import { MailOrder } from '../models/MailOrder';
+import { MailOrderRequest } from '../models/MailOrderRequest';
 import { MailRow } from '../models/MailRow';
 import { MailSchema } from '../models/MailSchema';
 import { MailSchemaExtraInfoTables } from '../models/MailSchemaExtraInfoTables';
@@ -699,15 +684,13 @@ import { MailStatsTypeVolumeIp } from '../models/MailStatsTypeVolumeIp';
 import { MailStatsTypeVolumeTo } from '../models/MailStatsTypeVolumeTo';
 import { MailTutorialsTable } from '../models/MailTutorialsTable';
 import { MailTutorialsTableRow } from '../models/MailTutorialsTableRow';
-import { MemoryOption } from '../models/MemoryOption';
 import { ModuleSettings } from '../models/ModuleSettings';
 import { Modules } from '../models/Modules';
 import { MonthlyCounts } from '../models/MonthlyCounts';
-import { OperatingSystem } from '../models/OperatingSystem';
 import { PasswordRequest } from '../models/PasswordRequest';
+import { PatchBillingCreditCardVerifyRequest } from '../models/PatchBillingCreditCardVerifyRequest';
 import { PatchOauthTwoFactor200Response } from '../models/PatchOauthTwoFactor200Response';
 import { PatchOauthTwoFactorRequest } from '../models/PatchOauthTwoFactorRequest';
-import { PaymentInvoiceRows } from '../models/PaymentInvoiceRows';
 import { PlaceBuyNowServerRequest } from '../models/PlaceBuyNowServerRequest';
 import { PlaceScrubOrder201Response } from '../models/PlaceScrubOrder201Response';
 import { PlaceScrubOrder201ResponseOrderDetails } from '../models/PlaceScrubOrder201ResponseOrderDetails';
@@ -718,6 +701,8 @@ import { PostWebsiteBuyIp200Response } from '../models/PostWebsiteBuyIp200Respon
 import { PostWebsiteBuyIpRequest } from '../models/PostWebsiteBuyIpRequest';
 import { PostWebsiteMigration200Response } from '../models/PostWebsiteMigration200Response';
 import { PostWebsiteMigrationRequest } from '../models/PostWebsiteMigrationRequest';
+import { PutScrubIps200Response } from '../models/PutScrubIps200Response';
+import { QsOrderRequest } from '../models/QsOrderRequest';
 import { QueueResponse } from '../models/QueueResponse';
 import { Quickserver } from '../models/Quickserver';
 import { QuickserverAddons } from '../models/QuickserverAddons';
@@ -741,8 +726,6 @@ import { QuickserverServiceExtra } from '../models/QuickserverServiceExtra';
 import { QuickserverServiceInfo } from '../models/QuickserverServiceInfo';
 import { QuickserverServiceMaster } from '../models/QuickserverServiceMaster';
 import { QuickserversCancel200Response } from '../models/QuickserversCancel200Response';
-import { RaidOption } from '../models/RaidOption';
-import { Region } from '../models/Region';
 import { ReplyTicketRequest } from '../models/ReplyTicketRequest';
 import { ReplyTicketResponseSchema } from '../models/ReplyTicketResponseSchema';
 import { RestoreRequest } from '../models/RestoreRequest';
@@ -762,6 +745,8 @@ import { Server } from '../models/Server';
 import { ServerAsset } from '../models/ServerAsset';
 import { ServerAssets } from '../models/ServerAssets';
 import { ServerBillingDetails } from '../models/ServerBillingDetails';
+import { ServerBulkIpmiPowerResponse } from '../models/ServerBulkIpmiPowerResponse';
+import { ServerBulkIpmiPowerResponseResultsInner } from '../models/ServerBulkIpmiPowerResponseResultsInner';
 import { ServerClientLink } from '../models/ServerClientLink';
 import { ServerExtraInfoTables } from '../models/ServerExtraInfoTables';
 import { ServerIpmiLiveInfo } from '../models/ServerIpmiLiveInfo';
@@ -784,7 +769,6 @@ import { ServerOrderCpuLi } from '../models/ServerOrderCpuLi';
 import { ServerOrderFieldLabel } from '../models/ServerOrderFieldLabel';
 import { ServerOrderFieldLabels } from '../models/ServerOrderFieldLabels';
 import { ServerOrderFormValues } from '../models/ServerOrderFormValues';
-import { ServerOrderGetResponse } from '../models/ServerOrderGetResponse';
 import { ServerOrderIP } from '../models/ServerOrderIP';
 import { ServerOrderIpsLi } from '../models/ServerOrderIpsLi';
 import { ServerOrderMemory } from '../models/ServerOrderMemory';
@@ -792,6 +776,8 @@ import { ServerOrderMemoryLi } from '../models/ServerOrderMemoryLi';
 import { ServerOrderMemoryLi254 } from '../models/ServerOrderMemoryLi254';
 import { ServerOrderOS } from '../models/ServerOrderOS';
 import { ServerOrderOsLi } from '../models/ServerOrderOsLi';
+import { ServerOrderPostRequest } from '../models/ServerOrderPostRequest';
+import { ServerOrderPostRequestHdClass } from '../models/ServerOrderPostRequestHd';
 import { ServerOrderRAID } from '../models/ServerOrderRAID';
 import { ServerRow } from '../models/ServerRow';
 import { ServerServiceInfo } from '../models/ServerServiceInfo';
@@ -809,6 +795,7 @@ import { ServiceTypes } from '../models/ServiceTypes';
 import { Services } from '../models/Services';
 import { ServicesInfo } from '../models/ServicesInfo';
 import { SslCancel200Response } from '../models/SslCancel200Response';
+import { SslOrderRequest     , SslOrderRequestCsrTypeEnum                 } from '../models/SslOrderRequest';
 import { StatusMonthlyBreakdown } from '../models/StatusMonthlyBreakdown';
 import { SuccessTextResponse } from '../models/SuccessTextResponse';
 import { TemplateRequest } from '../models/TemplateRequest';
@@ -869,7 +856,6 @@ import { VpsServiceMaster } from '../models/VpsServiceMaster';
 import { VpsSnapshot } from '../models/VpsSnapshot';
 import { VpsTemplateRow } from '../models/VpsTemplateRow';
 import { VpsTemplatesList } from '../models/VpsTemplatesList';
-import { VpsTrafficDataDataResponse } from '../models/VpsTrafficDataDataResponse';
 import { VpsTrafficDataSectionResponse } from '../models/VpsTrafficDataSectionResponse';
 import { VpsTrafficHistoryResponse } from '../models/VpsTrafficHistoryResponse';
 import { VpsTrafficHistorySectionDataResponse } from '../models/VpsTrafficHistorySectionDataResponse';
@@ -888,6 +874,8 @@ import { WebsiteBillingDetails } from '../models/WebsiteBillingDetails';
 import { WebsiteClientLink } from '../models/WebsiteClientLink';
 import { WebsiteExtraInfoTables } from '../models/WebsiteExtraInfoTables';
 import { WebsiteLoginResponse } from '../models/WebsiteLoginResponse';
+import { WebsiteOrderPostRequest } from '../models/WebsiteOrderPostRequest';
+import { WebsiteOrderPutRequest } from '../models/WebsiteOrderPutRequest';
 import { WebsiteRow } from '../models/WebsiteRow';
 import { WebsiteServiceInfo } from '../models/WebsiteServiceInfo';
 import { WebsiteServiceMaster } from '../models/WebsiteServiceMaster';
@@ -925,10 +913,13 @@ let enumsMap: Set<string> = new Set<string>([
     "DenyRuleRecordTypeEnum",
     "DnsRecordType",
     "DomainNameserverGetResponseInnerCanDeleteEnum",
+    "DomainOrderRequestTypeEnum",
+    "DomainOrderRequestWhoisPrivacyEnum",
     "GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum",
     "InitiatePayment200ResponseTypeEnum",
     "MailStatsTypeTimeEnum",
     "ServerIpmiPowerRequestActionEnum",
+    "SslOrderRequestCsrTypeEnum",
     "TicketCustomFieldDetailsCustomerServerAccessEnum",
     "TicketPostDetailsInnerCreatorEnum",
     "UpdateTicketCustomerServerAccessEnum",
@@ -963,8 +954,6 @@ let typeMap: {[index: string]: any} = {
     "AffiliateDockSetup": AffiliateDockSetup,
     "AffiliatePaymentSetup": AffiliatePaymentSetup,
     "AffiliateTrafficRow": AffiliateTrafficRow,
-    "AssetServer": AssetServer,
-    "AssetServerCPUInner": AssetServerCPUInnerClass,
     "Backup": Backup,
     "BackupBillingDetails": BackupBillingDetails,
     "BackupClientLink": BackupClientLink,
@@ -982,7 +971,6 @@ let typeMap: {[index: string]: any} = {
     "BackupsOrder": BackupsOrder,
     "BackupsOrderPackageCosts": BackupsOrderPackageCosts,
     "BackupsOrderServiceTypes": BackupsOrderServiceTypes,
-    "Bandwidth": Bandwidth,
     "BillingAddCcRequest": BillingAddCcRequest,
     "BillingInvoiceDetail": BillingInvoiceDetail,
     "BillingInvoiceList": BillingInvoiceList,
@@ -1008,11 +996,6 @@ let typeMap: {[index: string]: any} = {
     "ChargeInvoiceRowsInvoicesValuePaidInvoicesValue": ChargeInvoiceRowsInvoicesValuePaidInvoicesValue,
     "ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue": ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue,
     "CloseTicketResponseSchema": CloseTicketResponseSchema,
-    "ConfigIds": ConfigIds,
-    "ConfigLists": ConfigLists,
-    "ControlPanel": ControlPanel,
-    "Cpu": Cpu,
-    "CpuWithDefaults": CpuWithDefaults,
     "CreateFilter": CreateFilter,
     "CreateFilter201Response": CreateFilter201Response,
     "CreateFilter400Response": CreateFilter400Response,
@@ -1028,6 +1011,7 @@ let typeMap: {[index: string]: any} = {
     "DeleteFilter500Response": DeleteFilter500Response,
     "DeleteFirewallRule": DeleteFirewallRule,
     "DeleteGeoFirewallRule": DeleteGeoFirewallRule,
+    "DeleteMailAlertRequest": DeleteMailAlertRequest,
     "DenyRuleNew": DenyRuleNew,
     "DenyRuleRecord": DenyRuleRecord,
     "DisableScrub200Response": DisableScrub200Response,
@@ -1057,11 +1041,11 @@ let typeMap: {[index: string]: any} = {
     "DomainNameserverPostRequest": DomainNameserverPostRequest,
     "DomainNameserverPutRequest": DomainNameserverPutRequest,
     "DomainOrder": DomainOrder,
+    "DomainOrderRequest": DomainOrderRequest,
     "DomainOrderResponse": DomainOrderResponse,
     "DomainOrderResponseAttributes": DomainOrderResponseAttributes,
     "DomainOrderServices": DomainOrderServices,
     "DomainOrderServices10001": DomainOrderServices10001,
-    "DomainOrderTldServices": DomainOrderTldServices,
     "DomainOwnerContact": DomainOwnerContact,
     "DomainProvProcessPending": DomainProvProcessPending,
     "DomainProvProcessPendingAttributes": DomainProvProcessPendingAttributes,
@@ -1077,12 +1061,13 @@ let typeMap: {[index: string]: any} = {
     "EmailAddressName": EmailAddressName,
     "EnableScrub200Response": EnableScrub200Response,
     "EnableScrub500Response": EnableScrub500Response,
-    "FieldLabel": FieldLabel,
+    "FloatingIpOrderRequest": FloatingIpOrderRequest,
     "FloatingIpsCancel200Response": FloatingIpsCancel200Response,
-    "FormValues": FormValues,
     "GenericResponse": GenericResponse,
     "GetAccountInfo401Response": GetAccountInfo401Response,
+    "GetAccountLocales200ResponseValue": GetAccountLocales200ResponseValue,
     "GetAccountTfaSetup200Response": GetAccountTfaSetup200Response,
+    "GetAffiliateSignups200Response": GetAffiliateSignups200Response,
     "GetOauthRedirect200Response": GetOauthRedirect200Response,
     "GetOrderDetail200Response": GetOrderDetail200Response,
     "GetOrderDetail200ResponseIpsInner": GetOrderDetail200ResponseIpsInner,
@@ -1099,7 +1084,6 @@ let typeMap: {[index: string]: any} = {
     "GetScrubIpDetails200ResponseFilterFirewallRulesInner": GetScrubIpDetails200ResponseFilterFirewallRulesInner,
     "GetScrubIpDetails200ResponseServiceInfo": GetScrubIpDetails200ResponseServiceInfo,
     "GetWebsiteBuyIp200Response": GetWebsiteBuyIp200Response,
-    "HardDrive": HardDrive,
     "Home": Home,
     "HomeDetails": HomeDetails,
     "HomeDetailsModules": HomeDetailsModules,
@@ -1126,10 +1110,6 @@ let typeMap: {[index: string]: any} = {
     "HomeTicketStatusView": HomeTicketStatusView,
     "HostnameObject": HostnameObject,
     "InitiatePayment200Response": InitiatePayment200Response,
-    "InlineObject": InlineObject,
-    "Invoice": Invoice,
-    "InvoiceRow": InvoiceRow,
-    "IpBlock": IpBlock,
     "IpLimitRange": IpLimitRange,
     "IpObject": IpObject,
     "License": License,
@@ -1138,6 +1118,7 @@ let typeMap: {[index: string]: any} = {
     "LicenseExtraInfoTables": LicenseExtraInfoTables,
     "LicenseIpInfo": LicenseIpInfo,
     "LicenseIpInfoRow": LicenseIpInfoRow,
+    "LicenseOrderRequest": LicenseOrderRequest,
     "LicenseRow": LicenseRow,
     "LicenseServiceInfo": LicenseServiceInfo,
     "LicenseServiceType": LicenseServiceType,
@@ -1174,6 +1155,7 @@ let typeMap: {[index: string]: any} = {
     "MailLog": MailLog,
     "MailLogEntry": MailLogEntry,
     "MailOrder": MailOrder,
+    "MailOrderRequest": MailOrderRequest,
     "MailRow": MailRow,
     "MailSchema": MailSchema,
     "MailSchemaExtraInfoTables": MailSchemaExtraInfoTables,
@@ -1186,15 +1168,13 @@ let typeMap: {[index: string]: any} = {
     "MailStatsTypeVolumeTo": MailStatsTypeVolumeTo,
     "MailTutorialsTable": MailTutorialsTable,
     "MailTutorialsTableRow": MailTutorialsTableRow,
-    "MemoryOption": MemoryOption,
     "ModuleSettings": ModuleSettings,
     "Modules": Modules,
     "MonthlyCounts": MonthlyCounts,
-    "OperatingSystem": OperatingSystem,
     "PasswordRequest": PasswordRequest,
+    "PatchBillingCreditCardVerifyRequest": PatchBillingCreditCardVerifyRequest,
     "PatchOauthTwoFactor200Response": PatchOauthTwoFactor200Response,
     "PatchOauthTwoFactorRequest": PatchOauthTwoFactorRequest,
-    "PaymentInvoiceRows": PaymentInvoiceRows,
     "PlaceBuyNowServerRequest": PlaceBuyNowServerRequest,
     "PlaceScrubOrder201Response": PlaceScrubOrder201Response,
     "PlaceScrubOrder201ResponseOrderDetails": PlaceScrubOrder201ResponseOrderDetails,
@@ -1205,6 +1185,8 @@ let typeMap: {[index: string]: any} = {
     "PostWebsiteBuyIpRequest": PostWebsiteBuyIpRequest,
     "PostWebsiteMigration200Response": PostWebsiteMigration200Response,
     "PostWebsiteMigrationRequest": PostWebsiteMigrationRequest,
+    "PutScrubIps200Response": PutScrubIps200Response,
+    "QsOrderRequest": QsOrderRequest,
     "QueueResponse": QueueResponse,
     "Quickserver": Quickserver,
     "QuickserverAddons": QuickserverAddons,
@@ -1228,8 +1210,6 @@ let typeMap: {[index: string]: any} = {
     "QuickserverServiceInfo": QuickserverServiceInfo,
     "QuickserverServiceMaster": QuickserverServiceMaster,
     "QuickserversCancel200Response": QuickserversCancel200Response,
-    "RaidOption": RaidOption,
-    "Region": Region,
     "ReplyTicketRequest": ReplyTicketRequest,
     "ReplyTicketResponseSchema": ReplyTicketResponseSchema,
     "RestoreRequest": RestoreRequest,
@@ -1249,6 +1229,8 @@ let typeMap: {[index: string]: any} = {
     "ServerAsset": ServerAsset,
     "ServerAssets": ServerAssets,
     "ServerBillingDetails": ServerBillingDetails,
+    "ServerBulkIpmiPowerResponse": ServerBulkIpmiPowerResponse,
+    "ServerBulkIpmiPowerResponseResultsInner": ServerBulkIpmiPowerResponseResultsInner,
     "ServerClientLink": ServerClientLink,
     "ServerExtraInfoTables": ServerExtraInfoTables,
     "ServerIpmiLiveInfo": ServerIpmiLiveInfo,
@@ -1271,7 +1253,6 @@ let typeMap: {[index: string]: any} = {
     "ServerOrderFieldLabel": ServerOrderFieldLabel,
     "ServerOrderFieldLabels": ServerOrderFieldLabels,
     "ServerOrderFormValues": ServerOrderFormValues,
-    "ServerOrderGetResponse": ServerOrderGetResponse,
     "ServerOrderIP": ServerOrderIP,
     "ServerOrderIpsLi": ServerOrderIpsLi,
     "ServerOrderMemory": ServerOrderMemory,
@@ -1279,6 +1260,8 @@ let typeMap: {[index: string]: any} = {
     "ServerOrderMemoryLi254": ServerOrderMemoryLi254,
     "ServerOrderOS": ServerOrderOS,
     "ServerOrderOsLi": ServerOrderOsLi,
+    "ServerOrderPostRequest": ServerOrderPostRequest,
+    "ServerOrderPostRequestHd": ServerOrderPostRequestHdClass,
     "ServerOrderRAID": ServerOrderRAID,
     "ServerRow": ServerRow,
     "ServerServiceInfo": ServerServiceInfo,
@@ -1296,6 +1279,7 @@ let typeMap: {[index: string]: any} = {
     "Services": Services,
     "ServicesInfo": ServicesInfo,
     "SslCancel200Response": SslCancel200Response,
+    "SslOrderRequest": SslOrderRequest,
     "StatusMonthlyBreakdown": StatusMonthlyBreakdown,
     "SuccessTextResponse": SuccessTextResponse,
     "TemplateRequest": TemplateRequest,
@@ -1356,7 +1340,6 @@ let typeMap: {[index: string]: any} = {
     "VpsSnapshot": VpsSnapshot,
     "VpsTemplateRow": VpsTemplateRow,
     "VpsTemplatesList": VpsTemplatesList,
-    "VpsTrafficDataDataResponse": VpsTrafficDataDataResponse,
     "VpsTrafficDataSectionResponse": VpsTrafficDataSectionResponse,
     "VpsTrafficHistoryResponse": VpsTrafficHistoryResponse,
     "VpsTrafficHistorySectionDataResponse": VpsTrafficHistorySectionDataResponse,
@@ -1375,6 +1358,8 @@ let typeMap: {[index: string]: any} = {
     "WebsiteClientLink": WebsiteClientLink,
     "WebsiteExtraInfoTables": WebsiteExtraInfoTables,
     "WebsiteLoginResponse": WebsiteLoginResponse,
+    "WebsiteOrderPostRequest": WebsiteOrderPostRequest,
+    "WebsiteOrderPutRequest": WebsiteOrderPutRequest,
     "WebsiteRow": WebsiteRow,
     "WebsiteServiceInfo": WebsiteServiceInfo,
     "WebsiteServiceMaster": WebsiteServiceMaster,

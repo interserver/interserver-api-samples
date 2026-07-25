@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.delete_geo_firewall_rule import DeleteGeoFirewallRule
+from interserver_api_client.models.delete_geo_firewall_rule import DeleteGeoFirewallRule
 
 # TODO update the JSON string below
 json = "{}"

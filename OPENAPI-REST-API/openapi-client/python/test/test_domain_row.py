@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_row import DomainRow
+from interserver_api_client.models.domain_row import DomainRow
 
 class TestDomainRow(unittest.TestCase):
     """DomainRow unit test stubs"""

@@ -22,13 +22,29 @@ case class TicketPostDetailsInner(
   hasattachments: Option[Int] = None,
   attachment_download: Option[String] = None
 )
-
 object TicketPostDetailsInnerEnums {
 
-  type Creator = Creator.Value
-  object Creator extends Enumeration {
-    val User = Value("User")
-    val Staff = Value("Staff")
-  }
+  sealed trait Creator
+  object Creator {
+    case object User extends Creator
+    case object Staff extends Creator
 
+    import org.json4s._
+
+    implicit object CreatorSerializer extends Serializer[Creator] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), Creator] = {
+        case (TypeInfo(clazz, _), json) if classOf[Creator].isAssignableFrom(clazz) =>
+          json match {
+            case JString("User") => User
+            case JString("Staff") => Staff
+            case other => throw new MappingException(s"Invalid Creator: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case User => JString("User")
+        case Staff => JString("Staff")
+      }
+    }
+  }
 }

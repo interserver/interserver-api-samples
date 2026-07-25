@@ -26,15 +26,35 @@ case class GetScrubIpDetails200ResponseServiceInfo(
   scrub_ip_coupon: Option[String] = None,
   scrub_ip_comment: Option[String] = None
 )
-
 object GetScrubIpDetails200ResponseServiceInfoEnums {
 
-  type ScrubIpStatus = ScrubIpStatus.Value
-  object ScrubIpStatus extends Enumeration {
-    val Active = Value("active")
-    val Pending = Value("pending")
-    val Canceled = Value("canceled")
-    val Expired = Value("expired")
-  }
+  sealed trait ScrubIpStatus
+  object ScrubIpStatus {
+    case object Active extends ScrubIpStatus
+    case object Pending extends ScrubIpStatus
+    case object Canceled extends ScrubIpStatus
+    case object Expired extends ScrubIpStatus
 
+    import org.json4s._
+
+    implicit object ScrubIpStatusSerializer extends Serializer[ScrubIpStatus] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), ScrubIpStatus] = {
+        case (TypeInfo(clazz, _), json) if classOf[ScrubIpStatus].isAssignableFrom(clazz) =>
+          json match {
+            case JString("active") => Active
+            case JString("pending") => Pending
+            case JString("canceled") => Canceled
+            case JString("expired") => Expired
+            case other => throw new MappingException(s"Invalid ScrubIpStatus: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case Active => JString("active")
+        case Pending => JString("pending")
+        case Canceled => JString("canceled")
+        case Expired => JString("expired")
+      }
+    }
+  }
 }

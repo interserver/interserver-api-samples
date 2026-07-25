@@ -21,4 +21,3 @@ case class ServerOrderFieldLabel(
   /* Active status of the field label. */
   active: Option[Int] = None
 )
-

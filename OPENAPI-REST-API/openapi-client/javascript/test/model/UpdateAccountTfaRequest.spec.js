@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.UpdateAccountTfaRequest();
+    instance = new InterserverApiClient.UpdateAccountTfaRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('UpdateAccountTfaRequest', function() {
     it('should create an instance of UpdateAccountTfaRequest', function() {
       // uncomment below and update the code to test UpdateAccountTfaRequest
-      //var instance = new InterServerManagementApi.UpdateAccountTfaRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.UpdateAccountTfaRequest);
+      //var instance = new InterserverApiClient.UpdateAccountTfaRequest();
+      //expect(instance).to.be.a(InterserverApiClient.UpdateAccountTfaRequest);
     });
 
     it('should have the property _2fa_google_code (base name: "2fa_google_code")', function() {
       // uncomment below and update the code to test the property _2fa_google_code
-      //var instance = new InterServerManagementApi.UpdateAccountTfaRequest();
+      //var instance = new InterserverApiClient.UpdateAccountTfaRequest();
       //expect(instance).to.be();
     });
 

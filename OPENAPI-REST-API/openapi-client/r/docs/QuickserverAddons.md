@@ -1,4 +1,4 @@
-# openapi::QuickserverAddons
+# interserverapi::QuickserverAddons
 
 
 ## Properties

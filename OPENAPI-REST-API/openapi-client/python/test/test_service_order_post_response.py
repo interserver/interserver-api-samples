@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.service_order_post_response import ServiceOrderPostResponse
+from interserver_api_client.models.service_order_post_response import ServiceOrderPostResponse
 
 class TestServiceOrderPostResponse(unittest.TestCase):
     """ServiceOrderPostResponse unit test stubs"""

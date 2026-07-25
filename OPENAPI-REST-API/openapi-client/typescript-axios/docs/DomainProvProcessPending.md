@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainProvProcessPending } from './api';
+import { DomainProvProcessPending } from '@interserver/myadmin-client';
 
 const instance: DomainProvProcessPending = {
     _OPS_version,

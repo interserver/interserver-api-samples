@@ -20,4 +20,8 @@ An individual package tied to one of our services.
 |**servicesModule** | **String** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

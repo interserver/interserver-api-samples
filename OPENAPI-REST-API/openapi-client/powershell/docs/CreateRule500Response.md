@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateRule500Response = Initialize-PSOpenAPIToolsCreateRule500Response  -Success false `
+$CreateRule500Response = Initialize-InterserverApiCreateRule500Response  -Success false `
  -Text Unable to create new firewall Rule.
 ```
 

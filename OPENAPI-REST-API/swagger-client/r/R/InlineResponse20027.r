@@ -8,11 +8,8 @@
 
 #' InlineResponse20027 Class
 #'
-#' @field bandwidth 
-#' @field ips 
-#' @field os 
-#' @field cp 
-#' @field raid 
+#' @field message 
+#' @field success 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,119 +17,51 @@
 InlineResponse20027 <- R6::R6Class(
   'InlineResponse20027',
   public = list(
-    `bandwidth` = NULL,
-    `ips` = NULL,
-    `os` = NULL,
-    `cp` = NULL,
-    `raid` = NULL,
-    initialize = function(`bandwidth`, `ips`, `os`, `cp`, `raid`){
-      if (!missing(`bandwidth`)) {
-        stopifnot(is.list(`bandwidth`), length(`bandwidth`) != 0)
-        lapply(`bandwidth`, function(x) stopifnot(R6::is.R6(x)))
-        self$`bandwidth` <- `bandwidth`
+    `message` = NULL,
+    `success` = NULL,
+    initialize = function(`message`, `success`){
+      if (!missing(`message`)) {
+        stopifnot(is.character(`message`), length(`message`) == 1)
+        self$`message` <- `message`
       }
-      if (!missing(`ips`)) {
-        stopifnot(is.list(`ips`), length(`ips`) != 0)
-        lapply(`ips`, function(x) stopifnot(R6::is.R6(x)))
-        self$`ips` <- `ips`
-      }
-      if (!missing(`os`)) {
-        stopifnot(is.list(`os`), length(`os`) != 0)
-        lapply(`os`, function(x) stopifnot(R6::is.R6(x)))
-        self$`os` <- `os`
-      }
-      if (!missing(`cp`)) {
-        stopifnot(is.list(`cp`), length(`cp`) != 0)
-        lapply(`cp`, function(x) stopifnot(R6::is.R6(x)))
-        self$`cp` <- `cp`
-      }
-      if (!missing(`raid`)) {
-        stopifnot(is.list(`raid`), length(`raid`) != 0)
-        lapply(`raid`, function(x) stopifnot(R6::is.R6(x)))
-        self$`raid` <- `raid`
+      if (!missing(`success`)) {
+        self$`success` <- `success`
       }
     },
     toJSON = function() {
       InlineResponse20027Object <- list()
-      if (!is.null(self$`bandwidth`)) {
-        InlineResponse20027Object[['bandwidth']] <- lapply(self$`bandwidth`, function(x) x$toJSON())
+      if (!is.null(self$`message`)) {
+        InlineResponse20027Object[['message']] <- self$`message`
       }
-      if (!is.null(self$`ips`)) {
-        InlineResponse20027Object[['ips']] <- lapply(self$`ips`, function(x) x$toJSON())
-      }
-      if (!is.null(self$`os`)) {
-        InlineResponse20027Object[['os']] <- lapply(self$`os`, function(x) x$toJSON())
-      }
-      if (!is.null(self$`cp`)) {
-        InlineResponse20027Object[['cp']] <- lapply(self$`cp`, function(x) x$toJSON())
-      }
-      if (!is.null(self$`raid`)) {
-        InlineResponse20027Object[['raid']] <- lapply(self$`raid`, function(x) x$toJSON())
+      if (!is.null(self$`success`)) {
+        InlineResponse20027Object[['success']] <- self$`success`
       }
 
       InlineResponse20027Object
     },
     fromJSON = function(InlineResponse20027Json) {
       InlineResponse20027Object <- jsonlite::fromJSON(InlineResponse20027Json)
-      if (!is.null(InlineResponse20027Object$`bandwidth`)) {
-        self$`bandwidth` <- lapply(InlineResponse20027Object$`bandwidth`, function(x) {
-          bandwidthObject <- InlineResponse20027Bandwidth$new()
-          bandwidthObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          bandwidthObject
-        })
+      if (!is.null(InlineResponse20027Object$`message`)) {
+        self$`message` <- InlineResponse20027Object$`message`
       }
-      if (!is.null(InlineResponse20027Object$`ips`)) {
-        self$`ips` <- lapply(InlineResponse20027Object$`ips`, function(x) {
-          ipsObject <- InlineResponse20027Ips$new()
-          ipsObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          ipsObject
-        })
-      }
-      if (!is.null(InlineResponse20027Object$`os`)) {
-        self$`os` <- lapply(InlineResponse20027Object$`os`, function(x) {
-          osObject <- InlineResponse20027Os$new()
-          osObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          osObject
-        })
-      }
-      if (!is.null(InlineResponse20027Object$`cp`)) {
-        self$`cp` <- lapply(InlineResponse20027Object$`cp`, function(x) {
-          cpObject <- InlineResponse20027Cp$new()
-          cpObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          cpObject
-        })
-      }
-      if (!is.null(InlineResponse20027Object$`raid`)) {
-        self$`raid` <- lapply(InlineResponse20027Object$`raid`, function(x) {
-          raidObject <- InlineResponse20027Raid$new()
-          raidObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
-          raidObject
-        })
+      if (!is.null(InlineResponse20027Object$`success`)) {
+        self$`success` <- InlineResponse20027Object$`success`
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "bandwidth": [%s],
-           "ips": [%s],
-           "os": [%s],
-           "cp": [%s],
-           "raid": [%s]
+           "message": %s,
+           "success": %s
         }',
-        lapply(self$`bandwidth`, function(x) paste(x$toJSON(), sep=",")),
-        lapply(self$`ips`, function(x) paste(x$toJSON(), sep=",")),
-        lapply(self$`os`, function(x) paste(x$toJSON(), sep=",")),
-        lapply(self$`cp`, function(x) paste(x$toJSON(), sep=",")),
-        lapply(self$`raid`, function(x) paste(x$toJSON(), sep=","))
+        self$`message`,
+        self$`success`
       )
     },
     fromJSONString = function(InlineResponse20027Json) {
       InlineResponse20027Object <- jsonlite::fromJSON(InlineResponse20027Json)
-      self$`bandwidth` <- lapply(InlineResponse20027Object$`bandwidth`, function(x) InlineResponse20027Bandwidth$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      self$`ips` <- lapply(InlineResponse20027Object$`ips`, function(x) InlineResponse20027Ips$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      self$`os` <- lapply(InlineResponse20027Object$`os`, function(x) InlineResponse20027Os$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      self$`cp` <- lapply(InlineResponse20027Object$`cp`, function(x) InlineResponse20027Cp$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
-      self$`raid` <- lapply(InlineResponse20027Object$`raid`, function(x) InlineResponse20027Raid$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
+      self$`message` <- InlineResponse20027Object$`message`
+      self$`success` <- InlineResponse20027Object$`success`
     }
   )
 )

@@ -19,6 +19,7 @@
 #include "OAIOauth.h"
 
 #include "OAIChargeInvoiceRows.h"
+#include "OAIFloatingIpOrderRequest.h"
 #include "OAIFloating_ipsCancel_200_response.h"
 #include "OAIGetAccountInfo_401_response.h"
 #include "OAIObject.h"
@@ -63,8 +64,10 @@ public:
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
-
-    virtual void addFloatingIp();
+    /**
+    * @param[in]  oai_floating_ip_order_request OAIFloatingIpOrderRequest [required]
+    */
+    virtual void addFloatingIp(const OAIFloatingIpOrderRequest &oai_floating_ip_order_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -98,8 +101,10 @@ public:
     */
     virtual void postFloatingIpsChangeIp(const qint32 &id, const QString &ip);
 
-
-    virtual void putFloatingIps();
+    /**
+    * @param[in]  oai_floating_ip_order_request OAIFloatingIpOrderRequest [required]
+    */
+    virtual void putFloatingIps(const OAIFloatingIpOrderRequest &oai_floating_ip_order_request);
 
     /**
     * @param[in]  id QString [required]

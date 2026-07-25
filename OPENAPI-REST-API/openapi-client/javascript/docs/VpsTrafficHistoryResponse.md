@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsTrafficHistoryResponse
+# InterserverApiClient.VpsTrafficHistoryResponse
 
 ## Properties
 

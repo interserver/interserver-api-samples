@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_ip import ServerOrderIP
+from interserver_api_client.models.server_order_ip import ServerOrderIP
 
 class TestServerOrderIP(unittest.TestCase):
     """ServerOrderIP unit test stubs"""

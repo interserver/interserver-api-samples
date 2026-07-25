@@ -30,4 +30,3 @@ case class BackupRow(
   /* The services name of the backup. */
   services_name: Option[String] = None
 )
-

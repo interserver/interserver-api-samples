@@ -11,19 +11,20 @@ import Alamofire
 
 open class MailAPI {
     /**
-     Place Mail Order
+     Place a new Mail Baby order, generate invoice, and queue provisioning
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addMail(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
-        addMailWithRequestBuilder().execute { (response, error) -> Void in
+    open class func addMail(body: MailOrderRequest, completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
+        addMailWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Place Mail Order
+     Place a new Mail Baby order, generate invoice, and queue provisioning
      - POST /mail/order
 
      - API Key:
@@ -45,22 +46,23 @@ open class MailAPI {
   "serviceId" : 12345,
   "invoice_description" : "New Service Order"
 }}]
+     - parameter body: (body)  
 
      - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addMailWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
+    open class func addMailWithRequestBuilder(body: MailOrderRequest) -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/mail/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Create Deny Rule
+     Create a new deny rule to auto-block matching submissions
 
      - parameter body: (body) These are the fields needed to create a new email deny rule. 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
@@ -74,7 +76,7 @@ open class MailAPI {
 
 
     /**
-     Create Deny Rule
+     Create a new deny rule to auto-block matching submissions
      - POST /mail/{id}/rules
 
      - API Key:
@@ -120,7 +122,7 @@ open class MailAPI {
     }
 
     /**
-     Create Deny Rule
+     Create a new deny rule to auto-block matching submissions
 
      - parameter user: (form)  
      - parameter type: (form)  
@@ -136,7 +138,7 @@ open class MailAPI {
 
 
     /**
-     Create Deny Rule
+     Create a new deny rule to auto-block matching submissions
      - POST /mail/{id}/rules
 
      - API Key:
@@ -174,7 +176,7 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Create Mail Alert
+     Create a new Mail Baby alert for delivery, bounce, or quota events
 
      - parameter body: (body)  
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
@@ -188,7 +190,7 @@ open class MailAPI {
 
 
     /**
-     Create Mail Alert
+     Create a new Mail Baby alert for delivery, bounce, or quota events
      - POST /mail/{id}/alerts
 
      - API Key:
@@ -224,7 +226,7 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Create Mail Alert
+     Create a new Mail Baby alert for delivery, bounce, or quota events
 
      - parameter type: (form)  
      - parameter value: (form)  
@@ -241,7 +243,7 @@ open class MailAPI {
 
 
     /**
-     Create Mail Alert
+     Create a new Mail Baby alert for delivery, bounce, or quota events
      - POST /mail/{id}/alerts
 
      - API Key:
@@ -280,21 +282,21 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Delete Mail Alert
+     Delete a Mail Baby alert by alert_id (hard delete — no recovery)
 
+     - parameter body: (body)  
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
-     - parameter alertId: (query) Alert ID to delete. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteMailAlert(_id: Int, alertId: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
-        deleteMailAlertWithRequestBuilder(_id: _id, alertId: alertId).execute { (response, error) -> Void in
+    open class func deleteMailAlert(body: IdAlertsBody, _id: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
+        deleteMailAlertWithRequestBuilder(body: body, _id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Delete Mail Alert
+     Delete a Mail Baby alert by alert_id (hard delete — no recovery)
      - DELETE /mail/{id}/alerts
 
      - API Key:
@@ -310,30 +312,77 @@ open class MailAPI {
   "success" : true,
   "text" : "Ok"
 }}]
+     - parameter body: (body)  
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
-     - parameter alertId: (query) Alert ID to delete. 
 
      - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func deleteMailAlertWithRequestBuilder(_id: Int, alertId: Int) -> RequestBuilder<SuccessTextResponse> {
+    open class func deleteMailAlertWithRequestBuilder(body: IdAlertsBody, _id: Int) -> RequestBuilder<SuccessTextResponse> {
         var path = "/mail/{id}/alerts"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-                        "alert_id": alertId.encodeToJSON()
-        ])
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+        let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Delete Deny Rule
+     Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+
+     - parameter alertId: (form)  
+     - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func deleteMailAlert(alertId: Int, _id: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
+        deleteMailAlertWithRequestBuilder(alertId: alertId, _id: _id).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+     - DELETE /mail/{id}/alerts
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
+     - parameter alertId: (form)  
+     - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
+
+     - returns: RequestBuilder<SuccessTextResponse> 
+     */
+    open class func deleteMailAlertWithRequestBuilder(alertId: Int, _id: Int) -> RequestBuilder<SuccessTextResponse> {
+        var path = "/mail/{id}/alerts"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    /**
+     Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter rule: (path) The ID of the Rules entry. 
@@ -347,7 +396,7 @@ open class MailAPI {
 
 
     /**
-     Delete Deny Rule
+     Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
      - DELETE /mail/{id}/rules/{rule}
 
      - API Key:
@@ -386,7 +435,7 @@ open class MailAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Remove Email Address from Block List
+     Delist a sender email from rspamd / mailchannels / mailbaby block lists
 
      - parameter email: (form)  
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
@@ -400,7 +449,7 @@ open class MailAPI {
 
 
     /**
-     Remove Email Address from Block List
+     Delist a sender email from rspamd / mailchannels / mailbaby block lists
      - POST /mail/{id}/blocks/delete
 
      - API Key:
@@ -436,7 +485,7 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Remove Email Address from Block List
+     Delist a sender email from rspamd / mailchannels / mailbaby block lists
 
      - parameter body: (body)  
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
@@ -450,7 +499,7 @@ open class MailAPI {
 
 
     /**
-     Remove Email Address from Block List
+     Delist a sender email from rspamd / mailchannels / mailbaby block lists
      - POST /mail/{id}/blocks/delete
 
      - API Key:
@@ -486,7 +535,7 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     List Mail Alerts
+     List configured delivery/bounce/quota alerts for one Mail Baby service
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -499,7 +548,7 @@ open class MailAPI {
 
 
     /**
-     List Mail Alerts
+     List configured delivery/bounce/quota alerts for one Mail Baby service
      - GET /mail/{id}/alerts
 
      - API Key:
@@ -543,7 +592,7 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Blocked Email Addresses
+     List recent local-blocklist hits and spam-trap captures for the mail user
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -556,7 +605,7 @@ open class MailAPI {
 
 
     /**
-     List Blocked Email Addresses
+     List recent local-blocklist hits and spam-trap captures for the mail user
      - GET /mail/{id}/blocks
 
      - API Key:
@@ -607,7 +656,7 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Delist Status
+     Read blocklist diagnostics and find senders eligible for delisting
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -620,7 +669,7 @@ open class MailAPI {
 
 
     /**
-     Get Delist Status
+     Read blocklist diagnostics and find senders eligible for delisting
      - GET /mail/{id}/delist
 
      - API Key:
@@ -658,7 +707,7 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Deliverability Metrics
+     Read delivered vs bounced totals broken down by sender (or by recipient domain)
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -671,7 +720,7 @@ open class MailAPI {
 
 
     /**
-     Get Deliverability Metrics
+     Read delivered vs bounced totals broken down by sender (or by recipient domain)
      - GET /mail/{id}/deliverability
 
      - API Key:
@@ -707,7 +756,7 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Mail Order
+     Read full detail for one Mail Baby service including SMTP credentials
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -720,7 +769,7 @@ open class MailAPI {
 
 
     /**
-     Get Mail Order
+     Read full detail for one Mail Baby service including SMTP credentials
      - GET /mail/{id}
 
      - API Key:
@@ -834,7 +883,7 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Mail Invoices
+     List billing invoices linked to this Mail Baby service
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -847,7 +896,7 @@ open class MailAPI {
 
 
     /**
-     Get Mail Invoices
+     List billing invoices linked to this Mail Baby service
      - GET /mail/{id}/invoices
 
      - API Key:
@@ -917,7 +966,7 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Mail Orders
+     List every Mail Baby SMTP relay service on the account
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -929,7 +978,7 @@ open class MailAPI {
 
 
     /**
-     List Mail Orders
+     List every Mail Baby SMTP relay service on the account
      - GET /mail
 
      - API Key:
@@ -969,7 +1018,7 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Resend Mail Welcome Email
+     Resend the Mail Baby welcome email with SMTP credentials and setup info
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -982,7 +1031,7 @@ open class MailAPI {
 
 
     /**
-     Resend Mail Welcome Email
+     Resend the Mail Baby welcome email with SMTP credentials and setup info
      - GET /mail/{id}/welcome_email
 
      - API Key:
@@ -1017,7 +1066,7 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Mail Ordering Information
+     Read the Mail Baby order catalog — plans, package costs, service-type metadata
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1029,7 +1078,7 @@ open class MailAPI {
 
 
     /**
-     Get Mail Ordering Information
+     Read the Mail Baby order catalog — plans, package costs, service-type metadata
      - GET /mail/order
 
      - API Key:
@@ -1061,7 +1110,7 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Deny Rules
+     List configured deny rules (sender/recipient blocks) for a Mail Baby service
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1074,7 +1123,7 @@ open class MailAPI {
 
 
     /**
-     List Deny Rules
+     List configured deny rules (sender/recipient blocks) for a Mail Baby service
      - GET /mail/{id}/rules
 
      - API Key:
@@ -1131,7 +1180,7 @@ open class MailAPI {
     }
 
     /**
-     Get Mail Usage Statistics
+     Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter time: (query) The timeframe for the statistics. (optional)
@@ -1145,7 +1194,7 @@ open class MailAPI {
 
 
     /**
-     Get Mail Usage Statistics
+     Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
      - GET /mail/{id}/stats
 
      - API Key:
@@ -1207,12 +1256,12 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Cancel Mail
+     Cancel a Mail Baby service and stop the recurring invoice
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func mailCancel(_id: Int, completion: @escaping ((_ data: InlineResponse2008?,_ error: Error?) -> Void)) {
+    open class func mailCancel(_id: Int, completion: @escaping ((_ data: InlineResponse2009?,_ error: Error?) -> Void)) {
         mailCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -1220,7 +1269,7 @@ open class MailAPI {
 
 
     /**
-     Cancel Mail
+     Cancel a Mail Baby service and stop the recurring invoice
      - DELETE /mail/{id}
 
      - API Key:
@@ -1238,9 +1287,9 @@ open class MailAPI {
 }}]
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse2008> 
+     - returns: RequestBuilder<InlineResponse2009> 
      */
-    open class func mailCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2008> {
+    open class func mailCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2009> {
         var path = "/mail/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1250,12 +1299,12 @@ open class MailAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2008>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2009>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Delist a Blocked Sender
+     Delist a sender from rspamd / mailchannels / mailbaby block lists
 
      - parameter body: (body)  
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
@@ -1269,7 +1318,7 @@ open class MailAPI {
 
 
     /**
-     Delist a Blocked Sender
+     Delist a sender from rspamd / mailchannels / mailbaby block lists
      - POST /mail/{id}/delist
 
      - API Key:
@@ -1305,7 +1354,7 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Delist a Blocked Sender
+     Delist a sender from rspamd / mailchannels / mailbaby block lists
 
      - parameter unblock: (form)  
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
@@ -1319,7 +1368,7 @@ open class MailAPI {
 
 
     /**
-     Delist a Blocked Sender
+     Delist a sender from rspamd / mailchannels / mailbaby block lists
      - POST /mail/{id}/delist
 
      - API Key:
@@ -1355,12 +1404,13 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Validate Mail Order
+     Validate Mail Baby order, quote pricing, and verify coupon — no charge
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func putMail(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        putMailWithRequestBuilder().execute { (response, error) -> Void in
+    open class func putMail(body: MailOrderRequest, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        putMailWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -1371,7 +1421,7 @@ open class MailAPI {
 
 
     /**
-     Validate Mail Order
+     Validate Mail Baby order, quote pricing, and verify coupon — no charge
      - PUT /mail/order
 
      - API Key:
@@ -1383,22 +1433,23 @@ open class MailAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - parameter body: (body)  
 
      - returns: RequestBuilder<Void> 
      */
-    open class func putMailWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func putMailWithRequestBuilder(body: MailOrderRequest) -> RequestBuilder<Void> {
         let path = "/mail/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Reset Mail Password
+     Rotate the SMTP password and email the new credential to the account owner
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1411,7 +1462,7 @@ open class MailAPI {
 
 
     /**
-     Reset Mail Password
+     Rotate the SMTP password and email the new credential to the account owner
      - GET /mail/{id}/reset_password
 
      - API Key:
@@ -1446,7 +1497,7 @@ open class MailAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Send Email with Advanced Options
+     Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
 
      - parameter body: (body)  
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
@@ -1460,7 +1511,7 @@ open class MailAPI {
 
 
     /**
-     Send Email with Advanced Options
+     Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
      - POST /mail/{id}/advsend
 
      - API Key:
@@ -1496,7 +1547,7 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Send Email with Advanced Options
+     Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
 
      - parameter subject: (form)  
      - parameter body: (form)  
@@ -1518,7 +1569,7 @@ open class MailAPI {
 
 
     /**
-     Send Email with Advanced Options
+     Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
      - POST /mail/{id}/advsend
 
      - API Key:
@@ -1562,7 +1613,7 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Send Email
+     Send a simple single-recipient email through the Mail Baby SMTP relay
 
      - parameter body: (body)  
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
@@ -1576,7 +1627,7 @@ open class MailAPI {
 
 
     /**
-     Send Email
+     Send a simple single-recipient email through the Mail Baby SMTP relay
      - POST /mail/{id}/send
 
      - API Key:
@@ -1612,7 +1663,7 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Send Email
+     Send a simple single-recipient email through the Mail Baby SMTP relay
 
      - parameter to: (form)  
      - parameter from: (form)  
@@ -1629,7 +1680,7 @@ open class MailAPI {
 
 
     /**
-     Send Email
+     Send a simple single-recipient email through the Mail Baby SMTP relay
      - POST /mail/{id}/send
 
      - API Key:
@@ -1668,7 +1719,7 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Mail Alert
+     Update an existing Mail Baby alert by alert_id
 
      - parameter body: (body)  
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
@@ -1682,7 +1733,7 @@ open class MailAPI {
 
 
     /**
-     Update Mail Alert
+     Update an existing Mail Baby alert by alert_id
      - PUT /mail/{id}/alerts
 
      - API Key:
@@ -1718,7 +1769,7 @@ open class MailAPI {
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Mail Alert
+     Update an existing Mail Baby alert by alert_id
 
      - parameter alertId: (form)  
      - parameter type: (form)  
@@ -1736,7 +1787,7 @@ open class MailAPI {
 
 
     /**
-     Update Mail Alert
+     Update an existing Mail Baby alert by alert_id
      - PUT /mail/{id}/alerts
 
      - API Key:
@@ -1776,7 +1827,7 @@ open class MailAPI {
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Mail Order
+     POST mutation hook for the Mail Baby service detail page
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1789,7 +1840,7 @@ open class MailAPI {
 
 
     /**
-     Update Mail Order
+     POST mutation hook for the Mail Baby service detail page
      - POST /mail/{id}
 
      - API Key:
@@ -1824,6 +1875,130 @@ open class MailAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
+     Update an existing Mail Baby deny rule's type and match data
+
+     - parameter body: (body)  
+     - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
+     - parameter rule: (path) The ID of the deny rule to update. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func updateRule(body: DenyRuleNew, _id: Int, rule: String, completion: @escaping ((_ data: GenericResponse?,_ error: Error?) -> Void)) {
+        updateRuleWithRequestBuilder(body: body, _id: _id, rule: rule).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Update an existing Mail Baby deny rule's type and match data
+     - PUT /mail/{id}/rules/{rule}
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "status" : "ok",
+  "text" : "The command completed successfully."
+}}]
+     - parameter body: (body)  
+     - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
+     - parameter rule: (path) The ID of the deny rule to update. 
+
+     - returns: RequestBuilder<GenericResponse> 
+     */
+    open class func updateRuleWithRequestBuilder(body: DenyRuleNew, _id: Int, rule: String) -> RequestBuilder<GenericResponse> {
+        var path = "/mail/{id}/rules/{rule}"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let rulePreEscape = "\(rule)"
+        let rulePostEscape = rulePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{rule}", with: rulePostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<GenericResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    /**
+     * enum for parameter type
+     */
+    public enum ModelType_updateRule: String { 
+        case domain = "domain"
+        case email = "email"
+        case startswith = "startswith"
+        case destination = "destination"
+    }
+
+    /**
+     Update an existing Mail Baby deny rule's type and match data
+
+     - parameter user: (form)  
+     - parameter type: (form)  
+     - parameter data: (form)  
+     - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
+     - parameter rule: (path) The ID of the deny rule to update. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func updateRule(user: String, type: ModelType_updateRule, data: String, _id: Int, rule: String, completion: @escaping ((_ data: GenericResponse?,_ error: Error?) -> Void)) {
+        updateRuleWithRequestBuilder(user: user, type: type, data: data, _id: _id, rule: rule).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Update an existing Mail Baby deny rule's type and match data
+     - PUT /mail/{id}/rules/{rule}
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "status" : "ok",
+  "text" : "The command completed successfully."
+}}]
+     - parameter user: (form)  
+     - parameter type: (form)  
+     - parameter data: (form)  
+     - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
+     - parameter rule: (path) The ID of the deny rule to update. 
+
+     - returns: RequestBuilder<GenericResponse> 
+     */
+    open class func updateRuleWithRequestBuilder(user: String, type: ModelType_updateRule, data: String, _id: Int, rule: String) -> RequestBuilder<GenericResponse> {
+        var path = "/mail/{id}/rules/{rule}"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let rulePreEscape = "\(rule)"
+        let rulePostEscape = rulePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{rule}", with: rulePostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<GenericResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    /**
      * enum for parameter delivered
      */
     public enum Delivered_viewMailLog: Int { 
@@ -1855,7 +2030,7 @@ open class MailAPI {
     }
 
     /**
-     View Mail Log
+     Search and paginate per-message Mail Baby delivery log entries
 
      - parameter _id: (path) The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. 
      - parameter _id: (query) The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from &#x60;GET /mail&#x60; or &#x60;GET /mail/{id}&#x60;. (optional)
@@ -1886,7 +2061,7 @@ open class MailAPI {
 
 
     /**
-     View Mail Log
+     Search and paginate per-message Mail Baby delivery log entries
      - GET /mail/{id}/log
 
      - API Key:

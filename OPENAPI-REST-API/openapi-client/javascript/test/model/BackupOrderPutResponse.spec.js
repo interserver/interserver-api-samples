@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BackupOrderPutResponse();
+    instance = new InterserverApiClient.BackupOrderPutResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,67 +50,67 @@
   describe('BackupOrderPutResponse', function() {
     it('should create an instance of BackupOrderPutResponse', function() {
       // uncomment below and update the code to test BackupOrderPutResponse
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.BackupOrderPutResponse);
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
+      //expect(instance).to.be.a(InterserverApiClient.BackupOrderPutResponse);
     });
 
     it('should have the property _continue (base name: "continue")', function() {
       // uncomment below and update the code to test the property _continue
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property errors (base name: "errors")', function() {
       // uncomment below and update the code to test the property errors
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceType (base name: "serviceType")', function() {
       // uncomment below and update the code to test the property serviceType
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceCost (base name: "serviceCost")', function() {
       // uncomment below and update the code to test the property serviceCost
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property originalCost (base name: "originalCost")', function() {
       // uncomment below and update the code to test the property originalCost
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property repeatServiceCost (base name: "repeatServiceCost")', function() {
       // uncomment below and update the code to test the property repeatServiceCost
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property hostname (base name: "hostname")', function() {
       // uncomment below and update the code to test the property hostname
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property password (base name: "password")', function() {
       // uncomment below and update the code to test the property password
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property coupon (base name: "coupon")', function() {
       // uncomment below and update the code to test the property coupon
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property couponCode (base name: "couponCode")', function() {
       // uncomment below and update the code to test the property couponCode
-      //var instance = new InterServerManagementApi.BackupOrderPutResponse();
+      //var instance = new InterserverApiClient.BackupOrderPutResponse();
       //expect(instance).to.be();
     });
 

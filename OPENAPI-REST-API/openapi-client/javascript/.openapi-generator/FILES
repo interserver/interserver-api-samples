@@ -28,8 +28,6 @@ docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
 docs/AffiliateTrafficRow.md
-docs/AssetServer.md
-docs/AssetServerCPUInner.md
 docs/Backup.md
 docs/BackupBillingDetails.md
 docs/BackupClientLink.md
@@ -48,7 +46,6 @@ docs/BackupsApi.md
 docs/BackupsOrder.md
 docs/BackupsOrderPackageCosts.md
 docs/BackupsOrderServiceTypes.md
-docs/Bandwidth.md
 docs/BillingAddCcRequest.md
 docs/BillingApi.md
 docs/BillingInvoiceDetail.md
@@ -75,11 +72,6 @@ docs/ChargeInvoiceRowsInvoicesValue.md
 docs/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.md
 docs/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.md
 docs/CloseTicketResponseSchema.md
-docs/ConfigIds.md
-docs/ConfigLists.md
-docs/ControlPanel.md
-docs/Cpu.md
-docs/CpuWithDefaults.md
 docs/CreateFilter.md
 docs/CreateFilter201Response.md
 docs/CreateFilter400Response.md
@@ -96,6 +88,7 @@ docs/DeleteFilter400Response.md
 docs/DeleteFilter500Response.md
 docs/DeleteFirewallRule.md
 docs/DeleteGeoFirewallRule.md
+docs/DeleteMailAlertRequest.md
 docs/DenyRuleNew.md
 docs/DenyRuleRecord.md
 docs/DisableScrub200Response.md
@@ -126,11 +119,11 @@ docs/DomainNameserverGetResponseInner.md
 docs/DomainNameserverPostRequest.md
 docs/DomainNameserverPutRequest.md
 docs/DomainOrder.md
+docs/DomainOrderRequest.md
 docs/DomainOrderResponse.md
 docs/DomainOrderResponseAttributes.md
 docs/DomainOrderServices.md
 docs/DomainOrderServices10001.md
-docs/DomainOrderTldServices.md
 docs/DomainOwnerContact.md
 docs/DomainProvProcessPending.md
 docs/DomainProvProcessPendingAttributes.md
@@ -147,13 +140,14 @@ docs/EmailAddress.md
 docs/EmailAddressName.md
 docs/EnableScrub200Response.md
 docs/EnableScrub500Response.md
-docs/FieldLabel.md
 docs/FloatingIPsApi.md
+docs/FloatingIpOrderRequest.md
 docs/FloatingIpsCancel200Response.md
-docs/FormValues.md
 docs/GenericResponse.md
 docs/GetAccountInfo401Response.md
+docs/GetAccountLocales200ResponseValue.md
 docs/GetAccountTfaSetup200Response.md
+docs/GetAffiliateSignups200Response.md
 docs/GetOauthRedirect200Response.md
 docs/GetOrderDetail200Response.md
 docs/GetOrderDetail200ResponseIpsInner.md
@@ -170,7 +164,6 @@ docs/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.md
 docs/GetScrubIpDetails200ResponseFilterFirewallRulesInner.md
 docs/GetScrubIpDetails200ResponseServiceInfo.md
 docs/GetWebsiteBuyIp200Response.md
-docs/HardDrive.md
 docs/Home.md
 docs/HomeDetails.md
 docs/HomeDetailsModules.md
@@ -197,10 +190,6 @@ docs/HomeTicketStatus.md
 docs/HomeTicketStatusView.md
 docs/HostnameObject.md
 docs/InitiatePayment200Response.md
-docs/InlineObject.md
-docs/Invoice.md
-docs/InvoiceRow.md
-docs/IpBlock.md
 docs/IpLimitRange.md
 docs/IpObject.md
 docs/License.md
@@ -209,6 +198,7 @@ docs/LicenseClientLink.md
 docs/LicenseExtraInfoTables.md
 docs/LicenseIpInfo.md
 docs/LicenseIpInfoRow.md
+docs/LicenseOrderRequest.md
 docs/LicenseRow.md
 docs/LicenseServiceInfo.md
 docs/LicenseServiceType.md
@@ -247,6 +237,7 @@ docs/MailExtraInfoTableRow.md
 docs/MailLog.md
 docs/MailLogEntry.md
 docs/MailOrder.md
+docs/MailOrderRequest.md
 docs/MailRow.md
 docs/MailSchema.md
 docs/MailSchemaExtraInfoTables.md
@@ -259,15 +250,13 @@ docs/MailStatsTypeVolumeIp.md
 docs/MailStatsTypeVolumeTo.md
 docs/MailTutorialsTable.md
 docs/MailTutorialsTableRow.md
-docs/MemoryOption.md
 docs/ModuleSettings.md
 docs/Modules.md
 docs/MonthlyCounts.md
-docs/OperatingSystem.md
 docs/PasswordRequest.md
+docs/PatchBillingCreditCardVerifyRequest.md
 docs/PatchOauthTwoFactor200Response.md
 docs/PatchOauthTwoFactorRequest.md
-docs/PaymentInvoiceRows.md
 docs/PlaceBuyNowServerRequest.md
 docs/PlaceScrubOrder201Response.md
 docs/PlaceScrubOrder201ResponseOrderDetails.md
@@ -279,6 +268,8 @@ docs/PostWebsiteBuyIpRequest.md
 docs/PostWebsiteMigration200Response.md
 docs/PostWebsiteMigrationRequest.md
 docs/PublicApi.md
+docs/PutScrubIps200Response.md
+docs/QsOrderRequest.md
 docs/QueueResponse.md
 docs/QuickServersApi.md
 docs/Quickserver.md
@@ -303,8 +294,6 @@ docs/QuickserverServiceExtra.md
 docs/QuickserverServiceInfo.md
 docs/QuickserverServiceMaster.md
 docs/QuickserversCancel200Response.md
-docs/RaidOption.md
-docs/Region.md
 docs/ReplyTicketRequest.md
 docs/ReplyTicketResponseSchema.md
 docs/RestoreRequest.md
@@ -326,6 +315,8 @@ docs/Server.md
 docs/ServerAsset.md
 docs/ServerAssets.md
 docs/ServerBillingDetails.md
+docs/ServerBulkIpmiPowerResponse.md
+docs/ServerBulkIpmiPowerResponseResultsInner.md
 docs/ServerClientLink.md
 docs/ServerExtraInfoTables.md
 docs/ServerIpmiLiveInfo.md
@@ -348,7 +339,6 @@ docs/ServerOrderCpuLi.md
 docs/ServerOrderFieldLabel.md
 docs/ServerOrderFieldLabels.md
 docs/ServerOrderFormValues.md
-docs/ServerOrderGetResponse.md
 docs/ServerOrderIP.md
 docs/ServerOrderIpsLi.md
 docs/ServerOrderMemory.md
@@ -356,6 +346,8 @@ docs/ServerOrderMemoryLi.md
 docs/ServerOrderMemoryLi254.md
 docs/ServerOrderOS.md
 docs/ServerOrderOsLi.md
+docs/ServerOrderPostRequest.md
+docs/ServerOrderPostRequestHd.md
 docs/ServerOrderRAID.md
 docs/ServerRow.md
 docs/ServerServiceInfo.md
@@ -374,6 +366,7 @@ docs/ServiceTypes.md
 docs/Services.md
 docs/ServicesInfo.md
 docs/SslCancel200Response.md
+docs/SslOrderRequest.md
 docs/StatusMonthlyBreakdown.md
 docs/SuccessTextResponse.md
 docs/TemplateRequest.md
@@ -436,7 +429,6 @@ docs/VpsServiceMaster.md
 docs/VpsSnapshot.md
 docs/VpsTemplateRow.md
 docs/VpsTemplatesList.md
-docs/VpsTrafficDataDataResponse.md
 docs/VpsTrafficDataSectionResponse.md
 docs/VpsTrafficHistoryResponse.md
 docs/VpsTrafficHistorySectionDataResponse.md
@@ -456,6 +448,8 @@ docs/WebsiteBillingDetails.md
 docs/WebsiteClientLink.md
 docs/WebsiteExtraInfoTables.md
 docs/WebsiteLoginResponse.md
+docs/WebsiteOrderPostRequest.md
+docs/WebsiteOrderPutRequest.md
 docs/WebsiteRow.md
 docs/WebsiteServiceInfo.md
 docs/WebsiteServiceMaster.md
@@ -516,8 +510,6 @@ src/model/AffiliateBannerRow.js
 src/model/AffiliateDockSetup.js
 src/model/AffiliatePaymentSetup.js
 src/model/AffiliateTrafficRow.js
-src/model/AssetServer.js
-src/model/AssetServerCPUInner.js
 src/model/Backup.js
 src/model/BackupBillingDetails.js
 src/model/BackupClientLink.js
@@ -535,7 +527,6 @@ src/model/BackupServiceMaster.js
 src/model/BackupsOrder.js
 src/model/BackupsOrderPackageCosts.js
 src/model/BackupsOrderServiceTypes.js
-src/model/Bandwidth.js
 src/model/BillingAddCcRequest.js
 src/model/BillingInvoiceDetail.js
 src/model/BillingInvoiceList.js
@@ -561,11 +552,6 @@ src/model/ChargeInvoiceRowsInvoicesValue.js
 src/model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.js
 src/model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.js
 src/model/CloseTicketResponseSchema.js
-src/model/ConfigIds.js
-src/model/ConfigLists.js
-src/model/ControlPanel.js
-src/model/Cpu.js
-src/model/CpuWithDefaults.js
 src/model/CreateFilter.js
 src/model/CreateFilter201Response.js
 src/model/CreateFilter400Response.js
@@ -581,6 +567,7 @@ src/model/DeleteFilter400Response.js
 src/model/DeleteFilter500Response.js
 src/model/DeleteFirewallRule.js
 src/model/DeleteGeoFirewallRule.js
+src/model/DeleteMailAlertRequest.js
 src/model/DenyRuleNew.js
 src/model/DenyRuleRecord.js
 src/model/DisableScrub200Response.js
@@ -611,11 +598,11 @@ src/model/DomainNameserverGetResponseInner.js
 src/model/DomainNameserverPostRequest.js
 src/model/DomainNameserverPutRequest.js
 src/model/DomainOrder.js
+src/model/DomainOrderRequest.js
 src/model/DomainOrderResponse.js
 src/model/DomainOrderResponseAttributes.js
 src/model/DomainOrderServices.js
 src/model/DomainOrderServices10001.js
-src/model/DomainOrderTldServices.js
 src/model/DomainOwnerContact.js
 src/model/DomainProvProcessPending.js
 src/model/DomainProvProcessPendingAttributes.js
@@ -631,12 +618,13 @@ src/model/EmailAddress.js
 src/model/EmailAddressName.js
 src/model/EnableScrub200Response.js
 src/model/EnableScrub500Response.js
-src/model/FieldLabel.js
+src/model/FloatingIpOrderRequest.js
 src/model/FloatingIpsCancel200Response.js
-src/model/FormValues.js
 src/model/GenericResponse.js
 src/model/GetAccountInfo401Response.js
+src/model/GetAccountLocales200ResponseValue.js
 src/model/GetAccountTfaSetup200Response.js
+src/model/GetAffiliateSignups200Response.js
 src/model/GetOauthRedirect200Response.js
 src/model/GetOrderDetail200Response.js
 src/model/GetOrderDetail200ResponseIpsInner.js
@@ -653,7 +641,6 @@ src/model/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.js
 src/model/GetScrubIpDetails200ResponseFilterFirewallRulesInner.js
 src/model/GetScrubIpDetails200ResponseServiceInfo.js
 src/model/GetWebsiteBuyIp200Response.js
-src/model/HardDrive.js
 src/model/Home.js
 src/model/HomeDetails.js
 src/model/HomeDetailsModules.js
@@ -680,10 +667,6 @@ src/model/HomeTicketStatus.js
 src/model/HomeTicketStatusView.js
 src/model/HostnameObject.js
 src/model/InitiatePayment200Response.js
-src/model/InlineObject.js
-src/model/Invoice.js
-src/model/InvoiceRow.js
-src/model/IpBlock.js
 src/model/IpLimitRange.js
 src/model/IpObject.js
 src/model/License.js
@@ -692,6 +675,7 @@ src/model/LicenseClientLink.js
 src/model/LicenseExtraInfoTables.js
 src/model/LicenseIpInfo.js
 src/model/LicenseIpInfoRow.js
+src/model/LicenseOrderRequest.js
 src/model/LicenseRow.js
 src/model/LicenseServiceInfo.js
 src/model/LicenseServiceType.js
@@ -728,6 +712,7 @@ src/model/MailExtraInfoTableRow.js
 src/model/MailLog.js
 src/model/MailLogEntry.js
 src/model/MailOrder.js
+src/model/MailOrderRequest.js
 src/model/MailRow.js
 src/model/MailSchema.js
 src/model/MailSchemaExtraInfoTables.js
@@ -740,15 +725,13 @@ src/model/MailStatsTypeVolumeIp.js
 src/model/MailStatsTypeVolumeTo.js
 src/model/MailTutorialsTable.js
 src/model/MailTutorialsTableRow.js
-src/model/MemoryOption.js
 src/model/ModuleSettings.js
 src/model/Modules.js
 src/model/MonthlyCounts.js
-src/model/OperatingSystem.js
 src/model/PasswordRequest.js
+src/model/PatchBillingCreditCardVerifyRequest.js
 src/model/PatchOauthTwoFactor200Response.js
 src/model/PatchOauthTwoFactorRequest.js
-src/model/PaymentInvoiceRows.js
 src/model/PlaceBuyNowServerRequest.js
 src/model/PlaceScrubOrder201Response.js
 src/model/PlaceScrubOrder201ResponseOrderDetails.js
@@ -759,6 +742,8 @@ src/model/PostWebsiteBuyIp200Response.js
 src/model/PostWebsiteBuyIpRequest.js
 src/model/PostWebsiteMigration200Response.js
 src/model/PostWebsiteMigrationRequest.js
+src/model/PutScrubIps200Response.js
+src/model/QsOrderRequest.js
 src/model/QueueResponse.js
 src/model/Quickserver.js
 src/model/QuickserverAddons.js
@@ -782,8 +767,6 @@ src/model/QuickserverServiceExtra.js
 src/model/QuickserverServiceInfo.js
 src/model/QuickserverServiceMaster.js
 src/model/QuickserversCancel200Response.js
-src/model/RaidOption.js
-src/model/Region.js
 src/model/ReplyTicketRequest.js
 src/model/ReplyTicketResponseSchema.js
 src/model/RestoreRequest.js
@@ -803,6 +786,8 @@ src/model/Server.js
 src/model/ServerAsset.js
 src/model/ServerAssets.js
 src/model/ServerBillingDetails.js
+src/model/ServerBulkIpmiPowerResponse.js
+src/model/ServerBulkIpmiPowerResponseResultsInner.js
 src/model/ServerClientLink.js
 src/model/ServerExtraInfoTables.js
 src/model/ServerIpmiLiveInfo.js
@@ -825,7 +810,6 @@ src/model/ServerOrderCpuLi.js
 src/model/ServerOrderFieldLabel.js
 src/model/ServerOrderFieldLabels.js
 src/model/ServerOrderFormValues.js
-src/model/ServerOrderGetResponse.js
 src/model/ServerOrderIP.js
 src/model/ServerOrderIpsLi.js
 src/model/ServerOrderMemory.js
@@ -833,6 +817,8 @@ src/model/ServerOrderMemoryLi.js
 src/model/ServerOrderMemoryLi254.js
 src/model/ServerOrderOS.js
 src/model/ServerOrderOsLi.js
+src/model/ServerOrderPostRequest.js
+src/model/ServerOrderPostRequestHd.js
 src/model/ServerOrderRAID.js
 src/model/ServerRow.js
 src/model/ServerServiceInfo.js
@@ -850,6 +836,7 @@ src/model/ServiceTypes.js
 src/model/Services.js
 src/model/ServicesInfo.js
 src/model/SslCancel200Response.js
+src/model/SslOrderRequest.js
 src/model/StatusMonthlyBreakdown.js
 src/model/SuccessTextResponse.js
 src/model/TemplateRequest.js
@@ -910,7 +897,6 @@ src/model/VpsServiceMaster.js
 src/model/VpsSnapshot.js
 src/model/VpsTemplateRow.js
 src/model/VpsTemplatesList.js
-src/model/VpsTrafficDataDataResponse.js
 src/model/VpsTrafficDataSectionResponse.js
 src/model/VpsTrafficHistoryResponse.js
 src/model/VpsTrafficHistorySectionDataResponse.js
@@ -929,6 +915,8 @@ src/model/WebsiteBillingDetails.js
 src/model/WebsiteClientLink.js
 src/model/WebsiteExtraInfoTables.js
 src/model/WebsiteLoginResponse.js
+src/model/WebsiteOrderPostRequest.js
+src/model/WebsiteOrderPutRequest.js
 src/model/WebsiteRow.js
 src/model/WebsiteServiceInfo.js
 src/model/WebsiteServiceMaster.js
@@ -984,8 +972,6 @@ test/model/AffiliateBannerRow.spec.js
 test/model/AffiliateDockSetup.spec.js
 test/model/AffiliatePaymentSetup.spec.js
 test/model/AffiliateTrafficRow.spec.js
-test/model/AssetServer.spec.js
-test/model/AssetServerCPUInner.spec.js
 test/model/Backup.spec.js
 test/model/BackupBillingDetails.spec.js
 test/model/BackupClientLink.spec.js
@@ -1003,7 +989,6 @@ test/model/BackupServiceMaster.spec.js
 test/model/BackupsOrder.spec.js
 test/model/BackupsOrderPackageCosts.spec.js
 test/model/BackupsOrderServiceTypes.spec.js
-test/model/Bandwidth.spec.js
 test/model/BillingAddCcRequest.spec.js
 test/model/BillingInvoiceDetail.spec.js
 test/model/BillingInvoiceList.spec.js
@@ -1029,11 +1014,6 @@ test/model/ChargeInvoiceRowsInvoicesValue.spec.js
 test/model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.spec.js
 test/model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.spec.js
 test/model/CloseTicketResponseSchema.spec.js
-test/model/ConfigIds.spec.js
-test/model/ConfigLists.spec.js
-test/model/ControlPanel.spec.js
-test/model/Cpu.spec.js
-test/model/CpuWithDefaults.spec.js
 test/model/CreateFilter.spec.js
 test/model/CreateFilter201Response.spec.js
 test/model/CreateFilter400Response.spec.js
@@ -1049,6 +1029,7 @@ test/model/DeleteFilter400Response.spec.js
 test/model/DeleteFilter500Response.spec.js
 test/model/DeleteFirewallRule.spec.js
 test/model/DeleteGeoFirewallRule.spec.js
+test/model/DeleteMailAlertRequest.spec.js
 test/model/DenyRuleNew.spec.js
 test/model/DenyRuleRecord.spec.js
 test/model/DisableScrub200Response.spec.js
@@ -1079,11 +1060,11 @@ test/model/DomainNameserverGetResponseInner.spec.js
 test/model/DomainNameserverPostRequest.spec.js
 test/model/DomainNameserverPutRequest.spec.js
 test/model/DomainOrder.spec.js
+test/model/DomainOrderRequest.spec.js
 test/model/DomainOrderResponse.spec.js
 test/model/DomainOrderResponseAttributes.spec.js
 test/model/DomainOrderServices.spec.js
 test/model/DomainOrderServices10001.spec.js
-test/model/DomainOrderTldServices.spec.js
 test/model/DomainOwnerContact.spec.js
 test/model/DomainProvProcessPending.spec.js
 test/model/DomainProvProcessPendingAttributes.spec.js
@@ -1099,12 +1080,13 @@ test/model/EmailAddress.spec.js
 test/model/EmailAddressName.spec.js
 test/model/EnableScrub200Response.spec.js
 test/model/EnableScrub500Response.spec.js
-test/model/FieldLabel.spec.js
+test/model/FloatingIpOrderRequest.spec.js
 test/model/FloatingIpsCancel200Response.spec.js
-test/model/FormValues.spec.js
 test/model/GenericResponse.spec.js
 test/model/GetAccountInfo401Response.spec.js
+test/model/GetAccountLocales200ResponseValue.spec.js
 test/model/GetAccountTfaSetup200Response.spec.js
+test/model/GetAffiliateSignups200Response.spec.js
 test/model/GetOauthRedirect200Response.spec.js
 test/model/GetOrderDetail200Response.spec.js
 test/model/GetOrderDetail200ResponseIpsInner.spec.js
@@ -1121,7 +1103,6 @@ test/model/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.spec.js
 test/model/GetScrubIpDetails200ResponseFilterFirewallRulesInner.spec.js
 test/model/GetScrubIpDetails200ResponseServiceInfo.spec.js
 test/model/GetWebsiteBuyIp200Response.spec.js
-test/model/HardDrive.spec.js
 test/model/Home.spec.js
 test/model/HomeDetails.spec.js
 test/model/HomeDetailsModules.spec.js
@@ -1148,10 +1129,6 @@ test/model/HomeTicketStatus.spec.js
 test/model/HomeTicketStatusView.spec.js
 test/model/HostnameObject.spec.js
 test/model/InitiatePayment200Response.spec.js
-test/model/InlineObject.spec.js
-test/model/Invoice.spec.js
-test/model/InvoiceRow.spec.js
-test/model/IpBlock.spec.js
 test/model/IpLimitRange.spec.js
 test/model/IpObject.spec.js
 test/model/License.spec.js
@@ -1160,6 +1137,7 @@ test/model/LicenseClientLink.spec.js
 test/model/LicenseExtraInfoTables.spec.js
 test/model/LicenseIpInfo.spec.js
 test/model/LicenseIpInfoRow.spec.js
+test/model/LicenseOrderRequest.spec.js
 test/model/LicenseRow.spec.js
 test/model/LicenseServiceInfo.spec.js
 test/model/LicenseServiceType.spec.js
@@ -1196,6 +1174,7 @@ test/model/MailExtraInfoTableRow.spec.js
 test/model/MailLog.spec.js
 test/model/MailLogEntry.spec.js
 test/model/MailOrder.spec.js
+test/model/MailOrderRequest.spec.js
 test/model/MailRow.spec.js
 test/model/MailSchema.spec.js
 test/model/MailSchemaExtraInfoTables.spec.js
@@ -1208,15 +1187,13 @@ test/model/MailStatsTypeVolumeIp.spec.js
 test/model/MailStatsTypeVolumeTo.spec.js
 test/model/MailTutorialsTable.spec.js
 test/model/MailTutorialsTableRow.spec.js
-test/model/MemoryOption.spec.js
 test/model/ModuleSettings.spec.js
 test/model/Modules.spec.js
 test/model/MonthlyCounts.spec.js
-test/model/OperatingSystem.spec.js
 test/model/PasswordRequest.spec.js
+test/model/PatchBillingCreditCardVerifyRequest.spec.js
 test/model/PatchOauthTwoFactor200Response.spec.js
 test/model/PatchOauthTwoFactorRequest.spec.js
-test/model/PaymentInvoiceRows.spec.js
 test/model/PlaceBuyNowServerRequest.spec.js
 test/model/PlaceScrubOrder201Response.spec.js
 test/model/PlaceScrubOrder201ResponseOrderDetails.spec.js
@@ -1227,6 +1204,8 @@ test/model/PostWebsiteBuyIp200Response.spec.js
 test/model/PostWebsiteBuyIpRequest.spec.js
 test/model/PostWebsiteMigration200Response.spec.js
 test/model/PostWebsiteMigrationRequest.spec.js
+test/model/PutScrubIps200Response.spec.js
+test/model/QsOrderRequest.spec.js
 test/model/QueueResponse.spec.js
 test/model/Quickserver.spec.js
 test/model/QuickserverAddons.spec.js
@@ -1250,8 +1229,6 @@ test/model/QuickserverServiceExtra.spec.js
 test/model/QuickserverServiceInfo.spec.js
 test/model/QuickserverServiceMaster.spec.js
 test/model/QuickserversCancel200Response.spec.js
-test/model/RaidOption.spec.js
-test/model/Region.spec.js
 test/model/ReplyTicketRequest.spec.js
 test/model/ReplyTicketResponseSchema.spec.js
 test/model/RestoreRequest.spec.js
@@ -1271,6 +1248,8 @@ test/model/Server.spec.js
 test/model/ServerAsset.spec.js
 test/model/ServerAssets.spec.js
 test/model/ServerBillingDetails.spec.js
+test/model/ServerBulkIpmiPowerResponse.spec.js
+test/model/ServerBulkIpmiPowerResponseResultsInner.spec.js
 test/model/ServerClientLink.spec.js
 test/model/ServerExtraInfoTables.spec.js
 test/model/ServerIpmiLiveInfo.spec.js
@@ -1293,7 +1272,6 @@ test/model/ServerOrderCpuLi.spec.js
 test/model/ServerOrderFieldLabel.spec.js
 test/model/ServerOrderFieldLabels.spec.js
 test/model/ServerOrderFormValues.spec.js
-test/model/ServerOrderGetResponse.spec.js
 test/model/ServerOrderIP.spec.js
 test/model/ServerOrderIpsLi.spec.js
 test/model/ServerOrderMemory.spec.js
@@ -1301,6 +1279,8 @@ test/model/ServerOrderMemoryLi.spec.js
 test/model/ServerOrderMemoryLi254.spec.js
 test/model/ServerOrderOS.spec.js
 test/model/ServerOrderOsLi.spec.js
+test/model/ServerOrderPostRequest.spec.js
+test/model/ServerOrderPostRequestHd.spec.js
 test/model/ServerOrderRAID.spec.js
 test/model/ServerRow.spec.js
 test/model/ServerServiceInfo.spec.js
@@ -1318,6 +1298,7 @@ test/model/ServiceTypes.spec.js
 test/model/Services.spec.js
 test/model/ServicesInfo.spec.js
 test/model/SslCancel200Response.spec.js
+test/model/SslOrderRequest.spec.js
 test/model/StatusMonthlyBreakdown.spec.js
 test/model/SuccessTextResponse.spec.js
 test/model/TemplateRequest.spec.js
@@ -1378,7 +1359,6 @@ test/model/VpsServiceMaster.spec.js
 test/model/VpsSnapshot.spec.js
 test/model/VpsTemplateRow.spec.js
 test/model/VpsTemplatesList.spec.js
-test/model/VpsTrafficDataDataResponse.spec.js
 test/model/VpsTrafficDataSectionResponse.spec.js
 test/model/VpsTrafficHistoryResponse.spec.js
 test/model/VpsTrafficHistorySectionDataResponse.spec.js
@@ -1397,6 +1377,8 @@ test/model/WebsiteBillingDetails.spec.js
 test/model/WebsiteClientLink.spec.js
 test/model/WebsiteExtraInfoTables.spec.js
 test/model/WebsiteLoginResponse.spec.js
+test/model/WebsiteOrderPostRequest.spec.js
+test/model/WebsiteOrderPutRequest.spec.js
 test/model/WebsiteRow.spec.js
 test/model/WebsiteServiceInfo.spec.js
 test/model/WebsiteServiceMaster.spec.js

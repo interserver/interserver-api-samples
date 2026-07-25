@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.website_billing_details import WebsiteBillingDetails
+from interserver_api_client.models.website_billing_details import WebsiteBillingDetails
 
 class TestWebsiteBillingDetails(unittest.TestCase):
     """WebsiteBillingDetails unit test stubs"""
@@ -45,7 +45,7 @@ class TestWebsiteBillingDetails(unittest.TestCase):
                 service_currency_symbol = '$',
                 service_coupon = '',
                 service_cost_info = '',
-                service_extra = openapi_client.models.website_service_extra.WebsiteServiceExtra(),
+                service_extra = interserver_api_client.models.website_service_extra.WebsiteServiceExtra(),
                 service_extra_json = ''
             )
         else:

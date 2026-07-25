@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailAttachment
+# InterserverApiClient.MailAttachment
 
 ## Properties
 

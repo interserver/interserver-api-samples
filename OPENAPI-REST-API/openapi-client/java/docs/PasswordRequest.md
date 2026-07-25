@@ -11,4 +11,8 @@ Request containing a password
 |**password** | **String** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

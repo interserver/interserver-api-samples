@@ -15,4 +15,8 @@ A navigation link for VPS-related actions in the client portal.
 |**helpText** | **String** | Help tooltip text for the link. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

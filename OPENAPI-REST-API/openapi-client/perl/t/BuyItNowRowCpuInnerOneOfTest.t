@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::BuyItNowRowCpuInnerOneOf');
+use_ok('InterServerAPI::Object::BuyItNowRowCpuInnerOneOf');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::BuyItNowRowCpuInnerOneOf->new();
+#my $instance = InterServerAPI::Object::BuyItNowRowCpuInnerOneOf->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::BuyItNowRowCpuInnerOneOf');
+#isa_ok($instance, 'InterServerAPI::Object::BuyItNowRowCpuInnerOneOf');
 
 
 done_testing();

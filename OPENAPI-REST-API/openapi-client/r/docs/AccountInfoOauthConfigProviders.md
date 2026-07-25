@@ -1,4 +1,4 @@
-# openapi::AccountInfoOauthConfigProviders
+# interserverapi::AccountInfoOauthConfigProviders
 
 Map of OAuth providers and their linked status on the account.
 

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerOrderConfigIds
+# InterServerAPI::Object::ServerOrderConfigIds
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerOrderConfigIds;
+use InterServerAPI::Object::ServerOrderConfigIds;
 ```
 
 ## Properties

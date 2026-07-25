@@ -1,4 +1,4 @@
-# openapi::ServiceTypes
+# interserverapi::ServiceTypes
 
 The listing of service types
 

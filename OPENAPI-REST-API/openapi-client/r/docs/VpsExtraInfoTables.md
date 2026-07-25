@@ -1,4 +1,4 @@
-# openapi::VpsExtraInfoTables
+# interserverapi::VpsExtraInfoTables
 
 Additional informational tables displayed for a VPS service.
 

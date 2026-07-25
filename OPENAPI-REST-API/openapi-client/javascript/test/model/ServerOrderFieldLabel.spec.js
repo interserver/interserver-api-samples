@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerOrderFieldLabel();
+    instance = new InterserverApiClient.ServerOrderFieldLabel();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('ServerOrderFieldLabel', function() {
     it('should create an instance of ServerOrderFieldLabel', function() {
       // uncomment below and update the code to test ServerOrderFieldLabel
-      //var instance = new InterServerManagementApi.ServerOrderFieldLabel();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerOrderFieldLabel);
+      //var instance = new InterserverApiClient.ServerOrderFieldLabel();
+      //expect(instance).to.be.a(InterserverApiClient.ServerOrderFieldLabel);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.ServerOrderFieldLabel();
+      //var instance = new InterserverApiClient.ServerOrderFieldLabel();
       //expect(instance).to.be();
     });
 
     it('should have the property active (base name: "active")', function() {
       // uncomment below and update the code to test the property active
-      //var instance = new InterServerManagementApi.ServerOrderFieldLabel();
+      //var instance = new InterserverApiClient.ServerOrderFieldLabel();
       //expect(instance).to.be();
     });
 

@@ -4,11 +4,13 @@ import io.swagger.model.ChargeInvoiceRows;
 
 import io.swagger.model.IdBackupsBody;
 
-import io.swagger.model.InlineResponse20010;
-
 import io.swagger.model.InlineResponse20011;
 
+import io.swagger.model.InlineResponse20012;
+
 import io.swagger.model.InlineResponse401;
+
+import io.swagger.model.QsOrderRequest;
 
 import io.swagger.model.QueueResponse;
 
@@ -48,9 +50,9 @@ import java.util.Map;
 public class QsApiController implements QsApi {
 
     @Override
-    public Single<HttpResponse<ServiceOrderPostResponse>> addQs() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addQs(@NotNull @Valid QsOrderRequest body) {
         // TODO: Implement me
-        return QsApi.super.addQs();
+        return QsApi.super.addQs(body);
     }
 
     @Override
@@ -108,13 +110,13 @@ public class QsApiController implements QsApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20011>> downloadQsBackup(@NotNull @Valid IdBackupsBody body, Integer id, @Nullable String all) {
+    public Single<HttpResponse<InlineResponse20012>> downloadQsBackup(@NotNull @Valid IdBackupsBody body, Integer id, @Nullable String all) {
         // TODO: Implement me
         return QsApi.super.downloadQsBackup(body, id, all);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20011>> downloadQsBackup(@NotNull String file, Integer id, @Nullable String all) {
+    public Single<HttpResponse<InlineResponse20012>> downloadQsBackup(@NotNull String file, Integer id, @Nullable String all) {
         // TODO: Implement me
         return QsApi.super.downloadQsBackup(file, id, all);
     }
@@ -123,6 +125,12 @@ public class QsApiController implements QsApi {
     public Single<HttpResponse<QuickserverOrder>> getNewQs() {
         // TODO: Implement me
         return QsApi.super.getNewQs();
+    }
+
+    @Override
+    public Single<HttpResponse<QueueResponse>> getQsBackup(Integer id) {
+        // TODO: Implement me
+        return QsApi.super.getQsBackup(id);
     }
 
     @Override
@@ -222,12 +230,6 @@ public class QsApiController implements QsApi {
     }
 
     @Override
-    public Single<HttpResponse<QueueResponse>> postQsBackup(Integer id) {
-        // TODO: Implement me
-        return QsApi.super.postQsBackup(id);
-    }
-
-    @Override
     public Single<HttpResponse<QueueResponse>> postQsChangeHostname(Integer id) {
         // TODO: Implement me
         return QsApi.super.postQsChangeHostname(id);
@@ -318,13 +320,13 @@ public class QsApiController implements QsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> putQs() {
+    public Single<HttpResponse<Void>> putQs(@NotNull @Valid QsOrderRequest body) {
         // TODO: Implement me
-        return QsApi.super.putQs();
+        return QsApi.super.putQs(body);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20010>> quickserversCancel(Integer id) {
+    public Single<HttpResponse<InlineResponse20011>> quickserversCancel(Integer id) {
         // TODO: Implement me
         return QsApi.super.quickserversCancel(id);
     }

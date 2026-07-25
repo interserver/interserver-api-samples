@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailAttachment();
+    instance = new InterserverApiClient.MailAttachment();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('MailAttachment', function() {
     it('should create an instance of MailAttachment', function() {
       // uncomment below and update the code to test MailAttachment
-      //var instance = new InterServerManagementApi.MailAttachment();
-      //expect(instance).to.be.a(InterServerManagementApi.MailAttachment);
+      //var instance = new InterserverApiClient.MailAttachment();
+      //expect(instance).to.be.a(InterserverApiClient.MailAttachment);
     });
 
     it('should have the property filename (base name: "filename")', function() {
       // uncomment below and update the code to test the property filename
-      //var instance = new InterServerManagementApi.MailAttachment();
+      //var instance = new InterserverApiClient.MailAttachment();
       //expect(instance).to.be();
     });
 
     it('should have the property data (base name: "data")', function() {
       // uncomment below and update the code to test the property data
-      //var instance = new InterServerManagementApi.MailAttachment();
+      //var instance = new InterserverApiClient.MailAttachment();
       //expect(instance).to.be();
     });
 

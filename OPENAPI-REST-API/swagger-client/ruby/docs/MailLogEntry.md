@@ -1,4 +1,4 @@
-# SwaggerClient::MailLogEntry
+# InterserverApiClient::MailLogEntry
 
 ## Properties
 Name | Type | Description | Notes

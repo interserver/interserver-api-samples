@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.deny_rule_record import DenyRuleRecord
+from interserver_api_client.models.deny_rule_record import DenyRuleRecord
 
 class TestDenyRuleRecord(unittest.TestCase):
     """DenyRuleRecord unit test stubs"""

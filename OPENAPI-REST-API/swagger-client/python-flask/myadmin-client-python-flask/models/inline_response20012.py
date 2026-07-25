@@ -6,11 +6,6 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from myadmin-client-python-flask.models.base_model_ import Model
-from myadmin-client-python-flask.models.inline_response20012_billing_details import InlineResponse20012BillingDetails  # noqa: F401,E501
-from myadmin-client-python-flask.models.inline_response20012_client_links import InlineResponse20012ClientLinks  # noqa: F401,E501
-from myadmin-client-python-flask.models.inline_response20012_extra_info_tables import InlineResponse20012ExtraInfoTables  # noqa: F401,E501
-from myadmin-client-python-flask.models.inline_response20012_filter_firewall import InlineResponse20012FilterFirewall  # noqa: F401,E501
-from myadmin-client-python-flask.models.inline_response20012_service_info import InlineResponse20012ServiceInfo  # noqa: F401,E501
 from myadmin-client-python-flask import util
 
 
@@ -19,55 +14,25 @@ class InlineResponse20012(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, service_info: InlineResponse20012ServiceInfo=None, client_links: List[InlineResponse20012ClientLinks]=None, billing_details: InlineResponse20012BillingDetails=None, cust_currency: str=None, cust_currency_symbol: str=None, package: str=None, extra_info_tables: InlineResponse20012ExtraInfoTables=None, filter_firewall: InlineResponse20012FilterFirewall=None):  # noqa: E501
+    def __init__(self, text: str=None, url: str=None):  # noqa: E501
         """InlineResponse20012 - a model defined in Swagger
 
-        :param service_info: The service_info of this InlineResponse20012.  # noqa: E501
-        :type service_info: InlineResponse20012ServiceInfo
-        :param client_links: The client_links of this InlineResponse20012.  # noqa: E501
-        :type client_links: List[InlineResponse20012ClientLinks]
-        :param billing_details: The billing_details of this InlineResponse20012.  # noqa: E501
-        :type billing_details: InlineResponse20012BillingDetails
-        :param cust_currency: The cust_currency of this InlineResponse20012.  # noqa: E501
-        :type cust_currency: str
-        :param cust_currency_symbol: The cust_currency_symbol of this InlineResponse20012.  # noqa: E501
-        :type cust_currency_symbol: str
-        :param package: The package of this InlineResponse20012.  # noqa: E501
-        :type package: str
-        :param extra_info_tables: The extra_info_tables of this InlineResponse20012.  # noqa: E501
-        :type extra_info_tables: InlineResponse20012ExtraInfoTables
-        :param filter_firewall: The filter_firewall of this InlineResponse20012.  # noqa: E501
-        :type filter_firewall: InlineResponse20012FilterFirewall
+        :param text: The text of this InlineResponse20012.  # noqa: E501
+        :type text: str
+        :param url: The url of this InlineResponse20012.  # noqa: E501
+        :type url: str
         """
         self.swagger_types = {
-            'service_info': InlineResponse20012ServiceInfo,
-            'client_links': List[InlineResponse20012ClientLinks],
-            'billing_details': InlineResponse20012BillingDetails,
-            'cust_currency': str,
-            'cust_currency_symbol': str,
-            'package': str,
-            'extra_info_tables': InlineResponse20012ExtraInfoTables,
-            'filter_firewall': InlineResponse20012FilterFirewall
+            'text': str,
+            'url': str
         }
 
         self.attribute_map = {
-            'service_info': 'serviceInfo',
-            'client_links': 'client_links',
-            'billing_details': 'billingDetails',
-            'cust_currency': 'custCurrency',
-            'cust_currency_symbol': 'custCurrencySymbol',
-            'package': 'package',
-            'extra_info_tables': 'extraInfoTables',
-            'filter_firewall': 'filter_firewall'
+            'text': 'text',
+            'url': 'url'
         }
-        self._service_info = service_info
-        self._client_links = client_links
-        self._billing_details = billing_details
-        self._cust_currency = cust_currency
-        self._cust_currency_symbol = cust_currency_symbol
-        self._package = package
-        self._extra_info_tables = extra_info_tables
-        self._filter_firewall = filter_firewall
+        self._text = text
+        self._url = url
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20012':
@@ -81,169 +46,45 @@ class InlineResponse20012(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def service_info(self) -> InlineResponse20012ServiceInfo:
-        """Gets the service_info of this InlineResponse20012.
+    def text(self) -> str:
+        """Gets the text of this InlineResponse20012.
 
 
-        :return: The service_info of this InlineResponse20012.
-        :rtype: InlineResponse20012ServiceInfo
-        """
-        return self._service_info
-
-    @service_info.setter
-    def service_info(self, service_info: InlineResponse20012ServiceInfo):
-        """Sets the service_info of this InlineResponse20012.
-
-
-        :param service_info: The service_info of this InlineResponse20012.
-        :type service_info: InlineResponse20012ServiceInfo
-        """
-
-        self._service_info = service_info
-
-    @property
-    def client_links(self) -> List[InlineResponse20012ClientLinks]:
-        """Gets the client_links of this InlineResponse20012.
-
-
-        :return: The client_links of this InlineResponse20012.
-        :rtype: List[InlineResponse20012ClientLinks]
-        """
-        return self._client_links
-
-    @client_links.setter
-    def client_links(self, client_links: List[InlineResponse20012ClientLinks]):
-        """Sets the client_links of this InlineResponse20012.
-
-
-        :param client_links: The client_links of this InlineResponse20012.
-        :type client_links: List[InlineResponse20012ClientLinks]
-        """
-
-        self._client_links = client_links
-
-    @property
-    def billing_details(self) -> InlineResponse20012BillingDetails:
-        """Gets the billing_details of this InlineResponse20012.
-
-
-        :return: The billing_details of this InlineResponse20012.
-        :rtype: InlineResponse20012BillingDetails
-        """
-        return self._billing_details
-
-    @billing_details.setter
-    def billing_details(self, billing_details: InlineResponse20012BillingDetails):
-        """Sets the billing_details of this InlineResponse20012.
-
-
-        :param billing_details: The billing_details of this InlineResponse20012.
-        :type billing_details: InlineResponse20012BillingDetails
-        """
-
-        self._billing_details = billing_details
-
-    @property
-    def cust_currency(self) -> str:
-        """Gets the cust_currency of this InlineResponse20012.
-
-
-        :return: The cust_currency of this InlineResponse20012.
+        :return: The text of this InlineResponse20012.
         :rtype: str
         """
-        return self._cust_currency
+        return self._text
 
-    @cust_currency.setter
-    def cust_currency(self, cust_currency: str):
-        """Sets the cust_currency of this InlineResponse20012.
+    @text.setter
+    def text(self, text: str):
+        """Sets the text of this InlineResponse20012.
 
 
-        :param cust_currency: The cust_currency of this InlineResponse20012.
-        :type cust_currency: str
+        :param text: The text of this InlineResponse20012.
+        :type text: str
         """
 
-        self._cust_currency = cust_currency
+        self._text = text
 
     @property
-    def cust_currency_symbol(self) -> str:
-        """Gets the cust_currency_symbol of this InlineResponse20012.
+    def url(self) -> str:
+        """Gets the url of this InlineResponse20012.
 
+        A pre-signed download URL valid for 24 hours.  # noqa: E501
 
-        :return: The cust_currency_symbol of this InlineResponse20012.
+        :return: The url of this InlineResponse20012.
         :rtype: str
         """
-        return self._cust_currency_symbol
+        return self._url
 
-    @cust_currency_symbol.setter
-    def cust_currency_symbol(self, cust_currency_symbol: str):
-        """Sets the cust_currency_symbol of this InlineResponse20012.
+    @url.setter
+    def url(self, url: str):
+        """Sets the url of this InlineResponse20012.
 
+        A pre-signed download URL valid for 24 hours.  # noqa: E501
 
-        :param cust_currency_symbol: The cust_currency_symbol of this InlineResponse20012.
-        :type cust_currency_symbol: str
+        :param url: The url of this InlineResponse20012.
+        :type url: str
         """
 
-        self._cust_currency_symbol = cust_currency_symbol
-
-    @property
-    def package(self) -> str:
-        """Gets the package of this InlineResponse20012.
-
-
-        :return: The package of this InlineResponse20012.
-        :rtype: str
-        """
-        return self._package
-
-    @package.setter
-    def package(self, package: str):
-        """Sets the package of this InlineResponse20012.
-
-
-        :param package: The package of this InlineResponse20012.
-        :type package: str
-        """
-
-        self._package = package
-
-    @property
-    def extra_info_tables(self) -> InlineResponse20012ExtraInfoTables:
-        """Gets the extra_info_tables of this InlineResponse20012.
-
-
-        :return: The extra_info_tables of this InlineResponse20012.
-        :rtype: InlineResponse20012ExtraInfoTables
-        """
-        return self._extra_info_tables
-
-    @extra_info_tables.setter
-    def extra_info_tables(self, extra_info_tables: InlineResponse20012ExtraInfoTables):
-        """Sets the extra_info_tables of this InlineResponse20012.
-
-
-        :param extra_info_tables: The extra_info_tables of this InlineResponse20012.
-        :type extra_info_tables: InlineResponse20012ExtraInfoTables
-        """
-
-        self._extra_info_tables = extra_info_tables
-
-    @property
-    def filter_firewall(self) -> InlineResponse20012FilterFirewall:
-        """Gets the filter_firewall of this InlineResponse20012.
-
-
-        :return: The filter_firewall of this InlineResponse20012.
-        :rtype: InlineResponse20012FilterFirewall
-        """
-        return self._filter_firewall
-
-    @filter_firewall.setter
-    def filter_firewall(self, filter_firewall: InlineResponse20012FilterFirewall):
-        """Sets the filter_firewall of this InlineResponse20012.
-
-
-        :param filter_firewall: The filter_firewall of this InlineResponse20012.
-        :type filter_firewall: InlineResponse20012FilterFirewall
-        """
-
-        self._filter_firewall = filter_firewall
+        self._url = url

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_order_service_types32 import VpsOrderServiceTypes32
+from interserver_api_client.models.vps_order_service_types32 import VpsOrderServiceTypes32
 
 # TODO update the JSON string below
 json = "{}"

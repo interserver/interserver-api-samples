@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerOrderBandwidth();
+    instance = new InterserverApiClient.ServerOrderBandwidth();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,73 +50,73 @@
   describe('ServerOrderBandwidth', function() {
     it('should create an instance of ServerOrderBandwidth', function() {
       // uncomment below and update the code to test ServerOrderBandwidth
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerOrderBandwidth);
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
+      //expect(instance).to.be.a(InterserverApiClient.ServerOrderBandwidth);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 
     it('should have the property price (base name: "price")', function() {
       // uncomment below and update the code to test the property price
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 
     it('should have the property img (base name: "img")', function() {
       // uncomment below and update the code to test the property img
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 
     it('should have the property short_desc (base name: "short_desc")', function() {
       // uncomment below and update the code to test the property short_desc
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 
     it('should have the property long_desc (base name: "long_desc")', function() {
       // uncomment below and update the code to test the property long_desc
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 
     it('should have the property qty (base name: "qty")', function() {
       // uncomment below and update the code to test the property qty
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 
     it('should have the property active (base name: "active")', function() {
       // uncomment below and update the code to test the property active
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 
     it('should have the property monthly_price (base name: "monthly_price")', function() {
       // uncomment below and update the code to test the property monthly_price
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 
     it('should have the property price_display (base name: "price_display")', function() {
       // uncomment below and update the code to test the property price_display
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 
     it('should have the property monthly_price_display (base name: "monthly_price_display")', function() {
       // uncomment below and update the code to test the property monthly_price_display
-      //var instance = new InterServerManagementApi.ServerOrderBandwidth();
+      //var instance = new InterserverApiClient.ServerOrderBandwidth();
       //expect(instance).to.be();
     });
 

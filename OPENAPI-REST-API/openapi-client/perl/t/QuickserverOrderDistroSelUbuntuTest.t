@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::QuickserverOrderDistroSelUbuntu');
+use_ok('InterServerAPI::Object::QuickserverOrderDistroSelUbuntu');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::QuickserverOrderDistroSelUbuntu->new();
+#my $instance = InterServerAPI::Object::QuickserverOrderDistroSelUbuntu->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::QuickserverOrderDistroSelUbuntu');
+#isa_ok($instance, 'InterServerAPI::Object::QuickserverOrderDistroSelUbuntu');
 
 
 done_testing();

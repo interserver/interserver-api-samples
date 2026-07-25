@@ -1,4 +1,4 @@
-# SwaggerClient::MailServiceInfo
+# InterserverApiClient::MailServiceInfo
 
 ## Properties
 Name | Type | Description | Notes

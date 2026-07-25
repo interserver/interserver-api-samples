@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AccountFeatures
+# InterServerAPI::Object::AccountFeatures
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AccountFeatures;
+use InterServerAPI::Object::AccountFeatures;
 ```
 
 ## Properties

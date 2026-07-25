@@ -23,6 +23,74 @@
 namespace OpenAPI
 {
 
+FString OpenAPIPublicApi::GetAccountCurrenciesRequest::ComputePath() const
+{
+	FString Path(TEXT("/account/currencies"));
+	return Path;
+}
+
+void OpenAPIPublicApi::GetAccountCurrenciesRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("GET"));
+
+}
+
+void OpenAPIPublicApi::GetAccountCurrenciesResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("An array of enabled currency codes."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIPublicApi::GetAccountCurrenciesResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return TryGetJsonValue(JsonValue, Content);
+}
+
+FString OpenAPIPublicApi::GetAccountLocalesRequest::ComputePath() const
+{
+	FString Path(TEXT("/account/locales"));
+	return Path;
+}
+
+void OpenAPIPublicApi::GetAccountLocalesRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("GET"));
+
+}
+
+void OpenAPIPublicApi::GetAccountLocalesResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Map of locale identifiers to display names."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIPublicApi::GetAccountLocalesResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return TryGetJsonValue(JsonValue, Content);
+}
+
 FString OpenAPIPublicApi::GetCaptchaRequest::ComputePath() const
 {
 	FString Path(TEXT("/captcha"));

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AccountInfoDataExtra
+# InterServerAPI::Object::AccountInfoDataExtra
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AccountInfoDataExtra;
+use InterServerAPI::Object::AccountInfoDataExtra;
 ```
 
 ## Properties

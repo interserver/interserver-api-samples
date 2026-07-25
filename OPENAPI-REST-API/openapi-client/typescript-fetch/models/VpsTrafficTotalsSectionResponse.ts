@@ -37,7 +37,7 @@ export interface VpsTrafficTotalsSectionResponse {
  * Check if a given object implements the VpsTrafficTotalsSectionResponse interface.
  */
 export function instanceOfVpsTrafficTotalsSectionResponse(value: object): value is VpsTrafficTotalsSectionResponse {
-    if (!('_in' in value) || value['_in'] === undefined) return false;
+    if ((!('_in' in (value as Record<string, any>)) && !('in' in (value as Record<string, any>))) || ((value as Record<string, any>)['_in'] === undefined && (value as Record<string, any>)['in'] === undefined)) return false;
     if (!('out' in value) || value['out'] === undefined) return false;
     return true;
 }

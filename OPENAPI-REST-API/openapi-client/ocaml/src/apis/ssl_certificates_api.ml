@@ -5,13 +5,28 @@
  *
  *)
 
-let add_ssl () =
+let add_ssl ~ssl_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/ssl/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Ssl_order_request.to_yojson
+    
+    
+    
+ ssl_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Service_order_post_response.of_yojson) resp body
 
 let get_new_ssl () =
@@ -104,13 +119,28 @@ let get_ssl_welcome_email ~id =
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
-let put_ssl () =
+let put_ssl ~ssl_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/ssl/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `PUT uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Ssl_order_request.to_yojson
+    
+    
+    
+ ssl_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `PUT uri ~headers ~body >>= fun (resp, body) ->
     Request.handle_unit_response resp
 
 let ssl_cancel ~id =

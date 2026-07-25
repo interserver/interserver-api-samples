@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::GetOrderDetail200ResponsePackageCosts
+# InterServerAPI::Object::GetOrderDetail200ResponsePackageCosts
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::GetOrderDetail200ResponsePackageCosts;
+use InterServerAPI::Object::GetOrderDetail200ResponsePackageCosts;
 ```
 
 ## Properties

@@ -29,4 +29,3 @@ case class MailClientLink(
   /* Additional attributes for the client link. */
   other_attr: Option[String] = None
 )
-

@@ -1,20 +1,20 @@
-# openapi.model.Server
+# interserver_api.model.Server
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ipmiAuth** | **bool** |  | 
-**clientLinks** | [**BuiltList&lt;ServerClientLink&gt;**](ServerClientLink.md) |  | 
+**clientLinks** | [**List&lt;ServerClientLink&gt;**](ServerClientLink.md) |  | 
 **billingDetails** | [**ServerBillingDetails**](ServerBillingDetails.md) |  | 
 **custCurrency** | **String** |  | 
 **custCurrencySymbol** | **String** |  | 
 **package** | **String** |  | 
-**serviceExtra** | **BuiltList&lt;String&gt;** |  | 
+**serviceExtra** | **List&lt;String&gt;** |  | 
 **locations** | [**ServerLocations**](ServerLocations.md) |  | 
 **networkInfo** | [**ServerNetworkInfo**](ServerNetworkInfo.md) |  | 
 **extraInfoTables** | [**ServerExtraInfoTables**](ServerExtraInfoTables.md) |  | 

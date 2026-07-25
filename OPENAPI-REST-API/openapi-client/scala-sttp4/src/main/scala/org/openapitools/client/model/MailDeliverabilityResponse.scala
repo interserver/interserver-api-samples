@@ -11,16 +11,16 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JObject
 
   /**
    * Deliverability statistics for a mail service.
    */
 case class MailDeliverabilityResponse(
   /* Delivered and bounced counts. */
-  stat: Option[Any] = None,
+  stat: Option[org.json4s.JObject] = None,
   /* Bounce percentage. */
   percent: Option[Double] = None,
   /* Detailed deliverability breakdown by sender or domain. */
   table_data: Option[Seq[Seq[String]]] = None
 )
-

@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for QuickserverOrderTemplates
 void main() {
-  final instance = QuickserverOrderTemplatesBuilder();
-  // TODO add properties to the builder and call build()
+  final QuickserverOrderTemplates? instance = /* QuickserverOrderTemplates(...) */ null;
+  // TODO add properties to the entity
 
   group(QuickserverOrderTemplates, () {
-    // QuickserverOrderTemplatesUbuntu64 ubuntu
+    // Optional<QuickserverOrderTemplatesUbuntu64?> ubuntu
     test('to test the property `ubuntu`', () async {
       // TODO
     });

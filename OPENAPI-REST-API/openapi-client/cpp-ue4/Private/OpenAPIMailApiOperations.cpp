@@ -31,7 +31,7 @@ FString OpenAPIMailApi::AddMailRequest::ComputePath() const
 
 void OpenAPIMailApi::AddMailRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("POST"));
@@ -39,12 +39,23 @@ void OpenAPIMailApi::AddMailRequest::SetupHttpRequest(const FHttpRequestRef& Htt
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIMailOrderRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIMailOrderRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIMailOrderRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -58,7 +69,7 @@ void OpenAPIMailApi::AddMailResponse::SetHttpResponseCode(EHttpResponseCodes::Ty
 	switch ((int)InHttpResponseCode)
 	{
 	case 200:
-		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
+		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
 		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
@@ -210,17 +221,12 @@ FString OpenAPIMailApi::DeleteMailAlertRequest::ComputePath() const
 
 	FString Path = FString::Format(TEXT("/mail/{id}/alerts"), PathParams);
 
-	TArray<FString> QueryParams;
-	QueryParams.Add(FString(TEXT("alert_id=")) + ToUrlString(AlertId));
-	Path += TCHAR('?');
-	Path += FString::Join(QueryParams, TEXT("&"));
-
 	return Path;
 }
 
 void OpenAPIMailApi::DeleteMailAlertRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json"), TEXT("multipart/form-data") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("DELETE"));
@@ -980,7 +986,7 @@ FString OpenAPIMailApi::PutMailRequest::ComputePath() const
 
 void OpenAPIMailApi::PutMailRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("PUT"));
@@ -988,12 +994,23 @@ void OpenAPIMailApi::PutMailRequest::SetupHttpRequest(const FHttpRequestRef& Htt
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIMailOrderRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIMailOrderRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIMailOrderRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -1307,6 +1324,76 @@ void OpenAPIMailApi::UpdateMailInfoResponse::SetHttpResponseCode(EHttpResponseCo
 }
 
 bool OpenAPIMailApi::UpdateMailInfoResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return TryGetJsonValue(JsonValue, Content);
+}
+
+FString OpenAPIMailApi::UpdateRuleRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) },
+	{ TEXT("rule"), FStringFormatArg(ToUrlString(Rule)) } };
+
+	FString Path = FString::Format(TEXT("/mail/{id}/rules/{rule}"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIMailApi::UpdateRuleRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = { TEXT("application/json"), TEXT("multipart/form-data") };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("PUT"));
+
+	// Default to Json Body request
+	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
+	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIDenyRuleNew);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
+	}
+	else if (Consumes.Contains(TEXT("multipart/form-data")))
+	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIDenyRuleNew) was ignored, not supported in multipart form"));
+	}
+	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
+	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIDenyRuleNew) was ignored, not supported in urlencoded requests"));
+	}
+	else
+	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
+	}
+}
+
+void OpenAPIMailApi::UpdateRuleResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Deny rule updated successfully."));
+		break;
+	case 400:
+		SetResponseString(TEXT("The specified resource was not found"));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	case 404:
+		SetResponseString(TEXT("The specified resource was not found"));
+		break;
+	}
+}
+
+bool OpenAPIMailApi::UpdateRuleResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
 }

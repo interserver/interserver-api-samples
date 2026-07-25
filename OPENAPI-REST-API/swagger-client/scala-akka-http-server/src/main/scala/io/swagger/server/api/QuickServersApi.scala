@@ -7,6 +7,7 @@ import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
 import io.swagger.server.model.ChargeInvoiceRows
 import io.swagger.server.model.Id_backups_body
+import io.swagger.server.model.QsOrderRequest
 import io.swagger.server.model.QueueResponse
 import io.swagger.server.model.Quickserver
 import io.swagger.server.model.QuickserverOrder
@@ -19,8 +20,8 @@ import io.swagger.server.model.TextResponse
 import io.swagger.server.model.TimezoneUpdate
 import io.swagger.server.model.VpsBackupRows
 import io.swagger.server.model.VpsTemplatesList
-import io.swagger.server.model.inline_response_200_10
 import io.swagger.server.model.inline_response_200_11
+import io.swagger.server.model.inline_response_200_12
 import io.swagger.server.model.inline_response_401
 
 class QuickServersApi(
@@ -36,9 +37,9 @@ class QuickServersApi(
           
             
               
-                
-                  quickServersService.addQs()
-               
+                entity(as[QsOrderRequest]){ body =>
+                  quickServersService.addQs(body = body)
+                }
              
            
          
@@ -203,6 +204,21 @@ class QuickServersApi(
               
                 
                   quickServersService.getNewQs()
+               
+             
+           
+         
+       
+      }
+    } ~
+    path() { (id) => 
+      get {
+        
+          
+            
+              
+                
+                  quickServersService.getQsBackup(id = id)
                
              
            
@@ -457,21 +473,6 @@ class QuickServersApi(
             
               
                 
-                  quickServersService.postQsBackup(id = id)
-               
-             
-           
-         
-       
-      }
-    } ~
-    path() { (id) => 
-      post {
-        
-          
-            
-              
-                
                   quickServersService.postQsChangeHostname(id = id)
                
              
@@ -651,9 +652,9 @@ class QuickServersApi(
           
             
               
-                
-                  quickServersService.putQs()
-               
+                entity(as[QsOrderRequest]){ body =>
+                  quickServersService.putQs(body = body)
+                }
              
            
          
@@ -699,10 +700,10 @@ trait QuickServersApiService {
   def addQs401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
+   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def addQs()
+  def addQs(body: QsOrderRequest)
       (implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def deleteQsBackup200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
@@ -804,16 +805,16 @@ trait QuickServersApiService {
   def doQsStop(id: Int)
       (implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def downloadQsBackup200(responseinline_response_200_11: inline_response_200_11)(implicit toEntityMarshallerinline_response_200_11: ToEntityMarshaller[inline_response_200_11]): Route =
-    complete((200, responseinline_response_200_11))
+  def downloadQsBackup200(responseinline_response_200_12: inline_response_200_12)(implicit toEntityMarshallerinline_response_200_12: ToEntityMarshaller[inline_response_200_12]): Route =
+    complete((200, responseinline_response_200_12))
   def downloadQsBackup401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Download URL for the backup file., DataType: inline_response_200_11
+   * Code: 200, Message: Download URL for the backup file., DataType: inline_response_200_12
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def downloadQsBackup(body: Id_backups_body, file: String, id: Int, all: Option[String])
-      (implicit toEntityMarshallerinline_response_200_11: ToEntityMarshaller[inline_response_200_11], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_12: ToEntityMarshaller[inline_response_200_12], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getNewQs200(responseQuickserverOrder: QuickserverOrder)(implicit toEntityMarshallerQuickserverOrder: ToEntityMarshaller[QuickserverOrder]): Route =
     complete((200, responseQuickserverOrder))
@@ -825,6 +826,17 @@ trait QuickServersApiService {
    */
   def getNewQs()
       (implicit toEntityMarshallerQuickserverOrder: ToEntityMarshaller[QuickserverOrder], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
+  def getQsBackup200(responseQueueResponse: QueueResponse)(implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse]): Route =
+    complete((200, responseQueueResponse))
+  def getQsBackup401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Response message from sending a service queue., DataType: QueueResponse
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def getQsBackup(id: Int)
+      (implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getQsBackups200(responseVpsBackupRows: VpsBackupRows)(implicit toEntityMarshallerVpsBackupRows: ToEntityMarshaller[VpsBackupRows]): Route =
     complete((200, responseVpsBackupRows))
@@ -1002,17 +1014,6 @@ trait QuickServersApiService {
   def getQsWelcomeEmail(id: String)
       (implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def postQsBackup200(responseQueueResponse: QueueResponse)(implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse]): Route =
-    complete((200, responseQueueResponse))
-  def postQsBackup401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((401, responseinline_response_401))
-  /**
-   * Code: 200, Message: Response message from sending a service queue., DataType: QueueResponse
-   * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   */
-  def postQsBackup(id: Int)
-      (implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
-
   def postQsChangeHostname200(responseQueueResponse: QueueResponse)(implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse]): Route =
     complete((200, responseQueueResponse))
   def postQsChangeHostname401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -1156,19 +1157,19 @@ trait QuickServersApiService {
    * Code: 200, Message: Validate QuickServer Order response
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def putQs()
+  def putQs(body: QsOrderRequest)
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def quickserversCancel200(responseinline_response_200_10: inline_response_200_10)(implicit toEntityMarshallerinline_response_200_10: ToEntityMarshaller[inline_response_200_10]): Route =
-    complete((200, responseinline_response_200_10))
+  def quickserversCancel200(responseinline_response_200_11: inline_response_200_11)(implicit toEntityMarshallerinline_response_200_11: ToEntityMarshaller[inline_response_200_11]): Route =
+    complete((200, responseinline_response_200_11))
   def quickserversCancel401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Rapid Deploy Servers Cancel, DataType: inline_response_200_10
+   * Code: 200, Message: Rapid Deploy Servers Cancel, DataType: inline_response_200_11
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def quickserversCancel(id: Int)
-      (implicit toEntityMarshallerinline_response_200_10: ToEntityMarshaller[inline_response_200_10], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_11: ToEntityMarshaller[inline_response_200_11], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def updateQsInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
@@ -1189,6 +1190,8 @@ trait QuickServersApiMarshaller {
   implicit def fromRequestUnmarshallerTimezoneUpdate: FromRequestUnmarshaller[TimezoneUpdate]
 
   implicit def fromRequestUnmarshallerRestoreRequest: FromRequestUnmarshaller[RestoreRequest]
+
+  implicit def fromRequestUnmarshallerQsOrderRequest: FromRequestUnmarshaller[QsOrderRequest]
 
   implicit def fromRequestUnmarshallerReverseDnsEntries: FromRequestUnmarshaller[ReverseDnsEntries]
 
@@ -1233,11 +1236,15 @@ trait QuickServersApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_11: ToEntityMarshaller[inline_response_200_11]
+  implicit def toEntityMarshallerinline_response_200_12: ToEntityMarshaller[inline_response_200_12]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerQuickserverOrder: ToEntityMarshaller[QuickserverOrder]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -1315,10 +1322,6 @@ trait QuickServersApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse]
-
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
   implicit def toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
@@ -1339,7 +1342,7 @@ trait QuickServersApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_10: ToEntityMarshaller[inline_response_200_10]
+  implicit def toEntityMarshallerinline_response_200_11: ToEntityMarshaller[inline_response_200_11]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

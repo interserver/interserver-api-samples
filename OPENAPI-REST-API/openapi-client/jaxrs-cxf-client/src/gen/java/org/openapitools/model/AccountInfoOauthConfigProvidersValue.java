@@ -28,7 +28,7 @@ public class AccountInfoOauthConfigProvidersValue  {
    * @return enabled
   **/
   @JsonProperty("enabled")
-  public Boolean getEnabled() {
+  public Boolean isEnabled() {
     return enabled;
   }
 
@@ -46,7 +46,7 @@ public class AccountInfoOauthConfigProvidersValue  {
    * @return linked
   **/
   @JsonProperty("linked")
-  public Boolean getLinked() {
+  public Boolean isLinked() {
     return linked;
   }
 

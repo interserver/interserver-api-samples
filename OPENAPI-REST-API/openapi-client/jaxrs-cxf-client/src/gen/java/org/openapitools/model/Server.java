@@ -65,7 +65,7 @@ public class Server  {
    * @return ipmiAuth
   **/
   @JsonProperty("ipmiAuth")
-  public Boolean getIpmiAuth() {
+  public Boolean isIpmiAuth() {
     return ipmiAuth;
   }
 

@@ -5,9 +5,9 @@ import io.swagger.model.*;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
-import io.swagger.model.InlineResponse2005;
 import io.swagger.model.InlineResponse2006;
 import io.swagger.model.InlineResponse2007;
+import io.swagger.model.InlineResponse2008;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.OauthBody;
 import io.swagger.model.OauthBody2;

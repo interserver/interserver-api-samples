@@ -13,7 +13,7 @@ import io.swagger.model.DomainOrder;
 import io.swagger.model.DomainRow;
 import io.swagger.model.DomainSearchResponse;
 import io.swagger.model.DomainWhoisPrivacyRequest;
-import io.swagger.model.InlineResponse2002;
+import io.swagger.model.InlineResponse2003;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
@@ -37,8 +37,9 @@ class DomainsApiControllerTest {
 
     @Test
     void addDomainTest() {
+        Map<String, Object> body = null;
         try {
-            //TODO: api.addDomain().blockingGet();
+            //TODO: api.addDomain(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -79,9 +80,8 @@ class DomainsApiControllerTest {
     @Test
     void deleteDomainDnssecTest() {
         Integer id = null;
-        String action = null;
         try {
-            //TODO: api.deleteDomainDnssec(id, action).blockingGet();
+            //TODO: api.deleteDomainDnssec(id).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -159,27 +159,6 @@ class DomainsApiControllerTest {
     }
 
     @Test
-    void getDomainOrderFieldsTest() {
-        String domain = null;
-        String regType = null;
-        try {
-            //TODO: api.getDomainOrderFields(domain, regType).blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
-    void getDomainOrderSearchResultsTest() {
-        String domain = null;
-        try {
-            //TODO: api.getDomainOrderSearchResults(domain).blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
     void getDomainRenewalTest() {
         Integer id = null;
         try {
@@ -249,8 +228,9 @@ class DomainsApiControllerTest {
 
     @Test
     void patchDomainsTest() {
+        Map<String, Object> body = null;
         try {
-            //TODO: api.patchDomains().blockingGet();
+            //TODO: api.patchDomains(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -261,6 +241,16 @@ class DomainsApiControllerTest {
         Integer id = null;
         try {
             //TODO: api.postDomainRenewal(id).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void postDomainSearchTest() {
+        String name = null;
+        try {
+            //TODO: api.postDomainSearch(name).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -278,8 +268,9 @@ class DomainsApiControllerTest {
 
     @Test
     void putDomainsTest() {
+        Map<String, Object> body = null;
         try {
-            //TODO: api.putDomains().blockingGet();
+            //TODO: api.putDomains(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -298,7 +289,7 @@ class DomainsApiControllerTest {
 
     @Test
     void updateDomainInfoTest() {
-        String id = null;
+        Integer id = null;
         try {
             //TODO: api.updateDomainInfo(id).blockingGet();
         } catch (UnsupportedOperationException e) {

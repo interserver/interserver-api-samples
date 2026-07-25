@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupExtraInfoTables
+# InterserverApiClient.BackupExtraInfoTables
 
 ## Properties
 

@@ -31,7 +31,7 @@ FString OpenAPIDomainsApi::AddDomainRequest::ComputePath() const
 
 void OpenAPIDomainsApi::AddDomainRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("POST"));
@@ -39,12 +39,23 @@ void OpenAPIDomainsApi::AddDomainRequest::SetupHttpRequest(const FHttpRequestRef
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIDomainOrderRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIDomainOrderRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIDomainOrderRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -58,7 +69,7 @@ void OpenAPIDomainsApi::AddDomainResponse::SetHttpResponseCode(EHttpResponseCode
 	switch ((int)InHttpResponseCode)
 	{
 	case 200:
-		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
+		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
 		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
@@ -241,11 +252,6 @@ FString OpenAPIDomainsApi::DeleteDomainDnssecRequest::ComputePath() const
 	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
 
 	FString Path = FString::Format(TEXT("/domains/{id}/dnssec"), PathParams);
-
-	TArray<FString> QueryParams;
-	QueryParams.Add(FString(TEXT("action=")) + ToUrlString(Action));
-	Path += TCHAR('?');
-	Path += FString::Join(QueryParams, TEXT("&"));
 
 	return Path;
 }
@@ -552,83 +558,6 @@ bool OpenAPIDomainsApi::GetDomainNameserversResponse::FromJson(const TSharedPtr<
 	return TryGetJsonValue(JsonValue, Content);
 }
 
-FString OpenAPIDomainsApi::GetDomainOrderFieldsRequest::ComputePath() const
-{
-	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("domain"), FStringFormatArg(ToUrlString(Domain)) },
-	{ TEXT("regType"), FStringFormatArg(ToUrlString(RegType)) } };
-
-	FString Path = FString::Format(TEXT("/domains/order/{domain}/{regType}"), PathParams);
-
-	return Path;
-}
-
-void OpenAPIDomainsApi::GetDomainOrderFieldsRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = {  };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("GET"));
-
-}
-
-void OpenAPIDomainsApi::GetDomainOrderFieldsResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("Registration-type-specific form field definitions."));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPIDomainsApi::GetDomainOrderFieldsResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return true;
-}
-
-FString OpenAPIDomainsApi::GetDomainOrderSearchResultsRequest::ComputePath() const
-{
-	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("domain"), FStringFormatArg(ToUrlString(Domain)) } };
-
-	FString Path = FString::Format(TEXT("/domains/order/{domain}"), PathParams);
-
-	return Path;
-}
-
-void OpenAPIDomainsApi::GetDomainOrderSearchResultsRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = {  };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("GET"));
-
-}
-
-void OpenAPIDomainsApi::GetDomainOrderSearchResultsResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("Domain availability and pricing information."));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPIDomainsApi::GetDomainOrderSearchResultsResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return true;
-}
-
 FString OpenAPIDomainsApi::GetDomainRenewalRequest::ComputePath() const
 {
 	TMap<FString, FStringFormatArg> PathParams = { 
@@ -898,7 +827,7 @@ FString OpenAPIDomainsApi::PatchDomainsRequest::ComputePath() const
 
 void OpenAPIDomainsApi::PatchDomainsRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("PATCH"));
@@ -906,12 +835,23 @@ void OpenAPIDomainsApi::PatchDomainsRequest::SetupHttpRequest(const FHttpRequest
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIDomainOrderRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIDomainOrderRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIDomainOrderRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -990,6 +930,58 @@ bool OpenAPIDomainsApi::PostDomainRenewalResponse::FromJson(const TSharedPtr<FJs
 	return TryGetJsonValue(JsonValue, Content);
 }
 
+FString OpenAPIDomainsApi::PostDomainSearchRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("name"), FStringFormatArg(ToUrlString(Name)) } };
+
+	FString Path = FString::Format(TEXT("/domains/search/{name}"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIDomainsApi::PostDomainSearchRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("POST"));
+
+	// Default to Json Body request
+	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
+	{
+	}
+	else if (Consumes.Contains(TEXT("multipart/form-data")))
+	{
+	}
+	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
+	{
+	}
+	else
+	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
+	}
+}
+
+void OpenAPIDomainsApi::PostDomainSearchResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Domain availability and pricing check results."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIDomainsApi::PostDomainSearchResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return true;
+}
+
 FString OpenAPIDomainsApi::PostDomainTransferRequest::ComputePath() const
 {
 	TMap<FString, FStringFormatArg> PathParams = { 
@@ -1050,7 +1042,7 @@ FString OpenAPIDomainsApi::PutDomainsRequest::ComputePath() const
 
 void OpenAPIDomainsApi::PutDomainsRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("PUT"));
@@ -1058,12 +1050,23 @@ void OpenAPIDomainsApi::PutDomainsRequest::SetupHttpRequest(const FHttpRequestRe
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIDomainOrderRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIDomainOrderRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIDomainOrderRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{

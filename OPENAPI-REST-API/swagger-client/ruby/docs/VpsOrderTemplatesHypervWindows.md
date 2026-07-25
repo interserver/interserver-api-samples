@@ -1,4 +1,4 @@
-# SwaggerClient::VpsOrderTemplatesHypervWindows
+# InterserverApiClient::VpsOrderTemplatesHypervWindows
 
 ## Properties
 Name | Type | Description | Notes

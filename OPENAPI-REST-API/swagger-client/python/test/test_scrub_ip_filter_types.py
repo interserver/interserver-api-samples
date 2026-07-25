@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.scrub_ip_filter_types import ScrubIpFilterTypes  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.scrub_ip_filter_types import ScrubIpFilterTypes  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestScrubIpFilterTypes(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestScrubIpFilterTypes(unittest.TestCase):
     def testScrubIpFilterTypes(self):
         """Test ScrubIpFilterTypes"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.scrub_ip_filter_types.ScrubIpFilterTypes()  # noqa: E501
+        # model = interserver_api_client.models.scrub_ip_filter_types.ScrubIpFilterTypes()  # noqa: E501
         pass
 
 

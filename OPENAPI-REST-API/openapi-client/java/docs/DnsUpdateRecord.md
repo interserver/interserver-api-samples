@@ -18,4 +18,8 @@ The request data to update a dns record.
 |**auth** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

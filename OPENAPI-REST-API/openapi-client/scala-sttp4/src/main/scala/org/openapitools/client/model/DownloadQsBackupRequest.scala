@@ -16,4 +16,3 @@ case class DownloadQsBackupRequest(
   /* The backup filename to download. */
   file: String
 )
-

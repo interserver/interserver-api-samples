@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BuyItNowServerOrder200ResponseOsInner();
+    instance = new InterserverApiClient.BuyItNowServerOrder200ResponseOsInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('BuyItNowServerOrder200ResponseOsInner', function() {
     it('should create an instance of BuyItNowServerOrder200ResponseOsInner', function() {
       // uncomment below and update the code to test BuyItNowServerOrder200ResponseOsInner
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200ResponseOsInner();
-      //expect(instance).to.be.a(InterServerManagementApi.BuyItNowServerOrder200ResponseOsInner);
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200ResponseOsInner();
+      //expect(instance).to.be.a(InterserverApiClient.BuyItNowServerOrder200ResponseOsInner);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200ResponseOsInner();
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200ResponseOsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property short_desc (base name: "short_desc")', function() {
       // uncomment below and update the code to test the property short_desc
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200ResponseOsInner();
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200ResponseOsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property long_desc (base name: "long_desc")', function() {
       // uncomment below and update the code to test the property long_desc
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200ResponseOsInner();
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200ResponseOsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property monthly_price (base name: "monthly_price")', function() {
       // uncomment below and update the code to test the property monthly_price
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200ResponseOsInner();
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200ResponseOsInner();
       //expect(instance).to.be();
     });
 

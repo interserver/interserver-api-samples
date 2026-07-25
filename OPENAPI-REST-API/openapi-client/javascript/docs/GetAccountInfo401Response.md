@@ -1,4 +1,4 @@
-# InterServerManagementApi.GetAccountInfo401Response
+# InterserverApiClient.GetAccountInfo401Response
 
 ## Properties
 

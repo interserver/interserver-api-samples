@@ -13,4 +13,8 @@ A DNS zone entry with its ID, domain name, and record content.
 |**content** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

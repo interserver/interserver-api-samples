@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for UrlRequest
 void main() {
-  final instance = UrlRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final UrlRequest? instance = /* UrlRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(UrlRequest, () {
-    // String url
+    // Optional<String?> url
     test('to test the property `url`', () async {
       // TODO
     });

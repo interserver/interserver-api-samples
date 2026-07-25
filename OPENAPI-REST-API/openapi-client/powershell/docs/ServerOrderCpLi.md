@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderCpLi = Initialize-PSOpenAPIToolsServerOrderCpLi  -Var9 null
+$ServerOrderCpLi = Initialize-InterserverApiServerOrderCpLi  -Var9 null
 ```
 
 - Convert the resource to JSON

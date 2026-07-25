@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | CPU ID. | [optional] 
+**_id** | **String** | CPU ID. | [optional] 
 **price** | **Int** | CPU price. | [optional] 
 **img** | **String** | CPU image. | [optional] 
 **shortDesc** | **String** | Short description of the CPU. | [optional] 

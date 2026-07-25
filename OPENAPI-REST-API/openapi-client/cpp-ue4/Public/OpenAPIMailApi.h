@@ -88,6 +88,8 @@ public:
 	class UpdateMailAlertResponse;
 	class UpdateMailInfoRequest;
 	class UpdateMailInfoResponse;
+	class UpdateRuleRequest;
+	class UpdateRuleResponse;
 	class ViewMailLogRequest;
 	class ViewMailLogResponse;
 	
@@ -116,6 +118,7 @@ public:
     DECLARE_DELEGATE_OneParam(FSendMailDelegate, const SendMailResponse&);
     DECLARE_DELEGATE_OneParam(FUpdateMailAlertDelegate, const UpdateMailAlertResponse&);
     DECLARE_DELEGATE_OneParam(FUpdateMailInfoDelegate, const UpdateMailInfoResponse&);
+    DECLARE_DELEGATE_OneParam(FUpdateRuleDelegate, const UpdateRuleResponse&);
     DECLARE_DELEGATE_OneParam(FViewMailLogDelegate, const ViewMailLogResponse&);
     
     FHttpRequestPtr AddMail(const AddMailRequest& Request, const FAddMailDelegate& Delegate = FAddMailDelegate()) const;
@@ -143,6 +146,7 @@ public:
     FHttpRequestPtr SendMail(const SendMailRequest& Request, const FSendMailDelegate& Delegate = FSendMailDelegate()) const;
     FHttpRequestPtr UpdateMailAlert(const UpdateMailAlertRequest& Request, const FUpdateMailAlertDelegate& Delegate = FUpdateMailAlertDelegate()) const;
     FHttpRequestPtr UpdateMailInfo(const UpdateMailInfoRequest& Request, const FUpdateMailInfoDelegate& Delegate = FUpdateMailInfoDelegate()) const;
+    FHttpRequestPtr UpdateRule(const UpdateRuleRequest& Request, const FUpdateRuleDelegate& Delegate = FUpdateRuleDelegate()) const;
     FHttpRequestPtr ViewMailLog(const ViewMailLogRequest& Request, const FViewMailLogDelegate& Delegate = FViewMailLogDelegate()) const;
     
 private:
@@ -171,6 +175,7 @@ private:
     void OnSendMailResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FSendMailDelegate Delegate) const;
     void OnUpdateMailAlertResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUpdateMailAlertDelegate Delegate) const;
     void OnUpdateMailInfoResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUpdateMailInfoDelegate Delegate) const;
+    void OnUpdateRuleResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUpdateRuleDelegate Delegate) const;
     void OnViewMailLogResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FViewMailLogDelegate Delegate) const;
     
 	FHttpRequestRef CreateHttpRequest(const Request& Request) const;

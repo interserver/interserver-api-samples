@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailOrder
 void main() {
-  final instance = MailOrderBuilder();
-  // TODO add properties to the builder and call build()
+  final MailOrder? instance = /* MailOrder(...) */ null;
+  // TODO add properties to the entity
 
   group(MailOrder, () {
     // The ID of the order.
@@ -26,7 +26,7 @@ void main() {
     });
 
     // Optional order comment.
-    // String comment
+    // Optional<String?> comment
     test('to test the property `comment`', () async {
       // TODO
     });

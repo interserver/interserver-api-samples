@@ -1,4 +1,4 @@
-# openapi::VpsServiceExtra
+# interserverapi::VpsServiceExtra
 
 
 ## Properties

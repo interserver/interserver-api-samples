@@ -1,4 +1,4 @@
-# SwaggerClient::DnsListItem
+# InterserverApiClient::DnsListItem
 
 ## Properties
 Name | Type | Description | Notes

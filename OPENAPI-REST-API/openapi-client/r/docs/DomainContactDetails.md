@@ -1,4 +1,4 @@
-# openapi::DomainContactDetails
+# interserverapi::DomainContactDetails
 
 Contact details used for domain registrant/admin/technical/billing records.
 

@@ -57,7 +57,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerAsset } from './api';
+import { ServerAsset } from '@interserver/myadmin-client';
 
 const instance: ServerAsset = {
     id,

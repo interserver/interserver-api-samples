@@ -11,19 +11,7 @@ package myadmin-client-go-server
 
 type InlineResponse20012 struct {
 
-	ServiceInfo *InlineResponse20012ServiceInfo `json:"serviceInfo,omitempty"`
-
-	ClientLinks []InlineResponse20012ClientLinks `json:"client_links,omitempty"`
-
-	BillingDetails *InlineResponse20012BillingDetails `json:"billingDetails,omitempty"`
-
-	CustCurrency string `json:"custCurrency,omitempty"`
-
-	CustCurrencySymbol string `json:"custCurrencySymbol,omitempty"`
-
-	Package_ string `json:"package,omitempty"`
-
-	ExtraInfoTables *InlineResponse20012ExtraInfoTables `json:"extraInfoTables,omitempty"`
-
-	FilterFirewall *InlineResponse20012FilterFirewall `json:"filter_firewall,omitempty"`
+	Text string `json:"text,omitempty"`
+	// A pre-signed download URL valid for 24 hours.
+	Url string `json:"url,omitempty"`
 }

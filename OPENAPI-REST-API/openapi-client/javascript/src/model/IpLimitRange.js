@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The IpLimitRange model module.
  * @module model/IpLimitRange
- * @version 0.9.0
+ * @version 1.0.0
  */
 class IpLimitRange {
     /**

@@ -4,58 +4,58 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddQs**](QuickServersAPI.md#AddQs) | **Post** /qs/order | Place QuickServer Order
-[**DeleteQsBackup**](QuickServersAPI.md#DeleteQsBackup) | **Delete** /qs/{id}/backups | Delete QuickServer Backup
-[**DoQsBlockSmtp**](QuickServersAPI.md#DoQsBlockSmtp) | **Get** /qs/{id}/block_smtp | Block QuickServer SMTP
-[**DoQsDisableCd**](QuickServersAPI.md#DoQsDisableCd) | **Get** /qs/{id}/disable_cd | Disable CD Drive
-[**DoQsDisableQuota**](QuickServersAPI.md#DoQsDisableQuota) | **Get** /qs/{id}/disable_quota | Disable Quotas
-[**DoQsEjectCd**](QuickServersAPI.md#DoQsEjectCd) | **Get** /qs/{id}/eject_cd | Eject CD Drive
-[**DoQsEnableQuota**](QuickServersAPI.md#DoQsEnableQuota) | **Get** /qs/{id}/enable_quota | Enable Quotas
-[**DoQsRestart**](QuickServersAPI.md#DoQsRestart) | **Get** /qs/{id}/restart | Restart QuickServer
-[**DoQsStart**](QuickServersAPI.md#DoQsStart) | **Get** /qs/{id}/start | Start QuickServer
-[**DoQsStop**](QuickServersAPI.md#DoQsStop) | **Get** /qs/{id}/stop | Stop QuickServer
-[**DownloadQsBackup**](QuickServersAPI.md#DownloadQsBackup) | **Patch** /qs/{id}/backups | Download QuickServer Backup
-[**GetNewQs**](QuickServersAPI.md#GetNewQs) | **Get** /qs/order | Get QuickServer Ordering Information
-[**GetQsBackups**](QuickServersAPI.md#GetQsBackups) | **Get** /qs/{id}/backups | List QuickServer Backups
-[**GetQsChangeHostname**](QuickServersAPI.md#GetQsChangeHostname) | **Get** /qs/{id}/change_hostname | Get QuickServer Hostname
-[**GetQsChangeRootPassword**](QuickServersAPI.md#GetQsChangeRootPassword) | **Get** /qs/{id}/change_root_password | Get Change Root Password Info
-[**GetQsChangeTimezone**](QuickServersAPI.md#GetQsChangeTimezone) | **Get** /qs/{id}/change_timezone | Get Timezone Info
-[**GetQsChangeWebuzoPassword**](QuickServersAPI.md#GetQsChangeWebuzoPassword) | **Get** /qs/{id}/change_webuzo_password | Webuzo Change Pass Info
-[**GetQsInfo**](QuickServersAPI.md#GetQsInfo) | **Get** /qs/{id} | Get QuickServer Order
-[**GetQsInsertCd**](QuickServersAPI.md#GetQsInsertCd) | **Get** /qs/{id}/insert_cd | Insert CD Information
-[**GetQsInvoices**](QuickServersAPI.md#GetQsInvoices) | **Get** /qs/{id}/invoices | Get QuickServer Invoices
-[**GetQsList**](QuickServersAPI.md#GetQsList) | **Get** /qs | List QuickServers
-[**GetQsReinstallOs**](QuickServersAPI.md#GetQsReinstallOs) | **Get** /qs/{id}/reinstall_os | QuickServer Reinstall OS Options
-[**GetQsResetPassword**](QuickServersAPI.md#GetQsResetPassword) | **Get** /qs/{id}/reset_password | Reset QuickServer Password Info
-[**GetQsReverseDns**](QuickServersAPI.md#GetQsReverseDns) | **Get** /qs/{id}/reverse_dns | Reverse DNS Info
-[**GetQsSetupVnc**](QuickServersAPI.md#GetQsSetupVnc) | **Get** /qs/{id}/setup_vnc | VNC Setup Info
-[**GetQsTrafficUsage**](QuickServersAPI.md#GetQsTrafficUsage) | **Get** /qs/{id}/traffic_usage | Get Traffic Usage
-[**GetQsViewDesktop**](QuickServersAPI.md#GetQsViewDesktop) | **Get** /qs/{id}/view_desktop | Get View Desktop Info
-[**GetQsWelcomeEmail**](QuickServersAPI.md#GetQsWelcomeEmail) | **Get** /qs/{id}/welcome_email | Resend QuickServer Welcome Email
-[**PostQsBackup**](QuickServersAPI.md#PostQsBackup) | **Post** /qs/{id}/backup | Create QuickServer Backup
-[**PostQsChangeHostname**](QuickServersAPI.md#PostQsChangeHostname) | **Post** /qs/{id}/change_hostname | Update QuickServer Hostname
-[**PostQsChangeRootPassword**](QuickServersAPI.md#PostQsChangeRootPassword) | **Post** /qs/{id}/change_root_password | Change Root Password
-[**PostQsChangeTimezone**](QuickServersAPI.md#PostQsChangeTimezone) | **Post** /qs/{id}/change_timezone | Change QuickServer Timezone
-[**PostQsChangeWebuzoPassword**](QuickServersAPI.md#PostQsChangeWebuzoPassword) | **Post** /qs/{id}/change_webuzo_password | Change Webuzo Password
-[**PostQsInsertCd**](QuickServersAPI.md#PostQsInsertCd) | **Post** /qs/{id}/insert_cd | Insert CD in QuickServer
-[**PostQsReinstallOs**](QuickServersAPI.md#PostQsReinstallOs) | **Post** /qs/{id}/reinstall_os | Reinstall QuickServer OS
-[**PostQsResetPassword**](QuickServersAPI.md#PostQsResetPassword) | **Post** /qs/{id}/reset_password | Reset QuickServer Password
-[**PostQsReverseDns**](QuickServersAPI.md#PostQsReverseDns) | **Post** /qs/{id}/reverse_dns | Update Reverse DNS
-[**PostQsSetupVnc**](QuickServersAPI.md#PostQsSetupVnc) | **Post** /qs/{id}/setup_vnc | Setup VNC
-[**PostQsTrafficUsage**](QuickServersAPI.md#PostQsTrafficUsage) | **Post** /qs/{id}/traffic_usage | Search Traffic Usage
-[**PostQsViewDesktop**](QuickServersAPI.md#PostQsViewDesktop) | **Post** /qs/{id}/view_desktop | Update View Desktop
-[**PostQuickServerRestore**](QuickServersAPI.md#PostQuickServerRestore) | **Post** /qs/{id}/restore | Restore QuickServer from Backup
-[**PutQs**](QuickServersAPI.md#PutQs) | **Put** /qs/order | Validate QuickServer Order
-[**QuickserversCancel**](QuickServersAPI.md#QuickserversCancel) | **Delete** /qs/{id} | Cancel QuickServer Order
-[**UpdateQsInfo**](QuickServersAPI.md#UpdateQsInfo) | **Post** /qs/{id} | Update QuickServer Order
+[**AddQs**](QuickServersAPI.md#AddQs) | **Post** /qs/order | Place a QuickServer order, generating a real invoice and queuing provisioning
+[**DeleteQsBackup**](QuickServersAPI.md#DeleteQsBackup) | **Delete** /qs/{id}/backups | Permanently delete a QuickServer backup file from object storage
+[**DoQsBlockSmtp**](QuickServersAPI.md#DoQsBlockSmtp) | **Get** /qs/{id}/block_smtp | Block outbound SMTP traffic on a QuickServer to halt mail abuse
+[**DoQsDisableCd**](QuickServersAPI.md#DoQsDisableCd) | **Get** /qs/{id}/disable_cd | Disable the virtual CD/DVD drive device on a QuickServer
+[**DoQsDisableQuota**](QuickServersAPI.md#DoQsDisableQuota) | **Get** /qs/{id}/disable_quota | Disable disk-quota enforcement at OS level on a QuickServer
+[**DoQsEjectCd**](QuickServersAPI.md#DoQsEjectCd) | **Get** /qs/{id}/eject_cd | Eject the currently mounted ISO from a QuickServer&#39;s virtual CD drive
+[**DoQsEnableQuota**](QuickServersAPI.md#DoQsEnableQuota) | **Get** /qs/{id}/enable_quota | Enable disk-quota enforcement at OS level on a QuickServer
+[**DoQsRestart**](QuickServersAPI.md#DoQsRestart) | **Get** /qs/{id}/restart | Reboot a QuickServer with a graceful OS-level restart
+[**DoQsStart**](QuickServersAPI.md#DoQsStart) | **Get** /qs/{id}/start | Power on a QuickServer that is currently stopped or pending boot
+[**DoQsStop**](QuickServersAPI.md#DoQsStop) | **Get** /qs/{id}/stop | Power off a QuickServer with a graceful shutdown command
+[**DownloadQsBackup**](QuickServersAPI.md#DownloadQsBackup) | **Patch** /qs/{id}/backups | Generate a 24-hour pre-signed download URL for a QuickServer backup
+[**GetNewQs**](QuickServersAPI.md#GetNewQs) | **Get** /qs/order | Get QuickServer order form metadata and available plans/templates
+[**GetQsBackup**](QuickServersAPI.md#GetQsBackup) | **Get** /qs/{id}/backup | Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+[**GetQsBackups**](QuickServersAPI.md#GetQsBackups) | **Get** /qs/{id}/backups | List available QuickServer backups across Swift, MinIO, and ZFS storage
+[**GetQsChangeHostname**](QuickServersAPI.md#GetQsChangeHostname) | **Get** /qs/{id}/change_hostname | Get current QuickServer hostname plus change rules and platform support
+[**GetQsChangeRootPassword**](QuickServersAPI.md#GetQsChangeRootPassword) | **Get** /qs/{id}/change_root_password | Get metadata for QuickServer root/OS password change requirements
+[**GetQsChangeTimezone**](QuickServersAPI.md#GetQsChangeTimezone) | **Get** /qs/{id}/change_timezone | List timezones the QuickServer can be set to via change_timezone
+[**GetQsChangeWebuzoPassword**](QuickServersAPI.md#GetQsChangeWebuzoPassword) | **Get** /qs/{id}/change_webuzo_password | Get metadata for changing the Webuzo control panel admin password
+[**GetQsInfo**](QuickServersAPI.md#GetQsInfo) | **Get** /qs/{id} | Get full details for one QuickServer including credentials and links
+[**GetQsInsertCd**](QuickServersAPI.md#GetQsInsertCd) | **Get** /qs/{id}/insert_cd | List ISO images available to mount on a QuickServer&#39;s virtual CD
+[**GetQsInvoices**](QuickServersAPI.md#GetQsInvoices) | **Get** /qs/{id}/invoices | List billing invoices charged for one QuickServer service
+[**GetQsList**](QuickServersAPI.md#GetQsList) | **Get** /qs | List QuickServer rapid-deploy dedicated servers on the account
+[**GetQsReinstallOs**](QuickServersAPI.md#GetQsReinstallOs) | **Get** /qs/{id}/reinstall_os | List OS templates available for a QuickServer reinstall
+[**GetQsResetPassword**](QuickServersAPI.md#GetQsResetPassword) | **Get** /qs/{id}/reset_password | Get options for QuickServer randomized root password reset
+[**GetQsReverseDns**](QuickServersAPI.md#GetQsReverseDns) | **Get** /qs/{id}/reverse_dns | Get reverse DNS (PTR) records for all of a QuickServer&#39;s IPs
+[**GetQsSetupVnc**](QuickServersAPI.md#GetQsSetupVnc) | **Get** /qs/{id}/setup_vnc | Get current VNC console connection details for a QuickServer
+[**GetQsTrafficUsage**](QuickServersAPI.md#GetQsTrafficUsage) | **Get** /qs/{id}/traffic_usage | Get bandwidth usage for the QuickServer&#39;s current billing period
+[**GetQsViewDesktop**](QuickServersAPI.md#GetQsViewDesktop) | **Get** /qs/{id}/view_desktop | Get the full QuickServer dashboard view payload (rich format)
+[**GetQsWelcomeEmail**](QuickServersAPI.md#GetQsWelcomeEmail) | **Get** /qs/{id}/welcome_email | Resend the QuickServer welcome email with login credentials
+[**PostQsChangeHostname**](QuickServersAPI.md#PostQsChangeHostname) | **Post** /qs/{id}/change_hostname | Change a QuickServer&#39;s system hostname (OpenVZ/Virtuozzo only)
+[**PostQsChangeRootPassword**](QuickServersAPI.md#PostQsChangeRootPassword) | **Post** /qs/{id}/change_root_password | Change QuickServer root/administrator password to a chosen value
+[**PostQsChangeTimezone**](QuickServersAPI.md#PostQsChangeTimezone) | **Post** /qs/{id}/change_timezone | Change the system timezone on a QuickServer to a catalog entry
+[**PostQsChangeWebuzoPassword**](QuickServersAPI.md#PostQsChangeWebuzoPassword) | **Post** /qs/{id}/change_webuzo_password | Change Webuzo control panel admin password live (synchronous, not queued)
+[**PostQsInsertCd**](QuickServersAPI.md#PostQsInsertCd) | **Post** /qs/{id}/insert_cd | Mount an ISO image as the QuickServer&#39;s virtual CD via URL
+[**PostQsReinstallOs**](QuickServersAPI.md#PostQsReinstallOs) | **Post** /qs/{id}/reinstall_os | Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
+[**PostQsResetPassword**](QuickServersAPI.md#PostQsResetPassword) | **Post** /qs/{id}/reset_password | Reset QuickServer root password to a server-generated random value
+[**PostQsReverseDns**](QuickServersAPI.md#PostQsReverseDns) | **Post** /qs/{id}/reverse_dns | Update reverse DNS (PTR) records for a QuickServer&#39;s IPs
+[**PostQsSetupVnc**](QuickServersAPI.md#PostQsSetupVnc) | **Post** /qs/{id}/setup_vnc | Configure the source IP allowed to reach a QuickServer&#39;s VNC console
+[**PostQsTrafficUsage**](QuickServersAPI.md#PostQsTrafficUsage) | **Post** /qs/{id}/traffic_usage | Query QuickServer bandwidth usage via POST (filtered variant)
+[**PostQsViewDesktop**](QuickServersAPI.md#PostQsViewDesktop) | **Post** /qs/{id}/view_desktop | Submit changes and re-fetch the QuickServer dashboard view payload
+[**PostQuickServerRestore**](QuickServersAPI.md#PostQuickServerRestore) | **Post** /qs/{id}/restore | Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
+[**PutQs**](QuickServersAPI.md#PutQs) | **Put** /qs/order | Validate a QuickServer order without charging or provisioning
+[**QuickserversCancel**](QuickServersAPI.md#QuickserversCancel) | **Delete** /qs/{id} | Cancel a QuickServer service at the end of the current billing cycle
+[**UpdateQsInfo**](QuickServersAPI.md#UpdateQsInfo) | **Post** /qs/{id} | Update QuickServer order metadata or stored settings without OS impact
 
 
 
 ## AddQs
 
-> ServiceOrderPostResponse AddQs(ctx).Execute()
+> ServiceOrderPostResponse AddQs(ctx).QsOrderRequest(qsOrderRequest).Execute()
 
-Place QuickServer Order
+Place a QuickServer order, generating a real invoice and queuing provisioning
 
 
 
@@ -72,10 +72,11 @@ import (
 )
 
 func main() {
+	qsOrderRequest := *openapiclient.NewQsOrderRequest(int32(123), "Password_example", false) // QsOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QuickServersAPI.AddQs(context.Background()).Execute()
+	resp, r, err := apiClient.QuickServersAPI.AddQs(context.Background()).QsOrderRequest(qsOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `QuickServersAPI.AddQs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -87,12 +88,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAddQsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **qsOrderRequest** | [**QsOrderRequest**](QsOrderRequest.md) |  | 
 
 ### Return type
 
@@ -104,7 +109,7 @@ Other parameters are passed through a pointer to a apiAddQsRequest struct via th
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -116,7 +121,7 @@ Other parameters are passed through a pointer to a apiAddQsRequest struct via th
 
 > SuccessTextResponse DeleteQsBackup(ctx, id).File(file).All(all).Execute()
 
-Delete QuickServer Backup
+Permanently delete a QuickServer backup file from object storage
 
 
 
@@ -190,7 +195,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoQsBlockSmtp(ctx, id).Execute()
 
-Block QuickServer SMTP
+Block outbound SMTP traffic on a QuickServer to halt mail abuse
 
 
 
@@ -260,7 +265,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoQsDisableCd(ctx, id).Execute()
 
-Disable CD Drive
+Disable the virtual CD/DVD drive device on a QuickServer
 
 
 
@@ -330,7 +335,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoQsDisableQuota(ctx, id).Execute()
 
-Disable Quotas
+Disable disk-quota enforcement at OS level on a QuickServer
 
 
 
@@ -400,7 +405,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoQsEjectCd(ctx, id).Execute()
 
-Eject CD Drive
+Eject the currently mounted ISO from a QuickServer's virtual CD drive
 
 
 
@@ -470,7 +475,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoQsEnableQuota(ctx, id).Execute()
 
-Enable Quotas
+Enable disk-quota enforcement at OS level on a QuickServer
 
 
 
@@ -540,7 +545,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoQsRestart(ctx, id).Execute()
 
-Restart QuickServer
+Reboot a QuickServer with a graceful OS-level restart
 
 
 
@@ -610,7 +615,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoQsStart(ctx, id).Execute()
 
-Start QuickServer
+Power on a QuickServer that is currently stopped or pending boot
 
 
 
@@ -680,7 +685,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoQsStop(ctx, id).Execute()
 
-Stop QuickServer
+Power off a QuickServer with a graceful shutdown command
 
 
 
@@ -750,7 +755,7 @@ Name | Type | Description  | Notes
 
 > DownloadQsBackup200Response DownloadQsBackup(ctx, id).DownloadQsBackupRequest(downloadQsBackupRequest).All(all).Execute()
 
-Download QuickServer Backup
+Generate a 24-hour pre-signed download URL for a QuickServer backup
 
 
 
@@ -824,7 +829,7 @@ Name | Type | Description  | Notes
 
 > QuickserverOrder GetNewQs(ctx).Execute()
 
-Get QuickServer Ordering Information
+Get QuickServer order form metadata and available plans/templates
 
 
 
@@ -881,11 +886,81 @@ Other parameters are passed through a pointer to a apiGetNewQsRequest struct via
 [[Back to README]](../README.md)
 
 
+## GetQsBackup
+
+> QueueResponse GetQsBackup(ctx, id).Execute()
+
+Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | QuickServer ID number
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.QuickServersAPI.GetQsBackup(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `QuickServersAPI.GetQsBackup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetQsBackup`: QueueResponse
+	fmt.Fprintf(os.Stdout, "Response from `QuickServersAPI.GetQsBackup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | QuickServer ID number | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetQsBackupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**QueueResponse**](QueueResponse.md)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetQsBackups
 
 > VpsBackupRows GetQsBackups(ctx, id).All(all).Execute()
 
-List QuickServer Backups
+List available QuickServer backups across Swift, MinIO, and ZFS storage
 
 
 
@@ -957,7 +1032,7 @@ Name | Type | Description  | Notes
 
 > GetQsChangeHostname(ctx, id).Execute()
 
-Get QuickServer Hostname
+Get current QuickServer hostname plus change rules and platform support
 
 
 
@@ -1025,7 +1100,7 @@ Name | Type | Description  | Notes
 
 > GetQsChangeRootPassword(ctx, id).Execute()
 
-Get Change Root Password Info
+Get metadata for QuickServer root/OS password change requirements
 
 
 
@@ -1093,7 +1168,7 @@ Name | Type | Description  | Notes
 
 > []string GetQsChangeTimezone(ctx, id).Execute()
 
-Get Timezone Info
+List timezones the QuickServer can be set to via change_timezone
 
 
 
@@ -1163,7 +1238,7 @@ Name | Type | Description  | Notes
 
 > GetQsChangeWebuzoPassword(ctx, id).Execute()
 
-Webuzo Change Pass Info
+Get metadata for changing the Webuzo control panel admin password
 
 
 
@@ -1231,7 +1306,7 @@ Name | Type | Description  | Notes
 
 > Quickserver GetQsInfo(ctx, id).Execute()
 
-Get QuickServer Order
+Get full details for one QuickServer including credentials and links
 
 
 
@@ -1301,7 +1376,7 @@ Name | Type | Description  | Notes
 
 > GetQsInsertCd(ctx, id).Execute()
 
-Insert CD Information
+List ISO images available to mount on a QuickServer's virtual CD
 
 
 
@@ -1369,7 +1444,7 @@ Name | Type | Description  | Notes
 
 > ChargeInvoiceRows GetQsInvoices(ctx, id).Execute()
 
-Get QuickServer Invoices
+List billing invoices charged for one QuickServer service
 
 
 
@@ -1439,7 +1514,7 @@ Name | Type | Description  | Notes
 
 > []QuickserverRow GetQsList(ctx).Execute()
 
-List QuickServers
+List QuickServer rapid-deploy dedicated servers on the account
 
 
 
@@ -1500,7 +1575,7 @@ Other parameters are passed through a pointer to a apiGetQsListRequest struct vi
 
 > VpsTemplatesList GetQsReinstallOs(ctx, id).Execute()
 
-QuickServer Reinstall OS Options
+List OS templates available for a QuickServer reinstall
 
 
 
@@ -1570,7 +1645,7 @@ Name | Type | Description  | Notes
 
 > GetQsResetPassword(ctx, id).Execute()
 
-Reset QuickServer Password Info
+Get options for QuickServer randomized root password reset
 
 
 
@@ -1638,7 +1713,7 @@ Name | Type | Description  | Notes
 
 > ReverseDnsEntries GetQsReverseDns(ctx, id).Execute()
 
-Reverse DNS Info
+Get reverse DNS (PTR) records for all of a QuickServer's IPs
 
 
 
@@ -1708,7 +1783,7 @@ Name | Type | Description  | Notes
 
 > GetQsSetupVnc(ctx, id).Execute()
 
-VNC Setup Info
+Get current VNC console connection details for a QuickServer
 
 
 
@@ -1776,7 +1851,7 @@ Name | Type | Description  | Notes
 
 > GetQsTrafficUsage(ctx, id).Execute()
 
-Get Traffic Usage
+Get bandwidth usage for the QuickServer's current billing period
 
 
 
@@ -1844,7 +1919,7 @@ Name | Type | Description  | Notes
 
 > GetQsViewDesktop(ctx, id).Execute()
 
-Get View Desktop Info
+Get the full QuickServer dashboard view payload (rich format)
 
 
 
@@ -1912,7 +1987,7 @@ Name | Type | Description  | Notes
 
 > TextResponse GetQsWelcomeEmail(ctx, id).Execute()
 
-Resend QuickServer Welcome Email
+Resend the QuickServer welcome email with login credentials
 
 
 
@@ -1978,81 +2053,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PostQsBackup
-
-> QueueResponse PostQsBackup(ctx, id).Execute()
-
-Create QuickServer Backup
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	id := int32(56) // int32 | QuickServer ID number
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.QuickServersAPI.PostQsBackup(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `QuickServersAPI.PostQsBackup``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PostQsBackup`: QueueResponse
-	fmt.Fprintf(os.Stdout, "Response from `QuickServersAPI.PostQsBackup`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | QuickServer ID number | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPostQsBackupRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**QueueResponse**](QueueResponse.md)
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## PostQsChangeHostname
 
 > QueueResponse PostQsChangeHostname(ctx, id).Execute()
 
-Update QuickServer Hostname
+Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
 
 
 
@@ -2122,7 +2127,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostQsChangeRootPassword(ctx, id).Execute()
 
-Change Root Password
+Change QuickServer root/administrator password to a chosen value
 
 
 
@@ -2192,7 +2197,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostQsChangeTimezone(ctx, id).Timezone(timezone).Execute()
 
-Change QuickServer Timezone
+Change the system timezone on a QuickServer to a catalog entry
 
 
 
@@ -2264,7 +2269,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostQsChangeWebuzoPassword(ctx, id).Execute()
 
-Change Webuzo Password
+Change Webuzo control panel admin password live (synchronous, not queued)
 
 
 
@@ -2334,7 +2339,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostQsInsertCd(ctx, id).Execute()
 
-Insert CD in QuickServer
+Mount an ISO image as the QuickServer's virtual CD via URL
 
 
 
@@ -2404,7 +2409,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostQsReinstallOs(ctx, id).Execute()
 
-Reinstall QuickServer OS
+Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
 
 
 
@@ -2474,7 +2479,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostQsResetPassword(ctx, id).Execute()
 
-Reset QuickServer Password
+Reset QuickServer root password to a server-generated random value
 
 
 
@@ -2544,7 +2549,7 @@ Name | Type | Description  | Notes
 
 > TextResponse PostQsReverseDns(ctx, id).ReverseDnsEntries(reverseDnsEntries).Execute()
 
-Update Reverse DNS
+Update reverse DNS (PTR) records for a QuickServer's IPs
 
 
 
@@ -2616,7 +2621,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostQsSetupVnc(ctx, id).Execute()
 
-Setup VNC
+Configure the source IP allowed to reach a QuickServer's VNC console
 
 
 
@@ -2686,7 +2691,7 @@ Name | Type | Description  | Notes
 
 > PostQsTrafficUsage(ctx, id).Execute()
 
-Search Traffic Usage
+Query QuickServer bandwidth usage via POST (filtered variant)
 
 
 
@@ -2754,7 +2759,7 @@ Name | Type | Description  | Notes
 
 > PostQsViewDesktop(ctx, id).Execute()
 
-Update View Desktop
+Submit changes and re-fetch the QuickServer dashboard view payload
 
 
 
@@ -2822,7 +2827,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostQuickServerRestore(ctx, id).RestoreRequest(restoreRequest).Execute()
 
-Restore QuickServer from Backup
+Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
 
 
 
@@ -2892,9 +2897,9 @@ Name | Type | Description  | Notes
 
 ## PutQs
 
-> PutQs(ctx).Execute()
+> PutQs(ctx).QsOrderRequest(qsOrderRequest).Execute()
 
-Validate QuickServer Order
+Validate a QuickServer order without charging or provisioning
 
 
 
@@ -2911,10 +2916,11 @@ import (
 )
 
 func main() {
+	qsOrderRequest := *openapiclient.NewQsOrderRequest(int32(123), "Password_example", false) // QsOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.QuickServersAPI.PutQs(context.Background()).Execute()
+	r, err := apiClient.QuickServersAPI.PutQs(context.Background()).QsOrderRequest(qsOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `QuickServersAPI.PutQs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -2924,12 +2930,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPutQsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **qsOrderRequest** | [**QsOrderRequest**](QsOrderRequest.md) |  | 
 
 ### Return type
 
@@ -2941,7 +2951,7 @@ Other parameters are passed through a pointer to a apiPutQsRequest struct via th
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -2953,7 +2963,7 @@ Other parameters are passed through a pointer to a apiPutQsRequest struct via th
 
 > QuickserversCancel200Response QuickserversCancel(ctx, id).Execute()
 
-Cancel QuickServer Order
+Cancel a QuickServer service at the end of the current billing cycle
 
 
 
@@ -3023,7 +3033,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateQsInfo(ctx, id).Execute()
 
-Update QuickServer Order
+Update QuickServer order metadata or stored settings without OS impact
 
 
 

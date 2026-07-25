@@ -212,7 +212,7 @@ VpsTrafficResponse <- R6::R6Class(
         self$`last` <- this_object$`last`
       }
       if (!is.null(this_object$`times`)) {
-        self$`times` <- ApiClient$new()$deserializeObj(this_object$`times`, "array[character]", loadNamespace("openapi"))
+        self$`times` <- ApiClient$new()$deserializeObj(this_object$`times`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`totals`)) {
         `totals_object` <- VpsTrafficTotalsResposne$new()
@@ -225,7 +225,7 @@ VpsTrafficResponse <- R6::R6Class(
         self$`usage` <- `usage_object`
       }
       if (!is.null(this_object$`data`)) {
-        self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VpsTrafficDataSectionResponse]", loadNamespace("openapi"))
+        self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VpsTrafficDataSectionResponse]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -253,10 +253,10 @@ VpsTrafficResponse <- R6::R6Class(
       self$`interval` <- this_object$`interval`
       self$`history` <- VpsTrafficHistoryResponse$new()$fromJSON(jsonlite::toJSON(this_object$`history`, auto_unbox = TRUE, digits = NA))
       self$`last` <- this_object$`last`
-      self$`times` <- ApiClient$new()$deserializeObj(this_object$`times`, "array[character]", loadNamespace("openapi"))
+      self$`times` <- ApiClient$new()$deserializeObj(this_object$`times`, "array[character]", loadNamespace("interserverapi"))
       self$`totals` <- VpsTrafficTotalsResposne$new()$fromJSON(jsonlite::toJSON(this_object$`totals`, auto_unbox = TRUE, digits = NA))
       self$`usage` <- VpsTrafficUsageResponse$new()$fromJSON(jsonlite::toJSON(this_object$`usage`, auto_unbox = TRUE, digits = NA))
-      self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VpsTrafficDataSectionResponse]", loadNamespace("openapi"))
+      self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VpsTrafficDataSectionResponse]", loadNamespace("interserverapi"))
       self
     },
 

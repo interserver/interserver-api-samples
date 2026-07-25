@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailAlertUpdateRequest } from './api';
+import { MailAlertUpdateRequest } from '@interserver/myadmin-client';
 
 const instance: MailAlertUpdateRequest = {
     alert_id,

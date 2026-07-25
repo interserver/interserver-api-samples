@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PlaceScrubOrder201ResponseOrderDetailsCjParams = Initialize-PSOpenAPIToolsPlaceScrubOrder201ResponseOrderDetailsCjParams  -ContainerTagId 1684 `
+$PlaceScrubOrder201ResponseOrderDetailsCjParams = Initialize-InterserverApiPlaceScrubOrder201ResponseOrderDetailsCjParams  -ContainerTagId 1684 `
  -CID 2314 `
  -OID scrub_ips12424 `
  -TYPE 2242343242 `

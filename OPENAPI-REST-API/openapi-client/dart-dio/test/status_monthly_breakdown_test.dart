@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for StatusMonthlyBreakdown
 void main() {
-  final instance = StatusMonthlyBreakdownBuilder();
-  // TODO add properties to the builder and call build()
+  final StatusMonthlyBreakdown? instance = /* StatusMonthlyBreakdown(...) */ null;
+  // TODO add properties to the entity
 
   group(StatusMonthlyBreakdown, () {
     // MonthlyCounts default_

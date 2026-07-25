@@ -1,4 +1,4 @@
-# openapi::ServersBuyNowResponse
+# interserverapi::ServersBuyNowResponse
 
 Success response after placing a buy-it-now dedicated server order.
 

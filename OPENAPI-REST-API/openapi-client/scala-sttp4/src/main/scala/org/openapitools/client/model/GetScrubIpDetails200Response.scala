@@ -22,4 +22,3 @@ case class GetScrubIpDetails200Response(
   extraInfoTables: Option[GetScrubIpDetails200ResponseExtraInfoTables] = None,
   filter_firewall: Option[GetScrubIpDetails200ResponseFilterFirewall] = None
 )
-

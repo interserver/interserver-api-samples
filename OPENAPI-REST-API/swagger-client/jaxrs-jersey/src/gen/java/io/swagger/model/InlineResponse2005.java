@@ -24,27 +24,50 @@ import javax.validation.Valid;
  */
 
 public class InlineResponse2005   {
-  @JsonProperty("redirect_url")
-  private String redirectUrl = null;
+  @JsonProperty("success")
+  private Boolean success = null;
 
-  public InlineResponse2005 redirectUrl(String redirectUrl) {
-    this.redirectUrl = redirectUrl;
+  @JsonProperty("text")
+  private String text = null;
+
+  public InlineResponse2005 success(Boolean success) {
+    this.success = success;
     return this;
   }
 
   /**
-   * The URL to redirect the user to for OAuth authentication.
-   * @return redirectUrl
+   * Get success
+   * @return success
    **/
-  @JsonProperty("redirect_url")
-  @Schema(description = "The URL to redirect the user to for OAuth authentication.")
+  @JsonProperty("success")
+  @Schema(required = true, description = "")
   @NotNull
-  public String getRedirectUrl() {
-    return redirectUrl;
+  public Boolean isSuccess() {
+    return success;
   }
 
-  public void setRedirectUrl(String redirectUrl) {
-    this.redirectUrl = redirectUrl;
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
+  public InlineResponse2005 text(String text) {
+    this.text = text;
+    return this;
+  }
+
+  /**
+   * Get text
+   * @return text
+   **/
+  @JsonProperty("text")
+  @Schema(required = true, description = "")
+  @NotNull
+  public String getText() {
+    return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
   }
 
 
@@ -57,12 +80,13 @@ public class InlineResponse2005   {
       return false;
     }
     InlineResponse2005 inlineResponse2005 = (InlineResponse2005) o;
-    return Objects.equals(this.redirectUrl, inlineResponse2005.redirectUrl);
+    return Objects.equals(this.success, inlineResponse2005.success) &&
+        Objects.equals(this.text, inlineResponse2005.text);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(redirectUrl);
+    return Objects.hash(success, text);
   }
 
 
@@ -71,7 +95,8 @@ public class InlineResponse2005   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2005 {\n");
     
-    sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }

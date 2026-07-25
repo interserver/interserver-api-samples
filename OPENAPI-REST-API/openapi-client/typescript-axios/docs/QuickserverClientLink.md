@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverClientLink } from './api';
+import { QuickserverClientLink } from '@interserver/myadmin-client';
 
 const instance: QuickserverClientLink = {
     label,

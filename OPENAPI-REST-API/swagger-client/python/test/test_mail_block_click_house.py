@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.mail_block_click_house import MailBlockClickHouse  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.mail_block_click_house import MailBlockClickHouse  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestMailBlockClickHouse(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestMailBlockClickHouse(unittest.TestCase):
     def testMailBlockClickHouse(self):
         """Test MailBlockClickHouse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.mail_block_click_house.MailBlockClickHouse()  # noqa: E501
+        # model = interserver_api_client.models.mail_block_click_house.MailBlockClickHouse()  # noqa: E501
         pass
 
 

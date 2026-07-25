@@ -27,4 +27,3 @@ case class BackupOrderPostResponse(
   invoice_description: Option[String] = None,
   cj_params: Option[BackupOrderPostResponseCjParams] = None
 )
-

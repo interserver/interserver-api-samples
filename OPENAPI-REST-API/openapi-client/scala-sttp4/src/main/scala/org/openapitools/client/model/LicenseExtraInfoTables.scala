@@ -15,4 +15,3 @@ package org.openapitools.client.model
 case class LicenseExtraInfoTables(
   ip_info: Option[LicenseIpInfo] = None
 )
-

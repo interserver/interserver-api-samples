@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ReverseDnsEntries();
+    instance = new InterserverApiClient.ReverseDnsEntries();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('ReverseDnsEntries', function() {
     it('should create an instance of ReverseDnsEntries', function() {
       // uncomment below and update the code to test ReverseDnsEntries
-      //var instance = new InterServerManagementApi.ReverseDnsEntries();
-      //expect(instance).to.be.a(InterServerManagementApi.ReverseDnsEntries);
+      //var instance = new InterserverApiClient.ReverseDnsEntries();
+      //expect(instance).to.be.a(InterserverApiClient.ReverseDnsEntries);
     });
 
     it('should have the property ips (base name: "ips")', function() {
       // uncomment below and update the code to test the property ips
-      //var instance = new InterServerManagementApi.ReverseDnsEntries();
+      //var instance = new InterserverApiClient.ReverseDnsEntries();
       //expect(instance).to.be();
     });
 

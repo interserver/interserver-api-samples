@@ -151,6 +151,12 @@ Protected Interface MailApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub UpdateRuleCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.GenericResponse)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ViewMailLogCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.MailLog)
 		  
 		End Sub

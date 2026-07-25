@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsServiceAddons = Initialize-PSOpenAPIToolsVpsServiceAddons  -HasCpanel null `
+$VpsServiceAddons = Initialize-InterserverApiVpsServiceAddons  -HasCpanel null `
  -HasDirectadmin null `
  -HasFantastico null `
  -HasSoftaculous null `

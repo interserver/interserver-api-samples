@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailTutorialsTableRow
 void main() {
-  final instance = MailTutorialsTableRowBuilder();
-  // TODO add properties to the builder and call build()
+  final MailTutorialsTableRow? instance = /* MailTutorialsTableRow(...) */ null;
+  // TODO add properties to the entity
 
   group(MailTutorialsTableRow, () {
     // The description of the tutorials table row.
-    // String desc
+    // Optional<String?> desc
     test('to test the property `desc`', () async {
       // TODO
     });
 
     // The value of the tutorials table row.
-    // String value
+    // Optional<String?> value
     test('to test the property `value`', () async {
       // TODO
     });

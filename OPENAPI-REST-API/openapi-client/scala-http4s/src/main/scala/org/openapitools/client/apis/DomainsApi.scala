@@ -25,6 +25,7 @@ import org.openapitools.client.models.DomainNameserverGetResponse
 import org.openapitools.client.models.DomainNameserverPostRequest
 import org.openapitools.client.models.DomainNameserverPutRequest
 import org.openapitools.client.models.DomainOrder
+import org.openapitools.client.models.DomainOrderRequest
 import org.openapitools.client.models.DomainRow
 import org.openapitools.client.models.DomainSearchResponse
 import org.openapitools.client.models.DomainWhoisPrivacyRequest
@@ -37,11 +38,11 @@ import org.openapitools.client.models.*
 
 trait DomainsApiEndpoints[F[*]] {
 
-  def addDomain()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
+  def addDomain(domainOrderRequest: DomainOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def addDomainDnssec(id: Int, domainDnssecRequest: DomainDnssecRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def addDomainNameserver(id: Int, domainNameserverPostRequest: DomainNameserverPostRequest)(using auth: _Authorization.ApiKey): F[TextResponse]
   def cancelDomain(id: Int)(using auth: _Authorization.ApiKey): F[CancelDomain200Response]
-  def deleteDomainDnssec(id: Int, action: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
+  def deleteDomainDnssec(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def deleteDomainNameserver(id: Int, index: Int)(using auth: _Authorization.ApiKey): F[TextResponse]
   def getDomainContact(id: Int)(using auth: _Authorization.ApiKey): F[DomainContactDetails]
   def getDomainDnssec(id: Int)(using auth: _Authorization.ApiKey): F[DomainDnssecRecords]
@@ -49,8 +50,6 @@ trait DomainsApiEndpoints[F[*]] {
   def getDomainInvoices(id: Int)(using auth: _Authorization.ApiKey): F[ChargeInvoiceRows]
   def getDomainLookup(name: String)(using auth: _Authorization.ApiKey): F[DomainLookupResponse]
   def getDomainNameservers(id: Int)(using auth: _Authorization.ApiKey): F[DomainNameserverGetResponse]
-  def getDomainOrderFields(domain: String, regType: String)(using auth: _Authorization.ApiKey): F[Unit]
-  def getDomainOrderSearchResults(domain: String)(using auth: _Authorization.ApiKey): F[Unit]
   def getDomainRenewal(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def getDomainSearch(name: String)(using auth: _Authorization.ApiKey): F[DomainSearchResponse]
   def getDomainTransfer(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
@@ -58,12 +57,13 @@ trait DomainsApiEndpoints[F[*]] {
   def getDomainsList()(using auth: _Authorization.ApiKey): F[Seq[DomainRow]]
   def getDomainsWelcomeEmail(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def getNewDomain()(using auth: _Authorization.ApiKey): F[DomainOrder]
-  def patchDomains()(using auth: _Authorization.ApiKey): F[Unit]
+  def patchDomains(domainOrderRequest: DomainOrderRequest)(using auth: _Authorization.ApiKey): F[Unit]
   def postDomainRenewal(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
+  def postDomainSearch(name: String)(using auth: _Authorization.ApiKey): F[Unit]
   def postDomainTransfer(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def putDomains()(using auth: _Authorization.ApiKey): F[Unit]
+  def putDomains(domainOrderRequest: DomainOrderRequest)(using auth: _Authorization.ApiKey): F[Unit]
   def updateDomainContact(id: Int, domainContactDetails: DomainContactDetails)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def updateDomainInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
+  def updateDomainInfo(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def updateDomainNameservers(id: Int, domainNameserverPutRequest: DomainNameserverPutRequest)(using auth: _Authorization.ApiKey): F[TextResponse]
   def updateDomainWhoisPrivacy(id: Int, domainWhoisPrivacyRequest: DomainWhoisPrivacyRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
 
@@ -79,15 +79,15 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addDomain()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
+  override def addDomain(domainOrderRequest: DomainOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, ServiceOrderPostResponse](
+    _executeRequest[DomainOrderRequest, ServiceOrderPostResponse](
       method = "POST",
       path = s"/domains/order",
-      body = None,
+      body = Some(domainOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -155,20 +155,17 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def deleteDomainDnssec(id: Int, action: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
+  override def deleteDomainDnssec(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
-    val queryParameters = (
-      Some(Seq("action" -> action))
-    ).toSeq.flatten
 
     _executeRequest[Unit, SuccessTextResponse](
       method = "DELETE",
       path = s"/domains/${id}/dnssec",
       body = None,
       formParameters = None,
-      queryParameters = queryParameters,
+      queryParameters = Nil,
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
@@ -314,44 +311,6 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def getDomainOrderFields(domain: String, regType: String)(using auth: _Authorization.ApiKey): F[Unit] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "application/json")
-    ).flatten
-
-    _executeRequest[Unit, Unit](
-      method = "GET",
-      path = s"/domains/order/${domain}/${regType}",
-      body = None,
-      formParameters = None,
-      queryParameters = Nil,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => Concurrent[F].pure(())
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
-
-  override def getDomainOrderSearchResults(domain: String)(using auth: _Authorization.ApiKey): F[Unit] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "application/json")
-    ).flatten
-
-    _executeRequest[Unit, Unit](
-      method = "GET",
-      path = s"/domains/order/${domain}",
-      body = None,
-      formParameters = None,
-      queryParameters = Nil,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => Concurrent[F].pure(())
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
-
   override def getDomainRenewal(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
@@ -486,15 +445,15 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def patchDomains()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def patchDomains(domainOrderRequest: DomainOrderRequest)(using auth: _Authorization.ApiKey): F[Unit] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[DomainOrderRequest, Unit](
       method = "PATCH",
       path = s"/domains/order",
-      body = None,
+      body = Some(domainOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -524,6 +483,25 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
+  override def postDomainSearch(name: String)(using auth: _Authorization.ApiKey): F[Unit] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, Unit](
+      method = "POST",
+      path = s"/domains/search/${name}",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => Concurrent[F].pure(())
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
   override def postDomainTransfer(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
@@ -543,15 +521,15 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def putDomains()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def putDomains(domainOrderRequest: DomainOrderRequest)(using auth: _Authorization.ApiKey): F[Unit] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[DomainOrderRequest, Unit](
       method = "PUT",
       path = s"/domains/order",
-      body = None,
+      body = Some(domainOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -581,7 +559,7 @@ class DomainsApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateDomainInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
+  override def updateDomainInfo(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten

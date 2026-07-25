@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_location1 import ServerLocation1
+from interserver_api_client.models.server_location1 import ServerLocation1
 
 class TestServerLocation1(unittest.TestCase):
     """ServerLocation1 unit test stubs"""

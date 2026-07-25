@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserversCancel200Response
+# InterserverApiClient.QuickserversCancel200Response
 
 ## Properties
 

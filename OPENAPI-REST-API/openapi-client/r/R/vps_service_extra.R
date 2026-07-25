@@ -114,7 +114,7 @@ VpsServiceExtra <- R6::R6Class(
         self$`spice` <- this_object$`spice`
       }
       if (!is.null(this_object$`snapshots`)) {
-        self$`snapshots` <- ApiClient$new()$deserializeObj(this_object$`snapshots`, "array[VpsSnapshot]", loadNamespace("openapi"))
+        self$`snapshots` <- ApiClient$new()$deserializeObj(this_object$`snapshots`, "array[VpsSnapshot]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -138,7 +138,7 @@ VpsServiceExtra <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`spice` <- this_object$`spice`
-      self$`snapshots` <- ApiClient$new()$deserializeObj(this_object$`snapshots`, "array[VpsSnapshot]", loadNamespace("openapi"))
+      self$`snapshots` <- ApiClient$new()$deserializeObj(this_object$`snapshots`, "array[VpsSnapshot]", loadNamespace("interserverapi"))
       self
     },
 

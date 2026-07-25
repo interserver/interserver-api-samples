@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServiceCategory = Initialize-PSOpenAPIToolsServiceCategory  -CategoryId 1 `
+$ServiceCategory = Initialize-InterserverApiServiceCategory  -CategoryId 1 `
  -CategoryName OpenVZ Virtual Servers `
  -CategoryTag openvz `
  -CategoryModule vps

@@ -17,7 +17,7 @@ import VpsDALicense from './VpsDALicense';
 /**
  * The VpsDAData model module.
  * @module model/VpsDAData
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsDAData {
     /**

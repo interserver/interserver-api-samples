@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The WebsiteLoginResponse model module.
  * @module model/WebsiteLoginResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsiteLoginResponse {
     /**

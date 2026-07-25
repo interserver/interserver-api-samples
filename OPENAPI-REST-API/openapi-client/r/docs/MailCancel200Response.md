@@ -1,4 +1,4 @@
-# openapi::MailCancel200Response
+# interserverapi::MailCancel200Response
 
 
 ## Properties

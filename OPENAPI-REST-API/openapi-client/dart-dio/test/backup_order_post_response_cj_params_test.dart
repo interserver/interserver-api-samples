@@ -1,48 +1,48 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BackupOrderPostResponseCjParams
 void main() {
-  final instance = BackupOrderPostResponseCjParamsBuilder();
-  // TODO add properties to the builder and call build()
+  final BackupOrderPostResponseCjParams? instance = /* BackupOrderPostResponseCjParams(...) */ null;
+  // TODO add properties to the entity
 
   group(BackupOrderPostResponseCjParams, () {
-    // String containerTagId
+    // Optional<String?> containerTagId
     test('to test the property `containerTagId`', () async {
       // TODO
     });
 
-    // String CID
+    // Optional<String?> CID
     test('to test the property `CID`', () async {
       // TODO
     });
 
-    // String OID
+    // Optional<String?> OID
     test('to test the property `OID`', () async {
       // TODO
     });
 
-    // String TYPE
+    // Optional<String?> TYPE
     test('to test the property `TYPE`', () async {
       // TODO
     });
 
-    // String iTEM1
-    test('to test the property `iTEM1`', () async {
+    // Optional<String?> ITEM1
+    test('to test the property `ITEM1`', () async {
       // TODO
     });
 
-    // String aMT1
-    test('to test the property `aMT1`', () async {
+    // Optional<String?> AMT1
+    test('to test the property `AMT1`', () async {
       // TODO
     });
 
-    // int qTY1
-    test('to test the property `qTY1`', () async {
+    // Optional<int?> QTY1
+    test('to test the property `QTY1`', () async {
       // TODO
     });
 
-    // String CURRENCY
+    // Optional<String?> CURRENCY
     test('to test the property `CURRENCY`', () async {
       // TODO
     });

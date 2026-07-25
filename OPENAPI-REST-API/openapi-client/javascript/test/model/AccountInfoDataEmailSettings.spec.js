@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoDataEmailSettings();
+    instance = new InterserverApiClient.AccountInfoDataEmailSettings();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('AccountInfoDataEmailSettings', function() {
     it('should create an instance of AccountInfoDataEmailSettings', function() {
       // uncomment below and update the code to test AccountInfoDataEmailSettings
-      //var instance = new InterServerManagementApi.AccountInfoDataEmailSettings();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoDataEmailSettings);
+      //var instance = new InterserverApiClient.AccountInfoDataEmailSettings();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoDataEmailSettings);
     });
 
     it('should have the property admin_cc_bad_response (base name: "admin/cc_bad_response")', function() {
       // uncomment below and update the code to test the property admin_cc_bad_response
-      //var instance = new InterServerManagementApi.AccountInfoDataEmailSettings();
+      //var instance = new InterserverApiClient.AccountInfoDataEmailSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property admin_mass_communications_tpl (base name: "admin/mass_communications.tpl")', function() {
       // uncomment below and update the code to test the property admin_mass_communications_tpl
-      //var instance = new InterServerManagementApi.AccountInfoDataEmailSettings();
+      //var instance = new InterserverApiClient.AccountInfoDataEmailSettings();
       //expect(instance).to.be();
     });
 

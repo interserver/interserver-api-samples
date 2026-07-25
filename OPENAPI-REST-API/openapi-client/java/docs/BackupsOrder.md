@@ -12,4 +12,8 @@ Available backup storage packages and pricing for ordering a new backup service.
 |**serviceTypes** | [**BackupsOrderServiceTypes**](BackupsOrderServiceTypes.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

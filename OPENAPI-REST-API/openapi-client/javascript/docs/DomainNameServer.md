@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainNameServer
+# InterserverApiClient.DomainNameServer
 
 ## Properties
 

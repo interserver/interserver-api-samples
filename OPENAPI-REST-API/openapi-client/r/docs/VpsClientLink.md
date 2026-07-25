@@ -1,4 +1,4 @@
-# openapi::VpsClientLink
+# interserverapi::VpsClientLink
 
 A navigation link for VPS-related actions in the client portal.
 

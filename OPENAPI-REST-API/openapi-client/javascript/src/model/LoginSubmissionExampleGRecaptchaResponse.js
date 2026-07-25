@@ -17,7 +17,7 @@ import LoginSubmissionExampleGRecaptchaResponseDep from './LoginSubmissionExampl
 /**
  * The LoginSubmissionExampleGRecaptchaResponse model module.
  * @module model/LoginSubmissionExampleGRecaptchaResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LoginSubmissionExampleGRecaptchaResponse {
     /**

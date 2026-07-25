@@ -24,7 +24,7 @@ public class VpsOrderLocationStock1  {
    * @return kvm
   **/
   @JsonProperty("kvm")
-  public Boolean getKvm() {
+  public Boolean isKvm() {
     return kvm;
   }
 
@@ -42,7 +42,7 @@ public class VpsOrderLocationStock1  {
    * @return kvmstorage
   **/
   @JsonProperty("kvmstorage")
-  public Boolean getKvmstorage() {
+  public Boolean isKvmstorage() {
     return kvmstorage;
   }
 
@@ -60,7 +60,7 @@ public class VpsOrderLocationStock1  {
    * @return hyperv
   **/
   @JsonProperty("hyperv")
-  public Boolean getHyperv() {
+  public Boolean isHyperv() {
     return hyperv;
   }
 

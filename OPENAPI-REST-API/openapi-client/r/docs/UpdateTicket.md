@@ -1,4 +1,4 @@
-# openapi::UpdateTicket
+# interserverapi::UpdateTicket
 
 Update custom fields of the ticket
 

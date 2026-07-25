@@ -15,4 +15,3 @@ package org.openapitools.client.model
 case class GetScrubIpDetails200ResponseExtraInfoTables(
   scrub_ips: Option[GetScrubIpDetails200ResponseExtraInfoTablesScrubIps] = None
 )
-

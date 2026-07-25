@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailExtraInfoTable
 void main() {
-  final instance = MailExtraInfoTableBuilder();
-  // TODO add properties to the builder and call build()
+  final MailExtraInfoTable? instance = /* MailExtraInfoTable(...) */ null;
+  // TODO add properties to the entity
 
   group(MailExtraInfoTable, () {
     // The title of the extra info table.
-    // String title
+    // Optional<String?> title
     test('to test the property `title`', () async {
       // TODO
     });
 
     // The rows of the extra info table.
-    // BuiltList<MailExtraInfoTableRow> rows
+    // Optional<List<MailExtraInfoTableRow>?> rows
     test('to test the property `rows`', () async {
       // TODO
     });

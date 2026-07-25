@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerOrderFieldLabel model module.
  * @module model/ServerOrderFieldLabel
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderFieldLabel {
     /**

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_info_data import AccountInfoData
+from interserver_api_client.models.account_info_data import AccountInfoData
 
 class TestAccountInfoData(unittest.TestCase):
     """AccountInfoData unit test stubs"""
@@ -70,15 +70,15 @@ class TestAccountInfoData(unittest.TestCase):
                 disable_reset = '',
                 email = '',
                 email_abuse = '',
-                email_settings = openapi_client.models.account_info_data_email_settings.AccountInfoData_email_settings(
+                email_settings = interserver_api_client.models.account_info_data_email_settings.AccountInfoData_email_settings(
                     admin/cc_bad_response = '', 
                     admin/mass_communications/tpl = '', ),
-                extra = openapi_client.models.account_info_data_extra.AccountInfoData_extra(
+                extra = interserver_api_client.models.account_info_data_extra.AccountInfoData_extra(
                     private_whois = '', ),
                 facebook_id = '',
                 facebook_url = '',
                 firstname = '',
-                fraudrecord = openapi_client.models.account_info_data_fraudrecord.AccountInfoData_fraudrecord(
+                fraudrecord = interserver_api_client.models.account_info_data_fraudrecord.AccountInfoData_fraudrecord(
                     score = '', 
                     count = '', 
                     reliability = '', 

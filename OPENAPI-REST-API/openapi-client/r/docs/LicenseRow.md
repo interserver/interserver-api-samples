@@ -1,4 +1,4 @@
-# openapi::LicenseRow
+# interserverapi::LicenseRow
 
 A result row from the `Licenses` `GET` request.
 

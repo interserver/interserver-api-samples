@@ -21,7 +21,7 @@ import BackupServiceMaster from './BackupServiceMaster';
 /**
  * The Backup model module.
  * @module model/Backup
- * @version 0.9.0
+ * @version 1.0.0
  */
 class Backup {
     /**

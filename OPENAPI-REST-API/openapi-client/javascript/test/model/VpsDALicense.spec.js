@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsDALicense();
+    instance = new InterserverApiClient.VpsDALicense();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('VpsDALicense', function() {
     it('should create an instance of VpsDALicense', function() {
       // uncomment below and update the code to test VpsDALicense
-      //var instance = new InterServerManagementApi.VpsDALicense();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsDALicense);
+      //var instance = new InterserverApiClient.VpsDALicense();
+      //expect(instance).to.be.a(InterserverApiClient.VpsDALicense);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.VpsDALicense();
+      //var instance = new InterserverApiClient.VpsDALicense();
       //expect(instance).to.be();
     });
 
     it('should have the property sub_name (base name: "sub_name")', function() {
       // uncomment below and update the code to test the property sub_name
-      //var instance = new InterServerManagementApi.VpsDALicense();
+      //var instance = new InterserverApiClient.VpsDALicense();
       //expect(instance).to.be();
     });
 
     it('should have the property cost (base name: "cost")', function() {
       // uncomment below and update the code to test the property cost
-      //var instance = new InterServerManagementApi.VpsDALicense();
+      //var instance = new InterserverApiClient.VpsDALicense();
       //expect(instance).to.be();
     });
 
     it('should have the property img_disabled (base name: "img_disabled")', function() {
       // uncomment below and update the code to test the property img_disabled
-      //var instance = new InterServerManagementApi.VpsDALicense();
+      //var instance = new InterserverApiClient.VpsDALicense();
       //expect(instance).to.be();
     });
 
     it('should have the property img_active (base name: "img_active")', function() {
       // uncomment below and update the code to test the property img_active
-      //var instance = new InterServerManagementApi.VpsDALicense();
+      //var instance = new InterserverApiClient.VpsDALicense();
       //expect(instance).to.be();
     });
 

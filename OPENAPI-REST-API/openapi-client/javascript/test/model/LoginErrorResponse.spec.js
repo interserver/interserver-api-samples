@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LoginErrorResponse();
+    instance = new InterserverApiClient.LoginErrorResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('LoginErrorResponse', function() {
     it('should create an instance of LoginErrorResponse', function() {
       // uncomment below and update the code to test LoginErrorResponse
-      //var instance = new InterServerManagementApi.LoginErrorResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.LoginErrorResponse);
+      //var instance = new InterserverApiClient.LoginErrorResponse();
+      //expect(instance).to.be.a(InterserverApiClient.LoginErrorResponse);
     });
 
     it('should have the property message (base name: "message")', function() {
       // uncomment below and update the code to test the property message
-      //var instance = new InterServerManagementApi.LoginErrorResponse();
+      //var instance = new InterserverApiClient.LoginErrorResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property field (base name: "field")', function() {
       // uncomment below and update the code to test the property field
-      //var instance = new InterServerManagementApi.LoginErrorResponse();
+      //var instance = new InterserverApiClient.LoginErrorResponse();
       //expect(instance).to.be();
     });
 

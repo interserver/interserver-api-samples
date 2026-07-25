@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WebsiteExtraInfoTables } from './api';
+import { WebsiteExtraInfoTables } from '@interserver/myadmin-client';
 
 const instance: WebsiteExtraInfoTables = {
     links,

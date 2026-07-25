@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetOrderDetail200ResponseServiceTypesInner } from './api';
+import { GetOrderDetail200ResponseServiceTypesInner } from '@interserver/myadmin-client';
 
 const instance: GetOrderDetail200ResponseServiceTypesInner = {
     services_id,

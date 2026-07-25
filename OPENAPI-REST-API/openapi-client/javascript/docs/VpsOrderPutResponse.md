@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsOrderPutResponse
+# InterserverApiClient.VpsOrderPutResponse
 
 ## Properties
 

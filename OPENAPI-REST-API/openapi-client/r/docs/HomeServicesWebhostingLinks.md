@@ -1,4 +1,4 @@
-# openapi::HomeServicesWebhostingLinks
+# interserverapi::HomeServicesWebhostingLinks
 
 Map of webhosting service IDs to their hostnames for the account dashboard.
 

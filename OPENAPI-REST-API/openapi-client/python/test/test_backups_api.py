@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.backups_api import BackupsApi
+from interserver_api_client.api.backups_api import BackupsApi
 
 
 class TestBackupsApi(unittest.TestCase):
@@ -30,70 +30,70 @@ class TestBackupsApi(unittest.TestCase):
     def test_add_backup(self) -> None:
         """Test case for add_backup
 
-        Place Backup Order
+        Place a new off-site backup storage order and generate the invoice
         """
         pass
 
     def test_cancel_backup(self) -> None:
         """Test case for cancel_backup
 
-        Cancel Backup Service
+        Cancel an off-site backup storage subscription
         """
         pass
 
     def test_get_backup_info(self) -> None:
         """Test case for get_backup_info
 
-        Get Backup Service Details
+        Get details of a specific off-site backup storage service
         """
         pass
 
     def test_get_backup_invoices(self) -> None:
         """Test case for get_backup_invoices
 
-        Get Backup Order Invoices
+        List invoices for a single backup-storage subscription
         """
         pass
 
     def test_get_backup_login(self) -> None:
         """Test case for get_backup_login
 
-        Get Backup Storage Panel Login
+        Open a single sign-on session URL for the backup storage panel
         """
         pass
 
     def test_get_backups_list(self) -> None:
         """Test case for get_backups_list
 
-        List Backup Services
+        List off-site backup storage subscriptions on the authenticated account
         """
         pass
 
     def test_get_backups_welcome_email(self) -> None:
         """Test case for get_backups_welcome_email
 
-        Resend Backup Welcome Email
+        Resend the welcome email for an off-site backup storage service
         """
         pass
 
     def test_get_new_backup(self) -> None:
         """Test case for get_new_backup
 
-        Get Backup Order Form Data
+        Get backup-storage order form metadata and pricing tiers
         """
         pass
 
     def test_update_backup_info(self) -> None:
         """Test case for update_backup_info
 
-        Update Backup Information
+        Update stored metadata for a backup-storage subscription
         """
         pass
 
     def test_validate_backup_order(self) -> None:
         """Test case for validate_backup_order
 
-        Validate Backup Order
+        Validate a backup-storage order and preview pricing without charging
         """
         pass
 

@@ -36,6 +36,10 @@ void OAIPublicApi::initializeServerConfigs() {
     QUrl("https://my.interserver.net/apiv2"),
     "Live API Endpoint",
     QMap<QString, OAIServerVariable>()));
+    _serverConfigs.insert("getAccountCurrencies", defaultConf);
+    _serverIndices.insert("getAccountCurrencies", 0);
+    _serverConfigs.insert("getAccountLocales", defaultConf);
+    _serverIndices.insert("getAccountLocales", 0);
     _serverConfigs.insert("getCaptcha", defaultConf);
     _serverIndices.insert("getCaptcha", 0);
     _serverConfigs.insert("getCountries", defaultConf);
@@ -238,6 +242,128 @@ QString OAIPublicApi::getParamStyleDelimiter(const QString &style, const QString
 
     } else {
         return "none";
+    }
+}
+
+void OAIPublicApi::getAccountCurrencies() {
+    QString fullPath = QString(_serverConfigs["getAccountCurrencies"][_serverIndices.value("getAccountCurrencies")].URL()+"/account/currencies");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "GET");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPublicApi::getAccountCurrenciesCallback);
+    connect(this, &OAIPublicApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIPublicApi::getAccountCurrenciesCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    QList<QString> output;
+    QString json(worker->response);
+    QByteArray array(json.toStdString().c_str());
+    QJsonDocument doc = QJsonDocument::fromJson(array);
+    QJsonArray jsonArray = doc.array();
+    for (QJsonValue obj : jsonArray) {
+        QString val;
+        ::OpenAPI::fromJsonValue(val, obj);
+        output.append(val);
+    }
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT getAccountCurrenciesSignal(output);
+        Q_EMIT getAccountCurrenciesSignalFull(worker, output);
+    } else {
+        Q_EMIT getAccountCurrenciesSignalError(output, error_type, error_str);
+        Q_EMIT getAccountCurrenciesSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
+void OAIPublicApi::getAccountLocales() {
+    QString fullPath = QString(_serverConfigs["getAccountLocales"][_serverIndices.value("getAccountLocales")].URL()+"/account/locales");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "GET");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIPublicApi::getAccountLocalesCallback);
+    connect(this, &OAIPublicApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIPublicApi::getAccountLocalesCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    QMap<QString, OAIGetAccountLocales_200_response_value> output;
+    QString json(worker->response);
+    QByteArray array(json.toStdString().c_str());
+    QJsonDocument doc = QJsonDocument::fromJson(array);
+    QJsonObject obj = doc.object();
+    for (QString key : obj.keys()) {
+        OAIGetAccountLocales_200_response_value val;
+        ::OpenAPI::fromJsonValue(val, obj[key]);
+        output.insert(key, val);
+    }
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT getAccountLocalesSignal(output);
+        Q_EMIT getAccountLocalesSignalFull(worker, output);
+    } else {
+        Q_EMIT getAccountLocalesSignalError(output, error_type, error_str);
+        Q_EMIT getAccountLocalesSignalErrorFull(worker, error_type, error_str);
     }
 }
 

@@ -24,16 +24,17 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::ServersApi');
+use_ok('InterServerAPI::ServersApi');
 
-my $api = OpenAPIClient::ServersApi->new();
-isa_ok($api, 'OpenAPIClient::ServersApi');
+my $api = InterServerAPI::ServersApi->new();
+isa_ok($api, 'InterServerAPI::ServersApi');
 
 #
 # add_server test
 #
 # uncomment below and update the test
-#my $add_server_result = $api->add_server();
+#my $add_server_server_order_post_request = undef; # replace NULL with a proper value
+#my $add_server_result = $api->add_server(server_order_post_request => $add_server_server_order_post_request);
 
 #
 # buy_it_now_server_order test
@@ -103,10 +104,11 @@ isa_ok($api, 'OpenAPIClient::ServersApi');
 #my $post_server_reverse_dns_result = $api->post_server_reverse_dns(id => $post_server_reverse_dns_id, reverse_dns_entries => $post_server_reverse_dns_reverse_dns_entries);
 
 #
-# put_servers test
+# server_bulk_ipmi_power_get test
 #
 # uncomment below and update the test
-#my $put_servers_result = $api->put_servers();
+#my $server_bulk_ipmi_power_get_ids = undef; # replace NULL with a proper value
+#my $server_bulk_ipmi_power_get_result = $api->server_bulk_ipmi_power_get(ids => $server_bulk_ipmi_power_get_ids);
 
 #
 # server_ipmi_live_get test

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_order_detail200_response import GetOrderDetail200Response
+from interserver_api_client.models.get_order_detail200_response import GetOrderDetail200Response
 
 class TestGetOrderDetail200Response(unittest.TestCase):
     """GetOrderDetail200Response unit test stubs"""
@@ -36,13 +36,13 @@ class TestGetOrderDetail200Response(unittest.TestCase):
         model = GetOrderDetail200Response()
         if include_optional:
             return GetOrderDetail200Response(
-                package_costs = openapi_client.models.get_order_detail_200_response_package_costs.getOrderDetail_200_response_packageCosts(
+                package_costs = interserver_api_client.models.get_order_detail_200_response_package_costs.getOrderDetail_200_response_packageCosts(
                     package_id = 11552, 
                     package_cost = 5, 
                     currency = 'USD', 
                     currency_symbol = '$', ),
                 service_types = [
-                    openapi_client.models.get_order_detail_200_response_service_types_inner.getOrderDetail_200_response_serviceTypes_inner(
+                    interserver_api_client.models.get_order_detail_200_response_service_types_inner.getOrderDetail_200_response_serviceTypes_inner(
                         services_id = 11552, 
                         services_name = 'Current IP + Scrub', 
                         services_cost = 5, 
@@ -51,7 +51,7 @@ class TestGetOrderDetail200Response(unittest.TestCase):
                         services_module = 'scrub_ips', )
                     ],
                 ips = [
-                    openapi_client.models.get_order_detail_200_response_ips_inner.getOrderDetail_200_response_ips_inner(
+                    interserver_api_client.models.get_order_detail_200_response_ips_inner.getOrderDetail_200_response_ips_inner(
                         service_id = 12345, 
                         service_module = 'vps', 
                         service_hostname = 'server.gtest.com', )

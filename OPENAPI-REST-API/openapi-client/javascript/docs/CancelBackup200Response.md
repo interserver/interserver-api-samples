@@ -1,4 +1,4 @@
-# InterServerManagementApi.CancelBackup200Response
+# InterserverApiClient.CancelBackup200Response
 
 ## Properties
 

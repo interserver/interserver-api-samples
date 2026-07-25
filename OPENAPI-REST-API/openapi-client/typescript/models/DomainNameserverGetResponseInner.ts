@@ -52,8 +52,5 @@ export class DomainNameserverGetResponseInner {
     }
 }
 
-export enum DomainNameserverGetResponseInnerCanDeleteEnum {
-    _0 = '0',
-    _1 = '1'
-}
+    export type DomainNameserverGetResponseInnerCanDeleteEnum = "0" | "1" ;
 

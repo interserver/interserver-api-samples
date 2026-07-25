@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainWhoisPrivacyRequest
+# InterServerAPI::Object::DomainWhoisPrivacyRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainWhoisPrivacyRequest;
+use InterServerAPI::Object::DomainWhoisPrivacyRequest;
 ```
 
 ## Properties

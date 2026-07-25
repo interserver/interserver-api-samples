@@ -20,4 +20,3 @@ case class VpsIPInfo(
   title: Option[String] = None,
   rows: Option[Seq[VpsIPInfoRow]] = None
 )
-

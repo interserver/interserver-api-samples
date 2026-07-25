@@ -16,4 +16,3 @@ case class GetAccountInfo401Response(
   code: Int,
   message: String
 )
-

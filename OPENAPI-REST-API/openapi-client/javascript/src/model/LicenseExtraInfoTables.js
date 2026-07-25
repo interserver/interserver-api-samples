@@ -17,7 +17,7 @@ import LicenseIpInfo from './LicenseIpInfo';
 /**
  * The LicenseExtraInfoTables model module.
  * @module model/LicenseExtraInfoTables
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicenseExtraInfoTables {
     /**

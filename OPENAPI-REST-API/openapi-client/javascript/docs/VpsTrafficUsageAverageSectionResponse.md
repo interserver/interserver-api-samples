@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsTrafficUsageAverageSectionResponse
+# InterserverApiClient.VpsTrafficUsageAverageSectionResponse
 
 ## Properties
 

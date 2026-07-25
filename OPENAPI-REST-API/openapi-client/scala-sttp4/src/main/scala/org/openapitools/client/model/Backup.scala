@@ -29,4 +29,3 @@ case class Backup(
   serviceExtra: Option[String] = None,
   extraInfoTables: Option[BackupExtraInfoTables] = None
 )
-

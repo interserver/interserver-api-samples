@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsExtraInfoTables
+# InterServerAPI::Object::VpsExtraInfoTables
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsExtraInfoTables;
+use InterServerAPI::Object::VpsExtraInfoTables;
 ```
 
 ## Properties

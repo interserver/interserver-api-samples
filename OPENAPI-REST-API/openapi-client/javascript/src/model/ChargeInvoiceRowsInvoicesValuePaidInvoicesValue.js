@@ -17,7 +17,7 @@ import ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue from '
 /**
  * The ChargeInvoiceRowsInvoicesValuePaidInvoicesValue model module.
  * @module model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ChargeInvoiceRowsInvoicesValuePaidInvoicesValue {
     /**

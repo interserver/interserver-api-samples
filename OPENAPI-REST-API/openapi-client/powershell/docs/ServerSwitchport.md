@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerSwitchport = Initialize-PSOpenAPIToolsServerSwitchport  -SwitchportId 10414 `
+$ServerSwitchport = Initialize-InterserverApiServerSwitchport  -SwitchportId 10414 `
  -SwitchId 118 `
  -VarSwitch edge1 `
  -Port Ethernet1/33 `

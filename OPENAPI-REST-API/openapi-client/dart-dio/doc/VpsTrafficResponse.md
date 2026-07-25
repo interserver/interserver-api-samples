@@ -1,8 +1,8 @@
-# openapi.model.VpsTrafficResponse
+# interserver_api.model.VpsTrafficResponse
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
@@ -12,11 +12,11 @@ Name | Type | Description | Notes
 **target** | **String** |  | 
 **interval** | **int** |  | 
 **history** | [**VpsTrafficHistoryResponse**](VpsTrafficHistoryResponse.md) |  | 
-**last** | [**DateTime**](DateTime.md) |  | 
-**times** | [**BuiltList&lt;DateTime&gt;**](DateTime.md) |  | 
+**last** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
+**times** | [**List&lt;OffsetDateTime&gt;**](OffsetDateTime.md) |  | 
 **totals** | [**VpsTrafficTotalsResposne**](VpsTrafficTotalsResposne.md) |  | 
 **usage** | [**VpsTrafficUsageResponse**](VpsTrafficUsageResponse.md) |  | 
-**data** | [**BuiltList&lt;VpsTrafficDataSectionResponse&gt;**](VpsTrafficDataSectionResponse.md) |  | 
+**data** | [**List&lt;VpsTrafficDataSectionResponse&gt;**](VpsTrafficDataSectionResponse.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

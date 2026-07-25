@@ -22,6 +22,7 @@ import scalaz.concurrent.Task
 import HelperCodecs._
 
 import org.openapitools.client.api.ChargeInvoiceRows
+import org.openapitools.client.api.FloatingIpOrderRequest
 import org.openapitools.client.api.FloatingIpsCancel200Response
 import org.openapitools.client.api.GetAccountInfo401Response
 import org.openapitools.client.api.ServiceOrderPostResponse
@@ -33,7 +34,7 @@ object FloatingIPsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addFloatingIp(host: String): Task[ServiceOrderPostResponse] = {
+  def addFloatingIp(host: String, FloatingIpOrderRequest: FloatingIpOrderRequest): Task[ServiceOrderPostResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
 
     val path = "/floating_ips/order"
@@ -48,7 +49,7 @@ object FloatingIPsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(FloatingIpOrderRequest)
       resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
@@ -201,7 +202,7 @@ object FloatingIPsApi {
     } yield resp
   }
 
-  def putFloatingIps(host: String): Task[Unit] = {
+  def putFloatingIps(host: String, FloatingIpOrderRequest: FloatingIpOrderRequest): Task[Unit] = {
     val path = "/floating_ips/order"
 
     val httpMethod = Method.PUT
@@ -214,7 +215,7 @@ object FloatingIPsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(FloatingIpOrderRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -248,7 +249,7 @@ class HttpServiceFloatingIPsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addFloatingIp(): Task[ServiceOrderPostResponse] = {
+  def addFloatingIp(FloatingIpOrderRequest: FloatingIpOrderRequest): Task[ServiceOrderPostResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
 
     val path = "/floating_ips/order"
@@ -263,7 +264,7 @@ class HttpServiceFloatingIPsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(FloatingIpOrderRequest)
       resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
@@ -416,7 +417,7 @@ class HttpServiceFloatingIPsApi(service: HttpService) {
     } yield resp
   }
 
-  def putFloatingIps(): Task[Unit] = {
+  def putFloatingIps(FloatingIpOrderRequest: FloatingIpOrderRequest): Task[Unit] = {
     val path = "/floating_ips/order"
 
     val httpMethod = Method.PUT
@@ -429,7 +430,7 @@ class HttpServiceFloatingIPsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(FloatingIpOrderRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp

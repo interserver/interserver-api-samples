@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetAccountTfaSetup200Response = Initialize-PSOpenAPIToolsGetAccountTfaSetup200Response  -Var2faGoogleKey null `
+$GetAccountTfaSetup200Response = Initialize-InterserverApiGetAccountTfaSetup200Response  -Var2faGoogleKey null `
  -Var2faGoogleSplit null
 ```
 

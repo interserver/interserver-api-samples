@@ -1,14 +1,14 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for PatchOauthTwoFactor200Response
 void main() {
-  final instance = PatchOauthTwoFactor200ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final PatchOauthTwoFactor200Response? instance = /* PatchOauthTwoFactor200Response(...) */ null;
+  // TODO add properties to the entity
 
   group(PatchOauthTwoFactor200Response, () {
     // Whether the 2FA verification succeeded and the user is now logged in.
-    // bool login
+    // Optional<bool?> login
     test('to test the property `login`', () async {
       // TODO
     });

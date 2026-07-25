@@ -1,4 +1,4 @@
-# openapi::HomeTicketStatusView
+# interserverapi::HomeTicketStatusView
 
 Ticket statuses with view numbers.
 

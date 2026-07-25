@@ -23,177 +23,6 @@
 namespace OpenAPI
 {
 
-FString OpenAPIBillingApi::AddAccountCreditCardRequest::ComputePath() const
-{
-	FString Path(TEXT("/account/creditcards"));
-	return Path;
-}
-
-void OpenAPIBillingApi::AddAccountCreditCardRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = { TEXT("multipart/form-data"), TEXT("application/json") };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("POST"));
-
-	// Default to Json Body request
-	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
-	{
-		// Form parameters added to try to generate a json body when no body parameters are specified.
-		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
-		Writer->WriteObjectStart();
-		if (Name.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("name"));
-			WriteJsonValue(Writer, Name.GetValue());
-		}
-		if (Address.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("address"));
-			WriteJsonValue(Writer, Address.GetValue());
-		}
-		if (City.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("city"));
-			WriteJsonValue(Writer, City.GetValue());
-		}
-		if (State.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("state"));
-			WriteJsonValue(Writer, State.GetValue());
-		}
-		if (Country.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("country"));
-			WriteJsonValue(Writer, Country.GetValue());
-		}
-		if (Zip.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("zip"));
-			WriteJsonValue(Writer, Zip.GetValue());
-		}
-		if (Cc.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("cc"));
-			WriteJsonValue(Writer, Cc.GetValue());
-		}
-		if (CcExp.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("cc_exp"));
-			WriteJsonValue(Writer, CcExp.GetValue());
-		}
-		if (CcCcv2.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("cc_ccv2"));
-			WriteJsonValue(Writer, CcCcv2.GetValue());
-		}
-		Writer->WriteObjectEnd();
-		Writer->Close();
-		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
-		HttpRequest->SetContentAsString(JsonBody);
-	}
-	else if (Consumes.Contains(TEXT("multipart/form-data")))
-	{
-		HttpMultipartFormData FormData;
-		if(Name.IsSet())
-		{
-			FormData.AddStringPart(TEXT("name"), *ToUrlString(Name.GetValue()));
-		}
-		if(Address.IsSet())
-		{
-			FormData.AddStringPart(TEXT("address"), *ToUrlString(Address.GetValue()));
-		}
-		if(City.IsSet())
-		{
-			FormData.AddStringPart(TEXT("city"), *ToUrlString(City.GetValue()));
-		}
-		if(State.IsSet())
-		{
-			FormData.AddStringPart(TEXT("state"), *ToUrlString(State.GetValue()));
-		}
-		if(Country.IsSet())
-		{
-			FormData.AddStringPart(TEXT("country"), *ToUrlString(Country.GetValue()));
-		}
-		if(Zip.IsSet())
-		{
-			FormData.AddStringPart(TEXT("zip"), *ToUrlString(Zip.GetValue()));
-		}
-		if(Cc.IsSet())
-		{
-			FormData.AddStringPart(TEXT("cc"), *ToUrlString(Cc.GetValue()));
-		}
-		if(CcExp.IsSet())
-		{
-			FormData.AddStringPart(TEXT("cc_exp"), *ToUrlString(CcExp.GetValue()));
-		}
-		if(CcCcv2.IsSet())
-		{
-			FormData.AddStringPart(TEXT("cc_ccv2"), *ToUrlString(CcCcv2.GetValue()));
-		}
-
-		FormData.SetupHttpRequest(HttpRequest);
-	}
-	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
-	{
-		TArray<FString> FormParams;
-		if(Name.IsSet())
-		{
-			FormParams.Add(FString(TEXT("name=")) + ToUrlString(Name.GetValue()));
-		}
-		if(Address.IsSet())
-		{
-			FormParams.Add(FString(TEXT("address=")) + ToUrlString(Address.GetValue()));
-		}
-		if(City.IsSet())
-		{
-			FormParams.Add(FString(TEXT("city=")) + ToUrlString(City.GetValue()));
-		}
-		if(State.IsSet())
-		{
-			FormParams.Add(FString(TEXT("state=")) + ToUrlString(State.GetValue()));
-		}
-		if(Country.IsSet())
-		{
-			FormParams.Add(FString(TEXT("country=")) + ToUrlString(Country.GetValue()));
-		}
-		if(Zip.IsSet())
-		{
-			FormParams.Add(FString(TEXT("zip=")) + ToUrlString(Zip.GetValue()));
-		}
-		if(Cc.IsSet())
-		{
-			FormParams.Add(FString(TEXT("cc=")) + ToUrlString(Cc.GetValue()));
-		}
-		if(CcExp.IsSet())
-		{
-			FormParams.Add(FString(TEXT("cc_exp=")) + ToUrlString(CcExp.GetValue()));
-		}
-		if(CcCcv2.IsSet())
-		{
-			FormParams.Add(FString(TEXT("cc_ccv2=")) + ToUrlString(CcCcv2.GetValue()));
-		}
-
-		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/x-www-form-urlencoded; charset=utf-8"));
-		HttpRequest->SetContentAsString(FString::Join(FormParams, TEXT("&")));
-	}
-	else
-	{
-		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
-	}
-}
-
-void OpenAPIBillingApi::AddAccountCreditCardResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPIBillingApi::AddAccountCreditCardResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return TryGetJsonValue(JsonValue, Content);
-}
-
 FString OpenAPIBillingApi::AddBillingCreditCardRequest::ComputePath() const
 {
 	FString Path(TEXT("/billing/creditcards"));
@@ -308,44 +137,6 @@ void OpenAPIBillingApi::AddBillingPrepayResponse::SetHttpResponseCode(EHttpRespo
 }
 
 bool OpenAPIBillingApi::AddBillingPrepayResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return TryGetJsonValue(JsonValue, Content);
-}
-
-FString OpenAPIBillingApi::DeleteAccountCreditCardRequest::ComputePath() const
-{
-	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
-
-	FString Path = FString::Format(TEXT("/account/creditcards/{id}"), PathParams);
-
-	return Path;
-}
-
-void OpenAPIBillingApi::DeleteAccountCreditCardRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = {  };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("DELETE"));
-
-}
-
-void OpenAPIBillingApi::DeleteAccountCreditCardResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("Simple string response"));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPIBillingApi::DeleteAccountCreditCardResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
 }
@@ -498,6 +289,115 @@ bool OpenAPIBillingApi::GetAffiliateBannersResponse::FromJson(const TSharedPtr<F
 	return TryGetJsonValue(JsonValue, Content);
 }
 
+inline FString ToString(const OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum& Value)
+{
+	switch (Value)
+	{
+	case OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Csv:
+		return TEXT("csv");
+	case OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Xls:
+		return TEXT("xls");
+	case OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Xlsx:
+		return TEXT("xlsx");
+	case OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Pdf:
+		return TEXT("pdf");
+	}
+
+	UE_LOG(LogOpenAPI, Error, TEXT("Invalid OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum Value (%d)"), (int)Value);
+	return TEXT("");
+}
+
+FString OpenAPIBillingApi::GetAffiliateDownloadRequest::EnumToString(const OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum& EnumValue)
+{
+	return ToString(EnumValue);
+}
+
+inline bool FromString(const FString& EnumAsString, OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum& Value)
+{
+	static TMap<FString, OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum> StringToEnum = { 
+		{ TEXT("csv"), OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Csv },
+		{ TEXT("xls"), OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Xls },
+		{ TEXT("xlsx"), OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Xlsx },
+		{ TEXT("pdf"), OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum::Pdf }, };
+
+	const auto Found = StringToEnum.Find(EnumAsString);
+	if(Found)
+		Value = *Found;
+
+	return Found != nullptr;
+}
+
+bool OpenAPIBillingApi::GetAffiliateDownloadRequest::EnumFromString(const FString& EnumAsString, OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum& EnumValue)
+{
+	return FromString(EnumAsString, EnumValue);
+}
+
+inline void WriteJsonValue(JsonWriter& Writer, const OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum& Value)
+{
+	WriteJsonValue(Writer, ToString(Value));
+}
+
+inline bool TryGetJsonValue(const TSharedPtr<FJsonValue>& JsonValue, OpenAPIBillingApi::GetAffiliateDownloadRequest::ExEnum& Value)
+{
+	FString TmpValue;
+	if (JsonValue->TryGetString(TmpValue))
+	{
+		if(FromString(TmpValue, Value))
+			return true;
+	}
+	return false;
+}
+
+FString OpenAPIBillingApi::GetAffiliateDownloadRequest::ComputePath() const
+{
+	FString Path(TEXT("/affiliate/download"));
+	TArray<FString> QueryParams;
+	if(St.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("st=")) + ToUrlString(St.GetValue()));
+	}
+	if(Ex.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("ex=")) + ToUrlString(Ex.GetValue()));
+	}
+	if(Year.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("year=")) + ToUrlString(Year.GetValue()));
+	}
+	Path += TCHAR('?');
+	Path += FString::Join(QueryParams, TEXT("&"));
+
+	return Path;
+}
+
+void OpenAPIBillingApi::GetAffiliateDownloadRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("GET"));
+
+}
+
+void OpenAPIBillingApi::GetAffiliateDownloadResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Affiliate report file download. The response Content-Type matches the requested format (text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, or application/pdf)."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIBillingApi::GetAffiliateDownloadResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return true;
+}
+
 FString OpenAPIBillingApi::GetAffiliateRichReportRequest::ComputePath() const
 {
 	FString Path(TEXT("/affiliate/rich_report"));
@@ -574,13 +474,21 @@ bool OpenAPIBillingApi::GetAffiliateSalesGraphResponse::FromJson(const TSharedPt
 	return TryGetJsonValue(JsonValue, Content);
 }
 
-FString OpenAPIBillingApi::GetAffiliateSalesReportRequest::ComputePath() const
+FString OpenAPIBillingApi::GetAffiliateSignupsRequest::ComputePath() const
 {
-	FString Path(TEXT("/affiliate/sales_report"));
+	FString Path(TEXT("/affiliate/signups"));
+	TArray<FString> QueryParams;
+	if(St.IsSet())
+	{
+		QueryParams.Add(FString(TEXT("st=")) + ToUrlString(St.GetValue()));
+	}
+	Path += TCHAR('?');
+	Path += FString::Join(QueryParams, TEXT("&"));
+
 	return Path;
 }
 
-void OpenAPIBillingApi::GetAffiliateSalesReportRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+void OpenAPIBillingApi::GetAffiliateSignupsRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
 	static const TArray<FString> Consumes = {  };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
@@ -589,13 +497,13 @@ void OpenAPIBillingApi::GetAffiliateSalesReportRequest::SetupHttpRequest(const F
 
 }
 
-void OpenAPIBillingApi::GetAffiliateSalesReportResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+void OpenAPIBillingApi::GetAffiliateSignupsResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
 {
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
 	case 200:
-		SetResponseString(TEXT("Response with a text message field."));
+		SetResponseString(TEXT("Affiliate signup statistics."));
 		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
@@ -603,7 +511,7 @@ void OpenAPIBillingApi::GetAffiliateSalesReportResponse::SetHttpResponseCode(EHt
 	}
 }
 
-bool OpenAPIBillingApi::GetAffiliateSalesReportResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+bool OpenAPIBillingApi::GetAffiliateSignupsResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
 }
@@ -862,62 +770,6 @@ bool OpenAPIBillingApi::GetBillingPrePaysResponse::FromJson(const TSharedPtr<FJs
 	return TryGetJsonValue(JsonValue, Content);
 }
 
-FString OpenAPIBillingApi::GetInvoicesRequest::ComputePath() const
-{
-	FString Path(TEXT("/invoices"));
-	TArray<FString> QueryParams;
-	if(SearchString.IsSet())
-	{
-		QueryParams.Add(FString(TEXT("searchString=")) + ToUrlString(SearchString.GetValue()));
-	}
-	if(Skip.IsSet())
-	{
-		QueryParams.Add(FString(TEXT("skip=")) + ToUrlString(Skip.GetValue()));
-	}
-	if(Limit.IsSet())
-	{
-		QueryParams.Add(FString(TEXT("limit=")) + ToUrlString(Limit.GetValue()));
-	}
-	Path += TCHAR('?');
-	Path += FString::Join(QueryParams, TEXT("&"));
-
-	return Path;
-}
-
-void OpenAPIBillingApi::GetInvoicesRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = {  };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("GET"));
-
-}
-
-void OpenAPIBillingApi::GetInvoicesResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("search results matching criteria"));
-		break;
-	case 400:
-		SetResponseString(TEXT("bad input parameter"));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	case 404:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPIBillingApi::GetInvoicesResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return TryGetJsonValue(JsonValue, Content);
-}
-
 inline FString ToString(const OpenAPIBillingApi::InitiatePaymentRequest::MethodEnum& Value)
 {
 	switch (Value)
@@ -998,7 +850,7 @@ FString OpenAPIBillingApi::InitiatePaymentRequest::ComputePath() const
 	{ TEXT("method"), FStringFormatArg(ToUrlString(Method)) },
 	{ TEXT("invoices"), FStringFormatArg(ToUrlString(Invoices)) } };
 
-	FString Path = FString::Format(TEXT("/pay/{method}/{invoices}"), PathParams);
+	FString Path = FString::Format(TEXT("/billing/pay/{method}/{invoices}"), PathParams);
 
 	return Path;
 }
@@ -1027,6 +879,69 @@ void OpenAPIBillingApi::InitiatePaymentResponse::SetHttpResponseCode(EHttpRespon
 }
 
 bool OpenAPIBillingApi::InitiatePaymentResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return TryGetJsonValue(JsonValue, Content);
+}
+
+FString OpenAPIBillingApi::PatchBillingCreditCardVerifyRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
+
+	FString Path = FString::Format(TEXT("/billing/creditcards/{id}/verify"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIBillingApi::PatchBillingCreditCardVerifyRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = { TEXT("application/json"), TEXT("multipart/form-data") };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("PATCH"));
+
+	// Default to Json Body request
+	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
+	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIPatchBillingCreditCardVerifyRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
+	}
+	else if (Consumes.Contains(TEXT("multipart/form-data")))
+	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIPatchBillingCreditCardVerifyRequest) was ignored, not supported in multipart form"));
+	}
+	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
+	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIPatchBillingCreditCardVerifyRequest) was ignored, not supported in urlencoded requests"));
+	}
+	else
+	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
+	}
+}
+
+void OpenAPIBillingApi::PatchBillingCreditCardVerifyResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("A response indicating the operation completed successfully with a text message."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIBillingApi::PatchBillingCreditCardVerifyResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
 }
@@ -1090,58 +1005,6 @@ void OpenAPIBillingApi::PostBillingCreditCardVerifyResponse::SetHttpResponseCode
 }
 
 bool OpenAPIBillingApi::PostBillingCreditCardVerifyResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return TryGetJsonValue(JsonValue, Content);
-}
-
-FString OpenAPIBillingApi::UpdateAccountCreditCardRequest::ComputePath() const
-{
-	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
-
-	FString Path = FString::Format(TEXT("/account/creditcards/{id}"), PathParams);
-
-	return Path;
-}
-
-void OpenAPIBillingApi::UpdateAccountCreditCardRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = {  };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("POST"));
-
-	// Default to Json Body request
-	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
-	{
-	}
-	else if (Consumes.Contains(TEXT("multipart/form-data")))
-	{
-	}
-	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
-	{
-	}
-	else
-	{
-		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
-	}
-}
-
-void OpenAPIBillingApi::UpdateAccountCreditCardResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("Simple string response"));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPIBillingApi::UpdateAccountCreditCardResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
 }
@@ -1241,105 +1104,6 @@ void OpenAPIBillingApi::UpdateAffiliateDockSetupResponse::SetHttpResponseCode(EH
 }
 
 bool OpenAPIBillingApi::UpdateAffiliateDockSetupResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return TryGetJsonValue(JsonValue, Content);
-}
-
-FString OpenAPIBillingApi::UpdateAffiliateLandingPageRequest::ComputePath() const
-{
-	FString Path(TEXT("/affiliate/landing_pg"));
-	return Path;
-}
-
-void OpenAPIBillingApi::UpdateAffiliateLandingPageRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = { TEXT("multipart/form-data"), TEXT("application/json") };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("POST"));
-
-	// Default to Json Body request
-	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
-	{
-		// Form parameters added to try to generate a json body when no body parameters are specified.
-		FString JsonBody;
-		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
-		Writer->WriteObjectStart();
-		if (AffiliateDockTitle.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("affiliate_dock_title"));
-			WriteJsonValue(Writer, AffiliateDockTitle.GetValue());
-		}
-		if (AffiliateDockDescription.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("affiliate_dock_description"));
-			WriteJsonValue(Writer, AffiliateDockDescription.GetValue());
-		}
-		if (ReferrerCoupon.IsSet()){
-			Writer->WriteIdentifierPrefix(TEXT("referrer_coupon"));
-			WriteJsonValue(Writer, ReferrerCoupon.GetValue());
-		}
-		Writer->WriteObjectEnd();
-		Writer->Close();
-		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
-		HttpRequest->SetContentAsString(JsonBody);
-	}
-	else if (Consumes.Contains(TEXT("multipart/form-data")))
-	{
-		HttpMultipartFormData FormData;
-		if(AffiliateDockTitle.IsSet())
-		{
-			FormData.AddStringPart(TEXT("affiliate_dock_title"), *ToUrlString(AffiliateDockTitle.GetValue()));
-		}
-		if(AffiliateDockDescription.IsSet())
-		{
-			FormData.AddStringPart(TEXT("affiliate_dock_description"), *ToUrlString(AffiliateDockDescription.GetValue()));
-		}
-		if(ReferrerCoupon.IsSet())
-		{
-			FormData.AddStringPart(TEXT("referrer_coupon"), *ToUrlString(ReferrerCoupon.GetValue()));
-		}
-
-		FormData.SetupHttpRequest(HttpRequest);
-	}
-	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
-	{
-		TArray<FString> FormParams;
-		if(AffiliateDockTitle.IsSet())
-		{
-			FormParams.Add(FString(TEXT("affiliate_dock_title=")) + ToUrlString(AffiliateDockTitle.GetValue()));
-		}
-		if(AffiliateDockDescription.IsSet())
-		{
-			FormParams.Add(FString(TEXT("affiliate_dock_description=")) + ToUrlString(AffiliateDockDescription.GetValue()));
-		}
-		if(ReferrerCoupon.IsSet())
-		{
-			FormParams.Add(FString(TEXT("referrer_coupon=")) + ToUrlString(ReferrerCoupon.GetValue()));
-		}
-
-		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/x-www-form-urlencoded; charset=utf-8"));
-		HttpRequest->SetContentAsString(FString::Join(FormParams, TEXT("&")));
-	}
-	else
-	{
-		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
-	}
-}
-
-void OpenAPIBillingApi::UpdateAffiliateLandingPageResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("Response with a text message field."));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPIBillingApi::UpdateAffiliateLandingPageResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
 }

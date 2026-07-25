@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerClientLink();
+    instance = new InterserverApiClient.ServerClientLink();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('ServerClientLink', function() {
     it('should create an instance of ServerClientLink', function() {
       // uncomment below and update the code to test ServerClientLink
-      //var instance = new InterServerManagementApi.ServerClientLink();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerClientLink);
+      //var instance = new InterserverApiClient.ServerClientLink();
+      //expect(instance).to.be.a(InterserverApiClient.ServerClientLink);
     });
 
     it('should have the property label (base name: "label")', function() {
       // uncomment below and update the code to test the property label
-      //var instance = new InterServerManagementApi.ServerClientLink();
+      //var instance = new InterserverApiClient.ServerClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property link (base name: "link")', function() {
       // uncomment below and update the code to test the property link
-      //var instance = new InterServerManagementApi.ServerClientLink();
+      //var instance = new InterserverApiClient.ServerClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property icon (base name: "icon")', function() {
       // uncomment below and update the code to test the property icon
-      //var instance = new InterServerManagementApi.ServerClientLink();
+      //var instance = new InterserverApiClient.ServerClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property icon_text (base name: "icon_text")', function() {
       // uncomment below and update the code to test the property icon_text
-      //var instance = new InterServerManagementApi.ServerClientLink();
+      //var instance = new InterserverApiClient.ServerClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property help_text (base name: "help_text")', function() {
       // uncomment below and update the code to test the property help_text
-      //var instance = new InterServerManagementApi.ServerClientLink();
+      //var instance = new InterserverApiClient.ServerClientLink();
       //expect(instance).to.be();
     });
 

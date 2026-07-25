@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UrlRequest = Initialize-PSOpenAPIToolsUrlRequest  -Url null
+$UrlRequest = Initialize-InterserverApiUrlRequest  -Url null
 ```
 
 - Convert the resource to JSON

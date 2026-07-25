@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DnsListItem
+# InterServerAPI::Object::DnsListItem
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DnsListItem;
+use InterServerAPI::Object::DnsListItem;
 ```
 
 ## Properties

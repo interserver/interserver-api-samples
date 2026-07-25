@@ -7,9 +7,10 @@ import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBackupsBody;
-import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse20011;
+import io.swagger.model.InlineResponse20012;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.QsOrderRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.Quickserver;
 import io.swagger.model.QuickserverOrder;
@@ -35,7 +36,7 @@ import javax.ws.rs.core.SecurityContext;
 
 public class QsApiServiceImpl implements QsApiService {
       @Override
-      public Response addQs(SecurityContext securityContext) {
+      public Response addQs(QsOrderRequest body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -96,6 +97,11 @@ public class QsApiServiceImpl implements QsApiService {
   }
       @Override
       public Response getNewQs(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response getQsBackup(Integer id, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -180,11 +186,6 @@ public class QsApiServiceImpl implements QsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response postQsBackup(Integer id, SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().entity("magic!").build();
-  }
-      @Override
       public Response postQsChangeHostname(Integer id, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
@@ -260,7 +261,7 @@ public class QsApiServiceImpl implements QsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response putQs(SecurityContext securityContext) {
+      public Response putQs(QsOrderRequest body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

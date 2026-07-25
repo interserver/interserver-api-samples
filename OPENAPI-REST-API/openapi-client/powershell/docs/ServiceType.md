@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServiceType = Initialize-PSOpenAPIToolsServiceType  -StId 600 `
+$ServiceType = Initialize-InterserverApiServiceType  -StId 600 `
  -StName Dedicated Server `
  -StCategory 600 `
  -StModule servers

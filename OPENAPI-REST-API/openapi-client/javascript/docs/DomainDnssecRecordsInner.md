@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainDnssecRecordsInner
+# InterserverApiClient.DomainDnssecRecordsInner
 
 ## Properties
 

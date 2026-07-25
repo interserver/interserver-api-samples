@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.restore_request import RestoreRequest
+from interserver_api_client.models.restore_request import RestoreRequest
 
 class TestRestoreRequest(unittest.TestCase):
     """RestoreRequest unit test stubs"""

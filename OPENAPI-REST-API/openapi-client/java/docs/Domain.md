@@ -29,4 +29,8 @@ Full detail view of a domain service including billing, contacts, DNS, and confi
 |**autoRenew** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

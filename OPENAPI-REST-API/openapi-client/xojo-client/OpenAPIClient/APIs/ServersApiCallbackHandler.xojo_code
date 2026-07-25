@@ -67,7 +67,7 @@ Protected Interface ServersApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub PutServersCallback(status As OpenAPIClient.OpenAPIClientException)
+		Sub ServerBulkIpmiPowerGetCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ServerBulkIpmiPowerResponse)
 		  
 		End Sub
 	#tag EndMethod

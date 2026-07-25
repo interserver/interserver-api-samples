@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.deny_rule_new import DenyRuleNew
+from interserver_api_client.models.deny_rule_new import DenyRuleNew
 
 # TODO update the JSON string below
 json = "{}"

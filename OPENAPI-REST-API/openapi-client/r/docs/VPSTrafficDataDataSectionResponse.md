@@ -1,4 +1,4 @@
-# openapi::VPSTrafficDataDataSectionResponse
+# interserverapi::VPSTrafficDataDataSectionResponse
 
 VPS Traffic Data section Data subsection Row Response
 

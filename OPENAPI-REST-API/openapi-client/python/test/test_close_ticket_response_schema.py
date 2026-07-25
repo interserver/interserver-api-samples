@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.close_ticket_response_schema import CloseTicketResponseSchema
+from interserver_api_client.models.close_ticket_response_schema import CloseTicketResponseSchema
 
 class TestCloseTicketResponseSchema(unittest.TestCase):
     """CloseTicketResponseSchema unit test stubs"""

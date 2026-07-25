@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupOrderPutRequest = Initialize-PSOpenAPIToolsBackupOrderPutRequest  -ValidateOnly null `
+$BackupOrderPutRequest = Initialize-InterserverApiBackupOrderPutRequest  -ValidateOnly null `
  -ServiceType null `
  -Coupon null
 ```

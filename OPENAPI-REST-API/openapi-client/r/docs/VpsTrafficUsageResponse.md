@@ -1,4 +1,4 @@
-# openapi::VpsTrafficUsageResponse
+# interserverapi::VpsTrafficUsageResponse
 
 VPS Traffic Usage Section
 

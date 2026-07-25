@@ -10,13 +10,13 @@ import io.swagger.model.AccountInfoPost;
 
 import io.swagger.model.AccountSshKey;
 
-import io.swagger.model.BillingAddCcRequest;
-
 import io.swagger.model.GenericResponse;
 
 import io.swagger.model.InlineResponse200;
 
 import io.swagger.model.InlineResponse401;
+
+import io.swagger.model.InlineResponseMap200;
 
 import io.swagger.model.IpLimitRange;
 
@@ -40,30 +40,6 @@ import java.util.Map;
 public class AccountApiController implements AccountApi {
 
     @Override
-    public Single<HttpResponse<SuccessTextResponse>> addAccountCreditCard(@NotNull String name, @NotNull String address, @NotNull String city, @NotNull String state, @NotNull String country, @NotNull String zip, @NotNull String cc, @NotNull String ccExp, @NotNull String ccCcv2) {
-        // TODO: Implement me
-        return AccountApi.super.addAccountCreditCard(name, address, city, state, country, zip, cc, ccExp, ccCcv2);
-    }
-
-    @Override
-    public Single<HttpResponse<SuccessTextResponse>> addAccountCreditCard(@NotNull @Valid BillingAddCcRequest body) {
-        // TODO: Implement me
-        return AccountApi.super.addAccountCreditCard(body);
-    }
-
-    @Override
-    public Single<HttpResponse<TextResponse>> changeAccountUsername() {
-        // TODO: Implement me
-        return AccountApi.super.changeAccountUsername();
-    }
-
-    @Override
-    public Single<HttpResponse<String>> deleteAccountCreditCard(String id) {
-        // TODO: Implement me
-        return AccountApi.super.deleteAccountCreditCard(id);
-    }
-
-    @Override
     public Single<HttpResponse<SuccessTextResponse>> deleteAccountOauthName(String name) {
         // TODO: Implement me
         return AccountApi.super.deleteAccountOauthName(name);
@@ -82,9 +58,21 @@ public class AccountApiController implements AccountApi {
     }
 
     @Override
+    public Single<HttpResponse<List<String>>> getAccountCurrencies() {
+        // TODO: Implement me
+        return AccountApi.super.getAccountCurrencies();
+    }
+
+    @Override
     public Single<HttpResponse<AccountInfo>> getAccountInfo() {
         // TODO: Implement me
         return AccountApi.super.getAccountInfo();
+    }
+
+    @Override
+    public Single<HttpResponse<Map<String, InlineResponseMap200>>> getAccountLocales() {
+        // TODO: Implement me
+        return AccountApi.super.getAccountLocales();
     }
 
     @Override
@@ -115,12 +103,6 @@ public class AccountApiController implements AccountApi {
     public Single<HttpResponse<SuccessTextResponse>> updateAccountApiKey() {
         // TODO: Implement me
         return AccountApi.super.updateAccountApiKey();
-    }
-
-    @Override
-    public Single<HttpResponse<String>> updateAccountCreditCard(Integer id) {
-        // TODO: Implement me
-        return AccountApi.super.updateAccountCreditCard(id);
     }
 
     @Override

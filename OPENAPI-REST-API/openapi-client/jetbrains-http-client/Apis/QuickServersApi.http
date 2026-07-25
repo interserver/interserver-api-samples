@@ -1,91 +1,112 @@
 ## QuickServersApi
 
-### Place QuickServer Order
-## Place QuickServer Order
+### Place a QuickServer order, generating a real invoice and queuing provisioning
+## Place a QuickServer order, generating a real invoice and queuing provisioning
 POST https://my.interserver.net/apiv2/qs/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Delete QuickServer Backup
-## Delete QuickServer Backup
+{
+ "server": "<number>",
+ "password": "<string>",
+ "os": "<string>",
+ "tos": "<string>",
+ "comment": "<string>"
+}
+
+
+### Permanently delete a QuickServer backup file from object storage
+## Permanently delete a QuickServer backup file from object storage
 DELETE https://my.interserver.net/apiv2/qs/{{id}}/backups?all={{all}}&file={{file}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Block QuickServer SMTP
-## Block QuickServer SMTP
+### Block outbound SMTP traffic on a QuickServer to halt mail abuse
+## Block outbound SMTP traffic on a QuickServer to halt mail abuse
 GET https://my.interserver.net/apiv2/qs/{{id}}/block_smtp
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Disable CD Drive
-## Disable CD Drive
+### Disable the virtual CD/DVD drive device on a QuickServer
+## Disable the virtual CD/DVD drive device on a QuickServer
 GET https://my.interserver.net/apiv2/qs/{{id}}/disable_cd
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Disable Quotas
-## Disable Quotas
+### Disable disk-quota enforcement at OS level on a QuickServer
+## Disable disk-quota enforcement at OS level on a QuickServer
 GET https://my.interserver.net/apiv2/qs/{{id}}/disable_quota
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Eject CD Drive
-## Eject CD Drive
+### Eject the currently mounted ISO from a QuickServer&#39;s virtual CD drive
+## Eject the currently mounted ISO from a QuickServer&#39;s virtual CD drive
 GET https://my.interserver.net/apiv2/qs/{{id}}/eject_cd
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Enable Quotas
-## Enable Quotas
+### Enable disk-quota enforcement at OS level on a QuickServer
+## Enable disk-quota enforcement at OS level on a QuickServer
 GET https://my.interserver.net/apiv2/qs/{{id}}/enable_quota
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Restart QuickServer
-## Restart QuickServer
+### Reboot a QuickServer with a graceful OS-level restart
+## Reboot a QuickServer with a graceful OS-level restart
 GET https://my.interserver.net/apiv2/qs/{{id}}/restart
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Start QuickServer
-## Start QuickServer
+### Power on a QuickServer that is currently stopped or pending boot
+## Power on a QuickServer that is currently stopped or pending boot
 GET https://my.interserver.net/apiv2/qs/{{id}}/start
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Stop QuickServer
-## Stop QuickServer
+### Power off a QuickServer with a graceful shutdown command
+## Power off a QuickServer with a graceful shutdown command
 GET https://my.interserver.net/apiv2/qs/{{id}}/stop
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Download QuickServer Backup
-## Download QuickServer Backup
+### Generate a 24-hour pre-signed download URL for a QuickServer backup
+## Generate a 24-hour pre-signed download URL for a QuickServer backup
 PATCH https://my.interserver.net/apiv2/qs/{{id}}/backups?all={{all}}
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -95,214 +116,240 @@ sessionid: {{apiKey}}
 }
 
 
-### Get QuickServer Ordering Information
-## Get QuickServer Ordering Information
+### Get QuickServer order form metadata and available plans/templates
+## Get QuickServer order form metadata and available plans/templates
 GET https://my.interserver.net/apiv2/qs/order
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List QuickServer Backups
-## List QuickServer Backups
+### Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+## Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+GET https://my.interserver.net/apiv2/qs/{{id}}/backup
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List available QuickServer backups across Swift, MinIO, and ZFS storage
+## List available QuickServer backups across Swift, MinIO, and ZFS storage
 GET https://my.interserver.net/apiv2/qs/{{id}}/backups?all={{all}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get QuickServer Hostname
-## Get QuickServer Hostname
+### Get current QuickServer hostname plus change rules and platform support
+## Get current QuickServer hostname plus change rules and platform support
 GET https://my.interserver.net/apiv2/qs/{{id}}/change_hostname
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Change Root Password Info
-## Get Change Root Password Info
+### Get metadata for QuickServer root/OS password change requirements
+## Get metadata for QuickServer root/OS password change requirements
 GET https://my.interserver.net/apiv2/qs/{{id}}/change_root_password
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Timezone Info
-## Get Timezone Info
+### List timezones the QuickServer can be set to via change_timezone
+## List timezones the QuickServer can be set to via change_timezone
 GET https://my.interserver.net/apiv2/qs/{{id}}/change_timezone
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Webuzo Change Pass Info
-## Webuzo Change Pass Info
+### Get metadata for changing the Webuzo control panel admin password
+## Get metadata for changing the Webuzo control panel admin password
 GET https://my.interserver.net/apiv2/qs/{{id}}/change_webuzo_password
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get QuickServer Order
-## Get QuickServer Order
+### Get full details for one QuickServer including credentials and links
+## Get full details for one QuickServer including credentials and links
 GET https://my.interserver.net/apiv2/qs/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Insert CD Information
-## Insert CD Information
+### List ISO images available to mount on a QuickServer&#39;s virtual CD
+## List ISO images available to mount on a QuickServer&#39;s virtual CD
 GET https://my.interserver.net/apiv2/qs/{{id}}/insert_cd
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get QuickServer Invoices
-## Get QuickServer Invoices
+### List billing invoices charged for one QuickServer service
+## List billing invoices charged for one QuickServer service
 GET https://my.interserver.net/apiv2/qs/{{id}}/invoices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List QuickServers
-## List QuickServers
+### List QuickServer rapid-deploy dedicated servers on the account
+## List QuickServer rapid-deploy dedicated servers on the account
 GET https://my.interserver.net/apiv2/qs
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### QuickServer Reinstall OS Options
-## QuickServer Reinstall OS Options
+### List OS templates available for a QuickServer reinstall
+## List OS templates available for a QuickServer reinstall
 GET https://my.interserver.net/apiv2/qs/{{id}}/reinstall_os
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Reset QuickServer Password Info
-## Reset QuickServer Password Info
+### Get options for QuickServer randomized root password reset
+## Get options for QuickServer randomized root password reset
 GET https://my.interserver.net/apiv2/qs/{{id}}/reset_password
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Reverse DNS Info
-## Reverse DNS Info
+### Get reverse DNS (PTR) records for all of a QuickServer&#39;s IPs
+## Get reverse DNS (PTR) records for all of a QuickServer&#39;s IPs
 GET https://my.interserver.net/apiv2/qs/{{id}}/reverse_dns
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### VNC Setup Info
-## VNC Setup Info
+### Get current VNC console connection details for a QuickServer
+## Get current VNC console connection details for a QuickServer
 GET https://my.interserver.net/apiv2/qs/{{id}}/setup_vnc
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Traffic Usage
-## Get Traffic Usage
+### Get bandwidth usage for the QuickServer&#39;s current billing period
+## Get bandwidth usage for the QuickServer&#39;s current billing period
 GET https://my.interserver.net/apiv2/qs/{{id}}/traffic_usage
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get View Desktop Info
-## Get View Desktop Info
+### Get the full QuickServer dashboard view payload (rich format)
+## Get the full QuickServer dashboard view payload (rich format)
 GET https://my.interserver.net/apiv2/qs/{{id}}/view_desktop
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Resend QuickServer Welcome Email
-## Resend QuickServer Welcome Email
+### Resend the QuickServer welcome email with login credentials
+## Resend the QuickServer welcome email with login credentials
 GET https://my.interserver.net/apiv2/qs/{{id}}/welcome_email
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Create QuickServer Backup
-## Create QuickServer Backup
-POST https://my.interserver.net/apiv2/qs/{{id}}/backup
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Update QuickServer Hostname
-## Update QuickServer Hostname
+### Change a QuickServer&#39;s system hostname (OpenVZ/Virtuozzo only)
+## Change a QuickServer&#39;s system hostname (OpenVZ/Virtuozzo only)
 POST https://my.interserver.net/apiv2/qs/{{id}}/change_hostname
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Change Root Password
-## Change Root Password
+### Change QuickServer root/administrator password to a chosen value
+## Change QuickServer root/administrator password to a chosen value
 POST https://my.interserver.net/apiv2/qs/{{id}}/change_root_password
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Change QuickServer Timezone
-## Change QuickServer Timezone
+### Change the system timezone on a QuickServer to a catalog entry
+## Change the system timezone on a QuickServer to a catalog entry
 POST https://my.interserver.net/apiv2/qs/{{id}}/change_timezone
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Change Webuzo Password
-## Change Webuzo Password
+### Change Webuzo control panel admin password live (synchronous, not queued)
+## Change Webuzo control panel admin password live (synchronous, not queued)
 POST https://my.interserver.net/apiv2/qs/{{id}}/change_webuzo_password
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Insert CD in QuickServer
-## Insert CD in QuickServer
+### Mount an ISO image as the QuickServer&#39;s virtual CD via URL
+## Mount an ISO image as the QuickServer&#39;s virtual CD via URL
 POST https://my.interserver.net/apiv2/qs/{{id}}/insert_cd
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Reinstall QuickServer OS
-## Reinstall QuickServer OS
+### Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
+## Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
 POST https://my.interserver.net/apiv2/qs/{{id}}/reinstall_os
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Reset QuickServer Password
-## Reset QuickServer Password
+### Reset QuickServer root password to a server-generated random value
+## Reset QuickServer root password to a server-generated random value
 POST https://my.interserver.net/apiv2/qs/{{id}}/reset_password
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Reverse DNS
-## Update Reverse DNS
+### Update reverse DNS (PTR) records for a QuickServer&#39;s IPs
+## Update reverse DNS (PTR) records for a QuickServer&#39;s IPs
 POST https://my.interserver.net/apiv2/qs/{{id}}/reverse_dns
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -312,36 +359,40 @@ sessionid: {{apiKey}}
 }
 
 
-### Setup VNC
-## Setup VNC
+### Configure the source IP allowed to reach a QuickServer&#39;s VNC console
+## Configure the source IP allowed to reach a QuickServer&#39;s VNC console
 POST https://my.interserver.net/apiv2/qs/{{id}}/setup_vnc
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Search Traffic Usage
-## Search Traffic Usage
+### Query QuickServer bandwidth usage via POST (filtered variant)
+## Query QuickServer bandwidth usage via POST (filtered variant)
 POST https://my.interserver.net/apiv2/qs/{{id}}/traffic_usage
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update View Desktop
-## Update View Desktop
+### Submit changes and re-fetch the QuickServer dashboard view payload
+## Submit changes and re-fetch the QuickServer dashboard view payload
 POST https://my.interserver.net/apiv2/qs/{{id}}/view_desktop
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Restore QuickServer from Backup
-## Restore QuickServer from Backup
+### Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
+## Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
 POST https://my.interserver.net/apiv2/qs/{{id}}/restore
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -352,26 +403,39 @@ sessionid: {{apiKey}}
 }
 
 
-### Validate QuickServer Order
-## Validate QuickServer Order
+### Validate a QuickServer order without charging or provisioning
+## Validate a QuickServer order without charging or provisioning
 PUT https://my.interserver.net/apiv2/qs/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Cancel QuickServer Order
-## Cancel QuickServer Order
+{
+ "server": "<number>",
+ "password": "<string>",
+ "os": "<string>",
+ "tos": "<string>",
+ "comment": "<string>"
+}
+
+
+### Cancel a QuickServer service at the end of the current billing cycle
+## Cancel a QuickServer service at the end of the current billing cycle
 DELETE https://my.interserver.net/apiv2/qs/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update QuickServer Order
-## Update QuickServer Order
+### Update QuickServer order metadata or stored settings without OS impact
+## Update QuickServer order metadata or stored settings without OS impact
 POST https://my.interserver.net/apiv2/qs/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

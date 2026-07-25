@@ -26,4 +26,3 @@ case class LicenseClientLink(
   /* Other attributes */
   other_attr: Option[String] = None
 )
-

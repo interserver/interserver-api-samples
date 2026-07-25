@@ -3,5 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | [**kotlin.Boolean**](.md) |  | 
-**text** | [**kotlin.String**](.md) |  | 
+**text** | [**kotlin.String**](.md) | Status message. |  [optional]
+**invoice** | [**kotlin.Int**](.md) | Invoice ID for payment. |  [optional]
+**order** | [**kotlin.Int**](.md) | Server order ID. |  [optional]

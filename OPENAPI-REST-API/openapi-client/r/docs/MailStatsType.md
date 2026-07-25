@@ -1,4 +1,4 @@
-# openapi::MailStatsType
+# interserverapi::MailStatsType
 
 Statistics about the mail usage including volume by IP, To address, and From address; as well as total sent / delivered counts and cost.
 

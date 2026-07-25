@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateGeoFirewallRule model module.
  * @module model/CreateGeoFirewallRule
- * @version 0.9.0
+ * @version 1.0.0
  */
 class CreateGeoFirewallRule {
     /**
@@ -133,7 +133,13 @@ CreateGeoFirewallRule['XdpActionEnum'] = {
      * value: 1
      * @const
      */
-    "1": 1
+    "1": 1,
+
+    /**
+     * value: 11184809
+     * @const
+     */
+    "unknown_default_open_api": 11184809
 };
 
 

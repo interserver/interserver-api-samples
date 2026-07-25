@@ -1,4 +1,4 @@
-# InterServerManagementApi.PatchOauthTwoFactor200Response
+# InterserverApiClient.PatchOauthTwoFactor200Response
 
 ## Properties
 

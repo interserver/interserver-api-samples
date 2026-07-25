@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsPleskLicense = Initialize-PSOpenAPIToolsVpsPleskLicense  -Id null `
+$VpsPleskLicense = Initialize-InterserverApiVpsPleskLicense  -Id null `
  -Name null `
  -SubName null `
  -Cost null

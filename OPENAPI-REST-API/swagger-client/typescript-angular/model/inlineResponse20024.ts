@@ -11,8 +11,6 @@
  */
 
 export interface InlineResponse20024 { 
-    /**
-     * A map of IP addresses to their current reverse DNS hostnames.
-     */
-    ips?: { [key: string]: string; };
+    success: boolean;
+    text: string;
 }

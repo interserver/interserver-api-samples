@@ -1,4 +1,4 @@
-# openapi::Server
+# interserverapi::Server
 
 
 ## Properties

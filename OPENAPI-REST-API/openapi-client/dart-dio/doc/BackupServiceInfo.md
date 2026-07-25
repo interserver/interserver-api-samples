@@ -1,28 +1,28 @@
-# openapi.model.BackupServiceInfo
+# interserver_api.model.BackupServiceInfo
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**backupId** | **String** | Backup ID. | [optional] 
-**backupServer** | **String** | Backup server ID. | [optional] 
-**backupUsername** | **String** | Backup username. | [optional] 
-**backupType** | **String** | Backup type. | [optional] 
-**backupCurrency** | **String** | Backup currency. | [optional] 
-**backupOrderDate** | **String** | Backup order date. | [optional] 
-**backupCustid** | **String** | Backup customer ID. | [optional] 
-**backupQuota** | **String** | Backup quota. | [optional] 
-**backupIp** | **String** | Backup IP address. | [optional] 
-**backupStatus** | **String** | Backup status. | [optional] 
-**backupInvoice** | **String** | Backup invoice. | [optional] 
-**backupCoupon** | **String** | Backup coupon. | [optional] 
-**backupExtra** | **String** | Backup extra information. | [optional] 
-**backupServerStatus** | **String** | Backup server status. | [optional] 
-**backupComment** | **String** | Backup comment. | [optional] 
+**backupId** | **Optional&lt;String?&gt;** | Backup ID. | [optional] 
+**backupServer** | **Optional&lt;String?&gt;** | Backup server ID. | [optional] 
+**backupUsername** | **Optional&lt;String?&gt;** | Backup username. | [optional] 
+**backupType** | **Optional&lt;String?&gt;** | Backup type. | [optional] 
+**backupCurrency** | **Optional&lt;String?&gt;** | Backup currency. | [optional] 
+**backupOrderDate** | **Optional&lt;String?&gt;** | Backup order date. | [optional] 
+**backupCustid** | **Optional&lt;String?&gt;** | Backup customer ID. | [optional] 
+**backupQuota** | **Optional&lt;String?&gt;** | Backup quota. | [optional] 
+**backupIp** | **Optional&lt;String?&gt;** | Backup IP address. | [optional] 
+**backupStatus** | **Optional&lt;String?&gt;** | Backup status. | [optional] 
+**backupInvoice** | **Optional&lt;String?&gt;** | Backup invoice. | [optional] 
+**backupCoupon** | **Optional&lt;String?&gt;** | Backup coupon. | [optional] 
+**backupExtra** | **Optional&lt;String?&gt;** | Backup extra information. | [optional] 
+**backupServerStatus** | **Optional&lt;String?&gt;** | Backup server status. | [optional] 
+**backupComment** | **Optional&lt;String?&gt;** | Backup comment. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

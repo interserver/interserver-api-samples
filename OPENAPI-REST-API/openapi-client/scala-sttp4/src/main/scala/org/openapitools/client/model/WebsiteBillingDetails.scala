@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JObject
 
   /**
    * Billing information for a webhosting service including payment status, billing cycle, and cost.
@@ -35,8 +36,7 @@ case class WebsiteBillingDetails(
   /* Cost information for the service */
   service_cost_info: Option[String] = None,
   /* Extra information for the service */
-  service_extra: Option[Any] = None,
+  service_extra: Option[org.json4s.JObject] = None,
   /* Extra information in JSON format for the service */
   service_extra_json: Option[String] = None
 )
-

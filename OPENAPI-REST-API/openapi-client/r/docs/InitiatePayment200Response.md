@@ -1,4 +1,4 @@
-# openapi::InitiatePayment200Response
+# interserverapi::InitiatePayment200Response
 
 
 ## Properties

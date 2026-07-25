@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.domain_nameserver_post_request import DomainNameserverPostRequest  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.domain_nameserver_post_request import DomainNameserverPostRequest  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestDomainNameserverPostRequest(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestDomainNameserverPostRequest(unittest.TestCase):
     def testDomainNameserverPostRequest(self):
         """Test DomainNameserverPostRequest"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.domain_nameserver_post_request.DomainNameserverPostRequest()  # noqa: E501
+        # model = interserver_api_client.models.domain_nameserver_post_request.DomainNameserverPostRequest()  # noqa: E501
         pass
 
 

@@ -1,19 +1,19 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for HomeServicesLicenses
 void main() {
-  final instance = HomeServicesLicensesBuilder();
-  // TODO add properties to the builder and call build()
+  final HomeServicesLicenses? instance = /* HomeServicesLicenses(...) */ null;
+  // TODO add properties to the entity
 
   group(HomeServicesLicenses, () {
-    // HomeServicesLicensesLinks links
+    // Optional<HomeServicesLicensesLinks?> links
     test('to test the property `links`', () async {
       // TODO
     });
 
     // Number of licenses.
-    // int count
+    // Optional<int?> count
     test('to test the property `count`', () async {
       // TODO
     });

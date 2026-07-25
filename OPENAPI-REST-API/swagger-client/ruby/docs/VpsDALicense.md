@@ -1,4 +1,4 @@
-# SwaggerClient::VpsDALicense
+# InterserverApiClient::VpsDALicense
 
 ## Properties
 Name | Type | Description | Notes

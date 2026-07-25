@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SuccessTextResponse } from './api';
+import { SuccessTextResponse } from '@interserver/myadmin-client';
 
 const instance: SuccessTextResponse = {
     success,

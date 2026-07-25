@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.domain_dnssec_records_inner import DomainDnssecRecordsInner
+from interserver_api_client.models.domain_dnssec_records_inner import DomainDnssecRecordsInner
 
 # TODO update the JSON string below
 json = "{}"

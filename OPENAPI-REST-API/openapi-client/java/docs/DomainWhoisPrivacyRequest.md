@@ -26,4 +26,8 @@ Request payload for enabling or disabling Whois privacy.
 |**domainExtra** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

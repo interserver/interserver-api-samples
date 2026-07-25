@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderServiceTypes32 = Initialize-PSOpenAPIToolsVpsOrderServiceTypes32  -ServicesId 32 `
+$VpsOrderServiceTypes32 = Initialize-InterserverApiVpsOrderServiceTypes32  -ServicesId 32 `
  -ServicesName KVM Windows VPS Slice `
  -ServicesCost 10.00 `
  -ServicesCategory 2 `

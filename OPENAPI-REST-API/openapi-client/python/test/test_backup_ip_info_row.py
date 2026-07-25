@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_ip_info_row import BackupIPInfoRow
+from interserver_api_client.models.backup_ip_info_row import BackupIPInfoRow
 
 class TestBackupIPInfoRow(unittest.TestCase):
     """BackupIPInfoRow unit test stubs"""

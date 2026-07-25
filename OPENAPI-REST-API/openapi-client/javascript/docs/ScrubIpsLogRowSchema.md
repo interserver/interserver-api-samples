@@ -1,4 +1,4 @@
-# InterServerManagementApi.ScrubIpsLogRowSchema
+# InterserverApiClient.ScrubIpsLogRowSchema
 
 ## Properties
 

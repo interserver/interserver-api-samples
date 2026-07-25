@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_order_templates_hyperv_windows import VpsOrderTemplatesHypervWindows
+from interserver_api_client.models.vps_order_templates_hyperv_windows import VpsOrderTemplatesHypervWindows
 
 # TODO update the JSON string below
 json = "{}"

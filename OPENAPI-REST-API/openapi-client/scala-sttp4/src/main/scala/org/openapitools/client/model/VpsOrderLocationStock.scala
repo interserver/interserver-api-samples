@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class VpsOrderLocationStock(
   `1`: Option[VpsOrderLocationStock1] = None
 )
-

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.mail_block_click_house import MailBlockClickHouse
+from interserver_api_client.models.mail_block_click_house import MailBlockClickHouse
 
 # TODO update the JSON string below
 json = "{}"

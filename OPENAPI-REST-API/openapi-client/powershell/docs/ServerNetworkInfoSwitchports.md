@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerNetworkInfoSwitchports = Initialize-PSOpenAPIToolsServerNetworkInfoSwitchports  -Var10414 null
+$ServerNetworkInfoSwitchports = Initialize-InterserverApiServerNetworkInfoSwitchports  -Var10414 null
 ```
 
 - Convert the resource to JSON

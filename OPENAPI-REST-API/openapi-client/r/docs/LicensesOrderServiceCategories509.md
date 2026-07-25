@@ -1,4 +1,4 @@
-# openapi::LicensesOrderServiceCategories509
+# interserverapi::LicensesOrderServiceCategories509
 
 
 ## Properties

@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class ServerNetworkInfoSwitchports(
   `10414`: ServerSwitchport
 )
-

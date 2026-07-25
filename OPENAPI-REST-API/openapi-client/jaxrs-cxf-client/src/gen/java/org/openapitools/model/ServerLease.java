@@ -51,7 +51,7 @@ public class ServerLease  {
    * @return authenticated
   **/
   @JsonProperty("authenticated")
-  public Boolean getAuthenticated() {
+  public Boolean isAuthenticated() {
     return authenticated;
   }
 

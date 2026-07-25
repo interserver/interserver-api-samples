@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The QuickserverOrderVersionCentosstream8 model module.
  * @module model/QuickserverOrderVersionCentosstream8
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverOrderVersionCentosstream8 {
     /**

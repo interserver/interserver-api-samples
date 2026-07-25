@@ -16,4 +16,3 @@ case class ScrubIpFilterTypesFiltersValue(
   name: Option[String] = None,
   desc: Option[String] = None
 )
-

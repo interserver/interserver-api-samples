@@ -16,4 +16,3 @@ case class GetWebsiteBuyIp200Response(
   /* A map of IP addresses to their current reverse DNS hostnames. */
   ips: Option[Map[String, String]] = None
 )
-

@@ -11,4 +11,8 @@
 |**adminEmail** | **String** | Administrative contact email provided for the order. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

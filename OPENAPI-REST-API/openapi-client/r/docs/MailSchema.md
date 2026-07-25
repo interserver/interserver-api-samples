@@ -1,4 +1,4 @@
-# openapi::MailSchema
+# interserverapi::MailSchema
 
 
 ## Properties

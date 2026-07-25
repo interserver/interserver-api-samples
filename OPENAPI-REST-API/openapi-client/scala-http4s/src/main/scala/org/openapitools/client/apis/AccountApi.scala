@@ -27,7 +27,6 @@ import org.openapitools.client.models.*
 
 trait AccountApiEndpoints[F[*]] {
 
-  def changeAccountUsername()(using auth: _Authorization.ApiKey): F[TextResponse]
   def deleteAccountOauthName(name: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def deleteAccountTfa()(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def deleteIpLimit(ipLimitRange: Option[IpLimitRange] = None)(using auth: _Authorization.ApiKey): F[GenericResponse]
@@ -56,26 +55,6 @@ class AccountApiEndpointsImpl[F[*]: Concurrent](
   import JsonSupports.*
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
-
-  override def changeAccountUsername()(using auth: _Authorization.ApiKey): F[TextResponse] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "application/json")
-    ).flatten
-
-    _executeRequest[Unit, TextResponse](
-      method = "POST",
-      path = s"/account/username",
-      body = None,
-      formParameters = None,
-      queryParameters = Nil,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => parseJson[F, TextResponse]("TextResponse", r)
-        case r if r.status.code == 400 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
 
   override def deleteAccountOauthName(name: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(

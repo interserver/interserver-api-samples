@@ -1,4 +1,4 @@
-# openapi::UrlRequest
+# interserverapi::UrlRequest
 
 URL
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SslCancel200Response = Initialize-PSOpenAPIToolsSslCancel200Response  -Success null `
+$SslCancel200Response = Initialize-InterserverApiSslCancel200Response  -Success null `
  -Text null
 ```
 

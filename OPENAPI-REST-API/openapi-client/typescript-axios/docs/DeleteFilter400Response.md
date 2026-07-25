@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DeleteFilter400Response } from './api';
+import { DeleteFilter400Response } from '@interserver/myadmin-client';
 
 const instance: DeleteFilter400Response = {
     success,

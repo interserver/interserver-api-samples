@@ -27,4 +27,3 @@ case class MailAlertUpdateRequest(
   /* Whether the alert is enabled. */
   enabled: Option[String] = None
 )
-

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DownloadQsBackupRequest
 void main() {
-  final instance = DownloadQsBackupRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final DownloadQsBackupRequest? instance = /* DownloadQsBackupRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(DownloadQsBackupRequest, () {
     // The backup filename to download.

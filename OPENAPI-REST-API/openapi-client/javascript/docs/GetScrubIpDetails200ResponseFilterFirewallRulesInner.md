@@ -1,4 +1,4 @@
-# InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewallRulesInner
+# InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewallRulesInner
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# SwaggerClient::MailRow
+# InterserverApiClient::MailRow
 
 ## Properties
 Name | Type | Description | Notes

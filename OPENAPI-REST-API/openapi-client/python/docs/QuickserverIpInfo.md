@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.quickserver_ip_info import QuickserverIpInfo
+from interserver_api_client.models.quickserver_ip_info import QuickserverIpInfo
 
 # TODO update the JSON string below
 json = "{}"

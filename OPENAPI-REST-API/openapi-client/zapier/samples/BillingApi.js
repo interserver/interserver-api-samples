@@ -9,15 +9,13 @@ module.exports = {
         { data: {} },
     "SuccessTextResponseSample": 
         { data: {} },
-    "SuccessTextResponseSample": 
-        { data: {} },
     "AffiliateBannerRowSample": 
         [{"image":"12946798.gif","width":"125","height":"125"},{"image":"12946800.gif","width":"160","height":"90"},{"image":"12946802.gif","width":"160","height":"190"},{"image":"12946806.gif","width":"200","height":"200"},{"image":"12946808.gif","width":"250","height":"250"},{"image":"12946811.gif","width":"300","height":"250"}],
     "TextResponseSample": 
         { data: {} },
     "StatusMonthlyBreakdownSample": 
         { data: {} },
-    "TextResponseSample": 
+    "getAffiliateSignups_200_responseSample": 
         { data: {} },
     "MonthlyCountsSample": 
         { data: {} },
@@ -29,13 +27,11 @@ module.exports = {
         { data: {} },
     "BillingInvoiceListSample": 
         { data: {} },
-    "InvoiceSample": 
-        { data: {} },
     "initiatePayment_200_responseSample": 
         { data: {} },
     "SuccessTextResponseSample": 
         { data: {} },
-    "TextResponseSample": 
+    "SuccessTextResponseSample": 
         { data: {} },
     "TextResponseSample": 
         { data: {} },

@@ -26,4 +26,3 @@ case class BuyItNowRow(
   location: Option[String] = None,
   price: Option[Int] = None
 )
-

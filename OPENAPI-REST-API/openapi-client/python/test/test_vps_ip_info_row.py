@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_ip_info_row import VpsIPInfoRow
+from interserver_api_client.models.vps_ip_info_row import VpsIPInfoRow
 
 class TestVpsIPInfoRow(unittest.TestCase):
     """VpsIPInfoRow unit test stubs"""

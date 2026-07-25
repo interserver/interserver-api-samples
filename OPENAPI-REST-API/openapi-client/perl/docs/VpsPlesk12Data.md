@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsPlesk12Data
+# InterServerAPI::Object::VpsPlesk12Data
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsPlesk12Data;
+use InterServerAPI::Object::VpsPlesk12Data;
 ```
 
 ## Properties

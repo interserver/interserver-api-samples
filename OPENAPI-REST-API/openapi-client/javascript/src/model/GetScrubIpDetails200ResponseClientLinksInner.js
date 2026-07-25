@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetScrubIpDetails200ResponseClientLinksInner model module.
  * @module model/GetScrubIpDetails200ResponseClientLinksInner
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetScrubIpDetails200ResponseClientLinksInner {
     /**

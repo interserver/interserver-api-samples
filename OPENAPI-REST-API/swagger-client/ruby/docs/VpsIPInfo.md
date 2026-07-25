@@ -1,4 +1,4 @@
-# SwaggerClient::VpsIPInfo
+# InterserverApiClient::VpsIPInfo
 
 ## Properties
 Name | Type | Description | Notes

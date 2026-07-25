@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetScrubIpDetails200ResponseServiceInfo = Initialize-PSOpenAPIToolsGetScrubIpDetails200ResponseServiceInfo  -ScrubIpId null `
+$GetScrubIpDetails200ResponseServiceInfo = Initialize-InterserverApiGetScrubIpDetails200ResponseServiceInfo  -ScrubIpId null `
  -ScrubIpType null `
  -ScrubIpCustid null `
  -ScrubIpOrderDate null `

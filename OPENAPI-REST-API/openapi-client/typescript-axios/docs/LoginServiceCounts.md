@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LoginServiceCounts } from './api';
+import { LoginServiceCounts } from '@interserver/myadmin-client';
 
 const instance: LoginServiceCounts = {
     vps,

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainOrderServices10001 model module.
  * @module model/DomainOrderServices10001
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainOrderServices10001 {
     /**

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.charge_invoice_rows import ChargeInvoiceRows
+from interserver_api_client.models.charge_invoice_rows import ChargeInvoiceRows
 
 class TestChargeInvoiceRows(unittest.TestCase):
     """ChargeInvoiceRows unit test stubs"""
@@ -38,7 +38,7 @@ class TestChargeInvoiceRows(unittest.TestCase):
             return ChargeInvoiceRows(
                 success = True,
                 invoices = {
-                    'key' : openapi_client.models.charge_invoice_rows_invoices_value.ChargeInvoiceRows_invoices_value(
+                    'key' : interserver_api_client.models.charge_invoice_rows_invoices_value.ChargeInvoiceRows_invoices_value(
                         invoices_id = 1.337, 
                         invoices_description = '', 
                         invoices_amount = 1.337, 
@@ -49,7 +49,7 @@ class TestChargeInvoiceRows(unittest.TestCase):
                         currency_symbol = '', 
                         invoices_date_formatted = '', 
                         paid_invoices = {
-                            'key' : openapi_client.models.charge_invoice_rows_invoices_value_paid_invoices_value.ChargeInvoiceRows_invoices_value_paid_invoices_value(
+                            'key' : interserver_api_client.models.charge_invoice_rows_invoices_value_paid_invoices_value.ChargeInvoiceRows_invoices_value_paid_invoices_value(
                                 invoices_id = '', 
                                 invoices_description = '', 
                                 invoices_amount = 1.337, 
@@ -59,7 +59,7 @@ class TestChargeInvoiceRows(unittest.TestCase):
                                 invoices_date_formatted = '', 
                                 payment_type = '', 
                                 refund_invoices = {
-                                    'key' : openapi_client.models.charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.ChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value(
+                                    'key' : interserver_api_client.models.charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.ChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value(
                                         invoices_id = 1.337, 
                                         invoices_description = '', 
                                         invoices_amount = 1.337, 

@@ -45,7 +45,7 @@ template constructResult[T](response: Response): untyped =
 
 
 proc addBackup*(httpClient: HttpClient, validateOnly: bool, serviceType: int, coupon: string): (Option[BackupOrderPostResponse], Response) =
-  ## Place Backup Order
+  ## Place a new off-site backup storage order and generate the invoice
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "validateOnly": $validateOnly, # 
@@ -58,63 +58,63 @@ proc addBackup*(httpClient: HttpClient, validateOnly: bool, serviceType: int, co
 
 
 proc cancelBackup*(httpClient: HttpClient, id: int): (Option[cancelBackup_200_response], Response) =
-  ## Cancel Backup Service
+  ## Cancel an off-site backup storage subscription
 
   let response = httpClient.delete(basepath & fmt"/backups/{id}")
   constructResult[cancelBackup_200_response](response)
 
 
 proc getBackupInfo*(httpClient: HttpClient, id: int): (Option[Backup], Response) =
-  ## Get Backup Service Details
+  ## Get details of a specific off-site backup storage service
 
   let response = httpClient.get(basepath & fmt"/backups/{id}")
   constructResult[Backup](response)
 
 
 proc getBackupInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get Backup Order Invoices
+  ## List invoices for a single backup-storage subscription
 
   let response = httpClient.get(basepath & fmt"/backups/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getBackupLogin*(httpClient: HttpClient, id: int): (Option[BackupLoginResponse], Response) =
-  ## Get Backup Storage Panel Login
+  ## Open a single sign-on session URL for the backup storage panel
 
   let response = httpClient.get(basepath & fmt"/backups/{id}/login")
   constructResult[BackupLoginResponse](response)
 
 
 proc getBackupsList*(httpClient: HttpClient): (Option[seq[BackupRow]], Response) =
-  ## List Backup Services
+  ## List off-site backup storage subscriptions on the authenticated account
 
   let response = httpClient.get(basepath & "/backups")
   constructResult[seq[BackupRow]](response)
 
 
 proc getBackupsWelcomeEmail*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Resend Backup Welcome Email
+  ## Resend the welcome email for an off-site backup storage service
 
   let response = httpClient.get(basepath & fmt"/backups/{id}/welcome_email")
   constructResult[SuccessTextResponse](response)
 
 
 proc getNewBackup*(httpClient: HttpClient): (Option[BackupsOrder], Response) =
-  ## Get Backup Order Form Data
+  ## Get backup-storage order form metadata and pricing tiers
 
   let response = httpClient.get(basepath & "/backups/order")
   constructResult[BackupsOrder](response)
 
 
 proc updateBackupInfo*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Update Backup Information
+  ## Update stored metadata for a backup-storage subscription
 
   let response = httpClient.post(basepath & fmt"/backups/{id}")
   constructResult[SuccessTextResponse](response)
 
 
 proc validateBackupOrder*(httpClient: HttpClient, validateOnly: bool, serviceType: int, coupon: string): (Option[BackupOrderPutResponse], Response) =
-  ## Validate Backup Order
+  ## Validate a backup-storage order and preview pricing without charging
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "validateOnly": $validateOnly, # 

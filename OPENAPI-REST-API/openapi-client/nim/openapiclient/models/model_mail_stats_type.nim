@@ -22,6 +22,7 @@ type Time* {.pure.} = enum
   `24h`
   Today
   `1h`
+  UnknownDefaultOpenApi
 
 type MailStatsType* = object
   ## Statistics about the mail usage including volume by IP, To address, and From address; as well as total sent / delivered counts and cost.
@@ -43,6 +44,7 @@ func `%`*(v: Time): JsonNode =
     of Time.`24h`: %"24h"
     of Time.Today: %"today"
     of Time.`1h`: %"1h"
+    of Time.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: Time): string =
   result = case v:
     of Time.All: $("all")
@@ -52,6 +54,7 @@ func `$`*(v: Time): string =
     of Time.`24h`: $("24h")
     of Time.Today: $("today")
     of Time.`1h`: $("1h")
+    of Time.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[Time]): Time =
   if node.kind != JString:
@@ -72,6 +75,8 @@ proc to*(node: JsonNode, T: typedesc[Time]): Time =
     return Time.Today
   of $("1h"):
     return Time.`1h`
+  of $("11184809"):
+    return Time.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for Time: " & strVal)
 

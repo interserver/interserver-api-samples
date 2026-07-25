@@ -1,4 +1,4 @@
-# InterServerManagementApi.AccountInfoLimits
+# InterserverApiClient.AccountInfoLimits
 
 ## Properties
 

@@ -18,7 +18,7 @@ import MailTutorialsTable from './MailTutorialsTable';
 /**
  * The MailSchemaExtraInfoTables model module.
  * @module model/MailSchemaExtraInfoTables
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailSchemaExtraInfoTables {
     /**

@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainServiceType
+# InterserverApiClient.DomainServiceType
 
 ## Properties
 

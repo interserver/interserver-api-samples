@@ -1,4 +1,4 @@
-# SwaggerClient::ServerOrderRAID
+# InterserverApiClient::ServerOrderRAID
 
 ## Properties
 Name | Type | Description | Notes

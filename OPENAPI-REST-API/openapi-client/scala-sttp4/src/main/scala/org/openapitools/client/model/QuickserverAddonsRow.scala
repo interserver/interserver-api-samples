@@ -21,4 +21,3 @@ case class QuickserverAddonsRow(
   /* Value */
   value: Option[String] = None
 )
-

@@ -17,7 +17,7 @@ import VpsOrderTemplatesHyperv from './VpsOrderTemplatesHyperv';
 /**
  * The VpsOrderTemplates model module.
  * @module model/VpsOrderTemplates
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderTemplates {
     /**

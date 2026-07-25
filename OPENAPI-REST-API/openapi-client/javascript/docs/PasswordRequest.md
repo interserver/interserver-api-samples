@@ -1,4 +1,4 @@
-# InterServerManagementApi.PasswordRequest
+# InterserverApiClient.PasswordRequest
 
 ## Properties
 

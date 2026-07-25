@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CancelDomain200Response
+# InterServerAPI::Object::CancelDomain200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CancelDomain200Response;
+use InterServerAPI::Object::CancelDomain200Response;
 ```
 
 ## Properties

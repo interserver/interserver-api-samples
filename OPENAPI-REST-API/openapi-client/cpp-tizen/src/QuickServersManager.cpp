@@ -109,7 +109,7 @@ static bool addQsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, vo
 }
 
 static bool addQsHelper(char * accessToken,
-	
+	std::shared_ptr<QsOrderRequest> qsOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -129,6 +129,19 @@ static bool addQsHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("QsOrderRequest")) {
+		node = converttoJson(&qsOrderRequest, "QsOrderRequest", "");
+	}
+	
+	char *jsonStr =  qsOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/qs/order");
 	int pos;
@@ -180,22 +193,22 @@ static bool addQsHelper(char * accessToken,
 
 
 bool QuickServersManager::addQsAsync(char * accessToken,
-	
+	std::shared_ptr<QsOrderRequest> qsOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addQsHelper(accessToken,
-	
+	qsOrderRequest, 
 	handler, userData, true);
 }
 
 bool QuickServersManager::addQsSync(char * accessToken,
-	
+	std::shared_ptr<QsOrderRequest> qsOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addQsHelper(accessToken,
-	
+	qsOrderRequest, 
 	handler, userData, false);
 }
 
@@ -1949,6 +1962,163 @@ bool QuickServersManager::getNewQsSync(char * accessToken,
 {
 	return getNewQsHelper(accessToken,
 	
+	handler, userData, false);
+}
+
+static bool getQsBackupProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(QueueResponse, Error, void* )
+	= reinterpret_cast<void(*)(QueueResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	QueueResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("QueueResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "QueueResponse", "QueueResponse");
+			json_node_free(pJson);
+
+			if ("QueueResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool getQsBackupHelper(char * accessToken,
+	int id, 
+	void(* handler)(QueueResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/qs/{id}/backup");
+	int pos;
+
+	string s_id("{");
+	s_id.append("id");
+	s_id.append("}");
+	pos = url.find(s_id);
+	url.erase(pos, s_id.length());
+	url.insert(pos, stringify(&id, "int"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(QuickServersManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = getQsBackupProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (QuickServersManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getQsBackupProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __QuickServersManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool QuickServersManager::getQsBackupAsync(char * accessToken,
+	int id, 
+	void(* handler)(QueueResponse, Error, void* )
+	, void* userData)
+{
+	return getQsBackupHelper(accessToken,
+	id, 
+	handler, userData, true);
+}
+
+bool QuickServersManager::getQsBackupSync(char * accessToken,
+	int id, 
+	void(* handler)(QueueResponse, Error, void* )
+	, void* userData)
+{
+	return getQsBackupHelper(accessToken,
+	id, 
 	handler, userData, false);
 }
 
@@ -4223,163 +4393,6 @@ bool QuickServersManager::getQsWelcomeEmailSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool postQsBackupProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	void(* handler)(QueueResponse, Error, void* )
-	= reinterpret_cast<void(*)(QueueResponse, Error, void* )> (voidHandler);
-	
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-	QueueResponse out;
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-
-
-		if (isprimitive("QueueResponse")) {
-			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "QueueResponse", "QueueResponse");
-			json_node_free(pJson);
-
-			if ("QueueResponse" == "std::string") {
-				string* val = (std::string*)(&out);
-				if (val->empty() && p_chunk.size>4) {
-					*val = string(p_chunk.memory, p_chunk.size);
-				}
-			}
-		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-		}
-		handler(out, error, userData);
-		return true;
-		//TODO: handle case where json parsing has an error
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		 handler(out, error, userData);
-		return false;
-			}
-}
-
-static bool postQsBackupHelper(char * accessToken,
-	int id, 
-	void(* handler)(QueueResponse, Error, void* )
-	, void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/qs/{id}/backup");
-	int pos;
-
-	string s_id("{");
-	s_id.append("id");
-	s_id.append("}");
-	pos = url.find(s_id);
-	url.erase(pos, s_id.length());
-	url.insert(pos, stringify(&id, "int"));
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("POST");
-
-	if(strcmp("PUT", "POST") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(QuickServersManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = postQsBackupProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_free_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (QuickServersManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), postQsBackupProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __QuickServersManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool QuickServersManager::postQsBackupAsync(char * accessToken,
-	int id, 
-	void(* handler)(QueueResponse, Error, void* )
-	, void* userData)
-{
-	return postQsBackupHelper(accessToken,
-	id, 
-	handler, userData, true);
-}
-
-bool QuickServersManager::postQsBackupSync(char * accessToken,
-	int id, 
-	void(* handler)(QueueResponse, Error, void* )
-	, void* userData)
-{
-	return postQsBackupHelper(accessToken,
-	id, 
-	handler, userData, false);
-}
-
 static bool postQsChangeHostnameProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -6278,7 +6291,7 @@ static bool putQsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, vo
 }
 
 static bool putQsHelper(char * accessToken,
-	
+	std::shared_ptr<QsOrderRequest> qsOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -6298,6 +6311,19 @@ static bool putQsHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("QsOrderRequest")) {
+		node = converttoJson(&qsOrderRequest, "QsOrderRequest", "");
+	}
+	
+	char *jsonStr =  qsOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/qs/order");
 	int pos;
@@ -6349,22 +6375,22 @@ static bool putQsHelper(char * accessToken,
 
 
 bool QuickServersManager::putQsAsync(char * accessToken,
-	
+	std::shared_ptr<QsOrderRequest> qsOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putQsHelper(accessToken,
-	
+	qsOrderRequest, 
 	handler, userData, true);
 }
 
 bool QuickServersManager::putQsSync(char * accessToken,
-	
+	std::shared_ptr<QsOrderRequest> qsOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putQsHelper(accessToken,
-	
+	qsOrderRequest, 
 	handler, userData, false);
 }
 

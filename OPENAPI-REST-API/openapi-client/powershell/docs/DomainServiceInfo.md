@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainServiceInfo = Initialize-PSOpenAPIToolsDomainServiceInfo  -DomainId null `
+$DomainServiceInfo = Initialize-InterserverApiDomainServiceInfo  -DomainId null `
  -DomainHostname null `
  -DomainUsername null `
  -DomainPassword null `

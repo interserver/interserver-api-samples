@@ -8,7 +8,8 @@
 
 #' InlineResponse2005 Class
 #'
-#' @field redirect_url 
+#' @field success 
+#' @field text 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -16,38 +17,51 @@
 InlineResponse2005 <- R6::R6Class(
   'InlineResponse2005',
   public = list(
-    `redirect_url` = NULL,
-    initialize = function(`redirect_url`){
-      if (!missing(`redirect_url`)) {
-        stopifnot(is.character(`redirect_url`), length(`redirect_url`) == 1)
-        self$`redirect_url` <- `redirect_url`
+    `success` = NULL,
+    `text` = NULL,
+    initialize = function(`success`, `text`){
+      if (!missing(`success`)) {
+        self$`success` <- `success`
+      }
+      if (!missing(`text`)) {
+        stopifnot(is.character(`text`), length(`text`) == 1)
+        self$`text` <- `text`
       }
     },
     toJSON = function() {
       InlineResponse2005Object <- list()
-      if (!is.null(self$`redirect_url`)) {
-        InlineResponse2005Object[['redirect_url']] <- self$`redirect_url`
+      if (!is.null(self$`success`)) {
+        InlineResponse2005Object[['success']] <- self$`success`
+      }
+      if (!is.null(self$`text`)) {
+        InlineResponse2005Object[['text']] <- self$`text`
       }
 
       InlineResponse2005Object
     },
     fromJSON = function(InlineResponse2005Json) {
       InlineResponse2005Object <- jsonlite::fromJSON(InlineResponse2005Json)
-      if (!is.null(InlineResponse2005Object$`redirect_url`)) {
-        self$`redirect_url` <- InlineResponse2005Object$`redirect_url`
+      if (!is.null(InlineResponse2005Object$`success`)) {
+        self$`success` <- InlineResponse2005Object$`success`
+      }
+      if (!is.null(InlineResponse2005Object$`text`)) {
+        self$`text` <- InlineResponse2005Object$`text`
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "redirect_url": %s
+           "success": %s,
+           "text": %s
         }',
-        self$`redirect_url`
+        self$`success`,
+        self$`text`
       )
     },
     fromJSONString = function(InlineResponse2005Json) {
       InlineResponse2005Object <- jsonlite::fromJSON(InlineResponse2005Json)
-      self$`redirect_url` <- InlineResponse2005Object$`redirect_url`
+      self$`success` <- InlineResponse2005Object$`success`
+      self$`text` <- InlineResponse2005Object$`text`
     }
   )
 )

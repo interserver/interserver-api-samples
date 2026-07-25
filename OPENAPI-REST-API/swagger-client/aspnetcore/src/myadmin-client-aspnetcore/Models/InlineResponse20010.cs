@@ -27,17 +27,72 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20010 : IEquatable<InlineResponse20010>
     { 
         /// <summary>
-        /// Gets or Sets Success
+        /// The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
         /// </summary>
-        [Required]
-
-        [DataMember(Name="success")]
-        public bool? Success { get; set; }
+        /// <value>The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).</value>
+        [JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
+        public enum TypeEnum
+        {
+            /// <summary>
+            /// Enum RedirectEnum for redirect
+            /// </summary>
+            [EnumMember(Value = "redirect")]
+            RedirectEnum = 0,
+            /// <summary>
+            /// Enum SubmitEnum for submit
+            /// </summary>
+            [EnumMember(Value = "submit")]
+            SubmitEnum = 1,
+            /// <summary>
+            /// Enum SingleEnum for single
+            /// </summary>
+            [EnumMember(Value = "single")]
+            SingleEnum = 2        }
 
         /// <summary>
-        /// Gets or Sets Text
+        /// The response type indicating how to handle the payment. Possible values: &#x60;redirect&#x60; (redirect user to a URL), &#x60;submit&#x60; (submit a form to a URL), &#x60;single&#x60; (immediate result).
         /// </summary>
-        [Required]
+        /// <value>The response type indicating how to handle the payment. Possible values: &#x60;redirect&#x60; (redirect user to a URL), &#x60;submit&#x60; (submit a form to a URL), &#x60;single&#x60; (immediate result).</value>
+
+        [DataMember(Name="type")]
+        public TypeEnum? Type { get; set; }
+
+        /// <summary>
+        /// URL to redirect the user to for payment (when type is &#x60;redirect&#x60;).
+        /// </summary>
+        /// <value>URL to redirect the user to for payment (when type is &#x60;redirect&#x60;).</value>
+
+        [DataMember(Name="redirect")]
+        public string Redirect { get; set; }
+
+        /// <summary>
+        /// Form action URL (when type is &#x60;submit&#x60;).
+        /// </summary>
+        /// <value>Form action URL (when type is &#x60;submit&#x60;).</value>
+
+        [DataMember(Name="action")]
+        public string Action { get; set; }
+
+        /// <summary>
+        /// HTTP method for the form submission (when type is &#x60;submit&#x60;).
+        /// </summary>
+        /// <value>HTTP method for the form submission (when type is &#x60;submit&#x60;).</value>
+
+        [DataMember(Name="method")]
+        public string Method { get; set; }
+
+        /// <summary>
+        /// Form field name-value pairs to submit (when type is &#x60;submit&#x60;).
+        /// </summary>
+        /// <value>Form field name-value pairs to submit (when type is &#x60;submit&#x60;).</value>
+
+        [DataMember(Name="items")]
+        public Object Items { get; set; }
+
+        /// <summary>
+        /// Status or result text.
+        /// </summary>
+        /// <value>Status or result text.</value>
 
         [DataMember(Name="text")]
         public string Text { get; set; }
@@ -50,7 +105,11 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20010 {\n");
-            sb.Append("  Success: ").Append(Success).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Redirect: ").Append(Redirect).Append("\n");
+            sb.Append("  Action: ").Append(Action).Append("\n");
+            sb.Append("  Method: ").Append(Method).Append("\n");
+            sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("  Text: ").Append(Text).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -89,9 +148,29 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Success == other.Success ||
-                    Success != null &&
-                    Success.Equals(other.Success)
+                    Type == other.Type ||
+                    Type != null &&
+                    Type.Equals(other.Type)
+                ) && 
+                (
+                    Redirect == other.Redirect ||
+                    Redirect != null &&
+                    Redirect.Equals(other.Redirect)
+                ) && 
+                (
+                    Action == other.Action ||
+                    Action != null &&
+                    Action.Equals(other.Action)
+                ) && 
+                (
+                    Method == other.Method ||
+                    Method != null &&
+                    Method.Equals(other.Method)
+                ) && 
+                (
+                    Items == other.Items ||
+                    Items != null &&
+                    Items.Equals(other.Items)
                 ) && 
                 (
                     Text == other.Text ||
@@ -110,8 +189,16 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Success != null)
-                    hashCode = hashCode * 59 + Success.GetHashCode();
+                    if (Type != null)
+                    hashCode = hashCode * 59 + Type.GetHashCode();
+                    if (Redirect != null)
+                    hashCode = hashCode * 59 + Redirect.GetHashCode();
+                    if (Action != null)
+                    hashCode = hashCode * 59 + Action.GetHashCode();
+                    if (Method != null)
+                    hashCode = hashCode * 59 + Method.GetHashCode();
+                    if (Items != null)
+                    hashCode = hashCode * 59 + Items.GetHashCode();
                     if (Text != null)
                     hashCode = hashCode * 59 + Text.GetHashCode();
                 return hashCode;

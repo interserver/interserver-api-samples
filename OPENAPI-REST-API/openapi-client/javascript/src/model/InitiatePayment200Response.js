@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The InitiatePayment200Response model module.
  * @module model/InitiatePayment200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class InitiatePayment200Response {
     /**
@@ -167,7 +167,13 @@ InitiatePayment200Response['TypeEnum'] = {
      * value: "single"
      * @const
      */
-    "single": "single"
+    "single": "single",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 

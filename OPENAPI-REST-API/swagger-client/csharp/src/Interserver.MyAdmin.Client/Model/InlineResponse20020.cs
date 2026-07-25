@@ -31,41 +31,57 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20020" /> class.
         /// </summary>
-        /// <param name="success">success (required).</param>
-        /// <param name="text">text (required).</param>
-        public InlineResponse20020(bool? success = default(bool?), string text = default(string))
+        /// <param name="_continue">_continue.</param>
+        /// <param name="errors">errors.</param>
+        /// <param name="serviceType">serviceType.</param>
+        /// <param name="serviceCost">serviceCost.</param>
+        /// <param name="originalCost">originalCost.</param>
+        /// <param name="repeatServiceCost">repeatServiceCost.</param>
+        public InlineResponse20020(bool? _continue = default(bool?), List<string> errors = default(List<string>), int? serviceType = default(int?), decimal? serviceCost = default(decimal?), decimal? originalCost = default(decimal?), decimal? repeatServiceCost = default(decimal?))
         {
-            // to ensure "success" is required (not null)
-            if (success == null)
-            {
-                throw new InvalidDataException("success is a required property for InlineResponse20020 and cannot be null");
-            }
-            else
-            {
-                this.success = success;
-            }
-            // to ensure "text" is required (not null)
-            if (text == null)
-            {
-                throw new InvalidDataException("text is a required property for InlineResponse20020 and cannot be null");
-            }
-            else
-            {
-                this.text = text;
-            }
+            this._continue = _continue;
+            this.errors = errors;
+            this.serviceType = serviceType;
+            this.serviceCost = serviceCost;
+            this.originalCost = originalCost;
+            this.repeatServiceCost = repeatServiceCost;
         }
         
         /// <summary>
-        /// Gets or Sets success
+        /// Gets or Sets _continue
         /// </summary>
-        [DataMember(Name="success", EmitDefaultValue=false)]
-        public bool? success { get; set; }
+        [DataMember(Name="continue", EmitDefaultValue=false)]
+        public bool? _continue { get; set; }
 
         /// <summary>
-        /// Gets or Sets text
+        /// Gets or Sets errors
         /// </summary>
-        [DataMember(Name="text", EmitDefaultValue=false)]
-        public string text { get; set; }
+        [DataMember(Name="errors", EmitDefaultValue=false)]
+        public List<string> errors { get; set; }
+
+        /// <summary>
+        /// Gets or Sets serviceType
+        /// </summary>
+        [DataMember(Name="serviceType", EmitDefaultValue=false)]
+        public int? serviceType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets serviceCost
+        /// </summary>
+        [DataMember(Name="serviceCost", EmitDefaultValue=false)]
+        public decimal? serviceCost { get; set; }
+
+        /// <summary>
+        /// Gets or Sets originalCost
+        /// </summary>
+        [DataMember(Name="originalCost", EmitDefaultValue=false)]
+        public decimal? originalCost { get; set; }
+
+        /// <summary>
+        /// Gets or Sets repeatServiceCost
+        /// </summary>
+        [DataMember(Name="repeatServiceCost", EmitDefaultValue=false)]
+        public decimal? repeatServiceCost { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,8 +91,12 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20020 {\n");
-            sb.Append("  success: ").Append(success).Append("\n");
-            sb.Append("  text: ").Append(text).Append("\n");
+            sb.Append("  _continue: ").Append(_continue).Append("\n");
+            sb.Append("  errors: ").Append(errors).Append("\n");
+            sb.Append("  serviceType: ").Append(serviceType).Append("\n");
+            sb.Append("  serviceCost: ").Append(serviceCost).Append("\n");
+            sb.Append("  originalCost: ").Append(originalCost).Append("\n");
+            sb.Append("  repeatServiceCost: ").Append(repeatServiceCost).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,14 +132,35 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.success == input.success ||
-                    (this.success != null &&
-                    this.success.Equals(input.success))
+                    this._continue == input._continue ||
+                    (this._continue != null &&
+                    this._continue.Equals(input._continue))
                 ) && 
                 (
-                    this.text == input.text ||
-                    (this.text != null &&
-                    this.text.Equals(input.text))
+                    this.errors == input.errors ||
+                    this.errors != null &&
+                    input.errors != null &&
+                    this.errors.SequenceEqual(input.errors)
+                ) && 
+                (
+                    this.serviceType == input.serviceType ||
+                    (this.serviceType != null &&
+                    this.serviceType.Equals(input.serviceType))
+                ) && 
+                (
+                    this.serviceCost == input.serviceCost ||
+                    (this.serviceCost != null &&
+                    this.serviceCost.Equals(input.serviceCost))
+                ) && 
+                (
+                    this.originalCost == input.originalCost ||
+                    (this.originalCost != null &&
+                    this.originalCost.Equals(input.originalCost))
+                ) && 
+                (
+                    this.repeatServiceCost == input.repeatServiceCost ||
+                    (this.repeatServiceCost != null &&
+                    this.repeatServiceCost.Equals(input.repeatServiceCost))
                 );
         }
 
@@ -132,10 +173,18 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.success != null)
-                    hashCode = hashCode * 59 + this.success.GetHashCode();
-                if (this.text != null)
-                    hashCode = hashCode * 59 + this.text.GetHashCode();
+                if (this._continue != null)
+                    hashCode = hashCode * 59 + this._continue.GetHashCode();
+                if (this.errors != null)
+                    hashCode = hashCode * 59 + this.errors.GetHashCode();
+                if (this.serviceType != null)
+                    hashCode = hashCode * 59 + this.serviceType.GetHashCode();
+                if (this.serviceCost != null)
+                    hashCode = hashCode * 59 + this.serviceCost.GetHashCode();
+                if (this.originalCost != null)
+                    hashCode = hashCode * 59 + this.originalCost.GetHashCode();
+                if (this.repeatServiceCost != null)
+                    hashCode = hashCode * 59 + this.repeatServiceCost.GetHashCode();
                 return hashCode;
             }
         }

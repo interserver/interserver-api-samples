@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DnsRecordType = Initialize-PSOpenAPIToolsDnsRecordType 
+$DnsRecordType = Initialize-InterserverApiDnsRecordType 
 ```
 
 - Convert the resource to JSON

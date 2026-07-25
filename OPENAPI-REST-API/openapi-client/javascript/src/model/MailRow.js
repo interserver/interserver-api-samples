@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailRow model module.
  * @module model/MailRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailRow {
     /**

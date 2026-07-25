@@ -2,9 +2,11 @@ package io.swagger.server.model
 
 
 /**
- * @param redirect_url The URL to redirect the user to for OAuth authentication.
+ * @param success 
+ * @param text 
  */
 case class Inline_response_200_5 (
-  redirect_url: Option[String]
+  success: Boolean,
+  text: String
 )
 

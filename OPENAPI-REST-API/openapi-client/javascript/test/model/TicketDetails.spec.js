@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.TicketDetails();
+    instance = new InterserverApiClient.TicketDetails();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('TicketDetails', function() {
     it('should create an instance of TicketDetails', function() {
       // uncomment below and update the code to test TicketDetails
-      //var instance = new InterServerManagementApi.TicketDetails();
-      //expect(instance).to.be.a(InterServerManagementApi.TicketDetails);
+      //var instance = new InterserverApiClient.TicketDetails();
+      //expect(instance).to.be.a(InterserverApiClient.TicketDetails);
     });
 
     it('should have the property ticketid (base name: "ticketid")', function() {
       // uncomment below and update the code to test the property ticketid
-      //var instance = new InterServerManagementApi.TicketDetails();
+      //var instance = new InterserverApiClient.TicketDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property ticketmaskid (base name: "ticketmaskid")', function() {
       // uncomment below and update the code to test the property ticketmaskid
-      //var instance = new InterServerManagementApi.TicketDetails();
+      //var instance = new InterserverApiClient.TicketDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property department (base name: "department")', function() {
       // uncomment below and update the code to test the property department
-      //var instance = new InterServerManagementApi.TicketDetails();
+      //var instance = new InterserverApiClient.TicketDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
-      //var instance = new InterServerManagementApi.TicketDetails();
+      //var instance = new InterserverApiClient.TicketDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property priority (base name: "priority")', function() {
       // uncomment below and update the code to test the property priority
-      //var instance = new InterServerManagementApi.TicketDetails();
+      //var instance = new InterserverApiClient.TicketDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property subject (base name: "subject")', function() {
       // uncomment below and update the code to test the property subject
-      //var instance = new InterServerManagementApi.TicketDetails();
+      //var instance = new InterserverApiClient.TicketDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property created_on (base name: "created_on")', function() {
       // uncomment below and update the code to test the property created_on
-      //var instance = new InterServerManagementApi.TicketDetails();
+      //var instance = new InterserverApiClient.TicketDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property updated_on (base name: "updated_on")', function() {
       // uncomment below and update the code to test the property updated_on
-      //var instance = new InterServerManagementApi.TicketDetails();
+      //var instance = new InterserverApiClient.TicketDetails();
       //expect(instance).to.be();
     });
 

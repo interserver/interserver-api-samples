@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_service_master import QuickserverServiceMaster
+from interserver_api_client.models.quickserver_service_master import QuickserverServiceMaster
 
 class TestQuickserverServiceMaster(unittest.TestCase):
     """QuickserverServiceMaster unit test stubs"""

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.domain_dnssec_request import DomainDnssecRequest
+from interserver_api_client.models.domain_dnssec_request import DomainDnssecRequest
 
 # TODO update the JSON string below
 json = "{}"

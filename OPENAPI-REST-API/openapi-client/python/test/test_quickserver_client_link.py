@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_client_link import QuickserverClientLink
+from interserver_api_client.models.quickserver_client_link import QuickserverClientLink
 
 class TestQuickserverClientLink(unittest.TestCase):
     """QuickserverClientLink unit test stubs"""

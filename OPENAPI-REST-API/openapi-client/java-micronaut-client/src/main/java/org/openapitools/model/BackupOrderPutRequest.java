@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   BackupOrderPutRequest.JSON_PROPERTY_COUPON
 })
 @JsonTypeName("BackupOrderPutRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class BackupOrderPutRequest {
     public static final String JSON_PROPERTY_VALIDATE_ONLY = "validateOnly";
@@ -57,7 +57,7 @@ public class BackupOrderPutRequest {
     @Nullable
     @JsonProperty(JSON_PROPERTY_VALIDATE_ONLY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Boolean getValidateOnly() {
+    public Boolean isValidateOnly() {
         return validateOnly;
     }
 

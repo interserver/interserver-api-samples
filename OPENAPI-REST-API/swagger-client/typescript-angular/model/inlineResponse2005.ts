@@ -11,8 +11,6 @@
  */
 
 export interface InlineResponse2005 { 
-    /**
-     * The URL to redirect the user to for OAuth authentication.
-     */
-    redirect_url?: string;
+    success: boolean;
+    text: string;
 }

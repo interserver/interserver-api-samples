@@ -13,8 +13,16 @@ public class InlineResponse2007   {
 
   private @Valid Boolean login = null;
 
+  private @Valid Boolean signup = null;
+
+  private @Valid Boolean linked = null;
+
+  private @Valid Integer accountId = null;
+
+  private @Valid String errorCode = null;
+
   /**
-   * Whether the 2FA verification succeeded and the user is now logged in.
+   * Whether the user was logged in to an existing account.
    **/
   public InlineResponse2007 login(Boolean login) {
     this.login = login;
@@ -22,7 +30,7 @@ public class InlineResponse2007   {
   }
 
   
-  @ApiModelProperty(value = "Whether the 2FA verification succeeded and the user is now logged in.")
+  @ApiModelProperty(value = "Whether the user was logged in to an existing account.")
   @JsonProperty("login")
   @NotNull
 
@@ -31,6 +39,86 @@ public class InlineResponse2007   {
   }
   public void setLogin(Boolean login) {
     this.login = login;
+  }
+
+  /**
+   * Whether a new account was created.
+   **/
+  public InlineResponse2007 signup(Boolean signup) {
+    this.signup = signup;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Whether a new account was created.")
+  @JsonProperty("signup")
+  @NotNull
+
+  public Boolean isSignup() {
+    return signup;
+  }
+  public void setSignup(Boolean signup) {
+    this.signup = signup;
+  }
+
+  /**
+   * Whether the OAuth provider was linked to an existing account.
+   **/
+  public InlineResponse2007 linked(Boolean linked) {
+    this.linked = linked;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Whether the OAuth provider was linked to an existing account.")
+  @JsonProperty("linked")
+  @NotNull
+
+  public Boolean isLinked() {
+    return linked;
+  }
+  public void setLinked(Boolean linked) {
+    this.linked = linked;
+  }
+
+  /**
+   * The account ID associated with the OAuth login.
+   **/
+  public InlineResponse2007 accountId(Integer accountId) {
+    this.accountId = accountId;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "The account ID associated with the OAuth login.")
+  @JsonProperty("account_id")
+  @NotNull
+
+  public Integer getAccountId() {
+    return accountId;
+  }
+  public void setAccountId(Integer accountId) {
+    this.accountId = accountId;
+  }
+
+  /**
+   * Error code if additional verification is needed (e.g. &#x60;2fa_required&#x60;).
+   **/
+  public InlineResponse2007 errorCode(String errorCode) {
+    this.errorCode = errorCode;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Error code if additional verification is needed (e.g. `2fa_required`).")
+  @JsonProperty("error_code")
+  @NotNull
+
+  public String getErrorCode() {
+    return errorCode;
+  }
+  public void setErrorCode(String errorCode) {
+    this.errorCode = errorCode;
   }
 
 
@@ -43,12 +131,16 @@ public class InlineResponse2007   {
       return false;
     }
     InlineResponse2007 inlineResponse2007 = (InlineResponse2007) o;
-    return Objects.equals(login, inlineResponse2007.login);
+    return Objects.equals(login, inlineResponse2007.login) &&
+        Objects.equals(signup, inlineResponse2007.signup) &&
+        Objects.equals(linked, inlineResponse2007.linked) &&
+        Objects.equals(accountId, inlineResponse2007.accountId) &&
+        Objects.equals(errorCode, inlineResponse2007.errorCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(login);
+    return Objects.hash(login, signup, linked, accountId, errorCode);
   }
 
   @Override
@@ -57,6 +149,10 @@ public class InlineResponse2007   {
     sb.append("class InlineResponse2007 {\n");
     
     sb.append("    login: ").append(toIndentedString(login)).append("\n");
+    sb.append("    signup: ").append(toIndentedString(signup)).append("\n");
+    sb.append("    linked: ").append(toIndentedString(linked)).append("\n");
+    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
+    sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

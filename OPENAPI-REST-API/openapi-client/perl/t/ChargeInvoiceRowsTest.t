@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ChargeInvoiceRows');
+use_ok('InterServerAPI::Object::ChargeInvoiceRows');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ChargeInvoiceRows->new();
+#my $instance = InterServerAPI::Object::ChargeInvoiceRows->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ChargeInvoiceRows');
+#isa_ok($instance, 'InterServerAPI::Object::ChargeInvoiceRows');
 
 
 done_testing();

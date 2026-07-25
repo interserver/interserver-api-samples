@@ -133,6 +133,60 @@ void OpenAPIPublicApi::HandleResponse(FHttpResponsePtr HttpResponse, bool bSucce
 	InOutResponse.SetHttpResponseCode(EHttpResponseCodes::RequestTimeout);
 }
 
+FHttpRequestPtr OpenAPIPublicApi::GetAccountCurrencies(const GetAccountCurrenciesRequest& Request, const FGetAccountCurrenciesDelegate& Delegate /*= FGetAccountCurrenciesDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIPublicApi::OnGetAccountCurrenciesResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIPublicApi::OnGetAccountCurrenciesResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetAccountCurrenciesDelegate Delegate) const
+{
+	GetAccountCurrenciesResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
+FHttpRequestPtr OpenAPIPublicApi::GetAccountLocales(const GetAccountLocalesRequest& Request, const FGetAccountLocalesDelegate& Delegate /*= FGetAccountLocalesDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIPublicApi::OnGetAccountLocalesResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIPublicApi::OnGetAccountLocalesResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetAccountLocalesDelegate Delegate) const
+{
+	GetAccountLocalesResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 FHttpRequestPtr OpenAPIPublicApi::GetCaptcha(const GetCaptchaRequest& Request, const FGetCaptchaDelegate& Delegate /*= FGetCaptchaDelegate()*/) const
 {
 	if (!IsValid())

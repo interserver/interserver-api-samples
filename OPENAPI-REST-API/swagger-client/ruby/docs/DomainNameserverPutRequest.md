@@ -1,4 +1,4 @@
-# SwaggerClient::DomainNameserverPutRequest
+# InterserverApiClient::DomainNameserverPutRequest
 
 ## Properties
 Name | Type | Description | Notes

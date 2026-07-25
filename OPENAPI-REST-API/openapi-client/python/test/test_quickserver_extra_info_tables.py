@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_extra_info_tables import QuickserverExtraInfoTables
+from interserver_api_client.models.quickserver_extra_info_tables import QuickserverExtraInfoTables
 
 class TestQuickserverExtraInfoTables(unittest.TestCase):
     """QuickserverExtraInfoTables unit test stubs"""
@@ -36,17 +36,17 @@ class TestQuickserverExtraInfoTables(unittest.TestCase):
         model = QuickserverExtraInfoTables()
         if include_optional:
             return QuickserverExtraInfoTables(
-                ip_info = openapi_client.models.quickserver_ip_info.QuickserverIpInfo(
+                ip_info = interserver_api_client.models.quickserver_ip_info.QuickserverIpInfo(
                     title = 'IP Information', 
                     rows = [
-                        openapi_client.models.quickserver_ip_table_row.QuickserverIpTableRow(
+                        interserver_api_client.models.quickserver_ip_table_row.QuickserverIpTableRow(
                             desc = 'Netmask', 
                             value = '', )
                         ], ),
-                addons = openapi_client.models.quickserver_addons.QuickserverAddons(
+                addons = interserver_api_client.models.quickserver_addons.QuickserverAddons(
                     title = 'Addons', 
                     rows = [
-                        openapi_client.models.quickserver_addons_row.QuickserverAddonsRow(
+                        interserver_api_client.models.quickserver_addons_row.QuickserverAddonsRow(
                             desc = 'Additional IP Address', 
                             value = '', )
                         ], )

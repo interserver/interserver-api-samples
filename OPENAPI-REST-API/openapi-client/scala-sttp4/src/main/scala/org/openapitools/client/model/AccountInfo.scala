@@ -31,4 +31,3 @@ case class AccountInfo(
   enableCurrencies: Option[Boolean] = None,
   gravatar: Option[String] = None
 )
-

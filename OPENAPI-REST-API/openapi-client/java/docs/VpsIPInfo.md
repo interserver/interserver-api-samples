@@ -12,4 +12,8 @@ IP address information table for a VPS service.
 |**rows** | [**List&lt;VpsIPInfoRow&gt;**](VpsIPInfoRow.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

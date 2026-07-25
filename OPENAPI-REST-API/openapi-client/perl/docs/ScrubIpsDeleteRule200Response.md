@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ScrubIpsDeleteRule200Response
+# InterServerAPI::Object::ScrubIpsDeleteRule200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ScrubIpsDeleteRule200Response;
+use InterServerAPI::Object::ScrubIpsDeleteRule200Response;
 ```
 
 ## Properties

@@ -11,7 +11,92 @@ import Alamofire
 
 open class PublicAPI {
     /**
-     Get Captcha Challenge
+     List enabled currency codes accepted for billing and preferences
+
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getAccountCurrencies(completion: @escaping ((_ data: [String]?,_ error: Error?) -> Void)) {
+        getAccountCurrenciesWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     List enabled currency codes accepted for billing and preferences
+     - GET /account/currencies
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example=[ "", "" ]}]
+
+     - returns: RequestBuilder<[String]> 
+     */
+    open class func getAccountCurrenciesWithRequestBuilder() -> RequestBuilder<[String]> {
+        let path = "/account/currencies"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<[String]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
+     List supported UI locales with English and native display names
+
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getAccountLocales(completion: @escaping ((_ data: [String:InlineResponseMap200]?,_ error: Error?) -> Void)) {
+        getAccountLocalesWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     List supported UI locales with English and native display names
+     - GET /account/locales
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "key" : {
+    "name" : "name",
+    "local_name" : "local_name"
+  }
+}}]
+
+     - returns: RequestBuilder<[String:InlineResponseMap200]> 
+     */
+    open class func getAccountLocalesWithRequestBuilder() -> RequestBuilder<[String:InlineResponseMap200]> {
+        let path = "/account/locales"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<[String:InlineResponseMap200]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
+     Fetch a base64 JPEG captcha challenge for human verification
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -23,7 +108,7 @@ open class PublicAPI {
 
 
     /**
-     Get Captcha Challenge
+     Fetch a base64 JPEG captcha challenge for human verification
      - GET /captcha
 
      - API Key:
@@ -62,7 +147,7 @@ open class PublicAPI {
     }
 
     /**
-     Get Countries
+     List enabled countries keyed by ISO-2/ISO-3/numeric code
 
      - parameter fetchBy: (query) Get countries by iso2 or iso3 or numcode (optional)
      - parameter completion: completion handler to receive the data and the error objects
@@ -79,7 +164,7 @@ open class PublicAPI {
 
 
     /**
-     Get Countries
+     List enabled countries keyed by ISO-2/ISO-3/numeric code
      - GET /account/countries
 
      - API Key:
@@ -111,7 +196,7 @@ open class PublicAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Server Info
+     Discover available modules, service packages, categories, and types
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -123,7 +208,7 @@ open class PublicAPI {
 
 
     /**
-     Get Server Info
+     Discover available modules, service packages, categories, and types
      - GET /info
 
      - API Key:
@@ -258,7 +343,7 @@ open class PublicAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Login Info
+     Fetch logo, captcha, language, and stats for rendering a login page
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -270,7 +355,7 @@ open class PublicAPI {
 
 
     /**
-     Get Login Info
+     Fetch logo, captcha, language, and stats for rendering a login page
      - GET /login
 
      - API Key:
@@ -307,7 +392,7 @@ open class PublicAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Marketplace Servers
+     List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -319,7 +404,7 @@ open class PublicAPI {
 
 
     /**
-     List Marketplace Servers
+     List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
      - GET /buy_now_servers_list
 
      - API Key:
@@ -369,12 +454,12 @@ open class PublicAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get OAuth Redirect URL
+     Begin OAuth login flow — redirect user to provider for authentication
 
      - parameter provider: (query) The OAuth provider name (e.g. &#x60;Google&#x60;). 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getOauthRedirect(provider: String, completion: @escaping ((_ data: InlineResponse2005?,_ error: Error?) -> Void)) {
+    open class func getOauthRedirect(provider: String, completion: @escaping ((_ data: InlineResponse2006?,_ error: Error?) -> Void)) {
         getOauthRedirectWithRequestBuilder(provider: provider).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -382,7 +467,7 @@ open class PublicAPI {
 
 
     /**
-     Get OAuth Redirect URL
+     Begin OAuth login flow — redirect user to provider for authentication
      - GET /oauth
 
      - API Key:
@@ -399,9 +484,9 @@ open class PublicAPI {
 }}]
      - parameter provider: (query) The OAuth provider name (e.g. &#x60;Google&#x60;). 
 
-     - returns: RequestBuilder<InlineResponse2005> 
+     - returns: RequestBuilder<InlineResponse2006> 
      */
-    open class func getOauthRedirectWithRequestBuilder(provider: String) -> RequestBuilder<InlineResponse2005> {
+    open class func getOauthRedirectWithRequestBuilder(provider: String) -> RequestBuilder<InlineResponse2006> {
         let path = "/oauth"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -411,12 +496,12 @@ open class PublicAPI {
         ])
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2005>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2006>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Available Timezones
+     List all PHP timezone identifiers usable on accounts and services
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -428,7 +513,7 @@ open class PublicAPI {
 
 
     /**
-     Get Available Timezones
+     List all PHP timezone identifiers usable on accounts and services
      - GET /account/timezones
 
      - API Key:
@@ -456,12 +541,12 @@ open class PublicAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Complete OAuth Two-Factor Verification
+     Submit 2FA code to finish OAuth login when account has 2FA enabled
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func patchOauthTwoFactor(body: OauthBody2, completion: @escaping ((_ data: InlineResponse2007?,_ error: Error?) -> Void)) {
+    open class func patchOauthTwoFactor(body: OauthBody2, completion: @escaping ((_ data: InlineResponse2008?,_ error: Error?) -> Void)) {
         patchOauthTwoFactorWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -469,7 +554,7 @@ open class PublicAPI {
 
 
     /**
-     Complete OAuth Two-Factor Verification
+     Submit 2FA code to finish OAuth login when account has 2FA enabled
      - PATCH /oauth
 
      - API Key:
@@ -486,27 +571,27 @@ open class PublicAPI {
 }}]
      - parameter body: (body)  
 
-     - returns: RequestBuilder<InlineResponse2007> 
+     - returns: RequestBuilder<InlineResponse2008> 
      */
-    open class func patchOauthTwoFactorWithRequestBuilder(body: OauthBody2) -> RequestBuilder<InlineResponse2007> {
+    open class func patchOauthTwoFactorWithRequestBuilder(body: OauthBody2) -> RequestBuilder<InlineResponse2008> {
         let path = "/oauth"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2007>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2008>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Complete OAuth Two-Factor Verification
+     Submit 2FA code to finish OAuth login when account has 2FA enabled
 
      - parameter accountId: (form)  
      - parameter code: (form)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func patchOauthTwoFactor(accountId: Int, code: String, completion: @escaping ((_ data: InlineResponse2007?,_ error: Error?) -> Void)) {
+    open class func patchOauthTwoFactor(accountId: Int, code: String, completion: @escaping ((_ data: InlineResponse2008?,_ error: Error?) -> Void)) {
         patchOauthTwoFactorWithRequestBuilder(accountId: accountId, code: code).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -514,7 +599,7 @@ open class PublicAPI {
 
 
     /**
-     Complete OAuth Two-Factor Verification
+     Submit 2FA code to finish OAuth login when account has 2FA enabled
      - PATCH /oauth
 
      - API Key:
@@ -532,21 +617,21 @@ open class PublicAPI {
      - parameter accountId: (form)  
      - parameter code: (form)  
 
-     - returns: RequestBuilder<InlineResponse2007> 
+     - returns: RequestBuilder<InlineResponse2008> 
      */
-    open class func patchOauthTwoFactorWithRequestBuilder(accountId: Int, code: String) -> RequestBuilder<InlineResponse2007> {
+    open class func patchOauthTwoFactorWithRequestBuilder(accountId: Int, code: String) -> RequestBuilder<InlineResponse2008> {
         let path = "/oauth"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2007>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2008>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Ping Server
+     Liveness check — returns the JSON string \"pong\" to confirm API is up
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -558,7 +643,7 @@ open class PublicAPI {
 
 
     /**
-     Ping Server
+     Liveness check — returns the JSON string \"pong\" to confirm API is up
      - GET /ping
 
      - API Key:
@@ -586,13 +671,13 @@ open class PublicAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     OAuth Callback
+     Complete OAuth login by linking provider to existing or new account
 
      - parameter provider: (query) The OAuth provider name (e.g. &#x60;Google&#x60;). 
      - parameter body: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func postOauthCallback(provider: String, body: OauthBody? = nil, completion: @escaping ((_ data: InlineResponse2006?,_ error: Error?) -> Void)) {
+    open class func postOauthCallback(provider: String, body: OauthBody? = nil, completion: @escaping ((_ data: InlineResponse2007?,_ error: Error?) -> Void)) {
         postOauthCallbackWithRequestBuilder(provider: provider, body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -600,7 +685,7 @@ open class PublicAPI {
 
 
     /**
-     OAuth Callback
+     Complete OAuth login by linking provider to existing or new account
      - POST /oauth
 
      - API Key:
@@ -622,9 +707,9 @@ open class PublicAPI {
      - parameter provider: (query) The OAuth provider name (e.g. &#x60;Google&#x60;). 
      - parameter body: (body)  (optional)
 
-     - returns: RequestBuilder<InlineResponse2006> 
+     - returns: RequestBuilder<InlineResponse2007> 
      */
-    open class func postOauthCallbackWithRequestBuilder(provider: String, body: OauthBody? = nil) -> RequestBuilder<InlineResponse2006> {
+    open class func postOauthCallbackWithRequestBuilder(provider: String, body: OauthBody? = nil) -> RequestBuilder<InlineResponse2007> {
         let path = "/oauth"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -634,18 +719,18 @@ open class PublicAPI {
         ])
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2006>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2007>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     OAuth Callback
+     Complete OAuth login by linking provider to existing or new account
 
      - parameter provider: (query) The OAuth provider name (e.g. &#x60;Google&#x60;). 
      - parameter provider2: (form)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func postOauthCallback(provider: String, provider2: String? = nil, completion: @escaping ((_ data: InlineResponse2006?,_ error: Error?) -> Void)) {
+    open class func postOauthCallback(provider: String, provider2: String? = nil, completion: @escaping ((_ data: InlineResponse2007?,_ error: Error?) -> Void)) {
         postOauthCallbackWithRequestBuilder(provider: provider, provider2: provider2).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -653,7 +738,7 @@ open class PublicAPI {
 
 
     /**
-     OAuth Callback
+     Complete OAuth login by linking provider to existing or new account
      - POST /oauth
 
      - API Key:
@@ -675,9 +760,9 @@ open class PublicAPI {
      - parameter provider: (query) The OAuth provider name (e.g. &#x60;Google&#x60;). 
      - parameter provider2: (form)  (optional)
 
-     - returns: RequestBuilder<InlineResponse2006> 
+     - returns: RequestBuilder<InlineResponse2007> 
      */
-    open class func postOauthCallbackWithRequestBuilder(provider: String, provider2: String? = nil) -> RequestBuilder<InlineResponse2006> {
+    open class func postOauthCallbackWithRequestBuilder(provider: String, provider2: String? = nil) -> RequestBuilder<InlineResponse2007> {
         let path = "/oauth"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -687,12 +772,12 @@ open class PublicAPI {
         ])
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2006>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2007>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Submit Login Information
+     Authenticate with email + password and return a session token
 
      - parameter login: (form)  
      - parameter passwd: (form)  
@@ -709,7 +794,7 @@ open class PublicAPI {
 
 
     /**
-     Submit Login Information
+     Authenticate with email + password and return a session token
      - POST /login
 
      - API Key:
@@ -748,7 +833,7 @@ open class PublicAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Submit Login Information
+     Authenticate with email + password and return a session token
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -761,7 +846,7 @@ open class PublicAPI {
 
 
     /**
-     Submit Login Information
+     Authenticate with email + password and return a session token
      - POST /login
 
      - API Key:
@@ -796,7 +881,7 @@ open class PublicAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Submit Signup Information
+     Create a new customer account (email + password + captcha + ToS)
 
      - parameter body: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
@@ -813,7 +898,7 @@ open class PublicAPI {
 
 
     /**
-     Submit Signup Information
+     Create a new customer account (email + password + captcha + ToS)
      - POST /signup
 
      - API Key:

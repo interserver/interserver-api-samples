@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CreateGeoRule400Response
+# InterServerAPI::Object::CreateGeoRule400Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CreateGeoRule400Response;
+use InterServerAPI::Object::CreateGeoRule400Response;
 ```
 
 ## Properties

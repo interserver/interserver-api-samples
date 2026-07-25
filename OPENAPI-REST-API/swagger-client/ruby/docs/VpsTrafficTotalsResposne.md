@@ -1,4 +1,4 @@
-# SwaggerClient::VpsTrafficTotalsResposne
+# InterserverApiClient::VpsTrafficTotalsResposne
 
 ## Properties
 Name | Type | Description | Notes

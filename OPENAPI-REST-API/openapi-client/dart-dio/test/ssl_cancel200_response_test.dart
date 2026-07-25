@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for SslCancel200Response
 void main() {
-  final instance = SslCancel200ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final SslCancel200Response? instance = /* SslCancel200Response(...) */ null;
+  // TODO add properties to the entity
 
   group(SslCancel200Response, () {
     // bool success

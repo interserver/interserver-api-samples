@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.domain_order_response_attributes import DomainOrderResponseAttributes
+from interserver_api_client.models.domain_order_response_attributes import DomainOrderResponseAttributes
 
 # TODO update the JSON string below
 json = "{}"

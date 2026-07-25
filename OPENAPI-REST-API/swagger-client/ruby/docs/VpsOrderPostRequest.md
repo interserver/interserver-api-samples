@@ -1,4 +1,4 @@
-# SwaggerClient::VpsOrderPostRequest
+# InterserverApiClient::VpsOrderPostRequest
 
 ## Properties
 Name | Type | Description | Notes

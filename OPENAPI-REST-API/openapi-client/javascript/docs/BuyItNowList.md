@@ -1,4 +1,4 @@
-# InterServerManagementApi.BuyItNowList
+# InterserverApiClient.BuyItNowList
 
 ## Properties
 

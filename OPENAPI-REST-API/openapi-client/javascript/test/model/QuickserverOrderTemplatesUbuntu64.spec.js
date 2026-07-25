@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QuickserverOrderTemplatesUbuntu64();
+    instance = new InterserverApiClient.QuickserverOrderTemplatesUbuntu64();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('QuickserverOrderTemplatesUbuntu64', function() {
     it('should create an instance of QuickserverOrderTemplatesUbuntu64', function() {
       // uncomment below and update the code to test QuickserverOrderTemplatesUbuntu64
-      //var instance = new InterServerManagementApi.QuickserverOrderTemplatesUbuntu64();
-      //expect(instance).to.be.a(InterServerManagementApi.QuickserverOrderTemplatesUbuntu64);
+      //var instance = new InterserverApiClient.QuickserverOrderTemplatesUbuntu64();
+      //expect(instance).to.be.a(InterserverApiClient.QuickserverOrderTemplatesUbuntu64);
     });
 
   });

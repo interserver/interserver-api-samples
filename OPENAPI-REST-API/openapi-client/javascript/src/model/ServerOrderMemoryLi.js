@@ -17,7 +17,7 @@ import ServerOrderMemoryLi254 from './ServerOrderMemoryLi254';
 /**
  * The ServerOrderMemoryLi model module.
  * @module model/ServerOrderMemoryLi
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderMemoryLi {
     /**

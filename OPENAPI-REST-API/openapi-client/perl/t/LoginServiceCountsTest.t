@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::LoginServiceCounts');
+use_ok('InterServerAPI::Object::LoginServiceCounts');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::LoginServiceCounts->new();
+#my $instance = InterServerAPI::Object::LoginServiceCounts->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::LoginServiceCounts');
+#isa_ok($instance, 'InterServerAPI::Object::LoginServiceCounts');
 
 
 done_testing();

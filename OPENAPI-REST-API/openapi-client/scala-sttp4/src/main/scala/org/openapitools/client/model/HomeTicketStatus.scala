@@ -21,4 +21,3 @@ case class HomeTicketStatus(
   /* Count of tickets on hold. */
   On_Hold: Option[Int] = None
 )
-

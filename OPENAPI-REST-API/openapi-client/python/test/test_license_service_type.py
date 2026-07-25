@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.license_service_type import LicenseServiceType
+from interserver_api_client.models.license_service_type import LicenseServiceType
 
 class TestLicenseServiceType(unittest.TestCase):
     """LicenseServiceType unit test stubs"""

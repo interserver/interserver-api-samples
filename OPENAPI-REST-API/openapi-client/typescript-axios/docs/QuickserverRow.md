@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverRow } from './api';
+import { QuickserverRow } from '@interserver/myadmin-client';
 
 const instance: QuickserverRow = {
     qs_id,

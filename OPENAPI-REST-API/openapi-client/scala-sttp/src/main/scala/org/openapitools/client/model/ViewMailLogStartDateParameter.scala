@@ -12,6 +12,7 @@
 package org.openapitools.client.model
 
 
-case class ViewMailLogStartDateParameter(
-)
+trait ViewMailLogStartDateParameter
+object ViewMailLogStartDateParameter {
+}
 

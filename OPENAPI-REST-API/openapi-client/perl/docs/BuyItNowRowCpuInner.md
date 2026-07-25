@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BuyItNowRowCpuInner
+# InterServerAPI::Object::BuyItNowRowCpuInner
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BuyItNowRowCpuInner;
+use InterServerAPI::Object::BuyItNowRowCpuInner;
 ```
 
 ## Properties

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ScrubIpFilterTypesFiltersValue = Initialize-PSOpenAPIToolsScrubIpFilterTypesFiltersValue  -Name null `
+$ScrubIpFilterTypesFiltersValue = Initialize-InterserverApiScrubIpFilterTypesFiltersValue  -Name null `
  -Desc null
 ```
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.HomeDetailsModules();
+    instance = new InterserverApiClient.HomeDetailsModules();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,49 +50,49 @@
   describe('HomeDetailsModules', function() {
     it('should create an instance of HomeDetailsModules', function() {
       // uncomment below and update the code to test HomeDetailsModules
-      //var instance = new InterServerManagementApi.HomeDetailsModules();
-      //expect(instance).to.be.a(InterServerManagementApi.HomeDetailsModules);
+      //var instance = new InterserverApiClient.HomeDetailsModules();
+      //expect(instance).to.be.a(InterserverApiClient.HomeDetailsModules);
     });
 
     it('should have the property domains (base name: "domains")', function() {
       // uncomment below and update the code to test the property domains
-      //var instance = new InterServerManagementApi.HomeDetailsModules();
+      //var instance = new InterserverApiClient.HomeDetailsModules();
       //expect(instance).to.be();
     });
 
     it('should have the property webhosting (base name: "webhosting")', function() {
       // uncomment below and update the code to test the property webhosting
-      //var instance = new InterServerManagementApi.HomeDetailsModules();
+      //var instance = new InterserverApiClient.HomeDetailsModules();
       //expect(instance).to.be();
     });
 
     it('should have the property vps (base name: "vps")', function() {
       // uncomment below and update the code to test the property vps
-      //var instance = new InterServerManagementApi.HomeDetailsModules();
+      //var instance = new InterserverApiClient.HomeDetailsModules();
       //expect(instance).to.be();
     });
 
     it('should have the property licenses (base name: "licenses")', function() {
       // uncomment below and update the code to test the property licenses
-      //var instance = new InterServerManagementApi.HomeDetailsModules();
+      //var instance = new InterserverApiClient.HomeDetailsModules();
       //expect(instance).to.be();
     });
 
     it('should have the property backups (base name: "backups")', function() {
       // uncomment below and update the code to test the property backups
-      //var instance = new InterServerManagementApi.HomeDetailsModules();
+      //var instance = new InterserverApiClient.HomeDetailsModules();
       //expect(instance).to.be();
     });
 
     it('should have the property servers (base name: "servers")', function() {
       // uncomment below and update the code to test the property servers
-      //var instance = new InterServerManagementApi.HomeDetailsModules();
+      //var instance = new InterserverApiClient.HomeDetailsModules();
       //expect(instance).to.be();
     });
 
     it('should have the property quickservers (base name: "quickservers")', function() {
       // uncomment below and update the code to test the property quickservers
-      //var instance = new InterServerManagementApi.HomeDetailsModules();
+      //var instance = new InterserverApiClient.HomeDetailsModules();
       //expect(instance).to.be();
     });
 

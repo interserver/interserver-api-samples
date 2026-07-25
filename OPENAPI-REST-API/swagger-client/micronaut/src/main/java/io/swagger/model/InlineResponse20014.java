@@ -51,7 +51,7 @@ public class InlineResponse20014   {
    * Get text
    * @return text
   **/
-  @Schema(example = "Scrub is enabled on your IP.", required = true, description = "")
+  @Schema(example = "Scrub Ips is canceled.", required = true, description = "")
   @NotNull
 
   public String getText() {

@@ -1,4 +1,4 @@
-# InterServerManagementApi.HomeDetailsModulesLicenses
+# InterserverApiClient.HomeDetailsModulesLicenses
 
 ## Properties
 

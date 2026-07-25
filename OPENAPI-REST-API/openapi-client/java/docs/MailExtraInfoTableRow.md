@@ -12,4 +12,8 @@ A single row in the mail service supplementary information table.
 |**value** | **String** | The value of the extra info table row. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

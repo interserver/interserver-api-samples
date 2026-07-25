@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.billing_prepay_request import BillingPrepayRequest
+from interserver_api_client.models.billing_prepay_request import BillingPrepayRequest
 
 # TODO update the JSON string below
 json = "{}"

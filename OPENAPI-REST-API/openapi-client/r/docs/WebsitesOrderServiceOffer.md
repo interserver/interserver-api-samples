@@ -1,4 +1,4 @@
-# openapi::WebsitesOrderServiceOffer
+# interserverapi::WebsitesOrderServiceOffer
 
 
 ## Properties

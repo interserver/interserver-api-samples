@@ -17,7 +17,7 @@ import LicensesOrderServiceCategories509 from './LicensesOrderServiceCategories5
 /**
  * The LicensesOrderServiceCategories model module.
  * @module model/LicensesOrderServiceCategories
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicensesOrderServiceCategories {
     /**

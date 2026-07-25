@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailServiceInfo = Initialize-PSOpenAPIToolsMailServiceInfo  -MailId 43171 `
+$MailServiceInfo = Initialize-InterserverApiMailServiceInfo  -MailId 43171 `
  -MailUsername  `
  -MailType 10880 `
  -MailCurrency USD `

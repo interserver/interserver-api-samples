@@ -26,8 +26,10 @@
 #include "OAIPlaceBuyNowServer_request.h"
 #include "OAIReverseDnsEntries.h"
 #include "OAIServer.h"
+#include "OAIServerBulkIpmiPowerResponse.h"
 #include "OAIServerIpmiLiveInfo.h"
 #include "OAIServerOrder.h"
+#include "OAIServerOrderPostRequest.h"
 #include "OAIServerRow.h"
 #include "OAIServersBuyNowError.h"
 #include "OAIServersBuyNowResponse.h"
@@ -73,8 +75,10 @@ public:
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
-
-    virtual void addServer();
+    /**
+    * @param[in]  oai_server_order_post_request OAIServerOrderPostRequest [required]
+    */
+    virtual void addServer(const OAIServerOrderPostRequest &oai_server_order_post_request);
 
 
     virtual void buyItNowServerOrder();
@@ -119,8 +123,10 @@ public:
     */
     virtual void postServerReverseDns(const qint32 &id, const OAIReverseDnsEntries &oai_reverse_dns_entries);
 
-
-    virtual void putServers();
+    /**
+    * @param[in]  ids QString [required]
+    */
+    virtual void serverBulkIpmiPowerGet(const QString &ids);
 
     /**
     * @param[in]  id qint32 [required]
@@ -197,7 +203,7 @@ private:
     void getServersWelcomeEmailCallback(OAIHttpRequestWorker *worker);
     void placeBuyNowServerCallback(OAIHttpRequestWorker *worker);
     void postServerReverseDnsCallback(OAIHttpRequestWorker *worker);
-    void putServersCallback(OAIHttpRequestWorker *worker);
+    void serverBulkIpmiPowerGetCallback(OAIHttpRequestWorker *worker);
     void serverIpmiLiveGetCallback(OAIHttpRequestWorker *worker);
     void serverIpmiLivePostCallback(OAIHttpRequestWorker *worker);
     void serverIpmiPowerGetCallback(OAIHttpRequestWorker *worker);
@@ -218,7 +224,7 @@ Q_SIGNALS:
     void getServersWelcomeEmailSignal(OAISuccessTextResponse summary);
     void placeBuyNowServerSignal(OAIServersBuyNowResponse summary);
     void postServerReverseDnsSignal(OAITextResponse summary);
-    void putServersSignal();
+    void serverBulkIpmiPowerGetSignal(OAIServerBulkIpmiPowerResponse summary);
     void serverIpmiLiveGetSignal(OAIServerIpmiLiveInfo summary);
     void serverIpmiLivePostSignal(OAIServerIpmiLiveInfo summary);
     void serverIpmiPowerGetSignal(OAITextResponse summary);
@@ -238,7 +244,7 @@ Q_SIGNALS:
     void getServersWelcomeEmailSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void placeBuyNowServerSignalFull(OAIHttpRequestWorker *worker, OAIServersBuyNowResponse summary);
     void postServerReverseDnsSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
-    void putServersSignalFull(OAIHttpRequestWorker *worker);
+    void serverBulkIpmiPowerGetSignalFull(OAIHttpRequestWorker *worker, OAIServerBulkIpmiPowerResponse summary);
     void serverIpmiLiveGetSignalFull(OAIHttpRequestWorker *worker, OAIServerIpmiLiveInfo summary);
     void serverIpmiLivePostSignalFull(OAIHttpRequestWorker *worker, OAIServerIpmiLiveInfo summary);
     void serverIpmiPowerGetSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
@@ -257,7 +263,7 @@ Q_SIGNALS:
     void getServersWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void placeBuyNowServerSignalError(OAIServersBuyNowResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postServerReverseDnsSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void putServersSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void serverBulkIpmiPowerGetSignalError(OAIServerBulkIpmiPowerResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void serverIpmiLiveGetSignalError(OAIServerIpmiLiveInfo summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void serverIpmiLivePostSignalError(OAIServerIpmiLiveInfo summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void serverIpmiPowerGetSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -276,7 +282,7 @@ Q_SIGNALS:
     void getServersWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void placeBuyNowServerSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postServerReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void putServersSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void serverBulkIpmiPowerGetSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void serverIpmiLiveGetSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void serverIpmiLivePostSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void serverIpmiPowerGetSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

@@ -1,4 +1,4 @@
-# openapi::VpsBackupRows
+# interserverapi::VpsBackupRows
 
 The listing of the backups for your service.
 

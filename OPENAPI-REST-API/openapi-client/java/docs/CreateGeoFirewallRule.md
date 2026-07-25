@@ -23,4 +23,8 @@ Create firewall rule for your ip
 | NUMBER_1 | 1 |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

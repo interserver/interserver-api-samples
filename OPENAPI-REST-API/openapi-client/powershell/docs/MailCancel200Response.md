@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailCancel200Response = Initialize-PSOpenAPIToolsMailCancel200Response  -Success null `
+$MailCancel200Response = Initialize-InterserverApiMailCancel200Response  -Success null `
  -Text null
 ```
 

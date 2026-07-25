@@ -16,4 +16,3 @@ case class CancelScrubIp200Response(
   success: Boolean,
   text: String
 )
-

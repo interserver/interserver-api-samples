@@ -69,7 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddDomainTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.AddDomain();
+            //Dictionary<string, Object> body = null;
+            //var response = instance.AddDomain(body);
             //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
@@ -105,7 +106,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.CancelDomain(id);
-            //Assert.IsInstanceOf<InlineResponse2002> (response, "response is InlineResponse2002");
+            //Assert.IsInstanceOf<InlineResponse2003> (response, "response is InlineResponse2003");
         }
         /// <summary>
         /// Test DeleteDomainDnssec
@@ -115,8 +116,7 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
-            //string action = null;
-            //var response = instance.DeleteDomainDnssec(id, action);
+            //var response = instance.DeleteDomainDnssec(id);
             //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
@@ -196,29 +196,6 @@ namespace Interserver.MyAdmin.Client.Test
             //int? id = null;
             //var response = instance.GetDomainNameservers(id);
             //Assert.IsInstanceOf<DomainNameserverGetResponse> (response, "response is DomainNameserverGetResponse");
-        }
-        /// <summary>
-        /// Test GetDomainOrderFields
-        /// </summary>
-        [Test]
-        public void GetDomainOrderFieldsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string domain = null;
-            //string regType = null;
-            //instance.GetDomainOrderFields(domain, regType);
-            
-        }
-        /// <summary>
-        /// Test GetDomainOrderSearchResults
-        /// </summary>
-        [Test]
-        public void GetDomainOrderSearchResultsTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string domain = null;
-            //instance.GetDomainOrderSearchResults(domain);
-            
         }
         /// <summary>
         /// Test GetDomainRenewal
@@ -302,7 +279,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void PatchDomainsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PatchDomains();
+            //Dictionary<string, Object> body = null;
+            //instance.PatchDomains(body);
             
         }
         /// <summary>
@@ -315,6 +293,17 @@ namespace Interserver.MyAdmin.Client.Test
             //int? id = null;
             //var response = instance.PostDomainRenewal(id);
             //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
+        }
+        /// <summary>
+        /// Test PostDomainSearch
+        /// </summary>
+        [Test]
+        public void PostDomainSearchTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string name = null;
+            //instance.PostDomainSearch(name);
+            
         }
         /// <summary>
         /// Test PostDomainTransfer
@@ -334,7 +323,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void PutDomainsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PutDomains();
+            //Dictionary<string, Object> body = null;
+            //instance.PutDomains(body);
             
         }
         /// <summary>
@@ -356,7 +346,7 @@ namespace Interserver.MyAdmin.Client.Test
         public void UpdateDomainInfoTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
+            //int? id = null;
             //var response = instance.UpdateDomainInfo(id);
             //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }

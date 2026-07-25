@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerNetworkInfoSwitchports
+# InterServerAPI::Object::ServerNetworkInfoSwitchports
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerNetworkInfoSwitchports;
+use InterServerAPI::Object::ServerNetworkInfoSwitchports;
 ```
 
 ## Properties

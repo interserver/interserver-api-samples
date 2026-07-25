@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_network_info_switchports import ServerNetworkInfoSwitchports
+from interserver_api_client.models.server_network_info_switchports import ServerNetworkInfoSwitchports
 
 class TestServerNetworkInfoSwitchports(unittest.TestCase):
     """ServerNetworkInfoSwitchports unit test stubs"""
@@ -36,7 +36,7 @@ class TestServerNetworkInfoSwitchports(unittest.TestCase):
         model = ServerNetworkInfoSwitchports()
         if include_optional:
             return ServerNetworkInfoSwitchports(
-                var_10414 = openapi_client.models.server_switchport.ServerSwitchport(
+                var_10414 = interserver_api_client.models.server_switchport.ServerSwitchport(
                     switchport_id = 10414, 
                     switch_id = '118', 
                     switch = 'edge1', 
@@ -50,7 +50,7 @@ class TestServerNetworkInfoSwitchports(unittest.TestCase):
             )
         else:
             return ServerNetworkInfoSwitchports(
-                var_10414 = openapi_client.models.server_switchport.ServerSwitchport(
+                var_10414 = interserver_api_client.models.server_switchport.ServerSwitchport(
                     switchport_id = 10414, 
                     switch_id = '118', 
                     switch = 'edge1', 

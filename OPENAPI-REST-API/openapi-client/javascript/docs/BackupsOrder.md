@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupsOrder
+# InterserverApiClient.BackupsOrder
 
 ## Properties
 

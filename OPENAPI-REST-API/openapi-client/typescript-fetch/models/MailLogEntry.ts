@@ -184,7 +184,7 @@ export function instanceOfMailLogEntry(value: object): value is MailLogEntry {
     if (!('user' in value) || value['user'] === undefined) return false;
     if (!('transtype' in value) || value['transtype'] === undefined) return false;
     if (!('origin' in value) || value['origin'] === undefined) return false;
-    if (!('_interface' in value) || value['_interface'] === undefined) return false;
+    if ((!('_interface' in (value as Record<string, any>)) && !('interface' in (value as Record<string, any>))) || ((value as Record<string, any>)['_interface'] === undefined && (value as Record<string, any>)['interface'] === undefined)) return false;
     return true;
 }
 
@@ -208,21 +208,21 @@ export function MailLogEntryFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'transtype': json['transtype'],
         'origin': json['origin'],
         '_interface': json['interface'],
-        'subject': json['subject'] == null ? undefined : json['subject'],
-        'messageId': json['messageId'] == null ? undefined : json['messageId'],
-        'sendingZone': json['sendingZone'] == null ? undefined : json['sendingZone'],
-        'bodySize': json['bodySize'] == null ? undefined : json['bodySize'],
-        'seq': json['seq'] == null ? undefined : json['seq'],
-        'delivered': json['delivered'] == null ? undefined : json['delivered'],
-        'code': json['code'] == null ? undefined : json['code'],
-        'recipient': json['recipient'] == null ? undefined : json['recipient'],
-        'response': json['response'] == null ? undefined : json['response'],
-        'domain': json['domain'] == null ? undefined : json['domain'],
-        'locked': json['locked'] == null ? undefined : json['locked'],
-        'lockTime': json['lockTime'] == null ? undefined : json['lockTime'],
-        'assigned': json['assigned'] == null ? undefined : json['assigned'],
-        'queued': json['queued'] == null ? undefined : json['queued'],
-        'mxHostname': json['mxHostname'] == null ? undefined : json['mxHostname'],
+        'subject': json['subject'] === undefined ? undefined : json['subject'] === null ? null : json['subject'],
+        'messageId': json['messageId'] === undefined ? undefined : json['messageId'] === null ? null : json['messageId'],
+        'sendingZone': json['sendingZone'] === undefined ? undefined : json['sendingZone'] === null ? null : json['sendingZone'],
+        'bodySize': json['bodySize'] === undefined ? undefined : json['bodySize'] === null ? null : json['bodySize'],
+        'seq': json['seq'] === undefined ? undefined : json['seq'] === null ? null : json['seq'],
+        'delivered': json['delivered'] === undefined ? undefined : json['delivered'] === null ? null : json['delivered'],
+        'code': json['code'] === undefined ? undefined : json['code'] === null ? null : json['code'],
+        'recipient': json['recipient'] === undefined ? undefined : json['recipient'] === null ? null : json['recipient'],
+        'response': json['response'] === undefined ? undefined : json['response'] === null ? null : json['response'],
+        'domain': json['domain'] === undefined ? undefined : json['domain'] === null ? null : json['domain'],
+        'locked': json['locked'] === undefined ? undefined : json['locked'] === null ? null : json['locked'],
+        'lockTime': json['lockTime'] === undefined ? undefined : json['lockTime'] === null ? null : json['lockTime'],
+        'assigned': json['assigned'] === undefined ? undefined : json['assigned'] === null ? null : json['assigned'],
+        'queued': json['queued'] === undefined ? undefined : json['queued'] === null ? null : json['queued'],
+        'mxHostname': json['mxHostname'] === undefined ? undefined : json['mxHostname'] === null ? null : json['mxHostname'],
     };
 }
 

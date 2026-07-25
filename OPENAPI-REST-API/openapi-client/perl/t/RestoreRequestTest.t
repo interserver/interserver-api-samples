@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::RestoreRequest');
+use_ok('InterServerAPI::Object::RestoreRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::RestoreRequest->new();
+#my $instance = InterServerAPI::Object::RestoreRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::RestoreRequest');
+#isa_ok($instance, 'InterServerAPI::Object::RestoreRequest');
 
 
 done_testing();

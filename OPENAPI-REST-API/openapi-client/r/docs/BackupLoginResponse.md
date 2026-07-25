@@ -1,4 +1,4 @@
-# openapi::BackupLoginResponse
+# interserverapi::BackupLoginResponse
 
 Login session response for backup storage.
 

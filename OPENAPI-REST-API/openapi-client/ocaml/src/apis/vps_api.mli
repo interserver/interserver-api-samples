@@ -17,21 +17,25 @@ val do_vps_start : id:int32 -> Queue_response.t Lwt.t
 val do_vps_stop : id:int32 -> Queue_response.t Lwt.t
 val download_vps_backup : id:int32 -> download_qs_backup_request_t:Download_qs_backup_request.t -> ?all:Enums.xdp_action -> unit -> Download_qs_backup_200_response.t Lwt.t
 val get_new_vps : unit -> Vps_order.t Lwt.t
+val get_vps_backup : id:int32 -> Queue_response.t Lwt.t
 val get_vps_backups : id:int32 -> ?all:Enums.xdp_action -> unit -> Vps_backup_rows.t Lwt.t
 val get_vps_buy_hd_space : id:int32 -> unit Lwt.t
 val get_vps_buy_ip : id:int32 -> unit Lwt.t
+val get_vps_change_hostname : id:int32 -> unit Lwt.t
+val get_vps_change_root_password : id:int32 -> unit Lwt.t
 val get_vps_change_timezone : id:int32 -> string list Lwt.t
 val get_vps_info : id:int32 -> Vps.t Lwt.t
+val get_vps_insert_cd : id:int32 -> unit Lwt.t
 val get_vps_invoices : id:int32 -> Charge_invoice_rows.t Lwt.t
 val get_vps_list : unit -> Vps_row.t list Lwt.t
 val get_vps_reinstall_os : id:int32 -> Vps_templates_list.t Lwt.t
+val get_vps_reset_password : id:int32 -> unit Lwt.t
 val get_vps_reverse_dns : id:int32 -> Reverse_dns_entries.t Lwt.t
 val get_vps_setup_vnc : id:int32 -> unit Lwt.t
 val get_vps_slices : id:int32 -> unit Lwt.t
 val get_vps_traffic_usage : id:int32 -> Vps_traffic_response.t Lwt.t
 val get_vps_view_desktop : id:int32 -> unit Lwt.t
 val get_vps_welcome_email : id:string -> Success_text_response.t Lwt.t
-val post_vps_backup : id:int32 -> Queue_response.t Lwt.t
 val post_vps_buy_hd_space : id:int32 -> unit Lwt.t
 val post_vps_buy_ip : id:int32 -> unit Lwt.t
 val post_vps_change_hostname : id:int32 -> ?hostname:string -> unit -> Queue_response.t Lwt.t
@@ -45,7 +49,9 @@ val post_vps_restore : id:int32 -> restore_request_t:Restore_request.t -> Queue_
 val post_vps_reverse_dns : id:int32 -> reverse_dns_entries_t:Reverse_dns_entries.t -> Text_response.t Lwt.t
 val post_vps_setup_vnc : id:int32 -> Queue_response.t Lwt.t
 val post_vps_slices : id:int32 -> unit Lwt.t
+val post_vps_traffic_usage : id:int32 -> unit Lwt.t
 val post_vps_view_desktop : id:int32 -> unit Lwt.t
 val put_vps : vps_order_put_request_t:Vps_order_put_request.t -> unit -> Vps_order_put_response.t Lwt.t
+val put_vps_buy_hd_space : id:int32 -> unit Lwt.t
 val update_vps_info : id:string -> Success_text_response.t Lwt.t
 val v_ps_cancel : id:int32 -> Vps_cancel_200_response.t Lwt.t

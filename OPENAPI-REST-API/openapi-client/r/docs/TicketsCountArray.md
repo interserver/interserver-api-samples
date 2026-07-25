@@ -1,4 +1,4 @@
-# openapi::TicketsCountArray
+# interserverapi::TicketsCountArray
 
 
 ## Properties

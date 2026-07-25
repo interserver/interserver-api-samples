@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for Quickserver
 void main() {
-  final instance = QuickserverBuilder();
-  // TODO add properties to the builder and call build()
+  final Quickserver? instance = /* Quickserver(...) */ null;
+  // TODO add properties to the entity
 
   group(Quickserver, () {
     // QuickserverServiceInfo serviceInfo
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<QuickserverClientLink> clientLinks
+    // List<QuickserverClientLink> clientLinks
     test('to test the property `clientLinks`', () async {
       // TODO
     });
@@ -121,7 +121,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<String> serviceOverviewExtra
+    // List<String> serviceOverviewExtra
     test('to test the property `serviceOverviewExtra`', () async {
       // TODO
     });

@@ -25,4 +25,3 @@ case class DomainOrderResponse(
   `object`: Option[String] = None,
   response_code: Option[String] = None
 )
-

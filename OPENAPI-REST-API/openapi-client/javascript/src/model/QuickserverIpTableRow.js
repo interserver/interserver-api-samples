@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The QuickserverIpTableRow model module.
  * @module model/QuickserverIpTableRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverIpTableRow {
     /**

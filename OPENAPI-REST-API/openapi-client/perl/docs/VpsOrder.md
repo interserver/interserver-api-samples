@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsOrder
+# InterServerAPI::Object::VpsOrder
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsOrder;
+use InterServerAPI::Object::VpsOrder;
 ```
 
 ## Properties

@@ -16,9 +16,10 @@
 #' \dontrun{
 #' ####################  AddServer  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_server_order_post_request <- ServerOrderPostRequest$new(123, ServerOrderPostRequest_hd$new(), 123, 123, 123, 123, 123, 123, 123, "servername_example", "rootpass_example", "tos_example", "comment_example") # ServerOrderPostRequest | 
 #'
-#' #Place Server Order
+#' #Place a custom dedicated server order, creating a real billable invoice
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -31,16 +32,16 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$AddServer(data_file = "result.txt")
-#' result <- api_instance$AddServer()
+#' # result <- api_instance$AddServer(var_server_order_post_requestdata_file = "result.txt")
+#' result <- api_instance$AddServer(var_server_order_post_request)
 #' dput(result)
 #'
 #'
 #' ####################  BuyItNowServerOrder  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Buy Now Server Options
+#' #Get configurable options for a Rapid Deploy / coupon dedicated server
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -60,9 +61,9 @@
 #'
 #' ####################  GetMPServers  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Marketplace Servers
+#' #List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -82,9 +83,9 @@
 #'
 #' ####################  GetNewServer  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Server Ordering Information
+#' #Get custom dedicated server ordering options, regions, and pricing
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -104,10 +105,10 @@
 #'
 #' ####################  GetServerInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | Server ID number.
 #'
-#' #Get Server Order
+#' #Get full hardware, network, and lifecycle details for a dedicated server
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -127,10 +128,10 @@
 #'
 #' ####################  GetServerInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | Server ID number
 #'
-#' #Get Server Invoices
+#' #List billing invoices (charges + payments) tied to one dedicated server
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -150,9 +151,9 @@
 #'
 #' ####################  GetServerList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Servers
+#' #List all dedicated servers owned by the authenticated customer
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -172,10 +173,10 @@
 #'
 #' ####################  GetServerReverseDns  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | Server ID number
 #'
-#' #Reverse DNS Info
+#' #List current reverse-DNS (PTR) records for a dedicated server's IPs
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -195,10 +196,10 @@
 #'
 #' ####################  GetServersWelcomeEmail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | Server ID number
 #'
-#' #Resend Server Welcome Email
+#' #Resend the dedicated server welcome email with setup credentials
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -218,10 +219,10 @@
 #'
 #' ####################  PlaceBuyNowServer  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_place_buy_now_server_request <- placeBuyNowServer_request$new(123, "server_hostname_example", "server_root_password_example") # PlaceBuyNowServerRequest |  (Optional)
 #'
-#' #Place Buy Now Server Order
+#' #Place a Rapid Deploy / coupon dedicated server order; creates real invoice
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -241,11 +242,11 @@
 #'
 #' ####################  PostServerReverseDns  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | Server ID number
 #' var_reverse_dns_entries <- ReverseDnsEntries$new(c(key = TODO)) # ReverseDnsEntries | 
 #'
-#' #Update Reverse DNS
+#' #Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -263,11 +264,12 @@
 #' dput(result)
 #'
 #'
-#' ####################  PutServers  ####################
+#' ####################  ServerBulkIpmiPowerGet  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_ids <- "2313,2314,2315" # character | Comma-separated list of Server IDs to query (e.g. `2313,2314,2315`). May also be passed as repeated `ids[]` query parameters.
 #'
-#' #Validate Server Order
+#' #Read IPMI chassis power status for many dedicated servers in one call
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -279,15 +281,18 @@
 #' # Configure API key authorization: sessionIdHeaderAuth
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$PutServers()
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$ServerBulkIpmiPowerGet(var_idsdata_file = "result.txt")
+#' result <- api_instance$ServerBulkIpmiPowerGet(var_ids)
+#' dput(result)
 #'
 #'
 #' ####################  ServerIpmiLiveGet  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | Server ID number
 #'
-#' #Server IPMI Live Information
+#' #Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -307,12 +312,12 @@
 #'
 #' ####################  ServerIpmiLivePost  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | Server ID number
 #' var_ip <- "ip_example" # character | Your IP Address you wish to connect to the IPMI system from.
 #' var_asset <- 56 # integer | Asset ID (Optional)
 #'
-#' #Server IPMI Live Setup
+#' #Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -332,10 +337,10 @@
 #'
 #' ####################  ServerIpmiPowerGet  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | Server ID number
 #'
-#' #Get IPMI Power Status
+#' #Read IPMI chassis power status for a dedicated server (single)
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -355,12 +360,12 @@
 #'
 #' ####################  ServerIpmiPowerPost  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | Server ID number
 #' var_action <- "action_example" # character | The power action to send to the ipmi controller.
 #' var_asset <- 56 # integer | The Asset ID (Optional)
 #'
-#' #Server IPMI Power
+#' #DESTRUCTIVE — change chassis power state on a bare-metal server
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -380,10 +385,10 @@
 #'
 #' ####################  ServersCancel  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | Server ID number
 #'
-#' #Cancel Server Service
+#' #Cancel a dedicated server service at the end of the current billing cycle
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -403,10 +408,10 @@
 #'
 #' ####################  UpdateServerInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "id_example" # character | Server ID number.
 #'
-#' #Update Server Order
+#' #Update settings on a dedicated server order (shares handler with view)
 #' api_instance <- ServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -446,15 +451,16 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Server Order
+    #' Place a custom dedicated server order, creating a real billable invoice
     #'
+    #' @param server_order_post_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return AddServer200Response
-    AddServer = function(data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$AddServerWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+    AddServer = function(server_order_post_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$AddServerWithHttpInfo(server_order_post_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -467,14 +473,15 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Server Order
+    #' Place a custom dedicated server order, creating a real billable invoice
     #'
+    #' @param server_order_post_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (AddServer200Response) with additional information such as HTTP status code, headers
-    AddServerWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+    AddServerWithHttpInfo = function(server_order_post_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -483,6 +490,20 @@ ServersApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`server_order_post_request`)) {
+        stop("Missing required parameter `server_order_post_request`.")
+      }
+
+      if (!missing(`server_order_post_request`) && is.null(`server_order_post_request`)) {
+        stop("Invalid value for `server_order_post_request` when calling ServersApi$AddServer, `server_order_post_request` is not nullable")
+      }
+
+      if (!is.null(`server_order_post_request`)) {
+        local_var_body <- `server_order_post_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/servers/order"
       # API key authentication
@@ -499,7 +520,7 @@ ServersApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -552,7 +573,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Buy Now Server Options
+    #' Get configurable options for a Rapid Deploy / coupon dedicated server
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -573,7 +594,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Buy Now Server Options
+    #' Get configurable options for a Rapid Deploy / coupon dedicated server
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -658,7 +679,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Marketplace Servers
+    #' List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -679,7 +700,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Marketplace Servers
+    #' List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -764,7 +785,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Server Ordering Information
+    #' Get custom dedicated server ordering options, regions, and pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -785,7 +806,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Server Ordering Information
+    #' Get custom dedicated server ordering options, regions, and pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -870,7 +891,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Server Order
+    #' Get full hardware, network, and lifecycle details for a dedicated server
     #'
     #' @param id Server ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -892,7 +913,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Server Order
+    #' Get full hardware, network, and lifecycle details for a dedicated server
     #'
     #' @param id Server ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -990,7 +1011,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Server Invoices
+    #' List billing invoices (charges + payments) tied to one dedicated server
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1012,7 +1033,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Server Invoices
+    #' List billing invoices (charges + payments) tied to one dedicated server
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1110,7 +1131,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Servers
+    #' List all dedicated servers owned by the authenticated customer
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1131,7 +1152,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Servers
+    #' List all dedicated servers owned by the authenticated customer
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1216,7 +1237,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reverse DNS Info
+    #' List current reverse-DNS (PTR) records for a dedicated server's IPs
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1238,7 +1259,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reverse DNS Info
+    #' List current reverse-DNS (PTR) records for a dedicated server's IPs
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1336,7 +1357,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Server Welcome Email
+    #' Resend the dedicated server welcome email with setup credentials
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1358,7 +1379,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Server Welcome Email
+    #' Resend the dedicated server welcome email with setup credentials
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1456,7 +1477,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Buy Now Server Order
+    #' Place a Rapid Deploy / coupon dedicated server order; creates real invoice
     #'
     #' @param place_buy_now_server_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
@@ -1478,7 +1499,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Buy Now Server Order
+    #' Place a Rapid Deploy / coupon dedicated server order; creates real invoice
     #'
     #' @param place_buy_now_server_request (optional) No description
     #' @param data_file (optional) name of the data file to save the result
@@ -1574,7 +1595,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Reverse DNS
+    #' Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
     #'
     #' @param id Server ID number
     #' @param reverse_dns_entries 
@@ -1597,7 +1618,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Reverse DNS
+    #' Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
     #'
     #' @param id Server ID number
     #' @param reverse_dns_entries 
@@ -1710,13 +1731,16 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Server Order
+    #' Read IPMI chassis power status for many dedicated servers in one call
     #'
+    #' @param ids Comma-separated list of Server IDs to query (e.g. `2313,2314,2315`). May also be passed as repeated `ids[]` query parameters.
+    #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return void
-    PutServers = function(...) {
-      local_var_response <- self$PutServersWithHttpInfo(...)
+    #' @return ServerBulkIpmiPowerResponse
+    ServerBulkIpmiPowerGet = function(ids, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$ServerBulkIpmiPowerGetWithHttpInfo(ids, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1729,12 +1753,15 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Server Order
+    #' Read IPMI chassis power status for many dedicated servers in one call
     #'
+    #' @param ids Comma-separated list of Server IDs to query (e.g. `2313,2314,2315`). May also be passed as repeated `ids[]` query parameters.
+    #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return API response (void) with additional information such as HTTP status code, headers
-    PutServersWithHttpInfo = function(...) {
+    #' @return API response (ServerBulkIpmiPowerResponse) with additional information such as HTTP status code, headers
+    ServerBulkIpmiPowerGetWithHttpInfo = function(ids, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1744,7 +1771,17 @@ ServersApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      local_var_url_path <- "/servers/order"
+      if (missing(`ids`)) {
+        stop("Missing required parameter `ids`.")
+      }
+
+      if (!missing(`ids`) && is.null(`ids`)) {
+        stop("Invalid value for `ids` when calling ServersApi$ServerBulkIpmiPowerGet, `ids` is not nullable")
+      }
+
+      query_params[["ids"]] <- `ids`
+
+      local_var_url_path <- "/servers/bulk/ipmi_power"
       # API key authentication
       # API key authentication
       if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
@@ -1762,7 +1799,7 @@ ServersApi <- R6::R6Class(
       local_var_content_types <- list()
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "PUT",
+                                 method = "GET",
                                  query_params = query_params,
                                  header_params = header_params,
                                  form_params = form_params,
@@ -1775,7 +1812,22 @@ ServersApi <- R6::R6Class(
                                  ...)
 
       if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        local_var_resp$content <- NULL
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "ServerBulkIpmiPowerResponse"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
         return(local_var_resp)
       } 
       
@@ -1797,7 +1849,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Server IPMI Live Information
+    #' Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1819,7 +1871,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Server IPMI Live Information
+    #' Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1917,7 +1969,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Server IPMI Live Setup
+    #' Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
     #'
     #' @param id Server ID number
     #' @param ip Your IP Address you wish to connect to the IPMI system from.
@@ -1941,7 +1993,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Server IPMI Live Setup
+    #' Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
     #'
     #' @param id Server ID number
     #' @param ip Your IP Address you wish to connect to the IPMI system from.
@@ -2055,7 +2107,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get IPMI Power Status
+    #' Read IPMI chassis power status for a dedicated server (single)
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -2077,7 +2129,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get IPMI Power Status
+    #' Read IPMI chassis power status for a dedicated server (single)
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -2175,7 +2227,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Server IPMI Power
+    #' DESTRUCTIVE — change chassis power state on a bare-metal server
     #'
     #' @param id Server ID number
     #' @param action The power action to send to the ipmi controller.
@@ -2199,7 +2251,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Server IPMI Power
+    #' DESTRUCTIVE — change chassis power state on a bare-metal server
     #'
     #' @param id Server ID number
     #' @param action The power action to send to the ipmi controller.
@@ -2313,7 +2365,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Server Service
+    #' Cancel a dedicated server service at the end of the current billing cycle
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -2335,7 +2387,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Server Service
+    #' Cancel a dedicated server service at the end of the current billing cycle
     #'
     #' @param id Server ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -2433,7 +2485,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Server Order
+    #' Update settings on a dedicated server order (shares handler with view)
     #'
     #' @param id Server ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -2455,7 +2507,7 @@ ServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Server Order
+    #' Update settings on a dedicated server order (shares handler with view)
     #'
     #' @param id Server ID number.
     #' @param data_file (optional) name of the data file to save the result

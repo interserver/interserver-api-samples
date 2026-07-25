@@ -11,4 +11,8 @@ Bandwidth options for the server order.
 |**_15** | [**ServerOrderBandwidth**](ServerOrderBandwidth.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

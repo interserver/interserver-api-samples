@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.servers_buy_now_response_order_details import ServersBuyNowResponseOrderDetails  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.servers_buy_now_response_order_details import ServersBuyNowResponseOrderDetails  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestServersBuyNowResponseOrderDetails(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestServersBuyNowResponseOrderDetails(unittest.TestCase):
     def testServersBuyNowResponseOrderDetails(self):
         """Test ServersBuyNowResponseOrderDetails"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.servers_buy_now_response_order_details.ServersBuyNowResponseOrderDetails()  # noqa: E501
+        # model = interserver_api_client.models.servers_buy_now_response_order_details.ServersBuyNowResponseOrderDetails()  # noqa: E501
         pass
 
 

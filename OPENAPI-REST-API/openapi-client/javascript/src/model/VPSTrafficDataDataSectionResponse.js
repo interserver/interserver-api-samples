@@ -17,7 +17,7 @@ import VPSTrafficDataDataSectionResponseInner from './VPSTrafficDataDataSectionR
 /**
  * The VPSTrafficDataDataSectionResponse model module.
  * @module model/VPSTrafficDataDataSectionResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VPSTrafficDataDataSectionResponse extends Array {
     /**

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerNetworkInfo } from './api';
+import { ServerNetworkInfo } from '@interserver/myadmin-client';
 
 const instance: ServerNetworkInfo = {
     vlans,

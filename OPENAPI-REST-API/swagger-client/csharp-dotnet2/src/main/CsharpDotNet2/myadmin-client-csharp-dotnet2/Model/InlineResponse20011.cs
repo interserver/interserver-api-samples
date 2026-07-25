@@ -13,19 +13,18 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse20011 {
     /// <summary>
+    /// Gets or Sets Success
+    /// </summary>
+    [DataMember(Name="success", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "success")]
+    public bool? Success { get; set; }
+
+    /// <summary>
     /// Gets or Sets Text
     /// </summary>
     [DataMember(Name="text", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "text")]
     public string Text { get; set; }
-
-    /// <summary>
-    /// A pre-signed download URL valid for 24 hours.
-    /// </summary>
-    /// <value>A pre-signed download URL valid for 24 hours.</value>
-    [DataMember(Name="url", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "url")]
-    public string Url { get; set; }
 
 
     /// <summary>
@@ -35,8 +34,8 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse20011 {\n");
+      sb.Append("  Success: ").Append(Success).Append("\n");
       sb.Append("  Text: ").Append(Text).Append("\n");
-      sb.Append("  Url: ").Append(Url).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

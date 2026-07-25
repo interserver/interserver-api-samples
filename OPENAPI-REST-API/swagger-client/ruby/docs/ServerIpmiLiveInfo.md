@@ -1,4 +1,4 @@
-# SwaggerClient::ServerIpmiLiveInfo
+# InterserverApiClient::ServerIpmiLiveInfo
 
 ## Properties
 Name | Type | Description | Notes

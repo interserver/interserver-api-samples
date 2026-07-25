@@ -1,4 +1,4 @@
-# InterServerManagementApi.TicketNew
+# InterserverApiClient.TicketNew
 
 ## Properties
 

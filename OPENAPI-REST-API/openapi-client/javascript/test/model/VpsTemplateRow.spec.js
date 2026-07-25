@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsTemplateRow();
+    instance = new InterserverApiClient.VpsTemplateRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,61 +50,61 @@
   describe('VpsTemplateRow', function() {
     it('should create an instance of VpsTemplateRow', function() {
       // uncomment below and update the code to test VpsTemplateRow
-      //var instance = new InterServerManagementApi.VpsTemplateRow();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsTemplateRow);
+      //var instance = new InterserverApiClient.VpsTemplateRow();
+      //expect(instance).to.be.a(InterserverApiClient.VpsTemplateRow);
     });
 
     it('should have the property template_id (base name: "template_id")', function() {
       // uncomment below and update the code to test the property template_id
-      //var instance = new InterServerManagementApi.VpsTemplateRow();
+      //var instance = new InterserverApiClient.VpsTemplateRow();
       //expect(instance).to.be();
     });
 
     it('should have the property template_type (base name: "template_type")', function() {
       // uncomment below and update the code to test the property template_type
-      //var instance = new InterServerManagementApi.VpsTemplateRow();
+      //var instance = new InterserverApiClient.VpsTemplateRow();
       //expect(instance).to.be();
     });
 
     it('should have the property template_os (base name: "template_os")', function() {
       // uncomment below and update the code to test the property template_os
-      //var instance = new InterServerManagementApi.VpsTemplateRow();
+      //var instance = new InterserverApiClient.VpsTemplateRow();
       //expect(instance).to.be();
     });
 
     it('should have the property template_version (base name: "template_version")', function() {
       // uncomment below and update the code to test the property template_version
-      //var instance = new InterServerManagementApi.VpsTemplateRow();
+      //var instance = new InterserverApiClient.VpsTemplateRow();
       //expect(instance).to.be();
     });
 
     it('should have the property template_bits (base name: "template_bits")', function() {
       // uncomment below and update the code to test the property template_bits
-      //var instance = new InterServerManagementApi.VpsTemplateRow();
+      //var instance = new InterserverApiClient.VpsTemplateRow();
       //expect(instance).to.be();
     });
 
     it('should have the property template_file (base name: "template_file")', function() {
       // uncomment below and update the code to test the property template_file
-      //var instance = new InterServerManagementApi.VpsTemplateRow();
+      //var instance = new InterserverApiClient.VpsTemplateRow();
       //expect(instance).to.be();
     });
 
     it('should have the property template_available (base name: "template_available")', function() {
       // uncomment below and update the code to test the property template_available
-      //var instance = new InterServerManagementApi.VpsTemplateRow();
+      //var instance = new InterserverApiClient.VpsTemplateRow();
       //expect(instance).to.be();
     });
 
     it('should have the property template_name (base name: "template_name")', function() {
       // uncomment below and update the code to test the property template_name
-      //var instance = new InterServerManagementApi.VpsTemplateRow();
+      //var instance = new InterserverApiClient.VpsTemplateRow();
       //expect(instance).to.be();
     });
 
     it('should have the property template_dir (base name: "template_dir")', function() {
       // uncomment below and update the code to test the property template_dir
-      //var instance = new InterServerManagementApi.VpsTemplateRow();
+      //var instance = new InterserverApiClient.VpsTemplateRow();
       //expect(instance).to.be();
     });
 

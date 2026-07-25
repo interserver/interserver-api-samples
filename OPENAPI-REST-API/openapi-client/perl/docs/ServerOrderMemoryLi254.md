@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerOrderMemoryLi254
+# InterServerAPI::Object::ServerOrderMemoryLi254
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerOrderMemoryLi254;
+use InterServerAPI::Object::ServerOrderMemoryLi254;
 ```
 
 ## Properties

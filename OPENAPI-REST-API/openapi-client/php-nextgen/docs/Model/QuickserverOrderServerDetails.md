@@ -1,9 +1,0 @@
-# QuickserverOrderServerDetails
-
-## Properties
-
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**_381** | [**\OpenAPI\Client\Model\QuickserverOrderServerDetails381**](QuickserverOrderServerDetails381.md) |  | [optional]
-
-[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

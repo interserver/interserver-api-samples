@@ -34,4 +34,3 @@ case class VpsRow(
   /* The comment of the vps. */
   vps_comment: String
 )
-

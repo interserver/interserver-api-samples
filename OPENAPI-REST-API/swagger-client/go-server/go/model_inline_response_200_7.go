@@ -10,6 +10,14 @@
 package myadmin-client-go-server
 
 type InlineResponse2007 struct {
-	// Whether the 2FA verification succeeded and the user is now logged in.
+	// Whether the user was logged in to an existing account.
 	Login bool `json:"login,omitempty"`
+	// Whether a new account was created.
+	Signup bool `json:"signup,omitempty"`
+	// Whether the OAuth provider was linked to an existing account.
+	Linked bool `json:"linked,omitempty"`
+	// The account ID associated with the OAuth login.
+	AccountId int32 `json:"account_id,omitempty"`
+	// Error code if additional verification is needed (e.g. `2fa_required`).
+	ErrorCode string `json:"error_code,omitempty"`
 }

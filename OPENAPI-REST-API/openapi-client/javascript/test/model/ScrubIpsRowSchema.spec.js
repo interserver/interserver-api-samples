@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ScrubIpsRowSchema();
+    instance = new InterserverApiClient.ScrubIpsRowSchema();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('ScrubIpsRowSchema', function() {
     it('should create an instance of ScrubIpsRowSchema', function() {
       // uncomment below and update the code to test ScrubIpsRowSchema
-      //var instance = new InterServerManagementApi.ScrubIpsRowSchema();
-      //expect(instance).to.be.a(InterServerManagementApi.ScrubIpsRowSchema);
+      //var instance = new InterserverApiClient.ScrubIpsRowSchema();
+      //expect(instance).to.be.a(InterserverApiClient.ScrubIpsRowSchema);
     });
 
     it('should have the property scrub_ip_id (base name: "scrub_ip_id")', function() {
       // uncomment below and update the code to test the property scrub_ip_id
-      //var instance = new InterServerManagementApi.ScrubIpsRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property repeat_invoices_cost (base name: "repeat_invoices_cost")', function() {
       // uncomment below and update the code to test the property repeat_invoices_cost
-      //var instance = new InterServerManagementApi.ScrubIpsRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_ip (base name: "scrub_ip_ip")', function() {
       // uncomment below and update the code to test the property scrub_ip_ip
-      //var instance = new InterServerManagementApi.ScrubIpsRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_status (base name: "scrub_ip_status")', function() {
       // uncomment below and update the code to test the property scrub_ip_status
-      //var instance = new InterServerManagementApi.ScrubIpsRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property services_name (base name: "services_name")', function() {
       // uncomment below and update the code to test the property services_name
-      //var instance = new InterServerManagementApi.ScrubIpsRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsRowSchema();
       //expect(instance).to.be();
     });
 

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainContactDetails
+# InterServerAPI::Object::DomainContactDetails
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainContactDetails;
+use InterServerAPI::Object::DomainContactDetails;
 ```
 
 ## Properties

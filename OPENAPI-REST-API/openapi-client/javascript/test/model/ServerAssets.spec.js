@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerAssets();
+    instance = new InterserverApiClient.ServerAssets();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('ServerAssets', function() {
     it('should create an instance of ServerAssets', function() {
       // uncomment below and update the code to test ServerAssets
-      //var instance = new InterServerManagementApi.ServerAssets();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerAssets);
+      //var instance = new InterserverApiClient.ServerAssets();
+      //expect(instance).to.be.a(InterserverApiClient.ServerAssets);
     });
 
     it('should have the property title (base name: "title")', function() {
       // uncomment below and update the code to test the property title
-      //var instance = new InterServerManagementApi.ServerAssets();
+      //var instance = new InterserverApiClient.ServerAssets();
       //expect(instance).to.be();
     });
 
     it('should have the property size (base name: "size")', function() {
       // uncomment below and update the code to test the property size
-      //var instance = new InterServerManagementApi.ServerAssets();
+      //var instance = new InterserverApiClient.ServerAssets();
       //expect(instance).to.be();
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.ServerAssets();
+      //var instance = new InterserverApiClient.ServerAssets();
       //expect(instance).to.be();
     });
 
     it('should have the property header (base name: "header")', function() {
       // uncomment below and update the code to test the property header
-      //var instance = new InterServerManagementApi.ServerAssets();
+      //var instance = new InterserverApiClient.ServerAssets();
       //expect(instance).to.be();
     });
 
     it('should have the property rows (base name: "rows")', function() {
       // uncomment below and update the code to test the property rows
-      //var instance = new InterServerManagementApi.ServerAssets();
+      //var instance = new InterserverApiClient.ServerAssets();
       //expect(instance).to.be();
     });
 

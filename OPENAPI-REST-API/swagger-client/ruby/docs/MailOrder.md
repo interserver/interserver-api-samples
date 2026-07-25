@@ -1,4 +1,4 @@
-# SwaggerClient::MailOrder
+# InterserverApiClient::MailOrder
 
 ## Properties
 Name | Type | Description | Notes

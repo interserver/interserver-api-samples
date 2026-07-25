@@ -1,4 +1,4 @@
-# openapi::VPSTrafficDataDataSectionResponseInner
+# interserverapi::VPSTrafficDataDataSectionResponseInner
 
 
 ## Properties

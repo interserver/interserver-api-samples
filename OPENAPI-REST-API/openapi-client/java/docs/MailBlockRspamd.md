@@ -12,4 +12,8 @@ This is a block entry from the rspamd block list.
 |**subject** | **String** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

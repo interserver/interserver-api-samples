@@ -22,4 +22,3 @@ case class TextResponse(
   /* Response message */
   message: Option[String] = None
 )
-

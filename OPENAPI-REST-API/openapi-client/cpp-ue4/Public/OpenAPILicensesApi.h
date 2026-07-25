@@ -46,8 +46,6 @@ public:
 	class GetLicenseInvoicesResponse;
 	class GetLicenseListRequest;
 	class GetLicenseListResponse;
-	class GetLicenseOrderCatTagInfoRequest;
-	class GetLicenseOrderCatTagInfoResponse;
 	class GetLicensesWelcomeEmailRequest;
 	class GetLicensesWelcomeEmailResponse;
 	class GetNewLicenseRequest;
@@ -65,7 +63,6 @@ public:
     DECLARE_DELEGATE_OneParam(FGetLicenseInfoDelegate, const GetLicenseInfoResponse&);
     DECLARE_DELEGATE_OneParam(FGetLicenseInvoicesDelegate, const GetLicenseInvoicesResponse&);
     DECLARE_DELEGATE_OneParam(FGetLicenseListDelegate, const GetLicenseListResponse&);
-    DECLARE_DELEGATE_OneParam(FGetLicenseOrderCatTagInfoDelegate, const GetLicenseOrderCatTagInfoResponse&);
     DECLARE_DELEGATE_OneParam(FGetLicensesWelcomeEmailDelegate, const GetLicensesWelcomeEmailResponse&);
     DECLARE_DELEGATE_OneParam(FGetNewLicenseDelegate, const GetNewLicenseResponse&);
     DECLARE_DELEGATE_OneParam(FLicensesCancelDelegate, const LicensesCancelResponse&);
@@ -77,7 +74,6 @@ public:
     FHttpRequestPtr GetLicenseInfo(const GetLicenseInfoRequest& Request, const FGetLicenseInfoDelegate& Delegate = FGetLicenseInfoDelegate()) const;
     FHttpRequestPtr GetLicenseInvoices(const GetLicenseInvoicesRequest& Request, const FGetLicenseInvoicesDelegate& Delegate = FGetLicenseInvoicesDelegate()) const;
     FHttpRequestPtr GetLicenseList(const GetLicenseListRequest& Request, const FGetLicenseListDelegate& Delegate = FGetLicenseListDelegate()) const;
-    FHttpRequestPtr GetLicenseOrderCatTagInfo(const GetLicenseOrderCatTagInfoRequest& Request, const FGetLicenseOrderCatTagInfoDelegate& Delegate = FGetLicenseOrderCatTagInfoDelegate()) const;
     FHttpRequestPtr GetLicensesWelcomeEmail(const GetLicensesWelcomeEmailRequest& Request, const FGetLicensesWelcomeEmailDelegate& Delegate = FGetLicensesWelcomeEmailDelegate()) const;
     FHttpRequestPtr GetNewLicense(const GetNewLicenseRequest& Request, const FGetNewLicenseDelegate& Delegate = FGetNewLicenseDelegate()) const;
     FHttpRequestPtr LicensesCancel(const LicensesCancelRequest& Request, const FLicensesCancelDelegate& Delegate = FLicensesCancelDelegate()) const;
@@ -90,7 +86,6 @@ private:
     void OnGetLicenseInfoResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetLicenseInfoDelegate Delegate) const;
     void OnGetLicenseInvoicesResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetLicenseInvoicesDelegate Delegate) const;
     void OnGetLicenseListResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetLicenseListDelegate Delegate) const;
-    void OnGetLicenseOrderCatTagInfoResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetLicenseOrderCatTagInfoDelegate Delegate) const;
     void OnGetLicensesWelcomeEmailResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetLicensesWelcomeEmailDelegate Delegate) const;
     void OnGetNewLicenseResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetNewLicenseDelegate Delegate) const;
     void OnLicensesCancelResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FLicensesCancelDelegate Delegate) const;

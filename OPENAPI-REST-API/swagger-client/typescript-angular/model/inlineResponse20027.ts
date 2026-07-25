@@ -9,16 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { InlineResponse20027Bandwidth } from './inlineResponse20027Bandwidth';
-import { InlineResponse20027Cp } from './inlineResponse20027Cp';
-import { InlineResponse20027Ips } from './inlineResponse20027Ips';
-import { InlineResponse20027Os } from './inlineResponse20027Os';
-import { InlineResponse20027Raid } from './inlineResponse20027Raid';
 
 export interface InlineResponse20027 { 
-    bandwidth?: Array<InlineResponse20027Bandwidth>;
-    ips?: Array<InlineResponse20027Ips>;
-    os?: Array<InlineResponse20027Os>;
-    cp?: Array<InlineResponse20027Cp>;
-    raid?: Array<InlineResponse20027Raid>;
+    message?: string;
+    success?: boolean;
 }

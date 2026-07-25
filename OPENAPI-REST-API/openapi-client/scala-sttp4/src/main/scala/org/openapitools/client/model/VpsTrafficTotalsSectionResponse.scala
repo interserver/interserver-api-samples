@@ -20,4 +20,3 @@ case class VpsTrafficTotalsSectionResponse(
   in: Long,
   out: Long
 )
-

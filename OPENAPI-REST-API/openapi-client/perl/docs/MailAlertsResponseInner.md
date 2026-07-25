@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailAlertsResponseInner
+# InterServerAPI::Object::MailAlertsResponseInner
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailAlertsResponseInner;
+use InterServerAPI::Object::MailAlertsResponseInner;
 ```
 
 ## Properties

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ReplyTicketResponseSchema();
+    instance = new InterserverApiClient.ReplyTicketResponseSchema();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('ReplyTicketResponseSchema', function() {
     it('should create an instance of ReplyTicketResponseSchema', function() {
       // uncomment below and update the code to test ReplyTicketResponseSchema
-      //var instance = new InterServerManagementApi.ReplyTicketResponseSchema();
-      //expect(instance).to.be.a(InterServerManagementApi.ReplyTicketResponseSchema);
+      //var instance = new InterserverApiClient.ReplyTicketResponseSchema();
+      //expect(instance).to.be.a(InterserverApiClient.ReplyTicketResponseSchema);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.ReplyTicketResponseSchema();
+      //var instance = new InterserverApiClient.ReplyTicketResponseSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property post_id (base name: "post_id")', function() {
       // uncomment below and update the code to test the property post_id
-      //var instance = new InterServerManagementApi.ReplyTicketResponseSchema();
+      //var instance = new InterserverApiClient.ReplyTicketResponseSchema();
       //expect(instance).to.be();
     });
 

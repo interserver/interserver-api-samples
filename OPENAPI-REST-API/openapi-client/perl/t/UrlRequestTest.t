@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::UrlRequest');
+use_ok('InterServerAPI::Object::UrlRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::UrlRequest->new();
+#my $instance = InterServerAPI::Object::UrlRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::UrlRequest');
+#isa_ok($instance, 'InterServerAPI::Object::UrlRequest');
 
 
 done_testing();

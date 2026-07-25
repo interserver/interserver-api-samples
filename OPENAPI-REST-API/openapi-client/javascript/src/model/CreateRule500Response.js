@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateRule500Response model module.
  * @module model/CreateRule500Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class CreateRule500Response {
     /**

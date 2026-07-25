@@ -5,13 +5,28 @@
  *
  *)
 
-let add_server () =
+let add_server ~server_order_post_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/servers/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Server_order_post_request.to_yojson
+    
+    
+    
+ server_order_post_request_t
+    in
+    Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Add_server_200_response.of_yojson) resp body
 
 let buy_it_now_server_order () =
@@ -209,14 +224,29 @@ let post_server_reverse_dns ~id ~reverse_dns_entries_t =
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Text_response.of_yojson) resp body
 
-let put_servers () =
+let server_bulk_ipmi_power_get ~ids =
     let open Lwt.Infix in
-    let uri = Request.build_uri "/servers/order" in
+    let uri = Request.build_uri "/servers/bulk/ipmi_power" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `PUT uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
+    let uri = Request.add_query_param uri "ids"     
+    
+    
+    
+    
+    
+    
+    
+    
+    (fun x -> x)
+    
+    
+        
+        
+ ids in
+    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
+    Request.read_json_body_as (JsonSupport.unwrap Server_bulk_ipmi_power_response.of_yojson) resp body
 
 let server_ipmi_live_get ~id =
     let open Lwt.Infix in

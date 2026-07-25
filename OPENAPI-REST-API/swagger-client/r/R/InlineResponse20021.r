@@ -8,8 +8,9 @@
 
 #' InlineResponse20021 Class
 #'
-#' @field success 
 #' @field text 
+#' @field invoice 
+#' @field order 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,51 +18,66 @@
 InlineResponse20021 <- R6::R6Class(
   'InlineResponse20021',
   public = list(
-    `success` = NULL,
     `text` = NULL,
-    initialize = function(`success`, `text`){
-      if (!missing(`success`)) {
-        self$`success` <- `success`
-      }
+    `invoice` = NULL,
+    `order` = NULL,
+    initialize = function(`text`, `invoice`, `order`){
       if (!missing(`text`)) {
         stopifnot(is.character(`text`), length(`text`) == 1)
         self$`text` <- `text`
       }
+      if (!missing(`invoice`)) {
+        stopifnot(is.numeric(`invoice`), length(`invoice`) == 1)
+        self$`invoice` <- `invoice`
+      }
+      if (!missing(`order`)) {
+        stopifnot(is.numeric(`order`), length(`order`) == 1)
+        self$`order` <- `order`
+      }
     },
     toJSON = function() {
       InlineResponse20021Object <- list()
-      if (!is.null(self$`success`)) {
-        InlineResponse20021Object[['success']] <- self$`success`
-      }
       if (!is.null(self$`text`)) {
         InlineResponse20021Object[['text']] <- self$`text`
+      }
+      if (!is.null(self$`invoice`)) {
+        InlineResponse20021Object[['invoice']] <- self$`invoice`
+      }
+      if (!is.null(self$`order`)) {
+        InlineResponse20021Object[['order']] <- self$`order`
       }
 
       InlineResponse20021Object
     },
     fromJSON = function(InlineResponse20021Json) {
       InlineResponse20021Object <- jsonlite::fromJSON(InlineResponse20021Json)
-      if (!is.null(InlineResponse20021Object$`success`)) {
-        self$`success` <- InlineResponse20021Object$`success`
-      }
       if (!is.null(InlineResponse20021Object$`text`)) {
         self$`text` <- InlineResponse20021Object$`text`
+      }
+      if (!is.null(InlineResponse20021Object$`invoice`)) {
+        self$`invoice` <- InlineResponse20021Object$`invoice`
+      }
+      if (!is.null(InlineResponse20021Object$`order`)) {
+        self$`order` <- InlineResponse20021Object$`order`
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "success": %s,
-           "text": %s
+           "text": %s,
+           "invoice": %d,
+           "order": %d
         }',
-        self$`success`,
-        self$`text`
+        self$`text`,
+        self$`invoice`,
+        self$`order`
       )
     },
     fromJSONString = function(InlineResponse20021Json) {
       InlineResponse20021Object <- jsonlite::fromJSON(InlineResponse20021Json)
-      self$`success` <- InlineResponse20021Object$`success`
       self$`text` <- InlineResponse20021Object$`text`
+      self$`invoice` <- InlineResponse20021Object$`invoice`
+      self$`order` <- InlineResponse20021Object$`order`
     }
   )
 )

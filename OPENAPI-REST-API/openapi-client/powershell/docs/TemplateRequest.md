@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TemplateRequest = Initialize-PSOpenAPIToolsTemplateRequest  -Template ubuntu24 `
+$TemplateRequest = Initialize-InterserverApiTemplateRequest  -Template ubuntu24 `
  -Password myUserPassword `
  -LocalPassword null
 ```

@@ -1,28 +1,28 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainProvProcessPendingAttributes
 void main() {
-  final instance = DomainProvProcessPendingAttributesBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainProvProcessPendingAttributes? instance = /* DomainProvProcessPendingAttributes(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainProvProcessPendingAttributes, () {
-    // String id
+    // Optional<String?> id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // String orderId
+    // Optional<String?> orderId
     test('to test the property `orderId`', () async {
       // TODO
     });
 
-    // String registrationExpirationDate
+    // Optional<String?> registrationExpirationDate
     test('to test the property `registrationExpirationDate`', () async {
       // TODO
     });
 
-    // String fAutoRenew
+    // Optional<String?> fAutoRenew
     test('to test the property `fAutoRenew`', () async {
       // TODO
     });

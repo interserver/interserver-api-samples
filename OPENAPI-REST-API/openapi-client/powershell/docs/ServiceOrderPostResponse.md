@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServiceOrderPostResponse = Initialize-PSOpenAPIToolsServiceOrderPostResponse  -VarContinue null `
+$ServiceOrderPostResponse = Initialize-InterserverApiServiceOrderPostResponse  -VarContinue null `
  -Errors null `
  -TotalCost null `
  -Iid null `

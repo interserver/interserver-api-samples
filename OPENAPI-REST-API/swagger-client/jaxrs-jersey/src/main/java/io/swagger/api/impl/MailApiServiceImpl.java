@@ -10,7 +10,8 @@ import io.swagger.model.EmailAddress;
 import io.swagger.model.EmailAddressName;
 import io.swagger.model.EndDate;
 import io.swagger.model.GenericResponse;
-import io.swagger.model.InlineResponse2008;
+import io.swagger.model.IdAlertsBody;
+import io.swagger.model.InlineResponse2009;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.MailAlertRequest;
 import io.swagger.model.MailAlertUpdateRequest;
@@ -22,6 +23,7 @@ import io.swagger.model.MailDelistResponse;
 import io.swagger.model.MailDeliverabilityResponse;
 import io.swagger.model.MailLog;
 import io.swagger.model.MailOrder;
+import io.swagger.model.MailOrderRequest;
 import io.swagger.model.MailRow;
 import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
@@ -45,7 +47,7 @@ import javax.validation.constraints.*;
 
 public class MailApiServiceImpl extends MailApiService {
     @Override
-    public Response addMail(SecurityContext securityContext) throws NotFoundException {
+    public Response addMail(MailOrderRequest body, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -70,7 +72,12 @@ public class MailApiServiceImpl extends MailApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response deleteMailAlert(Integer id,  @NotNull Integer alertId, SecurityContext securityContext) throws NotFoundException {
+    public Response deleteMailAlert(IdAlertsBody body, Integer id, SecurityContext securityContext) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response deleteMailAlert(Integer alertId, Integer id, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -160,7 +167,7 @@ public class MailApiServiceImpl extends MailApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response putMail(SecurityContext securityContext) throws NotFoundException {
+    public Response putMail(MailOrderRequest body, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -201,6 +208,16 @@ public class MailApiServiceImpl extends MailApiService {
     }
     @Override
     public Response updateMailInfo(String id, SecurityContext securityContext) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response updateRule(DenyRuleNew body, Integer id, String rule, SecurityContext securityContext) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response updateRule(String user, String type, String data, Integer id, String rule, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }

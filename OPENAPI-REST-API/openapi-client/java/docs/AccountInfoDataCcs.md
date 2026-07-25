@@ -10,4 +10,8 @@ Collection of credit cards on the account, keyed by card ID.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

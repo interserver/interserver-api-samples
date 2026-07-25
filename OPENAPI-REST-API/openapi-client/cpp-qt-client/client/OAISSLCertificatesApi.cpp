@@ -235,7 +235,7 @@ QString OAISSLCertificatesApi::getParamStyleDelimiter(const QString &style, cons
     }
 }
 
-void OAISSLCertificatesApi::addSsl() {
+void OAISSLCertificatesApi::addSsl(const OAISslOrderRequest &oai_ssl_order_request) {
     QString fullPath = QString(_serverConfigs["addSsl"][_serverIndices.value("addSsl")].URL()+"/ssl/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -251,7 +251,12 @@ void OAISSLCertificatesApi::addSsl() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
+    {
 
+        
+        QByteArray output = oai_ssl_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -588,7 +593,7 @@ void OAISSLCertificatesApi::getSslWelcomeEmailCallback(OAIHttpRequestWorker *wor
     }
 }
 
-void OAISSLCertificatesApi::putSsl() {
+void OAISSLCertificatesApi::putSsl(const OAISslOrderRequest &oai_ssl_order_request) {
     QString fullPath = QString(_serverConfigs["putSsl"][_serverIndices.value("putSsl")].URL()+"/ssl/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -604,7 +609,12 @@ void OAISSLCertificatesApi::putSsl() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "PUT");
 
+    {
 
+        
+        QByteArray output = oai_ssl_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }

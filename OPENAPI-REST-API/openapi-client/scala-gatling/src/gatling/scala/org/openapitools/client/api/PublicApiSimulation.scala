@@ -56,6 +56,8 @@ class PublicApiSimulation extends Simulation {
     }
 
     // Setup all the operations per second for the test to ultimately be generated from configs
+    val getAccountCurrenciesPerSecond = config.getDouble("performance.operationsPerSecond.getAccountCurrencies") * rateMultiplier * instanceMultiplier
+    val getAccountLocalesPerSecond = config.getDouble("performance.operationsPerSecond.getAccountLocales") * rateMultiplier * instanceMultiplier
     val getCaptchaPerSecond = config.getDouble("performance.operationsPerSecond.getCaptcha") * rateMultiplier * instanceMultiplier
     val getCountriesPerSecond = config.getDouble("performance.operationsPerSecond.getCountries") * rateMultiplier * instanceMultiplier
     val getInfoPerSecond = config.getDouble("performance.operationsPerSecond.getInfo") * rateMultiplier * instanceMultiplier
@@ -77,6 +79,32 @@ class PublicApiSimulation extends Simulation {
     val postOauthCallbackQUERYFeeder = csv(userDataDirectory + File.separator + "postOauthCallback-queryParams.csv").random
 
     // Setup all scenarios
+
+    
+    val scngetAccountCurrencies = scenario("getAccountCurrenciesSimulation")
+        .exec(http("getAccountCurrencies")
+        .httpRequest("GET","/account/currencies")
+)
+
+    // Run scngetAccountCurrencies with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetAccountCurrencies.inject(
+        rampUsersPerSec(1) to(getAccountCurrenciesPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getAccountCurrenciesPerSecond) during(durationSeconds),
+        rampUsersPerSec(getAccountCurrenciesPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scngetAccountLocales = scenario("getAccountLocalesSimulation")
+        .exec(http("getAccountLocales")
+        .httpRequest("GET","/account/locales")
+)
+
+    // Run scngetAccountLocales with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetAccountLocales.inject(
+        rampUsersPerSec(1) to(getAccountLocalesPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getAccountLocalesPerSecond) during(durationSeconds),
+        rampUsersPerSec(getAccountLocalesPerSecond) to(1) during(rampDownSeconds)
+    )
 
     
     val scngetCaptcha = scenario("getCaptchaSimulation")

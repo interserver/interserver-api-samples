@@ -1,4 +1,4 @@
-# SwaggerClient::DeleteFirewallRule
+# InterserverApiClient::DeleteFirewallRule
 
 ## Properties
 Name | Type | Description | Notes

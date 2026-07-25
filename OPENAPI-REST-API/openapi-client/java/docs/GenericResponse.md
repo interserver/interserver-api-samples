@@ -12,4 +12,8 @@ Generic Response
 |**text** | **String** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

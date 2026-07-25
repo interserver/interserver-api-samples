@@ -22,4 +22,8 @@
 |**domainRegPassword** | **String** | Password for the domain registrar account. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

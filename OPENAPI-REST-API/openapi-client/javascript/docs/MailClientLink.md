@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailClientLink
+# InterserverApiClient.MailClientLink
 
 ## Properties
 

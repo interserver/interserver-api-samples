@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsOrderPlatformPackages } from './api';
+import { VpsOrderPlatformPackages } from '@interserver/myadmin-client';
 
 const instance: VpsOrderPlatformPackages = {
     kvm,

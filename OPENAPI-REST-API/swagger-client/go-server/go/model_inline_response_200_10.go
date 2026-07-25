@@ -10,8 +10,16 @@
 package myadmin-client-go-server
 
 type InlineResponse20010 struct {
-
-	Success bool `json:"success"`
-
-	Text string `json:"text"`
+	// The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
+	Type_ string `json:"type,omitempty"`
+	// URL to redirect the user to for payment (when type is `redirect`).
+	Redirect string `json:"redirect,omitempty"`
+	// Form action URL (when type is `submit`).
+	Action string `json:"action,omitempty"`
+	// HTTP method for the form submission (when type is `submit`).
+	Method string `json:"method,omitempty"`
+	// Form field name-value pairs to submit (when type is `submit`).
+	Items *interface{} `json:"items,omitempty"`
+	// Status or result text.
+	Text string `json:"text,omitempty"`
 }

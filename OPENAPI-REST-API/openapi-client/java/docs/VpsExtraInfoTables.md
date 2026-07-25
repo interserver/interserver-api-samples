@@ -11,4 +11,8 @@ Additional informational tables displayed for a VPS service.
 |**ipInfo** | [**VpsIPInfo**](VpsIPInfo.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -12,11 +12,7 @@
 package org.openapitools.client.model
 
 
-case class BuyItNowRowCpuInner(
-  img: Option[String] = None,
-  `type`: Option[String] = None,
-  speed: Option[String] = None,
-  num_cpus: Option[String] = None,
-  num_cores: Option[String] = None
-)
+trait BuyItNowRowCpuInner
+object BuyItNowRowCpuInner {
+}
 

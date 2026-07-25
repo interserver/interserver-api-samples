@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoOauthproviders();
+    instance = new InterserverApiClient.AccountInfoOauthproviders();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('AccountInfoOauthproviders', function() {
     it('should create an instance of AccountInfoOauthproviders', function() {
       // uncomment below and update the code to test AccountInfoOauthproviders
-      //var instance = new InterServerManagementApi.AccountInfoOauthproviders();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoOauthproviders);
+      //var instance = new InterserverApiClient.AccountInfoOauthproviders();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoOauthproviders);
     });
 
   });

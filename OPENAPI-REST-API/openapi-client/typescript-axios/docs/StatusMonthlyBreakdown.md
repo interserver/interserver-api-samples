@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { StatusMonthlyBreakdown } from './api';
+import { StatusMonthlyBreakdown } from '@interserver/myadmin-client';
 
 const instance: StatusMonthlyBreakdown = {
     _default,

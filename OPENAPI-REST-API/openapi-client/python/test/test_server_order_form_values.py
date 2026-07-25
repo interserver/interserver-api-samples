@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_form_values import ServerOrderFormValues
+from interserver_api_client.models.server_order_form_values import ServerOrderFormValues
 
 class TestServerOrderFormValues(unittest.TestCase):
     """ServerOrderFormValues unit test stubs"""

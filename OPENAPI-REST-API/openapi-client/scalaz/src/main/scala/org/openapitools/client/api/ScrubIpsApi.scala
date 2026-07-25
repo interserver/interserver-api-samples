@@ -47,6 +47,7 @@ import org.openapitools.client.api.GetAccountInfo401Response
 import org.openapitools.client.api.GetOrderDetail200Response
 import org.openapitools.client.api.GetScrubIpDetails200Response
 import org.openapitools.client.api.PlaceScrubOrder201Response
+import org.openapitools.client.api.PutScrubIps200Response
 import org.openapitools.client.api.ScrubIpFilterTypes
 import org.openapitools.client.api.ScrubIpPlaceOrder
 import org.openapitools.client.api.ScrubIpsDeleteRule200Response
@@ -351,6 +352,27 @@ object ScrubIpsApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(ScrubIpPlaceOrder)
       resp          <- client.expect[PlaceScrubOrder201Response](req)
+
+    } yield resp
+  }
+
+  def putScrubIps(host: String, ScrubIpPlaceOrder: ScrubIpPlaceOrder): Task[PutScrubIps200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[PutScrubIps200Response] = jsonOf[PutScrubIps200Response]
+
+    val path = "/scrub_ips/order"
+
+    val httpMethod = Method.PUT
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(ScrubIpPlaceOrder)
+      resp          <- client.expect[PutScrubIps200Response](req)
 
     } yield resp
   }
@@ -694,6 +716,27 @@ class HttpServiceScrubIpsApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(ScrubIpPlaceOrder)
       resp          <- client.expect[PlaceScrubOrder201Response](req)
+
+    } yield resp
+  }
+
+  def putScrubIps(ScrubIpPlaceOrder: ScrubIpPlaceOrder): Task[PutScrubIps200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[PutScrubIps200Response] = jsonOf[PutScrubIps200Response]
+
+    val path = "/scrub_ips/order"
+
+    val httpMethod = Method.PUT
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(ScrubIpPlaceOrder)
+      resp          <- client.expect[PutScrubIps200Response](req)
 
     } yield resp
   }

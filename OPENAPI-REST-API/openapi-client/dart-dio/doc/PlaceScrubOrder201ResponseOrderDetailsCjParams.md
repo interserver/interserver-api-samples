@@ -1,21 +1,21 @@
-# openapi.model.PlaceScrubOrder201ResponseOrderDetailsCjParams
+# interserver_api.model.PlaceScrubOrder201ResponseOrderDetailsCjParams
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**containerTagId** | **int** |  | [optional] 
-**CID** | **int** |  | [optional] 
-**OID** | **String** |  | [optional] 
-**TYPE** | **int** |  | [optional] 
-**iTEM1** | **String** |  | [optional] 
-**aMT1** | **int** |  | [optional] 
-**qTY1** | **int** |  | [optional] 
-**CURRENCY** | **String** |  | [optional] 
+**containerTagId** | **Optional&lt;int?&gt;** |  | [optional] 
+**CID** | **Optional&lt;int?&gt;** |  | [optional] 
+**OID** | **Optional&lt;String?&gt;** |  | [optional] 
+**TYPE** | **Optional&lt;int?&gt;** |  | [optional] 
+**ITEM1** | **Optional&lt;String?&gt;** |  | [optional] 
+**AMT1** | **Optional&lt;int?&gt;** |  | [optional] 
+**QTY1** | **Optional&lt;int?&gt;** |  | [optional] 
+**CURRENCY** | **Optional&lt;String?&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

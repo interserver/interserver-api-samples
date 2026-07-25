@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::TicketCustomFieldDetails
+# InterServerAPI::Object::TicketCustomFieldDetails
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::TicketCustomFieldDetails;
+use InterServerAPI::Object::TicketCustomFieldDetails;
 ```
 
 ## Properties

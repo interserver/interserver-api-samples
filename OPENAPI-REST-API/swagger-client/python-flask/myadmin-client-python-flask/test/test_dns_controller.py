@@ -22,7 +22,7 @@ class TestDNSController(BaseTestCase):
     def test_add_dns_domain(self):
         """Test case for add_dns_domain
 
-        Create DNS Domain
+        Create a new authoritative DNS zone seeded with apex A + NS + SOA records
         """
         body = DnsNewDomain()
         data = dict(domain='domain_example',
@@ -39,7 +39,7 @@ class TestDNSController(BaseTestCase):
     def test_add_dns_record(self):
         """Test case for add_dns_record
 
-        Add DNS Record to Domain
+        Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
         """
         body = DnsNewRecord()
         data = dict(name='name_example',
@@ -59,7 +59,7 @@ class TestDNSController(BaseTestCase):
     def test_delete_dns_domain(self):
         """Test case for delete_dns_domain
 
-        Delete DNS Domain
+        Permanently delete a DNS zone and every record it contains
         """
         response = self.client.open(
             '/apiv2/dns/{id}'.format(id='id_example'),
@@ -70,7 +70,7 @@ class TestDNSController(BaseTestCase):
     def test_delete_dns_record(self):
         """Test case for delete_dns_record
 
-        Delete DNS Record
+        Permanently delete one DNS record from a zone — zone itself is preserved
         """
         response = self.client.open(
             '/apiv2/dns/{domainId}/{recordId}'.format(domain_id=56, record_id=56),
@@ -81,7 +81,7 @@ class TestDNSController(BaseTestCase):
     def test_get_dns_domain(self):
         """Test case for get_dns_domain
 
-        List Domain DNS Records
+        List every DNS record in one zone with the IDs needed to edit or delete them
         """
         response = self.client.open(
             '/apiv2/dns/{id}'.format(id=56),
@@ -92,7 +92,7 @@ class TestDNSController(BaseTestCase):
     def test_get_dns_list(self):
         """Test case for get_dns_list
 
-        List DNS Domains
+        List DNS zones hosted on the account with each zone's apex A-record IP
         """
         response = self.client.open(
             '/apiv2/dns',
@@ -103,7 +103,7 @@ class TestDNSController(BaseTestCase):
     def test_update_dns_record(self):
         """Test case for update_dns_record
 
-        Update DNS Record
+        Replace values on an existing DNS record (name, type, content, ttl, priority)
         """
         body = DnsUpdateRecord()
         data = dict(name='name_example',

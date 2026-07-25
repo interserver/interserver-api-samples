@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var Licenses = require('../service/LicensesService');
 
-module.exports.addLicense = function addLicense (req, res, next) {
-  Licenses.addLicense()
+module.exports.addLicense = function addLicense (req, res, next, body) {
+  Licenses.addLicense(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -35,16 +35,6 @@ module.exports.getLicenseInvoices = function getLicenseInvoices (req, res, next,
 
 module.exports.getLicenseList = function getLicenseList (req, res, next) {
   Licenses.getLicenseList()
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.getLicenseOrderCatTagInfo = function getLicenseOrderCatTagInfo (req, res, next, catTag) {
-  Licenses.getLicenseOrderCatTagInfo(catTag)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -103,8 +93,8 @@ module.exports.postLicenseChangeIp = function postLicenseChangeIp (req, res, nex
     });
 };
 
-module.exports.putLicenses = function putLicenses (req, res, next) {
-  Licenses.putLicenses()
+module.exports.putLicenses = function putLicenses (req, res, next, body) {
+  Licenses.putLicenses(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

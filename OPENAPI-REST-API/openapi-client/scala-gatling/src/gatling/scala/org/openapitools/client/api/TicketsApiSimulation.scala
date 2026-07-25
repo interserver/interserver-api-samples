@@ -155,8 +155,8 @@ class TicketsApiSimulation extends Simulation {
         .feed(getTicketsListQUERYFeeder)
         .exec(http("getTicketsList")
         .httpRequest("GET","/tickets")
-        .queryParam("page","${page}")
         .queryParam("period","${period}")
+        .queryParam("page","${page}")
         .queryParam("view","${view}")
 )
 

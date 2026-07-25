@@ -33,7 +33,7 @@ public class LoginSubmissionExampleGRecaptchaResponse  {
    * @return vIsShallow
   **/
   @JsonProperty("__v_isShallow")
-  public Boolean getvIsShallow() {
+  public Boolean isvIsShallow() {
     return vIsShallow;
   }
 
@@ -69,7 +69,7 @@ public class LoginSubmissionExampleGRecaptchaResponse  {
    * @return vIsRef
   **/
   @JsonProperty("__v_isRef")
-  public Boolean getvIsRef() {
+  public Boolean isvIsRef() {
     return vIsRef;
   }
 

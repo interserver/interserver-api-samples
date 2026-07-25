@@ -356,6 +356,30 @@ let place_scrub_order ~scrub_ip_place_order_t =
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Place_scrub_order_201_response.of_yojson) resp body
 
+let put_scrub_ips ~scrub_ip_place_order_t =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/scrub_ips/order" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Scrub_ip_place_order.to_yojson
+    
+    
+    
+ scrub_ip_place_order_t
+    in
+    Cohttp_lwt_unix.Client.call `PUT uri ~headers ~body >>= fun (resp, body) ->
+    Request.read_json_body_as (JsonSupport.unwrap Put_scrub_ips_200_response.of_yojson) resp body
+
 let scrub_ips_delete_geo_rule ~id ~delete_geo_firewall_rule_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/scrub_ips/{id}/delete_geo_rule" in

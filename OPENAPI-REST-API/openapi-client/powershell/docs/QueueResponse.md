@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QueueResponse = Initialize-PSOpenAPIToolsQueueResponse  -Text Action has been sent to the server. Please allow up to 2 minutes for action to be completed. `
+$QueueResponse = Initialize-InterserverApiQueueResponse  -Text Action has been sent to the server. Please allow up to 2 minutes for action to be completed. `
  -QueueId 14670065
 ```
 

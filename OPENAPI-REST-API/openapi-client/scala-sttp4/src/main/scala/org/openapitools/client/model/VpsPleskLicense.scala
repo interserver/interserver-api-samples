@@ -18,4 +18,3 @@ case class VpsPleskLicense(
   sub_name: Option[String] = None,
   cost: Option[Int] = None
 )
-

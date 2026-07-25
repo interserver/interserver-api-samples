@@ -14,7 +14,7 @@ import io.swagger.server.model.BackupRow
 import io.swagger.server.model.BackupsOrder
 import io.swagger.server.model.ChargeInvoiceRows
 import io.swagger.server.model.SuccessTextResponse
-import io.swagger.server.model.inline_response_200_1
+import io.swagger.server.model.inline_response_200_2
 import io.swagger.server.model.inline_response_401
 
 class BackupsApi(
@@ -192,16 +192,16 @@ trait BackupsApiService {
   def addBackup(validateOnly: Boolean, serviceType: Int, coupon: String, body: BackupOrderPutRequest)
       (implicit toEntityMarshallerBackupOrderPostResponse: ToEntityMarshaller[BackupOrderPostResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def cancelBackup200(responseinline_response_200_1: inline_response_200_1)(implicit toEntityMarshallerinline_response_200_1: ToEntityMarshaller[inline_response_200_1]): Route =
-    complete((200, responseinline_response_200_1))
+  def cancelBackup200(responseinline_response_200_2: inline_response_200_2)(implicit toEntityMarshallerinline_response_200_2: ToEntityMarshaller[inline_response_200_2]): Route =
+    complete((200, responseinline_response_200_2))
   def cancelBackup401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Backups Cancel, DataType: inline_response_200_1
+   * Code: 200, Message: Backups Cancel, DataType: inline_response_200_2
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def cancelBackup(id: Int)
-      (implicit toEntityMarshallerinline_response_200_1: ToEntityMarshaller[inline_response_200_1], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_2: ToEntityMarshaller[inline_response_200_2], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getBackupInfo200(responseBackup: Backup)(implicit toEntityMarshallerBackup: ToEntityMarshaller[Backup]): Route =
     complete((200, responseBackup))
@@ -301,7 +301,7 @@ trait BackupsApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_1: ToEntityMarshaller[inline_response_200_1]
+  implicit def toEntityMarshallerinline_response_200_2: ToEntityMarshaller[inline_response_200_2]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

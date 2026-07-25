@@ -31,7 +31,7 @@ FString OpenAPIQuickServersApi::AddQsRequest::ComputePath() const
 
 void OpenAPIQuickServersApi::AddQsRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("POST"));
@@ -39,12 +39,23 @@ void OpenAPIQuickServersApi::AddQsRequest::SetupHttpRequest(const FHttpRequestRe
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIQsOrderRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIQsOrderRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIQsOrderRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -58,7 +69,7 @@ void OpenAPIQuickServersApi::AddQsResponse::SetHttpResponseCode(EHttpResponseCod
 	switch ((int)InHttpResponseCode)
 	{
 	case 200:
-		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
+		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
 		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
@@ -629,6 +640,44 @@ void OpenAPIQuickServersApi::GetNewQsResponse::SetHttpResponseCode(EHttpResponse
 }
 
 bool OpenAPIQuickServersApi::GetNewQsResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return TryGetJsonValue(JsonValue, Content);
+}
+
+FString OpenAPIQuickServersApi::GetQsBackupRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
+
+	FString Path = FString::Format(TEXT("/qs/{id}/backup"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIQuickServersApi::GetQsBackupRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("GET"));
+
+}
+
+void OpenAPIQuickServersApi::GetQsBackupResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Response message from sending a service queue."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIQuickServersApi::GetQsBackupResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
 }
@@ -1294,58 +1343,6 @@ void OpenAPIQuickServersApi::GetQsWelcomeEmailResponse::SetHttpResponseCode(EHtt
 }
 
 bool OpenAPIQuickServersApi::GetQsWelcomeEmailResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return TryGetJsonValue(JsonValue, Content);
-}
-
-FString OpenAPIQuickServersApi::PostQsBackupRequest::ComputePath() const
-{
-	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
-
-	FString Path = FString::Format(TEXT("/qs/{id}/backup"), PathParams);
-
-	return Path;
-}
-
-void OpenAPIQuickServersApi::PostQsBackupRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = {  };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("POST"));
-
-	// Default to Json Body request
-	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
-	{
-	}
-	else if (Consumes.Contains(TEXT("multipart/form-data")))
-	{
-	}
-	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
-	{
-	}
-	else
-	{
-		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
-	}
-}
-
-void OpenAPIQuickServersApi::PostQsBackupResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("Response message from sending a service queue."));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPIQuickServersApi::PostQsBackupResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
 }
@@ -2026,7 +2023,7 @@ FString OpenAPIQuickServersApi::PutQsRequest::ComputePath() const
 
 void OpenAPIQuickServersApi::PutQsRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("PUT"));
@@ -2034,12 +2031,23 @@ void OpenAPIQuickServersApi::PutQsRequest::SetupHttpRequest(const FHttpRequestRe
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIQsOrderRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIQsOrderRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIQsOrderRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{

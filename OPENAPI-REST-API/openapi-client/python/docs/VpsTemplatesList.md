@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_templates_list import VpsTemplatesList
+from interserver_api_client.models.vps_templates_list import VpsTemplatesList
 
 # TODO update the JSON string below
 json = "{}"

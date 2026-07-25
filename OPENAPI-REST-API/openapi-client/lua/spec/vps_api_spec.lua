@@ -99,6 +99,13 @@ describe("vps_api", function()
     end)
   end)
 
+  -- unit tests for get_vps_backup
+  describe("get_vps_backup test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for get_vps_backups
   describe("get_vps_backups test", function()
     it("should work", function()
@@ -120,6 +127,20 @@ describe("vps_api", function()
     end)
   end)
 
+  -- unit tests for get_vps_change_hostname
+  describe("get_vps_change_hostname test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for get_vps_change_root_password
+  describe("get_vps_change_root_password test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for get_vps_change_timezone
   describe("get_vps_change_timezone test", function()
     it("should work", function()
@@ -129,6 +150,13 @@ describe("vps_api", function()
 
   -- unit tests for get_vps_info
   describe("get_vps_info test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for get_vps_insert_cd
+  describe("get_vps_insert_cd test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
@@ -150,6 +178,13 @@ describe("vps_api", function()
 
   -- unit tests for get_vps_reinstall_os
   describe("get_vps_reinstall_os test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for get_vps_reset_password
+  describe("get_vps_reset_password test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
@@ -192,13 +227,6 @@ describe("vps_api", function()
 
   -- unit tests for get_vps_welcome_email
   describe("get_vps_welcome_email test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for post_vps_backup
-  describe("post_vps_backup test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
@@ -295,6 +323,13 @@ describe("vps_api", function()
     end)
   end)
 
+  -- unit tests for post_vps_traffic_usage
+  describe("post_vps_traffic_usage test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for post_vps_view_desktop
   describe("post_vps_view_desktop test", function()
     it("should work", function()
@@ -304,6 +339,13 @@ describe("vps_api", function()
 
   -- unit tests for put_vps
   describe("put_vps test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for put_vps_buy_hd_space
+  describe("put_vps_buy_hd_space test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

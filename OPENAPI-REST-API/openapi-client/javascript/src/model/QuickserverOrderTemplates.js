@@ -17,7 +17,7 @@ import QuickserverOrderTemplatesUbuntu64 from './QuickserverOrderTemplatesUbuntu
 /**
  * The QuickserverOrderTemplates model module.
  * @module model/QuickserverOrderTemplates
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverOrderTemplates {
     /**

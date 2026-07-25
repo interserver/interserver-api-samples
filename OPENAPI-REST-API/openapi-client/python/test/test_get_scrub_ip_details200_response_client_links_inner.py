@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_scrub_ip_details200_response_client_links_inner import GetScrubIpDetails200ResponseClientLinksInner
+from interserver_api_client.models.get_scrub_ip_details200_response_client_links_inner import GetScrubIpDetails200ResponseClientLinksInner
 
 class TestGetScrubIpDetails200ResponseClientLinksInner(unittest.TestCase):
     """GetScrubIpDetails200ResponseClientLinksInner unit test stubs"""

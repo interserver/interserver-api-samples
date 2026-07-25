@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DisableScrub400Response = Initialize-PSOpenAPIToolsDisableScrub400Response  -Success false `
+$DisableScrub400Response = Initialize-InterserverApiDisableScrub400Response  -Success false `
  -Text Scrub is not enabled in this service.
 ```
 

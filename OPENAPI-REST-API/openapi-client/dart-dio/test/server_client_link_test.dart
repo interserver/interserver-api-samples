@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerClientLink
 void main() {
-  final instance = ServerClientLinkBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerClientLink? instance = /* ServerClientLink(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerClientLink, () {
     // String label
@@ -17,17 +17,17 @@ void main() {
       // TODO
     });
 
-    // String icon
+    // Optional<String?> icon
     test('to test the property `icon`', () async {
       // TODO
     });
 
-    // String iconText
+    // Optional<String?> iconText
     test('to test the property `iconText`', () async {
       // TODO
     });
 
-    // String helpText
+    // Optional<String?> helpText
     test('to test the property `helpText`', () async {
       // TODO
     });

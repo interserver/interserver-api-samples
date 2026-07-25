@@ -1,8 +1,8 @@
-# openapi.model.WebsitesOrderPackagesInfo
+# interserver_api.model.WebsitesOrderPackagesInfo
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
@@ -16,11 +16,11 @@ Name | Type | Description | Notes
 **servicesType** | **String** | The type of the package. | 
 **servicesModule** | **String** | The module of the package. | 
 **servicesDescription** | **String** | Description of the package. | 
-**servicesField1** | **String** | Additional field 1 for the package. | [optional] 
-**servicesField2** | **String** | Additional field 2 for the package. | [optional] 
-**servicesHtml** | **String** | HTML content for the package. | [optional] 
-**servicesMoreinfoUrl** | **String** | URL for more information about the package. | [optional] 
-**servicesHidden** | **String** | Indicates if the package is hidden (1 for yes, 0 for no). | [optional] 
+**servicesField1** | **Optional&lt;String?&gt;** | Additional field 1 for the package. | [optional] 
+**servicesField2** | **Optional&lt;String?&gt;** | Additional field 2 for the package. | [optional] 
+**servicesHtml** | **Optional&lt;String?&gt;** | HTML content for the package. | [optional] 
+**servicesMoreinfoUrl** | **Optional&lt;String?&gt;** | URL for more information about the package. | [optional] 
+**servicesHidden** | **Optional&lt;String?&gt;** | Indicates if the package is hidden (1 for yes, 0 for no). | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

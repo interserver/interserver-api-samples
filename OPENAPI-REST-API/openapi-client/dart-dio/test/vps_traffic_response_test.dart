@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsTrafficResponse
 void main() {
-  final instance = VpsTrafficResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsTrafficResponse? instance = /* VpsTrafficResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsTrafficResponse, () {
     // String name
@@ -27,12 +27,12 @@ void main() {
       // TODO
     });
 
-    // DateTime last
+    // OffsetDateTime last
     test('to test the property `last`', () async {
       // TODO
     });
 
-    // BuiltList<DateTime> times
+    // List<OffsetDateTime> times
     test('to test the property `times`', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<VpsTrafficDataSectionResponse> data
+    // List<VpsTrafficDataSectionResponse> data
     test('to test the property `data`', () async {
       // TODO
     });

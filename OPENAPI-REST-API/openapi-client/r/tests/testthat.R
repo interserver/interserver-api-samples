@@ -1,4 +1,4 @@
 library(testthat)
-library(openapi)
+library(interserverapi)
 
-test_check("openapi")
+test_check("interserverapi")

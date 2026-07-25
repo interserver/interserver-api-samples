@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DnsNewDomain
 void main() {
-  final instance = DnsNewDomainBuilder();
-  // TODO add properties to the builder and call build()
+  final DnsNewDomain? instance = /* DnsNewDomain(...) */ null;
+  // TODO add properties to the entity
 
   group(DnsNewDomain, () {
     // The domain name.

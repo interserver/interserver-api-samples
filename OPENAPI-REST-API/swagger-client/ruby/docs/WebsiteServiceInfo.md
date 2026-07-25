@@ -1,4 +1,4 @@
-# SwaggerClient::WebsiteServiceInfo
+# InterserverApiClient::WebsiteServiceInfo
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,9 +1,10 @@
 package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20023;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ServiceOrderPostResponse;
+import io.swagger.model.SslOrderRequest;
 import io.swagger.model.SuccessTextResponse;
 
 import io.micronaut.http.HttpResponse;
@@ -24,8 +25,9 @@ class SslApiControllerTest {
 
     @Test
     void addSslTest() {
+        SslOrderRequest body = null;
         try {
-            //TODO: api.addSsl().blockingGet();
+            //TODO: api.addSsl(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -81,8 +83,9 @@ class SslApiControllerTest {
 
     @Test
     void putSslTest() {
+        SslOrderRequest body = null;
         try {
-            //TODO: api.putSsl().blockingGet();
+            //TODO: api.putSsl(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

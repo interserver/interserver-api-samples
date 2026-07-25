@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BillingPaymentMethodRequest } from './api';
+import { BillingPaymentMethodRequest } from '@interserver/myadmin-client';
 
 const instance: BillingPaymentMethodRequest = {
     payment_method,

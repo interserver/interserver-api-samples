@@ -1,4 +1,4 @@
-# openapi::QuickserverRow
+# interserverapi::QuickserverRow
 
 A result row from the `Quickservers` `GET` request.
 

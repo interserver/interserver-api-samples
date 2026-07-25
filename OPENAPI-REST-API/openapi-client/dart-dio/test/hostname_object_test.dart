@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for HostnameObject
 void main() {
-  final instance = HostnameObjectBuilder();
-  // TODO add properties to the builder and call build()
+  final HostnameObject? instance = /* HostnameObject(...) */ null;
+  // TODO add properties to the entity
 
   group(HostnameObject, () {
-    // String hostname
+    // Optional<String?> hostname
     test('to test the property `hostname`', () async {
       // TODO
     });

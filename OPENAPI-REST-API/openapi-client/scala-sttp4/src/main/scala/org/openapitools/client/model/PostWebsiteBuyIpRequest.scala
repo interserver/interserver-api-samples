@@ -16,4 +16,3 @@ case class PostWebsiteBuyIpRequest(
   /* A map of IP addresses to their desired reverse DNS hostnames. */
   ips: Option[Map[String, String]] = None
 )
-

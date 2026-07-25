@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerIpmiPowerRequest
 void main() {
-  final instance = ServerIpmiPowerRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerIpmiPowerRequest? instance = /* ServerIpmiPowerRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerIpmiPowerRequest, () {
     // The power action to send to the ipmi controller.
@@ -14,7 +14,7 @@ void main() {
     });
 
     // The Asset ID
-    // int asset
+    // Optional<int?> asset
     test('to test the property `asset`', () async {
       // TODO
     });

@@ -12,6 +12,7 @@
 package org.openapitools.client.model
 
 
-case class VPSTrafficDataDataSectionResponseInner(
-)
+trait VPSTrafficDataDataSectionResponseInner
+object VPSTrafficDataDataSectionResponseInner {
+}
 

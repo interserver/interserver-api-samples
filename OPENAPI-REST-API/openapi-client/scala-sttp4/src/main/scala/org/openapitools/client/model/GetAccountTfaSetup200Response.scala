@@ -18,4 +18,3 @@ case class GetAccountTfaSetup200Response(
   /* Human-readable formatted key (chunks of 4 characters). */
   `2fa_google_split`: Option[String] = None
 )
-

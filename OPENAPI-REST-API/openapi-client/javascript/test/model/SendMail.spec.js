@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.SendMail();
+    instance = new InterserverApiClient.SendMail();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('SendMail', function() {
     it('should create an instance of SendMail', function() {
       // uncomment below and update the code to test SendMail
-      //var instance = new InterServerManagementApi.SendMail();
-      //expect(instance).to.be.a(InterServerManagementApi.SendMail);
+      //var instance = new InterserverApiClient.SendMail();
+      //expect(instance).to.be.a(InterserverApiClient.SendMail);
     });
 
     it('should have the property to (base name: "to")', function() {
       // uncomment below and update the code to test the property to
-      //var instance = new InterServerManagementApi.SendMail();
+      //var instance = new InterserverApiClient.SendMail();
       //expect(instance).to.be();
     });
 
     it('should have the property from (base name: "from")', function() {
       // uncomment below and update the code to test the property from
-      //var instance = new InterServerManagementApi.SendMail();
+      //var instance = new InterserverApiClient.SendMail();
       //expect(instance).to.be();
     });
 
     it('should have the property subject (base name: "subject")', function() {
       // uncomment below and update the code to test the property subject
-      //var instance = new InterServerManagementApi.SendMail();
+      //var instance = new InterserverApiClient.SendMail();
       //expect(instance).to.be();
     });
 
     it('should have the property body (base name: "body")', function() {
       // uncomment below and update the code to test the property body
-      //var instance = new InterServerManagementApi.SendMail();
+      //var instance = new InterserverApiClient.SendMail();
       //expect(instance).to.be();
     });
 

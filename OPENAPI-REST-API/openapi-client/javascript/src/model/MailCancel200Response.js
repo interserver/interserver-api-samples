@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailCancel200Response model module.
  * @module model/MailCancel200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailCancel200Response {
     /**

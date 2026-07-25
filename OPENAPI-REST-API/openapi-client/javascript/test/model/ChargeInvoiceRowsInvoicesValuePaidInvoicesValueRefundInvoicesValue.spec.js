@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
+    instance = new InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,49 +50,49 @@
   describe('ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue', function() {
     it('should create an instance of ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue', function() {
       // uncomment below and update the code to test ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue
-      //var instance = new InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
-      //expect(instance).to.be.a(InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue);
+      //var instance = new InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
+      //expect(instance).to.be.a(InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue);
     });
 
     it('should have the property invoices_id (base name: "invoices_id")', function() {
       // uncomment below and update the code to test the property invoices_id
-      //var instance = new InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
+      //var instance = new InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
       //expect(instance).to.be();
     });
 
     it('should have the property invoices_description (base name: "invoices_description")', function() {
       // uncomment below and update the code to test the property invoices_description
-      //var instance = new InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
+      //var instance = new InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
       //expect(instance).to.be();
     });
 
     it('should have the property invoices_amount (base name: "invoices_amount")', function() {
       // uncomment below and update the code to test the property invoices_amount
-      //var instance = new InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
+      //var instance = new InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
       //expect(instance).to.be();
     });
 
     it('should have the property invoices_date (base name: "invoices_date")', function() {
       // uncomment below and update the code to test the property invoices_date
-      //var instance = new InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
+      //var instance = new InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
       //expect(instance).to.be();
     });
 
     it('should have the property invoices_currency (base name: "invoices_currency")', function() {
       // uncomment below and update the code to test the property invoices_currency
-      //var instance = new InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
+      //var instance = new InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
       //expect(instance).to.be();
     });
 
     it('should have the property currency_symbol (base name: "currency_symbol")', function() {
       // uncomment below and update the code to test the property currency_symbol
-      //var instance = new InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
+      //var instance = new InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
       //expect(instance).to.be();
     });
 
     it('should have the property invoices_date_formatted (base name: "invoices_date_formatted")', function() {
       // uncomment below and update the code to test the property invoices_date_formatted
-      //var instance = new InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
+      //var instance = new InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue();
       //expect(instance).to.be();
     });
 

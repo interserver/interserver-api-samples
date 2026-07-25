@@ -34,4 +34,8 @@ Information about the host node (hypervisor) running this VPS, including hardwar
 |**vpsOrder** | **String** | Order number |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for SendMail
 void main() {
-  final instance = SendMailBuilder();
-  // TODO add properties to the builder and call build()
+  final SendMail? instance = /* SendMail(...) */ null;
+  // TODO add properties to the entity
 
   group(SendMail, () {
     // The Contact whom is the primary recipient of this email.

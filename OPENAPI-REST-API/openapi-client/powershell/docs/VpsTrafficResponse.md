@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsTrafficResponse = Initialize-PSOpenAPIToolsVpsTrafficResponse  -Name null `
+$VpsTrafficResponse = Initialize-InterserverApiVpsTrafficResponse  -Name null `
  -Target null `
  -Interval null `
  -History null `

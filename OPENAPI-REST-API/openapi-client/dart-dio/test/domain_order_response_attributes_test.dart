@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainOrderResponseAttributes
 void main() {
-  final instance = DomainOrderResponseAttributesBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainOrderResponseAttributes? instance = /* DomainOrderResponseAttributes(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainOrderResponseAttributes, () {
     // Registrar order ID.
-    // String id
+    // Optional<String?> id
     test('to test the property `id`', () async {
       // TODO
     });
 
     // Administrative contact email provided for the order.
-    // String adminEmail
+    // Optional<String?> adminEmail
     test('to test the property `adminEmail`', () async {
       // TODO
     });

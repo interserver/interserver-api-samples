@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class WebsitesOrderServiceTypes(
   `11447`: WebsitesOrderServiceTypes
 )
-

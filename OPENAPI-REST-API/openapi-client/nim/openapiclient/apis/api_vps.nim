@@ -55,7 +55,7 @@ template constructResult[T](response: Response): untyped =
 
 
 proc addVps*(httpClient: HttpClient, vpsOrderPostRequest: VpsOrderPostRequest): (Option[ServiceOrderPostResponse], Response) =
-  ## Place VPS Order
+  ## Place a new VPS order, create the invoice, and queue provisioning
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & "/vps/order", $(%vpsOrderPostRequest))
@@ -63,7 +63,7 @@ proc addVps*(httpClient: HttpClient, vpsOrderPostRequest: VpsOrderPostRequest): 
 
 
 proc deleteVpsBackup*(httpClient: HttpClient, id: int, file: string, all: string): (Option[SuccessTextResponse], Response) =
-  ## Delete VPS Backup
+  ## Permanently delete a VPS backup file by name (irreversible)
   var query_params_list: seq[(string, string)] = @[]
   if $all != "":
     query_params_list.add(("all", $all))
@@ -75,63 +75,63 @@ proc deleteVpsBackup*(httpClient: HttpClient, id: int, file: string, all: string
 
 
 proc doVpsBlockSmtp*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Blocks SMTP
+  ## Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/block_smtp")
   constructResult[QueueResponse](response)
 
 
 proc doVpsDisableCd*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Disable CD Drive
+  ## Remove the virtual CD/DVD device entirely from the VPS configuration
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/disable_cd")
   constructResult[QueueResponse](response)
 
 
 proc doVpsDisableQuota*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Disable Quotas
+  ## Disable per-user disk quota enforcement inside the VPS guest OS
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/disable_quota")
   constructResult[QueueResponse](response)
 
 
 proc doVpsEjectCd*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Eject CD Drive
+  ## Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/eject_cd")
   constructResult[QueueResponse](response)
 
 
 proc doVpsEnableQuota*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Enable Quotas
+  ## Enable per-user disk quota enforcement inside the VPS guest OS
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/enable_quota")
   constructResult[QueueResponse](response)
 
 
 proc doVpsRestart*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Restart VPS
+  ## Reboot the VPS — preferred over stop+start for software changes
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/restart")
   constructResult[QueueResponse](response)
 
 
 proc doVpsStart*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Start VPS
+  ## Power on a stopped VPS instance
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/start")
   constructResult[QueueResponse](response)
 
 
 proc doVpsStop*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Stop VPS
+  ## Power off a running VPS — billing continues until cancellation
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/stop")
   constructResult[QueueResponse](response)
 
 
 proc downloadVpsBackup*(httpClient: HttpClient, id: int, downloadQsBackupRequest: DownloadQsBackupRequest, all: string): (Option[downloadQsBackup_200_response], Response) =
-  ## Download VPS Backup
+  ## Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
   httpClient.headers["Content-Type"] = "application/json"
   var query_params_list: seq[(string, string)] = @[]
   if $all != "":
@@ -143,14 +143,21 @@ proc downloadVpsBackup*(httpClient: HttpClient, id: int, downloadQsBackupRequest
 
 
 proc getNewVps*(httpClient: HttpClient): (Option[VpsOrder], Response) =
-  ## VPS Ordering Information
+  ## Get the VPS order catalog — platforms, OS templates, locations, pricing
 
   let response = httpClient.get(basepath & "/vps/order")
   constructResult[VpsOrder](response)
 
 
+proc getVpsBackup*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
+  ## Trigger a manual on-demand snapshot/backup of the VPS
+
+  let response = httpClient.get(basepath & fmt"/vps/{id}/backup")
+  constructResult[QueueResponse](response)
+
+
 proc getVpsBackups*(httpClient: HttpClient, id: int, all: string): (Option[seq[VpsBackupRow]], Response) =
-  ## Get VPS Backups List
+  ## List existing backups for the VPS across Swift, MinIO, and ZFS
   var query_params_list: seq[(string, string)] = @[]
   if $all != "":
     query_params_list.add(("all", $all))
@@ -161,112 +168,129 @@ proc getVpsBackups*(httpClient: HttpClient, id: int, all: string): (Option[seq[V
 
 
 proc getVpsBuyHdSpace*(httpClient: HttpClient, id: int): Response =
-  ## HD Space Addon Info
+  ## Get current additional disk size and per-GB monthly cost for the VPS
   httpClient.get(basepath & fmt"/vps/{id}/buy_hd_space")
 
 
 
 proc getVpsBuyIp*(httpClient: HttpClient, id: int): Response =
-  ## Additional IP Addon Info
+  ## Read current additional IPs, cap, and per-IP monthly cost for the VPS
   httpClient.get(basepath & fmt"/vps/{id}/buy_ip")
 
 
 
+proc getVpsChangeHostname*(httpClient: HttpClient, id: int): Response =
+  ## Read the VPS's current hostname before changing it
+  httpClient.get(basepath & fmt"/vps/{id}/change_hostname")
+
+
+
+proc getVpsChangeRootPassword*(httpClient: HttpClient, id: int): Response =
+  ## Pre-flight check before changing the VPS root password
+  httpClient.get(basepath & fmt"/vps/{id}/change_root_password")
+
+
+
 proc getVpsChangeTimezone*(httpClient: HttpClient, id: int): (Option[seq[string]], Response) =
-  ## Get Timezone Info
+  ## List IANA timezones supported by the VPS guest OS
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/change_timezone")
   constructResult[seq[string]](response)
 
 
 proc getVpsInfo*(httpClient: HttpClient, id: int): (Option[Vps], Response) =
-  ## Get VPS Order
+  ## Get full details for one VPS — IPs, hostname, OS, slices, status, addons
 
   let response = httpClient.get(basepath & fmt"/vps/{id}")
   constructResult[Vps](response)
 
 
+proc getVpsInsertCd*(httpClient: HttpClient, id: int): Response =
+  ## List ISO templates that can be mounted in the VPS virtual CD drive
+  httpClient.get(basepath & fmt"/vps/{id}/insert_cd")
+
+
+
 proc getVpsInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get VPS Invoices
+  ## List all billing invoices associated with this specific VPS
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getVpsList*(httpClient: HttpClient): (Option[seq[VpsRow]], Response) =
-  ## List VPS Orders
+  ## List all VPS services on the customer's account
 
   let response = httpClient.get(basepath & "/vps")
   constructResult[seq[VpsRow]](response)
 
 
 proc getVpsReinstallOs*(httpClient: HttpClient, id: int): (Option[VpsTemplatesList], Response) =
-  ## VPS Reinstall OS Options
+  ## List OS templates compatible with this VPS's hypervisor for reinstall
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/reinstall_os")
   constructResult[VpsTemplatesList](response)
 
 
+proc getVpsResetPassword*(httpClient: HttpClient, id: int): Response =
+  ## Pre-flight check before resetting the VPS root password to a random value
+  httpClient.get(basepath & fmt"/vps/{id}/reset_password")
+
+
+
 proc getVpsReverseDns*(httpClient: HttpClient, id: int): (Option[ReverseDnsEntries], Response) =
-  ## Reverse DNS Info
+  ## Read the current PTR (reverse-DNS) records for every IP on the VPS
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/reverse_dns")
   constructResult[ReverseDnsEntries](response)
 
 
 proc getVpsSetupVnc*(httpClient: HttpClient, id: int): Response =
-  ## VNC Setup Info
+  ## Read current VNC console connection info for the VPS
   httpClient.get(basepath & fmt"/vps/{id}/setup_vnc")
 
 
 
 proc getVpsSlices*(httpClient: HttpClient, id: int): Response =
-  ## Slice Upgrade Info
+  ## Read current slice count, min/max range, and prorated per-slice upgrade cost
   httpClient.get(basepath & fmt"/vps/{id}/slices")
 
 
 
 proc getVpsTrafficUsage*(httpClient: HttpClient, id: int): (Option[VpsTrafficResponse], Response) =
-  ## Get Traffic Usage
+  ## Read bandwidth traffic usage data for the VPS
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/traffic_usage")
   constructResult[VpsTrafficResponse](response)
 
 
 proc getVpsViewDesktop*(httpClient: HttpClient, id: int): Response =
-  ## Get View Desktop Info
+  ## Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
   httpClient.get(basepath & fmt"/vps/{id}/view_desktop")
 
 
 
 proc getVpsWelcomeEmail*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Resend VPS Welcome Email
+  ## Resend the welcome email containing VPS IP, hostname, and root credentials
 
   let response = httpClient.get(basepath & fmt"/vps/{id}/welcome_email")
   constructResult[SuccessTextResponse](response)
 
 
-proc postVpsBackup*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Start a VPS Backup
-
-  let response = httpClient.get(basepath & fmt"/vps/{id}/backup")
-  constructResult[QueueResponse](response)
-
-
 proc postVpsBuyHdSpace*(httpClient: HttpClient, id: int): Response =
-  ## Purchase HD Space Addon
+  ## Buy or resize the VPS additional-disk addon and create a prorated invoice
   httpClient.post(basepath & fmt"/vps/{id}/buy_hd_space")
 
 
 
 proc postVpsBuyIp*(httpClient: HttpClient, id: int): Response =
-  ## Purchase Additional IP
+  ## Purchase one additional IP for the VPS and create the invoice
   httpClient.post(basepath & fmt"/vps/{id}/buy_ip")
 
 
 
 proc postVpsChangeHostname*(httpClient: HttpClient, id: int, hostname: string): (Option[QueueResponse], Response) =
-  ## Update VPS Hostname
+  ## Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "hostname": $hostname, # 
@@ -277,7 +301,7 @@ proc postVpsChangeHostname*(httpClient: HttpClient, id: int, hostname: string): 
 
 
 proc postVpsChangeRootPassword*(httpClient: HttpClient, id: int, password: string): (Option[QueueResponse], Response) =
-  ## Change VPS Root Password
+  ## Set a specific new root/Administrator password on the VPS
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "password": $password, # 
@@ -288,7 +312,7 @@ proc postVpsChangeRootPassword*(httpClient: HttpClient, id: int, password: strin
 
 
 proc postVpsChangeTimezone*(httpClient: HttpClient, id: int, timezone: string): (Option[QueueResponse], Response) =
-  ## Change VPS Timezone
+  ## Set the system timezone on the VPS guest OS
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "timezone": $timezone, # The time zone
@@ -299,7 +323,7 @@ proc postVpsChangeTimezone*(httpClient: HttpClient, id: int, timezone: string): 
 
 
 proc postVpsChangeWebuzoPassword*(httpClient: HttpClient, id: int, password: string): (Option[QueueResponse], Response) =
-  ## Change Webuzo Password
+  ## Rotate the Webuzo control panel admin password (re-auth required)
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "password": $password, # 
@@ -310,7 +334,7 @@ proc postVpsChangeWebuzoPassword*(httpClient: HttpClient, id: int, password: str
 
 
 proc postVpsInsertCd*(httpClient: HttpClient, id: int, url: string): (Option[QueueResponse], Response) =
-  ## Insert CD in VPS
+  ## Mount an ISO image in the VPS virtual CD drive from a URL
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "url": $url, # 
@@ -321,7 +345,7 @@ proc postVpsInsertCd*(httpClient: HttpClient, id: int, url: string): (Option[Que
 
 
 proc postVpsReinstallOs*(httpClient: HttpClient, id: int, `template`: string, localPassword: string, password: string): (Option[QueueResponse], Response) =
-  ## Reinstall VPS OS
+  ## Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "template": $`template`, # OS Template Filename
@@ -334,14 +358,14 @@ proc postVpsReinstallOs*(httpClient: HttpClient, id: int, `template`: string, lo
 
 
 proc postVpsResetPassword*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Reset VPS Password
+  ## Reset the VPS root password to a server-generated random value
 
   let response = httpClient.post(basepath & fmt"/vps/{id}/reset_password")
   constructResult[QueueResponse](response)
 
 
 proc postVpsRestore*(httpClient: HttpClient, id: int, restoreRequest: RestoreRequest): (Option[QueueResponse], Response) =
-  ## Restore VPS from Backup
+  ## Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/vps/{id}/restore", $(%restoreRequest))
@@ -349,7 +373,7 @@ proc postVpsRestore*(httpClient: HttpClient, id: int, restoreRequest: RestoreReq
 
 
 proc postVpsReverseDns*(httpClient: HttpClient, id: int, reverseDnsEntries: ReverseDnsEntries): (Option[TextResponse], Response) =
-  ## Update Reverse DNS
+  ## Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/vps/{id}/reverse_dns", $(%reverseDnsEntries))
@@ -357,41 +381,53 @@ proc postVpsReverseDns*(httpClient: HttpClient, id: int, reverseDnsEntries: Reve
 
 
 proc postVpsSetupVnc*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Setup VNC
+  ## Provision or refresh the VNC console endpoint for the VPS
 
   let response = httpClient.post(basepath & fmt"/vps/{id}/setup_vnc")
   constructResult[QueueResponse](response)
 
 
 proc postVpsSlices*(httpClient: HttpClient, id: int): Response =
-  ## Purchase Slice Upgrade
+  ## Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
   httpClient.post(basepath & fmt"/vps/{id}/slices")
 
 
 
+proc postVpsTrafficUsage*(httpClient: HttpClient, id: int): Response =
+  ## Search/filter VPS bandwidth usage with custom criteria (reserved)
+  httpClient.post(basepath & fmt"/vps/{id}/traffic_usage")
+
+
+
 proc postVpsViewDesktop*(httpClient: HttpClient, id: int): Response =
-  ## Update View Desktop
+  ## Refresh the remote-desktop session connection info after IP/hostname changes
   httpClient.post(basepath & fmt"/vps/{id}/view_desktop")
 
 
 
 proc putVps*(httpClient: HttpClient, vpsOrderPutRequest: VpsOrderPutRequest): (Option[VpsOrderPutResponse], Response) =
-  ## Validate VPS Order
+  ## Validate a VPS order configuration and quote the cost — dry run, no charge
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.put(basepath & "/vps/order", $(%vpsOrderPutRequest))
   constructResult[VpsOrderPutResponse](response)
 
 
+proc putVpsBuyHdSpace*(httpClient: HttpClient, id: int): Response =
+  ## Preview cost to set additional VPS disk to a target GB size — dry run
+  httpClient.put(basepath & fmt"/vps/{id}/buy_hd_space")
+
+
+
 proc updateVpsInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Update VPS Order
+  ## Update editable settings on a VPS service record
 
   let response = httpClient.post(basepath & fmt"/vps/{id}")
   constructResult[SuccessTextResponse](response)
 
 
 proc vPSCancel*(httpClient: HttpClient, id: int): (Option[VPSCancel_200_response], Response) =
-  ## Cancel VPS Service
+  ## Cancel a VPS service at the end of the current billing cycle
 
   let response = httpClient.delete(basepath & fmt"/vps/{id}")
   constructResult[VPSCancel_200_response](response)

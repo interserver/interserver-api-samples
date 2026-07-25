@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.account_ssh_key import AccountSshKey
+from interserver_api_client.models.account_ssh_key import AccountSshKey
 
 # TODO update the JSON string below
 json = "{}"

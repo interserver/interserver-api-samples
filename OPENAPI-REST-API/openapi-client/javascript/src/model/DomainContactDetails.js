@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainContactDetails model module.
  * @module model/DomainContactDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainContactDetails {
     /**

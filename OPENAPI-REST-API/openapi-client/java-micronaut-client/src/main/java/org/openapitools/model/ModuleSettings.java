@@ -45,7 +45,7 @@ import javax.annotation.Generated;
   ModuleSettings.JSON_PROPERTY_T_I_T_L_E_F_I_E_L_D3
 })
 @JsonTypeName("ModuleSettings")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class ModuleSettings {
     public static final String JSON_PROPERTY_S_E_R_V_I_C_E_I_D_O_F_F_S_E_T = "SERVICE_ID_OFFSET";
@@ -155,7 +155,7 @@ public class ModuleSettings {
     @NotNull
     @JsonProperty(JSON_PROPERTY_U_S_E_R_E_P_E_A_T_I_N_V_O_I_C_E)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public Boolean getUSEREPEATINVOICE() {
+    public Boolean isUSEREPEATINVOICE() {
         return USE_REPEAT_INVOICE;
     }
 
@@ -177,7 +177,7 @@ public class ModuleSettings {
     @NotNull
     @JsonProperty(JSON_PROPERTY_U_S_E_P_A_C_K_A_G_E_S)
     @JsonInclude(value = JsonInclude.Include.ALWAYS)
-    public Boolean getUSEPACKAGES() {
+    public Boolean isUSEPACKAGES() {
         return USE_PACKAGES;
     }
 

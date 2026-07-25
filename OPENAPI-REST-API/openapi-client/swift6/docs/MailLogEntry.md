@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** | Internal auto-increment database row ID. | 
-**id** | **String** | The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints. | 
+**_id** | **Int** | Internal auto-increment database row ID. | 
+**_id** | **String** | The relay-assigned mail ID (18-19 hex characters).  Matches the &#x60;mailid&#x60; filter parameter and the &#x60;text&#x60; value returned by send endpoints. | 
 **from** | **String** | SMTP envelope &#x60;MAIL FROM&#x60; address. | 
 **to** | **String** | SMTP envelope &#x60;RCPT TO&#x60; address. | 
 **created** | **String** | Human-readable creation timestamp in &#x60;YYYY-MM-DD HH:MM:SS&#x60; format. | 

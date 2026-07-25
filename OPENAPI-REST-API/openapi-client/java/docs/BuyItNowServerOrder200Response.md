@@ -14,4 +14,8 @@
 |**raid** | [**List&lt;BuyItNowServerOrder200ResponseRaidInner&gt;**](BuyItNowServerOrder200ResponseRaidInner.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

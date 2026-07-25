@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.public_api import PublicApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.public_api import PublicApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestPublicApi(unittest.TestCase):
@@ -28,87 +28,101 @@ class TestPublicApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_get_account_currencies(self):
+        """Test case for get_account_currencies
+
+        List enabled currency codes accepted for billing and preferences  # noqa: E501
+        """
+        pass
+
+    def test_get_account_locales(self):
+        """Test case for get_account_locales
+
+        List supported UI locales with English and native display names  # noqa: E501
+        """
+        pass
+
     def test_get_captcha(self):
         """Test case for get_captcha
 
-        Get Captcha Challenge  # noqa: E501
+        Fetch a base64 JPEG captcha challenge for human verification  # noqa: E501
         """
         pass
 
     def test_get_countries(self):
         """Test case for get_countries
 
-        Get Countries  # noqa: E501
+        List enabled countries keyed by ISO-2/ISO-3/numeric code  # noqa: E501
         """
         pass
 
     def test_get_info(self):
         """Test case for get_info
 
-        Get Server Info  # noqa: E501
+        Discover available modules, service packages, categories, and types  # noqa: E501
         """
         pass
 
     def test_get_login_info(self):
         """Test case for get_login_info
 
-        Get Login Info  # noqa: E501
+        Fetch logo, captcha, language, and stats for rendering a login page  # noqa: E501
         """
         pass
 
     def test_get_mp_servers(self):
         """Test case for get_mp_servers
 
-        List Marketplace Servers  # noqa: E501
+        List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing  # noqa: E501
         """
         pass
 
     def test_get_oauth_redirect(self):
         """Test case for get_oauth_redirect
 
-        Get OAuth Redirect URL  # noqa: E501
+        Begin OAuth login flow — redirect user to provider for authentication  # noqa: E501
         """
         pass
 
     def test_get_timezones(self):
         """Test case for get_timezones
 
-        Get Available Timezones  # noqa: E501
+        List all PHP timezone identifiers usable on accounts and services  # noqa: E501
         """
         pass
 
     def test_patch_oauth_two_factor(self):
         """Test case for patch_oauth_two_factor
 
-        Complete OAuth Two-Factor Verification  # noqa: E501
+        Submit 2FA code to finish OAuth login when account has 2FA enabled  # noqa: E501
         """
         pass
 
     def test_ping_server(self):
         """Test case for ping_server
 
-        Ping Server  # noqa: E501
+        Liveness check — returns the JSON string \"pong\" to confirm API is up  # noqa: E501
         """
         pass
 
     def test_post_oauth_callback(self):
         """Test case for post_oauth_callback
 
-        OAuth Callback  # noqa: E501
+        Complete OAuth login by linking provider to existing or new account  # noqa: E501
         """
         pass
 
     def test_submit_login(self):
         """Test case for submit_login
 
-        Submit Login Information  # noqa: E501
+        Authenticate with email + password and return a session token  # noqa: E501
         """
         pass
 
     def test_submit_signup(self):
         """Test case for submit_signup
 
-        Submit Signup Information  # noqa: E501
+        Create a new customer account (email + password + captcha + ToS)  # noqa: E501
         """
         pass
 

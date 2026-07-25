@@ -1,4 +1,4 @@
-# SwaggerClient::DomainDnssecRequest
+# InterserverApiClient::DomainDnssecRequest
 
 ## Properties
 Name | Type | Description | Notes

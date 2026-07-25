@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerAsset();
+    instance = new InterserverApiClient.ServerAsset();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,295 +50,295 @@
   describe('ServerAsset', function() {
     it('should create an instance of ServerAsset', function() {
       // uncomment below and update the code to test ServerAsset
-      //var instance = new InterServerManagementApi.ServerAsset();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerAsset);
+      //var instance = new InterserverApiClient.ServerAsset();
+      //expect(instance).to.be.a(InterserverApiClient.ServerAsset);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property order_id (base name: "order_id")', function() {
       // uncomment below and update the code to test the property order_id
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property hostname (base name: "hostname")', function() {
       // uncomment below and update the code to test the property hostname
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property primary_ipv4 (base name: "primary_ipv4")', function() {
       // uncomment below and update the code to test the property primary_ipv4
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property primary_ipv6 (base name: "primary_ipv6")', function() {
       // uncomment below and update the code to test the property primary_ipv6
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property datacenter (base name: "datacenter")', function() {
       // uncomment below and update the code to test the property datacenter
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property type_id (base name: "type_id")', function() {
       // uncomment below and update the code to test the property type_id
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property asset_tag (base name: "asset_tag")', function() {
       // uncomment below and update the code to test the property asset_tag
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property rack (base name: "rack")', function() {
       // uncomment below and update the code to test the property rack
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property row (base name: "row")', function() {
       // uncomment below and update the code to test the property row
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property col (base name: "col")', function() {
       // uncomment below and update the code to test the property col
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property unit_start (base name: "unit_start")', function() {
       // uncomment below and update the code to test the property unit_start
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property unit_end (base name: "unit_end")', function() {
       // uncomment below and update the code to test the property unit_end
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property unit_sub (base name: "unit_sub")', function() {
       // uncomment below and update the code to test the property unit_sub
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property ipmi_mac (base name: "ipmi_mac")', function() {
       // uncomment below and update the code to test the property ipmi_mac
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property ipmi_ip (base name: "ipmi_ip")', function() {
       // uncomment below and update the code to test the property ipmi_ip
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property ipmi_working (base name: "ipmi_working")', function() {
       // uncomment below and update the code to test the property ipmi_working
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property company (base name: "company")', function() {
       // uncomment below and update the code to test the property company
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property comments (base name: "comments")', function() {
       // uncomment below and update the code to test the property comments
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property make (base name: "make")', function() {
       // uncomment below and update the code to test the property make
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property model (base name: "model")', function() {
       // uncomment below and update the code to test the property model
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property description (base name: "description")', function() {
       // uncomment below and update the code to test the property description
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property customer_id (base name: "customer_id")', function() {
       // uncomment below and update the code to test the property customer_id
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property external_id (base name: "external_id")', function() {
       // uncomment below and update the code to test the property external_id
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property billing_status (base name: "billing_status")', function() {
       // uncomment below and update the code to test the property billing_status
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property overdue (base name: "overdue")', function() {
       // uncomment below and update the code to test the property overdue
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property asset_id (base name: "asset_id")', function() {
       // uncomment below and update the code to test the property asset_id
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property asset_name (base name: "asset_name")', function() {
       // uncomment below and update the code to test the property asset_name
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property rack_id (base name: "rack_id")', function() {
       // uncomment below and update the code to test the property rack_id
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property rack_name (base name: "rack_name")', function() {
       // uncomment below and update the code to test the property rack_name
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property rack_location (base name: "rack_location")', function() {
       // uncomment below and update the code to test the property rack_location
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property rack_size (base name: "rack_size")', function() {
       // uncomment below and update the code to test the property rack_size
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property rack_x (base name: "rack_x")', function() {
       // uncomment below and update the code to test the property rack_x
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property rack_y (base name: "rack_y")', function() {
       // uncomment below and update the code to test the property rack_y
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property switchports (base name: "switchports")', function() {
       // uncomment below and update the code to test the property switchports
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property vlans (base name: "vlans")', function() {
       // uncomment below and update the code to test the property vlans
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property vlans6 (base name: "vlans6")', function() {
       // uncomment below and update the code to test the property vlans6
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property lease (base name: "lease")', function() {
       // uncomment below and update the code to test the property lease
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property mac (base name: "mac")', function() {
       // uncomment below and update the code to test the property mac
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property ipmi_admin_username (base name: "ipmi_admin_username")', function() {
       // uncomment below and update the code to test the property ipmi_admin_username
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property ipmi_admin_password (base name: "ipmi_admin_password")', function() {
       // uncomment below and update the code to test the property ipmi_admin_password
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property ipmi_client_username (base name: "ipmi_client_username")', function() {
       // uncomment below and update the code to test the property ipmi_client_username
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property ipmi_client_password (base name: "ipmi_client_password")', function() {
       // uncomment below and update the code to test the property ipmi_client_password
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property ipmi_updated (base name: "ipmi_updated")', function() {
       // uncomment below and update the code to test the property ipmi_updated
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property create_timestamp (base name: "create_timestamp")', function() {
       // uncomment below and update the code to test the property create_timestamp
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property update_timestamp (base name: "update_timestamp")', function() {
       // uncomment below and update the code to test the property update_timestamp
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 
     it('should have the property comment (base name: "comment")', function() {
       // uncomment below and update the code to test the property comment
-      //var instance = new InterServerManagementApi.ServerAsset();
+      //var instance = new InterserverApiClient.ServerAsset();
       //expect(instance).to.be();
     });
 

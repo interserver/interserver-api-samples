@@ -11,19 +11,20 @@ import Alamofire
 
 open class LicensesAPI {
     /**
-     Place License Order
+     Order a new software license and create the recurring invoice
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addLicense(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
-        addLicenseWithRequestBuilder().execute { (response, error) -> Void in
+    open class func addLicense(body: LicenseOrderRequest, completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
+        addLicenseWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Place License Order
+     Order a new software license and create the recurring invoice
      - POST /licenses/order
 
      - API Key:
@@ -45,22 +46,23 @@ open class LicensesAPI {
   "serviceId" : 12345,
   "invoice_description" : "New Service Order"
 }}]
+     - parameter body: (body)  
 
      - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addLicenseWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
+    open class func addLicenseWithRequestBuilder(body: LicenseOrderRequest) -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/licenses/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Get License
+     Get full details for one license including status, IP, and links
 
      - parameter _id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -73,7 +75,7 @@ open class LicensesAPI {
 
 
     /**
-     Get License
+     Get full details for one license including status, IP, and links
      - GET /licenses/{id}
 
      - API Key:
@@ -177,7 +179,7 @@ open class LicensesAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get License Invoices
+     List all billing invoices tied to one software license service
 
      - parameter _id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -190,7 +192,7 @@ open class LicensesAPI {
 
 
     /**
-     Get License Invoices
+     List all billing invoices tied to one software license service
      - GET /licenses/{id}/invoices
 
      - API Key:
@@ -260,7 +262,7 @@ open class LicensesAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Licenses
+     List all software licenses owned by the authenticated customer
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -272,7 +274,7 @@ open class LicensesAPI {
 
 
     /**
-     List Licenses
+     List all software licenses owned by the authenticated customer
      - GET /licenses
 
      - API Key:
@@ -318,55 +320,7 @@ open class LicensesAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get License Order Information for Category
-
-     - parameter catTag: (path) The license category tag (e.g. &#x60;cpanel&#x60;, &#x60;plesk&#x60;). Obtain valid values from the &#x60;GET /licenses/order&#x60; response. 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func getLicenseOrderCatTagInfo(catTag: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        getLicenseOrderCatTagInfoWithRequestBuilder(catTag: catTag).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
-        }
-    }
-
-
-    /**
-     Get License Order Information for Category
-     - GET /licenses/order/{catTag}
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - parameter catTag: (path) The license category tag (e.g. &#x60;cpanel&#x60;, &#x60;plesk&#x60;). Obtain valid values from the &#x60;GET /licenses/order&#x60; response. 
-
-     - returns: RequestBuilder<Void> 
-     */
-    open class func getLicenseOrderCatTagInfoWithRequestBuilder(catTag: String) -> RequestBuilder<Void> {
-        var path = "/licenses/order/{catTag}"
-        let catTagPreEscape = "\(catTag)"
-        let catTagPostEscape = catTagPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{catTag}", with: catTagPostEscape, options: .literal, range: nil)
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-    /**
-     Resend License Welcome Email
+     Resend the license welcome email with the key and activation steps
 
      - parameter _id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -379,7 +333,7 @@ open class LicensesAPI {
 
 
     /**
-     Resend License Welcome Email
+     Resend the license welcome email with the key and activation steps
      - GET /licenses/{id}/welcome_email
 
      - API Key:
@@ -414,7 +368,7 @@ open class LicensesAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get License Order Information
+     Get available license types, packages, and pricing for ordering
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -426,7 +380,7 @@ open class LicensesAPI {
 
 
     /**
-     Get License Order Information
+     Get available license types, packages, and pricing for ordering
      - GET /licenses/order
 
      - API Key:
@@ -479,12 +433,12 @@ open class LicensesAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Cancel License
+     Cancel a license service and stop future billing (irreversible)
 
      - parameter _id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func licensesCancel(_id: Int, completion: @escaping ((_ data: InlineResponse2004?,_ error: Error?) -> Void)) {
+    open class func licensesCancel(_id: Int, completion: @escaping ((_ data: InlineResponse2005?,_ error: Error?) -> Void)) {
         licensesCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -492,7 +446,7 @@ open class LicensesAPI {
 
 
     /**
-     Cancel License
+     Cancel a license service and stop future billing (irreversible)
      - DELETE /licenses/{id}
 
      - API Key:
@@ -510,9 +464,9 @@ open class LicensesAPI {
 }}]
      - parameter _id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse2004> 
+     - returns: RequestBuilder<InlineResponse2005> 
      */
-    open class func licensesCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2004> {
+    open class func licensesCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2005> {
         var path = "/licenses/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -522,12 +476,12 @@ open class LicensesAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2004>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2005>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Change License IP
+     Rebind a license to a new IP address (may incur a vendor fee)
 
      - parameter body: (body)  
      - parameter _id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
@@ -541,7 +495,7 @@ open class LicensesAPI {
 
 
     /**
-     Change License IP
+     Rebind a license to a new IP address (may incur a vendor fee)
      - POST /licenses/{id}/change_ip
 
      - API Key:
@@ -577,7 +531,7 @@ open class LicensesAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change License IP
+     Rebind a license to a new IP address (may incur a vendor fee)
 
      - parameter ip: (form)  
      - parameter _id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
@@ -591,7 +545,7 @@ open class LicensesAPI {
 
 
     /**
-     Change License IP
+     Rebind a license to a new IP address (may incur a vendor fee)
      - POST /licenses/{id}/change_ip
 
      - API Key:
@@ -627,12 +581,13 @@ open class LicensesAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Validate License Order
+     Validate a software license order before placing it (dry run preview)
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func putLicenses(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        putLicensesWithRequestBuilder().execute { (response, error) -> Void in
+    open class func putLicenses(body: LicenseOrderRequest, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        putLicensesWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -643,7 +598,7 @@ open class LicensesAPI {
 
 
     /**
-     Validate License Order
+     Validate a software license order before placing it (dry run preview)
      - PUT /licenses/order
 
      - API Key:
@@ -655,22 +610,23 @@ open class LicensesAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - parameter body: (body)  
 
      - returns: RequestBuilder<Void> 
      */
-    open class func putLicensesWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func putLicensesWithRequestBuilder(body: LicenseOrderRequest) -> RequestBuilder<Void> {
         let path = "/licenses/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update License
+     Update mutable fields on a license service (e.g. assigned IP)
 
      - parameter _id: (path) The license service ID. Use &#x60;license_id&#x60; from &#x60;GET /licenses&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -683,7 +639,7 @@ open class LicensesAPI {
 
 
     /**
-     Update License
+     Update mutable fields on a license service (e.g. assigned IP)
      - POST /licenses/{id}
 
      - API Key:

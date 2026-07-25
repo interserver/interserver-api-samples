@@ -1,14 +1,14 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for WebsitesOrderJsonServiceOffers
 void main() {
-  final instance = WebsitesOrderJsonServiceOffersBuilder();
-  // TODO add properties to the builder and call build()
+  final WebsitesOrderJsonServiceOffers? instance = /* WebsitesOrderJsonServiceOffers(...) */ null;
+  // TODO add properties to the entity
 
   group(WebsitesOrderJsonServiceOffers, () {
     // Array of service offers
-    // BuiltList<WebsitesOrderJsonServiceOffersItem> n1026
+    // List<WebsitesOrderJsonServiceOffersItem> n1026
     test('to test the property `n1026`', () async {
       // TODO
     });

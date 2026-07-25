@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailDeliverabilityResponse model module.
  * @module model/MailDeliverabilityResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailDeliverabilityResponse {
     /**

@@ -11,14 +11,11 @@ import Foundation
 
 public struct InlineResponse20026: Codable {
 
-    /** Confirmation message. */
-    public var text: String?
-    /** The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress. */
-    public var ticket: Int?
+    /** A map of IP addresses to their current reverse DNS hostnames. */
+    public var ips: [String:String]?
 
-    public init(text: String? = nil, ticket: Int? = nil) {
-        self.text = text
-        self.ticket = ticket
+    public init(ips: [String:String]? = nil) {
+        self.ips = ips
     }
 
 

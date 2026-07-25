@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+    instance = new InterserverApiClient.AccountInfoMaxMindResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,325 +50,325 @@
   describe('AccountInfoMaxMindResponse', function() {
     it('should create an instance of AccountInfoMaxMindResponse', function() {
       // uncomment below and update the code to test AccountInfoMaxMindResponse
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoMaxMindResponse);
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoMaxMindResponse);
     });
 
     it('should have the property distance (base name: "distance")', function() {
       // uncomment below and update the code to test the property distance
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property countryMatch (base name: "countryMatch")', function() {
       // uncomment below and update the code to test the property countryMatch
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property countryCode (base name: "countryCode")', function() {
       // uncomment below and update the code to test the property countryCode
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property freeMail (base name: "freeMail")', function() {
       // uncomment below and update the code to test the property freeMail
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property anonymousProxy (base name: "anonymousProxy")', function() {
       // uncomment below and update the code to test the property anonymousProxy
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property score (base name: "score")', function() {
       // uncomment below and update the code to test the property score
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property binMatch (base name: "binMatch")', function() {
       // uncomment below and update the code to test the property binMatch
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property binCountry (base name: "binCountry")', function() {
       // uncomment below and update the code to test the property binCountry
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property err (base name: "err")', function() {
       // uncomment below and update the code to test the property err
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property proxyScore (base name: "proxyScore")', function() {
       // uncomment below and update the code to test the property proxyScore
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_region (base name: "ip_region")', function() {
       // uncomment below and update the code to test the property ip_region
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_city (base name: "ip_city")', function() {
       // uncomment below and update the code to test the property ip_city
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_latitude (base name: "ip_latitude")', function() {
       // uncomment below and update the code to test the property ip_latitude
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_longitude (base name: "ip_longitude")', function() {
       // uncomment below and update the code to test the property ip_longitude
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property binName (base name: "binName")', function() {
       // uncomment below and update the code to test the property binName
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_isp (base name: "ip_isp")', function() {
       // uncomment below and update the code to test the property ip_isp
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_org (base name: "ip_org")', function() {
       // uncomment below and update the code to test the property ip_org
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property binNameMatch (base name: "binNameMatch")', function() {
       // uncomment below and update the code to test the property binNameMatch
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property binPhoneMatch (base name: "binPhoneMatch")', function() {
       // uncomment below and update the code to test the property binPhoneMatch
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property binPhone (base name: "binPhone")', function() {
       // uncomment below and update the code to test the property binPhone
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property custPhoneInBillingLoc (base name: "custPhoneInBillingLoc")', function() {
       // uncomment below and update the code to test the property custPhoneInBillingLoc
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property highRiskCountry (base name: "highRiskCountry")', function() {
       // uncomment below and update the code to test the property highRiskCountry
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property queriesRemaining (base name: "queriesRemaining")', function() {
       // uncomment below and update the code to test the property queriesRemaining
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property cityPostalMatch (base name: "cityPostalMatch")', function() {
       // uncomment below and update the code to test the property cityPostalMatch
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property shipCityPostalMatch (base name: "shipCityPostalMatch")', function() {
       // uncomment below and update the code to test the property shipCityPostalMatch
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property maxmindID (base name: "maxmindID")', function() {
       // uncomment below and update the code to test the property maxmindID
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_asnum (base name: "ip_asnum")', function() {
       // uncomment below and update the code to test the property ip_asnum
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_userType (base name: "ip_userType")', function() {
       // uncomment below and update the code to test the property ip_userType
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_countryConf (base name: "ip_countryConf")', function() {
       // uncomment below and update the code to test the property ip_countryConf
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_regionConf (base name: "ip_regionConf")', function() {
       // uncomment below and update the code to test the property ip_regionConf
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_cityConf (base name: "ip_cityConf")', function() {
       // uncomment below and update the code to test the property ip_cityConf
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_postalCode (base name: "ip_postalCode")', function() {
       // uncomment below and update the code to test the property ip_postalCode
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_postalConf (base name: "ip_postalConf")', function() {
       // uncomment below and update the code to test the property ip_postalConf
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_accuracyRadius (base name: "ip_accuracyRadius")', function() {
       // uncomment below and update the code to test the property ip_accuracyRadius
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_netSpeedCell (base name: "ip_netSpeedCell")', function() {
       // uncomment below and update the code to test the property ip_netSpeedCell
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_metroCode (base name: "ip_metroCode")', function() {
       // uncomment below and update the code to test the property ip_metroCode
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_areaCode (base name: "ip_areaCode")', function() {
       // uncomment below and update the code to test the property ip_areaCode
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_timeZone (base name: "ip_timeZone")', function() {
       // uncomment below and update the code to test the property ip_timeZone
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_regionName (base name: "ip_regionName")', function() {
       // uncomment below and update the code to test the property ip_regionName
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_domain (base name: "ip_domain")', function() {
       // uncomment below and update the code to test the property ip_domain
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_countryName (base name: "ip_countryName")', function() {
       // uncomment below and update the code to test the property ip_countryName
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_continentCode (base name: "ip_continentCode")', function() {
       // uncomment below and update the code to test the property ip_continentCode
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_corporateProxy (base name: "ip_corporateProxy")', function() {
       // uncomment below and update the code to test the property ip_corporateProxy
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property carderEmail (base name: "carderEmail")', function() {
       // uncomment below and update the code to test the property carderEmail
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property highRiskUsername (base name: "highRiskUsername")', function() {
       // uncomment below and update the code to test the property highRiskUsername
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property highRiskPassword (base name: "highRiskPassword")', function() {
       // uncomment below and update the code to test the property highRiskPassword
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property riskScore (base name: "riskScore")', function() {
       // uncomment below and update the code to test the property riskScore
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property isTransProxy (base name: "isTransProxy")', function() {
       // uncomment below and update the code to test the property isTransProxy
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property prepaid (base name: "prepaid")', function() {
       // uncomment below and update the code to test the property prepaid
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property minfraud_version (base name: "minfraud_version")', function() {
       // uncomment below and update the code to test the property minfraud_version
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property service_level (base name: "service_level")', function() {
       // uncomment below and update the code to test the property service_level
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property explanation (base name: "explanation")', function() {
       // uncomment below and update the code to test the property explanation
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property female_name (base name: "female_name")', function() {
       // uncomment below and update the code to test the property female_name
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponse();
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponse();
       //expect(instance).to.be();
     });
 

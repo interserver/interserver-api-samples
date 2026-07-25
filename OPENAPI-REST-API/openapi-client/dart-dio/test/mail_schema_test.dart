@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailSchema
 void main() {
-  final instance = MailSchemaBuilder();
-  // TODO add properties to the builder and call build()
+  final MailSchema? instance = /* MailSchema(...) */ null;
+  // TODO add properties to the entity
 
   group(MailSchema, () {
     // MailServiceInfo serviceInfo
@@ -13,7 +13,7 @@ void main() {
     });
 
     // Links related to the mail service for clients.
-    // BuiltList<MailClientLink> clientLinks
+    // List<MailClientLink> clientLinks
     test('to test the property `clientLinks`', () async {
       // TODO
     });
@@ -58,7 +58,7 @@ void main() {
     });
 
     // Extra information for the mail service.
-    // BuiltList<String> serviceExtra
+    // Optional<List<String>?> serviceExtra
     test('to test the property `serviceExtra`', () async {
       // TODO
     });

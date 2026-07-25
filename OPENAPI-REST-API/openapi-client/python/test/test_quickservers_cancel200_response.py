@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickservers_cancel200_response import QuickserversCancel200Response
+from interserver_api_client.models.quickservers_cancel200_response import QuickserversCancel200Response
 
 class TestQuickserversCancel200Response(unittest.TestCase):
     """QuickserversCancel200Response unit test stubs"""

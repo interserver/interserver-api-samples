@@ -9,6 +9,10 @@
 #' InlineResponse2007 Class
 #'
 #' @field login 
+#' @field signup 
+#' @field linked 
+#' @field account_id 
+#' @field error_code 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,15 +21,45 @@ InlineResponse2007 <- R6::R6Class(
   'InlineResponse2007',
   public = list(
     `login` = NULL,
-    initialize = function(`login`){
+    `signup` = NULL,
+    `linked` = NULL,
+    `account_id` = NULL,
+    `error_code` = NULL,
+    initialize = function(`login`, `signup`, `linked`, `account_id`, `error_code`){
       if (!missing(`login`)) {
         self$`login` <- `login`
+      }
+      if (!missing(`signup`)) {
+        self$`signup` <- `signup`
+      }
+      if (!missing(`linked`)) {
+        self$`linked` <- `linked`
+      }
+      if (!missing(`account_id`)) {
+        stopifnot(is.numeric(`account_id`), length(`account_id`) == 1)
+        self$`account_id` <- `account_id`
+      }
+      if (!missing(`error_code`)) {
+        stopifnot(is.character(`error_code`), length(`error_code`) == 1)
+        self$`error_code` <- `error_code`
       }
     },
     toJSON = function() {
       InlineResponse2007Object <- list()
       if (!is.null(self$`login`)) {
         InlineResponse2007Object[['login']] <- self$`login`
+      }
+      if (!is.null(self$`signup`)) {
+        InlineResponse2007Object[['signup']] <- self$`signup`
+      }
+      if (!is.null(self$`linked`)) {
+        InlineResponse2007Object[['linked']] <- self$`linked`
+      }
+      if (!is.null(self$`account_id`)) {
+        InlineResponse2007Object[['account_id']] <- self$`account_id`
+      }
+      if (!is.null(self$`error_code`)) {
+        InlineResponse2007Object[['error_code']] <- self$`error_code`
       }
 
       InlineResponse2007Object
@@ -35,18 +69,42 @@ InlineResponse2007 <- R6::R6Class(
       if (!is.null(InlineResponse2007Object$`login`)) {
         self$`login` <- InlineResponse2007Object$`login`
       }
+      if (!is.null(InlineResponse2007Object$`signup`)) {
+        self$`signup` <- InlineResponse2007Object$`signup`
+      }
+      if (!is.null(InlineResponse2007Object$`linked`)) {
+        self$`linked` <- InlineResponse2007Object$`linked`
+      }
+      if (!is.null(InlineResponse2007Object$`account_id`)) {
+        self$`account_id` <- InlineResponse2007Object$`account_id`
+      }
+      if (!is.null(InlineResponse2007Object$`error_code`)) {
+        self$`error_code` <- InlineResponse2007Object$`error_code`
+      }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "login": %s
+           "login": %s,
+           "signup": %s,
+           "linked": %s,
+           "account_id": %d,
+           "error_code": %s
         }',
-        self$`login`
+        self$`login`,
+        self$`signup`,
+        self$`linked`,
+        self$`account_id`,
+        self$`error_code`
       )
     },
     fromJSONString = function(InlineResponse2007Json) {
       InlineResponse2007Object <- jsonlite::fromJSON(InlineResponse2007Json)
       self$`login` <- InlineResponse2007Object$`login`
+      self$`signup` <- InlineResponse2007Object$`signup`
+      self$`linked` <- InlineResponse2007Object$`linked`
+      self$`account_id` <- InlineResponse2007Object$`account_id`
+      self$`error_code` <- InlineResponse2007Object$`error_code`
     }
   )
 )

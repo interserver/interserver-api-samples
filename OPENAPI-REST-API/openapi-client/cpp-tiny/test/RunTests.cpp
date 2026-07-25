@@ -47,10 +47,6 @@
 
 #include "AffiliateTrafficRowTest.cpp"
 
-#include "AssetServerTest.cpp"
-
-#include "AssetServer_CPU_innerTest.cpp"
-
 #include "BackupTest.cpp"
 
 #include "BackupBillingDetailsTest.cpp"
@@ -86,8 +82,6 @@
 #include "BackupsOrderServiceTypesTest.cpp"
 
 #include "BackupsOrder_serviceTypesTest.cpp"
-
-#include "BandwidthTest.cpp"
 
 #include "BillingAddCcRequestTest.cpp"
 
@@ -139,16 +133,6 @@
 
 #include "CloseTicketResponseSchemaTest.cpp"
 
-#include "ConfigIdsTest.cpp"
-
-#include "ConfigListsTest.cpp"
-
-#include "ControlPanelTest.cpp"
-
-#include "CpuTest.cpp"
-
-#include "CpuWithDefaultsTest.cpp"
-
 #include "CreateFilterTest.cpp"
 
 #include "CreateFilter_201_responseTest.cpp"
@@ -174,6 +158,8 @@
 #include "DeleteFilter_400_responseTest.cpp"
 
 #include "DeleteFilter_500_responseTest.cpp"
+
+#include "DeleteMailAlert_requestTest.cpp"
 
 #include "Delete_Firewall_RuleTest.cpp"
 
@@ -239,13 +225,13 @@
 
 #include "DomainOrderTest.cpp"
 
+#include "DomainOrderRequestTest.cpp"
+
 #include "DomainOrderResponseTest.cpp"
 
 #include "DomainOrderResponse_attributesTest.cpp"
 
 #include "DomainOrderServices10001Test.cpp"
-
-#include "DomainOrderTldServicesTest.cpp"
 
 #include "DomainOrder_servicesTest.cpp"
 
@@ -279,17 +265,19 @@
 
 #include "EnableScrub_500_responseTest.cpp"
 
-#include "FieldLabelTest.cpp"
+#include "FloatingIpOrderRequestTest.cpp"
 
 #include "Floating_ipsCancel_200_responseTest.cpp"
-
-#include "FormValuesTest.cpp"
 
 #include "GenericResponseTest.cpp"
 
 #include "GetAccountInfo_401_responseTest.cpp"
 
+#include "GetAccountLocales_200_response_valueTest.cpp"
+
 #include "GetAccountTfaSetup_200_responseTest.cpp"
+
+#include "GetAffiliateSignups_200_responseTest.cpp"
 
 #include "GetOauthRedirect_200_responseTest.cpp"
 
@@ -322,8 +310,6 @@
 #include "GetScrubIpDetails_200_response_serviceInfoTest.cpp"
 
 #include "GetWebsiteBuyIp_200_responseTest.cpp"
-
-#include "HardDriveTest.cpp"
 
 #include "HomeTest.cpp"
 
@@ -377,14 +363,6 @@
 
 #include "InitiatePayment_200_responseTest.cpp"
 
-#include "Inline_objectTest.cpp"
-
-#include "InvoiceTest.cpp"
-
-#include "InvoiceRowTest.cpp"
-
-#include "IpBlockTest.cpp"
-
 #include "IpLimitRangeTest.cpp"
 
 #include "IpObjectTest.cpp"
@@ -398,6 +376,8 @@
 #include "LicenseIpInfoTest.cpp"
 
 #include "LicenseIpInfoRowTest.cpp"
+
+#include "LicenseOrderRequestTest.cpp"
 
 #include "LicenseRowTest.cpp"
 
@@ -473,6 +453,8 @@
 
 #include "MailOrderTest.cpp"
 
+#include "MailOrderRequestTest.cpp"
+
 #include "MailRowTest.cpp"
 
 #include "MailSchemaTest.cpp"
@@ -497,23 +479,19 @@
 
 #include "MailTutorialsTableRowTest.cpp"
 
-#include "MemoryOptionTest.cpp"
-
 #include "ModuleSettingsTest.cpp"
 
 #include "ModulesTest.cpp"
 
 #include "MonthlyCountsTest.cpp"
 
-#include "OperatingSystemTest.cpp"
-
 #include "PasswordRequestTest.cpp"
+
+#include "PatchBillingCreditCardVerify_requestTest.cpp"
 
 #include "PatchOauthTwoFactor_200_responseTest.cpp"
 
 #include "PatchOauthTwoFactor_requestTest.cpp"
-
-#include "PaymentInvoiceRowsTest.cpp"
 
 #include "PlaceBuyNowServer_requestTest.cpp"
 
@@ -534,6 +512,10 @@
 #include "PostWebsiteMigration_200_responseTest.cpp"
 
 #include "PostWebsiteMigration_requestTest.cpp"
+
+#include "PutScrubIps_200_responseTest.cpp"
+
+#include "QsOrderRequestTest.cpp"
 
 #include "QueueResponseTest.cpp"
 
@@ -583,10 +565,6 @@
 
 #include "QuickserversCancel_200_responseTest.cpp"
 
-#include "RaidOptionTest.cpp"
-
-#include "RegionTest.cpp"
-
 #include "ReplyTicketRequestTest.cpp"
 
 #include "ReplyTicketResponseSchemaTest.cpp"
@@ -625,6 +603,10 @@
 
 #include "ServerBillingDetailsTest.cpp"
 
+#include "ServerBulkIpmiPowerResponseTest.cpp"
+
+#include "ServerBulkIpmiPowerResponse_results_innerTest.cpp"
+
 #include "ServerClientLinkTest.cpp"
 
 #include "ServerExtraInfoTablesTest.cpp"
@@ -661,13 +643,15 @@
 
 #include "ServerOrderFormValuesTest.cpp"
 
-#include "ServerOrderGetResponseTest.cpp"
-
 #include "ServerOrderIPTest.cpp"
 
 #include "ServerOrderMemoryTest.cpp"
 
 #include "ServerOrderOSTest.cpp"
+
+#include "ServerOrderPostRequestTest.cpp"
+
+#include "ServerOrderPostRequest_hdTest.cpp"
 
 #include "ServerOrderRAIDTest.cpp"
 
@@ -718,6 +702,8 @@
 #include "ServicesInfoTest.cpp"
 
 #include "SslCancel_200_responseTest.cpp"
+
+#include "SslOrderRequestTest.cpp"
 
 #include "StatusMonthlyBreakdownTest.cpp"
 
@@ -839,8 +825,6 @@
 
 #include "VpsTemplatesListTest.cpp"
 
-#include "VpsTrafficDataDataResponseTest.cpp"
-
 #include "VpsTrafficDataSectionResponseTest.cpp"
 
 #include "VpsTrafficHistoryResponseTest.cpp"
@@ -876,6 +860,10 @@
 #include "WebsiteExtraInfoTablesTest.cpp"
 
 #include "WebsiteLoginResponseTest.cpp"
+
+#include "WebsiteOrderPostRequestTest.cpp"
+
+#include "WebsiteOrderPutRequestTest.cpp"
 
 #include "WebsiteRowTest.cpp"
 
@@ -1493,24 +1481,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_AssetServer_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_AssetServer_region_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_AssetServer_price_is_assigned_from_json);
-    
-    
-    
-    
-    
-    
-    RUN_TEST(test_AssetServer_hD_is_assigned_from_json);
-    
-    
-    
-    
     
     
     
@@ -1814,19 +1784,6 @@ void runTests(){
     RUN_TEST(test_BackupsOrderServiceTypes_services_module_is_assigned_from_json);
     
     
-    
-    
-    
-    RUN_TEST(test_Bandwidth_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Bandwidth_short_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Bandwidth_monthly_price_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Bandwidth_monthly_price_display_is_assigned_from_json);
     
     
     
@@ -2139,156 +2096,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_ConfigIds_memory_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ConfigIds_hd_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ConfigIds_bandwidth_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ConfigIds_ips_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ConfigIds_os_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ConfigIds_cp_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ConfigIds_raid_is_assigned_from_json);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    RUN_TEST(test_ControlPanel_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ControlPanel_short_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ControlPanel_monthly_price_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_Cpu_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_short_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_long_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_type_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_speed_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_num_cores_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_num_cpus_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_benchmark_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_monthly_price_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_monthly_price_display_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_max_ram_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_min_ram_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_max_lff_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_max_sff_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_max_nve_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_visible_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Cpu_active_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_CpuWithDefaults_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_short_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_long_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_type_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_speed_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_num_cores_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_num_cpus_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_benchmark_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_monthly_price_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_monthly_price_display_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_max_ram_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_min_ram_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_max_lff_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_max_sff_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_max_nve_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_visible_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_active_is_assigned_from_json);
-    
-    
-    
-    
-    RUN_TEST(test_CpuWithDefaults_monthly_fee_is_assigned_from_json);
-    
-    
-    
     RUN_TEST(test_CreateFilter_filter_type_is_assigned_from_json);
     
     
@@ -2395,6 +2202,10 @@ void runTests(){
     
     
     RUN_TEST(test_DeleteFilter_500_response_text_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_DeleteMailAlert_request_alert_id_is_assigned_from_json);
     
     
     
@@ -2897,6 +2708,19 @@ void runTests(){
     
     
     
+    RUN_TEST(test_DomainOrderRequest_hostname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_DomainOrderRequest_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_DomainOrderRequest_coupon_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_DomainOrderRequest_whois_privacy_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_DomainOrderResponse__OPS_version_is_assigned_from_json);
     
     
@@ -2958,19 +2782,6 @@ void runTests(){
     
     
     RUN_TEST(test_DomainOrderServices10001_services_hidden_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_DomainOrderTldServices_asia_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_DomainOrderTldServices_be_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_DomainOrderTldServices_biz_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_DomainOrderTldServices_ca_is_assigned_from_json);
     
     
     
@@ -3277,10 +3088,13 @@ void runTests(){
     
     
     
-    RUN_TEST(test_FieldLabel_name_is_assigned_from_json);
+    RUN_TEST(test_FloatingIpOrderRequest_serviceType_is_assigned_from_json);
     
     
-    RUN_TEST(test_FieldLabel_active_is_assigned_from_json);
+    RUN_TEST(test_FloatingIpOrderRequest_coupon_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_FloatingIpOrderRequest_comment_is_assigned_from_json);
     
     
     
@@ -3288,31 +3102,6 @@ void runTests(){
     
     
     RUN_TEST(test_Floating_ipsCancel_200_response_text_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_FormValues_memory_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_FormValues_bandwidth_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_FormValues_ips_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_FormValues_os_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_FormValues_cp_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_FormValues_raid_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_FormValues_hd_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_FormValues_region_is_assigned_from_json);
     
     
     
@@ -3330,10 +3119,19 @@ void runTests(){
     
     
     
+    RUN_TEST(test_GetAccountLocales_200_response_value_name_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_GetAccountLocales_200_response_value_local_name_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_GetAccountTfaSetup_200_response_2fa_google_key_is_assigned_from_json);
     
     
     RUN_TEST(test_GetAccountTfaSetup_200_response_2fa_google_split_is_assigned_from_json);
+    
+    
     
     
     
@@ -3545,25 +3343,6 @@ void runTests(){
     
     
     RUN_TEST(test_GetWebsiteBuyIp_200_response_ips_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_HardDrive_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_HardDrive_short_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_HardDrive_size_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_HardDrive_drive_type_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_HardDrive_monthly_price_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_HardDrive_monthly_price_display_is_assigned_from_json);
     
     
     
@@ -3835,31 +3614,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_Inline_object_code_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Inline_object_message_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_Invoice_id_is_assigned_from_json);
-    
-    
-    
-    
-    RUN_TEST(test_IpBlock_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_IpBlock_short_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_IpBlock_qty_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_IpBlock_monthly_price_is_assigned_from_json);
-    
-    
-    
     RUN_TEST(test_IpLimitRange_start_is_assigned_from_json);
     
     
@@ -3953,6 +3707,25 @@ void runTests(){
     
     
     RUN_TEST(test_LicenseIpInfoRow_value_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_package_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_ip_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_tos_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_frequency_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_coupon_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_comment_is_assigned_from_json);
     
     
     
@@ -4450,6 +4223,16 @@ void runTests(){
     
     
     
+    RUN_TEST(test_MailOrderRequest_serviceType_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_MailOrderRequest_coupon_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_MailOrderRequest_comment_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_MailRow_mail_id_is_assigned_from_json);
     
     
@@ -4631,19 +4414,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_MemoryOption_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_MemoryOption_short_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_MemoryOption_monthly_price_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_MemoryOption_monthly_price_display_is_assigned_from_json);
-    
-    
-    
     RUN_TEST(test_ModuleSettings_sERVICE_ID_OFFSET_is_assigned_from_json);
     
     
@@ -4701,17 +4471,11 @@ void runTests(){
     
     
     
-    RUN_TEST(test_OperatingSystem_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_OperatingSystem_short_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_OperatingSystem_monthly_price_is_assigned_from_json);
-    
-    
-    
     RUN_TEST(test_PasswordRequest_password_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PatchBillingCreditCardVerify_request_cc_ccv2_is_assigned_from_json);
     
     
     
@@ -4723,7 +4487,6 @@ void runTests(){
     
     
     RUN_TEST(test_PatchOauthTwoFactor_request_code_is_assigned_from_json);
-    
     
     
     
@@ -4859,6 +4622,39 @@ void runTests(){
     
     
     RUN_TEST(test_PostWebsiteMigration_request_domainRegPassword_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PutScrubIps_200_response_r_continue_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_PutScrubIps_200_response_serviceType_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PutScrubIps_200_response_serviceCost_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PutScrubIps_200_response_originalCost_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_PutScrubIps_200_response_repeatServiceCost_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_QsOrderRequest_server_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QsOrderRequest_password_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QsOrderRequest_tos_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QsOrderRequest_os_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_QsOrderRequest_comment_is_assigned_from_json);
     
     
     
@@ -5245,23 +5041,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_RaidOption_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_RaidOption_short_desc_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_RaidOption_monthly_price_is_assigned_from_json);
-    
-    
-    
-    RUN_TEST(test_Region_region_id_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_Region_region_name_is_assigned_from_json);
-    
-    
-    
     RUN_TEST(test_ReplyTicketRequest_content_is_assigned_from_json);
     
     
@@ -5591,6 +5370,21 @@ void runTests(){
     
     
     
+    
+    
+    RUN_TEST(test_ServerBulkIpmiPowerResponse_results_inner_id_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerBulkIpmiPowerResponse_results_inner_asset_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerBulkIpmiPowerResponse_results_inner_text_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerBulkIpmiPowerResponse_results_inner_error_is_assigned_from_json);
+    
+    
+    
     RUN_TEST(test_ServerClientLink_label_is_assigned_from_json);
     
     
@@ -5889,46 +5683,6 @@ void runTests(){
     
     
     
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_cpu_is_assigned_from_json);
-    
-    
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_frequency_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_currency_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_country_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_step_is_assigned_from_json);
-    
-    
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_currencySymbol_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_custid_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_ima_is_assigned_from_json);
-    
-    
-    
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_display_showmore_is_assigned_from_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_cust_discount_is_assigned_from_json);
-    
-    
-    
     RUN_TEST(test_ServerOrderIP_id_is_assigned_from_json);
     
     
@@ -6019,6 +5773,45 @@ void runTests(){
     
     
     RUN_TEST(test_ServerOrderOS_monthly_price_display_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_cpu_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_memory_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_bandwidth_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_ips_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_os_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_cp_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_raid_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_region_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_servername_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_rootpass_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_tos_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_comment_is_assigned_from_json);
+    
     
     
     
@@ -6333,6 +6126,67 @@ void runTests(){
     
     
     RUN_TEST(test_SslCancel_200_response_text_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_SslOrderRequest_ssl_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_hostname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_approver_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_frequency_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_coupon_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_csr_type_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_csr_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_firstname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_lastname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_email_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_address_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_city_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_state_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_zip_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_country_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_phone_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_company_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_department_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_agency_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_business_category_is_assigned_from_json);
     
     
     
@@ -7321,7 +7175,6 @@ void runTests(){
     
     
     
-    
     RUN_TEST(test_VpsTrafficDataSectionResponse_name_is_assigned_from_json);
     
     
@@ -7471,6 +7324,62 @@ void runTests(){
     
     
     RUN_TEST(test_WebsiteLoginResponse_location_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_hostname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_packageId_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_rootpass_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_period_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_coupon_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_serviceOfferId_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_script_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_comment_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_registerDomain_is_assigned_from_json);
+    
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_hostname_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_packageId_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_rootpass_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_period_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_coupon_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_serviceOfferId_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_script_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_comment_is_assigned_from_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_registerDomain_is_assigned_from_json);
     
     
     
@@ -8360,24 +8269,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_AssetServer_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_AssetServer_region_is_converted_to_json);
-    
-    
-    RUN_TEST(test_AssetServer_price_is_converted_to_json);
-    
-    
-    
-    
-    
-    
-    RUN_TEST(test_AssetServer_hD_is_converted_to_json);
-    
-    
-    
-    
     
     
     
@@ -8681,19 +8572,6 @@ void runTests(){
     RUN_TEST(test_BackupsOrderServiceTypes_services_module_is_converted_to_json);
     
     
-    
-    
-    
-    RUN_TEST(test_Bandwidth_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Bandwidth_short_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Bandwidth_monthly_price_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Bandwidth_monthly_price_display_is_converted_to_json);
     
     
     
@@ -9006,156 +8884,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_ConfigIds_memory_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ConfigIds_hd_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ConfigIds_bandwidth_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ConfigIds_ips_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ConfigIds_os_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ConfigIds_cp_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ConfigIds_raid_is_converted_to_json);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    RUN_TEST(test_ControlPanel_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ControlPanel_short_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ControlPanel_monthly_price_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_Cpu_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_short_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_long_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_type_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_speed_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_num_cores_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_num_cpus_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_benchmark_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_monthly_price_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_monthly_price_display_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_max_ram_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_min_ram_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_max_lff_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_max_sff_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_max_nve_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_visible_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Cpu_active_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_CpuWithDefaults_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_short_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_long_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_type_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_speed_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_num_cores_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_num_cpus_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_benchmark_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_monthly_price_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_monthly_price_display_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_max_ram_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_min_ram_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_max_lff_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_max_sff_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_max_nve_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_visible_is_converted_to_json);
-    
-    
-    RUN_TEST(test_CpuWithDefaults_active_is_converted_to_json);
-    
-    
-    
-    
-    RUN_TEST(test_CpuWithDefaults_monthly_fee_is_converted_to_json);
-    
-    
-    
     RUN_TEST(test_CreateFilter_filter_type_is_converted_to_json);
     
     
@@ -9262,6 +8990,10 @@ void runTests(){
     
     
     RUN_TEST(test_DeleteFilter_500_response_text_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_DeleteMailAlert_request_alert_id_is_converted_to_json);
     
     
     
@@ -9764,6 +9496,19 @@ void runTests(){
     
     
     
+    RUN_TEST(test_DomainOrderRequest_hostname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_DomainOrderRequest_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_DomainOrderRequest_coupon_is_converted_to_json);
+    
+    
+    RUN_TEST(test_DomainOrderRequest_whois_privacy_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_DomainOrderResponse__OPS_version_is_converted_to_json);
     
     
@@ -9825,19 +9570,6 @@ void runTests(){
     
     
     RUN_TEST(test_DomainOrderServices10001_services_hidden_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_DomainOrderTldServices_asia_is_converted_to_json);
-    
-    
-    RUN_TEST(test_DomainOrderTldServices_be_is_converted_to_json);
-    
-    
-    RUN_TEST(test_DomainOrderTldServices_biz_is_converted_to_json);
-    
-    
-    RUN_TEST(test_DomainOrderTldServices_ca_is_converted_to_json);
     
     
     
@@ -10144,10 +9876,13 @@ void runTests(){
     
     
     
-    RUN_TEST(test_FieldLabel_name_is_converted_to_json);
+    RUN_TEST(test_FloatingIpOrderRequest_serviceType_is_converted_to_json);
     
     
-    RUN_TEST(test_FieldLabel_active_is_converted_to_json);
+    RUN_TEST(test_FloatingIpOrderRequest_coupon_is_converted_to_json);
+    
+    
+    RUN_TEST(test_FloatingIpOrderRequest_comment_is_converted_to_json);
     
     
     
@@ -10155,31 +9890,6 @@ void runTests(){
     
     
     RUN_TEST(test_Floating_ipsCancel_200_response_text_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_FormValues_memory_is_converted_to_json);
-    
-    
-    RUN_TEST(test_FormValues_bandwidth_is_converted_to_json);
-    
-    
-    RUN_TEST(test_FormValues_ips_is_converted_to_json);
-    
-    
-    RUN_TEST(test_FormValues_os_is_converted_to_json);
-    
-    
-    RUN_TEST(test_FormValues_cp_is_converted_to_json);
-    
-    
-    RUN_TEST(test_FormValues_raid_is_converted_to_json);
-    
-    
-    RUN_TEST(test_FormValues_hd_is_converted_to_json);
-    
-    
-    RUN_TEST(test_FormValues_region_is_converted_to_json);
     
     
     
@@ -10197,10 +9907,19 @@ void runTests(){
     
     
     
+    RUN_TEST(test_GetAccountLocales_200_response_value_name_is_converted_to_json);
+    
+    
+    RUN_TEST(test_GetAccountLocales_200_response_value_local_name_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_GetAccountTfaSetup_200_response_2fa_google_key_is_converted_to_json);
     
     
     RUN_TEST(test_GetAccountTfaSetup_200_response_2fa_google_split_is_converted_to_json);
+    
+    
     
     
     
@@ -10412,25 +10131,6 @@ void runTests(){
     
     
     RUN_TEST(test_GetWebsiteBuyIp_200_response_ips_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_HardDrive_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_HardDrive_short_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_HardDrive_size_is_converted_to_json);
-    
-    
-    RUN_TEST(test_HardDrive_drive_type_is_converted_to_json);
-    
-    
-    RUN_TEST(test_HardDrive_monthly_price_is_converted_to_json);
-    
-    
-    RUN_TEST(test_HardDrive_monthly_price_display_is_converted_to_json);
     
     
     
@@ -10702,31 +10402,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_Inline_object_code_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Inline_object_message_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_Invoice_id_is_converted_to_json);
-    
-    
-    
-    
-    RUN_TEST(test_IpBlock_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_IpBlock_short_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_IpBlock_qty_is_converted_to_json);
-    
-    
-    RUN_TEST(test_IpBlock_monthly_price_is_converted_to_json);
-    
-    
-    
     RUN_TEST(test_IpLimitRange_start_is_converted_to_json);
     
     
@@ -10820,6 +10495,25 @@ void runTests(){
     
     
     RUN_TEST(test_LicenseIpInfoRow_value_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_package_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_ip_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_tos_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_frequency_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_coupon_is_converted_to_json);
+    
+    
+    RUN_TEST(test_LicenseOrderRequest_comment_is_converted_to_json);
     
     
     
@@ -11317,6 +11011,16 @@ void runTests(){
     
     
     
+    RUN_TEST(test_MailOrderRequest_serviceType_is_converted_to_json);
+    
+    
+    RUN_TEST(test_MailOrderRequest_coupon_is_converted_to_json);
+    
+    
+    RUN_TEST(test_MailOrderRequest_comment_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_MailRow_mail_id_is_converted_to_json);
     
     
@@ -11498,19 +11202,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_MemoryOption_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_MemoryOption_short_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_MemoryOption_monthly_price_is_converted_to_json);
-    
-    
-    RUN_TEST(test_MemoryOption_monthly_price_display_is_converted_to_json);
-    
-    
-    
     RUN_TEST(test_ModuleSettings_sERVICE_ID_OFFSET_is_converted_to_json);
     
     
@@ -11568,17 +11259,11 @@ void runTests(){
     
     
     
-    RUN_TEST(test_OperatingSystem_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_OperatingSystem_short_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_OperatingSystem_monthly_price_is_converted_to_json);
-    
-    
-    
     RUN_TEST(test_PasswordRequest_password_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PatchBillingCreditCardVerify_request_cc_ccv2_is_converted_to_json);
     
     
     
@@ -11590,7 +11275,6 @@ void runTests(){
     
     
     RUN_TEST(test_PatchOauthTwoFactor_request_code_is_converted_to_json);
-    
     
     
     
@@ -11726,6 +11410,39 @@ void runTests(){
     
     
     RUN_TEST(test_PostWebsiteMigration_request_domainRegPassword_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PutScrubIps_200_response_r_continue_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_PutScrubIps_200_response_serviceType_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PutScrubIps_200_response_serviceCost_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PutScrubIps_200_response_originalCost_is_converted_to_json);
+    
+    
+    RUN_TEST(test_PutScrubIps_200_response_repeatServiceCost_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_QsOrderRequest_server_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QsOrderRequest_password_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QsOrderRequest_tos_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QsOrderRequest_os_is_converted_to_json);
+    
+    
+    RUN_TEST(test_QsOrderRequest_comment_is_converted_to_json);
     
     
     
@@ -12112,23 +11829,6 @@ void runTests(){
     
     
     
-    RUN_TEST(test_RaidOption_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_RaidOption_short_desc_is_converted_to_json);
-    
-    
-    RUN_TEST(test_RaidOption_monthly_price_is_converted_to_json);
-    
-    
-    
-    RUN_TEST(test_Region_region_id_is_converted_to_json);
-    
-    
-    RUN_TEST(test_Region_region_name_is_converted_to_json);
-    
-    
-    
     RUN_TEST(test_ReplyTicketRequest_content_is_converted_to_json);
     
     
@@ -12458,6 +12158,21 @@ void runTests(){
     
     
     
+    
+    
+    RUN_TEST(test_ServerBulkIpmiPowerResponse_results_inner_id_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerBulkIpmiPowerResponse_results_inner_asset_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerBulkIpmiPowerResponse_results_inner_text_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerBulkIpmiPowerResponse_results_inner_error_is_converted_to_json);
+    
+    
+    
     RUN_TEST(test_ServerClientLink_label_is_converted_to_json);
     
     
@@ -12756,46 +12471,6 @@ void runTests(){
     
     
     
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_cpu_is_converted_to_json);
-    
-    
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_frequency_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_currency_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_country_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_step_is_converted_to_json);
-    
-    
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_currencySymbol_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_custid_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_ima_is_converted_to_json);
-    
-    
-    
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_display_showmore_is_converted_to_json);
-    
-    
-    RUN_TEST(test_ServerOrderGetResponse_cust_discount_is_converted_to_json);
-    
-    
-    
     RUN_TEST(test_ServerOrderIP_id_is_converted_to_json);
     
     
@@ -12886,6 +12561,45 @@ void runTests(){
     
     
     RUN_TEST(test_ServerOrderOS_monthly_price_display_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_cpu_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_memory_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_bandwidth_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_ips_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_os_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_cp_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_raid_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_region_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_servername_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_rootpass_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_tos_is_converted_to_json);
+    
+    
+    RUN_TEST(test_ServerOrderPostRequest_comment_is_converted_to_json);
+    
     
     
     
@@ -13200,6 +12914,67 @@ void runTests(){
     
     
     RUN_TEST(test_SslCancel_200_response_text_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_SslOrderRequest_ssl_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_hostname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_approver_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_frequency_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_coupon_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_csr_type_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_csr_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_firstname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_lastname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_email_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_address_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_city_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_state_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_zip_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_country_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_phone_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_company_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_department_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_agency_is_converted_to_json);
+    
+    
+    RUN_TEST(test_SslOrderRequest_business_category_is_converted_to_json);
     
     
     
@@ -14188,7 +13963,6 @@ void runTests(){
     
     
     
-    
     RUN_TEST(test_VpsTrafficDataSectionResponse_name_is_converted_to_json);
     
     
@@ -14338,6 +14112,62 @@ void runTests(){
     
     
     RUN_TEST(test_WebsiteLoginResponse_location_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_hostname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_packageId_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_rootpass_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_period_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_coupon_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_serviceOfferId_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_script_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_comment_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPostRequest_registerDomain_is_converted_to_json);
+    
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_hostname_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_packageId_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_rootpass_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_period_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_coupon_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_serviceOfferId_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_script_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_comment_is_converted_to_json);
+    
+    
+    RUN_TEST(test_WebsiteOrderPutRequest_registerDomain_is_converted_to_json);
     
     
     

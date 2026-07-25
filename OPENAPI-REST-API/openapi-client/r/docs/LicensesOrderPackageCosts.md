@@ -1,4 +1,4 @@
-# openapi::LicensesOrderPackageCosts
+# interserverapi::LicensesOrderPackageCosts
 
 Costs of license packages
 

@@ -22,4 +22,3 @@ case class ViewTicketResponse(
   ticket_custom_fields: Option[TicketCustomFieldDetails] = None,
   ticket_posts: Option[TicketPostDetails] = None
 )
-

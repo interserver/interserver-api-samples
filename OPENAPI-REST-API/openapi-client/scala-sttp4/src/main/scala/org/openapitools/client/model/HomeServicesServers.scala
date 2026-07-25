@@ -17,4 +17,3 @@ case class HomeServicesServers(
   /* Number of servers. */
   count: Option[Int] = None
 )
-

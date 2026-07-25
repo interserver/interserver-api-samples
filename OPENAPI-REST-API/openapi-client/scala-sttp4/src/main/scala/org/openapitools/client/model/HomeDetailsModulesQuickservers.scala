@@ -27,4 +27,3 @@ case class HomeDetailsModulesQuickservers(
   /* Link to view quick servers list. */
   list_link: Option[String] = None
 )
-

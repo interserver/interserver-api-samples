@@ -15,4 +15,3 @@ package org.openapitools.client.model
 case class VpsOrderTemplatesHyperv(
   windows: Option[VpsOrderTemplatesHypervWindows] = None
 )
-

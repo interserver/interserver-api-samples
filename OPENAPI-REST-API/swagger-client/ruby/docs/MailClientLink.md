@@ -1,4 +1,4 @@
-# SwaggerClient::MailClientLink
+# InterserverApiClient::MailClientLink
 
 ## Properties
 Name | Type | Description | Notes

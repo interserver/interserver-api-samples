@@ -10,7 +10,7 @@
 |**licenseId** | **String** | License ID |  |
 |**licenseType** | **String** | License type |  |
 |**licenseCurrency** | **String** | License currency |  |
-|**licenseOrderDate** | **Date** | License order date |  |
+|**licenseOrderDate** | **OffsetDateTime** | License order date |  |
 |**licenseCustid** | **String** | Customer ID |  |
 |**licenseIp** | **String** | License IP |  |
 |**licenseStatus** | **String** | License status |  |
@@ -20,5 +20,9 @@
 |**licenseKey** | **String** | License key |  [optional] |
 |**licenseExtra** | **String** | Additional license information |  [optional] |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

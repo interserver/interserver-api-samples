@@ -56,17 +56,16 @@ class BillingApiSimulation extends Simulation {
     }
 
     // Setup all the operations per second for the test to ultimately be generated from configs
-    val addAccountCreditCardPerSecond = config.getDouble("performance.operationsPerSecond.addAccountCreditCard") * rateMultiplier * instanceMultiplier
     val addBillingCreditCardPerSecond = config.getDouble("performance.operationsPerSecond.addBillingCreditCard") * rateMultiplier * instanceMultiplier
     val addBillingPrepayPerSecond = config.getDouble("performance.operationsPerSecond.addBillingPrepay") * rateMultiplier * instanceMultiplier
-    val deleteAccountCreditCardPerSecond = config.getDouble("performance.operationsPerSecond.deleteAccountCreditCard") * rateMultiplier * instanceMultiplier
     val deleteBillingCreditCardPerSecond = config.getDouble("performance.operationsPerSecond.deleteBillingCreditCard") * rateMultiplier * instanceMultiplier
     val deleteBillingInvoicePerSecond = config.getDouble("performance.operationsPerSecond.deleteBillingInvoice") * rateMultiplier * instanceMultiplier
     val deleteBillingPrepayPerSecond = config.getDouble("performance.operationsPerSecond.deleteBillingPrepay") * rateMultiplier * instanceMultiplier
     val getAffiliateBannersPerSecond = config.getDouble("performance.operationsPerSecond.getAffiliateBanners") * rateMultiplier * instanceMultiplier
+    val getAffiliateDownloadPerSecond = config.getDouble("performance.operationsPerSecond.getAffiliateDownload") * rateMultiplier * instanceMultiplier
     val getAffiliateRichReportPerSecond = config.getDouble("performance.operationsPerSecond.getAffiliateRichReport") * rateMultiplier * instanceMultiplier
     val getAffiliateSalesGraphPerSecond = config.getDouble("performance.operationsPerSecond.getAffiliateSalesGraph") * rateMultiplier * instanceMultiplier
-    val getAffiliateSalesReportPerSecond = config.getDouble("performance.operationsPerSecond.getAffiliateSalesReport") * rateMultiplier * instanceMultiplier
+    val getAffiliateSignupsPerSecond = config.getDouble("performance.operationsPerSecond.getAffiliateSignups") * rateMultiplier * instanceMultiplier
     val getAffiliateTrafficGraphPerSecond = config.getDouble("performance.operationsPerSecond.getAffiliateTrafficGraph") * rateMultiplier * instanceMultiplier
     val getAffiliateWebTrafficPerSecond = config.getDouble("performance.operationsPerSecond.getAffiliateWebTraffic") * rateMultiplier * instanceMultiplier
     val getBillingCartPerSecond = config.getDouble("performance.operationsPerSecond.getBillingCart") * rateMultiplier * instanceMultiplier
@@ -74,12 +73,10 @@ class BillingApiSimulation extends Simulation {
     val getBillingInvoicePerSecond = config.getDouble("performance.operationsPerSecond.getBillingInvoice") * rateMultiplier * instanceMultiplier
     val getBillingInvoicesPerSecond = config.getDouble("performance.operationsPerSecond.getBillingInvoices") * rateMultiplier * instanceMultiplier
     val getBillingPrePaysPerSecond = config.getDouble("performance.operationsPerSecond.getBillingPrePays") * rateMultiplier * instanceMultiplier
-    val getInvoicesPerSecond = config.getDouble("performance.operationsPerSecond.getInvoices") * rateMultiplier * instanceMultiplier
     val initiatePaymentPerSecond = config.getDouble("performance.operationsPerSecond.initiatePayment") * rateMultiplier * instanceMultiplier
+    val patchBillingCreditCardVerifyPerSecond = config.getDouble("performance.operationsPerSecond.patchBillingCreditCardVerify") * rateMultiplier * instanceMultiplier
     val postBillingCreditCardVerifyPerSecond = config.getDouble("performance.operationsPerSecond.postBillingCreditCardVerify") * rateMultiplier * instanceMultiplier
-    val updateAccountCreditCardPerSecond = config.getDouble("performance.operationsPerSecond.updateAccountCreditCard") * rateMultiplier * instanceMultiplier
     val updateAffiliateDockSetupPerSecond = config.getDouble("performance.operationsPerSecond.updateAffiliateDockSetup") * rateMultiplier * instanceMultiplier
-    val updateAffiliateLandingPagePerSecond = config.getDouble("performance.operationsPerSecond.updateAffiliateLandingPage") * rateMultiplier * instanceMultiplier
     val updateAffiliatePaymentSetupPerSecond = config.getDouble("performance.operationsPerSecond.updateAffiliatePaymentSetup") * rateMultiplier * instanceMultiplier
     val updateBillingCreditCardPerSecond = config.getDouble("performance.operationsPerSecond.updateBillingCreditCard") * rateMultiplier * instanceMultiplier
     val updateBillingPaymentMethodPerSecond = config.getDouble("performance.operationsPerSecond.updateBillingPaymentMethod") * rateMultiplier * instanceMultiplier
@@ -87,34 +84,21 @@ class BillingApiSimulation extends Simulation {
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
 
     // Set up CSV feeders
-    val deleteAccountCreditCardPATHFeeder = csv(userDataDirectory + File.separator + "deleteAccountCreditCard-pathParams.csv").random
     val deleteBillingCreditCardPATHFeeder = csv(userDataDirectory + File.separator + "deleteBillingCreditCard-pathParams.csv").random
     val deleteBillingInvoicePATHFeeder = csv(userDataDirectory + File.separator + "deleteBillingInvoice-pathParams.csv").random
     val deleteBillingPrepayPATHFeeder = csv(userDataDirectory + File.separator + "deleteBillingPrepay-pathParams.csv").random
+    val getAffiliateDownloadQUERYFeeder = csv(userDataDirectory + File.separator + "getAffiliateDownload-queryParams.csv").random
     val getAffiliateSalesGraphQUERYFeeder = csv(userDataDirectory + File.separator + "getAffiliateSalesGraph-queryParams.csv").random
+    val getAffiliateSignupsQUERYFeeder = csv(userDataDirectory + File.separator + "getAffiliateSignups-queryParams.csv").random
     val getAffiliateTrafficGraphQUERYFeeder = csv(userDataDirectory + File.separator + "getAffiliateTrafficGraph-queryParams.csv").random
     val getBillingCreditCardVerifyPATHFeeder = csv(userDataDirectory + File.separator + "getBillingCreditCardVerify-pathParams.csv").random
     val getBillingInvoicePATHFeeder = csv(userDataDirectory + File.separator + "getBillingInvoice-pathParams.csv").random
-    val getInvoicesQUERYFeeder = csv(userDataDirectory + File.separator + "getInvoices-queryParams.csv").random
     val initiatePaymentPATHFeeder = csv(userDataDirectory + File.separator + "initiatePayment-pathParams.csv").random
+    val patchBillingCreditCardVerifyPATHFeeder = csv(userDataDirectory + File.separator + "patchBillingCreditCardVerify-pathParams.csv").random
     val postBillingCreditCardVerifyPATHFeeder = csv(userDataDirectory + File.separator + "postBillingCreditCardVerify-pathParams.csv").random
-    val updateAccountCreditCardPATHFeeder = csv(userDataDirectory + File.separator + "updateAccountCreditCard-pathParams.csv").random
     val updateBillingCreditCardPATHFeeder = csv(userDataDirectory + File.separator + "updateBillingCreditCard-pathParams.csv").random
 
     // Setup all scenarios
-
-    
-    val scnaddAccountCreditCard = scenario("addAccountCreditCardSimulation")
-        .exec(http("addAccountCreditCard")
-        .httpRequest("POST","/account/creditcards")
-)
-
-    // Run scnaddAccountCreditCard with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scnaddAccountCreditCard.inject(
-        rampUsersPerSec(1) to(addAccountCreditCardPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(addAccountCreditCardPerSecond) during(durationSeconds),
-        rampUsersPerSec(addAccountCreditCardPerSecond) to(1) during(rampDownSeconds)
-    )
 
     
     val scnaddBillingCreditCard = scenario("addBillingCreditCardSimulation")
@@ -140,20 +124,6 @@ class BillingApiSimulation extends Simulation {
         rampUsersPerSec(1) to(addBillingPrepayPerSecond) during(rampUpSeconds),
         constantUsersPerSec(addBillingPrepayPerSecond) during(durationSeconds),
         rampUsersPerSec(addBillingPrepayPerSecond) to(1) during(rampDownSeconds)
-    )
-
-    
-    val scndeleteAccountCreditCard = scenario("deleteAccountCreditCardSimulation")
-        .feed(deleteAccountCreditCardPATHFeeder)
-        .exec(http("deleteAccountCreditCard")
-        .httpRequest("DELETE","/account/creditcards/${id}")
-)
-
-    // Run scndeleteAccountCreditCard with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scndeleteAccountCreditCard.inject(
-        rampUsersPerSec(1) to(deleteAccountCreditCardPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(deleteAccountCreditCardPerSecond) during(durationSeconds),
-        rampUsersPerSec(deleteAccountCreditCardPerSecond) to(1) during(rampDownSeconds)
     )
 
     
@@ -212,6 +182,23 @@ class BillingApiSimulation extends Simulation {
     )
 
     
+    val scngetAffiliateDownload = scenario("getAffiliateDownloadSimulation")
+        .feed(getAffiliateDownloadQUERYFeeder)
+        .exec(http("getAffiliateDownload")
+        .httpRequest("GET","/affiliate/download")
+        .queryParam("st","${st}")
+        .queryParam("year","${year}")
+        .queryParam("ex","${ex}")
+)
+
+    // Run scngetAffiliateDownload with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetAffiliateDownload.inject(
+        rampUsersPerSec(1) to(getAffiliateDownloadPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getAffiliateDownloadPerSecond) during(durationSeconds),
+        rampUsersPerSec(getAffiliateDownloadPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scngetAffiliateRichReport = scenario("getAffiliateRichReportSimulation")
         .exec(http("getAffiliateRichReport")
         .httpRequest("GET","/affiliate/rich_report")
@@ -240,16 +227,18 @@ class BillingApiSimulation extends Simulation {
     )
 
     
-    val scngetAffiliateSalesReport = scenario("getAffiliateSalesReportSimulation")
-        .exec(http("getAffiliateSalesReport")
-        .httpRequest("GET","/affiliate/sales_report")
+    val scngetAffiliateSignups = scenario("getAffiliateSignupsSimulation")
+        .feed(getAffiliateSignupsQUERYFeeder)
+        .exec(http("getAffiliateSignups")
+        .httpRequest("GET","/affiliate/signups")
+        .queryParam("st","${st}")
 )
 
-    // Run scngetAffiliateSalesReport with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scngetAffiliateSalesReport.inject(
-        rampUsersPerSec(1) to(getAffiliateSalesReportPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(getAffiliateSalesReportPerSecond) during(durationSeconds),
-        rampUsersPerSec(getAffiliateSalesReportPerSecond) to(1) during(rampDownSeconds)
+    // Run scngetAffiliateSignups with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetAffiliateSignups.inject(
+        rampUsersPerSec(1) to(getAffiliateSignupsPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getAffiliateSignupsPerSecond) during(durationSeconds),
+        rampUsersPerSec(getAffiliateSignupsPerSecond) to(1) during(rampDownSeconds)
     )
 
     
@@ -348,27 +337,10 @@ class BillingApiSimulation extends Simulation {
     )
 
     
-    val scngetInvoices = scenario("getInvoicesSimulation")
-        .feed(getInvoicesQUERYFeeder)
-        .exec(http("getInvoices")
-        .httpRequest("GET","/invoices")
-        .queryParam("limit","${limit}")
-        .queryParam("skip","${skip}")
-        .queryParam("searchString","${searchString}")
-)
-
-    // Run scngetInvoices with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scngetInvoices.inject(
-        rampUsersPerSec(1) to(getInvoicesPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(getInvoicesPerSecond) during(durationSeconds),
-        rampUsersPerSec(getInvoicesPerSecond) to(1) during(rampDownSeconds)
-    )
-
-    
     val scninitiatePayment = scenario("initiatePaymentSimulation")
         .feed(initiatePaymentPATHFeeder)
         .exec(http("initiatePayment")
-        .httpRequest("GET","/pay/${method}/${invoices}")
+        .httpRequest("GET","/billing/pay/${method}/${invoices}")
 )
 
     // Run scninitiatePayment with warm up and reach a constant rate for entire duration
@@ -376,6 +348,20 @@ class BillingApiSimulation extends Simulation {
         rampUsersPerSec(1) to(initiatePaymentPerSecond) during(rampUpSeconds),
         constantUsersPerSec(initiatePaymentPerSecond) during(durationSeconds),
         rampUsersPerSec(initiatePaymentPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnpatchBillingCreditCardVerify = scenario("patchBillingCreditCardVerifySimulation")
+        .feed(patchBillingCreditCardVerifyPATHFeeder)
+        .exec(http("patchBillingCreditCardVerify")
+        .httpRequest("PATCH","/billing/creditcards/${id}/verify")
+)
+
+    // Run scnpatchBillingCreditCardVerify with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnpatchBillingCreditCardVerify.inject(
+        rampUsersPerSec(1) to(patchBillingCreditCardVerifyPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(patchBillingCreditCardVerifyPerSecond) during(durationSeconds),
+        rampUsersPerSec(patchBillingCreditCardVerifyPerSecond) to(1) during(rampDownSeconds)
     )
 
     
@@ -393,20 +379,6 @@ class BillingApiSimulation extends Simulation {
     )
 
     
-    val scnupdateAccountCreditCard = scenario("updateAccountCreditCardSimulation")
-        .feed(updateAccountCreditCardPATHFeeder)
-        .exec(http("updateAccountCreditCard")
-        .httpRequest("POST","/account/creditcards/${id}")
-)
-
-    // Run scnupdateAccountCreditCard with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scnupdateAccountCreditCard.inject(
-        rampUsersPerSec(1) to(updateAccountCreditCardPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(updateAccountCreditCardPerSecond) during(durationSeconds),
-        rampUsersPerSec(updateAccountCreditCardPerSecond) to(1) during(rampDownSeconds)
-    )
-
-    
     val scnupdateAffiliateDockSetup = scenario("updateAffiliateDockSetupSimulation")
         .exec(http("updateAffiliateDockSetup")
         .httpRequest("POST","/affiliate/dock_setup")
@@ -417,19 +389,6 @@ class BillingApiSimulation extends Simulation {
         rampUsersPerSec(1) to(updateAffiliateDockSetupPerSecond) during(rampUpSeconds),
         constantUsersPerSec(updateAffiliateDockSetupPerSecond) during(durationSeconds),
         rampUsersPerSec(updateAffiliateDockSetupPerSecond) to(1) during(rampDownSeconds)
-    )
-
-    
-    val scnupdateAffiliateLandingPage = scenario("updateAffiliateLandingPageSimulation")
-        .exec(http("updateAffiliateLandingPage")
-        .httpRequest("POST","/affiliate/landing_pg")
-)
-
-    // Run scnupdateAffiliateLandingPage with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scnupdateAffiliateLandingPage.inject(
-        rampUsersPerSec(1) to(updateAffiliateLandingPagePerSecond) during(rampUpSeconds),
-        constantUsersPerSec(updateAffiliateLandingPagePerSecond) during(durationSeconds),
-        rampUsersPerSec(updateAffiliateLandingPagePerSecond) to(1) during(rampDownSeconds)
     )
 
     

@@ -22,4 +22,3 @@ case class BackupLoginResponse(
   /* Login URL or error text returned by the storage provider. */
   text: Option[String] = None
 )
-

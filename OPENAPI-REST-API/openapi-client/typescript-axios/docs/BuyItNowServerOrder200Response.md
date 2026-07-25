@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BuyItNowServerOrder200Response } from './api';
+import { BuyItNowServerOrder200Response } from '@interserver/myadmin-client';
 
 const instance: BuyItNowServerOrder200Response = {
     bandwidth,

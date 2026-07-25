@@ -14,4 +14,8 @@
 |**helpText** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -10,4 +10,8 @@ VPS Traffic Data section Data subsection Row Response
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

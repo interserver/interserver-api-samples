@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_prov_process_pending import DomainProvProcessPending
+from interserver_api_client.models.domain_prov_process_pending import DomainProvProcessPending
 
 class TestDomainProvProcessPending(unittest.TestCase):
     """DomainProvProcessPending unit test stubs"""
@@ -43,7 +43,7 @@ class TestDomainProvProcessPending(unittest.TestCase):
                 action = '',
                 object = '',
                 is_success = '',
-                attributes = openapi_client.models.domain_prov_process_pending_attributes.DomainProvProcessPending_attributes(
+                attributes = interserver_api_client.models.domain_prov_process_pending_attributes.DomainProvProcessPending_attributes(
                     id = '', 
                     order_id = '', 
                     registration_expiration_date = '', 

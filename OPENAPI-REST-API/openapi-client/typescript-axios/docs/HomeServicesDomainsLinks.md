@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { HomeServicesDomainsLinks } from './api';
+import { HomeServicesDomainsLinks } from '@interserver/myadmin-client';
 
 const instance: HomeServicesDomainsLinks = {
     _376114,

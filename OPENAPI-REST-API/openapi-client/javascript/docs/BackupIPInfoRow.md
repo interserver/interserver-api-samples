@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupIPInfoRow
+# InterserverApiClient.BackupIPInfoRow
 
 ## Properties
 

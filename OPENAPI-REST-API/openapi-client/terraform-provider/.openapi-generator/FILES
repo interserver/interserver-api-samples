@@ -29,8 +29,6 @@ internal/client/model_affiliate_banner_row.go
 internal/client/model_affiliate_dock_setup.go
 internal/client/model_affiliate_payment_setup.go
 internal/client/model_affiliate_traffic_row.go
-internal/client/model_asset_server.go
-internal/client/model_asset_server_cpu_inner.go
 internal/client/model_backup.go
 internal/client/model_backup_billing_details.go
 internal/client/model_backup_client_link.go
@@ -48,7 +46,6 @@ internal/client/model_backup_service_master.go
 internal/client/model_backups_order.go
 internal/client/model_backups_order_package_costs.go
 internal/client/model_backups_order_service_types.go
-internal/client/model_bandwidth.go
 internal/client/model_billing_add_cc_request.go
 internal/client/model_billing_invoice_detail.go
 internal/client/model_billing_invoice_list.go
@@ -74,11 +71,6 @@ internal/client/model_charge_invoice_rows_invoices_value.go
 internal/client/model_charge_invoice_rows_invoices_value_paid_invoices_value.go
 internal/client/model_charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.go
 internal/client/model_close_ticket_response_schema.go
-internal/client/model_config_ids.go
-internal/client/model_config_lists.go
-internal/client/model_control_panel.go
-internal/client/model_cpu.go
-internal/client/model_cpu_with_defaults.go
 internal/client/model_create_filter.go
 internal/client/model_create_filter_201_response.go
 internal/client/model_create_filter_400_response.go
@@ -94,6 +86,7 @@ internal/client/model_delete_filter_400_response.go
 internal/client/model_delete_filter_500_response.go
 internal/client/model_delete_firewall_rule.go
 internal/client/model_delete_geo_firewall_rule.go
+internal/client/model_delete_mail_alert_request.go
 internal/client/model_deny_rule_new.go
 internal/client/model_deny_rule_record.go
 internal/client/model_disable_scrub_200_response.go
@@ -124,11 +117,11 @@ internal/client/model_domain_nameserver_get_response_inner.go
 internal/client/model_domain_nameserver_post_request.go
 internal/client/model_domain_nameserver_put_request.go
 internal/client/model_domain_order.go
+internal/client/model_domain_order_request.go
 internal/client/model_domain_order_response.go
 internal/client/model_domain_order_response_attributes.go
 internal/client/model_domain_order_services.go
 internal/client/model_domain_order_services10001.go
-internal/client/model_domain_order_tld_services.go
 internal/client/model_domain_owner_contact.go
 internal/client/model_domain_prov_process_pending.go
 internal/client/model_domain_prov_process_pending_attributes.go
@@ -144,12 +137,13 @@ internal/client/model_email_address.go
 internal/client/model_email_address_name.go
 internal/client/model_enable_scrub_200_response.go
 internal/client/model_enable_scrub_500_response.go
-internal/client/model_field_label.go
+internal/client/model_floating_ip_order_request.go
 internal/client/model_floating_ips_cancel_200_response.go
-internal/client/model_form_values.go
 internal/client/model_generic_response.go
 internal/client/model_get_account_info_401_response.go
+internal/client/model_get_account_locales_200_response_value.go
 internal/client/model_get_account_tfa_setup_200_response.go
+internal/client/model_get_affiliate_signups_200_response.go
 internal/client/model_get_oauth_redirect_200_response.go
 internal/client/model_get_order_detail_200_response.go
 internal/client/model_get_order_detail_200_response_ips_inner.go
@@ -166,7 +160,6 @@ internal/client/model_get_scrub_ip_details_200_response_filter_firewall_filters_
 internal/client/model_get_scrub_ip_details_200_response_filter_firewall_rules_inner.go
 internal/client/model_get_scrub_ip_details_200_response_service_info.go
 internal/client/model_get_website_buy_ip_200_response.go
-internal/client/model_hard_drive.go
 internal/client/model_home.go
 internal/client/model_home_details.go
 internal/client/model_home_details_modules.go
@@ -193,10 +186,6 @@ internal/client/model_home_ticket_status.go
 internal/client/model_home_ticket_status_view.go
 internal/client/model_hostname_object.go
 internal/client/model_initiate_payment_200_response.go
-internal/client/model_inline_object.go
-internal/client/model_invoice.go
-internal/client/model_invoice_row.go
-internal/client/model_ip_block.go
 internal/client/model_ip_limit_range.go
 internal/client/model_ip_object.go
 internal/client/model_license.go
@@ -205,6 +194,7 @@ internal/client/model_license_client_link.go
 internal/client/model_license_extra_info_tables.go
 internal/client/model_license_ip_info.go
 internal/client/model_license_ip_info_row.go
+internal/client/model_license_order_request.go
 internal/client/model_license_row.go
 internal/client/model_license_service_info.go
 internal/client/model_license_service_type.go
@@ -241,6 +231,7 @@ internal/client/model_mail_extra_info_table_row.go
 internal/client/model_mail_log.go
 internal/client/model_mail_log_entry.go
 internal/client/model_mail_order.go
+internal/client/model_mail_order_request.go
 internal/client/model_mail_row.go
 internal/client/model_mail_schema.go
 internal/client/model_mail_schema_extra_info_tables.go
@@ -253,15 +244,13 @@ internal/client/model_mail_stats_type_volume_ip.go
 internal/client/model_mail_stats_type_volume_to.go
 internal/client/model_mail_tutorials_table.go
 internal/client/model_mail_tutorials_table_row.go
-internal/client/model_memory_option.go
 internal/client/model_module_settings.go
 internal/client/model_modules.go
 internal/client/model_monthly_counts.go
-internal/client/model_operating_system.go
 internal/client/model_password_request.go
+internal/client/model_patch_billing_credit_card_verify_request.go
 internal/client/model_patch_oauth_two_factor_200_response.go
 internal/client/model_patch_oauth_two_factor_request.go
-internal/client/model_payment_invoice_rows.go
 internal/client/model_place_buy_now_server_request.go
 internal/client/model_place_scrub_order_201_response.go
 internal/client/model_place_scrub_order_201_response_order_details.go
@@ -272,6 +261,8 @@ internal/client/model_post_website_buy_ip_200_response.go
 internal/client/model_post_website_buy_ip_request.go
 internal/client/model_post_website_migration_200_response.go
 internal/client/model_post_website_migration_request.go
+internal/client/model_put_scrub_ips_200_response.go
+internal/client/model_qs_order_request.go
 internal/client/model_queue_response.go
 internal/client/model_quickserver.go
 internal/client/model_quickserver_addons.go
@@ -295,8 +286,6 @@ internal/client/model_quickserver_service_extra.go
 internal/client/model_quickserver_service_info.go
 internal/client/model_quickserver_service_master.go
 internal/client/model_quickservers_cancel_200_response.go
-internal/client/model_raid_option.go
-internal/client/model_region.go
 internal/client/model_reply_ticket_request.go
 internal/client/model_reply_ticket_response_schema.go
 internal/client/model_restore_request.go
@@ -316,6 +305,8 @@ internal/client/model_server.go
 internal/client/model_server_asset.go
 internal/client/model_server_assets.go
 internal/client/model_server_billing_details.go
+internal/client/model_server_bulk_ipmi_power_response.go
+internal/client/model_server_bulk_ipmi_power_response_results_inner.go
 internal/client/model_server_client_link.go
 internal/client/model_server_extra_info_tables.go
 internal/client/model_server_ipmi_live_info.go
@@ -338,7 +329,6 @@ internal/client/model_server_order_cpu_li.go
 internal/client/model_server_order_field_label.go
 internal/client/model_server_order_field_labels.go
 internal/client/model_server_order_form_values.go
-internal/client/model_server_order_get_response.go
 internal/client/model_server_order_ip.go
 internal/client/model_server_order_ips_li.go
 internal/client/model_server_order_memory.go
@@ -346,6 +336,8 @@ internal/client/model_server_order_memory_li.go
 internal/client/model_server_order_memory_li_254.go
 internal/client/model_server_order_os.go
 internal/client/model_server_order_os_li.go
+internal/client/model_server_order_post_request.go
+internal/client/model_server_order_post_request_hd.go
 internal/client/model_server_order_raid.go
 internal/client/model_server_row.go
 internal/client/model_server_service_info.go
@@ -363,6 +355,7 @@ internal/client/model_service_types.go
 internal/client/model_services.go
 internal/client/model_services_info.go
 internal/client/model_ssl_cancel_200_response.go
+internal/client/model_ssl_order_request.go
 internal/client/model_status_monthly_breakdown.go
 internal/client/model_success_text_response.go
 internal/client/model_template_request.go
@@ -421,7 +414,6 @@ internal/client/model_vps_service_master.go
 internal/client/model_vps_snapshot.go
 internal/client/model_vps_template_row.go
 internal/client/model_vps_templates_list.go
-internal/client/model_vps_traffic_data_data_response.go
 internal/client/model_vps_traffic_data_data_section_response.go
 internal/client/model_vps_traffic_data_data_section_response_inner.go
 internal/client/model_vps_traffic_data_section_response.go
@@ -442,6 +434,8 @@ internal/client/model_website_billing_details.go
 internal/client/model_website_client_link.go
 internal/client/model_website_extra_info_tables.go
 internal/client/model_website_login_response.go
+internal/client/model_website_order_post_request.go
+internal/client/model_website_order_put_request.go
 internal/client/model_website_row.go
 internal/client/model_website_service_info.go
 internal/client/model_website_service_master.go

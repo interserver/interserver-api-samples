@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::QuickserverIpTableRow
+# InterServerAPI::Object::QuickserverIpTableRow
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::QuickserverIpTableRow;
+use InterServerAPI::Object::QuickserverIpTableRow;
 ```
 
 ## Properties

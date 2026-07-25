@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverIpInfo = Initialize-PSOpenAPIToolsQuickserverIpInfo  -Title IP Information `
+$QuickserverIpInfo = Initialize-InterserverApiQuickserverIpInfo  -Title IP Information `
  -Rows null
 ```
 

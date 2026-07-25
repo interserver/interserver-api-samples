@@ -27,25 +27,18 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20018 : IEquatable<InlineResponse20018>
     { 
         /// <summary>
-        /// Gets or Sets PackageCosts
+        /// Gets or Sets Success
         /// </summary>
 
-        [DataMember(Name="packageCosts")]
-        public InlineResponse20018PackageCosts PackageCosts { get; set; }
+        [DataMember(Name="success")]
+        public bool? Success { get; set; }
 
         /// <summary>
-        /// Gets or Sets ServiceTypes
+        /// Gets or Sets Text
         /// </summary>
 
-        [DataMember(Name="serviceTypes")]
-        public List<InlineResponse20018ServiceTypes> ServiceTypes { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Ips
-        /// </summary>
-
-        [DataMember(Name="ips")]
-        public List<InlineResponse20018Ips> Ips { get; set; }
+        [DataMember(Name="text")]
+        public string Text { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,9 +48,8 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20018 {\n");
-            sb.Append("  PackageCosts: ").Append(PackageCosts).Append("\n");
-            sb.Append("  ServiceTypes: ").Append(ServiceTypes).Append("\n");
-            sb.Append("  Ips: ").Append(Ips).Append("\n");
+            sb.Append("  Success: ").Append(Success).Append("\n");
+            sb.Append("  Text: ").Append(Text).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -95,19 +87,14 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    PackageCosts == other.PackageCosts ||
-                    PackageCosts != null &&
-                    PackageCosts.Equals(other.PackageCosts)
+                    Success == other.Success ||
+                    Success != null &&
+                    Success.Equals(other.Success)
                 ) && 
                 (
-                    ServiceTypes == other.ServiceTypes ||
-                    ServiceTypes != null &&
-                    ServiceTypes.SequenceEqual(other.ServiceTypes)
-                ) && 
-                (
-                    Ips == other.Ips ||
-                    Ips != null &&
-                    Ips.SequenceEqual(other.Ips)
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 );
         }
 
@@ -121,12 +108,10 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (PackageCosts != null)
-                    hashCode = hashCode * 59 + PackageCosts.GetHashCode();
-                    if (ServiceTypes != null)
-                    hashCode = hashCode * 59 + ServiceTypes.GetHashCode();
-                    if (Ips != null)
-                    hashCode = hashCode * 59 + Ips.GetHashCode();
+                    if (Success != null)
+                    hashCode = hashCode * 59 + Success.GetHashCode();
+                    if (Text != null)
+                    hashCode = hashCode * 59 + Text.GetHashCode();
                 return hashCode;
             }
         }

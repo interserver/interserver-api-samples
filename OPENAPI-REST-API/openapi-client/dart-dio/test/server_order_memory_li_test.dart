@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerOrderMemoryLi
 void main() {
-  final instance = ServerOrderMemoryLiBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerOrderMemoryLi? instance = /* ServerOrderMemoryLi(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerOrderMemoryLi, () {
-    // ServerOrderMemoryLi254 n254
+    // Optional<ServerOrderMemoryLi254?> n254
     test('to test the property `n254`', () async {
       // TODO
     });

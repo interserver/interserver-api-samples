@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DenyRuleRecord();
+    instance = new InterserverApiClient.DenyRuleRecord();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('DenyRuleRecord', function() {
     it('should create an instance of DenyRuleRecord', function() {
       // uncomment below and update the code to test DenyRuleRecord
-      //var instance = new InterServerManagementApi.DenyRuleRecord();
-      //expect(instance).to.be.a(InterServerManagementApi.DenyRuleRecord);
+      //var instance = new InterserverApiClient.DenyRuleRecord();
+      //expect(instance).to.be.a(InterserverApiClient.DenyRuleRecord);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.DenyRuleRecord();
+      //var instance = new InterserverApiClient.DenyRuleRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property data (base name: "data")', function() {
       // uncomment below and update the code to test the property data
-      //var instance = new InterServerManagementApi.DenyRuleRecord();
+      //var instance = new InterserverApiClient.DenyRuleRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.DenyRuleRecord();
+      //var instance = new InterserverApiClient.DenyRuleRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property created (base name: "created")', function() {
       // uncomment below and update the code to test the property created
-      //var instance = new InterServerManagementApi.DenyRuleRecord();
+      //var instance = new InterserverApiClient.DenyRuleRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property user (base name: "user")', function() {
       // uncomment below and update the code to test the property user
-      //var instance = new InterServerManagementApi.DenyRuleRecord();
+      //var instance = new InterserverApiClient.DenyRuleRecord();
       //expect(instance).to.be();
     });
 

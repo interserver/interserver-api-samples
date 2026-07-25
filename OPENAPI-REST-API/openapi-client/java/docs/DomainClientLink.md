@@ -15,4 +15,8 @@ Links and labels for domain-related UI actions.
 |**helpText** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

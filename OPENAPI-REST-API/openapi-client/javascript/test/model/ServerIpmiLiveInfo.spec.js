@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerIpmiLiveInfo();
+    instance = new InterserverApiClient.ServerIpmiLiveInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('ServerIpmiLiveInfo', function() {
     it('should create an instance of ServerIpmiLiveInfo', function() {
       // uncomment below and update the code to test ServerIpmiLiveInfo
-      //var instance = new InterServerManagementApi.ServerIpmiLiveInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerIpmiLiveInfo);
+      //var instance = new InterserverApiClient.ServerIpmiLiveInfo();
+      //expect(instance).to.be.a(InterserverApiClient.ServerIpmiLiveInfo);
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.ServerIpmiLiveInfo();
+      //var instance = new InterserverApiClient.ServerIpmiLiveInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property public_ip (base name: "public_ip")', function() {
       // uncomment below and update the code to test the property public_ip
-      //var instance = new InterServerManagementApi.ServerIpmiLiveInfo();
+      //var instance = new InterserverApiClient.ServerIpmiLiveInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property allowed_ip (base name: "allowed_ip")', function() {
       // uncomment below and update the code to test the property allowed_ip
-      //var instance = new InterServerManagementApi.ServerIpmiLiveInfo();
+      //var instance = new InterserverApiClient.ServerIpmiLiveInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property client_username (base name: "client_username")', function() {
       // uncomment below and update the code to test the property client_username
-      //var instance = new InterServerManagementApi.ServerIpmiLiveInfo();
+      //var instance = new InterserverApiClient.ServerIpmiLiveInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property client_password (base name: "client_password")', function() {
       // uncomment below and update the code to test the property client_password
-      //var instance = new InterServerManagementApi.ServerIpmiLiveInfo();
+      //var instance = new InterserverApiClient.ServerIpmiLiveInfo();
       //expect(instance).to.be();
     });
 

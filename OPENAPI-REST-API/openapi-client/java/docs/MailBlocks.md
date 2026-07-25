@@ -13,4 +13,8 @@ The listing of blocked emails.
 |**subject** | [**List&lt;MailBlockRspamd&gt;**](MailBlockRspamd.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | RAID ID. | [optional] 
+**_id** | **String** | RAID ID. | [optional] 
 **price** | **Int** | RAID price. | [optional] 
 **img** | **String** | RAID image. | [optional] 
 **shortDesc** | **String** | Short description of the RAID. | [optional] 

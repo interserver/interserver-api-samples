@@ -190,6 +190,13 @@ describe("mail_api", function()
     end)
   end)
 
+  -- unit tests for update_rule
+  describe("update_rule test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for view_mail_log
   describe("view_mail_log test", function()
     it("should work", function()

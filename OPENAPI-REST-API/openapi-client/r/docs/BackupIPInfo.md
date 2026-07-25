@@ -1,4 +1,4 @@
-# openapi::BackupIPInfo
+# interserverapi::BackupIPInfo
 
 IP address information table for a backup service.
 

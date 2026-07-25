@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerIpmiLiveInfo
+# InterServerAPI::Object::ServerIpmiLiveInfo
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerIpmiLiveInfo;
+use InterServerAPI::Object::ServerIpmiLiveInfo;
 ```
 
 ## Properties

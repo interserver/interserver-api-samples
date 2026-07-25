@@ -1,4 +1,4 @@
-# SwaggerClient::TimezoneUpdate
+# InterserverApiClient::TimezoneUpdate
 
 ## Properties
 Name | Type | Description | Notes

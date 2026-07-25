@@ -17,55 +17,52 @@
 #' @section Methods:
 #' \describe{
 #'
-#' change_account_username Change Account Username
+#' delete_account_oauth_name Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
 #'
 #'
-#' delete_account_oauth_name Unlink OAuth Account
+#' delete_account_tfa Disable two-factor authentication and remove the TOTP secret
 #'
 #'
-#' delete_account_tfa Disable Two-Factor Authentication
+#' delete_ip_limit Remove one IP range from the account allow-list (PATCH on /account/iplimits)
 #'
 #'
-#' delete_ip_limit Remove IP Access Restriction
+#' get_account_info Read full account profile, billing address, and security settings
 #'
 #'
-#' get_account_info Retrieve Account Details
+#' get_account_tfa_setup Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
 #'
 #'
-#' get_account_tfa_setup Get Two-Factor Setup Data
+#' get_home Aggregate dashboard payload — service counts, recent activity, alerts
 #'
 #'
-#' get_home Get Home Data
+#' get_search Global autocomplete across the caller&#x27;s services, domains, and records
 #'
 #'
-#' get_search Search Autocomplete
+#' logout Destroy the current API/web session — token becomes unusable
 #'
 #'
-#' logout Log Out
+#' logout_account_oauth Sign out of the upstream OAuth provider session (does not unlink the account)
 #'
 #'
-#' logout_account_oauth Logout of OAuth
+#' update_account_api_key Rotate the account&#x27;s REST/MCP API key — old key is invalidated immediately
 #'
 #'
-#' update_account_api_key Generate New API Key
+#' update_account_features Toggle account-wide safety locks for password reset and OS reinstall
 #'
 #'
-#' update_account_features Update Account Feature Flags
+#' update_account_info Update contact and billing-address fields on the customer profile
 #'
 #'
-#' update_account_info Update Account Information
+#' update_account_ip_limits Add an IP CIDR/range to the account&#x27;s API+web allow-list (lockout-safe)
 #'
 #'
-#' update_account_ip_limits Add IP Access Restriction
+#' update_account_password Change the account login password (verifies current, kills other sessions)
 #'
 #'
-#' update_account_password Change Account Password
+#' update_account_ssh_key Set the account-level SSH public key auto-installed on new VPS/dedicated orders
 #'
 #'
-#' update_account_ssh_key Update SSH Keys
-#'
-#'
-#' update_account_tfa Enable Two-Factor Authentication
+#' update_account_tfa Verify TOTP code and enable two-factor authentication on the account
 #'
 #' }
 #'
@@ -83,30 +80,6 @@ AccountApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    change_account_username = function(...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      urlPath <- "/account/username"
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "POST",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- TextResponse$new()
-        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
-        Response$new(returnObject, resp)
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
     delete_account_oauth_name = function(name, ...){
       args <- list(...)
       queryParams <- list()

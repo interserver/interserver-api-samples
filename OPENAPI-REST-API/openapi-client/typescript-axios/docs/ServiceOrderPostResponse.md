@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServiceOrderPostResponse } from './api';
+import { ServiceOrderPostResponse } from '@interserver/myadmin-client';
 
 const instance: ServiceOrderPostResponse = {
     _continue,

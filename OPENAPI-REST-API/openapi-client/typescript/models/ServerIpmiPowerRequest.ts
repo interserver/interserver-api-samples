@@ -51,11 +51,5 @@ export class ServerIpmiPowerRequest {
     }
 }
 
-export enum ServerIpmiPowerRequestActionEnum {
-    Cycle = 'cycle',
-    Reset = 'reset',
-    On = 'on',
-    Off = 'off',
-    Soft = 'soft'
-}
+    export type ServerIpmiPowerRequestActionEnum = "cycle" | "reset" | "on" | "off" | "soft" ;
 

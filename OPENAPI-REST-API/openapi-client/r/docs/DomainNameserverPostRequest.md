@@ -1,4 +1,4 @@
-# openapi::DomainNameserverPostRequest
+# interserverapi::DomainNameserverPostRequest
 
 Payload for adding a registered nameserver (glue record).
 

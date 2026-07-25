@@ -1,4 +1,4 @@
-# openapi::MailDeliverabilityResponse
+# interserverapi::MailDeliverabilityResponse
 
 Deliverability statistics for a mail service.
 

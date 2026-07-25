@@ -1,4 +1,4 @@
-# openapi::QuickserverOrder
+# interserverapi::QuickserverOrder
 
 Available QuickServer options and OS templates for ordering a new QuickServer.
 

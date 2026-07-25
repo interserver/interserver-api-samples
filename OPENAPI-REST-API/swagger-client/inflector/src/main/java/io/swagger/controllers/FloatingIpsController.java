@@ -11,7 +11,8 @@ import java.util.List;
 import io.swagger.model.*;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse2003;
+import io.swagger.model.FloatingIpOrderRequest;
+import io.swagger.model.InlineResponse2004;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -26,7 +27,8 @@ public class FloatingIpsController  {
    **/
 
   /*
-    public ResponseContext addFloatingIp(RequestContext request ) {
+    public ResponseContext addFloatingIp(RequestContext request , FloatingIpOrderRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -88,7 +90,8 @@ public class FloatingIpsController  {
   */
 
   /*
-    public ResponseContext putFloatingIps(RequestContext request ) {
+    public ResponseContext putFloatingIps(RequestContext request , FloatingIpOrderRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

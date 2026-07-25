@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LicensesOrderServiceTypes();
+    instance = new InterserverApiClient.LicensesOrderServiceTypes();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('LicensesOrderServiceTypes', function() {
     it('should create an instance of LicensesOrderServiceTypes', function() {
       // uncomment below and update the code to test LicensesOrderServiceTypes
-      //var instance = new InterServerManagementApi.LicensesOrderServiceTypes();
-      //expect(instance).to.be.a(InterServerManagementApi.LicensesOrderServiceTypes);
+      //var instance = new InterserverApiClient.LicensesOrderServiceTypes();
+      //expect(instance).to.be.a(InterserverApiClient.LicensesOrderServiceTypes);
     });
 
     it('should have the property LicensesOrderServiceTypes11482 (base name: "LicensesOrderServiceTypes11482")', function() {
       // uncomment below and update the code to test the property LicensesOrderServiceTypes11482
-      //var instance = new InterServerManagementApi.LicensesOrderServiceTypes();
+      //var instance = new InterserverApiClient.LicensesOrderServiceTypes();
       //expect(instance).to.be();
     });
 

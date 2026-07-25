@@ -19,4 +19,3 @@ case class BuyItNowServerOrder200ResponseCpInner(
   os_type: Option[String] = None,
   monthly_price: Option[String] = None
 )
-

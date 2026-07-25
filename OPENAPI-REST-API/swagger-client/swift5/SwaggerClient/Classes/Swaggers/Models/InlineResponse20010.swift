@@ -11,11 +11,30 @@ import Foundation
 
 public struct InlineResponse20010: Codable {
 
-    public var success: Bool
-    public var text: String
+    public enum ModelType: String, Codable { 
+        case redirect = "redirect"
+        case submit = "submit"
+        case single = "single"
+    }
+    /** The response type indicating how to handle the payment. Possible values: &#x60;redirect&#x60; (redirect user to a URL), &#x60;submit&#x60; (submit a form to a URL), &#x60;single&#x60; (immediate result). */
+    public var type: ModelType?
+    /** URL to redirect the user to for payment (when type is &#x60;redirect&#x60;). */
+    public var redirect: String?
+    /** Form action URL (when type is &#x60;submit&#x60;). */
+    public var action: String?
+    /** HTTP method for the form submission (when type is &#x60;submit&#x60;). */
+    public var method: String?
+    /** Form field name-value pairs to submit (when type is &#x60;submit&#x60;). */
+    public var items: Any?
+    /** Status or result text. */
+    public var text: String?
 
-    public init(success: Bool, text: String) {
-        self.success = success
+    public init(type: ModelType? = nil, redirect: String? = nil, action: String? = nil, method: String? = nil, items: Any? = nil, text: String? = nil) {
+        self.type = type
+        self.redirect = redirect
+        self.action = action
+        self.method = method
+        self.items = items
         self.text = text
     }
 

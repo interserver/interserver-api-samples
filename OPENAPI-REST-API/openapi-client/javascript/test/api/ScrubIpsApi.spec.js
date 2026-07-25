@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ScrubIpsApi();
+    instance = new InterserverApiClient.ScrubIpsApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -182,6 +182,16 @@
       it('should call placeScrubOrder successfully', function(done) {
         //uncomment below and update the code to test placeScrubOrder
         //instance.placeScrubOrder(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('putScrubIps', function() {
+      it('should call putScrubIps successfully', function(done) {
+        //uncomment below and update the code to test putScrubIps
+        //instance.putScrubIps(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

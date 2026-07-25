@@ -12,4 +12,8 @@ VPS Traffic Data History Section
 |**day** | [**VpsTrafficHistorySectionResponse**](VpsTrafficHistorySectionResponse.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

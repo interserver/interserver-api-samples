@@ -13,14 +13,11 @@
 
 /**
  * 
- * @param text Confirmation message.
- * @param ticket The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+ * @param ips A map of IP addresses to their current reverse DNS hostnames.
  */
 data class InlineResponse20026 (
 
-    /* Confirmation message. */
-    val text: kotlin.String? = null,
-    /* The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress. */
-    val ticket: kotlin.Int? = null
+    /* A map of IP addresses to their current reverse DNS hostnames. */
+    val ips: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
 ) {
 }

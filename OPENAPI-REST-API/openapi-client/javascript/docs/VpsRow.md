@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsRow
+# InterserverApiClient.VpsRow
 
 ## Properties
 

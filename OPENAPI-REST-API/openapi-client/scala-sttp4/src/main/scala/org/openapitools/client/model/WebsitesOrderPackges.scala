@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class WebsitesOrderPackges(
   `11440`: WebsitesOrderPackagesInfo
 )
-

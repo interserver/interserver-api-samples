@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainDnssecRecordsInner model module.
  * @module model/DomainDnssecRecordsInner
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainDnssecRecordsInner {
     /**

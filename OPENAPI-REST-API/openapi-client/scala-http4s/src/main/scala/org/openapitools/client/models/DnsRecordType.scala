@@ -19,7 +19,7 @@ import cats.syntax.functor.*
 /** Type of DNS Record
   */
 enum DnsRecordType(val value: String) {
-  case `A` extends DnsRecordType("A")
+  case A extends DnsRecordType("A")
   case A6 extends DnsRecordType("A6")
   case AAAA extends DnsRecordType("AAAA")
   case AFSDB extends DnsRecordType("AFSDB")

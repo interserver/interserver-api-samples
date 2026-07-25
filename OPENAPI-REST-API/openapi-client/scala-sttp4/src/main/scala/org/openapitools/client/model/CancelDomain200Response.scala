@@ -16,4 +16,3 @@ case class CancelDomain200Response(
   success: Boolean,
   text: String
 )
-

@@ -1,4 +1,4 @@
-# SwaggerClient::ServerOrderIP
+# InterserverApiClient::ServerOrderIP
 
 ## Properties
 Name | Type | Description | Notes

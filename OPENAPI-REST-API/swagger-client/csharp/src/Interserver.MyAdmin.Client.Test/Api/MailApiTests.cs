@@ -69,7 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddMailTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.AddMail();
+            //MailOrderRequest body = null;
+            //var response = instance.AddMail(body);
             //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
@@ -103,9 +104,9 @@ namespace Interserver.MyAdmin.Client.Test
         public void DeleteMailAlertTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
+            //IdAlertsBody body = null;
             //int? id = null;
-            //int? alertId = null;
-            //var response = instance.DeleteMailAlert(id, alertId);
+            //var response = instance.DeleteMailAlert(body, id);
             //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
@@ -261,7 +262,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.MailCancel(id);
-            //Assert.IsInstanceOf<InlineResponse2008> (response, "response is InlineResponse2008");
+            //Assert.IsInstanceOf<InlineResponse2009> (response, "response is InlineResponse2009");
         }
         /// <summary>
         /// Test PostMailDelist
@@ -282,7 +283,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void PutMailTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PutMail();
+            //MailOrderRequest body = null;
+            //instance.PutMail(body);
             
         }
         /// <summary>
@@ -342,6 +344,19 @@ namespace Interserver.MyAdmin.Client.Test
             //string id = null;
             //var response = instance.UpdateMailInfo(id);
             //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
+        }
+        /// <summary>
+        /// Test UpdateRule
+        /// </summary>
+        [Test]
+        public void UpdateRuleTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //DenyRuleNew body = null;
+            //int? id = null;
+            //string rule = null;
+            //var response = instance.UpdateRule(body, id, rule);
+            //Assert.IsInstanceOf<GenericResponse> (response, "response is GenericResponse");
         }
         /// <summary>
         /// Test ViewMailLog

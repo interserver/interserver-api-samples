@@ -6,6 +6,9 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from myadmin-client-python-flask.models.base_model_ import Model
+from myadmin-client-python-flask.models.inline_response20019_ips import InlineResponse20019Ips  # noqa: F401,E501
+from myadmin-client-python-flask.models.inline_response20019_package_costs import InlineResponse20019PackageCosts  # noqa: F401,E501
+from myadmin-client-python-flask.models.inline_response20019_service_types import InlineResponse20019ServiceTypes  # noqa: F401,E501
 from myadmin-client-python-flask import util
 
 
@@ -14,30 +17,30 @@ class InlineResponse20019(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, text: str=None, invoice: int=None, order: int=None):  # noqa: E501
+    def __init__(self, package_costs: InlineResponse20019PackageCosts=None, service_types: List[InlineResponse20019ServiceTypes]=None, ips: List[InlineResponse20019Ips]=None):  # noqa: E501
         """InlineResponse20019 - a model defined in Swagger
 
-        :param text: The text of this InlineResponse20019.  # noqa: E501
-        :type text: str
-        :param invoice: The invoice of this InlineResponse20019.  # noqa: E501
-        :type invoice: int
-        :param order: The order of this InlineResponse20019.  # noqa: E501
-        :type order: int
+        :param package_costs: The package_costs of this InlineResponse20019.  # noqa: E501
+        :type package_costs: InlineResponse20019PackageCosts
+        :param service_types: The service_types of this InlineResponse20019.  # noqa: E501
+        :type service_types: List[InlineResponse20019ServiceTypes]
+        :param ips: The ips of this InlineResponse20019.  # noqa: E501
+        :type ips: List[InlineResponse20019Ips]
         """
         self.swagger_types = {
-            'text': str,
-            'invoice': int,
-            'order': int
+            'package_costs': InlineResponse20019PackageCosts,
+            'service_types': List[InlineResponse20019ServiceTypes],
+            'ips': List[InlineResponse20019Ips]
         }
 
         self.attribute_map = {
-            'text': 'text',
-            'invoice': 'invoice',
-            'order': 'order'
+            'package_costs': 'packageCosts',
+            'service_types': 'serviceTypes',
+            'ips': 'ips'
         }
-        self._text = text
-        self._invoice = invoice
-        self._order = order
+        self._package_costs = package_costs
+        self._service_types = service_types
+        self._ips = ips
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20019':
@@ -51,70 +54,64 @@ class InlineResponse20019(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def text(self) -> str:
-        """Gets the text of this InlineResponse20019.
+    def package_costs(self) -> InlineResponse20019PackageCosts:
+        """Gets the package_costs of this InlineResponse20019.
 
-        Status message.  # noqa: E501
 
-        :return: The text of this InlineResponse20019.
-        :rtype: str
+        :return: The package_costs of this InlineResponse20019.
+        :rtype: InlineResponse20019PackageCosts
         """
-        return self._text
+        return self._package_costs
 
-    @text.setter
-    def text(self, text: str):
-        """Sets the text of this InlineResponse20019.
+    @package_costs.setter
+    def package_costs(self, package_costs: InlineResponse20019PackageCosts):
+        """Sets the package_costs of this InlineResponse20019.
 
-        Status message.  # noqa: E501
 
-        :param text: The text of this InlineResponse20019.
-        :type text: str
+        :param package_costs: The package_costs of this InlineResponse20019.
+        :type package_costs: InlineResponse20019PackageCosts
         """
 
-        self._text = text
+        self._package_costs = package_costs
 
     @property
-    def invoice(self) -> int:
-        """Gets the invoice of this InlineResponse20019.
+    def service_types(self) -> List[InlineResponse20019ServiceTypes]:
+        """Gets the service_types of this InlineResponse20019.
 
-        Invoice ID for payment.  # noqa: E501
 
-        :return: The invoice of this InlineResponse20019.
-        :rtype: int
+        :return: The service_types of this InlineResponse20019.
+        :rtype: List[InlineResponse20019ServiceTypes]
         """
-        return self._invoice
+        return self._service_types
 
-    @invoice.setter
-    def invoice(self, invoice: int):
-        """Sets the invoice of this InlineResponse20019.
+    @service_types.setter
+    def service_types(self, service_types: List[InlineResponse20019ServiceTypes]):
+        """Sets the service_types of this InlineResponse20019.
 
-        Invoice ID for payment.  # noqa: E501
 
-        :param invoice: The invoice of this InlineResponse20019.
-        :type invoice: int
+        :param service_types: The service_types of this InlineResponse20019.
+        :type service_types: List[InlineResponse20019ServiceTypes]
         """
 
-        self._invoice = invoice
+        self._service_types = service_types
 
     @property
-    def order(self) -> int:
-        """Gets the order of this InlineResponse20019.
+    def ips(self) -> List[InlineResponse20019Ips]:
+        """Gets the ips of this InlineResponse20019.
 
-        Server order ID.  # noqa: E501
 
-        :return: The order of this InlineResponse20019.
-        :rtype: int
+        :return: The ips of this InlineResponse20019.
+        :rtype: List[InlineResponse20019Ips]
         """
-        return self._order
+        return self._ips
 
-    @order.setter
-    def order(self, order: int):
-        """Sets the order of this InlineResponse20019.
+    @ips.setter
+    def ips(self, ips: List[InlineResponse20019Ips]):
+        """Sets the ips of this InlineResponse20019.
 
-        Server order ID.  # noqa: E501
 
-        :param order: The order of this InlineResponse20019.
-        :type order: int
+        :param ips: The ips of this InlineResponse20019.
+        :type ips: List[InlineResponse20019Ips]
         """
 
-        self._order = order
+        self._ips = ips

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.WebsitesOrder();
+    instance = new InterserverApiClient.WebsitesOrder();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,73 +50,73 @@
   describe('WebsitesOrder', function() {
     it('should create an instance of WebsitesOrder', function() {
       // uncomment below and update the code to test WebsitesOrder
-      //var instance = new InterServerManagementApi.WebsitesOrder();
-      //expect(instance).to.be.a(InterServerManagementApi.WebsitesOrder);
+      //var instance = new InterserverApiClient.WebsitesOrder();
+      //expect(instance).to.be.a(InterserverApiClient.WebsitesOrder);
     });
 
     it('should have the property step (base name: "step")', function() {
       // uncomment below and update the code to test the property step
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property website (base name: "website")', function() {
       // uncomment below and update the code to test the property website
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property period (base name: "period")', function() {
       // uncomment below and update the code to test the property period
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceOfferId (base name: "serviceOfferId")', function() {
       // uncomment below and update the code to test the property serviceOfferId
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property packages (base name: "packages")', function() {
       // uncomment below and update the code to test the property packages
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property enableDomainRegistering (base name: "enableDomainRegistering")', function() {
       // uncomment below and update the code to test the property enableDomainRegistering
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property jsonServices (base name: "jsonServices")', function() {
       // uncomment below and update the code to test the property jsonServices
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property jsonServiceOffers (base name: "jsonServiceOffers")', function() {
       // uncomment below and update the code to test the property jsonServiceOffers
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceTypes (base name: "serviceTypes")', function() {
       // uncomment below and update the code to test the property serviceTypes
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceOffers (base name: "serviceOffers")', function() {
       // uncomment below and update the code to test the property serviceOffers
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property packges (base name: "packges")', function() {
       // uncomment below and update the code to test the property packges
-      //var instance = new InterServerManagementApi.WebsitesOrder();
+      //var instance = new InterserverApiClient.WebsitesOrder();
       //expect(instance).to.be();
     });
 

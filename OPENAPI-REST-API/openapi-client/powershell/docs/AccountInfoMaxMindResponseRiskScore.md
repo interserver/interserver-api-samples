@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoMaxMindResponseRiskScore = Initialize-PSOpenAPIToolsAccountInfoMaxMindResponseRiskScore 
+$AccountInfoMaxMindResponseRiskScore = Initialize-InterserverApiAccountInfoMaxMindResponseRiskScore 
 ```
 
 - Convert the resource to JSON

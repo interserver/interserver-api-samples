@@ -1,4 +1,4 @@
-# openapi::ServiceType
+# interserverapi::ServiceType
 
 A general grouping of services within a category.
 

@@ -1,4 +1,4 @@
-# SwaggerClient::AllOfServerOrderFieldLabelsBandwidth
+# InterserverApiClient::AllOfServerOrderFieldLabelsBandwidth
 
 ## Properties
 Name | Type | Description | Notes

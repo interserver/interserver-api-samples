@@ -17,7 +17,7 @@ import Service from './Service';
 /**
  * The Services model module.
  * @module model/Services
- * @version 0.9.0
+ * @version 1.0.0
  */
 class Services {
     /**

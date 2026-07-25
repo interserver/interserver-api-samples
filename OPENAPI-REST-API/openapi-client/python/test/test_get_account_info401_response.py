@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_account_info401_response import GetAccountInfo401Response
+from interserver_api_client.models.get_account_info401_response import GetAccountInfo401Response
 
 class TestGetAccountInfo401Response(unittest.TestCase):
     """GetAccountInfo401Response unit test stubs"""

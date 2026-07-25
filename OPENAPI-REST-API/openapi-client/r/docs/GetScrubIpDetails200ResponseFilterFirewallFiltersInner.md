@@ -1,4 +1,4 @@
-# openapi::GetScrubIpDetails200ResponseFilterFirewallFiltersInner
+# interserverapi::GetScrubIpDetails200ResponseFilterFirewallFiltersInner
 
 
 ## Properties

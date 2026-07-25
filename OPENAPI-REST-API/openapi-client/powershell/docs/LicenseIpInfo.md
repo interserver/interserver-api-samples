@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicenseIpInfo = Initialize-PSOpenAPIToolsLicenseIpInfo  -Title IP Information `
+$LicenseIpInfo = Initialize-InterserverApiLicenseIpInfo  -Title IP Information `
  -Rows null
 ```
 

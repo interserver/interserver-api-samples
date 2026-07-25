@@ -1,4 +1,4 @@
-# openapi::RestoreRequest
+# interserverapi::RestoreRequest
 
 Request data to trigger a restore from backup.
 

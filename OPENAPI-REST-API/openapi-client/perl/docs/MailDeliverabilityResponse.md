@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailDeliverabilityResponse
+# InterServerAPI::Object::MailDeliverabilityResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailDeliverabilityResponse;
+use InterServerAPI::Object::MailDeliverabilityResponse;
 ```
 
 ## Properties

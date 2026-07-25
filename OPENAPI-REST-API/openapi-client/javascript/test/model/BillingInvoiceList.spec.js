@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BillingInvoiceList();
+    instance = new InterserverApiClient.BillingInvoiceList();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('BillingInvoiceList', function() {
     it('should create an instance of BillingInvoiceList', function() {
       // uncomment below and update the code to test BillingInvoiceList
-      //var instance = new InterServerManagementApi.BillingInvoiceList();
-      //expect(instance).to.be.a(InterServerManagementApi.BillingInvoiceList);
+      //var instance = new InterserverApiClient.BillingInvoiceList();
+      //expect(instance).to.be.a(InterserverApiClient.BillingInvoiceList);
     });
 
     it('should have the property rows (base name: "rows")', function() {
       // uncomment below and update the code to test the property rows
-      //var instance = new InterServerManagementApi.BillingInvoiceList();
+      //var instance = new InterserverApiClient.BillingInvoiceList();
       //expect(instance).to.be();
     });
 
     it('should have the property summary (base name: "summary")', function() {
       // uncomment below and update the code to test the property summary
-      //var instance = new InterServerManagementApi.BillingInvoiceList();
+      //var instance = new InterserverApiClient.BillingInvoiceList();
       //expect(instance).to.be();
     });
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsiteTableRow = Initialize-PSOpenAPIToolsWebsiteTableRow  -Desc null `
+$WebsiteTableRow = Initialize-InterserverApiWebsiteTableRow  -Desc null `
  -Value null
 ```
 

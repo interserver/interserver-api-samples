@@ -1,4 +1,4 @@
-# openapi::MailTutorialsTable
+# interserverapi::MailTutorialsTable
 
 A table of tutorial links displayed for a mail service.
 

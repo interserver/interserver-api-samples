@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::Quickserver
+# InterServerAPI::Object::Quickserver
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::Quickserver;
+use InterServerAPI::Object::Quickserver;
 ```
 
 ## Properties

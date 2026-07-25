@@ -1,4 +1,4 @@
-# openapi::DomainNameserverPutRequest
+# interserverapi::DomainNameserverPutRequest
 
 Payload for replacing the assigned nameserver list for a domain.
 

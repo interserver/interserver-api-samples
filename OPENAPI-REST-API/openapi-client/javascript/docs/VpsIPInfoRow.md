@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsIPInfoRow
+# InterserverApiClient.VpsIPInfoRow
 
 ## Properties
 

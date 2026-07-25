@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::PlaceScrubOrder201ResponseOrderDetailsCjParams
+# InterServerAPI::Object::PlaceScrubOrder201ResponseOrderDetailsCjParams
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::PlaceScrubOrder201ResponseOrderDetailsCjParams;
+use InterServerAPI::Object::PlaceScrubOrder201ResponseOrderDetailsCjParams;
 ```
 
 ## Properties

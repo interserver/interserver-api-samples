@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PostWebsiteMigrationRequest = Initialize-PSOpenAPIToolsPostWebsiteMigrationRequest  -CustPortal null `
+$PostWebsiteMigrationRequest = Initialize-InterserverApiPostWebsiteMigrationRequest  -CustPortal null `
  -RegEmail null `
  -Password null `
  -CtrlPanel null `

@@ -81,10 +81,5 @@ export class DenyRuleRecord {
     }
 }
 
-export enum DenyRuleRecordTypeEnum {
-    Domain = 'domain',
-    Email = 'email',
-    Startswith = 'startswith',
-    Destination = 'destination'
-}
+    export type DenyRuleRecordTypeEnum = "domain" | "email" | "startswith" | "destination" ;
 

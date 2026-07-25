@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverServiceMaster
+# InterserverApiClient::QuickserverServiceMaster
 
 ## Properties
 Name | Type | Description | Notes

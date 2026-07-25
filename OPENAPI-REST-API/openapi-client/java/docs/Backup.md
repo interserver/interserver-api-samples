@@ -19,4 +19,8 @@ Full detail view of a backup service including billing, service info, and config
 |**extraInfoTables** | [**BackupExtraInfoTables**](BackupExtraInfoTables.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

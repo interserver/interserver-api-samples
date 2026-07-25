@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_da_data import VpsDAData
+from interserver_api_client.models.vps_da_data import VpsDAData
 
 class TestVpsDAData(unittest.TestCase):
     """VpsDAData unit test stubs"""
@@ -36,7 +36,7 @@ class TestVpsDAData(unittest.TestCase):
         model = VpsDAData()
         if include_optional:
             return VpsDAData(
-                free = openapi_client.models.vps_da_license.VpsDALicense(
+                free = interserver_api_client.models.vps_da_license.VpsDALicense(
                     name = '', 
                     sub_name = '', 
                     cost = 56, 

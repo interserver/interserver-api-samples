@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_log import MailLog
+from interserver_api_client.models.mail_log import MailLog
 
 class TestMailLog(unittest.TestCase):
     """MailLog unit test stubs"""

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainDnssecRequest
+# InterServerAPI::Object::DomainDnssecRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainDnssecRequest;
+use InterServerAPI::Object::DomainDnssecRequest;
 ```
 
 ## Properties

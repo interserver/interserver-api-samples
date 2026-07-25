@@ -1,4 +1,4 @@
-# InterServerManagementApi.CreateFilter
+# InterserverApiClient.CreateFilter
 
 ## Properties
 

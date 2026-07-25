@@ -7,9 +7,10 @@ from six import BytesIO
 
 from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoiceRows  # noqa: E501
 from myadmin-client-python-flask.models.id_backups_body import IdBackupsBody  # noqa: E501
-from myadmin-client-python-flask.models.inline_response20010 import InlineResponse20010  # noqa: E501
 from myadmin-client-python-flask.models.inline_response20011 import InlineResponse20011  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20012 import InlineResponse20012  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
+from myadmin-client-python-flask.models.qs_order_request import QsOrderRequest  # noqa: E501
 from myadmin-client-python-flask.models.queue_response import QueueResponse  # noqa: E501
 from myadmin-client-python-flask.models.quickserver import Quickserver  # noqa: E501
 from myadmin-client-python-flask.models.quickserver_order import QuickserverOrder  # noqa: E501
@@ -31,18 +32,21 @@ class TestQuickServersController(BaseTestCase):
     def test_add_qs(self):
         """Test case for add_qs
 
-        Place QuickServer Order
+        Place a QuickServer order, generating a real invoice and queuing provisioning
         """
+        body = QsOrderRequest()
         response = self.client.open(
             '/apiv2/qs/order',
-            method='POST')
+            method='POST',
+            data=json.dumps(body),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_delete_qs_backup(self):
         """Test case for delete_qs_backup
 
-        Delete QuickServer Backup
+        Permanently delete a QuickServer backup file from object storage
         """
         query_string = [('all', 'all_example'),
                         ('file', 'file_example')]
@@ -56,7 +60,7 @@ class TestQuickServersController(BaseTestCase):
     def test_do_qs_block_smtp(self):
         """Test case for do_qs_block_smtp
 
-        Block QuickServer SMTP
+        Block outbound SMTP traffic on a QuickServer to halt mail abuse
         """
         response = self.client.open(
             '/apiv2/qs/{id}/block_smtp'.format(id=56),
@@ -67,7 +71,7 @@ class TestQuickServersController(BaseTestCase):
     def test_do_qs_disable_cd(self):
         """Test case for do_qs_disable_cd
 
-        Disable CD Drive
+        Disable the virtual CD/DVD drive device on a QuickServer
         """
         response = self.client.open(
             '/apiv2/qs/{id}/disable_cd'.format(id=56),
@@ -78,7 +82,7 @@ class TestQuickServersController(BaseTestCase):
     def test_do_qs_disable_quota(self):
         """Test case for do_qs_disable_quota
 
-        Disable Quotas
+        Disable disk-quota enforcement at OS level on a QuickServer
         """
         response = self.client.open(
             '/apiv2/qs/{id}/disable_quota'.format(id=56),
@@ -89,7 +93,7 @@ class TestQuickServersController(BaseTestCase):
     def test_do_qs_eject_cd(self):
         """Test case for do_qs_eject_cd
 
-        Eject CD Drive
+        Eject the currently mounted ISO from a QuickServer's virtual CD drive
         """
         response = self.client.open(
             '/apiv2/qs/{id}/eject_cd'.format(id=56),
@@ -100,7 +104,7 @@ class TestQuickServersController(BaseTestCase):
     def test_do_qs_enable_quota(self):
         """Test case for do_qs_enable_quota
 
-        Enable Quotas
+        Enable disk-quota enforcement at OS level on a QuickServer
         """
         response = self.client.open(
             '/apiv2/qs/{id}/enable_quota'.format(id=56),
@@ -111,7 +115,7 @@ class TestQuickServersController(BaseTestCase):
     def test_do_qs_restart(self):
         """Test case for do_qs_restart
 
-        Restart QuickServer
+        Reboot a QuickServer with a graceful OS-level restart
         """
         response = self.client.open(
             '/apiv2/qs/{id}/restart'.format(id=56),
@@ -122,7 +126,7 @@ class TestQuickServersController(BaseTestCase):
     def test_do_qs_start(self):
         """Test case for do_qs_start
 
-        Start QuickServer
+        Power on a QuickServer that is currently stopped or pending boot
         """
         response = self.client.open(
             '/apiv2/qs/{id}/start'.format(id=56),
@@ -133,7 +137,7 @@ class TestQuickServersController(BaseTestCase):
     def test_do_qs_stop(self):
         """Test case for do_qs_stop
 
-        Stop QuickServer
+        Power off a QuickServer with a graceful shutdown command
         """
         response = self.client.open(
             '/apiv2/qs/{id}/stop'.format(id=56),
@@ -144,7 +148,7 @@ class TestQuickServersController(BaseTestCase):
     def test_download_qs_backup(self):
         """Test case for download_qs_backup
 
-        Download QuickServer Backup
+        Generate a 24-hour pre-signed download URL for a QuickServer backup
         """
         body = IdBackupsBody()
         query_string = [('all', 'all_example')]
@@ -162,7 +166,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_new_qs(self):
         """Test case for get_new_qs
 
-        Get QuickServer Ordering Information
+        Get QuickServer order form metadata and available plans/templates
         """
         response = self.client.open(
             '/apiv2/qs/order',
@@ -170,10 +174,21 @@ class TestQuickServersController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
+    def test_get_qs_backup(self):
+        """Test case for get_qs_backup
+
+        Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+        """
+        response = self.client.open(
+            '/apiv2/qs/{id}/backup'.format(id=56),
+            method='GET')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
     def test_get_qs_backups(self):
         """Test case for get_qs_backups
 
-        List QuickServer Backups
+        List available QuickServer backups across Swift, MinIO, and ZFS storage
         """
         query_string = [('all', 'all_example')]
         response = self.client.open(
@@ -186,7 +201,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_change_hostname(self):
         """Test case for get_qs_change_hostname
 
-        Get QuickServer Hostname
+        Get current QuickServer hostname plus change rules and platform support
         """
         response = self.client.open(
             '/apiv2/qs/{id}/change_hostname'.format(id=56),
@@ -197,7 +212,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_change_root_password(self):
         """Test case for get_qs_change_root_password
 
-        Get Change Root Password Info
+        Get metadata for QuickServer root/OS password change requirements
         """
         response = self.client.open(
             '/apiv2/qs/{id}/change_root_password'.format(id=56),
@@ -208,7 +223,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_change_timezone(self):
         """Test case for get_qs_change_timezone
 
-        Get Timezone Info
+        List timezones the QuickServer can be set to via change_timezone
         """
         response = self.client.open(
             '/apiv2/qs/{id}/change_timezone'.format(id=56),
@@ -219,7 +234,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_change_webuzo_password(self):
         """Test case for get_qs_change_webuzo_password
 
-        Webuzo Change Pass Info
+        Get metadata for changing the Webuzo control panel admin password
         """
         response = self.client.open(
             '/apiv2/qs/{id}/change_webuzo_password'.format(id=56),
@@ -230,7 +245,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_info(self):
         """Test case for get_qs_info
 
-        Get QuickServer Order
+        Get full details for one QuickServer including credentials and links
         """
         response = self.client.open(
             '/apiv2/qs/{id}'.format(id=56),
@@ -241,7 +256,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_insert_cd(self):
         """Test case for get_qs_insert_cd
 
-        Insert CD Information
+        List ISO images available to mount on a QuickServer's virtual CD
         """
         response = self.client.open(
             '/apiv2/qs/{id}/insert_cd'.format(id=56),
@@ -252,7 +267,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_invoices(self):
         """Test case for get_qs_invoices
 
-        Get QuickServer Invoices
+        List billing invoices charged for one QuickServer service
         """
         response = self.client.open(
             '/apiv2/qs/{id}/invoices'.format(id=56),
@@ -263,7 +278,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_list(self):
         """Test case for get_qs_list
 
-        List QuickServers
+        List QuickServer rapid-deploy dedicated servers on the account
         """
         response = self.client.open(
             '/apiv2/qs',
@@ -274,7 +289,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_reinstall_os(self):
         """Test case for get_qs_reinstall_os
 
-        QuickServer Reinstall OS Options
+        List OS templates available for a QuickServer reinstall
         """
         response = self.client.open(
             '/apiv2/qs/{id}/reinstall_os'.format(id=56),
@@ -285,7 +300,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_reset_password(self):
         """Test case for get_qs_reset_password
 
-        Reset QuickServer Password Info
+        Get options for QuickServer randomized root password reset
         """
         response = self.client.open(
             '/apiv2/qs/{id}/reset_password'.format(id=56),
@@ -296,7 +311,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_reverse_dns(self):
         """Test case for get_qs_reverse_dns
 
-        Reverse DNS Info
+        Get reverse DNS (PTR) records for all of a QuickServer's IPs
         """
         response = self.client.open(
             '/apiv2/qs/{id}/reverse_dns'.format(id=56),
@@ -307,7 +322,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_setup_vnc(self):
         """Test case for get_qs_setup_vnc
 
-        VNC Setup Info
+        Get current VNC console connection details for a QuickServer
         """
         response = self.client.open(
             '/apiv2/qs/{id}/setup_vnc'.format(id=56),
@@ -318,7 +333,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_traffic_usage(self):
         """Test case for get_qs_traffic_usage
 
-        Get Traffic Usage
+        Get bandwidth usage for the QuickServer's current billing period
         """
         response = self.client.open(
             '/apiv2/qs/{id}/traffic_usage'.format(id=56),
@@ -329,7 +344,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_view_desktop(self):
         """Test case for get_qs_view_desktop
 
-        Get View Desktop Info
+        Get the full QuickServer dashboard view payload (rich format)
         """
         response = self.client.open(
             '/apiv2/qs/{id}/view_desktop'.format(id=56),
@@ -340,7 +355,7 @@ class TestQuickServersController(BaseTestCase):
     def test_get_qs_welcome_email(self):
         """Test case for get_qs_welcome_email
 
-        Resend QuickServer Welcome Email
+        Resend the QuickServer welcome email with login credentials
         """
         response = self.client.open(
             '/apiv2/qs/{id}/welcome_email'.format(id='id_example'),
@@ -348,21 +363,10 @@ class TestQuickServersController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_post_qs_backup(self):
-        """Test case for post_qs_backup
-
-        Create QuickServer Backup
-        """
-        response = self.client.open(
-            '/apiv2/qs/{id}/backup'.format(id=56),
-            method='POST')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_post_qs_change_hostname(self):
         """Test case for post_qs_change_hostname
 
-        Update QuickServer Hostname
+        Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
         """
         response = self.client.open(
             '/apiv2/qs/{id}/change_hostname'.format(id=56),
@@ -373,7 +377,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_qs_change_root_password(self):
         """Test case for post_qs_change_root_password
 
-        Change Root Password
+        Change QuickServer root/administrator password to a chosen value
         """
         response = self.client.open(
             '/apiv2/qs/{id}/change_root_password'.format(id=56),
@@ -384,7 +388,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_qs_change_timezone(self):
         """Test case for post_qs_change_timezone
 
-        Change QuickServer Timezone
+        Change the system timezone on a QuickServer to a catalog entry
         """
         body = TimezoneUpdate()
         data = dict(timezone='timezone_example')
@@ -400,7 +404,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_qs_change_webuzo_password(self):
         """Test case for post_qs_change_webuzo_password
 
-        Change Webuzo Password
+        Change Webuzo control panel admin password live (synchronous, not queued)
         """
         response = self.client.open(
             '/apiv2/qs/{id}/change_webuzo_password'.format(id=56),
@@ -411,7 +415,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_qs_insert_cd(self):
         """Test case for post_qs_insert_cd
 
-        Insert CD in QuickServer
+        Mount an ISO image as the QuickServer's virtual CD via URL
         """
         response = self.client.open(
             '/apiv2/qs/{id}/insert_cd'.format(id=56),
@@ -422,7 +426,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_qs_reinstall_os(self):
         """Test case for post_qs_reinstall_os
 
-        Reinstall QuickServer OS
+        Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
         """
         response = self.client.open(
             '/apiv2/qs/{id}/reinstall_os'.format(id=56),
@@ -433,7 +437,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_qs_reset_password(self):
         """Test case for post_qs_reset_password
 
-        Reset QuickServer Password
+        Reset QuickServer root password to a server-generated random value
         """
         response = self.client.open(
             '/apiv2/qs/{id}/reset_password'.format(id=56),
@@ -444,7 +448,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_qs_reverse_dns(self):
         """Test case for post_qs_reverse_dns
 
-        Update Reverse DNS
+        Update reverse DNS (PTR) records for a QuickServer's IPs
         """
         body = ReverseDnsEntries()
         data = dict(ips=None)
@@ -460,7 +464,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_qs_setup_vnc(self):
         """Test case for post_qs_setup_vnc
 
-        Setup VNC
+        Configure the source IP allowed to reach a QuickServer's VNC console
         """
         response = self.client.open(
             '/apiv2/qs/{id}/setup_vnc'.format(id=56),
@@ -471,7 +475,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_qs_traffic_usage(self):
         """Test case for post_qs_traffic_usage
 
-        Search Traffic Usage
+        Query QuickServer bandwidth usage via POST (filtered variant)
         """
         response = self.client.open(
             '/apiv2/qs/{id}/traffic_usage'.format(id=56),
@@ -482,7 +486,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_qs_view_desktop(self):
         """Test case for post_qs_view_desktop
 
-        Update View Desktop
+        Submit changes and re-fetch the QuickServer dashboard view payload
         """
         response = self.client.open(
             '/apiv2/qs/{id}/view_desktop'.format(id=56),
@@ -493,7 +497,7 @@ class TestQuickServersController(BaseTestCase):
     def test_post_quick_server_restore(self):
         """Test case for post_quick_server_restore
 
-        Restore QuickServer from Backup
+        Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
         """
         body = RestoreRequest()
         data = dict(backup='backup_example',
@@ -510,18 +514,21 @@ class TestQuickServersController(BaseTestCase):
     def test_put_qs(self):
         """Test case for put_qs
 
-        Validate QuickServer Order
+        Validate a QuickServer order without charging or provisioning
         """
+        body = QsOrderRequest()
         response = self.client.open(
             '/apiv2/qs/order',
-            method='PUT')
+            method='PUT',
+            data=json.dumps(body),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_quickservers_cancel(self):
         """Test case for quickservers_cancel
 
-        Cancel QuickServer Order
+        Cancel a QuickServer service at the end of the current billing cycle
         """
         response = self.client.open(
             '/apiv2/qs/{id}'.format(id=56),
@@ -532,7 +539,7 @@ class TestQuickServersController(BaseTestCase):
     def test_update_qs_info(self):
         """Test case for update_qs_info
 
-        Update QuickServer Order
+        Update QuickServer order metadata or stored settings without OS impact
         """
         response = self.client.open(
             '/apiv2/qs/{id}'.format(id='id_example'),

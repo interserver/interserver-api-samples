@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainServiceType
+# InterServerAPI::Object::DomainServiceType
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainServiceType;
+use InterServerAPI::Object::DomainServiceType;
 ```
 
 ## Properties

@@ -17,7 +17,7 @@ import DomainDnssecRecordsInner from './DomainDnssecRecordsInner';
 /**
  * The DomainDnssecRecords model module.
  * @module model/DomainDnssecRecords
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainDnssecRecords extends Array {
     /**

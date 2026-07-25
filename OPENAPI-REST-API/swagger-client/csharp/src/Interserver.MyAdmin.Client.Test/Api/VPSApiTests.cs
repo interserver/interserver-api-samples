@@ -185,7 +185,7 @@ namespace Interserver.MyAdmin.Client.Test
             //int? id = null;
             //string all = null;
             //var response = instance.DownloadVpsBackup(body, id, all);
-            //Assert.IsInstanceOf<InlineResponse20011> (response, "response is InlineResponse20011");
+            //Assert.IsInstanceOf<InlineResponse20012> (response, "response is InlineResponse20012");
         }
         /// <summary>
         /// Test GetNewVps
@@ -196,6 +196,17 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.GetNewVps();
             //Assert.IsInstanceOf<VpsOrder> (response, "response is VpsOrder");
+        }
+        /// <summary>
+        /// Test GetVpsBackup
+        /// </summary>
+        [Test]
+        public void GetVpsBackupTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? id = null;
+            //var response = instance.GetVpsBackup(id);
+            //Assert.IsInstanceOf<QueueResponse> (response, "response is QueueResponse");
         }
         /// <summary>
         /// Test GetVpsBackups
@@ -232,6 +243,28 @@ namespace Interserver.MyAdmin.Client.Test
             
         }
         /// <summary>
+        /// Test GetVpsChangeHostname
+        /// </summary>
+        [Test]
+        public void GetVpsChangeHostnameTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? id = null;
+            //instance.GetVpsChangeHostname(id);
+            
+        }
+        /// <summary>
+        /// Test GetVpsChangeRootPassword
+        /// </summary>
+        [Test]
+        public void GetVpsChangeRootPasswordTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? id = null;
+            //instance.GetVpsChangeRootPassword(id);
+            
+        }
+        /// <summary>
         /// Test GetVpsChangeTimezone
         /// </summary>
         [Test]
@@ -252,6 +285,17 @@ namespace Interserver.MyAdmin.Client.Test
             //int? id = null;
             //var response = instance.GetVpsInfo(id);
             //Assert.IsInstanceOf<Vps> (response, "response is Vps");
+        }
+        /// <summary>
+        /// Test GetVpsInsertCd
+        /// </summary>
+        [Test]
+        public void GetVpsInsertCdTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? id = null;
+            //instance.GetVpsInsertCd(id);
+            
         }
         /// <summary>
         /// Test GetVpsInvoices
@@ -284,6 +328,17 @@ namespace Interserver.MyAdmin.Client.Test
             //int? id = null;
             //var response = instance.GetVpsReinstallOs(id);
             //Assert.IsInstanceOf<VpsTemplatesList> (response, "response is VpsTemplatesList");
+        }
+        /// <summary>
+        /// Test GetVpsResetPassword
+        /// </summary>
+        [Test]
+        public void GetVpsResetPasswordTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? id = null;
+            //instance.GetVpsResetPassword(id);
+            
         }
         /// <summary>
         /// Test GetVpsReverseDns
@@ -350,17 +405,6 @@ namespace Interserver.MyAdmin.Client.Test
             //string id = null;
             //var response = instance.GetVpsWelcomeEmail(id);
             //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
-        }
-        /// <summary>
-        /// Test PostVpsBackup
-        /// </summary>
-        [Test]
-        public void PostVpsBackupTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int? id = null;
-            //var response = instance.PostVpsBackup(id);
-            //Assert.IsInstanceOf<QueueResponse> (response, "response is QueueResponse");
         }
         /// <summary>
         /// Test PostVpsBuyHdSpace
@@ -516,6 +560,17 @@ namespace Interserver.MyAdmin.Client.Test
             
         }
         /// <summary>
+        /// Test PostVpsTrafficUsage
+        /// </summary>
+        [Test]
+        public void PostVpsTrafficUsageTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? id = null;
+            //instance.PostVpsTrafficUsage(id);
+            
+        }
+        /// <summary>
         /// Test PostVpsViewDesktop
         /// </summary>
         [Test]
@@ -538,6 +593,17 @@ namespace Interserver.MyAdmin.Client.Test
             //Assert.IsInstanceOf<VpsOrderPutResponse> (response, "response is VpsOrderPutResponse");
         }
         /// <summary>
+        /// Test PutVpsBuyHdSpace
+        /// </summary>
+        [Test]
+        public void PutVpsBuyHdSpaceTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? id = null;
+            //instance.PutVpsBuyHdSpace(id);
+            
+        }
+        /// <summary>
         /// Test UpdateVpsInfo
         /// </summary>
         [Test]
@@ -557,7 +623,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.VPSCancel(id);
-            //Assert.IsInstanceOf<InlineResponse20022> (response, "response is InlineResponse20022");
+            //Assert.IsInstanceOf<InlineResponse20024> (response, "response is InlineResponse20024");
         }
     }
 

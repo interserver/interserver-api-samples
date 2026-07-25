@@ -1,5 +1,10 @@
 package io.swagger.model;
 
+import io.swagger.model.InlineResponse20019Ips;
+import io.swagger.model.InlineResponse20019PackageCosts;
+import io.swagger.model.InlineResponse20019ServiceTypes;
+import java.util.ArrayList;
+import java.util.List;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import javax.xml.bind.annotation.XmlElement;
@@ -15,74 +20,75 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse20019   {
   
-  @Schema(example = "Order Completed", description = "Status message.")
- /**
-   * Status message.  
-  **/
-  private String text = null;
+  @Schema(description = "")
+  private InlineResponse20019PackageCosts packageCosts = null;
   
-  @Schema(description = "Invoice ID for payment.")
- /**
-   * Invoice ID for payment.  
-  **/
-  private Integer invoice = null;
+  @Schema(description = "")
+  private List<InlineResponse20019ServiceTypes> serviceTypes = null;
   
-  @Schema(description = "Server order ID.")
+  @Schema(description = "")
+  private List<InlineResponse20019Ips> ips = null;
  /**
-   * Server order ID.  
+   * Get packageCosts
+   * @return packageCosts
   **/
-  private Integer order = null;
- /**
-   * Status message.
-   * @return text
-  **/
-  @JsonProperty("text")
-  public String getText() {
-    return text;
+  @JsonProperty("packageCosts")
+  public InlineResponse20019PackageCosts getPackageCosts() {
+    return packageCosts;
   }
 
-  public void setText(String text) {
-    this.text = text;
+  public void setPackageCosts(InlineResponse20019PackageCosts packageCosts) {
+    this.packageCosts = packageCosts;
   }
 
-  public InlineResponse20019 text(String text) {
-    this.text = text;
+  public InlineResponse20019 packageCosts(InlineResponse20019PackageCosts packageCosts) {
+    this.packageCosts = packageCosts;
     return this;
   }
 
  /**
-   * Invoice ID for payment.
-   * @return invoice
+   * Get serviceTypes
+   * @return serviceTypes
   **/
-  @JsonProperty("invoice")
-  public Integer getInvoice() {
-    return invoice;
+  @JsonProperty("serviceTypes")
+  public List<InlineResponse20019ServiceTypes> getServiceTypes() {
+    return serviceTypes;
   }
 
-  public void setInvoice(Integer invoice) {
-    this.invoice = invoice;
+  public void setServiceTypes(List<InlineResponse20019ServiceTypes> serviceTypes) {
+    this.serviceTypes = serviceTypes;
   }
 
-  public InlineResponse20019 invoice(Integer invoice) {
-    this.invoice = invoice;
+  public InlineResponse20019 serviceTypes(List<InlineResponse20019ServiceTypes> serviceTypes) {
+    this.serviceTypes = serviceTypes;
+    return this;
+  }
+
+  public InlineResponse20019 addServiceTypesItem(InlineResponse20019ServiceTypes serviceTypesItem) {
+    this.serviceTypes.add(serviceTypesItem);
     return this;
   }
 
  /**
-   * Server order ID.
-   * @return order
+   * Get ips
+   * @return ips
   **/
-  @JsonProperty("order")
-  public Integer getOrder() {
-    return order;
+  @JsonProperty("ips")
+  public List<InlineResponse20019Ips> getIps() {
+    return ips;
   }
 
-  public void setOrder(Integer order) {
-    this.order = order;
+  public void setIps(List<InlineResponse20019Ips> ips) {
+    this.ips = ips;
   }
 
-  public InlineResponse20019 order(Integer order) {
-    this.order = order;
+  public InlineResponse20019 ips(List<InlineResponse20019Ips> ips) {
+    this.ips = ips;
+    return this;
+  }
+
+  public InlineResponse20019 addIpsItem(InlineResponse20019Ips ipsItem) {
+    this.ips.add(ipsItem);
     return this;
   }
 
@@ -92,9 +98,9 @@ public class InlineResponse20019   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20019 {\n");
     
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    invoice: ").append(toIndentedString(invoice)).append("\n");
-    sb.append("    order: ").append(toIndentedString(order)).append("\n");
+    sb.append("    packageCosts: ").append(toIndentedString(packageCosts)).append("\n");
+    sb.append("    serviceTypes: ").append(toIndentedString(serviceTypes)).append("\n");
+    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("}");
     return sb.toString();
   }

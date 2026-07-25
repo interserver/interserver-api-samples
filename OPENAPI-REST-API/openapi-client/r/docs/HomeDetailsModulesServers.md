@@ -1,4 +1,4 @@
-# openapi::HomeDetailsModulesServers
+# interserverapi::HomeDetailsModulesServers
 
 Dashboard module configuration for dedicated server services.
 

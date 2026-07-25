@@ -14,25 +14,25 @@ class InlineResponse20011(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, text: str=None, url: str=None):  # noqa: E501
+    def __init__(self, success: bool=None, text: str=None):  # noqa: E501
         """InlineResponse20011 - a model defined in Swagger
 
+        :param success: The success of this InlineResponse20011.  # noqa: E501
+        :type success: bool
         :param text: The text of this InlineResponse20011.  # noqa: E501
         :type text: str
-        :param url: The url of this InlineResponse20011.  # noqa: E501
-        :type url: str
         """
         self.swagger_types = {
-            'text': str,
-            'url': str
+            'success': bool,
+            'text': str
         }
 
         self.attribute_map = {
-            'text': 'text',
-            'url': 'url'
+            'success': 'success',
+            'text': 'text'
         }
+        self._success = success
         self._text = text
-        self._url = url
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20011':
@@ -44,6 +44,29 @@ class InlineResponse20011(Model):
         :rtype: InlineResponse20011
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def success(self) -> bool:
+        """Gets the success of this InlineResponse20011.
+
+
+        :return: The success of this InlineResponse20011.
+        :rtype: bool
+        """
+        return self._success
+
+    @success.setter
+    def success(self, success: bool):
+        """Sets the success of this InlineResponse20011.
+
+
+        :param success: The success of this InlineResponse20011.
+        :type success: bool
+        """
+        if success is None:
+            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
+
+        self._success = success
 
     @property
     def text(self) -> str:
@@ -63,28 +86,7 @@ class InlineResponse20011(Model):
         :param text: The text of this InlineResponse20011.
         :type text: str
         """
+        if text is None:
+            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
 
         self._text = text
-
-    @property
-    def url(self) -> str:
-        """Gets the url of this InlineResponse20011.
-
-        A pre-signed download URL valid for 24 hours.  # noqa: E501
-
-        :return: The url of this InlineResponse20011.
-        :rtype: str
-        """
-        return self._url
-
-    @url.setter
-    def url(self, url: str):
-        """Sets the url of this InlineResponse20011.
-
-        A pre-signed download URL valid for 24 hours.  # noqa: E501
-
-        :param url: The url of this InlineResponse20011.
-        :type url: str
-        """
-
-        self._url = url

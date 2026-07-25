@@ -13,4 +13,8 @@ Platform Packages
 |**hyperv** | **BigDecimal** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

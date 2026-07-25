@@ -96,13 +96,13 @@ void main() {
       // TODO
     });
 
-    // String tITLEFIELD2
-    test('to test the property `tITLEFIELD2`', () async {
+    // String TITLE_FIELD2
+    test('to test the property `TITLE_FIELD2`', () async {
       // TODO
     });
 
-    // String tITLEFIELD3
-    test('to test the property `tITLEFIELD3`', () async {
+    // String TITLE_FIELD3
+    test('to test the property `TITLE_FIELD3`', () async {
       // TODO
     });
 

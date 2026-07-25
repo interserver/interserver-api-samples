@@ -34,4 +34,3 @@ case class DomainBillingExtra(
   phone: Option[String] = None,
   fax: Option[String] = None
 )
-

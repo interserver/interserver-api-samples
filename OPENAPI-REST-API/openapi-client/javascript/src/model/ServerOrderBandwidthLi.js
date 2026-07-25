@@ -17,7 +17,7 @@ import ServerOrderBandwidth from './ServerOrderBandwidth';
 /**
  * The ServerOrderBandwidthLi model module.
  * @module model/ServerOrderBandwidthLi
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderBandwidthLi {
     /**

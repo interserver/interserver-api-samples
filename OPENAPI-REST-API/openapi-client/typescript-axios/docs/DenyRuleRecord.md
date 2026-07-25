@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DenyRuleRecord } from './api';
+import { DenyRuleRecord } from '@interserver/myadmin-client';
 
 const instance: DenyRuleRecord = {
     type,

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsIPInfoRow model module.
  * @module model/VpsIPInfoRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsIPInfoRow {
     /**

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.HomeTicketStatus();
+    instance = new InterserverApiClient.HomeTicketStatus();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('HomeTicketStatus', function() {
     it('should create an instance of HomeTicketStatus', function() {
       // uncomment below and update the code to test HomeTicketStatus
-      //var instance = new InterServerManagementApi.HomeTicketStatus();
-      //expect(instance).to.be.a(InterServerManagementApi.HomeTicketStatus);
+      //var instance = new InterserverApiClient.HomeTicketStatus();
+      //expect(instance).to.be.a(InterserverApiClient.HomeTicketStatus);
     });
 
     it('should have the property Open (base name: "Open")', function() {
       // uncomment below and update the code to test the property Open
-      //var instance = new InterServerManagementApi.HomeTicketStatus();
+      //var instance = new InterserverApiClient.HomeTicketStatus();
       //expect(instance).to.be();
     });
 
     it('should have the property On_Hold (base name: "On Hold")', function() {
       // uncomment below and update the code to test the property On_Hold
-      //var instance = new InterServerManagementApi.HomeTicketStatus();
+      //var instance = new InterserverApiClient.HomeTicketStatus();
       //expect(instance).to.be();
     });
 

@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.server_order_cpu import ServerOrderCPU
+from interserver_api_client.models.server_order_cpu import ServerOrderCPU
 
 # TODO update the JSON string below
 json = "{}"

@@ -25,4 +25,8 @@ Core service record for a backup storage service including ID, status, quota, an
 |**backupComment** | **String** | Backup comment. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

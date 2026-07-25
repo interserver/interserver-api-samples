@@ -8,7 +8,7 @@ import io.swagger.model.BackupOrderPutResponse;
 import io.swagger.model.BackupRow;
 import io.swagger.model.BackupsOrder;
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse2001;
+import io.swagger.model.InlineResponse2002;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.SuccessTextResponse;
 

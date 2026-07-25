@@ -1,48 +1,48 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for GetScrubIpDetails200ResponseFilterFirewallRulesInner
 void main() {
-  final instance = GetScrubIpDetails200ResponseFilterFirewallRulesInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final GetScrubIpDetails200ResponseFilterFirewallRulesInner? instance = /* GetScrubIpDetails200ResponseFilterFirewallRulesInner(...) */ null;
+  // TODO add properties to the entity
 
   group(GetScrubIpDetails200ResponseFilterFirewallRulesInner, () {
-    // String id
+    // Optional<String?> id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // String sourceIp
+    // Optional<String?> sourceIp
     test('to test the property `sourceIp`', () async {
       // TODO
     });
 
-    // String destinationIp
+    // Optional<String?> destinationIp
     test('to test the property `destinationIp`', () async {
       // TODO
     });
 
-    // String protocolId
+    // Optional<String?> protocolId
     test('to test the property `protocolId`', () async {
       // TODO
     });
 
-    // String sourcePort
+    // Optional<String?> sourcePort
     test('to test the property `sourcePort`', () async {
       // TODO
     });
 
-    // String destinationPort
+    // Optional<String?> destinationPort
     test('to test the property `destinationPort`', () async {
       // TODO
     });
 
-    // String xdpAction
+    // Optional<String?> xdpAction
     test('to test the property `xdpAction`', () async {
       // TODO
     });
 
-    // String globalDrop
+    // Optional<String?> globalDrop
     test('to test the property `globalDrop`', () async {
       // TODO
     });

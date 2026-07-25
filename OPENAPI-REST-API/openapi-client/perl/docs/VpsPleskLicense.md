@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsPleskLicense
+# InterServerAPI::Object::VpsPleskLicense
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsPleskLicense;
+use InterServerAPI::Object::VpsPleskLicense;
 ```
 
 ## Properties

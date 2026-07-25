@@ -1,4 +1,4 @@
-# openapi::DnsRecord
+# interserverapi::DnsRecord
 
 A single DNS Record row for a Domain
 

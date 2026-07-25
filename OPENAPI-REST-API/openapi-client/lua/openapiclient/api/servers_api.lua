@@ -19,6 +19,7 @@ local basexx = require "basexx"
 local openapiclient_buy_it_now_list = require "openapiclient.model.buy_it_now_list"
 local openapiclient_charge_invoice_rows = require "openapiclient.model.charge_invoice_rows"
 local openapiclient_server = require "openapiclient.model.server"
+local openapiclient_server_bulk_ipmi_power_response = require "openapiclient.model.server_bulk_ipmi_power_response"
 local openapiclient_server_ipmi_live_info = require "openapiclient.model.server_ipmi_live_info"
 local openapiclient_server_order = require "openapiclient.model.server_order"
 local openapiclient_server_row = require "openapiclient.model.server_row"
@@ -31,6 +32,7 @@ local openapiclient_buy_it_now_server_order_200_response = require "openapiclien
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
 local openapiclient_place_buy_now_server_request = require "openapiclient.model.place_buy_now_server_request"
 local openapiclient_reverse_dns_entries = require "openapiclient.model.reverse_dns_entries"
+local openapiclient_server_order_post_request = require "openapiclient.model.server_order_post_request"
 local openapiclient_servers_cancel_200_response = require "openapiclient.model.servers_cancel_200_response"
 
 local servers_api = {}
@@ -59,7 +61,7 @@ local function new_servers_api(authority, basePath, schemes)
 	}, servers_api_mt)
 end
 
-function servers_api:add_server()
+function servers_api:add_server(server_order_post_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -70,9 +72,15 @@ function servers_api:add_server()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "POST")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(server_order_post_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -668,17 +676,17 @@ function servers_api:post_server_reverse_dns(id, reverse_dns_entries)
 	end
 end
 
-function servers_api:put_servers()
+function servers_api:server_bulk_ipmi_power_get(ids)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
-		path = string.format("%s/servers/order",
-			self.basePath);
+		path = string.format("%s/servers/bulk/ipmi_power?ids=%s",
+			self.basePath, http_util.encodeURIComponent(ids));
 	})
 
 	-- set HTTP verb
-	req.headers:upsert(":method", "PUT")
+	req.headers:upsert(":method", "GET")
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
@@ -699,7 +707,18 @@ function servers_api:put_servers()
 	end
 	local http_status = headers:get(":status")
 	if http_status:sub(1,1) == "2" then
-		return nil, headers
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_server_bulk_ipmi_power_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then

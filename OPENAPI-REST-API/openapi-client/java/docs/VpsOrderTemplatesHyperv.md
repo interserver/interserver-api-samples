@@ -10,4 +10,8 @@
 |**windows** | [**VpsOrderTemplatesHypervWindows**](VpsOrderTemplatesHypervWindows.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

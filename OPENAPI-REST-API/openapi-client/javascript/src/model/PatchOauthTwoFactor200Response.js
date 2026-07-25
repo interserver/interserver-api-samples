@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The PatchOauthTwoFactor200Response model module.
  * @module model/PatchOauthTwoFactor200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class PatchOauthTwoFactor200Response {
     /**

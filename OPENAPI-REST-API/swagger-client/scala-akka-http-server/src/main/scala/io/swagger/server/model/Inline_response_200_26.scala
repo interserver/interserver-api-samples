@@ -2,11 +2,9 @@ package io.swagger.server.model
 
 
 /**
- * @param text Confirmation message.
- * @param ticket The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
+ * @param ips A map of IP addresses to their current reverse DNS hostnames.
  */
 case class Inline_response_200_26 (
-  text: Option[String],
-  ticket: Option[Int]
+  ips: Option[Map[String, String]]
 )
 

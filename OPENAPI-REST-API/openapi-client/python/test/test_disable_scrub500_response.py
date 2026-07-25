@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.disable_scrub500_response import DisableScrub500Response
+from interserver_api_client.models.disable_scrub500_response import DisableScrub500Response
 
 class TestDisableScrub500Response(unittest.TestCase):
     """DisableScrub500Response unit test stubs"""

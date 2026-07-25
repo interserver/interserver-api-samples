@@ -19,4 +19,8 @@ Full detail view of a webhosting service including billing, service configuratio
 |**extraInfoTables** | [**WebsiteExtraInfoTables**](WebsiteExtraInfoTables.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

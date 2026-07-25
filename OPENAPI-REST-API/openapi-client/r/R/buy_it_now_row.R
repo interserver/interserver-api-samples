@@ -191,13 +191,13 @@ BuyItNowRow <- R6::R6Class(
         self$`server_id` <- this_object$`server_id`
       }
       if (!is.null(this_object$`cpu`)) {
-        self$`cpu` <- ApiClient$new()$deserializeObj(this_object$`cpu`, "array[BuyItNowRowCpuInner]", loadNamespace("openapi"))
+        self$`cpu` <- ApiClient$new()$deserializeObj(this_object$`cpu`, "array[BuyItNowRowCpuInner]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`memory`)) {
         self$`memory` <- this_object$`memory`
       }
       if (!is.null(this_object$`disk`)) {
-        self$`disk` <- ApiClient$new()$deserializeObj(this_object$`disk`, "map(character)", loadNamespace("openapi"))
+        self$`disk` <- ApiClient$new()$deserializeObj(this_object$`disk`, "map(character)", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`bandwidth`)) {
         self$`bandwidth` <- this_object$`bandwidth`
@@ -233,9 +233,9 @@ BuyItNowRow <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`server_id` <- this_object$`server_id`
-      self$`cpu` <- ApiClient$new()$deserializeObj(this_object$`cpu`, "array[BuyItNowRowCpuInner]", loadNamespace("openapi"))
+      self$`cpu` <- ApiClient$new()$deserializeObj(this_object$`cpu`, "array[BuyItNowRowCpuInner]", loadNamespace("interserverapi"))
       self$`memory` <- this_object$`memory`
-      self$`disk` <- ApiClient$new()$deserializeObj(this_object$`disk`, "map(character)", loadNamespace("openapi"))
+      self$`disk` <- ApiClient$new()$deserializeObj(this_object$`disk`, "map(character)", loadNamespace("interserverapi"))
       self$`bandwidth` <- this_object$`bandwidth`
       self$`ips` <- this_object$`ips`
       self$`location` <- this_object$`location`

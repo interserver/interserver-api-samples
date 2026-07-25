@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DnsNewRecord = Initialize-PSOpenAPIToolsDnsNewRecord  -Name myfamily.com `
+$DnsNewRecord = Initialize-InterserverApiDnsNewRecord  -Name myfamily.com `
  -Type null `
  -Content 127.0.0.1 `
  -Ttl 86400 `

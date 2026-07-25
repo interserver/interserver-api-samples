@@ -1,4 +1,4 @@
-# openapi::QuickserverOrderDistroSelUbuntu
+# interserverapi::QuickserverOrderDistroSelUbuntu
 
 
 ## Properties

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The WebsitesOrderServiceOffer model module.
  * @module model/WebsitesOrderServiceOffer
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsitesOrderServiceOffer {
     /**

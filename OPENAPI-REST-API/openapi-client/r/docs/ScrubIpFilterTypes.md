@@ -1,4 +1,4 @@
-# openapi::ScrubIpFilterTypes
+# interserverapi::ScrubIpFilterTypes
 
 Available scrub filter types for building firewall rules.
 

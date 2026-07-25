@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BackupOrderPutRequest } from './api';
+import { BackupOrderPutRequest } from '@interserver/myadmin-client';
 
 const instance: BackupOrderPutRequest = {
     validateOnly,

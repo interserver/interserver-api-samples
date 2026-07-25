@@ -158,33 +158,31 @@ class DenyRuleRecord {
 }
 
 /// The type of deny rule.
-class DenyRuleRecordTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const DenyRuleRecordTypeEnum._(this.value);
+enum DenyRuleRecordTypeEnum {
+  domain._(r'domain'),
+  email._(r'email'),
+  startswith._(r'startswith'),
+  destination._(r'destination'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const DenyRuleRecordTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const domain = DenyRuleRecordTypeEnum._(r'domain');
-  static const email = DenyRuleRecordTypeEnum._(r'email');
-  static const startswith = DenyRuleRecordTypeEnum._(r'startswith');
-  static const destination = DenyRuleRecordTypeEnum._(r'destination');
-
-  /// List of all possible values in this [enum][DenyRuleRecordTypeEnum].
-  static const values = <DenyRuleRecordTypeEnum>[
-    domain,
-    email,
-    startswith,
-    destination,
-  ];
-
+  /// Returns the instance of [DenyRuleRecordTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static DenyRuleRecordTypeEnum? fromJson(dynamic value) => DenyRuleRecordTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [DenyRuleRecordTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<DenyRuleRecordTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DenyRuleRecordTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -206,9 +204,10 @@ class DenyRuleRecordTypeEnumTypeTransformer {
 
   const DenyRuleRecordTypeEnumTypeTransformer._();
 
-  String encode(DenyRuleRecordTypeEnum data) => data.value;
+  String encode(DenyRuleRecordTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a DenyRuleRecordTypeEnum.
+  /// Returns the instance of [DenyRuleRecordTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -217,6 +216,9 @@ class DenyRuleRecordTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   DenyRuleRecordTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is DenyRuleRecordTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'domain': return DenyRuleRecordTypeEnum.domain;
@@ -232,7 +234,7 @@ class DenyRuleRecordTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [DenyRuleRecordTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static DenyRuleRecordTypeEnumTypeTransformer? _instance;
 }
 

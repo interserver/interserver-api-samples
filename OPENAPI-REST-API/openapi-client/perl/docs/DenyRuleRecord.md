@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DenyRuleRecord
+# InterServerAPI::Object::DenyRuleRecord
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DenyRuleRecord;
+use InterServerAPI::Object::DenyRuleRecord;
 ```
 
 ## Properties

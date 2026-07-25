@@ -1,4 +1,4 @@
-# openapi::ServerOrderOS
+# interserverapi::ServerOrderOS
 
 An operating system option available when ordering a dedicated server.
 

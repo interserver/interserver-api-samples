@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoOauthConfig();
+    instance = new InterserverApiClient.AccountInfoOauthConfig();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('AccountInfoOauthConfig', function() {
     it('should create an instance of AccountInfoOauthConfig', function() {
       // uncomment below and update the code to test AccountInfoOauthConfig
-      //var instance = new InterServerManagementApi.AccountInfoOauthConfig();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoOauthConfig);
+      //var instance = new InterserverApiClient.AccountInfoOauthConfig();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoOauthConfig);
     });
 
     it('should have the property callback (base name: "callback")', function() {
       // uncomment below and update the code to test the property callback
-      //var instance = new InterServerManagementApi.AccountInfoOauthConfig();
+      //var instance = new InterserverApiClient.AccountInfoOauthConfig();
       //expect(instance).to.be();
     });
 
     it('should have the property providers (base name: "providers")', function() {
       // uncomment below and update the code to test the property providers
-      //var instance = new InterServerManagementApi.AccountInfoOauthConfig();
+      //var instance = new InterserverApiClient.AccountInfoOauthConfig();
       //expect(instance).to.be();
     });
 

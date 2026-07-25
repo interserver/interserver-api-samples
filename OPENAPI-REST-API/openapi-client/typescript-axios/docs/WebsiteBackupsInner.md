@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WebsiteBackupsInner } from './api';
+import { WebsiteBackupsInner } from '@interserver/myadmin-client';
 
 const instance: WebsiteBackupsInner = {
     name,

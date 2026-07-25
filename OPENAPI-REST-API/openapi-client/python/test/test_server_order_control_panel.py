@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_control_panel import ServerOrderControlPanel
+from interserver_api_client.models.server_order_control_panel import ServerOrderControlPanel
 
 class TestServerOrderControlPanel(unittest.TestCase):
     """ServerOrderControlPanel unit test stubs"""

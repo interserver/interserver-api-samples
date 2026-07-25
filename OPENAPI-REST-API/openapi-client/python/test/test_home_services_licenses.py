@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_services_licenses import HomeServicesLicenses
+from interserver_api_client.models.home_services_licenses import HomeServicesLicenses
 
 class TestHomeServicesLicenses(unittest.TestCase):
     """HomeServicesLicenses unit test stubs"""
@@ -36,7 +36,7 @@ class TestHomeServicesLicenses(unittest.TestCase):
         model = HomeServicesLicenses()
         if include_optional:
             return HomeServicesLicenses(
-                links = openapi_client.models.home_services_licenses_links.HomeServicesLicensesLinks(
+                links = interserver_api_client.models.home_services_licenses_links.HomeServicesLicensesLinks(
                     386522 = '1.2.3.4', ),
                 count = 1
             )

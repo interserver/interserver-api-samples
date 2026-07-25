@@ -17,7 +17,7 @@ import WebsiteBackupsInner from './WebsiteBackupsInner';
 /**
  * The WebsiteBackups model module.
  * @module model/WebsiteBackups
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsiteBackups extends Array {
     /**

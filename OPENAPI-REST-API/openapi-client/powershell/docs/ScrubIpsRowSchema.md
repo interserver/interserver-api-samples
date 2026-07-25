@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ScrubIpsRowSchema = Initialize-PSOpenAPIToolsScrubIpsRowSchema  -ScrubIpId null `
+$ScrubIpsRowSchema = Initialize-InterserverApiScrubIpsRowSchema  -ScrubIpId null `
  -RepeatInvoicesCost null `
  -ScrubIpIp null `
  -ScrubIpStatus null `

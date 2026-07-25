@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeServicesLicensesLinks = Initialize-PSOpenAPIToolsHomeServicesLicensesLinks  -Var386522 1.2.3.4
+$HomeServicesLicensesLinks = Initialize-InterserverApiHomeServicesLicensesLinks  -Var386522 1.2.3.4
 ```
 
 - Convert the resource to JSON

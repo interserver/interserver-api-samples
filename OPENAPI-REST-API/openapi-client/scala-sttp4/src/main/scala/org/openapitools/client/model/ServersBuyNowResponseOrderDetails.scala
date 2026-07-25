@@ -21,4 +21,3 @@ case class ServersBuyNowResponseOrderDetails(
   /* The invoice ID generated for the order. */
   invoice_id: Option[Double] = None
 )
-

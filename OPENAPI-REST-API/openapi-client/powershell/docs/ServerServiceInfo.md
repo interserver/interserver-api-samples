@@ -44,7 +44,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerServiceInfo = Initialize-PSOpenAPIToolsServerServiceInfo  -ServerId 16058 `
+$ServerServiceInfo = Initialize-InterserverApiServerServiceInfo  -ServerId 16058 `
  -ServerHostname myserver.host.com `
  -ServerCustid 771282 `
  -ServerType 600 `

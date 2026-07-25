@@ -27,20 +27,12 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse2001 : IEquatable<InlineResponse2001>
     { 
         /// <summary>
-        /// Gets or Sets Success
+        /// Affiliate signup statistics and client-side data.
         /// </summary>
-        [Required]
+        /// <value>Affiliate signup statistics and client-side data.</value>
 
-        [DataMember(Name="success")]
-        public bool? Success { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Text
-        /// </summary>
-        [Required]
-
-        [DataMember(Name="text")]
-        public string Text { get; set; }
+        [DataMember(Name="data")]
+        public Object Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,8 +42,7 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse2001 {\n");
-            sb.Append("  Success: ").Append(Success).Append("\n");
-            sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -89,14 +80,9 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Success == other.Success ||
-                    Success != null &&
-                    Success.Equals(other.Success)
-                ) && 
-                (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
+                    Data == other.Data ||
+                    Data != null &&
+                    Data.Equals(other.Data)
                 );
         }
 
@@ -110,10 +96,8 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Success != null)
-                    hashCode = hashCode * 59 + Success.GetHashCode();
-                    if (Text != null)
-                    hashCode = hashCode * 59 + Text.GetHashCode();
+                    if (Data != null)
+                    hashCode = hashCode * 59 + Data.GetHashCode();
                 return hashCode;
             }
         }

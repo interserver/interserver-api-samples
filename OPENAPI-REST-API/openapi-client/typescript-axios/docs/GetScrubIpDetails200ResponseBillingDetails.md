@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetScrubIpDetails200ResponseBillingDetails } from './api';
+import { GetScrubIpDetails200ResponseBillingDetails } from '@interserver/myadmin-client';
 
 const instance: GetScrubIpDetails200ResponseBillingDetails = {
     service_last_invoice_date,

@@ -8,6 +8,58 @@
 #define MAX_BUFFER_LENGTH 4096
 #define MAX_NUMBER_LENGTH_LONG 21
 
+// Functions for enum EX for BillingAPI_getAffiliateDownload
+
+static char* getAffiliateDownload_EX_ToString(interserver_management_api_getAffiliateDownload_ex_e EX){
+    char *EXArray[] =  { "NULL", "csv", "xls", "xlsx", "pdf" };
+    return EXArray[EX];
+}
+
+static interserver_management_api_getAffiliateDownload_ex_e getAffiliateDownload_EX_FromString(char* EX){
+    int stringToReturn = 0;
+    char *EXArray[] =  { "NULL", "csv", "xls", "xlsx", "pdf" };
+    size_t sizeofArray = sizeof(EXArray) / sizeof(EXArray[0]);
+    while(stringToReturn < sizeofArray) {
+        if(strcmp(EX, EXArray[stringToReturn]) == 0) {
+            return stringToReturn;
+        }
+        stringToReturn++;
+    }
+    return 0;
+}
+
+/*
+// Function getAffiliateDownload_EX_convertToJSON is not currently used,
+// since conversion to JSON passes through the conversion of the model, and ToString. The function is kept for future reference.
+//
+static cJSON *getAffiliateDownload_EX_convertToJSON(interserver_management_api_getAffiliateDownload_ex_e EX) {
+    cJSON *item = cJSON_CreateObject();
+    if(cJSON_AddStringToObject(item, "ex", getAffiliateDownload_EX_ToString(EX)) == NULL) {
+        goto fail;
+    }
+    return item;
+    fail:
+    cJSON_Delete(item);
+    return NULL;
+}
+
+// Function getAffiliateDownload_EX_parseFromJSON is not currently used,
+// since conversion from JSON passes through the conversion of the model, and FromString. The function is kept for future reference.
+//
+static interserver_management_api_getAffiliateDownload_ex_e getAffiliateDownload_EX_parseFromJSON(cJSON* EXJSON) {
+    interserver_management_api_getAffiliateDownload_ex_e EXVariable = 0;
+    cJSON *EXVar = cJSON_GetObjectItemCaseSensitive(EXJSON, "ex");
+    if(!cJSON_IsString(EXVar) || (EXVar->valuestring == NULL))
+    {
+        goto end;
+    }
+    EXVariable = getAffiliateDownload_EX_FromString(EXVar->valuestring);
+    return EXVariable;
+end:
+    return 0;
+}
+*/
+
 // Functions for enum METHOD for BillingAPI_initiatePayment
 
 static char* initiatePayment_METHOD_ToString(interserver_management_api_initiatePayment_method_e METHOD){
@@ -61,274 +113,9 @@ end:
 */
 
 
-// Add Credit Card to Account
+// Store a credit card on the account — may return a verification flow
 //
-// Adds a new credit card to the account for billing. Card details are validated and stored securely. The card may require verification before it can be used as a payment method.
-//
-success_text_response_t*
-BillingAPI_addAccountCreditCard(apiClient_t *apiClient, char *name, char *address, char *city, char *state, char *country, char *zip, char *cc, char *cc_exp, char *cc_ccv2)
-{
-    list_t    *localVarQueryParameters = NULL;
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = list_createList();
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = list_createList();
-    char      *localVarBodyParameters = NULL;
-    size_t     localVarBodyLength = 0;
-
-    // clear the error code from the previous api call
-    apiClient->response_code = 0;
-
-    // create the path
-    char *localVarPath = strdup("/account/creditcards");
-
-
-
-
-
-    // form parameters
-    char *keyForm_name = NULL;
-    char * valueForm_name = 0;
-    keyValuePair_t *keyPairForm_name = 0;
-    if (name != NULL)
-    {
-        keyForm_name = strdup("name");
-        valueForm_name = strdup((name));
-        keyPairForm_name = keyValuePair_create(keyForm_name,valueForm_name);
-        list_addElement(localVarFormParameters,keyPairForm_name);
-    }
-
-    // form parameters
-    char *keyForm_address = NULL;
-    char * valueForm_address = 0;
-    keyValuePair_t *keyPairForm_address = 0;
-    if (address != NULL)
-    {
-        keyForm_address = strdup("address");
-        valueForm_address = strdup((address));
-        keyPairForm_address = keyValuePair_create(keyForm_address,valueForm_address);
-        list_addElement(localVarFormParameters,keyPairForm_address);
-    }
-
-    // form parameters
-    char *keyForm_city = NULL;
-    char * valueForm_city = 0;
-    keyValuePair_t *keyPairForm_city = 0;
-    if (city != NULL)
-    {
-        keyForm_city = strdup("city");
-        valueForm_city = strdup((city));
-        keyPairForm_city = keyValuePair_create(keyForm_city,valueForm_city);
-        list_addElement(localVarFormParameters,keyPairForm_city);
-    }
-
-    // form parameters
-    char *keyForm_state = NULL;
-    char * valueForm_state = 0;
-    keyValuePair_t *keyPairForm_state = 0;
-    if (state != NULL)
-    {
-        keyForm_state = strdup("state");
-        valueForm_state = strdup((state));
-        keyPairForm_state = keyValuePair_create(keyForm_state,valueForm_state);
-        list_addElement(localVarFormParameters,keyPairForm_state);
-    }
-
-    // form parameters
-    char *keyForm_country = NULL;
-    char * valueForm_country = 0;
-    keyValuePair_t *keyPairForm_country = 0;
-    if (country != NULL)
-    {
-        keyForm_country = strdup("country");
-        valueForm_country = strdup((country));
-        keyPairForm_country = keyValuePair_create(keyForm_country,valueForm_country);
-        list_addElement(localVarFormParameters,keyPairForm_country);
-    }
-
-    // form parameters
-    char *keyForm_zip = NULL;
-    char * valueForm_zip = 0;
-    keyValuePair_t *keyPairForm_zip = 0;
-    if (zip != NULL)
-    {
-        keyForm_zip = strdup("zip");
-        valueForm_zip = strdup((zip));
-        keyPairForm_zip = keyValuePair_create(keyForm_zip,valueForm_zip);
-        list_addElement(localVarFormParameters,keyPairForm_zip);
-    }
-
-    // form parameters
-    char *keyForm_cc = NULL;
-    char * valueForm_cc = 0;
-    keyValuePair_t *keyPairForm_cc = 0;
-    if (cc != NULL)
-    {
-        keyForm_cc = strdup("cc");
-        valueForm_cc = strdup((cc));
-        keyPairForm_cc = keyValuePair_create(keyForm_cc,valueForm_cc);
-        list_addElement(localVarFormParameters,keyPairForm_cc);
-    }
-
-    // form parameters
-    char *keyForm_cc_exp = NULL;
-    char * valueForm_cc_exp = 0;
-    keyValuePair_t *keyPairForm_cc_exp = 0;
-    if (cc_exp != NULL)
-    {
-        keyForm_cc_exp = strdup("cc_exp");
-        valueForm_cc_exp = strdup((cc_exp));
-        keyPairForm_cc_exp = keyValuePair_create(keyForm_cc_exp,valueForm_cc_exp);
-        list_addElement(localVarFormParameters,keyPairForm_cc_exp);
-    }
-
-    // form parameters
-    char *keyForm_cc_ccv2 = NULL;
-    char * valueForm_cc_ccv2 = 0;
-    keyValuePair_t *keyPairForm_cc_ccv2 = 0;
-    if (cc_ccv2 != NULL)
-    {
-        keyForm_cc_ccv2 = strdup("cc_ccv2");
-        valueForm_cc_ccv2 = strdup((cc_ccv2));
-        keyPairForm_cc_ccv2 = keyValuePair_create(keyForm_cc_ccv2,valueForm_cc_ccv2);
-        list_addElement(localVarFormParameters,keyPairForm_cc_ccv2);
-    }
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    list_addElement(localVarContentType,"multipart/form-data"); //consumes
-    list_addElement(localVarContentType,"application/json"); //consumes
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    localVarBodyLength,
-                    "POST");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
-    //nonprimitive not container
-    success_text_response_t *elementToReturn = NULL;
-    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
-        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = success_text_response_parseFromJSON(BillingAPIlocalVarJSON);
-        cJSON_Delete(BillingAPIlocalVarJSON);
-        if(elementToReturn == NULL) {
-            // return 0;
-        }
-    }
-
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    
-    
-    list_freeList(localVarFormParameters);
-    list_freeList(localVarHeaderType);
-    list_freeList(localVarContentType);
-    free(localVarPath);
-    if (keyForm_name) {
-        free(keyForm_name);
-        keyForm_name = NULL;
-    }
-    if (valueForm_name) {
-        free(valueForm_name);
-        valueForm_name = NULL;
-    }
-    free(keyPairForm_name);
-    if (keyForm_address) {
-        free(keyForm_address);
-        keyForm_address = NULL;
-    }
-    if (valueForm_address) {
-        free(valueForm_address);
-        valueForm_address = NULL;
-    }
-    free(keyPairForm_address);
-    if (keyForm_city) {
-        free(keyForm_city);
-        keyForm_city = NULL;
-    }
-    if (valueForm_city) {
-        free(valueForm_city);
-        valueForm_city = NULL;
-    }
-    free(keyPairForm_city);
-    if (keyForm_state) {
-        free(keyForm_state);
-        keyForm_state = NULL;
-    }
-    if (valueForm_state) {
-        free(valueForm_state);
-        valueForm_state = NULL;
-    }
-    free(keyPairForm_state);
-    if (keyForm_country) {
-        free(keyForm_country);
-        keyForm_country = NULL;
-    }
-    if (valueForm_country) {
-        free(valueForm_country);
-        valueForm_country = NULL;
-    }
-    free(keyPairForm_country);
-    if (keyForm_zip) {
-        free(keyForm_zip);
-        keyForm_zip = NULL;
-    }
-    if (valueForm_zip) {
-        free(valueForm_zip);
-        valueForm_zip = NULL;
-    }
-    free(keyPairForm_zip);
-    if (keyForm_cc) {
-        free(keyForm_cc);
-        keyForm_cc = NULL;
-    }
-    if (valueForm_cc) {
-        free(valueForm_cc);
-        valueForm_cc = NULL;
-    }
-    free(keyPairForm_cc);
-    if (keyForm_cc_exp) {
-        free(keyForm_cc_exp);
-        keyForm_cc_exp = NULL;
-    }
-    if (valueForm_cc_exp) {
-        free(valueForm_cc_exp);
-        valueForm_cc_exp = NULL;
-    }
-    free(keyPairForm_cc_exp);
-    if (keyForm_cc_ccv2) {
-        free(keyForm_cc_ccv2);
-        keyForm_cc_ccv2 = NULL;
-    }
-    if (valueForm_cc_ccv2) {
-        free(valueForm_cc_ccv2);
-        valueForm_cc_ccv2 = NULL;
-    }
-    free(keyPairForm_cc_ccv2);
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Add Credit Card for Billing
-//
-// Adds a new credit card to the account for use as a payment method. If the card requires verification, the response indicates the next step. Complete verification via `GET /billing/creditcards/{id}/verify` followed by `POST /billing/creditcards/{id}/verify` before the card can be used for payments.
+// Stores a new credit card on the account so it can later be selected via `updateBillingPaymentMethod` or used directly with `initiatePayment` (`method=cc`). The card number has dashes stripped and is sanitized through `FILTER_SANITIZE_NUMBER_INT`; billing address fields are HTML-entity-escaped server-side; the CC number is encrypted at rest via `App::encrypt()`. The flow may return `action='verify'` indicating a two-step micro-charge verification is required before the card is usable — complete it with `patchBillingCreditCardVerify` then `postBillingCreditCardVerify`. Sibling ops: `updateBillingCreditCard`, `deleteBillingCreditCard`, `patchBillingCreditCardVerify`, `postBillingCreditCardVerify`, `updateBillingPaymentMethod`.  **Body fields (JSON or multipart, schema `BillingAddCcRequest`):** - `cc` (string, required) — card number; dashes stripped, non-digits filtered. - `name` (string, required) — cardholder name. - `cc_exp` (string, required) — `MM/YYYY`. - `address` (string, required), `city`, `state`, `country`, `zip` (strings) — billing address; HTML-entity-escaped.  **Returns:** - **Added directly:** `{success: true, text: \"Card Added Successfully!\"}`. - **Verification needed:** `{success: false, text: \"Kindly verify your card by updating the amounts in the fields\", action: \"verify\"}` — proceed to `patchBillingCreditCardVerify`.  **Side effects:** - Inserts the encrypted card into the account's `ccs` array (managed via `parse_ccs` / `add_cc`). - May trigger a small initial test charge (gateway-dependent). - First-card-on-account triggers MaxMind + FraudRecord risk-score recomputation.  **Auth:** Session/API key.  **Errors:** - `Card number, Full Name, Expiry date are required!` — required field missing/empty. - `401` — unauthenticated. - Gateway/AVS error text — declined, mismatch, etc.  **Related calls:** - **Verify (if `action='verify'`):** `patchBillingCreditCardVerify` (CVV + initiate micro-charge) → `postBillingCreditCardVerify` (submit amounts). - **Make it the default:** `updateBillingPaymentMethod` with `payment_method=cc<idx>`. - **Pay an invoice with it:** `initiatePayment` (`method=cc`). 
 //
 success_text_response_t*
 BillingAPI_addBillingCreditCard(apiClient_t *apiClient, billing_add_cc_request_t *billing_add_cc_request)
@@ -417,9 +204,9 @@ end:
 
 }
 
-// Create Prepay Deposit
+// Create a prepay deposit and return an invoice id to fund it
 //
-// Creates a new prepay balance deposit and returns the invoice ID that must be paid to activate it. The prepay balance can then be used as a payment method for future orders. Use `/billing/invoices/{id}` to retrieve the generated invoice details.
+// Creates a prepay row (`prepays` table) at the requested amount and inserts a matching `invoices` row (`Prepay ID {pid} Invoice`) that the customer must pay through `initiatePayment` before the balance becomes usable. The prepay is added with `PREPAY_TYPE_ANY` / `PREPAY_SERVICE_ANY` defaults via `add_prepay()`. Use to seed an account balance the customer can later spend via `method=prepay` at checkout. **Real money** — funding the returned invoice charges a real payment method. Sibling ops: `getBillingPrePays`, `deleteBillingPrepay`, `getBillingInvoice`, `initiatePayment`.  **Body fields (JSON or multipart, schema `BillingPrepayRequest`):** - `amount` (number, required) — deposit size in account currency. **Minimum $10**; smaller values are rejected. - `module` (string, required) — service module scope (`default` for any service, or specific like `vps`, `webhosting`). - `automatic_use` (bool, required) — when `true`, the balance auto-applies to future invoices in the scoped module.  **Returns:** `{text: \"Thank you! Prepay created! Kindly pay the invoice to activate the prepay fund.\", invoice: <integer>}` — pass `invoice` to `initiatePayment` (use a real `method` like `cc` / `paypal`, not `prepay` — you can't fund a prepay with a prepay).  **Side effects:** - Inserts `prepays` row. - Inserts `invoices` row (`invoices_description = \"Prepay ID {pid} Invoice\"`, `invoices_paid=0`, `invoices_module='default'`).  **Auth:** Session/API key.  **Errors:** - `Sorry! Minimum prepay amount is $10.00` — amount below floor. - `Something went wrong! Try again or contact our support team!` — invoice insert failed. - `401` — unauthenticated.  **Related calls:** - **Confirm invoice:** `getBillingInvoice` with the returned `invoice` id. - **Pay it:** `initiatePayment` (`method=cc|paypal|...`, not `prepay`). - **Verify it's now usable:** `getBillingPrePays` (look for `prepay_remaining > 0`). - **Cancel before paying:** `deleteBillingPrepay`.  **Example happy path:** ```text POST /apiv2/billing/prepays { \"amount\": 100, \"module\": \"default\", \"automatic_use\": true } -> { \"text\": \"...\", \"invoice\": 25296701 } GET /apiv2/billing/pay/cc/25296701 -> { \"type\": \"single\", \"text\": \"Payment processed.\" } GET /apiv2/billing/prepays -> [{ \"prepay_id\": 99, \"prepay_remaining\": 100, ... }] ``` 
 //
 success_text_response_t*
 BillingAPI_addBillingPrepay(apiClient_t *apiClient, billing_prepay_request_t *billing_prepay_request)
@@ -508,89 +295,9 @@ end:
 
 }
 
-// Remove Credit Card
+// Remove a stored credit card from the account
 //
-// Removes a credit card from the account. If this is the default payment method, select a new default via `/billing/payment_method` afterward.
-//
-char*
-BillingAPI_deleteAccountCreditCard(apiClient_t *apiClient, char *id)
-{
-    list_t    *localVarQueryParameters = NULL;
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-    size_t     localVarBodyLength = 0;
-
-    // clear the error code from the previous api call
-    apiClient->response_code = 0;
-
-    // create the path
-    char *localVarPath = strdup("/account/creditcards/{id}");
-
-    if(!id)
-        goto end;
-
-
-    // Path Params
-    long sizeOfPathParams_id = strlen(id)+3 + sizeof("{ id }") - 1;
-    if(id == NULL) {
-        goto end;
-    }
-    char* localVarToReplace_id = malloc(sizeOfPathParams_id);
-    sprintf(localVarToReplace_id, "{%s}", "id");
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_id, id);
-
-
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    localVarBodyLength,
-                    "DELETE");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Simple string response");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
-    //primitive return type simple string
-    char* elementToReturn = NULL;
-    if(apiClient->response_code >= 200 && apiClient->response_code < 300)
-        elementToReturn = strdup((char*)apiClient->dataReceived);
-
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    
-    
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    free(localVarToReplace_id);
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Delete Credit Card
-//
-// Removes the selected credit card from the account. Use `/billing/payment_method` to select a new default payment method after deleting a card.
+// Removes the indexed credit card from the account's `ccs` collection. If the deleted card was also the account's primary `cc`, the primary field is cleared — `initiatePayment` (`method=cc`) will then return an error until a new default is designated via `updateBillingPaymentMethod`. **Irreversible** — to re-store the same card, re-run `addBillingCreditCard`. Sibling ops: `addBillingCreditCard`, `updateBillingCreditCard`, `updateBillingPaymentMethod`, `getBillingCreditCardVerify`.  **Path param:** - `id` (integer, required) — credit card index from `parse_ccs`.  **Body:** None.  **Returns:** `Card removed successfully.`.  **Side effects:** - Removes the entry from the `ccs` array; re-serialized via `myadmin_stringify`. - When the deleted card was primary: clears account-level `cc`.  **Auth:** Session/API key. Card ownership enforced.  **Errors:** - `Invalid Credit Card Passed` — `id` not in `parse_ccs`. - `401` — unauthenticated.  **Related calls:** - **Set a new default:** `updateBillingPaymentMethod`. - **Add a replacement:** `addBillingCreditCard`. 
 //
 success_text_response_t*
 BillingAPI_deleteBillingCreditCard(apiClient_t *apiClient, int *id)
@@ -677,9 +384,9 @@ end:
 
 }
 
-// Delete Invoice
+// Cancel a pending unpaid invoice — and its pending service or repeat invoice
 //
-// Deletes a pending (unpaid) invoice from the account. Only invoices with a pending payment status can be deleted. Paid invoices cannot be removed. Related service records and repeat invoices are also cleaned up.
+// Cancels an unpaid invoice and cleans up the records it represents. Behavior depends on what the invoice funds: a **prepay** invoice is routed to `deleteBillingPrepay`; an **initial service charge** (where `repeat_invoices_id` matches the service's `_invoice` field) deletes the `repeat_invoices` row, all child `invoices`, AND the pending service row from the module's table; an **addon/recurring** invoice just deletes that one `invoices` row plus its `repeat_invoices` row. **Only invoices for services in `pending` status can be deleted** — once provisioned, the service must be cancelled via the per-service Cancel endpoint instead. **Irreversible**. Sibling ops: `getBillingInvoice`, `deleteBillingPrepay`, `VPSCancel` / `CancelDomain` / `mailCancel` / `webhostingCancel` / etc.  **Path param:** - `id` (integer, required) — invoice id (`invoices_type=1`, ownership enforced via `invoices_custid`).  **Body:** None.  **Returns:** `Invoice Deleted` text.  **Side effects:** (depends on invoice type) - **Prepay invoice** (description matches `Prepay ID N Invoice`) — delegates to `deleteBillingPrepay($pid)`. - **Initial service invoice** (`repeat_invoices_id == service._invoice`) — deletes:   - the `repeat_invoices` row,   - every `invoices` row for that service,   - the service row in `{settings['TABLE']}`. - **Addon/recurring invoice** — deletes only the matching `repeat_invoices` row and the single `invoices` row.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - `Invalid invoice` — `id` not found or wrong owner. - `Invalid service` — invoice references a service that no longer exists. - `Can only delete invoices for pending services or prepays` — service is `active`/`suspended`/`cancelled`. - `401` — unauthenticated.  **Related calls:** - **List candidates:** `getBillingInvoices`. - **Detail first:** `getBillingInvoice`. - **For active services:** `VPSCancel`, `CancelDomain`, `mailCancel`, `webhostingCancel`, `licensesCancel`, `sslCancel`, `cancelScrubIp`, `floating_ipsCancel`, `cancelBackup`, `quickserversCancel`, `serversCancel` — these use `Billing\\CancelService::go()`. - **For prepay invoices:** `deleteBillingPrepay` (delegated automatically). 
 //
 success_text_response_t*
 BillingAPI_deleteBillingInvoice(apiClient_t *apiClient, int *id)
@@ -766,9 +473,9 @@ end:
 
 }
 
-// Delete Prepay Balance
+// Delete an unfunded prepay or strip its unpaid funding invoices
 //
-// Deletes a prepay balance from the account. The balance must have remaining funds to be eligible for deletion. Use `GET /billing/prepays` to list available prepay balances and their IDs.
+// Removes a prepay from the account, with one safety rule: a prepay that still has usable credit (`prepay_remaining > $0.01`) cannot be deleted *unless* it also has unpaid funding invoices we can clean up — in which case those unpaid `invoices` rows are deleted and the prepay row stays. Use to back out a never-funded prepay, or to surface stuck unpaid funding invoices. **Irreversible** — funded credit is unrecoverable through this endpoint. Sibling ops: `getBillingPrePays`, `addBillingPrepay`, `deleteBillingInvoice`.  **Path param:** - `id` (integer, required) — prepay id from `getBillingPrePays.prepay_id`.  **Body:** None.  **Returns:** - When unpaid funding invoices were stripped but prepay still has funds: `\"PrePay {id} Unpaid Invoices Deleted\"`. - When the prepay row was deleted: `\"PrePay {id} deleted.\"`.  **Side effects:** - Deletes any unpaid `invoices` rows matching `invoices_description = \"Prepay ID {id} Invoice\"` and `invoices_paid=0`. - Deletes the `prepays` row when remaining balance ≤ $0.01.  **Auth:** Session/API key.  **Errors:** - `Invalid Prepay` — `id` not found. - `That prepay still hands funds available on it` — funds remain AND no unpaid invoices to clean up. - `There was an error deleting the prepay, please contact support` — delete affected 0 rows. - `401` — unauthenticated.  **Related calls:** - **List first:** `getBillingPrePays`. - **Re-add later:** `addBillingPrepay`. - **Cancel a specific funding invoice:** `deleteBillingInvoice` (routes prepay invoices here automatically). 
 //
 success_text_response_t*
 BillingAPI_deleteBillingPrepay(apiClient_t *apiClient, int *id)
@@ -855,9 +562,9 @@ end:
 
 }
 
-// List Affiliate Banner Assets
+// List affiliate banner image assets with filename and dimensions
 //
-// Returns the catalog of available affiliate banner images with their dimensions. Use these assets to build marketing creatives for your affiliate campaigns. Each banner includes the image filename, width, and height for layout purposes.
+// Returns the catalog of pre-built banner images affiliates can embed on partner sites — same catalog for every account (not per-affiliate). Use to render a creative-asset picker in the affiliate dashboard. Each row carries the image filename and dimensions so the client can build correctly-sized `<img>` tags. Read-only. Sibling ops: `getAffiliateRichReport`, `getAffiliateSalesGraph`, `getAffiliateTrafficGraph`, `getAffiliateWebTraffic`, `getAffiliateSignups`, `updateAffiliateDockSetup`.  **Path/Query/Body:** None.  **Returns:** Array of `AffiliateBannerRow`: - `image` (string) — filename (e.g. `12946798.gif`); served from the affiliate asset bucket. - `width` (string) — pixels. - `height` (string) — pixels.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated. 
 //
 list_t*
 BillingAPI_getAffiliateBanners(apiClient_t *apiClient)
@@ -939,9 +646,147 @@ end:
 
 }
 
-// Get Affiliate Performance Report
+// Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
 //
-// Returns a detailed affiliate performance report with commission totals, conversion rates, and traffic summary. Use this for a comprehensive overview of your affiliate program performance in a single request.
+// Exports the affiliate signup report as a downloadable file in the requested format. Use for accounting, tax filings, or sharing reports outside the dashboard. **Response is a binary stream, not JSON** — the handler emits the file body with matching `Content-Type` + `Content-Disposition: attachment` headers and `exit()`s the request immediately. Consumers must read the raw response body. Sibling ops: `getAffiliateRichReport`, `getAffiliateSignups`, `getAffiliateSalesGraph`.  **Query params:** - `ex` (string, optional, enum `csv`/`xls`/`xlsx`/`pdf`, default `csv`) — export format. - `st` (string, optional, default `default`) — status filter (same as `getAffiliateSignups`). - `year` (integer, optional, default current year) — report scope.  **Returns:** File download with format-appropriate Content-Type: - `csv` → `text/csv`, filename `Interserver_Affiliates.csv`. - `xls` / `xlsx` → `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`, filename `Interserver_Affiliates.<ext>`. - `pdf` → `application/pdf`, filename `Interserver_Affiliates.pdf`.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated. 
+//
+void
+BillingAPI_getAffiliateDownload(apiClient_t *apiClient, char *st, interserver_management_api_getAffiliateDownload_ex_e ex, int *year)
+{
+    list_t    *localVarQueryParameters = list_createList();
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = NULL;
+    char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
+
+    // create the path
+    char *localVarPath = strdup("/affiliate/download");
+
+
+
+
+
+    // query parameters
+    char *keyQuery_st = NULL;
+    char * valueQuery_st = NULL;
+    keyValuePair_t *keyPairQuery_st = 0;
+    if (st)
+    {
+        keyQuery_st = strdup("st");
+        valueQuery_st = strdup((st));
+        keyPairQuery_st = keyValuePair_create(keyQuery_st, valueQuery_st);
+        list_addElement(localVarQueryParameters,keyPairQuery_st);
+    }
+
+    // query parameters
+    char *keyQuery_ex = NULL;
+    interserver_management_api_getAffiliateDownload_ex_e valueQuery_ex ;
+    keyValuePair_t *keyPairQuery_ex = 0;
+    if (ex)
+    {
+        keyQuery_ex = strdup("ex");
+        valueQuery_ex = (ex);
+        keyPairQuery_ex = keyValuePair_create(keyQuery_ex, strdup(getAffiliateDownload_EX_ToString(
+        valueQuery_ex)));
+        list_addElement(localVarQueryParameters,keyPairQuery_ex);
+    }
+
+    // query parameters
+    char *keyQuery_year = NULL;
+    char * valueQuery_year = NULL;
+    keyValuePair_t *keyPairQuery_year = 0;
+    if (year)
+    {
+        keyQuery_year = strdup("year");
+        valueQuery_year = calloc(1,MAX_NUMBER_LENGTH);
+        snprintf(valueQuery_year, MAX_NUMBER_LENGTH, "%d", *year);
+        keyPairQuery_year = keyValuePair_create(keyQuery_year, valueQuery_year);
+        list_addElement(localVarQueryParameters,keyPairQuery_year);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    localVarBodyLength,
+                    "GET");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","Affiliate report file download. The response Content-Type matches the requested format (text/csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, or application/pdf).");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    //No return type
+end:
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    list_freeList(localVarQueryParameters);
+    
+    
+    list_freeList(localVarHeaderType);
+    
+    free(localVarPath);
+    if(keyQuery_st){
+        free(keyQuery_st);
+        keyQuery_st = NULL;
+    }
+    if(valueQuery_st){
+        free(valueQuery_st);
+        valueQuery_st = NULL;
+    }
+    if(keyPairQuery_st){
+        keyValuePair_free(keyPairQuery_st);
+        keyPairQuery_st = NULL;
+    }
+    if(keyQuery_st){
+        free(keyQuery_st);
+        keyQuery_st = NULL;
+    }
+    if(keyPairQuery_st){
+        keyValuePair_free(keyPairQuery_st);
+        keyPairQuery_st = NULL;
+    }
+    if(keyQuery_ex){
+        free(keyQuery_ex);
+        keyQuery_ex = NULL;
+    }
+    if(valueQuery_ex){
+        free(valueQuery_ex);
+        valueQuery_ex = NULL;
+    }
+    if(keyPairQuery_ex){
+        keyValuePair_free(keyPairQuery_ex);
+        keyPairQuery_ex = NULL;
+    }
+    if(keyQuery_ex){
+        free(keyQuery_ex);
+        keyQuery_ex = NULL;
+    }
+    if(keyPairQuery_ex){
+        keyValuePair_free(keyPairQuery_ex);
+        keyPairQuery_ex = NULL;
+    }
+
+}
+
+// Read a combined affiliate performance summary (HTML payload)
+//
+// Returns a server-rendered HTML/text summary report combining commission totals, conversion rates, and traffic in one round-trip — useful for embedding in a dashboard panel. The payload is **not structured JSON** — for chart-friendly data use `getAffiliateSalesGraph` and `getAffiliateTrafficGraph` instead. Backed by `affiliate_summary_report()`. Sibling ops: `getAffiliateSalesGraph`, `getAffiliateTrafficGraph`, `getAffiliateSignups`, `getAffiliateDownload`, `getAffiliateWebTraffic`.  **Path/Query/Body:** None.  **Returns:** `{text: \"<html-or-plain-text-report>\"}`.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **Structured time series:** `getAffiliateSalesGraph`, `getAffiliateTrafficGraph`. - **Per-signup detail:** `getAffiliateSignups`. - **CSV/XLSX export:** `getAffiliateDownload`. 
 //
 text_response_t*
 BillingAPI_getAffiliateRichReport(apiClient_t *apiClient)
@@ -1013,9 +858,9 @@ end:
 
 }
 
-// Get Affiliate Sales Graph Data
+// Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
 //
-// Returns time-series sales data for the requested number of days. Use this to render sales trend charts in an affiliate dashboard. Each data point represents aggregated sales for a time period.
+// Returns aggregated sales time-series data — monthly buckets with sale counts/totals — for the requested look-back window. Use to render a sales trend chart in the affiliate dashboard. Bucket granularity is fixed at monthly by `sales_graph_lte_data`; increasing `days` extends the window, it does not change bucket size. Sibling ops: `getAffiliateTrafficGraph` (clicks), `getAffiliateRichReport` (combined summary), `getAffiliateSignups`, `getAffiliateDownload`.  **Query params:** - `days` (integer, optional, default `365`) — look-back window in days.  **Returns:** `StatusMonthlyBreakdown` — buckets keyed by month with aggregated sale counts and amounts.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated. 
 //
 status_monthly_breakdown_t*
 BillingAPI_getAffiliateSalesGraph(apiClient_t *apiClient, int *days)
@@ -1112,14 +957,14 @@ end:
 
 }
 
-// Get Affiliate Sales Report
+// Read affiliate signup stats and per-customer conversion data
 //
-// Returns the affiliate sales report with commission amounts and order summaries. Use this for tabular sales data export or to reconcile commission payouts against individual referral orders.
+// Returns referred-customer signup statistics with optional status filtering — counts, conversion data, and per-customer detail produced by `affiliates_clientside()`. The inner `data` shape varies by status filter; pass `default` for the full dataset. Sibling ops: `getAffiliateRichReport`, `getAffiliateSalesGraph`, `getAffiliateTrafficGraph`, `getAffiliateDownload`.  **Query params:** - `st` (string, optional, default `default`) — status filter. `default` returns all; other values narrow the results to that status.  **Returns:** `{data: <object>}` — signup counts, conversions, per-customer detail (shape depends on `st`).  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated. 
 //
-text_response_t*
-BillingAPI_getAffiliateSalesReport(apiClient_t *apiClient)
+get_affiliate_signups_200_response_t*
+BillingAPI_getAffiliateSignups(apiClient_t *apiClient, char *st)
 {
-    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarQueryParameters = list_createList();
     list_t    *localVarHeaderParameters = NULL;
     list_t    *localVarFormParameters = NULL;
     list_t *localVarHeaderType = list_createList();
@@ -1131,11 +976,23 @@ BillingAPI_getAffiliateSalesReport(apiClient_t *apiClient)
     apiClient->response_code = 0;
 
     // create the path
-    char *localVarPath = strdup("/affiliate/sales_report");
+    char *localVarPath = strdup("/affiliate/signups");
 
 
 
 
+
+    // query parameters
+    char *keyQuery_st = NULL;
+    char * valueQuery_st = NULL;
+    keyValuePair_t *keyPairQuery_st = 0;
+    if (st)
+    {
+        keyQuery_st = strdup("st");
+        valueQuery_st = strdup((st));
+        keyPairQuery_st = keyValuePair_create(keyQuery_st, valueQuery_st);
+        list_addElement(localVarQueryParameters,keyPairQuery_st);
+    }
     list_addElement(localVarHeaderType,"application/json"); //produces
     apiClient_invoke(apiClient,
                     localVarPath,
@@ -1150,17 +1007,17 @@ BillingAPI_getAffiliateSalesReport(apiClient_t *apiClient)
 
     // uncomment below to debug the error response
     //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Response with a text message field.");
+    //    printf("%s\n","Affiliate signup statistics.");
     //}
     // uncomment below to debug the error response
     //if (apiClient->response_code == 401) {
     //    printf("%s\n","Unauthorized");
     //}
     //nonprimitive not container
-    text_response_t *elementToReturn = NULL;
+    get_affiliate_signups_200_response_t *elementToReturn = NULL;
     if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
         cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = text_response_parseFromJSON(BillingAPIlocalVarJSON);
+        elementToReturn = get_affiliate_signups_200_response_parseFromJSON(BillingAPIlocalVarJSON);
         cJSON_Delete(BillingAPIlocalVarJSON);
         if(elementToReturn == NULL) {
             // return 0;
@@ -1173,12 +1030,24 @@ BillingAPI_getAffiliateSalesReport(apiClient_t *apiClient)
         apiClient->dataReceived = NULL;
         apiClient->dataReceivedLen = 0;
     }
-    
+    list_freeList(localVarQueryParameters);
     
     
     list_freeList(localVarHeaderType);
     
     free(localVarPath);
+    if(keyQuery_st){
+        free(keyQuery_st);
+        keyQuery_st = NULL;
+    }
+    if(valueQuery_st){
+        free(valueQuery_st);
+        valueQuery_st = NULL;
+    }
+    if(keyPairQuery_st){
+        keyValuePair_free(keyPairQuery_st);
+        keyPairQuery_st = NULL;
+    }
     return elementToReturn;
 end:
     free(localVarPath);
@@ -1186,9 +1055,9 @@ end:
 
 }
 
-// Get Affiliate Traffic Graph Data
+// Read aggregated affiliate referral click/visit time-series for chart rendering
 //
-// Returns time-series traffic data for the requested number of days. Use this to render click and visit trend charts in an affiliate dashboard. Each data point represents aggregated traffic counts for a time period.
+// Returns aggregated click/visit time-series data from the `affiliate_traffic` table — monthly buckets with visit counts — for the requested look-back window. Pair with `getAffiliateSalesGraph` to compute click-to-sale conversion ratios client-side. Sibling ops: `getAffiliateSalesGraph` (sales), `getAffiliateWebTraffic` (raw per-visit log entries), `getAffiliateRichReport`.  **Query params:** - `days` (integer, optional, default `180`) — look-back window in days.  **Returns:** `MonthlyCounts` — buckets keyed by month with aggregated visit counts.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated. 
 //
 monthly_counts_t*
 BillingAPI_getAffiliateTrafficGraph(apiClient_t *apiClient, int *days)
@@ -1285,9 +1154,9 @@ end:
 
 }
 
-// List Affiliate Web Traffic Entries
+// List the 20 most recent affiliate referral visits with IP, referrer, timestamp
 //
-// Returns individual web traffic log entries for affiliate referrals, including visitor IP address, referral URL, and timestamp. Use this to audit traffic sources, identify top referrers, or investigate suspicious click patterns.
+// Returns the 20 most recent raw referral visits from the `affiliate_traffic` table — visitor IP, full referral URL, and timestamp per row. Use to audit traffic sources, identify top referrers, or investigate suspicious click patterns. Hard-coded limit 20 (no pagination); for longer-term analysis use `getAffiliateTrafficGraph` or export via `getAffiliateDownload`. Sibling ops: `getAffiliateTrafficGraph`, `getAffiliateSignups`, `getAffiliateRichReport`, `getAffiliateDownload`.  **Path/Query/Body:** None.  **Returns:** Array of `AffiliateTrafficRow`: - `traffic_id` (string) — row id (most-recent-first). - `traffic_ip` (string) — visitor IP (IPv4 or IPv6). - `traffic_url` (string) — referral landing URL. - `traffic_affiliate` (string) — affiliate (= session `account_id`). - `traffic_referrer` (string) — HTTP Referer (may be empty). - `traffic_timestamp` (string) — `YYYY-MM-DD HH:MM:SS` in account timezone.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated. 
 //
 list_t*
 BillingAPI_getAffiliateWebTraffic(apiClient_t *apiClient)
@@ -1369,9 +1238,9 @@ end:
 
 }
 
-// Get Shopping Cart Contents
+// Read the current shopping cart contents, totals, and available payment methods
 //
-// Returns the current cart contents, available payment methods, and checkout metadata for the authenticated account. Use this to display the cart page, show totals, and determine which payment options are available before directing the user to `/pay/{method}/{invoices}`.
+// Returns the customer's checkout state — every pending/unpaid invoice on the account aggregated as a cart, plus available payment methods, currency totals, and checkout metadata. Use to render a checkout page or, in agent flows, as a pre-payment confirmation step before calling `initiatePayment`. Backed by the `cart` helper module; `modules_json` and `csrf_token` are stripped from the response. Read-only. Sibling ops: `getBillingInvoices` (raw list), `getBillingInvoice` (one invoice in detail), `initiatePayment` (pay), `getBillingPrePays` (check prepay balance first).  **Path/Query/Body:** None.  **Returns:** A cart object with: - Line items aggregated from unpaid `invoices` rows for the session account. - Currency-normalized subtotal / total. - Available payment methods (filtered by feature flags, account country, and which gateways are enabled): `cc`, `paypal`, `btcpay`, `coinbase`, `payu`, `ccavenue`, `cashfree`, `payssion`, `prepay`. - Per-invoice description, module, service-id, amount.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **List unpaid invoices directly:** `getBillingInvoices`. - **Drill into one invoice:** `getBillingInvoice`. - **Pay:** `initiatePayment` (use the cart's invoice ids or the `SERVICEvpsN` / `INVvpsN` tag forms). - **Top up prepay first:** `getBillingPrePays`, `addBillingPrepay`. 
 //
 object_t*
 BillingAPI_getBillingCart(apiClient_t *apiClient)
@@ -1443,9 +1312,9 @@ end:
 
 }
 
-// Get Credit Card Verification Requirements
+// Probe whether a stored card still needs micro-charge verification
 //
-// Retrieves the verification requirements for a newly added credit card. The response indicates whether the card requires micro-charge amount confirmation or CVV validation. Use this before presenting a verification form to the user.
+// Status probe for the credit-card verification flow. Read-only — current implementation returns a placeholder string indicating verification is pending; the actual two-step verification happens via `patchBillingCreditCardVerify` (initiate dual micro-charge with CVV) followed by `postBillingCreditCardVerify` (submit the charged amounts). Use to drive the UI's \"verify card\" form rendering. Sibling ops: `patchBillingCreditCardVerify`, `postBillingCreditCardVerify`, `addBillingCreditCard`, `updateBillingPaymentMethod`.  **Path param:** - `id` (integer, required) — credit card index from `parse_ccs`.  **Body:** None.  **Returns:** `Verification requirements` (placeholder text — reserved for future structured response with `requires_cvv` / `requires_amounts` flags).  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **Step 1 of verify flow:** `patchBillingCreditCardVerify`. - **Step 2 of verify flow:** `postBillingCreditCardVerify`. - **Add a new card:** `addBillingCreditCard`. 
 //
 success_text_response_t*
 BillingAPI_getBillingCreditCardVerify(apiClient_t *apiClient, int *id)
@@ -1532,9 +1401,9 @@ end:
 
 }
 
-// Get Invoice Details
+// Read full invoice detail — line items, totals, paid status, customer info
 //
-// Retrieves the full invoice information including line items, amounts, and payment status. Use this before redirecting to `/pay/{method}/{invoices}` so you can display the exact amount due and confirm the invoice is still unpaid.
+// Returns the full rendered invoice payload for a single invoice — backed by `get_invoice_data()`, the same helper that builds the email-style invoice document. Use to confirm the exact balance due and the invoice description before calling `initiatePayment`, or to render an invoice viewer page. Read-only. The response is an email-style/HTML payload (not a structured line-item array) — for a structured cart-style summary use `getBillingCart`. The response includes a Link to `deleteBillingInvoice` for unpaid pending-service invoices. Sibling ops: `getBillingInvoices`, `deleteBillingInvoice`, `initiatePayment`, `getBillingCart`, per-service `getVpsInvoices` / `getMailInvoices` / etc.  **Path param:** - `id` (integer, required) — invoice id from `getBillingInvoices.rows[].id`, from an order endpoint's response (e.g. `addVps.iid`), or from a per-service invoice list.  **Body:** None.  **Returns:** `BillingInvoiceDetail` — full rendered invoice payload (email body) with line items, totals, customer/billing info, and paid status. The exact shape mirrors what gets sent to the customer.  **Auth:** Session/API key. Ownership enforced through the invoice's `invoices_custid`.  **Errors:** - `Invalid Invoice` — `id` not found or owned by another account. - `401` — unauthenticated.  **Related calls:** - **Pay it:** `initiatePayment` (`/billing/pay/{method}/{id}`). - **Delete if pending/unpaid:** `deleteBillingInvoice`. - **List all:** `getBillingInvoices`. - **Cart-style summary across all unpaid:** `getBillingCart`. 
 //
 billing_invoice_detail_t*
 BillingAPI_getBillingInvoice(apiClient_t *apiClient, int *id)
@@ -1621,9 +1490,9 @@ end:
 
 }
 
-// List Account Invoices
+// List every invoice on the account with summary totals and paid/unpaid status
 //
-// Returns the invoice list for the account with summary totals. Use the invoice IDs from the response with `/billing/invoices/{id}` to retrieve detailed line items, or with `/pay/{method}/{invoices}` to initiate payment.
+// Returns the customer's complete invoice ledger — every charge, paid or unpaid, across every service module. Use to render a billing-history page, find an unpaid invoice id to pass to `initiatePayment`, or audit recent activity. Server-side strips the first synthetic header row from `get_view_invoices()` and reindexes the array. Read-only. The response includes a Link to `getBillingInvoice` for drilling into any row. Sibling ops: `getBillingInvoice`, `deleteBillingInvoice`, `initiatePayment`, `getBillingCart`, `getBillingPrePays`.  **Path/Query/Body:** None.  **Returns:** `BillingInvoiceList` — object containing: - `rows` (array) — per-invoice summaries: `id`, `amount`, `paid`, `description`, `date`, `due_date`, `module`, `service` (service-id within the module), `currency`. - Aggregate totals across the array (totals object: `total`, `paid_total`, `unpaid_total`).  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **Drill into one invoice:** `getBillingInvoice`. - **Pay an unpaid invoice:** `initiatePayment`. - **Cancel an unpaid pending-service invoice:** `deleteBillingInvoice` (only works on pending services / unpaid prepays). - **Per-service invoices instead:** `getVpsInvoices`, `getDomainInvoices`, `getMailInvoices`, `getBackupInvoices`, etc. 
 //
 billing_invoice_list_t*
 BillingAPI_getBillingInvoices(apiClient_t *apiClient)
@@ -1695,9 +1564,9 @@ end:
 
 }
 
-// List Prepay Balances
+// List prepay deposits on the account — remaining balance and auto-use flags
 //
-// Lists prepay balances and their associated metadata. Use this to determine whether an account has usable prepay funds before selecting `prepay` as a payment method.
+// Returns every prepay deposit on the account — funded or pending — with remaining balances, modules they're scoped to, and the `automatic_use` flag controlling whether the balance auto-applies to future invoices. Use to gate `method=prepay` at checkout (a prepay must be funded to count toward payment) or to render a prepays management page. Read-only. `csrf_token` is stripped from the helper output. Sibling ops: `addBillingPrepay` (top up), `deleteBillingPrepay` (remove), `initiatePayment` (`method=prepay`), `getBillingCart`.  **Path/Query/Body:** None.  **Returns:** Object with per-prepay rows: - `prepay_id` (integer). - `prepay_module` (string) — service module the prepay is scoped to (or `default` for any). - `prepay_amount` (decimal) — original deposit amount. - `prepay_remaining` (decimal) — funds left. - `prepay_automatic_use` (bool) — auto-apply to invoices. - `prepay_paid` (bool) — whether the funding invoice has been paid (unpaid prepays are listed but unusable).  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated.  **Related calls:** - **Top up:** `addBillingPrepay` (returns an invoice id you then pay via `initiatePayment`). - **Pay with prepay:** `initiatePayment` with `method=prepay`. - **Remove an unfunded prepay:** `deleteBillingPrepay`. - **Cart view:** `getBillingCart` (includes prepay summary). 
 //
 object_t*
 BillingAPI_getBillingPrePays(apiClient_t *apiClient)
@@ -1769,175 +1638,9 @@ end:
 
 }
 
-// Get Invoices
+// Pay invoices through the chosen gateway — returns the next-step action
 //
-// Returns a paginated list of invoices for the authenticated account. Each invoice includes the invoice number, date, total amount, and payment status. Use the optional `searchString` parameter to filter results and `skip`/`limit` for pagination.
-//
-list_t*
-BillingAPI_getInvoices(apiClient_t *apiClient, char *searchString, int *skip, int *limit)
-{
-    list_t    *localVarQueryParameters = list_createList();
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-    size_t     localVarBodyLength = 0;
-
-    // clear the error code from the previous api call
-    apiClient->response_code = 0;
-
-    // create the path
-    char *localVarPath = strdup("/invoices");
-
-
-
-
-
-    // query parameters
-    char *keyQuery_searchString = NULL;
-    char * valueQuery_searchString = NULL;
-    keyValuePair_t *keyPairQuery_searchString = 0;
-    if (searchString)
-    {
-        keyQuery_searchString = strdup("searchString");
-        valueQuery_searchString = strdup((searchString));
-        keyPairQuery_searchString = keyValuePair_create(keyQuery_searchString, valueQuery_searchString);
-        list_addElement(localVarQueryParameters,keyPairQuery_searchString);
-    }
-
-    // query parameters
-    char *keyQuery_skip = NULL;
-    char * valueQuery_skip = NULL;
-    keyValuePair_t *keyPairQuery_skip = 0;
-    if (skip)
-    {
-        keyQuery_skip = strdup("skip");
-        valueQuery_skip = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_skip, MAX_NUMBER_LENGTH, "%d", *skip);
-        keyPairQuery_skip = keyValuePair_create(keyQuery_skip, valueQuery_skip);
-        list_addElement(localVarQueryParameters,keyPairQuery_skip);
-    }
-
-    // query parameters
-    char *keyQuery_limit = NULL;
-    char * valueQuery_limit = NULL;
-    keyValuePair_t *keyPairQuery_limit = 0;
-    if (limit)
-    {
-        keyQuery_limit = strdup("limit");
-        valueQuery_limit = calloc(1,MAX_NUMBER_LENGTH);
-        snprintf(valueQuery_limit, MAX_NUMBER_LENGTH, "%d", *limit);
-        keyPairQuery_limit = keyValuePair_create(keyQuery_limit, valueQuery_limit);
-        list_addElement(localVarQueryParameters,keyPairQuery_limit);
-    }
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    localVarBodyLength,
-                    "GET");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","search results matching criteria");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 400) {
-    //    printf("%s\n","bad input parameter");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 404) {
-    //    printf("%s\n","Unauthorized");
-    //}
-    list_t *elementToReturn = NULL;
-    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
-        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        if(!cJSON_IsArray(BillingAPIlocalVarJSON)) {
-            return 0;//nonprimitive container
-        }
-        elementToReturn = list_createList();
-        cJSON *VarJSON;
-        cJSON_ArrayForEach(VarJSON, BillingAPIlocalVarJSON)
-        {
-            if(!cJSON_IsObject(VarJSON))
-            {
-               // return 0;
-            }
-            char *localVarJSONToChar = cJSON_Print(VarJSON);
-            list_addElement(elementToReturn , localVarJSONToChar);
-        }
-
-        cJSON_Delete( BillingAPIlocalVarJSON);
-        cJSON_Delete( VarJSON);
-    }
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    list_freeList(localVarQueryParameters);
-    
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    if(keyQuery_searchString){
-        free(keyQuery_searchString);
-        keyQuery_searchString = NULL;
-    }
-    if(valueQuery_searchString){
-        free(valueQuery_searchString);
-        valueQuery_searchString = NULL;
-    }
-    if(keyPairQuery_searchString){
-        keyValuePair_free(keyPairQuery_searchString);
-        keyPairQuery_searchString = NULL;
-    }
-    if(keyQuery_skip){
-        free(keyQuery_skip);
-        keyQuery_skip = NULL;
-    }
-    if(valueQuery_skip){
-        free(valueQuery_skip);
-        valueQuery_skip = NULL;
-    }
-    if(keyPairQuery_skip){
-        keyValuePair_free(keyPairQuery_skip);
-        keyPairQuery_skip = NULL;
-    }
-    if(keyQuery_limit){
-        free(keyQuery_limit);
-        keyQuery_limit = NULL;
-    }
-    if(valueQuery_limit){
-        free(valueQuery_limit);
-        valueQuery_limit = NULL;
-    }
-    if(keyPairQuery_limit){
-        keyValuePair_free(keyPairQuery_limit);
-        keyPairQuery_limit = NULL;
-    }
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Initiate Payment
-//
-// Initiates a payment for the specified invoices using the chosen payment method. The response type determines how your client should proceed: `redirect` means send the user to the provided URL, `submit` means POST a form with the provided fields, and `single` means the payment was processed immediately. Use invoice IDs obtained from order responses or `/billing/invoices`.
+// Universal payment trigger — the final step in every order/checkout flow. Use after any order endpoint (`addVps`, `addQs`, `addBackup`, `addMail`, `addBillingPrepay`) returns an invoice id, or after `getBillingInvoices` surfaces unpaid invoices. Resolves the chosen gateway class under `include/Api/Billing/Pay/`, populates it with the invoices, and returns one of three response shapes the client must act on: `redirect` (send the user to the gateway URL), `submit` (POST a form with the supplied items), or `single` (processed synchronously). Sibling ops: `getBillingCart`, `getBillingInvoices`, `getBillingInvoice`, `addBillingPrepay`, `updateBillingPaymentMethod`, `addBillingCreditCard`.  **Path params:** - `method` (string enum, required) — one of `cc`, `paypal`, `prepay`, `payssion`, `payu`, `ccavenue`, `cashfree`, `coinbase`, `btcpay`. Rejected with 400 otherwise. - `invoices` (string, required) — comma-separated identifiers. Each identifier may be:   - a bare integer invoice id (e.g. `25296600`);   - `INV<module><iid>` (e.g. `INVvps25296600`) — strict invoice lookup;   - `SERVICE<module><id>` (e.g. `SERVICEvps12345`) — picks the most recent unpaid invoice for that service;   - `RINV<module><rid>` (e.g. `RINVvps78901`) — picks the most recent unpaid invoice for that repeat-invoice row;   - `PREPAYID<pid>INV<iid>` — explicit prepay-funding invoice.  **Query params:** - `redirectUrl` (string, optional) — override the gateway return-URL. Defaults to `https://my.interserver.net/pay/`.  **Returns** (one of three shapes — branch on `type`): - **type=`redirect`:** `{type: \"redirect\", redirect: \"<gateway-url>\", text: \"...\"}` — send the user to `redirect`. - **type=`submit`:** `{type: \"submit\", action: \"<url>\", method: \"POST\", items: {field: value, ...}}` — render a form with those fields, POST to `action`. - **type=`single`:** `{type: \"single\", text: \"...\"}` — payment already processed; surface `text` to the customer.  **Side effects:** - Creates a `payment_requests` row tracking the attempt (via `addPaymentRequest`). - On `single`-mode success (`cc`, `prepay`): marks the underlying `invoices.invoices_paid=1`, triggers `queue_process_payment($iid)` → service activation. - On `redirect`/`submit`-mode: nothing is paid yet; the gateway IPN/callback handler in `confirm()` (in each `Pay/*.php` subclass) runs `queue_process_payment` after the gateway notifies us of success.  **Auth:** Session/API key. Ownership of every referenced invoice is enforced through the `setInvoices()` lookup (filters by session `account_id`).  **Errors:** - `400 Invalid payment method` — unrecognized `method`. - `402` / gateway-specific text — card declined, balance insufficient, etc. Returned as `{error: \"<text>\"}`. - `422 Invalid Invoice Tag` — identifier format not recognized. - `401` — unauthenticated. - Method-specific:   - `cc`: card not verified (use `addBillingCreditCard` → `patchBillingCreditCardVerify` → `postBillingCreditCardVerify` first; verify via `updateBillingPaymentMethod`).   - `prepay`: insufficient prepay balance (use `addBillingPrepay` to top up first).  **Related calls:** - **Get an invoice id to pass:** `addVps` / `addQs` / `addBackup` / `addMail` / `addBillingPrepay` / `getBillingInvoices`. - **Confirm invoice detail first:** `getBillingInvoice`. - **Set up payment methods:** `addBillingCreditCard`, `patchBillingCreditCardVerify`, `postBillingCreditCardVerify`, `updateBillingPaymentMethod`. - **After payment:** poll the originating service endpoint (e.g. `getVpsInfo` for VPS) until status flips to `active`.  **Example happy-path (VPS):** ```text # 1) Order created — POST /vps/order returned {serviceid: 12345, real_iids: [\"25296600\"]} # 2) Pay with stored credit card: GET /apiv2/billing/pay/cc/25296600 # 3) Response: {\"type\": \"single\", \"text\": \"Payment processed.\"} # 4) Poll service: GET /apiv2/vps/12345  -> {\"vps_status\": \"active\", ...} ``` **Example PayPal flow:** ```text GET /apiv2/billing/pay/paypal/25296600 {\"type\": \"redirect\", \"redirect\": \"https://www.paypal.com/...\", \"text\": \"...\"} # Client redirects user; PayPal IPN later marks invoice paid and activates service. ``` 
 //
 initiate_payment_200_response_t*
 BillingAPI_initiatePayment(apiClient_t *apiClient, interserver_management_api_initiatePayment_method_e method, char *invoices)
@@ -1954,7 +1657,7 @@ BillingAPI_initiatePayment(apiClient_t *apiClient, interserver_management_api_in
     apiClient->response_code = 0;
 
     // create the path
-    char *localVarPath = strdup("/pay/{method}/{invoices}");
+    char *localVarPath = strdup("/billing/pay/{method}/{invoices}");
 
     if(!method)
         goto end;
@@ -2035,9 +1738,115 @@ end:
 
 }
 
-// Submit Credit Card Verification
+// Place two micro-charges on the card to start CVV verification (step 1 of 2)
 //
-// Completes the credit card verification flow by submitting the micro-charge amounts or CVV as required by `GET /billing/creditcards/{id}/verify`. A successful response means the card is verified and can be selected as a payment method via `/billing/payment_method`.
+// Step 1 of the two-step card-verification flow. After `addBillingCreditCard` returns `action='verify'`, call this with the card's CVV to place two small charges (cents-scale) on the card. The customer must then look up the exact amounts in their bank statement and submit them via `postBillingCreditCardVerify` to finalize verification. **After 3 failed CVV attempts** (`cc_fails_<cc>` counter on the account) the card is locked from further verification attempts — contact support. Sibling ops: `getBillingCreditCardVerify`, `postBillingCreditCardVerify`, `addBillingCreditCard`, `updateBillingPaymentMethod`.  **Path param:** - `id` (integer, required) — credit card index from `parse_ccs`.  **Body fields:** - `cc_ccv2` (string, required) — the 3- or 4-digit CVV/CVC code from the back (or front, for Amex) of the card.  **Returns:** `Your card is charged. Please enter the amounts charged up!` — surface to the UI to prompt for the two amounts.  **Side effects:** - Places two test charges via `verify_cc_charge()` (gateway-side). - On failure: increments `cc_fails_<cc>` on the account.  **Auth:** Session/API key. Card ownership enforced.  **Errors:** - `Invalid Credit Card Passed` — `id` not in `parse_ccs`. - `Reached the max number of tries to authenticate this card` — `cc_fails_<cc> > 3`. - `Missing or blank CVV` — `cc_ccv2` absent or empty. - Gateway error text — charge attempt failed. - `401` — unauthenticated.  **Related calls:** - **Prerequisite:** `addBillingCreditCard` (must have returned `action='verify'`). - **Next (step 2):** `postBillingCreditCardVerify` (submit `cc_amount1` + `cc_amount2`). - **After verification:** `updateBillingPaymentMethod` to make it the default. 
+//
+success_text_response_t*
+BillingAPI_patchBillingCreditCardVerify(apiClient_t *apiClient, int *id, patch_billing_credit_card_verify_request_t *patch_billing_credit_card_verify_request)
+{
+    list_t    *localVarQueryParameters = NULL;
+    list_t    *localVarHeaderParameters = NULL;
+    list_t    *localVarFormParameters = NULL;
+    list_t *localVarHeaderType = list_createList();
+    list_t *localVarContentType = list_createList();
+    char      *localVarBodyParameters = NULL;
+    size_t     localVarBodyLength = 0;
+
+    // clear the error code from the previous api call
+    apiClient->response_code = 0;
+
+    // create the path
+    char *localVarPath = strdup("/billing/creditcards/{id}/verify");
+
+
+
+    // Path Params
+    long sizeOfPathParams_id =  + sizeof("{ id }") - 1;
+    if(id == 0){
+        goto end;
+    }
+    char* localVarToReplace_id = malloc(sizeOfPathParams_id);
+    snprintf(localVarToReplace_id, sizeOfPathParams_id, "{%s}", "id");
+
+    char localVarBuff_id[256];
+    snprintf(localVarBuff_id, sizeof localVarBuff_id, "%ld", (long)*id);
+
+    localVarPath = strReplace(localVarPath, localVarToReplace_id, localVarBuff_id);
+
+
+
+
+    // Body Param
+    cJSON *localVarSingleItemJSON_patch_billing_credit_card_verify_request = NULL;
+    if (patch_billing_credit_card_verify_request != NULL)
+    {
+        //not string, not binary
+        localVarSingleItemJSON_patch_billing_credit_card_verify_request = patch_billing_credit_card_verify_request_convertToJSON(patch_billing_credit_card_verify_request);
+        localVarBodyParameters = cJSON_Print(localVarSingleItemJSON_patch_billing_credit_card_verify_request);
+        localVarBodyLength = strlen(localVarBodyParameters);
+    }
+    list_addElement(localVarHeaderType,"application/json"); //produces
+    list_addElement(localVarContentType,"application/json"); //consumes
+    list_addElement(localVarContentType,"multipart/form-data"); //consumes
+    apiClient_invoke(apiClient,
+                    localVarPath,
+                    localVarQueryParameters,
+                    localVarHeaderParameters,
+                    localVarFormParameters,
+                    localVarHeaderType,
+                    localVarContentType,
+                    localVarBodyParameters,
+                    localVarBodyLength,
+                    "PATCH");
+
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 200) {
+    //    printf("%s\n","A response indicating the operation completed successfully with a text message.");
+    //}
+    // uncomment below to debug the error response
+    //if (apiClient->response_code == 401) {
+    //    printf("%s\n","Unauthorized");
+    //}
+    //nonprimitive not container
+    success_text_response_t *elementToReturn = NULL;
+    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
+        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
+        elementToReturn = success_text_response_parseFromJSON(BillingAPIlocalVarJSON);
+        cJSON_Delete(BillingAPIlocalVarJSON);
+        if(elementToReturn == NULL) {
+            // return 0;
+        }
+    }
+
+    //return type
+    if (apiClient->dataReceived) {
+        free(apiClient->dataReceived);
+        apiClient->dataReceived = NULL;
+        apiClient->dataReceivedLen = 0;
+    }
+    
+    
+    
+    list_freeList(localVarHeaderType);
+    list_freeList(localVarContentType);
+    free(localVarPath);
+    free(localVarToReplace_id);
+    if (localVarSingleItemJSON_patch_billing_credit_card_verify_request) {
+        cJSON_Delete(localVarSingleItemJSON_patch_billing_credit_card_verify_request);
+        localVarSingleItemJSON_patch_billing_credit_card_verify_request = NULL;
+    }
+    free(localVarBodyParameters);
+    return elementToReturn;
+end:
+    free(localVarPath);
+    return NULL;
+
+}
+
+// Submit two micro-charge amounts to finalize card verification (step 2 of 2)
+//
+// Step 2 of the two-step card-verification flow. Submits the two exact micro-charge amounts the customer saw on their statement (placed by `patchBillingCreditCardVerify`) so the gateway can confirm the customer controls the card. On success, the card is marked verified and can be selected via `updateBillingPaymentMethod` (`payment_method=cc<idx>`) or used directly with `initiatePayment` (`method=cc`). After 3 failed attempts (`cc_fails_<cc> > 3`) the card is locked. Sibling ops: `getBillingCreditCardVerify`, `patchBillingCreditCardVerify`, `addBillingCreditCard`, `updateBillingPaymentMethod`.  **Path param:** - `id` (integer, required) — credit card index from `parse_ccs`.  **Body fields (schema `BillingVerifyCcRequest`):** - `cc_amount1` (number, required) — first micro-charge amount (in dollars, decimal). - `cc_amount2` (number, required) — second micro-charge amount.  **Returns:** Verification success text (gateway-returned).  **Side effects:** - Marks the card as verified when amounts match. - On failure: increments `cc_fails_<cc>` on the account.  **Auth:** Session/API key. Card ownership enforced.  **Errors:** - `Invalid Credit Card Passed` — `id` not in `parse_ccs`. - `Reached the max number of tries to authenticate this card` — `cc_fails_<cc> > 3`. - `Missing charge amounts` — `cc_amount1` or `cc_amount2` absent. - Verification failure text (status `failed` / `error` / `warning`) — amounts don't match. - `401` — unauthenticated.  **Related calls:** - **Prerequisite (step 1):** `patchBillingCreditCardVerify`. - **Next:** `updateBillingPaymentMethod` to make the verified card default, or `initiatePayment` (`method=cc`) to pay immediately. 
 //
 success_text_response_t*
 BillingAPI_postBillingCreditCardVerify(apiClient_t *apiClient, int *id, billing_verify_cc_request_t *billing_verify_cc_request)
@@ -2141,91 +1950,9 @@ end:
 
 }
 
-// Update Credit Card
+// Configure the affiliate landing dock title, description, and referrer coupon
 //
-// Updates an existing credit card on the account. Use this to refresh stored card metadata such as expiration date or billing address.
-//
-char*
-BillingAPI_updateAccountCreditCard(apiClient_t *apiClient, int *id)
-{
-    list_t    *localVarQueryParameters = NULL;
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = NULL;
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = NULL;
-    char      *localVarBodyParameters = NULL;
-    size_t     localVarBodyLength = 0;
-
-    // clear the error code from the previous api call
-    apiClient->response_code = 0;
-
-    // create the path
-    char *localVarPath = strdup("/account/creditcards/{id}");
-
-
-
-    // Path Params
-    long sizeOfPathParams_id =  + sizeof("{ id }") - 1;
-    if(id == 0){
-        goto end;
-    }
-    char* localVarToReplace_id = malloc(sizeOfPathParams_id);
-    snprintf(localVarToReplace_id, sizeOfPathParams_id, "{%s}", "id");
-
-    char localVarBuff_id[256];
-    snprintf(localVarBuff_id, sizeof localVarBuff_id, "%ld", (long)*id);
-
-    localVarPath = strReplace(localVarPath, localVarToReplace_id, localVarBuff_id);
-
-
-
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    localVarBodyLength,
-                    "POST");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Simple string response");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
-    //primitive return type simple string
-    char* elementToReturn = NULL;
-    if(apiClient->response_code >= 200 && apiClient->response_code < 300)
-        elementToReturn = strdup((char*)apiClient->dataReceived);
-
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    
-    
-    
-    list_freeList(localVarHeaderType);
-    
-    free(localVarPath);
-    free(localVarToReplace_id);
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Configure Affiliate Dock Settings
-//
-// Updates the affiliate dock settings including the referral coupon and marketing copy. The dock is the branded landing page shown to visitors arriving via your affiliate link. Use this to customize the coupon code and promotional text.
+// Customizes the branded landing-dock page shown to visitors arriving via the affiliate's referral link, and reserves a unique referrer coupon code that's automatically created across all affiliate-eligible modules. Title/description allow a limited HTML allowlist (`<b>`, `<br>`, `<strong>`, `<hr>`); everything else is entity-escaped. Coupon changes propagate to **all** affiliate modules atomically. Sibling ops: `updateAffiliatePaymentSetup`, `getAffiliateSignups`.  **Body fields (multipart or JSON, schema `AffiliateDockSetup`):** - `affiliate_dock_title` (string, optional) — landing-page title. HTML allowlist: `<b>`, `<br>`, `<strong>`, `<hr>`. - `affiliate_dock_description` (string, optional) — landing-page body. Same allowlist. - `referrer_coupon` (string, optional) — coupon code reservation. Requirements:   - ≥ 6 chars.   - `^[a-zA-Z0-9]+$` (alphanumeric only).   - Must NOT contain `facebook`, `test`, or `interserver` (substring check, case-insensitive).   - Must NOT exactly match a reserved word.   - Must NOT already exist as a coupon in any affiliate module (`webhosting`, `vps`, `quickservers`, `servers`, `backups`).  **Returns:** `{text: \"<status message>\"}`.  **Side effects:** - First time setting `referrer_coupon`: inserts a `coupons` row in each affiliate module (`type=3`, `amount=0.01`, `onetime=1`, `customer=-1`, `usable=1`, `applies=-1`). - Changing `referrer_coupon`: renames the coupon across all affiliate modules in one transaction. - Updates the account's `affiliate_dock_title`, `affiliate_dock_description`, `referrer_coupon` fields.  **Auth:** Session/API key.  **Errors:** - `422 The name must be at least 6 characters long`. - `422 Invalid Characters, use only standard english letters and numbers`. - `422 That is a reserved word that cannot be used here`. - `422 <position> is a reserved word that cannot be used here` (substring match against `facebook`/`test`/`interserver`). - `409 That name is already taken` — coupon exists in another account's module. - `401` — unauthenticated. 
 //
 text_response_t*
 BillingAPI_updateAffiliateDockSetup(apiClient_t *apiClient, char *affiliate_dock_title, char *affiliate_dock_description, char *referrer_coupon)
@@ -2362,148 +2089,9 @@ end:
 
 }
 
-// Configure Affiliate Landing Page
+// Configure how affiliate commissions get paid out (PayPal or internal prepay)
 //
-// Updates the affiliate landing page configuration, including the title, description, and coupon code. Visitors who arrive through your affiliate link see this customized page. Changes are published immediately.
-//
-text_response_t*
-BillingAPI_updateAffiliateLandingPage(apiClient_t *apiClient, char *affiliate_dock_title, char *affiliate_dock_description, char *referrer_coupon)
-{
-    list_t    *localVarQueryParameters = NULL;
-    list_t    *localVarHeaderParameters = NULL;
-    list_t    *localVarFormParameters = list_createList();
-    list_t *localVarHeaderType = list_createList();
-    list_t *localVarContentType = list_createList();
-    char      *localVarBodyParameters = NULL;
-    size_t     localVarBodyLength = 0;
-
-    // clear the error code from the previous api call
-    apiClient->response_code = 0;
-
-    // create the path
-    char *localVarPath = strdup("/affiliate/landing_pg");
-
-
-
-
-
-    // form parameters
-    char *keyForm_affiliate_dock_title = NULL;
-    char * valueForm_affiliate_dock_title = 0;
-    keyValuePair_t *keyPairForm_affiliate_dock_title = 0;
-    if (affiliate_dock_title != NULL)
-    {
-        keyForm_affiliate_dock_title = strdup("affiliate_dock_title");
-        valueForm_affiliate_dock_title = strdup((affiliate_dock_title));
-        keyPairForm_affiliate_dock_title = keyValuePair_create(keyForm_affiliate_dock_title,valueForm_affiliate_dock_title);
-        list_addElement(localVarFormParameters,keyPairForm_affiliate_dock_title);
-    }
-
-    // form parameters
-    char *keyForm_affiliate_dock_description = NULL;
-    char * valueForm_affiliate_dock_description = 0;
-    keyValuePair_t *keyPairForm_affiliate_dock_description = 0;
-    if (affiliate_dock_description != NULL)
-    {
-        keyForm_affiliate_dock_description = strdup("affiliate_dock_description");
-        valueForm_affiliate_dock_description = strdup((affiliate_dock_description));
-        keyPairForm_affiliate_dock_description = keyValuePair_create(keyForm_affiliate_dock_description,valueForm_affiliate_dock_description);
-        list_addElement(localVarFormParameters,keyPairForm_affiliate_dock_description);
-    }
-
-    // form parameters
-    char *keyForm_referrer_coupon = NULL;
-    char * valueForm_referrer_coupon = 0;
-    keyValuePair_t *keyPairForm_referrer_coupon = 0;
-    if (referrer_coupon != NULL)
-    {
-        keyForm_referrer_coupon = strdup("referrer_coupon");
-        valueForm_referrer_coupon = strdup((referrer_coupon));
-        keyPairForm_referrer_coupon = keyValuePair_create(keyForm_referrer_coupon,valueForm_referrer_coupon);
-        list_addElement(localVarFormParameters,keyPairForm_referrer_coupon);
-    }
-    list_addElement(localVarHeaderType,"application/json"); //produces
-    list_addElement(localVarContentType,"multipart/form-data"); //consumes
-    list_addElement(localVarContentType,"application/json"); //consumes
-    apiClient_invoke(apiClient,
-                    localVarPath,
-                    localVarQueryParameters,
-                    localVarHeaderParameters,
-                    localVarFormParameters,
-                    localVarHeaderType,
-                    localVarContentType,
-                    localVarBodyParameters,
-                    localVarBodyLength,
-                    "POST");
-
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 200) {
-    //    printf("%s\n","Response with a text message field.");
-    //}
-    // uncomment below to debug the error response
-    //if (apiClient->response_code == 401) {
-    //    printf("%s\n","Unauthorized");
-    //}
-    //nonprimitive not container
-    text_response_t *elementToReturn = NULL;
-    if(apiClient->response_code >= 200 && apiClient->response_code < 300) {
-        cJSON *BillingAPIlocalVarJSON = cJSON_Parse(apiClient->dataReceived);
-        elementToReturn = text_response_parseFromJSON(BillingAPIlocalVarJSON);
-        cJSON_Delete(BillingAPIlocalVarJSON);
-        if(elementToReturn == NULL) {
-            // return 0;
-        }
-    }
-
-    //return type
-    if (apiClient->dataReceived) {
-        free(apiClient->dataReceived);
-        apiClient->dataReceived = NULL;
-        apiClient->dataReceivedLen = 0;
-    }
-    
-    
-    list_freeList(localVarFormParameters);
-    list_freeList(localVarHeaderType);
-    list_freeList(localVarContentType);
-    free(localVarPath);
-    if (keyForm_affiliate_dock_title) {
-        free(keyForm_affiliate_dock_title);
-        keyForm_affiliate_dock_title = NULL;
-    }
-    if (valueForm_affiliate_dock_title) {
-        free(valueForm_affiliate_dock_title);
-        valueForm_affiliate_dock_title = NULL;
-    }
-    free(keyPairForm_affiliate_dock_title);
-    if (keyForm_affiliate_dock_description) {
-        free(keyForm_affiliate_dock_description);
-        keyForm_affiliate_dock_description = NULL;
-    }
-    if (valueForm_affiliate_dock_description) {
-        free(valueForm_affiliate_dock_description);
-        valueForm_affiliate_dock_description = NULL;
-    }
-    free(keyPairForm_affiliate_dock_description);
-    if (keyForm_referrer_coupon) {
-        free(keyForm_referrer_coupon);
-        keyForm_referrer_coupon = NULL;
-    }
-    if (valueForm_referrer_coupon) {
-        free(valueForm_referrer_coupon);
-        valueForm_referrer_coupon = NULL;
-    }
-    free(keyPairForm_referrer_coupon);
-    return elementToReturn;
-end:
-    free(localVarPath);
-    return NULL;
-
-}
-
-// Configure Affiliate Payout Preferences
-//
-// Updates how you receive affiliate commission payouts. Choose between prepay credit applied to your account balance or PayPal disbursement. When selecting PayPal, provide the email address linked to your PayPal account.
+// Sets the disbursement preferences for affiliate commission payouts. Choose between PayPal payout (provide an email — validated) or internal prepay credit (auto-applied to future invoices via `method=prepay`). Selecting `not set` suspends payouts. Sibling ops: `updateAffiliateDockSetup`, `getAffiliateRichReport`, `getAffiliateDownload`.  **Body fields (multipart or JSON, schema `AffiliatePaymentSetup`):** - `affiliate_payment_method` (string, optional) — one of `paypal` / `prepay` / `not set`. - `affiliate_paypal` (string, optional, required when method=`paypal`) — email validated by `valid_email()`.  **Returns:** `{text: \"Ok\"}`.  **Side effects:** - Updates the account's `affiliate_payment_method` and/or `affiliate_paypal` fields.  **Auth:** Session/API key.  **Errors:** - `422 Invalid Email` — `affiliate_paypal` fails `valid_email()`. - `422 Invalid Payment Method` — value not in `{paypal, prepay, not set}`. - `401` — unauthenticated.  **Related calls:** - **Read current commissions:** `getAffiliateRichReport`, `getAffiliateSalesGraph`. - **Export commission report:** `getAffiliateDownload`. 
 //
 text_response_t*
 BillingAPI_updateAffiliatePaymentSetup(apiClient_t *apiClient, char *affiliate_paypal, char *affiliate_payment_method)
@@ -2619,9 +2207,9 @@ end:
 
 }
 
-// Update Credit Card Details
+// Refresh stored card expiration and re-trigger MaxMind fraud scoring
 //
-// Updates stored credit card metadata or retrieves the masked card details. Use this to refresh card data before verification or to update billing address information associated with the card.
+// Updates the expiration date on a stored credit card and re-encrypts the card record. If the updated card matches the account's primary `cc`, the account-level `cc_exp` is also refreshed. If no MaxMind risk score exists yet for the card, `update_maxmind()` is called to compute one. Use to fix an upcoming expiration before recurring charges fail. Sibling ops: `addBillingCreditCard`, `deleteBillingCreditCard`, `getBillingCreditCardVerify`, `postBillingCreditCardVerify`, `updateBillingPaymentMethod`.  **Path param:** - `id` (integer, required) — credit card index (the key in the account's `ccs` array, returned by `parse_ccs` and surfaced as `cc<idx>` in `updateBillingPaymentMethod`).  **Body fields:** - `cc_exp` (string, required) — new expiration in `MM/YYYY` format.  **Returns:** `Card updated successfully.`.  **Side effects:** - Updates the `ccs` array (re-serialized via `myadmin_stringify`) on the account. - When the card == primary `cc`, the account-level `cc_exp` is also written. - Triggers `update_maxmind($custid, false, $cc_idx)` if no risk score exists.  **Auth:** Session/API key. Card ownership enforced via `parse_ccs`.  **Errors:** - `Invalid Credit Card Passed` — `id` not in `parse_ccs`. - `Please enter valid card expiry date` — `cc_exp` body field missing. - `Invalid expiration date. It must be in the form of MM/YYYY` — wrong format. - `401` — unauthenticated.  **Related calls:** - **Verify a freshly added card:** `patchBillingCreditCardVerify` → `postBillingCreditCardVerify`. - **Remove the card:** `deleteBillingCreditCard`. - **Make it default:** `updateBillingPaymentMethod` with `payment_method=cc<idx>`. 
 //
 success_text_response_t*
 BillingAPI_updateBillingCreditCard(apiClient_t *apiClient, int *id)
@@ -2708,9 +2296,9 @@ end:
 
 }
 
-// Update Default Payment Method
+// Set the account's default payment method for recurring/auto charges
 //
-// Updates the account's default payment method, including selecting a verified credit card as the primary payment source or switching to PayPal when available.
+// Sets the account's preferred payment method for recurring/automatic charges and (when applicable) promotes a specific stored credit card to be the primary `cc` on the account. Use after `addBillingCreditCard` + verification to select the new card, or when switching between PayPal and credit-card billing. First-time payment-method assignment triggers `update_maxmind()` and `update_fraudrecord()` risk-score generation. Sibling ops: `addBillingCreditCard`, `postBillingCreditCardVerify`, `deleteBillingCreditCard`, `initiatePayment`.  **Body fields (JSON or multipart, schema `BillingPaymentMethodRequest`):** - `payment_method` (string, required) — one of:   - `cc` — use the existing primary credit card.   - `cc<idx>` (e.g. `cc2`) — promote the card at index `idx` (from `parse_ccs`) to primary. Must be verified.   - `paypal` — switch to PayPal. - `cc_auto` (string `0`/`1`, optional) — auto-charge flag. Implicitly set to `1` when selecting `cc`/`cc<idx>`, `0` for `paypal`.  **Returns:** `{text: \"Payment Method Updated\"}`.  **Side effects:** - When `payment_method=cc<idx>`: copies the indexed card's encrypted `cc` and `cc_exp` onto the account's primary fields. - First time a payment method is set: runs MaxMind risk score, then FraudRecord score.  **Auth:** Session/API key.  **Errors:** - `Invalid Credit Card Specified` — `cc<idx>` is malformed or `idx` not found in `parse_ccs`. - `This CC has not been verified.` — the chosen card hasn't completed `postBillingCreditCardVerify`. - `Invalid Payment Method Specified` — value not in `{cc, paypal, cc<idx>}`. - `401` — unauthenticated.  **Related calls:** - **Prerequisite for `cc<idx>`:** `addBillingCreditCard` → `patchBillingCreditCardVerify` → `postBillingCreditCardVerify`. - **Now pay an invoice:** `initiatePayment` (`method=cc` will use the default; `method=paypal` if you switched). - **Audit current methods:** `getAccountInfo` (account profile shows cards as masked). 
 //
 success_text_response_t*
 BillingAPI_updateBillingPaymentMethod(apiClient_t *apiClient, billing_payment_method_request_t *billing_payment_method_request)

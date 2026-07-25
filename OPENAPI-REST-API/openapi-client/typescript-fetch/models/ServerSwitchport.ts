@@ -87,7 +87,7 @@ export interface ServerSwitchport {
 export function instanceOfServerSwitchport(value: object): value is ServerSwitchport {
     if (!('switchport_id' in value) || value['switchport_id'] === undefined) return false;
     if (!('switch_id' in value) || value['switch_id'] === undefined) return false;
-    if (!('_switch' in value) || value['_switch'] === undefined) return false;
+    if ((!('_switch' in (value as Record<string, any>)) && !('switch' in (value as Record<string, any>))) || ((value as Record<string, any>)['_switch'] === undefined && (value as Record<string, any>)['switch'] === undefined)) return false;
     if (!('port' in value) || value['port'] === undefined) return false;
     if (!('blade' in value) || value['blade'] === undefined) return false;
     if (!('justport' in value) || value['justport'] === undefined) return false;

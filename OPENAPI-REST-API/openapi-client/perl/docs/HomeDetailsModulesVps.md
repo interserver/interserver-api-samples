@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::HomeDetailsModulesVps
+# InterServerAPI::Object::HomeDetailsModulesVps
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::HomeDetailsModulesVps;
+use InterServerAPI::Object::HomeDetailsModulesVps;
 ```
 
 ## Properties

@@ -35,4 +35,3 @@ case class DomainWhoisPrivacyRequest(
   domain_company: Option[String] = None,
   domain_extra: Option[String] = None
 )
-

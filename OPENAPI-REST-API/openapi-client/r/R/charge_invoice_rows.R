@@ -114,7 +114,7 @@ ChargeInvoiceRows <- R6::R6Class(
         self$`success` <- this_object$`success`
       }
       if (!is.null(this_object$`invoices`)) {
-        self$`invoices` <- ApiClient$new()$deserializeObj(this_object$`invoices`, "map(ChargeInvoiceRowsInvoicesValue)", loadNamespace("openapi"))
+        self$`invoices` <- ApiClient$new()$deserializeObj(this_object$`invoices`, "map(ChargeInvoiceRowsInvoicesValue)", loadNamespace("interserverapi"))
       }
       self
     },
@@ -138,7 +138,7 @@ ChargeInvoiceRows <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`success` <- this_object$`success`
-      self$`invoices` <- ApiClient$new()$deserializeObj(this_object$`invoices`, "map(ChargeInvoiceRowsInvoicesValue)", loadNamespace("openapi"))
+      self$`invoices` <- ApiClient$new()$deserializeObj(this_object$`invoices`, "map(ChargeInvoiceRowsInvoicesValue)", loadNamespace("interserverapi"))
       self
     },
 

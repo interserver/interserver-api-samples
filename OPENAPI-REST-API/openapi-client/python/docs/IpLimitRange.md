@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.ip_limit_range import IpLimitRange
+from interserver_api_client.models.ip_limit_range import IpLimitRange
 
 # TODO update the JSON string below
 json = "{}"

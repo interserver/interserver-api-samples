@@ -1,4 +1,4 @@
-# openapi::LicenseClientLink
+# interserverapi::LicenseClientLink
 
 
 ## Properties

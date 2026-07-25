@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AffiliatePaymentSetup } from './api';
+import { AffiliatePaymentSetup } from '@interserver/myadmin-client';
 
 const instance: AffiliatePaymentSetup = {
     affiliate_paypal,

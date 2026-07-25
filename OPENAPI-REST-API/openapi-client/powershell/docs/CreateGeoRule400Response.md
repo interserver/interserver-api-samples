@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateGeoRule400Response = Initialize-PSOpenAPIToolsCreateGeoRule400Response  -Success false `
+$CreateGeoRule400Response = Initialize-InterserverApiCreateGeoRule400Response  -Success false `
  -Text Bad Request `
  -Errors null
 ```

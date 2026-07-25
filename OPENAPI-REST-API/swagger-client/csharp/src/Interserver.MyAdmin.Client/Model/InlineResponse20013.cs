@@ -31,41 +31,73 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20013" /> class.
         /// </summary>
-        /// <param name="success">success (required).</param>
-        /// <param name="text">text (required).</param>
-        public InlineResponse20013(bool? success = default(bool?), string text = default(string))
+        /// <param name="serviceInfo">serviceInfo.</param>
+        /// <param name="clientLinks">clientLinks.</param>
+        /// <param name="billingDetails">billingDetails.</param>
+        /// <param name="custCurrency">custCurrency.</param>
+        /// <param name="custCurrencySymbol">custCurrencySymbol.</param>
+        /// <param name="package">package.</param>
+        /// <param name="extraInfoTables">extraInfoTables.</param>
+        /// <param name="filterFirewall">filterFirewall.</param>
+        public InlineResponse20013(InlineResponse20013ServiceInfo serviceInfo = default(InlineResponse20013ServiceInfo), List<InlineResponse20013ClientLinks> clientLinks = default(List<InlineResponse20013ClientLinks>), InlineResponse20013BillingDetails billingDetails = default(InlineResponse20013BillingDetails), string custCurrency = default(string), string custCurrencySymbol = default(string), string package = default(string), InlineResponse20013ExtraInfoTables extraInfoTables = default(InlineResponse20013ExtraInfoTables), InlineResponse20013FilterFirewall filterFirewall = default(InlineResponse20013FilterFirewall))
         {
-            // to ensure "success" is required (not null)
-            if (success == null)
-            {
-                throw new InvalidDataException("success is a required property for InlineResponse20013 and cannot be null");
-            }
-            else
-            {
-                this.success = success;
-            }
-            // to ensure "text" is required (not null)
-            if (text == null)
-            {
-                throw new InvalidDataException("text is a required property for InlineResponse20013 and cannot be null");
-            }
-            else
-            {
-                this.text = text;
-            }
+            this.serviceInfo = serviceInfo;
+            this.client_links = clientLinks;
+            this.billingDetails = billingDetails;
+            this.custCurrency = custCurrency;
+            this.custCurrencySymbol = custCurrencySymbol;
+            this.package = package;
+            this.extraInfoTables = extraInfoTables;
+            this.filter_firewall = filterFirewall;
         }
         
         /// <summary>
-        /// Gets or Sets success
+        /// Gets or Sets serviceInfo
         /// </summary>
-        [DataMember(Name="success", EmitDefaultValue=false)]
-        public bool? success { get; set; }
+        [DataMember(Name="serviceInfo", EmitDefaultValue=false)]
+        public InlineResponse20013ServiceInfo serviceInfo { get; set; }
 
         /// <summary>
-        /// Gets or Sets text
+        /// Gets or Sets client_links
         /// </summary>
-        [DataMember(Name="text", EmitDefaultValue=false)]
-        public string text { get; set; }
+        [DataMember(Name="client_links", EmitDefaultValue=false)]
+        public List<InlineResponse20013ClientLinks> client_links { get; set; }
+
+        /// <summary>
+        /// Gets or Sets billingDetails
+        /// </summary>
+        [DataMember(Name="billingDetails", EmitDefaultValue=false)]
+        public InlineResponse20013BillingDetails billingDetails { get; set; }
+
+        /// <summary>
+        /// Gets or Sets custCurrency
+        /// </summary>
+        [DataMember(Name="custCurrency", EmitDefaultValue=false)]
+        public string custCurrency { get; set; }
+
+        /// <summary>
+        /// Gets or Sets custCurrencySymbol
+        /// </summary>
+        [DataMember(Name="custCurrencySymbol", EmitDefaultValue=false)]
+        public string custCurrencySymbol { get; set; }
+
+        /// <summary>
+        /// Gets or Sets package
+        /// </summary>
+        [DataMember(Name="package", EmitDefaultValue=false)]
+        public string package { get; set; }
+
+        /// <summary>
+        /// Gets or Sets extraInfoTables
+        /// </summary>
+        [DataMember(Name="extraInfoTables", EmitDefaultValue=false)]
+        public InlineResponse20013ExtraInfoTables extraInfoTables { get; set; }
+
+        /// <summary>
+        /// Gets or Sets filter_firewall
+        /// </summary>
+        [DataMember(Name="filter_firewall", EmitDefaultValue=false)]
+        public InlineResponse20013FilterFirewall filter_firewall { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,8 +107,14 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20013 {\n");
-            sb.Append("  success: ").Append(success).Append("\n");
-            sb.Append("  text: ").Append(text).Append("\n");
+            sb.Append("  serviceInfo: ").Append(serviceInfo).Append("\n");
+            sb.Append("  client_links: ").Append(client_links).Append("\n");
+            sb.Append("  billingDetails: ").Append(billingDetails).Append("\n");
+            sb.Append("  custCurrency: ").Append(custCurrency).Append("\n");
+            sb.Append("  custCurrencySymbol: ").Append(custCurrencySymbol).Append("\n");
+            sb.Append("  package: ").Append(package).Append("\n");
+            sb.Append("  extraInfoTables: ").Append(extraInfoTables).Append("\n");
+            sb.Append("  filter_firewall: ").Append(filter_firewall).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,14 +150,45 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.success == input.success ||
-                    (this.success != null &&
-                    this.success.Equals(input.success))
+                    this.serviceInfo == input.serviceInfo ||
+                    (this.serviceInfo != null &&
+                    this.serviceInfo.Equals(input.serviceInfo))
                 ) && 
                 (
-                    this.text == input.text ||
-                    (this.text != null &&
-                    this.text.Equals(input.text))
+                    this.client_links == input.client_links ||
+                    this.client_links != null &&
+                    input.client_links != null &&
+                    this.client_links.SequenceEqual(input.client_links)
+                ) && 
+                (
+                    this.billingDetails == input.billingDetails ||
+                    (this.billingDetails != null &&
+                    this.billingDetails.Equals(input.billingDetails))
+                ) && 
+                (
+                    this.custCurrency == input.custCurrency ||
+                    (this.custCurrency != null &&
+                    this.custCurrency.Equals(input.custCurrency))
+                ) && 
+                (
+                    this.custCurrencySymbol == input.custCurrencySymbol ||
+                    (this.custCurrencySymbol != null &&
+                    this.custCurrencySymbol.Equals(input.custCurrencySymbol))
+                ) && 
+                (
+                    this.package == input.package ||
+                    (this.package != null &&
+                    this.package.Equals(input.package))
+                ) && 
+                (
+                    this.extraInfoTables == input.extraInfoTables ||
+                    (this.extraInfoTables != null &&
+                    this.extraInfoTables.Equals(input.extraInfoTables))
+                ) && 
+                (
+                    this.filter_firewall == input.filter_firewall ||
+                    (this.filter_firewall != null &&
+                    this.filter_firewall.Equals(input.filter_firewall))
                 );
         }
 
@@ -132,10 +201,22 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.success != null)
-                    hashCode = hashCode * 59 + this.success.GetHashCode();
-                if (this.text != null)
-                    hashCode = hashCode * 59 + this.text.GetHashCode();
+                if (this.serviceInfo != null)
+                    hashCode = hashCode * 59 + this.serviceInfo.GetHashCode();
+                if (this.client_links != null)
+                    hashCode = hashCode * 59 + this.client_links.GetHashCode();
+                if (this.billingDetails != null)
+                    hashCode = hashCode * 59 + this.billingDetails.GetHashCode();
+                if (this.custCurrency != null)
+                    hashCode = hashCode * 59 + this.custCurrency.GetHashCode();
+                if (this.custCurrencySymbol != null)
+                    hashCode = hashCode * 59 + this.custCurrencySymbol.GetHashCode();
+                if (this.package != null)
+                    hashCode = hashCode * 59 + this.package.GetHashCode();
+                if (this.extraInfoTables != null)
+                    hashCode = hashCode * 59 + this.extraInfoTables.GetHashCode();
+                if (this.filter_firewall != null)
+                    hashCode = hashCode * 59 + this.filter_firewall.GetHashCode();
                 return hashCode;
             }
         }

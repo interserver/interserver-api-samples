@@ -1,15 +1,15 @@
-# openapi.model.Quickserver
+# interserver_api.model.Quickserver
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **serviceInfo** | [**QuickserverServiceInfo**](QuickserverServiceInfo.md) |  | 
-**clientLinks** | [**BuiltList&lt;QuickserverClientLink&gt;**](QuickserverClientLink.md) |  | 
+**clientLinks** | [**List&lt;QuickserverClientLink&gt;**](QuickserverClientLink.md) |  | 
 **billingDetails** | [**QuickserverBillingDetails**](QuickserverBillingDetails.md) |  | 
 **custCurrency** | **String** | Currency of the customer | 
 **custCurrencySymbol** | **String** | Currency symbol of the customer | 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 **diskPercentage** | **num** | Disk usage percentage | 
 **memory** | **String** | Memory information | 
 **hdd** | **String** | HDD information | 
-**serviceOverviewExtra** | **BuiltList&lt;String&gt;** |  | 
+**serviceOverviewExtra** | **List&lt;String&gt;** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

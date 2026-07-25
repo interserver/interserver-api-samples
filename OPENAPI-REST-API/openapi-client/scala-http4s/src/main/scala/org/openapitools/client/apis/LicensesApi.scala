@@ -18,6 +18,7 @@ import org.openapitools.client.models.ChargeInvoiceRows
 import org.openapitools.client.models.GetAccountInfo401Response
 import org.openapitools.client.models.IpObject
 import org.openapitools.client.models.License
+import org.openapitools.client.models.LicenseOrderRequest
 import org.openapitools.client.models.LicenseRow
 import org.openapitools.client.models.LicensesCancel200Response
 import org.openapitools.client.models.LicensesOrder
@@ -28,16 +29,15 @@ import org.openapitools.client.models.*
 
 trait LicensesApiEndpoints[F[*]] {
 
-  def addLicense()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
+  def addLicense(licenseOrderRequest: LicenseOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def getLicenseInfo(id: Int)(using auth: _Authorization.ApiKey): F[License]
   def getLicenseInvoices(id: Int)(using auth: _Authorization.ApiKey): F[ChargeInvoiceRows]
   def getLicenseList()(using auth: _Authorization.ApiKey): F[Seq[LicenseRow]]
-  def getLicenseOrderCatTagInfo(catTag: String)(using auth: _Authorization.ApiKey): F[Unit]
   def getLicensesWelcomeEmail(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def getNewLicense()(using auth: _Authorization.ApiKey): F[LicensesOrder]
   def licensesCancel(id: Int)(using auth: _Authorization.ApiKey): F[LicensesCancel200Response]
   def postLicenseChangeIp(id: Int, ipObject: IpObject)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def putLicenses()(using auth: _Authorization.ApiKey): F[Unit]
+  def putLicenses(licenseOrderRequest: LicenseOrderRequest)(using auth: _Authorization.ApiKey): F[Unit]
   def updateLicenseInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
 
 }
@@ -52,15 +52,15 @@ class LicensesApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addLicense()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
+  override def addLicense(licenseOrderRequest: LicenseOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, ServiceOrderPostResponse](
+    _executeRequest[LicenseOrderRequest, ServiceOrderPostResponse](
       method = "POST",
       path = s"/licenses/order",
-      body = None,
+      body = Some(licenseOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -124,25 +124,6 @@ class LicensesApiEndpointsImpl[F[*]: Concurrent](
       auth = Some(auth)) {
         
         case r if r.status.code == 200 => parseJson[F, Seq[LicenseRow]]("Seq[LicenseRow]", r)
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
-
-  override def getLicenseOrderCatTagInfo(catTag: String)(using auth: _Authorization.ApiKey): F[Unit] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "application/json")
-    ).flatten
-
-    _executeRequest[Unit, Unit](
-      method = "GET",
-      path = s"/licenses/order/${catTag}",
-      body = None,
-      formParameters = None,
-      queryParameters = Nil,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => Concurrent[F].pure(())
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }
@@ -223,15 +204,15 @@ class LicensesApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def putLicenses()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def putLicenses(licenseOrderRequest: LicenseOrderRequest)(using auth: _Authorization.ApiKey): F[Unit] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[LicenseOrderRequest, Unit](
       method = "PUT",
       path = s"/licenses/order",
-      body = None,
+      body = Some(licenseOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,

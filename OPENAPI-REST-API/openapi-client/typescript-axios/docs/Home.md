@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { Home } from './api';
+import { Home } from '@interserver/myadmin-client';
 
 const instance: Home = {
     last_login_ip,

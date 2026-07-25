@@ -25,4 +25,3 @@ case class Server(
   extraInfoTables: ServerExtraInfoTables,
   serviceInfo: ServerServiceInfo
 )
-

@@ -1,11 +1,12 @@
 ## TicketsApi
 
-### Create New Ticket
-## Create New Ticket
+### Open a new helpdesk ticket, optionally linked to a service and attachments
+## Open a new helpdesk ticket, optionally linked to a service and attachments
 POST https://my.interserver.net/apiv2/tickets/new
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -18,76 +19,85 @@ sessionid: {{apiKey}}
 }
 
 
-### Close Ticket
-## Close Ticket
+### Close an open support ticket via simple GET request (no body required)
+## Close an open support ticket via simple GET request (no body required)
 GET https://my.interserver.net/apiv2/tickets/{{id}}/close
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Close Ticket
-## Close Ticket
+### Close a customer ticket via DELETE verb (closes only, never destroys data)
+## Close a customer ticket via DELETE verb (closes only, never destroys data)
 DELETE https://my.interserver.net/apiv2/tickets/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Gets Information for creating a new ticket.
-## Gets Information for creating a new ticket.
+### Fetch services and product options to populate the new-ticket form
+## Fetch services and product options to populate the new-ticket form
 GET https://my.interserver.net/apiv2/tickets/new
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Ticket Information
-## Get Ticket Information
+### Get full ticket details including subject, status, and the reply thread
+## Get full ticket details including subject, status, and the reply thread
 GET https://my.interserver.net/apiv2/tickets/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Support Tickets
-## List Support Tickets
+### List the authenticated account&#39;s support tickets with status and date filters
+## List the authenticated account&#39;s support tickets with status and date filters
 GET https://my.interserver.net/apiv2/tickets?page={{page}}&period={{period}}&view={{view}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Reply To Ticket
-## Reply To Ticket
+### Append a reply (and optional attachment, server-access fields) to a ticket
+## Append a reply (and optional attachment, server-access fields) to a ticket
 POST https://my.interserver.net/apiv2/tickets/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Search Support Tickets
-## Search Support Tickets
+### Search the authenticated account&#39;s tickets by subject, email, or mask ID
+## Search the authenticated account&#39;s tickets by subject, email, or mask ID
 POST https://my.interserver.net/apiv2/tickets
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Ticket
-## Update Ticket
+### Update a ticket&#39;s properties such as subject or status (stub, not implemented)
+## Update a ticket&#39;s properties such as subject or status (stub, not implemented)
 PUT https://my.interserver.net/apiv2/tickets/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Reply Ticket
-## Reply Ticket
+### Post a simple text reply to an existing ticket thread (no attachments)
+## Post a simple text reply to an existing ticket thread (no attachments)
 POST https://my.interserver.net/apiv2/tickets/{{id}}/reply
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -97,12 +107,13 @@ sessionid: {{apiKey}}
 }
 
 
-### Update Ticket
-## Update Ticket
+### Update a ticket&#39;s custom field values (server-access details, etc.)
+## Update a ticket&#39;s custom field values (server-access details, etc.)
 POST https://my.interserver.net/apiv2/tickets/{{id}}/update
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

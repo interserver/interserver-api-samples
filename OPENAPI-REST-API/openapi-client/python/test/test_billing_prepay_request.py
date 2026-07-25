@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.billing_prepay_request import BillingPrepayRequest
+from interserver_api_client.models.billing_prepay_request import BillingPrepayRequest
 
 class TestBillingPrepayRequest(unittest.TestCase):
     """BillingPrepayRequest unit test stubs"""

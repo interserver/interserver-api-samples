@@ -21,7 +21,7 @@ import MailServiceType from './MailServiceType';
 /**
  * The MailSchema model module.
  * @module model/MailSchema
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailSchema {
     /**

@@ -1,4 +1,4 @@
-# openapi::AccountFeatures
+# interserverapi::AccountFeatures
 
 Account Features data.
 

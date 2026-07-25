@@ -23,11 +23,13 @@ import org.openapitools.client.models.BillingPaymentMethodRequest
 import org.openapitools.client.models.BillingPrepayRequest
 import org.openapitools.client.models.BillingVerifyCcRequest
 import org.openapitools.client.models.GetAccountInfo401Response
+import org.openapitools.client.models.GetAffiliateDownloadExParameter
+import org.openapitools.client.models.GetAffiliateSignups200Response
 import org.openapitools.client.models.InitiatePayment200Response
 import org.openapitools.client.models.InitiatePaymentMethodParameter
-import org.openapitools.client.models.Invoice
 import io.circe.Json
 import org.openapitools.client.models.MonthlyCounts
+import org.openapitools.client.models.PatchBillingCreditCardVerifyRequest
 import scala.collection.immutable.Seq
 import org.openapitools.client.models.StatusMonthlyBreakdown
 import org.openapitools.client.models.SuccessTextResponse
@@ -36,17 +38,16 @@ import org.openapitools.client.models.*
 
 trait BillingApiEndpoints[F[*]] {
 
-  def addAccountCreditCard(name: Option[String] = None, address: Option[String] = None, city: Option[String] = None, state: Option[String] = None, country: Option[String] = None, zip: Option[String] = None, cc: Option[String] = None, ccExp: Option[String] = None, ccCcv2: Option[String] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def addBillingCreditCard(billingAddCcRequest: BillingAddCcRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def addBillingPrepay(billingPrepayRequest: BillingPrepayRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def deleteAccountCreditCard(id: String)(using auth: _Authorization.ApiKey): F[String]
   def deleteBillingCreditCard(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def deleteBillingInvoice(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def deleteBillingPrepay(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def getAffiliateBanners()(using auth: _Authorization.ApiKey): F[Seq[AffiliateBannerRow]]
+  def getAffiliateDownload(st: Option[String] = None, ex: Option[GetAffiliateDownloadExParameter] = None, year: Option[Int] = None)(using auth: _Authorization.ApiKey): F[Unit]
   def getAffiliateRichReport()(using auth: _Authorization.ApiKey): F[TextResponse]
   def getAffiliateSalesGraph(days: Option[Int] = None)(using auth: _Authorization.ApiKey): F[StatusMonthlyBreakdown]
-  def getAffiliateSalesReport()(using auth: _Authorization.ApiKey): F[TextResponse]
+  def getAffiliateSignups(st: Option[String] = None)(using auth: _Authorization.ApiKey): F[GetAffiliateSignups200Response]
   def getAffiliateTrafficGraph(days: Option[Int] = None)(using auth: _Authorization.ApiKey): F[MonthlyCounts]
   def getAffiliateWebTraffic()(using auth: _Authorization.ApiKey): F[Seq[AffiliateTrafficRow]]
   def getBillingCart()(using auth: _Authorization.ApiKey): F[Json]
@@ -54,12 +55,10 @@ trait BillingApiEndpoints[F[*]] {
   def getBillingInvoice(id: Int)(using auth: _Authorization.ApiKey): F[BillingInvoiceDetail]
   def getBillingInvoices()(using auth: _Authorization.ApiKey): F[BillingInvoiceList]
   def getBillingPrePays()(using auth: _Authorization.ApiKey): F[Json]
-  def getInvoices(searchString: Option[String] = None, skip: Option[Int] = None, limit: Option[Int] = None)(using auth: _Authorization.ApiKey): F[Seq[Invoice]]
   def initiatePayment(method: InitiatePaymentMethodParameter, invoices: String)(using auth: _Authorization.ApiKey): F[InitiatePayment200Response]
+  def patchBillingCreditCardVerify(id: Int, patchBillingCreditCardVerifyRequest: PatchBillingCreditCardVerifyRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def postBillingCreditCardVerify(id: Int, billingVerifyCcRequest: BillingVerifyCcRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def updateAccountCreditCard(id: Int)(using auth: _Authorization.ApiKey): F[String]
   def updateAffiliateDockSetup(affiliateDockTitle: Option[String] = None, affiliateDockDescription: Option[String] = None, referrerCoupon: Option[String] = None)(using auth: _Authorization.ApiKey): F[TextResponse]
-  def updateAffiliateLandingPage(affiliateDockTitle: Option[String] = None, affiliateDockDescription: Option[String] = None, referrerCoupon: Option[String] = None)(using auth: _Authorization.ApiKey): F[TextResponse]
   def updateAffiliatePaymentSetup(affiliatePaypal: Option[String] = None, affiliatePaymentMethod: Option[String] = None)(using auth: _Authorization.ApiKey): F[TextResponse]
   def updateBillingCreditCard(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def updateBillingPaymentMethod(billingPaymentMethodRequest: BillingPaymentMethodRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
@@ -75,36 +74,6 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
   import JsonSupports.*
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
-
-  override def addAccountCreditCard(name: Option[String] = None, address: Option[String] = None, city: Option[String] = None, state: Option[String] = None, country: Option[String] = None, zip: Option[String] = None, cc: Option[String] = None, ccExp: Option[String] = None, ccCcv2: Option[String] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "multipart/form-data")
-    ).flatten
-    val formParameters = Some((
-      name.map("name" -> _).map(Seq(_)) ++ 
-      address.map("address" -> _).map(Seq(_)) ++ 
-      city.map("city" -> _).map(Seq(_)) ++ 
-      state.map("state" -> _).map(Seq(_)) ++ 
-      country.map("country" -> _).map(Seq(_)) ++ 
-      zip.map("zip" -> _).map(Seq(_)) ++ 
-      cc.map("cc" -> _).map(Seq(_)) ++ 
-      ccExp.map("cc_exp" -> _).map(Seq(_)) ++ 
-      ccCcv2.map("cc_ccv2" -> _).map(Seq(_))
-    ).toSeq.flatten)
-
-    _executeRequest[Unit, SuccessTextResponse](
-      method = "POST",
-      path = s"/account/creditcards",
-      body = None,
-      formParameters = formParameters,
-      queryParameters = Nil,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
 
   override def addBillingCreditCard(billingAddCcRequest: BillingAddCcRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
@@ -140,25 +109,6 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
       auth = Some(auth)) {
         
         case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
-
-  override def deleteAccountCreditCard(id: String)(using auth: _Authorization.ApiKey): F[String] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "application/json")
-    ).flatten
-
-    _executeRequest[Unit, String](
-      method = "DELETE",
-      path = s"/account/creditcards/${id}",
-      body = None,
-      formParameters = None,
-      queryParameters = Nil,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => parseJson[F, String]("String", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }
@@ -239,6 +189,30 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
+  override def getAffiliateDownload(st: Option[String] = None, ex: Option[GetAffiliateDownloadExParameter] = None, year: Option[Int] = None)(using auth: _Authorization.ApiKey): F[Unit] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+    val queryParameters = (
+      st.map("st" -> _).map(Seq(_)) ++ 
+      ex.map("ex" -> _).map(Seq(_)) ++ 
+      year.map("year" -> _).map(Seq(_))
+    ).toSeq.flatten
+
+    _executeRequest[Unit, Unit](
+      method = "GET",
+      path = s"/affiliate/download",
+      body = None,
+      formParameters = None,
+      queryParameters = queryParameters,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => Concurrent[F].pure(())
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
   override def getAffiliateRichReport()(using auth: _Authorization.ApiKey): F[TextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
@@ -280,21 +254,24 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def getAffiliateSalesReport()(using auth: _Authorization.ApiKey): F[TextResponse] = {
+  override def getAffiliateSignups(st: Option[String] = None)(using auth: _Authorization.ApiKey): F[GetAffiliateSignups200Response] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
+    val queryParameters = (
+      st.map("st" -> _).map(Seq(_))
+    ).toSeq.flatten
 
-    _executeRequest[Unit, TextResponse](
+    _executeRequest[Unit, GetAffiliateSignups200Response](
       method = "GET",
-      path = s"/affiliate/sales_report",
+      path = s"/affiliate/signups",
       body = None,
       formParameters = None,
-      queryParameters = Nil,
+      queryParameters = queryParameters,
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
-        case r if r.status.code == 200 => parseJson[F, TextResponse]("TextResponse", r)
+        case r if r.status.code == 200 => parseJson[F, GetAffiliateSignups200Response]("GetAffiliateSignups200Response", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }
@@ -435,32 +412,6 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def getInvoices(searchString: Option[String] = None, skip: Option[Int] = None, limit: Option[Int] = None)(using auth: _Authorization.ApiKey): F[Seq[Invoice]] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "application/json")
-    ).flatten
-    val queryParameters = (
-      searchString.map("searchString" -> _).map(Seq(_)) ++ 
-      skip.map("skip" -> _).map(Seq(_)) ++ 
-      limit.map("limit" -> _).map(Seq(_))
-    ).toSeq.flatten
-
-    _executeRequest[Unit, Seq[Invoice]](
-      method = "GET",
-      path = s"/invoices",
-      body = None,
-      formParameters = None,
-      queryParameters = queryParameters,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => parseJson[F, Seq[Invoice]]("Seq[Invoice]", r)
-        case r if r.status.code == 400 => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason))
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-        case r if r.status.code == 404 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
-
   override def initiatePayment(method: InitiatePaymentMethodParameter, invoices: String)(using auth: _Authorization.ApiKey): F[InitiatePayment200Response] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
@@ -468,7 +419,7 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
 
     _executeRequest[Unit, InitiatePayment200Response](
       method = "GET",
-      path = s"/pay/${method}/${invoices}",
+      path = s"/billing/pay/${method}/${invoices}",
       body = None,
       formParameters = None,
       queryParameters = Nil,
@@ -476,6 +427,25 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
       auth = Some(auth)) {
         
         case r if r.status.code == 200 => parseJson[F, InitiatePayment200Response]("InitiatePayment200Response", r)
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
+  override def patchBillingCreditCardVerify(id: Int, patchBillingCreditCardVerifyRequest: PatchBillingCreditCardVerifyRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[PatchBillingCreditCardVerifyRequest, SuccessTextResponse](
+      method = "PATCH",
+      path = s"/billing/creditcards/${id}/verify",
+      body = Some(patchBillingCreditCardVerifyRequest),
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }
@@ -499,25 +469,6 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def updateAccountCreditCard(id: Int)(using auth: _Authorization.ApiKey): F[String] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "application/json")
-    ).flatten
-
-    _executeRequest[Unit, String](
-      method = "POST",
-      path = s"/account/creditcards/${id}",
-      body = None,
-      formParameters = None,
-      queryParameters = Nil,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => parseJson[F, String]("String", r)
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
-
   override def updateAffiliateDockSetup(affiliateDockTitle: Option[String] = None, affiliateDockDescription: Option[String] = None, referrerCoupon: Option[String] = None)(using auth: _Authorization.ApiKey): F[TextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "multipart/form-data")
@@ -531,30 +482,6 @@ class BillingApiEndpointsImpl[F[*]: Concurrent](
     _executeRequest[Unit, TextResponse](
       method = "POST",
       path = s"/affiliate/dock_setup",
-      body = None,
-      formParameters = formParameters,
-      queryParameters = Nil,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => parseJson[F, TextResponse]("TextResponse", r)
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
-
-  override def updateAffiliateLandingPage(affiliateDockTitle: Option[String] = None, affiliateDockDescription: Option[String] = None, referrerCoupon: Option[String] = None)(using auth: _Authorization.ApiKey): F[TextResponse] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "multipart/form-data")
-    ).flatten
-    val formParameters = Some((
-      affiliateDockTitle.map("affiliate_dock_title" -> _).map(Seq(_)) ++ 
-      affiliateDockDescription.map("affiliate_dock_description" -> _).map(Seq(_)) ++ 
-      referrerCoupon.map("referrer_coupon" -> _).map(Seq(_))
-    ).toSeq.flatten)
-
-    _executeRequest[Unit, TextResponse](
-      method = "POST",
-      path = s"/affiliate/landing_pg",
       body = None,
       formParameters = formParameters,
       queryParameters = Nil,

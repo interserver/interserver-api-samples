@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_services_licenses_links import HomeServicesLicensesLinks
+from interserver_api_client.models.home_services_licenses_links import HomeServicesLicensesLinks
 
 class TestHomeServicesLicensesLinks(unittest.TestCase):
     """HomeServicesLicensesLinks unit test stubs"""

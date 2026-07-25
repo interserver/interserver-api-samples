@@ -109,7 +109,7 @@ static bool addDomainProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 }
 
 static bool addDomainHelper(char * accessToken,
-	
+	std::shared_ptr<DomainOrderRequest> domainOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -129,6 +129,19 @@ static bool addDomainHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("DomainOrderRequest")) {
+		node = converttoJson(&domainOrderRequest, "DomainOrderRequest", "");
+	}
+	
+	char *jsonStr =  domainOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/domains/order");
 	int pos;
@@ -180,22 +193,22 @@ static bool addDomainHelper(char * accessToken,
 
 
 bool DomainsManager::addDomainAsync(char * accessToken,
-	
+	std::shared_ptr<DomainOrderRequest> domainOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addDomainHelper(accessToken,
-	
+	domainOrderRequest, 
 	handler, userData, true);
 }
 
 bool DomainsManager::addDomainSync(char * accessToken,
-	
+	std::shared_ptr<DomainOrderRequest> domainOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addDomainHelper(accessToken,
-	
+	domainOrderRequest, 
 	handler, userData, false);
 }
 
@@ -759,7 +772,7 @@ static bool deleteDomainDnssecProcessor(MemoryStruct_s p_chunk, long code, char*
 }
 
 static bool deleteDomainDnssecHelper(char * accessToken,
-	int id, std::string action, 
+	int id, 
 	void(* handler)(SuccessTextResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -776,10 +789,6 @@ static bool deleteDomainDnssecHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
-
-	itemAtq = stringify(&action, "std::string");
-	queryParams.insert(pair<string, string>("action", itemAtq));
-
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
@@ -840,22 +849,22 @@ static bool deleteDomainDnssecHelper(char * accessToken,
 
 
 bool DomainsManager::deleteDomainDnssecAsync(char * accessToken,
-	int id, std::string action, 
+	int id, 
 	void(* handler)(SuccessTextResponse, Error, void* )
 	, void* userData)
 {
 	return deleteDomainDnssecHelper(accessToken,
-	id, action, 
+	id, 
 	handler, userData, true);
 }
 
 bool DomainsManager::deleteDomainDnssecSync(char * accessToken,
-	int id, std::string action, 
+	int id, 
 	void(* handler)(SuccessTextResponse, Error, void* )
 	, void* userData)
 {
 	return deleteDomainDnssecHelper(accessToken,
-	id, action, 
+	id, 
 	handler, userData, false);
 }
 
@@ -1964,272 +1973,6 @@ bool DomainsManager::getDomainNameserversSync(char * accessToken,
 {
 	return getDomainNameserversHelper(accessToken,
 	id, 
-	handler, userData, false);
-}
-
-static bool getDomainOrderFieldsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-		handler(error, userData);
-		return true;
-
-
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		handler(error, userData);
-		return false;
-	}
-}
-
-static bool getDomainOrderFieldsHelper(char * accessToken,
-	std::string domain, std::string regType, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/domains/order/{domain}/{regType}");
-	int pos;
-
-	string s_domain("{");
-	s_domain.append("domain");
-	s_domain.append("}");
-	pos = url.find(s_domain);
-	url.erase(pos, s_domain.length());
-	url.insert(pos, stringify(&domain, "std::string"));
-	string s_regType("{");
-	s_regType.append("regType");
-	s_regType.append("}");
-	pos = url.find(s_regType);
-	url.erase(pos, s_regType.length());
-	url.insert(pos, stringify(&regType, "std::string"));
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("GET");
-
-	if(strcmp("PUT", "GET") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(DomainsManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = getDomainOrderFieldsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_free_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (DomainsManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getDomainOrderFieldsProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __DomainsManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool DomainsManager::getDomainOrderFieldsAsync(char * accessToken,
-	std::string domain, std::string regType, 
-	
-	void(* handler)(Error, void* ) , void* userData)
-{
-	return getDomainOrderFieldsHelper(accessToken,
-	domain, regType, 
-	handler, userData, true);
-}
-
-bool DomainsManager::getDomainOrderFieldsSync(char * accessToken,
-	std::string domain, std::string regType, 
-	
-	void(* handler)(Error, void* ) , void* userData)
-{
-	return getDomainOrderFieldsHelper(accessToken,
-	domain, regType, 
-	handler, userData, false);
-}
-
-static bool getDomainOrderSearchResultsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-		handler(error, userData);
-		return true;
-
-
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		handler(error, userData);
-		return false;
-	}
-}
-
-static bool getDomainOrderSearchResultsHelper(char * accessToken,
-	std::string domain, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/domains/order/{domain}");
-	int pos;
-
-	string s_domain("{");
-	s_domain.append("domain");
-	s_domain.append("}");
-	pos = url.find(s_domain);
-	url.erase(pos, s_domain.length());
-	url.insert(pos, stringify(&domain, "std::string"));
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("GET");
-
-	if(strcmp("PUT", "GET") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(DomainsManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = getDomainOrderSearchResultsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_free_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (DomainsManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getDomainOrderSearchResultsProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __DomainsManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool DomainsManager::getDomainOrderSearchResultsAsync(char * accessToken,
-	std::string domain, 
-	
-	void(* handler)(Error, void* ) , void* userData)
-{
-	return getDomainOrderSearchResultsHelper(accessToken,
-	domain, 
-	handler, userData, true);
-}
-
-bool DomainsManager::getDomainOrderSearchResultsSync(char * accessToken,
-	std::string domain, 
-	
-	void(* handler)(Error, void* ) , void* userData)
-{
-	return getDomainOrderSearchResultsHelper(accessToken,
-	domain, 
 	handler, userData, false);
 }
 
@@ -3346,7 +3089,7 @@ static bool patchDomainsProcessor(MemoryStruct_s p_chunk, long code, char* error
 }
 
 static bool patchDomainsHelper(char * accessToken,
-	
+	std::shared_ptr<DomainOrderRequest> domainOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -3366,6 +3109,19 @@ static bool patchDomainsHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("DomainOrderRequest")) {
+		node = converttoJson(&domainOrderRequest, "DomainOrderRequest", "");
+	}
+	
+	char *jsonStr =  domainOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/domains/order");
 	int pos;
@@ -3417,22 +3173,22 @@ static bool patchDomainsHelper(char * accessToken,
 
 
 bool DomainsManager::patchDomainsAsync(char * accessToken,
-	
+	std::shared_ptr<DomainOrderRequest> domainOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return patchDomainsHelper(accessToken,
-	
+	domainOrderRequest, 
 	handler, userData, true);
 }
 
 bool DomainsManager::patchDomainsSync(char * accessToken,
-	
+	std::shared_ptr<DomainOrderRequest> domainOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return patchDomainsHelper(accessToken,
-	
+	domainOrderRequest, 
 	handler, userData, false);
 }
 
@@ -3590,6 +3346,136 @@ bool DomainsManager::postDomainRenewalSync(char * accessToken,
 {
 	return postDomainRenewalHelper(accessToken,
 	id, 
+	handler, userData, false);
+}
+
+static bool postDomainSearchProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	
+	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+		handler(error, userData);
+		return true;
+
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		handler(error, userData);
+		return false;
+	}
+}
+
+static bool postDomainSearchHelper(char * accessToken,
+	std::string name, 
+	
+	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/domains/search/{name}");
+	int pos;
+
+	string s_name("{");
+	s_name.append("name");
+	s_name.append("}");
+	pos = url.find(s_name);
+	url.erase(pos, s_name.length());
+	url.insert(pos, stringify(&name, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("POST");
+
+	if(strcmp("PUT", "POST") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(DomainsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = postDomainSearchProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (DomainsManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), postDomainSearchProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __DomainsManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool DomainsManager::postDomainSearchAsync(char * accessToken,
+	std::string name, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return postDomainSearchHelper(accessToken,
+	name, 
+	handler, userData, true);
+}
+
+bool DomainsManager::postDomainSearchSync(char * accessToken,
+	std::string name, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return postDomainSearchHelper(accessToken,
+	name, 
 	handler, userData, false);
 }
 
@@ -3784,7 +3670,7 @@ static bool putDomainsProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 }
 
 static bool putDomainsHelper(char * accessToken,
-	
+	std::shared_ptr<DomainOrderRequest> domainOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -3804,6 +3690,19 @@ static bool putDomainsHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("DomainOrderRequest")) {
+		node = converttoJson(&domainOrderRequest, "DomainOrderRequest", "");
+	}
+	
+	char *jsonStr =  domainOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/domains/order");
 	int pos;
@@ -3855,22 +3754,22 @@ static bool putDomainsHelper(char * accessToken,
 
 
 bool DomainsManager::putDomainsAsync(char * accessToken,
-	
+	std::shared_ptr<DomainOrderRequest> domainOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putDomainsHelper(accessToken,
-	
+	domainOrderRequest, 
 	handler, userData, true);
 }
 
 bool DomainsManager::putDomainsSync(char * accessToken,
-	
+	std::shared_ptr<DomainOrderRequest> domainOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putDomainsHelper(accessToken,
-	
+	domainOrderRequest, 
 	handler, userData, false);
 }
 
@@ -4106,7 +4005,7 @@ static bool updateDomainInfoProcessor(MemoryStruct_s p_chunk, long code, char* e
 }
 
 static bool updateDomainInfoHelper(char * accessToken,
-	std::string id, 
+	int id, 
 	void(* handler)(SuccessTextResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -4135,7 +4034,7 @@ static bool updateDomainInfoHelper(char * accessToken,
 	s_id.append("}");
 	pos = url.find(s_id);
 	url.erase(pos, s_id.length());
-	url.insert(pos, stringify(&id, "std::string"));
+	url.insert(pos, stringify(&id, "int"));
 
 	//TODO: free memory of errormsg, memorystruct
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
@@ -4183,7 +4082,7 @@ static bool updateDomainInfoHelper(char * accessToken,
 
 
 bool DomainsManager::updateDomainInfoAsync(char * accessToken,
-	std::string id, 
+	int id, 
 	void(* handler)(SuccessTextResponse, Error, void* )
 	, void* userData)
 {
@@ -4193,7 +4092,7 @@ bool DomainsManager::updateDomainInfoAsync(char * accessToken,
 }
 
 bool DomainsManager::updateDomainInfoSync(char * accessToken,
-	std::string id, 
+	int id, 
 	void(* handler)(SuccessTextResponse, Error, void* )
 	, void* userData)
 {

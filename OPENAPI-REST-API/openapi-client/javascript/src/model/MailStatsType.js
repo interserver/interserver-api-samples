@@ -17,7 +17,7 @@ import MailStatsTypeVolume from './MailStatsTypeVolume';
 /**
  * The MailStatsType model module.
  * @module model/MailStatsType
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailStatsType {
     /**
@@ -201,7 +201,13 @@ MailStatsType['TimeEnum'] = {
      * value: "1h"
      * @const
      */
-    "1h": "1h"
+    "1h": "1h",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 

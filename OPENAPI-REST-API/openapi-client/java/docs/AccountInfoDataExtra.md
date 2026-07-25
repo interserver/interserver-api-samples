@@ -10,4 +10,8 @@
 |**privateWhois** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

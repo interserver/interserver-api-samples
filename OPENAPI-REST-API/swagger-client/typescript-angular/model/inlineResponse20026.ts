@@ -12,11 +12,7 @@
 
 export interface InlineResponse20026 { 
     /**
-     * Confirmation message.
+     * A map of IP addresses to their current reverse DNS hostnames.
      */
-    text?: string;
-    /**
-     * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
-     */
-    ticket?: number;
+    ips?: { [key: string]: string; };
 }

@@ -12,4 +12,8 @@ Response after sending an action queue to a service.
 |**queueId** | **Integer** | The Queue ID attached to the action. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

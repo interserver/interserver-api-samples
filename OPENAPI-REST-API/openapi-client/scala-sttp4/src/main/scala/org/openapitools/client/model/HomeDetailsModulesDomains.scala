@@ -27,4 +27,3 @@ case class HomeDetailsModulesDomains(
   /* Link to view domains list. */
   list_link: Option[String] = None
 )
-

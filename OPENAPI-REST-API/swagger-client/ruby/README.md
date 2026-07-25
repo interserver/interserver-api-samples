@@ -1,6 +1,6 @@
-# swagger_client
+# interserver-api-client
 
-SwaggerClient - the Ruby gem for the InterServer Management API
+InterserverApiClient - the Ruby gem for the InterServer Management API
 
 # Overview  The InterServer Management API provides programmatic access to manage your InterServer services. Use this REST API to automate provisioning, configuration, and billing operations across your account.  The API covers the following service categories: - [Domains](https://www.interserver.net/domains/) — registration, transfers, and DNS management - [Web Hosting](https://www.interserver.net/hosting/) — shared and reseller hosting - [VPS Hosting](https://www.interserver.net/vps/) — virtual private servers - [Dedicated Servers](https://www.interserver.net/dedicated/) — bare metal and [Rapid Deploy Servers](https://www.interserver.net/dedicated/rapid-deploy.html) - [Backups](https://www.interserver.net/storage/) — storage and backup services - Licenses — control panel and software licenses - [Mail](https://www.mail.baby/) — mail delivery services - SSL — certificate provisioning - Billing — invoices, payment methods, and account management  For interactive testing, see the [API documentation](/api-docs/).  # Authentication  Most endpoints require authentication. Two methods are supported:  ## API Key (Preferred)  Generate an API key from the [Account Security](https://my.interserver.net/account_security) page on [my.interserver.net](https://my.interserver.net/). Pass it in the `X-API-KEY` request header:  ``` X-API-KEY: your-api-key-here ```  ## Session-Based Authentication  Alternatively, authenticate by creating a session:  1. **Log in** — Send a `POST` request to `/login` with your account credentials. The response includes a session identifier. 2. **Pass the session ID** — Include the session identifier in the `sessionid` header on subsequent requests:  ``` sessionid: your-session-id-here ```  API key authentication is recommended for most integrations as it does not expire and avoids the overhead of session management.  
 
@@ -18,27 +18,27 @@ For more information, please visit [https://www.interserver.net/contact-us.html]
 To build the Ruby code into a gem:
 
 ```shell
-gem build swagger_client.gemspec
+gem build interserver-api-client.gemspec
 ```
 
 Then either install the gem locally:
 
 ```shell
-gem install ./swagger_client-1.0.0.gem
+gem install ./interserver-api-client-1.0.0.gem
 ```
-(for development, run `gem install --dev ./swagger_client-1.0.0.gem` to install the development dependencies)
+(for development, run `gem install --dev ./interserver-api-client-1.0.0.gem` to install the development dependencies)
 
 or publish the gem to a gem hosting service, e.g. [RubyGems](https://rubygems.org/).
 
 Finally add this to the Gemfile:
 
-    gem 'swagger_client', '~> 1.0.0'
+    gem 'interserver-api-client', '~> 1.0.0'
 
 ### Install from Git
 
-If the Ruby gem is hosted at a git repository: https://github.com/interserver/myadmin-client-ruby, then add the following in the Gemfile:
+If the Ruby gem is hosted at a git repository: https://github.com/GIT_USER_ID/GIT_REPO_ID, then add the following in the Gemfile:
 
-    gem 'swagger_client', :git => 'https://github.com/interserver/myadmin-client-ruby.git'
+    gem 'interserver-api-client', :git => 'https://github.com/GIT_USER_ID/GIT_REPO_ID.git'
 
 ### Include the Ruby code directly
 
@@ -53,9 +53,9 @@ ruby -Ilib script.rb
 Please follow the [installation](#installation) procedure and then run the following code:
 ```ruby
 # Load the gem
-require 'swagger_client'
+require 'interserver-api-client'
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -72,46 +72,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
-
-begin
-  #Change Account Username
-  result = api_instance.change_account_username
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling AccountApi->change_account_username: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 name = 'name_example' # String | 
 
 
 begin
-  #Unlink OAuth Account
+  #Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
   result = api_instance.delete_account_oauth_name(name)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->delete_account_oauth_name: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -128,17 +101,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 
 begin
-  #Disable Two-Factor Authentication
+  #Disable two-factor authentication and remove the TOTP secret
   result = api_instance.delete_account_tfa
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->delete_account_tfa: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -155,20 +128,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 opts = { 
-  body: SwaggerClient::IpLimitRange.new # IpLimitRange | 
+  body: InterserverApiClient::IpLimitRange.new # IpLimitRange | 
 }
 
 begin
-  #Remove IP Access Restriction
+  #Remove one IP range from the account allow-list (PATCH on /account/iplimits)
   result = api_instance.delete_ip_limit(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->delete_ip_limit: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -185,17 +158,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 
 begin
-  #Retrieve Account Details
+  #Read full account profile, billing address, and security settings
   result = api_instance.get_account_info
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->get_account_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -212,17 +185,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 
 begin
-  #Get Two-Factor Setup Data
+  #Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
   result = api_instance.get_account_tfa_setup
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->get_account_tfa_setup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -239,17 +212,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 
 begin
-  #Get Home Data
+  #Aggregate dashboard payload — service counts, recent activity, alerts
   result = api_instance.get_home
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->get_home: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -266,17 +239,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 
 begin
-  #Search Autocomplete
+  #Global autocomplete across the caller's services, domains, and records
   result = api_instance.get_search
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->get_search: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -293,17 +266,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 
 begin
-  #Log Out
+  #Destroy the current API/web session — token becomes unusable
   result = api_instance.logout
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->logout: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -320,19 +293,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 name = 'name_example' # String | 
 
 
 begin
-  #Logout of OAuth
+  #Sign out of the upstream OAuth provider session (does not unlink the account)
   result = api_instance.logout_account_oauth(name)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->logout_account_oauth: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -349,17 +322,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 
 begin
-  #Generate New API Key
+  #Rotate the account's REST/MCP API key — old key is invalidated immediately
   result = api_instance.update_account_api_key
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_api_key: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -376,21 +349,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 disable_reset = 56 # Integer | 
 disable_reinstall = 56 # Integer | 
-body = SwaggerClient::AccountFeatures.new # AccountFeatures | 
+body = InterserverApiClient::AccountFeatures.new # AccountFeatures | 
 
 
 begin
-  #Update Account Feature Flags
+  #Toggle account-wide safety locks for password reset and OS reinstall
   result = api_instance.update_account_features(disable_reset, disable_reinstall, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_features: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -407,7 +380,7 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 name = 'name_example' # String | 
 company = 'company_example' # String | 
 address = 'address_example' # String | 
@@ -425,18 +398,18 @@ disable_reinstall = true # BOOLEAN |
 disable_server_notifications = true # BOOLEAN | 
 disable_email_notifications = true # BOOLEAN | 
 gstin = 'gstin_example' # String | 
-body = SwaggerClient::AccountInfoPost.new # AccountInfoPost | 
+body = InterserverApiClient::AccountInfoPost.new # AccountInfoPost | 
 
 
 begin
-  #Update Account Information
+  #Update contact and billing-address fields on the customer profile
   result = api_instance.update_account_info(name, company, address, address2, city, state, zip, country, phone, locale, email_invoices, email_abuse, disable_reset, disable_reinstall, disable_server_notifications, disable_email_notifications, gstin, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -453,21 +426,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 start = 'start_example' # String | 
 _end = '_end_example' # String | 
-body = SwaggerClient::IpLimitRange.new # IpLimitRange | The lower and upper bounds of an ip range.
+body = InterserverApiClient::IpLimitRange.new # IpLimitRange | The lower and upper bounds of an ip range.
 
 
 begin
-  #Add IP Access Restriction
+  #Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
   result = api_instance.update_account_ip_limits(start, _end, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_ip_limits: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -484,20 +457,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 password = 'password_example' # String | 
-body = SwaggerClient::PasswordRequest.new # PasswordRequest | 
+body = InterserverApiClient::PasswordRequest.new # PasswordRequest | 
 
 
 begin
-  #Change Account Password
+  #Change the account login password (verifies current, kills other sessions)
   result = api_instance.update_account_password(password, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -514,20 +487,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 ssh_key = 'ssh_key_example' # String | 
-body = SwaggerClient::AccountSshKey.new # AccountSshKey | 
+body = InterserverApiClient::AccountSshKey.new # AccountSshKey | 
 
 
 begin
-  #Update SSH Keys
+  #Set the account-level SSH public key auto-installed on new VPS/dedicated orders
   result = api_instance.update_account_ssh_key(ssh_key, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_ssh_key: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -544,20 +517,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::AccountApi.new
+api_instance = InterserverApiClient::AccountApi.new
 _2fa_google_code = '_2fa_google_code_example' # String | 
-body = SwaggerClient::Account2faBody1.new # Account2faBody1 | 
+body = InterserverApiClient::Account2faBody1.new # Account2faBody1 | 
 
 
 begin
-  #Enable Two-Factor Authentication
+  #Verify TOTP code and enable two-factor authentication on the account
   result = api_instance.update_account_tfa(_2fa_google_code, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling AccountApi->update_account_tfa: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -574,22 +547,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BackupsApi.new
+api_instance = InterserverApiClient::BackupsApi.new
 validate_only = true # BOOLEAN | 
 service_type = 56 # Integer | 
 coupon = 'coupon_example' # String | 
-body = SwaggerClient::BackupOrderPutRequest.new # BackupOrderPutRequest | 
+body = InterserverApiClient::BackupOrderPutRequest.new # BackupOrderPutRequest | 
 
 
 begin
-  #Place Backup Order
+  #Place a new off-site backup storage order and generate the invoice
   result = api_instance.add_backup(validate_only, service_type, coupon, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BackupsApi->add_backup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -606,19 +579,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BackupsApi.new
+api_instance = InterserverApiClient::BackupsApi.new
 id = 56 # Integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 
 begin
-  #Cancel Backup Service
+  #Cancel an off-site backup storage subscription
   result = api_instance.cancel_backup(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BackupsApi->cancel_backup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -635,19 +608,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BackupsApi.new
+api_instance = InterserverApiClient::BackupsApi.new
 id = 56 # Integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 
 begin
-  #Get Backup Service Details
+  #Get details of a specific off-site backup storage service
   result = api_instance.get_backup_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BackupsApi->get_backup_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -664,19 +637,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BackupsApi.new
+api_instance = InterserverApiClient::BackupsApi.new
 id = 56 # Integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 
 begin
-  #Get Backup Order Invoices
+  #List invoices for a single backup-storage subscription
   result = api_instance.get_backup_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BackupsApi->get_backup_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -693,19 +666,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BackupsApi.new
+api_instance = InterserverApiClient::BackupsApi.new
 id = 56 # Integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 
 begin
-  #Get Backup Storage Panel Login
+  #Open a single sign-on session URL for the backup storage panel
   result = api_instance.get_backup_login(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BackupsApi->get_backup_login: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -722,17 +695,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BackupsApi.new
+api_instance = InterserverApiClient::BackupsApi.new
 
 begin
-  #List Backup Services
+  #List off-site backup storage subscriptions on the authenticated account
   result = api_instance.get_backups_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BackupsApi->get_backups_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -749,19 +722,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BackupsApi.new
+api_instance = InterserverApiClient::BackupsApi.new
 id = 56 # Integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 
 begin
-  #Resend Backup Welcome Email
+  #Resend the welcome email for an off-site backup storage service
   result = api_instance.get_backups_welcome_email(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BackupsApi->get_backups_welcome_email: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -778,17 +751,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BackupsApi.new
+api_instance = InterserverApiClient::BackupsApi.new
 
 begin
-  #Get Backup Order Form Data
+  #Get backup-storage order form metadata and pricing tiers
   result = api_instance.get_new_backup
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BackupsApi->get_new_backup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -805,19 +778,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BackupsApi.new
+api_instance = InterserverApiClient::BackupsApi.new
 id = 56 # Integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 
 
 begin
-  #Update Backup Information
+  #Update stored metadata for a backup-storage subscription
   result = api_instance.update_backup_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BackupsApi->update_backup_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -834,22 +807,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BackupsApi.new
+api_instance = InterserverApiClient::BackupsApi.new
 validate_only = true # BOOLEAN | 
 service_type = 56 # Integer | 
 coupon = 'coupon_example' # String | 
-body = SwaggerClient::BackupOrderPutRequest.new # BackupOrderPutRequest | 
+body = InterserverApiClient::BackupOrderPutRequest.new # BackupOrderPutRequest | 
 
 
 begin
-  #Validate Backup Order
+  #Validate a backup-storage order and preview pricing without charging
   result = api_instance.validate_backup_order(validate_only, service_type, coupon, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BackupsApi->validate_backup_order: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -866,46 +839,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
-name = 'name_example' # String | 
-address = 'address_example' # String | 
-city = 'city_example' # String | 
-state = 'state_example' # String | 
-country = 'country_example' # String | 
-zip = 'zip_example' # String | 
-cc = 'cc_example' # String | 
-cc_exp = 'cc_exp_example' # String | 
-cc_ccv2 = 'cc_ccv2_example' # String | 
-body = SwaggerClient::BillingAddCcRequest.new # BillingAddCcRequest | 
-
-
-begin
-  #Add Credit Card to Account
-  result = api_instance.add_account_credit_card(name, address, city, state, country, zip, cc, cc_exp, cc_ccv2, body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling BillingApi->add_account_credit_card: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::BillingApi.new
-body = SwaggerClient::BillingAddCcRequest.new # BillingAddCcRequest | 
+api_instance = InterserverApiClient::BillingApi.new
+body = InterserverApiClient::BillingAddCcRequest.new # BillingAddCcRequest | 
 name = 'name_example' # String | 
 address = 'address_example' # String | 
 city = 'city_example' # String | 
@@ -918,14 +853,14 @@ cc_ccv2 = 'cc_ccv2_example' # String |
 
 
 begin
-  #Add Credit Card for Billing
+  #Store a credit card on the account — may return a verification flow
   result = api_instance.add_billing_credit_card(body, name, address, city, state, country, zip, cc, cc_exp, cc_ccv2)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->add_billing_credit_card: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -942,22 +877,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
-body = SwaggerClient::BillingPrepayRequest.new # BillingPrepayRequest | 
+api_instance = InterserverApiClient::BillingApi.new
+body = InterserverApiClient::BillingPrepayRequest.new # BillingPrepayRequest | 
 _module = '_module_example' # String | 
-amount = SwaggerClient::BigDecimal.new # BigDecimal | 
+amount = InterserverApiClient::BigDecimal.new # BigDecimal | 
 automatic_use = 'automatic_use_example' # String | 
 
 
 begin
-  #Create Prepay Deposit
+  #Create a prepay deposit and return an invoice id to fund it
   result = api_instance.add_billing_prepay(body, _module, amount, automatic_use)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->add_billing_prepay: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -974,48 +909,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
-id = 'id_example' # String | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-
-
-begin
-  #Remove Credit Card
-  result = api_instance.delete_account_credit_card(id)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling BillingApi->delete_account_credit_card: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 id = 56 # Integer | The credit card ID to remove. Use IDs from `GET /billing/creditcards`.
 
 
 begin
-  #Delete Credit Card
+  #Remove a stored credit card from the account
   result = api_instance.delete_billing_credit_card(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->delete_billing_credit_card: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1032,19 +938,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 id = 56 # Integer | The invoice ID to delete. Only unpaid invoices can be deleted.
 
 
 begin
-  #Delete Invoice
+  #Cancel a pending unpaid invoice — and its pending service or repeat invoice
   result = api_instance.delete_billing_invoice(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->delete_billing_invoice: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1061,19 +967,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 id = 56 # Integer | The prepay balance ID to delete.
 
 
 begin
-  #Delete Prepay Balance
+  #Delete an unfunded prepay or strip its unpaid funding invoices
   result = api_instance.delete_billing_prepay(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->delete_billing_prepay: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1090,17 +996,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 
 begin
-  #List Affiliate Banner Assets
+  #List affiliate banner image assets with filename and dimensions
   result = api_instance.get_affiliate_banners
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->get_affiliate_banners: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1117,17 +1023,48 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
+opts = { 
+  st: 'st_example', # String | Filter by status.
+  ex: 'ex_example', # String | Export format: csv, xls, xlsx, or pdf. Defaults to csv.
+  year: 56 # Integer | Year to filter the report. Defaults to the current year.
+}
 
 begin
-  #Get Affiliate Performance Report
+  #Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+  api_instance.get_affiliate_download(opts)
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling BillingApi->get_affiliate_download: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::BillingApi.new
+
+begin
+  #Read a combined affiliate performance summary (HTML payload)
   result = api_instance.get_affiliate_rich_report
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->get_affiliate_rich_report: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1144,20 +1081,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 opts = { 
   days: 56 # Integer | Number of days of sales history to include in the graph data. Determines the time window for the returned data points.
 }
 
 begin
-  #Get Affiliate Sales Graph Data
+  #Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
   result = api_instance.get_affiliate_sales_graph(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->get_affiliate_sales_graph: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1174,17 +1111,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
+opts = { 
+  st: 'st_example' # String | Filter signups by status. Use `default` to show all or pass a specific status value to narrow results.
+}
 
 begin
-  #Get Affiliate Sales Report
-  result = api_instance.get_affiliate_sales_report
+  #Read affiliate signup stats and per-customer conversion data
+  result = api_instance.get_affiliate_signups(opts)
   p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling BillingApi->get_affiliate_sales_report: #{e}"
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling BillingApi->get_affiliate_signups: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1201,20 +1141,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 opts = { 
   days: 56 # Integer | Number of days of traffic history to include in the graph data. Determines the time window for the returned data points.
 }
 
 begin
-  #Get Affiliate Traffic Graph Data
+  #Read aggregated affiliate referral click/visit time-series for chart rendering
   result = api_instance.get_affiliate_traffic_graph(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->get_affiliate_traffic_graph: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1231,17 +1171,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 
 begin
-  #List Affiliate Web Traffic Entries
+  #List the 20 most recent affiliate referral visits with IP, referrer, timestamp
   result = api_instance.get_affiliate_web_traffic
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->get_affiliate_web_traffic: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1258,17 +1198,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 
 begin
-  #Get Shopping Cart Contents
+  #Read the current shopping cart contents, totals, and available payment methods
   result = api_instance.get_billing_cart
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->get_billing_cart: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1285,19 +1225,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 id = 56 # Integer | The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
 
 
 begin
-  #Get Credit Card Verification Requirements
+  #Probe whether a stored card still needs micro-charge verification
   result = api_instance.get_billing_credit_card_verify(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->get_billing_credit_card_verify: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1314,19 +1254,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 id = 56 # Integer | The invoice ID. Use IDs from `GET /billing/invoices` or from order responses.
 
 
 begin
-  #Get Invoice Details
+  #Read full invoice detail — line items, totals, paid status, customer info
   result = api_instance.get_billing_invoice(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->get_billing_invoice: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1343,17 +1283,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 
 begin
-  #List Account Invoices
+  #List every invoice on the account with summary totals and paid/unpaid status
   result = api_instance.get_billing_invoices
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->get_billing_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1370,17 +1310,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 
 begin
-  #List Prepay Balances
+  #List prepay deposits on the account — remaining balance and auto-use flags
   result = api_instance.get_billing_pre_pays
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->get_billing_pre_pays: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1397,52 +1337,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
-opts = { 
-  search_string: 'search_string_example', # String | pass an optional search string for looking up inventory
-  skip: 56, # Integer | number of records to skip for pagination
-  limit: 56 # Integer | maximum number of records to return
-}
-
-begin
-  #Get Invoices
-  result = api_instance.get_invoices(opts)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling BillingApi->get_invoices: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 method = 'method_example' # String | The payment method to use. Valid values: `cc` (credit card), `paypal`, `prepay`, `payssion`, `payu`, `ccavenue`, `cashfree`, `coinbase`, `btcpay`.
-invoices = 'invoices_example' # String | A comma-separated list of invoice IDs to pay. These IDs are returned by order endpoints (e.g. `/backups/order`, `/vps/order`) and by `/billing/invoices`.
+invoices = 'invoices_example' # String | A comma-separated list of invoice IDs or invoice Tags to pay. These IDs are returned by order endpoints (e.g. `/backups/order`, `/vps/order`) and by `/billing/invoices`. Invoice tags accepted are SERVICE<module><id>, RINV<module><repeat invoice id>, INV<module><invoice id>, PREPAY<prepay id><invoice id>, and <invoice id>.
 
 
 begin
-  #Initiate Payment
+  #Pay invoices through the chosen gateway — returns the next-step action
   result = api_instance.initiate_payment(method, invoices)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->initiate_payment: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1459,8 +1367,39 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
-body = SwaggerClient::BillingVerifyCcRequest.new # BillingVerifyCcRequest | 
+api_instance = InterserverApiClient::BillingApi.new
+body = InterserverApiClient::IdVerifyBody.new # IdVerifyBody | 
+cc_ccv2 = 'cc_ccv2_example' # String | 
+id = 56 # Integer | The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
+
+
+begin
+  #Place two micro-charges on the card to start CVV verification (step 1 of 2)
+  result = api_instance.patch_billing_credit_card_verify(body, cc_ccv2, id)
+  p result
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling BillingApi->patch_billing_credit_card_verify: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::BillingApi.new
+body = InterserverApiClient::BillingVerifyCcRequest.new # BillingVerifyCcRequest | 
 idx = 56 # Integer | 
 cc_ccv2 = 'cc_ccv2_example' # String | 
 cc_amount1 = 'cc_amount1_example' # String | 
@@ -1470,14 +1409,14 @@ id = 56 # Integer | The credit card ID to verify. Use the ID returned from `POST
 
 
 begin
-  #Submit Credit Card Verification
+  #Submit two micro-charge amounts to finalize card verification (step 2 of 2)
   result = api_instance.post_billing_credit_card_verify(body, idx, cc_ccv2, cc_amount1, cc_amount2, terms, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->post_billing_credit_card_verify: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1494,51 +1433,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
-id = 56 # Integer | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-
-
-begin
-  #Update Credit Card
-  result = api_instance.update_account_credit_card(id)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling BillingApi->update_account_credit_card: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 affiliate_dock_title = 'affiliate_dock_title_example' # String | 
 affiliate_dock_description = 'affiliate_dock_description_example' # String | 
 referrer_coupon = 'referrer_coupon_example' # String | 
-body = SwaggerClient::AffiliateDockSetup.new # AffiliateDockSetup | 
+body = InterserverApiClient::AffiliateDockSetup.new # AffiliateDockSetup | 
 
 
 begin
-  #Configure Affiliate Dock Settings
+  #Configure the affiliate landing dock title, description, and referrer coupon
   result = api_instance.update_affiliate_dock_setup(affiliate_dock_title, affiliate_dock_description, referrer_coupon, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->update_affiliate_dock_setup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1555,53 +1465,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
-affiliate_dock_title = 'affiliate_dock_title_example' # String | 
-affiliate_dock_description = 'affiliate_dock_description_example' # String | 
-referrer_coupon = 'referrer_coupon_example' # String | 
-body = SwaggerClient::AffiliateDockSetup.new # AffiliateDockSetup | 
-
-
-begin
-  #Configure Affiliate Landing Page
-  result = api_instance.update_affiliate_landing_page(affiliate_dock_title, affiliate_dock_description, referrer_coupon, body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling BillingApi->update_affiliate_landing_page: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 affiliate_paypal = 'affiliate_paypal_example' # String | 
 affiliate_payment_method = 'affiliate_payment_method_example' # String | 
-body = SwaggerClient::AffiliatePaymentSetup.new # AffiliatePaymentSetup | 
+body = InterserverApiClient::AffiliatePaymentSetup.new # AffiliatePaymentSetup | 
 
 
 begin
-  #Configure Affiliate Payout Preferences
+  #Configure how affiliate commissions get paid out (PayPal or internal prepay)
   result = api_instance.update_affiliate_payment_setup(affiliate_paypal, affiliate_payment_method, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->update_affiliate_payment_setup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1618,19 +1496,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
+api_instance = InterserverApiClient::BillingApi.new
 id = 56 # Integer | The credit card ID. Use IDs from `GET /billing/creditcards` or the response from `POST /billing/creditcards`.
 
 
 begin
-  #Update Credit Card Details
+  #Refresh stored card expiration and re-trigger MaxMind fraud scoring
   result = api_instance.update_billing_credit_card(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->update_billing_credit_card: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1647,21 +1525,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::BillingApi.new
-body = SwaggerClient::BillingPaymentMethodRequest.new # BillingPaymentMethodRequest | 
+api_instance = InterserverApiClient::BillingApi.new
+body = InterserverApiClient::BillingPaymentMethodRequest.new # BillingPaymentMethodRequest | 
 payment_method = 'payment_method_example' # String | 
 cc_auto = 'cc_auto_example' # String | 
 
 
 begin
-  #Update Default Payment Method
+  #Set the account's default payment method for recurring/auto charges
   result = api_instance.update_billing_payment_method(body, payment_method, cc_auto)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling BillingApi->update_billing_payment_method: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1678,21 +1556,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DNSApi.new
+api_instance = InterserverApiClient::DNSApi.new
 domain = 'domain_example' # String | 
 ip = 'ip_example' # String | 
-body = SwaggerClient::DnsNewDomain.new # DnsNewDomain | 
+body = InterserverApiClient::DnsNewDomain.new # DnsNewDomain | 
 
 
 begin
-  #Create DNS Domain
+  #Create a new authoritative DNS zone seeded with apex A + NS + SOA records
   result = api_instance.add_dns_domain(domain, ip, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DNSApi->add_dns_domain: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1709,24 +1587,24 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DNSApi.new
+api_instance = InterserverApiClient::DNSApi.new
 name = 'name_example' # String | 
-type = SwaggerClient::DnsRecordType.new # DnsRecordType | 
+type = InterserverApiClient::DnsRecordType.new # DnsRecordType | 
 content = 'content_example' # String | 
 ttl = 56 # Integer | 
 prio = 56 # Integer | 
-body = SwaggerClient::DnsNewRecord.new # DnsNewRecord | 
+body = InterserverApiClient::DnsNewRecord.new # DnsNewRecord | 
 id = 'id_example' # String | The DNS Domain ID.
 
 
 begin
-  #Add DNS Record to Domain
+  #Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
   api_instance.add_dns_record(name, type, content, ttl, prio, body, id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DNSApi->add_dns_record: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1743,19 +1621,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DNSApi.new
+api_instance = InterserverApiClient::DNSApi.new
 id = 'id_example' # String | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
 
 
 begin
-  #Delete DNS Domain
+  #Permanently delete a DNS zone and every record it contains
   result = api_instance.delete_dns_domain(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DNSApi->delete_dns_domain: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1772,20 +1650,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DNSApi.new
+api_instance = InterserverApiClient::DNSApi.new
 domain_id = 56 # Integer | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
 record_id = 56 # Integer | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 
 
 begin
-  #Delete DNS Record
+  #Permanently delete one DNS record from a zone — zone itself is preserved
   result = api_instance.delete_dns_record(domain_id, record_id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DNSApi->delete_dns_record: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1802,19 +1680,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DNSApi.new
+api_instance = InterserverApiClient::DNSApi.new
 id = 56 # Integer | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
 
 
 begin
-  #List Domain DNS Records
+  #List every DNS record in one zone with the IDs needed to edit or delete them
   result = api_instance.get_dns_domain(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DNSApi->get_dns_domain: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1831,17 +1709,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DNSApi.new
+api_instance = InterserverApiClient::DNSApi.new
 
 begin
-  #List DNS Domains
+  #List DNS zones hosted on the account with each zone's apex A-record IP
   result = api_instance.get_dns_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DNSApi->get_dns_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1858,29 +1736,29 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DNSApi.new
+api_instance = InterserverApiClient::DNSApi.new
 name = 'name_example' # String | 
-type = SwaggerClient::DnsRecordType.new # DnsRecordType | 
+type = InterserverApiClient::DnsRecordType.new # DnsRecordType | 
 content = 'content_example' # String | 
 ttl = 'ttl_example' # String | 
 prio = 'prio_example' # String | 
 disabled = 'disabled_example' # String | 
 ordername = 'ordername_example' # String | 
 auth = 'auth_example' # String | 
-body = SwaggerClient::DnsUpdateRecord.new # DnsUpdateRecord | The request data to update a dns record.
+body = InterserverApiClient::DnsUpdateRecord.new # DnsUpdateRecord | The request data to update a dns record.
 domain_id = 56 # Integer | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
 record_id = 56 # Integer | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 
 
 begin
-  #Update DNS Record
+  #Replace values on an existing DNS record (name, type, content, ttl, priority)
   result = api_instance.update_dns_record(name, type, content, ttl, prio, disabled, ordername, auth, body, domain_id, record_id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DNSApi->update_dns_record: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1897,17 +1775,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
+body = nil # Hash | 
+
 
 begin
-  #Place Domain Order
-  result = api_instance.add_domain
+  #Place a new domain registration or transfer order, generate billing invoice
+  result = api_instance.add_domain(body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->add_domain: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1924,8 +1804,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
-body = SwaggerClient::DomainDnssecRequest.new # DomainDnssecRequest | 
+api_instance = InterserverApiClient::DomainsApi.new
+body = InterserverApiClient::DomainDnssecRequest.new # DomainDnssecRequest | 
 algorithm = [56] # Array<Integer> | 
 digest_type = [56] # Array<Integer> | 
 digest = ['digest_example'] # Array<String> | 
@@ -1934,14 +1814,14 @@ id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Add Domain DNSSEC Records
+  #Register DNSSEC DS records on the domain at OpenSRS
   result = api_instance.add_domain_dnssec(body, algorithm, digest_type, digest, key_tag, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->add_domain_dnssec: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1958,22 +1838,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
-body = SwaggerClient::DomainNameserverPostRequest.new # DomainNameserverPostRequest | 
+api_instance = InterserverApiClient::DomainsApi.new
+body = InterserverApiClient::DomainNameserverPostRequest.new # DomainNameserverPostRequest | 
 name = 'name_example' # String | 
 ip_address = 'ip_address_example' # String | 
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Add Registered Nameserver
+  #Register a new nameserver host with glue IP at the registry (registered nameserver)
   result = api_instance.add_domain_nameserver(body, name, ip_address, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->add_domain_nameserver: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -1990,19 +1870,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Cancel Domain Order
+  #Cancel a domain order in the billing system to stop auto-renewals
   result = api_instance.cancel_domain(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->cancel_domain: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2019,20 +1899,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
-action = 'action_example' # String | Set to `delete` to remove all DNSSEC records.
 
 
 begin
-  #Remove Domain DNSSEC Records
-  result = api_instance.delete_domain_dnssec(id, action)
+  #Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
+  result = api_instance.delete_domain_dnssec(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->delete_domain_dnssec: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2049,20 +1928,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 index = 56 # Integer | The index of the registered nameserver from the registered nameservers list to delete.  
 
 
 begin
-  #Delete Registered Nameserver
+  #Remove one registered nameserver glue record from the domain
   result = api_instance.delete_domain_nameserver(id, index)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->delete_domain_nameserver: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2079,19 +1958,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Get Domain Contact Details
+  #Read the current registrant/admin/tech/billing contact field set for a domain
   result = api_instance.get_domain_contact(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domain_contact: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2108,19 +1987,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Get Domain DNSSEC Records
+  #Read the DNSSEC DS record set currently registered with the registrar
   result = api_instance.get_domain_dnssec(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domain_dnssec: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2137,19 +2016,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Get Domain Order
+  #Read full billing, registrar, and service detail for one domain
   result = api_instance.get_domain_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domain_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2166,19 +2045,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Get Domain Invoices
+  #List all billing invoices scoped to one domain order
   result = api_instance.get_domain_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domain_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2195,19 +2074,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 name = 'name_example' # String | The full domain name to look up (for example `example.com`).
 
 
 begin
-  #Lookup Domain Availability and Pricing
+  #Check availability, premium status, and pricing for a specific domain
   result = api_instance.get_domain_lookup(name)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domain_lookup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2224,19 +2103,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #List Registered Nameservers
+  #List registered nameserver hosts and glue IP addresses for a domain
   result = api_instance.get_domain_nameservers(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domain_nameservers: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2253,76 +2132,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
-domain = 'domain_example' # String | The fully qualified domain name (e.g. `example.com`).
-reg_type = 'reg_type_example' # String | The registration type. Common values include `register` for new registrations and `transfer` for inbound transfers.
-
-
-begin
-  #Get Domain Order Fields
-  api_instance.get_domain_order_fields(domain, reg_type)
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling DomainsApi->get_domain_order_fields: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::DomainsApi.new
-domain = 'domain_example' # String | The fully qualified domain name to look up (e.g. `example.com`).
-
-
-begin
-  #Get Domain Order Search Results
-  api_instance.get_domain_order_search_results(domain)
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling DomainsApi->get_domain_order_search_results: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Start Domain Renewal Flow
+  #Read renewal pricing, expiry, and whether a renewal invoice already exists
   result = api_instance.get_domain_renewal(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domain_renewal: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2339,19 +2161,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 name = 'name_example' # String | The base domain name to search (for example `example` or `example.com`).
 
 
 begin
-  #Search Domain Suggestions
+  #Get registrar-suggested domain alternatives and bulk availability for a search term
   result = api_instance.get_domain_search(name)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domain_search: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2368,19 +2190,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Start Domain Transfer Flow
+  #Read OpenSRS transfer status for an in-progress domain transfer order
   result = api_instance.get_domain_transfer(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domain_transfer: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2397,19 +2219,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Get Whois Privacy Status
+  #Read Whois privacy availability, current state, and add-on pricing for a domain
   result = api_instance.get_domain_whois_privacy(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domain_whois_privacy: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2426,17 +2248,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 
 begin
-  #List Domain Orders
+  #List every domain registration on the account with billing and registration metadata
   result = api_instance.get_domains_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domains_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2453,19 +2275,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Resend Domain Welcome Email
+  #Resend the domain welcome email with registration details and management instructions
   result = api_instance.get_domains_welcome_email(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_domains_welcome_email: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2482,17 +2304,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 
 begin
-  #Get Domain Ordering Information
+  #Read the buyable domain TLD service catalog and Whois privacy pricing
   result = api_instance.get_new_domain
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->get_new_domain: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2509,16 +2331,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
+body = nil # Hash | 
+
 
 begin
-  #Validate Domain Order
-  api_instance.patch_domains
-rescue SwaggerClient::ApiError => e
+  #Validate posted domain-order field values before committing — dry run
+  api_instance.patch_domains(body)
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->patch_domains: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2535,19 +2359,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Request Domain Renewal
+  #Submit a domain renewal request and generate the renewal invoice
   result = api_instance.post_domain_renewal(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->post_domain_renewal: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2564,19 +2388,47 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
+name = 'name_example' # String | The base domain name to search (for example `example` or `example.com`).
+
+
+begin
+  #Get the full order form data for a hostname in one round-trip (search → order preview)
+  api_instance.post_domain_search(name)
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling DomainsApi->post_domain_search: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::DomainsApi.new
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Request Domain Transfer
+  #Re-poll OpenSRS transfer status for a domain order via POST
   result = api_instance.post_domain_transfer(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->post_domain_transfer: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2593,16 +2445,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
+api_instance = InterserverApiClient::DomainsApi.new
+body = nil # Hash | 
+
 
 begin
-  #Domain Order Search
-  api_instance.put_domains
-rescue SwaggerClient::ApiError => e
+  #Preview per-TLD field requirements for a domain order — no commit
+  api_instance.put_domains(body)
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->put_domains: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2619,8 +2473,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
-body = SwaggerClient::DomainContactDetails.new # DomainContactDetails | 
+api_instance = InterserverApiClient::DomainsApi.new
+body = InterserverApiClient::DomainContactDetails.new # DomainContactDetails | 
 status = 'status_example' # String | 
 state = 'state_example' # String | 
 org_name = 'org_name_example' # String | 
@@ -2639,14 +2493,14 @@ id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Update Domain Contact Details
+  #Update registrant/admin contact details and push them to OpenSRS
   result = api_instance.update_domain_contact(body, status, state, org_name, country, postal_code, email, fax, address2, address3, address1, city, phone, first_name, last_name, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->update_domain_contact: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2663,19 +2517,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
-id = 'id_example' # String | The domain service ID. Use `domain_id` from `GET /domains`.
+api_instance = InterserverApiClient::DomainsApi.new
+id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Update Domain Order
+  #POST mutation hook for the domain detail page (use dedicated ops where possible)
   result = api_instance.update_domain_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->update_domain_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2692,21 +2546,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
-body = SwaggerClient::DomainNameserverPutRequest.new # DomainNameserverPutRequest | 
+api_instance = InterserverApiClient::DomainsApi.new
+body = InterserverApiClient::DomainNameserverPutRequest.new # DomainNameserverPutRequest | 
 nameserver = ['nameserver_example'] # Array<String> | 
 id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Replace Nameserver Set
+  #Replace the full authoritative-nameserver delegation list at the registrar
   result = api_instance.update_domain_nameservers(body, nameserver, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->update_domain_nameservers: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2723,8 +2577,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DomainsApi.new
-body = SwaggerClient::DomainWhoisPrivacyRequest.new # DomainWhoisPrivacyRequest | 
+api_instance = InterserverApiClient::DomainsApi.new
+body = InterserverApiClient::DomainWhoisPrivacyRequest.new # DomainWhoisPrivacyRequest | 
 func = 'func_example' # String | 
 csrf_token = 'csrf_token_example' # String | 
 domain_firstname = 'domain_firstname_example' # String | 
@@ -2745,14 +2599,14 @@ id = 56 # Integer | The domain service ID. Use `domain_id` from `GET /domains`.
 
 
 begin
-  #Update Whois Privacy
+  #Order, enable, or cancel the Whois privacy add-on for a domain
   result = api_instance.update_domain_whois_privacy(body, func, csrf_token, domain_firstname, domain_lastname, domain_email, domain_address, domain_address2, domain_address3, domain_city, domain_state, domain_zip, domain_country, domain_phone, domain_fax, domain_company, domain_extra, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling DomainsApi->update_domain_whois_privacy: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2769,17 +2623,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FloatingIPsApi.new
+api_instance = InterserverApiClient::FloatingIPsApi.new
+body = InterserverApiClient::FloatingIpOrderRequest.new # FloatingIpOrderRequest | 
+
 
 begin
-  #Place Floating IP Order
-  result = api_instance.add_floating_ip
+  #Place a real Floating IP order, create billing records, and provision the service
+  result = api_instance.add_floating_ip(body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->add_floating_ip: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2796,19 +2652,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FloatingIPsApi.new
+api_instance = InterserverApiClient::FloatingIPsApi.new
 id = 56 # Integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 
 begin
-  #Cancel Floating IP
+  #Cancel a Floating IP service and release the IP — destructive, billing stops
   result = api_instance.floating_ips_cancel(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->floating_ips_cancel: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2825,19 +2681,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FloatingIPsApi.new
+api_instance = InterserverApiClient::FloatingIPsApi.new
 id = 56 # Integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 
 begin
-  #View Floating IP
+  #Fetch full details for one Floating IP service, including current target IP
   result = api_instance.get_floating_ip_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_floating_ip_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2854,19 +2710,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FloatingIPsApi.new
+api_instance = InterserverApiClient::FloatingIPsApi.new
 id = 56 # Integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 
 begin
-  #Get Floating IP Invoices
+  #List all billing invoices charged against a specific Floating IP service
   result = api_instance.get_floating_ip_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_floating_ip_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2883,17 +2739,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FloatingIPsApi.new
+api_instance = InterserverApiClient::FloatingIPsApi.new
 
 begin
-  #List Floating IPs
+  #List all Floating IP services on the authenticated customer's account
   result = api_instance.get_floating_ips_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_floating_ips_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2910,19 +2766,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FloatingIPsApi.new
+api_instance = InterserverApiClient::FloatingIPsApi.new
 id = 56 # Integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 
 begin
-  #Resend Floating IPs Welcome Email
+  #Resend the Floating IP welcome / setup email to the account contact
   result = api_instance.get_floating_ips_welcome_email(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_floating_ips_welcome_email: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2939,17 +2795,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FloatingIPsApi.new
+api_instance = InterserverApiClient::FloatingIPsApi.new
 
 begin
-  #Get Floating IP Ordering Information
+  #Get pricing and service-type options for ordering a new Floating IP
   result = api_instance.get_new_floating_ip
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->get_new_floating_ip: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2966,21 +2822,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FloatingIPsApi.new
+api_instance = InterserverApiClient::FloatingIPsApi.new
 ip = 'ip_example' # String | 
-body = SwaggerClient::IpObject.new # IpObject | 
+body = InterserverApiClient::IpObject.new # IpObject | 
 id = 56 # Integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 
 begin
-  #Change Floating IP Target
+  #Re-point a Floating IP to a different target IP on one of the customer's services
   result = api_instance.post_floating_ips_change_ip(ip, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->post_floating_ips_change_ip: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -2997,16 +2853,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FloatingIPsApi.new
+api_instance = InterserverApiClient::FloatingIPsApi.new
+body = InterserverApiClient::FloatingIpOrderRequest.new # FloatingIpOrderRequest | 
+
 
 begin
-  #Validate Floating IP Order
-  api_instance.put_floating_ips
-rescue SwaggerClient::ApiError => e
+  #Validate a Floating IP order and price it without charging the customer
+  api_instance.put_floating_ips(body)
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->put_floating_ips: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3023,19 +2881,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::FloatingIPsApi.new
+api_instance = InterserverApiClient::FloatingIPsApi.new
 id = 'id_example' # String | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 
 
 begin
-  #Update Floating IP
+  #Update a Floating IP service's editable settings (label / metadata)
   result = api_instance.update_floating_ip_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling FloatingIPsApi->update_floating_ip_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3052,17 +2910,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LicensesApi.new
+api_instance = InterserverApiClient::LicensesApi.new
+body = InterserverApiClient::LicenseOrderRequest.new # LicenseOrderRequest | 
+
 
 begin
-  #Place License Order
-  result = api_instance.add_license
+  #Order a new software license and create the recurring invoice
+  result = api_instance.add_license(body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling LicensesApi->add_license: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3079,19 +2939,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LicensesApi.new
+api_instance = InterserverApiClient::LicensesApi.new
 id = 56 # Integer | The license service ID. Use `license_id` from `GET /licenses`.
 
 
 begin
-  #Get License
+  #Get full details for one license including status, IP, and links
   result = api_instance.get_license_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling LicensesApi->get_license_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3108,19 +2968,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LicensesApi.new
+api_instance = InterserverApiClient::LicensesApi.new
 id = 56 # Integer | The license service ID. Use `license_id` from `GET /licenses`.
 
 
 begin
-  #Get License Invoices
+  #List all billing invoices tied to one software license service
   result = api_instance.get_license_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling LicensesApi->get_license_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3137,17 +2997,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LicensesApi.new
+api_instance = InterserverApiClient::LicensesApi.new
 
 begin
-  #List Licenses
+  #List all software licenses owned by the authenticated customer
   result = api_instance.get_license_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling LicensesApi->get_license_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3164,47 +3024,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LicensesApi.new
-cat_tag = 'cat_tag_example' # String | The license category tag (e.g. `cpanel`, `plesk`). Obtain valid values from the `GET /licenses/order` response.
-
-
-begin
-  #Get License Order Information for Category
-  api_instance.get_license_order_cat_tag_info(cat_tag)
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling LicensesApi->get_license_order_cat_tag_info: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::LicensesApi.new
+api_instance = InterserverApiClient::LicensesApi.new
 id = 56 # Integer | The license service ID. Use `license_id` from `GET /licenses`.
 
 
 begin
-  #Resend License Welcome Email
+  #Resend the license welcome email with the key and activation steps
   result = api_instance.get_licenses_welcome_email(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling LicensesApi->get_licenses_welcome_email: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3221,17 +3053,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LicensesApi.new
+api_instance = InterserverApiClient::LicensesApi.new
 
 begin
-  #Get License Order Information
+  #Get available license types, packages, and pricing for ordering
   result = api_instance.get_new_license
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling LicensesApi->get_new_license: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3248,19 +3080,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LicensesApi.new
+api_instance = InterserverApiClient::LicensesApi.new
 id = 56 # Integer | The license service ID. Use `license_id` from `GET /licenses`.
 
 
 begin
-  #Cancel License
+  #Cancel a license service and stop future billing (irreversible)
   result = api_instance.licenses_cancel(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling LicensesApi->licenses_cancel: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3277,21 +3109,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LicensesApi.new
-body = SwaggerClient::IpObject.new # IpObject | 
+api_instance = InterserverApiClient::LicensesApi.new
+body = InterserverApiClient::IpObject.new # IpObject | 
 ip = 'ip_example' # String | 
 id = 56 # Integer | The license service ID. Use `license_id` from `GET /licenses`.
 
 
 begin
-  #Change License IP
+  #Rebind a license to a new IP address (may incur a vendor fee)
   result = api_instance.post_license_change_ip(body, ip, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling LicensesApi->post_license_change_ip: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3308,16 +3140,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LicensesApi.new
+api_instance = InterserverApiClient::LicensesApi.new
+body = InterserverApiClient::LicenseOrderRequest.new # LicenseOrderRequest | 
+
 
 begin
-  #Validate License Order
-  api_instance.put_licenses
-rescue SwaggerClient::ApiError => e
+  #Validate a software license order before placing it (dry run preview)
+  api_instance.put_licenses(body)
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling LicensesApi->put_licenses: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3334,19 +3168,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::LicensesApi.new
+api_instance = InterserverApiClient::LicensesApi.new
 id = 'id_example' # String | The license service ID. Use `license_id` from `GET /licenses`.
 
 
 begin
-  #Update License
+  #Update mutable fields on a license service (e.g. assigned IP)
   result = api_instance.update_license_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling LicensesApi->update_license_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3363,17 +3197,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
+body = InterserverApiClient::MailOrderRequest.new # MailOrderRequest | 
+
 
 begin
-  #Place Mail Order
-  result = api_instance.add_mail
+  #Place a new Mail Baby order, generate invoice, and queue provisioning
+  result = api_instance.add_mail(body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->add_mail: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3390,8 +3226,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
-body = SwaggerClient::DenyRuleNew.new # DenyRuleNew | These are the fields needed to create a new email deny rule.
+api_instance = InterserverApiClient::MailApi.new
+body = InterserverApiClient::DenyRuleNew.new # DenyRuleNew | These are the fields needed to create a new email deny rule.
 user = 'user_example' # String | 
 type = 'type_example' # String | 
 data = 'data_example' # String | 
@@ -3399,14 +3235,14 @@ id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Create Deny Rule
+  #Create a new deny rule to auto-block matching submissions
   result = api_instance.add_rule(body, user, type, data, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->add_rule: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3423,8 +3259,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
-body = SwaggerClient::MailAlertRequest.new # MailAlertRequest | 
+api_instance = InterserverApiClient::MailApi.new
+body = InterserverApiClient::MailAlertRequest.new # MailAlertRequest | 
 type = 'type_example' # String | 
 value = 'value_example' # String | 
 to = 'to_example' # String | 
@@ -3433,14 +3269,14 @@ id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Create Mail Alert
+  #Create a new Mail Baby alert for delivery, bounce, or quota events
   result = api_instance.create_mail_alert(body, type, value, to, enabled, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->create_mail_alert: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3457,20 +3293,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
+body = InterserverApiClient::IdAlertsBody.new # IdAlertsBody | 
+alert_id = 56 # Integer | 
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
-alert_id = 56 # Integer | Alert ID to delete.
 
 
 begin
-  #Delete Mail Alert
-  result = api_instance.delete_mail_alert(id, alert_id)
+  #Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+  result = api_instance.delete_mail_alert(body, alert_id, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->delete_mail_alert: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3487,20 +3324,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 rule = 'rule_example' # String | The ID of the Rules entry.
 
 
 begin
-  #Delete Deny Rule
+  #Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
   result = api_instance.delete_rule(id, rule)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->delete_rule: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3517,21 +3354,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 email = 'email_example' # String | 
-body = SwaggerClient::EmailAddress.new # EmailAddress | 
+body = InterserverApiClient::EmailAddress.new # EmailAddress | 
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Remove Email Address from Block List
+  #Delist a sender email from rspamd / mailchannels / mailbaby block lists
   result = api_instance.delist_block(email, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->delist_block: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3548,19 +3385,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #List Mail Alerts
+  #List configured delivery/bounce/quota alerts for one Mail Baby service
   result = api_instance.get_mail_alerts(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_mail_alerts: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3577,19 +3414,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #List Blocked Email Addresses
+  #List recent local-blocklist hits and spam-trap captures for the mail user
   result = api_instance.get_mail_blocks(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_mail_blocks: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3606,19 +3443,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Get Delist Status
+  #Read blocklist diagnostics and find senders eligible for delisting
   result = api_instance.get_mail_delist(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_mail_delist: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3635,19 +3472,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Get Deliverability Metrics
+  #Read delivered vs bounced totals broken down by sender (or by recipient domain)
   result = api_instance.get_mail_deliverability(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_mail_deliverability: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3664,19 +3501,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Get Mail Order
+  #Read full detail for one Mail Baby service including SMTP credentials
   result = api_instance.get_mail_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_mail_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3693,19 +3530,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Get Mail Invoices
+  #List billing invoices linked to this Mail Baby service
   result = api_instance.get_mail_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_mail_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3722,17 +3559,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 
 begin
-  #List Mail Orders
+  #List every Mail Baby SMTP relay service on the account
   result = api_instance.get_mail_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_mail_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3749,19 +3586,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Resend Mail Welcome Email
+  #Resend the Mail Baby welcome email with SMTP credentials and setup info
   result = api_instance.get_mail_welcome_email(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_mail_welcome_email: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3778,17 +3615,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 
 begin
-  #Get Mail Ordering Information
+  #Read the Mail Baby order catalog — plans, package costs, service-type metadata
   result = api_instance.get_new_mail
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_new_mail: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3805,19 +3642,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #List Deny Rules
+  #List configured deny rules (sender/recipient blocks) for a Mail Baby service
   result = api_instance.get_rules(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_rules: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3834,21 +3671,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 opts = { 
   time: 'time_example' # String | The timeframe for the statistics.
 }
 
 begin
-  #Get Mail Usage Statistics
+  #Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
   result = api_instance.get_stats(id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->get_stats: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3865,19 +3702,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Cancel Mail
+  #Cancel a Mail Baby service and stop the recurring invoice
   result = api_instance.mail_cancel(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->mail_cancel: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3894,21 +3731,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
-body = SwaggerClient::MailDelistRequest.new # MailDelistRequest | 
+api_instance = InterserverApiClient::MailApi.new
+body = InterserverApiClient::MailDelistRequest.new # MailDelistRequest | 
 unblock = 'unblock_example' # String | 
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Delist a Blocked Sender
+  #Delist a sender from rspamd / mailchannels / mailbaby block lists
   result = api_instance.post_mail_delist(body, unblock, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->post_mail_delist: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3925,16 +3762,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
+body = InterserverApiClient::MailOrderRequest.new # MailOrderRequest | 
+
 
 begin
-  #Validate Mail Order
-  api_instance.put_mail
-rescue SwaggerClient::ApiError => e
+  #Validate Mail Baby order, quote pricing, and verify coupon — no charge
+  api_instance.put_mail(body)
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->put_mail: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3951,19 +3790,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Reset Mail Password
+  #Rotate the SMTP password and email the new credential to the account owner
   result = api_instance.reset_mail_password(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->reset_mail_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -3980,29 +3819,29 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
-body = SwaggerClient::SendMailAdv.new # SendMailAdv | 
+api_instance = InterserverApiClient::MailApi.new
+body = InterserverApiClient::SendMailAdv.new # SendMailAdv | 
 subject = 'subject_example' # String | 
 body = 'body_example' # String | 
-from = SwaggerClient::EmailAddressName.new # EmailAddressName | 
-to = [SwaggerClient::EmailAddressName.new] # Array<EmailAddressName> | 
-replyto = [SwaggerClient::EmailAddressName.new] # Array<EmailAddressName> | 
-cc = [SwaggerClient::EmailAddressName.new] # Array<EmailAddressName> | 
-bcc = [SwaggerClient::EmailAddressName.new] # Array<EmailAddressName> | 
-attachments = [SwaggerClient::MailAttachment.new] # Array<MailAttachment> | 
+from = InterserverApiClient::EmailAddressName.new # EmailAddressName | 
+to = [InterserverApiClient::EmailAddressName.new] # Array<EmailAddressName> | 
+replyto = [InterserverApiClient::EmailAddressName.new] # Array<EmailAddressName> | 
+cc = [InterserverApiClient::EmailAddressName.new] # Array<EmailAddressName> | 
+bcc = [InterserverApiClient::EmailAddressName.new] # Array<EmailAddressName> | 
+attachments = [InterserverApiClient::MailAttachment.new] # Array<MailAttachment> | 
 id = 789 # Integer | 
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Send Email with Advanced Options
+  #Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
   result = api_instance.send_adv_mail(body, subject, body, from, to, replyto, cc, bcc, attachments, id, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->send_adv_mail: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4019,8 +3858,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
-body = SwaggerClient::SendMail.new # SendMail | 
+api_instance = InterserverApiClient::MailApi.new
+body = InterserverApiClient::SendMail.new # SendMail | 
 to = 'to_example' # String | 
 from = 'from_example' # String | 
 subject = 'subject_example' # String | 
@@ -4029,14 +3868,14 @@ id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Send Email
+  #Send a simple single-recipient email through the Mail Baby SMTP relay
   result = api_instance.send_mail(body, to, from, subject, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->send_mail: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4053,8 +3892,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
-body = SwaggerClient::MailAlertUpdateRequest.new # MailAlertUpdateRequest | 
+api_instance = InterserverApiClient::MailApi.new
+body = InterserverApiClient::MailAlertUpdateRequest.new # MailAlertUpdateRequest | 
 alert_id = 56 # Integer | 
 type = 'type_example' # String | 
 value = 'value_example' # String | 
@@ -4064,14 +3903,14 @@ id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Update Mail Alert
+  #Update an existing Mail Baby alert by alert_id
   result = api_instance.update_mail_alert(body, alert_id, type, value, to, enabled, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->update_mail_alert: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4088,19 +3927,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
 id = 'id_example' # String | The mail service ID. Use `mail_id` from `GET /mail`.
 
 
 begin
-  #Update Mail Order
+  #POST mutation hook for the Mail Baby service detail page
   result = api_instance.update_mail_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->update_mail_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4117,7 +3956,41 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::MailApi.new
+api_instance = InterserverApiClient::MailApi.new
+body = InterserverApiClient::DenyRuleNew.new # DenyRuleNew | 
+user = 'user_example' # String | 
+type = 'type_example' # String | 
+data = 'data_example' # String | 
+id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
+rule = 'rule_example' # String | The ID of the deny rule to update.
+
+
+begin
+  #Update an existing Mail Baby deny rule's type and match data
+  result = api_instance.update_rule(body, user, type, data, id, rule)
+  p result
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling MailApi->update_rule: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::MailApi.new
 id = 56 # Integer | The mail service ID. Use `mail_id` from `GET /mail`.
 opts = { 
   id: 789, # Integer | The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.
@@ -4133,22 +4006,22 @@ opts = {
   delivered: 56, # Integer | Filter by delivery status.  `1` returns only messages that were successfully delivered to the destination MX.  `0` returns messages that are still queued, deferred, or failed.  Omit to return all messages regardless of delivery status.
   skip: 0, # Integer | Number of records to skip for pagination.  Use in combination with `limit` to page through large result sets.  Defaults to `0` (no skip).
   limit: 100, # Integer | Maximum number of records to return per page.  Defaults to `100`. Maximum allowed value is `10000`.  The response also includes a `total` field with the full matched count so you can calculate the number of pages.
-  start_date: SwaggerClient::StartDate.new, # StartDate | Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
-  end_date: SwaggerClient::EndDate.new, # EndDate | Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
+  start_date: InterserverApiClient::StartDate.new, # StartDate | Earliest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-15` or `last monday`.  Messages with a `time` value **greater than or equal to** this value will be included.
+  end_date: InterserverApiClient::EndDate.new, # EndDate | Latest date to include.  Accepts either a Unix timestamp (integer seconds since epoch) or a date string parseable by `strtotime()` such as `2024-01-31` or `yesterday`. Messages with a `time` value **less than or equal to** this value will be included.
   sort: 'time', # String | Field to sort results by.  Currently only `time` is supported (sorts by internal row ID which corresponds to chronological order).
   dir: 'desc', # String | Sort direction.  `desc` returns newest first (default), `asc` returns oldest first.
   groupby: 'recipient' # String | Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode.
 }
 
 begin
-  #View Mail Log
+  #Search and paginate per-message Mail Baby delivery log entries
   result = api_instance.view_mail_log(id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling MailApi->view_mail_log: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4165,17 +4038,71 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 
 begin
-  #Get Captcha Challenge
+  #List enabled currency codes accepted for billing and preferences
+  result = api_instance.get_account_currencies
+  p result
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling PublicApi->get_account_currencies: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::PublicApi.new
+
+begin
+  #List supported UI locales with English and native display names
+  result = api_instance.get_account_locales
+  p result
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling PublicApi->get_account_locales: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::PublicApi.new
+
+begin
+  #Fetch a base64 JPEG captcha challenge for human verification
   result = api_instance.get_captcha
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->get_captcha: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4192,20 +4119,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 opts = { 
   fetch_by: 'fetch_by_example' # String | Get countries by iso2 or iso3 or numcode
 }
 
 begin
-  #Get Countries
+  #List enabled countries keyed by ISO-2/ISO-3/numeric code
   result = api_instance.get_countries(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->get_countries: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4222,17 +4149,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 
 begin
-  #Get Server Info
+  #Discover available modules, service packages, categories, and types
   result = api_instance.get_info
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->get_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4249,17 +4176,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 
 begin
-  #Get Login Info
+  #Fetch logo, captcha, language, and stats for rendering a login page
   result = api_instance.get_login_info
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->get_login_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4276,17 +4203,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 
 begin
-  #List Marketplace Servers
+  #List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
   result = api_instance.get_mp_servers
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->get_mp_servers: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4303,19 +4230,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 provider = 'provider_example' # String | The OAuth provider name (e.g. `Google`).
 
 
 begin
-  #Get OAuth Redirect URL
+  #Begin OAuth login flow — redirect user to provider for authentication
   result = api_instance.get_oauth_redirect(provider)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->get_oauth_redirect: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4332,17 +4259,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 
 begin
-  #Get Available Timezones
+  #List all PHP timezone identifiers usable on accounts and services
   result = api_instance.get_timezones
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->get_timezones: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4359,21 +4286,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
-body = SwaggerClient::OauthBody2.new # OauthBody2 | 
+api_instance = InterserverApiClient::PublicApi.new
+body = InterserverApiClient::OauthBody2.new # OauthBody2 | 
 account_id = 56 # Integer | 
 code = 'code_example' # String | 
 
 
 begin
-  #Complete OAuth Two-Factor Verification
+  #Submit 2FA code to finish OAuth login when account has 2FA enabled
   result = api_instance.patch_oauth_two_factor(body, account_id, code)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->patch_oauth_two_factor: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4390,17 +4317,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 
 begin
-  #Ping Server
+  #Liveness check — returns the JSON string \"pong\" to confirm API is up
   result = api_instance.ping_server
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->ping_server: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4417,22 +4344,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 provider = 'provider_example' # String | The OAuth provider name (e.g. `Google`).
 opts = { 
-  body: SwaggerClient::OauthBody.new, # OauthBody | 
+  body: InterserverApiClient::OauthBody.new, # OauthBody | 
   provider: 'provider_example' # String | 
 }
 
 begin
-  #OAuth Callback
+  #Complete OAuth login by linking provider to existing or new account
   result = api_instance.post_oauth_callback(provider, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->post_oauth_callback: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4449,24 +4376,24 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 login = 'login_example' # String | 
 passwd = 'passwd_example' # String | 
 remember = 'remember_example' # String | 
-g_recaptcha_response = SwaggerClient::LoginSubmissionExampleGrecaptcharesponse.new # LoginSubmissionExampleGrecaptcharesponse | 
+g_recaptcha_response = InterserverApiClient::LoginSubmissionExampleGrecaptcharesponse.new # LoginSubmissionExampleGrecaptcharesponse | 
 tfa = 'tfa_example' # String | 
-body = SwaggerClient::LoginSubmissionExample.new # LoginSubmissionExample | 
+body = InterserverApiClient::LoginSubmissionExample.new # LoginSubmissionExample | 
 
 
 begin
-  #Submit Login Information
+  #Authenticate with email + password and return a session token
   result = api_instance.submit_login(login, passwd, remember, g_recaptcha_response, tfa, body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->submit_login: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4483,19 +4410,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::PublicApi.new
+api_instance = InterserverApiClient::PublicApi.new
 opts = { 
-  body: SwaggerClient::LoginSubmissionExample.new # LoginSubmissionExample | 
+  body: InterserverApiClient::LoginSubmissionExample.new # LoginSubmissionExample | 
 }
 
 begin
-  #Submit Signup Information
+  #Create a new customer account (email + password + captcha + ToS)
   api_instance.submit_signup(opts)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling PublicApi->submit_signup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4512,17 +4439,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
+body = InterserverApiClient::QsOrderRequest.new # QsOrderRequest | 
+
 
 begin
-  #Place QuickServer Order
-  result = api_instance.add_qs
+  #Place a QuickServer order, generating a real invoice and queuing provisioning
+  result = api_instance.add_qs(body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->add_qs: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4539,7 +4468,7 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 file = 'file_example' # String | The backup filename to delete.
 opts = { 
@@ -4547,14 +4476,14 @@ opts = {
 }
 
 begin
-  #Delete QuickServer Backup
+  #Permanently delete a QuickServer backup file from object storage
   result = api_instance.delete_qs_backup(id, file, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->delete_qs_backup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4571,19 +4500,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number.
 
 
 begin
-  #Block QuickServer SMTP
+  #Block outbound SMTP traffic on a QuickServer to halt mail abuse
   result = api_instance.do_qs_block_smtp(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->do_qs_block_smtp: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4600,19 +4529,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number.
 
 
 begin
-  #Disable CD Drive
+  #Disable the virtual CD/DVD drive device on a QuickServer
   result = api_instance.do_qs_disable_cd(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->do_qs_disable_cd: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4629,19 +4558,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number.
 
 
 begin
-  #Disable Quotas
+  #Disable disk-quota enforcement at OS level on a QuickServer
   result = api_instance.do_qs_disable_quota(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->do_qs_disable_quota: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4658,19 +4587,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number.
 
 
 begin
-  #Eject CD Drive
+  #Eject the currently mounted ISO from a QuickServer's virtual CD drive
   result = api_instance.do_qs_eject_cd(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->do_qs_eject_cd: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4687,19 +4616,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number.
 
 
 begin
-  #Enable Quotas
+  #Enable disk-quota enforcement at OS level on a QuickServer
   result = api_instance.do_qs_enable_quota(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->do_qs_enable_quota: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4716,19 +4645,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number.
 
 
 begin
-  #Restart QuickServer
+  #Reboot a QuickServer with a graceful OS-level restart
   result = api_instance.do_qs_restart(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->do_qs_restart: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4745,19 +4674,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number.
 
 
 begin
-  #Start QuickServer
+  #Power on a QuickServer that is currently stopped or pending boot
   result = api_instance.do_qs_start(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->do_qs_start: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4774,19 +4703,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number.
 
 
 begin
-  #Stop QuickServer
+  #Power off a QuickServer with a graceful shutdown command
   result = api_instance.do_qs_stop(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->do_qs_stop: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4803,8 +4732,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
-body = SwaggerClient::IdBackupsBody.new # IdBackupsBody | 
+api_instance = InterserverApiClient::QuickServersApi.new
+body = InterserverApiClient::IdBackupsBody.new # IdBackupsBody | 
 file = 'file_example' # String | 
 id = 56 # Integer | QuickServer ID number
 opts = { 
@@ -4812,14 +4741,14 @@ opts = {
 }
 
 begin
-  #Download QuickServer Backup
+  #Generate a 24-hour pre-signed download URL for a QuickServer backup
   result = api_instance.download_qs_backup(body, file, id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->download_qs_backup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4836,17 +4765,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 
 begin
-  #Get QuickServer Ordering Information
+  #Get QuickServer order form metadata and available plans/templates
   result = api_instance.get_new_qs
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_new_qs: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4863,21 +4792,50 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
+id = 56 # Integer | QuickServer ID number
+
+
+begin
+  #Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+  result = api_instance.get_qs_backup(id)
+  p result
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling QuickServersApi->get_qs_backup: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 opts = { 
   all: 'all_example' # String | Set to `1` to list all backups across all services, not just the ones for the given QuickServer.
 }
 
 begin
-  #List QuickServer Backups
+  #List available QuickServer backups across Swift, MinIO, and ZFS storage
   result = api_instance.get_qs_backups(id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_backups: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4894,18 +4852,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Get QuickServer Hostname
+  #Get current QuickServer hostname plus change rules and platform support
   api_instance.get_qs_change_hostname(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_change_hostname: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4922,18 +4880,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Get Change Root Password Info
+  #Get metadata for QuickServer root/OS password change requirements
   api_instance.get_qs_change_root_password(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_change_root_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4950,19 +4908,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Get Timezone Info
+  #List timezones the QuickServer can be set to via change_timezone
   result = api_instance.get_qs_change_timezone(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_change_timezone: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -4979,18 +4937,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Webuzo Change Pass Info
+  #Get metadata for changing the Webuzo control panel admin password
   api_instance.get_qs_change_webuzo_password(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_change_webuzo_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5007,19 +4965,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number.
 
 
 begin
-  #Get QuickServer Order
+  #Get full details for one QuickServer including credentials and links
   result = api_instance.get_qs_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5036,18 +4994,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Insert CD Information
+  #List ISO images available to mount on a QuickServer's virtual CD
   api_instance.get_qs_insert_cd(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_insert_cd: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5064,19 +5022,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Get QuickServer Invoices
+  #List billing invoices charged for one QuickServer service
   result = api_instance.get_qs_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5093,17 +5051,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 
 begin
-  #List QuickServers
+  #List QuickServer rapid-deploy dedicated servers on the account
   result = api_instance.get_qs_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5120,19 +5078,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #QuickServer Reinstall OS Options
+  #List OS templates available for a QuickServer reinstall
   result = api_instance.get_qs_reinstall_os(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_reinstall_os: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5149,18 +5107,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Reset QuickServer Password Info
+  #Get options for QuickServer randomized root password reset
   api_instance.get_qs_reset_password(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_reset_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5177,19 +5135,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Reverse DNS Info
+  #Get reverse DNS (PTR) records for all of a QuickServer's IPs
   result = api_instance.get_qs_reverse_dns(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_reverse_dns: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5206,18 +5164,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #VNC Setup Info
+  #Get current VNC console connection details for a QuickServer
   api_instance.get_qs_setup_vnc(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_setup_vnc: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5234,18 +5192,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Get Traffic Usage
+  #Get bandwidth usage for the QuickServer's current billing period
   api_instance.get_qs_traffic_usage(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_traffic_usage: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5262,18 +5220,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Get View Desktop Info
+  #Get the full QuickServer dashboard view payload (rich format)
   api_instance.get_qs_view_desktop(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_view_desktop: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5290,19 +5248,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 'id_example' # String | Quickserver ID
 
 
 begin
-  #Resend QuickServer Welcome Email
+  #Resend the QuickServer welcome email with login credentials
   result = api_instance.get_qs_welcome_email(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->get_qs_welcome_email: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5319,48 +5277,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Create QuickServer Backup
-  result = api_instance.post_qs_backup(id)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling QuickServersApi->post_qs_backup: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::QuickServersApi.new
-id = 56 # Integer | QuickServer ID number
-
-
-begin
-  #Update QuickServer Hostname
+  #Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
   result = api_instance.post_qs_change_hostname(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_change_hostname: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5377,19 +5306,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Change Root Password
+  #Change QuickServer root/administrator password to a chosen value
   result = api_instance.post_qs_change_root_password(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_change_root_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5406,21 +5335,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 timezone = 'timezone_example' # String | 
-body = SwaggerClient::TimezoneUpdate.new # TimezoneUpdate | 
+body = InterserverApiClient::TimezoneUpdate.new # TimezoneUpdate | 
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Change QuickServer Timezone
+  #Change the system timezone on a QuickServer to a catalog entry
   result = api_instance.post_qs_change_timezone(timezone, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_change_timezone: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5437,19 +5366,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Change Webuzo Password
+  #Change Webuzo control panel admin password live (synchronous, not queued)
   result = api_instance.post_qs_change_webuzo_password(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_change_webuzo_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5466,19 +5395,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Insert CD in QuickServer
+  #Mount an ISO image as the QuickServer's virtual CD via URL
   result = api_instance.post_qs_insert_cd(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_insert_cd: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5495,19 +5424,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Reinstall QuickServer OS
+  #Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
   result = api_instance.post_qs_reinstall_os(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_reinstall_os: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5524,19 +5453,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Reset QuickServer Password
+  #Reset QuickServer root password to a server-generated random value
   result = api_instance.post_qs_reset_password(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_reset_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5553,21 +5482,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
-body = SwaggerClient::ReverseDnsEntries.new # ReverseDnsEntries | 
+api_instance = InterserverApiClient::QuickServersApi.new
+body = InterserverApiClient::ReverseDnsEntries.new # ReverseDnsEntries | 
 ips = nil # Hash | 
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Update Reverse DNS
+  #Update reverse DNS (PTR) records for a QuickServer's IPs
   result = api_instance.post_qs_reverse_dns(body, ips, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_reverse_dns: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5584,19 +5513,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Setup VNC
+  #Configure the source IP allowed to reach a QuickServer's VNC console
   result = api_instance.post_qs_setup_vnc(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_setup_vnc: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5613,18 +5542,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Search Traffic Usage
+  #Query QuickServer bandwidth usage via POST (filtered variant)
   api_instance.post_qs_traffic_usage(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_traffic_usage: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5641,18 +5570,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Update View Desktop
+  #Submit changes and re-fetch the QuickServer dashboard view payload
   api_instance.post_qs_view_desktop(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_qs_view_desktop: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5669,22 +5598,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
-body = SwaggerClient::RestoreRequest.new # RestoreRequest | QuickServer Restore request
+api_instance = InterserverApiClient::QuickServersApi.new
+body = InterserverApiClient::RestoreRequest.new # RestoreRequest | QuickServer Restore request
 backup = 'backup_example' # String | 
 password = 'password_example' # String | 
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Restore QuickServer from Backup
+  #Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
   result = api_instance.post_quick_server_restore(body, backup, password, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->post_quick_server_restore: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5701,16 +5630,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
+body = InterserverApiClient::QsOrderRequest.new # QsOrderRequest | 
+
 
 begin
-  #Validate QuickServer Order
-  api_instance.put_qs
-rescue SwaggerClient::ApiError => e
+  #Validate a QuickServer order without charging or provisioning
+  api_instance.put_qs(body)
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->put_qs: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5727,19 +5658,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 56 # Integer | QuickServer ID number
 
 
 begin
-  #Cancel QuickServer Order
+  #Cancel a QuickServer service at the end of the current billing cycle
   result = api_instance.quickservers_cancel(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->quickservers_cancel: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5756,19 +5687,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::QuickServersApi.new
+api_instance = InterserverApiClient::QuickServersApi.new
 id = 'id_example' # String | QuickServer ID number.
 
 
 begin
-  #Update QuickServer Order
+  #Update QuickServer order metadata or stored settings without OS impact
   result = api_instance.update_qs_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling QuickServersApi->update_qs_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5785,17 +5716,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::SSLCertificatesApi.new
+api_instance = InterserverApiClient::SSLCertificatesApi.new
+body = InterserverApiClient::SslOrderRequest.new # SslOrderRequest | 
+
 
 begin
-  #Place SSL Cert Order
-  result = api_instance.add_ssl
+  #Place a new SSL certificate order - creates invoice and queues issuance
+  result = api_instance.add_ssl(body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->add_ssl: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5812,17 +5745,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::SSLCertificatesApi.new
+api_instance = InterserverApiClient::SSLCertificatesApi.new
 
 begin
-  #SSL Cert Ordering Information
+  #Get available SSL certificate packages and pricing for placing a new order
   result = api_instance.get_new_ssl
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->get_new_ssl: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5839,19 +5772,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::SSLCertificatesApi.new
+api_instance = InterserverApiClient::SSLCertificatesApi.new
 id = 56 # Integer | SSL certificate ID number.
 
 
 begin
-  #Get SSL Cert Info
+  #Get full details for one SSL certificate by id - status, expiration, links
   result = api_instance.get_ssl_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->get_ssl_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5868,19 +5801,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::SSLCertificatesApi.new
+api_instance = InterserverApiClient::SSLCertificatesApi.new
 id = 56 # Integer | SSL Cert ID number
 
 
 begin
-  #Get SSL Cert Invoices
+  #List all billing invoices and charges tied to one SSL certificate by id
   result = api_instance.get_ssl_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->get_ssl_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5897,16 +5830,16 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::SSLCertificatesApi.new
+api_instance = InterserverApiClient::SSLCertificatesApi.new
 
 begin
-  #List SSL Certs
+  #List all SSL certificates on the authenticated customer account with status and hostname
   api_instance.get_ssl_list
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->get_ssl_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5923,19 +5856,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::SSLCertificatesApi.new
+api_instance = InterserverApiClient::SSLCertificatesApi.new
 id = 56 # Integer | SSL Cert ID number
 
 
 begin
-  #Resend SSL Welcome Email
+  #Resend the SSL welcome email with cert credentials and install instructions
   result = api_instance.get_ssl_welcome_email(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->get_ssl_welcome_email: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5952,16 +5885,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::SSLCertificatesApi.new
+api_instance = InterserverApiClient::SSLCertificatesApi.new
+body = InterserverApiClient::SslOrderRequest.new # SslOrderRequest | 
+
 
 begin
-  #Validate SSL Cert Order
-  api_instance.put_ssl
-rescue SwaggerClient::ApiError => e
+  #Validate an SSL certificate order without charging - dry-run before addSsl
+  api_instance.put_ssl(body)
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->put_ssl: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -5978,19 +5913,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::SSLCertificatesApi.new
+api_instance = InterserverApiClient::SSLCertificatesApi.new
 id = 56 # Integer | SSL Cert ID number
 
 
 begin
-  #Cancel SSL Certificate Service
+  #Cancel an SSL certificate service - stops renewals at end of billing cycle
   result = api_instance.ssl_cancel(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->ssl_cancel: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6007,19 +5942,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::SSLCertificatesApi.new
+api_instance = InterserverApiClient::SSLCertificatesApi.new
 id = 'id_example' # String | SSL certificate ID number.
 
 
 begin
-  #Update SSL Cert Order
+  #Update mutable settings on an existing SSL certificate order by id
   result = api_instance.update_ssl_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling SSLCertificatesApi->update_ssl_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6036,19 +5971,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
+api_instance = InterserverApiClient::ScrubIpsApi.new
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Cancel Scrub IP Service
+  #Cancel a Scrub IP service and stop its recurring DDoS billing
   result = api_instance.cancel_scrub_ip(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->cancel_scrub_ip: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6065,20 +6000,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
-body = SwaggerClient::CreateFilter.new # CreateFilter | 
+api_instance = InterserverApiClient::ScrubIpsApi.new
+body = InterserverApiClient::CreateFilter.new # CreateFilter | 
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Create Traffic Filter
+  #Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
   result = api_instance.create_filter(body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->create_filter: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6095,20 +6030,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
-body = SwaggerClient::CreateGeoFirewallRule.new # CreateGeoFirewallRule | 
+api_instance = InterserverApiClient::ScrubIpsApi.new
+body = InterserverApiClient::CreateGeoFirewallRule.new # CreateGeoFirewallRule | 
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Create Geo Firewall Rule
+  #Add a geographic firewall rule (block/allow by country code or ASN)
   result = api_instance.create_geo_rule(body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->create_geo_rule: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6125,20 +6060,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
-body = SwaggerClient::CreateFirewallRule.new # CreateFirewallRule | 
+api_instance = InterserverApiClient::ScrubIpsApi.new
+body = InterserverApiClient::CreateFirewallRule.new # CreateFirewallRule | 
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Create Firewall Rule
+  #Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
   result = api_instance.create_rule(body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->create_rule: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6155,20 +6090,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
-body = SwaggerClient::CreateFilter.new # CreateFilter | 
+api_instance = InterserverApiClient::ScrubIpsApi.new
+body = InterserverApiClient::CreateFilter.new # CreateFilter | 
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Delete Traffic Filter
+  #Remove a scrubbing filter by matching filter_type and port
   result = api_instance.delete_filter(body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->delete_filter: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6185,19 +6120,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
+api_instance = InterserverApiClient::ScrubIpsApi.new
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Disable Scrub Protection
+  #Disable DDoS scrubbing and remove the BGP announcement on the IP
   result = api_instance.disable_scrub(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->disable_scrub: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6214,19 +6149,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
+api_instance = InterserverApiClient::ScrubIpsApi.new
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Enable Scrub Protection
+  #Enable DDoS scrubbing (BGP announcement) on the service's protected IP
   result = api_instance.enable_scrub(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->enable_scrub: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6243,17 +6178,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
+api_instance = InterserverApiClient::ScrubIpsApi.new
 
 begin
-  #Get Scrub IP Ordering Information
+  #Get plans, pricing, and eligible IPs for a new Scrub IP order
   result = api_instance.get_order_detail
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->get_order_detail: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6270,19 +6205,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
+api_instance = InterserverApiClient::ScrubIpsApi.new
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Get Scrub IP Details
+  #Get full Scrub IP service detail (rules + geo + filters)
   result = api_instance.get_scrub_ip_details(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->get_scrub_ip_details: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6299,17 +6234,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
+api_instance = InterserverApiClient::ScrubIpsApi.new
 
 begin
-  #List Scrub Filter Types
+  #List enabled traffic filter profiles available for createFilter
   result = api_instance.get_scrub_ip_filter_types
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->get_scrub_ip_filter_types: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6326,19 +6261,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
+api_instance = InterserverApiClient::ScrubIpsApi.new
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Get ScrubIp Invoices
+  #List recurring and one-time invoices billed for this Scrub IP service
   result = api_instance.get_scrub_ip_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->get_scrub_ip_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6355,19 +6290,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
+api_instance = InterserverApiClient::ScrubIpsApi.new
 id = 'id_example' # String | Scrub Order ID
 
 
 begin
-  #Get Scrub IP Logs
+  #Get last 50000 packet/event log entries for the protected IP
   result = api_instance.get_scrub_ip_logs(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->get_scrub_ip_logs: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6384,17 +6319,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
+api_instance = InterserverApiClient::ScrubIpsApi.new
 
 begin
-  #List Scrub IP Services
+  #List all Scrub IP DDoS protection services on the authenticated account
   result = api_instance.get_scrub_ips_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->get_scrub_ips_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6411,19 +6346,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
-body = SwaggerClient::ScrubIpPlaceOrder.new # ScrubIpPlaceOrder | 
+api_instance = InterserverApiClient::ScrubIpsApi.new
+body = InterserverApiClient::ScrubIpPlaceOrder.new # ScrubIpPlaceOrder | 
 
 
 begin
-  #Place Scrub IP Order
+  #Place a new Scrub IP DDoS protection order and generate an invoice
   result = api_instance.place_scrub_order(body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->place_scrub_order: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6440,20 +6375,49 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
-body = SwaggerClient::DeleteGeoFirewallRule.new # DeleteGeoFirewallRule | 
+api_instance = InterserverApiClient::ScrubIpsApi.new
+body = InterserverApiClient::ScrubIpPlaceOrder.new # ScrubIpPlaceOrder | 
+
+
+begin
+  #Validate a Scrub IP order and return effective pricing without billing
+  result = api_instance.put_scrub_ips(body)
+  p result
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling ScrubIpsApi->put_scrub_ips: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::ScrubIpsApi.new
+body = InterserverApiClient::DeleteGeoFirewallRule.new # DeleteGeoFirewallRule | 
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Delete Geo Firewall Rule
+  #Delete a geo firewall rule by rule_id from getScrubIpDetails
   result = api_instance.scrub_ips_delete_geo_rule(body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->scrub_ips_delete_geo_rule: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6470,20 +6434,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ScrubIpsApi.new
-body = SwaggerClient::DeleteFirewallRule.new # DeleteFirewallRule | 
+api_instance = InterserverApiClient::ScrubIpsApi.new
+body = InterserverApiClient::DeleteFirewallRule.new # DeleteFirewallRule | 
 id = 56 # Integer | ScrubIp ID number
 
 
 begin
-  #Delete Firewall Rule
+  #Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
   result = api_instance.scrub_ips_delete_rule(body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ScrubIpsApi->scrub_ips_delete_rule: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6500,17 +6464,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
+body = InterserverApiClient::ServerOrderPostRequest.new # ServerOrderPostRequest | 
+
 
 begin
-  #Place Server Order
-  result = api_instance.add_server
+  #Place a custom dedicated server order, creating a real billable invoice
+  result = api_instance.add_server(body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->add_server: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6527,17 +6493,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 
 begin
-  #Get Buy Now Server Options
+  #Get configurable options for a Rapid Deploy / coupon dedicated server
   result = api_instance.buy_it_now_server_order
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->buy_it_now_server_order: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6554,17 +6520,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 
 begin
-  #List Marketplace Servers
+  #List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
   result = api_instance.get_mp_servers
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->get_mp_servers: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6581,17 +6547,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 
 begin
-  #Server Ordering Information
+  #Get custom dedicated server ordering options, regions, and pricing
   result = api_instance.get_new_server
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->get_new_server: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6608,19 +6574,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 id = 56 # Integer | Server ID number.
 
 
 begin
-  #Get Server Order
+  #Get full hardware, network, and lifecycle details for a dedicated server
   result = api_instance.get_server_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->get_server_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6637,19 +6603,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 id = 56 # Integer | Server ID number
 
 
 begin
-  #Get Server Invoices
+  #List billing invoices (charges + payments) tied to one dedicated server
   result = api_instance.get_server_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->get_server_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6666,17 +6632,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 
 begin
-  #List Servers
+  #List all dedicated servers owned by the authenticated customer
   result = api_instance.get_server_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->get_server_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6693,19 +6659,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 id = 56 # Integer | Server ID number
 
 
 begin
-  #Reverse DNS Info
+  #List current reverse-DNS (PTR) records for a dedicated server's IPs
   result = api_instance.get_server_reverse_dns(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->get_server_reverse_dns: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6722,19 +6688,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 id = 56 # Integer | Server ID number
 
 
 begin
-  #Resend Server Welcome Email
+  #Resend the dedicated server welcome email with setup credentials
   result = api_instance.get_servers_welcome_email(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->get_servers_welcome_email: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6751,20 +6717,20 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 opts = { 
-  body: SwaggerClient::OrderBuyNowServerBody.new # OrderBuyNowServerBody | 
+  body: InterserverApiClient::OrderBuyNowServerBody.new # OrderBuyNowServerBody | 
 }
 
 begin
-  #Place Buy Now Server Order
+  #Place a Rapid Deploy / coupon dedicated server order; creates real invoice
   result = api_instance.place_buy_now_server(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->place_buy_now_server: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6781,21 +6747,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
-body = SwaggerClient::ReverseDnsEntries.new # ReverseDnsEntries | 
+api_instance = InterserverApiClient::ServersApi.new
+body = InterserverApiClient::ReverseDnsEntries.new # ReverseDnsEntries | 
 ips = nil # Hash | 
 id = 56 # Integer | Server ID number
 
 
 begin
-  #Update Reverse DNS
+  #Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
   result = api_instance.post_server_reverse_dns(body, ips, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->post_server_reverse_dns: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6812,16 +6778,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
+ids = 'ids_example' # String | Comma-separated list of Server IDs to query (e.g. `2313,2314,2315`). May also be passed as repeated `ids[]` query parameters.
+
 
 begin
-  #Validate Server Order
-  api_instance.put_servers
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ServersApi->put_servers: #{e}"
+  #Read IPMI chassis power status for many dedicated servers in one call
+  result = api_instance.server_bulk_ipmi_power_get(ids)
+  p result
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling ServersApi->server_bulk_ipmi_power_get: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6838,19 +6807,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 id = 56 # Integer | Server ID number
 
 
 begin
-  #Server IPMI Live Information
+  #Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
   result = api_instance.server_ipmi_live_get(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->server_ipmi_live_get: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6867,22 +6836,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 asset = 56 # Integer | 
 ip = 'ip_example' # String | 
-body = SwaggerClient::ServerIpmiLiveRequest.new # ServerIpmiLiveRequest | 
+body = InterserverApiClient::ServerIpmiLiveRequest.new # ServerIpmiLiveRequest | 
 id = 56 # Integer | Server ID number
 
 
 begin
-  #Server IPMI Live Setup
+  #Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
   result = api_instance.server_ipmi_live_post(asset, ip, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->server_ipmi_live_post: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6899,19 +6868,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 id = 56 # Integer | Server ID number
 
 
 begin
-  #Get IPMI Power Status
+  #Read IPMI chassis power status for a dedicated server (single)
   result = api_instance.server_ipmi_power_get(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->server_ipmi_power_get: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6928,22 +6897,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 asset = 56 # Integer | 
 action = 'action_example' # String | 
-body = SwaggerClient::ServerIpmiPowerRequest.new # ServerIpmiPowerRequest | 
+body = InterserverApiClient::ServerIpmiPowerRequest.new # ServerIpmiPowerRequest | 
 id = 56 # Integer | Server ID number
 
 
 begin
-  #Server IPMI Power
+  #DESTRUCTIVE — change chassis power state on a bare-metal server
   result = api_instance.server_ipmi_power_post(asset, action, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->server_ipmi_power_post: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6960,19 +6929,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 id = 56 # Integer | Server ID number
 
 
 begin
-  #Cancel Server Service
+  #Cancel a dedicated server service at the end of the current billing cycle
   result = api_instance.servers_cancel(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->servers_cancel: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -6989,19 +6958,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::ServersApi.new
+api_instance = InterserverApiClient::ServersApi.new
 id = 'id_example' # String | Server ID number.
 
 
 begin
-  #Update Server Order
+  #Update settings on a dedicated server order (shares handler with view)
   result = api_instance.update_server_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling ServersApi->update_server_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7018,8 +6987,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
-body = SwaggerClient::TicketNew.new # TicketNew | 
+api_instance = InterserverApiClient::TicketsApi.new
+body = InterserverApiClient::TicketNew.new # TicketNew | 
 subject = 'subject_example' # String | 
 body = 'body_example' # String | 
 service_id = 56 # Integer | 
@@ -7027,14 +6996,14 @@ service_module = 'service_module_example' # String |
 
 
 begin
-  #Create New Ticket
+  #Open a new helpdesk ticket, optionally linked to a service and attachments
   result = api_instance.add_new_ticket(body, subject, body, service_id, service_module)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->add_new_ticket: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7051,19 +7020,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
+api_instance = InterserverApiClient::TicketsApi.new
 id = 'id_example' # String | Ticket ID
 
 
 begin
-  #Close Ticket
+  #Close an open support ticket via simple GET request (no body required)
   result = api_instance.close_ticket(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->close_ticket: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7080,19 +7049,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
-id = SwaggerClient::BigDecimal.new # BigDecimal | Ticket ID number.
+api_instance = InterserverApiClient::TicketsApi.new
+id = InterserverApiClient::BigDecimal.new # BigDecimal | Ticket ID number.
 
 
 begin
-  #Close Ticket
+  #Close a customer ticket via DELETE verb (closes only, never destroys data)
   result = api_instance.delete_ticket_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->delete_ticket_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7109,16 +7078,16 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
+api_instance = InterserverApiClient::TicketsApi.new
 
 begin
-  #Gets Information for creating a new ticket.
+  #Fetch services and product options to populate the new-ticket form
   api_instance.get_new_ticket
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->get_new_ticket: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7135,19 +7104,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
-id = SwaggerClient::BigDecimal.new # BigDecimal | Ticket ID number.
+api_instance = InterserverApiClient::TicketsApi.new
+id = InterserverApiClient::BigDecimal.new # BigDecimal | Ticket ID number.
 
 
 begin
-  #Get Ticket Information
+  #Get full ticket details including subject, status, and the reply thread
   result = api_instance.get_ticket_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->get_ticket_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7164,7 +7133,7 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
+api_instance = InterserverApiClient::TicketsApi.new
 opts = { 
   page: 1, # Integer | Page number for paginated results.
   period: '30', # String | How far back to show tickets from. Value is in days.
@@ -7172,14 +7141,14 @@ opts = {
 }
 
 begin
-  #List Support Tickets
+  #List the authenticated account's support tickets with status and date filters
   result = api_instance.get_tickets_list(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->get_tickets_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7196,19 +7165,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
-id = SwaggerClient::BigDecimal.new # BigDecimal | Ticket ID number.
+api_instance = InterserverApiClient::TicketsApi.new
+id = InterserverApiClient::BigDecimal.new # BigDecimal | Ticket ID number.
 
 
 begin
-  #Reply To Ticket
+  #Append a reply (and optional attachment, server-access fields) to a ticket
   result = api_instance.post_ticket_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->post_ticket_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7225,17 +7194,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
+api_instance = InterserverApiClient::TicketsApi.new
 
 begin
-  #Search Support Tickets
+  #Search the authenticated account's tickets by subject, email, or mask ID
   result = api_instance.post_tickets_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->post_tickets_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7252,19 +7221,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
-id = SwaggerClient::BigDecimal.new # BigDecimal | Ticket ID number.
+api_instance = InterserverApiClient::TicketsApi.new
+id = InterserverApiClient::BigDecimal.new # BigDecimal | Ticket ID number.
 
 
 begin
-  #Update Ticket
+  #Update a ticket's properties such as subject or status (stub, not implemented)
   result = api_instance.put_ticket_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->put_ticket_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7281,22 +7250,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
-id = SwaggerClient::BigDecimal.new # BigDecimal | The ticket ID number.
+api_instance = InterserverApiClient::TicketsApi.new
+id = InterserverApiClient::BigDecimal.new # BigDecimal | The ticket ID number.
 opts = { 
-  body: SwaggerClient::ReplyTicketRequest.new, # ReplyTicketRequest | 
+  body: InterserverApiClient::ReplyTicketRequest.new, # ReplyTicketRequest | 
   content: 'content_example' # String | 
 }
 
 begin
-  #Reply Ticket
+  #Post a simple text reply to an existing ticket thread (no attachments)
   result = api_instance.reply_ticket(id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->reply_ticket: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7313,10 +7282,10 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::TicketsApi.new
-id = SwaggerClient::BigDecimal.new # BigDecimal | The ticket ID number.
+api_instance = InterserverApiClient::TicketsApi.new
+id = InterserverApiClient::BigDecimal.new # BigDecimal | The ticket ID number.
 opts = { 
-  body: SwaggerClient::UpdateTicket.new, # UpdateTicket | 
+  body: InterserverApiClient::UpdateTicket.new, # UpdateTicket | 
   ip: 'ip_example', # String | 
   ip_address: 'ip_address_example', # String | 
   customer_server_access: 'customer_server_access_example', # String | 
@@ -7327,14 +7296,14 @@ opts = {
 }
 
 begin
-  #Update Ticket
+  #Update a ticket's custom field values (server-access details, etc.)
   result = api_instance.update_ticket_info(id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling TicketsApi->update_ticket_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7351,9 +7320,9 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 opts = { 
-  body: SwaggerClient::VpsOrderPostRequest.new, # VpsOrderPostRequest | 
+  body: InterserverApiClient::VpsOrderPostRequest.new, # VpsOrderPostRequest | 
   os_distro: 'os_distro_example', # String | 
   slices: 56, # Integer | 
   vps_platform: 'vps_platform_example', # String | 
@@ -7368,14 +7337,14 @@ opts = {
 }
 
 begin
-  #Place VPS Order
+  #Place a new VPS order, create the invoice, and queue provisioning
   result = api_instance.add_vps(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->add_vps: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7392,7 +7361,7 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 file = 'file_example' # String | The backup filename to delete.
 opts = { 
@@ -7400,14 +7369,14 @@ opts = {
 }
 
 begin
-  #Delete VPS Backup
+  #Permanently delete a VPS backup file by name (irreversible)
   result = api_instance.delete_vps_backup(id, file, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->delete_vps_backup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7424,19 +7393,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number.
 
 
 begin
-  #Blocks SMTP
+  #Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
   result = api_instance.do_vps_block_smtp(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->do_vps_block_smtp: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7453,19 +7422,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number.
 
 
 begin
-  #Disable CD Drive
+  #Remove the virtual CD/DVD device entirely from the VPS configuration
   result = api_instance.do_vps_disable_cd(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->do_vps_disable_cd: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7482,19 +7451,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number.
 
 
 begin
-  #Disable Quotas
+  #Disable per-user disk quota enforcement inside the VPS guest OS
   result = api_instance.do_vps_disable_quota(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->do_vps_disable_quota: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7511,19 +7480,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number.
 
 
 begin
-  #Eject CD Drive
+  #Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
   result = api_instance.do_vps_eject_cd(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->do_vps_eject_cd: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7540,19 +7509,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number.
 
 
 begin
-  #Enable Quotas
+  #Enable per-user disk quota enforcement inside the VPS guest OS
   result = api_instance.do_vps_enable_quota(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->do_vps_enable_quota: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7569,19 +7538,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number.
 
 
 begin
-  #Restart VPS
+  #Reboot the VPS — preferred over stop+start for software changes
   result = api_instance.do_vps_restart(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->do_vps_restart: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7598,19 +7567,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number.
 
 
 begin
-  #Start VPS
+  #Power on a stopped VPS instance
   result = api_instance.do_vps_start(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->do_vps_start: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7627,19 +7596,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number.
 
 
 begin
-  #Stop VPS
+  #Power off a running VPS — billing continues until cancellation
   result = api_instance.do_vps_stop(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->do_vps_stop: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7656,8 +7625,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
-body = SwaggerClient::IdBackupsBody2.new # IdBackupsBody2 | 
+api_instance = InterserverApiClient::VPSApi.new
+body = InterserverApiClient::IdBackupsBody2.new # IdBackupsBody2 | 
 file = 'file_example' # String | 
 id = 56 # Integer | VPS ID number
 opts = { 
@@ -7665,14 +7634,14 @@ opts = {
 }
 
 begin
-  #Download VPS Backup
+  #Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
   result = api_instance.download_vps_backup(body, file, id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->download_vps_backup: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7689,17 +7658,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 
 begin
-  #VPS Ordering Information
+  #Get the VPS order catalog — platforms, OS templates, locations, pricing
   result = api_instance.get_new_vps
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_new_vps: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7716,21 +7685,50 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
+id = 56 # Integer | VPS ID number
+
+
+begin
+  #Trigger a manual on-demand snapshot/backup of the VPS
+  result = api_instance.get_vps_backup(id)
+  p result
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling VPSApi->get_vps_backup: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 opts = { 
   all: 'all_example' # String | Set to `1` to list all backups across all services, not just the ones for the given VPS.
 }
 
 begin
-  #Get VPS Backups List
+  #List existing backups for the VPS across Swift, MinIO, and ZFS
   result = api_instance.get_vps_backups(id, opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_backups: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7747,18 +7745,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #HD Space Addon Info
+  #Get current additional disk size and per-GB monthly cost for the VPS
   api_instance.get_vps_buy_hd_space(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_buy_hd_space: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7775,18 +7773,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Additional IP Addon Info
+  #Read current additional IPs, cap, and per-IP monthly cost for the VPS
   api_instance.get_vps_buy_ip(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_buy_ip: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7803,19 +7801,75 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Get Timezone Info
+  #Read the VPS's current hostname before changing it
+  api_instance.get_vps_change_hostname(id)
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling VPSApi->get_vps_change_hostname: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::VPSApi.new
+id = 56 # Integer | VPS ID number
+
+
+begin
+  #Pre-flight check before changing the VPS root password
+  api_instance.get_vps_change_root_password(id)
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling VPSApi->get_vps_change_root_password: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::VPSApi.new
+id = 56 # Integer | VPS ID number
+
+
+begin
+  #List IANA timezones supported by the VPS guest OS
   result = api_instance.get_vps_change_timezone(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_change_timezone: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7832,19 +7886,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Get VPS Order
+  #Get full details for one VPS — IPs, hostname, OS, slices, status, addons
   result = api_instance.get_vps_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7861,19 +7915,47 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Get VPS Invoices
+  #List ISO templates that can be mounted in the VPS virtual CD drive
+  api_instance.get_vps_insert_cd(id)
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling VPSApi->get_vps_insert_cd: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::VPSApi.new
+id = 56 # Integer | VPS ID number
+
+
+begin
+  #List all billing invoices associated with this specific VPS
   result = api_instance.get_vps_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7890,17 +7972,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 
 begin
-  #List VPS Orders
+  #List all VPS services on the customer's account
   result = api_instance.get_vps_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7917,19 +7999,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #VPS Reinstall OS Options
+  #List OS templates compatible with this VPS's hypervisor for reinstall
   result = api_instance.get_vps_reinstall_os(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_reinstall_os: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7946,19 +8028,47 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Reverse DNS Info
+  #Pre-flight check before resetting the VPS root password to a random value
+  api_instance.get_vps_reset_password(id)
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling VPSApi->get_vps_reset_password: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::VPSApi.new
+id = 56 # Integer | VPS ID number
+
+
+begin
+  #Read the current PTR (reverse-DNS) records for every IP on the VPS
   result = api_instance.get_vps_reverse_dns(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_reverse_dns: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -7975,18 +8085,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #VNC Setup Info
+  #Read current VNC console connection info for the VPS
   api_instance.get_vps_setup_vnc(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_setup_vnc: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8003,18 +8113,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Slice Upgrade Info
+  #Read current slice count, min/max range, and prorated per-slice upgrade cost
   api_instance.get_vps_slices(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_slices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8031,19 +8141,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Get Traffic Usage
+  #Read bandwidth traffic usage data for the VPS
   result = api_instance.get_vps_traffic_usage(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_traffic_usage: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8060,18 +8170,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Get View Desktop Info
+  #Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
   api_instance.get_vps_view_desktop(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_view_desktop: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8088,19 +8198,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 'id_example' # String | VPS ID
 
 
 begin
-  #Resend VPS Welcome Email
+  #Resend the welcome email containing VPS IP, hostname, and root credentials
   result = api_instance.get_vps_welcome_email(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->get_vps_welcome_email: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8117,47 +8227,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Start a VPS Backup
-  result = api_instance.post_vps_backup(id)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling VPSApi->post_vps_backup: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::VPSApi.new
-id = 56 # Integer | VPS ID number
-
-
-begin
-  #Purchase HD Space Addon
+  #Buy or resize the VPS additional-disk addon and create a prorated invoice
   api_instance.post_vps_buy_hd_space(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_buy_hd_space: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8174,18 +8255,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Purchase Additional IP
+  #Purchase one additional IP for the VPS and create the invoice
   api_instance.post_vps_buy_ip(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_buy_ip: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8202,21 +8283,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 hostname = 'hostname_example' # String | 
-body = SwaggerClient::HostnameObject.new # HostnameObject | 
+body = InterserverApiClient::HostnameObject.new # HostnameObject | 
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Update VPS Hostname
+  #Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
   result = api_instance.post_vps_change_hostname(hostname, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_change_hostname: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8233,21 +8314,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 password = 'password_example' # String | 
-body = SwaggerClient::PasswordRequest.new # PasswordRequest | 
+body = InterserverApiClient::PasswordRequest.new # PasswordRequest | 
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Change VPS Root Password
+  #Set a specific new root/Administrator password on the VPS
   result = api_instance.post_vps_change_root_password(password, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_change_root_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8264,21 +8345,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 timezone = 'timezone_example' # String | 
-body = SwaggerClient::TimezoneUpdate.new # TimezoneUpdate | 
+body = InterserverApiClient::TimezoneUpdate.new # TimezoneUpdate | 
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Change VPS Timezone
+  #Set the system timezone on the VPS guest OS
   result = api_instance.post_vps_change_timezone(timezone, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_change_timezone: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8295,21 +8376,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 password = 'password_example' # String | 
-body = SwaggerClient::PasswordRequest.new # PasswordRequest | 
+body = InterserverApiClient::PasswordRequest.new # PasswordRequest | 
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Change Webuzo Password
+  #Rotate the Webuzo control panel admin password (re-auth required)
   result = api_instance.post_vps_change_webuzo_password(password, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_change_webuzo_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8326,21 +8407,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 url = 'url_example' # String | 
-body = SwaggerClient::UrlRequest.new # UrlRequest | 
+body = InterserverApiClient::UrlRequest.new # UrlRequest | 
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Insert CD in VPS
+  #Mount an ISO image in the VPS virtual CD drive from a URL
   result = api_instance.post_vps_insert_cd(url, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_insert_cd: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8357,23 +8438,23 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 template = 'template_example' # String | 
 password = 'password_example' # String | 
 local_password = 'local_password_example' # String | 
-body = SwaggerClient::TemplateRequest.new # TemplateRequest | 
+body = InterserverApiClient::TemplateRequest.new # TemplateRequest | 
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Reinstall VPS OS
+  #Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
   result = api_instance.post_vps_reinstall_os(template, password, local_password, body, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_reinstall_os: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8390,19 +8471,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Reset VPS Password
+  #Reset the VPS root password to a server-generated random value
   result = api_instance.post_vps_reset_password(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_reset_password: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8419,22 +8500,22 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
-body = SwaggerClient::RestoreRequest.new # RestoreRequest | VPS Restore request
+api_instance = InterserverApiClient::VPSApi.new
+body = InterserverApiClient::RestoreRequest.new # RestoreRequest | VPS Restore request
 backup = 'backup_example' # String | 
 password = 'password_example' # String | 
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Restore VPS from Backup
+  #Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
   result = api_instance.post_vps_restore(body, backup, password, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_restore: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8451,21 +8532,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
-body = SwaggerClient::ReverseDnsEntries.new # ReverseDnsEntries | 
+api_instance = InterserverApiClient::VPSApi.new
+body = InterserverApiClient::ReverseDnsEntries.new # ReverseDnsEntries | 
 ips = nil # Hash | 
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Update Reverse DNS
+  #Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
   result = api_instance.post_vps_reverse_dns(body, ips, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_reverse_dns: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8482,19 +8563,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Setup VNC
+  #Provision or refresh the VNC console endpoint for the VPS
   result = api_instance.post_vps_setup_vnc(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_setup_vnc: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8511,18 +8592,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Purchase Slice Upgrade
+  #Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
   api_instance.post_vps_slices(id)
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->post_vps_slices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8539,18 +8620,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Update View Desktop
-  api_instance.post_vps_view_desktop(id)
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling VPSApi->post_vps_view_desktop: #{e}"
+  #Search/filter VPS bandwidth usage with custom criteria (reserved)
+  api_instance.post_vps_traffic_usage(id)
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling VPSApi->post_vps_traffic_usage: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8567,9 +8648,37 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
+id = 56 # Integer | VPS ID number
+
+
+begin
+  #Refresh the remote-desktop session connection info after IP/hostname changes
+  api_instance.post_vps_view_desktop(id)
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling VPSApi->post_vps_view_desktop: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::VPSApi.new
 opts = { 
-  body: SwaggerClient::VpsOrderPutRequest.new, # VpsOrderPutRequest | 
+  body: InterserverApiClient::VpsOrderPutRequest.new, # VpsOrderPutRequest | 
   os_distro: 'os_distro_example', # String | 
   slices: 56, # Integer | 
   vps_platform: 'vps_platform_example', # String | 
@@ -8584,14 +8693,14 @@ opts = {
 }
 
 begin
-  #Validate VPS Order
+  #Validate a VPS order configuration and quote the cost — dry run, no charge
   result = api_instance.put_vps(opts)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->put_vps: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8608,48 +8717,76 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::VPSApi.new
-id = 'id_example' # String | VPS ID number.
-
-
-begin
-  #Update VPS Order
-  result = api_instance.update_vps_info(id)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling VPSApi->update_vps_info: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: apiKeyAuth
-  config.api_key['X-API-KEY'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdCookieAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-
-  # Configure API key authorization: sessionIdHeaderAuth
-  config.api_key['sessionid'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['sessionid'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::VPSApi.new
+api_instance = InterserverApiClient::VPSApi.new
 id = 56 # Integer | VPS ID number
 
 
 begin
-  #Cancel VPS Service
+  #Preview cost to set additional VPS disk to a target GB size — dry run
+  api_instance.put_vps_buy_hd_space(id)
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling VPSApi->put_vps_buy_hd_space: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::VPSApi.new
+id = 'id_example' # String | VPS ID number.
+
+
+begin
+  #Update editable settings on a VPS service record
+  result = api_instance.update_vps_info(id)
+  p result
+rescue InterserverApiClient::ApiError => e
+  puts "Exception when calling VPSApi->update_vps_info: #{e}"
+end
+# Setup authorization
+InterserverApiClient.configure do |config|
+  # Configure API key authorization: apiKeyAuth
+  config.api_key['X-API-KEY'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['X-API-KEY'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdCookieAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+
+  # Configure API key authorization: sessionIdHeaderAuth
+  config.api_key['sessionid'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['sessionid'] = 'Bearer'
+end
+
+api_instance = InterserverApiClient::VPSApi.new
+id = 56 # Integer | VPS ID number
+
+
+begin
+  #Cancel a VPS service at the end of the current billing cycle
   result = api_instance.v_ps_cancel(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling VPSApi->v_ps_cancel: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8666,17 +8803,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
+body = InterserverApiClient::WebsiteOrderPostRequest.new # WebsiteOrderPostRequest | 
+
 
 begin
-  #Place Website Order
-  result = api_instance.add_website
+  #Place a new webhosting order, create the invoice, and queue provisioning
+  result = api_instance.add_website(body)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->add_website: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8693,17 +8832,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 
 begin
-  #Website Ordering Information
+  #Read the webhosting order catalog — plans, packages, promo offers, pricing
   result = api_instance.get_new_website
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->get_new_website: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8720,19 +8859,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 id = 56 # Integer | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Get Website IP Information
+  #Read website IPs, current reverse DNS, and additional-IP pricing
   result = api_instance.get_website_buy_ip(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->get_website_buy_ip: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8749,19 +8888,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 id = 56 # Integer | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Get Website Order
+  #Read full configuration and status detail for one webhosting service
   result = api_instance.get_website_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->get_website_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8778,19 +8917,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 id = 56 # Integer | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Get Website Invoices
+  #List all billing invoices and recurring charges scoped to one website
   result = api_instance.get_website_invoices(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->get_website_invoices: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8807,17 +8946,17 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 
 begin
-  #Get Website Listing
+  #List the caller's webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
   result = api_instance.get_website_list
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->get_website_list: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8834,19 +8973,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 id = 56 # Integer | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Get Website Backups
+  #List off-site cpmove backups stored in Swift — list or inline-download archive
   result = api_instance.get_websites_backups(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->get_websites_backups: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8863,19 +9002,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 id = 56 # Integer | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Hosting Panel Auto Login
+  #Get a one-time auto-login URL for the website's control panel
   result = api_instance.get_websites_login(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->get_websites_login: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8892,19 +9031,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 id = 56 # Integer | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Resend Website Welcome Email
+  #Resend the webhosting welcome email with control-panel credentials and URL
   result = api_instance.get_websites_welcome_email(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->get_websites_welcome_email: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8921,19 +9060,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 id = 56 # Integer | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Get Website Reverse DNS
+  #Read current reverse-DNS (PTR) records for the website's IPs
   result = api_instance.gett_website_reverse_dns(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->gett_website_reverse_dns: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8950,21 +9089,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
-body = SwaggerClient::IdBuyIpBody.new # IdBuyIpBody | 
+api_instance = InterserverApiClient::WebhostingApi.new
+body = InterserverApiClient::IdBuyIpBody.new # IdBuyIpBody | 
 ips = {'key' => 'ips_example'} # Hash<String, String> | 
 id = 56 # Integer | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Update Website IP DNS
+  #Buy an additional IP for the website OR update reverse DNS records
   result = api_instance.post_website_buy_ip(body, ips, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->post_website_buy_ip: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -8981,8 +9120,8 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
-body = SwaggerClient::IdMigrationBody.new # IdMigrationBody | 
+api_instance = InterserverApiClient::WebhostingApi.new
+body = InterserverApiClient::IdMigrationBody.new # IdMigrationBody | 
 cust_portal = 'cust_portal_example' # String | 
 reg_email = 'reg_email_example' # String | 
 password = 'password_example' # String | 
@@ -9000,14 +9139,14 @@ id = 56 # Integer | The website service ID. Use `website_id` from `GET /websites
 
 
 begin
-  #Request Website Migration
+  #Submit a request for InterServer staff to migrate a website from another host
   result = api_instance.post_website_migration(body, cust_portal, reg_email, password, ctrl_panel, ftp_username, ftp_password, site_busy_mig, spl_req_mig, domain_reg, data_mig, domain_reg_portal, domain_reg_email, domain_reg_password, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->post_website_migration: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -9024,21 +9163,21 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
-body = SwaggerClient::ReverseDnsEntries.new # ReverseDnsEntries | 
+api_instance = InterserverApiClient::WebhostingApi.new
+body = InterserverApiClient::ReverseDnsEntries.new # ReverseDnsEntries | 
 ips = nil # Hash | 
 id = 56 # Integer | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Update Website Reverse DNS
+  #Bulk-update reverse-DNS (PTR) records for one or more website IPs
   result = api_instance.post_websites_reverse_dns(body, ips, id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->post_websites_reverse_dns: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -9055,16 +9194,18 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
+body = InterserverApiClient::WebsiteOrderPutRequest.new # WebsiteOrderPutRequest | 
+
 
 begin
-  #Validate Webhosting Order
-  api_instance.put_websites
-rescue SwaggerClient::ApiError => e
+  #Validate a webhosting order and preview cost — dry run, no charge
+  api_instance.put_websites(body)
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->put_websites: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -9081,19 +9222,19 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 id = 'id_example' # String | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Update Website Order
+  #POST mutation hook for the website detail page (use dedicated ops where possible)
   result = api_instance.update_website_info(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->update_website_info: #{e}"
 end
 # Setup authorization
-SwaggerClient.configure do |config|
+InterserverApiClient.configure do |config|
   # Configure API key authorization: apiKeyAuth
   config.api_key['X-API-KEY'] = 'YOUR API KEY'
   # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
@@ -9110,15 +9251,15 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['sessionid'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::WebhostingApi.new
+api_instance = InterserverApiClient::WebhostingApi.new
 id = 'id_example' # String | The website service ID. Use `website_id` from `GET /websites`.
 
 
 begin
-  #Cancel Website
+  #Schedule termination of a webhosting service — wipes panel account at cycle end
   result = api_instance.webhosting_cancel(id)
   p result
-rescue SwaggerClient::ApiError => e
+rescue InterserverApiClient::ApiError => e
   puts "Exception when calling WebhostingApi->webhosting_cancel: #{e}"
 end
 ```
@@ -9129,787 +9270,785 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*SwaggerClient::AccountApi* | [**change_account_username**](docs/AccountApi.md#change_account_username) | **POST** /account/username | Change Account Username
-*SwaggerClient::AccountApi* | [**delete_account_oauth_name**](docs/AccountApi.md#delete_account_oauth_name) | **DELETE** /account/oauth/{name} | Unlink OAuth Account
-*SwaggerClient::AccountApi* | [**delete_account_tfa**](docs/AccountApi.md#delete_account_tfa) | **DELETE** /account/2fa | Disable Two-Factor Authentication
-*SwaggerClient::AccountApi* | [**delete_ip_limit**](docs/AccountApi.md#delete_ip_limit) | **PATCH** /account/iplimits | Remove IP Access Restriction
-*SwaggerClient::AccountApi* | [**get_account_info**](docs/AccountApi.md#get_account_info) | **GET** /account | Retrieve Account Details
-*SwaggerClient::AccountApi* | [**get_account_tfa_setup**](docs/AccountApi.md#get_account_tfa_setup) | **GET** /account/2fa | Get Two-Factor Setup Data
-*SwaggerClient::AccountApi* | [**get_home**](docs/AccountApi.md#get_home) | **GET** /home | Get Home Data
-*SwaggerClient::AccountApi* | [**get_search**](docs/AccountApi.md#get_search) | **GET** /search | Search Autocomplete
-*SwaggerClient::AccountApi* | [**logout**](docs/AccountApi.md#logout) | **GET** /logout | Log Out
-*SwaggerClient::AccountApi* | [**logout_account_oauth**](docs/AccountApi.md#logout_account_oauth) | **GET** /account/oauth/{name}/logout | Logout of OAuth
-*SwaggerClient::AccountApi* | [**update_account_api_key**](docs/AccountApi.md#update_account_api_key) | **POST** /account/apikey | Generate New API Key
-*SwaggerClient::AccountApi* | [**update_account_features**](docs/AccountApi.md#update_account_features) | **POST** /account/features | Update Account Feature Flags
-*SwaggerClient::AccountApi* | [**update_account_info**](docs/AccountApi.md#update_account_info) | **POST** /account | Update Account Information
-*SwaggerClient::AccountApi* | [**update_account_ip_limits**](docs/AccountApi.md#update_account_ip_limits) | **POST** /account/iplimits | Add IP Access Restriction
-*SwaggerClient::AccountApi* | [**update_account_password**](docs/AccountApi.md#update_account_password) | **POST** /account/password | Change Account Password
-*SwaggerClient::AccountApi* | [**update_account_ssh_key**](docs/AccountApi.md#update_account_ssh_key) | **POST** /account/sshkey | Update SSH Keys
-*SwaggerClient::AccountApi* | [**update_account_tfa**](docs/AccountApi.md#update_account_tfa) | **POST** /account/2fa | Enable Two-Factor Authentication
-*SwaggerClient::BackupsApi* | [**add_backup**](docs/BackupsApi.md#add_backup) | **POST** /backups/order | Place Backup Order
-*SwaggerClient::BackupsApi* | [**cancel_backup**](docs/BackupsApi.md#cancel_backup) | **DELETE** /backups/{id} | Cancel Backup Service
-*SwaggerClient::BackupsApi* | [**get_backup_info**](docs/BackupsApi.md#get_backup_info) | **GET** /backups/{id} | Get Backup Service Details
-*SwaggerClient::BackupsApi* | [**get_backup_invoices**](docs/BackupsApi.md#get_backup_invoices) | **GET** /backups/{id}/invoices | Get Backup Order Invoices
-*SwaggerClient::BackupsApi* | [**get_backup_login**](docs/BackupsApi.md#get_backup_login) | **GET** /backups/{id}/login | Get Backup Storage Panel Login
-*SwaggerClient::BackupsApi* | [**get_backups_list**](docs/BackupsApi.md#get_backups_list) | **GET** /backups | List Backup Services
-*SwaggerClient::BackupsApi* | [**get_backups_welcome_email**](docs/BackupsApi.md#get_backups_welcome_email) | **GET** /backups/{id}/welcome_email | Resend Backup Welcome Email
-*SwaggerClient::BackupsApi* | [**get_new_backup**](docs/BackupsApi.md#get_new_backup) | **GET** /backups/order | Get Backup Order Form Data
-*SwaggerClient::BackupsApi* | [**update_backup_info**](docs/BackupsApi.md#update_backup_info) | **POST** /backups/{id} | Update Backup Information
-*SwaggerClient::BackupsApi* | [**validate_backup_order**](docs/BackupsApi.md#validate_backup_order) | **PUT** /backups/order | Validate Backup Order
-*SwaggerClient::BillingApi* | [**add_account_credit_card**](docs/BillingApi.md#add_account_credit_card) | **POST** /account/creditcards | Add Credit Card to Account
-*SwaggerClient::BillingApi* | [**add_billing_credit_card**](docs/BillingApi.md#add_billing_credit_card) | **POST** /billing/creditcards | Add Credit Card for Billing
-*SwaggerClient::BillingApi* | [**add_billing_prepay**](docs/BillingApi.md#add_billing_prepay) | **POST** /billing/prepays | Create Prepay Deposit
-*SwaggerClient::BillingApi* | [**delete_account_credit_card**](docs/BillingApi.md#delete_account_credit_card) | **DELETE** /account/creditcards/{id} | Remove Credit Card
-*SwaggerClient::BillingApi* | [**delete_billing_credit_card**](docs/BillingApi.md#delete_billing_credit_card) | **DELETE** /billing/creditcards/{id} | Delete Credit Card
-*SwaggerClient::BillingApi* | [**delete_billing_invoice**](docs/BillingApi.md#delete_billing_invoice) | **DELETE** /billing/invoices/{id} | Delete Invoice
-*SwaggerClient::BillingApi* | [**delete_billing_prepay**](docs/BillingApi.md#delete_billing_prepay) | **DELETE** /billing/prepays/{id} | Delete Prepay Balance
-*SwaggerClient::BillingApi* | [**get_affiliate_banners**](docs/BillingApi.md#get_affiliate_banners) | **GET** /affiliate/banners | List Affiliate Banner Assets
-*SwaggerClient::BillingApi* | [**get_affiliate_rich_report**](docs/BillingApi.md#get_affiliate_rich_report) | **GET** /affiliate/rich_report | Get Affiliate Performance Report
-*SwaggerClient::BillingApi* | [**get_affiliate_sales_graph**](docs/BillingApi.md#get_affiliate_sales_graph) | **GET** /affiliate/sales_graph | Get Affiliate Sales Graph Data
-*SwaggerClient::BillingApi* | [**get_affiliate_sales_report**](docs/BillingApi.md#get_affiliate_sales_report) | **GET** /affiliate/sales_report | Get Affiliate Sales Report
-*SwaggerClient::BillingApi* | [**get_affiliate_traffic_graph**](docs/BillingApi.md#get_affiliate_traffic_graph) | **GET** /affiliate/traffic_graph | Get Affiliate Traffic Graph Data
-*SwaggerClient::BillingApi* | [**get_affiliate_web_traffic**](docs/BillingApi.md#get_affiliate_web_traffic) | **GET** /affiliate/web_traffic | List Affiliate Web Traffic Entries
-*SwaggerClient::BillingApi* | [**get_billing_cart**](docs/BillingApi.md#get_billing_cart) | **GET** /billing/cart | Get Shopping Cart Contents
-*SwaggerClient::BillingApi* | [**get_billing_credit_card_verify**](docs/BillingApi.md#get_billing_credit_card_verify) | **GET** /billing/creditcards/{id}/verify | Get Credit Card Verification Requirements
-*SwaggerClient::BillingApi* | [**get_billing_invoice**](docs/BillingApi.md#get_billing_invoice) | **GET** /billing/invoices/{id} | Get Invoice Details
-*SwaggerClient::BillingApi* | [**get_billing_invoices**](docs/BillingApi.md#get_billing_invoices) | **GET** /billing/invoices | List Account Invoices
-*SwaggerClient::BillingApi* | [**get_billing_pre_pays**](docs/BillingApi.md#get_billing_pre_pays) | **GET** /billing/prepays | List Prepay Balances
-*SwaggerClient::BillingApi* | [**get_invoices**](docs/BillingApi.md#get_invoices) | **GET** /invoices | Get Invoices
-*SwaggerClient::BillingApi* | [**initiate_payment**](docs/BillingApi.md#initiate_payment) | **GET** /pay/{method}/{invoices} | Initiate Payment
-*SwaggerClient::BillingApi* | [**post_billing_credit_card_verify**](docs/BillingApi.md#post_billing_credit_card_verify) | **POST** /billing/creditcards/{id}/verify | Submit Credit Card Verification
-*SwaggerClient::BillingApi* | [**update_account_credit_card**](docs/BillingApi.md#update_account_credit_card) | **POST** /account/creditcards/{id} | Update Credit Card
-*SwaggerClient::BillingApi* | [**update_affiliate_dock_setup**](docs/BillingApi.md#update_affiliate_dock_setup) | **POST** /affiliate/dock_setup | Configure Affiliate Dock Settings
-*SwaggerClient::BillingApi* | [**update_affiliate_landing_page**](docs/BillingApi.md#update_affiliate_landing_page) | **POST** /affiliate/landing_pg | Configure Affiliate Landing Page
-*SwaggerClient::BillingApi* | [**update_affiliate_payment_setup**](docs/BillingApi.md#update_affiliate_payment_setup) | **POST** /affiliate/payment_setup | Configure Affiliate Payout Preferences
-*SwaggerClient::BillingApi* | [**update_billing_credit_card**](docs/BillingApi.md#update_billing_credit_card) | **POST** /billing/creditcards/{id} | Update Credit Card Details
-*SwaggerClient::BillingApi* | [**update_billing_payment_method**](docs/BillingApi.md#update_billing_payment_method) | **POST** /billing/payment_method | Update Default Payment Method
-*SwaggerClient::DNSApi* | [**add_dns_domain**](docs/DNSApi.md#add_dns_domain) | **POST** /dns | Create DNS Domain
-*SwaggerClient::DNSApi* | [**add_dns_record**](docs/DNSApi.md#add_dns_record) | **POST** /dns/{id} | Add DNS Record to Domain
-*SwaggerClient::DNSApi* | [**delete_dns_domain**](docs/DNSApi.md#delete_dns_domain) | **DELETE** /dns/{id} | Delete DNS Domain
-*SwaggerClient::DNSApi* | [**delete_dns_record**](docs/DNSApi.md#delete_dns_record) | **DELETE** /dns/{domainId}/{recordId} | Delete DNS Record
-*SwaggerClient::DNSApi* | [**get_dns_domain**](docs/DNSApi.md#get_dns_domain) | **GET** /dns/{id} | List Domain DNS Records
-*SwaggerClient::DNSApi* | [**get_dns_list**](docs/DNSApi.md#get_dns_list) | **GET** /dns | List DNS Domains
-*SwaggerClient::DNSApi* | [**update_dns_record**](docs/DNSApi.md#update_dns_record) | **POST** /dns/{domainId}/{recordId} | Update DNS Record
-*SwaggerClient::DomainsApi* | [**add_domain**](docs/DomainsApi.md#add_domain) | **POST** /domains/order | Place Domain Order
-*SwaggerClient::DomainsApi* | [**add_domain_dnssec**](docs/DomainsApi.md#add_domain_dnssec) | **POST** /domains/{id}/dnssec | Add Domain DNSSEC Records
-*SwaggerClient::DomainsApi* | [**add_domain_nameserver**](docs/DomainsApi.md#add_domain_nameserver) | **POST** /domains/{id}/nameservers | Add Registered Nameserver
-*SwaggerClient::DomainsApi* | [**cancel_domain**](docs/DomainsApi.md#cancel_domain) | **DELETE** /domains/{id} | Cancel Domain Order
-*SwaggerClient::DomainsApi* | [**delete_domain_dnssec**](docs/DomainsApi.md#delete_domain_dnssec) | **DELETE** /domains/{id}/dnssec | Remove Domain DNSSEC Records
-*SwaggerClient::DomainsApi* | [**delete_domain_nameserver**](docs/DomainsApi.md#delete_domain_nameserver) | **DELETE** /domains/{id}/nameservers | Delete Registered Nameserver
-*SwaggerClient::DomainsApi* | [**get_domain_contact**](docs/DomainsApi.md#get_domain_contact) | **GET** /domains/{id}/contact | Get Domain Contact Details
-*SwaggerClient::DomainsApi* | [**get_domain_dnssec**](docs/DomainsApi.md#get_domain_dnssec) | **GET** /domains/{id}/dnssec | Get Domain DNSSEC Records
-*SwaggerClient::DomainsApi* | [**get_domain_info**](docs/DomainsApi.md#get_domain_info) | **GET** /domains/{id} | Get Domain Order
-*SwaggerClient::DomainsApi* | [**get_domain_invoices**](docs/DomainsApi.md#get_domain_invoices) | **GET** /domains/{id}/invoices | Get Domain Invoices
-*SwaggerClient::DomainsApi* | [**get_domain_lookup**](docs/DomainsApi.md#get_domain_lookup) | **GET** /domains/lookup/{name} | Lookup Domain Availability and Pricing
-*SwaggerClient::DomainsApi* | [**get_domain_nameservers**](docs/DomainsApi.md#get_domain_nameservers) | **GET** /domains/{id}/nameservers | List Registered Nameservers
-*SwaggerClient::DomainsApi* | [**get_domain_order_fields**](docs/DomainsApi.md#get_domain_order_fields) | **GET** /domains/order/{domain}/{regType} | Get Domain Order Fields
-*SwaggerClient::DomainsApi* | [**get_domain_order_search_results**](docs/DomainsApi.md#get_domain_order_search_results) | **GET** /domains/order/{domain} | Get Domain Order Search Results
-*SwaggerClient::DomainsApi* | [**get_domain_renewal**](docs/DomainsApi.md#get_domain_renewal) | **GET** /domains/{id}/renew | Start Domain Renewal Flow
-*SwaggerClient::DomainsApi* | [**get_domain_search**](docs/DomainsApi.md#get_domain_search) | **GET** /domains/search/{name} | Search Domain Suggestions
-*SwaggerClient::DomainsApi* | [**get_domain_transfer**](docs/DomainsApi.md#get_domain_transfer) | **GET** /domains/{id}/transfer | Start Domain Transfer Flow
-*SwaggerClient::DomainsApi* | [**get_domain_whois_privacy**](docs/DomainsApi.md#get_domain_whois_privacy) | **GET** /domains/{id}/whois | Get Whois Privacy Status
-*SwaggerClient::DomainsApi* | [**get_domains_list**](docs/DomainsApi.md#get_domains_list) | **GET** /domains | List Domain Orders
-*SwaggerClient::DomainsApi* | [**get_domains_welcome_email**](docs/DomainsApi.md#get_domains_welcome_email) | **GET** /domains/{id}/welcome_email | Resend Domain Welcome Email
-*SwaggerClient::DomainsApi* | [**get_new_domain**](docs/DomainsApi.md#get_new_domain) | **GET** /domains/order | Get Domain Ordering Information
-*SwaggerClient::DomainsApi* | [**patch_domains**](docs/DomainsApi.md#patch_domains) | **PATCH** /domains/order | Validate Domain Order
-*SwaggerClient::DomainsApi* | [**post_domain_renewal**](docs/DomainsApi.md#post_domain_renewal) | **POST** /domains/{id}/renew | Request Domain Renewal
-*SwaggerClient::DomainsApi* | [**post_domain_transfer**](docs/DomainsApi.md#post_domain_transfer) | **POST** /domains/{id}/transfer | Request Domain Transfer
-*SwaggerClient::DomainsApi* | [**put_domains**](docs/DomainsApi.md#put_domains) | **PUT** /domains/order | Domain Order Search
-*SwaggerClient::DomainsApi* | [**update_domain_contact**](docs/DomainsApi.md#update_domain_contact) | **POST** /domains/{id}/contact | Update Domain Contact Details
-*SwaggerClient::DomainsApi* | [**update_domain_info**](docs/DomainsApi.md#update_domain_info) | **POST** /domains/{id} | Update Domain Order
-*SwaggerClient::DomainsApi* | [**update_domain_nameservers**](docs/DomainsApi.md#update_domain_nameservers) | **PUT** /domains/{id}/nameservers | Replace Nameserver Set
-*SwaggerClient::DomainsApi* | [**update_domain_whois_privacy**](docs/DomainsApi.md#update_domain_whois_privacy) | **POST** /domains/{id}/whois | Update Whois Privacy
-*SwaggerClient::FloatingIPsApi* | [**add_floating_ip**](docs/FloatingIPsApi.md#add_floating_ip) | **POST** /floating_ips/order | Place Floating IP Order
-*SwaggerClient::FloatingIPsApi* | [**floating_ips_cancel**](docs/FloatingIPsApi.md#floating_ips_cancel) | **DELETE** /floating_ips/{id} | Cancel Floating IP
-*SwaggerClient::FloatingIPsApi* | [**get_floating_ip_info**](docs/FloatingIPsApi.md#get_floating_ip_info) | **GET** /floating_ips/{id} | View Floating IP
-*SwaggerClient::FloatingIPsApi* | [**get_floating_ip_invoices**](docs/FloatingIPsApi.md#get_floating_ip_invoices) | **GET** /floating_ips/{id}/invoices | Get Floating IP Invoices
-*SwaggerClient::FloatingIPsApi* | [**get_floating_ips_list**](docs/FloatingIPsApi.md#get_floating_ips_list) | **GET** /floating_ips | List Floating IPs
-*SwaggerClient::FloatingIPsApi* | [**get_floating_ips_welcome_email**](docs/FloatingIPsApi.md#get_floating_ips_welcome_email) | **GET** /floating_ips/{id}/welcome_email | Resend Floating IPs Welcome Email
-*SwaggerClient::FloatingIPsApi* | [**get_new_floating_ip**](docs/FloatingIPsApi.md#get_new_floating_ip) | **GET** /floating_ips/order | Get Floating IP Ordering Information
-*SwaggerClient::FloatingIPsApi* | [**post_floating_ips_change_ip**](docs/FloatingIPsApi.md#post_floating_ips_change_ip) | **POST** /floating_ips/{id}/change_ip | Change Floating IP Target
-*SwaggerClient::FloatingIPsApi* | [**put_floating_ips**](docs/FloatingIPsApi.md#put_floating_ips) | **PUT** /floating_ips/order | Validate Floating IP Order
-*SwaggerClient::FloatingIPsApi* | [**update_floating_ip_info**](docs/FloatingIPsApi.md#update_floating_ip_info) | **POST** /floating_ips/{id} | Update Floating IP
-*SwaggerClient::LicensesApi* | [**add_license**](docs/LicensesApi.md#add_license) | **POST** /licenses/order | Place License Order
-*SwaggerClient::LicensesApi* | [**get_license_info**](docs/LicensesApi.md#get_license_info) | **GET** /licenses/{id} | Get License
-*SwaggerClient::LicensesApi* | [**get_license_invoices**](docs/LicensesApi.md#get_license_invoices) | **GET** /licenses/{id}/invoices | Get License Invoices
-*SwaggerClient::LicensesApi* | [**get_license_list**](docs/LicensesApi.md#get_license_list) | **GET** /licenses | List Licenses
-*SwaggerClient::LicensesApi* | [**get_license_order_cat_tag_info**](docs/LicensesApi.md#get_license_order_cat_tag_info) | **GET** /licenses/order/{catTag} | Get License Order Information for Category
-*SwaggerClient::LicensesApi* | [**get_licenses_welcome_email**](docs/LicensesApi.md#get_licenses_welcome_email) | **GET** /licenses/{id}/welcome_email | Resend License Welcome Email
-*SwaggerClient::LicensesApi* | [**get_new_license**](docs/LicensesApi.md#get_new_license) | **GET** /licenses/order | Get License Order Information
-*SwaggerClient::LicensesApi* | [**licenses_cancel**](docs/LicensesApi.md#licenses_cancel) | **DELETE** /licenses/{id} | Cancel License
-*SwaggerClient::LicensesApi* | [**post_license_change_ip**](docs/LicensesApi.md#post_license_change_ip) | **POST** /licenses/{id}/change_ip | Change License IP
-*SwaggerClient::LicensesApi* | [**put_licenses**](docs/LicensesApi.md#put_licenses) | **PUT** /licenses/order | Validate License Order
-*SwaggerClient::LicensesApi* | [**update_license_info**](docs/LicensesApi.md#update_license_info) | **POST** /licenses/{id} | Update License
-*SwaggerClient::MailApi* | [**add_mail**](docs/MailApi.md#add_mail) | **POST** /mail/order | Place Mail Order
-*SwaggerClient::MailApi* | [**add_rule**](docs/MailApi.md#add_rule) | **POST** /mail/{id}/rules | Create Deny Rule
-*SwaggerClient::MailApi* | [**create_mail_alert**](docs/MailApi.md#create_mail_alert) | **POST** /mail/{id}/alerts | Create Mail Alert
-*SwaggerClient::MailApi* | [**delete_mail_alert**](docs/MailApi.md#delete_mail_alert) | **DELETE** /mail/{id}/alerts | Delete Mail Alert
-*SwaggerClient::MailApi* | [**delete_rule**](docs/MailApi.md#delete_rule) | **DELETE** /mail/{id}/rules/{rule} | Delete Deny Rule
-*SwaggerClient::MailApi* | [**delist_block**](docs/MailApi.md#delist_block) | **POST** /mail/{id}/blocks/delete | Remove Email Address from Block List
-*SwaggerClient::MailApi* | [**get_mail_alerts**](docs/MailApi.md#get_mail_alerts) | **GET** /mail/{id}/alerts | List Mail Alerts
-*SwaggerClient::MailApi* | [**get_mail_blocks**](docs/MailApi.md#get_mail_blocks) | **GET** /mail/{id}/blocks | List Blocked Email Addresses
-*SwaggerClient::MailApi* | [**get_mail_delist**](docs/MailApi.md#get_mail_delist) | **GET** /mail/{id}/delist | Get Delist Status
-*SwaggerClient::MailApi* | [**get_mail_deliverability**](docs/MailApi.md#get_mail_deliverability) | **GET** /mail/{id}/deliverability | Get Deliverability Metrics
-*SwaggerClient::MailApi* | [**get_mail_info**](docs/MailApi.md#get_mail_info) | **GET** /mail/{id} | Get Mail Order
-*SwaggerClient::MailApi* | [**get_mail_invoices**](docs/MailApi.md#get_mail_invoices) | **GET** /mail/{id}/invoices | Get Mail Invoices
-*SwaggerClient::MailApi* | [**get_mail_list**](docs/MailApi.md#get_mail_list) | **GET** /mail | List Mail Orders
-*SwaggerClient::MailApi* | [**get_mail_welcome_email**](docs/MailApi.md#get_mail_welcome_email) | **GET** /mail/{id}/welcome_email | Resend Mail Welcome Email
-*SwaggerClient::MailApi* | [**get_new_mail**](docs/MailApi.md#get_new_mail) | **GET** /mail/order | Get Mail Ordering Information
-*SwaggerClient::MailApi* | [**get_rules**](docs/MailApi.md#get_rules) | **GET** /mail/{id}/rules | List Deny Rules
-*SwaggerClient::MailApi* | [**get_stats**](docs/MailApi.md#get_stats) | **GET** /mail/{id}/stats | Get Mail Usage Statistics
-*SwaggerClient::MailApi* | [**mail_cancel**](docs/MailApi.md#mail_cancel) | **DELETE** /mail/{id} | Cancel Mail
-*SwaggerClient::MailApi* | [**post_mail_delist**](docs/MailApi.md#post_mail_delist) | **POST** /mail/{id}/delist | Delist a Blocked Sender
-*SwaggerClient::MailApi* | [**put_mail**](docs/MailApi.md#put_mail) | **PUT** /mail/order | Validate Mail Order
-*SwaggerClient::MailApi* | [**reset_mail_password**](docs/MailApi.md#reset_mail_password) | **GET** /mail/{id}/reset_password | Reset Mail Password
-*SwaggerClient::MailApi* | [**send_adv_mail**](docs/MailApi.md#send_adv_mail) | **POST** /mail/{id}/advsend | Send Email with Advanced Options
-*SwaggerClient::MailApi* | [**send_mail**](docs/MailApi.md#send_mail) | **POST** /mail/{id}/send | Send Email
-*SwaggerClient::MailApi* | [**update_mail_alert**](docs/MailApi.md#update_mail_alert) | **PUT** /mail/{id}/alerts | Update Mail Alert
-*SwaggerClient::MailApi* | [**update_mail_info**](docs/MailApi.md#update_mail_info) | **POST** /mail/{id} | Update Mail Order
-*SwaggerClient::MailApi* | [**view_mail_log**](docs/MailApi.md#view_mail_log) | **GET** /mail/{id}/log | View Mail Log
-*SwaggerClient::PublicApi* | [**get_captcha**](docs/PublicApi.md#get_captcha) | **GET** /captcha | Get Captcha Challenge
-*SwaggerClient::PublicApi* | [**get_countries**](docs/PublicApi.md#get_countries) | **GET** /account/countries | Get Countries
-*SwaggerClient::PublicApi* | [**get_info**](docs/PublicApi.md#get_info) | **GET** /info | Get Server Info
-*SwaggerClient::PublicApi* | [**get_login_info**](docs/PublicApi.md#get_login_info) | **GET** /login | Get Login Info
-*SwaggerClient::PublicApi* | [**get_mp_servers**](docs/PublicApi.md#get_mp_servers) | **GET** /buy_now_servers_list | List Marketplace Servers
-*SwaggerClient::PublicApi* | [**get_oauth_redirect**](docs/PublicApi.md#get_oauth_redirect) | **GET** /oauth | Get OAuth Redirect URL
-*SwaggerClient::PublicApi* | [**get_timezones**](docs/PublicApi.md#get_timezones) | **GET** /account/timezones | Get Available Timezones
-*SwaggerClient::PublicApi* | [**patch_oauth_two_factor**](docs/PublicApi.md#patch_oauth_two_factor) | **PATCH** /oauth | Complete OAuth Two-Factor Verification
-*SwaggerClient::PublicApi* | [**ping_server**](docs/PublicApi.md#ping_server) | **GET** /ping | Ping Server
-*SwaggerClient::PublicApi* | [**post_oauth_callback**](docs/PublicApi.md#post_oauth_callback) | **POST** /oauth | OAuth Callback
-*SwaggerClient::PublicApi* | [**submit_login**](docs/PublicApi.md#submit_login) | **POST** /login | Submit Login Information
-*SwaggerClient::PublicApi* | [**submit_signup**](docs/PublicApi.md#submit_signup) | **POST** /signup | Submit Signup Information
-*SwaggerClient::QuickServersApi* | [**add_qs**](docs/QuickServersApi.md#add_qs) | **POST** /qs/order | Place QuickServer Order
-*SwaggerClient::QuickServersApi* | [**delete_qs_backup**](docs/QuickServersApi.md#delete_qs_backup) | **DELETE** /qs/{id}/backups | Delete QuickServer Backup
-*SwaggerClient::QuickServersApi* | [**do_qs_block_smtp**](docs/QuickServersApi.md#do_qs_block_smtp) | **GET** /qs/{id}/block_smtp | Block QuickServer SMTP
-*SwaggerClient::QuickServersApi* | [**do_qs_disable_cd**](docs/QuickServersApi.md#do_qs_disable_cd) | **GET** /qs/{id}/disable_cd | Disable CD Drive
-*SwaggerClient::QuickServersApi* | [**do_qs_disable_quota**](docs/QuickServersApi.md#do_qs_disable_quota) | **GET** /qs/{id}/disable_quota | Disable Quotas
-*SwaggerClient::QuickServersApi* | [**do_qs_eject_cd**](docs/QuickServersApi.md#do_qs_eject_cd) | **GET** /qs/{id}/eject_cd | Eject CD Drive
-*SwaggerClient::QuickServersApi* | [**do_qs_enable_quota**](docs/QuickServersApi.md#do_qs_enable_quota) | **GET** /qs/{id}/enable_quota | Enable Quotas
-*SwaggerClient::QuickServersApi* | [**do_qs_restart**](docs/QuickServersApi.md#do_qs_restart) | **GET** /qs/{id}/restart | Restart QuickServer
-*SwaggerClient::QuickServersApi* | [**do_qs_start**](docs/QuickServersApi.md#do_qs_start) | **GET** /qs/{id}/start | Start QuickServer
-*SwaggerClient::QuickServersApi* | [**do_qs_stop**](docs/QuickServersApi.md#do_qs_stop) | **GET** /qs/{id}/stop | Stop QuickServer
-*SwaggerClient::QuickServersApi* | [**download_qs_backup**](docs/QuickServersApi.md#download_qs_backup) | **PATCH** /qs/{id}/backups | Download QuickServer Backup
-*SwaggerClient::QuickServersApi* | [**get_new_qs**](docs/QuickServersApi.md#get_new_qs) | **GET** /qs/order | Get QuickServer Ordering Information
-*SwaggerClient::QuickServersApi* | [**get_qs_backups**](docs/QuickServersApi.md#get_qs_backups) | **GET** /qs/{id}/backups | List QuickServer Backups
-*SwaggerClient::QuickServersApi* | [**get_qs_change_hostname**](docs/QuickServersApi.md#get_qs_change_hostname) | **GET** /qs/{id}/change_hostname | Get QuickServer Hostname
-*SwaggerClient::QuickServersApi* | [**get_qs_change_root_password**](docs/QuickServersApi.md#get_qs_change_root_password) | **GET** /qs/{id}/change_root_password | Get Change Root Password Info
-*SwaggerClient::QuickServersApi* | [**get_qs_change_timezone**](docs/QuickServersApi.md#get_qs_change_timezone) | **GET** /qs/{id}/change_timezone | Get Timezone Info
-*SwaggerClient::QuickServersApi* | [**get_qs_change_webuzo_password**](docs/QuickServersApi.md#get_qs_change_webuzo_password) | **GET** /qs/{id}/change_webuzo_password | Webuzo Change Pass Info
-*SwaggerClient::QuickServersApi* | [**get_qs_info**](docs/QuickServersApi.md#get_qs_info) | **GET** /qs/{id} | Get QuickServer Order
-*SwaggerClient::QuickServersApi* | [**get_qs_insert_cd**](docs/QuickServersApi.md#get_qs_insert_cd) | **GET** /qs/{id}/insert_cd | Insert CD Information
-*SwaggerClient::QuickServersApi* | [**get_qs_invoices**](docs/QuickServersApi.md#get_qs_invoices) | **GET** /qs/{id}/invoices | Get QuickServer Invoices
-*SwaggerClient::QuickServersApi* | [**get_qs_list**](docs/QuickServersApi.md#get_qs_list) | **GET** /qs | List QuickServers
-*SwaggerClient::QuickServersApi* | [**get_qs_reinstall_os**](docs/QuickServersApi.md#get_qs_reinstall_os) | **GET** /qs/{id}/reinstall_os | QuickServer Reinstall OS Options
-*SwaggerClient::QuickServersApi* | [**get_qs_reset_password**](docs/QuickServersApi.md#get_qs_reset_password) | **GET** /qs/{id}/reset_password | Reset QuickServer Password Info
-*SwaggerClient::QuickServersApi* | [**get_qs_reverse_dns**](docs/QuickServersApi.md#get_qs_reverse_dns) | **GET** /qs/{id}/reverse_dns | Reverse DNS Info
-*SwaggerClient::QuickServersApi* | [**get_qs_setup_vnc**](docs/QuickServersApi.md#get_qs_setup_vnc) | **GET** /qs/{id}/setup_vnc | VNC Setup Info
-*SwaggerClient::QuickServersApi* | [**get_qs_traffic_usage**](docs/QuickServersApi.md#get_qs_traffic_usage) | **GET** /qs/{id}/traffic_usage | Get Traffic Usage
-*SwaggerClient::QuickServersApi* | [**get_qs_view_desktop**](docs/QuickServersApi.md#get_qs_view_desktop) | **GET** /qs/{id}/view_desktop | Get View Desktop Info
-*SwaggerClient::QuickServersApi* | [**get_qs_welcome_email**](docs/QuickServersApi.md#get_qs_welcome_email) | **GET** /qs/{id}/welcome_email | Resend QuickServer Welcome Email
-*SwaggerClient::QuickServersApi* | [**post_qs_backup**](docs/QuickServersApi.md#post_qs_backup) | **POST** /qs/{id}/backup | Create QuickServer Backup
-*SwaggerClient::QuickServersApi* | [**post_qs_change_hostname**](docs/QuickServersApi.md#post_qs_change_hostname) | **POST** /qs/{id}/change_hostname | Update QuickServer Hostname
-*SwaggerClient::QuickServersApi* | [**post_qs_change_root_password**](docs/QuickServersApi.md#post_qs_change_root_password) | **POST** /qs/{id}/change_root_password | Change Root Password
-*SwaggerClient::QuickServersApi* | [**post_qs_change_timezone**](docs/QuickServersApi.md#post_qs_change_timezone) | **POST** /qs/{id}/change_timezone | Change QuickServer Timezone
-*SwaggerClient::QuickServersApi* | [**post_qs_change_webuzo_password**](docs/QuickServersApi.md#post_qs_change_webuzo_password) | **POST** /qs/{id}/change_webuzo_password | Change Webuzo Password
-*SwaggerClient::QuickServersApi* | [**post_qs_insert_cd**](docs/QuickServersApi.md#post_qs_insert_cd) | **POST** /qs/{id}/insert_cd | Insert CD in QuickServer
-*SwaggerClient::QuickServersApi* | [**post_qs_reinstall_os**](docs/QuickServersApi.md#post_qs_reinstall_os) | **POST** /qs/{id}/reinstall_os | Reinstall QuickServer OS
-*SwaggerClient::QuickServersApi* | [**post_qs_reset_password**](docs/QuickServersApi.md#post_qs_reset_password) | **POST** /qs/{id}/reset_password | Reset QuickServer Password
-*SwaggerClient::QuickServersApi* | [**post_qs_reverse_dns**](docs/QuickServersApi.md#post_qs_reverse_dns) | **POST** /qs/{id}/reverse_dns | Update Reverse DNS
-*SwaggerClient::QuickServersApi* | [**post_qs_setup_vnc**](docs/QuickServersApi.md#post_qs_setup_vnc) | **POST** /qs/{id}/setup_vnc | Setup VNC
-*SwaggerClient::QuickServersApi* | [**post_qs_traffic_usage**](docs/QuickServersApi.md#post_qs_traffic_usage) | **POST** /qs/{id}/traffic_usage | Search Traffic Usage
-*SwaggerClient::QuickServersApi* | [**post_qs_view_desktop**](docs/QuickServersApi.md#post_qs_view_desktop) | **POST** /qs/{id}/view_desktop | Update View Desktop
-*SwaggerClient::QuickServersApi* | [**post_quick_server_restore**](docs/QuickServersApi.md#post_quick_server_restore) | **POST** /qs/{id}/restore | Restore QuickServer from Backup
-*SwaggerClient::QuickServersApi* | [**put_qs**](docs/QuickServersApi.md#put_qs) | **PUT** /qs/order | Validate QuickServer Order
-*SwaggerClient::QuickServersApi* | [**quickservers_cancel**](docs/QuickServersApi.md#quickservers_cancel) | **DELETE** /qs/{id} | Cancel QuickServer Order
-*SwaggerClient::QuickServersApi* | [**update_qs_info**](docs/QuickServersApi.md#update_qs_info) | **POST** /qs/{id} | Update QuickServer Order
-*SwaggerClient::SSLCertificatesApi* | [**add_ssl**](docs/SSLCertificatesApi.md#add_ssl) | **POST** /ssl/order | Place SSL Cert Order
-*SwaggerClient::SSLCertificatesApi* | [**get_new_ssl**](docs/SSLCertificatesApi.md#get_new_ssl) | **GET** /ssl/order | SSL Cert Ordering Information
-*SwaggerClient::SSLCertificatesApi* | [**get_ssl_info**](docs/SSLCertificatesApi.md#get_ssl_info) | **GET** /ssl/{id} | Get SSL Cert Info
-*SwaggerClient::SSLCertificatesApi* | [**get_ssl_invoices**](docs/SSLCertificatesApi.md#get_ssl_invoices) | **GET** /ssl/{id}/invoices | Get SSL Cert Invoices
-*SwaggerClient::SSLCertificatesApi* | [**get_ssl_list**](docs/SSLCertificatesApi.md#get_ssl_list) | **GET** /ssl | List SSL Certs
-*SwaggerClient::SSLCertificatesApi* | [**get_ssl_welcome_email**](docs/SSLCertificatesApi.md#get_ssl_welcome_email) | **GET** /ssl/{id}/welcome_email | Resend SSL Welcome Email
-*SwaggerClient::SSLCertificatesApi* | [**put_ssl**](docs/SSLCertificatesApi.md#put_ssl) | **PUT** /ssl/order | Validate SSL Cert Order
-*SwaggerClient::SSLCertificatesApi* | [**ssl_cancel**](docs/SSLCertificatesApi.md#ssl_cancel) | **DELETE** /ssl/{id} | Cancel SSL Certificate Service
-*SwaggerClient::SSLCertificatesApi* | [**update_ssl_info**](docs/SSLCertificatesApi.md#update_ssl_info) | **POST** /ssl/{id} | Update SSL Cert Order
-*SwaggerClient::ScrubIpsApi* | [**cancel_scrub_ip**](docs/ScrubIpsApi.md#cancel_scrub_ip) | **DELETE** /scrub_ips/{id} | Cancel Scrub IP Service
-*SwaggerClient::ScrubIpsApi* | [**create_filter**](docs/ScrubIpsApi.md#create_filter) | **POST** /scrub_ips/{id}/create_filter | Create Traffic Filter
-*SwaggerClient::ScrubIpsApi* | [**create_geo_rule**](docs/ScrubIpsApi.md#create_geo_rule) | **POST** /scrub_ips/{id}/create_geo_rule | Create Geo Firewall Rule
-*SwaggerClient::ScrubIpsApi* | [**create_rule**](docs/ScrubIpsApi.md#create_rule) | **POST** /scrub_ips/{id}/create_rule | Create Firewall Rule
-*SwaggerClient::ScrubIpsApi* | [**delete_filter**](docs/ScrubIpsApi.md#delete_filter) | **POST** /scrub_ips/{id}/delete_filter | Delete Traffic Filter
-*SwaggerClient::ScrubIpsApi* | [**disable_scrub**](docs/ScrubIpsApi.md#disable_scrub) | **GET** /scrub_ips/{id}/disable | Disable Scrub Protection
-*SwaggerClient::ScrubIpsApi* | [**enable_scrub**](docs/ScrubIpsApi.md#enable_scrub) | **GET** /scrub_ips/{id}/enable | Enable Scrub Protection
-*SwaggerClient::ScrubIpsApi* | [**get_order_detail**](docs/ScrubIpsApi.md#get_order_detail) | **GET** /scrub_ips/order | Get Scrub IP Ordering Information
-*SwaggerClient::ScrubIpsApi* | [**get_scrub_ip_details**](docs/ScrubIpsApi.md#get_scrub_ip_details) | **GET** /scrub_ips/{id} | Get Scrub IP Details
-*SwaggerClient::ScrubIpsApi* | [**get_scrub_ip_filter_types**](docs/ScrubIpsApi.md#get_scrub_ip_filter_types) | **GET** /scrub_ips/filter_types | List Scrub Filter Types
-*SwaggerClient::ScrubIpsApi* | [**get_scrub_ip_invoices**](docs/ScrubIpsApi.md#get_scrub_ip_invoices) | **GET** /scrub_ips/{id}/invoices | Get ScrubIp Invoices
-*SwaggerClient::ScrubIpsApi* | [**get_scrub_ip_logs**](docs/ScrubIpsApi.md#get_scrub_ip_logs) | **GET** /scrub_ips/{id}/logs | Get Scrub IP Logs
-*SwaggerClient::ScrubIpsApi* | [**get_scrub_ips_list**](docs/ScrubIpsApi.md#get_scrub_ips_list) | **GET** /scrub_ips | List Scrub IP Services
-*SwaggerClient::ScrubIpsApi* | [**place_scrub_order**](docs/ScrubIpsApi.md#place_scrub_order) | **POST** /scrub_ips/order | Place Scrub IP Order
-*SwaggerClient::ScrubIpsApi* | [**scrub_ips_delete_geo_rule**](docs/ScrubIpsApi.md#scrub_ips_delete_geo_rule) | **POST** /scrub_ips/{id}/delete_geo_rule | Delete Geo Firewall Rule
-*SwaggerClient::ScrubIpsApi* | [**scrub_ips_delete_rule**](docs/ScrubIpsApi.md#scrub_ips_delete_rule) | **POST** /scrub_ips/{id}/delete_rule | Delete Firewall Rule
-*SwaggerClient::ServersApi* | [**add_server**](docs/ServersApi.md#add_server) | **POST** /servers/order | Place Server Order
-*SwaggerClient::ServersApi* | [**buy_it_now_server_order**](docs/ServersApi.md#buy_it_now_server_order) | **GET** /servers/order/buy_now_server | Get Buy Now Server Options
-*SwaggerClient::ServersApi* | [**get_mp_servers**](docs/ServersApi.md#get_mp_servers) | **GET** /buy_now_servers_list | List Marketplace Servers
-*SwaggerClient::ServersApi* | [**get_new_server**](docs/ServersApi.md#get_new_server) | **GET** /servers/order | Server Ordering Information
-*SwaggerClient::ServersApi* | [**get_server_info**](docs/ServersApi.md#get_server_info) | **GET** /servers/{id} | Get Server Order
-*SwaggerClient::ServersApi* | [**get_server_invoices**](docs/ServersApi.md#get_server_invoices) | **GET** /servers/{id}/invoices | Get Server Invoices
-*SwaggerClient::ServersApi* | [**get_server_list**](docs/ServersApi.md#get_server_list) | **GET** /servers | List Servers
-*SwaggerClient::ServersApi* | [**get_server_reverse_dns**](docs/ServersApi.md#get_server_reverse_dns) | **GET** /servers/{id}/reverse_dns | Reverse DNS Info
-*SwaggerClient::ServersApi* | [**get_servers_welcome_email**](docs/ServersApi.md#get_servers_welcome_email) | **GET** /servers/{id}/welcome_email | Resend Server Welcome Email
-*SwaggerClient::ServersApi* | [**place_buy_now_server**](docs/ServersApi.md#place_buy_now_server) | **POST** /servers/order/buy_now_server | Place Buy Now Server Order
-*SwaggerClient::ServersApi* | [**post_server_reverse_dns**](docs/ServersApi.md#post_server_reverse_dns) | **POST** /servers/{id}/reverse_dns | Update Reverse DNS
-*SwaggerClient::ServersApi* | [**put_servers**](docs/ServersApi.md#put_servers) | **PUT** /servers/order | Validate Server Order
-*SwaggerClient::ServersApi* | [**server_ipmi_live_get**](docs/ServersApi.md#server_ipmi_live_get) | **GET** /servers/{id}/ipmi_live | Server IPMI Live Information
-*SwaggerClient::ServersApi* | [**server_ipmi_live_post**](docs/ServersApi.md#server_ipmi_live_post) | **POST** /servers/{id}/ipmi_live | Server IPMI Live Setup
-*SwaggerClient::ServersApi* | [**server_ipmi_power_get**](docs/ServersApi.md#server_ipmi_power_get) | **GET** /servers/{id}/ipmi_power | Get IPMI Power Status
-*SwaggerClient::ServersApi* | [**server_ipmi_power_post**](docs/ServersApi.md#server_ipmi_power_post) | **POST** /servers/{id}/ipmi_power | Server IPMI Power
-*SwaggerClient::ServersApi* | [**servers_cancel**](docs/ServersApi.md#servers_cancel) | **DELETE** /servers/{id} | Cancel Server Service
-*SwaggerClient::ServersApi* | [**update_server_info**](docs/ServersApi.md#update_server_info) | **POST** /servers/{id} | Update Server Order
-*SwaggerClient::TicketsApi* | [**add_new_ticket**](docs/TicketsApi.md#add_new_ticket) | **POST** /tickets/new | Create New Ticket
-*SwaggerClient::TicketsApi* | [**close_ticket**](docs/TicketsApi.md#close_ticket) | **GET** /tickets/{id}/close | Close Ticket
-*SwaggerClient::TicketsApi* | [**delete_ticket_info**](docs/TicketsApi.md#delete_ticket_info) | **DELETE** /tickets/{id} | Close Ticket
-*SwaggerClient::TicketsApi* | [**get_new_ticket**](docs/TicketsApi.md#get_new_ticket) | **GET** /tickets/new | Gets Information for creating a new ticket.
-*SwaggerClient::TicketsApi* | [**get_ticket_info**](docs/TicketsApi.md#get_ticket_info) | **GET** /tickets/{id} | Get Ticket Information
-*SwaggerClient::TicketsApi* | [**get_tickets_list**](docs/TicketsApi.md#get_tickets_list) | **GET** /tickets | List Support Tickets
-*SwaggerClient::TicketsApi* | [**post_ticket_info**](docs/TicketsApi.md#post_ticket_info) | **POST** /tickets/{id} | Reply To Ticket
-*SwaggerClient::TicketsApi* | [**post_tickets_list**](docs/TicketsApi.md#post_tickets_list) | **POST** /tickets | Search Support Tickets
-*SwaggerClient::TicketsApi* | [**put_ticket_info**](docs/TicketsApi.md#put_ticket_info) | **PUT** /tickets/{id} | Update Ticket
-*SwaggerClient::TicketsApi* | [**reply_ticket**](docs/TicketsApi.md#reply_ticket) | **POST** /tickets/{id}/reply | Reply Ticket
-*SwaggerClient::TicketsApi* | [**update_ticket_info**](docs/TicketsApi.md#update_ticket_info) | **POST** /tickets/{id}/update | Update Ticket
-*SwaggerClient::VPSApi* | [**add_vps**](docs/VPSApi.md#add_vps) | **POST** /vps/order | Place VPS Order
-*SwaggerClient::VPSApi* | [**delete_vps_backup**](docs/VPSApi.md#delete_vps_backup) | **DELETE** /vps/{id}/backups | Delete VPS Backup
-*SwaggerClient::VPSApi* | [**do_vps_block_smtp**](docs/VPSApi.md#do_vps_block_smtp) | **GET** /vps/{id}/block_smtp | Blocks SMTP
-*SwaggerClient::VPSApi* | [**do_vps_disable_cd**](docs/VPSApi.md#do_vps_disable_cd) | **GET** /vps/{id}/disable_cd | Disable CD Drive
-*SwaggerClient::VPSApi* | [**do_vps_disable_quota**](docs/VPSApi.md#do_vps_disable_quota) | **GET** /vps/{id}/disable_quota | Disable Quotas
-*SwaggerClient::VPSApi* | [**do_vps_eject_cd**](docs/VPSApi.md#do_vps_eject_cd) | **GET** /vps/{id}/eject_cd | Eject CD Drive
-*SwaggerClient::VPSApi* | [**do_vps_enable_quota**](docs/VPSApi.md#do_vps_enable_quota) | **GET** /vps/{id}/enable_quota | Enable Quotas
-*SwaggerClient::VPSApi* | [**do_vps_restart**](docs/VPSApi.md#do_vps_restart) | **GET** /vps/{id}/restart | Restart VPS
-*SwaggerClient::VPSApi* | [**do_vps_start**](docs/VPSApi.md#do_vps_start) | **GET** /vps/{id}/start | Start VPS
-*SwaggerClient::VPSApi* | [**do_vps_stop**](docs/VPSApi.md#do_vps_stop) | **GET** /vps/{id}/stop | Stop VPS
-*SwaggerClient::VPSApi* | [**download_vps_backup**](docs/VPSApi.md#download_vps_backup) | **PATCH** /vps/{id}/backups | Download VPS Backup
-*SwaggerClient::VPSApi* | [**get_new_vps**](docs/VPSApi.md#get_new_vps) | **GET** /vps/order | VPS Ordering Information
-*SwaggerClient::VPSApi* | [**get_vps_backups**](docs/VPSApi.md#get_vps_backups) | **GET** /vps/{id}/backups | Get VPS Backups List
-*SwaggerClient::VPSApi* | [**get_vps_buy_hd_space**](docs/VPSApi.md#get_vps_buy_hd_space) | **GET** /vps/{id}/buy_hd_space | HD Space Addon Info
-*SwaggerClient::VPSApi* | [**get_vps_buy_ip**](docs/VPSApi.md#get_vps_buy_ip) | **GET** /vps/{id}/buy_ip | Additional IP Addon Info
-*SwaggerClient::VPSApi* | [**get_vps_change_timezone**](docs/VPSApi.md#get_vps_change_timezone) | **GET** /vps/{id}/change_timezone | Get Timezone Info
-*SwaggerClient::VPSApi* | [**get_vps_info**](docs/VPSApi.md#get_vps_info) | **GET** /vps/{id} | Get VPS Order
-*SwaggerClient::VPSApi* | [**get_vps_invoices**](docs/VPSApi.md#get_vps_invoices) | **GET** /vps/{id}/invoices | Get VPS Invoices
-*SwaggerClient::VPSApi* | [**get_vps_list**](docs/VPSApi.md#get_vps_list) | **GET** /vps | List VPS Orders
-*SwaggerClient::VPSApi* | [**get_vps_reinstall_os**](docs/VPSApi.md#get_vps_reinstall_os) | **GET** /vps/{id}/reinstall_os | VPS Reinstall OS Options
-*SwaggerClient::VPSApi* | [**get_vps_reverse_dns**](docs/VPSApi.md#get_vps_reverse_dns) | **GET** /vps/{id}/reverse_dns | Reverse DNS Info
-*SwaggerClient::VPSApi* | [**get_vps_setup_vnc**](docs/VPSApi.md#get_vps_setup_vnc) | **GET** /vps/{id}/setup_vnc | VNC Setup Info
-*SwaggerClient::VPSApi* | [**get_vps_slices**](docs/VPSApi.md#get_vps_slices) | **GET** /vps/{id}/slices | Slice Upgrade Info
-*SwaggerClient::VPSApi* | [**get_vps_traffic_usage**](docs/VPSApi.md#get_vps_traffic_usage) | **GET** /vps/{id}/traffic_usage | Get Traffic Usage
-*SwaggerClient::VPSApi* | [**get_vps_view_desktop**](docs/VPSApi.md#get_vps_view_desktop) | **GET** /vps/{id}/view_desktop | Get View Desktop Info
-*SwaggerClient::VPSApi* | [**get_vps_welcome_email**](docs/VPSApi.md#get_vps_welcome_email) | **GET** /vps/{id}/welcome_email | Resend VPS Welcome Email
-*SwaggerClient::VPSApi* | [**post_vps_backup**](docs/VPSApi.md#post_vps_backup) | **GET** /vps/{id}/backup | Start a VPS Backup
-*SwaggerClient::VPSApi* | [**post_vps_buy_hd_space**](docs/VPSApi.md#post_vps_buy_hd_space) | **POST** /vps/{id}/buy_hd_space | Purchase HD Space Addon
-*SwaggerClient::VPSApi* | [**post_vps_buy_ip**](docs/VPSApi.md#post_vps_buy_ip) | **POST** /vps/{id}/buy_ip | Purchase Additional IP
-*SwaggerClient::VPSApi* | [**post_vps_change_hostname**](docs/VPSApi.md#post_vps_change_hostname) | **POST** /vps/{id}/change_hostname | Update VPS Hostname
-*SwaggerClient::VPSApi* | [**post_vps_change_root_password**](docs/VPSApi.md#post_vps_change_root_password) | **POST** /vps/{id}/change_root_password | Change VPS Root Password
-*SwaggerClient::VPSApi* | [**post_vps_change_timezone**](docs/VPSApi.md#post_vps_change_timezone) | **POST** /vps/{id}/change_timezone | Change VPS Timezone
-*SwaggerClient::VPSApi* | [**post_vps_change_webuzo_password**](docs/VPSApi.md#post_vps_change_webuzo_password) | **POST** /vps/{id}/change_webuzo_password | Change Webuzo Password
-*SwaggerClient::VPSApi* | [**post_vps_insert_cd**](docs/VPSApi.md#post_vps_insert_cd) | **POST** /vps/{id}/insert_cd | Insert CD in VPS
-*SwaggerClient::VPSApi* | [**post_vps_reinstall_os**](docs/VPSApi.md#post_vps_reinstall_os) | **POST** /vps/{id}/reinstall_os | Reinstall VPS OS
-*SwaggerClient::VPSApi* | [**post_vps_reset_password**](docs/VPSApi.md#post_vps_reset_password) | **POST** /vps/{id}/reset_password | Reset VPS Password
-*SwaggerClient::VPSApi* | [**post_vps_restore**](docs/VPSApi.md#post_vps_restore) | **POST** /vps/{id}/restore | Restore VPS from Backup
-*SwaggerClient::VPSApi* | [**post_vps_reverse_dns**](docs/VPSApi.md#post_vps_reverse_dns) | **POST** /vps/{id}/reverse_dns | Update Reverse DNS
-*SwaggerClient::VPSApi* | [**post_vps_setup_vnc**](docs/VPSApi.md#post_vps_setup_vnc) | **POST** /vps/{id}/setup_vnc | Setup VNC
-*SwaggerClient::VPSApi* | [**post_vps_slices**](docs/VPSApi.md#post_vps_slices) | **POST** /vps/{id}/slices | Purchase Slice Upgrade
-*SwaggerClient::VPSApi* | [**post_vps_view_desktop**](docs/VPSApi.md#post_vps_view_desktop) | **POST** /vps/{id}/view_desktop | Update View Desktop
-*SwaggerClient::VPSApi* | [**put_vps**](docs/VPSApi.md#put_vps) | **PUT** /vps/order | Validate VPS Order
-*SwaggerClient::VPSApi* | [**update_vps_info**](docs/VPSApi.md#update_vps_info) | **POST** /vps/{id} | Update VPS Order
-*SwaggerClient::VPSApi* | [**v_ps_cancel**](docs/VPSApi.md#v_ps_cancel) | **DELETE** /vps/{id} | Cancel VPS Service
-*SwaggerClient::WebhostingApi* | [**add_website**](docs/WebhostingApi.md#add_website) | **POST** /websites/order | Place Website Order
-*SwaggerClient::WebhostingApi* | [**get_new_website**](docs/WebhostingApi.md#get_new_website) | **GET** /websites/order | Website Ordering Information
-*SwaggerClient::WebhostingApi* | [**get_website_buy_ip**](docs/WebhostingApi.md#get_website_buy_ip) | **GET** /websites/{id}/buy_ip | Get Website IP Information
-*SwaggerClient::WebhostingApi* | [**get_website_info**](docs/WebhostingApi.md#get_website_info) | **GET** /websites/{id} | Get Website Order
-*SwaggerClient::WebhostingApi* | [**get_website_invoices**](docs/WebhostingApi.md#get_website_invoices) | **GET** /websites/{id}/invoices | Get Website Invoices
-*SwaggerClient::WebhostingApi* | [**get_website_list**](docs/WebhostingApi.md#get_website_list) | **GET** /websites | Get Website Listing
-*SwaggerClient::WebhostingApi* | [**get_websites_backups**](docs/WebhostingApi.md#get_websites_backups) | **GET** /websites/{id}/backups | Get Website Backups
-*SwaggerClient::WebhostingApi* | [**get_websites_login**](docs/WebhostingApi.md#get_websites_login) | **GET** /websites/{id}/login | Hosting Panel Auto Login
-*SwaggerClient::WebhostingApi* | [**get_websites_welcome_email**](docs/WebhostingApi.md#get_websites_welcome_email) | **GET** /websites/{id}/welcome_email | Resend Website Welcome Email
-*SwaggerClient::WebhostingApi* | [**gett_website_reverse_dns**](docs/WebhostingApi.md#gett_website_reverse_dns) | **GET** /websites/{id}/reverse_dns | Get Website Reverse DNS
-*SwaggerClient::WebhostingApi* | [**post_website_buy_ip**](docs/WebhostingApi.md#post_website_buy_ip) | **POST** /websites/{id}/buy_ip | Update Website IP DNS
-*SwaggerClient::WebhostingApi* | [**post_website_migration**](docs/WebhostingApi.md#post_website_migration) | **POST** /websites/{id}/migration | Request Website Migration
-*SwaggerClient::WebhostingApi* | [**post_websites_reverse_dns**](docs/WebhostingApi.md#post_websites_reverse_dns) | **POST** /websites/{id}/reverse_dns | Update Website Reverse DNS
-*SwaggerClient::WebhostingApi* | [**put_websites**](docs/WebhostingApi.md#put_websites) | **PUT** /websites/order | Validate Webhosting Order
-*SwaggerClient::WebhostingApi* | [**update_website_info**](docs/WebhostingApi.md#update_website_info) | **POST** /websites/{id} | Update Website Order
-*SwaggerClient::WebhostingApi* | [**webhosting_cancel**](docs/WebhostingApi.md#webhosting_cancel) | **DELETE** /websites/{id} | Cancel Website
+*InterserverApiClient::AccountApi* | [**delete_account_oauth_name**](docs/AccountApi.md#delete_account_oauth_name) | **DELETE** /account/oauth/{name} | Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
+*InterserverApiClient::AccountApi* | [**delete_account_tfa**](docs/AccountApi.md#delete_account_tfa) | **DELETE** /account/2fa | Disable two-factor authentication and remove the TOTP secret
+*InterserverApiClient::AccountApi* | [**delete_ip_limit**](docs/AccountApi.md#delete_ip_limit) | **PATCH** /account/iplimits | Remove one IP range from the account allow-list (PATCH on /account/iplimits)
+*InterserverApiClient::AccountApi* | [**get_account_info**](docs/AccountApi.md#get_account_info) | **GET** /account | Read full account profile, billing address, and security settings
+*InterserverApiClient::AccountApi* | [**get_account_tfa_setup**](docs/AccountApi.md#get_account_tfa_setup) | **GET** /account/2fa | Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
+*InterserverApiClient::AccountApi* | [**get_home**](docs/AccountApi.md#get_home) | **GET** /home | Aggregate dashboard payload — service counts, recent activity, alerts
+*InterserverApiClient::AccountApi* | [**get_search**](docs/AccountApi.md#get_search) | **GET** /search | Global autocomplete across the caller's services, domains, and records
+*InterserverApiClient::AccountApi* | [**logout**](docs/AccountApi.md#logout) | **GET** /logout | Destroy the current API/web session — token becomes unusable
+*InterserverApiClient::AccountApi* | [**logout_account_oauth**](docs/AccountApi.md#logout_account_oauth) | **GET** /account/oauth/{name}/logout | Sign out of the upstream OAuth provider session (does not unlink the account)
+*InterserverApiClient::AccountApi* | [**update_account_api_key**](docs/AccountApi.md#update_account_api_key) | **POST** /account/apikey | Rotate the account's REST/MCP API key — old key is invalidated immediately
+*InterserverApiClient::AccountApi* | [**update_account_features**](docs/AccountApi.md#update_account_features) | **POST** /account/features | Toggle account-wide safety locks for password reset and OS reinstall
+*InterserverApiClient::AccountApi* | [**update_account_info**](docs/AccountApi.md#update_account_info) | **POST** /account | Update contact and billing-address fields on the customer profile
+*InterserverApiClient::AccountApi* | [**update_account_ip_limits**](docs/AccountApi.md#update_account_ip_limits) | **POST** /account/iplimits | Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
+*InterserverApiClient::AccountApi* | [**update_account_password**](docs/AccountApi.md#update_account_password) | **POST** /account/password | Change the account login password (verifies current, kills other sessions)
+*InterserverApiClient::AccountApi* | [**update_account_ssh_key**](docs/AccountApi.md#update_account_ssh_key) | **POST** /account/sshkey | Set the account-level SSH public key auto-installed on new VPS/dedicated orders
+*InterserverApiClient::AccountApi* | [**update_account_tfa**](docs/AccountApi.md#update_account_tfa) | **POST** /account/2fa | Verify TOTP code and enable two-factor authentication on the account
+*InterserverApiClient::BackupsApi* | [**add_backup**](docs/BackupsApi.md#add_backup) | **POST** /backups/order | Place a new off-site backup storage order and generate the invoice
+*InterserverApiClient::BackupsApi* | [**cancel_backup**](docs/BackupsApi.md#cancel_backup) | **DELETE** /backups/{id} | Cancel an off-site backup storage subscription
+*InterserverApiClient::BackupsApi* | [**get_backup_info**](docs/BackupsApi.md#get_backup_info) | **GET** /backups/{id} | Get details of a specific off-site backup storage service
+*InterserverApiClient::BackupsApi* | [**get_backup_invoices**](docs/BackupsApi.md#get_backup_invoices) | **GET** /backups/{id}/invoices | List invoices for a single backup-storage subscription
+*InterserverApiClient::BackupsApi* | [**get_backup_login**](docs/BackupsApi.md#get_backup_login) | **GET** /backups/{id}/login | Open a single sign-on session URL for the backup storage panel
+*InterserverApiClient::BackupsApi* | [**get_backups_list**](docs/BackupsApi.md#get_backups_list) | **GET** /backups | List off-site backup storage subscriptions on the authenticated account
+*InterserverApiClient::BackupsApi* | [**get_backups_welcome_email**](docs/BackupsApi.md#get_backups_welcome_email) | **GET** /backups/{id}/welcome_email | Resend the welcome email for an off-site backup storage service
+*InterserverApiClient::BackupsApi* | [**get_new_backup**](docs/BackupsApi.md#get_new_backup) | **GET** /backups/order | Get backup-storage order form metadata and pricing tiers
+*InterserverApiClient::BackupsApi* | [**update_backup_info**](docs/BackupsApi.md#update_backup_info) | **POST** /backups/{id} | Update stored metadata for a backup-storage subscription
+*InterserverApiClient::BackupsApi* | [**validate_backup_order**](docs/BackupsApi.md#validate_backup_order) | **PUT** /backups/order | Validate a backup-storage order and preview pricing without charging
+*InterserverApiClient::BillingApi* | [**add_billing_credit_card**](docs/BillingApi.md#add_billing_credit_card) | **POST** /billing/creditcards | Store a credit card on the account — may return a verification flow
+*InterserverApiClient::BillingApi* | [**add_billing_prepay**](docs/BillingApi.md#add_billing_prepay) | **POST** /billing/prepays | Create a prepay deposit and return an invoice id to fund it
+*InterserverApiClient::BillingApi* | [**delete_billing_credit_card**](docs/BillingApi.md#delete_billing_credit_card) | **DELETE** /billing/creditcards/{id} | Remove a stored credit card from the account
+*InterserverApiClient::BillingApi* | [**delete_billing_invoice**](docs/BillingApi.md#delete_billing_invoice) | **DELETE** /billing/invoices/{id} | Cancel a pending unpaid invoice — and its pending service or repeat invoice
+*InterserverApiClient::BillingApi* | [**delete_billing_prepay**](docs/BillingApi.md#delete_billing_prepay) | **DELETE** /billing/prepays/{id} | Delete an unfunded prepay or strip its unpaid funding invoices
+*InterserverApiClient::BillingApi* | [**get_affiliate_banners**](docs/BillingApi.md#get_affiliate_banners) | **GET** /affiliate/banners | List affiliate banner image assets with filename and dimensions
+*InterserverApiClient::BillingApi* | [**get_affiliate_download**](docs/BillingApi.md#get_affiliate_download) | **GET** /affiliate/download | Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+*InterserverApiClient::BillingApi* | [**get_affiliate_rich_report**](docs/BillingApi.md#get_affiliate_rich_report) | **GET** /affiliate/rich_report | Read a combined affiliate performance summary (HTML payload)
+*InterserverApiClient::BillingApi* | [**get_affiliate_sales_graph**](docs/BillingApi.md#get_affiliate_sales_graph) | **GET** /affiliate/sales_graph | Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
+*InterserverApiClient::BillingApi* | [**get_affiliate_signups**](docs/BillingApi.md#get_affiliate_signups) | **GET** /affiliate/signups | Read affiliate signup stats and per-customer conversion data
+*InterserverApiClient::BillingApi* | [**get_affiliate_traffic_graph**](docs/BillingApi.md#get_affiliate_traffic_graph) | **GET** /affiliate/traffic_graph | Read aggregated affiliate referral click/visit time-series for chart rendering
+*InterserverApiClient::BillingApi* | [**get_affiliate_web_traffic**](docs/BillingApi.md#get_affiliate_web_traffic) | **GET** /affiliate/web_traffic | List the 20 most recent affiliate referral visits with IP, referrer, timestamp
+*InterserverApiClient::BillingApi* | [**get_billing_cart**](docs/BillingApi.md#get_billing_cart) | **GET** /billing/cart | Read the current shopping cart contents, totals, and available payment methods
+*InterserverApiClient::BillingApi* | [**get_billing_credit_card_verify**](docs/BillingApi.md#get_billing_credit_card_verify) | **GET** /billing/creditcards/{id}/verify | Probe whether a stored card still needs micro-charge verification
+*InterserverApiClient::BillingApi* | [**get_billing_invoice**](docs/BillingApi.md#get_billing_invoice) | **GET** /billing/invoices/{id} | Read full invoice detail — line items, totals, paid status, customer info
+*InterserverApiClient::BillingApi* | [**get_billing_invoices**](docs/BillingApi.md#get_billing_invoices) | **GET** /billing/invoices | List every invoice on the account with summary totals and paid/unpaid status
+*InterserverApiClient::BillingApi* | [**get_billing_pre_pays**](docs/BillingApi.md#get_billing_pre_pays) | **GET** /billing/prepays | List prepay deposits on the account — remaining balance and auto-use flags
+*InterserverApiClient::BillingApi* | [**initiate_payment**](docs/BillingApi.md#initiate_payment) | **GET** /billing/pay/{method}/{invoices} | Pay invoices through the chosen gateway — returns the next-step action
+*InterserverApiClient::BillingApi* | [**patch_billing_credit_card_verify**](docs/BillingApi.md#patch_billing_credit_card_verify) | **PATCH** /billing/creditcards/{id}/verify | Place two micro-charges on the card to start CVV verification (step 1 of 2)
+*InterserverApiClient::BillingApi* | [**post_billing_credit_card_verify**](docs/BillingApi.md#post_billing_credit_card_verify) | **POST** /billing/creditcards/{id}/verify | Submit two micro-charge amounts to finalize card verification (step 2 of 2)
+*InterserverApiClient::BillingApi* | [**update_affiliate_dock_setup**](docs/BillingApi.md#update_affiliate_dock_setup) | **POST** /affiliate/dock_setup | Configure the affiliate landing dock title, description, and referrer coupon
+*InterserverApiClient::BillingApi* | [**update_affiliate_payment_setup**](docs/BillingApi.md#update_affiliate_payment_setup) | **POST** /affiliate/payment_setup | Configure how affiliate commissions get paid out (PayPal or internal prepay)
+*InterserverApiClient::BillingApi* | [**update_billing_credit_card**](docs/BillingApi.md#update_billing_credit_card) | **POST** /billing/creditcards/{id} | Refresh stored card expiration and re-trigger MaxMind fraud scoring
+*InterserverApiClient::BillingApi* | [**update_billing_payment_method**](docs/BillingApi.md#update_billing_payment_method) | **POST** /billing/payment_method | Set the account's default payment method for recurring/auto charges
+*InterserverApiClient::DNSApi* | [**add_dns_domain**](docs/DNSApi.md#add_dns_domain) | **POST** /dns | Create a new authoritative DNS zone seeded with apex A + NS + SOA records
+*InterserverApiClient::DNSApi* | [**add_dns_record**](docs/DNSApi.md#add_dns_record) | **POST** /dns/{id} | Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
+*InterserverApiClient::DNSApi* | [**delete_dns_domain**](docs/DNSApi.md#delete_dns_domain) | **DELETE** /dns/{id} | Permanently delete a DNS zone and every record it contains
+*InterserverApiClient::DNSApi* | [**delete_dns_record**](docs/DNSApi.md#delete_dns_record) | **DELETE** /dns/{domainId}/{recordId} | Permanently delete one DNS record from a zone — zone itself is preserved
+*InterserverApiClient::DNSApi* | [**get_dns_domain**](docs/DNSApi.md#get_dns_domain) | **GET** /dns/{id} | List every DNS record in one zone with the IDs needed to edit or delete them
+*InterserverApiClient::DNSApi* | [**get_dns_list**](docs/DNSApi.md#get_dns_list) | **GET** /dns | List DNS zones hosted on the account with each zone's apex A-record IP
+*InterserverApiClient::DNSApi* | [**update_dns_record**](docs/DNSApi.md#update_dns_record) | **POST** /dns/{domainId}/{recordId} | Replace values on an existing DNS record (name, type, content, ttl, priority)
+*InterserverApiClient::DomainsApi* | [**add_domain**](docs/DomainsApi.md#add_domain) | **POST** /domains/order | Place a new domain registration or transfer order, generate billing invoice
+*InterserverApiClient::DomainsApi* | [**add_domain_dnssec**](docs/DomainsApi.md#add_domain_dnssec) | **POST** /domains/{id}/dnssec | Register DNSSEC DS records on the domain at OpenSRS
+*InterserverApiClient::DomainsApi* | [**add_domain_nameserver**](docs/DomainsApi.md#add_domain_nameserver) | **POST** /domains/{id}/nameservers | Register a new nameserver host with glue IP at the registry (registered nameserver)
+*InterserverApiClient::DomainsApi* | [**cancel_domain**](docs/DomainsApi.md#cancel_domain) | **DELETE** /domains/{id} | Cancel a domain order in the billing system to stop auto-renewals
+*InterserverApiClient::DomainsApi* | [**delete_domain_dnssec**](docs/DomainsApi.md#delete_domain_dnssec) | **DELETE** /domains/{id}/dnssec | Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
+*InterserverApiClient::DomainsApi* | [**delete_domain_nameserver**](docs/DomainsApi.md#delete_domain_nameserver) | **DELETE** /domains/{id}/nameservers | Remove one registered nameserver glue record from the domain
+*InterserverApiClient::DomainsApi* | [**get_domain_contact**](docs/DomainsApi.md#get_domain_contact) | **GET** /domains/{id}/contact | Read the current registrant/admin/tech/billing contact field set for a domain
+*InterserverApiClient::DomainsApi* | [**get_domain_dnssec**](docs/DomainsApi.md#get_domain_dnssec) | **GET** /domains/{id}/dnssec | Read the DNSSEC DS record set currently registered with the registrar
+*InterserverApiClient::DomainsApi* | [**get_domain_info**](docs/DomainsApi.md#get_domain_info) | **GET** /domains/{id} | Read full billing, registrar, and service detail for one domain
+*InterserverApiClient::DomainsApi* | [**get_domain_invoices**](docs/DomainsApi.md#get_domain_invoices) | **GET** /domains/{id}/invoices | List all billing invoices scoped to one domain order
+*InterserverApiClient::DomainsApi* | [**get_domain_lookup**](docs/DomainsApi.md#get_domain_lookup) | **GET** /domains/lookup/{name} | Check availability, premium status, and pricing for a specific domain
+*InterserverApiClient::DomainsApi* | [**get_domain_nameservers**](docs/DomainsApi.md#get_domain_nameservers) | **GET** /domains/{id}/nameservers | List registered nameserver hosts and glue IP addresses for a domain
+*InterserverApiClient::DomainsApi* | [**get_domain_renewal**](docs/DomainsApi.md#get_domain_renewal) | **GET** /domains/{id}/renew | Read renewal pricing, expiry, and whether a renewal invoice already exists
+*InterserverApiClient::DomainsApi* | [**get_domain_search**](docs/DomainsApi.md#get_domain_search) | **GET** /domains/search/{name} | Get registrar-suggested domain alternatives and bulk availability for a search term
+*InterserverApiClient::DomainsApi* | [**get_domain_transfer**](docs/DomainsApi.md#get_domain_transfer) | **GET** /domains/{id}/transfer | Read OpenSRS transfer status for an in-progress domain transfer order
+*InterserverApiClient::DomainsApi* | [**get_domain_whois_privacy**](docs/DomainsApi.md#get_domain_whois_privacy) | **GET** /domains/{id}/whois | Read Whois privacy availability, current state, and add-on pricing for a domain
+*InterserverApiClient::DomainsApi* | [**get_domains_list**](docs/DomainsApi.md#get_domains_list) | **GET** /domains | List every domain registration on the account with billing and registration metadata
+*InterserverApiClient::DomainsApi* | [**get_domains_welcome_email**](docs/DomainsApi.md#get_domains_welcome_email) | **GET** /domains/{id}/welcome_email | Resend the domain welcome email with registration details and management instructions
+*InterserverApiClient::DomainsApi* | [**get_new_domain**](docs/DomainsApi.md#get_new_domain) | **GET** /domains/order | Read the buyable domain TLD service catalog and Whois privacy pricing
+*InterserverApiClient::DomainsApi* | [**patch_domains**](docs/DomainsApi.md#patch_domains) | **PATCH** /domains/order | Validate posted domain-order field values before committing — dry run
+*InterserverApiClient::DomainsApi* | [**post_domain_renewal**](docs/DomainsApi.md#post_domain_renewal) | **POST** /domains/{id}/renew | Submit a domain renewal request and generate the renewal invoice
+*InterserverApiClient::DomainsApi* | [**post_domain_search**](docs/DomainsApi.md#post_domain_search) | **POST** /domains/search/{name} | Get the full order form data for a hostname in one round-trip (search → order preview)
+*InterserverApiClient::DomainsApi* | [**post_domain_transfer**](docs/DomainsApi.md#post_domain_transfer) | **POST** /domains/{id}/transfer | Re-poll OpenSRS transfer status for a domain order via POST
+*InterserverApiClient::DomainsApi* | [**put_domains**](docs/DomainsApi.md#put_domains) | **PUT** /domains/order | Preview per-TLD field requirements for a domain order — no commit
+*InterserverApiClient::DomainsApi* | [**update_domain_contact**](docs/DomainsApi.md#update_domain_contact) | **POST** /domains/{id}/contact | Update registrant/admin contact details and push them to OpenSRS
+*InterserverApiClient::DomainsApi* | [**update_domain_info**](docs/DomainsApi.md#update_domain_info) | **POST** /domains/{id} | POST mutation hook for the domain detail page (use dedicated ops where possible)
+*InterserverApiClient::DomainsApi* | [**update_domain_nameservers**](docs/DomainsApi.md#update_domain_nameservers) | **PUT** /domains/{id}/nameservers | Replace the full authoritative-nameserver delegation list at the registrar
+*InterserverApiClient::DomainsApi* | [**update_domain_whois_privacy**](docs/DomainsApi.md#update_domain_whois_privacy) | **POST** /domains/{id}/whois | Order, enable, or cancel the Whois privacy add-on for a domain
+*InterserverApiClient::FloatingIPsApi* | [**add_floating_ip**](docs/FloatingIPsApi.md#add_floating_ip) | **POST** /floating_ips/order | Place a real Floating IP order, create billing records, and provision the service
+*InterserverApiClient::FloatingIPsApi* | [**floating_ips_cancel**](docs/FloatingIPsApi.md#floating_ips_cancel) | **DELETE** /floating_ips/{id} | Cancel a Floating IP service and release the IP — destructive, billing stops
+*InterserverApiClient::FloatingIPsApi* | [**get_floating_ip_info**](docs/FloatingIPsApi.md#get_floating_ip_info) | **GET** /floating_ips/{id} | Fetch full details for one Floating IP service, including current target IP
+*InterserverApiClient::FloatingIPsApi* | [**get_floating_ip_invoices**](docs/FloatingIPsApi.md#get_floating_ip_invoices) | **GET** /floating_ips/{id}/invoices | List all billing invoices charged against a specific Floating IP service
+*InterserverApiClient::FloatingIPsApi* | [**get_floating_ips_list**](docs/FloatingIPsApi.md#get_floating_ips_list) | **GET** /floating_ips | List all Floating IP services on the authenticated customer's account
+*InterserverApiClient::FloatingIPsApi* | [**get_floating_ips_welcome_email**](docs/FloatingIPsApi.md#get_floating_ips_welcome_email) | **GET** /floating_ips/{id}/welcome_email | Resend the Floating IP welcome / setup email to the account contact
+*InterserverApiClient::FloatingIPsApi* | [**get_new_floating_ip**](docs/FloatingIPsApi.md#get_new_floating_ip) | **GET** /floating_ips/order | Get pricing and service-type options for ordering a new Floating IP
+*InterserverApiClient::FloatingIPsApi* | [**post_floating_ips_change_ip**](docs/FloatingIPsApi.md#post_floating_ips_change_ip) | **POST** /floating_ips/{id}/change_ip | Re-point a Floating IP to a different target IP on one of the customer's services
+*InterserverApiClient::FloatingIPsApi* | [**put_floating_ips**](docs/FloatingIPsApi.md#put_floating_ips) | **PUT** /floating_ips/order | Validate a Floating IP order and price it without charging the customer
+*InterserverApiClient::FloatingIPsApi* | [**update_floating_ip_info**](docs/FloatingIPsApi.md#update_floating_ip_info) | **POST** /floating_ips/{id} | Update a Floating IP service's editable settings (label / metadata)
+*InterserverApiClient::LicensesApi* | [**add_license**](docs/LicensesApi.md#add_license) | **POST** /licenses/order | Order a new software license and create the recurring invoice
+*InterserverApiClient::LicensesApi* | [**get_license_info**](docs/LicensesApi.md#get_license_info) | **GET** /licenses/{id} | Get full details for one license including status, IP, and links
+*InterserverApiClient::LicensesApi* | [**get_license_invoices**](docs/LicensesApi.md#get_license_invoices) | **GET** /licenses/{id}/invoices | List all billing invoices tied to one software license service
+*InterserverApiClient::LicensesApi* | [**get_license_list**](docs/LicensesApi.md#get_license_list) | **GET** /licenses | List all software licenses owned by the authenticated customer
+*InterserverApiClient::LicensesApi* | [**get_licenses_welcome_email**](docs/LicensesApi.md#get_licenses_welcome_email) | **GET** /licenses/{id}/welcome_email | Resend the license welcome email with the key and activation steps
+*InterserverApiClient::LicensesApi* | [**get_new_license**](docs/LicensesApi.md#get_new_license) | **GET** /licenses/order | Get available license types, packages, and pricing for ordering
+*InterserverApiClient::LicensesApi* | [**licenses_cancel**](docs/LicensesApi.md#licenses_cancel) | **DELETE** /licenses/{id} | Cancel a license service and stop future billing (irreversible)
+*InterserverApiClient::LicensesApi* | [**post_license_change_ip**](docs/LicensesApi.md#post_license_change_ip) | **POST** /licenses/{id}/change_ip | Rebind a license to a new IP address (may incur a vendor fee)
+*InterserverApiClient::LicensesApi* | [**put_licenses**](docs/LicensesApi.md#put_licenses) | **PUT** /licenses/order | Validate a software license order before placing it (dry run preview)
+*InterserverApiClient::LicensesApi* | [**update_license_info**](docs/LicensesApi.md#update_license_info) | **POST** /licenses/{id} | Update mutable fields on a license service (e.g. assigned IP)
+*InterserverApiClient::MailApi* | [**add_mail**](docs/MailApi.md#add_mail) | **POST** /mail/order | Place a new Mail Baby order, generate invoice, and queue provisioning
+*InterserverApiClient::MailApi* | [**add_rule**](docs/MailApi.md#add_rule) | **POST** /mail/{id}/rules | Create a new deny rule to auto-block matching submissions
+*InterserverApiClient::MailApi* | [**create_mail_alert**](docs/MailApi.md#create_mail_alert) | **POST** /mail/{id}/alerts | Create a new Mail Baby alert for delivery, bounce, or quota events
+*InterserverApiClient::MailApi* | [**delete_mail_alert**](docs/MailApi.md#delete_mail_alert) | **DELETE** /mail/{id}/alerts | Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+*InterserverApiClient::MailApi* | [**delete_rule**](docs/MailApi.md#delete_rule) | **DELETE** /mail/{id}/rules/{rule} | Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
+*InterserverApiClient::MailApi* | [**delist_block**](docs/MailApi.md#delist_block) | **POST** /mail/{id}/blocks/delete | Delist a sender email from rspamd / mailchannels / mailbaby block lists
+*InterserverApiClient::MailApi* | [**get_mail_alerts**](docs/MailApi.md#get_mail_alerts) | **GET** /mail/{id}/alerts | List configured delivery/bounce/quota alerts for one Mail Baby service
+*InterserverApiClient::MailApi* | [**get_mail_blocks**](docs/MailApi.md#get_mail_blocks) | **GET** /mail/{id}/blocks | List recent local-blocklist hits and spam-trap captures for the mail user
+*InterserverApiClient::MailApi* | [**get_mail_delist**](docs/MailApi.md#get_mail_delist) | **GET** /mail/{id}/delist | Read blocklist diagnostics and find senders eligible for delisting
+*InterserverApiClient::MailApi* | [**get_mail_deliverability**](docs/MailApi.md#get_mail_deliverability) | **GET** /mail/{id}/deliverability | Read delivered vs bounced totals broken down by sender (or by recipient domain)
+*InterserverApiClient::MailApi* | [**get_mail_info**](docs/MailApi.md#get_mail_info) | **GET** /mail/{id} | Read full detail for one Mail Baby service including SMTP credentials
+*InterserverApiClient::MailApi* | [**get_mail_invoices**](docs/MailApi.md#get_mail_invoices) | **GET** /mail/{id}/invoices | List billing invoices linked to this Mail Baby service
+*InterserverApiClient::MailApi* | [**get_mail_list**](docs/MailApi.md#get_mail_list) | **GET** /mail | List every Mail Baby SMTP relay service on the account
+*InterserverApiClient::MailApi* | [**get_mail_welcome_email**](docs/MailApi.md#get_mail_welcome_email) | **GET** /mail/{id}/welcome_email | Resend the Mail Baby welcome email with SMTP credentials and setup info
+*InterserverApiClient::MailApi* | [**get_new_mail**](docs/MailApi.md#get_new_mail) | **GET** /mail/order | Read the Mail Baby order catalog — plans, package costs, service-type metadata
+*InterserverApiClient::MailApi* | [**get_rules**](docs/MailApi.md#get_rules) | **GET** /mail/{id}/rules | List configured deny rules (sender/recipient blocks) for a Mail Baby service
+*InterserverApiClient::MailApi* | [**get_stats**](docs/MailApi.md#get_stats) | **GET** /mail/{id}/stats | Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
+*InterserverApiClient::MailApi* | [**mail_cancel**](docs/MailApi.md#mail_cancel) | **DELETE** /mail/{id} | Cancel a Mail Baby service and stop the recurring invoice
+*InterserverApiClient::MailApi* | [**post_mail_delist**](docs/MailApi.md#post_mail_delist) | **POST** /mail/{id}/delist | Delist a sender from rspamd / mailchannels / mailbaby block lists
+*InterserverApiClient::MailApi* | [**put_mail**](docs/MailApi.md#put_mail) | **PUT** /mail/order | Validate Mail Baby order, quote pricing, and verify coupon — no charge
+*InterserverApiClient::MailApi* | [**reset_mail_password**](docs/MailApi.md#reset_mail_password) | **GET** /mail/{id}/reset_password | Rotate the SMTP password and email the new credential to the account owner
+*InterserverApiClient::MailApi* | [**send_adv_mail**](docs/MailApi.md#send_adv_mail) | **POST** /mail/{id}/advsend | Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
+*InterserverApiClient::MailApi* | [**send_mail**](docs/MailApi.md#send_mail) | **POST** /mail/{id}/send | Send a simple single-recipient email through the Mail Baby SMTP relay
+*InterserverApiClient::MailApi* | [**update_mail_alert**](docs/MailApi.md#update_mail_alert) | **PUT** /mail/{id}/alerts | Update an existing Mail Baby alert by alert_id
+*InterserverApiClient::MailApi* | [**update_mail_info**](docs/MailApi.md#update_mail_info) | **POST** /mail/{id} | POST mutation hook for the Mail Baby service detail page
+*InterserverApiClient::MailApi* | [**update_rule**](docs/MailApi.md#update_rule) | **PUT** /mail/{id}/rules/{rule} | Update an existing Mail Baby deny rule's type and match data
+*InterserverApiClient::MailApi* | [**view_mail_log**](docs/MailApi.md#view_mail_log) | **GET** /mail/{id}/log | Search and paginate per-message Mail Baby delivery log entries
+*InterserverApiClient::PublicApi* | [**get_account_currencies**](docs/PublicApi.md#get_account_currencies) | **GET** /account/currencies | List enabled currency codes accepted for billing and preferences
+*InterserverApiClient::PublicApi* | [**get_account_locales**](docs/PublicApi.md#get_account_locales) | **GET** /account/locales | List supported UI locales with English and native display names
+*InterserverApiClient::PublicApi* | [**get_captcha**](docs/PublicApi.md#get_captcha) | **GET** /captcha | Fetch a base64 JPEG captcha challenge for human verification
+*InterserverApiClient::PublicApi* | [**get_countries**](docs/PublicApi.md#get_countries) | **GET** /account/countries | List enabled countries keyed by ISO-2/ISO-3/numeric code
+*InterserverApiClient::PublicApi* | [**get_info**](docs/PublicApi.md#get_info) | **GET** /info | Discover available modules, service packages, categories, and types
+*InterserverApiClient::PublicApi* | [**get_login_info**](docs/PublicApi.md#get_login_info) | **GET** /login | Fetch logo, captcha, language, and stats for rendering a login page
+*InterserverApiClient::PublicApi* | [**get_mp_servers**](docs/PublicApi.md#get_mp_servers) | **GET** /buy_now_servers_list | List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+*InterserverApiClient::PublicApi* | [**get_oauth_redirect**](docs/PublicApi.md#get_oauth_redirect) | **GET** /oauth | Begin OAuth login flow — redirect user to provider for authentication
+*InterserverApiClient::PublicApi* | [**get_timezones**](docs/PublicApi.md#get_timezones) | **GET** /account/timezones | List all PHP timezone identifiers usable on accounts and services
+*InterserverApiClient::PublicApi* | [**patch_oauth_two_factor**](docs/PublicApi.md#patch_oauth_two_factor) | **PATCH** /oauth | Submit 2FA code to finish OAuth login when account has 2FA enabled
+*InterserverApiClient::PublicApi* | [**ping_server**](docs/PublicApi.md#ping_server) | **GET** /ping | Liveness check — returns the JSON string \"pong\" to confirm API is up
+*InterserverApiClient::PublicApi* | [**post_oauth_callback**](docs/PublicApi.md#post_oauth_callback) | **POST** /oauth | Complete OAuth login by linking provider to existing or new account
+*InterserverApiClient::PublicApi* | [**submit_login**](docs/PublicApi.md#submit_login) | **POST** /login | Authenticate with email + password and return a session token
+*InterserverApiClient::PublicApi* | [**submit_signup**](docs/PublicApi.md#submit_signup) | **POST** /signup | Create a new customer account (email + password + captcha + ToS)
+*InterserverApiClient::QuickServersApi* | [**add_qs**](docs/QuickServersApi.md#add_qs) | **POST** /qs/order | Place a QuickServer order, generating a real invoice and queuing provisioning
+*InterserverApiClient::QuickServersApi* | [**delete_qs_backup**](docs/QuickServersApi.md#delete_qs_backup) | **DELETE** /qs/{id}/backups | Permanently delete a QuickServer backup file from object storage
+*InterserverApiClient::QuickServersApi* | [**do_qs_block_smtp**](docs/QuickServersApi.md#do_qs_block_smtp) | **GET** /qs/{id}/block_smtp | Block outbound SMTP traffic on a QuickServer to halt mail abuse
+*InterserverApiClient::QuickServersApi* | [**do_qs_disable_cd**](docs/QuickServersApi.md#do_qs_disable_cd) | **GET** /qs/{id}/disable_cd | Disable the virtual CD/DVD drive device on a QuickServer
+*InterserverApiClient::QuickServersApi* | [**do_qs_disable_quota**](docs/QuickServersApi.md#do_qs_disable_quota) | **GET** /qs/{id}/disable_quota | Disable disk-quota enforcement at OS level on a QuickServer
+*InterserverApiClient::QuickServersApi* | [**do_qs_eject_cd**](docs/QuickServersApi.md#do_qs_eject_cd) | **GET** /qs/{id}/eject_cd | Eject the currently mounted ISO from a QuickServer's virtual CD drive
+*InterserverApiClient::QuickServersApi* | [**do_qs_enable_quota**](docs/QuickServersApi.md#do_qs_enable_quota) | **GET** /qs/{id}/enable_quota | Enable disk-quota enforcement at OS level on a QuickServer
+*InterserverApiClient::QuickServersApi* | [**do_qs_restart**](docs/QuickServersApi.md#do_qs_restart) | **GET** /qs/{id}/restart | Reboot a QuickServer with a graceful OS-level restart
+*InterserverApiClient::QuickServersApi* | [**do_qs_start**](docs/QuickServersApi.md#do_qs_start) | **GET** /qs/{id}/start | Power on a QuickServer that is currently stopped or pending boot
+*InterserverApiClient::QuickServersApi* | [**do_qs_stop**](docs/QuickServersApi.md#do_qs_stop) | **GET** /qs/{id}/stop | Power off a QuickServer with a graceful shutdown command
+*InterserverApiClient::QuickServersApi* | [**download_qs_backup**](docs/QuickServersApi.md#download_qs_backup) | **PATCH** /qs/{id}/backups | Generate a 24-hour pre-signed download URL for a QuickServer backup
+*InterserverApiClient::QuickServersApi* | [**get_new_qs**](docs/QuickServersApi.md#get_new_qs) | **GET** /qs/order | Get QuickServer order form metadata and available plans/templates
+*InterserverApiClient::QuickServersApi* | [**get_qs_backup**](docs/QuickServersApi.md#get_qs_backup) | **GET** /qs/{id}/backup | Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+*InterserverApiClient::QuickServersApi* | [**get_qs_backups**](docs/QuickServersApi.md#get_qs_backups) | **GET** /qs/{id}/backups | List available QuickServer backups across Swift, MinIO, and ZFS storage
+*InterserverApiClient::QuickServersApi* | [**get_qs_change_hostname**](docs/QuickServersApi.md#get_qs_change_hostname) | **GET** /qs/{id}/change_hostname | Get current QuickServer hostname plus change rules and platform support
+*InterserverApiClient::QuickServersApi* | [**get_qs_change_root_password**](docs/QuickServersApi.md#get_qs_change_root_password) | **GET** /qs/{id}/change_root_password | Get metadata for QuickServer root/OS password change requirements
+*InterserverApiClient::QuickServersApi* | [**get_qs_change_timezone**](docs/QuickServersApi.md#get_qs_change_timezone) | **GET** /qs/{id}/change_timezone | List timezones the QuickServer can be set to via change_timezone
+*InterserverApiClient::QuickServersApi* | [**get_qs_change_webuzo_password**](docs/QuickServersApi.md#get_qs_change_webuzo_password) | **GET** /qs/{id}/change_webuzo_password | Get metadata for changing the Webuzo control panel admin password
+*InterserverApiClient::QuickServersApi* | [**get_qs_info**](docs/QuickServersApi.md#get_qs_info) | **GET** /qs/{id} | Get full details for one QuickServer including credentials and links
+*InterserverApiClient::QuickServersApi* | [**get_qs_insert_cd**](docs/QuickServersApi.md#get_qs_insert_cd) | **GET** /qs/{id}/insert_cd | List ISO images available to mount on a QuickServer's virtual CD
+*InterserverApiClient::QuickServersApi* | [**get_qs_invoices**](docs/QuickServersApi.md#get_qs_invoices) | **GET** /qs/{id}/invoices | List billing invoices charged for one QuickServer service
+*InterserverApiClient::QuickServersApi* | [**get_qs_list**](docs/QuickServersApi.md#get_qs_list) | **GET** /qs | List QuickServer rapid-deploy dedicated servers on the account
+*InterserverApiClient::QuickServersApi* | [**get_qs_reinstall_os**](docs/QuickServersApi.md#get_qs_reinstall_os) | **GET** /qs/{id}/reinstall_os | List OS templates available for a QuickServer reinstall
+*InterserverApiClient::QuickServersApi* | [**get_qs_reset_password**](docs/QuickServersApi.md#get_qs_reset_password) | **GET** /qs/{id}/reset_password | Get options for QuickServer randomized root password reset
+*InterserverApiClient::QuickServersApi* | [**get_qs_reverse_dns**](docs/QuickServersApi.md#get_qs_reverse_dns) | **GET** /qs/{id}/reverse_dns | Get reverse DNS (PTR) records for all of a QuickServer's IPs
+*InterserverApiClient::QuickServersApi* | [**get_qs_setup_vnc**](docs/QuickServersApi.md#get_qs_setup_vnc) | **GET** /qs/{id}/setup_vnc | Get current VNC console connection details for a QuickServer
+*InterserverApiClient::QuickServersApi* | [**get_qs_traffic_usage**](docs/QuickServersApi.md#get_qs_traffic_usage) | **GET** /qs/{id}/traffic_usage | Get bandwidth usage for the QuickServer's current billing period
+*InterserverApiClient::QuickServersApi* | [**get_qs_view_desktop**](docs/QuickServersApi.md#get_qs_view_desktop) | **GET** /qs/{id}/view_desktop | Get the full QuickServer dashboard view payload (rich format)
+*InterserverApiClient::QuickServersApi* | [**get_qs_welcome_email**](docs/QuickServersApi.md#get_qs_welcome_email) | **GET** /qs/{id}/welcome_email | Resend the QuickServer welcome email with login credentials
+*InterserverApiClient::QuickServersApi* | [**post_qs_change_hostname**](docs/QuickServersApi.md#post_qs_change_hostname) | **POST** /qs/{id}/change_hostname | Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
+*InterserverApiClient::QuickServersApi* | [**post_qs_change_root_password**](docs/QuickServersApi.md#post_qs_change_root_password) | **POST** /qs/{id}/change_root_password | Change QuickServer root/administrator password to a chosen value
+*InterserverApiClient::QuickServersApi* | [**post_qs_change_timezone**](docs/QuickServersApi.md#post_qs_change_timezone) | **POST** /qs/{id}/change_timezone | Change the system timezone on a QuickServer to a catalog entry
+*InterserverApiClient::QuickServersApi* | [**post_qs_change_webuzo_password**](docs/QuickServersApi.md#post_qs_change_webuzo_password) | **POST** /qs/{id}/change_webuzo_password | Change Webuzo control panel admin password live (synchronous, not queued)
+*InterserverApiClient::QuickServersApi* | [**post_qs_insert_cd**](docs/QuickServersApi.md#post_qs_insert_cd) | **POST** /qs/{id}/insert_cd | Mount an ISO image as the QuickServer's virtual CD via URL
+*InterserverApiClient::QuickServersApi* | [**post_qs_reinstall_os**](docs/QuickServersApi.md#post_qs_reinstall_os) | **POST** /qs/{id}/reinstall_os | Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
+*InterserverApiClient::QuickServersApi* | [**post_qs_reset_password**](docs/QuickServersApi.md#post_qs_reset_password) | **POST** /qs/{id}/reset_password | Reset QuickServer root password to a server-generated random value
+*InterserverApiClient::QuickServersApi* | [**post_qs_reverse_dns**](docs/QuickServersApi.md#post_qs_reverse_dns) | **POST** /qs/{id}/reverse_dns | Update reverse DNS (PTR) records for a QuickServer's IPs
+*InterserverApiClient::QuickServersApi* | [**post_qs_setup_vnc**](docs/QuickServersApi.md#post_qs_setup_vnc) | **POST** /qs/{id}/setup_vnc | Configure the source IP allowed to reach a QuickServer's VNC console
+*InterserverApiClient::QuickServersApi* | [**post_qs_traffic_usage**](docs/QuickServersApi.md#post_qs_traffic_usage) | **POST** /qs/{id}/traffic_usage | Query QuickServer bandwidth usage via POST (filtered variant)
+*InterserverApiClient::QuickServersApi* | [**post_qs_view_desktop**](docs/QuickServersApi.md#post_qs_view_desktop) | **POST** /qs/{id}/view_desktop | Submit changes and re-fetch the QuickServer dashboard view payload
+*InterserverApiClient::QuickServersApi* | [**post_quick_server_restore**](docs/QuickServersApi.md#post_quick_server_restore) | **POST** /qs/{id}/restore | Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
+*InterserverApiClient::QuickServersApi* | [**put_qs**](docs/QuickServersApi.md#put_qs) | **PUT** /qs/order | Validate a QuickServer order without charging or provisioning
+*InterserverApiClient::QuickServersApi* | [**quickservers_cancel**](docs/QuickServersApi.md#quickservers_cancel) | **DELETE** /qs/{id} | Cancel a QuickServer service at the end of the current billing cycle
+*InterserverApiClient::QuickServersApi* | [**update_qs_info**](docs/QuickServersApi.md#update_qs_info) | **POST** /qs/{id} | Update QuickServer order metadata or stored settings without OS impact
+*InterserverApiClient::SSLCertificatesApi* | [**add_ssl**](docs/SSLCertificatesApi.md#add_ssl) | **POST** /ssl/order | Place a new SSL certificate order - creates invoice and queues issuance
+*InterserverApiClient::SSLCertificatesApi* | [**get_new_ssl**](docs/SSLCertificatesApi.md#get_new_ssl) | **GET** /ssl/order | Get available SSL certificate packages and pricing for placing a new order
+*InterserverApiClient::SSLCertificatesApi* | [**get_ssl_info**](docs/SSLCertificatesApi.md#get_ssl_info) | **GET** /ssl/{id} | Get full details for one SSL certificate by id - status, expiration, links
+*InterserverApiClient::SSLCertificatesApi* | [**get_ssl_invoices**](docs/SSLCertificatesApi.md#get_ssl_invoices) | **GET** /ssl/{id}/invoices | List all billing invoices and charges tied to one SSL certificate by id
+*InterserverApiClient::SSLCertificatesApi* | [**get_ssl_list**](docs/SSLCertificatesApi.md#get_ssl_list) | **GET** /ssl | List all SSL certificates on the authenticated customer account with status and hostname
+*InterserverApiClient::SSLCertificatesApi* | [**get_ssl_welcome_email**](docs/SSLCertificatesApi.md#get_ssl_welcome_email) | **GET** /ssl/{id}/welcome_email | Resend the SSL welcome email with cert credentials and install instructions
+*InterserverApiClient::SSLCertificatesApi* | [**put_ssl**](docs/SSLCertificatesApi.md#put_ssl) | **PUT** /ssl/order | Validate an SSL certificate order without charging - dry-run before addSsl
+*InterserverApiClient::SSLCertificatesApi* | [**ssl_cancel**](docs/SSLCertificatesApi.md#ssl_cancel) | **DELETE** /ssl/{id} | Cancel an SSL certificate service - stops renewals at end of billing cycle
+*InterserverApiClient::SSLCertificatesApi* | [**update_ssl_info**](docs/SSLCertificatesApi.md#update_ssl_info) | **POST** /ssl/{id} | Update mutable settings on an existing SSL certificate order by id
+*InterserverApiClient::ScrubIpsApi* | [**cancel_scrub_ip**](docs/ScrubIpsApi.md#cancel_scrub_ip) | **DELETE** /scrub_ips/{id} | Cancel a Scrub IP service and stop its recurring DDoS billing
+*InterserverApiClient::ScrubIpsApi* | [**create_filter**](docs/ScrubIpsApi.md#create_filter) | **POST** /scrub_ips/{id}/create_filter | Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
+*InterserverApiClient::ScrubIpsApi* | [**create_geo_rule**](docs/ScrubIpsApi.md#create_geo_rule) | **POST** /scrub_ips/{id}/create_geo_rule | Add a geographic firewall rule (block/allow by country code or ASN)
+*InterserverApiClient::ScrubIpsApi* | [**create_rule**](docs/ScrubIpsApi.md#create_rule) | **POST** /scrub_ips/{id}/create_rule | Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
+*InterserverApiClient::ScrubIpsApi* | [**delete_filter**](docs/ScrubIpsApi.md#delete_filter) | **POST** /scrub_ips/{id}/delete_filter | Remove a scrubbing filter by matching filter_type and port
+*InterserverApiClient::ScrubIpsApi* | [**disable_scrub**](docs/ScrubIpsApi.md#disable_scrub) | **GET** /scrub_ips/{id}/disable | Disable DDoS scrubbing and remove the BGP announcement on the IP
+*InterserverApiClient::ScrubIpsApi* | [**enable_scrub**](docs/ScrubIpsApi.md#enable_scrub) | **GET** /scrub_ips/{id}/enable | Enable DDoS scrubbing (BGP announcement) on the service's protected IP
+*InterserverApiClient::ScrubIpsApi* | [**get_order_detail**](docs/ScrubIpsApi.md#get_order_detail) | **GET** /scrub_ips/order | Get plans, pricing, and eligible IPs for a new Scrub IP order
+*InterserverApiClient::ScrubIpsApi* | [**get_scrub_ip_details**](docs/ScrubIpsApi.md#get_scrub_ip_details) | **GET** /scrub_ips/{id} | Get full Scrub IP service detail (rules + geo + filters)
+*InterserverApiClient::ScrubIpsApi* | [**get_scrub_ip_filter_types**](docs/ScrubIpsApi.md#get_scrub_ip_filter_types) | **GET** /scrub_ips/filter_types | List enabled traffic filter profiles available for createFilter
+*InterserverApiClient::ScrubIpsApi* | [**get_scrub_ip_invoices**](docs/ScrubIpsApi.md#get_scrub_ip_invoices) | **GET** /scrub_ips/{id}/invoices | List recurring and one-time invoices billed for this Scrub IP service
+*InterserverApiClient::ScrubIpsApi* | [**get_scrub_ip_logs**](docs/ScrubIpsApi.md#get_scrub_ip_logs) | **GET** /scrub_ips/{id}/logs | Get last 50000 packet/event log entries for the protected IP
+*InterserverApiClient::ScrubIpsApi* | [**get_scrub_ips_list**](docs/ScrubIpsApi.md#get_scrub_ips_list) | **GET** /scrub_ips | List all Scrub IP DDoS protection services on the authenticated account
+*InterserverApiClient::ScrubIpsApi* | [**place_scrub_order**](docs/ScrubIpsApi.md#place_scrub_order) | **POST** /scrub_ips/order | Place a new Scrub IP DDoS protection order and generate an invoice
+*InterserverApiClient::ScrubIpsApi* | [**put_scrub_ips**](docs/ScrubIpsApi.md#put_scrub_ips) | **PUT** /scrub_ips/order | Validate a Scrub IP order and return effective pricing without billing
+*InterserverApiClient::ScrubIpsApi* | [**scrub_ips_delete_geo_rule**](docs/ScrubIpsApi.md#scrub_ips_delete_geo_rule) | **POST** /scrub_ips/{id}/delete_geo_rule | Delete a geo firewall rule by rule_id from getScrubIpDetails
+*InterserverApiClient::ScrubIpsApi* | [**scrub_ips_delete_rule**](docs/ScrubIpsApi.md#scrub_ips_delete_rule) | **POST** /scrub_ips/{id}/delete_rule | Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
+*InterserverApiClient::ServersApi* | [**add_server**](docs/ServersApi.md#add_server) | **POST** /servers/order | Place a custom dedicated server order, creating a real billable invoice
+*InterserverApiClient::ServersApi* | [**buy_it_now_server_order**](docs/ServersApi.md#buy_it_now_server_order) | **GET** /servers/order/buy_now_server | Get configurable options for a Rapid Deploy / coupon dedicated server
+*InterserverApiClient::ServersApi* | [**get_mp_servers**](docs/ServersApi.md#get_mp_servers) | **GET** /buy_now_servers_list | List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+*InterserverApiClient::ServersApi* | [**get_new_server**](docs/ServersApi.md#get_new_server) | **GET** /servers/order | Get custom dedicated server ordering options, regions, and pricing
+*InterserverApiClient::ServersApi* | [**get_server_info**](docs/ServersApi.md#get_server_info) | **GET** /servers/{id} | Get full hardware, network, and lifecycle details for a dedicated server
+*InterserverApiClient::ServersApi* | [**get_server_invoices**](docs/ServersApi.md#get_server_invoices) | **GET** /servers/{id}/invoices | List billing invoices (charges + payments) tied to one dedicated server
+*InterserverApiClient::ServersApi* | [**get_server_list**](docs/ServersApi.md#get_server_list) | **GET** /servers | List all dedicated servers owned by the authenticated customer
+*InterserverApiClient::ServersApi* | [**get_server_reverse_dns**](docs/ServersApi.md#get_server_reverse_dns) | **GET** /servers/{id}/reverse_dns | List current reverse-DNS (PTR) records for a dedicated server's IPs
+*InterserverApiClient::ServersApi* | [**get_servers_welcome_email**](docs/ServersApi.md#get_servers_welcome_email) | **GET** /servers/{id}/welcome_email | Resend the dedicated server welcome email with setup credentials
+*InterserverApiClient::ServersApi* | [**place_buy_now_server**](docs/ServersApi.md#place_buy_now_server) | **POST** /servers/order/buy_now_server | Place a Rapid Deploy / coupon dedicated server order; creates real invoice
+*InterserverApiClient::ServersApi* | [**post_server_reverse_dns**](docs/ServersApi.md#post_server_reverse_dns) | **POST** /servers/{id}/reverse_dns | Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
+*InterserverApiClient::ServersApi* | [**server_bulk_ipmi_power_get**](docs/ServersApi.md#server_bulk_ipmi_power_get) | **GET** /servers/bulk/ipmi_power | Read IPMI chassis power status for many dedicated servers in one call
+*InterserverApiClient::ServersApi* | [**server_ipmi_live_get**](docs/ServersApi.md#server_ipmi_live_get) | **GET** /servers/{id}/ipmi_live | Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
+*InterserverApiClient::ServersApi* | [**server_ipmi_live_post**](docs/ServersApi.md#server_ipmi_live_post) | **POST** /servers/{id}/ipmi_live | Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
+*InterserverApiClient::ServersApi* | [**server_ipmi_power_get**](docs/ServersApi.md#server_ipmi_power_get) | **GET** /servers/{id}/ipmi_power | Read IPMI chassis power status for a dedicated server (single)
+*InterserverApiClient::ServersApi* | [**server_ipmi_power_post**](docs/ServersApi.md#server_ipmi_power_post) | **POST** /servers/{id}/ipmi_power | DESTRUCTIVE — change chassis power state on a bare-metal server
+*InterserverApiClient::ServersApi* | [**servers_cancel**](docs/ServersApi.md#servers_cancel) | **DELETE** /servers/{id} | Cancel a dedicated server service at the end of the current billing cycle
+*InterserverApiClient::ServersApi* | [**update_server_info**](docs/ServersApi.md#update_server_info) | **POST** /servers/{id} | Update settings on a dedicated server order (shares handler with view)
+*InterserverApiClient::TicketsApi* | [**add_new_ticket**](docs/TicketsApi.md#add_new_ticket) | **POST** /tickets/new | Open a new helpdesk ticket, optionally linked to a service and attachments
+*InterserverApiClient::TicketsApi* | [**close_ticket**](docs/TicketsApi.md#close_ticket) | **GET** /tickets/{id}/close | Close an open support ticket via simple GET request (no body required)
+*InterserverApiClient::TicketsApi* | [**delete_ticket_info**](docs/TicketsApi.md#delete_ticket_info) | **DELETE** /tickets/{id} | Close a customer ticket via DELETE verb (closes only, never destroys data)
+*InterserverApiClient::TicketsApi* | [**get_new_ticket**](docs/TicketsApi.md#get_new_ticket) | **GET** /tickets/new | Fetch services and product options to populate the new-ticket form
+*InterserverApiClient::TicketsApi* | [**get_ticket_info**](docs/TicketsApi.md#get_ticket_info) | **GET** /tickets/{id} | Get full ticket details including subject, status, and the reply thread
+*InterserverApiClient::TicketsApi* | [**get_tickets_list**](docs/TicketsApi.md#get_tickets_list) | **GET** /tickets | List the authenticated account's support tickets with status and date filters
+*InterserverApiClient::TicketsApi* | [**post_ticket_info**](docs/TicketsApi.md#post_ticket_info) | **POST** /tickets/{id} | Append a reply (and optional attachment, server-access fields) to a ticket
+*InterserverApiClient::TicketsApi* | [**post_tickets_list**](docs/TicketsApi.md#post_tickets_list) | **POST** /tickets | Search the authenticated account's tickets by subject, email, or mask ID
+*InterserverApiClient::TicketsApi* | [**put_ticket_info**](docs/TicketsApi.md#put_ticket_info) | **PUT** /tickets/{id} | Update a ticket's properties such as subject or status (stub, not implemented)
+*InterserverApiClient::TicketsApi* | [**reply_ticket**](docs/TicketsApi.md#reply_ticket) | **POST** /tickets/{id}/reply | Post a simple text reply to an existing ticket thread (no attachments)
+*InterserverApiClient::TicketsApi* | [**update_ticket_info**](docs/TicketsApi.md#update_ticket_info) | **POST** /tickets/{id}/update | Update a ticket's custom field values (server-access details, etc.)
+*InterserverApiClient::VPSApi* | [**add_vps**](docs/VPSApi.md#add_vps) | **POST** /vps/order | Place a new VPS order, create the invoice, and queue provisioning
+*InterserverApiClient::VPSApi* | [**delete_vps_backup**](docs/VPSApi.md#delete_vps_backup) | **DELETE** /vps/{id}/backups | Permanently delete a VPS backup file by name (irreversible)
+*InterserverApiClient::VPSApi* | [**do_vps_block_smtp**](docs/VPSApi.md#do_vps_block_smtp) | **GET** /vps/{id}/block_smtp | Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
+*InterserverApiClient::VPSApi* | [**do_vps_disable_cd**](docs/VPSApi.md#do_vps_disable_cd) | **GET** /vps/{id}/disable_cd | Remove the virtual CD/DVD device entirely from the VPS configuration
+*InterserverApiClient::VPSApi* | [**do_vps_disable_quota**](docs/VPSApi.md#do_vps_disable_quota) | **GET** /vps/{id}/disable_quota | Disable per-user disk quota enforcement inside the VPS guest OS
+*InterserverApiClient::VPSApi* | [**do_vps_eject_cd**](docs/VPSApi.md#do_vps_eject_cd) | **GET** /vps/{id}/eject_cd | Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
+*InterserverApiClient::VPSApi* | [**do_vps_enable_quota**](docs/VPSApi.md#do_vps_enable_quota) | **GET** /vps/{id}/enable_quota | Enable per-user disk quota enforcement inside the VPS guest OS
+*InterserverApiClient::VPSApi* | [**do_vps_restart**](docs/VPSApi.md#do_vps_restart) | **GET** /vps/{id}/restart | Reboot the VPS — preferred over stop+start for software changes
+*InterserverApiClient::VPSApi* | [**do_vps_start**](docs/VPSApi.md#do_vps_start) | **GET** /vps/{id}/start | Power on a stopped VPS instance
+*InterserverApiClient::VPSApi* | [**do_vps_stop**](docs/VPSApi.md#do_vps_stop) | **GET** /vps/{id}/stop | Power off a running VPS — billing continues until cancellation
+*InterserverApiClient::VPSApi* | [**download_vps_backup**](docs/VPSApi.md#download_vps_backup) | **PATCH** /vps/{id}/backups | Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
+*InterserverApiClient::VPSApi* | [**get_new_vps**](docs/VPSApi.md#get_new_vps) | **GET** /vps/order | Get the VPS order catalog — platforms, OS templates, locations, pricing
+*InterserverApiClient::VPSApi* | [**get_vps_backup**](docs/VPSApi.md#get_vps_backup) | **GET** /vps/{id}/backup | Trigger a manual on-demand snapshot/backup of the VPS
+*InterserverApiClient::VPSApi* | [**get_vps_backups**](docs/VPSApi.md#get_vps_backups) | **GET** /vps/{id}/backups | List existing backups for the VPS across Swift, MinIO, and ZFS
+*InterserverApiClient::VPSApi* | [**get_vps_buy_hd_space**](docs/VPSApi.md#get_vps_buy_hd_space) | **GET** /vps/{id}/buy_hd_space | Get current additional disk size and per-GB monthly cost for the VPS
+*InterserverApiClient::VPSApi* | [**get_vps_buy_ip**](docs/VPSApi.md#get_vps_buy_ip) | **GET** /vps/{id}/buy_ip | Read current additional IPs, cap, and per-IP monthly cost for the VPS
+*InterserverApiClient::VPSApi* | [**get_vps_change_hostname**](docs/VPSApi.md#get_vps_change_hostname) | **GET** /vps/{id}/change_hostname | Read the VPS's current hostname before changing it
+*InterserverApiClient::VPSApi* | [**get_vps_change_root_password**](docs/VPSApi.md#get_vps_change_root_password) | **GET** /vps/{id}/change_root_password | Pre-flight check before changing the VPS root password
+*InterserverApiClient::VPSApi* | [**get_vps_change_timezone**](docs/VPSApi.md#get_vps_change_timezone) | **GET** /vps/{id}/change_timezone | List IANA timezones supported by the VPS guest OS
+*InterserverApiClient::VPSApi* | [**get_vps_info**](docs/VPSApi.md#get_vps_info) | **GET** /vps/{id} | Get full details for one VPS — IPs, hostname, OS, slices, status, addons
+*InterserverApiClient::VPSApi* | [**get_vps_insert_cd**](docs/VPSApi.md#get_vps_insert_cd) | **GET** /vps/{id}/insert_cd | List ISO templates that can be mounted in the VPS virtual CD drive
+*InterserverApiClient::VPSApi* | [**get_vps_invoices**](docs/VPSApi.md#get_vps_invoices) | **GET** /vps/{id}/invoices | List all billing invoices associated with this specific VPS
+*InterserverApiClient::VPSApi* | [**get_vps_list**](docs/VPSApi.md#get_vps_list) | **GET** /vps | List all VPS services on the customer's account
+*InterserverApiClient::VPSApi* | [**get_vps_reinstall_os**](docs/VPSApi.md#get_vps_reinstall_os) | **GET** /vps/{id}/reinstall_os | List OS templates compatible with this VPS's hypervisor for reinstall
+*InterserverApiClient::VPSApi* | [**get_vps_reset_password**](docs/VPSApi.md#get_vps_reset_password) | **GET** /vps/{id}/reset_password | Pre-flight check before resetting the VPS root password to a random value
+*InterserverApiClient::VPSApi* | [**get_vps_reverse_dns**](docs/VPSApi.md#get_vps_reverse_dns) | **GET** /vps/{id}/reverse_dns | Read the current PTR (reverse-DNS) records for every IP on the VPS
+*InterserverApiClient::VPSApi* | [**get_vps_setup_vnc**](docs/VPSApi.md#get_vps_setup_vnc) | **GET** /vps/{id}/setup_vnc | Read current VNC console connection info for the VPS
+*InterserverApiClient::VPSApi* | [**get_vps_slices**](docs/VPSApi.md#get_vps_slices) | **GET** /vps/{id}/slices | Read current slice count, min/max range, and prorated per-slice upgrade cost
+*InterserverApiClient::VPSApi* | [**get_vps_traffic_usage**](docs/VPSApi.md#get_vps_traffic_usage) | **GET** /vps/{id}/traffic_usage | Read bandwidth traffic usage data for the VPS
+*InterserverApiClient::VPSApi* | [**get_vps_view_desktop**](docs/VPSApi.md#get_vps_view_desktop) | **GET** /vps/{id}/view_desktop | Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
+*InterserverApiClient::VPSApi* | [**get_vps_welcome_email**](docs/VPSApi.md#get_vps_welcome_email) | **GET** /vps/{id}/welcome_email | Resend the welcome email containing VPS IP, hostname, and root credentials
+*InterserverApiClient::VPSApi* | [**post_vps_buy_hd_space**](docs/VPSApi.md#post_vps_buy_hd_space) | **POST** /vps/{id}/buy_hd_space | Buy or resize the VPS additional-disk addon and create a prorated invoice
+*InterserverApiClient::VPSApi* | [**post_vps_buy_ip**](docs/VPSApi.md#post_vps_buy_ip) | **POST** /vps/{id}/buy_ip | Purchase one additional IP for the VPS and create the invoice
+*InterserverApiClient::VPSApi* | [**post_vps_change_hostname**](docs/VPSApi.md#post_vps_change_hostname) | **POST** /vps/{id}/change_hostname | Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
+*InterserverApiClient::VPSApi* | [**post_vps_change_root_password**](docs/VPSApi.md#post_vps_change_root_password) | **POST** /vps/{id}/change_root_password | Set a specific new root/Administrator password on the VPS
+*InterserverApiClient::VPSApi* | [**post_vps_change_timezone**](docs/VPSApi.md#post_vps_change_timezone) | **POST** /vps/{id}/change_timezone | Set the system timezone on the VPS guest OS
+*InterserverApiClient::VPSApi* | [**post_vps_change_webuzo_password**](docs/VPSApi.md#post_vps_change_webuzo_password) | **POST** /vps/{id}/change_webuzo_password | Rotate the Webuzo control panel admin password (re-auth required)
+*InterserverApiClient::VPSApi* | [**post_vps_insert_cd**](docs/VPSApi.md#post_vps_insert_cd) | **POST** /vps/{id}/insert_cd | Mount an ISO image in the VPS virtual CD drive from a URL
+*InterserverApiClient::VPSApi* | [**post_vps_reinstall_os**](docs/VPSApi.md#post_vps_reinstall_os) | **POST** /vps/{id}/reinstall_os | Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
+*InterserverApiClient::VPSApi* | [**post_vps_reset_password**](docs/VPSApi.md#post_vps_reset_password) | **POST** /vps/{id}/reset_password | Reset the VPS root password to a server-generated random value
+*InterserverApiClient::VPSApi* | [**post_vps_restore**](docs/VPSApi.md#post_vps_restore) | **POST** /vps/{id}/restore | Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
+*InterserverApiClient::VPSApi* | [**post_vps_reverse_dns**](docs/VPSApi.md#post_vps_reverse_dns) | **POST** /vps/{id}/reverse_dns | Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
+*InterserverApiClient::VPSApi* | [**post_vps_setup_vnc**](docs/VPSApi.md#post_vps_setup_vnc) | **POST** /vps/{id}/setup_vnc | Provision or refresh the VNC console endpoint for the VPS
+*InterserverApiClient::VPSApi* | [**post_vps_slices**](docs/VPSApi.md#post_vps_slices) | **POST** /vps/{id}/slices | Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
+*InterserverApiClient::VPSApi* | [**post_vps_traffic_usage**](docs/VPSApi.md#post_vps_traffic_usage) | **POST** /vps/{id}/traffic_usage | Search/filter VPS bandwidth usage with custom criteria (reserved)
+*InterserverApiClient::VPSApi* | [**post_vps_view_desktop**](docs/VPSApi.md#post_vps_view_desktop) | **POST** /vps/{id}/view_desktop | Refresh the remote-desktop session connection info after IP/hostname changes
+*InterserverApiClient::VPSApi* | [**put_vps**](docs/VPSApi.md#put_vps) | **PUT** /vps/order | Validate a VPS order configuration and quote the cost — dry run, no charge
+*InterserverApiClient::VPSApi* | [**put_vps_buy_hd_space**](docs/VPSApi.md#put_vps_buy_hd_space) | **PUT** /vps/{id}/buy_hd_space | Preview cost to set additional VPS disk to a target GB size — dry run
+*InterserverApiClient::VPSApi* | [**update_vps_info**](docs/VPSApi.md#update_vps_info) | **POST** /vps/{id} | Update editable settings on a VPS service record
+*InterserverApiClient::VPSApi* | [**v_ps_cancel**](docs/VPSApi.md#v_ps_cancel) | **DELETE** /vps/{id} | Cancel a VPS service at the end of the current billing cycle
+*InterserverApiClient::WebhostingApi* | [**add_website**](docs/WebhostingApi.md#add_website) | **POST** /websites/order | Place a new webhosting order, create the invoice, and queue provisioning
+*InterserverApiClient::WebhostingApi* | [**get_new_website**](docs/WebhostingApi.md#get_new_website) | **GET** /websites/order | Read the webhosting order catalog — plans, packages, promo offers, pricing
+*InterserverApiClient::WebhostingApi* | [**get_website_buy_ip**](docs/WebhostingApi.md#get_website_buy_ip) | **GET** /websites/{id}/buy_ip | Read website IPs, current reverse DNS, and additional-IP pricing
+*InterserverApiClient::WebhostingApi* | [**get_website_info**](docs/WebhostingApi.md#get_website_info) | **GET** /websites/{id} | Read full configuration and status detail for one webhosting service
+*InterserverApiClient::WebhostingApi* | [**get_website_invoices**](docs/WebhostingApi.md#get_website_invoices) | **GET** /websites/{id}/invoices | List all billing invoices and recurring charges scoped to one website
+*InterserverApiClient::WebhostingApi* | [**get_website_list**](docs/WebhostingApi.md#get_website_list) | **GET** /websites | List the caller's webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
+*InterserverApiClient::WebhostingApi* | [**get_websites_backups**](docs/WebhostingApi.md#get_websites_backups) | **GET** /websites/{id}/backups | List off-site cpmove backups stored in Swift — list or inline-download archive
+*InterserverApiClient::WebhostingApi* | [**get_websites_login**](docs/WebhostingApi.md#get_websites_login) | **GET** /websites/{id}/login | Get a one-time auto-login URL for the website's control panel
+*InterserverApiClient::WebhostingApi* | [**get_websites_welcome_email**](docs/WebhostingApi.md#get_websites_welcome_email) | **GET** /websites/{id}/welcome_email | Resend the webhosting welcome email with control-panel credentials and URL
+*InterserverApiClient::WebhostingApi* | [**gett_website_reverse_dns**](docs/WebhostingApi.md#gett_website_reverse_dns) | **GET** /websites/{id}/reverse_dns | Read current reverse-DNS (PTR) records for the website's IPs
+*InterserverApiClient::WebhostingApi* | [**post_website_buy_ip**](docs/WebhostingApi.md#post_website_buy_ip) | **POST** /websites/{id}/buy_ip | Buy an additional IP for the website OR update reverse DNS records
+*InterserverApiClient::WebhostingApi* | [**post_website_migration**](docs/WebhostingApi.md#post_website_migration) | **POST** /websites/{id}/migration | Submit a request for InterServer staff to migrate a website from another host
+*InterserverApiClient::WebhostingApi* | [**post_websites_reverse_dns**](docs/WebhostingApi.md#post_websites_reverse_dns) | **POST** /websites/{id}/reverse_dns | Bulk-update reverse-DNS (PTR) records for one or more website IPs
+*InterserverApiClient::WebhostingApi* | [**put_websites**](docs/WebhostingApi.md#put_websites) | **PUT** /websites/order | Validate a webhosting order and preview cost — dry run, no charge
+*InterserverApiClient::WebhostingApi* | [**update_website_info**](docs/WebhostingApi.md#update_website_info) | **POST** /websites/{id} | POST mutation hook for the website detail page (use dedicated ops where possible)
+*InterserverApiClient::WebhostingApi* | [**webhosting_cancel**](docs/WebhostingApi.md#webhosting_cancel) | **DELETE** /websites/{id} | Schedule termination of a webhosting service — wipes panel account at cycle end
 
 ## Documentation for Models
 
- - [SwaggerClient::Account2faBody](docs/Account2faBody.md)
- - [SwaggerClient::Account2faBody1](docs/Account2faBody1.md)
- - [SwaggerClient::AccountFeatures](docs/AccountFeatures.md)
- - [SwaggerClient::AccountInfo](docs/AccountInfo.md)
- - [SwaggerClient::AccountInfoCountryCurrencies](docs/AccountInfoCountryCurrencies.md)
- - [SwaggerClient::AccountInfoData](docs/AccountInfoData.md)
- - [SwaggerClient::AccountInfoDataCc](docs/AccountInfoDataCc.md)
- - [SwaggerClient::AccountInfoDataCcs](docs/AccountInfoDataCcs.md)
- - [SwaggerClient::AccountInfoDataEmailSettings](docs/AccountInfoDataEmailSettings.md)
- - [SwaggerClient::AccountInfoDataExtra](docs/AccountInfoDataExtra.md)
- - [SwaggerClient::AccountInfoDataFraudrecord](docs/AccountInfoDataFraudrecord.md)
- - [SwaggerClient::AccountInfoLimits](docs/AccountInfoLimits.md)
- - [SwaggerClient::AccountInfoLimitsInner](docs/AccountInfoLimitsInner.md)
- - [SwaggerClient::AccountInfoMaxMindResponse](docs/AccountInfoMaxMindResponse.md)
- - [SwaggerClient::AccountInfoOauthConfig](docs/AccountInfoOauthConfig.md)
- - [SwaggerClient::AccountInfoOauthConfigProviders](docs/AccountInfoOauthConfigProviders.md)
- - [SwaggerClient::AccountInfoPost](docs/AccountInfoPost.md)
- - [SwaggerClient::AccountSshKey](docs/AccountSshKey.md)
- - [SwaggerClient::AffiliateBannerRow](docs/AffiliateBannerRow.md)
- - [SwaggerClient::AffiliateDockSetup](docs/AffiliateDockSetup.md)
- - [SwaggerClient::AffiliatePaymentSetup](docs/AffiliatePaymentSetup.md)
- - [SwaggerClient::AffiliateTrafficRow](docs/AffiliateTrafficRow.md)
- - [SwaggerClient::AllOfServerOrderFieldLabelsBandwidth](docs/AllOfServerOrderFieldLabelsBandwidth.md)
- - [SwaggerClient::AllOfServerOrderFieldLabelsCp](docs/AllOfServerOrderFieldLabelsCp.md)
- - [SwaggerClient::AllOfServerOrderFieldLabelsHd](docs/AllOfServerOrderFieldLabelsHd.md)
- - [SwaggerClient::AllOfServerOrderFieldLabelsIps](docs/AllOfServerOrderFieldLabelsIps.md)
- - [SwaggerClient::AllOfServerOrderFieldLabelsMemory](docs/AllOfServerOrderFieldLabelsMemory.md)
- - [SwaggerClient::AllOfServerOrderFieldLabelsOs](docs/AllOfServerOrderFieldLabelsOs.md)
- - [SwaggerClient::AllOfServerOrderFieldLabelsRaid](docs/AllOfServerOrderFieldLabelsRaid.md)
- - [SwaggerClient::AssetServer](docs/AssetServer.md)
- - [SwaggerClient::Backup](docs/Backup.md)
- - [SwaggerClient::BackupBillingDetails](docs/BackupBillingDetails.md)
- - [SwaggerClient::BackupClientLink](docs/BackupClientLink.md)
- - [SwaggerClient::BackupExtraInfoTables](docs/BackupExtraInfoTables.md)
- - [SwaggerClient::BackupIPInfo](docs/BackupIPInfo.md)
- - [SwaggerClient::BackupIPInfoRow](docs/BackupIPInfoRow.md)
- - [SwaggerClient::BackupLoginResponse](docs/BackupLoginResponse.md)
- - [SwaggerClient::BackupOrderPostResponse](docs/BackupOrderPostResponse.md)
- - [SwaggerClient::BackupOrderPostResponseCjParams](docs/BackupOrderPostResponseCjParams.md)
- - [SwaggerClient::BackupOrderPutRequest](docs/BackupOrderPutRequest.md)
- - [SwaggerClient::BackupOrderPutResponse](docs/BackupOrderPutResponse.md)
- - [SwaggerClient::BackupRow](docs/BackupRow.md)
- - [SwaggerClient::BackupServiceExtra](docs/BackupServiceExtra.md)
- - [SwaggerClient::BackupServiceInfo](docs/BackupServiceInfo.md)
- - [SwaggerClient::BackupServiceMaster](docs/BackupServiceMaster.md)
- - [SwaggerClient::BackupsOrder](docs/BackupsOrder.md)
- - [SwaggerClient::BackupsOrderPackageCosts](docs/BackupsOrderPackageCosts.md)
- - [SwaggerClient::BackupsOrderServiceTypes](docs/BackupsOrderServiceTypes.md)
- - [SwaggerClient::Bandwidth](docs/Bandwidth.md)
- - [SwaggerClient::BillingAddCcRequest](docs/BillingAddCcRequest.md)
- - [SwaggerClient::BillingInvoiceDetail](docs/BillingInvoiceDetail.md)
- - [SwaggerClient::BillingInvoiceList](docs/BillingInvoiceList.md)
- - [SwaggerClient::BillingPaymentMethodRequest](docs/BillingPaymentMethodRequest.md)
- - [SwaggerClient::BillingPrepayRequest](docs/BillingPrepayRequest.md)
- - [SwaggerClient::BillingVerifyCcRequest](docs/BillingVerifyCcRequest.md)
- - [SwaggerClient::BuyItNowList](docs/BuyItNowList.md)
- - [SwaggerClient::BuyItNowRow](docs/BuyItNowRow.md)
- - [SwaggerClient::CaptchaResponse](docs/CaptchaResponse.md)
- - [SwaggerClient::ChargeInvoiceRows](docs/ChargeInvoiceRows.md)
- - [SwaggerClient::ChargeInvoiceRowsInvoices](docs/ChargeInvoiceRowsInvoices.md)
- - [SwaggerClient::ChargeInvoiceRowsPaidInvoices](docs/ChargeInvoiceRowsPaidInvoices.md)
- - [SwaggerClient::ChargeInvoiceRowsRefundInvoices](docs/ChargeInvoiceRowsRefundInvoices.md)
- - [SwaggerClient::CloseTicketResponseSchema](docs/CloseTicketResponseSchema.md)
- - [SwaggerClient::ConfigIds](docs/ConfigIds.md)
- - [SwaggerClient::ConfigLists](docs/ConfigLists.md)
- - [SwaggerClient::ControlPanel](docs/ControlPanel.md)
- - [SwaggerClient::Cpu](docs/Cpu.md)
- - [SwaggerClient::CpuWithDefaults](docs/CpuWithDefaults.md)
- - [SwaggerClient::CreateFilter](docs/CreateFilter.md)
- - [SwaggerClient::CreateFirewallRule](docs/CreateFirewallRule.md)
- - [SwaggerClient::CreateGeoFirewallRule](docs/CreateGeoFirewallRule.md)
- - [SwaggerClient::DeleteFirewallRule](docs/DeleteFirewallRule.md)
- - [SwaggerClient::DeleteGeoFirewallRule](docs/DeleteGeoFirewallRule.md)
- - [SwaggerClient::DenyRuleNew](docs/DenyRuleNew.md)
- - [SwaggerClient::DenyRuleRecord](docs/DenyRuleRecord.md)
- - [SwaggerClient::DnsListItem](docs/DnsListItem.md)
- - [SwaggerClient::DnsNewDomain](docs/DnsNewDomain.md)
- - [SwaggerClient::DnsNewRecord](docs/DnsNewRecord.md)
- - [SwaggerClient::DnsRecord](docs/DnsRecord.md)
- - [SwaggerClient::DnsRecordType](docs/DnsRecordType.md)
- - [SwaggerClient::DnsUpdateRecord](docs/DnsUpdateRecord.md)
- - [SwaggerClient::Domain](docs/Domain.md)
- - [SwaggerClient::DomainAdminContact](docs/DomainAdminContact.md)
- - [SwaggerClient::DomainAllInfo](docs/DomainAllInfo.md)
- - [SwaggerClient::DomainAllInfoAttributes](docs/DomainAllInfoAttributes.md)
- - [SwaggerClient::DomainAllInfoAttributesContactSet](docs/DomainAllInfoAttributesContactSet.md)
- - [SwaggerClient::DomainBillingDetails](docs/DomainBillingDetails.md)
- - [SwaggerClient::DomainBillingExtra](docs/DomainBillingExtra.md)
- - [SwaggerClient::DomainClientLink](docs/DomainClientLink.md)
- - [SwaggerClient::DomainContactDetails](docs/DomainContactDetails.md)
- - [SwaggerClient::DomainDnssecRecords](docs/DomainDnssecRecords.md)
- - [SwaggerClient::DomainDnssecRecordsInner](docs/DomainDnssecRecordsInner.md)
- - [SwaggerClient::DomainDnssecRequest](docs/DomainDnssecRequest.md)
- - [SwaggerClient::DomainLookupResponse](docs/DomainLookupResponse.md)
- - [SwaggerClient::DomainNameServer](docs/DomainNameServer.md)
- - [SwaggerClient::DomainNameserverGetResponse](docs/DomainNameserverGetResponse.md)
- - [SwaggerClient::DomainNameserverGetResponseInner](docs/DomainNameserverGetResponseInner.md)
- - [SwaggerClient::DomainNameserverPostRequest](docs/DomainNameserverPostRequest.md)
- - [SwaggerClient::DomainNameserverPutRequest](docs/DomainNameserverPutRequest.md)
- - [SwaggerClient::DomainOrder](docs/DomainOrder.md)
- - [SwaggerClient::DomainOrderResponse](docs/DomainOrderResponse.md)
- - [SwaggerClient::DomainOrderResponseAttributes](docs/DomainOrderResponseAttributes.md)
- - [SwaggerClient::DomainOrderServices](docs/DomainOrderServices.md)
- - [SwaggerClient::DomainOrderServices10001](docs/DomainOrderServices10001.md)
- - [SwaggerClient::DomainOrderTldServices](docs/DomainOrderTldServices.md)
- - [SwaggerClient::DomainOwnerContact](docs/DomainOwnerContact.md)
- - [SwaggerClient::DomainProvProcessPending](docs/DomainProvProcessPending.md)
- - [SwaggerClient::DomainProvProcessPendingAttributes](docs/DomainProvProcessPendingAttributes.md)
- - [SwaggerClient::DomainRow](docs/DomainRow.md)
- - [SwaggerClient::DomainSearchResponse](docs/DomainSearchResponse.md)
- - [SwaggerClient::DomainServiceInfo](docs/DomainServiceInfo.md)
- - [SwaggerClient::DomainServiceType](docs/DomainServiceType.md)
- - [SwaggerClient::DomainTechContact](docs/DomainTechContact.md)
- - [SwaggerClient::DomainWhoisPrivacyRequest](docs/DomainWhoisPrivacyRequest.md)
- - [SwaggerClient::EmailAddress](docs/EmailAddress.md)
- - [SwaggerClient::EmailAddressName](docs/EmailAddressName.md)
- - [SwaggerClient::EndDate](docs/EndDate.md)
- - [SwaggerClient::FieldLabel](docs/FieldLabel.md)
- - [SwaggerClient::FormValues](docs/FormValues.md)
- - [SwaggerClient::GenericResponse](docs/GenericResponse.md)
- - [SwaggerClient::HardDrive](docs/HardDrive.md)
- - [SwaggerClient::Home](docs/Home.md)
- - [SwaggerClient::HomeDetails](docs/HomeDetails.md)
- - [SwaggerClient::HomeDetailsModules](docs/HomeDetailsModules.md)
- - [SwaggerClient::HomeDetailsModulesBackups](docs/HomeDetailsModulesBackups.md)
- - [SwaggerClient::HomeDetailsModulesDomains](docs/HomeDetailsModulesDomains.md)
- - [SwaggerClient::HomeDetailsModulesLicenses](docs/HomeDetailsModulesLicenses.md)
- - [SwaggerClient::HomeDetailsModulesQuickservers](docs/HomeDetailsModulesQuickservers.md)
- - [SwaggerClient::HomeDetailsModulesServers](docs/HomeDetailsModulesServers.md)
- - [SwaggerClient::HomeDetailsModulesVps](docs/HomeDetailsModulesVps.md)
- - [SwaggerClient::HomeDetailsModulesWebhosting](docs/HomeDetailsModulesWebhosting.md)
- - [SwaggerClient::HomeServices](docs/HomeServices.md)
- - [SwaggerClient::HomeServicesBackups](docs/HomeServicesBackups.md)
- - [SwaggerClient::HomeServicesDomains](docs/HomeServicesDomains.md)
- - [SwaggerClient::HomeServicesDomainsLinks](docs/HomeServicesDomainsLinks.md)
- - [SwaggerClient::HomeServicesLicenses](docs/HomeServicesLicenses.md)
- - [SwaggerClient::HomeServicesLicensesLinks](docs/HomeServicesLicensesLinks.md)
- - [SwaggerClient::HomeServicesServers](docs/HomeServicesServers.md)
- - [SwaggerClient::HomeServicesServersLinks](docs/HomeServicesServersLinks.md)
- - [SwaggerClient::HomeServicesVps](docs/HomeServicesVps.md)
- - [SwaggerClient::HomeServicesVpsLinks](docs/HomeServicesVpsLinks.md)
- - [SwaggerClient::HomeServicesWebhosting](docs/HomeServicesWebhosting.md)
- - [SwaggerClient::HomeServicesWebhostingLinks](docs/HomeServicesWebhostingLinks.md)
- - [SwaggerClient::HomeTicketStatus](docs/HomeTicketStatus.md)
- - [SwaggerClient::HomeTicketStatusView](docs/HomeTicketStatusView.md)
- - [SwaggerClient::HostnameObject](docs/HostnameObject.md)
- - [SwaggerClient::IdBackupsBody](docs/IdBackupsBody.md)
- - [SwaggerClient::IdBackupsBody1](docs/IdBackupsBody1.md)
- - [SwaggerClient::IdBackupsBody2](docs/IdBackupsBody2.md)
- - [SwaggerClient::IdBackupsBody3](docs/IdBackupsBody3.md)
- - [SwaggerClient::IdBuyIpBody](docs/IdBuyIpBody.md)
- - [SwaggerClient::IdBuyIpBody1](docs/IdBuyIpBody1.md)
- - [SwaggerClient::IdMigrationBody](docs/IdMigrationBody.md)
- - [SwaggerClient::IdMigrationBody1](docs/IdMigrationBody1.md)
- - [SwaggerClient::InlineResponse200](docs/InlineResponse200.md)
- - [SwaggerClient::InlineResponse2001](docs/InlineResponse2001.md)
- - [SwaggerClient::InlineResponse20010](docs/InlineResponse20010.md)
- - [SwaggerClient::InlineResponse20011](docs/InlineResponse20011.md)
- - [SwaggerClient::InlineResponse20012](docs/InlineResponse20012.md)
- - [SwaggerClient::InlineResponse20012BillingDetails](docs/InlineResponse20012BillingDetails.md)
- - [SwaggerClient::InlineResponse20012ClientLinks](docs/InlineResponse20012ClientLinks.md)
- - [SwaggerClient::InlineResponse20012ExtraInfoTables](docs/InlineResponse20012ExtraInfoTables.md)
- - [SwaggerClient::InlineResponse20012ExtraInfoTablesScrubIps](docs/InlineResponse20012ExtraInfoTablesScrubIps.md)
- - [SwaggerClient::InlineResponse20012ExtraInfoTablesScrubIpsRows](docs/InlineResponse20012ExtraInfoTablesScrubIpsRows.md)
- - [SwaggerClient::InlineResponse20012FilterFirewall](docs/InlineResponse20012FilterFirewall.md)
- - [SwaggerClient::InlineResponse20012FilterFirewallFilters](docs/InlineResponse20012FilterFirewallFilters.md)
- - [SwaggerClient::InlineResponse20012FilterFirewallRules](docs/InlineResponse20012FilterFirewallRules.md)
- - [SwaggerClient::InlineResponse20012ServiceInfo](docs/InlineResponse20012ServiceInfo.md)
- - [SwaggerClient::InlineResponse20013](docs/InlineResponse20013.md)
- - [SwaggerClient::InlineResponse20014](docs/InlineResponse20014.md)
- - [SwaggerClient::InlineResponse20015](docs/InlineResponse20015.md)
- - [SwaggerClient::InlineResponse20016](docs/InlineResponse20016.md)
- - [SwaggerClient::InlineResponse20017](docs/InlineResponse20017.md)
- - [SwaggerClient::InlineResponse20018](docs/InlineResponse20018.md)
- - [SwaggerClient::InlineResponse20018Ips](docs/InlineResponse20018Ips.md)
- - [SwaggerClient::InlineResponse20018PackageCosts](docs/InlineResponse20018PackageCosts.md)
- - [SwaggerClient::InlineResponse20018ServiceTypes](docs/InlineResponse20018ServiceTypes.md)
- - [SwaggerClient::InlineResponse20019](docs/InlineResponse20019.md)
- - [SwaggerClient::InlineResponse2002](docs/InlineResponse2002.md)
- - [SwaggerClient::InlineResponse20020](docs/InlineResponse20020.md)
- - [SwaggerClient::InlineResponse20021](docs/InlineResponse20021.md)
- - [SwaggerClient::InlineResponse20022](docs/InlineResponse20022.md)
- - [SwaggerClient::InlineResponse20023](docs/InlineResponse20023.md)
- - [SwaggerClient::InlineResponse20024](docs/InlineResponse20024.md)
- - [SwaggerClient::InlineResponse20025](docs/InlineResponse20025.md)
- - [SwaggerClient::InlineResponse20026](docs/InlineResponse20026.md)
- - [SwaggerClient::InlineResponse20027](docs/InlineResponse20027.md)
- - [SwaggerClient::InlineResponse20027Bandwidth](docs/InlineResponse20027Bandwidth.md)
- - [SwaggerClient::InlineResponse20027Cp](docs/InlineResponse20027Cp.md)
- - [SwaggerClient::InlineResponse20027Ips](docs/InlineResponse20027Ips.md)
- - [SwaggerClient::InlineResponse20027Os](docs/InlineResponse20027Os.md)
- - [SwaggerClient::InlineResponse20027Raid](docs/InlineResponse20027Raid.md)
- - [SwaggerClient::InlineResponse2003](docs/InlineResponse2003.md)
- - [SwaggerClient::InlineResponse2004](docs/InlineResponse2004.md)
- - [SwaggerClient::InlineResponse2005](docs/InlineResponse2005.md)
- - [SwaggerClient::InlineResponse2006](docs/InlineResponse2006.md)
- - [SwaggerClient::InlineResponse2007](docs/InlineResponse2007.md)
- - [SwaggerClient::InlineResponse2008](docs/InlineResponse2008.md)
- - [SwaggerClient::InlineResponse2009](docs/InlineResponse2009.md)
- - [SwaggerClient::InlineResponse201](docs/InlineResponse201.md)
- - [SwaggerClient::InlineResponse2011](docs/InlineResponse2011.md)
- - [SwaggerClient::InlineResponse2012](docs/InlineResponse2012.md)
- - [SwaggerClient::InlineResponse2012OrderDetails](docs/InlineResponse2012OrderDetails.md)
- - [SwaggerClient::InlineResponse2012OrderDetailsCjParams](docs/InlineResponse2012OrderDetailsCjParams.md)
- - [SwaggerClient::InlineResponse400](docs/InlineResponse400.md)
- - [SwaggerClient::InlineResponse4001](docs/InlineResponse4001.md)
- - [SwaggerClient::InlineResponse4002](docs/InlineResponse4002.md)
- - [SwaggerClient::InlineResponse4003](docs/InlineResponse4003.md)
- - [SwaggerClient::InlineResponse4004](docs/InlineResponse4004.md)
- - [SwaggerClient::InlineResponse4005](docs/InlineResponse4005.md)
- - [SwaggerClient::InlineResponse401](docs/InlineResponse401.md)
- - [SwaggerClient::InlineResponse500](docs/InlineResponse500.md)
- - [SwaggerClient::InlineResponse5001](docs/InlineResponse5001.md)
- - [SwaggerClient::InlineResponse5002](docs/InlineResponse5002.md)
- - [SwaggerClient::InlineResponse5003](docs/InlineResponse5003.md)
- - [SwaggerClient::InlineResponse5004](docs/InlineResponse5004.md)
- - [SwaggerClient::InlineResponse5005](docs/InlineResponse5005.md)
- - [SwaggerClient::Invoice](docs/Invoice.md)
- - [SwaggerClient::InvoiceRow](docs/InvoiceRow.md)
- - [SwaggerClient::IpBlock](docs/IpBlock.md)
- - [SwaggerClient::IpLimitRange](docs/IpLimitRange.md)
- - [SwaggerClient::IpObject](docs/IpObject.md)
- - [SwaggerClient::License](docs/License.md)
- - [SwaggerClient::LicenseBillingDetails](docs/LicenseBillingDetails.md)
- - [SwaggerClient::LicenseClientLink](docs/LicenseClientLink.md)
- - [SwaggerClient::LicenseExtraInfoTables](docs/LicenseExtraInfoTables.md)
- - [SwaggerClient::LicenseIpInfo](docs/LicenseIpInfo.md)
- - [SwaggerClient::LicenseIpInfoRow](docs/LicenseIpInfoRow.md)
- - [SwaggerClient::LicenseRow](docs/LicenseRow.md)
- - [SwaggerClient::LicenseServiceInfo](docs/LicenseServiceInfo.md)
- - [SwaggerClient::LicenseServiceType](docs/LicenseServiceType.md)
- - [SwaggerClient::LicensesOrder](docs/LicensesOrder.md)
- - [SwaggerClient::LicensesOrderPackageCosts](docs/LicensesOrderPackageCosts.md)
- - [SwaggerClient::LicensesOrderServiceCategories](docs/LicensesOrderServiceCategories.md)
- - [SwaggerClient::LicensesOrderServiceCategories509](docs/LicensesOrderServiceCategories509.md)
- - [SwaggerClient::LicensesOrderServiceTypes](docs/LicensesOrderServiceTypes.md)
- - [SwaggerClient::LicensesOrderServiceTypes11482](docs/LicensesOrderServiceTypes11482.md)
- - [SwaggerClient::LoginErrorResponse](docs/LoginErrorResponse.md)
- - [SwaggerClient::LoginInfo](docs/LoginInfo.md)
- - [SwaggerClient::LoginServiceCounts](docs/LoginServiceCounts.md)
- - [SwaggerClient::LoginSubmissionExample](docs/LoginSubmissionExample.md)
- - [SwaggerClient::LoginSubmissionExampleGrecaptcharesponse](docs/LoginSubmissionExampleGrecaptcharesponse.md)
- - [SwaggerClient::LoginSubmissionExampleGrecaptcharesponseDep](docs/LoginSubmissionExampleGrecaptcharesponseDep.md)
- - [SwaggerClient::LoginSuccessResponse](docs/LoginSuccessResponse.md)
- - [SwaggerClient::MailAlertRequest](docs/MailAlertRequest.md)
- - [SwaggerClient::MailAlertUpdateRequest](docs/MailAlertUpdateRequest.md)
- - [SwaggerClient::MailAlertsResponse](docs/MailAlertsResponse.md)
- - [SwaggerClient::MailAlertsResponseInner](docs/MailAlertsResponseInner.md)
- - [SwaggerClient::MailAttachment](docs/MailAttachment.md)
- - [SwaggerClient::MailBillingDetails](docs/MailBillingDetails.md)
- - [SwaggerClient::MailBlockClickHouse](docs/MailBlockClickHouse.md)
- - [SwaggerClient::MailBlockRspamd](docs/MailBlockRspamd.md)
- - [SwaggerClient::MailBlocks](docs/MailBlocks.md)
- - [SwaggerClient::MailClientLink](docs/MailClientLink.md)
- - [SwaggerClient::MailDelistRequest](docs/MailDelistRequest.md)
- - [SwaggerClient::MailDelistResponse](docs/MailDelistResponse.md)
- - [SwaggerClient::MailDeliverabilityResponse](docs/MailDeliverabilityResponse.md)
- - [SwaggerClient::MailExtraInfoTable](docs/MailExtraInfoTable.md)
- - [SwaggerClient::MailExtraInfoTableRow](docs/MailExtraInfoTableRow.md)
- - [SwaggerClient::MailLog](docs/MailLog.md)
- - [SwaggerClient::MailLogEntry](docs/MailLogEntry.md)
- - [SwaggerClient::MailOrder](docs/MailOrder.md)
- - [SwaggerClient::MailRow](docs/MailRow.md)
- - [SwaggerClient::MailSchema](docs/MailSchema.md)
- - [SwaggerClient::MailSchemaExtraInfoTables](docs/MailSchemaExtraInfoTables.md)
- - [SwaggerClient::MailServiceInfo](docs/MailServiceInfo.md)
- - [SwaggerClient::MailServiceType](docs/MailServiceType.md)
- - [SwaggerClient::MailStatsType](docs/MailStatsType.md)
- - [SwaggerClient::MailStatsTypeVolume](docs/MailStatsTypeVolume.md)
- - [SwaggerClient::MailStatsTypeVolumeFrom](docs/MailStatsTypeVolumeFrom.md)
- - [SwaggerClient::MailStatsTypeVolumeIp](docs/MailStatsTypeVolumeIp.md)
- - [SwaggerClient::MailStatsTypeVolumeTo](docs/MailStatsTypeVolumeTo.md)
- - [SwaggerClient::MailTutorialsTable](docs/MailTutorialsTable.md)
- - [SwaggerClient::MailTutorialsTableRow](docs/MailTutorialsTableRow.md)
- - [SwaggerClient::MemoryOption](docs/MemoryOption.md)
- - [SwaggerClient::ModuleSettings](docs/ModuleSettings.md)
- - [SwaggerClient::Modules](docs/Modules.md)
- - [SwaggerClient::MonthlyCounts](docs/MonthlyCounts.md)
- - [SwaggerClient::OauthBody](docs/OauthBody.md)
- - [SwaggerClient::OauthBody1](docs/OauthBody1.md)
- - [SwaggerClient::OauthBody2](docs/OauthBody2.md)
- - [SwaggerClient::OauthBody3](docs/OauthBody3.md)
- - [SwaggerClient::OneOfAccountInfoMaxMindResponseRiskScore](docs/OneOfAccountInfoMaxMindResponseRiskScore.md)
- - [SwaggerClient::OneOfAccountInfoOauthproviders](docs/OneOfAccountInfoOauthproviders.md)
- - [SwaggerClient::OneOfAssetServerBandwidthItems](docs/OneOfAssetServerBandwidthItems.md)
- - [SwaggerClient::OneOfAssetServerCpuItems](docs/OneOfAssetServerCpuItems.md)
- - [SwaggerClient::OneOfAssetServerIpsItems](docs/OneOfAssetServerIpsItems.md)
- - [SwaggerClient::OneOfAssetServerMemoryItems](docs/OneOfAssetServerMemoryItems.md)
- - [SwaggerClient::OneOfBuyItNowRowCpuItems](docs/OneOfBuyItNowRowCpuItems.md)
- - [SwaggerClient::OneOfVPSTrafficDataDataSectionResponseItems](docs/OneOfVPSTrafficDataDataSectionResponseItems.md)
- - [SwaggerClient::OneOfVpsTrafficHistorySectionDataResponseItems](docs/OneOfVpsTrafficHistorySectionDataResponseItems.md)
- - [SwaggerClient::OperatingSystem](docs/OperatingSystem.md)
- - [SwaggerClient::OrderBuyNowServerBody](docs/OrderBuyNowServerBody.md)
- - [SwaggerClient::PasswordRequest](docs/PasswordRequest.md)
- - [SwaggerClient::PaymentInvoiceRows](docs/PaymentInvoiceRows.md)
- - [SwaggerClient::QueueResponse](docs/QueueResponse.md)
- - [SwaggerClient::Quickserver](docs/Quickserver.md)
- - [SwaggerClient::QuickserverAddons](docs/QuickserverAddons.md)
- - [SwaggerClient::QuickserverAddonsRow](docs/QuickserverAddonsRow.md)
- - [SwaggerClient::QuickserverBillingDetails](docs/QuickserverBillingDetails.md)
- - [SwaggerClient::QuickserverClientLink](docs/QuickserverClientLink.md)
- - [SwaggerClient::QuickserverExtraInfoTables](docs/QuickserverExtraInfoTables.md)
- - [SwaggerClient::QuickserverIpInfo](docs/QuickserverIpInfo.md)
- - [SwaggerClient::QuickserverIpTableRow](docs/QuickserverIpTableRow.md)
- - [SwaggerClient::QuickserverOrder](docs/QuickserverOrder.md)
- - [SwaggerClient::QuickserverOrderDistroSel](docs/QuickserverOrderDistroSel.md)
- - [SwaggerClient::QuickserverOrderDistroSelUbuntu](docs/QuickserverOrderDistroSelUbuntu.md)
- - [SwaggerClient::QuickserverOrderServerDetails](docs/QuickserverOrderServerDetails.md)
- - [SwaggerClient::QuickserverOrderServerDetails381](docs/QuickserverOrderServerDetails381.md)
- - [SwaggerClient::QuickserverOrderTemplates](docs/QuickserverOrderTemplates.md)
- - [SwaggerClient::QuickserverOrderTemplatesUbuntu64](docs/QuickserverOrderTemplatesUbuntu64.md)
- - [SwaggerClient::QuickserverOrderVersion](docs/QuickserverOrderVersion.md)
- - [SwaggerClient::QuickserverOrderVersionCentosstream8](docs/QuickserverOrderVersionCentosstream8.md)
- - [SwaggerClient::QuickserverRow](docs/QuickserverRow.md)
- - [SwaggerClient::QuickserverServiceExtra](docs/QuickserverServiceExtra.md)
- - [SwaggerClient::QuickserverServiceInfo](docs/QuickserverServiceInfo.md)
- - [SwaggerClient::QuickserverServiceMaster](docs/QuickserverServiceMaster.md)
- - [SwaggerClient::RaidOption](docs/RaidOption.md)
- - [SwaggerClient::Region](docs/Region.md)
- - [SwaggerClient::ReplyTicketRequest](docs/ReplyTicketRequest.md)
- - [SwaggerClient::ReplyTicketResponseSchema](docs/ReplyTicketResponseSchema.md)
- - [SwaggerClient::RestoreRequest](docs/RestoreRequest.md)
- - [SwaggerClient::ReverseDnsEntries](docs/ReverseDnsEntries.md)
- - [SwaggerClient::ScrubIpFilterTypes](docs/ScrubIpFilterTypes.md)
- - [SwaggerClient::ScrubIpFilterTypesFilters](docs/ScrubIpFilterTypesFilters.md)
- - [SwaggerClient::ScrubIpPlaceOrder](docs/ScrubIpPlaceOrder.md)
- - [SwaggerClient::ScrubIpsLogRowSchema](docs/ScrubIpsLogRowSchema.md)
- - [SwaggerClient::ScrubIpsRowSchema](docs/ScrubIpsRowSchema.md)
- - [SwaggerClient::SearchAutocompleteResponse](docs/SearchAutocompleteResponse.md)
- - [SwaggerClient::SendMail](docs/SendMail.md)
- - [SwaggerClient::SendMailAdv](docs/SendMailAdv.md)
- - [SwaggerClient::Server](docs/Server.md)
- - [SwaggerClient::ServerAsset](docs/ServerAsset.md)
- - [SwaggerClient::ServerAssets](docs/ServerAssets.md)
- - [SwaggerClient::ServerBillingDetails](docs/ServerBillingDetails.md)
- - [SwaggerClient::ServerClientLink](docs/ServerClientLink.md)
- - [SwaggerClient::ServerExtraInfoTables](docs/ServerExtraInfoTables.md)
- - [SwaggerClient::ServerIpmiLiveInfo](docs/ServerIpmiLiveInfo.md)
- - [SwaggerClient::ServerIpmiLiveRequest](docs/ServerIpmiLiveRequest.md)
- - [SwaggerClient::ServerIpmiPowerRequest](docs/ServerIpmiPowerRequest.md)
- - [SwaggerClient::ServerLease](docs/ServerLease.md)
- - [SwaggerClient::ServerLocation1](docs/ServerLocation1.md)
- - [SwaggerClient::ServerLocations](docs/ServerLocations.md)
- - [SwaggerClient::ServerNetworkInfo](docs/ServerNetworkInfo.md)
- - [SwaggerClient::ServerNetworkInfoAssets](docs/ServerNetworkInfoAssets.md)
- - [SwaggerClient::ServerNetworkInfoSwitchports](docs/ServerNetworkInfoSwitchports.md)
- - [SwaggerClient::ServerOrder](docs/ServerOrder.md)
- - [SwaggerClient::ServerOrderBandwidth](docs/ServerOrderBandwidth.md)
- - [SwaggerClient::ServerOrderBandwidthLi](docs/ServerOrderBandwidthLi.md)
- - [SwaggerClient::ServerOrderCPU](docs/ServerOrderCPU.md)
- - [SwaggerClient::ServerOrderConfigIds](docs/ServerOrderConfigIds.md)
- - [SwaggerClient::ServerOrderControlPanel](docs/ServerOrderControlPanel.md)
- - [SwaggerClient::ServerOrderCpLi](docs/ServerOrderCpLi.md)
- - [SwaggerClient::ServerOrderCpuLi](docs/ServerOrderCpuLi.md)
- - [SwaggerClient::ServerOrderFieldLabel](docs/ServerOrderFieldLabel.md)
- - [SwaggerClient::ServerOrderFieldLabels](docs/ServerOrderFieldLabels.md)
- - [SwaggerClient::ServerOrderFormValues](docs/ServerOrderFormValues.md)
- - [SwaggerClient::ServerOrderGetResponse](docs/ServerOrderGetResponse.md)
- - [SwaggerClient::ServerOrderIP](docs/ServerOrderIP.md)
- - [SwaggerClient::ServerOrderIpsLi](docs/ServerOrderIpsLi.md)
- - [SwaggerClient::ServerOrderMemory](docs/ServerOrderMemory.md)
- - [SwaggerClient::ServerOrderMemoryLi](docs/ServerOrderMemoryLi.md)
- - [SwaggerClient::ServerOrderMemoryLi254](docs/ServerOrderMemoryLi254.md)
- - [SwaggerClient::ServerOrderOS](docs/ServerOrderOS.md)
- - [SwaggerClient::ServerOrderOsLi](docs/ServerOrderOsLi.md)
- - [SwaggerClient::ServerOrderRAID](docs/ServerOrderRAID.md)
- - [SwaggerClient::ServerRow](docs/ServerRow.md)
- - [SwaggerClient::ServerServiceInfo](docs/ServerServiceInfo.md)
- - [SwaggerClient::ServerSwitchport](docs/ServerSwitchport.md)
- - [SwaggerClient::ServersBuyNowError](docs/ServersBuyNowError.md)
- - [SwaggerClient::ServersBuyNowResponse](docs/ServersBuyNowResponse.md)
- - [SwaggerClient::ServersBuyNowResponseOrderDetails](docs/ServersBuyNowResponseOrderDetails.md)
- - [SwaggerClient::Service](docs/Service.md)
- - [SwaggerClient::ServiceCategories](docs/ServiceCategories.md)
- - [SwaggerClient::ServiceCategory](docs/ServiceCategory.md)
- - [SwaggerClient::ServiceOrderPostResponse](docs/ServiceOrderPostResponse.md)
- - [SwaggerClient::ServiceType](docs/ServiceType.md)
- - [SwaggerClient::ServiceTypes](docs/ServiceTypes.md)
- - [SwaggerClient::Services](docs/Services.md)
- - [SwaggerClient::ServicesInfo](docs/ServicesInfo.md)
- - [SwaggerClient::StartDate](docs/StartDate.md)
- - [SwaggerClient::StatusMonthlyBreakdown](docs/StatusMonthlyBreakdown.md)
- - [SwaggerClient::SuccessTextResponse](docs/SuccessTextResponse.md)
- - [SwaggerClient::TemplateRequest](docs/TemplateRequest.md)
- - [SwaggerClient::TextResponse](docs/TextResponse.md)
- - [SwaggerClient::TicketCustomFieldDetails](docs/TicketCustomFieldDetails.md)
- - [SwaggerClient::TicketDetails](docs/TicketDetails.md)
- - [SwaggerClient::TicketNew](docs/TicketNew.md)
- - [SwaggerClient::TicketNewResponse](docs/TicketNewResponse.md)
- - [SwaggerClient::TicketPostDetails](docs/TicketPostDetails.md)
- - [SwaggerClient::TicketPostDetailsInner](docs/TicketPostDetailsInner.md)
- - [SwaggerClient::Tickets](docs/Tickets.md)
- - [SwaggerClient::TicketsCountArray](docs/TicketsCountArray.md)
- - [SwaggerClient::TicketsRow](docs/TicketsRow.md)
- - [SwaggerClient::TimezoneUpdate](docs/TimezoneUpdate.md)
- - [SwaggerClient::UpdateTicket](docs/UpdateTicket.md)
- - [SwaggerClient::UpdateTicketResponseSchema](docs/UpdateTicketResponseSchema.md)
- - [SwaggerClient::UrlRequest](docs/UrlRequest.md)
- - [SwaggerClient::VPSTrafficDataDataSectionResponse](docs/VPSTrafficDataDataSectionResponse.md)
- - [SwaggerClient::ViewTicketResponse](docs/ViewTicketResponse.md)
- - [SwaggerClient::Vps](docs/Vps.md)
- - [SwaggerClient::VpsBackupRow](docs/VpsBackupRow.md)
- - [SwaggerClient::VpsBackupRows](docs/VpsBackupRows.md)
- - [SwaggerClient::VpsBillingDetails](docs/VpsBillingDetails.md)
- - [SwaggerClient::VpsCPData](docs/VpsCPData.md)
- - [SwaggerClient::VpsClientLink](docs/VpsClientLink.md)
- - [SwaggerClient::VpsDAData](docs/VpsDAData.md)
- - [SwaggerClient::VpsDALicense](docs/VpsDALicense.md)
- - [SwaggerClient::VpsExtraInfoTables](docs/VpsExtraInfoTables.md)
- - [SwaggerClient::VpsIPInfo](docs/VpsIPInfo.md)
- - [SwaggerClient::VpsIPInfoRow](docs/VpsIPInfoRow.md)
- - [SwaggerClient::VpsOrder](docs/VpsOrder.md)
- - [SwaggerClient::VpsOrderLocationNames](docs/VpsOrderLocationNames.md)
- - [SwaggerClient::VpsOrderLocationStock](docs/VpsOrderLocationStock.md)
- - [SwaggerClient::VpsOrderLocationStock1](docs/VpsOrderLocationStock1.md)
- - [SwaggerClient::VpsOrderOsNames](docs/VpsOrderOsNames.md)
- - [SwaggerClient::VpsOrderPackageCosts](docs/VpsOrderPackageCosts.md)
- - [SwaggerClient::VpsOrderPlatformNames](docs/VpsOrderPlatformNames.md)
- - [SwaggerClient::VpsOrderPlatformPackages](docs/VpsOrderPlatformPackages.md)
- - [SwaggerClient::VpsOrderPostRequest](docs/VpsOrderPostRequest.md)
- - [SwaggerClient::VpsOrderPutRequest](docs/VpsOrderPutRequest.md)
- - [SwaggerClient::VpsOrderPutResponse](docs/VpsOrderPutResponse.md)
- - [SwaggerClient::VpsOrderServiceTypes](docs/VpsOrderServiceTypes.md)
- - [SwaggerClient::VpsOrderServiceTypes32](docs/VpsOrderServiceTypes32.md)
- - [SwaggerClient::VpsOrderTemplates](docs/VpsOrderTemplates.md)
- - [SwaggerClient::VpsOrderTemplatesHyperv](docs/VpsOrderTemplatesHyperv.md)
- - [SwaggerClient::VpsOrderTemplatesHypervWindows](docs/VpsOrderTemplatesHypervWindows.md)
- - [SwaggerClient::VpsPlesk12Data](docs/VpsPlesk12Data.md)
- - [SwaggerClient::VpsPleskLicense](docs/VpsPleskLicense.md)
- - [SwaggerClient::VpsRow](docs/VpsRow.md)
- - [SwaggerClient::VpsServiceAddons](docs/VpsServiceAddons.md)
- - [SwaggerClient::VpsServiceExtra](docs/VpsServiceExtra.md)
- - [SwaggerClient::VpsServiceInfo](docs/VpsServiceInfo.md)
- - [SwaggerClient::VpsServiceMaster](docs/VpsServiceMaster.md)
- - [SwaggerClient::VpsSnapshot](docs/VpsSnapshot.md)
- - [SwaggerClient::VpsTemplateRow](docs/VpsTemplateRow.md)
- - [SwaggerClient::VpsTemplatesList](docs/VpsTemplatesList.md)
- - [SwaggerClient::VpsTrafficDataDataResponse](docs/VpsTrafficDataDataResponse.md)
- - [SwaggerClient::VpsTrafficDataSectionResponse](docs/VpsTrafficDataSectionResponse.md)
- - [SwaggerClient::VpsTrafficHistoryResponse](docs/VpsTrafficHistoryResponse.md)
- - [SwaggerClient::VpsTrafficHistorySectionDataResponse](docs/VpsTrafficHistorySectionDataResponse.md)
- - [SwaggerClient::VpsTrafficHistorySectionResponse](docs/VpsTrafficHistorySectionResponse.md)
- - [SwaggerClient::VpsTrafficResponse](docs/VpsTrafficResponse.md)
- - [SwaggerClient::VpsTrafficTotalsResposne](docs/VpsTrafficTotalsResposne.md)
- - [SwaggerClient::VpsTrafficTotalsSectionResponse](docs/VpsTrafficTotalsSectionResponse.md)
- - [SwaggerClient::VpsTrafficUsageAverageResponse](docs/VpsTrafficUsageAverageResponse.md)
- - [SwaggerClient::VpsTrafficUsageAverageSectionResponse](docs/VpsTrafficUsageAverageSectionResponse.md)
- - [SwaggerClient::VpsTrafficUsageResponse](docs/VpsTrafficUsageResponse.md)
- - [SwaggerClient::Website](docs/Website.md)
- - [SwaggerClient::WebsiteBackups](docs/WebsiteBackups.md)
- - [SwaggerClient::WebsiteBackupsInner](docs/WebsiteBackupsInner.md)
- - [SwaggerClient::WebsiteBillingDetails](docs/WebsiteBillingDetails.md)
- - [SwaggerClient::WebsiteClientLink](docs/WebsiteClientLink.md)
- - [SwaggerClient::WebsiteExtraInfoTables](docs/WebsiteExtraInfoTables.md)
- - [SwaggerClient::WebsiteLoginResponse](docs/WebsiteLoginResponse.md)
- - [SwaggerClient::WebsiteRow](docs/WebsiteRow.md)
- - [SwaggerClient::WebsiteServiceExtra](docs/WebsiteServiceExtra.md)
- - [SwaggerClient::WebsiteServiceInfo](docs/WebsiteServiceInfo.md)
- - [SwaggerClient::WebsiteServiceMaster](docs/WebsiteServiceMaster.md)
- - [SwaggerClient::WebsiteTable](docs/WebsiteTable.md)
- - [SwaggerClient::WebsiteTableRow](docs/WebsiteTableRow.md)
- - [SwaggerClient::WebsitesOrder](docs/WebsitesOrder.md)
- - [SwaggerClient::WebsitesOrderJsonServiceOffers](docs/WebsitesOrderJsonServiceOffers.md)
- - [SwaggerClient::WebsitesOrderJsonServiceOffersItem](docs/WebsitesOrderJsonServiceOffersItem.md)
- - [SwaggerClient::WebsitesOrderJsonServices](docs/WebsitesOrderJsonServices.md)
- - [SwaggerClient::WebsitesOrderPackages](docs/WebsitesOrderPackages.md)
- - [SwaggerClient::WebsitesOrderPackagesInfo](docs/WebsitesOrderPackagesInfo.md)
- - [SwaggerClient::WebsitesOrderPackges](docs/WebsitesOrderPackges.md)
- - [SwaggerClient::WebsitesOrderServiceOffer](docs/WebsitesOrderServiceOffer.md)
- - [SwaggerClient::WebsitesOrderServiceOffers](docs/WebsitesOrderServiceOffers.md)
- - [SwaggerClient::WebsitesOrderServiceTypes](docs/WebsitesOrderServiceTypes.md)
+ - [InterserverApiClient::Account2faBody](docs/Account2faBody.md)
+ - [InterserverApiClient::Account2faBody1](docs/Account2faBody1.md)
+ - [InterserverApiClient::AccountFeatures](docs/AccountFeatures.md)
+ - [InterserverApiClient::AccountInfo](docs/AccountInfo.md)
+ - [InterserverApiClient::AccountInfoCountryCurrencies](docs/AccountInfoCountryCurrencies.md)
+ - [InterserverApiClient::AccountInfoData](docs/AccountInfoData.md)
+ - [InterserverApiClient::AccountInfoDataCc](docs/AccountInfoDataCc.md)
+ - [InterserverApiClient::AccountInfoDataCcs](docs/AccountInfoDataCcs.md)
+ - [InterserverApiClient::AccountInfoDataEmailSettings](docs/AccountInfoDataEmailSettings.md)
+ - [InterserverApiClient::AccountInfoDataExtra](docs/AccountInfoDataExtra.md)
+ - [InterserverApiClient::AccountInfoDataFraudrecord](docs/AccountInfoDataFraudrecord.md)
+ - [InterserverApiClient::AccountInfoLimits](docs/AccountInfoLimits.md)
+ - [InterserverApiClient::AccountInfoLimitsInner](docs/AccountInfoLimitsInner.md)
+ - [InterserverApiClient::AccountInfoMaxMindResponse](docs/AccountInfoMaxMindResponse.md)
+ - [InterserverApiClient::AccountInfoOauthConfig](docs/AccountInfoOauthConfig.md)
+ - [InterserverApiClient::AccountInfoOauthConfigProviders](docs/AccountInfoOauthConfigProviders.md)
+ - [InterserverApiClient::AccountInfoPost](docs/AccountInfoPost.md)
+ - [InterserverApiClient::AccountSshKey](docs/AccountSshKey.md)
+ - [InterserverApiClient::AffiliateBannerRow](docs/AffiliateBannerRow.md)
+ - [InterserverApiClient::AffiliateDockSetup](docs/AffiliateDockSetup.md)
+ - [InterserverApiClient::AffiliatePaymentSetup](docs/AffiliatePaymentSetup.md)
+ - [InterserverApiClient::AffiliateTrafficRow](docs/AffiliateTrafficRow.md)
+ - [InterserverApiClient::AllOfServerOrderFieldLabelsBandwidth](docs/AllOfServerOrderFieldLabelsBandwidth.md)
+ - [InterserverApiClient::AllOfServerOrderFieldLabelsCp](docs/AllOfServerOrderFieldLabelsCp.md)
+ - [InterserverApiClient::AllOfServerOrderFieldLabelsHd](docs/AllOfServerOrderFieldLabelsHd.md)
+ - [InterserverApiClient::AllOfServerOrderFieldLabelsIps](docs/AllOfServerOrderFieldLabelsIps.md)
+ - [InterserverApiClient::AllOfServerOrderFieldLabelsMemory](docs/AllOfServerOrderFieldLabelsMemory.md)
+ - [InterserverApiClient::AllOfServerOrderFieldLabelsOs](docs/AllOfServerOrderFieldLabelsOs.md)
+ - [InterserverApiClient::AllOfServerOrderFieldLabelsRaid](docs/AllOfServerOrderFieldLabelsRaid.md)
+ - [InterserverApiClient::Backup](docs/Backup.md)
+ - [InterserverApiClient::BackupBillingDetails](docs/BackupBillingDetails.md)
+ - [InterserverApiClient::BackupClientLink](docs/BackupClientLink.md)
+ - [InterserverApiClient::BackupExtraInfoTables](docs/BackupExtraInfoTables.md)
+ - [InterserverApiClient::BackupIPInfo](docs/BackupIPInfo.md)
+ - [InterserverApiClient::BackupIPInfoRow](docs/BackupIPInfoRow.md)
+ - [InterserverApiClient::BackupLoginResponse](docs/BackupLoginResponse.md)
+ - [InterserverApiClient::BackupOrderPostResponse](docs/BackupOrderPostResponse.md)
+ - [InterserverApiClient::BackupOrderPostResponseCjParams](docs/BackupOrderPostResponseCjParams.md)
+ - [InterserverApiClient::BackupOrderPutRequest](docs/BackupOrderPutRequest.md)
+ - [InterserverApiClient::BackupOrderPutResponse](docs/BackupOrderPutResponse.md)
+ - [InterserverApiClient::BackupRow](docs/BackupRow.md)
+ - [InterserverApiClient::BackupServiceExtra](docs/BackupServiceExtra.md)
+ - [InterserverApiClient::BackupServiceInfo](docs/BackupServiceInfo.md)
+ - [InterserverApiClient::BackupServiceMaster](docs/BackupServiceMaster.md)
+ - [InterserverApiClient::BackupsOrder](docs/BackupsOrder.md)
+ - [InterserverApiClient::BackupsOrderPackageCosts](docs/BackupsOrderPackageCosts.md)
+ - [InterserverApiClient::BackupsOrderServiceTypes](docs/BackupsOrderServiceTypes.md)
+ - [InterserverApiClient::BillingAddCcRequest](docs/BillingAddCcRequest.md)
+ - [InterserverApiClient::BillingInvoiceDetail](docs/BillingInvoiceDetail.md)
+ - [InterserverApiClient::BillingInvoiceList](docs/BillingInvoiceList.md)
+ - [InterserverApiClient::BillingPaymentMethodRequest](docs/BillingPaymentMethodRequest.md)
+ - [InterserverApiClient::BillingPrepayRequest](docs/BillingPrepayRequest.md)
+ - [InterserverApiClient::BillingVerifyCcRequest](docs/BillingVerifyCcRequest.md)
+ - [InterserverApiClient::BuyItNowList](docs/BuyItNowList.md)
+ - [InterserverApiClient::BuyItNowRow](docs/BuyItNowRow.md)
+ - [InterserverApiClient::CaptchaResponse](docs/CaptchaResponse.md)
+ - [InterserverApiClient::ChargeInvoiceRows](docs/ChargeInvoiceRows.md)
+ - [InterserverApiClient::ChargeInvoiceRowsInvoices](docs/ChargeInvoiceRowsInvoices.md)
+ - [InterserverApiClient::ChargeInvoiceRowsPaidInvoices](docs/ChargeInvoiceRowsPaidInvoices.md)
+ - [InterserverApiClient::ChargeInvoiceRowsRefundInvoices](docs/ChargeInvoiceRowsRefundInvoices.md)
+ - [InterserverApiClient::CloseTicketResponseSchema](docs/CloseTicketResponseSchema.md)
+ - [InterserverApiClient::CreateFilter](docs/CreateFilter.md)
+ - [InterserverApiClient::CreateFirewallRule](docs/CreateFirewallRule.md)
+ - [InterserverApiClient::CreateGeoFirewallRule](docs/CreateGeoFirewallRule.md)
+ - [InterserverApiClient::DeleteFirewallRule](docs/DeleteFirewallRule.md)
+ - [InterserverApiClient::DeleteGeoFirewallRule](docs/DeleteGeoFirewallRule.md)
+ - [InterserverApiClient::DenyRuleNew](docs/DenyRuleNew.md)
+ - [InterserverApiClient::DenyRuleRecord](docs/DenyRuleRecord.md)
+ - [InterserverApiClient::DnsListItem](docs/DnsListItem.md)
+ - [InterserverApiClient::DnsNewDomain](docs/DnsNewDomain.md)
+ - [InterserverApiClient::DnsNewRecord](docs/DnsNewRecord.md)
+ - [InterserverApiClient::DnsRecord](docs/DnsRecord.md)
+ - [InterserverApiClient::DnsRecordType](docs/DnsRecordType.md)
+ - [InterserverApiClient::DnsUpdateRecord](docs/DnsUpdateRecord.md)
+ - [InterserverApiClient::Domain](docs/Domain.md)
+ - [InterserverApiClient::DomainAdminContact](docs/DomainAdminContact.md)
+ - [InterserverApiClient::DomainAllInfo](docs/DomainAllInfo.md)
+ - [InterserverApiClient::DomainAllInfoAttributes](docs/DomainAllInfoAttributes.md)
+ - [InterserverApiClient::DomainAllInfoAttributesContactSet](docs/DomainAllInfoAttributesContactSet.md)
+ - [InterserverApiClient::DomainBillingDetails](docs/DomainBillingDetails.md)
+ - [InterserverApiClient::DomainBillingExtra](docs/DomainBillingExtra.md)
+ - [InterserverApiClient::DomainClientLink](docs/DomainClientLink.md)
+ - [InterserverApiClient::DomainContactDetails](docs/DomainContactDetails.md)
+ - [InterserverApiClient::DomainDnssecRecords](docs/DomainDnssecRecords.md)
+ - [InterserverApiClient::DomainDnssecRecordsInner](docs/DomainDnssecRecordsInner.md)
+ - [InterserverApiClient::DomainDnssecRequest](docs/DomainDnssecRequest.md)
+ - [InterserverApiClient::DomainLookupResponse](docs/DomainLookupResponse.md)
+ - [InterserverApiClient::DomainNameServer](docs/DomainNameServer.md)
+ - [InterserverApiClient::DomainNameserverGetResponse](docs/DomainNameserverGetResponse.md)
+ - [InterserverApiClient::DomainNameserverGetResponseInner](docs/DomainNameserverGetResponseInner.md)
+ - [InterserverApiClient::DomainNameserverPostRequest](docs/DomainNameserverPostRequest.md)
+ - [InterserverApiClient::DomainNameserverPutRequest](docs/DomainNameserverPutRequest.md)
+ - [InterserverApiClient::DomainOrder](docs/DomainOrder.md)
+ - [InterserverApiClient::DomainOrderRequest](docs/DomainOrderRequest.md)
+ - [InterserverApiClient::DomainOrderResponse](docs/DomainOrderResponse.md)
+ - [InterserverApiClient::DomainOrderResponseAttributes](docs/DomainOrderResponseAttributes.md)
+ - [InterserverApiClient::DomainOrderServices](docs/DomainOrderServices.md)
+ - [InterserverApiClient::DomainOrderServices10001](docs/DomainOrderServices10001.md)
+ - [InterserverApiClient::DomainOwnerContact](docs/DomainOwnerContact.md)
+ - [InterserverApiClient::DomainProvProcessPending](docs/DomainProvProcessPending.md)
+ - [InterserverApiClient::DomainProvProcessPendingAttributes](docs/DomainProvProcessPendingAttributes.md)
+ - [InterserverApiClient::DomainRow](docs/DomainRow.md)
+ - [InterserverApiClient::DomainSearchResponse](docs/DomainSearchResponse.md)
+ - [InterserverApiClient::DomainServiceInfo](docs/DomainServiceInfo.md)
+ - [InterserverApiClient::DomainServiceType](docs/DomainServiceType.md)
+ - [InterserverApiClient::DomainTechContact](docs/DomainTechContact.md)
+ - [InterserverApiClient::DomainWhoisPrivacyRequest](docs/DomainWhoisPrivacyRequest.md)
+ - [InterserverApiClient::EmailAddress](docs/EmailAddress.md)
+ - [InterserverApiClient::EmailAddressName](docs/EmailAddressName.md)
+ - [InterserverApiClient::EndDate](docs/EndDate.md)
+ - [InterserverApiClient::FloatingIpOrderRequest](docs/FloatingIpOrderRequest.md)
+ - [InterserverApiClient::GenericResponse](docs/GenericResponse.md)
+ - [InterserverApiClient::Home](docs/Home.md)
+ - [InterserverApiClient::HomeDetails](docs/HomeDetails.md)
+ - [InterserverApiClient::HomeDetailsModules](docs/HomeDetailsModules.md)
+ - [InterserverApiClient::HomeDetailsModulesBackups](docs/HomeDetailsModulesBackups.md)
+ - [InterserverApiClient::HomeDetailsModulesDomains](docs/HomeDetailsModulesDomains.md)
+ - [InterserverApiClient::HomeDetailsModulesLicenses](docs/HomeDetailsModulesLicenses.md)
+ - [InterserverApiClient::HomeDetailsModulesQuickservers](docs/HomeDetailsModulesQuickservers.md)
+ - [InterserverApiClient::HomeDetailsModulesServers](docs/HomeDetailsModulesServers.md)
+ - [InterserverApiClient::HomeDetailsModulesVps](docs/HomeDetailsModulesVps.md)
+ - [InterserverApiClient::HomeDetailsModulesWebhosting](docs/HomeDetailsModulesWebhosting.md)
+ - [InterserverApiClient::HomeServices](docs/HomeServices.md)
+ - [InterserverApiClient::HomeServicesBackups](docs/HomeServicesBackups.md)
+ - [InterserverApiClient::HomeServicesDomains](docs/HomeServicesDomains.md)
+ - [InterserverApiClient::HomeServicesDomainsLinks](docs/HomeServicesDomainsLinks.md)
+ - [InterserverApiClient::HomeServicesLicenses](docs/HomeServicesLicenses.md)
+ - [InterserverApiClient::HomeServicesLicensesLinks](docs/HomeServicesLicensesLinks.md)
+ - [InterserverApiClient::HomeServicesServers](docs/HomeServicesServers.md)
+ - [InterserverApiClient::HomeServicesServersLinks](docs/HomeServicesServersLinks.md)
+ - [InterserverApiClient::HomeServicesVps](docs/HomeServicesVps.md)
+ - [InterserverApiClient::HomeServicesVpsLinks](docs/HomeServicesVpsLinks.md)
+ - [InterserverApiClient::HomeServicesWebhosting](docs/HomeServicesWebhosting.md)
+ - [InterserverApiClient::HomeServicesWebhostingLinks](docs/HomeServicesWebhostingLinks.md)
+ - [InterserverApiClient::HomeTicketStatus](docs/HomeTicketStatus.md)
+ - [InterserverApiClient::HomeTicketStatusView](docs/HomeTicketStatusView.md)
+ - [InterserverApiClient::HostnameObject](docs/HostnameObject.md)
+ - [InterserverApiClient::IdAlertsBody](docs/IdAlertsBody.md)
+ - [InterserverApiClient::IdAlertsBody1](docs/IdAlertsBody1.md)
+ - [InterserverApiClient::IdBackupsBody](docs/IdBackupsBody.md)
+ - [InterserverApiClient::IdBackupsBody1](docs/IdBackupsBody1.md)
+ - [InterserverApiClient::IdBackupsBody2](docs/IdBackupsBody2.md)
+ - [InterserverApiClient::IdBackupsBody3](docs/IdBackupsBody3.md)
+ - [InterserverApiClient::IdBuyIpBody](docs/IdBuyIpBody.md)
+ - [InterserverApiClient::IdBuyIpBody1](docs/IdBuyIpBody1.md)
+ - [InterserverApiClient::IdMigrationBody](docs/IdMigrationBody.md)
+ - [InterserverApiClient::IdMigrationBody1](docs/IdMigrationBody1.md)
+ - [InterserverApiClient::IdVerifyBody](docs/IdVerifyBody.md)
+ - [InterserverApiClient::IdVerifyBody1](docs/IdVerifyBody1.md)
+ - [InterserverApiClient::InlineResponse200](docs/InlineResponse200.md)
+ - [InterserverApiClient::InlineResponse2001](docs/InlineResponse2001.md)
+ - [InterserverApiClient::InlineResponse20010](docs/InlineResponse20010.md)
+ - [InterserverApiClient::InlineResponse20011](docs/InlineResponse20011.md)
+ - [InterserverApiClient::InlineResponse20012](docs/InlineResponse20012.md)
+ - [InterserverApiClient::InlineResponse20013](docs/InlineResponse20013.md)
+ - [InterserverApiClient::InlineResponse20013BillingDetails](docs/InlineResponse20013BillingDetails.md)
+ - [InterserverApiClient::InlineResponse20013ClientLinks](docs/InlineResponse20013ClientLinks.md)
+ - [InterserverApiClient::InlineResponse20013ExtraInfoTables](docs/InlineResponse20013ExtraInfoTables.md)
+ - [InterserverApiClient::InlineResponse20013ExtraInfoTablesScrubIps](docs/InlineResponse20013ExtraInfoTablesScrubIps.md)
+ - [InterserverApiClient::InlineResponse20013ExtraInfoTablesScrubIpsRows](docs/InlineResponse20013ExtraInfoTablesScrubIpsRows.md)
+ - [InterserverApiClient::InlineResponse20013FilterFirewall](docs/InlineResponse20013FilterFirewall.md)
+ - [InterserverApiClient::InlineResponse20013FilterFirewallFilters](docs/InlineResponse20013FilterFirewallFilters.md)
+ - [InterserverApiClient::InlineResponse20013FilterFirewallRules](docs/InlineResponse20013FilterFirewallRules.md)
+ - [InterserverApiClient::InlineResponse20013ServiceInfo](docs/InlineResponse20013ServiceInfo.md)
+ - [InterserverApiClient::InlineResponse20014](docs/InlineResponse20014.md)
+ - [InterserverApiClient::InlineResponse20015](docs/InlineResponse20015.md)
+ - [InterserverApiClient::InlineResponse20016](docs/InlineResponse20016.md)
+ - [InterserverApiClient::InlineResponse20017](docs/InlineResponse20017.md)
+ - [InterserverApiClient::InlineResponse20018](docs/InlineResponse20018.md)
+ - [InterserverApiClient::InlineResponse20019](docs/InlineResponse20019.md)
+ - [InterserverApiClient::InlineResponse20019Ips](docs/InlineResponse20019Ips.md)
+ - [InterserverApiClient::InlineResponse20019PackageCosts](docs/InlineResponse20019PackageCosts.md)
+ - [InterserverApiClient::InlineResponse20019ServiceTypes](docs/InlineResponse20019ServiceTypes.md)
+ - [InterserverApiClient::InlineResponse2002](docs/InlineResponse2002.md)
+ - [InterserverApiClient::InlineResponse20020](docs/InlineResponse20020.md)
+ - [InterserverApiClient::InlineResponse20021](docs/InlineResponse20021.md)
+ - [InterserverApiClient::InlineResponse20022](docs/InlineResponse20022.md)
+ - [InterserverApiClient::InlineResponse20023](docs/InlineResponse20023.md)
+ - [InterserverApiClient::InlineResponse20024](docs/InlineResponse20024.md)
+ - [InterserverApiClient::InlineResponse20025](docs/InlineResponse20025.md)
+ - [InterserverApiClient::InlineResponse20026](docs/InlineResponse20026.md)
+ - [InterserverApiClient::InlineResponse20027](docs/InlineResponse20027.md)
+ - [InterserverApiClient::InlineResponse20028](docs/InlineResponse20028.md)
+ - [InterserverApiClient::InlineResponse20029](docs/InlineResponse20029.md)
+ - [InterserverApiClient::InlineResponse20029Bandwidth](docs/InlineResponse20029Bandwidth.md)
+ - [InterserverApiClient::InlineResponse20029Cp](docs/InlineResponse20029Cp.md)
+ - [InterserverApiClient::InlineResponse20029Ips](docs/InlineResponse20029Ips.md)
+ - [InterserverApiClient::InlineResponse20029Os](docs/InlineResponse20029Os.md)
+ - [InterserverApiClient::InlineResponse20029Raid](docs/InlineResponse20029Raid.md)
+ - [InterserverApiClient::InlineResponse2003](docs/InlineResponse2003.md)
+ - [InterserverApiClient::InlineResponse2004](docs/InlineResponse2004.md)
+ - [InterserverApiClient::InlineResponse2005](docs/InlineResponse2005.md)
+ - [InterserverApiClient::InlineResponse2006](docs/InlineResponse2006.md)
+ - [InterserverApiClient::InlineResponse2007](docs/InlineResponse2007.md)
+ - [InterserverApiClient::InlineResponse2008](docs/InlineResponse2008.md)
+ - [InterserverApiClient::InlineResponse2009](docs/InlineResponse2009.md)
+ - [InterserverApiClient::InlineResponse201](docs/InlineResponse201.md)
+ - [InterserverApiClient::InlineResponse2011](docs/InlineResponse2011.md)
+ - [InterserverApiClient::InlineResponse2012](docs/InlineResponse2012.md)
+ - [InterserverApiClient::InlineResponse2012OrderDetails](docs/InlineResponse2012OrderDetails.md)
+ - [InterserverApiClient::InlineResponse2012OrderDetailsCjParams](docs/InlineResponse2012OrderDetailsCjParams.md)
+ - [InterserverApiClient::InlineResponse400](docs/InlineResponse400.md)
+ - [InterserverApiClient::InlineResponse4001](docs/InlineResponse4001.md)
+ - [InterserverApiClient::InlineResponse4002](docs/InlineResponse4002.md)
+ - [InterserverApiClient::InlineResponse4003](docs/InlineResponse4003.md)
+ - [InterserverApiClient::InlineResponse4004](docs/InlineResponse4004.md)
+ - [InterserverApiClient::InlineResponse4005](docs/InlineResponse4005.md)
+ - [InterserverApiClient::InlineResponse401](docs/InlineResponse401.md)
+ - [InterserverApiClient::InlineResponse500](docs/InlineResponse500.md)
+ - [InterserverApiClient::InlineResponse5001](docs/InlineResponse5001.md)
+ - [InterserverApiClient::InlineResponse5002](docs/InlineResponse5002.md)
+ - [InterserverApiClient::InlineResponse5003](docs/InlineResponse5003.md)
+ - [InterserverApiClient::InlineResponse5004](docs/InlineResponse5004.md)
+ - [InterserverApiClient::InlineResponse5005](docs/InlineResponse5005.md)
+ - [InterserverApiClient::InlineResponseMap200](docs/InlineResponseMap200.md)
+ - [InterserverApiClient::IpLimitRange](docs/IpLimitRange.md)
+ - [InterserverApiClient::IpObject](docs/IpObject.md)
+ - [InterserverApiClient::License](docs/License.md)
+ - [InterserverApiClient::LicenseBillingDetails](docs/LicenseBillingDetails.md)
+ - [InterserverApiClient::LicenseClientLink](docs/LicenseClientLink.md)
+ - [InterserverApiClient::LicenseExtraInfoTables](docs/LicenseExtraInfoTables.md)
+ - [InterserverApiClient::LicenseIpInfo](docs/LicenseIpInfo.md)
+ - [InterserverApiClient::LicenseIpInfoRow](docs/LicenseIpInfoRow.md)
+ - [InterserverApiClient::LicenseOrderRequest](docs/LicenseOrderRequest.md)
+ - [InterserverApiClient::LicenseRow](docs/LicenseRow.md)
+ - [InterserverApiClient::LicenseServiceInfo](docs/LicenseServiceInfo.md)
+ - [InterserverApiClient::LicenseServiceType](docs/LicenseServiceType.md)
+ - [InterserverApiClient::LicensesOrder](docs/LicensesOrder.md)
+ - [InterserverApiClient::LicensesOrderPackageCosts](docs/LicensesOrderPackageCosts.md)
+ - [InterserverApiClient::LicensesOrderServiceCategories](docs/LicensesOrderServiceCategories.md)
+ - [InterserverApiClient::LicensesOrderServiceCategories509](docs/LicensesOrderServiceCategories509.md)
+ - [InterserverApiClient::LicensesOrderServiceTypes](docs/LicensesOrderServiceTypes.md)
+ - [InterserverApiClient::LicensesOrderServiceTypes11482](docs/LicensesOrderServiceTypes11482.md)
+ - [InterserverApiClient::LoginErrorResponse](docs/LoginErrorResponse.md)
+ - [InterserverApiClient::LoginInfo](docs/LoginInfo.md)
+ - [InterserverApiClient::LoginServiceCounts](docs/LoginServiceCounts.md)
+ - [InterserverApiClient::LoginSubmissionExample](docs/LoginSubmissionExample.md)
+ - [InterserverApiClient::LoginSubmissionExampleGrecaptcharesponse](docs/LoginSubmissionExampleGrecaptcharesponse.md)
+ - [InterserverApiClient::LoginSubmissionExampleGrecaptcharesponseDep](docs/LoginSubmissionExampleGrecaptcharesponseDep.md)
+ - [InterserverApiClient::LoginSuccessResponse](docs/LoginSuccessResponse.md)
+ - [InterserverApiClient::MailAlertRequest](docs/MailAlertRequest.md)
+ - [InterserverApiClient::MailAlertUpdateRequest](docs/MailAlertUpdateRequest.md)
+ - [InterserverApiClient::MailAlertsResponse](docs/MailAlertsResponse.md)
+ - [InterserverApiClient::MailAlertsResponseInner](docs/MailAlertsResponseInner.md)
+ - [InterserverApiClient::MailAttachment](docs/MailAttachment.md)
+ - [InterserverApiClient::MailBillingDetails](docs/MailBillingDetails.md)
+ - [InterserverApiClient::MailBlockClickHouse](docs/MailBlockClickHouse.md)
+ - [InterserverApiClient::MailBlockRspamd](docs/MailBlockRspamd.md)
+ - [InterserverApiClient::MailBlocks](docs/MailBlocks.md)
+ - [InterserverApiClient::MailClientLink](docs/MailClientLink.md)
+ - [InterserverApiClient::MailDelistRequest](docs/MailDelistRequest.md)
+ - [InterserverApiClient::MailDelistResponse](docs/MailDelistResponse.md)
+ - [InterserverApiClient::MailDeliverabilityResponse](docs/MailDeliverabilityResponse.md)
+ - [InterserverApiClient::MailExtraInfoTable](docs/MailExtraInfoTable.md)
+ - [InterserverApiClient::MailExtraInfoTableRow](docs/MailExtraInfoTableRow.md)
+ - [InterserverApiClient::MailLog](docs/MailLog.md)
+ - [InterserverApiClient::MailLogEntry](docs/MailLogEntry.md)
+ - [InterserverApiClient::MailOrder](docs/MailOrder.md)
+ - [InterserverApiClient::MailOrderRequest](docs/MailOrderRequest.md)
+ - [InterserverApiClient::MailRow](docs/MailRow.md)
+ - [InterserverApiClient::MailSchema](docs/MailSchema.md)
+ - [InterserverApiClient::MailSchemaExtraInfoTables](docs/MailSchemaExtraInfoTables.md)
+ - [InterserverApiClient::MailServiceInfo](docs/MailServiceInfo.md)
+ - [InterserverApiClient::MailServiceType](docs/MailServiceType.md)
+ - [InterserverApiClient::MailStatsType](docs/MailStatsType.md)
+ - [InterserverApiClient::MailStatsTypeVolume](docs/MailStatsTypeVolume.md)
+ - [InterserverApiClient::MailStatsTypeVolumeFrom](docs/MailStatsTypeVolumeFrom.md)
+ - [InterserverApiClient::MailStatsTypeVolumeIp](docs/MailStatsTypeVolumeIp.md)
+ - [InterserverApiClient::MailStatsTypeVolumeTo](docs/MailStatsTypeVolumeTo.md)
+ - [InterserverApiClient::MailTutorialsTable](docs/MailTutorialsTable.md)
+ - [InterserverApiClient::MailTutorialsTableRow](docs/MailTutorialsTableRow.md)
+ - [InterserverApiClient::ModuleSettings](docs/ModuleSettings.md)
+ - [InterserverApiClient::Modules](docs/Modules.md)
+ - [InterserverApiClient::MonthlyCounts](docs/MonthlyCounts.md)
+ - [InterserverApiClient::OauthBody](docs/OauthBody.md)
+ - [InterserverApiClient::OauthBody1](docs/OauthBody1.md)
+ - [InterserverApiClient::OauthBody2](docs/OauthBody2.md)
+ - [InterserverApiClient::OauthBody3](docs/OauthBody3.md)
+ - [InterserverApiClient::OneOfAccountInfoMaxMindResponseRiskScore](docs/OneOfAccountInfoMaxMindResponseRiskScore.md)
+ - [InterserverApiClient::OneOfAccountInfoOauthproviders](docs/OneOfAccountInfoOauthproviders.md)
+ - [InterserverApiClient::OneOfBuyItNowRowCpuItems](docs/OneOfBuyItNowRowCpuItems.md)
+ - [InterserverApiClient::OneOfServerOrderPostRequestHd](docs/OneOfServerOrderPostRequestHd.md)
+ - [InterserverApiClient::OneOfVPSTrafficDataDataSectionResponseItems](docs/OneOfVPSTrafficDataDataSectionResponseItems.md)
+ - [InterserverApiClient::OneOfVpsTrafficHistorySectionDataResponseItems](docs/OneOfVpsTrafficHistorySectionDataResponseItems.md)
+ - [InterserverApiClient::OrderBuyNowServerBody](docs/OrderBuyNowServerBody.md)
+ - [InterserverApiClient::PasswordRequest](docs/PasswordRequest.md)
+ - [InterserverApiClient::QsOrderRequest](docs/QsOrderRequest.md)
+ - [InterserverApiClient::QueueResponse](docs/QueueResponse.md)
+ - [InterserverApiClient::Quickserver](docs/Quickserver.md)
+ - [InterserverApiClient::QuickserverAddons](docs/QuickserverAddons.md)
+ - [InterserverApiClient::QuickserverAddonsRow](docs/QuickserverAddonsRow.md)
+ - [InterserverApiClient::QuickserverBillingDetails](docs/QuickserverBillingDetails.md)
+ - [InterserverApiClient::QuickserverClientLink](docs/QuickserverClientLink.md)
+ - [InterserverApiClient::QuickserverExtraInfoTables](docs/QuickserverExtraInfoTables.md)
+ - [InterserverApiClient::QuickserverIpInfo](docs/QuickserverIpInfo.md)
+ - [InterserverApiClient::QuickserverIpTableRow](docs/QuickserverIpTableRow.md)
+ - [InterserverApiClient::QuickserverOrder](docs/QuickserverOrder.md)
+ - [InterserverApiClient::QuickserverOrderDistroSel](docs/QuickserverOrderDistroSel.md)
+ - [InterserverApiClient::QuickserverOrderDistroSelUbuntu](docs/QuickserverOrderDistroSelUbuntu.md)
+ - [InterserverApiClient::QuickserverOrderServerDetails](docs/QuickserverOrderServerDetails.md)
+ - [InterserverApiClient::QuickserverOrderServerDetails381](docs/QuickserverOrderServerDetails381.md)
+ - [InterserverApiClient::QuickserverOrderTemplates](docs/QuickserverOrderTemplates.md)
+ - [InterserverApiClient::QuickserverOrderTemplatesUbuntu64](docs/QuickserverOrderTemplatesUbuntu64.md)
+ - [InterserverApiClient::QuickserverOrderVersion](docs/QuickserverOrderVersion.md)
+ - [InterserverApiClient::QuickserverOrderVersionCentosstream8](docs/QuickserverOrderVersionCentosstream8.md)
+ - [InterserverApiClient::QuickserverRow](docs/QuickserverRow.md)
+ - [InterserverApiClient::QuickserverServiceExtra](docs/QuickserverServiceExtra.md)
+ - [InterserverApiClient::QuickserverServiceInfo](docs/QuickserverServiceInfo.md)
+ - [InterserverApiClient::QuickserverServiceMaster](docs/QuickserverServiceMaster.md)
+ - [InterserverApiClient::ReplyTicketRequest](docs/ReplyTicketRequest.md)
+ - [InterserverApiClient::ReplyTicketResponseSchema](docs/ReplyTicketResponseSchema.md)
+ - [InterserverApiClient::RestoreRequest](docs/RestoreRequest.md)
+ - [InterserverApiClient::ReverseDnsEntries](docs/ReverseDnsEntries.md)
+ - [InterserverApiClient::ScrubIpFilterTypes](docs/ScrubIpFilterTypes.md)
+ - [InterserverApiClient::ScrubIpFilterTypesFilters](docs/ScrubIpFilterTypesFilters.md)
+ - [InterserverApiClient::ScrubIpPlaceOrder](docs/ScrubIpPlaceOrder.md)
+ - [InterserverApiClient::ScrubIpsLogRowSchema](docs/ScrubIpsLogRowSchema.md)
+ - [InterserverApiClient::ScrubIpsRowSchema](docs/ScrubIpsRowSchema.md)
+ - [InterserverApiClient::SearchAutocompleteResponse](docs/SearchAutocompleteResponse.md)
+ - [InterserverApiClient::SendMail](docs/SendMail.md)
+ - [InterserverApiClient::SendMailAdv](docs/SendMailAdv.md)
+ - [InterserverApiClient::Server](docs/Server.md)
+ - [InterserverApiClient::ServerAsset](docs/ServerAsset.md)
+ - [InterserverApiClient::ServerAssets](docs/ServerAssets.md)
+ - [InterserverApiClient::ServerBillingDetails](docs/ServerBillingDetails.md)
+ - [InterserverApiClient::ServerBulkIpmiPowerResponse](docs/ServerBulkIpmiPowerResponse.md)
+ - [InterserverApiClient::ServerBulkIpmiPowerResponseResults](docs/ServerBulkIpmiPowerResponseResults.md)
+ - [InterserverApiClient::ServerClientLink](docs/ServerClientLink.md)
+ - [InterserverApiClient::ServerExtraInfoTables](docs/ServerExtraInfoTables.md)
+ - [InterserverApiClient::ServerIpmiLiveInfo](docs/ServerIpmiLiveInfo.md)
+ - [InterserverApiClient::ServerIpmiLiveRequest](docs/ServerIpmiLiveRequest.md)
+ - [InterserverApiClient::ServerIpmiPowerRequest](docs/ServerIpmiPowerRequest.md)
+ - [InterserverApiClient::ServerLease](docs/ServerLease.md)
+ - [InterserverApiClient::ServerLocation1](docs/ServerLocation1.md)
+ - [InterserverApiClient::ServerLocations](docs/ServerLocations.md)
+ - [InterserverApiClient::ServerNetworkInfo](docs/ServerNetworkInfo.md)
+ - [InterserverApiClient::ServerNetworkInfoAssets](docs/ServerNetworkInfoAssets.md)
+ - [InterserverApiClient::ServerNetworkInfoSwitchports](docs/ServerNetworkInfoSwitchports.md)
+ - [InterserverApiClient::ServerOrder](docs/ServerOrder.md)
+ - [InterserverApiClient::ServerOrderBandwidth](docs/ServerOrderBandwidth.md)
+ - [InterserverApiClient::ServerOrderBandwidthLi](docs/ServerOrderBandwidthLi.md)
+ - [InterserverApiClient::ServerOrderCPU](docs/ServerOrderCPU.md)
+ - [InterserverApiClient::ServerOrderConfigIds](docs/ServerOrderConfigIds.md)
+ - [InterserverApiClient::ServerOrderControlPanel](docs/ServerOrderControlPanel.md)
+ - [InterserverApiClient::ServerOrderCpLi](docs/ServerOrderCpLi.md)
+ - [InterserverApiClient::ServerOrderCpuLi](docs/ServerOrderCpuLi.md)
+ - [InterserverApiClient::ServerOrderFieldLabel](docs/ServerOrderFieldLabel.md)
+ - [InterserverApiClient::ServerOrderFieldLabels](docs/ServerOrderFieldLabels.md)
+ - [InterserverApiClient::ServerOrderFormValues](docs/ServerOrderFormValues.md)
+ - [InterserverApiClient::ServerOrderIP](docs/ServerOrderIP.md)
+ - [InterserverApiClient::ServerOrderIpsLi](docs/ServerOrderIpsLi.md)
+ - [InterserverApiClient::ServerOrderMemory](docs/ServerOrderMemory.md)
+ - [InterserverApiClient::ServerOrderMemoryLi](docs/ServerOrderMemoryLi.md)
+ - [InterserverApiClient::ServerOrderMemoryLi254](docs/ServerOrderMemoryLi254.md)
+ - [InterserverApiClient::ServerOrderOS](docs/ServerOrderOS.md)
+ - [InterserverApiClient::ServerOrderOsLi](docs/ServerOrderOsLi.md)
+ - [InterserverApiClient::ServerOrderPostRequest](docs/ServerOrderPostRequest.md)
+ - [InterserverApiClient::ServerOrderRAID](docs/ServerOrderRAID.md)
+ - [InterserverApiClient::ServerRow](docs/ServerRow.md)
+ - [InterserverApiClient::ServerServiceInfo](docs/ServerServiceInfo.md)
+ - [InterserverApiClient::ServerSwitchport](docs/ServerSwitchport.md)
+ - [InterserverApiClient::ServersBuyNowError](docs/ServersBuyNowError.md)
+ - [InterserverApiClient::ServersBuyNowResponse](docs/ServersBuyNowResponse.md)
+ - [InterserverApiClient::ServersBuyNowResponseOrderDetails](docs/ServersBuyNowResponseOrderDetails.md)
+ - [InterserverApiClient::Service](docs/Service.md)
+ - [InterserverApiClient::ServiceCategories](docs/ServiceCategories.md)
+ - [InterserverApiClient::ServiceCategory](docs/ServiceCategory.md)
+ - [InterserverApiClient::ServiceOrderPostResponse](docs/ServiceOrderPostResponse.md)
+ - [InterserverApiClient::ServiceType](docs/ServiceType.md)
+ - [InterserverApiClient::ServiceTypes](docs/ServiceTypes.md)
+ - [InterserverApiClient::Services](docs/Services.md)
+ - [InterserverApiClient::ServicesInfo](docs/ServicesInfo.md)
+ - [InterserverApiClient::SslOrderRequest](docs/SslOrderRequest.md)
+ - [InterserverApiClient::StartDate](docs/StartDate.md)
+ - [InterserverApiClient::StatusMonthlyBreakdown](docs/StatusMonthlyBreakdown.md)
+ - [InterserverApiClient::SuccessTextResponse](docs/SuccessTextResponse.md)
+ - [InterserverApiClient::TemplateRequest](docs/TemplateRequest.md)
+ - [InterserverApiClient::TextResponse](docs/TextResponse.md)
+ - [InterserverApiClient::TicketCustomFieldDetails](docs/TicketCustomFieldDetails.md)
+ - [InterserverApiClient::TicketDetails](docs/TicketDetails.md)
+ - [InterserverApiClient::TicketNew](docs/TicketNew.md)
+ - [InterserverApiClient::TicketNewResponse](docs/TicketNewResponse.md)
+ - [InterserverApiClient::TicketPostDetails](docs/TicketPostDetails.md)
+ - [InterserverApiClient::TicketPostDetailsInner](docs/TicketPostDetailsInner.md)
+ - [InterserverApiClient::Tickets](docs/Tickets.md)
+ - [InterserverApiClient::TicketsCountArray](docs/TicketsCountArray.md)
+ - [InterserverApiClient::TicketsRow](docs/TicketsRow.md)
+ - [InterserverApiClient::TimezoneUpdate](docs/TimezoneUpdate.md)
+ - [InterserverApiClient::UpdateTicket](docs/UpdateTicket.md)
+ - [InterserverApiClient::UpdateTicketResponseSchema](docs/UpdateTicketResponseSchema.md)
+ - [InterserverApiClient::UrlRequest](docs/UrlRequest.md)
+ - [InterserverApiClient::VPSTrafficDataDataSectionResponse](docs/VPSTrafficDataDataSectionResponse.md)
+ - [InterserverApiClient::ViewTicketResponse](docs/ViewTicketResponse.md)
+ - [InterserverApiClient::Vps](docs/Vps.md)
+ - [InterserverApiClient::VpsBackupRow](docs/VpsBackupRow.md)
+ - [InterserverApiClient::VpsBackupRows](docs/VpsBackupRows.md)
+ - [InterserverApiClient::VpsBillingDetails](docs/VpsBillingDetails.md)
+ - [InterserverApiClient::VpsCPData](docs/VpsCPData.md)
+ - [InterserverApiClient::VpsClientLink](docs/VpsClientLink.md)
+ - [InterserverApiClient::VpsDAData](docs/VpsDAData.md)
+ - [InterserverApiClient::VpsDALicense](docs/VpsDALicense.md)
+ - [InterserverApiClient::VpsExtraInfoTables](docs/VpsExtraInfoTables.md)
+ - [InterserverApiClient::VpsIPInfo](docs/VpsIPInfo.md)
+ - [InterserverApiClient::VpsIPInfoRow](docs/VpsIPInfoRow.md)
+ - [InterserverApiClient::VpsOrder](docs/VpsOrder.md)
+ - [InterserverApiClient::VpsOrderLocationNames](docs/VpsOrderLocationNames.md)
+ - [InterserverApiClient::VpsOrderLocationStock](docs/VpsOrderLocationStock.md)
+ - [InterserverApiClient::VpsOrderLocationStock1](docs/VpsOrderLocationStock1.md)
+ - [InterserverApiClient::VpsOrderOsNames](docs/VpsOrderOsNames.md)
+ - [InterserverApiClient::VpsOrderPackageCosts](docs/VpsOrderPackageCosts.md)
+ - [InterserverApiClient::VpsOrderPlatformNames](docs/VpsOrderPlatformNames.md)
+ - [InterserverApiClient::VpsOrderPlatformPackages](docs/VpsOrderPlatformPackages.md)
+ - [InterserverApiClient::VpsOrderPostRequest](docs/VpsOrderPostRequest.md)
+ - [InterserverApiClient::VpsOrderPutRequest](docs/VpsOrderPutRequest.md)
+ - [InterserverApiClient::VpsOrderPutResponse](docs/VpsOrderPutResponse.md)
+ - [InterserverApiClient::VpsOrderServiceTypes](docs/VpsOrderServiceTypes.md)
+ - [InterserverApiClient::VpsOrderServiceTypes32](docs/VpsOrderServiceTypes32.md)
+ - [InterserverApiClient::VpsOrderTemplates](docs/VpsOrderTemplates.md)
+ - [InterserverApiClient::VpsOrderTemplatesHyperv](docs/VpsOrderTemplatesHyperv.md)
+ - [InterserverApiClient::VpsOrderTemplatesHypervWindows](docs/VpsOrderTemplatesHypervWindows.md)
+ - [InterserverApiClient::VpsPlesk12Data](docs/VpsPlesk12Data.md)
+ - [InterserverApiClient::VpsPleskLicense](docs/VpsPleskLicense.md)
+ - [InterserverApiClient::VpsRow](docs/VpsRow.md)
+ - [InterserverApiClient::VpsServiceAddons](docs/VpsServiceAddons.md)
+ - [InterserverApiClient::VpsServiceExtra](docs/VpsServiceExtra.md)
+ - [InterserverApiClient::VpsServiceInfo](docs/VpsServiceInfo.md)
+ - [InterserverApiClient::VpsServiceMaster](docs/VpsServiceMaster.md)
+ - [InterserverApiClient::VpsSnapshot](docs/VpsSnapshot.md)
+ - [InterserverApiClient::VpsTemplateRow](docs/VpsTemplateRow.md)
+ - [InterserverApiClient::VpsTemplatesList](docs/VpsTemplatesList.md)
+ - [InterserverApiClient::VpsTrafficDataSectionResponse](docs/VpsTrafficDataSectionResponse.md)
+ - [InterserverApiClient::VpsTrafficHistoryResponse](docs/VpsTrafficHistoryResponse.md)
+ - [InterserverApiClient::VpsTrafficHistorySectionDataResponse](docs/VpsTrafficHistorySectionDataResponse.md)
+ - [InterserverApiClient::VpsTrafficHistorySectionResponse](docs/VpsTrafficHistorySectionResponse.md)
+ - [InterserverApiClient::VpsTrafficResponse](docs/VpsTrafficResponse.md)
+ - [InterserverApiClient::VpsTrafficTotalsResposne](docs/VpsTrafficTotalsResposne.md)
+ - [InterserverApiClient::VpsTrafficTotalsSectionResponse](docs/VpsTrafficTotalsSectionResponse.md)
+ - [InterserverApiClient::VpsTrafficUsageAverageResponse](docs/VpsTrafficUsageAverageResponse.md)
+ - [InterserverApiClient::VpsTrafficUsageAverageSectionResponse](docs/VpsTrafficUsageAverageSectionResponse.md)
+ - [InterserverApiClient::VpsTrafficUsageResponse](docs/VpsTrafficUsageResponse.md)
+ - [InterserverApiClient::Website](docs/Website.md)
+ - [InterserverApiClient::WebsiteBackups](docs/WebsiteBackups.md)
+ - [InterserverApiClient::WebsiteBackupsInner](docs/WebsiteBackupsInner.md)
+ - [InterserverApiClient::WebsiteBillingDetails](docs/WebsiteBillingDetails.md)
+ - [InterserverApiClient::WebsiteClientLink](docs/WebsiteClientLink.md)
+ - [InterserverApiClient::WebsiteExtraInfoTables](docs/WebsiteExtraInfoTables.md)
+ - [InterserverApiClient::WebsiteLoginResponse](docs/WebsiteLoginResponse.md)
+ - [InterserverApiClient::WebsiteOrderPostRequest](docs/WebsiteOrderPostRequest.md)
+ - [InterserverApiClient::WebsiteOrderPutRequest](docs/WebsiteOrderPutRequest.md)
+ - [InterserverApiClient::WebsiteRow](docs/WebsiteRow.md)
+ - [InterserverApiClient::WebsiteServiceExtra](docs/WebsiteServiceExtra.md)
+ - [InterserverApiClient::WebsiteServiceInfo](docs/WebsiteServiceInfo.md)
+ - [InterserverApiClient::WebsiteServiceMaster](docs/WebsiteServiceMaster.md)
+ - [InterserverApiClient::WebsiteTable](docs/WebsiteTable.md)
+ - [InterserverApiClient::WebsiteTableRow](docs/WebsiteTableRow.md)
+ - [InterserverApiClient::WebsitesOrder](docs/WebsitesOrder.md)
+ - [InterserverApiClient::WebsitesOrderJsonServiceOffers](docs/WebsitesOrderJsonServiceOffers.md)
+ - [InterserverApiClient::WebsitesOrderJsonServiceOffersItem](docs/WebsitesOrderJsonServiceOffersItem.md)
+ - [InterserverApiClient::WebsitesOrderJsonServices](docs/WebsitesOrderJsonServices.md)
+ - [InterserverApiClient::WebsitesOrderPackages](docs/WebsitesOrderPackages.md)
+ - [InterserverApiClient::WebsitesOrderPackagesInfo](docs/WebsitesOrderPackagesInfo.md)
+ - [InterserverApiClient::WebsitesOrderPackges](docs/WebsitesOrderPackges.md)
+ - [InterserverApiClient::WebsitesOrderServiceOffer](docs/WebsitesOrderServiceOffer.md)
+ - [InterserverApiClient::WebsitesOrderServiceOffers](docs/WebsitesOrderServiceOffers.md)
+ - [InterserverApiClient::WebsitesOrderServiceTypes](docs/WebsitesOrderServiceTypes.md)
 
 ## Documentation for Authorization
 

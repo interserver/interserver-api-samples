@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for WebsiteRow
 void main() {
-  final instance = WebsiteRowBuilder();
-  // TODO add properties to the builder and call build()
+  final WebsiteRow? instance = /* WebsiteRow(...) */ null;
+  // TODO add properties to the entity
 
   group(WebsiteRow, () {
     // The id of the website.

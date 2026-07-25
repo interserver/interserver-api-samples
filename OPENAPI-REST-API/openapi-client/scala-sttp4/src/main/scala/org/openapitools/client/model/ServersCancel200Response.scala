@@ -16,4 +16,3 @@ case class ServersCancel200Response(
   success: Boolean,
   text: String
 )
-

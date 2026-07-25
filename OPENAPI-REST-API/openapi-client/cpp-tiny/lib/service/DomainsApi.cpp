@@ -9,6 +9,9 @@ using namespace Tiny;
         >
         DomainsApi::
         addDomain(
+            
+            DomainOrderRequest domainOrderRequest
+            
         )
         {
             std::string url = basepath + "/domains/order"; //
@@ -19,6 +22,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -27,7 +31,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | 
+            // Body     | domainOrderRequest
+
+
+
+            payload = domainOrderRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
@@ -222,9 +231,6 @@ using namespace Tiny;
         deleteDomainDnssec(
             
             int id
-            , 
-            
-            std::string action
             
         )
         {
@@ -233,8 +239,7 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | action 
-            addQueryParam("action",action);
+            // Query    | 
 
             // Form     | 
 
@@ -632,109 +637,6 @@ using namespace Tiny;
         }
 
         Response<
-            String
-        >
-        DomainsApi::
-        getDomainOrderFields(
-            
-            std::string domain
-            , 
-            
-            std::string regType
-            
-        )
-        {
-            std::string url = basepath + "/domains/order/{domain}/{regType}"; //domain regType 
-
-
-            // Headers  | 
-
-            // Query    | 
-
-            // Form     | 
-
-
-
-                std::string s_domain("{");
-                s_domain.append("domain");
-                s_domain.append("}");
-
-                int pos = url.find(s_domain);
-
-                url.erase(pos, s_domain.length());
-                url.insert(pos, stringify(domain));
-                std::string s_regType("{");
-                s_regType.append("regType");
-                s_regType.append("}");
-
-                int pos = url.find(s_regType);
-
-                url.erase(pos, s_regType.length());
-                url.insert(pos, stringify(regType));
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | GET
-            // Body     | 
-            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-            Response<String> response(output, httpCode);
-            return response;
-        }
-
-        Response<
-            String
-        >
-        DomainsApi::
-        getDomainOrderSearchResults(
-            
-            std::string domain
-            
-        )
-        {
-            std::string url = basepath + "/domains/order/{domain}"; //domain 
-
-
-            // Headers  | 
-
-            // Query    | 
-
-            // Form     | 
-
-
-
-                std::string s_domain("{");
-                s_domain.append("domain");
-                s_domain.append("}");
-
-                int pos = url.find(s_domain);
-
-                url.erase(pos, s_domain.length());
-                url.insert(pos, stringify(domain));
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | GET
-            // Body     | 
-            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-            Response<String> response(output, httpCode);
-            return response;
-        }
-
-        Response<
             SuccessTextResponse
         >
         DomainsApi::
@@ -1094,6 +996,9 @@ using namespace Tiny;
         >
         DomainsApi::
         patchDomains(
+            
+            DomainOrderRequest domainOrderRequest
+            
         )
         {
             std::string url = basepath + "/domains/order"; //
@@ -1104,6 +1009,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -1112,7 +1018,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PATCH
-            // Body     | 
+            // Body     | domainOrderRequest
+
+
+
+            payload = domainOrderRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
@@ -1176,6 +1087,52 @@ using namespace Tiny;
         }
 
         Response<
+            String
+        >
+        DomainsApi::
+        postDomainSearch(
+            
+            std::string name
+            
+        )
+        {
+            std::string url = basepath + "/domains/search/{name}"; //name 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_name("{");
+                s_name.append("name");
+                s_name.append("}");
+
+                int pos = url.find(s_name);
+
+                url.erase(pos, s_name.length());
+                url.insert(pos, stringify(name));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | POST
+            // Body     | 
+            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+            Response<String> response(output, httpCode);
+            return response;
+        }
+
+        Response<
             SuccessTextResponse
         >
         DomainsApi::
@@ -1231,6 +1188,9 @@ using namespace Tiny;
         >
         DomainsApi::
         putDomains(
+            
+            DomainOrderRequest domainOrderRequest
+            
         )
         {
             std::string url = basepath + "/domains/order"; //
@@ -1241,6 +1201,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -1249,7 +1210,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PUT
-            // Body     | 
+            // Body     | domainOrderRequest
+
+
+
+            payload = domainOrderRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "PUT", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
@@ -1327,7 +1293,7 @@ using namespace Tiny;
         DomainsApi::
         updateDomainInfo(
             
-            std::string id
+            int id
             
         )
         {

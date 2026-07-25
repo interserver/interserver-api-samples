@@ -1,4 +1,4 @@
-# openapi::HomeDetailsModulesQuickservers
+# interserverapi::HomeDetailsModulesQuickservers
 
 Dashboard module configuration for QuickServer services.
 

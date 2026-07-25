@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JValue
 
   /**
    * Lookup and suggestion results returned for a domain search.
@@ -23,9 +24,9 @@ case class DomainSearchResponse(
   /* Response time as reported by the registrar. */
   response_time: Option[String] = None,
   /* Availability lookup results for queried domains. */
-  lookup: Option[Seq[Any]] = None,
+  lookup: Option[Seq[JValue]] = None,
   /* Suggested alternative domains and availability data. */
-  suggest: Option[Seq[Any]] = None,
+  suggest: Option[Seq[JValue]] = None,
   /* TLDs evaluated during the search. */
   tlds: Option[Seq[String]] = None
 )

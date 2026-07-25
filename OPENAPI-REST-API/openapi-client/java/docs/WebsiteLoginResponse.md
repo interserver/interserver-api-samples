@@ -12,4 +12,8 @@ Response from a website login request.
 |**location** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

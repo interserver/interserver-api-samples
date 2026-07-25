@@ -13,4 +13,8 @@ Map of domain service IDs to their hostnames for the account dashboard.
 |**_592337** | **String** | Link to a domain. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

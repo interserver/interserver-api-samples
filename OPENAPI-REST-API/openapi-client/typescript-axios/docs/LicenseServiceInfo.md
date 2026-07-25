@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LicenseServiceInfo } from './api';
+import { LicenseServiceInfo } from '@interserver/myadmin-client';
 
 const instance: LicenseServiceInfo = {
     license_id,

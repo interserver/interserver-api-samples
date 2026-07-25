@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailLogEntry = Initialize-PSOpenAPIToolsMailLogEntry  -Id 103172 `
+$MailLogEntry = Initialize-InterserverApiMailLogEntry  -Id 103172 `
  -Id 17c7eda538e0005d03 `
  -VarFrom person@mysite.com `
  -To client@isp.com `

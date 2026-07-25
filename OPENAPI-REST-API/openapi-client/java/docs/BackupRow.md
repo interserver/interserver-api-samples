@@ -16,4 +16,8 @@ A result row from the `Backups` `GET` request.
 |**servicesName** | **String** | The services name of the backup. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

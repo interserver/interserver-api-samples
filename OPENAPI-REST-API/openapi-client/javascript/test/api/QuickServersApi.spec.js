@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QuickServersApi();
+    instance = new InterserverApiClient.QuickServersApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -162,6 +162,16 @@
       it('should call getNewQs successfully', function(done) {
         //uncomment below and update the code to test getNewQs
         //instance.getNewQs(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getQsBackup', function() {
+      it('should call getQsBackup successfully', function(done) {
+        //uncomment below and update the code to test getQsBackup
+        //instance.getQsBackup(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -322,16 +332,6 @@
       it('should call getQsWelcomeEmail successfully', function(done) {
         //uncomment below and update the code to test getQsWelcomeEmail
         //instance.getQsWelcomeEmail(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('postQsBackup', function() {
-      it('should call postQsBackup successfully', function(done) {
-        //uncomment below and update the code to test postQsBackup
-        //instance.postQsBackup(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

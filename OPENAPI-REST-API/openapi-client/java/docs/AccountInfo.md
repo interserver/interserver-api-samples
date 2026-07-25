@@ -23,4 +23,8 @@ Contains the full account profile including personal info, billing details, OAut
 |**gravatar** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

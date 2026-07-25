@@ -15,14 +15,14 @@ my $my_app = $options{c} || 'My::App';
 if ($options{c}) {
     eval <<LOAD;
 use $my_app;
-apply_all_roles($my_app, "OpenAPIClient::Role::AutoDoc");
+apply_all_roles($my_app, "InterServerAPI::Role::AutoDoc");
 LOAD
     die $@ if $@;
 }
 else {
     package My::App;
     use Moose;
-    with ('OpenAPIClient::Role', 'OpenAPIClient::Role::AutoDoc');
+    with ('InterServerAPI::Role', 'InterServerAPI::Role::AutoDoc');
 }
 
 package main;

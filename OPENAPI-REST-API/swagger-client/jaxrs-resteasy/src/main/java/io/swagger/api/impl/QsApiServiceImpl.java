@@ -6,9 +6,10 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBackupsBody;
-import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse20011;
+import io.swagger.model.InlineResponse20012;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.QsOrderRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.Quickserver;
 import io.swagger.model.QuickserverOrder;
@@ -35,7 +36,7 @@ import javax.ws.rs.core.SecurityContext;
 @RequestScoped
 
 public class QsApiServiceImpl implements QsApiService {
-      public Response addQs(SecurityContext securityContext)
+      public Response addQs(QsOrderRequest body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -96,6 +97,11 @@ public class QsApiServiceImpl implements QsApiService {
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
       public Response getNewQs(SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
+      public Response getQsBackup(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -180,11 +186,6 @@ public class QsApiServiceImpl implements QsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response postQsBackup(Integer id,SecurityContext securityContext)
-      throws NotFoundException {
-      // do some magic!
-      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-  }
       public Response postQsChangeHostname(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
@@ -260,7 +261,7 @@ public class QsApiServiceImpl implements QsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response putQs(SecurityContext securityContext)
+      public Response putQs(QsOrderRequest body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

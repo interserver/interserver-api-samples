@@ -11,12 +11,25 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 public class InlineResponse20011   {
-  private String text = null;  private String url = null;
+  private Boolean success = null;  private String text = null;
 
   /**
    **/
   
-  @Schema(description = "")
+  @Schema(required = true, description = "")
+  @JsonProperty("success")
+  @NotNull
+  public Boolean isSuccess() {
+    return success;
+  }
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
+  /**
+   **/
+  
+  @Schema(required = true, description = "")
   @JsonProperty("text")
   @NotNull
   public String getText() {
@@ -24,20 +37,6 @@ public class InlineResponse20011   {
   }
   public void setText(String text) {
     this.text = text;
-  }
-
-  /**
-   * A pre-signed download URL valid for 24 hours.
-   **/
-  
-  @Schema(description = "A pre-signed download URL valid for 24 hours.")
-  @JsonProperty("url")
-  @NotNull
-  public String getUrl() {
-    return url;
-  }
-  public void setUrl(String url) {
-    this.url = url;
   }
 
 
@@ -50,13 +49,13 @@ public class InlineResponse20011   {
       return false;
     }
     InlineResponse20011 inlineResponse20011 = (InlineResponse20011) o;
-    return Objects.equals(text, inlineResponse20011.text) &&
-        Objects.equals(url, inlineResponse20011.url);
+    return Objects.equals(success, inlineResponse20011.success) &&
+        Objects.equals(text, inlineResponse20011.text);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, url);
+    return Objects.hash(success, text);
   }
 
   @Override
@@ -64,8 +63,8 @@ public class InlineResponse20011   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20011 {\n");
     
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,4 +1,4 @@
-# openapi::HomeServicesDomains
+# interserverapi::HomeServicesDomains
 
 
 ## Properties

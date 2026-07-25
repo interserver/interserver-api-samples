@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderCPU = Initialize-PSOpenAPIToolsServerOrderCPU  -Id 254 `
+$ServerOrderCPU = Initialize-InterserverApiServerOrderCPU  -Id 254 `
  -Price 0 `
  -Img ryzen.png `
  -ShortDesc AMD RYZEN 7900X `

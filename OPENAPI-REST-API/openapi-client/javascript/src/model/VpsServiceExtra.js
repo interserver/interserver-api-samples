@@ -17,7 +17,7 @@ import VpsSnapshot from './VpsSnapshot';
 /**
  * The VpsServiceExtra model module.
  * @module model/VpsServiceExtra
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsServiceExtra {
     /**

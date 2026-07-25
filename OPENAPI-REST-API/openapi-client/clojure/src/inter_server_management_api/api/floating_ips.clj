@@ -14,6 +14,7 @@
             [inter-server-management-api.specs.enable-scrub-500-response :refer :all]
             [inter-server-management-api.specs.login-error-response :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall-rules-inner :refer :all]
+            [inter-server-management-api.specs.server-order-post-request :refer :all]
             [inter-server-management-api.specs.account-info-data-extra :refer :all]
             [inter-server-management-api.specs.server-order-memory-li-254 :refer :all]
             [inter-server-management-api.specs.affiliate-traffic-row :refer :all]
@@ -23,6 +24,7 @@
             [inter-server-management-api.specs.quickserver-order-distro-sel-ubuntu :refer :all]
             [inter-server-management-api.specs.domain :refer :all]
             [inter-server-management-api.specs.generic-response :refer :all]
+            [inter-server-management-api.specs.floating-ip-order-request :refer :all]
             [inter-server-management-api.specs.mail-blocks :refer :all]
             [inter-server-management-api.specs.update-account-tfa-request :refer :all]
             [inter-server-management-api.specs.billing-invoice-detail :refer :all]
@@ -34,13 +36,14 @@
             [inter-server-management-api.specs.licenses-cancel-200-response :refer :all]
             [inter-server-management-api.specs.text-response :refer :all]
             [inter-server-management-api.specs.server-network-info :refer :all]
-            [inter-server-management-api.specs.hard-drive :refer :all]
             [inter-server-management-api.specs.account-info-oauth-config-providers :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall :refer :all]
             [inter-server-management-api.specs.success-text-response :refer :all]
             [inter-server-management-api.specs.server-order-control-panel :refer :all]
+            [inter-server-management-api.specs.get-affiliate-signups-200-response :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall-filters-inner :refer :all]
             [inter-server-management-api.specs.websites-order-json-service-offers-item :refer :all]
+            [inter-server-management-api.specs.put-scrub-ips-200-response :refer :all]
             [inter-server-management-api.specs.ticket-post-details-inner :refer :all]
             [inter-server-management-api.specs.website :refer :all]
             [inter-server-management-api.specs.reverse-dns-entries :refer :all]
@@ -50,14 +53,13 @@
             [inter-server-management-api.specs.post-website-buy-ip-request :refer :all]
             [inter-server-management-api.specs.domain-prov-process-pending-attributes :refer :all]
             [inter-server-management-api.specs.create-filter-201-response :refer :all]
-            [inter-server-management-api.specs.asset-server-cpu-inner :refer :all]
             [inter-server-management-api.specs.websites-order :refer :all]
             [inter-server-management-api.specs.ticket-details :refer :all]
             [inter-server-management-api.specs.webhosting-cancel-200-response :refer :all]
-            [inter-server-management-api.specs.field-label :refer :all]
             [inter-server-management-api.specs.download-qs-backup-200-response :refer :all]
             [inter-server-management-api.specs.vps-traffic-data-data-section-response :refer :all]
             [inter-server-management-api.specs.send-mail-adv :refer :all]
+            [inter-server-management-api.specs.license-order-request :refer :all]
             [inter-server-management-api.specs.domain-all-info-attributes :refer :all]
             [inter-server-management-api.specs.server-order :refer :all]
             [inter-server-management-api.specs.service-category :refer :all]
@@ -98,10 +100,10 @@
             [inter-server-management-api.specs.scrub-ips-log-row-schema :refer :all]
             [inter-server-management-api.specs.website-table :refer :all]
             [inter-server-management-api.specs.domain-name-server :refer :all]
-            [inter-server-management-api.specs.config-ids :refer :all]
             [inter-server-management-api.specs.ticket-new-response :refer :all]
             [inter-server-management-api.specs.affiliate-dock-setup :refer :all]
             [inter-server-management-api.specs.server-order-os :refer :all]
+            [inter-server-management-api.specs.website-order-put-request :refer :all]
             [inter-server-management-api.specs.account-info-max-mind-response-risk-score :refer :all]
             [inter-server-management-api.specs.billing-add-cc-request :refer :all]
             [inter-server-management-api.specs.account-info-max-mind-response :refer :all]
@@ -112,6 +114,7 @@
             [inter-server-management-api.specs.billing-payment-method-request :refer :all]
             [inter-server-management-api.specs.home :refer :all]
             [inter-server-management-api.specs.server-locations :refer :all]
+            [inter-server-management-api.specs.ssl-order-request :refer :all]
             [inter-server-management-api.specs.service :refer :all]
             [inter-server-management-api.specs.server-order-os-li :refer :all]
             [inter-server-management-api.specs.vps :refer :all]
@@ -119,6 +122,7 @@
             [inter-server-management-api.specs.backup :refer :all]
             [inter-server-management-api.specs.account-info-data-ccs :refer :all]
             [inter-server-management-api.specs.disable-scrub-400-response :refer :all]
+            [inter-server-management-api.specs.mail-order-request :refer :all]
             [inter-server-management-api.specs.websites-order-packages :refer :all]
             [inter-server-management-api.specs.quickserver-billing-details :refer :all]
             [inter-server-management-api.specs.get-oauth-redirect-200-response :refer :all]
@@ -127,6 +131,7 @@
             [inter-server-management-api.specs.server-service-info :refer :all]
             [inter-server-management-api.specs.home-details-modules-vps :refer :all]
             [inter-server-management-api.specs.backup-order-put-response :refer :all]
+            [inter-server-management-api.specs.website-order-post-request :refer :all]
             [inter-server-management-api.specs.scrub-ip-filter-types-filters-value :refer :all]
             [inter-server-management-api.specs.patch-oauth-two-factor-request :refer :all]
             [inter-server-management-api.specs.home-ticket-status-view :refer :all]
@@ -136,6 +141,7 @@
             [inter-server-management-api.specs.create-geo-firewall-rule :refer :all]
             [inter-server-management-api.specs.create-rule-400-response :refer :all]
             [inter-server-management-api.specs.account-info-data-email-settings :refer :all]
+            [inter-server-management-api.specs.qs-order-request :refer :all]
             [inter-server-management-api.specs.mail-delist-response :refer :all]
             [inter-server-management-api.specs.server-order-cpu :refer :all]
             [inter-server-management-api.specs.domain-nameserver-post-request :refer :all]
@@ -150,16 +156,16 @@
             [inter-server-management-api.specs.domain-service-info :refer :all]
             [inter-server-management-api.specs.scrub-ips-delete-rule-200-response :refer :all]
             [inter-server-management-api.specs.server-extra-info-tables :refer :all]
-            [inter-server-management-api.specs.asset-server :refer :all]
             [inter-server-management-api.specs.dns-record-type :refer :all]
             [inter-server-management-api.specs.domain-nameserver-get-response :refer :all]
             [inter-server-management-api.specs.licenses-order-service-categories :refer :all]
+            [inter-server-management-api.specs.server-bulk-ipmi-power-response :refer :all]
             [inter-server-management-api.specs.vps-order-platform-names :refer :all]
             [inter-server-management-api.specs.quickserver-order :refer :all]
             [inter-server-management-api.specs.websites-order-packges :refer :all]
             [inter-server-management-api.specs.servers-buy-now-error :refer :all]
-            [inter-server-management-api.specs.cpu-with-defaults :refer :all]
             [inter-server-management-api.specs.close-ticket-response-schema :refer :all]
+            [inter-server-management-api.specs.server-order-post-request-hd :refer :all]
             [inter-server-management-api.specs.quickserver-order-templates-ubuntu64 :refer :all]
             [inter-server-management-api.specs.vps-extra-info-tables :refer :all]
             [inter-server-management-api.specs.home-services-licenses :refer :all]
@@ -169,7 +175,7 @@
             [inter-server-management-api.specs.mail-log :refer :all]
             [inter-server-management-api.specs.domain-prov-process-pending :refer :all]
             [inter-server-management-api.specs.domain-lookup-response :refer :all]
-            [inter-server-management-api.specs.operating-system :refer :all]
+            [inter-server-management-api.specs.domain-order-request :refer :all]
             [inter-server-management-api.specs.dns-record :refer :all]
             [inter-server-management-api.specs.vps-order-os-names :refer :all]
             [inter-server-management-api.specs.vps-traffic-totals-section-response :refer :all]
@@ -177,13 +183,11 @@
             [inter-server-management-api.specs.buy-it-now-row-cpu-inner :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-extra-info-tables :refer :all]
-            [inter-server-management-api.specs.inline-object :refer :all]
             [inter-server-management-api.specs.vps-cp-data :refer :all]
             [inter-server-management-api.specs.server-order-cpu-li :refer :all]
             [inter-server-management-api.specs.domain-order-services :refer :all]
             [inter-server-management-api.specs.login-info :refer :all]
             [inter-server-management-api.specs.home-services-vps-links :refer :all]
-            [inter-server-management-api.specs.cpu :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-row :refer :all]
             [inter-server-management-api.specs.website-service-info :refer :all]
@@ -211,10 +215,8 @@
             [inter-server-management-api.specs.server-ipmi-power-request :refer :all]
             [inter-server-management-api.specs.quickservers-cancel-200-response :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response-ips-inner :refer :all]
-            [inter-server-management-api.specs.form-values :refer :all]
             [inter-server-management-api.specs.service-type :refer :all]
             [inter-server-management-api.specs.vps-snapshot :refer :all]
-            [inter-server-management-api.specs.raid-option :refer :all]
             [inter-server-management-api.specs.service-categories :refer :all]
             [inter-server-management-api.specs.vps-order :refer :all]
             [inter-server-management-api.specs.backup-service-extra :refer :all]
@@ -229,10 +231,8 @@
             [inter-server-management-api.specs.vps-order-templates :refer :all]
             [inter-server-management-api.specs.restore-request :refer :all]
             [inter-server-management-api.specs.account-info :refer :all]
-            [inter-server-management-api.specs.control-panel :refer :all]
             [inter-server-management-api.specs.backup-extra-info-tables :refer :all]
             [inter-server-management-api.specs.send-mail :refer :all]
-            [inter-server-management-api.specs.ip-block :refer :all]
             [inter-server-management-api.specs.servers-buy-now-response :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response-ips-inner :refer :all]
             [inter-server-management-api.specs.domain-billing-details :refer :all]
@@ -259,10 +259,10 @@
             [inter-server-management-api.specs.create-filter :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response-raid-inner :refer :all]
             [inter-server-management-api.specs.vps-traffic-totals-resposne :refer :all]
+            [inter-server-management-api.specs.server-bulk-ipmi-power-response-results-inner :refer :all]
             [inter-server-management-api.specs.dns-list-item :refer :all]
             [inter-server-management-api.specs.cancel-domain-200-response :refer :all]
             [inter-server-management-api.specs.home-details :refer :all]
-            [inter-server-management-api.specs.domain-order-tld-services :refer :all]
             [inter-server-management-api.specs.server-ipmi-live-info :refer :all]
             [inter-server-management-api.specs.home-services-domains-links :refer :all]
             [inter-server-management-api.specs.home-services :refer :all]
@@ -271,7 +271,7 @@
             [inter-server-management-api.specs.account-info-limits :refer :all]
             [inter-server-management-api.specs.queue-response :refer :all]
             [inter-server-management-api.specs.cancel-scrub-ip-200-response :refer :all]
-            [inter-server-management-api.specs.bandwidth :refer :all]
+            [inter-server-management-api.specs.delete-mail-alert-request :refer :all]
             [inter-server-management-api.specs.services :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response-package-costs :refer :all]
             [inter-server-management-api.specs.domain-client-link :refer :all]
@@ -283,7 +283,6 @@
             [inter-server-management-api.specs.vps-order-location-names :refer :all]
             [inter-server-management-api.specs.get-website-buy-ip-200-response :refer :all]
             [inter-server-management-api.specs.licenses-order-service-categories509 :refer :all]
-            [inter-server-management-api.specs.memory-option :refer :all]
             [inter-server-management-api.specs.domain-all-info :refer :all]
             [inter-server-management-api.specs.login-service-counts :refer :all]
             [inter-server-management-api.specs.domain-dnssec-records :refer :all]
@@ -302,7 +301,6 @@
             [inter-server-management-api.specs.websites-order-json-service-offers :refer :all]
             [inter-server-management-api.specs.domain-owner-contact :refer :all]
             [inter-server-management-api.specs.mail-tutorials-table :refer :all]
-            [inter-server-management-api.specs.region :refer :all]
             [inter-server-management-api.specs.domain-admin-contact :refer :all]
             [inter-server-management-api.specs.vps-traffic-usage-response :refer :all]
             [inter-server-management-api.specs.service-order-post-response :refer :all]
@@ -324,6 +322,7 @@
             [inter-server-management-api.specs.quickserver-ip-table-row :refer :all]
             [inter-server-management-api.specs.email-address :refer :all]
             [inter-server-management-api.specs.vps-plesk-license :refer :all]
+            [inter-server-management-api.specs.get-account-locales-200-response-value :refer :all]
             [inter-server-management-api.specs.vps-traffic-history-section-data-response :refer :all]
             [inter-server-management-api.specs.backup-service-master :refer :all]
             [inter-server-management-api.specs.vps-traffic-history-response :refer :all]
@@ -394,8 +393,6 @@
             [inter-server-management-api.specs.quickserver :refer :all]
             [inter-server-management-api.specs.reply-ticket-response-schema :refer :all]
             [inter-server-management-api.specs.vps-order-put-request :refer :all]
-            [inter-server-management-api.specs.vps-traffic-data-data-response :refer :all]
-            [inter-server-management-api.specs.server-order-get-response :refer :all]
             [inter-server-management-api.specs.mail-stats-type-volume-from :refer :all]
             [inter-server-management-api.specs.mail-alerts-response-inner :refer :all]
             [inter-server-management-api.specs.domain-tech-contact :refer :all]
@@ -407,7 +404,6 @@
             [inter-server-management-api.specs.billing-verify-cc-request :refer :all]
             [inter-server-management-api.specs.vps-order-service-types :refer :all]
             [inter-server-management-api.specs.mail-attachment :refer :all]
-            [inter-server-management-api.specs.invoice-row :refer :all]
             [inter-server-management-api.specs.place-scrub-order-201-response-order-details-cj-params :refer :all]
             [inter-server-management-api.specs.delete-firewall-rule :refer :all]
             [inter-server-management-api.specs.tickets :refer :all]
@@ -422,13 +418,13 @@
             [inter-server-management-api.specs.timezone-update :refer :all]
             [inter-server-management-api.specs.servers-cancel-200-response :refer :all]
             [inter-server-management-api.specs.server-order-memory :refer :all]
-            [inter-server-management-api.specs.config-lists :refer :all]
             [inter-server-management-api.specs.website-backups :refer :all]
             [inter-server-management-api.specs.vps-ip-info :refer :all]
             [inter-server-management-api.specs.domain-billing-extra :refer :all]
             [inter-server-management-api.specs.backup-order-post-response :refer :all]
             [inter-server-management-api.specs.scrub-ips-row-schema :refer :all]
             [inter-server-management-api.specs.scrub-ip-place-order :refer :all]
+            [inter-server-management-api.specs.patch-billing-credit-card-verify-request :refer :all]
             [inter-server-management-api.specs.license-service-info :refer :all]
             [inter-server-management-api.specs.server-lease :refer :all]
             [inter-server-management-api.specs.charge-invoice-rows-invoices-value-paid-invoices-value-refund-invoices-value :refer :all]
@@ -446,13 +442,11 @@
             [inter-server-management-api.specs.post-website-migration-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-ip-info :refer :all]
             [inter-server-management-api.specs.licenses-order :refer :all]
-            [inter-server-management-api.specs.payment-invoice-rows :refer :all]
             [inter-server-management-api.specs.license-row :refer :all]
             [inter-server-management-api.specs.server-order-bandwidth :refer :all]
             [inter-server-management-api.specs.quickserver-service-extra :refer :all]
             [inter-server-management-api.specs.quickserver-client-link :refer :all]
             [inter-server-management-api.specs.download-qs-backup-request :refer :all]
-            [inter-server-management-api.specs.invoice :refer :all]
             [inter-server-management-api.specs.licenses-order-service-types :refer :all]
             [inter-server-management-api.specs.mail-tutorials-table-row :refer :all]
             [inter-server-management-api.specs.vps-service-extra :refer :all]
@@ -461,31 +455,39 @@
 
 
 (defn-spec add-floating-ip-with-http-info any?
-  "Place Floating IP Order
-  Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first."
-  []
+  "Place a real Floating IP order, create billing records, and provision the service
+  Charges the customer and creates a new Floating IP service via `place_buy_floating_ip`. Validate first with `putFloating_ips` to avoid surprise failures. Body (form-encoded): `serviceType` (required, `services_id`), `coupon` (optional), `comment` (optional internal note). On success returns `{ continue:true, errors, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — `iid` is the master invoice ID, `serviceId` is the new `floating_ip_id`. On validation failure returns `{ continue:false, errors:[...] }` with no charge. Errors: 401 if unauthenticated; soft errors in `errors[]`. The newly-issued IP starts unassigned — point it at a target with `postFloatingIpsChangeIp` once the service is `active`.
+
+Sibling ops: `getNewFloatingIp` (catalog), `putFloating_ips` (validate), `getFloatingIpInfo` (poll), `postFloatingIpsChangeIp` (route), `getBillingInvoice` + `initiatePayment` (settle invoice), `floating_ipsCancel`."
+  [floating-ip-order-request floating-ip-order-request]
+  (check-required-params floating-ip-order-request)
   (call-api "/floating_ips/order" :post
             {:path-params   {}
              :header-params {}
              :query-params  {}
              :form-params   {}
-             :content-types []
+             :body-param    floating-ip-order-request
+             :content-types ["application/json"]
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec add-floating-ip service-order-post-response-spec
-  "Place Floating IP Order
-  Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first."
-  []
-  (let [res (:data (add-floating-ip-with-http-info))]
+  "Place a real Floating IP order, create billing records, and provision the service
+  Charges the customer and creates a new Floating IP service via `place_buy_floating_ip`. Validate first with `putFloating_ips` to avoid surprise failures. Body (form-encoded): `serviceType` (required, `services_id`), `coupon` (optional), `comment` (optional internal note). On success returns `{ continue:true, errors, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — `iid` is the master invoice ID, `serviceId` is the new `floating_ip_id`. On validation failure returns `{ continue:false, errors:[...] }` with no charge. Errors: 401 if unauthenticated; soft errors in `errors[]`. The newly-issued IP starts unassigned — point it at a target with `postFloatingIpsChangeIp` once the service is `active`.
+
+Sibling ops: `getNewFloatingIp` (catalog), `putFloating_ips` (validate), `getFloatingIpInfo` (poll), `postFloatingIpsChangeIp` (route), `getBillingInvoice` + `initiatePayment` (settle invoice), `floating_ipsCancel`."
+  [floating-ip-order-request floating-ip-order-request]
+  (let [res (:data (add-floating-ip-with-http-info floating-ip-order-request))]
     (if (:decode-models *api-context*)
        (st/decode service-order-post-response-spec res st/string-transformer)
        res)))
 
 
 (defn-spec floating-ips-cancel-with-http-info any?
-  "Cancel Floating IP
-  Cancels a Floating IP service. After cancellation the IP assignment is released and the service transitions to a canceled status. No further billing charges will be incurred."
+  "Cancel a Floating IP service and release the IP — destructive, billing stops
+  Cancels the Floating IP via the shared `Api\\Billing\\CancelService` flow — flips status to canceled, halts recurring billing, and releases the IP back to the pool so it can no longer be re-routed. Not reversible: the customer cannot recover the same IP after release. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `FloatingIpsCancelResponse` shape (success text / cancellation outcome). Errors: 401 if unauthenticated; 404 / cross-customer hidden when `id` is not owned by the caller; 409 if already canceled or otherwise non-cancelable. Confirm with the customer before calling — for routing changes use `postFloatingIpsChangeIp` instead of cancel-and-reorder.
+
+Sibling ops: `getFloatingIpInfo` (status), `getFloatingIpInvoices` (outstanding charges), `postFloatingIpsChangeIp` (re-route instead of cancel), `addFloatingIp` (re-order)."
   [id int?]
   (check-required-params id)
   (call-api "/floating_ips/{id}" :delete
@@ -498,8 +500,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec floating-ips-cancel floating-ips-cancel-200-response-spec
-  "Cancel Floating IP
-  Cancels a Floating IP service. After cancellation the IP assignment is released and the service transitions to a canceled status. No further billing charges will be incurred."
+  "Cancel a Floating IP service and release the IP — destructive, billing stops
+  Cancels the Floating IP via the shared `Api\\Billing\\CancelService` flow — flips status to canceled, halts recurring billing, and releases the IP back to the pool so it can no longer be re-routed. Not reversible: the customer cannot recover the same IP after release. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `FloatingIpsCancelResponse` shape (success text / cancellation outcome). Errors: 401 if unauthenticated; 404 / cross-customer hidden when `id` is not owned by the caller; 409 if already canceled or otherwise non-cancelable. Confirm with the customer before calling — for routing changes use `postFloatingIpsChangeIp` instead of cancel-and-reorder.
+
+Sibling ops: `getFloatingIpInfo` (status), `getFloatingIpInvoices` (outstanding charges), `postFloatingIpsChangeIp` (re-route instead of cancel), `addFloatingIp` (re-order)."
   [id int?]
   (let [res (:data (floating-ips-cancel-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -508,8 +512,8 @@
 
 
 (defn-spec get-floating-ip-info-with-http-info any?
-  "View Floating IP
-  Returns detailed information about a specific Floating IP service including its current target IP assignment."
+  "Fetch full details for one Floating IP service, including current target IP
+  Use for a Floating IP detail screen, or to read `floating_ip_ip` / `floating_ip_target_ip` before calling `postFloatingIpsChangeIp`. Read-only. Path param `id` (integer, `floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ViewFloatingIp.getDetails()` payload — service info, billing/cost summary, status, target IP, and `client_links` (action URLs the UI can render). Internal-only fields (`admin_links`, `settings`, `csrf`) are stripped. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller (`get_service` filters by custid). Siblings: `postFloatingIpsChangeIp`, `updateFloatingIpInfo`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, `floating_ipsCancel`."
   [id int?]
   (check-required-params id)
   (call-api "/floating_ips/{id}" :get
@@ -522,8 +526,8 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-floating-ip-info any?
-  "View Floating IP
-  Returns detailed information about a specific Floating IP service including its current target IP assignment."
+  "Fetch full details for one Floating IP service, including current target IP
+  Use for a Floating IP detail screen, or to read `floating_ip_ip` / `floating_ip_target_ip` before calling `postFloatingIpsChangeIp`. Read-only. Path param `id` (integer, `floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ViewFloatingIp.getDetails()` payload — service info, billing/cost summary, status, target IP, and `client_links` (action URLs the UI can render). Internal-only fields (`admin_links`, `settings`, `csrf`) are stripped. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller (`get_service` filters by custid). Siblings: `postFloatingIpsChangeIp`, `updateFloatingIpInfo`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, `floating_ipsCancel`."
   [id int?]
   (let [res (:data (get-floating-ip-info-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -532,8 +536,8 @@
 
 
 (defn-spec get-floating-ip-invoices-with-http-info any?
-  "Get Floating IP Invoices
-  Returns the billing invoices associated with this Floating IP service."
+  "List all billing invoices charged against a specific Floating IP service
+  Use for a per-service billing history view — pulls the standard `Api\\Billing\\InvoicesList` rows scoped to this Floating IP. Read-only. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ChargeInvoiceRows` schema: array of invoice rows with id, date, amount, status, etc. Use the invoice IDs with the global billing endpoints (`getBillingInvoice`, `initiatePayment`) for line-item detail. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller. Siblings: `getFloatingIpInfo` (service details), `getFloatingIpsWelcomeEmail`."
   [id int?]
   (check-required-params id)
   (call-api "/floating_ips/{id}/invoices" :get
@@ -546,8 +550,8 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-floating-ip-invoices charge-invoice-rows-spec
-  "Get Floating IP Invoices
-  Returns the billing invoices associated with this Floating IP service."
+  "List all billing invoices charged against a specific Floating IP service
+  Use for a per-service billing history view — pulls the standard `Api\\Billing\\InvoicesList` rows scoped to this Floating IP. Read-only. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ChargeInvoiceRows` schema: array of invoice rows with id, date, amount, status, etc. Use the invoice IDs with the global billing endpoints (`getBillingInvoice`, `initiatePayment`) for line-item detail. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller. Siblings: `getFloatingIpInfo` (service details), `getFloatingIpsWelcomeEmail`."
   [id int?]
   (let [res (:data (get-floating-ip-invoices-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -556,8 +560,10 @@
 
 
 (defn-spec get-floating-ips-list-with-http-info any?
-  "List Floating IPs
-  Returns all Floating IP services on the account with their current status and assignment details."
+  "List all Floating IP services on the authenticated customer's account
+  Use to enumerate every Floating IP the caller owns before drilling into a specific one. Read-only; safe to call frequently. No params, no body. Returns an array of rows: `floating_ip_id`, `repeat_invoices_cost` (recurring price), `floating_ip_ip` (the portable IP), `floating_ip_target_ip` (the IP it currently routes to), `floating_ip_status` (active/pending/canceled/etc.), `services_name` (package label). Empty array if the account owns no Floating IPs. Errors: 401 if unauthenticated. Use returned IDs with `getFloatingIpInfo`, `postFloatingIpsChangeIp`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, or `floating_ipsCancel`. To order a new one see `getNewFloatingIp` / `addFloatingIp`.
+
+Sibling ops: `getFloatingIpInfo`, `getNewFloatingIp` (catalog), `addFloatingIp` (order)."
   []
   (call-api "/floating_ips" :get
             {:path-params   {}
@@ -569,8 +575,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-floating-ips-list (s/coll-of any?)
-  "List Floating IPs
-  Returns all Floating IP services on the account with their current status and assignment details."
+  "List all Floating IP services on the authenticated customer's account
+  Use to enumerate every Floating IP the caller owns before drilling into a specific one. Read-only; safe to call frequently. No params, no body. Returns an array of rows: `floating_ip_id`, `repeat_invoices_cost` (recurring price), `floating_ip_ip` (the portable IP), `floating_ip_target_ip` (the IP it currently routes to), `floating_ip_status` (active/pending/canceled/etc.), `services_name` (package label). Empty array if the account owns no Floating IPs. Errors: 401 if unauthenticated. Use returned IDs with `getFloatingIpInfo`, `postFloatingIpsChangeIp`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, or `floating_ipsCancel`. To order a new one see `getNewFloatingIp` / `addFloatingIp`.
+
+Sibling ops: `getFloatingIpInfo`, `getNewFloatingIp` (catalog), `addFloatingIp` (order)."
   []
   (let [res (:data (get-floating-ips-list-with-http-info))]
     (if (:decode-models *api-context*)
@@ -579,8 +587,10 @@
 
 
 (defn-spec get-floating-ips-welcome-email-with-http-info any?
-  "Resend Floating IPs Welcome Email
-  Resends the welcome email for the Floating IP service. The email contains setup instructions and connection details."
+  "Resend the Floating IP welcome / setup email to the account contact
+  Triggers `floating_ip_welcome_email($id)` to re-deliver the original setup email (the IP, routing instructions, etc.) to the customer's on-file address. Useful when the email was lost or the customer needs the IP/setup details again. No body, no params besides path `id` (`floating_ip_id`). Returns `{ text: 'Welcome Email has been resent.' }`. Errors: 401 if unauthenticated; 404 (`Invalid Service Passed`) if `id` is not owned by the caller; 409 (`Service is not active`) if status is not `active`. Side effect: sends an outbound email — avoid in tight loops. Read state first via `getFloatingIpInfo` if unsure of status.
+
+Sibling ops: `getFloatingIpInfo` (status), `addFloatingIp` (new order), `floating_ipsCancel`."
   [id int?]
   (check-required-params id)
   (call-api "/floating_ips/{id}/welcome_email" :get
@@ -593,8 +603,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-floating-ips-welcome-email success-text-response-spec
-  "Resend Floating IPs Welcome Email
-  Resends the welcome email for the Floating IP service. The email contains setup instructions and connection details."
+  "Resend the Floating IP welcome / setup email to the account contact
+  Triggers `floating_ip_welcome_email($id)` to re-deliver the original setup email (the IP, routing instructions, etc.) to the customer's on-file address. Useful when the email was lost or the customer needs the IP/setup details again. No body, no params besides path `id` (`floating_ip_id`). Returns `{ text: 'Welcome Email has been resent.' }`. Errors: 401 if unauthenticated; 404 (`Invalid Service Passed`) if `id` is not owned by the caller; 409 (`Service is not active`) if status is not `active`. Side effect: sends an outbound email — avoid in tight loops. Read state first via `getFloatingIpInfo` if unsure of status.
+
+Sibling ops: `getFloatingIpInfo` (status), `addFloatingIp` (new order), `floating_ipsCancel`."
   [id int?]
   (let [res (:data (get-floating-ips-welcome-email-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -603,8 +615,10 @@
 
 
 (defn-spec get-new-floating-ip-with-http-info any?
-  "Get Floating IP Ordering Information
-  Retrieves available options and pricing for ordering a new Floating IP."
+  "Get pricing and service-type options for ordering a new Floating IP
+  Use before showing a Floating IP order form, or before calling `addFloatingIp`, to discover which service types (`serviceTypes`) and prices (`packageCosts`, keyed by `services_id` in the customer's currency) are currently buyable. Read-only; no side effects. No params, no body. Returns `{ packageCosts: { <services_id>: <cost> }, serviceTypes: [ ... ] } `. Costs are `services.services_cost` filtered to `services_buyable=1` for module `floating_ips`. Errors: 401 if unauthenticated. Next steps: validate the chosen `serviceType` with `putFloating_ips`, then place the order with `addFloatingIp`. Floating IPs are portable IPv4 addresses that route to a target IP on one of the customer's active services.
+
+Sibling ops: `putFloating_ips` (validate), `addFloatingIp` (commit), `getFloatingIpsList` (existing IPs)."
   []
   (call-api "/floating_ips/order" :get
             {:path-params   {}
@@ -616,8 +630,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-new-floating-ip any?
-  "Get Floating IP Ordering Information
-  Retrieves available options and pricing for ordering a new Floating IP."
+  "Get pricing and service-type options for ordering a new Floating IP
+  Use before showing a Floating IP order form, or before calling `addFloatingIp`, to discover which service types (`serviceTypes`) and prices (`packageCosts`, keyed by `services_id` in the customer's currency) are currently buyable. Read-only; no side effects. No params, no body. Returns `{ packageCosts: { <services_id>: <cost> }, serviceTypes: [ ... ] } `. Costs are `services.services_cost` filtered to `services_buyable=1` for module `floating_ips`. Errors: 401 if unauthenticated. Next steps: validate the chosen `serviceType` with `putFloating_ips`, then place the order with `addFloatingIp`. Floating IPs are portable IPv4 addresses that route to a target IP on one of the customer's active services.
+
+Sibling ops: `putFloating_ips` (validate), `addFloatingIp` (commit), `getFloatingIpsList` (existing IPs)."
   []
   (let [res (:data (get-new-floating-ip-with-http-info))]
     (if (:decode-models *api-context*)
@@ -626,8 +642,10 @@
 
 
 (defn-spec post-floating-ips-change-ip-with-http-info any?
-  "Change Floating IP Target
-  Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use `GET /floating_ips/{id}` to view the current target before making changes."
+  "Re-point a Floating IP to a different target IP on one of the customer's services
+  Reattaches the Floating IP by removing the old static route on the source switch and adding a new one on the destination switch (via `Sshwitch`), then updates `floating_ip_target_ip`. Use to move a portable IP between the customer's VPS / Quickservers / websites / dedicated servers without renumbering apps. Path param `id` (`floating_ip_id`). Body: `{ ip: <new target IP> }` (also accepts multipart form). Returns `{ success:true, text:'IP Changed' }`. Errors (returned via `json_error`): invalid IP format; IP not in our datacenter; IP not in use by an active service of this customer; service not active; another Floating IP already points to that target; switch lookup failures; route still present after removal. 401 if unauthenticated.
+
+Sibling ops: `getFloatingIpInfo` (read current target), `getFloatingIpsList`, `floating_ipsCancel`. Read current target with `getFloatingIpInfo` first."
   [id int?, ip string?]
   (check-required-params id ip)
   (call-api "/floating_ips/{id}/change_ip" :post
@@ -640,8 +658,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec post-floating-ips-change-ip success-text-response-spec
-  "Change Floating IP Target
-  Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use `GET /floating_ips/{id}` to view the current target before making changes."
+  "Re-point a Floating IP to a different target IP on one of the customer's services
+  Reattaches the Floating IP by removing the old static route on the source switch and adding a new one on the destination switch (via `Sshwitch`), then updates `floating_ip_target_ip`. Use to move a portable IP between the customer's VPS / Quickservers / websites / dedicated servers without renumbering apps. Path param `id` (`floating_ip_id`). Body: `{ ip: <new target IP> }` (also accepts multipart form). Returns `{ success:true, text:'IP Changed' }`. Errors (returned via `json_error`): invalid IP format; IP not in our datacenter; IP not in use by an active service of this customer; service not active; another Floating IP already points to that target; switch lookup failures; route still present after removal. 401 if unauthenticated.
+
+Sibling ops: `getFloatingIpInfo` (read current target), `getFloatingIpsList`, `floating_ipsCancel`. Read current target with `getFloatingIpInfo` first."
   [id int?, ip string?]
   (let [res (:data (post-floating-ips-change-ip-with-http-info id ip))]
     (if (:decode-models *api-context*)
@@ -650,31 +670,37 @@
 
 
 (defn-spec put-floating-ips-with-http-info any?
-  "Validate Floating IP Order
-  Validates a Floating IP order before placing it. Use this to check for errors before committing to a purchase."
-  []
+  "Validate a Floating IP order and price it without charging the customer
+  Dry-run for `addFloatingIp` — runs `validate_buy_floating_ip` to apply coupons, compute intro/repeat pricing, and surface errors before committing. No charge, no service created. Body fields (form-encoded): `serviceType` (required, `services_id` from `getNewFloatingIp.packageCosts`), `coupon` (optional code). Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, password, introFrequency, coupon, couponCode }`. `continue=true` means the order would succeed; `continue=false` plus populated `errors[]` means it would not. Errors: 401 if unauthenticated; 422-style soft errors arrive in the `errors` array. Use the returned `serviceType` and `couponCode` when calling `addFloatingIp`.
+Sibling ops: `getNewFloatingIp` (catalog), `addFloatingIp` (commit)."
+  [floating-ip-order-request floating-ip-order-request]
+  (check-required-params floating-ip-order-request)
   (call-api "/floating_ips/order" :put
             {:path-params   {}
              :header-params {}
              :query-params  {}
              :form-params   {}
-             :content-types []
+             :body-param    floating-ip-order-request
+             :content-types ["application/json"]
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec put-floating-ips any?
-  "Validate Floating IP Order
-  Validates a Floating IP order before placing it. Use this to check for errors before committing to a purchase."
-  []
-  (let [res (:data (put-floating-ips-with-http-info))]
+  "Validate a Floating IP order and price it without charging the customer
+  Dry-run for `addFloatingIp` — runs `validate_buy_floating_ip` to apply coupons, compute intro/repeat pricing, and surface errors before committing. No charge, no service created. Body fields (form-encoded): `serviceType` (required, `services_id` from `getNewFloatingIp.packageCosts`), `coupon` (optional code). Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, password, introFrequency, coupon, couponCode }`. `continue=true` means the order would succeed; `continue=false` plus populated `errors[]` means it would not. Errors: 401 if unauthenticated; 422-style soft errors arrive in the `errors` array. Use the returned `serviceType` and `couponCode` when calling `addFloatingIp`.
+Sibling ops: `getNewFloatingIp` (catalog), `addFloatingIp` (commit)."
+  [floating-ip-order-request floating-ip-order-request]
+  (let [res (:data (put-floating-ips-with-http-info floating-ip-order-request))]
     (if (:decode-models *api-context*)
        (st/decode any? res st/string-transformer)
        res)))
 
 
 (defn-spec update-floating-ip-info-with-http-info any?
-  "Update Floating IP
-  Updates settings on a Floating IP service, such as its label or configuration metadata."
+  "Update a Floating IP service's editable settings (label / metadata)
+  Stub edit endpoint that delegates to the same handler as `getFloatingIpInfo` — currently used for label/metadata edits surfaced by `ViewFloatingIp`. To re-route the IP to a different target use the dedicated `postFloatingIpsChangeIp` instead; this op does not change routing. Path param `id` (`floating_ip_id`). Body: form-encoded fields exposed by the Floating IP edit form (label/comment style). Returns the standard success-text response. Errors: 401 if unauthenticated; effectively 404 if `id` not owned by the caller. Read state first with `getFloatingIpInfo`.
+
+Sibling ops: `getFloatingIpInfo` (read), `postFloatingIpsChangeIp` (re-route), `floating_ipsCancel`."
   [id string?]
   (check-required-params id)
   (call-api "/floating_ips/{id}" :post
@@ -687,8 +713,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec update-floating-ip-info success-text-response-spec
-  "Update Floating IP
-  Updates settings on a Floating IP service, such as its label or configuration metadata."
+  "Update a Floating IP service's editable settings (label / metadata)
+  Stub edit endpoint that delegates to the same handler as `getFloatingIpInfo` — currently used for label/metadata edits surfaced by `ViewFloatingIp`. To re-route the IP to a different target use the dedicated `postFloatingIpsChangeIp` instead; this op does not change routing. Path param `id` (`floating_ip_id`). Body: form-encoded fields exposed by the Floating IP edit form (label/comment style). Returns the standard success-text response. Errors: 401 if unauthenticated; effectively 404 if `id` not owned by the caller. Read state first with `getFloatingIpInfo`.
+
+Sibling ops: `getFloatingIpInfo` (read), `postFloatingIpsChangeIp` (re-route), `floating_ipsCancel`."
   [id string?]
   (let [res (:data (update-floating-ip-info-with-http-info id))]
     (if (:decode-models *api-context*)

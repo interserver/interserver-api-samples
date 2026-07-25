@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.post_oauth_callback200_response import PostOauthCallback200Response
+from interserver_api_client.models.post_oauth_callback200_response import PostOauthCallback200Response
 
 class TestPostOauthCallback200Response(unittest.TestCase):
     """PostOauthCallback200Response unit test stubs"""

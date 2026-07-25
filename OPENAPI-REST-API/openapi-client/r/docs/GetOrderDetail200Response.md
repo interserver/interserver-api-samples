@@ -1,4 +1,4 @@
-# openapi::GetOrderDetail200Response
+# interserverapi::GetOrderDetail200Response
 
 
 ## Properties

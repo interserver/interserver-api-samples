@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsBackupRow = Initialize-PSOpenAPIToolsVpsBackupRow  -Type zfs `
+$VpsBackupRow = Initialize-InterserverApiVpsBackupRow  -Type zfs `
  -Service 12343 `
  -Name automated_backup `
  -Size 132412343124213 `

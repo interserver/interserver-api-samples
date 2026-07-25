@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TicketDetails model module.
  * @module model/TicketDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class TicketDetails {
     /**

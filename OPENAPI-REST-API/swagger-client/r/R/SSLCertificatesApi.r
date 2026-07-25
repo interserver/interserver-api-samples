@@ -17,31 +17,31 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_ssl Place SSL Cert Order
+#' add_ssl Place a new SSL certificate order - creates invoice and queues issuance
 #'
 #'
-#' get_new_ssl SSL Cert Ordering Information
+#' get_new_ssl Get available SSL certificate packages and pricing for placing a new order
 #'
 #'
-#' get_ssl_info Get SSL Cert Info
+#' get_ssl_info Get full details for one SSL certificate by id - status, expiration, links
 #'
 #'
-#' get_ssl_invoices Get SSL Cert Invoices
+#' get_ssl_invoices List all billing invoices and charges tied to one SSL certificate by id
 #'
 #'
-#' get_ssl_list List SSL Certs
+#' get_ssl_list List all SSL certificates on the authenticated customer account with status and hostname
 #'
 #'
-#' get_ssl_welcome_email Resend SSL Welcome Email
+#' get_ssl_welcome_email Resend the SSL welcome email with cert credentials and install instructions
 #'
 #'
-#' put_ssl Validate SSL Cert Order
+#' put_ssl Validate an SSL certificate order without charging - dry-run before addSsl
 #'
 #'
-#' ssl_cancel Cancel SSL Certificate Service
+#' ssl_cancel Cancel an SSL certificate service - stops renewals at end of billing cycle
 #'
 #'
-#' update_ssl_info Update SSL Cert Order
+#' update_ssl_info Update mutable settings on an existing SSL certificate order by id
 #'
 #' }
 #'
@@ -59,10 +59,16 @@ SSLCertificatesApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    add_ssl = function(...){
+    add_ssl = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/ssl/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -213,10 +219,16 @@ SSLCertificatesApi <- R6::R6Class(
       }
 
     }
-    put_ssl = function(...){
+    put_ssl = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/ssl/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -253,7 +265,7 @@ SSLCertificatesApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20021$new()
+        returnObject <- InlineResponse20023$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

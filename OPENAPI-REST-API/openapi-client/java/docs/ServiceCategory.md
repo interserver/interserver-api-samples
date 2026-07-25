@@ -14,4 +14,8 @@ A Category of Services.  This is the broadest grouping within a module.
 |**categoryModule** | **String** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

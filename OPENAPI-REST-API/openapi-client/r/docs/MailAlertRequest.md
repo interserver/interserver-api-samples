@@ -1,4 +1,4 @@
-# openapi::MailAlertRequest
+# interserverapi::MailAlertRequest
 
 Payload for creating a mail alert.
 

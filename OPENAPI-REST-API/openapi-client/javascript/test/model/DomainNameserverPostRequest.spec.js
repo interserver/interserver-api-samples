@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainNameserverPostRequest();
+    instance = new InterserverApiClient.DomainNameserverPostRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('DomainNameserverPostRequest', function() {
     it('should create an instance of DomainNameserverPostRequest', function() {
       // uncomment below and update the code to test DomainNameserverPostRequest
-      //var instance = new InterServerManagementApi.DomainNameserverPostRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainNameserverPostRequest);
+      //var instance = new InterserverApiClient.DomainNameserverPostRequest();
+      //expect(instance).to.be.a(InterserverApiClient.DomainNameserverPostRequest);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.DomainNameserverPostRequest();
+      //var instance = new InterserverApiClient.DomainNameserverPostRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property ipAddress (base name: "ipAddress")', function() {
       // uncomment below and update the code to test the property ipAddress
-      //var instance = new InterServerManagementApi.DomainNameserverPostRequest();
+      //var instance = new InterserverApiClient.DomainNameserverPostRequest();
       //expect(instance).to.be();
     });
 

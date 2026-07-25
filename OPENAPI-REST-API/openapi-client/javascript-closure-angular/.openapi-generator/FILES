@@ -24,8 +24,6 @@ API/Client/AffiliateBannerRow.js
 API/Client/AffiliateDockSetup.js
 API/Client/AffiliatePaymentSetup.js
 API/Client/AffiliateTrafficRow.js
-API/Client/AssetServer.js
-API/Client/AssetServerCPUInner.js
 API/Client/Backup.js
 API/Client/BackupBillingDetails.js
 API/Client/BackupClientLink.js
@@ -44,7 +42,6 @@ API/Client/BackupsApi.js
 API/Client/BackupsOrder.js
 API/Client/BackupsOrderPackageCosts.js
 API/Client/BackupsOrderServiceTypes.js
-API/Client/Bandwidth.js
 API/Client/BillingAddCcRequest.js
 API/Client/BillingApi.js
 API/Client/BillingInvoiceDetail.js
@@ -71,11 +68,6 @@ API/Client/ChargeInvoiceRowsInvoicesValue.js
 API/Client/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.js
 API/Client/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.js
 API/Client/CloseTicketResponseSchema.js
-API/Client/ConfigIds.js
-API/Client/ConfigLists.js
-API/Client/ControlPanel.js
-API/Client/Cpu.js
-API/Client/CpuWithDefaults.js
 API/Client/CreateFilter.js
 API/Client/CreateFilter201Response.js
 API/Client/CreateFilter400Response.js
@@ -92,6 +84,7 @@ API/Client/DeleteFilter400Response.js
 API/Client/DeleteFilter500Response.js
 API/Client/DeleteFirewallRule.js
 API/Client/DeleteGeoFirewallRule.js
+API/Client/DeleteMailAlertRequest.js
 API/Client/DenyRuleNew.js
 API/Client/DenyRuleRecord.js
 API/Client/DisableScrub200Response.js
@@ -122,11 +115,11 @@ API/Client/DomainNameserverGetResponseInner.js
 API/Client/DomainNameserverPostRequest.js
 API/Client/DomainNameserverPutRequest.js
 API/Client/DomainOrder.js
+API/Client/DomainOrderRequest.js
 API/Client/DomainOrderResponse.js
 API/Client/DomainOrderResponseAttributes.js
 API/Client/DomainOrderServices.js
 API/Client/DomainOrderServices10001.js
-API/Client/DomainOrderTldServices.js
 API/Client/DomainOwnerContact.js
 API/Client/DomainProvProcessPending.js
 API/Client/DomainProvProcessPendingAttributes.js
@@ -143,13 +136,14 @@ API/Client/EmailAddress.js
 API/Client/EmailAddressName.js
 API/Client/EnableScrub200Response.js
 API/Client/EnableScrub500Response.js
-API/Client/FieldLabel.js
 API/Client/FloatingIPsApi.js
+API/Client/FloatingIpOrderRequest.js
 API/Client/FloatingIpsCancel200Response.js
-API/Client/FormValues.js
 API/Client/GenericResponse.js
 API/Client/GetAccountInfo401Response.js
+API/Client/GetAccountLocales200ResponseValue.js
 API/Client/GetAccountTfaSetup200Response.js
+API/Client/GetAffiliateSignups200Response.js
 API/Client/GetOauthRedirect200Response.js
 API/Client/GetOrderDetail200Response.js
 API/Client/GetOrderDetail200ResponseIpsInner.js
@@ -166,7 +160,6 @@ API/Client/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.js
 API/Client/GetScrubIpDetails200ResponseFilterFirewallRulesInner.js
 API/Client/GetScrubIpDetails200ResponseServiceInfo.js
 API/Client/GetWebsiteBuyIp200Response.js
-API/Client/HardDrive.js
 API/Client/Home.js
 API/Client/HomeDetails.js
 API/Client/HomeDetailsModules.js
@@ -193,10 +186,6 @@ API/Client/HomeTicketStatus.js
 API/Client/HomeTicketStatusView.js
 API/Client/HostnameObject.js
 API/Client/InitiatePayment200Response.js
-API/Client/InlineObject.js
-API/Client/Invoice.js
-API/Client/InvoiceRow.js
-API/Client/IpBlock.js
 API/Client/IpLimitRange.js
 API/Client/IpObject.js
 API/Client/License.js
@@ -205,6 +194,7 @@ API/Client/LicenseClientLink.js
 API/Client/LicenseExtraInfoTables.js
 API/Client/LicenseIpInfo.js
 API/Client/LicenseIpInfoRow.js
+API/Client/LicenseOrderRequest.js
 API/Client/LicenseRow.js
 API/Client/LicenseServiceInfo.js
 API/Client/LicenseServiceType.js
@@ -243,6 +233,7 @@ API/Client/MailExtraInfoTableRow.js
 API/Client/MailLog.js
 API/Client/MailLogEntry.js
 API/Client/MailOrder.js
+API/Client/MailOrderRequest.js
 API/Client/MailRow.js
 API/Client/MailSchema.js
 API/Client/MailSchemaExtraInfoTables.js
@@ -255,15 +246,13 @@ API/Client/MailStatsTypeVolumeIp.js
 API/Client/MailStatsTypeVolumeTo.js
 API/Client/MailTutorialsTable.js
 API/Client/MailTutorialsTableRow.js
-API/Client/MemoryOption.js
 API/Client/ModuleSettings.js
 API/Client/Modules.js
 API/Client/MonthlyCounts.js
-API/Client/OperatingSystem.js
 API/Client/PasswordRequest.js
+API/Client/PatchBillingCreditCardVerifyRequest.js
 API/Client/PatchOauthTwoFactor200Response.js
 API/Client/PatchOauthTwoFactorRequest.js
-API/Client/PaymentInvoiceRows.js
 API/Client/PlaceBuyNowServerRequest.js
 API/Client/PlaceScrubOrder201Response.js
 API/Client/PlaceScrubOrder201ResponseOrderDetails.js
@@ -275,6 +264,8 @@ API/Client/PostWebsiteBuyIpRequest.js
 API/Client/PostWebsiteMigration200Response.js
 API/Client/PostWebsiteMigrationRequest.js
 API/Client/PublicApi.js
+API/Client/PutScrubIps200Response.js
+API/Client/QsOrderRequest.js
 API/Client/QueueResponse.js
 API/Client/QuickServersApi.js
 API/Client/Quickserver.js
@@ -299,8 +290,6 @@ API/Client/QuickserverServiceExtra.js
 API/Client/QuickserverServiceInfo.js
 API/Client/QuickserverServiceMaster.js
 API/Client/QuickserversCancel200Response.js
-API/Client/RaidOption.js
-API/Client/Region.js
 API/Client/ReplyTicketRequest.js
 API/Client/ReplyTicketResponseSchema.js
 API/Client/RestoreRequest.js
@@ -322,6 +311,8 @@ API/Client/Server.js
 API/Client/ServerAsset.js
 API/Client/ServerAssets.js
 API/Client/ServerBillingDetails.js
+API/Client/ServerBulkIpmiPowerResponse.js
+API/Client/ServerBulkIpmiPowerResponseResultsInner.js
 API/Client/ServerClientLink.js
 API/Client/ServerExtraInfoTables.js
 API/Client/ServerIpmiLiveInfo.js
@@ -344,7 +335,6 @@ API/Client/ServerOrderCpuLi.js
 API/Client/ServerOrderFieldLabel.js
 API/Client/ServerOrderFieldLabels.js
 API/Client/ServerOrderFormValues.js
-API/Client/ServerOrderGetResponse.js
 API/Client/ServerOrderIP.js
 API/Client/ServerOrderIpsLi.js
 API/Client/ServerOrderMemory.js
@@ -352,6 +342,8 @@ API/Client/ServerOrderMemoryLi.js
 API/Client/ServerOrderMemoryLi254.js
 API/Client/ServerOrderOS.js
 API/Client/ServerOrderOsLi.js
+API/Client/ServerOrderPostRequest.js
+API/Client/ServerOrderPostRequestHd.js
 API/Client/ServerOrderRAID.js
 API/Client/ServerRow.js
 API/Client/ServerServiceInfo.js
@@ -370,6 +362,7 @@ API/Client/ServiceTypes.js
 API/Client/Services.js
 API/Client/ServicesInfo.js
 API/Client/SslCancel200Response.js
+API/Client/SslOrderRequest.js
 API/Client/StatusMonthlyBreakdown.js
 API/Client/SuccessTextResponse.js
 API/Client/TemplateRequest.js
@@ -432,7 +425,6 @@ API/Client/VpsServiceMaster.js
 API/Client/VpsSnapshot.js
 API/Client/VpsTemplateRow.js
 API/Client/VpsTemplatesList.js
-API/Client/VpsTrafficDataDataResponse.js
 API/Client/VpsTrafficDataSectionResponse.js
 API/Client/VpsTrafficHistoryResponse.js
 API/Client/VpsTrafficHistorySectionDataResponse.js
@@ -452,6 +444,8 @@ API/Client/WebsiteBillingDetails.js
 API/Client/WebsiteClientLink.js
 API/Client/WebsiteExtraInfoTables.js
 API/Client/WebsiteLoginResponse.js
+API/Client/WebsiteOrderPostRequest.js
+API/Client/WebsiteOrderPutRequest.js
 API/Client/WebsiteRow.js
 API/Client/WebsiteServiceInfo.js
 API/Client/WebsiteServiceMaster.js

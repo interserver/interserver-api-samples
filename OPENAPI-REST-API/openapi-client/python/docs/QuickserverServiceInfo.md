@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.quickserver_service_info import QuickserverServiceInfo
+from interserver_api_client.models.quickserver_service_info import QuickserverServiceInfo
 
 # TODO update the JSON string below
 json = "{}"

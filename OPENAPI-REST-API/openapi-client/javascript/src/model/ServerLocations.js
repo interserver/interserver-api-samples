@@ -17,7 +17,7 @@ import ServerLocation1 from './ServerLocation1';
 /**
  * The ServerLocations model module.
  * @module model/ServerLocations
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerLocations {
     /**

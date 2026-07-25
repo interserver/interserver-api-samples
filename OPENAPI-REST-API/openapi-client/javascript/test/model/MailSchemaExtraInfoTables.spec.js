@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailSchemaExtraInfoTables();
+    instance = new InterserverApiClient.MailSchemaExtraInfoTables();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('MailSchemaExtraInfoTables', function() {
     it('should create an instance of MailSchemaExtraInfoTables', function() {
       // uncomment below and update the code to test MailSchemaExtraInfoTables
-      //var instance = new InterServerManagementApi.MailSchemaExtraInfoTables();
-      //expect(instance).to.be.a(InterServerManagementApi.MailSchemaExtraInfoTables);
+      //var instance = new InterserverApiClient.MailSchemaExtraInfoTables();
+      //expect(instance).to.be.a(InterserverApiClient.MailSchemaExtraInfoTables);
     });
 
     it('should have the property mail (base name: "mail")', function() {
       // uncomment below and update the code to test the property mail
-      //var instance = new InterServerManagementApi.MailSchemaExtraInfoTables();
+      //var instance = new InterserverApiClient.MailSchemaExtraInfoTables();
       //expect(instance).to.be();
     });
 
     it('should have the property tutorials (base name: "tutorials")', function() {
       // uncomment below and update the code to test the property tutorials
-      //var instance = new InterServerManagementApi.MailSchemaExtraInfoTables();
+      //var instance = new InterserverApiClient.MailSchemaExtraInfoTables();
       //expect(instance).to.be();
     });
 

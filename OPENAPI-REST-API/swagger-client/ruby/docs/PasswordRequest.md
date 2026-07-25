@@ -1,4 +1,4 @@
-# SwaggerClient::PasswordRequest
+# InterserverApiClient::PasswordRequest
 
 ## Properties
 Name | Type | Description | Notes

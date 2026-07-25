@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class ServerOrderOsLi(
   `51`: Option[ServerOrderOS] = None
 )
-

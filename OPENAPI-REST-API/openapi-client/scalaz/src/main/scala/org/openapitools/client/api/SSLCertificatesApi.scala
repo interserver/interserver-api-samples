@@ -25,6 +25,7 @@ import org.openapitools.client.api.ChargeInvoiceRows
 import org.openapitools.client.api.GetAccountInfo401Response
 import org.openapitools.client.api.ServiceOrderPostResponse
 import org.openapitools.client.api.SslCancel200Response
+import org.openapitools.client.api.SslOrderRequest
 import org.openapitools.client.api.SuccessTextResponse
 
 object SSLCertificatesApi {
@@ -33,7 +34,7 @@ object SSLCertificatesApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addSsl(host: String): Task[ServiceOrderPostResponse] = {
+  def addSsl(host: String, SslOrderRequest: SslOrderRequest): Task[ServiceOrderPostResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
 
     val path = "/ssl/order"
@@ -48,7 +49,7 @@ object SSLCertificatesApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(SslOrderRequest)
       resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
@@ -157,7 +158,7 @@ object SSLCertificatesApi {
     } yield resp
   }
 
-  def putSsl(host: String): Task[Unit] = {
+  def putSsl(host: String, SslOrderRequest: SslOrderRequest): Task[Unit] = {
     val path = "/ssl/order"
 
     val httpMethod = Method.PUT
@@ -170,7 +171,7 @@ object SSLCertificatesApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(SslOrderRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -225,7 +226,7 @@ class HttpServiceSSLCertificatesApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addSsl(): Task[ServiceOrderPostResponse] = {
+  def addSsl(SslOrderRequest: SslOrderRequest): Task[ServiceOrderPostResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
 
     val path = "/ssl/order"
@@ -240,7 +241,7 @@ class HttpServiceSSLCertificatesApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(SslOrderRequest)
       resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
@@ -349,7 +350,7 @@ class HttpServiceSSLCertificatesApi(service: HttpService) {
     } yield resp
   }
 
-  def putSsl(): Task[Unit] = {
+  def putSsl(SslOrderRequest: SslOrderRequest): Task[Unit] = {
     val path = "/ssl/order"
 
     val httpMethod = Method.PUT
@@ -362,7 +363,7 @@ class HttpServiceSSLCertificatesApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(SslOrderRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp

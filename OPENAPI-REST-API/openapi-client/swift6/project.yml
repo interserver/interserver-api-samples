@@ -1,6 +1,6 @@
-name: OpenAPIClient
+name: InterserverAPIClient
 targets:
-  OpenAPIClient:
+  InterserverAPIClient:
     type: framework
     platform: iOS
     deploymentTarget: "11.0"

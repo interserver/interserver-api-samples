@@ -11,4 +11,8 @@
 |**url** | **String** | A pre-signed download URL valid for 24 hours. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

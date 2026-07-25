@@ -21,4 +21,3 @@ case class VpsTrafficUsageResponse(
   peak: VpsTrafficTotalsSectionResponse,
   average: VpsTrafficUsageAverageResponse
 )
-

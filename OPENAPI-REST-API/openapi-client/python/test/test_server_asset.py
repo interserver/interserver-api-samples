@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_asset import ServerAsset
+from interserver_api_client.models.server_asset import ServerAsset
 
 class TestServerAsset(unittest.TestCase):
     """ServerAsset unit test stubs"""
@@ -83,7 +83,7 @@ class TestServerAsset(unittest.TestCase):
                 switchports = [10414],
                 vlans = [],
                 vlans6 = [],
-                lease = openapi_client.models.server_lease.ServerLease(
+                lease = interserver_api_client.models.server_lease.ServerLease(
                     mac = '0c:c4:7a:af:35:00', 
                     authenticated = False, 
                     group = '1', )
@@ -128,7 +128,7 @@ class TestServerAsset(unittest.TestCase):
                 switchports = [10414],
                 vlans = [],
                 vlans6 = [],
-                lease = openapi_client.models.server_lease.ServerLease(
+                lease = interserver_api_client.models.server_lease.ServerLease(
                     mac = '0c:c4:7a:af:35:00', 
                     authenticated = False, 
                     group = '1', ),

@@ -241,33 +241,6 @@ void OpenAPILicensesApi::OnGetLicenseListResponse(FHttpRequestPtr HttpRequest, F
 	Delegate.ExecuteIfBound(Response);
 }
 
-FHttpRequestPtr OpenAPILicensesApi::GetLicenseOrderCatTagInfo(const GetLicenseOrderCatTagInfoRequest& Request, const FGetLicenseOrderCatTagInfoDelegate& Delegate /*= FGetLicenseOrderCatTagInfoDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPILicensesApi::OnGetLicenseOrderCatTagInfoResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPILicensesApi::OnGetLicenseOrderCatTagInfoResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetLicenseOrderCatTagInfoDelegate Delegate) const
-{
-	GetLicenseOrderCatTagInfoResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
 FHttpRequestPtr OpenAPILicensesApi::GetLicensesWelcomeEmail(const GetLicensesWelcomeEmailRequest& Request, const FGetLicensesWelcomeEmailDelegate& Delegate /*= FGetLicensesWelcomeEmailDelegate()*/) const
 {
 	if (!IsValid())

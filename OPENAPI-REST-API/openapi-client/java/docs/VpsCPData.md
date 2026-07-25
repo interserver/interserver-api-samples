@@ -12,4 +12,8 @@ Control panel license options available for a VPS.
 |**cost** | **Integer** | Monthly cost in cents for the control panel license. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -16,10 +16,10 @@
 #' \dontrun{
 #' ####################  AddNewTicket  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_ticket_new <- TicketNew$new("subject_example", "body_example", 123, "service_module_example") # TicketNew | 
 #'
-#' #Create New Ticket
+#' #Open a new helpdesk ticket, optionally linked to a service and attachments
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -39,10 +39,10 @@
 #'
 #' ####################  CloseTicket  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "1511222" # character | Ticket ID
 #'
-#' #Close Ticket
+#' #Close an open support ticket via simple GET request (no body required)
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -62,10 +62,10 @@
 #'
 #' ####################  DeleteTicketInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 3.4 # numeric | Ticket ID number.
 #'
-#' #Close Ticket
+#' #Close a customer ticket via DELETE verb (closes only, never destroys data)
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -85,9 +85,9 @@
 #'
 #' ####################  GetNewTicket  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Gets Information for creating a new ticket.
+#' #Fetch services and product options to populate the new-ticket form
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -104,10 +104,10 @@
 #'
 #' ####################  GetTicketInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 3.4 # numeric | Ticket ID number.
 #'
-#' #Get Ticket Information
+#' #Get full ticket details including subject, status, and the reply thread
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -127,12 +127,12 @@
 #'
 #' ####################  GetTicketsList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_page <- 1 # integer | Page number for paginated results. (Optional)
 #' var_period <- "30" # character | How far back to show tickets from. Value is in days. (Optional)
 #' var_view <- "view_example" # character | The status of tickets to view. Possible values are Open, Closed, On Hold, and In Progress.  If not specified it will show all types. (Optional)
 #'
-#' #List Support Tickets
+#' #List the authenticated account's support tickets with status and date filters
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -152,10 +152,10 @@
 #'
 #' ####################  PostTicketInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 3.4 # numeric | Ticket ID number.
 #'
-#' #Reply To Ticket
+#' #Append a reply (and optional attachment, server-access fields) to a ticket
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -175,9 +175,9 @@
 #'
 #' ####################  PostTicketsList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Search Support Tickets
+#' #Search the authenticated account's tickets by subject, email, or mask ID
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -197,10 +197,10 @@
 #'
 #' ####################  PutTicketInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 3.4 # numeric | Ticket ID number.
 #'
-#' #Update Ticket
+#' #Update a ticket's properties such as subject or status (stub, not implemented)
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -220,11 +220,11 @@
 #'
 #' ####################  ReplyTicket  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 3.4 # numeric | The ticket ID number.
 #' var_reply_ticket_request <- ReplyTicketRequest$new("content_example") # ReplyTicketRequest |  (Optional)
 #'
-#' #Reply Ticket
+#' #Post a simple text reply to an existing ticket thread (no attachments)
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -244,11 +244,11 @@
 #'
 #' ####################  UpdateTicketInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 3.4 # numeric | The ticket ID number.
 #' var_update_ticket <- UpdateTicket$new("ip_example", "ip_address_example", "y", "root_password_example", "sudo_username_example", "sudo_password_example", 123) # UpdateTicket |  (Optional)
 #'
-#' #Update Ticket
+#' #Update a ticket's custom field values (server-access details, etc.)
 #' api_instance <- TicketsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -288,7 +288,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create New Ticket
+    #' Open a new helpdesk ticket, optionally linked to a service and attachments
     #'
     #' @param ticket_new 
     #' @param data_file (optional) name of the data file to save the result
@@ -310,7 +310,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create New Ticket
+    #' Open a new helpdesk ticket, optionally linked to a service and attachments
     #'
     #' @param ticket_new 
     #' @param data_file (optional) name of the data file to save the result
@@ -410,7 +410,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Close Ticket
+    #' Close an open support ticket via simple GET request (no body required)
     #'
     #' @param id Ticket ID
     #' @param data_file (optional) name of the data file to save the result
@@ -432,7 +432,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Close Ticket
+    #' Close an open support ticket via simple GET request (no body required)
     #'
     #' @param id Ticket ID
     #' @param data_file (optional) name of the data file to save the result
@@ -530,7 +530,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Close Ticket
+    #' Close a customer ticket via DELETE verb (closes only, never destroys data)
     #'
     #' @param id Ticket ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -552,7 +552,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Close Ticket
+    #' Close a customer ticket via DELETE verb (closes only, never destroys data)
     #'
     #' @param id Ticket ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -650,7 +650,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Gets Information for creating a new ticket.
+    #' Fetch services and product options to populate the new-ticket form
     #'
     #' @param ... Other optional arguments
     #'
@@ -669,7 +669,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Gets Information for creating a new ticket.
+    #' Fetch services and product options to populate the new-ticket form
     #'
     #' @param ... Other optional arguments
     #'
@@ -737,7 +737,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Ticket Information
+    #' Get full ticket details including subject, status, and the reply thread
     #'
     #' @param id Ticket ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -759,7 +759,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Ticket Information
+    #' Get full ticket details including subject, status, and the reply thread
     #'
     #' @param id Ticket ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -857,7 +857,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Support Tickets
+    #' List the authenticated account's support tickets with status and date filters
     #'
     #' @param page (optional) Page number for paginated results. (default value: 1)
     #' @param period (optional) How far back to show tickets from. Value is in days. (default value: "30")
@@ -881,7 +881,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Support Tickets
+    #' List the authenticated account's support tickets with status and date filters
     #'
     #' @param page (optional) Page number for paginated results. (default value: 1)
     #' @param period (optional) How far back to show tickets from. Value is in days. (default value: "30")
@@ -993,7 +993,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reply To Ticket
+    #' Append a reply (and optional attachment, server-access fields) to a ticket
     #'
     #' @param id Ticket ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1015,7 +1015,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reply To Ticket
+    #' Append a reply (and optional attachment, server-access fields) to a ticket
     #'
     #' @param id Ticket ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1113,7 +1113,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Search Support Tickets
+    #' Search the authenticated account's tickets by subject, email, or mask ID
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1134,7 +1134,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Search Support Tickets
+    #' Search the authenticated account's tickets by subject, email, or mask ID
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1219,7 +1219,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Ticket
+    #' Update a ticket's properties such as subject or status (stub, not implemented)
     #'
     #' @param id Ticket ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1241,7 +1241,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Ticket
+    #' Update a ticket's properties such as subject or status (stub, not implemented)
     #'
     #' @param id Ticket ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1339,7 +1339,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reply Ticket
+    #' Post a simple text reply to an existing ticket thread (no attachments)
     #'
     #' @param id The ticket ID number.
     #' @param reply_ticket_request (optional) No description
@@ -1362,7 +1362,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reply Ticket
+    #' Post a simple text reply to an existing ticket thread (no attachments)
     #'
     #' @param id The ticket ID number.
     #' @param reply_ticket_request (optional) No description
@@ -1471,7 +1471,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Ticket
+    #' Update a ticket's custom field values (server-access details, etc.)
     #'
     #' @param id The ticket ID number.
     #' @param update_ticket (optional) No description
@@ -1494,7 +1494,7 @@ TicketsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Ticket
+    #' Update a ticket's custom field values (server-access details, etc.)
     #'
     #' @param id The ticket ID number.
     #' @param update_ticket (optional) No description

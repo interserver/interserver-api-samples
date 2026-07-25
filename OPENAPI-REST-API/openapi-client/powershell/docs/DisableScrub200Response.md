@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DisableScrub200Response = Initialize-PSOpenAPIToolsDisableScrub200Response  -Success true `
+$DisableScrub200Response = Initialize-InterserverApiDisableScrub200Response  -Success true `
  -Text Scrub is disabled on your IP.
 ```
 

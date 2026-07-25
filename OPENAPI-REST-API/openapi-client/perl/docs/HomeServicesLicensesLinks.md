@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::HomeServicesLicensesLinks
+# InterServerAPI::Object::HomeServicesLicensesLinks
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::HomeServicesLicensesLinks;
+use InterServerAPI::Object::HomeServicesLicensesLinks;
 ```
 
 ## Properties

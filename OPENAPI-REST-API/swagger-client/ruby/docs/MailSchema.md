@@ -1,4 +1,4 @@
-# SwaggerClient::MailSchema
+# InterserverApiClient::MailSchema
 
 ## Properties
 Name | Type | Description | Notes

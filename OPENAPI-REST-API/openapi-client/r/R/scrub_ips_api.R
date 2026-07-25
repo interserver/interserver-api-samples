@@ -16,10 +16,10 @@
 #' \dontrun{
 #' ####################  CancelScrubIp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #'
-#' #Cancel Scrub IP Service
+#' #Cancel a Scrub IP service and stop its recurring DDoS billing
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -39,11 +39,11 @@
 #'
 #' ####################  CreateFilter  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #' var_create_filter <- CreateFilter$new("filter_type_example", 123) # CreateFilter | 
 #'
-#' #Create Traffic Filter
+#' #Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -63,11 +63,11 @@
 #'
 #' ####################  CreateGeoRule  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #' var_create_geo_firewall_rule <- CreateGeoFirewallRule$new(123, 123, 123, 123) # CreateGeoFirewallRule | 
 #'
-#' #Create Geo Firewall Rule
+#' #Add a geographic firewall rule (block/allow by country code or ASN)
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -87,11 +87,11 @@
 #'
 #' ####################  CreateRule  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #' var_create_firewall_rule <- CreateFirewallRule$new(123, 123, 123, "source_ip_example", 123) # CreateFirewallRule | 
 #'
-#' #Create Firewall Rule
+#' #Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -111,11 +111,11 @@
 #'
 #' ####################  DeleteFilter  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #' var_create_filter <- CreateFilter$new("filter_type_example", 123) # CreateFilter | 
 #'
-#' #Delete Traffic Filter
+#' #Remove a scrubbing filter by matching filter_type and port
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -135,10 +135,10 @@
 #'
 #' ####################  DisableScrub  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #'
-#' #Disable Scrub Protection
+#' #Disable DDoS scrubbing and remove the BGP announcement on the IP
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -158,10 +158,10 @@
 #'
 #' ####################  EnableScrub  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #'
-#' #Enable Scrub Protection
+#' #Enable DDoS scrubbing (BGP announcement) on the service's protected IP
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -181,9 +181,9 @@
 #'
 #' ####################  GetOrderDetail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Scrub IP Ordering Information
+#' #Get plans, pricing, and eligible IPs for a new Scrub IP order
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -203,10 +203,10 @@
 #'
 #' ####################  GetScrubIpDetails  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #'
-#' #Get Scrub IP Details
+#' #Get full Scrub IP service detail (rules + geo + filters)
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -226,9 +226,9 @@
 #'
 #' ####################  GetScrubIpFilterTypes  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Scrub Filter Types
+#' #List enabled traffic filter profiles available for createFilter
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -248,10 +248,10 @@
 #'
 #' ####################  GetScrubIpInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #'
-#' #Get ScrubIp Invoices
+#' #List recurring and one-time invoices billed for this Scrub IP service
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -271,10 +271,10 @@
 #'
 #' ####################  GetScrubIpLogs  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "413232  " # character | Scrub Order ID
 #'
-#' #Get Scrub IP Logs
+#' #Get last 50000 packet/event log entries for the protected IP
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -294,9 +294,9 @@
 #'
 #' ####################  GetScrubIpsList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Scrub IP Services
+#' #List all Scrub IP DDoS protection services on the authenticated account
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -316,10 +316,10 @@
 #'
 #' ####################  PlaceScrubOrder  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_scrub_ip_place_order <- ScrubIpPlaceOrder$new(123, "ip_example") # ScrubIpPlaceOrder | 
 #'
-#' #Place Scrub IP Order
+#' #Place a new Scrub IP DDoS protection order and generate an invoice
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -337,13 +337,36 @@
 #' dput(result)
 #'
 #'
+#' ####################  PutScrubIps  ####################
+#'
+#' library(interserverapi)
+#' var_scrub_ip_place_order <- ScrubIpPlaceOrder$new(123, "ip_example") # ScrubIpPlaceOrder | 
+#'
+#' #Validate a Scrub IP order and return effective pricing without billing
+#' api_instance <- ScrubIpsApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$PutScrubIps(var_scrub_ip_place_orderdata_file = "result.txt")
+#' result <- api_instance$PutScrubIps(var_scrub_ip_place_order)
+#' dput(result)
+#'
+#'
 #' ####################  ScrubIpsDeleteGeoRule  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #' var_delete_geo_firewall_rule <- Delete_Geo_Firewall_Rule$new(123) # DeleteGeoFirewallRule | 
 #'
-#' #Delete Geo Firewall Rule
+#' #Delete a geo firewall rule by rule_id from getScrubIpDetails
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -363,11 +386,11 @@
 #'
 #' ####################  ScrubIpsDeleteRule  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | ScrubIp ID number
 #' var_delete_firewall_rule <- Delete_Firewall_Rule$new(123) # DeleteFirewallRule | 
 #'
-#' #Delete Firewall Rule
+#' #Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
 #' api_instance <- ScrubIpsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -407,7 +430,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Scrub IP Service
+    #' Cancel a Scrub IP service and stop its recurring DDoS billing
     #'
     #' @param id ScrubIp ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -429,7 +452,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Scrub IP Service
+    #' Cancel a Scrub IP service and stop its recurring DDoS billing
     #'
     #' @param id ScrubIp ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -527,7 +550,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Traffic Filter
+    #' Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
     #'
     #' @param id ScrubIp ID number
     #' @param create_filter 
@@ -550,7 +573,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Traffic Filter
+    #' Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
     #'
     #' @param id ScrubIp ID number
     #' @param create_filter 
@@ -663,7 +686,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Geo Firewall Rule
+    #' Add a geographic firewall rule (block/allow by country code or ASN)
     #'
     #' @param id ScrubIp ID number
     #' @param create_geo_firewall_rule 
@@ -686,7 +709,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Geo Firewall Rule
+    #' Add a geographic firewall rule (block/allow by country code or ASN)
     #'
     #' @param id ScrubIp ID number
     #' @param create_geo_firewall_rule 
@@ -799,7 +822,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Firewall Rule
+    #' Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
     #'
     #' @param id ScrubIp ID number
     #' @param create_firewall_rule 
@@ -822,7 +845,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Firewall Rule
+    #' Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
     #'
     #' @param id ScrubIp ID number
     #' @param create_firewall_rule 
@@ -935,7 +958,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Traffic Filter
+    #' Remove a scrubbing filter by matching filter_type and port
     #'
     #' @param id ScrubIp ID number
     #' @param create_filter 
@@ -958,7 +981,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Traffic Filter
+    #' Remove a scrubbing filter by matching filter_type and port
     #'
     #' @param id ScrubIp ID number
     #' @param create_filter 
@@ -1071,7 +1094,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable Scrub Protection
+    #' Disable DDoS scrubbing and remove the BGP announcement on the IP
     #'
     #' @param id ScrubIp ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1093,7 +1116,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable Scrub Protection
+    #' Disable DDoS scrubbing and remove the BGP announcement on the IP
     #'
     #' @param id ScrubIp ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1191,7 +1214,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Enable Scrub Protection
+    #' Enable DDoS scrubbing (BGP announcement) on the service's protected IP
     #'
     #' @param id ScrubIp ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1213,7 +1236,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Enable Scrub Protection
+    #' Enable DDoS scrubbing (BGP announcement) on the service's protected IP
     #'
     #' @param id ScrubIp ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1311,7 +1334,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Scrub IP Ordering Information
+    #' Get plans, pricing, and eligible IPs for a new Scrub IP order
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1332,7 +1355,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Scrub IP Ordering Information
+    #' Get plans, pricing, and eligible IPs for a new Scrub IP order
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1417,7 +1440,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Scrub IP Details
+    #' Get full Scrub IP service detail (rules + geo + filters)
     #'
     #' @param id ScrubIp ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1439,7 +1462,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Scrub IP Details
+    #' Get full Scrub IP service detail (rules + geo + filters)
     #'
     #' @param id ScrubIp ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1537,7 +1560,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Scrub Filter Types
+    #' List enabled traffic filter profiles available for createFilter
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1558,7 +1581,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Scrub Filter Types
+    #' List enabled traffic filter profiles available for createFilter
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1643,7 +1666,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get ScrubIp Invoices
+    #' List recurring and one-time invoices billed for this Scrub IP service
     #'
     #' @param id ScrubIp ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1665,7 +1688,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get ScrubIp Invoices
+    #' List recurring and one-time invoices billed for this Scrub IP service
     #'
     #' @param id ScrubIp ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1763,7 +1786,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Scrub IP Logs
+    #' Get last 50000 packet/event log entries for the protected IP
     #'
     #' @param id Scrub Order ID
     #' @param data_file (optional) name of the data file to save the result
@@ -1785,7 +1808,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Scrub IP Logs
+    #' Get last 50000 packet/event log entries for the protected IP
     #'
     #' @param id Scrub Order ID
     #' @param data_file (optional) name of the data file to save the result
@@ -1883,7 +1906,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Scrub IP Services
+    #' List all Scrub IP DDoS protection services on the authenticated account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1904,7 +1927,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Scrub IP Services
+    #' List all Scrub IP DDoS protection services on the authenticated account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1989,7 +2012,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Scrub IP Order
+    #' Place a new Scrub IP DDoS protection order and generate an invoice
     #'
     #' @param scrub_ip_place_order 
     #' @param data_file (optional) name of the data file to save the result
@@ -2011,7 +2034,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Scrub IP Order
+    #' Place a new Scrub IP DDoS protection order and generate an invoice
     #'
     #' @param scrub_ip_place_order 
     #' @param data_file (optional) name of the data file to save the result
@@ -2111,7 +2134,129 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Geo Firewall Rule
+    #' Validate a Scrub IP order and return effective pricing without billing
+    #'
+    #' @param scrub_ip_place_order 
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return PutScrubIps200Response
+    PutScrubIps = function(scrub_ip_place_order, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$PutScrubIpsWithHttpInfo(scrub_ip_place_order, data_file = data_file, ..., .parse = .parse)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Validate a Scrub IP order and return effective pricing without billing
+    #'
+    #' @param scrub_ip_place_order 
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return API response (PutScrubIps200Response) with additional information such as HTTP status code, headers
+    PutScrubIpsWithHttpInfo = function(scrub_ip_place_order, data_file = NULL, ..., .parse = TRUE) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`scrub_ip_place_order`)) {
+        stop("Missing required parameter `scrub_ip_place_order`.")
+      }
+
+      if (!missing(`scrub_ip_place_order`) && is.null(`scrub_ip_place_order`)) {
+        stop("Invalid value for `scrub_ip_place_order` when calling ScrubIpsApi$PutScrubIps, `scrub_ip_place_order` is not nullable")
+      }
+
+      if (!is.null(`scrub_ip_place_order`)) {
+        local_var_body <- `scrub_ip_place_order`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
+
+      local_var_url_path <- "/scrub_ips/order"
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list("application/json")
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "PUT",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "PutScrubIps200Response"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' Delete a geo firewall rule by rule_id from getScrubIpDetails
     #'
     #' @param id ScrubIp ID number
     #' @param delete_geo_firewall_rule 
@@ -2134,7 +2279,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Geo Firewall Rule
+    #' Delete a geo firewall rule by rule_id from getScrubIpDetails
     #'
     #' @param id ScrubIp ID number
     #' @param delete_geo_firewall_rule 
@@ -2247,7 +2392,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Firewall Rule
+    #' Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
     #'
     #' @param id ScrubIp ID number
     #' @param delete_firewall_rule 
@@ -2270,7 +2415,7 @@ ScrubIpsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Firewall Rule
+    #' Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
     #'
     #' @param id ScrubIp ID number
     #' @param delete_firewall_rule 

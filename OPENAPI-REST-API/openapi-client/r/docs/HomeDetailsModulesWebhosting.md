@@ -1,4 +1,4 @@
-# openapi::HomeDetailsModulesWebhosting
+# interserverapi::HomeDetailsModulesWebhosting
 
 Dashboard module configuration for webhosting services.
 

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::QueueResponse');
+use_ok('InterServerAPI::Object::QueueResponse');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::QueueResponse->new();
+#my $instance = InterServerAPI::Object::QueueResponse->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::QueueResponse');
+#isa_ok($instance, 'InterServerAPI::Object::QueueResponse');
 
 
 done_testing();

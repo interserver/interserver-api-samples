@@ -15,6 +15,20 @@ Please update as you see appropriate
 ]]
 describe("public_api", function()
   local openapiclient_public_api = require "openapiclient.api.public_api"
+  -- unit tests for get_account_currencies
+  describe("get_account_currencies test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for get_account_locales
+  describe("get_account_locales test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for get_captcha
   describe("get_captcha test", function()
     it("should work", function()

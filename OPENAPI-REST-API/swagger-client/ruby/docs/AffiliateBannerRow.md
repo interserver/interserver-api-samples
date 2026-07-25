@@ -1,4 +1,4 @@
-# SwaggerClient::AffiliateBannerRow
+# InterserverApiClient::AffiliateBannerRow
 
 ## Properties
 Name | Type | Description | Notes

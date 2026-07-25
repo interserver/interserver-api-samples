@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PostWebsiteMigration200Response();
+    instance = new InterserverApiClient.PostWebsiteMigration200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('PostWebsiteMigration200Response', function() {
     it('should create an instance of PostWebsiteMigration200Response', function() {
       // uncomment below and update the code to test PostWebsiteMigration200Response
-      //var instance = new InterServerManagementApi.PostWebsiteMigration200Response();
-      //expect(instance).to.be.a(InterServerManagementApi.PostWebsiteMigration200Response);
+      //var instance = new InterserverApiClient.PostWebsiteMigration200Response();
+      //expect(instance).to.be.a(InterserverApiClient.PostWebsiteMigration200Response);
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.PostWebsiteMigration200Response();
+      //var instance = new InterserverApiClient.PostWebsiteMigration200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property ticket (base name: "ticket")', function() {
       // uncomment below and update the code to test the property ticket
-      //var instance = new InterServerManagementApi.PostWebsiteMigration200Response();
+      //var instance = new InterserverApiClient.PostWebsiteMigration200Response();
       //expect(instance).to.be();
     });
 

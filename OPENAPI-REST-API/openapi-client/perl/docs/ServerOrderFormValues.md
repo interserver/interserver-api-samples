@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerOrderFormValues
+# InterServerAPI::Object::ServerOrderFormValues
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerOrderFormValues;
+use InterServerAPI::Object::ServerOrderFormValues;
 ```
 
 ## Properties

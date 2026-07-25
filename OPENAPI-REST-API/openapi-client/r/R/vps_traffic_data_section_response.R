@@ -114,7 +114,7 @@ VpsTrafficDataSectionResponse <- R6::R6Class(
         self$`name` <- this_object$`name`
       }
       if (!is.null(this_object$`data`)) {
-        self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VPSTrafficDataDataSectionResponse]", loadNamespace("openapi"))
+        self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VPSTrafficDataDataSectionResponse]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -138,7 +138,7 @@ VpsTrafficDataSectionResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`name` <- this_object$`name`
-      self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VPSTrafficDataDataSectionResponse]", loadNamespace("openapi"))
+      self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VPSTrafficDataDataSectionResponse]", loadNamespace("interserverapi"))
       self
     },
 

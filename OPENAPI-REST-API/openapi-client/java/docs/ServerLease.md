@@ -12,4 +12,8 @@
 |**group** | **String** | Group identifier for the lease. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

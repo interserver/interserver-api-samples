@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsExtraInfoTables = Initialize-PSOpenAPIToolsVpsExtraInfoTables  -IpInfo null
+$VpsExtraInfoTables = Initialize-InterserverApiVpsExtraInfoTables  -IpInfo null
 ```
 
 - Convert the resource to JSON

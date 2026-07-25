@@ -1,4 +1,4 @@
-# openapi::WebsiteExtraInfoTables
+# interserverapi::WebsiteExtraInfoTables
 
 Supplementary information tables displayed for a webhosting service (links, DNS, preview).
 

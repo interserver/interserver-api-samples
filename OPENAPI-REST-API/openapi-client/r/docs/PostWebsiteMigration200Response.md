@@ -1,4 +1,4 @@
-# openapi::PostWebsiteMigration200Response
+# interserverapi::PostWebsiteMigration200Response
 
 
 ## Properties

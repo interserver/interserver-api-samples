@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainDnssecRecords } from './api';
+import { DomainDnssecRecords } from '@interserver/myadmin-client';
 
 const instance: DomainDnssecRecords = {
 };

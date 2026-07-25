@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ReverseDnsEntries
+# InterServerAPI::Object::ReverseDnsEntries
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ReverseDnsEntries;
+use InterServerAPI::Object::ReverseDnsEntries;
 ```
 
 ## Properties

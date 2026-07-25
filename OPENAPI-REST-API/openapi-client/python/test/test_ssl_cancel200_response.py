@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.ssl_cancel200_response import SslCancel200Response
+from interserver_api_client.models.ssl_cancel200_response import SslCancel200Response
 
 class TestSslCancel200Response(unittest.TestCase):
     """SslCancel200Response unit test stubs"""

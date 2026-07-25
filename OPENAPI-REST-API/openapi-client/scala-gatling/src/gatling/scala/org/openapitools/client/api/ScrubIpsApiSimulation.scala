@@ -70,6 +70,7 @@ class ScrubIpsApiSimulation extends Simulation {
     val getScrubIpLogsPerSecond = config.getDouble("performance.operationsPerSecond.getScrubIpLogs") * rateMultiplier * instanceMultiplier
     val getScrubIpsListPerSecond = config.getDouble("performance.operationsPerSecond.getScrubIpsList") * rateMultiplier * instanceMultiplier
     val placeScrubOrderPerSecond = config.getDouble("performance.operationsPerSecond.placeScrubOrder") * rateMultiplier * instanceMultiplier
+    val putScrubIpsPerSecond = config.getDouble("performance.operationsPerSecond.putScrubIps") * rateMultiplier * instanceMultiplier
     val scrubIpsDeleteGeoRulePerSecond = config.getDouble("performance.operationsPerSecond.scrubIpsDeleteGeoRule") * rateMultiplier * instanceMultiplier
     val scrubIpsDeleteRulePerSecond = config.getDouble("performance.operationsPerSecond.scrubIpsDeleteRule") * rateMultiplier * instanceMultiplier
 
@@ -281,6 +282,19 @@ class ScrubIpsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(placeScrubOrderPerSecond) during(rampUpSeconds),
         constantUsersPerSec(placeScrubOrderPerSecond) during(durationSeconds),
         rampUsersPerSec(placeScrubOrderPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnputScrubIps = scenario("putScrubIpsSimulation")
+        .exec(http("putScrubIps")
+        .httpRequest("PUT","/scrub_ips/order")
+)
+
+    // Run scnputScrubIps with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnputScrubIps.inject(
+        rampUsersPerSec(1) to(putScrubIpsPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(putScrubIpsPerSecond) during(durationSeconds),
+        rampUsersPerSec(putScrubIpsPerSecond) to(1) during(rampDownSeconds)
     )
 
     

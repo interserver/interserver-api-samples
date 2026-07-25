@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsCPData();
+    instance = new InterserverApiClient.VpsCPData();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('VpsCPData', function() {
     it('should create an instance of VpsCPData', function() {
       // uncomment below and update the code to test VpsCPData
-      //var instance = new InterServerManagementApi.VpsCPData();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsCPData);
+      //var instance = new InterserverApiClient.VpsCPData();
+      //expect(instance).to.be.a(InterserverApiClient.VpsCPData);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.VpsCPData();
+      //var instance = new InterserverApiClient.VpsCPData();
       //expect(instance).to.be();
     });
 
     it('should have the property cost (base name: "cost")', function() {
       // uncomment below and update the code to test the property cost
-      //var instance = new InterServerManagementApi.VpsCPData();
+      //var instance = new InterserverApiClient.VpsCPData();
       //expect(instance).to.be();
     });
 

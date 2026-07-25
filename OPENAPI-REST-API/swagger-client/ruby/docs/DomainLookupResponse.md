@@ -1,4 +1,4 @@
-# SwaggerClient::DomainLookupResponse
+# InterserverApiClient::DomainLookupResponse
 
 ## Properties
 Name | Type | Description | Notes

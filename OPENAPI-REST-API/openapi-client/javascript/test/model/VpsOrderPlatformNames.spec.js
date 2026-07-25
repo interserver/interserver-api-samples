@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsOrderPlatformNames();
+    instance = new InterserverApiClient.VpsOrderPlatformNames();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('VpsOrderPlatformNames', function() {
     it('should create an instance of VpsOrderPlatformNames', function() {
       // uncomment below and update the code to test VpsOrderPlatformNames
-      //var instance = new InterServerManagementApi.VpsOrderPlatformNames();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsOrderPlatformNames);
+      //var instance = new InterserverApiClient.VpsOrderPlatformNames();
+      //expect(instance).to.be.a(InterserverApiClient.VpsOrderPlatformNames);
     });
 
     it('should have the property kvm (base name: "kvm")', function() {
       // uncomment below and update the code to test the property kvm
-      //var instance = new InterServerManagementApi.VpsOrderPlatformNames();
+      //var instance = new InterserverApiClient.VpsOrderPlatformNames();
       //expect(instance).to.be();
     });
 
     it('should have the property kvmstorage (base name: "kvmstorage")', function() {
       // uncomment below and update the code to test the property kvmstorage
-      //var instance = new InterServerManagementApi.VpsOrderPlatformNames();
+      //var instance = new InterserverApiClient.VpsOrderPlatformNames();
       //expect(instance).to.be();
     });
 
     it('should have the property hyperv (base name: "hyperv")', function() {
       // uncomment below and update the code to test the property hyperv
-      //var instance = new InterServerManagementApi.VpsOrderPlatformNames();
+      //var instance = new InterserverApiClient.VpsOrderPlatformNames();
       //expect(instance).to.be();
     });
 

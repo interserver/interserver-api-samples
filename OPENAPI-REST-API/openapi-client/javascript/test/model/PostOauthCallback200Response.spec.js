@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PostOauthCallback200Response();
+    instance = new InterserverApiClient.PostOauthCallback200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('PostOauthCallback200Response', function() {
     it('should create an instance of PostOauthCallback200Response', function() {
       // uncomment below and update the code to test PostOauthCallback200Response
-      //var instance = new InterServerManagementApi.PostOauthCallback200Response();
-      //expect(instance).to.be.a(InterServerManagementApi.PostOauthCallback200Response);
+      //var instance = new InterserverApiClient.PostOauthCallback200Response();
+      //expect(instance).to.be.a(InterserverApiClient.PostOauthCallback200Response);
     });
 
     it('should have the property login (base name: "login")', function() {
       // uncomment below and update the code to test the property login
-      //var instance = new InterServerManagementApi.PostOauthCallback200Response();
+      //var instance = new InterserverApiClient.PostOauthCallback200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property signup (base name: "signup")', function() {
       // uncomment below and update the code to test the property signup
-      //var instance = new InterServerManagementApi.PostOauthCallback200Response();
+      //var instance = new InterserverApiClient.PostOauthCallback200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property linked (base name: "linked")', function() {
       // uncomment below and update the code to test the property linked
-      //var instance = new InterServerManagementApi.PostOauthCallback200Response();
+      //var instance = new InterserverApiClient.PostOauthCallback200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property account_id (base name: "account_id")', function() {
       // uncomment below and update the code to test the property account_id
-      //var instance = new InterServerManagementApi.PostOauthCallback200Response();
+      //var instance = new InterserverApiClient.PostOauthCallback200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property error_code (base name: "error_code")', function() {
       // uncomment below and update the code to test the property error_code
-      //var instance = new InterServerManagementApi.PostOauthCallback200Response();
+      //var instance = new InterserverApiClient.PostOauthCallback200Response();
       //expect(instance).to.be();
     });
 

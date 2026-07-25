@@ -1,23 +1,23 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for AffiliateBannerRow
 void main() {
-  final instance = AffiliateBannerRowBuilder();
-  // TODO add properties to the builder and call build()
+  final AffiliateBannerRow? instance = /* AffiliateBannerRow(...) */ null;
+  // TODO add properties to the entity
 
   group(AffiliateBannerRow, () {
-    // String image
+    // Optional<String?> image
     test('to test the property `image`', () async {
       // TODO
     });
 
-    // String width
+    // Optional<String?> width
     test('to test the property `width`', () async {
       // TODO
     });
 
-    // String height
+    // Optional<String?> height
     test('to test the property `height`', () async {
       // TODO
     });

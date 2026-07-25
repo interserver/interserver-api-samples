@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainDnssecRecords = Initialize-PSOpenAPIToolsDomainDnssecRecords 
+$DomainDnssecRecords = Initialize-InterserverApiDomainDnssecRecords 
 ```
 
 - Convert the resource to JSON

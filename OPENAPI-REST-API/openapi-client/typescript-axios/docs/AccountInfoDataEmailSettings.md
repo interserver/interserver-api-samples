@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoDataEmailSettings } from './api';
+import { AccountInfoDataEmailSettings } from '@interserver/myadmin-client';
 
 const instance: AccountInfoDataEmailSettings = {
     admin_cc_bad_response,

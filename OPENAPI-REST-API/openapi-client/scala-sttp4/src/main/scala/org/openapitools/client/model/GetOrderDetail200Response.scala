@@ -17,4 +17,3 @@ case class GetOrderDetail200Response(
   serviceTypes: Option[Seq[GetOrderDetail200ResponseServiceTypesInner]] = None,
   ips: Option[Seq[GetOrderDetail200ResponseIpsInner]] = None
 )
-

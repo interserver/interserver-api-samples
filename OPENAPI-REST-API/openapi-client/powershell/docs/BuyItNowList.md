@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BuyItNowList = Initialize-PSOpenAPIToolsBuyItNowList 
+$BuyItNowList = Initialize-InterserverApiBuyItNowList 
 ```
 
 - Convert the resource to JSON

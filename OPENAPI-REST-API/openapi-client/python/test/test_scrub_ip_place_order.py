@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.scrub_ip_place_order import ScrubIpPlaceOrder
+from interserver_api_client.models.scrub_ip_place_order import ScrubIpPlaceOrder
 
 class TestScrubIpPlaceOrder(unittest.TestCase):
     """ScrubIpPlaceOrder unit test stubs"""

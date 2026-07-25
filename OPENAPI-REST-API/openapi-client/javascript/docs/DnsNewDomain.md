@@ -1,4 +1,4 @@
-# InterServerManagementApi.DnsNewDomain
+# InterserverApiClient.DnsNewDomain
 
 ## Properties
 

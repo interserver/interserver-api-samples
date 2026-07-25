@@ -21,7 +21,7 @@ import GetScrubIpDetails200ResponseServiceInfo from './GetScrubIpDetails200Respo
 /**
  * The GetScrubIpDetails200Response model module.
  * @module model/GetScrubIpDetails200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetScrubIpDetails200Response {
     /**

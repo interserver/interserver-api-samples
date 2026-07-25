@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverExtraInfoTables = Initialize-PSOpenAPIToolsQuickserverExtraInfoTables  -IpInfo null `
+$QuickserverExtraInfoTables = Initialize-InterserverApiQuickserverExtraInfoTables  -IpInfo null `
  -Addons null
 ```
 

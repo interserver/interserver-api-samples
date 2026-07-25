@@ -11,4 +11,8 @@ Memory options for the server order.
 |**_254** | [**ServerOrderMemoryLi254**](ServerOrderMemoryLi254.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

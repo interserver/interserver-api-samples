@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerNetworkInfo = Initialize-PSOpenAPIToolsServerNetworkInfo  -Vlans [] `
+$ServerNetworkInfo = Initialize-InterserverApiServerNetworkInfo  -Vlans [] `
  -Vlans6 [] `
  -Assets null `
  -Switchports null

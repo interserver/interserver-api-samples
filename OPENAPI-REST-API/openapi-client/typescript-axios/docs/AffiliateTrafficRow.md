@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AffiliateTrafficRow } from './api';
+import { AffiliateTrafficRow } from '@interserver/myadmin-client';
 
 const instance: AffiliateTrafficRow = {
     traffic_id,

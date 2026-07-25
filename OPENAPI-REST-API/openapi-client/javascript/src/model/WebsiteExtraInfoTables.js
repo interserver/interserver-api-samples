@@ -17,7 +17,7 @@ import WebsiteTable from './WebsiteTable';
 /**
  * The WebsiteExtraInfoTables model module.
  * @module model/WebsiteExtraInfoTables
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsiteExtraInfoTables {
     /**

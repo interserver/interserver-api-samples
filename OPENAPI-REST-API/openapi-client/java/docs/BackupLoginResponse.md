@@ -12,4 +12,8 @@ Login session response for backup storage.
 |**text** | **String** | Login URL or error text returned by the storage provider. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

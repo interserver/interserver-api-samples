@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainOrderResponse();
+    instance = new InterserverApiClient.DomainOrderResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('DomainOrderResponse', function() {
     it('should create an instance of DomainOrderResponse', function() {
       // uncomment below and update the code to test DomainOrderResponse
-      //var instance = new InterServerManagementApi.DomainOrderResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainOrderResponse);
+      //var instance = new InterserverApiClient.DomainOrderResponse();
+      //expect(instance).to.be.a(InterserverApiClient.DomainOrderResponse);
     });
 
     it('should have the property _OPS_version (base name: "_OPS_version")', function() {
       // uncomment below and update the code to test the property _OPS_version
-      //var instance = new InterServerManagementApi.DomainOrderResponse();
+      //var instance = new InterserverApiClient.DomainOrderResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property protocol (base name: "protocol")', function() {
       // uncomment below and update the code to test the property protocol
-      //var instance = new InterServerManagementApi.DomainOrderResponse();
+      //var instance = new InterserverApiClient.DomainOrderResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property is_success (base name: "is_success")', function() {
       // uncomment below and update the code to test the property is_success
-      //var instance = new InterServerManagementApi.DomainOrderResponse();
+      //var instance = new InterserverApiClient.DomainOrderResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property action (base name: "action")', function() {
       // uncomment below and update the code to test the property action
-      //var instance = new InterServerManagementApi.DomainOrderResponse();
+      //var instance = new InterserverApiClient.DomainOrderResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property attributes (base name: "attributes")', function() {
       // uncomment below and update the code to test the property attributes
-      //var instance = new InterServerManagementApi.DomainOrderResponse();
+      //var instance = new InterserverApiClient.DomainOrderResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property response_text (base name: "response_text")', function() {
       // uncomment below and update the code to test the property response_text
-      //var instance = new InterServerManagementApi.DomainOrderResponse();
+      //var instance = new InterserverApiClient.DomainOrderResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property object (base name: "object")', function() {
       // uncomment below and update the code to test the property object
-      //var instance = new InterServerManagementApi.DomainOrderResponse();
+      //var instance = new InterserverApiClient.DomainOrderResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property response_code (base name: "response_code")', function() {
       // uncomment below and update the code to test the property response_code
-      //var instance = new InterServerManagementApi.DomainOrderResponse();
+      //var instance = new InterserverApiClient.DomainOrderResponse();
       //expect(instance).to.be();
     });
 

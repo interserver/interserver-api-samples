@@ -1,2 +1,2 @@
-testCase,httpStatusCode,name,address,city,state,country,zip,cc,ccExp,ccCcv2,billingAddCcRequest,billingPrepayRequest,id,id,id,id,days,days,id,id,searchString,skip,limit,method,invoices,id,billingVerifyCcRequest,id,affiliateDockTitle,affiliateDockDescription,referrerCoupon,affiliateDockTitle,affiliateDockDescription,referrerCoupon,affiliatePaypal,affiliatePaymentMethod,id,billingPaymentMethodRequest
-Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,billingAddCcRequest,billingPrepayRequest,id,id,id,st,ex,year,days,st,days,id,id,method,invoices,patchBillingCreditCardVerifyRequest,id,billingVerifyCcRequest,id,affiliateDockTitle,affiliateDockDescription,referrerCoupon,affiliatePaypal,affiliatePaymentMethod,id,billingPaymentMethodRequest
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

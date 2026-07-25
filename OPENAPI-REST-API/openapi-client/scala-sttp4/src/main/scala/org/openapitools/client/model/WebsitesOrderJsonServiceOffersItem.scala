@@ -38,4 +38,3 @@ case class WebsitesOrderJsonServiceOffersItem(
   /* Currency symbol */
   currencySymbol: Option[String] = None
 )
-

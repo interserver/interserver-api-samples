@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.website_login_response import WebsiteLoginResponse
+from interserver_api_client.models.website_login_response import WebsiteLoginResponse
 
 # TODO update the JSON string below
 json = "{}"

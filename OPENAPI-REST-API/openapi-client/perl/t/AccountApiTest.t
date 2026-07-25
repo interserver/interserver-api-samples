@@ -24,16 +24,10 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::AccountApi');
+use_ok('InterServerAPI::AccountApi');
 
-my $api = OpenAPIClient::AccountApi->new();
-isa_ok($api, 'OpenAPIClient::AccountApi');
-
-#
-# change_account_username test
-#
-# uncomment below and update the test
-#my $change_account_username_result = $api->change_account_username();
+my $api = InterServerAPI::AccountApi->new();
+isa_ok($api, 'InterServerAPI::AccountApi');
 
 #
 # delete_account_oauth_name test

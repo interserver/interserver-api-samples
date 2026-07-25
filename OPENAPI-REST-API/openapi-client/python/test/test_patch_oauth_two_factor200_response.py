@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.patch_oauth_two_factor200_response import PatchOauthTwoFactor200Response
+from interserver_api_client.models.patch_oauth_two_factor200_response import PatchOauthTwoFactor200Response
 
 class TestPatchOauthTwoFactor200Response(unittest.TestCase):
     """PatchOauthTwoFactor200Response unit test stubs"""

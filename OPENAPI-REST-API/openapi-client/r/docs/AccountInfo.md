@@ -1,4 +1,4 @@
-# openapi::AccountInfo
+# interserverapi::AccountInfo
 
 Contains the full account profile including personal info, billing details, OAuth connections, and security settings.
 

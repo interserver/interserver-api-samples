@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.create_filter import CreateFilter
+from interserver_api_client.models.create_filter import CreateFilter
 
 # TODO update the JSON string below
 json = "{}"

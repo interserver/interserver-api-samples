@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PatchOauthTwoFactorRequest();
+    instance = new InterserverApiClient.PatchOauthTwoFactorRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('PatchOauthTwoFactorRequest', function() {
     it('should create an instance of PatchOauthTwoFactorRequest', function() {
       // uncomment below and update the code to test PatchOauthTwoFactorRequest
-      //var instance = new InterServerManagementApi.PatchOauthTwoFactorRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.PatchOauthTwoFactorRequest);
+      //var instance = new InterserverApiClient.PatchOauthTwoFactorRequest();
+      //expect(instance).to.be.a(InterserverApiClient.PatchOauthTwoFactorRequest);
     });
 
     it('should have the property account_id (base name: "account_id")', function() {
       // uncomment below and update the code to test the property account_id
-      //var instance = new InterServerManagementApi.PatchOauthTwoFactorRequest();
+      //var instance = new InterserverApiClient.PatchOauthTwoFactorRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property code (base name: "code")', function() {
       // uncomment below and update the code to test the property code
-      //var instance = new InterServerManagementApi.PatchOauthTwoFactorRequest();
+      //var instance = new InterserverApiClient.PatchOauthTwoFactorRequest();
       //expect(instance).to.be();
     });
 

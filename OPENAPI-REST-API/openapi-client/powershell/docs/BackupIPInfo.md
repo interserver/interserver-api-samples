@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupIPInfo = Initialize-PSOpenAPIToolsBackupIPInfo  -Title IP Information `
+$BackupIPInfo = Initialize-InterserverApiBackupIPInfo  -Title IP Information `
  -Rows null
 ```
 

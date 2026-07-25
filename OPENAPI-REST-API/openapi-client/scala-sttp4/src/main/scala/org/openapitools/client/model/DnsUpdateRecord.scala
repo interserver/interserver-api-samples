@@ -27,7 +27,5 @@ case class DnsUpdateRecord(
   ordername: Option[String] = None,
   auth: Option[String] = None
 )
-
 object DnsUpdateRecordEnums {
-
 }

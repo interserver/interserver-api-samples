@@ -1,4 +1,4 @@
-# openapi::BuyItNowServerOrder200ResponseBandwidthInner
+# interserverapi::BuyItNowServerOrder200ResponseBandwidthInner
 
 
 ## Properties

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailSchema } from './api';
+import { MailSchema } from '@interserver/myadmin-client';
 
 const instance: MailSchema = {
     serviceInfo,

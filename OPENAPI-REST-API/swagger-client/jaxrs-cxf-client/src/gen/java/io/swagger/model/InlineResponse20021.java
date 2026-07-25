@@ -15,31 +15,25 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse20021   {
   
-  @Schema(required = true, description = "")
-  private Boolean success = null;
-  
-  @Schema(required = true, description = "")
-  private String text = null;
+  @Schema(example = "Order Completed", description = "Status message.")
  /**
-   * Get success
-   * @return success
+   * Status message.  
   **/
-  @JsonProperty("success")
-  public Boolean isSuccess() {
-    return success;
-  }
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  public InlineResponse20021 success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
+  private String text = null;
+  
+  @Schema(description = "Invoice ID for payment.")
  /**
-   * Get text
+   * Invoice ID for payment.  
+  **/
+  private Integer invoice = null;
+  
+  @Schema(description = "Server order ID.")
+ /**
+   * Server order ID.  
+  **/
+  private Integer order = null;
+ /**
+   * Status message.
    * @return text
   **/
   @JsonProperty("text")
@@ -56,14 +50,51 @@ public class InlineResponse20021   {
     return this;
   }
 
+ /**
+   * Invoice ID for payment.
+   * @return invoice
+  **/
+  @JsonProperty("invoice")
+  public Integer getInvoice() {
+    return invoice;
+  }
+
+  public void setInvoice(Integer invoice) {
+    this.invoice = invoice;
+  }
+
+  public InlineResponse20021 invoice(Integer invoice) {
+    this.invoice = invoice;
+    return this;
+  }
+
+ /**
+   * Server order ID.
+   * @return order
+  **/
+  @JsonProperty("order")
+  public Integer getOrder() {
+    return order;
+  }
+
+  public void setOrder(Integer order) {
+    this.order = order;
+  }
+
+  public InlineResponse20021 order(Integer order) {
+    this.order = order;
+    return this;
+  }
+
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20021 {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    invoice: ").append(toIndentedString(invoice)).append("\n");
+    sb.append("    order: ").append(toIndentedString(order)).append("\n");
     sb.append("}");
     return sb.toString();
   }

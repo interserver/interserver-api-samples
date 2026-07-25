@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainOrderResponseAttributes();
+    instance = new InterserverApiClient.DomainOrderResponseAttributes();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('DomainOrderResponseAttributes', function() {
     it('should create an instance of DomainOrderResponseAttributes', function() {
       // uncomment below and update the code to test DomainOrderResponseAttributes
-      //var instance = new InterServerManagementApi.DomainOrderResponseAttributes();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainOrderResponseAttributes);
+      //var instance = new InterserverApiClient.DomainOrderResponseAttributes();
+      //expect(instance).to.be.a(InterserverApiClient.DomainOrderResponseAttributes);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.DomainOrderResponseAttributes();
+      //var instance = new InterserverApiClient.DomainOrderResponseAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property admin_email (base name: "admin_email")', function() {
       // uncomment below and update the code to test the property admin_email
-      //var instance = new InterServerManagementApi.DomainOrderResponseAttributes();
+      //var instance = new InterserverApiClient.DomainOrderResponseAttributes();
       //expect(instance).to.be();
     });
 

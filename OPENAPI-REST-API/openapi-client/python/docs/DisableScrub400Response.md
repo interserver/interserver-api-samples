@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.disable_scrub400_response import DisableScrub400Response
+from interserver_api_client.models.disable_scrub400_response import DisableScrub400Response
 
 # TODO update the JSON string below
 json = "{}"

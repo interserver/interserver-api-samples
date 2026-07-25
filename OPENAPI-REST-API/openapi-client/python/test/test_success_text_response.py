@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.success_text_response import SuccessTextResponse
+from interserver_api_client.models.success_text_response import SuccessTextResponse
 
 class TestSuccessTextResponse(unittest.TestCase):
     """SuccessTextResponse unit test stubs"""

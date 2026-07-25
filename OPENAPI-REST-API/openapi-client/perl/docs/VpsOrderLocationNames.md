@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsOrderLocationNames
+# InterServerAPI::Object::VpsOrderLocationNames
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsOrderLocationNames;
+use InterServerAPI::Object::VpsOrderLocationNames;
 ```
 
 ## Properties

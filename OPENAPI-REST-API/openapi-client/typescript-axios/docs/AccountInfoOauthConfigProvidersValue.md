@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoOauthConfigProvidersValue } from './api';
+import { AccountInfoOauthConfigProvidersValue } from '@interserver/myadmin-client';
 
 const instance: AccountInfoOauthConfigProvidersValue = {
     enabled,

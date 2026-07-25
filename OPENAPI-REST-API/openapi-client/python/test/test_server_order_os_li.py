@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_os_li import ServerOrderOsLi
+from interserver_api_client.models.server_order_os_li import ServerOrderOsLi
 
 class TestServerOrderOsLi(unittest.TestCase):
     """ServerOrderOsLi unit test stubs"""
@@ -36,7 +36,7 @@ class TestServerOrderOsLi(unittest.TestCase):
         model = ServerOrderOsLi()
         if include_optional:
             return ServerOrderOsLi(
-                var_51 = openapi_client.models.server_order_os.ServerOrderOS(
+                var_51 = interserver_api_client.models.server_order_os.ServerOrderOS(
                     id = '51', 
                     price = 0, 
                     img = '', 

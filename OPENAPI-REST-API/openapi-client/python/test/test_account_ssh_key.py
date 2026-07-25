@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_ssh_key import AccountSshKey
+from interserver_api_client.models.account_ssh_key import AccountSshKey
 
 class TestAccountSshKey(unittest.TestCase):
     """AccountSshKey unit test stubs"""

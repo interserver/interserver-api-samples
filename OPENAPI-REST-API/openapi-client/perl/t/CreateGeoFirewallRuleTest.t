@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::CreateGeoFirewallRule');
+use_ok('InterServerAPI::Object::CreateGeoFirewallRule');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::CreateGeoFirewallRule->new();
+#my $instance = InterServerAPI::Object::CreateGeoFirewallRule->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::CreateGeoFirewallRule');
+#isa_ok($instance, 'InterServerAPI::Object::CreateGeoFirewallRule');
 
 
 done_testing();

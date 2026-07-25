@@ -127,29 +127,29 @@ class DomainNameserverGetResponseInner {
 }
 
 /// Whether the registrar allows deletion of this nameserver entry.
-class DomainNameserverGetResponseInnerCanDeleteEnum {
-  /// Instantiate a new enum with the provided [value].
-  const DomainNameserverGetResponseInnerCanDeleteEnum._(this.value);
+enum DomainNameserverGetResponseInnerCanDeleteEnum {
+  n0._(r'0'),
+  n1._(r'1'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const DomainNameserverGetResponseInnerCanDeleteEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const n0 = DomainNameserverGetResponseInnerCanDeleteEnum._(r'0');
-  static const n1 = DomainNameserverGetResponseInnerCanDeleteEnum._(r'1');
-
-  /// List of all possible values in this [enum][DomainNameserverGetResponseInnerCanDeleteEnum].
-  static const values = <DomainNameserverGetResponseInnerCanDeleteEnum>[
-    n0,
-    n1,
-  ];
-
+  /// Returns the instance of [DomainNameserverGetResponseInnerCanDeleteEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static DomainNameserverGetResponseInnerCanDeleteEnum? fromJson(dynamic value) => DomainNameserverGetResponseInnerCanDeleteEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [DomainNameserverGetResponseInnerCanDeleteEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<DomainNameserverGetResponseInnerCanDeleteEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DomainNameserverGetResponseInnerCanDeleteEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -171,9 +171,10 @@ class DomainNameserverGetResponseInnerCanDeleteEnumTypeTransformer {
 
   const DomainNameserverGetResponseInnerCanDeleteEnumTypeTransformer._();
 
-  String encode(DomainNameserverGetResponseInnerCanDeleteEnum data) => data.value;
+  String encode(DomainNameserverGetResponseInnerCanDeleteEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a DomainNameserverGetResponseInnerCanDeleteEnum.
+  /// Returns the instance of [DomainNameserverGetResponseInnerCanDeleteEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -182,6 +183,9 @@ class DomainNameserverGetResponseInnerCanDeleteEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   DomainNameserverGetResponseInnerCanDeleteEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is DomainNameserverGetResponseInnerCanDeleteEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'0': return DomainNameserverGetResponseInnerCanDeleteEnum.n0;
@@ -195,7 +199,7 @@ class DomainNameserverGetResponseInnerCanDeleteEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [DomainNameserverGetResponseInnerCanDeleteEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static DomainNameserverGetResponseInnerCanDeleteEnumTypeTransformer? _instance;
 }
 

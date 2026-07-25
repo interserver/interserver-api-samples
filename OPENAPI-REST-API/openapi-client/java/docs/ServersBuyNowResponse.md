@@ -13,4 +13,8 @@ Success response after placing a buy-it-now dedicated server order.
 |**orderDetails** | [**ServersBuyNowResponseOrderDetails**](ServersBuyNowResponseOrderDetails.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

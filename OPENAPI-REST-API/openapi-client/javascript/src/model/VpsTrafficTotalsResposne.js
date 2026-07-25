@@ -17,7 +17,7 @@ import VpsTrafficTotalsSectionResponse from './VpsTrafficTotalsSectionResponse';
 /**
  * The VpsTrafficTotalsResposne model module.
  * @module model/VpsTrafficTotalsResposne
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsTrafficTotalsResposne {
     /**

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.billing_verify_cc_request import BillingVerifyCcRequest
+from interserver_api_client.models.billing_verify_cc_request import BillingVerifyCcRequest
 
 # TODO update the JSON string below
 json = "{}"

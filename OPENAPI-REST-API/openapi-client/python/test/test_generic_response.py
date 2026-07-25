@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.generic_response import GenericResponse
+from interserver_api_client.models.generic_response import GenericResponse
 
 class TestGenericResponse(unittest.TestCase):
     """GenericResponse unit test stubs"""

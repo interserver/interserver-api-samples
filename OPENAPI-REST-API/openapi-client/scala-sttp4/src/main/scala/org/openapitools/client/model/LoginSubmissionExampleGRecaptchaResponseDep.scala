@@ -16,4 +16,3 @@ case class LoginSubmissionExampleGRecaptchaResponseDep(
   w: Option[Int] = None,
   n: Option[Int] = None
 )
-

@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupBillingDetails
+# InterserverApiClient.BackupBillingDetails
 
 ## Properties
 

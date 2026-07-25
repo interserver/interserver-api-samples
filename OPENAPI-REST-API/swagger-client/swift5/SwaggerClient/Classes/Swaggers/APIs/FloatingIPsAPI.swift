@@ -11,19 +11,20 @@ import Alamofire
 
 open class FloatingIPsAPI {
     /**
-     Place Floating IP Order
+     Place a real Floating IP order, create billing records, and provision the service
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addFloatingIp(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
-        addFloatingIpWithRequestBuilder().execute { (response, error) -> Void in
+    open class func addFloatingIp(body: FloatingIpOrderRequest, completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
+        addFloatingIpWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Place Floating IP Order
+     Place a real Floating IP order, create billing records, and provision the service
      - POST /floating_ips/order
 
      - API Key:
@@ -45,27 +46,28 @@ open class FloatingIPsAPI {
   "serviceId" : 12345,
   "invoice_description" : "New Service Order"
 }}]
+     - parameter body: (body)  
 
      - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addFloatingIpWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
+    open class func addFloatingIpWithRequestBuilder(body: FloatingIpOrderRequest) -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/floating_ips/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Cancel Floating IP
+     Cancel a Floating IP service and release the IP — destructive, billing stops
 
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func floatingIpsCancel(_id: Int, completion: @escaping ((_ data: InlineResponse2003?,_ error: Error?) -> Void)) {
+    open class func floatingIpsCancel(_id: Int, completion: @escaping ((_ data: InlineResponse2004?,_ error: Error?) -> Void)) {
         floatingIpsCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -73,7 +75,7 @@ open class FloatingIPsAPI {
 
 
     /**
-     Cancel Floating IP
+     Cancel a Floating IP service and release the IP — destructive, billing stops
      - DELETE /floating_ips/{id}
 
      - API Key:
@@ -91,9 +93,9 @@ open class FloatingIPsAPI {
 }}]
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse2003> 
+     - returns: RequestBuilder<InlineResponse2004> 
      */
-    open class func floatingIpsCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2003> {
+    open class func floatingIpsCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2004> {
         var path = "/floating_ips/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -103,12 +105,12 @@ open class FloatingIPsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2003>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2004>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     View Floating IP
+     Fetch full details for one Floating IP service, including current target IP
 
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -125,7 +127,7 @@ open class FloatingIPsAPI {
 
 
     /**
-     View Floating IP
+     Fetch full details for one Floating IP service, including current target IP
      - GET /floating_ips/{id}
 
      - API Key:
@@ -157,7 +159,7 @@ open class FloatingIPsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Floating IP Invoices
+     List all billing invoices charged against a specific Floating IP service
 
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -170,7 +172,7 @@ open class FloatingIPsAPI {
 
 
     /**
-     Get Floating IP Invoices
+     List all billing invoices charged against a specific Floating IP service
      - GET /floating_ips/{id}/invoices
 
      - API Key:
@@ -240,7 +242,7 @@ open class FloatingIPsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Floating IPs
+     List all Floating IP services on the authenticated customer's account
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -252,7 +254,7 @@ open class FloatingIPsAPI {
 
 
     /**
-     List Floating IPs
+     List all Floating IP services on the authenticated customer's account
      - GET /floating_ips
 
      - API Key:
@@ -280,7 +282,7 @@ open class FloatingIPsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Resend Floating IPs Welcome Email
+     Resend the Floating IP welcome / setup email to the account contact
 
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -293,7 +295,7 @@ open class FloatingIPsAPI {
 
 
     /**
-     Resend Floating IPs Welcome Email
+     Resend the Floating IP welcome / setup email to the account contact
      - GET /floating_ips/{id}/welcome_email
 
      - API Key:
@@ -328,7 +330,7 @@ open class FloatingIPsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Floating IP Ordering Information
+     Get pricing and service-type options for ordering a new Floating IP
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -344,7 +346,7 @@ open class FloatingIPsAPI {
 
 
     /**
-     Get Floating IP Ordering Information
+     Get pricing and service-type options for ordering a new Floating IP
      - GET /floating_ips/order
 
      - API Key:
@@ -372,7 +374,7 @@ open class FloatingIPsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Change Floating IP Target
+     Re-point a Floating IP to a different target IP on one of the customer's services
 
      - parameter ip: (form)  
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
@@ -386,7 +388,7 @@ open class FloatingIPsAPI {
 
 
     /**
-     Change Floating IP Target
+     Re-point a Floating IP to a different target IP on one of the customer's services
      - POST /floating_ips/{id}/change_ip
 
      - API Key:
@@ -422,7 +424,7 @@ open class FloatingIPsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change Floating IP Target
+     Re-point a Floating IP to a different target IP on one of the customer's services
 
      - parameter body: (body)  
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
@@ -436,7 +438,7 @@ open class FloatingIPsAPI {
 
 
     /**
-     Change Floating IP Target
+     Re-point a Floating IP to a different target IP on one of the customer's services
      - POST /floating_ips/{id}/change_ip
 
      - API Key:
@@ -472,12 +474,13 @@ open class FloatingIPsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Validate Floating IP Order
+     Validate a Floating IP order and price it without charging the customer
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func putFloatingIps(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        putFloatingIpsWithRequestBuilder().execute { (response, error) -> Void in
+    open class func putFloatingIps(body: FloatingIpOrderRequest, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        putFloatingIpsWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -488,7 +491,7 @@ open class FloatingIPsAPI {
 
 
     /**
-     Validate Floating IP Order
+     Validate a Floating IP order and price it without charging the customer
      - PUT /floating_ips/order
 
      - API Key:
@@ -500,22 +503,23 @@ open class FloatingIPsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - parameter body: (body)  
 
      - returns: RequestBuilder<Void> 
      */
-    open class func putFloatingIpsWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func putFloatingIpsWithRequestBuilder(body: FloatingIpOrderRequest) -> RequestBuilder<Void> {
         let path = "/floating_ips/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Floating IP
+     Update a Floating IP service's editable settings (label / metadata)
 
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -528,7 +532,7 @@ open class FloatingIPsAPI {
 
 
     /**
-     Update Floating IP
+     Update a Floating IP service's editable settings (label / metadata)
      - POST /floating_ips/{id}
 
      - API Key:

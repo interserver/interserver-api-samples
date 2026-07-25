@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsTrafficUsageAverageResponse = Initialize-PSOpenAPIToolsVpsTrafficUsageAverageResponse  -VarIn null `
+$VpsTrafficUsageAverageResponse = Initialize-InterserverApiVpsTrafficUsageAverageResponse  -VarIn null `
  -Out null
 ```
 

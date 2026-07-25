@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The HomeDetailsModulesVps model module.
  * @module model/HomeDetailsModulesVps
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeDetailsModulesVps {
     /**

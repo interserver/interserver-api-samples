@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicensesOrderServiceCategories = Initialize-PSOpenAPIToolsLicensesOrderServiceCategories  -LicensesOrderServiceCategories509 null
+$LicensesOrderServiceCategories = Initialize-InterserverApiLicensesOrderServiceCategories  -LicensesOrderServiceCategories509 null
 ```
 
 - Convert the resource to JSON

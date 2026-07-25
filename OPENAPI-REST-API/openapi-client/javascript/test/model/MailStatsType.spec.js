@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailStatsType();
+    instance = new InterserverApiClient.MailStatsType();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('MailStatsType', function() {
     it('should create an instance of MailStatsType', function() {
       // uncomment below and update the code to test MailStatsType
-      //var instance = new InterServerManagementApi.MailStatsType();
-      //expect(instance).to.be.a(InterServerManagementApi.MailStatsType);
+      //var instance = new InterserverApiClient.MailStatsType();
+      //expect(instance).to.be.a(InterserverApiClient.MailStatsType);
     });
 
     it('should have the property time (base name: "time")', function() {
       // uncomment below and update the code to test the property time
-      //var instance = new InterServerManagementApi.MailStatsType();
+      //var instance = new InterserverApiClient.MailStatsType();
       //expect(instance).to.be();
     });
 
     it('should have the property usage (base name: "usage")', function() {
       // uncomment below and update the code to test the property usage
-      //var instance = new InterServerManagementApi.MailStatsType();
+      //var instance = new InterserverApiClient.MailStatsType();
       //expect(instance).to.be();
     });
 
     it('should have the property currency (base name: "currency")', function() {
       // uncomment below and update the code to test the property currency
-      //var instance = new InterServerManagementApi.MailStatsType();
+      //var instance = new InterserverApiClient.MailStatsType();
       //expect(instance).to.be();
     });
 
     it('should have the property currencySymbol (base name: "currencySymbol")', function() {
       // uncomment below and update the code to test the property currencySymbol
-      //var instance = new InterServerManagementApi.MailStatsType();
+      //var instance = new InterserverApiClient.MailStatsType();
       //expect(instance).to.be();
     });
 
     it('should have the property cost (base name: "cost")', function() {
       // uncomment below and update the code to test the property cost
-      //var instance = new InterServerManagementApi.MailStatsType();
+      //var instance = new InterserverApiClient.MailStatsType();
       //expect(instance).to.be();
     });
 
     it('should have the property received (base name: "received")', function() {
       // uncomment below and update the code to test the property received
-      //var instance = new InterServerManagementApi.MailStatsType();
+      //var instance = new InterserverApiClient.MailStatsType();
       //expect(instance).to.be();
     });
 
     it('should have the property sent (base name: "sent")', function() {
       // uncomment below and update the code to test the property sent
-      //var instance = new InterServerManagementApi.MailStatsType();
+      //var instance = new InterserverApiClient.MailStatsType();
       //expect(instance).to.be();
     });
 
     it('should have the property volume (base name: "volume")', function() {
       // uncomment below and update the code to test the property volume
-      //var instance = new InterServerManagementApi.MailStatsType();
+      //var instance = new InterserverApiClient.MailStatsType();
       //expect(instance).to.be();
     });
 

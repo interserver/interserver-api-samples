@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverAddons
+# InterserverApiClient.QuickserverAddons
 
 ## Properties
 

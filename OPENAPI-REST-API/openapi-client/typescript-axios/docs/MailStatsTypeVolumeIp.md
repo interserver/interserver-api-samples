@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailStatsTypeVolumeIp } from './api';
+import { MailStatsTypeVolumeIp } from '@interserver/myadmin-client';
 
 const instance: MailStatsTypeVolumeIp = {
     _1_1_1_1,

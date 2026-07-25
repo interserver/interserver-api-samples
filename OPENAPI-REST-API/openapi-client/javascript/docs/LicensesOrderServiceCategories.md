@@ -1,4 +1,4 @@
-# InterServerManagementApi.LicensesOrderServiceCategories
+# InterserverApiClient.LicensesOrderServiceCategories
 
 ## Properties
 

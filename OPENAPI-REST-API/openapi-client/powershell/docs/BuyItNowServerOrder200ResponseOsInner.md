@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BuyItNowServerOrder200ResponseOsInner = Initialize-PSOpenAPIToolsBuyItNowServerOrder200ResponseOsInner  -Id 5 `
+$BuyItNowServerOrder200ResponseOsInner = Initialize-InterserverApiBuyItNowServerOrder200ResponseOsInner  -Id 5 `
  -ShortDesc FreeBSD `
  -LongDesc Latest FreeBSD 6.x OS&lt;br&gt;&lt;pre&gt;CP(s): cPanel/DirectAdmin&lt;/pre&gt; `
  -MonthlyPrice 0

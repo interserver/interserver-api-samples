@@ -12,4 +12,8 @@ A supplementary information table for a mail service (e.g., connection details).
 |**rows** | [**List&lt;MailExtraInfoTableRow&gt;**](MailExtraInfoTableRow.md) | The rows of the extra info table. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

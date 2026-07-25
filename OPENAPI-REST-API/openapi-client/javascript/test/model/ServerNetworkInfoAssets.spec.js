@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerNetworkInfoAssets();
+    instance = new InterserverApiClient.ServerNetworkInfoAssets();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('ServerNetworkInfoAssets', function() {
     it('should create an instance of ServerNetworkInfoAssets', function() {
       // uncomment below and update the code to test ServerNetworkInfoAssets
-      //var instance = new InterServerManagementApi.ServerNetworkInfoAssets();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerNetworkInfoAssets);
+      //var instance = new InterserverApiClient.ServerNetworkInfoAssets();
+      //expect(instance).to.be.a(InterserverApiClient.ServerNetworkInfoAssets);
     });
 
     it('should have the property _3497 (base name: "3497")', function() {
       // uncomment below and update the code to test the property _3497
-      //var instance = new InterServerManagementApi.ServerNetworkInfoAssets();
+      //var instance = new InterserverApiClient.ServerNetworkInfoAssets();
       //expect(instance).to.be();
     });
 

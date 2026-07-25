@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsOrderPutRequest } from './api';
+import { VpsOrderPutRequest } from '@interserver/myadmin-client';
 
 const instance: VpsOrderPutRequest = {
     osDistro,

@@ -17,7 +17,7 @@ import LicenseIpInfoRow from './LicenseIpInfoRow';
 /**
  * The LicenseIpInfo model module.
  * @module model/LicenseIpInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicenseIpInfo {
     /**

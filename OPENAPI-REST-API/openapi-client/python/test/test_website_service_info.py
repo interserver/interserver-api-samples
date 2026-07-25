@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.website_service_info import WebsiteServiceInfo
+from interserver_api_client.models.website_service_info import WebsiteServiceInfo
 
 class TestWebsiteServiceInfo(unittest.TestCase):
     """WebsiteServiceInfo unit test stubs"""

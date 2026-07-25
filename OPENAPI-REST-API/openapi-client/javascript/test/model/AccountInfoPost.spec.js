@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoPost();
+    instance = new InterserverApiClient.AccountInfoPost();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,109 +50,109 @@
   describe('AccountInfoPost', function() {
     it('should create an instance of AccountInfoPost', function() {
       // uncomment below and update the code to test AccountInfoPost
-      //var instance = new InterServerManagementApi.AccountInfoPost();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoPost);
+      //var instance = new InterserverApiClient.AccountInfoPost();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoPost);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property address (base name: "address")', function() {
       // uncomment below and update the code to test the property address
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property city (base name: "city")', function() {
       // uncomment below and update the code to test the property city
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property state (base name: "state")', function() {
       // uncomment below and update the code to test the property state
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property zip (base name: "zip")', function() {
       // uncomment below and update the code to test the property zip
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property country (base name: "country")', function() {
       // uncomment below and update the code to test the property country
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property phone (base name: "phone")', function() {
       // uncomment below and update the code to test the property phone
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property company (base name: "company")', function() {
       // uncomment below and update the code to test the property company
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property address2 (base name: "address2")', function() {
       // uncomment below and update the code to test the property address2
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property locale (base name: "locale")', function() {
       // uncomment below and update the code to test the property locale
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property email_invoices (base name: "email_invoices")', function() {
       // uncomment below and update the code to test the property email_invoices
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property email_abuse (base name: "email_abuse")', function() {
       // uncomment below and update the code to test the property email_abuse
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property disable_reset (base name: "disable_reset")', function() {
       // uncomment below and update the code to test the property disable_reset
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property disable_reinstall (base name: "disable_reinstall")', function() {
       // uncomment below and update the code to test the property disable_reinstall
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property disable_server_notifications (base name: "disable_server_notifications")', function() {
       // uncomment below and update the code to test the property disable_server_notifications
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property disable_email_notifications (base name: "disable_email_notifications")', function() {
       // uncomment below and update the code to test the property disable_email_notifications
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 
     it('should have the property gstin (base name: "gstin")', function() {
       // uncomment below and update the code to test the property gstin
-      //var instance = new InterServerManagementApi.AccountInfoPost();
+      //var instance = new InterserverApiClient.AccountInfoPost();
       //expect(instance).to.be();
     });
 

@@ -14,4 +14,8 @@
 |**cjParams** | [**PlaceScrubOrder201ResponseOrderDetailsCjParams**](PlaceScrubOrder201ResponseOrderDetailsCjParams.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

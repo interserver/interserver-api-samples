@@ -18,7 +18,7 @@
  */
 data class InlineResponse20016 (
 
-    val success: kotlin.Boolean? = null,
-    val text: kotlin.String? = null
+    val success: kotlin.Boolean,
+    val text: kotlin.String
 ) {
 }

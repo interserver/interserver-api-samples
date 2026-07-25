@@ -1,15 +1,15 @@
-# openapi.model.Vps
+# interserver_api.model.Vps
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **serviceInfo** | [**VpsServiceInfo**](VpsServiceInfo.md) |  | 
-**clientLinks** | [**BuiltList&lt;VpsClientLink&gt;**](VpsClientLink.md) |  | 
+**clientLinks** | [**List&lt;VpsClientLink&gt;**](VpsClientLink.md) |  | 
 **billingDetails** | [**VpsBillingDetails**](VpsBillingDetails.md) |  | 
 **custCurrency** | **String** |  | 
 **custCurrencySymbol** | **String** |  | 
@@ -25,8 +25,8 @@ Name | Type | Description | Notes
 **daData** | [**VpsDAData**](VpsDAData.md) |  | 
 **plesk12Data** | [**VpsPlesk12Data**](VpsPlesk12Data.md) |  | 
 **serviceAddons** | [**VpsServiceAddons**](VpsServiceAddons.md) |  | 
-**osTemplate** | **String** |  | [optional] 
-**cpuGraphData** | [**JsonObject**](.md) |  | [optional] 
+**osTemplate** | **Optional&lt;String?&gt;** |  | [optional] 
+**cpuGraphData** | **Optional&lt;Object?&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

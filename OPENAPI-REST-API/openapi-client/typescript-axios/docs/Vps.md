@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { Vps } from './api';
+import { Vps } from '@interserver/myadmin-client';
 
 const instance: Vps = {
     serviceInfo,

@@ -24,4 +24,8 @@ Administrative contact information for a domain registration.
 |**lastName** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

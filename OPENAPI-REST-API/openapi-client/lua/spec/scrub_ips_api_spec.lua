@@ -113,6 +113,13 @@ describe("scrub_ips_api", function()
     end)
   end)
 
+  -- unit tests for put_scrub_ips
+  describe("put_scrub_ips test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for scrub_ips_delete_geo_rule
   describe("scrub_ips_delete_geo_rule test", function()
     it("should work", function()

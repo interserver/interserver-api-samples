@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsOrderTemplatesHypervWindows model module.
  * @module model/VpsOrderTemplatesHypervWindows
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderTemplatesHypervWindows {
     /**

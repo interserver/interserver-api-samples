@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BackupsOrderPackageCosts model module.
  * @module model/BackupsOrderPackageCosts
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BackupsOrderPackageCosts {
     /**

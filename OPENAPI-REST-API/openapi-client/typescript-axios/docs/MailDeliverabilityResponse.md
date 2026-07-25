@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailDeliverabilityResponse } from './api';
+import { MailDeliverabilityResponse } from '@interserver/myadmin-client';
 
 const instance: MailDeliverabilityResponse = {
     stat,

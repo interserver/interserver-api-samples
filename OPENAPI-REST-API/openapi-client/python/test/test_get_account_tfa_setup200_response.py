@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_account_tfa_setup200_response import GetAccountTfaSetup200Response
+from interserver_api_client.models.get_account_tfa_setup200_response import GetAccountTfaSetup200Response
 
 class TestGetAccountTfaSetup200Response(unittest.TestCase):
     """GetAccountTfaSetup200Response unit test stubs"""

@@ -24,16 +24,17 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::DomainsApi');
+use_ok('InterServerAPI::DomainsApi');
 
-my $api = OpenAPIClient::DomainsApi->new();
-isa_ok($api, 'OpenAPIClient::DomainsApi');
+my $api = InterServerAPI::DomainsApi->new();
+isa_ok($api, 'InterServerAPI::DomainsApi');
 
 #
 # add_domain test
 #
 # uncomment below and update the test
-#my $add_domain_result = $api->add_domain();
+#my $add_domain_domain_order_request = undef; # replace NULL with a proper value
+#my $add_domain_result = $api->add_domain(domain_order_request => $add_domain_domain_order_request);
 
 #
 # add_domain_dnssec test
@@ -63,8 +64,7 @@ isa_ok($api, 'OpenAPIClient::DomainsApi');
 #
 # uncomment below and update the test
 #my $delete_domain_dnssec_id = undef; # replace NULL with a proper value
-#my $delete_domain_dnssec_action = undef; # replace NULL with a proper value
-#my $delete_domain_dnssec_result = $api->delete_domain_dnssec(id => $delete_domain_dnssec_id, action => $delete_domain_dnssec_action);
+#my $delete_domain_dnssec_result = $api->delete_domain_dnssec(id => $delete_domain_dnssec_id);
 
 #
 # delete_domain_nameserver test
@@ -117,21 +117,6 @@ isa_ok($api, 'OpenAPIClient::DomainsApi');
 #my $get_domain_nameservers_result = $api->get_domain_nameservers(id => $get_domain_nameservers_id);
 
 #
-# get_domain_order_fields test
-#
-# uncomment below and update the test
-#my $get_domain_order_fields_domain = undef; # replace NULL with a proper value
-#my $get_domain_order_fields_reg_type = undef; # replace NULL with a proper value
-#my $get_domain_order_fields_result = $api->get_domain_order_fields(domain => $get_domain_order_fields_domain, reg_type => $get_domain_order_fields_reg_type);
-
-#
-# get_domain_order_search_results test
-#
-# uncomment below and update the test
-#my $get_domain_order_search_results_domain = undef; # replace NULL with a proper value
-#my $get_domain_order_search_results_result = $api->get_domain_order_search_results(domain => $get_domain_order_search_results_domain);
-
-#
 # get_domain_renewal test
 #
 # uncomment below and update the test
@@ -182,7 +167,8 @@ isa_ok($api, 'OpenAPIClient::DomainsApi');
 # patch_domains test
 #
 # uncomment below and update the test
-#my $patch_domains_result = $api->patch_domains();
+#my $patch_domains_domain_order_request = undef; # replace NULL with a proper value
+#my $patch_domains_result = $api->patch_domains(domain_order_request => $patch_domains_domain_order_request);
 
 #
 # post_domain_renewal test
@@ -190,6 +176,13 @@ isa_ok($api, 'OpenAPIClient::DomainsApi');
 # uncomment below and update the test
 #my $post_domain_renewal_id = undef; # replace NULL with a proper value
 #my $post_domain_renewal_result = $api->post_domain_renewal(id => $post_domain_renewal_id);
+
+#
+# post_domain_search test
+#
+# uncomment below and update the test
+#my $post_domain_search_name = undef; # replace NULL with a proper value
+#my $post_domain_search_result = $api->post_domain_search(name => $post_domain_search_name);
 
 #
 # post_domain_transfer test
@@ -202,7 +195,8 @@ isa_ok($api, 'OpenAPIClient::DomainsApi');
 # put_domains test
 #
 # uncomment below and update the test
-#my $put_domains_result = $api->put_domains();
+#my $put_domains_domain_order_request = undef; # replace NULL with a proper value
+#my $put_domains_result = $api->put_domains(domain_order_request => $put_domains_domain_order_request);
 
 #
 # update_domain_contact test

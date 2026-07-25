@@ -18,6 +18,7 @@ type ScrubIpStatus* {.pure.} = enum
   Pending
   Canceled
   Expired
+  UnknownDefaultOpenApi
 
 type GetScrubIpDetails200responseServiceInfo* = object
   ## 
@@ -40,12 +41,14 @@ func `%`*(v: ScrubIpStatus): JsonNode =
     of ScrubIpStatus.Pending: %"pending"
     of ScrubIpStatus.Canceled: %"canceled"
     of ScrubIpStatus.Expired: %"expired"
+    of ScrubIpStatus.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: ScrubIpStatus): string =
   result = case v:
     of ScrubIpStatus.Active: $("active")
     of ScrubIpStatus.Pending: $("pending")
     of ScrubIpStatus.Canceled: $("canceled")
     of ScrubIpStatus.Expired: $("expired")
+    of ScrubIpStatus.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[ScrubIpStatus]): ScrubIpStatus =
   if node.kind != JString:
@@ -60,6 +63,8 @@ proc to*(node: JsonNode, T: typedesc[ScrubIpStatus]): ScrubIpStatus =
     return ScrubIpStatus.Canceled
   of $("expired"):
     return ScrubIpStatus.Expired
+  of $("11184809"):
+    return ScrubIpStatus.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for ScrubIpStatus: " & strVal)
 

@@ -16,4 +16,3 @@ case class AccountInfoLimitsInner(
   start: Option[String] = None,
   end: Option[String] = None
 )
-

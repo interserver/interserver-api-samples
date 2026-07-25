@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AddServer200Response
+# InterServerAPI::Object::AddServer200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AddServer200Response;
+use InterServerAPI::Object::AddServer200Response;
 ```
 
 ## Properties

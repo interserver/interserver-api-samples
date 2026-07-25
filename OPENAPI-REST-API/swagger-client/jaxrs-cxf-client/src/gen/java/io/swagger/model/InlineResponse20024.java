@@ -1,8 +1,5 @@
 package io.swagger.model;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import javax.xml.bind.annotation.XmlElement;
@@ -18,31 +15,44 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse20024   {
   
-  @Schema(description = "A map of IP addresses to their current reverse DNS hostnames.")
+  @Schema(required = true, description = "")
+  private Boolean success = null;
+  
+  @Schema(required = true, description = "")
+  private String text = null;
  /**
-   * A map of IP addresses to their current reverse DNS hostnames.  
+   * Get success
+   * @return success
   **/
-  private Map<String, String> ips = null;
- /**
-   * A map of IP addresses to their current reverse DNS hostnames.
-   * @return ips
-  **/
-  @JsonProperty("ips")
-  public Map<String, String> getIps() {
-    return ips;
+  @JsonProperty("success")
+  public Boolean isSuccess() {
+    return success;
   }
 
-  public void setIps(Map<String, String> ips) {
-    this.ips = ips;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
-  public InlineResponse20024 ips(Map<String, String> ips) {
-    this.ips = ips;
+  public InlineResponse20024 success(Boolean success) {
+    this.success = success;
     return this;
   }
 
-  public InlineResponse20024 putIpsItem(String key, String ipsItem) {
-    this.ips.put(key, ipsItem);
+ /**
+   * Get text
+   * @return text
+  **/
+  @JsonProperty("text")
+  public String getText() {
+    return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  public InlineResponse20024 text(String text) {
+    this.text = text;
     return this;
   }
 
@@ -52,7 +62,8 @@ public class InlineResponse20024   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20024 {\n");
     
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }

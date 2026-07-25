@@ -21,4 +21,3 @@ case class MailTutorialsTableRow(
   /* The value of the tutorials table row. */
   value: Option[String] = None
 )
-

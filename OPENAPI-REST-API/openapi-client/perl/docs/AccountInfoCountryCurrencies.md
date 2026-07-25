@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AccountInfoCountryCurrencies
+# InterServerAPI::Object::AccountInfoCountryCurrencies
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AccountInfoCountryCurrencies;
+use InterServerAPI::Object::AccountInfoCountryCurrencies;
 ```
 
 ## Properties

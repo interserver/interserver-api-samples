@@ -1,10 +1,5 @@
 package io.swagger.model;
 
-import io.swagger.model.InlineResponse20018Ips;
-import io.swagger.model.InlineResponse20018PackageCosts;
-import io.swagger.model.InlineResponse20018ServiceTypes;
-import java.util.ArrayList;
-import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -16,67 +11,46 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class InlineResponse20018   {
 
-  private @Valid InlineResponse20018PackageCosts packageCosts = null;
+  private @Valid Boolean success = null;
 
-  private @Valid List<InlineResponse20018ServiceTypes> serviceTypes = new ArrayList<InlineResponse20018ServiceTypes>();
-
-  private @Valid List<InlineResponse20018Ips> ips = new ArrayList<InlineResponse20018Ips>();
+  private @Valid String text = null;
 
   /**
    **/
-  public InlineResponse20018 packageCosts(InlineResponse20018PackageCosts packageCosts) {
-    this.packageCosts = packageCosts;
+  public InlineResponse20018 success(Boolean success) {
+    this.success = success;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("packageCosts")
+  @ApiModelProperty(example = "true", value = "")
+  @JsonProperty("success")
   @NotNull
 
-  public InlineResponse20018PackageCosts getPackageCosts() {
-    return packageCosts;
+  public Boolean isSuccess() {
+    return success;
   }
-  public void setPackageCosts(InlineResponse20018PackageCosts packageCosts) {
-    this.packageCosts = packageCosts;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
   /**
    **/
-  public InlineResponse20018 serviceTypes(List<InlineResponse20018ServiceTypes> serviceTypes) {
-    this.serviceTypes = serviceTypes;
+  public InlineResponse20018 text(String text) {
+    this.text = text;
     return this;
   }
 
   
-  @ApiModelProperty(value = "")
-  @JsonProperty("serviceTypes")
+  @ApiModelProperty(example = "Filter is deleted.", value = "")
+  @JsonProperty("text")
   @NotNull
 
-  public List<InlineResponse20018ServiceTypes> getServiceTypes() {
-    return serviceTypes;
+  public String getText() {
+    return text;
   }
-  public void setServiceTypes(List<InlineResponse20018ServiceTypes> serviceTypes) {
-    this.serviceTypes = serviceTypes;
-  }
-
-  /**
-   **/
-  public InlineResponse20018 ips(List<InlineResponse20018Ips> ips) {
-    this.ips = ips;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("ips")
-  @NotNull
-
-  public List<InlineResponse20018Ips> getIps() {
-    return ips;
-  }
-  public void setIps(List<InlineResponse20018Ips> ips) {
-    this.ips = ips;
+  public void setText(String text) {
+    this.text = text;
   }
 
 
@@ -89,14 +63,13 @@ public class InlineResponse20018   {
       return false;
     }
     InlineResponse20018 inlineResponse20018 = (InlineResponse20018) o;
-    return Objects.equals(packageCosts, inlineResponse20018.packageCosts) &&
-        Objects.equals(serviceTypes, inlineResponse20018.serviceTypes) &&
-        Objects.equals(ips, inlineResponse20018.ips);
+    return Objects.equals(success, inlineResponse20018.success) &&
+        Objects.equals(text, inlineResponse20018.text);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(packageCosts, serviceTypes, ips);
+    return Objects.hash(success, text);
   }
 
   @Override
@@ -104,9 +77,8 @@ public class InlineResponse20018   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20018 {\n");
     
-    sb.append("    packageCosts: ").append(toIndentedString(packageCosts)).append("\n");
-    sb.append("    serviceTypes: ").append(toIndentedString(serviceTypes)).append("\n");
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }

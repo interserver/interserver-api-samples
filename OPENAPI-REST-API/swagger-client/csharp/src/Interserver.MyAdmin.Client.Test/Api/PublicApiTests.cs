@@ -63,6 +63,26 @@ namespace Interserver.MyAdmin.Client.Test
         }
 
         /// <summary>
+        /// Test GetAccountCurrencies
+        /// </summary>
+        [Test]
+        public void GetAccountCurrenciesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.GetAccountCurrencies();
+            //Assert.IsInstanceOf<List<string>> (response, "response is List<string>");
+        }
+        /// <summary>
+        /// Test GetAccountLocales
+        /// </summary>
+        [Test]
+        public void GetAccountLocalesTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.GetAccountLocales();
+            //Assert.IsInstanceOf<Dictionary<string, InlineResponseMap200>> (response, "response is Dictionary<string, InlineResponseMap200>");
+        }
+        /// <summary>
         /// Test GetCaptcha
         /// </summary>
         [Test]
@@ -122,7 +142,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string provider = null;
             //var response = instance.GetOauthRedirect(provider);
-            //Assert.IsInstanceOf<InlineResponse2005> (response, "response is InlineResponse2005");
+            //Assert.IsInstanceOf<InlineResponse2006> (response, "response is InlineResponse2006");
         }
         /// <summary>
         /// Test GetTimezones
@@ -143,7 +163,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //OauthBody2 body = null;
             //var response = instance.PatchOauthTwoFactor(body);
-            //Assert.IsInstanceOf<InlineResponse2007> (response, "response is InlineResponse2007");
+            //Assert.IsInstanceOf<InlineResponse2008> (response, "response is InlineResponse2008");
         }
         /// <summary>
         /// Test PingServer
@@ -165,7 +185,7 @@ namespace Interserver.MyAdmin.Client.Test
             //string provider = null;
             //OauthBody body = null;
             //var response = instance.PostOauthCallback(provider, body);
-            //Assert.IsInstanceOf<InlineResponse2006> (response, "response is InlineResponse2006");
+            //Assert.IsInstanceOf<InlineResponse2007> (response, "response is InlineResponse2007");
         }
         /// <summary>
         /// Test SubmitLogin

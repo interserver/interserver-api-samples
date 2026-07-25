@@ -11,13 +11,12 @@ import Foundation
 public struct InlineResponse20011: Codable {
 
 
-    public var text: String?
+    public var success: Bool
 
-    /** A pre-signed download URL valid for 24 hours. */
-    public var url: String?
-    public init(text: String? = nil, url: String? = nil) { 
+    public var text: String
+    public init(success: Bool, text: String) { 
+        self.success = success
         self.text = text
-        self.url = url
     }
 
 }

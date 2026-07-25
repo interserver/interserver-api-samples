@@ -21,4 +21,8 @@ Billing information for a webhosting service including payment status, billing c
 |**serviceExtraJson** | **String** | Extra information in JSON format for the service |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

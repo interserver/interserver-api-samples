@@ -25,4 +25,3 @@ case class DomainProvProcessPending(
   is_success: Option[String] = None,
   attributes: Option[DomainProvProcessPendingAttributes] = None
 )
-

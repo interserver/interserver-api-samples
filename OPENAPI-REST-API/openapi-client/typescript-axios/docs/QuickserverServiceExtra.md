@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverServiceExtra } from './api';
+import { QuickserverServiceExtra } from '@interserver/myadmin-client';
 
 const instance: QuickserverServiceExtra = {
     platform,

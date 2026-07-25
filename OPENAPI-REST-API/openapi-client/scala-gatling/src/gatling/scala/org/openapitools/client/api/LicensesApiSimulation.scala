@@ -60,7 +60,6 @@ class LicensesApiSimulation extends Simulation {
     val getLicenseInfoPerSecond = config.getDouble("performance.operationsPerSecond.getLicenseInfo") * rateMultiplier * instanceMultiplier
     val getLicenseInvoicesPerSecond = config.getDouble("performance.operationsPerSecond.getLicenseInvoices") * rateMultiplier * instanceMultiplier
     val getLicenseListPerSecond = config.getDouble("performance.operationsPerSecond.getLicenseList") * rateMultiplier * instanceMultiplier
-    val getLicenseOrderCatTagInfoPerSecond = config.getDouble("performance.operationsPerSecond.getLicenseOrderCatTagInfo") * rateMultiplier * instanceMultiplier
     val getLicensesWelcomeEmailPerSecond = config.getDouble("performance.operationsPerSecond.getLicensesWelcomeEmail") * rateMultiplier * instanceMultiplier
     val getNewLicensePerSecond = config.getDouble("performance.operationsPerSecond.getNewLicense") * rateMultiplier * instanceMultiplier
     val licensesCancelPerSecond = config.getDouble("performance.operationsPerSecond.licensesCancel") * rateMultiplier * instanceMultiplier
@@ -73,7 +72,6 @@ class LicensesApiSimulation extends Simulation {
     // Set up CSV feeders
     val getLicenseInfoPATHFeeder = csv(userDataDirectory + File.separator + "getLicenseInfo-pathParams.csv").random
     val getLicenseInvoicesPATHFeeder = csv(userDataDirectory + File.separator + "getLicenseInvoices-pathParams.csv").random
-    val getLicenseOrderCatTagInfoPATHFeeder = csv(userDataDirectory + File.separator + "getLicenseOrderCatTagInfo-pathParams.csv").random
     val getLicensesWelcomeEmailPATHFeeder = csv(userDataDirectory + File.separator + "getLicensesWelcomeEmail-pathParams.csv").random
     val licensesCancelPATHFeeder = csv(userDataDirectory + File.separator + "licensesCancel-pathParams.csv").random
     val postLicenseChangeIpPATHFeeder = csv(userDataDirectory + File.separator + "postLicenseChangeIp-pathParams.csv").random
@@ -133,20 +131,6 @@ class LicensesApiSimulation extends Simulation {
         rampUsersPerSec(1) to(getLicenseListPerSecond) during(rampUpSeconds),
         constantUsersPerSec(getLicenseListPerSecond) during(durationSeconds),
         rampUsersPerSec(getLicenseListPerSecond) to(1) during(rampDownSeconds)
-    )
-
-    
-    val scngetLicenseOrderCatTagInfo = scenario("getLicenseOrderCatTagInfoSimulation")
-        .feed(getLicenseOrderCatTagInfoPATHFeeder)
-        .exec(http("getLicenseOrderCatTagInfo")
-        .httpRequest("GET","/licenses/order/${catTag}")
-)
-
-    // Run scngetLicenseOrderCatTagInfo with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scngetLicenseOrderCatTagInfo.inject(
-        rampUsersPerSec(1) to(getLicenseOrderCatTagInfoPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(getLicenseOrderCatTagInfoPerSecond) during(durationSeconds),
-        rampUsersPerSec(getLicenseOrderCatTagInfoPerSecond) to(1) during(rampDownSeconds)
     )
 
     

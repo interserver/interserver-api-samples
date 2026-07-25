@@ -107,7 +107,7 @@ CreateRule400Response <- R6::R6Class(
         self$`text` <- this_object$`text`
       }
       if (!is.null(this_object$`errors`)) {
-        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("openapi"))
+        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -132,7 +132,7 @@ CreateRule400Response <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`success` <- this_object$`success`
       self$`text` <- this_object$`text`
-      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("openapi"))
+      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("interserverapi"))
       self
     },
 

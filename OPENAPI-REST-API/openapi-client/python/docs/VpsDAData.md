@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_da_data import VpsDAData
+from interserver_api_client.models.vps_da_data import VpsDAData
 
 # TODO update the JSON string below
 json = "{}"

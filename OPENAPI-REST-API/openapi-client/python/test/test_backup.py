@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup import Backup
+from interserver_api_client.models.backup import Backup
 
 class TestBackup(unittest.TestCase):
     """Backup unit test stubs"""
@@ -36,7 +36,7 @@ class TestBackup(unittest.TestCase):
         model = Backup()
         if include_optional:
             return Backup(
-                service_info = openapi_client.models.backup_service_info.BackupServiceInfo(
+                service_info = interserver_api_client.models.backup_service_info.BackupServiceInfo(
                     backup_id = '21163', 
                     backup_server = '38', 
                     backup_username = 'st21163', 
@@ -53,7 +53,7 @@ class TestBackup(unittest.TestCase):
                     backup_server_status = 'deleted', 
                     backup_comment = '', ),
                 client_links = [
-                    openapi_client.models.backup_client_link.BackupClientLink(
+                    interserver_api_client.models.backup_client_link.BackupClientLink(
                         label = '', 
                         link = '', 
                         icon = '', 
@@ -61,7 +61,7 @@ class TestBackup(unittest.TestCase):
                         help_text = '', 
                         other_attr = '', )
                     ],
-                billing_details = openapi_client.models.backup_billing_details.BackupBillingDetails(
+                billing_details = interserver_api_client.models.backup_billing_details.BackupBillingDetails(
                     service_last_invoice_date = 'December 29, 2021', 
                     service_payment_status = 'Paid', 
                     service_frequency = 'Monthly', 
@@ -74,7 +74,7 @@ class TestBackup(unittest.TestCase):
                     service_extra_json = '[]', ),
                 cust_currency = 'USD',
                 cust_currency_symbol = '$',
-                service_master = openapi_client.models.backup_service_master.BackupServiceMaster(
+                service_master = interserver_api_client.models.backup_service_master.BackupServiceMaster(
                     backup_id = 38, 
                     backup_name = 'storage1400.is.cc', 
                     backup_ip = '44.22.11.88', 
@@ -87,11 +87,11 @@ class TestBackup(unittest.TestCase):
                     backup_order = 21359, ),
                 package = '',
                 service_extra = '',
-                extra_info_tables = openapi_client.models.backup_extra_info_tables.BackupExtraInfoTables(
-                    ip_info = openapi_client.models.backup_ip_info.BackupIPInfo(
+                extra_info_tables = interserver_api_client.models.backup_extra_info_tables.BackupExtraInfoTables(
+                    ip_info = interserver_api_client.models.backup_ip_info.BackupIPInfo(
                         title = 'IP Information', 
                         rows = [
-                            openapi_client.models.backup_ip_info_row.BackupIPInfoRow(
+                            interserver_api_client.models.backup_ip_info_row.BackupIPInfoRow(
                                 desc = 'Netmask', 
                                 value = '255.255.255.248', )
                             ], ), )

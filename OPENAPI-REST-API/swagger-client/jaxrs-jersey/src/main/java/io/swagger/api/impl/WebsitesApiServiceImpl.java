@@ -6,10 +6,10 @@ import io.swagger.model.*;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBuyIpBody;
 import io.swagger.model.IdMigrationBody;
-import io.swagger.model.InlineResponse20023;
-import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse20025;
 import io.swagger.model.InlineResponse20026;
+import io.swagger.model.InlineResponse20027;
+import io.swagger.model.InlineResponse20028;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ReverseDnsEntries;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -18,6 +18,8 @@ import io.swagger.model.TextResponse;
 import io.swagger.model.Website;
 import io.swagger.model.WebsiteBackups;
 import io.swagger.model.WebsiteLoginResponse;
+import io.swagger.model.WebsiteOrderPostRequest;
+import io.swagger.model.WebsiteOrderPutRequest;
 import io.swagger.model.WebsiteRow;
 import io.swagger.model.WebsitesOrder;
 
@@ -35,7 +37,7 @@ import javax.validation.constraints.*;
 
 public class WebsitesApiServiceImpl extends WebsitesApiService {
     @Override
-    public Response addWebsite(SecurityContext securityContext) throws NotFoundException {
+    public Response addWebsite(WebsiteOrderPostRequest body, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -115,7 +117,7 @@ public class WebsitesApiServiceImpl extends WebsitesApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response putWebsites(SecurityContext securityContext) throws NotFoundException {
+    public Response putWebsites(WebsiteOrderPutRequest body, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }

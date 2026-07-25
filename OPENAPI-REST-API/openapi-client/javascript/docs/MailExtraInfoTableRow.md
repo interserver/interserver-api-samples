@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailExtraInfoTableRow
+# InterserverApiClient.MailExtraInfoTableRow
 
 ## Properties
 

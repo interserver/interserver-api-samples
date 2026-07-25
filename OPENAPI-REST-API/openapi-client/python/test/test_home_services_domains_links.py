@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_services_domains_links import HomeServicesDomainsLinks
+from interserver_api_client.models.home_services_domains_links import HomeServicesDomainsLinks
 
 class TestHomeServicesDomainsLinks(unittest.TestCase):
     """HomeServicesDomainsLinks unit test stubs"""

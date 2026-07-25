@@ -20,4 +20,3 @@ case class DomainNameServer(
   name: Option[String] = None,
   ipaddress: Option[String] = None
 )
-

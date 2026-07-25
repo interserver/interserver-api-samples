@@ -52,4 +52,3 @@ case class AccountInfoPost(
   /* Your GST identification number (if applicable). */
   gstin: Option[String] = None
 )
-

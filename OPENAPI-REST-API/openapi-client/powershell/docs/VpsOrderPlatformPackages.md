@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderPlatformPackages = Initialize-PSOpenAPIToolsVpsOrderPlatformPackages  -Kvm 32 `
+$VpsOrderPlatformPackages = Initialize-InterserverApiVpsOrderPlatformPackages  -Kvm 32 `
  -Kvmstorage 57 `
  -Hyperv 54
 ```

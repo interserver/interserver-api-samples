@@ -1,4 +1,4 @@
-# openapi::AccountInfoDataEmailSettings
+# interserverapi::AccountInfoDataEmailSettings
 
 
 ## Properties

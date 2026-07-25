@@ -1,4 +1,4 @@
-# SwaggerClient::UrlRequest
+# InterserverApiClient::UrlRequest
 
 ## Properties
 Name | Type | Description | Notes

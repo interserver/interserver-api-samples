@@ -11,7 +11,7 @@ package myadmin-client-go-server
 
 type InlineResponse20011 struct {
 
-	Text string `json:"text,omitempty"`
-	// A pre-signed download URL valid for 24 hours.
-	Url string `json:"url,omitempty"`
+	Success bool `json:"success"`
+
+	Text string `json:"text"`
 }

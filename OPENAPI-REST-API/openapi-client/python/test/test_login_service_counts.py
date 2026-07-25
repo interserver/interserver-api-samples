@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.login_service_counts import LoginServiceCounts
+from interserver_api_client.models.login_service_counts import LoginServiceCounts
 
 class TestLoginServiceCounts(unittest.TestCase):
     """LoginServiceCounts unit test stubs"""

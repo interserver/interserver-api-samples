@@ -17,4 +17,3 @@ case class TicketsCountArray(
   On_Hold: Option[Int] = None,
   Closed: Option[Int] = None
 )
-

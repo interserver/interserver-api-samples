@@ -1,4 +1,4 @@
-# openapi::DomainOwnerContact
+# interserverapi::DomainOwnerContact
 
 Contact details for the registered domain owner.
 

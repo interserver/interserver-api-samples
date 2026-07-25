@@ -69,7 +69,7 @@ export interface StatusMonthlyBreakdown {
  * Check if a given object implements the StatusMonthlyBreakdown interface.
  */
 export function instanceOfStatusMonthlyBreakdown(value: object): value is StatusMonthlyBreakdown {
-    if (!('_default' in value) || value['_default'] === undefined) return false;
+    if ((!('_default' in (value as Record<string, any>)) && !('default' in (value as Record<string, any>))) || ((value as Record<string, any>)['_default'] === undefined && (value as Record<string, any>)['default'] === undefined)) return false;
     if (!('failed' in value) || value['failed'] === undefined) return false;
     if (!('rejected' in value) || value['rejected'] === undefined) return false;
     if (!('pending' in value) || value['pending'] === undefined) return false;

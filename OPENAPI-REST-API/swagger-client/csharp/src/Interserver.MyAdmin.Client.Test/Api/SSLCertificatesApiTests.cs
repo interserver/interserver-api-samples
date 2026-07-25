@@ -69,7 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddSslTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.AddSsl();
+            //SslOrderRequest body = null;
+            //var response = instance.AddSsl(body);
             //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
@@ -132,7 +133,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void PutSslTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PutSsl();
+            //SslOrderRequest body = null;
+            //instance.PutSsl(body);
             
         }
         /// <summary>
@@ -144,7 +146,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.SslCancel(id);
-            //Assert.IsInstanceOf<InlineResponse20021> (response, "response is InlineResponse20021");
+            //Assert.IsInstanceOf<InlineResponse20023> (response, "response is InlineResponse20023");
         }
         /// <summary>
         /// Test UpdateSslInfo

@@ -1,85 +1,95 @@
 ## BackupsApi
 
-### Place Backup Order
-## Place Backup Order
+### Place a new off-site backup storage order and generate the invoice
+## Place a new off-site backup storage order and generate the invoice
 POST https://my.interserver.net/apiv2/backups/order
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Cancel Backup Service
-## Cancel Backup Service
+### Cancel an off-site backup storage subscription
+## Cancel an off-site backup storage subscription
 DELETE https://my.interserver.net/apiv2/backups/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Backup Service Details
-## Get Backup Service Details
+### Get details of a specific off-site backup storage service
+## Get details of a specific off-site backup storage service
 GET https://my.interserver.net/apiv2/backups/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Backup Order Invoices
-## Get Backup Order Invoices
+### List invoices for a single backup-storage subscription
+## List invoices for a single backup-storage subscription
 GET https://my.interserver.net/apiv2/backups/{{id}}/invoices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Backup Storage Panel Login
-## Get Backup Storage Panel Login
+### Open a single sign-on session URL for the backup storage panel
+## Open a single sign-on session URL for the backup storage panel
 GET https://my.interserver.net/apiv2/backups/{{id}}/login
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Backup Services
-## List Backup Services
+### List off-site backup storage subscriptions on the authenticated account
+## List off-site backup storage subscriptions on the authenticated account
 GET https://my.interserver.net/apiv2/backups
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Resend Backup Welcome Email
-## Resend Backup Welcome Email
+### Resend the welcome email for an off-site backup storage service
+## Resend the welcome email for an off-site backup storage service
 GET https://my.interserver.net/apiv2/backups/{{id}}/welcome_email
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Backup Order Form Data
-## Get Backup Order Form Data
+### Get backup-storage order form metadata and pricing tiers
+## Get backup-storage order form metadata and pricing tiers
 GET https://my.interserver.net/apiv2/backups/order
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Backup Information
-## Update Backup Information
+### Update stored metadata for a backup-storage subscription
+## Update stored metadata for a backup-storage subscription
 POST https://my.interserver.net/apiv2/backups/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Validate Backup Order
-## Validate Backup Order
+### Validate a backup-storage order and preview pricing without charging
+## Validate a backup-storage order and preview pricing without charging
 PUT https://my.interserver.net/apiv2/backups/order
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

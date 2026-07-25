@@ -1,18 +1,18 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for AccountInfoDataEmailSettings
 void main() {
-  final instance = AccountInfoDataEmailSettingsBuilder();
-  // TODO add properties to the builder and call build()
+  final AccountInfoDataEmailSettings? instance = /* AccountInfoDataEmailSettings(...) */ null;
+  // TODO add properties to the entity
 
   group(AccountInfoDataEmailSettings, () {
-    // String adminSlashCcBadResponse
+    // Optional<String?> adminSlashCcBadResponse
     test('to test the property `adminSlashCcBadResponse`', () async {
       // TODO
     });
 
-    // String adminSlashMassCommunicationsPeriodTpl
+    // Optional<String?> adminSlashMassCommunicationsPeriodTpl
     test('to test the property `adminSlashMassCommunicationsPeriodTpl`', () async {
       // TODO
     });

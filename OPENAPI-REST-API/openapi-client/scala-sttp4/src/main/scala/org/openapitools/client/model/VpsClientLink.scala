@@ -27,4 +27,3 @@ case class VpsClientLink(
   /* Help tooltip text for the link. */
   help_text: Option[String] = None
 )
-

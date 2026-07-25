@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BillingPaymentMethodRequest = Initialize-PSOpenAPIToolsBillingPaymentMethodRequest  -PaymentMethod null `
+$BillingPaymentMethodRequest = Initialize-InterserverApiBillingPaymentMethodRequest  -PaymentMethod null `
  -CcAuto null
 ```
 

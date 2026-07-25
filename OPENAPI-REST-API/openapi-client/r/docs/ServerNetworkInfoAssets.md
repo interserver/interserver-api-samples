@@ -1,4 +1,4 @@
-# openapi::ServerNetworkInfoAssets
+# interserverapi::ServerNetworkInfoAssets
 
 Object containing asset information.
 

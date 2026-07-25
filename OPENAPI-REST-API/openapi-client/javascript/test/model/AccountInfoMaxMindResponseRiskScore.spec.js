@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoMaxMindResponseRiskScore();
+    instance = new InterserverApiClient.AccountInfoMaxMindResponseRiskScore();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('AccountInfoMaxMindResponseRiskScore', function() {
     it('should create an instance of AccountInfoMaxMindResponseRiskScore', function() {
       // uncomment below and update the code to test AccountInfoMaxMindResponseRiskScore
-      //var instance = new InterServerManagementApi.AccountInfoMaxMindResponseRiskScore();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoMaxMindResponseRiskScore);
+      //var instance = new InterserverApiClient.AccountInfoMaxMindResponseRiskScore();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoMaxMindResponseRiskScore);
     });
 
   });

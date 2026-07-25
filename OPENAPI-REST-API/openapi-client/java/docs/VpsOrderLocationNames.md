@@ -11,4 +11,8 @@ Location Names
 |**_3** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

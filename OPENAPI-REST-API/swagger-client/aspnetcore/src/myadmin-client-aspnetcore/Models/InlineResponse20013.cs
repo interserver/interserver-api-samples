@@ -27,20 +27,60 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20013 : IEquatable<InlineResponse20013>
     { 
         /// <summary>
-        /// Gets or Sets Success
+        /// Gets or Sets ServiceInfo
         /// </summary>
-        [Required]
 
-        [DataMember(Name="success")]
-        public bool? Success { get; set; }
+        [DataMember(Name="serviceInfo")]
+        public InlineResponse20013ServiceInfo ServiceInfo { get; set; }
 
         /// <summary>
-        /// Gets or Sets Text
+        /// Gets or Sets ClientLinks
         /// </summary>
-        [Required]
 
-        [DataMember(Name="text")]
-        public string Text { get; set; }
+        [DataMember(Name="client_links")]
+        public List<InlineResponse20013ClientLinks> ClientLinks { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BillingDetails
+        /// </summary>
+
+        [DataMember(Name="billingDetails")]
+        public InlineResponse20013BillingDetails BillingDetails { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CustCurrency
+        /// </summary>
+
+        [DataMember(Name="custCurrency")]
+        public string CustCurrency { get; set; }
+
+        /// <summary>
+        /// Gets or Sets CustCurrencySymbol
+        /// </summary>
+
+        [DataMember(Name="custCurrencySymbol")]
+        public string CustCurrencySymbol { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Package
+        /// </summary>
+
+        [DataMember(Name="package")]
+        public string Package { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ExtraInfoTables
+        /// </summary>
+
+        [DataMember(Name="extraInfoTables")]
+        public InlineResponse20013ExtraInfoTables ExtraInfoTables { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FilterFirewall
+        /// </summary>
+
+        [DataMember(Name="filter_firewall")]
+        public InlineResponse20013FilterFirewall FilterFirewall { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,8 +90,14 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20013 {\n");
-            sb.Append("  Success: ").Append(Success).Append("\n");
-            sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  ServiceInfo: ").Append(ServiceInfo).Append("\n");
+            sb.Append("  ClientLinks: ").Append(ClientLinks).Append("\n");
+            sb.Append("  BillingDetails: ").Append(BillingDetails).Append("\n");
+            sb.Append("  CustCurrency: ").Append(CustCurrency).Append("\n");
+            sb.Append("  CustCurrencySymbol: ").Append(CustCurrencySymbol).Append("\n");
+            sb.Append("  Package: ").Append(Package).Append("\n");
+            sb.Append("  ExtraInfoTables: ").Append(ExtraInfoTables).Append("\n");
+            sb.Append("  FilterFirewall: ").Append(FilterFirewall).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -89,14 +135,44 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Success == other.Success ||
-                    Success != null &&
-                    Success.Equals(other.Success)
+                    ServiceInfo == other.ServiceInfo ||
+                    ServiceInfo != null &&
+                    ServiceInfo.Equals(other.ServiceInfo)
                 ) && 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
+                    ClientLinks == other.ClientLinks ||
+                    ClientLinks != null &&
+                    ClientLinks.SequenceEqual(other.ClientLinks)
+                ) && 
+                (
+                    BillingDetails == other.BillingDetails ||
+                    BillingDetails != null &&
+                    BillingDetails.Equals(other.BillingDetails)
+                ) && 
+                (
+                    CustCurrency == other.CustCurrency ||
+                    CustCurrency != null &&
+                    CustCurrency.Equals(other.CustCurrency)
+                ) && 
+                (
+                    CustCurrencySymbol == other.CustCurrencySymbol ||
+                    CustCurrencySymbol != null &&
+                    CustCurrencySymbol.Equals(other.CustCurrencySymbol)
+                ) && 
+                (
+                    Package == other.Package ||
+                    Package != null &&
+                    Package.Equals(other.Package)
+                ) && 
+                (
+                    ExtraInfoTables == other.ExtraInfoTables ||
+                    ExtraInfoTables != null &&
+                    ExtraInfoTables.Equals(other.ExtraInfoTables)
+                ) && 
+                (
+                    FilterFirewall == other.FilterFirewall ||
+                    FilterFirewall != null &&
+                    FilterFirewall.Equals(other.FilterFirewall)
                 );
         }
 
@@ -110,10 +186,22 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Success != null)
-                    hashCode = hashCode * 59 + Success.GetHashCode();
-                    if (Text != null)
-                    hashCode = hashCode * 59 + Text.GetHashCode();
+                    if (ServiceInfo != null)
+                    hashCode = hashCode * 59 + ServiceInfo.GetHashCode();
+                    if (ClientLinks != null)
+                    hashCode = hashCode * 59 + ClientLinks.GetHashCode();
+                    if (BillingDetails != null)
+                    hashCode = hashCode * 59 + BillingDetails.GetHashCode();
+                    if (CustCurrency != null)
+                    hashCode = hashCode * 59 + CustCurrency.GetHashCode();
+                    if (CustCurrencySymbol != null)
+                    hashCode = hashCode * 59 + CustCurrencySymbol.GetHashCode();
+                    if (Package != null)
+                    hashCode = hashCode * 59 + Package.GetHashCode();
+                    if (ExtraInfoTables != null)
+                    hashCode = hashCode * 59 + ExtraInfoTables.GetHashCode();
+                    if (FilterFirewall != null)
+                    hashCode = hashCode * 59 + FilterFirewall.GetHashCode();
                 return hashCode;
             }
         }

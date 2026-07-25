@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **serviceCurrency** | **string** | Billing currency code. | [optional]
 **serviceCurrencySymbol** | **string** | Billing currency symbol. | [optional]
 **serviceCostInfo** | **string** | Cost breakdown information. | [optional]
-**serviceExtra** | [**\Interserver\MyAdmin\Model\DomainBillingExtra**](DomainBillingExtra.md) |  | [optional]
+**serviceExtra** | [**\Interserver\\MyAdmin\Model\DomainBillingExtra**](DomainBillingExtra.md) |  | [optional]
 **serviceExtraJson** | **string** | Raw JSON string of extra billing data. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -12,4 +12,8 @@
 |**serviceHostname** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

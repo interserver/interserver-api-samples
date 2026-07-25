@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupIPInfoRow = Initialize-PSOpenAPIToolsBackupIPInfoRow  -Desc Netmask `
+$BackupIPInfoRow = Initialize-InterserverApiBackupIPInfoRow  -Desc Netmask `
  -Value 255.255.255.248
 ```
 

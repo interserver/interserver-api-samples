@@ -1,4 +1,4 @@
-# openapi::LoginErrorResponse
+# interserverapi::LoginErrorResponse
 
 Error resposne during login indicating further action.
 

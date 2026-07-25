@@ -24,16 +24,17 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::SSLCertificatesApi');
+use_ok('InterServerAPI::SSLCertificatesApi');
 
-my $api = OpenAPIClient::SSLCertificatesApi->new();
-isa_ok($api, 'OpenAPIClient::SSLCertificatesApi');
+my $api = InterServerAPI::SSLCertificatesApi->new();
+isa_ok($api, 'InterServerAPI::SSLCertificatesApi');
 
 #
 # add_ssl test
 #
 # uncomment below and update the test
-#my $add_ssl_result = $api->add_ssl();
+#my $add_ssl_ssl_order_request = undef; # replace NULL with a proper value
+#my $add_ssl_result = $api->add_ssl(ssl_order_request => $add_ssl_ssl_order_request);
 
 #
 # get_new_ssl test
@@ -72,7 +73,8 @@ isa_ok($api, 'OpenAPIClient::SSLCertificatesApi');
 # put_ssl test
 #
 # uncomment below and update the test
-#my $put_ssl_result = $api->put_ssl();
+#my $put_ssl_ssl_order_request = undef; # replace NULL with a proper value
+#my $put_ssl_result = $api->put_ssl(ssl_order_request => $put_ssl_ssl_order_request);
 
 #
 # ssl_cancel test

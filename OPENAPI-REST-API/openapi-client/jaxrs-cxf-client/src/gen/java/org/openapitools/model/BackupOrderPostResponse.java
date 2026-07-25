@@ -57,7 +57,7 @@ public class BackupOrderPostResponse  {
    * @return _continue
   **/
   @JsonProperty("continue")
-  public Boolean getContinue() {
+  public Boolean isContinue() {
     return _continue;
   }
 

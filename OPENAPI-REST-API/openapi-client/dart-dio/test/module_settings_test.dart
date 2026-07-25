@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ModuleSettings
 void main() {
-  final instance = ModuleSettingsBuilder();
-  // TODO add properties to the builder and call build()
+  final ModuleSettings? instance = /* ModuleSettings(...) */ null;
+  // TODO add properties to the entity
 
   group(ModuleSettings, () {
     // int SERVICE_ID_OFFSET
@@ -87,13 +87,13 @@ void main() {
       // TODO
     });
 
-    // String tITLEFIELD2
-    test('to test the property `tITLEFIELD2`', () async {
+    // Optional<String?> TITLE_FIELD2
+    test('to test the property `TITLE_FIELD2`', () async {
       // TODO
     });
 
-    // String tITLEFIELD3
-    test('to test the property `tITLEFIELD3`', () async {
+    // Optional<String?> TITLE_FIELD3
+    test('to test the property `TITLE_FIELD3`', () async {
       // TODO
     });
 

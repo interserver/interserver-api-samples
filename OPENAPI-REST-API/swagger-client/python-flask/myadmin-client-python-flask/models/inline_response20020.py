@@ -14,25 +14,45 @@ class InlineResponse20020(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, success: bool=None, text: str=None):  # noqa: E501
+    def __init__(self, _continue: bool=None, errors: List[str]=None, service_type: int=None, service_cost: float=None, original_cost: float=None, repeat_service_cost: float=None):  # noqa: E501
         """InlineResponse20020 - a model defined in Swagger
 
-        :param success: The success of this InlineResponse20020.  # noqa: E501
-        :type success: bool
-        :param text: The text of this InlineResponse20020.  # noqa: E501
-        :type text: str
+        :param _continue: The _continue of this InlineResponse20020.  # noqa: E501
+        :type _continue: bool
+        :param errors: The errors of this InlineResponse20020.  # noqa: E501
+        :type errors: List[str]
+        :param service_type: The service_type of this InlineResponse20020.  # noqa: E501
+        :type service_type: int
+        :param service_cost: The service_cost of this InlineResponse20020.  # noqa: E501
+        :type service_cost: float
+        :param original_cost: The original_cost of this InlineResponse20020.  # noqa: E501
+        :type original_cost: float
+        :param repeat_service_cost: The repeat_service_cost of this InlineResponse20020.  # noqa: E501
+        :type repeat_service_cost: float
         """
         self.swagger_types = {
-            'success': bool,
-            'text': str
+            '_continue': bool,
+            'errors': List[str],
+            'service_type': int,
+            'service_cost': float,
+            'original_cost': float,
+            'repeat_service_cost': float
         }
 
         self.attribute_map = {
-            'success': 'success',
-            'text': 'text'
+            '_continue': 'continue',
+            'errors': 'errors',
+            'service_type': 'serviceType',
+            'service_cost': 'serviceCost',
+            'original_cost': 'originalCost',
+            'repeat_service_cost': 'repeatServiceCost'
         }
-        self._success = success
-        self._text = text
+        self.__continue = _continue
+        self._errors = errors
+        self._service_type = service_type
+        self._service_cost = service_cost
+        self._original_cost = original_cost
+        self._repeat_service_cost = repeat_service_cost
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20020':
@@ -46,47 +66,127 @@ class InlineResponse20020(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def success(self) -> bool:
-        """Gets the success of this InlineResponse20020.
+    def _continue(self) -> bool:
+        """Gets the _continue of this InlineResponse20020.
 
 
-        :return: The success of this InlineResponse20020.
+        :return: The _continue of this InlineResponse20020.
         :rtype: bool
         """
-        return self._success
+        return self.__continue
 
-    @success.setter
-    def success(self, success: bool):
-        """Sets the success of this InlineResponse20020.
+    @_continue.setter
+    def _continue(self, _continue: bool):
+        """Sets the _continue of this InlineResponse20020.
 
 
-        :param success: The success of this InlineResponse20020.
-        :type success: bool
+        :param _continue: The _continue of this InlineResponse20020.
+        :type _continue: bool
         """
-        if success is None:
-            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
 
-        self._success = success
+        self.__continue = _continue
 
     @property
-    def text(self) -> str:
-        """Gets the text of this InlineResponse20020.
+    def errors(self) -> List[str]:
+        """Gets the errors of this InlineResponse20020.
 
 
-        :return: The text of this InlineResponse20020.
-        :rtype: str
+        :return: The errors of this InlineResponse20020.
+        :rtype: List[str]
         """
-        return self._text
+        return self._errors
 
-    @text.setter
-    def text(self, text: str):
-        """Sets the text of this InlineResponse20020.
+    @errors.setter
+    def errors(self, errors: List[str]):
+        """Sets the errors of this InlineResponse20020.
 
 
-        :param text: The text of this InlineResponse20020.
-        :type text: str
+        :param errors: The errors of this InlineResponse20020.
+        :type errors: List[str]
         """
-        if text is None:
-            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
 
-        self._text = text
+        self._errors = errors
+
+    @property
+    def service_type(self) -> int:
+        """Gets the service_type of this InlineResponse20020.
+
+
+        :return: The service_type of this InlineResponse20020.
+        :rtype: int
+        """
+        return self._service_type
+
+    @service_type.setter
+    def service_type(self, service_type: int):
+        """Sets the service_type of this InlineResponse20020.
+
+
+        :param service_type: The service_type of this InlineResponse20020.
+        :type service_type: int
+        """
+
+        self._service_type = service_type
+
+    @property
+    def service_cost(self) -> float:
+        """Gets the service_cost of this InlineResponse20020.
+
+
+        :return: The service_cost of this InlineResponse20020.
+        :rtype: float
+        """
+        return self._service_cost
+
+    @service_cost.setter
+    def service_cost(self, service_cost: float):
+        """Sets the service_cost of this InlineResponse20020.
+
+
+        :param service_cost: The service_cost of this InlineResponse20020.
+        :type service_cost: float
+        """
+
+        self._service_cost = service_cost
+
+    @property
+    def original_cost(self) -> float:
+        """Gets the original_cost of this InlineResponse20020.
+
+
+        :return: The original_cost of this InlineResponse20020.
+        :rtype: float
+        """
+        return self._original_cost
+
+    @original_cost.setter
+    def original_cost(self, original_cost: float):
+        """Sets the original_cost of this InlineResponse20020.
+
+
+        :param original_cost: The original_cost of this InlineResponse20020.
+        :type original_cost: float
+        """
+
+        self._original_cost = original_cost
+
+    @property
+    def repeat_service_cost(self) -> float:
+        """Gets the repeat_service_cost of this InlineResponse20020.
+
+
+        :return: The repeat_service_cost of this InlineResponse20020.
+        :rtype: float
+        """
+        return self._repeat_service_cost
+
+    @repeat_service_cost.setter
+    def repeat_service_cost(self, repeat_service_cost: float):
+        """Sets the repeat_service_cost of this InlineResponse20020.
+
+
+        :param repeat_service_cost: The repeat_service_cost of this InlineResponse20020.
+        :type repeat_service_cost: float
+        """
+
+        self._repeat_service_cost = repeat_service_cost

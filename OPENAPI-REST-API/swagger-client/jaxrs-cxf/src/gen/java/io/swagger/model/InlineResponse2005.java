@@ -16,27 +16,46 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse2005   {
   
-  @Schema(description = "The URL to redirect the user to for OAuth authentication.")
+  @Schema(required = true, description = "")
+  private Boolean success = null;
+  
+  @Schema(required = true, description = "")
+  private String text = null;
  /**
-   * The URL to redirect the user to for OAuth authentication.  
+   * Get success
+   * @return success
   **/
-  private String redirectUrl = null;
- /**
-   * The URL to redirect the user to for OAuth authentication.
-   * @return redirectUrl
-  **/
-  @JsonProperty("redirect_url")
+  @JsonProperty("success")
   @NotNull
-  public String getRedirectUrl() {
-    return redirectUrl;
+  public Boolean isSuccess() {
+    return success;
   }
 
-  public void setRedirectUrl(String redirectUrl) {
-    this.redirectUrl = redirectUrl;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
-  public InlineResponse2005 redirectUrl(String redirectUrl) {
-    this.redirectUrl = redirectUrl;
+  public InlineResponse2005 success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+
+ /**
+   * Get text
+   * @return text
+  **/
+  @JsonProperty("text")
+  @NotNull
+  public String getText() {
+    return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  public InlineResponse2005 text(String text) {
+    this.text = text;
     return this;
   }
 
@@ -46,7 +65,8 @@ public class InlineResponse2005   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2005 {\n");
     
-    sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }

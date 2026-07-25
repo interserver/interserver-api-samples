@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BillingPaymentMethodRequest
 void main() {
-  final instance = BillingPaymentMethodRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final BillingPaymentMethodRequest? instance = /* BillingPaymentMethodRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(BillingPaymentMethodRequest, () {
     // Payment method identifier (cc, paypal, or cc{index}).
-    // String paymentMethod
+    // Optional<String?> paymentMethod
     test('to test the property `paymentMethod`', () async {
       // TODO
     });
 
     // Whether automatic credit card payments are enabled.
-    // String ccAuto
+    // Optional<String?> ccAuto
     test('to test the property `ccAuto`', () async {
       // TODO
     });

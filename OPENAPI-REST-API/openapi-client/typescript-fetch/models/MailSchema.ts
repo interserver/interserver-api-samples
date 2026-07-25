@@ -126,7 +126,7 @@ export function instanceOfMailSchema(value: object): value is MailSchema {
     if (!('billingDetails' in value) || value['billingDetails'] === undefined) return false;
     if (!('custCurrency' in value) || value['custCurrency'] === undefined) return false;
     if (!('custCurrencySymbol' in value) || value['custCurrencySymbol'] === undefined) return false;
-    if (!('_package' in value) || value['_package'] === undefined) return false;
+    if ((!('_package' in (value as Record<string, any>)) && !('package' in (value as Record<string, any>))) || ((value as Record<string, any>)['_package'] === undefined && (value as Record<string, any>)['package'] === undefined)) return false;
     if (!('extraInfoTables' in value) || value['extraInfoTables'] === undefined) return false;
     if (!('serviceType' in value) || value['serviceType'] === undefined) return false;
     if (!('usage_count' in value) || value['usage_count'] === undefined) return false;

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerLease = Initialize-PSOpenAPIToolsServerLease  -Mac 0c:c4:7a:af:35:00 `
+$ServerLease = Initialize-InterserverApiServerLease  -Mac 0c:c4:7a:af:35:00 `
  -Authenticated false `
  -Group 1
 ```

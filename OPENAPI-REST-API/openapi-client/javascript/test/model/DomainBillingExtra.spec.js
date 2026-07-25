@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainBillingExtra();
+    instance = new InterserverApiClient.DomainBillingExtra();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,109 +50,109 @@
   describe('DomainBillingExtra', function() {
     it('should create an instance of DomainBillingExtra', function() {
       // uncomment below and update the code to test DomainBillingExtra
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainBillingExtra);
+      //var instance = new InterserverApiClient.DomainBillingExtra();
+      //expect(instance).to.be.a(InterserverApiClient.DomainBillingExtra);
     });
 
     it('should have the property order (base name: "order")', function() {
       // uncomment below and update the code to test the property order
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property order_id (base name: "order_id")', function() {
       // uncomment below and update the code to test the property order_id
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_id (base name: "domain_id")', function() {
       // uncomment below and update the code to test the property domain_id
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property provProcessPending (base name: "provProcessPending")', function() {
       // uncomment below and update the code to test the property provProcessPending
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property email (base name: "email")', function() {
       // uncomment below and update the code to test the property email
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property firstname (base name: "firstname")', function() {
       // uncomment below and update the code to test the property firstname
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property lastname (base name: "lastname")', function() {
       // uncomment below and update the code to test the property lastname
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property company (base name: "company")', function() {
       // uncomment below and update the code to test the property company
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property address (base name: "address")', function() {
       // uncomment below and update the code to test the property address
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property address2 (base name: "address2")', function() {
       // uncomment below and update the code to test the property address2
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property address3 (base name: "address3")', function() {
       // uncomment below and update the code to test the property address3
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property city (base name: "city")', function() {
       // uncomment below and update the code to test the property city
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property state (base name: "state")', function() {
       // uncomment below and update the code to test the property state
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property zip (base name: "zip")', function() {
       // uncomment below and update the code to test the property zip
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property country (base name: "country")', function() {
       // uncomment below and update the code to test the property country
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property phone (base name: "phone")', function() {
       // uncomment below and update the code to test the property phone
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property fax (base name: "fax")', function() {
       // uncomment below and update the code to test the property fax
-      //var instance = new InterServerManagementApi.DomainBillingExtra();
+      //var instance = new InterserverApiClient.DomainBillingExtra();
       //expect(instance).to.be();
     });
 

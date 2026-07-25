@@ -56,7 +56,6 @@ class AccountApiSimulation extends Simulation {
     }
 
     // Setup all the operations per second for the test to ultimately be generated from configs
-    val changeAccountUsernamePerSecond = config.getDouble("performance.operationsPerSecond.changeAccountUsername") * rateMultiplier * instanceMultiplier
     val deleteAccountOauthNamePerSecond = config.getDouble("performance.operationsPerSecond.deleteAccountOauthName") * rateMultiplier * instanceMultiplier
     val deleteAccountTfaPerSecond = config.getDouble("performance.operationsPerSecond.deleteAccountTfa") * rateMultiplier * instanceMultiplier
     val deleteIpLimitPerSecond = config.getDouble("performance.operationsPerSecond.deleteIpLimit") * rateMultiplier * instanceMultiplier
@@ -81,19 +80,6 @@ class AccountApiSimulation extends Simulation {
     val logoutAccountOauthPATHFeeder = csv(userDataDirectory + File.separator + "logoutAccountOauth-pathParams.csv").random
 
     // Setup all scenarios
-
-    
-    val scnchangeAccountUsername = scenario("changeAccountUsernameSimulation")
-        .exec(http("changeAccountUsername")
-        .httpRequest("POST","/account/username")
-)
-
-    // Run scnchangeAccountUsername with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scnchangeAccountUsername.inject(
-        rampUsersPerSec(1) to(changeAccountUsernamePerSecond) during(rampUpSeconds),
-        constantUsersPerSec(changeAccountUsernamePerSecond) during(durationSeconds),
-        rampUsersPerSec(changeAccountUsernamePerSecond) to(1) during(rampDownSeconds)
-    )
 
     
     val scndeleteAccountOauthName = scenario("deleteAccountOauthNameSimulation")

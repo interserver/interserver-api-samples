@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ChargeInvoiceRowsInvoicesValuePaidInvoicesValue = Initialize-PSOpenAPIToolsChargeInvoiceRowsInvoicesValuePaidInvoicesValue  -InvoicesId null `
+$ChargeInvoiceRowsInvoicesValuePaidInvoicesValue = Initialize-InterserverApiChargeInvoiceRowsInvoicesValuePaidInvoicesValue  -InvoicesId null `
  -InvoicesDescription null `
  -InvoicesAmount null `
  -InvoicesDate null `

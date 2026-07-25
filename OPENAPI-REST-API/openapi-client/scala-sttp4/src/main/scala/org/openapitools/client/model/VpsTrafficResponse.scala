@@ -28,4 +28,3 @@ case class VpsTrafficResponse(
   usage: VpsTrafficUsageResponse,
   data: Seq[VpsTrafficDataSectionResponse]
 )
-

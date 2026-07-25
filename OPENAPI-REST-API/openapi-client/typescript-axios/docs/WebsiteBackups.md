@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WebsiteBackups } from './api';
+import { WebsiteBackups } from '@interserver/myadmin-client';
 
 const instance: WebsiteBackups = {
 };

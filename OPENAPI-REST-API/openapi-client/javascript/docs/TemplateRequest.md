@@ -1,4 +1,4 @@
-# InterServerManagementApi.TemplateRequest
+# InterserverApiClient.TemplateRequest
 
 ## Properties
 

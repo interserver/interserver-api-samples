@@ -15,6 +15,7 @@ import org.openapitools.client.model.ChargeInvoiceRows
 import org.openapitools.client.model.DownloadQsBackup200Response
 import org.openapitools.client.model.DownloadQsBackupRequest
 import org.openapitools.client.model.GetAccountInfo401Response
+import org.openapitools.client.model.QsOrderRequest
 import org.openapitools.client.model.QueueResponse
 import org.openapitools.client.model.Quickserver
 import org.openapitools.client.model.QuickserverOrder
@@ -39,28 +40,31 @@ object QuickServersApi {
 class QuickServersApi(baseUrl: String) {
 
   /**
-   * Places a QuickServer order. On success, invoices are generated for payment; use `/billing/invoices/{id}` or `/pay/{method}/{invoices}` to complete payment.
+   * Commits the validated order: creates the service row, generates a real invoice, and queues provisioning. Body fields match `putQs` (`server`, `password`, `os`, `comment`, `tos`) — call `putQs` first to catch errors. On `validation.continue=false`, returns the joined error string with no charge. Returns: `ServiceOrderPostResponse` with the new service ID and invoice info. Pay via `getBillingInvoice`/`initiatePayment`. Errors: 401 if unauthenticated, 4xx with message on validation failure. Siblings: `putQs` (validate first), `getNewQs`, `addVps` (VPS equivalent).
    * 
    * Expected answers:
-   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
+   *   code 200 : ServiceOrderPostResponse (Order placed successfully. Use the invoice ID to proceed to payment via `/billing/pay/{method}/{invoices}` or view the invoice at `/billing/invoices/{id}`.)
    *   code 401 : GetAccountInfo401Response (Unauthorized)
    * 
    * Available security schemes:
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
+   * 
+   * @param qsOrderRequest 
    */
-  def addQs()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[ServiceOrderPostResponse] =
+  def addQs(qsOrderRequest: QsOrderRequest)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[ServiceOrderPostResponse] =
     ApiRequest[ServiceOrderPostResponse](ApiMethods.POST, baseUrl, "/qs/order", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
+      .withBody(qsOrderRequest)
       .withSuccessResponse[ServiceOrderPostResponse](200)
       .withErrorResponse[GetAccountInfo401Response](401)
       
 
   /**
-   * Permanently removes the specified backup file from storage. Use `GET /qs/{id}/backups` to list available backup filenames before deleting.
+   * Removes the backup from its storage backend. Irreversible — the backup cannot be recovered. Path param: `id`. Required: `file` (the backup `name` from `getQsBackups`, in query or form body). Works for `swift` and `minio` backups; `zfs` snapshots cannot be deleted via this endpoint (returns an error pointing to support). Returns: `SuccessTextResponse` with the removed name. Errors: 401, 404 if not owned, error message if backup type is unsupported or the storage operation fails. Siblings: `getQsBackups` (list), `downloadQsBackup` (PATCH), `postQuickServerRestore`.
    * 
    * Expected answers:
    *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)
@@ -88,7 +92,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Blocks outbound SMTP for the QuickServer to prevent email abuse. Use this action when responding to abuse notifications or to enforce outbound email policies.
+   * Queues a firewall rule that drops outbound port 25 traffic, used to halt spam/abuse without taking the server offline. Path param: `id` (integer). No body. Returns: `{ text, queueId }`. Async — applied within ~2 minutes via the queue worker, which also re-runs VNC setup. Errors: 401, 404 if not owned by caller, 409 if status != `active`. Reversible only by support — there is no `unblock_smtp` endpoint. Siblings: `doVpsBlockSmtp`, `getQsInfo`.
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -112,7 +116,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Disables the virtual CD drive for the QuickServer.
+   * Queues removal of the virtual CD/DVD device from the QuickServer (full disable, not just eject). Path param: `id` (integer). No body. Returns: `{ text, queueId }`. Async — applied within ~2 minutes; queue worker also re-runs VNC setup. Errors: 401, 404 if not owned by caller, 409 if status != `active`. Siblings: `doQsEjectCd` (eject the ISO but keep drive), `postQsInsertCd` (mount an ISO), `getQsInsertCd` (list available ISOs).
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -136,7 +140,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Disables disk quota enforcement for the QuickServer.
+   * Queues a job to turn off disk-quota enforcement at the OS level. Use when quota errors block legitimate writes or before resizing disk space. Path param: `id` (integer). No body. Returns: `{ text, queueId }`. Async — applied within ~2 minutes; queue worker also re-runs VNC setup. Errors: 401, 404 if not owned by caller, 409 if status != `active`. Re-enable later with `doQsEnableQuota`. Siblings: `doQsEnableQuota` (re-enable), `doVpsDisableQuota` (VPS equivalent).
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -160,7 +164,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Ejects the virtual CD from the QuickServer's CD drive.
+   * Queues an eject — drive remains attached but no media. Path param: `id` (integer). No body. Returns: `{ text, queueId }`. Async — applied within ~2 minutes. The queue worker also re-runs VNC setup so the console reflects the change. Errors: 401, 404 if `id` is not owned by caller. Note: this handler does not validate `active` status. Siblings: `postQsInsertCd` (mount an ISO), `getQsInsertCd` (list ISOs), `doQsDisableCd` (remove the drive itself).
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -184,7 +188,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Enables disk quota enforcement for the QuickServer.
+   * Queues a job to turn on disk-quota enforcement at the OS level. Pair with `doQsDisableQuota` when re-enabling after maintenance, disk resizing, or restoring a backup. Path param: `id` (integer). No body. Returns: `{ text, queueId }`. Async — applied within ~2 minutes; queue worker also re-runs VNC setup. Errors: 401, 404 if not owned by caller, 409 if status != `active`. Siblings: `doQsDisableQuota` (turn off), `doVpsEnableQuota` (VPS equivalent).
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -208,7 +212,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Restarts the QuickServer. The server will be shut down and started again.
+   * Queues a graceful restart — equivalent to `reboot` inside the OS. Path param: `id` (integer). No body. Use to recover from a hung service or apply pending kernel/config changes. Returns: `{ text, queueId }`. Async — server is back online within ~2 minutes; queue worker also re-runs VNC setup. Errors: 401, 404 if not owned by caller. Note: handler does not gate on `active` status — restarts work even on suspended services. Siblings: `doQsStart`, `doQsStop`, `doVpsRestart`.
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -232,7 +236,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Powers on the QuickServer.
+   * Queues a `start` command to bring the QuickServer online. Path param: `id` (integer). No body. Idempotent in practice — re-running on an already-on server is a no-op at the worker. Returns: `{ text, queueId }`. Async — typically online within ~2 minutes; queue worker re-runs VNC setup. Errors: 401, 404 if not owned by caller. Note: handler does not gate on status, so it can be issued even for non-active services. Siblings: `doQsStop`, `doQsRestart`, `getQsInfo`, `doVpsStart`.
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -256,7 +260,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Powers off the QuickServer.
+   * Queues a `stop` command. Path param: `id` (integer). No body. Use before maintenance, snapshot, or to halt traffic — billing continues regardless of power state, so use `quickserversCancel` to also stop charges. Returns: `{ text, queueId }`. Async — typically off within ~2 minutes; queue worker re-runs VNC setup. Errors: 401, 404 if not owned by caller. Note: handler does not gate on status. Siblings: `doQsStart`, `doQsRestart`, `doVpsStop`.
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -280,7 +284,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Generates a pre-signed download URL for the specified backup file. The URL is valid for 24 hours. Use `GET /qs/{id}/backups` to list available backup filenames.
+   * Returns a temporary signed URL to fetch the backup directly from object storage. Path param: `id`. Body (JSON or form): `file` (the backup `name` from `getQsBackups`). Only available for `minio`-type backups; `swift` and `zfs` backups return an error directing the caller to contact support. URL expires in 24 hours. Returns: `{ text, url }`. Errors: 401, 404 if not owned, error message for unsupported backup type or sharing failure. Siblings: `getQsBackups` (list, get `name`), `deleteQsBackup`, `postQuickServerRestore`.
    * 
    * Expected answers:
    *   code 200 : DownloadQsBackup200Response (Download URL for the backup file.)
@@ -308,7 +312,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns QuickServer ordering metadata and available plans. Use these details to build the order form and to validate a plan selection.
+   * Use before placing or validating a QuickServer order to retrieve pricing, available servers, OS templates, and form fields. Read-only — no params, no body, no charge. Returns: `QuickserverOrder` schema with plan/template/server options used to build the order payload for `putQs` (validate) or `addQs` (place). Errors: 401 if unauthenticated. Siblings: `putQs` (dry-run validation), `addQs` (commits and invoices), `getNewVps` (virtual VPS ordering surface).
    * 
    * Expected answers:
    *   code 200 : QuickserverOrder (Quickserver Ordering information.)
@@ -329,7 +333,31 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns the available backups for the QuickServer across all storage systems (Swift, MinIO, ZFS). Use the backup `name` value with `PATCH /qs/{id}/backups` to download or `DELETE /qs/{id}/backups` to remove a backup. Use `POST /qs/{id}/restore` to restore from a backup.
+   * Note: GET on `/qs/{id}/backup` triggers a backup job — despite the verb, this is a state-changing action. Queues a `backup` operation; backup name is auto-generated. Path param: `id` (integer). Returns: `{ text, queueId }`. Async — backup completes in minutes to hours depending on disk size. Poll `getQsBackups` to see when it appears. Errors: 401 if unauthenticated, 404 if not owned by caller, 409 if status != `active`. Siblings: `getQsBackups` (list), `postQuickServerRestore`, `downloadQsBackup`, `deleteQsBackup`.
+   * 
+   * Expected answers:
+   *   code 200 : QueueResponse (Response message from sending a service queue.)
+   *   code 401 : GetAccountInfo401Response (Unauthorized)
+   * 
+   * Available security schemes:
+   *   sessionIdCookieAuth (apiKey)
+   *   apiKeyAuth (apiKey)
+   *   sessionIdHeaderAuth (apiKey)
+   * 
+   * @param id QuickServer ID number
+   */
+  def getQsBackup(id: Int)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[QueueResponse] =
+    ApiRequest[QueueResponse](ApiMethods.GET, baseUrl, "/qs/{id}/backup", "application/json")
+      .withApiKey(apiKey, "sessionid", COOKIE)
+      .withApiKey(apiKey, "X-API-KEY", HEADER)
+      .withApiKey(apiKey, "sessionid", HEADER)
+      .withPathParam("id", id)
+      .withSuccessResponse[QueueResponse](200)
+      .withErrorResponse[GetAccountInfo401Response](401)
+      
+
+  /**
+   * Returns all backups visible to the caller for this QuickServer across the three backup backends. Path param: `id` (integer). Optional query `all=1` lists every backup the customer owns, not just this server's. Returns: `VpsBackupRows` array — each row has `name`, `type` (swift/minio/zfs), `size`, `service`, `path`. Use `name` (not a numeric ID) with `downloadQsBackup` (PATCH), `deleteQsBackup` (DELETE), or `postQuickServerRestore`. Errors: 401, 404 if not owned by caller. Siblings: `getQsBackup` (create), `postQuickServerRestore`.
    * 
    * Expected answers:
    *   code 200 : VpsBackupRows (The listing of available backups for the QuickServer.)
@@ -355,7 +383,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Retrieves the current hostname and any validation requirements for changing it.
+   * Read-only probe before calling `postQsChangeHostname`. Path param: `id` (integer). Returns the current hostname and the validation rules the new hostname must satisfy. Returns: object with hostname metadata. Errors: 401, 404 if not owned by caller, 409 if status != `active`. Note: hostname changes are only supported on OpenVZ/Virtuozzo platforms — `postQsChangeHostname` rejects KVM/dedicated types with an explanatory error. Siblings: `postQsChangeHostname`, `getVpsChangeHostname`.
    * 
    * Expected answers:
    *   code 200 :  (QuickServer Change Hostname info response)
@@ -379,7 +407,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Retrieves instructions or metadata needed to reset the root password.
+   * Read-only probe before calling `postQsChangeRootPassword`. Path param: `id` (integer). Use to surface password complexity rules and confirm the QuickServer accepts root password changes. Returns: object with reset metadata. Errors: 401, 404 if not owned by caller, 409 if status != `active`. Note: this changes the OS root password (Linux) — for the Webuzo control panel password use `postQsChangeWebuzoPassword`. Siblings: `postQsChangeRootPassword`, `postQsResetPassword` (random password), `getVpsChangeRootPassword`.
    * 
    * Expected answers:
    *   code 200 :  (QuickServer Change Root Password response)
@@ -403,7 +431,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns the list of available timezones that can be set on the QuickServer.
+   * Returns the system timezone catalog (parsed from `/usr/share/zoneinfo/zone.tab`) for use with `postQsChangeTimezone`. Path param: `id` (integer). Read-only — no queue, no charge. Returns: array of timezone strings (e.g. `America/New_York`, `Europe/London`). Errors: 401, 404 if not owned by caller, 409 if status != `active` (handler labels these errors as `Invalid VPS Passed` / `VPS is not active` due to shared code). Siblings: `postQsChangeTimezone` (commit), `getVpsChangeTimezone`, `getQsChangeHostname` (also informational).
    * 
    * Expected answers:
    *   code 200 : Seq[String] (QuickServer Change Timezone info response)
@@ -427,7 +455,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Retrieves instructions or metadata for changing the Webuzo control panel password.
+   * Read-only probe before `postQsChangeWebuzoPassword`. Path param: `id` (integer). Webuzo is a control panel optionally installed on QuickServers — its admin password is separate from the OS root password. Returns: object with change instructions. Errors: 401, 404 if not owned by caller, 409 if status != `active`. Siblings: `postQsChangeWebuzoPassword`, `postQsChangeRootPassword` (OS root password), `postQsResetPassword`.
    * 
    * Expected answers:
    *   code 200 :  (QuickServer Change Webuzo Password info response)
@@ -451,7 +479,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns detailed QuickServer information, including credentials, IPs, and available client actions.
+   * Returns the QuickServer dashboard payload — service info, IPs, hostname, OS, status, billing, and the list of available `client_links` (action endpoints the caller is allowed to invoke). Path param: `id` (integer QuickServer ID). Returns: `Quickserver` schema. Use response links to drive `doQsStart`, `doQsStop`, `doQsRestart`, `getQsBackups`, `getQsReinstallOs`, `getQsReverseDns`, `getQsInvoices`. Errors: 401 if unauthenticated, 404 if `id` is not owned by caller. Siblings: `updateQsInfo` (mutate), `quickserversCancel` (delete), `getVpsInfo` (VPS equivalent).
    * 
    * Expected answers:
    *   code 200 : Quickserver (Quickserver details)
@@ -475,7 +503,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns available ISO images that can be mounted in the QuickServer's virtual CD drive.
+   * Returns the catalog of bootable ISOs the caller can mount via `postQsInsertCd`. Path param: `id` (integer). Read-only — no queue, no charge. Returns: object with available ISO entries (URLs/labels) keyed for the QuickServer's hardware type. Errors: 401 if unauthenticated. Note: this handler does not validate ownership or active status — pair with `getQsInfo` first if you need those checks before presenting options to a user. Siblings: `postQsInsertCd` (mount the chosen URL), `doQsEjectCd`, `doQsDisableCd`, `getVpsInsertCd`.
    * 
    * Expected answers:
    *   code 200 :  (QuickServer Insert CD info response)
@@ -499,7 +527,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns the billing invoices associated with this QuickServer.
+   * Returns invoices charged for this QuickServer (initial setup + recurring). Path param: `id` (integer). Returns: `ChargeInvoiceRows` — each row has invoice ID, amount, status (paid/unpaid), date. Use the invoice ID with `getBillingInvoice` for full detail or `initiatePayment` to settle. Errors: 401 if unauthenticated, 404 if not owned by caller. Siblings: `getQsInfo`, `getVpsInvoices`, `getBillingInvoice`, `quickserversCancel` (check next-invoice date before canceling).
    * 
    * Expected answers:
    *   code 200 : ChargeInvoiceRows (Get Invoices response)
@@ -523,7 +551,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns the QuickServer services on your account. Use the `qs_id` values with `/qs/{id}` for details or with the action endpoints (restart, backup, etc.) to manage each server.
+   * Use to enumerate the caller's QuickServers (quick-provision physical dedicated boxes that share the VPS billing model). No params, no body. Each row has `qs_id`, `qs_name`, `qs_hostname`, `qs_status`, `qs_comment`, and `cost`. Feed `qs_id` into `getQsInfo` for full details, or any per-server action (`doQsStart`, `doQsStop`, `doQsRestart`, `getQsBackups`, etc.). Returns: array of QuickServer rows. Errors: 401 if unauthenticated. Siblings: `getVpsList` (virtual VPS surface), `getQsInfo`, `getNewQs` for ordering metadata.
    * 
    * Expected answers:
    *   code 200 : Seq[QuickserverRow] (The listing of `Quickservers` services on your account.)
@@ -544,7 +572,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns the list of available operating system templates for reinstalling the QuickServer.
+   * Returns the OS template catalog filtered to the QuickServer's hardware/template type. Path param: `id` (integer). Read-only — no provisioning happens. Returns: `{ templates: [...] }` — each template has `template_file`, `template_name`, `template_version`. Use `template_file` with `postQsReinstallOs`. Non-admin callers only see templates with `template_available=1`. Errors: 401 if unauthenticated. Siblings: `postQsReinstallOs` (commit, destructive), `getVpsReinstallOs`.
    * 
    * Expected answers:
    *   code 200 : VpsTemplatesList (QuickServer Reinstall OS info response)
@@ -568,7 +596,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns information needed before resetting the QuickServer's root password.
+   * Read-only probe before `postQsResetPassword`. Path param: `id` (integer). Use to confirm the QuickServer is in a state that allows password resets. Returns: object with reset configuration. Errors: 401, 404 if not owned by caller, 409 if status != `active`. Note: `postQsResetPassword` generates a random password — for a chosen value use `postQsChangeRootPassword`. Siblings: `postQsResetPassword`, `postQsChangeRootPassword`, `getVpsResetPassword`.
    * 
    * Expected answers:
    *   code 200 :  (QuickServer Reset password info)
@@ -592,7 +620,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns the current reverse DNS (PTR record) entries for the QuickServer's IP addresses.
+   * Returns the current PTR record for the primary IP and any additional IPs assigned to the QuickServer. Path param: `id` (integer). Read-only — looks up live DNS, no queue. Returns: `{ ips: { \"<ip>\": \"<hostname>\", ... } }`. Use the keys with `postQsReverseDns` to update entries. Errors: 401 if unauthenticated. Note: handler does not gate on ownership/active status. Siblings: `postQsReverseDns`, `getVpsReverseDns`.
    * 
    * Expected answers:
    *   code 200 : ReverseDnsEntries (QuickServer Reverse DNS info response)
@@ -616,7 +644,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns the current VNC connection information for the QuickServer.
+   * Read-only probe for the VNC tunnel that exposes the server's console (host, port, credentials). Path param: `id` (integer). Returns: object with VNC connection info. Errors: 401 if unauthenticated, 404 if `id` is not owned by caller, 409 if service is not `active`. Note: this endpoint is currently a stub — the `// todo: return vnc info` line indicates the response body may be empty until completed. Siblings: `postQsSetupVnc` (configure access IP), `getVpsSetupVnc`.
    * 
    * Expected answers:
    *   code 200 :  (Get QuickServer Setup VNC Information)
@@ -640,7 +668,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns bandwidth traffic usage data for the QuickServer.
+   * Returns the inbound/outbound bandwidth totals and time-series points for the QuickServer's current cycle. Path param: `id` (integer). Read-only. Returns: bandwidth-data object from `qs_bandwidth_data` (totals, daily/hourly points, overage flag). Errors: 401 if unauthenticated. Note: handler does not gate on ownership or active status. Siblings: `postQsTrafficUsage` (same data, accessible via POST for filtered queries), `getVpsTrafficUsage`.
    * 
    * Expected answers:
    *   code 200 :  (Get QuickServer Traffic usage)
@@ -664,7 +692,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Returns remote desktop connection information for the QuickServer.
+   * Returns the same rich payload the AdminLTE UI uses — service info, billing, available client_links, resource graphs. Heavier than `getQsInfo` and intended for desktop dashboards. Path param: `id` (integer). Returns: object with `serviceInfo`, `client_links`, etc. (admin-only fields stripped). Errors: 401 if unauthenticated. Note: handler does not gate on ownership/active status. Siblings: `getQsInfo` (lighter), `postQsViewDesktop` (mutate variant), `getVpsViewDesktop`.
    * 
    * Expected answers:
    *   code 200 :  (Get QuickServer View Desktop Information)
@@ -688,7 +716,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Resends the welcome email containing connection details and credentials for the QuickServer order.
+   * Re-runs the `qs_welcome_email` function which composes and sends the welcome email containing connection details, root password, and management URLs to the account owner. Path param: `id` (integer). Returns: `{ text: \"Welcome Email has been resent.\" }`. Errors: 401, 404 if not owned by caller, 409 if status != `active`. Use when the original welcome email was lost or the customer needs credentials again. Siblings: `getVpsWelcomeEmail`, `getQsInfo` (also exposes connection info).
    * 
    * Expected answers:
    *   code 200 : TextResponse (Response with a text message field.)
@@ -712,31 +740,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Creates a backup of the QuickServer. The backup can be downloaded or restored later via the backups endpoints.
-   * 
-   * Expected answers:
-   *   code 200 : QueueResponse (Response message from sending a service queue.)
-   *   code 401 : GetAccountInfo401Response (Unauthorized)
-   * 
-   * Available security schemes:
-   *   sessionIdCookieAuth (apiKey)
-   *   apiKeyAuth (apiKey)
-   *   sessionIdHeaderAuth (apiKey)
-   * 
-   * @param id QuickServer ID number
-   */
-  def postQsBackup(id: Int)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[QueueResponse] =
-    ApiRequest[QueueResponse](ApiMethods.POST, baseUrl, "/qs/{id}/backup", "application/json")
-      .withApiKey(apiKey, "sessionid", COOKIE)
-      .withApiKey(apiKey, "X-API-KEY", HEADER)
-      .withApiKey(apiKey, "sessionid", HEADER)
-      .withPathParam("id", id)
-      .withSuccessResponse[QueueResponse](200)
-      .withErrorResponse[GetAccountInfo401Response](401)
-      
-
-  /**
-   * Submits a hostname change request for the QuickServer.
+   * Updates the hostname and the matching reverse DNS entry. Path param: `id`. Body (JSON or form): `hostname` (must pass `valid_hostname`, must differ from current). Only supported on OpenVZ/Virtuozzo platforms — KVM/dedicated returns a 4xx with a contact-support message. Pending services update the DB row directly (`{ text }`); active services queue the change (`{ text, queueId }`, ~2 min). Errors: 401, 404 if not owned, 409 if status != `active`, validation error for bad hostname or no change. Siblings: `getQsChangeHostname`, `postVpsChangeHostname`.
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -760,7 +764,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Triggers a root password reset for the QuickServer.
+   * Queues a root password change. Path param: `id`. Body (JSON or form): `password` (the new password — required, no server-side complexity validation here). Returns: `{ text, queueId }`. Async — applied within ~2 minutes. Both queue and history entries are written. Errors: 401, 404 if not owned, 409 if status != `active`, 400 if `password` is missing. For a randomly generated password use `postQsResetPassword` instead. For Webuzo panel password use `postQsChangeWebuzoPassword`. Siblings: `getQsChangeRootPassword`, `postVpsChangeRootPassword`.
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -784,7 +788,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Changes the system timezone on the QuickServer. Use `GET /qs/{id}/change_timezone` to list available options first.
+   * Queues a timezone change. Path param: `id`. Body (JSON or form): `timezone` (must be one of the strings returned by `getQsChangeTimezone`). Returns: `{ text, queueId }`. Async — applied within ~2 minutes by the queue worker. Errors: 401, 404 if not owned, 409 if status != `active`, 422 if `timezone` is not in the catalog. Siblings: `getQsChangeTimezone` (call first to get valid options), `postVpsChangeTimezone`.
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -810,7 +814,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Resets the Webuzo control panel password for the QuickServer.
+   * Calls the Webuzo SDK directly on the server to change the panel `admin` password, then emails the new credentials. Path param: `id`. Body: `password` (new Webuzo password, must pass `valid_password`), `login_password` (caller's account login password — verified via md5 hash). Synchronous — no queue ID. Requires a prior Webuzo-Details history entry. Returns: success message string. Errors: 401, 404 if not owned, 409 if status != `active`, validation errors for missing fields, wrong login password, weak new password, or SDK failure. Siblings: `getQsChangeWebuzoPassword`, `postQsChangeRootPassword` (OS root).
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -834,7 +838,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Mounts an ISO image in the QuickServer's virtual CD drive. Use `GET /qs/{id}/insert_cd` to list available images.
+   * Queues an `insert_cd` job that attaches the given ISO URL to the QuickServer's virtual CD drive (typically for OS reinstalls or rescue boots). Path param: `id`. Body (JSON or form): `url` (the ISO URL — pick one from `getQsInsertCd`). Returns: `{ text, queueId }`. Async — applied within ~2 minutes. Errors: 401, 404 if not owned by caller. The action is idempotent in effect (latest mount wins). Siblings: `getQsInsertCd` (list options), `doQsEjectCd` (unmount), `doQsDisableCd`, `postQsReinstallOs` (template-based).
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -858,7 +862,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Reinstalls the operating system on the QuickServer. Warning - this will erase all data on the server.
+   * Wipes the disk and reinstalls the chosen OS template. All data, configs, and snapshots are erased. Path param: `id`. Body: `template` (a `template_file` from `getQsReinstallOs`), `password` (new root password — required for non-Windows templates). For active services, queues `reinstall_os` (~2 min). For inactive services, just stores the OS preference for next activation. Updates `qs_status` to `Reinstalling` and clears screenshots. Returns flash messages — typical envelope. Errors: 401, invalid template name returns error flash. Siblings: `getQsReinstallOs` (list options), `postVpsReinstallOs`, `postQuickServerRestore` (recover from backup instead).
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -882,7 +886,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Resets the root password on the QuickServer to a new randomly generated password.
+   * Queues a `reset_password` job that generates a new root password and emails it to the account owner. Path param: `id` (integer). No body — password is generated server-side. Returns: `{ text, queueId }`. Async — applied within ~2 minutes. Errors: 401, 404 if not owned by caller, 409 if status != `active`. For a chosen password use `postQsChangeRootPassword` instead; for the Webuzo panel password use `postQsChangeWebuzoPassword`. Siblings: `getQsResetPassword`, `postVpsResetPassword`.
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -906,7 +910,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Updates the reverse DNS (PTR record) entries for the QuickServer's IP addresses.
+   * Sets PTR records for one or more of the QuickServer's IPs. Path param: `id`. Body (form): `ips` — keyed by IP, value is the desired hostname (must be valid). Returns: `{ message: \"DNS Updated\", success: true }`. Caveat: in the current implementation the body is parsed but the per-IP update loop is a no-op shell — verify with `getQsReverseDns` after calling, and use the support channel if changes don't propagate. Errors: 401 if unauthenticated. Siblings: `getQsReverseDns`, `postVpsReverseDns`.
    * 
    * Expected answers:
    *   code 200 : TextResponse (Update QuickServer Reverse DNS response)
@@ -932,7 +936,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Sets up or refreshes the VNC console connection for the QuickServer.
+   * Sets the IP allowed to reach the VNC tunnel and queues a `setup_vnc` to apply it. Path param: `id`. Body (JSON or form): `vnc` (a valid IPv4 address — only this address can reach the console). Returns: `{ text, queueId }`. Async — applied within ~2 minutes. Errors: 401, 404 if not owned, 409 if status != `active`. Returns an inline `Invalid IP` message when `vnc` fails `validIp`. The VPS-style helper also runs after the DB update. Siblings: `getQsSetupVnc` (read), `postVpsSetupVnc`.
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -956,7 +960,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Searches and filters the QuickServer's bandwidth traffic usage data by date range.
+   * Functional duplicate of `getQsTrafficUsage` exposed under POST so clients can pass a filter body. Path param: `id` (integer). Body fields are accepted but the current handler ignores them and returns the full current-cycle dataset. Returns: same bandwidth-data object as `getQsTrafficUsage`. Errors: 401 if unauthenticated. No active-status or ownership gate. Siblings: `getQsTrafficUsage`, `postVpsTrafficUsage`.
    * 
    * Expected answers:
    *   code 200 :  (Submit QuickServer Traffic Usage)
@@ -980,7 +984,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Updates or refreshes the remote desktop session for the QuickServer.
+   * Same handler as `getQsViewDesktop` but accessible via POST so callers can pass body fields alongside re-fetching the view. Path param: `id`. Body fields are accepted by the underlying View handler. Returns: refreshed dashboard object — `serviceInfo`, `client_links`, etc. Errors: 401 if unauthenticated. For structured updates prefer the dedicated endpoints (`postQsChangeHostname`, `postQsReverseDns`, `postQsSetupVnc`, etc.) which return queue IDs. Siblings: `getQsViewDesktop`, `postVpsViewDesktop`.
    * 
    * Expected answers:
    *   code 200 :  (Submit QuickServer View Desktop Information)
@@ -1004,7 +1008,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Initiates a restore of the QuickServer from a previously created backup. The restore operation overwrites the current disk contents. Use `GET /qs/{id}/backups` to retrieve available backup names.
+   * Overwrites the live disk with a backup. Path param: `id`. Body (form): `backup` (composite key `<type>:<service>:<name>` from `getQsBackups`), `password` (caller's account login password — required for non-admin to confirm). Validates backup exists, caller's password (when applicable), and that the QuickServer disk is large enough (size check skipped for ZFS). Queues `snapshot_restore` for ZFS or `restore` for swift/minio; allow up to 10 minutes. Returns: `{ text, queueId }`. Errors: 401, 404 if not owned, 409 if status != `active`, errors for invalid password, missing backup, or insufficient disk space. Siblings: `getQsBackups`, `getQsBackup` (create), `postVpsRestore`.
    * 
    * Expected answers:
    *   code 200 : QueueResponse (Response message from sending a service queue.)
@@ -1032,7 +1036,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Validates a QuickServer order and returns pricing or validation errors. Use this before submitting the final order.
+   * Dry-run the order payload before calling `addQs`. No invoice is created and no service is provisioned. Use to surface form errors, compute the price, and resolve the chosen `server`/`os`/`distro` against the master pool. Body (form): `server` (master ID), `password`, `os` (template), `comment`, `tos`. Returns the `validate_buy_qs` result with `continue` flag, normalized fields, `service_cost`, and `errors` array. Errors: 401 if unauthenticated; validation errors are returned in the body, not as 4xx. Siblings: `addQs` (commits the order), `getNewQs` (form metadata), `putVps` (VPS equivalent).
    * 
    * Expected answers:
    *   code 200 :  (Validate QuickServer Order response)
@@ -1042,18 +1046,21 @@ class QuickServersApi(baseUrl: String) {
    *   sessionIdCookieAuth (apiKey)
    *   apiKeyAuth (apiKey)
    *   sessionIdHeaderAuth (apiKey)
+   * 
+   * @param qsOrderRequest 
    */
-  def putQs()(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
+  def putQs(qsOrderRequest: QsOrderRequest)(implicit apiKey: ApiKeyValue, apiKey: ApiKeyValue, apiKey: ApiKeyValue): ApiRequest[Unit] =
     ApiRequest[Unit](ApiMethods.PUT, baseUrl, "/qs/order", "application/json")
       .withApiKey(apiKey, "sessionid", COOKIE)
       .withApiKey(apiKey, "X-API-KEY", HEADER)
       .withApiKey(apiKey, "sessionid", HEADER)
+      .withBody(qsOrderRequest)
       .withSuccessResponse[Unit](200)
       .withErrorResponse[GetAccountInfo401Response](401)
       
 
   /**
-   * Cancels the QuickServer service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
+   * Schedules deprovisioning. The server keeps running until the current billing period ends, then is canceled and the recurring invoice stops. Path param: `id` (integer). Returns: `{ success: bool, text: string }`. Errors: 401 if unauthenticated, 404 if not owned by caller. Reversible only by support before the cycle closes — use `getQsInvoices` to check the next invoice date first. Siblings: `getQsInfo`, `VPSCancel` (VPS equivalent), `serversCancel` (dedicated equivalent).
    * 
    * Expected answers:
    *   code 200 : QuickserversCancel200Response (Rapid Deploy Servers Cancel)
@@ -1077,7 +1084,7 @@ class QuickServersApi(baseUrl: String) {
       
 
   /**
-   * Updates QuickServer metadata or stored settings associated with the order.
+   * Mutates QuickServer-level settings (comment, stored notes) without affecting the running OS. Path param: `id`. Body fields are module-specific and processed by the shared `View::go` handler. Returns: `SuccessTextResponse`. Errors: 401 if unauthenticated, 404 if not owned by caller. For server-side actions use the dedicated endpoints — hostname via `postQsChangeHostname`, password via `postQsChangeRootPassword`, OS via `postQsReinstallOs`. Siblings: `getQsInfo` (read), `quickserversCancel` (delete).
    * 
    * Expected answers:
    *   code 200 : SuccessTextResponse (A response indicating the operation completed successfully with a text message.)

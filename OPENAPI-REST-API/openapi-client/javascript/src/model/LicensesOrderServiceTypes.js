@@ -17,7 +17,7 @@ import LicensesOrderServiceTypes11482 from './LicensesOrderServiceTypes11482';
 /**
  * The LicensesOrderServiceTypes model module.
  * @module model/LicensesOrderServiceTypes
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicensesOrderServiceTypes {
     /**

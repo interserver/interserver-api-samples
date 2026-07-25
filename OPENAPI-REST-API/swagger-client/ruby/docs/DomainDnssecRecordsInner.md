@@ -1,4 +1,4 @@
-# SwaggerClient::DomainDnssecRecordsInner
+# InterserverApiClient::DomainDnssecRecordsInner
 
 ## Properties
 Name | Type | Description | Notes

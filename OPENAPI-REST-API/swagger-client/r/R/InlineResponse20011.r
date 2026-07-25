@@ -8,8 +8,8 @@
 
 #' InlineResponse20011 Class
 #'
+#' @field success 
 #' @field text 
-#' @field url 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,52 +17,51 @@
 InlineResponse20011 <- R6::R6Class(
   'InlineResponse20011',
   public = list(
+    `success` = NULL,
     `text` = NULL,
-    `url` = NULL,
-    initialize = function(`text`, `url`){
+    initialize = function(`success`, `text`){
+      if (!missing(`success`)) {
+        self$`success` <- `success`
+      }
       if (!missing(`text`)) {
         stopifnot(is.character(`text`), length(`text`) == 1)
         self$`text` <- `text`
       }
-      if (!missing(`url`)) {
-        stopifnot(is.character(`url`), length(`url`) == 1)
-        self$`url` <- `url`
-      }
     },
     toJSON = function() {
       InlineResponse20011Object <- list()
+      if (!is.null(self$`success`)) {
+        InlineResponse20011Object[['success']] <- self$`success`
+      }
       if (!is.null(self$`text`)) {
         InlineResponse20011Object[['text']] <- self$`text`
-      }
-      if (!is.null(self$`url`)) {
-        InlineResponse20011Object[['url']] <- self$`url`
       }
 
       InlineResponse20011Object
     },
     fromJSON = function(InlineResponse20011Json) {
       InlineResponse20011Object <- jsonlite::fromJSON(InlineResponse20011Json)
+      if (!is.null(InlineResponse20011Object$`success`)) {
+        self$`success` <- InlineResponse20011Object$`success`
+      }
       if (!is.null(InlineResponse20011Object$`text`)) {
         self$`text` <- InlineResponse20011Object$`text`
-      }
-      if (!is.null(InlineResponse20011Object$`url`)) {
-        self$`url` <- InlineResponse20011Object$`url`
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "text": %s,
-           "url": %s
+           "success": %s,
+           "text": %s
         }',
-        self$`text`,
-        self$`url`
+        self$`success`,
+        self$`text`
       )
     },
     fromJSONString = function(InlineResponse20011Json) {
       InlineResponse20011Object <- jsonlite::fromJSON(InlineResponse20011Json)
+      self$`success` <- InlineResponse20011Object$`success`
       self$`text` <- InlineResponse20011Object$`text`
-      self$`url` <- InlineResponse20011Object$`url`
     }
   )
 )

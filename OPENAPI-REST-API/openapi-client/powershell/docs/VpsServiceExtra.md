@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsServiceExtra = Initialize-PSOpenAPIToolsVpsServiceExtra  -Spice 5903 `
+$VpsServiceExtra = Initialize-InterserverApiVpsServiceExtra  -Spice 5903 `
  -Snapshots null
 ```
 

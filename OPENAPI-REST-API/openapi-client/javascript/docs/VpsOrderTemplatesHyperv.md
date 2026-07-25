@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsOrderTemplatesHyperv
+# InterserverApiClient.VpsOrderTemplatesHyperv
 
 ## Properties
 

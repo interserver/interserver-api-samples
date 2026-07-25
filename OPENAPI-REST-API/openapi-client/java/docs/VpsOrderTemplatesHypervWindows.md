@@ -11,4 +11,8 @@
 |**windows2022** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

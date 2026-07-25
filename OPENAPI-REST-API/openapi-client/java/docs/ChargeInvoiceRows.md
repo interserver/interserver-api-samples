@@ -12,4 +12,8 @@ Billing invoices associated with a service, including invoice IDs, descriptions,
 |**invoices** | [**Map&lt;String, ChargeInvoiceRowsInvoicesValue&gt;**](ChargeInvoiceRowsInvoicesValue.md) | List of invoices for the service. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

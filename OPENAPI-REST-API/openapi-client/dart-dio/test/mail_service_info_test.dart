@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailServiceInfo
 void main() {
-  final instance = MailServiceInfoBuilder();
-  // TODO add properties to the builder and call build()
+  final MailServiceInfo? instance = /* MailServiceInfo(...) */ null;
+  // TODO add properties to the entity
 
   group(MailServiceInfo, () {
     // The ID of the mail service.
@@ -56,37 +56,37 @@ void main() {
     });
 
     // The username associated with the mail service.
-    // String mailUsername
+    // Optional<String?> mailUsername
     test('to test the property `mailUsername`', () async {
       // TODO
     });
 
     // The IP address associated with the mail service.
-    // String mailIp
+    // Optional<String?> mailIp
     test('to test the property `mailIp`', () async {
       // TODO
     });
 
     // The coupon associated with the mail service.
-    // String mailCoupon
+    // Optional<String?> mailCoupon
     test('to test the property `mailCoupon`', () async {
       // TODO
     });
 
     // Additional information for the mail service.
-    // String mailExtra
+    // Optional<String?> mailExtra
     test('to test the property `mailExtra`', () async {
       // TODO
     });
 
     // The server status of the mail service.
-    // String mailServerStatus
+    // Optional<String?> mailServerStatus
     test('to test the property `mailServerStatus`', () async {
       // TODO
     });
 
     // Additional comments for the mail service.
-    // String mailComment
+    // Optional<String?> mailComment
     test('to test the property `mailComment`', () async {
       // TODO
     });

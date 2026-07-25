@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::TimezoneUpdate');
+use_ok('InterServerAPI::Object::TimezoneUpdate');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::TimezoneUpdate->new();
+#my $instance = InterServerAPI::Object::TimezoneUpdate->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::TimezoneUpdate');
+#isa_ok($instance, 'InterServerAPI::Object::TimezoneUpdate');
 
 
 done_testing();

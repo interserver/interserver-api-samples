@@ -1,4 +1,4 @@
-# openapi::Backup
+# interserverapi::Backup
 
 Full detail view of a backup service including billing, service info, and configuration.
 

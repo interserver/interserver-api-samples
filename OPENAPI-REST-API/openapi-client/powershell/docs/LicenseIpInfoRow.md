@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicenseIpInfoRow = Initialize-PSOpenAPIToolsLicenseIpInfoRow  -Desc Netmask `
+$LicenseIpInfoRow = Initialize-InterserverApiLicenseIpInfoRow  -Desc Netmask `
  -Value 255.255.255.248
 ```
 

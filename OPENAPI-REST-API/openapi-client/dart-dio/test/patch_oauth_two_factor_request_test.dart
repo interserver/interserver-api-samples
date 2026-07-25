@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for PatchOauthTwoFactorRequest
 void main() {
-  final instance = PatchOauthTwoFactorRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final PatchOauthTwoFactorRequest? instance = /* PatchOauthTwoFactorRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(PatchOauthTwoFactorRequest, () {
     // The account ID returned from the POST callback.

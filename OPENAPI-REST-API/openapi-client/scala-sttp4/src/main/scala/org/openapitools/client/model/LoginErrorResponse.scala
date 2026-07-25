@@ -20,4 +20,3 @@ case class LoginErrorResponse(
   message: Option[String] = None,
   field: Option[String] = None
 )
-

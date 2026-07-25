@@ -66,68 +66,20 @@ namespace Interserver.MyAdmin.Client.Test
 
 
         /// <summary>
-        /// Test the property 'serviceInfo'
+        /// Test the property 'text'
         /// </summary>
         [Test]
-        public void serviceInfoTest()
+        public void textTest()
         {
-            // TODO unit test for the property 'serviceInfo'
+            // TODO unit test for the property 'text'
         }
         /// <summary>
-        /// Test the property 'client_links'
+        /// Test the property 'url'
         /// </summary>
         [Test]
-        public void client_linksTest()
+        public void urlTest()
         {
-            // TODO unit test for the property 'client_links'
-        }
-        /// <summary>
-        /// Test the property 'billingDetails'
-        /// </summary>
-        [Test]
-        public void billingDetailsTest()
-        {
-            // TODO unit test for the property 'billingDetails'
-        }
-        /// <summary>
-        /// Test the property 'custCurrency'
-        /// </summary>
-        [Test]
-        public void custCurrencyTest()
-        {
-            // TODO unit test for the property 'custCurrency'
-        }
-        /// <summary>
-        /// Test the property 'custCurrencySymbol'
-        /// </summary>
-        [Test]
-        public void custCurrencySymbolTest()
-        {
-            // TODO unit test for the property 'custCurrencySymbol'
-        }
-        /// <summary>
-        /// Test the property 'package'
-        /// </summary>
-        [Test]
-        public void packageTest()
-        {
-            // TODO unit test for the property 'package'
-        }
-        /// <summary>
-        /// Test the property 'extraInfoTables'
-        /// </summary>
-        [Test]
-        public void extraInfoTablesTest()
-        {
-            // TODO unit test for the property 'extraInfoTables'
-        }
-        /// <summary>
-        /// Test the property 'filter_firewall'
-        /// </summary>
-        [Test]
-        public void filter_firewallTest()
-        {
-            // TODO unit test for the property 'filter_firewall'
+            // TODO unit test for the property 'url'
         }
 
     }

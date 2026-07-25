@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerOrderOS
+# InterServerAPI::Object::ServerOrderOS
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerOrderOS;
+use InterServerAPI::Object::ServerOrderOS;
 ```
 
 ## Properties

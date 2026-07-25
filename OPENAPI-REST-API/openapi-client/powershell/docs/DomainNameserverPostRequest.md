@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainNameserverPostRequest = Initialize-PSOpenAPIToolsDomainNameserverPostRequest  -Name ns1.host.com `
+$DomainNameserverPostRequest = Initialize-InterserverApiDomainNameserverPostRequest  -Name ns1.host.com `
  -IpAddress 1.2.3.4Get
 ```
 

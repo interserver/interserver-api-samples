@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_info_limits import AccountInfoLimits
+from interserver_api_client.models.account_info_limits import AccountInfoLimits
 
 class TestAccountInfoLimits(unittest.TestCase):
     """AccountInfoLimits unit test stubs"""

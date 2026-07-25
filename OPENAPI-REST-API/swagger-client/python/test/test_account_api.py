@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.account_api import AccountApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.account_api import AccountApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestAccountApi(unittest.TestCase):
@@ -28,122 +28,115 @@ class TestAccountApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_change_account_username(self):
-        """Test case for change_account_username
-
-        Change Account Username  # noqa: E501
-        """
-        pass
-
     def test_delete_account_oauth_name(self):
         """Test case for delete_account_oauth_name
 
-        Unlink OAuth Account  # noqa: E501
+        Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account  # noqa: E501
         """
         pass
 
     def test_delete_account_tfa(self):
         """Test case for delete_account_tfa
 
-        Disable Two-Factor Authentication  # noqa: E501
+        Disable two-factor authentication and remove the TOTP secret  # noqa: E501
         """
         pass
 
     def test_delete_ip_limit(self):
         """Test case for delete_ip_limit
 
-        Remove IP Access Restriction  # noqa: E501
+        Remove one IP range from the account allow-list (PATCH on /account/iplimits)  # noqa: E501
         """
         pass
 
     def test_get_account_info(self):
         """Test case for get_account_info
 
-        Retrieve Account Details  # noqa: E501
+        Read full account profile, billing address, and security settings  # noqa: E501
         """
         pass
 
     def test_get_account_tfa_setup(self):
         """Test case for get_account_tfa_setup
 
-        Get Two-Factor Setup Data  # noqa: E501
+        Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)  # noqa: E501
         """
         pass
 
     def test_get_home(self):
         """Test case for get_home
 
-        Get Home Data  # noqa: E501
+        Aggregate dashboard payload — service counts, recent activity, alerts  # noqa: E501
         """
         pass
 
     def test_get_search(self):
         """Test case for get_search
 
-        Search Autocomplete  # noqa: E501
+        Global autocomplete across the caller's services, domains, and records  # noqa: E501
         """
         pass
 
     def test_logout(self):
         """Test case for logout
 
-        Log Out  # noqa: E501
+        Destroy the current API/web session — token becomes unusable  # noqa: E501
         """
         pass
 
     def test_logout_account_oauth(self):
         """Test case for logout_account_oauth
 
-        Logout of OAuth  # noqa: E501
+        Sign out of the upstream OAuth provider session (does not unlink the account)  # noqa: E501
         """
         pass
 
     def test_update_account_api_key(self):
         """Test case for update_account_api_key
 
-        Generate New API Key  # noqa: E501
+        Rotate the account's REST/MCP API key — old key is invalidated immediately  # noqa: E501
         """
         pass
 
     def test_update_account_features(self):
         """Test case for update_account_features
 
-        Update Account Feature Flags  # noqa: E501
+        Toggle account-wide safety locks for password reset and OS reinstall  # noqa: E501
         """
         pass
 
     def test_update_account_info(self):
         """Test case for update_account_info
 
-        Update Account Information  # noqa: E501
+        Update contact and billing-address fields on the customer profile  # noqa: E501
         """
         pass
 
     def test_update_account_ip_limits(self):
         """Test case for update_account_ip_limits
 
-        Add IP Access Restriction  # noqa: E501
+        Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)  # noqa: E501
         """
         pass
 
     def test_update_account_password(self):
         """Test case for update_account_password
 
-        Change Account Password  # noqa: E501
+        Change the account login password (verifies current, kills other sessions)  # noqa: E501
         """
         pass
 
     def test_update_account_ssh_key(self):
         """Test case for update_account_ssh_key
 
-        Update SSH Keys  # noqa: E501
+        Set the account-level SSH public key auto-installed on new VPS/dedicated orders  # noqa: E501
         """
         pass
 
     def test_update_account_tfa(self):
         """Test case for update_account_tfa
 
-        Enable Two-Factor Authentication  # noqa: E501
+        Verify TOTP code and enable two-factor authentication on the account  # noqa: E501
         """
         pass
 

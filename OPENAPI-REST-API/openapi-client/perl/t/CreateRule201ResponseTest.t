@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::CreateRule201Response');
+use_ok('InterServerAPI::Object::CreateRule201Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::CreateRule201Response->new();
+#my $instance = InterServerAPI::Object::CreateRule201Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::CreateRule201Response');
+#isa_ok($instance, 'InterServerAPI::Object::CreateRule201Response');
 
 
 done_testing();

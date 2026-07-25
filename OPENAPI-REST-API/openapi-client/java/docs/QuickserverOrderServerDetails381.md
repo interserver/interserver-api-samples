@@ -14,4 +14,8 @@
 |**cost** | **String** | Cost of the server. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

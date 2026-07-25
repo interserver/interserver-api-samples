@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_service_info import BackupServiceInfo
+from interserver_api_client.models.backup_service_info import BackupServiceInfo
 
 class TestBackupServiceInfo(unittest.TestCase):
     """BackupServiceInfo unit test stubs"""

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LicensesApi();
+    instance = new InterserverApiClient.LicensesApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -82,16 +82,6 @@
       it('should call getLicenseList successfully', function(done) {
         //uncomment below and update the code to test getLicenseList
         //instance.getLicenseList(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getLicenseOrderCatTagInfo', function() {
-      it('should call getLicenseOrderCatTagInfo successfully', function(done) {
-        //uncomment below and update the code to test getLicenseOrderCatTagInfo
-        //instance.getLicenseOrderCatTagInfo(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

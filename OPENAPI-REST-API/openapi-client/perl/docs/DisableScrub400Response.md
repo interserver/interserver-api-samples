@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DisableScrub400Response
+# InterServerAPI::Object::DisableScrub400Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DisableScrub400Response;
+use InterServerAPI::Object::DisableScrub400Response;
 ```
 
 ## Properties

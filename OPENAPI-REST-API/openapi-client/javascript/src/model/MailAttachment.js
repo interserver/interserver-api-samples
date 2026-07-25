@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailAttachment model module.
  * @module model/MailAttachment
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailAttachment {
     /**

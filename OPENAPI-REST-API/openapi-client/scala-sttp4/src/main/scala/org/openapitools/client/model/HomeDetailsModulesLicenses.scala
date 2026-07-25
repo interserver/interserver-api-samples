@@ -27,4 +27,3 @@ case class HomeDetailsModulesLicenses(
   /* Link to view licenses list. */
   list_link: Option[String] = None
 )
-

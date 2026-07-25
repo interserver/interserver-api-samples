@@ -1,4 +1,4 @@
-# InterServerManagementApi.PostWebsiteBuyIp200Response
+# InterserverApiClient.PostWebsiteBuyIp200Response
 
 ## Properties
 

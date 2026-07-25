@@ -10,4 +10,8 @@
 |**ubuntu** | **String** | Selected distribution for Ubuntu. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

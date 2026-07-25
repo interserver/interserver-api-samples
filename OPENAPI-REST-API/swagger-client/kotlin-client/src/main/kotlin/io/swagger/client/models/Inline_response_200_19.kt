@@ -11,20 +11,20 @@
  */
 package io.swagger.client.models
 
+import io.swagger.client.models.InlineResponse20019Ips
+import io.swagger.client.models.InlineResponse20019PackageCosts
+import io.swagger.client.models.InlineResponse20019ServiceTypes
 
 /**
  * 
- * @param text Status message.
- * @param invoice Invoice ID for payment.
- * @param order Server order ID.
+ * @param packageCosts 
+ * @param serviceTypes 
+ * @param ips 
  */
 data class InlineResponse20019 (
 
-    /* Status message. */
-    val text: kotlin.String? = null,
-    /* Invoice ID for payment. */
-    val invoice: kotlin.Int? = null,
-    /* Server order ID. */
-    val order: kotlin.Int? = null
+    val packageCosts: InlineResponse20019PackageCosts? = null,
+    val serviceTypes: kotlin.Array<InlineResponse20019ServiceTypes>? = null,
+    val ips: kotlin.Array<InlineResponse20019Ips>? = null
 ) {
 }

@@ -16,9 +16,10 @@
 #' \dontrun{
 #' ####################  AddLicense  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_license_order_request <- LicenseOrderRequest$new(123, "ip_example", "tos_example", 123, "coupon_example", "comment_example") # LicenseOrderRequest | 
 #'
-#' #Place License Order
+#' #Order a new software license and create the recurring invoice
 #' api_instance <- LicensesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -31,17 +32,17 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$AddLicense(data_file = "result.txt")
-#' result <- api_instance$AddLicense()
+#' # result <- api_instance$AddLicense(var_license_order_requestdata_file = "result.txt")
+#' result <- api_instance$AddLicense(var_license_order_request)
 #' dput(result)
 #'
 #'
 #' ####################  GetLicenseInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The license service ID. Use `license_id` from `GET /licenses`.
 #'
-#' #Get License
+#' #Get full details for one license including status, IP, and links
 #' api_instance <- LicensesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -61,10 +62,10 @@
 #'
 #' ####################  GetLicenseInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The license service ID. Use `license_id` from `GET /licenses`.
 #'
-#' #Get License Invoices
+#' #List all billing invoices tied to one software license service
 #' api_instance <- LicensesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -84,9 +85,9 @@
 #'
 #' ####################  GetLicenseList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Licenses
+#' #List all software licenses owned by the authenticated customer
 #' api_instance <- LicensesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -104,32 +105,12 @@
 #' dput(result)
 #'
 #'
-#' ####################  GetLicenseOrderCatTagInfo  ####################
-#'
-#' library(openapi)
-#' var_cat_tag <- "cat_tag_example" # character | The license category tag (e.g. `cpanel`, `plesk`). Obtain valid values from the `GET /licenses/order` response.
-#'
-#' #Get License Order Information for Category
-#' api_instance <- LicensesApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' api_instance$GetLicenseOrderCatTagInfo(var_cat_tag)
-#'
-#'
 #' ####################  GetLicensesWelcomeEmail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The license service ID. Use `license_id` from `GET /licenses`.
 #'
-#' #Resend License Welcome Email
+#' #Resend the license welcome email with the key and activation steps
 #' api_instance <- LicensesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -149,9 +130,9 @@
 #'
 #' ####################  GetNewLicense  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get License Order Information
+#' #Get available license types, packages, and pricing for ordering
 #' api_instance <- LicensesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -171,10 +152,10 @@
 #'
 #' ####################  LicensesCancel  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The license service ID. Use `license_id` from `GET /licenses`.
 #'
-#' #Cancel License
+#' #Cancel a license service and stop future billing (irreversible)
 #' api_instance <- LicensesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -194,11 +175,11 @@
 #'
 #' ####################  PostLicenseChangeIp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The license service ID. Use `license_id` from `GET /licenses`.
 #' var_ip_object <- IpObject$new("ip_example") # IpObject | 
 #'
-#' #Change License IP
+#' #Rebind a license to a new IP address (may incur a vendor fee)
 #' api_instance <- LicensesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -218,9 +199,10 @@
 #'
 #' ####################  PutLicenses  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_license_order_request <- LicenseOrderRequest$new(123, "ip_example", "tos_example", 123, "coupon_example", "comment_example") # LicenseOrderRequest | 
 #'
-#' #Validate License Order
+#' #Validate a software license order before placing it (dry run preview)
 #' api_instance <- LicensesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -232,15 +214,15 @@
 #' # Configure API key authorization: sessionIdHeaderAuth
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$PutLicenses()
+#' api_instance$PutLicenses(var_license_order_request)
 #'
 #'
 #' ####################  UpdateLicenseInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "id_example" # character | The license service ID. Use `license_id` from `GET /licenses`.
 #'
-#' #Update License
+#' #Update mutable fields on a license service (e.g. assigned IP)
 #' api_instance <- LicensesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -280,15 +262,16 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place License Order
+    #' Order a new software license and create the recurring invoice
     #'
+    #' @param license_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return ServiceOrderPostResponse
-    AddLicense = function(data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$AddLicenseWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+    AddLicense = function(license_order_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$AddLicenseWithHttpInfo(license_order_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -301,14 +284,15 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place License Order
+    #' Order a new software license and create the recurring invoice
     #'
+    #' @param license_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (ServiceOrderPostResponse) with additional information such as HTTP status code, headers
-    AddLicenseWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+    AddLicenseWithHttpInfo = function(license_order_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -317,6 +301,20 @@ LicensesApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`license_order_request`)) {
+        stop("Missing required parameter `license_order_request`.")
+      }
+
+      if (!missing(`license_order_request`) && is.null(`license_order_request`)) {
+        stop("Invalid value for `license_order_request` when calling LicensesApi$AddLicense, `license_order_request` is not nullable")
+      }
+
+      if (!is.null(`license_order_request`)) {
+        local_var_body <- `license_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/licenses/order"
       # API key authentication
@@ -333,7 +331,7 @@ LicensesApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -386,7 +384,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get License
+    #' Get full details for one license including status, IP, and links
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param data_file (optional) name of the data file to save the result
@@ -408,7 +406,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get License
+    #' Get full details for one license including status, IP, and links
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param data_file (optional) name of the data file to save the result
@@ -506,7 +504,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get License Invoices
+    #' List all billing invoices tied to one software license service
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param data_file (optional) name of the data file to save the result
@@ -528,7 +526,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get License Invoices
+    #' List all billing invoices tied to one software license service
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param data_file (optional) name of the data file to save the result
@@ -626,7 +624,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Licenses
+    #' List all software licenses owned by the authenticated customer
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -647,7 +645,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Licenses
+    #' List all software licenses owned by the authenticated customer
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -732,108 +730,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get License Order Information for Category
-    #'
-    #' @param cat_tag The license category tag (e.g. `cpanel`, `plesk`). Obtain valid values from the `GET /licenses/order` response.
-    #' @param ... Other optional arguments
-    #'
-    #' @return void
-    GetLicenseOrderCatTagInfo = function(cat_tag, ...) {
-      local_var_response <- self$GetLicenseOrderCatTagInfoWithHttpInfo(cat_tag, ...)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Get License Order Information for Category
-    #'
-    #' @param cat_tag The license category tag (e.g. `cpanel`, `plesk`). Obtain valid values from the `GET /licenses/order` response.
-    #' @param ... Other optional arguments
-    #'
-    #' @return API response (void) with additional information such as HTTP status code, headers
-    GetLicenseOrderCatTagInfoWithHttpInfo = function(cat_tag, ...) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`cat_tag`)) {
-        stop("Missing required parameter `cat_tag`.")
-      }
-
-      if (!missing(`cat_tag`) && is.null(`cat_tag`)) {
-        stop("Invalid value for `cat_tag` when calling LicensesApi$GetLicenseOrderCatTagInfo, `cat_tag` is not nullable")
-      }
-
-      local_var_url_path <- "/licenses/order/{catTag}"
-      if (!missing(`cat_tag`)) {
-        local_var_url_path <- gsub("\\{catTag\\}", URLencode(as.character(`cat_tag`), reserved = TRUE), local_var_url_path)
-      }
-
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        local_var_resp$content <- NULL
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Resend License Welcome Email
+    #' Resend the license welcome email with the key and activation steps
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param data_file (optional) name of the data file to save the result
@@ -855,7 +752,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend License Welcome Email
+    #' Resend the license welcome email with the key and activation steps
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param data_file (optional) name of the data file to save the result
@@ -953,7 +850,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get License Order Information
+    #' Get available license types, packages, and pricing for ordering
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -974,7 +871,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get License Order Information
+    #' Get available license types, packages, and pricing for ordering
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1059,7 +956,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel License
+    #' Cancel a license service and stop future billing (irreversible)
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1081,7 +978,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel License
+    #' Cancel a license service and stop future billing (irreversible)
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1179,7 +1076,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change License IP
+    #' Rebind a license to a new IP address (may incur a vendor fee)
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param ip_object 
@@ -1202,7 +1099,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change License IP
+    #' Rebind a license to a new IP address (may incur a vendor fee)
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param ip_object 
@@ -1315,13 +1212,14 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate License Order
+    #' Validate a software license order before placing it (dry run preview)
     #'
+    #' @param license_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return void
-    PutLicenses = function(...) {
-      local_var_response <- self$PutLicensesWithHttpInfo(...)
+    PutLicenses = function(license_order_request, ...) {
+      local_var_response <- self$PutLicensesWithHttpInfo(license_order_request, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1334,12 +1232,13 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate License Order
+    #' Validate a software license order before placing it (dry run preview)
     #'
+    #' @param license_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    PutLicensesWithHttpInfo = function(...) {
+    PutLicensesWithHttpInfo = function(license_order_request, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1348,6 +1247,20 @@ LicensesApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`license_order_request`)) {
+        stop("Missing required parameter `license_order_request`.")
+      }
+
+      if (!missing(`license_order_request`) && is.null(`license_order_request`)) {
+        stop("Invalid value for `license_order_request` when calling LicensesApi$PutLicenses, `license_order_request` is not nullable")
+      }
+
+      if (!is.null(`license_order_request`)) {
+        local_var_body <- `license_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/licenses/order"
       # API key authentication
@@ -1364,7 +1277,7 @@ LicensesApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "PUT",
@@ -1402,7 +1315,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update License
+    #' Update mutable fields on a license service (e.g. assigned IP)
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1424,7 +1337,7 @@ LicensesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update License
+    #' Update mutable fields on a license service (e.g. assigned IP)
     #'
     #' @param id The license service ID. Use `license_id` from `GET /licenses`.
     #' @param data_file (optional) name of the data file to save the result

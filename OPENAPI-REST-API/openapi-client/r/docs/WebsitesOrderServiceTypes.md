@@ -1,4 +1,4 @@
-# openapi::WebsitesOrderServiceTypes
+# interserverapi::WebsitesOrderServiceTypes
 
 The service types data.
 

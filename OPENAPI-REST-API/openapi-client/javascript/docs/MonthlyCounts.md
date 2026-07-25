@@ -1,4 +1,4 @@
-# InterServerManagementApi.MonthlyCounts
+# InterserverApiClient.MonthlyCounts
 
 ## Properties
 

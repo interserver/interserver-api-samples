@@ -12,6 +12,8 @@ import io.swagger.model.BillingInvoiceList;
 import io.swagger.model.BillingPaymentMethodRequest;
 import io.swagger.model.BillingPrepayRequest;
 import io.swagger.model.BillingVerifyCcRequest;
+import io.swagger.model.IdVerifyBody;
+import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.SuccessTextResponse;
 
@@ -38,6 +40,9 @@ public abstract class BillingApiService {
     public abstract Response getBillingInvoice(Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response getBillingInvoices(SecurityContext securityContext) throws NotFoundException;
     public abstract Response getBillingPrePays(SecurityContext securityContext) throws NotFoundException;
+    public abstract Response initiatePayment(String method,String invoices,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response patchBillingCreditCardVerify(IdVerifyBody body,Integer id,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response patchBillingCreditCardVerify(String ccCcv2,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response postBillingCreditCardVerify(BillingVerifyCcRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response postBillingCreditCardVerify(Integer idx,String ccCcv2,String ccAmount1,String ccAmount2,Boolean terms,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response updateBillingCreditCard(Integer id,SecurityContext securityContext) throws NotFoundException;

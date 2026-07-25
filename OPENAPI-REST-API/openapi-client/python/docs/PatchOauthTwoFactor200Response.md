@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.patch_oauth_two_factor200_response import PatchOauthTwoFactor200Response
+from interserver_api_client.models.patch_oauth_two_factor200_response import PatchOauthTwoFactor200Response
 
 # TODO update the JSON string below
 json = "{}"

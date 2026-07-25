@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { IpLimitRange } from './api';
+import { IpLimitRange } from '@interserver/myadmin-client';
 
 const instance: IpLimitRange = {
     start,

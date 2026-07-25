@@ -760,6 +760,55 @@ using namespace Tiny;
         }
 
         Response<
+            PutScrubIps_200_response
+        >
+        ScrubIpsApi::
+        putScrubIps(
+            
+            ScrubIpPlaceOrder scrubIpPlaceOrder
+            
+        )
+        {
+            std::string url = basepath + "/scrub_ips/order"; //
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+            addHeader("Content-Type", "application/json");
+
+
+
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | PUT
+            // Body     | scrubIpPlaceOrder
+
+
+
+            payload = scrubIpPlaceOrder.toJson().dump();
+
+            int httpCode = sendRequest(url, "PUT", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            PutScrubIps_200_response obj(output_string);
+
+
+            Response<PutScrubIps_200_response> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
             ScrubIpsDeleteRule_200_response
         >
         ScrubIpsApi::

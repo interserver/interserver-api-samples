@@ -1,4 +1,4 @@
-# openapi::BillingAddCcRequest
+# interserverapi::BillingAddCcRequest
 
 Request to add a new creditcard into the system.
 

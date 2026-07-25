@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ModuleSettings } from './api';
+import { ModuleSettings } from '@interserver/myadmin-client';
 
 const instance: ModuleSettings = {
     SERVICE_ID_OFFSET,

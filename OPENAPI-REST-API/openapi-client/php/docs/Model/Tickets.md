@@ -12,11 +12,11 @@ Name | Type | Description | Notes
 **sortcol** | **int** |  |
 **sortdir** | **int** |  |
 **rowsOffset** | **int** |  |
-**tickets** | [**\Interserver\MyAdmin\Model\TicketsRow[]**](TicketsRow.md) |  |
+**tickets** | [**\Interserver\\MyAdmin\Model\TicketsRow[]**](TicketsRow.md) |  |
 **pages** | **int** |  |
 **rowsTotal** | **int** |  |
 **inboxCount** | **int** |  |
-**countArray** | [**\Interserver\MyAdmin\Model\TicketsCountArray**](TicketsCountArray.md) |  |
+**countArray** | [**\Interserver\\MyAdmin\Model\TicketsCountArray**](TicketsCountArray.md) |  |
 **viewText** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

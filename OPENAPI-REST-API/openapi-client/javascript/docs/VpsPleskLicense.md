@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsPleskLicense
+# InterserverApiClient.VpsPleskLicense
 
 ## Properties
 

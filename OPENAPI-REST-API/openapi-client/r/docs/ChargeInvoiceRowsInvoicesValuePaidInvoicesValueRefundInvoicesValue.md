@@ -1,4 +1,4 @@
-# openapi::ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue
+# interserverapi::ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue
 
 
 ## Properties

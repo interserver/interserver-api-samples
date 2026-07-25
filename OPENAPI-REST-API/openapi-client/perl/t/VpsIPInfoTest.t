@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::VpsIPInfo');
+use_ok('InterServerAPI::Object::VpsIPInfo');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::VpsIPInfo->new();
+#my $instance = InterServerAPI::Object::VpsIPInfo->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::VpsIPInfo');
+#isa_ok($instance, 'InterServerAPI::Object::VpsIPInfo');
 
 
 done_testing();

@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupClientLink
+# InterserverApiClient.BackupClientLink
 
 ## Properties
 

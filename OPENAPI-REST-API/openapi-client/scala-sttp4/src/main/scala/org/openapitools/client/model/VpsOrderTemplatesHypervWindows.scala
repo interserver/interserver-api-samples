@@ -16,4 +16,3 @@ case class VpsOrderTemplatesHypervWindows(
   Windows2019Standard: Option[String] = None,
   Windows2022: Option[String] = None
 )
-

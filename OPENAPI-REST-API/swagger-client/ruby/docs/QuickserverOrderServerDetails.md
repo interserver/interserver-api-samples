@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverOrderServerDetails
+# InterserverApiClient::QuickserverOrderServerDetails
 
 ## Properties
 Name | Type | Description | Notes

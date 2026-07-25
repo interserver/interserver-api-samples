@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoDataCc = Initialize-PSOpenAPIToolsAccountInfoDataCc  -Cc null `
+$AccountInfoDataCc = Initialize-InterserverApiAccountInfoDataCc  -Cc null `
  -CcExp null `
  -Name null `
  -Address null `

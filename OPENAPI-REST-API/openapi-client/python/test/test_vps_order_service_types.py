@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_order_service_types import VpsOrderServiceTypes
+from interserver_api_client.models.vps_order_service_types import VpsOrderServiceTypes
 
 class TestVpsOrderServiceTypes(unittest.TestCase):
     """VpsOrderServiceTypes unit test stubs"""
@@ -36,7 +36,7 @@ class TestVpsOrderServiceTypes(unittest.TestCase):
         model = VpsOrderServiceTypes()
         if include_optional:
             return VpsOrderServiceTypes(
-                var_32 = openapi_client.models.vps_order_service_types_32.VpsOrder_serviceTypes_32(
+                var_32 = interserver_api_client.models.vps_order_service_types_32.VpsOrder_serviceTypes_32(
                     services_id = '32', 
                     services_name = 'KVM Windows VPS Slice', 
                     services_cost = '10.00', 

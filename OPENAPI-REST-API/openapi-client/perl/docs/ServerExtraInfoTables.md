@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerExtraInfoTables
+# InterServerAPI::Object::ServerExtraInfoTables
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerExtraInfoTables;
+use InterServerAPI::Object::ServerExtraInfoTables;
 ```
 
 ## Properties

@@ -22,8 +22,10 @@ import ../models/model_buy_it_now_list
 import ../models/model_charge_invoice_rows
 import ../models/model_reverse_dns_entries
 import ../models/model_server
+import ../models/model_server_bulk_ipmi_power_response
 import ../models/model_server_ipmi_live_info
 import ../models/model_server_order
+import ../models/model_server_order_post_request
 import ../models/model_server_row
 import ../models/model_servers_buy_now_error
 import ../models/model_servers_buy_now_response
@@ -50,71 +52,72 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addServer*(httpClient: HttpClient): (Option[addServer_200_response], Response) =
-  ## Place Server Order
+proc addServer*(httpClient: HttpClient, serverOrderPostRequest: ServerOrderPostRequest): (Option[addServer_200_response], Response) =
+  ## Place a custom dedicated server order, creating a real billable invoice
+  httpClient.headers["Content-Type"] = "application/json"
 
-  let response = httpClient.post(basepath & "/servers/order")
+  let response = httpClient.post(basepath & "/servers/order", $(%serverOrderPostRequest))
   constructResult[addServer_200_response](response)
 
 
 proc buyItNowServerOrder*(httpClient: HttpClient): (Option[buyItNowServerOrder_200_response], Response) =
-  ## Get Buy Now Server Options
+  ## Get configurable options for a Rapid Deploy / coupon dedicated server
 
   let response = httpClient.get(basepath & "/servers/order/buy_now_server")
   constructResult[buyItNowServerOrder_200_response](response)
 
 
 proc getMPServers*(httpClient: HttpClient): (Option[seq[BuyItNowRow]], Response) =
-  ## List Marketplace Servers
+  ## List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 
   let response = httpClient.get(basepath & "/buy_now_servers_list")
   constructResult[seq[BuyItNowRow]](response)
 
 
 proc getNewServer*(httpClient: HttpClient): (Option[ServerOrder], Response) =
-  ## Server Ordering Information
+  ## Get custom dedicated server ordering options, regions, and pricing
 
   let response = httpClient.get(basepath & "/servers/order")
   constructResult[ServerOrder](response)
 
 
 proc getServerInfo*(httpClient: HttpClient, id: int): (Option[Server], Response) =
-  ## Get Server Order
+  ## Get full hardware, network, and lifecycle details for a dedicated server
 
   let response = httpClient.get(basepath & fmt"/servers/{id}")
   constructResult[Server](response)
 
 
 proc getServerInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get Server Invoices
+  ## List billing invoices (charges + payments) tied to one dedicated server
 
   let response = httpClient.get(basepath & fmt"/servers/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getServerList*(httpClient: HttpClient): (Option[seq[ServerRow]], Response) =
-  ## List Servers
+  ## List all dedicated servers owned by the authenticated customer
 
   let response = httpClient.get(basepath & "/servers")
   constructResult[seq[ServerRow]](response)
 
 
 proc getServerReverseDns*(httpClient: HttpClient, id: int): (Option[ReverseDnsEntries], Response) =
-  ## Reverse DNS Info
+  ## List current reverse-DNS (PTR) records for a dedicated server's IPs
 
   let response = httpClient.get(basepath & fmt"/servers/{id}/reverse_dns")
   constructResult[ReverseDnsEntries](response)
 
 
 proc getServersWelcomeEmail*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Resend Server Welcome Email
+  ## Resend the dedicated server welcome email with setup credentials
 
   let response = httpClient.get(basepath & fmt"/servers/{id}/welcome_email")
   constructResult[SuccessTextResponse](response)
 
 
 proc placeBuyNowServer*(httpClient: HttpClient, placeBuyNowServerRequest: PlaceBuyNowServerRequest): (Option[ServersBuyNowResponse], Response) =
-  ## Place Buy Now Server Order
+  ## Place a Rapid Deploy / coupon dedicated server order; creates real invoice
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & "/servers/order/buy_now_server", $(%placeBuyNowServerRequest))
@@ -122,28 +125,32 @@ proc placeBuyNowServer*(httpClient: HttpClient, placeBuyNowServerRequest: PlaceB
 
 
 proc postServerReverseDns*(httpClient: HttpClient, id: int, reverseDnsEntries: ReverseDnsEntries): (Option[TextResponse], Response) =
-  ## Update Reverse DNS
+  ## Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/servers/{id}/reverse_dns", $(%reverseDnsEntries))
   constructResult[TextResponse](response)
 
 
-proc putServers*(httpClient: HttpClient): Response =
-  ## Validate Server Order
-  httpClient.put(basepath & "/servers/order")
+proc serverBulkIpmiPowerGet*(httpClient: HttpClient, ids: string): (Option[ServerBulkIpmiPowerResponse], Response) =
+  ## Read IPMI chassis power status for many dedicated servers in one call
+  var query_params_list: seq[(string, string)] = @[]
+  query_params_list.add(("ids", $ids))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
+  let response = httpClient.get(basepath & "/servers/bulk/ipmi_power" & "?" & url_encoded_query_params)
+  constructResult[ServerBulkIpmiPowerResponse](response)
 
 
 proc serverIpmiLiveGet*(httpClient: HttpClient, id: int): (Option[ServerIpmiLiveInfo], Response) =
-  ## Server IPMI Live Information
+  ## Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
 
   let response = httpClient.get(basepath & fmt"/servers/{id}/ipmi_live")
   constructResult[ServerIpmiLiveInfo](response)
 
 
 proc serverIpmiLivePost*(httpClient: HttpClient, id: int, ip: string, asset: int): (Option[ServerIpmiLiveInfo], Response) =
-  ## Server IPMI Live Setup
+  ## Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "asset": $asset, # Asset ID
@@ -155,14 +162,14 @@ proc serverIpmiLivePost*(httpClient: HttpClient, id: int, ip: string, asset: int
 
 
 proc serverIpmiPowerGet*(httpClient: HttpClient, id: int): (Option[TextResponse], Response) =
-  ## Get IPMI Power Status
+  ## Read IPMI chassis power status for a dedicated server (single)
 
   let response = httpClient.get(basepath & fmt"/servers/{id}/ipmi_power")
   constructResult[TextResponse](response)
 
 
 proc serverIpmiPowerPost*(httpClient: HttpClient, id: int, action: string, asset: int): (Option[TextResponse], Response) =
-  ## Server IPMI Power
+  ## DESTRUCTIVE — change chassis power state on a bare-metal server
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "asset": $asset, # The Asset ID
@@ -174,14 +181,14 @@ proc serverIpmiPowerPost*(httpClient: HttpClient, id: int, action: string, asset
 
 
 proc serversCancel*(httpClient: HttpClient, id: int): (Option[serversCancel_200_response], Response) =
-  ## Cancel Server Service
+  ## Cancel a dedicated server service at the end of the current billing cycle
 
   let response = httpClient.delete(basepath & fmt"/servers/{id}")
   constructResult[serversCancel_200_response](response)
 
 
 proc updateServerInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Update Server Order
+  ## Update settings on a dedicated server order (shares handler with view)
 
   let response = httpClient.post(basepath & fmt"/servers/{id}")
   constructResult[SuccessTextResponse](response)

@@ -21,4 +21,8 @@ Example schema for a domain service catalog entry.
 |**servicesHidden** | **String** | Hidden flag for Service |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

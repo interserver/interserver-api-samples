@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainAllInfoAttributesContactSet();
+    instance = new InterserverApiClient.DomainAllInfoAttributesContactSet();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('DomainAllInfoAttributesContactSet', function() {
     it('should create an instance of DomainAllInfoAttributesContactSet', function() {
       // uncomment below and update the code to test DomainAllInfoAttributesContactSet
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributesContactSet();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainAllInfoAttributesContactSet);
+      //var instance = new InterserverApiClient.DomainAllInfoAttributesContactSet();
+      //expect(instance).to.be.a(InterserverApiClient.DomainAllInfoAttributesContactSet);
     });
 
     it('should have the property owner (base name: "owner")', function() {
       // uncomment below and update the code to test the property owner
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributesContactSet();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributesContactSet();
       //expect(instance).to.be();
     });
 
     it('should have the property admin (base name: "admin")', function() {
       // uncomment below and update the code to test the property admin
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributesContactSet();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributesContactSet();
       //expect(instance).to.be();
     });
 
     it('should have the property tech (base name: "tech")', function() {
       // uncomment below and update the code to test the property tech
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributesContactSet();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributesContactSet();
       //expect(instance).to.be();
     });
 

@@ -11,6 +11,6 @@
  */
 
 export interface InlineResponse20025 { 
-    message?: string;
-    success?: boolean;
+    success: boolean;
+    text: string;
 }

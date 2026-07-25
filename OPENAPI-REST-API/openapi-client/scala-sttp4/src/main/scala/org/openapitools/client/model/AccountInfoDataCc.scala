@@ -29,4 +29,3 @@ case class AccountInfoDataCc(
   maxmind: Option[AccountInfoMaxMindResponse] = None,
   verified: Option[Boolean] = None
 )
-

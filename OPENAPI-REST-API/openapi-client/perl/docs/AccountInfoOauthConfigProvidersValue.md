@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AccountInfoOauthConfigProvidersValue
+# InterServerAPI::Object::AccountInfoOauthConfigProvidersValue
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AccountInfoOauthConfigProvidersValue;
+use InterServerAPI::Object::AccountInfoOauthConfigProvidersValue;
 ```
 
 ## Properties

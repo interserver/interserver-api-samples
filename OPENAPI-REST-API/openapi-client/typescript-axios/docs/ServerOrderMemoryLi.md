@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderMemoryLi } from './api';
+import { ServerOrderMemoryLi } from '@interserver/myadmin-client';
 
 const instance: ServerOrderMemoryLi = {
     _254,

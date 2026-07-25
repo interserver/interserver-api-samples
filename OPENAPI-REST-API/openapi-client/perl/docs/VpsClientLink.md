@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsClientLink
+# InterServerAPI::Object::VpsClientLink
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsClientLink;
+use InterServerAPI::Object::VpsClientLink;
 ```
 
 ## Properties

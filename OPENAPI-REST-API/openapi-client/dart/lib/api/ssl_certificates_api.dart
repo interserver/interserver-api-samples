@@ -16,23 +16,27 @@ class SSLCertificatesApi {
 
   final ApiClient apiClient;
 
-  /// Place SSL Cert Order
+  /// Place a new SSL certificate order - creates invoice and queues issuance
   ///
-  /// Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
+  /// [DESTRUCTIVE] Use after putSsl returns continue=true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue=false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: `getNewSsl` (catalog), `putSsl` (validate), `getSslInfo` (poll), `getSslInvoices`, `initiatePayment` (settle invoice), `getSslWelcomeEmail`, `sslCancel`.
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> addSslWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [SslOrderRequest] sslOrderRequest (required):
+  Future<Response> addSslWithHttpInfo(SslOrderRequest sslOrderRequest, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ssl/order';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = sslOrderRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -43,14 +47,19 @@ class SSLCertificatesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Place SSL Cert Order
+  /// Place a new SSL certificate order - creates invoice and queues issuance
   ///
-  /// Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
-  Future<ServiceOrderPostResponse?> addSsl() async {
-    final response = await addSslWithHttpInfo();
+  /// [DESTRUCTIVE] Use after putSsl returns continue=true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue=false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: `getNewSsl` (catalog), `putSsl` (validate), `getSslInfo` (poll), `getSslInvoices`, `initiatePayment` (settle invoice), `getSslWelcomeEmail`, `sslCancel`.
+  ///
+  /// Parameters:
+  ///
+  /// * [SslOrderRequest] sslOrderRequest (required):
+  Future<ServiceOrderPostResponse?> addSsl(SslOrderRequest sslOrderRequest, { Future<void>? abortTrigger, }) async {
+    final response = await addSslWithHttpInfo(sslOrderRequest, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -64,12 +73,12 @@ class SSLCertificatesApi {
     return null;
   }
 
-  /// SSL Cert Ordering Information
+  /// Get available SSL certificate packages and pricing for placing a new order
   ///
-  /// Retrieves available SSL certificate types and pricing for ordering.
+  /// Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer's currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: `putSsl` (validate), `addSsl` (commit), `getSslList` (existing certs), `getSslInfo` (per-cert).
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getNewSslWithHttpInfo() async {
+  Future<Response> getNewSslWithHttpInfo({ Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ssl/order';
 
@@ -91,14 +100,15 @@ class SSLCertificatesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// SSL Cert Ordering Information
+  /// Get available SSL certificate packages and pricing for placing a new order
   ///
-  /// Retrieves available SSL certificate types and pricing for ordering.
-  Future<Object?> getNewSsl() async {
-    final response = await getNewSslWithHttpInfo();
+  /// Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer's currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: `putSsl` (validate), `addSsl` (commit), `getSslList` (existing certs), `getSslInfo` (per-cert).
+  Future<Object?> getNewSsl({ Future<void>? abortTrigger, }) async {
+    final response = await getNewSslWithHttpInfo(abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -112,9 +122,9 @@ class SSLCertificatesApi {
     return null;
   }
 
-  /// Get SSL Cert Info
+  /// Get full details for one SSL certificate by id - status, expiration, links
   ///
-  /// Returns detailed information about a specific SSL certificate including its domain and expiration.
+  /// Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: `updateSslInfo`, `getSslInvoices`, `getSslWelcomeEmail`, `sslCancel`, `getSslList`.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -122,7 +132,7 @@ class SSLCertificatesApi {
   ///
   /// * [int] id (required):
   ///   SSL certificate ID number.
-  Future<Response> getSslInfoWithHttpInfo(int id,) async {
+  Future<Response> getSslInfoWithHttpInfo(int id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ssl/{id}'
       .replaceAll('{id}', id.toString());
@@ -145,19 +155,20 @@ class SSLCertificatesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Get SSL Cert Info
+  /// Get full details for one SSL certificate by id - status, expiration, links
   ///
-  /// Returns detailed information about a specific SSL certificate including its domain and expiration.
+  /// Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: `updateSslInfo`, `getSslInvoices`, `getSslWelcomeEmail`, `sslCancel`, `getSslList`.
   ///
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   SSL certificate ID number.
-  Future<Object?> getSslInfo(int id,) async {
-    final response = await getSslInfoWithHttpInfo(id,);
+  Future<Object?> getSslInfo(int id, { Future<void>? abortTrigger, }) async {
+    final response = await getSslInfoWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -171,9 +182,9 @@ class SSLCertificatesApi {
     return null;
   }
 
-  /// Get SSL Cert Invoices
+  /// List all billing invoices and charges tied to one SSL certificate by id
   ///
-  /// Returns the billing invoices associated with this SSL certificate.
+  /// Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: `getSslInfo`, `sslCancel`, `getSslWelcomeEmail`, `getBillingInvoice` (per-invoice detail), `initiatePayment` (settle unpaid).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -181,7 +192,7 @@ class SSLCertificatesApi {
   ///
   /// * [int] id (required):
   ///   SSL Cert ID number
-  Future<Response> getSslInvoicesWithHttpInfo(int id,) async {
+  Future<Response> getSslInvoicesWithHttpInfo(int id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ssl/{id}/invoices'
       .replaceAll('{id}', id.toString());
@@ -204,19 +215,20 @@ class SSLCertificatesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Get SSL Cert Invoices
+  /// List all billing invoices and charges tied to one SSL certificate by id
   ///
-  /// Returns the billing invoices associated with this SSL certificate.
+  /// Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: `getSslInfo`, `sslCancel`, `getSslWelcomeEmail`, `getBillingInvoice` (per-invoice detail), `initiatePayment` (settle unpaid).
   ///
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   SSL Cert ID number
-  Future<ChargeInvoiceRows?> getSslInvoices(int id,) async {
-    final response = await getSslInvoicesWithHttpInfo(id,);
+  Future<ChargeInvoiceRows?> getSslInvoices(int id, { Future<void>? abortTrigger, }) async {
+    final response = await getSslInvoicesWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -230,12 +242,12 @@ class SSLCertificatesApi {
     return null;
   }
 
-  /// List SSL Certs
+  /// List all SSL certificates on the authenticated customer account with status and hostname
   ///
-  /// Returns all SSL certificate services on the account with their current status.
+  /// Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: `getSslInfo`, `getNewSsl` (catalog), `addSsl` (order new cert).
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getSslListWithHttpInfo() async {
+  Future<Response> getSslListWithHttpInfo({ Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ssl';
 
@@ -257,22 +269,23 @@ class SSLCertificatesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// List SSL Certs
+  /// List all SSL certificates on the authenticated customer account with status and hostname
   ///
-  /// Returns all SSL certificate services on the account with their current status.
-  Future<void> getSslList() async {
-    final response = await getSslListWithHttpInfo();
+  /// Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: `getSslInfo`, `getNewSsl` (catalog), `addSsl` (order new cert).
+  Future<void> getSslList({ Future<void>? abortTrigger, }) async {
+    final response = await getSslListWithHttpInfo(abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Resend SSL Welcome Email
+  /// Resend the SSL welcome email with cert credentials and install instructions
   ///
-  /// Resends the welcome email for the order.
+  /// Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module's ssl_welcome_email function to re-send to the account's email on file. Returns SuccessTextResponse: text='Welcome Email has been resent.' Returns 401 unauthenticated, 404 if id not found or not owned by session customer ('Invalid Service Passed'), 409 if cert status is not 'active' (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer's address has changed.  Sibling ops: `getSslInfo` (verify status), `sslCancel` (terminate), `updateAccountInfo` (change email first).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -280,7 +293,7 @@ class SSLCertificatesApi {
   ///
   /// * [int] id (required):
   ///   SSL Cert ID number
-  Future<Response> getSslWelcomeEmailWithHttpInfo(int id,) async {
+  Future<Response> getSslWelcomeEmailWithHttpInfo(int id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ssl/{id}/welcome_email'
       .replaceAll('{id}', id.toString());
@@ -303,19 +316,20 @@ class SSLCertificatesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Resend SSL Welcome Email
+  /// Resend the SSL welcome email with cert credentials and install instructions
   ///
-  /// Resends the welcome email for the order.
+  /// Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module's ssl_welcome_email function to re-send to the account's email on file. Returns SuccessTextResponse: text='Welcome Email has been resent.' Returns 401 unauthenticated, 404 if id not found or not owned by session customer ('Invalid Service Passed'), 409 if cert status is not 'active' (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer's address has changed.  Sibling ops: `getSslInfo` (verify status), `sslCancel` (terminate), `updateAccountInfo` (change email first).
   ///
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   SSL Cert ID number
-  Future<SuccessTextResponse?> getSslWelcomeEmail(int id,) async {
-    final response = await getSslWelcomeEmailWithHttpInfo(id,);
+  Future<SuccessTextResponse?> getSslWelcomeEmail(int id, { Future<void>? abortTrigger, }) async {
+    final response = await getSslWelcomeEmailWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -329,23 +343,27 @@ class SSLCertificatesApi {
     return null;
   }
 
-  /// Validate SSL Cert Order
+  /// Validate an SSL certificate order without charging - dry-run before addSsl
   ///
-  /// Validates an SSL certificate order before placing it.
+  /// Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue=false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: `getNewSsl` (catalog), `addSsl` (commit).
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> putSslWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [SslOrderRequest] sslOrderRequest (required):
+  Future<Response> putSslWithHttpInfo(SslOrderRequest sslOrderRequest, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ssl/order';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = sslOrderRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -356,22 +374,27 @@ class SSLCertificatesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Validate SSL Cert Order
+  /// Validate an SSL certificate order without charging - dry-run before addSsl
   ///
-  /// Validates an SSL certificate order before placing it.
-  Future<void> putSsl() async {
-    final response = await putSslWithHttpInfo();
+  /// Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue=false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: `getNewSsl` (catalog), `addSsl` (commit).
+  ///
+  /// Parameters:
+  ///
+  /// * [SslOrderRequest] sslOrderRequest (required):
+  Future<void> putSsl(SslOrderRequest sslOrderRequest, { Future<void>? abortTrigger, }) async {
+    final response = await putSslWithHttpInfo(sslOrderRequest, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Cancel SSL Certificate Service
+  /// Cancel an SSL certificate service - stops renewals at end of billing cycle
   ///
-  /// Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+  /// [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: `getSslInfo` (verify cert), `getSslInvoices` (check unpaid), `addSsl` (re-order).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -379,7 +402,7 @@ class SSLCertificatesApi {
   ///
   /// * [int] id (required):
   ///   SSL Cert ID number
-  Future<Response> sslCancelWithHttpInfo(int id,) async {
+  Future<Response> sslCancelWithHttpInfo(int id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ssl/{id}'
       .replaceAll('{id}', id.toString());
@@ -402,19 +425,20 @@ class SSLCertificatesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Cancel SSL Certificate Service
+  /// Cancel an SSL certificate service - stops renewals at end of billing cycle
   ///
-  /// Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+  /// [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: `getSslInfo` (verify cert), `getSslInvoices` (check unpaid), `addSsl` (re-order).
   ///
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   SSL Cert ID number
-  Future<SslCancel200Response?> sslCancel(int id,) async {
-    final response = await sslCancelWithHttpInfo(id,);
+  Future<SslCancel200Response?> sslCancel(int id, { Future<void>? abortTrigger, }) async {
+    final response = await sslCancelWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -428,9 +452,9 @@ class SSLCertificatesApi {
     return null;
   }
 
-  /// Update SSL Cert Order
+  /// Update mutable settings on an existing SSL certificate order by id
   ///
-  /// Updates settings on an SSL certificate order.
+  /// Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: `getSslInfo` (read), `sslCancel` (terminate), `getSslWelcomeEmail`.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -438,7 +462,7 @@ class SSLCertificatesApi {
   ///
   /// * [String] id (required):
   ///   SSL certificate ID number.
-  Future<Response> updateSslInfoWithHttpInfo(String id,) async {
+  Future<Response> updateSslInfoWithHttpInfo(String id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/ssl/{id}'
       .replaceAll('{id}', id);
@@ -461,19 +485,20 @@ class SSLCertificatesApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Update SSL Cert Order
+  /// Update mutable settings on an existing SSL certificate order by id
   ///
-  /// Updates settings on an SSL certificate order.
+  /// Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: `getSslInfo` (read), `sslCancel` (terminate), `getSslWelcomeEmail`.
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
   ///   SSL certificate ID number.
-  Future<SuccessTextResponse?> updateSslInfo(String id,) async {
-    final response = await updateSslInfoWithHttpInfo(id,);
+  Future<SuccessTextResponse?> updateSslInfo(String id, { Future<void>? abortTrigger, }) async {
+    final response = await updateSslInfoWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

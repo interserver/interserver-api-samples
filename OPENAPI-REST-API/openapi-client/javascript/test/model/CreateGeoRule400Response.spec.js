@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.CreateGeoRule400Response();
+    instance = new InterserverApiClient.CreateGeoRule400Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('CreateGeoRule400Response', function() {
     it('should create an instance of CreateGeoRule400Response', function() {
       // uncomment below and update the code to test CreateGeoRule400Response
-      //var instance = new InterServerManagementApi.CreateGeoRule400Response();
-      //expect(instance).to.be.a(InterServerManagementApi.CreateGeoRule400Response);
+      //var instance = new InterserverApiClient.CreateGeoRule400Response();
+      //expect(instance).to.be.a(InterserverApiClient.CreateGeoRule400Response);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.CreateGeoRule400Response();
+      //var instance = new InterserverApiClient.CreateGeoRule400Response();
       //expect(instance).to.be();
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.CreateGeoRule400Response();
+      //var instance = new InterserverApiClient.CreateGeoRule400Response();
       //expect(instance).to.be();
     });
 
     it('should have the property errors (base name: "errors")', function() {
       // uncomment below and update the code to test the property errors
-      //var instance = new InterServerManagementApi.CreateGeoRule400Response();
+      //var instance = new InterserverApiClient.CreateGeoRule400Response();
       //expect(instance).to.be();
     });
 

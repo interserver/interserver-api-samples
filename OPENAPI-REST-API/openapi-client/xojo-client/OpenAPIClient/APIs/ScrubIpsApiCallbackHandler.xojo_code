@@ -85,6 +85,12 @@ Protected Interface ScrubIpsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub PutScrubIpsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.PutScrubIps200Response)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub ScrubIpsDeleteGeoRuleCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.ScrubIpsDeleteRule200Response)
 		  
 		End Sub

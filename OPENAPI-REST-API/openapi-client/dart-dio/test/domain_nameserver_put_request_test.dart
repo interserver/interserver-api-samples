@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainNameserverPutRequest
 void main() {
-  final instance = DomainNameserverPutRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainNameserverPutRequest? instance = /* DomainNameserverPutRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainNameserverPutRequest, () {
-    // BuiltList<String> nameserver
+    // List<String> nameserver
     test('to test the property `nameserver`', () async {
       // TODO
     });

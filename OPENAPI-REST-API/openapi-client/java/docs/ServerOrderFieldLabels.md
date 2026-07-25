@@ -17,4 +17,8 @@ Field labels for the server order.
 |**hd** | [**ServerOrderFieldLabel**](ServerOrderFieldLabel.md) | Hard Drives field label |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

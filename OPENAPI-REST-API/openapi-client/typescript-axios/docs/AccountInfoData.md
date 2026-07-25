@@ -74,7 +74,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoData } from './api';
+import { AccountInfoData } from '@interserver/myadmin-client';
 
 const instance: AccountInfoData = {
     group,

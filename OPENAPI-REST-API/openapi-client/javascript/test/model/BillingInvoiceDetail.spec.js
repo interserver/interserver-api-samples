@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BillingInvoiceDetail();
+    instance = new InterserverApiClient.BillingInvoiceDetail();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('BillingInvoiceDetail', function() {
     it('should create an instance of BillingInvoiceDetail', function() {
       // uncomment below and update the code to test BillingInvoiceDetail
-      //var instance = new InterServerManagementApi.BillingInvoiceDetail();
-      //expect(instance).to.be.a(InterServerManagementApi.BillingInvoiceDetail);
+      //var instance = new InterserverApiClient.BillingInvoiceDetail();
+      //expect(instance).to.be.a(InterserverApiClient.BillingInvoiceDetail);
     });
 
   });

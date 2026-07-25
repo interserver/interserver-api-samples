@@ -1,4 +1,4 @@
-# openapi::TicketPostDetails
+# interserverapi::TicketPostDetails
 
 Fetches every posts of ticket
 

@@ -11,40 +11,13 @@ import Foundation
 public struct InlineResponse20012: Codable {
 
 
-    public var serviceInfo: InlineResponse20012ServiceInfo?
+    public var text: String?
 
-    public var clientLinks: [InlineResponse20012ClientLinks]?
-
-    public var billingDetails: InlineResponse20012BillingDetails?
-
-    public var custCurrency: String?
-
-    public var custCurrencySymbol: String?
-
-    public var package: String?
-
-    public var extraInfoTables: InlineResponse20012ExtraInfoTables?
-
-    public var filterFirewall: InlineResponse20012FilterFirewall?
-    public init(serviceInfo: InlineResponse20012ServiceInfo? = nil, clientLinks: [InlineResponse20012ClientLinks]? = nil, billingDetails: InlineResponse20012BillingDetails? = nil, custCurrency: String? = nil, custCurrencySymbol: String? = nil, package: String? = nil, extraInfoTables: InlineResponse20012ExtraInfoTables? = nil, filterFirewall: InlineResponse20012FilterFirewall? = nil) { 
-        self.serviceInfo = serviceInfo
-        self.clientLinks = clientLinks
-        self.billingDetails = billingDetails
-        self.custCurrency = custCurrency
-        self.custCurrencySymbol = custCurrencySymbol
-        self.package = package
-        self.extraInfoTables = extraInfoTables
-        self.filterFirewall = filterFirewall
-    }
-    public enum CodingKeys: String, CodingKey { 
-        case serviceInfo
-        case clientLinks = "client_links"
-        case billingDetails
-        case custCurrency
-        case custCurrencySymbol
-        case package
-        case extraInfoTables
-        case filterFirewall = "filter_firewall"
+    /** A pre-signed download URL valid for 24 hours. */
+    public var url: String?
+    public init(text: String? = nil, url: String? = nil) { 
+        self.text = text
+        self.url = url
     }
 
 }

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailAttachment
+# InterServerAPI::Object::MailAttachment
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailAttachment;
+use InterServerAPI::Object::MailAttachment;
 ```
 
 ## Properties

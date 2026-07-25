@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::WebsiteTable
+# InterServerAPI::Object::WebsiteTable
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::WebsiteTable;
+use InterServerAPI::Object::WebsiteTable;
 ```
 
 ## Properties

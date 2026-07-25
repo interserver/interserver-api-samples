@@ -12,4 +12,8 @@
 |**ips** | [**List&lt;GetOrderDetail200ResponseIpsInner&gt;**](GetOrderDetail200ResponseIpsInner.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

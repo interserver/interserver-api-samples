@@ -17,7 +17,7 @@ import PlaceScrubOrder201ResponseOrderDetails from './PlaceScrubOrder201Response
 /**
  * The PlaceScrubOrder201Response model module.
  * @module model/PlaceScrubOrder201Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class PlaceScrubOrder201Response {
     /**

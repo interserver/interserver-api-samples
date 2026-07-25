@@ -11,4 +11,8 @@ Package Costs
 |**_57** | **BigDecimal** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

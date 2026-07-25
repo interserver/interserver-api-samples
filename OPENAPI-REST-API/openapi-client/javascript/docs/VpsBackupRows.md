@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsBackupRows
+# InterserverApiClient.VpsBackupRows
 
 ## Properties
 

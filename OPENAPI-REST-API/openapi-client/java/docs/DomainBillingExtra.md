@@ -27,4 +27,8 @@ Extended billing context for a domain including registrar order details and cont
 |**fax** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

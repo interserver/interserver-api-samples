@@ -73,6 +73,12 @@ Protected Interface QuickServersApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub GetQsBackupCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.QueueResponse)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub GetQsBackupsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As VpsBackupRows)
 		  
 		End Sub
@@ -164,12 +170,6 @@ Protected Interface QuickServersApiCallbackHandler
 
 	#tag Method, Flags = &h0
 		Sub GetQsWelcomeEmailCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.TextResponse)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub PostQsBackupCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.QueueResponse)
 		  
 		End Sub
 	#tag EndMethod

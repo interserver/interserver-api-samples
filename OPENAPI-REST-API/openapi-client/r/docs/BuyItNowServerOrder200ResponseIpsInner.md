@@ -1,4 +1,4 @@
-# openapi::BuyItNowServerOrder200ResponseIpsInner
+# interserverapi::BuyItNowServerOrder200ResponseIpsInner
 
 
 ## Properties

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountApi();
+    instance = new InterserverApiClient.AccountApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -48,16 +48,6 @@
   }
 
   describe('AccountApi', function() {
-    describe('changeAccountUsername', function() {
-      it('should call changeAccountUsername successfully', function(done) {
-        //uncomment below and update the code to test changeAccountUsername
-        //instance.changeAccountUsername(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('deleteAccountOauthName', function() {
       it('should call deleteAccountOauthName successfully', function(done) {
         //uncomment below and update the code to test deleteAccountOauthName

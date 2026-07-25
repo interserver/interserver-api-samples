@@ -11,4 +11,8 @@ Map of dedicated server service IDs to their hostnames for the account dashboard
 |**_16058** | **String** | Link to a server. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

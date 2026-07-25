@@ -4,43 +4,42 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddDomain**](DomainsAPI.md#AddDomain) | **Post** /domains/order | Place Domain Order
-[**AddDomainDnssec**](DomainsAPI.md#AddDomainDnssec) | **Post** /domains/{id}/dnssec | Add Domain DNSSEC Records
-[**AddDomainNameserver**](DomainsAPI.md#AddDomainNameserver) | **Post** /domains/{id}/nameservers | Add Registered Nameserver
-[**CancelDomain**](DomainsAPI.md#CancelDomain) | **Delete** /domains/{id} | Cancel Domain Order
-[**DeleteDomainDnssec**](DomainsAPI.md#DeleteDomainDnssec) | **Delete** /domains/{id}/dnssec | Remove Domain DNSSEC Records
-[**DeleteDomainNameserver**](DomainsAPI.md#DeleteDomainNameserver) | **Delete** /domains/{id}/nameservers | Delete Registered Nameserver
-[**GetDomainContact**](DomainsAPI.md#GetDomainContact) | **Get** /domains/{id}/contact | Get Domain Contact Details
-[**GetDomainDnssec**](DomainsAPI.md#GetDomainDnssec) | **Get** /domains/{id}/dnssec | Get Domain DNSSEC Records
-[**GetDomainInfo**](DomainsAPI.md#GetDomainInfo) | **Get** /domains/{id} | Get Domain Order
-[**GetDomainInvoices**](DomainsAPI.md#GetDomainInvoices) | **Get** /domains/{id}/invoices | Get Domain Invoices
-[**GetDomainLookup**](DomainsAPI.md#GetDomainLookup) | **Get** /domains/lookup/{name} | Lookup Domain Availability and Pricing
-[**GetDomainNameservers**](DomainsAPI.md#GetDomainNameservers) | **Get** /domains/{id}/nameservers | List Registered Nameservers
-[**GetDomainOrderFields**](DomainsAPI.md#GetDomainOrderFields) | **Get** /domains/order/{domain}/{regType} | Get Domain Order Fields
-[**GetDomainOrderSearchResults**](DomainsAPI.md#GetDomainOrderSearchResults) | **Get** /domains/order/{domain} | Get Domain Order Search Results
-[**GetDomainRenewal**](DomainsAPI.md#GetDomainRenewal) | **Get** /domains/{id}/renew | Start Domain Renewal Flow
-[**GetDomainSearch**](DomainsAPI.md#GetDomainSearch) | **Get** /domains/search/{name} | Search Domain Suggestions
-[**GetDomainTransfer**](DomainsAPI.md#GetDomainTransfer) | **Get** /domains/{id}/transfer | Start Domain Transfer Flow
-[**GetDomainWhoisPrivacy**](DomainsAPI.md#GetDomainWhoisPrivacy) | **Get** /domains/{id}/whois | Get Whois Privacy Status
-[**GetDomainsList**](DomainsAPI.md#GetDomainsList) | **Get** /domains | List Domain Orders
-[**GetDomainsWelcomeEmail**](DomainsAPI.md#GetDomainsWelcomeEmail) | **Get** /domains/{id}/welcome_email | Resend Domain Welcome Email
-[**GetNewDomain**](DomainsAPI.md#GetNewDomain) | **Get** /domains/order | Get Domain Ordering Information
-[**PatchDomains**](DomainsAPI.md#PatchDomains) | **Patch** /domains/order | Validate Domain Order
-[**PostDomainRenewal**](DomainsAPI.md#PostDomainRenewal) | **Post** /domains/{id}/renew | Request Domain Renewal
-[**PostDomainTransfer**](DomainsAPI.md#PostDomainTransfer) | **Post** /domains/{id}/transfer | Request Domain Transfer
-[**PutDomains**](DomainsAPI.md#PutDomains) | **Put** /domains/order | Domain Order Search
-[**UpdateDomainContact**](DomainsAPI.md#UpdateDomainContact) | **Post** /domains/{id}/contact | Update Domain Contact Details
-[**UpdateDomainInfo**](DomainsAPI.md#UpdateDomainInfo) | **Post** /domains/{id} | Update Domain Order
-[**UpdateDomainNameservers**](DomainsAPI.md#UpdateDomainNameservers) | **Put** /domains/{id}/nameservers | Replace Nameserver Set
-[**UpdateDomainWhoisPrivacy**](DomainsAPI.md#UpdateDomainWhoisPrivacy) | **Post** /domains/{id}/whois | Update Whois Privacy
+[**AddDomain**](DomainsAPI.md#AddDomain) | **Post** /domains/order | Place a new domain registration or transfer order, generate billing invoice
+[**AddDomainDnssec**](DomainsAPI.md#AddDomainDnssec) | **Post** /domains/{id}/dnssec | Register DNSSEC DS records on the domain at OpenSRS
+[**AddDomainNameserver**](DomainsAPI.md#AddDomainNameserver) | **Post** /domains/{id}/nameservers | Register a new nameserver host with glue IP at the registry (registered nameserver)
+[**CancelDomain**](DomainsAPI.md#CancelDomain) | **Delete** /domains/{id} | Cancel a domain order in the billing system to stop auto-renewals
+[**DeleteDomainDnssec**](DomainsAPI.md#DeleteDomainDnssec) | **Delete** /domains/{id}/dnssec | Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
+[**DeleteDomainNameserver**](DomainsAPI.md#DeleteDomainNameserver) | **Delete** /domains/{id}/nameservers | Remove one registered nameserver glue record from the domain
+[**GetDomainContact**](DomainsAPI.md#GetDomainContact) | **Get** /domains/{id}/contact | Read the current registrant/admin/tech/billing contact field set for a domain
+[**GetDomainDnssec**](DomainsAPI.md#GetDomainDnssec) | **Get** /domains/{id}/dnssec | Read the DNSSEC DS record set currently registered with the registrar
+[**GetDomainInfo**](DomainsAPI.md#GetDomainInfo) | **Get** /domains/{id} | Read full billing, registrar, and service detail for one domain
+[**GetDomainInvoices**](DomainsAPI.md#GetDomainInvoices) | **Get** /domains/{id}/invoices | List all billing invoices scoped to one domain order
+[**GetDomainLookup**](DomainsAPI.md#GetDomainLookup) | **Get** /domains/lookup/{name} | Check availability, premium status, and pricing for a specific domain
+[**GetDomainNameservers**](DomainsAPI.md#GetDomainNameservers) | **Get** /domains/{id}/nameservers | List registered nameserver hosts and glue IP addresses for a domain
+[**GetDomainRenewal**](DomainsAPI.md#GetDomainRenewal) | **Get** /domains/{id}/renew | Read renewal pricing, expiry, and whether a renewal invoice already exists
+[**GetDomainSearch**](DomainsAPI.md#GetDomainSearch) | **Get** /domains/search/{name} | Get registrar-suggested domain alternatives and bulk availability for a search term
+[**GetDomainTransfer**](DomainsAPI.md#GetDomainTransfer) | **Get** /domains/{id}/transfer | Read OpenSRS transfer status for an in-progress domain transfer order
+[**GetDomainWhoisPrivacy**](DomainsAPI.md#GetDomainWhoisPrivacy) | **Get** /domains/{id}/whois | Read Whois privacy availability, current state, and add-on pricing for a domain
+[**GetDomainsList**](DomainsAPI.md#GetDomainsList) | **Get** /domains | List every domain registration on the account with billing and registration metadata
+[**GetDomainsWelcomeEmail**](DomainsAPI.md#GetDomainsWelcomeEmail) | **Get** /domains/{id}/welcome_email | Resend the domain welcome email with registration details and management instructions
+[**GetNewDomain**](DomainsAPI.md#GetNewDomain) | **Get** /domains/order | Read the buyable domain TLD service catalog and Whois privacy pricing
+[**PatchDomains**](DomainsAPI.md#PatchDomains) | **Patch** /domains/order | Validate posted domain-order field values before committing — dry run
+[**PostDomainRenewal**](DomainsAPI.md#PostDomainRenewal) | **Post** /domains/{id}/renew | Submit a domain renewal request and generate the renewal invoice
+[**PostDomainSearch**](DomainsAPI.md#PostDomainSearch) | **Post** /domains/search/{name} | Get the full order form data for a hostname in one round-trip (search → order preview)
+[**PostDomainTransfer**](DomainsAPI.md#PostDomainTransfer) | **Post** /domains/{id}/transfer | Re-poll OpenSRS transfer status for a domain order via POST
+[**PutDomains**](DomainsAPI.md#PutDomains) | **Put** /domains/order | Preview per-TLD field requirements for a domain order — no commit
+[**UpdateDomainContact**](DomainsAPI.md#UpdateDomainContact) | **Post** /domains/{id}/contact | Update registrant/admin contact details and push them to OpenSRS
+[**UpdateDomainInfo**](DomainsAPI.md#UpdateDomainInfo) | **Post** /domains/{id} | POST mutation hook for the domain detail page (use dedicated ops where possible)
+[**UpdateDomainNameservers**](DomainsAPI.md#UpdateDomainNameservers) | **Put** /domains/{id}/nameservers | Replace the full authoritative-nameserver delegation list at the registrar
+[**UpdateDomainWhoisPrivacy**](DomainsAPI.md#UpdateDomainWhoisPrivacy) | **Post** /domains/{id}/whois | Order, enable, or cancel the Whois privacy add-on for a domain
 
 
 
 ## AddDomain
 
-> ServiceOrderPostResponse AddDomain(ctx).Execute()
+> ServiceOrderPostResponse AddDomain(ctx).DomainOrderRequest(domainOrderRequest).Execute()
 
-Place Domain Order
+Place a new domain registration or transfer order, generate billing invoice
 
 
 
@@ -57,10 +56,11 @@ import (
 )
 
 func main() {
+	domainOrderRequest := *openapiclient.NewDomainOrderRequest("Hostname_example") // DomainOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DomainsAPI.AddDomain(context.Background()).Execute()
+	resp, r, err := apiClient.DomainsAPI.AddDomain(context.Background()).DomainOrderRequest(domainOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DomainsAPI.AddDomain``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -72,12 +72,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAddDomainRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domainOrderRequest** | [**DomainOrderRequest**](DomainOrderRequest.md) |  | 
 
 ### Return type
 
@@ -89,7 +93,7 @@ Other parameters are passed through a pointer to a apiAddDomainRequest struct vi
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -101,7 +105,7 @@ Other parameters are passed through a pointer to a apiAddDomainRequest struct vi
 
 > SuccessTextResponse AddDomainDnssec(ctx, id).DomainDnssecRequest(domainDnssecRequest).Execute()
 
-Add Domain DNSSEC Records
+Register DNSSEC DS records on the domain at OpenSRS
 
 
 
@@ -173,7 +177,7 @@ Name | Type | Description  | Notes
 
 > TextResponse AddDomainNameserver(ctx, id).DomainNameserverPostRequest(domainNameserverPostRequest).Execute()
 
-Add Registered Nameserver
+Register a new nameserver host with glue IP at the registry (registered nameserver)
 
 
 
@@ -245,7 +249,7 @@ Name | Type | Description  | Notes
 
 > CancelDomain200Response CancelDomain(ctx, id).Execute()
 
-Cancel Domain Order
+Cancel a domain order in the billing system to stop auto-renewals
 
 
 
@@ -313,9 +317,9 @@ Name | Type | Description  | Notes
 
 ## DeleteDomainDnssec
 
-> SuccessTextResponse DeleteDomainDnssec(ctx, id).Action(action).Execute()
+> SuccessTextResponse DeleteDomainDnssec(ctx, id).Execute()
 
-Remove Domain DNSSEC Records
+Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
 
 
 
@@ -333,11 +337,10 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The domain service ID. Use `domain_id` from `GET /domains`.
-	action := "action_example" // string | Set to `delete` to remove all DNSSEC records.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DomainsAPI.DeleteDomainDnssec(context.Background(), id).Action(action).Execute()
+	resp, r, err := apiClient.DomainsAPI.DeleteDomainDnssec(context.Background(), id).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DomainsAPI.DeleteDomainDnssec``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -363,7 +366,6 @@ Other parameters are passed through a pointer to a apiDeleteDomainDnssecRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **action** | **string** | Set to &#x60;delete&#x60; to remove all DNSSEC records. | 
 
 ### Return type
 
@@ -387,7 +389,7 @@ Name | Type | Description  | Notes
 
 > TextResponse DeleteDomainNameserver(ctx, id).Index(index).Execute()
 
-Delete Registered Nameserver
+Remove one registered nameserver glue record from the domain
 
 
 
@@ -459,7 +461,7 @@ Name | Type | Description  | Notes
 
 > DomainContactDetails GetDomainContact(ctx, id).Execute()
 
-Get Domain Contact Details
+Read the current registrant/admin/tech/billing contact field set for a domain
 
 
 
@@ -529,7 +531,7 @@ Name | Type | Description  | Notes
 
 > DomainDnssecRecords GetDomainDnssec(ctx, id).Execute()
 
-Get Domain DNSSEC Records
+Read the DNSSEC DS record set currently registered with the registrar
 
 
 
@@ -599,7 +601,7 @@ Name | Type | Description  | Notes
 
 > Domain GetDomainInfo(ctx, id).Execute()
 
-Get Domain Order
+Read full billing, registrar, and service detail for one domain
 
 
 
@@ -669,7 +671,7 @@ Name | Type | Description  | Notes
 
 > ChargeInvoiceRows GetDomainInvoices(ctx, id).Execute()
 
-Get Domain Invoices
+List all billing invoices scoped to one domain order
 
 
 
@@ -739,7 +741,7 @@ Name | Type | Description  | Notes
 
 > DomainLookupResponse GetDomainLookup(ctx, name).Execute()
 
-Lookup Domain Availability and Pricing
+Check availability, premium status, and pricing for a specific domain
 
 
 
@@ -809,7 +811,7 @@ Name | Type | Description  | Notes
 
 > DomainNameserverGetResponse GetDomainNameservers(ctx, id).Execute()
 
-List Registered Nameservers
+List registered nameserver hosts and glue IP addresses for a domain
 
 
 
@@ -875,150 +877,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetDomainOrderFields
-
-> GetDomainOrderFields(ctx, domain, regType).Execute()
-
-Get Domain Order Fields
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	domain := "domain_example" // string | The fully qualified domain name (e.g. `example.com`).
-	regType := "regType_example" // string | The registration type. Common values include `register` for new registrations and `transfer` for inbound transfers.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DomainsAPI.GetDomainOrderFields(context.Background(), domain, regType).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DomainsAPI.GetDomainOrderFields``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**domain** | **string** | The fully qualified domain name (e.g. &#x60;example.com&#x60;). | 
-**regType** | **string** | The registration type. Common values include &#x60;register&#x60; for new registrations and &#x60;transfer&#x60; for inbound transfers. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetDomainOrderFieldsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetDomainOrderSearchResults
-
-> GetDomainOrderSearchResults(ctx, domain).Execute()
-
-Get Domain Order Search Results
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	domain := "domain_example" // string | The fully qualified domain name to look up (e.g. `example.com`).
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DomainsAPI.GetDomainOrderSearchResults(context.Background(), domain).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DomainsAPI.GetDomainOrderSearchResults``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**domain** | **string** | The fully qualified domain name to look up (e.g. &#x60;example.com&#x60;). | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetDomainOrderSearchResultsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetDomainRenewal
 
 > SuccessTextResponse GetDomainRenewal(ctx, id).Execute()
 
-Start Domain Renewal Flow
+Read renewal pricing, expiry, and whether a renewal invoice already exists
 
 
 
@@ -1088,7 +951,7 @@ Name | Type | Description  | Notes
 
 > DomainSearchResponse GetDomainSearch(ctx, name).Execute()
 
-Search Domain Suggestions
+Get registrar-suggested domain alternatives and bulk availability for a search term
 
 
 
@@ -1158,7 +1021,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse GetDomainTransfer(ctx, id).Execute()
 
-Start Domain Transfer Flow
+Read OpenSRS transfer status for an in-progress domain transfer order
 
 
 
@@ -1228,7 +1091,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse GetDomainWhoisPrivacy(ctx, id).Execute()
 
-Get Whois Privacy Status
+Read Whois privacy availability, current state, and add-on pricing for a domain
 
 
 
@@ -1298,7 +1161,7 @@ Name | Type | Description  | Notes
 
 > []DomainRow GetDomainsList(ctx).Execute()
 
-List Domain Orders
+List every domain registration on the account with billing and registration metadata
 
 
 
@@ -1359,7 +1222,7 @@ Other parameters are passed through a pointer to a apiGetDomainsListRequest stru
 
 > SuccessTextResponse GetDomainsWelcomeEmail(ctx, id).Execute()
 
-Resend Domain Welcome Email
+Resend the domain welcome email with registration details and management instructions
 
 
 
@@ -1429,7 +1292,7 @@ Name | Type | Description  | Notes
 
 > DomainOrder GetNewDomain(ctx).Execute()
 
-Get Domain Ordering Information
+Read the buyable domain TLD service catalog and Whois privacy pricing
 
 
 
@@ -1488,9 +1351,9 @@ Other parameters are passed through a pointer to a apiGetNewDomainRequest struct
 
 ## PatchDomains
 
-> PatchDomains(ctx).Execute()
+> PatchDomains(ctx).DomainOrderRequest(domainOrderRequest).Execute()
 
-Validate Domain Order
+Validate posted domain-order field values before committing — dry run
 
 
 
@@ -1507,10 +1370,11 @@ import (
 )
 
 func main() {
+	domainOrderRequest := *openapiclient.NewDomainOrderRequest("Hostname_example") // DomainOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DomainsAPI.PatchDomains(context.Background()).Execute()
+	r, err := apiClient.DomainsAPI.PatchDomains(context.Background()).DomainOrderRequest(domainOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DomainsAPI.PatchDomains``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1520,12 +1384,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPatchDomainsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domainOrderRequest** | [**DomainOrderRequest**](DomainOrderRequest.md) |  | 
 
 ### Return type
 
@@ -1537,7 +1405,7 @@ Other parameters are passed through a pointer to a apiPatchDomainsRequest struct
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1549,7 +1417,7 @@ Other parameters are passed through a pointer to a apiPatchDomainsRequest struct
 
 > SuccessTextResponse PostDomainRenewal(ctx, id).Execute()
 
-Request Domain Renewal
+Submit a domain renewal request and generate the renewal invoice
 
 
 
@@ -1615,11 +1483,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PostDomainSearch
+
+> PostDomainSearch(ctx, name).Execute()
+
+Get the full order form data for a hostname in one round-trip (search → order preview)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	name := "name_example" // string | The base domain name to search (for example `example` or `example.com`).
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DomainsAPI.PostDomainSearch(context.Background(), name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DomainsAPI.PostDomainSearch``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | The base domain name to search (for example &#x60;example&#x60; or &#x60;example.com&#x60;). | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostDomainSearchRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostDomainTransfer
 
 > SuccessTextResponse PostDomainTransfer(ctx, id).Execute()
 
-Request Domain Transfer
+Re-poll OpenSRS transfer status for a domain order via POST
 
 
 
@@ -1687,9 +1623,9 @@ Name | Type | Description  | Notes
 
 ## PutDomains
 
-> PutDomains(ctx).Execute()
+> PutDomains(ctx).DomainOrderRequest(domainOrderRequest).Execute()
 
-Domain Order Search
+Preview per-TLD field requirements for a domain order — no commit
 
 
 
@@ -1706,10 +1642,11 @@ import (
 )
 
 func main() {
+	domainOrderRequest := *openapiclient.NewDomainOrderRequest("Hostname_example") // DomainOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DomainsAPI.PutDomains(context.Background()).Execute()
+	r, err := apiClient.DomainsAPI.PutDomains(context.Background()).DomainOrderRequest(domainOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DomainsAPI.PutDomains``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1719,12 +1656,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPutDomainsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domainOrderRequest** | [**DomainOrderRequest**](DomainOrderRequest.md) |  | 
 
 ### Return type
 
@@ -1736,7 +1677,7 @@ Other parameters are passed through a pointer to a apiPutDomainsRequest struct v
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1748,7 +1689,7 @@ Other parameters are passed through a pointer to a apiPutDomainsRequest struct v
 
 > SuccessTextResponse UpdateDomainContact(ctx, id).DomainContactDetails(domainContactDetails).Execute()
 
-Update Domain Contact Details
+Update registrant/admin contact details and push them to OpenSRS
 
 
 
@@ -1820,7 +1761,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateDomainInfo(ctx, id).Execute()
 
-Update Domain Order
+POST mutation hook for the domain detail page (use dedicated ops where possible)
 
 
 
@@ -1837,7 +1778,7 @@ import (
 )
 
 func main() {
-	id := "id_example" // string | The domain service ID. Use `domain_id` from `GET /domains`.
+	id := int32(56) // int32 | The domain service ID. Use `domain_id` from `GET /domains`.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1857,7 +1798,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. | 
+**id** | **int32** | The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. | 
 
 ### Other Parameters
 
@@ -1890,7 +1831,7 @@ Name | Type | Description  | Notes
 
 > TextResponse UpdateDomainNameservers(ctx, id).DomainNameserverPutRequest(domainNameserverPutRequest).Execute()
 
-Replace Nameserver Set
+Replace the full authoritative-nameserver delegation list at the registrar
 
 
 
@@ -1962,7 +1903,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateDomainWhoisPrivacy(ctx, id).DomainWhoisPrivacyRequest(domainWhoisPrivacyRequest).Execute()
 
-Update Whois Privacy
+Order, enable, or cancel the Whois privacy add-on for a domain
 
 
 

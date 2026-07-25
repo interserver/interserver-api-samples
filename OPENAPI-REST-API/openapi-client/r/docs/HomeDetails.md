@@ -1,4 +1,4 @@
-# openapi::HomeDetails
+# interserverapi::HomeDetails
 
 Users details.
 

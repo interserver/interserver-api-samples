@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateRule400Response model module.
  * @module model/CreateRule400Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class CreateRule400Response {
     /**

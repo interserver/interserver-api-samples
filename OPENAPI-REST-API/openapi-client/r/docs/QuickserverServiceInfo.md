@@ -1,4 +1,4 @@
-# openapi::QuickserverServiceInfo
+# interserverapi::QuickserverServiceInfo
 
 Core service record for a QuickServer including ID, status, IP, OS, and billing details.
 

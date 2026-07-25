@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerRow
+# InterserverApiClient.ServerRow
 
 ## Properties
 

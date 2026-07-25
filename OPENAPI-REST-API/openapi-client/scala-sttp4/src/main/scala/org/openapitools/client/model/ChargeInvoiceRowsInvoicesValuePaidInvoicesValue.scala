@@ -24,4 +24,3 @@ case class ChargeInvoiceRowsInvoicesValuePaidInvoicesValue(
   /* This is optional when refund is present this will show */
   refund_invoices: Option[Map[String, ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue]] = None
 )
-

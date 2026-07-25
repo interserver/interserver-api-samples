@@ -1,4 +1,4 @@
-# openapi::MailAttachment
+# interserverapi::MailAttachment
 
 (optional) File attachments to include in the email.  The file contents must be base64
 

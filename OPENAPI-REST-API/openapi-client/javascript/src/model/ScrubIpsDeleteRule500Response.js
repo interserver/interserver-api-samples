@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ScrubIpsDeleteRule500Response model module.
  * @module model/ScrubIpsDeleteRule500Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ScrubIpsDeleteRule500Response {
     /**

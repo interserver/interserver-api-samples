@@ -18,4 +18,8 @@ Detailed ticket information
 |**updatedOn** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

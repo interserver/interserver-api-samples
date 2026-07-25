@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailLog } from './api';
+import { MailLog } from '@interserver/myadmin-client';
 
 const instance: MailLog = {
     total,

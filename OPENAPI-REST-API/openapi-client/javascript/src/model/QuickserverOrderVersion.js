@@ -17,7 +17,7 @@ import QuickserverOrderVersionCentosstream8 from './QuickserverOrderVersionCento
 /**
  * The QuickserverOrderVersion model module.
  * @module model/QuickserverOrderVersion
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverOrderVersion {
     /**

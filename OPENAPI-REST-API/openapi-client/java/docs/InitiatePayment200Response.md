@@ -20,9 +20,13 @@
 
 | Name | Value |
 |---- | -----|
-| REDIRECT | &quot;redirect&quot; |
-| SUBMIT | &quot;submit&quot; |
-| SINGLE | &quot;single&quot; |
+| redirect | &quot;redirect&quot; |
+| submit | &quot;submit&quot; |
+| single | &quot;single&quot; |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

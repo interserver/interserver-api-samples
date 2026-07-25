@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.affiliate_traffic_row import AffiliateTrafficRow
+from interserver_api_client.models.affiliate_traffic_row import AffiliateTrafficRow
 
 class TestAffiliateTrafficRow(unittest.TestCase):
     """AffiliateTrafficRow unit test stubs"""

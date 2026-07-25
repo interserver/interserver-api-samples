@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.TicketNewResponse();
+    instance = new InterserverApiClient.TicketNewResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('TicketNewResponse', function() {
     it('should create an instance of TicketNewResponse', function() {
       // uncomment below and update the code to test TicketNewResponse
-      //var instance = new InterServerManagementApi.TicketNewResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.TicketNewResponse);
+      //var instance = new InterserverApiClient.TicketNewResponse();
+      //expect(instance).to.be.a(InterserverApiClient.TicketNewResponse);
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.TicketNewResponse();
+      //var instance = new InterserverApiClient.TicketNewResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.TicketNewResponse();
+      //var instance = new InterserverApiClient.TicketNewResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ticket_id (base name: "ticket_id")', function() {
       // uncomment below and update the code to test the property ticket_id
-      //var instance = new InterServerManagementApi.TicketNewResponse();
+      //var instance = new InterserverApiClient.TicketNewResponse();
       //expect(instance).to.be();
     });
 

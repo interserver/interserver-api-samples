@@ -23,7 +23,7 @@ public class InlineResponse20016   {
   }
 
   
-  @ApiModelProperty(example = "true", value = "")
+  @ApiModelProperty(example = "true", required = true, value = "")
   @JsonProperty("success")
   @NotNull
 
@@ -42,7 +42,7 @@ public class InlineResponse20016   {
   }
 
   
-  @ApiModelProperty(example = "Firewall Rule has been deleted.", value = "")
+  @ApiModelProperty(example = "Scrub is disabled on your IP.", required = true, value = "")
   @JsonProperty("text")
   @NotNull
 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_order import QuickserverOrder
+from interserver_api_client.models.quickserver_order import QuickserverOrder
 
 class TestQuickserverOrder(unittest.TestCase):
     """QuickserverOrder unit test stubs"""
@@ -37,23 +37,23 @@ class TestQuickserverOrder(unittest.TestCase):
         if include_optional:
             return QuickserverOrder(
                 qs_id = '221',
-                server_details = openapi_client.models.quickserver_order_server_details.QuickserverOrder_server_details(
-                    381 = openapi_client.models.quickserver_order_server_details381.QuickserverOrderServerDetails381(
+                server_details = interserver_api_client.models.quickserver_order_server_details.QuickserverOrder_server_details(
+                    381 = interserver_api_client.models.quickserver_order_server_details381.QuickserverOrderServerDetails381(
                         cpu = 'AMD Ryzen 9 5900X 12-Core Processor', 
                         ram = '119GB', 
                         hd = '1760GB', 
                         cores = 24, 
                         cost = '$140.00', ), ),
-                templates = openapi_client.models.quickserver_order_templates.QuickserverOrder_templates(
+                templates = interserver_api_client.models.quickserver_order_templates.QuickserverOrder_templates(
                     ubuntu = [
                         [
                             'ubuntu24'
                             ]
                         ], ),
-                version = openapi_client.models.quickserver_order_version.QuickserverOrder_version(
-                    centosstream_8 = openapi_client.models.quickserver_order_version_centosstream8.QuickserverOrderVersionCentosstream8(), ),
-                distro_sel = openapi_client.models.quickserver_order_distro_sel.QuickserverOrder_distro_sel(
-                    ubuntu = openapi_client.models.quickserver_order_distro_sel_ubuntu.QuickserverOrderDistroSelUbuntu(), )
+                version = interserver_api_client.models.quickserver_order_version.QuickserverOrder_version(
+                    centosstream_8 = interserver_api_client.models.quickserver_order_version_centosstream8.QuickserverOrderVersionCentosstream8(), ),
+                distro_sel = interserver_api_client.models.quickserver_order_distro_sel.QuickserverOrder_distro_sel(
+                    ubuntu = interserver_api_client.models.quickserver_order_distro_sel_ubuntu.QuickserverOrderDistroSelUbuntu(), )
             )
         else:
             return QuickserverOrder(

@@ -12,4 +12,8 @@ Request body to setup an IPMI Live connection.
 |**asset** | **Integer** | Asset ID |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

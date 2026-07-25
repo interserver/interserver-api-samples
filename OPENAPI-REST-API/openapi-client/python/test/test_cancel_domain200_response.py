@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.cancel_domain200_response import CancelDomain200Response
+from interserver_api_client.models.cancel_domain200_response import CancelDomain200Response
 
 class TestCancelDomain200Response(unittest.TestCase):
     """CancelDomain200Response unit test stubs"""

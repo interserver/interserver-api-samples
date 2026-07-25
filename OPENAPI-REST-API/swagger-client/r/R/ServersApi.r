@@ -17,58 +17,58 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_server Place Server Order
+#' add_server Place a custom dedicated server order, creating a real billable invoice
 #'
 #'
-#' buy_it_now_server_order Get Buy Now Server Options
+#' buy_it_now_server_order Get configurable options for a Rapid Deploy / coupon dedicated server
 #'
 #'
-#' get_mp_servers List Marketplace Servers
+#' get_mp_servers List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 #'
 #'
-#' get_new_server Server Ordering Information
+#' get_new_server Get custom dedicated server ordering options, regions, and pricing
 #'
 #'
-#' get_server_info Get Server Order
+#' get_server_info Get full hardware, network, and lifecycle details for a dedicated server
 #'
 #'
-#' get_server_invoices Get Server Invoices
+#' get_server_invoices List billing invoices (charges + payments) tied to one dedicated server
 #'
 #'
-#' get_server_list List Servers
+#' get_server_list List all dedicated servers owned by the authenticated customer
 #'
 #'
-#' get_server_reverse_dns Reverse DNS Info
+#' get_server_reverse_dns List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs
 #'
 #'
-#' get_servers_welcome_email Resend Server Welcome Email
+#' get_servers_welcome_email Resend the dedicated server welcome email with setup credentials
 #'
 #'
-#' place_buy_now_server Place Buy Now Server Order
+#' place_buy_now_server Place a Rapid Deploy / coupon dedicated server order; creates real invoice
 #'
 #'
-#' post_server_reverse_dns Update Reverse DNS
+#' post_server_reverse_dns Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
 #'
 #'
-#' put_servers Validate Server Order
+#' server_bulk_ipmi_power_get Read IPMI chassis power status for many dedicated servers in one call
 #'
 #'
-#' server_ipmi_live_get Server IPMI Live Information
+#' server_ipmi_live_get Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
 #'
 #'
-#' server_ipmi_live_post Server IPMI Live Setup
+#' server_ipmi_live_post Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
 #'
 #'
-#' server_ipmi_power_get Get IPMI Power Status
+#' server_ipmi_power_get Read IPMI chassis power status for a dedicated server (single)
 #'
 #'
-#' server_ipmi_power_post Server IPMI Power
+#' server_ipmi_power_post DESTRUCTIVE — change chassis power state on a bare-metal server
 #'
 #'
-#' servers_cancel Cancel Server Service
+#' servers_cancel Cancel a dedicated server service at the end of the current billing cycle
 #'
 #'
-#' update_server_info Update Server Order
+#' update_server_info Update settings on a dedicated server order (shares handler with view)
 #'
 #' }
 #'
@@ -86,10 +86,16 @@ ServersApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    add_server = function(...){
+    add_server = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/servers/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -100,7 +106,7 @@ ServersApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20019$new()
+        returnObject <- InlineResponse20021$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -124,7 +130,7 @@ ServersApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20027$new()
+        returnObject <- InlineResponse20029$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -386,21 +392,27 @@ ServersApi <- R6::R6Class(
       }
 
     }
-    put_servers = function(...){
+    server_bulk_ipmi_power_get = function(ids, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
 
-      urlPath <- "/servers/order"
+      if (!missing(`ids`)) {
+        queryParams['ids'] <- ids
+      }
+
+      urlPath <- "/servers/bulk/ipmi_power"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "PUT",
+                                 method = "GET",
                                  queryParams = queryParams,
                                  headerParams = headerParams,
                                  body = body,
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        # void response, no need to return anything
+        returnObject <- ServerBulkIpmiPowerResponse$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         Response$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
@@ -560,7 +572,7 @@ ServersApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20020$new()
+        returnObject <- InlineResponse20022$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

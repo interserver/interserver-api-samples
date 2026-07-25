@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailTutorialsTable = Initialize-PSOpenAPIToolsMailTutorialsTable  -Title Tutorials `
+$MailTutorialsTable = Initialize-InterserverApiMailTutorialsTable  -Title Tutorials `
  -Rows null
 ```
 

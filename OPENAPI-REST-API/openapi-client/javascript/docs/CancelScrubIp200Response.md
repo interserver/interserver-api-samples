@@ -1,4 +1,4 @@
-# InterServerManagementApi.CancelScrubIp200Response
+# InterserverApiClient.CancelScrubIp200Response
 
 ## Properties
 

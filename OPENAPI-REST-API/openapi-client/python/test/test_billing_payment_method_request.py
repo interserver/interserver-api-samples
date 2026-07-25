@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.billing_payment_method_request import BillingPaymentMethodRequest
+from interserver_api_client.models.billing_payment_method_request import BillingPaymentMethodRequest
 
 class TestBillingPaymentMethodRequest(unittest.TestCase):
     """BillingPaymentMethodRequest unit test stubs"""

@@ -63,4 +63,8 @@ MaxMind fraud detection scoring data for a credit card transaction.
 |**femaleName** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

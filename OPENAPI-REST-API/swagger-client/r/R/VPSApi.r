@@ -17,136 +17,154 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_vps Place VPS Order
+#' add_vps Place a new VPS order, create the invoice, and queue provisioning
 #'
 #'
-#' delete_vps_backup Delete VPS Backup
+#' delete_vps_backup Permanently delete a VPS backup file by name (irreversible)
 #'
 #'
-#' do_vps_block_smtp Blocks SMTP
+#' do_vps_block_smtp Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
 #'
 #'
-#' do_vps_disable_cd Disable CD Drive
+#' do_vps_disable_cd Remove the virtual CD/DVD device entirely from the VPS configuration
 #'
 #'
-#' do_vps_disable_quota Disable Quotas
+#' do_vps_disable_quota Disable per-user disk quota enforcement inside the VPS guest OS
 #'
 #'
-#' do_vps_eject_cd Eject CD Drive
+#' do_vps_eject_cd Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
 #'
 #'
-#' do_vps_enable_quota Enable Quotas
+#' do_vps_enable_quota Enable per-user disk quota enforcement inside the VPS guest OS
 #'
 #'
-#' do_vps_restart Restart VPS
+#' do_vps_restart Reboot the VPS — preferred over stop+start for software changes
 #'
 #'
-#' do_vps_start Start VPS
+#' do_vps_start Power on a stopped VPS instance
 #'
 #'
-#' do_vps_stop Stop VPS
+#' do_vps_stop Power off a running VPS — billing continues until cancellation
 #'
 #'
-#' download_vps_backup Download VPS Backup
+#' download_vps_backup Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
 #'
 #'
-#' get_new_vps VPS Ordering Information
+#' get_new_vps Get the VPS order catalog — platforms, OS templates, locations, pricing
 #'
 #'
-#' get_vps_backups Get VPS Backups List
+#' get_vps_backup Trigger a manual on-demand snapshot/backup of the VPS
 #'
 #'
-#' get_vps_buy_hd_space HD Space Addon Info
+#' get_vps_backups List existing backups for the VPS across Swift, MinIO, and ZFS
 #'
 #'
-#' get_vps_buy_ip Additional IP Addon Info
+#' get_vps_buy_hd_space Get current additional disk size and per-GB monthly cost for the VPS
 #'
 #'
-#' get_vps_change_timezone Get Timezone Info
+#' get_vps_buy_ip Read current additional IPs, cap, and per-IP monthly cost for the VPS
 #'
 #'
-#' get_vps_info Get VPS Order
+#' get_vps_change_hostname Read the VPS&#x27;s current hostname before changing it
 #'
 #'
-#' get_vps_invoices Get VPS Invoices
+#' get_vps_change_root_password Pre-flight check before changing the VPS root password
 #'
 #'
-#' get_vps_list List VPS Orders
+#' get_vps_change_timezone List IANA timezones supported by the VPS guest OS
 #'
 #'
-#' get_vps_reinstall_os VPS Reinstall OS Options
+#' get_vps_info Get full details for one VPS — IPs, hostname, OS, slices, status, addons
 #'
 #'
-#' get_vps_reverse_dns Reverse DNS Info
+#' get_vps_insert_cd List ISO templates that can be mounted in the VPS virtual CD drive
 #'
 #'
-#' get_vps_setup_vnc VNC Setup Info
+#' get_vps_invoices List all billing invoices associated with this specific VPS
 #'
 #'
-#' get_vps_slices Slice Upgrade Info
+#' get_vps_list List all VPS services on the customer&#x27;s account
 #'
 #'
-#' get_vps_traffic_usage Get Traffic Usage
+#' get_vps_reinstall_os List OS templates compatible with this VPS&#x27;s hypervisor for reinstall
 #'
 #'
-#' get_vps_view_desktop Get View Desktop Info
+#' get_vps_reset_password Pre-flight check before resetting the VPS root password to a random value
 #'
 #'
-#' get_vps_welcome_email Resend VPS Welcome Email
+#' get_vps_reverse_dns Read the current PTR (reverse-DNS) records for every IP on the VPS
 #'
 #'
-#' post_vps_backup Start a VPS Backup
+#' get_vps_setup_vnc Read current VNC console connection info for the VPS
 #'
 #'
-#' post_vps_buy_hd_space Purchase HD Space Addon
+#' get_vps_slices Read current slice count, min/max range, and prorated per-slice upgrade cost
 #'
 #'
-#' post_vps_buy_ip Purchase Additional IP
+#' get_vps_traffic_usage Read bandwidth traffic usage data for the VPS
 #'
 #'
-#' post_vps_change_hostname Update VPS Hostname
+#' get_vps_view_desktop Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
 #'
 #'
-#' post_vps_change_root_password Change VPS Root Password
+#' get_vps_welcome_email Resend the welcome email containing VPS IP, hostname, and root credentials
 #'
 #'
-#' post_vps_change_timezone Change VPS Timezone
+#' post_vps_buy_hd_space Buy or resize the VPS additional-disk addon and create a prorated invoice
 #'
 #'
-#' post_vps_change_webuzo_password Change Webuzo Password
+#' post_vps_buy_ip Purchase one additional IP for the VPS and create the invoice
 #'
 #'
-#' post_vps_insert_cd Insert CD in VPS
+#' post_vps_change_hostname Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
 #'
 #'
-#' post_vps_reinstall_os Reinstall VPS OS
+#' post_vps_change_root_password Set a specific new root/Administrator password on the VPS
 #'
 #'
-#' post_vps_reset_password Reset VPS Password
+#' post_vps_change_timezone Set the system timezone on the VPS guest OS
 #'
 #'
-#' post_vps_restore Restore VPS from Backup
+#' post_vps_change_webuzo_password Rotate the Webuzo control panel admin password (re-auth required)
 #'
 #'
-#' post_vps_reverse_dns Update Reverse DNS
+#' post_vps_insert_cd Mount an ISO image in the VPS virtual CD drive from a URL
 #'
 #'
-#' post_vps_setup_vnc Setup VNC
+#' post_vps_reinstall_os Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
 #'
 #'
-#' post_vps_slices Purchase Slice Upgrade
+#' post_vps_reset_password Reset the VPS root password to a server-generated random value
 #'
 #'
-#' post_vps_view_desktop Update View Desktop
+#' post_vps_restore Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
 #'
 #'
-#' put_vps Validate VPS Order
+#' post_vps_reverse_dns Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
 #'
 #'
-#' update_vps_info Update VPS Order
+#' post_vps_setup_vnc Provision or refresh the VNC console endpoint for the VPS
 #'
 #'
-#' v_ps_cancel Cancel VPS Service
+#' post_vps_slices Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
+#'
+#'
+#' post_vps_traffic_usage Search/filter VPS bandwidth usage with custom criteria (reserved)
+#'
+#'
+#' post_vps_view_desktop Refresh the remote-desktop session connection info after IP/hostname changes
+#'
+#'
+#' put_vps Validate a VPS order configuration and quote the cost — dry run, no charge
+#'
+#'
+#' put_vps_buy_hd_space Preview cost to set additional VPS disk to a target GB size — dry run
+#'
+#'
+#' update_vps_info Update editable settings on a VPS service record
+#'
+#'
+#' v_ps_cancel Cancel a VPS service at the end of the current billing cycle
 #'
 #' }
 #'
@@ -500,7 +518,7 @@ VPSApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20011$new()
+        returnObject <- InlineResponse20012$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -525,6 +543,34 @@ VPSApi <- R6::R6Class(
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         returnObject <- VpsOrder$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    get_vps_backup = function(id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/vps/{id}/backup"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- QueueResponse$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -618,6 +664,58 @@ VPSApi <- R6::R6Class(
       }
 
     }
+    get_vps_change_hostname = function(id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/vps/{id}/change_hostname"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        # void response, no need to return anything
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    get_vps_change_root_password = function(id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/vps/{id}/change_root_password"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        # void response, no need to return anything
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
     get_vps_change_timezone = function(id, ...){
       args <- list(...)
       queryParams <- list()
@@ -667,6 +765,32 @@ VPSApi <- R6::R6Class(
         returnObject <- Vps$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    get_vps_insert_cd = function(id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/vps/{id}/insert_cd"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        # void response, no need to return anything
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         Response$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
@@ -747,6 +871,32 @@ VPSApi <- R6::R6Class(
         returnObject <- VpsTemplatesList$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    get_vps_reset_password = function(id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/vps/{id}/reset_password"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        # void response, no need to return anything
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
         Response$new("API client error", resp)
       } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
@@ -907,34 +1057,6 @@ VPSApi <- R6::R6Class(
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         returnObject <- SuccessTextResponse$new()
-        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
-        Response$new(returnObject, resp)
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
-    post_vps_backup = function(id, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      urlPath <- "/vps/{id}/backup"
-      if (!missing(`id`)) {
-        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
-      }
-
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "GET",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- QueueResponse$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -1385,6 +1507,32 @@ VPSApi <- R6::R6Class(
       }
 
     }
+    post_vps_traffic_usage = function(id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/vps/{id}/traffic_usage"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        # void response, no need to return anything
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
     post_vps_view_desktop = function(id, ...){
       args <- list(...)
       queryParams <- list()
@@ -1455,6 +1603,32 @@ VPSApi <- R6::R6Class(
       }
 
     }
+    put_vps_buy_hd_space = function(id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/vps/{id}/buy_hd_space"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        # void response, no need to return anything
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
     update_vps_info = function(id, ...){
       args <- list(...)
       queryParams <- list()
@@ -1501,7 +1675,7 @@ VPSApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20022$new()
+        returnObject <- InlineResponse20024$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

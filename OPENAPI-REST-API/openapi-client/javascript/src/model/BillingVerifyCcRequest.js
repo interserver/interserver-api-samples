@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BillingVerifyCcRequest model module.
  * @module model/BillingVerifyCcRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BillingVerifyCcRequest {
     /**

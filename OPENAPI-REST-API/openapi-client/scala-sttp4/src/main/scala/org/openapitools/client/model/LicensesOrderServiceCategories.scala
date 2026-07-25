@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class LicensesOrderServiceCategories(
   LicensesOrderServiceCategories509: Option[LicensesOrderServiceCategories509] = None
 )
-

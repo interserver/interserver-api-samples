@@ -6,7 +6,8 @@ import io.swagger.model.*;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse2003;
+import io.swagger.model.FloatingIpOrderRequest;
+import io.swagger.model.InlineResponse2004;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -23,7 +24,7 @@ import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 
 public abstract class FloatingIpsApiService {
-    public abstract Response addFloatingIp(SecurityContext securityContext) throws NotFoundException;
+    public abstract Response addFloatingIp(FloatingIpOrderRequest body,SecurityContext securityContext) throws NotFoundException;
     public abstract Response floatingIpsCancel(Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response getFloatingIpInfo(Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response getFloatingIpInvoices(Integer id,SecurityContext securityContext) throws NotFoundException;
@@ -32,6 +33,6 @@ public abstract class FloatingIpsApiService {
     public abstract Response getNewFloatingIp(SecurityContext securityContext) throws NotFoundException;
     public abstract Response postFloatingIpsChangeIp(String ip,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response postFloatingIpsChangeIp(IpObject body,Integer id,SecurityContext securityContext) throws NotFoundException;
-    public abstract Response putFloatingIps(SecurityContext securityContext) throws NotFoundException;
+    public abstract Response putFloatingIps(FloatingIpOrderRequest body,SecurityContext securityContext) throws NotFoundException;
     public abstract Response updateFloatingIpInfo(String id,SecurityContext securityContext) throws NotFoundException;
 }

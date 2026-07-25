@@ -11,4 +11,8 @@
 |**addons** | [**QuickserverAddons**](QuickserverAddons.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

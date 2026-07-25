@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The HomeDetailsModulesLicenses model module.
  * @module model/HomeDetailsModulesLicenses
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeDetailsModulesLicenses {
     /**

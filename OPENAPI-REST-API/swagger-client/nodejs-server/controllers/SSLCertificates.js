@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var SSLCertificates = require('../service/SSLCertificatesService');
 
-module.exports.addSsl = function addSsl (req, res, next) {
-  SSLCertificates.addSsl()
+module.exports.addSsl = function addSsl (req, res, next, body) {
+  SSLCertificates.addSsl(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -63,8 +63,8 @@ module.exports.getSslWelcomeEmail = function getSslWelcomeEmail (req, res, next,
     });
 };
 
-module.exports.putSsl = function putSsl (req, res, next) {
-  SSLCertificates.putSsl()
+module.exports.putSsl = function putSsl (req, res, next, body) {
+  SSLCertificates.putSsl(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

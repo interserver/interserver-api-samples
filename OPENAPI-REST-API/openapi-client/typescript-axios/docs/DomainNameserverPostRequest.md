@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainNameserverPostRequest } from './api';
+import { DomainNameserverPostRequest } from '@interserver/myadmin-client';
 
 const instance: DomainNameserverPostRequest = {
     name,

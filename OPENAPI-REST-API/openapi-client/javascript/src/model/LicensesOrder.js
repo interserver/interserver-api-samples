@@ -19,7 +19,7 @@ import LicensesOrderServiceTypes from './LicensesOrderServiceTypes';
 /**
  * The LicensesOrder model module.
  * @module model/LicensesOrder
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicensesOrder {
     /**

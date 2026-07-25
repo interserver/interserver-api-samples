@@ -1,86 +1,86 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for PostWebsiteMigrationRequest
 void main() {
-  final instance = PostWebsiteMigrationRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final PostWebsiteMigrationRequest? instance = /* PostWebsiteMigrationRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(PostWebsiteMigrationRequest, () {
     // URL of the customer's current hosting portal.
-    // String custPortal
+    // Optional<String?> custPortal
     test('to test the property `custPortal`', () async {
       // TODO
     });
 
     // Registered email address at the current host.
-    // String regEmail
+    // Optional<String?> regEmail
     test('to test the property `regEmail`', () async {
       // TODO
     });
 
     // Password for the current hosting account.
-    // String password
+    // Optional<String?> password
     test('to test the property `password`', () async {
       // TODO
     });
 
     // URL of the current control panel.
-    // String ctrlPanel
+    // Optional<String?> ctrlPanel
     test('to test the property `ctrlPanel`', () async {
       // TODO
     });
 
     // FTP username at the current host.
-    // String ftpUsername
+    // Optional<String?> ftpUsername
     test('to test the property `ftpUsername`', () async {
       // TODO
     });
 
     // FTP password at the current host.
-    // String ftpPassword
+    // Optional<String?> ftpPassword
     test('to test the property `ftpPassword`', () async {
       // TODO
     });
 
     // Information about site traffic during migration.
-    // String siteBusyMig
+    // Optional<String?> siteBusyMig
     test('to test the property `siteBusyMig`', () async {
       // TODO
     });
 
     // Special requirements for the migration.
-    // String splReqMig
+    // Optional<String?> splReqMig
     test('to test the property `splReqMig`', () async {
       // TODO
     });
 
     // Whether domain registration assistance is needed.
-    // String domainReg
+    // Optional<String?> domainReg
     test('to test the property `domainReg`', () async {
       // TODO
     });
 
     // Data migration timing preference.
-    // String dataMig
+    // Optional<String?> dataMig
     test('to test the property `dataMig`', () async {
       // TODO
     });
 
     // Domain registrar portal URL.
-    // String domainRegPortal
+    // Optional<String?> domainRegPortal
     test('to test the property `domainRegPortal`', () async {
       // TODO
     });
 
     // Email for the domain registrar account.
-    // String domainRegEmail
+    // Optional<String?> domainRegEmail
     test('to test the property `domainRegEmail`', () async {
       // TODO
     });
 
     // Password for the domain registrar account.
-    // String domainRegPassword
+    // Optional<String?> domainRegPassword
     test('to test the property `domainRegPassword`', () async {
       // TODO
     });

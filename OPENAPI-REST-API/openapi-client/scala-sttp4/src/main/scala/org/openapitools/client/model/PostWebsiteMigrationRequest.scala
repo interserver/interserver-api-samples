@@ -40,4 +40,3 @@ case class PostWebsiteMigrationRequest(
   /* Password for the domain registrar account. */
   domainRegPassword: Option[String] = None
 )
-

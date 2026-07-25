@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerOrderCpLi();
+    instance = new InterserverApiClient.ServerOrderCpLi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('ServerOrderCpLi', function() {
     it('should create an instance of ServerOrderCpLi', function() {
       // uncomment below and update the code to test ServerOrderCpLi
-      //var instance = new InterServerManagementApi.ServerOrderCpLi();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerOrderCpLi);
+      //var instance = new InterserverApiClient.ServerOrderCpLi();
+      //expect(instance).to.be.a(InterserverApiClient.ServerOrderCpLi);
     });
 
     it('should have the property _9 (base name: "9")', function() {
       // uncomment below and update the code to test the property _9
-      //var instance = new InterServerManagementApi.ServerOrderCpLi();
+      //var instance = new InterserverApiClient.ServerOrderCpLi();
       //expect(instance).to.be();
     });
 

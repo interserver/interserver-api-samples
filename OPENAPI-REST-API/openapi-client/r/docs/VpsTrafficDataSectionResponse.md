@@ -1,4 +1,4 @@
-# openapi::VpsTrafficDataSectionResponse
+# interserverapi::VpsTrafficDataSectionResponse
 
 VPS Traffic Data Section Response
 

@@ -1,38 +1,38 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainRow
 void main() {
-  final instance = DomainRowBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainRow? instance = /* DomainRow(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainRow, () {
     // The ID number of the domain in our billing system.
-    // String domainId
+    // Optional<String?> domainId
     test('to test the property `domainId`', () async {
       // TODO
     });
 
     // The hostname of the domain.
-    // String domainHostname
+    // Optional<String?> domainHostname
     test('to test the property `domainHostname`', () async {
       // TODO
     });
 
     // The expiration date of the domain.
-    // String domainExpireDate
+    // Optional<String?> domainExpireDate
     test('to test the property `domainExpireDate`', () async {
       // TODO
     });
 
     // The cost of the domain.
-    // String cost
+    // Optional<String?> cost
     test('to test the property `cost`', () async {
       // TODO
     });
 
     // The billing / registration status of the domain.
-    // String domainStatus
+    // Optional<String?> domainStatus
     test('to test the property `domainStatus`', () async {
       // TODO
     });

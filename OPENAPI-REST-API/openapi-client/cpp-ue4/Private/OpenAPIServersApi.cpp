@@ -430,7 +430,7 @@ void OpenAPIServersApi::OnPostServerReverseDnsResponse(FHttpRequestPtr HttpReque
 	Delegate.ExecuteIfBound(Response);
 }
 
-FHttpRequestPtr OpenAPIServersApi::PutServers(const PutServersRequest& Request, const FPutServersDelegate& Delegate /*= FPutServersDelegate()*/) const
+FHttpRequestPtr OpenAPIServersApi::ServerBulkIpmiPowerGet(const ServerBulkIpmiPowerGetRequest& Request, const FServerBulkIpmiPowerGetDelegate& Delegate /*= FServerBulkIpmiPowerGetDelegate()*/) const
 {
 	if (!IsValid())
 		return nullptr;
@@ -445,14 +445,14 @@ FHttpRequestPtr OpenAPIServersApi::PutServers(const PutServersRequest& Request, 
 
 	Request.SetupHttpRequest(HttpRequest);
 
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIServersApi::OnPutServersResponse, Delegate);
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIServersApi::OnServerBulkIpmiPowerGetResponse, Delegate);
 	HttpRequest->ProcessRequest();
 	return HttpRequest;
 }
 
-void OpenAPIServersApi::OnPutServersResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPutServersDelegate Delegate) const
+void OpenAPIServersApi::OnServerBulkIpmiPowerGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FServerBulkIpmiPowerGetDelegate Delegate) const
 {
-	PutServersResponse Response;
+	ServerBulkIpmiPowerGetResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }

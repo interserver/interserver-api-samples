@@ -19,7 +19,7 @@ public class InlineResponse20017   {
   @Schema(example = "true", description = "")
   private Boolean success = null;
   
-  @Schema(example = "Filter is deleted.", description = "")
+  @Schema(example = "Firewall Rule has been deleted.", description = "")
   private String text = null;
  /**
    * Get success

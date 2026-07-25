@@ -1,4 +1,4 @@
-# openapi::BackupClientLink
+# interserverapi::BackupClientLink
 
 A navigation link for backup service actions in the client portal.
 

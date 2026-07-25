@@ -30,12 +30,14 @@ local openapiclient_mail_schema = require "openapiclient.model.mail_schema"
 local openapiclient_mail_stats_type = require "openapiclient.model.mail_stats_type"
 local openapiclient_service_order_post_response = require "openapiclient.model.service_order_post_response"
 local openapiclient_success_text_response = require "openapiclient.model.success_text_response"
+local openapiclient_delete_mail_alert_request = require "openapiclient.model.delete_mail_alert_request"
 local openapiclient_deny_rule_new = require "openapiclient.model.deny_rule_new"
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
 local openapiclient_mail_cancel_200_response = require "openapiclient.model.mail_cancel_200_response"
 local openapiclient_mail_alert_request = require "openapiclient.model.mail_alert_request"
 local openapiclient_mail_alert_update_request = require "openapiclient.model.mail_alert_update_request"
 local openapiclient_mail_delist_request = require "openapiclient.model.mail_delist_request"
+local openapiclient_mail_order_request = require "openapiclient.model.mail_order_request"
 local openapiclient_send_mail = require "openapiclient.model.send_mail"
 local openapiclient_send_mail_adv = require "openapiclient.model.send_mail_adv"
 local openapiclient_view_mail_log_start_date_parameter = require "openapiclient.model.view_mail_log_start_date_parameter"
@@ -66,7 +68,7 @@ local function new_mail_api(authority, basePath, schemes)
 	}, mail_api_mt)
 end
 
-function mail_api:add_mail()
+function mail_api:add_mail(mail_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -77,9 +79,15 @@ function mail_api:add_mail()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "POST")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(mail_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -240,20 +248,26 @@ function mail_api:create_mail_alert(id, mail_alert_request)
 	end
 end
 
-function mail_api:delete_mail_alert(id, alert_id)
+function mail_api:delete_mail_alert(id, delete_mail_alert_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
-		path = string.format("%s/mail/%s/alerts?alert_id=%s",
-			self.basePath, id, http_util.encodeURIComponent(alert_id));
+		path = string.format("%s/mail/%s/alerts",
+			self.basePath, id);
 	})
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "DELETE")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json", "multipart/form-data" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(delete_mail_alert_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -1123,7 +1137,7 @@ function mail_api:post_mail_delist(id, mail_delist_request)
 	end
 end
 
-function mail_api:put_mail()
+function mail_api:put_mail(mail_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -1134,9 +1148,15 @@ function mail_api:put_mail()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "PUT")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(mail_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -1443,6 +1463,66 @@ function mail_api:update_mail_info(id)
 			return nil, err3
 		end
 		return openapiclient_success_text_response.cast(result), headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
+function mail_api:update_rule(id, rule, deny_rule_new)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/mail/%s/rules/%s",
+			self.basePath, id, rule);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "PUT")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json", "multipart/form-data" }
+	req.headers:upsert("accept", "application/json")
+
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(deny_rule_new))
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_generic_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then

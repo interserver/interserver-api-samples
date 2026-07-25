@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServiceType
 void main() {
-  final instance = ServiceTypeBuilder();
-  // TODO add properties to the builder and call build()
+  final ServiceType? instance = /* ServiceType(...) */ null;
+  // TODO add properties to the entity
 
   group(ServiceType, () {
     // int stId

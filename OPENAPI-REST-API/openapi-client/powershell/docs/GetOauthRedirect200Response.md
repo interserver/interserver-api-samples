@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetOauthRedirect200Response = Initialize-PSOpenAPIToolsGetOauthRedirect200Response  -RedirectUrl null
+$GetOauthRedirect200Response = Initialize-InterserverApiGetOauthRedirect200Response  -RedirectUrl null
 ```
 
 - Convert the resource to JSON

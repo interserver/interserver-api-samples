@@ -109,7 +109,7 @@ static bool addLicenseProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 }
 
 static bool addLicenseHelper(char * accessToken,
-	
+	std::shared_ptr<LicenseOrderRequest> licenseOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -129,6 +129,19 @@ static bool addLicenseHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("LicenseOrderRequest")) {
+		node = converttoJson(&licenseOrderRequest, "LicenseOrderRequest", "");
+	}
+	
+	char *jsonStr =  licenseOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/licenses/order");
 	int pos;
@@ -180,22 +193,22 @@ static bool addLicenseHelper(char * accessToken,
 
 
 bool LicensesManager::addLicenseAsync(char * accessToken,
-	
+	std::shared_ptr<LicenseOrderRequest> licenseOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addLicenseHelper(accessToken,
-	
+	licenseOrderRequest, 
 	handler, userData, true);
 }
 
 bool LicensesManager::addLicenseSync(char * accessToken,
-	
+	std::shared_ptr<LicenseOrderRequest> licenseOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addLicenseHelper(accessToken,
-	
+	licenseOrderRequest, 
 	handler, userData, false);
 }
 
@@ -648,136 +661,6 @@ bool LicensesManager::getLicenseListSync(char * accessToken,
 {
 	return getLicenseListHelper(accessToken,
 	
-	handler, userData, false);
-}
-
-static bool getLicenseOrderCatTagInfoProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-		handler(error, userData);
-		return true;
-
-
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		handler(error, userData);
-		return false;
-	}
-}
-
-static bool getLicenseOrderCatTagInfoHelper(char * accessToken,
-	std::string catTag, 
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/licenses/order/{catTag}");
-	int pos;
-
-	string s_catTag("{");
-	s_catTag.append("catTag");
-	s_catTag.append("}");
-	pos = url.find(s_catTag);
-	url.erase(pos, s_catTag.length());
-	url.insert(pos, stringify(&catTag, "std::string"));
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("GET");
-
-	if(strcmp("PUT", "GET") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(LicensesManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = getLicenseOrderCatTagInfoProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_free_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (LicensesManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getLicenseOrderCatTagInfoProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __LicensesManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool LicensesManager::getLicenseOrderCatTagInfoAsync(char * accessToken,
-	std::string catTag, 
-	
-	void(* handler)(Error, void* ) , void* userData)
-{
-	return getLicenseOrderCatTagInfoHelper(accessToken,
-	catTag, 
-	handler, userData, true);
-}
-
-bool LicensesManager::getLicenseOrderCatTagInfoSync(char * accessToken,
-	std::string catTag, 
-	
-	void(* handler)(Error, void* ) , void* userData)
-{
-	return getLicenseOrderCatTagInfoHelper(accessToken,
-	catTag, 
 	handler, userData, false);
 }
 
@@ -1451,7 +1334,7 @@ static bool putLicensesProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool putLicensesHelper(char * accessToken,
-	
+	std::shared_ptr<LicenseOrderRequest> licenseOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -1471,6 +1354,19 @@ static bool putLicensesHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("LicenseOrderRequest")) {
+		node = converttoJson(&licenseOrderRequest, "LicenseOrderRequest", "");
+	}
+	
+	char *jsonStr =  licenseOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/licenses/order");
 	int pos;
@@ -1522,22 +1418,22 @@ static bool putLicensesHelper(char * accessToken,
 
 
 bool LicensesManager::putLicensesAsync(char * accessToken,
-	
+	std::shared_ptr<LicenseOrderRequest> licenseOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putLicensesHelper(accessToken,
-	
+	licenseOrderRequest, 
 	handler, userData, true);
 }
 
 bool LicensesManager::putLicensesSync(char * accessToken,
-	
+	std::shared_ptr<LicenseOrderRequest> licenseOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putLicensesHelper(accessToken,
-	
+	licenseOrderRequest, 
 	handler, userData, false);
 }
 

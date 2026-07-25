@@ -17,7 +17,7 @@ import ScrubIpFilterTypesFiltersValue from './ScrubIpFilterTypesFiltersValue';
 /**
  * The ScrubIpFilterTypes model module.
  * @module model/ScrubIpFilterTypes
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ScrubIpFilterTypes {
     /**

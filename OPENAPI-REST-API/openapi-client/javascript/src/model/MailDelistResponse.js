@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailDelistResponse model module.
  * @module model/MailDelistResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailDelistResponse {
     /**

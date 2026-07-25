@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
+**_id** | **String** |  | [optional] 
 **shortDesc** | **String** |  | [optional] 
 **longDesc** | **String** |  | [optional] 
 **osType** | **String** |  | [optional] 

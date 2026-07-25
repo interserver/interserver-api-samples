@@ -1,4 +1,4 @@
-# openapi::HomeServicesLicensesLinks
+# interserverapi::HomeServicesLicensesLinks
 
 Map of license service IDs to their IP addresses for the account dashboard.
 

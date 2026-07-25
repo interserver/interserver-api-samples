@@ -24,4 +24,3 @@ case class QuickserverOrderServerDetails381(
   /* Cost of the server. */
   cost: Option[String] = None
 )
-

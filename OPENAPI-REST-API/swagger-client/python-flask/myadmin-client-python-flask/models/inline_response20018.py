@@ -6,9 +6,6 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from myadmin-client-python-flask.models.base_model_ import Model
-from myadmin-client-python-flask.models.inline_response20018_ips import InlineResponse20018Ips  # noqa: F401,E501
-from myadmin-client-python-flask.models.inline_response20018_package_costs import InlineResponse20018PackageCosts  # noqa: F401,E501
-from myadmin-client-python-flask.models.inline_response20018_service_types import InlineResponse20018ServiceTypes  # noqa: F401,E501
 from myadmin-client-python-flask import util
 
 
@@ -17,30 +14,25 @@ class InlineResponse20018(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, package_costs: InlineResponse20018PackageCosts=None, service_types: List[InlineResponse20018ServiceTypes]=None, ips: List[InlineResponse20018Ips]=None):  # noqa: E501
+    def __init__(self, success: bool=None, text: str=None):  # noqa: E501
         """InlineResponse20018 - a model defined in Swagger
 
-        :param package_costs: The package_costs of this InlineResponse20018.  # noqa: E501
-        :type package_costs: InlineResponse20018PackageCosts
-        :param service_types: The service_types of this InlineResponse20018.  # noqa: E501
-        :type service_types: List[InlineResponse20018ServiceTypes]
-        :param ips: The ips of this InlineResponse20018.  # noqa: E501
-        :type ips: List[InlineResponse20018Ips]
+        :param success: The success of this InlineResponse20018.  # noqa: E501
+        :type success: bool
+        :param text: The text of this InlineResponse20018.  # noqa: E501
+        :type text: str
         """
         self.swagger_types = {
-            'package_costs': InlineResponse20018PackageCosts,
-            'service_types': List[InlineResponse20018ServiceTypes],
-            'ips': List[InlineResponse20018Ips]
+            'success': bool,
+            'text': str
         }
 
         self.attribute_map = {
-            'package_costs': 'packageCosts',
-            'service_types': 'serviceTypes',
-            'ips': 'ips'
+            'success': 'success',
+            'text': 'text'
         }
-        self._package_costs = package_costs
-        self._service_types = service_types
-        self._ips = ips
+        self._success = success
+        self._text = text
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20018':
@@ -54,64 +46,43 @@ class InlineResponse20018(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def package_costs(self) -> InlineResponse20018PackageCosts:
-        """Gets the package_costs of this InlineResponse20018.
+    def success(self) -> bool:
+        """Gets the success of this InlineResponse20018.
 
 
-        :return: The package_costs of this InlineResponse20018.
-        :rtype: InlineResponse20018PackageCosts
+        :return: The success of this InlineResponse20018.
+        :rtype: bool
         """
-        return self._package_costs
+        return self._success
 
-    @package_costs.setter
-    def package_costs(self, package_costs: InlineResponse20018PackageCosts):
-        """Sets the package_costs of this InlineResponse20018.
+    @success.setter
+    def success(self, success: bool):
+        """Sets the success of this InlineResponse20018.
 
 
-        :param package_costs: The package_costs of this InlineResponse20018.
-        :type package_costs: InlineResponse20018PackageCosts
+        :param success: The success of this InlineResponse20018.
+        :type success: bool
         """
 
-        self._package_costs = package_costs
+        self._success = success
 
     @property
-    def service_types(self) -> List[InlineResponse20018ServiceTypes]:
-        """Gets the service_types of this InlineResponse20018.
+    def text(self) -> str:
+        """Gets the text of this InlineResponse20018.
 
 
-        :return: The service_types of this InlineResponse20018.
-        :rtype: List[InlineResponse20018ServiceTypes]
+        :return: The text of this InlineResponse20018.
+        :rtype: str
         """
-        return self._service_types
+        return self._text
 
-    @service_types.setter
-    def service_types(self, service_types: List[InlineResponse20018ServiceTypes]):
-        """Sets the service_types of this InlineResponse20018.
-
-
-        :param service_types: The service_types of this InlineResponse20018.
-        :type service_types: List[InlineResponse20018ServiceTypes]
-        """
-
-        self._service_types = service_types
-
-    @property
-    def ips(self) -> List[InlineResponse20018Ips]:
-        """Gets the ips of this InlineResponse20018.
+    @text.setter
+    def text(self, text: str):
+        """Sets the text of this InlineResponse20018.
 
 
-        :return: The ips of this InlineResponse20018.
-        :rtype: List[InlineResponse20018Ips]
-        """
-        return self._ips
-
-    @ips.setter
-    def ips(self, ips: List[InlineResponse20018Ips]):
-        """Sets the ips of this InlineResponse20018.
-
-
-        :param ips: The ips of this InlineResponse20018.
-        :type ips: List[InlineResponse20018Ips]
+        :param text: The text of this InlineResponse20018.
+        :type text: str
         """
 
-        self._ips = ips
+        self._text = text

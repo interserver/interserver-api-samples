@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetScrubIpDetails200ResponseExtraInfoTablesScrubIps = Initialize-PSOpenAPIToolsGetScrubIpDetails200ResponseExtraInfoTablesScrubIps  -Title null `
+$GetScrubIpDetails200ResponseExtraInfoTablesScrubIps = Initialize-InterserverApiGetScrubIpDetails200ResponseExtraInfoTablesScrubIps  -Title null `
  -Rows null
 ```
 

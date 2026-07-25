@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailSchemaExtraInfoTables = Initialize-PSOpenAPIToolsMailSchemaExtraInfoTables  -Mail null `
+$MailSchemaExtraInfoTables = Initialize-InterserverApiMailSchemaExtraInfoTables  -Mail null `
  -Tutorials null
 ```
 

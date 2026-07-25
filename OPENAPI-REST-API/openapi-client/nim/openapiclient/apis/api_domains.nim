@@ -29,6 +29,7 @@ import ../models/model_domain_nameserver_get_response
 import ../models/model_domain_nameserver_post_request
 import ../models/model_domain_nameserver_put_request
 import ../models/model_domain_order
+import ../models/model_domain_order_request
 import ../models/model_domain_row
 import ../models/model_domain_search_response
 import ../models/model_domain_whois_privacy_request
@@ -52,15 +53,16 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addDomain*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
-  ## Place Domain Order
+proc addDomain*(httpClient: HttpClient, domainOrderRequest: DomainOrderRequest): (Option[ServiceOrderPostResponse], Response) =
+  ## Place a new domain registration or transfer order, generate billing invoice
+  httpClient.headers["Content-Type"] = "application/json"
 
-  let response = httpClient.post(basepath & "/domains/order")
+  let response = httpClient.post(basepath & "/domains/order", $(%domainOrderRequest))
   constructResult[ServiceOrderPostResponse](response)
 
 
 proc addDomainDnssec*(httpClient: HttpClient, id: int, domainDnssecRequest: DomainDnssecRequest): (Option[SuccessTextResponse], Response) =
-  ## Add Domain DNSSEC Records
+  ## Register DNSSEC DS records on the domain at OpenSRS
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/domains/{id}/dnssec", $(%domainDnssecRequest))
@@ -68,7 +70,7 @@ proc addDomainDnssec*(httpClient: HttpClient, id: int, domainDnssecRequest: Doma
 
 
 proc addDomainNameserver*(httpClient: HttpClient, id: int, domainNameserverPostRequest: DomainNameserverPostRequest): (Option[TextResponse], Response) =
-  ## Add Registered Nameserver
+  ## Register a new nameserver host with glue IP at the registry (registered nameserver)
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/domains/{id}/nameservers", $(%domainNameserverPostRequest))
@@ -76,24 +78,21 @@ proc addDomainNameserver*(httpClient: HttpClient, id: int, domainNameserverPostR
 
 
 proc cancelDomain*(httpClient: HttpClient, id: int): (Option[CancelDomain_200_response], Response) =
-  ## Cancel Domain Order
+  ## Cancel a domain order in the billing system to stop auto-renewals
 
   let response = httpClient.delete(basepath & fmt"/domains/{id}")
   constructResult[CancelDomain_200_response](response)
 
 
-proc deleteDomainDnssec*(httpClient: HttpClient, id: int, action: string): (Option[SuccessTextResponse], Response) =
-  ## Remove Domain DNSSEC Records
-  var query_params_list: seq[(string, string)] = @[]
-  query_params_list.add(("action", $action))
-  let url_encoded_query_params = encodeQuery(query_params_list)
+proc deleteDomainDnssec*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
+  ## Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
 
-  let response = httpClient.delete(basepath & fmt"/domains/{id}/dnssec" & "?" & url_encoded_query_params)
+  let response = httpClient.delete(basepath & fmt"/domains/{id}/dnssec")
   constructResult[SuccessTextResponse](response)
 
 
 proc deleteDomainNameserver*(httpClient: HttpClient, id: int, index: int): (Option[TextResponse], Response) =
-  ## Delete Registered Nameserver
+  ## Remove one registered nameserver glue record from the domain
   var query_params_list: seq[(string, string)] = @[]
   query_params_list.add(("index", $index))
   let url_encoded_query_params = encodeQuery(query_params_list)
@@ -103,151 +102,147 @@ proc deleteDomainNameserver*(httpClient: HttpClient, id: int, index: int): (Opti
 
 
 proc getDomainContact*(httpClient: HttpClient, id: int): (Option[DomainContactDetails], Response) =
-  ## Get Domain Contact Details
+  ## Read the current registrant/admin/tech/billing contact field set for a domain
 
   let response = httpClient.get(basepath & fmt"/domains/{id}/contact")
   constructResult[DomainContactDetails](response)
 
 
 proc getDomainDnssec*(httpClient: HttpClient, id: int): (Option[seq[DomainDnssecRecords_inner]], Response) =
-  ## Get Domain DNSSEC Records
+  ## Read the DNSSEC DS record set currently registered with the registrar
 
   let response = httpClient.get(basepath & fmt"/domains/{id}/dnssec")
   constructResult[seq[DomainDnssecRecords_inner]](response)
 
 
 proc getDomainInfo*(httpClient: HttpClient, id: int): (Option[Domain], Response) =
-  ## Get Domain Order
+  ## Read full billing, registrar, and service detail for one domain
 
   let response = httpClient.get(basepath & fmt"/domains/{id}")
   constructResult[Domain](response)
 
 
 proc getDomainInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get Domain Invoices
+  ## List all billing invoices scoped to one domain order
 
   let response = httpClient.get(basepath & fmt"/domains/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getDomainLookup*(httpClient: HttpClient, name: string): (Option[DomainLookupResponse], Response) =
-  ## Lookup Domain Availability and Pricing
+  ## Check availability, premium status, and pricing for a specific domain
 
   let response = httpClient.get(basepath & fmt"/domains/lookup/{name}")
   constructResult[DomainLookupResponse](response)
 
 
 proc getDomainNameservers*(httpClient: HttpClient, id: int): (Option[seq[DomainNameserverGetResponse_inner]], Response) =
-  ## List Registered Nameservers
+  ## List registered nameserver hosts and glue IP addresses for a domain
 
   let response = httpClient.get(basepath & fmt"/domains/{id}/nameservers")
   constructResult[seq[DomainNameserverGetResponse_inner]](response)
 
 
-proc getDomainOrderFields*(httpClient: HttpClient, domain: string, regType: string): Response =
-  ## Get Domain Order Fields
-  httpClient.get(basepath & fmt"/domains/order/{domain}/{regType}")
-
-
-
-proc getDomainOrderSearchResults*(httpClient: HttpClient, domain: string): Response =
-  ## Get Domain Order Search Results
-  httpClient.get(basepath & fmt"/domains/order/{domain}")
-
-
-
 proc getDomainRenewal*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Start Domain Renewal Flow
+  ## Read renewal pricing, expiry, and whether a renewal invoice already exists
 
   let response = httpClient.get(basepath & fmt"/domains/{id}/renew")
   constructResult[SuccessTextResponse](response)
 
 
 proc getDomainSearch*(httpClient: HttpClient, name: string): (Option[DomainSearchResponse], Response) =
-  ## Search Domain Suggestions
+  ## Get registrar-suggested domain alternatives and bulk availability for a search term
 
   let response = httpClient.get(basepath & fmt"/domains/search/{name}")
   constructResult[DomainSearchResponse](response)
 
 
 proc getDomainTransfer*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Start Domain Transfer Flow
+  ## Read OpenSRS transfer status for an in-progress domain transfer order
 
   let response = httpClient.get(basepath & fmt"/domains/{id}/transfer")
   constructResult[SuccessTextResponse](response)
 
 
 proc getDomainWhoisPrivacy*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Get Whois Privacy Status
+  ## Read Whois privacy availability, current state, and add-on pricing for a domain
 
   let response = httpClient.get(basepath & fmt"/domains/{id}/whois")
   constructResult[SuccessTextResponse](response)
 
 
 proc getDomainsList*(httpClient: HttpClient): (Option[seq[DomainRow]], Response) =
-  ## List Domain Orders
+  ## List every domain registration on the account with billing and registration metadata
 
   let response = httpClient.get(basepath & "/domains")
   constructResult[seq[DomainRow]](response)
 
 
 proc getDomainsWelcomeEmail*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Resend Domain Welcome Email
+  ## Resend the domain welcome email with registration details and management instructions
 
   let response = httpClient.get(basepath & fmt"/domains/{id}/welcome_email")
   constructResult[SuccessTextResponse](response)
 
 
 proc getNewDomain*(httpClient: HttpClient): (Option[DomainOrder], Response) =
-  ## Get Domain Ordering Information
+  ## Read the buyable domain TLD service catalog and Whois privacy pricing
 
   let response = httpClient.get(basepath & "/domains/order")
   constructResult[DomainOrder](response)
 
 
-proc patchDomains*(httpClient: HttpClient): Response =
-  ## Validate Domain Order
-  httpClient.patch(basepath & "/domains/order")
+proc patchDomains*(httpClient: HttpClient, domainOrderRequest: DomainOrderRequest): Response =
+  ## Validate posted domain-order field values before committing — dry run
+  httpClient.headers["Content-Type"] = "application/json"
+  httpClient.patch(basepath & "/domains/order", $(%domainOrderRequest))
 
 
 
 proc postDomainRenewal*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Request Domain Renewal
+  ## Submit a domain renewal request and generate the renewal invoice
 
   let response = httpClient.post(basepath & fmt"/domains/{id}/renew")
   constructResult[SuccessTextResponse](response)
 
 
+proc postDomainSearch*(httpClient: HttpClient, name: string): Response =
+  ## Get the full order form data for a hostname in one round-trip (search → order preview)
+  httpClient.post(basepath & fmt"/domains/search/{name}")
+
+
+
 proc postDomainTransfer*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Request Domain Transfer
+  ## Re-poll OpenSRS transfer status for a domain order via POST
 
   let response = httpClient.post(basepath & fmt"/domains/{id}/transfer")
   constructResult[SuccessTextResponse](response)
 
 
-proc putDomains*(httpClient: HttpClient): Response =
-  ## Domain Order Search
-  httpClient.put(basepath & "/domains/order")
+proc putDomains*(httpClient: HttpClient, domainOrderRequest: DomainOrderRequest): Response =
+  ## Preview per-TLD field requirements for a domain order — no commit
+  httpClient.headers["Content-Type"] = "application/json"
+  httpClient.put(basepath & "/domains/order", $(%domainOrderRequest))
 
 
 
 proc updateDomainContact*(httpClient: HttpClient, id: int, domainContactDetails: DomainContactDetails): (Option[SuccessTextResponse], Response) =
-  ## Update Domain Contact Details
+  ## Update registrant/admin contact details and push them to OpenSRS
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/domains/{id}/contact", $(%domainContactDetails))
   constructResult[SuccessTextResponse](response)
 
 
-proc updateDomainInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Update Domain Order
+proc updateDomainInfo*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
+  ## POST mutation hook for the domain detail page (use dedicated ops where possible)
 
   let response = httpClient.post(basepath & fmt"/domains/{id}")
   constructResult[SuccessTextResponse](response)
 
 
 proc updateDomainNameservers*(httpClient: HttpClient, id: int, domainNameserverPutRequest: DomainNameserverPutRequest): (Option[TextResponse], Response) =
-  ## Replace Nameserver Set
+  ## Replace the full authoritative-nameserver delegation list at the registrar
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.put(basepath & fmt"/domains/{id}/nameservers", $(%domainNameserverPutRequest))
@@ -255,7 +250,7 @@ proc updateDomainNameservers*(httpClient: HttpClient, id: int, domainNameserverP
 
 
 proc updateDomainWhoisPrivacy*(httpClient: HttpClient, id: int, domainWhoisPrivacyRequest: DomainWhoisPrivacyRequest): (Option[SuccessTextResponse], Response) =
-  ## Update Whois Privacy
+  ## Order, enable, or cancel the Whois privacy add-on for a domain
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/domains/{id}/whois", $(%domainWhoisPrivacyRequest))

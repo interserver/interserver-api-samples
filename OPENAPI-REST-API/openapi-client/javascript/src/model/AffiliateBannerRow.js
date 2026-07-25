@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AffiliateBannerRow model module.
  * @module model/AffiliateBannerRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AffiliateBannerRow {
     /**

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DownloadQsBackupRequest();
+    instance = new InterserverApiClient.DownloadQsBackupRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('DownloadQsBackupRequest', function() {
     it('should create an instance of DownloadQsBackupRequest', function() {
       // uncomment below and update the code to test DownloadQsBackupRequest
-      //var instance = new InterServerManagementApi.DownloadQsBackupRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.DownloadQsBackupRequest);
+      //var instance = new InterserverApiClient.DownloadQsBackupRequest();
+      //expect(instance).to.be.a(InterserverApiClient.DownloadQsBackupRequest);
     });
 
     it('should have the property file (base name: "file")', function() {
       // uncomment below and update the code to test the property file
-      //var instance = new InterServerManagementApi.DownloadQsBackupRequest();
+      //var instance = new InterserverApiClient.DownloadQsBackupRequest();
       //expect(instance).to.be();
     });
 

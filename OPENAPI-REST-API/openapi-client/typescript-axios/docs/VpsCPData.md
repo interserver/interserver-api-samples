@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsCPData } from './api';
+import { VpsCPData } from '@interserver/myadmin-client';
 
 const instance: VpsCPData = {
     name,

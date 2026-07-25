@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserversCancel200Response } from './api';
+import { QuickserversCancel200Response } from '@interserver/myadmin-client';
 
 const instance: QuickserversCancel200Response = {
     success,

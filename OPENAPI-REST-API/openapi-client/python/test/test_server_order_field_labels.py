@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_field_labels import ServerOrderFieldLabels
+from interserver_api_client.models.server_order_field_labels import ServerOrderFieldLabels
 
 class TestServerOrderFieldLabels(unittest.TestCase):
     """ServerOrderFieldLabels unit test stubs"""
@@ -36,25 +36,25 @@ class TestServerOrderFieldLabels(unittest.TestCase):
         model = ServerOrderFieldLabels()
         if include_optional:
             return ServerOrderFieldLabels(
-                bandwidth = openapi_client.models.server_order_field_label.ServerOrderFieldLabel(
+                bandwidth = interserver_api_client.models.server_order_field_label.ServerOrderFieldLabel(
                     name = 'Bandwidth', 
                     active = 1, ),
-                ips = openapi_client.models.server_order_field_label.ServerOrderFieldLabel(
+                ips = interserver_api_client.models.server_order_field_label.ServerOrderFieldLabel(
                     name = 'Bandwidth', 
                     active = 1, ),
-                os = openapi_client.models.server_order_field_label.ServerOrderFieldLabel(
+                os = interserver_api_client.models.server_order_field_label.ServerOrderFieldLabel(
                     name = 'Bandwidth', 
                     active = 1, ),
-                cp = openapi_client.models.server_order_field_label.ServerOrderFieldLabel(
+                cp = interserver_api_client.models.server_order_field_label.ServerOrderFieldLabel(
                     name = 'Bandwidth', 
                     active = 1, ),
-                raid = openapi_client.models.server_order_field_label.ServerOrderFieldLabel(
+                raid = interserver_api_client.models.server_order_field_label.ServerOrderFieldLabel(
                     name = 'Bandwidth', 
                     active = 1, ),
-                memory = openapi_client.models.server_order_field_label.ServerOrderFieldLabel(
+                memory = interserver_api_client.models.server_order_field_label.ServerOrderFieldLabel(
                     name = 'Bandwidth', 
                     active = 1, ),
-                hd = openapi_client.models.server_order_field_label.ServerOrderFieldLabel(
+                hd = interserver_api_client.models.server_order_field_label.ServerOrderFieldLabel(
                     name = 'Bandwidth', 
                     active = 1, )
             )

@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailCancel200Response
+# InterserverApiClient.MailCancel200Response
 
 ## Properties
 

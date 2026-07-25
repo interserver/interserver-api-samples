@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_info_max_mind_response import AccountInfoMaxMindResponse
+from interserver_api_client.models.account_info_max_mind_response import AccountInfoMaxMindResponse
 
 class TestAccountInfoMaxMindResponse(unittest.TestCase):
     """AccountInfoMaxMindResponse unit test stubs"""

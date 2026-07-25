@@ -114,7 +114,7 @@ ScrubIpFilterTypes <- R6::R6Class(
         self$`success` <- this_object$`success`
       }
       if (!is.null(this_object$`filters`)) {
-        self$`filters` <- ApiClient$new()$deserializeObj(this_object$`filters`, "map(ScrubIpFilterTypesFiltersValue)", loadNamespace("openapi"))
+        self$`filters` <- ApiClient$new()$deserializeObj(this_object$`filters`, "map(ScrubIpFilterTypesFiltersValue)", loadNamespace("interserverapi"))
       }
       self
     },
@@ -138,7 +138,7 @@ ScrubIpFilterTypes <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`success` <- this_object$`success`
-      self$`filters` <- ApiClient$new()$deserializeObj(this_object$`filters`, "map(ScrubIpFilterTypesFiltersValue)", loadNamespace("openapi"))
+      self$`filters` <- ApiClient$new()$deserializeObj(this_object$`filters`, "map(ScrubIpFilterTypesFiltersValue)", loadNamespace("interserverapi"))
       self
     },
 

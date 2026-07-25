@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainNameserverPutRequest
+# InterserverApiClient.DomainNameserverPutRequest
 
 ## Properties
 

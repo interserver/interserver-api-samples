@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerOrderFormValues model module.
  * @module model/ServerOrderFormValues
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderFormValues {
     /**

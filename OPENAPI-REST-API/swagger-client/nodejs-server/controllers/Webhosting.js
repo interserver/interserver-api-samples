@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var Webhosting = require('../service/WebhostingService');
 
-module.exports.addWebsite = function addWebsite (req, res, next) {
-  Webhosting.addWebsite()
+module.exports.addWebsite = function addWebsite (req, res, next, body) {
+  Webhosting.addWebsite(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -163,8 +163,8 @@ module.exports.postWebsitesReverseDns = function postWebsitesReverseDns (req, re
     });
 };
 
-module.exports.putWebsites = function putWebsites (req, res, next) {
-  Webhosting.putWebsites()
+module.exports.putWebsites = function putWebsites (req, res, next, body) {
+  Webhosting.putWebsites(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

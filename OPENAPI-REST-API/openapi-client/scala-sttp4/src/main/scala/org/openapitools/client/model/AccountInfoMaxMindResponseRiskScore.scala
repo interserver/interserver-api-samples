@@ -12,6 +12,31 @@
 package org.openapitools.client.model
 
 
-case class AccountInfoMaxMindResponseRiskScore(
-)
+sealed trait AccountInfoMaxMindResponseRiskScore
 
+object AccountInfoMaxMindResponseRiskScore {
+
+  import org.json4s._
+
+  // oneOf without discriminator - json4s custom serializer
+  implicit object AccountInfoMaxMindResponseRiskScoreSerializer extends Serializer[AccountInfoMaxMindResponseRiskScore] {
+    def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), AccountInfoMaxMindResponseRiskScore] = {
+      case (TypeInfo(clazz, _), json) if classOf[AccountInfoMaxMindResponseRiskScore].isAssignableFrom(clazz) =>
+        // Try each oneOf type in order
+        Extraction.extract[Double](json) match {
+          case x: Double => return x
+          case _ => // continue
+        }
+        Extraction.extract[String](json) match {
+          case x: String => return x
+          case _ => // continue
+        }
+        throw new MappingException(s"Can't convert $json to AccountInfoMaxMindResponseRiskScore")
+    }
+
+    def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+      case x: Double => Extraction.decompose(x)
+      case x: String => Extraction.decompose(x)
+    }
+  }
+}

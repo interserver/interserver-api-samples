@@ -1,4 +1,4 @@
-# SwaggerClient::DomainNameserverGetResponseInner
+# InterserverApiClient::DomainNameserverGetResponseInner
 
 ## Properties
 Name | Type | Description | Notes

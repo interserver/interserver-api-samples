@@ -31,49 +31,25 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20027" /> class.
         /// </summary>
-        /// <param name="bandwidth">bandwidth.</param>
-        /// <param name="ips">ips.</param>
-        /// <param name="os">os.</param>
-        /// <param name="cp">cp.</param>
-        /// <param name="raid">raid.</param>
-        public InlineResponse20027(List<InlineResponse20027Bandwidth> bandwidth = default(List<InlineResponse20027Bandwidth>), List<InlineResponse20027Ips> ips = default(List<InlineResponse20027Ips>), List<InlineResponse20027Os> os = default(List<InlineResponse20027Os>), List<InlineResponse20027Cp> cp = default(List<InlineResponse20027Cp>), List<InlineResponse20027Raid> raid = default(List<InlineResponse20027Raid>))
+        /// <param name="message">message.</param>
+        /// <param name="success">success.</param>
+        public InlineResponse20027(string message = default(string), bool? success = default(bool?))
         {
-            this.bandwidth = bandwidth;
-            this.ips = ips;
-            this.os = os;
-            this.cp = cp;
-            this.raid = raid;
+            this.message = message;
+            this.success = success;
         }
         
         /// <summary>
-        /// Gets or Sets bandwidth
+        /// Gets or Sets message
         /// </summary>
-        [DataMember(Name="bandwidth", EmitDefaultValue=false)]
-        public List<InlineResponse20027Bandwidth> bandwidth { get; set; }
+        [DataMember(Name="message", EmitDefaultValue=false)]
+        public string message { get; set; }
 
         /// <summary>
-        /// Gets or Sets ips
+        /// Gets or Sets success
         /// </summary>
-        [DataMember(Name="ips", EmitDefaultValue=false)]
-        public List<InlineResponse20027Ips> ips { get; set; }
-
-        /// <summary>
-        /// Gets or Sets os
-        /// </summary>
-        [DataMember(Name="os", EmitDefaultValue=false)]
-        public List<InlineResponse20027Os> os { get; set; }
-
-        /// <summary>
-        /// Gets or Sets cp
-        /// </summary>
-        [DataMember(Name="cp", EmitDefaultValue=false)]
-        public List<InlineResponse20027Cp> cp { get; set; }
-
-        /// <summary>
-        /// Gets or Sets raid
-        /// </summary>
-        [DataMember(Name="raid", EmitDefaultValue=false)]
-        public List<InlineResponse20027Raid> raid { get; set; }
+        [DataMember(Name="success", EmitDefaultValue=false)]
+        public bool? success { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,11 +59,8 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20027 {\n");
-            sb.Append("  bandwidth: ").Append(bandwidth).Append("\n");
-            sb.Append("  ips: ").Append(ips).Append("\n");
-            sb.Append("  os: ").Append(os).Append("\n");
-            sb.Append("  cp: ").Append(cp).Append("\n");
-            sb.Append("  raid: ").Append(raid).Append("\n");
+            sb.Append("  message: ").Append(message).Append("\n");
+            sb.Append("  success: ").Append(success).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,34 +96,14 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.bandwidth == input.bandwidth ||
-                    this.bandwidth != null &&
-                    input.bandwidth != null &&
-                    this.bandwidth.SequenceEqual(input.bandwidth)
+                    this.message == input.message ||
+                    (this.message != null &&
+                    this.message.Equals(input.message))
                 ) && 
                 (
-                    this.ips == input.ips ||
-                    this.ips != null &&
-                    input.ips != null &&
-                    this.ips.SequenceEqual(input.ips)
-                ) && 
-                (
-                    this.os == input.os ||
-                    this.os != null &&
-                    input.os != null &&
-                    this.os.SequenceEqual(input.os)
-                ) && 
-                (
-                    this.cp == input.cp ||
-                    this.cp != null &&
-                    input.cp != null &&
-                    this.cp.SequenceEqual(input.cp)
-                ) && 
-                (
-                    this.raid == input.raid ||
-                    this.raid != null &&
-                    input.raid != null &&
-                    this.raid.SequenceEqual(input.raid)
+                    this.success == input.success ||
+                    (this.success != null &&
+                    this.success.Equals(input.success))
                 );
         }
 
@@ -163,16 +116,10 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.bandwidth != null)
-                    hashCode = hashCode * 59 + this.bandwidth.GetHashCode();
-                if (this.ips != null)
-                    hashCode = hashCode * 59 + this.ips.GetHashCode();
-                if (this.os != null)
-                    hashCode = hashCode * 59 + this.os.GetHashCode();
-                if (this.cp != null)
-                    hashCode = hashCode * 59 + this.cp.GetHashCode();
-                if (this.raid != null)
-                    hashCode = hashCode * 59 + this.raid.GetHashCode();
+                if (this.message != null)
+                    hashCode = hashCode * 59 + this.message.GetHashCode();
+                if (this.success != null)
+                    hashCode = hashCode * 59 + this.success.GetHashCode();
                 return hashCode;
             }
         }

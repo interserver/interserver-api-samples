@@ -23,4 +23,3 @@ case class HomeServices(
   servers: Option[HomeServicesServers] = None,
   backups: Option[HomeServicesBackups] = None
 )
-

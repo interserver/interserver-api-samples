@@ -1,4 +1,4 @@
-# InterServerManagementApi.EnableScrub500Response
+# InterserverApiClient.EnableScrub500Response
 
 ## Properties
 

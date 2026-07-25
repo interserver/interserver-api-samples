@@ -24,4 +24,8 @@
 |**websiteServerStatus** | **String** | Server status of the website |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

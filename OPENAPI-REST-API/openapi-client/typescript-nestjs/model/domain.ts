@@ -9,14 +9,14 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { DomainServiceType } from './domainServiceType';
-import { DomainClientLink } from './domainClientLink';
-import { DomainServiceInfo } from './domainServiceInfo';
-import { DomainBillingDetails } from './domainBillingDetails';
-import { DomainBillingExtra } from './domainBillingExtra';
-import { DomainAllInfo } from './domainAllInfo';
-import { BackupExtraInfoTables } from './backupExtraInfoTables';
-import { DomainContactDetails } from './domainContactDetails';
+import { DomainServiceType } from './domain-service-type';
+import { DomainClientLink } from './domain-client-link';
+import { DomainServiceInfo } from './domain-service-info';
+import { DomainBillingDetails } from './domain-billing-details';
+import { DomainBillingExtra } from './domain-billing-extra';
+import { DomainAllInfo } from './domain-all-info';
+import { BackupExtraInfoTables } from './backup-extra-info-tables';
+import { DomainContactDetails } from './domain-contact-details';
 
 
 /**

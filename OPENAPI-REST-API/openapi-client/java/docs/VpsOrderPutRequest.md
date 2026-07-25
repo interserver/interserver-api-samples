@@ -26,9 +26,9 @@ request to validate a vps order
 
 | Name | Value |
 |---- | -----|
-| KVM | &quot;kvm&quot; |
-| HYPERV | &quot;hyperv&quot; |
-| KVMSTORAGE | &quot;kvmstorage&quot; |
+| kvm | &quot;kvm&quot; |
+| hyperv | &quot;hyperv&quot; |
+| kvmstorage | &quot;kvmstorage&quot; |
 
 
 
@@ -36,9 +36,13 @@ request to validate a vps order
 
 | Name | Value |
 |---- | -----|
-| NONE | &quot;none&quot; |
-| CPANEL | &quot;cpanel&quot; |
-| DA | &quot;da&quot; |
+| none | &quot;none&quot; |
+| cpanel | &quot;cpanel&quot; |
+| da | &quot;da&quot; |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ViewTicketResponse();
+    instance = new InterserverApiClient.ViewTicketResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('ViewTicketResponse', function() {
     it('should create an instance of ViewTicketResponse', function() {
       // uncomment below and update the code to test ViewTicketResponse
-      //var instance = new InterServerManagementApi.ViewTicketResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.ViewTicketResponse);
+      //var instance = new InterserverApiClient.ViewTicketResponse();
+      //expect(instance).to.be.a(InterserverApiClient.ViewTicketResponse);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.ViewTicketResponse();
+      //var instance = new InterserverApiClient.ViewTicketResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ticket (base name: "ticket")', function() {
       // uncomment below and update the code to test the property ticket
-      //var instance = new InterServerManagementApi.ViewTicketResponse();
+      //var instance = new InterserverApiClient.ViewTicketResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ticket_custom_fields (base name: "ticket_custom_fields")', function() {
       // uncomment below and update the code to test the property ticket_custom_fields
-      //var instance = new InterServerManagementApi.ViewTicketResponse();
+      //var instance = new InterserverApiClient.ViewTicketResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property ticket_posts (base name: "ticket_posts")', function() {
       // uncomment below and update the code to test the property ticket_posts
-      //var instance = new InterServerManagementApi.ViewTicketResponse();
+      //var instance = new InterserverApiClient.ViewTicketResponse();
       //expect(instance).to.be();
     });
 

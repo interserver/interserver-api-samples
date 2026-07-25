@@ -283,7 +283,7 @@ Home <- R6::R6Class(
         self$`email` <- this_object$`email`
       }
       if (!is.null(this_object$`tickets`)) {
-        self$`tickets` <- ApiClient$new()$deserializeObj(this_object$`tickets`, "array[character]", loadNamespace("openapi"))
+        self$`tickets` <- ApiClient$new()$deserializeObj(this_object$`tickets`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`ticketStatus`)) {
         `ticketstatus_object` <- HomeTicketStatus$new()
@@ -337,7 +337,7 @@ Home <- R6::R6Class(
       self$`balance` <- this_object$`balance`
       self$`full_name` <- this_object$`full_name`
       self$`email` <- this_object$`email`
-      self$`tickets` <- ApiClient$new()$deserializeObj(this_object$`tickets`, "array[character]", loadNamespace("openapi"))
+      self$`tickets` <- ApiClient$new()$deserializeObj(this_object$`tickets`, "array[character]", loadNamespace("interserverapi"))
       self$`ticketStatus` <- HomeTicketStatus$new()$fromJSON(jsonlite::toJSON(this_object$`ticketStatus`, auto_unbox = TRUE, digits = NA))
       self$`ticketStatusView` <- HomeTicketStatusView$new()$fromJSON(jsonlite::toJSON(this_object$`ticketStatusView`, auto_unbox = TRUE, digits = NA))
       self$`details` <- HomeDetails$new()$fromJSON(jsonlite::toJSON(this_object$`details`, auto_unbox = TRUE, digits = NA))

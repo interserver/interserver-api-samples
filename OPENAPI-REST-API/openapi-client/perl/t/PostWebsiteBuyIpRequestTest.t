@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::PostWebsiteBuyIpRequest');
+use_ok('InterServerAPI::Object::PostWebsiteBuyIpRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::PostWebsiteBuyIpRequest->new();
+#my $instance = InterServerAPI::Object::PostWebsiteBuyIpRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::PostWebsiteBuyIpRequest');
+#isa_ok($instance, 'InterServerAPI::Object::PostWebsiteBuyIpRequest');
 
 
 done_testing();

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_client_link import DomainClientLink
+from interserver_api_client.models.domain_client_link import DomainClientLink
 
 class TestDomainClientLink(unittest.TestCase):
     """DomainClientLink unit test stubs"""

@@ -9,8 +9,16 @@ import Foundation
 
 
 open class InlineResponse2007: JSONEncodable {
-    /** Whether the 2FA verification succeeded and the user is now logged in. */
+    /** Whether the user was logged in to an existing account. */
     public var login: Bool?
+    /** Whether a new account was created. */
+    public var signup: Bool?
+    /** Whether the OAuth provider was linked to an existing account. */
+    public var linked: Bool?
+    /** The account ID associated with the OAuth login. */
+    public var accountId: Int32?
+    /** Error code if additional verification is needed (e.g. &#x60;2fa_required&#x60;). */
+    public var errorCode: String?
 
     public init() {}
 
@@ -18,6 +26,10 @@ open class InlineResponse2007: JSONEncodable {
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
         nillableDictionary["login"] = self.login
+        nillableDictionary["signup"] = self.signup
+        nillableDictionary["linked"] = self.linked
+        nillableDictionary["account_id"] = self.accountId?.encodeToJSON()
+        nillableDictionary["error_code"] = self.errorCode
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

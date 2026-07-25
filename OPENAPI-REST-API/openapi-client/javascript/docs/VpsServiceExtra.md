@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsServiceExtra
+# InterserverApiClient.VpsServiceExtra
 
 ## Properties
 

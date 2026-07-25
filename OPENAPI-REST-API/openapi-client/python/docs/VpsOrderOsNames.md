@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_order_os_names import VpsOrderOsNames
+from interserver_api_client.models.vps_order_os_names import VpsOrderOsNames
 
 # TODO update the JSON string below
 json = "{}"

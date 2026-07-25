@@ -1,4 +1,4 @@
-# InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams
+# InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams
 
 ## Properties
 

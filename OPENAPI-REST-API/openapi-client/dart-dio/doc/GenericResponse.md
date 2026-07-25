@@ -1,8 +1,8 @@
-# openapi.model.GenericResponse
+# interserver_api.model.GenericResponse
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

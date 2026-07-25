@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_bandwidth_li import ServerOrderBandwidthLi
+from interserver_api_client.models.server_order_bandwidth_li import ServerOrderBandwidthLi
 
 class TestServerOrderBandwidthLi(unittest.TestCase):
     """ServerOrderBandwidthLi unit test stubs"""
@@ -36,7 +36,7 @@ class TestServerOrderBandwidthLi(unittest.TestCase):
         model = ServerOrderBandwidthLi()
         if include_optional:
             return ServerOrderBandwidthLi(
-                var_15 = openapi_client.models.server_order_bandwidth.ServerOrderBandwidth(
+                var_15 = interserver_api_client.models.server_order_bandwidth.ServerOrderBandwidth(
                     id = '15', 
                     price = 0, 
                     img = 'bandwidth.jpg', 

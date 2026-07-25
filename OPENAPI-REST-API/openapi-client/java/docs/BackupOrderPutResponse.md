@@ -20,4 +20,8 @@ Backup Order validation response
 |**couponCode** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

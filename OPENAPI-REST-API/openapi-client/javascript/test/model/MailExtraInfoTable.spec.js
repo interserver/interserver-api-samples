@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailExtraInfoTable();
+    instance = new InterserverApiClient.MailExtraInfoTable();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('MailExtraInfoTable', function() {
     it('should create an instance of MailExtraInfoTable', function() {
       // uncomment below and update the code to test MailExtraInfoTable
-      //var instance = new InterServerManagementApi.MailExtraInfoTable();
-      //expect(instance).to.be.a(InterServerManagementApi.MailExtraInfoTable);
+      //var instance = new InterserverApiClient.MailExtraInfoTable();
+      //expect(instance).to.be.a(InterserverApiClient.MailExtraInfoTable);
     });
 
     it('should have the property title (base name: "title")', function() {
       // uncomment below and update the code to test the property title
-      //var instance = new InterServerManagementApi.MailExtraInfoTable();
+      //var instance = new InterserverApiClient.MailExtraInfoTable();
       //expect(instance).to.be();
     });
 
     it('should have the property rows (base name: "rows")', function() {
       // uncomment below and update the code to test the property rows
-      //var instance = new InterServerManagementApi.MailExtraInfoTable();
+      //var instance = new InterserverApiClient.MailExtraInfoTable();
       //expect(instance).to.be();
     });
 

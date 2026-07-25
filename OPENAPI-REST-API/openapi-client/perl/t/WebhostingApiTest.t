@@ -24,16 +24,17 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::WebhostingApi');
+use_ok('InterServerAPI::WebhostingApi');
 
-my $api = OpenAPIClient::WebhostingApi->new();
-isa_ok($api, 'OpenAPIClient::WebhostingApi');
+my $api = InterServerAPI::WebhostingApi->new();
+isa_ok($api, 'InterServerAPI::WebhostingApi');
 
 #
 # add_website test
 #
 # uncomment below and update the test
-#my $add_website_result = $api->add_website();
+#my $add_website_website_order_post_request = undef; # replace NULL with a proper value
+#my $add_website_result = $api->add_website(website_order_post_request => $add_website_website_order_post_request);
 
 #
 # get_new_website test
@@ -124,7 +125,8 @@ isa_ok($api, 'OpenAPIClient::WebhostingApi');
 # put_websites test
 #
 # uncomment below and update the test
-#my $put_websites_result = $api->put_websites();
+#my $put_websites_website_order_put_request = undef; # replace NULL with a proper value
+#my $put_websites_result = $api->put_websites(website_order_put_request => $put_websites_website_order_put_request);
 
 #
 # update_website_info test

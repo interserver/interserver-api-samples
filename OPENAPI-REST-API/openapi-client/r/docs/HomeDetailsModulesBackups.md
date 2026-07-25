@@ -1,4 +1,4 @@
-# openapi::HomeDetailsModulesBackups
+# interserverapi::HomeDetailsModulesBackups
 
 Dashboard module configuration for backup storage services.
 

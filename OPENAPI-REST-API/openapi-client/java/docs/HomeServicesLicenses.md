@@ -11,4 +11,8 @@
 |**count** | **Integer** | Number of licenses. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

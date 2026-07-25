@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::VpsOrderLocationStock');
+use_ok('InterServerAPI::Object::VpsOrderLocationStock');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::VpsOrderLocationStock->new();
+#my $instance = InterServerAPI::Object::VpsOrderLocationStock->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::VpsOrderLocationStock');
+#isa_ok($instance, 'InterServerAPI::Object::VpsOrderLocationStock');
 
 
 done_testing();

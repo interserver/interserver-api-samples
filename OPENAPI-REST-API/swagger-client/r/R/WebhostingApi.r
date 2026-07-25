@@ -17,52 +17,52 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_website Place Website Order
+#' add_website Place a new webhosting order, create the invoice, and queue provisioning
 #'
 #'
-#' get_new_website Website Ordering Information
+#' get_new_website Read the webhosting order catalog — plans, packages, promo offers, pricing
 #'
 #'
-#' get_website_buy_ip Get Website IP Information
+#' get_website_buy_ip Read website IPs, current reverse DNS, and additional-IP pricing
 #'
 #'
-#' get_website_info Get Website Order
+#' get_website_info Read full configuration and status detail for one webhosting service
 #'
 #'
-#' get_website_invoices Get Website Invoices
+#' get_website_invoices List all billing invoices and recurring charges scoped to one website
 #'
 #'
-#' get_website_list Get Website Listing
+#' get_website_list List the caller&#x27;s webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
 #'
 #'
-#' get_websites_backups Get Website Backups
+#' get_websites_backups List off-site cpmove backups stored in Swift — list or inline-download archive
 #'
 #'
-#' get_websites_login Hosting Panel Auto Login
+#' get_websites_login Get a one-time auto-login URL for the website&#x27;s control panel
 #'
 #'
-#' get_websites_welcome_email Resend Website Welcome Email
+#' get_websites_welcome_email Resend the webhosting welcome email with control-panel credentials and URL
 #'
 #'
-#' gett_website_reverse_dns Get Website Reverse DNS
+#' gett_website_reverse_dns Read current reverse-DNS (PTR) records for the website&#x27;s IPs
 #'
 #'
-#' post_website_buy_ip Update Website IP DNS
+#' post_website_buy_ip Buy an additional IP for the website OR update reverse DNS records
 #'
 #'
-#' post_website_migration Request Website Migration
+#' post_website_migration Submit a request for InterServer staff to migrate a website from another host
 #'
 #'
-#' post_websites_reverse_dns Update Website Reverse DNS
+#' post_websites_reverse_dns Bulk-update reverse-DNS (PTR) records for one or more website IPs
 #'
 #'
-#' put_websites Validate Webhosting Order
+#' put_websites Validate a webhosting order and preview cost — dry run, no charge
 #'
 #'
-#' update_website_info Update Website Order
+#' update_website_info POST mutation hook for the website detail page (use dedicated ops where possible)
 #'
 #'
-#' webhosting_cancel Cancel Website
+#' webhosting_cancel Schedule termination of a webhosting service — wipes panel account at cycle end
 #'
 #' }
 #'
@@ -80,10 +80,16 @@ WebhostingApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    add_website = function(...){
+    add_website = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/websites/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -146,7 +152,7 @@ WebhostingApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20024$new()
+        returnObject <- InlineResponse20026$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -376,7 +382,7 @@ WebhostingApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20025$new()
+        returnObject <- InlineResponse20027$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -426,7 +432,7 @@ WebhostingApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20026$new()
+        returnObject <- InlineResponse20028$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -474,10 +480,16 @@ WebhostingApi <- R6::R6Class(
       }
 
     }
-    put_websites = function(...){
+    put_websites = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/websites/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -542,7 +554,7 @@ WebhostingApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20023$new()
+        returnObject <- InlineResponse20025$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

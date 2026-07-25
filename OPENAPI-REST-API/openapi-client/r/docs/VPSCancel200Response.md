@@ -1,4 +1,4 @@
-# openapi::VPSCancel200Response
+# interserverapi::VPSCancel200Response
 
 
 ## Properties

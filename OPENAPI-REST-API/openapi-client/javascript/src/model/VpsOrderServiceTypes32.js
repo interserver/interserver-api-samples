@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsOrderServiceTypes32 model module.
  * @module model/VpsOrderServiceTypes32
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderServiceTypes32 {
     /**

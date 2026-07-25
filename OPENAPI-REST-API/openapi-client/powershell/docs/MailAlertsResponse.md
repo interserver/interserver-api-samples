@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailAlertsResponse = Initialize-PSOpenAPIToolsMailAlertsResponse 
+$MailAlertsResponse = Initialize-InterserverApiMailAlertsResponse 
 ```
 
 - Convert the resource to JSON

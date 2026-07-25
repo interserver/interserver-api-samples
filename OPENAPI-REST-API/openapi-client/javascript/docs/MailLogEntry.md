@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailLogEntry
+# InterserverApiClient.MailLogEntry
 
 ## Properties
 

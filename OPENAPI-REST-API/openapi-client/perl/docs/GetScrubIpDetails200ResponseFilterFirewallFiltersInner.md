@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::GetScrubIpDetails200ResponseFilterFirewallFiltersInner
+# InterServerAPI::Object::GetScrubIpDetails200ResponseFilterFirewallFiltersInner
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::GetScrubIpDetails200ResponseFilterFirewallFiltersInner;
+use InterServerAPI::Object::GetScrubIpDetails200ResponseFilterFirewallFiltersInner;
 ```
 
 ## Properties

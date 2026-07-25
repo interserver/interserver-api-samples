@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DeleteGeoFirewallRule
 void main() {
-  final instance = DeleteGeoFirewallRuleBuilder();
-  // TODO add properties to the builder and call build()
+  final DeleteGeoFirewallRule? instance = /* DeleteGeoFirewallRule(...) */ null;
+  // TODO add properties to the entity
 
   group(DeleteGeoFirewallRule, () {
     // int ruleId

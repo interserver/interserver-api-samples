@@ -11,13 +11,12 @@ import Foundation
 public struct InlineResponse2005: Codable {
 
 
-    /** The URL to redirect the user to for OAuth authentication. */
-    public var redirectUrl: String?
-    public init(redirectUrl: String? = nil) { 
-        self.redirectUrl = redirectUrl
-    }
-    public enum CodingKeys: String, CodingKey { 
-        case redirectUrl = "redirect_url"
+    public var success: Bool
+
+    public var text: String
+    public init(success: Bool, text: String) { 
+        self.success = success
+        self.text = text
     }
 
 }

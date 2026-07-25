@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerOrderCpuLi
+# InterserverApiClient.ServerOrderCpuLi
 
 ## Properties
 

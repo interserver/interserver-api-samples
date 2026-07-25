@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailDelistResponse
+# InterServerAPI::Object::MailDelistResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailDelistResponse;
+use InterServerAPI::Object::MailDelistResponse;
 ```
 
 ## Properties

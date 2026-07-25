@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.billing_add_cc_request import BillingAddCcRequest  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.billing_add_cc_request import BillingAddCcRequest  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestBillingAddCcRequest(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestBillingAddCcRequest(unittest.TestCase):
     def testBillingAddCcRequest(self):
         """Test BillingAddCcRequest"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.billing_add_cc_request.BillingAddCcRequest()  # noqa: E501
+        # model = interserver_api_client.models.billing_add_cc_request.BillingAddCcRequest()  # noqa: E501
         pass
 
 

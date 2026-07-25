@@ -289,7 +289,7 @@ Tickets <- R6::R6Class(
         self$`rowsOffset` <- this_object$`rowsOffset`
       }
       if (!is.null(this_object$`tickets`)) {
-        self$`tickets` <- ApiClient$new()$deserializeObj(this_object$`tickets`, "array[TicketsRow]", loadNamespace("openapi"))
+        self$`tickets` <- ApiClient$new()$deserializeObj(this_object$`tickets`, "array[TicketsRow]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`pages`)) {
         self$`pages` <- this_object$`pages`
@@ -337,7 +337,7 @@ Tickets <- R6::R6Class(
       self$`sortcol` <- this_object$`sortcol`
       self$`sortdir` <- this_object$`sortdir`
       self$`rowsOffset` <- this_object$`rowsOffset`
-      self$`tickets` <- ApiClient$new()$deserializeObj(this_object$`tickets`, "array[TicketsRow]", loadNamespace("openapi"))
+      self$`tickets` <- ApiClient$new()$deserializeObj(this_object$`tickets`, "array[TicketsRow]", loadNamespace("interserverapi"))
       self$`pages` <- this_object$`pages`
       self$`rowsTotal` <- this_object$`rowsTotal`
       self$`inboxCount` <- this_object$`inboxCount`

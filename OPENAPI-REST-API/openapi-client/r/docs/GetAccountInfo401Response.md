@@ -1,4 +1,4 @@
-# openapi::GetAccountInfo401Response
+# interserverapi::GetAccountInfo401Response
 
 
 ## Properties

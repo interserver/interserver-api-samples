@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DeleteFilter200Response model module.
  * @module model/DeleteFilter200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DeleteFilter200Response {
     /**

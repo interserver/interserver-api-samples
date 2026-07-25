@@ -14,51 +14,31 @@ package org.openapitools.client.core
 import org.openapitools.client.model._
 import org.json4s._
 import sttp.client4.json4s.SttpJson4sApi
-import scala.reflect.ClassTag
 
 object JsonSupport extends SttpJson4sApi {
   def enumSerializers: Seq[Serializer[_]] = Seq[Serializer[_]]() :+
-    new EnumNameSerializer(ChargeInvoiceRowsInvoicesValueEnums.InvoicesPaid) :+
-    new EnumNameSerializer(CreateFirewallRuleEnums.ProtocolId) :+
-    new EnumNameSerializer(CreateFirewallRuleEnums.XdpAction) :+
-    new EnumNameSerializer(CreateGeoFirewallRuleEnums.XdpAction) :+
-    new EnumNameSerializer(DenyRuleNewEnums.`Type`) :+
-    new EnumNameSerializer(DenyRuleRecordEnums.`Type`) :+
-    new EnumNameSerializer(DnsRecordType) :+
-    new EnumNameSerializer(DomainNameserverGetResponseInnerEnums.CanDelete) :+
-    new EnumNameSerializer(GetScrubIpDetails200ResponseServiceInfoEnums.ScrubIpStatus) :+
-    new EnumNameSerializer(InitiatePayment200ResponseEnums.`Type`) :+
-    new EnumNameSerializer(MailStatsTypeEnums.Time) :+
-    new EnumNameSerializer(ServerIpmiPowerRequestEnums.Action) :+
-    new EnumNameSerializer(TicketCustomFieldDetailsEnums.CustomerServerAccess) :+
-    new EnumNameSerializer(TicketPostDetailsInnerEnums.Creator) :+
-    new EnumNameSerializer(UpdateTicketEnums.CustomerServerAccess) :+
-    new EnumNameSerializer(VpsOrderPostRequestEnums.VpsPlatform) :+
-    new EnumNameSerializer(VpsOrderPostRequestEnums.Controlpanel) :+
-    new EnumNameSerializer(VpsOrderPutRequestEnums.VpsPlatform) :+
-    new EnumNameSerializer(VpsOrderPutRequestEnums.Controlpanel)
-
-  private class EnumNameSerializer[E <: Enumeration: ClassTag](enumeration: E) extends Serializer[E#Value] {
-    import JsonDSL._
-    val EnumerationClass: Class[E#Value] = classOf[E#Value]
-
-    def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), E#Value] = {
-      case (t @ TypeInfo(EnumerationClass, _), json) if isValid(json) =>
-        json match {
-          case JString(value) => enumeration.withName(value)
-          case value => throw new MappingException(s"Can't convert $value to $EnumerationClass")
-        }
-    }
-
-    private[this] def isValid(json: JValue) = json match {
-      case JString(value) if enumeration.values.exists(_.toString == value) => true
-      case _ => false
-    }
-
-    def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
-      case i: E#Value => i.toString
-      }
-    }
+    ChargeInvoiceRowsInvoicesValueEnums.InvoicesPaid.InvoicesPaidSerializer :+
+    CreateFirewallRuleEnums.ProtocolId.ProtocolIdSerializer :+
+    CreateFirewallRuleEnums.XdpAction.XdpActionSerializer :+
+    CreateGeoFirewallRuleEnums.XdpAction.XdpActionSerializer :+
+    DenyRuleNewEnums.`Type`.`Type`Serializer :+
+    DenyRuleRecordEnums.`Type`.`Type`Serializer :+
+    DnsRecordType.DnsRecordTypeSerializer :+
+    DomainNameserverGetResponseInnerEnums.CanDelete.CanDeleteSerializer :+
+    DomainOrderRequestEnums.`Type`.`Type`Serializer :+
+    DomainOrderRequestEnums.WhoisPrivacy.WhoisPrivacySerializer :+
+    GetScrubIpDetails200ResponseServiceInfoEnums.ScrubIpStatus.ScrubIpStatusSerializer :+
+    InitiatePayment200ResponseEnums.`Type`.`Type`Serializer :+
+    MailStatsTypeEnums.Time.TimeSerializer :+
+    ServerIpmiPowerRequestEnums.Action.ActionSerializer :+
+    SslOrderRequestEnums.CsrType.CsrTypeSerializer :+
+    TicketCustomFieldDetailsEnums.CustomerServerAccess.CustomerServerAccessSerializer :+
+    TicketPostDetailsInnerEnums.Creator.CreatorSerializer :+
+    UpdateTicketEnums.CustomerServerAccess.CustomerServerAccessSerializer :+
+    VpsOrderPostRequestEnums.VpsPlatform.VpsPlatformSerializer :+
+    VpsOrderPostRequestEnums.Controlpanel.ControlpanelSerializer :+
+    VpsOrderPutRequestEnums.VpsPlatform.VpsPlatformSerializer :+
+    VpsOrderPutRequestEnums.Controlpanel.ControlpanelSerializer
 
   implicit val format: Formats = DefaultFormats ++ enumSerializers ++ DateSerializers.all ++ AdditionalTypeSerializers.all
   implicit val serialization: org.json4s.Serialization = org.json4s.jackson.Serialization

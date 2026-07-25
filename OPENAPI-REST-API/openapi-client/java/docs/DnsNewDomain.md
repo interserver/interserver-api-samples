@@ -12,4 +12,8 @@ The request for a new domain to be managed by the dns servers.
 |**ip** | **String** | IP Address to point the domain to. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServiceCategories
+# InterServerAPI::Object::ServiceCategories
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServiceCategories;
+use InterServerAPI::Object::ServiceCategories;
 ```
 
 ## Properties

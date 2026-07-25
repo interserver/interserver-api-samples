@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::LoginErrorResponse
+# InterServerAPI::Object::LoginErrorResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::LoginErrorResponse;
+use InterServerAPI::Object::LoginErrorResponse;
 ```
 
 ## Properties

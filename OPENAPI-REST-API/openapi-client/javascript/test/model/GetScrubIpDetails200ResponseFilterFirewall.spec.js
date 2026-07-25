@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewall();
+    instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewall();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('GetScrubIpDetails200ResponseFilterFirewall', function() {
     it('should create an instance of GetScrubIpDetails200ResponseFilterFirewall', function() {
       // uncomment below and update the code to test GetScrubIpDetails200ResponseFilterFirewall
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewall();
-      //expect(instance).to.be.a(InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewall);
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewall();
+      //expect(instance).to.be.a(InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewall);
     });
 
     it('should have the property rules (base name: "rules")', function() {
       // uncomment below and update the code to test the property rules
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewall();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewall();
       //expect(instance).to.be();
     });
 
     it('should have the property filters (base name: "filters")', function() {
       // uncomment below and update the code to test the property filters
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewall();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewall();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_enabled (base name: "scrub_enabled")', function() {
       // uncomment below and update the code to test the property scrub_enabled
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewall();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewall();
       //expect(instance).to.be();
     });
 

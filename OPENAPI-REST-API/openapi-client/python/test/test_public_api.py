@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.public_api import PublicApi
+from interserver_api_client.api.public_api import PublicApi
 
 
 class TestPublicApi(unittest.TestCase):
@@ -27,87 +27,101 @@ class TestPublicApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
+    def test_get_account_currencies(self) -> None:
+        """Test case for get_account_currencies
+
+        List enabled currency codes accepted for billing and preferences
+        """
+        pass
+
+    def test_get_account_locales(self) -> None:
+        """Test case for get_account_locales
+
+        List supported UI locales with English and native display names
+        """
+        pass
+
     def test_get_captcha(self) -> None:
         """Test case for get_captcha
 
-        Get Captcha Challenge
+        Fetch a base64 JPEG captcha challenge for human verification
         """
         pass
 
     def test_get_countries(self) -> None:
         """Test case for get_countries
 
-        Get Countries
+        List enabled countries keyed by ISO-2/ISO-3/numeric code
         """
         pass
 
     def test_get_info(self) -> None:
         """Test case for get_info
 
-        Get Server Info
+        Discover available modules, service packages, categories, and types
         """
         pass
 
     def test_get_login_info(self) -> None:
         """Test case for get_login_info
 
-        Get Login Info
+        Fetch logo, captcha, language, and stats for rendering a login page
         """
         pass
 
     def test_get_mp_servers(self) -> None:
         """Test case for get_mp_servers
 
-        List Marketplace Servers
+        List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
         """
         pass
 
     def test_get_oauth_redirect(self) -> None:
         """Test case for get_oauth_redirect
 
-        Get OAuth Redirect URL
+        Begin OAuth login flow — redirect user to provider for authentication
         """
         pass
 
     def test_get_timezones(self) -> None:
         """Test case for get_timezones
 
-        Get Available Timezones
+        List all PHP timezone identifiers usable on accounts and services
         """
         pass
 
     def test_patch_oauth_two_factor(self) -> None:
         """Test case for patch_oauth_two_factor
 
-        Complete OAuth Two-Factor Verification
+        Submit 2FA code to finish OAuth login when account has 2FA enabled
         """
         pass
 
     def test_ping_server(self) -> None:
         """Test case for ping_server
 
-        Ping Server
+        Liveness check — returns the JSON string \"pong\" to confirm API is up
         """
         pass
 
     def test_post_oauth_callback(self) -> None:
         """Test case for post_oauth_callback
 
-        OAuth Callback
+        Complete OAuth login by linking provider to existing or new account
         """
         pass
 
     def test_submit_login(self) -> None:
         """Test case for submit_login
 
-        Submit Login Information
+        Authenticate with email + password and return a session token
         """
         pass
 
     def test_submit_signup(self) -> None:
         """Test case for submit_signup
 
-        Submit Signup Information
+        Create a new customer account (email + password + captcha + ToS)
         """
         pass
 

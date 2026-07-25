@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.floating_ips_cancel200_response import FloatingIpsCancel200Response
+from interserver_api_client.models.floating_ips_cancel200_response import FloatingIpsCancel200Response
 
 class TestFloatingIpsCancel200Response(unittest.TestCase):
     """FloatingIpsCancel200Response unit test stubs"""

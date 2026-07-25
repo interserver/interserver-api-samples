@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.WebsitesOrderPackages();
+    instance = new InterserverApiClient.WebsitesOrderPackages();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('WebsitesOrderPackages', function() {
     it('should create an instance of WebsitesOrderPackages', function() {
       // uncomment below and update the code to test WebsitesOrderPackages
-      //var instance = new InterServerManagementApi.WebsitesOrderPackages();
-      //expect(instance).to.be.a(InterServerManagementApi.WebsitesOrderPackages);
+      //var instance = new InterserverApiClient.WebsitesOrderPackages();
+      //expect(instance).to.be.a(InterserverApiClient.WebsitesOrderPackages);
     });
 
     it('should have the property _11447 (base name: "11447")', function() {
       // uncomment below and update the code to test the property _11447
-      //var instance = new InterServerManagementApi.WebsitesOrderPackages();
+      //var instance = new InterserverApiClient.WebsitesOrderPackages();
       //expect(instance).to.be();
     });
 

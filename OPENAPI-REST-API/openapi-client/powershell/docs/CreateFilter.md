@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateFilter = Initialize-PSOpenAPIToolsCreateFilter  -FilterType cs2_udp `
+$CreateFilter = Initialize-InterserverApiCreateFilter  -FilterType cs2_udp `
  -Port 8080
 ```
 

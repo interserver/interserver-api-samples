@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class QuickserverOrderServerDetails(
   `381`: Option[QuickserverOrderServerDetails381] = None
 )
-

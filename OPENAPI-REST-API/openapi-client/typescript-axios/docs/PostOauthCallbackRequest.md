@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PostOauthCallbackRequest } from './api';
+import { PostOauthCallbackRequest } from '@interserver/myadmin-client';
 
 const instance: PostOauthCallbackRequest = {
     provider,

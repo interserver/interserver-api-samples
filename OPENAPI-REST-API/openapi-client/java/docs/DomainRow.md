@@ -15,4 +15,8 @@ A result row from the `Domains` `GET` request.
 |**domainStatus** | **String** | The billing / registration status of the domain. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

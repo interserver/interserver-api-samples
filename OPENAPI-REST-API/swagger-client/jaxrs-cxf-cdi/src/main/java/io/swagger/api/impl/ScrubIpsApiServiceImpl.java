@@ -11,13 +11,14 @@ import io.swagger.model.CreateFirewallRule;
 import io.swagger.model.CreateGeoFirewallRule;
 import io.swagger.model.DeleteFirewallRule;
 import io.swagger.model.DeleteGeoFirewallRule;
-import io.swagger.model.InlineResponse20012;
 import io.swagger.model.InlineResponse20013;
 import io.swagger.model.InlineResponse20014;
 import io.swagger.model.InlineResponse20015;
 import io.swagger.model.InlineResponse20016;
 import io.swagger.model.InlineResponse20017;
 import io.swagger.model.InlineResponse20018;
+import io.swagger.model.InlineResponse20019;
+import io.swagger.model.InlineResponse20020;
 import io.swagger.model.InlineResponse201;
 import io.swagger.model.InlineResponse2011;
 import io.swagger.model.InlineResponse2012;
@@ -117,6 +118,11 @@ public class ScrubIpsApiServiceImpl implements ScrubIpsApiService {
   }
       @Override
       public Response placeScrubOrder(ScrubIpPlaceOrder body, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response putScrubIps(ScrubIpPlaceOrder body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsitesOrderServiceTypes = Initialize-PSOpenAPIToolsWebsitesOrderServiceTypes  -Var11447 null
+$WebsitesOrderServiceTypes = Initialize-InterserverApiWebsitesOrderServiceTypes  -Var11447 null
 ```
 
 - Convert the resource to JSON

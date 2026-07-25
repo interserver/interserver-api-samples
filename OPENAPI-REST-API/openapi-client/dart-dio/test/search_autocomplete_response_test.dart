@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for SearchAutocompleteResponse
 void main() {
-  final instance = SearchAutocompleteResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final SearchAutocompleteResponse? instance = /* SearchAutocompleteResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(SearchAutocompleteResponse, () {
   });

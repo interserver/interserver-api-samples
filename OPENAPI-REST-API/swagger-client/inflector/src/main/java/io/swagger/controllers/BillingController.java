@@ -17,6 +17,8 @@ import io.swagger.model.BillingInvoiceList;
 import io.swagger.model.BillingPaymentMethodRequest;
 import io.swagger.model.BillingPrepayRequest;
 import io.swagger.model.BillingVerifyCcRequest;
+import io.swagger.model.IdVerifyBody;
+import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.SuccessTextResponse;
 
@@ -115,6 +117,30 @@ public class BillingController  {
 
   /*
     public ResponseContext getBillingPrePays(RequestContext request ) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext initiatePayment(RequestContext request , String method 
+, String invoices 
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext patchBillingCreditCardVerify(RequestContext request , IdVerifyBody body 
+, Integer id 
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext patchBillingCreditCardVerify(RequestContext request ,  String ccCcv2
+, Integer id 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

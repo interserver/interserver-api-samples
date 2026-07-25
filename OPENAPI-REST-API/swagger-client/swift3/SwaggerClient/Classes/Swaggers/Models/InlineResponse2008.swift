@@ -9,16 +9,15 @@ import Foundation
 
 
 open class InlineResponse2008: JSONEncodable {
-    public var success: Bool?
-    public var text: String?
+    /** Whether the 2FA verification succeeded and the user is now logged in. */
+    public var login: Bool?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["success"] = self.success
-        nillableDictionary["text"] = self.text
+        nillableDictionary["login"] = self.login
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

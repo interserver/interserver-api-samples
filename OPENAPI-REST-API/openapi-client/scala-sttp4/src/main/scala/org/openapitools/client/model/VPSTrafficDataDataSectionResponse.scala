@@ -18,5 +18,4 @@ import scala.collection.mutable.ListBuffer
    * VPS Traffic Data section Data subsection Row Response
    */
 case class VPSTrafficDataDataSectionResponse(
-)
-
+) extends ListBuffer[VPSTrafficDataDataSectionResponseInner]

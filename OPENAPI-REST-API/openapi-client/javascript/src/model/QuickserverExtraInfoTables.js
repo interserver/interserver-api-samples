@@ -18,7 +18,7 @@ import QuickserverIpInfo from './QuickserverIpInfo';
 /**
  * The QuickserverExtraInfoTables model module.
  * @module model/QuickserverExtraInfoTables
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverExtraInfoTables {
     /**

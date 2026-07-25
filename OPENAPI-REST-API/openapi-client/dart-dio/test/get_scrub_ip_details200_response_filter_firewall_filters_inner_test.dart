@@ -1,33 +1,33 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for GetScrubIpDetails200ResponseFilterFirewallFiltersInner
 void main() {
-  final instance = GetScrubIpDetails200ResponseFilterFirewallFiltersInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final GetScrubIpDetails200ResponseFilterFirewallFiltersInner? instance = /* GetScrubIpDetails200ResponseFilterFirewallFiltersInner(...) */ null;
+  // TODO add properties to the entity
 
   group(GetScrubIpDetails200ResponseFilterFirewallFiltersInner, () {
-    // String daddr
+    // Optional<String?> daddr
     test('to test the property `daddr`', () async {
       // TODO
     });
 
-    // String dest
+    // Optional<String?> dest
     test('to test the property `dest`', () async {
       // TODO
     });
 
-    // String filterName
+    // Optional<String?> filterName
     test('to test the property `filterName`', () async {
       // TODO
     });
 
-    // String destinationIp
+    // Optional<String?> destinationIp
     test('to test the property `destinationIp`', () async {
       // TODO
     });
 
-    // String filter
+    // Optional<String?> filter
     test('to test the property `filter`', () async {
       // TODO
     });

@@ -35,13 +35,14 @@ object JsonSupport extends AdditionalTypeSerializers:
   given denyRuleNewCodec: JsonValueCodec[DenyRuleNew] = deriveJsonCodec
   given vpsTemplatesListCodec: JsonValueCodec[VpsTemplatesList] = deriveJsonCodec
   given mailDeliverabilityResponseCodec: JsonValueCodec[MailDeliverabilityResponse] = deriveJsonCodec
+  given getAffiliateSignups200ResponseCodec: JsonValueCodec[GetAffiliateSignups200Response] = deriveJsonCodec
   given domainNameserverPutRequestCodec: JsonValueCodec[DomainNameserverPutRequest] = deriveJsonCodec
   given licensesCancel200ResponseCodec: JsonValueCodec[LicensesCancel200Response] = deriveJsonCodec
   given billingInvoiceDetailCodec: JsonValueCodec[BillingInvoiceDetail] = deriveJsonCodec
-  given seqInvoiceCodec: JsonValueCodec[Seq[Invoice]] = deriveJsonCodec
   given domainCodec: JsonValueCodec[Domain] = deriveJsonCodec
   given vpsTrafficResponseCodec: JsonValueCodec[VpsTrafficResponse] = deriveJsonCodec
   given backupOrderPutResponseCodec: JsonValueCodec[BackupOrderPutResponse] = deriveJsonCodec
+  given floatingIpOrderRequestCodec: JsonValueCodec[FloatingIpOrderRequest] = deriveJsonCodec
   given vpsBackupRowsCodec: JsonValueCodec[VpsBackupRows] = deriveJsonCodec
   given deleteFilter200ResponseCodec: JsonValueCodec[DeleteFilter200Response] = deriveJsonCodec
   given loginInfoCodec: JsonValueCodec[LoginInfo] = deriveJsonCodec
@@ -49,6 +50,7 @@ object JsonSupport extends AdditionalTypeSerializers:
   given cancelDomain200ResponseCodec: JsonValueCodec[CancelDomain200Response] = deriveJsonCodec
   given getAccountTfaSetup200ResponseCodec: JsonValueCodec[GetAccountTfaSetup200Response] = deriveJsonCodec
   given updateTicketResponseSchemaCodec: JsonValueCodec[UpdateTicketResponseSchema] = deriveJsonCodec
+  given sslOrderRequestCodec: JsonValueCodec[SslOrderRequest] = deriveJsonCodec
   given restoreRequestCodec: JsonValueCodec[RestoreRequest] = deriveJsonCodec
   given serviceOrderPostResponseCodec: JsonValueCodec[ServiceOrderPostResponse] = deriveJsonCodec
   given buyItNowServerOrder200ResponseCodec: JsonValueCodec[BuyItNowServerOrder200Response] = deriveJsonCodec
@@ -80,11 +82,14 @@ object JsonSupport extends AdditionalTypeSerializers:
   given postWebsiteBuyIp200ResponseCodec: JsonValueCodec[PostWebsiteBuyIp200Response] = deriveJsonCodec
   given mailStatsTypeCodec: JsonValueCodec[MailStatsType] = deriveJsonCodec
   given seqDnsListItemCodec: JsonValueCodec[Seq[DnsListItem]] = deriveJsonCodec
+  given serverOrderPostRequestCodec: JsonValueCodec[ServerOrderPostRequest] = deriveJsonCodec
   given mailAlertsResponseCodec: JsonValueCodec[MailAlertsResponse] = deriveJsonCodec
   given seqQuickserverRowCodec: JsonValueCodec[Seq[QuickserverRow]] = deriveJsonCodec
   given createFilterCodec: JsonValueCodec[CreateFilter] = deriveJsonCodec
+  given websiteOrderPutRequestCodec: JsonValueCodec[WebsiteOrderPutRequest] = deriveJsonCodec
   given domainWhoisPrivacyRequestCodec: JsonValueCodec[DomainWhoisPrivacyRequest] = deriveJsonCodec
   given mailAlertRequestCodec: JsonValueCodec[MailAlertRequest] = deriveJsonCodec
+  given mapStringGetAccountLocales200ResponseValueCodec: JsonValueCodec[Map[String, GetAccountLocales200ResponseValue]] = deriveJsonCodec
   given scrubIpFilterTypesCodec: JsonValueCodec[ScrubIpFilterTypes] = deriveJsonCodec
   given scrubIpPlaceOrderCodec: JsonValueCodec[ScrubIpPlaceOrder] = deriveJsonCodec
   given ticketNewCodec: JsonValueCodec[TicketNew] = deriveJsonCodec
@@ -96,17 +101,21 @@ object JsonSupport extends AdditionalTypeSerializers:
   given vpsOrderCodec: JsonValueCodec[VpsOrder] = deriveJsonCodec
   given patchOauthTwoFactor200ResponseCodec: JsonValueCodec[PatchOauthTwoFactor200Response] = deriveJsonCodec
   given mailSchemaCodec: JsonValueCodec[MailSchema] = deriveJsonCodec
+  given licenseOrderRequestCodec: JsonValueCodec[LicenseOrderRequest] = deriveJsonCodec
   given replyTicketRequestCodec: JsonValueCodec[ReplyTicketRequest] = deriveJsonCodec
   given genericResponseCodec: JsonValueCodec[GenericResponse] = deriveJsonCodec
   given mailDelistRequestCodec: JsonValueCodec[MailDelistRequest] = deriveJsonCodec
   given monthlyCountsCodec: JsonValueCodec[MonthlyCounts] = deriveJsonCodec
   given seqAffiliateTrafficRowCodec: JsonValueCodec[Seq[AffiliateTrafficRow]] = deriveJsonCodec
+  given mailOrderRequestCodec: JsonValueCodec[MailOrderRequest] = deriveJsonCodec
   given serverOrderCodec: JsonValueCodec[ServerOrder] = deriveJsonCodec
   given seqDnsRecordCodec: JsonValueCodec[Seq[DnsRecord]] = deriveJsonCodec
   given createGeoFirewallRuleCodec: JsonValueCodec[CreateGeoFirewallRule] = deriveJsonCodec
   given servicesInfoCodec: JsonValueCodec[ServicesInfo] = deriveJsonCodec
+  given websiteOrderPostRequestCodec: JsonValueCodec[WebsiteOrderPostRequest] = deriveJsonCodec
   given deleteGeoFirewallRuleCodec: JsonValueCodec[DeleteGeoFirewallRule] = deriveJsonCodec
   given downloadQsBackupRequestCodec: JsonValueCodec[DownloadQsBackupRequest] = deriveJsonCodec
+  given serverBulkIpmiPowerResponseCodec: JsonValueCodec[ServerBulkIpmiPowerResponse] = deriveJsonCodec
   given billingPrepayRequestCodec: JsonValueCodec[BillingPrepayRequest] = deriveJsonCodec
   given seqScrubIpsLogRowSchemaCodec: JsonValueCodec[Seq[ScrubIpsLogRowSchema]] = deriveJsonCodec
   given mailDelistResponseCodec: JsonValueCodec[MailDelistResponse] = deriveJsonCodec
@@ -128,6 +137,7 @@ object JsonSupport extends AdditionalTypeSerializers:
   given seqLicenseRowCodec: JsonValueCodec[Seq[LicenseRow]] = deriveJsonCodec
   given quickserverOrderCodec: JsonValueCodec[QuickserverOrder] = deriveJsonCodec
   given billingInvoiceListCodec: JsonValueCodec[BillingInvoiceList] = deriveJsonCodec
+  given qsOrderRequestCodec: JsonValueCodec[QsOrderRequest] = deriveJsonCodec
   given successTextResponseCodec: JsonValueCodec[SuccessTextResponse] = deriveJsonCodec
   given billingAddCcRequestCodec: JsonValueCodec[BillingAddCcRequest] = deriveJsonCodec
   given websiteCodec: JsonValueCodec[Website] = deriveJsonCodec
@@ -146,12 +156,14 @@ object JsonSupport extends AdditionalTypeSerializers:
   given downloadQsBackup200ResponseCodec: JsonValueCodec[DownloadQsBackup200Response] = deriveJsonCodec
   given postOauthCallbackRequestCodec: JsonValueCodec[PostOauthCallbackRequest] = deriveJsonCodec
   given postWebsiteMigrationRequestCodec: JsonValueCodec[PostWebsiteMigrationRequest] = deriveJsonCodec
+  given deleteMailAlertRequestCodec: JsonValueCodec[DeleteMailAlertRequest] = deriveJsonCodec
   given seqServerRowCodec: JsonValueCodec[Seq[ServerRow]] = deriveJsonCodec
   given seqVpsRowCodec: JsonValueCodec[Seq[VpsRow]] = deriveJsonCodec
   given loginSuccessResponseCodec: JsonValueCodec[LoginSuccessResponse] = deriveJsonCodec
   given getOauthRedirect200ResponseCodec: JsonValueCodec[GetOauthRedirect200Response] = deriveJsonCodec
   given domainDnssecRequestCodec: JsonValueCodec[DomainDnssecRequest] = deriveJsonCodec
   given seqMailRowCodec: JsonValueCodec[Seq[MailRow]] = deriveJsonCodec
+  given putScrubIps200ResponseCodec: JsonValueCodec[PutScrubIps200Response] = deriveJsonCodec
   given backupOrderPostResponseCodec: JsonValueCodec[BackupOrderPostResponse] = deriveJsonCodec
   given domainNameserverPostRequestCodec: JsonValueCodec[DomainNameserverPostRequest] = deriveJsonCodec
   given patchOauthTwoFactorRequestCodec: JsonValueCodec[PatchOauthTwoFactorRequest] = deriveJsonCodec
@@ -163,6 +175,7 @@ object JsonSupport extends AdditionalTypeSerializers:
   given accountInfoCodec: JsonValueCodec[AccountInfo] = deriveJsonCodec
   given getScrubIpDetails200ResponseCodec: JsonValueCodec[GetScrubIpDetails200Response] = deriveJsonCodec
   given stringCodec: JsonValueCodec[String] = deriveJsonCodec
+  given domainOrderRequestCodec: JsonValueCodec[DomainOrderRequest] = deriveJsonCodec
   given seqAffiliateBannerRowCodec: JsonValueCodec[Seq[AffiliateBannerRow]] = deriveJsonCodec
   given mailCancel200ResponseCodec: JsonValueCodec[MailCancel200Response] = deriveJsonCodec
   given postWebsiteBuyIpRequestCodec: JsonValueCodec[PostWebsiteBuyIpRequest] = deriveJsonCodec
@@ -172,5 +185,6 @@ object JsonSupport extends AdditionalTypeSerializers:
   given ticketsCodec: JsonValueCodec[Tickets] = deriveJsonCodec
   given closeTicketResponseSchemaCodec: JsonValueCodec[CloseTicketResponseSchema] = deriveJsonCodec
   given disableScrub200ResponseCodec: JsonValueCodec[DisableScrub200Response] = deriveJsonCodec
+  given patchBillingCreditCardVerifyRequestCodec: JsonValueCodec[PatchBillingCreditCardVerifyRequest] = deriveJsonCodec
 
 

@@ -15,4 +15,8 @@ A DirectAdmin license tier option.
 |**imgActive** | **String** | Image path for the active state icon. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

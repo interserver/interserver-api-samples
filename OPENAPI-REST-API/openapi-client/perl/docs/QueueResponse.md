@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::QueueResponse
+# InterServerAPI::Object::QueueResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::QueueResponse;
+use InterServerAPI::Object::QueueResponse;
 ```
 
 ## Properties

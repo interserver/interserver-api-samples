@@ -20,4 +20,3 @@ case class VpsOrderPlatformNames(
   kvmstorage: Option[String] = None,
   hyperv: Option[String] = None
 )
-

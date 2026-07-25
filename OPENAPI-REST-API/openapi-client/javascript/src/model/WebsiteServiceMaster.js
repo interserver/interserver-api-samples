@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The WebsiteServiceMaster model module.
  * @module model/WebsiteServiceMaster
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsiteServiceMaster {
     /**

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order import ServerOrder
+from interserver_api_client.models.server_order import ServerOrder
 
 class TestServerOrder(unittest.TestCase):
     """ServerOrder unit test stubs"""
@@ -36,7 +36,7 @@ class TestServerOrder(unittest.TestCase):
         model = ServerOrder()
         if include_optional:
             return ServerOrder(
-                form_values = openapi_client.models.server_order_form_values.ServerOrderFormValues(
+                form_values = interserver_api_client.models.server_order_form_values.ServerOrderFormValues(
                     memory = 22, 
                     bandwidth = '3', 
                     ips = '9', 
@@ -44,7 +44,7 @@ class TestServerOrder(unittest.TestCase):
                     cp = 5, 
                     raid = '0', 
                     hd = '16', ),
-                config_ids = openapi_client.models.server_order_config_ids.ServerOrderConfigIds(
+                config_ids = interserver_api_client.models.server_order_config_ids.ServerOrderConfigIds(
                     memory = 22, 
                     bandwidth = '3', 
                     ips = '9', 
@@ -53,7 +53,7 @@ class TestServerOrder(unittest.TestCase):
                     raid = '0', 
                     hd = '16', ),
                 cpu = 184,
-                field_label = openapi_client.models.server_order_field_labels.ServerOrderFieldLabels(
+                field_label = interserver_api_client.models.server_order_field_labels.ServerOrderFieldLabels(
                     bandwidth = null, 
                     ips = null, 
                     os = null, 
@@ -61,8 +61,8 @@ class TestServerOrder(unittest.TestCase):
                     raid = null, 
                     memory = null, 
                     hd = null, ),
-                cpu_li = openapi_client.models.server_order_cpu_li.ServerOrder_cpu_li(
-                    254 = openapi_client.models.server_order_cpu.ServerOrderCPU(
+                cpu_li = interserver_api_client.models.server_order_cpu_li.ServerOrder_cpu_li(
+                    254 = interserver_api_client.models.server_order_cpu.ServerOrderCPU(
                         id = '254', 
                         price = 0, 
                         img = 'ryzen.png', 
@@ -88,9 +88,9 @@ class TestServerOrder(unittest.TestCase):
                         hd_ids = '', 
                         price_display = '$0.00', 
                         monthly_price_display = '$75.00', ), ),
-                memory_li = openapi_client.models.server_order_memory_li.ServerOrder_memory_li(
-                    254 = openapi_client.models.server_order_memory_li_254.ServerOrder_memory_li_254(
-                        65 = openapi_client.models.server_order_memory.ServerOrderMemory(
+                memory_li = interserver_api_client.models.server_order_memory_li.ServerOrder_memory_li(
+                    254 = interserver_api_client.models.server_order_memory_li_254.ServerOrder_memory_li_254(
+                        65 = interserver_api_client.models.server_order_memory.ServerOrderMemory(
                             id = '65', 
                             price = '0', 
                             img = 'hd.jpg', 
@@ -103,8 +103,8 @@ class TestServerOrder(unittest.TestCase):
                             monthly_price = 50, 
                             drive_type = 'lff', 
                             monthly_price_display = '$50.00', ), ), ),
-                bandwidth_li = openapi_client.models.server_order_bandwidth_li.ServerOrder_bandwidth_li(
-                    15 = openapi_client.models.server_order_bandwidth.ServerOrderBandwidth(
+                bandwidth_li = interserver_api_client.models.server_order_bandwidth_li.ServerOrder_bandwidth_li(
+                    15 = interserver_api_client.models.server_order_bandwidth.ServerOrderBandwidth(
                         id = '15', 
                         price = 0, 
                         img = 'bandwidth.jpg', 
@@ -116,8 +116,8 @@ class TestServerOrder(unittest.TestCase):
                         monthly_price = 15, 
                         price_display = '$0.00', 
                         monthly_price_display = '$15.00', ), ),
-                ips_li = openapi_client.models.server_order_ips_li.ServerOrder_ips_li(
-                    9 = openapi_client.models.server_order_ip.ServerOrderIP(
+                ips_li = interserver_api_client.models.server_order_ips_li.ServerOrder_ips_li(
+                    9 = interserver_api_client.models.server_order_ip.ServerOrderIP(
                         id = '9', 
                         price = 0, 
                         img = 'ips.jpg', 
@@ -127,8 +127,8 @@ class TestServerOrder(unittest.TestCase):
                         monthly_price = 0, 
                         price_display = '$0.00', 
                         monthly_price_display = '$0.00', ), ),
-                os_li = openapi_client.models.server_order_os_li.ServerOrder_os_li(
-                    51 = openapi_client.models.server_order_os.ServerOrderOS(
+                os_li = interserver_api_client.models.server_order_os_li.ServerOrder_os_li(
+                    51 = interserver_api_client.models.server_order_os.ServerOrderOS(
                         id = '51', 
                         price = 0, 
                         img = '', 
@@ -138,8 +138,8 @@ class TestServerOrder(unittest.TestCase):
                         active = '1', 
                         price_display = '$0.00', 
                         monthly_price_display = '$0.00', ), ),
-                cp_li = openapi_client.models.server_order_cp_li.ServerOrder_cp_li(
-                    9 = openapi_client.models.server_order_control_panel.ServerOrderControlPanel(
+                cp_li = interserver_api_client.models.server_order_cp_li.ServerOrder_cp_li(
+                    9 = interserver_api_client.models.server_order_control_panel.ServerOrderControlPanel(
                         id = '9', 
                         price = 80, 
                         img = 'cpanel.gif', 
@@ -151,7 +151,7 @@ class TestServerOrder(unittest.TestCase):
                         price_display = '$80.00', 
                         monthly_price_display = '$0.00', ), ),
                 raid_li = [
-                    openapi_client.models.server_order_raid.ServerOrderRAID(
+                    interserver_api_client.models.server_order_raid.ServerOrderRAID(
                         id = '7', 
                         price = 50, 
                         img = 'raid.png', 

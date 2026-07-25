@@ -28,4 +28,3 @@ case class BillingVerifyCcRequest(
   /* Whether terms were accepted for verification. */
   terms: Option[Boolean] = None
 )
-

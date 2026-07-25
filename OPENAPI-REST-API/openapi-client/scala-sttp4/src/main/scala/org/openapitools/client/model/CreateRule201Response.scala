@@ -16,4 +16,3 @@ case class CreateRule201Response(
   success: Option[Boolean] = None,
   text: Option[String] = None
 )
-

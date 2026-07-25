@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerOrderFormValues');
+use_ok('InterServerAPI::Object::ServerOrderFormValues');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerOrderFormValues->new();
+#my $instance = InterServerAPI::Object::ServerOrderFormValues->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerOrderFormValues');
+#isa_ok($instance, 'InterServerAPI::Object::ServerOrderFormValues');
 
 
 done_testing();

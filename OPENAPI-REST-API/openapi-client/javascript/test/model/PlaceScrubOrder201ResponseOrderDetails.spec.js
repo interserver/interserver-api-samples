@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetails();
+    instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetails();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('PlaceScrubOrder201ResponseOrderDetails', function() {
     it('should create an instance of PlaceScrubOrder201ResponseOrderDetails', function() {
       // uncomment below and update the code to test PlaceScrubOrder201ResponseOrderDetails
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetails();
-      //expect(instance).to.be.a(InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetails);
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetails();
+      //expect(instance).to.be.a(InterserverApiClient.PlaceScrubOrder201ResponseOrderDetails);
     });
 
     it('should have the property total_cost (base name: "total_cost")', function() {
       // uncomment below and update the code to test the property total_cost
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetails();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property service_id (base name: "service_id")', function() {
       // uncomment below and update the code to test the property service_id
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetails();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property invoice_id (base name: "invoice_id")', function() {
       // uncomment below and update the code to test the property invoice_id
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetails();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property invoice_description (base name: "invoice_description")', function() {
       // uncomment below and update the code to test the property invoice_description
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetails();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property cj_params (base name: "cj_params")', function() {
       // uncomment below and update the code to test the property cj_params
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetails();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetails();
       //expect(instance).to.be();
     });
 

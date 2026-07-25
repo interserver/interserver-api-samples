@@ -1,4 +1,4 @@
-# SwaggerClient::VpsBillingDetails
+# InterserverApiClient::VpsBillingDetails
 
 ## Properties
 Name | Type | Description | Notes

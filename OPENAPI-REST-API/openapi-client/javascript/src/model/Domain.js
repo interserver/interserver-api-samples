@@ -24,7 +24,7 @@ import DomainServiceType from './DomainServiceType';
 /**
  * The Domain model module.
  * @module model/Domain
- * @version 0.9.0
+ * @version 1.0.0
  */
 class Domain {
     /**

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.webhosting_api import WebhostingApi
+from interserver_api_client.api.webhosting_api import WebhostingApi
 
 
 class TestWebhostingApi(unittest.TestCase):
@@ -30,112 +30,112 @@ class TestWebhostingApi(unittest.TestCase):
     def test_add_website(self) -> None:
         """Test case for add_website
 
-        Place Website Order
+        Place a new webhosting order, create the invoice, and queue provisioning
         """
         pass
 
     def test_get_new_website(self) -> None:
         """Test case for get_new_website
 
-        Website Ordering Information
+        Read the webhosting order catalog — plans, packages, promo offers, pricing
         """
         pass
 
     def test_get_website_buy_ip(self) -> None:
         """Test case for get_website_buy_ip
 
-        Get Website IP Information
+        Read website IPs, current reverse DNS, and additional-IP pricing
         """
         pass
 
     def test_get_website_info(self) -> None:
         """Test case for get_website_info
 
-        Get Website Order
+        Read full configuration and status detail for one webhosting service
         """
         pass
 
     def test_get_website_invoices(self) -> None:
         """Test case for get_website_invoices
 
-        Get Website Invoices
+        List all billing invoices and recurring charges scoped to one website
         """
         pass
 
     def test_get_website_list(self) -> None:
         """Test case for get_website_list
 
-        Get Website Listing
+        List the caller's webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
         """
         pass
 
     def test_get_websites_backups(self) -> None:
         """Test case for get_websites_backups
 
-        Get Website Backups
+        List off-site cpmove backups stored in Swift — list or inline-download archive
         """
         pass
 
     def test_get_websites_login(self) -> None:
         """Test case for get_websites_login
 
-        Hosting Panel Auto Login
+        Get a one-time auto-login URL for the website's control panel
         """
         pass
 
     def test_get_websites_welcome_email(self) -> None:
         """Test case for get_websites_welcome_email
 
-        Resend Website Welcome Email
+        Resend the webhosting welcome email with control-panel credentials and URL
         """
         pass
 
     def test_gett_website_reverse_dns(self) -> None:
         """Test case for gett_website_reverse_dns
 
-        Get Website Reverse DNS
+        Read current reverse-DNS (PTR) records for the website's IPs
         """
         pass
 
     def test_post_website_buy_ip(self) -> None:
         """Test case for post_website_buy_ip
 
-        Update Website IP DNS
+        Buy an additional IP for the website OR update reverse DNS records
         """
         pass
 
     def test_post_website_migration(self) -> None:
         """Test case for post_website_migration
 
-        Request Website Migration
+        Submit a request for InterServer staff to migrate a website from another host
         """
         pass
 
     def test_post_websites_reverse_dns(self) -> None:
         """Test case for post_websites_reverse_dns
 
-        Update Website Reverse DNS
+        Bulk-update reverse-DNS (PTR) records for one or more website IPs
         """
         pass
 
     def test_put_websites(self) -> None:
         """Test case for put_websites
 
-        Validate Webhosting Order
+        Validate a webhosting order and preview cost — dry run, no charge
         """
         pass
 
     def test_update_website_info(self) -> None:
         """Test case for update_website_info
 
-        Update Website Order
+        POST mutation hook for the website detail page (use dedicated ops where possible)
         """
         pass
 
     def test_webhosting_cancel(self) -> None:
         """Test case for webhosting_cancel
 
-        Cancel Website
+        Schedule termination of a webhosting service — wipes panel account at cycle end
         """
         pass
 

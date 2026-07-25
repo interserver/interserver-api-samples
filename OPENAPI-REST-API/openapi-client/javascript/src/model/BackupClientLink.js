@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BackupClientLink model module.
  * @module model/BackupClientLink
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BackupClientLink {
     /**

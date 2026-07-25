@@ -16,4 +16,3 @@ case class ReplyTicketResponseSchema(
   success: Option[Boolean] = None,
   post_id: Option[Int] = None
 )
-

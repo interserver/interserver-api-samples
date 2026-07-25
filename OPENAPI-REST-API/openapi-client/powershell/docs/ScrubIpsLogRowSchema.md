@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ScrubIpsLogRowSchema = Initialize-PSOpenAPIToolsScrubIpsLogRowSchema  -Date null `
+$ScrubIpsLogRowSchema = Initialize-InterserverApiScrubIpsLogRowSchema  -Date null `
  -VarFilter null `
  -BlockedIp null `
  -TargetIp null `

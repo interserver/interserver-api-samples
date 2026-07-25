@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeTicketStatusView = Initialize-PSOpenAPIToolsHomeTicketStatusView  -Var4 Open `
+$HomeTicketStatusView = Initialize-InterserverApiHomeTicketStatusView  -Var4 Open `
  -Var5 On Hold `
  -Var6 Closed
 ```

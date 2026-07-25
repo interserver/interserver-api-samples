@@ -10,4 +10,8 @@
 |**_1** | [**ServerLocation1**](ServerLocation1.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

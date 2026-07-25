@@ -1,56 +1,56 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for Website
 void main() {
-  final instance = WebsiteBuilder();
-  // TODO add properties to the builder and call build()
+  final Website? instance = /* Website(...) */ null;
+  // TODO add properties to the entity
 
   group(Website, () {
-    // WebsiteServiceInfo serviceInfo
+    // Optional<WebsiteServiceInfo?> serviceInfo
     test('to test the property `serviceInfo`', () async {
       // TODO
     });
 
-    // BuiltList<WebsiteClientLink> clientLinks
+    // Optional<List<WebsiteClientLink>?> clientLinks
     test('to test the property `clientLinks`', () async {
       // TODO
     });
 
-    // WebsiteBillingDetails billingDetails
+    // Optional<WebsiteBillingDetails?> billingDetails
     test('to test the property `billingDetails`', () async {
       // TODO
     });
 
     // Customer's currency
-    // String custCurrency
+    // Optional<String?> custCurrency
     test('to test the property `custCurrency`', () async {
       // TODO
     });
 
     // Customer currency symbol
-    // String custCurrencySymbol
+    // Optional<String?> custCurrencySymbol
     test('to test the property `custCurrencySymbol`', () async {
       // TODO
     });
 
-    // WebsiteServiceMaster serviceMaster
+    // Optional<WebsiteServiceMaster?> serviceMaster
     test('to test the property `serviceMaster`', () async {
       // TODO
     });
 
     // Package information
-    // String package
+    // Optional<String?> package
     test('to test the property `package`', () async {
       // TODO
     });
 
-    // BuiltList<JsonObject> serviceExtra
+    // Optional<List<Object>?> serviceExtra
     test('to test the property `serviceExtra`', () async {
       // TODO
     });
 
-    // WebsiteExtraInfoTables extraInfoTables
+    // Optional<WebsiteExtraInfoTables?> extraInfoTables
     test('to test the property `extraInfoTables`', () async {
       // TODO
     });

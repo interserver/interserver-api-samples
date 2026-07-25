@@ -21,7 +21,7 @@ import BuyItNowServerOrder200ResponseRaidInner from './BuyItNowServerOrder200Res
 /**
  * The BuyItNowServerOrder200Response model module.
  * @module model/BuyItNowServerOrder200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BuyItNowServerOrder200Response {
     /**

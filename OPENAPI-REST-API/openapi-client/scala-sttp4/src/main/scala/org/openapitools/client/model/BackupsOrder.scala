@@ -19,4 +19,3 @@ case class BackupsOrder(
   packageCosts: BackupsOrderPackageCosts,
   serviceTypes: BackupsOrderServiceTypes
 )
-

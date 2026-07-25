@@ -14,12 +14,20 @@ package io.swagger.client.models
 
 /**
  * 
- * @param success 
- * @param text 
+ * @param &#x60;continue&#x60; 
+ * @param errors 
+ * @param serviceType 
+ * @param serviceCost 
+ * @param originalCost 
+ * @param repeatServiceCost 
  */
 data class InlineResponse20020 (
 
-    val success: kotlin.Boolean,
-    val text: kotlin.String
+    val `continue`: kotlin.Boolean? = null,
+    val errors: kotlin.Array<kotlin.String>? = null,
+    val serviceType: kotlin.Int? = null,
+    val serviceCost: java.math.BigDecimal? = null,
+    val originalCost: java.math.BigDecimal? = null,
+    val repeatServiceCost: java.math.BigDecimal? = null
 ) {
 }

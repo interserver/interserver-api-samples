@@ -63,7 +63,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoMaxMindResponse } from './api';
+import { AccountInfoMaxMindResponse } from '@interserver/myadmin-client';
 
 const instance: AccountInfoMaxMindResponse = {
     distance,

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicensesOrderServiceTypes11482 = Initialize-PSOpenAPIToolsLicensesOrderServiceTypes11482  -ServicesId 11482 `
+$LicensesOrderServiceTypes11482 = Initialize-InterserverApiLicensesOrderServiceTypes11482  -ServicesId 11482 `
  -ServicesName DirectAdmin Standard `
  -ServicesCost 21.75 `
  -ServicesCategory 506 `

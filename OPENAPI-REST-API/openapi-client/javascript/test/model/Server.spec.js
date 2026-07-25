@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.Server();
+    instance = new InterserverApiClient.Server();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,73 +50,73 @@
   describe('Server', function() {
     it('should create an instance of Server', function() {
       // uncomment below and update the code to test Server
-      //var instance = new InterServerManagementApi.Server();
-      //expect(instance).to.be.a(InterServerManagementApi.Server);
+      //var instance = new InterserverApiClient.Server();
+      //expect(instance).to.be.a(InterserverApiClient.Server);
     });
 
     it('should have the property ipmiAuth (base name: "ipmiAuth")', function() {
       // uncomment below and update the code to test the property ipmiAuth
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 
     it('should have the property client_links (base name: "client_links")', function() {
       // uncomment below and update the code to test the property client_links
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 
     it('should have the property billingDetails (base name: "billingDetails")', function() {
       // uncomment below and update the code to test the property billingDetails
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 
     it('should have the property custCurrency (base name: "custCurrency")', function() {
       // uncomment below and update the code to test the property custCurrency
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 
     it('should have the property custCurrencySymbol (base name: "custCurrencySymbol")', function() {
       // uncomment below and update the code to test the property custCurrencySymbol
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 
     it('should have the property _package (base name: "package")', function() {
       // uncomment below and update the code to test the property _package
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceExtra (base name: "serviceExtra")', function() {
       // uncomment below and update the code to test the property serviceExtra
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 
     it('should have the property locations (base name: "locations")', function() {
       // uncomment below and update the code to test the property locations
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 
     it('should have the property networkInfo (base name: "networkInfo")', function() {
       // uncomment below and update the code to test the property networkInfo
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 
     it('should have the property extraInfoTables (base name: "extraInfoTables")', function() {
       // uncomment below and update the code to test the property extraInfoTables
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceInfo (base name: "serviceInfo")', function() {
       // uncomment below and update the code to test the property serviceInfo
-      //var instance = new InterServerManagementApi.Server();
+      //var instance = new InterserverApiClient.Server();
       //expect(instance).to.be();
     });
 

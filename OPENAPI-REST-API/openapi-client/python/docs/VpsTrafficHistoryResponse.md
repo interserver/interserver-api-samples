@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_traffic_history_response import VpsTrafficHistoryResponse
+from interserver_api_client.models.vps_traffic_history_response import VpsTrafficHistoryResponse
 
 # TODO update the JSON string below
 json = "{}"

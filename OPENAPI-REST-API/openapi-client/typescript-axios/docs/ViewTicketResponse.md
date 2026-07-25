@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ViewTicketResponse } from './api';
+import { ViewTicketResponse } from '@interserver/myadmin-client';
 
 const instance: ViewTicketResponse = {
     success,

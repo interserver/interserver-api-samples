@@ -1,4 +1,4 @@
-# InterServerManagementApi.CreateRule500Response
+# InterserverApiClient.CreateRule500Response
 
 ## Properties
 

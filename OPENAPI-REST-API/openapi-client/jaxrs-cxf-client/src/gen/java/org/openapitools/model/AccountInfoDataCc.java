@@ -242,7 +242,7 @@ public class AccountInfoDataCc  {
    * @return verified
   **/
   @JsonProperty("verified")
-  public Boolean getVerified() {
+  public Boolean isVerified() {
     return verified;
   }
 

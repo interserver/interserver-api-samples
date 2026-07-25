@@ -23,4 +23,3 @@ case class VpsSnapshot(
   /* Unix timestamp of when the snapshot was created. */
   date: Option[Int] = None
 )
-

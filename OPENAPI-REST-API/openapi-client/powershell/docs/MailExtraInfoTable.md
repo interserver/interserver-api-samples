@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailExtraInfoTable = Initialize-PSOpenAPIToolsMailExtraInfoTable  -Title Connection Information `
+$MailExtraInfoTable = Initialize-InterserverApiMailExtraInfoTable  -Title Connection Information `
  -Rows null
 ```
 

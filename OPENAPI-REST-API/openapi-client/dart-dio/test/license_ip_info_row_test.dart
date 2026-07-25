@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LicenseIpInfoRow
 void main() {
-  final instance = LicenseIpInfoRowBuilder();
-  // TODO add properties to the builder and call build()
+  final LicenseIpInfoRow? instance = /* LicenseIpInfoRow(...) */ null;
+  // TODO add properties to the entity
 
   group(LicenseIpInfoRow, () {
     // Row description
-    // String desc
+    // Optional<String?> desc
     test('to test the property `desc`', () async {
       // TODO
     });
 
     // Row value
-    // String value
+    // Optional<String?> value
     test('to test the property `value`', () async {
       // TODO
     });

@@ -12,7 +12,23 @@
 
 export interface InlineResponse2007 { 
     /**
-     * Whether the 2FA verification succeeded and the user is now logged in.
+     * Whether the user was logged in to an existing account.
      */
     login?: boolean;
+    /**
+     * Whether a new account was created.
+     */
+    signup?: boolean;
+    /**
+     * Whether the OAuth provider was linked to an existing account.
+     */
+    linked?: boolean;
+    /**
+     * The account ID associated with the OAuth login.
+     */
+    account_id?: number;
+    /**
+     * Error code if additional verification is needed (e.g. `2fa_required`).
+     */
+    error_code?: string;
 }

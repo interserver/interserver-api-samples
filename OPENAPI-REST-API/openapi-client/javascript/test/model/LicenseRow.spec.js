@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LicenseRow();
+    instance = new InterserverApiClient.LicenseRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('LicenseRow', function() {
     it('should create an instance of LicenseRow', function() {
       // uncomment below and update the code to test LicenseRow
-      //var instance = new InterServerManagementApi.LicenseRow();
-      //expect(instance).to.be.a(InterServerManagementApi.LicenseRow);
+      //var instance = new InterserverApiClient.LicenseRow();
+      //expect(instance).to.be.a(InterserverApiClient.LicenseRow);
     });
 
     it('should have the property license_id (base name: "license_id")', function() {
       // uncomment below and update the code to test the property license_id
-      //var instance = new InterServerManagementApi.LicenseRow();
+      //var instance = new InterserverApiClient.LicenseRow();
       //expect(instance).to.be();
     });
 
     it('should have the property license_hostname (base name: "license_hostname")', function() {
       // uncomment below and update the code to test the property license_hostname
-      //var instance = new InterServerManagementApi.LicenseRow();
+      //var instance = new InterserverApiClient.LicenseRow();
       //expect(instance).to.be();
     });
 
     it('should have the property license_ip (base name: "license_ip")', function() {
       // uncomment below and update the code to test the property license_ip
-      //var instance = new InterServerManagementApi.LicenseRow();
+      //var instance = new InterserverApiClient.LicenseRow();
       //expect(instance).to.be();
     });
 
     it('should have the property services_name (base name: "services_name")', function() {
       // uncomment below and update the code to test the property services_name
-      //var instance = new InterServerManagementApi.LicenseRow();
+      //var instance = new InterserverApiClient.LicenseRow();
       //expect(instance).to.be();
     });
 
     it('should have the property cost (base name: "cost")', function() {
       // uncomment below and update the code to test the property cost
-      //var instance = new InterServerManagementApi.LicenseRow();
+      //var instance = new InterserverApiClient.LicenseRow();
       //expect(instance).to.be();
     });
 
     it('should have the property license_status (base name: "license_status")', function() {
       // uncomment below and update the code to test the property license_status
-      //var instance = new InterServerManagementApi.LicenseRow();
+      //var instance = new InterserverApiClient.LicenseRow();
       //expect(instance).to.be();
     });
 
     it('should have the property invoices_paid (base name: "invoices_paid")', function() {
       // uncomment below and update the code to test the property invoices_paid
-      //var instance = new InterServerManagementApi.LicenseRow();
+      //var instance = new InterserverApiClient.LicenseRow();
       //expect(instance).to.be();
     });
 
     it('should have the property invoices_date (base name: "invoices_date")', function() {
       // uncomment below and update the code to test the property invoices_date
-      //var instance = new InterServerManagementApi.LicenseRow();
+      //var instance = new InterserverApiClient.LicenseRow();
       //expect(instance).to.be();
     });
 

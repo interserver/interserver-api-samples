@@ -44,8 +44,6 @@ void OAILicensesApi::initializeServerConfigs() {
     _serverIndices.insert("getLicenseInvoices", 0);
     _serverConfigs.insert("getLicenseList", defaultConf);
     _serverIndices.insert("getLicenseList", 0);
-    _serverConfigs.insert("getLicenseOrderCatTagInfo", defaultConf);
-    _serverIndices.insert("getLicenseOrderCatTagInfo", 0);
     _serverConfigs.insert("getLicensesWelcomeEmail", defaultConf);
     _serverIndices.insert("getLicensesWelcomeEmail", 0);
     _serverConfigs.insert("getNewLicense", defaultConf);
@@ -239,7 +237,7 @@ QString OAILicensesApi::getParamStyleDelimiter(const QString &style, const QStri
     }
 }
 
-void OAILicensesApi::addLicense() {
+void OAILicensesApi::addLicense(const OAILicenseOrderRequest &oai_license_order_request) {
     QString fullPath = QString(_serverConfigs["addLicense"][_serverIndices.value("addLicense")].URL()+"/licenses/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -255,7 +253,12 @@ void OAILicensesApi::addLicense() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
+    {
 
+        
+        QByteArray output = oai_license_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -481,71 +484,6 @@ void OAILicensesApi::getLicenseListCallback(OAIHttpRequestWorker *worker) {
     } else {
         Q_EMIT getLicenseListSignalError(output, error_type, error_str);
         Q_EMIT getLicenseListSignalErrorFull(worker, error_type, error_str);
-    }
-}
-
-void OAILicensesApi::getLicenseOrderCatTagInfo(const QString &cat_tag) {
-    QString fullPath = QString(_serverConfigs["getLicenseOrderCatTagInfo"][_serverIndices.value("getLicenseOrderCatTagInfo")].URL()+"/licenses/order/{catTag}");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    
-    {
-        QString cat_tagPathParam("{");
-        cat_tagPathParam.append("catTag").append("}");
-        QString pathPrefix, pathSuffix, pathDelimiter;
-        QString pathStyle = "simple";
-        if (pathStyle == "")
-            pathStyle = "simple";
-        pathPrefix = getParamStylePrefix(pathStyle);
-        pathSuffix = getParamStyleSuffix(pathStyle);
-        pathDelimiter = getParamStyleDelimiter(pathStyle, "catTag", false);
-        QString paramString = (pathStyle == "matrix") ? pathPrefix+"catTag"+pathSuffix : pathPrefix;
-        fullPath.replace(cat_tagPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(cat_tag)));
-    }
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "GET");
-
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAILicensesApi::getLicenseOrderCatTagInfoCallback);
-    connect(this, &OAILicensesApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAILicensesApi::getLicenseOrderCatTagInfoCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getLicenseOrderCatTagInfoSignal();
-        Q_EMIT getLicenseOrderCatTagInfoSignalFull(worker);
-    } else {
-        Q_EMIT getLicenseOrderCatTagInfoSignalError(error_type, error_str);
-        Q_EMIT getLicenseOrderCatTagInfoSignalErrorFull(worker, error_type, error_str);
     }
 }
 
@@ -804,7 +742,7 @@ void OAILicensesApi::postLicenseChangeIpCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAILicensesApi::putLicenses() {
+void OAILicensesApi::putLicenses(const OAILicenseOrderRequest &oai_license_order_request) {
     QString fullPath = QString(_serverConfigs["putLicenses"][_serverIndices.value("putLicenses")].URL()+"/licenses/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -820,7 +758,12 @@ void OAILicensesApi::putLicenses() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "PUT");
 
+    {
 
+        
+        QByteArray output = oai_license_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }

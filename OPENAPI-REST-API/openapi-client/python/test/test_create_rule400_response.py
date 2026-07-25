@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.create_rule400_response import CreateRule400Response
+from interserver_api_client.models.create_rule400_response import CreateRule400Response
 
 class TestCreateRule400Response(unittest.TestCase):
     """CreateRule400Response unit test stubs"""

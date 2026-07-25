@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetOrderDetail200ResponseServiceTypesInner();
+    instance = new InterserverApiClient.GetOrderDetail200ResponseServiceTypesInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('GetOrderDetail200ResponseServiceTypesInner', function() {
     it('should create an instance of GetOrderDetail200ResponseServiceTypesInner', function() {
       // uncomment below and update the code to test GetOrderDetail200ResponseServiceTypesInner
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseServiceTypesInner();
-      //expect(instance).to.be.a(InterServerManagementApi.GetOrderDetail200ResponseServiceTypesInner);
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseServiceTypesInner();
+      //expect(instance).to.be.a(InterserverApiClient.GetOrderDetail200ResponseServiceTypesInner);
     });
 
     it('should have the property services_id (base name: "services_id")', function() {
       // uncomment below and update the code to test the property services_id
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseServiceTypesInner();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseServiceTypesInner();
       //expect(instance).to.be();
     });
 
     it('should have the property services_name (base name: "services_name")', function() {
       // uncomment below and update the code to test the property services_name
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseServiceTypesInner();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseServiceTypesInner();
       //expect(instance).to.be();
     });
 
     it('should have the property services_cost (base name: "services_cost")', function() {
       // uncomment below and update the code to test the property services_cost
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseServiceTypesInner();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseServiceTypesInner();
       //expect(instance).to.be();
     });
 
     it('should have the property services_field1 (base name: "services_field1")', function() {
       // uncomment below and update the code to test the property services_field1
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseServiceTypesInner();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseServiceTypesInner();
       //expect(instance).to.be();
     });
 
     it('should have the property services_field2 (base name: "services_field2")', function() {
       // uncomment below and update the code to test the property services_field2
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseServiceTypesInner();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseServiceTypesInner();
       //expect(instance).to.be();
     });
 
     it('should have the property services_module (base name: "services_module")', function() {
       // uncomment below and update the code to test the property services_module
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseServiceTypesInner();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseServiceTypesInner();
       //expect(instance).to.be();
     });
 

@@ -57,4 +57,8 @@
 |**comment** | **String** | Comment associated with the asset. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

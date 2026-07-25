@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.update_ticket import UpdateTicket
+from interserver_api_client.models.update_ticket import UpdateTicket
 
 class TestUpdateTicket(unittest.TestCase):
     """UpdateTicket unit test stubs"""

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.restore_request import RestoreRequest
+from interserver_api_client.models.restore_request import RestoreRequest
 
 # TODO update the JSON string below
 json = "{}"

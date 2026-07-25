@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **cost** | **float** |  | [optional]
 **received** | **int** |  | [optional]
 **sent** | **int** |  | [optional]
-**volume** | [**\Interserver\MyAdmin\Model\MailStatsTypeVolume**](MailStatsTypeVolume.md) |  | [optional]
+**volume** | [**\Interserver\\MyAdmin\Model\MailStatsTypeVolume**](MailStatsTypeVolume.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

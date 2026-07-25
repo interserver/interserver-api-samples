@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The QuickserverServiceExtra model module.
  * @module model/QuickserverServiceExtra
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverServiceExtra {
     /**

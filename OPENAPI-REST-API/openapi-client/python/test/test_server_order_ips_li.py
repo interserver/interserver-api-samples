@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_ips_li import ServerOrderIpsLi
+from interserver_api_client.models.server_order_ips_li import ServerOrderIpsLi
 
 class TestServerOrderIpsLi(unittest.TestCase):
     """ServerOrderIpsLi unit test stubs"""
@@ -36,7 +36,7 @@ class TestServerOrderIpsLi(unittest.TestCase):
         model = ServerOrderIpsLi()
         if include_optional:
             return ServerOrderIpsLi(
-                var_9 = openapi_client.models.server_order_ip.ServerOrderIP(
+                var_9 = interserver_api_client.models.server_order_ip.ServerOrderIP(
                     id = '9', 
                     price = 0, 
                     img = 'ips.jpg', 

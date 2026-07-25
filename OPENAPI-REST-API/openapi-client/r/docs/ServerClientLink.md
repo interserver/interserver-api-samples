@@ -1,4 +1,4 @@
-# openapi::ServerClientLink
+# interserverapi::ServerClientLink
 
 
 ## Properties

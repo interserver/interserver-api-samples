@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeServicesBackups = Initialize-PSOpenAPIToolsHomeServicesBackups  -Links null `
+$HomeServicesBackups = Initialize-InterserverApiHomeServicesBackups  -Links null `
  -Count 0
 ```
 

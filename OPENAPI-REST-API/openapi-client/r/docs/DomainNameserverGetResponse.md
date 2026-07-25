@@ -1,4 +1,4 @@
-# openapi::DomainNameserverGetResponse
+# interserverapi::DomainNameserverGetResponse
 
 List of registered nameserver hosts with glue record metadata.
 

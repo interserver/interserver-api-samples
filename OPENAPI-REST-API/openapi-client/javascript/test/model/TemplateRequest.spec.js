@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.TemplateRequest();
+    instance = new InterserverApiClient.TemplateRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('TemplateRequest', function() {
     it('should create an instance of TemplateRequest', function() {
       // uncomment below and update the code to test TemplateRequest
-      //var instance = new InterServerManagementApi.TemplateRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.TemplateRequest);
+      //var instance = new InterserverApiClient.TemplateRequest();
+      //expect(instance).to.be.a(InterserverApiClient.TemplateRequest);
     });
 
     it('should have the property template (base name: "template")', function() {
       // uncomment below and update the code to test the property template
-      //var instance = new InterServerManagementApi.TemplateRequest();
+      //var instance = new InterserverApiClient.TemplateRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property localPassword (base name: "localPassword")', function() {
       // uncomment below and update the code to test the property localPassword
-      //var instance = new InterServerManagementApi.TemplateRequest();
+      //var instance = new InterserverApiClient.TemplateRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property password (base name: "password")', function() {
       // uncomment below and update the code to test the property password
-      //var instance = new InterServerManagementApi.TemplateRequest();
+      //var instance = new InterserverApiClient.TemplateRequest();
       //expect(instance).to.be();
     });
 

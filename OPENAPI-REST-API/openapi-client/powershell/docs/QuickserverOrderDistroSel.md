@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverOrderDistroSel = Initialize-PSOpenAPIToolsQuickserverOrderDistroSel  -Ubuntu null
+$QuickserverOrderDistroSel = Initialize-InterserverApiQuickserverOrderDistroSel  -Ubuntu null
 ```
 
 - Convert the resource to JSON

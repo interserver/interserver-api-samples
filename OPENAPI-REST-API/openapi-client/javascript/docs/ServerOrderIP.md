@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerOrderIP
+# InterserverApiClient.ServerOrderIP
 
 ## Properties
 

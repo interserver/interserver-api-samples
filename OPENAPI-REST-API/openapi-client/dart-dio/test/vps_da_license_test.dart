@@ -1,38 +1,38 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsDALicense
 void main() {
-  final instance = VpsDALicenseBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsDALicense? instance = /* VpsDALicense(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsDALicense, () {
     // License tier name.
-    // String name
+    // Optional<String?> name
     test('to test the property `name`', () async {
       // TODO
     });
 
     // License tier sub-name.
-    // String subName
+    // Optional<String?> subName
     test('to test the property `subName`', () async {
       // TODO
     });
 
     // Monthly cost in cents.
-    // int cost
+    // Optional<int?> cost
     test('to test the property `cost`', () async {
       // TODO
     });
 
     // Image path for the disabled state icon.
-    // String imgDisabled
+    // Optional<String?> imgDisabled
     test('to test the property `imgDisabled`', () async {
       // TODO
     });
 
     // Image path for the active state icon.
-    // String imgActive
+    // Optional<String?> imgActive
     test('to test the property `imgActive`', () async {
       // TODO
     });

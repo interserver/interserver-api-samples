@@ -1,4 +1,4 @@
-# openapi::LicensesOrderServiceTypes
+# interserverapi::LicensesOrderServiceTypes
 
 Types of license services
 

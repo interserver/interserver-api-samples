@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.post_website_buy_ip_request import PostWebsiteBuyIpRequest
+from interserver_api_client.models.post_website_buy_ip_request import PostWebsiteBuyIpRequest
 
 class TestPostWebsiteBuyIpRequest(unittest.TestCase):
     """PostWebsiteBuyIpRequest unit test stubs"""

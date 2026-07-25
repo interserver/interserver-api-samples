@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::AccountSshKey');
+use_ok('InterServerAPI::Object::AccountSshKey');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::AccountSshKey->new();
+#my $instance = InterServerAPI::Object::AccountSshKey->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::AccountSshKey');
+#isa_ok($instance, 'InterServerAPI::Object::AccountSshKey');
 
 
 done_testing();

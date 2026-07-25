@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for PasswordRequest
 void main() {
-  final instance = PasswordRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final PasswordRequest? instance = /* PasswordRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(PasswordRequest, () {
     // String password

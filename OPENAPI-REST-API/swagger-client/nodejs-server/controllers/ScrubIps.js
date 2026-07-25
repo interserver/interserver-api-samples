@@ -143,6 +143,16 @@ module.exports.placeScrubOrder = function placeScrubOrder (req, res, next, body)
     });
 };
 
+module.exports.putScrubIps = function putScrubIps (req, res, next, body) {
+  ScrubIps.putScrubIps(body)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.scrubIpsDeleteGeoRule = function scrubIpsDeleteGeoRule (req, res, next, body, id) {
   ScrubIps.scrubIpsDeleteGeoRule(body, id)
     .then(function (response) {

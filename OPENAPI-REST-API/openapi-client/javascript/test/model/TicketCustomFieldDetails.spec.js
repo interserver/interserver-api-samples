@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.TicketCustomFieldDetails();
+    instance = new InterserverApiClient.TicketCustomFieldDetails();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('TicketCustomFieldDetails', function() {
     it('should create an instance of TicketCustomFieldDetails', function() {
       // uncomment below and update the code to test TicketCustomFieldDetails
-      //var instance = new InterServerManagementApi.TicketCustomFieldDetails();
-      //expect(instance).to.be.a(InterServerManagementApi.TicketCustomFieldDetails);
+      //var instance = new InterserverApiClient.TicketCustomFieldDetails();
+      //expect(instance).to.be.a(InterserverApiClient.TicketCustomFieldDetails);
     });
 
     it('should have the property Customer_Server_Access (base name: "Customer Server Access")', function() {
       // uncomment below and update the code to test the property Customer_Server_Access
-      //var instance = new InterServerManagementApi.TicketCustomFieldDetails();
+      //var instance = new InterserverApiClient.TicketCustomFieldDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property Ip_Address (base name: "Ip Address")', function() {
       // uncomment below and update the code to test the property Ip_Address
-      //var instance = new InterServerManagementApi.TicketCustomFieldDetails();
+      //var instance = new InterserverApiClient.TicketCustomFieldDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property Root_Password (base name: "Root Password")', function() {
       // uncomment below and update the code to test the property Root_Password
-      //var instance = new InterServerManagementApi.TicketCustomFieldDetails();
+      //var instance = new InterserverApiClient.TicketCustomFieldDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property Sudo_User (base name: "Sudo User")', function() {
       // uncomment below and update the code to test the property Sudo_User
-      //var instance = new InterServerManagementApi.TicketCustomFieldDetails();
+      //var instance = new InterserverApiClient.TicketCustomFieldDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property Sudo_Password (base name: "Sudo Password")', function() {
       // uncomment below and update the code to test the property Sudo_Password
-      //var instance = new InterServerManagementApi.TicketCustomFieldDetails();
+      //var instance = new InterserverApiClient.TicketCustomFieldDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property Port (base name: "Port")', function() {
       // uncomment below and update the code to test the property Port
-      //var instance = new InterServerManagementApi.TicketCustomFieldDetails();
+      //var instance = new InterserverApiClient.TicketCustomFieldDetails();
       //expect(instance).to.be();
     });
 

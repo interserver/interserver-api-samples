@@ -9,22 +9,16 @@ import Foundation
 
 
 open class InlineResponse20027: JSONEncodable {
-    public var bandwidth: [InlineResponse20027Bandwidth]?
-    public var ips: [InlineResponse20027Ips]?
-    public var os: [InlineResponse20027Os]?
-    public var cp: [InlineResponse20027Cp]?
-    public var raid: [InlineResponse20027Raid]?
+    public var message: String?
+    public var success: Bool?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["bandwidth"] = self.bandwidth?.encodeToJSON()
-        nillableDictionary["ips"] = self.ips?.encodeToJSON()
-        nillableDictionary["os"] = self.os?.encodeToJSON()
-        nillableDictionary["cp"] = self.cp?.encodeToJSON()
-        nillableDictionary["raid"] = self.raid?.encodeToJSON()
+        nillableDictionary["message"] = self.message
+        nillableDictionary["success"] = self.success
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

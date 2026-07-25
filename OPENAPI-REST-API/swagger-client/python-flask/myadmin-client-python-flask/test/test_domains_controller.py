@@ -18,7 +18,7 @@ from myadmin-client-python-flask.models.domain_order import DomainOrder  # noqa:
 from myadmin-client-python-flask.models.domain_row import DomainRow  # noqa: E501
 from myadmin-client-python-flask.models.domain_search_response import DomainSearchResponse  # noqa: E501
 from myadmin-client-python-flask.models.domain_whois_privacy_request import DomainWhoisPrivacyRequest  # noqa: E501
-from myadmin-client-python-flask.models.inline_response2002 import InlineResponse2002  # noqa: E501
+from myadmin-client-python-flask.models.inline_response2003 import InlineResponse2003  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
@@ -32,18 +32,21 @@ class TestDomainsController(BaseTestCase):
     def test_add_domain(self):
         """Test case for add_domain
 
-        Place Domain Order
+        Place a new domain registration or transfer order, generate billing invoice
         """
+        body = None
         response = self.client.open(
             '/apiv2/domains/order',
-            method='POST')
+            method='POST',
+            data=json.dumps(body),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_add_domain_dnssec(self):
         """Test case for add_domain_dnssec
 
-        Add Domain DNSSEC Records
+        Register DNSSEC DS records on the domain at OpenSRS
         """
         body = DomainDnssecRequest()
         data = dict(algorithm=56,
@@ -62,7 +65,7 @@ class TestDomainsController(BaseTestCase):
     def test_add_domain_nameserver(self):
         """Test case for add_domain_nameserver
 
-        Add Registered Nameserver
+        Register a new nameserver host with glue IP at the registry (registered nameserver)
         """
         body = DomainNameserverPostRequest()
         data = dict(name='name_example',
@@ -79,7 +82,7 @@ class TestDomainsController(BaseTestCase):
     def test_cancel_domain(self):
         """Test case for cancel_domain
 
-        Cancel Domain Order
+        Cancel a domain order in the billing system to stop auto-renewals
         """
         response = self.client.open(
             '/apiv2/domains/{id}'.format(id=56),
@@ -90,20 +93,18 @@ class TestDomainsController(BaseTestCase):
     def test_delete_domain_dnssec(self):
         """Test case for delete_domain_dnssec
 
-        Remove Domain DNSSEC Records
+        Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
         """
-        query_string = [('action', 'action_example')]
         response = self.client.open(
             '/apiv2/domains/{id}/dnssec'.format(id=56),
-            method='DELETE',
-            query_string=query_string)
+            method='DELETE')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_delete_domain_nameserver(self):
         """Test case for delete_domain_nameserver
 
-        Delete Registered Nameserver
+        Remove one registered nameserver glue record from the domain
         """
         query_string = [('index', 56)]
         response = self.client.open(
@@ -116,7 +117,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domain_contact(self):
         """Test case for get_domain_contact
 
-        Get Domain Contact Details
+        Read the current registrant/admin/tech/billing contact field set for a domain
         """
         response = self.client.open(
             '/apiv2/domains/{id}/contact'.format(id=56),
@@ -127,7 +128,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domain_dnssec(self):
         """Test case for get_domain_dnssec
 
-        Get Domain DNSSEC Records
+        Read the DNSSEC DS record set currently registered with the registrar
         """
         response = self.client.open(
             '/apiv2/domains/{id}/dnssec'.format(id=56),
@@ -138,7 +139,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domain_info(self):
         """Test case for get_domain_info
 
-        Get Domain Order
+        Read full billing, registrar, and service detail for one domain
         """
         response = self.client.open(
             '/apiv2/domains/{id}'.format(id=56),
@@ -149,7 +150,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domain_invoices(self):
         """Test case for get_domain_invoices
 
-        Get Domain Invoices
+        List all billing invoices scoped to one domain order
         """
         response = self.client.open(
             '/apiv2/domains/{id}/invoices'.format(id=56),
@@ -160,7 +161,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domain_lookup(self):
         """Test case for get_domain_lookup
 
-        Lookup Domain Availability and Pricing
+        Check availability, premium status, and pricing for a specific domain
         """
         response = self.client.open(
             '/apiv2/domains/lookup/{name}'.format(name='name_example'),
@@ -171,7 +172,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domain_nameservers(self):
         """Test case for get_domain_nameservers
 
-        List Registered Nameservers
+        List registered nameserver hosts and glue IP addresses for a domain
         """
         response = self.client.open(
             '/apiv2/domains/{id}/nameservers'.format(id=56),
@@ -179,32 +180,10 @@ class TestDomainsController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_get_domain_order_fields(self):
-        """Test case for get_domain_order_fields
-
-        Get Domain Order Fields
-        """
-        response = self.client.open(
-            '/apiv2/domains/order/{domain}/{regType}'.format(domain='domain_example', reg_type='reg_type_example'),
-            method='GET')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
-    def test_get_domain_order_search_results(self):
-        """Test case for get_domain_order_search_results
-
-        Get Domain Order Search Results
-        """
-        response = self.client.open(
-            '/apiv2/domains/order/{domain}'.format(domain='domain_example'),
-            method='GET')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_get_domain_renewal(self):
         """Test case for get_domain_renewal
 
-        Start Domain Renewal Flow
+        Read renewal pricing, expiry, and whether a renewal invoice already exists
         """
         response = self.client.open(
             '/apiv2/domains/{id}/renew'.format(id=56),
@@ -215,7 +194,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domain_search(self):
         """Test case for get_domain_search
 
-        Search Domain Suggestions
+        Get registrar-suggested domain alternatives and bulk availability for a search term
         """
         response = self.client.open(
             '/apiv2/domains/search/{name}'.format(name='name_example'),
@@ -226,7 +205,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domain_transfer(self):
         """Test case for get_domain_transfer
 
-        Start Domain Transfer Flow
+        Read OpenSRS transfer status for an in-progress domain transfer order
         """
         response = self.client.open(
             '/apiv2/domains/{id}/transfer'.format(id=56),
@@ -237,7 +216,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domain_whois_privacy(self):
         """Test case for get_domain_whois_privacy
 
-        Get Whois Privacy Status
+        Read Whois privacy availability, current state, and add-on pricing for a domain
         """
         response = self.client.open(
             '/apiv2/domains/{id}/whois'.format(id=56),
@@ -248,7 +227,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domains_list(self):
         """Test case for get_domains_list
 
-        List Domain Orders
+        List every domain registration on the account with billing and registration metadata
         """
         response = self.client.open(
             '/apiv2/domains',
@@ -259,7 +238,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_domains_welcome_email(self):
         """Test case for get_domains_welcome_email
 
-        Resend Domain Welcome Email
+        Resend the domain welcome email with registration details and management instructions
         """
         response = self.client.open(
             '/apiv2/domains/{id}/welcome_email'.format(id=56),
@@ -270,7 +249,7 @@ class TestDomainsController(BaseTestCase):
     def test_get_new_domain(self):
         """Test case for get_new_domain
 
-        Get Domain Ordering Information
+        Read the buyable domain TLD service catalog and Whois privacy pricing
         """
         response = self.client.open(
             '/apiv2/domains/order',
@@ -281,18 +260,21 @@ class TestDomainsController(BaseTestCase):
     def test_patch_domains(self):
         """Test case for patch_domains
 
-        Validate Domain Order
+        Validate posted domain-order field values before committing — dry run
         """
+        body = None
         response = self.client.open(
             '/apiv2/domains/order',
-            method='PATCH')
+            method='PATCH',
+            data=json.dumps(body),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_post_domain_renewal(self):
         """Test case for post_domain_renewal
 
-        Request Domain Renewal
+        Submit a domain renewal request and generate the renewal invoice
         """
         response = self.client.open(
             '/apiv2/domains/{id}/renew'.format(id=56),
@@ -300,10 +282,21 @@ class TestDomainsController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
+    def test_post_domain_search(self):
+        """Test case for post_domain_search
+
+        Get the full order form data for a hostname in one round-trip (search → order preview)
+        """
+        response = self.client.open(
+            '/apiv2/domains/search/{name}'.format(name='name_example'),
+            method='POST')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
     def test_post_domain_transfer(self):
         """Test case for post_domain_transfer
 
-        Request Domain Transfer
+        Re-poll OpenSRS transfer status for a domain order via POST
         """
         response = self.client.open(
             '/apiv2/domains/{id}/transfer'.format(id=56),
@@ -314,18 +307,21 @@ class TestDomainsController(BaseTestCase):
     def test_put_domains(self):
         """Test case for put_domains
 
-        Domain Order Search
+        Preview per-TLD field requirements for a domain order — no commit
         """
+        body = None
         response = self.client.open(
             '/apiv2/domains/order',
-            method='PUT')
+            method='PUT',
+            data=json.dumps(body),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_update_domain_contact(self):
         """Test case for update_domain_contact
 
-        Update Domain Contact Details
+        Update registrant/admin contact details and push them to OpenSRS
         """
         body = DomainContactDetails()
         data = dict(status='status_example',
@@ -354,10 +350,10 @@ class TestDomainsController(BaseTestCase):
     def test_update_domain_info(self):
         """Test case for update_domain_info
 
-        Update Domain Order
+        POST mutation hook for the domain detail page (use dedicated ops where possible)
         """
         response = self.client.open(
-            '/apiv2/domains/{id}'.format(id='id_example'),
+            '/apiv2/domains/{id}'.format(id=56),
             method='POST')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -365,7 +361,7 @@ class TestDomainsController(BaseTestCase):
     def test_update_domain_nameservers(self):
         """Test case for update_domain_nameservers
 
-        Replace Nameserver Set
+        Replace the full authoritative-nameserver delegation list at the registrar
         """
         body = DomainNameserverPutRequest()
         data = dict(nameserver='nameserver_example')
@@ -381,7 +377,7 @@ class TestDomainsController(BaseTestCase):
     def test_update_domain_whois_privacy(self):
         """Test case for update_domain_whois_privacy
 
-        Update Whois Privacy
+        Order, enable, or cancel the Whois privacy add-on for a domain
         """
         body = DomainWhoisPrivacyRequest()
         data = dict(func='func_example',

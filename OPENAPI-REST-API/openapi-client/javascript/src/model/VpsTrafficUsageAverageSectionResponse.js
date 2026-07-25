@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsTrafficUsageAverageSectionResponse model module.
  * @module model/VpsTrafficUsageAverageSectionResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsTrafficUsageAverageSectionResponse {
     /**

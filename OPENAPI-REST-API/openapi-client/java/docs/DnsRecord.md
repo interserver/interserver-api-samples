@@ -20,4 +20,8 @@ A single DNS Record row for a Domain
 |**auth** | **String** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

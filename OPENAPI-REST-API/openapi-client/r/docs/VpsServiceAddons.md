@@ -1,4 +1,4 @@
-# openapi::VpsServiceAddons
+# interserverapi::VpsServiceAddons
 
 Add-on services and IP address information for a VPS, including control panel licenses and extra IP assignments.
 

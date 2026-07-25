@@ -294,33 +294,31 @@ class GetScrubIpDetails200ResponseServiceInfo {
 }
 
 
-class GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum {
-  /// Instantiate a new enum with the provided [value].
-  const GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum._(this.value);
+enum GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum {
+  active._(r'active'),
+  pending._(r'pending'),
+  canceled._(r'canceled'),
+  expired._(r'expired'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const active = GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum._(r'active');
-  static const pending = GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum._(r'pending');
-  static const canceled = GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum._(r'canceled');
-  static const expired = GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum._(r'expired');
-
-  /// List of all possible values in this [enum][GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum].
-  static const values = <GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum>[
-    active,
-    pending,
-    canceled,
-    expired,
-  ];
-
+  /// Returns the instance of [GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum? fromJson(dynamic value) => GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -342,9 +340,10 @@ class GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnumTypeTransformer {
 
   const GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnumTypeTransformer._();
 
-  String encode(GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum data) => data.value;
+  String encode(GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum.
+  /// Returns the instance of [GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -353,6 +352,9 @@ class GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'active': return GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum.active;
@@ -368,7 +370,7 @@ class GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnumTypeTransformer? _instance;
 }
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsServiceAddons();
+    instance = new InterserverApiClient.VpsServiceAddons();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,97 +50,97 @@
   describe('VpsServiceAddons', function() {
     it('should create an instance of VpsServiceAddons', function() {
       // uncomment below and update the code to test VpsServiceAddons
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsServiceAddons);
+      //var instance = new InterserverApiClient.VpsServiceAddons();
+      //expect(instance).to.be.a(InterserverApiClient.VpsServiceAddons);
     });
 
     it('should have the property has_cpanel (base name: "has_cpanel")', function() {
       // uncomment below and update the code to test the property has_cpanel
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property has_directadmin (base name: "has_directadmin")', function() {
       // uncomment below and update the code to test the property has_directadmin
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property has_fantastico (base name: "has_fantastico")', function() {
       // uncomment below and update the code to test the property has_fantastico
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property has_softaculous (base name: "has_softaculous")', function() {
       // uncomment below and update the code to test the property has_softaculous
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property has_hdspace (base name: "has_hdspace")', function() {
       // uncomment below and update the code to test the property has_hdspace
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property dedicated_ip (base name: "dedicated_ip")', function() {
       // uncomment below and update the code to test the property dedicated_ip
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property extra_ips (base name: "extra_ips")', function() {
       // uncomment below and update the code to test the property extra_ips
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property extra_ips6 (base name: "extra_ips6")', function() {
       // uncomment below and update the code to test the property extra_ips6
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property unpaid_ips (base name: "unpaid_ips")', function() {
       // uncomment below and update the code to test the property unpaid_ips
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property ips (base name: "ips")', function() {
       // uncomment below and update the code to test the property ips
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property ips6 (base name: "ips6")', function() {
       // uncomment below and update the code to test the property ips6
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property cpanel_id (base name: "cpanel_id")', function() {
       // uncomment below and update the code to test the property cpanel_id
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property cost (base name: "cost")', function() {
       // uncomment below and update the code to test the property cost
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property ids (base name: "ids")', function() {
       // uncomment below and update the code to test the property ids
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 
     it('should have the property rdata (base name: "rdata")', function() {
       // uncomment below and update the code to test the property rdata
-      //var instance = new InterServerManagementApi.VpsServiceAddons();
+      //var instance = new InterserverApiClient.VpsServiceAddons();
       //expect(instance).to.be();
     });
 

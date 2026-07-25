@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicenseBillingDetails = Initialize-PSOpenAPIToolsLicenseBillingDetails  -ServiceLastInvoiceDate August 14, 2023 `
+$LicenseBillingDetails = Initialize-InterserverApiLicenseBillingDetails  -ServiceLastInvoiceDate August 14, 2023 `
  -ServicePaymentStatus Paid `
  -ServiceFrequency Monthly `
  -NextDate 2023-09-14T09:39:46Z `

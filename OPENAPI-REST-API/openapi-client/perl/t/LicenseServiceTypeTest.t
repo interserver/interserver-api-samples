@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::LicenseServiceType');
+use_ok('InterServerAPI::Object::LicenseServiceType');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::LicenseServiceType->new();
+#my $instance = InterServerAPI::Object::LicenseServiceType->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::LicenseServiceType');
+#isa_ok($instance, 'InterServerAPI::Object::LicenseServiceType');
 
 
 done_testing();

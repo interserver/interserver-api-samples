@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainTechContact();
+    instance = new InterserverApiClient.DomainTechContact();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,91 +50,91 @@
   describe('DomainTechContact', function() {
     it('should create an instance of DomainTechContact', function() {
       // uncomment below and update the code to test DomainTechContact
-      //var instance = new InterServerManagementApi.DomainTechContact();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainTechContact);
+      //var instance = new InterserverApiClient.DomainTechContact();
+      //expect(instance).to.be.a(InterserverApiClient.DomainTechContact);
     });
 
     it('should have the property state (base name: "state")', function() {
       // uncomment below and update the code to test the property state
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property org_name (base name: "org_name")', function() {
       // uncomment below and update the code to test the property org_name
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property country (base name: "country")', function() {
       // uncomment below and update the code to test the property country
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property postal_code (base name: "postal_code")', function() {
       // uncomment below and update the code to test the property postal_code
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property fax (base name: "fax")', function() {
       // uncomment below and update the code to test the property fax
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property email (base name: "email")', function() {
       // uncomment below and update the code to test the property email
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property address2 (base name: "address2")', function() {
       // uncomment below and update the code to test the property address2
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property address3 (base name: "address3")', function() {
       // uncomment below and update the code to test the property address3
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property address1 (base name: "address1")', function() {
       // uncomment below and update the code to test the property address1
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property city (base name: "city")', function() {
       // uncomment below and update the code to test the property city
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property phone (base name: "phone")', function() {
       // uncomment below and update the code to test the property phone
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property first_name (base name: "first_name")', function() {
       // uncomment below and update the code to test the property first_name
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 
     it('should have the property last_name (base name: "last_name")', function() {
       // uncomment below and update the code to test the property last_name
-      //var instance = new InterServerManagementApi.DomainTechContact();
+      //var instance = new InterserverApiClient.DomainTechContact();
       //expect(instance).to.be();
     });
 

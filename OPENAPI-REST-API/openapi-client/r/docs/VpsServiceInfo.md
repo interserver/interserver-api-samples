@@ -1,4 +1,4 @@
-# openapi::VpsServiceInfo
+# interserverapi::VpsServiceInfo
 
 
 ## Properties

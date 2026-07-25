@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WebsiteServiceMaster } from './api';
+import { WebsiteServiceMaster } from '@interserver/myadmin-client';
 
 const instance: WebsiteServiceMaster = {
     website_id,

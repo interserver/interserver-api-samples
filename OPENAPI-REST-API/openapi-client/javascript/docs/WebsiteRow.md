@@ -1,4 +1,4 @@
-# InterServerManagementApi.WebsiteRow
+# InterserverApiClient.WebsiteRow
 
 ## Properties
 

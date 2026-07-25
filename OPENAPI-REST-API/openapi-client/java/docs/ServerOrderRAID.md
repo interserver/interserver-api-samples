@@ -19,4 +19,8 @@ A RAID configuration option available when ordering a dedicated server.
 |**monthlyPriceDisplay** | **String** | Display of monthly RAID price. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

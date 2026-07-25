@@ -1,4 +1,4 @@
-# openapi::ServerOrderBandwidth
+# interserverapi::ServerOrderBandwidth
 
 A bandwidth option available when ordering a dedicated server.
 

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::PostWebsiteBuyIp200Response
+# InterServerAPI::Object::PostWebsiteBuyIp200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::PostWebsiteBuyIp200Response;
+use InterServerAPI::Object::PostWebsiteBuyIp200Response;
 ```
 
 ## Properties

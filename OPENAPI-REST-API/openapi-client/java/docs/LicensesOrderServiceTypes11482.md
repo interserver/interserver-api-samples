@@ -18,4 +18,8 @@
 |**servicesModule** | **String** | Module of Service |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

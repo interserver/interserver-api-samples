@@ -60,7 +60,7 @@ public class InlineResponse20017   {
    * @return text
    **/
   @JsonProperty("text")
-  @Schema(example = "Filter is deleted.", description = "")
+  @Schema(example = "Firewall Rule has been deleted.", description = "")
   @NotNull
   public String getText() {
     return text;

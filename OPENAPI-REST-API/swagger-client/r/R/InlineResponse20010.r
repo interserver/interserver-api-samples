@@ -8,7 +8,11 @@
 
 #' InlineResponse20010 Class
 #'
-#' @field success 
+#' @field type 
+#' @field redirect 
+#' @field action 
+#' @field method 
+#' @field items 
 #' @field text 
 #'
 #' @importFrom R6 R6Class
@@ -17,11 +21,32 @@
 InlineResponse20010 <- R6::R6Class(
   'InlineResponse20010',
   public = list(
-    `success` = NULL,
+    `type` = NULL,
+    `redirect` = NULL,
+    `action` = NULL,
+    `method` = NULL,
+    `items` = NULL,
     `text` = NULL,
-    initialize = function(`success`, `text`){
-      if (!missing(`success`)) {
-        self$`success` <- `success`
+    initialize = function(`type`, `redirect`, `action`, `method`, `items`, `text`){
+      if (!missing(`type`)) {
+        stopifnot(is.character(`type`), length(`type`) == 1)
+        self$`type` <- `type`
+      }
+      if (!missing(`redirect`)) {
+        stopifnot(is.character(`redirect`), length(`redirect`) == 1)
+        self$`redirect` <- `redirect`
+      }
+      if (!missing(`action`)) {
+        stopifnot(is.character(`action`), length(`action`) == 1)
+        self$`action` <- `action`
+      }
+      if (!missing(`method`)) {
+        stopifnot(is.character(`method`), length(`method`) == 1)
+        self$`method` <- `method`
+      }
+      if (!missing(`items`)) {
+        stopifnot(R6::is.R6(`items`))
+        self$`items` <- `items`
       }
       if (!missing(`text`)) {
         stopifnot(is.character(`text`), length(`text`) == 1)
@@ -30,8 +55,20 @@ InlineResponse20010 <- R6::R6Class(
     },
     toJSON = function() {
       InlineResponse20010Object <- list()
-      if (!is.null(self$`success`)) {
-        InlineResponse20010Object[['success']] <- self$`success`
+      if (!is.null(self$`type`)) {
+        InlineResponse20010Object[['type']] <- self$`type`
+      }
+      if (!is.null(self$`redirect`)) {
+        InlineResponse20010Object[['redirect']] <- self$`redirect`
+      }
+      if (!is.null(self$`action`)) {
+        InlineResponse20010Object[['action']] <- self$`action`
+      }
+      if (!is.null(self$`method`)) {
+        InlineResponse20010Object[['method']] <- self$`method`
+      }
+      if (!is.null(self$`items`)) {
+        InlineResponse20010Object[['items']] <- self$`items`$toJSON()
       }
       if (!is.null(self$`text`)) {
         InlineResponse20010Object[['text']] <- self$`text`
@@ -41,8 +78,22 @@ InlineResponse20010 <- R6::R6Class(
     },
     fromJSON = function(InlineResponse20010Json) {
       InlineResponse20010Object <- jsonlite::fromJSON(InlineResponse20010Json)
-      if (!is.null(InlineResponse20010Object$`success`)) {
-        self$`success` <- InlineResponse20010Object$`success`
+      if (!is.null(InlineResponse20010Object$`type`)) {
+        self$`type` <- InlineResponse20010Object$`type`
+      }
+      if (!is.null(InlineResponse20010Object$`redirect`)) {
+        self$`redirect` <- InlineResponse20010Object$`redirect`
+      }
+      if (!is.null(InlineResponse20010Object$`action`)) {
+        self$`action` <- InlineResponse20010Object$`action`
+      }
+      if (!is.null(InlineResponse20010Object$`method`)) {
+        self$`method` <- InlineResponse20010Object$`method`
+      }
+      if (!is.null(InlineResponse20010Object$`items`)) {
+        itemsObject <- TODO_OBJECT_MAPPING$new()
+        itemsObject$fromJSON(jsonlite::toJSON(InlineResponse20010Object$items, auto_unbox = TRUE))
+        self$`items` <- itemsObject
       }
       if (!is.null(InlineResponse20010Object$`text`)) {
         self$`text` <- InlineResponse20010Object$`text`
@@ -51,16 +102,29 @@ InlineResponse20010 <- R6::R6Class(
     toJSONString = function() {
        sprintf(
         '{
-           "success": %s,
+           "type": %s,
+           "redirect": %s,
+           "action": %s,
+           "method": %s,
+           "items": %s,
            "text": %s
         }',
-        self$`success`,
+        self$`type`,
+        self$`redirect`,
+        self$`action`,
+        self$`method`,
+        self$`items`$toJSON(),
         self$`text`
       )
     },
     fromJSONString = function(InlineResponse20010Json) {
       InlineResponse20010Object <- jsonlite::fromJSON(InlineResponse20010Json)
-      self$`success` <- InlineResponse20010Object$`success`
+      self$`type` <- InlineResponse20010Object$`type`
+      self$`redirect` <- InlineResponse20010Object$`redirect`
+      self$`action` <- InlineResponse20010Object$`action`
+      self$`method` <- InlineResponse20010Object$`method`
+      TODO_OBJECT_MAPPINGObject <- TODO_OBJECT_MAPPING$new()
+      self$`items` <- TODO_OBJECT_MAPPINGObject$fromJSON(jsonlite::toJSON(InlineResponse20010Object$items, auto_unbox = TRUE))
       self$`text` <- InlineResponse20010Object$`text`
     }
   )

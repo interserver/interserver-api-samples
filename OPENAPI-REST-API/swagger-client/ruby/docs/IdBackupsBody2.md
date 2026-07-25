@@ -1,4 +1,4 @@
-# SwaggerClient::IdBackupsBody2
+# InterserverApiClient::IdBackupsBody2
 
 ## Properties
 Name | Type | Description | Notes

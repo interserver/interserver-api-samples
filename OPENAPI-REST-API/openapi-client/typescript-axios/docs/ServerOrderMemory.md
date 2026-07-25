@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderMemory } from './api';
+import { ServerOrderMemory } from '@interserver/myadmin-client';
 
 const instance: ServerOrderMemory = {
     id,

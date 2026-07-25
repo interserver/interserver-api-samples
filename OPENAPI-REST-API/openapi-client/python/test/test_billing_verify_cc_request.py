@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.billing_verify_cc_request import BillingVerifyCcRequest
+from interserver_api_client.models.billing_verify_cc_request import BillingVerifyCcRequest
 
 class TestBillingVerifyCcRequest(unittest.TestCase):
     """BillingVerifyCcRequest unit test stubs"""

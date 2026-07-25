@@ -4,17 +4,17 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddNewTicket**](TicketsAPI.md#AddNewTicket) | **Post** /tickets/new | Create New Ticket
-[**CloseTicket**](TicketsAPI.md#CloseTicket) | **Get** /tickets/{id}/close | Close Ticket
-[**DeleteTicketInfo**](TicketsAPI.md#DeleteTicketInfo) | **Delete** /tickets/{id} | Close Ticket
-[**GetNewTicket**](TicketsAPI.md#GetNewTicket) | **Get** /tickets/new | Gets Information for creating a new ticket.
-[**GetTicketInfo**](TicketsAPI.md#GetTicketInfo) | **Get** /tickets/{id} | Get Ticket Information
-[**GetTicketsList**](TicketsAPI.md#GetTicketsList) | **Get** /tickets | List Support Tickets
-[**PostTicketInfo**](TicketsAPI.md#PostTicketInfo) | **Post** /tickets/{id} | Reply To Ticket
-[**PostTicketsList**](TicketsAPI.md#PostTicketsList) | **Post** /tickets | Search Support Tickets
-[**PutTicketInfo**](TicketsAPI.md#PutTicketInfo) | **Put** /tickets/{id} | Update Ticket
-[**ReplyTicket**](TicketsAPI.md#ReplyTicket) | **Post** /tickets/{id}/reply | Reply Ticket
-[**UpdateTicketInfo**](TicketsAPI.md#UpdateTicketInfo) | **Post** /tickets/{id}/update | Update Ticket
+[**AddNewTicket**](TicketsAPI.md#AddNewTicket) | **Post** /tickets/new | Open a new helpdesk ticket, optionally linked to a service and attachments
+[**CloseTicket**](TicketsAPI.md#CloseTicket) | **Get** /tickets/{id}/close | Close an open support ticket via simple GET request (no body required)
+[**DeleteTicketInfo**](TicketsAPI.md#DeleteTicketInfo) | **Delete** /tickets/{id} | Close a customer ticket via DELETE verb (closes only, never destroys data)
+[**GetNewTicket**](TicketsAPI.md#GetNewTicket) | **Get** /tickets/new | Fetch services and product options to populate the new-ticket form
+[**GetTicketInfo**](TicketsAPI.md#GetTicketInfo) | **Get** /tickets/{id} | Get full ticket details including subject, status, and the reply thread
+[**GetTicketsList**](TicketsAPI.md#GetTicketsList) | **Get** /tickets | List the authenticated account&#39;s support tickets with status and date filters
+[**PostTicketInfo**](TicketsAPI.md#PostTicketInfo) | **Post** /tickets/{id} | Append a reply (and optional attachment, server-access fields) to a ticket
+[**PostTicketsList**](TicketsAPI.md#PostTicketsList) | **Post** /tickets | Search the authenticated account&#39;s tickets by subject, email, or mask ID
+[**PutTicketInfo**](TicketsAPI.md#PutTicketInfo) | **Put** /tickets/{id} | Update a ticket&#39;s properties such as subject or status (stub, not implemented)
+[**ReplyTicket**](TicketsAPI.md#ReplyTicket) | **Post** /tickets/{id}/reply | Post a simple text reply to an existing ticket thread (no attachments)
+[**UpdateTicketInfo**](TicketsAPI.md#UpdateTicketInfo) | **Post** /tickets/{id}/update | Update a ticket&#39;s custom field values (server-access details, etc.)
 
 
 
@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 > TicketNewResponse AddNewTicket(ctx).TicketNew(ticketNew).Execute()
 
-Create New Ticket
+Open a new helpdesk ticket, optionally linked to a service and attachments
 
 
 
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 > CloseTicketResponseSchema CloseTicket(ctx, id).Execute()
 
-Close Ticket
+Close an open support ticket via simple GET request (no body required)
 
 
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 > ViewTicketResponse DeleteTicketInfo(ctx, id).Execute()
 
-Close Ticket
+Close a customer ticket via DELETE verb (closes only, never destroys data)
 
 
 
@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 > GetNewTicket(ctx).Execute()
 
-Gets Information for creating a new ticket.
+Fetch services and product options to populate the new-ticket form
 
 
 
@@ -287,7 +287,7 @@ Other parameters are passed through a pointer to a apiGetNewTicketRequest struct
 
 > ViewTicketResponse GetTicketInfo(ctx, id).Execute()
 
-Get Ticket Information
+Get full ticket details including subject, status, and the reply thread
 
 
 
@@ -357,7 +357,7 @@ Name | Type | Description  | Notes
 
 > Tickets GetTicketsList(ctx).Page(page).Period(period).View(view).Execute()
 
-List Support Tickets
+List the authenticated account's support tickets with status and date filters
 
 
 
@@ -427,7 +427,7 @@ Name | Type | Description  | Notes
 
 > ViewTicketResponse PostTicketInfo(ctx, id).Execute()
 
-Reply To Ticket
+Append a reply (and optional attachment, server-access fields) to a ticket
 
 
 
@@ -497,7 +497,7 @@ Name | Type | Description  | Notes
 
 > Tickets PostTicketsList(ctx).Execute()
 
-Search Support Tickets
+Search the authenticated account's tickets by subject, email, or mask ID
 
 
 
@@ -558,7 +558,7 @@ Other parameters are passed through a pointer to a apiPostTicketsListRequest str
 
 > ViewTicketResponse PutTicketInfo(ctx, id).Execute()
 
-Update Ticket
+Update a ticket's properties such as subject or status (stub, not implemented)
 
 
 
@@ -628,7 +628,7 @@ Name | Type | Description  | Notes
 
 > ReplyTicketResponseSchema ReplyTicket(ctx, id).ReplyTicketRequest(replyTicketRequest).Execute()
 
-Reply Ticket
+Post a simple text reply to an existing ticket thread (no attachments)
 
 
 
@@ -700,7 +700,7 @@ Name | Type | Description  | Notes
 
 > UpdateTicketResponseSchema UpdateTicketInfo(ctx, id).UpdateTicket(updateTicket).Execute()
 
-Update Ticket
+Update a ticket's custom field values (server-access details, etc.)
 
 
 

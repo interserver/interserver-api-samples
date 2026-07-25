@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerSwitchport
 void main() {
-  final instance = ServerSwitchportBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerSwitchport? instance = /* ServerSwitchport(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerSwitchport, () {
     // Unique identifier for the switchport.
@@ -56,13 +56,13 @@ void main() {
     });
 
     // List of VLANs associated with the switchport.
-    // BuiltList<String> vlans
+    // Optional<List<String>?> vlans
     test('to test the property `vlans`', () async {
       // TODO
     });
 
     // List of IPv6 VLANs associated with the switchport.
-    // BuiltList<String> vlans6
+    // Optional<List<String>?> vlans6
     test('to test the property `vlans6`', () async {
       // TODO
     });

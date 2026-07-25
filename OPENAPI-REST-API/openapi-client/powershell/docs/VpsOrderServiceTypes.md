@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderServiceTypes = Initialize-PSOpenAPIToolsVpsOrderServiceTypes  -Var32 null
+$VpsOrderServiceTypes = Initialize-InterserverApiVpsOrderServiceTypes  -Var32 null
 ```
 
 - Convert the resource to JSON

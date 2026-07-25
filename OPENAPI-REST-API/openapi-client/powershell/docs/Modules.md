@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Modules = Initialize-PSOpenAPIToolsModules 
+$Modules = Initialize-InterserverApiModules 
 ```
 
 - Convert the resource to JSON

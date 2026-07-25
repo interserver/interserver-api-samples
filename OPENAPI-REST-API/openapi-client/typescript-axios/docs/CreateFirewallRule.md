@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CreateFirewallRule } from './api';
+import { CreateFirewallRule } from '@interserver/myadmin-client';
 
 const instance: CreateFirewallRule = {
     protocol_id,

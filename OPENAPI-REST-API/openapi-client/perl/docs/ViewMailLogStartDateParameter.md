@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ViewMailLogStartDateParameter
+# InterServerAPI::Object::ViewMailLogStartDateParameter
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ViewMailLogStartDateParameter;
+use InterServerAPI::Object::ViewMailLogStartDateParameter;
 ```
 
 ## Properties

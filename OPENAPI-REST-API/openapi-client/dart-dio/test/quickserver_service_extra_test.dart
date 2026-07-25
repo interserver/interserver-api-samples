@@ -1,14 +1,14 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for QuickserverServiceExtra
 void main() {
-  final instance = QuickserverServiceExtraBuilder();
-  // TODO add properties to the builder and call build()
+  final QuickserverServiceExtra? instance = /* QuickserverServiceExtra(...) */ null;
+  // TODO add properties to the entity
 
   group(QuickserverServiceExtra, () {
     // Platform information
-    // String platform
+    // Optional<String?> platform
     test('to test the property `platform`', () async {
       // TODO
     });

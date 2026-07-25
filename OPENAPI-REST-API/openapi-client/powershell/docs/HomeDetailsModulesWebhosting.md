@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeDetailsModulesWebhosting = Initialize-PSOpenAPIToolsHomeDetailsModulesWebhosting  -Icon window-maximize `
+$HomeDetailsModulesWebhosting = Initialize-InterserverApiHomeDetailsModulesWebhosting  -Icon window-maximize `
  -ViewLink view_website `
  -Heading Web Hosting `
  -BuyLink order_website `

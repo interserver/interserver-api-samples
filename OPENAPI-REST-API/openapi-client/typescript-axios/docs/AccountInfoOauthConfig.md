@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoOauthConfig } from './api';
+import { AccountInfoOauthConfig } from '@interserver/myadmin-client';
 
 const instance: AccountInfoOauthConfig = {
     callback,

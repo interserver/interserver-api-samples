@@ -98,7 +98,7 @@ WebsitesOrderJsonServiceOffers <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`1026`)) {
-        self$`1026` <- ApiClient$new()$deserializeObj(this_object$`1026`, "array[WebsitesOrderJsonServiceOffersItem]", loadNamespace("openapi"))
+        self$`1026` <- ApiClient$new()$deserializeObj(this_object$`1026`, "array[WebsitesOrderJsonServiceOffersItem]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -121,7 +121,7 @@ WebsitesOrderJsonServiceOffers <- R6::R6Class(
     #' @return the instance of WebsitesOrderJsonServiceOffers
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`1026` <- ApiClient$new()$deserializeObj(this_object$`1026`, "array[WebsitesOrderJsonServiceOffersItem]", loadNamespace("openapi"))
+      self$`1026` <- ApiClient$new()$deserializeObj(this_object$`1026`, "array[WebsitesOrderJsonServiceOffersItem]", loadNamespace("interserverapi"))
       self
     },
 

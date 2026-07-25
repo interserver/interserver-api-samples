@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for IpObject
 void main() {
-  final instance = IpObjectBuilder();
-  // TODO add properties to the builder and call build()
+  final IpObject? instance = /* IpObject(...) */ null;
+  // TODO add properties to the entity
 
   group(IpObject, () {
     // IP Address

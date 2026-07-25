@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Vps = Initialize-PSOpenAPIToolsVps  -ServiceInfo null `
+$Vps = Initialize-InterserverApiVps  -ServiceInfo null `
  -ClientLinks null `
  -BillingDetails null `
  -CustCurrency null `

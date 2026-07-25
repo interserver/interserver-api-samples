@@ -1,4 +1,4 @@
-# SwaggerClient::DomainNameServer
+# InterserverApiClient::DomainNameServer
 
 ## Properties
 Name | Type | Description | Notes

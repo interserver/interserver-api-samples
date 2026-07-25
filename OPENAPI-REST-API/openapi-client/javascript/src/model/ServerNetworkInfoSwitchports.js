@@ -17,7 +17,7 @@ import ServerSwitchport from './ServerSwitchport';
 /**
  * The ServerNetworkInfoSwitchports model module.
  * @module model/ServerNetworkInfoSwitchports
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerNetworkInfoSwitchports {
     /**

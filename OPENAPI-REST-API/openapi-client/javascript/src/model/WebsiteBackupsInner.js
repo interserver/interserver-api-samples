@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The WebsiteBackupsInner model module.
  * @module model/WebsiteBackupsInner
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsiteBackupsInner {
     /**

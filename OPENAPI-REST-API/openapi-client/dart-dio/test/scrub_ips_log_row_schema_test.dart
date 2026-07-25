@@ -1,48 +1,48 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ScrubIpsLogRowSchema
 void main() {
-  final instance = ScrubIpsLogRowSchemaBuilder();
-  // TODO add properties to the builder and call build()
+  final ScrubIpsLogRowSchema? instance = /* ScrubIpsLogRowSchema(...) */ null;
+  // TODO add properties to the entity
 
   group(ScrubIpsLogRowSchema, () {
-    // String date
+    // Optional<String?> date
     test('to test the property `date`', () async {
       // TODO
     });
 
-    // String filter
+    // Optional<String?> filter
     test('to test the property `filter`', () async {
       // TODO
     });
 
-    // String blockedIp
+    // Optional<String?> blockedIp
     test('to test the property `blockedIp`', () async {
       // TODO
     });
 
-    // String targetIp
+    // Optional<String?> targetIp
     test('to test the property `targetIp`', () async {
       // TODO
     });
 
-    // num targetPort
+    // Optional<num?> targetPort
     test('to test the property `targetPort`', () async {
       // TODO
     });
 
-    // String protocol
+    // Optional<String?> protocol
     test('to test the property `protocol`', () async {
       // TODO
     });
 
-    // num byteCount
+    // Optional<num?> byteCount
     test('to test the property `byteCount`', () async {
       // TODO
     });
 
-    // String xdpAction
+    // Optional<String?> xdpAction
     test('to test the property `xdpAction`', () async {
       // TODO
     });

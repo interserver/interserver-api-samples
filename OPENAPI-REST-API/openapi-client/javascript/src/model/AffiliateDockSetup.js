@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AffiliateDockSetup model module.
  * @module model/AffiliateDockSetup
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AffiliateDockSetup {
     /**

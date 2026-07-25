@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsitesOrderPackagesInfo = Initialize-PSOpenAPIToolsWebsitesOrderPackagesInfo  -ServicesId 11440 `
+$WebsitesOrderPackagesInfo = Initialize-InterserverApiWebsitesOrderPackagesInfo  -ServicesId 11440 `
  -ServicesName DA BOOST X `
  -ServicesCost 69.95 `
  -ServicesCategory 204 `

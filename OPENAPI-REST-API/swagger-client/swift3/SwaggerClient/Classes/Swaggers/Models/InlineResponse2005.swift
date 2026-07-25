@@ -9,15 +9,16 @@ import Foundation
 
 
 open class InlineResponse2005: JSONEncodable {
-    /** The URL to redirect the user to for OAuth authentication. */
-    public var redirectUrl: String?
+    public var success: Bool?
+    public var text: String?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["redirect_url"] = self.redirectUrl
+        nillableDictionary["success"] = self.success
+        nillableDictionary["text"] = self.text
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

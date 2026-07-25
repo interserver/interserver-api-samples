@@ -34,4 +34,3 @@ case class ServiceOrderPostResponse(
   /* Human-readable description of the invoice. */
   invoice_description: Option[String] = None
 )
-

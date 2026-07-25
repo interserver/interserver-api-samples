@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverIpInfo
+# InterserverApiClient.QuickserverIpInfo
 
 ## Properties
 

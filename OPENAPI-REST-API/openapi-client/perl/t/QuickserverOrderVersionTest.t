@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::QuickserverOrderVersion');
+use_ok('InterServerAPI::Object::QuickserverOrderVersion');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::QuickserverOrderVersion->new();
+#my $instance = InterServerAPI::Object::QuickserverOrderVersion->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::QuickserverOrderVersion');
+#isa_ok($instance, 'InterServerAPI::Object::QuickserverOrderVersion');
 
 
 done_testing();

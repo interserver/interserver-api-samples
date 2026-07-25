@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderLocationStock = Initialize-PSOpenAPIToolsVpsOrderLocationStock  -Var1 null
+$VpsOrderLocationStock = Initialize-InterserverApiVpsOrderLocationStock  -Var1 null
 ```
 
 - Convert the resource to JSON

@@ -1,26 +1,26 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BillingPrepayRequest
 void main() {
-  final instance = BillingPrepayRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final BillingPrepayRequest? instance = /* BillingPrepayRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(BillingPrepayRequest, () {
     // Module the prepay should be applied to (for example `default`).
-    // String module
+    // Optional<String?> module
     test('to test the property `module`', () async {
       // TODO
     });
 
     // Amount to add to prepay balance. Minimum is $10.
-    // num amount
+    // Optional<num?> amount
     test('to test the property `amount`', () async {
       // TODO
     });
 
     // Whether the prepay balance should be used automatically.
-    // String automaticUse
+    // Optional<String?> automaticUse
     test('to test the property `automaticUse`', () async {
       // TODO
     });

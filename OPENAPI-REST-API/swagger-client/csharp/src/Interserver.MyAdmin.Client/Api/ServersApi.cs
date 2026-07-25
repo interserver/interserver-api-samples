@@ -24,86 +24,88 @@ namespace Interserver.MyAdmin.Client.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Place Server Order
+        /// Place a custom dedicated server order, creating a real billable invoice
         /// </summary>
         /// <remarks>
-        /// Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
+        /// Submits a fully custom dedicated server order. Creates a &#x60;pending&#x60; &#x60;servers&#x60; row, a &#x60;Repeat_Invoice&#x60;, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): &#x60;cpu&#x60; (id from &#x60;cpu_li&#x60;), &#x60;hd[]&#x60; (array of drive ids), &#x60;memory&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;os&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (ids from &#x60;getNewServer&#x60;), &#x60;region&#x60; (region_id), &#x60;servername&#x60; (valid hostname), &#x60;rootpass&#x60;, &#x60;tos&#x60; (must be true), optional &#x60;comment&#x60;. &#x60;account.server_order_discount&#x60; (if set) applies. Returns: &#x60;{ text:&#x27;Order Completed&#x27;, invoice, order }&#x60;. Errors: 422 &#x27;Missing/Invalid &lt;field&gt;&#x27;; 401 unauth. Sibling ops: &#x60;getNewServer&#x60; (options), &#x60;placeBuyNowServer&#x60; (pre-built path), &#x60;getServerInfo&#x60; (view new order), &#x60;getServerInvoices&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse20019</returns>
-        InlineResponse20019 AddServer ();
+        /// <param name="body"></param>
+        /// <returns>InlineResponse20021</returns>
+        InlineResponse20021 AddServer (ServerOrderPostRequest body);
 
         /// <summary>
-        /// Place Server Order
+        /// Place a custom dedicated server order, creating a real billable invoice
         /// </summary>
         /// <remarks>
-        /// Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
+        /// Submits a fully custom dedicated server order. Creates a &#x60;pending&#x60; &#x60;servers&#x60; row, a &#x60;Repeat_Invoice&#x60;, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): &#x60;cpu&#x60; (id from &#x60;cpu_li&#x60;), &#x60;hd[]&#x60; (array of drive ids), &#x60;memory&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;os&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (ids from &#x60;getNewServer&#x60;), &#x60;region&#x60; (region_id), &#x60;servername&#x60; (valid hostname), &#x60;rootpass&#x60;, &#x60;tos&#x60; (must be true), optional &#x60;comment&#x60;. &#x60;account.server_order_discount&#x60; (if set) applies. Returns: &#x60;{ text:&#x27;Order Completed&#x27;, invoice, order }&#x60;. Errors: 422 &#x27;Missing/Invalid &lt;field&gt;&#x27;; 401 unauth. Sibling ops: &#x60;getNewServer&#x60; (options), &#x60;placeBuyNowServer&#x60; (pre-built path), &#x60;getServerInfo&#x60; (view new order), &#x60;getServerInvoices&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse20019</returns>
-        ApiResponse<InlineResponse20019> AddServerWithHttpInfo ();
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of InlineResponse20021</returns>
+        ApiResponse<InlineResponse20021> AddServerWithHttpInfo (ServerOrderPostRequest body);
         /// <summary>
-        /// Get Buy Now Server Options
+        /// Get configurable options for a Rapid Deploy / coupon dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
+        /// Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (&#x60;a&#x3D;&lt;asset_id&gt;&#x60;) or a coupon (&#x60;c&#x3D;&lt;coupon_name&gt;&#x60;) so the order form can be rendered before &#x60;placeBuyNowServer&#x60;. Read-only; no charge. Sibling ops: &#x60;placeBuyNowServer&#x60; (commit), &#x60;getMPServers&#x60; (browse marketplace), &#x60;addServer&#x60; (custom build flow).  **Query (one required):** - &#x60;a&#x60; (integer) — asset_id from &#x60;getMPServers&#x60;. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Returns:** &#x60;{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }&#x60;. Each option row is &#x60;{ id, short_desc, long_desc, monthly_price }&#x60; — feed those ids into &#x60;placeBuyNowServer&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;No Server Coupon or Market-Place Asset Specified&#x27;&#x60; when neither &#x60;a&#x60; nor &#x60;c&#x60; is passed. - &#x60;400&#x60; — &#x60;&#x27;Invalid Asset ID&#x27;&#x60; / &#x60;&#x27;No Server Coupon with that name&#x27;&#x60;. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; (asset already in-cart) or &#x60;&#x27;Server Out of stock&#x27;&#x60; (coupon). - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Next:** &#x60;placeBuyNowServer&#x60; (commit the order). - **Browse:** &#x60;getMPServers&#x60;. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse20027</returns>
-        InlineResponse20027 BuyItNowServerOrder ();
+        /// <returns>InlineResponse20029</returns>
+        InlineResponse20029 BuyItNowServerOrder ();
 
         /// <summary>
-        /// Get Buy Now Server Options
+        /// Get configurable options for a Rapid Deploy / coupon dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
+        /// Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (&#x60;a&#x3D;&lt;asset_id&gt;&#x60;) or a coupon (&#x60;c&#x3D;&lt;coupon_name&gt;&#x60;) so the order form can be rendered before &#x60;placeBuyNowServer&#x60;. Read-only; no charge. Sibling ops: &#x60;placeBuyNowServer&#x60; (commit), &#x60;getMPServers&#x60; (browse marketplace), &#x60;addServer&#x60; (custom build flow).  **Query (one required):** - &#x60;a&#x60; (integer) — asset_id from &#x60;getMPServers&#x60;. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Returns:** &#x60;{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }&#x60;. Each option row is &#x60;{ id, short_desc, long_desc, monthly_price }&#x60; — feed those ids into &#x60;placeBuyNowServer&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;No Server Coupon or Market-Place Asset Specified&#x27;&#x60; when neither &#x60;a&#x60; nor &#x60;c&#x60; is passed. - &#x60;400&#x60; — &#x60;&#x27;Invalid Asset ID&#x27;&#x60; / &#x60;&#x27;No Server Coupon with that name&#x27;&#x60;. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; (asset already in-cart) or &#x60;&#x27;Server Out of stock&#x27;&#x60; (coupon). - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Next:** &#x60;placeBuyNowServer&#x60; (commit the order). - **Browse:** &#x60;getMPServers&#x60;. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse20027</returns>
-        ApiResponse<InlineResponse20027> BuyItNowServerOrderWithHttpInfo ();
+        /// <returns>ApiResponse of InlineResponse20029</returns>
+        ApiResponse<InlineResponse20029> BuyItNowServerOrderWithHttpInfo ();
         /// <summary>
-        /// List Marketplace Servers
+        /// List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
         /// </summary>
         /// <remarks>
-        /// Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
+        /// Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from &#x60;mynew.interserver.net/ajax/server_a.php&#x60;. Returns: array of &#x60;{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }&#x60;. The &#x60;server_id&#x60; is the marketplace asset id — feed it into &#x60;buyItNowServerOrder&#x60; (GET options for asset &#x60;?a&#x3D;&lt;id&gt;&#x60;) and &#x60;placeBuyNowServer&#x60; (POST to commit). Errors: 401 if session expired. Sibling ops: &#x60;buyItNowServerOrder&#x60; (configure asset), &#x60;placeBuyNowServer&#x60; (purchase), &#x60;getNewServer&#x60;/&#x60;addServer&#x60; (custom-spec build, not pre-built), &#x60;getServerList&#x60; (already-owned servers).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>BuyItNowList</returns>
         BuyItNowList GetMPServers ();
 
         /// <summary>
-        /// List Marketplace Servers
+        /// List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
         /// </summary>
         /// <remarks>
-        /// Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
+        /// Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from &#x60;mynew.interserver.net/ajax/server_a.php&#x60;. Returns: array of &#x60;{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }&#x60;. The &#x60;server_id&#x60; is the marketplace asset id — feed it into &#x60;buyItNowServerOrder&#x60; (GET options for asset &#x60;?a&#x3D;&lt;id&gt;&#x60;) and &#x60;placeBuyNowServer&#x60; (POST to commit). Errors: 401 if session expired. Sibling ops: &#x60;buyItNowServerOrder&#x60; (configure asset), &#x60;placeBuyNowServer&#x60; (purchase), &#x60;getNewServer&#x60;/&#x60;addServer&#x60; (custom-spec build, not pre-built), &#x60;getServerList&#x60; (already-owned servers).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of BuyItNowList</returns>
         ApiResponse<BuyItNowList> GetMPServersWithHttpInfo ();
         /// <summary>
-        /// Server Ordering Information
+        /// Get custom dedicated server ordering options, regions, and pricing
         /// </summary>
         /// <remarks>
-        /// Retrieves available server configurations and pricing for ordering a new dedicated server.
+        /// Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with &#x60;config_li&#x60; keyed by category (&#x60;cpu_li&#x60;, &#x60;hd_li&#x60;, &#x60;memory_li&#x60;, &#x60;bandwidth_li&#x60;, &#x60;ips_li&#x60;, &#x60;os_li&#x60;, &#x60;cp_li&#x60;, &#x60;raid_li&#x60;) plus &#x60;regions&#x60;. Use returned IDs as POST values for &#x60;addServer&#x60;. Note &#x60;hd_li&#x60; and &#x60;memory_li&#x60; are nested by &#x60;cpu&#x60; id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: &#x60;addServer&#x60; (commits the order), &#x60;buyItNowServerOrder&#x60; (pre-built marketplace alternative), &#x60;getMPServers&#x60; (browse marketplace).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ServerOrder</returns>
         ServerOrder GetNewServer ();
 
         /// <summary>
-        /// Server Ordering Information
+        /// Get custom dedicated server ordering options, regions, and pricing
         /// </summary>
         /// <remarks>
-        /// Retrieves available server configurations and pricing for ordering a new dedicated server.
+        /// Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with &#x60;config_li&#x60; keyed by category (&#x60;cpu_li&#x60;, &#x60;hd_li&#x60;, &#x60;memory_li&#x60;, &#x60;bandwidth_li&#x60;, &#x60;ips_li&#x60;, &#x60;os_li&#x60;, &#x60;cp_li&#x60;, &#x60;raid_li&#x60;) plus &#x60;regions&#x60;. Use returned IDs as POST values for &#x60;addServer&#x60;. Note &#x60;hd_li&#x60; and &#x60;memory_li&#x60; are nested by &#x60;cpu&#x60; id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: &#x60;addServer&#x60; (commits the order), &#x60;buyItNowServerOrder&#x60; (pre-built marketplace alternative), &#x60;getMPServers&#x60; (browse marketplace).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ServerOrder</returns>
         ApiResponse<ServerOrder> GetNewServerWithHttpInfo ();
         /// <summary>
-        /// Get Server Order
+        /// Get full hardware, network, and lifecycle details for a dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns detailed information about a specific server including its hardware configuration, IPs, and status.
+        /// Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Returns: &#x60;ViewServer::getDetails()&#x60; shape: &#x60;serviceInfo&#x60;, &#x60;networkInfo&#x60; (vlans + assets, with &#x60;ipmi_admin_username&#x60;/&#x60;ipmi_admin_password&#x60; and admin lease creds REDACTED for client safety), normalized &#x60;client_links&#x60;, &#x60;serviceType&#x60;. &#x60;admin_links&#x60;/raw &#x60;settings&#x60;/&#x60;csrf&#x60; stripped. Errors: 404 not owned; 401 unauth. Sibling ops: &#x60;getServerInvoices&#x60;, &#x60;serverIpmiLiveGet&#x60;, &#x60;serverIpmiPowerGet&#x60; (single — prefer &#x60;serverBulkIpmiPowerGet&#x60; for many), &#x60;getServerReverseDns&#x60;, &#x60;getServersWelcomeEmail&#x60;, &#x60;serversCancel&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -111,20 +113,20 @@ namespace Interserver.MyAdmin.Client.Api
         Server GetServerInfo (int? id);
 
         /// <summary>
-        /// Get Server Order
+        /// Get full hardware, network, and lifecycle details for a dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns detailed information about a specific server including its hardware configuration, IPs, and status.
+        /// Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Returns: &#x60;ViewServer::getDetails()&#x60; shape: &#x60;serviceInfo&#x60;, &#x60;networkInfo&#x60; (vlans + assets, with &#x60;ipmi_admin_username&#x60;/&#x60;ipmi_admin_password&#x60; and admin lease creds REDACTED for client safety), normalized &#x60;client_links&#x60;, &#x60;serviceType&#x60;. &#x60;admin_links&#x60;/raw &#x60;settings&#x60;/&#x60;csrf&#x60; stripped. Errors: 404 not owned; 401 unauth. Sibling ops: &#x60;getServerInvoices&#x60;, &#x60;serverIpmiLiveGet&#x60;, &#x60;serverIpmiPowerGet&#x60; (single — prefer &#x60;serverBulkIpmiPowerGet&#x60; for many), &#x60;getServerReverseDns&#x60;, &#x60;getServersWelcomeEmail&#x60;, &#x60;serversCancel&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
         /// <returns>ApiResponse of Server</returns>
         ApiResponse<Server> GetServerInfoWithHttpInfo (int? id);
         /// <summary>
-        /// Get Server Invoices
+        /// List billing invoices (charges + payments) tied to one dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the billing invoices associated with this dedicated server.
+        /// Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: &#x60;id&#x60; (integer server_id from &#x60;getServerList&#x60;). No body. Inherits from &#x60;MyAdmin\\Api\\Billing\\InvoicesList&#x60; with module&#x3D;servers. Returns: &#x60;ChargeInvoiceRows&#x60; array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if &#x60;id&#x60; not owned by the caller; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current service state), &#x60;serversCancel&#x60; (cancel), &#x60;getBillingInvoice&#x60; (single invoice by invoice id), &#x60;getVpsInvoices&#x60;/&#x60;getDomainInvoices&#x60; for other modules, &#x60;getServersWelcomeEmail&#x60; to resend setup info.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -132,39 +134,39 @@ namespace Interserver.MyAdmin.Client.Api
         ChargeInvoiceRows GetServerInvoices (int? id);
 
         /// <summary>
-        /// Get Server Invoices
+        /// List billing invoices (charges + payments) tied to one dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the billing invoices associated with this dedicated server.
+        /// Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: &#x60;id&#x60; (integer server_id from &#x60;getServerList&#x60;). No body. Inherits from &#x60;MyAdmin\\Api\\Billing\\InvoicesList&#x60; with module&#x3D;servers. Returns: &#x60;ChargeInvoiceRows&#x60; array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if &#x60;id&#x60; not owned by the caller; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current service state), &#x60;serversCancel&#x60; (cancel), &#x60;getBillingInvoice&#x60; (single invoice by invoice id), &#x60;getVpsInvoices&#x60;/&#x60;getDomainInvoices&#x60; for other modules, &#x60;getServersWelcomeEmail&#x60; to resend setup info.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
         /// <returns>ApiResponse of ChargeInvoiceRows</returns>
         ApiResponse<ChargeInvoiceRows> GetServerInvoicesWithHttpInfo (int? id);
         /// <summary>
-        /// List Servers
+        /// List all dedicated servers owned by the authenticated customer
         /// </summary>
         /// <remarks>
-        /// Returns all dedicated server services on the account with their current status and configuration.
+        /// Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters &#x60;servers&#x60; by session &#x60;account_id&#x60;. Returns: array of &#x60;{ server_id, account_lid, server_hostname, server_status }&#x60;. Use &#x60;server_id&#x60; with &#x60;getServerInfo&#x60; for full hardware/network/IPMI details, &#x60;getServerInvoices&#x60; for billing, or &#x60;serverIpmiPowerGet&#x60; for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: &#x60;getServerInfo&#x60; (details), &#x60;getVpsList&#x60; (virtual instead of physical hardware), &#x60;getMPServers&#x60; (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer &#x60;serverBulkIpmiPowerGet&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;ServerRow&gt;</returns>
         List<ServerRow> GetServerList ();
 
         /// <summary>
-        /// List Servers
+        /// List all dedicated servers owned by the authenticated customer
         /// </summary>
         /// <remarks>
-        /// Returns all dedicated server services on the account with their current status and configuration.
+        /// Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters &#x60;servers&#x60; by session &#x60;account_id&#x60;. Returns: array of &#x60;{ server_id, account_lid, server_hostname, server_status }&#x60;. Use &#x60;server_id&#x60; with &#x60;getServerInfo&#x60; for full hardware/network/IPMI details, &#x60;getServerInvoices&#x60; for billing, or &#x60;serverIpmiPowerGet&#x60; for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: &#x60;getServerInfo&#x60; (details), &#x60;getVpsList&#x60; (virtual instead of physical hardware), &#x60;getMPServers&#x60; (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer &#x60;serverBulkIpmiPowerGet&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;ServerRow&gt;</returns>
         ApiResponse<List<ServerRow>> GetServerListWithHttpInfo ();
         /// <summary>
-        /// Reverse DNS Info
+        /// List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Returns the current reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server&#x27;s VLANs — typically before calling &#x60;postServerReverseDns&#x60; to update them. Path param: &#x60;id&#x60; (integer server_id). No body. Walks &#x60;networkInfo.vlans&#x60;, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via &#x60;get_hostname()&#x60;. Returns: &#x60;{ ips: { &#x27;&lt;ipv4&gt;&#x27;: &#x27;&lt;ptr_or_empty_string&gt;&#x27;, ... } }&#x60;. Empty string indicates no PTR set. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: &#x60;postServerReverseDns&#x60; (update PTRs), &#x60;getServerInfo&#x60; (full network), &#x60;getVpsReverseDns&#x60; for VPS, &#x60;getDomainNameservers&#x60; / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -172,20 +174,20 @@ namespace Interserver.MyAdmin.Client.Api
         ReverseDnsEntries GetServerReverseDns (int? id);
 
         /// <summary>
-        /// Reverse DNS Info
+        /// List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Returns the current reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server&#x27;s VLANs — typically before calling &#x60;postServerReverseDns&#x60; to update them. Path param: &#x60;id&#x60; (integer server_id). No body. Walks &#x60;networkInfo.vlans&#x60;, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via &#x60;get_hostname()&#x60;. Returns: &#x60;{ ips: { &#x27;&lt;ipv4&gt;&#x27;: &#x27;&lt;ptr_or_empty_string&gt;&#x27;, ... } }&#x60;. Empty string indicates no PTR set. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: &#x60;postServerReverseDns&#x60; (update PTRs), &#x60;getServerInfo&#x60; (full network), &#x60;getVpsReverseDns&#x60; for VPS, &#x60;getDomainNameservers&#x60; / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
         /// <returns>ApiResponse of ReverseDnsEntries</returns>
         ApiResponse<ReverseDnsEntries> GetServerReverseDnsWithHttpInfo (int? id);
         /// <summary>
-        /// Resend Server Welcome Email
+        /// Resend the dedicated server welcome email with setup credentials
         /// </summary>
         /// <remarks>
-        /// Resends the welcome email for the order.
+        /// Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: &#x60;id&#x60; (integer server_id, must be &#x60;active&#x60;). No body. Invokes &#x60;server_welcome_email($id)&#x60; which re-sends the welcome message to the account&#x27;s email. Returns: &#x60;{ text:&#x27;Welcome Email has been resent.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: &#x60;getServerInfo&#x60; (status check), &#x60;getServerInvoices&#x60;, &#x60;getVpsWelcomeEmail&#x60; for VPS, &#x60;getDomainsWelcomeEmail&#x60; for domains.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -193,20 +195,20 @@ namespace Interserver.MyAdmin.Client.Api
         SuccessTextResponse GetServersWelcomeEmail (int? id);
 
         /// <summary>
-        /// Resend Server Welcome Email
+        /// Resend the dedicated server welcome email with setup credentials
         /// </summary>
         /// <remarks>
-        /// Resends the welcome email for the order.
+        /// Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: &#x60;id&#x60; (integer server_id, must be &#x60;active&#x60;). No body. Invokes &#x60;server_welcome_email($id)&#x60; which re-sends the welcome message to the account&#x27;s email. Returns: &#x60;{ text:&#x27;Welcome Email has been resent.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: &#x60;getServerInfo&#x60; (status check), &#x60;getServerInvoices&#x60;, &#x60;getVpsWelcomeEmail&#x60; for VPS, &#x60;getDomainsWelcomeEmail&#x60; for domains.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
         /// <returns>ApiResponse of SuccessTextResponse</returns>
         ApiResponse<SuccessTextResponse> GetServersWelcomeEmailWithHttpInfo (int? id);
         /// <summary>
-        /// Place Buy Now Server Order
+        /// Place a Rapid Deploy / coupon dedicated server order; creates real invoice
         /// </summary>
         /// <remarks>
-        /// Places an order for a buy-it-now dedicated server. Use &#x60;GET /servers/order/buy_now_server&#x60; to retrieve available server configurations and their IDs before ordering.
+        /// Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the &#x60;servers&#x60; row, creates a &#x60;Repeat_Invoice&#x60; plus the first &#x60;invoices&#x60; row, marks the asset &#x60;MarketPlace-Incart&#x60; (or decrements &#x60;server_coupons.in_stock&#x60;), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: &#x60;buyItNowServerOrder&#x60; (catalog), &#x60;getServerInfo&#x60; (poll provisioning), &#x60;getServerInvoices&#x60; (billing), &#x60;addServer&#x60; (custom build alternative).  **Query (one required, same as &#x60;buyItNowServerOrder&#x60;):** - &#x60;a&#x60; (integer) — asset_id. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — valid FQDN; validated by &#x60;valid_hostname&#x60;. - &#x60;enablepassword&#x60; (boolean, optional, default &#x60;false&#x60;) — when true the client must supply &#x60;rootPassword&#x60;; otherwise a secure password is generated server-side via &#x60;generate_password()&#x60;. - &#x60;rootPassword&#x60; (string, required when &#x60;enablepassword&#x3D;true&#x60;) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (&#x60;valid_password&#x60;). - &#x60;os&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (integer, optional) — option ids from &#x60;buyItNowServerOrder&#x60;; defaults &#x60;30&#x60; / &#x60;10&#x60; / &#x60;9&#x60; / &#x60;1&#x60; / &#x60;0&#x60; applied when missing. - &#x60;comments&#x60; (string, optional) — appended to the order comment.  **Returns:** &#x60;201 { success: true, text: &#x27;Server order is placed.&#x27;, service_id, invoice_id }&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;Server Hostname is missing.&#x27;&#x60; / &#x60;&#x27;Invalid Hostname!&#x27;&#x60; / &#x60;&#x27;Server Password is missing.&#x27;&#x60; / password complexity message. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; / &#x60;&#x27;Server Out of stock.&#x27;&#x60; - &#x60;401&#x60; — unauthenticated.  **Side effects:** inserts &#x60;servers&#x60; row, creates &#x60;repeat_invoices&#x60; + &#x60;invoices&#x60; rows, updates &#x60;assets.status&#x60; or &#x60;server_coupons.in_stock&#x60;, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** &#x60;buyItNowServerOrder&#x60;. - **Next:** &#x60;getBillingInvoice&#x60; + &#x60;initiatePayment&#x60; to pay, then poll &#x60;getServerInfo&#x60; for provisioning state. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
@@ -214,20 +216,20 @@ namespace Interserver.MyAdmin.Client.Api
         ServersBuyNowResponse PlaceBuyNowServer (OrderBuyNowServerBody body = null);
 
         /// <summary>
-        /// Place Buy Now Server Order
+        /// Place a Rapid Deploy / coupon dedicated server order; creates real invoice
         /// </summary>
         /// <remarks>
-        /// Places an order for a buy-it-now dedicated server. Use &#x60;GET /servers/order/buy_now_server&#x60; to retrieve available server configurations and their IDs before ordering.
+        /// Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the &#x60;servers&#x60; row, creates a &#x60;Repeat_Invoice&#x60; plus the first &#x60;invoices&#x60; row, marks the asset &#x60;MarketPlace-Incart&#x60; (or decrements &#x60;server_coupons.in_stock&#x60;), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: &#x60;buyItNowServerOrder&#x60; (catalog), &#x60;getServerInfo&#x60; (poll provisioning), &#x60;getServerInvoices&#x60; (billing), &#x60;addServer&#x60; (custom build alternative).  **Query (one required, same as &#x60;buyItNowServerOrder&#x60;):** - &#x60;a&#x60; (integer) — asset_id. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — valid FQDN; validated by &#x60;valid_hostname&#x60;. - &#x60;enablepassword&#x60; (boolean, optional, default &#x60;false&#x60;) — when true the client must supply &#x60;rootPassword&#x60;; otherwise a secure password is generated server-side via &#x60;generate_password()&#x60;. - &#x60;rootPassword&#x60; (string, required when &#x60;enablepassword&#x3D;true&#x60;) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (&#x60;valid_password&#x60;). - &#x60;os&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (integer, optional) — option ids from &#x60;buyItNowServerOrder&#x60;; defaults &#x60;30&#x60; / &#x60;10&#x60; / &#x60;9&#x60; / &#x60;1&#x60; / &#x60;0&#x60; applied when missing. - &#x60;comments&#x60; (string, optional) — appended to the order comment.  **Returns:** &#x60;201 { success: true, text: &#x27;Server order is placed.&#x27;, service_id, invoice_id }&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;Server Hostname is missing.&#x27;&#x60; / &#x60;&#x27;Invalid Hostname!&#x27;&#x60; / &#x60;&#x27;Server Password is missing.&#x27;&#x60; / password complexity message. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; / &#x60;&#x27;Server Out of stock.&#x27;&#x60; - &#x60;401&#x60; — unauthenticated.  **Side effects:** inserts &#x60;servers&#x60; row, creates &#x60;repeat_invoices&#x60; + &#x60;invoices&#x60; rows, updates &#x60;assets.status&#x60; or &#x60;server_coupons.in_stock&#x60;, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** &#x60;buyItNowServerOrder&#x60;. - **Next:** &#x60;getBillingInvoice&#x60; + &#x60;initiatePayment&#x60; to pay, then poll &#x60;getServerInfo&#x60; for provisioning state. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>ApiResponse of ServersBuyNowResponse</returns>
         ApiResponse<ServersBuyNowResponse> PlaceBuyNowServerWithHttpInfo (OrderBuyNowServerBody body = null);
         /// <summary>
-        /// Update Reverse DNS
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -236,10 +238,10 @@ namespace Interserver.MyAdmin.Client.Api
         TextResponse PostServerReverseDns (ReverseDnsEntries body, int? id);
 
         /// <summary>
-        /// Update Reverse DNS
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -247,10 +249,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>ApiResponse of TextResponse</returns>
         ApiResponse<TextResponse> PostServerReverseDnsWithHttpInfo (ReverseDnsEntries body, int? id);
         /// <summary>
-        /// Update Reverse DNS
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ips"></param>
@@ -259,10 +261,10 @@ namespace Interserver.MyAdmin.Client.Api
         TextResponse PostServerReverseDns (Dictionary<string, Object> ips, int? id);
 
         /// <summary>
-        /// Update Reverse DNS
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ips"></param>
@@ -270,29 +272,31 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>ApiResponse of TextResponse</returns>
         ApiResponse<TextResponse> PostServerReverseDnsWithHttpInfo (Dictionary<string, Object> ips, int? id);
         /// <summary>
-        /// Validate Server Order
+        /// Read IPMI chassis power status for many dedicated servers in one call
         /// </summary>
         /// <remarks>
-        /// Validates a server order before placing it. Use this to check for errors before committing to a purchase.
+        /// Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: &#x60;ids&#x60; (required) — comma-separated string &#x60;?ids&#x3D;2313,2314,2315&#x60; OR repeated &#x60;ids[]&#x60; array. Duplicates de-duped; non-positive ints become per-row errors. Returns: &#x60;{ results: [ { id, asset?, text|error } ] }&#x60;. Errors: 400 &#x27;No server IDs provided.&#x27; if &#x60;ids&#x60; empty/missing; 401 unauth. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (single-server equivalent), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power; no bulk equivalent — call per server), &#x60;getServerList&#x60; (discover ids).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        void PutServers ();
+        /// <param name="ids">Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters.</param>
+        /// <returns>ServerBulkIpmiPowerResponse</returns>
+        ServerBulkIpmiPowerResponse ServerBulkIpmiPowerGet (string ids);
 
         /// <summary>
-        /// Validate Server Order
+        /// Read IPMI chassis power status for many dedicated servers in one call
         /// </summary>
         /// <remarks>
-        /// Validates a server order before placing it. Use this to check for errors before committing to a purchase.
+        /// Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: &#x60;ids&#x60; (required) — comma-separated string &#x60;?ids&#x3D;2313,2314,2315&#x60; OR repeated &#x60;ids[]&#x60; array. Duplicates de-duped; non-positive ints become per-row errors. Returns: &#x60;{ results: [ { id, asset?, text|error } ] }&#x60;. Errors: 400 &#x27;No server IDs provided.&#x27; if &#x60;ids&#x60; empty/missing; 401 unauth. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (single-server equivalent), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power; no bulk equivalent — call per server), &#x60;getServerList&#x60; (discover ids).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PutServersWithHttpInfo ();
+        /// <param name="ids">Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters.</param>
+        /// <returns>ApiResponse of ServerBulkIpmiPowerResponse</returns>
+        ApiResponse<ServerBulkIpmiPowerResponse> ServerBulkIpmiPowerGetWithHttpInfo (string ids);
         /// <summary>
-        /// Server IPMI Live Information
+        /// Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the current IPMI live connection information for the server.
+        /// Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset&#x27;s IPMI IP, the location&#x27;s IPMI group, and any active &#x60;ipmi_ips&#x60; lease (3-hour TTL). Sibling ops: &#x60;serverIpmiLivePost&#x60; (allocate whitelist slot), &#x60;serverIpmiPowerGet&#x60; / &#x60;serverIpmiPowerPost&#x60; (chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id from &#x60;getServerList&#x60;.  **Body / query:** None. Optionally pass &#x60;asset&#x60; (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60;. When no lease yet: &#x60;{ text: &#x27;Setup not yet completed&#x27; }&#x60; — then call &#x60;serverIpmiLivePost&#x60; to allocate a slot.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60; when the asset/location is not configured for IPMI Live.  **Caveat:** returns &#x60;client_password&#x60; — never log/echo verbatim.  **Related calls:** - **Allocate:** &#x60;serverIpmiLivePost&#x60;. - **Chassis power:** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -300,20 +304,20 @@ namespace Interserver.MyAdmin.Client.Api
         ServerIpmiLiveInfo ServerIpmiLiveGet (int? id);
 
         /// <summary>
-        /// Server IPMI Live Information
+        /// Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the current IPMI live connection information for the server.
+        /// Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset&#x27;s IPMI IP, the location&#x27;s IPMI group, and any active &#x60;ipmi_ips&#x60; lease (3-hour TTL). Sibling ops: &#x60;serverIpmiLivePost&#x60; (allocate whitelist slot), &#x60;serverIpmiPowerGet&#x60; / &#x60;serverIpmiPowerPost&#x60; (chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id from &#x60;getServerList&#x60;.  **Body / query:** None. Optionally pass &#x60;asset&#x60; (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60;. When no lease yet: &#x60;{ text: &#x27;Setup not yet completed&#x27; }&#x60; — then call &#x60;serverIpmiLivePost&#x60; to allocate a slot.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60; when the asset/location is not configured for IPMI Live.  **Caveat:** returns &#x60;client_password&#x60; — never log/echo verbatim.  **Related calls:** - **Allocate:** &#x60;serverIpmiLivePost&#x60;. - **Chassis power:** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
         /// <returns>ApiResponse of ServerIpmiLiveInfo</returns>
         ApiResponse<ServerIpmiLiveInfo> ServerIpmiLiveGetWithHttpInfo (int? id);
         /// <summary>
-        /// Server IPMI Live Setup
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
         /// </summary>
         /// <remarks>
-        /// Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -323,10 +327,10 @@ namespace Interserver.MyAdmin.Client.Api
         ServerIpmiLiveInfo ServerIpmiLivePost (int? asset, string ip, int? id);
 
         /// <summary>
-        /// Server IPMI Live Setup
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
         /// </summary>
         /// <remarks>
-        /// Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -335,10 +339,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>ApiResponse of ServerIpmiLiveInfo</returns>
         ApiResponse<ServerIpmiLiveInfo> ServerIpmiLivePostWithHttpInfo (int? asset, string ip, int? id);
         /// <summary>
-        /// Server IPMI Live Setup
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
         /// </summary>
         /// <remarks>
-        /// Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -347,10 +351,10 @@ namespace Interserver.MyAdmin.Client.Api
         ServerIpmiLiveInfo ServerIpmiLivePost (ServerIpmiLiveRequest body, int? id);
 
         /// <summary>
-        /// Server IPMI Live Setup
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
         /// </summary>
         /// <remarks>
-        /// Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -358,10 +362,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>ApiResponse of ServerIpmiLiveInfo</returns>
         ApiResponse<ServerIpmiLiveInfo> ServerIpmiLivePostWithHttpInfo (ServerIpmiLiveRequest body, int? id);
         /// <summary>
-        /// Get IPMI Power Status
+        /// Read IPMI chassis power status for a dedicated server (single)
         /// </summary>
         /// <remarks>
-        /// Returns the chassis power status from ipmi.
+        /// Use to check whether a server&#x27;s chassis is currently &#x60;on&#x60;/&#x60;off&#x60; via IPMI before issuing a power action. Path param: &#x60;id&#x60; (integer server_id). Optional body &#x60;asset&#x60; (asset_id — defaults to first asset). Issues &#x60;ipmitool power status&#x60; against the asset&#x27;s &#x60;ipmi_ip&#x60; using its location IPMI group/credentials. Returns: &#x60;{ text:&#x27;Chassis Power is on&#x27; }&#x60; (or &#x27;off&#x27;). Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active; &#x27;There was an error sending the IPMI command&#x27; if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: &#x60;serverBulkIpmiPowerGet&#x60; (preferred when polling many servers — single round-trip), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power), &#x60;getServerInfo&#x60; (full state), &#x60;serverIpmiLiveGet&#x60; (IPMI Live KVM).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -369,20 +373,20 @@ namespace Interserver.MyAdmin.Client.Api
         TextResponse ServerIpmiPowerGet (int? id);
 
         /// <summary>
-        /// Get IPMI Power Status
+        /// Read IPMI chassis power status for a dedicated server (single)
         /// </summary>
         /// <remarks>
-        /// Returns the chassis power status from ipmi.
+        /// Use to check whether a server&#x27;s chassis is currently &#x60;on&#x60;/&#x60;off&#x60; via IPMI before issuing a power action. Path param: &#x60;id&#x60; (integer server_id). Optional body &#x60;asset&#x60; (asset_id — defaults to first asset). Issues &#x60;ipmitool power status&#x60; against the asset&#x27;s &#x60;ipmi_ip&#x60; using its location IPMI group/credentials. Returns: &#x60;{ text:&#x27;Chassis Power is on&#x27; }&#x60; (or &#x27;off&#x27;). Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active; &#x27;There was an error sending the IPMI command&#x27; if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: &#x60;serverBulkIpmiPowerGet&#x60; (preferred when polling many servers — single round-trip), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power), &#x60;getServerInfo&#x60; (full state), &#x60;serverIpmiLiveGet&#x60; (IPMI Live KVM).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
         /// <returns>ApiResponse of TextResponse</returns>
         ApiResponse<TextResponse> ServerIpmiPowerGetWithHttpInfo (int? id);
         /// <summary>
-        /// Server IPMI Power
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server
         /// </summary>
         /// <remarks>
-        /// Uses the IPMI interface to set the Power status on the server.
+        /// Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -392,10 +396,10 @@ namespace Interserver.MyAdmin.Client.Api
         TextResponse ServerIpmiPowerPost (int? asset, string action, int? id);
 
         /// <summary>
-        /// Server IPMI Power
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server
         /// </summary>
         /// <remarks>
-        /// Uses the IPMI interface to set the Power status on the server.
+        /// Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -404,10 +408,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>ApiResponse of TextResponse</returns>
         ApiResponse<TextResponse> ServerIpmiPowerPostWithHttpInfo (int? asset, string action, int? id);
         /// <summary>
-        /// Server IPMI Power
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server
         /// </summary>
         /// <remarks>
-        /// Uses the IPMI interface to set the Power status on the server.
+        /// Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -416,10 +420,10 @@ namespace Interserver.MyAdmin.Client.Api
         TextResponse ServerIpmiPowerPost (ServerIpmiPowerRequest body, int? id);
 
         /// <summary>
-        /// Server IPMI Power
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server
         /// </summary>
         /// <remarks>
-        /// Uses the IPMI interface to set the Power status on the server.
+        /// Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -427,31 +431,31 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>ApiResponse of TextResponse</returns>
         ApiResponse<TextResponse> ServerIpmiPowerPostWithHttpInfo (ServerIpmiPowerRequest body, int? id);
         /// <summary>
-        /// Cancel Server Service
+        /// Cancel a dedicated server service at the end of the current billing cycle
         /// </summary>
         /// <remarks>
-        /// Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
+        /// Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: &#x60;{ success:bool, text:&#x27;Servers is canceled.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current status), &#x60;getServerInvoices&#x60; (outstanding charges), VPS counterpart &#x60;VPSCancel&#x60;. To re-order after cancel use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>InlineResponse20020</returns>
-        InlineResponse20020 ServersCancel (int? id);
+        /// <returns>InlineResponse20022</returns>
+        InlineResponse20022 ServersCancel (int? id);
 
         /// <summary>
-        /// Cancel Server Service
+        /// Cancel a dedicated server service at the end of the current billing cycle
         /// </summary>
         /// <remarks>
-        /// Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
+        /// Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: &#x60;{ success:bool, text:&#x27;Servers is canceled.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current status), &#x60;getServerInvoices&#x60; (outstanding charges), VPS counterpart &#x60;VPSCancel&#x60;. To re-order after cancel use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>ApiResponse of InlineResponse20020</returns>
-        ApiResponse<InlineResponse20020> ServersCancelWithHttpInfo (int? id);
+        /// <returns>ApiResponse of InlineResponse20022</returns>
+        ApiResponse<InlineResponse20022> ServersCancelWithHttpInfo (int? id);
         /// <summary>
-        /// Update Server Order
+        /// Update settings on a dedicated server order (shares handler with view)
         /// </summary>
         /// <remarks>
-        /// Updates settings on a dedicated server order.
+        /// Use to modify metadata on an existing dedicated server order. Path param: &#x60;id&#x60; (integer server_id). Currently this method shares the same handler as &#x60;getServerInfo&#x60; (&#x60;View::go()&#x60;) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as &#x60;getServerInfo&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: prefer &#x60;postServerReverseDns&#x60; (rDNS), &#x60;serverIpmiPowerPost&#x60; (power), &#x60;serverIpmiLivePost&#x60; (IPMI access), &#x60;serversCancel&#x60; (cancel). For new orders use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;. View-only: &#x60;getServerInfo&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -459,10 +463,10 @@ namespace Interserver.MyAdmin.Client.Api
         SuccessTextResponse UpdateServerInfo (string id);
 
         /// <summary>
-        /// Update Server Order
+        /// Update settings on a dedicated server order (shares handler with view)
         /// </summary>
         /// <remarks>
-        /// Updates settings on a dedicated server order.
+        /// Use to modify metadata on an existing dedicated server order. Path param: &#x60;id&#x60; (integer server_id). Currently this method shares the same handler as &#x60;getServerInfo&#x60; (&#x60;View::go()&#x60;) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as &#x60;getServerInfo&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: prefer &#x60;postServerReverseDns&#x60; (rDNS), &#x60;serverIpmiPowerPost&#x60; (power), &#x60;serverIpmiLivePost&#x60; (IPMI access), &#x60;serversCancel&#x60; (cancel). For new orders use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;. View-only: &#x60;getServerInfo&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -471,86 +475,88 @@ namespace Interserver.MyAdmin.Client.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Place Server Order
+        /// Place a custom dedicated server order, creating a real billable invoice
         /// </summary>
         /// <remarks>
-        /// Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
+        /// Submits a fully custom dedicated server order. Creates a &#x60;pending&#x60; &#x60;servers&#x60; row, a &#x60;Repeat_Invoice&#x60;, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): &#x60;cpu&#x60; (id from &#x60;cpu_li&#x60;), &#x60;hd[]&#x60; (array of drive ids), &#x60;memory&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;os&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (ids from &#x60;getNewServer&#x60;), &#x60;region&#x60; (region_id), &#x60;servername&#x60; (valid hostname), &#x60;rootpass&#x60;, &#x60;tos&#x60; (must be true), optional &#x60;comment&#x60;. &#x60;account.server_order_discount&#x60; (if set) applies. Returns: &#x60;{ text:&#x27;Order Completed&#x27;, invoice, order }&#x60;. Errors: 422 &#x27;Missing/Invalid &lt;field&gt;&#x27;; 401 unauth. Sibling ops: &#x60;getNewServer&#x60; (options), &#x60;placeBuyNowServer&#x60; (pre-built path), &#x60;getServerInfo&#x60; (view new order), &#x60;getServerInvoices&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse20019</returns>
-        System.Threading.Tasks.Task<InlineResponse20019> AddServerAsync ();
+        /// <param name="body"></param>
+        /// <returns>Task of InlineResponse20021</returns>
+        System.Threading.Tasks.Task<InlineResponse20021> AddServerAsync (ServerOrderPostRequest body);
 
         /// <summary>
-        /// Place Server Order
+        /// Place a custom dedicated server order, creating a real billable invoice
         /// </summary>
         /// <remarks>
-        /// Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
+        /// Submits a fully custom dedicated server order. Creates a &#x60;pending&#x60; &#x60;servers&#x60; row, a &#x60;Repeat_Invoice&#x60;, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): &#x60;cpu&#x60; (id from &#x60;cpu_li&#x60;), &#x60;hd[]&#x60; (array of drive ids), &#x60;memory&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;os&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (ids from &#x60;getNewServer&#x60;), &#x60;region&#x60; (region_id), &#x60;servername&#x60; (valid hostname), &#x60;rootpass&#x60;, &#x60;tos&#x60; (must be true), optional &#x60;comment&#x60;. &#x60;account.server_order_discount&#x60; (if set) applies. Returns: &#x60;{ text:&#x27;Order Completed&#x27;, invoice, order }&#x60;. Errors: 422 &#x27;Missing/Invalid &lt;field&gt;&#x27;; 401 unauth. Sibling ops: &#x60;getNewServer&#x60; (options), &#x60;placeBuyNowServer&#x60; (pre-built path), &#x60;getServerInfo&#x60; (view new order), &#x60;getServerInvoices&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse20019)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20019>> AddServerAsyncWithHttpInfo ();
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (InlineResponse20021)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20021>> AddServerAsyncWithHttpInfo (ServerOrderPostRequest body);
         /// <summary>
-        /// Get Buy Now Server Options
+        /// Get configurable options for a Rapid Deploy / coupon dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
+        /// Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (&#x60;a&#x3D;&lt;asset_id&gt;&#x60;) or a coupon (&#x60;c&#x3D;&lt;coupon_name&gt;&#x60;) so the order form can be rendered before &#x60;placeBuyNowServer&#x60;. Read-only; no charge. Sibling ops: &#x60;placeBuyNowServer&#x60; (commit), &#x60;getMPServers&#x60; (browse marketplace), &#x60;addServer&#x60; (custom build flow).  **Query (one required):** - &#x60;a&#x60; (integer) — asset_id from &#x60;getMPServers&#x60;. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Returns:** &#x60;{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }&#x60;. Each option row is &#x60;{ id, short_desc, long_desc, monthly_price }&#x60; — feed those ids into &#x60;placeBuyNowServer&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;No Server Coupon or Market-Place Asset Specified&#x27;&#x60; when neither &#x60;a&#x60; nor &#x60;c&#x60; is passed. - &#x60;400&#x60; — &#x60;&#x27;Invalid Asset ID&#x27;&#x60; / &#x60;&#x27;No Server Coupon with that name&#x27;&#x60;. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; (asset already in-cart) or &#x60;&#x27;Server Out of stock&#x27;&#x60; (coupon). - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Next:** &#x60;placeBuyNowServer&#x60; (commit the order). - **Browse:** &#x60;getMPServers&#x60;. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse20027</returns>
-        System.Threading.Tasks.Task<InlineResponse20027> BuyItNowServerOrderAsync ();
+        /// <returns>Task of InlineResponse20029</returns>
+        System.Threading.Tasks.Task<InlineResponse20029> BuyItNowServerOrderAsync ();
 
         /// <summary>
-        /// Get Buy Now Server Options
+        /// Get configurable options for a Rapid Deploy / coupon dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
+        /// Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (&#x60;a&#x3D;&lt;asset_id&gt;&#x60;) or a coupon (&#x60;c&#x3D;&lt;coupon_name&gt;&#x60;) so the order form can be rendered before &#x60;placeBuyNowServer&#x60;. Read-only; no charge. Sibling ops: &#x60;placeBuyNowServer&#x60; (commit), &#x60;getMPServers&#x60; (browse marketplace), &#x60;addServer&#x60; (custom build flow).  **Query (one required):** - &#x60;a&#x60; (integer) — asset_id from &#x60;getMPServers&#x60;. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Returns:** &#x60;{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }&#x60;. Each option row is &#x60;{ id, short_desc, long_desc, monthly_price }&#x60; — feed those ids into &#x60;placeBuyNowServer&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;No Server Coupon or Market-Place Asset Specified&#x27;&#x60; when neither &#x60;a&#x60; nor &#x60;c&#x60; is passed. - &#x60;400&#x60; — &#x60;&#x27;Invalid Asset ID&#x27;&#x60; / &#x60;&#x27;No Server Coupon with that name&#x27;&#x60;. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; (asset already in-cart) or &#x60;&#x27;Server Out of stock&#x27;&#x60; (coupon). - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Next:** &#x60;placeBuyNowServer&#x60; (commit the order). - **Browse:** &#x60;getMPServers&#x60;. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse20027)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20027>> BuyItNowServerOrderAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (InlineResponse20029)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20029>> BuyItNowServerOrderAsyncWithHttpInfo ();
         /// <summary>
-        /// List Marketplace Servers
+        /// List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
         /// </summary>
         /// <remarks>
-        /// Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
+        /// Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from &#x60;mynew.interserver.net/ajax/server_a.php&#x60;. Returns: array of &#x60;{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }&#x60;. The &#x60;server_id&#x60; is the marketplace asset id — feed it into &#x60;buyItNowServerOrder&#x60; (GET options for asset &#x60;?a&#x3D;&lt;id&gt;&#x60;) and &#x60;placeBuyNowServer&#x60; (POST to commit). Errors: 401 if session expired. Sibling ops: &#x60;buyItNowServerOrder&#x60; (configure asset), &#x60;placeBuyNowServer&#x60; (purchase), &#x60;getNewServer&#x60;/&#x60;addServer&#x60; (custom-spec build, not pre-built), &#x60;getServerList&#x60; (already-owned servers).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of BuyItNowList</returns>
         System.Threading.Tasks.Task<BuyItNowList> GetMPServersAsync ();
 
         /// <summary>
-        /// List Marketplace Servers
+        /// List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
         /// </summary>
         /// <remarks>
-        /// Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
+        /// Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from &#x60;mynew.interserver.net/ajax/server_a.php&#x60;. Returns: array of &#x60;{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }&#x60;. The &#x60;server_id&#x60; is the marketplace asset id — feed it into &#x60;buyItNowServerOrder&#x60; (GET options for asset &#x60;?a&#x3D;&lt;id&gt;&#x60;) and &#x60;placeBuyNowServer&#x60; (POST to commit). Errors: 401 if session expired. Sibling ops: &#x60;buyItNowServerOrder&#x60; (configure asset), &#x60;placeBuyNowServer&#x60; (purchase), &#x60;getNewServer&#x60;/&#x60;addServer&#x60; (custom-spec build, not pre-built), &#x60;getServerList&#x60; (already-owned servers).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (BuyItNowList)</returns>
         System.Threading.Tasks.Task<ApiResponse<BuyItNowList>> GetMPServersAsyncWithHttpInfo ();
         /// <summary>
-        /// Server Ordering Information
+        /// Get custom dedicated server ordering options, regions, and pricing
         /// </summary>
         /// <remarks>
-        /// Retrieves available server configurations and pricing for ordering a new dedicated server.
+        /// Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with &#x60;config_li&#x60; keyed by category (&#x60;cpu_li&#x60;, &#x60;hd_li&#x60;, &#x60;memory_li&#x60;, &#x60;bandwidth_li&#x60;, &#x60;ips_li&#x60;, &#x60;os_li&#x60;, &#x60;cp_li&#x60;, &#x60;raid_li&#x60;) plus &#x60;regions&#x60;. Use returned IDs as POST values for &#x60;addServer&#x60;. Note &#x60;hd_li&#x60; and &#x60;memory_li&#x60; are nested by &#x60;cpu&#x60; id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: &#x60;addServer&#x60; (commits the order), &#x60;buyItNowServerOrder&#x60; (pre-built marketplace alternative), &#x60;getMPServers&#x60; (browse marketplace).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ServerOrder</returns>
         System.Threading.Tasks.Task<ServerOrder> GetNewServerAsync ();
 
         /// <summary>
-        /// Server Ordering Information
+        /// Get custom dedicated server ordering options, regions, and pricing
         /// </summary>
         /// <remarks>
-        /// Retrieves available server configurations and pricing for ordering a new dedicated server.
+        /// Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with &#x60;config_li&#x60; keyed by category (&#x60;cpu_li&#x60;, &#x60;hd_li&#x60;, &#x60;memory_li&#x60;, &#x60;bandwidth_li&#x60;, &#x60;ips_li&#x60;, &#x60;os_li&#x60;, &#x60;cp_li&#x60;, &#x60;raid_li&#x60;) plus &#x60;regions&#x60;. Use returned IDs as POST values for &#x60;addServer&#x60;. Note &#x60;hd_li&#x60; and &#x60;memory_li&#x60; are nested by &#x60;cpu&#x60; id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: &#x60;addServer&#x60; (commits the order), &#x60;buyItNowServerOrder&#x60; (pre-built marketplace alternative), &#x60;getMPServers&#x60; (browse marketplace).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (ServerOrder)</returns>
         System.Threading.Tasks.Task<ApiResponse<ServerOrder>> GetNewServerAsyncWithHttpInfo ();
         /// <summary>
-        /// Get Server Order
+        /// Get full hardware, network, and lifecycle details for a dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns detailed information about a specific server including its hardware configuration, IPs, and status.
+        /// Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Returns: &#x60;ViewServer::getDetails()&#x60; shape: &#x60;serviceInfo&#x60;, &#x60;networkInfo&#x60; (vlans + assets, with &#x60;ipmi_admin_username&#x60;/&#x60;ipmi_admin_password&#x60; and admin lease creds REDACTED for client safety), normalized &#x60;client_links&#x60;, &#x60;serviceType&#x60;. &#x60;admin_links&#x60;/raw &#x60;settings&#x60;/&#x60;csrf&#x60; stripped. Errors: 404 not owned; 401 unauth. Sibling ops: &#x60;getServerInvoices&#x60;, &#x60;serverIpmiLiveGet&#x60;, &#x60;serverIpmiPowerGet&#x60; (single — prefer &#x60;serverBulkIpmiPowerGet&#x60; for many), &#x60;getServerReverseDns&#x60;, &#x60;getServersWelcomeEmail&#x60;, &#x60;serversCancel&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -558,20 +564,20 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<Server> GetServerInfoAsync (int? id);
 
         /// <summary>
-        /// Get Server Order
+        /// Get full hardware, network, and lifecycle details for a dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns detailed information about a specific server including its hardware configuration, IPs, and status.
+        /// Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Returns: &#x60;ViewServer::getDetails()&#x60; shape: &#x60;serviceInfo&#x60;, &#x60;networkInfo&#x60; (vlans + assets, with &#x60;ipmi_admin_username&#x60;/&#x60;ipmi_admin_password&#x60; and admin lease creds REDACTED for client safety), normalized &#x60;client_links&#x60;, &#x60;serviceType&#x60;. &#x60;admin_links&#x60;/raw &#x60;settings&#x60;/&#x60;csrf&#x60; stripped. Errors: 404 not owned; 401 unauth. Sibling ops: &#x60;getServerInvoices&#x60;, &#x60;serverIpmiLiveGet&#x60;, &#x60;serverIpmiPowerGet&#x60; (single — prefer &#x60;serverBulkIpmiPowerGet&#x60; for many), &#x60;getServerReverseDns&#x60;, &#x60;getServersWelcomeEmail&#x60;, &#x60;serversCancel&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
         /// <returns>Task of ApiResponse (Server)</returns>
         System.Threading.Tasks.Task<ApiResponse<Server>> GetServerInfoAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// Get Server Invoices
+        /// List billing invoices (charges + payments) tied to one dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the billing invoices associated with this dedicated server.
+        /// Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: &#x60;id&#x60; (integer server_id from &#x60;getServerList&#x60;). No body. Inherits from &#x60;MyAdmin\\Api\\Billing\\InvoicesList&#x60; with module&#x3D;servers. Returns: &#x60;ChargeInvoiceRows&#x60; array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if &#x60;id&#x60; not owned by the caller; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current service state), &#x60;serversCancel&#x60; (cancel), &#x60;getBillingInvoice&#x60; (single invoice by invoice id), &#x60;getVpsInvoices&#x60;/&#x60;getDomainInvoices&#x60; for other modules, &#x60;getServersWelcomeEmail&#x60; to resend setup info.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -579,39 +585,39 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<ChargeInvoiceRows> GetServerInvoicesAsync (int? id);
 
         /// <summary>
-        /// Get Server Invoices
+        /// List billing invoices (charges + payments) tied to one dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the billing invoices associated with this dedicated server.
+        /// Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: &#x60;id&#x60; (integer server_id from &#x60;getServerList&#x60;). No body. Inherits from &#x60;MyAdmin\\Api\\Billing\\InvoicesList&#x60; with module&#x3D;servers. Returns: &#x60;ChargeInvoiceRows&#x60; array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if &#x60;id&#x60; not owned by the caller; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current service state), &#x60;serversCancel&#x60; (cancel), &#x60;getBillingInvoice&#x60; (single invoice by invoice id), &#x60;getVpsInvoices&#x60;/&#x60;getDomainInvoices&#x60; for other modules, &#x60;getServersWelcomeEmail&#x60; to resend setup info.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
         /// <returns>Task of ApiResponse (ChargeInvoiceRows)</returns>
         System.Threading.Tasks.Task<ApiResponse<ChargeInvoiceRows>> GetServerInvoicesAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// List Servers
+        /// List all dedicated servers owned by the authenticated customer
         /// </summary>
         /// <remarks>
-        /// Returns all dedicated server services on the account with their current status and configuration.
+        /// Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters &#x60;servers&#x60; by session &#x60;account_id&#x60;. Returns: array of &#x60;{ server_id, account_lid, server_hostname, server_status }&#x60;. Use &#x60;server_id&#x60; with &#x60;getServerInfo&#x60; for full hardware/network/IPMI details, &#x60;getServerInvoices&#x60; for billing, or &#x60;serverIpmiPowerGet&#x60; for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: &#x60;getServerInfo&#x60; (details), &#x60;getVpsList&#x60; (virtual instead of physical hardware), &#x60;getMPServers&#x60; (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer &#x60;serverBulkIpmiPowerGet&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;ServerRow&gt;</returns>
         System.Threading.Tasks.Task<List<ServerRow>> GetServerListAsync ();
 
         /// <summary>
-        /// List Servers
+        /// List all dedicated servers owned by the authenticated customer
         /// </summary>
         /// <remarks>
-        /// Returns all dedicated server services on the account with their current status and configuration.
+        /// Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters &#x60;servers&#x60; by session &#x60;account_id&#x60;. Returns: array of &#x60;{ server_id, account_lid, server_hostname, server_status }&#x60;. Use &#x60;server_id&#x60; with &#x60;getServerInfo&#x60; for full hardware/network/IPMI details, &#x60;getServerInvoices&#x60; for billing, or &#x60;serverIpmiPowerGet&#x60; for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: &#x60;getServerInfo&#x60; (details), &#x60;getVpsList&#x60; (virtual instead of physical hardware), &#x60;getMPServers&#x60; (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer &#x60;serverBulkIpmiPowerGet&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;ServerRow&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<ServerRow>>> GetServerListAsyncWithHttpInfo ();
         /// <summary>
-        /// Reverse DNS Info
+        /// List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Returns the current reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server&#x27;s VLANs — typically before calling &#x60;postServerReverseDns&#x60; to update them. Path param: &#x60;id&#x60; (integer server_id). No body. Walks &#x60;networkInfo.vlans&#x60;, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via &#x60;get_hostname()&#x60;. Returns: &#x60;{ ips: { &#x27;&lt;ipv4&gt;&#x27;: &#x27;&lt;ptr_or_empty_string&gt;&#x27;, ... } }&#x60;. Empty string indicates no PTR set. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: &#x60;postServerReverseDns&#x60; (update PTRs), &#x60;getServerInfo&#x60; (full network), &#x60;getVpsReverseDns&#x60; for VPS, &#x60;getDomainNameservers&#x60; / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -619,20 +625,20 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<ReverseDnsEntries> GetServerReverseDnsAsync (int? id);
 
         /// <summary>
-        /// Reverse DNS Info
+        /// List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Returns the current reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server&#x27;s VLANs — typically before calling &#x60;postServerReverseDns&#x60; to update them. Path param: &#x60;id&#x60; (integer server_id). No body. Walks &#x60;networkInfo.vlans&#x60;, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via &#x60;get_hostname()&#x60;. Returns: &#x60;{ ips: { &#x27;&lt;ipv4&gt;&#x27;: &#x27;&lt;ptr_or_empty_string&gt;&#x27;, ... } }&#x60;. Empty string indicates no PTR set. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: &#x60;postServerReverseDns&#x60; (update PTRs), &#x60;getServerInfo&#x60; (full network), &#x60;getVpsReverseDns&#x60; for VPS, &#x60;getDomainNameservers&#x60; / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
         /// <returns>Task of ApiResponse (ReverseDnsEntries)</returns>
         System.Threading.Tasks.Task<ApiResponse<ReverseDnsEntries>> GetServerReverseDnsAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// Resend Server Welcome Email
+        /// Resend the dedicated server welcome email with setup credentials
         /// </summary>
         /// <remarks>
-        /// Resends the welcome email for the order.
+        /// Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: &#x60;id&#x60; (integer server_id, must be &#x60;active&#x60;). No body. Invokes &#x60;server_welcome_email($id)&#x60; which re-sends the welcome message to the account&#x27;s email. Returns: &#x60;{ text:&#x27;Welcome Email has been resent.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: &#x60;getServerInfo&#x60; (status check), &#x60;getServerInvoices&#x60;, &#x60;getVpsWelcomeEmail&#x60; for VPS, &#x60;getDomainsWelcomeEmail&#x60; for domains.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -640,20 +646,20 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<SuccessTextResponse> GetServersWelcomeEmailAsync (int? id);
 
         /// <summary>
-        /// Resend Server Welcome Email
+        /// Resend the dedicated server welcome email with setup credentials
         /// </summary>
         /// <remarks>
-        /// Resends the welcome email for the order.
+        /// Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: &#x60;id&#x60; (integer server_id, must be &#x60;active&#x60;). No body. Invokes &#x60;server_welcome_email($id)&#x60; which re-sends the welcome message to the account&#x27;s email. Returns: &#x60;{ text:&#x27;Welcome Email has been resent.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: &#x60;getServerInfo&#x60; (status check), &#x60;getServerInvoices&#x60;, &#x60;getVpsWelcomeEmail&#x60; for VPS, &#x60;getDomainsWelcomeEmail&#x60; for domains.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
         /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> GetServersWelcomeEmailAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// Place Buy Now Server Order
+        /// Place a Rapid Deploy / coupon dedicated server order; creates real invoice
         /// </summary>
         /// <remarks>
-        /// Places an order for a buy-it-now dedicated server. Use &#x60;GET /servers/order/buy_now_server&#x60; to retrieve available server configurations and their IDs before ordering.
+        /// Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the &#x60;servers&#x60; row, creates a &#x60;Repeat_Invoice&#x60; plus the first &#x60;invoices&#x60; row, marks the asset &#x60;MarketPlace-Incart&#x60; (or decrements &#x60;server_coupons.in_stock&#x60;), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: &#x60;buyItNowServerOrder&#x60; (catalog), &#x60;getServerInfo&#x60; (poll provisioning), &#x60;getServerInvoices&#x60; (billing), &#x60;addServer&#x60; (custom build alternative).  **Query (one required, same as &#x60;buyItNowServerOrder&#x60;):** - &#x60;a&#x60; (integer) — asset_id. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — valid FQDN; validated by &#x60;valid_hostname&#x60;. - &#x60;enablepassword&#x60; (boolean, optional, default &#x60;false&#x60;) — when true the client must supply &#x60;rootPassword&#x60;; otherwise a secure password is generated server-side via &#x60;generate_password()&#x60;. - &#x60;rootPassword&#x60; (string, required when &#x60;enablepassword&#x3D;true&#x60;) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (&#x60;valid_password&#x60;). - &#x60;os&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (integer, optional) — option ids from &#x60;buyItNowServerOrder&#x60;; defaults &#x60;30&#x60; / &#x60;10&#x60; / &#x60;9&#x60; / &#x60;1&#x60; / &#x60;0&#x60; applied when missing. - &#x60;comments&#x60; (string, optional) — appended to the order comment.  **Returns:** &#x60;201 { success: true, text: &#x27;Server order is placed.&#x27;, service_id, invoice_id }&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;Server Hostname is missing.&#x27;&#x60; / &#x60;&#x27;Invalid Hostname!&#x27;&#x60; / &#x60;&#x27;Server Password is missing.&#x27;&#x60; / password complexity message. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; / &#x60;&#x27;Server Out of stock.&#x27;&#x60; - &#x60;401&#x60; — unauthenticated.  **Side effects:** inserts &#x60;servers&#x60; row, creates &#x60;repeat_invoices&#x60; + &#x60;invoices&#x60; rows, updates &#x60;assets.status&#x60; or &#x60;server_coupons.in_stock&#x60;, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** &#x60;buyItNowServerOrder&#x60;. - **Next:** &#x60;getBillingInvoice&#x60; + &#x60;initiatePayment&#x60; to pay, then poll &#x60;getServerInfo&#x60; for provisioning state. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
@@ -661,20 +667,20 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<ServersBuyNowResponse> PlaceBuyNowServerAsync (OrderBuyNowServerBody body = null);
 
         /// <summary>
-        /// Place Buy Now Server Order
+        /// Place a Rapid Deploy / coupon dedicated server order; creates real invoice
         /// </summary>
         /// <remarks>
-        /// Places an order for a buy-it-now dedicated server. Use &#x60;GET /servers/order/buy_now_server&#x60; to retrieve available server configurations and their IDs before ordering.
+        /// Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the &#x60;servers&#x60; row, creates a &#x60;Repeat_Invoice&#x60; plus the first &#x60;invoices&#x60; row, marks the asset &#x60;MarketPlace-Incart&#x60; (or decrements &#x60;server_coupons.in_stock&#x60;), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: &#x60;buyItNowServerOrder&#x60; (catalog), &#x60;getServerInfo&#x60; (poll provisioning), &#x60;getServerInvoices&#x60; (billing), &#x60;addServer&#x60; (custom build alternative).  **Query (one required, same as &#x60;buyItNowServerOrder&#x60;):** - &#x60;a&#x60; (integer) — asset_id. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — valid FQDN; validated by &#x60;valid_hostname&#x60;. - &#x60;enablepassword&#x60; (boolean, optional, default &#x60;false&#x60;) — when true the client must supply &#x60;rootPassword&#x60;; otherwise a secure password is generated server-side via &#x60;generate_password()&#x60;. - &#x60;rootPassword&#x60; (string, required when &#x60;enablepassword&#x3D;true&#x60;) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (&#x60;valid_password&#x60;). - &#x60;os&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (integer, optional) — option ids from &#x60;buyItNowServerOrder&#x60;; defaults &#x60;30&#x60; / &#x60;10&#x60; / &#x60;9&#x60; / &#x60;1&#x60; / &#x60;0&#x60; applied when missing. - &#x60;comments&#x60; (string, optional) — appended to the order comment.  **Returns:** &#x60;201 { success: true, text: &#x27;Server order is placed.&#x27;, service_id, invoice_id }&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;Server Hostname is missing.&#x27;&#x60; / &#x60;&#x27;Invalid Hostname!&#x27;&#x60; / &#x60;&#x27;Server Password is missing.&#x27;&#x60; / password complexity message. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; / &#x60;&#x27;Server Out of stock.&#x27;&#x60; - &#x60;401&#x60; — unauthenticated.  **Side effects:** inserts &#x60;servers&#x60; row, creates &#x60;repeat_invoices&#x60; + &#x60;invoices&#x60; rows, updates &#x60;assets.status&#x60; or &#x60;server_coupons.in_stock&#x60;, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** &#x60;buyItNowServerOrder&#x60;. - **Next:** &#x60;getBillingInvoice&#x60; + &#x60;initiatePayment&#x60; to pay, then poll &#x60;getServerInfo&#x60; for provisioning state. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
         /// <returns>Task of ApiResponse (ServersBuyNowResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ServersBuyNowResponse>> PlaceBuyNowServerAsyncWithHttpInfo (OrderBuyNowServerBody body = null);
         /// <summary>
-        /// Update Reverse DNS
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -683,10 +689,10 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<TextResponse> PostServerReverseDnsAsync (ReverseDnsEntries body, int? id);
 
         /// <summary>
-        /// Update Reverse DNS
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -694,10 +700,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>Task of ApiResponse (TextResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<TextResponse>> PostServerReverseDnsAsyncWithHttpInfo (ReverseDnsEntries body, int? id);
         /// <summary>
-        /// Update Reverse DNS
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ips"></param>
@@ -706,10 +712,10 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<TextResponse> PostServerReverseDnsAsync (Dictionary<string, Object> ips, int? id);
 
         /// <summary>
-        /// Update Reverse DNS
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
         /// </summary>
         /// <remarks>
-        /// Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ips"></param>
@@ -717,29 +723,31 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>Task of ApiResponse (TextResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<TextResponse>> PostServerReverseDnsAsyncWithHttpInfo (Dictionary<string, Object> ips, int? id);
         /// <summary>
-        /// Validate Server Order
+        /// Read IPMI chassis power status for many dedicated servers in one call
         /// </summary>
         /// <remarks>
-        /// Validates a server order before placing it. Use this to check for errors before committing to a purchase.
+        /// Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: &#x60;ids&#x60; (required) — comma-separated string &#x60;?ids&#x3D;2313,2314,2315&#x60; OR repeated &#x60;ids[]&#x60; array. Duplicates de-duped; non-positive ints become per-row errors. Returns: &#x60;{ results: [ { id, asset?, text|error } ] }&#x60;. Errors: 400 &#x27;No server IDs provided.&#x27; if &#x60;ids&#x60; empty/missing; 401 unauth. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (single-server equivalent), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power; no bulk equivalent — call per server), &#x60;getServerList&#x60; (discover ids).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PutServersAsync ();
+        /// <param name="ids">Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters.</param>
+        /// <returns>Task of ServerBulkIpmiPowerResponse</returns>
+        System.Threading.Tasks.Task<ServerBulkIpmiPowerResponse> ServerBulkIpmiPowerGetAsync (string ids);
 
         /// <summary>
-        /// Validate Server Order
+        /// Read IPMI chassis power status for many dedicated servers in one call
         /// </summary>
         /// <remarks>
-        /// Validates a server order before placing it. Use this to check for errors before committing to a purchase.
+        /// Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: &#x60;ids&#x60; (required) — comma-separated string &#x60;?ids&#x3D;2313,2314,2315&#x60; OR repeated &#x60;ids[]&#x60; array. Duplicates de-duped; non-positive ints become per-row errors. Returns: &#x60;{ results: [ { id, asset?, text|error } ] }&#x60;. Errors: 400 &#x27;No server IDs provided.&#x27; if &#x60;ids&#x60; empty/missing; 401 unauth. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (single-server equivalent), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power; no bulk equivalent — call per server), &#x60;getServerList&#x60; (discover ids).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PutServersAsyncWithHttpInfo ();
+        /// <param name="ids">Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters.</param>
+        /// <returns>Task of ApiResponse (ServerBulkIpmiPowerResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ServerBulkIpmiPowerResponse>> ServerBulkIpmiPowerGetAsyncWithHttpInfo (string ids);
         /// <summary>
-        /// Server IPMI Live Information
+        /// Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the current IPMI live connection information for the server.
+        /// Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset&#x27;s IPMI IP, the location&#x27;s IPMI group, and any active &#x60;ipmi_ips&#x60; lease (3-hour TTL). Sibling ops: &#x60;serverIpmiLivePost&#x60; (allocate whitelist slot), &#x60;serverIpmiPowerGet&#x60; / &#x60;serverIpmiPowerPost&#x60; (chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id from &#x60;getServerList&#x60;.  **Body / query:** None. Optionally pass &#x60;asset&#x60; (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60;. When no lease yet: &#x60;{ text: &#x27;Setup not yet completed&#x27; }&#x60; — then call &#x60;serverIpmiLivePost&#x60; to allocate a slot.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60; when the asset/location is not configured for IPMI Live.  **Caveat:** returns &#x60;client_password&#x60; — never log/echo verbatim.  **Related calls:** - **Allocate:** &#x60;serverIpmiLivePost&#x60;. - **Chassis power:** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -747,20 +755,20 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<ServerIpmiLiveInfo> ServerIpmiLiveGetAsync (int? id);
 
         /// <summary>
-        /// Server IPMI Live Information
+        /// Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
         /// </summary>
         /// <remarks>
-        /// Returns the current IPMI live connection information for the server.
+        /// Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset&#x27;s IPMI IP, the location&#x27;s IPMI group, and any active &#x60;ipmi_ips&#x60; lease (3-hour TTL). Sibling ops: &#x60;serverIpmiLivePost&#x60; (allocate whitelist slot), &#x60;serverIpmiPowerGet&#x60; / &#x60;serverIpmiPowerPost&#x60; (chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id from &#x60;getServerList&#x60;.  **Body / query:** None. Optionally pass &#x60;asset&#x60; (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60;. When no lease yet: &#x60;{ text: &#x27;Setup not yet completed&#x27; }&#x60; — then call &#x60;serverIpmiLivePost&#x60; to allocate a slot.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60; when the asset/location is not configured for IPMI Live.  **Caveat:** returns &#x60;client_password&#x60; — never log/echo verbatim.  **Related calls:** - **Allocate:** &#x60;serverIpmiLivePost&#x60;. - **Chassis power:** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
         /// <returns>Task of ApiResponse (ServerIpmiLiveInfo)</returns>
         System.Threading.Tasks.Task<ApiResponse<ServerIpmiLiveInfo>> ServerIpmiLiveGetAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// Server IPMI Live Setup
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
         /// </summary>
         /// <remarks>
-        /// Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -770,10 +778,10 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<ServerIpmiLiveInfo> ServerIpmiLivePostAsync (int? asset, string ip, int? id);
 
         /// <summary>
-        /// Server IPMI Live Setup
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
         /// </summary>
         /// <remarks>
-        /// Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -782,10 +790,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>Task of ApiResponse (ServerIpmiLiveInfo)</returns>
         System.Threading.Tasks.Task<ApiResponse<ServerIpmiLiveInfo>> ServerIpmiLivePostAsyncWithHttpInfo (int? asset, string ip, int? id);
         /// <summary>
-        /// Server IPMI Live Setup
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
         /// </summary>
         /// <remarks>
-        /// Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -794,10 +802,10 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<ServerIpmiLiveInfo> ServerIpmiLivePostAsync (ServerIpmiLiveRequest body, int? id);
 
         /// <summary>
-        /// Server IPMI Live Setup
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
         /// </summary>
         /// <remarks>
-        /// Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -805,10 +813,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>Task of ApiResponse (ServerIpmiLiveInfo)</returns>
         System.Threading.Tasks.Task<ApiResponse<ServerIpmiLiveInfo>> ServerIpmiLivePostAsyncWithHttpInfo (ServerIpmiLiveRequest body, int? id);
         /// <summary>
-        /// Get IPMI Power Status
+        /// Read IPMI chassis power status for a dedicated server (single)
         /// </summary>
         /// <remarks>
-        /// Returns the chassis power status from ipmi.
+        /// Use to check whether a server&#x27;s chassis is currently &#x60;on&#x60;/&#x60;off&#x60; via IPMI before issuing a power action. Path param: &#x60;id&#x60; (integer server_id). Optional body &#x60;asset&#x60; (asset_id — defaults to first asset). Issues &#x60;ipmitool power status&#x60; against the asset&#x27;s &#x60;ipmi_ip&#x60; using its location IPMI group/credentials. Returns: &#x60;{ text:&#x27;Chassis Power is on&#x27; }&#x60; (or &#x27;off&#x27;). Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active; &#x27;There was an error sending the IPMI command&#x27; if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: &#x60;serverBulkIpmiPowerGet&#x60; (preferred when polling many servers — single round-trip), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power), &#x60;getServerInfo&#x60; (full state), &#x60;serverIpmiLiveGet&#x60; (IPMI Live KVM).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -816,20 +824,20 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<TextResponse> ServerIpmiPowerGetAsync (int? id);
 
         /// <summary>
-        /// Get IPMI Power Status
+        /// Read IPMI chassis power status for a dedicated server (single)
         /// </summary>
         /// <remarks>
-        /// Returns the chassis power status from ipmi.
+        /// Use to check whether a server&#x27;s chassis is currently &#x60;on&#x60;/&#x60;off&#x60; via IPMI before issuing a power action. Path param: &#x60;id&#x60; (integer server_id). Optional body &#x60;asset&#x60; (asset_id — defaults to first asset). Issues &#x60;ipmitool power status&#x60; against the asset&#x27;s &#x60;ipmi_ip&#x60; using its location IPMI group/credentials. Returns: &#x60;{ text:&#x27;Chassis Power is on&#x27; }&#x60; (or &#x27;off&#x27;). Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active; &#x27;There was an error sending the IPMI command&#x27; if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: &#x60;serverBulkIpmiPowerGet&#x60; (preferred when polling many servers — single round-trip), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power), &#x60;getServerInfo&#x60; (full state), &#x60;serverIpmiLiveGet&#x60; (IPMI Live KVM).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
         /// <returns>Task of ApiResponse (TextResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<TextResponse>> ServerIpmiPowerGetAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// Server IPMI Power
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server
         /// </summary>
         /// <remarks>
-        /// Uses the IPMI interface to set the Power status on the server.
+        /// Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -839,10 +847,10 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<TextResponse> ServerIpmiPowerPostAsync (int? asset, string action, int? id);
 
         /// <summary>
-        /// Server IPMI Power
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server
         /// </summary>
         /// <remarks>
-        /// Uses the IPMI interface to set the Power status on the server.
+        /// Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -851,10 +859,10 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>Task of ApiResponse (TextResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<TextResponse>> ServerIpmiPowerPostAsyncWithHttpInfo (int? asset, string action, int? id);
         /// <summary>
-        /// Server IPMI Power
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server
         /// </summary>
         /// <remarks>
-        /// Uses the IPMI interface to set the Power status on the server.
+        /// Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -863,10 +871,10 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<TextResponse> ServerIpmiPowerPostAsync (ServerIpmiPowerRequest body, int? id);
 
         /// <summary>
-        /// Server IPMI Power
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server
         /// </summary>
         /// <remarks>
-        /// Uses the IPMI interface to set the Power status on the server.
+        /// Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -874,31 +882,31 @@ namespace Interserver.MyAdmin.Client.Api
         /// <returns>Task of ApiResponse (TextResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<TextResponse>> ServerIpmiPowerPostAsyncWithHttpInfo (ServerIpmiPowerRequest body, int? id);
         /// <summary>
-        /// Cancel Server Service
+        /// Cancel a dedicated server service at the end of the current billing cycle
         /// </summary>
         /// <remarks>
-        /// Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
+        /// Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: &#x60;{ success:bool, text:&#x27;Servers is canceled.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current status), &#x60;getServerInvoices&#x60; (outstanding charges), VPS counterpart &#x60;VPSCancel&#x60;. To re-order after cancel use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>Task of InlineResponse20020</returns>
-        System.Threading.Tasks.Task<InlineResponse20020> ServersCancelAsync (int? id);
+        /// <returns>Task of InlineResponse20022</returns>
+        System.Threading.Tasks.Task<InlineResponse20022> ServersCancelAsync (int? id);
 
         /// <summary>
-        /// Cancel Server Service
+        /// Cancel a dedicated server service at the end of the current billing cycle
         /// </summary>
         /// <remarks>
-        /// Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
+        /// Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: &#x60;{ success:bool, text:&#x27;Servers is canceled.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current status), &#x60;getServerInvoices&#x60; (outstanding charges), VPS counterpart &#x60;VPSCancel&#x60;. To re-order after cancel use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>Task of ApiResponse (InlineResponse20020)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20020>> ServersCancelAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (InlineResponse20022)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20022>> ServersCancelAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// Update Server Order
+        /// Update settings on a dedicated server order (shares handler with view)
         /// </summary>
         /// <remarks>
-        /// Updates settings on a dedicated server order.
+        /// Use to modify metadata on an existing dedicated server order. Path param: &#x60;id&#x60; (integer server_id). Currently this method shares the same handler as &#x60;getServerInfo&#x60; (&#x60;View::go()&#x60;) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as &#x60;getServerInfo&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: prefer &#x60;postServerReverseDns&#x60; (rDNS), &#x60;serverIpmiPowerPost&#x60; (power), &#x60;serverIpmiLivePost&#x60; (IPMI access), &#x60;serversCancel&#x60; (cancel). For new orders use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;. View-only: &#x60;getServerInfo&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -906,10 +914,10 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<SuccessTextResponse> UpdateServerInfoAsync (string id);
 
         /// <summary>
-        /// Update Server Order
+        /// Update settings on a dedicated server order (shares handler with view)
         /// </summary>
         /// <remarks>
-        /// Updates settings on a dedicated server order.
+        /// Use to modify metadata on an existing dedicated server order. Path param: &#x60;id&#x60; (integer server_id). Currently this method shares the same handler as &#x60;getServerInfo&#x60; (&#x60;View::go()&#x60;) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as &#x60;getServerInfo&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: prefer &#x60;postServerReverseDns&#x60; (rDNS), &#x60;serverIpmiPowerPost&#x60; (power), &#x60;serverIpmiLivePost&#x60; (IPMI access), &#x60;serversCancel&#x60; (cancel). For new orders use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;. View-only: &#x60;getServerInfo&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -1027,23 +1035,28 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Place Server Order Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
+        /// Place a custom dedicated server order, creating a real billable invoice Submits a fully custom dedicated server order. Creates a &#x60;pending&#x60; &#x60;servers&#x60; row, a &#x60;Repeat_Invoice&#x60;, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): &#x60;cpu&#x60; (id from &#x60;cpu_li&#x60;), &#x60;hd[]&#x60; (array of drive ids), &#x60;memory&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;os&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (ids from &#x60;getNewServer&#x60;), &#x60;region&#x60; (region_id), &#x60;servername&#x60; (valid hostname), &#x60;rootpass&#x60;, &#x60;tos&#x60; (must be true), optional &#x60;comment&#x60;. &#x60;account.server_order_discount&#x60; (if set) applies. Returns: &#x60;{ text:&#x27;Order Completed&#x27;, invoice, order }&#x60;. Errors: 422 &#x27;Missing/Invalid &lt;field&gt;&#x27;; 401 unauth. Sibling ops: &#x60;getNewServer&#x60; (options), &#x60;placeBuyNowServer&#x60; (pre-built path), &#x60;getServerInfo&#x60; (view new order), &#x60;getServerInvoices&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse20019</returns>
-        public InlineResponse20019 AddServer ()
+        /// <param name="body"></param>
+        /// <returns>InlineResponse20021</returns>
+        public InlineResponse20021 AddServer (ServerOrderPostRequest body)
         {
-             ApiResponse<InlineResponse20019> localVarResponse = AddServerWithHttpInfo();
+             ApiResponse<InlineResponse20021> localVarResponse = AddServerWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Place Server Order Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
+        /// Place a custom dedicated server order, creating a real billable invoice Submits a fully custom dedicated server order. Creates a &#x60;pending&#x60; &#x60;servers&#x60; row, a &#x60;Repeat_Invoice&#x60;, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): &#x60;cpu&#x60; (id from &#x60;cpu_li&#x60;), &#x60;hd[]&#x60; (array of drive ids), &#x60;memory&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;os&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (ids from &#x60;getNewServer&#x60;), &#x60;region&#x60; (region_id), &#x60;servername&#x60; (valid hostname), &#x60;rootpass&#x60;, &#x60;tos&#x60; (must be true), optional &#x60;comment&#x60;. &#x60;account.server_order_discount&#x60; (if set) applies. Returns: &#x60;{ text:&#x27;Order Completed&#x27;, invoice, order }&#x60;. Errors: 422 &#x27;Missing/Invalid &lt;field&gt;&#x27;; 401 unauth. Sibling ops: &#x60;getNewServer&#x60; (options), &#x60;placeBuyNowServer&#x60; (pre-built path), &#x60;getServerInfo&#x60; (view new order), &#x60;getServerInvoices&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse20019</returns>
-        public ApiResponse< InlineResponse20019 > AddServerWithHttpInfo ()
+        /// <param name="body"></param>
+        /// <returns>ApiResponse of InlineResponse20021</returns>
+        public ApiResponse< InlineResponse20021 > AddServerWithHttpInfo (ServerOrderPostRequest body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling ServersApi->AddServer");
 
             var localVarPath = "/servers/order";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1055,6 +1068,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1066,6 +1080,14 @@ namespace Interserver.MyAdmin.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (apiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
             {
@@ -1095,30 +1117,35 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20019>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20021>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20019) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20019)));
+                (InlineResponse20021) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20021)));
         }
 
         /// <summary>
-        /// Place Server Order Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
+        /// Place a custom dedicated server order, creating a real billable invoice Submits a fully custom dedicated server order. Creates a &#x60;pending&#x60; &#x60;servers&#x60; row, a &#x60;Repeat_Invoice&#x60;, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): &#x60;cpu&#x60; (id from &#x60;cpu_li&#x60;), &#x60;hd[]&#x60; (array of drive ids), &#x60;memory&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;os&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (ids from &#x60;getNewServer&#x60;), &#x60;region&#x60; (region_id), &#x60;servername&#x60; (valid hostname), &#x60;rootpass&#x60;, &#x60;tos&#x60; (must be true), optional &#x60;comment&#x60;. &#x60;account.server_order_discount&#x60; (if set) applies. Returns: &#x60;{ text:&#x27;Order Completed&#x27;, invoice, order }&#x60;. Errors: 422 &#x27;Missing/Invalid &lt;field&gt;&#x27;; 401 unauth. Sibling ops: &#x60;getNewServer&#x60; (options), &#x60;placeBuyNowServer&#x60; (pre-built path), &#x60;getServerInfo&#x60; (view new order), &#x60;getServerInvoices&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse20019</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20019> AddServerAsync ()
+        /// <param name="body"></param>
+        /// <returns>Task of InlineResponse20021</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20021> AddServerAsync (ServerOrderPostRequest body)
         {
-             ApiResponse<InlineResponse20019> localVarResponse = await AddServerAsyncWithHttpInfo();
+             ApiResponse<InlineResponse20021> localVarResponse = await AddServerAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Place Server Order Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.
+        /// Place a custom dedicated server order, creating a real billable invoice Submits a fully custom dedicated server order. Creates a &#x60;pending&#x60; &#x60;servers&#x60; row, a &#x60;Repeat_Invoice&#x60;, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): &#x60;cpu&#x60; (id from &#x60;cpu_li&#x60;), &#x60;hd[]&#x60; (array of drive ids), &#x60;memory&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;os&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (ids from &#x60;getNewServer&#x60;), &#x60;region&#x60; (region_id), &#x60;servername&#x60; (valid hostname), &#x60;rootpass&#x60;, &#x60;tos&#x60; (must be true), optional &#x60;comment&#x60;. &#x60;account.server_order_discount&#x60; (if set) applies. Returns: &#x60;{ text:&#x27;Order Completed&#x27;, invoice, order }&#x60;. Errors: 422 &#x27;Missing/Invalid &lt;field&gt;&#x27;; 401 unauth. Sibling ops: &#x60;getNewServer&#x60; (options), &#x60;placeBuyNowServer&#x60; (pre-built path), &#x60;getServerInfo&#x60; (view new order), &#x60;getServerInvoices&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse20019)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20019>> AddServerAsyncWithHttpInfo ()
+        /// <param name="body"></param>
+        /// <returns>Task of ApiResponse (InlineResponse20021)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20021>> AddServerAsyncWithHttpInfo (ServerOrderPostRequest body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling ServersApi->AddServer");
 
             var localVarPath = "/servers/order";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1130,6 +1157,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1141,6 +1169,14 @@ namespace Interserver.MyAdmin.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (apiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
             {
@@ -1170,28 +1206,28 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20019>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20021>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20019) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20019)));
+                (InlineResponse20021) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20021)));
         }
 
         /// <summary>
-        /// Get Buy Now Server Options Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
+        /// Get configurable options for a Rapid Deploy / coupon dedicated server Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (&#x60;a&#x3D;&lt;asset_id&gt;&#x60;) or a coupon (&#x60;c&#x3D;&lt;coupon_name&gt;&#x60;) so the order form can be rendered before &#x60;placeBuyNowServer&#x60;. Read-only; no charge. Sibling ops: &#x60;placeBuyNowServer&#x60; (commit), &#x60;getMPServers&#x60; (browse marketplace), &#x60;addServer&#x60; (custom build flow).  **Query (one required):** - &#x60;a&#x60; (integer) — asset_id from &#x60;getMPServers&#x60;. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Returns:** &#x60;{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }&#x60;. Each option row is &#x60;{ id, short_desc, long_desc, monthly_price }&#x60; — feed those ids into &#x60;placeBuyNowServer&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;No Server Coupon or Market-Place Asset Specified&#x27;&#x60; when neither &#x60;a&#x60; nor &#x60;c&#x60; is passed. - &#x60;400&#x60; — &#x60;&#x27;Invalid Asset ID&#x27;&#x60; / &#x60;&#x27;No Server Coupon with that name&#x27;&#x60;. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; (asset already in-cart) or &#x60;&#x27;Server Out of stock&#x27;&#x60; (coupon). - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Next:** &#x60;placeBuyNowServer&#x60; (commit the order). - **Browse:** &#x60;getMPServers&#x60;. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>InlineResponse20027</returns>
-        public InlineResponse20027 BuyItNowServerOrder ()
+        /// <returns>InlineResponse20029</returns>
+        public InlineResponse20029 BuyItNowServerOrder ()
         {
-             ApiResponse<InlineResponse20027> localVarResponse = BuyItNowServerOrderWithHttpInfo();
+             ApiResponse<InlineResponse20029> localVarResponse = BuyItNowServerOrderWithHttpInfo();
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Get Buy Now Server Options Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
+        /// Get configurable options for a Rapid Deploy / coupon dedicated server Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (&#x60;a&#x3D;&lt;asset_id&gt;&#x60;) or a coupon (&#x60;c&#x3D;&lt;coupon_name&gt;&#x60;) so the order form can be rendered before &#x60;placeBuyNowServer&#x60;. Read-only; no charge. Sibling ops: &#x60;placeBuyNowServer&#x60; (commit), &#x60;getMPServers&#x60; (browse marketplace), &#x60;addServer&#x60; (custom build flow).  **Query (one required):** - &#x60;a&#x60; (integer) — asset_id from &#x60;getMPServers&#x60;. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Returns:** &#x60;{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }&#x60;. Each option row is &#x60;{ id, short_desc, long_desc, monthly_price }&#x60; — feed those ids into &#x60;placeBuyNowServer&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;No Server Coupon or Market-Place Asset Specified&#x27;&#x60; when neither &#x60;a&#x60; nor &#x60;c&#x60; is passed. - &#x60;400&#x60; — &#x60;&#x27;Invalid Asset ID&#x27;&#x60; / &#x60;&#x27;No Server Coupon with that name&#x27;&#x60;. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; (asset already in-cart) or &#x60;&#x27;Server Out of stock&#x27;&#x60; (coupon). - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Next:** &#x60;placeBuyNowServer&#x60; (commit the order). - **Browse:** &#x60;getMPServers&#x60;. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of InlineResponse20027</returns>
-        public ApiResponse< InlineResponse20027 > BuyItNowServerOrderWithHttpInfo ()
+        /// <returns>ApiResponse of InlineResponse20029</returns>
+        public ApiResponse< InlineResponse20029 > BuyItNowServerOrderWithHttpInfo ()
         {
 
             var localVarPath = "/servers/order/buy_now_server";
@@ -1244,29 +1280,29 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20027>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20029>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20027) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20027)));
+                (InlineResponse20029) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20029)));
         }
 
         /// <summary>
-        /// Get Buy Now Server Options Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
+        /// Get configurable options for a Rapid Deploy / coupon dedicated server Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (&#x60;a&#x3D;&lt;asset_id&gt;&#x60;) or a coupon (&#x60;c&#x3D;&lt;coupon_name&gt;&#x60;) so the order form can be rendered before &#x60;placeBuyNowServer&#x60;. Read-only; no charge. Sibling ops: &#x60;placeBuyNowServer&#x60; (commit), &#x60;getMPServers&#x60; (browse marketplace), &#x60;addServer&#x60; (custom build flow).  **Query (one required):** - &#x60;a&#x60; (integer) — asset_id from &#x60;getMPServers&#x60;. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Returns:** &#x60;{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }&#x60;. Each option row is &#x60;{ id, short_desc, long_desc, monthly_price }&#x60; — feed those ids into &#x60;placeBuyNowServer&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;No Server Coupon or Market-Place Asset Specified&#x27;&#x60; when neither &#x60;a&#x60; nor &#x60;c&#x60; is passed. - &#x60;400&#x60; — &#x60;&#x27;Invalid Asset ID&#x27;&#x60; / &#x60;&#x27;No Server Coupon with that name&#x27;&#x60;. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; (asset already in-cart) or &#x60;&#x27;Server Out of stock&#x27;&#x60; (coupon). - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Next:** &#x60;placeBuyNowServer&#x60; (commit the order). - **Browse:** &#x60;getMPServers&#x60;. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of InlineResponse20027</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20027> BuyItNowServerOrderAsync ()
+        /// <returns>Task of InlineResponse20029</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20029> BuyItNowServerOrderAsync ()
         {
-             ApiResponse<InlineResponse20027> localVarResponse = await BuyItNowServerOrderAsyncWithHttpInfo();
+             ApiResponse<InlineResponse20029> localVarResponse = await BuyItNowServerOrderAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Get Buy Now Server Options Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.
+        /// Get configurable options for a Rapid Deploy / coupon dedicated server Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (&#x60;a&#x3D;&lt;asset_id&gt;&#x60;) or a coupon (&#x60;c&#x3D;&lt;coupon_name&gt;&#x60;) so the order form can be rendered before &#x60;placeBuyNowServer&#x60;. Read-only; no charge. Sibling ops: &#x60;placeBuyNowServer&#x60; (commit), &#x60;getMPServers&#x60; (browse marketplace), &#x60;addServer&#x60; (custom build flow).  **Query (one required):** - &#x60;a&#x60; (integer) — asset_id from &#x60;getMPServers&#x60;. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Returns:** &#x60;{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }&#x60;. Each option row is &#x60;{ id, short_desc, long_desc, monthly_price }&#x60; — feed those ids into &#x60;placeBuyNowServer&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;No Server Coupon or Market-Place Asset Specified&#x27;&#x60; when neither &#x60;a&#x60; nor &#x60;c&#x60; is passed. - &#x60;400&#x60; — &#x60;&#x27;Invalid Asset ID&#x27;&#x60; / &#x60;&#x27;No Server Coupon with that name&#x27;&#x60;. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; (asset already in-cart) or &#x60;&#x27;Server Out of stock&#x27;&#x60; (coupon). - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Next:** &#x60;placeBuyNowServer&#x60; (commit the order). - **Browse:** &#x60;getMPServers&#x60;. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (InlineResponse20027)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20027>> BuyItNowServerOrderAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (InlineResponse20029)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20029>> BuyItNowServerOrderAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/servers/order/buy_now_server";
@@ -1319,13 +1355,13 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20027>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20029>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20027) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20027)));
+                (InlineResponse20029) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20029)));
         }
 
         /// <summary>
-        /// List Marketplace Servers Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
+        /// List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from &#x60;mynew.interserver.net/ajax/server_a.php&#x60;. Returns: array of &#x60;{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }&#x60;. The &#x60;server_id&#x60; is the marketplace asset id — feed it into &#x60;buyItNowServerOrder&#x60; (GET options for asset &#x60;?a&#x3D;&lt;id&gt;&#x60;) and &#x60;placeBuyNowServer&#x60; (POST to commit). Errors: 401 if session expired. Sibling ops: &#x60;buyItNowServerOrder&#x60; (configure asset), &#x60;placeBuyNowServer&#x60; (purchase), &#x60;getNewServer&#x60;/&#x60;addServer&#x60; (custom-spec build, not pre-built), &#x60;getServerList&#x60; (already-owned servers).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>BuyItNowList</returns>
@@ -1336,7 +1372,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List Marketplace Servers Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
+        /// List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from &#x60;mynew.interserver.net/ajax/server_a.php&#x60;. Returns: array of &#x60;{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }&#x60;. The &#x60;server_id&#x60; is the marketplace asset id — feed it into &#x60;buyItNowServerOrder&#x60; (GET options for asset &#x60;?a&#x3D;&lt;id&gt;&#x60;) and &#x60;placeBuyNowServer&#x60; (POST to commit). Errors: 401 if session expired. Sibling ops: &#x60;buyItNowServerOrder&#x60; (configure asset), &#x60;placeBuyNowServer&#x60; (purchase), &#x60;getNewServer&#x60;/&#x60;addServer&#x60; (custom-spec build, not pre-built), &#x60;getServerList&#x60; (already-owned servers).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of BuyItNowList</returns>
@@ -1399,7 +1435,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List Marketplace Servers Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
+        /// List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from &#x60;mynew.interserver.net/ajax/server_a.php&#x60;. Returns: array of &#x60;{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }&#x60;. The &#x60;server_id&#x60; is the marketplace asset id — feed it into &#x60;buyItNowServerOrder&#x60; (GET options for asset &#x60;?a&#x3D;&lt;id&gt;&#x60;) and &#x60;placeBuyNowServer&#x60; (POST to commit). Errors: 401 if session expired. Sibling ops: &#x60;buyItNowServerOrder&#x60; (configure asset), &#x60;placeBuyNowServer&#x60; (purchase), &#x60;getNewServer&#x60;/&#x60;addServer&#x60; (custom-spec build, not pre-built), &#x60;getServerList&#x60; (already-owned servers).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of BuyItNowList</returns>
@@ -1411,7 +1447,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List Marketplace Servers Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
+        /// List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from &#x60;mynew.interserver.net/ajax/server_a.php&#x60;. Returns: array of &#x60;{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }&#x60;. The &#x60;server_id&#x60; is the marketplace asset id — feed it into &#x60;buyItNowServerOrder&#x60; (GET options for asset &#x60;?a&#x3D;&lt;id&gt;&#x60;) and &#x60;placeBuyNowServer&#x60; (POST to commit). Errors: 401 if session expired. Sibling ops: &#x60;buyItNowServerOrder&#x60; (configure asset), &#x60;placeBuyNowServer&#x60; (purchase), &#x60;getNewServer&#x60;/&#x60;addServer&#x60; (custom-spec build, not pre-built), &#x60;getServerList&#x60; (already-owned servers).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (BuyItNowList)</returns>
@@ -1474,7 +1510,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server Ordering Information Retrieves available server configurations and pricing for ordering a new dedicated server.
+        /// Get custom dedicated server ordering options, regions, and pricing Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with &#x60;config_li&#x60; keyed by category (&#x60;cpu_li&#x60;, &#x60;hd_li&#x60;, &#x60;memory_li&#x60;, &#x60;bandwidth_li&#x60;, &#x60;ips_li&#x60;, &#x60;os_li&#x60;, &#x60;cp_li&#x60;, &#x60;raid_li&#x60;) plus &#x60;regions&#x60;. Use returned IDs as POST values for &#x60;addServer&#x60;. Note &#x60;hd_li&#x60; and &#x60;memory_li&#x60; are nested by &#x60;cpu&#x60; id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: &#x60;addServer&#x60; (commits the order), &#x60;buyItNowServerOrder&#x60; (pre-built marketplace alternative), &#x60;getMPServers&#x60; (browse marketplace).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ServerOrder</returns>
@@ -1485,7 +1521,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server Ordering Information Retrieves available server configurations and pricing for ordering a new dedicated server.
+        /// Get custom dedicated server ordering options, regions, and pricing Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with &#x60;config_li&#x60; keyed by category (&#x60;cpu_li&#x60;, &#x60;hd_li&#x60;, &#x60;memory_li&#x60;, &#x60;bandwidth_li&#x60;, &#x60;ips_li&#x60;, &#x60;os_li&#x60;, &#x60;cp_li&#x60;, &#x60;raid_li&#x60;) plus &#x60;regions&#x60;. Use returned IDs as POST values for &#x60;addServer&#x60;. Note &#x60;hd_li&#x60; and &#x60;memory_li&#x60; are nested by &#x60;cpu&#x60; id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: &#x60;addServer&#x60; (commits the order), &#x60;buyItNowServerOrder&#x60; (pre-built marketplace alternative), &#x60;getMPServers&#x60; (browse marketplace).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ServerOrder</returns>
@@ -1548,7 +1584,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server Ordering Information Retrieves available server configurations and pricing for ordering a new dedicated server.
+        /// Get custom dedicated server ordering options, regions, and pricing Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with &#x60;config_li&#x60; keyed by category (&#x60;cpu_li&#x60;, &#x60;hd_li&#x60;, &#x60;memory_li&#x60;, &#x60;bandwidth_li&#x60;, &#x60;ips_li&#x60;, &#x60;os_li&#x60;, &#x60;cp_li&#x60;, &#x60;raid_li&#x60;) plus &#x60;regions&#x60;. Use returned IDs as POST values for &#x60;addServer&#x60;. Note &#x60;hd_li&#x60; and &#x60;memory_li&#x60; are nested by &#x60;cpu&#x60; id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: &#x60;addServer&#x60; (commits the order), &#x60;buyItNowServerOrder&#x60; (pre-built marketplace alternative), &#x60;getMPServers&#x60; (browse marketplace).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ServerOrder</returns>
@@ -1560,7 +1596,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server Ordering Information Retrieves available server configurations and pricing for ordering a new dedicated server.
+        /// Get custom dedicated server ordering options, regions, and pricing Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with &#x60;config_li&#x60; keyed by category (&#x60;cpu_li&#x60;, &#x60;hd_li&#x60;, &#x60;memory_li&#x60;, &#x60;bandwidth_li&#x60;, &#x60;ips_li&#x60;, &#x60;os_li&#x60;, &#x60;cp_li&#x60;, &#x60;raid_li&#x60;) plus &#x60;regions&#x60;. Use returned IDs as POST values for &#x60;addServer&#x60;. Note &#x60;hd_li&#x60; and &#x60;memory_li&#x60; are nested by &#x60;cpu&#x60; id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: &#x60;addServer&#x60; (commits the order), &#x60;buyItNowServerOrder&#x60; (pre-built marketplace alternative), &#x60;getMPServers&#x60; (browse marketplace).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (ServerOrder)</returns>
@@ -1623,7 +1659,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get Server Order Returns detailed information about a specific server including its hardware configuration, IPs, and status.
+        /// Get full hardware, network, and lifecycle details for a dedicated server Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Returns: &#x60;ViewServer::getDetails()&#x60; shape: &#x60;serviceInfo&#x60;, &#x60;networkInfo&#x60; (vlans + assets, with &#x60;ipmi_admin_username&#x60;/&#x60;ipmi_admin_password&#x60; and admin lease creds REDACTED for client safety), normalized &#x60;client_links&#x60;, &#x60;serviceType&#x60;. &#x60;admin_links&#x60;/raw &#x60;settings&#x60;/&#x60;csrf&#x60; stripped. Errors: 404 not owned; 401 unauth. Sibling ops: &#x60;getServerInvoices&#x60;, &#x60;serverIpmiLiveGet&#x60;, &#x60;serverIpmiPowerGet&#x60; (single — prefer &#x60;serverBulkIpmiPowerGet&#x60; for many), &#x60;getServerReverseDns&#x60;, &#x60;getServersWelcomeEmail&#x60;, &#x60;serversCancel&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -1635,7 +1671,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get Server Order Returns detailed information about a specific server including its hardware configuration, IPs, and status.
+        /// Get full hardware, network, and lifecycle details for a dedicated server Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Returns: &#x60;ViewServer::getDetails()&#x60; shape: &#x60;serviceInfo&#x60;, &#x60;networkInfo&#x60; (vlans + assets, with &#x60;ipmi_admin_username&#x60;/&#x60;ipmi_admin_password&#x60; and admin lease creds REDACTED for client safety), normalized &#x60;client_links&#x60;, &#x60;serviceType&#x60;. &#x60;admin_links&#x60;/raw &#x60;settings&#x60;/&#x60;csrf&#x60; stripped. Errors: 404 not owned; 401 unauth. Sibling ops: &#x60;getServerInvoices&#x60;, &#x60;serverIpmiLiveGet&#x60;, &#x60;serverIpmiPowerGet&#x60; (single — prefer &#x60;serverBulkIpmiPowerGet&#x60; for many), &#x60;getServerReverseDns&#x60;, &#x60;getServersWelcomeEmail&#x60;, &#x60;serversCancel&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -1703,7 +1739,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get Server Order Returns detailed information about a specific server including its hardware configuration, IPs, and status.
+        /// Get full hardware, network, and lifecycle details for a dedicated server Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Returns: &#x60;ViewServer::getDetails()&#x60; shape: &#x60;serviceInfo&#x60;, &#x60;networkInfo&#x60; (vlans + assets, with &#x60;ipmi_admin_username&#x60;/&#x60;ipmi_admin_password&#x60; and admin lease creds REDACTED for client safety), normalized &#x60;client_links&#x60;, &#x60;serviceType&#x60;. &#x60;admin_links&#x60;/raw &#x60;settings&#x60;/&#x60;csrf&#x60; stripped. Errors: 404 not owned; 401 unauth. Sibling ops: &#x60;getServerInvoices&#x60;, &#x60;serverIpmiLiveGet&#x60;, &#x60;serverIpmiPowerGet&#x60; (single — prefer &#x60;serverBulkIpmiPowerGet&#x60; for many), &#x60;getServerReverseDns&#x60;, &#x60;getServersWelcomeEmail&#x60;, &#x60;serversCancel&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -1716,7 +1752,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get Server Order Returns detailed information about a specific server including its hardware configuration, IPs, and status.
+        /// Get full hardware, network, and lifecycle details for a dedicated server Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Returns: &#x60;ViewServer::getDetails()&#x60; shape: &#x60;serviceInfo&#x60;, &#x60;networkInfo&#x60; (vlans + assets, with &#x60;ipmi_admin_username&#x60;/&#x60;ipmi_admin_password&#x60; and admin lease creds REDACTED for client safety), normalized &#x60;client_links&#x60;, &#x60;serviceType&#x60;. &#x60;admin_links&#x60;/raw &#x60;settings&#x60;/&#x60;csrf&#x60; stripped. Errors: 404 not owned; 401 unauth. Sibling ops: &#x60;getServerInvoices&#x60;, &#x60;serverIpmiLiveGet&#x60;, &#x60;serverIpmiPowerGet&#x60; (single — prefer &#x60;serverBulkIpmiPowerGet&#x60; for many), &#x60;getServerReverseDns&#x60;, &#x60;getServersWelcomeEmail&#x60;, &#x60;serversCancel&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -1784,7 +1820,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get Server Invoices Returns the billing invoices associated with this dedicated server.
+        /// List billing invoices (charges + payments) tied to one dedicated server Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: &#x60;id&#x60; (integer server_id from &#x60;getServerList&#x60;). No body. Inherits from &#x60;MyAdmin\\Api\\Billing\\InvoicesList&#x60; with module&#x3D;servers. Returns: &#x60;ChargeInvoiceRows&#x60; array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if &#x60;id&#x60; not owned by the caller; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current service state), &#x60;serversCancel&#x60; (cancel), &#x60;getBillingInvoice&#x60; (single invoice by invoice id), &#x60;getVpsInvoices&#x60;/&#x60;getDomainInvoices&#x60; for other modules, &#x60;getServersWelcomeEmail&#x60; to resend setup info.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -1796,7 +1832,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get Server Invoices Returns the billing invoices associated with this dedicated server.
+        /// List billing invoices (charges + payments) tied to one dedicated server Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: &#x60;id&#x60; (integer server_id from &#x60;getServerList&#x60;). No body. Inherits from &#x60;MyAdmin\\Api\\Billing\\InvoicesList&#x60; with module&#x3D;servers. Returns: &#x60;ChargeInvoiceRows&#x60; array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if &#x60;id&#x60; not owned by the caller; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current service state), &#x60;serversCancel&#x60; (cancel), &#x60;getBillingInvoice&#x60; (single invoice by invoice id), &#x60;getVpsInvoices&#x60;/&#x60;getDomainInvoices&#x60; for other modules, &#x60;getServersWelcomeEmail&#x60; to resend setup info.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -1864,7 +1900,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get Server Invoices Returns the billing invoices associated with this dedicated server.
+        /// List billing invoices (charges + payments) tied to one dedicated server Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: &#x60;id&#x60; (integer server_id from &#x60;getServerList&#x60;). No body. Inherits from &#x60;MyAdmin\\Api\\Billing\\InvoicesList&#x60; with module&#x3D;servers. Returns: &#x60;ChargeInvoiceRows&#x60; array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if &#x60;id&#x60; not owned by the caller; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current service state), &#x60;serversCancel&#x60; (cancel), &#x60;getBillingInvoice&#x60; (single invoice by invoice id), &#x60;getVpsInvoices&#x60;/&#x60;getDomainInvoices&#x60; for other modules, &#x60;getServersWelcomeEmail&#x60; to resend setup info.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -1877,7 +1913,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get Server Invoices Returns the billing invoices associated with this dedicated server.
+        /// List billing invoices (charges + payments) tied to one dedicated server Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: &#x60;id&#x60; (integer server_id from &#x60;getServerList&#x60;). No body. Inherits from &#x60;MyAdmin\\Api\\Billing\\InvoicesList&#x60; with module&#x3D;servers. Returns: &#x60;ChargeInvoiceRows&#x60; array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if &#x60;id&#x60; not owned by the caller; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current service state), &#x60;serversCancel&#x60; (cancel), &#x60;getBillingInvoice&#x60; (single invoice by invoice id), &#x60;getVpsInvoices&#x60;/&#x60;getDomainInvoices&#x60; for other modules, &#x60;getServersWelcomeEmail&#x60; to resend setup info.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -1945,7 +1981,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List Servers Returns all dedicated server services on the account with their current status and configuration.
+        /// List all dedicated servers owned by the authenticated customer Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters &#x60;servers&#x60; by session &#x60;account_id&#x60;. Returns: array of &#x60;{ server_id, account_lid, server_hostname, server_status }&#x60;. Use &#x60;server_id&#x60; with &#x60;getServerInfo&#x60; for full hardware/network/IPMI details, &#x60;getServerInvoices&#x60; for billing, or &#x60;serverIpmiPowerGet&#x60; for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: &#x60;getServerInfo&#x60; (details), &#x60;getVpsList&#x60; (virtual instead of physical hardware), &#x60;getMPServers&#x60; (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer &#x60;serverBulkIpmiPowerGet&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;ServerRow&gt;</returns>
@@ -1956,7 +1992,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List Servers Returns all dedicated server services on the account with their current status and configuration.
+        /// List all dedicated servers owned by the authenticated customer Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters &#x60;servers&#x60; by session &#x60;account_id&#x60;. Returns: array of &#x60;{ server_id, account_lid, server_hostname, server_status }&#x60;. Use &#x60;server_id&#x60; with &#x60;getServerInfo&#x60; for full hardware/network/IPMI details, &#x60;getServerInvoices&#x60; for billing, or &#x60;serverIpmiPowerGet&#x60; for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: &#x60;getServerInfo&#x60; (details), &#x60;getVpsList&#x60; (virtual instead of physical hardware), &#x60;getMPServers&#x60; (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer &#x60;serverBulkIpmiPowerGet&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;ServerRow&gt;</returns>
@@ -2019,7 +2055,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List Servers Returns all dedicated server services on the account with their current status and configuration.
+        /// List all dedicated servers owned by the authenticated customer Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters &#x60;servers&#x60; by session &#x60;account_id&#x60;. Returns: array of &#x60;{ server_id, account_lid, server_hostname, server_status }&#x60;. Use &#x60;server_id&#x60; with &#x60;getServerInfo&#x60; for full hardware/network/IPMI details, &#x60;getServerInvoices&#x60; for billing, or &#x60;serverIpmiPowerGet&#x60; for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: &#x60;getServerInfo&#x60; (details), &#x60;getVpsList&#x60; (virtual instead of physical hardware), &#x60;getMPServers&#x60; (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer &#x60;serverBulkIpmiPowerGet&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;ServerRow&gt;</returns>
@@ -2031,7 +2067,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List Servers Returns all dedicated server services on the account with their current status and configuration.
+        /// List all dedicated servers owned by the authenticated customer Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters &#x60;servers&#x60; by session &#x60;account_id&#x60;. Returns: array of &#x60;{ server_id, account_lid, server_hostname, server_status }&#x60;. Use &#x60;server_id&#x60; with &#x60;getServerInfo&#x60; for full hardware/network/IPMI details, &#x60;getServerInvoices&#x60; for billing, or &#x60;serverIpmiPowerGet&#x60; for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: &#x60;getServerInfo&#x60; (details), &#x60;getVpsList&#x60; (virtual instead of physical hardware), &#x60;getMPServers&#x60; (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer &#x60;serverBulkIpmiPowerGet&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;ServerRow&gt;)</returns>
@@ -2094,7 +2130,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Reverse DNS Info Returns the current reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server&#x27;s VLANs — typically before calling &#x60;postServerReverseDns&#x60; to update them. Path param: &#x60;id&#x60; (integer server_id). No body. Walks &#x60;networkInfo.vlans&#x60;, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via &#x60;get_hostname()&#x60;. Returns: &#x60;{ ips: { &#x27;&lt;ipv4&gt;&#x27;: &#x27;&lt;ptr_or_empty_string&gt;&#x27;, ... } }&#x60;. Empty string indicates no PTR set. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: &#x60;postServerReverseDns&#x60; (update PTRs), &#x60;getServerInfo&#x60; (full network), &#x60;getVpsReverseDns&#x60; for VPS, &#x60;getDomainNameservers&#x60; / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -2106,7 +2142,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Reverse DNS Info Returns the current reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server&#x27;s VLANs — typically before calling &#x60;postServerReverseDns&#x60; to update them. Path param: &#x60;id&#x60; (integer server_id). No body. Walks &#x60;networkInfo.vlans&#x60;, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via &#x60;get_hostname()&#x60;. Returns: &#x60;{ ips: { &#x27;&lt;ipv4&gt;&#x27;: &#x27;&lt;ptr_or_empty_string&gt;&#x27;, ... } }&#x60;. Empty string indicates no PTR set. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: &#x60;postServerReverseDns&#x60; (update PTRs), &#x60;getServerInfo&#x60; (full network), &#x60;getVpsReverseDns&#x60; for VPS, &#x60;getDomainNameservers&#x60; / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -2174,7 +2210,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Reverse DNS Info Returns the current reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server&#x27;s VLANs — typically before calling &#x60;postServerReverseDns&#x60; to update them. Path param: &#x60;id&#x60; (integer server_id). No body. Walks &#x60;networkInfo.vlans&#x60;, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via &#x60;get_hostname()&#x60;. Returns: &#x60;{ ips: { &#x27;&lt;ipv4&gt;&#x27;: &#x27;&lt;ptr_or_empty_string&gt;&#x27;, ... } }&#x60;. Empty string indicates no PTR set. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: &#x60;postServerReverseDns&#x60; (update PTRs), &#x60;getServerInfo&#x60; (full network), &#x60;getVpsReverseDns&#x60; for VPS, &#x60;getDomainNameservers&#x60; / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -2187,7 +2223,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Reverse DNS Info Returns the current reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server&#x27;s VLANs — typically before calling &#x60;postServerReverseDns&#x60; to update them. Path param: &#x60;id&#x60; (integer server_id). No body. Walks &#x60;networkInfo.vlans&#x60;, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via &#x60;get_hostname()&#x60;. Returns: &#x60;{ ips: { &#x27;&lt;ipv4&gt;&#x27;: &#x27;&lt;ptr_or_empty_string&gt;&#x27;, ... } }&#x60;. Empty string indicates no PTR set. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: &#x60;postServerReverseDns&#x60; (update PTRs), &#x60;getServerInfo&#x60; (full network), &#x60;getVpsReverseDns&#x60; for VPS, &#x60;getDomainNameservers&#x60; / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -2255,7 +2291,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Resend Server Welcome Email Resends the welcome email for the order.
+        /// Resend the dedicated server welcome email with setup credentials Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: &#x60;id&#x60; (integer server_id, must be &#x60;active&#x60;). No body. Invokes &#x60;server_welcome_email($id)&#x60; which re-sends the welcome message to the account&#x27;s email. Returns: &#x60;{ text:&#x27;Welcome Email has been resent.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: &#x60;getServerInfo&#x60; (status check), &#x60;getServerInvoices&#x60;, &#x60;getVpsWelcomeEmail&#x60; for VPS, &#x60;getDomainsWelcomeEmail&#x60; for domains.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -2267,7 +2303,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Resend Server Welcome Email Resends the welcome email for the order.
+        /// Resend the dedicated server welcome email with setup credentials Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: &#x60;id&#x60; (integer server_id, must be &#x60;active&#x60;). No body. Invokes &#x60;server_welcome_email($id)&#x60; which re-sends the welcome message to the account&#x27;s email. Returns: &#x60;{ text:&#x27;Welcome Email has been resent.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: &#x60;getServerInfo&#x60; (status check), &#x60;getServerInvoices&#x60;, &#x60;getVpsWelcomeEmail&#x60; for VPS, &#x60;getDomainsWelcomeEmail&#x60; for domains.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -2335,7 +2371,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Resend Server Welcome Email Resends the welcome email for the order.
+        /// Resend the dedicated server welcome email with setup credentials Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: &#x60;id&#x60; (integer server_id, must be &#x60;active&#x60;). No body. Invokes &#x60;server_welcome_email($id)&#x60; which re-sends the welcome message to the account&#x27;s email. Returns: &#x60;{ text:&#x27;Welcome Email has been resent.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: &#x60;getServerInfo&#x60; (status check), &#x60;getServerInvoices&#x60;, &#x60;getVpsWelcomeEmail&#x60; for VPS, &#x60;getDomainsWelcomeEmail&#x60; for domains.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -2348,7 +2384,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Resend Server Welcome Email Resends the welcome email for the order.
+        /// Resend the dedicated server welcome email with setup credentials Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: &#x60;id&#x60; (integer server_id, must be &#x60;active&#x60;). No body. Invokes &#x60;server_welcome_email($id)&#x60; which re-sends the welcome message to the account&#x27;s email. Returns: &#x60;{ text:&#x27;Welcome Email has been resent.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: &#x60;getServerInfo&#x60; (status check), &#x60;getServerInvoices&#x60;, &#x60;getVpsWelcomeEmail&#x60; for VPS, &#x60;getDomainsWelcomeEmail&#x60; for domains.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -2416,7 +2452,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Place Buy Now Server Order Places an order for a buy-it-now dedicated server. Use &#x60;GET /servers/order/buy_now_server&#x60; to retrieve available server configurations and their IDs before ordering.
+        /// Place a Rapid Deploy / coupon dedicated server order; creates real invoice Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the &#x60;servers&#x60; row, creates a &#x60;Repeat_Invoice&#x60; plus the first &#x60;invoices&#x60; row, marks the asset &#x60;MarketPlace-Incart&#x60; (or decrements &#x60;server_coupons.in_stock&#x60;), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: &#x60;buyItNowServerOrder&#x60; (catalog), &#x60;getServerInfo&#x60; (poll provisioning), &#x60;getServerInvoices&#x60; (billing), &#x60;addServer&#x60; (custom build alternative).  **Query (one required, same as &#x60;buyItNowServerOrder&#x60;):** - &#x60;a&#x60; (integer) — asset_id. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — valid FQDN; validated by &#x60;valid_hostname&#x60;. - &#x60;enablepassword&#x60; (boolean, optional, default &#x60;false&#x60;) — when true the client must supply &#x60;rootPassword&#x60;; otherwise a secure password is generated server-side via &#x60;generate_password()&#x60;. - &#x60;rootPassword&#x60; (string, required when &#x60;enablepassword&#x3D;true&#x60;) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (&#x60;valid_password&#x60;). - &#x60;os&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (integer, optional) — option ids from &#x60;buyItNowServerOrder&#x60;; defaults &#x60;30&#x60; / &#x60;10&#x60; / &#x60;9&#x60; / &#x60;1&#x60; / &#x60;0&#x60; applied when missing. - &#x60;comments&#x60; (string, optional) — appended to the order comment.  **Returns:** &#x60;201 { success: true, text: &#x27;Server order is placed.&#x27;, service_id, invoice_id }&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;Server Hostname is missing.&#x27;&#x60; / &#x60;&#x27;Invalid Hostname!&#x27;&#x60; / &#x60;&#x27;Server Password is missing.&#x27;&#x60; / password complexity message. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; / &#x60;&#x27;Server Out of stock.&#x27;&#x60; - &#x60;401&#x60; — unauthenticated.  **Side effects:** inserts &#x60;servers&#x60; row, creates &#x60;repeat_invoices&#x60; + &#x60;invoices&#x60; rows, updates &#x60;assets.status&#x60; or &#x60;server_coupons.in_stock&#x60;, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** &#x60;buyItNowServerOrder&#x60;. - **Next:** &#x60;getBillingInvoice&#x60; + &#x60;initiatePayment&#x60; to pay, then poll &#x60;getServerInfo&#x60; for provisioning state. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
@@ -2428,7 +2464,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Place Buy Now Server Order Places an order for a buy-it-now dedicated server. Use &#x60;GET /servers/order/buy_now_server&#x60; to retrieve available server configurations and their IDs before ordering.
+        /// Place a Rapid Deploy / coupon dedicated server order; creates real invoice Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the &#x60;servers&#x60; row, creates a &#x60;Repeat_Invoice&#x60; plus the first &#x60;invoices&#x60; row, marks the asset &#x60;MarketPlace-Incart&#x60; (or decrements &#x60;server_coupons.in_stock&#x60;), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: &#x60;buyItNowServerOrder&#x60; (catalog), &#x60;getServerInfo&#x60; (poll provisioning), &#x60;getServerInvoices&#x60; (billing), &#x60;addServer&#x60; (custom build alternative).  **Query (one required, same as &#x60;buyItNowServerOrder&#x60;):** - &#x60;a&#x60; (integer) — asset_id. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — valid FQDN; validated by &#x60;valid_hostname&#x60;. - &#x60;enablepassword&#x60; (boolean, optional, default &#x60;false&#x60;) — when true the client must supply &#x60;rootPassword&#x60;; otherwise a secure password is generated server-side via &#x60;generate_password()&#x60;. - &#x60;rootPassword&#x60; (string, required when &#x60;enablepassword&#x3D;true&#x60;) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (&#x60;valid_password&#x60;). - &#x60;os&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (integer, optional) — option ids from &#x60;buyItNowServerOrder&#x60;; defaults &#x60;30&#x60; / &#x60;10&#x60; / &#x60;9&#x60; / &#x60;1&#x60; / &#x60;0&#x60; applied when missing. - &#x60;comments&#x60; (string, optional) — appended to the order comment.  **Returns:** &#x60;201 { success: true, text: &#x27;Server order is placed.&#x27;, service_id, invoice_id }&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;Server Hostname is missing.&#x27;&#x60; / &#x60;&#x27;Invalid Hostname!&#x27;&#x60; / &#x60;&#x27;Server Password is missing.&#x27;&#x60; / password complexity message. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; / &#x60;&#x27;Server Out of stock.&#x27;&#x60; - &#x60;401&#x60; — unauthenticated.  **Side effects:** inserts &#x60;servers&#x60; row, creates &#x60;repeat_invoices&#x60; + &#x60;invoices&#x60; rows, updates &#x60;assets.status&#x60; or &#x60;server_coupons.in_stock&#x60;, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** &#x60;buyItNowServerOrder&#x60;. - **Next:** &#x60;getBillingInvoice&#x60; + &#x60;initiatePayment&#x60; to pay, then poll &#x60;getServerInfo&#x60; for provisioning state. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
@@ -2501,7 +2537,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Place Buy Now Server Order Places an order for a buy-it-now dedicated server. Use &#x60;GET /servers/order/buy_now_server&#x60; to retrieve available server configurations and their IDs before ordering.
+        /// Place a Rapid Deploy / coupon dedicated server order; creates real invoice Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the &#x60;servers&#x60; row, creates a &#x60;Repeat_Invoice&#x60; plus the first &#x60;invoices&#x60; row, marks the asset &#x60;MarketPlace-Incart&#x60; (or decrements &#x60;server_coupons.in_stock&#x60;), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: &#x60;buyItNowServerOrder&#x60; (catalog), &#x60;getServerInfo&#x60; (poll provisioning), &#x60;getServerInvoices&#x60; (billing), &#x60;addServer&#x60; (custom build alternative).  **Query (one required, same as &#x60;buyItNowServerOrder&#x60;):** - &#x60;a&#x60; (integer) — asset_id. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — valid FQDN; validated by &#x60;valid_hostname&#x60;. - &#x60;enablepassword&#x60; (boolean, optional, default &#x60;false&#x60;) — when true the client must supply &#x60;rootPassword&#x60;; otherwise a secure password is generated server-side via &#x60;generate_password()&#x60;. - &#x60;rootPassword&#x60; (string, required when &#x60;enablepassword&#x3D;true&#x60;) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (&#x60;valid_password&#x60;). - &#x60;os&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (integer, optional) — option ids from &#x60;buyItNowServerOrder&#x60;; defaults &#x60;30&#x60; / &#x60;10&#x60; / &#x60;9&#x60; / &#x60;1&#x60; / &#x60;0&#x60; applied when missing. - &#x60;comments&#x60; (string, optional) — appended to the order comment.  **Returns:** &#x60;201 { success: true, text: &#x27;Server order is placed.&#x27;, service_id, invoice_id }&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;Server Hostname is missing.&#x27;&#x60; / &#x60;&#x27;Invalid Hostname!&#x27;&#x60; / &#x60;&#x27;Server Password is missing.&#x27;&#x60; / password complexity message. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; / &#x60;&#x27;Server Out of stock.&#x27;&#x60; - &#x60;401&#x60; — unauthenticated.  **Side effects:** inserts &#x60;servers&#x60; row, creates &#x60;repeat_invoices&#x60; + &#x60;invoices&#x60; rows, updates &#x60;assets.status&#x60; or &#x60;server_coupons.in_stock&#x60;, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** &#x60;buyItNowServerOrder&#x60;. - **Next:** &#x60;getBillingInvoice&#x60; + &#x60;initiatePayment&#x60; to pay, then poll &#x60;getServerInfo&#x60; for provisioning state. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
@@ -2514,7 +2550,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Place Buy Now Server Order Places an order for a buy-it-now dedicated server. Use &#x60;GET /servers/order/buy_now_server&#x60; to retrieve available server configurations and their IDs before ordering.
+        /// Place a Rapid Deploy / coupon dedicated server order; creates real invoice Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the &#x60;servers&#x60; row, creates a &#x60;Repeat_Invoice&#x60; plus the first &#x60;invoices&#x60; row, marks the asset &#x60;MarketPlace-Incart&#x60; (or decrements &#x60;server_coupons.in_stock&#x60;), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: &#x60;buyItNowServerOrder&#x60; (catalog), &#x60;getServerInfo&#x60; (poll provisioning), &#x60;getServerInvoices&#x60; (billing), &#x60;addServer&#x60; (custom build alternative).  **Query (one required, same as &#x60;buyItNowServerOrder&#x60;):** - &#x60;a&#x60; (integer) — asset_id. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — valid FQDN; validated by &#x60;valid_hostname&#x60;. - &#x60;enablepassword&#x60; (boolean, optional, default &#x60;false&#x60;) — when true the client must supply &#x60;rootPassword&#x60;; otherwise a secure password is generated server-side via &#x60;generate_password()&#x60;. - &#x60;rootPassword&#x60; (string, required when &#x60;enablepassword&#x3D;true&#x60;) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (&#x60;valid_password&#x60;). - &#x60;os&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (integer, optional) — option ids from &#x60;buyItNowServerOrder&#x60;; defaults &#x60;30&#x60; / &#x60;10&#x60; / &#x60;9&#x60; / &#x60;1&#x60; / &#x60;0&#x60; applied when missing. - &#x60;comments&#x60; (string, optional) — appended to the order comment.  **Returns:** &#x60;201 { success: true, text: &#x27;Server order is placed.&#x27;, service_id, invoice_id }&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;Server Hostname is missing.&#x27;&#x60; / &#x60;&#x27;Invalid Hostname!&#x27;&#x60; / &#x60;&#x27;Server Password is missing.&#x27;&#x60; / password complexity message. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; / &#x60;&#x27;Server Out of stock.&#x27;&#x60; - &#x60;401&#x60; — unauthenticated.  **Side effects:** inserts &#x60;servers&#x60; row, creates &#x60;repeat_invoices&#x60; + &#x60;invoices&#x60; rows, updates &#x60;assets.status&#x60; or &#x60;server_coupons.in_stock&#x60;, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** &#x60;buyItNowServerOrder&#x60;. - **Next:** &#x60;getBillingInvoice&#x60; + &#x60;initiatePayment&#x60; to pay, then poll &#x60;getServerInfo&#x60; for provisioning state. - **Custom build alternative:** &#x60;addServer&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"> (optional)</param>
@@ -2587,7 +2623,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Reverse DNS Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -2600,7 +2636,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Reverse DNS Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -2682,7 +2718,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Reverse DNS Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -2696,7 +2732,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Reverse DNS Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -2778,7 +2814,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Reverse DNS Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ips"></param>
@@ -2791,7 +2827,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Reverse DNS Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ips"></param>
@@ -2866,7 +2902,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Reverse DNS Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ips"></param>
@@ -2880,7 +2916,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Reverse DNS Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="ips"></param>
@@ -2955,24 +2991,30 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Validate Server Order Validates a server order before placing it. Use this to check for errors before committing to a purchase.
+        /// Read IPMI chassis power status for many dedicated servers in one call Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: &#x60;ids&#x60; (required) — comma-separated string &#x60;?ids&#x3D;2313,2314,2315&#x60; OR repeated &#x60;ids[]&#x60; array. Duplicates de-duped; non-positive ints become per-row errors. Returns: &#x60;{ results: [ { id, asset?, text|error } ] }&#x60;. Errors: 400 &#x27;No server IDs provided.&#x27; if &#x60;ids&#x60; empty/missing; 401 unauth. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (single-server equivalent), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power; no bulk equivalent — call per server), &#x60;getServerList&#x60; (discover ids).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns></returns>
-        public void PutServers ()
+        /// <param name="ids">Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters.</param>
+        /// <returns>ServerBulkIpmiPowerResponse</returns>
+        public ServerBulkIpmiPowerResponse ServerBulkIpmiPowerGet (string ids)
         {
-             PutServersWithHttpInfo();
+             ApiResponse<ServerBulkIpmiPowerResponse> localVarResponse = ServerBulkIpmiPowerGetWithHttpInfo(ids);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Validate Server Order Validates a server order before placing it. Use this to check for errors before committing to a purchase.
+        /// Read IPMI chassis power status for many dedicated servers in one call Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: &#x60;ids&#x60; (required) — comma-separated string &#x60;?ids&#x3D;2313,2314,2315&#x60; OR repeated &#x60;ids[]&#x60; array. Duplicates de-duped; non-positive ints become per-row errors. Returns: &#x60;{ results: [ { id, asset?, text|error } ] }&#x60;. Errors: 400 &#x27;No server IDs provided.&#x27; if &#x60;ids&#x60; empty/missing; 401 unauth. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (single-server equivalent), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power; no bulk equivalent — call per server), &#x60;getServerList&#x60; (discover ids).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PutServersWithHttpInfo ()
+        /// <param name="ids">Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters.</param>
+        /// <returns>ApiResponse of ServerBulkIpmiPowerResponse</returns>
+        public ApiResponse< ServerBulkIpmiPowerResponse > ServerBulkIpmiPowerGetWithHttpInfo (string ids)
         {
+            // verify the required parameter 'ids' is set
+            if (ids == null)
+                throw new ApiException(400, "Missing required parameter 'ids' when calling ServersApi->ServerBulkIpmiPowerGet");
 
-            var localVarPath = "/servers/order";
+            var localVarPath = "/servers/bulk/ipmi_power";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -2993,6 +3035,7 @@ namespace Interserver.MyAdmin.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (ids != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ids", ids)); // query parameter
             // authentication (apiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
             {
@@ -3011,42 +3054,48 @@ namespace Interserver.MyAdmin.Client.Api
 
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PutServers", localVarResponse);
+                Exception exception = ExceptionFactory("ServerBulkIpmiPowerGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServerBulkIpmiPowerResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServerBulkIpmiPowerResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServerBulkIpmiPowerResponse)));
         }
 
         /// <summary>
-        /// Validate Server Order Validates a server order before placing it. Use this to check for errors before committing to a purchase.
+        /// Read IPMI chassis power status for many dedicated servers in one call Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: &#x60;ids&#x60; (required) — comma-separated string &#x60;?ids&#x3D;2313,2314,2315&#x60; OR repeated &#x60;ids[]&#x60; array. Duplicates de-duped; non-positive ints become per-row errors. Returns: &#x60;{ results: [ { id, asset?, text|error } ] }&#x60;. Errors: 400 &#x27;No server IDs provided.&#x27; if &#x60;ids&#x60; empty/missing; 401 unauth. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (single-server equivalent), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power; no bulk equivalent — call per server), &#x60;getServerList&#x60; (discover ids).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PutServersAsync ()
+        /// <param name="ids">Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters.</param>
+        /// <returns>Task of ServerBulkIpmiPowerResponse</returns>
+        public async System.Threading.Tasks.Task<ServerBulkIpmiPowerResponse> ServerBulkIpmiPowerGetAsync (string ids)
         {
-             await PutServersAsyncWithHttpInfo();
+             ApiResponse<ServerBulkIpmiPowerResponse> localVarResponse = await ServerBulkIpmiPowerGetAsyncWithHttpInfo(ids);
+             return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Validate Server Order Validates a server order before placing it. Use this to check for errors before committing to a purchase.
+        /// Read IPMI chassis power status for many dedicated servers in one call Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: &#x60;ids&#x60; (required) — comma-separated string &#x60;?ids&#x3D;2313,2314,2315&#x60; OR repeated &#x60;ids[]&#x60; array. Duplicates de-duped; non-positive ints become per-row errors. Returns: &#x60;{ results: [ { id, asset?, text|error } ] }&#x60;. Errors: 400 &#x27;No server IDs provided.&#x27; if &#x60;ids&#x60; empty/missing; 401 unauth. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (single-server equivalent), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power; no bulk equivalent — call per server), &#x60;getServerList&#x60; (discover ids).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutServersAsyncWithHttpInfo ()
+        /// <param name="ids">Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters.</param>
+        /// <returns>Task of ApiResponse (ServerBulkIpmiPowerResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ServerBulkIpmiPowerResponse>> ServerBulkIpmiPowerGetAsyncWithHttpInfo (string ids)
         {
+            // verify the required parameter 'ids' is set
+            if (ids == null)
+                throw new ApiException(400, "Missing required parameter 'ids' when calling ServersApi->ServerBulkIpmiPowerGet");
 
-            var localVarPath = "/servers/order";
+            var localVarPath = "/servers/bulk/ipmi_power";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -3067,6 +3116,7 @@ namespace Interserver.MyAdmin.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (ids != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ids", ids)); // query parameter
             // authentication (apiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
             {
@@ -3085,24 +3135,24 @@ namespace Interserver.MyAdmin.Client.Api
 
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("PutServers", localVarResponse);
+                Exception exception = ExceptionFactory("ServerBulkIpmiPowerGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<ServerBulkIpmiPowerResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                null);
+                (ServerBulkIpmiPowerResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ServerBulkIpmiPowerResponse)));
         }
 
         /// <summary>
-        /// Server IPMI Live Information Returns the current IPMI live connection information for the server.
+        /// Read current IPMI Live whitelist + KVM gateway URL for a dedicated server Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset&#x27;s IPMI IP, the location&#x27;s IPMI group, and any active &#x60;ipmi_ips&#x60; lease (3-hour TTL). Sibling ops: &#x60;serverIpmiLivePost&#x60; (allocate whitelist slot), &#x60;serverIpmiPowerGet&#x60; / &#x60;serverIpmiPowerPost&#x60; (chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id from &#x60;getServerList&#x60;.  **Body / query:** None. Optionally pass &#x60;asset&#x60; (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60;. When no lease yet: &#x60;{ text: &#x27;Setup not yet completed&#x27; }&#x60; — then call &#x60;serverIpmiLivePost&#x60; to allocate a slot.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60; when the asset/location is not configured for IPMI Live.  **Caveat:** returns &#x60;client_password&#x60; — never log/echo verbatim.  **Related calls:** - **Allocate:** &#x60;serverIpmiLivePost&#x60;. - **Chassis power:** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -3114,7 +3164,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Information Returns the current IPMI live connection information for the server.
+        /// Read current IPMI Live whitelist + KVM gateway URL for a dedicated server Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset&#x27;s IPMI IP, the location&#x27;s IPMI group, and any active &#x60;ipmi_ips&#x60; lease (3-hour TTL). Sibling ops: &#x60;serverIpmiLivePost&#x60; (allocate whitelist slot), &#x60;serverIpmiPowerGet&#x60; / &#x60;serverIpmiPowerPost&#x60; (chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id from &#x60;getServerList&#x60;.  **Body / query:** None. Optionally pass &#x60;asset&#x60; (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60;. When no lease yet: &#x60;{ text: &#x27;Setup not yet completed&#x27; }&#x60; — then call &#x60;serverIpmiLivePost&#x60; to allocate a slot.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60; when the asset/location is not configured for IPMI Live.  **Caveat:** returns &#x60;client_password&#x60; — never log/echo verbatim.  **Related calls:** - **Allocate:** &#x60;serverIpmiLivePost&#x60;. - **Chassis power:** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -3182,7 +3232,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Information Returns the current IPMI live connection information for the server.
+        /// Read current IPMI Live whitelist + KVM gateway URL for a dedicated server Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset&#x27;s IPMI IP, the location&#x27;s IPMI group, and any active &#x60;ipmi_ips&#x60; lease (3-hour TTL). Sibling ops: &#x60;serverIpmiLivePost&#x60; (allocate whitelist slot), &#x60;serverIpmiPowerGet&#x60; / &#x60;serverIpmiPowerPost&#x60; (chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id from &#x60;getServerList&#x60;.  **Body / query:** None. Optionally pass &#x60;asset&#x60; (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60;. When no lease yet: &#x60;{ text: &#x27;Setup not yet completed&#x27; }&#x60; — then call &#x60;serverIpmiLivePost&#x60; to allocate a slot.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60; when the asset/location is not configured for IPMI Live.  **Caveat:** returns &#x60;client_password&#x60; — never log/echo verbatim.  **Related calls:** - **Allocate:** &#x60;serverIpmiLivePost&#x60;. - **Chassis power:** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -3195,7 +3245,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Information Returns the current IPMI live connection information for the server.
+        /// Read current IPMI Live whitelist + KVM gateway URL for a dedicated server Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset&#x27;s IPMI IP, the location&#x27;s IPMI group, and any active &#x60;ipmi_ips&#x60; lease (3-hour TTL). Sibling ops: &#x60;serverIpmiLivePost&#x60; (allocate whitelist slot), &#x60;serverIpmiPowerGet&#x60; / &#x60;serverIpmiPowerPost&#x60; (chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id from &#x60;getServerList&#x60;.  **Body / query:** None. Optionally pass &#x60;asset&#x60; (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60;. When no lease yet: &#x60;{ text: &#x27;Setup not yet completed&#x27; }&#x60; — then call &#x60;serverIpmiLivePost&#x60; to allocate a slot.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60; when the asset/location is not configured for IPMI Live.  **Caveat:** returns &#x60;client_password&#x60; — never log/echo verbatim.  **Related calls:** - **Allocate:** &#x60;serverIpmiLivePost&#x60;. - **Chassis power:** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -3263,7 +3313,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Setup Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease) Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -3277,7 +3327,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Setup Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease) Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -3357,7 +3407,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Setup Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease) Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -3372,7 +3422,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Setup Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease) Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -3452,7 +3502,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Setup Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease) Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -3465,7 +3515,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Setup Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease) Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -3547,7 +3597,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Setup Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease) Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -3561,7 +3611,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Live Setup Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease) Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -3643,7 +3693,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get IPMI Power Status Returns the chassis power status from ipmi.
+        /// Read IPMI chassis power status for a dedicated server (single) Use to check whether a server&#x27;s chassis is currently &#x60;on&#x60;/&#x60;off&#x60; via IPMI before issuing a power action. Path param: &#x60;id&#x60; (integer server_id). Optional body &#x60;asset&#x60; (asset_id — defaults to first asset). Issues &#x60;ipmitool power status&#x60; against the asset&#x27;s &#x60;ipmi_ip&#x60; using its location IPMI group/credentials. Returns: &#x60;{ text:&#x27;Chassis Power is on&#x27; }&#x60; (or &#x27;off&#x27;). Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active; &#x27;There was an error sending the IPMI command&#x27; if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: &#x60;serverBulkIpmiPowerGet&#x60; (preferred when polling many servers — single round-trip), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power), &#x60;getServerInfo&#x60; (full state), &#x60;serverIpmiLiveGet&#x60; (IPMI Live KVM).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -3655,7 +3705,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get IPMI Power Status Returns the chassis power status from ipmi.
+        /// Read IPMI chassis power status for a dedicated server (single) Use to check whether a server&#x27;s chassis is currently &#x60;on&#x60;/&#x60;off&#x60; via IPMI before issuing a power action. Path param: &#x60;id&#x60; (integer server_id). Optional body &#x60;asset&#x60; (asset_id — defaults to first asset). Issues &#x60;ipmitool power status&#x60; against the asset&#x27;s &#x60;ipmi_ip&#x60; using its location IPMI group/credentials. Returns: &#x60;{ text:&#x27;Chassis Power is on&#x27; }&#x60; (or &#x27;off&#x27;). Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active; &#x27;There was an error sending the IPMI command&#x27; if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: &#x60;serverBulkIpmiPowerGet&#x60; (preferred when polling many servers — single round-trip), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power), &#x60;getServerInfo&#x60; (full state), &#x60;serverIpmiLiveGet&#x60; (IPMI Live KVM).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -3723,7 +3773,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get IPMI Power Status Returns the chassis power status from ipmi.
+        /// Read IPMI chassis power status for a dedicated server (single) Use to check whether a server&#x27;s chassis is currently &#x60;on&#x60;/&#x60;off&#x60; via IPMI before issuing a power action. Path param: &#x60;id&#x60; (integer server_id). Optional body &#x60;asset&#x60; (asset_id — defaults to first asset). Issues &#x60;ipmitool power status&#x60; against the asset&#x27;s &#x60;ipmi_ip&#x60; using its location IPMI group/credentials. Returns: &#x60;{ text:&#x27;Chassis Power is on&#x27; }&#x60; (or &#x27;off&#x27;). Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active; &#x27;There was an error sending the IPMI command&#x27; if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: &#x60;serverBulkIpmiPowerGet&#x60; (preferred when polling many servers — single round-trip), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power), &#x60;getServerInfo&#x60; (full state), &#x60;serverIpmiLiveGet&#x60; (IPMI Live KVM).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -3736,7 +3786,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get IPMI Power Status Returns the chassis power status from ipmi.
+        /// Read IPMI chassis power status for a dedicated server (single) Use to check whether a server&#x27;s chassis is currently &#x60;on&#x60;/&#x60;off&#x60; via IPMI before issuing a power action. Path param: &#x60;id&#x60; (integer server_id). Optional body &#x60;asset&#x60; (asset_id — defaults to first asset). Issues &#x60;ipmitool power status&#x60; against the asset&#x27;s &#x60;ipmi_ip&#x60; using its location IPMI group/credentials. Returns: &#x60;{ text:&#x27;Chassis Power is on&#x27; }&#x60; (or &#x27;off&#x27;). Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active; &#x27;There was an error sending the IPMI command&#x27; if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: &#x60;serverBulkIpmiPowerGet&#x60; (preferred when polling many servers — single round-trip), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power), &#x60;getServerInfo&#x60; (full state), &#x60;serverIpmiLiveGet&#x60; (IPMI Live KVM).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
@@ -3804,7 +3854,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Power Uses the IPMI interface to set the Power status on the server.
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -3818,7 +3868,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Power Uses the IPMI interface to set the Power status on the server.
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -3898,7 +3948,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Power Uses the IPMI interface to set the Power status on the server.
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -3913,7 +3963,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Power Uses the IPMI interface to set the Power status on the server.
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="asset"></param>
@@ -3993,7 +4043,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Power Uses the IPMI interface to set the Power status on the server.
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -4006,7 +4056,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Power Uses the IPMI interface to set the Power status on the server.
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -4088,7 +4138,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Power Uses the IPMI interface to set the Power status on the server.
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -4102,7 +4152,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Server IPMI Power Uses the IPMI interface to set the Power status on the server.
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. 
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body"></param>
@@ -4184,24 +4234,24 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Cancel Server Service Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
+        /// Cancel a dedicated server service at the end of the current billing cycle Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: &#x60;{ success:bool, text:&#x27;Servers is canceled.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current status), &#x60;getServerInvoices&#x60; (outstanding charges), VPS counterpart &#x60;VPSCancel&#x60;. To re-order after cancel use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>InlineResponse20020</returns>
-        public InlineResponse20020 ServersCancel (int? id)
+        /// <returns>InlineResponse20022</returns>
+        public InlineResponse20022 ServersCancel (int? id)
         {
-             ApiResponse<InlineResponse20020> localVarResponse = ServersCancelWithHttpInfo(id);
+             ApiResponse<InlineResponse20022> localVarResponse = ServersCancelWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel Server Service Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
+        /// Cancel a dedicated server service at the end of the current billing cycle Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: &#x60;{ success:bool, text:&#x27;Servers is canceled.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current status), &#x60;getServerInvoices&#x60; (outstanding charges), VPS counterpart &#x60;VPSCancel&#x60;. To re-order after cancel use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>ApiResponse of InlineResponse20020</returns>
-        public ApiResponse< InlineResponse20020 > ServersCancelWithHttpInfo (int? id)
+        /// <returns>ApiResponse of InlineResponse20022</returns>
+        public ApiResponse< InlineResponse20022 > ServersCancelWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4258,31 +4308,31 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20020>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20022>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20020) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20020)));
+                (InlineResponse20022) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20022)));
         }
 
         /// <summary>
-        /// Cancel Server Service Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
+        /// Cancel a dedicated server service at the end of the current billing cycle Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: &#x60;{ success:bool, text:&#x27;Servers is canceled.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current status), &#x60;getServerInvoices&#x60; (outstanding charges), VPS counterpart &#x60;VPSCancel&#x60;. To re-order after cancel use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>Task of InlineResponse20020</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20020> ServersCancelAsync (int? id)
+        /// <returns>Task of InlineResponse20022</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20022> ServersCancelAsync (int? id)
         {
-             ApiResponse<InlineResponse20020> localVarResponse = await ServersCancelAsyncWithHttpInfo(id);
+             ApiResponse<InlineResponse20022> localVarResponse = await ServersCancelAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Cancel Server Service Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
+        /// Cancel a dedicated server service at the end of the current billing cycle Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: &#x60;{ success:bool, text:&#x27;Servers is canceled.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current status), &#x60;getServerInvoices&#x60; (outstanding charges), VPS counterpart &#x60;VPSCancel&#x60;. To re-order after cancel use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number</param>
-        /// <returns>Task of ApiResponse (InlineResponse20020)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20020>> ServersCancelAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (InlineResponse20022)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20022>> ServersCancelAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -4339,13 +4389,13 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20020>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20022>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20020) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20020)));
+                (InlineResponse20022) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20022)));
         }
 
         /// <summary>
-        /// Update Server Order Updates settings on a dedicated server order.
+        /// Update settings on a dedicated server order (shares handler with view) Use to modify metadata on an existing dedicated server order. Path param: &#x60;id&#x60; (integer server_id). Currently this method shares the same handler as &#x60;getServerInfo&#x60; (&#x60;View::go()&#x60;) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as &#x60;getServerInfo&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: prefer &#x60;postServerReverseDns&#x60; (rDNS), &#x60;serverIpmiPowerPost&#x60; (power), &#x60;serverIpmiLivePost&#x60; (IPMI access), &#x60;serversCancel&#x60; (cancel). For new orders use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;. View-only: &#x60;getServerInfo&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -4357,7 +4407,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Server Order Updates settings on a dedicated server order.
+        /// Update settings on a dedicated server order (shares handler with view) Use to modify metadata on an existing dedicated server order. Path param: &#x60;id&#x60; (integer server_id). Currently this method shares the same handler as &#x60;getServerInfo&#x60; (&#x60;View::go()&#x60;) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as &#x60;getServerInfo&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: prefer &#x60;postServerReverseDns&#x60; (rDNS), &#x60;serverIpmiPowerPost&#x60; (power), &#x60;serverIpmiLivePost&#x60; (IPMI access), &#x60;serversCancel&#x60; (cancel). For new orders use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;. View-only: &#x60;getServerInfo&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -4425,7 +4475,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Server Order Updates settings on a dedicated server order.
+        /// Update settings on a dedicated server order (shares handler with view) Use to modify metadata on an existing dedicated server order. Path param: &#x60;id&#x60; (integer server_id). Currently this method shares the same handler as &#x60;getServerInfo&#x60; (&#x60;View::go()&#x60;) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as &#x60;getServerInfo&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: prefer &#x60;postServerReverseDns&#x60; (rDNS), &#x60;serverIpmiPowerPost&#x60; (power), &#x60;serverIpmiLivePost&#x60; (IPMI access), &#x60;serversCancel&#x60; (cancel). For new orders use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;. View-only: &#x60;getServerInfo&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>
@@ -4438,7 +4488,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update Server Order Updates settings on a dedicated server order.
+        /// Update settings on a dedicated server order (shares handler with view) Use to modify metadata on an existing dedicated server order. Path param: &#x60;id&#x60; (integer server_id). Currently this method shares the same handler as &#x60;getServerInfo&#x60; (&#x60;View::go()&#x60;) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as &#x60;getServerInfo&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: prefer &#x60;postServerReverseDns&#x60; (rDNS), &#x60;serverIpmiPowerPost&#x60; (power), &#x60;serverIpmiLivePost&#x60; (IPMI access), &#x60;serversCancel&#x60; (cancel). For new orders use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;. View-only: &#x60;getServerInfo&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">Server ID number.</param>

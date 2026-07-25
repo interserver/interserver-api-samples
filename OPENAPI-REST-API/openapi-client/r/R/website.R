@@ -198,7 +198,7 @@ Website <- R6::R6Class(
         self$`serviceInfo` <- `serviceinfo_object`
       }
       if (!is.null(this_object$`client_links`)) {
-        self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[WebsiteClientLink]", loadNamespace("openapi"))
+        self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[WebsiteClientLink]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`billingDetails`)) {
         `billingdetails_object` <- WebsiteBillingDetails$new()
@@ -220,7 +220,7 @@ Website <- R6::R6Class(
         self$`package` <- this_object$`package`
       }
       if (!is.null(this_object$`serviceExtra`)) {
-        self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[object]", loadNamespace("openapi"))
+        self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[object]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`extraInfoTables`)) {
         `extrainfotables_object` <- WebsiteExtraInfoTables$new()
@@ -249,13 +249,13 @@ Website <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`serviceInfo` <- WebsiteServiceInfo$new()$fromJSON(jsonlite::toJSON(this_object$`serviceInfo`, auto_unbox = TRUE, digits = NA))
-      self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[WebsiteClientLink]", loadNamespace("openapi"))
+      self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[WebsiteClientLink]", loadNamespace("interserverapi"))
       self$`billingDetails` <- WebsiteBillingDetails$new()$fromJSON(jsonlite::toJSON(this_object$`billingDetails`, auto_unbox = TRUE, digits = NA))
       self$`custCurrency` <- this_object$`custCurrency`
       self$`custCurrencySymbol` <- this_object$`custCurrencySymbol`
       self$`serviceMaster` <- WebsiteServiceMaster$new()$fromJSON(jsonlite::toJSON(this_object$`serviceMaster`, auto_unbox = TRUE, digits = NA))
       self$`package` <- this_object$`package`
-      self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[object]", loadNamespace("openapi"))
+      self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[object]", loadNamespace("interserverapi"))
       self$`extraInfoTables` <- WebsiteExtraInfoTables$new()$fromJSON(jsonlite::toJSON(this_object$`extraInfoTables`, auto_unbox = TRUE, digits = NA))
       self
     },

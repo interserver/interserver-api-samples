@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverServiceInfo } from './api';
+import { QuickserverServiceInfo } from '@interserver/myadmin-client';
 
 const instance: QuickserverServiceInfo = {
     qs_id,

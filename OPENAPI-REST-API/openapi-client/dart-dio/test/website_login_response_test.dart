@@ -1,18 +1,18 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for WebsiteLoginResponse
 void main() {
-  final instance = WebsiteLoginResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final WebsiteLoginResponse? instance = /* WebsiteLoginResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(WebsiteLoginResponse, () {
-    // String type
+    // Optional<String?> type
     test('to test the property `type`', () async {
       // TODO
     });
 
-    // String location
+    // Optional<String?> location
     test('to test the property `location`', () async {
       // TODO
     });

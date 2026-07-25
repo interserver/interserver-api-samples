@@ -1,4 +1,4 @@
-# openapi::BillingPrepayRequest
+# interserverapi::BillingPrepayRequest
 
 Request payload for creating a new prepay balance.
 

@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsDAData
+# InterserverApiClient.VpsDAData
 
 ## Properties
 

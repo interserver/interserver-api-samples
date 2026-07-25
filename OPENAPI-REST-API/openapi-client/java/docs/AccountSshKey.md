@@ -11,4 +11,8 @@ SSH Keys
 |**sshKey** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

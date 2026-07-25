@@ -17,4 +17,8 @@
 |**filterFirewall** | [**GetScrubIpDetails200ResponseFilterFirewall**](GetScrubIpDetails200ResponseFilterFirewall.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

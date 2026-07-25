@@ -13,4 +13,8 @@ Ticket statuses with view numbers.
 |**_6** | **String** | Status corresponding to view number 6. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

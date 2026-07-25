@@ -1,4 +1,4 @@
-# InterServerManagementApi.PostWebsiteBuyIpRequest
+# InterserverApiClient.PostWebsiteBuyIpRequest
 
 ## Properties
 

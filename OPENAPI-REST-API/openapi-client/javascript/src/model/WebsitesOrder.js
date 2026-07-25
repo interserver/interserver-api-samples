@@ -22,7 +22,7 @@ import WebsitesOrderServiceTypes from './WebsitesOrderServiceTypes';
 /**
  * The WebsitesOrder model module.
  * @module model/WebsitesOrder
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsitesOrder {
     /**

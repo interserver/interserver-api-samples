@@ -11,7 +11,9 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JValue
 
-case class AccountInfoOauthproviders(
-)
+trait AccountInfoOauthproviders
+object AccountInfoOauthproviders {
+}
 

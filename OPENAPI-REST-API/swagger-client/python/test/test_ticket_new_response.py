@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.ticket_new_response import TicketNewResponse  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.ticket_new_response import TicketNewResponse  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestTicketNewResponse(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestTicketNewResponse(unittest.TestCase):
     def testTicketNewResponse(self):
         """Test TicketNewResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.ticket_new_response.TicketNewResponse()  # noqa: E501
+        # model = interserver_api_client.models.ticket_new_response.TicketNewResponse()  # noqa: E501
         pass
 
 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.buy_it_now_server_order200_response import BuyItNowServerOrder200Response
+from interserver_api_client.models.buy_it_now_server_order200_response import BuyItNowServerOrder200Response
 
 class TestBuyItNowServerOrder200Response(unittest.TestCase):
     """BuyItNowServerOrder200Response unit test stubs"""
@@ -37,28 +37,28 @@ class TestBuyItNowServerOrder200Response(unittest.TestCase):
         if include_optional:
             return BuyItNowServerOrder200Response(
                 bandwidth = [
-                    openapi_client.models.buy_it_now_server_order_200_response_bandwidth_inner.buyItNowServerOrder_200_response_bandwidth_inner(
+                    interserver_api_client.models.buy_it_now_server_order_200_response_bandwidth_inner.buyItNowServerOrder_200_response_bandwidth_inner(
                         id = '10', 
                         short_desc = '1GBPS Unmetered', 
                         long_desc = '', 
                         monthly_price = '0', )
                     ],
                 ips = [
-                    openapi_client.models.buy_it_now_server_order_200_response_ips_inner.buyItNowServerOrder_200_response_ips_inner(
+                    interserver_api_client.models.buy_it_now_server_order_200_response_ips_inner.buyItNowServerOrder_200_response_ips_inner(
                         id = '9', 
                         short_desc = '1 Vlan Ip (/30)', 
                         long_desc = '1 IP In personal Vlan', 
                         monthly_price = '0', )
                     ],
                 os = [
-                    openapi_client.models.buy_it_now_server_order_200_response_os_inner.buyItNowServerOrder_200_response_os_inner(
+                    interserver_api_client.models.buy_it_now_server_order_200_response_os_inner.buyItNowServerOrder_200_response_os_inner(
                         id = '5', 
                         short_desc = 'FreeBSD', 
                         long_desc = 'Latest FreeBSD 6.x OS<br><pre>CP(s): cPanel/DirectAdmin</pre>', 
                         monthly_price = '0', )
                     ],
                 cp = [
-                    openapi_client.models.buy_it_now_server_order_200_response_cp_inner.buyItNowServerOrder_200_response_cp_inner(
+                    interserver_api_client.models.buy_it_now_server_order_200_response_cp_inner.buyItNowServerOrder_200_response_cp_inner(
                         id = '1', 
                         short_desc = 'None', 
                         long_desc = '', 
@@ -66,7 +66,7 @@ class TestBuyItNowServerOrder200Response(unittest.TestCase):
                         monthly_price = '0', )
                     ],
                 raid = [
-                    openapi_client.models.buy_it_now_server_order_200_response_raid_inner.buyItNowServerOrder_200_response_raid_inner(
+                    interserver_api_client.models.buy_it_now_server_order_200_response_raid_inner.buyItNowServerOrder_200_response_raid_inner(
                         id = '0', 
                         short_desc = 'No Raid', 
                         long_desc = 'No Raid', 

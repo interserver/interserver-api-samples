@@ -1,4 +1,4 @@
-# openapi::VpsOrderTemplatesHyperv
+# interserverapi::VpsOrderTemplatesHyperv
 
 
 ## Properties

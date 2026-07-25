@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerAssets
+# InterServerAPI::Object::ServerAssets
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerAssets;
+use InterServerAPI::Object::ServerAssets;
 ```
 
 ## Properties

@@ -30,9 +30,10 @@ import org.openapitools.client.api.BillingPaymentMethodRequest
 import org.openapitools.client.api.BillingPrepayRequest
 import org.openapitools.client.api.BillingVerifyCcRequest
 import org.openapitools.client.api.GetAccountInfo401Response
+import org.openapitools.client.api.GetAffiliateSignups200Response
 import org.openapitools.client.api.InitiatePayment200Response
-import org.openapitools.client.api.Invoice
 import org.openapitools.client.api.MonthlyCounts
+import org.openapitools.client.api.PatchBillingCreditCardVerifyRequest
 import org.openapitools.client.api.StatusMonthlyBreakdown
 import org.openapitools.client.api.SuccessTextResponse
 import org.openapitools.client.api.TextResponse
@@ -42,27 +43,6 @@ object BillingApi {
   val client = PooledHttp1Client()
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
-
-  def addAccountCreditCard(host: String, name: String, address: String, city: String, state: String, country: String, zip: String, cc: String, cc_exp: String, cc_ccv2: String): Task[SuccessTextResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
-
-    val path = "/account/creditcards"
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[SuccessTextResponse](req)
-
-    } yield resp
-  }
 
   def addBillingCreditCard(host: String, BillingAddCcRequest: BillingAddCcRequest): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
@@ -102,27 +82,6 @@ object BillingApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(BillingPrepayRequest)
       resp          <- client.expect[SuccessTextResponse](req)
-
-    } yield resp
-  }
-
-  def deleteAccountCreditCard(host: String, id: String): Task[String] = {
-    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
-
-    val path = "/account/creditcards/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
-
-    val httpMethod = Method.DELETE
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -211,6 +170,25 @@ object BillingApi {
     } yield resp
   }
 
+  def getAffiliateDownload(host: String, st: String, ex: String, year: Integer)(implicit stQuery: QueryParam[String], exQuery: QueryParam[String], yearQuery: QueryParam[Integer]): Task[Unit] = {
+    val path = "/affiliate/download"
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      ("st", Some(stQuery.toParamString(st))), ("ex", Some(exQuery.toParamString(ex))), ("year", Some(yearQuery.toParamString(year))))
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
   def getAffiliateRichReport(host: String): Task[TextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[TextResponse] = jsonOf[TextResponse]
 
@@ -253,23 +231,23 @@ object BillingApi {
     } yield resp
   }
 
-  def getAffiliateSalesReport(host: String): Task[TextResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[TextResponse] = jsonOf[TextResponse]
+  def getAffiliateSignups(host: String, st: String)(implicit stQuery: QueryParam[String]): Task[GetAffiliateSignups200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[GetAffiliateSignups200Response] = jsonOf[GetAffiliateSignups200Response]
 
-    val path = "/affiliate/sales_report"
+    val path = "/affiliate/signups"
 
     val httpMethod = Method.GET
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("st", Some(stQuery.toParamString(st))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[TextResponse](req)
+      resp          <- client.expect[GetAffiliateSignups200Response](req)
 
     } yield resp
   }
@@ -421,31 +399,10 @@ object BillingApi {
     } yield resp
   }
 
-  def getInvoices(host: String, searchString: String, skip: Integer, limit: Integer)(implicit searchStringQuery: QueryParam[String], skipQuery: QueryParam[Integer], limitQuery: QueryParam[Integer]): Task[List[Invoice]] = {
-    implicit val returnTypeDecoder: EntityDecoder[List[Invoice]] = jsonOf[List[Invoice]]
-
-    val path = "/invoices"
-
-    val httpMethod = Method.GET
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      ("searchString", Some(searchStringQuery.toParamString(searchString))), ("skip", Some(skipQuery.toParamString(skip))), ("limit", Some(limitQuery.toParamString(limit))))
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[List[Invoice]](req)
-
-    } yield resp
-  }
-
   def initiatePayment(host: String, method: String, invoices: String): Task[InitiatePayment200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[InitiatePayment200Response] = jsonOf[InitiatePayment200Response]
 
-    val path = "/pay/{method}/{invoices}".replaceAll("\\{" + "method" + "\\}",escape(method.toString)).replaceAll("\\{" + "invoices" + "\\}",escape(invoices.toString))
+    val path = "/billing/pay/{method}/{invoices}".replaceAll("\\{" + "method" + "\\}",escape(method.toString)).replaceAll("\\{" + "invoices" + "\\}",escape(invoices.toString))
 
     val httpMethod = Method.GET
     val contentType = `Content-Type`(MediaType.`application/json`)
@@ -459,6 +416,27 @@ object BillingApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[InitiatePayment200Response](req)
+
+    } yield resp
+  }
+
+  def patchBillingCreditCardVerify(host: String, id: Integer, PatchBillingCreditCardVerifyRequest: PatchBillingCreditCardVerifyRequest): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
+    val path = "/billing/creditcards/{id}/verify".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.PATCH
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(PatchBillingCreditCardVerifyRequest)
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -484,52 +462,10 @@ object BillingApi {
     } yield resp
   }
 
-  def updateAccountCreditCard(host: String, id: Integer): Task[String] = {
-    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
-
-    val path = "/account/creditcards/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[String](req)
-
-    } yield resp
-  }
-
   def updateAffiliateDockSetup(host: String, affiliate_dock_title: String, affiliate_dock_description: String, referrer_coupon: String): Task[TextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[TextResponse] = jsonOf[TextResponse]
 
     val path = "/affiliate/dock_setup"
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[TextResponse](req)
-
-    } yield resp
-  }
-
-  def updateAffiliateLandingPage(host: String, affiliate_dock_title: String, affiliate_dock_description: String, referrer_coupon: String): Task[TextResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[TextResponse] = jsonOf[TextResponse]
-
-    val path = "/affiliate/landing_pg"
 
     val httpMethod = Method.POST
     val contentType = `Content-Type`(MediaType.`application/json`)
@@ -617,27 +553,6 @@ class HttpServiceBillingApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addAccountCreditCard(name: String, address: String, city: String, state: String, country: String, zip: String, cc: String, cc_exp: String, cc_ccv2: String): Task[SuccessTextResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
-
-    val path = "/account/creditcards"
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[SuccessTextResponse](req)
-
-    } yield resp
-  }
-
   def addBillingCreditCard(BillingAddCcRequest: BillingAddCcRequest): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
 
@@ -676,27 +591,6 @@ class HttpServiceBillingApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(BillingPrepayRequest)
       resp          <- client.expect[SuccessTextResponse](req)
-
-    } yield resp
-  }
-
-  def deleteAccountCreditCard(id: String): Task[String] = {
-    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
-
-    val path = "/account/creditcards/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
-
-    val httpMethod = Method.DELETE
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[String](req)
 
     } yield resp
   }
@@ -785,6 +679,25 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
+  def getAffiliateDownload(st: String, ex: String, year: Integer)(implicit stQuery: QueryParam[String], exQuery: QueryParam[String], yearQuery: QueryParam[Integer]): Task[Unit] = {
+    val path = "/affiliate/download"
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      ("st", Some(stQuery.toParamString(st))), ("ex", Some(exQuery.toParamString(ex))), ("year", Some(yearQuery.toParamString(year))))
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
   def getAffiliateRichReport(): Task[TextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[TextResponse] = jsonOf[TextResponse]
 
@@ -827,23 +740,23 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def getAffiliateSalesReport(): Task[TextResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[TextResponse] = jsonOf[TextResponse]
+  def getAffiliateSignups(st: String)(implicit stQuery: QueryParam[String]): Task[GetAffiliateSignups200Response] = {
+    implicit val returnTypeDecoder: EntityDecoder[GetAffiliateSignups200Response] = jsonOf[GetAffiliateSignups200Response]
 
-    val path = "/affiliate/sales_report"
+    val path = "/affiliate/signups"
 
     val httpMethod = Method.GET
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("st", Some(stQuery.toParamString(st))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[TextResponse](req)
+      resp          <- client.expect[GetAffiliateSignups200Response](req)
 
     } yield resp
   }
@@ -995,31 +908,10 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def getInvoices(searchString: String, skip: Integer, limit: Integer)(implicit searchStringQuery: QueryParam[String], skipQuery: QueryParam[Integer], limitQuery: QueryParam[Integer]): Task[List[Invoice]] = {
-    implicit val returnTypeDecoder: EntityDecoder[List[Invoice]] = jsonOf[List[Invoice]]
-
-    val path = "/invoices"
-
-    val httpMethod = Method.GET
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      ("searchString", Some(searchStringQuery.toParamString(searchString))), ("skip", Some(skipQuery.toParamString(skip))), ("limit", Some(limitQuery.toParamString(limit))))
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[List[Invoice]](req)
-
-    } yield resp
-  }
-
   def initiatePayment(method: String, invoices: String): Task[InitiatePayment200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[InitiatePayment200Response] = jsonOf[InitiatePayment200Response]
 
-    val path = "/pay/{method}/{invoices}".replaceAll("\\{" + "method" + "\\}",escape(method.toString)).replaceAll("\\{" + "invoices" + "\\}",escape(invoices.toString))
+    val path = "/billing/pay/{method}/{invoices}".replaceAll("\\{" + "method" + "\\}",escape(method.toString)).replaceAll("\\{" + "invoices" + "\\}",escape(invoices.toString))
 
     val httpMethod = Method.GET
     val contentType = `Content-Type`(MediaType.`application/json`)
@@ -1033,6 +925,27 @@ class HttpServiceBillingApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[InitiatePayment200Response](req)
+
+    } yield resp
+  }
+
+  def patchBillingCreditCardVerify(id: Integer, PatchBillingCreditCardVerifyRequest: PatchBillingCreditCardVerifyRequest): Task[SuccessTextResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
+
+    val path = "/billing/creditcards/{id}/verify".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.PATCH
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(PatchBillingCreditCardVerifyRequest)
+      resp          <- client.expect[SuccessTextResponse](req)
 
     } yield resp
   }
@@ -1058,52 +971,10 @@ class HttpServiceBillingApi(service: HttpService) {
     } yield resp
   }
 
-  def updateAccountCreditCard(id: Integer): Task[String] = {
-    implicit val returnTypeDecoder: EntityDecoder[String] = jsonOf[String]
-
-    val path = "/account/creditcards/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[String](req)
-
-    } yield resp
-  }
-
   def updateAffiliateDockSetup(affiliate_dock_title: String, affiliate_dock_description: String, referrer_coupon: String): Task[TextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[TextResponse] = jsonOf[TextResponse]
 
     val path = "/affiliate/dock_setup"
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[TextResponse](req)
-
-    } yield resp
-  }
-
-  def updateAffiliateLandingPage(affiliate_dock_title: String, affiliate_dock_description: String, referrer_coupon: String): Task[TextResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[TextResponse] = jsonOf[TextResponse]
-
-    val path = "/affiliate/landing_pg"
 
     val httpMethod = Method.POST
     val contentType = `Content-Type`(MediaType.`application/json`)

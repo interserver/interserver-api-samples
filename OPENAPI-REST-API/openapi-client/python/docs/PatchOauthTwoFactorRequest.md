@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.patch_oauth_two_factor_request import PatchOauthTwoFactorRequest
+from interserver_api_client.models.patch_oauth_two_factor_request import PatchOauthTwoFactorRequest
 
 # TODO update the JSON string below
 json = "{}"

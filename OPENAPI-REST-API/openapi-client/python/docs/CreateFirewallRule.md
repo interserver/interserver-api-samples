@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.create_firewall_rule import CreateFirewallRule
+from interserver_api_client.models.create_firewall_rule import CreateFirewallRule
 
 # TODO update the JSON string below
 json = "{}"

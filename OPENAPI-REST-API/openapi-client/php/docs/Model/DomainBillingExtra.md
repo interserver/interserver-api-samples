@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**order** | [**\Interserver\MyAdmin\Model\DomainOrderResponse**](DomainOrderResponse.md) |  | [optional]
+**order** | [**\Interserver\\MyAdmin\Model\DomainOrderResponse**](DomainOrderResponse.md) |  | [optional]
 **orderId** | **string** |  | [optional]
 **domainId** | **string** |  | [optional]
-**provProcessPending** | [**\Interserver\MyAdmin\Model\DomainProvProcessPending**](DomainProvProcessPending.md) |  | [optional]
+**provProcessPending** | [**\Interserver\\MyAdmin\Model\DomainProvProcessPending**](DomainProvProcessPending.md) |  | [optional]
 **email** | **string** |  | [optional]
 **firstname** | **string** |  | [optional]
 **lastname** | **string** |  | [optional]

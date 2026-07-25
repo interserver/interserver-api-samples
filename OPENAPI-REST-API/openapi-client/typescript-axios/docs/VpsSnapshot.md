@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsSnapshot } from './api';
+import { VpsSnapshot } from '@interserver/myadmin-client';
 
 const instance: VpsSnapshot = {
     name,

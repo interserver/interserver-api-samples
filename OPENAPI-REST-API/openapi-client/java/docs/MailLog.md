@@ -14,4 +14,8 @@ Paginated mail log response.  Contains the full matched count (`total`) plus a p
 |**emails** | [**List&lt;MailLogEntry&gt;**](MailLogEntry.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

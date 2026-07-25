@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainOrderResponseAttributes model module.
  * @module model/DomainOrderResponseAttributes
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainOrderResponseAttributes {
     /**

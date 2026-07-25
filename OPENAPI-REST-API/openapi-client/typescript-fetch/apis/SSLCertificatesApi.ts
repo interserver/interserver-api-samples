@@ -12,27 +12,41 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  ChargeInvoiceRows,
-  GetAccountInfo401Response,
-  ServiceOrderPostResponse,
-  SslCancel200Response,
-  SuccessTextResponse,
-} from '../models/index';
 import {
+    type ChargeInvoiceRows,
     ChargeInvoiceRowsFromJSON,
     ChargeInvoiceRowsToJSON,
+} from '../models/ChargeInvoiceRows';
+import {
+    type GetAccountInfo401Response,
     GetAccountInfo401ResponseFromJSON,
     GetAccountInfo401ResponseToJSON,
+} from '../models/GetAccountInfo401Response';
+import {
+    type ServiceOrderPostResponse,
     ServiceOrderPostResponseFromJSON,
     ServiceOrderPostResponseToJSON,
+} from '../models/ServiceOrderPostResponse';
+import {
+    type SslCancel200Response,
     SslCancel200ResponseFromJSON,
     SslCancel200ResponseToJSON,
+} from '../models/SslCancel200Response';
+import {
+    type SslOrderRequest,
+    SslOrderRequestFromJSON,
+    SslOrderRequestToJSON,
+} from '../models/SslOrderRequest';
+import {
+    type SuccessTextResponse,
     SuccessTextResponseFromJSON,
     SuccessTextResponseToJSON,
-} from '../models/index';
+} from '../models/SuccessTextResponse';
+
+export interface AddSslRequest {
+    sslOrderRequest: SslOrderRequest;
+}
 
 export interface GetSslInfoRequest {
     id: number;
@@ -44,6 +58,10 @@ export interface GetSslInvoicesRequest {
 
 export interface GetSslWelcomeEmailRequest {
     id: number;
+}
+
+export interface PutSslRequest {
+    sslOrderRequest: SslOrderRequest;
 }
 
 export interface SslCancelRequest {
@@ -62,10 +80,19 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     /**
      * Creates request options for addSsl without sending the request
      */
-    async addSslRequestOpts(): Promise<runtime.RequestOpts> {
+    async addSslRequestOpts(requestParameters: AddSslRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['sslOrderRequest'] == null) {
+            throw new runtime.RequiredError(
+                'sslOrderRequest',
+                'Required parameter "sslOrderRequest" was null or undefined when calling addSsl().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["X-API-KEY"] = await this.configuration.apiKey("X-API-KEY"); // apiKeyAuth authentication
@@ -83,26 +110,27 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: SslOrderRequestToJSON(requestParameters['sslOrderRequest']),
         };
     }
 
     /**
-     * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
-     * Place SSL Cert Order
+     * [DESTRUCTIVE] Use after putSsl returns continue=true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue=false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: `getNewSsl` (catalog), `putSsl` (validate), `getSslInfo` (poll), `getSslInvoices`, `initiatePayment` (settle invoice), `getSslWelcomeEmail`, `sslCancel`.
+     * Place a new SSL certificate order - creates invoice and queues issuance
      */
-    async addSslRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServiceOrderPostResponse>> {
-        const requestOptions = await this.addSslRequestOpts();
+    async addSslRaw(requestParameters: AddSslRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServiceOrderPostResponse>> {
+        const requestOptions = await this.addSslRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ServiceOrderPostResponseFromJSON(jsonValue));
     }
 
     /**
-     * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
-     * Place SSL Cert Order
+     * [DESTRUCTIVE] Use after putSsl returns continue=true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue=false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: `getNewSsl` (catalog), `putSsl` (validate), `getSslInfo` (poll), `getSslInvoices`, `initiatePayment` (settle invoice), `getSslWelcomeEmail`, `sslCancel`.
+     * Place a new SSL certificate order - creates invoice and queues issuance
      */
-    async addSsl(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServiceOrderPostResponse> {
-        const response = await this.addSslRaw(initOverrides);
+    async addSsl(requestParameters: AddSslRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServiceOrderPostResponse> {
+        const response = await this.addSslRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -134,8 +162,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves available SSL certificate types and pricing for ordering.
-     * SSL Cert Ordering Information
+     * Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer\'s currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: `putSsl` (validate), `addSsl` (commit), `getSslList` (existing certs), `getSslInfo` (per-cert).
+     * Get available SSL certificate packages and pricing for placing a new order
      */
     async getNewSslRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<object>> {
         const requestOptions = await this.getNewSslRequestOpts();
@@ -145,8 +173,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves available SSL certificate types and pricing for ordering.
-     * SSL Cert Ordering Information
+     * Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer\'s currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: `putSsl` (validate), `addSsl` (commit), `getSslList` (existing certs), `getSslInfo` (per-cert).
+     * Get available SSL certificate packages and pricing for placing a new order
      */
     async getNewSsl(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<object> {
         const response = await this.getNewSslRaw(initOverrides);
@@ -178,7 +206,7 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/ssl/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -189,8 +217,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns detailed information about a specific SSL certificate including its domain and expiration.
-     * Get SSL Cert Info
+     * Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: `updateSslInfo`, `getSslInvoices`, `getSslWelcomeEmail`, `sslCancel`, `getSslList`.
+     * Get full details for one SSL certificate by id - status, expiration, links
      */
     async getSslInfoRaw(requestParameters: GetSslInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<object>> {
         const requestOptions = await this.getSslInfoRequestOpts(requestParameters);
@@ -200,8 +228,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns detailed information about a specific SSL certificate including its domain and expiration.
-     * Get SSL Cert Info
+     * Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: `updateSslInfo`, `getSslInvoices`, `getSslWelcomeEmail`, `sslCancel`, `getSslList`.
+     * Get full details for one SSL certificate by id - status, expiration, links
      */
     async getSslInfo(requestParameters: GetSslInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<object> {
         const response = await this.getSslInfoRaw(requestParameters, initOverrides);
@@ -233,7 +261,7 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/ssl/{id}/invoices`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -244,8 +272,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the billing invoices associated with this SSL certificate.
-     * Get SSL Cert Invoices
+     * Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: `getSslInfo`, `sslCancel`, `getSslWelcomeEmail`, `getBillingInvoice` (per-invoice detail), `initiatePayment` (settle unpaid).
+     * List all billing invoices and charges tied to one SSL certificate by id
      */
     async getSslInvoicesRaw(requestParameters: GetSslInvoicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChargeInvoiceRows>> {
         const requestOptions = await this.getSslInvoicesRequestOpts(requestParameters);
@@ -255,8 +283,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the billing invoices associated with this SSL certificate.
-     * Get SSL Cert Invoices
+     * Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: `getSslInfo`, `sslCancel`, `getSslWelcomeEmail`, `getBillingInvoice` (per-invoice detail), `initiatePayment` (settle unpaid).
+     * List all billing invoices and charges tied to one SSL certificate by id
      */
     async getSslInvoices(requestParameters: GetSslInvoicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChargeInvoiceRows> {
         const response = await this.getSslInvoicesRaw(requestParameters, initOverrides);
@@ -291,8 +319,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns all SSL certificate services on the account with their current status.
-     * List SSL Certs
+     * Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: `getSslInfo`, `getNewSsl` (catalog), `addSsl` (order new cert).
+     * List all SSL certificates on the authenticated customer account with status and hostname
      */
     async getSslListRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const requestOptions = await this.getSslListRequestOpts();
@@ -302,8 +330,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns all SSL certificate services on the account with their current status.
-     * List SSL Certs
+     * Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: `getSslInfo`, `getNewSsl` (catalog), `addSsl` (order new cert).
+     * List all SSL certificates on the authenticated customer account with status and hostname
      */
     async getSslList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.getSslListRaw(initOverrides);
@@ -334,7 +362,7 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/ssl/{id}/welcome_email`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -345,8 +373,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Resends the welcome email for the order.
-     * Resend SSL Welcome Email
+     * Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module\'s ssl_welcome_email function to re-send to the account\'s email on file. Returns SuccessTextResponse: text=\'Welcome Email has been resent.\' Returns 401 unauthenticated, 404 if id not found or not owned by session customer (\'Invalid Service Passed\'), 409 if cert status is not \'active\' (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer\'s address has changed.  Sibling ops: `getSslInfo` (verify status), `sslCancel` (terminate), `updateAccountInfo` (change email first).
+     * Resend the SSL welcome email with cert credentials and install instructions
      */
     async getSslWelcomeEmailRaw(requestParameters: GetSslWelcomeEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessTextResponse>> {
         const requestOptions = await this.getSslWelcomeEmailRequestOpts(requestParameters);
@@ -356,8 +384,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Resends the welcome email for the order.
-     * Resend SSL Welcome Email
+     * Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module\'s ssl_welcome_email function to re-send to the account\'s email on file. Returns SuccessTextResponse: text=\'Welcome Email has been resent.\' Returns 401 unauthenticated, 404 if id not found or not owned by session customer (\'Invalid Service Passed\'), 409 if cert status is not \'active\' (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer\'s address has changed.  Sibling ops: `getSslInfo` (verify status), `sslCancel` (terminate), `updateAccountInfo` (change email first).
+     * Resend the SSL welcome email with cert credentials and install instructions
      */
     async getSslWelcomeEmail(requestParameters: GetSslWelcomeEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessTextResponse> {
         const response = await this.getSslWelcomeEmailRaw(requestParameters, initOverrides);
@@ -367,10 +395,19 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     /**
      * Creates request options for putSsl without sending the request
      */
-    async putSslRequestOpts(): Promise<runtime.RequestOpts> {
+    async putSslRequestOpts(requestParameters: PutSslRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['sslOrderRequest'] == null) {
+            throw new runtime.RequiredError(
+                'sslOrderRequest',
+                'Required parameter "sslOrderRequest" was null or undefined when calling putSsl().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["X-API-KEY"] = await this.configuration.apiKey("X-API-KEY"); // apiKeyAuth authentication
@@ -388,26 +425,27 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: SslOrderRequestToJSON(requestParameters['sslOrderRequest']),
         };
     }
 
     /**
-     * Validates an SSL certificate order before placing it.
-     * Validate SSL Cert Order
+     * Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue=false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: `getNewSsl` (catalog), `addSsl` (commit).
+     * Validate an SSL certificate order without charging - dry-run before addSsl
      */
-    async putSslRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const requestOptions = await this.putSslRequestOpts();
+    async putSslRaw(requestParameters: PutSslRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.putSslRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }
 
     /**
-     * Validates an SSL certificate order before placing it.
-     * Validate SSL Cert Order
+     * Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue=false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: `getNewSsl` (catalog), `addSsl` (commit).
+     * Validate an SSL certificate order without charging - dry-run before addSsl
      */
-    async putSsl(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.putSslRaw(initOverrides);
+    async putSsl(requestParameters: PutSslRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.putSslRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -435,7 +473,7 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/ssl/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -446,8 +484,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
-     * Cancel SSL Certificate Service
+     * [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: `getSslInfo` (verify cert), `getSslInvoices` (check unpaid), `addSsl` (re-order).
+     * Cancel an SSL certificate service - stops renewals at end of billing cycle
      */
     async sslCancelRaw(requestParameters: SslCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SslCancel200Response>> {
         const requestOptions = await this.sslCancelRequestOpts(requestParameters);
@@ -457,8 +495,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
-     * Cancel SSL Certificate Service
+     * [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: `getSslInfo` (verify cert), `getSslInvoices` (check unpaid), `addSsl` (re-order).
+     * Cancel an SSL certificate service - stops renewals at end of billing cycle
      */
     async sslCancel(requestParameters: SslCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SslCancel200Response> {
         const response = await this.sslCancelRaw(requestParameters, initOverrides);
@@ -490,7 +528,7 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/ssl/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -501,8 +539,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates settings on an SSL certificate order.
-     * Update SSL Cert Order
+     * Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: `getSslInfo` (read), `sslCancel` (terminate), `getSslWelcomeEmail`.
+     * Update mutable settings on an existing SSL certificate order by id
      */
     async updateSslInfoRaw(requestParameters: UpdateSslInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessTextResponse>> {
         const requestOptions = await this.updateSslInfoRequestOpts(requestParameters);
@@ -512,8 +550,8 @@ export class SSLCertificatesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates settings on an SSL certificate order.
-     * Update SSL Cert Order
+     * Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: `getSslInfo` (read), `sslCancel` (terminate), `getSslWelcomeEmail`.
+     * Update mutable settings on an existing SSL certificate order by id
      */
     async updateSslInfo(requestParameters: UpdateSslInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessTextResponse> {
         const response = await this.updateSslInfoRaw(requestParameters, initOverrides);

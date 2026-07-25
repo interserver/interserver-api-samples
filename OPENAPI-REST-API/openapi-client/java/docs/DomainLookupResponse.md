@@ -21,4 +21,8 @@ Availability, pricing, and order-field metadata for a domain lookup.
 |**currencies** | **Object** | Pricing information normalized to supported currencies. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

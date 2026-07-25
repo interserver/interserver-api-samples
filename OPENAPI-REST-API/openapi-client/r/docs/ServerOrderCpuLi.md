@@ -1,4 +1,4 @@
-# openapi::ServerOrderCpuLi
+# interserverapi::ServerOrderCpuLi
 
 CPU options for the server order.
 

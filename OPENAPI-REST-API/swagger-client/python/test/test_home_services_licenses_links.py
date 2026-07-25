@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.home_services_licenses_links import HomeServicesLicensesLinks  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.home_services_licenses_links import HomeServicesLicensesLinks  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestHomeServicesLicensesLinks(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestHomeServicesLicensesLinks(unittest.TestCase):
     def testHomeServicesLicensesLinks(self):
         """Test HomeServicesLicensesLinks"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.home_services_licenses_links.HomeServicesLicensesLinks()  # noqa: E501
+        # model = interserver_api_client.models.home_services_licenses_links.HomeServicesLicensesLinks()  # noqa: E501
         pass
 
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderCpLi } from './api';
+import { ServerOrderCpLi } from '@interserver/myadmin-client';
 
 const instance: ServerOrderCpLi = {
     _9,

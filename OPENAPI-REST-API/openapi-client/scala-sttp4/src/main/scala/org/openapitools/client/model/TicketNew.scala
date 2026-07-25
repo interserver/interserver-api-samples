@@ -22,4 +22,3 @@ case class TicketNew(
   service_id: Option[Int] = None,
   service_module: Option[String] = None
 )
-

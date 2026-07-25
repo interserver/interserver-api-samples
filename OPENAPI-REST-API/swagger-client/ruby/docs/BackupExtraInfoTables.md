@@ -1,4 +1,4 @@
-# SwaggerClient::BackupExtraInfoTables
+# InterserverApiClient::BackupExtraInfoTables
 
 ## Properties
 Name | Type | Description | Notes

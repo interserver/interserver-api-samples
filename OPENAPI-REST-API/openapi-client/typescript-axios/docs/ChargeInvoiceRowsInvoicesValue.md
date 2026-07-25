@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ChargeInvoiceRowsInvoicesValue } from './api';
+import { ChargeInvoiceRowsInvoicesValue } from '@interserver/myadmin-client';
 
 const instance: ChargeInvoiceRowsInvoicesValue = {
     invoices_id,

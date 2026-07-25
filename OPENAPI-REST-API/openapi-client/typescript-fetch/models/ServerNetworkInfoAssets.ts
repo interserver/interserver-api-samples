@@ -39,7 +39,7 @@ export interface ServerNetworkInfoAssets {
  * Check if a given object implements the ServerNetworkInfoAssets interface.
  */
 export function instanceOfServerNetworkInfoAssets(value: object): value is ServerNetworkInfoAssets {
-    if (!('_3497' in value) || value['_3497'] === undefined) return false;
+    if ((!('_3497' in (value as Record<string, any>)) && !('3497' in (value as Record<string, any>))) || ((value as Record<string, any>)['_3497'] === undefined && (value as Record<string, any>)['3497'] === undefined)) return false;
     return true;
 }
 

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The PostWebsiteBuyIp200Response model module.
  * @module model/PostWebsiteBuyIp200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class PostWebsiteBuyIp200Response {
     /**

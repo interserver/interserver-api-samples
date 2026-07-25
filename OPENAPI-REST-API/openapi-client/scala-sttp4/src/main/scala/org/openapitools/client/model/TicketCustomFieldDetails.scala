@@ -24,13 +24,29 @@ case class TicketCustomFieldDetails(
   Sudo_Password: Option[Int] = None,
   Port: Option[Int] = None
 )
-
 object TicketCustomFieldDetailsEnums {
 
-  type CustomerServerAccess = CustomerServerAccess.Value
-  object CustomerServerAccess extends Enumeration {
-    val `Y` = Value("y")
-    val `N` = Value("n")
-  }
+  sealed trait CustomerServerAccess
+  object CustomerServerAccess {
+    case object `Y` extends CustomerServerAccess
+    case object `N` extends CustomerServerAccess
 
+    import org.json4s._
+
+    implicit object CustomerServerAccessSerializer extends Serializer[CustomerServerAccess] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), CustomerServerAccess] = {
+        case (TypeInfo(clazz, _), json) if classOf[CustomerServerAccess].isAssignableFrom(clazz) =>
+          json match {
+            case JString("y") => `Y`
+            case JString("n") => `N`
+            case other => throw new MappingException(s"Invalid CustomerServerAccess: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case `Y` => JString("y")
+        case `N` => JString("n")
+      }
+    }
+  }
 }

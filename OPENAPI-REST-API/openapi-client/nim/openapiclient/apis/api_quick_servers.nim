@@ -19,6 +19,7 @@ import typetraits
 import uri
 
 import ../models/model_charge_invoice_rows
+import ../models/model_qs_order_request
 import ../models/model_queue_response
 import ../models/model_quickserver
 import ../models/model_quickserver_order
@@ -50,15 +51,16 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addQs*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
-  ## Place QuickServer Order
+proc addQs*(httpClient: HttpClient, qsOrderRequest: QsOrderRequest): (Option[ServiceOrderPostResponse], Response) =
+  ## Place a QuickServer order, generating a real invoice and queuing provisioning
+  httpClient.headers["Content-Type"] = "application/json"
 
-  let response = httpClient.post(basepath & "/qs/order")
+  let response = httpClient.post(basepath & "/qs/order", $(%qsOrderRequest))
   constructResult[ServiceOrderPostResponse](response)
 
 
 proc deleteQsBackup*(httpClient: HttpClient, id: int, file: string, all: string): (Option[SuccessTextResponse], Response) =
-  ## Delete QuickServer Backup
+  ## Permanently delete a QuickServer backup file from object storage
   var query_params_list: seq[(string, string)] = @[]
   if $all != "":
     query_params_list.add(("all", $all))
@@ -70,63 +72,63 @@ proc deleteQsBackup*(httpClient: HttpClient, id: int, file: string, all: string)
 
 
 proc doQsBlockSmtp*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Block QuickServer SMTP
+  ## Block outbound SMTP traffic on a QuickServer to halt mail abuse
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/block_smtp")
   constructResult[QueueResponse](response)
 
 
 proc doQsDisableCd*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Disable CD Drive
+  ## Disable the virtual CD/DVD drive device on a QuickServer
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/disable_cd")
   constructResult[QueueResponse](response)
 
 
 proc doQsDisableQuota*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Disable Quotas
+  ## Disable disk-quota enforcement at OS level on a QuickServer
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/disable_quota")
   constructResult[QueueResponse](response)
 
 
 proc doQsEjectCd*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Eject CD Drive
+  ## Eject the currently mounted ISO from a QuickServer's virtual CD drive
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/eject_cd")
   constructResult[QueueResponse](response)
 
 
 proc doQsEnableQuota*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Enable Quotas
+  ## Enable disk-quota enforcement at OS level on a QuickServer
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/enable_quota")
   constructResult[QueueResponse](response)
 
 
 proc doQsRestart*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Restart QuickServer
+  ## Reboot a QuickServer with a graceful OS-level restart
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/restart")
   constructResult[QueueResponse](response)
 
 
 proc doQsStart*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Start QuickServer
+  ## Power on a QuickServer that is currently stopped or pending boot
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/start")
   constructResult[QueueResponse](response)
 
 
 proc doQsStop*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Stop QuickServer
+  ## Power off a QuickServer with a graceful shutdown command
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/stop")
   constructResult[QueueResponse](response)
 
 
 proc downloadQsBackup*(httpClient: HttpClient, id: int, downloadQsBackupRequest: DownloadQsBackupRequest, all: string): (Option[downloadQsBackup_200_response], Response) =
-  ## Download QuickServer Backup
+  ## Generate a 24-hour pre-signed download URL for a QuickServer backup
   httpClient.headers["Content-Type"] = "application/json"
   var query_params_list: seq[(string, string)] = @[]
   if $all != "":
@@ -138,14 +140,21 @@ proc downloadQsBackup*(httpClient: HttpClient, id: int, downloadQsBackupRequest:
 
 
 proc getNewQs*(httpClient: HttpClient): (Option[QuickserverOrder], Response) =
-  ## Get QuickServer Ordering Information
+  ## Get QuickServer order form metadata and available plans/templates
 
   let response = httpClient.get(basepath & "/qs/order")
   constructResult[QuickserverOrder](response)
 
 
+proc getQsBackup*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
+  ## Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+
+  let response = httpClient.get(basepath & fmt"/qs/{id}/backup")
+  constructResult[QueueResponse](response)
+
+
 proc getQsBackups*(httpClient: HttpClient, id: int, all: string): (Option[seq[VpsBackupRow]], Response) =
-  ## List QuickServer Backups
+  ## List available QuickServer backups across Swift, MinIO, and ZFS storage
   var query_params_list: seq[(string, string)] = @[]
   if $all != "":
     query_params_list.add(("all", $all))
@@ -156,125 +165,118 @@ proc getQsBackups*(httpClient: HttpClient, id: int, all: string): (Option[seq[Vp
 
 
 proc getQsChangeHostname*(httpClient: HttpClient, id: int): Response =
-  ## Get QuickServer Hostname
+  ## Get current QuickServer hostname plus change rules and platform support
   httpClient.get(basepath & fmt"/qs/{id}/change_hostname")
 
 
 
 proc getQsChangeRootPassword*(httpClient: HttpClient, id: int): Response =
-  ## Get Change Root Password Info
+  ## Get metadata for QuickServer root/OS password change requirements
   httpClient.get(basepath & fmt"/qs/{id}/change_root_password")
 
 
 
 proc getQsChangeTimezone*(httpClient: HttpClient, id: int): (Option[seq[string]], Response) =
-  ## Get Timezone Info
+  ## List timezones the QuickServer can be set to via change_timezone
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/change_timezone")
   constructResult[seq[string]](response)
 
 
 proc getQsChangeWebuzoPassword*(httpClient: HttpClient, id: int): Response =
-  ## Webuzo Change Pass Info
+  ## Get metadata for changing the Webuzo control panel admin password
   httpClient.get(basepath & fmt"/qs/{id}/change_webuzo_password")
 
 
 
 proc getQsInfo*(httpClient: HttpClient, id: int): (Option[Quickserver], Response) =
-  ## Get QuickServer Order
+  ## Get full details for one QuickServer including credentials and links
 
   let response = httpClient.get(basepath & fmt"/qs/{id}")
   constructResult[Quickserver](response)
 
 
 proc getQsInsertCd*(httpClient: HttpClient, id: int): Response =
-  ## Insert CD Information
+  ## List ISO images available to mount on a QuickServer's virtual CD
   httpClient.get(basepath & fmt"/qs/{id}/insert_cd")
 
 
 
 proc getQsInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get QuickServer Invoices
+  ## List billing invoices charged for one QuickServer service
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getQsList*(httpClient: HttpClient): (Option[seq[QuickserverRow]], Response) =
-  ## List QuickServers
+  ## List QuickServer rapid-deploy dedicated servers on the account
 
   let response = httpClient.get(basepath & "/qs")
   constructResult[seq[QuickserverRow]](response)
 
 
 proc getQsReinstallOs*(httpClient: HttpClient, id: int): (Option[VpsTemplatesList], Response) =
-  ## QuickServer Reinstall OS Options
+  ## List OS templates available for a QuickServer reinstall
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/reinstall_os")
   constructResult[VpsTemplatesList](response)
 
 
 proc getQsResetPassword*(httpClient: HttpClient, id: int): Response =
-  ## Reset QuickServer Password Info
+  ## Get options for QuickServer randomized root password reset
   httpClient.get(basepath & fmt"/qs/{id}/reset_password")
 
 
 
 proc getQsReverseDns*(httpClient: HttpClient, id: int): (Option[ReverseDnsEntries], Response) =
-  ## Reverse DNS Info
+  ## Get reverse DNS (PTR) records for all of a QuickServer's IPs
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/reverse_dns")
   constructResult[ReverseDnsEntries](response)
 
 
 proc getQsSetupVnc*(httpClient: HttpClient, id: int): Response =
-  ## VNC Setup Info
+  ## Get current VNC console connection details for a QuickServer
   httpClient.get(basepath & fmt"/qs/{id}/setup_vnc")
 
 
 
 proc getQsTrafficUsage*(httpClient: HttpClient, id: int): Response =
-  ## Get Traffic Usage
+  ## Get bandwidth usage for the QuickServer's current billing period
   httpClient.get(basepath & fmt"/qs/{id}/traffic_usage")
 
 
 
 proc getQsViewDesktop*(httpClient: HttpClient, id: int): Response =
-  ## Get View Desktop Info
+  ## Get the full QuickServer dashboard view payload (rich format)
   httpClient.get(basepath & fmt"/qs/{id}/view_desktop")
 
 
 
 proc getQsWelcomeEmail*(httpClient: HttpClient, id: string): (Option[TextResponse], Response) =
-  ## Resend QuickServer Welcome Email
+  ## Resend the QuickServer welcome email with login credentials
 
   let response = httpClient.get(basepath & fmt"/qs/{id}/welcome_email")
   constructResult[TextResponse](response)
 
 
-proc postQsBackup*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Create QuickServer Backup
-
-  let response = httpClient.post(basepath & fmt"/qs/{id}/backup")
-  constructResult[QueueResponse](response)
-
-
 proc postQsChangeHostname*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Update QuickServer Hostname
+  ## Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
 
   let response = httpClient.post(basepath & fmt"/qs/{id}/change_hostname")
   constructResult[QueueResponse](response)
 
 
 proc postQsChangeRootPassword*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Change Root Password
+  ## Change QuickServer root/administrator password to a chosen value
 
   let response = httpClient.post(basepath & fmt"/qs/{id}/change_root_password")
   constructResult[QueueResponse](response)
 
 
 proc postQsChangeTimezone*(httpClient: HttpClient, id: int, timezone: string): (Option[QueueResponse], Response) =
-  ## Change QuickServer Timezone
+  ## Change the system timezone on a QuickServer to a catalog entry
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "timezone": $timezone, # The time zone
@@ -285,35 +287,35 @@ proc postQsChangeTimezone*(httpClient: HttpClient, id: int, timezone: string): (
 
 
 proc postQsChangeWebuzoPassword*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Change Webuzo Password
+  ## Change Webuzo control panel admin password live (synchronous, not queued)
 
   let response = httpClient.post(basepath & fmt"/qs/{id}/change_webuzo_password")
   constructResult[QueueResponse](response)
 
 
 proc postQsInsertCd*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Insert CD in QuickServer
+  ## Mount an ISO image as the QuickServer's virtual CD via URL
 
   let response = httpClient.post(basepath & fmt"/qs/{id}/insert_cd")
   constructResult[QueueResponse](response)
 
 
 proc postQsReinstallOs*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Reinstall QuickServer OS
+  ## Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
 
   let response = httpClient.post(basepath & fmt"/qs/{id}/reinstall_os")
   constructResult[QueueResponse](response)
 
 
 proc postQsResetPassword*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Reset QuickServer Password
+  ## Reset QuickServer root password to a server-generated random value
 
   let response = httpClient.post(basepath & fmt"/qs/{id}/reset_password")
   constructResult[QueueResponse](response)
 
 
 proc postQsReverseDns*(httpClient: HttpClient, id: int, reverseDnsEntries: ReverseDnsEntries): (Option[TextResponse], Response) =
-  ## Update Reverse DNS
+  ## Update reverse DNS (PTR) records for a QuickServer's IPs
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/qs/{id}/reverse_dns", $(%reverseDnsEntries))
@@ -321,47 +323,48 @@ proc postQsReverseDns*(httpClient: HttpClient, id: int, reverseDnsEntries: Rever
 
 
 proc postQsSetupVnc*(httpClient: HttpClient, id: int): (Option[QueueResponse], Response) =
-  ## Setup VNC
+  ## Configure the source IP allowed to reach a QuickServer's VNC console
 
   let response = httpClient.post(basepath & fmt"/qs/{id}/setup_vnc")
   constructResult[QueueResponse](response)
 
 
 proc postQsTrafficUsage*(httpClient: HttpClient, id: int): Response =
-  ## Search Traffic Usage
+  ## Query QuickServer bandwidth usage via POST (filtered variant)
   httpClient.post(basepath & fmt"/qs/{id}/traffic_usage")
 
 
 
 proc postQsViewDesktop*(httpClient: HttpClient, id: int): Response =
-  ## Update View Desktop
+  ## Submit changes and re-fetch the QuickServer dashboard view payload
   httpClient.post(basepath & fmt"/qs/{id}/view_desktop")
 
 
 
 proc postQuickServerRestore*(httpClient: HttpClient, id: int, restoreRequest: RestoreRequest): (Option[QueueResponse], Response) =
-  ## Restore QuickServer from Backup
+  ## Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/qs/{id}/restore", $(%restoreRequest))
   constructResult[QueueResponse](response)
 
 
-proc putQs*(httpClient: HttpClient): Response =
-  ## Validate QuickServer Order
-  httpClient.put(basepath & "/qs/order")
+proc putQs*(httpClient: HttpClient, qsOrderRequest: QsOrderRequest): Response =
+  ## Validate a QuickServer order without charging or provisioning
+  httpClient.headers["Content-Type"] = "application/json"
+  httpClient.put(basepath & "/qs/order", $(%qsOrderRequest))
 
 
 
 proc quickserversCancel*(httpClient: HttpClient, id: int): (Option[quickserversCancel_200_response], Response) =
-  ## Cancel QuickServer Order
+  ## Cancel a QuickServer service at the end of the current billing cycle
 
   let response = httpClient.delete(basepath & fmt"/qs/{id}")
   constructResult[quickserversCancel_200_response](response)
 
 
 proc updateQsInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Update QuickServer Order
+  ## Update QuickServer order metadata or stored settings without OS impact
 
   let response = httpClient.post(basepath & fmt"/qs/{id}")
   constructResult[SuccessTextResponse](response)

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.domain_prov_process_pending import DomainProvProcessPending
+from interserver_api_client.models.domain_prov_process_pending import DomainProvProcessPending
 
 # TODO update the JSON string below
 json = "{}"

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.SearchAutocompleteResponse();
+    instance = new InterserverApiClient.SearchAutocompleteResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('SearchAutocompleteResponse', function() {
     it('should create an instance of SearchAutocompleteResponse', function() {
       // uncomment below and update the code to test SearchAutocompleteResponse
-      //var instance = new InterServerManagementApi.SearchAutocompleteResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.SearchAutocompleteResponse);
+      //var instance = new InterserverApiClient.SearchAutocompleteResponse();
+      //expect(instance).to.be.a(InterserverApiClient.SearchAutocompleteResponse);
     });
 
   });

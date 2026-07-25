@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailSchema = Initialize-PSOpenAPIToolsMailSchema  -ServiceInfo null `
+$MailSchema = Initialize-InterserverApiMailSchema  -ServiceInfo null `
  -ClientLinks null `
  -BillingDetails null `
  -CustCurrency USD `

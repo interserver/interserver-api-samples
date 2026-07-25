@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.CreateGeoFirewallRule();
+    instance = new InterserverApiClient.CreateGeoFirewallRule();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('CreateGeoFirewallRule', function() {
     it('should create an instance of CreateGeoFirewallRule', function() {
       // uncomment below and update the code to test CreateGeoFirewallRule
-      //var instance = new InterServerManagementApi.CreateGeoFirewallRule();
-      //expect(instance).to.be.a(InterServerManagementApi.CreateGeoFirewallRule);
+      //var instance = new InterserverApiClient.CreateGeoFirewallRule();
+      //expect(instance).to.be.a(InterserverApiClient.CreateGeoFirewallRule);
     });
 
     it('should have the property xdp_action (base name: "xdp_action")', function() {
       // uncomment below and update the code to test the property xdp_action
-      //var instance = new InterServerManagementApi.CreateGeoFirewallRule();
+      //var instance = new InterserverApiClient.CreateGeoFirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property destination_port (base name: "destination_port")', function() {
       // uncomment below and update the code to test the property destination_port
-      //var instance = new InterServerManagementApi.CreateGeoFirewallRule();
+      //var instance = new InterserverApiClient.CreateGeoFirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property country_code (base name: "country_code")', function() {
       // uncomment below and update the code to test the property country_code
-      //var instance = new InterServerManagementApi.CreateGeoFirewallRule();
+      //var instance = new InterserverApiClient.CreateGeoFirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property asn (base name: "asn")', function() {
       // uncomment below and update the code to test the property asn
-      //var instance = new InterServerManagementApi.CreateGeoFirewallRule();
+      //var instance = new InterserverApiClient.CreateGeoFirewallRule();
       //expect(instance).to.be();
     });
 

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::GetAccountInfo401Response');
+use_ok('InterServerAPI::Object::GetAccountInfo401Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::GetAccountInfo401Response->new();
+#my $instance = InterServerAPI::Object::GetAccountInfo401Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::GetAccountInfo401Response');
+#isa_ok($instance, 'InterServerAPI::Object::GetAccountInfo401Response');
 
 
 done_testing();

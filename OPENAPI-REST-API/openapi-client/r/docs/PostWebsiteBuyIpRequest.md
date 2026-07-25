@@ -1,4 +1,4 @@
-# openapi::PostWebsiteBuyIpRequest
+# interserverapi::PostWebsiteBuyIpRequest
 
 
 ## Properties

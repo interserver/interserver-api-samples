@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ScrubIpsRowSchema model module.
  * @module model/ScrubIpsRowSchema
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ScrubIpsRowSchema {
     /**

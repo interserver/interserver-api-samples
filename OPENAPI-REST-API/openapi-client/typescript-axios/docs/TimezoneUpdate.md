@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TimezoneUpdate } from './api';
+import { TimezoneUpdate } from '@interserver/myadmin-client';
 
 const instance: TimezoneUpdate = {
     timezone,

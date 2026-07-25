@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsSnapshot = Initialize-PSOpenAPIToolsVpsSnapshot  -Name null `
+$VpsSnapshot = Initialize-InterserverApiVpsSnapshot  -Name null `
  -Used null `
  -Date null
 ```

@@ -12,6 +12,31 @@
 package org.openapitools.client.model
 
 
-case class VPSTrafficDataDataSectionResponseInner(
-)
+sealed trait VPSTrafficDataDataSectionResponseInner
 
+object VPSTrafficDataDataSectionResponseInner {
+
+  import org.json4s._
+
+  // oneOf without discriminator - json4s custom serializer
+  implicit object VPSTrafficDataDataSectionResponseInnerSerializer extends Serializer[VPSTrafficDataDataSectionResponseInner] {
+    def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), VPSTrafficDataDataSectionResponseInner] = {
+      case (TypeInfo(clazz, _), json) if classOf[VPSTrafficDataDataSectionResponseInner].isAssignableFrom(clazz) =>
+        // Try each oneOf type in order
+        Extraction.extract[Int](json) match {
+          case x: Int => return x
+          case _ => // continue
+        }
+        Extraction.extract[OffsetDateTime](json) match {
+          case x: OffsetDateTime => return x
+          case _ => // continue
+        }
+        throw new MappingException(s"Can't convert $json to VPSTrafficDataDataSectionResponseInner")
+    }
+
+    def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+      case x: Int => Extraction.decompose(x)
+      case x: OffsetDateTime => Extraction.decompose(x)
+    }
+  }
+}

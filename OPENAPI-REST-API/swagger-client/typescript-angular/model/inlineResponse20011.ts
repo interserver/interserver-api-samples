@@ -11,9 +11,6 @@
  */
 
 export interface InlineResponse20011 { 
-    text?: string;
-    /**
-     * A pre-signed download URL valid for 24 hours.
-     */
-    url?: string;
+    success: boolean;
+    text: string;
 }

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AccountInfoMaxMindResponseRiskScore
+# InterServerAPI::Object::AccountInfoMaxMindResponseRiskScore
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AccountInfoMaxMindResponseRiskScore;
+use InterServerAPI::Object::AccountInfoMaxMindResponseRiskScore;
 ```
 
 ## Properties

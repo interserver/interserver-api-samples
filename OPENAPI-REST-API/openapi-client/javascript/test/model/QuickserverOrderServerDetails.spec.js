@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QuickserverOrderServerDetails();
+    instance = new InterserverApiClient.QuickserverOrderServerDetails();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('QuickserverOrderServerDetails', function() {
     it('should create an instance of QuickserverOrderServerDetails', function() {
       // uncomment below and update the code to test QuickserverOrderServerDetails
-      //var instance = new InterServerManagementApi.QuickserverOrderServerDetails();
-      //expect(instance).to.be.a(InterServerManagementApi.QuickserverOrderServerDetails);
+      //var instance = new InterserverApiClient.QuickserverOrderServerDetails();
+      //expect(instance).to.be.a(InterserverApiClient.QuickserverOrderServerDetails);
     });
 
     it('should have the property _381 (base name: "381")', function() {
       // uncomment below and update the code to test the property _381
-      //var instance = new InterServerManagementApi.QuickserverOrderServerDetails();
+      //var instance = new InterserverApiClient.QuickserverOrderServerDetails();
       //expect(instance).to.be();
     });
 

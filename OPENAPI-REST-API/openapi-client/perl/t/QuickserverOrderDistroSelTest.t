@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::QuickserverOrderDistroSel');
+use_ok('InterServerAPI::Object::QuickserverOrderDistroSel');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::QuickserverOrderDistroSel->new();
+#my $instance = InterServerAPI::Object::QuickserverOrderDistroSel->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::QuickserverOrderDistroSel');
+#isa_ok($instance, 'InterServerAPI::Object::QuickserverOrderDistroSel');
 
 
 done_testing();

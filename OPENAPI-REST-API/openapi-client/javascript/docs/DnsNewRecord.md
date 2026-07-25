@@ -1,4 +1,4 @@
-# InterServerManagementApi.DnsNewRecord
+# InterserverApiClient.DnsNewRecord
 
 ## Properties
 

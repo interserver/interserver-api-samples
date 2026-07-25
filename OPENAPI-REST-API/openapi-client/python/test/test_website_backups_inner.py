@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.website_backups_inner import WebsiteBackupsInner
+from interserver_api_client.models.website_backups_inner import WebsiteBackupsInner
 
 class TestWebsiteBackupsInner(unittest.TestCase):
     """WebsiteBackupsInner unit test stubs"""

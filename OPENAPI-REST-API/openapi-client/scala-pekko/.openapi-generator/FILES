@@ -1,4 +1,5 @@
 .openapi-generator-ignore
+.scalafmt.conf
 README.md
 build.sbt
 docs/AccountApi.md
@@ -26,8 +27,6 @@ docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
 docs/AffiliateTrafficRow.md
-docs/AssetServer.md
-docs/AssetServerCPUInner.md
 docs/Backup.md
 docs/BackupBillingDetails.md
 docs/BackupClientLink.md
@@ -46,7 +45,6 @@ docs/BackupsApi.md
 docs/BackupsOrder.md
 docs/BackupsOrderPackageCosts.md
 docs/BackupsOrderServiceTypes.md
-docs/Bandwidth.md
 docs/BillingAddCcRequest.md
 docs/BillingApi.md
 docs/BillingInvoiceDetail.md
@@ -73,11 +71,6 @@ docs/ChargeInvoiceRowsInvoicesValue.md
 docs/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.md
 docs/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.md
 docs/CloseTicketResponseSchema.md
-docs/ConfigIds.md
-docs/ConfigLists.md
-docs/ControlPanel.md
-docs/Cpu.md
-docs/CpuWithDefaults.md
 docs/CreateFilter.md
 docs/CreateFilter201Response.md
 docs/CreateFilter400Response.md
@@ -94,6 +87,7 @@ docs/DeleteFilter400Response.md
 docs/DeleteFilter500Response.md
 docs/DeleteFirewallRule.md
 docs/DeleteGeoFirewallRule.md
+docs/DeleteMailAlertRequest.md
 docs/DenyRuleNew.md
 docs/DenyRuleRecord.md
 docs/DisableScrub200Response.md
@@ -124,11 +118,11 @@ docs/DomainNameserverGetResponseInner.md
 docs/DomainNameserverPostRequest.md
 docs/DomainNameserverPutRequest.md
 docs/DomainOrder.md
+docs/DomainOrderRequest.md
 docs/DomainOrderResponse.md
 docs/DomainOrderResponseAttributes.md
 docs/DomainOrderServices.md
 docs/DomainOrderServices10001.md
-docs/DomainOrderTldServices.md
 docs/DomainOwnerContact.md
 docs/DomainProvProcessPending.md
 docs/DomainProvProcessPendingAttributes.md
@@ -145,13 +139,14 @@ docs/EmailAddress.md
 docs/EmailAddressName.md
 docs/EnableScrub200Response.md
 docs/EnableScrub500Response.md
-docs/FieldLabel.md
 docs/FloatingIPsApi.md
+docs/FloatingIpOrderRequest.md
 docs/FloatingIpsCancel200Response.md
-docs/FormValues.md
 docs/GenericResponse.md
 docs/GetAccountInfo401Response.md
+docs/GetAccountLocales200ResponseValue.md
 docs/GetAccountTfaSetup200Response.md
+docs/GetAffiliateSignups200Response.md
 docs/GetOauthRedirect200Response.md
 docs/GetOrderDetail200Response.md
 docs/GetOrderDetail200ResponseIpsInner.md
@@ -168,7 +163,6 @@ docs/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.md
 docs/GetScrubIpDetails200ResponseFilterFirewallRulesInner.md
 docs/GetScrubIpDetails200ResponseServiceInfo.md
 docs/GetWebsiteBuyIp200Response.md
-docs/HardDrive.md
 docs/Home.md
 docs/HomeDetails.md
 docs/HomeDetailsModules.md
@@ -195,10 +189,6 @@ docs/HomeTicketStatus.md
 docs/HomeTicketStatusView.md
 docs/HostnameObject.md
 docs/InitiatePayment200Response.md
-docs/InlineObject.md
-docs/Invoice.md
-docs/InvoiceRow.md
-docs/IpBlock.md
 docs/IpLimitRange.md
 docs/IpObject.md
 docs/License.md
@@ -207,6 +197,7 @@ docs/LicenseClientLink.md
 docs/LicenseExtraInfoTables.md
 docs/LicenseIpInfo.md
 docs/LicenseIpInfoRow.md
+docs/LicenseOrderRequest.md
 docs/LicenseRow.md
 docs/LicenseServiceInfo.md
 docs/LicenseServiceType.md
@@ -245,6 +236,7 @@ docs/MailExtraInfoTableRow.md
 docs/MailLog.md
 docs/MailLogEntry.md
 docs/MailOrder.md
+docs/MailOrderRequest.md
 docs/MailRow.md
 docs/MailSchema.md
 docs/MailSchemaExtraInfoTables.md
@@ -257,15 +249,13 @@ docs/MailStatsTypeVolumeIp.md
 docs/MailStatsTypeVolumeTo.md
 docs/MailTutorialsTable.md
 docs/MailTutorialsTableRow.md
-docs/MemoryOption.md
 docs/ModuleSettings.md
 docs/Modules.md
 docs/MonthlyCounts.md
-docs/OperatingSystem.md
 docs/PasswordRequest.md
+docs/PatchBillingCreditCardVerifyRequest.md
 docs/PatchOauthTwoFactor200Response.md
 docs/PatchOauthTwoFactorRequest.md
-docs/PaymentInvoiceRows.md
 docs/PlaceBuyNowServerRequest.md
 docs/PlaceScrubOrder201Response.md
 docs/PlaceScrubOrder201ResponseOrderDetails.md
@@ -277,6 +267,8 @@ docs/PostWebsiteBuyIpRequest.md
 docs/PostWebsiteMigration200Response.md
 docs/PostWebsiteMigrationRequest.md
 docs/PublicApi.md
+docs/PutScrubIps200Response.md
+docs/QsOrderRequest.md
 docs/QueueResponse.md
 docs/QuickServersApi.md
 docs/Quickserver.md
@@ -301,8 +293,6 @@ docs/QuickserverServiceExtra.md
 docs/QuickserverServiceInfo.md
 docs/QuickserverServiceMaster.md
 docs/QuickserversCancel200Response.md
-docs/RaidOption.md
-docs/Region.md
 docs/ReplyTicketRequest.md
 docs/ReplyTicketResponseSchema.md
 docs/RestoreRequest.md
@@ -324,6 +314,8 @@ docs/Server.md
 docs/ServerAsset.md
 docs/ServerAssets.md
 docs/ServerBillingDetails.md
+docs/ServerBulkIpmiPowerResponse.md
+docs/ServerBulkIpmiPowerResponseResultsInner.md
 docs/ServerClientLink.md
 docs/ServerExtraInfoTables.md
 docs/ServerIpmiLiveInfo.md
@@ -346,7 +338,6 @@ docs/ServerOrderCpuLi.md
 docs/ServerOrderFieldLabel.md
 docs/ServerOrderFieldLabels.md
 docs/ServerOrderFormValues.md
-docs/ServerOrderGetResponse.md
 docs/ServerOrderIP.md
 docs/ServerOrderIpsLi.md
 docs/ServerOrderMemory.md
@@ -354,6 +345,8 @@ docs/ServerOrderMemoryLi.md
 docs/ServerOrderMemoryLi254.md
 docs/ServerOrderOS.md
 docs/ServerOrderOsLi.md
+docs/ServerOrderPostRequest.md
+docs/ServerOrderPostRequestHd.md
 docs/ServerOrderRAID.md
 docs/ServerRow.md
 docs/ServerServiceInfo.md
@@ -372,6 +365,7 @@ docs/ServiceTypes.md
 docs/Services.md
 docs/ServicesInfo.md
 docs/SslCancel200Response.md
+docs/SslOrderRequest.md
 docs/StatusMonthlyBreakdown.md
 docs/SuccessTextResponse.md
 docs/TemplateRequest.md
@@ -434,7 +428,6 @@ docs/VpsServiceMaster.md
 docs/VpsSnapshot.md
 docs/VpsTemplateRow.md
 docs/VpsTemplatesList.md
-docs/VpsTrafficDataDataResponse.md
 docs/VpsTrafficDataSectionResponse.md
 docs/VpsTrafficHistoryResponse.md
 docs/VpsTrafficHistorySectionDataResponse.md
@@ -454,6 +447,8 @@ docs/WebsiteBillingDetails.md
 docs/WebsiteClientLink.md
 docs/WebsiteExtraInfoTables.md
 docs/WebsiteLoginResponse.md
+docs/WebsiteOrderPostRequest.md
+docs/WebsiteOrderPutRequest.md
 docs/WebsiteRow.md
 docs/WebsiteServiceInfo.md
 docs/WebsiteServiceMaster.md
@@ -471,6 +466,7 @@ docs/WebsitesOrderServiceOffers.md
 docs/WebsitesOrderServiceTypes.md
 pom.xml
 project/build.properties
+project/plugins.sbt
 src/main/resources/reference.conf
 src/main/scala/org/openapitools/client/api/AccountApi.scala
 src/main/scala/org/openapitools/client/api/BackupsApi.scala
@@ -518,8 +514,6 @@ src/main/scala/org/openapitools/client/model/AffiliateBannerRow.scala
 src/main/scala/org/openapitools/client/model/AffiliateDockSetup.scala
 src/main/scala/org/openapitools/client/model/AffiliatePaymentSetup.scala
 src/main/scala/org/openapitools/client/model/AffiliateTrafficRow.scala
-src/main/scala/org/openapitools/client/model/AssetServer.scala
-src/main/scala/org/openapitools/client/model/AssetServerCPUInner.scala
 src/main/scala/org/openapitools/client/model/Backup.scala
 src/main/scala/org/openapitools/client/model/BackupBillingDetails.scala
 src/main/scala/org/openapitools/client/model/BackupClientLink.scala
@@ -537,7 +531,6 @@ src/main/scala/org/openapitools/client/model/BackupServiceMaster.scala
 src/main/scala/org/openapitools/client/model/BackupsOrder.scala
 src/main/scala/org/openapitools/client/model/BackupsOrderPackageCosts.scala
 src/main/scala/org/openapitools/client/model/BackupsOrderServiceTypes.scala
-src/main/scala/org/openapitools/client/model/Bandwidth.scala
 src/main/scala/org/openapitools/client/model/BillingAddCcRequest.scala
 src/main/scala/org/openapitools/client/model/BillingInvoiceDetail.scala
 src/main/scala/org/openapitools/client/model/BillingInvoiceList.scala
@@ -563,11 +556,6 @@ src/main/scala/org/openapitools/client/model/ChargeInvoiceRowsInvoicesValue.scal
 src/main/scala/org/openapitools/client/model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.scala
 src/main/scala/org/openapitools/client/model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.scala
 src/main/scala/org/openapitools/client/model/CloseTicketResponseSchema.scala
-src/main/scala/org/openapitools/client/model/ConfigIds.scala
-src/main/scala/org/openapitools/client/model/ConfigLists.scala
-src/main/scala/org/openapitools/client/model/ControlPanel.scala
-src/main/scala/org/openapitools/client/model/Cpu.scala
-src/main/scala/org/openapitools/client/model/CpuWithDefaults.scala
 src/main/scala/org/openapitools/client/model/CreateFilter.scala
 src/main/scala/org/openapitools/client/model/CreateFilter201Response.scala
 src/main/scala/org/openapitools/client/model/CreateFilter400Response.scala
@@ -583,6 +571,7 @@ src/main/scala/org/openapitools/client/model/DeleteFilter400Response.scala
 src/main/scala/org/openapitools/client/model/DeleteFilter500Response.scala
 src/main/scala/org/openapitools/client/model/DeleteFirewallRule.scala
 src/main/scala/org/openapitools/client/model/DeleteGeoFirewallRule.scala
+src/main/scala/org/openapitools/client/model/DeleteMailAlertRequest.scala
 src/main/scala/org/openapitools/client/model/DenyRuleNew.scala
 src/main/scala/org/openapitools/client/model/DenyRuleRecord.scala
 src/main/scala/org/openapitools/client/model/DisableScrub200Response.scala
@@ -613,11 +602,11 @@ src/main/scala/org/openapitools/client/model/DomainNameserverGetResponseInner.sc
 src/main/scala/org/openapitools/client/model/DomainNameserverPostRequest.scala
 src/main/scala/org/openapitools/client/model/DomainNameserverPutRequest.scala
 src/main/scala/org/openapitools/client/model/DomainOrder.scala
+src/main/scala/org/openapitools/client/model/DomainOrderRequest.scala
 src/main/scala/org/openapitools/client/model/DomainOrderResponse.scala
 src/main/scala/org/openapitools/client/model/DomainOrderResponseAttributes.scala
 src/main/scala/org/openapitools/client/model/DomainOrderServices.scala
 src/main/scala/org/openapitools/client/model/DomainOrderServices10001.scala
-src/main/scala/org/openapitools/client/model/DomainOrderTldServices.scala
 src/main/scala/org/openapitools/client/model/DomainOwnerContact.scala
 src/main/scala/org/openapitools/client/model/DomainProvProcessPending.scala
 src/main/scala/org/openapitools/client/model/DomainProvProcessPendingAttributes.scala
@@ -633,12 +622,13 @@ src/main/scala/org/openapitools/client/model/EmailAddress.scala
 src/main/scala/org/openapitools/client/model/EmailAddressName.scala
 src/main/scala/org/openapitools/client/model/EnableScrub200Response.scala
 src/main/scala/org/openapitools/client/model/EnableScrub500Response.scala
-src/main/scala/org/openapitools/client/model/FieldLabel.scala
+src/main/scala/org/openapitools/client/model/FloatingIpOrderRequest.scala
 src/main/scala/org/openapitools/client/model/FloatingIpsCancel200Response.scala
-src/main/scala/org/openapitools/client/model/FormValues.scala
 src/main/scala/org/openapitools/client/model/GenericResponse.scala
 src/main/scala/org/openapitools/client/model/GetAccountInfo401Response.scala
+src/main/scala/org/openapitools/client/model/GetAccountLocales200ResponseValue.scala
 src/main/scala/org/openapitools/client/model/GetAccountTfaSetup200Response.scala
+src/main/scala/org/openapitools/client/model/GetAffiliateSignups200Response.scala
 src/main/scala/org/openapitools/client/model/GetOauthRedirect200Response.scala
 src/main/scala/org/openapitools/client/model/GetOrderDetail200Response.scala
 src/main/scala/org/openapitools/client/model/GetOrderDetail200ResponseIpsInner.scala
@@ -655,7 +645,6 @@ src/main/scala/org/openapitools/client/model/GetScrubIpDetails200ResponseFilterF
 src/main/scala/org/openapitools/client/model/GetScrubIpDetails200ResponseFilterFirewallRulesInner.scala
 src/main/scala/org/openapitools/client/model/GetScrubIpDetails200ResponseServiceInfo.scala
 src/main/scala/org/openapitools/client/model/GetWebsiteBuyIp200Response.scala
-src/main/scala/org/openapitools/client/model/HardDrive.scala
 src/main/scala/org/openapitools/client/model/Home.scala
 src/main/scala/org/openapitools/client/model/HomeDetails.scala
 src/main/scala/org/openapitools/client/model/HomeDetailsModules.scala
@@ -682,10 +671,6 @@ src/main/scala/org/openapitools/client/model/HomeTicketStatus.scala
 src/main/scala/org/openapitools/client/model/HomeTicketStatusView.scala
 src/main/scala/org/openapitools/client/model/HostnameObject.scala
 src/main/scala/org/openapitools/client/model/InitiatePayment200Response.scala
-src/main/scala/org/openapitools/client/model/InlineObject.scala
-src/main/scala/org/openapitools/client/model/Invoice.scala
-src/main/scala/org/openapitools/client/model/InvoiceRow.scala
-src/main/scala/org/openapitools/client/model/IpBlock.scala
 src/main/scala/org/openapitools/client/model/IpLimitRange.scala
 src/main/scala/org/openapitools/client/model/IpObject.scala
 src/main/scala/org/openapitools/client/model/License.scala
@@ -694,6 +679,7 @@ src/main/scala/org/openapitools/client/model/LicenseClientLink.scala
 src/main/scala/org/openapitools/client/model/LicenseExtraInfoTables.scala
 src/main/scala/org/openapitools/client/model/LicenseIpInfo.scala
 src/main/scala/org/openapitools/client/model/LicenseIpInfoRow.scala
+src/main/scala/org/openapitools/client/model/LicenseOrderRequest.scala
 src/main/scala/org/openapitools/client/model/LicenseRow.scala
 src/main/scala/org/openapitools/client/model/LicenseServiceInfo.scala
 src/main/scala/org/openapitools/client/model/LicenseServiceType.scala
@@ -730,6 +716,7 @@ src/main/scala/org/openapitools/client/model/MailExtraInfoTableRow.scala
 src/main/scala/org/openapitools/client/model/MailLog.scala
 src/main/scala/org/openapitools/client/model/MailLogEntry.scala
 src/main/scala/org/openapitools/client/model/MailOrder.scala
+src/main/scala/org/openapitools/client/model/MailOrderRequest.scala
 src/main/scala/org/openapitools/client/model/MailRow.scala
 src/main/scala/org/openapitools/client/model/MailSchema.scala
 src/main/scala/org/openapitools/client/model/MailSchemaExtraInfoTables.scala
@@ -742,15 +729,13 @@ src/main/scala/org/openapitools/client/model/MailStatsTypeVolumeIp.scala
 src/main/scala/org/openapitools/client/model/MailStatsTypeVolumeTo.scala
 src/main/scala/org/openapitools/client/model/MailTutorialsTable.scala
 src/main/scala/org/openapitools/client/model/MailTutorialsTableRow.scala
-src/main/scala/org/openapitools/client/model/MemoryOption.scala
 src/main/scala/org/openapitools/client/model/ModuleSettings.scala
 src/main/scala/org/openapitools/client/model/Modules.scala
 src/main/scala/org/openapitools/client/model/MonthlyCounts.scala
-src/main/scala/org/openapitools/client/model/OperatingSystem.scala
 src/main/scala/org/openapitools/client/model/PasswordRequest.scala
+src/main/scala/org/openapitools/client/model/PatchBillingCreditCardVerifyRequest.scala
 src/main/scala/org/openapitools/client/model/PatchOauthTwoFactor200Response.scala
 src/main/scala/org/openapitools/client/model/PatchOauthTwoFactorRequest.scala
-src/main/scala/org/openapitools/client/model/PaymentInvoiceRows.scala
 src/main/scala/org/openapitools/client/model/PlaceBuyNowServerRequest.scala
 src/main/scala/org/openapitools/client/model/PlaceScrubOrder201Response.scala
 src/main/scala/org/openapitools/client/model/PlaceScrubOrder201ResponseOrderDetails.scala
@@ -761,6 +746,8 @@ src/main/scala/org/openapitools/client/model/PostWebsiteBuyIp200Response.scala
 src/main/scala/org/openapitools/client/model/PostWebsiteBuyIpRequest.scala
 src/main/scala/org/openapitools/client/model/PostWebsiteMigration200Response.scala
 src/main/scala/org/openapitools/client/model/PostWebsiteMigrationRequest.scala
+src/main/scala/org/openapitools/client/model/PutScrubIps200Response.scala
+src/main/scala/org/openapitools/client/model/QsOrderRequest.scala
 src/main/scala/org/openapitools/client/model/QueueResponse.scala
 src/main/scala/org/openapitools/client/model/Quickserver.scala
 src/main/scala/org/openapitools/client/model/QuickserverAddons.scala
@@ -784,8 +771,6 @@ src/main/scala/org/openapitools/client/model/QuickserverServiceExtra.scala
 src/main/scala/org/openapitools/client/model/QuickserverServiceInfo.scala
 src/main/scala/org/openapitools/client/model/QuickserverServiceMaster.scala
 src/main/scala/org/openapitools/client/model/QuickserversCancel200Response.scala
-src/main/scala/org/openapitools/client/model/RaidOption.scala
-src/main/scala/org/openapitools/client/model/Region.scala
 src/main/scala/org/openapitools/client/model/ReplyTicketRequest.scala
 src/main/scala/org/openapitools/client/model/ReplyTicketResponseSchema.scala
 src/main/scala/org/openapitools/client/model/RestoreRequest.scala
@@ -805,6 +790,8 @@ src/main/scala/org/openapitools/client/model/Server.scala
 src/main/scala/org/openapitools/client/model/ServerAsset.scala
 src/main/scala/org/openapitools/client/model/ServerAssets.scala
 src/main/scala/org/openapitools/client/model/ServerBillingDetails.scala
+src/main/scala/org/openapitools/client/model/ServerBulkIpmiPowerResponse.scala
+src/main/scala/org/openapitools/client/model/ServerBulkIpmiPowerResponseResultsInner.scala
 src/main/scala/org/openapitools/client/model/ServerClientLink.scala
 src/main/scala/org/openapitools/client/model/ServerExtraInfoTables.scala
 src/main/scala/org/openapitools/client/model/ServerIpmiLiveInfo.scala
@@ -827,7 +814,6 @@ src/main/scala/org/openapitools/client/model/ServerOrderCpuLi.scala
 src/main/scala/org/openapitools/client/model/ServerOrderFieldLabel.scala
 src/main/scala/org/openapitools/client/model/ServerOrderFieldLabels.scala
 src/main/scala/org/openapitools/client/model/ServerOrderFormValues.scala
-src/main/scala/org/openapitools/client/model/ServerOrderGetResponse.scala
 src/main/scala/org/openapitools/client/model/ServerOrderIP.scala
 src/main/scala/org/openapitools/client/model/ServerOrderIpsLi.scala
 src/main/scala/org/openapitools/client/model/ServerOrderMemory.scala
@@ -835,6 +821,8 @@ src/main/scala/org/openapitools/client/model/ServerOrderMemoryLi.scala
 src/main/scala/org/openapitools/client/model/ServerOrderMemoryLi254.scala
 src/main/scala/org/openapitools/client/model/ServerOrderOS.scala
 src/main/scala/org/openapitools/client/model/ServerOrderOsLi.scala
+src/main/scala/org/openapitools/client/model/ServerOrderPostRequest.scala
+src/main/scala/org/openapitools/client/model/ServerOrderPostRequestHd.scala
 src/main/scala/org/openapitools/client/model/ServerOrderRAID.scala
 src/main/scala/org/openapitools/client/model/ServerRow.scala
 src/main/scala/org/openapitools/client/model/ServerServiceInfo.scala
@@ -852,6 +840,7 @@ src/main/scala/org/openapitools/client/model/ServiceTypes.scala
 src/main/scala/org/openapitools/client/model/Services.scala
 src/main/scala/org/openapitools/client/model/ServicesInfo.scala
 src/main/scala/org/openapitools/client/model/SslCancel200Response.scala
+src/main/scala/org/openapitools/client/model/SslOrderRequest.scala
 src/main/scala/org/openapitools/client/model/StatusMonthlyBreakdown.scala
 src/main/scala/org/openapitools/client/model/SuccessTextResponse.scala
 src/main/scala/org/openapitools/client/model/TemplateRequest.scala
@@ -912,7 +901,6 @@ src/main/scala/org/openapitools/client/model/VpsServiceMaster.scala
 src/main/scala/org/openapitools/client/model/VpsSnapshot.scala
 src/main/scala/org/openapitools/client/model/VpsTemplateRow.scala
 src/main/scala/org/openapitools/client/model/VpsTemplatesList.scala
-src/main/scala/org/openapitools/client/model/VpsTrafficDataDataResponse.scala
 src/main/scala/org/openapitools/client/model/VpsTrafficDataSectionResponse.scala
 src/main/scala/org/openapitools/client/model/VpsTrafficHistoryResponse.scala
 src/main/scala/org/openapitools/client/model/VpsTrafficHistorySectionDataResponse.scala
@@ -931,6 +919,8 @@ src/main/scala/org/openapitools/client/model/WebsiteBillingDetails.scala
 src/main/scala/org/openapitools/client/model/WebsiteClientLink.scala
 src/main/scala/org/openapitools/client/model/WebsiteExtraInfoTables.scala
 src/main/scala/org/openapitools/client/model/WebsiteLoginResponse.scala
+src/main/scala/org/openapitools/client/model/WebsiteOrderPostRequest.scala
+src/main/scala/org/openapitools/client/model/WebsiteOrderPutRequest.scala
 src/main/scala/org/openapitools/client/model/WebsiteRow.scala
 src/main/scala/org/openapitools/client/model/WebsiteServiceInfo.scala
 src/main/scala/org/openapitools/client/model/WebsiteServiceMaster.scala

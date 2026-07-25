@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsCPData
+# InterserverApiClient.VpsCPData
 
 ## Properties
 

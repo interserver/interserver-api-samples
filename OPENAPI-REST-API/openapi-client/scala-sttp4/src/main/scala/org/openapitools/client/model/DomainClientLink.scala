@@ -22,4 +22,3 @@ case class DomainClientLink(
   icon_text: Option[String] = None,
   help_text: Option[String] = None
 )
-

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server import Server
+from interserver_api_client.models.server import Server
 
 class TestServer(unittest.TestCase):
     """Server unit test stubs"""
@@ -38,14 +38,14 @@ class TestServer(unittest.TestCase):
             return Server(
                 ipmi_auth = True,
                 client_links = [
-                    openapi_client.models.server_client_link.ServerClientLink(
+                    interserver_api_client.models.server_client_link.ServerClientLink(
                         label = '', 
                         link = '', 
                         icon = '', 
                         icon_text = '', 
                         help_text = '', )
                     ],
-                billing_details = openapi_client.models.server_billing_details.ServerBillingDetails(
+                billing_details = interserver_api_client.models.server_billing_details.ServerBillingDetails(
                     service_last_invoice_date = '', 
                     service_payment_status = '', 
                     service_frequency = '', 
@@ -64,19 +64,19 @@ class TestServer(unittest.TestCase):
                 service_extra = [
                     ''
                     ],
-                locations = openapi_client.models.server_locations.Server_locations(
-                    1 = openapi_client.models.server_location1.ServerLocation1(
+                locations = interserver_api_client.models.server_locations.Server_locations(
+                    1 = interserver_api_client.models.server_location1.ServerLocation1(
                         location_id = 56, 
                         location_name = '', 
                         location_description = '', 
                         location_lat = '', 
                         location_long = '', 
                         location_ipmi_group = 56, ), ),
-                network_info = openapi_client.models.server_network_info.ServerNetworkInfo(
+                network_info = interserver_api_client.models.server_network_info.ServerNetworkInfo(
                     vlans = [], 
                     vlans6 = [], 
-                    assets = openapi_client.models.server_network_info_assets.ServerNetworkInfo_assets(
-                        3497 = openapi_client.models.server_asset.ServerAsset(
+                    assets = interserver_api_client.models.server_network_info_assets.ServerNetworkInfo_assets(
+                        3497 = interserver_api_client.models.server_asset.ServerAsset(
                             id = 3497, 
                             order_id = '16058', 
                             hostname = 'myserver.host.com', 
@@ -124,12 +124,12 @@ class TestServer(unittest.TestCase):
                             switchports = [10414], 
                             vlans = [], 
                             vlans6 = [], 
-                            lease = openapi_client.models.server_lease.ServerLease(
+                            lease = interserver_api_client.models.server_lease.ServerLease(
                                 mac = '0c:c4:7a:af:35:00', 
                                 authenticated = False, 
                                 group = '1', ), ), ), 
-                    switchports = openapi_client.models.server_network_info_switchports.ServerNetworkInfo_switchports(
-                        10414 = openapi_client.models.server_switchport.ServerSwitchport(
+                    switchports = interserver_api_client.models.server_network_info_switchports.ServerNetworkInfo_switchports(
+                        10414 = interserver_api_client.models.server_switchport.ServerSwitchport(
                             switchport_id = 10414, 
                             switch_id = '118', 
                             switch = 'edge1', 
@@ -140,9 +140,9 @@ class TestServer(unittest.TestCase):
                             vlans = [], 
                             vlans6 = [], 
                             asset_id = 3497, ), ), ),
-                extra_info_tables = openapi_client.models.server_extra_info_tables.ServerExtraInfoTables(
+                extra_info_tables = interserver_api_client.models.server_extra_info_tables.ServerExtraInfoTables(
                     assets = {"title":"Assets","size":2,"type":"table","header":["Id","Hostname","Description","Location Name","Rack Name","Status","Primary Ipv4","Comments"],"rows":[["3497","myserver.host.com","CPU:..............2x Intel Xeon E5-2620v4 @2.10GHz\r\nMemory:...........128GB DDR3 1600MHz\r\nHard Drive 1:.....Crucial 500 GB SSD\r\nHard Drive 2:.....Crucial 500 GB SSD\r\nRAID:.............none\r\nOS:...............Ubuntu 20\r\nControl Panel:....none\r\nNetwork...........10G Card\r\nIP(s):............Vlan 3497\r\nBandwidth:........10Tb @ 10gb port","TEB2","112.16","active","1.2.3.250",""]]}, ),
-                service_info = openapi_client.models.server_service_info.ServerServiceInfo(
+                service_info = interserver_api_client.models.server_service_info.ServerServiceInfo(
                     server_id = '16058', 
                     server_hostname = 'myserver.host.com', 
                     server_custid = '771282', 
@@ -184,14 +184,14 @@ class TestServer(unittest.TestCase):
             return Server(
                 ipmi_auth = True,
                 client_links = [
-                    openapi_client.models.server_client_link.ServerClientLink(
+                    interserver_api_client.models.server_client_link.ServerClientLink(
                         label = '', 
                         link = '', 
                         icon = '', 
                         icon_text = '', 
                         help_text = '', )
                     ],
-                billing_details = openapi_client.models.server_billing_details.ServerBillingDetails(
+                billing_details = interserver_api_client.models.server_billing_details.ServerBillingDetails(
                     service_last_invoice_date = '', 
                     service_payment_status = '', 
                     service_frequency = '', 
@@ -210,19 +210,19 @@ class TestServer(unittest.TestCase):
                 service_extra = [
                     ''
                     ],
-                locations = openapi_client.models.server_locations.Server_locations(
-                    1 = openapi_client.models.server_location1.ServerLocation1(
+                locations = interserver_api_client.models.server_locations.Server_locations(
+                    1 = interserver_api_client.models.server_location1.ServerLocation1(
                         location_id = 56, 
                         location_name = '', 
                         location_description = '', 
                         location_lat = '', 
                         location_long = '', 
                         location_ipmi_group = 56, ), ),
-                network_info = openapi_client.models.server_network_info.ServerNetworkInfo(
+                network_info = interserver_api_client.models.server_network_info.ServerNetworkInfo(
                     vlans = [], 
                     vlans6 = [], 
-                    assets = openapi_client.models.server_network_info_assets.ServerNetworkInfo_assets(
-                        3497 = openapi_client.models.server_asset.ServerAsset(
+                    assets = interserver_api_client.models.server_network_info_assets.ServerNetworkInfo_assets(
+                        3497 = interserver_api_client.models.server_asset.ServerAsset(
                             id = 3497, 
                             order_id = '16058', 
                             hostname = 'myserver.host.com', 
@@ -270,12 +270,12 @@ class TestServer(unittest.TestCase):
                             switchports = [10414], 
                             vlans = [], 
                             vlans6 = [], 
-                            lease = openapi_client.models.server_lease.ServerLease(
+                            lease = interserver_api_client.models.server_lease.ServerLease(
                                 mac = '0c:c4:7a:af:35:00', 
                                 authenticated = False, 
                                 group = '1', ), ), ), 
-                    switchports = openapi_client.models.server_network_info_switchports.ServerNetworkInfo_switchports(
-                        10414 = openapi_client.models.server_switchport.ServerSwitchport(
+                    switchports = interserver_api_client.models.server_network_info_switchports.ServerNetworkInfo_switchports(
+                        10414 = interserver_api_client.models.server_switchport.ServerSwitchport(
                             switchport_id = 10414, 
                             switch_id = '118', 
                             switch = 'edge1', 
@@ -286,9 +286,9 @@ class TestServer(unittest.TestCase):
                             vlans = [], 
                             vlans6 = [], 
                             asset_id = 3497, ), ), ),
-                extra_info_tables = openapi_client.models.server_extra_info_tables.ServerExtraInfoTables(
+                extra_info_tables = interserver_api_client.models.server_extra_info_tables.ServerExtraInfoTables(
                     assets = {"title":"Assets","size":2,"type":"table","header":["Id","Hostname","Description","Location Name","Rack Name","Status","Primary Ipv4","Comments"],"rows":[["3497","myserver.host.com","CPU:..............2x Intel Xeon E5-2620v4 @2.10GHz\r\nMemory:...........128GB DDR3 1600MHz\r\nHard Drive 1:.....Crucial 500 GB SSD\r\nHard Drive 2:.....Crucial 500 GB SSD\r\nRAID:.............none\r\nOS:...............Ubuntu 20\r\nControl Panel:....none\r\nNetwork...........10G Card\r\nIP(s):............Vlan 3497\r\nBandwidth:........10Tb @ 10gb port","TEB2","112.16","active","1.2.3.250",""]]}, ),
-                service_info = openapi_client.models.server_service_info.ServerServiceInfo(
+                service_info = interserver_api_client.models.server_service_info.ServerServiceInfo(
                     server_id = '16058', 
                     server_hostname = 'myserver.host.com', 
                     server_custid = '771282', 

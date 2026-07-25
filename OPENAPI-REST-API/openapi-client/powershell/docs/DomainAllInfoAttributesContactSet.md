@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainAllInfoAttributesContactSet = Initialize-PSOpenAPIToolsDomainAllInfoAttributesContactSet  -Owner null `
+$DomainAllInfoAttributesContactSet = Initialize-InterserverApiDomainAllInfoAttributesContactSet  -Owner null `
  -Admin null `
  -Tech null
 ```

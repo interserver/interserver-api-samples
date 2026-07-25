@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_schema import MailSchema
+from interserver_api_client.models.mail_schema import MailSchema
 
 class TestMailSchema(unittest.TestCase):
     """MailSchema unit test stubs"""
@@ -36,7 +36,7 @@ class TestMailSchema(unittest.TestCase):
         model = MailSchema()
         if include_optional:
             return MailSchema(
-                service_info = openapi_client.models.mail_service_info.MailServiceInfo(
+                service_info = interserver_api_client.models.mail_service_info.MailServiceInfo(
                     mail_id = '43171', 
                     mail_username = '', 
                     mail_type = '10880', 
@@ -52,7 +52,7 @@ class TestMailSchema(unittest.TestCase):
                     mail_server_status = '', 
                     mail_comment = '', ),
                 client_links = [
-                    openapi_client.models.mail_client_link.MailClientLink(
+                    interserver_api_client.models.mail_client_link.MailClientLink(
                         label = 'Invoices', 
                         link = 'invoices', 
                         icon = 'fas fa-file-invoice-dollar fa-w-12', 
@@ -60,7 +60,7 @@ class TestMailSchema(unittest.TestCase):
                         help_text = 'Invoice History', 
                         other_attr = '', )
                     ],
-                billing_details = openapi_client.models.mail_billing_details.MailBillingDetails(
+                billing_details = interserver_api_client.models.mail_billing_details.MailBillingDetails(
                     service_last_invoice_date = 'July 16, 2023', 
                     service_payment_status = 'Unpaid', 
                     service_frequency = 'Monthly', 
@@ -75,17 +75,17 @@ class TestMailSchema(unittest.TestCase):
                 cust_currency_symbol = '$',
                 package = 'MailBaby Mail',
                 service_extra = [],
-                extra_info_tables = openapi_client.models.mail_schema_extra_info_tables.MailSchema_extraInfoTables(
-                    mail = openapi_client.models.mail_extra_info_table.MailExtraInfoTable(
+                extra_info_tables = interserver_api_client.models.mail_schema_extra_info_tables.MailSchema_extraInfoTables(
+                    mail = interserver_api_client.models.mail_extra_info_table.MailExtraInfoTable(
                         title = 'Connection Information', 
                         rows = [
-                            openapi_client.models.mail_extra_info_table_row.MailExtraInfoTableRow(
+                            interserver_api_client.models.mail_extra_info_table_row.MailExtraInfoTableRow(
                                 desc = 'SMTP Server', 
                                 value = 'relay.mailbaby.net', )
                             ], ), 
-                    tutorials = openapi_client.models.mail_tutorials_table.MailTutorialsTable(
+                    tutorials = interserver_api_client.models.mail_tutorials_table.MailTutorialsTable(
                         title = 'Tutorials', ), ),
-                service_type = openapi_client.models.mail_service_type.MailServiceType(
+                service_type = interserver_api_client.models.mail_service_type.MailServiceType(
                     services_id = '10880', 
                     services_name = 'MailBaby Mail', 
                     services_cost = '1.00', 
@@ -99,7 +99,7 @@ class TestMailSchema(unittest.TestCase):
             )
         else:
             return MailSchema(
-                service_info = openapi_client.models.mail_service_info.MailServiceInfo(
+                service_info = interserver_api_client.models.mail_service_info.MailServiceInfo(
                     mail_id = '43171', 
                     mail_username = '', 
                     mail_type = '10880', 
@@ -115,7 +115,7 @@ class TestMailSchema(unittest.TestCase):
                     mail_server_status = '', 
                     mail_comment = '', ),
                 client_links = [
-                    openapi_client.models.mail_client_link.MailClientLink(
+                    interserver_api_client.models.mail_client_link.MailClientLink(
                         label = 'Invoices', 
                         link = 'invoices', 
                         icon = 'fas fa-file-invoice-dollar fa-w-12', 
@@ -123,7 +123,7 @@ class TestMailSchema(unittest.TestCase):
                         help_text = 'Invoice History', 
                         other_attr = '', )
                     ],
-                billing_details = openapi_client.models.mail_billing_details.MailBillingDetails(
+                billing_details = interserver_api_client.models.mail_billing_details.MailBillingDetails(
                     service_last_invoice_date = 'July 16, 2023', 
                     service_payment_status = 'Unpaid', 
                     service_frequency = 'Monthly', 
@@ -137,17 +137,17 @@ class TestMailSchema(unittest.TestCase):
                 cust_currency = 'USD',
                 cust_currency_symbol = '$',
                 package = 'MailBaby Mail',
-                extra_info_tables = openapi_client.models.mail_schema_extra_info_tables.MailSchema_extraInfoTables(
-                    mail = openapi_client.models.mail_extra_info_table.MailExtraInfoTable(
+                extra_info_tables = interserver_api_client.models.mail_schema_extra_info_tables.MailSchema_extraInfoTables(
+                    mail = interserver_api_client.models.mail_extra_info_table.MailExtraInfoTable(
                         title = 'Connection Information', 
                         rows = [
-                            openapi_client.models.mail_extra_info_table_row.MailExtraInfoTableRow(
+                            interserver_api_client.models.mail_extra_info_table_row.MailExtraInfoTableRow(
                                 desc = 'SMTP Server', 
                                 value = 'relay.mailbaby.net', )
                             ], ), 
-                    tutorials = openapi_client.models.mail_tutorials_table.MailTutorialsTable(
+                    tutorials = interserver_api_client.models.mail_tutorials_table.MailTutorialsTable(
                         title = 'Tutorials', ), ),
-                service_type = openapi_client.models.mail_service_type.MailServiceType(
+                service_type = interserver_api_client.models.mail_service_type.MailServiceType(
                     services_id = '10880', 
                     services_name = 'MailBaby Mail', 
                     services_cost = '1.00', 

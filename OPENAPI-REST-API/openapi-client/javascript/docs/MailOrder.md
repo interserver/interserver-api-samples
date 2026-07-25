@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailOrder
+# InterserverApiClient.MailOrder
 
 ## Properties
 

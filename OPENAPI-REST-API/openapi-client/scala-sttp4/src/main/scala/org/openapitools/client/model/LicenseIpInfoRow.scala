@@ -21,4 +21,3 @@ case class LicenseIpInfoRow(
   /* Row value */
   value: Option[String] = None
 )
-

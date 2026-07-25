@@ -36,8 +36,6 @@ void OAIAccountApi::initializeServerConfigs() {
     QUrl("https://my.interserver.net/apiv2"),
     "Live API Endpoint",
     QMap<QString, OAIServerVariable>()));
-    _serverConfigs.insert("changeAccountUsername", defaultConf);
-    _serverIndices.insert("changeAccountUsername", 0);
     _serverConfigs.insert("deleteAccountOauthName", defaultConf);
     _serverIndices.insert("deleteAccountOauthName", 0);
     _serverConfigs.insert("deleteAccountTfa", defaultConf);
@@ -248,58 +246,6 @@ QString OAIAccountApi::getParamStyleDelimiter(const QString &style, const QStrin
 
     } else {
         return "none";
-    }
-}
-
-void OAIAccountApi::changeAccountUsername() {
-    QString fullPath = QString(_serverConfigs["changeAccountUsername"][_serverIndices.value("changeAccountUsername")].URL()+"/account/username");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "POST");
-
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIAccountApi::changeAccountUsernameCallback);
-    connect(this, &OAIAccountApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAIAccountApi::changeAccountUsernameCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    OAITextResponse output(QString(worker->response));
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT changeAccountUsernameSignal(output);
-        Q_EMIT changeAccountUsernameSignalFull(worker, output);
-    } else {
-        Q_EMIT changeAccountUsernameSignalError(output, error_type, error_str);
-        Q_EMIT changeAccountUsernameSignalErrorFull(worker, error_type, error_str);
     }
 }
 

@@ -1,4 +1,4 @@
-# SwaggerClient::IdBuyIpBody
+# InterserverApiClient::IdBuyIpBody
 
 ## Properties
 Name | Type | Description | Notes

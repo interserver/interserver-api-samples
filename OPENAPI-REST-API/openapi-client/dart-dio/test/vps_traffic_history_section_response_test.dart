@@ -1,18 +1,18 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsTrafficHistorySectionResponse
 void main() {
-  final instance = VpsTrafficHistorySectionResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsTrafficHistorySectionResponse? instance = /* VpsTrafficHistorySectionResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsTrafficHistorySectionResponse, () {
-    // BuiltList<VpsTrafficHistorySectionDataResponse> data
+    // List<VpsTrafficHistorySectionDataResponse> data
     test('to test the property `data`', () async {
       // TODO
     });
 
-    // BuiltList<DateTime> times
+    // List<OffsetDateTime> times
     test('to test the property `times`', () async {
       // TODO
     });

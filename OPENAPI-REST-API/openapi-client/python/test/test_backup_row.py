@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_row import BackupRow
+from interserver_api_client.models.backup_row import BackupRow
 
 class TestBackupRow(unittest.TestCase):
     """BackupRow unit test stubs"""

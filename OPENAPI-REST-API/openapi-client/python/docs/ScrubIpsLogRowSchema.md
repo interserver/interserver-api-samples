@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.scrub_ips_log_row_schema import ScrubIpsLogRowSchema
+from interserver_api_client.models.scrub_ips_log_row_schema import ScrubIpsLogRowSchema
 
 # TODO update the JSON string below
 json = "{}"

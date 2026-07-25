@@ -26,8 +26,6 @@ Private/OpenAPIAffiliateBannerRow.cpp
 Private/OpenAPIAffiliateDockSetup.cpp
 Private/OpenAPIAffiliatePaymentSetup.cpp
 Private/OpenAPIAffiliateTrafficRow.cpp
-Private/OpenAPIAssetServer.cpp
-Private/OpenAPIAssetServerCPUInner.cpp
 Private/OpenAPIBackup.cpp
 Private/OpenAPIBackupBillingDetails.cpp
 Private/OpenAPIBackupClientLink.cpp
@@ -47,7 +45,6 @@ Private/OpenAPIBackupsApiOperations.cpp
 Private/OpenAPIBackupsOrder.cpp
 Private/OpenAPIBackupsOrderPackageCosts.cpp
 Private/OpenAPIBackupsOrderServiceTypes.cpp
-Private/OpenAPIBandwidth.cpp
 Private/OpenAPIBaseModel.cpp
 Private/OpenAPIBillingAddCcRequest.cpp
 Private/OpenAPIBillingApi.cpp
@@ -76,11 +73,6 @@ Private/OpenAPIChargeInvoiceRowsInvoicesValue.cpp
 Private/OpenAPIChargeInvoiceRowsInvoicesValuePaidInvoicesValue.cpp
 Private/OpenAPIChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.cpp
 Private/OpenAPICloseTicketResponseSchema.cpp
-Private/OpenAPIConfigIds.cpp
-Private/OpenAPIConfigLists.cpp
-Private/OpenAPIControlPanel.cpp
-Private/OpenAPICpu.cpp
-Private/OpenAPICpuWithDefaults.cpp
 Private/OpenAPICreateFilter.cpp
 Private/OpenAPICreateFilter201Response.cpp
 Private/OpenAPICreateFilter400Response.cpp
@@ -98,6 +90,7 @@ Private/OpenAPIDeleteFilter400Response.cpp
 Private/OpenAPIDeleteFilter500Response.cpp
 Private/OpenAPIDeleteFirewallRule.cpp
 Private/OpenAPIDeleteGeoFirewallRule.cpp
+Private/OpenAPIDeleteMailAlertRequest.cpp
 Private/OpenAPIDenyRuleNew.cpp
 Private/OpenAPIDenyRuleRecord.cpp
 Private/OpenAPIDisableScrub200Response.cpp
@@ -128,11 +121,11 @@ Private/OpenAPIDomainNameserverGetResponseInner.cpp
 Private/OpenAPIDomainNameserverPostRequest.cpp
 Private/OpenAPIDomainNameserverPutRequest.cpp
 Private/OpenAPIDomainOrder.cpp
+Private/OpenAPIDomainOrderRequest.cpp
 Private/OpenAPIDomainOrderResponse.cpp
 Private/OpenAPIDomainOrderResponseAttributes.cpp
 Private/OpenAPIDomainOrderServices.cpp
 Private/OpenAPIDomainOrderServices10001.cpp
-Private/OpenAPIDomainOrderTldServices.cpp
 Private/OpenAPIDomainOwnerContact.cpp
 Private/OpenAPIDomainProvProcessPending.cpp
 Private/OpenAPIDomainProvProcessPendingAttributes.cpp
@@ -150,14 +143,15 @@ Private/OpenAPIEmailAddress.cpp
 Private/OpenAPIEmailAddressName.cpp
 Private/OpenAPIEnableScrub200Response.cpp
 Private/OpenAPIEnableScrub500Response.cpp
-Private/OpenAPIFieldLabel.cpp
 Private/OpenAPIFloatingIPsApi.cpp
 Private/OpenAPIFloatingIPsApiOperations.cpp
+Private/OpenAPIFloatingIpOrderRequest.cpp
 Private/OpenAPIFloatingIpsCancel200Response.cpp
-Private/OpenAPIFormValues.cpp
 Private/OpenAPIGenericResponse.cpp
 Private/OpenAPIGetAccountInfo401Response.cpp
+Private/OpenAPIGetAccountLocales200ResponseValue.cpp
 Private/OpenAPIGetAccountTfaSetup200Response.cpp
+Private/OpenAPIGetAffiliateSignups200Response.cpp
 Private/OpenAPIGetOauthRedirect200Response.cpp
 Private/OpenAPIGetOrderDetail200Response.cpp
 Private/OpenAPIGetOrderDetail200ResponseIpsInner.cpp
@@ -174,7 +168,6 @@ Private/OpenAPIGetScrubIpDetails200ResponseFilterFirewallFiltersInner.cpp
 Private/OpenAPIGetScrubIpDetails200ResponseFilterFirewallRulesInner.cpp
 Private/OpenAPIGetScrubIpDetails200ResponseServiceInfo.cpp
 Private/OpenAPIGetWebsiteBuyIp200Response.cpp
-Private/OpenAPIHardDrive.cpp
 Private/OpenAPIHelpers.cpp
 Private/OpenAPIHome.cpp
 Private/OpenAPIHomeDetails.cpp
@@ -202,10 +195,6 @@ Private/OpenAPIHomeTicketStatus.cpp
 Private/OpenAPIHomeTicketStatusView.cpp
 Private/OpenAPIHostnameObject.cpp
 Private/OpenAPIInitiatePayment200Response.cpp
-Private/OpenAPIInlineObject.cpp
-Private/OpenAPIInvoice.cpp
-Private/OpenAPIInvoiceRow.cpp
-Private/OpenAPIIpBlock.cpp
 Private/OpenAPIIpLimitRange.cpp
 Private/OpenAPIIpObject.cpp
 Private/OpenAPILicense.cpp
@@ -214,6 +203,7 @@ Private/OpenAPILicenseClientLink.cpp
 Private/OpenAPILicenseExtraInfoTables.cpp
 Private/OpenAPILicenseIpInfo.cpp
 Private/OpenAPILicenseIpInfoRow.cpp
+Private/OpenAPILicenseOrderRequest.cpp
 Private/OpenAPILicenseRow.cpp
 Private/OpenAPILicenseServiceInfo.cpp
 Private/OpenAPILicenseServiceType.cpp
@@ -254,6 +244,7 @@ Private/OpenAPIMailExtraInfoTableRow.cpp
 Private/OpenAPIMailLog.cpp
 Private/OpenAPIMailLogEntry.cpp
 Private/OpenAPIMailOrder.cpp
+Private/OpenAPIMailOrderRequest.cpp
 Private/OpenAPIMailRow.cpp
 Private/OpenAPIMailSchema.cpp
 Private/OpenAPIMailSchemaExtraInfoTables.cpp
@@ -266,17 +257,15 @@ Private/OpenAPIMailStatsTypeVolumeIp.cpp
 Private/OpenAPIMailStatsTypeVolumeTo.cpp
 Private/OpenAPIMailTutorialsTable.cpp
 Private/OpenAPIMailTutorialsTableRow.cpp
-Private/OpenAPIMemoryOption.cpp
 Private/OpenAPIModule.cpp
 Private/OpenAPIModule.h
 Private/OpenAPIModuleSettings.cpp
 Private/OpenAPIModules.cpp
 Private/OpenAPIMonthlyCounts.cpp
-Private/OpenAPIOperatingSystem.cpp
 Private/OpenAPIPasswordRequest.cpp
+Private/OpenAPIPatchBillingCreditCardVerifyRequest.cpp
 Private/OpenAPIPatchOauthTwoFactor200Response.cpp
 Private/OpenAPIPatchOauthTwoFactorRequest.cpp
-Private/OpenAPIPaymentInvoiceRows.cpp
 Private/OpenAPIPlaceBuyNowServerRequest.cpp
 Private/OpenAPIPlaceScrubOrder201Response.cpp
 Private/OpenAPIPlaceScrubOrder201ResponseOrderDetails.cpp
@@ -289,6 +278,8 @@ Private/OpenAPIPostWebsiteMigration200Response.cpp
 Private/OpenAPIPostWebsiteMigrationRequest.cpp
 Private/OpenAPIPublicApi.cpp
 Private/OpenAPIPublicApiOperations.cpp
+Private/OpenAPIPutScrubIps200Response.cpp
+Private/OpenAPIQsOrderRequest.cpp
 Private/OpenAPIQueueResponse.cpp
 Private/OpenAPIQuickServersApi.cpp
 Private/OpenAPIQuickServersApiOperations.cpp
@@ -314,8 +305,6 @@ Private/OpenAPIQuickserverServiceExtra.cpp
 Private/OpenAPIQuickserverServiceInfo.cpp
 Private/OpenAPIQuickserverServiceMaster.cpp
 Private/OpenAPIQuickserversCancel200Response.cpp
-Private/OpenAPIRaidOption.cpp
-Private/OpenAPIRegion.cpp
 Private/OpenAPIReplyTicketRequest.cpp
 Private/OpenAPIReplyTicketResponseSchema.cpp
 Private/OpenAPIRestoreRequest.cpp
@@ -339,6 +328,8 @@ Private/OpenAPIServer.cpp
 Private/OpenAPIServerAsset.cpp
 Private/OpenAPIServerAssets.cpp
 Private/OpenAPIServerBillingDetails.cpp
+Private/OpenAPIServerBulkIpmiPowerResponse.cpp
+Private/OpenAPIServerBulkIpmiPowerResponseResultsInner.cpp
 Private/OpenAPIServerClientLink.cpp
 Private/OpenAPIServerExtraInfoTables.cpp
 Private/OpenAPIServerIpmiLiveInfo.cpp
@@ -361,7 +352,6 @@ Private/OpenAPIServerOrderCpuLi.cpp
 Private/OpenAPIServerOrderFieldLabel.cpp
 Private/OpenAPIServerOrderFieldLabels.cpp
 Private/OpenAPIServerOrderFormValues.cpp
-Private/OpenAPIServerOrderGetResponse.cpp
 Private/OpenAPIServerOrderIP.cpp
 Private/OpenAPIServerOrderIpsLi.cpp
 Private/OpenAPIServerOrderMemory.cpp
@@ -369,6 +359,8 @@ Private/OpenAPIServerOrderMemoryLi.cpp
 Private/OpenAPIServerOrderMemoryLi254.cpp
 Private/OpenAPIServerOrderOS.cpp
 Private/OpenAPIServerOrderOsLi.cpp
+Private/OpenAPIServerOrderPostRequest.cpp
+Private/OpenAPIServerOrderPostRequestHd.cpp
 Private/OpenAPIServerOrderRAID.cpp
 Private/OpenAPIServerRow.cpp
 Private/OpenAPIServerServiceInfo.cpp
@@ -388,6 +380,7 @@ Private/OpenAPIServiceTypes.cpp
 Private/OpenAPIServices.cpp
 Private/OpenAPIServicesInfo.cpp
 Private/OpenAPISslCancel200Response.cpp
+Private/OpenAPISslOrderRequest.cpp
 Private/OpenAPIStatusMonthlyBreakdown.cpp
 Private/OpenAPISuccessTextResponse.cpp
 Private/OpenAPITemplateRequest.cpp
@@ -452,7 +445,6 @@ Private/OpenAPIVpsServiceMaster.cpp
 Private/OpenAPIVpsSnapshot.cpp
 Private/OpenAPIVpsTemplateRow.cpp
 Private/OpenAPIVpsTemplatesList.cpp
-Private/OpenAPIVpsTrafficDataDataResponse.cpp
 Private/OpenAPIVpsTrafficDataSectionResponse.cpp
 Private/OpenAPIVpsTrafficHistoryResponse.cpp
 Private/OpenAPIVpsTrafficHistorySectionDataResponse.cpp
@@ -473,6 +465,8 @@ Private/OpenAPIWebsiteBillingDetails.cpp
 Private/OpenAPIWebsiteClientLink.cpp
 Private/OpenAPIWebsiteExtraInfoTables.cpp
 Private/OpenAPIWebsiteLoginResponse.cpp
+Private/OpenAPIWebsiteOrderPostRequest.cpp
+Private/OpenAPIWebsiteOrderPutRequest.cpp
 Private/OpenAPIWebsiteRow.cpp
 Private/OpenAPIWebsiteServiceInfo.cpp
 Private/OpenAPIWebsiteServiceMaster.cpp
@@ -514,8 +508,6 @@ Public/OpenAPIAffiliateBannerRow.h
 Public/OpenAPIAffiliateDockSetup.h
 Public/OpenAPIAffiliatePaymentSetup.h
 Public/OpenAPIAffiliateTrafficRow.h
-Public/OpenAPIAssetServer.h
-Public/OpenAPIAssetServerCPUInner.h
 Public/OpenAPIBackup.h
 Public/OpenAPIBackupBillingDetails.h
 Public/OpenAPIBackupClientLink.h
@@ -535,7 +527,6 @@ Public/OpenAPIBackupsApiOperations.h
 Public/OpenAPIBackupsOrder.h
 Public/OpenAPIBackupsOrderPackageCosts.h
 Public/OpenAPIBackupsOrderServiceTypes.h
-Public/OpenAPIBandwidth.h
 Public/OpenAPIBaseModel.h
 Public/OpenAPIBillingAddCcRequest.h
 Public/OpenAPIBillingApi.h
@@ -564,11 +555,6 @@ Public/OpenAPIChargeInvoiceRowsInvoicesValue.h
 Public/OpenAPIChargeInvoiceRowsInvoicesValuePaidInvoicesValue.h
 Public/OpenAPIChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.h
 Public/OpenAPICloseTicketResponseSchema.h
-Public/OpenAPIConfigIds.h
-Public/OpenAPIConfigLists.h
-Public/OpenAPIControlPanel.h
-Public/OpenAPICpu.h
-Public/OpenAPICpuWithDefaults.h
 Public/OpenAPICreateFilter.h
 Public/OpenAPICreateFilter201Response.h
 Public/OpenAPICreateFilter400Response.h
@@ -586,6 +572,7 @@ Public/OpenAPIDeleteFilter400Response.h
 Public/OpenAPIDeleteFilter500Response.h
 Public/OpenAPIDeleteFirewallRule.h
 Public/OpenAPIDeleteGeoFirewallRule.h
+Public/OpenAPIDeleteMailAlertRequest.h
 Public/OpenAPIDenyRuleNew.h
 Public/OpenAPIDenyRuleRecord.h
 Public/OpenAPIDisableScrub200Response.h
@@ -616,11 +603,11 @@ Public/OpenAPIDomainNameserverGetResponseInner.h
 Public/OpenAPIDomainNameserverPostRequest.h
 Public/OpenAPIDomainNameserverPutRequest.h
 Public/OpenAPIDomainOrder.h
+Public/OpenAPIDomainOrderRequest.h
 Public/OpenAPIDomainOrderResponse.h
 Public/OpenAPIDomainOrderResponseAttributes.h
 Public/OpenAPIDomainOrderServices.h
 Public/OpenAPIDomainOrderServices10001.h
-Public/OpenAPIDomainOrderTldServices.h
 Public/OpenAPIDomainOwnerContact.h
 Public/OpenAPIDomainProvProcessPending.h
 Public/OpenAPIDomainProvProcessPendingAttributes.h
@@ -638,14 +625,15 @@ Public/OpenAPIEmailAddress.h
 Public/OpenAPIEmailAddressName.h
 Public/OpenAPIEnableScrub200Response.h
 Public/OpenAPIEnableScrub500Response.h
-Public/OpenAPIFieldLabel.h
 Public/OpenAPIFloatingIPsApi.h
 Public/OpenAPIFloatingIPsApiOperations.h
+Public/OpenAPIFloatingIpOrderRequest.h
 Public/OpenAPIFloatingIpsCancel200Response.h
-Public/OpenAPIFormValues.h
 Public/OpenAPIGenericResponse.h
 Public/OpenAPIGetAccountInfo401Response.h
+Public/OpenAPIGetAccountLocales200ResponseValue.h
 Public/OpenAPIGetAccountTfaSetup200Response.h
+Public/OpenAPIGetAffiliateSignups200Response.h
 Public/OpenAPIGetOauthRedirect200Response.h
 Public/OpenAPIGetOrderDetail200Response.h
 Public/OpenAPIGetOrderDetail200ResponseIpsInner.h
@@ -662,7 +650,6 @@ Public/OpenAPIGetScrubIpDetails200ResponseFilterFirewallFiltersInner.h
 Public/OpenAPIGetScrubIpDetails200ResponseFilterFirewallRulesInner.h
 Public/OpenAPIGetScrubIpDetails200ResponseServiceInfo.h
 Public/OpenAPIGetWebsiteBuyIp200Response.h
-Public/OpenAPIHardDrive.h
 Public/OpenAPIHelpers.h
 Public/OpenAPIHome.h
 Public/OpenAPIHomeDetails.h
@@ -690,10 +677,6 @@ Public/OpenAPIHomeTicketStatus.h
 Public/OpenAPIHomeTicketStatusView.h
 Public/OpenAPIHostnameObject.h
 Public/OpenAPIInitiatePayment200Response.h
-Public/OpenAPIInlineObject.h
-Public/OpenAPIInvoice.h
-Public/OpenAPIInvoiceRow.h
-Public/OpenAPIIpBlock.h
 Public/OpenAPIIpLimitRange.h
 Public/OpenAPIIpObject.h
 Public/OpenAPILicense.h
@@ -702,6 +685,7 @@ Public/OpenAPILicenseClientLink.h
 Public/OpenAPILicenseExtraInfoTables.h
 Public/OpenAPILicenseIpInfo.h
 Public/OpenAPILicenseIpInfoRow.h
+Public/OpenAPILicenseOrderRequest.h
 Public/OpenAPILicenseRow.h
 Public/OpenAPILicenseServiceInfo.h
 Public/OpenAPILicenseServiceType.h
@@ -742,6 +726,7 @@ Public/OpenAPIMailExtraInfoTableRow.h
 Public/OpenAPIMailLog.h
 Public/OpenAPIMailLogEntry.h
 Public/OpenAPIMailOrder.h
+Public/OpenAPIMailOrderRequest.h
 Public/OpenAPIMailRow.h
 Public/OpenAPIMailSchema.h
 Public/OpenAPIMailSchemaExtraInfoTables.h
@@ -754,15 +739,13 @@ Public/OpenAPIMailStatsTypeVolumeIp.h
 Public/OpenAPIMailStatsTypeVolumeTo.h
 Public/OpenAPIMailTutorialsTable.h
 Public/OpenAPIMailTutorialsTableRow.h
-Public/OpenAPIMemoryOption.h
 Public/OpenAPIModuleSettings.h
 Public/OpenAPIModules.h
 Public/OpenAPIMonthlyCounts.h
-Public/OpenAPIOperatingSystem.h
 Public/OpenAPIPasswordRequest.h
+Public/OpenAPIPatchBillingCreditCardVerifyRequest.h
 Public/OpenAPIPatchOauthTwoFactor200Response.h
 Public/OpenAPIPatchOauthTwoFactorRequest.h
-Public/OpenAPIPaymentInvoiceRows.h
 Public/OpenAPIPlaceBuyNowServerRequest.h
 Public/OpenAPIPlaceScrubOrder201Response.h
 Public/OpenAPIPlaceScrubOrder201ResponseOrderDetails.h
@@ -775,6 +758,8 @@ Public/OpenAPIPostWebsiteMigration200Response.h
 Public/OpenAPIPostWebsiteMigrationRequest.h
 Public/OpenAPIPublicApi.h
 Public/OpenAPIPublicApiOperations.h
+Public/OpenAPIPutScrubIps200Response.h
+Public/OpenAPIQsOrderRequest.h
 Public/OpenAPIQueueResponse.h
 Public/OpenAPIQuickServersApi.h
 Public/OpenAPIQuickServersApiOperations.h
@@ -800,8 +785,6 @@ Public/OpenAPIQuickserverServiceExtra.h
 Public/OpenAPIQuickserverServiceInfo.h
 Public/OpenAPIQuickserverServiceMaster.h
 Public/OpenAPIQuickserversCancel200Response.h
-Public/OpenAPIRaidOption.h
-Public/OpenAPIRegion.h
 Public/OpenAPIReplyTicketRequest.h
 Public/OpenAPIReplyTicketResponseSchema.h
 Public/OpenAPIRestoreRequest.h
@@ -825,6 +808,8 @@ Public/OpenAPIServer.h
 Public/OpenAPIServerAsset.h
 Public/OpenAPIServerAssets.h
 Public/OpenAPIServerBillingDetails.h
+Public/OpenAPIServerBulkIpmiPowerResponse.h
+Public/OpenAPIServerBulkIpmiPowerResponseResultsInner.h
 Public/OpenAPIServerClientLink.h
 Public/OpenAPIServerExtraInfoTables.h
 Public/OpenAPIServerIpmiLiveInfo.h
@@ -847,7 +832,6 @@ Public/OpenAPIServerOrderCpuLi.h
 Public/OpenAPIServerOrderFieldLabel.h
 Public/OpenAPIServerOrderFieldLabels.h
 Public/OpenAPIServerOrderFormValues.h
-Public/OpenAPIServerOrderGetResponse.h
 Public/OpenAPIServerOrderIP.h
 Public/OpenAPIServerOrderIpsLi.h
 Public/OpenAPIServerOrderMemory.h
@@ -855,6 +839,8 @@ Public/OpenAPIServerOrderMemoryLi.h
 Public/OpenAPIServerOrderMemoryLi254.h
 Public/OpenAPIServerOrderOS.h
 Public/OpenAPIServerOrderOsLi.h
+Public/OpenAPIServerOrderPostRequest.h
+Public/OpenAPIServerOrderPostRequestHd.h
 Public/OpenAPIServerOrderRAID.h
 Public/OpenAPIServerRow.h
 Public/OpenAPIServerServiceInfo.h
@@ -874,6 +860,7 @@ Public/OpenAPIServiceTypes.h
 Public/OpenAPIServices.h
 Public/OpenAPIServicesInfo.h
 Public/OpenAPISslCancel200Response.h
+Public/OpenAPISslOrderRequest.h
 Public/OpenAPIStatusMonthlyBreakdown.h
 Public/OpenAPISuccessTextResponse.h
 Public/OpenAPITemplateRequest.h
@@ -938,7 +925,6 @@ Public/OpenAPIVpsServiceMaster.h
 Public/OpenAPIVpsSnapshot.h
 Public/OpenAPIVpsTemplateRow.h
 Public/OpenAPIVpsTemplatesList.h
-Public/OpenAPIVpsTrafficDataDataResponse.h
 Public/OpenAPIVpsTrafficDataSectionResponse.h
 Public/OpenAPIVpsTrafficHistoryResponse.h
 Public/OpenAPIVpsTrafficHistorySectionDataResponse.h
@@ -959,6 +945,8 @@ Public/OpenAPIWebsiteBillingDetails.h
 Public/OpenAPIWebsiteClientLink.h
 Public/OpenAPIWebsiteExtraInfoTables.h
 Public/OpenAPIWebsiteLoginResponse.h
+Public/OpenAPIWebsiteOrderPostRequest.h
+Public/OpenAPIWebsiteOrderPutRequest.h
 Public/OpenAPIWebsiteRow.h
 Public/OpenAPIWebsiteServiceInfo.h
 Public/OpenAPIWebsiteServiceMaster.h

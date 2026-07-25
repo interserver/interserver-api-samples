@@ -12,4 +12,8 @@ Payload for updating the default account payment method.
 |**ccAuto** | **String** | Whether automatic credit card payments are enabled. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

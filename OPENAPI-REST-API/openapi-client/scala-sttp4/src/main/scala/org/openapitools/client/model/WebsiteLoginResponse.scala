@@ -20,4 +20,3 @@ case class WebsiteLoginResponse(
   `type`: Option[String] = None,
   location: Option[String] = None
 )
-

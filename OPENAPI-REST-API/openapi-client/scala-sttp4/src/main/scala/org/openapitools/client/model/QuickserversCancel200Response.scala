@@ -16,4 +16,3 @@ case class QuickserversCancel200Response(
   success: Boolean,
   text: String
 )
-

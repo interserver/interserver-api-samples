@@ -5,13 +5,28 @@
  *
  *)
 
-let add_qs () =
+let add_qs ~qs_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/qs/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Qs_order_request.to_yojson
+    
+    
+    
+ qs_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Service_order_post_response.of_yojson) resp body
 
 let delete_qs_backup ~id ~file ?all () =
@@ -298,6 +313,30 @@ let get_new_qs () =
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Quickserver_order.of_yojson) resp body
+
+let get_qs_backup ~id =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/qs/{id}/backup" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ id in
+    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
+    Request.read_json_body_as (JsonSupport.unwrap Queue_response.of_yojson) resp body
 
 let get_qs_backups ~id ?all () =
     let open Lwt.Infix in
@@ -671,30 +710,6 @@ let get_qs_welcome_email ~id =
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Text_response.of_yojson) resp body
 
-let post_qs_backup ~id =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/qs/{id}/backup" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    let uri = Request.replace_path_param uri "id"     
-    Int32.to_string
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
-        
- id in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
-    Request.read_json_body_as (JsonSupport.unwrap Queue_response.of_yojson) resp body
-
 let post_qs_change_hostname ~id =
     let open Lwt.Infix in
     let uri = Request.build_uri "/qs/{id}/change_hostname" in
@@ -1030,13 +1045,28 @@ let post_quick_server_restore ~id ~restore_request_t =
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Queue_response.of_yojson) resp body
 
-let put_qs () =
+let put_qs ~qs_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/qs/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `PUT uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Qs_order_request.to_yojson
+    
+    
+    
+ qs_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `PUT uri ~headers ~body >>= fun (resp, body) ->
     Request.handle_unit_response resp
 
 let quickservers_cancel ~id =

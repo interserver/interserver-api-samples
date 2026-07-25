@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IpLimitRange = Initialize-PSOpenAPIToolsIpLimitRange  -Start 1.2.3.0 `
+$IpLimitRange = Initialize-InterserverApiIpLimitRange  -Start 1.2.3.0 `
  -VarEnd 1.2.3.255
 ```
 

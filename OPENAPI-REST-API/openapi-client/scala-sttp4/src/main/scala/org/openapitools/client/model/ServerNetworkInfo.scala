@@ -20,4 +20,3 @@ case class ServerNetworkInfo(
   assets: ServerNetworkInfoAssets,
   switchports: ServerNetworkInfoSwitchports
 )
-

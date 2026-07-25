@@ -36,9 +36,10 @@ import myadmin-client-kotlin-server.infrastructure.ApiPrincipal
 
 import io.swagger.server.models.ChargeInvoiceRows
 import io.swagger.server.models.IdBackupsBody
-import io.swagger.server.models.InlineResponse20010
 import io.swagger.server.models.InlineResponse20011
+import io.swagger.server.models.InlineResponse20012
 import io.swagger.server.models.InlineResponse401
+import io.swagger.server.models.QsOrderRequest
 import io.swagger.server.models.QueueResponse
 import io.swagger.server.models.Quickserver
 import io.swagger.server.models.QuickserverOrder
@@ -279,6 +280,23 @@ fun Route.QuickServersApi() {
       "centosstream-8" : "8 Stream (64 bits)"
     }
   }
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    get<Paths.getQsBackup> {  _: Paths.getQsBackup ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "text" : "Action has been sent to the server. Please allow up to 2 minutes for action to be completed.",
+  "queueId" : 14670065
 }"""
             
             when(exampleContentType) {
@@ -686,23 +704,6 @@ fun Route.QuickServersApi() {
             val exampleContentType = "application/json"
             val exampleContentString = """{
   "text" : "You were successfull."
-}"""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
-    post<Paths.postQsBackup> {  _: Paths.postQsBackup ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """{
-  "text" : "Action has been sent to the server. Please allow up to 2 minutes for action to be completed.",
-  "queueId" : 14670065
 }"""
             
             when(exampleContentType) {

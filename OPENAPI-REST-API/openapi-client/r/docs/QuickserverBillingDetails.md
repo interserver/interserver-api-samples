@@ -1,4 +1,4 @@
-# openapi::QuickserverBillingDetails
+# interserverapi::QuickserverBillingDetails
 
 Billing information for a QuickServer service including payment status, billing cycle, and cost.
 

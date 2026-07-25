@@ -16,4 +16,3 @@ case class QuickserverOrderVersionCentosstream8(
   /* Version details of CentOS Stream 8. */
   centosstream_8: Option[String] = None
 )
-

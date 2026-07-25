@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerLocation1
 void main() {
-  final instance = ServerLocation1Builder();
-  // TODO add properties to the builder and call build()
+  final ServerLocation1? instance = /* ServerLocation1(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerLocation1, () {
     // int locationId
@@ -27,12 +27,12 @@ void main() {
       // TODO
     });
 
-    // String locationDescription
+    // Optional<String?> locationDescription
     test('to test the property `locationDescription`', () async {
       // TODO
     });
 
-    // int locationIpmiGroup
+    // Optional<int?> locationIpmiGroup
     test('to test the property `locationIpmiGroup`', () async {
       // TODO
     });

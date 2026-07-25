@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BackupServiceInfo();
+    instance = new InterserverApiClient.BackupServiceInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,97 +50,97 @@
   describe('BackupServiceInfo', function() {
     it('should create an instance of BackupServiceInfo', function() {
       // uncomment below and update the code to test BackupServiceInfo
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.BackupServiceInfo);
+      //var instance = new InterserverApiClient.BackupServiceInfo();
+      //expect(instance).to.be.a(InterserverApiClient.BackupServiceInfo);
     });
 
     it('should have the property backup_id (base name: "backup_id")', function() {
       // uncomment below and update the code to test the property backup_id
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_server (base name: "backup_server")', function() {
       // uncomment below and update the code to test the property backup_server
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_username (base name: "backup_username")', function() {
       // uncomment below and update the code to test the property backup_username
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_type (base name: "backup_type")', function() {
       // uncomment below and update the code to test the property backup_type
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_currency (base name: "backup_currency")', function() {
       // uncomment below and update the code to test the property backup_currency
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_order_date (base name: "backup_order_date")', function() {
       // uncomment below and update the code to test the property backup_order_date
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_custid (base name: "backup_custid")', function() {
       // uncomment below and update the code to test the property backup_custid
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_quota (base name: "backup_quota")', function() {
       // uncomment below and update the code to test the property backup_quota
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_ip (base name: "backup_ip")', function() {
       // uncomment below and update the code to test the property backup_ip
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_status (base name: "backup_status")', function() {
       // uncomment below and update the code to test the property backup_status
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_invoice (base name: "backup_invoice")', function() {
       // uncomment below and update the code to test the property backup_invoice
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_coupon (base name: "backup_coupon")', function() {
       // uncomment below and update the code to test the property backup_coupon
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_extra (base name: "backup_extra")', function() {
       // uncomment below and update the code to test the property backup_extra
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_server_status (base name: "backup_server_status")', function() {
       // uncomment below and update the code to test the property backup_server_status
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property backup_comment (base name: "backup_comment")', function() {
       // uncomment below and update the code to test the property backup_comment
-      //var instance = new InterServerManagementApi.BackupServiceInfo();
+      //var instance = new InterserverApiClient.BackupServiceInfo();
       //expect(instance).to.be();
     });
 

@@ -1,4 +1,4 @@
-# InterServerManagementApi.WebsiteLoginResponse
+# InterserverApiClient.WebsiteLoginResponse
 
 ## Properties
 

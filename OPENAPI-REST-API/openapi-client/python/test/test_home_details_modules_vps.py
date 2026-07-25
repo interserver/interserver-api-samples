@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_details_modules_vps import HomeDetailsModulesVps
+from interserver_api_client.models.home_details_modules_vps import HomeDetailsModulesVps
 
 class TestHomeDetailsModulesVps(unittest.TestCase):
     """HomeDetailsModulesVps unit test stubs"""

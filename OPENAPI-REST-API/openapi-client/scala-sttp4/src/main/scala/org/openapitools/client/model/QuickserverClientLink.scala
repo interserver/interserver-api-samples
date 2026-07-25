@@ -29,4 +29,3 @@ case class QuickserverClientLink(
   /* Other attribute */
   other_attr: Option[String] = None
 )
-

@@ -10,32 +10,16 @@
 * Do not edit the class manually.
 */package io.swagger.server.models
 
-import io.swagger.server.models.InlineResponse20012BillingDetails
-import io.swagger.server.models.InlineResponse20012ClientLinks
-import io.swagger.server.models.InlineResponse20012ExtraInfoTables
-import io.swagger.server.models.InlineResponse20012FilterFirewall
-import io.swagger.server.models.InlineResponse20012ServiceInfo
 
 /**
  * 
- * @param serviceInfo 
- * @param clientLinks 
- * @param billingDetails 
- * @param custCurrency 
- * @param custCurrencySymbol 
- * @param &#x60;package&#x60; 
- * @param extraInfoTables 
- * @param filterFirewall 
+ * @param text 
+ * @param url A pre-signed download URL valid for 24 hours.
  */
 data class InlineResponse20012 (
 
-    val serviceInfo: InlineResponse20012ServiceInfo? = null,
-    val clientLinks: kotlin.Array<InlineResponse20012ClientLinks>? = null,
-    val billingDetails: InlineResponse20012BillingDetails? = null,
-    val custCurrency: kotlin.String? = null,
-    val custCurrencySymbol: kotlin.String? = null,
-    val `package`: kotlin.String? = null,
-    val extraInfoTables: InlineResponse20012ExtraInfoTables? = null,
-    val filterFirewall: InlineResponse20012FilterFirewall? = null
+    val text: kotlin.String? = null,
+    /* A pre-signed download URL valid for 24 hours. */
+    val url: kotlin.String? = null
 ) {
 }

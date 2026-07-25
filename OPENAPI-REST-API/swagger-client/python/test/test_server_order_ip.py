@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.server_order_ip import ServerOrderIP  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.server_order_ip import ServerOrderIP  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestServerOrderIP(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestServerOrderIP(unittest.TestCase):
     def testServerOrderIP(self):
         """Test ServerOrderIP"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.server_order_ip.ServerOrderIP()  # noqa: E501
+        # model = interserver_api_client.models.server_order_ip.ServerOrderIP()  # noqa: E501
         pass
 
 

@@ -57,7 +57,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.server_asset import ServerAsset
+from interserver_api_client.models.server_asset import ServerAsset
 
 # TODO update the JSON string below
 json = "{}"

@@ -1,4 +1,4 @@
-# SwaggerClient::VpsServiceAddons
+# InterserverApiClient::VpsServiceAddons
 
 ## Properties
 Name | Type | Description | Notes

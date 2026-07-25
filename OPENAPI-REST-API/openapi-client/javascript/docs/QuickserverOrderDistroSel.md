@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverOrderDistroSel
+# InterserverApiClient.QuickserverOrderDistroSel
 
 ## Properties
 

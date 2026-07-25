@@ -36,4 +36,8 @@
 |**vpsDiskmax** | **String** | Maximum disk space available |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

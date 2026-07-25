@@ -200,7 +200,7 @@ export function instanceOfQuickserver(value: object): value is Quickserver {
     if (!('custCurrency' in value) || value['custCurrency'] === undefined) return false;
     if (!('custCurrencySymbol' in value) || value['custCurrencySymbol'] === undefined) return false;
     if (!('serviceMaster' in value) || value['serviceMaster'] === undefined) return false;
-    if (!('_package' in value) || value['_package'] === undefined) return false;
+    if ((!('_package' in (value as Record<string, any>)) && !('package' in (value as Record<string, any>))) || ((value as Record<string, any>)['_package'] === undefined && (value as Record<string, any>)['package'] === undefined)) return false;
     if (!('os_template' in value) || value['os_template'] === undefined) return false;
     if (!('serviceExtra' in value) || value['serviceExtra'] === undefined) return false;
     if (!('extraInfoTables' in value) || value['extraInfoTables'] === undefined) return false;

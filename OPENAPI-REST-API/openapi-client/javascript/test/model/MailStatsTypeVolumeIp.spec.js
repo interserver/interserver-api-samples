@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailStatsTypeVolumeIp();
+    instance = new InterserverApiClient.MailStatsTypeVolumeIp();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('MailStatsTypeVolumeIp', function() {
     it('should create an instance of MailStatsTypeVolumeIp', function() {
       // uncomment below and update the code to test MailStatsTypeVolumeIp
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeIp();
-      //expect(instance).to.be.a(InterServerManagementApi.MailStatsTypeVolumeIp);
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeIp();
+      //expect(instance).to.be.a(InterserverApiClient.MailStatsTypeVolumeIp);
     });
 
     it('should have the property _1_1_1_1 (base name: "1.1.1.1")', function() {
       // uncomment below and update the code to test the property _1_1_1_1
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeIp();
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeIp();
       //expect(instance).to.be();
     });
 
     it('should have the property _2_2_2_2 (base name: "2.2.2.2")', function() {
       // uncomment below and update the code to test the property _2_2_2_2
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeIp();
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeIp();
       //expect(instance).to.be();
     });
 
     it('should have the property _3_3_3_3 (base name: "3.3.3.3")', function() {
       // uncomment below and update the code to test the property _3_3_3_3
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeIp();
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeIp();
       //expect(instance).to.be();
     });
 
     it('should have the property _4_4_4_4 (base name: "4.4.4.4")', function() {
       // uncomment below and update the code to test the property _4_4_4_4
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeIp();
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeIp();
       //expect(instance).to.be();
     });
 

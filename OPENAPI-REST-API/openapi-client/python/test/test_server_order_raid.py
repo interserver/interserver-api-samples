@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_raid import ServerOrderRAID
+from interserver_api_client.models.server_order_raid import ServerOrderRAID
 
 class TestServerOrderRAID(unittest.TestCase):
     """ServerOrderRAID unit test stubs"""

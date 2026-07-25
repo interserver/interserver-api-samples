@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailStatsTypeVolumeIp = Initialize-PSOpenAPIToolsMailStatsTypeVolumeIp  -Var1111 null `
+$MailStatsTypeVolumeIp = Initialize-InterserverApiMailStatsTypeVolumeIp  -Var1111 null `
  -Var2222 null `
  -Var3333 null `
  -Var4444 null

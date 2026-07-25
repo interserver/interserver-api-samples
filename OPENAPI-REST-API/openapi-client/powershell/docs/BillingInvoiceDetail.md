@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BillingInvoiceDetail = Initialize-PSOpenAPIToolsBillingInvoiceDetail 
+$BillingInvoiceDetail = Initialize-InterserverApiBillingInvoiceDetail 
 ```
 
 - Convert the resource to JSON

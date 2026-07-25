@@ -17,7 +17,7 @@ import ChargeInvoiceRowsInvoicesValuePaidInvoicesValue from './ChargeInvoiceRows
 /**
  * The ChargeInvoiceRowsInvoicesValue model module.
  * @module model/ChargeInvoiceRowsInvoicesValue
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ChargeInvoiceRowsInvoicesValue {
     /**
@@ -197,7 +197,13 @@ ChargeInvoiceRowsInvoicesValue['InvoicesPaidEnum'] = {
      * value: 1
      * @const
      */
-    "1": 1
+    "1": 1,
+
+    /**
+     * value: 11184809
+     * @const
+     */
+    "unknown_default_open_api": 11184809
 };
 
 

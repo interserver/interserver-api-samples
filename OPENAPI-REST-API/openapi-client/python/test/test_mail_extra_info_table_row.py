@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_extra_info_table_row import MailExtraInfoTableRow
+from interserver_api_client.models.mail_extra_info_table_row import MailExtraInfoTableRow
 
 class TestMailExtraInfoTableRow(unittest.TestCase):
     """MailExtraInfoTableRow unit test stubs"""

@@ -69,7 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddQsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.AddQs();
+            //QsOrderRequest body = null;
+            //var response = instance.AddQs(body);
             //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
@@ -184,7 +185,7 @@ namespace Interserver.MyAdmin.Client.Test
             //int? id = null;
             //string all = null;
             //var response = instance.DownloadQsBackup(body, id, all);
-            //Assert.IsInstanceOf<InlineResponse20011> (response, "response is InlineResponse20011");
+            //Assert.IsInstanceOf<InlineResponse20012> (response, "response is InlineResponse20012");
         }
         /// <summary>
         /// Test GetNewQs
@@ -195,6 +196,17 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.GetNewQs();
             //Assert.IsInstanceOf<QuickserverOrder> (response, "response is QuickserverOrder");
+        }
+        /// <summary>
+        /// Test GetQsBackup
+        /// </summary>
+        [Test]
+        public void GetQsBackupTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? id = null;
+            //var response = instance.GetQsBackup(id);
+            //Assert.IsInstanceOf<QueueResponse> (response, "response is QueueResponse");
         }
         /// <summary>
         /// Test GetQsBackups
@@ -373,17 +385,6 @@ namespace Interserver.MyAdmin.Client.Test
             //Assert.IsInstanceOf<TextResponse> (response, "response is TextResponse");
         }
         /// <summary>
-        /// Test PostQsBackup
-        /// </summary>
-        [Test]
-        public void PostQsBackupTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int? id = null;
-            //var response = instance.PostQsBackup(id);
-            //Assert.IsInstanceOf<QueueResponse> (response, "response is QueueResponse");
-        }
-        /// <summary>
         /// Test PostQsChangeHostname
         /// </summary>
         [Test]
@@ -525,7 +526,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void PutQsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PutQs();
+            //QsOrderRequest body = null;
+            //instance.PutQs(body);
             
         }
         /// <summary>
@@ -537,7 +539,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.QuickserversCancel(id);
-            //Assert.IsInstanceOf<InlineResponse20010> (response, "response is InlineResponse20010");
+            //Assert.IsInstanceOf<InlineResponse20011> (response, "response is InlineResponse20011");
         }
         /// <summary>
         /// Test UpdateQsInfo

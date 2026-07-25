@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderPutRequest = Initialize-PSOpenAPIToolsVpsOrderPutRequest  -OsDistro null `
+$VpsOrderPutRequest = Initialize-InterserverApiVpsOrderPutRequest  -OsDistro null `
  -Slices null `
  -VpsPlatform null `
  -Controlpanel null `

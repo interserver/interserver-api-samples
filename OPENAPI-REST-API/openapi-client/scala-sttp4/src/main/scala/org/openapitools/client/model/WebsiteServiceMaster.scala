@@ -42,4 +42,3 @@ case class WebsiteServiceMaster(
   /* DNS server 2 for the service master */
   website_dns2: Option[String] = None
 )
-

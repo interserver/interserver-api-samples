@@ -124,7 +124,7 @@ MailDeliverabilityResponse <- R6::R6Class(
         self$`percent` <- this_object$`percent`
       }
       if (!is.null(this_object$`table_data`)) {
-        self$`table_data` <- ApiClient$new()$deserializeObj(this_object$`table_data`, "array[array[character]]", loadNamespace("openapi"))
+        self$`table_data` <- ApiClient$new()$deserializeObj(this_object$`table_data`, "array[array[character]]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -149,7 +149,7 @@ MailDeliverabilityResponse <- R6::R6Class(
       this_object <- jsonlite::fromJSON(input_json)
       self$`stat` <- this_object$`stat`
       self$`percent` <- this_object$`percent`
-      self$`table_data` <- ApiClient$new()$deserializeObj(this_object$`table_data`, "array[array[character]]", loadNamespace("openapi"))
+      self$`table_data` <- ApiClient$new()$deserializeObj(this_object$`table_data`, "array[array[character]]", loadNamespace("interserverapi"))
       self
     },
 

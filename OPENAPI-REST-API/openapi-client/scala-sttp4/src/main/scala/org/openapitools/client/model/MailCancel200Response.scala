@@ -16,4 +16,3 @@ case class MailCancel200Response(
   success: Boolean,
   text: String
 )
-

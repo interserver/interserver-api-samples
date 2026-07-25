@@ -24,4 +24,3 @@ case class MailBlockClickHouse(
   subject: String,
   to: String
 )
-

@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class VpsOrderLocationNames(
   `3`: Option[String] = None
 )
-

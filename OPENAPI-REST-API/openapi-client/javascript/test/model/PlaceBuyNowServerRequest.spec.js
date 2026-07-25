@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PlaceBuyNowServerRequest();
+    instance = new InterserverApiClient.PlaceBuyNowServerRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('PlaceBuyNowServerRequest', function() {
     it('should create an instance of PlaceBuyNowServerRequest', function() {
       // uncomment below and update the code to test PlaceBuyNowServerRequest
-      //var instance = new InterServerManagementApi.PlaceBuyNowServerRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.PlaceBuyNowServerRequest);
+      //var instance = new InterserverApiClient.PlaceBuyNowServerRequest();
+      //expect(instance).to.be.a(InterserverApiClient.PlaceBuyNowServerRequest);
     });
 
     it('should have the property server_id (base name: "server_id")', function() {
       // uncomment below and update the code to test the property server_id
-      //var instance = new InterServerManagementApi.PlaceBuyNowServerRequest();
+      //var instance = new InterserverApiClient.PlaceBuyNowServerRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property server_hostname (base name: "server_hostname")', function() {
       // uncomment below and update the code to test the property server_hostname
-      //var instance = new InterServerManagementApi.PlaceBuyNowServerRequest();
+      //var instance = new InterserverApiClient.PlaceBuyNowServerRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property server_root_password (base name: "server_root_password")', function() {
       // uncomment below and update the code to test the property server_root_password
-      //var instance = new InterServerManagementApi.PlaceBuyNowServerRequest();
+      //var instance = new InterserverApiClient.PlaceBuyNowServerRequest();
       //expect(instance).to.be();
     });
 

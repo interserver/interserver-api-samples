@@ -22,4 +22,3 @@ case class IpLimitRange(
   /* The ending (or last) IP address in the range. */
   end: String
 )
-

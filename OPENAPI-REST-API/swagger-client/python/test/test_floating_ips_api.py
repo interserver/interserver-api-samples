@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.floating_ips_api import FloatingIPsApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.floating_ips_api import FloatingIPsApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestFloatingIPsApi(unittest.TestCase):
@@ -31,70 +31,70 @@ class TestFloatingIPsApi(unittest.TestCase):
     def test_add_floating_ip(self):
         """Test case for add_floating_ip
 
-        Place Floating IP Order  # noqa: E501
+        Place a real Floating IP order, create billing records, and provision the service  # noqa: E501
         """
         pass
 
     def test_floating_ips_cancel(self):
         """Test case for floating_ips_cancel
 
-        Cancel Floating IP  # noqa: E501
+        Cancel a Floating IP service and release the IP — destructive, billing stops  # noqa: E501
         """
         pass
 
     def test_get_floating_ip_info(self):
         """Test case for get_floating_ip_info
 
-        View Floating IP  # noqa: E501
+        Fetch full details for one Floating IP service, including current target IP  # noqa: E501
         """
         pass
 
     def test_get_floating_ip_invoices(self):
         """Test case for get_floating_ip_invoices
 
-        Get Floating IP Invoices  # noqa: E501
+        List all billing invoices charged against a specific Floating IP service  # noqa: E501
         """
         pass
 
     def test_get_floating_ips_list(self):
         """Test case for get_floating_ips_list
 
-        List Floating IPs  # noqa: E501
+        List all Floating IP services on the authenticated customer's account  # noqa: E501
         """
         pass
 
     def test_get_floating_ips_welcome_email(self):
         """Test case for get_floating_ips_welcome_email
 
-        Resend Floating IPs Welcome Email  # noqa: E501
+        Resend the Floating IP welcome / setup email to the account contact  # noqa: E501
         """
         pass
 
     def test_get_new_floating_ip(self):
         """Test case for get_new_floating_ip
 
-        Get Floating IP Ordering Information  # noqa: E501
+        Get pricing and service-type options for ordering a new Floating IP  # noqa: E501
         """
         pass
 
     def test_post_floating_ips_change_ip(self):
         """Test case for post_floating_ips_change_ip
 
-        Change Floating IP Target  # noqa: E501
+        Re-point a Floating IP to a different target IP on one of the customer's services  # noqa: E501
         """
         pass
 
     def test_put_floating_ips(self):
         """Test case for put_floating_ips
 
-        Validate Floating IP Order  # noqa: E501
+        Validate a Floating IP order and price it without charging the customer  # noqa: E501
         """
         pass
 
     def test_update_floating_ip_info(self):
         """Test case for update_floating_ip_info
 
-        Update Floating IP  # noqa: E501
+        Update a Floating IP service's editable settings (label / metadata)  # noqa: E501
         """
         pass
 

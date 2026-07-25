@@ -16,7 +16,7 @@ import io.swagger.model.BackupsOrder;
 
 import io.swagger.model.ChargeInvoiceRows;
 
-import io.swagger.model.InlineResponse2001;
+import io.swagger.model.InlineResponse2002;
 
 import io.swagger.model.InlineResponse401;
 
@@ -48,7 +48,7 @@ public class BackupsApiController implements BackupsApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse2001>> cancelBackup(Integer id) {
+    public Single<HttpResponse<InlineResponse2002>> cancelBackup(Integer id) {
         // TODO: Implement me
         return BackupsApi.super.cancelBackup(id);
     }

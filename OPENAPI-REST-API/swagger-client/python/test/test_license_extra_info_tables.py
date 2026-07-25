@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.license_extra_info_tables import LicenseExtraInfoTables  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.license_extra_info_tables import LicenseExtraInfoTables  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestLicenseExtraInfoTables(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestLicenseExtraInfoTables(unittest.TestCase):
     def testLicenseExtraInfoTables(self):
         """Test LicenseExtraInfoTables"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.license_extra_info_tables.LicenseExtraInfoTables()  # noqa: E501
+        # model = interserver_api_client.models.license_extra_info_tables.LicenseExtraInfoTables()  # noqa: E501
         pass
 
 

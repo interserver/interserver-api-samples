@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PasswordRequest } from './api';
+import { PasswordRequest } from '@interserver/myadmin-client';
 
 const instance: PasswordRequest = {
     password,

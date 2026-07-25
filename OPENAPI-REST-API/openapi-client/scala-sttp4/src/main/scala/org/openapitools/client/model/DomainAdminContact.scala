@@ -31,4 +31,3 @@ case class DomainAdminContact(
   first_name: Option[String] = None,
   last_name: Option[String] = None
 )
-

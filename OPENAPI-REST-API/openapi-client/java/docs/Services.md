@@ -10,4 +10,8 @@ The list of service packages.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

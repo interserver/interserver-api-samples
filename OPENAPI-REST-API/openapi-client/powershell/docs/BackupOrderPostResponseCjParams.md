@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupOrderPostResponseCjParams = Initialize-PSOpenAPIToolsBackupOrderPostResponseCjParams  -ContainerTagId null `
+$BackupOrderPostResponseCjParams = Initialize-InterserverApiBackupOrderPostResponseCjParams  -ContainerTagId null `
  -CID null `
  -OID null `
  -TYPE null `

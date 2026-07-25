@@ -18,7 +18,7 @@ import BackupsOrderServiceTypes from './BackupsOrderServiceTypes';
 /**
  * The BackupsOrder model module.
  * @module model/BackupsOrder
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BackupsOrder {
     /**

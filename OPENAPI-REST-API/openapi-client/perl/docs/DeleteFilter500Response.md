@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DeleteFilter500Response
+# InterServerAPI::Object::DeleteFilter500Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DeleteFilter500Response;
+use InterServerAPI::Object::DeleteFilter500Response;
 ```
 
 ## Properties

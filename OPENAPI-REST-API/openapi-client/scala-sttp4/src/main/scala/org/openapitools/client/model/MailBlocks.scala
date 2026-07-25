@@ -21,4 +21,3 @@ case class MailBlocks(
   mbtrap: Seq[MailBlockClickHouse],
   subject: Seq[MailBlockRspamd]
 )
-

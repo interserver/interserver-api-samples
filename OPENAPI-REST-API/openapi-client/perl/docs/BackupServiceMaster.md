@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BackupServiceMaster
+# InterServerAPI::Object::BackupServiceMaster
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BackupServiceMaster;
+use InterServerAPI::Object::BackupServiceMaster;
 ```
 
 ## Properties

@@ -21,4 +21,8 @@
 |**currencySymbol** | **String** | Currency symbol |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

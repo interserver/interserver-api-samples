@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.login_info import LoginInfo
+from interserver_api_client.models.login_info import LoginInfo
 
 class TestLoginInfo(unittest.TestCase):
     """LoginInfo unit test stubs"""

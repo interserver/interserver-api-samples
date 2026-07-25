@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.create_geo_rule400_response import CreateGeoRule400Response
+from interserver_api_client.models.create_geo_rule400_response import CreateGeoRule400Response
 
 class TestCreateGeoRule400Response(unittest.TestCase):
     """CreateGeoRule400Response unit test stubs"""

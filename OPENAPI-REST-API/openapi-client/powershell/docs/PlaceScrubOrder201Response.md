@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PlaceScrubOrder201Response = Initialize-PSOpenAPIToolsPlaceScrubOrder201Response  -Success true `
+$PlaceScrubOrder201Response = Initialize-InterserverApiPlaceScrubOrder201Response  -Success true `
  -Text ScrubIp order is placed. `
  -OrderDetails null
 ```

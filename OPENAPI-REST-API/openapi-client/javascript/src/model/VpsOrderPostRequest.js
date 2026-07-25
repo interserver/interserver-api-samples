@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsOrderPostRequest model module.
  * @module model/VpsOrderPostRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderPostRequest {
     /**
@@ -255,7 +255,13 @@ VpsOrderPostRequest['VpsPlatformEnum'] = {
      * value: "kvmstorage"
      * @const
      */
-    "kvmstorage": "kvmstorage"
+    "kvmstorage": "kvmstorage",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 
@@ -282,7 +288,13 @@ VpsOrderPostRequest['ControlpanelEnum'] = {
      * value: "da"
      * @const
      */
-    "da": "da"
+    "da": "da",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 

@@ -62,10 +62,6 @@ public:
 	class GetDomainLookupResponse;
 	class GetDomainNameserversRequest;
 	class GetDomainNameserversResponse;
-	class GetDomainOrderFieldsRequest;
-	class GetDomainOrderFieldsResponse;
-	class GetDomainOrderSearchResultsRequest;
-	class GetDomainOrderSearchResultsResponse;
 	class GetDomainRenewalRequest;
 	class GetDomainRenewalResponse;
 	class GetDomainSearchRequest;
@@ -84,6 +80,8 @@ public:
 	class PatchDomainsResponse;
 	class PostDomainRenewalRequest;
 	class PostDomainRenewalResponse;
+	class PostDomainSearchRequest;
+	class PostDomainSearchResponse;
 	class PostDomainTransferRequest;
 	class PostDomainTransferResponse;
 	class PutDomainsRequest;
@@ -109,8 +107,6 @@ public:
     DECLARE_DELEGATE_OneParam(FGetDomainInvoicesDelegate, const GetDomainInvoicesResponse&);
     DECLARE_DELEGATE_OneParam(FGetDomainLookupDelegate, const GetDomainLookupResponse&);
     DECLARE_DELEGATE_OneParam(FGetDomainNameserversDelegate, const GetDomainNameserversResponse&);
-    DECLARE_DELEGATE_OneParam(FGetDomainOrderFieldsDelegate, const GetDomainOrderFieldsResponse&);
-    DECLARE_DELEGATE_OneParam(FGetDomainOrderSearchResultsDelegate, const GetDomainOrderSearchResultsResponse&);
     DECLARE_DELEGATE_OneParam(FGetDomainRenewalDelegate, const GetDomainRenewalResponse&);
     DECLARE_DELEGATE_OneParam(FGetDomainSearchDelegate, const GetDomainSearchResponse&);
     DECLARE_DELEGATE_OneParam(FGetDomainTransferDelegate, const GetDomainTransferResponse&);
@@ -120,6 +116,7 @@ public:
     DECLARE_DELEGATE_OneParam(FGetNewDomainDelegate, const GetNewDomainResponse&);
     DECLARE_DELEGATE_OneParam(FPatchDomainsDelegate, const PatchDomainsResponse&);
     DECLARE_DELEGATE_OneParam(FPostDomainRenewalDelegate, const PostDomainRenewalResponse&);
+    DECLARE_DELEGATE_OneParam(FPostDomainSearchDelegate, const PostDomainSearchResponse&);
     DECLARE_DELEGATE_OneParam(FPostDomainTransferDelegate, const PostDomainTransferResponse&);
     DECLARE_DELEGATE_OneParam(FPutDomainsDelegate, const PutDomainsResponse&);
     DECLARE_DELEGATE_OneParam(FUpdateDomainContactDelegate, const UpdateDomainContactResponse&);
@@ -139,8 +136,6 @@ public:
     FHttpRequestPtr GetDomainInvoices(const GetDomainInvoicesRequest& Request, const FGetDomainInvoicesDelegate& Delegate = FGetDomainInvoicesDelegate()) const;
     FHttpRequestPtr GetDomainLookup(const GetDomainLookupRequest& Request, const FGetDomainLookupDelegate& Delegate = FGetDomainLookupDelegate()) const;
     FHttpRequestPtr GetDomainNameservers(const GetDomainNameserversRequest& Request, const FGetDomainNameserversDelegate& Delegate = FGetDomainNameserversDelegate()) const;
-    FHttpRequestPtr GetDomainOrderFields(const GetDomainOrderFieldsRequest& Request, const FGetDomainOrderFieldsDelegate& Delegate = FGetDomainOrderFieldsDelegate()) const;
-    FHttpRequestPtr GetDomainOrderSearchResults(const GetDomainOrderSearchResultsRequest& Request, const FGetDomainOrderSearchResultsDelegate& Delegate = FGetDomainOrderSearchResultsDelegate()) const;
     FHttpRequestPtr GetDomainRenewal(const GetDomainRenewalRequest& Request, const FGetDomainRenewalDelegate& Delegate = FGetDomainRenewalDelegate()) const;
     FHttpRequestPtr GetDomainSearch(const GetDomainSearchRequest& Request, const FGetDomainSearchDelegate& Delegate = FGetDomainSearchDelegate()) const;
     FHttpRequestPtr GetDomainTransfer(const GetDomainTransferRequest& Request, const FGetDomainTransferDelegate& Delegate = FGetDomainTransferDelegate()) const;
@@ -150,6 +145,7 @@ public:
     FHttpRequestPtr GetNewDomain(const GetNewDomainRequest& Request, const FGetNewDomainDelegate& Delegate = FGetNewDomainDelegate()) const;
     FHttpRequestPtr PatchDomains(const PatchDomainsRequest& Request, const FPatchDomainsDelegate& Delegate = FPatchDomainsDelegate()) const;
     FHttpRequestPtr PostDomainRenewal(const PostDomainRenewalRequest& Request, const FPostDomainRenewalDelegate& Delegate = FPostDomainRenewalDelegate()) const;
+    FHttpRequestPtr PostDomainSearch(const PostDomainSearchRequest& Request, const FPostDomainSearchDelegate& Delegate = FPostDomainSearchDelegate()) const;
     FHttpRequestPtr PostDomainTransfer(const PostDomainTransferRequest& Request, const FPostDomainTransferDelegate& Delegate = FPostDomainTransferDelegate()) const;
     FHttpRequestPtr PutDomains(const PutDomainsRequest& Request, const FPutDomainsDelegate& Delegate = FPutDomainsDelegate()) const;
     FHttpRequestPtr UpdateDomainContact(const UpdateDomainContactRequest& Request, const FUpdateDomainContactDelegate& Delegate = FUpdateDomainContactDelegate()) const;
@@ -170,8 +166,6 @@ private:
     void OnGetDomainInvoicesResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetDomainInvoicesDelegate Delegate) const;
     void OnGetDomainLookupResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetDomainLookupDelegate Delegate) const;
     void OnGetDomainNameserversResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetDomainNameserversDelegate Delegate) const;
-    void OnGetDomainOrderFieldsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetDomainOrderFieldsDelegate Delegate) const;
-    void OnGetDomainOrderSearchResultsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetDomainOrderSearchResultsDelegate Delegate) const;
     void OnGetDomainRenewalResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetDomainRenewalDelegate Delegate) const;
     void OnGetDomainSearchResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetDomainSearchDelegate Delegate) const;
     void OnGetDomainTransferResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetDomainTransferDelegate Delegate) const;
@@ -181,6 +175,7 @@ private:
     void OnGetNewDomainResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetNewDomainDelegate Delegate) const;
     void OnPatchDomainsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPatchDomainsDelegate Delegate) const;
     void OnPostDomainRenewalResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostDomainRenewalDelegate Delegate) const;
+    void OnPostDomainSearchResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostDomainSearchDelegate Delegate) const;
     void OnPostDomainTransferResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostDomainTransferDelegate Delegate) const;
     void OnPutDomainsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPutDomainsDelegate Delegate) const;
     void OnUpdateDomainContactResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUpdateDomainContactDelegate Delegate) const;

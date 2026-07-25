@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ScrubIpsDeleteRule400Response = Initialize-PSOpenAPIToolsScrubIpsDeleteRule400Response  -Success false `
+$ScrubIpsDeleteRule400Response = Initialize-InterserverApiScrubIpsDeleteRule400Response  -Success false `
  -Text Invalid rule id
 ```
 

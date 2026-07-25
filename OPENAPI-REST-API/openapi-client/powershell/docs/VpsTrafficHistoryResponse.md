@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsTrafficHistoryResponse = Initialize-PSOpenAPIToolsVpsTrafficHistoryResponse  -Hour null `
+$VpsTrafficHistoryResponse = Initialize-InterserverApiVpsTrafficHistoryResponse  -Hour null `
  -Day null
 ```
 

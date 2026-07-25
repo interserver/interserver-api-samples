@@ -13,28 +13,25 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse20019 {
     /// <summary>
-    /// Status message.
+    /// Gets or Sets PackageCosts
     /// </summary>
-    /// <value>Status message.</value>
-    [DataMember(Name="text", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "text")]
-    public string Text { get; set; }
+    [DataMember(Name="packageCosts", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "packageCosts")]
+    public InlineResponse20019PackageCosts PackageCosts { get; set; }
 
     /// <summary>
-    /// Invoice ID for payment.
+    /// Gets or Sets ServiceTypes
     /// </summary>
-    /// <value>Invoice ID for payment.</value>
-    [DataMember(Name="invoice", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "invoice")]
-    public int? Invoice { get; set; }
+    [DataMember(Name="serviceTypes", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "serviceTypes")]
+    public List<InlineResponse20019ServiceTypes> ServiceTypes { get; set; }
 
     /// <summary>
-    /// Server order ID.
+    /// Gets or Sets Ips
     /// </summary>
-    /// <value>Server order ID.</value>
-    [DataMember(Name="order", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "order")]
-    public int? Order { get; set; }
+    [DataMember(Name="ips", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "ips")]
+    public List<InlineResponse20019Ips> Ips { get; set; }
 
 
     /// <summary>
@@ -44,9 +41,9 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse20019 {\n");
-      sb.Append("  Text: ").Append(Text).Append("\n");
-      sb.Append("  Invoice: ").Append(Invoice).Append("\n");
-      sb.Append("  Order: ").Append(Order).Append("\n");
+      sb.Append("  PackageCosts: ").Append(PackageCosts).Append("\n");
+      sb.Append("  ServiceTypes: ").Append(ServiceTypes).Append("\n");
+      sb.Append("  Ips: ").Append(Ips).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

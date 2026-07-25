@@ -1,4 +1,4 @@
-# openapi::GetOrderDetail200ResponseServiceTypesInner
+# interserverapi::GetOrderDetail200ResponseServiceTypesInner
 
 
 ## Properties

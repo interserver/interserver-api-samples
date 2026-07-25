@@ -35,4 +35,8 @@ A single email record in the mail log.  Combines data from the message store (en
 |**mxHostname** | **String** | The MX hostname the relay connected to for delivery.  Corresponds to the &#x60;mx&#x60; filter parameter. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

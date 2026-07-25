@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.websites_order_json_service_offers import WebsitesOrderJsonServiceOffers
+from interserver_api_client.models.websites_order_json_service_offers import WebsitesOrderJsonServiceOffers
 
 class TestWebsitesOrderJsonServiceOffers(unittest.TestCase):
     """WebsitesOrderJsonServiceOffers unit test stubs"""
@@ -37,7 +37,7 @@ class TestWebsitesOrderJsonServiceOffers(unittest.TestCase):
         if include_optional:
             return WebsitesOrderJsonServiceOffers(
                 var_1026 = [
-                    openapi_client.models.websites_order_json_service_offers_item.WebsitesOrderJsonServiceOffersItem(
+                    interserver_api_client.models.websites_order_json_service_offers_item.WebsitesOrderJsonServiceOffersItem(
                         service_offer_id = '136', 
                         service_id = '1026', 
                         intro_cost = 96, 
@@ -55,7 +55,7 @@ class TestWebsitesOrderJsonServiceOffers(unittest.TestCase):
         else:
             return WebsitesOrderJsonServiceOffers(
                 var_1026 = [
-                    openapi_client.models.websites_order_json_service_offers_item.WebsitesOrderJsonServiceOffersItem(
+                    interserver_api_client.models.websites_order_json_service_offers_item.WebsitesOrderJsonServiceOffersItem(
                         service_offer_id = '136', 
                         service_id = '1026', 
                         intro_cost = 96, 

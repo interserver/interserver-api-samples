@@ -98,7 +98,7 @@ VpsTemplatesList <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`templates`)) {
-        self$`templates` <- ApiClient$new()$deserializeObj(this_object$`templates`, "array[VpsTemplateRow]", loadNamespace("openapi"))
+        self$`templates` <- ApiClient$new()$deserializeObj(this_object$`templates`, "array[VpsTemplateRow]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -121,7 +121,7 @@ VpsTemplatesList <- R6::R6Class(
     #' @return the instance of VpsTemplatesList
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`templates` <- ApiClient$new()$deserializeObj(this_object$`templates`, "array[VpsTemplateRow]", loadNamespace("openapi"))
+      self$`templates` <- ApiClient$new()$deserializeObj(this_object$`templates`, "array[VpsTemplateRow]", loadNamespace("interserverapi"))
       self
     },
 

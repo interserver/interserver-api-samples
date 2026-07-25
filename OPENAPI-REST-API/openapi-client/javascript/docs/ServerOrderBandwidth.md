@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerOrderBandwidth
+# InterserverApiClient.ServerOrderBandwidth
 
 ## Properties
 

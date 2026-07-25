@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerOrderBandwidth model module.
  * @module model/ServerOrderBandwidth
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderBandwidth {
     /**

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SearchAutocompleteResponse } from './api';
+import { SearchAutocompleteResponse } from '@interserver/myadmin-client';
 
 const instance: SearchAutocompleteResponse = {
 };

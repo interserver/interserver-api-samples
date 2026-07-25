@@ -12,9 +12,9 @@ Name | Type | Description | Notes
 **CID** | **String** |  | [optional] 
 **OID** | **String** |  | [optional] 
 **TYPE** | **String** |  | [optional] 
-**iTEM1** | **String** |  | [optional] 
-**aMT1** | **String** |  | [optional] 
-**qTY1** | **int** |  | [optional] 
+**ITEM1** | **String** |  | [optional] 
+**AMT1** | **String** |  | [optional] 
+**QTY1** | **int** |  | [optional] 
 **CURRENCY** | **String** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

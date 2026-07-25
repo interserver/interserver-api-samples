@@ -1,4 +1,4 @@
-# SwaggerClient::InlineResponse5005
+# InterserverApiClient::InlineResponse5005
 
 ## Properties
 Name | Type | Description | Notes

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_order_put_request import VpsOrderPutRequest
+from interserver_api_client.models.vps_order_put_request import VpsOrderPutRequest
 
 # TODO update the JSON string below
 json = "{}"

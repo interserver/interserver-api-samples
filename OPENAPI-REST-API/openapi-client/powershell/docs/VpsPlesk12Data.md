@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsPlesk12Data = Initialize-PSOpenAPIToolsVpsPlesk12Data  -Admin null `
+$VpsPlesk12Data = Initialize-InterserverApiVpsPlesk12Data  -Admin null `
  -Pro null `
  -VarHost null
 ```

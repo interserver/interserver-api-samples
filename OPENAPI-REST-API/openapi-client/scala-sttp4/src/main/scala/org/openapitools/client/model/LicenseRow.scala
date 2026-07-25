@@ -35,4 +35,3 @@ case class LicenseRow(
   /* The invoices date of the license. */
   invoices_date: Option[OffsetDateTime] = None
 )
-

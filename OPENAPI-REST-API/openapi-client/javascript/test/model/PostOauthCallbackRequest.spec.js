@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PostOauthCallbackRequest();
+    instance = new InterserverApiClient.PostOauthCallbackRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('PostOauthCallbackRequest', function() {
     it('should create an instance of PostOauthCallbackRequest', function() {
       // uncomment below and update the code to test PostOauthCallbackRequest
-      //var instance = new InterServerManagementApi.PostOauthCallbackRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.PostOauthCallbackRequest);
+      //var instance = new InterserverApiClient.PostOauthCallbackRequest();
+      //expect(instance).to.be.a(InterserverApiClient.PostOauthCallbackRequest);
     });
 
     it('should have the property provider (base name: "provider")', function() {
       // uncomment below and update the code to test the property provider
-      //var instance = new InterServerManagementApi.PostOauthCallbackRequest();
+      //var instance = new InterserverApiClient.PostOauthCallbackRequest();
       //expect(instance).to.be();
     });
 

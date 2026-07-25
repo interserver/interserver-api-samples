@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for SuccessTextResponse
 void main() {
-  final instance = SuccessTextResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final SuccessTextResponse? instance = /* SuccessTextResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(SuccessTextResponse, () {
     // Indicates whether or not the command was successful or not.
@@ -14,13 +14,13 @@ void main() {
     });
 
     // Text associated with the response.
-    // String text
+    // Optional<String?> text
     test('to test the property `text`', () async {
       // TODO
     });
 
     // Optional Action relating to the response.
-    // String action
+    // Optional<String?> action
     test('to test the property `action`', () async {
       // TODO
     });

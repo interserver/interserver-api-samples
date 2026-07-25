@@ -1,4 +1,4 @@
-# InterServerManagementApi.CreateFilter201Response
+# InterserverApiClient.CreateFilter201Response
 
 ## Properties
 

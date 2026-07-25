@@ -195,7 +195,7 @@ BackupOrderPutResponse <- R6::R6Class(
         self$`continue` <- this_object$`continue`
       }
       if (!is.null(this_object$`errors`)) {
-        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("openapi"))
+        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`serviceType`)) {
         self$`serviceType` <- this_object$`serviceType`
@@ -243,7 +243,7 @@ BackupOrderPutResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`continue` <- this_object$`continue`
-      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("openapi"))
+      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("interserverapi"))
       self$`serviceType` <- this_object$`serviceType`
       self$`serviceCost` <- this_object$`serviceCost`
       self$`originalCost` <- this_object$`originalCost`

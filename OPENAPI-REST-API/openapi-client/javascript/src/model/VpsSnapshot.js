@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsSnapshot model module.
  * @module model/VpsSnapshot
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsSnapshot {
     /**

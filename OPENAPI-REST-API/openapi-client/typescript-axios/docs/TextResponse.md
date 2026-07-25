@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TextResponse } from './api';
+import { TextResponse } from '@interserver/myadmin-client';
 
 const instance: TextResponse = {
     text,

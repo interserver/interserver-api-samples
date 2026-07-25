@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.server_order_field_labels import ServerOrderFieldLabels
+from interserver_api_client.models.server_order_field_labels import ServerOrderFieldLabels
 
 # TODO update the JSON string below
 json = "{}"

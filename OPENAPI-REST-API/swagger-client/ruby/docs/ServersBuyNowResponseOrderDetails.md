@@ -1,4 +1,4 @@
-# SwaggerClient::ServersBuyNowResponseOrderDetails
+# InterserverApiClient::ServersBuyNowResponseOrderDetails
 
 ## Properties
 Name | Type | Description | Notes

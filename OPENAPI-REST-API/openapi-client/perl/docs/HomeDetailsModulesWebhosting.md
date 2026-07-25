@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::HomeDetailsModulesWebhosting
+# InterServerAPI::Object::HomeDetailsModulesWebhosting
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::HomeDetailsModulesWebhosting;
+use InterServerAPI::Object::HomeDetailsModulesWebhosting;
 ```
 
 ## Properties

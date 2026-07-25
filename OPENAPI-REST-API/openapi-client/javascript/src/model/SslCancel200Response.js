@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SslCancel200Response model module.
  * @module model/SslCancel200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class SslCancel200Response {
     /**

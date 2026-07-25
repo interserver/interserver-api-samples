@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailBlockRspamd } from './api';
+import { MailBlockRspamd } from '@interserver/myadmin-client';
 
 const instance: MailBlockRspamd = {
     from,

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.view_mail_log_start_date_parameter import ViewMailLogStartDateParameter
+from interserver_api_client.models.view_mail_log_start_date_parameter import ViewMailLogStartDateParameter
 
 # TODO update the JSON string below
 json = "{}"

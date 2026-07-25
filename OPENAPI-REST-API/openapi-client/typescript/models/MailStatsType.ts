@@ -88,13 +88,5 @@ export class MailStatsType {
     }
 }
 
-export enum MailStatsTypeTimeEnum {
-    All = 'all',
-    Billing = 'billing',
-    Month = 'month',
-    _7d = '7d',
-    _24h = '24h',
-    Today = 'today',
-    _1h = '1h'
-}
+    export type MailStatsTypeTimeEnum = "all" | "billing" | "month" | "7d" | "24h" | "today" | "1h" ;
 

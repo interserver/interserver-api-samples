@@ -1,4 +1,4 @@
-# SwaggerClient::WebsiteExtraInfoTables
+# InterserverApiClient::WebsiteExtraInfoTables
 
 ## Properties
 Name | Type | Description | Notes

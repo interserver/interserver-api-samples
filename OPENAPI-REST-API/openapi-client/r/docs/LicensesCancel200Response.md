@@ -1,4 +1,4 @@
-# openapi::LicensesCancel200Response
+# interserverapi::LicensesCancel200Response
 
 
 ## Properties

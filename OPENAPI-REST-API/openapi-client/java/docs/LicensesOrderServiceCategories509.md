@@ -13,4 +13,8 @@
 |**categoryModule** | **String** | Category Module |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoDataExtra } from './api';
+import { AccountInfoDataExtra } from '@interserver/myadmin-client';
 
 const instance: AccountInfoDataExtra = {
     private_whois,

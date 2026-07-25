@@ -5,152 +5,6 @@
  *
  *)
 
-let add_account_credit_card ?name ?address ?city ?state ?country ?zip ?cc ?cc_exp ?cc_ccv2 () =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/account/creditcards" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    let body = Request.init_form_encoded_body () in
-    let body = Request.maybe_add_form_encoded_body_param body "name"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- name in
-    let body = Request.maybe_add_form_encoded_body_param body "address"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- address in
-    let body = Request.maybe_add_form_encoded_body_param body "city"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- city in
-    let body = Request.maybe_add_form_encoded_body_param body "state"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- state in
-    let body = Request.maybe_add_form_encoded_body_param body "country"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- country in
-    let body = Request.maybe_add_form_encoded_body_param body "zip"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- zip in
-    let body = Request.maybe_add_form_encoded_body_param body "cc"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- cc in
-    let body = Request.maybe_add_form_encoded_body_param body "cc_exp"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- cc_exp in
-    let body = Request.maybe_add_form_encoded_body_param body "cc_ccv2"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- cc_ccv2 in
-    let body = Request.finalize_form_encoded_body body in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
-    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
-
 let add_billing_credit_card ~billing_add_cc_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/billing/creditcards" in
@@ -198,30 +52,6 @@ let add_billing_prepay ~billing_prepay_request_t =
     in
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
-
-let delete_account_credit_card ~id =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/account/creditcards/{id}" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    let uri = Request.replace_path_param uri "id"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- id in
-    Cohttp_lwt_unix.Client.call `DELETE uri ~headers >>= fun (resp, body) ->
-    Request.read_json_body_as (JsonSupport.to_string) resp body
 
 let delete_billing_credit_card ~id =
     let open Lwt.Infix in
@@ -304,6 +134,48 @@ let get_affiliate_banners () =
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as_list_of (JsonSupport.unwrap Affiliate_banner_row.of_yojson) resp body
 
+let get_affiliate_download ?st ?ex ?year () =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/affiliate/download" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.maybe_add_query_param uri "st"     
+    
+    
+    
+    
+    
+    
+    
+    
+    (fun x -> x)
+    
+    
+        
+        
+ st in
+    let uri = Request.maybe_add_query_param uri "ex"         Enums.show_ex
+        
+ ex in
+    let uri = Request.maybe_add_query_param uri "year"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ year in
+    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
+    Request.handle_unit_response resp
+
 let get_affiliate_rich_report () =
     let open Lwt.Infix in
     let uri = Request.build_uri "/affiliate/rich_report" in
@@ -337,14 +209,29 @@ let get_affiliate_sales_graph ?days () =
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Status_monthly_breakdown.of_yojson) resp body
 
-let get_affiliate_sales_report () =
+let get_affiliate_signups ?st () =
     let open Lwt.Infix in
-    let uri = Request.build_uri "/affiliate/sales_report" in
+    let uri = Request.build_uri "/affiliate/signups" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.maybe_add_query_param uri "st"     
+    
+    
+    
+    
+    
+    
+    
+    
+    (fun x -> x)
+    
+    
+        
+        
+ st in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.read_json_body_as (JsonSupport.unwrap Text_response.of_yojson) resp body
+    Request.read_json_body_as (JsonSupport.unwrap Get_affiliate_signups_200_response.of_yojson) resp body
 
 let get_affiliate_traffic_graph ?days () =
     let open Lwt.Infix in
@@ -454,63 +341,9 @@ let get_billing_pre_pays () =
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body  resp body
 
-let get_invoices ?search_string ?skip ?limit () =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/invoices" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    let uri = Request.maybe_add_query_param uri "searchString"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- search_string in
-    let uri = Request.maybe_add_query_param uri "skip"     
-    Int32.to_string
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
-        
- skip in
-    let uri = Request.maybe_add_query_param uri "limit"     
-    Int32.to_string
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
-        
- limit in
-    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.read_json_body_as_list_of (JsonSupport.unwrap Invoice.of_yojson) resp body
-
 let initiate_payment ~_method ~invoices =
     let open Lwt.Infix in
-    let uri = Request.build_uri "/pay/{method}/{invoices}" in
+    let uri = Request.build_uri "/billing/pay/{method}/{invoices}" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
@@ -534,6 +367,45 @@ let initiate_payment ~_method ~invoices =
  invoices in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Initiate_payment_200_response.of_yojson) resp body
+
+let patch_billing_credit_card_verify ~id ~patch_billing_credit_card_verify_request_t =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/billing/creditcards/{id}/verify" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ id in
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Patch_billing_credit_card_verify_request.to_yojson
+    
+    
+    
+ patch_billing_credit_card_verify_request_t
+    in
+    Cohttp_lwt_unix.Client.call `PATCH uri ~headers ~body >>= fun (resp, body) ->
+    Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
 let post_billing_credit_card_verify ~id ~billing_verify_cc_request_t =
     let open Lwt.Infix in
@@ -574,89 +446,9 @@ let post_billing_credit_card_verify ~id ~billing_verify_cc_request_t =
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
-let update_account_credit_card ~id =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/account/creditcards/{id}" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    let uri = Request.replace_path_param uri "id"     
-    Int32.to_string
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
-        
- id in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
-    Request.read_json_body_as (JsonSupport.to_string) resp body
-
 let update_affiliate_dock_setup ?affiliate_dock_title ?affiliate_dock_description ?referrer_coupon () =
     let open Lwt.Infix in
     let uri = Request.build_uri "/affiliate/dock_setup" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    let body = Request.init_form_encoded_body () in
-    let body = Request.maybe_add_form_encoded_body_param body "affiliate_dock_title"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- affiliate_dock_title in
-    let body = Request.maybe_add_form_encoded_body_param body "affiliate_dock_description"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- affiliate_dock_description in
-    let body = Request.maybe_add_form_encoded_body_param body "referrer_coupon"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- referrer_coupon in
-    let body = Request.finalize_form_encoded_body body in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
-    Request.read_json_body_as (JsonSupport.unwrap Text_response.of_yojson) resp body
-
-let update_affiliate_landing_page ?affiliate_dock_title ?affiliate_dock_description ?referrer_coupon () =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/affiliate/landing_pg" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in

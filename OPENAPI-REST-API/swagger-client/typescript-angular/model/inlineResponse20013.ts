@@ -9,8 +9,19 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { InlineResponse20013BillingDetails } from './inlineResponse20013BillingDetails';
+import { InlineResponse20013ClientLinks } from './inlineResponse20013ClientLinks';
+import { InlineResponse20013ExtraInfoTables } from './inlineResponse20013ExtraInfoTables';
+import { InlineResponse20013FilterFirewall } from './inlineResponse20013FilterFirewall';
+import { InlineResponse20013ServiceInfo } from './inlineResponse20013ServiceInfo';
 
 export interface InlineResponse20013 { 
-    success: boolean;
-    text: string;
+    serviceInfo?: InlineResponse20013ServiceInfo;
+    client_links?: Array<InlineResponse20013ClientLinks>;
+    billingDetails?: InlineResponse20013BillingDetails;
+    custCurrency?: string;
+    custCurrencySymbol?: string;
+    _package?: string;
+    extraInfoTables?: InlineResponse20013ExtraInfoTables;
+    filter_firewall?: InlineResponse20013FilterFirewall;
 }

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for EmailAddressName
 void main() {
-  final instance = EmailAddressNameBuilder();
-  // TODO add properties to the builder and call build()
+  final EmailAddressName? instance = /* EmailAddressName(...) */ null;
+  // TODO add properties to the entity
 
   group(EmailAddressName, () {
     // The email address.
@@ -14,7 +14,7 @@ void main() {
     });
 
     // Name to use for the sending contact.
-    // String name
+    // Optional<String?> name
     test('to test the property `name`', () async {
       // TODO
     });

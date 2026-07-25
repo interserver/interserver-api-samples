@@ -1,4 +1,4 @@
-# SwaggerClient::ServersBuyNowError
+# InterserverApiClient::ServersBuyNowError
 
 ## Properties
 Name | Type | Description | Notes

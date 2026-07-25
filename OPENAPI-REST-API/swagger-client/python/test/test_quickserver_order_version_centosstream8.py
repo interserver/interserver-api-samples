@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.quickserver_order_version_centosstream8 import QuickserverOrderVersionCentosstream8  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.quickserver_order_version_centosstream8 import QuickserverOrderVersionCentosstream8  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestQuickserverOrderVersionCentosstream8(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestQuickserverOrderVersionCentosstream8(unittest.TestCase):
     def testQuickserverOrderVersionCentosstream8(self):
         """Test QuickserverOrderVersionCentosstream8"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.quickserver_order_version_centosstream8.QuickserverOrderVersionCentosstream8()  # noqa: E501
+        # model = interserver_api_client.models.quickserver_order_version_centosstream8.QuickserverOrderVersionCentosstream8()  # noqa: E501
         pass
 
 

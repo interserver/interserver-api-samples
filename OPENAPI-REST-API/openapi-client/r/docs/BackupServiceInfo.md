@@ -1,4 +1,4 @@
-# openapi::BackupServiceInfo
+# interserverapi::BackupServiceInfo
 
 Core service record for a backup storage service including ID, status, quota, and billing details.
 

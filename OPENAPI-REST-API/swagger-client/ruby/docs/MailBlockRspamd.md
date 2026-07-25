@@ -1,4 +1,4 @@
-# SwaggerClient::MailBlockRspamd
+# InterserverApiClient::MailBlockRspamd
 
 ## Properties
 Name | Type | Description | Notes

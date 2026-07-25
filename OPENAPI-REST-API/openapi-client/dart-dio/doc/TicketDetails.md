@@ -1,21 +1,21 @@
-# openapi.model.TicketDetails
+# interserver_api.model.TicketDetails
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ticketid** | **int** |  | [optional] 
-**ticketmaskid** | **String** |  | [optional] 
-**department** | **String** |  | [optional] 
-**status** | **String** |  | [optional] 
-**priority** | **String** |  | [optional] 
-**subject** | **String** |  | [optional] 
-**createdOn** | **String** |  | [optional] 
-**updatedOn** | **String** |  | [optional] 
+**ticketid** | **Optional&lt;int?&gt;** |  | [optional] 
+**ticketmaskid** | **Optional&lt;String?&gt;** |  | [optional] 
+**department** | **Optional&lt;String?&gt;** |  | [optional] 
+**status** | **Optional&lt;String?&gt;** |  | [optional] 
+**priority** | **Optional&lt;String?&gt;** |  | [optional] 
+**subject** | **Optional&lt;String?&gt;** |  | [optional] 
+**createdOn** | **Optional&lt;String?&gt;** |  | [optional] 
+**updatedOn** | **Optional&lt;String?&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

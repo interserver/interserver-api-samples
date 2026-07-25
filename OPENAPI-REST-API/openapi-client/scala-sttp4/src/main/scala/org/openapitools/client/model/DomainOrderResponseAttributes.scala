@@ -18,4 +18,3 @@ case class DomainOrderResponseAttributes(
   /* Administrative contact email provided for the order. */
   admin_email: Option[String] = None
 )
-

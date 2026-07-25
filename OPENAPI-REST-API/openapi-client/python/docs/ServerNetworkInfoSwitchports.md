@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.server_network_info_switchports import ServerNetworkInfoSwitchports
+from interserver_api_client.models.server_network_info_switchports import ServerNetworkInfoSwitchports
 
 # TODO update the JSON string below
 json = "{}"

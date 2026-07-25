@@ -16,4 +16,3 @@ case class PatchOauthTwoFactor200Response(
   /* Whether the 2FA verification succeeded and the user is now logged in. */
   login: Option[Boolean] = None
 )
-

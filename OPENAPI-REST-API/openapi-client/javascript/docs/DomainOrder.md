@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainOrder
+# InterserverApiClient.DomainOrder
 
 ## Properties
 

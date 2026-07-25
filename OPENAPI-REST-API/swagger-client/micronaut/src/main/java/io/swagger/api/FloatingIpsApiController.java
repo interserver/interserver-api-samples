@@ -2,7 +2,9 @@ package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
 
-import io.swagger.model.InlineResponse2003;
+import io.swagger.model.FloatingIpOrderRequest;
+
+import io.swagger.model.InlineResponse2004;
 
 import io.swagger.model.InlineResponse401;
 
@@ -26,13 +28,13 @@ import java.util.Map;
 public class FloatingIpsApiController implements FloatingIpsApi {
 
     @Override
-    public Single<HttpResponse<ServiceOrderPostResponse>> addFloatingIp() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addFloatingIp(@NotNull @Valid FloatingIpOrderRequest body) {
         // TODO: Implement me
-        return FloatingIpsApi.super.addFloatingIp();
+        return FloatingIpsApi.super.addFloatingIp(body);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse2003>> floatingIpsCancel(Integer id) {
+    public Single<HttpResponse<InlineResponse2004>> floatingIpsCancel(Integer id) {
         // TODO: Implement me
         return FloatingIpsApi.super.floatingIpsCancel(id);
     }
@@ -80,9 +82,9 @@ public class FloatingIpsApiController implements FloatingIpsApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> putFloatingIps() {
+    public Single<HttpResponse<Void>> putFloatingIps(@NotNull @Valid FloatingIpOrderRequest body) {
         // TODO: Implement me
-        return FloatingIpsApi.super.putFloatingIps();
+        return FloatingIpsApi.super.putFloatingIps(body);
     }
 
     @Override

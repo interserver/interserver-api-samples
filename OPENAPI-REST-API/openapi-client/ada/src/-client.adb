@@ -13,7 +13,7 @@ with .Clients;
 with .Models;
 with Swagger;
 with Swagger.Credentials.OAuth;
-with Util.Http.Clients.Curl;
+with Util.Http.Clients.Aws;
 with Ada.Text_IO;
 with Ada.Command_Line;
 with Ada.Calendar.Formatting;
@@ -30,7 +30,7 @@ procedure .Client is
 
    procedure Usage is
    begin
-      Put_Line ("Usage: defaultProject {params}...");
+      Put_Line ("Usage: Interserver_Api {params}...");
    end Usage;
 
 begin
@@ -38,7 +38,7 @@ begin
       Usage;
       return;
    end if;
-   Util.Http.Clients.Curl.Register;
+   Util.Http.Clients.Aws.Register;
    declare
       Command : constant String := Ada.Command_Line.Argument (Arg);
       Item    : constant String := Ada.Command_Line.Argument (Arg + 1);

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PostWebsiteMigration200Response = Initialize-PSOpenAPIToolsPostWebsiteMigration200Response  -Text null `
+$PostWebsiteMigration200Response = Initialize-InterserverApiPostWebsiteMigration200Response  -Text null `
  -Ticket null
 ```
 

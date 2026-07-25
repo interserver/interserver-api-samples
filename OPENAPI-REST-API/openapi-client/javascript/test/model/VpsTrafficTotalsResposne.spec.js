@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsTrafficTotalsResposne();
+    instance = new InterserverApiClient.VpsTrafficTotalsResposne();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('VpsTrafficTotalsResposne', function() {
     it('should create an instance of VpsTrafficTotalsResposne', function() {
       // uncomment below and update the code to test VpsTrafficTotalsResposne
-      //var instance = new InterServerManagementApi.VpsTrafficTotalsResposne();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsTrafficTotalsResposne);
+      //var instance = new InterserverApiClient.VpsTrafficTotalsResposne();
+      //expect(instance).to.be.a(InterserverApiClient.VpsTrafficTotalsResposne);
     });
 
     it('should have the property day (base name: "day")', function() {
       // uncomment below and update the code to test the property day
-      //var instance = new InterServerManagementApi.VpsTrafficTotalsResposne();
+      //var instance = new InterserverApiClient.VpsTrafficTotalsResposne();
       //expect(instance).to.be();
     });
 
     it('should have the property month (base name: "month")', function() {
       // uncomment below and update the code to test the property month
-      //var instance = new InterServerManagementApi.VpsTrafficTotalsResposne();
+      //var instance = new InterserverApiClient.VpsTrafficTotalsResposne();
       //expect(instance).to.be();
     });
 
     it('should have the property year (base name: "year")', function() {
       // uncomment below and update the code to test the property year
-      //var instance = new InterServerManagementApi.VpsTrafficTotalsResposne();
+      //var instance = new InterserverApiClient.VpsTrafficTotalsResposne();
       //expect(instance).to.be();
     });
 
     it('should have the property all (base name: "all")', function() {
       // uncomment below and update the code to test the property all
-      //var instance = new InterServerManagementApi.VpsTrafficTotalsResposne();
+      //var instance = new InterserverApiClient.VpsTrafficTotalsResposne();
       //expect(instance).to.be();
     });
 

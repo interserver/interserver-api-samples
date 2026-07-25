@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailServiceType
+# InterServerAPI::Object::MailServiceType
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailServiceType;
+use InterServerAPI::Object::MailServiceType;
 ```
 
 ## Properties

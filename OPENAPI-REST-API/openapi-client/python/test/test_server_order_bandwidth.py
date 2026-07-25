@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_bandwidth import ServerOrderBandwidth
+from interserver_api_client.models.server_order_bandwidth import ServerOrderBandwidth
 
 class TestServerOrderBandwidth(unittest.TestCase):
     """ServerOrderBandwidth unit test stubs"""

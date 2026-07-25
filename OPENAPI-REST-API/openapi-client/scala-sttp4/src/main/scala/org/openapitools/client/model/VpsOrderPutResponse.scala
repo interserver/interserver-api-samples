@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JValue
 
   /**
    * Root Type for VpsOrderPutResponse
@@ -40,4 +41,3 @@ case class VpsOrderPutResponse(
   coupon: Option[String] = None,
   rootpass: Option[String] = None
 )
-

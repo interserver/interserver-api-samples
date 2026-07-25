@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::QuickserverExtraInfoTables');
+use_ok('InterServerAPI::Object::QuickserverExtraInfoTables');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::QuickserverExtraInfoTables->new();
+#my $instance = InterServerAPI::Object::QuickserverExtraInfoTables->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::QuickserverExtraInfoTables');
+#isa_ok($instance, 'InterServerAPI::Object::QuickserverExtraInfoTables');
 
 
 done_testing();

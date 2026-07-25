@@ -114,7 +114,7 @@ VpsIPInfo <- R6::R6Class(
         self$`title` <- this_object$`title`
       }
       if (!is.null(this_object$`rows`)) {
-        self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[VpsIPInfoRow]", loadNamespace("openapi"))
+        self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[VpsIPInfoRow]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -138,7 +138,7 @@ VpsIPInfo <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`title` <- this_object$`title`
-      self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[VpsIPInfoRow]", loadNamespace("openapi"))
+      self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[VpsIPInfoRow]", loadNamespace("interserverapi"))
       self
     },
 

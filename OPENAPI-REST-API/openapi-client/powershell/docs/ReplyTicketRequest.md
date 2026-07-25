@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ReplyTicketRequest = Initialize-PSOpenAPIToolsReplyTicketRequest  -Content null
+$ReplyTicketRequest = Initialize-InterserverApiReplyTicketRequest  -Content null
 ```
 
 - Convert the resource to JSON

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DnsRecord } from './api';
+import { DnsRecord } from '@interserver/myadmin-client';
 
 const instance: DnsRecord = {
     id,

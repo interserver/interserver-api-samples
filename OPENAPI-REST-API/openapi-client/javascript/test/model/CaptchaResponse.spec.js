@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.CaptchaResponse();
+    instance = new InterserverApiClient.CaptchaResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('CaptchaResponse', function() {
     it('should create an instance of CaptchaResponse', function() {
       // uncomment below and update the code to test CaptchaResponse
-      //var instance = new InterServerManagementApi.CaptchaResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.CaptchaResponse);
+      //var instance = new InterserverApiClient.CaptchaResponse();
+      //expect(instance).to.be.a(InterserverApiClient.CaptchaResponse);
     });
 
     it('should have the property captcha (base name: "captcha")', function() {
       // uncomment below and update the code to test the property captcha
-      //var instance = new InterServerManagementApi.CaptchaResponse();
+      //var instance = new InterserverApiClient.CaptchaResponse();
       //expect(instance).to.be();
     });
 

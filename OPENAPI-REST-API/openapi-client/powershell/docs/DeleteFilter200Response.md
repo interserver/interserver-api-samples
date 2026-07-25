@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeleteFilter200Response = Initialize-PSOpenAPIToolsDeleteFilter200Response  -Success true `
+$DeleteFilter200Response = Initialize-InterserverApiDeleteFilter200Response  -Success true `
  -Text Filter is deleted.
 ```
 

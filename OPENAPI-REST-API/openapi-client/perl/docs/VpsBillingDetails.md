@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsBillingDetails
+# InterServerAPI::Object::VpsBillingDetails
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsBillingDetails;
+use InterServerAPI::Object::VpsBillingDetails;
 ```
 
 ## Properties

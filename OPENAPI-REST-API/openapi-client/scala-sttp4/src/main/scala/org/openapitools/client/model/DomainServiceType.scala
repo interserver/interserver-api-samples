@@ -35,4 +35,3 @@ case class DomainServiceType(
   /* Backend module handling this service type. */
   services_module: Option[String] = None
 )
-

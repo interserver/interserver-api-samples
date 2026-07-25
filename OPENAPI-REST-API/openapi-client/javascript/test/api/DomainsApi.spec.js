@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainsApi();
+    instance = new InterserverApiClient.DomainsApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -168,26 +168,6 @@
         done();
       });
     });
-    describe('getDomainOrderFields', function() {
-      it('should call getDomainOrderFields successfully', function(done) {
-        //uncomment below and update the code to test getDomainOrderFields
-        //instance.getDomainOrderFields(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('getDomainOrderSearchResults', function() {
-      it('should call getDomainOrderSearchResults successfully', function(done) {
-        //uncomment below and update the code to test getDomainOrderSearchResults
-        //instance.getDomainOrderSearchResults(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('getDomainRenewal', function() {
       it('should call getDomainRenewal successfully', function(done) {
         //uncomment below and update the code to test getDomainRenewal
@@ -272,6 +252,16 @@
       it('should call postDomainRenewal successfully', function(done) {
         //uncomment below and update the code to test postDomainRenewal
         //instance.postDomainRenewal(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('postDomainSearch', function() {
+      it('should call postDomainSearch successfully', function(done) {
+        //uncomment below and update the code to test postDomainSearch
+        //instance.postDomainSearch(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

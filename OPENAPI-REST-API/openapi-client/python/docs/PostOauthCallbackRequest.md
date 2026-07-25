@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.post_oauth_callback_request import PostOauthCallbackRequest
+from interserver_api_client.models.post_oauth_callback_request import PostOauthCallbackRequest
 
 # TODO update the JSON string below
 json = "{}"

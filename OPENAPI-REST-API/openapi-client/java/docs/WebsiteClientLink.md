@@ -16,4 +16,8 @@ A navigation link for webhosting-related actions in the client portal.
 |**otherAttr** | **String** | Other attributes for the link |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

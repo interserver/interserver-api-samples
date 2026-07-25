@@ -1,83 +1,109 @@
 ## FloatingIPsApi
 
-### Place Floating IP Order
-## Place Floating IP Order
+### Place a real Floating IP order, create billing records, and provision the service
+## Place a real Floating IP order, create billing records, and provision the service
 POST https://my.interserver.net/apiv2/floating_ips/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Cancel Floating IP
-## Cancel Floating IP
+{
+ "serviceType": "<number>",
+ "coupon": "<string>",
+ "comment": "<string>"
+}
+
+
+### Cancel a Floating IP service and release the IP — destructive, billing stops
+## Cancel a Floating IP service and release the IP — destructive, billing stops
 DELETE https://my.interserver.net/apiv2/floating_ips/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### View Floating IP
-## View Floating IP
+### Fetch full details for one Floating IP service, including current target IP
+## Fetch full details for one Floating IP service, including current target IP
 GET https://my.interserver.net/apiv2/floating_ips/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Floating IP Invoices
-## Get Floating IP Invoices
+### List all billing invoices charged against a specific Floating IP service
+## List all billing invoices charged against a specific Floating IP service
 GET https://my.interserver.net/apiv2/floating_ips/{{id}}/invoices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Floating IPs
-## List Floating IPs
+### List all Floating IP services on the authenticated customer&#39;s account
+## List all Floating IP services on the authenticated customer&#39;s account
 GET https://my.interserver.net/apiv2/floating_ips
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Resend Floating IPs Welcome Email
-## Resend Floating IPs Welcome Email
+### Resend the Floating IP welcome / setup email to the account contact
+## Resend the Floating IP welcome / setup email to the account contact
 GET https://my.interserver.net/apiv2/floating_ips/{{id}}/welcome_email
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Floating IP Ordering Information
-## Get Floating IP Ordering Information
+### Get pricing and service-type options for ordering a new Floating IP
+## Get pricing and service-type options for ordering a new Floating IP
 GET https://my.interserver.net/apiv2/floating_ips/order
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Change Floating IP Target
-## Change Floating IP Target
+### Re-point a Floating IP to a different target IP on one of the customer&#39;s services
+## Re-point a Floating IP to a different target IP on one of the customer&#39;s services
 POST https://my.interserver.net/apiv2/floating_ips/{{id}}/change_ip
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Validate Floating IP Order
-## Validate Floating IP Order
+### Validate a Floating IP order and price it without charging the customer
+## Validate a Floating IP order and price it without charging the customer
 PUT https://my.interserver.net/apiv2/floating_ips/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Floating IP
-## Update Floating IP
+{
+ "serviceType": "<number>",
+ "coupon": "<string>",
+ "comment": "<string>"
+}
+
+
+### Update a Floating IP service&#39;s editable settings (label / metadata)
+## Update a Floating IP service&#39;s editable settings (label / metadata)
 POST https://my.interserver.net/apiv2/floating_ips/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

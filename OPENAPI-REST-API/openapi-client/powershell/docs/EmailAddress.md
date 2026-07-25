@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailAddress = Initialize-PSOpenAPIToolsEmailAddress  -Email user@domain.com
+$EmailAddress = Initialize-InterserverApiEmailAddress  -Email user@domain.com
 ```
 
 - Convert the resource to JSON

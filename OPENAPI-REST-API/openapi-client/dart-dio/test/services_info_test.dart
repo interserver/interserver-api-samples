@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServicesInfo
 void main() {
-  final instance = ServicesInfoBuilder();
-  // TODO add properties to the builder and call build()
+  final ServicesInfo? instance = /* ServicesInfo(...) */ null;
+  // TODO add properties to the entity
 
   group(ServicesInfo, () {
     // Modules modules

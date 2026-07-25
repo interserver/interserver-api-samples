@@ -13,12 +13,35 @@
 
 /**
  * 
- * @param success 
- * @param text 
+ * @param type The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
+ * @param redirect URL to redirect the user to for payment (when type is `redirect`).
+ * @param action Form action URL (when type is `submit`).
+ * @param method HTTP method for the form submission (when type is `submit`).
+ * @param items Form field name-value pairs to submit (when type is `submit`).
+ * @param text Status or result text.
  */
 data class InlineResponse20010 (
 
-    val success: kotlin.Boolean,
-    val text: kotlin.String
+    /* The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result). */
+    val type: Type? = null,
+    /* URL to redirect the user to for payment (when type is `redirect`). */
+    val redirect: kotlin.String? = null,
+    /* Form action URL (when type is `submit`). */
+    val action: kotlin.String? = null,
+    /* HTTP method for the form submission (when type is `submit`). */
+    val method: kotlin.String? = null,
+    /* Form field name-value pairs to submit (when type is `submit`). */
+    val items: kotlin.Any? = null,
+    /* Status or result text. */
+    val text: kotlin.String? = null
 ) {
+    /**
+    * The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
+    * Values: REDIRECT,SUBMIT,SINGLE
+    */
+    enum class Type(val value: kotlin.String){
+        REDIRECT("redirect"),
+        SUBMIT("submit"),
+        SINGLE("single");
+    }
 }

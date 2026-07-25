@@ -11,14 +11,12 @@ import Foundation
 
 public struct InlineResponse20018: Codable {
 
-    public var packageCosts: InlineResponse20018PackageCosts?
-    public var serviceTypes: [InlineResponse20018ServiceTypes]?
-    public var ips: [InlineResponse20018Ips]?
+    public var success: Bool?
+    public var text: String?
 
-    public init(packageCosts: InlineResponse20018PackageCosts? = nil, serviceTypes: [InlineResponse20018ServiceTypes]? = nil, ips: [InlineResponse20018Ips]? = nil) {
-        self.packageCosts = packageCosts
-        self.serviceTypes = serviceTypes
-        self.ips = ips
+    public init(success: Bool? = nil, text: String? = nil) {
+        self.success = success
+        self.text = text
     }
 
 

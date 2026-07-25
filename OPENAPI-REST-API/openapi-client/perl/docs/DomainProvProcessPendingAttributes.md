@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainProvProcessPendingAttributes
+# InterServerAPI::Object::DomainProvProcessPendingAttributes
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainProvProcessPendingAttributes;
+use InterServerAPI::Object::DomainProvProcessPendingAttributes;
 ```
 
 ## Properties

@@ -1,4 +1,4 @@
-# openapi::DnsNewRecord
+# interserverapi::DnsNewRecord
 
 Request data for a new DNS record.
 

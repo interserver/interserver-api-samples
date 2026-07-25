@@ -1,4 +1,4 @@
-# SwaggerClient::LoginServiceCounts
+# InterserverApiClient::LoginServiceCounts
 
 ## Properties
 Name | Type | Description | Notes

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MonthlyCounts = Initialize-PSOpenAPIToolsMonthlyCounts 
+$MonthlyCounts = Initialize-InterserverApiMonthlyCounts 
 ```
 
 - Convert the resource to JSON

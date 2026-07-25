@@ -17,7 +17,7 @@ import HomeServicesWebhostingLinks from './HomeServicesWebhostingLinks';
 /**
  * The HomeServicesWebhosting model module.
  * @module model/HomeServicesWebhosting
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeServicesWebhosting {
     /**

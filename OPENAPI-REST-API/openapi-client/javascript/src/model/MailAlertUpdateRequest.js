@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailAlertUpdateRequest model module.
  * @module model/MailAlertUpdateRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailAlertUpdateRequest {
     /**

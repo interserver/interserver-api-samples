@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DnsRecord();
+    instance = new InterserverApiClient.DnsRecord();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,67 +50,67 @@
   describe('DnsRecord', function() {
     it('should create an instance of DnsRecord', function() {
       // uncomment below and update the code to test DnsRecord
-      //var instance = new InterServerManagementApi.DnsRecord();
-      //expect(instance).to.be.a(InterServerManagementApi.DnsRecord);
+      //var instance = new InterserverApiClient.DnsRecord();
+      //expect(instance).to.be.a(InterserverApiClient.DnsRecord);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.DnsRecord();
+      //var instance = new InterserverApiClient.DnsRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_id (base name: "domain_id")', function() {
       // uncomment below and update the code to test the property domain_id
-      //var instance = new InterServerManagementApi.DnsRecord();
+      //var instance = new InterserverApiClient.DnsRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.DnsRecord();
+      //var instance = new InterserverApiClient.DnsRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.DnsRecord();
+      //var instance = new InterserverApiClient.DnsRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property content (base name: "content")', function() {
       // uncomment below and update the code to test the property content
-      //var instance = new InterServerManagementApi.DnsRecord();
+      //var instance = new InterserverApiClient.DnsRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property ttl (base name: "ttl")', function() {
       // uncomment below and update the code to test the property ttl
-      //var instance = new InterServerManagementApi.DnsRecord();
+      //var instance = new InterserverApiClient.DnsRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property prio (base name: "prio")', function() {
       // uncomment below and update the code to test the property prio
-      //var instance = new InterServerManagementApi.DnsRecord();
+      //var instance = new InterserverApiClient.DnsRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property disabled (base name: "disabled")', function() {
       // uncomment below and update the code to test the property disabled
-      //var instance = new InterServerManagementApi.DnsRecord();
+      //var instance = new InterserverApiClient.DnsRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property ordername (base name: "ordername")', function() {
       // uncomment below and update the code to test the property ordername
-      //var instance = new InterServerManagementApi.DnsRecord();
+      //var instance = new InterserverApiClient.DnsRecord();
       //expect(instance).to.be();
     });
 
     it('should have the property auth (base name: "auth")', function() {
       // uncomment below and update the code to test the property auth
-      //var instance = new InterServerManagementApi.DnsRecord();
+      //var instance = new InterserverApiClient.DnsRecord();
       //expect(instance).to.be();
     });
 

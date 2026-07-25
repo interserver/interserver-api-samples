@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_info_data_ccs import AccountInfoDataCcs
+from interserver_api_client.models.account_info_data_ccs import AccountInfoDataCcs
 
 class TestAccountInfoDataCcs(unittest.TestCase):
     """AccountInfoDataCcs unit test stubs"""

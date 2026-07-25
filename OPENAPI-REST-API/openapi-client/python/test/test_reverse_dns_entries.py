@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.reverse_dns_entries import ReverseDnsEntries
+from interserver_api_client.models.reverse_dns_entries import ReverseDnsEntries
 
 class TestReverseDnsEntries(unittest.TestCase):
     """ReverseDnsEntries unit test stubs"""

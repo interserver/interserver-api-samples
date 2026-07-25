@@ -1,8 +1,7 @@
-# SwaggerClient::InlineResponse2001
+# InterserverApiClient::InlineResponse2001
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **BOOLEAN** |  | 
-**text** | **String** |  | 
+**data** | **Object** | Affiliate signup statistics and client-side data. | [optional] 
 

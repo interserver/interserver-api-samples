@@ -1,4 +1,4 @@
-# openapi::VpsOrderPackageCosts
+# interserverapi::VpsOrderPackageCosts
 
 Package Costs
 

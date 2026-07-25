@@ -19,4 +19,8 @@
 |**serviceExtraJson** | **String** | JSON representation of extra service information. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

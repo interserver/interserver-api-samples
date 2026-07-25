@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetWebsiteBuyIp200Response } from './api';
+import { GetWebsiteBuyIp200Response } from '@interserver/myadmin-client';
 
 const instance: GetWebsiteBuyIp200Response = {
     ips,

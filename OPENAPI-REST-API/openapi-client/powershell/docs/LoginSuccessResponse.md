@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LoginSuccessResponse = Initialize-PSOpenAPIToolsLoginSuccessResponse  -SessionId null `
+$LoginSuccessResponse = Initialize-InterserverApiLoginSuccessResponse  -SessionId null `
  -AccountId null `
  -AccountLid null `
  -Ima null `

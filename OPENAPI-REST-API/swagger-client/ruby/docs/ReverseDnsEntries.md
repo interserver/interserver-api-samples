@@ -1,4 +1,4 @@
-# SwaggerClient::ReverseDnsEntries
+# InterserverApiClient::ReverseDnsEntries
 
 ## Properties
 Name | Type | Description | Notes

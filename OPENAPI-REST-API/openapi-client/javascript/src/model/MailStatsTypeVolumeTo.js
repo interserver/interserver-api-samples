@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailStatsTypeVolumeTo model module.
  * @module model/MailStatsTypeVolumeTo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailStatsTypeVolumeTo {
     /**

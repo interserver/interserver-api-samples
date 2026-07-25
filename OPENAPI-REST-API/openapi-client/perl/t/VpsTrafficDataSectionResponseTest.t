@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::VpsTrafficDataSectionResponse');
+use_ok('InterServerAPI::Object::VpsTrafficDataSectionResponse');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::VpsTrafficDataSectionResponse->new();
+#my $instance = InterServerAPI::Object::VpsTrafficDataSectionResponse->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::VpsTrafficDataSectionResponse');
+#isa_ok($instance, 'InterServerAPI::Object::VpsTrafficDataSectionResponse');
 
 
 done_testing();

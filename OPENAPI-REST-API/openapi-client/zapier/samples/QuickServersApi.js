@@ -23,6 +23,8 @@ module.exports = {
         { data: {} },
     "QuickserverOrderSample": 
         { data: {} },
+    "QueueResponseSample": 
+        { data: {} },
     "VpsBackupRowsSample": 
         { data: {} },
     "QuickserverSample": 
@@ -36,8 +38,6 @@ module.exports = {
     "ReverseDnsEntriesSample": 
         { data: {} },
     "TextResponseSample": 
-        { data: {} },
-    "QueueResponseSample": 
         { data: {} },
     "QueueResponseSample": 
         { data: {} },

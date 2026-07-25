@@ -36,4 +36,3 @@ case class QuickserverBillingDetails(
   /* Extra information (JSON format) */
   service_extra_json: Option[String] = None
 )
-

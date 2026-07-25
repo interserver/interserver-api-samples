@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsBackupRow model module.
  * @module model/VpsBackupRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsBackupRow {
     /**

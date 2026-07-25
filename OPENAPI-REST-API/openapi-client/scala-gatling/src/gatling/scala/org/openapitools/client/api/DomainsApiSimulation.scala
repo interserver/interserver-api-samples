@@ -68,8 +68,6 @@ class DomainsApiSimulation extends Simulation {
     val getDomainInvoicesPerSecond = config.getDouble("performance.operationsPerSecond.getDomainInvoices") * rateMultiplier * instanceMultiplier
     val getDomainLookupPerSecond = config.getDouble("performance.operationsPerSecond.getDomainLookup") * rateMultiplier * instanceMultiplier
     val getDomainNameserversPerSecond = config.getDouble("performance.operationsPerSecond.getDomainNameservers") * rateMultiplier * instanceMultiplier
-    val getDomainOrderFieldsPerSecond = config.getDouble("performance.operationsPerSecond.getDomainOrderFields") * rateMultiplier * instanceMultiplier
-    val getDomainOrderSearchResultsPerSecond = config.getDouble("performance.operationsPerSecond.getDomainOrderSearchResults") * rateMultiplier * instanceMultiplier
     val getDomainRenewalPerSecond = config.getDouble("performance.operationsPerSecond.getDomainRenewal") * rateMultiplier * instanceMultiplier
     val getDomainSearchPerSecond = config.getDouble("performance.operationsPerSecond.getDomainSearch") * rateMultiplier * instanceMultiplier
     val getDomainTransferPerSecond = config.getDouble("performance.operationsPerSecond.getDomainTransfer") * rateMultiplier * instanceMultiplier
@@ -79,6 +77,7 @@ class DomainsApiSimulation extends Simulation {
     val getNewDomainPerSecond = config.getDouble("performance.operationsPerSecond.getNewDomain") * rateMultiplier * instanceMultiplier
     val patchDomainsPerSecond = config.getDouble("performance.operationsPerSecond.patchDomains") * rateMultiplier * instanceMultiplier
     val postDomainRenewalPerSecond = config.getDouble("performance.operationsPerSecond.postDomainRenewal") * rateMultiplier * instanceMultiplier
+    val postDomainSearchPerSecond = config.getDouble("performance.operationsPerSecond.postDomainSearch") * rateMultiplier * instanceMultiplier
     val postDomainTransferPerSecond = config.getDouble("performance.operationsPerSecond.postDomainTransfer") * rateMultiplier * instanceMultiplier
     val putDomainsPerSecond = config.getDouble("performance.operationsPerSecond.putDomains") * rateMultiplier * instanceMultiplier
     val updateDomainContactPerSecond = config.getDouble("performance.operationsPerSecond.updateDomainContact") * rateMultiplier * instanceMultiplier
@@ -92,7 +91,6 @@ class DomainsApiSimulation extends Simulation {
     val addDomainDnssecPATHFeeder = csv(userDataDirectory + File.separator + "addDomainDnssec-pathParams.csv").random
     val addDomainNameserverPATHFeeder = csv(userDataDirectory + File.separator + "addDomainNameserver-pathParams.csv").random
     val CancelDomainPATHFeeder = csv(userDataDirectory + File.separator + "cancelDomain-pathParams.csv").random
-    val deleteDomainDnssecQUERYFeeder = csv(userDataDirectory + File.separator + "deleteDomainDnssec-queryParams.csv").random
     val deleteDomainDnssecPATHFeeder = csv(userDataDirectory + File.separator + "deleteDomainDnssec-pathParams.csv").random
     val deleteDomainNameserverQUERYFeeder = csv(userDataDirectory + File.separator + "deleteDomainNameserver-queryParams.csv").random
     val deleteDomainNameserverPATHFeeder = csv(userDataDirectory + File.separator + "deleteDomainNameserver-pathParams.csv").random
@@ -102,14 +100,13 @@ class DomainsApiSimulation extends Simulation {
     val getDomainInvoicesPATHFeeder = csv(userDataDirectory + File.separator + "getDomainInvoices-pathParams.csv").random
     val getDomainLookupPATHFeeder = csv(userDataDirectory + File.separator + "getDomainLookup-pathParams.csv").random
     val getDomainNameserversPATHFeeder = csv(userDataDirectory + File.separator + "getDomainNameservers-pathParams.csv").random
-    val getDomainOrderFieldsPATHFeeder = csv(userDataDirectory + File.separator + "getDomainOrderFields-pathParams.csv").random
-    val getDomainOrderSearchResultsPATHFeeder = csv(userDataDirectory + File.separator + "getDomainOrderSearchResults-pathParams.csv").random
     val getDomainRenewalPATHFeeder = csv(userDataDirectory + File.separator + "getDomainRenewal-pathParams.csv").random
     val getDomainSearchPATHFeeder = csv(userDataDirectory + File.separator + "getDomainSearch-pathParams.csv").random
     val getDomainTransferPATHFeeder = csv(userDataDirectory + File.separator + "getDomainTransfer-pathParams.csv").random
     val getDomainWhoisPrivacyPATHFeeder = csv(userDataDirectory + File.separator + "getDomainWhoisPrivacy-pathParams.csv").random
     val getDomainsWelcomeEmailPATHFeeder = csv(userDataDirectory + File.separator + "getDomainsWelcomeEmail-pathParams.csv").random
     val postDomainRenewalPATHFeeder = csv(userDataDirectory + File.separator + "postDomainRenewal-pathParams.csv").random
+    val postDomainSearchPATHFeeder = csv(userDataDirectory + File.separator + "postDomainSearch-pathParams.csv").random
     val postDomainTransferPATHFeeder = csv(userDataDirectory + File.separator + "postDomainTransfer-pathParams.csv").random
     val updateDomainContactPATHFeeder = csv(userDataDirectory + File.separator + "updateDomainContact-pathParams.csv").random
     val updateDomainInfoPATHFeeder = csv(userDataDirectory + File.separator + "updateDomainInfo-pathParams.csv").random
@@ -175,11 +172,9 @@ class DomainsApiSimulation extends Simulation {
 
     
     val scndeleteDomainDnssec = scenario("deleteDomainDnssecSimulation")
-        .feed(deleteDomainDnssecQUERYFeeder)
         .feed(deleteDomainDnssecPATHFeeder)
         .exec(http("deleteDomainDnssec")
         .httpRequest("DELETE","/domains/${id}/dnssec")
-        .queryParam("action","${action}")
 )
 
     // Run scndeleteDomainDnssec with warm up and reach a constant rate for entire duration
@@ -287,34 +282,6 @@ class DomainsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(getDomainNameserversPerSecond) during(rampUpSeconds),
         constantUsersPerSec(getDomainNameserversPerSecond) during(durationSeconds),
         rampUsersPerSec(getDomainNameserversPerSecond) to(1) during(rampDownSeconds)
-    )
-
-    
-    val scngetDomainOrderFields = scenario("getDomainOrderFieldsSimulation")
-        .feed(getDomainOrderFieldsPATHFeeder)
-        .exec(http("getDomainOrderFields")
-        .httpRequest("GET","/domains/order/${domain}/${regType}")
-)
-
-    // Run scngetDomainOrderFields with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scngetDomainOrderFields.inject(
-        rampUsersPerSec(1) to(getDomainOrderFieldsPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(getDomainOrderFieldsPerSecond) during(durationSeconds),
-        rampUsersPerSec(getDomainOrderFieldsPerSecond) to(1) during(rampDownSeconds)
-    )
-
-    
-    val scngetDomainOrderSearchResults = scenario("getDomainOrderSearchResultsSimulation")
-        .feed(getDomainOrderSearchResultsPATHFeeder)
-        .exec(http("getDomainOrderSearchResults")
-        .httpRequest("GET","/domains/order/${domain}")
-)
-
-    // Run scngetDomainOrderSearchResults with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scngetDomainOrderSearchResults.inject(
-        rampUsersPerSec(1) to(getDomainOrderSearchResultsPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(getDomainOrderSearchResultsPerSecond) during(durationSeconds),
-        rampUsersPerSec(getDomainOrderSearchResultsPerSecond) to(1) during(rampDownSeconds)
     )
 
     
@@ -438,6 +405,20 @@ class DomainsApiSimulation extends Simulation {
         rampUsersPerSec(1) to(postDomainRenewalPerSecond) during(rampUpSeconds),
         constantUsersPerSec(postDomainRenewalPerSecond) during(durationSeconds),
         rampUsersPerSec(postDomainRenewalPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnpostDomainSearch = scenario("postDomainSearchSimulation")
+        .feed(postDomainSearchPATHFeeder)
+        .exec(http("postDomainSearch")
+        .httpRequest("POST","/domains/search/${name}")
+)
+
+    // Run scnpostDomainSearch with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnpostDomainSearch.inject(
+        rampUsersPerSec(1) to(postDomainSearchPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(postDomainSearchPerSecond) during(durationSeconds),
+        rampUsersPerSec(postDomainSearchPerSecond) to(1) during(rampDownSeconds)
     )
 
     

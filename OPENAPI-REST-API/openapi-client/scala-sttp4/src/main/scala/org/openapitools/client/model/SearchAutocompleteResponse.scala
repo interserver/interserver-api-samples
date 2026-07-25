@@ -11,10 +11,10 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JObject
 
   /**
    * Autocomplete search results for the authenticated account.
    */
 case class SearchAutocompleteResponse(
-)
-
+) extends Map[String, org.json4s.JObject]

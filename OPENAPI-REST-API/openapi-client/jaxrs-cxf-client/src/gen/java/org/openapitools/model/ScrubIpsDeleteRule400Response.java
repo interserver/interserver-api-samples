@@ -20,7 +20,7 @@ public class ScrubIpsDeleteRule400Response  {
    * @return success
   **/
   @JsonProperty("success")
-  public Boolean getSuccess() {
+  public Boolean isSuccess() {
     return success;
   }
 

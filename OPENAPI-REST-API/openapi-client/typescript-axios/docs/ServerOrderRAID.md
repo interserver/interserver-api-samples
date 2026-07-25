@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderRAID } from './api';
+import { ServerOrderRAID } from '@interserver/myadmin-client';
 
 const instance: ServerOrderRAID = {
     id,

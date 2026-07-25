@@ -1,4 +1,4 @@
-# openapi::WebsiteLoginResponse
+# interserverapi::WebsiteLoginResponse
 
 Response from a website login request.
 

@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for WebsiteTableRow
 void main() {
-  final instance = WebsiteTableRowBuilder();
-  // TODO add properties to the builder and call build()
+  final WebsiteTableRow? instance = /* WebsiteTableRow(...) */ null;
+  // TODO add properties to the entity
 
   group(WebsiteTableRow, () {
     // Description for the row
-    // String desc
+    // Optional<String?> desc
     test('to test the property `desc`', () async {
       // TODO
     });
 
     // Value for the row
-    // String value
+    // Optional<String?> value
     test('to test the property `value`', () async {
       // TODO
     });

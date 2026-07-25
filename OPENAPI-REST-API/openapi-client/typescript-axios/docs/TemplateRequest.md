@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TemplateRequest } from './api';
+import { TemplateRequest } from '@interserver/myadmin-client';
 
 const instance: TemplateRequest = {
     template,

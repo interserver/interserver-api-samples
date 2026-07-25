@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.vps_plesk12_data import VpsPlesk12Data  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.vps_plesk12_data import VpsPlesk12Data  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestVpsPlesk12Data(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestVpsPlesk12Data(unittest.TestCase):
     def testVpsPlesk12Data(self):
         """Test VpsPlesk12Data"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.vps_plesk12_data.VpsPlesk12Data()  # noqa: E501
+        # model = interserver_api_client.models.vps_plesk12_data.VpsPlesk12Data()  # noqa: E501
         pass
 
 

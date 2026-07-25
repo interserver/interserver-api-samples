@@ -1,4 +1,4 @@
-# InterServerManagementApi.VPSTrafficDataDataSectionResponseInner
+# InterserverApiClient.VPSTrafficDataDataSectionResponseInner
 
 ## Properties
 

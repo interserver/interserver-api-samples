@@ -6,9 +6,10 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBackupsBody;
-import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse20011;
+import io.swagger.model.InlineResponse20012;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.QsOrderRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.Quickserver;
 import io.swagger.model.QuickserverOrder;
@@ -32,7 +33,7 @@ import javax.ws.rs.core.SecurityContext;
 
 
 public class QsApiServiceImpl implements QsApi {
-      public Response addQs(SecurityContext securityContext) {
+      public Response addQs(QsOrderRequest body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -81,6 +82,10 @@ public class QsApiServiceImpl implements QsApi {
       return Response.ok().build();
   }
       public Response getNewQs(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response getQsBackup(Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -148,10 +153,6 @@ public class QsApiServiceImpl implements QsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response postQsBackup(Integer id,SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
       public Response postQsChangeHostname(Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
@@ -212,7 +213,7 @@ public class QsApiServiceImpl implements QsApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response putQs(SecurityContext securityContext) {
+      public Response putQs(QsOrderRequest body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

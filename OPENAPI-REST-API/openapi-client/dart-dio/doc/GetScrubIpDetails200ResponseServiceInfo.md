@@ -1,25 +1,25 @@
-# openapi.model.GetScrubIpDetails200ResponseServiceInfo
+# interserver_api.model.GetScrubIpDetails200ResponseServiceInfo
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**scrubIpId** | **String** |  | [optional] 
-**scrubIpType** | **String** |  | [optional] 
-**scrubIpCustid** | **String** |  | [optional] 
-**scrubIpOrderDate** | **String** |  | [optional] 
-**scrubIpIp** | **String** |  | [optional] 
-**scrubIpServiceId** | **String** |  | [optional] 
-**scrubIpServiceModule** | **String** |  | [optional] 
-**scrubIpStatus** | **String** |  | [optional] 
-**scrubIpInvoice** | **String** |  | [optional] 
-**scrubIpCurrency** | **String** |  | [optional] 
-**scrubIpCoupon** | **String** |  | [optional] 
-**scrubIpComment** | **String** |  | [optional] 
+**scrubIpId** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpType** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpCustid** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpOrderDate** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpIp** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpServiceId** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpServiceModule** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpStatus** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpInvoice** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpCurrency** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpCoupon** | **Optional&lt;String?&gt;** |  | [optional] 
+**scrubIpComment** | **Optional&lt;String?&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

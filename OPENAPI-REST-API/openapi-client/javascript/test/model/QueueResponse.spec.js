@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QueueResponse();
+    instance = new InterserverApiClient.QueueResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('QueueResponse', function() {
     it('should create an instance of QueueResponse', function() {
       // uncomment below and update the code to test QueueResponse
-      //var instance = new InterServerManagementApi.QueueResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.QueueResponse);
+      //var instance = new InterserverApiClient.QueueResponse();
+      //expect(instance).to.be.a(InterserverApiClient.QueueResponse);
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.QueueResponse();
+      //var instance = new InterserverApiClient.QueueResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property queueId (base name: "queueId")', function() {
       // uncomment below and update the code to test the property queueId
-      //var instance = new InterServerManagementApi.QueueResponse();
+      //var instance = new InterserverApiClient.QueueResponse();
       //expect(instance).to.be();
     });
 

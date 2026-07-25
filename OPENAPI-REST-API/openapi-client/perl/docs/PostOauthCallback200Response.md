@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::PostOauthCallback200Response
+# InterServerAPI::Object::PostOauthCallback200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::PostOauthCallback200Response;
+use InterServerAPI::Object::PostOauthCallback200Response;
 ```
 
 ## Properties

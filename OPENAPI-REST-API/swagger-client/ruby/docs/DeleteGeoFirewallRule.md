@@ -1,4 +1,4 @@
-# SwaggerClient::DeleteGeoFirewallRule
+# InterserverApiClient::DeleteGeoFirewallRule
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# openapi::ServiceCategory
+# interserverapi::ServiceCategory
 
 A Category of Services.  This is the broadest grouping within a module.
 

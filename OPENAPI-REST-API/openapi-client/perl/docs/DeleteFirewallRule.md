@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DeleteFirewallRule
+# InterServerAPI::Object::DeleteFirewallRule
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DeleteFirewallRule;
+use InterServerAPI::Object::DeleteFirewallRule;
 ```
 
 ## Properties

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainOrder = Initialize-PSOpenAPIToolsDomainOrder  -WhoisPrivacyCost 5 `
+$DomainOrder = Initialize-InterserverApiDomainOrder  -WhoisPrivacyCost 5 `
  -Services null `
  -TldServices null
 ```

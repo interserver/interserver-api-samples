@@ -17,5 +17,4 @@ import scala.collection.mutable.ListBuffer
    * List of available backups for a webhosting service with their names and sizes.
    */
 case class WebsiteBackups(
-)
-
+) extends ListBuffer[WebsiteBackupsInner]

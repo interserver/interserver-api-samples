@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsIPInfo
+# InterServerAPI::Object::VpsIPInfo
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsIPInfo;
+use InterServerAPI::Object::VpsIPInfo;
 ```
 
 ## Properties

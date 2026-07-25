@@ -12,7 +12,7 @@
 
 from setuptools import setup, find_packages  # noqa: H301
 
-NAME = "myadmin-client-python"
+NAME = "interserver-api-client"
 VERSION = "1.0.0"
 # To install the library, run the following
 #
@@ -28,7 +28,7 @@ setup(
     version=VERSION,
     description="InterServer Management API",
     author_email="support@interserver.net",
-    url="",
+    url="https://github.com/detain/interserver-api-samples",
     keywords=["Swagger", "InterServer Management API"],
     install_requires=REQUIRES,
     packages=find_packages(),

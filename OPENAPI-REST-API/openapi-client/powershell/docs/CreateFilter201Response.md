@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateFilter201Response = Initialize-PSOpenAPIToolsCreateFilter201Response  -Success true `
+$CreateFilter201Response = Initialize-InterserverApiCreateFilter201Response  -Success true `
  -Text New filter has been created.
 ```
 

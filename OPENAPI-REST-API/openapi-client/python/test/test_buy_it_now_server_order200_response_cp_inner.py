@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.buy_it_now_server_order200_response_cp_inner import BuyItNowServerOrder200ResponseCpInner
+from interserver_api_client.models.buy_it_now_server_order200_response_cp_inner import BuyItNowServerOrder200ResponseCpInner
 
 class TestBuyItNowServerOrder200ResponseCpInner(unittest.TestCase):
     """BuyItNowServerOrder200ResponseCpInner unit test stubs"""

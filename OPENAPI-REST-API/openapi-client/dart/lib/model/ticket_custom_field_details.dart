@@ -192,29 +192,29 @@ class TicketCustomFieldDetails {
 }
 
 
-class TicketCustomFieldDetailsCustomerServerAccessEnum {
-  /// Instantiate a new enum with the provided [value].
-  const TicketCustomFieldDetailsCustomerServerAccessEnum._(this.value);
+enum TicketCustomFieldDetailsCustomerServerAccessEnum {
+  y._(r'y'),
+  n._(r'n'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TicketCustomFieldDetailsCustomerServerAccessEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const y = TicketCustomFieldDetailsCustomerServerAccessEnum._(r'y');
-  static const n = TicketCustomFieldDetailsCustomerServerAccessEnum._(r'n');
-
-  /// List of all possible values in this [enum][TicketCustomFieldDetailsCustomerServerAccessEnum].
-  static const values = <TicketCustomFieldDetailsCustomerServerAccessEnum>[
-    y,
-    n,
-  ];
-
+  /// Returns the instance of [TicketCustomFieldDetailsCustomerServerAccessEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TicketCustomFieldDetailsCustomerServerAccessEnum? fromJson(dynamic value) => TicketCustomFieldDetailsCustomerServerAccessEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TicketCustomFieldDetailsCustomerServerAccessEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TicketCustomFieldDetailsCustomerServerAccessEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TicketCustomFieldDetailsCustomerServerAccessEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -236,9 +236,10 @@ class TicketCustomFieldDetailsCustomerServerAccessEnumTypeTransformer {
 
   const TicketCustomFieldDetailsCustomerServerAccessEnumTypeTransformer._();
 
-  String encode(TicketCustomFieldDetailsCustomerServerAccessEnum data) => data.value;
+  String encode(TicketCustomFieldDetailsCustomerServerAccessEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TicketCustomFieldDetailsCustomerServerAccessEnum.
+  /// Returns the instance of [TicketCustomFieldDetailsCustomerServerAccessEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -247,6 +248,9 @@ class TicketCustomFieldDetailsCustomerServerAccessEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TicketCustomFieldDetailsCustomerServerAccessEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TicketCustomFieldDetailsCustomerServerAccessEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'y': return TicketCustomFieldDetailsCustomerServerAccessEnum.y;
@@ -260,7 +264,7 @@ class TicketCustomFieldDetailsCustomerServerAccessEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [TicketCustomFieldDetailsCustomerServerAccessEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TicketCustomFieldDetailsCustomerServerAccessEnumTypeTransformer? _instance;
 }
 

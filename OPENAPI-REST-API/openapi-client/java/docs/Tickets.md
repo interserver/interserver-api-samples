@@ -24,4 +24,8 @@ A listing of support tickets.
 |**viewText** | **String** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

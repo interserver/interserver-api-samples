@@ -10,4 +10,8 @@
 |**_file** | **String** | The backup filename to download. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.captcha_response import CaptchaResponse
+from interserver_api_client.models.captcha_response import CaptchaResponse
 
 class TestCaptchaResponse(unittest.TestCase):
     """CaptchaResponse unit test stubs"""

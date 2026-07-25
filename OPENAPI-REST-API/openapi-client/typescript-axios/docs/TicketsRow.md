@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TicketsRow } from './api';
+import { TicketsRow } from '@interserver/myadmin-client';
 
 const instance: TicketsRow = {
     title,

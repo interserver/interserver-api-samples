@@ -66,9 +66,6 @@ public:
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
-
-    virtual void changeAccountUsername();
-
     /**
     * @param[in]  name QString [required]
     */
@@ -183,7 +180,6 @@ private:
     OauthPassword _passwordFlow;
     OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
-    void changeAccountUsernameCallback(OAIHttpRequestWorker *worker);
     void deleteAccountOauthNameCallback(OAIHttpRequestWorker *worker);
     void deleteAccountTfaCallback(OAIHttpRequestWorker *worker);
     void deleteIpLimitCallback(OAIHttpRequestWorker *worker);
@@ -203,7 +199,6 @@ private:
 
 Q_SIGNALS:
 
-    void changeAccountUsernameSignal(OAITextResponse summary);
     void deleteAccountOauthNameSignal(OAISuccessTextResponse summary);
     void deleteAccountTfaSignal(OAISuccessTextResponse summary);
     void deleteIpLimitSignal(OAIGenericResponse summary);
@@ -222,7 +217,6 @@ Q_SIGNALS:
     void updateAccountTfaSignal(OAISuccessTextResponse summary);
 
 
-    void changeAccountUsernameSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void deleteAccountOauthNameSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void deleteAccountTfaSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void deleteIpLimitSignalFull(OAIHttpRequestWorker *worker, OAIGenericResponse summary);
@@ -240,7 +234,6 @@ Q_SIGNALS:
     void updateAccountSshKeySignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void updateAccountTfaSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    void changeAccountUsernameSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteAccountOauthNameSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteAccountTfaSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteIpLimitSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -258,7 +251,6 @@ Q_SIGNALS:
     void updateAccountSshKeySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateAccountTfaSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    void changeAccountUsernameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteAccountOauthNameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteAccountTfaSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteIpLimitSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

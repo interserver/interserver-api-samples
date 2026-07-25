@@ -1,4 +1,4 @@
-# SwaggerClient::VpsDAData
+# InterserverApiClient::VpsDAData
 
 ## Properties
 Name | Type | Description | Notes

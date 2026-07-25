@@ -1,4 +1,4 @@
-# SwaggerClient::VpsTemplateRow
+# InterserverApiClient::VpsTemplateRow
 
 ## Properties
 Name | Type | Description | Notes

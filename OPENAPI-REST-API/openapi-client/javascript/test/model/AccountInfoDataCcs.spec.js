@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoDataCcs();
+    instance = new InterserverApiClient.AccountInfoDataCcs();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('AccountInfoDataCcs', function() {
     it('should create an instance of AccountInfoDataCcs', function() {
       // uncomment below and update the code to test AccountInfoDataCcs
-      //var instance = new InterServerManagementApi.AccountInfoDataCcs();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoDataCcs);
+      //var instance = new InterserverApiClient.AccountInfoDataCcs();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoDataCcs);
     });
 
   });

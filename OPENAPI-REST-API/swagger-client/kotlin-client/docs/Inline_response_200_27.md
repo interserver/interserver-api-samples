@@ -3,8 +3,5 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bandwidth** | [**kotlin.Array&lt;InlineResponse20027Bandwidth&gt;**](InlineResponse20027Bandwidth.md) |  |  [optional]
-**ips** | [**kotlin.Array&lt;InlineResponse20027Ips&gt;**](InlineResponse20027Ips.md) |  |  [optional]
-**os** | [**kotlin.Array&lt;InlineResponse20027Os&gt;**](InlineResponse20027Os.md) |  |  [optional]
-**cp** | [**kotlin.Array&lt;InlineResponse20027Cp&gt;**](InlineResponse20027Cp.md) |  |  [optional]
-**raid** | [**kotlin.Array&lt;InlineResponse20027Raid&gt;**](InlineResponse20027Raid.md) |  |  [optional]
+**message** | [**kotlin.String**](.md) |  |  [optional]
+**success** | [**kotlin.Boolean**](.md) |  |  [optional]

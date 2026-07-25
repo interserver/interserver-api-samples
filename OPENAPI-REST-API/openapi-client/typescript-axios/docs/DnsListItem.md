@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DnsListItem } from './api';
+import { DnsListItem } from '@interserver/myadmin-client';
 
 const instance: DnsListItem = {
     id,

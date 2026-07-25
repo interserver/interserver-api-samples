@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoDataFraudrecord();
+    instance = new InterserverApiClient.AccountInfoDataFraudrecord();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('AccountInfoDataFraudrecord', function() {
     it('should create an instance of AccountInfoDataFraudrecord', function() {
       // uncomment below and update the code to test AccountInfoDataFraudrecord
-      //var instance = new InterServerManagementApi.AccountInfoDataFraudrecord();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoDataFraudrecord);
+      //var instance = new InterserverApiClient.AccountInfoDataFraudrecord();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoDataFraudrecord);
     });
 
     it('should have the property score (base name: "score")', function() {
       // uncomment below and update the code to test the property score
-      //var instance = new InterServerManagementApi.AccountInfoDataFraudrecord();
+      //var instance = new InterserverApiClient.AccountInfoDataFraudrecord();
       //expect(instance).to.be();
     });
 
     it('should have the property count (base name: "count")', function() {
       // uncomment below and update the code to test the property count
-      //var instance = new InterServerManagementApi.AccountInfoDataFraudrecord();
+      //var instance = new InterserverApiClient.AccountInfoDataFraudrecord();
       //expect(instance).to.be();
     });
 
     it('should have the property reliability (base name: "reliability")', function() {
       // uncomment below and update the code to test the property reliability
-      //var instance = new InterServerManagementApi.AccountInfoDataFraudrecord();
+      //var instance = new InterserverApiClient.AccountInfoDataFraudrecord();
       //expect(instance).to.be();
     });
 
     it('should have the property code (base name: "code")', function() {
       // uncomment below and update the code to test the property code
-      //var instance = new InterServerManagementApi.AccountInfoDataFraudrecord();
+      //var instance = new InterserverApiClient.AccountInfoDataFraudrecord();
       //expect(instance).to.be();
     });
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QuickserverExtraInfoTables();
+    instance = new InterserverApiClient.QuickserverExtraInfoTables();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('QuickserverExtraInfoTables', function() {
     it('should create an instance of QuickserverExtraInfoTables', function() {
       // uncomment below and update the code to test QuickserverExtraInfoTables
-      //var instance = new InterServerManagementApi.QuickserverExtraInfoTables();
-      //expect(instance).to.be.a(InterServerManagementApi.QuickserverExtraInfoTables);
+      //var instance = new InterserverApiClient.QuickserverExtraInfoTables();
+      //expect(instance).to.be.a(InterserverApiClient.QuickserverExtraInfoTables);
     });
 
     it('should have the property ip_info (base name: "ip_info")', function() {
       // uncomment below and update the code to test the property ip_info
-      //var instance = new InterServerManagementApi.QuickserverExtraInfoTables();
+      //var instance = new InterserverApiClient.QuickserverExtraInfoTables();
       //expect(instance).to.be();
     });
 
     it('should have the property addons (base name: "addons")', function() {
       // uncomment below and update the code to test the property addons
-      //var instance = new InterServerManagementApi.QuickserverExtraInfoTables();
+      //var instance = new InterserverApiClient.QuickserverExtraInfoTables();
       //expect(instance).to.be();
     });
 

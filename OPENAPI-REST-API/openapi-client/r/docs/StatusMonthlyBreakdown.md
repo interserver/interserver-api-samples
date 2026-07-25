@@ -1,4 +1,4 @@
-# openapi::StatusMonthlyBreakdown
+# interserverapi::StatusMonthlyBreakdown
 
 Monthly mail delivery status breakdown, showing counts per status category.
 

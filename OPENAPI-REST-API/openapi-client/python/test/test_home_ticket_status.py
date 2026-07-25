@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_ticket_status import HomeTicketStatus
+from interserver_api_client.models.home_ticket_status import HomeTicketStatus
 
 class TestHomeTicketStatus(unittest.TestCase):
     """HomeTicketStatus unit test stubs"""

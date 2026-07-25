@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.licenses_api import LicensesApi
+from interserver_api_client.api.licenses_api import LicensesApi
 
 
 class TestLicensesApi(unittest.TestCase):
@@ -30,77 +30,70 @@ class TestLicensesApi(unittest.TestCase):
     def test_add_license(self) -> None:
         """Test case for add_license
 
-        Place License Order
+        Order a new software license and create the recurring invoice
         """
         pass
 
     def test_get_license_info(self) -> None:
         """Test case for get_license_info
 
-        Get License
+        Get full details for one license including status, IP, and links
         """
         pass
 
     def test_get_license_invoices(self) -> None:
         """Test case for get_license_invoices
 
-        Get License Invoices
+        List all billing invoices tied to one software license service
         """
         pass
 
     def test_get_license_list(self) -> None:
         """Test case for get_license_list
 
-        List Licenses
-        """
-        pass
-
-    def test_get_license_order_cat_tag_info(self) -> None:
-        """Test case for get_license_order_cat_tag_info
-
-        Get License Order Information for Category
+        List all software licenses owned by the authenticated customer
         """
         pass
 
     def test_get_licenses_welcome_email(self) -> None:
         """Test case for get_licenses_welcome_email
 
-        Resend License Welcome Email
+        Resend the license welcome email with the key and activation steps
         """
         pass
 
     def test_get_new_license(self) -> None:
         """Test case for get_new_license
 
-        Get License Order Information
+        Get available license types, packages, and pricing for ordering
         """
         pass
 
     def test_licenses_cancel(self) -> None:
         """Test case for licenses_cancel
 
-        Cancel License
+        Cancel a license service and stop future billing (irreversible)
         """
         pass
 
     def test_post_license_change_ip(self) -> None:
         """Test case for post_license_change_ip
 
-        Change License IP
+        Rebind a license to a new IP address (may incur a vendor fee)
         """
         pass
 
     def test_put_licenses(self) -> None:
         """Test case for put_licenses
 
-        Validate License Order
+        Validate a software license order before placing it (dry run preview)
         """
         pass
 
     def test_update_license_info(self) -> None:
         """Test case for update_license_info
 
-        Update License
+        Update mutable fields on a license service (e.g. assigned IP)
         """
         pass
 

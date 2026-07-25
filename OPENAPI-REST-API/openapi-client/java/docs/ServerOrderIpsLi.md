@@ -11,4 +11,8 @@ IP options for the server order.
 |**_9** | [**ServerOrderIP**](ServerOrderIP.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

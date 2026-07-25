@@ -38,7 +38,7 @@ import javax.annotation.Generated;
   ServiceOrderPostResponse.JSON_PROPERTY_INVOICE_DESCRIPTION
 })
 @JsonTypeName("ServiceOrderPostResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class ServiceOrderPostResponse {
     public static final String JSON_PROPERTY_CONTINUE = "continue";
@@ -80,7 +80,7 @@ public class ServiceOrderPostResponse {
     @Nullable
     @JsonProperty(JSON_PROPERTY_CONTINUE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Boolean getContinue() {
+    public Boolean isContinue() {
         return _continue;
     }
 

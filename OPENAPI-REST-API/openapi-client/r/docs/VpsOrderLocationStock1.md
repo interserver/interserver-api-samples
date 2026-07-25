@@ -1,4 +1,4 @@
-# openapi::VpsOrderLocationStock1
+# interserverapi::VpsOrderLocationStock1
 
 
 ## Properties

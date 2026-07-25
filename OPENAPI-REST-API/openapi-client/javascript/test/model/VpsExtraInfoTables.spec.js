@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsExtraInfoTables();
+    instance = new InterserverApiClient.VpsExtraInfoTables();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('VpsExtraInfoTables', function() {
     it('should create an instance of VpsExtraInfoTables', function() {
       // uncomment below and update the code to test VpsExtraInfoTables
-      //var instance = new InterServerManagementApi.VpsExtraInfoTables();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsExtraInfoTables);
+      //var instance = new InterserverApiClient.VpsExtraInfoTables();
+      //expect(instance).to.be.a(InterserverApiClient.VpsExtraInfoTables);
     });
 
     it('should have the property ip_info (base name: "ip_info")', function() {
       // uncomment below and update the code to test the property ip_info
-      //var instance = new InterServerManagementApi.VpsExtraInfoTables();
+      //var instance = new InterserverApiClient.VpsExtraInfoTables();
       //expect(instance).to.be();
     });
 

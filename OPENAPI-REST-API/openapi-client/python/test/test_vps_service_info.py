@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_service_info import VpsServiceInfo
+from interserver_api_client.models.vps_service_info import VpsServiceInfo
 
 class TestVpsServiceInfo(unittest.TestCase):
     """VpsServiceInfo unit test stubs"""

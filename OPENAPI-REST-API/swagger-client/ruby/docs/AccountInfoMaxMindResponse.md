@@ -1,4 +1,4 @@
-# SwaggerClient::AccountInfoMaxMindResponse
+# InterserverApiClient::AccountInfoMaxMindResponse
 
 ## Properties
 Name | Type | Description | Notes

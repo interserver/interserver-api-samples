@@ -69,8 +69,9 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddServerTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.AddServer();
-            //Assert.IsInstanceOf<InlineResponse20019> (response, "response is InlineResponse20019");
+            //ServerOrderPostRequest body = null;
+            //var response = instance.AddServer(body);
+            //Assert.IsInstanceOf<InlineResponse20021> (response, "response is InlineResponse20021");
         }
         /// <summary>
         /// Test BuyItNowServerOrder
@@ -80,7 +81,7 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.BuyItNowServerOrder();
-            //Assert.IsInstanceOf<InlineResponse20027> (response, "response is InlineResponse20027");
+            //Assert.IsInstanceOf<InlineResponse20029> (response, "response is InlineResponse20029");
         }
         /// <summary>
         /// Test GetMPServers
@@ -180,14 +181,15 @@ namespace Interserver.MyAdmin.Client.Test
             //Assert.IsInstanceOf<TextResponse> (response, "response is TextResponse");
         }
         /// <summary>
-        /// Test PutServers
+        /// Test ServerBulkIpmiPowerGet
         /// </summary>
         [Test]
-        public void PutServersTest()
+        public void ServerBulkIpmiPowerGetTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PutServers();
-            
+            //string ids = null;
+            //var response = instance.ServerBulkIpmiPowerGet(ids);
+            //Assert.IsInstanceOf<ServerBulkIpmiPowerResponse> (response, "response is ServerBulkIpmiPowerResponse");
         }
         /// <summary>
         /// Test ServerIpmiLiveGet
@@ -246,7 +248,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.ServersCancel(id);
-            //Assert.IsInstanceOf<InlineResponse20020> (response, "response is InlineResponse20020");
+            //Assert.IsInstanceOf<InlineResponse20022> (response, "response is InlineResponse20022");
         }
         /// <summary>
         /// Test UpdateServerInfo

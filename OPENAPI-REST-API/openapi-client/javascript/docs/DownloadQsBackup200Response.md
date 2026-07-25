@@ -1,4 +1,4 @@
-# InterServerManagementApi.DownloadQsBackup200Response
+# InterserverApiClient.DownloadQsBackup200Response
 
 ## Properties
 

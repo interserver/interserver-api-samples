@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderLocationStock1 = Initialize-PSOpenAPIToolsVpsOrderLocationStock1  -Kvm true `
+$VpsOrderLocationStock1 = Initialize-InterserverApiVpsOrderLocationStock1  -Kvm true `
  -Kvmstorage true `
  -Hyperv true
 ```

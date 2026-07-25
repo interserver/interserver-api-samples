@@ -19,6 +19,7 @@ type Action* {.pure.} = enum
   On
   Off
   Soft
+  UnknownDefaultOpenApi
 
 type ServerIpmiPowerRequest* = object
   ## IPMI Power command for servers
@@ -32,6 +33,7 @@ func `%`*(v: Action): JsonNode =
     of Action.On: %"on"
     of Action.Off: %"off"
     of Action.Soft: %"soft"
+    of Action.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: Action): string =
   result = case v:
     of Action.Cycle: $("cycle")
@@ -39,6 +41,7 @@ func `$`*(v: Action): string =
     of Action.On: $("on")
     of Action.Off: $("off")
     of Action.Soft: $("soft")
+    of Action.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[Action]): Action =
   if node.kind != JString:
@@ -55,6 +58,8 @@ proc to*(node: JsonNode, T: typedesc[Action]): Action =
     return Action.Off
   of $("soft"):
     return Action.Soft
+  of $("11184809"):
+    return Action.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for Action: " & strVal)
 

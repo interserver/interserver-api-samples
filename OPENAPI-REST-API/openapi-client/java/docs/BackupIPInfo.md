@@ -12,4 +12,8 @@ IP address information table for a backup service.
 |**rows** | [**List&lt;BackupIPInfoRow&gt;**](BackupIPInfoRow.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

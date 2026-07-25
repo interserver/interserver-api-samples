@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CreateRule500Response } from './api';
+import { CreateRule500Response } from '@interserver/myadmin-client';
 
 const instance: CreateRule500Response = {
     success,

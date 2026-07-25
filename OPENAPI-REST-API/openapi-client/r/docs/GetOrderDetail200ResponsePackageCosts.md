@@ -1,4 +1,4 @@
-# openapi::GetOrderDetail200ResponsePackageCosts
+# interserverapi::GetOrderDetail200ResponsePackageCosts
 
 
 ## Properties

@@ -1,4 +1,4 @@
-# openapi::PostOauthCallback200Response
+# interserverapi::PostOauthCallback200Response
 
 
 ## Properties

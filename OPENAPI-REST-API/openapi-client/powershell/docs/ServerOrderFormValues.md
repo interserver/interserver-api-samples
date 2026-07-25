@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderFormValues = Initialize-PSOpenAPIToolsServerOrderFormValues  -Memory 22 `
+$ServerOrderFormValues = Initialize-InterserverApiServerOrderFormValues  -Memory 22 `
  -Bandwidth 3 `
  -Ips 9 `
  -Os 5 `

@@ -147,13 +147,13 @@ DomainSearchResponse <- R6::R6Class(
         self$`response_time` <- this_object$`response_time`
       }
       if (!is.null(this_object$`lookup`)) {
-        self$`lookup` <- ApiClient$new()$deserializeObj(this_object$`lookup`, "array[object]", loadNamespace("openapi"))
+        self$`lookup` <- ApiClient$new()$deserializeObj(this_object$`lookup`, "array[object]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`suggest`)) {
-        self$`suggest` <- ApiClient$new()$deserializeObj(this_object$`suggest`, "array[object]", loadNamespace("openapi"))
+        self$`suggest` <- ApiClient$new()$deserializeObj(this_object$`suggest`, "array[object]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`tlds`)) {
-        self$`tlds` <- ApiClient$new()$deserializeObj(this_object$`tlds`, "array[character]", loadNamespace("openapi"))
+        self$`tlds` <- ApiClient$new()$deserializeObj(this_object$`tlds`, "array[character]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -179,9 +179,9 @@ DomainSearchResponse <- R6::R6Class(
       self$`success` <- this_object$`success`
       self$`response_text` <- this_object$`response_text`
       self$`response_time` <- this_object$`response_time`
-      self$`lookup` <- ApiClient$new()$deserializeObj(this_object$`lookup`, "array[object]", loadNamespace("openapi"))
-      self$`suggest` <- ApiClient$new()$deserializeObj(this_object$`suggest`, "array[object]", loadNamespace("openapi"))
-      self$`tlds` <- ApiClient$new()$deserializeObj(this_object$`tlds`, "array[character]", loadNamespace("openapi"))
+      self$`lookup` <- ApiClient$new()$deserializeObj(this_object$`lookup`, "array[object]", loadNamespace("interserverapi"))
+      self$`suggest` <- ApiClient$new()$deserializeObj(this_object$`suggest`, "array[object]", loadNamespace("interserverapi"))
+      self$`tlds` <- ApiClient$new()$deserializeObj(this_object$`tlds`, "array[character]", loadNamespace("interserverapi"))
       self
     },
 

@@ -24,4 +24,3 @@ case class SuccessTextResponse(
   /* Optional Action relating to the response. */
   action: Option[String] = None
 )
-

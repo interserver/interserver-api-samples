@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_order_services10001 import DomainOrderServices10001
+from interserver_api_client.models.domain_order_services10001 import DomainOrderServices10001
 
 class TestDomainOrderServices10001(unittest.TestCase):
     """DomainOrderServices10001 unit test stubs"""

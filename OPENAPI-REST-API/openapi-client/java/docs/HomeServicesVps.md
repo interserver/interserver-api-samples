@@ -11,4 +11,8 @@
 |**count** | **Integer** | Number of VPS services. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,2 +1,2 @@
-testCase,httpStatusCode,id,id,createFilter,id,createGeoFirewallRule,id,createFirewallRule,id,createFilter,id,id,id,id,id,scrubIpPlaceOrder,id,deleteGeoFirewallRule,id,deleteFirewallRule
-Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,id,createFilter,id,createGeoFirewallRule,id,createFirewallRule,id,createFilter,id,id,id,id,id,id,scrubIpPlaceOrder,scrubIpPlaceOrder,deleteGeoFirewallRule,id,deleteFirewallRule,id
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

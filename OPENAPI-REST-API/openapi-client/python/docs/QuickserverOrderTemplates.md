@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.quickserver_order_templates import QuickserverOrderTemplates
+from interserver_api_client.models.quickserver_order_templates import QuickserverOrderTemplates
 
 # TODO update the JSON string below
 json = "{}"

@@ -12,4 +12,8 @@
 |**tech** | [**DomainTechContact**](DomainTechContact.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

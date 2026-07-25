@@ -14,6 +14,7 @@
             [inter-server-management-api.specs.enable-scrub-500-response :refer :all]
             [inter-server-management-api.specs.login-error-response :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall-rules-inner :refer :all]
+            [inter-server-management-api.specs.server-order-post-request :refer :all]
             [inter-server-management-api.specs.account-info-data-extra :refer :all]
             [inter-server-management-api.specs.server-order-memory-li-254 :refer :all]
             [inter-server-management-api.specs.affiliate-traffic-row :refer :all]
@@ -23,6 +24,7 @@
             [inter-server-management-api.specs.quickserver-order-distro-sel-ubuntu :refer :all]
             [inter-server-management-api.specs.domain :refer :all]
             [inter-server-management-api.specs.generic-response :refer :all]
+            [inter-server-management-api.specs.floating-ip-order-request :refer :all]
             [inter-server-management-api.specs.mail-blocks :refer :all]
             [inter-server-management-api.specs.update-account-tfa-request :refer :all]
             [inter-server-management-api.specs.billing-invoice-detail :refer :all]
@@ -34,13 +36,14 @@
             [inter-server-management-api.specs.licenses-cancel-200-response :refer :all]
             [inter-server-management-api.specs.text-response :refer :all]
             [inter-server-management-api.specs.server-network-info :refer :all]
-            [inter-server-management-api.specs.hard-drive :refer :all]
             [inter-server-management-api.specs.account-info-oauth-config-providers :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall :refer :all]
             [inter-server-management-api.specs.success-text-response :refer :all]
             [inter-server-management-api.specs.server-order-control-panel :refer :all]
+            [inter-server-management-api.specs.get-affiliate-signups-200-response :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall-filters-inner :refer :all]
             [inter-server-management-api.specs.websites-order-json-service-offers-item :refer :all]
+            [inter-server-management-api.specs.put-scrub-ips-200-response :refer :all]
             [inter-server-management-api.specs.ticket-post-details-inner :refer :all]
             [inter-server-management-api.specs.website :refer :all]
             [inter-server-management-api.specs.reverse-dns-entries :refer :all]
@@ -50,14 +53,13 @@
             [inter-server-management-api.specs.post-website-buy-ip-request :refer :all]
             [inter-server-management-api.specs.domain-prov-process-pending-attributes :refer :all]
             [inter-server-management-api.specs.create-filter-201-response :refer :all]
-            [inter-server-management-api.specs.asset-server-cpu-inner :refer :all]
             [inter-server-management-api.specs.websites-order :refer :all]
             [inter-server-management-api.specs.ticket-details :refer :all]
             [inter-server-management-api.specs.webhosting-cancel-200-response :refer :all]
-            [inter-server-management-api.specs.field-label :refer :all]
             [inter-server-management-api.specs.download-qs-backup-200-response :refer :all]
             [inter-server-management-api.specs.vps-traffic-data-data-section-response :refer :all]
             [inter-server-management-api.specs.send-mail-adv :refer :all]
+            [inter-server-management-api.specs.license-order-request :refer :all]
             [inter-server-management-api.specs.domain-all-info-attributes :refer :all]
             [inter-server-management-api.specs.server-order :refer :all]
             [inter-server-management-api.specs.service-category :refer :all]
@@ -98,10 +100,10 @@
             [inter-server-management-api.specs.scrub-ips-log-row-schema :refer :all]
             [inter-server-management-api.specs.website-table :refer :all]
             [inter-server-management-api.specs.domain-name-server :refer :all]
-            [inter-server-management-api.specs.config-ids :refer :all]
             [inter-server-management-api.specs.ticket-new-response :refer :all]
             [inter-server-management-api.specs.affiliate-dock-setup :refer :all]
             [inter-server-management-api.specs.server-order-os :refer :all]
+            [inter-server-management-api.specs.website-order-put-request :refer :all]
             [inter-server-management-api.specs.account-info-max-mind-response-risk-score :refer :all]
             [inter-server-management-api.specs.billing-add-cc-request :refer :all]
             [inter-server-management-api.specs.account-info-max-mind-response :refer :all]
@@ -112,6 +114,7 @@
             [inter-server-management-api.specs.billing-payment-method-request :refer :all]
             [inter-server-management-api.specs.home :refer :all]
             [inter-server-management-api.specs.server-locations :refer :all]
+            [inter-server-management-api.specs.ssl-order-request :refer :all]
             [inter-server-management-api.specs.service :refer :all]
             [inter-server-management-api.specs.server-order-os-li :refer :all]
             [inter-server-management-api.specs.vps :refer :all]
@@ -119,6 +122,7 @@
             [inter-server-management-api.specs.backup :refer :all]
             [inter-server-management-api.specs.account-info-data-ccs :refer :all]
             [inter-server-management-api.specs.disable-scrub-400-response :refer :all]
+            [inter-server-management-api.specs.mail-order-request :refer :all]
             [inter-server-management-api.specs.websites-order-packages :refer :all]
             [inter-server-management-api.specs.quickserver-billing-details :refer :all]
             [inter-server-management-api.specs.get-oauth-redirect-200-response :refer :all]
@@ -127,6 +131,7 @@
             [inter-server-management-api.specs.server-service-info :refer :all]
             [inter-server-management-api.specs.home-details-modules-vps :refer :all]
             [inter-server-management-api.specs.backup-order-put-response :refer :all]
+            [inter-server-management-api.specs.website-order-post-request :refer :all]
             [inter-server-management-api.specs.scrub-ip-filter-types-filters-value :refer :all]
             [inter-server-management-api.specs.patch-oauth-two-factor-request :refer :all]
             [inter-server-management-api.specs.home-ticket-status-view :refer :all]
@@ -136,6 +141,7 @@
             [inter-server-management-api.specs.create-geo-firewall-rule :refer :all]
             [inter-server-management-api.specs.create-rule-400-response :refer :all]
             [inter-server-management-api.specs.account-info-data-email-settings :refer :all]
+            [inter-server-management-api.specs.qs-order-request :refer :all]
             [inter-server-management-api.specs.mail-delist-response :refer :all]
             [inter-server-management-api.specs.server-order-cpu :refer :all]
             [inter-server-management-api.specs.domain-nameserver-post-request :refer :all]
@@ -150,16 +156,16 @@
             [inter-server-management-api.specs.domain-service-info :refer :all]
             [inter-server-management-api.specs.scrub-ips-delete-rule-200-response :refer :all]
             [inter-server-management-api.specs.server-extra-info-tables :refer :all]
-            [inter-server-management-api.specs.asset-server :refer :all]
             [inter-server-management-api.specs.dns-record-type :refer :all]
             [inter-server-management-api.specs.domain-nameserver-get-response :refer :all]
             [inter-server-management-api.specs.licenses-order-service-categories :refer :all]
+            [inter-server-management-api.specs.server-bulk-ipmi-power-response :refer :all]
             [inter-server-management-api.specs.vps-order-platform-names :refer :all]
             [inter-server-management-api.specs.quickserver-order :refer :all]
             [inter-server-management-api.specs.websites-order-packges :refer :all]
             [inter-server-management-api.specs.servers-buy-now-error :refer :all]
-            [inter-server-management-api.specs.cpu-with-defaults :refer :all]
             [inter-server-management-api.specs.close-ticket-response-schema :refer :all]
+            [inter-server-management-api.specs.server-order-post-request-hd :refer :all]
             [inter-server-management-api.specs.quickserver-order-templates-ubuntu64 :refer :all]
             [inter-server-management-api.specs.vps-extra-info-tables :refer :all]
             [inter-server-management-api.specs.home-services-licenses :refer :all]
@@ -169,7 +175,7 @@
             [inter-server-management-api.specs.mail-log :refer :all]
             [inter-server-management-api.specs.domain-prov-process-pending :refer :all]
             [inter-server-management-api.specs.domain-lookup-response :refer :all]
-            [inter-server-management-api.specs.operating-system :refer :all]
+            [inter-server-management-api.specs.domain-order-request :refer :all]
             [inter-server-management-api.specs.dns-record :refer :all]
             [inter-server-management-api.specs.vps-order-os-names :refer :all]
             [inter-server-management-api.specs.vps-traffic-totals-section-response :refer :all]
@@ -177,13 +183,11 @@
             [inter-server-management-api.specs.buy-it-now-row-cpu-inner :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-extra-info-tables :refer :all]
-            [inter-server-management-api.specs.inline-object :refer :all]
             [inter-server-management-api.specs.vps-cp-data :refer :all]
             [inter-server-management-api.specs.server-order-cpu-li :refer :all]
             [inter-server-management-api.specs.domain-order-services :refer :all]
             [inter-server-management-api.specs.login-info :refer :all]
             [inter-server-management-api.specs.home-services-vps-links :refer :all]
-            [inter-server-management-api.specs.cpu :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-row :refer :all]
             [inter-server-management-api.specs.website-service-info :refer :all]
@@ -211,10 +215,8 @@
             [inter-server-management-api.specs.server-ipmi-power-request :refer :all]
             [inter-server-management-api.specs.quickservers-cancel-200-response :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response-ips-inner :refer :all]
-            [inter-server-management-api.specs.form-values :refer :all]
             [inter-server-management-api.specs.service-type :refer :all]
             [inter-server-management-api.specs.vps-snapshot :refer :all]
-            [inter-server-management-api.specs.raid-option :refer :all]
             [inter-server-management-api.specs.service-categories :refer :all]
             [inter-server-management-api.specs.vps-order :refer :all]
             [inter-server-management-api.specs.backup-service-extra :refer :all]
@@ -229,10 +231,8 @@
             [inter-server-management-api.specs.vps-order-templates :refer :all]
             [inter-server-management-api.specs.restore-request :refer :all]
             [inter-server-management-api.specs.account-info :refer :all]
-            [inter-server-management-api.specs.control-panel :refer :all]
             [inter-server-management-api.specs.backup-extra-info-tables :refer :all]
             [inter-server-management-api.specs.send-mail :refer :all]
-            [inter-server-management-api.specs.ip-block :refer :all]
             [inter-server-management-api.specs.servers-buy-now-response :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response-ips-inner :refer :all]
             [inter-server-management-api.specs.domain-billing-details :refer :all]
@@ -259,10 +259,10 @@
             [inter-server-management-api.specs.create-filter :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response-raid-inner :refer :all]
             [inter-server-management-api.specs.vps-traffic-totals-resposne :refer :all]
+            [inter-server-management-api.specs.server-bulk-ipmi-power-response-results-inner :refer :all]
             [inter-server-management-api.specs.dns-list-item :refer :all]
             [inter-server-management-api.specs.cancel-domain-200-response :refer :all]
             [inter-server-management-api.specs.home-details :refer :all]
-            [inter-server-management-api.specs.domain-order-tld-services :refer :all]
             [inter-server-management-api.specs.server-ipmi-live-info :refer :all]
             [inter-server-management-api.specs.home-services-domains-links :refer :all]
             [inter-server-management-api.specs.home-services :refer :all]
@@ -271,7 +271,7 @@
             [inter-server-management-api.specs.account-info-limits :refer :all]
             [inter-server-management-api.specs.queue-response :refer :all]
             [inter-server-management-api.specs.cancel-scrub-ip-200-response :refer :all]
-            [inter-server-management-api.specs.bandwidth :refer :all]
+            [inter-server-management-api.specs.delete-mail-alert-request :refer :all]
             [inter-server-management-api.specs.services :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response-package-costs :refer :all]
             [inter-server-management-api.specs.domain-client-link :refer :all]
@@ -283,7 +283,6 @@
             [inter-server-management-api.specs.vps-order-location-names :refer :all]
             [inter-server-management-api.specs.get-website-buy-ip-200-response :refer :all]
             [inter-server-management-api.specs.licenses-order-service-categories509 :refer :all]
-            [inter-server-management-api.specs.memory-option :refer :all]
             [inter-server-management-api.specs.domain-all-info :refer :all]
             [inter-server-management-api.specs.login-service-counts :refer :all]
             [inter-server-management-api.specs.domain-dnssec-records :refer :all]
@@ -302,7 +301,6 @@
             [inter-server-management-api.specs.websites-order-json-service-offers :refer :all]
             [inter-server-management-api.specs.domain-owner-contact :refer :all]
             [inter-server-management-api.specs.mail-tutorials-table :refer :all]
-            [inter-server-management-api.specs.region :refer :all]
             [inter-server-management-api.specs.domain-admin-contact :refer :all]
             [inter-server-management-api.specs.vps-traffic-usage-response :refer :all]
             [inter-server-management-api.specs.service-order-post-response :refer :all]
@@ -324,6 +322,7 @@
             [inter-server-management-api.specs.quickserver-ip-table-row :refer :all]
             [inter-server-management-api.specs.email-address :refer :all]
             [inter-server-management-api.specs.vps-plesk-license :refer :all]
+            [inter-server-management-api.specs.get-account-locales-200-response-value :refer :all]
             [inter-server-management-api.specs.vps-traffic-history-section-data-response :refer :all]
             [inter-server-management-api.specs.backup-service-master :refer :all]
             [inter-server-management-api.specs.vps-traffic-history-response :refer :all]
@@ -394,8 +393,6 @@
             [inter-server-management-api.specs.quickserver :refer :all]
             [inter-server-management-api.specs.reply-ticket-response-schema :refer :all]
             [inter-server-management-api.specs.vps-order-put-request :refer :all]
-            [inter-server-management-api.specs.vps-traffic-data-data-response :refer :all]
-            [inter-server-management-api.specs.server-order-get-response :refer :all]
             [inter-server-management-api.specs.mail-stats-type-volume-from :refer :all]
             [inter-server-management-api.specs.mail-alerts-response-inner :refer :all]
             [inter-server-management-api.specs.domain-tech-contact :refer :all]
@@ -407,7 +404,6 @@
             [inter-server-management-api.specs.billing-verify-cc-request :refer :all]
             [inter-server-management-api.specs.vps-order-service-types :refer :all]
             [inter-server-management-api.specs.mail-attachment :refer :all]
-            [inter-server-management-api.specs.invoice-row :refer :all]
             [inter-server-management-api.specs.place-scrub-order-201-response-order-details-cj-params :refer :all]
             [inter-server-management-api.specs.delete-firewall-rule :refer :all]
             [inter-server-management-api.specs.tickets :refer :all]
@@ -422,13 +418,13 @@
             [inter-server-management-api.specs.timezone-update :refer :all]
             [inter-server-management-api.specs.servers-cancel-200-response :refer :all]
             [inter-server-management-api.specs.server-order-memory :refer :all]
-            [inter-server-management-api.specs.config-lists :refer :all]
             [inter-server-management-api.specs.website-backups :refer :all]
             [inter-server-management-api.specs.vps-ip-info :refer :all]
             [inter-server-management-api.specs.domain-billing-extra :refer :all]
             [inter-server-management-api.specs.backup-order-post-response :refer :all]
             [inter-server-management-api.specs.scrub-ips-row-schema :refer :all]
             [inter-server-management-api.specs.scrub-ip-place-order :refer :all]
+            [inter-server-management-api.specs.patch-billing-credit-card-verify-request :refer :all]
             [inter-server-management-api.specs.license-service-info :refer :all]
             [inter-server-management-api.specs.server-lease :refer :all]
             [inter-server-management-api.specs.charge-invoice-rows-invoices-value-paid-invoices-value-refund-invoices-value :refer :all]
@@ -446,13 +442,11 @@
             [inter-server-management-api.specs.post-website-migration-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-ip-info :refer :all]
             [inter-server-management-api.specs.licenses-order :refer :all]
-            [inter-server-management-api.specs.payment-invoice-rows :refer :all]
             [inter-server-management-api.specs.license-row :refer :all]
             [inter-server-management-api.specs.server-order-bandwidth :refer :all]
             [inter-server-management-api.specs.quickserver-service-extra :refer :all]
             [inter-server-management-api.specs.quickserver-client-link :refer :all]
             [inter-server-management-api.specs.download-qs-backup-request :refer :all]
-            [inter-server-management-api.specs.invoice :refer :all]
             [inter-server-management-api.specs.licenses-order-service-types :refer :all]
             [inter-server-management-api.specs.mail-tutorials-table-row :refer :all]
             [inter-server-management-api.specs.vps-service-extra :refer :all]
@@ -461,8 +455,30 @@
 
 
 (defn-spec add-backup-with-http-info any?
-  "Place Backup Order
-  Places a new backup storage order and generates an invoice. On success, the response includes invoice IDs that can be used with `/billing/invoices/{id}` to view the invoice or `/pay/{method}/{invoices}` to complete payment. The service is provisioned after payment is confirmed."
+  "Place a new off-site backup storage order and generate the invoice
+  Step 3 of the backup-storage order flow. Revalidates via `validate_buy_storage()`, then calls `place_buy_storage()` which creates a `backups` service row, a `repeat_invoices` recurring entry, and the first `invoices` row. **Real billable order — call `validateBackupOrder` first.** Service is provisioned only after the invoice is paid. Sibling ops: `getNewBackup` (catalog), `validateBackupOrder` (quote), `getBackupInvoices` (billing history), `initiatePayment` (settle).
+
+**Body fields** (JSON or multipart):
+- `serviceType` (integer, required) — `services_id` from `getNewBackup`.
+- `coupon` (string, optional) — coupon code.
+- `period` (integer, optional, default `1`) — billing months.
+- `comment` (string, optional) — saved on the order row.
+
+**Returns** (on success): `{ continue: true, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — feed `real_iids` into `initiatePayment`. On validation failure: `{ continue: false, errors: [...] }` with HTTP 200.
+
+**Auth:** Session/API key.
+
+**Errors:**
+- `401` — unauthenticated.
+- `422` inside `errors[]` — coupon/plan/duplicate-hostname validation.
+- Explicit error text when no backend storage server is available for assignment.
+
+**Side effects:** new rows in `backups`, `repeat_invoices`, `invoices`; queued provisioning kicks off only after payment.
+
+**Related calls:**
+- **Prerequisite:** `validateBackupOrder`.
+- **Pay:** `getBillingInvoice` → `initiatePayment`.
+- **Poll status:** `getBackupInfo` (until `backup_status='active'`)."
   ([] (add-backup-with-http-info nil))
   ([{:keys [validateOnly serviceType coupon]} (s/map-of keyword? any?)]
    (call-api "/backups/order" :post
@@ -475,8 +491,30 @@
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
 (defn-spec add-backup backup-order-post-response-spec
-  "Place Backup Order
-  Places a new backup storage order and generates an invoice. On success, the response includes invoice IDs that can be used with `/billing/invoices/{id}` to view the invoice or `/pay/{method}/{invoices}` to complete payment. The service is provisioned after payment is confirmed."
+  "Place a new off-site backup storage order and generate the invoice
+  Step 3 of the backup-storage order flow. Revalidates via `validate_buy_storage()`, then calls `place_buy_storage()` which creates a `backups` service row, a `repeat_invoices` recurring entry, and the first `invoices` row. **Real billable order — call `validateBackupOrder` first.** Service is provisioned only after the invoice is paid. Sibling ops: `getNewBackup` (catalog), `validateBackupOrder` (quote), `getBackupInvoices` (billing history), `initiatePayment` (settle).
+
+**Body fields** (JSON or multipart):
+- `serviceType` (integer, required) — `services_id` from `getNewBackup`.
+- `coupon` (string, optional) — coupon code.
+- `period` (integer, optional, default `1`) — billing months.
+- `comment` (string, optional) — saved on the order row.
+
+**Returns** (on success): `{ continue: true, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — feed `real_iids` into `initiatePayment`. On validation failure: `{ continue: false, errors: [...] }` with HTTP 200.
+
+**Auth:** Session/API key.
+
+**Errors:**
+- `401` — unauthenticated.
+- `422` inside `errors[]` — coupon/plan/duplicate-hostname validation.
+- Explicit error text when no backend storage server is available for assignment.
+
+**Side effects:** new rows in `backups`, `repeat_invoices`, `invoices`; queued provisioning kicks off only after payment.
+
+**Related calls:**
+- **Prerequisite:** `validateBackupOrder`.
+- **Pay:** `getBillingInvoice` → `initiatePayment`.
+- **Poll status:** `getBackupInfo` (until `backup_status='active'`)."
   ([] (add-backup nil))
   ([optional-params any?]
    (let [res (:data (add-backup-with-http-info optional-params))]
@@ -486,8 +524,10 @@
 
 
 (defn-spec cancel-backup-with-http-info any?
-  "Cancel Backup Service
-  Cancels the specified backup storage service. The service remains accessible until the end of the current billing period. This action cannot be undone; a new order must be placed to restore service."
+  "Cancel an off-site backup storage subscription
+  DESTRUCTIVE. Use to terminate a backup-storage subscription. Delegates to `CancelService::go($id)` with module `backups`, which marks the service for cancellation and stops future recurring billing; data on the storage backend may become inaccessible at end of cycle. Path param: `id` from `getBackupsList`. No body.
+Returns `BackupsCancelResponse`. Caveats: irreversible — a new order via `addBackup` is required to restore service, with a new IP/username and no migration of prior data. Does NOT delete VPS/QS/webhosting in-place snapshots (those live under their own tags). Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; HTTP 409 if the service is already cancelled or pending cancellation.
+Siblings: `addBackup`, `getBackupInfo`, `getBackupInvoices`."
   [id int?]
   (check-required-params id)
   (call-api "/backups/{id}" :delete
@@ -500,8 +540,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec cancel-backup cancel-backup-200-response-spec
-  "Cancel Backup Service
-  Cancels the specified backup storage service. The service remains accessible until the end of the current billing period. This action cannot be undone; a new order must be placed to restore service."
+  "Cancel an off-site backup storage subscription
+  DESTRUCTIVE. Use to terminate a backup-storage subscription. Delegates to `CancelService::go($id)` with module `backups`, which marks the service for cancellation and stops future recurring billing; data on the storage backend may become inaccessible at end of cycle. Path param: `id` from `getBackupsList`. No body.
+Returns `BackupsCancelResponse`. Caveats: irreversible — a new order via `addBackup` is required to restore service, with a new IP/username and no migration of prior data. Does NOT delete VPS/QS/webhosting in-place snapshots (those live under their own tags). Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; HTTP 409 if the service is already cancelled or pending cancellation.
+Siblings: `addBackup`, `getBackupInfo`, `getBackupInvoices`."
   [id int?]
   (let [res (:data (cancel-backup-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -510,8 +552,10 @@
 
 
 (defn-spec get-backup-info-with-http-info any?
-  "Get Backup Service Details
-  Returns detailed service information for the specified backup storage order, including `backup_username`, `backup_ip`, `backup_status`, and `backup_quota` in `serviceInfo`. Also returns `client_links`, `billingDetails`, `extraInfoTables`, `package`, and `custCurrency`."
+  "Get details of a specific off-site backup storage service
+  Use to fetch the full management view for one backup-storage subscription. Path param: `id` (backup service ID from `getBackupsList`). No body.
+Returns `serviceInfo` (with `backup_username`, `backup_ip`, `backup_status`, `backup_quota`, `backup_type`, `backup_invoice`), plus `billingDetails`, `extraInfoTables`, `package`, `custCurrency`, and `client_links` (rewritten to surface the link target rather than the raw queue URL). `admin_links`, internal `settings`, and `csrf` are stripped. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` does not belong to the caller (cross-account access blocked by `get_service`).
+Siblings: `getBackupLogin` (open storage panel session), `getBackupInvoices`, `getBackupsWelcomeEmail`, `cancelBackup`, `updateBackupInfo`."
   [id int?]
   (check-required-params id)
   (call-api "/backups/{id}" :get
@@ -524,8 +568,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-backup-info backup-spec
-  "Get Backup Service Details
-  Returns detailed service information for the specified backup storage order, including `backup_username`, `backup_ip`, `backup_status`, and `backup_quota` in `serviceInfo`. Also returns `client_links`, `billingDetails`, `extraInfoTables`, `package`, and `custCurrency`."
+  "Get details of a specific off-site backup storage service
+  Use to fetch the full management view for one backup-storage subscription. Path param: `id` (backup service ID from `getBackupsList`). No body.
+Returns `serviceInfo` (with `backup_username`, `backup_ip`, `backup_status`, `backup_quota`, `backup_type`, `backup_invoice`), plus `billingDetails`, `extraInfoTables`, `package`, `custCurrency`, and `client_links` (rewritten to surface the link target rather than the raw queue URL). `admin_links`, internal `settings`, and `csrf` are stripped. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` does not belong to the caller (cross-account access blocked by `get_service`).
+Siblings: `getBackupLogin` (open storage panel session), `getBackupInvoices`, `getBackupsWelcomeEmail`, `cancelBackup`, `updateBackupInfo`."
   [id int?]
   (let [res (:data (get-backup-info-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -534,8 +580,10 @@
 
 
 (defn-spec get-backup-invoices-with-http-info any?
-  "Get Backup Order Invoices
-  Retrieves invoices associated with the backup storage order. Use this to confirm billing status or locate invoices for payment."
+  "List invoices for a single backup-storage subscription
+  Use to retrieve all invoices tied to one off-site backup storage service — useful for confirming billing status, locating an unpaid invoice to pay, or reconciling renewals. Path param: `id` from `getBackupsList`. Delegates to the shared `InvoicesList::go()` handler with module `backups`. No body.
+Returns `ChargeInvoiceRows` (array of invoice rows with `invoices_id`, status, amount, dates). Feed `invoices_id` into `getBillingInvoice` for full detail or `/billing/pay/{method}/{invoices}` to settle an unpaid invoice. For the account-wide invoice list use the Billing tag instead. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller.
+Siblings: `getBackupInfo`, `addBackup`."
   [id int?]
   (check-required-params id)
   (call-api "/backups/{id}/invoices" :get
@@ -548,8 +596,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-backup-invoices charge-invoice-rows-spec
-  "Get Backup Order Invoices
-  Retrieves invoices associated with the backup storage order. Use this to confirm billing status or locate invoices for payment."
+  "List invoices for a single backup-storage subscription
+  Use to retrieve all invoices tied to one off-site backup storage service — useful for confirming billing status, locating an unpaid invoice to pay, or reconciling renewals. Path param: `id` from `getBackupsList`. Delegates to the shared `InvoicesList::go()` handler with module `backups`. No body.
+Returns `ChargeInvoiceRows` (array of invoice rows with `invoices_id`, status, amount, dates). Feed `invoices_id` into `getBillingInvoice` for full detail or `/billing/pay/{method}/{invoices}` to settle an unpaid invoice. For the account-wide invoice list use the Billing tag instead. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller.
+Siblings: `getBackupInfo`, `addBackup`."
   [id int?]
   (let [res (:data (get-backup-invoices-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -558,8 +608,10 @@
 
 
 (defn-spec get-backup-login-with-http-info any?
-  "Get Backup Storage Panel Login
-  Creates and returns a login session URL for the backup storage panel. The returned session URL can be used to redirect the user directly into the storage management interface without requiring separate credentials."
+  "Open a single sign-on session URL for the backup storage panel
+  Use to drop the customer straight into the off-site backup storage management panel without a separate login prompt. Calls `get_storage_session($id)` to mint a one-shot session URL; treat the URL as short-lived and credentials-equivalent — do not log or share.
+Path param: `id` from `getBackupsList`. No body. Returns `BackupLoginResponse` (`success`, session URL/token, optional connection hints). On `success=false` the handler returns `json_error(text)` (HTTP 400) with the upstream reason. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; backend errors when the storage server is unreachable.
+Siblings: `getBackupInfo` (SFTP `backup_username`/`backup_ip` for direct connections), `getBackupsWelcomeEmail` (resend setup credentials)."
   [id int?]
   (check-required-params id)
   (call-api "/backups/{id}/login" :get
@@ -572,8 +624,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-backup-login backup-login-response-spec
-  "Get Backup Storage Panel Login
-  Creates and returns a login session URL for the backup storage panel. The returned session URL can be used to redirect the user directly into the storage management interface without requiring separate credentials."
+  "Open a single sign-on session URL for the backup storage panel
+  Use to drop the customer straight into the off-site backup storage management panel without a separate login prompt. Calls `get_storage_session($id)` to mint a one-shot session URL; treat the URL as short-lived and credentials-equivalent — do not log or share.
+Path param: `id` from `getBackupsList`. No body. Returns `BackupLoginResponse` (`success`, session URL/token, optional connection hints). On `success=false` the handler returns `json_error(text)` (HTTP 400) with the upstream reason. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; backend errors when the storage server is unreachable.
+Siblings: `getBackupInfo` (SFTP `backup_username`/`backup_ip` for direct connections), `getBackupsWelcomeEmail` (resend setup credentials)."
   [id int?]
   (let [res (:data (get-backup-login-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -582,8 +636,10 @@
 
 
 (defn-spec get-backups-list-with-http-info any?
-  "List Backup Services
-  Returns all backup storage services on your account. Each entry includes the `backup_id`, `backup_username`, `backup_ip`, `backup_status`, and `backup_quota`. Use the `backup_id` with `/backups/{id}` to retrieve full service details or `/backups/{id}/login` to obtain a storage panel session."
+  "List off-site backup storage subscriptions on the authenticated account
+  Use when enumerating all off-site backup storage services (SFTP-style remote storage subscriptions) on the authenticated customer's account. NOT for VPS/QS/webhosting in-place snapshots — those live under their own tags (`getVpsBackups`, `getQsBackups`, `getWebsitesBackups`). No query params, no body.
+Returns an array of rows; each row carries `backup_id`, `backup_name`, `backup_username`, `backup_status`, `services_name` (plan), and `backup_cost` (recurring price from `repeat_invoices`). Use `backup_id` as the path `{id}` for `getBackupInfo`, `getBackupLogin`, `getBackupInvoices`, `getBackupsWelcomeEmail`, `cancelBackup`. Errors: HTTP 401 if unauthenticated. Empty array when the customer has no backup services.
+Siblings: `getBackupInfo`, `getNewBackup`, `addBackup`."
   []
   (call-api "/backups" :get
             {:path-params   {}
@@ -595,8 +651,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-backups-list (s/coll-of backup-row-spec)
-  "List Backup Services
-  Returns all backup storage services on your account. Each entry includes the `backup_id`, `backup_username`, `backup_ip`, `backup_status`, and `backup_quota`. Use the `backup_id` with `/backups/{id}` to retrieve full service details or `/backups/{id}/login` to obtain a storage panel session."
+  "List off-site backup storage subscriptions on the authenticated account
+  Use when enumerating all off-site backup storage services (SFTP-style remote storage subscriptions) on the authenticated customer's account. NOT for VPS/QS/webhosting in-place snapshots — those live under their own tags (`getVpsBackups`, `getQsBackups`, `getWebsitesBackups`). No query params, no body.
+Returns an array of rows; each row carries `backup_id`, `backup_name`, `backup_username`, `backup_status`, `services_name` (plan), and `backup_cost` (recurring price from `repeat_invoices`). Use `backup_id` as the path `{id}` for `getBackupInfo`, `getBackupLogin`, `getBackupInvoices`, `getBackupsWelcomeEmail`, `cancelBackup`. Errors: HTTP 401 if unauthenticated. Empty array when the customer has no backup services.
+Siblings: `getBackupInfo`, `getNewBackup`, `addBackup`."
   []
   (let [res (:data (get-backups-list-with-http-info))]
     (if (:decode-models *api-context*)
@@ -605,8 +663,10 @@
 
 
 (defn-spec get-backups-welcome-email-with-http-info any?
-  "Resend Backup Welcome Email
-  Resends the welcome email for the specified backup service. The email contains connection credentials and setup instructions. Use this when the original welcome email was lost or never received."
+  "Resend the welcome email for an off-site backup storage service
+  Use when the original welcome email was lost or never arrived. Resends connection credentials (SFTP host, username, quota) and setup instructions to the account email by invoking the module's `backup_welcome_email($id)` helper.
+Path param: `id` from `getBackupsList`. No body. Returns `SuccessTextResponse` with `text='Welcome Email has been resent.'`. Caveats: only works while the service is `active`; cancelled/pending services will return 409. Email is sent to the customer-of-record on file — there is no override recipient parameter. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller (`Invalid Service Passed`); HTTP 409 if `backup_status` is not `active` (`Service is not active`).
+Siblings: `getBackupLogin`, `getBackupInfo`."
   [id int?]
   (check-required-params id)
   (call-api "/backups/{id}/welcome_email" :get
@@ -619,8 +679,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-backups-welcome-email success-text-response-spec
-  "Resend Backup Welcome Email
-  Resends the welcome email for the specified backup service. The email contains connection credentials and setup instructions. Use this when the original welcome email was lost or never received."
+  "Resend the welcome email for an off-site backup storage service
+  Use when the original welcome email was lost or never arrived. Resends connection credentials (SFTP host, username, quota) and setup instructions to the account email by invoking the module's `backup_welcome_email($id)` helper.
+Path param: `id` from `getBackupsList`. No body. Returns `SuccessTextResponse` with `text='Welcome Email has been resent.'`. Caveats: only works while the service is `active`; cancelled/pending services will return 409. Email is sent to the customer-of-record on file — there is no override recipient parameter. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller (`Invalid Service Passed`); HTTP 409 if `backup_status` is not `active` (`Service is not active`).
+Siblings: `getBackupLogin`, `getBackupInfo`."
   [id int?]
   (let [res (:data (get-backups-welcome-email-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -629,8 +691,10 @@
 
 
 (defn-spec get-new-backup-with-http-info any?
-  "Get Backup Order Form Data
-  Returns available backup storage plans, pricing tiers, and form metadata needed to build an order form. Use the service type IDs from this response when submitting a validation request via `PUT /backups/order` or placing an order via `POST /backups/order`."
+  "Get backup-storage order form metadata and pricing tiers
+  Use before placing an off-site backup storage order to fetch the available plans, their service-type IDs, and per-tier pricing needed to render an order form. No params, no body.
+Returns `{ packageCosts, serviceTypes }` — `packageCosts` is a map of `services_id` → recurring cost (from `services` where `services_module='backups'` and `services_buyable=1`); `serviceTypes` is the dispatcher output of `run_event('get_service_types', true, 'backups')` describing each tier. Pass the chosen `services_id` as `serviceType` to `validateBackupOrder` (PUT) for a price preview, then to `addBackup` (POST) to commit. Errors: HTTP 401 if unauthenticated.
+Siblings: `validateBackupOrder`, `addBackup`, `getBackupsList`."
   []
   (call-api "/backups/order" :get
             {:path-params   {}
@@ -642,8 +706,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-new-backup backups-order-spec
-  "Get Backup Order Form Data
-  Returns available backup storage plans, pricing tiers, and form metadata needed to build an order form. Use the service type IDs from this response when submitting a validation request via `PUT /backups/order` or placing an order via `POST /backups/order`."
+  "Get backup-storage order form metadata and pricing tiers
+  Use before placing an off-site backup storage order to fetch the available plans, their service-type IDs, and per-tier pricing needed to render an order form. No params, no body.
+Returns `{ packageCosts, serviceTypes }` — `packageCosts` is a map of `services_id` → recurring cost (from `services` where `services_module='backups'` and `services_buyable=1`); `serviceTypes` is the dispatcher output of `run_event('get_service_types', true, 'backups')` describing each tier. Pass the chosen `services_id` as `serviceType` to `validateBackupOrder` (PUT) for a price preview, then to `addBackup` (POST) to commit. Errors: HTTP 401 if unauthenticated.
+Siblings: `validateBackupOrder`, `addBackup`, `getBackupsList`."
   []
   (let [res (:data (get-new-backup-with-http-info))]
     (if (:decode-models *api-context*)
@@ -652,8 +718,10 @@
 
 
 (defn-spec update-backup-info-with-http-info any?
-  "Update Backup Information
-  Updates backup storage service metadata, such as stored credentials or settings for the order."
+  "Update stored metadata for a backup-storage subscription
+  Use to update non-billing metadata (e.g. stored credentials, comment, hostname) on an existing off-site backup storage service. Path param: `id` from `getBackupsList`. Body fields are forwarded to the same `View::go()` handler as the GET; consult the order form for accepted keys.
+Returns the standard `SuccessTextResponse`. Caveats: this endpoint does NOT change the plan, quota, or billing — those require cancel + reorder via `cancelBackup` and `addBackup`. It also does NOT trigger any backend SFTP credential rotation. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; HTTP 422 on invalid input.
+Siblings: `getBackupInfo`, `cancelBackup`, `getBackupLogin`."
   [id int?]
   (check-required-params id)
   (call-api "/backups/{id}" :post
@@ -666,8 +734,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec update-backup-info success-text-response-spec
-  "Update Backup Information
-  Updates backup storage service metadata, such as stored credentials or settings for the order."
+  "Update stored metadata for a backup-storage subscription
+  Use to update non-billing metadata (e.g. stored credentials, comment, hostname) on an existing off-site backup storage service. Path param: `id` from `getBackupsList`. Body fields are forwarded to the same `View::go()` handler as the GET; consult the order form for accepted keys.
+Returns the standard `SuccessTextResponse`. Caveats: this endpoint does NOT change the plan, quota, or billing — those require cancel + reorder via `cancelBackup` and `addBackup`. It also does NOT trigger any backend SFTP credential rotation. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; HTTP 422 on invalid input.
+Siblings: `getBackupInfo`, `cancelBackup`, `getBackupLogin`."
   [id int?]
   (let [res (:data (update-backup-info-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -676,8 +746,10 @@
 
 
 (defn-spec validate-backup-order-with-http-info any?
-  "Validate Backup Order
-  Validates a backup storage order without placing it, returning calculated pricing and any validation errors. Use this to display a confirmation screen with the final price before submitting the order via `POST /backups/order`."
+  "Validate a backup-storage order and preview pricing without charging
+  Use to dry-run a backup order — runs `validate_buy_storage()` to compute final price, apply any coupon, and surface validation errors before the customer commits. No invoice is created and no service is provisioned.
+Body (JSON or multipart): `serviceType` (services_id from `getNewBackup`), optional `coupon`, `period` (months, default 1), `comment`. Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, hostname, password, coupon, couponCode }`. Use the response to render a confirmation screen, then call `addBackup` (POST same path) to place the order. Errors: HTTP 401 unauthenticated; HTTP 422 surfaced inside `errors[]` (invalid coupon, ineligible plan, duplicate hostname).
+Siblings: `addBackup`, `getNewBackup`."
   ([] (validate-backup-order-with-http-info nil))
   ([{:keys [validateOnly serviceType coupon]} (s/map-of keyword? any?)]
    (call-api "/backups/order" :put
@@ -690,8 +762,10 @@
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
 (defn-spec validate-backup-order backup-order-put-response-spec
-  "Validate Backup Order
-  Validates a backup storage order without placing it, returning calculated pricing and any validation errors. Use this to display a confirmation screen with the final price before submitting the order via `POST /backups/order`."
+  "Validate a backup-storage order and preview pricing without charging
+  Use to dry-run a backup order — runs `validate_buy_storage()` to compute final price, apply any coupon, and surface validation errors before the customer commits. No invoice is created and no service is provisioned.
+Body (JSON or multipart): `serviceType` (services_id from `getNewBackup`), optional `coupon`, `period` (months, default 1), `comment`. Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, hostname, password, coupon, couponCode }`. Use the response to render a confirmation screen, then call `addBackup` (POST same path) to place the order. Errors: HTTP 401 unauthenticated; HTTP 422 surfaced inside `errors[]` (invalid coupon, ineligible plan, duplicate hostname).
+Siblings: `addBackup`, `getNewBackup`."
   ([] (validate-backup-order nil))
   ([optional-params any?]
    (let [res (:data (validate-backup-order-with-http-info optional-params))]

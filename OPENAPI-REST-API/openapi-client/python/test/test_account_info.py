@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_info import AccountInfo
+from interserver_api_client.models.account_info import AccountInfo
 
 class TestAccountInfo(unittest.TestCase):
     """AccountInfo unit test stubs"""

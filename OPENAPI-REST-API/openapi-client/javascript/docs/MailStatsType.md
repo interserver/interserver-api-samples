@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailStatsType
+# InterserverApiClient.MailStatsType
 
 ## Properties
 
@@ -31,6 +31,8 @@ Name | Type | Description | Notes
 * `today` (value: `"today"`)
 
 * `1h` (value: `"1h"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 
 

@@ -15,4 +15,8 @@ Dashboard module configuration for domain registration services.
 |**listLink** | **String** | Link to view domains list. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

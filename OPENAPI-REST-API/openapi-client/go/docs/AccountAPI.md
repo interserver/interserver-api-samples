@@ -4,92 +4,30 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ChangeAccountUsername**](AccountAPI.md#ChangeAccountUsername) | **Post** /account/username | Change Account Username
-[**DeleteAccountOauthName**](AccountAPI.md#DeleteAccountOauthName) | **Delete** /account/oauth/{name} | Unlink OAuth Account
-[**DeleteAccountTfa**](AccountAPI.md#DeleteAccountTfa) | **Delete** /account/2fa | Disable Two-Factor Authentication
-[**DeleteIpLimit**](AccountAPI.md#DeleteIpLimit) | **Patch** /account/iplimits | Remove IP Access Restriction
-[**GetAccountInfo**](AccountAPI.md#GetAccountInfo) | **Get** /account | Retrieve Account Details
-[**GetAccountTfaSetup**](AccountAPI.md#GetAccountTfaSetup) | **Get** /account/2fa | Get Two-Factor Setup Data
-[**GetHome**](AccountAPI.md#GetHome) | **Get** /home | Get Home Data
-[**GetSearch**](AccountAPI.md#GetSearch) | **Get** /search | Search Autocomplete
-[**Logout**](AccountAPI.md#Logout) | **Get** /logout | Log Out
-[**LogoutAccountOauth**](AccountAPI.md#LogoutAccountOauth) | **Get** /account/oauth/{name}/logout | Logout of OAuth
-[**UpdateAccountApiKey**](AccountAPI.md#UpdateAccountApiKey) | **Post** /account/apikey | Generate New API Key
-[**UpdateAccountFeatures**](AccountAPI.md#UpdateAccountFeatures) | **Post** /account/features | Update Account Feature Flags
-[**UpdateAccountInfo**](AccountAPI.md#UpdateAccountInfo) | **Post** /account | Update Account Information
-[**UpdateAccountIpLimits**](AccountAPI.md#UpdateAccountIpLimits) | **Post** /account/iplimits | Add IP Access Restriction
-[**UpdateAccountPassword**](AccountAPI.md#UpdateAccountPassword) | **Post** /account/password | Change Account Password
-[**UpdateAccountSshKey**](AccountAPI.md#UpdateAccountSshKey) | **Post** /account/sshkey | Update SSH Keys
-[**UpdateAccountTfa**](AccountAPI.md#UpdateAccountTfa) | **Post** /account/2fa | Enable Two-Factor Authentication
+[**DeleteAccountOauthName**](AccountAPI.md#DeleteAccountOauthName) | **Delete** /account/oauth/{name} | Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
+[**DeleteAccountTfa**](AccountAPI.md#DeleteAccountTfa) | **Delete** /account/2fa | Disable two-factor authentication and remove the TOTP secret
+[**DeleteIpLimit**](AccountAPI.md#DeleteIpLimit) | **Patch** /account/iplimits | Remove one IP range from the account allow-list (PATCH on /account/iplimits)
+[**GetAccountInfo**](AccountAPI.md#GetAccountInfo) | **Get** /account | Read full account profile, billing address, and security settings
+[**GetAccountTfaSetup**](AccountAPI.md#GetAccountTfaSetup) | **Get** /account/2fa | Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
+[**GetHome**](AccountAPI.md#GetHome) | **Get** /home | Aggregate dashboard payload — service counts, recent activity, alerts
+[**GetSearch**](AccountAPI.md#GetSearch) | **Get** /search | Global autocomplete across the caller&#39;s services, domains, and records
+[**Logout**](AccountAPI.md#Logout) | **Get** /logout | Destroy the current API/web session — token becomes unusable
+[**LogoutAccountOauth**](AccountAPI.md#LogoutAccountOauth) | **Get** /account/oauth/{name}/logout | Sign out of the upstream OAuth provider session (does not unlink the account)
+[**UpdateAccountApiKey**](AccountAPI.md#UpdateAccountApiKey) | **Post** /account/apikey | Rotate the account&#39;s REST/MCP API key — old key is invalidated immediately
+[**UpdateAccountFeatures**](AccountAPI.md#UpdateAccountFeatures) | **Post** /account/features | Toggle account-wide safety locks for password reset and OS reinstall
+[**UpdateAccountInfo**](AccountAPI.md#UpdateAccountInfo) | **Post** /account | Update contact and billing-address fields on the customer profile
+[**UpdateAccountIpLimits**](AccountAPI.md#UpdateAccountIpLimits) | **Post** /account/iplimits | Add an IP CIDR/range to the account&#39;s API+web allow-list (lockout-safe)
+[**UpdateAccountPassword**](AccountAPI.md#UpdateAccountPassword) | **Post** /account/password | Change the account login password (verifies current, kills other sessions)
+[**UpdateAccountSshKey**](AccountAPI.md#UpdateAccountSshKey) | **Post** /account/sshkey | Set the account-level SSH public key auto-installed on new VPS/dedicated orders
+[**UpdateAccountTfa**](AccountAPI.md#UpdateAccountTfa) | **Post** /account/2fa | Verify TOTP code and enable two-factor authentication on the account
 
-
-
-## ChangeAccountUsername
-
-> TextResponse ChangeAccountUsername(ctx).Execute()
-
-Change Account Username
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccountAPI.ChangeAccountUsername(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccountAPI.ChangeAccountUsername``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ChangeAccountUsername`: TextResponse
-	fmt.Fprintf(os.Stdout, "Response from `AccountAPI.ChangeAccountUsername`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiChangeAccountUsernameRequest struct via the builder pattern
-
-
-### Return type
-
-[**TextResponse**](TextResponse.md)
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## DeleteAccountOauthName
 
 > SuccessTextResponse DeleteAccountOauthName(ctx, name).Execute()
 
-Unlink OAuth Account
+Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
 
 
 
@@ -159,7 +97,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse DeleteAccountTfa(ctx).Execute()
 
-Disable Two-Factor Authentication
+Disable two-factor authentication and remove the TOTP secret
 
 
 
@@ -220,7 +158,7 @@ Other parameters are passed through a pointer to a apiDeleteAccountTfaRequest st
 
 > GenericResponse DeleteIpLimit(ctx).IpLimitRange(ipLimitRange).Execute()
 
-Remove IP Access Restriction
+Remove one IP range from the account allow-list (PATCH on /account/iplimits)
 
 
 
@@ -286,7 +224,7 @@ Name | Type | Description  | Notes
 
 > AccountInfo GetAccountInfo(ctx).Execute()
 
-Retrieve Account Details
+Read full account profile, billing address, and security settings
 
 
 
@@ -347,7 +285,7 @@ Other parameters are passed through a pointer to a apiGetAccountInfoRequest stru
 
 > GetAccountTfaSetup200Response GetAccountTfaSetup(ctx).Execute()
 
-Get Two-Factor Setup Data
+Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
 
 
 
@@ -408,7 +346,7 @@ Other parameters are passed through a pointer to a apiGetAccountTfaSetupRequest 
 
 > Home GetHome(ctx).Execute()
 
-Get Home Data
+Aggregate dashboard payload — service counts, recent activity, alerts
 
 
 
@@ -469,7 +407,7 @@ Other parameters are passed through a pointer to a apiGetHomeRequest struct via 
 
 > SearchAutocompleteResponse GetSearch(ctx).Execute()
 
-Search Autocomplete
+Global autocomplete across the caller's services, domains, and records
 
 
 
@@ -530,7 +468,7 @@ Other parameters are passed through a pointer to a apiGetSearchRequest struct vi
 
 > SuccessTextResponse Logout(ctx).Execute()
 
-Log Out
+Destroy the current API/web session — token becomes unusable
 
 
 
@@ -591,7 +529,7 @@ Other parameters are passed through a pointer to a apiLogoutRequest struct via t
 
 > SuccessTextResponse LogoutAccountOauth(ctx, name).Execute()
 
-Logout of OAuth
+Sign out of the upstream OAuth provider session (does not unlink the account)
 
 
 
@@ -661,7 +599,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateAccountApiKey(ctx).Execute()
 
-Generate New API Key
+Rotate the account's REST/MCP API key — old key is invalidated immediately
 
 
 
@@ -722,7 +660,7 @@ Other parameters are passed through a pointer to a apiUpdateAccountApiKeyRequest
 
 > SuccessTextResponse UpdateAccountFeatures(ctx).DisableReset(disableReset).DisableReinstall(disableReinstall).Execute()
 
-Update Account Feature Flags
+Toggle account-wide safety locks for password reset and OS reinstall
 
 
 
@@ -790,7 +728,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateAccountInfo(ctx).Name(name).Address(address).City(city).State(state).Zip(zip).Country(country).Phone(phone).Company(company).Address2(address2).Locale(locale).EmailInvoices(emailInvoices).EmailAbuse(emailAbuse).DisableReset(disableReset).DisableReinstall(disableReinstall).DisableServerNotifications(disableServerNotifications).DisableEmailNotifications(disableEmailNotifications).Gstin(gstin).Execute()
 
-Update Account Information
+Update contact and billing-address fields on the customer profile
 
 
 
@@ -888,7 +826,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateAccountIpLimits(ctx).Start(start).End(end).Execute()
 
-Add IP Access Restriction
+Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
 
 
 
@@ -956,7 +894,7 @@ Name | Type | Description  | Notes
 
 > TextResponse UpdateAccountPassword(ctx).Password(password).Execute()
 
-Change Account Password
+Change the account login password (verifies current, kills other sessions)
 
 
 
@@ -1022,7 +960,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateAccountSshKey(ctx).SshKey(sshKey).Execute()
 
-Update SSH Keys
+Set the account-level SSH public key auto-installed on new VPS/dedicated orders
 
 
 
@@ -1088,7 +1026,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateAccountTfa(ctx).Var2faGoogleCode(var2faGoogleCode).Execute()
 
-Enable Two-Factor Authentication
+Verify TOTP code and enable two-factor authentication on the account
 
 
 

@@ -24,50 +24,27 @@ import javax.validation.Valid;
  */
 
 public class InlineResponse2008   {
-  @JsonProperty("success")
-  private Boolean success = null;
+  @JsonProperty("login")
+  private Boolean login = null;
 
-  @JsonProperty("text")
-  private String text = null;
-
-  public InlineResponse2008 success(Boolean success) {
-    this.success = success;
+  public InlineResponse2008 login(Boolean login) {
+    this.login = login;
     return this;
   }
 
   /**
-   * Get success
-   * @return success
+   * Whether the 2FA verification succeeded and the user is now logged in.
+   * @return login
    **/
-  @JsonProperty("success")
-  @Schema(required = true, description = "")
+  @JsonProperty("login")
+  @Schema(description = "Whether the 2FA verification succeeded and the user is now logged in.")
   @NotNull
-  public Boolean isSuccess() {
-    return success;
+  public Boolean isLogin() {
+    return login;
   }
 
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  public InlineResponse2008 text(String text) {
-    this.text = text;
-    return this;
-  }
-
-  /**
-   * Get text
-   * @return text
-   **/
-  @JsonProperty("text")
-  @Schema(required = true, description = "")
-  @NotNull
-  public String getText() {
-    return text;
-  }
-
-  public void setText(String text) {
-    this.text = text;
+  public void setLogin(Boolean login) {
+    this.login = login;
   }
 
 
@@ -80,13 +57,12 @@ public class InlineResponse2008   {
       return false;
     }
     InlineResponse2008 inlineResponse2008 = (InlineResponse2008) o;
-    return Objects.equals(this.success, inlineResponse2008.success) &&
-        Objects.equals(this.text, inlineResponse2008.text);
+    return Objects.equals(this.login, inlineResponse2008.login);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, text);
+    return Objects.hash(login);
   }
 
 
@@ -95,8 +71,7 @@ public class InlineResponse2008   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2008 {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    login: ").append(toIndentedString(login)).append("\n");
     sb.append("}");
     return sb.toString();
   }

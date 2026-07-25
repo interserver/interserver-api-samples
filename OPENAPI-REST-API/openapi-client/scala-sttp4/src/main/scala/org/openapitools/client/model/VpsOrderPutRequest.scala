@@ -39,21 +39,59 @@ case class VpsOrderPutRequest(
   /* Order comments or notes */
   comment: Option[String] = None
 )
-
 object VpsOrderPutRequestEnums {
 
-  type VpsPlatform = VpsPlatform.Value
-  type Controlpanel = Controlpanel.Value
-  object VpsPlatform extends Enumeration {
-    val Kvm = Value("kvm")
-    val Hyperv = Value("hyperv")
-    val Kvmstorage = Value("kvmstorage")
+  sealed trait VpsPlatform
+  object VpsPlatform {
+    case object Kvm extends VpsPlatform
+    case object Hyperv extends VpsPlatform
+    case object Kvmstorage extends VpsPlatform
+
+    import org.json4s._
+
+    implicit object VpsPlatformSerializer extends Serializer[VpsPlatform] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), VpsPlatform] = {
+        case (TypeInfo(clazz, _), json) if classOf[VpsPlatform].isAssignableFrom(clazz) =>
+          json match {
+            case JString("kvm") => Kvm
+            case JString("hyperv") => Hyperv
+            case JString("kvmstorage") => Kvmstorage
+            case other => throw new MappingException(s"Invalid VpsPlatform: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case Kvm => JString("kvm")
+        case Hyperv => JString("hyperv")
+        case Kvmstorage => JString("kvmstorage")
+      }
+    }
   }
 
-  object Controlpanel extends Enumeration {
-    val None = Value("none")
-    val Cpanel = Value("cpanel")
-    val Da = Value("da")
-  }
+  sealed trait Controlpanel
+  object Controlpanel {
+    case object None extends Controlpanel
+    case object Cpanel extends Controlpanel
+    case object Da extends Controlpanel
 
+    import org.json4s._
+
+    implicit object ControlpanelSerializer extends Serializer[Controlpanel] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), Controlpanel] = {
+        case (TypeInfo(clazz, _), json) if classOf[Controlpanel].isAssignableFrom(clazz) =>
+          json match {
+            case JString("none") => None
+            case JString("cpanel") => Cpanel
+            case JString("da") => Da
+            case other => throw new MappingException(s"Invalid Controlpanel: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case None => JString("none")
+        case Cpanel => JString("cpanel")
+        case Da => JString("da")
+      }
+    }
+  }
 }

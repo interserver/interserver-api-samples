@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.server_ipmi_power_request import ServerIpmiPowerRequest
+from interserver_api_client.models.server_ipmi_power_request import ServerIpmiPowerRequest
 
 # TODO update the JSON string below
 json = "{}"

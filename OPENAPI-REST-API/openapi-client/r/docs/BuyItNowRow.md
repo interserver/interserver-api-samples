@@ -1,4 +1,4 @@
-# openapi::BuyItNowRow
+# interserverapi::BuyItNowRow
 
 A buy-it-now dedicated server listing from the marketplace, with hardware specs and pricing.
 

@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainBillingExtra = Initialize-PSOpenAPIToolsDomainBillingExtra  -Order null `
+$DomainBillingExtra = Initialize-InterserverApiDomainBillingExtra  -Order null `
  -OrderId null `
  -DomainId null `
  -ProvProcessPending null `

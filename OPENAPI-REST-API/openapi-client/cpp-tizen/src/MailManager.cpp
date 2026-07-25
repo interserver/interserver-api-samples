@@ -109,7 +109,7 @@ static bool addMailProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, 
 }
 
 static bool addMailHelper(char * accessToken,
-	
+	std::shared_ptr<MailOrderRequest> mailOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -129,6 +129,19 @@ static bool addMailHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("MailOrderRequest")) {
+		node = converttoJson(&mailOrderRequest, "MailOrderRequest", "");
+	}
+	
+	char *jsonStr =  mailOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/mail/order");
 	int pos;
@@ -180,22 +193,22 @@ static bool addMailHelper(char * accessToken,
 
 
 bool MailManager::addMailAsync(char * accessToken,
-	
+	std::shared_ptr<MailOrderRequest> mailOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addMailHelper(accessToken,
-	
+	mailOrderRequest, 
 	handler, userData, true);
 }
 
 bool MailManager::addMailSync(char * accessToken,
-	
+	std::shared_ptr<MailOrderRequest> mailOrderRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addMailHelper(accessToken,
-	
+	mailOrderRequest, 
 	handler, userData, false);
 }
 
@@ -612,7 +625,7 @@ static bool deleteMailAlertProcessor(MemoryStruct_s p_chunk, long code, char* er
 }
 
 static bool deleteMailAlertHelper(char * accessToken,
-	int id, int alertId, 
+	int id, std::shared_ptr<DeleteMailAlert_request> deleteMailAlertRequest, 
 	void(* handler)(SuccessTextResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -625,17 +638,27 @@ static bool deleteMailAlertHelper(char * accessToken,
 	accessHeader.append(accessToken);
 	headerList = curl_slist_append(headerList, accessHeader.c_str());
 	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+	headerList = curl_slist_append(headerList, "Content-Type: multipart/form-data");
 
 	map <string, string> queryParams;
 	string itemAtq;
 	
-
-	itemAtq = stringify(&alertId, "int");
-	queryParams.insert(pair<string, string>("alert_id", itemAtq));
-
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("DeleteMailAlert_request")) {
+		node = converttoJson(&deleteMailAlertRequest, "DeleteMailAlert_request", "");
+	}
+	
+	char *jsonStr =  deleteMailAlertRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/mail/{id}/alerts");
 	int pos;
@@ -693,22 +716,22 @@ static bool deleteMailAlertHelper(char * accessToken,
 
 
 bool MailManager::deleteMailAlertAsync(char * accessToken,
-	int id, int alertId, 
+	int id, std::shared_ptr<DeleteMailAlert_request> deleteMailAlertRequest, 
 	void(* handler)(SuccessTextResponse, Error, void* )
 	, void* userData)
 {
 	return deleteMailAlertHelper(accessToken,
-	id, alertId, 
+	id, deleteMailAlertRequest, 
 	handler, userData, true);
 }
 
 bool MailManager::deleteMailAlertSync(char * accessToken,
-	int id, int alertId, 
+	int id, std::shared_ptr<DeleteMailAlert_request> deleteMailAlertRequest, 
 	void(* handler)(SuccessTextResponse, Error, void* )
 	, void* userData)
 {
 	return deleteMailAlertHelper(accessToken,
-	id, alertId, 
+	id, deleteMailAlertRequest, 
 	handler, userData, false);
 }
 
@@ -3121,7 +3144,7 @@ static bool putMailProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, 
 }
 
 static bool putMailHelper(char * accessToken,
-	
+	std::shared_ptr<MailOrderRequest> mailOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -3141,6 +3164,19 @@ static bool putMailHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("MailOrderRequest")) {
+		node = converttoJson(&mailOrderRequest, "MailOrderRequest", "");
+	}
+	
+	char *jsonStr =  mailOrderRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/mail/order");
 	int pos;
@@ -3192,22 +3228,22 @@ static bool putMailHelper(char * accessToken,
 
 
 bool MailManager::putMailAsync(char * accessToken,
-	
+	std::shared_ptr<MailOrderRequest> mailOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putMailHelper(accessToken,
-	
+	mailOrderRequest, 
 	handler, userData, true);
 }
 
 bool MailManager::putMailSync(char * accessToken,
-	
+	std::shared_ptr<MailOrderRequest> mailOrderRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putMailHelper(accessToken,
-	
+	mailOrderRequest, 
 	handler, userData, false);
 }
 
@@ -4055,6 +4091,193 @@ bool MailManager::updateMailInfoSync(char * accessToken,
 {
 	return updateMailInfoHelper(accessToken,
 	id, 
+	handler, userData, false);
+}
+
+static bool updateRuleProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(GenericResponse, Error, void* )
+	= reinterpret_cast<void(*)(GenericResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	GenericResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("GenericResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "GenericResponse", "GenericResponse");
+			json_node_free(pJson);
+
+			if ("GenericResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool updateRuleHelper(char * accessToken,
+	int id, std::string rule, std::shared_ptr<DenyRuleNew> denyRuleNew, 
+	void(* handler)(GenericResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+	headerList = curl_slist_append(headerList, "Content-Type: multipart/form-data");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("DenyRuleNew")) {
+		node = converttoJson(&denyRuleNew, "DenyRuleNew", "");
+	}
+	
+	char *jsonStr =  denyRuleNew.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/mail/{id}/rules/{rule}");
+	int pos;
+
+	string s_id("{");
+	s_id.append("id");
+	s_id.append("}");
+	pos = url.find(s_id);
+	url.erase(pos, s_id.length());
+	url.insert(pos, stringify(&id, "int"));
+	string s_rule("{");
+	s_rule.append("rule");
+	s_rule.append("}");
+	pos = url.find(s_rule);
+	url.erase(pos, s_rule.length());
+	url.insert(pos, stringify(&rule, "std::string"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("PUT");
+
+	if(strcmp("PUT", "PUT") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(MailManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = updateRuleProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (MailManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), updateRuleProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __MailManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool MailManager::updateRuleAsync(char * accessToken,
+	int id, std::string rule, std::shared_ptr<DenyRuleNew> denyRuleNew, 
+	void(* handler)(GenericResponse, Error, void* )
+	, void* userData)
+{
+	return updateRuleHelper(accessToken,
+	id, rule, denyRuleNew, 
+	handler, userData, true);
+}
+
+bool MailManager::updateRuleSync(char * accessToken,
+	int id, std::string rule, std::shared_ptr<DenyRuleNew> denyRuleNew, 
+	void(* handler)(GenericResponse, Error, void* )
+	, void* userData)
+{
+	return updateRuleHelper(accessToken,
+	id, rule, denyRuleNew, 
 	handler, userData, false);
 }
 

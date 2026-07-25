@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_extra_info_table import MailExtraInfoTable
+from interserver_api_client.models.mail_extra_info_table import MailExtraInfoTable
 
 class TestMailExtraInfoTable(unittest.TestCase):
     """MailExtraInfoTable unit test stubs"""
@@ -38,7 +38,7 @@ class TestMailExtraInfoTable(unittest.TestCase):
             return MailExtraInfoTable(
                 title = 'Connection Information',
                 rows = [
-                    openapi_client.models.mail_extra_info_table_row.MailExtraInfoTableRow(
+                    interserver_api_client.models.mail_extra_info_table_row.MailExtraInfoTableRow(
                         desc = 'SMTP Server', 
                         value = 'relay.mailbaby.net', )
                     ]

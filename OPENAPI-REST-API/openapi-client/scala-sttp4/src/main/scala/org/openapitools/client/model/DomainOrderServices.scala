@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class DomainOrderServices(
   DomainOrderServices10001: Option[DomainOrderServices10001] = None
 )
-

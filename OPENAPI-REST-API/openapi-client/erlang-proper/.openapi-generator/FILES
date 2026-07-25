@@ -25,8 +25,6 @@ src/model/openapi_affiliate_banner_row.erl
 src/model/openapi_affiliate_dock_setup.erl
 src/model/openapi_affiliate_payment_setup.erl
 src/model/openapi_affiliate_traffic_row.erl
-src/model/openapi_asset_server.erl
-src/model/openapi_asset_server_cpu_inner.erl
 src/model/openapi_backup.erl
 src/model/openapi_backup_billing_details.erl
 src/model/openapi_backup_client_link.erl
@@ -44,7 +42,6 @@ src/model/openapi_backup_service_master.erl
 src/model/openapi_backups_order.erl
 src/model/openapi_backups_order_package_costs.erl
 src/model/openapi_backups_order_service_types.erl
-src/model/openapi_bandwidth.erl
 src/model/openapi_billing_add_cc_request.erl
 src/model/openapi_billing_invoice_detail.erl
 src/model/openapi_billing_invoice_list.erl
@@ -70,11 +67,6 @@ src/model/openapi_charge_invoice_rows_invoices_value.erl
 src/model/openapi_charge_invoice_rows_invoices_value_paid_invoices_value.erl
 src/model/openapi_charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.erl
 src/model/openapi_close_ticket_response_schema.erl
-src/model/openapi_config_ids.erl
-src/model/openapi_config_lists.erl
-src/model/openapi_control_panel.erl
-src/model/openapi_cpu.erl
-src/model/openapi_cpu_with_defaults.erl
 src/model/openapi_create_filter.erl
 src/model/openapi_create_filter_201_response.erl
 src/model/openapi_create_filter_400_response.erl
@@ -90,6 +82,7 @@ src/model/openapi_delete_filter_400_response.erl
 src/model/openapi_delete_filter_500_response.erl
 src/model/openapi_delete_firewall_rule.erl
 src/model/openapi_delete_geo_firewall_rule.erl
+src/model/openapi_delete_mail_alert_request.erl
 src/model/openapi_deny_rule_new.erl
 src/model/openapi_deny_rule_record.erl
 src/model/openapi_disable_scrub_200_response.erl
@@ -120,11 +113,11 @@ src/model/openapi_domain_nameserver_get_response_inner.erl
 src/model/openapi_domain_nameserver_post_request.erl
 src/model/openapi_domain_nameserver_put_request.erl
 src/model/openapi_domain_order.erl
+src/model/openapi_domain_order_request.erl
 src/model/openapi_domain_order_response.erl
 src/model/openapi_domain_order_response_attributes.erl
 src/model/openapi_domain_order_services.erl
 src/model/openapi_domain_order_services10001.erl
-src/model/openapi_domain_order_tld_services.erl
 src/model/openapi_domain_owner_contact.erl
 src/model/openapi_domain_prov_process_pending.erl
 src/model/openapi_domain_prov_process_pending_attributes.erl
@@ -140,12 +133,13 @@ src/model/openapi_email_address.erl
 src/model/openapi_email_address_name.erl
 src/model/openapi_enable_scrub_200_response.erl
 src/model/openapi_enable_scrub_500_response.erl
-src/model/openapi_field_label.erl
+src/model/openapi_floating_ip_order_request.erl
 src/model/openapi_floating_ips_cancel_200_response.erl
-src/model/openapi_form_values.erl
 src/model/openapi_generic_response.erl
 src/model/openapi_get_account_info_401_response.erl
+src/model/openapi_get_account_locales_200_response_value.erl
 src/model/openapi_get_account_tfa_setup_200_response.erl
+src/model/openapi_get_affiliate_signups_200_response.erl
 src/model/openapi_get_oauth_redirect_200_response.erl
 src/model/openapi_get_order_detail_200_response.erl
 src/model/openapi_get_order_detail_200_response_ips_inner.erl
@@ -162,7 +156,6 @@ src/model/openapi_get_scrub_ip_details_200_response_filter_firewall_filters_inne
 src/model/openapi_get_scrub_ip_details_200_response_filter_firewall_rules_inner.erl
 src/model/openapi_get_scrub_ip_details_200_response_service_info.erl
 src/model/openapi_get_website_buy_ip_200_response.erl
-src/model/openapi_hard_drive.erl
 src/model/openapi_home.erl
 src/model/openapi_home_details.erl
 src/model/openapi_home_details_modules.erl
@@ -189,10 +182,6 @@ src/model/openapi_home_ticket_status.erl
 src/model/openapi_home_ticket_status_view.erl
 src/model/openapi_hostname_object.erl
 src/model/openapi_initiate_payment_200_response.erl
-src/model/openapi_inline_object.erl
-src/model/openapi_invoice.erl
-src/model/openapi_invoice_row.erl
-src/model/openapi_ip_block.erl
 src/model/openapi_ip_limit_range.erl
 src/model/openapi_ip_object.erl
 src/model/openapi_license.erl
@@ -201,6 +190,7 @@ src/model/openapi_license_client_link.erl
 src/model/openapi_license_extra_info_tables.erl
 src/model/openapi_license_ip_info.erl
 src/model/openapi_license_ip_info_row.erl
+src/model/openapi_license_order_request.erl
 src/model/openapi_license_row.erl
 src/model/openapi_license_service_info.erl
 src/model/openapi_license_service_type.erl
@@ -237,6 +227,7 @@ src/model/openapi_mail_extra_info_table_row.erl
 src/model/openapi_mail_log.erl
 src/model/openapi_mail_log_entry.erl
 src/model/openapi_mail_order.erl
+src/model/openapi_mail_order_request.erl
 src/model/openapi_mail_row.erl
 src/model/openapi_mail_schema.erl
 src/model/openapi_mail_schema_extra_info_tables.erl
@@ -249,15 +240,13 @@ src/model/openapi_mail_stats_type_volume_ip.erl
 src/model/openapi_mail_stats_type_volume_to.erl
 src/model/openapi_mail_tutorials_table.erl
 src/model/openapi_mail_tutorials_table_row.erl
-src/model/openapi_memory_option.erl
 src/model/openapi_module_settings.erl
 src/model/openapi_modules.erl
 src/model/openapi_monthly_counts.erl
-src/model/openapi_operating_system.erl
 src/model/openapi_password_request.erl
+src/model/openapi_patch_billing_credit_card_verify_request.erl
 src/model/openapi_patch_oauth_two_factor_200_response.erl
 src/model/openapi_patch_oauth_two_factor_request.erl
-src/model/openapi_payment_invoice_rows.erl
 src/model/openapi_place_buy_now_server_request.erl
 src/model/openapi_place_scrub_order_201_response.erl
 src/model/openapi_place_scrub_order_201_response_order_details.erl
@@ -268,6 +257,8 @@ src/model/openapi_post_website_buy_ip_200_response.erl
 src/model/openapi_post_website_buy_ip_request.erl
 src/model/openapi_post_website_migration_200_response.erl
 src/model/openapi_post_website_migration_request.erl
+src/model/openapi_put_scrub_ips_200_response.erl
+src/model/openapi_qs_order_request.erl
 src/model/openapi_queue_response.erl
 src/model/openapi_quickserver.erl
 src/model/openapi_quickserver_addons.erl
@@ -291,8 +282,6 @@ src/model/openapi_quickserver_service_extra.erl
 src/model/openapi_quickserver_service_info.erl
 src/model/openapi_quickserver_service_master.erl
 src/model/openapi_quickservers_cancel_200_response.erl
-src/model/openapi_raid_option.erl
-src/model/openapi_region.erl
 src/model/openapi_reply_ticket_request.erl
 src/model/openapi_reply_ticket_response_schema.erl
 src/model/openapi_restore_request.erl
@@ -312,6 +301,8 @@ src/model/openapi_server.erl
 src/model/openapi_server_asset.erl
 src/model/openapi_server_assets.erl
 src/model/openapi_server_billing_details.erl
+src/model/openapi_server_bulk_ipmi_power_response.erl
+src/model/openapi_server_bulk_ipmi_power_response_results_inner.erl
 src/model/openapi_server_client_link.erl
 src/model/openapi_server_extra_info_tables.erl
 src/model/openapi_server_ipmi_live_info.erl
@@ -334,7 +325,6 @@ src/model/openapi_server_order_cpu_li.erl
 src/model/openapi_server_order_field_label.erl
 src/model/openapi_server_order_field_labels.erl
 src/model/openapi_server_order_form_values.erl
-src/model/openapi_server_order_get_response.erl
 src/model/openapi_server_order_ip.erl
 src/model/openapi_server_order_ips_li.erl
 src/model/openapi_server_order_memory.erl
@@ -342,6 +332,8 @@ src/model/openapi_server_order_memory_li.erl
 src/model/openapi_server_order_memory_li_254.erl
 src/model/openapi_server_order_os.erl
 src/model/openapi_server_order_os_li.erl
+src/model/openapi_server_order_post_request.erl
+src/model/openapi_server_order_post_request_hd.erl
 src/model/openapi_server_order_raid.erl
 src/model/openapi_server_row.erl
 src/model/openapi_server_service_info.erl
@@ -359,6 +351,7 @@ src/model/openapi_service_types.erl
 src/model/openapi_services.erl
 src/model/openapi_services_info.erl
 src/model/openapi_ssl_cancel_200_response.erl
+src/model/openapi_ssl_order_request.erl
 src/model/openapi_status_monthly_breakdown.erl
 src/model/openapi_success_text_response.erl
 src/model/openapi_template_request.erl
@@ -417,7 +410,6 @@ src/model/openapi_vps_service_master.erl
 src/model/openapi_vps_snapshot.erl
 src/model/openapi_vps_template_row.erl
 src/model/openapi_vps_templates_list.erl
-src/model/openapi_vps_traffic_data_data_response.erl
 src/model/openapi_vps_traffic_data_data_section_response.erl
 src/model/openapi_vps_traffic_data_data_section_response_inner.erl
 src/model/openapi_vps_traffic_data_section_response.erl
@@ -438,6 +430,8 @@ src/model/openapi_website_billing_details.erl
 src/model/openapi_website_client_link.erl
 src/model/openapi_website_extra_info_tables.erl
 src/model/openapi_website_login_response.erl
+src/model/openapi_website_order_post_request.erl
+src/model/openapi_website_order_put_request.erl
 src/model/openapi_website_row.erl
 src/model/openapi_website_service_info.erl
 src/model/openapi_website_service_master.erl

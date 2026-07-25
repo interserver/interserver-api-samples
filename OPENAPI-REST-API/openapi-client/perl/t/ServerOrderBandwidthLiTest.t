@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerOrderBandwidthLi');
+use_ok('InterServerAPI::Object::ServerOrderBandwidthLi');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerOrderBandwidthLi->new();
+#my $instance = InterServerAPI::Object::ServerOrderBandwidthLi->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerOrderBandwidthLi');
+#isa_ok($instance, 'InterServerAPI::Object::ServerOrderBandwidthLi');
 
 
 done_testing();

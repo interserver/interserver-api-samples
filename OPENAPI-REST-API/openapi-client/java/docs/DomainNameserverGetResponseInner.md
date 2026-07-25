@@ -21,4 +21,8 @@
 | _1 | &quot;1&quot; |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsiteServiceInfo = Initialize-PSOpenAPIToolsWebsiteServiceInfo  -WebsiteId 1196829 `
+$WebsiteServiceInfo = Initialize-InterserverApiWebsiteServiceInfo  -WebsiteId 1196829 `
  -WebsiteServer 543 `
  -WebsiteType 11363 `
  -WebsiteCurrency USD `

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServiceCategory
 void main() {
-  final instance = ServiceCategoryBuilder();
-  // TODO add properties to the builder and call build()
+  final ServiceCategory? instance = /* ServiceCategory(...) */ null;
+  // TODO add properties to the entity
 
   group(ServiceCategory, () {
     // int categoryId

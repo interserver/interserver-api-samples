@@ -1,4 +1,4 @@
-# SwaggerClient::ServerOrderOsLi
+# InterserverApiClient::ServerOrderOsLi
 
 ## Properties
 Name | Type | Description | Notes

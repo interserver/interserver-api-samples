@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.password_request import PasswordRequest
+from interserver_api_client.models.password_request import PasswordRequest
 
 class TestPasswordRequest(unittest.TestCase):
     """PasswordRequest unit test stubs"""

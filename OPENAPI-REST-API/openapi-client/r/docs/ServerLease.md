@@ -1,4 +1,4 @@
-# openapi::ServerLease
+# interserverapi::ServerLease
 
 
 ## Properties

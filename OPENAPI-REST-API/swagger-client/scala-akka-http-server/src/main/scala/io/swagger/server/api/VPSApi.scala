@@ -27,8 +27,8 @@ import io.swagger.server.model.VpsOrderPutResponse
 import io.swagger.server.model.VpsRow
 import io.swagger.server.model.VpsTemplatesList
 import io.swagger.server.model.VpsTrafficResponse
-import io.swagger.server.model.inline_response_200_11
-import io.swagger.server.model.inline_response_200_22
+import io.swagger.server.model.inline_response_200_12
+import io.swagger.server.model.inline_response_200_24
 import io.swagger.server.model.inline_response_401
 
 class VPSApi(
@@ -220,6 +220,21 @@ class VPSApi(
     } ~
     path() { (id) => 
       get {
+        
+          
+            
+              
+                
+                  vPSService.getVpsBackup(id = id)
+               
+             
+           
+         
+       
+      }
+    } ~
+    path() { (id) => 
+      get {
         parameters("all".as[String].?) { (all) =>
           
             
@@ -270,6 +285,36 @@ class VPSApi(
             
               
                 
+                  vPSService.getVpsChangeHostname(id = id)
+               
+             
+           
+         
+       
+      }
+    } ~
+    path() { (id) => 
+      get {
+        
+          
+            
+              
+                
+                  vPSService.getVpsChangeRootPassword(id = id)
+               
+             
+           
+         
+       
+      }
+    } ~
+    path() { (id) => 
+      get {
+        
+          
+            
+              
+                
                   vPSService.getVpsChangeTimezone(id = id)
                
              
@@ -286,6 +331,21 @@ class VPSApi(
               
                 
                   vPSService.getVpsInfo(id = id)
+               
+             
+           
+         
+       
+      }
+    } ~
+    path() { (id) => 
+      get {
+        
+          
+            
+              
+                
+                  vPSService.getVpsInsertCd(id = id)
                
              
            
@@ -331,6 +391,21 @@ class VPSApi(
               
                 
                   vPSService.getVpsReinstallOs(id = id)
+               
+             
+           
+         
+       
+      }
+    } ~
+    path() { (id) => 
+      get {
+        
+          
+            
+              
+                
+                  vPSService.getVpsResetPassword(id = id)
                
              
            
@@ -421,21 +496,6 @@ class VPSApi(
               
                 
                   vPSService.getVpsWelcomeEmail(id = id)
-               
-             
-           
-         
-       
-      }
-    } ~
-    path() { (id) => 
-      get {
-        
-          
-            
-              
-                
-                  vPSService.postVpsBackup(id = id)
                
              
            
@@ -645,6 +705,21 @@ class VPSApi(
             
               
                 
+                  vPSService.postVpsTrafficUsage(id = id)
+               
+             
+           
+         
+       
+      }
+    } ~
+    path() { (id) => 
+      post {
+        
+          
+            
+              
+                
                   vPSService.postVpsViewDesktop(id = id)
                
              
@@ -664,6 +739,21 @@ class VPSApi(
                 }
              
             }
+         
+       
+      }
+    } ~
+    path() { (id) => 
+      put {
+        
+          
+            
+              
+                
+                  vPSService.putVpsBuyHdSpace(id = id)
+               
+             
+           
          
        
       }
@@ -707,7 +797,7 @@ trait VPSApiService {
   def addVps401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
+   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def addVps(body: VpsOrderPostRequest, osDistro: Option[String], slices: Option[Int], vpsPlatform: Option[String], controlpanel: Option[String], period: Option[Int], location: Option[Int], osVersion: Option[String], hostname: Option[String], coupon: Option[String], rootpass: Option[String], comment: Option[String])
@@ -812,16 +902,16 @@ trait VPSApiService {
   def doVpsStop(id: Int)
       (implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def downloadVpsBackup200(responseinline_response_200_11: inline_response_200_11)(implicit toEntityMarshallerinline_response_200_11: ToEntityMarshaller[inline_response_200_11]): Route =
-    complete((200, responseinline_response_200_11))
+  def downloadVpsBackup200(responseinline_response_200_12: inline_response_200_12)(implicit toEntityMarshallerinline_response_200_12: ToEntityMarshaller[inline_response_200_12]): Route =
+    complete((200, responseinline_response_200_12))
   def downloadVpsBackup401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Download URL for the backup file., DataType: inline_response_200_11
+   * Code: 200, Message: Download URL for the backup file., DataType: inline_response_200_12
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def downloadVpsBackup(body: Id_backups_body_2, file: String, id: Int, all: Option[String])
-      (implicit toEntityMarshallerinline_response_200_11: ToEntityMarshaller[inline_response_200_11], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_12: ToEntityMarshaller[inline_response_200_12], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getNewVps200(responseVpsOrder: VpsOrder)(implicit toEntityMarshallerVpsOrder: ToEntityMarshaller[VpsOrder]): Route =
     complete((200, responseVpsOrder))
@@ -833,6 +923,17 @@ trait VPSApiService {
    */
   def getNewVps()
       (implicit toEntityMarshallerVpsOrder: ToEntityMarshaller[VpsOrder], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
+  def getVpsBackup200(responseQueueResponse: QueueResponse)(implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse]): Route =
+    complete((200, responseQueueResponse))
+  def getVpsBackup401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Response message from sending a service queue., DataType: QueueResponse
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def getVpsBackup(id: Int)
+      (implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getVpsBackups200(responseVpsBackupRows: VpsBackupRows)(implicit toEntityMarshallerVpsBackupRows: ToEntityMarshaller[VpsBackupRows]): Route =
     complete((200, responseVpsBackupRows))
@@ -867,6 +968,28 @@ trait VPSApiService {
   def getVpsBuyIp(id: Int)
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def getVpsChangeHostname200: Route =
+    complete((200, "Current hostname information for the VPS."))
+  def getVpsChangeHostname401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Current hostname information for the VPS.
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def getVpsChangeHostname(id: Int)
+      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
+  def getVpsChangeRootPassword200: Route =
+    complete((200, "Password requirements and current state."))
+  def getVpsChangeRootPassword401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Password requirements and current state.
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def getVpsChangeRootPassword(id: Int)
+      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
   def getVpsChangeTimezone200(responseStringarray: List[String]): Route =
     complete((200, responseStringarray))
   def getVpsChangeTimezone401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -888,6 +1011,17 @@ trait VPSApiService {
    */
   def getVpsInfo(id: Int)
       (implicit toEntityMarshallerVps: ToEntityMarshaller[Vps], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
+  def getVpsInsertCd200: Route =
+    complete((200, "Available CD/ISO images for the VPS."))
+  def getVpsInsertCd401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Available CD/ISO images for the VPS.
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def getVpsInsertCd(id: Int)
+      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getVpsInvoices200(responseChargeInvoiceRows: ChargeInvoiceRows)(implicit toEntityMarshallerChargeInvoiceRows: ToEntityMarshaller[ChargeInvoiceRows]): Route =
     complete((200, responseChargeInvoiceRows))
@@ -921,6 +1055,17 @@ trait VPSApiService {
    */
   def getVpsReinstallOs(id: Int)
       (implicit toEntityMarshallerVpsTemplatesList: ToEntityMarshaller[VpsTemplatesList], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
+  def getVpsResetPassword200: Route =
+    complete((200, "Password reset requirements and current state."))
+  def getVpsResetPassword401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Password reset requirements and current state.
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def getVpsResetPassword(id: Int)
+      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getVpsReverseDns200(responseReverseDnsEntries: ReverseDnsEntries)(implicit toEntityMarshallerReverseDnsEntries: ToEntityMarshaller[ReverseDnsEntries]): Route =
     complete((200, responseReverseDnsEntries))
@@ -987,17 +1132,6 @@ trait VPSApiService {
    */
   def getVpsWelcomeEmail(id: String)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
-
-  def postVpsBackup200(responseQueueResponse: QueueResponse)(implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse]): Route =
-    complete((200, responseQueueResponse))
-  def postVpsBackup401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((401, responseinline_response_401))
-  /**
-   * Code: 200, Message: Response message from sending a service queue., DataType: QueueResponse
-   * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   */
-  def postVpsBackup(id: Int)
-      (implicit toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def postVpsBuyHdSpace200: Route =
     complete((200, "Post Buy HD Space for VPS response"))
@@ -1145,6 +1279,17 @@ trait VPSApiService {
   def postVpsSlices(id: Int)
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def postVpsTrafficUsage200: Route =
+    complete((200, "Filtered traffic usage search results."))
+  def postVpsTrafficUsage401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Filtered traffic usage search results.
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def postVpsTrafficUsage(id: Int)
+      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
   def postVpsViewDesktop200: Route =
     complete((200, "Submit VPS View Desktop Information"))
   def postVpsViewDesktop401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -1167,6 +1312,17 @@ trait VPSApiService {
   def putVps(body: VpsOrderPutRequest, osDistro: Option[String], slices: Option[Int], vpsPlatform: Option[String], controlpanel: Option[String], period: Option[Int], location: Option[Int], osVersion: Option[String], hostname: Option[String], coupon: Option[String], rootpass: Option[String], comment: Option[String])
       (implicit toEntityMarshallerVpsOrderPutResponse: ToEntityMarshaller[VpsOrderPutResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def putVpsBuyHdSpace200: Route =
+    complete((200, "Pricing preview for the requested HD space size."))
+  def putVpsBuyHdSpace401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Pricing preview for the requested HD space size.
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def putVpsBuyHdSpace(id: Int)
+      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
   def updateVpsInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
   def updateVpsInfo401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -1178,16 +1334,16 @@ trait VPSApiService {
   def updateVpsInfo(id: String)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def vPSCancel200(responseinline_response_200_22: inline_response_200_22)(implicit toEntityMarshallerinline_response_200_22: ToEntityMarshaller[inline_response_200_22]): Route =
-    complete((200, responseinline_response_200_22))
+  def vPSCancel200(responseinline_response_200_24: inline_response_200_24)(implicit toEntityMarshallerinline_response_200_24: ToEntityMarshaller[inline_response_200_24]): Route =
+    complete((200, responseinline_response_200_24))
   def vPSCancel401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: VPS Cancel, DataType: inline_response_200_22
+   * Code: 200, Message: VPS Cancel, DataType: inline_response_200_24
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def vPSCancel(id: Int)
-      (implicit toEntityMarshallerinline_response_200_22: ToEntityMarshaller[inline_response_200_22], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_24: ToEntityMarshaller[inline_response_200_24], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
 }
 
@@ -1253,11 +1409,15 @@ trait VPSApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_11: ToEntityMarshaller[inline_response_200_11]
+  implicit def toEntityMarshallerinline_response_200_12: ToEntityMarshaller[inline_response_200_12]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerVpsOrder: ToEntityMarshaller[VpsOrder]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -1271,7 +1431,13 @@ trait VPSApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
   implicit def toEntityMarshallerVps: ToEntityMarshaller[Vps]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -1284,6 +1450,8 @@ trait VPSApiMarshaller {
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerVpsTemplatesList: ToEntityMarshaller[VpsTemplatesList]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -1305,10 +1473,6 @@ trait VPSApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse]
-
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
@@ -1352,6 +1516,8 @@ trait VPSApiMarshaller {
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerQueueResponse: ToEntityMarshaller[QueueResponse]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -1363,11 +1529,13 @@ trait VPSApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
   implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_22: ToEntityMarshaller[inline_response_200_22]
+  implicit def toEntityMarshallerinline_response_200_24: ToEntityMarshaller[inline_response_200_24]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

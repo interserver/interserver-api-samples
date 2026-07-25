@@ -31,4 +31,3 @@ case class License(
   /* License key */
   license_key: String
 )
-

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The HostnameObject model module.
  * @module model/HostnameObject
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HostnameObject {
     /**

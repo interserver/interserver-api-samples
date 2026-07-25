@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::UpdateTicketResponseSchema');
+use_ok('InterServerAPI::Object::UpdateTicketResponseSchema');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::UpdateTicketResponseSchema->new();
+#my $instance = InterServerAPI::Object::UpdateTicketResponseSchema->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::UpdateTicketResponseSchema');
+#isa_ok($instance, 'InterServerAPI::Object::UpdateTicketResponseSchema');
 
 
 done_testing();

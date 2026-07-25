@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for TicketsRow
 void main() {
-  final instance = TicketsRowBuilder();
-  // TODO add properties to the builder and call build()
+  final TicketsRow? instance = /* TicketsRow(...) */ null;
+  // TODO add properties to the entity
 
   group(TicketsRow, () {
     // String title
@@ -57,7 +57,7 @@ void main() {
       // TODO
     });
 
-    // JsonObject attachments
+    // Object attachments
     test('to test the property `attachments`', () async {
       // TODO
     });

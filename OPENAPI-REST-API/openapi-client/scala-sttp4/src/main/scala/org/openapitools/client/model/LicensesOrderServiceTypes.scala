@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class LicensesOrderServiceTypes(
   LicensesOrderServiceTypes11482: Option[LicensesOrderServiceTypes11482] = None
 )
-

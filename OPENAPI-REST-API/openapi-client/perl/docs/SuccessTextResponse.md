@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::SuccessTextResponse
+# InterServerAPI::Object::SuccessTextResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::SuccessTextResponse;
+use InterServerAPI::Object::SuccessTextResponse;
 ```
 
 ## Properties

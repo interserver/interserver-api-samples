@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LicenseClientLink model module.
  * @module model/LicenseClientLink
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicenseClientLink {
     /**

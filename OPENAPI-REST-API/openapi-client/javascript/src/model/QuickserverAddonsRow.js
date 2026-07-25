@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The QuickserverAddonsRow model module.
  * @module model/QuickserverAddonsRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverAddonsRow {
     /**

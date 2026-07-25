@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PlaceScrubOrder201Response();
+    instance = new InterserverApiClient.PlaceScrubOrder201Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('PlaceScrubOrder201Response', function() {
     it('should create an instance of PlaceScrubOrder201Response', function() {
       // uncomment below and update the code to test PlaceScrubOrder201Response
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201Response();
-      //expect(instance).to.be.a(InterServerManagementApi.PlaceScrubOrder201Response);
+      //var instance = new InterserverApiClient.PlaceScrubOrder201Response();
+      //expect(instance).to.be.a(InterserverApiClient.PlaceScrubOrder201Response);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201Response();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201Response();
       //expect(instance).to.be();
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201Response();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201Response();
       //expect(instance).to.be();
     });
 
     it('should have the property order_details (base name: "order_details")', function() {
       // uncomment below and update the code to test the property order_details
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201Response();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201Response();
       //expect(instance).to.be();
     });
 

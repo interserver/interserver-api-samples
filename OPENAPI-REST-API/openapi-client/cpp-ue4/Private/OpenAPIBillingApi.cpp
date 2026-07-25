@@ -133,33 +133,6 @@ void OpenAPIBillingApi::HandleResponse(FHttpResponsePtr HttpResponse, bool bSucc
 	InOutResponse.SetHttpResponseCode(EHttpResponseCodes::RequestTimeout);
 }
 
-FHttpRequestPtr OpenAPIBillingApi::AddAccountCreditCard(const AddAccountCreditCardRequest& Request, const FAddAccountCreditCardDelegate& Delegate /*= FAddAccountCreditCardDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIBillingApi::OnAddAccountCreditCardResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPIBillingApi::OnAddAccountCreditCardResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FAddAccountCreditCardDelegate Delegate) const
-{
-	AddAccountCreditCardResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
 FHttpRequestPtr OpenAPIBillingApi::AddBillingCreditCard(const AddBillingCreditCardRequest& Request, const FAddBillingCreditCardDelegate& Delegate /*= FAddBillingCreditCardDelegate()*/) const
 {
 	if (!IsValid())
@@ -210,33 +183,6 @@ FHttpRequestPtr OpenAPIBillingApi::AddBillingPrepay(const AddBillingPrepayReques
 void OpenAPIBillingApi::OnAddBillingPrepayResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FAddBillingPrepayDelegate Delegate) const
 {
 	AddBillingPrepayResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
-FHttpRequestPtr OpenAPIBillingApi::DeleteAccountCreditCard(const DeleteAccountCreditCardRequest& Request, const FDeleteAccountCreditCardDelegate& Delegate /*= FDeleteAccountCreditCardDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIBillingApi::OnDeleteAccountCreditCardResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPIBillingApi::OnDeleteAccountCreditCardResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDeleteAccountCreditCardDelegate Delegate) const
-{
-	DeleteAccountCreditCardResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }
@@ -349,6 +295,33 @@ void OpenAPIBillingApi::OnGetAffiliateBannersResponse(FHttpRequestPtr HttpReques
 	Delegate.ExecuteIfBound(Response);
 }
 
+FHttpRequestPtr OpenAPIBillingApi::GetAffiliateDownload(const GetAffiliateDownloadRequest& Request, const FGetAffiliateDownloadDelegate& Delegate /*= FGetAffiliateDownloadDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIBillingApi::OnGetAffiliateDownloadResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIBillingApi::OnGetAffiliateDownloadResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetAffiliateDownloadDelegate Delegate) const
+{
+	GetAffiliateDownloadResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 FHttpRequestPtr OpenAPIBillingApi::GetAffiliateRichReport(const GetAffiliateRichReportRequest& Request, const FGetAffiliateRichReportDelegate& Delegate /*= FGetAffiliateRichReportDelegate()*/) const
 {
 	if (!IsValid())
@@ -403,7 +376,7 @@ void OpenAPIBillingApi::OnGetAffiliateSalesGraphResponse(FHttpRequestPtr HttpReq
 	Delegate.ExecuteIfBound(Response);
 }
 
-FHttpRequestPtr OpenAPIBillingApi::GetAffiliateSalesReport(const GetAffiliateSalesReportRequest& Request, const FGetAffiliateSalesReportDelegate& Delegate /*= FGetAffiliateSalesReportDelegate()*/) const
+FHttpRequestPtr OpenAPIBillingApi::GetAffiliateSignups(const GetAffiliateSignupsRequest& Request, const FGetAffiliateSignupsDelegate& Delegate /*= FGetAffiliateSignupsDelegate()*/) const
 {
 	if (!IsValid())
 		return nullptr;
@@ -418,14 +391,14 @@ FHttpRequestPtr OpenAPIBillingApi::GetAffiliateSalesReport(const GetAffiliateSal
 
 	Request.SetupHttpRequest(HttpRequest);
 
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIBillingApi::OnGetAffiliateSalesReportResponse, Delegate);
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIBillingApi::OnGetAffiliateSignupsResponse, Delegate);
 	HttpRequest->ProcessRequest();
 	return HttpRequest;
 }
 
-void OpenAPIBillingApi::OnGetAffiliateSalesReportResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetAffiliateSalesReportDelegate Delegate) const
+void OpenAPIBillingApi::OnGetAffiliateSignupsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetAffiliateSignupsDelegate Delegate) const
 {
-	GetAffiliateSalesReportResponse Response;
+	GetAffiliateSignupsResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }
@@ -619,33 +592,6 @@ void OpenAPIBillingApi::OnGetBillingPrePaysResponse(FHttpRequestPtr HttpRequest,
 	Delegate.ExecuteIfBound(Response);
 }
 
-FHttpRequestPtr OpenAPIBillingApi::GetInvoices(const GetInvoicesRequest& Request, const FGetInvoicesDelegate& Delegate /*= FGetInvoicesDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIBillingApi::OnGetInvoicesResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPIBillingApi::OnGetInvoicesResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetInvoicesDelegate Delegate) const
-{
-	GetInvoicesResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
 FHttpRequestPtr OpenAPIBillingApi::InitiatePayment(const InitiatePaymentRequest& Request, const FInitiatePaymentDelegate& Delegate /*= FInitiatePaymentDelegate()*/) const
 {
 	if (!IsValid())
@@ -669,6 +615,33 @@ FHttpRequestPtr OpenAPIBillingApi::InitiatePayment(const InitiatePaymentRequest&
 void OpenAPIBillingApi::OnInitiatePaymentResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FInitiatePaymentDelegate Delegate) const
 {
 	InitiatePaymentResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
+FHttpRequestPtr OpenAPIBillingApi::PatchBillingCreditCardVerify(const PatchBillingCreditCardVerifyRequest& Request, const FPatchBillingCreditCardVerifyDelegate& Delegate /*= FPatchBillingCreditCardVerifyDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIBillingApi::OnPatchBillingCreditCardVerifyResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIBillingApi::OnPatchBillingCreditCardVerifyResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPatchBillingCreditCardVerifyDelegate Delegate) const
+{
+	PatchBillingCreditCardVerifyResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }
@@ -700,33 +673,6 @@ void OpenAPIBillingApi::OnPostBillingCreditCardVerifyResponse(FHttpRequestPtr Ht
 	Delegate.ExecuteIfBound(Response);
 }
 
-FHttpRequestPtr OpenAPIBillingApi::UpdateAccountCreditCard(const UpdateAccountCreditCardRequest& Request, const FUpdateAccountCreditCardDelegate& Delegate /*= FUpdateAccountCreditCardDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIBillingApi::OnUpdateAccountCreditCardResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPIBillingApi::OnUpdateAccountCreditCardResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUpdateAccountCreditCardDelegate Delegate) const
-{
-	UpdateAccountCreditCardResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
 FHttpRequestPtr OpenAPIBillingApi::UpdateAffiliateDockSetup(const UpdateAffiliateDockSetupRequest& Request, const FUpdateAffiliateDockSetupDelegate& Delegate /*= FUpdateAffiliateDockSetupDelegate()*/) const
 {
 	if (!IsValid())
@@ -750,33 +696,6 @@ FHttpRequestPtr OpenAPIBillingApi::UpdateAffiliateDockSetup(const UpdateAffiliat
 void OpenAPIBillingApi::OnUpdateAffiliateDockSetupResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUpdateAffiliateDockSetupDelegate Delegate) const
 {
 	UpdateAffiliateDockSetupResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
-FHttpRequestPtr OpenAPIBillingApi::UpdateAffiliateLandingPage(const UpdateAffiliateLandingPageRequest& Request, const FUpdateAffiliateLandingPageDelegate& Delegate /*= FUpdateAffiliateLandingPageDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIBillingApi::OnUpdateAffiliateLandingPageResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPIBillingApi::OnUpdateAffiliateLandingPageResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUpdateAffiliateLandingPageDelegate Delegate) const
-{
-	UpdateAffiliateLandingPageResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }

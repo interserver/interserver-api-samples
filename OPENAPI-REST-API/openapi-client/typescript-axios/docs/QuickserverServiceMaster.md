@@ -43,7 +43,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverServiceMaster } from './api';
+import { QuickserverServiceMaster } from '@interserver/myadmin-client';
 
 const instance: QuickserverServiceMaster = {
     qs_id,

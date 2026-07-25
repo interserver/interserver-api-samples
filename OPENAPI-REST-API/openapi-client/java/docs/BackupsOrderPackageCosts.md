@@ -10,4 +10,8 @@
 |**_11006** | **Integer** | The cost associated with package 11006. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

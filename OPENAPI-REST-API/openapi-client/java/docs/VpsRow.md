@@ -18,4 +18,8 @@ A result row from the `Vps` `GET` request.
 |**vpsComment** | **String** | The comment of the vps. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_service_addons import VpsServiceAddons
+from interserver_api_client.models.vps_service_addons import VpsServiceAddons
 
 class TestVpsServiceAddons(unittest.TestCase):
     """VpsServiceAddons unit test stubs"""

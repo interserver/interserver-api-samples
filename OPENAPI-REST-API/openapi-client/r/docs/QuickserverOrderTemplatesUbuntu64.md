@@ -1,4 +1,4 @@
-# openapi::QuickserverOrderTemplatesUbuntu64
+# interserverapi::QuickserverOrderTemplatesUbuntu64
 
 Ubuntu template details.
 

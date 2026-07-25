@@ -1,2 +1,2 @@
-testCase,httpStatusCode,id,denyRuleNew,id,mailAlertRequest,id,alertId,id,rule,id,email,id,id,id,id,id,id,id,id,id,time,id,id,mailDelistRequest,id,id,sendMailAdv,id,sendMail,id,mailAlertUpdateRequest,id,id,id2,origin,mx,from,to,subject,mailid,messageId,replyto,headerfrom,delivered,skip,limit,startDate,endDate,sort,dir,groupby
-Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,mailOrderRequest,denyRuleNew,id,mailAlertRequest,id,deleteMailAlertRequest,id,id,rule,id,email,id,id,id,id,id,id,id,id,id,time,id,mailDelistRequest,id,mailOrderRequest,id,sendMailAdv,id,sendMail,id,mailAlertUpdateRequest,id,id,denyRuleNew,id,rule,id,id2,origin,mx,from,to,subject,mailid,messageId,replyto,headerfrom,delivered,skip,limit,startDate,endDate,sort,dir,groupby
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

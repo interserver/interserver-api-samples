@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for WebsitesOrderPackges
 void main() {
-  final instance = WebsitesOrderPackgesBuilder();
-  // TODO add properties to the builder and call build()
+  final WebsitesOrderPackges? instance = /* WebsitesOrderPackges(...) */ null;
+  // TODO add properties to the entity
 
   group(WebsitesOrderPackges, () {
     // WebsitesOrderPackagesInfo n11440

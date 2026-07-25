@@ -1,4 +1,4 @@
-# SwaggerClient::VpsClientLink
+# InterserverApiClient::VpsClientLink
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# openapi::ServerIpmiLiveInfo
+# interserverapi::ServerIpmiLiveInfo
 
 Information about the IPMI connection.
 

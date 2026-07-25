@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetOrderDetail200ResponseServiceTypesInner = Initialize-PSOpenAPIToolsGetOrderDetail200ResponseServiceTypesInner  -ServicesId 11552 `
+$GetOrderDetail200ResponseServiceTypesInner = Initialize-InterserverApiGetOrderDetail200ResponseServiceTypesInner  -ServicesId 11552 `
  -ServicesName Current IP + Scrub `
  -ServicesCost 5 `
  -ServicesField1  `

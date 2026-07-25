@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DeleteGeoFirewallRule();
+    instance = new InterserverApiClient.DeleteGeoFirewallRule();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('DeleteGeoFirewallRule', function() {
     it('should create an instance of DeleteGeoFirewallRule', function() {
       // uncomment below and update the code to test DeleteGeoFirewallRule
-      //var instance = new InterServerManagementApi.DeleteGeoFirewallRule();
-      //expect(instance).to.be.a(InterServerManagementApi.DeleteGeoFirewallRule);
+      //var instance = new InterserverApiClient.DeleteGeoFirewallRule();
+      //expect(instance).to.be.a(InterserverApiClient.DeleteGeoFirewallRule);
     });
 
     it('should have the property rule_id (base name: "rule_id")', function() {
       // uncomment below and update the code to test the property rule_id
-      //var instance = new InterServerManagementApi.DeleteGeoFirewallRule();
+      //var instance = new InterserverApiClient.DeleteGeoFirewallRule();
       //expect(instance).to.be();
     });
 

@@ -20,9 +20,9 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
@@ -49,8 +49,8 @@
   describe('DnsRecordType', function() {
     it('should create an instance of DnsRecordType', function() {
       // uncomment below and update the code to test DnsRecordType
-      //var instance = new InterServerManagementApi.DnsRecordType();
-      //expect(instance).to.be.a(InterServerManagementApi.DnsRecordType);
+      //var instance = new InterserverApiClient.DnsRecordType();
+      //expect(instance).to.be.a(InterserverApiClient.DnsRecordType);
     });
 
   });

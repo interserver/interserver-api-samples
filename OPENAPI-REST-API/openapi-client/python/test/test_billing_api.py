@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.billing_api import BillingApi
+from interserver_api_client.api.billing_api import BillingApi
 
 
 class TestBillingApi(unittest.TestCase):
@@ -27,192 +27,171 @@ class TestBillingApi(unittest.TestCase):
     def tearDown(self) -> None:
         pass
 
-    def test_add_account_credit_card(self) -> None:
-        """Test case for add_account_credit_card
-
-        Add Credit Card to Account
-        """
-        pass
-
     def test_add_billing_credit_card(self) -> None:
         """Test case for add_billing_credit_card
 
-        Add Credit Card for Billing
+        Store a credit card on the account — may return a verification flow
         """
         pass
 
     def test_add_billing_prepay(self) -> None:
         """Test case for add_billing_prepay
 
-        Create Prepay Deposit
-        """
-        pass
-
-    def test_delete_account_credit_card(self) -> None:
-        """Test case for delete_account_credit_card
-
-        Remove Credit Card
+        Create a prepay deposit and return an invoice id to fund it
         """
         pass
 
     def test_delete_billing_credit_card(self) -> None:
         """Test case for delete_billing_credit_card
 
-        Delete Credit Card
+        Remove a stored credit card from the account
         """
         pass
 
     def test_delete_billing_invoice(self) -> None:
         """Test case for delete_billing_invoice
 
-        Delete Invoice
+        Cancel a pending unpaid invoice — and its pending service or repeat invoice
         """
         pass
 
     def test_delete_billing_prepay(self) -> None:
         """Test case for delete_billing_prepay
 
-        Delete Prepay Balance
+        Delete an unfunded prepay or strip its unpaid funding invoices
         """
         pass
 
     def test_get_affiliate_banners(self) -> None:
         """Test case for get_affiliate_banners
 
-        List Affiliate Banner Assets
+        List affiliate banner image assets with filename and dimensions
+        """
+        pass
+
+    def test_get_affiliate_download(self) -> None:
+        """Test case for get_affiliate_download
+
+        Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
         """
         pass
 
     def test_get_affiliate_rich_report(self) -> None:
         """Test case for get_affiliate_rich_report
 
-        Get Affiliate Performance Report
+        Read a combined affiliate performance summary (HTML payload)
         """
         pass
 
     def test_get_affiliate_sales_graph(self) -> None:
         """Test case for get_affiliate_sales_graph
 
-        Get Affiliate Sales Graph Data
+        Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
         """
         pass
 
-    def test_get_affiliate_sales_report(self) -> None:
-        """Test case for get_affiliate_sales_report
+    def test_get_affiliate_signups(self) -> None:
+        """Test case for get_affiliate_signups
 
-        Get Affiliate Sales Report
+        Read affiliate signup stats and per-customer conversion data
         """
         pass
 
     def test_get_affiliate_traffic_graph(self) -> None:
         """Test case for get_affiliate_traffic_graph
 
-        Get Affiliate Traffic Graph Data
+        Read aggregated affiliate referral click/visit time-series for chart rendering
         """
         pass
 
     def test_get_affiliate_web_traffic(self) -> None:
         """Test case for get_affiliate_web_traffic
 
-        List Affiliate Web Traffic Entries
+        List the 20 most recent affiliate referral visits with IP, referrer, timestamp
         """
         pass
 
     def test_get_billing_cart(self) -> None:
         """Test case for get_billing_cart
 
-        Get Shopping Cart Contents
+        Read the current shopping cart contents, totals, and available payment methods
         """
         pass
 
     def test_get_billing_credit_card_verify(self) -> None:
         """Test case for get_billing_credit_card_verify
 
-        Get Credit Card Verification Requirements
+        Probe whether a stored card still needs micro-charge verification
         """
         pass
 
     def test_get_billing_invoice(self) -> None:
         """Test case for get_billing_invoice
 
-        Get Invoice Details
+        Read full invoice detail — line items, totals, paid status, customer info
         """
         pass
 
     def test_get_billing_invoices(self) -> None:
         """Test case for get_billing_invoices
 
-        List Account Invoices
+        List every invoice on the account with summary totals and paid/unpaid status
         """
         pass
 
     def test_get_billing_pre_pays(self) -> None:
         """Test case for get_billing_pre_pays
 
-        List Prepay Balances
-        """
-        pass
-
-    def test_get_invoices(self) -> None:
-        """Test case for get_invoices
-
-        Get Invoices
+        List prepay deposits on the account — remaining balance and auto-use flags
         """
         pass
 
     def test_initiate_payment(self) -> None:
         """Test case for initiate_payment
 
-        Initiate Payment
+        Pay invoices through the chosen gateway — returns the next-step action
+        """
+        pass
+
+    def test_patch_billing_credit_card_verify(self) -> None:
+        """Test case for patch_billing_credit_card_verify
+
+        Place two micro-charges on the card to start CVV verification (step 1 of 2)
         """
         pass
 
     def test_post_billing_credit_card_verify(self) -> None:
         """Test case for post_billing_credit_card_verify
 
-        Submit Credit Card Verification
-        """
-        pass
-
-    def test_update_account_credit_card(self) -> None:
-        """Test case for update_account_credit_card
-
-        Update Credit Card
+        Submit two micro-charge amounts to finalize card verification (step 2 of 2)
         """
         pass
 
     def test_update_affiliate_dock_setup(self) -> None:
         """Test case for update_affiliate_dock_setup
 
-        Configure Affiliate Dock Settings
-        """
-        pass
-
-    def test_update_affiliate_landing_page(self) -> None:
-        """Test case for update_affiliate_landing_page
-
-        Configure Affiliate Landing Page
+        Configure the affiliate landing dock title, description, and referrer coupon
         """
         pass
 
     def test_update_affiliate_payment_setup(self) -> None:
         """Test case for update_affiliate_payment_setup
 
-        Configure Affiliate Payout Preferences
+        Configure how affiliate commissions get paid out (PayPal or internal prepay)
         """
         pass
 
     def test_update_billing_credit_card(self) -> None:
         """Test case for update_billing_credit_card
 
-        Update Credit Card Details
+        Refresh stored card expiration and re-trigger MaxMind fraud scoring
         """
         pass
 
     def test_update_billing_payment_method(self) -> None:
         """Test case for update_billing_payment_method
 
-        Update Default Payment Method
+        Set the account's default payment method for recurring/auto charges
         """
         pass
 

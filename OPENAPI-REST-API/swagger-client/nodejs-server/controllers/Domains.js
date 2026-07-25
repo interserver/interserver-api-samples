@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var Domains = require('../service/DomainsService');
 
-module.exports.addDomain = function addDomain (req, res, next) {
-  Domains.addDomain()
+module.exports.addDomain = function addDomain (req, res, next, body) {
+  Domains.addDomain(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -63,8 +63,8 @@ module.exports.cancelDomain = function cancelDomain (req, res, next, id) {
     });
 };
 
-module.exports.deleteDomainDnssec = function deleteDomainDnssec (req, res, next, id, action) {
-  Domains.deleteDomainDnssec(id, action)
+module.exports.deleteDomainDnssec = function deleteDomainDnssec (req, res, next, id) {
+  Domains.deleteDomainDnssec(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -143,26 +143,6 @@ module.exports.getDomainNameservers = function getDomainNameservers (req, res, n
     });
 };
 
-module.exports.getDomainOrderFields = function getDomainOrderFields (req, res, next, domain, regType) {
-  Domains.getDomainOrderFields(domain, regType)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.getDomainOrderSearchResults = function getDomainOrderSearchResults (req, res, next, domain) {
-  Domains.getDomainOrderSearchResults(domain)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.getDomainRenewal = function getDomainRenewal (req, res, next, id) {
   Domains.getDomainRenewal(id)
     .then(function (response) {
@@ -233,8 +213,8 @@ module.exports.getNewDomain = function getNewDomain (req, res, next) {
     });
 };
 
-module.exports.patchDomains = function patchDomains (req, res, next) {
-  Domains.patchDomains()
+module.exports.patchDomains = function patchDomains (req, res, next, body) {
+  Domains.patchDomains(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -253,6 +233,16 @@ module.exports.postDomainRenewal = function postDomainRenewal (req, res, next, i
     });
 };
 
+module.exports.postDomainSearch = function postDomainSearch (req, res, next, name) {
+  Domains.postDomainSearch(name)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.postDomainTransfer = function postDomainTransfer (req, res, next, id) {
   Domains.postDomainTransfer(id)
     .then(function (response) {
@@ -263,8 +253,8 @@ module.exports.postDomainTransfer = function postDomainTransfer (req, res, next,
     });
 };
 
-module.exports.putDomains = function putDomains (req, res, next) {
-  Domains.putDomains()
+module.exports.putDomains = function putDomains (req, res, next, body) {
+  Domains.putDomains(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

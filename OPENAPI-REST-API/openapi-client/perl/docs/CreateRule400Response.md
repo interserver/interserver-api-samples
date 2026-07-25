@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CreateRule400Response
+# InterServerAPI::Object::CreateRule400Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CreateRule400Response;
+use InterServerAPI::Object::CreateRule400Response;
 ```
 
 ## Properties

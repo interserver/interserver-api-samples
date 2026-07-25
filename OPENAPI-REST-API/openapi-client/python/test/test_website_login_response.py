@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.website_login_response import WebsiteLoginResponse
+from interserver_api_client.models.website_login_response import WebsiteLoginResponse
 
 class TestWebsiteLoginResponse(unittest.TestCase):
     """WebsiteLoginResponse unit test stubs"""

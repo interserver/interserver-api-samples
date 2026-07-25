@@ -1,23 +1,23 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsOrderPlatformPackages
 void main() {
-  final instance = VpsOrderPlatformPackagesBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsOrderPlatformPackages? instance = /* VpsOrderPlatformPackages(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsOrderPlatformPackages, () {
-    // num kvm
+    // Optional<num?> kvm
     test('to test the property `kvm`', () async {
       // TODO
     });
 
-    // num kvmstorage
+    // Optional<num?> kvmstorage
     test('to test the property `kvmstorage`', () async {
       // TODO
     });
 
-    // num hyperv
+    // Optional<num?> hyperv
     test('to test the property `hyperv`', () async {
       // TODO
     });

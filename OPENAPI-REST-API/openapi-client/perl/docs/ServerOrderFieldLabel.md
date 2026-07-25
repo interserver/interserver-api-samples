@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerOrderFieldLabel
+# InterServerAPI::Object::ServerOrderFieldLabel
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerOrderFieldLabel;
+use InterServerAPI::Object::ServerOrderFieldLabel;
 ```
 
 ## Properties

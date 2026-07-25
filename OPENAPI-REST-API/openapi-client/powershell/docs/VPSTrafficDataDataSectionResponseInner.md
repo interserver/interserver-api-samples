@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VPSTrafficDataDataSectionResponseInner = Initialize-PSOpenAPIToolsVPSTrafficDataDataSectionResponseInner 
+$VPSTrafficDataDataSectionResponseInner = Initialize-InterserverApiVPSTrafficDataDataSectionResponseInner 
 ```
 
 - Convert the resource to JSON

@@ -8,11 +8,7 @@
 
 #' InlineResponse2006 Class
 #'
-#' @field login 
-#' @field signup 
-#' @field linked 
-#' @field account_id 
-#' @field error_code 
+#' @field redirect_url 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -20,91 +16,38 @@
 InlineResponse2006 <- R6::R6Class(
   'InlineResponse2006',
   public = list(
-    `login` = NULL,
-    `signup` = NULL,
-    `linked` = NULL,
-    `account_id` = NULL,
-    `error_code` = NULL,
-    initialize = function(`login`, `signup`, `linked`, `account_id`, `error_code`){
-      if (!missing(`login`)) {
-        self$`login` <- `login`
-      }
-      if (!missing(`signup`)) {
-        self$`signup` <- `signup`
-      }
-      if (!missing(`linked`)) {
-        self$`linked` <- `linked`
-      }
-      if (!missing(`account_id`)) {
-        stopifnot(is.numeric(`account_id`), length(`account_id`) == 1)
-        self$`account_id` <- `account_id`
-      }
-      if (!missing(`error_code`)) {
-        stopifnot(is.character(`error_code`), length(`error_code`) == 1)
-        self$`error_code` <- `error_code`
+    `redirect_url` = NULL,
+    initialize = function(`redirect_url`){
+      if (!missing(`redirect_url`)) {
+        stopifnot(is.character(`redirect_url`), length(`redirect_url`) == 1)
+        self$`redirect_url` <- `redirect_url`
       }
     },
     toJSON = function() {
       InlineResponse2006Object <- list()
-      if (!is.null(self$`login`)) {
-        InlineResponse2006Object[['login']] <- self$`login`
-      }
-      if (!is.null(self$`signup`)) {
-        InlineResponse2006Object[['signup']] <- self$`signup`
-      }
-      if (!is.null(self$`linked`)) {
-        InlineResponse2006Object[['linked']] <- self$`linked`
-      }
-      if (!is.null(self$`account_id`)) {
-        InlineResponse2006Object[['account_id']] <- self$`account_id`
-      }
-      if (!is.null(self$`error_code`)) {
-        InlineResponse2006Object[['error_code']] <- self$`error_code`
+      if (!is.null(self$`redirect_url`)) {
+        InlineResponse2006Object[['redirect_url']] <- self$`redirect_url`
       }
 
       InlineResponse2006Object
     },
     fromJSON = function(InlineResponse2006Json) {
       InlineResponse2006Object <- jsonlite::fromJSON(InlineResponse2006Json)
-      if (!is.null(InlineResponse2006Object$`login`)) {
-        self$`login` <- InlineResponse2006Object$`login`
-      }
-      if (!is.null(InlineResponse2006Object$`signup`)) {
-        self$`signup` <- InlineResponse2006Object$`signup`
-      }
-      if (!is.null(InlineResponse2006Object$`linked`)) {
-        self$`linked` <- InlineResponse2006Object$`linked`
-      }
-      if (!is.null(InlineResponse2006Object$`account_id`)) {
-        self$`account_id` <- InlineResponse2006Object$`account_id`
-      }
-      if (!is.null(InlineResponse2006Object$`error_code`)) {
-        self$`error_code` <- InlineResponse2006Object$`error_code`
+      if (!is.null(InlineResponse2006Object$`redirect_url`)) {
+        self$`redirect_url` <- InlineResponse2006Object$`redirect_url`
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "login": %s,
-           "signup": %s,
-           "linked": %s,
-           "account_id": %d,
-           "error_code": %s
+           "redirect_url": %s
         }',
-        self$`login`,
-        self$`signup`,
-        self$`linked`,
-        self$`account_id`,
-        self$`error_code`
+        self$`redirect_url`
       )
     },
     fromJSONString = function(InlineResponse2006Json) {
       InlineResponse2006Object <- jsonlite::fromJSON(InlineResponse2006Json)
-      self$`login` <- InlineResponse2006Object$`login`
-      self$`signup` <- InlineResponse2006Object$`signup`
-      self$`linked` <- InlineResponse2006Object$`linked`
-      self$`account_id` <- InlineResponse2006Object$`account_id`
-      self$`error_code` <- InlineResponse2006Object$`error_code`
+      self$`redirect_url` <- InlineResponse2006Object$`redirect_url`
     }
   )
 )

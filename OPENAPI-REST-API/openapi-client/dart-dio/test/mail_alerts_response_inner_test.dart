@@ -1,33 +1,33 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailAlertsResponseInner
 void main() {
-  final instance = MailAlertsResponseInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final MailAlertsResponseInner? instance = /* MailAlertsResponseInner(...) */ null;
+  // TODO add properties to the entity
 
   group(MailAlertsResponseInner, () {
-    // int alertId
+    // Optional<int?> alertId
     test('to test the property `alertId`', () async {
       // TODO
     });
 
-    // String alertType
+    // Optional<String?> alertType
     test('to test the property `alertType`', () async {
       // TODO
     });
 
-    // String alertValue
+    // Optional<String?> alertValue
     test('to test the property `alertValue`', () async {
       // TODO
     });
 
-    // String alertTo
+    // Optional<String?> alertTo
     test('to test the property `alertTo`', () async {
       // TODO
     });
 
-    // String alertEnabled
+    // Optional<String?> alertEnabled
     test('to test the property `alertEnabled`', () async {
       // TODO
     });

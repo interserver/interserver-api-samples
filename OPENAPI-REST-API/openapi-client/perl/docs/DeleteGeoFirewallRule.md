@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DeleteGeoFirewallRule
+# InterServerAPI::Object::DeleteGeoFirewallRule
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DeleteGeoFirewallRule;
+use InterServerAPI::Object::DeleteGeoFirewallRule;
 ```
 
 ## Properties

@@ -1,4 +1,4 @@
-# InterServerManagementApi.CloseTicketResponseSchema
+# InterserverApiClient.CloseTicketResponseSchema
 
 ## Properties
 

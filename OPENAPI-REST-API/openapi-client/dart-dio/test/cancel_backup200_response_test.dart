@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for CancelBackup200Response
 void main() {
-  final instance = CancelBackup200ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final CancelBackup200Response? instance = /* CancelBackup200Response(...) */ null;
+  // TODO add properties to the entity
 
   group(CancelBackup200Response, () {
     // bool success

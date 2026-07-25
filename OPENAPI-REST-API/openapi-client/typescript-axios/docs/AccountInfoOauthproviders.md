@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoOauthproviders } from './api';
+import { AccountInfoOauthproviders } from '@interserver/myadmin-client';
 
 const instance: AccountInfoOauthproviders = {
 };

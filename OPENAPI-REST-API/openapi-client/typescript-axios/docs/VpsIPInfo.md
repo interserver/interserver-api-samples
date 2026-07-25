@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsIPInfo } from './api';
+import { VpsIPInfo } from '@interserver/myadmin-client';
 
 const instance: VpsIPInfo = {
     title,

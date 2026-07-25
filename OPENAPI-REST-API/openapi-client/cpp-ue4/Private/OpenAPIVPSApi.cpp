@@ -457,6 +457,33 @@ void OpenAPIVPSApi::OnGetNewVpsResponse(FHttpRequestPtr HttpRequest, FHttpRespon
 	Delegate.ExecuteIfBound(Response);
 }
 
+FHttpRequestPtr OpenAPIVPSApi::GetVpsBackup(const GetVpsBackupRequest& Request, const FGetVpsBackupDelegate& Delegate /*= FGetVpsBackupDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIVPSApi::OnGetVpsBackupResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIVPSApi::OnGetVpsBackupResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetVpsBackupDelegate Delegate) const
+{
+	GetVpsBackupResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 FHttpRequestPtr OpenAPIVPSApi::GetVpsBackups(const GetVpsBackupsRequest& Request, const FGetVpsBackupsDelegate& Delegate /*= FGetVpsBackupsDelegate()*/) const
 {
 	if (!IsValid())
@@ -538,6 +565,60 @@ void OpenAPIVPSApi::OnGetVpsBuyIpResponse(FHttpRequestPtr HttpRequest, FHttpResp
 	Delegate.ExecuteIfBound(Response);
 }
 
+FHttpRequestPtr OpenAPIVPSApi::GetVpsChangeHostname(const GetVpsChangeHostnameRequest& Request, const FGetVpsChangeHostnameDelegate& Delegate /*= FGetVpsChangeHostnameDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIVPSApi::OnGetVpsChangeHostnameResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIVPSApi::OnGetVpsChangeHostnameResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetVpsChangeHostnameDelegate Delegate) const
+{
+	GetVpsChangeHostnameResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
+FHttpRequestPtr OpenAPIVPSApi::GetVpsChangeRootPassword(const GetVpsChangeRootPasswordRequest& Request, const FGetVpsChangeRootPasswordDelegate& Delegate /*= FGetVpsChangeRootPasswordDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIVPSApi::OnGetVpsChangeRootPasswordResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIVPSApi::OnGetVpsChangeRootPasswordResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetVpsChangeRootPasswordDelegate Delegate) const
+{
+	GetVpsChangeRootPasswordResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 FHttpRequestPtr OpenAPIVPSApi::GetVpsChangeTimezone(const GetVpsChangeTimezoneRequest& Request, const FGetVpsChangeTimezoneDelegate& Delegate /*= FGetVpsChangeTimezoneDelegate()*/) const
 {
 	if (!IsValid())
@@ -588,6 +669,33 @@ FHttpRequestPtr OpenAPIVPSApi::GetVpsInfo(const GetVpsInfoRequest& Request, cons
 void OpenAPIVPSApi::OnGetVpsInfoResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetVpsInfoDelegate Delegate) const
 {
 	GetVpsInfoResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
+FHttpRequestPtr OpenAPIVPSApi::GetVpsInsertCd(const GetVpsInsertCdRequest& Request, const FGetVpsInsertCdDelegate& Delegate /*= FGetVpsInsertCdDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIVPSApi::OnGetVpsInsertCdResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIVPSApi::OnGetVpsInsertCdResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetVpsInsertCdDelegate Delegate) const
+{
+	GetVpsInsertCdResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }
@@ -669,6 +777,33 @@ FHttpRequestPtr OpenAPIVPSApi::GetVpsReinstallOs(const GetVpsReinstallOsRequest&
 void OpenAPIVPSApi::OnGetVpsReinstallOsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetVpsReinstallOsDelegate Delegate) const
 {
 	GetVpsReinstallOsResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
+FHttpRequestPtr OpenAPIVPSApi::GetVpsResetPassword(const GetVpsResetPasswordRequest& Request, const FGetVpsResetPasswordDelegate& Delegate /*= FGetVpsResetPasswordDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIVPSApi::OnGetVpsResetPasswordResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIVPSApi::OnGetVpsResetPasswordResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetVpsResetPasswordDelegate Delegate) const
+{
+	GetVpsResetPasswordResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }
@@ -831,33 +966,6 @@ FHttpRequestPtr OpenAPIVPSApi::GetVpsWelcomeEmail(const GetVpsWelcomeEmailReques
 void OpenAPIVPSApi::OnGetVpsWelcomeEmailResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetVpsWelcomeEmailDelegate Delegate) const
 {
 	GetVpsWelcomeEmailResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
-FHttpRequestPtr OpenAPIVPSApi::PostVpsBackup(const PostVpsBackupRequest& Request, const FPostVpsBackupDelegate& Delegate /*= FPostVpsBackupDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIVPSApi::OnPostVpsBackupResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPIVPSApi::OnPostVpsBackupResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostVpsBackupDelegate Delegate) const
-{
-	PostVpsBackupResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }
@@ -1213,6 +1321,33 @@ void OpenAPIVPSApi::OnPostVpsSlicesResponse(FHttpRequestPtr HttpRequest, FHttpRe
 	Delegate.ExecuteIfBound(Response);
 }
 
+FHttpRequestPtr OpenAPIVPSApi::PostVpsTrafficUsage(const PostVpsTrafficUsageRequest& Request, const FPostVpsTrafficUsageDelegate& Delegate /*= FPostVpsTrafficUsageDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIVPSApi::OnPostVpsTrafficUsageResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIVPSApi::OnPostVpsTrafficUsageResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostVpsTrafficUsageDelegate Delegate) const
+{
+	PostVpsTrafficUsageResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 FHttpRequestPtr OpenAPIVPSApi::PostVpsViewDesktop(const PostVpsViewDesktopRequest& Request, const FPostVpsViewDesktopDelegate& Delegate /*= FPostVpsViewDesktopDelegate()*/) const
 {
 	if (!IsValid())
@@ -1263,6 +1398,33 @@ FHttpRequestPtr OpenAPIVPSApi::PutVps(const PutVpsRequest& Request, const FPutVp
 void OpenAPIVPSApi::OnPutVpsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPutVpsDelegate Delegate) const
 {
 	PutVpsResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
+FHttpRequestPtr OpenAPIVPSApi::PutVpsBuyHdSpace(const PutVpsBuyHdSpaceRequest& Request, const FPutVpsBuyHdSpaceDelegate& Delegate /*= FPutVpsBuyHdSpaceDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIVPSApi::OnPutVpsBuyHdSpaceResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIVPSApi::OnPutVpsBuyHdSpaceResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPutVpsBuyHdSpaceDelegate Delegate) const
+{
+	PutVpsBuyHdSpaceResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }

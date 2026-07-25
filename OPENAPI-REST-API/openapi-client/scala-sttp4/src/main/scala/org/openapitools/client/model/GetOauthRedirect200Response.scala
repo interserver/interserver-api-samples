@@ -16,4 +16,3 @@ case class GetOauthRedirect200Response(
   /* The URL to redirect the user to for OAuth authentication. */
   redirect_url: Option[String] = None
 )
-

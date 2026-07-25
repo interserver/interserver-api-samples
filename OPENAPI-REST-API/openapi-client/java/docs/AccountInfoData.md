@@ -74,4 +74,8 @@ Detailed account profile data including contact info, billing, API keys, and sec
 |**_2faGoogleQr** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

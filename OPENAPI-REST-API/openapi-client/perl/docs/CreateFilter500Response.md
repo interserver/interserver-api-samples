@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CreateFilter500Response
+# InterServerAPI::Object::CreateFilter500Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CreateFilter500Response;
+use InterServerAPI::Object::CreateFilter500Response;
 ```
 
 ## Properties

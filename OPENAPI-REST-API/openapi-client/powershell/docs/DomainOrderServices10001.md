@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainOrderServices10001 = Initialize-PSOpenAPIToolsDomainOrderServices10001  -ServicesId 10001 `
+$DomainOrderServices10001 = Initialize-InterserverApiDomainOrderServices10001  -ServicesId 10001 `
  -ServicesName .asia Domain Name Registration `
  -ServicesCost 19.00 `
  -ServicesCurrency USD `

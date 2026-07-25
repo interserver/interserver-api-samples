@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.status_monthly_breakdown import StatusMonthlyBreakdown
+from interserver_api_client.models.status_monthly_breakdown import StatusMonthlyBreakdown
 
 class TestStatusMonthlyBreakdown(unittest.TestCase):
     """StatusMonthlyBreakdown unit test stubs"""

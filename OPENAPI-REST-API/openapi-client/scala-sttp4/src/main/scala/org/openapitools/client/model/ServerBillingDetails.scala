@@ -27,4 +27,3 @@ case class ServerBillingDetails(
   service_extra: Option[Seq[String]] = None,
   service_extra_json: Option[String] = None
 )
-

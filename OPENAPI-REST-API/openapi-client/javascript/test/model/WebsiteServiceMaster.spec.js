@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.WebsiteServiceMaster();
+    instance = new InterserverApiClient.WebsiteServiceMaster();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,91 +50,91 @@
   describe('WebsiteServiceMaster', function() {
     it('should create an instance of WebsiteServiceMaster', function() {
       // uncomment below and update the code to test WebsiteServiceMaster
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
-      //expect(instance).to.be.a(InterServerManagementApi.WebsiteServiceMaster);
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
+      //expect(instance).to.be.a(InterserverApiClient.WebsiteServiceMaster);
     });
 
     it('should have the property website_id (base name: "website_id")', function() {
       // uncomment below and update the code to test the property website_id
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_name (base name: "website_name")', function() {
       // uncomment below and update the code to test the property website_name
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_ip (base name: "website_ip")', function() {
       // uncomment below and update the code to test the property website_ip
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_type (base name: "website_type")', function() {
       // uncomment below and update the code to test the property website_type
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_available (base name: "website_available")', function() {
       // uncomment below and update the code to test the property website_available
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_hdsize (base name: "website_hdsize")', function() {
       // uncomment below and update the code to test the property website_hdsize
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_hdfree (base name: "website_hdfree")', function() {
       // uncomment below and update the code to test the property website_hdfree
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_load (base name: "website_load")', function() {
       // uncomment below and update the code to test the property website_load
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_last_update (base name: "website_last_update")', function() {
       // uncomment below and update the code to test the property website_last_update
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_max_sites (base name: "website_max_sites")', function() {
       // uncomment below and update the code to test the property website_max_sites
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_order (base name: "website_order")', function() {
       // uncomment below and update the code to test the property website_order
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_partitions (base name: "website_partitions")', function() {
       // uncomment below and update the code to test the property website_partitions
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_dns1 (base name: "website_dns1")', function() {
       // uncomment below and update the code to test the property website_dns1
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property website_dns2 (base name: "website_dns2")', function() {
       // uncomment below and update the code to test the property website_dns2
-      //var instance = new InterServerManagementApi.WebsiteServiceMaster();
+      //var instance = new InterserverApiClient.WebsiteServiceMaster();
       //expect(instance).to.be();
     });
 

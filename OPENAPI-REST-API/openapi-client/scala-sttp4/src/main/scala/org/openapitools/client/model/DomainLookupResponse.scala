@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JObject
 
   /**
    * Availability, pricing, and order-field metadata for a domain lookup.
@@ -25,7 +26,7 @@ case class DomainLookupResponse(
   /* Indicates if the domain already exists as a domain service on the account. */
   domain_service: Option[Boolean] = None,
   /* Service catalog details for the domain's TLD. */
-  service: Option[Any] = None,
+  service: Option[org.json4s.JObject] = None,
   /* Whether Whois privacy is available for the TLD. */
   whois_privacy: Option[Boolean] = None,
   /* Calculated registration price, when available. */
@@ -35,8 +36,7 @@ case class DomainLookupResponse(
   /* Calculated transfer price, when available. */
   transfer: Option[String] = None,
   /* Registrar field requirements for this domain/TLD. */
-  fields: Option[Any] = None,
+  fields: Option[org.json4s.JObject] = None,
   /* Pricing information normalized to supported currencies. */
-  currencies: Option[Any] = None
+  currencies: Option[org.json4s.JObject] = None
 )
-

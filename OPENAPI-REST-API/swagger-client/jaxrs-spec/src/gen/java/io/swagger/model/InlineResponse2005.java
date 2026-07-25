@@ -11,26 +11,46 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class InlineResponse2005   {
 
-  private @Valid String redirectUrl = null;
+  private @Valid Boolean success = null;
+
+  private @Valid String text = null;
 
   /**
-   * The URL to redirect the user to for OAuth authentication.
    **/
-  public InlineResponse2005 redirectUrl(String redirectUrl) {
-    this.redirectUrl = redirectUrl;
+  public InlineResponse2005 success(Boolean success) {
+    this.success = success;
     return this;
   }
 
   
-  @ApiModelProperty(value = "The URL to redirect the user to for OAuth authentication.")
-  @JsonProperty("redirect_url")
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("success")
   @NotNull
 
-  public String getRedirectUrl() {
-    return redirectUrl;
+  public Boolean isSuccess() {
+    return success;
   }
-  public void setRedirectUrl(String redirectUrl) {
-    this.redirectUrl = redirectUrl;
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
+  /**
+   **/
+  public InlineResponse2005 text(String text) {
+    this.text = text;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("text")
+  @NotNull
+
+  public String getText() {
+    return text;
+  }
+  public void setText(String text) {
+    this.text = text;
   }
 
 
@@ -43,12 +63,13 @@ public class InlineResponse2005   {
       return false;
     }
     InlineResponse2005 inlineResponse2005 = (InlineResponse2005) o;
-    return Objects.equals(redirectUrl, inlineResponse2005.redirectUrl);
+    return Objects.equals(success, inlineResponse2005.success) &&
+        Objects.equals(text, inlineResponse2005.text);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(redirectUrl);
+    return Objects.hash(success, text);
   }
 
   @Override
@@ -56,7 +77,8 @@ public class InlineResponse2005   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2005 {\n");
     
-    sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }

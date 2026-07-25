@@ -24,4 +24,3 @@ case class LoginSubmissionExample(
   /* Two Factor Authentication Response. */
   tfa: Option[String] = None
 )
-

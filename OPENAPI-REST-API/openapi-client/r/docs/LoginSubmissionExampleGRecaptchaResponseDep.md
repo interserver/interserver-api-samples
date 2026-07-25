@@ -1,4 +1,4 @@
-# openapi::LoginSubmissionExampleGRecaptchaResponseDep
+# interserverapi::LoginSubmissionExampleGRecaptchaResponseDep
 
 
 ## Properties

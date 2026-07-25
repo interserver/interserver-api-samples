@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BackupsOrder();
+    instance = new InterserverApiClient.BackupsOrder();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('BackupsOrder', function() {
     it('should create an instance of BackupsOrder', function() {
       // uncomment below and update the code to test BackupsOrder
-      //var instance = new InterServerManagementApi.BackupsOrder();
-      //expect(instance).to.be.a(InterServerManagementApi.BackupsOrder);
+      //var instance = new InterserverApiClient.BackupsOrder();
+      //expect(instance).to.be.a(InterserverApiClient.BackupsOrder);
     });
 
     it('should have the property packageCosts (base name: "packageCosts")', function() {
       // uncomment below and update the code to test the property packageCosts
-      //var instance = new InterServerManagementApi.BackupsOrder();
+      //var instance = new InterserverApiClient.BackupsOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceTypes (base name: "serviceTypes")', function() {
       // uncomment below and update the code to test the property serviceTypes
-      //var instance = new InterServerManagementApi.BackupsOrder();
+      //var instance = new InterserverApiClient.BackupsOrder();
       //expect(instance).to.be();
     });
 

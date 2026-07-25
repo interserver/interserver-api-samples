@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerOrderRAID
+# InterserverApiClient.ServerOrderRAID
 
 ## Properties
 

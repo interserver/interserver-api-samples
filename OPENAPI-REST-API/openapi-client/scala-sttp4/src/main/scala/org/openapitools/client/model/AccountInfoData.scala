@@ -82,4 +82,3 @@ case class AccountInfoData(
   `2fa_google_split`: Option[String] = None,
   `2fa_google_qr`: Option[String] = None
 )
-

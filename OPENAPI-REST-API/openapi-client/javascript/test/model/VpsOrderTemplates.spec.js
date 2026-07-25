@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsOrderTemplates();
+    instance = new InterserverApiClient.VpsOrderTemplates();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('VpsOrderTemplates', function() {
     it('should create an instance of VpsOrderTemplates', function() {
       // uncomment below and update the code to test VpsOrderTemplates
-      //var instance = new InterServerManagementApi.VpsOrderTemplates();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsOrderTemplates);
+      //var instance = new InterserverApiClient.VpsOrderTemplates();
+      //expect(instance).to.be.a(InterserverApiClient.VpsOrderTemplates);
     });
 
     it('should have the property hyperv (base name: "hyperv")', function() {
       // uncomment below and update the code to test the property hyperv
-      //var instance = new InterServerManagementApi.VpsOrderTemplates();
+      //var instance = new InterserverApiClient.VpsOrderTemplates();
       //expect(instance).to.be();
     });
 

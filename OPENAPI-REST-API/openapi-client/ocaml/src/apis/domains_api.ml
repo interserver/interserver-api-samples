@@ -5,13 +5,28 @@
  *
  *)
 
-let add_domain () =
+let add_domain ~domain_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/domains/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Domain_order_request.to_yojson
+    
+    
+    
+ domain_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Service_order_post_response.of_yojson) resp body
 
 let add_domain_dnssec ~id ~domain_dnssec_request_t =
@@ -116,7 +131,7 @@ let cancel_domain ~id =
     Cohttp_lwt_unix.Client.call `DELETE uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Cancel_domain_200_response.of_yojson) resp body
 
-let delete_domain_dnssec ~id ~action =
+let delete_domain_dnssec ~id =
     let open Lwt.Infix in
     let uri = Request.build_uri "/domains/{id}/dnssec" in
     let headers = Request.default_headers in
@@ -137,21 +152,6 @@ let delete_domain_dnssec ~id ~action =
         
         
  id in
-    let uri = Request.add_query_param uri "action"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- action in
     Cohttp_lwt_unix.Client.call `DELETE uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
@@ -338,69 +338,6 @@ let get_domain_nameservers ~id =
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Domain_nameserver_get_response.of_yojson) resp body
 
-let get_domain_order_fields ~domain ~reg_type =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/domains/order/{domain}/{regType}" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    let uri = Request.replace_path_param uri "domain"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- domain in
-    let uri = Request.replace_path_param uri "regType"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- reg_type in
-    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
-
-let get_domain_order_search_results ~domain =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/domains/order/{domain}" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    let uri = Request.replace_path_param uri "domain"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- domain in
-    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
-
 let get_domain_renewal ~id =
     let open Lwt.Infix in
     let uri = Request.build_uri "/domains/{id}/renew" in
@@ -539,13 +476,28 @@ let get_new_domain () =
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Domain_order.of_yojson) resp body
 
-let patch_domains () =
+let patch_domains ~domain_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/domains/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `PATCH uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Domain_order_request.to_yojson
+    
+    
+    
+ domain_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `PATCH uri ~headers ~body >>= fun (resp, body) ->
     Request.handle_unit_response resp
 
 let post_domain_renewal ~id =
@@ -572,6 +524,30 @@ let post_domain_renewal ~id =
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
+let post_domain_search ~name =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/domains/search/{name}" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "name"     
+    
+    
+    
+    
+    
+    
+    
+    
+    (fun x -> x)
+    
+    
+        
+        
+ name in
+    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
+    Request.handle_unit_response resp
+
 let post_domain_transfer ~id =
     let open Lwt.Infix in
     let uri = Request.build_uri "/domains/{id}/transfer" in
@@ -596,13 +572,28 @@ let post_domain_transfer ~id =
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
-let put_domains () =
+let put_domains ~domain_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/domains/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `PUT uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Domain_order_request.to_yojson
+    
+    
+    
+ domain_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `PUT uri ~headers ~body >>= fun (resp, body) ->
     Request.handle_unit_response resp
 
 let update_domain_contact ~id ~domain_contact_details_t =
@@ -651,6 +642,7 @@ let update_domain_info ~id =
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
     let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
     
     
     
@@ -659,7 +651,6 @@ let update_domain_info ~id =
     
     
     
-    (fun x -> x)
     
     
         

@@ -1,4 +1,4 @@
-# SwaggerClient::HomeServicesWebhostingLinks
+# InterserverApiClient::HomeServicesWebhostingLinks
 
 ## Properties
 Name | Type | Description | Notes

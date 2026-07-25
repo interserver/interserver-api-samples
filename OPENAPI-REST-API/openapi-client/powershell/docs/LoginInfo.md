@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LoginInfo = Initialize-PSOpenAPIToolsLoginInfo  -Logo //my.interserver.net/images/logos/mystaging.png `
+$LoginInfo = Initialize-InterserverApiLoginInfo  -Logo //my.interserver.net/images/logos/mystaging.png `
  -Captcha data:image/jpeg;base64,/9j/ `
  -Language en-US `
  -Counts null

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerOrderControlPanel');
+use_ok('InterServerAPI::Object::ServerOrderControlPanel');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerOrderControlPanel->new();
+#my $instance = InterServerAPI::Object::ServerOrderControlPanel->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerOrderControlPanel');
+#isa_ok($instance, 'InterServerAPI::Object::ServerOrderControlPanel');
 
 
 done_testing();

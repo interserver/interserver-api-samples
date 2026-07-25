@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::QuickserverBillingDetails
+# InterServerAPI::Object::QuickserverBillingDetails
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::QuickserverBillingDetails;
+use InterServerAPI::Object::QuickserverBillingDetails;
 ```
 
 ## Properties

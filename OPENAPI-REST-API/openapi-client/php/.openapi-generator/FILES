@@ -44,8 +44,6 @@ docs/Model/AffiliateBannerRow.md
 docs/Model/AffiliateDockSetup.md
 docs/Model/AffiliatePaymentSetup.md
 docs/Model/AffiliateTrafficRow.md
-docs/Model/AssetServer.md
-docs/Model/AssetServerCPUInner.md
 docs/Model/Backup.md
 docs/Model/BackupBillingDetails.md
 docs/Model/BackupClientLink.md
@@ -63,7 +61,6 @@ docs/Model/BackupServiceMaster.md
 docs/Model/BackupsOrder.md
 docs/Model/BackupsOrderPackageCosts.md
 docs/Model/BackupsOrderServiceTypes.md
-docs/Model/Bandwidth.md
 docs/Model/BillingAddCcRequest.md
 docs/Model/BillingInvoiceDetail.md
 docs/Model/BillingInvoiceList.md
@@ -89,11 +86,6 @@ docs/Model/ChargeInvoiceRowsInvoicesValue.md
 docs/Model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.md
 docs/Model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.md
 docs/Model/CloseTicketResponseSchema.md
-docs/Model/ConfigIds.md
-docs/Model/ConfigLists.md
-docs/Model/ControlPanel.md
-docs/Model/Cpu.md
-docs/Model/CpuWithDefaults.md
 docs/Model/CreateFilter.md
 docs/Model/CreateFilter201Response.md
 docs/Model/CreateFilter400Response.md
@@ -109,6 +101,7 @@ docs/Model/DeleteFilter400Response.md
 docs/Model/DeleteFilter500Response.md
 docs/Model/DeleteFirewallRule.md
 docs/Model/DeleteGeoFirewallRule.md
+docs/Model/DeleteMailAlertRequest.md
 docs/Model/DenyRuleNew.md
 docs/Model/DenyRuleRecord.md
 docs/Model/DisableScrub200Response.md
@@ -139,11 +132,11 @@ docs/Model/DomainNameserverGetResponseInner.md
 docs/Model/DomainNameserverPostRequest.md
 docs/Model/DomainNameserverPutRequest.md
 docs/Model/DomainOrder.md
+docs/Model/DomainOrderRequest.md
 docs/Model/DomainOrderResponse.md
 docs/Model/DomainOrderResponseAttributes.md
 docs/Model/DomainOrderServices.md
 docs/Model/DomainOrderServices10001.md
-docs/Model/DomainOrderTldServices.md
 docs/Model/DomainOwnerContact.md
 docs/Model/DomainProvProcessPending.md
 docs/Model/DomainProvProcessPendingAttributes.md
@@ -159,12 +152,13 @@ docs/Model/EmailAddress.md
 docs/Model/EmailAddressName.md
 docs/Model/EnableScrub200Response.md
 docs/Model/EnableScrub500Response.md
-docs/Model/FieldLabel.md
+docs/Model/FloatingIpOrderRequest.md
 docs/Model/FloatingIpsCancel200Response.md
-docs/Model/FormValues.md
 docs/Model/GenericResponse.md
 docs/Model/GetAccountInfo401Response.md
+docs/Model/GetAccountLocales200ResponseValue.md
 docs/Model/GetAccountTfaSetup200Response.md
+docs/Model/GetAffiliateSignups200Response.md
 docs/Model/GetOauthRedirect200Response.md
 docs/Model/GetOrderDetail200Response.md
 docs/Model/GetOrderDetail200ResponseIpsInner.md
@@ -181,7 +175,6 @@ docs/Model/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.md
 docs/Model/GetScrubIpDetails200ResponseFilterFirewallRulesInner.md
 docs/Model/GetScrubIpDetails200ResponseServiceInfo.md
 docs/Model/GetWebsiteBuyIp200Response.md
-docs/Model/HardDrive.md
 docs/Model/Home.md
 docs/Model/HomeDetails.md
 docs/Model/HomeDetailsModules.md
@@ -208,10 +201,6 @@ docs/Model/HomeTicketStatus.md
 docs/Model/HomeTicketStatusView.md
 docs/Model/HostnameObject.md
 docs/Model/InitiatePayment200Response.md
-docs/Model/InlineObject.md
-docs/Model/Invoice.md
-docs/Model/InvoiceRow.md
-docs/Model/IpBlock.md
 docs/Model/IpLimitRange.md
 docs/Model/IpObject.md
 docs/Model/License.md
@@ -220,6 +209,7 @@ docs/Model/LicenseClientLink.md
 docs/Model/LicenseExtraInfoTables.md
 docs/Model/LicenseIpInfo.md
 docs/Model/LicenseIpInfoRow.md
+docs/Model/LicenseOrderRequest.md
 docs/Model/LicenseRow.md
 docs/Model/LicenseServiceInfo.md
 docs/Model/LicenseServiceType.md
@@ -256,6 +246,7 @@ docs/Model/MailExtraInfoTableRow.md
 docs/Model/MailLog.md
 docs/Model/MailLogEntry.md
 docs/Model/MailOrder.md
+docs/Model/MailOrderRequest.md
 docs/Model/MailRow.md
 docs/Model/MailSchema.md
 docs/Model/MailSchemaExtraInfoTables.md
@@ -268,15 +259,13 @@ docs/Model/MailStatsTypeVolumeIp.md
 docs/Model/MailStatsTypeVolumeTo.md
 docs/Model/MailTutorialsTable.md
 docs/Model/MailTutorialsTableRow.md
-docs/Model/MemoryOption.md
 docs/Model/ModuleSettings.md
 docs/Model/Modules.md
 docs/Model/MonthlyCounts.md
-docs/Model/OperatingSystem.md
 docs/Model/PasswordRequest.md
+docs/Model/PatchBillingCreditCardVerifyRequest.md
 docs/Model/PatchOauthTwoFactor200Response.md
 docs/Model/PatchOauthTwoFactorRequest.md
-docs/Model/PaymentInvoiceRows.md
 docs/Model/PlaceBuyNowServerRequest.md
 docs/Model/PlaceScrubOrder201Response.md
 docs/Model/PlaceScrubOrder201ResponseOrderDetails.md
@@ -287,6 +276,8 @@ docs/Model/PostWebsiteBuyIp200Response.md
 docs/Model/PostWebsiteBuyIpRequest.md
 docs/Model/PostWebsiteMigration200Response.md
 docs/Model/PostWebsiteMigrationRequest.md
+docs/Model/PutScrubIps200Response.md
+docs/Model/QsOrderRequest.md
 docs/Model/QueueResponse.md
 docs/Model/Quickserver.md
 docs/Model/QuickserverAddons.md
@@ -310,8 +301,6 @@ docs/Model/QuickserverServiceExtra.md
 docs/Model/QuickserverServiceInfo.md
 docs/Model/QuickserverServiceMaster.md
 docs/Model/QuickserversCancel200Response.md
-docs/Model/RaidOption.md
-docs/Model/Region.md
 docs/Model/ReplyTicketRequest.md
 docs/Model/ReplyTicketResponseSchema.md
 docs/Model/RestoreRequest.md
@@ -331,6 +320,8 @@ docs/Model/Server.md
 docs/Model/ServerAsset.md
 docs/Model/ServerAssets.md
 docs/Model/ServerBillingDetails.md
+docs/Model/ServerBulkIpmiPowerResponse.md
+docs/Model/ServerBulkIpmiPowerResponseResultsInner.md
 docs/Model/ServerClientLink.md
 docs/Model/ServerExtraInfoTables.md
 docs/Model/ServerIpmiLiveInfo.md
@@ -353,7 +344,6 @@ docs/Model/ServerOrderCpuLi.md
 docs/Model/ServerOrderFieldLabel.md
 docs/Model/ServerOrderFieldLabels.md
 docs/Model/ServerOrderFormValues.md
-docs/Model/ServerOrderGetResponse.md
 docs/Model/ServerOrderIP.md
 docs/Model/ServerOrderIpsLi.md
 docs/Model/ServerOrderMemory.md
@@ -361,6 +351,8 @@ docs/Model/ServerOrderMemoryLi.md
 docs/Model/ServerOrderMemoryLi254.md
 docs/Model/ServerOrderOS.md
 docs/Model/ServerOrderOsLi.md
+docs/Model/ServerOrderPostRequest.md
+docs/Model/ServerOrderPostRequestHd.md
 docs/Model/ServerOrderRAID.md
 docs/Model/ServerRow.md
 docs/Model/ServerServiceInfo.md
@@ -378,6 +370,7 @@ docs/Model/ServiceTypes.md
 docs/Model/Services.md
 docs/Model/ServicesInfo.md
 docs/Model/SslCancel200Response.md
+docs/Model/SslOrderRequest.md
 docs/Model/StatusMonthlyBreakdown.md
 docs/Model/SuccessTextResponse.md
 docs/Model/TemplateRequest.md
@@ -438,7 +431,6 @@ docs/Model/VpsServiceMaster.md
 docs/Model/VpsSnapshot.md
 docs/Model/VpsTemplateRow.md
 docs/Model/VpsTemplatesList.md
-docs/Model/VpsTrafficDataDataResponse.md
 docs/Model/VpsTrafficDataSectionResponse.md
 docs/Model/VpsTrafficHistoryResponse.md
 docs/Model/VpsTrafficHistorySectionDataResponse.md
@@ -457,6 +449,8 @@ docs/Model/WebsiteBillingDetails.md
 docs/Model/WebsiteClientLink.md
 docs/Model/WebsiteExtraInfoTables.md
 docs/Model/WebsiteLoginResponse.md
+docs/Model/WebsiteOrderPostRequest.md
+docs/Model/WebsiteOrderPutRequest.md
 docs/Model/WebsiteRow.md
 docs/Model/WebsiteServiceInfo.md
 docs/Model/WebsiteServiceMaster.md
@@ -492,6 +486,7 @@ src/Api/VPSApi.php
 src/Api/WebhostingApi.php
 src/ApiException.php
 src/Configuration.php
+src/DebugPlugin.php
 src/FormDataProcessor.php
 src/HeaderSelector.php
 src/Model/AccountFeatures.php
@@ -518,8 +513,6 @@ src/Model/AffiliateBannerRow.php
 src/Model/AffiliateDockSetup.php
 src/Model/AffiliatePaymentSetup.php
 src/Model/AffiliateTrafficRow.php
-src/Model/AssetServer.php
-src/Model/AssetServerCPUInner.php
 src/Model/Backup.php
 src/Model/BackupBillingDetails.php
 src/Model/BackupClientLink.php
@@ -537,7 +530,6 @@ src/Model/BackupServiceMaster.php
 src/Model/BackupsOrder.php
 src/Model/BackupsOrderPackageCosts.php
 src/Model/BackupsOrderServiceTypes.php
-src/Model/Bandwidth.php
 src/Model/BillingAddCcRequest.php
 src/Model/BillingInvoiceDetail.php
 src/Model/BillingInvoiceList.php
@@ -563,11 +555,6 @@ src/Model/ChargeInvoiceRowsInvoicesValue.php
 src/Model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.php
 src/Model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.php
 src/Model/CloseTicketResponseSchema.php
-src/Model/ConfigIds.php
-src/Model/ConfigLists.php
-src/Model/ControlPanel.php
-src/Model/Cpu.php
-src/Model/CpuWithDefaults.php
 src/Model/CreateFilter.php
 src/Model/CreateFilter201Response.php
 src/Model/CreateFilter400Response.php
@@ -583,6 +570,7 @@ src/Model/DeleteFilter400Response.php
 src/Model/DeleteFilter500Response.php
 src/Model/DeleteFirewallRule.php
 src/Model/DeleteGeoFirewallRule.php
+src/Model/DeleteMailAlertRequest.php
 src/Model/DenyRuleNew.php
 src/Model/DenyRuleRecord.php
 src/Model/DisableScrub200Response.php
@@ -613,11 +601,11 @@ src/Model/DomainNameserverGetResponseInner.php
 src/Model/DomainNameserverPostRequest.php
 src/Model/DomainNameserverPutRequest.php
 src/Model/DomainOrder.php
+src/Model/DomainOrderRequest.php
 src/Model/DomainOrderResponse.php
 src/Model/DomainOrderResponseAttributes.php
 src/Model/DomainOrderServices.php
 src/Model/DomainOrderServices10001.php
-src/Model/DomainOrderTldServices.php
 src/Model/DomainOwnerContact.php
 src/Model/DomainProvProcessPending.php
 src/Model/DomainProvProcessPendingAttributes.php
@@ -633,12 +621,13 @@ src/Model/EmailAddress.php
 src/Model/EmailAddressName.php
 src/Model/EnableScrub200Response.php
 src/Model/EnableScrub500Response.php
-src/Model/FieldLabel.php
+src/Model/FloatingIpOrderRequest.php
 src/Model/FloatingIpsCancel200Response.php
-src/Model/FormValues.php
 src/Model/GenericResponse.php
 src/Model/GetAccountInfo401Response.php
+src/Model/GetAccountLocales200ResponseValue.php
 src/Model/GetAccountTfaSetup200Response.php
+src/Model/GetAffiliateSignups200Response.php
 src/Model/GetOauthRedirect200Response.php
 src/Model/GetOrderDetail200Response.php
 src/Model/GetOrderDetail200ResponseIpsInner.php
@@ -655,7 +644,6 @@ src/Model/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.php
 src/Model/GetScrubIpDetails200ResponseFilterFirewallRulesInner.php
 src/Model/GetScrubIpDetails200ResponseServiceInfo.php
 src/Model/GetWebsiteBuyIp200Response.php
-src/Model/HardDrive.php
 src/Model/Home.php
 src/Model/HomeDetails.php
 src/Model/HomeDetailsModules.php
@@ -682,10 +670,6 @@ src/Model/HomeTicketStatus.php
 src/Model/HomeTicketStatusView.php
 src/Model/HostnameObject.php
 src/Model/InitiatePayment200Response.php
-src/Model/InlineObject.php
-src/Model/Invoice.php
-src/Model/InvoiceRow.php
-src/Model/IpBlock.php
 src/Model/IpLimitRange.php
 src/Model/IpObject.php
 src/Model/License.php
@@ -694,6 +678,7 @@ src/Model/LicenseClientLink.php
 src/Model/LicenseExtraInfoTables.php
 src/Model/LicenseIpInfo.php
 src/Model/LicenseIpInfoRow.php
+src/Model/LicenseOrderRequest.php
 src/Model/LicenseRow.php
 src/Model/LicenseServiceInfo.php
 src/Model/LicenseServiceType.php
@@ -730,6 +715,7 @@ src/Model/MailExtraInfoTableRow.php
 src/Model/MailLog.php
 src/Model/MailLogEntry.php
 src/Model/MailOrder.php
+src/Model/MailOrderRequest.php
 src/Model/MailRow.php
 src/Model/MailSchema.php
 src/Model/MailSchemaExtraInfoTables.php
@@ -742,16 +728,14 @@ src/Model/MailStatsTypeVolumeIp.php
 src/Model/MailStatsTypeVolumeTo.php
 src/Model/MailTutorialsTable.php
 src/Model/MailTutorialsTableRow.php
-src/Model/MemoryOption.php
 src/Model/ModelInterface.php
 src/Model/ModuleSettings.php
 src/Model/Modules.php
 src/Model/MonthlyCounts.php
-src/Model/OperatingSystem.php
 src/Model/PasswordRequest.php
+src/Model/PatchBillingCreditCardVerifyRequest.php
 src/Model/PatchOauthTwoFactor200Response.php
 src/Model/PatchOauthTwoFactorRequest.php
-src/Model/PaymentInvoiceRows.php
 src/Model/PlaceBuyNowServerRequest.php
 src/Model/PlaceScrubOrder201Response.php
 src/Model/PlaceScrubOrder201ResponseOrderDetails.php
@@ -762,6 +746,8 @@ src/Model/PostWebsiteBuyIp200Response.php
 src/Model/PostWebsiteBuyIpRequest.php
 src/Model/PostWebsiteMigration200Response.php
 src/Model/PostWebsiteMigrationRequest.php
+src/Model/PutScrubIps200Response.php
+src/Model/QsOrderRequest.php
 src/Model/QueueResponse.php
 src/Model/Quickserver.php
 src/Model/QuickserverAddons.php
@@ -785,8 +771,6 @@ src/Model/QuickserverServiceExtra.php
 src/Model/QuickserverServiceInfo.php
 src/Model/QuickserverServiceMaster.php
 src/Model/QuickserversCancel200Response.php
-src/Model/RaidOption.php
-src/Model/Region.php
 src/Model/ReplyTicketRequest.php
 src/Model/ReplyTicketResponseSchema.php
 src/Model/RestoreRequest.php
@@ -806,6 +790,8 @@ src/Model/Server.php
 src/Model/ServerAsset.php
 src/Model/ServerAssets.php
 src/Model/ServerBillingDetails.php
+src/Model/ServerBulkIpmiPowerResponse.php
+src/Model/ServerBulkIpmiPowerResponseResultsInner.php
 src/Model/ServerClientLink.php
 src/Model/ServerExtraInfoTables.php
 src/Model/ServerIpmiLiveInfo.php
@@ -828,7 +814,6 @@ src/Model/ServerOrderCpuLi.php
 src/Model/ServerOrderFieldLabel.php
 src/Model/ServerOrderFieldLabels.php
 src/Model/ServerOrderFormValues.php
-src/Model/ServerOrderGetResponse.php
 src/Model/ServerOrderIP.php
 src/Model/ServerOrderIpsLi.php
 src/Model/ServerOrderMemory.php
@@ -836,6 +821,8 @@ src/Model/ServerOrderMemoryLi.php
 src/Model/ServerOrderMemoryLi254.php
 src/Model/ServerOrderOS.php
 src/Model/ServerOrderOsLi.php
+src/Model/ServerOrderPostRequest.php
+src/Model/ServerOrderPostRequestHd.php
 src/Model/ServerOrderRAID.php
 src/Model/ServerRow.php
 src/Model/ServerServiceInfo.php
@@ -853,6 +840,7 @@ src/Model/ServiceTypes.php
 src/Model/Services.php
 src/Model/ServicesInfo.php
 src/Model/SslCancel200Response.php
+src/Model/SslOrderRequest.php
 src/Model/StatusMonthlyBreakdown.php
 src/Model/SuccessTextResponse.php
 src/Model/TemplateRequest.php
@@ -913,7 +901,6 @@ src/Model/VpsServiceMaster.php
 src/Model/VpsSnapshot.php
 src/Model/VpsTemplateRow.php
 src/Model/VpsTemplatesList.php
-src/Model/VpsTrafficDataDataResponse.php
 src/Model/VpsTrafficDataSectionResponse.php
 src/Model/VpsTrafficHistoryResponse.php
 src/Model/VpsTrafficHistorySectionDataResponse.php
@@ -932,6 +919,8 @@ src/Model/WebsiteBillingDetails.php
 src/Model/WebsiteClientLink.php
 src/Model/WebsiteExtraInfoTables.php
 src/Model/WebsiteLoginResponse.php
+src/Model/WebsiteOrderPostRequest.php
+src/Model/WebsiteOrderPutRequest.php
 src/Model/WebsiteRow.php
 src/Model/WebsiteServiceInfo.php
 src/Model/WebsiteServiceMaster.php
@@ -988,8 +977,6 @@ test/Model/AffiliateBannerRowTest.php
 test/Model/AffiliateDockSetupTest.php
 test/Model/AffiliatePaymentSetupTest.php
 test/Model/AffiliateTrafficRowTest.php
-test/Model/AssetServerCPUInnerTest.php
-test/Model/AssetServerTest.php
 test/Model/BackupBillingDetailsTest.php
 test/Model/BackupClientLinkTest.php
 test/Model/BackupExtraInfoTablesTest.php
@@ -1007,7 +994,6 @@ test/Model/BackupTest.php
 test/Model/BackupsOrderPackageCostsTest.php
 test/Model/BackupsOrderServiceTypesTest.php
 test/Model/BackupsOrderTest.php
-test/Model/BandwidthTest.php
 test/Model/BillingAddCcRequestTest.php
 test/Model/BillingInvoiceDetailTest.php
 test/Model/BillingInvoiceListTest.php
@@ -1033,11 +1019,6 @@ test/Model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueTest.php
 test/Model/ChargeInvoiceRowsInvoicesValueTest.php
 test/Model/ChargeInvoiceRowsTest.php
 test/Model/CloseTicketResponseSchemaTest.php
-test/Model/ConfigIdsTest.php
-test/Model/ConfigListsTest.php
-test/Model/ControlPanelTest.php
-test/Model/CpuTest.php
-test/Model/CpuWithDefaultsTest.php
 test/Model/CreateFilter201ResponseTest.php
 test/Model/CreateFilter400ResponseTest.php
 test/Model/CreateFilter500ResponseTest.php
@@ -1053,6 +1034,7 @@ test/Model/DeleteFilter400ResponseTest.php
 test/Model/DeleteFilter500ResponseTest.php
 test/Model/DeleteFirewallRuleTest.php
 test/Model/DeleteGeoFirewallRuleTest.php
+test/Model/DeleteMailAlertRequestTest.php
 test/Model/DenyRuleNewTest.php
 test/Model/DenyRuleRecordTest.php
 test/Model/DisableScrub200ResponseTest.php
@@ -1081,12 +1063,12 @@ test/Model/DomainNameserverGetResponseInnerTest.php
 test/Model/DomainNameserverGetResponseTest.php
 test/Model/DomainNameserverPostRequestTest.php
 test/Model/DomainNameserverPutRequestTest.php
+test/Model/DomainOrderRequestTest.php
 test/Model/DomainOrderResponseAttributesTest.php
 test/Model/DomainOrderResponseTest.php
 test/Model/DomainOrderServices10001Test.php
 test/Model/DomainOrderServicesTest.php
 test/Model/DomainOrderTest.php
-test/Model/DomainOrderTldServicesTest.php
 test/Model/DomainOwnerContactTest.php
 test/Model/DomainProvProcessPendingAttributesTest.php
 test/Model/DomainProvProcessPendingTest.php
@@ -1103,12 +1085,13 @@ test/Model/EmailAddressNameTest.php
 test/Model/EmailAddressTest.php
 test/Model/EnableScrub200ResponseTest.php
 test/Model/EnableScrub500ResponseTest.php
-test/Model/FieldLabelTest.php
+test/Model/FloatingIpOrderRequestTest.php
 test/Model/FloatingIpsCancel200ResponseTest.php
-test/Model/FormValuesTest.php
 test/Model/GenericResponseTest.php
 test/Model/GetAccountInfo401ResponseTest.php
+test/Model/GetAccountLocales200ResponseValueTest.php
 test/Model/GetAccountTfaSetup200ResponseTest.php
+test/Model/GetAffiliateSignups200ResponseTest.php
 test/Model/GetOauthRedirect200ResponseTest.php
 test/Model/GetOrderDetail200ResponseIpsInnerTest.php
 test/Model/GetOrderDetail200ResponsePackageCostsTest.php
@@ -1125,7 +1108,6 @@ test/Model/GetScrubIpDetails200ResponseFilterFirewallTest.php
 test/Model/GetScrubIpDetails200ResponseServiceInfoTest.php
 test/Model/GetScrubIpDetails200ResponseTest.php
 test/Model/GetWebsiteBuyIp200ResponseTest.php
-test/Model/HardDriveTest.php
 test/Model/HomeDetailsModulesBackupsTest.php
 test/Model/HomeDetailsModulesDomainsTest.php
 test/Model/HomeDetailsModulesLicensesTest.php
@@ -1152,10 +1134,6 @@ test/Model/HomeTicketStatusTest.php
 test/Model/HomeTicketStatusViewTest.php
 test/Model/HostnameObjectTest.php
 test/Model/InitiatePayment200ResponseTest.php
-test/Model/InlineObjectTest.php
-test/Model/InvoiceRowTest.php
-test/Model/InvoiceTest.php
-test/Model/IpBlockTest.php
 test/Model/IpLimitRangeTest.php
 test/Model/IpObjectTest.php
 test/Model/LicenseBillingDetailsTest.php
@@ -1163,6 +1141,7 @@ test/Model/LicenseClientLinkTest.php
 test/Model/LicenseExtraInfoTablesTest.php
 test/Model/LicenseIpInfoRowTest.php
 test/Model/LicenseIpInfoTest.php
+test/Model/LicenseOrderRequestTest.php
 test/Model/LicenseRowTest.php
 test/Model/LicenseServiceInfoTest.php
 test/Model/LicenseServiceTypeTest.php
@@ -1199,6 +1178,7 @@ test/Model/MailExtraInfoTableRowTest.php
 test/Model/MailExtraInfoTableTest.php
 test/Model/MailLogEntryTest.php
 test/Model/MailLogTest.php
+test/Model/MailOrderRequestTest.php
 test/Model/MailOrderTest.php
 test/Model/MailRowTest.php
 test/Model/MailSchemaExtraInfoTablesTest.php
@@ -1212,15 +1192,13 @@ test/Model/MailStatsTypeVolumeTest.php
 test/Model/MailStatsTypeVolumeToTest.php
 test/Model/MailTutorialsTableRowTest.php
 test/Model/MailTutorialsTableTest.php
-test/Model/MemoryOptionTest.php
 test/Model/ModuleSettingsTest.php
 test/Model/ModulesTest.php
 test/Model/MonthlyCountsTest.php
-test/Model/OperatingSystemTest.php
 test/Model/PasswordRequestTest.php
+test/Model/PatchBillingCreditCardVerifyRequestTest.php
 test/Model/PatchOauthTwoFactor200ResponseTest.php
 test/Model/PatchOauthTwoFactorRequestTest.php
-test/Model/PaymentInvoiceRowsTest.php
 test/Model/PlaceBuyNowServerRequestTest.php
 test/Model/PlaceScrubOrder201ResponseOrderDetailsCjParamsTest.php
 test/Model/PlaceScrubOrder201ResponseOrderDetailsTest.php
@@ -1231,6 +1209,8 @@ test/Model/PostWebsiteBuyIp200ResponseTest.php
 test/Model/PostWebsiteBuyIpRequestTest.php
 test/Model/PostWebsiteMigration200ResponseTest.php
 test/Model/PostWebsiteMigrationRequestTest.php
+test/Model/PutScrubIps200ResponseTest.php
+test/Model/QsOrderRequestTest.php
 test/Model/QueueResponseTest.php
 test/Model/QuickserverAddonsRowTest.php
 test/Model/QuickserverAddonsTest.php
@@ -1254,8 +1234,6 @@ test/Model/QuickserverServiceInfoTest.php
 test/Model/QuickserverServiceMasterTest.php
 test/Model/QuickserverTest.php
 test/Model/QuickserversCancel200ResponseTest.php
-test/Model/RaidOptionTest.php
-test/Model/RegionTest.php
 test/Model/ReplyTicketRequestTest.php
 test/Model/ReplyTicketResponseSchemaTest.php
 test/Model/RestoreRequestTest.php
@@ -1274,6 +1252,8 @@ test/Model/SendMailTest.php
 test/Model/ServerAssetTest.php
 test/Model/ServerAssetsTest.php
 test/Model/ServerBillingDetailsTest.php
+test/Model/ServerBulkIpmiPowerResponseResultsInnerTest.php
+test/Model/ServerBulkIpmiPowerResponseTest.php
 test/Model/ServerClientLinkTest.php
 test/Model/ServerExtraInfoTablesTest.php
 test/Model/ServerIpmiLiveInfoTest.php
@@ -1295,7 +1275,6 @@ test/Model/ServerOrderCpuLiTest.php
 test/Model/ServerOrderFieldLabelTest.php
 test/Model/ServerOrderFieldLabelsTest.php
 test/Model/ServerOrderFormValuesTest.php
-test/Model/ServerOrderGetResponseTest.php
 test/Model/ServerOrderIPTest.php
 test/Model/ServerOrderIpsLiTest.php
 test/Model/ServerOrderMemoryLi254Test.php
@@ -1303,6 +1282,8 @@ test/Model/ServerOrderMemoryLiTest.php
 test/Model/ServerOrderMemoryTest.php
 test/Model/ServerOrderOSTest.php
 test/Model/ServerOrderOsLiTest.php
+test/Model/ServerOrderPostRequestHdTest.php
+test/Model/ServerOrderPostRequestTest.php
 test/Model/ServerOrderRAIDTest.php
 test/Model/ServerOrderTest.php
 test/Model/ServerRowTest.php
@@ -1322,6 +1303,7 @@ test/Model/ServiceTypesTest.php
 test/Model/ServicesInfoTest.php
 test/Model/ServicesTest.php
 test/Model/SslCancel200ResponseTest.php
+test/Model/SslOrderRequestTest.php
 test/Model/StatusMonthlyBreakdownTest.php
 test/Model/SuccessTextResponseTest.php
 test/Model/TemplateRequestTest.php
@@ -1382,7 +1364,6 @@ test/Model/VpsSnapshotTest.php
 test/Model/VpsTemplateRowTest.php
 test/Model/VpsTemplatesListTest.php
 test/Model/VpsTest.php
-test/Model/VpsTrafficDataDataResponseTest.php
 test/Model/VpsTrafficDataSectionResponseTest.php
 test/Model/VpsTrafficHistoryResponseTest.php
 test/Model/VpsTrafficHistorySectionDataResponseTest.php
@@ -1400,6 +1381,8 @@ test/Model/WebsiteBillingDetailsTest.php
 test/Model/WebsiteClientLinkTest.php
 test/Model/WebsiteExtraInfoTablesTest.php
 test/Model/WebsiteLoginResponseTest.php
+test/Model/WebsiteOrderPostRequestTest.php
+test/Model/WebsiteOrderPutRequestTest.php
 test/Model/WebsiteRowTest.php
 test/Model/WebsiteServiceInfoTest.php
 test/Model/WebsiteServiceMasterTest.php

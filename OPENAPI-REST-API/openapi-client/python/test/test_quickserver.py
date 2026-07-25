@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver import Quickserver
+from interserver_api_client.models.quickserver import Quickserver
 
 class TestQuickserver(unittest.TestCase):
     """Quickserver unit test stubs"""
@@ -36,7 +36,7 @@ class TestQuickserver(unittest.TestCase):
         model = Quickserver()
         if include_optional:
             return Quickserver(
-                service_info = openapi_client.models.quickserver_service_info.QuickserverServiceInfo(
+                service_info = interserver_api_client.models.quickserver_service_info.QuickserverServiceInfo(
                     qs_id = '24355', 
                     qs_custid = '771282', 
                     qs_server = '365', 
@@ -63,7 +63,7 @@ class TestQuickserver(unittest.TestCase):
                     qs_location = '1', 
                     qs_platform = '', ),
                 client_links = [
-                    openapi_client.models.quickserver_client_link.QuickserverClientLink(
+                    interserver_api_client.models.quickserver_client_link.QuickserverClientLink(
                         label = 'Invoices', 
                         link = 'invoices', 
                         icon = 'fas fa-file-invoice-dollar fa-w-12', 
@@ -71,7 +71,7 @@ class TestQuickserver(unittest.TestCase):
                         help_text = 'Invoice History', 
                         other_attr = '', )
                     ],
-                billing_details = openapi_client.models.quickserver_billing_details.QuickserverBillingDetails(
+                billing_details = interserver_api_client.models.quickserver_billing_details.QuickserverBillingDetails(
                     service_last_invoice_date = 'April 11, 2023', 
                     service_payment_status = 'Paid', 
                     service_frequency = 'Monthly', 
@@ -80,12 +80,12 @@ class TestQuickserver(unittest.TestCase):
                     service_currency = 'USD', 
                     service_currency_symbol = '$', 
                     service_cost_info = '49.00', 
-                    service_extra = openapi_client.models.quickserver_service_extra.QuickserverServiceExtra(
+                    service_extra = interserver_api_client.models.quickserver_service_extra.QuickserverServiceExtra(
                         platform = 'kvm', ), 
                     service_extra_json = '{"platform":"kvm"}', ),
                 cust_currency = 'USD',
                 cust_currency_symbol = '$',
-                service_master = openapi_client.models.quickserver_service_master.QuickserverServiceMaster(
+                service_master = interserver_api_client.models.quickserver_service_master.QuickserverServiceMaster(
                     qs_id = '365', 
                     qs_name = 'Qs365', 
                     qs_ip = '', 
@@ -121,17 +121,17 @@ class TestQuickserver(unittest.TestCase):
                     qs_cpu_flags = '', ),
                 package = 'Rapid Deploy Server',
                 os_template = 'Ubuntu 22.04',
-                service_extra = openapi_client.models.quickserver_service_extra.Quickserver_serviceExtra(
+                service_extra = interserver_api_client.models.quickserver_service_extra.Quickserver_serviceExtra(
                     platform = 'kvm', ),
-                extra_info_tables = openapi_client.models.quickserver_extra_info_tables.Quickserver_extraInfoTables(
-                    ip_info = openapi_client.models.quickserver_ip_info.QuickserverIpInfo(
+                extra_info_tables = interserver_api_client.models.quickserver_extra_info_tables.Quickserver_extraInfoTables(
+                    ip_info = interserver_api_client.models.quickserver_ip_info.QuickserverIpInfo(
                         title = 'IP Information', 
                         rows = [
-                            openapi_client.models.quickserver_ip_table_row.QuickserverIpTableRow(
+                            interserver_api_client.models.quickserver_ip_table_row.QuickserverIpTableRow(
                                 desc = 'Netmask', 
                                 value = '', )
                             ], ), 
-                    addons = openapi_client.models.quickserver_addons.QuickserverAddons(
+                    addons = interserver_api_client.models.quickserver_addons.QuickserverAddons(
                         title = 'Addons', ), ),
                 cpu_graph_data = '{"labels":[],"value":[]}',
                 bandwidth_xaxis = '[]',
@@ -149,7 +149,7 @@ class TestQuickserver(unittest.TestCase):
             )
         else:
             return Quickserver(
-                service_info = openapi_client.models.quickserver_service_info.QuickserverServiceInfo(
+                service_info = interserver_api_client.models.quickserver_service_info.QuickserverServiceInfo(
                     qs_id = '24355', 
                     qs_custid = '771282', 
                     qs_server = '365', 
@@ -176,7 +176,7 @@ class TestQuickserver(unittest.TestCase):
                     qs_location = '1', 
                     qs_platform = '', ),
                 client_links = [
-                    openapi_client.models.quickserver_client_link.QuickserverClientLink(
+                    interserver_api_client.models.quickserver_client_link.QuickserverClientLink(
                         label = 'Invoices', 
                         link = 'invoices', 
                         icon = 'fas fa-file-invoice-dollar fa-w-12', 
@@ -184,7 +184,7 @@ class TestQuickserver(unittest.TestCase):
                         help_text = 'Invoice History', 
                         other_attr = '', )
                     ],
-                billing_details = openapi_client.models.quickserver_billing_details.QuickserverBillingDetails(
+                billing_details = interserver_api_client.models.quickserver_billing_details.QuickserverBillingDetails(
                     service_last_invoice_date = 'April 11, 2023', 
                     service_payment_status = 'Paid', 
                     service_frequency = 'Monthly', 
@@ -193,12 +193,12 @@ class TestQuickserver(unittest.TestCase):
                     service_currency = 'USD', 
                     service_currency_symbol = '$', 
                     service_cost_info = '49.00', 
-                    service_extra = openapi_client.models.quickserver_service_extra.QuickserverServiceExtra(
+                    service_extra = interserver_api_client.models.quickserver_service_extra.QuickserverServiceExtra(
                         platform = 'kvm', ), 
                     service_extra_json = '{"platform":"kvm"}', ),
                 cust_currency = 'USD',
                 cust_currency_symbol = '$',
-                service_master = openapi_client.models.quickserver_service_master.QuickserverServiceMaster(
+                service_master = interserver_api_client.models.quickserver_service_master.QuickserverServiceMaster(
                     qs_id = '365', 
                     qs_name = 'Qs365', 
                     qs_ip = '', 
@@ -234,17 +234,17 @@ class TestQuickserver(unittest.TestCase):
                     qs_cpu_flags = '', ),
                 package = 'Rapid Deploy Server',
                 os_template = 'Ubuntu 22.04',
-                service_extra = openapi_client.models.quickserver_service_extra.Quickserver_serviceExtra(
+                service_extra = interserver_api_client.models.quickserver_service_extra.Quickserver_serviceExtra(
                     platform = 'kvm', ),
-                extra_info_tables = openapi_client.models.quickserver_extra_info_tables.Quickserver_extraInfoTables(
-                    ip_info = openapi_client.models.quickserver_ip_info.QuickserverIpInfo(
+                extra_info_tables = interserver_api_client.models.quickserver_extra_info_tables.Quickserver_extraInfoTables(
+                    ip_info = interserver_api_client.models.quickserver_ip_info.QuickserverIpInfo(
                         title = 'IP Information', 
                         rows = [
-                            openapi_client.models.quickserver_ip_table_row.QuickserverIpTableRow(
+                            interserver_api_client.models.quickserver_ip_table_row.QuickserverIpTableRow(
                                 desc = 'Netmask', 
                                 value = '', )
                             ], ), 
-                    addons = openapi_client.models.quickserver_addons.QuickserverAddons(
+                    addons = interserver_api_client.models.quickserver_addons.QuickserverAddons(
                         title = 'Addons', ), ),
                 cpu_graph_data = '{"labels":[],"value":[]}',
                 bandwidth_xaxis = '[]',

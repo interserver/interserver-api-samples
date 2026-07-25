@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsTemplatesList();
+    instance = new InterserverApiClient.VpsTemplatesList();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('VpsTemplatesList', function() {
     it('should create an instance of VpsTemplatesList', function() {
       // uncomment below and update the code to test VpsTemplatesList
-      //var instance = new InterServerManagementApi.VpsTemplatesList();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsTemplatesList);
+      //var instance = new InterserverApiClient.VpsTemplatesList();
+      //expect(instance).to.be.a(InterserverApiClient.VpsTemplatesList);
     });
 
     it('should have the property templates (base name: "templates")', function() {
       // uncomment below and update the code to test the property templates
-      //var instance = new InterServerManagementApi.VpsTemplatesList();
+      //var instance = new InterserverApiClient.VpsTemplatesList();
       //expect(instance).to.be();
     });
 

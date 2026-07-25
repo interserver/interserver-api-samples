@@ -1,4 +1,4 @@
-# openapi::TextResponse
+# interserverapi::TextResponse
 
 Text Response Object
 

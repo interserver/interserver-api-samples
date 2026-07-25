@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.service import Service
+from interserver_api_client.models.service import Service
 
 class TestService(unittest.TestCase):
     """Service unit test stubs"""

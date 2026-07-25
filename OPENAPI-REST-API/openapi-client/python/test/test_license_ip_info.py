@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.license_ip_info import LicenseIpInfo
+from interserver_api_client.models.license_ip_info import LicenseIpInfo
 
 class TestLicenseIpInfo(unittest.TestCase):
     """LicenseIpInfo unit test stubs"""
@@ -38,7 +38,7 @@ class TestLicenseIpInfo(unittest.TestCase):
             return LicenseIpInfo(
                 title = 'IP Information',
                 rows = [
-                    openapi_client.models.license_ip_info_row.LicenseIpInfoRow(
+                    interserver_api_client.models.license_ip_info_row.LicenseIpInfoRow(
                         desc = 'Netmask', 
                         value = '255.255.255.248', )
                     ]

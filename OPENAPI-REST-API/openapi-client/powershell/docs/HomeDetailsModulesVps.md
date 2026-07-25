@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeDetailsModulesVps = Initialize-PSOpenAPIToolsHomeDetailsModulesVps  -Icon cloud-meatball `
+$HomeDetailsModulesVps = Initialize-InterserverApiHomeDetailsModulesVps  -Icon cloud-meatball `
  -ViewLink view_vps `
  -Heading VPS `
  -BuyLink order_vps `

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.login_error_response import LoginErrorResponse
+from interserver_api_client.models.login_error_response import LoginErrorResponse
 
 class TestLoginErrorResponse(unittest.TestCase):
     """LoginErrorResponse unit test stubs"""

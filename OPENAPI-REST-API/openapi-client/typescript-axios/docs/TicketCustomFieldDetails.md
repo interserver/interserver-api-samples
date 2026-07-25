@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TicketCustomFieldDetails } from './api';
+import { TicketCustomFieldDetails } from '@interserver/myadmin-client';
 
 const instance: TicketCustomFieldDetails = {
     Customer_Server_Access,

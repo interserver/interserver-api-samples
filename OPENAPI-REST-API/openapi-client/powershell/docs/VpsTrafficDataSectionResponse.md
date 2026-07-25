@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsTrafficDataSectionResponse = Initialize-PSOpenAPIToolsVpsTrafficDataSectionResponse  -Name null `
+$VpsTrafficDataSectionResponse = Initialize-InterserverApiVpsTrafficDataSectionResponse  -Name null `
  -VarData null
 ```
 

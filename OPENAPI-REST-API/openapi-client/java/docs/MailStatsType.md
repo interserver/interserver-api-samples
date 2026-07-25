@@ -23,13 +23,17 @@ Statistics about the mail usage including volume by IP, To address, and From add
 
 | Name | Value |
 |---- | -----|
-| ALL | &quot;all&quot; |
-| BILLING | &quot;billing&quot; |
-| MONTH | &quot;month&quot; |
-| _7D | &quot;7d&quot; |
-| _24H | &quot;24h&quot; |
-| TODAY | &quot;today&quot; |
-| _1H | &quot;1h&quot; |
+| all | &quot;all&quot; |
+| billing | &quot;billing&quot; |
+| month | &quot;month&quot; |
+| _7d | &quot;7d&quot; |
+| _24h | &quot;24h&quot; |
+| today | &quot;today&quot; |
+| _1h | &quot;1h&quot; |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

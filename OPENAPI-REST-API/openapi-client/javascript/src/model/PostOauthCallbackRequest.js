@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The PostOauthCallbackRequest model module.
  * @module model/PostOauthCallbackRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class PostOauthCallbackRequest {
     /**

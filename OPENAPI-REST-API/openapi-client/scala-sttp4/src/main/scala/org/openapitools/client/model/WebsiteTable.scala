@@ -17,4 +17,3 @@ case class WebsiteTable(
   title: Option[String] = None,
   rows: Option[Seq[WebsiteTableRow]] = None
 )
-

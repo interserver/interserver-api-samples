@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.CreateFilter();
+    instance = new InterserverApiClient.CreateFilter();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('CreateFilter', function() {
     it('should create an instance of CreateFilter', function() {
       // uncomment below and update the code to test CreateFilter
-      //var instance = new InterServerManagementApi.CreateFilter();
-      //expect(instance).to.be.a(InterServerManagementApi.CreateFilter);
+      //var instance = new InterserverApiClient.CreateFilter();
+      //expect(instance).to.be.a(InterserverApiClient.CreateFilter);
     });
 
     it('should have the property filter_type (base name: "filter_type")', function() {
       // uncomment below and update the code to test the property filter_type
-      //var instance = new InterServerManagementApi.CreateFilter();
+      //var instance = new InterserverApiClient.CreateFilter();
       //expect(instance).to.be();
     });
 
     it('should have the property port (base name: "port")', function() {
       // uncomment below and update the code to test the property port
-      //var instance = new InterServerManagementApi.CreateFilter();
+      //var instance = new InterserverApiClient.CreateFilter();
       //expect(instance).to.be();
     });
 

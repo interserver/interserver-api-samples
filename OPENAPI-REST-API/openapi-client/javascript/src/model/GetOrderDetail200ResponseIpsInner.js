@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetOrderDetail200ResponseIpsInner model module.
  * @module model/GetOrderDetail200ResponseIpsInner
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetOrderDetail200ResponseIpsInner {
     /**

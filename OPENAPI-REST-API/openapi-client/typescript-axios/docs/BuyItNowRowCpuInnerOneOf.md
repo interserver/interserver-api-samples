@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BuyItNowRowCpuInnerOneOf } from './api';
+import { BuyItNowRowCpuInnerOneOf } from '@interserver/myadmin-client';
 
 const instance: BuyItNowRowCpuInnerOneOf = {
     img,

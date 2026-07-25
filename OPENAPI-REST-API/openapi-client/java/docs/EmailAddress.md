@@ -11,4 +11,8 @@ an email address
 |**email** | **String** | an email address |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

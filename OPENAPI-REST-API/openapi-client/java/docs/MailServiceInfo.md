@@ -23,4 +23,8 @@
 |**mailComment** | **String** | Additional comments for the mail service. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -9,12 +9,8 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
-import { InlineResponse20018Ips } from './inlineResponse20018Ips';
-import { InlineResponse20018PackageCosts } from './inlineResponse20018PackageCosts';
-import { InlineResponse20018ServiceTypes } from './inlineResponse20018ServiceTypes';
 
 export interface InlineResponse20018 { 
-    packageCosts?: InlineResponse20018PackageCosts;
-    serviceTypes?: Array<InlineResponse20018ServiceTypes>;
-    ips?: Array<InlineResponse20018Ips>;
+    success?: boolean;
+    text?: string;
 }

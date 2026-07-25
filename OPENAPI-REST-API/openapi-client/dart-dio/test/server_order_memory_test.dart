@@ -1,80 +1,80 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerOrderMemory
 void main() {
-  final instance = ServerOrderMemoryBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerOrderMemory? instance = /* ServerOrderMemory(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerOrderMemory, () {
     // Memory ID.
-    // String id
+    // Optional<String?> id
     test('to test the property `id`', () async {
       // TODO
     });
 
     // Memory price.
-    // String price
+    // Optional<String?> price
     test('to test the property `price`', () async {
       // TODO
     });
 
     // Memory image.
-    // String img
+    // Optional<String?> img
     test('to test the property `img`', () async {
       // TODO
     });
 
     // Short description of the memory.
-    // String shortDesc
+    // Optional<String?> shortDesc
     test('to test the property `shortDesc`', () async {
       // TODO
     });
 
     // Long description of the memory.
-    // String longDesc
+    // Optional<String?> longDesc
     test('to test the property `longDesc`', () async {
       // TODO
     });
 
     // Manufacturer information.
-    // String manu
+    // Optional<String?> manu
     test('to test the property `manu`', () async {
       // TODO
     });
 
     // Memory size.
-    // String size
+    // Optional<String?> size
     test('to test the property `size`', () async {
       // TODO
     });
 
     // Memory type.
-    // String type
+    // Optional<String?> type
     test('to test the property `type`', () async {
       // TODO
     });
 
     // Hidden status.
-    // String hidden
+    // Optional<String?> hidden
     test('to test the property `hidden`', () async {
       // TODO
     });
 
     // Monthly price.
-    // int monthlyPrice
+    // Optional<int?> monthlyPrice
     test('to test the property `monthlyPrice`', () async {
       // TODO
     });
 
     // Drive type.
-    // String driveType
+    // Optional<String?> driveType
     test('to test the property `driveType`', () async {
       // TODO
     });
 
     // Display of monthly memory price.
-    // String monthlyPriceDisplay
+    // Optional<String?> monthlyPriceDisplay
     test('to test the property `monthlyPriceDisplay`', () async {
       // TODO
     });

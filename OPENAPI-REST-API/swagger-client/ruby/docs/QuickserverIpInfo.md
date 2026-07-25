@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverIpInfo
+# InterserverApiClient::QuickserverIpInfo
 
 ## Properties
 Name | Type | Description | Notes

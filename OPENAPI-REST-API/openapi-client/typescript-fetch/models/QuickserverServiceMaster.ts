@@ -266,8 +266,8 @@ export function QuickserverServiceMasterFromJSONTyped(json: any, ignoreDiscrimin
         'qs_bytes_sec_out': json['qs_bytes_sec_out'] == null ? undefined : json['qs_bytes_sec_out'],
         'qs_packets_sec_in': json['qs_packets_sec_in'] == null ? undefined : json['qs_packets_sec_in'],
         'qs_packets_sec_out': json['qs_packets_sec_out'] == null ? undefined : json['qs_packets_sec_out'],
-        'qs_last_install_time': json['qs_last_install_time'] == null ? undefined : json['qs_last_install_time'],
-        'qs_partitions': json['qs_partitions'] == null ? undefined : json['qs_partitions'],
+        'qs_last_install_time': json['qs_last_install_time'] === undefined ? undefined : json['qs_last_install_time'] === null ? null : json['qs_last_install_time'],
+        'qs_partitions': json['qs_partitions'] === undefined ? undefined : json['qs_partitions'] === null ? null : json['qs_partitions'],
         'qs_cpu_flags': json['qs_cpu_flags'] == null ? undefined : json['qs_cpu_flags'],
     };
 }

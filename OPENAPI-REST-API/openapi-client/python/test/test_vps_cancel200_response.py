@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_cancel200_response import VPSCancel200Response
+from interserver_api_client.models.vps_cancel200_response import VPSCancel200Response
 
 class TestVPSCancel200Response(unittest.TestCase):
     """VPSCancel200Response unit test stubs"""

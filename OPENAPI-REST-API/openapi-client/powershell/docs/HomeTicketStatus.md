@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeTicketStatus = Initialize-PSOpenAPIToolsHomeTicketStatus  -Open 4 `
+$HomeTicketStatus = Initialize-InterserverApiHomeTicketStatus  -Open 4 `
  -OnHold 5
 ```
 

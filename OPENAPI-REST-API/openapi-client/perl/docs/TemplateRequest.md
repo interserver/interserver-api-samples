@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::TemplateRequest
+# InterServerAPI::Object::TemplateRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::TemplateRequest;
+use InterServerAPI::Object::TemplateRequest;
 ```
 
 ## Properties

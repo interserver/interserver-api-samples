@@ -4,24 +4,24 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddFloatingIp**](FloatingIPsAPI.md#AddFloatingIp) | **Post** /floating_ips/order | Place Floating IP Order
-[**FloatingIpsCancel**](FloatingIPsAPI.md#FloatingIpsCancel) | **Delete** /floating_ips/{id} | Cancel Floating IP
-[**GetFloatingIpInfo**](FloatingIPsAPI.md#GetFloatingIpInfo) | **Get** /floating_ips/{id} | View Floating IP
-[**GetFloatingIpInvoices**](FloatingIPsAPI.md#GetFloatingIpInvoices) | **Get** /floating_ips/{id}/invoices | Get Floating IP Invoices
-[**GetFloatingIpsList**](FloatingIPsAPI.md#GetFloatingIpsList) | **Get** /floating_ips | List Floating IPs
-[**GetFloatingIpsWelcomeEmail**](FloatingIPsAPI.md#GetFloatingIpsWelcomeEmail) | **Get** /floating_ips/{id}/welcome_email | Resend Floating IPs Welcome Email
-[**GetNewFloatingIp**](FloatingIPsAPI.md#GetNewFloatingIp) | **Get** /floating_ips/order | Get Floating IP Ordering Information
-[**PostFloatingIpsChangeIp**](FloatingIPsAPI.md#PostFloatingIpsChangeIp) | **Post** /floating_ips/{id}/change_ip | Change Floating IP Target
-[**PutFloatingIps**](FloatingIPsAPI.md#PutFloatingIps) | **Put** /floating_ips/order | Validate Floating IP Order
-[**UpdateFloatingIpInfo**](FloatingIPsAPI.md#UpdateFloatingIpInfo) | **Post** /floating_ips/{id} | Update Floating IP
+[**AddFloatingIp**](FloatingIPsAPI.md#AddFloatingIp) | **Post** /floating_ips/order | Place a real Floating IP order, create billing records, and provision the service
+[**FloatingIpsCancel**](FloatingIPsAPI.md#FloatingIpsCancel) | **Delete** /floating_ips/{id} | Cancel a Floating IP service and release the IP — destructive, billing stops
+[**GetFloatingIpInfo**](FloatingIPsAPI.md#GetFloatingIpInfo) | **Get** /floating_ips/{id} | Fetch full details for one Floating IP service, including current target IP
+[**GetFloatingIpInvoices**](FloatingIPsAPI.md#GetFloatingIpInvoices) | **Get** /floating_ips/{id}/invoices | List all billing invoices charged against a specific Floating IP service
+[**GetFloatingIpsList**](FloatingIPsAPI.md#GetFloatingIpsList) | **Get** /floating_ips | List all Floating IP services on the authenticated customer&#39;s account
+[**GetFloatingIpsWelcomeEmail**](FloatingIPsAPI.md#GetFloatingIpsWelcomeEmail) | **Get** /floating_ips/{id}/welcome_email | Resend the Floating IP welcome / setup email to the account contact
+[**GetNewFloatingIp**](FloatingIPsAPI.md#GetNewFloatingIp) | **Get** /floating_ips/order | Get pricing and service-type options for ordering a new Floating IP
+[**PostFloatingIpsChangeIp**](FloatingIPsAPI.md#PostFloatingIpsChangeIp) | **Post** /floating_ips/{id}/change_ip | Re-point a Floating IP to a different target IP on one of the customer&#39;s services
+[**PutFloatingIps**](FloatingIPsAPI.md#PutFloatingIps) | **Put** /floating_ips/order | Validate a Floating IP order and price it without charging the customer
+[**UpdateFloatingIpInfo**](FloatingIPsAPI.md#UpdateFloatingIpInfo) | **Post** /floating_ips/{id} | Update a Floating IP service&#39;s editable settings (label / metadata)
 
 
 
 ## AddFloatingIp
 
-> ServiceOrderPostResponse AddFloatingIp(ctx).Execute()
+> ServiceOrderPostResponse AddFloatingIp(ctx).FloatingIpOrderRequest(floatingIpOrderRequest).Execute()
 
-Place Floating IP Order
+Place a real Floating IP order, create billing records, and provision the service
 
 
 
@@ -38,10 +38,11 @@ import (
 )
 
 func main() {
+	floatingIpOrderRequest := *openapiclient.NewFloatingIpOrderRequest(int32(123)) // FloatingIpOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FloatingIPsAPI.AddFloatingIp(context.Background()).Execute()
+	resp, r, err := apiClient.FloatingIPsAPI.AddFloatingIp(context.Background()).FloatingIpOrderRequest(floatingIpOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FloatingIPsAPI.AddFloatingIp``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,12 +54,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAddFloatingIpRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **floatingIpOrderRequest** | [**FloatingIpOrderRequest**](FloatingIpOrderRequest.md) |  | 
 
 ### Return type
 
@@ -70,7 +75,7 @@ Other parameters are passed through a pointer to a apiAddFloatingIpRequest struc
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -82,7 +87,7 @@ Other parameters are passed through a pointer to a apiAddFloatingIpRequest struc
 
 > FloatingIpsCancel200Response FloatingIpsCancel(ctx, id).Execute()
 
-Cancel Floating IP
+Cancel a Floating IP service and release the IP — destructive, billing stops
 
 
 
@@ -152,7 +157,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} GetFloatingIpInfo(ctx, id).Execute()
 
-View Floating IP
+Fetch full details for one Floating IP service, including current target IP
 
 
 
@@ -222,7 +227,7 @@ Name | Type | Description  | Notes
 
 > ChargeInvoiceRows GetFloatingIpInvoices(ctx, id).Execute()
 
-Get Floating IP Invoices
+List all billing invoices charged against a specific Floating IP service
 
 
 
@@ -292,7 +297,7 @@ Name | Type | Description  | Notes
 
 > []map[string]interface{} GetFloatingIpsList(ctx).Execute()
 
-List Floating IPs
+List all Floating IP services on the authenticated customer's account
 
 
 
@@ -353,7 +358,7 @@ Other parameters are passed through a pointer to a apiGetFloatingIpsListRequest 
 
 > SuccessTextResponse GetFloatingIpsWelcomeEmail(ctx, id).Execute()
 
-Resend Floating IPs Welcome Email
+Resend the Floating IP welcome / setup email to the account contact
 
 
 
@@ -423,7 +428,7 @@ Name | Type | Description  | Notes
 
 > map[string]interface{} GetNewFloatingIp(ctx).Execute()
 
-Get Floating IP Ordering Information
+Get pricing and service-type options for ordering a new Floating IP
 
 
 
@@ -484,7 +489,7 @@ Other parameters are passed through a pointer to a apiGetNewFloatingIpRequest st
 
 > SuccessTextResponse PostFloatingIpsChangeIp(ctx, id).Ip(ip).Execute()
 
-Change Floating IP Target
+Re-point a Floating IP to a different target IP on one of the customer's services
 
 
 
@@ -554,9 +559,9 @@ Name | Type | Description  | Notes
 
 ## PutFloatingIps
 
-> PutFloatingIps(ctx).Execute()
+> PutFloatingIps(ctx).FloatingIpOrderRequest(floatingIpOrderRequest).Execute()
 
-Validate Floating IP Order
+Validate a Floating IP order and price it without charging the customer
 
 
 
@@ -573,10 +578,11 @@ import (
 )
 
 func main() {
+	floatingIpOrderRequest := *openapiclient.NewFloatingIpOrderRequest(int32(123)) // FloatingIpOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.FloatingIPsAPI.PutFloatingIps(context.Background()).Execute()
+	r, err := apiClient.FloatingIPsAPI.PutFloatingIps(context.Background()).FloatingIpOrderRequest(floatingIpOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FloatingIPsAPI.PutFloatingIps``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -586,12 +592,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPutFloatingIpsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **floatingIpOrderRequest** | [**FloatingIpOrderRequest**](FloatingIpOrderRequest.md) |  | 
 
 ### Return type
 
@@ -603,7 +613,7 @@ Other parameters are passed through a pointer to a apiPutFloatingIpsRequest stru
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -615,7 +625,7 @@ Other parameters are passed through a pointer to a apiPutFloatingIpsRequest stru
 
 > SuccessTextResponse UpdateFloatingIpInfo(ctx, id).Execute()
 
-Update Floating IP
+Update a Floating IP service's editable settings (label / metadata)
 
 
 

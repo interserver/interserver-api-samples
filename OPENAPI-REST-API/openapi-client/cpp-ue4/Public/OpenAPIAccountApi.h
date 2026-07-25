@@ -38,8 +38,6 @@ public:
 	void SetHttpRetryManager(FHttpRetrySystem::FManager& RetryManager);
 	FHttpRetrySystem::FManager& GetHttpRetryManager();
 
-	class ChangeAccountUsernameRequest;
-	class ChangeAccountUsernameResponse;
 	class DeleteAccountOauthNameRequest;
 	class DeleteAccountOauthNameResponse;
 	class DeleteAccountTfaRequest;
@@ -73,7 +71,6 @@ public:
 	class UpdateAccountTfaRequest;
 	class UpdateAccountTfaResponse;
 	
-    DECLARE_DELEGATE_OneParam(FChangeAccountUsernameDelegate, const ChangeAccountUsernameResponse&);
     DECLARE_DELEGATE_OneParam(FDeleteAccountOauthNameDelegate, const DeleteAccountOauthNameResponse&);
     DECLARE_DELEGATE_OneParam(FDeleteAccountTfaDelegate, const DeleteAccountTfaResponse&);
     DECLARE_DELEGATE_OneParam(FDeleteIpLimitDelegate, const DeleteIpLimitResponse&);
@@ -91,7 +88,6 @@ public:
     DECLARE_DELEGATE_OneParam(FUpdateAccountSshKeyDelegate, const UpdateAccountSshKeyResponse&);
     DECLARE_DELEGATE_OneParam(FUpdateAccountTfaDelegate, const UpdateAccountTfaResponse&);
     
-    FHttpRequestPtr ChangeAccountUsername(const ChangeAccountUsernameRequest& Request, const FChangeAccountUsernameDelegate& Delegate = FChangeAccountUsernameDelegate()) const;
     FHttpRequestPtr DeleteAccountOauthName(const DeleteAccountOauthNameRequest& Request, const FDeleteAccountOauthNameDelegate& Delegate = FDeleteAccountOauthNameDelegate()) const;
     FHttpRequestPtr DeleteAccountTfa(const DeleteAccountTfaRequest& Request, const FDeleteAccountTfaDelegate& Delegate = FDeleteAccountTfaDelegate()) const;
     FHttpRequestPtr DeleteIpLimit(const DeleteIpLimitRequest& Request, const FDeleteIpLimitDelegate& Delegate = FDeleteIpLimitDelegate()) const;
@@ -110,7 +106,6 @@ public:
     FHttpRequestPtr UpdateAccountTfa(const UpdateAccountTfaRequest& Request, const FUpdateAccountTfaDelegate& Delegate = FUpdateAccountTfaDelegate()) const;
     
 private:
-    void OnChangeAccountUsernameResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FChangeAccountUsernameDelegate Delegate) const;
     void OnDeleteAccountOauthNameResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDeleteAccountOauthNameDelegate Delegate) const;
     void OnDeleteAccountTfaResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDeleteAccountTfaDelegate Delegate) const;
     void OnDeleteIpLimitResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDeleteIpLimitDelegate Delegate) const;

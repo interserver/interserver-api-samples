@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailAttachment } from './api';
+import { MailAttachment } from '@interserver/myadmin-client';
 
 const instance: MailAttachment = {
     filename,

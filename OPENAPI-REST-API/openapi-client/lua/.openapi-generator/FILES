@@ -42,8 +42,6 @@ openapiclient/model/affiliate_banner_row.lua
 openapiclient/model/affiliate_dock_setup.lua
 openapiclient/model/affiliate_payment_setup.lua
 openapiclient/model/affiliate_traffic_row.lua
-openapiclient/model/asset_server.lua
-openapiclient/model/asset_server_cpu_inner.lua
 openapiclient/model/backup.lua
 openapiclient/model/backup_billing_details.lua
 openapiclient/model/backup_client_link.lua
@@ -61,7 +59,6 @@ openapiclient/model/backup_service_master.lua
 openapiclient/model/backups_order.lua
 openapiclient/model/backups_order_package_costs.lua
 openapiclient/model/backups_order_service_types.lua
-openapiclient/model/bandwidth.lua
 openapiclient/model/billing_add_cc_request.lua
 openapiclient/model/billing_invoice_detail.lua
 openapiclient/model/billing_invoice_list.lua
@@ -87,11 +84,6 @@ openapiclient/model/charge_invoice_rows_invoices_value.lua
 openapiclient/model/charge_invoice_rows_invoices_value_paid_invoices_value.lua
 openapiclient/model/charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.lua
 openapiclient/model/close_ticket_response_schema.lua
-openapiclient/model/config_ids.lua
-openapiclient/model/config_lists.lua
-openapiclient/model/control_panel.lua
-openapiclient/model/cpu.lua
-openapiclient/model/cpu_with_defaults.lua
 openapiclient/model/create_filter.lua
 openapiclient/model/create_filter_201_response.lua
 openapiclient/model/create_filter_400_response.lua
@@ -107,6 +99,7 @@ openapiclient/model/delete_filter_400_response.lua
 openapiclient/model/delete_filter_500_response.lua
 openapiclient/model/delete_firewall_rule.lua
 openapiclient/model/delete_geo_firewall_rule.lua
+openapiclient/model/delete_mail_alert_request.lua
 openapiclient/model/deny_rule_new.lua
 openapiclient/model/deny_rule_record.lua
 openapiclient/model/disable_scrub_200_response.lua
@@ -137,11 +130,11 @@ openapiclient/model/domain_nameserver_get_response_inner.lua
 openapiclient/model/domain_nameserver_post_request.lua
 openapiclient/model/domain_nameserver_put_request.lua
 openapiclient/model/domain_order.lua
+openapiclient/model/domain_order_request.lua
 openapiclient/model/domain_order_response.lua
 openapiclient/model/domain_order_response_attributes.lua
 openapiclient/model/domain_order_services.lua
 openapiclient/model/domain_order_services10001.lua
-openapiclient/model/domain_order_tld_services.lua
 openapiclient/model/domain_owner_contact.lua
 openapiclient/model/domain_prov_process_pending.lua
 openapiclient/model/domain_prov_process_pending_attributes.lua
@@ -157,12 +150,13 @@ openapiclient/model/email_address.lua
 openapiclient/model/email_address_name.lua
 openapiclient/model/enable_scrub_200_response.lua
 openapiclient/model/enable_scrub_500_response.lua
-openapiclient/model/field_label.lua
+openapiclient/model/floating_ip_order_request.lua
 openapiclient/model/floating_ips_cancel_200_response.lua
-openapiclient/model/form_values.lua
 openapiclient/model/generic_response.lua
 openapiclient/model/get_account_info_401_response.lua
+openapiclient/model/get_account_locales_200_response_value.lua
 openapiclient/model/get_account_tfa_setup_200_response.lua
+openapiclient/model/get_affiliate_signups_200_response.lua
 openapiclient/model/get_oauth_redirect_200_response.lua
 openapiclient/model/get_order_detail_200_response.lua
 openapiclient/model/get_order_detail_200_response_ips_inner.lua
@@ -179,7 +173,6 @@ openapiclient/model/get_scrub_ip_details_200_response_filter_firewall_filters_in
 openapiclient/model/get_scrub_ip_details_200_response_filter_firewall_rules_inner.lua
 openapiclient/model/get_scrub_ip_details_200_response_service_info.lua
 openapiclient/model/get_website_buy_ip_200_response.lua
-openapiclient/model/hard_drive.lua
 openapiclient/model/home.lua
 openapiclient/model/home_details.lua
 openapiclient/model/home_details_modules.lua
@@ -206,10 +199,6 @@ openapiclient/model/home_ticket_status.lua
 openapiclient/model/home_ticket_status_view.lua
 openapiclient/model/hostname_object.lua
 openapiclient/model/initiate_payment_200_response.lua
-openapiclient/model/inline_object.lua
-openapiclient/model/invoice.lua
-openapiclient/model/invoice_row.lua
-openapiclient/model/ip_block.lua
 openapiclient/model/ip_limit_range.lua
 openapiclient/model/ip_object.lua
 openapiclient/model/license.lua
@@ -218,6 +207,7 @@ openapiclient/model/license_client_link.lua
 openapiclient/model/license_extra_info_tables.lua
 openapiclient/model/license_ip_info.lua
 openapiclient/model/license_ip_info_row.lua
+openapiclient/model/license_order_request.lua
 openapiclient/model/license_row.lua
 openapiclient/model/license_service_info.lua
 openapiclient/model/license_service_type.lua
@@ -254,6 +244,7 @@ openapiclient/model/mail_extra_info_table_row.lua
 openapiclient/model/mail_log.lua
 openapiclient/model/mail_log_entry.lua
 openapiclient/model/mail_order.lua
+openapiclient/model/mail_order_request.lua
 openapiclient/model/mail_row.lua
 openapiclient/model/mail_schema.lua
 openapiclient/model/mail_schema_extra_info_tables.lua
@@ -266,15 +257,13 @@ openapiclient/model/mail_stats_type_volume_ip.lua
 openapiclient/model/mail_stats_type_volume_to.lua
 openapiclient/model/mail_tutorials_table.lua
 openapiclient/model/mail_tutorials_table_row.lua
-openapiclient/model/memory_option.lua
 openapiclient/model/module_settings.lua
 openapiclient/model/modules.lua
 openapiclient/model/monthly_counts.lua
-openapiclient/model/operating_system.lua
 openapiclient/model/password_request.lua
+openapiclient/model/patch_billing_credit_card_verify_request.lua
 openapiclient/model/patch_oauth_two_factor_200_response.lua
 openapiclient/model/patch_oauth_two_factor_request.lua
-openapiclient/model/payment_invoice_rows.lua
 openapiclient/model/place_buy_now_server_request.lua
 openapiclient/model/place_scrub_order_201_response.lua
 openapiclient/model/place_scrub_order_201_response_order_details.lua
@@ -285,6 +274,8 @@ openapiclient/model/post_website_buy_ip_200_response.lua
 openapiclient/model/post_website_buy_ip_request.lua
 openapiclient/model/post_website_migration_200_response.lua
 openapiclient/model/post_website_migration_request.lua
+openapiclient/model/put_scrub_ips_200_response.lua
+openapiclient/model/qs_order_request.lua
 openapiclient/model/queue_response.lua
 openapiclient/model/quickserver.lua
 openapiclient/model/quickserver_addons.lua
@@ -308,8 +299,6 @@ openapiclient/model/quickserver_service_extra.lua
 openapiclient/model/quickserver_service_info.lua
 openapiclient/model/quickserver_service_master.lua
 openapiclient/model/quickservers_cancel_200_response.lua
-openapiclient/model/raid_option.lua
-openapiclient/model/region.lua
 openapiclient/model/reply_ticket_request.lua
 openapiclient/model/reply_ticket_response_schema.lua
 openapiclient/model/restore_request.lua
@@ -329,6 +318,8 @@ openapiclient/model/server.lua
 openapiclient/model/server_asset.lua
 openapiclient/model/server_assets.lua
 openapiclient/model/server_billing_details.lua
+openapiclient/model/server_bulk_ipmi_power_response.lua
+openapiclient/model/server_bulk_ipmi_power_response_results_inner.lua
 openapiclient/model/server_client_link.lua
 openapiclient/model/server_extra_info_tables.lua
 openapiclient/model/server_ipmi_live_info.lua
@@ -351,7 +342,6 @@ openapiclient/model/server_order_cpu_li.lua
 openapiclient/model/server_order_field_label.lua
 openapiclient/model/server_order_field_labels.lua
 openapiclient/model/server_order_form_values.lua
-openapiclient/model/server_order_get_response.lua
 openapiclient/model/server_order_ip.lua
 openapiclient/model/server_order_ips_li.lua
 openapiclient/model/server_order_memory.lua
@@ -359,6 +349,8 @@ openapiclient/model/server_order_memory_li.lua
 openapiclient/model/server_order_memory_li_254.lua
 openapiclient/model/server_order_os.lua
 openapiclient/model/server_order_os_li.lua
+openapiclient/model/server_order_post_request.lua
+openapiclient/model/server_order_post_request_hd.lua
 openapiclient/model/server_order_raid.lua
 openapiclient/model/server_row.lua
 openapiclient/model/server_service_info.lua
@@ -376,6 +368,7 @@ openapiclient/model/service_types.lua
 openapiclient/model/services.lua
 openapiclient/model/services_info.lua
 openapiclient/model/ssl_cancel_200_response.lua
+openapiclient/model/ssl_order_request.lua
 openapiclient/model/status_monthly_breakdown.lua
 openapiclient/model/success_text_response.lua
 openapiclient/model/template_request.lua
@@ -434,7 +427,6 @@ openapiclient/model/vps_service_master.lua
 openapiclient/model/vps_snapshot.lua
 openapiclient/model/vps_template_row.lua
 openapiclient/model/vps_templates_list.lua
-openapiclient/model/vps_traffic_data_data_response.lua
 openapiclient/model/vps_traffic_data_data_section_response.lua
 openapiclient/model/vps_traffic_data_data_section_response_inner.lua
 openapiclient/model/vps_traffic_data_section_response.lua
@@ -455,6 +447,8 @@ openapiclient/model/website_billing_details.lua
 openapiclient/model/website_client_link.lua
 openapiclient/model/website_extra_info_tables.lua
 openapiclient/model/website_login_response.lua
+openapiclient/model/website_order_post_request.lua
+openapiclient/model/website_order_put_request.lua
 openapiclient/model/website_row.lua
 openapiclient/model/website_service_info.lua
 openapiclient/model/website_service_master.lua
@@ -495,8 +489,6 @@ spec/affiliate_banner_row_spec.lua
 spec/affiliate_dock_setup_spec.lua
 spec/affiliate_payment_setup_spec.lua
 spec/affiliate_traffic_row_spec.lua
-spec/asset_server_cpu_inner_spec.lua
-spec/asset_server_spec.lua
 spec/backup_billing_details_spec.lua
 spec/backup_client_link_spec.lua
 spec/backup_extra_info_tables_spec.lua
@@ -515,7 +507,6 @@ spec/backups_api_spec.lua
 spec/backups_order_package_costs_spec.lua
 spec/backups_order_service_types_spec.lua
 spec/backups_order_spec.lua
-spec/bandwidth_spec.lua
 spec/billing_add_cc_request_spec.lua
 spec/billing_api_spec.lua
 spec/billing_invoice_detail_spec.lua
@@ -542,11 +533,6 @@ spec/charge_invoice_rows_invoices_value_paid_invoices_value_spec.lua
 spec/charge_invoice_rows_invoices_value_spec.lua
 spec/charge_invoice_rows_spec.lua
 spec/close_ticket_response_schema_spec.lua
-spec/config_ids_spec.lua
-spec/config_lists_spec.lua
-spec/control_panel_spec.lua
-spec/cpu_spec.lua
-spec/cpu_with_defaults_spec.lua
 spec/create_filter_201_response_spec.lua
 spec/create_filter_400_response_spec.lua
 spec/create_filter_500_response_spec.lua
@@ -562,6 +548,7 @@ spec/delete_filter_400_response_spec.lua
 spec/delete_filter_500_response_spec.lua
 spec/delete_firewall_rule_spec.lua
 spec/delete_geo_firewall_rule_spec.lua
+spec/delete_mail_alert_request_spec.lua
 spec/deny_rule_new_spec.lua
 spec/deny_rule_record_spec.lua
 spec/disable_scrub_200_response_spec.lua
@@ -591,12 +578,12 @@ spec/domain_nameserver_get_response_inner_spec.lua
 spec/domain_nameserver_get_response_spec.lua
 spec/domain_nameserver_post_request_spec.lua
 spec/domain_nameserver_put_request_spec.lua
+spec/domain_order_request_spec.lua
 spec/domain_order_response_attributes_spec.lua
 spec/domain_order_response_spec.lua
 spec/domain_order_services10001_spec.lua
 spec/domain_order_services_spec.lua
 spec/domain_order_spec.lua
-spec/domain_order_tld_services_spec.lua
 spec/domain_owner_contact_spec.lua
 spec/domain_prov_process_pending_attributes_spec.lua
 spec/domain_prov_process_pending_spec.lua
@@ -614,13 +601,14 @@ spec/email_address_name_spec.lua
 spec/email_address_spec.lua
 spec/enable_scrub_200_response_spec.lua
 spec/enable_scrub_500_response_spec.lua
-spec/field_label_spec.lua
+spec/floating_ip_order_request_spec.lua
 spec/floating_ips_api_spec.lua
 spec/floating_ips_cancel_200_response_spec.lua
-spec/form_values_spec.lua
 spec/generic_response_spec.lua
 spec/get_account_info_401_response_spec.lua
+spec/get_account_locales_200_response_value_spec.lua
 spec/get_account_tfa_setup_200_response_spec.lua
+spec/get_affiliate_signups_200_response_spec.lua
 spec/get_oauth_redirect_200_response_spec.lua
 spec/get_order_detail_200_response_ips_inner_spec.lua
 spec/get_order_detail_200_response_package_costs_spec.lua
@@ -637,7 +625,6 @@ spec/get_scrub_ip_details_200_response_filter_firewall_spec.lua
 spec/get_scrub_ip_details_200_response_service_info_spec.lua
 spec/get_scrub_ip_details_200_response_spec.lua
 spec/get_website_buy_ip_200_response_spec.lua
-spec/hard_drive_spec.lua
 spec/home_details_modules_backups_spec.lua
 spec/home_details_modules_domains_spec.lua
 spec/home_details_modules_licenses_spec.lua
@@ -664,10 +651,6 @@ spec/home_ticket_status_spec.lua
 spec/home_ticket_status_view_spec.lua
 spec/hostname_object_spec.lua
 spec/initiate_payment_200_response_spec.lua
-spec/inline_object_spec.lua
-spec/invoice_row_spec.lua
-spec/invoice_spec.lua
-spec/ip_block_spec.lua
 spec/ip_limit_range_spec.lua
 spec/ip_object_spec.lua
 spec/license_billing_details_spec.lua
@@ -675,6 +658,7 @@ spec/license_client_link_spec.lua
 spec/license_extra_info_tables_spec.lua
 spec/license_ip_info_row_spec.lua
 spec/license_ip_info_spec.lua
+spec/license_order_request_spec.lua
 spec/license_row_spec.lua
 spec/license_service_info_spec.lua
 spec/license_service_type_spec.lua
@@ -713,6 +697,7 @@ spec/mail_extra_info_table_row_spec.lua
 spec/mail_extra_info_table_spec.lua
 spec/mail_log_entry_spec.lua
 spec/mail_log_spec.lua
+spec/mail_order_request_spec.lua
 spec/mail_order_spec.lua
 spec/mail_row_spec.lua
 spec/mail_schema_extra_info_tables_spec.lua
@@ -726,15 +711,13 @@ spec/mail_stats_type_volume_spec.lua
 spec/mail_stats_type_volume_to_spec.lua
 spec/mail_tutorials_table_row_spec.lua
 spec/mail_tutorials_table_spec.lua
-spec/memory_option_spec.lua
 spec/module_settings_spec.lua
 spec/modules_spec.lua
 spec/monthly_counts_spec.lua
-spec/operating_system_spec.lua
 spec/password_request_spec.lua
+spec/patch_billing_credit_card_verify_request_spec.lua
 spec/patch_oauth_two_factor_200_response_spec.lua
 spec/patch_oauth_two_factor_request_spec.lua
-spec/payment_invoice_rows_spec.lua
 spec/place_buy_now_server_request_spec.lua
 spec/place_scrub_order_201_response_order_details_cj_params_spec.lua
 spec/place_scrub_order_201_response_order_details_spec.lua
@@ -746,6 +729,8 @@ spec/post_website_buy_ip_request_spec.lua
 spec/post_website_migration_200_response_spec.lua
 spec/post_website_migration_request_spec.lua
 spec/public_api_spec.lua
+spec/put_scrub_ips_200_response_spec.lua
+spec/qs_order_request_spec.lua
 spec/queue_response_spec.lua
 spec/quick_servers_api_spec.lua
 spec/quickserver_addons_row_spec.lua
@@ -770,8 +755,6 @@ spec/quickserver_service_info_spec.lua
 spec/quickserver_service_master_spec.lua
 spec/quickserver_spec.lua
 spec/quickservers_cancel_200_response_spec.lua
-spec/raid_option_spec.lua
-spec/region_spec.lua
 spec/reply_ticket_request_spec.lua
 spec/reply_ticket_response_schema_spec.lua
 spec/restore_request_spec.lua
@@ -791,6 +774,8 @@ spec/send_mail_spec.lua
 spec/server_asset_spec.lua
 spec/server_assets_spec.lua
 spec/server_billing_details_spec.lua
+spec/server_bulk_ipmi_power_response_results_inner_spec.lua
+spec/server_bulk_ipmi_power_response_spec.lua
 spec/server_client_link_spec.lua
 spec/server_extra_info_tables_spec.lua
 spec/server_ipmi_live_info_spec.lua
@@ -812,7 +797,6 @@ spec/server_order_cpu_spec.lua
 spec/server_order_field_label_spec.lua
 spec/server_order_field_labels_spec.lua
 spec/server_order_form_values_spec.lua
-spec/server_order_get_response_spec.lua
 spec/server_order_ip_spec.lua
 spec/server_order_ips_li_spec.lua
 spec/server_order_memory_li_254_spec.lua
@@ -820,6 +804,8 @@ spec/server_order_memory_li_spec.lua
 spec/server_order_memory_spec.lua
 spec/server_order_os_li_spec.lua
 spec/server_order_os_spec.lua
+spec/server_order_post_request_hd_spec.lua
+spec/server_order_post_request_spec.lua
 spec/server_order_raid_spec.lua
 spec/server_order_spec.lua
 spec/server_row_spec.lua
@@ -841,6 +827,7 @@ spec/services_info_spec.lua
 spec/services_spec.lua
 spec/ssl_cancel_200_response_spec.lua
 spec/ssl_certificates_api_spec.lua
+spec/ssl_order_request_spec.lua
 spec/status_monthly_breakdown_spec.lua
 spec/success_text_response_spec.lua
 spec/template_request_spec.lua
@@ -901,7 +888,6 @@ spec/vps_snapshot_spec.lua
 spec/vps_spec.lua
 spec/vps_template_row_spec.lua
 spec/vps_templates_list_spec.lua
-spec/vps_traffic_data_data_response_spec.lua
 spec/vps_traffic_data_data_section_response_inner_spec.lua
 spec/vps_traffic_data_data_section_response_spec.lua
 spec/vps_traffic_data_section_response_spec.lua
@@ -922,6 +908,8 @@ spec/website_billing_details_spec.lua
 spec/website_client_link_spec.lua
 spec/website_extra_info_tables_spec.lua
 spec/website_login_response_spec.lua
+spec/website_order_post_request_spec.lua
+spec/website_order_put_request_spec.lua
 spec/website_row_spec.lua
 spec/website_service_info_spec.lua
 spec/website_service_master_spec.lua

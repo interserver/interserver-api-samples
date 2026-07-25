@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerNetworkInfo');
+use_ok('InterServerAPI::Object::ServerNetworkInfo');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerNetworkInfo->new();
+#my $instance = InterServerAPI::Object::ServerNetworkInfo->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerNetworkInfo');
+#isa_ok($instance, 'InterServerAPI::Object::ServerNetworkInfo');
 
 
 done_testing();

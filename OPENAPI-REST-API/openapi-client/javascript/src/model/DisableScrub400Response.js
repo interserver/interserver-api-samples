@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DisableScrub400Response model module.
  * @module model/DisableScrub400Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DisableScrub400Response {
     /**

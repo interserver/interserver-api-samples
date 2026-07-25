@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_9** | [**\Interserver\MyAdmin\Model\ServerOrderIP**](ServerOrderIP.md) |  | [optional]
+**_9** | [**\Interserver\\MyAdmin\Model\ServerOrderIP**](ServerOrderIP.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

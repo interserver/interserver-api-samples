@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainNameserverGetResponse
+# InterServerAPI::Object::DomainNameserverGetResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainNameserverGetResponse;
+use InterServerAPI::Object::DomainNameserverGetResponse;
 ```
 
 ## Properties

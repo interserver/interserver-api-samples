@@ -72,7 +72,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoData = Initialize-PSOpenAPIToolsAccountInfoData  -Group null `
+$AccountInfoData = Initialize-InterserverApiAccountInfoData  -Group null `
  -Address null `
  -City null `
  -Country null `

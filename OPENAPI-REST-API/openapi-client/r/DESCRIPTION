@@ -1,4 +1,4 @@
-Package: openapi
+Package: interserverapi
 Title: R Package Client for InterServer Management API
 Version: 1.0.0
 Author: person("InterServer Support Staff", email = "support@interserver.net", role = c("aut", "cre"))

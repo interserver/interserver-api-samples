@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsTrafficResponse();
+    instance = new InterserverApiClient.VpsTrafficResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,61 +50,61 @@
   describe('VpsTrafficResponse', function() {
     it('should create an instance of VpsTrafficResponse', function() {
       // uncomment below and update the code to test VpsTrafficResponse
-      //var instance = new InterServerManagementApi.VpsTrafficResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsTrafficResponse);
+      //var instance = new InterserverApiClient.VpsTrafficResponse();
+      //expect(instance).to.be.a(InterserverApiClient.VpsTrafficResponse);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.VpsTrafficResponse();
+      //var instance = new InterserverApiClient.VpsTrafficResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property target (base name: "target")', function() {
       // uncomment below and update the code to test the property target
-      //var instance = new InterServerManagementApi.VpsTrafficResponse();
+      //var instance = new InterserverApiClient.VpsTrafficResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property interval (base name: "interval")', function() {
       // uncomment below and update the code to test the property interval
-      //var instance = new InterServerManagementApi.VpsTrafficResponse();
+      //var instance = new InterserverApiClient.VpsTrafficResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property history (base name: "history")', function() {
       // uncomment below and update the code to test the property history
-      //var instance = new InterServerManagementApi.VpsTrafficResponse();
+      //var instance = new InterserverApiClient.VpsTrafficResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property last (base name: "last")', function() {
       // uncomment below and update the code to test the property last
-      //var instance = new InterServerManagementApi.VpsTrafficResponse();
+      //var instance = new InterserverApiClient.VpsTrafficResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property times (base name: "times")', function() {
       // uncomment below and update the code to test the property times
-      //var instance = new InterServerManagementApi.VpsTrafficResponse();
+      //var instance = new InterserverApiClient.VpsTrafficResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property totals (base name: "totals")', function() {
       // uncomment below and update the code to test the property totals
-      //var instance = new InterServerManagementApi.VpsTrafficResponse();
+      //var instance = new InterserverApiClient.VpsTrafficResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property usage (base name: "usage")', function() {
       // uncomment below and update the code to test the property usage
-      //var instance = new InterServerManagementApi.VpsTrafficResponse();
+      //var instance = new InterserverApiClient.VpsTrafficResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property data (base name: "data")', function() {
       // uncomment below and update the code to test the property data
-      //var instance = new InterServerManagementApi.VpsTrafficResponse();
+      //var instance = new InterserverApiClient.VpsTrafficResponse();
       //expect(instance).to.be();
     });
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailStatsTypeVolumeFrom = Initialize-PSOpenAPIToolsMailStatsTypeVolumeFrom  -BillingsomedomainCom null `
+$MailStatsTypeVolumeFrom = Initialize-InterserverApiMailStatsTypeVolumeFrom  -BillingsomedomainCom null `
  -SalessomedomainCom null
 ```
 

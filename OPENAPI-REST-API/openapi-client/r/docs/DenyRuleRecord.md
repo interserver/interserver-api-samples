@@ -1,4 +1,4 @@
-# openapi::DenyRuleRecord
+# interserverapi::DenyRuleRecord
 
 The data for a email deny rule record.
 

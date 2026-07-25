@@ -1,19 +1,19 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BackupIPInfo
 void main() {
-  final instance = BackupIPInfoBuilder();
-  // TODO add properties to the builder and call build()
+  final BackupIPInfo? instance = /* BackupIPInfo(...) */ null;
+  // TODO add properties to the entity
 
   group(BackupIPInfo, () {
     // Title of the IP information table.
-    // String title
+    // Optional<String?> title
     test('to test the property `title`', () async {
       // TODO
     });
 
-    // BuiltList<BackupIPInfoRow> rows
+    // Optional<List<BackupIPInfoRow>?> rows
     test('to test the property `rows`', () async {
       // TODO
     });

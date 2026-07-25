@@ -7,9 +7,10 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBackupsBody;
-import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse20011;
+import io.swagger.model.InlineResponse20012;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.QsOrderRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.Quickserver;
 import io.swagger.model.QuickserverOrder;
@@ -33,7 +34,7 @@ import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 
 public interface QsApiService {
-    public Response addQs(SecurityContext securityContext);
+    public Response addQs(QsOrderRequest body,SecurityContext securityContext);
     public Response deleteQsBackup(Integer id, @NotNull String file, String all,SecurityContext securityContext);
     public Response doQsBlockSmtp(Integer id,SecurityContext securityContext);
     public Response doQsDisableCd(Integer id,SecurityContext securityContext);
@@ -46,6 +47,7 @@ public interface QsApiService {
     public Response downloadQsBackup(IdBackupsBody body,Integer id, String all,SecurityContext securityContext);
     public Response downloadQsBackup(String file,Integer id, String all,SecurityContext securityContext);
     public Response getNewQs(SecurityContext securityContext);
+    public Response getQsBackup(Integer id,SecurityContext securityContext);
     public Response getQsBackups(Integer id, String all,SecurityContext securityContext);
     public Response getQsChangeHostname(Integer id,SecurityContext securityContext);
     public Response getQsChangeRootPassword(Integer id,SecurityContext securityContext);
@@ -62,7 +64,6 @@ public interface QsApiService {
     public Response getQsTrafficUsage(Integer id,SecurityContext securityContext);
     public Response getQsViewDesktop(Integer id,SecurityContext securityContext);
     public Response getQsWelcomeEmail(String id,SecurityContext securityContext);
-    public Response postQsBackup(Integer id,SecurityContext securityContext);
     public Response postQsChangeHostname(Integer id,SecurityContext securityContext);
     public Response postQsChangeRootPassword(Integer id,SecurityContext securityContext);
     public Response postQsChangeTimezone(String timezone,Integer id,SecurityContext securityContext);
@@ -78,7 +79,7 @@ public interface QsApiService {
     public Response postQsViewDesktop(Integer id,SecurityContext securityContext);
     public Response postQuickServerRestore(RestoreRequest body,Integer id,SecurityContext securityContext);
     public Response postQuickServerRestore(String backup,String password,Integer id,SecurityContext securityContext);
-    public Response putQs(SecurityContext securityContext);
+    public Response putQs(QsOrderRequest body,SecurityContext securityContext);
     public Response quickserversCancel(Integer id,SecurityContext securityContext);
     public Response updateQsInfo(String id,SecurityContext securityContext);
 }

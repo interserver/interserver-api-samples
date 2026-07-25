@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BackupLoginResponse } from './api';
+import { BackupLoginResponse } from '@interserver/myadmin-client';
 
 const instance: BackupLoginResponse = {
     success,

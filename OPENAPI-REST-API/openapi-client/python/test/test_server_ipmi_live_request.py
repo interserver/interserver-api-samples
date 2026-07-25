@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_ipmi_live_request import ServerIpmiLiveRequest
+from interserver_api_client.models.server_ipmi_live_request import ServerIpmiLiveRequest
 
 class TestServerIpmiLiveRequest(unittest.TestCase):
     """ServerIpmiLiveRequest unit test stubs"""

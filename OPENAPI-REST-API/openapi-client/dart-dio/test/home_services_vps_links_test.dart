@@ -1,26 +1,26 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for HomeServicesVpsLinks
 void main() {
-  final instance = HomeServicesVpsLinksBuilder();
-  // TODO add properties to the builder and call build()
+  final HomeServicesVpsLinks? instance = /* HomeServicesVpsLinks(...) */ null;
+  // TODO add properties to the entity
 
   group(HomeServicesVpsLinks, () {
     // Link to a VPS.
-    // String n465503
+    // Optional<String?> n465503
     test('to test the property `n465503`', () async {
       // TODO
     });
 
     // Link to a VPS.
-    // String n2500081
+    // Optional<String?> n2500081
     test('to test the property `n2500081`', () async {
       // TODO
     });
 
     // Link to a VPS.
-    // String n2578866
+    // Optional<String?> n2578866
     test('to test the property `n2578866`', () async {
       // TODO
     });

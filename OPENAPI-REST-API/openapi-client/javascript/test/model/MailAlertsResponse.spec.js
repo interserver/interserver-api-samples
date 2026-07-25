@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailAlertsResponse();
+    instance = new InterserverApiClient.MailAlertsResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('MailAlertsResponse', function() {
     it('should create an instance of MailAlertsResponse', function() {
       // uncomment below and update the code to test MailAlertsResponse
-      //var instance = new InterServerManagementApi.MailAlertsResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.MailAlertsResponse);
+      //var instance = new InterserverApiClient.MailAlertsResponse();
+      //expect(instance).to.be.a(InterserverApiClient.MailAlertsResponse);
     });
 
   });

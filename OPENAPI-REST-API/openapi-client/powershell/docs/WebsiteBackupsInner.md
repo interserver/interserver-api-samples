@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsiteBackupsInner = Initialize-PSOpenAPIToolsWebsiteBackupsInner  -Name null `
+$WebsiteBackupsInner = Initialize-InterserverApiWebsiteBackupsInner  -Name null `
  -Size null
 ```
 

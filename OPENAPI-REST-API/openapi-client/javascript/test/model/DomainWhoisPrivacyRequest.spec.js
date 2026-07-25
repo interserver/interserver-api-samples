@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+    instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,103 +50,103 @@
   describe('DomainWhoisPrivacyRequest', function() {
     it('should create an instance of DomainWhoisPrivacyRequest', function() {
       // uncomment below and update the code to test DomainWhoisPrivacyRequest
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainWhoisPrivacyRequest);
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
+      //expect(instance).to.be.a(InterserverApiClient.DomainWhoisPrivacyRequest);
     });
 
     it('should have the property func (base name: "func")', function() {
       // uncomment below and update the code to test the property func
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property csrf_token (base name: "csrf_token")', function() {
       // uncomment below and update the code to test the property csrf_token
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_firstname (base name: "domain_firstname")', function() {
       // uncomment below and update the code to test the property domain_firstname
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_lastname (base name: "domain_lastname")', function() {
       // uncomment below and update the code to test the property domain_lastname
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_email (base name: "domain_email")', function() {
       // uncomment below and update the code to test the property domain_email
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_address (base name: "domain_address")', function() {
       // uncomment below and update the code to test the property domain_address
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_address2 (base name: "domain_address2")', function() {
       // uncomment below and update the code to test the property domain_address2
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_address3 (base name: "domain_address3")', function() {
       // uncomment below and update the code to test the property domain_address3
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_city (base name: "domain_city")', function() {
       // uncomment below and update the code to test the property domain_city
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_state (base name: "domain_state")', function() {
       // uncomment below and update the code to test the property domain_state
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_zip (base name: "domain_zip")', function() {
       // uncomment below and update the code to test the property domain_zip
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_country (base name: "domain_country")', function() {
       // uncomment below and update the code to test the property domain_country
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_phone (base name: "domain_phone")', function() {
       // uncomment below and update the code to test the property domain_phone
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_fax (base name: "domain_fax")', function() {
       // uncomment below and update the code to test the property domain_fax
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_company (base name: "domain_company")', function() {
       // uncomment below and update the code to test the property domain_company
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_extra (base name: "domain_extra")', function() {
       // uncomment below and update the code to test the property domain_extra
-      //var instance = new InterServerManagementApi.DomainWhoisPrivacyRequest();
+      //var instance = new InterserverApiClient.DomainWhoisPrivacyRequest();
       //expect(instance).to.be();
     });
 

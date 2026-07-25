@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::SslCancel200Response
+# InterServerAPI::Object::SslCancel200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::SslCancel200Response;
+use InterServerAPI::Object::SslCancel200Response;
 ```
 
 ## Properties

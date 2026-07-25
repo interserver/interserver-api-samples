@@ -21,8 +21,12 @@ Optional fields providing additional info in ticket
 
 | Name | Value |
 |---- | -----|
-| Y | &quot;y&quot; |
-| N | &quot;n&quot; |
+| y | &quot;y&quot; |
+| n | &quot;n&quot; |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

@@ -22,4 +22,3 @@ case class LicensesOrderServiceCategories509(
   /* Category Module */
   category_module: Option[String] = None
 )
-

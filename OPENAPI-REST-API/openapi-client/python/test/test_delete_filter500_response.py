@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.delete_filter500_response import DeleteFilter500Response
+from interserver_api_client.models.delete_filter500_response import DeleteFilter500Response
 
 class TestDeleteFilter500Response(unittest.TestCase):
     """DeleteFilter500Response unit test stubs"""

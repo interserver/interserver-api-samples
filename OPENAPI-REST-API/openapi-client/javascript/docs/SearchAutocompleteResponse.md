@@ -1,4 +1,4 @@
-# InterServerManagementApi.SearchAutocompleteResponse
+# InterserverApiClient.SearchAutocompleteResponse
 
 ## Properties
 

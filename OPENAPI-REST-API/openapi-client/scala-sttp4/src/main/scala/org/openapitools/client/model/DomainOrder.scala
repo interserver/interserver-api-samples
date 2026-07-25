@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JObject
 
   /**
    * Ordering metadata for domain registration and transfers.
@@ -20,6 +21,5 @@ case class DomainOrder(
   whoisPrivacyCost: Option[String] = None,
   services: Option[DomainOrderServices] = None,
   /* Map of TLDs to domain service IDs. */
-  tldServices: Option[Any] = None
+  tldServices: Option[org.json4s.JObject] = None
 )
-

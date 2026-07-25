@@ -1,8 +1,8 @@
 package io.swagger.configuration;
 
 import org.springframework.core.convert.converter.Converter;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.format.DateTimeFormatter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class LocalDateConverter implements Converter<String, LocalDate> {
     private final DateTimeFormatter formatter;

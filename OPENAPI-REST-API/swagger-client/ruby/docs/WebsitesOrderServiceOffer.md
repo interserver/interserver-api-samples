@@ -1,4 +1,4 @@
-# SwaggerClient::WebsitesOrderServiceOffer
+# InterserverApiClient::WebsitesOrderServiceOffer
 
 ## Properties
 Name | Type | Description | Notes

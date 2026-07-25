@@ -14,4 +14,8 @@ A mail order record
 |**comment** | **String** | Optional order comment. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

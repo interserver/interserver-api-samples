@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for Vps
 void main() {
-  final instance = VpsBuilder();
-  // TODO add properties to the builder and call build()
+  final Vps? instance = /* Vps(...) */ null;
+  // TODO add properties to the entity
 
   group(Vps, () {
     // VpsServiceInfo serviceInfo
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<VpsClientLink> clientLinks
+    // List<VpsClientLink> clientLinks
     test('to test the property `clientLinks`', () async {
       // TODO
     });
@@ -92,12 +92,12 @@ void main() {
       // TODO
     });
 
-    // String osTemplate
+    // Optional<String?> osTemplate
     test('to test the property `osTemplate`', () async {
       // TODO
     });
 
-    // JsonObject cpuGraphData
+    // Optional<Object?> cpuGraphData
     test('to test the property `cpuGraphData`', () async {
       // TODO
     });

@@ -1,4 +1,4 @@
-# InterServerManagementApi.TicketPostDetailsInner
+# InterserverApiClient.TicketPostDetailsInner
 
 ## Properties
 
@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 * `User` (value: `"User"`)
 
 * `Staff` (value: `"Staff"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 
 

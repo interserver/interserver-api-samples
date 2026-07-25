@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerOrderFieldLabel');
+use_ok('InterServerAPI::Object::ServerOrderFieldLabel');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerOrderFieldLabel->new();
+#my $instance = InterServerAPI::Object::ServerOrderFieldLabel->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerOrderFieldLabel');
+#isa_ok($instance, 'InterServerAPI::Object::ServerOrderFieldLabel');
 
 
 done_testing();

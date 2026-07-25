@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_lease import ServerLease
+from interserver_api_client.models.server_lease import ServerLease
 
 class TestServerLease(unittest.TestCase):
     """ServerLease unit test stubs"""

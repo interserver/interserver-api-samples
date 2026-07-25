@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Quickserver = Initialize-PSOpenAPIToolsQuickserver  -ServiceInfo null `
+$Quickserver = Initialize-InterserverApiQuickserver  -ServiceInfo null `
  -ClientLinks null `
  -BillingDetails null `
  -CustCurrency USD `

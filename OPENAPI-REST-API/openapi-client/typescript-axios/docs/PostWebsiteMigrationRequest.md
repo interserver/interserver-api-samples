@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PostWebsiteMigrationRequest } from './api';
+import { PostWebsiteMigrationRequest } from '@interserver/myadmin-client';
 
 const instance: PostWebsiteMigrationRequest = {
     custPortal,

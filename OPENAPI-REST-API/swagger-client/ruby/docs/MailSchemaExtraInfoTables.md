@@ -1,4 +1,4 @@
-# SwaggerClient::MailSchemaExtraInfoTables
+# InterserverApiClient::MailSchemaExtraInfoTables
 
 ## Properties
 Name | Type | Description | Notes

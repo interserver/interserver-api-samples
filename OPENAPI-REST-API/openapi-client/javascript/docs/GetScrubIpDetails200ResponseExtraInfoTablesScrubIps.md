@@ -1,4 +1,4 @@
-# InterServerManagementApi.GetScrubIpDetails200ResponseExtraInfoTablesScrubIps
+# InterserverApiClient.GetScrubIpDetails200ResponseExtraInfoTablesScrubIps
 
 ## Properties
 

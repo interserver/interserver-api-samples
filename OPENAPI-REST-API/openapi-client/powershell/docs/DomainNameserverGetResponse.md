@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainNameserverGetResponse = Initialize-PSOpenAPIToolsDomainNameserverGetResponse 
+$DomainNameserverGetResponse = Initialize-InterserverApiDomainNameserverGetResponse 
 ```
 
 - Convert the resource to JSON

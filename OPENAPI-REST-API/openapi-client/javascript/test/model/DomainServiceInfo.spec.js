@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainServiceInfo();
+    instance = new InterserverApiClient.DomainServiceInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,79 +50,79 @@
   describe('DomainServiceInfo', function() {
     it('should create an instance of DomainServiceInfo', function() {
       // uncomment below and update the code to test DomainServiceInfo
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainServiceInfo);
+      //var instance = new InterserverApiClient.DomainServiceInfo();
+      //expect(instance).to.be.a(InterserverApiClient.DomainServiceInfo);
     });
 
     it('should have the property domain_id (base name: "domain_id")', function() {
       // uncomment below and update the code to test the property domain_id
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_hostname (base name: "domain_hostname")', function() {
       // uncomment below and update the code to test the property domain_hostname
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_username (base name: "domain_username")', function() {
       // uncomment below and update the code to test the property domain_username
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_password (base name: "domain_password")', function() {
       // uncomment below and update the code to test the property domain_password
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_type (base name: "domain_type")', function() {
       // uncomment below and update the code to test the property domain_type
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_currency (base name: "domain_currency")', function() {
       // uncomment below and update the code to test the property domain_currency
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_expire_date (base name: "domain_expire_date")', function() {
       // uncomment below and update the code to test the property domain_expire_date
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_order_date (base name: "domain_order_date")', function() {
       // uncomment below and update the code to test the property domain_order_date
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_custid (base name: "domain_custid")', function() {
       // uncomment below and update the code to test the property domain_custid
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_status (base name: "domain_status")', function() {
       // uncomment below and update the code to test the property domain_status
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_invoice (base name: "domain_invoice")', function() {
       // uncomment below and update the code to test the property domain_invoice
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_coupon (base name: "domain_coupon")', function() {
       // uncomment below and update the code to test the property domain_coupon
-      //var instance = new InterServerManagementApi.DomainServiceInfo();
+      //var instance = new InterserverApiClient.DomainServiceInfo();
       //expect(instance).to.be();
     });
 

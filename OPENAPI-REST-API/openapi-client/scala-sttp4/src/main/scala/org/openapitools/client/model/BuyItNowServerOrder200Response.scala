@@ -19,4 +19,3 @@ case class BuyItNowServerOrder200Response(
   cp: Option[Seq[BuyItNowServerOrder200ResponseCpInner]] = None,
   raid: Option[Seq[BuyItNowServerOrder200ResponseRaidInner]] = None
 )
-

@@ -16,4 +16,3 @@ case class SslCancel200Response(
   success: Boolean,
   text: String
 )
-

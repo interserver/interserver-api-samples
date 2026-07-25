@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_info_country_currencies import AccountInfoCountryCurrencies
+from interserver_api_client.models.account_info_country_currencies import AccountInfoCountryCurrencies
 
 class TestAccountInfoCountryCurrencies(unittest.TestCase):
     """AccountInfoCountryCurrencies unit test stubs"""

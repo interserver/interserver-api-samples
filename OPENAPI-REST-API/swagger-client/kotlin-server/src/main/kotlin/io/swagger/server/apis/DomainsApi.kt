@@ -47,7 +47,7 @@ import io.swagger.server.models.DomainOrder
 import io.swagger.server.models.DomainRow
 import io.swagger.server.models.DomainSearchResponse
 import io.swagger.server.models.DomainWhoisPrivacyRequest
-import io.swagger.server.models.InlineResponse2002
+import io.swagger.server.models.InlineResponse2003
 import io.swagger.server.models.InlineResponse401
 import io.swagger.server.models.ServiceOrderPostResponse
 import io.swagger.server.models.SuccessTextResponse
@@ -545,22 +545,6 @@ fun Route.DomainsApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
-    get<Paths.getDomainOrderFields> {  _: Paths.getDomainOrderFields ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
-    }
-    get<Paths.getDomainOrderSearchResults> {  _: Paths.getDomainOrderSearchResults ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
-    }
     get<Paths.getDomainRenewal> {  _: Paths.getDomainRenewal ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
@@ -732,6 +716,14 @@ fun Route.DomainsApi() {
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }        }
+    }
+    post<Paths.postDomainSearch> {  _: Paths.postDomainSearch ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            call.respond(HttpStatusCode.NotImplemented)
+        }
     }
     post<Paths.postDomainTransfer> {  _: Paths.postDomainTransfer ->
         val principal = call.authentication.principal<ApiPrincipal>()

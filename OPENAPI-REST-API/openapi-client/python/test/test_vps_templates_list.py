@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_templates_list import VpsTemplatesList
+from interserver_api_client.models.vps_templates_list import VpsTemplatesList
 
 class TestVpsTemplatesList(unittest.TestCase):
     """VpsTemplatesList unit test stubs"""

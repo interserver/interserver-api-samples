@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.quickserver import Quickserver
+from interserver_api_client.models.quickserver import Quickserver
 
 # TODO update the JSON string below
 json = "{}"

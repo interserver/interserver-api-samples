@@ -36,18 +36,18 @@ void main() {
       // TODO
     });
 
-    // String iTEM1
-    test('to test the property `iTEM1`', () async {
+    // String ITEM1
+    test('to test the property `ITEM1`', () async {
       // TODO
     });
 
-    // String aMT1
-    test('to test the property `aMT1`', () async {
+    // String AMT1
+    test('to test the property `AMT1`', () async {
       // TODO
     });
 
-    // int qTY1
-    test('to test the property `qTY1`', () async {
+    // int QTY1
+    test('to test the property `QTY1`', () async {
       // TODO
     });
 

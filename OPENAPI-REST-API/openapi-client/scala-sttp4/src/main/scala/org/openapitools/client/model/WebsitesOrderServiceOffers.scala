@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class WebsitesOrderServiceOffers(
   `1026`: Seq[WebsitesOrderServiceOffer]
 )
-

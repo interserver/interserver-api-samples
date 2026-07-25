@@ -91,6 +91,8 @@ sessionIdHeaderAuth.apiKey = "YOUR API KEY"
 //sessionIdHeaderAuth.apiKeyPrefix['sessionid'] = "Token"
 
 var api = new InterServerManagementApi.AccountApi()
+var name = "name_example"; // {String} 
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -98,7 +100,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.changeAccountUsername(callback);
+api.deleteAccountOauthName(name, callback);
 ```
 
 ## Documentation for API Endpoints
@@ -107,313 +109,317 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*InterServerManagementApi.AccountApi* | [**changeAccountUsername**](docs/AccountApi.md#changeAccountUsername) | **POST** /account/username | Change Account Username
-*InterServerManagementApi.AccountApi* | [**deleteAccountOauthName**](docs/AccountApi.md#deleteAccountOauthName) | **DELETE** /account/oauth/{name} | Unlink OAuth Account
-*InterServerManagementApi.AccountApi* | [**deleteAccountTfa**](docs/AccountApi.md#deleteAccountTfa) | **DELETE** /account/2fa | Disable Two-Factor Authentication
-*InterServerManagementApi.AccountApi* | [**deleteIpLimit**](docs/AccountApi.md#deleteIpLimit) | **PATCH** /account/iplimits | Remove IP Access Restriction
-*InterServerManagementApi.AccountApi* | [**getAccountInfo**](docs/AccountApi.md#getAccountInfo) | **GET** /account | Retrieve Account Details
-*InterServerManagementApi.AccountApi* | [**getAccountTfaSetup**](docs/AccountApi.md#getAccountTfaSetup) | **GET** /account/2fa | Get Two-Factor Setup Data
-*InterServerManagementApi.AccountApi* | [**getHome**](docs/AccountApi.md#getHome) | **GET** /home | Get Home Data
-*InterServerManagementApi.AccountApi* | [**getSearch**](docs/AccountApi.md#getSearch) | **GET** /search | Search Autocomplete
-*InterServerManagementApi.AccountApi* | [**logout**](docs/AccountApi.md#logout) | **GET** /logout | Log Out
-*InterServerManagementApi.AccountApi* | [**logoutAccountOauth**](docs/AccountApi.md#logoutAccountOauth) | **GET** /account/oauth/{name}/logout | Logout of OAuth
-*InterServerManagementApi.AccountApi* | [**updateAccountApiKey**](docs/AccountApi.md#updateAccountApiKey) | **POST** /account/apikey | Generate New API Key
-*InterServerManagementApi.AccountApi* | [**updateAccountFeatures**](docs/AccountApi.md#updateAccountFeatures) | **POST** /account/features | Update Account Feature Flags
-*InterServerManagementApi.AccountApi* | [**updateAccountInfo**](docs/AccountApi.md#updateAccountInfo) | **POST** /account | Update Account Information
-*InterServerManagementApi.AccountApi* | [**updateAccountIpLimits**](docs/AccountApi.md#updateAccountIpLimits) | **POST** /account/iplimits | Add IP Access Restriction
-*InterServerManagementApi.AccountApi* | [**updateAccountPassword**](docs/AccountApi.md#updateAccountPassword) | **POST** /account/password | Change Account Password
-*InterServerManagementApi.AccountApi* | [**updateAccountSshKey**](docs/AccountApi.md#updateAccountSshKey) | **POST** /account/sshkey | Update SSH Keys
-*InterServerManagementApi.AccountApi* | [**updateAccountTfa**](docs/AccountApi.md#updateAccountTfa) | **POST** /account/2fa | Enable Two-Factor Authentication
-*InterServerManagementApi.BackupsApi* | [**addBackup**](docs/BackupsApi.md#addBackup) | **POST** /backups/order | Place Backup Order
-*InterServerManagementApi.BackupsApi* | [**cancelBackup**](docs/BackupsApi.md#cancelBackup) | **DELETE** /backups/{id} | Cancel Backup Service
-*InterServerManagementApi.BackupsApi* | [**getBackupInfo**](docs/BackupsApi.md#getBackupInfo) | **GET** /backups/{id} | Get Backup Service Details
-*InterServerManagementApi.BackupsApi* | [**getBackupInvoices**](docs/BackupsApi.md#getBackupInvoices) | **GET** /backups/{id}/invoices | Get Backup Order Invoices
-*InterServerManagementApi.BackupsApi* | [**getBackupLogin**](docs/BackupsApi.md#getBackupLogin) | **GET** /backups/{id}/login | Get Backup Storage Panel Login
-*InterServerManagementApi.BackupsApi* | [**getBackupsList**](docs/BackupsApi.md#getBackupsList) | **GET** /backups | List Backup Services
-*InterServerManagementApi.BackupsApi* | [**getBackupsWelcomeEmail**](docs/BackupsApi.md#getBackupsWelcomeEmail) | **GET** /backups/{id}/welcome_email | Resend Backup Welcome Email
-*InterServerManagementApi.BackupsApi* | [**getNewBackup**](docs/BackupsApi.md#getNewBackup) | **GET** /backups/order | Get Backup Order Form Data
-*InterServerManagementApi.BackupsApi* | [**updateBackupInfo**](docs/BackupsApi.md#updateBackupInfo) | **POST** /backups/{id} | Update Backup Information
-*InterServerManagementApi.BackupsApi* | [**validateBackupOrder**](docs/BackupsApi.md#validateBackupOrder) | **PUT** /backups/order | Validate Backup Order
-*InterServerManagementApi.BillingApi* | [**addAccountCreditCard**](docs/BillingApi.md#addAccountCreditCard) | **POST** /account/creditcards | Add Credit Card to Account
-*InterServerManagementApi.BillingApi* | [**addBillingCreditCard**](docs/BillingApi.md#addBillingCreditCard) | **POST** /billing/creditcards | Add Credit Card for Billing
-*InterServerManagementApi.BillingApi* | [**addBillingPrepay**](docs/BillingApi.md#addBillingPrepay) | **POST** /billing/prepays | Create Prepay Deposit
-*InterServerManagementApi.BillingApi* | [**deleteAccountCreditCard**](docs/BillingApi.md#deleteAccountCreditCard) | **DELETE** /account/creditcards/{id} | Remove Credit Card
-*InterServerManagementApi.BillingApi* | [**deleteBillingCreditCard**](docs/BillingApi.md#deleteBillingCreditCard) | **DELETE** /billing/creditcards/{id} | Delete Credit Card
-*InterServerManagementApi.BillingApi* | [**deleteBillingInvoice**](docs/BillingApi.md#deleteBillingInvoice) | **DELETE** /billing/invoices/{id} | Delete Invoice
-*InterServerManagementApi.BillingApi* | [**deleteBillingPrepay**](docs/BillingApi.md#deleteBillingPrepay) | **DELETE** /billing/prepays/{id} | Delete Prepay Balance
-*InterServerManagementApi.BillingApi* | [**getAffiliateBanners**](docs/BillingApi.md#getAffiliateBanners) | **GET** /affiliate/banners | List Affiliate Banner Assets
-*InterServerManagementApi.BillingApi* | [**getAffiliateRichReport**](docs/BillingApi.md#getAffiliateRichReport) | **GET** /affiliate/rich_report | Get Affiliate Performance Report
-*InterServerManagementApi.BillingApi* | [**getAffiliateSalesGraph**](docs/BillingApi.md#getAffiliateSalesGraph) | **GET** /affiliate/sales_graph | Get Affiliate Sales Graph Data
-*InterServerManagementApi.BillingApi* | [**getAffiliateSalesReport**](docs/BillingApi.md#getAffiliateSalesReport) | **GET** /affiliate/sales_report | Get Affiliate Sales Report
-*InterServerManagementApi.BillingApi* | [**getAffiliateTrafficGraph**](docs/BillingApi.md#getAffiliateTrafficGraph) | **GET** /affiliate/traffic_graph | Get Affiliate Traffic Graph Data
-*InterServerManagementApi.BillingApi* | [**getAffiliateWebTraffic**](docs/BillingApi.md#getAffiliateWebTraffic) | **GET** /affiliate/web_traffic | List Affiliate Web Traffic Entries
-*InterServerManagementApi.BillingApi* | [**getBillingCart**](docs/BillingApi.md#getBillingCart) | **GET** /billing/cart | Get Shopping Cart Contents
-*InterServerManagementApi.BillingApi* | [**getBillingCreditCardVerify**](docs/BillingApi.md#getBillingCreditCardVerify) | **GET** /billing/creditcards/{id}/verify | Get Credit Card Verification Requirements
-*InterServerManagementApi.BillingApi* | [**getBillingInvoice**](docs/BillingApi.md#getBillingInvoice) | **GET** /billing/invoices/{id} | Get Invoice Details
-*InterServerManagementApi.BillingApi* | [**getBillingInvoices**](docs/BillingApi.md#getBillingInvoices) | **GET** /billing/invoices | List Account Invoices
-*InterServerManagementApi.BillingApi* | [**getBillingPrePays**](docs/BillingApi.md#getBillingPrePays) | **GET** /billing/prepays | List Prepay Balances
-*InterServerManagementApi.BillingApi* | [**getInvoices**](docs/BillingApi.md#getInvoices) | **GET** /invoices | Get Invoices
-*InterServerManagementApi.BillingApi* | [**initiatePayment**](docs/BillingApi.md#initiatePayment) | **GET** /pay/{method}/{invoices} | Initiate Payment
-*InterServerManagementApi.BillingApi* | [**postBillingCreditCardVerify**](docs/BillingApi.md#postBillingCreditCardVerify) | **POST** /billing/creditcards/{id}/verify | Submit Credit Card Verification
-*InterServerManagementApi.BillingApi* | [**updateAccountCreditCard**](docs/BillingApi.md#updateAccountCreditCard) | **POST** /account/creditcards/{id} | Update Credit Card
-*InterServerManagementApi.BillingApi* | [**updateAffiliateDockSetup**](docs/BillingApi.md#updateAffiliateDockSetup) | **POST** /affiliate/dock_setup | Configure Affiliate Dock Settings
-*InterServerManagementApi.BillingApi* | [**updateAffiliateLandingPage**](docs/BillingApi.md#updateAffiliateLandingPage) | **POST** /affiliate/landing_pg | Configure Affiliate Landing Page
-*InterServerManagementApi.BillingApi* | [**updateAffiliatePaymentSetup**](docs/BillingApi.md#updateAffiliatePaymentSetup) | **POST** /affiliate/payment_setup | Configure Affiliate Payout Preferences
-*InterServerManagementApi.BillingApi* | [**updateBillingCreditCard**](docs/BillingApi.md#updateBillingCreditCard) | **POST** /billing/creditcards/{id} | Update Credit Card Details
-*InterServerManagementApi.BillingApi* | [**updateBillingPaymentMethod**](docs/BillingApi.md#updateBillingPaymentMethod) | **POST** /billing/payment_method | Update Default Payment Method
-*InterServerManagementApi.DNSApi* | [**addDnsDomain**](docs/DNSApi.md#addDnsDomain) | **POST** /dns | Create DNS Domain
-*InterServerManagementApi.DNSApi* | [**addDnsRecord**](docs/DNSApi.md#addDnsRecord) | **POST** /dns/{id} | Add DNS Record to Domain
-*InterServerManagementApi.DNSApi* | [**deleteDnsDomain**](docs/DNSApi.md#deleteDnsDomain) | **DELETE** /dns/{id} | Delete DNS Domain
-*InterServerManagementApi.DNSApi* | [**deleteDnsRecord**](docs/DNSApi.md#deleteDnsRecord) | **DELETE** /dns/{domainId}/{recordId} | Delete DNS Record
-*InterServerManagementApi.DNSApi* | [**getDnsDomain**](docs/DNSApi.md#getDnsDomain) | **GET** /dns/{id} | List Domain DNS Records
-*InterServerManagementApi.DNSApi* | [**getDnsList**](docs/DNSApi.md#getDnsList) | **GET** /dns | List DNS Domains
-*InterServerManagementApi.DNSApi* | [**updateDnsRecord**](docs/DNSApi.md#updateDnsRecord) | **POST** /dns/{domainId}/{recordId} | Update DNS Record
-*InterServerManagementApi.DomainsApi* | [**addDomain**](docs/DomainsApi.md#addDomain) | **POST** /domains/order | Place Domain Order
-*InterServerManagementApi.DomainsApi* | [**addDomainDnssec**](docs/DomainsApi.md#addDomainDnssec) | **POST** /domains/{id}/dnssec | Add Domain DNSSEC Records
-*InterServerManagementApi.DomainsApi* | [**addDomainNameserver**](docs/DomainsApi.md#addDomainNameserver) | **POST** /domains/{id}/nameservers | Add Registered Nameserver
-*InterServerManagementApi.DomainsApi* | [**cancelDomain**](docs/DomainsApi.md#cancelDomain) | **DELETE** /domains/{id} | Cancel Domain Order
-*InterServerManagementApi.DomainsApi* | [**deleteDomainDnssec**](docs/DomainsApi.md#deleteDomainDnssec) | **DELETE** /domains/{id}/dnssec | Remove Domain DNSSEC Records
-*InterServerManagementApi.DomainsApi* | [**deleteDomainNameserver**](docs/DomainsApi.md#deleteDomainNameserver) | **DELETE** /domains/{id}/nameservers | Delete Registered Nameserver
-*InterServerManagementApi.DomainsApi* | [**getDomainContact**](docs/DomainsApi.md#getDomainContact) | **GET** /domains/{id}/contact | Get Domain Contact Details
-*InterServerManagementApi.DomainsApi* | [**getDomainDnssec**](docs/DomainsApi.md#getDomainDnssec) | **GET** /domains/{id}/dnssec | Get Domain DNSSEC Records
-*InterServerManagementApi.DomainsApi* | [**getDomainInfo**](docs/DomainsApi.md#getDomainInfo) | **GET** /domains/{id} | Get Domain Order
-*InterServerManagementApi.DomainsApi* | [**getDomainInvoices**](docs/DomainsApi.md#getDomainInvoices) | **GET** /domains/{id}/invoices | Get Domain Invoices
-*InterServerManagementApi.DomainsApi* | [**getDomainLookup**](docs/DomainsApi.md#getDomainLookup) | **GET** /domains/lookup/{name} | Lookup Domain Availability and Pricing
-*InterServerManagementApi.DomainsApi* | [**getDomainNameservers**](docs/DomainsApi.md#getDomainNameservers) | **GET** /domains/{id}/nameservers | List Registered Nameservers
-*InterServerManagementApi.DomainsApi* | [**getDomainOrderFields**](docs/DomainsApi.md#getDomainOrderFields) | **GET** /domains/order/{domain}/{regType} | Get Domain Order Fields
-*InterServerManagementApi.DomainsApi* | [**getDomainOrderSearchResults**](docs/DomainsApi.md#getDomainOrderSearchResults) | **GET** /domains/order/{domain} | Get Domain Order Search Results
-*InterServerManagementApi.DomainsApi* | [**getDomainRenewal**](docs/DomainsApi.md#getDomainRenewal) | **GET** /domains/{id}/renew | Start Domain Renewal Flow
-*InterServerManagementApi.DomainsApi* | [**getDomainSearch**](docs/DomainsApi.md#getDomainSearch) | **GET** /domains/search/{name} | Search Domain Suggestions
-*InterServerManagementApi.DomainsApi* | [**getDomainTransfer**](docs/DomainsApi.md#getDomainTransfer) | **GET** /domains/{id}/transfer | Start Domain Transfer Flow
-*InterServerManagementApi.DomainsApi* | [**getDomainWhoisPrivacy**](docs/DomainsApi.md#getDomainWhoisPrivacy) | **GET** /domains/{id}/whois | Get Whois Privacy Status
-*InterServerManagementApi.DomainsApi* | [**getDomainsList**](docs/DomainsApi.md#getDomainsList) | **GET** /domains | List Domain Orders
-*InterServerManagementApi.DomainsApi* | [**getDomainsWelcomeEmail**](docs/DomainsApi.md#getDomainsWelcomeEmail) | **GET** /domains/{id}/welcome_email | Resend Domain Welcome Email
-*InterServerManagementApi.DomainsApi* | [**getNewDomain**](docs/DomainsApi.md#getNewDomain) | **GET** /domains/order | Get Domain Ordering Information
-*InterServerManagementApi.DomainsApi* | [**patchDomains**](docs/DomainsApi.md#patchDomains) | **PATCH** /domains/order | Validate Domain Order
-*InterServerManagementApi.DomainsApi* | [**postDomainRenewal**](docs/DomainsApi.md#postDomainRenewal) | **POST** /domains/{id}/renew | Request Domain Renewal
-*InterServerManagementApi.DomainsApi* | [**postDomainTransfer**](docs/DomainsApi.md#postDomainTransfer) | **POST** /domains/{id}/transfer | Request Domain Transfer
-*InterServerManagementApi.DomainsApi* | [**putDomains**](docs/DomainsApi.md#putDomains) | **PUT** /domains/order | Domain Order Search
-*InterServerManagementApi.DomainsApi* | [**updateDomainContact**](docs/DomainsApi.md#updateDomainContact) | **POST** /domains/{id}/contact | Update Domain Contact Details
-*InterServerManagementApi.DomainsApi* | [**updateDomainInfo**](docs/DomainsApi.md#updateDomainInfo) | **POST** /domains/{id} | Update Domain Order
-*InterServerManagementApi.DomainsApi* | [**updateDomainNameservers**](docs/DomainsApi.md#updateDomainNameservers) | **PUT** /domains/{id}/nameservers | Replace Nameserver Set
-*InterServerManagementApi.DomainsApi* | [**updateDomainWhoisPrivacy**](docs/DomainsApi.md#updateDomainWhoisPrivacy) | **POST** /domains/{id}/whois | Update Whois Privacy
-*InterServerManagementApi.FloatingIPsApi* | [**addFloatingIp**](docs/FloatingIPsApi.md#addFloatingIp) | **POST** /floating_ips/order | Place Floating IP Order
-*InterServerManagementApi.FloatingIPsApi* | [**floatingIpsCancel**](docs/FloatingIPsApi.md#floatingIpsCancel) | **DELETE** /floating_ips/{id} | Cancel Floating IP
-*InterServerManagementApi.FloatingIPsApi* | [**getFloatingIpInfo**](docs/FloatingIPsApi.md#getFloatingIpInfo) | **GET** /floating_ips/{id} | View Floating IP
-*InterServerManagementApi.FloatingIPsApi* | [**getFloatingIpInvoices**](docs/FloatingIPsApi.md#getFloatingIpInvoices) | **GET** /floating_ips/{id}/invoices | Get Floating IP Invoices
-*InterServerManagementApi.FloatingIPsApi* | [**getFloatingIpsList**](docs/FloatingIPsApi.md#getFloatingIpsList) | **GET** /floating_ips | List Floating IPs
-*InterServerManagementApi.FloatingIPsApi* | [**getFloatingIpsWelcomeEmail**](docs/FloatingIPsApi.md#getFloatingIpsWelcomeEmail) | **GET** /floating_ips/{id}/welcome_email | Resend Floating IPs Welcome Email
-*InterServerManagementApi.FloatingIPsApi* | [**getNewFloatingIp**](docs/FloatingIPsApi.md#getNewFloatingIp) | **GET** /floating_ips/order | Get Floating IP Ordering Information
-*InterServerManagementApi.FloatingIPsApi* | [**postFloatingIpsChangeIp**](docs/FloatingIPsApi.md#postFloatingIpsChangeIp) | **POST** /floating_ips/{id}/change_ip | Change Floating IP Target
-*InterServerManagementApi.FloatingIPsApi* | [**putFloatingIps**](docs/FloatingIPsApi.md#putFloatingIps) | **PUT** /floating_ips/order | Validate Floating IP Order
-*InterServerManagementApi.FloatingIPsApi* | [**updateFloatingIpInfo**](docs/FloatingIPsApi.md#updateFloatingIpInfo) | **POST** /floating_ips/{id} | Update Floating IP
-*InterServerManagementApi.LicensesApi* | [**addLicense**](docs/LicensesApi.md#addLicense) | **POST** /licenses/order | Place License Order
-*InterServerManagementApi.LicensesApi* | [**getLicenseInfo**](docs/LicensesApi.md#getLicenseInfo) | **GET** /licenses/{id} | Get License
-*InterServerManagementApi.LicensesApi* | [**getLicenseInvoices**](docs/LicensesApi.md#getLicenseInvoices) | **GET** /licenses/{id}/invoices | Get License Invoices
-*InterServerManagementApi.LicensesApi* | [**getLicenseList**](docs/LicensesApi.md#getLicenseList) | **GET** /licenses | List Licenses
-*InterServerManagementApi.LicensesApi* | [**getLicenseOrderCatTagInfo**](docs/LicensesApi.md#getLicenseOrderCatTagInfo) | **GET** /licenses/order/{catTag} | Get License Order Information for Category
-*InterServerManagementApi.LicensesApi* | [**getLicensesWelcomeEmail**](docs/LicensesApi.md#getLicensesWelcomeEmail) | **GET** /licenses/{id}/welcome_email | Resend License Welcome Email
-*InterServerManagementApi.LicensesApi* | [**getNewLicense**](docs/LicensesApi.md#getNewLicense) | **GET** /licenses/order | Get License Order Information
-*InterServerManagementApi.LicensesApi* | [**licensesCancel**](docs/LicensesApi.md#licensesCancel) | **DELETE** /licenses/{id} | Cancel License
-*InterServerManagementApi.LicensesApi* | [**postLicenseChangeIp**](docs/LicensesApi.md#postLicenseChangeIp) | **POST** /licenses/{id}/change_ip | Change License IP
-*InterServerManagementApi.LicensesApi* | [**putLicenses**](docs/LicensesApi.md#putLicenses) | **PUT** /licenses/order | Validate License Order
-*InterServerManagementApi.LicensesApi* | [**updateLicenseInfo**](docs/LicensesApi.md#updateLicenseInfo) | **POST** /licenses/{id} | Update License
-*InterServerManagementApi.MailApi* | [**addMail**](docs/MailApi.md#addMail) | **POST** /mail/order | Place Mail Order
-*InterServerManagementApi.MailApi* | [**addRule**](docs/MailApi.md#addRule) | **POST** /mail/{id}/rules | Create Deny Rule
-*InterServerManagementApi.MailApi* | [**createMailAlert**](docs/MailApi.md#createMailAlert) | **POST** /mail/{id}/alerts | Create Mail Alert
-*InterServerManagementApi.MailApi* | [**deleteMailAlert**](docs/MailApi.md#deleteMailAlert) | **DELETE** /mail/{id}/alerts | Delete Mail Alert
-*InterServerManagementApi.MailApi* | [**deleteRule**](docs/MailApi.md#deleteRule) | **DELETE** /mail/{id}/rules/{rule} | Delete Deny Rule
-*InterServerManagementApi.MailApi* | [**delistBlock**](docs/MailApi.md#delistBlock) | **POST** /mail/{id}/blocks/delete | Remove Email Address from Block List
-*InterServerManagementApi.MailApi* | [**getMailAlerts**](docs/MailApi.md#getMailAlerts) | **GET** /mail/{id}/alerts | List Mail Alerts
-*InterServerManagementApi.MailApi* | [**getMailBlocks**](docs/MailApi.md#getMailBlocks) | **GET** /mail/{id}/blocks | List Blocked Email Addresses
-*InterServerManagementApi.MailApi* | [**getMailDelist**](docs/MailApi.md#getMailDelist) | **GET** /mail/{id}/delist | Get Delist Status
-*InterServerManagementApi.MailApi* | [**getMailDeliverability**](docs/MailApi.md#getMailDeliverability) | **GET** /mail/{id}/deliverability | Get Deliverability Metrics
-*InterServerManagementApi.MailApi* | [**getMailInfo**](docs/MailApi.md#getMailInfo) | **GET** /mail/{id} | Get Mail Order
-*InterServerManagementApi.MailApi* | [**getMailInvoices**](docs/MailApi.md#getMailInvoices) | **GET** /mail/{id}/invoices | Get Mail Invoices
-*InterServerManagementApi.MailApi* | [**getMailList**](docs/MailApi.md#getMailList) | **GET** /mail | List Mail Orders
-*InterServerManagementApi.MailApi* | [**getMailWelcomeEmail**](docs/MailApi.md#getMailWelcomeEmail) | **GET** /mail/{id}/welcome_email | Resend Mail Welcome Email
-*InterServerManagementApi.MailApi* | [**getNewMail**](docs/MailApi.md#getNewMail) | **GET** /mail/order | Get Mail Ordering Information
-*InterServerManagementApi.MailApi* | [**getRules**](docs/MailApi.md#getRules) | **GET** /mail/{id}/rules | List Deny Rules
-*InterServerManagementApi.MailApi* | [**getStats**](docs/MailApi.md#getStats) | **GET** /mail/{id}/stats | Get Mail Usage Statistics
-*InterServerManagementApi.MailApi* | [**mailCancel**](docs/MailApi.md#mailCancel) | **DELETE** /mail/{id} | Cancel Mail
-*InterServerManagementApi.MailApi* | [**postMailDelist**](docs/MailApi.md#postMailDelist) | **POST** /mail/{id}/delist | Delist a Blocked Sender
-*InterServerManagementApi.MailApi* | [**putMail**](docs/MailApi.md#putMail) | **PUT** /mail/order | Validate Mail Order
-*InterServerManagementApi.MailApi* | [**resetMailPassword**](docs/MailApi.md#resetMailPassword) | **GET** /mail/{id}/reset_password | Reset Mail Password
-*InterServerManagementApi.MailApi* | [**sendAdvMail**](docs/MailApi.md#sendAdvMail) | **POST** /mail/{id}/advsend | Send Email with Advanced Options
-*InterServerManagementApi.MailApi* | [**sendMail**](docs/MailApi.md#sendMail) | **POST** /mail/{id}/send | Send Email
-*InterServerManagementApi.MailApi* | [**updateMailAlert**](docs/MailApi.md#updateMailAlert) | **PUT** /mail/{id}/alerts | Update Mail Alert
-*InterServerManagementApi.MailApi* | [**updateMailInfo**](docs/MailApi.md#updateMailInfo) | **POST** /mail/{id} | Update Mail Order
-*InterServerManagementApi.MailApi* | [**viewMailLog**](docs/MailApi.md#viewMailLog) | **GET** /mail/{id}/log | View Mail Log
-*InterServerManagementApi.PublicApi* | [**getCaptcha**](docs/PublicApi.md#getCaptcha) | **GET** /captcha | Get Captcha Challenge
-*InterServerManagementApi.PublicApi* | [**getCountries**](docs/PublicApi.md#getCountries) | **GET** /account/countries | Get Countries
-*InterServerManagementApi.PublicApi* | [**getInfo**](docs/PublicApi.md#getInfo) | **GET** /info | Get Server Info
-*InterServerManagementApi.PublicApi* | [**getLoginInfo**](docs/PublicApi.md#getLoginInfo) | **GET** /login | Get Login Info
-*InterServerManagementApi.PublicApi* | [**getMPServers**](docs/PublicApi.md#getMPServers) | **GET** /buy_now_servers_list | List Marketplace Servers
-*InterServerManagementApi.PublicApi* | [**getOauthRedirect**](docs/PublicApi.md#getOauthRedirect) | **GET** /oauth | Get OAuth Redirect URL
-*InterServerManagementApi.PublicApi* | [**getTimezones**](docs/PublicApi.md#getTimezones) | **GET** /account/timezones | Get Available Timezones
-*InterServerManagementApi.PublicApi* | [**patchOauthTwoFactor**](docs/PublicApi.md#patchOauthTwoFactor) | **PATCH** /oauth | Complete OAuth Two-Factor Verification
-*InterServerManagementApi.PublicApi* | [**pingServer**](docs/PublicApi.md#pingServer) | **GET** /ping | Ping Server
-*InterServerManagementApi.PublicApi* | [**postOauthCallback**](docs/PublicApi.md#postOauthCallback) | **POST** /oauth | OAuth Callback
-*InterServerManagementApi.PublicApi* | [**submitLogin**](docs/PublicApi.md#submitLogin) | **POST** /login | Submit Login Information
-*InterServerManagementApi.PublicApi* | [**submitSignup**](docs/PublicApi.md#submitSignup) | **POST** /signup | Submit Signup Information
-*InterServerManagementApi.QuickServersApi* | [**addQs**](docs/QuickServersApi.md#addQs) | **POST** /qs/order | Place QuickServer Order
-*InterServerManagementApi.QuickServersApi* | [**deleteQsBackup**](docs/QuickServersApi.md#deleteQsBackup) | **DELETE** /qs/{id}/backups | Delete QuickServer Backup
-*InterServerManagementApi.QuickServersApi* | [**doQsBlockSmtp**](docs/QuickServersApi.md#doQsBlockSmtp) | **GET** /qs/{id}/block_smtp | Block QuickServer SMTP
-*InterServerManagementApi.QuickServersApi* | [**doQsDisableCd**](docs/QuickServersApi.md#doQsDisableCd) | **GET** /qs/{id}/disable_cd | Disable CD Drive
-*InterServerManagementApi.QuickServersApi* | [**doQsDisableQuota**](docs/QuickServersApi.md#doQsDisableQuota) | **GET** /qs/{id}/disable_quota | Disable Quotas
-*InterServerManagementApi.QuickServersApi* | [**doQsEjectCd**](docs/QuickServersApi.md#doQsEjectCd) | **GET** /qs/{id}/eject_cd | Eject CD Drive
-*InterServerManagementApi.QuickServersApi* | [**doQsEnableQuota**](docs/QuickServersApi.md#doQsEnableQuota) | **GET** /qs/{id}/enable_quota | Enable Quotas
-*InterServerManagementApi.QuickServersApi* | [**doQsRestart**](docs/QuickServersApi.md#doQsRestart) | **GET** /qs/{id}/restart | Restart QuickServer
-*InterServerManagementApi.QuickServersApi* | [**doQsStart**](docs/QuickServersApi.md#doQsStart) | **GET** /qs/{id}/start | Start QuickServer
-*InterServerManagementApi.QuickServersApi* | [**doQsStop**](docs/QuickServersApi.md#doQsStop) | **GET** /qs/{id}/stop | Stop QuickServer
-*InterServerManagementApi.QuickServersApi* | [**downloadQsBackup**](docs/QuickServersApi.md#downloadQsBackup) | **PATCH** /qs/{id}/backups | Download QuickServer Backup
-*InterServerManagementApi.QuickServersApi* | [**getNewQs**](docs/QuickServersApi.md#getNewQs) | **GET** /qs/order | Get QuickServer Ordering Information
-*InterServerManagementApi.QuickServersApi* | [**getQsBackups**](docs/QuickServersApi.md#getQsBackups) | **GET** /qs/{id}/backups | List QuickServer Backups
-*InterServerManagementApi.QuickServersApi* | [**getQsChangeHostname**](docs/QuickServersApi.md#getQsChangeHostname) | **GET** /qs/{id}/change_hostname | Get QuickServer Hostname
-*InterServerManagementApi.QuickServersApi* | [**getQsChangeRootPassword**](docs/QuickServersApi.md#getQsChangeRootPassword) | **GET** /qs/{id}/change_root_password | Get Change Root Password Info
-*InterServerManagementApi.QuickServersApi* | [**getQsChangeTimezone**](docs/QuickServersApi.md#getQsChangeTimezone) | **GET** /qs/{id}/change_timezone | Get Timezone Info
-*InterServerManagementApi.QuickServersApi* | [**getQsChangeWebuzoPassword**](docs/QuickServersApi.md#getQsChangeWebuzoPassword) | **GET** /qs/{id}/change_webuzo_password | Webuzo Change Pass Info
-*InterServerManagementApi.QuickServersApi* | [**getQsInfo**](docs/QuickServersApi.md#getQsInfo) | **GET** /qs/{id} | Get QuickServer Order
-*InterServerManagementApi.QuickServersApi* | [**getQsInsertCd**](docs/QuickServersApi.md#getQsInsertCd) | **GET** /qs/{id}/insert_cd | Insert CD Information
-*InterServerManagementApi.QuickServersApi* | [**getQsInvoices**](docs/QuickServersApi.md#getQsInvoices) | **GET** /qs/{id}/invoices | Get QuickServer Invoices
-*InterServerManagementApi.QuickServersApi* | [**getQsList**](docs/QuickServersApi.md#getQsList) | **GET** /qs | List QuickServers
-*InterServerManagementApi.QuickServersApi* | [**getQsReinstallOs**](docs/QuickServersApi.md#getQsReinstallOs) | **GET** /qs/{id}/reinstall_os | QuickServer Reinstall OS Options
-*InterServerManagementApi.QuickServersApi* | [**getQsResetPassword**](docs/QuickServersApi.md#getQsResetPassword) | **GET** /qs/{id}/reset_password | Reset QuickServer Password Info
-*InterServerManagementApi.QuickServersApi* | [**getQsReverseDns**](docs/QuickServersApi.md#getQsReverseDns) | **GET** /qs/{id}/reverse_dns | Reverse DNS Info
-*InterServerManagementApi.QuickServersApi* | [**getQsSetupVnc**](docs/QuickServersApi.md#getQsSetupVnc) | **GET** /qs/{id}/setup_vnc | VNC Setup Info
-*InterServerManagementApi.QuickServersApi* | [**getQsTrafficUsage**](docs/QuickServersApi.md#getQsTrafficUsage) | **GET** /qs/{id}/traffic_usage | Get Traffic Usage
-*InterServerManagementApi.QuickServersApi* | [**getQsViewDesktop**](docs/QuickServersApi.md#getQsViewDesktop) | **GET** /qs/{id}/view_desktop | Get View Desktop Info
-*InterServerManagementApi.QuickServersApi* | [**getQsWelcomeEmail**](docs/QuickServersApi.md#getQsWelcomeEmail) | **GET** /qs/{id}/welcome_email | Resend QuickServer Welcome Email
-*InterServerManagementApi.QuickServersApi* | [**postQsBackup**](docs/QuickServersApi.md#postQsBackup) | **POST** /qs/{id}/backup | Create QuickServer Backup
-*InterServerManagementApi.QuickServersApi* | [**postQsChangeHostname**](docs/QuickServersApi.md#postQsChangeHostname) | **POST** /qs/{id}/change_hostname | Update QuickServer Hostname
-*InterServerManagementApi.QuickServersApi* | [**postQsChangeRootPassword**](docs/QuickServersApi.md#postQsChangeRootPassword) | **POST** /qs/{id}/change_root_password | Change Root Password
-*InterServerManagementApi.QuickServersApi* | [**postQsChangeTimezone**](docs/QuickServersApi.md#postQsChangeTimezone) | **POST** /qs/{id}/change_timezone | Change QuickServer Timezone
-*InterServerManagementApi.QuickServersApi* | [**postQsChangeWebuzoPassword**](docs/QuickServersApi.md#postQsChangeWebuzoPassword) | **POST** /qs/{id}/change_webuzo_password | Change Webuzo Password
-*InterServerManagementApi.QuickServersApi* | [**postQsInsertCd**](docs/QuickServersApi.md#postQsInsertCd) | **POST** /qs/{id}/insert_cd | Insert CD in QuickServer
-*InterServerManagementApi.QuickServersApi* | [**postQsReinstallOs**](docs/QuickServersApi.md#postQsReinstallOs) | **POST** /qs/{id}/reinstall_os | Reinstall QuickServer OS
-*InterServerManagementApi.QuickServersApi* | [**postQsResetPassword**](docs/QuickServersApi.md#postQsResetPassword) | **POST** /qs/{id}/reset_password | Reset QuickServer Password
-*InterServerManagementApi.QuickServersApi* | [**postQsReverseDns**](docs/QuickServersApi.md#postQsReverseDns) | **POST** /qs/{id}/reverse_dns | Update Reverse DNS
-*InterServerManagementApi.QuickServersApi* | [**postQsSetupVnc**](docs/QuickServersApi.md#postQsSetupVnc) | **POST** /qs/{id}/setup_vnc | Setup VNC
-*InterServerManagementApi.QuickServersApi* | [**postQsTrafficUsage**](docs/QuickServersApi.md#postQsTrafficUsage) | **POST** /qs/{id}/traffic_usage | Search Traffic Usage
-*InterServerManagementApi.QuickServersApi* | [**postQsViewDesktop**](docs/QuickServersApi.md#postQsViewDesktop) | **POST** /qs/{id}/view_desktop | Update View Desktop
-*InterServerManagementApi.QuickServersApi* | [**postQuickServerRestore**](docs/QuickServersApi.md#postQuickServerRestore) | **POST** /qs/{id}/restore | Restore QuickServer from Backup
-*InterServerManagementApi.QuickServersApi* | [**putQs**](docs/QuickServersApi.md#putQs) | **PUT** /qs/order | Validate QuickServer Order
-*InterServerManagementApi.QuickServersApi* | [**quickserversCancel**](docs/QuickServersApi.md#quickserversCancel) | **DELETE** /qs/{id} | Cancel QuickServer Order
-*InterServerManagementApi.QuickServersApi* | [**updateQsInfo**](docs/QuickServersApi.md#updateQsInfo) | **POST** /qs/{id} | Update QuickServer Order
-*InterServerManagementApi.SSLCertificatesApi* | [**addSsl**](docs/SSLCertificatesApi.md#addSsl) | **POST** /ssl/order | Place SSL Cert Order
-*InterServerManagementApi.SSLCertificatesApi* | [**getNewSsl**](docs/SSLCertificatesApi.md#getNewSsl) | **GET** /ssl/order | SSL Cert Ordering Information
-*InterServerManagementApi.SSLCertificatesApi* | [**getSslInfo**](docs/SSLCertificatesApi.md#getSslInfo) | **GET** /ssl/{id} | Get SSL Cert Info
-*InterServerManagementApi.SSLCertificatesApi* | [**getSslInvoices**](docs/SSLCertificatesApi.md#getSslInvoices) | **GET** /ssl/{id}/invoices | Get SSL Cert Invoices
-*InterServerManagementApi.SSLCertificatesApi* | [**getSslList**](docs/SSLCertificatesApi.md#getSslList) | **GET** /ssl | List SSL Certs
-*InterServerManagementApi.SSLCertificatesApi* | [**getSslWelcomeEmail**](docs/SSLCertificatesApi.md#getSslWelcomeEmail) | **GET** /ssl/{id}/welcome_email | Resend SSL Welcome Email
-*InterServerManagementApi.SSLCertificatesApi* | [**putSsl**](docs/SSLCertificatesApi.md#putSsl) | **PUT** /ssl/order | Validate SSL Cert Order
-*InterServerManagementApi.SSLCertificatesApi* | [**sslCancel**](docs/SSLCertificatesApi.md#sslCancel) | **DELETE** /ssl/{id} | Cancel SSL Certificate Service
-*InterServerManagementApi.SSLCertificatesApi* | [**updateSslInfo**](docs/SSLCertificatesApi.md#updateSslInfo) | **POST** /ssl/{id} | Update SSL Cert Order
-*InterServerManagementApi.ScrubIpsApi* | [**cancelScrubIp**](docs/ScrubIpsApi.md#cancelScrubIp) | **DELETE** /scrub_ips/{id} | Cancel Scrub IP Service
-*InterServerManagementApi.ScrubIpsApi* | [**createFilter**](docs/ScrubIpsApi.md#createFilter) | **POST** /scrub_ips/{id}/create_filter | Create Traffic Filter
-*InterServerManagementApi.ScrubIpsApi* | [**createGeoRule**](docs/ScrubIpsApi.md#createGeoRule) | **POST** /scrub_ips/{id}/create_geo_rule | Create Geo Firewall Rule
-*InterServerManagementApi.ScrubIpsApi* | [**createRule**](docs/ScrubIpsApi.md#createRule) | **POST** /scrub_ips/{id}/create_rule | Create Firewall Rule
-*InterServerManagementApi.ScrubIpsApi* | [**deleteFilter**](docs/ScrubIpsApi.md#deleteFilter) | **POST** /scrub_ips/{id}/delete_filter | Delete Traffic Filter
-*InterServerManagementApi.ScrubIpsApi* | [**disableScrub**](docs/ScrubIpsApi.md#disableScrub) | **GET** /scrub_ips/{id}/disable | Disable Scrub Protection
-*InterServerManagementApi.ScrubIpsApi* | [**enableScrub**](docs/ScrubIpsApi.md#enableScrub) | **GET** /scrub_ips/{id}/enable | Enable Scrub Protection
-*InterServerManagementApi.ScrubIpsApi* | [**getOrderDetail**](docs/ScrubIpsApi.md#getOrderDetail) | **GET** /scrub_ips/order | Get Scrub IP Ordering Information
-*InterServerManagementApi.ScrubIpsApi* | [**getScrubIpDetails**](docs/ScrubIpsApi.md#getScrubIpDetails) | **GET** /scrub_ips/{id} | Get Scrub IP Details
-*InterServerManagementApi.ScrubIpsApi* | [**getScrubIpFilterTypes**](docs/ScrubIpsApi.md#getScrubIpFilterTypes) | **GET** /scrub_ips/filter_types | List Scrub Filter Types
-*InterServerManagementApi.ScrubIpsApi* | [**getScrubIpInvoices**](docs/ScrubIpsApi.md#getScrubIpInvoices) | **GET** /scrub_ips/{id}/invoices | Get ScrubIp Invoices
-*InterServerManagementApi.ScrubIpsApi* | [**getScrubIpLogs**](docs/ScrubIpsApi.md#getScrubIpLogs) | **GET** /scrub_ips/{id}/logs | Get Scrub IP Logs
-*InterServerManagementApi.ScrubIpsApi* | [**getScrubIpsList**](docs/ScrubIpsApi.md#getScrubIpsList) | **GET** /scrub_ips | List Scrub IP Services
-*InterServerManagementApi.ScrubIpsApi* | [**placeScrubOrder**](docs/ScrubIpsApi.md#placeScrubOrder) | **POST** /scrub_ips/order | Place Scrub IP Order
-*InterServerManagementApi.ScrubIpsApi* | [**scrubIpsDeleteGeoRule**](docs/ScrubIpsApi.md#scrubIpsDeleteGeoRule) | **POST** /scrub_ips/{id}/delete_geo_rule | Delete Geo Firewall Rule
-*InterServerManagementApi.ScrubIpsApi* | [**scrubIpsDeleteRule**](docs/ScrubIpsApi.md#scrubIpsDeleteRule) | **POST** /scrub_ips/{id}/delete_rule | Delete Firewall Rule
-*InterServerManagementApi.ServersApi* | [**addServer**](docs/ServersApi.md#addServer) | **POST** /servers/order | Place Server Order
-*InterServerManagementApi.ServersApi* | [**buyItNowServerOrder**](docs/ServersApi.md#buyItNowServerOrder) | **GET** /servers/order/buy_now_server | Get Buy Now Server Options
-*InterServerManagementApi.ServersApi* | [**getMPServers**](docs/ServersApi.md#getMPServers) | **GET** /buy_now_servers_list | List Marketplace Servers
-*InterServerManagementApi.ServersApi* | [**getNewServer**](docs/ServersApi.md#getNewServer) | **GET** /servers/order | Server Ordering Information
-*InterServerManagementApi.ServersApi* | [**getServerInfo**](docs/ServersApi.md#getServerInfo) | **GET** /servers/{id} | Get Server Order
-*InterServerManagementApi.ServersApi* | [**getServerInvoices**](docs/ServersApi.md#getServerInvoices) | **GET** /servers/{id}/invoices | Get Server Invoices
-*InterServerManagementApi.ServersApi* | [**getServerList**](docs/ServersApi.md#getServerList) | **GET** /servers | List Servers
-*InterServerManagementApi.ServersApi* | [**getServerReverseDns**](docs/ServersApi.md#getServerReverseDns) | **GET** /servers/{id}/reverse_dns | Reverse DNS Info
-*InterServerManagementApi.ServersApi* | [**getServersWelcomeEmail**](docs/ServersApi.md#getServersWelcomeEmail) | **GET** /servers/{id}/welcome_email | Resend Server Welcome Email
-*InterServerManagementApi.ServersApi* | [**placeBuyNowServer**](docs/ServersApi.md#placeBuyNowServer) | **POST** /servers/order/buy_now_server | Place Buy Now Server Order
-*InterServerManagementApi.ServersApi* | [**postServerReverseDns**](docs/ServersApi.md#postServerReverseDns) | **POST** /servers/{id}/reverse_dns | Update Reverse DNS
-*InterServerManagementApi.ServersApi* | [**putServers**](docs/ServersApi.md#putServers) | **PUT** /servers/order | Validate Server Order
-*InterServerManagementApi.ServersApi* | [**serverIpmiLiveGet**](docs/ServersApi.md#serverIpmiLiveGet) | **GET** /servers/{id}/ipmi_live | Server IPMI Live Information
-*InterServerManagementApi.ServersApi* | [**serverIpmiLivePost**](docs/ServersApi.md#serverIpmiLivePost) | **POST** /servers/{id}/ipmi_live | Server IPMI Live Setup
-*InterServerManagementApi.ServersApi* | [**serverIpmiPowerGet**](docs/ServersApi.md#serverIpmiPowerGet) | **GET** /servers/{id}/ipmi_power | Get IPMI Power Status
-*InterServerManagementApi.ServersApi* | [**serverIpmiPowerPost**](docs/ServersApi.md#serverIpmiPowerPost) | **POST** /servers/{id}/ipmi_power | Server IPMI Power
-*InterServerManagementApi.ServersApi* | [**serversCancel**](docs/ServersApi.md#serversCancel) | **DELETE** /servers/{id} | Cancel Server Service
-*InterServerManagementApi.ServersApi* | [**updateServerInfo**](docs/ServersApi.md#updateServerInfo) | **POST** /servers/{id} | Update Server Order
-*InterServerManagementApi.TicketsApi* | [**addNewTicket**](docs/TicketsApi.md#addNewTicket) | **POST** /tickets/new | Create New Ticket
-*InterServerManagementApi.TicketsApi* | [**closeTicket**](docs/TicketsApi.md#closeTicket) | **GET** /tickets/{id}/close | Close Ticket
-*InterServerManagementApi.TicketsApi* | [**deleteTicketInfo**](docs/TicketsApi.md#deleteTicketInfo) | **DELETE** /tickets/{id} | Close Ticket
-*InterServerManagementApi.TicketsApi* | [**getNewTicket**](docs/TicketsApi.md#getNewTicket) | **GET** /tickets/new | Gets Information for creating a new ticket.
-*InterServerManagementApi.TicketsApi* | [**getTicketInfo**](docs/TicketsApi.md#getTicketInfo) | **GET** /tickets/{id} | Get Ticket Information
-*InterServerManagementApi.TicketsApi* | [**getTicketsList**](docs/TicketsApi.md#getTicketsList) | **GET** /tickets | List Support Tickets
-*InterServerManagementApi.TicketsApi* | [**postTicketInfo**](docs/TicketsApi.md#postTicketInfo) | **POST** /tickets/{id} | Reply To Ticket
-*InterServerManagementApi.TicketsApi* | [**postTicketsList**](docs/TicketsApi.md#postTicketsList) | **POST** /tickets | Search Support Tickets
-*InterServerManagementApi.TicketsApi* | [**putTicketInfo**](docs/TicketsApi.md#putTicketInfo) | **PUT** /tickets/{id} | Update Ticket
-*InterServerManagementApi.TicketsApi* | [**replyTicket**](docs/TicketsApi.md#replyTicket) | **POST** /tickets/{id}/reply | Reply Ticket
-*InterServerManagementApi.TicketsApi* | [**updateTicketInfo**](docs/TicketsApi.md#updateTicketInfo) | **POST** /tickets/{id}/update | Update Ticket
-*InterServerManagementApi.VPSApi* | [**addVps**](docs/VPSApi.md#addVps) | **POST** /vps/order | Place VPS Order
-*InterServerManagementApi.VPSApi* | [**deleteVpsBackup**](docs/VPSApi.md#deleteVpsBackup) | **DELETE** /vps/{id}/backups | Delete VPS Backup
-*InterServerManagementApi.VPSApi* | [**doVpsBlockSmtp**](docs/VPSApi.md#doVpsBlockSmtp) | **GET** /vps/{id}/block_smtp | Blocks SMTP
-*InterServerManagementApi.VPSApi* | [**doVpsDisableCd**](docs/VPSApi.md#doVpsDisableCd) | **GET** /vps/{id}/disable_cd | Disable CD Drive
-*InterServerManagementApi.VPSApi* | [**doVpsDisableQuota**](docs/VPSApi.md#doVpsDisableQuota) | **GET** /vps/{id}/disable_quota | Disable Quotas
-*InterServerManagementApi.VPSApi* | [**doVpsEjectCd**](docs/VPSApi.md#doVpsEjectCd) | **GET** /vps/{id}/eject_cd | Eject CD Drive
-*InterServerManagementApi.VPSApi* | [**doVpsEnableQuota**](docs/VPSApi.md#doVpsEnableQuota) | **GET** /vps/{id}/enable_quota | Enable Quotas
-*InterServerManagementApi.VPSApi* | [**doVpsRestart**](docs/VPSApi.md#doVpsRestart) | **GET** /vps/{id}/restart | Restart VPS
-*InterServerManagementApi.VPSApi* | [**doVpsStart**](docs/VPSApi.md#doVpsStart) | **GET** /vps/{id}/start | Start VPS
-*InterServerManagementApi.VPSApi* | [**doVpsStop**](docs/VPSApi.md#doVpsStop) | **GET** /vps/{id}/stop | Stop VPS
-*InterServerManagementApi.VPSApi* | [**downloadVpsBackup**](docs/VPSApi.md#downloadVpsBackup) | **PATCH** /vps/{id}/backups | Download VPS Backup
-*InterServerManagementApi.VPSApi* | [**getNewVps**](docs/VPSApi.md#getNewVps) | **GET** /vps/order | VPS Ordering Information
-*InterServerManagementApi.VPSApi* | [**getVpsBackups**](docs/VPSApi.md#getVpsBackups) | **GET** /vps/{id}/backups | Get VPS Backups List
-*InterServerManagementApi.VPSApi* | [**getVpsBuyHdSpace**](docs/VPSApi.md#getVpsBuyHdSpace) | **GET** /vps/{id}/buy_hd_space | HD Space Addon Info
-*InterServerManagementApi.VPSApi* | [**getVpsBuyIp**](docs/VPSApi.md#getVpsBuyIp) | **GET** /vps/{id}/buy_ip | Additional IP Addon Info
-*InterServerManagementApi.VPSApi* | [**getVpsChangeTimezone**](docs/VPSApi.md#getVpsChangeTimezone) | **GET** /vps/{id}/change_timezone | Get Timezone Info
-*InterServerManagementApi.VPSApi* | [**getVpsInfo**](docs/VPSApi.md#getVpsInfo) | **GET** /vps/{id} | Get VPS Order
-*InterServerManagementApi.VPSApi* | [**getVpsInvoices**](docs/VPSApi.md#getVpsInvoices) | **GET** /vps/{id}/invoices | Get VPS Invoices
-*InterServerManagementApi.VPSApi* | [**getVpsList**](docs/VPSApi.md#getVpsList) | **GET** /vps | List VPS Orders
-*InterServerManagementApi.VPSApi* | [**getVpsReinstallOs**](docs/VPSApi.md#getVpsReinstallOs) | **GET** /vps/{id}/reinstall_os | VPS Reinstall OS Options
-*InterServerManagementApi.VPSApi* | [**getVpsReverseDns**](docs/VPSApi.md#getVpsReverseDns) | **GET** /vps/{id}/reverse_dns | Reverse DNS Info
-*InterServerManagementApi.VPSApi* | [**getVpsSetupVnc**](docs/VPSApi.md#getVpsSetupVnc) | **GET** /vps/{id}/setup_vnc | VNC Setup Info
-*InterServerManagementApi.VPSApi* | [**getVpsSlices**](docs/VPSApi.md#getVpsSlices) | **GET** /vps/{id}/slices | Slice Upgrade Info
-*InterServerManagementApi.VPSApi* | [**getVpsTrafficUsage**](docs/VPSApi.md#getVpsTrafficUsage) | **GET** /vps/{id}/traffic_usage | Get Traffic Usage
-*InterServerManagementApi.VPSApi* | [**getVpsViewDesktop**](docs/VPSApi.md#getVpsViewDesktop) | **GET** /vps/{id}/view_desktop | Get View Desktop Info
-*InterServerManagementApi.VPSApi* | [**getVpsWelcomeEmail**](docs/VPSApi.md#getVpsWelcomeEmail) | **GET** /vps/{id}/welcome_email | Resend VPS Welcome Email
-*InterServerManagementApi.VPSApi* | [**postVpsBackup**](docs/VPSApi.md#postVpsBackup) | **GET** /vps/{id}/backup | Start a VPS Backup
-*InterServerManagementApi.VPSApi* | [**postVpsBuyHdSpace**](docs/VPSApi.md#postVpsBuyHdSpace) | **POST** /vps/{id}/buy_hd_space | Purchase HD Space Addon
-*InterServerManagementApi.VPSApi* | [**postVpsBuyIp**](docs/VPSApi.md#postVpsBuyIp) | **POST** /vps/{id}/buy_ip | Purchase Additional IP
-*InterServerManagementApi.VPSApi* | [**postVpsChangeHostname**](docs/VPSApi.md#postVpsChangeHostname) | **POST** /vps/{id}/change_hostname | Update VPS Hostname
-*InterServerManagementApi.VPSApi* | [**postVpsChangeRootPassword**](docs/VPSApi.md#postVpsChangeRootPassword) | **POST** /vps/{id}/change_root_password | Change VPS Root Password
-*InterServerManagementApi.VPSApi* | [**postVpsChangeTimezone**](docs/VPSApi.md#postVpsChangeTimezone) | **POST** /vps/{id}/change_timezone | Change VPS Timezone
-*InterServerManagementApi.VPSApi* | [**postVpsChangeWebuzoPassword**](docs/VPSApi.md#postVpsChangeWebuzoPassword) | **POST** /vps/{id}/change_webuzo_password | Change Webuzo Password
-*InterServerManagementApi.VPSApi* | [**postVpsInsertCd**](docs/VPSApi.md#postVpsInsertCd) | **POST** /vps/{id}/insert_cd | Insert CD in VPS
-*InterServerManagementApi.VPSApi* | [**postVpsReinstallOs**](docs/VPSApi.md#postVpsReinstallOs) | **POST** /vps/{id}/reinstall_os | Reinstall VPS OS
-*InterServerManagementApi.VPSApi* | [**postVpsResetPassword**](docs/VPSApi.md#postVpsResetPassword) | **POST** /vps/{id}/reset_password | Reset VPS Password
-*InterServerManagementApi.VPSApi* | [**postVpsRestore**](docs/VPSApi.md#postVpsRestore) | **POST** /vps/{id}/restore | Restore VPS from Backup
-*InterServerManagementApi.VPSApi* | [**postVpsReverseDns**](docs/VPSApi.md#postVpsReverseDns) | **POST** /vps/{id}/reverse_dns | Update Reverse DNS
-*InterServerManagementApi.VPSApi* | [**postVpsSetupVnc**](docs/VPSApi.md#postVpsSetupVnc) | **POST** /vps/{id}/setup_vnc | Setup VNC
-*InterServerManagementApi.VPSApi* | [**postVpsSlices**](docs/VPSApi.md#postVpsSlices) | **POST** /vps/{id}/slices | Purchase Slice Upgrade
-*InterServerManagementApi.VPSApi* | [**postVpsViewDesktop**](docs/VPSApi.md#postVpsViewDesktop) | **POST** /vps/{id}/view_desktop | Update View Desktop
-*InterServerManagementApi.VPSApi* | [**putVps**](docs/VPSApi.md#putVps) | **PUT** /vps/order | Validate VPS Order
-*InterServerManagementApi.VPSApi* | [**updateVpsInfo**](docs/VPSApi.md#updateVpsInfo) | **POST** /vps/{id} | Update VPS Order
-*InterServerManagementApi.VPSApi* | [**vPSCancel**](docs/VPSApi.md#vPSCancel) | **DELETE** /vps/{id} | Cancel VPS Service
-*InterServerManagementApi.WebhostingApi* | [**addWebsite**](docs/WebhostingApi.md#addWebsite) | **POST** /websites/order | Place Website Order
-*InterServerManagementApi.WebhostingApi* | [**getNewWebsite**](docs/WebhostingApi.md#getNewWebsite) | **GET** /websites/order | Website Ordering Information
-*InterServerManagementApi.WebhostingApi* | [**getWebsiteBuyIp**](docs/WebhostingApi.md#getWebsiteBuyIp) | **GET** /websites/{id}/buy_ip | Get Website IP Information
-*InterServerManagementApi.WebhostingApi* | [**getWebsiteInfo**](docs/WebhostingApi.md#getWebsiteInfo) | **GET** /websites/{id} | Get Website Order
-*InterServerManagementApi.WebhostingApi* | [**getWebsiteInvoices**](docs/WebhostingApi.md#getWebsiteInvoices) | **GET** /websites/{id}/invoices | Get Website Invoices
-*InterServerManagementApi.WebhostingApi* | [**getWebsiteList**](docs/WebhostingApi.md#getWebsiteList) | **GET** /websites | Get Website Listing
-*InterServerManagementApi.WebhostingApi* | [**getWebsitesBackups**](docs/WebhostingApi.md#getWebsitesBackups) | **GET** /websites/{id}/backups | Get Website Backups
-*InterServerManagementApi.WebhostingApi* | [**getWebsitesLogin**](docs/WebhostingApi.md#getWebsitesLogin) | **GET** /websites/{id}/login | Hosting Panel Auto Login
-*InterServerManagementApi.WebhostingApi* | [**getWebsitesWelcomeEmail**](docs/WebhostingApi.md#getWebsitesWelcomeEmail) | **GET** /websites/{id}/welcome_email | Resend Website Welcome Email
-*InterServerManagementApi.WebhostingApi* | [**gettWebsiteReverseDns**](docs/WebhostingApi.md#gettWebsiteReverseDns) | **GET** /websites/{id}/reverse_dns | Get Website Reverse DNS
-*InterServerManagementApi.WebhostingApi* | [**postWebsiteBuyIp**](docs/WebhostingApi.md#postWebsiteBuyIp) | **POST** /websites/{id}/buy_ip | Update Website IP DNS
-*InterServerManagementApi.WebhostingApi* | [**postWebsiteMigration**](docs/WebhostingApi.md#postWebsiteMigration) | **POST** /websites/{id}/migration | Request Website Migration
-*InterServerManagementApi.WebhostingApi* | [**postWebsitesReverseDns**](docs/WebhostingApi.md#postWebsitesReverseDns) | **POST** /websites/{id}/reverse_dns | Update Website Reverse DNS
-*InterServerManagementApi.WebhostingApi* | [**putWebsites**](docs/WebhostingApi.md#putWebsites) | **PUT** /websites/order | Validate Webhosting Order
-*InterServerManagementApi.WebhostingApi* | [**updateWebsiteInfo**](docs/WebhostingApi.md#updateWebsiteInfo) | **POST** /websites/{id} | Update Website Order
-*InterServerManagementApi.WebhostingApi* | [**webhostingCancel**](docs/WebhostingApi.md#webhostingCancel) | **DELETE** /websites/{id} | Cancel Website
+*InterServerManagementApi.AccountApi* | [**deleteAccountOauthName**](docs/AccountApi.md#deleteAccountOauthName) | **DELETE** /account/oauth/{name} | Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
+*InterServerManagementApi.AccountApi* | [**deleteAccountTfa**](docs/AccountApi.md#deleteAccountTfa) | **DELETE** /account/2fa | Disable two-factor authentication and remove the TOTP secret
+*InterServerManagementApi.AccountApi* | [**deleteIpLimit**](docs/AccountApi.md#deleteIpLimit) | **PATCH** /account/iplimits | Remove one IP range from the account allow-list (PATCH on /account/iplimits)
+*InterServerManagementApi.AccountApi* | [**getAccountInfo**](docs/AccountApi.md#getAccountInfo) | **GET** /account | Read full account profile, billing address, and security settings
+*InterServerManagementApi.AccountApi* | [**getAccountTfaSetup**](docs/AccountApi.md#getAccountTfaSetup) | **GET** /account/2fa | Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
+*InterServerManagementApi.AccountApi* | [**getHome**](docs/AccountApi.md#getHome) | **GET** /home | Aggregate dashboard payload — service counts, recent activity, alerts
+*InterServerManagementApi.AccountApi* | [**getSearch**](docs/AccountApi.md#getSearch) | **GET** /search | Global autocomplete across the caller&#x27;s services, domains, and records
+*InterServerManagementApi.AccountApi* | [**logout**](docs/AccountApi.md#logout) | **GET** /logout | Destroy the current API/web session — token becomes unusable
+*InterServerManagementApi.AccountApi* | [**logoutAccountOauth**](docs/AccountApi.md#logoutAccountOauth) | **GET** /account/oauth/{name}/logout | Sign out of the upstream OAuth provider session (does not unlink the account)
+*InterServerManagementApi.AccountApi* | [**updateAccountApiKey**](docs/AccountApi.md#updateAccountApiKey) | **POST** /account/apikey | Rotate the account&#x27;s REST/MCP API key — old key is invalidated immediately
+*InterServerManagementApi.AccountApi* | [**updateAccountFeatures**](docs/AccountApi.md#updateAccountFeatures) | **POST** /account/features | Toggle account-wide safety locks for password reset and OS reinstall
+*InterServerManagementApi.AccountApi* | [**updateAccountInfo**](docs/AccountApi.md#updateAccountInfo) | **POST** /account | Update contact and billing-address fields on the customer profile
+*InterServerManagementApi.AccountApi* | [**updateAccountIpLimits**](docs/AccountApi.md#updateAccountIpLimits) | **POST** /account/iplimits | Add an IP CIDR/range to the account&#x27;s API+web allow-list (lockout-safe)
+*InterServerManagementApi.AccountApi* | [**updateAccountPassword**](docs/AccountApi.md#updateAccountPassword) | **POST** /account/password | Change the account login password (verifies current, kills other sessions)
+*InterServerManagementApi.AccountApi* | [**updateAccountSshKey**](docs/AccountApi.md#updateAccountSshKey) | **POST** /account/sshkey | Set the account-level SSH public key auto-installed on new VPS/dedicated orders
+*InterServerManagementApi.AccountApi* | [**updateAccountTfa**](docs/AccountApi.md#updateAccountTfa) | **POST** /account/2fa | Verify TOTP code and enable two-factor authentication on the account
+*InterServerManagementApi.BackupsApi* | [**addBackup**](docs/BackupsApi.md#addBackup) | **POST** /backups/order | Place a new off-site backup storage order and generate the invoice
+*InterServerManagementApi.BackupsApi* | [**cancelBackup**](docs/BackupsApi.md#cancelBackup) | **DELETE** /backups/{id} | Cancel an off-site backup storage subscription
+*InterServerManagementApi.BackupsApi* | [**getBackupInfo**](docs/BackupsApi.md#getBackupInfo) | **GET** /backups/{id} | Get details of a specific off-site backup storage service
+*InterServerManagementApi.BackupsApi* | [**getBackupInvoices**](docs/BackupsApi.md#getBackupInvoices) | **GET** /backups/{id}/invoices | List invoices for a single backup-storage subscription
+*InterServerManagementApi.BackupsApi* | [**getBackupLogin**](docs/BackupsApi.md#getBackupLogin) | **GET** /backups/{id}/login | Open a single sign-on session URL for the backup storage panel
+*InterServerManagementApi.BackupsApi* | [**getBackupsList**](docs/BackupsApi.md#getBackupsList) | **GET** /backups | List off-site backup storage subscriptions on the authenticated account
+*InterServerManagementApi.BackupsApi* | [**getBackupsWelcomeEmail**](docs/BackupsApi.md#getBackupsWelcomeEmail) | **GET** /backups/{id}/welcome_email | Resend the welcome email for an off-site backup storage service
+*InterServerManagementApi.BackupsApi* | [**getNewBackup**](docs/BackupsApi.md#getNewBackup) | **GET** /backups/order | Get backup-storage order form metadata and pricing tiers
+*InterServerManagementApi.BackupsApi* | [**updateBackupInfo**](docs/BackupsApi.md#updateBackupInfo) | **POST** /backups/{id} | Update stored metadata for a backup-storage subscription
+*InterServerManagementApi.BackupsApi* | [**validateBackupOrder**](docs/BackupsApi.md#validateBackupOrder) | **PUT** /backups/order | Validate a backup-storage order and preview pricing without charging
+*InterServerManagementApi.BillingApi* | [**addBillingCreditCard**](docs/BillingApi.md#addBillingCreditCard) | **POST** /billing/creditcards | Store a credit card on the account — may return a verification flow
+*InterServerManagementApi.BillingApi* | [**addBillingPrepay**](docs/BillingApi.md#addBillingPrepay) | **POST** /billing/prepays | Create a prepay deposit and return an invoice id to fund it
+*InterServerManagementApi.BillingApi* | [**deleteBillingCreditCard**](docs/BillingApi.md#deleteBillingCreditCard) | **DELETE** /billing/creditcards/{id} | Remove a stored credit card from the account
+*InterServerManagementApi.BillingApi* | [**deleteBillingInvoice**](docs/BillingApi.md#deleteBillingInvoice) | **DELETE** /billing/invoices/{id} | Cancel a pending unpaid invoice — and its pending service or repeat invoice
+*InterServerManagementApi.BillingApi* | [**deleteBillingPrepay**](docs/BillingApi.md#deleteBillingPrepay) | **DELETE** /billing/prepays/{id} | Delete an unfunded prepay or strip its unpaid funding invoices
+*InterServerManagementApi.BillingApi* | [**getAffiliateBanners**](docs/BillingApi.md#getAffiliateBanners) | **GET** /affiliate/banners | List affiliate banner image assets with filename and dimensions
+*InterServerManagementApi.BillingApi* | [**getAffiliateDownload**](docs/BillingApi.md#getAffiliateDownload) | **GET** /affiliate/download | Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+*InterServerManagementApi.BillingApi* | [**getAffiliateRichReport**](docs/BillingApi.md#getAffiliateRichReport) | **GET** /affiliate/rich_report | Read a combined affiliate performance summary (HTML payload)
+*InterServerManagementApi.BillingApi* | [**getAffiliateSalesGraph**](docs/BillingApi.md#getAffiliateSalesGraph) | **GET** /affiliate/sales_graph | Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
+*InterServerManagementApi.BillingApi* | [**getAffiliateSignups**](docs/BillingApi.md#getAffiliateSignups) | **GET** /affiliate/signups | Read affiliate signup stats and per-customer conversion data
+*InterServerManagementApi.BillingApi* | [**getAffiliateTrafficGraph**](docs/BillingApi.md#getAffiliateTrafficGraph) | **GET** /affiliate/traffic_graph | Read aggregated affiliate referral click/visit time-series for chart rendering
+*InterServerManagementApi.BillingApi* | [**getAffiliateWebTraffic**](docs/BillingApi.md#getAffiliateWebTraffic) | **GET** /affiliate/web_traffic | List the 20 most recent affiliate referral visits with IP, referrer, timestamp
+*InterServerManagementApi.BillingApi* | [**getBillingCart**](docs/BillingApi.md#getBillingCart) | **GET** /billing/cart | Read the current shopping cart contents, totals, and available payment methods
+*InterServerManagementApi.BillingApi* | [**getBillingCreditCardVerify**](docs/BillingApi.md#getBillingCreditCardVerify) | **GET** /billing/creditcards/{id}/verify | Probe whether a stored card still needs micro-charge verification
+*InterServerManagementApi.BillingApi* | [**getBillingInvoice**](docs/BillingApi.md#getBillingInvoice) | **GET** /billing/invoices/{id} | Read full invoice detail — line items, totals, paid status, customer info
+*InterServerManagementApi.BillingApi* | [**getBillingInvoices**](docs/BillingApi.md#getBillingInvoices) | **GET** /billing/invoices | List every invoice on the account with summary totals and paid/unpaid status
+*InterServerManagementApi.BillingApi* | [**getBillingPrePays**](docs/BillingApi.md#getBillingPrePays) | **GET** /billing/prepays | List prepay deposits on the account — remaining balance and auto-use flags
+*InterServerManagementApi.BillingApi* | [**initiatePayment**](docs/BillingApi.md#initiatePayment) | **GET** /billing/pay/{method}/{invoices} | Pay invoices through the chosen gateway — returns the next-step action
+*InterServerManagementApi.BillingApi* | [**patchBillingCreditCardVerify**](docs/BillingApi.md#patchBillingCreditCardVerify) | **PATCH** /billing/creditcards/{id}/verify | Place two micro-charges on the card to start CVV verification (step 1 of 2)
+*InterServerManagementApi.BillingApi* | [**postBillingCreditCardVerify**](docs/BillingApi.md#postBillingCreditCardVerify) | **POST** /billing/creditcards/{id}/verify | Submit two micro-charge amounts to finalize card verification (step 2 of 2)
+*InterServerManagementApi.BillingApi* | [**updateAffiliateDockSetup**](docs/BillingApi.md#updateAffiliateDockSetup) | **POST** /affiliate/dock_setup | Configure the affiliate landing dock title, description, and referrer coupon
+*InterServerManagementApi.BillingApi* | [**updateAffiliatePaymentSetup**](docs/BillingApi.md#updateAffiliatePaymentSetup) | **POST** /affiliate/payment_setup | Configure how affiliate commissions get paid out (PayPal or internal prepay)
+*InterServerManagementApi.BillingApi* | [**updateBillingCreditCard**](docs/BillingApi.md#updateBillingCreditCard) | **POST** /billing/creditcards/{id} | Refresh stored card expiration and re-trigger MaxMind fraud scoring
+*InterServerManagementApi.BillingApi* | [**updateBillingPaymentMethod**](docs/BillingApi.md#updateBillingPaymentMethod) | **POST** /billing/payment_method | Set the account&#x27;s default payment method for recurring/auto charges
+*InterServerManagementApi.DNSApi* | [**addDnsDomain**](docs/DNSApi.md#addDnsDomain) | **POST** /dns | Create a new authoritative DNS zone seeded with apex A + NS + SOA records
+*InterServerManagementApi.DNSApi* | [**addDnsRecord**](docs/DNSApi.md#addDnsRecord) | **POST** /dns/{id} | Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
+*InterServerManagementApi.DNSApi* | [**deleteDnsDomain**](docs/DNSApi.md#deleteDnsDomain) | **DELETE** /dns/{id} | Permanently delete a DNS zone and every record it contains
+*InterServerManagementApi.DNSApi* | [**deleteDnsRecord**](docs/DNSApi.md#deleteDnsRecord) | **DELETE** /dns/{domainId}/{recordId} | Permanently delete one DNS record from a zone — zone itself is preserved
+*InterServerManagementApi.DNSApi* | [**getDnsDomain**](docs/DNSApi.md#getDnsDomain) | **GET** /dns/{id} | List every DNS record in one zone with the IDs needed to edit or delete them
+*InterServerManagementApi.DNSApi* | [**getDnsList**](docs/DNSApi.md#getDnsList) | **GET** /dns | List DNS zones hosted on the account with each zone&#x27;s apex A-record IP
+*InterServerManagementApi.DNSApi* | [**updateDnsRecord**](docs/DNSApi.md#updateDnsRecord) | **POST** /dns/{domainId}/{recordId} | Replace values on an existing DNS record (name, type, content, ttl, priority)
+*InterServerManagementApi.DomainsApi* | [**addDomain**](docs/DomainsApi.md#addDomain) | **POST** /domains/order | Place a new domain registration or transfer order, generate billing invoice
+*InterServerManagementApi.DomainsApi* | [**addDomainDnssec**](docs/DomainsApi.md#addDomainDnssec) | **POST** /domains/{id}/dnssec | Register DNSSEC DS records on the domain at OpenSRS
+*InterServerManagementApi.DomainsApi* | [**addDomainNameserver**](docs/DomainsApi.md#addDomainNameserver) | **POST** /domains/{id}/nameservers | Register a new nameserver host with glue IP at the registry (registered nameserver)
+*InterServerManagementApi.DomainsApi* | [**cancelDomain**](docs/DomainsApi.md#cancelDomain) | **DELETE** /domains/{id} | Cancel a domain order in the billing system to stop auto-renewals
+*InterServerManagementApi.DomainsApi* | [**deleteDomainDnssec**](docs/DomainsApi.md#deleteDomainDnssec) | **DELETE** /domains/{id}/dnssec | Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
+*InterServerManagementApi.DomainsApi* | [**deleteDomainNameserver**](docs/DomainsApi.md#deleteDomainNameserver) | **DELETE** /domains/{id}/nameservers | Remove one registered nameserver glue record from the domain
+*InterServerManagementApi.DomainsApi* | [**getDomainContact**](docs/DomainsApi.md#getDomainContact) | **GET** /domains/{id}/contact | Read the current registrant/admin/tech/billing contact field set for a domain
+*InterServerManagementApi.DomainsApi* | [**getDomainDnssec**](docs/DomainsApi.md#getDomainDnssec) | **GET** /domains/{id}/dnssec | Read the DNSSEC DS record set currently registered with the registrar
+*InterServerManagementApi.DomainsApi* | [**getDomainInfo**](docs/DomainsApi.md#getDomainInfo) | **GET** /domains/{id} | Read full billing, registrar, and service detail for one domain
+*InterServerManagementApi.DomainsApi* | [**getDomainInvoices**](docs/DomainsApi.md#getDomainInvoices) | **GET** /domains/{id}/invoices | List all billing invoices scoped to one domain order
+*InterServerManagementApi.DomainsApi* | [**getDomainLookup**](docs/DomainsApi.md#getDomainLookup) | **GET** /domains/lookup/{name} | Check availability, premium status, and pricing for a specific domain
+*InterServerManagementApi.DomainsApi* | [**getDomainNameservers**](docs/DomainsApi.md#getDomainNameservers) | **GET** /domains/{id}/nameservers | List registered nameserver hosts and glue IP addresses for a domain
+*InterServerManagementApi.DomainsApi* | [**getDomainRenewal**](docs/DomainsApi.md#getDomainRenewal) | **GET** /domains/{id}/renew | Read renewal pricing, expiry, and whether a renewal invoice already exists
+*InterServerManagementApi.DomainsApi* | [**getDomainSearch**](docs/DomainsApi.md#getDomainSearch) | **GET** /domains/search/{name} | Get registrar-suggested domain alternatives and bulk availability for a search term
+*InterServerManagementApi.DomainsApi* | [**getDomainTransfer**](docs/DomainsApi.md#getDomainTransfer) | **GET** /domains/{id}/transfer | Read OpenSRS transfer status for an in-progress domain transfer order
+*InterServerManagementApi.DomainsApi* | [**getDomainWhoisPrivacy**](docs/DomainsApi.md#getDomainWhoisPrivacy) | **GET** /domains/{id}/whois | Read Whois privacy availability, current state, and add-on pricing for a domain
+*InterServerManagementApi.DomainsApi* | [**getDomainsList**](docs/DomainsApi.md#getDomainsList) | **GET** /domains | List every domain registration on the account with billing and registration metadata
+*InterServerManagementApi.DomainsApi* | [**getDomainsWelcomeEmail**](docs/DomainsApi.md#getDomainsWelcomeEmail) | **GET** /domains/{id}/welcome_email | Resend the domain welcome email with registration details and management instructions
+*InterServerManagementApi.DomainsApi* | [**getNewDomain**](docs/DomainsApi.md#getNewDomain) | **GET** /domains/order | Read the buyable domain TLD service catalog and Whois privacy pricing
+*InterServerManagementApi.DomainsApi* | [**patchDomains**](docs/DomainsApi.md#patchDomains) | **PATCH** /domains/order | Validate posted domain-order field values before committing — dry run
+*InterServerManagementApi.DomainsApi* | [**postDomainRenewal**](docs/DomainsApi.md#postDomainRenewal) | **POST** /domains/{id}/renew | Submit a domain renewal request and generate the renewal invoice
+*InterServerManagementApi.DomainsApi* | [**postDomainSearch**](docs/DomainsApi.md#postDomainSearch) | **POST** /domains/search/{name} | Get the full order form data for a hostname in one round-trip (search → order preview)
+*InterServerManagementApi.DomainsApi* | [**postDomainTransfer**](docs/DomainsApi.md#postDomainTransfer) | **POST** /domains/{id}/transfer | Re-poll OpenSRS transfer status for a domain order via POST
+*InterServerManagementApi.DomainsApi* | [**putDomains**](docs/DomainsApi.md#putDomains) | **PUT** /domains/order | Preview per-TLD field requirements for a domain order — no commit
+*InterServerManagementApi.DomainsApi* | [**updateDomainContact**](docs/DomainsApi.md#updateDomainContact) | **POST** /domains/{id}/contact | Update registrant/admin contact details and push them to OpenSRS
+*InterServerManagementApi.DomainsApi* | [**updateDomainInfo**](docs/DomainsApi.md#updateDomainInfo) | **POST** /domains/{id} | POST mutation hook for the domain detail page (use dedicated ops where possible)
+*InterServerManagementApi.DomainsApi* | [**updateDomainNameservers**](docs/DomainsApi.md#updateDomainNameservers) | **PUT** /domains/{id}/nameservers | Replace the full authoritative-nameserver delegation list at the registrar
+*InterServerManagementApi.DomainsApi* | [**updateDomainWhoisPrivacy**](docs/DomainsApi.md#updateDomainWhoisPrivacy) | **POST** /domains/{id}/whois | Order, enable, or cancel the Whois privacy add-on for a domain
+*InterServerManagementApi.FloatingIPsApi* | [**addFloatingIp**](docs/FloatingIPsApi.md#addFloatingIp) | **POST** /floating_ips/order | Place a real Floating IP order, create billing records, and provision the service
+*InterServerManagementApi.FloatingIPsApi* | [**floatingIpsCancel**](docs/FloatingIPsApi.md#floatingIpsCancel) | **DELETE** /floating_ips/{id} | Cancel a Floating IP service and release the IP — destructive, billing stops
+*InterServerManagementApi.FloatingIPsApi* | [**getFloatingIpInfo**](docs/FloatingIPsApi.md#getFloatingIpInfo) | **GET** /floating_ips/{id} | Fetch full details for one Floating IP service, including current target IP
+*InterServerManagementApi.FloatingIPsApi* | [**getFloatingIpInvoices**](docs/FloatingIPsApi.md#getFloatingIpInvoices) | **GET** /floating_ips/{id}/invoices | List all billing invoices charged against a specific Floating IP service
+*InterServerManagementApi.FloatingIPsApi* | [**getFloatingIpsList**](docs/FloatingIPsApi.md#getFloatingIpsList) | **GET** /floating_ips | List all Floating IP services on the authenticated customer&#x27;s account
+*InterServerManagementApi.FloatingIPsApi* | [**getFloatingIpsWelcomeEmail**](docs/FloatingIPsApi.md#getFloatingIpsWelcomeEmail) | **GET** /floating_ips/{id}/welcome_email | Resend the Floating IP welcome / setup email to the account contact
+*InterServerManagementApi.FloatingIPsApi* | [**getNewFloatingIp**](docs/FloatingIPsApi.md#getNewFloatingIp) | **GET** /floating_ips/order | Get pricing and service-type options for ordering a new Floating IP
+*InterServerManagementApi.FloatingIPsApi* | [**postFloatingIpsChangeIp**](docs/FloatingIPsApi.md#postFloatingIpsChangeIp) | **POST** /floating_ips/{id}/change_ip | Re-point a Floating IP to a different target IP on one of the customer&#x27;s services
+*InterServerManagementApi.FloatingIPsApi* | [**putFloatingIps**](docs/FloatingIPsApi.md#putFloatingIps) | **PUT** /floating_ips/order | Validate a Floating IP order and price it without charging the customer
+*InterServerManagementApi.FloatingIPsApi* | [**updateFloatingIpInfo**](docs/FloatingIPsApi.md#updateFloatingIpInfo) | **POST** /floating_ips/{id} | Update a Floating IP service&#x27;s editable settings (label / metadata)
+*InterServerManagementApi.LicensesApi* | [**addLicense**](docs/LicensesApi.md#addLicense) | **POST** /licenses/order | Order a new software license and create the recurring invoice
+*InterServerManagementApi.LicensesApi* | [**getLicenseInfo**](docs/LicensesApi.md#getLicenseInfo) | **GET** /licenses/{id} | Get full details for one license including status, IP, and links
+*InterServerManagementApi.LicensesApi* | [**getLicenseInvoices**](docs/LicensesApi.md#getLicenseInvoices) | **GET** /licenses/{id}/invoices | List all billing invoices tied to one software license service
+*InterServerManagementApi.LicensesApi* | [**getLicenseList**](docs/LicensesApi.md#getLicenseList) | **GET** /licenses | List all software licenses owned by the authenticated customer
+*InterServerManagementApi.LicensesApi* | [**getLicensesWelcomeEmail**](docs/LicensesApi.md#getLicensesWelcomeEmail) | **GET** /licenses/{id}/welcome_email | Resend the license welcome email with the key and activation steps
+*InterServerManagementApi.LicensesApi* | [**getNewLicense**](docs/LicensesApi.md#getNewLicense) | **GET** /licenses/order | Get available license types, packages, and pricing for ordering
+*InterServerManagementApi.LicensesApi* | [**licensesCancel**](docs/LicensesApi.md#licensesCancel) | **DELETE** /licenses/{id} | Cancel a license service and stop future billing (irreversible)
+*InterServerManagementApi.LicensesApi* | [**postLicenseChangeIp**](docs/LicensesApi.md#postLicenseChangeIp) | **POST** /licenses/{id}/change_ip | Rebind a license to a new IP address (may incur a vendor fee)
+*InterServerManagementApi.LicensesApi* | [**putLicenses**](docs/LicensesApi.md#putLicenses) | **PUT** /licenses/order | Validate a software license order before placing it (dry run preview)
+*InterServerManagementApi.LicensesApi* | [**updateLicenseInfo**](docs/LicensesApi.md#updateLicenseInfo) | **POST** /licenses/{id} | Update mutable fields on a license service (e.g. assigned IP)
+*InterServerManagementApi.MailApi* | [**addMail**](docs/MailApi.md#addMail) | **POST** /mail/order | Place a new Mail Baby order, generate invoice, and queue provisioning
+*InterServerManagementApi.MailApi* | [**addRule**](docs/MailApi.md#addRule) | **POST** /mail/{id}/rules | Create a new deny rule to auto-block matching submissions
+*InterServerManagementApi.MailApi* | [**createMailAlert**](docs/MailApi.md#createMailAlert) | **POST** /mail/{id}/alerts | Create a new Mail Baby alert for delivery, bounce, or quota events
+*InterServerManagementApi.MailApi* | [**deleteMailAlert**](docs/MailApi.md#deleteMailAlert) | **DELETE** /mail/{id}/alerts | Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+*InterServerManagementApi.MailApi* | [**deleteRule**](docs/MailApi.md#deleteRule) | **DELETE** /mail/{id}/rules/{rule} | Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
+*InterServerManagementApi.MailApi* | [**delistBlock**](docs/MailApi.md#delistBlock) | **POST** /mail/{id}/blocks/delete | Delist a sender email from rspamd / mailchannels / mailbaby block lists
+*InterServerManagementApi.MailApi* | [**getMailAlerts**](docs/MailApi.md#getMailAlerts) | **GET** /mail/{id}/alerts | List configured delivery/bounce/quota alerts for one Mail Baby service
+*InterServerManagementApi.MailApi* | [**getMailBlocks**](docs/MailApi.md#getMailBlocks) | **GET** /mail/{id}/blocks | List recent local-blocklist hits and spam-trap captures for the mail user
+*InterServerManagementApi.MailApi* | [**getMailDelist**](docs/MailApi.md#getMailDelist) | **GET** /mail/{id}/delist | Read blocklist diagnostics and find senders eligible for delisting
+*InterServerManagementApi.MailApi* | [**getMailDeliverability**](docs/MailApi.md#getMailDeliverability) | **GET** /mail/{id}/deliverability | Read delivered vs bounced totals broken down by sender (or by recipient domain)
+*InterServerManagementApi.MailApi* | [**getMailInfo**](docs/MailApi.md#getMailInfo) | **GET** /mail/{id} | Read full detail for one Mail Baby service including SMTP credentials
+*InterServerManagementApi.MailApi* | [**getMailInvoices**](docs/MailApi.md#getMailInvoices) | **GET** /mail/{id}/invoices | List billing invoices linked to this Mail Baby service
+*InterServerManagementApi.MailApi* | [**getMailList**](docs/MailApi.md#getMailList) | **GET** /mail | List every Mail Baby SMTP relay service on the account
+*InterServerManagementApi.MailApi* | [**getMailWelcomeEmail**](docs/MailApi.md#getMailWelcomeEmail) | **GET** /mail/{id}/welcome_email | Resend the Mail Baby welcome email with SMTP credentials and setup info
+*InterServerManagementApi.MailApi* | [**getNewMail**](docs/MailApi.md#getNewMail) | **GET** /mail/order | Read the Mail Baby order catalog — plans, package costs, service-type metadata
+*InterServerManagementApi.MailApi* | [**getRules**](docs/MailApi.md#getRules) | **GET** /mail/{id}/rules | List configured deny rules (sender/recipient blocks) for a Mail Baby service
+*InterServerManagementApi.MailApi* | [**getStats**](docs/MailApi.md#getStats) | **GET** /mail/{id}/stats | Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
+*InterServerManagementApi.MailApi* | [**mailCancel**](docs/MailApi.md#mailCancel) | **DELETE** /mail/{id} | Cancel a Mail Baby service and stop the recurring invoice
+*InterServerManagementApi.MailApi* | [**postMailDelist**](docs/MailApi.md#postMailDelist) | **POST** /mail/{id}/delist | Delist a sender from rspamd / mailchannels / mailbaby block lists
+*InterServerManagementApi.MailApi* | [**putMail**](docs/MailApi.md#putMail) | **PUT** /mail/order | Validate Mail Baby order, quote pricing, and verify coupon — no charge
+*InterServerManagementApi.MailApi* | [**resetMailPassword**](docs/MailApi.md#resetMailPassword) | **GET** /mail/{id}/reset_password | Rotate the SMTP password and email the new credential to the account owner
+*InterServerManagementApi.MailApi* | [**sendAdvMail**](docs/MailApi.md#sendAdvMail) | **POST** /mail/{id}/advsend | Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
+*InterServerManagementApi.MailApi* | [**sendMail**](docs/MailApi.md#sendMail) | **POST** /mail/{id}/send | Send a simple single-recipient email through the Mail Baby SMTP relay
+*InterServerManagementApi.MailApi* | [**updateMailAlert**](docs/MailApi.md#updateMailAlert) | **PUT** /mail/{id}/alerts | Update an existing Mail Baby alert by alert_id
+*InterServerManagementApi.MailApi* | [**updateMailInfo**](docs/MailApi.md#updateMailInfo) | **POST** /mail/{id} | POST mutation hook for the Mail Baby service detail page
+*InterServerManagementApi.MailApi* | [**updateRule**](docs/MailApi.md#updateRule) | **PUT** /mail/{id}/rules/{rule} | Update an existing Mail Baby deny rule&#x27;s type and match data
+*InterServerManagementApi.MailApi* | [**viewMailLog**](docs/MailApi.md#viewMailLog) | **GET** /mail/{id}/log | Search and paginate per-message Mail Baby delivery log entries
+*InterServerManagementApi.PublicApi* | [**getAccountCurrencies**](docs/PublicApi.md#getAccountCurrencies) | **GET** /account/currencies | List enabled currency codes accepted for billing and preferences
+*InterServerManagementApi.PublicApi* | [**getAccountLocales**](docs/PublicApi.md#getAccountLocales) | **GET** /account/locales | List supported UI locales with English and native display names
+*InterServerManagementApi.PublicApi* | [**getCaptcha**](docs/PublicApi.md#getCaptcha) | **GET** /captcha | Fetch a base64 JPEG captcha challenge for human verification
+*InterServerManagementApi.PublicApi* | [**getCountries**](docs/PublicApi.md#getCountries) | **GET** /account/countries | List enabled countries keyed by ISO-2/ISO-3/numeric code
+*InterServerManagementApi.PublicApi* | [**getInfo**](docs/PublicApi.md#getInfo) | **GET** /info | Discover available modules, service packages, categories, and types
+*InterServerManagementApi.PublicApi* | [**getLoginInfo**](docs/PublicApi.md#getLoginInfo) | **GET** /login | Fetch logo, captcha, language, and stats for rendering a login page
+*InterServerManagementApi.PublicApi* | [**getMPServers**](docs/PublicApi.md#getMPServers) | **GET** /buy_now_servers_list | List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+*InterServerManagementApi.PublicApi* | [**getOauthRedirect**](docs/PublicApi.md#getOauthRedirect) | **GET** /oauth | Begin OAuth login flow — redirect user to provider for authentication
+*InterServerManagementApi.PublicApi* | [**getTimezones**](docs/PublicApi.md#getTimezones) | **GET** /account/timezones | List all PHP timezone identifiers usable on accounts and services
+*InterServerManagementApi.PublicApi* | [**patchOauthTwoFactor**](docs/PublicApi.md#patchOauthTwoFactor) | **PATCH** /oauth | Submit 2FA code to finish OAuth login when account has 2FA enabled
+*InterServerManagementApi.PublicApi* | [**pingServer**](docs/PublicApi.md#pingServer) | **GET** /ping | Liveness check — returns the JSON string \&quot;pong\&quot; to confirm API is up
+*InterServerManagementApi.PublicApi* | [**postOauthCallback**](docs/PublicApi.md#postOauthCallback) | **POST** /oauth | Complete OAuth login by linking provider to existing or new account
+*InterServerManagementApi.PublicApi* | [**submitLogin**](docs/PublicApi.md#submitLogin) | **POST** /login | Authenticate with email + password and return a session token
+*InterServerManagementApi.PublicApi* | [**submitSignup**](docs/PublicApi.md#submitSignup) | **POST** /signup | Create a new customer account (email + password + captcha + ToS)
+*InterServerManagementApi.QuickServersApi* | [**addQs**](docs/QuickServersApi.md#addQs) | **POST** /qs/order | Place a QuickServer order, generating a real invoice and queuing provisioning
+*InterServerManagementApi.QuickServersApi* | [**deleteQsBackup**](docs/QuickServersApi.md#deleteQsBackup) | **DELETE** /qs/{id}/backups | Permanently delete a QuickServer backup file from object storage
+*InterServerManagementApi.QuickServersApi* | [**doQsBlockSmtp**](docs/QuickServersApi.md#doQsBlockSmtp) | **GET** /qs/{id}/block_smtp | Block outbound SMTP traffic on a QuickServer to halt mail abuse
+*InterServerManagementApi.QuickServersApi* | [**doQsDisableCd**](docs/QuickServersApi.md#doQsDisableCd) | **GET** /qs/{id}/disable_cd | Disable the virtual CD/DVD drive device on a QuickServer
+*InterServerManagementApi.QuickServersApi* | [**doQsDisableQuota**](docs/QuickServersApi.md#doQsDisableQuota) | **GET** /qs/{id}/disable_quota | Disable disk-quota enforcement at OS level on a QuickServer
+*InterServerManagementApi.QuickServersApi* | [**doQsEjectCd**](docs/QuickServersApi.md#doQsEjectCd) | **GET** /qs/{id}/eject_cd | Eject the currently mounted ISO from a QuickServer&#x27;s virtual CD drive
+*InterServerManagementApi.QuickServersApi* | [**doQsEnableQuota**](docs/QuickServersApi.md#doQsEnableQuota) | **GET** /qs/{id}/enable_quota | Enable disk-quota enforcement at OS level on a QuickServer
+*InterServerManagementApi.QuickServersApi* | [**doQsRestart**](docs/QuickServersApi.md#doQsRestart) | **GET** /qs/{id}/restart | Reboot a QuickServer with a graceful OS-level restart
+*InterServerManagementApi.QuickServersApi* | [**doQsStart**](docs/QuickServersApi.md#doQsStart) | **GET** /qs/{id}/start | Power on a QuickServer that is currently stopped or pending boot
+*InterServerManagementApi.QuickServersApi* | [**doQsStop**](docs/QuickServersApi.md#doQsStop) | **GET** /qs/{id}/stop | Power off a QuickServer with a graceful shutdown command
+*InterServerManagementApi.QuickServersApi* | [**downloadQsBackup**](docs/QuickServersApi.md#downloadQsBackup) | **PATCH** /qs/{id}/backups | Generate a 24-hour pre-signed download URL for a QuickServer backup
+*InterServerManagementApi.QuickServersApi* | [**getNewQs**](docs/QuickServersApi.md#getNewQs) | **GET** /qs/order | Get QuickServer order form metadata and available plans/templates
+*InterServerManagementApi.QuickServersApi* | [**getQsBackup**](docs/QuickServersApi.md#getQsBackup) | **GET** /qs/{id}/backup | Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+*InterServerManagementApi.QuickServersApi* | [**getQsBackups**](docs/QuickServersApi.md#getQsBackups) | **GET** /qs/{id}/backups | List available QuickServer backups across Swift, MinIO, and ZFS storage
+*InterServerManagementApi.QuickServersApi* | [**getQsChangeHostname**](docs/QuickServersApi.md#getQsChangeHostname) | **GET** /qs/{id}/change_hostname | Get current QuickServer hostname plus change rules and platform support
+*InterServerManagementApi.QuickServersApi* | [**getQsChangeRootPassword**](docs/QuickServersApi.md#getQsChangeRootPassword) | **GET** /qs/{id}/change_root_password | Get metadata for QuickServer root/OS password change requirements
+*InterServerManagementApi.QuickServersApi* | [**getQsChangeTimezone**](docs/QuickServersApi.md#getQsChangeTimezone) | **GET** /qs/{id}/change_timezone | List timezones the QuickServer can be set to via change_timezone
+*InterServerManagementApi.QuickServersApi* | [**getQsChangeWebuzoPassword**](docs/QuickServersApi.md#getQsChangeWebuzoPassword) | **GET** /qs/{id}/change_webuzo_password | Get metadata for changing the Webuzo control panel admin password
+*InterServerManagementApi.QuickServersApi* | [**getQsInfo**](docs/QuickServersApi.md#getQsInfo) | **GET** /qs/{id} | Get full details for one QuickServer including credentials and links
+*InterServerManagementApi.QuickServersApi* | [**getQsInsertCd**](docs/QuickServersApi.md#getQsInsertCd) | **GET** /qs/{id}/insert_cd | List ISO images available to mount on a QuickServer&#x27;s virtual CD
+*InterServerManagementApi.QuickServersApi* | [**getQsInvoices**](docs/QuickServersApi.md#getQsInvoices) | **GET** /qs/{id}/invoices | List billing invoices charged for one QuickServer service
+*InterServerManagementApi.QuickServersApi* | [**getQsList**](docs/QuickServersApi.md#getQsList) | **GET** /qs | List QuickServer rapid-deploy dedicated servers on the account
+*InterServerManagementApi.QuickServersApi* | [**getQsReinstallOs**](docs/QuickServersApi.md#getQsReinstallOs) | **GET** /qs/{id}/reinstall_os | List OS templates available for a QuickServer reinstall
+*InterServerManagementApi.QuickServersApi* | [**getQsResetPassword**](docs/QuickServersApi.md#getQsResetPassword) | **GET** /qs/{id}/reset_password | Get options for QuickServer randomized root password reset
+*InterServerManagementApi.QuickServersApi* | [**getQsReverseDns**](docs/QuickServersApi.md#getQsReverseDns) | **GET** /qs/{id}/reverse_dns | Get reverse DNS (PTR) records for all of a QuickServer&#x27;s IPs
+*InterServerManagementApi.QuickServersApi* | [**getQsSetupVnc**](docs/QuickServersApi.md#getQsSetupVnc) | **GET** /qs/{id}/setup_vnc | Get current VNC console connection details for a QuickServer
+*InterServerManagementApi.QuickServersApi* | [**getQsTrafficUsage**](docs/QuickServersApi.md#getQsTrafficUsage) | **GET** /qs/{id}/traffic_usage | Get bandwidth usage for the QuickServer&#x27;s current billing period
+*InterServerManagementApi.QuickServersApi* | [**getQsViewDesktop**](docs/QuickServersApi.md#getQsViewDesktop) | **GET** /qs/{id}/view_desktop | Get the full QuickServer dashboard view payload (rich format)
+*InterServerManagementApi.QuickServersApi* | [**getQsWelcomeEmail**](docs/QuickServersApi.md#getQsWelcomeEmail) | **GET** /qs/{id}/welcome_email | Resend the QuickServer welcome email with login credentials
+*InterServerManagementApi.QuickServersApi* | [**postQsChangeHostname**](docs/QuickServersApi.md#postQsChangeHostname) | **POST** /qs/{id}/change_hostname | Change a QuickServer&#x27;s system hostname (OpenVZ/Virtuozzo only)
+*InterServerManagementApi.QuickServersApi* | [**postQsChangeRootPassword**](docs/QuickServersApi.md#postQsChangeRootPassword) | **POST** /qs/{id}/change_root_password | Change QuickServer root/administrator password to a chosen value
+*InterServerManagementApi.QuickServersApi* | [**postQsChangeTimezone**](docs/QuickServersApi.md#postQsChangeTimezone) | **POST** /qs/{id}/change_timezone | Change the system timezone on a QuickServer to a catalog entry
+*InterServerManagementApi.QuickServersApi* | [**postQsChangeWebuzoPassword**](docs/QuickServersApi.md#postQsChangeWebuzoPassword) | **POST** /qs/{id}/change_webuzo_password | Change Webuzo control panel admin password live (synchronous, not queued)
+*InterServerManagementApi.QuickServersApi* | [**postQsInsertCd**](docs/QuickServersApi.md#postQsInsertCd) | **POST** /qs/{id}/insert_cd | Mount an ISO image as the QuickServer&#x27;s virtual CD via URL
+*InterServerManagementApi.QuickServersApi* | [**postQsReinstallOs**](docs/QuickServersApi.md#postQsReinstallOs) | **POST** /qs/{id}/reinstall_os | Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
+*InterServerManagementApi.QuickServersApi* | [**postQsResetPassword**](docs/QuickServersApi.md#postQsResetPassword) | **POST** /qs/{id}/reset_password | Reset QuickServer root password to a server-generated random value
+*InterServerManagementApi.QuickServersApi* | [**postQsReverseDns**](docs/QuickServersApi.md#postQsReverseDns) | **POST** /qs/{id}/reverse_dns | Update reverse DNS (PTR) records for a QuickServer&#x27;s IPs
+*InterServerManagementApi.QuickServersApi* | [**postQsSetupVnc**](docs/QuickServersApi.md#postQsSetupVnc) | **POST** /qs/{id}/setup_vnc | Configure the source IP allowed to reach a QuickServer&#x27;s VNC console
+*InterServerManagementApi.QuickServersApi* | [**postQsTrafficUsage**](docs/QuickServersApi.md#postQsTrafficUsage) | **POST** /qs/{id}/traffic_usage | Query QuickServer bandwidth usage via POST (filtered variant)
+*InterServerManagementApi.QuickServersApi* | [**postQsViewDesktop**](docs/QuickServersApi.md#postQsViewDesktop) | **POST** /qs/{id}/view_desktop | Submit changes and re-fetch the QuickServer dashboard view payload
+*InterServerManagementApi.QuickServersApi* | [**postQuickServerRestore**](docs/QuickServersApi.md#postQuickServerRestore) | **POST** /qs/{id}/restore | Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
+*InterServerManagementApi.QuickServersApi* | [**putQs**](docs/QuickServersApi.md#putQs) | **PUT** /qs/order | Validate a QuickServer order without charging or provisioning
+*InterServerManagementApi.QuickServersApi* | [**quickserversCancel**](docs/QuickServersApi.md#quickserversCancel) | **DELETE** /qs/{id} | Cancel a QuickServer service at the end of the current billing cycle
+*InterServerManagementApi.QuickServersApi* | [**updateQsInfo**](docs/QuickServersApi.md#updateQsInfo) | **POST** /qs/{id} | Update QuickServer order metadata or stored settings without OS impact
+*InterServerManagementApi.SSLCertificatesApi* | [**addSsl**](docs/SSLCertificatesApi.md#addSsl) | **POST** /ssl/order | Place a new SSL certificate order - creates invoice and queues issuance
+*InterServerManagementApi.SSLCertificatesApi* | [**getNewSsl**](docs/SSLCertificatesApi.md#getNewSsl) | **GET** /ssl/order | Get available SSL certificate packages and pricing for placing a new order
+*InterServerManagementApi.SSLCertificatesApi* | [**getSslInfo**](docs/SSLCertificatesApi.md#getSslInfo) | **GET** /ssl/{id} | Get full details for one SSL certificate by id - status, expiration, links
+*InterServerManagementApi.SSLCertificatesApi* | [**getSslInvoices**](docs/SSLCertificatesApi.md#getSslInvoices) | **GET** /ssl/{id}/invoices | List all billing invoices and charges tied to one SSL certificate by id
+*InterServerManagementApi.SSLCertificatesApi* | [**getSslList**](docs/SSLCertificatesApi.md#getSslList) | **GET** /ssl | List all SSL certificates on the authenticated customer account with status and hostname
+*InterServerManagementApi.SSLCertificatesApi* | [**getSslWelcomeEmail**](docs/SSLCertificatesApi.md#getSslWelcomeEmail) | **GET** /ssl/{id}/welcome_email | Resend the SSL welcome email with cert credentials and install instructions
+*InterServerManagementApi.SSLCertificatesApi* | [**putSsl**](docs/SSLCertificatesApi.md#putSsl) | **PUT** /ssl/order | Validate an SSL certificate order without charging - dry-run before addSsl
+*InterServerManagementApi.SSLCertificatesApi* | [**sslCancel**](docs/SSLCertificatesApi.md#sslCancel) | **DELETE** /ssl/{id} | Cancel an SSL certificate service - stops renewals at end of billing cycle
+*InterServerManagementApi.SSLCertificatesApi* | [**updateSslInfo**](docs/SSLCertificatesApi.md#updateSslInfo) | **POST** /ssl/{id} | Update mutable settings on an existing SSL certificate order by id
+*InterServerManagementApi.ScrubIpsApi* | [**cancelScrubIp**](docs/ScrubIpsApi.md#cancelScrubIp) | **DELETE** /scrub_ips/{id} | Cancel a Scrub IP service and stop its recurring DDoS billing
+*InterServerManagementApi.ScrubIpsApi* | [**createFilter**](docs/ScrubIpsApi.md#createFilter) | **POST** /scrub_ips/{id}/create_filter | Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
+*InterServerManagementApi.ScrubIpsApi* | [**createGeoRule**](docs/ScrubIpsApi.md#createGeoRule) | **POST** /scrub_ips/{id}/create_geo_rule | Add a geographic firewall rule (block/allow by country code or ASN)
+*InterServerManagementApi.ScrubIpsApi* | [**createRule**](docs/ScrubIpsApi.md#createRule) | **POST** /scrub_ips/{id}/create_rule | Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
+*InterServerManagementApi.ScrubIpsApi* | [**deleteFilter**](docs/ScrubIpsApi.md#deleteFilter) | **POST** /scrub_ips/{id}/delete_filter | Remove a scrubbing filter by matching filter_type and port
+*InterServerManagementApi.ScrubIpsApi* | [**disableScrub**](docs/ScrubIpsApi.md#disableScrub) | **GET** /scrub_ips/{id}/disable | Disable DDoS scrubbing and remove the BGP announcement on the IP
+*InterServerManagementApi.ScrubIpsApi* | [**enableScrub**](docs/ScrubIpsApi.md#enableScrub) | **GET** /scrub_ips/{id}/enable | Enable DDoS scrubbing (BGP announcement) on the service&#x27;s protected IP
+*InterServerManagementApi.ScrubIpsApi* | [**getOrderDetail**](docs/ScrubIpsApi.md#getOrderDetail) | **GET** /scrub_ips/order | Get plans, pricing, and eligible IPs for a new Scrub IP order
+*InterServerManagementApi.ScrubIpsApi* | [**getScrubIpDetails**](docs/ScrubIpsApi.md#getScrubIpDetails) | **GET** /scrub_ips/{id} | Get full Scrub IP service detail (rules + geo + filters)
+*InterServerManagementApi.ScrubIpsApi* | [**getScrubIpFilterTypes**](docs/ScrubIpsApi.md#getScrubIpFilterTypes) | **GET** /scrub_ips/filter_types | List enabled traffic filter profiles available for createFilter
+*InterServerManagementApi.ScrubIpsApi* | [**getScrubIpInvoices**](docs/ScrubIpsApi.md#getScrubIpInvoices) | **GET** /scrub_ips/{id}/invoices | List recurring and one-time invoices billed for this Scrub IP service
+*InterServerManagementApi.ScrubIpsApi* | [**getScrubIpLogs**](docs/ScrubIpsApi.md#getScrubIpLogs) | **GET** /scrub_ips/{id}/logs | Get last 50000 packet/event log entries for the protected IP
+*InterServerManagementApi.ScrubIpsApi* | [**getScrubIpsList**](docs/ScrubIpsApi.md#getScrubIpsList) | **GET** /scrub_ips | List all Scrub IP DDoS protection services on the authenticated account
+*InterServerManagementApi.ScrubIpsApi* | [**placeScrubOrder**](docs/ScrubIpsApi.md#placeScrubOrder) | **POST** /scrub_ips/order | Place a new Scrub IP DDoS protection order and generate an invoice
+*InterServerManagementApi.ScrubIpsApi* | [**putScrubIps**](docs/ScrubIpsApi.md#putScrubIps) | **PUT** /scrub_ips/order | Validate a Scrub IP order and return effective pricing without billing
+*InterServerManagementApi.ScrubIpsApi* | [**scrubIpsDeleteGeoRule**](docs/ScrubIpsApi.md#scrubIpsDeleteGeoRule) | **POST** /scrub_ips/{id}/delete_geo_rule | Delete a geo firewall rule by rule_id from getScrubIpDetails
+*InterServerManagementApi.ScrubIpsApi* | [**scrubIpsDeleteRule**](docs/ScrubIpsApi.md#scrubIpsDeleteRule) | **POST** /scrub_ips/{id}/delete_rule | Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
+*InterServerManagementApi.ServersApi* | [**addServer**](docs/ServersApi.md#addServer) | **POST** /servers/order | Place a custom dedicated server order, creating a real billable invoice
+*InterServerManagementApi.ServersApi* | [**buyItNowServerOrder**](docs/ServersApi.md#buyItNowServerOrder) | **GET** /servers/order/buy_now_server | Get configurable options for a Rapid Deploy / coupon dedicated server
+*InterServerManagementApi.ServersApi* | [**getMPServers**](docs/ServersApi.md#getMPServers) | **GET** /buy_now_servers_list | List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+*InterServerManagementApi.ServersApi* | [**getNewServer**](docs/ServersApi.md#getNewServer) | **GET** /servers/order | Get custom dedicated server ordering options, regions, and pricing
+*InterServerManagementApi.ServersApi* | [**getServerInfo**](docs/ServersApi.md#getServerInfo) | **GET** /servers/{id} | Get full hardware, network, and lifecycle details for a dedicated server
+*InterServerManagementApi.ServersApi* | [**getServerInvoices**](docs/ServersApi.md#getServerInvoices) | **GET** /servers/{id}/invoices | List billing invoices (charges + payments) tied to one dedicated server
+*InterServerManagementApi.ServersApi* | [**getServerList**](docs/ServersApi.md#getServerList) | **GET** /servers | List all dedicated servers owned by the authenticated customer
+*InterServerManagementApi.ServersApi* | [**getServerReverseDns**](docs/ServersApi.md#getServerReverseDns) | **GET** /servers/{id}/reverse_dns | List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs
+*InterServerManagementApi.ServersApi* | [**getServersWelcomeEmail**](docs/ServersApi.md#getServersWelcomeEmail) | **GET** /servers/{id}/welcome_email | Resend the dedicated server welcome email with setup credentials
+*InterServerManagementApi.ServersApi* | [**placeBuyNowServer**](docs/ServersApi.md#placeBuyNowServer) | **POST** /servers/order/buy_now_server | Place a Rapid Deploy / coupon dedicated server order; creates real invoice
+*InterServerManagementApi.ServersApi* | [**postServerReverseDns**](docs/ServersApi.md#postServerReverseDns) | **POST** /servers/{id}/reverse_dns | Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
+*InterServerManagementApi.ServersApi* | [**serverBulkIpmiPowerGet**](docs/ServersApi.md#serverBulkIpmiPowerGet) | **GET** /servers/bulk/ipmi_power | Read IPMI chassis power status for many dedicated servers in one call
+*InterServerManagementApi.ServersApi* | [**serverIpmiLiveGet**](docs/ServersApi.md#serverIpmiLiveGet) | **GET** /servers/{id}/ipmi_live | Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
+*InterServerManagementApi.ServersApi* | [**serverIpmiLivePost**](docs/ServersApi.md#serverIpmiLivePost) | **POST** /servers/{id}/ipmi_live | Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
+*InterServerManagementApi.ServersApi* | [**serverIpmiPowerGet**](docs/ServersApi.md#serverIpmiPowerGet) | **GET** /servers/{id}/ipmi_power | Read IPMI chassis power status for a dedicated server (single)
+*InterServerManagementApi.ServersApi* | [**serverIpmiPowerPost**](docs/ServersApi.md#serverIpmiPowerPost) | **POST** /servers/{id}/ipmi_power | DESTRUCTIVE — change chassis power state on a bare-metal server
+*InterServerManagementApi.ServersApi* | [**serversCancel**](docs/ServersApi.md#serversCancel) | **DELETE** /servers/{id} | Cancel a dedicated server service at the end of the current billing cycle
+*InterServerManagementApi.ServersApi* | [**updateServerInfo**](docs/ServersApi.md#updateServerInfo) | **POST** /servers/{id} | Update settings on a dedicated server order (shares handler with view)
+*InterServerManagementApi.TicketsApi* | [**addNewTicket**](docs/TicketsApi.md#addNewTicket) | **POST** /tickets/new | Open a new helpdesk ticket, optionally linked to a service and attachments
+*InterServerManagementApi.TicketsApi* | [**closeTicket**](docs/TicketsApi.md#closeTicket) | **GET** /tickets/{id}/close | Close an open support ticket via simple GET request (no body required)
+*InterServerManagementApi.TicketsApi* | [**deleteTicketInfo**](docs/TicketsApi.md#deleteTicketInfo) | **DELETE** /tickets/{id} | Close a customer ticket via DELETE verb (closes only, never destroys data)
+*InterServerManagementApi.TicketsApi* | [**getNewTicket**](docs/TicketsApi.md#getNewTicket) | **GET** /tickets/new | Fetch services and product options to populate the new-ticket form
+*InterServerManagementApi.TicketsApi* | [**getTicketInfo**](docs/TicketsApi.md#getTicketInfo) | **GET** /tickets/{id} | Get full ticket details including subject, status, and the reply thread
+*InterServerManagementApi.TicketsApi* | [**getTicketsList**](docs/TicketsApi.md#getTicketsList) | **GET** /tickets | List the authenticated account&#x27;s support tickets with status and date filters
+*InterServerManagementApi.TicketsApi* | [**postTicketInfo**](docs/TicketsApi.md#postTicketInfo) | **POST** /tickets/{id} | Append a reply (and optional attachment, server-access fields) to a ticket
+*InterServerManagementApi.TicketsApi* | [**postTicketsList**](docs/TicketsApi.md#postTicketsList) | **POST** /tickets | Search the authenticated account&#x27;s tickets by subject, email, or mask ID
+*InterServerManagementApi.TicketsApi* | [**putTicketInfo**](docs/TicketsApi.md#putTicketInfo) | **PUT** /tickets/{id} | Update a ticket&#x27;s properties such as subject or status (stub, not implemented)
+*InterServerManagementApi.TicketsApi* | [**replyTicket**](docs/TicketsApi.md#replyTicket) | **POST** /tickets/{id}/reply | Post a simple text reply to an existing ticket thread (no attachments)
+*InterServerManagementApi.TicketsApi* | [**updateTicketInfo**](docs/TicketsApi.md#updateTicketInfo) | **POST** /tickets/{id}/update | Update a ticket&#x27;s custom field values (server-access details, etc.)
+*InterServerManagementApi.VPSApi* | [**addVps**](docs/VPSApi.md#addVps) | **POST** /vps/order | Place a new VPS order, create the invoice, and queue provisioning
+*InterServerManagementApi.VPSApi* | [**deleteVpsBackup**](docs/VPSApi.md#deleteVpsBackup) | **DELETE** /vps/{id}/backups | Permanently delete a VPS backup file by name (irreversible)
+*InterServerManagementApi.VPSApi* | [**doVpsBlockSmtp**](docs/VPSApi.md#doVpsBlockSmtp) | **GET** /vps/{id}/block_smtp | Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
+*InterServerManagementApi.VPSApi* | [**doVpsDisableCd**](docs/VPSApi.md#doVpsDisableCd) | **GET** /vps/{id}/disable_cd | Remove the virtual CD/DVD device entirely from the VPS configuration
+*InterServerManagementApi.VPSApi* | [**doVpsDisableQuota**](docs/VPSApi.md#doVpsDisableQuota) | **GET** /vps/{id}/disable_quota | Disable per-user disk quota enforcement inside the VPS guest OS
+*InterServerManagementApi.VPSApi* | [**doVpsEjectCd**](docs/VPSApi.md#doVpsEjectCd) | **GET** /vps/{id}/eject_cd | Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
+*InterServerManagementApi.VPSApi* | [**doVpsEnableQuota**](docs/VPSApi.md#doVpsEnableQuota) | **GET** /vps/{id}/enable_quota | Enable per-user disk quota enforcement inside the VPS guest OS
+*InterServerManagementApi.VPSApi* | [**doVpsRestart**](docs/VPSApi.md#doVpsRestart) | **GET** /vps/{id}/restart | Reboot the VPS — preferred over stop+start for software changes
+*InterServerManagementApi.VPSApi* | [**doVpsStart**](docs/VPSApi.md#doVpsStart) | **GET** /vps/{id}/start | Power on a stopped VPS instance
+*InterServerManagementApi.VPSApi* | [**doVpsStop**](docs/VPSApi.md#doVpsStop) | **GET** /vps/{id}/stop | Power off a running VPS — billing continues until cancellation
+*InterServerManagementApi.VPSApi* | [**downloadVpsBackup**](docs/VPSApi.md#downloadVpsBackup) | **PATCH** /vps/{id}/backups | Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
+*InterServerManagementApi.VPSApi* | [**getNewVps**](docs/VPSApi.md#getNewVps) | **GET** /vps/order | Get the VPS order catalog — platforms, OS templates, locations, pricing
+*InterServerManagementApi.VPSApi* | [**getVpsBackup**](docs/VPSApi.md#getVpsBackup) | **GET** /vps/{id}/backup | Trigger a manual on-demand snapshot/backup of the VPS
+*InterServerManagementApi.VPSApi* | [**getVpsBackups**](docs/VPSApi.md#getVpsBackups) | **GET** /vps/{id}/backups | List existing backups for the VPS across Swift, MinIO, and ZFS
+*InterServerManagementApi.VPSApi* | [**getVpsBuyHdSpace**](docs/VPSApi.md#getVpsBuyHdSpace) | **GET** /vps/{id}/buy_hd_space | Get current additional disk size and per-GB monthly cost for the VPS
+*InterServerManagementApi.VPSApi* | [**getVpsBuyIp**](docs/VPSApi.md#getVpsBuyIp) | **GET** /vps/{id}/buy_ip | Read current additional IPs, cap, and per-IP monthly cost for the VPS
+*InterServerManagementApi.VPSApi* | [**getVpsChangeHostname**](docs/VPSApi.md#getVpsChangeHostname) | **GET** /vps/{id}/change_hostname | Read the VPS&#x27;s current hostname before changing it
+*InterServerManagementApi.VPSApi* | [**getVpsChangeRootPassword**](docs/VPSApi.md#getVpsChangeRootPassword) | **GET** /vps/{id}/change_root_password | Pre-flight check before changing the VPS root password
+*InterServerManagementApi.VPSApi* | [**getVpsChangeTimezone**](docs/VPSApi.md#getVpsChangeTimezone) | **GET** /vps/{id}/change_timezone | List IANA timezones supported by the VPS guest OS
+*InterServerManagementApi.VPSApi* | [**getVpsInfo**](docs/VPSApi.md#getVpsInfo) | **GET** /vps/{id} | Get full details for one VPS — IPs, hostname, OS, slices, status, addons
+*InterServerManagementApi.VPSApi* | [**getVpsInsertCd**](docs/VPSApi.md#getVpsInsertCd) | **GET** /vps/{id}/insert_cd | List ISO templates that can be mounted in the VPS virtual CD drive
+*InterServerManagementApi.VPSApi* | [**getVpsInvoices**](docs/VPSApi.md#getVpsInvoices) | **GET** /vps/{id}/invoices | List all billing invoices associated with this specific VPS
+*InterServerManagementApi.VPSApi* | [**getVpsList**](docs/VPSApi.md#getVpsList) | **GET** /vps | List all VPS services on the customer&#x27;s account
+*InterServerManagementApi.VPSApi* | [**getVpsReinstallOs**](docs/VPSApi.md#getVpsReinstallOs) | **GET** /vps/{id}/reinstall_os | List OS templates compatible with this VPS&#x27;s hypervisor for reinstall
+*InterServerManagementApi.VPSApi* | [**getVpsResetPassword**](docs/VPSApi.md#getVpsResetPassword) | **GET** /vps/{id}/reset_password | Pre-flight check before resetting the VPS root password to a random value
+*InterServerManagementApi.VPSApi* | [**getVpsReverseDns**](docs/VPSApi.md#getVpsReverseDns) | **GET** /vps/{id}/reverse_dns | Read the current PTR (reverse-DNS) records for every IP on the VPS
+*InterServerManagementApi.VPSApi* | [**getVpsSetupVnc**](docs/VPSApi.md#getVpsSetupVnc) | **GET** /vps/{id}/setup_vnc | Read current VNC console connection info for the VPS
+*InterServerManagementApi.VPSApi* | [**getVpsSlices**](docs/VPSApi.md#getVpsSlices) | **GET** /vps/{id}/slices | Read current slice count, min/max range, and prorated per-slice upgrade cost
+*InterServerManagementApi.VPSApi* | [**getVpsTrafficUsage**](docs/VPSApi.md#getVpsTrafficUsage) | **GET** /vps/{id}/traffic_usage | Read bandwidth traffic usage data for the VPS
+*InterServerManagementApi.VPSApi* | [**getVpsViewDesktop**](docs/VPSApi.md#getVpsViewDesktop) | **GET** /vps/{id}/view_desktop | Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
+*InterServerManagementApi.VPSApi* | [**getVpsWelcomeEmail**](docs/VPSApi.md#getVpsWelcomeEmail) | **GET** /vps/{id}/welcome_email | Resend the welcome email containing VPS IP, hostname, and root credentials
+*InterServerManagementApi.VPSApi* | [**postVpsBuyHdSpace**](docs/VPSApi.md#postVpsBuyHdSpace) | **POST** /vps/{id}/buy_hd_space | Buy or resize the VPS additional-disk addon and create a prorated invoice
+*InterServerManagementApi.VPSApi* | [**postVpsBuyIp**](docs/VPSApi.md#postVpsBuyIp) | **POST** /vps/{id}/buy_ip | Purchase one additional IP for the VPS and create the invoice
+*InterServerManagementApi.VPSApi* | [**postVpsChangeHostname**](docs/VPSApi.md#postVpsChangeHostname) | **POST** /vps/{id}/change_hostname | Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
+*InterServerManagementApi.VPSApi* | [**postVpsChangeRootPassword**](docs/VPSApi.md#postVpsChangeRootPassword) | **POST** /vps/{id}/change_root_password | Set a specific new root/Administrator password on the VPS
+*InterServerManagementApi.VPSApi* | [**postVpsChangeTimezone**](docs/VPSApi.md#postVpsChangeTimezone) | **POST** /vps/{id}/change_timezone | Set the system timezone on the VPS guest OS
+*InterServerManagementApi.VPSApi* | [**postVpsChangeWebuzoPassword**](docs/VPSApi.md#postVpsChangeWebuzoPassword) | **POST** /vps/{id}/change_webuzo_password | Rotate the Webuzo control panel admin password (re-auth required)
+*InterServerManagementApi.VPSApi* | [**postVpsInsertCd**](docs/VPSApi.md#postVpsInsertCd) | **POST** /vps/{id}/insert_cd | Mount an ISO image in the VPS virtual CD drive from a URL
+*InterServerManagementApi.VPSApi* | [**postVpsReinstallOs**](docs/VPSApi.md#postVpsReinstallOs) | **POST** /vps/{id}/reinstall_os | Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
+*InterServerManagementApi.VPSApi* | [**postVpsResetPassword**](docs/VPSApi.md#postVpsResetPassword) | **POST** /vps/{id}/reset_password | Reset the VPS root password to a server-generated random value
+*InterServerManagementApi.VPSApi* | [**postVpsRestore**](docs/VPSApi.md#postVpsRestore) | **POST** /vps/{id}/restore | Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
+*InterServerManagementApi.VPSApi* | [**postVpsReverseDns**](docs/VPSApi.md#postVpsReverseDns) | **POST** /vps/{id}/reverse_dns | Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
+*InterServerManagementApi.VPSApi* | [**postVpsSetupVnc**](docs/VPSApi.md#postVpsSetupVnc) | **POST** /vps/{id}/setup_vnc | Provision or refresh the VNC console endpoint for the VPS
+*InterServerManagementApi.VPSApi* | [**postVpsSlices**](docs/VPSApi.md#postVpsSlices) | **POST** /vps/{id}/slices | Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
+*InterServerManagementApi.VPSApi* | [**postVpsTrafficUsage**](docs/VPSApi.md#postVpsTrafficUsage) | **POST** /vps/{id}/traffic_usage | Search/filter VPS bandwidth usage with custom criteria (reserved)
+*InterServerManagementApi.VPSApi* | [**postVpsViewDesktop**](docs/VPSApi.md#postVpsViewDesktop) | **POST** /vps/{id}/view_desktop | Refresh the remote-desktop session connection info after IP/hostname changes
+*InterServerManagementApi.VPSApi* | [**putVps**](docs/VPSApi.md#putVps) | **PUT** /vps/order | Validate a VPS order configuration and quote the cost — dry run, no charge
+*InterServerManagementApi.VPSApi* | [**putVpsBuyHdSpace**](docs/VPSApi.md#putVpsBuyHdSpace) | **PUT** /vps/{id}/buy_hd_space | Preview cost to set additional VPS disk to a target GB size — dry run
+*InterServerManagementApi.VPSApi* | [**updateVpsInfo**](docs/VPSApi.md#updateVpsInfo) | **POST** /vps/{id} | Update editable settings on a VPS service record
+*InterServerManagementApi.VPSApi* | [**vPSCancel**](docs/VPSApi.md#vPSCancel) | **DELETE** /vps/{id} | Cancel a VPS service at the end of the current billing cycle
+*InterServerManagementApi.WebhostingApi* | [**addWebsite**](docs/WebhostingApi.md#addWebsite) | **POST** /websites/order | Place a new webhosting order, create the invoice, and queue provisioning
+*InterServerManagementApi.WebhostingApi* | [**getNewWebsite**](docs/WebhostingApi.md#getNewWebsite) | **GET** /websites/order | Read the webhosting order catalog — plans, packages, promo offers, pricing
+*InterServerManagementApi.WebhostingApi* | [**getWebsiteBuyIp**](docs/WebhostingApi.md#getWebsiteBuyIp) | **GET** /websites/{id}/buy_ip | Read website IPs, current reverse DNS, and additional-IP pricing
+*InterServerManagementApi.WebhostingApi* | [**getWebsiteInfo**](docs/WebhostingApi.md#getWebsiteInfo) | **GET** /websites/{id} | Read full configuration and status detail for one webhosting service
+*InterServerManagementApi.WebhostingApi* | [**getWebsiteInvoices**](docs/WebhostingApi.md#getWebsiteInvoices) | **GET** /websites/{id}/invoices | List all billing invoices and recurring charges scoped to one website
+*InterServerManagementApi.WebhostingApi* | [**getWebsiteList**](docs/WebhostingApi.md#getWebsiteList) | **GET** /websites | List the caller&#x27;s webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
+*InterServerManagementApi.WebhostingApi* | [**getWebsitesBackups**](docs/WebhostingApi.md#getWebsitesBackups) | **GET** /websites/{id}/backups | List off-site cpmove backups stored in Swift — list or inline-download archive
+*InterServerManagementApi.WebhostingApi* | [**getWebsitesLogin**](docs/WebhostingApi.md#getWebsitesLogin) | **GET** /websites/{id}/login | Get a one-time auto-login URL for the website&#x27;s control panel
+*InterServerManagementApi.WebhostingApi* | [**getWebsitesWelcomeEmail**](docs/WebhostingApi.md#getWebsitesWelcomeEmail) | **GET** /websites/{id}/welcome_email | Resend the webhosting welcome email with control-panel credentials and URL
+*InterServerManagementApi.WebhostingApi* | [**gettWebsiteReverseDns**](docs/WebhostingApi.md#gettWebsiteReverseDns) | **GET** /websites/{id}/reverse_dns | Read current reverse-DNS (PTR) records for the website&#x27;s IPs
+*InterServerManagementApi.WebhostingApi* | [**postWebsiteBuyIp**](docs/WebhostingApi.md#postWebsiteBuyIp) | **POST** /websites/{id}/buy_ip | Buy an additional IP for the website OR update reverse DNS records
+*InterServerManagementApi.WebhostingApi* | [**postWebsiteMigration**](docs/WebhostingApi.md#postWebsiteMigration) | **POST** /websites/{id}/migration | Submit a request for InterServer staff to migrate a website from another host
+*InterServerManagementApi.WebhostingApi* | [**postWebsitesReverseDns**](docs/WebhostingApi.md#postWebsitesReverseDns) | **POST** /websites/{id}/reverse_dns | Bulk-update reverse-DNS (PTR) records for one or more website IPs
+*InterServerManagementApi.WebhostingApi* | [**putWebsites**](docs/WebhostingApi.md#putWebsites) | **PUT** /websites/order | Validate a webhosting order and preview cost — dry run, no charge
+*InterServerManagementApi.WebhostingApi* | [**updateWebsiteInfo**](docs/WebhostingApi.md#updateWebsiteInfo) | **POST** /websites/{id} | POST mutation hook for the website detail page (use dedicated ops where possible)
+*InterServerManagementApi.WebhostingApi* | [**webhostingCancel**](docs/WebhostingApi.md#webhostingCancel) | **DELETE** /websites/{id} | Schedule termination of a webhosting service — wipes panel account at cycle end
 
 ## Documentation for Models
 
@@ -446,7 +452,6 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.AllOfServerOrderFieldLabelsMemory](docs/AllOfServerOrderFieldLabelsMemory.md)
  - [InterServerManagementApi.AllOfServerOrderFieldLabelsOs](docs/AllOfServerOrderFieldLabelsOs.md)
  - [InterServerManagementApi.AllOfServerOrderFieldLabelsRaid](docs/AllOfServerOrderFieldLabelsRaid.md)
- - [InterServerManagementApi.AssetServer](docs/AssetServer.md)
  - [InterServerManagementApi.Backup](docs/Backup.md)
  - [InterServerManagementApi.BackupBillingDetails](docs/BackupBillingDetails.md)
  - [InterServerManagementApi.BackupClientLink](docs/BackupClientLink.md)
@@ -465,7 +470,6 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.BackupsOrder](docs/BackupsOrder.md)
  - [InterServerManagementApi.BackupsOrderPackageCosts](docs/BackupsOrderPackageCosts.md)
  - [InterServerManagementApi.BackupsOrderServiceTypes](docs/BackupsOrderServiceTypes.md)
- - [InterServerManagementApi.Bandwidth](docs/Bandwidth.md)
  - [InterServerManagementApi.BillingAddCcRequest](docs/BillingAddCcRequest.md)
  - [InterServerManagementApi.BillingInvoiceDetail](docs/BillingInvoiceDetail.md)
  - [InterServerManagementApi.BillingInvoiceList](docs/BillingInvoiceList.md)
@@ -480,11 +484,6 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.ChargeInvoiceRowsPaidInvoices](docs/ChargeInvoiceRowsPaidInvoices.md)
  - [InterServerManagementApi.ChargeInvoiceRowsRefundInvoices](docs/ChargeInvoiceRowsRefundInvoices.md)
  - [InterServerManagementApi.CloseTicketResponseSchema](docs/CloseTicketResponseSchema.md)
- - [InterServerManagementApi.ConfigIds](docs/ConfigIds.md)
- - [InterServerManagementApi.ConfigLists](docs/ConfigLists.md)
- - [InterServerManagementApi.ControlPanel](docs/ControlPanel.md)
- - [InterServerManagementApi.Cpu](docs/Cpu.md)
- - [InterServerManagementApi.CpuWithDefaults](docs/CpuWithDefaults.md)
  - [InterServerManagementApi.CreateFilter](docs/CreateFilter.md)
  - [InterServerManagementApi.CreateFirewallRule](docs/CreateFirewallRule.md)
  - [InterServerManagementApi.CreateGeoFirewallRule](docs/CreateGeoFirewallRule.md)
@@ -517,11 +516,11 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.DomainNameserverPostRequest](docs/DomainNameserverPostRequest.md)
  - [InterServerManagementApi.DomainNameserverPutRequest](docs/DomainNameserverPutRequest.md)
  - [InterServerManagementApi.DomainOrder](docs/DomainOrder.md)
+ - [InterServerManagementApi.DomainOrderRequest](docs/DomainOrderRequest.md)
  - [InterServerManagementApi.DomainOrderResponse](docs/DomainOrderResponse.md)
  - [InterServerManagementApi.DomainOrderResponseAttributes](docs/DomainOrderResponseAttributes.md)
  - [InterServerManagementApi.DomainOrderServices](docs/DomainOrderServices.md)
  - [InterServerManagementApi.DomainOrderServices10001](docs/DomainOrderServices10001.md)
- - [InterServerManagementApi.DomainOrderTldServices](docs/DomainOrderTldServices.md)
  - [InterServerManagementApi.DomainOwnerContact](docs/DomainOwnerContact.md)
  - [InterServerManagementApi.DomainProvProcessPending](docs/DomainProvProcessPending.md)
  - [InterServerManagementApi.DomainProvProcessPendingAttributes](docs/DomainProvProcessPendingAttributes.md)
@@ -534,10 +533,8 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.EmailAddress](docs/EmailAddress.md)
  - [InterServerManagementApi.EmailAddressName](docs/EmailAddressName.md)
  - [InterServerManagementApi.EndDate](docs/EndDate.md)
- - [InterServerManagementApi.FieldLabel](docs/FieldLabel.md)
- - [InterServerManagementApi.FormValues](docs/FormValues.md)
+ - [InterServerManagementApi.FloatingIpOrderRequest](docs/FloatingIpOrderRequest.md)
  - [InterServerManagementApi.GenericResponse](docs/GenericResponse.md)
- - [InterServerManagementApi.HardDrive](docs/HardDrive.md)
  - [InterServerManagementApi.Home](docs/Home.md)
  - [InterServerManagementApi.HomeDetails](docs/HomeDetails.md)
  - [InterServerManagementApi.HomeDetailsModules](docs/HomeDetailsModules.md)
@@ -563,6 +560,8 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.HomeTicketStatus](docs/HomeTicketStatus.md)
  - [InterServerManagementApi.HomeTicketStatusView](docs/HomeTicketStatusView.md)
  - [InterServerManagementApi.HostnameObject](docs/HostnameObject.md)
+ - [InterServerManagementApi.IdAlertsBody](docs/IdAlertsBody.md)
+ - [InterServerManagementApi.IdAlertsBody1](docs/IdAlertsBody1.md)
  - [InterServerManagementApi.IdBackupsBody](docs/IdBackupsBody.md)
  - [InterServerManagementApi.IdBackupsBody1](docs/IdBackupsBody1.md)
  - [InterServerManagementApi.IdBackupsBody2](docs/IdBackupsBody2.md)
@@ -571,30 +570,32 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.IdBuyIpBody1](docs/IdBuyIpBody1.md)
  - [InterServerManagementApi.IdMigrationBody](docs/IdMigrationBody.md)
  - [InterServerManagementApi.IdMigrationBody1](docs/IdMigrationBody1.md)
+ - [InterServerManagementApi.IdVerifyBody](docs/IdVerifyBody.md)
+ - [InterServerManagementApi.IdVerifyBody1](docs/IdVerifyBody1.md)
  - [InterServerManagementApi.InlineResponse200](docs/InlineResponse200.md)
  - [InterServerManagementApi.InlineResponse2001](docs/InlineResponse2001.md)
  - [InterServerManagementApi.InlineResponse20010](docs/InlineResponse20010.md)
  - [InterServerManagementApi.InlineResponse20011](docs/InlineResponse20011.md)
  - [InterServerManagementApi.InlineResponse20012](docs/InlineResponse20012.md)
- - [InterServerManagementApi.InlineResponse20012BillingDetails](docs/InlineResponse20012BillingDetails.md)
- - [InterServerManagementApi.InlineResponse20012ClientLinks](docs/InlineResponse20012ClientLinks.md)
- - [InterServerManagementApi.InlineResponse20012ExtraInfoTables](docs/InlineResponse20012ExtraInfoTables.md)
- - [InterServerManagementApi.InlineResponse20012ExtraInfoTablesScrubIps](docs/InlineResponse20012ExtraInfoTablesScrubIps.md)
- - [InterServerManagementApi.InlineResponse20012ExtraInfoTablesScrubIpsRows](docs/InlineResponse20012ExtraInfoTablesScrubIpsRows.md)
- - [InterServerManagementApi.InlineResponse20012FilterFirewall](docs/InlineResponse20012FilterFirewall.md)
- - [InterServerManagementApi.InlineResponse20012FilterFirewallFilters](docs/InlineResponse20012FilterFirewallFilters.md)
- - [InterServerManagementApi.InlineResponse20012FilterFirewallRules](docs/InlineResponse20012FilterFirewallRules.md)
- - [InterServerManagementApi.InlineResponse20012ServiceInfo](docs/InlineResponse20012ServiceInfo.md)
  - [InterServerManagementApi.InlineResponse20013](docs/InlineResponse20013.md)
+ - [InterServerManagementApi.InlineResponse20013BillingDetails](docs/InlineResponse20013BillingDetails.md)
+ - [InterServerManagementApi.InlineResponse20013ClientLinks](docs/InlineResponse20013ClientLinks.md)
+ - [InterServerManagementApi.InlineResponse20013ExtraInfoTables](docs/InlineResponse20013ExtraInfoTables.md)
+ - [InterServerManagementApi.InlineResponse20013ExtraInfoTablesScrubIps](docs/InlineResponse20013ExtraInfoTablesScrubIps.md)
+ - [InterServerManagementApi.InlineResponse20013ExtraInfoTablesScrubIpsRows](docs/InlineResponse20013ExtraInfoTablesScrubIpsRows.md)
+ - [InterServerManagementApi.InlineResponse20013FilterFirewall](docs/InlineResponse20013FilterFirewall.md)
+ - [InterServerManagementApi.InlineResponse20013FilterFirewallFilters](docs/InlineResponse20013FilterFirewallFilters.md)
+ - [InterServerManagementApi.InlineResponse20013FilterFirewallRules](docs/InlineResponse20013FilterFirewallRules.md)
+ - [InterServerManagementApi.InlineResponse20013ServiceInfo](docs/InlineResponse20013ServiceInfo.md)
  - [InterServerManagementApi.InlineResponse20014](docs/InlineResponse20014.md)
  - [InterServerManagementApi.InlineResponse20015](docs/InlineResponse20015.md)
  - [InterServerManagementApi.InlineResponse20016](docs/InlineResponse20016.md)
  - [InterServerManagementApi.InlineResponse20017](docs/InlineResponse20017.md)
  - [InterServerManagementApi.InlineResponse20018](docs/InlineResponse20018.md)
- - [InterServerManagementApi.InlineResponse20018Ips](docs/InlineResponse20018Ips.md)
- - [InterServerManagementApi.InlineResponse20018PackageCosts](docs/InlineResponse20018PackageCosts.md)
- - [InterServerManagementApi.InlineResponse20018ServiceTypes](docs/InlineResponse20018ServiceTypes.md)
  - [InterServerManagementApi.InlineResponse20019](docs/InlineResponse20019.md)
+ - [InterServerManagementApi.InlineResponse20019Ips](docs/InlineResponse20019Ips.md)
+ - [InterServerManagementApi.InlineResponse20019PackageCosts](docs/InlineResponse20019PackageCosts.md)
+ - [InterServerManagementApi.InlineResponse20019ServiceTypes](docs/InlineResponse20019ServiceTypes.md)
  - [InterServerManagementApi.InlineResponse2002](docs/InlineResponse2002.md)
  - [InterServerManagementApi.InlineResponse20020](docs/InlineResponse20020.md)
  - [InterServerManagementApi.InlineResponse20021](docs/InlineResponse20021.md)
@@ -604,11 +605,13 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.InlineResponse20025](docs/InlineResponse20025.md)
  - [InterServerManagementApi.InlineResponse20026](docs/InlineResponse20026.md)
  - [InterServerManagementApi.InlineResponse20027](docs/InlineResponse20027.md)
- - [InterServerManagementApi.InlineResponse20027Bandwidth](docs/InlineResponse20027Bandwidth.md)
- - [InterServerManagementApi.InlineResponse20027Cp](docs/InlineResponse20027Cp.md)
- - [InterServerManagementApi.InlineResponse20027Ips](docs/InlineResponse20027Ips.md)
- - [InterServerManagementApi.InlineResponse20027Os](docs/InlineResponse20027Os.md)
- - [InterServerManagementApi.InlineResponse20027Raid](docs/InlineResponse20027Raid.md)
+ - [InterServerManagementApi.InlineResponse20028](docs/InlineResponse20028.md)
+ - [InterServerManagementApi.InlineResponse20029](docs/InlineResponse20029.md)
+ - [InterServerManagementApi.InlineResponse20029Bandwidth](docs/InlineResponse20029Bandwidth.md)
+ - [InterServerManagementApi.InlineResponse20029Cp](docs/InlineResponse20029Cp.md)
+ - [InterServerManagementApi.InlineResponse20029Ips](docs/InlineResponse20029Ips.md)
+ - [InterServerManagementApi.InlineResponse20029Os](docs/InlineResponse20029Os.md)
+ - [InterServerManagementApi.InlineResponse20029Raid](docs/InlineResponse20029Raid.md)
  - [InterServerManagementApi.InlineResponse2003](docs/InlineResponse2003.md)
  - [InterServerManagementApi.InlineResponse2004](docs/InlineResponse2004.md)
  - [InterServerManagementApi.InlineResponse2005](docs/InlineResponse2005.md)
@@ -634,9 +637,7 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.InlineResponse5003](docs/InlineResponse5003.md)
  - [InterServerManagementApi.InlineResponse5004](docs/InlineResponse5004.md)
  - [InterServerManagementApi.InlineResponse5005](docs/InlineResponse5005.md)
- - [InterServerManagementApi.Invoice](docs/Invoice.md)
- - [InterServerManagementApi.InvoiceRow](docs/InvoiceRow.md)
- - [InterServerManagementApi.IpBlock](docs/IpBlock.md)
+ - [InterServerManagementApi.InlineResponseMap200](docs/InlineResponseMap200.md)
  - [InterServerManagementApi.IpLimitRange](docs/IpLimitRange.md)
  - [InterServerManagementApi.IpObject](docs/IpObject.md)
  - [InterServerManagementApi.License](docs/License.md)
@@ -645,6 +646,7 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.LicenseExtraInfoTables](docs/LicenseExtraInfoTables.md)
  - [InterServerManagementApi.LicenseIpInfo](docs/LicenseIpInfo.md)
  - [InterServerManagementApi.LicenseIpInfoRow](docs/LicenseIpInfoRow.md)
+ - [InterServerManagementApi.LicenseOrderRequest](docs/LicenseOrderRequest.md)
  - [InterServerManagementApi.LicenseRow](docs/LicenseRow.md)
  - [InterServerManagementApi.LicenseServiceInfo](docs/LicenseServiceInfo.md)
  - [InterServerManagementApi.LicenseServiceType](docs/LicenseServiceType.md)
@@ -679,6 +681,7 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.MailLog](docs/MailLog.md)
  - [InterServerManagementApi.MailLogEntry](docs/MailLogEntry.md)
  - [InterServerManagementApi.MailOrder](docs/MailOrder.md)
+ - [InterServerManagementApi.MailOrderRequest](docs/MailOrderRequest.md)
  - [InterServerManagementApi.MailRow](docs/MailRow.md)
  - [InterServerManagementApi.MailSchema](docs/MailSchema.md)
  - [InterServerManagementApi.MailSchemaExtraInfoTables](docs/MailSchemaExtraInfoTables.md)
@@ -691,7 +694,6 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.MailStatsTypeVolumeTo](docs/MailStatsTypeVolumeTo.md)
  - [InterServerManagementApi.MailTutorialsTable](docs/MailTutorialsTable.md)
  - [InterServerManagementApi.MailTutorialsTableRow](docs/MailTutorialsTableRow.md)
- - [InterServerManagementApi.MemoryOption](docs/MemoryOption.md)
  - [InterServerManagementApi.ModuleSettings](docs/ModuleSettings.md)
  - [InterServerManagementApi.Modules](docs/Modules.md)
  - [InterServerManagementApi.MonthlyCounts](docs/MonthlyCounts.md)
@@ -701,17 +703,13 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.OauthBody3](docs/OauthBody3.md)
  - [InterServerManagementApi.OneOfAccountInfoMaxMindResponseRiskScore](docs/OneOfAccountInfoMaxMindResponseRiskScore.md)
  - [InterServerManagementApi.OneOfAccountInfoOauthproviders](docs/OneOfAccountInfoOauthproviders.md)
- - [InterServerManagementApi.OneOfAssetServerBandwidthItems](docs/OneOfAssetServerBandwidthItems.md)
- - [InterServerManagementApi.OneOfAssetServerCPUItems](docs/OneOfAssetServerCPUItems.md)
- - [InterServerManagementApi.OneOfAssetServerIPsItems](docs/OneOfAssetServerIPsItems.md)
- - [InterServerManagementApi.OneOfAssetServerMemoryItems](docs/OneOfAssetServerMemoryItems.md)
  - [InterServerManagementApi.OneOfBuyItNowRowCpuItems](docs/OneOfBuyItNowRowCpuItems.md)
+ - [InterServerManagementApi.OneOfServerOrderPostRequestHd](docs/OneOfServerOrderPostRequestHd.md)
  - [InterServerManagementApi.OneOfVPSTrafficDataDataSectionResponseItems](docs/OneOfVPSTrafficDataDataSectionResponseItems.md)
  - [InterServerManagementApi.OneOfVpsTrafficHistorySectionDataResponseItems](docs/OneOfVpsTrafficHistorySectionDataResponseItems.md)
- - [InterServerManagementApi.OperatingSystem](docs/OperatingSystem.md)
  - [InterServerManagementApi.OrderBuyNowServerBody](docs/OrderBuyNowServerBody.md)
  - [InterServerManagementApi.PasswordRequest](docs/PasswordRequest.md)
- - [InterServerManagementApi.PaymentInvoiceRows](docs/PaymentInvoiceRows.md)
+ - [InterServerManagementApi.QsOrderRequest](docs/QsOrderRequest.md)
  - [InterServerManagementApi.QueueResponse](docs/QueueResponse.md)
  - [InterServerManagementApi.Quickserver](docs/Quickserver.md)
  - [InterServerManagementApi.QuickserverAddons](docs/QuickserverAddons.md)
@@ -734,8 +732,6 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.QuickserverServiceExtra](docs/QuickserverServiceExtra.md)
  - [InterServerManagementApi.QuickserverServiceInfo](docs/QuickserverServiceInfo.md)
  - [InterServerManagementApi.QuickserverServiceMaster](docs/QuickserverServiceMaster.md)
- - [InterServerManagementApi.RaidOption](docs/RaidOption.md)
- - [InterServerManagementApi.Region](docs/Region.md)
  - [InterServerManagementApi.ReplyTicketRequest](docs/ReplyTicketRequest.md)
  - [InterServerManagementApi.ReplyTicketResponseSchema](docs/ReplyTicketResponseSchema.md)
  - [InterServerManagementApi.RestoreRequest](docs/RestoreRequest.md)
@@ -752,6 +748,8 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.ServerAsset](docs/ServerAsset.md)
  - [InterServerManagementApi.ServerAssets](docs/ServerAssets.md)
  - [InterServerManagementApi.ServerBillingDetails](docs/ServerBillingDetails.md)
+ - [InterServerManagementApi.ServerBulkIpmiPowerResponse](docs/ServerBulkIpmiPowerResponse.md)
+ - [InterServerManagementApi.ServerBulkIpmiPowerResponseResults](docs/ServerBulkIpmiPowerResponseResults.md)
  - [InterServerManagementApi.ServerClientLink](docs/ServerClientLink.md)
  - [InterServerManagementApi.ServerExtraInfoTables](docs/ServerExtraInfoTables.md)
  - [InterServerManagementApi.ServerIpmiLiveInfo](docs/ServerIpmiLiveInfo.md)
@@ -774,7 +772,6 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.ServerOrderFieldLabel](docs/ServerOrderFieldLabel.md)
  - [InterServerManagementApi.ServerOrderFieldLabels](docs/ServerOrderFieldLabels.md)
  - [InterServerManagementApi.ServerOrderFormValues](docs/ServerOrderFormValues.md)
- - [InterServerManagementApi.ServerOrderGetResponse](docs/ServerOrderGetResponse.md)
  - [InterServerManagementApi.ServerOrderIP](docs/ServerOrderIP.md)
  - [InterServerManagementApi.ServerOrderIpsLi](docs/ServerOrderIpsLi.md)
  - [InterServerManagementApi.ServerOrderMemory](docs/ServerOrderMemory.md)
@@ -782,6 +779,7 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.ServerOrderMemoryLi254](docs/ServerOrderMemoryLi254.md)
  - [InterServerManagementApi.ServerOrderOS](docs/ServerOrderOS.md)
  - [InterServerManagementApi.ServerOrderOsLi](docs/ServerOrderOsLi.md)
+ - [InterServerManagementApi.ServerOrderPostRequest](docs/ServerOrderPostRequest.md)
  - [InterServerManagementApi.ServerOrderRAID](docs/ServerOrderRAID.md)
  - [InterServerManagementApi.ServerRow](docs/ServerRow.md)
  - [InterServerManagementApi.ServerServiceInfo](docs/ServerServiceInfo.md)
@@ -797,6 +795,7 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.ServiceTypes](docs/ServiceTypes.md)
  - [InterServerManagementApi.Services](docs/Services.md)
  - [InterServerManagementApi.ServicesInfo](docs/ServicesInfo.md)
+ - [InterServerManagementApi.SslOrderRequest](docs/SslOrderRequest.md)
  - [InterServerManagementApi.StartDate](docs/StartDate.md)
  - [InterServerManagementApi.StatusMonthlyBreakdown](docs/StatusMonthlyBreakdown.md)
  - [InterServerManagementApi.SuccessTextResponse](docs/SuccessTextResponse.md)
@@ -854,7 +853,6 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.VpsSnapshot](docs/VpsSnapshot.md)
  - [InterServerManagementApi.VpsTemplateRow](docs/VpsTemplateRow.md)
  - [InterServerManagementApi.VpsTemplatesList](docs/VpsTemplatesList.md)
- - [InterServerManagementApi.VpsTrafficDataDataResponse](docs/VpsTrafficDataDataResponse.md)
  - [InterServerManagementApi.VpsTrafficDataSectionResponse](docs/VpsTrafficDataSectionResponse.md)
  - [InterServerManagementApi.VpsTrafficHistoryResponse](docs/VpsTrafficHistoryResponse.md)
  - [InterServerManagementApi.VpsTrafficHistorySectionDataResponse](docs/VpsTrafficHistorySectionDataResponse.md)
@@ -872,6 +870,8 @@ Class | Method | HTTP request | Description
  - [InterServerManagementApi.WebsiteClientLink](docs/WebsiteClientLink.md)
  - [InterServerManagementApi.WebsiteExtraInfoTables](docs/WebsiteExtraInfoTables.md)
  - [InterServerManagementApi.WebsiteLoginResponse](docs/WebsiteLoginResponse.md)
+ - [InterServerManagementApi.WebsiteOrderPostRequest](docs/WebsiteOrderPostRequest.md)
+ - [InterServerManagementApi.WebsiteOrderPutRequest](docs/WebsiteOrderPutRequest.md)
  - [InterServerManagementApi.WebsiteRow](docs/WebsiteRow.md)
  - [InterServerManagementApi.WebsiteServiceExtra](docs/WebsiteServiceExtra.md)
  - [InterServerManagementApi.WebsiteServiceInfo](docs/WebsiteServiceInfo.md)

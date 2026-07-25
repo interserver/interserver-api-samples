@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LicensesOrderServiceCategories
 void main() {
-  final instance = LicensesOrderServiceCategoriesBuilder();
-  // TODO add properties to the builder and call build()
+  final LicensesOrderServiceCategories? instance = /* LicensesOrderServiceCategories(...) */ null;
+  // TODO add properties to the entity
 
   group(LicensesOrderServiceCategories, () {
-    // LicensesOrderServiceCategories509 licensesOrderServiceCategories509
+    // Optional<LicensesOrderServiceCategories509?> licensesOrderServiceCategories509
     test('to test the property `licensesOrderServiceCategories509`', () async {
       // TODO
     });

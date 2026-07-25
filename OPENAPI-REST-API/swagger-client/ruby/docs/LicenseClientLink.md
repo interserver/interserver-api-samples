@@ -1,4 +1,4 @@
-# SwaggerClient::LicenseClientLink
+# InterserverApiClient::LicenseClientLink
 
 ## Properties
 Name | Type | Description | Notes

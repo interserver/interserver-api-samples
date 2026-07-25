@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BillingVerifyCcRequest
+# InterServerAPI::Object::BillingVerifyCcRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BillingVerifyCcRequest;
+use InterServerAPI::Object::BillingVerifyCcRequest;
 ```
 
 ## Properties

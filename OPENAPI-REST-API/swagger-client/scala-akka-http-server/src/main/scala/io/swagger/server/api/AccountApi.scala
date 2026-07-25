@@ -27,21 +27,6 @@ class AccountApi(
   import accountMarshaller._
 
   lazy val route: Route =
-    path() { 
-      post {
-        
-          
-            
-              
-                
-                  accountService.changeAccountUsername()
-               
-             
-           
-         
-       
-      }
-    } ~
     path() { (name) => 
       delete {
         
@@ -286,20 +271,6 @@ class AccountApi(
 
 trait AccountApiService {
 
-  def changeAccountUsername200(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
-    complete((200, responseTextResponse))
-  def changeAccountUsername400(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((400, responseinline_response_401))
-  def changeAccountUsername401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((401, responseinline_response_401))
-  /**
-   * Code: 200, Message: Response with a text message field., DataType: TextResponse
-   * Code: 400, Message: The specified resource was not found, DataType: inline_response_401
-   * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   */
-  def changeAccountUsername()
-      (implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
-
   def deleteAccountOauthName200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
   def deleteAccountOauthName401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -503,12 +474,6 @@ trait AccountApiMarshaller {
 
   implicit def fromRequestUnmarshallerIpLimitRange: FromRequestUnmarshaller[IpLimitRange]
 
-
-  implicit def toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]
-
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 

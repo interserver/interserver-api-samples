@@ -1,8 +1,8 @@
-# openapi.model.ServerAsset
+# interserver_api.model.ServerAsset
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
@@ -43,19 +43,19 @@ Name | Type | Description | Notes
 **rackSize** | **String** | Size of the rack associated with the asset. | 
 **rackX** | **String** | X-coordinate of the asset within the rack. | 
 **rackY** | **String** | Y-coordinate of the asset within the rack. | 
-**switchports** | **BuiltList&lt;int&gt;** | List of switchports associated with the asset. | 
-**vlans** | **BuiltList&lt;String&gt;** | List of VLANs associated with the asset. | 
-**vlans6** | **BuiltList&lt;String&gt;** | List of IPv6 VLANs associated with the asset. | 
+**switchports** | **List&lt;int&gt;** | List of switchports associated with the asset. | 
+**vlans** | **List&lt;String&gt;** | List of VLANs associated with the asset. | 
+**vlans6** | **List&lt;String&gt;** | List of IPv6 VLANs associated with the asset. | 
 **lease** | [**ServerLease**](ServerLease.md) |  | 
-**mac** | **String** | MAC address associated with the asset. | [optional] 
-**ipmiAdminUsername** | **String** | IPMI admin username associated with the asset. | [optional] 
-**ipmiAdminPassword** | **String** | IPMI admin password associated with the asset. | [optional] 
-**ipmiClientUsername** | **String** | IPMI client username associated with the asset. | [optional] 
-**ipmiClientPassword** | **String** | IPMI client password associated with the asset. | [optional] 
-**ipmiUpdated** | **String** | IPMI update status associated with the asset. | [optional] 
-**createTimestamp** | **String** | Timestamp of asset creation. | [optional] 
-**updateTimestamp** | **String** | Timestamp of asset update. | [optional] 
-**comment** | **String** | Comment associated with the asset. | [optional] 
+**mac** | **Optional&lt;String?&gt;** | MAC address associated with the asset. | [optional] 
+**ipmiAdminUsername** | **Optional&lt;String?&gt;** | IPMI admin username associated with the asset. | [optional] 
+**ipmiAdminPassword** | **Optional&lt;String?&gt;** | IPMI admin password associated with the asset. | [optional] 
+**ipmiClientUsername** | **Optional&lt;String?&gt;** | IPMI client username associated with the asset. | [optional] 
+**ipmiClientPassword** | **Optional&lt;String?&gt;** | IPMI client password associated with the asset. | [optional] 
+**ipmiUpdated** | **Optional&lt;String?&gt;** | IPMI update status associated with the asset. | [optional] 
+**createTimestamp** | **Optional&lt;String?&gt;** | Timestamp of asset creation. | [optional] 
+**updateTimestamp** | **Optional&lt;String?&gt;** | Timestamp of asset update. | [optional] 
+**comment** | **Optional&lt;String?&gt;** | Comment associated with the asset. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailServiceInfo } from './api';
+import { MailServiceInfo } from '@interserver/myadmin-client';
 
 const instance: MailServiceInfo = {
     mail_id,

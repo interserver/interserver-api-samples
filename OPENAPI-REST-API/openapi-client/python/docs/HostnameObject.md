@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.hostname_object import HostnameObject
+from interserver_api_client.models.hostname_object import HostnameObject
 
 # TODO update the JSON string below
 json = "{}"

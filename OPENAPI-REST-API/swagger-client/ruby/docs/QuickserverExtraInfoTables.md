@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverExtraInfoTables
+# InterserverApiClient::QuickserverExtraInfoTables
 
 ## Properties
 Name | Type | Description | Notes

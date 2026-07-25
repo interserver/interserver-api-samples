@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_dnssec_request import DomainDnssecRequest
+from interserver_api_client.models.domain_dnssec_request import DomainDnssecRequest
 
 class TestDomainDnssecRequest(unittest.TestCase):
     """DomainDnssecRequest unit test stubs"""

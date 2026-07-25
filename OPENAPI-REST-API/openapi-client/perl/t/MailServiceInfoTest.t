@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::MailServiceInfo');
+use_ok('InterServerAPI::Object::MailServiceInfo');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::MailServiceInfo->new();
+#my $instance = InterServerAPI::Object::MailServiceInfo->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::MailServiceInfo');
+#isa_ok($instance, 'InterServerAPI::Object::MailServiceInfo');
 
 
 done_testing();

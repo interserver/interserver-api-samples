@@ -21,4 +21,3 @@ case class TicketNewResponse(
   success: Boolean,
   ticket_id: Option[Int] = None
 )
-

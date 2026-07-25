@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::HomeServicesBackups
+# InterServerAPI::Object::HomeServicesBackups
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::HomeServicesBackups;
+use InterServerAPI::Object::HomeServicesBackups;
 ```
 
 ## Properties

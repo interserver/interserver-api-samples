@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$FloatingIpsCancel200Response = Initialize-PSOpenAPIToolsFloatingIpsCancel200Response  -Success null `
+$FloatingIpsCancel200Response = Initialize-InterserverApiFloatingIpsCancel200Response  -Success null `
  -Text null
 ```
 

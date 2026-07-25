@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerIpmiPowerRequest');
+use_ok('InterServerAPI::Object::ServerIpmiPowerRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerIpmiPowerRequest->new();
+#my $instance = InterServerAPI::Object::ServerIpmiPowerRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerIpmiPowerRequest');
+#isa_ok($instance, 'InterServerAPI::Object::ServerIpmiPowerRequest');
 
 
 done_testing();

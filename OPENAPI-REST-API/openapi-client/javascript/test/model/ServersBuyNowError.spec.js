@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServersBuyNowError();
+    instance = new InterserverApiClient.ServersBuyNowError();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('ServersBuyNowError', function() {
     it('should create an instance of ServersBuyNowError', function() {
       // uncomment below and update the code to test ServersBuyNowError
-      //var instance = new InterServerManagementApi.ServersBuyNowError();
-      //expect(instance).to.be.a(InterServerManagementApi.ServersBuyNowError);
+      //var instance = new InterserverApiClient.ServersBuyNowError();
+      //expect(instance).to.be.a(InterserverApiClient.ServersBuyNowError);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.ServersBuyNowError();
+      //var instance = new InterserverApiClient.ServersBuyNowError();
       //expect(instance).to.be();
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.ServersBuyNowError();
+      //var instance = new InterserverApiClient.ServersBuyNowError();
       //expect(instance).to.be();
     });
 
     it('should have the property errors (base name: "errors")', function() {
       // uncomment below and update the code to test the property errors
-      //var instance = new InterServerManagementApi.ServersBuyNowError();
+      //var instance = new InterserverApiClient.ServersBuyNowError();
       //expect(instance).to.be();
     });
 

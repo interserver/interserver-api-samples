@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsTrafficHistorySectionDataResponse = Initialize-PSOpenAPIToolsVpsTrafficHistorySectionDataResponse 
+$VpsTrafficHistorySectionDataResponse = Initialize-InterserverApiVpsTrafficHistorySectionDataResponse 
 ```
 
 - Convert the resource to JSON

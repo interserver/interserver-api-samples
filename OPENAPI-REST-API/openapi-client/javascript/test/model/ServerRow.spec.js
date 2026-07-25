@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerRow();
+    instance = new InterserverApiClient.ServerRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('ServerRow', function() {
     it('should create an instance of ServerRow', function() {
       // uncomment below and update the code to test ServerRow
-      //var instance = new InterServerManagementApi.ServerRow();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerRow);
+      //var instance = new InterserverApiClient.ServerRow();
+      //expect(instance).to.be.a(InterserverApiClient.ServerRow);
     });
 
     it('should have the property server_id (base name: "server_id")', function() {
       // uncomment below and update the code to test the property server_id
-      //var instance = new InterServerManagementApi.ServerRow();
+      //var instance = new InterserverApiClient.ServerRow();
       //expect(instance).to.be();
     });
 
     it('should have the property account_lid (base name: "account_lid")', function() {
       // uncomment below and update the code to test the property account_lid
-      //var instance = new InterServerManagementApi.ServerRow();
+      //var instance = new InterserverApiClient.ServerRow();
       //expect(instance).to.be();
     });
 
     it('should have the property server_hostname (base name: "server_hostname")', function() {
       // uncomment below and update the code to test the property server_hostname
-      //var instance = new InterServerManagementApi.ServerRow();
+      //var instance = new InterserverApiClient.ServerRow();
       //expect(instance).to.be();
     });
 
     it('should have the property server_status (base name: "server_status")', function() {
       // uncomment below and update the code to test the property server_status
-      //var instance = new InterServerManagementApi.ServerRow();
+      //var instance = new InterserverApiClient.ServerRow();
       //expect(instance).to.be();
     });
 

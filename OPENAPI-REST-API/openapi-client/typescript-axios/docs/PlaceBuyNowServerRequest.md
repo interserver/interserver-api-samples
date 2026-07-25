@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlaceBuyNowServerRequest } from './api';
+import { PlaceBuyNowServerRequest } from '@interserver/myadmin-client';
 
 const instance: PlaceBuyNowServerRequest = {
     server_id,

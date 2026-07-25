@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ReplyTicketRequest();
+    instance = new InterserverApiClient.ReplyTicketRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('ReplyTicketRequest', function() {
     it('should create an instance of ReplyTicketRequest', function() {
       // uncomment below and update the code to test ReplyTicketRequest
-      //var instance = new InterServerManagementApi.ReplyTicketRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.ReplyTicketRequest);
+      //var instance = new InterserverApiClient.ReplyTicketRequest();
+      //expect(instance).to.be.a(InterserverApiClient.ReplyTicketRequest);
     });
 
     it('should have the property content (base name: "content")', function() {
       // uncomment below and update the code to test the property content
-      //var instance = new InterServerManagementApi.ReplyTicketRequest();
+      //var instance = new InterserverApiClient.ReplyTicketRequest();
       //expect(instance).to.be();
     });
 

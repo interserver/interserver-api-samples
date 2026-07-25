@@ -1,4 +1,4 @@
-# openapi::DomainAdminContact
+# interserverapi::DomainAdminContact
 
 Administrative contact information for a domain registration.
 

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerSwitchport
+# InterServerAPI::Object::ServerSwitchport
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerSwitchport;
+use InterServerAPI::Object::ServerSwitchport;
 ```
 
 ## Properties

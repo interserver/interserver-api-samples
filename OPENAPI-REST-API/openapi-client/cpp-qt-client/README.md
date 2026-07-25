@@ -5,7 +5,7 @@
 InterServer Management API
 
 - API version: 0.9.0
-- Generator version: 7.21.0
+- Generator version: 7.24.0
 
 # Overview
 
@@ -76,6 +76,7 @@ using namespace test_namespace;
 
 class Example : public QObject {
     Q_OBJECT
+    QString create();
 public Q_SLOTS:
    void exampleFunction1();
 };
@@ -90,6 +91,8 @@ example.cpp:
 #include <QTimer>
 #include <QEventLoop>
 
+QString Example::create(){
+    QString obj;
  return obj;
 }
 
@@ -104,7 +107,18 @@ void Example::exampleFunction1(){
 
       // Configure API key authorization: sessionIdHeaderAuth
       apiInstance.setApiKey("YOUR API KEY NAME","YOUR API KEY");
-      apiInstance.changeAccountUsername();
+
+      QEventLoop loop;
+      connect(&apiInstance, &OAIAccountApi::deleteAccountOauthNameSignal, [&]() {
+          loop.quit();
+      });
+      connect(&apiInstance, &OAIAccountApi::deleteAccountOauthNameSignalE, [&](QNetworkReply::NetworkError, const QString &error_str) {
+          qDebug() << "Error happened while issuing request : " << error_str;
+          loop.quit();
+      });
+
+      QString name = create(); // QString | 
+      apiInstance.deleteAccountOauthName(name);
       QTimer::singleShot(5000, &loop, &QEventLoop::quit);
       loop.exec();
   }

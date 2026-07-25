@@ -1,4 +1,4 @@
-# openapi::LoginInfo
+# interserverapi::LoginInfo
 
 Basic information useful for rendering a login page.
 

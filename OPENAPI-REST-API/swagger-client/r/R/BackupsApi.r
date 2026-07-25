@@ -17,34 +17,34 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_backup Place Backup Order
+#' add_backup Place a new off-site backup storage order and generate the invoice
 #'
 #'
-#' cancel_backup Cancel Backup Service
+#' cancel_backup Cancel an off-site backup storage subscription
 #'
 #'
-#' get_backup_info Get Backup Service Details
+#' get_backup_info Get details of a specific off-site backup storage service
 #'
 #'
-#' get_backup_invoices Get Backup Order Invoices
+#' get_backup_invoices List invoices for a single backup-storage subscription
 #'
 #'
-#' get_backup_login Get Backup Storage Panel Login
+#' get_backup_login Open a single sign-on session URL for the backup storage panel
 #'
 #'
-#' get_backups_list List Backup Services
+#' get_backups_list List off-site backup storage subscriptions on the authenticated account
 #'
 #'
-#' get_backups_welcome_email Resend Backup Welcome Email
+#' get_backups_welcome_email Resend the welcome email for an off-site backup storage service
 #'
 #'
-#' get_new_backup Get Backup Order Form Data
+#' get_new_backup Get backup-storage order form metadata and pricing tiers
 #'
 #'
-#' update_backup_info Update Backup Information
+#' update_backup_info Update stored metadata for a backup-storage subscription
 #'
 #'
-#' validate_backup_order Validate Backup Order
+#' validate_backup_order Validate a backup-storage order and preview pricing without charging
 #'
 #' }
 #'
@@ -116,7 +116,7 @@ BackupsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse2001$new()
+        returnObject <- InlineResponse2002$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

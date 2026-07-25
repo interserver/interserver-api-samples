@@ -1,4 +1,4 @@
-# openapi::DnsNewDomain
+# interserverapi::DnsNewDomain
 
 The request for a new domain to be managed by the dns servers.
 

@@ -7,7 +7,7 @@
 # General application configuration
 import Config
 
-config :inter_server_management_api, base_url: "https://my.interserver.net/apiv2"
+config :interserver_api, base_url: "https://my.interserver.net/apiv2"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

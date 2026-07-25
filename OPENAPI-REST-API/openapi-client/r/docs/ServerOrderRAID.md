@@ -1,4 +1,4 @@
-# openapi::ServerOrderRAID
+# interserverapi::ServerOrderRAID
 
 A RAID configuration option available when ordering a dedicated server.
 

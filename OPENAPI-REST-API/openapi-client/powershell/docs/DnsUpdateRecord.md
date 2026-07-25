@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DnsUpdateRecord = Initialize-PSOpenAPIToolsDnsUpdateRecord  -Name null `
+$DnsUpdateRecord = Initialize-InterserverApiDnsUpdateRecord  -Name null `
  -Type null `
  -Content null `
  -Ttl null `

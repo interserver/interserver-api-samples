@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::GetOrderDetail200Response
+# InterServerAPI::Object::GetOrderDetail200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::GetOrderDetail200Response;
+use InterServerAPI::Object::GetOrderDetail200Response;
 ```
 
 ## Properties

@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailStatsTypeVolume
+# InterserverApiClient.MailStatsTypeVolume
 
 ## Properties
 

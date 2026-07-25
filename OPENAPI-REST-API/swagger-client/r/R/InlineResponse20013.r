@@ -8,8 +8,14 @@
 
 #' InlineResponse20013 Class
 #'
-#' @field success 
-#' @field text 
+#' @field serviceInfo 
+#' @field client_links 
+#' @field billingDetails 
+#' @field custCurrency 
+#' @field custCurrencySymbol 
+#' @field package 
+#' @field extraInfoTables 
+#' @field filter_firewall 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,51 +23,153 @@
 InlineResponse20013 <- R6::R6Class(
   'InlineResponse20013',
   public = list(
-    `success` = NULL,
-    `text` = NULL,
-    initialize = function(`success`, `text`){
-      if (!missing(`success`)) {
-        self$`success` <- `success`
+    `serviceInfo` = NULL,
+    `client_links` = NULL,
+    `billingDetails` = NULL,
+    `custCurrency` = NULL,
+    `custCurrencySymbol` = NULL,
+    `package` = NULL,
+    `extraInfoTables` = NULL,
+    `filter_firewall` = NULL,
+    initialize = function(`serviceInfo`, `client_links`, `billingDetails`, `custCurrency`, `custCurrencySymbol`, `package`, `extraInfoTables`, `filter_firewall`){
+      if (!missing(`serviceInfo`)) {
+        stopifnot(R6::is.R6(`serviceInfo`))
+        self$`serviceInfo` <- `serviceInfo`
       }
-      if (!missing(`text`)) {
-        stopifnot(is.character(`text`), length(`text`) == 1)
-        self$`text` <- `text`
+      if (!missing(`client_links`)) {
+        stopifnot(is.list(`client_links`), length(`client_links`) != 0)
+        lapply(`client_links`, function(x) stopifnot(R6::is.R6(x)))
+        self$`client_links` <- `client_links`
+      }
+      if (!missing(`billingDetails`)) {
+        stopifnot(R6::is.R6(`billingDetails`))
+        self$`billingDetails` <- `billingDetails`
+      }
+      if (!missing(`custCurrency`)) {
+        stopifnot(is.character(`custCurrency`), length(`custCurrency`) == 1)
+        self$`custCurrency` <- `custCurrency`
+      }
+      if (!missing(`custCurrencySymbol`)) {
+        stopifnot(is.character(`custCurrencySymbol`), length(`custCurrencySymbol`) == 1)
+        self$`custCurrencySymbol` <- `custCurrencySymbol`
+      }
+      if (!missing(`package`)) {
+        stopifnot(is.character(`package`), length(`package`) == 1)
+        self$`package` <- `package`
+      }
+      if (!missing(`extraInfoTables`)) {
+        stopifnot(R6::is.R6(`extraInfoTables`))
+        self$`extraInfoTables` <- `extraInfoTables`
+      }
+      if (!missing(`filter_firewall`)) {
+        stopifnot(R6::is.R6(`filter_firewall`))
+        self$`filter_firewall` <- `filter_firewall`
       }
     },
     toJSON = function() {
       InlineResponse20013Object <- list()
-      if (!is.null(self$`success`)) {
-        InlineResponse20013Object[['success']] <- self$`success`
+      if (!is.null(self$`serviceInfo`)) {
+        InlineResponse20013Object[['serviceInfo']] <- self$`serviceInfo`$toJSON()
       }
-      if (!is.null(self$`text`)) {
-        InlineResponse20013Object[['text']] <- self$`text`
+      if (!is.null(self$`client_links`)) {
+        InlineResponse20013Object[['client_links']] <- lapply(self$`client_links`, function(x) x$toJSON())
+      }
+      if (!is.null(self$`billingDetails`)) {
+        InlineResponse20013Object[['billingDetails']] <- self$`billingDetails`$toJSON()
+      }
+      if (!is.null(self$`custCurrency`)) {
+        InlineResponse20013Object[['custCurrency']] <- self$`custCurrency`
+      }
+      if (!is.null(self$`custCurrencySymbol`)) {
+        InlineResponse20013Object[['custCurrencySymbol']] <- self$`custCurrencySymbol`
+      }
+      if (!is.null(self$`package`)) {
+        InlineResponse20013Object[['package']] <- self$`package`
+      }
+      if (!is.null(self$`extraInfoTables`)) {
+        InlineResponse20013Object[['extraInfoTables']] <- self$`extraInfoTables`$toJSON()
+      }
+      if (!is.null(self$`filter_firewall`)) {
+        InlineResponse20013Object[['filter_firewall']] <- self$`filter_firewall`$toJSON()
       }
 
       InlineResponse20013Object
     },
     fromJSON = function(InlineResponse20013Json) {
       InlineResponse20013Object <- jsonlite::fromJSON(InlineResponse20013Json)
-      if (!is.null(InlineResponse20013Object$`success`)) {
-        self$`success` <- InlineResponse20013Object$`success`
+      if (!is.null(InlineResponse20013Object$`serviceInfo`)) {
+        serviceInfoObject <- InlineResponse20013ServiceInfo$new()
+        serviceInfoObject$fromJSON(jsonlite::toJSON(InlineResponse20013Object$serviceInfo, auto_unbox = TRUE))
+        self$`serviceInfo` <- serviceInfoObject
       }
-      if (!is.null(InlineResponse20013Object$`text`)) {
-        self$`text` <- InlineResponse20013Object$`text`
+      if (!is.null(InlineResponse20013Object$`client_links`)) {
+        self$`client_links` <- lapply(InlineResponse20013Object$`client_links`, function(x) {
+          client_linksObject <- InlineResponse20013ClientLinks$new()
+          client_linksObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
+          client_linksObject
+        })
+      }
+      if (!is.null(InlineResponse20013Object$`billingDetails`)) {
+        billingDetailsObject <- InlineResponse20013BillingDetails$new()
+        billingDetailsObject$fromJSON(jsonlite::toJSON(InlineResponse20013Object$billingDetails, auto_unbox = TRUE))
+        self$`billingDetails` <- billingDetailsObject
+      }
+      if (!is.null(InlineResponse20013Object$`custCurrency`)) {
+        self$`custCurrency` <- InlineResponse20013Object$`custCurrency`
+      }
+      if (!is.null(InlineResponse20013Object$`custCurrencySymbol`)) {
+        self$`custCurrencySymbol` <- InlineResponse20013Object$`custCurrencySymbol`
+      }
+      if (!is.null(InlineResponse20013Object$`package`)) {
+        self$`package` <- InlineResponse20013Object$`package`
+      }
+      if (!is.null(InlineResponse20013Object$`extraInfoTables`)) {
+        extraInfoTablesObject <- InlineResponse20013ExtraInfoTables$new()
+        extraInfoTablesObject$fromJSON(jsonlite::toJSON(InlineResponse20013Object$extraInfoTables, auto_unbox = TRUE))
+        self$`extraInfoTables` <- extraInfoTablesObject
+      }
+      if (!is.null(InlineResponse20013Object$`filter_firewall`)) {
+        filter_firewallObject <- InlineResponse20013FilterFirewall$new()
+        filter_firewallObject$fromJSON(jsonlite::toJSON(InlineResponse20013Object$filter_firewall, auto_unbox = TRUE))
+        self$`filter_firewall` <- filter_firewallObject
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "success": %s,
-           "text": %s
+           "serviceInfo": %s,
+           "client_links": [%s],
+           "billingDetails": %s,
+           "custCurrency": %s,
+           "custCurrencySymbol": %s,
+           "package": %s,
+           "extraInfoTables": %s,
+           "filter_firewall": %s
         }',
-        self$`success`,
-        self$`text`
+        self$`serviceInfo`$toJSON(),
+        lapply(self$`client_links`, function(x) paste(x$toJSON(), sep=",")),
+        self$`billingDetails`$toJSON(),
+        self$`custCurrency`,
+        self$`custCurrencySymbol`,
+        self$`package`,
+        self$`extraInfoTables`$toJSON(),
+        self$`filter_firewall`$toJSON()
       )
     },
     fromJSONString = function(InlineResponse20013Json) {
       InlineResponse20013Object <- jsonlite::fromJSON(InlineResponse20013Json)
-      self$`success` <- InlineResponse20013Object$`success`
-      self$`text` <- InlineResponse20013Object$`text`
+      InlineResponse20013ServiceInfoObject <- InlineResponse20013ServiceInfo$new()
+      self$`serviceInfo` <- InlineResponse20013ServiceInfoObject$fromJSON(jsonlite::toJSON(InlineResponse20013Object$serviceInfo, auto_unbox = TRUE))
+      self$`client_links` <- lapply(InlineResponse20013Object$`client_links`, function(x) InlineResponse20013ClientLinks$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
+      InlineResponse20013BillingDetailsObject <- InlineResponse20013BillingDetails$new()
+      self$`billingDetails` <- InlineResponse20013BillingDetailsObject$fromJSON(jsonlite::toJSON(InlineResponse20013Object$billingDetails, auto_unbox = TRUE))
+      self$`custCurrency` <- InlineResponse20013Object$`custCurrency`
+      self$`custCurrencySymbol` <- InlineResponse20013Object$`custCurrencySymbol`
+      self$`package` <- InlineResponse20013Object$`package`
+      InlineResponse20013ExtraInfoTablesObject <- InlineResponse20013ExtraInfoTables$new()
+      self$`extraInfoTables` <- InlineResponse20013ExtraInfoTablesObject$fromJSON(jsonlite::toJSON(InlineResponse20013Object$extraInfoTables, auto_unbox = TRUE))
+      InlineResponse20013FilterFirewallObject <- InlineResponse20013FilterFirewall$new()
+      self$`filter_firewall` <- InlineResponse20013FilterFirewallObject$fromJSON(jsonlite::toJSON(InlineResponse20013Object$filter_firewall, auto_unbox = TRUE))
     }
   )
 )

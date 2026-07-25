@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_billing_extra import DomainBillingExtra
+from interserver_api_client.models.domain_billing_extra import DomainBillingExtra
 
 class TestDomainBillingExtra(unittest.TestCase):
     """DomainBillingExtra unit test stubs"""
@@ -36,12 +36,12 @@ class TestDomainBillingExtra(unittest.TestCase):
         model = DomainBillingExtra()
         if include_optional:
             return DomainBillingExtra(
-                order = openapi_client.models.domain_order_response.DomainOrderResponse(
+                order = interserver_api_client.models.domain_order_response.DomainOrderResponse(
                     _ops_version = '', 
                     protocol = '', 
                     is_success = '', 
                     action = '', 
-                    attributes = openapi_client.models.domain_order_response_attributes.DomainOrderResponse_attributes(
+                    attributes = interserver_api_client.models.domain_order_response_attributes.DomainOrderResponse_attributes(
                         id = '', 
                         admin_email = '', ), 
                     response_text = '', 
@@ -49,7 +49,7 @@ class TestDomainBillingExtra(unittest.TestCase):
                     response_code = '', ),
                 order_id = '',
                 domain_id = '',
-                prov_process_pending = openapi_client.models.domain_prov_process_pending.DomainProvProcessPending(
+                prov_process_pending = interserver_api_client.models.domain_prov_process_pending.DomainProvProcessPending(
                     _ops_version = '', 
                     response_text = '', 
                     protocol = '', 
@@ -57,7 +57,7 @@ class TestDomainBillingExtra(unittest.TestCase):
                     action = '', 
                     object = '', 
                     is_success = '', 
-                    attributes = openapi_client.models.domain_prov_process_pending_attributes.DomainProvProcessPending_attributes(
+                    attributes = interserver_api_client.models.domain_prov_process_pending_attributes.DomainProvProcessPending_attributes(
                         id = '', 
                         order_id = '', 
                         registration_expiration_date = '', 

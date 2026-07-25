@@ -86,6 +86,8 @@ void OAIMailApi::initializeServerConfigs() {
     _serverIndices.insert("updateMailAlert", 0);
     _serverConfigs.insert("updateMailInfo", defaultConf);
     _serverIndices.insert("updateMailInfo", 0);
+    _serverConfigs.insert("updateRule", defaultConf);
+    _serverIndices.insert("updateRule", 0);
     _serverConfigs.insert("viewMailLog", defaultConf);
     _serverIndices.insert("viewMailLog", 0);
 }
@@ -269,7 +271,7 @@ QString OAIMailApi::getParamStyleDelimiter(const QString &style, const QString &
     }
 }
 
-void OAIMailApi::addMail() {
+void OAIMailApi::addMail(const OAIMailOrderRequest &oai_mail_order_request) {
     QString fullPath = QString(_serverConfigs["addMail"][_serverIndices.value("addMail")].URL()+"/mail/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -285,7 +287,12 @@ void OAIMailApi::addMail() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
+    {
 
+        
+        QByteArray output = oai_mail_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -463,7 +470,7 @@ void OAIMailApi::createMailAlertCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIMailApi::deleteMailAlert(const qint32 &id, const qint32 &alert_id) {
+void OAIMailApi::deleteMailAlert(const qint32 &id, const OAIDeleteMailAlert_request &oai_delete_mail_alert_request) {
     QString fullPath = QString(_serverConfigs["deleteMailAlert"][_serverIndices.value("deleteMailAlert")].URL()+"/mail/{id}/alerts");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -488,28 +495,17 @@ void OAIMailApi::deleteMailAlert(const qint32 &id, const qint32 &alert_id) {
         QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
         fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
     }
-    QString queryPrefix, querySuffix, queryDelimiter, queryStyle;
-    
-    {
-        queryStyle = "form";
-        if (queryStyle == "")
-            queryStyle = "form";
-        queryPrefix = getParamStylePrefix(queryStyle);
-        querySuffix = getParamStyleSuffix(queryStyle);
-        queryDelimiter = getParamStyleDelimiter(queryStyle, "alert_id", true);
-        if (fullPath.indexOf("?") > 0)
-            fullPath.append(queryPrefix);
-        else
-            fullPath.append("?");
-
-        fullPath.append(QUrl::toPercentEncoding("alert_id")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(alert_id)));
-    }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "DELETE");
 
+    {
 
+        
+        QByteArray output = oai_delete_mail_alert_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -1564,7 +1560,7 @@ void OAIMailApi::postMailDelistCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIMailApi::putMail() {
+void OAIMailApi::putMail(const OAIMailOrderRequest &oai_mail_order_request) {
     QString fullPath = QString(_serverConfigs["putMail"][_serverIndices.value("putMail")].URL()+"/mail/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -1580,7 +1576,12 @@ void OAIMailApi::putMail() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "PUT");
 
+    {
 
+        
+        QByteArray output = oai_mail_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -1957,6 +1958,91 @@ void OAIMailApi::updateMailInfoCallback(OAIHttpRequestWorker *worker) {
     } else {
         Q_EMIT updateMailInfoSignalError(output, error_type, error_str);
         Q_EMIT updateMailInfoSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
+void OAIMailApi::updateRule(const qint32 &id, const QString &rule, const OAIDenyRuleNew &oai_deny_rule_new) {
+    QString fullPath = QString(_serverConfigs["updateRule"][_serverIndices.value("updateRule")].URL()+"/mail/{id}/rules/{rule}");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    
+    {
+        QString rulePathParam("{");
+        rulePathParam.append("rule").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "rule", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"rule"+pathSuffix : pathPrefix;
+        fullPath.replace(rulePathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(rule)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "PUT");
+
+    {
+
+        
+        QByteArray output = oai_deny_rule_new.asJson().toUtf8();
+        input.request_body.append(output);
+    }
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIMailApi::updateRuleCallback);
+    connect(this, &OAIMailApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIMailApi::updateRuleCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    OAIGenericResponse output(QString(worker->response));
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT updateRuleSignal(output);
+        Q_EMIT updateRuleSignalFull(worker, output);
+    } else {
+        Q_EMIT updateRuleSignalError(output, error_type, error_str);
+        Q_EMIT updateRuleSignalErrorFull(worker, error_type, error_str);
     }
 }
 

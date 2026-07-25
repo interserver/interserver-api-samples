@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.login_submission_example import LoginSubmissionExample
+from interserver_api_client.models.login_submission_example import LoginSubmissionExample
 
 class TestLoginSubmissionExample(unittest.TestCase):
     """LoginSubmissionExample unit test stubs"""
@@ -39,9 +39,9 @@ class TestLoginSubmissionExample(unittest.TestCase):
                 login = '',
                 passwd = '',
                 remember = '',
-                g_recaptcha_response = openapi_client.models.login_submission_example_g_recaptcha_response.LoginSubmissionExample_g_recaptcha_response(
+                g_recaptcha_response = interserver_api_client.models.login_submission_example_g_recaptcha_response.LoginSubmissionExample_g_recaptcha_response(
                     __v_is_shallow = True, 
-                    dep = openapi_client.models.login_submission_example_g_recaptcha_response_dep.LoginSubmissionExample_g_recaptcha_response_dep(
+                    dep = interserver_api_client.models.login_submission_example_g_recaptcha_response_dep.LoginSubmissionExample_g_recaptcha_response_dep(
                         w = 56, 
                         n = 56, ), 
                     __v_is_ref = True, 

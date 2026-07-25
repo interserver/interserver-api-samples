@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_tutorials_table_row import MailTutorialsTableRow
+from interserver_api_client.models.mail_tutorials_table_row import MailTutorialsTableRow
 
 class TestMailTutorialsTableRow(unittest.TestCase):
     """MailTutorialsTableRow unit test stubs"""

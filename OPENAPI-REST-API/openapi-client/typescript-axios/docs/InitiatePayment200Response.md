@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { InitiatePayment200Response } from './api';
+import { InitiatePayment200Response } from '@interserver/myadmin-client';
 
 const instance: InitiatePayment200Response = {
     type,

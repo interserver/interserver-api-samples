@@ -1,4 +1,4 @@
-# openapi::AffiliateTrafficRow
+# interserverapi::AffiliateTrafficRow
 
 Affiliate Web Traffic Entry
 

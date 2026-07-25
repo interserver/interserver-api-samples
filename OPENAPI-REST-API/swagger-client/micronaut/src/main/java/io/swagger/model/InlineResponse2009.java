@@ -3,7 +3,6 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.validation.Validated;
@@ -17,152 +16,30 @@ import javax.validation.constraints.*;
 @Introspected
 
 public class InlineResponse2009   {
-  /**
-   * The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
-   */
-  public enum TypeEnum {
-    REDIRECT("redirect"),
-    SUBMIT("submit"),
-    SINGLE("single");
-
-    private String value;
-
-    TypeEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TypeEnum fromValue(String text) {
-      for (TypeEnum b : TypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-  @JsonProperty("type")
-  private TypeEnum type = null;
-
-  @JsonProperty("redirect")
-  private String redirect = null;
-
-  @JsonProperty("action")
-  private String action = null;
-
-  @JsonProperty("method")
-  private String method = null;
-
-  @JsonProperty("items")
-  private Object items = null;
+  @JsonProperty("success")
+  private Boolean success = null;
 
   @JsonProperty("text")
   private String text = null;
 
-  public InlineResponse2009 type(TypeEnum type) {
-    this.type = type;
+  public InlineResponse2009 success(Boolean success) {
+    this.success = success;
     return this;
   }
 
   /**
-   * The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
-   * @return type
+   * Get success
+   * @return success
   **/
-  @Schema(description = "The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).")
+  @Schema(required = true, description = "")
   @NotNull
 
-  public TypeEnum getType() {
-    return type;
+  public Boolean isSuccess() {
+    return success;
   }
 
-  public void setType(TypeEnum type) {
-    this.type = type;
-  }
-
-  public InlineResponse2009 redirect(String redirect) {
-    this.redirect = redirect;
-    return this;
-  }
-
-  /**
-   * URL to redirect the user to for payment (when type is `redirect`).
-   * @return redirect
-  **/
-  @Schema(description = "URL to redirect the user to for payment (when type is `redirect`).")
-  @NotNull
-
-  public String getRedirect() {
-    return redirect;
-  }
-
-  public void setRedirect(String redirect) {
-    this.redirect = redirect;
-  }
-
-  public InlineResponse2009 action(String action) {
-    this.action = action;
-    return this;
-  }
-
-  /**
-   * Form action URL (when type is `submit`).
-   * @return action
-  **/
-  @Schema(description = "Form action URL (when type is `submit`).")
-  @NotNull
-
-  public String getAction() {
-    return action;
-  }
-
-  public void setAction(String action) {
-    this.action = action;
-  }
-
-  public InlineResponse2009 method(String method) {
-    this.method = method;
-    return this;
-  }
-
-  /**
-   * HTTP method for the form submission (when type is `submit`).
-   * @return method
-  **/
-  @Schema(description = "HTTP method for the form submission (when type is `submit`).")
-  @NotNull
-
-  public String getMethod() {
-    return method;
-  }
-
-  public void setMethod(String method) {
-    this.method = method;
-  }
-
-  public InlineResponse2009 items(Object items) {
-    this.items = items;
-    return this;
-  }
-
-  /**
-   * Form field name-value pairs to submit (when type is `submit`).
-   * @return items
-  **/
-  @Schema(description = "Form field name-value pairs to submit (when type is `submit`).")
-  @NotNull
-
-  public Object getItems() {
-    return items;
-  }
-
-  public void setItems(Object items) {
-    this.items = items;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
   public InlineResponse2009 text(String text) {
@@ -171,10 +48,10 @@ public class InlineResponse2009   {
   }
 
   /**
-   * Status or result text.
+   * Get text
    * @return text
   **/
-  @Schema(description = "Status or result text.")
+  @Schema(required = true, description = "")
   @NotNull
 
   public String getText() {
@@ -195,17 +72,13 @@ public class InlineResponse2009   {
       return false;
     }
     InlineResponse2009 inlineResponse2009 = (InlineResponse2009) o;
-    return Objects.equals(this.type, inlineResponse2009.type) &&
-        Objects.equals(this.redirect, inlineResponse2009.redirect) &&
-        Objects.equals(this.action, inlineResponse2009.action) &&
-        Objects.equals(this.method, inlineResponse2009.method) &&
-        Objects.equals(this.items, inlineResponse2009.items) &&
+    return Objects.equals(this.success, inlineResponse2009.success) &&
         Objects.equals(this.text, inlineResponse2009.text);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, redirect, action, method, items, text);
+    return Objects.hash(success, text);
   }
 
   @Override
@@ -213,11 +86,7 @@ public class InlineResponse2009   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2009 {\n");
     
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
-    sb.append("    action: ").append(toIndentedString(action)).append("\n");
-    sb.append("    method: ").append(toIndentedString(method)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();

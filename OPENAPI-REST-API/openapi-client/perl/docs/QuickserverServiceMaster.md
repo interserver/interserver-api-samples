@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::QuickserverServiceMaster
+# InterServerAPI::Object::QuickserverServiceMaster
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::QuickserverServiceMaster;
+use InterServerAPI::Object::QuickserverServiceMaster;
 ```
 
 ## Properties

@@ -21,7 +21,7 @@ import io.swagger.server.model.DomainWhoisPrivacyRequest
 import io.swagger.server.model.ServiceOrderPostResponse
 import io.swagger.server.model.SuccessTextResponse
 import io.swagger.server.model.TextResponse
-import io.swagger.server.model.inline_response_200_2
+import io.swagger.server.model.inline_response_200_3
 import io.swagger.server.model.inline_response_401
 
 class DomainsApi(
@@ -37,9 +37,9 @@ class DomainsApi(
           
             
               
-                
-                  domainsService.addDomain()
-               
+                entity(as[Map[String, Object]]){ body =>
+                  domainsService.addDomain(body = body)
+                }
              
            
          
@@ -93,17 +93,17 @@ class DomainsApi(
     } ~
     path() { (id) => 
       delete {
-        parameters("action".as[String]) { (action) =>
+        
           
             
               
                 
-                  domainsService.deleteDomainDnssec(id = id, action = action)
+                  domainsService.deleteDomainDnssec(id = id)
                
              
            
          
-        }
+       
       }
     } ~
     path() { (id) => 
@@ -204,36 +204,6 @@ class DomainsApi(
               
                 
                   domainsService.getDomainNameservers(id = id)
-               
-             
-           
-         
-       
-      }
-    } ~
-    path() { (domain, regType) => 
-      get {
-        
-          
-            
-              
-                
-                  domainsService.getDomainOrderFields(domain = domain, regType = regType)
-               
-             
-           
-         
-       
-      }
-    } ~
-    path() { (domain) => 
-      get {
-        
-          
-            
-              
-                
-                  domainsService.getDomainOrderSearchResults(domain = domain)
                
              
            
@@ -352,9 +322,9 @@ class DomainsApi(
           
             
               
-                
-                  domainsService.patchDomains()
-               
+                entity(as[Map[String, Object]]){ body =>
+                  domainsService.patchDomains(body = body)
+                }
              
            
          
@@ -369,6 +339,21 @@ class DomainsApi(
               
                 
                   domainsService.postDomainRenewal(id = id)
+               
+             
+           
+         
+       
+      }
+    } ~
+    path() { (name) => 
+      post {
+        
+          
+            
+              
+                
+                  domainsService.postDomainSearch(name = name)
                
              
            
@@ -397,9 +382,9 @@ class DomainsApi(
           
             
               
-                
-                  domainsService.putDomains()
-               
+                entity(as[Map[String, Object]]){ body =>
+                  domainsService.putDomains(body = body)
+                }
              
            
          
@@ -475,10 +460,10 @@ trait DomainsApiService {
   def addDomain401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
+   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def addDomain()
+  def addDomain(body: Map[String, Object])
       (implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def addDomainDnssec200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
@@ -503,16 +488,16 @@ trait DomainsApiService {
   def addDomainNameserver(body: DomainNameserverPostRequest, name: String, ipAddress: String, id: Int)
       (implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def cancelDomain200(responseinline_response_200_2: inline_response_200_2)(implicit toEntityMarshallerinline_response_200_2: ToEntityMarshaller[inline_response_200_2]): Route =
-    complete((200, responseinline_response_200_2))
+  def cancelDomain200(responseinline_response_200_3: inline_response_200_3)(implicit toEntityMarshallerinline_response_200_3: ToEntityMarshaller[inline_response_200_3]): Route =
+    complete((200, responseinline_response_200_3))
   def cancelDomain401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Domains Cancel, DataType: inline_response_200_2
+   * Code: 200, Message: Domains Cancel, DataType: inline_response_200_3
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def cancelDomain(id: Int)
-      (implicit toEntityMarshallerinline_response_200_2: ToEntityMarshaller[inline_response_200_2], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_3: ToEntityMarshaller[inline_response_200_3], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def deleteDomainDnssec200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
@@ -522,7 +507,7 @@ trait DomainsApiService {
    * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def deleteDomainDnssec(id: Int, action: String)
+  def deleteDomainDnssec(id: Int)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def deleteDomainNameserver200(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
@@ -604,28 +589,6 @@ trait DomainsApiService {
    */
   def getDomainNameservers(id: Int)
       (implicit toEntityMarshallerDomainNameserverGetResponse: ToEntityMarshaller[DomainNameserverGetResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
-
-  def getDomainOrderFields200: Route =
-    complete((200, "Registration-type-specific form field definitions."))
-  def getDomainOrderFields401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((401, responseinline_response_401))
-  /**
-   * Code: 200, Message: Registration-type-specific form field definitions.
-   * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   */
-  def getDomainOrderFields(domain: String, regType: String)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
-
-  def getDomainOrderSearchResults200: Route =
-    complete((200, "Domain availability and pricing information."))
-  def getDomainOrderSearchResults401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
-    complete((401, responseinline_response_401))
-  /**
-   * Code: 200, Message: Domain availability and pricing information.
-   * Code: 401, Message: Unauthorized, DataType: inline_response_401
-   */
-  def getDomainOrderSearchResults(domain: String)
-      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getDomainRenewal200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
@@ -715,7 +678,7 @@ trait DomainsApiService {
    * Code: 200, Message: Validate Domain order response
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def patchDomains()
+  def patchDomains(body: Map[String, Object])
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def postDomainRenewal200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
@@ -728,6 +691,17 @@ trait DomainsApiService {
    */
   def postDomainRenewal(id: Int)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
+  def postDomainSearch200: Route =
+    complete((200, "Domain availability and pricing check results."))
+  def postDomainSearch401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Domain availability and pricing check results.
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def postDomainSearch(name: String)
+      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def postDomainTransfer200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
@@ -748,7 +722,7 @@ trait DomainsApiService {
    * Code: 200, Message: Validate Domain Order response
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def putDomains()
+  def putDomains(body: Map[String, Object])
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def updateDomainContact200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
@@ -770,7 +744,7 @@ trait DomainsApiService {
    * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def updateDomainInfo(id: String)
+  def updateDomainInfo(id: Int)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def updateDomainNameservers200(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
@@ -800,6 +774,8 @@ trait DomainsApiService {
 trait DomainsApiMarshaller {
   implicit def fromRequestUnmarshallerDomainWhoisPrivacyRequest: FromRequestUnmarshaller[DomainWhoisPrivacyRequest]
 
+  implicit def fromRequestUnmarshallerMap[String, Object]: FromRequestUnmarshaller[Map[String, Object]]
+
   implicit def fromRequestUnmarshallerDomainNameserverPutRequest: FromRequestUnmarshaller[DomainNameserverPutRequest]
 
   implicit def fromRequestUnmarshallerDomainNameserverPostRequest: FromRequestUnmarshaller[DomainNameserverPostRequest]
@@ -821,7 +797,7 @@ trait DomainsApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_2: ToEntityMarshaller[inline_response_200_2]
+  implicit def toEntityMarshallerinline_response_200_3: ToEntityMarshaller[inline_response_200_3]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -859,10 +835,6 @@ trait DomainsApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
   implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
@@ -896,6 +868,8 @@ trait DomainsApiMarshaller {
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

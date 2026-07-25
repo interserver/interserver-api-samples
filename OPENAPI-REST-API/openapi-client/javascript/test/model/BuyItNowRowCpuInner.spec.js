@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BuyItNowRowCpuInner();
+    instance = new InterserverApiClient.BuyItNowRowCpuInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('BuyItNowRowCpuInner', function() {
     it('should create an instance of BuyItNowRowCpuInner', function() {
       // uncomment below and update the code to test BuyItNowRowCpuInner
-      //var instance = new InterServerManagementApi.BuyItNowRowCpuInner();
-      //expect(instance).to.be.a(InterServerManagementApi.BuyItNowRowCpuInner);
+      //var instance = new InterserverApiClient.BuyItNowRowCpuInner();
+      //expect(instance).to.be.a(InterserverApiClient.BuyItNowRowCpuInner);
     });
 
     it('should have the property img (base name: "img")', function() {
       // uncomment below and update the code to test the property img
-      //var instance = new InterServerManagementApi.BuyItNowRowCpuInner();
+      //var instance = new InterserverApiClient.BuyItNowRowCpuInner();
       //expect(instance).to.be();
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.BuyItNowRowCpuInner();
+      //var instance = new InterserverApiClient.BuyItNowRowCpuInner();
       //expect(instance).to.be();
     });
 
     it('should have the property speed (base name: "speed")', function() {
       // uncomment below and update the code to test the property speed
-      //var instance = new InterServerManagementApi.BuyItNowRowCpuInner();
+      //var instance = new InterserverApiClient.BuyItNowRowCpuInner();
       //expect(instance).to.be();
     });
 
     it('should have the property num_cpus (base name: "num_cpus")', function() {
       // uncomment below and update the code to test the property num_cpus
-      //var instance = new InterServerManagementApi.BuyItNowRowCpuInner();
+      //var instance = new InterserverApiClient.BuyItNowRowCpuInner();
       //expect(instance).to.be();
     });
 
     it('should have the property num_cores (base name: "num_cores")', function() {
       // uncomment below and update the code to test the property num_cores
-      //var instance = new InterServerManagementApi.BuyItNowRowCpuInner();
+      //var instance = new InterserverApiClient.BuyItNowRowCpuInner();
       //expect(instance).to.be();
     });
 

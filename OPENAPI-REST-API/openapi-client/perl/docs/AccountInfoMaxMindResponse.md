@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AccountInfoMaxMindResponse
+# InterServerAPI::Object::AccountInfoMaxMindResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AccountInfoMaxMindResponse;
+use InterServerAPI::Object::AccountInfoMaxMindResponse;
 ```
 
 ## Properties

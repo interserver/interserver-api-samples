@@ -13,11 +13,12 @@
 
 /**
  * 
- * @param redirectUrl The URL to redirect the user to for OAuth authentication.
+ * @param success 
+ * @param text 
  */
 data class InlineResponse2005 (
 
-    /* The URL to redirect the user to for OAuth authentication. */
-    val redirectUrl: kotlin.String? = null
+    val success: kotlin.Boolean,
+    val text: kotlin.String
 ) {
 }

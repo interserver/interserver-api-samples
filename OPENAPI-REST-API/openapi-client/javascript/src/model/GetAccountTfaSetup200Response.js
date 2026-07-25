@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetAccountTfaSetup200Response model module.
  * @module model/GetAccountTfaSetup200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetAccountTfaSetup200Response {
     /**

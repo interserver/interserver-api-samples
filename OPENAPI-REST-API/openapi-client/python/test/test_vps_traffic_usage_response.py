@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_traffic_usage_response import VpsTrafficUsageResponse
+from interserver_api_client.models.vps_traffic_usage_response import VpsTrafficUsageResponse
 
 class TestVpsTrafficUsageResponse(unittest.TestCase):
     """VpsTrafficUsageResponse unit test stubs"""

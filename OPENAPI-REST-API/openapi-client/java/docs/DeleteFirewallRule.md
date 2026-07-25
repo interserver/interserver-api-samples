@@ -11,4 +11,8 @@ Delete firewall rule for your ip
 |**ruleId** | **Integer** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ViewMailLogStartDateParameter();
+    instance = new InterserverApiClient.ViewMailLogStartDateParameter();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('ViewMailLogStartDateParameter', function() {
     it('should create an instance of ViewMailLogStartDateParameter', function() {
       // uncomment below and update the code to test ViewMailLogStartDateParameter
-      //var instance = new InterServerManagementApi.ViewMailLogStartDateParameter();
-      //expect(instance).to.be.a(InterServerManagementApi.ViewMailLogStartDateParameter);
+      //var instance = new InterserverApiClient.ViewMailLogStartDateParameter();
+      //expect(instance).to.be.a(InterserverApiClient.ViewMailLogStartDateParameter);
     });
 
   });

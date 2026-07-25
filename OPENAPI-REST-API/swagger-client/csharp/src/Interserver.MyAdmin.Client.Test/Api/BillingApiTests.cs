@@ -63,25 +63,6 @@ namespace Interserver.MyAdmin.Client.Test
         }
 
         /// <summary>
-        /// Test AddAccountCreditCard
-        /// </summary>
-        [Test]
-        public void AddAccountCreditCardTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string name = null;
-            //string address = null;
-            //string city = null;
-            //string state = null;
-            //string country = null;
-            //string zip = null;
-            //string cc = null;
-            //string ccExp = null;
-            //string ccCcv2 = null;
-            //var response = instance.AddAccountCreditCard(name, address, city, state, country, zip, cc, ccExp, ccCcv2);
-            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
-        }
-        /// <summary>
         /// Test AddBillingCreditCard
         /// </summary>
         [Test]
@@ -102,17 +83,6 @@ namespace Interserver.MyAdmin.Client.Test
             //BillingPrepayRequest body = null;
             //var response = instance.AddBillingPrepay(body);
             //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
-        }
-        /// <summary>
-        /// Test DeleteAccountCreditCard
-        /// </summary>
-        [Test]
-        public void DeleteAccountCreditCardTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string id = null;
-            //var response = instance.DeleteAccountCreditCard(id);
-            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
         /// Test DeleteBillingCreditCard
@@ -158,6 +128,19 @@ namespace Interserver.MyAdmin.Client.Test
             //Assert.IsInstanceOf<List<AffiliateBannerRow>> (response, "response is List<AffiliateBannerRow>");
         }
         /// <summary>
+        /// Test GetAffiliateDownload
+        /// </summary>
+        [Test]
+        public void GetAffiliateDownloadTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string st = null;
+            //string ex = null;
+            //int? year = null;
+            //instance.GetAffiliateDownload(st, ex, year);
+            
+        }
+        /// <summary>
         /// Test GetAffiliateRichReport
         /// </summary>
         [Test]
@@ -179,14 +162,15 @@ namespace Interserver.MyAdmin.Client.Test
             //Assert.IsInstanceOf<StatusMonthlyBreakdown> (response, "response is StatusMonthlyBreakdown");
         }
         /// <summary>
-        /// Test GetAffiliateSalesReport
+        /// Test GetAffiliateSignups
         /// </summary>
         [Test]
-        public void GetAffiliateSalesReportTest()
+        public void GetAffiliateSignupsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.GetAffiliateSalesReport();
-            //Assert.IsInstanceOf<TextResponse> (response, "response is TextResponse");
+            //string st = null;
+            //var response = instance.GetAffiliateSignups(st);
+            //Assert.IsInstanceOf<InlineResponse2001> (response, "response is InlineResponse2001");
         }
         /// <summary>
         /// Test GetAffiliateTrafficGraph
@@ -262,19 +246,6 @@ namespace Interserver.MyAdmin.Client.Test
             //Assert.IsInstanceOf<Object> (response, "response is Object");
         }
         /// <summary>
-        /// Test GetInvoices
-        /// </summary>
-        [Test]
-        public void GetInvoicesTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string searchString = null;
-            //int? skip = null;
-            //int? limit = null;
-            //var response = instance.GetInvoices(searchString, skip, limit);
-            //Assert.IsInstanceOf<List<Invoice>> (response, "response is List<Invoice>");
-        }
-        /// <summary>
         /// Test InitiatePayment
         /// </summary>
         [Test]
@@ -284,7 +255,19 @@ namespace Interserver.MyAdmin.Client.Test
             //string method = null;
             //string invoices = null;
             //var response = instance.InitiatePayment(method, invoices);
-            //Assert.IsInstanceOf<InlineResponse2009> (response, "response is InlineResponse2009");
+            //Assert.IsInstanceOf<InlineResponse20010> (response, "response is InlineResponse20010");
+        }
+        /// <summary>
+        /// Test PatchBillingCreditCardVerify
+        /// </summary>
+        [Test]
+        public void PatchBillingCreditCardVerifyTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //IdVerifyBody body = null;
+            //int? id = null;
+            //var response = instance.PatchBillingCreditCardVerify(body, id);
+            //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
         /// Test PostBillingCreditCardVerify
@@ -299,17 +282,6 @@ namespace Interserver.MyAdmin.Client.Test
             //Assert.IsInstanceOf<SuccessTextResponse> (response, "response is SuccessTextResponse");
         }
         /// <summary>
-        /// Test UpdateAccountCreditCard
-        /// </summary>
-        [Test]
-        public void UpdateAccountCreditCardTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //int? id = null;
-            //var response = instance.UpdateAccountCreditCard(id);
-            //Assert.IsInstanceOf<string> (response, "response is string");
-        }
-        /// <summary>
         /// Test UpdateAffiliateDockSetup
         /// </summary>
         [Test]
@@ -320,19 +292,6 @@ namespace Interserver.MyAdmin.Client.Test
             //string affiliateDockDescription = null;
             //string referrerCoupon = null;
             //var response = instance.UpdateAffiliateDockSetup(affiliateDockTitle, affiliateDockDescription, referrerCoupon);
-            //Assert.IsInstanceOf<TextResponse> (response, "response is TextResponse");
-        }
-        /// <summary>
-        /// Test UpdateAffiliateLandingPage
-        /// </summary>
-        [Test]
-        public void UpdateAffiliateLandingPageTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string affiliateDockTitle = null;
-            //string affiliateDockDescription = null;
-            //string referrerCoupon = null;
-            //var response = instance.UpdateAffiliateLandingPage(affiliateDockTitle, affiliateDockDescription, referrerCoupon);
             //Assert.IsInstanceOf<TextResponse> (response, "response is TextResponse");
         }
         /// <summary>

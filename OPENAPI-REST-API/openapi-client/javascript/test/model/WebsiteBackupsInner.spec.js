@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.WebsiteBackupsInner();
+    instance = new InterserverApiClient.WebsiteBackupsInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('WebsiteBackupsInner', function() {
     it('should create an instance of WebsiteBackupsInner', function() {
       // uncomment below and update the code to test WebsiteBackupsInner
-      //var instance = new InterServerManagementApi.WebsiteBackupsInner();
-      //expect(instance).to.be.a(InterServerManagementApi.WebsiteBackupsInner);
+      //var instance = new InterserverApiClient.WebsiteBackupsInner();
+      //expect(instance).to.be.a(InterserverApiClient.WebsiteBackupsInner);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.WebsiteBackupsInner();
+      //var instance = new InterserverApiClient.WebsiteBackupsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property size (base name: "size")', function() {
       // uncomment below and update the code to test the property size
-      //var instance = new InterServerManagementApi.WebsiteBackupsInner();
+      //var instance = new InterserverApiClient.WebsiteBackupsInner();
       //expect(instance).to.be();
     });
 

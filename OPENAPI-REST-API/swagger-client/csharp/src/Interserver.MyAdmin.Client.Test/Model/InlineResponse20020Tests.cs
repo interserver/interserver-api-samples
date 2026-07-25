@@ -66,20 +66,52 @@ namespace Interserver.MyAdmin.Client.Test
 
 
         /// <summary>
-        /// Test the property 'success'
+        /// Test the property '_continue'
         /// </summary>
         [Test]
-        public void successTest()
+        public void _continueTest()
         {
-            // TODO unit test for the property 'success'
+            // TODO unit test for the property '_continue'
         }
         /// <summary>
-        /// Test the property 'text'
+        /// Test the property 'errors'
         /// </summary>
         [Test]
-        public void textTest()
+        public void errorsTest()
         {
-            // TODO unit test for the property 'text'
+            // TODO unit test for the property 'errors'
+        }
+        /// <summary>
+        /// Test the property 'serviceType'
+        /// </summary>
+        [Test]
+        public void serviceTypeTest()
+        {
+            // TODO unit test for the property 'serviceType'
+        }
+        /// <summary>
+        /// Test the property 'serviceCost'
+        /// </summary>
+        [Test]
+        public void serviceCostTest()
+        {
+            // TODO unit test for the property 'serviceCost'
+        }
+        /// <summary>
+        /// Test the property 'originalCost'
+        /// </summary>
+        [Test]
+        public void originalCostTest()
+        {
+            // TODO unit test for the property 'originalCost'
+        }
+        /// <summary>
+        /// Test the property 'repeatServiceCost'
+        /// </summary>
+        [Test]
+        public void repeatServiceCostTest()
+        {
+            // TODO unit test for the property 'repeatServiceCost'
         }
 
     }

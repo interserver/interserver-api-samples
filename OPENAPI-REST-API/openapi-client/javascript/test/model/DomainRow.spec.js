@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainRow();
+    instance = new InterserverApiClient.DomainRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('DomainRow', function() {
     it('should create an instance of DomainRow', function() {
       // uncomment below and update the code to test DomainRow
-      //var instance = new InterServerManagementApi.DomainRow();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainRow);
+      //var instance = new InterserverApiClient.DomainRow();
+      //expect(instance).to.be.a(InterserverApiClient.DomainRow);
     });
 
     it('should have the property domain_id (base name: "domain_id")', function() {
       // uncomment below and update the code to test the property domain_id
-      //var instance = new InterServerManagementApi.DomainRow();
+      //var instance = new InterserverApiClient.DomainRow();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_hostname (base name: "domain_hostname")', function() {
       // uncomment below and update the code to test the property domain_hostname
-      //var instance = new InterServerManagementApi.DomainRow();
+      //var instance = new InterserverApiClient.DomainRow();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_expire_date (base name: "domain_expire_date")', function() {
       // uncomment below and update the code to test the property domain_expire_date
-      //var instance = new InterServerManagementApi.DomainRow();
+      //var instance = new InterserverApiClient.DomainRow();
       //expect(instance).to.be();
     });
 
     it('should have the property cost (base name: "cost")', function() {
       // uncomment below and update the code to test the property cost
-      //var instance = new InterServerManagementApi.DomainRow();
+      //var instance = new InterserverApiClient.DomainRow();
       //expect(instance).to.be();
     });
 
     it('should have the property domain_status (base name: "domain_status")', function() {
       // uncomment below and update the code to test the property domain_status
-      //var instance = new InterServerManagementApi.DomainRow();
+      //var instance = new InterserverApiClient.DomainRow();
       //expect(instance).to.be();
     });
 

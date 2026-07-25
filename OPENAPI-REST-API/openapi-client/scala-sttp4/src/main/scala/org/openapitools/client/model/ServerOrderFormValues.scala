@@ -31,4 +31,3 @@ case class ServerOrderFormValues(
   /* Hard Drives value for the server order. */
   hd: Option[String] = None
 )
-

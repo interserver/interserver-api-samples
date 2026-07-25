@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsOrder
 void main() {
-  final instance = VpsOrderBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsOrder? instance = /* VpsOrder(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsOrder, () {
     // Cost of VPS Slice SSD OVZ

@@ -23,4 +23,3 @@ case class ServersBuyNowError(
   /* List of specific validation error messages. */
   errors: Option[Seq[String]] = None
 )
-

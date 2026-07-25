@@ -16,127 +16,27 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse2006   {
   
-  @Schema(description = "Whether the user was logged in to an existing account.")
+  @Schema(description = "The URL to redirect the user to for OAuth authentication.")
  /**
-   * Whether the user was logged in to an existing account.  
+   * The URL to redirect the user to for OAuth authentication.  
   **/
-  private Boolean login = null;
-  
-  @Schema(description = "Whether a new account was created.")
+  private String redirectUrl = null;
  /**
-   * Whether a new account was created.  
+   * The URL to redirect the user to for OAuth authentication.
+   * @return redirectUrl
   **/
-  private Boolean signup = null;
-  
-  @Schema(description = "Whether the OAuth provider was linked to an existing account.")
- /**
-   * Whether the OAuth provider was linked to an existing account.  
-  **/
-  private Boolean linked = null;
-  
-  @Schema(description = "The account ID associated with the OAuth login.")
- /**
-   * The account ID associated with the OAuth login.  
-  **/
-  private Integer accountId = null;
-  
-  @Schema(description = "Error code if additional verification is needed (e.g. `2fa_required`).")
- /**
-   * Error code if additional verification is needed (e.g. `2fa_required`).  
-  **/
-  private String errorCode = null;
- /**
-   * Whether the user was logged in to an existing account.
-   * @return login
-  **/
-  @JsonProperty("login")
+  @JsonProperty("redirect_url")
   @NotNull
-  public Boolean isLogin() {
-    return login;
+  public String getRedirectUrl() {
+    return redirectUrl;
   }
 
-  public void setLogin(Boolean login) {
-    this.login = login;
+  public void setRedirectUrl(String redirectUrl) {
+    this.redirectUrl = redirectUrl;
   }
 
-  public InlineResponse2006 login(Boolean login) {
-    this.login = login;
-    return this;
-  }
-
- /**
-   * Whether a new account was created.
-   * @return signup
-  **/
-  @JsonProperty("signup")
-  @NotNull
-  public Boolean isSignup() {
-    return signup;
-  }
-
-  public void setSignup(Boolean signup) {
-    this.signup = signup;
-  }
-
-  public InlineResponse2006 signup(Boolean signup) {
-    this.signup = signup;
-    return this;
-  }
-
- /**
-   * Whether the OAuth provider was linked to an existing account.
-   * @return linked
-  **/
-  @JsonProperty("linked")
-  @NotNull
-  public Boolean isLinked() {
-    return linked;
-  }
-
-  public void setLinked(Boolean linked) {
-    this.linked = linked;
-  }
-
-  public InlineResponse2006 linked(Boolean linked) {
-    this.linked = linked;
-    return this;
-  }
-
- /**
-   * The account ID associated with the OAuth login.
-   * @return accountId
-  **/
-  @JsonProperty("account_id")
-  @NotNull
-  public Integer getAccountId() {
-    return accountId;
-  }
-
-  public void setAccountId(Integer accountId) {
-    this.accountId = accountId;
-  }
-
-  public InlineResponse2006 accountId(Integer accountId) {
-    this.accountId = accountId;
-    return this;
-  }
-
- /**
-   * Error code if additional verification is needed (e.g. &#x60;2fa_required&#x60;).
-   * @return errorCode
-  **/
-  @JsonProperty("error_code")
-  @NotNull
-  public String getErrorCode() {
-    return errorCode;
-  }
-
-  public void setErrorCode(String errorCode) {
-    this.errorCode = errorCode;
-  }
-
-  public InlineResponse2006 errorCode(String errorCode) {
-    this.errorCode = errorCode;
+  public InlineResponse2006 redirectUrl(String redirectUrl) {
+    this.redirectUrl = redirectUrl;
     return this;
   }
 
@@ -146,11 +46,7 @@ public class InlineResponse2006   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2006 {\n");
     
-    sb.append("    login: ").append(toIndentedString(login)).append("\n");
-    sb.append("    signup: ").append(toIndentedString(signup)).append("\n");
-    sb.append("    linked: ").append(toIndentedString(linked)).append("\n");
-    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
+    sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

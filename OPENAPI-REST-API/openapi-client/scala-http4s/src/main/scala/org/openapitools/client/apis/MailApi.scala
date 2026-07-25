@@ -15,6 +15,7 @@ import io.circe.Encoder
 import org.http4s.Uri
 import org.http4s.client.Client as Http4sClient
 import org.openapitools.client.models.ChargeInvoiceRows
+import org.openapitools.client.models.DeleteMailAlertRequest
 import org.openapitools.client.models.DeliveredStatus
 import org.openapitools.client.models.DenyRuleNew
 import org.openapitools.client.models.DenyRuleRecord
@@ -31,6 +32,7 @@ import org.openapitools.client.models.MailDelistResponse
 import org.openapitools.client.models.MailDeliverabilityResponse
 import org.openapitools.client.models.MailLog
 import org.openapitools.client.models.MailOrder
+import org.openapitools.client.models.MailOrderRequest
 import org.openapitools.client.models.MailRow
 import org.openapitools.client.models.MailSchema
 import org.openapitools.client.models.MailStatsType
@@ -47,10 +49,10 @@ import org.openapitools.client.models.*
 
 trait MailApiEndpoints[F[*]] {
 
-  def addMail()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
+  def addMail(mailOrderRequest: MailOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def addRule(id: Int, denyRuleNew: DenyRuleNew)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def createMailAlert(id: Int, mailAlertRequest: MailAlertRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def deleteMailAlert(id: Int, alertId: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
+  def deleteMailAlert(id: Int, deleteMailAlertRequest: DeleteMailAlertRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def deleteRule(id: Int, rule: String)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def delistBlock(id: Int, email: Option[String] = None)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def getMailAlerts(id: Int)(using auth: _Authorization.ApiKey): F[MailAlertsResponse]
@@ -66,12 +68,13 @@ trait MailApiEndpoints[F[*]] {
   def getStats(id: Int, time: Option[GetStatsTimeParameter] = None)(using auth: _Authorization.ApiKey): F[MailStatsType]
   def mailCancel(id: Int)(using auth: _Authorization.ApiKey): F[MailCancel200Response]
   def postMailDelist(id: Int, mailDelistRequest: MailDelistRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def putMail()(using auth: _Authorization.ApiKey): F[Unit]
+  def putMail(mailOrderRequest: MailOrderRequest)(using auth: _Authorization.ApiKey): F[Unit]
   def resetMailPassword(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def sendAdvMail(id: Int, sendMailAdv: SendMailAdv)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def sendMail(id: Int, sendMail: SendMail)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def updateMailAlert(id: Int, mailAlertUpdateRequest: MailAlertUpdateRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def updateMailInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
+  def updateRule(id: Int, rule: String, denyRuleNew: DenyRuleNew)(using auth: _Authorization.ApiKey): F[GenericResponse]
   def viewMailLog(id: Int, id2: Option[Long] = None, origin: Option[String] = None, mx: Option[String] = None, from: Option[String] = None, to: Option[String] = None, subject: Option[String] = None, mailid: Option[String] = None, messageId: Option[String] = None, replyto: Option[String] = None, headerfrom: Option[String] = None, delivered: Option[DeliveredStatus] = None, skip: Option[Int] = None, limit: Option[Int] = None, startDate: Option[ViewMailLogStartDateParameter] = None, endDate: Option[ViewMailLogStartDateParameter] = None, sort: Option[ViewMailLogSortParameter] = None, dir: Option[ViewMailLogDirParameter] = None, groupby: Option[ViewMailLogGroupbyParameter] = None)(using auth: _Authorization.ApiKey): F[MailLog]
 
 }
@@ -86,15 +89,15 @@ class MailApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addMail()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
+  override def addMail(mailOrderRequest: MailOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, ServiceOrderPostResponse](
+    _executeRequest[MailOrderRequest, ServiceOrderPostResponse](
       method = "POST",
       path = s"/mail/order",
-      body = None,
+      body = Some(mailOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -145,20 +148,17 @@ class MailApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def deleteMailAlert(id: Int, alertId: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
+  override def deleteMailAlert(id: Int, deleteMailAlertRequest: DeleteMailAlertRequest)(using auth: _Authorization.ApiKey): F[SuccessTextResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
-    val queryParameters = (
-      Some(Seq("alert_id" -> alertId))
-    ).toSeq.flatten
 
-    _executeRequest[Unit, SuccessTextResponse](
+    _executeRequest[DeleteMailAlertRequest, SuccessTextResponse](
       method = "DELETE",
       path = s"/mail/${id}/alerts",
-      body = None,
+      body = Some(deleteMailAlertRequest),
       formParameters = None,
-      queryParameters = queryParameters,
+      queryParameters = Nil,
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
@@ -465,15 +465,15 @@ class MailApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def putMail()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def putMail(mailOrderRequest: MailOrderRequest)(using auth: _Authorization.ApiKey): F[Unit] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[MailOrderRequest, Unit](
       method = "PUT",
       path = s"/mail/order",
-      body = None,
+      body = Some(mailOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -580,6 +580,27 @@ class MailApiEndpointsImpl[F[*]: Concurrent](
         
         case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
+  override def updateRule(id: Int, rule: String, denyRuleNew: DenyRuleNew)(using auth: _Authorization.ApiKey): F[GenericResponse] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[DenyRuleNew, GenericResponse](
+      method = "PUT",
+      path = s"/mail/${id}/rules/${rule}",
+      body = Some(denyRuleNew),
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => parseJson[F, GenericResponse]("GenericResponse", r)
+        case r if r.status.code == 400 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+        case r if r.status.code == 404 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }
 

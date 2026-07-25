@@ -1,4 +1,4 @@
-# InterServerManagementApi.TicketsCountArray
+# InterserverApiClient.TicketsCountArray
 
 ## Properties
 

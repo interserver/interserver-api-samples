@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { UpdateAccountTfaRequest } from './api';
+import { UpdateAccountTfaRequest } from '@interserver/myadmin-client';
 
 const instance: UpdateAccountTfaRequest = {
     _2fa_google_code,

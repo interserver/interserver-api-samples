@@ -18,5 +18,4 @@ import scala.collection.mutable.ListBuffer
    * Fetches every posts of ticket
    */
 case class TicketPostDetails(
-)
-
+) extends ListBuffer[TicketPostDetailsInner]

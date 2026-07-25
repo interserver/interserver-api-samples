@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainNameserverPostRequest model module.
  * @module model/DomainNameserverPostRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainNameserverPostRequest {
     /**

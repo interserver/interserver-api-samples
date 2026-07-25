@@ -1,4 +1,4 @@
-# openapi::LoginSuccessResponse
+# interserverapi::LoginSuccessResponse
 
 The response from a successful login.
 

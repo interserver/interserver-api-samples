@@ -22,4 +22,3 @@ case class GetScrubIpDetails200ResponseFilterFirewallRulesInner(
   xdp_action: Option[String] = None,
   global_drop: Option[String] = None
 )
-

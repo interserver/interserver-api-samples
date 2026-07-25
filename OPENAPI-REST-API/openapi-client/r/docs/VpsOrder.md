@@ -1,4 +1,4 @@
-# openapi::VpsOrder
+# interserverapi::VpsOrder
 
 Pricing and configuration options for ordering a new VPS, including slice costs by platform and available OS templates.
 

@@ -12,4 +12,8 @@ VPS Traffic Totals Secttions Data
 |**out** | **Long** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -18,7 +18,7 @@ import DomainNameServer from './DomainNameServer';
 /**
  * The DomainAllInfoAttributes model module.
  * @module model/DomainAllInfoAttributes
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainAllInfoAttributes {
     /**

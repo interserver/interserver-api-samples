@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_order_service_types32 import VpsOrderServiceTypes32
+from interserver_api_client.models.vps_order_service_types32 import VpsOrderServiceTypes32
 
 class TestVpsOrderServiceTypes32(unittest.TestCase):
     """VpsOrderServiceTypes32 unit test stubs"""

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LoginSubmissionExample();
+    instance = new InterserverApiClient.LoginSubmissionExample();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('LoginSubmissionExample', function() {
     it('should create an instance of LoginSubmissionExample', function() {
       // uncomment below and update the code to test LoginSubmissionExample
-      //var instance = new InterServerManagementApi.LoginSubmissionExample();
-      //expect(instance).to.be.a(InterServerManagementApi.LoginSubmissionExample);
+      //var instance = new InterserverApiClient.LoginSubmissionExample();
+      //expect(instance).to.be.a(InterserverApiClient.LoginSubmissionExample);
     });
 
     it('should have the property login (base name: "login")', function() {
       // uncomment below and update the code to test the property login
-      //var instance = new InterServerManagementApi.LoginSubmissionExample();
+      //var instance = new InterserverApiClient.LoginSubmissionExample();
       //expect(instance).to.be();
     });
 
     it('should have the property passwd (base name: "passwd")', function() {
       // uncomment below and update the code to test the property passwd
-      //var instance = new InterServerManagementApi.LoginSubmissionExample();
+      //var instance = new InterserverApiClient.LoginSubmissionExample();
       //expect(instance).to.be();
     });
 
     it('should have the property remember (base name: "remember")', function() {
       // uncomment below and update the code to test the property remember
-      //var instance = new InterServerManagementApi.LoginSubmissionExample();
+      //var instance = new InterserverApiClient.LoginSubmissionExample();
       //expect(instance).to.be();
     });
 
     it('should have the property g_recaptcha_response (base name: "g-recaptcha-response")', function() {
       // uncomment below and update the code to test the property g_recaptcha_response
-      //var instance = new InterServerManagementApi.LoginSubmissionExample();
+      //var instance = new InterserverApiClient.LoginSubmissionExample();
       //expect(instance).to.be();
     });
 
     it('should have the property tfa (base name: "tfa")', function() {
       // uncomment below and update the code to test the property tfa
-      //var instance = new InterServerManagementApi.LoginSubmissionExample();
+      //var instance = new InterserverApiClient.LoginSubmissionExample();
       //expect(instance).to.be();
     });
 

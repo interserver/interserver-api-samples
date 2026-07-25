@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TicketPostDetails = Initialize-PSOpenAPIToolsTicketPostDetails 
+$TicketPostDetails = Initialize-InterserverApiTicketPostDetails 
 ```
 
 - Convert the resource to JSON

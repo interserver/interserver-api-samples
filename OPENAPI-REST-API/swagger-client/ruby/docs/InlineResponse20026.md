@@ -1,8 +1,7 @@
-# SwaggerClient::InlineResponse20026
+# InterserverApiClient::InlineResponse20026
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**text** | **String** | Confirmation message. | [optional] 
-**ticket** | **Integer** | The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress. | [optional] 
+**ips** | **Hash&lt;String, String&gt;** | A map of IP addresses to their current reverse DNS hostnames. | [optional] 
 

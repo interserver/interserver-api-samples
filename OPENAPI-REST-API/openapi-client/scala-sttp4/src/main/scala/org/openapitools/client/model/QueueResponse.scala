@@ -22,4 +22,3 @@ case class QueueResponse(
   /* The Queue ID attached to the action. */
   queueId: Int
 )
-

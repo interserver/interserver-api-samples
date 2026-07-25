@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainProvProcessPendingAttributes } from './api';
+import { DomainProvProcessPendingAttributes } from '@interserver/myadmin-client';
 
 const instance: DomainProvProcessPendingAttributes = {
     id,

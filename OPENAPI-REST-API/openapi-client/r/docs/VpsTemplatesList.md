@@ -1,4 +1,4 @@
-# openapi::VpsTemplatesList
+# interserverapi::VpsTemplatesList
 
 A listing of the OS Templates available for use.
 

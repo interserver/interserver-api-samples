@@ -216,7 +216,7 @@ export function instanceOfVps(value: object): value is Vps {
     if (!('custCurrency' in value) || value['custCurrency'] === undefined) return false;
     if (!('custCurrencySymbol' in value) || value['custCurrencySymbol'] === undefined) return false;
     if (!('serviceMaster' in value) || value['serviceMaster'] === undefined) return false;
-    if (!('_package' in value) || value['_package'] === undefined) return false;
+    if ((!('_package' in (value as Record<string, any>)) && !('package' in (value as Record<string, any>))) || ((value as Record<string, any>)['_package'] === undefined && (value as Record<string, any>)['package'] === undefined)) return false;
     if (!('serviceExtra' in value) || value['serviceExtra'] === undefined) return false;
     if (!('extraInfoTables' in value) || value['extraInfoTables'] === undefined) return false;
     if (!('module' in value) || value['module'] === undefined) return false;
@@ -258,7 +258,7 @@ export function VpsFromJSONTyped(json: any, ignoreDiscriminator: boolean): Vps {
         'plesk12_data': VpsPlesk12DataFromJSON(json['plesk12_data']),
         'serviceAddons': VpsServiceAddonsFromJSON(json['serviceAddons']),
         'os_template': json['os_template'] == null ? undefined : json['os_template'],
-        'cpu_graph_data': json['cpu_graph_data'] == null ? undefined : json['cpu_graph_data'],
+        'cpu_graph_data': json['cpu_graph_data'] === undefined ? undefined : json['cpu_graph_data'] === null ? null : json['cpu_graph_data'],
     };
 }
 

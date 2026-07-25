@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::WebsiteTable');
+use_ok('InterServerAPI::Object::WebsiteTable');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::WebsiteTable->new();
+#my $instance = InterServerAPI::Object::WebsiteTable->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::WebsiteTable');
+#isa_ok($instance, 'InterServerAPI::Object::WebsiteTable');
 
 
 done_testing();

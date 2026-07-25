@@ -1,4 +1,4 @@
-# SwaggerClient::CreateGeoFirewallRule
+# InterserverApiClient::CreateGeoFirewallRule
 
 ## Properties
 Name | Type | Description | Notes

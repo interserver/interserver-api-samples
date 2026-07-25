@@ -9,16 +9,15 @@ import Foundation
 
 
 open class InlineResponse2001: JSONEncodable {
-    public var success: Bool?
-    public var text: String?
+    /** Affiliate signup statistics and client-side data. */
+    public var data: Any?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["success"] = self.success
-        nillableDictionary["text"] = self.text
+        nillableDictionary["data"] = self.data
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

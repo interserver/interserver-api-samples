@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.tickets import Tickets
+from interserver_api_client.models.tickets import Tickets
 
 class TestTickets(unittest.TestCase):
     """Tickets unit test stubs"""
@@ -50,7 +50,7 @@ class TestTickets(unittest.TestCase):
                 pages = 56,
                 rows_total = 56,
                 inbox_count = 56,
-                count_array = openapi_client.models.tickets_count_array.Tickets_countArray(
+                count_array = interserver_api_client.models.tickets_count_array.Tickets_countArray(
                     open = 56, 
                     on_hold = 56, 
                     closed = 56, ),
@@ -72,7 +72,7 @@ class TestTickets(unittest.TestCase):
                 pages = 56,
                 rows_total = 56,
                 inbox_count = 56,
-                count_array = openapi_client.models.tickets_count_array.Tickets_countArray(
+                count_array = interserver_api_client.models.tickets_count_array.Tickets_countArray(
                     open = 56, 
                     on_hold = 56, 
                     closed = 56, ),

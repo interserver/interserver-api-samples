@@ -1,4 +1,4 @@
-# InterServerManagementApi.CreateFilter400Response
+# InterserverApiClient.CreateFilter400Response
 
 ## Properties
 

@@ -12,4 +12,8 @@
 |**data** | **String** | The file contents base64 encoded |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

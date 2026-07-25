@@ -11,19 +11,20 @@ import Alamofire
 
 open class SSLCertificatesAPI {
     /**
-     Place SSL Cert Order
+     Place a new SSL certificate order - creates invoice and queues issuance
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addSsl(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
-        addSslWithRequestBuilder().execute { (response, error) -> Void in
+    open class func addSsl(body: SslOrderRequest, completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
+        addSslWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Place SSL Cert Order
+     Place a new SSL certificate order - creates invoice and queues issuance
      - POST /ssl/order
 
      - API Key:
@@ -45,22 +46,23 @@ open class SSLCertificatesAPI {
   "serviceId" : 12345,
   "invoice_description" : "New Service Order"
 }}]
+     - parameter body: (body)  
 
      - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addSslWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
+    open class func addSslWithRequestBuilder(body: SslOrderRequest) -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/ssl/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     SSL Cert Ordering Information
+     Get available SSL certificate packages and pricing for placing a new order
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -76,7 +78,7 @@ open class SSLCertificatesAPI {
 
 
     /**
-     SSL Cert Ordering Information
+     Get available SSL certificate packages and pricing for placing a new order
      - GET /ssl/order
 
      - API Key:
@@ -104,7 +106,7 @@ open class SSLCertificatesAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get SSL Cert Info
+     Get full details for one SSL certificate by id - status, expiration, links
 
      - parameter _id: (path) SSL certificate ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -121,7 +123,7 @@ open class SSLCertificatesAPI {
 
 
     /**
-     Get SSL Cert Info
+     Get full details for one SSL certificate by id - status, expiration, links
      - GET /ssl/{id}
 
      - API Key:
@@ -153,7 +155,7 @@ open class SSLCertificatesAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get SSL Cert Invoices
+     List all billing invoices and charges tied to one SSL certificate by id
 
      - parameter _id: (path) SSL Cert ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -166,7 +168,7 @@ open class SSLCertificatesAPI {
 
 
     /**
-     Get SSL Cert Invoices
+     List all billing invoices and charges tied to one SSL certificate by id
      - GET /ssl/{id}/invoices
 
      - API Key:
@@ -236,7 +238,7 @@ open class SSLCertificatesAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List SSL Certs
+     List all SSL certificates on the authenticated customer account with status and hostname
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -252,7 +254,7 @@ open class SSLCertificatesAPI {
 
 
     /**
-     List SSL Certs
+     List all SSL certificates on the authenticated customer account with status and hostname
      - GET /ssl
 
      - API Key:
@@ -279,7 +281,7 @@ open class SSLCertificatesAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Resend SSL Welcome Email
+     Resend the SSL welcome email with cert credentials and install instructions
 
      - parameter _id: (path) SSL Cert ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -292,7 +294,7 @@ open class SSLCertificatesAPI {
 
 
     /**
-     Resend SSL Welcome Email
+     Resend the SSL welcome email with cert credentials and install instructions
      - GET /ssl/{id}/welcome_email
 
      - API Key:
@@ -327,12 +329,13 @@ open class SSLCertificatesAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Validate SSL Cert Order
+     Validate an SSL certificate order without charging - dry-run before addSsl
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func putSsl(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        putSslWithRequestBuilder().execute { (response, error) -> Void in
+    open class func putSsl(body: SslOrderRequest, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        putSslWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -343,7 +346,7 @@ open class SSLCertificatesAPI {
 
 
     /**
-     Validate SSL Cert Order
+     Validate an SSL certificate order without charging - dry-run before addSsl
      - PUT /ssl/order
 
      - API Key:
@@ -355,27 +358,28 @@ open class SSLCertificatesAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - parameter body: (body)  
 
      - returns: RequestBuilder<Void> 
      */
-    open class func putSslWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func putSslWithRequestBuilder(body: SslOrderRequest) -> RequestBuilder<Void> {
         let path = "/ssl/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Cancel SSL Certificate Service
+     Cancel an SSL certificate service - stops renewals at end of billing cycle
 
      - parameter _id: (path) SSL Cert ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func sslCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20021?,_ error: Error?) -> Void)) {
+    open class func sslCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20023?,_ error: Error?) -> Void)) {
         sslCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -383,7 +387,7 @@ open class SSLCertificatesAPI {
 
 
     /**
-     Cancel SSL Certificate Service
+     Cancel an SSL certificate service - stops renewals at end of billing cycle
      - DELETE /ssl/{id}
 
      - API Key:
@@ -401,9 +405,9 @@ open class SSLCertificatesAPI {
 }}]
      - parameter _id: (path) SSL Cert ID number 
 
-     - returns: RequestBuilder<InlineResponse20021> 
+     - returns: RequestBuilder<InlineResponse20023> 
      */
-    open class func sslCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20021> {
+    open class func sslCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20023> {
         var path = "/ssl/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -413,12 +417,12 @@ open class SSLCertificatesAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20021>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20023>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update SSL Cert Order
+     Update mutable settings on an existing SSL certificate order by id
 
      - parameter _id: (path) SSL certificate ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -431,7 +435,7 @@ open class SSLCertificatesAPI {
 
 
     /**
-     Update SSL Cert Order
+     Update mutable settings on an existing SSL certificate order by id
      - POST /ssl/{id}
 
      - API Key:

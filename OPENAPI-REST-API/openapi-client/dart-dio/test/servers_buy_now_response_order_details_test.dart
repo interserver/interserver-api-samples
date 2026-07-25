@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServersBuyNowResponseOrderDetails
 void main() {
-  final instance = ServersBuyNowResponseOrderDetailsBuilder();
-  // TODO add properties to the builder and call build()
+  final ServersBuyNowResponseOrderDetails? instance = /* ServersBuyNowResponseOrderDetails(...) */ null;
+  // TODO add properties to the entity
 
   group(ServersBuyNowResponseOrderDetails, () {
     // The newly created service ID for the ordered server.
-    // num serviceId
+    // Optional<num?> serviceId
     test('to test the property `serviceId`', () async {
       // TODO
     });
 
     // The invoice ID generated for the order.
-    // num invoiceId
+    // Optional<num?> invoiceId
     test('to test the property `invoiceId`', () async {
       // TODO
     });

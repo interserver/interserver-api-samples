@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainOrderResponse = Initialize-PSOpenAPIToolsDomainOrderResponse  -OPSVersion null `
+$DomainOrderResponse = Initialize-InterserverApiDomainOrderResponse  -OPSVersion null `
  -Protocol null `
  -IsSuccess null `
  -Action null `

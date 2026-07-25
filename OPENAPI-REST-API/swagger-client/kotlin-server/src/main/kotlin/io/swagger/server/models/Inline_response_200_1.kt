@@ -13,12 +13,11 @@
 
 /**
  * 
- * @param success 
- * @param text 
+ * @param &#x60;data&#x60; Affiliate signup statistics and client-side data.
  */
 data class InlineResponse2001 (
 
-    val success: kotlin.Boolean,
-    val text: kotlin.String
+    /* Affiliate signup statistics and client-side data. */
+    val `data`: kotlin.Any? = null
 ) {
 }

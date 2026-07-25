@@ -1,4 +1,4 @@
-# openapi::LicensesOrderServiceCategories
+# interserverapi::LicensesOrderServiceCategories
 
 License service categories
 

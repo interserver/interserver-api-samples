@@ -1,4 +1,4 @@
-# openapi::BillingPaymentMethodRequest
+# interserverapi::BillingPaymentMethodRequest
 
 Payload for updating the default account payment method.
 

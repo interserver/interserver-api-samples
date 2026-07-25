@@ -1,14 +1,14 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailDelistRequest
 void main() {
-  final instance = MailDelistRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final MailDelistRequest? instance = /* MailDelistRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(MailDelistRequest, () {
     // Email address to delist.
-    // String unblock
+    // Optional<String?> unblock
     test('to test the property `unblock`', () async {
       // TODO
     });

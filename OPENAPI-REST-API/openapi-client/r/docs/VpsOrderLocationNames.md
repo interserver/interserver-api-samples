@@ -1,4 +1,4 @@
-# openapi::VpsOrderLocationNames
+# interserverapi::VpsOrderLocationNames
 
 Location Names
 

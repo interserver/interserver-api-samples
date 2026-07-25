@@ -11,4 +11,8 @@ Costs of license packages
 |**licensesOrderPackageCosts11468** | **BigDecimal** | Cost of package with ID 11468 |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

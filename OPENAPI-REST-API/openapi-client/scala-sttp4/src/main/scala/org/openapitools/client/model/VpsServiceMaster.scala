@@ -65,4 +65,3 @@ case class VpsServiceMaster(
   /* Order number */
   vps_order: Option[String] = None
 )
-

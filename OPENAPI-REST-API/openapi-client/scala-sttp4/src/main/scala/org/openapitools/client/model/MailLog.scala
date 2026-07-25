@@ -25,4 +25,3 @@ case class MailLog(
   limit: Int,
   emails: Seq[MailLogEntry]
 )
-

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerExtraInfoTables } from './api';
+import { ServerExtraInfoTables } from '@interserver/myadmin-client';
 
 const instance: ServerExtraInfoTables = {
     assets,

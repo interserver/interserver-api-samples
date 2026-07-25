@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailDelistResponse
+# InterserverApiClient.MailDelistResponse
 
 ## Properties
 

@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainAllInfoAttributes } from './api';
+import { DomainAllInfoAttributes } from '@interserver/myadmin-client';
 
 const instance: DomainAllInfoAttributes = {
     contact_set,

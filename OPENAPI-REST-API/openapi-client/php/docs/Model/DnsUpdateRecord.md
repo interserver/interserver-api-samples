@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional]
-**type** | [**\Interserver\MyAdmin\Model\DnsRecordType**](DnsRecordType.md) |  | [optional]
+**type** | [**\Interserver\\MyAdmin\Model\DnsRecordType**](DnsRecordType.md) |  | [optional]
 **content** | **string** |  | [optional]
 **ttl** | **string** |  | [optional]
 **prio** | **string** |  | [optional]

@@ -1,4 +1,4 @@
-# SwaggerClient::BackupBillingDetails
+# InterserverApiClient::BackupBillingDetails
 
 ## Properties
 Name | Type | Description | Notes

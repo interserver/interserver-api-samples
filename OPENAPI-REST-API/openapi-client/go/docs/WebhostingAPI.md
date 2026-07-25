@@ -4,30 +4,30 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddWebsite**](WebhostingAPI.md#AddWebsite) | **Post** /websites/order | Place Website Order
-[**GetNewWebsite**](WebhostingAPI.md#GetNewWebsite) | **Get** /websites/order | Website Ordering Information
-[**GetWebsiteBuyIp**](WebhostingAPI.md#GetWebsiteBuyIp) | **Get** /websites/{id}/buy_ip | Get Website IP Information
-[**GetWebsiteInfo**](WebhostingAPI.md#GetWebsiteInfo) | **Get** /websites/{id} | Get Website Order
-[**GetWebsiteInvoices**](WebhostingAPI.md#GetWebsiteInvoices) | **Get** /websites/{id}/invoices | Get Website Invoices
-[**GetWebsiteList**](WebhostingAPI.md#GetWebsiteList) | **Get** /websites | Get Website Listing
-[**GetWebsitesBackups**](WebhostingAPI.md#GetWebsitesBackups) | **Get** /websites/{id}/backups | Get Website Backups
-[**GetWebsitesLogin**](WebhostingAPI.md#GetWebsitesLogin) | **Get** /websites/{id}/login | Hosting Panel Auto Login
-[**GetWebsitesWelcomeEmail**](WebhostingAPI.md#GetWebsitesWelcomeEmail) | **Get** /websites/{id}/welcome_email | Resend Website Welcome Email
-[**GettWebsiteReverseDns**](WebhostingAPI.md#GettWebsiteReverseDns) | **Get** /websites/{id}/reverse_dns | Get Website Reverse DNS
-[**PostWebsiteBuyIp**](WebhostingAPI.md#PostWebsiteBuyIp) | **Post** /websites/{id}/buy_ip | Update Website IP DNS
-[**PostWebsiteMigration**](WebhostingAPI.md#PostWebsiteMigration) | **Post** /websites/{id}/migration | Request Website Migration
-[**PostWebsitesReverseDns**](WebhostingAPI.md#PostWebsitesReverseDns) | **Post** /websites/{id}/reverse_dns | Update Website Reverse DNS
-[**PutWebsites**](WebhostingAPI.md#PutWebsites) | **Put** /websites/order | Validate Webhosting Order
-[**UpdateWebsiteInfo**](WebhostingAPI.md#UpdateWebsiteInfo) | **Post** /websites/{id} | Update Website Order
-[**WebhostingCancel**](WebhostingAPI.md#WebhostingCancel) | **Delete** /websites/{id} | Cancel Website
+[**AddWebsite**](WebhostingAPI.md#AddWebsite) | **Post** /websites/order | Place a new webhosting order, create the invoice, and queue provisioning
+[**GetNewWebsite**](WebhostingAPI.md#GetNewWebsite) | **Get** /websites/order | Read the webhosting order catalog — plans, packages, promo offers, pricing
+[**GetWebsiteBuyIp**](WebhostingAPI.md#GetWebsiteBuyIp) | **Get** /websites/{id}/buy_ip | Read website IPs, current reverse DNS, and additional-IP pricing
+[**GetWebsiteInfo**](WebhostingAPI.md#GetWebsiteInfo) | **Get** /websites/{id} | Read full configuration and status detail for one webhosting service
+[**GetWebsiteInvoices**](WebhostingAPI.md#GetWebsiteInvoices) | **Get** /websites/{id}/invoices | List all billing invoices and recurring charges scoped to one website
+[**GetWebsiteList**](WebhostingAPI.md#GetWebsiteList) | **Get** /websites | List the caller&#39;s webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
+[**GetWebsitesBackups**](WebhostingAPI.md#GetWebsitesBackups) | **Get** /websites/{id}/backups | List off-site cpmove backups stored in Swift — list or inline-download archive
+[**GetWebsitesLogin**](WebhostingAPI.md#GetWebsitesLogin) | **Get** /websites/{id}/login | Get a one-time auto-login URL for the website&#39;s control panel
+[**GetWebsitesWelcomeEmail**](WebhostingAPI.md#GetWebsitesWelcomeEmail) | **Get** /websites/{id}/welcome_email | Resend the webhosting welcome email with control-panel credentials and URL
+[**GettWebsiteReverseDns**](WebhostingAPI.md#GettWebsiteReverseDns) | **Get** /websites/{id}/reverse_dns | Read current reverse-DNS (PTR) records for the website&#39;s IPs
+[**PostWebsiteBuyIp**](WebhostingAPI.md#PostWebsiteBuyIp) | **Post** /websites/{id}/buy_ip | Buy an additional IP for the website OR update reverse DNS records
+[**PostWebsiteMigration**](WebhostingAPI.md#PostWebsiteMigration) | **Post** /websites/{id}/migration | Submit a request for InterServer staff to migrate a website from another host
+[**PostWebsitesReverseDns**](WebhostingAPI.md#PostWebsitesReverseDns) | **Post** /websites/{id}/reverse_dns | Bulk-update reverse-DNS (PTR) records for one or more website IPs
+[**PutWebsites**](WebhostingAPI.md#PutWebsites) | **Put** /websites/order | Validate a webhosting order and preview cost — dry run, no charge
+[**UpdateWebsiteInfo**](WebhostingAPI.md#UpdateWebsiteInfo) | **Post** /websites/{id} | POST mutation hook for the website detail page (use dedicated ops where possible)
+[**WebhostingCancel**](WebhostingAPI.md#WebhostingCancel) | **Delete** /websites/{id} | Schedule termination of a webhosting service — wipes panel account at cycle end
 
 
 
 ## AddWebsite
 
-> ServiceOrderPostResponse AddWebsite(ctx).Execute()
+> ServiceOrderPostResponse AddWebsite(ctx).WebsiteOrderPostRequest(websiteOrderPostRequest).Execute()
 
-Place Website Order
+Place a new webhosting order, create the invoice, and queue provisioning
 
 
 
@@ -44,10 +44,11 @@ import (
 )
 
 func main() {
+	websiteOrderPostRequest := *openapiclient.NewWebsiteOrderPostRequest("Hostname_example", int32(123)) // WebsiteOrderPostRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.WebhostingAPI.AddWebsite(context.Background()).Execute()
+	resp, r, err := apiClient.WebhostingAPI.AddWebsite(context.Background()).WebsiteOrderPostRequest(websiteOrderPostRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhostingAPI.AddWebsite``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,12 +60,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAddWebsiteRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **websiteOrderPostRequest** | [**WebsiteOrderPostRequest**](WebsiteOrderPostRequest.md) |  | 
 
 ### Return type
 
@@ -76,7 +81,7 @@ Other parameters are passed through a pointer to a apiAddWebsiteRequest struct v
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -88,7 +93,7 @@ Other parameters are passed through a pointer to a apiAddWebsiteRequest struct v
 
 > WebsitesOrder GetNewWebsite(ctx).Execute()
 
-Website Ordering Information
+Read the webhosting order catalog — plans, packages, promo offers, pricing
 
 
 
@@ -149,7 +154,7 @@ Other parameters are passed through a pointer to a apiGetNewWebsiteRequest struc
 
 > GetWebsiteBuyIp200Response GetWebsiteBuyIp(ctx, id).Execute()
 
-Get Website IP Information
+Read website IPs, current reverse DNS, and additional-IP pricing
 
 
 
@@ -219,7 +224,7 @@ Name | Type | Description  | Notes
 
 > Website GetWebsiteInfo(ctx, id).Execute()
 
-Get Website Order
+Read full configuration and status detail for one webhosting service
 
 
 
@@ -289,7 +294,7 @@ Name | Type | Description  | Notes
 
 > ChargeInvoiceRows GetWebsiteInvoices(ctx, id).Execute()
 
-Get Website Invoices
+List all billing invoices and recurring charges scoped to one website
 
 
 
@@ -359,7 +364,7 @@ Name | Type | Description  | Notes
 
 > []WebsiteRow GetWebsiteList(ctx).Execute()
 
-Get Website Listing
+List the caller's webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
 
 
 
@@ -420,7 +425,7 @@ Other parameters are passed through a pointer to a apiGetWebsiteListRequest stru
 
 > WebsiteBackups GetWebsitesBackups(ctx, id).Execute()
 
-Get Website Backups
+List off-site cpmove backups stored in Swift — list or inline-download archive
 
 
 
@@ -490,7 +495,7 @@ Name | Type | Description  | Notes
 
 > WebsiteLoginResponse GetWebsitesLogin(ctx, id).Execute()
 
-Hosting Panel Auto Login
+Get a one-time auto-login URL for the website's control panel
 
 
 
@@ -560,7 +565,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse GetWebsitesWelcomeEmail(ctx, id).Execute()
 
-Resend Website Welcome Email
+Resend the webhosting welcome email with control-panel credentials and URL
 
 
 
@@ -630,7 +635,7 @@ Name | Type | Description  | Notes
 
 > ReverseDnsEntries GettWebsiteReverseDns(ctx, id).Execute()
 
-Get Website Reverse DNS
+Read current reverse-DNS (PTR) records for the website's IPs
 
 
 
@@ -700,7 +705,7 @@ Name | Type | Description  | Notes
 
 > PostWebsiteBuyIp200Response PostWebsiteBuyIp(ctx, id).PostWebsiteBuyIpRequest(postWebsiteBuyIpRequest).Execute()
 
-Update Website IP DNS
+Buy an additional IP for the website OR update reverse DNS records
 
 
 
@@ -772,7 +777,7 @@ Name | Type | Description  | Notes
 
 > PostWebsiteMigration200Response PostWebsiteMigration(ctx, id).PostWebsiteMigrationRequest(postWebsiteMigrationRequest).Execute()
 
-Request Website Migration
+Submit a request for InterServer staff to migrate a website from another host
 
 
 
@@ -844,7 +849,7 @@ Name | Type | Description  | Notes
 
 > TextResponse PostWebsitesReverseDns(ctx, id).ReverseDnsEntries(reverseDnsEntries).Execute()
 
-Update Website Reverse DNS
+Bulk-update reverse-DNS (PTR) records for one or more website IPs
 
 
 
@@ -914,9 +919,9 @@ Name | Type | Description  | Notes
 
 ## PutWebsites
 
-> PutWebsites(ctx).Execute()
+> PutWebsites(ctx).WebsiteOrderPutRequest(websiteOrderPutRequest).Execute()
 
-Validate Webhosting Order
+Validate a webhosting order and preview cost — dry run, no charge
 
 
 
@@ -933,10 +938,11 @@ import (
 )
 
 func main() {
+	websiteOrderPutRequest := *openapiclient.NewWebsiteOrderPutRequest("Hostname_example", int32(123)) // WebsiteOrderPutRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.WebhostingAPI.PutWebsites(context.Background()).Execute()
+	r, err := apiClient.WebhostingAPI.PutWebsites(context.Background()).WebsiteOrderPutRequest(websiteOrderPutRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `WebhostingAPI.PutWebsites``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -946,12 +952,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPutWebsitesRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **websiteOrderPutRequest** | [**WebsiteOrderPutRequest**](WebsiteOrderPutRequest.md) |  | 
 
 ### Return type
 
@@ -963,7 +973,7 @@ Other parameters are passed through a pointer to a apiPutWebsitesRequest struct 
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -975,7 +985,7 @@ Other parameters are passed through a pointer to a apiPutWebsitesRequest struct 
 
 > SuccessTextResponse UpdateWebsiteInfo(ctx, id).Execute()
 
-Update Website Order
+POST mutation hook for the website detail page (use dedicated ops where possible)
 
 
 
@@ -1045,7 +1055,7 @@ Name | Type | Description  | Notes
 
 > WebhostingCancel200Response WebhostingCancel(ctx, id).Execute()
 
-Cancel Website
+Schedule termination of a webhosting service — wipes panel account at cycle end
 
 
 

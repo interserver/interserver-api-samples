@@ -1,4 +1,4 @@
-# openapi::LicenseServiceType
+# interserverapi::LicenseServiceType
 
 Service type definition for a software license, including name, pricing, and category.
 

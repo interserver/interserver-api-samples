@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ReverseDnsEntries = Initialize-PSOpenAPIToolsReverseDnsEntries  -Ips null
+$ReverseDnsEntries = Initialize-InterserverApiReverseDnsEntries  -Ips null
 ```
 
 - Convert the resource to JSON

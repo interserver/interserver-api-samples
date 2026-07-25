@@ -10,4 +10,8 @@
 |**centosstream8** | **String** | Version details of CentOS Stream 8. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlaceScrubOrder201Response } from './api';
+import { PlaceScrubOrder201Response } from '@interserver/myadmin-client';
 
 const instance: PlaceScrubOrder201Response = {
     success,

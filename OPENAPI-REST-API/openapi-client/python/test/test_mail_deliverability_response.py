@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_deliverability_response import MailDeliverabilityResponse
+from interserver_api_client.models.mail_deliverability_response import MailDeliverabilityResponse
 
 class TestMailDeliverabilityResponse(unittest.TestCase):
     """MailDeliverabilityResponse unit test stubs"""

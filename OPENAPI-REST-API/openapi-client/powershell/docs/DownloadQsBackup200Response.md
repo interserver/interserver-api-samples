@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DownloadQsBackup200Response = Initialize-PSOpenAPIToolsDownloadQsBackup200Response  -Text null `
+$DownloadQsBackup200Response = Initialize-InterserverApiDownloadQsBackup200Response  -Text null `
  -Url null
 ```
 

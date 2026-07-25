@@ -2,11 +2,9 @@ package io.swagger.server.model
 
 
 /**
- * @param success 
- * @param text 
+ * @param data Affiliate signup statistics and client-side data.
  */
 case class Inline_response_200_1 (
-  success: Boolean,
-  text: String
+  data: Option[Object]
 )
 

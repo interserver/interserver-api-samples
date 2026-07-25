@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateFilter400Response model module.
  * @module model/CreateFilter400Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class CreateFilter400Response {
     /**

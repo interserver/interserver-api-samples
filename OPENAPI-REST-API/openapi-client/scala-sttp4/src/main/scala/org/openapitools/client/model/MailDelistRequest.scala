@@ -19,4 +19,3 @@ case class MailDelistRequest(
   /* Email address to delist. */
   unblock: Option[String] = None
 )
-

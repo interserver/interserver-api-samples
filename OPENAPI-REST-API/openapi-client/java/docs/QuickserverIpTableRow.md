@@ -12,4 +12,8 @@ A single row in the QuickServer IP information table.
 |**value** | **String** | Value |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

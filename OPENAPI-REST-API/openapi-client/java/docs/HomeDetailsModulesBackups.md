@@ -15,4 +15,8 @@ Dashboard module configuration for backup storage services.
 |**listLink** | **String** | Link to view backups list. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

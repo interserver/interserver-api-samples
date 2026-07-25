@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainTechContact } from './api';
+import { DomainTechContact } from '@interserver/myadmin-client';
 
 const instance: DomainTechContact = {
     state,

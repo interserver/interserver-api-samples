@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsOrderTemplatesHypervWindows();
+    instance = new InterserverApiClient.VpsOrderTemplatesHypervWindows();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('VpsOrderTemplatesHypervWindows', function() {
     it('should create an instance of VpsOrderTemplatesHypervWindows', function() {
       // uncomment below and update the code to test VpsOrderTemplatesHypervWindows
-      //var instance = new InterServerManagementApi.VpsOrderTemplatesHypervWindows();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsOrderTemplatesHypervWindows);
+      //var instance = new InterserverApiClient.VpsOrderTemplatesHypervWindows();
+      //expect(instance).to.be.a(InterserverApiClient.VpsOrderTemplatesHypervWindows);
     });
 
     it('should have the property Windows2019Standard (base name: "Windows2019Standard")', function() {
       // uncomment below and update the code to test the property Windows2019Standard
-      //var instance = new InterServerManagementApi.VpsOrderTemplatesHypervWindows();
+      //var instance = new InterserverApiClient.VpsOrderTemplatesHypervWindows();
       //expect(instance).to.be();
     });
 
     it('should have the property Windows2022 (base name: "Windows2022")', function() {
       // uncomment below and update the code to test the property Windows2022
-      //var instance = new InterServerManagementApi.VpsOrderTemplatesHypervWindows();
+      //var instance = new InterserverApiClient.VpsOrderTemplatesHypervWindows();
       //expect(instance).to.be();
     });
 

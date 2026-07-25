@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::QuickserverOrderTemplatesUbuntu64
+# InterServerAPI::Object::QuickserverOrderTemplatesUbuntu64
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::QuickserverOrderTemplatesUbuntu64;
+use InterServerAPI::Object::QuickserverOrderTemplatesUbuntu64;
 ```
 
 ## Properties

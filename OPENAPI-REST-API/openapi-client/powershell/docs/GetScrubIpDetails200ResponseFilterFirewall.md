@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetScrubIpDetails200ResponseFilterFirewall = Initialize-PSOpenAPIToolsGetScrubIpDetails200ResponseFilterFirewall  -Rules null `
+$GetScrubIpDetails200ResponseFilterFirewall = Initialize-InterserverApiGetScrubIpDetails200ResponseFilterFirewall  -Rules null `
  -Filters null `
  -ScrubEnabled null
 ```

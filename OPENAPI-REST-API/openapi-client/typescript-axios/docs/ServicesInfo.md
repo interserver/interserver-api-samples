@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServicesInfo } from './api';
+import { ServicesInfo } from '@interserver/myadmin-client';
 
 const instance: ServicesInfo = {
     modules,

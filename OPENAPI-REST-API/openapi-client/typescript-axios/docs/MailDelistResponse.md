@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailDelistResponse } from './api';
+import { MailDelistResponse } from '@interserver/myadmin-client';
 
 const instance: MailDelistResponse = {
     id,

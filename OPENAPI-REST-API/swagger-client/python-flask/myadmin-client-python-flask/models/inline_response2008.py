@@ -14,25 +14,20 @@ class InlineResponse2008(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, success: bool=None, text: str=None):  # noqa: E501
+    def __init__(self, login: bool=None):  # noqa: E501
         """InlineResponse2008 - a model defined in Swagger
 
-        :param success: The success of this InlineResponse2008.  # noqa: E501
-        :type success: bool
-        :param text: The text of this InlineResponse2008.  # noqa: E501
-        :type text: str
+        :param login: The login of this InlineResponse2008.  # noqa: E501
+        :type login: bool
         """
         self.swagger_types = {
-            'success': bool,
-            'text': str
+            'login': bool
         }
 
         self.attribute_map = {
-            'success': 'success',
-            'text': 'text'
+            'login': 'login'
         }
-        self._success = success
-        self._text = text
+        self._login = login
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse2008':
@@ -46,47 +41,24 @@ class InlineResponse2008(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def success(self) -> bool:
-        """Gets the success of this InlineResponse2008.
+    def login(self) -> bool:
+        """Gets the login of this InlineResponse2008.
 
+        Whether the 2FA verification succeeded and the user is now logged in.  # noqa: E501
 
-        :return: The success of this InlineResponse2008.
+        :return: The login of this InlineResponse2008.
         :rtype: bool
         """
-        return self._success
+        return self._login
 
-    @success.setter
-    def success(self, success: bool):
-        """Sets the success of this InlineResponse2008.
+    @login.setter
+    def login(self, login: bool):
+        """Sets the login of this InlineResponse2008.
 
+        Whether the 2FA verification succeeded and the user is now logged in.  # noqa: E501
 
-        :param success: The success of this InlineResponse2008.
-        :type success: bool
+        :param login: The login of this InlineResponse2008.
+        :type login: bool
         """
-        if success is None:
-            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
 
-        self._success = success
-
-    @property
-    def text(self) -> str:
-        """Gets the text of this InlineResponse2008.
-
-
-        :return: The text of this InlineResponse2008.
-        :rtype: str
-        """
-        return self._text
-
-    @text.setter
-    def text(self, text: str):
-        """Sets the text of this InlineResponse2008.
-
-
-        :param text: The text of this InlineResponse2008.
-        :type text: str
-        """
-        if text is None:
-            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
-
-        self._text = text
+        self._login = login

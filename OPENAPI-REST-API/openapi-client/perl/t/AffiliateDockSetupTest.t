@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::AffiliateDockSetup');
+use_ok('InterServerAPI::Object::AffiliateDockSetup');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::AffiliateDockSetup->new();
+#my $instance = InterServerAPI::Object::AffiliateDockSetup->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::AffiliateDockSetup');
+#isa_ok($instance, 'InterServerAPI::Object::AffiliateDockSetup');
 
 
 done_testing();

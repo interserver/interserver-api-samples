@@ -14,43 +14,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  AddAccountCreditCard  ####################
-#'
-#' library(openapi)
-#' var_name <- "name_example" # character |  (Optional)
-#' var_address <- "address_example" # character |  (Optional)
-#' var_city <- "city_example" # character |  (Optional)
-#' var_state <- "state_example" # character |  (Optional)
-#' var_country <- "country_example" # character |  (Optional)
-#' var_zip <- "zip_example" # character |  (Optional)
-#' var_cc <- "cc_example" # character |  (Optional)
-#' var_cc_exp <- "cc_exp_example" # character |  (Optional)
-#' var_cc_ccv2 <- "cc_ccv2_example" # character |  (Optional)
-#'
-#' #Add Credit Card to Account
-#' api_instance <- BillingApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$AddAccountCreditCard(name = var_name, address = var_address, city = var_city, state = var_state, country = var_country, zip = var_zip, cc = var_cc, cc_exp = var_cc_exp, cc_ccv2 = var_cc_ccv2data_file = "result.txt")
-#' result <- api_instance$AddAccountCreditCard(name = var_name, address = var_address, city = var_city, state = var_state, country = var_country, zip = var_zip, cc = var_cc, cc_exp = var_cc_exp, cc_ccv2 = var_cc_ccv2)
-#' dput(result)
-#'
-#'
 #' ####################  AddBillingCreditCard  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_billing_add_cc_request <- BillingAddCcRequest$new("name_example", "address_example", "city_example", "state_example", "country_example", "zip_example", "cc_example", "cc_exp_example", "cc_ccv2_example") # BillingAddCcRequest | 
 #'
-#' #Add Credit Card for Billing
+#' #Store a credit card on the account — may return a verification flow
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -70,10 +39,10 @@
 #'
 #' ####################  AddBillingPrepay  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_billing_prepay_request <- BillingPrepayRequest$new("module_example", 123, "automatic_use_example") # BillingPrepayRequest | 
 #'
-#' #Create Prepay Deposit
+#' #Create a prepay deposit and return an invoice id to fund it
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -91,35 +60,12 @@
 #' dput(result)
 #'
 #'
-#' ####################  DeleteAccountCreditCard  ####################
-#'
-#' library(openapi)
-#' var_id <- "id_example" # character | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-#'
-#' #Remove Credit Card
-#' api_instance <- BillingApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$DeleteAccountCreditCard(var_iddata_file = "result.txt")
-#' result <- api_instance$DeleteAccountCreditCard(var_id)
-#' dput(result)
-#'
-#'
 #' ####################  DeleteBillingCreditCard  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The credit card ID to remove. Use IDs from `GET /billing/creditcards`.
 #'
-#' #Delete Credit Card
+#' #Remove a stored credit card from the account
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -139,10 +85,10 @@
 #'
 #' ####################  DeleteBillingInvoice  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The invoice ID to delete. Only unpaid invoices can be deleted.
 #'
-#' #Delete Invoice
+#' #Cancel a pending unpaid invoice — and its pending service or repeat invoice
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -162,10 +108,10 @@
 #'
 #' ####################  DeleteBillingPrepay  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The prepay balance ID to delete.
 #'
-#' #Delete Prepay Balance
+#' #Delete an unfunded prepay or strip its unpaid funding invoices
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -185,9 +131,9 @@
 #'
 #' ####################  GetAffiliateBanners  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Affiliate Banner Assets
+#' #List affiliate banner image assets with filename and dimensions
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -205,11 +151,33 @@
 #' dput(result)
 #'
 #'
+#' ####################  GetAffiliateDownload  ####################
+#'
+#' library(interserverapi)
+#' var_st <- "st_example" # character | Filter by status. (Optional)
+#' var_ex <- "ex_example" # character | Export format: csv, xls, xlsx, or pdf. Defaults to csv. (Optional)
+#' var_year <- 56 # integer | Year to filter the report. Defaults to the current year. (Optional)
+#'
+#' #Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+#' api_instance <- BillingApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' api_instance$GetAffiliateDownload(st = var_st, ex = var_ex, year = var_year)
+#'
+#'
 #' ####################  GetAffiliateRichReport  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Affiliate Performance Report
+#' #Read a combined affiliate performance summary (HTML payload)
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -229,10 +197,10 @@
 #'
 #' ####################  GetAffiliateSalesGraph  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_days <- 56 # integer | Number of days of sales history to include in the graph data. Determines the time window for the returned data points. (Optional)
 #'
-#' #Get Affiliate Sales Graph Data
+#' #Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -250,11 +218,12 @@
 #' dput(result)
 #'
 #'
-#' ####################  GetAffiliateSalesReport  ####################
+#' ####################  GetAffiliateSignups  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_st <- "st_example" # character | Filter signups by status. Use `default` to show all or pass a specific status value to narrow results. (Optional)
 #'
-#' #Get Affiliate Sales Report
+#' #Read affiliate signup stats and per-customer conversion data
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -267,17 +236,17 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$GetAffiliateSalesReport(data_file = "result.txt")
-#' result <- api_instance$GetAffiliateSalesReport()
+#' # result <- api_instance$GetAffiliateSignups(st = var_stdata_file = "result.txt")
+#' result <- api_instance$GetAffiliateSignups(st = var_st)
 #' dput(result)
 #'
 #'
 #' ####################  GetAffiliateTrafficGraph  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_days <- 56 # integer | Number of days of traffic history to include in the graph data. Determines the time window for the returned data points. (Optional)
 #'
-#' #Get Affiliate Traffic Graph Data
+#' #Read aggregated affiliate referral click/visit time-series for chart rendering
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -297,9 +266,9 @@
 #'
 #' ####################  GetAffiliateWebTraffic  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Affiliate Web Traffic Entries
+#' #List the 20 most recent affiliate referral visits with IP, referrer, timestamp
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -319,9 +288,9 @@
 #'
 #' ####################  GetBillingCart  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Shopping Cart Contents
+#' #Read the current shopping cart contents, totals, and available payment methods
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -341,10 +310,10 @@
 #'
 #' ####################  GetBillingCreditCardVerify  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
 #'
-#' #Get Credit Card Verification Requirements
+#' #Probe whether a stored card still needs micro-charge verification
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -364,10 +333,10 @@
 #'
 #' ####################  GetBillingInvoice  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The invoice ID. Use IDs from `GET /billing/invoices` or from order responses.
 #'
-#' #Get Invoice Details
+#' #Read full invoice detail — line items, totals, paid status, customer info
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -387,9 +356,9 @@
 #'
 #' ####################  GetBillingInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Account Invoices
+#' #List every invoice on the account with summary totals and paid/unpaid status
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -409,9 +378,9 @@
 #'
 #' ####################  GetBillingPrePays  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Prepay Balances
+#' #List prepay deposits on the account — remaining balance and auto-use flags
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -429,38 +398,13 @@
 #' dput(result)
 #'
 #'
-#' ####################  GetInvoices  ####################
-#'
-#' library(openapi)
-#' var_search_string <- "search_string_example" # character | pass an optional search string for looking up inventory (Optional)
-#' var_skip <- 56 # integer | number of records to skip for pagination (Optional)
-#' var_limit <- 56 # integer | maximum number of records to return (Optional)
-#'
-#' #Get Invoices
-#' api_instance <- BillingApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$GetInvoices(search_string = var_search_string, skip = var_skip, limit = var_limitdata_file = "result.txt")
-#' result <- api_instance$GetInvoices(search_string = var_search_string, skip = var_skip, limit = var_limit)
-#' dput(result)
-#'
-#'
 #' ####################  InitiatePayment  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_method <- "method_example" # character | The payment method to use. Valid values: `cc` (credit card), `paypal`, `prepay`, `payssion`, `payu`, `ccavenue`, `cashfree`, `coinbase`, `btcpay`.
-#' var_invoices <- "invoices_example" # character | A comma-separated list of invoice IDs to pay. These IDs are returned by order endpoints (e.g. `/backups/order`, `/vps/order`) and by `/billing/invoices`.
+#' var_invoices <- "invoices_example" # character | A comma-separated list of invoice IDs or invoice Tags to pay. These IDs are returned by order endpoints (e.g. `/backups/order`, `/vps/order`) and by `/billing/invoices`. Invoice tags accepted are SERVICE<module><id>, RINV<module><repeat invoice id>, INV<module><invoice id>, PREPAY<prepay id><invoice id>, and <invoice id>.
 #'
-#' #Initiate Payment
+#' #Pay invoices through the chosen gateway — returns the next-step action
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -478,13 +422,37 @@
 #' dput(result)
 #'
 #'
+#' ####################  PatchBillingCreditCardVerify  ####################
+#'
+#' library(interserverapi)
+#' var_id <- 56 # integer | The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
+#' var_patch_billing_credit_card_verify_request <- patchBillingCreditCardVerify_request$new("cc_ccv2_example") # PatchBillingCreditCardVerifyRequest | 
+#'
+#' #Place two micro-charges on the card to start CVV verification (step 1 of 2)
+#' api_instance <- BillingApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$PatchBillingCreditCardVerify(var_id, var_patch_billing_credit_card_verify_requestdata_file = "result.txt")
+#' result <- api_instance$PatchBillingCreditCardVerify(var_id, var_patch_billing_credit_card_verify_request)
+#' dput(result)
+#'
+#'
 #' ####################  PostBillingCreditCardVerify  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
 #' var_billing_verify_cc_request <- BillingVerifyCcRequest$new(123, "cc_ccv2_example", "cc_amount1_example", "cc_amount2_example", "terms_example") # BillingVerifyCcRequest | 
 #'
-#' #Submit Credit Card Verification
+#' #Submit two micro-charge amounts to finalize card verification (step 2 of 2)
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -502,37 +470,14 @@
 #' dput(result)
 #'
 #'
-#' ####################  UpdateAccountCreditCard  ####################
-#'
-#' library(openapi)
-#' var_id <- 56 # integer | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-#'
-#' #Update Credit Card
-#' api_instance <- BillingApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$UpdateAccountCreditCard(var_iddata_file = "result.txt")
-#' result <- api_instance$UpdateAccountCreditCard(var_id)
-#' dput(result)
-#'
-#'
 #' ####################  UpdateAffiliateDockSetup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_affiliate_dock_title <- "affiliate_dock_title_example" # character |  (Optional)
 #' var_affiliate_dock_description <- "affiliate_dock_description_example" # character |  (Optional)
 #' var_referrer_coupon <- "referrer_coupon_example" # character |  (Optional)
 #'
-#' #Configure Affiliate Dock Settings
+#' #Configure the affiliate landing dock title, description, and referrer coupon
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -550,38 +495,13 @@
 #' dput(result)
 #'
 #'
-#' ####################  UpdateAffiliateLandingPage  ####################
-#'
-#' library(openapi)
-#' var_affiliate_dock_title <- "affiliate_dock_title_example" # character |  (Optional)
-#' var_affiliate_dock_description <- "affiliate_dock_description_example" # character |  (Optional)
-#' var_referrer_coupon <- "referrer_coupon_example" # character |  (Optional)
-#'
-#' #Configure Affiliate Landing Page
-#' api_instance <- BillingApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$UpdateAffiliateLandingPage(affiliate_dock_title = var_affiliate_dock_title, affiliate_dock_description = var_affiliate_dock_description, referrer_coupon = var_referrer_coupondata_file = "result.txt")
-#' result <- api_instance$UpdateAffiliateLandingPage(affiliate_dock_title = var_affiliate_dock_title, affiliate_dock_description = var_affiliate_dock_description, referrer_coupon = var_referrer_coupon)
-#' dput(result)
-#'
-#'
 #' ####################  UpdateAffiliatePaymentSetup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_affiliate_paypal <- "affiliate_paypal_example" # character |  (Optional)
 #' var_affiliate_payment_method <- "affiliate_payment_method_example" # character |  (Optional)
 #'
-#' #Configure Affiliate Payout Preferences
+#' #Configure how affiliate commissions get paid out (PayPal or internal prepay)
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -601,10 +521,10 @@
 #'
 #' ####################  UpdateBillingCreditCard  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The credit card ID. Use IDs from `GET /billing/creditcards` or the response from `POST /billing/creditcards`.
 #'
-#' #Update Credit Card Details
+#' #Refresh stored card expiration and re-trigger MaxMind fraud scoring
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -624,10 +544,10 @@
 #'
 #' ####################  UpdateBillingPaymentMethod  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_billing_payment_method_request <- BillingPaymentMethodRequest$new("payment_method_example", "cc_auto_example") # BillingPaymentMethodRequest | 
 #'
-#' #Update Default Payment Method
+#' #Set the account's default payment method for recurring/auto charges
 #' api_instance <- BillingApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -667,176 +587,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Add Credit Card to Account
-    #'
-    #' @param name (optional) No description
-    #' @param address (optional) No description
-    #' @param city (optional) No description
-    #' @param state (optional) No description
-    #' @param country (optional) No description
-    #' @param zip (optional) No description
-    #' @param cc (optional) No description
-    #' @param cc_exp (optional) No description
-    #' @param cc_ccv2 (optional) No description
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return SuccessTextResponse
-    AddAccountCreditCard = function(name = NULL, address = NULL, city = NULL, state = NULL, country = NULL, zip = NULL, cc = NULL, cc_exp = NULL, cc_ccv2 = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$AddAccountCreditCardWithHttpInfo(name, address, city, state, country, zip, cc, cc_exp, cc_ccv2, data_file = data_file, ..., .parse = .parse)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Add Credit Card to Account
-    #'
-    #' @param name (optional) No description
-    #' @param address (optional) No description
-    #' @param city (optional) No description
-    #' @param state (optional) No description
-    #' @param country (optional) No description
-    #' @param zip (optional) No description
-    #' @param cc (optional) No description
-    #' @param cc_exp (optional) No description
-    #' @param cc_ccv2 (optional) No description
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return API response (SuccessTextResponse) with additional information such as HTTP status code, headers
-    AddAccountCreditCardWithHttpInfo = function(name = NULL, address = NULL, city = NULL, state = NULL, country = NULL, zip = NULL, cc = NULL, cc_exp = NULL, cc_ccv2 = NULL, data_file = NULL, ..., .parse = TRUE) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (!missing(`name`) && is.null(`name`)) {
-        stop("Invalid value for `name` when calling BillingApi$AddAccountCreditCard, `name` is not nullable")
-      }
-
-      if (!missing(`address`) && is.null(`address`)) {
-        stop("Invalid value for `address` when calling BillingApi$AddAccountCreditCard, `address` is not nullable")
-      }
-
-      if (!missing(`city`) && is.null(`city`)) {
-        stop("Invalid value for `city` when calling BillingApi$AddAccountCreditCard, `city` is not nullable")
-      }
-
-      if (!missing(`state`) && is.null(`state`)) {
-        stop("Invalid value for `state` when calling BillingApi$AddAccountCreditCard, `state` is not nullable")
-      }
-
-      if (!missing(`country`) && is.null(`country`)) {
-        stop("Invalid value for `country` when calling BillingApi$AddAccountCreditCard, `country` is not nullable")
-      }
-
-      if (!missing(`zip`) && is.null(`zip`)) {
-        stop("Invalid value for `zip` when calling BillingApi$AddAccountCreditCard, `zip` is not nullable")
-      }
-
-      if (!missing(`cc`) && is.null(`cc`)) {
-        stop("Invalid value for `cc` when calling BillingApi$AddAccountCreditCard, `cc` is not nullable")
-      }
-
-      if (!missing(`cc_exp`) && is.null(`cc_exp`)) {
-        stop("Invalid value for `cc_exp` when calling BillingApi$AddAccountCreditCard, `cc_exp` is not nullable")
-      }
-
-      if (!missing(`cc_ccv2`) && is.null(`cc_ccv2`)) {
-        stop("Invalid value for `cc_ccv2` when calling BillingApi$AddAccountCreditCard, `cc_ccv2` is not nullable")
-      }
-
-      form_params["name"] <- `name`
-      form_params["address"] <- `address`
-      form_params["city"] <- `city`
-      form_params["state"] <- `state`
-      form_params["country"] <- `country`
-      form_params["zip"] <- `zip`
-      form_params["cc"] <- `cc`
-      form_params["cc_exp"] <- `cc_exp`
-      form_params["cc_ccv2"] <- `cc_ccv2`
-      local_var_url_path <- "/account/creditcards"
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list("multipart/form-data", "application/json")
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-        if (!.parse) {
-          local_var_resp$content <- local_var_resp$response_as_text()
-          return(local_var_resp)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "SuccessTextResponse"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Add Credit Card for Billing
+    #' Store a credit card on the account — may return a verification flow
     #'
     #' @param billing_add_cc_request 
     #' @param data_file (optional) name of the data file to save the result
@@ -858,7 +609,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Add Credit Card for Billing
+    #' Store a credit card on the account — may return a verification flow
     #'
     #' @param billing_add_cc_request 
     #' @param data_file (optional) name of the data file to save the result
@@ -958,7 +709,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Prepay Deposit
+    #' Create a prepay deposit and return an invoice id to fund it
     #'
     #' @param billing_prepay_request 
     #' @param data_file (optional) name of the data file to save the result
@@ -980,7 +731,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Prepay Deposit
+    #' Create a prepay deposit and return an invoice id to fund it
     #'
     #' @param billing_prepay_request 
     #' @param data_file (optional) name of the data file to save the result
@@ -1080,127 +831,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Remove Credit Card
-    #'
-    #' @param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return character
-    DeleteAccountCreditCard = function(id, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$DeleteAccountCreditCardWithHttpInfo(id, data_file = data_file, ..., .parse = .parse)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Remove Credit Card
-    #'
-    #' @param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return API response (character) with additional information such as HTTP status code, headers
-    DeleteAccountCreditCardWithHttpInfo = function(id, data_file = NULL, ..., .parse = TRUE) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`id`)) {
-        stop("Missing required parameter `id`.")
-      }
-
-      if (!missing(`id`) && is.null(`id`)) {
-        stop("Invalid value for `id` when calling BillingApi$DeleteAccountCreditCard, `id` is not nullable")
-      }
-
-      local_var_url_path <- "/account/creditcards/{id}"
-      if (!missing(`id`)) {
-        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
-      }
-
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "DELETE",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-        if (!.parse) {
-          local_var_resp$content <- local_var_resp$response_as_text()
-          return(local_var_resp)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "character"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Delete Credit Card
+    #' Remove a stored credit card from the account
     #'
     #' @param id The credit card ID to remove. Use IDs from `GET /billing/creditcards`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1222,7 +853,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Credit Card
+    #' Remove a stored credit card from the account
     #'
     #' @param id The credit card ID to remove. Use IDs from `GET /billing/creditcards`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1320,7 +951,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Invoice
+    #' Cancel a pending unpaid invoice — and its pending service or repeat invoice
     #'
     #' @param id The invoice ID to delete. Only unpaid invoices can be deleted.
     #' @param data_file (optional) name of the data file to save the result
@@ -1342,7 +973,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Invoice
+    #' Cancel a pending unpaid invoice — and its pending service or repeat invoice
     #'
     #' @param id The invoice ID to delete. Only unpaid invoices can be deleted.
     #' @param data_file (optional) name of the data file to save the result
@@ -1440,7 +1071,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Prepay Balance
+    #' Delete an unfunded prepay or strip its unpaid funding invoices
     #'
     #' @param id The prepay balance ID to delete.
     #' @param data_file (optional) name of the data file to save the result
@@ -1462,7 +1093,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Prepay Balance
+    #' Delete an unfunded prepay or strip its unpaid funding invoices
     #'
     #' @param id The prepay balance ID to delete.
     #' @param data_file (optional) name of the data file to save the result
@@ -1560,7 +1191,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Affiliate Banner Assets
+    #' List affiliate banner image assets with filename and dimensions
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1581,7 +1212,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Affiliate Banner Assets
+    #' List affiliate banner image assets with filename and dimensions
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1666,7 +1297,121 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Affiliate Performance Report
+    #' Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+    #'
+    #' @param st (optional) Filter by status.
+    #' @param ex (optional) Export format: csv, xls, xlsx, or pdf. Defaults to csv.
+    #' @param year (optional) Year to filter the report. Defaults to the current year.
+    #' @param ... Other optional arguments
+    #'
+    #' @return void
+    GetAffiliateDownload = function(st = NULL, ex = NULL, year = NULL, ...) {
+      local_var_response <- self$GetAffiliateDownloadWithHttpInfo(st, ex, year, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+    #'
+    #' @param st (optional) Filter by status.
+    #' @param ex (optional) Export format: csv, xls, xlsx, or pdf. Defaults to csv.
+    #' @param year (optional) Year to filter the report. Defaults to the current year.
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (void) with additional information such as HTTP status code, headers
+    GetAffiliateDownloadWithHttpInfo = function(st = NULL, ex = NULL, year = NULL, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (!missing(`st`) && is.null(`st`)) {
+        stop("Invalid value for `st` when calling BillingApi$GetAffiliateDownload, `st` is not nullable")
+      }
+
+      if (!missing(`ex`) && is.null(`ex`)) {
+        stop("Invalid value for `ex` when calling BillingApi$GetAffiliateDownload, `ex` is not nullable")
+      }
+
+      if (!missing(`year`) && is.null(`year`)) {
+        stop("Invalid value for `year` when calling BillingApi$GetAffiliateDownload, `year` is not nullable")
+      }
+
+      query_params[["st"]] <- `st`
+
+      if (!is.null(`ex`) && !(`ex` %in% c("csv", "xls", "xlsx", "pdf"))) {
+        stop("Invalid value for ex when calling BillingApi$GetAffiliateDownload. Must be [csv, xls, xlsx, pdf].")
+      }
+      query_params[["ex"]] <- `ex`
+
+      query_params[["year"]] <- `year`
+
+      local_var_url_path <- "/affiliate/download"
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        local_var_resp$content <- NULL
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' Read a combined affiliate performance summary (HTML payload)
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1687,7 +1432,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Affiliate Performance Report
+    #' Read a combined affiliate performance summary (HTML payload)
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1772,7 +1517,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Affiliate Sales Graph Data
+    #' Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
     #'
     #' @param days (optional) Number of days of sales history to include in the graph data. Determines the time window for the returned data points.
     #' @param data_file (optional) name of the data file to save the result
@@ -1794,7 +1539,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Affiliate Sales Graph Data
+    #' Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
     #'
     #' @param days (optional) Number of days of sales history to include in the graph data. Determines the time window for the returned data points.
     #' @param data_file (optional) name of the data file to save the result
@@ -1886,15 +1631,16 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Affiliate Sales Report
+    #' Read affiliate signup stats and per-customer conversion data
     #'
+    #' @param st (optional) Filter signups by status. Use `default` to show all or pass a specific status value to narrow results.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return TextResponse
-    GetAffiliateSalesReport = function(data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$GetAffiliateSalesReportWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+    #' @return GetAffiliateSignups200Response
+    GetAffiliateSignups = function(st = NULL, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$GetAffiliateSignupsWithHttpInfo(st, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1907,14 +1653,15 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Affiliate Sales Report
+    #' Read affiliate signup stats and per-customer conversion data
     #'
+    #' @param st (optional) Filter signups by status. Use `default` to show all or pass a specific status value to narrow results.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
-    #' @return API response (TextResponse) with additional information such as HTTP status code, headers
-    GetAffiliateSalesReportWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+    #' @return API response (GetAffiliateSignups200Response) with additional information such as HTTP status code, headers
+    GetAffiliateSignupsWithHttpInfo = function(st = NULL, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1924,7 +1671,13 @@ BillingApi <- R6::R6Class(
       oauth_scopes <- NULL
       is_oauth <- FALSE
 
-      local_var_url_path <- "/affiliate/sales_report"
+      if (!missing(`st`) && is.null(`st`)) {
+        stop("Invalid value for `st` when calling BillingApi$GetAffiliateSignups, `st` is not nullable")
+      }
+
+      query_params[["st"]] <- `st`
+
+      local_var_url_path <- "/affiliate/signups"
       # API key authentication
       # API key authentication
       if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
@@ -1965,7 +1718,7 @@ BillingApi <- R6::R6Class(
         }
 
         deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "TextResponse"),
+          self$api_client$DeserializeResponse(local_var_resp, "GetAffiliateSignups200Response"),
           error = function(e) {
             stop("Failed to deserialize response")
           }
@@ -1992,7 +1745,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Affiliate Traffic Graph Data
+    #' Read aggregated affiliate referral click/visit time-series for chart rendering
     #'
     #' @param days (optional) Number of days of traffic history to include in the graph data. Determines the time window for the returned data points.
     #' @param data_file (optional) name of the data file to save the result
@@ -2014,7 +1767,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Affiliate Traffic Graph Data
+    #' Read aggregated affiliate referral click/visit time-series for chart rendering
     #'
     #' @param days (optional) Number of days of traffic history to include in the graph data. Determines the time window for the returned data points.
     #' @param data_file (optional) name of the data file to save the result
@@ -2106,7 +1859,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Affiliate Web Traffic Entries
+    #' List the 20 most recent affiliate referral visits with IP, referrer, timestamp
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2127,7 +1880,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Affiliate Web Traffic Entries
+    #' List the 20 most recent affiliate referral visits with IP, referrer, timestamp
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2212,7 +1965,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Shopping Cart Contents
+    #' Read the current shopping cart contents, totals, and available payment methods
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2233,7 +1986,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Shopping Cart Contents
+    #' Read the current shopping cart contents, totals, and available payment methods
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2318,7 +2071,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Credit Card Verification Requirements
+    #' Probe whether a stored card still needs micro-charge verification
     #'
     #' @param id The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2340,7 +2093,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Credit Card Verification Requirements
+    #' Probe whether a stored card still needs micro-charge verification
     #'
     #' @param id The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2438,7 +2191,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Invoice Details
+    #' Read full invoice detail — line items, totals, paid status, customer info
     #'
     #' @param id The invoice ID. Use IDs from `GET /billing/invoices` or from order responses.
     #' @param data_file (optional) name of the data file to save the result
@@ -2460,7 +2213,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Invoice Details
+    #' Read full invoice detail — line items, totals, paid status, customer info
     #'
     #' @param id The invoice ID. Use IDs from `GET /billing/invoices` or from order responses.
     #' @param data_file (optional) name of the data file to save the result
@@ -2558,7 +2311,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Account Invoices
+    #' List every invoice on the account with summary totals and paid/unpaid status
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2579,7 +2332,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Account Invoices
+    #' List every invoice on the account with summary totals and paid/unpaid status
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2664,7 +2417,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Prepay Balances
+    #' List prepay deposits on the account — remaining balance and auto-use flags
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2685,7 +2438,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Prepay Balances
+    #' List prepay deposits on the account — remaining balance and auto-use flags
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2770,149 +2523,10 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Invoices
-    #'
-    #' @param search_string (optional) pass an optional search string for looking up inventory
-    #' @param skip (optional) number of records to skip for pagination
-    #' @param limit (optional) maximum number of records to return
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return array[Invoice]
-    GetInvoices = function(search_string = NULL, skip = NULL, limit = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$GetInvoicesWithHttpInfo(search_string, skip, limit, data_file = data_file, ..., .parse = .parse)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Get Invoices
-    #'
-    #' @param search_string (optional) pass an optional search string for looking up inventory
-    #' @param skip (optional) number of records to skip for pagination
-    #' @param limit (optional) maximum number of records to return
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return API response (array[Invoice]) with additional information such as HTTP status code, headers
-    GetInvoicesWithHttpInfo = function(search_string = NULL, skip = NULL, limit = NULL, data_file = NULL, ..., .parse = TRUE) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (!missing(`search_string`) && is.null(`search_string`)) {
-        stop("Invalid value for `search_string` when calling BillingApi$GetInvoices, `search_string` is not nullable")
-      }
-
-      if (!missing(`skip`) && is.null(`skip`)) {
-        stop("Invalid value for `skip` when calling BillingApi$GetInvoices, `skip` is not nullable")
-      }
-      if (!is.null(`skip`) && `skip` <  0) {
-        stop("Invalid value for `skip` when calling BillingApi$GetInvoices, must be bigger than or equal to 0.")
-      }
-
-      if (!missing(`limit`) && is.null(`limit`)) {
-        stop("Invalid value for `limit` when calling BillingApi$GetInvoices, `limit` is not nullable")
-      }
-      if (!is.null(`limit`) && `limit` >  50) {
-        stop("Invalid value for `limit` when calling BillingApi$GetInvoices, must be smaller than or equal to 50.")
-      }
-      if (!is.null(`limit`) && `limit` <  0) {
-        stop("Invalid value for `limit` when calling BillingApi$GetInvoices, must be bigger than or equal to 0.")
-      }
-
-      query_params[["searchString"]] <- `search_string`
-
-      query_params[["skip"]] <- `skip`
-
-      query_params[["limit"]] <- `limit`
-
-      local_var_url_path <- "/invoices"
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-        if (!.parse) {
-          local_var_resp$content <- local_var_resp$response_as_text()
-          return(local_var_resp)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "array[Invoice]"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Initiate Payment
+    #' Pay invoices through the chosen gateway — returns the next-step action
     #'
     #' @param method The payment method to use. Valid values: `cc` (credit card), `paypal`, `prepay`, `payssion`, `payu`, `ccavenue`, `cashfree`, `coinbase`, `btcpay`.
-    #' @param invoices A comma-separated list of invoice IDs to pay. These IDs are returned by order endpoints (e.g. `/backups/order`, `/vps/order`) and by `/billing/invoices`.
+    #' @param invoices A comma-separated list of invoice IDs or invoice Tags to pay. These IDs are returned by order endpoints (e.g. `/backups/order`, `/vps/order`) and by `/billing/invoices`. Invoice tags accepted are SERVICE<module><id>, RINV<module><repeat invoice id>, INV<module><invoice id>, PREPAY<prepay id><invoice id>, and <invoice id>.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -2932,10 +2546,10 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Initiate Payment
+    #' Pay invoices through the chosen gateway — returns the next-step action
     #'
     #' @param method The payment method to use. Valid values: `cc` (credit card), `paypal`, `prepay`, `payssion`, `payu`, `ccavenue`, `cashfree`, `coinbase`, `btcpay`.
-    #' @param invoices A comma-separated list of invoice IDs to pay. These IDs are returned by order endpoints (e.g. `/backups/order`, `/vps/order`) and by `/billing/invoices`.
+    #' @param invoices A comma-separated list of invoice IDs or invoice Tags to pay. These IDs are returned by order endpoints (e.g. `/backups/order`, `/vps/order`) and by `/billing/invoices`. Invoice tags accepted are SERVICE<module><id>, RINV<module><repeat invoice id>, INV<module><invoice id>, PREPAY<prepay id><invoice id>, and <invoice id>.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
@@ -2967,7 +2581,7 @@ BillingApi <- R6::R6Class(
         stop("Invalid value for `invoices` when calling BillingApi$InitiatePayment, `invoices` is not nullable")
       }
 
-      local_var_url_path <- "/pay/{method}/{invoices}"
+      local_var_url_path <- "/billing/pay/{method}/{invoices}"
       if (!missing(`method`)) {
         local_var_url_path <- gsub("\\{method\\}", URLencode(as.character(`method`), reserved = TRUE), local_var_url_path)
       }
@@ -3043,7 +2657,143 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Submit Credit Card Verification
+    #' Place two micro-charges on the card to start CVV verification (step 1 of 2)
+    #'
+    #' @param id The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
+    #' @param patch_billing_credit_card_verify_request 
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return SuccessTextResponse
+    PatchBillingCreditCardVerify = function(id, patch_billing_credit_card_verify_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$PatchBillingCreditCardVerifyWithHttpInfo(id, patch_billing_credit_card_verify_request, data_file = data_file, ..., .parse = .parse)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Place two micro-charges on the card to start CVV verification (step 1 of 2)
+    #'
+    #' @param id The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
+    #' @param patch_billing_credit_card_verify_request 
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return API response (SuccessTextResponse) with additional information such as HTTP status code, headers
+    PatchBillingCreditCardVerifyWithHttpInfo = function(id, patch_billing_credit_card_verify_request, data_file = NULL, ..., .parse = TRUE) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (missing(`patch_billing_credit_card_verify_request`)) {
+        stop("Missing required parameter `patch_billing_credit_card_verify_request`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling BillingApi$PatchBillingCreditCardVerify, `id` is not nullable")
+      }
+
+      if (!missing(`patch_billing_credit_card_verify_request`) && is.null(`patch_billing_credit_card_verify_request`)) {
+        stop("Invalid value for `patch_billing_credit_card_verify_request` when calling BillingApi$PatchBillingCreditCardVerify, `patch_billing_credit_card_verify_request` is not nullable")
+      }
+
+      if (!is.null(`patch_billing_credit_card_verify_request`)) {
+        local_var_body <- `patch_billing_credit_card_verify_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
+
+      local_var_url_path <- "/billing/creditcards/{id}/verify"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list("application/json", "multipart/form-data")
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "PATCH",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "SuccessTextResponse"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' Submit two micro-charge amounts to finalize card verification (step 2 of 2)
     #'
     #' @param id The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
     #' @param billing_verify_cc_request 
@@ -3066,7 +2816,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Submit Credit Card Verification
+    #' Submit two micro-charge amounts to finalize card verification (step 2 of 2)
     #'
     #' @param id The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
     #' @param billing_verify_cc_request 
@@ -3179,127 +2929,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Credit Card
-    #'
-    #' @param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return character
-    UpdateAccountCreditCard = function(id, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$UpdateAccountCreditCardWithHttpInfo(id, data_file = data_file, ..., .parse = .parse)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Update Credit Card
-    #'
-    #' @param id The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return API response (character) with additional information such as HTTP status code, headers
-    UpdateAccountCreditCardWithHttpInfo = function(id, data_file = NULL, ..., .parse = TRUE) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`id`)) {
-        stop("Missing required parameter `id`.")
-      }
-
-      if (!missing(`id`) && is.null(`id`)) {
-        stop("Invalid value for `id` when calling BillingApi$UpdateAccountCreditCard, `id` is not nullable")
-      }
-
-      local_var_url_path <- "/account/creditcards/{id}"
-      if (!missing(`id`)) {
-        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
-      }
-
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-        if (!.parse) {
-          local_var_resp$content <- local_var_resp$response_as_text()
-          return(local_var_resp)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "character"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Configure Affiliate Dock Settings
+    #' Configure the affiliate landing dock title, description, and referrer coupon
     #'
     #' @param affiliate_dock_title (optional) No description
     #' @param affiliate_dock_description (optional) No description
@@ -3323,7 +2953,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Configure Affiliate Dock Settings
+    #' Configure the affiliate landing dock title, description, and referrer coupon
     #'
     #' @param affiliate_dock_title (optional) No description
     #' @param affiliate_dock_description (optional) No description
@@ -3426,134 +3056,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Configure Affiliate Landing Page
-    #'
-    #' @param affiliate_dock_title (optional) No description
-    #' @param affiliate_dock_description (optional) No description
-    #' @param referrer_coupon (optional) No description
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return TextResponse
-    UpdateAffiliateLandingPage = function(affiliate_dock_title = NULL, affiliate_dock_description = NULL, referrer_coupon = NULL, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$UpdateAffiliateLandingPageWithHttpInfo(affiliate_dock_title, affiliate_dock_description, referrer_coupon, data_file = data_file, ..., .parse = .parse)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Configure Affiliate Landing Page
-    #'
-    #' @param affiliate_dock_title (optional) No description
-    #' @param affiliate_dock_description (optional) No description
-    #' @param referrer_coupon (optional) No description
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return API response (TextResponse) with additional information such as HTTP status code, headers
-    UpdateAffiliateLandingPageWithHttpInfo = function(affiliate_dock_title = NULL, affiliate_dock_description = NULL, referrer_coupon = NULL, data_file = NULL, ..., .parse = TRUE) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (!missing(`affiliate_dock_title`) && is.null(`affiliate_dock_title`)) {
-        stop("Invalid value for `affiliate_dock_title` when calling BillingApi$UpdateAffiliateLandingPage, `affiliate_dock_title` is not nullable")
-      }
-
-      if (!missing(`affiliate_dock_description`) && is.null(`affiliate_dock_description`)) {
-        stop("Invalid value for `affiliate_dock_description` when calling BillingApi$UpdateAffiliateLandingPage, `affiliate_dock_description` is not nullable")
-      }
-
-      if (!missing(`referrer_coupon`) && is.null(`referrer_coupon`)) {
-        stop("Invalid value for `referrer_coupon` when calling BillingApi$UpdateAffiliateLandingPage, `referrer_coupon` is not nullable")
-      }
-
-      form_params["affiliate_dock_title"] <- `affiliate_dock_title`
-      form_params["affiliate_dock_description"] <- `affiliate_dock_description`
-      form_params["referrer_coupon"] <- `referrer_coupon`
-      local_var_url_path <- "/affiliate/landing_pg"
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list("multipart/form-data", "application/json")
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-        if (!.parse) {
-          local_var_resp$content <- local_var_resp$response_as_text()
-          return(local_var_resp)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "TextResponse"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Configure Affiliate Payout Preferences
+    #' Configure how affiliate commissions get paid out (PayPal or internal prepay)
     #'
     #' @param affiliate_paypal (optional) No description
     #' @param affiliate_payment_method (optional) No description
@@ -3576,7 +3079,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Configure Affiliate Payout Preferences
+    #' Configure how affiliate commissions get paid out (PayPal or internal prepay)
     #'
     #' @param affiliate_paypal (optional) No description
     #' @param affiliate_payment_method (optional) No description
@@ -3673,7 +3176,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Credit Card Details
+    #' Refresh stored card expiration and re-trigger MaxMind fraud scoring
     #'
     #' @param id The credit card ID. Use IDs from `GET /billing/creditcards` or the response from `POST /billing/creditcards`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3695,7 +3198,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Credit Card Details
+    #' Refresh stored card expiration and re-trigger MaxMind fraud scoring
     #'
     #' @param id The credit card ID. Use IDs from `GET /billing/creditcards` or the response from `POST /billing/creditcards`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3793,7 +3296,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Default Payment Method
+    #' Set the account's default payment method for recurring/auto charges
     #'
     #' @param billing_payment_method_request 
     #' @param data_file (optional) name of the data file to save the result
@@ -3815,7 +3318,7 @@ BillingApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Default Payment Method
+    #' Set the account's default payment method for recurring/auto charges
     #'
     #' @param billing_payment_method_request 
     #' @param data_file (optional) name of the data file to save the result

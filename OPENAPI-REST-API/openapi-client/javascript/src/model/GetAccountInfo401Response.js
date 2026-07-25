@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetAccountInfo401Response model module.
  * @module model/GetAccountInfo401Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetAccountInfo401Response {
     /**

@@ -1,4 +1,4 @@
-# openapi::QuickserverIpInfo
+# interserverapi::QuickserverIpInfo
 
 IP address information table for a QuickServer service.
 

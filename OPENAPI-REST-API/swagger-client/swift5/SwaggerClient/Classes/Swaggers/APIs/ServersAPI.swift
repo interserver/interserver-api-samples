@@ -11,19 +11,20 @@ import Alamofire
 
 open class ServersAPI {
     /**
-     Place Server Order
+     Place a custom dedicated server order, creating a real billable invoice
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addServer(completion: @escaping ((_ data: InlineResponse20019?,_ error: Error?) -> Void)) {
-        addServerWithRequestBuilder().execute { (response, error) -> Void in
+    open class func addServer(body: ServerOrderPostRequest, completion: @escaping ((_ data: InlineResponse20021?,_ error: Error?) -> Void)) {
+        addServerWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Place Server Order
+     Place a custom dedicated server order, creating a real billable invoice
      - POST /servers/order
 
      - API Key:
@@ -40,26 +41,27 @@ open class ServersAPI {
   "invoice" : 0,
   "order" : 6
 }}]
+     - parameter body: (body)  
 
-     - returns: RequestBuilder<InlineResponse20019> 
+     - returns: RequestBuilder<InlineResponse20021> 
      */
-    open class func addServerWithRequestBuilder() -> RequestBuilder<InlineResponse20019> {
+    open class func addServerWithRequestBuilder(body: ServerOrderPostRequest) -> RequestBuilder<InlineResponse20021> {
         let path = "/servers/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20019>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20021>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Get Buy Now Server Options
+     Get configurable options for a Rapid Deploy / coupon dedicated server
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func buyItNowServerOrder(completion: @escaping ((_ data: InlineResponse20027?,_ error: Error?) -> Void)) {
+    open class func buyItNowServerOrder(completion: @escaping ((_ data: InlineResponse20029?,_ error: Error?) -> Void)) {
         buyItNowServerOrderWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -67,7 +69,7 @@ open class ServersAPI {
 
 
     /**
-     Get Buy Now Server Options
+     Get configurable options for a Rapid Deploy / coupon dedicated server
      - GET /servers/order/buy_now_server
 
      - API Key:
@@ -139,21 +141,21 @@ open class ServersAPI {
   } ]
 }}]
 
-     - returns: RequestBuilder<InlineResponse20027> 
+     - returns: RequestBuilder<InlineResponse20029> 
      */
-    open class func buyItNowServerOrderWithRequestBuilder() -> RequestBuilder<InlineResponse20027> {
+    open class func buyItNowServerOrderWithRequestBuilder() -> RequestBuilder<InlineResponse20029> {
         let path = "/servers/order/buy_now_server"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20027>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20029>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Marketplace Servers
+     List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -165,7 +167,7 @@ open class ServersAPI {
 
 
     /**
-     List Marketplace Servers
+     List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
      - GET /buy_now_servers_list
 
      - API Key:
@@ -215,7 +217,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Server Ordering Information
+     Get custom dedicated server ordering options, regions, and pricing
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -227,7 +229,7 @@ open class ServersAPI {
 
 
     /**
-     Server Ordering Information
+     Get custom dedicated server ordering options, regions, and pricing
      - GET /servers/order
 
      - API Key:
@@ -407,7 +409,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Server Order
+     Get full hardware, network, and lifecycle details for a dedicated server
 
      - parameter _id: (path) Server ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -420,7 +422,7 @@ open class ServersAPI {
 
 
     /**
-     Get Server Order
+     Get full hardware, network, and lifecycle details for a dedicated server
      - GET /servers/{id}
 
      - API Key:
@@ -614,7 +616,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Server Invoices
+     List billing invoices (charges + payments) tied to one dedicated server
 
      - parameter _id: (path) Server ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -627,7 +629,7 @@ open class ServersAPI {
 
 
     /**
-     Get Server Invoices
+     List billing invoices (charges + payments) tied to one dedicated server
      - GET /servers/{id}/invoices
 
      - API Key:
@@ -697,7 +699,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Servers
+     List all dedicated servers owned by the authenticated customer
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -709,7 +711,7 @@ open class ServersAPI {
 
 
     /**
-     List Servers
+     List all dedicated servers owned by the authenticated customer
      - GET /servers
 
      - API Key:
@@ -747,7 +749,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Reverse DNS Info
+     List current reverse-DNS (PTR) records for a dedicated server's IPs
 
      - parameter _id: (path) Server ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -760,7 +762,7 @@ open class ServersAPI {
 
 
     /**
-     Reverse DNS Info
+     List current reverse-DNS (PTR) records for a dedicated server's IPs
      - GET /servers/{id}/reverse_dns
 
      - API Key:
@@ -797,7 +799,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Resend Server Welcome Email
+     Resend the dedicated server welcome email with setup credentials
 
      - parameter _id: (path) Server ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -810,7 +812,7 @@ open class ServersAPI {
 
 
     /**
-     Resend Server Welcome Email
+     Resend the dedicated server welcome email with setup credentials
      - GET /servers/{id}/welcome_email
 
      - API Key:
@@ -845,7 +847,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Place Buy Now Server Order
+     Place a Rapid Deploy / coupon dedicated server order; creates real invoice
 
      - parameter body: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
@@ -858,7 +860,7 @@ open class ServersAPI {
 
 
     /**
-     Place Buy Now Server Order
+     Place a Rapid Deploy / coupon dedicated server order; creates real invoice
      - POST /servers/order/buy_now_server
 
      - API Key:
@@ -894,7 +896,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Reverse DNS
+     Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
 
      - parameter body: (body)  
      - parameter _id: (path) Server ID number 
@@ -908,7 +910,7 @@ open class ServersAPI {
 
 
     /**
-     Update Reverse DNS
+     Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
      - POST /servers/{id}/reverse_dns
 
      - API Key:
@@ -943,7 +945,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Reverse DNS
+     Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
 
      - parameter ips: (form)  
      - parameter _id: (path) Server ID number 
@@ -957,7 +959,7 @@ open class ServersAPI {
 
 
     /**
-     Update Reverse DNS
+     Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
      - POST /servers/{id}/reverse_dns
 
      - API Key:
@@ -992,24 +994,21 @@ open class ServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Validate Server Order
+     Read IPMI chassis power status for many dedicated servers in one call
 
+     - parameter ids: (query) Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func putServers(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        putServersWithRequestBuilder().execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
+    open class func serverBulkIpmiPowerGet(ids: String, completion: @escaping ((_ data: ServerBulkIpmiPowerResponse?,_ error: Error?) -> Void)) {
+        serverBulkIpmiPowerGetWithRequestBuilder(ids: ids).execute { (response, error) -> Void in
+            completion(response?.body, error)
         }
     }
 
 
     /**
-     Validate Server Order
-     - PUT /servers/order
+     Read IPMI chassis power status for many dedicated servers in one call
+     - GET /servers/bulk/ipmi_power
 
      - API Key:
        - type: apiKey X-API-KEY 
@@ -1020,22 +1019,39 @@ open class ServersAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "results" : [ {
+    "id" : 2313,
+    "asset" : 5432,
+    "text" : "Chassis Power is on"
+  }, {
+    "id" : 2314,
+    "error" : "Service is not active"
+  }, {
+    "id" : 2315,
+    "error" : "Invalid Service Passed"
+  } ]
+}}]
+     - parameter ids: (query) Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters. 
 
-     - returns: RequestBuilder<Void> 
+     - returns: RequestBuilder<ServerBulkIpmiPowerResponse> 
      */
-    open class func putServersWithRequestBuilder() -> RequestBuilder<Void> {
-        let path = "/servers/order"
+    open class func serverBulkIpmiPowerGetWithRequestBuilder(ids: String) -> RequestBuilder<ServerBulkIpmiPowerResponse> {
+        let path = "/servers/bulk/ipmi_power"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        let url = URLComponents(string: URLString)
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+                        "ids": ids
+        ])
 
 
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let requestBuilder: RequestBuilder<ServerBulkIpmiPowerResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Server IPMI Live Information
+     Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
 
      - parameter _id: (path) Server ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1048,7 +1064,7 @@ open class ServersAPI {
 
 
     /**
-     Server IPMI Live Information
+     Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
      - GET /servers/{id}/ipmi_live
 
      - API Key:
@@ -1086,7 +1102,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Server IPMI Live Setup
+     Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
 
      - parameter asset: (form)  
      - parameter ip: (form)  
@@ -1101,7 +1117,7 @@ open class ServersAPI {
 
 
     /**
-     Server IPMI Live Setup
+     Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
      - POST /servers/{id}/ipmi_live
 
      - API Key:
@@ -1141,7 +1157,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Server IPMI Live Setup
+     Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
 
      - parameter body: (body)  
      - parameter _id: (path) Server ID number 
@@ -1155,7 +1171,7 @@ open class ServersAPI {
 
 
     /**
-     Server IPMI Live Setup
+     Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
      - POST /servers/{id}/ipmi_live
 
      - API Key:
@@ -1194,7 +1210,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Get IPMI Power Status
+     Read IPMI chassis power status for a dedicated server (single)
 
      - parameter _id: (path) Server ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1207,7 +1223,7 @@ open class ServersAPI {
 
 
     /**
-     Get IPMI Power Status
+     Read IPMI chassis power status for a dedicated server (single)
      - GET /servers/{id}/ipmi_power
 
      - API Key:
@@ -1252,7 +1268,7 @@ open class ServersAPI {
     }
 
     /**
-     Server IPMI Power
+     DESTRUCTIVE — change chassis power state on a bare-metal server
 
      - parameter asset: (form)  
      - parameter action: (form)  
@@ -1267,7 +1283,7 @@ open class ServersAPI {
 
 
     /**
-     Server IPMI Power
+     DESTRUCTIVE — change chassis power state on a bare-metal server
      - POST /servers/{id}/ipmi_power
 
      - API Key:
@@ -1303,7 +1319,7 @@ open class ServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Server IPMI Power
+     DESTRUCTIVE — change chassis power state on a bare-metal server
 
      - parameter body: (body)  
      - parameter _id: (path) Server ID number 
@@ -1317,7 +1333,7 @@ open class ServersAPI {
 
 
     /**
-     Server IPMI Power
+     DESTRUCTIVE — change chassis power state on a bare-metal server
      - POST /servers/{id}/ipmi_power
 
      - API Key:
@@ -1352,12 +1368,12 @@ open class ServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Cancel Server Service
+     Cancel a dedicated server service at the end of the current billing cycle
 
      - parameter _id: (path) Server ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func serversCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20020?,_ error: Error?) -> Void)) {
+    open class func serversCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20022?,_ error: Error?) -> Void)) {
         serversCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -1365,7 +1381,7 @@ open class ServersAPI {
 
 
     /**
-     Cancel Server Service
+     Cancel a dedicated server service at the end of the current billing cycle
      - DELETE /servers/{id}
 
      - API Key:
@@ -1383,9 +1399,9 @@ open class ServersAPI {
 }}]
      - parameter _id: (path) Server ID number 
 
-     - returns: RequestBuilder<InlineResponse20020> 
+     - returns: RequestBuilder<InlineResponse20022> 
      */
-    open class func serversCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20020> {
+    open class func serversCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20022> {
         var path = "/servers/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1395,12 +1411,12 @@ open class ServersAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20020>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20022>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update Server Order
+     Update settings on a dedicated server order (shares handler with view)
 
      - parameter _id: (path) Server ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1413,7 +1429,7 @@ open class ServersAPI {
 
 
     /**
-     Update Server Order
+     Update settings on a dedicated server order (shares handler with view)
      - POST /servers/{id}
 
      - API Key:

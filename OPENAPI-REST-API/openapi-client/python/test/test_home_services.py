@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_services import HomeServices
+from interserver_api_client.models.home_services import HomeServices
 
 class TestHomeServices(unittest.TestCase):
     """HomeServices unit test stubs"""
@@ -36,33 +36,33 @@ class TestHomeServices(unittest.TestCase):
         model = HomeServices()
         if include_optional:
             return HomeServices(
-                domains = openapi_client.models.home_services_domains.Home_services_domains(
-                    links = openapi_client.models.home_services_domains_links.HomeServicesDomainsLinks(
+                domains = interserver_api_client.models.home_services_domains.Home_services_domains(
+                    links = interserver_api_client.models.home_services_domains_links.HomeServicesDomainsLinks(
                         376114 = 'pimpmy.website', 
                         376503 = 'hostingenuity.com', 
                         592337 = 'detain.dev', ), 
                     count = 5, ),
-                webhosting = openapi_client.models.home_services_webhosting.Home_services_webhosting(
-                    links = openapi_client.models.home_services_webhosting_links.HomeServicesWebhostingLinks(
+                webhosting = interserver_api_client.models.home_services_webhosting.Home_services_webhosting(
+                    links = interserver_api_client.models.home_services_webhosting_links.HomeServicesWebhostingLinks(
                         376359 = 'Doefamily.com', 
                         376473 = 'fancytush.com', 
                         386218 = 'admincoded.net', ), 
                     count = 8, ),
-                vps = openapi_client.models.home_services_vps.Home_services_vps(
-                    links = openapi_client.models.home_services_vps_links.HomeServicesVpsLinks(
+                vps = interserver_api_client.models.home_services_vps.Home_services_vps(
+                    links = interserver_api_client.models.home_services_vps_links.HomeServicesVpsLinks(
                         465503 = 'vps465503', 
                         2500081 = 'vps2500081', 
                         2578866 = 'vps2578866', ), 
                     count = 20, ),
-                licenses = openapi_client.models.home_services_licenses.Home_services_licenses(
-                    links = openapi_client.models.home_services_licenses_links.HomeServicesLicensesLinks(
+                licenses = interserver_api_client.models.home_services_licenses.Home_services_licenses(
+                    links = interserver_api_client.models.home_services_licenses_links.HomeServicesLicensesLinks(
                         386522 = '1.2.3.4', ), 
                     count = 1, ),
-                servers = openapi_client.models.home_services_servers.Home_services_servers(
-                    links = openapi_client.models.home_services_servers_links.HomeServicesServersLinks(
+                servers = interserver_api_client.models.home_services_servers.Home_services_servers(
+                    links = interserver_api_client.models.home_services_servers_links.HomeServicesServersLinks(
                         16058 = 'anotherserver.com', ), 
                     count = 1, ),
-                backups = openapi_client.models.home_services_backups.Home_services_backups(
+                backups = interserver_api_client.models.home_services_backups.Home_services_backups(
                     links = [
                         ''
                         ], 

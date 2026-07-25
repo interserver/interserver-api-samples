@@ -21,4 +21,3 @@ case class ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue(
   currency_symbol: Option[String] = None,
   invoices_date_formatted: Option[String] = None
 )
-

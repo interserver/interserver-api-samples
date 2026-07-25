@@ -16,12 +16,12 @@
 #' \dontrun{
 #' ####################  AddBackup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_validate_only <- "validate_only_example" # character |  (Optional)
 #' var_service_type <- 56 # integer |  (Optional)
 #' var_coupon <- "coupon_example" # character |  (Optional)
 #'
-#' #Place Backup Order
+#' #Place a new off-site backup storage order and generate the invoice
 #' api_instance <- BackupsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -41,10 +41,10 @@
 #'
 #' ####################  CancelBackup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 #'
-#' #Cancel Backup Service
+#' #Cancel an off-site backup storage subscription
 #' api_instance <- BackupsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -64,10 +64,10 @@
 #'
 #' ####################  GetBackupInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 #'
-#' #Get Backup Service Details
+#' #Get details of a specific off-site backup storage service
 #' api_instance <- BackupsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -87,10 +87,10 @@
 #'
 #' ####################  GetBackupInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 #'
-#' #Get Backup Order Invoices
+#' #List invoices for a single backup-storage subscription
 #' api_instance <- BackupsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -110,10 +110,10 @@
 #'
 #' ####################  GetBackupLogin  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 #'
-#' #Get Backup Storage Panel Login
+#' #Open a single sign-on session URL for the backup storage panel
 #' api_instance <- BackupsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -133,9 +133,9 @@
 #'
 #' ####################  GetBackupsList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Backup Services
+#' #List off-site backup storage subscriptions on the authenticated account
 #' api_instance <- BackupsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -155,10 +155,10 @@
 #'
 #' ####################  GetBackupsWelcomeEmail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 #'
-#' #Resend Backup Welcome Email
+#' #Resend the welcome email for an off-site backup storage service
 #' api_instance <- BackupsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -178,9 +178,9 @@
 #'
 #' ####################  GetNewBackup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Backup Order Form Data
+#' #Get backup-storage order form metadata and pricing tiers
 #' api_instance <- BackupsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -200,10 +200,10 @@
 #'
 #' ####################  UpdateBackupInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
 #'
-#' #Update Backup Information
+#' #Update stored metadata for a backup-storage subscription
 #' api_instance <- BackupsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -223,12 +223,12 @@
 #'
 #' ####################  ValidateBackupOrder  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_validate_only <- "validate_only_example" # character |  (Optional)
 #' var_service_type <- 56 # integer |  (Optional)
 #' var_coupon <- "coupon_example" # character |  (Optional)
 #'
-#' #Validate Backup Order
+#' #Validate a backup-storage order and preview pricing without charging
 #' api_instance <- BackupsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -268,7 +268,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Backup Order
+    #' Place a new off-site backup storage order and generate the invoice
     #'
     #' @param validate_only (optional) No description
     #' @param service_type (optional) No description
@@ -292,7 +292,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Backup Order
+    #' Place a new off-site backup storage order and generate the invoice
     #'
     #' @param validate_only (optional) No description
     #' @param service_type (optional) No description
@@ -395,7 +395,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Backup Service
+    #' Cancel an off-site backup storage subscription
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -417,7 +417,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Backup Service
+    #' Cancel an off-site backup storage subscription
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -515,7 +515,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Backup Service Details
+    #' Get details of a specific off-site backup storage service
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -537,7 +537,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Backup Service Details
+    #' Get details of a specific off-site backup storage service
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -635,7 +635,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Backup Order Invoices
+    #' List invoices for a single backup-storage subscription
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -657,7 +657,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Backup Order Invoices
+    #' List invoices for a single backup-storage subscription
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -755,7 +755,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Backup Storage Panel Login
+    #' Open a single sign-on session URL for the backup storage panel
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -777,7 +777,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Backup Storage Panel Login
+    #' Open a single sign-on session URL for the backup storage panel
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -875,7 +875,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Backup Services
+    #' List off-site backup storage subscriptions on the authenticated account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -896,7 +896,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Backup Services
+    #' List off-site backup storage subscriptions on the authenticated account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -981,7 +981,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Backup Welcome Email
+    #' Resend the welcome email for an off-site backup storage service
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -1003,7 +1003,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Backup Welcome Email
+    #' Resend the welcome email for an off-site backup storage service
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -1101,7 +1101,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Backup Order Form Data
+    #' Get backup-storage order form metadata and pricing tiers
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1122,7 +1122,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Backup Order Form Data
+    #' Get backup-storage order form metadata and pricing tiers
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1207,7 +1207,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Backup Information
+    #' Update stored metadata for a backup-storage subscription
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -1229,7 +1229,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Backup Information
+    #' Update stored metadata for a backup-storage subscription
     #'
     #' @param id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
     #' @param data_file (optional) name of the data file to save the result
@@ -1327,7 +1327,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Backup Order
+    #' Validate a backup-storage order and preview pricing without charging
     #'
     #' @param validate_only (optional) No description
     #' @param service_type (optional) No description
@@ -1351,7 +1351,7 @@ BackupsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Backup Order
+    #' Validate a backup-storage order and preview pricing without charging
     #'
     #' @param validate_only (optional) No description
     #' @param service_type (optional) No description

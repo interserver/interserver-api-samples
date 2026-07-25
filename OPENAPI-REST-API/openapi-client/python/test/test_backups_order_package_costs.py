@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backups_order_package_costs import BackupsOrderPackageCosts
+from interserver_api_client.models.backups_order_package_costs import BackupsOrderPackageCosts
 
 class TestBackupsOrderPackageCosts(unittest.TestCase):
     """BackupsOrderPackageCosts unit test stubs"""

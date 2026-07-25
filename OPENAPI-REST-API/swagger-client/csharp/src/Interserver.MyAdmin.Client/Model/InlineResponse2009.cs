@@ -29,85 +29,41 @@ namespace Interserver.MyAdmin.Client.Model
         public partial class InlineResponse2009 :  IEquatable<InlineResponse2009>, IValidatableObject
     {
         /// <summary>
-        /// The response type indicating how to handle the payment. Possible values: &#x60;redirect&#x60; (redirect user to a URL), &#x60;submit&#x60; (submit a form to a URL), &#x60;single&#x60; (immediate result).
-        /// </summary>
-        /// <value>The response type indicating how to handle the payment. Possible values: &#x60;redirect&#x60; (redirect user to a URL), &#x60;submit&#x60; (submit a form to a URL), &#x60;single&#x60; (immediate result).</value>
-        [JsonConverter(typeof(StringEnumConverter))]
-                public enum TypeEnum
-        {
-            /// <summary>
-            /// Enum Redirect for value: redirect
-            /// </summary>
-            [EnumMember(Value = "redirect")]
-            Redirect = 1,
-            /// <summary>
-            /// Enum Submit for value: submit
-            /// </summary>
-            [EnumMember(Value = "submit")]
-            Submit = 2,
-            /// <summary>
-            /// Enum Single for value: single
-            /// </summary>
-            [EnumMember(Value = "single")]
-            Single = 3        }
-        /// <summary>
-        /// The response type indicating how to handle the payment. Possible values: &#x60;redirect&#x60; (redirect user to a URL), &#x60;submit&#x60; (submit a form to a URL), &#x60;single&#x60; (immediate result).
-        /// </summary>
-        /// <value>The response type indicating how to handle the payment. Possible values: &#x60;redirect&#x60; (redirect user to a URL), &#x60;submit&#x60; (submit a form to a URL), &#x60;single&#x60; (immediate result).</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public TypeEnum? type { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse2009" /> class.
         /// </summary>
-        /// <param name="type">The response type indicating how to handle the payment. Possible values: &#x60;redirect&#x60; (redirect user to a URL), &#x60;submit&#x60; (submit a form to a URL), &#x60;single&#x60; (immediate result)..</param>
-        /// <param name="redirect">URL to redirect the user to for payment (when type is &#x60;redirect&#x60;)..</param>
-        /// <param name="action">Form action URL (when type is &#x60;submit&#x60;)..</param>
-        /// <param name="method">HTTP method for the form submission (when type is &#x60;submit&#x60;)..</param>
-        /// <param name="items">Form field name-value pairs to submit (when type is &#x60;submit&#x60;)..</param>
-        /// <param name="text">Status or result text..</param>
-        public InlineResponse2009(TypeEnum? type = default(TypeEnum?), string redirect = default(string), string action = default(string), string method = default(string), Object items = default(Object), string text = default(string))
+        /// <param name="success">success (required).</param>
+        /// <param name="text">text (required).</param>
+        public InlineResponse2009(bool? success = default(bool?), string text = default(string))
         {
-            this.type = type;
-            this.redirect = redirect;
-            this.action = action;
-            this.method = method;
-            this.items = items;
-            this.text = text;
+            // to ensure "success" is required (not null)
+            if (success == null)
+            {
+                throw new InvalidDataException("success is a required property for InlineResponse2009 and cannot be null");
+            }
+            else
+            {
+                this.success = success;
+            }
+            // to ensure "text" is required (not null)
+            if (text == null)
+            {
+                throw new InvalidDataException("text is a required property for InlineResponse2009 and cannot be null");
+            }
+            else
+            {
+                this.text = text;
+            }
         }
         
+        /// <summary>
+        /// Gets or Sets success
+        /// </summary>
+        [DataMember(Name="success", EmitDefaultValue=false)]
+        public bool? success { get; set; }
 
         /// <summary>
-        /// URL to redirect the user to for payment (when type is &#x60;redirect&#x60;).
+        /// Gets or Sets text
         /// </summary>
-        /// <value>URL to redirect the user to for payment (when type is &#x60;redirect&#x60;).</value>
-        [DataMember(Name="redirect", EmitDefaultValue=false)]
-        public string redirect { get; set; }
-
-        /// <summary>
-        /// Form action URL (when type is &#x60;submit&#x60;).
-        /// </summary>
-        /// <value>Form action URL (when type is &#x60;submit&#x60;).</value>
-        [DataMember(Name="action", EmitDefaultValue=false)]
-        public string action { get; set; }
-
-        /// <summary>
-        /// HTTP method for the form submission (when type is &#x60;submit&#x60;).
-        /// </summary>
-        /// <value>HTTP method for the form submission (when type is &#x60;submit&#x60;).</value>
-        [DataMember(Name="method", EmitDefaultValue=false)]
-        public string method { get; set; }
-
-        /// <summary>
-        /// Form field name-value pairs to submit (when type is &#x60;submit&#x60;).
-        /// </summary>
-        /// <value>Form field name-value pairs to submit (when type is &#x60;submit&#x60;).</value>
-        [DataMember(Name="items", EmitDefaultValue=false)]
-        public Object items { get; set; }
-
-        /// <summary>
-        /// Status or result text.
-        /// </summary>
-        /// <value>Status or result text.</value>
         [DataMember(Name="text", EmitDefaultValue=false)]
         public string text { get; set; }
 
@@ -119,11 +75,7 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse2009 {\n");
-            sb.Append("  type: ").Append(type).Append("\n");
-            sb.Append("  redirect: ").Append(redirect).Append("\n");
-            sb.Append("  action: ").Append(action).Append("\n");
-            sb.Append("  method: ").Append(method).Append("\n");
-            sb.Append("  items: ").Append(items).Append("\n");
+            sb.Append("  success: ").Append(success).Append("\n");
             sb.Append("  text: ").Append(text).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -160,29 +112,9 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.type == input.type ||
-                    (this.type != null &&
-                    this.type.Equals(input.type))
-                ) && 
-                (
-                    this.redirect == input.redirect ||
-                    (this.redirect != null &&
-                    this.redirect.Equals(input.redirect))
-                ) && 
-                (
-                    this.action == input.action ||
-                    (this.action != null &&
-                    this.action.Equals(input.action))
-                ) && 
-                (
-                    this.method == input.method ||
-                    (this.method != null &&
-                    this.method.Equals(input.method))
-                ) && 
-                (
-                    this.items == input.items ||
-                    (this.items != null &&
-                    this.items.Equals(input.items))
+                    this.success == input.success ||
+                    (this.success != null &&
+                    this.success.Equals(input.success))
                 ) && 
                 (
                     this.text == input.text ||
@@ -200,16 +132,8 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.type != null)
-                    hashCode = hashCode * 59 + this.type.GetHashCode();
-                if (this.redirect != null)
-                    hashCode = hashCode * 59 + this.redirect.GetHashCode();
-                if (this.action != null)
-                    hashCode = hashCode * 59 + this.action.GetHashCode();
-                if (this.method != null)
-                    hashCode = hashCode * 59 + this.method.GetHashCode();
-                if (this.items != null)
-                    hashCode = hashCode * 59 + this.items.GetHashCode();
+                if (this.success != null)
+                    hashCode = hashCode * 59 + this.success.GetHashCode();
                 if (this.text != null)
                     hashCode = hashCode * 59 + this.text.GetHashCode();
                 return hashCode;

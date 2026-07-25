@@ -1,19 +1,29 @@
 ## MailApi
 
-### Place Mail Order
-## Place Mail Order
+### Place a new Mail Baby order, generate invoice, and queue provisioning
+## Place a new Mail Baby order, generate invoice, and queue provisioning
 POST https://my.interserver.net/apiv2/mail/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Create Deny Rule
-## Create Deny Rule
+{
+ "serviceType": "<number>",
+ "coupon": "<string>",
+ "comment": "<string>"
+}
+
+
+### Create a new deny rule to auto-block matching submissions
+## Create a new deny rule to auto-block matching submissions
 POST https://my.interserver.net/apiv2/mail/{{id}}/rules
 Content-Type: application/json
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -25,12 +35,13 @@ sessionid: {{apiKey}}
 }
 
 
-### Create Mail Alert
-## Create Mail Alert
+### Create a new Mail Baby alert for delivery, bounce, or quota events
+## Create a new Mail Baby alert for delivery, bounce, or quota events
 POST https://my.interserver.net/apiv2/mail/{{id}}/alerts
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -43,134 +54,157 @@ sessionid: {{apiKey}}
 }
 
 
-### Delete Mail Alert
-## Delete Mail Alert
-DELETE https://my.interserver.net/apiv2/mail/{{id}}/alerts?alertId={{alertId}}
+### Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+## Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+DELETE https://my.interserver.net/apiv2/mail/{{id}}/alerts
+Content-Type: application/json
+Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Delete Deny Rule
-## Delete Deny Rule
+{
+ "alert_id": "<number>"
+}
+
+
+### Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
+## Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
 DELETE https://my.interserver.net/apiv2/mail/{{id}}/rules/{{rule}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Remove Email Address from Block List
-## Remove Email Address from Block List
+### Delist a sender email from rspamd / mailchannels / mailbaby block lists
+## Delist a sender email from rspamd / mailchannels / mailbaby block lists
 POST https://my.interserver.net/apiv2/mail/{{id}}/blocks/delete
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Mail Alerts
-## List Mail Alerts
+### List configured delivery/bounce/quota alerts for one Mail Baby service
+## List configured delivery/bounce/quota alerts for one Mail Baby service
 GET https://my.interserver.net/apiv2/mail/{{id}}/alerts
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Blocked Email Addresses
-## List Blocked Email Addresses
+### List recent local-blocklist hits and spam-trap captures for the mail user
+## List recent local-blocklist hits and spam-trap captures for the mail user
 GET https://my.interserver.net/apiv2/mail/{{id}}/blocks
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Delist Status
-## Get Delist Status
+### Read blocklist diagnostics and find senders eligible for delisting
+## Read blocklist diagnostics and find senders eligible for delisting
 GET https://my.interserver.net/apiv2/mail/{{id}}/delist
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Deliverability Metrics
-## Get Deliverability Metrics
+### Read delivered vs bounced totals broken down by sender (or by recipient domain)
+## Read delivered vs bounced totals broken down by sender (or by recipient domain)
 GET https://my.interserver.net/apiv2/mail/{{id}}/deliverability
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Mail Order
-## Get Mail Order
+### Read full detail for one Mail Baby service including SMTP credentials
+## Read full detail for one Mail Baby service including SMTP credentials
 GET https://my.interserver.net/apiv2/mail/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Mail Invoices
-## Get Mail Invoices
+### List billing invoices linked to this Mail Baby service
+## List billing invoices linked to this Mail Baby service
 GET https://my.interserver.net/apiv2/mail/{{id}}/invoices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Mail Orders
-## List Mail Orders
+### List every Mail Baby SMTP relay service on the account
+## List every Mail Baby SMTP relay service on the account
 GET https://my.interserver.net/apiv2/mail
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Resend Mail Welcome Email
-## Resend Mail Welcome Email
+### Resend the Mail Baby welcome email with SMTP credentials and setup info
+## Resend the Mail Baby welcome email with SMTP credentials and setup info
 GET https://my.interserver.net/apiv2/mail/{{id}}/welcome_email
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Mail Ordering Information
-## Get Mail Ordering Information
+### Read the Mail Baby order catalog — plans, package costs, service-type metadata
+## Read the Mail Baby order catalog — plans, package costs, service-type metadata
 GET https://my.interserver.net/apiv2/mail/order
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Deny Rules
-## List Deny Rules
+### List configured deny rules (sender/recipient blocks) for a Mail Baby service
+## List configured deny rules (sender/recipient blocks) for a Mail Baby service
 GET https://my.interserver.net/apiv2/mail/{{id}}/rules
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Mail Usage Statistics
-## Get Mail Usage Statistics
+### Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
+## Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
 GET https://my.interserver.net/apiv2/mail/{{id}}/stats?time={{time}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Cancel Mail
-## Cancel Mail
+### Cancel a Mail Baby service and stop the recurring invoice
+## Cancel a Mail Baby service and stop the recurring invoice
 DELETE https://my.interserver.net/apiv2/mail/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Delist a Blocked Sender
-## Delist a Blocked Sender
+### Delist a sender from rspamd / mailchannels / mailbaby block lists
+## Delist a sender from rspamd / mailchannels / mailbaby block lists
 POST https://my.interserver.net/apiv2/mail/{{id}}/delist
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -180,28 +214,39 @@ sessionid: {{apiKey}}
 }
 
 
-### Validate Mail Order
-## Validate Mail Order
+### Validate Mail Baby order, quote pricing, and verify coupon — no charge
+## Validate Mail Baby order, quote pricing, and verify coupon — no charge
 PUT https://my.interserver.net/apiv2/mail/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Reset Mail Password
-## Reset Mail Password
+{
+ "serviceType": "<number>",
+ "coupon": "<string>",
+ "comment": "<string>"
+}
+
+
+### Rotate the SMTP password and email the new credential to the account owner
+## Rotate the SMTP password and email the new credential to the account owner
 GET https://my.interserver.net/apiv2/mail/{{id}}/reset_password
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Send Email with Advanced Options
-## Send Email with Advanced Options
+### Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
+## Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
 POST https://my.interserver.net/apiv2/mail/{{id}}/advsend
 Content-Type: application/json
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -224,12 +269,13 @@ sessionid: {{apiKey}}
 }
 
 
-### Send Email
-## Send Email
+### Send a simple single-recipient email through the Mail Baby SMTP relay
+## Send a simple single-recipient email through the Mail Baby SMTP relay
 POST https://my.interserver.net/apiv2/mail/{{id}}/send
 Content-Type: application/json
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -242,12 +288,13 @@ sessionid: {{apiKey}}
 }
 
 
-### Update Mail Alert
-## Update Mail Alert
+### Update an existing Mail Baby alert by alert_id
+## Update an existing Mail Baby alert by alert_id
 PUT https://my.interserver.net/apiv2/mail/{{id}}/alerts
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -261,18 +308,38 @@ sessionid: {{apiKey}}
 }
 
 
-### Update Mail Order
-## Update Mail Order
+### POST mutation hook for the Mail Baby service detail page
+## POST mutation hook for the Mail Baby service detail page
 POST https://my.interserver.net/apiv2/mail/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### View Mail Log
-## View Mail Log
+### Update an existing Mail Baby deny rule&#39;s type and match data
+## Update an existing Mail Baby deny rule&#39;s type and match data
+PUT https://my.interserver.net/apiv2/mail/{{id}}/rules/{{rule}}
+Content-Type: application/json
+Content-Type: multipart/form-data
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "user": "<string>",
+ "type": "<string>",
+ "data": "<string>"
+}
+
+
+### Search and paginate per-message Mail Baby delivery log entries
+## Search and paginate per-message Mail Baby delivery log entries
 GET https://my.interserver.net/apiv2/mail/{{id}}/log?id2={{id2}}&origin={{origin}}&mx={{mx}}&from={{from}}&to={{to}}&subject={{subject}}&mailid={{mailid}}&messageId={{messageId}}&replyto={{replyto}}&headerfrom={{headerfrom}}&delivered={{delivered}}&skip={{skip}}&limit={{limit}}&startDate={{startDate}}&endDate={{endDate}}&sort={{sort}}&dir={{dir}}&groupby={{groupby}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

@@ -56,13 +56,6 @@ var routes = Routes{
 	},
 
 	Route{
-		"ChangeAccountUsername",
-		strings.ToUpper("Post"),
-		"/apiv2/account/username",
-		ChangeAccountUsername,
-	},
-
-	Route{
 		"DeleteAccountOauthName",
 		strings.ToUpper("Delete"),
 		"/apiv2/account/oauth/{name}",
@@ -245,13 +238,6 @@ var routes = Routes{
 	},
 
 	Route{
-		"AddAccountCreditCard",
-		strings.ToUpper("Post"),
-		"/apiv2/account/creditcards",
-		AddAccountCreditCard,
-	},
-
-	Route{
 		"AddBillingCreditCard",
 		strings.ToUpper("Post"),
 		"/apiv2/billing/creditcards",
@@ -263,13 +249,6 @@ var routes = Routes{
 		strings.ToUpper("Post"),
 		"/apiv2/billing/prepays",
 		AddBillingPrepay,
-	},
-
-	Route{
-		"DeleteAccountCreditCard",
-		strings.ToUpper("Delete"),
-		"/apiv2/account/creditcards/{id}",
-		DeleteAccountCreditCard,
 	},
 
 	Route{
@@ -301,6 +280,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"GetAffiliateDownload",
+		strings.ToUpper("Get"),
+		"/apiv2/affiliate/download",
+		GetAffiliateDownload,
+	},
+
+	Route{
 		"GetAffiliateRichReport",
 		strings.ToUpper("Get"),
 		"/apiv2/affiliate/rich_report",
@@ -315,10 +301,10 @@ var routes = Routes{
 	},
 
 	Route{
-		"GetAffiliateSalesReport",
+		"GetAffiliateSignups",
 		strings.ToUpper("Get"),
-		"/apiv2/affiliate/sales_report",
-		GetAffiliateSalesReport,
+		"/apiv2/affiliate/signups",
+		GetAffiliateSignups,
 	},
 
 	Route{
@@ -371,17 +357,17 @@ var routes = Routes{
 	},
 
 	Route{
-		"GetInvoices",
+		"InitiatePayment",
 		strings.ToUpper("Get"),
-		"/apiv2/invoices",
-		GetInvoices,
+		"/apiv2/billing/pay/{method}/{invoices}",
+		InitiatePayment,
 	},
 
 	Route{
-		"InitiatePayment",
-		strings.ToUpper("Get"),
-		"/apiv2/pay/{method}/{invoices}",
-		InitiatePayment,
+		"PatchBillingCreditCardVerify",
+		strings.ToUpper("Patch"),
+		"/apiv2/billing/creditcards/{id}/verify",
+		PatchBillingCreditCardVerify,
 	},
 
 	Route{
@@ -392,24 +378,10 @@ var routes = Routes{
 	},
 
 	Route{
-		"UpdateAccountCreditCard",
-		strings.ToUpper("Post"),
-		"/apiv2/account/creditcards/{id}",
-		UpdateAccountCreditCard,
-	},
-
-	Route{
 		"UpdateAffiliateDockSetup",
 		strings.ToUpper("Post"),
 		"/apiv2/affiliate/dock_setup",
 		UpdateAffiliateDockSetup,
-	},
-
-	Route{
-		"UpdateAffiliateLandingPage",
-		strings.ToUpper("Post"),
-		"/apiv2/affiliate/landing_pg",
-		UpdateAffiliateLandingPage,
 	},
 
 	Route{
@@ -567,20 +539,6 @@ var routes = Routes{
 	},
 
 	Route{
-		"GetDomainOrderFields",
-		strings.ToUpper("Get"),
-		"/apiv2/domains/order/{domain}/{regType}",
-		GetDomainOrderFields,
-	},
-
-	Route{
-		"GetDomainOrderSearchResults",
-		strings.ToUpper("Get"),
-		"/apiv2/domains/order/{domain}",
-		GetDomainOrderSearchResults,
-	},
-
-	Route{
 		"GetDomainRenewal",
 		strings.ToUpper("Get"),
 		"/apiv2/domains/{id}/renew",
@@ -641,6 +599,13 @@ var routes = Routes{
 		strings.ToUpper("Post"),
 		"/apiv2/domains/{id}/renew",
 		PostDomainRenewal,
+	},
+
+	Route{
+		"PostDomainSearch",
+		strings.ToUpper("Post"),
+		"/apiv2/domains/search/{name}",
+		PostDomainSearch,
 	},
 
 	Route{
@@ -781,13 +746,6 @@ var routes = Routes{
 		strings.ToUpper("Get"),
 		"/apiv2/licenses",
 		GetLicenseList,
-	},
-
-	Route{
-		"GetLicenseOrderCatTagInfo",
-		strings.ToUpper("Get"),
-		"/apiv2/licenses/order/{catTag}",
-		GetLicenseOrderCatTagInfo,
 	},
 
 	Route{
@@ -1008,10 +966,31 @@ var routes = Routes{
 	},
 
 	Route{
+		"UpdateRule",
+		strings.ToUpper("Put"),
+		"/apiv2/mail/{id}/rules/{rule}",
+		UpdateRule,
+	},
+
+	Route{
 		"ViewMailLog",
 		strings.ToUpper("Get"),
 		"/apiv2/mail/{id}/log",
 		ViewMailLog,
+	},
+
+	Route{
+		"GetAccountCurrencies",
+		strings.ToUpper("Get"),
+		"/apiv2/account/currencies",
+		GetAccountCurrencies,
+	},
+
+	Route{
+		"GetAccountLocales",
+		strings.ToUpper("Get"),
+		"/apiv2/account/locales",
+		GetAccountLocales,
 	},
 
 	Route{
@@ -1183,6 +1162,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"GetQsBackup",
+		strings.ToUpper("Get"),
+		"/apiv2/qs/{id}/backup",
+		GetQsBackup,
+	},
+
+	Route{
 		"GetQsBackups",
 		strings.ToUpper("Get"),
 		"/apiv2/qs/{id}/backups",
@@ -1292,13 +1278,6 @@ var routes = Routes{
 		strings.ToUpper("Get"),
 		"/apiv2/qs/{id}/welcome_email",
 		GetQsWelcomeEmail,
-	},
-
-	Route{
-		"PostQsBackup",
-		strings.ToUpper("Post"),
-		"/apiv2/qs/{id}/backup",
-		PostQsBackup,
 	},
 
 	Route{
@@ -1568,6 +1547,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"PutScrubIps",
+		strings.ToUpper("Put"),
+		"/apiv2/scrub_ips/order",
+		PutScrubIps,
+	},
+
+	Route{
 		"ScrubIpsDeleteGeoRule",
 		strings.ToUpper("Post"),
 		"/apiv2/scrub_ips/{id}/delete_geo_rule",
@@ -1659,10 +1645,10 @@ var routes = Routes{
 	},
 
 	Route{
-		"PutServers",
-		strings.ToUpper("Put"),
-		"/apiv2/servers/order",
-		PutServers,
+		"ServerBulkIpmiPowerGet",
+		strings.ToUpper("Get"),
+		"/apiv2/servers/bulk/ipmi_power",
+		ServerBulkIpmiPowerGet,
 	},
 
 	Route{
@@ -1869,6 +1855,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"GetVpsBackup",
+		strings.ToUpper("Get"),
+		"/apiv2/vps/{id}/backup",
+		GetVpsBackup,
+	},
+
+	Route{
 		"GetVpsBackups",
 		strings.ToUpper("Get"),
 		"/apiv2/vps/{id}/backups",
@@ -1890,6 +1883,20 @@ var routes = Routes{
 	},
 
 	Route{
+		"GetVpsChangeHostname",
+		strings.ToUpper("Get"),
+		"/apiv2/vps/{id}/change_hostname",
+		GetVpsChangeHostname,
+	},
+
+	Route{
+		"GetVpsChangeRootPassword",
+		strings.ToUpper("Get"),
+		"/apiv2/vps/{id}/change_root_password",
+		GetVpsChangeRootPassword,
+	},
+
+	Route{
 		"GetVpsChangeTimezone",
 		strings.ToUpper("Get"),
 		"/apiv2/vps/{id}/change_timezone",
@@ -1901,6 +1908,13 @@ var routes = Routes{
 		strings.ToUpper("Get"),
 		"/apiv2/vps/{id}",
 		GetVpsInfo,
+	},
+
+	Route{
+		"GetVpsInsertCd",
+		strings.ToUpper("Get"),
+		"/apiv2/vps/{id}/insert_cd",
+		GetVpsInsertCd,
 	},
 
 	Route{
@@ -1922,6 +1936,13 @@ var routes = Routes{
 		strings.ToUpper("Get"),
 		"/apiv2/vps/{id}/reinstall_os",
 		GetVpsReinstallOs,
+	},
+
+	Route{
+		"GetVpsResetPassword",
+		strings.ToUpper("Get"),
+		"/apiv2/vps/{id}/reset_password",
+		GetVpsResetPassword,
 	},
 
 	Route{
@@ -1964,13 +1985,6 @@ var routes = Routes{
 		strings.ToUpper("Get"),
 		"/apiv2/vps/{id}/welcome_email",
 		GetVpsWelcomeEmail,
-	},
-
-	Route{
-		"PostVpsBackup",
-		strings.ToUpper("Get"),
-		"/apiv2/vps/{id}/backup",
-		PostVpsBackup,
 	},
 
 	Route{
@@ -2065,6 +2079,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"PostVpsTrafficUsage",
+		strings.ToUpper("Post"),
+		"/apiv2/vps/{id}/traffic_usage",
+		PostVpsTrafficUsage,
+	},
+
+	Route{
 		"PostVpsViewDesktop",
 		strings.ToUpper("Post"),
 		"/apiv2/vps/{id}/view_desktop",
@@ -2076,6 +2097,13 @@ var routes = Routes{
 		strings.ToUpper("Put"),
 		"/apiv2/vps/order",
 		PutVps,
+	},
+
+	Route{
+		"PutVpsBuyHdSpace",
+		strings.ToUpper("Put"),
+		"/apiv2/vps/{id}/buy_hd_space",
+		PutVpsBuyHdSpace,
 	},
 
 	Route{

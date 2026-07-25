@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_ipmi_live_info import ServerIpmiLiveInfo
+from interserver_api_client.models.server_ipmi_live_info import ServerIpmiLiveInfo
 
 class TestServerIpmiLiveInfo(unittest.TestCase):
     """ServerIpmiLiveInfo unit test stubs"""

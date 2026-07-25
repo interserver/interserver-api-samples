@@ -35,4 +35,3 @@ case class ServerOrderOS(
   /* Display of monthly OS price. */
   monthly_price_display: Option[String] = None
 )
-

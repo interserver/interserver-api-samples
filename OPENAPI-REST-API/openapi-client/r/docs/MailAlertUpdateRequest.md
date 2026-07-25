@@ -1,4 +1,4 @@
-# openapi::MailAlertUpdateRequest
+# interserverapi::MailAlertUpdateRequest
 
 Payload for updating an existing mail alert.
 

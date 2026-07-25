@@ -17,7 +17,7 @@ import AccountInfoOauthConfigProviders from './AccountInfoOauthConfigProviders';
 /**
  * The AccountInfoOauthConfig model module.
  * @module model/AccountInfoOauthConfig
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AccountInfoOauthConfig {
     /**

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailLogEntry
 void main() {
-  final instance = MailLogEntryBuilder();
-  // TODO add properties to the builder and call build()
+  final MailLogEntry? instance = /* MailLogEntry(...) */ null;
+  // TODO add properties to the entity
 
   group(MailLogEntry, () {
     // Internal auto-increment database row ID.
@@ -68,91 +68,91 @@ void main() {
     });
 
     // The `Subject` header value.  MIME-encoded subjects (UTF-8, ISO-8859, US-ASCII) are automatically decoded.
-    // String subject
+    // Optional<String?> subject
     test('to test the property `subject`', () async {
       // TODO
     });
 
     // The `Message-ID` header value.  Can be used with the `messageId` filter for subsequent lookups.
-    // String messageId
+    // Optional<String?> messageId
     test('to test the property `messageId`', () async {
       // TODO
     });
 
     // The sending zone assigned by the relay for outbound delivery.
-    // String sendingZone
+    // Optional<String?> sendingZone
     test('to test the property `sendingZone`', () async {
       // TODO
     });
 
     // Size of the message body in bytes.
-    // int bodySize
+    // Optional<int?> bodySize
     test('to test the property `bodySize`', () async {
       // TODO
     });
 
     // Sequence index of this recipient in a multi-recipient message. Starts at 1.
-    // int seq
+    // Optional<int?> seq
     test('to test the property `seq`', () async {
       // TODO
     });
 
     // Delivery status flag.  `1` = successfully delivered to destination MX. `0` = queued, deferred, or failed.  `null` = delivery not yet attempted.
-    // int delivered
+    // Optional<int?> delivered
     test('to test the property `delivered`', () async {
       // TODO
     });
 
     // The SMTP response code from the destination MX server (e.g. `250`).
-    // int code
+    // Optional<int?> code
     test('to test the property `code`', () async {
       // TODO
     });
 
     // The specific recipient address this delivery record is for.
-    // String recipient
+    // Optional<String?> recipient
     test('to test the property `recipient`', () async {
       // TODO
     });
 
     // The full SMTP response string received from the destination MX server.
-    // String response
+    // Optional<String?> response
     test('to test the property `response`', () async {
       // TODO
     });
 
     // The destination domain for this delivery attempt.
-    // String domain
+    // Optional<String?> domain
     test('to test the property `domain`', () async {
       // TODO
     });
 
     // Whether the queue entry is currently locked for delivery processing.
-    // int locked
+    // Optional<int?> locked
     test('to test the property `locked`', () async {
       // TODO
     });
 
     // Millisecond-precision timestamp of the last queue lock acquisition.
-    // String lockTime
+    // Optional<String?> lockTime
     test('to test the property `lockTime`', () async {
       // TODO
     });
 
     // The relay server node assigned to deliver this message.
-    // String assigned
+    // Optional<String?> assigned
     test('to test the property `assigned`', () async {
       // TODO
     });
 
     // ISO 8601 timestamp when the message was placed into the delivery queue.
-    // String queued
+    // Optional<String?> queued
     test('to test the property `queued`', () async {
       // TODO
     });
 
     // The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter.
-    // String mxHostname
+    // Optional<String?> mxHostname
     test('to test the property `mxHostname`', () async {
       // TODO
     });

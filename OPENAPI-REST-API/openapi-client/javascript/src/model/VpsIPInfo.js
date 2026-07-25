@@ -17,7 +17,7 @@ import VpsIPInfoRow from './VpsIPInfoRow';
 /**
  * The VpsIPInfo model module.
  * @module model/VpsIPInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsIPInfo {
     /**

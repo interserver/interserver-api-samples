@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **zip** | **string** |  | [optional]
 **country** | **string** |  | [optional]
 **maxmindRiskscore** | **string** |  | [optional]
-**maxmind** | [**\Interserver\MyAdmin\Model\AccountInfoMaxMindResponse**](AccountInfoMaxMindResponse.md) |  | [optional]
+**maxmind** | [**\Interserver\\MyAdmin\Model\AccountInfoMaxMindResponse**](AccountInfoMaxMindResponse.md) |  | [optional]
 **verified** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

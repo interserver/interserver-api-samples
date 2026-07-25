@@ -1,4 +1,4 @@
-# openapi::CancelScrubIp200Response
+# interserverapi::CancelScrubIp200Response
 
 
 ## Properties

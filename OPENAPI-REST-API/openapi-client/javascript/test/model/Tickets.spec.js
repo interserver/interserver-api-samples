@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.Tickets();
+    instance = new InterserverApiClient.Tickets();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,91 +50,91 @@
   describe('Tickets', function() {
     it('should create an instance of Tickets', function() {
       // uncomment below and update the code to test Tickets
-      //var instance = new InterServerManagementApi.Tickets();
-      //expect(instance).to.be.a(InterServerManagementApi.Tickets);
+      //var instance = new InterserverApiClient.Tickets();
+      //expect(instance).to.be.a(InterserverApiClient.Tickets);
     });
 
     it('should have the property ima (base name: "ima")', function() {
       // uncomment below and update the code to test the property ima
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property custid (base name: "custid")', function() {
       // uncomment below and update the code to test the property custid
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property view (base name: "view")', function() {
       // uncomment below and update the code to test the property view
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property currentPage (base name: "currentPage")', function() {
       // uncomment below and update the code to test the property currentPage
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property limit (base name: "limit")', function() {
       // uncomment below and update the code to test the property limit
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property sortcol (base name: "sortcol")', function() {
       // uncomment below and update the code to test the property sortcol
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property sortdir (base name: "sortdir")', function() {
       // uncomment below and update the code to test the property sortdir
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property rowsOffset (base name: "rowsOffset")', function() {
       // uncomment below and update the code to test the property rowsOffset
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property tickets (base name: "tickets")', function() {
       // uncomment below and update the code to test the property tickets
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property pages (base name: "pages")', function() {
       // uncomment below and update the code to test the property pages
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property rowsTotal (base name: "rowsTotal")', function() {
       // uncomment below and update the code to test the property rowsTotal
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property inboxCount (base name: "inboxCount")', function() {
       // uncomment below and update the code to test the property inboxCount
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property countArray (base name: "countArray")', function() {
       // uncomment below and update the code to test the property countArray
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 
     it('should have the property viewText (base name: "viewText")', function() {
       // uncomment below and update the code to test the property viewText
-      //var instance = new InterServerManagementApi.Tickets();
+      //var instance = new InterserverApiClient.Tickets();
       //expect(instance).to.be();
     });
 

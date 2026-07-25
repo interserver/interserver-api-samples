@@ -1,4 +1,4 @@
-# openapi::DomainOrderResponseAttributes
+# interserverapi::DomainOrderResponseAttributes
 
 
 ## Properties

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailBlockClickHouse
+# InterServerAPI::Object::MailBlockClickHouse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailBlockClickHouse;
+use InterServerAPI::Object::MailBlockClickHouse;
 ```
 
 ## Properties

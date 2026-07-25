@@ -1,4 +1,4 @@
-# openapi::CreateRule201Response
+# interserverapi::CreateRule201Response
 
 
 ## Properties

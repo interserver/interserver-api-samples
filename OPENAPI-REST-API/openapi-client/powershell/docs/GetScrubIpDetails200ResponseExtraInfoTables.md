@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetScrubIpDetails200ResponseExtraInfoTables = Initialize-PSOpenAPIToolsGetScrubIpDetails200ResponseExtraInfoTables  -ScrubIps null
+$GetScrubIpDetails200ResponseExtraInfoTables = Initialize-InterserverApiGetScrubIpDetails200ResponseExtraInfoTables  -ScrubIps null
 ```
 
 - Convert the resource to JSON

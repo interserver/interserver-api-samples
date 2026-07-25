@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailTutorialsTableRow
+# InterserverApiClient.MailTutorialsTableRow
 
 ## Properties
 

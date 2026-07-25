@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicenseServiceType = Initialize-PSOpenAPIToolsLicenseServiceType  -ServicesId 5034 `
+$LicenseServiceType = Initialize-InterserverApiLicenseServiceType  -ServicesId 5034 `
  -ServicesName KernelCare License `
  -ServicesCost 2.95 `
  -ServicesCategory 508 `

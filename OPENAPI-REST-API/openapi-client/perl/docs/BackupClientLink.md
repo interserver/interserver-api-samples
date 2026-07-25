@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BackupClientLink
+# InterServerAPI::Object::BackupClientLink
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BackupClientLink;
+use InterServerAPI::Object::BackupClientLink;
 ```
 
 ## Properties

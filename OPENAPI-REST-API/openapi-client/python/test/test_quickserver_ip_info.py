@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_ip_info import QuickserverIpInfo
+from interserver_api_client.models.quickserver_ip_info import QuickserverIpInfo
 
 class TestQuickserverIpInfo(unittest.TestCase):
     """QuickserverIpInfo unit test stubs"""
@@ -38,7 +38,7 @@ class TestQuickserverIpInfo(unittest.TestCase):
             return QuickserverIpInfo(
                 title = 'IP Information',
                 rows = [
-                    openapi_client.models.quickserver_ip_table_row.QuickserverIpTableRow(
+                    interserver_api_client.models.quickserver_ip_table_row.QuickserverIpTableRow(
                         desc = 'Netmask', 
                         value = '', )
                     ]

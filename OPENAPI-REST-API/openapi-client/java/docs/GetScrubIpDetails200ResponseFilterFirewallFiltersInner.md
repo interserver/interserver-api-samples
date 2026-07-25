@@ -14,4 +14,8 @@
 |**filter** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

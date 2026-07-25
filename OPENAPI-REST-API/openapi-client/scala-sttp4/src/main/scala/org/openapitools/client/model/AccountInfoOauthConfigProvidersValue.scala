@@ -18,4 +18,3 @@ case class AccountInfoOauthConfigProvidersValue(
   account: Option[String] = None,
   url: Option[String] = None
 )
-

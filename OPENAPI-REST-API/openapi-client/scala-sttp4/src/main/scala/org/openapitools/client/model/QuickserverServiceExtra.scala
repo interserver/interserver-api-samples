@@ -16,4 +16,3 @@ case class QuickserverServiceExtra(
   /* Platform information */
   platform: Option[String] = None
 )
-

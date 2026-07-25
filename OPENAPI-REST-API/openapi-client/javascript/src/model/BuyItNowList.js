@@ -17,7 +17,7 @@ import BuyItNowRow from './BuyItNowRow';
 /**
  * The BuyItNowList model module.
  * @module model/BuyItNowList
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BuyItNowList extends Array {
     /**

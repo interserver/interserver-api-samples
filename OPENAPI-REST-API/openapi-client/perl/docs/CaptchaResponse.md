@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CaptchaResponse
+# InterServerAPI::Object::CaptchaResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CaptchaResponse;
+use InterServerAPI::Object::CaptchaResponse;
 ```
 
 ## Properties

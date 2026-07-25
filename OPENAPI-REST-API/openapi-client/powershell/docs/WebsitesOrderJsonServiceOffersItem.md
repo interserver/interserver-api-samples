@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsitesOrderJsonServiceOffersItem = Initialize-PSOpenAPIToolsWebsitesOrderJsonServiceOffersItem  -ServiceOfferId 136 `
+$WebsitesOrderJsonServiceOffersItem = Initialize-InterserverApiWebsitesOrderJsonServiceOffersItem  -ServiceOfferId 136 `
  -ServiceId 1026 `
  -IntroCost 96 `
  -RenewalCost 96 `

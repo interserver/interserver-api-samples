@@ -8,17 +8,16 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
-import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import io.swagger.model.Account2faBody1;
 import io.swagger.model.AccountFeatures;
 import io.swagger.model.AccountInfo;
 import io.swagger.model.AccountInfoPost;
 import io.swagger.model.AccountSshKey;
-import io.swagger.model.BillingAddCcRequest;
 import io.swagger.model.GenericResponse;
 import io.swagger.model.InlineResponse200;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.InlineResponseMap200;
 import io.swagger.model.IpLimitRange;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.SuccessTextResponse;
@@ -35,20 +34,17 @@ import javax.ws.rs.core.SecurityContext;
 
 
 public interface AccountApiService {
-      Response addAccountCreditCard(MultipartFormDataInput input,String name,String address,String city,String state,String country,String zip,String cc,String ccExp,String ccCcv2,SecurityContext securityContext) throws NotFoundException;
-      Response addAccountCreditCard(MultipartFormDataInput input,BillingAddCcRequest body,SecurityContext securityContext) throws NotFoundException;
-      Response changeAccountUsername(SecurityContext securityContext) throws NotFoundException;
-      Response deleteAccountCreditCard(String id,SecurityContext securityContext) throws NotFoundException;
       Response deleteAccountOauthName(String name,SecurityContext securityContext) throws NotFoundException;
       Response deleteAccountTfa(SecurityContext securityContext) throws NotFoundException;
       Response deleteIpLimit(IpLimitRange body,SecurityContext securityContext) throws NotFoundException;
+      Response getAccountCurrencies(SecurityContext securityContext) throws NotFoundException;
       Response getAccountInfo(SecurityContext securityContext) throws NotFoundException;
+      Response getAccountLocales(SecurityContext securityContext) throws NotFoundException;
       Response getAccountTfaSetup(SecurityContext securityContext) throws NotFoundException;
       Response getCountries(String fetchBy,SecurityContext securityContext) throws NotFoundException;
       Response getTimezones(SecurityContext securityContext) throws NotFoundException;
       Response logoutAccountOauth(String name,SecurityContext securityContext) throws NotFoundException;
       Response updateAccountApiKey(SecurityContext securityContext) throws NotFoundException;
-      Response updateAccountCreditCard(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response updateAccountFeatures(MultipartFormDataInput input,Integer disableReset,Integer disableReinstall,SecurityContext securityContext) throws NotFoundException;
       Response updateAccountFeatures(MultipartFormDataInput input,AccountFeatures body,SecurityContext securityContext) throws NotFoundException;
       Response updateAccountInfo(MultipartFormDataInput input,String name,String company,String address,String address2,String city,String state,String zip,String country,String phone,String locale,String emailInvoices,String emailAbuse,Boolean disableReset,Boolean disableReinstall,Boolean disableServerNotifications,Boolean disableEmailNotifications,String gstin,SecurityContext securityContext) throws NotFoundException;

@@ -25,13 +25,29 @@ case class CreateGeoFirewallRule(
   /* ASN number */
   asn: Option[Int] = None
 )
-
 object CreateGeoFirewallRuleEnums {
 
-  type XdpAction = XdpAction.Value
-  object XdpAction extends Enumeration {
-    val `0` = Value("0")
-    val `1` = Value("1")
-  }
+  sealed trait XdpAction
+  object XdpAction {
+    case object `0` extends XdpAction
+    case object `1` extends XdpAction
 
+    import org.json4s._
+
+    implicit object XdpActionSerializer extends Serializer[XdpAction] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), XdpAction] = {
+        case (TypeInfo(clazz, _), json) if classOf[XdpAction].isAssignableFrom(clazz) =>
+          json match {
+            case JString("0") => `0`
+            case JString("1") => `1`
+            case other => throw new MappingException(s"Invalid XdpAction: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case `0` => JString("0")
+        case `1` => JString("1")
+      }
+    }
+  }
 }

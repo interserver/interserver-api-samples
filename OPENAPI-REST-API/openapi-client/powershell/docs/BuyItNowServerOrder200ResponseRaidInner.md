@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BuyItNowServerOrder200ResponseRaidInner = Initialize-PSOpenAPIToolsBuyItNowServerOrder200ResponseRaidInner  -Id 0 `
+$BuyItNowServerOrder200ResponseRaidInner = Initialize-InterserverApiBuyItNowServerOrder200ResponseRaidInner  -Id 0 `
  -ShortDesc No Raid `
  -LongDesc No Raid `
  -MonthlyPrice 0

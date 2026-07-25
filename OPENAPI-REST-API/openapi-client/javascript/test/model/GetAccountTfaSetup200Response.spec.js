@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetAccountTfaSetup200Response();
+    instance = new InterserverApiClient.GetAccountTfaSetup200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('GetAccountTfaSetup200Response', function() {
     it('should create an instance of GetAccountTfaSetup200Response', function() {
       // uncomment below and update the code to test GetAccountTfaSetup200Response
-      //var instance = new InterServerManagementApi.GetAccountTfaSetup200Response();
-      //expect(instance).to.be.a(InterServerManagementApi.GetAccountTfaSetup200Response);
+      //var instance = new InterserverApiClient.GetAccountTfaSetup200Response();
+      //expect(instance).to.be.a(InterserverApiClient.GetAccountTfaSetup200Response);
     });
 
     it('should have the property _2fa_google_key (base name: "2fa_google_key")', function() {
       // uncomment below and update the code to test the property _2fa_google_key
-      //var instance = new InterServerManagementApi.GetAccountTfaSetup200Response();
+      //var instance = new InterserverApiClient.GetAccountTfaSetup200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property _2fa_google_split (base name: "2fa_google_split")', function() {
       // uncomment below and update the code to test the property _2fa_google_split
-      //var instance = new InterServerManagementApi.GetAccountTfaSetup200Response();
+      //var instance = new InterserverApiClient.GetAccountTfaSetup200Response();
       //expect(instance).to.be();
     });
 

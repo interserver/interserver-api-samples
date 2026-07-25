@@ -17,7 +17,7 @@ import DenyRuleNew from './DenyRuleNew';
 /**
  * The DenyRuleRecord model module.
  * @module model/DenyRuleRecord
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DenyRuleRecord {
     /**
@@ -194,7 +194,13 @@ DenyRuleRecord['TypeEnum'] = {
      * value: "destination"
      * @const
      */
-    "destination": "destination"
+    "destination": "destination",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 

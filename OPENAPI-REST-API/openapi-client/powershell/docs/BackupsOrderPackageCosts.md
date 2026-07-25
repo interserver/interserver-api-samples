@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupsOrderPackageCosts = Initialize-PSOpenAPIToolsBackupsOrderPackageCosts  -Var11006 84
+$BackupsOrderPackageCosts = Initialize-InterserverApiBackupsOrderPackageCosts  -Var11006 84
 ```
 
 - Convert the resource to JSON

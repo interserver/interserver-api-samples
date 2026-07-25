@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::HomeServicesBackups');
+use_ok('InterServerAPI::Object::HomeServicesBackups');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::HomeServicesBackups->new();
+#my $instance = InterServerAPI::Object::HomeServicesBackups->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::HomeServicesBackups');
+#isa_ok($instance, 'InterServerAPI::Object::HomeServicesBackups');
 
 
 done_testing();

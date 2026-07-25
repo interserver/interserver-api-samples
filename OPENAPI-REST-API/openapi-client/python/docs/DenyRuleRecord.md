@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.deny_rule_record import DenyRuleRecord
+from interserver_api_client.models.deny_rule_record import DenyRuleRecord
 
 # TODO update the JSON string below
 json = "{}"

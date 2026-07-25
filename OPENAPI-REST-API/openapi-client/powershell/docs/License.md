@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$License = Initialize-PSOpenAPIToolsLicense  -ServiceInfo null `
+$License = Initialize-InterserverApiLicense  -ServiceInfo null `
  -ClientLinks null `
  -BillingDetails null `
  -CustCurrency USD `

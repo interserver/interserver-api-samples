@@ -21,6 +21,8 @@ module.exports = {
         { data: {} },
     "TextResponseSample": 
         { data: {} },
+    "ServerBulkIpmiPowerResponseSample": 
+        { data: {} },
     "ServerIpmiLiveInfoSample": 
         { data: {} },
     "ServerIpmiLiveInfoSample": 

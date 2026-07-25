@@ -1,43 +1,43 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for UpdateTicket
 void main() {
-  final instance = UpdateTicketBuilder();
-  // TODO add properties to the builder and call build()
+  final UpdateTicket? instance = /* UpdateTicket(...) */ null;
+  // TODO add properties to the entity
 
   group(UpdateTicket, () {
-    // String ip
+    // Optional<String?> ip
     test('to test the property `ip`', () async {
       // TODO
     });
 
-    // String ipAddress
+    // Optional<String?> ipAddress
     test('to test the property `ipAddress`', () async {
       // TODO
     });
 
-    // String customerServerAccess
+    // Optional<String?> customerServerAccess
     test('to test the property `customerServerAccess`', () async {
       // TODO
     });
 
-    // String rootPassword
+    // Optional<String?> rootPassword
     test('to test the property `rootPassword`', () async {
       // TODO
     });
 
-    // String sudoUsername
+    // Optional<String?> sudoUsername
     test('to test the property `sudoUsername`', () async {
       // TODO
     });
 
-    // String sudoPassword
+    // Optional<String?> sudoPassword
     test('to test the property `sudoPassword`', () async {
       // TODO
     });
 
-    // int port
+    // Optional<int?> port
     test('to test the property `port`', () async {
       // TODO
     });

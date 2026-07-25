@@ -6,9 +6,10 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBackupsBody;
-import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse20011;
+import io.swagger.model.InlineResponse20012;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.QsOrderRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.Quickserver;
 import io.swagger.model.QuickserverOrder;
@@ -33,7 +34,7 @@ import javax.ws.rs.core.SecurityContext;
 
 
 public interface QsApiService {
-      Response addQs(SecurityContext securityContext) throws NotFoundException;
+      Response addQs(QsOrderRequest body,SecurityContext securityContext) throws NotFoundException;
       Response deleteQsBackup(Integer id,String file,String all,SecurityContext securityContext) throws NotFoundException;
       Response doQsBlockSmtp(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response doQsDisableCd(Integer id,SecurityContext securityContext) throws NotFoundException;
@@ -46,6 +47,7 @@ public interface QsApiService {
       Response downloadQsBackup(IdBackupsBody body,Integer id,String all,SecurityContext securityContext) throws NotFoundException;
       Response downloadQsBackup(String file,Integer id,String all,SecurityContext securityContext) throws NotFoundException;
       Response getNewQs(SecurityContext securityContext) throws NotFoundException;
+      Response getQsBackup(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response getQsBackups(Integer id,String all,SecurityContext securityContext) throws NotFoundException;
       Response getQsChangeHostname(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response getQsChangeRootPassword(Integer id,SecurityContext securityContext) throws NotFoundException;
@@ -62,7 +64,6 @@ public interface QsApiService {
       Response getQsTrafficUsage(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response getQsViewDesktop(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response getQsWelcomeEmail(String id,SecurityContext securityContext) throws NotFoundException;
-      Response postQsBackup(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response postQsChangeHostname(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response postQsChangeRootPassword(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response postQsChangeTimezone(MultipartFormDataInput input,String timezone,Integer id,SecurityContext securityContext) throws NotFoundException;
@@ -78,7 +79,7 @@ public interface QsApiService {
       Response postQsViewDesktop(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response postQuickServerRestore(RestoreRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;
       Response postQuickServerRestore(String backup,String password,Integer id,SecurityContext securityContext) throws NotFoundException;
-      Response putQs(SecurityContext securityContext) throws NotFoundException;
+      Response putQs(QsOrderRequest body,SecurityContext securityContext) throws NotFoundException;
       Response quickserversCancel(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response updateQsInfo(String id,SecurityContext securityContext) throws NotFoundException;
 }

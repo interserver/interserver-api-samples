@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LoginSubmissionExampleGRecaptchaResponseDep model module.
  * @module model/LoginSubmissionExampleGRecaptchaResponseDep
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LoginSubmissionExampleGRecaptchaResponseDep {
     /**

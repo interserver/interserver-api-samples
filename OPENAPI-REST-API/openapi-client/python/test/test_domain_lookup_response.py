@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_lookup_response import DomainLookupResponse
+from interserver_api_client.models.domain_lookup_response import DomainLookupResponse
 
 class TestDomainLookupResponse(unittest.TestCase):
     """DomainLookupResponse unit test stubs"""

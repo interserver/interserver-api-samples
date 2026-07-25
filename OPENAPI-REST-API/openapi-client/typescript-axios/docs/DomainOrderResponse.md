@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainOrderResponse } from './api';
+import { DomainOrderResponse } from '@interserver/myadmin-client';
 
 const instance: DomainOrderResponse = {
     _OPS_version,

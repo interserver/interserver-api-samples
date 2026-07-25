@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BackupsOrder
 void main() {
-  final instance = BackupsOrderBuilder();
-  // TODO add properties to the builder and call build()
+  final BackupsOrder? instance = /* BackupsOrder(...) */ null;
+  // TODO add properties to the entity
 
   group(BackupsOrder, () {
     // BackupsOrderPackageCosts packageCosts

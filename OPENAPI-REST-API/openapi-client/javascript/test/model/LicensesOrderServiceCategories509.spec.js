@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LicensesOrderServiceCategories509();
+    instance = new InterserverApiClient.LicensesOrderServiceCategories509();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('LicensesOrderServiceCategories509', function() {
     it('should create an instance of LicensesOrderServiceCategories509', function() {
       // uncomment below and update the code to test LicensesOrderServiceCategories509
-      //var instance = new InterServerManagementApi.LicensesOrderServiceCategories509();
-      //expect(instance).to.be.a(InterServerManagementApi.LicensesOrderServiceCategories509);
+      //var instance = new InterserverApiClient.LicensesOrderServiceCategories509();
+      //expect(instance).to.be.a(InterserverApiClient.LicensesOrderServiceCategories509);
     });
 
     it('should have the property category_id (base name: "category_id")', function() {
       // uncomment below and update the code to test the property category_id
-      //var instance = new InterServerManagementApi.LicensesOrderServiceCategories509();
+      //var instance = new InterserverApiClient.LicensesOrderServiceCategories509();
       //expect(instance).to.be();
     });
 
     it('should have the property category_name (base name: "category_name")', function() {
       // uncomment below and update the code to test the property category_name
-      //var instance = new InterServerManagementApi.LicensesOrderServiceCategories509();
+      //var instance = new InterserverApiClient.LicensesOrderServiceCategories509();
       //expect(instance).to.be();
     });
 
     it('should have the property category_tag (base name: "category_tag")', function() {
       // uncomment below and update the code to test the property category_tag
-      //var instance = new InterServerManagementApi.LicensesOrderServiceCategories509();
+      //var instance = new InterserverApiClient.LicensesOrderServiceCategories509();
       //expect(instance).to.be();
     });
 
     it('should have the property category_module (base name: "category_module")', function() {
       // uncomment below and update the code to test the property category_module
-      //var instance = new InterServerManagementApi.LicensesOrderServiceCategories509();
+      //var instance = new InterserverApiClient.LicensesOrderServiceCategories509();
       //expect(instance).to.be();
     });
 

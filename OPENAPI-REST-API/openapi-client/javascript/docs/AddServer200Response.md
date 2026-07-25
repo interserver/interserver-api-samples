@@ -1,4 +1,4 @@
-# InterServerManagementApi.AddServer200Response
+# InterserverApiClient.AddServer200Response
 
 ## Properties
 

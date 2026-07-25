@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.create_geo_rule400_response import CreateGeoRule400Response
+from interserver_api_client.models.create_geo_rule400_response import CreateGeoRule400Response
 
 # TODO update the JSON string below
 json = "{}"

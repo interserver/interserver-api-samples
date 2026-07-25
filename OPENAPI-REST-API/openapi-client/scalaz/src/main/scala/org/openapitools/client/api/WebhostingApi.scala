@@ -37,6 +37,8 @@ import org.openapitools.client.api.WebhostingCancel200Response
 import org.openapitools.client.api.Website
 import org.openapitools.client.api.WebsiteBackups
 import org.openapitools.client.api.WebsiteLoginResponse
+import org.openapitools.client.api.WebsiteOrderPostRequest
+import org.openapitools.client.api.WebsiteOrderPutRequest
 import org.openapitools.client.api.WebsiteRow
 import org.openapitools.client.api.WebsitesOrder
 
@@ -46,7 +48,7 @@ object WebhostingApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addWebsite(host: String): Task[ServiceOrderPostResponse] = {
+  def addWebsite(host: String, WebsiteOrderPostRequest: WebsiteOrderPostRequest): Task[ServiceOrderPostResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
 
     val path = "/websites/order"
@@ -61,7 +63,7 @@ object WebhostingApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(WebsiteOrderPostRequest)
       resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
@@ -319,7 +321,7 @@ object WebhostingApi {
     } yield resp
   }
 
-  def putWebsites(host: String): Task[Unit] = {
+  def putWebsites(host: String, WebsiteOrderPutRequest: WebsiteOrderPutRequest): Task[Unit] = {
     val path = "/websites/order"
 
     val httpMethod = Method.PUT
@@ -332,7 +334,7 @@ object WebhostingApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(WebsiteOrderPutRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -387,7 +389,7 @@ class HttpServiceWebhostingApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addWebsite(): Task[ServiceOrderPostResponse] = {
+  def addWebsite(WebsiteOrderPostRequest: WebsiteOrderPostRequest): Task[ServiceOrderPostResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
 
     val path = "/websites/order"
@@ -402,7 +404,7 @@ class HttpServiceWebhostingApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(WebsiteOrderPostRequest)
       resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
@@ -660,7 +662,7 @@ class HttpServiceWebhostingApi(service: HttpService) {
     } yield resp
   }
 
-  def putWebsites(): Task[Unit] = {
+  def putWebsites(WebsiteOrderPutRequest: WebsiteOrderPutRequest): Task[Unit] = {
     val path = "/websites/order"
 
     val httpMethod = Method.PUT
@@ -673,7 +675,7 @@ class HttpServiceWebhostingApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(WebsiteOrderPutRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp

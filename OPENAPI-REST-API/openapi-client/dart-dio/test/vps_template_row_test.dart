@@ -1,53 +1,53 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsTemplateRow
 void main() {
-  final instance = VpsTemplateRowBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsTemplateRow? instance = /* VpsTemplateRow(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsTemplateRow, () {
-    // String templateId
+    // Optional<String?> templateId
     test('to test the property `templateId`', () async {
       // TODO
     });
 
-    // String templateType
+    // Optional<String?> templateType
     test('to test the property `templateType`', () async {
       // TODO
     });
 
-    // String templateOs
+    // Optional<String?> templateOs
     test('to test the property `templateOs`', () async {
       // TODO
     });
 
-    // String templateVersion
+    // Optional<String?> templateVersion
     test('to test the property `templateVersion`', () async {
       // TODO
     });
 
-    // String templateBits
+    // Optional<String?> templateBits
     test('to test the property `templateBits`', () async {
       // TODO
     });
 
-    // String templateFile
+    // Optional<String?> templateFile
     test('to test the property `templateFile`', () async {
       // TODO
     });
 
-    // String templateAvailable
+    // Optional<String?> templateAvailable
     test('to test the property `templateAvailable`', () async {
       // TODO
     });
 
-    // String templateName
+    // Optional<String?> templateName
     test('to test the property `templateName`', () async {
       // TODO
     });
 
-    // String templateDir
+    // Optional<String?> templateDir
     test('to test the property `templateDir`', () async {
       // TODO
     });

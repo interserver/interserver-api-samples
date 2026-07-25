@@ -40,13 +40,14 @@ import io.swagger.server.models.CreateFirewallRule
 import io.swagger.server.models.CreateGeoFirewallRule
 import io.swagger.server.models.Delete_Firewall_Rule
 import io.swagger.server.models.Delete_Geo_Firewall_Rule
-import io.swagger.server.models.InlineResponse20012
 import io.swagger.server.models.InlineResponse20013
 import io.swagger.server.models.InlineResponse20014
 import io.swagger.server.models.InlineResponse20015
 import io.swagger.server.models.InlineResponse20016
 import io.swagger.server.models.InlineResponse20017
 import io.swagger.server.models.InlineResponse20018
+import io.swagger.server.models.InlineResponse20019
+import io.swagger.server.models.InlineResponse20020
 import io.swagger.server.models.InlineResponse201
 import io.swagger.server.models.InlineResponse2011
 import io.swagger.server.models.InlineResponse2012
@@ -491,6 +492,27 @@ fun Route.ScrubIpsApi() {
     "invoice_id" : 2746273,
     "invoice_description" : "Scrub + Current Ip"
   }
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    put<Paths.putScrubIps> {  _: Paths.putScrubIps ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "serviceType" : 0,
+  "repeatServiceCost" : 5.962133916683182,
+  "serviceCost" : 6.027456183070403,
+  "continue" : true,
+  "originalCost" : 1.4658129805029452,
+  "errors" : [ "errors", "errors" ]
 }"""
             
             when(exampleContentType) {

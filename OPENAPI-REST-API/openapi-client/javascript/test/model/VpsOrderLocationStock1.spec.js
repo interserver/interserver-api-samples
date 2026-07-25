@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsOrderLocationStock1();
+    instance = new InterserverApiClient.VpsOrderLocationStock1();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('VpsOrderLocationStock1', function() {
     it('should create an instance of VpsOrderLocationStock1', function() {
       // uncomment below and update the code to test VpsOrderLocationStock1
-      //var instance = new InterServerManagementApi.VpsOrderLocationStock1();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsOrderLocationStock1);
+      //var instance = new InterserverApiClient.VpsOrderLocationStock1();
+      //expect(instance).to.be.a(InterserverApiClient.VpsOrderLocationStock1);
     });
 
     it('should have the property kvm (base name: "kvm")', function() {
       // uncomment below and update the code to test the property kvm
-      //var instance = new InterServerManagementApi.VpsOrderLocationStock1();
+      //var instance = new InterserverApiClient.VpsOrderLocationStock1();
       //expect(instance).to.be();
     });
 
     it('should have the property kvmstorage (base name: "kvmstorage")', function() {
       // uncomment below and update the code to test the property kvmstorage
-      //var instance = new InterServerManagementApi.VpsOrderLocationStock1();
+      //var instance = new InterserverApiClient.VpsOrderLocationStock1();
       //expect(instance).to.be();
     });
 
     it('should have the property hyperv (base name: "hyperv")', function() {
       // uncomment below and update the code to test the property hyperv
-      //var instance = new InterServerManagementApi.VpsOrderLocationStock1();
+      //var instance = new InterserverApiClient.VpsOrderLocationStock1();
       //expect(instance).to.be();
     });
 

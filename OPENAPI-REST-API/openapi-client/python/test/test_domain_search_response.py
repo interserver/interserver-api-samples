@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_search_response import DomainSearchResponse
+from interserver_api_client.models.domain_search_response import DomainSearchResponse
 
 class TestDomainSearchResponse(unittest.TestCase):
     """DomainSearchResponse unit test stubs"""

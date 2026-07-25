@@ -11,9 +11,7 @@ package myadmin-client-go-server
 
 type InlineResponse20018 struct {
 
-	PackageCosts *InlineResponse20018PackageCosts `json:"packageCosts,omitempty"`
+	Success bool `json:"success,omitempty"`
 
-	ServiceTypes []InlineResponse20018ServiceTypes `json:"serviceTypes,omitempty"`
-
-	Ips []InlineResponse20018Ips `json:"ips,omitempty"`
+	Text string `json:"text,omitempty"`
 }

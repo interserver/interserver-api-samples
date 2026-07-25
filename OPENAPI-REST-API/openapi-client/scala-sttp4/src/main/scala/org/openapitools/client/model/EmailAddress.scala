@@ -20,4 +20,3 @@ case class EmailAddress(
   /* an email address */
   email: Option[String] = None
 )
-

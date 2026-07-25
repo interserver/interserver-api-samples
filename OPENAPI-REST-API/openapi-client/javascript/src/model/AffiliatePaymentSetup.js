@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AffiliatePaymentSetup model module.
  * @module model/AffiliatePaymentSetup
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AffiliatePaymentSetup {
     /**

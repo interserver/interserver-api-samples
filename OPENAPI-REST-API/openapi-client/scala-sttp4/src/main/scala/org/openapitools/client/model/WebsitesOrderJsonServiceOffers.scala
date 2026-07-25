@@ -19,4 +19,3 @@ case class WebsitesOrderJsonServiceOffers(
   /* Array of service offers */
   `1026`: Seq[WebsitesOrderJsonServiceOffersItem]
 )
-

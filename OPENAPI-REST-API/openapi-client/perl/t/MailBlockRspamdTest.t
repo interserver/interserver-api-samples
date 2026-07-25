@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::MailBlockRspamd');
+use_ok('InterServerAPI::Object::MailBlockRspamd');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::MailBlockRspamd->new();
+#my $instance = InterServerAPI::Object::MailBlockRspamd->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::MailBlockRspamd');
+#isa_ok($instance, 'InterServerAPI::Object::MailBlockRspamd');
 
 
 done_testing();

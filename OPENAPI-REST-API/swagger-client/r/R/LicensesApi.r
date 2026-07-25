@@ -17,37 +17,34 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_license Place License Order
+#' add_license Order a new software license and create the recurring invoice
 #'
 #'
-#' get_license_info Get License
+#' get_license_info Get full details for one license including status, IP, and links
 #'
 #'
-#' get_license_invoices Get License Invoices
+#' get_license_invoices List all billing invoices tied to one software license service
 #'
 #'
-#' get_license_list List Licenses
+#' get_license_list List all software licenses owned by the authenticated customer
 #'
 #'
-#' get_license_order_cat_tag_info Get License Order Information for Category
+#' get_licenses_welcome_email Resend the license welcome email with the key and activation steps
 #'
 #'
-#' get_licenses_welcome_email Resend License Welcome Email
+#' get_new_license Get available license types, packages, and pricing for ordering
 #'
 #'
-#' get_new_license Get License Order Information
+#' licenses_cancel Cancel a license service and stop future billing (irreversible)
 #'
 #'
-#' licenses_cancel Cancel License
+#' post_license_change_ip Rebind a license to a new IP address (may incur a vendor fee)
 #'
 #'
-#' post_license_change_ip Change License IP
+#' put_licenses Validate a software license order before placing it (dry run preview)
 #'
 #'
-#' put_licenses Validate License Order
-#'
-#'
-#' update_license_info Update License
+#' update_license_info Update mutable fields on a license service (e.g. assigned IP)
 #'
 #' }
 #'
@@ -65,10 +62,16 @@ LicensesApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    add_license = function(...){
+    add_license = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/licenses/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -169,32 +172,6 @@ LicensesApi <- R6::R6Class(
       }
 
     }
-    get_license_order_cat_tag_info = function(cat_tag, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      urlPath <- "/licenses/order/{catTag}"
-      if (!missing(`cat_tag`)) {
-        urlPath <- gsub(paste0("\\{", "catTag", "\\}"), `cat_tag`, urlPath)
-      }
-
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "GET",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        # void response, no need to return anything
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
     get_licenses_welcome_email = function(id, ...){
       args <- list(...)
       queryParams <- list()
@@ -265,7 +242,7 @@ LicensesApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse2004$new()
+        returnObject <- InlineResponse2005$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -313,10 +290,16 @@ LicensesApi <- R6::R6Class(
       }
 
     }
-    put_licenses = function(...){
+    put_licenses = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/licenses/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),

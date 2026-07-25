@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BackupBillingDetails
+# InterServerAPI::Object::BackupBillingDetails
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BackupBillingDetails;
+use InterServerAPI::Object::BackupBillingDetails;
 ```
 
 ## Properties

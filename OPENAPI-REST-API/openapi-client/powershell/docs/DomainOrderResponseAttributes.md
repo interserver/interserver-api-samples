@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainOrderResponseAttributes = Initialize-PSOpenAPIToolsDomainOrderResponseAttributes  -Id null `
+$DomainOrderResponseAttributes = Initialize-InterserverApiDomainOrderResponseAttributes  -Id null `
  -AdminEmail null
 ```
 

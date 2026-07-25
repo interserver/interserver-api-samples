@@ -1,118 +1,118 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsOrderPutResponse
 void main() {
-  final instance = VpsOrderPutResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsOrderPutResponse? instance = /* VpsOrderPutResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsOrderPutResponse, () {
-    // bool continue_
+    // Optional<bool?> continue_
     test('to test the property `continue_`', () async {
       // TODO
     });
 
-    // BuiltList<JsonObject> errors
+    // Optional<List<Object>?> errors
     test('to test the property `errors`', () async {
       // TODO
     });
 
-    // int couponCode
+    // Optional<int?> couponCode
     test('to test the property `couponCode`', () async {
       // TODO
     });
 
-    // int serviceCost
+    // Optional<int?> serviceCost
     test('to test the property `serviceCost`', () async {
       // TODO
     });
 
-    // int sliceCost
+    // Optional<int?> sliceCost
     test('to test the property `sliceCost`', () async {
       // TODO
     });
 
-    // int serviceType
+    // Optional<int?> serviceType
     test('to test the property `serviceType`', () async {
       // TODO
     });
 
-    // int repeatSliceCost
+    // Optional<int?> repeatSliceCost
     test('to test the property `repeatSliceCost`', () async {
       // TODO
     });
 
-    // int originalSliceCost
+    // Optional<int?> originalSliceCost
     test('to test the property `originalSliceCost`', () async {
       // TODO
     });
 
-    // int originalCost
+    // Optional<int?> originalCost
     test('to test the property `originalCost`', () async {
       // TODO
     });
 
-    // int repeatServiceCost
+    // Optional<int?> repeatServiceCost
     test('to test the property `repeatServiceCost`', () async {
       // TODO
     });
 
-    // int monthlyServiceCost
+    // Optional<int?> monthlyServiceCost
     test('to test the property `monthlyServiceCost`', () async {
       // TODO
     });
 
-    // String custid
+    // Optional<String?> custid
     test('to test the property `custid`', () async {
       // TODO
     });
 
-    // String os
+    // Optional<String?> os
     test('to test the property `os`', () async {
       // TODO
     });
 
-    // String slices
+    // Optional<String?> slices
     test('to test the property `slices`', () async {
       // TODO
     });
 
-    // String platform
+    // Optional<String?> platform
     test('to test the property `platform`', () async {
       // TODO
     });
 
-    // String controlpanel
+    // Optional<String?> controlpanel
     test('to test the property `controlpanel`', () async {
       // TODO
     });
 
-    // int period
+    // Optional<int?> period
     test('to test the property `period`', () async {
       // TODO
     });
 
-    // int location
+    // Optional<int?> location
     test('to test the property `location`', () async {
       // TODO
     });
 
-    // String version
+    // Optional<String?> version
     test('to test the property `version`', () async {
       // TODO
     });
 
-    // String hostname
+    // Optional<String?> hostname
     test('to test the property `hostname`', () async {
       // TODO
     });
 
-    // String coupon
+    // Optional<String?> coupon
     test('to test the property `coupon`', () async {
       // TODO
     });
 
-    // String rootpass
+    // Optional<String?> rootpass
     test('to test the property `rootpass`', () async {
       // TODO
     });

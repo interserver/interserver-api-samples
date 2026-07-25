@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { Quickserver } from './api';
+import { Quickserver } from '@interserver/myadmin-client';
 
 const instance: Quickserver = {
     serviceInfo,

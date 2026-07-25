@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::RestoreRequest
+# InterServerAPI::Object::RestoreRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::RestoreRequest;
+use InterServerAPI::Object::RestoreRequest;
 ```
 
 ## Properties

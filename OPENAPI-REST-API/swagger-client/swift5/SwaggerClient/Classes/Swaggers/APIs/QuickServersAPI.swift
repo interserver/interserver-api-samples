@@ -11,19 +11,20 @@ import Alamofire
 
 open class QuickServersAPI {
     /**
-     Place QuickServer Order
+     Place a QuickServer order, generating a real invoice and queuing provisioning
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addQs(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
-        addQsWithRequestBuilder().execute { (response, error) -> Void in
+    open class func addQs(body: QsOrderRequest, completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
+        addQsWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Place QuickServer Order
+     Place a QuickServer order, generating a real invoice and queuing provisioning
      - POST /qs/order
 
      - API Key:
@@ -45,19 +46,20 @@ open class QuickServersAPI {
   "serviceId" : 12345,
   "invoice_description" : "New Service Order"
 }}]
+     - parameter body: (body)  
 
      - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addQsWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
+    open class func addQsWithRequestBuilder(body: QsOrderRequest) -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/qs/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
      * enum for parameter all
@@ -68,7 +70,7 @@ open class QuickServersAPI {
     }
 
     /**
-     Delete QuickServer Backup
+     Permanently delete a QuickServer backup file from object storage
 
      - parameter _id: (path) QuickServer ID number 
      - parameter file: (query) The backup filename to delete. 
@@ -83,7 +85,7 @@ open class QuickServersAPI {
 
 
     /**
-     Delete QuickServer Backup
+     Permanently delete a QuickServer backup file from object storage
      - DELETE /qs/{id}/backups
 
      - API Key:
@@ -124,7 +126,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Block QuickServer SMTP
+     Block outbound SMTP traffic on a QuickServer to halt mail abuse
 
      - parameter _id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -137,7 +139,7 @@ open class QuickServersAPI {
 
 
     /**
-     Block QuickServer SMTP
+     Block outbound SMTP traffic on a QuickServer to halt mail abuse
      - GET /qs/{id}/block_smtp
 
      - API Key:
@@ -172,7 +174,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Disable CD Drive
+     Disable the virtual CD/DVD drive device on a QuickServer
 
      - parameter _id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -185,7 +187,7 @@ open class QuickServersAPI {
 
 
     /**
-     Disable CD Drive
+     Disable the virtual CD/DVD drive device on a QuickServer
      - GET /qs/{id}/disable_cd
 
      - API Key:
@@ -220,7 +222,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Disable Quotas
+     Disable disk-quota enforcement at OS level on a QuickServer
 
      - parameter _id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -233,7 +235,7 @@ open class QuickServersAPI {
 
 
     /**
-     Disable Quotas
+     Disable disk-quota enforcement at OS level on a QuickServer
      - GET /qs/{id}/disable_quota
 
      - API Key:
@@ -268,7 +270,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Eject CD Drive
+     Eject the currently mounted ISO from a QuickServer's virtual CD drive
 
      - parameter _id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -281,7 +283,7 @@ open class QuickServersAPI {
 
 
     /**
-     Eject CD Drive
+     Eject the currently mounted ISO from a QuickServer's virtual CD drive
      - GET /qs/{id}/eject_cd
 
      - API Key:
@@ -316,7 +318,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Enable Quotas
+     Enable disk-quota enforcement at OS level on a QuickServer
 
      - parameter _id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -329,7 +331,7 @@ open class QuickServersAPI {
 
 
     /**
-     Enable Quotas
+     Enable disk-quota enforcement at OS level on a QuickServer
      - GET /qs/{id}/enable_quota
 
      - API Key:
@@ -364,7 +366,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Restart QuickServer
+     Reboot a QuickServer with a graceful OS-level restart
 
      - parameter _id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -377,7 +379,7 @@ open class QuickServersAPI {
 
 
     /**
-     Restart QuickServer
+     Reboot a QuickServer with a graceful OS-level restart
      - GET /qs/{id}/restart
 
      - API Key:
@@ -412,7 +414,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Start QuickServer
+     Power on a QuickServer that is currently stopped or pending boot
 
      - parameter _id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -425,7 +427,7 @@ open class QuickServersAPI {
 
 
     /**
-     Start QuickServer
+     Power on a QuickServer that is currently stopped or pending boot
      - GET /qs/{id}/start
 
      - API Key:
@@ -460,7 +462,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Stop QuickServer
+     Power off a QuickServer with a graceful shutdown command
 
      - parameter _id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -473,7 +475,7 @@ open class QuickServersAPI {
 
 
     /**
-     Stop QuickServer
+     Power off a QuickServer with a graceful shutdown command
      - GET /qs/{id}/stop
 
      - API Key:
@@ -516,14 +518,14 @@ open class QuickServersAPI {
     }
 
     /**
-     Download QuickServer Backup
+     Generate a 24-hour pre-signed download URL for a QuickServer backup
 
      - parameter body: (body)  
      - parameter _id: (path) QuickServer ID number 
      - parameter all: (query) Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given QuickServer. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func downloadQsBackup(body: IdBackupsBody, _id: Int, all: All_downloadQsBackup? = nil, completion: @escaping ((_ data: InlineResponse20011?,_ error: Error?) -> Void)) {
+    open class func downloadQsBackup(body: IdBackupsBody, _id: Int, all: All_downloadQsBackup? = nil, completion: @escaping ((_ data: InlineResponse20012?,_ error: Error?) -> Void)) {
         downloadQsBackupWithRequestBuilder(body: body, _id: _id, all: all).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -531,7 +533,7 @@ open class QuickServersAPI {
 
 
     /**
-     Download QuickServer Backup
+     Generate a 24-hour pre-signed download URL for a QuickServer backup
      - PATCH /qs/{id}/backups
 
      - API Key:
@@ -551,9 +553,9 @@ open class QuickServersAPI {
      - parameter _id: (path) QuickServer ID number 
      - parameter all: (query) Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given QuickServer. (optional)
 
-     - returns: RequestBuilder<InlineResponse20011> 
+     - returns: RequestBuilder<InlineResponse20012> 
      */
-    open class func downloadQsBackupWithRequestBuilder(body: IdBackupsBody, _id: Int, all: All_downloadQsBackup? = nil) -> RequestBuilder<InlineResponse20011> {
+    open class func downloadQsBackupWithRequestBuilder(body: IdBackupsBody, _id: Int, all: All_downloadQsBackup? = nil) -> RequestBuilder<InlineResponse20012> {
         var path = "/qs/{id}/backups"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -566,7 +568,7 @@ open class QuickServersAPI {
         ])
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20011>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20012>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -579,14 +581,14 @@ open class QuickServersAPI {
     }
 
     /**
-     Download QuickServer Backup
+     Generate a 24-hour pre-signed download URL for a QuickServer backup
 
      - parameter file: (form)  
      - parameter _id: (path) QuickServer ID number 
      - parameter all: (query) Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given QuickServer. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func downloadQsBackup(file: String, _id: Int, all: All_downloadQsBackup? = nil, completion: @escaping ((_ data: InlineResponse20011?,_ error: Error?) -> Void)) {
+    open class func downloadQsBackup(file: String, _id: Int, all: All_downloadQsBackup? = nil, completion: @escaping ((_ data: InlineResponse20012?,_ error: Error?) -> Void)) {
         downloadQsBackupWithRequestBuilder(file: file, _id: _id, all: all).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -594,7 +596,7 @@ open class QuickServersAPI {
 
 
     /**
-     Download QuickServer Backup
+     Generate a 24-hour pre-signed download URL for a QuickServer backup
      - PATCH /qs/{id}/backups
 
      - API Key:
@@ -614,9 +616,9 @@ open class QuickServersAPI {
      - parameter _id: (path) QuickServer ID number 
      - parameter all: (query) Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given QuickServer. (optional)
 
-     - returns: RequestBuilder<InlineResponse20011> 
+     - returns: RequestBuilder<InlineResponse20012> 
      */
-    open class func downloadQsBackupWithRequestBuilder(file: String, _id: Int, all: All_downloadQsBackup? = nil) -> RequestBuilder<InlineResponse20011> {
+    open class func downloadQsBackupWithRequestBuilder(file: String, _id: Int, all: All_downloadQsBackup? = nil) -> RequestBuilder<InlineResponse20012> {
         var path = "/qs/{id}/backups"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -629,12 +631,12 @@ open class QuickServersAPI {
         ])
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20011>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20012>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Get QuickServer Ordering Information
+     Get QuickServer order form metadata and available plans/templates
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -646,7 +648,7 @@ open class QuickServersAPI {
 
 
     /**
-     Get QuickServer Ordering Information
+     Get QuickServer order form metadata and available plans/templates
      - GET /qs/order
 
      - API Key:
@@ -698,6 +700,54 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
+     Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+
+     - parameter _id: (path) QuickServer ID number 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getQsBackup(_id: Int, completion: @escaping ((_ data: QueueResponse?,_ error: Error?) -> Void)) {
+        getQsBackupWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+     - GET /qs/{id}/backup
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "text" : "Action has been sent to the server. Please allow up to 2 minutes for action to be completed.",
+  "queueId" : 14670065
+}}]
+     - parameter _id: (path) QuickServer ID number 
+
+     - returns: RequestBuilder<QueueResponse> 
+     */
+    open class func getQsBackupWithRequestBuilder(_id: Int) -> RequestBuilder<QueueResponse> {
+        var path = "/qs/{id}/backup"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<QueueResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
      * enum for parameter all
      */
     public enum All_getQsBackups: String { 
@@ -706,7 +756,7 @@ open class QuickServersAPI {
     }
 
     /**
-     List QuickServer Backups
+     List available QuickServer backups across Swift, MinIO, and ZFS storage
 
      - parameter _id: (path) QuickServer ID number 
      - parameter all: (query) Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given QuickServer. (optional)
@@ -720,7 +770,7 @@ open class QuickServersAPI {
 
 
     /**
-     List QuickServer Backups
+     List available QuickServer backups across Swift, MinIO, and ZFS storage
      - GET /qs/{id}/backups
 
      - API Key:
@@ -774,7 +824,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get QuickServer Hostname
+     Get current QuickServer hostname plus change rules and platform support
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -791,7 +841,7 @@ open class QuickServersAPI {
 
 
     /**
-     Get QuickServer Hostname
+     Get current QuickServer hostname plus change rules and platform support
      - GET /qs/{id}/change_hostname
 
      - API Key:
@@ -822,7 +872,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Change Root Password Info
+     Get metadata for QuickServer root/OS password change requirements
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -839,7 +889,7 @@ open class QuickServersAPI {
 
 
     /**
-     Get Change Root Password Info
+     Get metadata for QuickServer root/OS password change requirements
      - GET /qs/{id}/change_root_password
 
      - API Key:
@@ -870,7 +920,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Timezone Info
+     List timezones the QuickServer can be set to via change_timezone
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -883,7 +933,7 @@ open class QuickServersAPI {
 
 
     /**
-     Get Timezone Info
+     List timezones the QuickServer can be set to via change_timezone
      - GET /qs/{id}/change_timezone
 
      - API Key:
@@ -915,7 +965,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Webuzo Change Pass Info
+     Get metadata for changing the Webuzo control panel admin password
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -932,7 +982,7 @@ open class QuickServersAPI {
 
 
     /**
-     Webuzo Change Pass Info
+     Get metadata for changing the Webuzo control panel admin password
      - GET /qs/{id}/change_webuzo_password
 
      - API Key:
@@ -963,7 +1013,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get QuickServer Order
+     Get full details for one QuickServer including credentials and links
 
      - parameter _id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -976,7 +1026,7 @@ open class QuickServersAPI {
 
 
     /**
-     Get QuickServer Order
+     Get full details for one QuickServer including credentials and links
      - GET /qs/{id}
 
      - API Key:
@@ -1140,7 +1190,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Insert CD Information
+     List ISO images available to mount on a QuickServer's virtual CD
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1157,7 +1207,7 @@ open class QuickServersAPI {
 
 
     /**
-     Insert CD Information
+     List ISO images available to mount on a QuickServer's virtual CD
      - GET /qs/{id}/insert_cd
 
      - API Key:
@@ -1188,7 +1238,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get QuickServer Invoices
+     List billing invoices charged for one QuickServer service
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1201,7 +1251,7 @@ open class QuickServersAPI {
 
 
     /**
-     Get QuickServer Invoices
+     List billing invoices charged for one QuickServer service
      - GET /qs/{id}/invoices
 
      - API Key:
@@ -1271,7 +1321,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List QuickServers
+     List QuickServer rapid-deploy dedicated servers on the account
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1283,7 +1333,7 @@ open class QuickServersAPI {
 
 
     /**
-     List QuickServers
+     List QuickServer rapid-deploy dedicated servers on the account
      - GET /qs
 
      - API Key:
@@ -1325,7 +1375,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     QuickServer Reinstall OS Options
+     List OS templates available for a QuickServer reinstall
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1338,7 +1388,7 @@ open class QuickServersAPI {
 
 
     /**
-     QuickServer Reinstall OS Options
+     List OS templates available for a QuickServer reinstall
      - GET /qs/{id}/reinstall_os
 
      - API Key:
@@ -1392,7 +1442,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Reset QuickServer Password Info
+     Get options for QuickServer randomized root password reset
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1409,7 +1459,7 @@ open class QuickServersAPI {
 
 
     /**
-     Reset QuickServer Password Info
+     Get options for QuickServer randomized root password reset
      - GET /qs/{id}/reset_password
 
      - API Key:
@@ -1440,7 +1490,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Reverse DNS Info
+     Get reverse DNS (PTR) records for all of a QuickServer's IPs
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1453,7 +1503,7 @@ open class QuickServersAPI {
 
 
     /**
-     Reverse DNS Info
+     Get reverse DNS (PTR) records for all of a QuickServer's IPs
      - GET /qs/{id}/reverse_dns
 
      - API Key:
@@ -1490,7 +1540,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     VNC Setup Info
+     Get current VNC console connection details for a QuickServer
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1507,7 +1557,7 @@ open class QuickServersAPI {
 
 
     /**
-     VNC Setup Info
+     Get current VNC console connection details for a QuickServer
      - GET /qs/{id}/setup_vnc
 
      - API Key:
@@ -1538,7 +1588,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Traffic Usage
+     Get bandwidth usage for the QuickServer's current billing period
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1555,7 +1605,7 @@ open class QuickServersAPI {
 
 
     /**
-     Get Traffic Usage
+     Get bandwidth usage for the QuickServer's current billing period
      - GET /qs/{id}/traffic_usage
 
      - API Key:
@@ -1586,7 +1636,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get View Desktop Info
+     Get the full QuickServer dashboard view payload (rich format)
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1603,7 +1653,7 @@ open class QuickServersAPI {
 
 
     /**
-     Get View Desktop Info
+     Get the full QuickServer dashboard view payload (rich format)
      - GET /qs/{id}/view_desktop
 
      - API Key:
@@ -1634,7 +1684,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Resend QuickServer Welcome Email
+     Resend the QuickServer welcome email with login credentials
 
      - parameter _id: (path) Quickserver ID 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1647,7 +1697,7 @@ open class QuickServersAPI {
 
 
     /**
-     Resend QuickServer Welcome Email
+     Resend the QuickServer welcome email with login credentials
      - GET /qs/{id}/welcome_email
 
      - API Key:
@@ -1681,55 +1731,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Create QuickServer Backup
-
-     - parameter _id: (path) QuickServer ID number 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func postQsBackup(_id: Int, completion: @escaping ((_ data: QueueResponse?,_ error: Error?) -> Void)) {
-        postQsBackupWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Create QuickServer Backup
-     - POST /qs/{id}/backup
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - examples: [{contentType=application/json, example={
-  "text" : "Action has been sent to the server. Please allow up to 2 minutes for action to be completed.",
-  "queueId" : 14670065
-}}]
-     - parameter _id: (path) QuickServer ID number 
-
-     - returns: RequestBuilder<QueueResponse> 
-     */
-    open class func postQsBackupWithRequestBuilder(_id: Int) -> RequestBuilder<QueueResponse> {
-        var path = "/qs/{id}/backup"
-        let _idPreEscape = "\(_id)"
-        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<QueueResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-    /**
-     Update QuickServer Hostname
+     Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1742,7 +1744,7 @@ open class QuickServersAPI {
 
 
     /**
-     Update QuickServer Hostname
+     Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
      - POST /qs/{id}/change_hostname
 
      - API Key:
@@ -1777,7 +1779,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Change Root Password
+     Change QuickServer root/administrator password to a chosen value
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1790,7 +1792,7 @@ open class QuickServersAPI {
 
 
     /**
-     Change Root Password
+     Change QuickServer root/administrator password to a chosen value
      - POST /qs/{id}/change_root_password
 
      - API Key:
@@ -1825,7 +1827,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Change QuickServer Timezone
+     Change the system timezone on a QuickServer to a catalog entry
 
      - parameter timezone: (form)  
      - parameter _id: (path) QuickServer ID number 
@@ -1839,7 +1841,7 @@ open class QuickServersAPI {
 
 
     /**
-     Change QuickServer Timezone
+     Change the system timezone on a QuickServer to a catalog entry
      - POST /qs/{id}/change_timezone
 
      - API Key:
@@ -1875,7 +1877,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change QuickServer Timezone
+     Change the system timezone on a QuickServer to a catalog entry
 
      - parameter body: (body)  
      - parameter _id: (path) QuickServer ID number 
@@ -1889,7 +1891,7 @@ open class QuickServersAPI {
 
 
     /**
-     Change QuickServer Timezone
+     Change the system timezone on a QuickServer to a catalog entry
      - POST /qs/{id}/change_timezone
 
      - API Key:
@@ -1925,7 +1927,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change Webuzo Password
+     Change Webuzo control panel admin password live (synchronous, not queued)
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1938,7 +1940,7 @@ open class QuickServersAPI {
 
 
     /**
-     Change Webuzo Password
+     Change Webuzo control panel admin password live (synchronous, not queued)
      - POST /qs/{id}/change_webuzo_password
 
      - API Key:
@@ -1973,7 +1975,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Insert CD in QuickServer
+     Mount an ISO image as the QuickServer's virtual CD via URL
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1986,7 +1988,7 @@ open class QuickServersAPI {
 
 
     /**
-     Insert CD in QuickServer
+     Mount an ISO image as the QuickServer's virtual CD via URL
      - POST /qs/{id}/insert_cd
 
      - API Key:
@@ -2021,7 +2023,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Reinstall QuickServer OS
+     Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -2034,7 +2036,7 @@ open class QuickServersAPI {
 
 
     /**
-     Reinstall QuickServer OS
+     Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
      - POST /qs/{id}/reinstall_os
 
      - API Key:
@@ -2069,7 +2071,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Reset QuickServer Password
+     Reset QuickServer root password to a server-generated random value
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -2082,7 +2084,7 @@ open class QuickServersAPI {
 
 
     /**
-     Reset QuickServer Password
+     Reset QuickServer root password to a server-generated random value
      - POST /qs/{id}/reset_password
 
      - API Key:
@@ -2117,7 +2119,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update Reverse DNS
+     Update reverse DNS (PTR) records for a QuickServer's IPs
 
      - parameter body: (body)  
      - parameter _id: (path) QuickServer ID number 
@@ -2131,7 +2133,7 @@ open class QuickServersAPI {
 
 
     /**
-     Update Reverse DNS
+     Update reverse DNS (PTR) records for a QuickServer's IPs
      - POST /qs/{id}/reverse_dns
 
      - API Key:
@@ -2166,7 +2168,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Reverse DNS
+     Update reverse DNS (PTR) records for a QuickServer's IPs
 
      - parameter ips: (form)  
      - parameter _id: (path) QuickServer ID number 
@@ -2180,7 +2182,7 @@ open class QuickServersAPI {
 
 
     /**
-     Update Reverse DNS
+     Update reverse DNS (PTR) records for a QuickServer's IPs
      - POST /qs/{id}/reverse_dns
 
      - API Key:
@@ -2215,7 +2217,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Setup VNC
+     Configure the source IP allowed to reach a QuickServer's VNC console
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -2228,7 +2230,7 @@ open class QuickServersAPI {
 
 
     /**
-     Setup VNC
+     Configure the source IP allowed to reach a QuickServer's VNC console
      - POST /qs/{id}/setup_vnc
 
      - API Key:
@@ -2263,7 +2265,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Search Traffic Usage
+     Query QuickServer bandwidth usage via POST (filtered variant)
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -2280,7 +2282,7 @@ open class QuickServersAPI {
 
 
     /**
-     Search Traffic Usage
+     Query QuickServer bandwidth usage via POST (filtered variant)
      - POST /qs/{id}/traffic_usage
 
      - API Key:
@@ -2311,7 +2313,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update View Desktop
+     Submit changes and re-fetch the QuickServer dashboard view payload
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -2328,7 +2330,7 @@ open class QuickServersAPI {
 
 
     /**
-     Update View Desktop
+     Submit changes and re-fetch the QuickServer dashboard view payload
      - POST /qs/{id}/view_desktop
 
      - API Key:
@@ -2359,7 +2361,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Restore QuickServer from Backup
+     Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
 
      - parameter body: (body) QuickServer Restore request 
      - parameter _id: (path) QuickServer ID number 
@@ -2373,7 +2375,7 @@ open class QuickServersAPI {
 
 
     /**
-     Restore QuickServer from Backup
+     Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
      - POST /qs/{id}/restore
 
      - API Key:
@@ -2409,7 +2411,7 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Restore QuickServer from Backup
+     Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
 
      - parameter backup: (form)  
      - parameter password: (form)  
@@ -2424,7 +2426,7 @@ open class QuickServersAPI {
 
 
     /**
-     Restore QuickServer from Backup
+     Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
      - POST /qs/{id}/restore
 
      - API Key:
@@ -2461,12 +2463,13 @@ open class QuickServersAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Validate QuickServer Order
+     Validate a QuickServer order without charging or provisioning
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func putQs(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        putQsWithRequestBuilder().execute { (response, error) -> Void in
+    open class func putQs(body: QsOrderRequest, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        putQsWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -2477,7 +2480,7 @@ open class QuickServersAPI {
 
 
     /**
-     Validate QuickServer Order
+     Validate a QuickServer order without charging or provisioning
      - PUT /qs/order
 
      - API Key:
@@ -2489,27 +2492,28 @@ open class QuickServersAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - parameter body: (body)  
 
      - returns: RequestBuilder<Void> 
      */
-    open class func putQsWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func putQsWithRequestBuilder(body: QsOrderRequest) -> RequestBuilder<Void> {
         let path = "/qs/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Cancel QuickServer Order
+     Cancel a QuickServer service at the end of the current billing cycle
 
      - parameter _id: (path) QuickServer ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func quickserversCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20010?,_ error: Error?) -> Void)) {
+    open class func quickserversCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20011?,_ error: Error?) -> Void)) {
         quickserversCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -2517,7 +2521,7 @@ open class QuickServersAPI {
 
 
     /**
-     Cancel QuickServer Order
+     Cancel a QuickServer service at the end of the current billing cycle
      - DELETE /qs/{id}
 
      - API Key:
@@ -2535,9 +2539,9 @@ open class QuickServersAPI {
 }}]
      - parameter _id: (path) QuickServer ID number 
 
-     - returns: RequestBuilder<InlineResponse20010> 
+     - returns: RequestBuilder<InlineResponse20011> 
      */
-    open class func quickserversCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20010> {
+    open class func quickserversCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20011> {
         var path = "/qs/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -2547,12 +2551,12 @@ open class QuickServersAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20010>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20011>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update QuickServer Order
+     Update QuickServer order metadata or stored settings without OS impact
 
      - parameter _id: (path) QuickServer ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -2565,7 +2569,7 @@ open class QuickServersAPI {
 
 
     /**
-     Update QuickServer Order
+     Update QuickServer order metadata or stored settings without OS impact
      - POST /qs/{id}
 
      - API Key:

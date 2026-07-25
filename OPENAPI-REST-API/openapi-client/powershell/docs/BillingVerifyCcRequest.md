@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BillingVerifyCcRequest = Initialize-PSOpenAPIToolsBillingVerifyCcRequest  -Idx null `
+$BillingVerifyCcRequest = Initialize-InterserverApiBillingVerifyCcRequest  -Idx null `
  -CcCcv2 null `
  -CcAmount1 null `
  -CcAmount2 null `

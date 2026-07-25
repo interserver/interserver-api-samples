@@ -1,4 +1,4 @@
-# openapi::CreateRule500Response
+# interserverapi::CreateRule500Response
 
 
 ## Properties

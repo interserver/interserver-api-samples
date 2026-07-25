@@ -17,7 +17,7 @@ import DomainProvProcessPendingAttributes from './DomainProvProcessPendingAttrib
 /**
  * The DomainProvProcessPending model module.
  * @module model/DomainProvProcessPending
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainProvProcessPending {
     /**

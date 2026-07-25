@@ -17,11 +17,15 @@ IPMI Power command for servers
 
 | Name | Value |
 |---- | -----|
-| CYCLE | &quot;cycle&quot; |
-| RESET | &quot;reset&quot; |
-| ON | &quot;on&quot; |
-| OFF | &quot;off&quot; |
-| SOFT | &quot;soft&quot; |
+| cycle | &quot;cycle&quot; |
+| reset | &quot;reset&quot; |
+| on | &quot;on&quot; |
+| off | &quot;off&quot; |
+| soft | &quot;soft&quot; |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

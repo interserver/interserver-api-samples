@@ -23,57 +23,6 @@
 namespace OpenAPI
 {
 
-FString OpenAPIAccountApi::ChangeAccountUsernameRequest::ComputePath() const
-{
-	FString Path(TEXT("/account/username"));
-	return Path;
-}
-
-void OpenAPIAccountApi::ChangeAccountUsernameRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = {  };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("POST"));
-
-	// Default to Json Body request
-	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
-	{
-	}
-	else if (Consumes.Contains(TEXT("multipart/form-data")))
-	{
-	}
-	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
-	{
-	}
-	else
-	{
-		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
-	}
-}
-
-void OpenAPIAccountApi::ChangeAccountUsernameResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("Response with a text message field."));
-		break;
-	case 400:
-		SetResponseString(TEXT("The specified resource was not found"));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPIAccountApi::ChangeAccountUsernameResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return TryGetJsonValue(JsonValue, Content);
-}
-
 FString OpenAPIAccountApi::DeleteAccountOauthNameRequest::ComputePath() const
 {
 	TMap<FString, FStringFormatArg> PathParams = { 

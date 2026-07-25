@@ -1,4 +1,4 @@
-# SwaggerClient::AccountInfoOauthConfig
+# InterserverApiClient::AccountInfoOauthConfig
 
 ## Properties
 Name | Type | Description | Notes

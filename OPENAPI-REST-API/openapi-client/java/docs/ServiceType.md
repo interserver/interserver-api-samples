@@ -14,4 +14,8 @@ A general grouping of services within a category.
 |**stModule** | **String** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

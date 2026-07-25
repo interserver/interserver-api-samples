@@ -13,20 +13,12 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse20026 {
     /// <summary>
-    /// Confirmation message.
+    /// A map of IP addresses to their current reverse DNS hostnames.
     /// </summary>
-    /// <value>Confirmation message.</value>
-    [DataMember(Name="text", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "text")]
-    public string Text { get; set; }
-
-    /// <summary>
-    /// The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
-    /// </summary>
-    /// <value>The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.</value>
-    [DataMember(Name="ticket", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "ticket")]
-    public int? Ticket { get; set; }
+    /// <value>A map of IP addresses to their current reverse DNS hostnames.</value>
+    [DataMember(Name="ips", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "ips")]
+    public Dictionary<string, string> Ips { get; set; }
 
 
     /// <summary>
@@ -36,8 +28,7 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse20026 {\n");
-      sb.Append("  Text: ").Append(Text).Append("\n");
-      sb.Append("  Ticket: ").Append(Ticket).Append("\n");
+      sb.Append("  Ips: ").Append(Ips).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

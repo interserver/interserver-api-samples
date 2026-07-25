@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ReverseDnsEntries');
+use_ok('InterServerAPI::Object::ReverseDnsEntries');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ReverseDnsEntries->new();
+#my $instance = InterServerAPI::Object::ReverseDnsEntries->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ReverseDnsEntries');
+#isa_ok($instance, 'InterServerAPI::Object::ReverseDnsEntries');
 
 
 done_testing();

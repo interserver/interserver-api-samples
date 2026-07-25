@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.domains_api import DomainsApi
+from interserver_api_client.api.domains_api import DomainsApi
 
 
 class TestDomainsApi(unittest.TestCase):
@@ -30,203 +30,196 @@ class TestDomainsApi(unittest.TestCase):
     def test_add_domain(self) -> None:
         """Test case for add_domain
 
-        Place Domain Order
+        Place a new domain registration or transfer order, generate billing invoice
         """
         pass
 
     def test_add_domain_dnssec(self) -> None:
         """Test case for add_domain_dnssec
 
-        Add Domain DNSSEC Records
+        Register DNSSEC DS records on the domain at OpenSRS
         """
         pass
 
     def test_add_domain_nameserver(self) -> None:
         """Test case for add_domain_nameserver
 
-        Add Registered Nameserver
+        Register a new nameserver host with glue IP at the registry (registered nameserver)
         """
         pass
 
     def test_cancel_domain(self) -> None:
         """Test case for cancel_domain
 
-        Cancel Domain Order
+        Cancel a domain order in the billing system to stop auto-renewals
         """
         pass
 
     def test_delete_domain_dnssec(self) -> None:
         """Test case for delete_domain_dnssec
 
-        Remove Domain DNSSEC Records
+        Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
         """
         pass
 
     def test_delete_domain_nameserver(self) -> None:
         """Test case for delete_domain_nameserver
 
-        Delete Registered Nameserver
+        Remove one registered nameserver glue record from the domain
         """
         pass
 
     def test_get_domain_contact(self) -> None:
         """Test case for get_domain_contact
 
-        Get Domain Contact Details
+        Read the current registrant/admin/tech/billing contact field set for a domain
         """
         pass
 
     def test_get_domain_dnssec(self) -> None:
         """Test case for get_domain_dnssec
 
-        Get Domain DNSSEC Records
+        Read the DNSSEC DS record set currently registered with the registrar
         """
         pass
 
     def test_get_domain_info(self) -> None:
         """Test case for get_domain_info
 
-        Get Domain Order
+        Read full billing, registrar, and service detail for one domain
         """
         pass
 
     def test_get_domain_invoices(self) -> None:
         """Test case for get_domain_invoices
 
-        Get Domain Invoices
+        List all billing invoices scoped to one domain order
         """
         pass
 
     def test_get_domain_lookup(self) -> None:
         """Test case for get_domain_lookup
 
-        Lookup Domain Availability and Pricing
+        Check availability, premium status, and pricing for a specific domain
         """
         pass
 
     def test_get_domain_nameservers(self) -> None:
         """Test case for get_domain_nameservers
 
-        List Registered Nameservers
-        """
-        pass
-
-    def test_get_domain_order_fields(self) -> None:
-        """Test case for get_domain_order_fields
-
-        Get Domain Order Fields
-        """
-        pass
-
-    def test_get_domain_order_search_results(self) -> None:
-        """Test case for get_domain_order_search_results
-
-        Get Domain Order Search Results
+        List registered nameserver hosts and glue IP addresses for a domain
         """
         pass
 
     def test_get_domain_renewal(self) -> None:
         """Test case for get_domain_renewal
 
-        Start Domain Renewal Flow
+        Read renewal pricing, expiry, and whether a renewal invoice already exists
         """
         pass
 
     def test_get_domain_search(self) -> None:
         """Test case for get_domain_search
 
-        Search Domain Suggestions
+        Get registrar-suggested domain alternatives and bulk availability for a search term
         """
         pass
 
     def test_get_domain_transfer(self) -> None:
         """Test case for get_domain_transfer
 
-        Start Domain Transfer Flow
+        Read OpenSRS transfer status for an in-progress domain transfer order
         """
         pass
 
     def test_get_domain_whois_privacy(self) -> None:
         """Test case for get_domain_whois_privacy
 
-        Get Whois Privacy Status
+        Read Whois privacy availability, current state, and add-on pricing for a domain
         """
         pass
 
     def test_get_domains_list(self) -> None:
         """Test case for get_domains_list
 
-        List Domain Orders
+        List every domain registration on the account with billing and registration metadata
         """
         pass
 
     def test_get_domains_welcome_email(self) -> None:
         """Test case for get_domains_welcome_email
 
-        Resend Domain Welcome Email
+        Resend the domain welcome email with registration details and management instructions
         """
         pass
 
     def test_get_new_domain(self) -> None:
         """Test case for get_new_domain
 
-        Get Domain Ordering Information
+        Read the buyable domain TLD service catalog and Whois privacy pricing
         """
         pass
 
     def test_patch_domains(self) -> None:
         """Test case for patch_domains
 
-        Validate Domain Order
+        Validate posted domain-order field values before committing — dry run
         """
         pass
 
     def test_post_domain_renewal(self) -> None:
         """Test case for post_domain_renewal
 
-        Request Domain Renewal
+        Submit a domain renewal request and generate the renewal invoice
+        """
+        pass
+
+    def test_post_domain_search(self) -> None:
+        """Test case for post_domain_search
+
+        Get the full order form data for a hostname in one round-trip (search → order preview)
         """
         pass
 
     def test_post_domain_transfer(self) -> None:
         """Test case for post_domain_transfer
 
-        Request Domain Transfer
+        Re-poll OpenSRS transfer status for a domain order via POST
         """
         pass
 
     def test_put_domains(self) -> None:
         """Test case for put_domains
 
-        Domain Order Search
+        Preview per-TLD field requirements for a domain order — no commit
         """
         pass
 
     def test_update_domain_contact(self) -> None:
         """Test case for update_domain_contact
 
-        Update Domain Contact Details
+        Update registrant/admin contact details and push them to OpenSRS
         """
         pass
 
     def test_update_domain_info(self) -> None:
         """Test case for update_domain_info
 
-        Update Domain Order
+        POST mutation hook for the domain detail page (use dedicated ops where possible)
         """
         pass
 
     def test_update_domain_nameservers(self) -> None:
         """Test case for update_domain_nameservers
 
-        Replace Nameserver Set
+        Replace the full authoritative-nameserver delegation list at the registrar
         """
         pass
 
     def test_update_domain_whois_privacy(self) -> None:
         """Test case for update_domain_whois_privacy
 
-        Update Whois Privacy
+        Order, enable, or cancel the Whois privacy add-on for a domain
         """
         pass
 

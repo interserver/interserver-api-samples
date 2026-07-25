@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerNetworkInfoSwitchports');
+use_ok('InterServerAPI::Object::ServerNetworkInfoSwitchports');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerNetworkInfoSwitchports->new();
+#my $instance = InterServerAPI::Object::ServerNetworkInfoSwitchports->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerNetworkInfoSwitchports');
+#isa_ok($instance, 'InterServerAPI::Object::ServerNetworkInfoSwitchports');
 
 
 done_testing();

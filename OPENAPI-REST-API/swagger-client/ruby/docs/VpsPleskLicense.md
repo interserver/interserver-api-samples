@@ -1,4 +1,4 @@
-# SwaggerClient::VpsPleskLicense
+# InterserverApiClient::VpsPleskLicense
 
 ## Properties
 Name | Type | Description | Notes

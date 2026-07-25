@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailClientLink
+# InterServerAPI::Object::MailClientLink
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailClientLink;
+use InterServerAPI::Object::MailClientLink;
 ```
 
 ## Properties

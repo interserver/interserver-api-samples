@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_addons_row import QuickserverAddonsRow
+from interserver_api_client.models.quickserver_addons_row import QuickserverAddonsRow
 
 class TestQuickserverAddonsRow(unittest.TestCase):
     """QuickserverAddonsRow unit test stubs"""

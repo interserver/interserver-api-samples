@@ -1,53 +1,53 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BackupOrderPostResponse
 void main() {
-  final instance = BackupOrderPostResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final BackupOrderPostResponse? instance = /* BackupOrderPostResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(BackupOrderPostResponse, () {
-    // bool continue_
+    // Optional<bool?> continue_
     test('to test the property `continue_`', () async {
       // TODO
     });
 
-    // BuiltList<String> errors
+    // Optional<List<String>?> errors
     test('to test the property `errors`', () async {
       // TODO
     });
 
-    // String totalCost
+    // Optional<String?> totalCost
     test('to test the property `totalCost`', () async {
       // TODO
     });
 
-    // String iid
+    // Optional<String?> iid
     test('to test the property `iid`', () async {
       // TODO
     });
 
-    // BuiltList<String> iids
+    // Optional<List<String>?> iids
     test('to test the property `iids`', () async {
       // TODO
     });
 
-    // BuiltList<String> realIids
+    // Optional<List<String>?> realIids
     test('to test the property `realIids`', () async {
       // TODO
     });
 
-    // int serviceId
+    // Optional<int?> serviceId
     test('to test the property `serviceId`', () async {
       // TODO
     });
 
-    // String invoiceDescription
+    // Optional<String?> invoiceDescription
     test('to test the property `invoiceDescription`', () async {
       // TODO
     });
 
-    // BackupOrderPostResponseCjParams cjParams
+    // Optional<BackupOrderPostResponseCjParams?> cjParams
     test('to test the property `cjParams`', () async {
       // TODO
     });

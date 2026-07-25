@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServicesInfo();
+    instance = new InterserverApiClient.ServicesInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('ServicesInfo', function() {
     it('should create an instance of ServicesInfo', function() {
       // uncomment below and update the code to test ServicesInfo
-      //var instance = new InterServerManagementApi.ServicesInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.ServicesInfo);
+      //var instance = new InterserverApiClient.ServicesInfo();
+      //expect(instance).to.be.a(InterserverApiClient.ServicesInfo);
     });
 
     it('should have the property modules (base name: "modules")', function() {
       // uncomment below and update the code to test the property modules
-      //var instance = new InterServerManagementApi.ServicesInfo();
+      //var instance = new InterserverApiClient.ServicesInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property services (base name: "services")', function() {
       // uncomment below and update the code to test the property services
-      //var instance = new InterServerManagementApi.ServicesInfo();
+      //var instance = new InterserverApiClient.ServicesInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceTypes (base name: "serviceTypes")', function() {
       // uncomment below and update the code to test the property serviceTypes
-      //var instance = new InterServerManagementApi.ServicesInfo();
+      //var instance = new InterserverApiClient.ServicesInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceCategories (base name: "serviceCategories")', function() {
       // uncomment below and update the code to test the property serviceCategories
-      //var instance = new InterServerManagementApi.ServicesInfo();
+      //var instance = new InterserverApiClient.ServicesInfo();
       //expect(instance).to.be();
     });
 

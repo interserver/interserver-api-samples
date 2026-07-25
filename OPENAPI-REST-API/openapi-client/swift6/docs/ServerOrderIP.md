@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | IP ID. | [optional] 
+**_id** | **String** | IP ID. | [optional] 
 **price** | **Int** | IP price. | [optional] 
 **img** | **String** | IP image. | [optional] 
 **shortDesc** | **String** | Short description of the IP. | [optional] 

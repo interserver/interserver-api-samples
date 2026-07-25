@@ -8,8 +8,12 @@
 
 #' InlineResponse20020 Class
 #'
-#' @field success 
-#' @field text 
+#' @field continue 
+#' @field errors 
+#' @field serviceType 
+#' @field serviceCost 
+#' @field originalCost 
+#' @field repeatServiceCost 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,51 +21,120 @@
 InlineResponse20020 <- R6::R6Class(
   'InlineResponse20020',
   public = list(
-    `success` = NULL,
-    `text` = NULL,
-    initialize = function(`success`, `text`){
-      if (!missing(`success`)) {
-        self$`success` <- `success`
+    `continue` = NULL,
+    `errors` = NULL,
+    `serviceType` = NULL,
+    `serviceCost` = NULL,
+    `originalCost` = NULL,
+    `repeatServiceCost` = NULL,
+    initialize = function(`continue`, `errors`, `serviceType`, `serviceCost`, `originalCost`, `repeatServiceCost`){
+      if (!missing(`continue`)) {
+        self$`continue` <- `continue`
       }
-      if (!missing(`text`)) {
-        stopifnot(is.character(`text`), length(`text`) == 1)
-        self$`text` <- `text`
+      if (!missing(`errors`)) {
+        stopifnot(is.list(`errors`), length(`errors`) != 0)
+        lapply(`errors`, function(x) stopifnot(is.character(x)))
+        self$`errors` <- `errors`
+      }
+      if (!missing(`serviceType`)) {
+        stopifnot(is.numeric(`serviceType`), length(`serviceType`) == 1)
+        self$`serviceType` <- `serviceType`
+      }
+      if (!missing(`serviceCost`)) {
+        stopifnot(is.numeric(`serviceCost`), length(`serviceCost`) == 1)
+        stopifnot(R6::is.R6(`serviceCost`))
+        self$`serviceCost` <- `serviceCost`
+      }
+      if (!missing(`originalCost`)) {
+        stopifnot(is.numeric(`originalCost`), length(`originalCost`) == 1)
+        stopifnot(R6::is.R6(`originalCost`))
+        self$`originalCost` <- `originalCost`
+      }
+      if (!missing(`repeatServiceCost`)) {
+        stopifnot(is.numeric(`repeatServiceCost`), length(`repeatServiceCost`) == 1)
+        stopifnot(R6::is.R6(`repeatServiceCost`))
+        self$`repeatServiceCost` <- `repeatServiceCost`
       }
     },
     toJSON = function() {
       InlineResponse20020Object <- list()
-      if (!is.null(self$`success`)) {
-        InlineResponse20020Object[['success']] <- self$`success`
+      if (!is.null(self$`continue`)) {
+        InlineResponse20020Object[['continue']] <- self$`continue`
       }
-      if (!is.null(self$`text`)) {
-        InlineResponse20020Object[['text']] <- self$`text`
+      if (!is.null(self$`errors`)) {
+        InlineResponse20020Object[['errors']] <- self$`errors`
+      }
+      if (!is.null(self$`serviceType`)) {
+        InlineResponse20020Object[['serviceType']] <- self$`serviceType`
+      }
+      if (!is.null(self$`serviceCost`)) {
+        InlineResponse20020Object[['serviceCost']] <- self$`serviceCost`$toJSON()
+      }
+      if (!is.null(self$`originalCost`)) {
+        InlineResponse20020Object[['originalCost']] <- self$`originalCost`$toJSON()
+      }
+      if (!is.null(self$`repeatServiceCost`)) {
+        InlineResponse20020Object[['repeatServiceCost']] <- self$`repeatServiceCost`$toJSON()
       }
 
       InlineResponse20020Object
     },
     fromJSON = function(InlineResponse20020Json) {
       InlineResponse20020Object <- jsonlite::fromJSON(InlineResponse20020Json)
-      if (!is.null(InlineResponse20020Object$`success`)) {
-        self$`success` <- InlineResponse20020Object$`success`
+      if (!is.null(InlineResponse20020Object$`continue`)) {
+        self$`continue` <- InlineResponse20020Object$`continue`
       }
-      if (!is.null(InlineResponse20020Object$`text`)) {
-        self$`text` <- InlineResponse20020Object$`text`
+      if (!is.null(InlineResponse20020Object$`errors`)) {
+        self$`errors` <- InlineResponse20020Object$`errors`
+      }
+      if (!is.null(InlineResponse20020Object$`serviceType`)) {
+        self$`serviceType` <- InlineResponse20020Object$`serviceType`
+      }
+      if (!is.null(InlineResponse20020Object$`serviceCost`)) {
+        serviceCostObject <- BigDecimal$new()
+        serviceCostObject$fromJSON(jsonlite::toJSON(InlineResponse20020Object$serviceCost, auto_unbox = TRUE))
+        self$`serviceCost` <- serviceCostObject
+      }
+      if (!is.null(InlineResponse20020Object$`originalCost`)) {
+        originalCostObject <- BigDecimal$new()
+        originalCostObject$fromJSON(jsonlite::toJSON(InlineResponse20020Object$originalCost, auto_unbox = TRUE))
+        self$`originalCost` <- originalCostObject
+      }
+      if (!is.null(InlineResponse20020Object$`repeatServiceCost`)) {
+        repeatServiceCostObject <- BigDecimal$new()
+        repeatServiceCostObject$fromJSON(jsonlite::toJSON(InlineResponse20020Object$repeatServiceCost, auto_unbox = TRUE))
+        self$`repeatServiceCost` <- repeatServiceCostObject
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "success": %s,
-           "text": %s
+           "continue": %s,
+           "errors": [%s],
+           "serviceType": %d,
+           "serviceCost": %s,
+           "originalCost": %s,
+           "repeatServiceCost": %s
         }',
-        self$`success`,
-        self$`text`
+        self$`continue`,
+        lapply(self$`errors`, function(x) paste(paste0('"', x, '"'), sep=",")),
+        self$`serviceType`,
+        self$`serviceCost`$toJSON(),
+        self$`originalCost`$toJSON(),
+        self$`repeatServiceCost`$toJSON()
       )
     },
     fromJSONString = function(InlineResponse20020Json) {
       InlineResponse20020Object <- jsonlite::fromJSON(InlineResponse20020Json)
-      self$`success` <- InlineResponse20020Object$`success`
-      self$`text` <- InlineResponse20020Object$`text`
+      self$`continue` <- InlineResponse20020Object$`continue`
+      self$`errors` <- InlineResponse20020Object$`errors`
+      self$`serviceType` <- InlineResponse20020Object$`serviceType`
+      BigDecimalObject <- BigDecimal$new()
+      self$`serviceCost` <- BigDecimalObject$fromJSON(jsonlite::toJSON(InlineResponse20020Object$serviceCost, auto_unbox = TRUE))
+      BigDecimalObject <- BigDecimal$new()
+      self$`originalCost` <- BigDecimalObject$fromJSON(jsonlite::toJSON(InlineResponse20020Object$originalCost, auto_unbox = TRUE))
+      BigDecimalObject <- BigDecimal$new()
+      self$`repeatServiceCost` <- BigDecimalObject$fromJSON(jsonlite::toJSON(InlineResponse20020Object$repeatServiceCost, auto_unbox = TRUE))
     }
   )
 )

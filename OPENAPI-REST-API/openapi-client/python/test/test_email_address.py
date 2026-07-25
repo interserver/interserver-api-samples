@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.email_address import EmailAddress
+from interserver_api_client.models.email_address import EmailAddress
 
 class TestEmailAddress(unittest.TestCase):
     """EmailAddress unit test stubs"""

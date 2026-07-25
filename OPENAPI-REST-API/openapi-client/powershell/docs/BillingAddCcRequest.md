@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BillingAddCcRequest = Initialize-PSOpenAPIToolsBillingAddCcRequest  -Name null `
+$BillingAddCcRequest = Initialize-InterserverApiBillingAddCcRequest  -Name null `
  -Address null `
  -City null `
  -State null `

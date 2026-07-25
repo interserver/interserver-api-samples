@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::TicketPostDetailsInner');
+use_ok('InterServerAPI::Object::TicketPostDetailsInner');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::TicketPostDetailsInner->new();
+#my $instance = InterServerAPI::Object::TicketPostDetailsInner->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::TicketPostDetailsInner');
+#isa_ok($instance, 'InterServerAPI::Object::TicketPostDetailsInner');
 
 
 done_testing();

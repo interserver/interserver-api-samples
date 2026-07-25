@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.buy_it_now_server_order200_response_bandwidth_inner import BuyItNowServerOrder200ResponseBandwidthInner
+from interserver_api_client.models.buy_it_now_server_order200_response_bandwidth_inner import BuyItNowServerOrder200ResponseBandwidthInner
 
 class TestBuyItNowServerOrder200ResponseBandwidthInner(unittest.TestCase):
     """BuyItNowServerOrder200ResponseBandwidthInner unit test stubs"""

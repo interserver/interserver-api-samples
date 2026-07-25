@@ -31,7 +31,7 @@ FString OpenAPIWebhostingApi::AddWebsiteRequest::ComputePath() const
 
 void OpenAPIWebhostingApi::AddWebsiteRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("POST"));
@@ -39,12 +39,23 @@ void OpenAPIWebhostingApi::AddWebsiteRequest::SetupHttpRequest(const FHttpReques
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIWebsiteOrderPostRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIWebsiteOrderPostRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIWebsiteOrderPostRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -58,7 +69,7 @@ void OpenAPIWebhostingApi::AddWebsiteResponse::SetHttpResponseCode(EHttpResponse
 	switch ((int)InHttpResponseCode)
 	{
 	case 200:
-		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
+		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
 		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
@@ -602,7 +613,7 @@ FString OpenAPIWebhostingApi::PutWebsitesRequest::ComputePath() const
 
 void OpenAPIWebhostingApi::PutWebsitesRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("PUT"));
@@ -610,12 +621,23 @@ void OpenAPIWebhostingApi::PutWebsitesRequest::SetupHttpRequest(const FHttpReque
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIWebsiteOrderPutRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIWebsiteOrderPutRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIWebsiteOrderPutRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{

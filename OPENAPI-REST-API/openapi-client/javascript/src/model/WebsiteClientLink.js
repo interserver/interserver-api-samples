@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The WebsiteClientLink model module.
  * @module model/WebsiteClientLink
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsiteClientLink {
     /**

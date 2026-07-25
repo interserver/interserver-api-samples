@@ -12,45 +12,26 @@ import javax.xml.bind.annotation.*;
 
 
 public class InlineResponse2008   {
-  private Boolean success = null;
-  private String text = null;
+  private Boolean login = null;
 
   /**
+   * Whether the 2FA verification succeeded and the user is now logged in.
    **/
-  public InlineResponse2008 success(Boolean success) {
-    this.success = success;
+  public InlineResponse2008 login(Boolean login) {
+    this.login = login;
     return this;
   }
 
   
   
-  @Schema(required = true, description = "")
-  @JsonProperty("success")
+  @Schema(description = "Whether the 2FA verification succeeded and the user is now logged in.")
+  @JsonProperty("login")
   @NotNull
-  public Boolean isSuccess() {
-    return success;
+  public Boolean isLogin() {
+    return login;
   }
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  /**
-   **/
-  public InlineResponse2008 text(String text) {
-    this.text = text;
-    return this;
-  }
-
-  
-  
-  @Schema(required = true, description = "")
-  @JsonProperty("text")
-  @NotNull
-  public String getText() {
-    return text;
-  }
-  public void setText(String text) {
-    this.text = text;
+  public void setLogin(Boolean login) {
+    this.login = login;
   }
 
 
@@ -63,13 +44,12 @@ public class InlineResponse2008   {
       return false;
     }
     InlineResponse2008 inlineResponse2008 = (InlineResponse2008) o;
-    return Objects.equals(success, inlineResponse2008.success) &&
-        Objects.equals(text, inlineResponse2008.text);
+    return Objects.equals(login, inlineResponse2008.login);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, text);
+    return Objects.hash(login);
   }
 
   @Override
@@ -77,8 +57,7 @@ public class InlineResponse2008   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2008 {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    login: ").append(toIndentedString(login)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -23,4 +23,8 @@
 |**AFFILIATE_AMOUNT** | **String** | Affiliate amount with currency. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

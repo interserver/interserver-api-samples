@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicensesCancel200Response = Initialize-PSOpenAPIToolsLicensesCancel200Response  -Success null `
+$LicensesCancel200Response = Initialize-InterserverApiLicensesCancel200Response  -Success null `
  -Text null
 ```
 

@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class VpsOrderPackageCosts(
   `57`: Option[Double] = None
 )
-

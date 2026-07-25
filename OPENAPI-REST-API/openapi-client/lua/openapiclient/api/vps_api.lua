@@ -723,6 +723,60 @@ function vps_api:get_new_vps()
 	end
 end
 
+function vps_api:get_vps_backup(id)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/vps/%s/backup",
+			self.basePath, id);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "GET")
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_queue_response.cast(result), headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
 function vps_api:get_vps_backups(id, all)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
@@ -863,6 +917,92 @@ function vps_api:get_vps_buy_ip(id)
 	end
 end
 
+function vps_api:get_vps_change_hostname(id)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/vps/%s/change_hostname",
+			self.basePath, id);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "GET")
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		return nil, headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
+function vps_api:get_vps_change_root_password(id)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/vps/%s/change_root_password",
+			self.basePath, id);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "GET")
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		return nil, headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
 function vps_api:get_vps_change_timezone(id)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
@@ -960,6 +1100,49 @@ function vps_api:get_vps_info(id)
 			return nil, err3
 		end
 		return openapiclient_vps.cast(result), headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
+function vps_api:get_vps_insert_cd(id)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/vps/%s/insert_cd",
+			self.basePath, id);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "GET")
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		return nil, headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -1125,6 +1308,49 @@ function vps_api:get_vps_reinstall_os(id)
 			return nil, err3
 		end
 		return openapiclient_vps_templates_list.cast(result), headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
+function vps_api:get_vps_reset_password(id)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/vps/%s/reset_password",
+			self.basePath, id);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "GET")
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		return nil, headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -1416,60 +1642,6 @@ function vps_api:get_vps_welcome_email(id)
 			return nil, err3
 		end
 		return openapiclient_success_text_response.cast(result), headers
-	else
-		local body, err, errno2 = stream:get_body_as_string()
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		-- return the error message (http body)
-		return nil, http_status, body
-	end
-end
-
-function vps_api:post_vps_backup(id)
-	local req = http_request.new_from_uri({
-		scheme = self.default_scheme;
-		host = self.host;
-		port = self.port;
-		path = string.format("%s/vps/%s/backup",
-			self.basePath, id);
-	})
-
-	-- set HTTP verb
-	req.headers:upsert(":method", "GET")
-	-- TODO: create a function to select proper content-type
-	--local var_accept = { "application/json" }
-	req.headers:upsert("content-type", "application/json")
-
-	-- api key in headers 'X-API-KEY'
-	if self.api_key['X-API-KEY'] then
-		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
-	end
-	-- api key in headers 'sessionid'
-	if self.api_key['sessionid'] then
-		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
-	end
-
-	-- make the HTTP call
-	local headers, stream, errno = req:go()
-	if not headers then
-		return nil, stream, errno
-	end
-	local http_status = headers:get(":status")
-	if http_status:sub(1,1) == "2" then
-		local body, err, errno2 = stream:get_body_as_string()
-		-- exception when getting the HTTP body
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		local result, _, err3 = dkjson.decode(body)
-		-- exception when decoding the HTTP body
-		if result == nil then
-			return nil, err3
-		end
-		return openapiclient_queue_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -2206,6 +2378,49 @@ function vps_api:post_vps_slices(id)
 	end
 end
 
+function vps_api:post_vps_traffic_usage(id)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/vps/%s/traffic_usage",
+			self.basePath, id);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "POST")
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		return nil, headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
 function vps_api:post_vps_view_desktop(id)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
@@ -2298,6 +2513,49 @@ function vps_api:put_vps(vps_order_put_request)
 			return nil, err3
 		end
 		return openapiclient_vps_order_put_response.cast(result), headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
+function vps_api:put_vps_buy_hd_space(id)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/vps/%s/buy_hd_space",
+			self.basePath, id);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "PUT")
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		return nil, headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainSearchResponse();
+    instance = new InterserverApiClient.DomainSearchResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('DomainSearchResponse', function() {
     it('should create an instance of DomainSearchResponse', function() {
       // uncomment below and update the code to test DomainSearchResponse
-      //var instance = new InterServerManagementApi.DomainSearchResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainSearchResponse);
+      //var instance = new InterserverApiClient.DomainSearchResponse();
+      //expect(instance).to.be.a(InterserverApiClient.DomainSearchResponse);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.DomainSearchResponse();
+      //var instance = new InterserverApiClient.DomainSearchResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property response_text (base name: "response_text")', function() {
       // uncomment below and update the code to test the property response_text
-      //var instance = new InterServerManagementApi.DomainSearchResponse();
+      //var instance = new InterserverApiClient.DomainSearchResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property response_time (base name: "response_time")', function() {
       // uncomment below and update the code to test the property response_time
-      //var instance = new InterServerManagementApi.DomainSearchResponse();
+      //var instance = new InterserverApiClient.DomainSearchResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property lookup (base name: "lookup")', function() {
       // uncomment below and update the code to test the property lookup
-      //var instance = new InterServerManagementApi.DomainSearchResponse();
+      //var instance = new InterserverApiClient.DomainSearchResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property suggest (base name: "suggest")', function() {
       // uncomment below and update the code to test the property suggest
-      //var instance = new InterServerManagementApi.DomainSearchResponse();
+      //var instance = new InterserverApiClient.DomainSearchResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property tlds (base name: "tlds")', function() {
       // uncomment below and update the code to test the property tlds
-      //var instance = new InterServerManagementApi.DomainSearchResponse();
+      //var instance = new InterserverApiClient.DomainSearchResponse();
       //expect(instance).to.be();
     });
 

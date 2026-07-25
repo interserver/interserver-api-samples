@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfo();
+    instance = new InterserverApiClient.AccountInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,85 +50,85 @@
   describe('AccountInfo', function() {
     it('should create an instance of AccountInfo', function() {
       // uncomment below and update the code to test AccountInfo
-      //var instance = new InterServerManagementApi.AccountInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfo);
+      //var instance = new InterserverApiClient.AccountInfo();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfo);
     });
 
     it('should have the property custid (base name: "custid")', function() {
       // uncomment below and update the code to test the property custid
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property ima (base name: "ima")', function() {
       // uncomment below and update the code to test the property ima
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property data (base name: "data")', function() {
       // uncomment below and update the code to test the property data
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property ip (base name: "ip")', function() {
       // uncomment below and update the code to test the property ip
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property oauthproviders (base name: "oauthproviders")', function() {
       // uncomment below and update the code to test the property oauthproviders
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property oauthconfig (base name: "oauthconfig")', function() {
       // uncomment below and update the code to test the property oauthconfig
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property oauthadapters (base name: "oauthadapters")', function() {
       // uncomment below and update the code to test the property oauthadapters
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property limits (base name: "limits")', function() {
       // uncomment below and update the code to test the property limits
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property language (base name: "language")', function() {
       // uncomment below and update the code to test the property language
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property countryCurrencies (base name: "countryCurrencies")', function() {
       // uncomment below and update the code to test the property countryCurrencies
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property enableLocales (base name: "enableLocales")', function() {
       // uncomment below and update the code to test the property enableLocales
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property enableCurrencies (base name: "enableCurrencies")', function() {
       // uncomment below and update the code to test the property enableCurrencies
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property gravatar (base name: "gravatar")', function() {
       // uncomment below and update the code to test the property gravatar
-      //var instance = new InterServerManagementApi.AccountInfo();
+      //var instance = new InterserverApiClient.AccountInfo();
       //expect(instance).to.be();
     });
 

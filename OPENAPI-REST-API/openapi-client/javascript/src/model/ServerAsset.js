@@ -17,7 +17,7 @@ import ServerLease from './ServerLease';
 /**
  * The ServerAsset model module.
  * @module model/ServerAsset
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerAsset {
     /**

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::VpsOrderPutResponse');
+use_ok('InterServerAPI::Object::VpsOrderPutResponse');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::VpsOrderPutResponse->new();
+#my $instance = InterServerAPI::Object::VpsOrderPutResponse->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::VpsOrderPutResponse');
+#isa_ok($instance, 'InterServerAPI::Object::VpsOrderPutResponse');
 
 
 done_testing();

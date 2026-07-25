@@ -18,4 +18,8 @@ A buy-it-now dedicated server listing from the marketplace, with hardware specs 
 |**price** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

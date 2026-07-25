@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CreateGeoRule400Response } from './api';
+import { CreateGeoRule400Response } from '@interserver/myadmin-client';
 
 const instance: CreateGeoRule400Response = {
     success,

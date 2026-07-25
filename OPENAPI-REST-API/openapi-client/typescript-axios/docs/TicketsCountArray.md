@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TicketsCountArray } from './api';
+import { TicketsCountArray } from '@interserver/myadmin-client';
 
 const instance: TicketsCountArray = {
     Open,

@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverAddonsRow
+# InterserverApiClient::QuickserverAddonsRow
 
 ## Properties
 Name | Type | Description | Notes

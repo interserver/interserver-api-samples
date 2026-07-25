@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverOrderVersion } from './api';
+import { QuickserverOrderVersion } from '@interserver/myadmin-client';
 
 const instance: QuickserverOrderVersion = {
     centosstream_8,

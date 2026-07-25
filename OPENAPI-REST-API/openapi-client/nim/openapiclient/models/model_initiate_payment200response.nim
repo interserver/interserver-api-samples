@@ -18,6 +18,7 @@ type `Type`* {.pure.} = enum
   Redirect
   Submit
   Single
+  UnknownDefaultOpenApi
 
 type InitiatePayment200response* = object
   ## 
@@ -33,11 +34,13 @@ func `%`*(v: `Type`): JsonNode =
     of `Type`.Redirect: %"redirect"
     of `Type`.Submit: %"submit"
     of `Type`.Single: %"single"
+    of `Type`.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: `Type`): string =
   result = case v:
     of `Type`.Redirect: $("redirect")
     of `Type`.Submit: $("submit")
     of `Type`.Single: $("single")
+    of `Type`.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[`Type`]): `Type` =
   if node.kind != JString:
@@ -50,6 +53,8 @@ proc to*(node: JsonNode, T: typedesc[`Type`]): `Type` =
     return `Type`.Submit
   of $("single"):
     return `Type`.Single
+  of $("11184809"):
+    return `Type`.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for `Type`: " & strVal)
 

@@ -11,10 +11,33 @@ import Foundation
 public struct InlineResponse2007: Codable {
 
 
-    /** Whether the 2FA verification succeeded and the user is now logged in. */
+    /** Whether the user was logged in to an existing account. */
     public var login: Bool?
-    public init(login: Bool? = nil) { 
+
+    /** Whether a new account was created. */
+    public var signup: Bool?
+
+    /** Whether the OAuth provider was linked to an existing account. */
+    public var linked: Bool?
+
+    /** The account ID associated with the OAuth login. */
+    public var accountId: Int?
+
+    /** Error code if additional verification is needed (e.g. &#x60;2fa_required&#x60;). */
+    public var errorCode: String?
+    public init(login: Bool? = nil, signup: Bool? = nil, linked: Bool? = nil, accountId: Int? = nil, errorCode: String? = nil) { 
         self.login = login
+        self.signup = signup
+        self.linked = linked
+        self.accountId = accountId
+        self.errorCode = errorCode
+    }
+    public enum CodingKeys: String, CodingKey { 
+        case login
+        case signup
+        case linked
+        case accountId = "account_id"
+        case errorCode = "error_code"
     }
 
 }

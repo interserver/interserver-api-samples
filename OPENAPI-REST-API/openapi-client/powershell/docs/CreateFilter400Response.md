@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateFilter400Response = Initialize-PSOpenAPIToolsCreateFilter400Response  -Success false `
+$CreateFilter400Response = Initialize-InterserverApiCreateFilter400Response  -Success false `
  -Text Bad Request `
  -Errors null
 ```

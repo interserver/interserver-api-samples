@@ -62,6 +62,8 @@ public:
 	class DownloadQsBackupResponse;
 	class GetNewQsRequest;
 	class GetNewQsResponse;
+	class GetQsBackupRequest;
+	class GetQsBackupResponse;
 	class GetQsBackupsRequest;
 	class GetQsBackupsResponse;
 	class GetQsChangeHostnameRequest;
@@ -94,8 +96,6 @@ public:
 	class GetQsViewDesktopResponse;
 	class GetQsWelcomeEmailRequest;
 	class GetQsWelcomeEmailResponse;
-	class PostQsBackupRequest;
-	class PostQsBackupResponse;
 	class PostQsChangeHostnameRequest;
 	class PostQsChangeHostnameResponse;
 	class PostQsChangeRootPasswordRequest;
@@ -139,6 +139,7 @@ public:
     DECLARE_DELEGATE_OneParam(FDoQsStopDelegate, const DoQsStopResponse&);
     DECLARE_DELEGATE_OneParam(FDownloadQsBackupDelegate, const DownloadQsBackupResponse&);
     DECLARE_DELEGATE_OneParam(FGetNewQsDelegate, const GetNewQsResponse&);
+    DECLARE_DELEGATE_OneParam(FGetQsBackupDelegate, const GetQsBackupResponse&);
     DECLARE_DELEGATE_OneParam(FGetQsBackupsDelegate, const GetQsBackupsResponse&);
     DECLARE_DELEGATE_OneParam(FGetQsChangeHostnameDelegate, const GetQsChangeHostnameResponse&);
     DECLARE_DELEGATE_OneParam(FGetQsChangeRootPasswordDelegate, const GetQsChangeRootPasswordResponse&);
@@ -155,7 +156,6 @@ public:
     DECLARE_DELEGATE_OneParam(FGetQsTrafficUsageDelegate, const GetQsTrafficUsageResponse&);
     DECLARE_DELEGATE_OneParam(FGetQsViewDesktopDelegate, const GetQsViewDesktopResponse&);
     DECLARE_DELEGATE_OneParam(FGetQsWelcomeEmailDelegate, const GetQsWelcomeEmailResponse&);
-    DECLARE_DELEGATE_OneParam(FPostQsBackupDelegate, const PostQsBackupResponse&);
     DECLARE_DELEGATE_OneParam(FPostQsChangeHostnameDelegate, const PostQsChangeHostnameResponse&);
     DECLARE_DELEGATE_OneParam(FPostQsChangeRootPasswordDelegate, const PostQsChangeRootPasswordResponse&);
     DECLARE_DELEGATE_OneParam(FPostQsChangeTimezoneDelegate, const PostQsChangeTimezoneResponse&);
@@ -184,6 +184,7 @@ public:
     FHttpRequestPtr DoQsStop(const DoQsStopRequest& Request, const FDoQsStopDelegate& Delegate = FDoQsStopDelegate()) const;
     FHttpRequestPtr DownloadQsBackup(const DownloadQsBackupRequest& Request, const FDownloadQsBackupDelegate& Delegate = FDownloadQsBackupDelegate()) const;
     FHttpRequestPtr GetNewQs(const GetNewQsRequest& Request, const FGetNewQsDelegate& Delegate = FGetNewQsDelegate()) const;
+    FHttpRequestPtr GetQsBackup(const GetQsBackupRequest& Request, const FGetQsBackupDelegate& Delegate = FGetQsBackupDelegate()) const;
     FHttpRequestPtr GetQsBackups(const GetQsBackupsRequest& Request, const FGetQsBackupsDelegate& Delegate = FGetQsBackupsDelegate()) const;
     FHttpRequestPtr GetQsChangeHostname(const GetQsChangeHostnameRequest& Request, const FGetQsChangeHostnameDelegate& Delegate = FGetQsChangeHostnameDelegate()) const;
     FHttpRequestPtr GetQsChangeRootPassword(const GetQsChangeRootPasswordRequest& Request, const FGetQsChangeRootPasswordDelegate& Delegate = FGetQsChangeRootPasswordDelegate()) const;
@@ -200,7 +201,6 @@ public:
     FHttpRequestPtr GetQsTrafficUsage(const GetQsTrafficUsageRequest& Request, const FGetQsTrafficUsageDelegate& Delegate = FGetQsTrafficUsageDelegate()) const;
     FHttpRequestPtr GetQsViewDesktop(const GetQsViewDesktopRequest& Request, const FGetQsViewDesktopDelegate& Delegate = FGetQsViewDesktopDelegate()) const;
     FHttpRequestPtr GetQsWelcomeEmail(const GetQsWelcomeEmailRequest& Request, const FGetQsWelcomeEmailDelegate& Delegate = FGetQsWelcomeEmailDelegate()) const;
-    FHttpRequestPtr PostQsBackup(const PostQsBackupRequest& Request, const FPostQsBackupDelegate& Delegate = FPostQsBackupDelegate()) const;
     FHttpRequestPtr PostQsChangeHostname(const PostQsChangeHostnameRequest& Request, const FPostQsChangeHostnameDelegate& Delegate = FPostQsChangeHostnameDelegate()) const;
     FHttpRequestPtr PostQsChangeRootPassword(const PostQsChangeRootPasswordRequest& Request, const FPostQsChangeRootPasswordDelegate& Delegate = FPostQsChangeRootPasswordDelegate()) const;
     FHttpRequestPtr PostQsChangeTimezone(const PostQsChangeTimezoneRequest& Request, const FPostQsChangeTimezoneDelegate& Delegate = FPostQsChangeTimezoneDelegate()) const;
@@ -230,6 +230,7 @@ private:
     void OnDoQsStopResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDoQsStopDelegate Delegate) const;
     void OnDownloadQsBackupResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FDownloadQsBackupDelegate Delegate) const;
     void OnGetNewQsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetNewQsDelegate Delegate) const;
+    void OnGetQsBackupResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetQsBackupDelegate Delegate) const;
     void OnGetQsBackupsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetQsBackupsDelegate Delegate) const;
     void OnGetQsChangeHostnameResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetQsChangeHostnameDelegate Delegate) const;
     void OnGetQsChangeRootPasswordResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetQsChangeRootPasswordDelegate Delegate) const;
@@ -246,7 +247,6 @@ private:
     void OnGetQsTrafficUsageResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetQsTrafficUsageDelegate Delegate) const;
     void OnGetQsViewDesktopResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetQsViewDesktopDelegate Delegate) const;
     void OnGetQsWelcomeEmailResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetQsWelcomeEmailDelegate Delegate) const;
-    void OnPostQsBackupResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostQsBackupDelegate Delegate) const;
     void OnPostQsChangeHostnameResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostQsChangeHostnameDelegate Delegate) const;
     void OnPostQsChangeRootPasswordResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostQsChangeRootPasswordDelegate Delegate) const;
     void OnPostQsChangeTimezoneResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostQsChangeTimezoneDelegate Delegate) const;

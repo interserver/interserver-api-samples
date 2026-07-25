@@ -40,7 +40,7 @@ public class InlineResponse20016   {
    * @return success
    **/
   @JsonProperty("success")
-  @Schema(example = "true", description = "")
+  @Schema(example = "true", required = true, description = "")
   @NotNull
   public Boolean isSuccess() {
     return success;
@@ -60,7 +60,7 @@ public class InlineResponse20016   {
    * @return text
    **/
   @JsonProperty("text")
-  @Schema(example = "Firewall Rule has been deleted.", description = "")
+  @Schema(example = "Scrub is disabled on your IP.", required = true, description = "")
   @NotNull
   public String getText() {
     return text;

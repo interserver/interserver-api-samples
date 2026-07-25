@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ScrubIpsDeleteRule200Response = Initialize-PSOpenAPIToolsScrubIpsDeleteRule200Response  -Success true `
+$ScrubIpsDeleteRule200Response = Initialize-InterserverApiScrubIpsDeleteRule200Response  -Success true `
  -Text Firewall Rule has been deleted.
 ```
 

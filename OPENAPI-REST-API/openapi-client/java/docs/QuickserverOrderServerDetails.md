@@ -11,4 +11,8 @@ Server details.
 |**_381** | [**QuickserverOrderServerDetails381**](QuickserverOrderServerDetails381.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -43,8 +43,6 @@ src/inter_server_management_api/specs/affiliate_banner_row.clj
 src/inter_server_management_api/specs/affiliate_dock_setup.clj
 src/inter_server_management_api/specs/affiliate_payment_setup.clj
 src/inter_server_management_api/specs/affiliate_traffic_row.clj
-src/inter_server_management_api/specs/asset_server.clj
-src/inter_server_management_api/specs/asset_server_cpu_inner.clj
 src/inter_server_management_api/specs/backup.clj
 src/inter_server_management_api/specs/backup_billing_details.clj
 src/inter_server_management_api/specs/backup_client_link.clj
@@ -62,7 +60,6 @@ src/inter_server_management_api/specs/backup_service_master.clj
 src/inter_server_management_api/specs/backups_order.clj
 src/inter_server_management_api/specs/backups_order_package_costs.clj
 src/inter_server_management_api/specs/backups_order_service_types.clj
-src/inter_server_management_api/specs/bandwidth.clj
 src/inter_server_management_api/specs/billing_add_cc_request.clj
 src/inter_server_management_api/specs/billing_invoice_detail.clj
 src/inter_server_management_api/specs/billing_invoice_list.clj
@@ -88,11 +85,6 @@ src/inter_server_management_api/specs/charge_invoice_rows_invoices_value.clj
 src/inter_server_management_api/specs/charge_invoice_rows_invoices_value_paid_invoices_value.clj
 src/inter_server_management_api/specs/charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.clj
 src/inter_server_management_api/specs/close_ticket_response_schema.clj
-src/inter_server_management_api/specs/config_ids.clj
-src/inter_server_management_api/specs/config_lists.clj
-src/inter_server_management_api/specs/control_panel.clj
-src/inter_server_management_api/specs/cpu.clj
-src/inter_server_management_api/specs/cpu_with_defaults.clj
 src/inter_server_management_api/specs/create_filter.clj
 src/inter_server_management_api/specs/create_filter_201_response.clj
 src/inter_server_management_api/specs/create_filter_400_response.clj
@@ -108,6 +100,7 @@ src/inter_server_management_api/specs/delete_filter_400_response.clj
 src/inter_server_management_api/specs/delete_filter_500_response.clj
 src/inter_server_management_api/specs/delete_firewall_rule.clj
 src/inter_server_management_api/specs/delete_geo_firewall_rule.clj
+src/inter_server_management_api/specs/delete_mail_alert_request.clj
 src/inter_server_management_api/specs/deny_rule_new.clj
 src/inter_server_management_api/specs/deny_rule_record.clj
 src/inter_server_management_api/specs/disable_scrub_200_response.clj
@@ -138,11 +131,11 @@ src/inter_server_management_api/specs/domain_nameserver_get_response_inner.clj
 src/inter_server_management_api/specs/domain_nameserver_post_request.clj
 src/inter_server_management_api/specs/domain_nameserver_put_request.clj
 src/inter_server_management_api/specs/domain_order.clj
+src/inter_server_management_api/specs/domain_order_request.clj
 src/inter_server_management_api/specs/domain_order_response.clj
 src/inter_server_management_api/specs/domain_order_response_attributes.clj
 src/inter_server_management_api/specs/domain_order_services.clj
 src/inter_server_management_api/specs/domain_order_services10001.clj
-src/inter_server_management_api/specs/domain_order_tld_services.clj
 src/inter_server_management_api/specs/domain_owner_contact.clj
 src/inter_server_management_api/specs/domain_prov_process_pending.clj
 src/inter_server_management_api/specs/domain_prov_process_pending_attributes.clj
@@ -158,12 +151,13 @@ src/inter_server_management_api/specs/email_address.clj
 src/inter_server_management_api/specs/email_address_name.clj
 src/inter_server_management_api/specs/enable_scrub_200_response.clj
 src/inter_server_management_api/specs/enable_scrub_500_response.clj
-src/inter_server_management_api/specs/field_label.clj
+src/inter_server_management_api/specs/floating_ip_order_request.clj
 src/inter_server_management_api/specs/floating_ips_cancel_200_response.clj
-src/inter_server_management_api/specs/form_values.clj
 src/inter_server_management_api/specs/generic_response.clj
 src/inter_server_management_api/specs/get_account_info_401_response.clj
+src/inter_server_management_api/specs/get_account_locales_200_response_value.clj
 src/inter_server_management_api/specs/get_account_tfa_setup_200_response.clj
+src/inter_server_management_api/specs/get_affiliate_signups_200_response.clj
 src/inter_server_management_api/specs/get_oauth_redirect_200_response.clj
 src/inter_server_management_api/specs/get_order_detail_200_response.clj
 src/inter_server_management_api/specs/get_order_detail_200_response_ips_inner.clj
@@ -180,7 +174,6 @@ src/inter_server_management_api/specs/get_scrub_ip_details_200_response_filter_f
 src/inter_server_management_api/specs/get_scrub_ip_details_200_response_filter_firewall_rules_inner.clj
 src/inter_server_management_api/specs/get_scrub_ip_details_200_response_service_info.clj
 src/inter_server_management_api/specs/get_website_buy_ip_200_response.clj
-src/inter_server_management_api/specs/hard_drive.clj
 src/inter_server_management_api/specs/home.clj
 src/inter_server_management_api/specs/home_details.clj
 src/inter_server_management_api/specs/home_details_modules.clj
@@ -207,10 +200,6 @@ src/inter_server_management_api/specs/home_ticket_status.clj
 src/inter_server_management_api/specs/home_ticket_status_view.clj
 src/inter_server_management_api/specs/hostname_object.clj
 src/inter_server_management_api/specs/initiate_payment_200_response.clj
-src/inter_server_management_api/specs/inline_object.clj
-src/inter_server_management_api/specs/invoice.clj
-src/inter_server_management_api/specs/invoice_row.clj
-src/inter_server_management_api/specs/ip_block.clj
 src/inter_server_management_api/specs/ip_limit_range.clj
 src/inter_server_management_api/specs/ip_object.clj
 src/inter_server_management_api/specs/license.clj
@@ -219,6 +208,7 @@ src/inter_server_management_api/specs/license_client_link.clj
 src/inter_server_management_api/specs/license_extra_info_tables.clj
 src/inter_server_management_api/specs/license_ip_info.clj
 src/inter_server_management_api/specs/license_ip_info_row.clj
+src/inter_server_management_api/specs/license_order_request.clj
 src/inter_server_management_api/specs/license_row.clj
 src/inter_server_management_api/specs/license_service_info.clj
 src/inter_server_management_api/specs/license_service_type.clj
@@ -255,6 +245,7 @@ src/inter_server_management_api/specs/mail_extra_info_table_row.clj
 src/inter_server_management_api/specs/mail_log.clj
 src/inter_server_management_api/specs/mail_log_entry.clj
 src/inter_server_management_api/specs/mail_order.clj
+src/inter_server_management_api/specs/mail_order_request.clj
 src/inter_server_management_api/specs/mail_row.clj
 src/inter_server_management_api/specs/mail_schema.clj
 src/inter_server_management_api/specs/mail_schema_extra_info_tables.clj
@@ -267,15 +258,13 @@ src/inter_server_management_api/specs/mail_stats_type_volume_ip.clj
 src/inter_server_management_api/specs/mail_stats_type_volume_to.clj
 src/inter_server_management_api/specs/mail_tutorials_table.clj
 src/inter_server_management_api/specs/mail_tutorials_table_row.clj
-src/inter_server_management_api/specs/memory_option.clj
 src/inter_server_management_api/specs/module_settings.clj
 src/inter_server_management_api/specs/modules.clj
 src/inter_server_management_api/specs/monthly_counts.clj
-src/inter_server_management_api/specs/operating_system.clj
 src/inter_server_management_api/specs/password_request.clj
+src/inter_server_management_api/specs/patch_billing_credit_card_verify_request.clj
 src/inter_server_management_api/specs/patch_oauth_two_factor_200_response.clj
 src/inter_server_management_api/specs/patch_oauth_two_factor_request.clj
-src/inter_server_management_api/specs/payment_invoice_rows.clj
 src/inter_server_management_api/specs/place_buy_now_server_request.clj
 src/inter_server_management_api/specs/place_scrub_order_201_response.clj
 src/inter_server_management_api/specs/place_scrub_order_201_response_order_details.clj
@@ -286,6 +275,8 @@ src/inter_server_management_api/specs/post_website_buy_ip_200_response.clj
 src/inter_server_management_api/specs/post_website_buy_ip_request.clj
 src/inter_server_management_api/specs/post_website_migration_200_response.clj
 src/inter_server_management_api/specs/post_website_migration_request.clj
+src/inter_server_management_api/specs/put_scrub_ips_200_response.clj
+src/inter_server_management_api/specs/qs_order_request.clj
 src/inter_server_management_api/specs/queue_response.clj
 src/inter_server_management_api/specs/quickserver.clj
 src/inter_server_management_api/specs/quickserver_addons.clj
@@ -309,8 +300,6 @@ src/inter_server_management_api/specs/quickserver_service_extra.clj
 src/inter_server_management_api/specs/quickserver_service_info.clj
 src/inter_server_management_api/specs/quickserver_service_master.clj
 src/inter_server_management_api/specs/quickservers_cancel_200_response.clj
-src/inter_server_management_api/specs/raid_option.clj
-src/inter_server_management_api/specs/region.clj
 src/inter_server_management_api/specs/reply_ticket_request.clj
 src/inter_server_management_api/specs/reply_ticket_response_schema.clj
 src/inter_server_management_api/specs/restore_request.clj
@@ -330,6 +319,8 @@ src/inter_server_management_api/specs/server.clj
 src/inter_server_management_api/specs/server_asset.clj
 src/inter_server_management_api/specs/server_assets.clj
 src/inter_server_management_api/specs/server_billing_details.clj
+src/inter_server_management_api/specs/server_bulk_ipmi_power_response.clj
+src/inter_server_management_api/specs/server_bulk_ipmi_power_response_results_inner.clj
 src/inter_server_management_api/specs/server_client_link.clj
 src/inter_server_management_api/specs/server_extra_info_tables.clj
 src/inter_server_management_api/specs/server_ipmi_live_info.clj
@@ -352,7 +343,6 @@ src/inter_server_management_api/specs/server_order_cpu_li.clj
 src/inter_server_management_api/specs/server_order_field_label.clj
 src/inter_server_management_api/specs/server_order_field_labels.clj
 src/inter_server_management_api/specs/server_order_form_values.clj
-src/inter_server_management_api/specs/server_order_get_response.clj
 src/inter_server_management_api/specs/server_order_ip.clj
 src/inter_server_management_api/specs/server_order_ips_li.clj
 src/inter_server_management_api/specs/server_order_memory.clj
@@ -360,6 +350,8 @@ src/inter_server_management_api/specs/server_order_memory_li.clj
 src/inter_server_management_api/specs/server_order_memory_li_254.clj
 src/inter_server_management_api/specs/server_order_os.clj
 src/inter_server_management_api/specs/server_order_os_li.clj
+src/inter_server_management_api/specs/server_order_post_request.clj
+src/inter_server_management_api/specs/server_order_post_request_hd.clj
 src/inter_server_management_api/specs/server_order_raid.clj
 src/inter_server_management_api/specs/server_row.clj
 src/inter_server_management_api/specs/server_service_info.clj
@@ -377,6 +369,7 @@ src/inter_server_management_api/specs/service_types.clj
 src/inter_server_management_api/specs/services.clj
 src/inter_server_management_api/specs/services_info.clj
 src/inter_server_management_api/specs/ssl_cancel_200_response.clj
+src/inter_server_management_api/specs/ssl_order_request.clj
 src/inter_server_management_api/specs/status_monthly_breakdown.clj
 src/inter_server_management_api/specs/success_text_response.clj
 src/inter_server_management_api/specs/template_request.clj
@@ -435,7 +428,6 @@ src/inter_server_management_api/specs/vps_service_master.clj
 src/inter_server_management_api/specs/vps_snapshot.clj
 src/inter_server_management_api/specs/vps_template_row.clj
 src/inter_server_management_api/specs/vps_templates_list.clj
-src/inter_server_management_api/specs/vps_traffic_data_data_response.clj
 src/inter_server_management_api/specs/vps_traffic_data_data_section_response.clj
 src/inter_server_management_api/specs/vps_traffic_data_data_section_response_inner.clj
 src/inter_server_management_api/specs/vps_traffic_data_section_response.clj
@@ -456,6 +448,8 @@ src/inter_server_management_api/specs/website_billing_details.clj
 src/inter_server_management_api/specs/website_client_link.clj
 src/inter_server_management_api/specs/website_extra_info_tables.clj
 src/inter_server_management_api/specs/website_login_response.clj
+src/inter_server_management_api/specs/website_order_post_request.clj
+src/inter_server_management_api/specs/website_order_put_request.clj
 src/inter_server_management_api/specs/website_row.clj
 src/inter_server_management_api/specs/website_service_info.clj
 src/inter_server_management_api/specs/website_service_master.clj

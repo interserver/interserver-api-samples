@@ -31,7 +31,7 @@ export interface UpdateAccountTfaRequest {
  * Check if a given object implements the UpdateAccountTfaRequest interface.
  */
 export function instanceOfUpdateAccountTfaRequest(value: object): value is UpdateAccountTfaRequest {
-    if (!('_2fa_google_code' in value) || value['_2fa_google_code'] === undefined) return false;
+    if ((!('_2fa_google_code' in (value as Record<string, any>)) && !('2fa_google_code' in (value as Record<string, any>))) || ((value as Record<string, any>)['_2fa_google_code'] === undefined && (value as Record<string, any>)['2fa_google_code'] === undefined)) return false;
     return true;
 }
 

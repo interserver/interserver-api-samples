@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainOrderServices();
+    instance = new InterserverApiClient.DomainOrderServices();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('DomainOrderServices', function() {
     it('should create an instance of DomainOrderServices', function() {
       // uncomment below and update the code to test DomainOrderServices
-      //var instance = new InterServerManagementApi.DomainOrderServices();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainOrderServices);
+      //var instance = new InterserverApiClient.DomainOrderServices();
+      //expect(instance).to.be.a(InterserverApiClient.DomainOrderServices);
     });
 
     it('should have the property DomainOrderServices10001 (base name: "DomainOrderServices10001")', function() {
       // uncomment below and update the code to test the property DomainOrderServices10001
-      //var instance = new InterServerManagementApi.DomainOrderServices();
+      //var instance = new InterserverApiClient.DomainOrderServices();
       //expect(instance).to.be();
     });
 

@@ -1,5 +1,8 @@
 package io.swagger.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import javax.xml.bind.annotation.XmlElement;
@@ -15,50 +18,31 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse20026   {
   
-  @Schema(description = "Confirmation message.")
+  @Schema(description = "A map of IP addresses to their current reverse DNS hostnames.")
  /**
-   * Confirmation message.  
+   * A map of IP addresses to their current reverse DNS hostnames.  
   **/
-  private String text = null;
-  
-  @Schema(description = "The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.")
+  private Map<String, String> ips = null;
  /**
-   * The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.  
+   * A map of IP addresses to their current reverse DNS hostnames.
+   * @return ips
   **/
-  private Integer ticket = null;
- /**
-   * Confirmation message.
-   * @return text
-  **/
-  @JsonProperty("text")
-  public String getText() {
-    return text;
+  @JsonProperty("ips")
+  public Map<String, String> getIps() {
+    return ips;
   }
 
-  public void setText(String text) {
-    this.text = text;
+  public void setIps(Map<String, String> ips) {
+    this.ips = ips;
   }
 
-  public InlineResponse20026 text(String text) {
-    this.text = text;
+  public InlineResponse20026 ips(Map<String, String> ips) {
+    this.ips = ips;
     return this;
   }
 
- /**
-   * The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.
-   * @return ticket
-  **/
-  @JsonProperty("ticket")
-  public Integer getTicket() {
-    return ticket;
-  }
-
-  public void setTicket(Integer ticket) {
-    this.ticket = ticket;
-  }
-
-  public InlineResponse20026 ticket(Integer ticket) {
-    this.ticket = ticket;
+  public InlineResponse20026 putIpsItem(String key, String ipsItem) {
+    this.ips.put(key, ipsItem);
     return this;
   }
 
@@ -68,8 +52,7 @@ public class InlineResponse20026   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20026 {\n");
     
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    ticket: ").append(toIndentedString(ticket)).append("\n");
+    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("}");
     return sb.toString();
   }

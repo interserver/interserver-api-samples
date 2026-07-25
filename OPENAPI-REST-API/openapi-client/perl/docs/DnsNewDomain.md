@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DnsNewDomain
+# InterServerAPI::Object::DnsNewDomain
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DnsNewDomain;
+use InterServerAPI::Object::DnsNewDomain;
 ```
 
 ## Properties

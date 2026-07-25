@@ -66,6 +66,8 @@ public:
 	class GetScrubIpsListResponse;
 	class PlaceScrubOrderRequest;
 	class PlaceScrubOrderResponse;
+	class PutScrubIpsRequest;
+	class PutScrubIpsResponse;
 	class ScrubIpsDeleteGeoRuleRequest;
 	class ScrubIpsDeleteGeoRuleResponse;
 	class ScrubIpsDeleteRuleRequest;
@@ -85,6 +87,7 @@ public:
     DECLARE_DELEGATE_OneParam(FGetScrubIpLogsDelegate, const GetScrubIpLogsResponse&);
     DECLARE_DELEGATE_OneParam(FGetScrubIpsListDelegate, const GetScrubIpsListResponse&);
     DECLARE_DELEGATE_OneParam(FPlaceScrubOrderDelegate, const PlaceScrubOrderResponse&);
+    DECLARE_DELEGATE_OneParam(FPutScrubIpsDelegate, const PutScrubIpsResponse&);
     DECLARE_DELEGATE_OneParam(FScrubIpsDeleteGeoRuleDelegate, const ScrubIpsDeleteGeoRuleResponse&);
     DECLARE_DELEGATE_OneParam(FScrubIpsDeleteRuleDelegate, const ScrubIpsDeleteRuleResponse&);
     
@@ -102,6 +105,7 @@ public:
     FHttpRequestPtr GetScrubIpLogs(const GetScrubIpLogsRequest& Request, const FGetScrubIpLogsDelegate& Delegate = FGetScrubIpLogsDelegate()) const;
     FHttpRequestPtr GetScrubIpsList(const GetScrubIpsListRequest& Request, const FGetScrubIpsListDelegate& Delegate = FGetScrubIpsListDelegate()) const;
     FHttpRequestPtr PlaceScrubOrder(const PlaceScrubOrderRequest& Request, const FPlaceScrubOrderDelegate& Delegate = FPlaceScrubOrderDelegate()) const;
+    FHttpRequestPtr PutScrubIps(const PutScrubIpsRequest& Request, const FPutScrubIpsDelegate& Delegate = FPutScrubIpsDelegate()) const;
     FHttpRequestPtr ScrubIpsDeleteGeoRule(const ScrubIpsDeleteGeoRuleRequest& Request, const FScrubIpsDeleteGeoRuleDelegate& Delegate = FScrubIpsDeleteGeoRuleDelegate()) const;
     FHttpRequestPtr ScrubIpsDeleteRule(const ScrubIpsDeleteRuleRequest& Request, const FScrubIpsDeleteRuleDelegate& Delegate = FScrubIpsDeleteRuleDelegate()) const;
     
@@ -120,6 +124,7 @@ private:
     void OnGetScrubIpLogsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetScrubIpLogsDelegate Delegate) const;
     void OnGetScrubIpsListResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetScrubIpsListDelegate Delegate) const;
     void OnPlaceScrubOrderResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPlaceScrubOrderDelegate Delegate) const;
+    void OnPutScrubIpsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPutScrubIpsDelegate Delegate) const;
     void OnScrubIpsDeleteGeoRuleResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FScrubIpsDeleteGeoRuleDelegate Delegate) const;
     void OnScrubIpsDeleteRuleResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FScrubIpsDeleteRuleDelegate Delegate) const;
     

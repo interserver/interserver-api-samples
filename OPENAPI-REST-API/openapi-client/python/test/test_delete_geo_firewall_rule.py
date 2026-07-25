@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.delete_geo_firewall_rule import DeleteGeoFirewallRule
+from interserver_api_client.models.delete_geo_firewall_rule import DeleteGeoFirewallRule
 
 class TestDeleteGeoFirewallRule(unittest.TestCase):
     """DeleteGeoFirewallRule unit test stubs"""

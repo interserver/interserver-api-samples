@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**text** | [**kotlin.String**](.md) | Status message. |  [optional]
-**invoice** | [**kotlin.Int**](.md) | Invoice ID for payment. |  [optional]
-**order** | [**kotlin.Int**](.md) | Server order ID. |  [optional]
+**packageCosts** | [**InlineResponse20019PackageCosts**](InlineResponse20019PackageCosts.md) |  |  [optional]
+**serviceTypes** | [**kotlin.Array&lt;InlineResponse20019ServiceTypes&gt;**](InlineResponse20019ServiceTypes.md) |  |  [optional]
+**ips** | [**kotlin.Array&lt;InlineResponse20019Ips&gt;**](InlineResponse20019Ips.md) |  |  [optional]

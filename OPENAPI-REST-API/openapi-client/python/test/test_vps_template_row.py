@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_template_row import VpsTemplateRow
+from interserver_api_client.models.vps_template_row import VpsTemplateRow
 
 class TestVpsTemplateRow(unittest.TestCase):
     """VpsTemplateRow unit test stubs"""

@@ -457,60 +457,6 @@ void OpenAPIDomainsApi::OnGetDomainNameserversResponse(FHttpRequestPtr HttpReque
 	Delegate.ExecuteIfBound(Response);
 }
 
-FHttpRequestPtr OpenAPIDomainsApi::GetDomainOrderFields(const GetDomainOrderFieldsRequest& Request, const FGetDomainOrderFieldsDelegate& Delegate /*= FGetDomainOrderFieldsDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIDomainsApi::OnGetDomainOrderFieldsResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPIDomainsApi::OnGetDomainOrderFieldsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetDomainOrderFieldsDelegate Delegate) const
-{
-	GetDomainOrderFieldsResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
-FHttpRequestPtr OpenAPIDomainsApi::GetDomainOrderSearchResults(const GetDomainOrderSearchResultsRequest& Request, const FGetDomainOrderSearchResultsDelegate& Delegate /*= FGetDomainOrderSearchResultsDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIDomainsApi::OnGetDomainOrderSearchResultsResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPIDomainsApi::OnGetDomainOrderSearchResultsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetDomainOrderSearchResultsDelegate Delegate) const
-{
-	GetDomainOrderSearchResultsResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
 FHttpRequestPtr OpenAPIDomainsApi::GetDomainRenewal(const GetDomainRenewalRequest& Request, const FGetDomainRenewalDelegate& Delegate /*= FGetDomainRenewalDelegate()*/) const
 {
 	if (!IsValid())
@@ -750,6 +696,33 @@ FHttpRequestPtr OpenAPIDomainsApi::PostDomainRenewal(const PostDomainRenewalRequ
 void OpenAPIDomainsApi::OnPostDomainRenewalResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostDomainRenewalDelegate Delegate) const
 {
 	PostDomainRenewalResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
+FHttpRequestPtr OpenAPIDomainsApi::PostDomainSearch(const PostDomainSearchRequest& Request, const FPostDomainSearchDelegate& Delegate /*= FPostDomainSearchDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIDomainsApi::OnPostDomainSearchResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIDomainsApi::OnPostDomainSearchResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostDomainSearchDelegate Delegate) const
+{
+	PostDomainSearchResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }

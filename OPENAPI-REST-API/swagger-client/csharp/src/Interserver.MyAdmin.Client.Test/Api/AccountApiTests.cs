@@ -63,16 +63,6 @@ namespace Interserver.MyAdmin.Client.Test
         }
 
         /// <summary>
-        /// Test ChangeAccountUsername
-        /// </summary>
-        [Test]
-        public void ChangeAccountUsernameTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.ChangeAccountUsername();
-            //Assert.IsInstanceOf<TextResponse> (response, "response is TextResponse");
-        }
-        /// <summary>
         /// Test DeleteAccountOauthName
         /// </summary>
         [Test]

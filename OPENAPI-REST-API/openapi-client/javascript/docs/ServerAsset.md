@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerAsset
+# InterserverApiClient.ServerAsset
 
 ## Properties
 

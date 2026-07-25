@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.license_extra_info_tables import LicenseExtraInfoTables
+from interserver_api_client.models.license_extra_info_tables import LicenseExtraInfoTables
 
 # TODO update the JSON string below
 json = "{}"

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainServiceType model module.
  * @module model/DomainServiceType
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainServiceType {
     /**

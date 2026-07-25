@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsitesOrderServiceOffer = Initialize-PSOpenAPIToolsWebsitesOrderServiceOffer  -ServiceOfferId 136 `
+$WebsitesOrderServiceOffer = Initialize-InterserverApiWebsitesOrderServiceOffer  -ServiceOfferId 136 `
  -ServiceId 1026 `
  -IntroCost 96.00 `
  -RenewalCost 96.00 `

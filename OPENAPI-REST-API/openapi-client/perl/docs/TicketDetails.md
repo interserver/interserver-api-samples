@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::TicketDetails
+# InterServerAPI::Object::TicketDetails
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::TicketDetails;
+use InterServerAPI::Object::TicketDetails;
 ```
 
 ## Properties

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LoginSubmissionExampleGRecaptchaResponse();
+    instance = new InterserverApiClient.LoginSubmissionExampleGRecaptchaResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('LoginSubmissionExampleGRecaptchaResponse', function() {
     it('should create an instance of LoginSubmissionExampleGRecaptchaResponse', function() {
       // uncomment below and update the code to test LoginSubmissionExampleGRecaptchaResponse
-      //var instance = new InterServerManagementApi.LoginSubmissionExampleGRecaptchaResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.LoginSubmissionExampleGRecaptchaResponse);
+      //var instance = new InterserverApiClient.LoginSubmissionExampleGRecaptchaResponse();
+      //expect(instance).to.be.a(InterserverApiClient.LoginSubmissionExampleGRecaptchaResponse);
     });
 
     it('should have the property __v_isShallow (base name: "__v_isShallow")', function() {
       // uncomment below and update the code to test the property __v_isShallow
-      //var instance = new InterServerManagementApi.LoginSubmissionExampleGRecaptchaResponse();
+      //var instance = new InterserverApiClient.LoginSubmissionExampleGRecaptchaResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property dep (base name: "dep")', function() {
       // uncomment below and update the code to test the property dep
-      //var instance = new InterServerManagementApi.LoginSubmissionExampleGRecaptchaResponse();
+      //var instance = new InterserverApiClient.LoginSubmissionExampleGRecaptchaResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property __v_isRef (base name: "__v_isRef")', function() {
       // uncomment below and update the code to test the property __v_isRef
-      //var instance = new InterServerManagementApi.LoginSubmissionExampleGRecaptchaResponse();
+      //var instance = new InterserverApiClient.LoginSubmissionExampleGRecaptchaResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property _rawValue (base name: "_rawValue")', function() {
       // uncomment below and update the code to test the property _rawValue
-      //var instance = new InterServerManagementApi.LoginSubmissionExampleGRecaptchaResponse();
+      //var instance = new InterserverApiClient.LoginSubmissionExampleGRecaptchaResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property _value (base name: "_value")', function() {
       // uncomment below and update the code to test the property _value
-      //var instance = new InterServerManagementApi.LoginSubmissionExampleGRecaptchaResponse();
+      //var instance = new InterserverApiClient.LoginSubmissionExampleGRecaptchaResponse();
       //expect(instance).to.be();
     });
 

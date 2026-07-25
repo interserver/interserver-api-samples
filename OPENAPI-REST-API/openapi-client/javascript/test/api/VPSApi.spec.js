@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VPSApi();
+    instance = new InterserverApiClient.VPSApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -168,6 +168,16 @@
         done();
       });
     });
+    describe('getVpsBackup', function() {
+      it('should call getVpsBackup successfully', function(done) {
+        //uncomment below and update the code to test getVpsBackup
+        //instance.getVpsBackup(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getVpsBackups', function() {
       it('should call getVpsBackups successfully', function(done) {
         //uncomment below and update the code to test getVpsBackups
@@ -198,6 +208,26 @@
         done();
       });
     });
+    describe('getVpsChangeHostname', function() {
+      it('should call getVpsChangeHostname successfully', function(done) {
+        //uncomment below and update the code to test getVpsChangeHostname
+        //instance.getVpsChangeHostname(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getVpsChangeRootPassword', function() {
+      it('should call getVpsChangeRootPassword successfully', function(done) {
+        //uncomment below and update the code to test getVpsChangeRootPassword
+        //instance.getVpsChangeRootPassword(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getVpsChangeTimezone', function() {
       it('should call getVpsChangeTimezone successfully', function(done) {
         //uncomment below and update the code to test getVpsChangeTimezone
@@ -212,6 +242,16 @@
       it('should call getVpsInfo successfully', function(done) {
         //uncomment below and update the code to test getVpsInfo
         //instance.getVpsInfo(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getVpsInsertCd', function() {
+      it('should call getVpsInsertCd successfully', function(done) {
+        //uncomment below and update the code to test getVpsInsertCd
+        //instance.getVpsInsertCd(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -242,6 +282,16 @@
       it('should call getVpsReinstallOs successfully', function(done) {
         //uncomment below and update the code to test getVpsReinstallOs
         //instance.getVpsReinstallOs(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getVpsResetPassword', function() {
+      it('should call getVpsResetPassword successfully', function(done) {
+        //uncomment below and update the code to test getVpsResetPassword
+        //instance.getVpsResetPassword(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -302,16 +352,6 @@
       it('should call getVpsWelcomeEmail successfully', function(done) {
         //uncomment below and update the code to test getVpsWelcomeEmail
         //instance.getVpsWelcomeEmail(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('postVpsBackup', function() {
-      it('should call postVpsBackup successfully', function(done) {
-        //uncomment below and update the code to test postVpsBackup
-        //instance.postVpsBackup(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});
@@ -448,6 +488,16 @@
         done();
       });
     });
+    describe('postVpsTrafficUsage', function() {
+      it('should call postVpsTrafficUsage successfully', function(done) {
+        //uncomment below and update the code to test postVpsTrafficUsage
+        //instance.postVpsTrafficUsage(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('postVpsViewDesktop', function() {
       it('should call postVpsViewDesktop successfully', function(done) {
         //uncomment below and update the code to test postVpsViewDesktop
@@ -462,6 +512,16 @@
       it('should call putVps successfully', function(done) {
         //uncomment below and update the code to test putVps
         //instance.putVps(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('putVpsBuyHdSpace', function() {
+      it('should call putVpsBuyHdSpace successfully', function(done) {
+        //uncomment below and update the code to test putVpsBuyHdSpace
+        //instance.putVpsBuyHdSpace(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

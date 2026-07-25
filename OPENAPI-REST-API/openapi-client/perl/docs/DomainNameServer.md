@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainNameServer
+# InterServerAPI::Object::DomainNameServer
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainNameServer;
+use InterServerAPI::Object::DomainNameServer;
 ```
 
 ## Properties

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps import Vps
+from interserver_api_client.models.vps import Vps
 
 class TestVps(unittest.TestCase):
     """Vps unit test stubs"""
@@ -36,7 +36,7 @@ class TestVps(unittest.TestCase):
         model = Vps()
         if include_optional:
             return Vps(
-                service_info = openapi_client.models.vps_service_info.VpsServiceInfo(
+                service_info = interserver_api_client.models.vps_service_info.VpsServiceInfo(
                     vps_id = '85872', 
                     vps_custid = '223513', 
                     vps_server = '2439', 
@@ -65,14 +65,14 @@ class TestVps(unittest.TestCase):
                     vps_diskused = '0', 
                     vps_diskmax = '0', ),
                 client_links = [
-                    openapi_client.models.vps_client_link.VpsClientLink(
+                    interserver_api_client.models.vps_client_link.VpsClientLink(
                         label = '', 
                         link = '', 
                         icon = '', 
                         icon_text = '', 
                         help_text = '', )
                     ],
-                billing_details = openapi_client.models.vps_billing_details.VpsBillingDetails(
+                billing_details = interserver_api_client.models.vps_billing_details.VpsBillingDetails(
                     service_last_invoice_date = 'July 26, 2023', 
                     service_payment_status = 'Paid', 
                     service_frequency = 'Monthly', 
@@ -82,10 +82,10 @@ class TestVps(unittest.TestCase):
                     service_currency_symbol = '$', 
                     service_coupon = 'TheCouponIUsed', 
                     service_cost_info = '0.00', 
-                    service_extra = openapi_client.models.vps_service_extra.VpsServiceExtra(
+                    service_extra = interserver_api_client.models.vps_service_extra.VpsServiceExtra(
                         spice = 5903, 
                         snapshots = [
-                            openapi_client.models.vps_snapshot.VpsSnapshot(
+                            interserver_api_client.models.vps_snapshot.VpsSnapshot(
                                 name = '', 
                                 used = 56, 
                                 date = 56, )
@@ -93,7 +93,7 @@ class TestVps(unittest.TestCase):
                     service_extra_json = '{"spice":5903,"snapshots":[{"name":"third","used":36490445,"date":1692095220},{"name":"second","used":40894464,"date":1692181620},{"name":"first","used":54735668,"date":1692268020}]}', ),
                 cust_currency = '',
                 cust_currency_symbol = '',
-                service_master = openapi_client.models.vps_service_master.VpsServiceMaster(
+                service_master = interserver_api_client.models.vps_service_master.VpsServiceMaster(
                     vps_id = '2439', 
                     vps_name = 'Mystaging', 
                     vps_ip = '10.11.12.13', 
@@ -120,19 +120,19 @@ class TestVps(unittest.TestCase):
                     vps_order = '36978', ),
                 package = '',
                 os_template = '',
-                service_extra = openapi_client.models.vps_service_extra.VpsServiceExtra(
+                service_extra = interserver_api_client.models.vps_service_extra.VpsServiceExtra(
                     spice = 5903, 
                     snapshots = [
-                        openapi_client.models.vps_snapshot.VpsSnapshot(
+                        interserver_api_client.models.vps_snapshot.VpsSnapshot(
                             name = '', 
                             used = 56, 
                             date = 56, )
                         ], ),
-                extra_info_tables = openapi_client.models.vps_extra_info_tables.VpsExtraInfoTables(
-                    ip_info = openapi_client.models.vps_ip_info.VpsIPInfo(
+                extra_info_tables = interserver_api_client.models.vps_extra_info_tables.VpsExtraInfoTables(
+                    ip_info = interserver_api_client.models.vps_ip_info.VpsIPInfo(
                         title = 'IP Information', 
                         rows = [
-                            openapi_client.models.vps_ip_info_row.VpsIPInfoRow(
+                            interserver_api_client.models.vps_ip_info_row.VpsIPInfoRow(
                                 desc = '', 
                                 value = '', )
                             ], ), ),
@@ -141,29 +141,29 @@ class TestVps(unittest.TestCase):
                 token = '',
                 da_link = 56,
                 sr_link = 56,
-                cp_data = openapi_client.models.vps_cp_data.VpsCPData(
+                cp_data = interserver_api_client.models.vps_cp_data.VpsCPData(
                     name = '', 
                     cost = 56, ),
-                da_data = openapi_client.models.vps_da_data.VpsDAData(
-                    free = openapi_client.models.vps_da_license.VpsDALicense(
+                da_data = interserver_api_client.models.vps_da_data.VpsDAData(
+                    free = interserver_api_client.models.vps_da_license.VpsDALicense(
                         name = '', 
                         sub_name = '', 
                         cost = 56, 
                         img_disabled = '', 
                         img_active = '', ), ),
-                plesk12_data = openapi_client.models.vps_plesk12_data.VpsPlesk12Data(
-                    admin = openapi_client.models.vps_plesk_license.VpsPleskLicense(
+                plesk12_data = interserver_api_client.models.vps_plesk12_data.VpsPlesk12Data(
+                    admin = interserver_api_client.models.vps_plesk_license.VpsPleskLicense(
                         id = 56, 
                         name = '', 
                         sub_name = '', 
                         cost = 56, ), 
-                    pro = openapi_client.models.vps_plesk_license.VpsPleskLicense(
+                    pro = interserver_api_client.models.vps_plesk_license.VpsPleskLicense(
                         id = 56, 
                         name = '', 
                         sub_name = '', 
                         cost = 56, ), 
                     host = , ),
-                service_addons = openapi_client.models.vps_service_addons.VpsServiceAddons(
+                service_addons = interserver_api_client.models.vps_service_addons.VpsServiceAddons(
                     has_cpanel = True, 
                     has_directadmin = True, 
                     has_fantastico = True, 
@@ -196,7 +196,7 @@ class TestVps(unittest.TestCase):
             )
         else:
             return Vps(
-                service_info = openapi_client.models.vps_service_info.VpsServiceInfo(
+                service_info = interserver_api_client.models.vps_service_info.VpsServiceInfo(
                     vps_id = '85872', 
                     vps_custid = '223513', 
                     vps_server = '2439', 
@@ -225,14 +225,14 @@ class TestVps(unittest.TestCase):
                     vps_diskused = '0', 
                     vps_diskmax = '0', ),
                 client_links = [
-                    openapi_client.models.vps_client_link.VpsClientLink(
+                    interserver_api_client.models.vps_client_link.VpsClientLink(
                         label = '', 
                         link = '', 
                         icon = '', 
                         icon_text = '', 
                         help_text = '', )
                     ],
-                billing_details = openapi_client.models.vps_billing_details.VpsBillingDetails(
+                billing_details = interserver_api_client.models.vps_billing_details.VpsBillingDetails(
                     service_last_invoice_date = 'July 26, 2023', 
                     service_payment_status = 'Paid', 
                     service_frequency = 'Monthly', 
@@ -242,10 +242,10 @@ class TestVps(unittest.TestCase):
                     service_currency_symbol = '$', 
                     service_coupon = 'TheCouponIUsed', 
                     service_cost_info = '0.00', 
-                    service_extra = openapi_client.models.vps_service_extra.VpsServiceExtra(
+                    service_extra = interserver_api_client.models.vps_service_extra.VpsServiceExtra(
                         spice = 5903, 
                         snapshots = [
-                            openapi_client.models.vps_snapshot.VpsSnapshot(
+                            interserver_api_client.models.vps_snapshot.VpsSnapshot(
                                 name = '', 
                                 used = 56, 
                                 date = 56, )
@@ -253,7 +253,7 @@ class TestVps(unittest.TestCase):
                     service_extra_json = '{"spice":5903,"snapshots":[{"name":"third","used":36490445,"date":1692095220},{"name":"second","used":40894464,"date":1692181620},{"name":"first","used":54735668,"date":1692268020}]}', ),
                 cust_currency = '',
                 cust_currency_symbol = '',
-                service_master = openapi_client.models.vps_service_master.VpsServiceMaster(
+                service_master = interserver_api_client.models.vps_service_master.VpsServiceMaster(
                     vps_id = '2439', 
                     vps_name = 'Mystaging', 
                     vps_ip = '10.11.12.13', 
@@ -279,19 +279,19 @@ class TestVps(unittest.TestCase):
                     vps_drive_type = 'SSD', 
                     vps_order = '36978', ),
                 package = '',
-                service_extra = openapi_client.models.vps_service_extra.VpsServiceExtra(
+                service_extra = interserver_api_client.models.vps_service_extra.VpsServiceExtra(
                     spice = 5903, 
                     snapshots = [
-                        openapi_client.models.vps_snapshot.VpsSnapshot(
+                        interserver_api_client.models.vps_snapshot.VpsSnapshot(
                             name = '', 
                             used = 56, 
                             date = 56, )
                         ], ),
-                extra_info_tables = openapi_client.models.vps_extra_info_tables.VpsExtraInfoTables(
-                    ip_info = openapi_client.models.vps_ip_info.VpsIPInfo(
+                extra_info_tables = interserver_api_client.models.vps_extra_info_tables.VpsExtraInfoTables(
+                    ip_info = interserver_api_client.models.vps_ip_info.VpsIPInfo(
                         title = 'IP Information', 
                         rows = [
-                            openapi_client.models.vps_ip_info_row.VpsIPInfoRow(
+                            interserver_api_client.models.vps_ip_info_row.VpsIPInfoRow(
                                 desc = '', 
                                 value = '', )
                             ], ), ),
@@ -299,29 +299,29 @@ class TestVps(unittest.TestCase):
                 token = '',
                 da_link = 56,
                 sr_link = 56,
-                cp_data = openapi_client.models.vps_cp_data.VpsCPData(
+                cp_data = interserver_api_client.models.vps_cp_data.VpsCPData(
                     name = '', 
                     cost = 56, ),
-                da_data = openapi_client.models.vps_da_data.VpsDAData(
-                    free = openapi_client.models.vps_da_license.VpsDALicense(
+                da_data = interserver_api_client.models.vps_da_data.VpsDAData(
+                    free = interserver_api_client.models.vps_da_license.VpsDALicense(
                         name = '', 
                         sub_name = '', 
                         cost = 56, 
                         img_disabled = '', 
                         img_active = '', ), ),
-                plesk12_data = openapi_client.models.vps_plesk12_data.VpsPlesk12Data(
-                    admin = openapi_client.models.vps_plesk_license.VpsPleskLicense(
+                plesk12_data = interserver_api_client.models.vps_plesk12_data.VpsPlesk12Data(
+                    admin = interserver_api_client.models.vps_plesk_license.VpsPleskLicense(
                         id = 56, 
                         name = '', 
                         sub_name = '', 
                         cost = 56, ), 
-                    pro = openapi_client.models.vps_plesk_license.VpsPleskLicense(
+                    pro = interserver_api_client.models.vps_plesk_license.VpsPleskLicense(
                         id = 56, 
                         name = '', 
                         sub_name = '', 
                         cost = 56, ), 
                     host = , ),
-                service_addons = openapi_client.models.vps_service_addons.VpsServiceAddons(
+                service_addons = interserver_api_client.models.vps_service_addons.VpsServiceAddons(
                     has_cpanel = True, 
                     has_directadmin = True, 
                     has_fantastico = True, 

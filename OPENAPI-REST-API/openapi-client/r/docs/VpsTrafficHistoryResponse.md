@@ -1,4 +1,4 @@
-# openapi::VpsTrafficHistoryResponse
+# interserverapi::VpsTrafficHistoryResponse
 
 VPS Traffic Data History Section
 

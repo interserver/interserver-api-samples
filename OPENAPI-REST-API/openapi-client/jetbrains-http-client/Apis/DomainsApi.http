@@ -1,19 +1,30 @@
 ## DomainsApi
 
-### Place Domain Order
-## Place Domain Order
+### Place a new domain registration or transfer order, generate billing invoice
+## Place a new domain registration or transfer order, generate billing invoice
 POST https://my.interserver.net/apiv2/domains/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Add Domain DNSSEC Records
-## Add Domain DNSSEC Records
+{
+ "hostname": "<string>",
+ "type": "<string>",
+ "coupon": "<string>",
+ "whois_privacy": "<string>"
+}
+
+
+### Register DNSSEC DS records on the domain at OpenSRS
+## Register DNSSEC DS records on the domain at OpenSRS
 POST https://my.interserver.net/apiv2/domains/{{id}}/dnssec
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -26,12 +37,13 @@ sessionid: {{apiKey}}
 }
 
 
-### Add Registered Nameserver
-## Add Registered Nameserver
+### Register a new nameserver host with glue IP at the registry (registered nameserver)
+## Register a new nameserver host with glue IP at the registry (registered nameserver)
 POST https://my.interserver.net/apiv2/domains/{{id}}/nameservers
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -42,188 +54,220 @@ sessionid: {{apiKey}}
 }
 
 
-### Cancel Domain Order
-## Cancel Domain Order
+### Cancel a domain order in the billing system to stop auto-renewals
+## Cancel a domain order in the billing system to stop auto-renewals
 DELETE https://my.interserver.net/apiv2/domains/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Remove Domain DNSSEC Records
-## Remove Domain DNSSEC Records
-DELETE https://my.interserver.net/apiv2/domains/{{id}}/dnssec?action={{action}}
+### Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
+## Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
+DELETE https://my.interserver.net/apiv2/domains/{{id}}/dnssec
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Delete Registered Nameserver
-## Delete Registered Nameserver
+### Remove one registered nameserver glue record from the domain
+## Remove one registered nameserver glue record from the domain
 DELETE https://my.interserver.net/apiv2/domains/{{id}}/nameservers?index={{index}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Domain Contact Details
-## Get Domain Contact Details
+### Read the current registrant/admin/tech/billing contact field set for a domain
+## Read the current registrant/admin/tech/billing contact field set for a domain
 GET https://my.interserver.net/apiv2/domains/{{id}}/contact
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Domain DNSSEC Records
-## Get Domain DNSSEC Records
+### Read the DNSSEC DS record set currently registered with the registrar
+## Read the DNSSEC DS record set currently registered with the registrar
 GET https://my.interserver.net/apiv2/domains/{{id}}/dnssec
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Domain Order
-## Get Domain Order
+### Read full billing, registrar, and service detail for one domain
+## Read full billing, registrar, and service detail for one domain
 GET https://my.interserver.net/apiv2/domains/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Domain Invoices
-## Get Domain Invoices
+### List all billing invoices scoped to one domain order
+## List all billing invoices scoped to one domain order
 GET https://my.interserver.net/apiv2/domains/{{id}}/invoices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Lookup Domain Availability and Pricing
-## Lookup Domain Availability and Pricing
+### Check availability, premium status, and pricing for a specific domain
+## Check availability, premium status, and pricing for a specific domain
 GET https://my.interserver.net/apiv2/domains/lookup/{{name}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Registered Nameservers
-## List Registered Nameservers
+### List registered nameserver hosts and glue IP addresses for a domain
+## List registered nameserver hosts and glue IP addresses for a domain
 GET https://my.interserver.net/apiv2/domains/{{id}}/nameservers
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Domain Order Fields
-## Get Domain Order Fields
-GET https://my.interserver.net/apiv2/domains/order/{{domain}}/{{regType}}
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Get Domain Order Search Results
-## Get Domain Order Search Results
-GET https://my.interserver.net/apiv2/domains/order/{{domain}}
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Start Domain Renewal Flow
-## Start Domain Renewal Flow
+### Read renewal pricing, expiry, and whether a renewal invoice already exists
+## Read renewal pricing, expiry, and whether a renewal invoice already exists
 GET https://my.interserver.net/apiv2/domains/{{id}}/renew
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Search Domain Suggestions
-## Search Domain Suggestions
+### Get registrar-suggested domain alternatives and bulk availability for a search term
+## Get registrar-suggested domain alternatives and bulk availability for a search term
 GET https://my.interserver.net/apiv2/domains/search/{{name}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Start Domain Transfer Flow
-## Start Domain Transfer Flow
+### Read OpenSRS transfer status for an in-progress domain transfer order
+## Read OpenSRS transfer status for an in-progress domain transfer order
 GET https://my.interserver.net/apiv2/domains/{{id}}/transfer
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Whois Privacy Status
-## Get Whois Privacy Status
+### Read Whois privacy availability, current state, and add-on pricing for a domain
+## Read Whois privacy availability, current state, and add-on pricing for a domain
 GET https://my.interserver.net/apiv2/domains/{{id}}/whois
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Domain Orders
-## List Domain Orders
+### List every domain registration on the account with billing and registration metadata
+## List every domain registration on the account with billing and registration metadata
 GET https://my.interserver.net/apiv2/domains
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Resend Domain Welcome Email
-## Resend Domain Welcome Email
+### Resend the domain welcome email with registration details and management instructions
+## Resend the domain welcome email with registration details and management instructions
 GET https://my.interserver.net/apiv2/domains/{{id}}/welcome_email
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Domain Ordering Information
-## Get Domain Ordering Information
+### Read the buyable domain TLD service catalog and Whois privacy pricing
+## Read the buyable domain TLD service catalog and Whois privacy pricing
 GET https://my.interserver.net/apiv2/domains/order
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Validate Domain Order
-## Validate Domain Order
+### Validate posted domain-order field values before committing — dry run
+## Validate posted domain-order field values before committing — dry run
 PATCH https://my.interserver.net/apiv2/domains/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Request Domain Renewal
-## Request Domain Renewal
+{
+ "hostname": "<string>",
+ "type": "<string>",
+ "coupon": "<string>",
+ "whois_privacy": "<string>"
+}
+
+
+### Submit a domain renewal request and generate the renewal invoice
+## Submit a domain renewal request and generate the renewal invoice
 POST https://my.interserver.net/apiv2/domains/{{id}}/renew
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Request Domain Transfer
-## Request Domain Transfer
+### Get the full order form data for a hostname in one round-trip (search → order preview)
+## Get the full order form data for a hostname in one round-trip (search → order preview)
+POST https://my.interserver.net/apiv2/domains/search/{{name}}
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Re-poll OpenSRS transfer status for a domain order via POST
+## Re-poll OpenSRS transfer status for a domain order via POST
 POST https://my.interserver.net/apiv2/domains/{{id}}/transfer
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Domain Order Search
-## Domain Order Search
+### Preview per-TLD field requirements for a domain order — no commit
+## Preview per-TLD field requirements for a domain order — no commit
 PUT https://my.interserver.net/apiv2/domains/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Domain Contact Details
-## Update Domain Contact Details
+{
+ "hostname": "<string>",
+ "type": "<string>",
+ "coupon": "<string>",
+ "whois_privacy": "<string>"
+}
+
+
+### Update registrant/admin contact details and push them to OpenSRS
+## Update registrant/admin contact details and push them to OpenSRS
 POST https://my.interserver.net/apiv2/domains/{{id}}/contact
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -246,20 +290,22 @@ sessionid: {{apiKey}}
 }
 
 
-### Update Domain Order
-## Update Domain Order
+### POST mutation hook for the domain detail page (use dedicated ops where possible)
+## POST mutation hook for the domain detail page (use dedicated ops where possible)
 POST https://my.interserver.net/apiv2/domains/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Replace Nameserver Set
-## Replace Nameserver Set
+### Replace the full authoritative-nameserver delegation list at the registrar
+## Replace the full authoritative-nameserver delegation list at the registrar
 PUT https://my.interserver.net/apiv2/domains/{{id}}/nameservers
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -269,12 +315,13 @@ sessionid: {{apiKey}}
 }
 
 
-### Update Whois Privacy
-## Update Whois Privacy
+### Order, enable, or cancel the Whois privacy add-on for a domain
+## Order, enable, or cancel the Whois privacy add-on for a domain
 POST https://my.interserver.net/apiv2/domains/{{id}}/whois
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

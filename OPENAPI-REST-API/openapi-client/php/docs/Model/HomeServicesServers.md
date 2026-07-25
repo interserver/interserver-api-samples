@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**links** | [**\Interserver\MyAdmin\Model\HomeServicesServersLinks**](HomeServicesServersLinks.md) |  | [optional]
+**links** | [**\Interserver\\MyAdmin\Model\HomeServicesServersLinks**](HomeServicesServersLinks.md) |  | [optional]
 **count** | **int** | Number of servers. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

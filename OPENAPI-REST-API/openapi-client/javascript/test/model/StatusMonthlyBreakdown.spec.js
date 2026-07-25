@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.StatusMonthlyBreakdown();
+    instance = new InterserverApiClient.StatusMonthlyBreakdown();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('StatusMonthlyBreakdown', function() {
     it('should create an instance of StatusMonthlyBreakdown', function() {
       // uncomment below and update the code to test StatusMonthlyBreakdown
-      //var instance = new InterServerManagementApi.StatusMonthlyBreakdown();
-      //expect(instance).to.be.a(InterServerManagementApi.StatusMonthlyBreakdown);
+      //var instance = new InterserverApiClient.StatusMonthlyBreakdown();
+      //expect(instance).to.be.a(InterserverApiClient.StatusMonthlyBreakdown);
     });
 
     it('should have the property _default (base name: "default")', function() {
       // uncomment below and update the code to test the property _default
-      //var instance = new InterServerManagementApi.StatusMonthlyBreakdown();
+      //var instance = new InterserverApiClient.StatusMonthlyBreakdown();
       //expect(instance).to.be();
     });
 
     it('should have the property failed (base name: "failed")', function() {
       // uncomment below and update the code to test the property failed
-      //var instance = new InterServerManagementApi.StatusMonthlyBreakdown();
+      //var instance = new InterserverApiClient.StatusMonthlyBreakdown();
       //expect(instance).to.be();
     });
 
     it('should have the property rejected (base name: "rejected")', function() {
       // uncomment below and update the code to test the property rejected
-      //var instance = new InterServerManagementApi.StatusMonthlyBreakdown();
+      //var instance = new InterserverApiClient.StatusMonthlyBreakdown();
       //expect(instance).to.be();
     });
 
     it('should have the property pending (base name: "pending")', function() {
       // uncomment below and update the code to test the property pending
-      //var instance = new InterServerManagementApi.StatusMonthlyBreakdown();
+      //var instance = new InterserverApiClient.StatusMonthlyBreakdown();
       //expect(instance).to.be();
     });
 
     it('should have the property locked (base name: "locked")', function() {
       // uncomment below and update the code to test the property locked
-      //var instance = new InterServerManagementApi.StatusMonthlyBreakdown();
+      //var instance = new InterserverApiClient.StatusMonthlyBreakdown();
       //expect(instance).to.be();
     });
 
     it('should have the property paid (base name: "paid")', function() {
       // uncomment below and update the code to test the property paid
-      //var instance = new InterServerManagementApi.StatusMonthlyBreakdown();
+      //var instance = new InterserverApiClient.StatusMonthlyBreakdown();
       //expect(instance).to.be();
     });
 

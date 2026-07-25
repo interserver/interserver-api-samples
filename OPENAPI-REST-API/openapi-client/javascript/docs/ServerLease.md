@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerLease
+# InterserverApiClient.ServerLease
 
 ## Properties
 

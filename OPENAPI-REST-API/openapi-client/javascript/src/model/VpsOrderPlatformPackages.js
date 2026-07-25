@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsOrderPlatformPackages model module.
  * @module model/VpsOrderPlatformPackages
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderPlatformPackages {
     /**

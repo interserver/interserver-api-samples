@@ -11,4 +11,8 @@
 |**success** | **Boolean** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

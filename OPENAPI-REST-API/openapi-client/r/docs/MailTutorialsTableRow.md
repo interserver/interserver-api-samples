@@ -1,4 +1,4 @@
-# openapi::MailTutorialsTableRow
+# interserverapi::MailTutorialsTableRow
 
 A single tutorial entry with a label and URL.
 

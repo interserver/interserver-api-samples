@@ -139,7 +139,7 @@ export function instanceOfServer(value: object): value is Server {
     if (!('billingDetails' in value) || value['billingDetails'] === undefined) return false;
     if (!('custCurrency' in value) || value['custCurrency'] === undefined) return false;
     if (!('custCurrencySymbol' in value) || value['custCurrencySymbol'] === undefined) return false;
-    if (!('_package' in value) || value['_package'] === undefined) return false;
+    if ((!('_package' in (value as Record<string, any>)) && !('package' in (value as Record<string, any>))) || ((value as Record<string, any>)['_package'] === undefined && (value as Record<string, any>)['package'] === undefined)) return false;
     if (!('serviceExtra' in value) || value['serviceExtra'] === undefined) return false;
     if (!('locations' in value) || value['locations'] === undefined) return false;
     if (!('networkInfo' in value) || value['networkInfo'] === undefined) return false;

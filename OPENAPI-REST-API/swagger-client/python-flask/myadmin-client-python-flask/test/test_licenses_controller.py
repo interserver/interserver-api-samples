@@ -6,10 +6,11 @@ from flask import json
 from six import BytesIO
 
 from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoiceRows  # noqa: E501
-from myadmin-client-python-flask.models.inline_response2004 import InlineResponse2004  # noqa: E501
+from myadmin-client-python-flask.models.inline_response2005 import InlineResponse2005  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.ip_object import IpObject  # noqa: E501
 from myadmin-client-python-flask.models.license import License  # noqa: E501
+from myadmin-client-python-flask.models.license_order_request import LicenseOrderRequest  # noqa: E501
 from myadmin-client-python-flask.models.license_row import LicenseRow  # noqa: E501
 from myadmin-client-python-flask.models.licenses_order import LicensesOrder  # noqa: E501
 from myadmin-client-python-flask.models.service_order_post_response import ServiceOrderPostResponse  # noqa: E501
@@ -23,18 +24,21 @@ class TestLicensesController(BaseTestCase):
     def test_add_license(self):
         """Test case for add_license
 
-        Place License Order
+        Order a new software license and create the recurring invoice
         """
+        body = LicenseOrderRequest()
         response = self.client.open(
             '/apiv2/licenses/order',
-            method='POST')
+            method='POST',
+            data=json.dumps(body),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_get_license_info(self):
         """Test case for get_license_info
 
-        Get License
+        Get full details for one license including status, IP, and links
         """
         response = self.client.open(
             '/apiv2/licenses/{id}'.format(id=56),
@@ -45,7 +49,7 @@ class TestLicensesController(BaseTestCase):
     def test_get_license_invoices(self):
         """Test case for get_license_invoices
 
-        Get License Invoices
+        List all billing invoices tied to one software license service
         """
         response = self.client.open(
             '/apiv2/licenses/{id}/invoices'.format(id=56),
@@ -56,7 +60,7 @@ class TestLicensesController(BaseTestCase):
     def test_get_license_list(self):
         """Test case for get_license_list
 
-        List Licenses
+        List all software licenses owned by the authenticated customer
         """
         response = self.client.open(
             '/apiv2/licenses',
@@ -64,21 +68,10 @@ class TestLicensesController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_get_license_order_cat_tag_info(self):
-        """Test case for get_license_order_cat_tag_info
-
-        Get License Order Information for Category
-        """
-        response = self.client.open(
-            '/apiv2/licenses/order/{catTag}'.format(cat_tag='cat_tag_example'),
-            method='GET')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_get_licenses_welcome_email(self):
         """Test case for get_licenses_welcome_email
 
-        Resend License Welcome Email
+        Resend the license welcome email with the key and activation steps
         """
         response = self.client.open(
             '/apiv2/licenses/{id}/welcome_email'.format(id=56),
@@ -89,7 +82,7 @@ class TestLicensesController(BaseTestCase):
     def test_get_new_license(self):
         """Test case for get_new_license
 
-        Get License Order Information
+        Get available license types, packages, and pricing for ordering
         """
         response = self.client.open(
             '/apiv2/licenses/order',
@@ -100,7 +93,7 @@ class TestLicensesController(BaseTestCase):
     def test_licenses_cancel(self):
         """Test case for licenses_cancel
 
-        Cancel License
+        Cancel a license service and stop future billing (irreversible)
         """
         response = self.client.open(
             '/apiv2/licenses/{id}'.format(id=56),
@@ -111,7 +104,7 @@ class TestLicensesController(BaseTestCase):
     def test_post_license_change_ip(self):
         """Test case for post_license_change_ip
 
-        Change License IP
+        Rebind a license to a new IP address (may incur a vendor fee)
         """
         body = IpObject()
         data = dict(ip='ip_example')
@@ -127,18 +120,21 @@ class TestLicensesController(BaseTestCase):
     def test_put_licenses(self):
         """Test case for put_licenses
 
-        Validate License Order
+        Validate a software license order before placing it (dry run preview)
         """
+        body = LicenseOrderRequest()
         response = self.client.open(
             '/apiv2/licenses/order',
-            method='PUT')
+            method='PUT',
+            data=json.dumps(body),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_update_license_info(self):
         """Test case for update_license_info
 
-        Update License
+        Update mutable fields on a license service (e.g. assigned IP)
         """
         response = self.client.open(
             '/apiv2/licenses/{id}'.format(id='id_example'),

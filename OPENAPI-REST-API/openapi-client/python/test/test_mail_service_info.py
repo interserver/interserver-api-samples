@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_service_info import MailServiceInfo
+from interserver_api_client.models.mail_service_info import MailServiceInfo
 
 class TestMailServiceInfo(unittest.TestCase):
     """MailServiceInfo unit test stubs"""

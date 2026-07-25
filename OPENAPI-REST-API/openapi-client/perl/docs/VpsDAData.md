@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsDAData
+# InterServerAPI::Object::VpsDAData
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsDAData;
+use InterServerAPI::Object::VpsDAData;
 ```
 
 ## Properties

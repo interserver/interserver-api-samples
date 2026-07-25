@@ -1,4 +1,4 @@
-# SwaggerClient::AffiliateDockSetup
+# InterserverApiClient::AffiliateDockSetup
 
 ## Properties
 Name | Type | Description | Notes

@@ -17,7 +17,7 @@ import TicketPostDetailsInner from './TicketPostDetailsInner';
 /**
  * The TicketPostDetails model module.
  * @module model/TicketPostDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class TicketPostDetails extends Array {
     /**

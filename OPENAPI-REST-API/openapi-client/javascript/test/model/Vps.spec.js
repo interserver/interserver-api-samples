@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.Vps();
+    instance = new InterserverApiClient.Vps();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,121 +50,121 @@
   describe('Vps', function() {
     it('should create an instance of Vps', function() {
       // uncomment below and update the code to test Vps
-      //var instance = new InterServerManagementApi.Vps();
-      //expect(instance).to.be.a(InterServerManagementApi.Vps);
+      //var instance = new InterserverApiClient.Vps();
+      //expect(instance).to.be.a(InterserverApiClient.Vps);
     });
 
     it('should have the property serviceInfo (base name: "serviceInfo")', function() {
       // uncomment below and update the code to test the property serviceInfo
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property client_links (base name: "client_links")', function() {
       // uncomment below and update the code to test the property client_links
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property billingDetails (base name: "billingDetails")', function() {
       // uncomment below and update the code to test the property billingDetails
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property custCurrency (base name: "custCurrency")', function() {
       // uncomment below and update the code to test the property custCurrency
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property custCurrencySymbol (base name: "custCurrencySymbol")', function() {
       // uncomment below and update the code to test the property custCurrencySymbol
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceMaster (base name: "serviceMaster")', function() {
       // uncomment below and update the code to test the property serviceMaster
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property _package (base name: "package")', function() {
       // uncomment below and update the code to test the property _package
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceExtra (base name: "serviceExtra")', function() {
       // uncomment below and update the code to test the property serviceExtra
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property extraInfoTables (base name: "extraInfoTables")', function() {
       // uncomment below and update the code to test the property extraInfoTables
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property module (base name: "module")', function() {
       // uncomment below and update the code to test the property module
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property token (base name: "token")', function() {
       // uncomment below and update the code to test the property token
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property da_link (base name: "da_link")', function() {
       // uncomment below and update the code to test the property da_link
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property sr_link (base name: "sr_link")', function() {
       // uncomment below and update the code to test the property sr_link
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property cp_data (base name: "cp_data")', function() {
       // uncomment below and update the code to test the property cp_data
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property da_data (base name: "da_data")', function() {
       // uncomment below and update the code to test the property da_data
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property plesk12_data (base name: "plesk12_data")', function() {
       // uncomment below and update the code to test the property plesk12_data
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceAddons (base name: "serviceAddons")', function() {
       // uncomment below and update the code to test the property serviceAddons
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property os_template (base name: "os_template")', function() {
       // uncomment below and update the code to test the property os_template
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 
     it('should have the property cpu_graph_data (base name: "cpu_graph_data")', function() {
       // uncomment below and update the code to test the property cpu_graph_data
-      //var instance = new InterServerManagementApi.Vps();
+      //var instance = new InterserverApiClient.Vps();
       //expect(instance).to.be();
     });
 

@@ -11,4 +11,8 @@
 |**value** | **String** | Value for the row |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

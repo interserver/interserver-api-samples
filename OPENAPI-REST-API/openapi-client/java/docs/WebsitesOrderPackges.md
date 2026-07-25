@@ -11,4 +11,8 @@ The packages data.
 |**_11440** | [**WebsitesOrderPackagesInfo**](WebsitesOrderPackagesInfo.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

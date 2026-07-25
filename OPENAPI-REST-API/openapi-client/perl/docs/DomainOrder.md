@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainOrder
+# InterServerAPI::Object::DomainOrder
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainOrder;
+use InterServerAPI::Object::DomainOrder;
 ```
 
 ## Properties

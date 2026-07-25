@@ -1,4 +1,4 @@
-# SwaggerClient::AccountInfoLimitsInner
+# InterserverApiClient::AccountInfoLimitsInner
 
 ## Properties
 Name | Type | Description | Notes

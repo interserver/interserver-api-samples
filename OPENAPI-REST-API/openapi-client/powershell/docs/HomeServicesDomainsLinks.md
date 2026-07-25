@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeServicesDomainsLinks = Initialize-PSOpenAPIToolsHomeServicesDomainsLinks  -Var376114 pimpmy.website `
+$HomeServicesDomainsLinks = Initialize-InterserverApiHomeServicesDomainsLinks  -Var376114 pimpmy.website `
  -Var376503 hostingenuity.com `
  -Var592337 detain.dev
 ```

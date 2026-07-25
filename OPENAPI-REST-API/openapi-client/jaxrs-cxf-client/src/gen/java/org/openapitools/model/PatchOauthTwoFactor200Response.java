@@ -19,7 +19,7 @@ public class PatchOauthTwoFactor200Response  {
    * @return login
   **/
   @JsonProperty("login")
-  public Boolean getLogin() {
+  public Boolean isLogin() {
     return login;
   }
 

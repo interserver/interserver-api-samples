@@ -1,34 +1,29 @@
 ## AccountApi
 
-### Change Account Username
-## Change Account Username
-POST https://my.interserver.net/apiv2/account/username
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Unlink OAuth Account
-## Unlink OAuth Account
+### Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
+## Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
 DELETE https://my.interserver.net/apiv2/account/oauth/{{name}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Disable Two-Factor Authentication
-## Disable Two-Factor Authentication
+### Disable two-factor authentication and remove the TOTP secret
+## Disable two-factor authentication and remove the TOTP secret
 DELETE https://my.interserver.net/apiv2/account/2fa
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Remove IP Access Restriction
-## Remove IP Access Restriction
+### Remove one IP range from the account allow-list (PATCH on /account/iplimits)
+## Remove one IP range from the account allow-list (PATCH on /account/iplimits)
 PATCH https://my.interserver.net/apiv2/account/iplimits
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -39,118 +34,131 @@ sessionid: {{apiKey}}
 }
 
 
-### Retrieve Account Details
-## Retrieve Account Details
+### Read full account profile, billing address, and security settings
+## Read full account profile, billing address, and security settings
 GET https://my.interserver.net/apiv2/account
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Two-Factor Setup Data
-## Get Two-Factor Setup Data
+### Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
+## Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
 GET https://my.interserver.net/apiv2/account/2fa
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Home Data
-## Get Home Data
+### Aggregate dashboard payload — service counts, recent activity, alerts
+## Aggregate dashboard payload — service counts, recent activity, alerts
 GET https://my.interserver.net/apiv2/home
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Search Autocomplete
-## Search Autocomplete
+### Global autocomplete across the caller&#39;s services, domains, and records
+## Global autocomplete across the caller&#39;s services, domains, and records
 GET https://my.interserver.net/apiv2/search
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Log Out
-## Log Out
+### Destroy the current API/web session — token becomes unusable
+## Destroy the current API/web session — token becomes unusable
 GET https://my.interserver.net/apiv2/logout
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Logout of OAuth
-## Logout of OAuth
+### Sign out of the upstream OAuth provider session (does not unlink the account)
+## Sign out of the upstream OAuth provider session (does not unlink the account)
 GET https://my.interserver.net/apiv2/account/oauth/{{name}}/logout
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Generate New API Key
-## Generate New API Key
+### Rotate the account&#39;s REST/MCP API key — old key is invalidated immediately
+## Rotate the account&#39;s REST/MCP API key — old key is invalidated immediately
 POST https://my.interserver.net/apiv2/account/apikey
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Account Feature Flags
-## Update Account Feature Flags
+### Toggle account-wide safety locks for password reset and OS reinstall
+## Toggle account-wide safety locks for password reset and OS reinstall
 POST https://my.interserver.net/apiv2/account/features
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Account Information
-## Update Account Information
+### Update contact and billing-address fields on the customer profile
+## Update contact and billing-address fields on the customer profile
 POST https://my.interserver.net/apiv2/account
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Add IP Access Restriction
-## Add IP Access Restriction
+### Add an IP CIDR/range to the account&#39;s API+web allow-list (lockout-safe)
+## Add an IP CIDR/range to the account&#39;s API+web allow-list (lockout-safe)
 POST https://my.interserver.net/apiv2/account/iplimits
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Change Account Password
-## Change Account Password
+### Change the account login password (verifies current, kills other sessions)
+## Change the account login password (verifies current, kills other sessions)
 POST https://my.interserver.net/apiv2/account/password
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update SSH Keys
-## Update SSH Keys
+### Set the account-level SSH public key auto-installed on new VPS/dedicated orders
+## Set the account-level SSH public key auto-installed on new VPS/dedicated orders
 POST https://my.interserver.net/apiv2/account/sshkey
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Enable Two-Factor Authentication
-## Enable Two-Factor Authentication
+### Verify TOTP code and enable two-factor authentication on the account
+## Verify TOTP code and enable two-factor authentication on the account
 POST https://my.interserver.net/apiv2/account/2fa
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

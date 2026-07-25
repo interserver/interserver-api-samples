@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ReplyTicketResponseSchema model module.
  * @module model/ReplyTicketResponseSchema
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ReplyTicketResponseSchema {
     /**

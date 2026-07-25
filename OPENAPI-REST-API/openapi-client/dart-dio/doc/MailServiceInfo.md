@@ -1,8 +1,8 @@
-# openapi.model.MailServiceInfo
+# interserver_api.model.MailServiceInfo
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
@@ -16,12 +16,12 @@ Name | Type | Description | Notes
 **mailQuota** | **String** | The mail quota for the service. | 
 **mailStatus** | **String** | The status of the mail service. | 
 **mailInvoice** | **String** | The invoice ID of the mail service. | 
-**mailUsername** | **String** | The username associated with the mail service. | [optional] 
-**mailIp** | **String** | The IP address associated with the mail service. | [optional] 
-**mailCoupon** | **String** | The coupon associated with the mail service. | [optional] 
-**mailExtra** | **String** | Additional information for the mail service. | [optional] 
-**mailServerStatus** | **String** | The server status of the mail service. | [optional] 
-**mailComment** | **String** | Additional comments for the mail service. | [optional] 
+**mailUsername** | **Optional&lt;String?&gt;** | The username associated with the mail service. | [optional] 
+**mailIp** | **Optional&lt;String?&gt;** | The IP address associated with the mail service. | [optional] 
+**mailCoupon** | **Optional&lt;String?&gt;** | The coupon associated with the mail service. | [optional] 
+**mailExtra** | **Optional&lt;String?&gt;** | Additional information for the mail service. | [optional] 
+**mailServerStatus** | **Optional&lt;String?&gt;** | The server status of the mail service. | [optional] 
+**mailComment** | **Optional&lt;String?&gt;** | Additional comments for the mail service. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

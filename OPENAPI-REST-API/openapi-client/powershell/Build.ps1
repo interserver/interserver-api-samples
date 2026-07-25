@@ -47,20 +47,22 @@ function Get-FunctionsToExport {
 
 $ScriptDir = Split-Path $script:MyInvocation.MyCommand.Path
 $FunctionPath = 'Api', 'Model', 'Client' | Where-Object {
-    Join-Path "$ScriptDir\src\PSOpenAPITools\" $_ | Test-Path
-} | ForEach-Object { Join-Path "$ScriptDir\src\PSOpenAPITools\" $_ }
+    Join-Path "$ScriptDir\src\InterserverApi\" $_ | Test-Path
+} | ForEach-Object { Join-Path "$ScriptDir\src\InterserverApi\" $_ }
 
 $Manifest = @{
-    Path = "$ScriptDir\src\PSOpenAPITools\PSOpenAPITools.psd1"
+    Path = "$ScriptDir\src\InterserverApi\InterserverApi.psd1"
 
     Author = 'OpenAPI Generator Team'
     CompanyName = 'openapitools.org'
-    Description = 'PSOpenAPITools - the PowerShell module for InterServer Management API'
+    Description = 'InterserverApi - the PowerShell module for InterServer Management API'
+    ProjectUri = 'https://github.com/detain/interserver-api-samples'
+    LicenseUri = 'https://www.interserver.net/terms-of-service.html'
 
-    ModuleVersion = '0.1.2'
+    ModuleVersion = '1.0.0'
 
-    RootModule = 'PSOpenAPITools.psm1'
-    Guid = '{FA771A31-00D5-499D-B769-4BB388057FF5}' # Has to be static, otherwise each new build will be considered different module
+    RootModule = 'InterserverApi.psm1'
+    Guid = '{45F37848-A79D-4A99-88EF-0EF3B162CFEA}' # Has to be static, otherwise each new build will be considered different module
 
     PowerShellVersion = '6.2'
 

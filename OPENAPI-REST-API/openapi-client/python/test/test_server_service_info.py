@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_service_info import ServerServiceInfo
+from interserver_api_client.models.server_service_info import ServerServiceInfo
 
 class TestServerServiceInfo(unittest.TestCase):
     """ServerServiceInfo unit test stubs"""

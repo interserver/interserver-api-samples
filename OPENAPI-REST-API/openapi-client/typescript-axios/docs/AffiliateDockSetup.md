@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AffiliateDockSetup } from './api';
+import { AffiliateDockSetup } from '@interserver/myadmin-client';
 
 const instance: AffiliateDockSetup = {
     affiliate_dock_title,

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BillingAddCcRequest } from './api';
+import { BillingAddCcRequest } from '@interserver/myadmin-client';
 
 const instance: BillingAddCcRequest = {
     name,

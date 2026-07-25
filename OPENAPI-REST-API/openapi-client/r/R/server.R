@@ -220,7 +220,7 @@ Server <- R6::R6Class(
         self$`ipmiAuth` <- this_object$`ipmiAuth`
       }
       if (!is.null(this_object$`client_links`)) {
-        self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[ServerClientLink]", loadNamespace("openapi"))
+        self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[ServerClientLink]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`billingDetails`)) {
         `billingdetails_object` <- ServerBillingDetails$new()
@@ -237,7 +237,7 @@ Server <- R6::R6Class(
         self$`package` <- this_object$`package`
       }
       if (!is.null(this_object$`serviceExtra`)) {
-        self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[character]", loadNamespace("openapi"))
+        self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`locations`)) {
         `locations_object` <- ServerLocations$new()
@@ -281,12 +281,12 @@ Server <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`ipmiAuth` <- this_object$`ipmiAuth`
-      self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[ServerClientLink]", loadNamespace("openapi"))
+      self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[ServerClientLink]", loadNamespace("interserverapi"))
       self$`billingDetails` <- ServerBillingDetails$new()$fromJSON(jsonlite::toJSON(this_object$`billingDetails`, auto_unbox = TRUE, digits = NA))
       self$`custCurrency` <- this_object$`custCurrency`
       self$`custCurrencySymbol` <- this_object$`custCurrencySymbol`
       self$`package` <- this_object$`package`
-      self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[character]", loadNamespace("openapi"))
+      self$`serviceExtra` <- ApiClient$new()$deserializeObj(this_object$`serviceExtra`, "array[character]", loadNamespace("interserverapi"))
       self$`locations` <- ServerLocations$new()$fromJSON(jsonlite::toJSON(this_object$`locations`, auto_unbox = TRUE, digits = NA))
       self$`networkInfo` <- ServerNetworkInfo$new()$fromJSON(jsonlite::toJSON(this_object$`networkInfo`, auto_unbox = TRUE, digits = NA))
       self$`extraInfoTables` <- ServerExtraInfoTables$new()$fromJSON(jsonlite::toJSON(this_object$`extraInfoTables`, auto_unbox = TRUE, digits = NA))

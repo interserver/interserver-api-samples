@@ -1,4 +1,4 @@
-# openapi::MailStatsTypeVolumeIp
+# interserverapi::MailStatsTypeVolumeIp
 
 
 ## Properties

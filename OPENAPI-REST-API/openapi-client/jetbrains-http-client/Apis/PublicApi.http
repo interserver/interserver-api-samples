@@ -1,67 +1,93 @@
 ## PublicApi
 
-### Get Captcha Challenge
-## Get Captcha Challenge
+### List enabled currency codes accepted for billing and preferences
+## List enabled currency codes accepted for billing and preferences
+GET https://my.interserver.net/apiv2/account/currencies
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List supported UI locales with English and native display names
+## List supported UI locales with English and native display names
+GET https://my.interserver.net/apiv2/account/locales
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Fetch a base64 JPEG captcha challenge for human verification
+## Fetch a base64 JPEG captcha challenge for human verification
 GET https://my.interserver.net/apiv2/captcha
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Countries
-## Get Countries
+### List enabled countries keyed by ISO-2/ISO-3/numeric code
+## List enabled countries keyed by ISO-2/ISO-3/numeric code
 GET https://my.interserver.net/apiv2/account/countries?fetchBy={{fetchBy}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Server Info
-## Get Server Info
+### Discover available modules, service packages, categories, and types
+## Discover available modules, service packages, categories, and types
 GET https://my.interserver.net/apiv2/info
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Login Info
-## Get Login Info
+### Fetch logo, captcha, language, and stats for rendering a login page
+## Fetch logo, captcha, language, and stats for rendering a login page
 GET https://my.interserver.net/apiv2/login
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Marketplace Servers
-## List Marketplace Servers
+### List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+## List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 GET https://my.interserver.net/apiv2/buy_now_servers_list
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get OAuth Redirect URL
-## Get OAuth Redirect URL
+### Begin OAuth login flow — redirect user to provider for authentication
+## Begin OAuth login flow — redirect user to provider for authentication
 GET https://my.interserver.net/apiv2/oauth?provider={{provider}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Available Timezones
-## Get Available Timezones
+### List all PHP timezone identifiers usable on accounts and services
+## List all PHP timezone identifiers usable on accounts and services
 GET https://my.interserver.net/apiv2/account/timezones
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Complete OAuth Two-Factor Verification
-## Complete OAuth Two-Factor Verification
+### Submit 2FA code to finish OAuth login when account has 2FA enabled
+## Submit 2FA code to finish OAuth login when account has 2FA enabled
 PATCH https://my.interserver.net/apiv2/oauth
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -72,20 +98,22 @@ sessionid: {{apiKey}}
 }
 
 
-### Ping Server
-## Ping Server
+### Liveness check — returns the JSON string \&quot;pong\&quot; to confirm API is up
+## Liveness check — returns the JSON string \&quot;pong\&quot; to confirm API is up
 GET https://my.interserver.net/apiv2/ping
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### OAuth Callback
-## OAuth Callback
+### Complete OAuth login by linking provider to existing or new account
+## Complete OAuth login by linking provider to existing or new account
 POST https://my.interserver.net/apiv2/oauth?provider={{provider}}
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -95,21 +123,23 @@ sessionid: {{apiKey}}
 }
 
 
-### Submit Login Information
-## Submit Login Information
+### Authenticate with email + password and return a session token
+## Authenticate with email + password and return a session token
 POST https://my.interserver.net/apiv2/login
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Submit Signup Information
-## Submit Signup Information
+### Create a new customer account (email + password + captcha + ToS)
+## Create a new customer account (email + password + captcha + ToS)
 POST https://my.interserver.net/apiv2/signup
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -117,14 +147,14 @@ sessionid: {{apiKey}}
 {
   "login" : "user@domain.com",
   "passwd" : "mypassword",
-  "remember" : "true",
+  "remember" : "{{true}}",
   "g-recaptcha-response" : {
     "__v_isShallow" : false,
     "dep" : {
       "w" : 0,
       "n" : 0
     },
-    "__v_isRef" : true,
+    "__v_isRef" : {{true}},
     "_rawValue" : "zzzzz",
     "_value" : "zzzzz"
   }

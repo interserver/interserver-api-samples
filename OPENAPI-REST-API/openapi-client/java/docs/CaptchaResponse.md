@@ -11,4 +11,8 @@ A base-64 encoded captcha image.
 |**captcha** | **String** | The base64 encoded captcha image. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

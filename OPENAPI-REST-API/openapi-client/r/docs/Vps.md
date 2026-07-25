@@ -1,4 +1,4 @@
-# openapi::Vps
+# interserverapi::Vps
 
 
 ## Properties

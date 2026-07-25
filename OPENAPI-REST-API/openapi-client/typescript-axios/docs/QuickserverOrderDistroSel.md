@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverOrderDistroSel } from './api';
+import { QuickserverOrderDistroSel } from '@interserver/myadmin-client';
 
 const instance: QuickserverOrderDistroSel = {
     Ubuntu,

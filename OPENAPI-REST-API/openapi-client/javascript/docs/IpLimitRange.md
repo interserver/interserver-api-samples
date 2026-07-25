@@ -1,4 +1,4 @@
-# InterServerManagementApi.IpLimitRange
+# InterserverApiClient.IpLimitRange
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# InterServerManagementApi.AccountInfoMaxMindResponseRiskScore
+# InterserverApiClient.AccountInfoMaxMindResponseRiskScore
 
 ## Properties
 

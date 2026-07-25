@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.billing_payment_method_request import BillingPaymentMethodRequest
+from interserver_api_client.models.billing_payment_method_request import BillingPaymentMethodRequest
 
 # TODO update the JSON string below
 json = "{}"

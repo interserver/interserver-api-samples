@@ -1,4 +1,4 @@
-# openapi::SuccessTextResponse
+# interserverapi::SuccessTextResponse
 
 Response with success flag and text description.
 

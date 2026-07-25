@@ -1,75 +1,86 @@
 ## LicensesApi
 
-### Place License Order
-## Place License Order
+### Order a new software license and create the recurring invoice
+## Order a new software license and create the recurring invoice
 POST https://my.interserver.net/apiv2/licenses/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get License
-## Get License
+{
+ "package": "<number>",
+ "ip": "<string>",
+ "tos": "<string>",
+ "frequency": "<number>",
+ "coupon": "<string>",
+ "comment": "<string>"
+}
+
+
+### Get full details for one license including status, IP, and links
+## Get full details for one license including status, IP, and links
 GET https://my.interserver.net/apiv2/licenses/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get License Invoices
-## Get License Invoices
+### List all billing invoices tied to one software license service
+## List all billing invoices tied to one software license service
 GET https://my.interserver.net/apiv2/licenses/{{id}}/invoices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Licenses
-## List Licenses
+### List all software licenses owned by the authenticated customer
+## List all software licenses owned by the authenticated customer
 GET https://my.interserver.net/apiv2/licenses
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get License Order Information for Category
-## Get License Order Information for Category
-GET https://my.interserver.net/apiv2/licenses/order/{{catTag}}
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Resend License Welcome Email
-## Resend License Welcome Email
+### Resend the license welcome email with the key and activation steps
+## Resend the license welcome email with the key and activation steps
 GET https://my.interserver.net/apiv2/licenses/{{id}}/welcome_email
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get License Order Information
-## Get License Order Information
+### Get available license types, packages, and pricing for ordering
+## Get available license types, packages, and pricing for ordering
 GET https://my.interserver.net/apiv2/licenses/order
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Cancel License
-## Cancel License
+### Cancel a license service and stop future billing (irreversible)
+## Cancel a license service and stop future billing (irreversible)
 DELETE https://my.interserver.net/apiv2/licenses/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Change License IP
-## Change License IP
+### Rebind a license to a new IP address (may incur a vendor fee)
+## Rebind a license to a new IP address (may incur a vendor fee)
 POST https://my.interserver.net/apiv2/licenses/{{id}}/change_ip
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -79,18 +90,31 @@ sessionid: {{apiKey}}
 }
 
 
-### Validate License Order
-## Validate License Order
+### Validate a software license order before placing it (dry run preview)
+## Validate a software license order before placing it (dry run preview)
 PUT https://my.interserver.net/apiv2/licenses/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update License
-## Update License
+{
+ "package": "<number>",
+ "ip": "<string>",
+ "tos": "<string>",
+ "frequency": "<number>",
+ "coupon": "<string>",
+ "comment": "<string>"
+}
+
+
+### Update mutable fields on a license service (e.g. assigned IP)
+## Update mutable fields on a license service (e.g. assigned IP)
 POST https://my.interserver.net/apiv2/licenses/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

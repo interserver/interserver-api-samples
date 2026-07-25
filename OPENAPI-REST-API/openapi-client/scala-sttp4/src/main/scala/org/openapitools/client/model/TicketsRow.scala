@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JValue
 
   /**
    * TicketsRow
@@ -31,4 +32,3 @@ case class TicketsRow(
   status_text: String,
   checked: Boolean
 )
-

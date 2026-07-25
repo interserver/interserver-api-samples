@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoPost = Initialize-PSOpenAPIToolsAccountInfoPost  -Name John Doe `
+$AccountInfoPost = Initialize-InterserverApiAccountInfoPost  -Name John Doe `
  -Company My Company `
  -Address 124 My St `
  -Address2 null `

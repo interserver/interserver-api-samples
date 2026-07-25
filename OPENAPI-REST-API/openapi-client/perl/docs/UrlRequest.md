@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::UrlRequest
+# InterServerAPI::Object::UrlRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::UrlRequest;
+use InterServerAPI::Object::UrlRequest;
 ```
 
 ## Properties

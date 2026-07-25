@@ -14,4 +14,8 @@
 |**rows** | **List&lt;List&lt;String&gt;&gt;** | The rows of the assets table. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

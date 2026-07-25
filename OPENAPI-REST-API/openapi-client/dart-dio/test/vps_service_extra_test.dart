@@ -1,19 +1,19 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsServiceExtra
 void main() {
-  final instance = VpsServiceExtraBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsServiceExtra? instance = /* VpsServiceExtra(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsServiceExtra, () {
     // Spice
-    // int spice
+    // Optional<int?> spice
     test('to test the property `spice`', () async {
       // TODO
     });
 
-    // BuiltList<VpsSnapshot> snapshots
+    // Optional<List<VpsSnapshot>?> snapshots
     test('to test the property `snapshots`', () async {
       // TODO
     });

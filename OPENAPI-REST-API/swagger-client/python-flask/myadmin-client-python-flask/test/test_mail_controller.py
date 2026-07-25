@@ -12,7 +12,8 @@ from myadmin-client-python-flask.models.email_address import EmailAddress  # noq
 from myadmin-client-python-flask.models.email_address_name import EmailAddressName  # noqa: E501
 from myadmin-client-python-flask.models.end_date import EndDate  # noqa: E501
 from myadmin-client-python-flask.models.generic_response import GenericResponse  # noqa: E501
-from myadmin-client-python-flask.models.inline_response2008 import InlineResponse2008  # noqa: E501
+from myadmin-client-python-flask.models.id_alerts_body import IdAlertsBody  # noqa: E501
+from myadmin-client-python-flask.models.inline_response2009 import InlineResponse2009  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.mail_alert_request import MailAlertRequest  # noqa: E501
 from myadmin-client-python-flask.models.mail_alert_update_request import MailAlertUpdateRequest  # noqa: E501
@@ -24,6 +25,7 @@ from myadmin-client-python-flask.models.mail_delist_response import MailDelistRe
 from myadmin-client-python-flask.models.mail_deliverability_response import MailDeliverabilityResponse  # noqa: E501
 from myadmin-client-python-flask.models.mail_log import MailLog  # noqa: E501
 from myadmin-client-python-flask.models.mail_order import MailOrder  # noqa: E501
+from myadmin-client-python-flask.models.mail_order_request import MailOrderRequest  # noqa: E501
 from myadmin-client-python-flask.models.mail_row import MailRow  # noqa: E501
 from myadmin-client-python-flask.models.mail_schema import MailSchema  # noqa: E501
 from myadmin-client-python-flask.models.mail_stats_type import MailStatsType  # noqa: E501
@@ -41,18 +43,21 @@ class TestMailController(BaseTestCase):
     def test_add_mail(self):
         """Test case for add_mail
 
-        Place Mail Order
+        Place a new Mail Baby order, generate invoice, and queue provisioning
         """
+        body = MailOrderRequest()
         response = self.client.open(
             '/apiv2/mail/order',
-            method='POST')
+            method='POST',
+            data=json.dumps(body),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_add_rule(self):
         """Test case for add_rule
 
-        Create Deny Rule
+        Create a new deny rule to auto-block matching submissions
         """
         body = DenyRuleNew()
         data = dict(user='user_example',
@@ -70,7 +75,7 @@ class TestMailController(BaseTestCase):
     def test_create_mail_alert(self):
         """Test case for create_mail_alert
 
-        Create Mail Alert
+        Create a new Mail Baby alert for delivery, bounce, or quota events
         """
         body = MailAlertRequest()
         data = dict(type='type_example',
@@ -89,20 +94,23 @@ class TestMailController(BaseTestCase):
     def test_delete_mail_alert(self):
         """Test case for delete_mail_alert
 
-        Delete Mail Alert
+        Delete a Mail Baby alert by alert_id (hard delete — no recovery)
         """
-        query_string = [('alert_id', 56)]
+        body = IdAlertsBody()
+        data = dict(alert_id=56)
         response = self.client.open(
             '/apiv2/mail/{id}/alerts'.format(id=56),
             method='DELETE',
-            query_string=query_string)
+            data=json.dumps(body),
+            data=data,
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_delete_rule(self):
         """Test case for delete_rule
 
-        Delete Deny Rule
+        Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
         """
         response = self.client.open(
             '/apiv2/mail/{id}/rules/{rule}'.format(id=56, rule='rule_example'),
@@ -113,7 +121,7 @@ class TestMailController(BaseTestCase):
     def test_delist_block(self):
         """Test case for delist_block
 
-        Remove Email Address from Block List
+        Delist a sender email from rspamd / mailchannels / mailbaby block lists
         """
         body = EmailAddress()
         data = dict(email='email_example')
@@ -129,7 +137,7 @@ class TestMailController(BaseTestCase):
     def test_get_mail_alerts(self):
         """Test case for get_mail_alerts
 
-        List Mail Alerts
+        List configured delivery/bounce/quota alerts for one Mail Baby service
         """
         response = self.client.open(
             '/apiv2/mail/{id}/alerts'.format(id=56),
@@ -140,7 +148,7 @@ class TestMailController(BaseTestCase):
     def test_get_mail_blocks(self):
         """Test case for get_mail_blocks
 
-        List Blocked Email Addresses
+        List recent local-blocklist hits and spam-trap captures for the mail user
         """
         response = self.client.open(
             '/apiv2/mail/{id}/blocks'.format(id=56),
@@ -151,7 +159,7 @@ class TestMailController(BaseTestCase):
     def test_get_mail_delist(self):
         """Test case for get_mail_delist
 
-        Get Delist Status
+        Read blocklist diagnostics and find senders eligible for delisting
         """
         response = self.client.open(
             '/apiv2/mail/{id}/delist'.format(id=56),
@@ -162,7 +170,7 @@ class TestMailController(BaseTestCase):
     def test_get_mail_deliverability(self):
         """Test case for get_mail_deliverability
 
-        Get Deliverability Metrics
+        Read delivered vs bounced totals broken down by sender (or by recipient domain)
         """
         response = self.client.open(
             '/apiv2/mail/{id}/deliverability'.format(id=56),
@@ -173,7 +181,7 @@ class TestMailController(BaseTestCase):
     def test_get_mail_info(self):
         """Test case for get_mail_info
 
-        Get Mail Order
+        Read full detail for one Mail Baby service including SMTP credentials
         """
         response = self.client.open(
             '/apiv2/mail/{id}'.format(id=56),
@@ -184,7 +192,7 @@ class TestMailController(BaseTestCase):
     def test_get_mail_invoices(self):
         """Test case for get_mail_invoices
 
-        Get Mail Invoices
+        List billing invoices linked to this Mail Baby service
         """
         response = self.client.open(
             '/apiv2/mail/{id}/invoices'.format(id=56),
@@ -195,7 +203,7 @@ class TestMailController(BaseTestCase):
     def test_get_mail_list(self):
         """Test case for get_mail_list
 
-        List Mail Orders
+        List every Mail Baby SMTP relay service on the account
         """
         response = self.client.open(
             '/apiv2/mail',
@@ -206,7 +214,7 @@ class TestMailController(BaseTestCase):
     def test_get_mail_welcome_email(self):
         """Test case for get_mail_welcome_email
 
-        Resend Mail Welcome Email
+        Resend the Mail Baby welcome email with SMTP credentials and setup info
         """
         response = self.client.open(
             '/apiv2/mail/{id}/welcome_email'.format(id=56),
@@ -217,7 +225,7 @@ class TestMailController(BaseTestCase):
     def test_get_new_mail(self):
         """Test case for get_new_mail
 
-        Get Mail Ordering Information
+        Read the Mail Baby order catalog — plans, package costs, service-type metadata
         """
         response = self.client.open(
             '/apiv2/mail/order',
@@ -228,7 +236,7 @@ class TestMailController(BaseTestCase):
     def test_get_rules(self):
         """Test case for get_rules
 
-        List Deny Rules
+        List configured deny rules (sender/recipient blocks) for a Mail Baby service
         """
         response = self.client.open(
             '/apiv2/mail/{id}/rules'.format(id=56),
@@ -239,7 +247,7 @@ class TestMailController(BaseTestCase):
     def test_get_stats(self):
         """Test case for get_stats
 
-        Get Mail Usage Statistics
+        Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
         """
         query_string = [('time', 'time_example')]
         response = self.client.open(
@@ -252,7 +260,7 @@ class TestMailController(BaseTestCase):
     def test_mail_cancel(self):
         """Test case for mail_cancel
 
-        Cancel Mail
+        Cancel a Mail Baby service and stop the recurring invoice
         """
         response = self.client.open(
             '/apiv2/mail/{id}'.format(id=56),
@@ -263,7 +271,7 @@ class TestMailController(BaseTestCase):
     def test_post_mail_delist(self):
         """Test case for post_mail_delist
 
-        Delist a Blocked Sender
+        Delist a sender from rspamd / mailchannels / mailbaby block lists
         """
         body = MailDelistRequest()
         data = dict(unblock='unblock_example')
@@ -279,18 +287,21 @@ class TestMailController(BaseTestCase):
     def test_put_mail(self):
         """Test case for put_mail
 
-        Validate Mail Order
+        Validate Mail Baby order, quote pricing, and verify coupon — no charge
         """
+        body = MailOrderRequest()
         response = self.client.open(
             '/apiv2/mail/order',
-            method='PUT')
+            method='PUT',
+            data=json.dumps(body),
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_reset_mail_password(self):
         """Test case for reset_mail_password
 
-        Reset Mail Password
+        Rotate the SMTP password and email the new credential to the account owner
         """
         response = self.client.open(
             '/apiv2/mail/{id}/reset_password'.format(id=56),
@@ -301,7 +312,7 @@ class TestMailController(BaseTestCase):
     def test_send_adv_mail(self):
         """Test case for send_adv_mail
 
-        Send Email with Advanced Options
+        Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
         """
         body = SendMailAdv()
         data = dict(subject='subject_example',
@@ -325,7 +336,7 @@ class TestMailController(BaseTestCase):
     def test_send_mail(self):
         """Test case for send_mail
 
-        Send Email
+        Send a simple single-recipient email through the Mail Baby SMTP relay
         """
         body = SendMail()
         data = dict(to='to_example',
@@ -344,7 +355,7 @@ class TestMailController(BaseTestCase):
     def test_update_mail_alert(self):
         """Test case for update_mail_alert
 
-        Update Mail Alert
+        Update an existing Mail Baby alert by alert_id
         """
         body = MailAlertUpdateRequest()
         data = dict(alert_id=56,
@@ -364,7 +375,7 @@ class TestMailController(BaseTestCase):
     def test_update_mail_info(self):
         """Test case for update_mail_info
 
-        Update Mail Order
+        POST mutation hook for the Mail Baby service detail page
         """
         response = self.client.open(
             '/apiv2/mail/{id}'.format(id='id_example'),
@@ -372,10 +383,28 @@ class TestMailController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
+    def test_update_rule(self):
+        """Test case for update_rule
+
+        Update an existing Mail Baby deny rule's type and match data
+        """
+        body = DenyRuleNew()
+        data = dict(user='user_example',
+                    type='type_example',
+                    data='data_example')
+        response = self.client.open(
+            '/apiv2/mail/{id}/rules/{rule}'.format(id=56, rule='rule_example'),
+            method='PUT',
+            data=json.dumps(body),
+            data=data,
+            content_type='application/json')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
     def test_view_mail_log(self):
         """Test case for view_mail_log
 
-        View Mail Log
+        Search and paginate per-message Mail Baby delivery log entries
         """
         query_string = [('id', 789),
                         ('origin', 'origin_example'),

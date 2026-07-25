@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.service_category import ServiceCategory
+from interserver_api_client.models.service_category import ServiceCategory
 
 class TestServiceCategory(unittest.TestCase):
     """ServiceCategory unit test stubs"""

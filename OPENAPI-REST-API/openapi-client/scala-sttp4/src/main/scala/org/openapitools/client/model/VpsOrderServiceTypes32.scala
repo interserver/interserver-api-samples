@@ -23,4 +23,3 @@ case class VpsOrderServiceTypes32(
   services_field2: Option[String] = None,
   services_module: Option[String] = None
 )
-

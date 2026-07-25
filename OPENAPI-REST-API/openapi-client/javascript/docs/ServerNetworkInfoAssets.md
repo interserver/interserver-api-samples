@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerNetworkInfoAssets
+# InterserverApiClient.ServerNetworkInfoAssets
 
 ## Properties
 

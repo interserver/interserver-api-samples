@@ -207,19 +207,19 @@ SendMailAdv <- R6::R6Class(
         self$`from` <- `from_object`
       }
       if (!is.null(this_object$`to`)) {
-        self$`to` <- ApiClient$new()$deserializeObj(this_object$`to`, "array[EmailAddressName]", loadNamespace("openapi"))
+        self$`to` <- ApiClient$new()$deserializeObj(this_object$`to`, "array[EmailAddressName]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`replyto`)) {
-        self$`replyto` <- ApiClient$new()$deserializeObj(this_object$`replyto`, "array[EmailAddressName]", loadNamespace("openapi"))
+        self$`replyto` <- ApiClient$new()$deserializeObj(this_object$`replyto`, "array[EmailAddressName]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`cc`)) {
-        self$`cc` <- ApiClient$new()$deserializeObj(this_object$`cc`, "array[EmailAddressName]", loadNamespace("openapi"))
+        self$`cc` <- ApiClient$new()$deserializeObj(this_object$`cc`, "array[EmailAddressName]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`bcc`)) {
-        self$`bcc` <- ApiClient$new()$deserializeObj(this_object$`bcc`, "array[EmailAddressName]", loadNamespace("openapi"))
+        self$`bcc` <- ApiClient$new()$deserializeObj(this_object$`bcc`, "array[EmailAddressName]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`attachments`)) {
-        self$`attachments` <- ApiClient$new()$deserializeObj(this_object$`attachments`, "array[MailAttachment]", loadNamespace("openapi"))
+        self$`attachments` <- ApiClient$new()$deserializeObj(this_object$`attachments`, "array[MailAttachment]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`id`)) {
         self$`id` <- this_object$`id`
@@ -248,11 +248,11 @@ SendMailAdv <- R6::R6Class(
       self$`subject` <- this_object$`subject`
       self$`body` <- this_object$`body`
       self$`from` <- EmailAddressName$new()$fromJSON(jsonlite::toJSON(this_object$`from`, auto_unbox = TRUE, digits = NA))
-      self$`to` <- ApiClient$new()$deserializeObj(this_object$`to`, "array[EmailAddressName]", loadNamespace("openapi"))
-      self$`replyto` <- ApiClient$new()$deserializeObj(this_object$`replyto`, "array[EmailAddressName]", loadNamespace("openapi"))
-      self$`cc` <- ApiClient$new()$deserializeObj(this_object$`cc`, "array[EmailAddressName]", loadNamespace("openapi"))
-      self$`bcc` <- ApiClient$new()$deserializeObj(this_object$`bcc`, "array[EmailAddressName]", loadNamespace("openapi"))
-      self$`attachments` <- ApiClient$new()$deserializeObj(this_object$`attachments`, "array[MailAttachment]", loadNamespace("openapi"))
+      self$`to` <- ApiClient$new()$deserializeObj(this_object$`to`, "array[EmailAddressName]", loadNamespace("interserverapi"))
+      self$`replyto` <- ApiClient$new()$deserializeObj(this_object$`replyto`, "array[EmailAddressName]", loadNamespace("interserverapi"))
+      self$`cc` <- ApiClient$new()$deserializeObj(this_object$`cc`, "array[EmailAddressName]", loadNamespace("interserverapi"))
+      self$`bcc` <- ApiClient$new()$deserializeObj(this_object$`bcc`, "array[EmailAddressName]", loadNamespace("interserverapi"))
+      self$`attachments` <- ApiClient$new()$deserializeObj(this_object$`attachments`, "array[MailAttachment]", loadNamespace("interserverapi"))
       self$`id` <- this_object$`id`
       self
     },

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_admin_contact import DomainAdminContact
+from interserver_api_client.models.domain_admin_contact import DomainAdminContact
 
 class TestDomainAdminContact(unittest.TestCase):
     """DomainAdminContact unit test stubs"""

@@ -47,4 +47,3 @@ case class VpsServiceAddons(
   /* Raw add-on data entries. */
   rdata: Option[Seq[String]] = None
 )
-

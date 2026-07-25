@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   VpsOrderTemplatesHypervWindows.JSON_PROPERTY_WINDOWS2022
 })
 @JsonTypeName("VpsOrder_templates_hyperv_windows")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class VpsOrderTemplatesHypervWindows {
     public static final String JSON_PROPERTY_WINDOWS2019_STANDARD = "Windows2019Standard";

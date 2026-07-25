@@ -15,4 +15,8 @@ Payload for verifying a credit card through the verification flow.
 |**terms** | **Boolean** | Whether terms were accepted for verification. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailServiceInfo model module.
  * @module model/MailServiceInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailServiceInfo {
     /**

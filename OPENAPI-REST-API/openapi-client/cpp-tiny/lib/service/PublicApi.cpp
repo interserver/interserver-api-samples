@@ -5,6 +5,108 @@ using namespace Tiny;
 
 
         Response<
+            std::list<std::string>
+        >
+        PublicApi::
+        getAccountCurrencies(
+        )
+        {
+            std::string url = basepath + "/account/currencies"; //
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+            std::list<std::string> obj = std::list<std::string>();
+            bourne::json jsonPayload(output_string);
+
+
+
+
+
+
+
+
+            
+            for(auto& var : jsonPayload.array_range())
+            {
+                std::string tmp(var.dump());
+                obj.push_back(tmp);
+            }
+            
+
+
+
+
+
+
+
+            Response<std::list<std::string>> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            String
+        >
+        PublicApi::
+        getAccountLocales(
+        )
+        {
+            std::string url = basepath + "/account/locales"; //
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+            //TODO: Implement map logic here
+
+
+
+
+            //TODO: No support for maps.
+            Response<String> response(output, httpCode);
+            return response;
+        }
+
+        Response<
             CaptchaResponse
         >
         PublicApi::

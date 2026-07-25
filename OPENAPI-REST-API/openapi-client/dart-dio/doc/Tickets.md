@@ -1,8 +1,8 @@
-# openapi.model.Tickets
+# interserver_api.model.Tickets
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **sortcol** | **int** |  | 
 **sortdir** | **int** |  | 
 **rowsOffset** | **int** |  | 
-**tickets** | [**BuiltList&lt;TicketsRow&gt;**](TicketsRow.md) |  | 
+**tickets** | [**List&lt;TicketsRow&gt;**](TicketsRow.md) |  | 
 **pages** | **int** |  | 
 **rowsTotal** | **int** |  | 
 **inboxCount** | **int** |  | 

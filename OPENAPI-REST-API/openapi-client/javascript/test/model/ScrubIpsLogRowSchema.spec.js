@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ScrubIpsLogRowSchema();
+    instance = new InterserverApiClient.ScrubIpsLogRowSchema();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('ScrubIpsLogRowSchema', function() {
     it('should create an instance of ScrubIpsLogRowSchema', function() {
       // uncomment below and update the code to test ScrubIpsLogRowSchema
-      //var instance = new InterServerManagementApi.ScrubIpsLogRowSchema();
-      //expect(instance).to.be.a(InterServerManagementApi.ScrubIpsLogRowSchema);
+      //var instance = new InterserverApiClient.ScrubIpsLogRowSchema();
+      //expect(instance).to.be.a(InterserverApiClient.ScrubIpsLogRowSchema);
     });
 
     it('should have the property date (base name: "date")', function() {
       // uncomment below and update the code to test the property date
-      //var instance = new InterServerManagementApi.ScrubIpsLogRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsLogRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property filter (base name: "filter")', function() {
       // uncomment below and update the code to test the property filter
-      //var instance = new InterServerManagementApi.ScrubIpsLogRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsLogRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property blocked_ip (base name: "blocked_ip")', function() {
       // uncomment below and update the code to test the property blocked_ip
-      //var instance = new InterServerManagementApi.ScrubIpsLogRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsLogRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property target_ip (base name: "target_ip")', function() {
       // uncomment below and update the code to test the property target_ip
-      //var instance = new InterServerManagementApi.ScrubIpsLogRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsLogRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property target_port (base name: "target_port")', function() {
       // uncomment below and update the code to test the property target_port
-      //var instance = new InterServerManagementApi.ScrubIpsLogRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsLogRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property protocol (base name: "protocol")', function() {
       // uncomment below and update the code to test the property protocol
-      //var instance = new InterServerManagementApi.ScrubIpsLogRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsLogRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property byte_count (base name: "byte_count")', function() {
       // uncomment below and update the code to test the property byte_count
-      //var instance = new InterServerManagementApi.ScrubIpsLogRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsLogRowSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property xdp_action (base name: "xdp_action")', function() {
       // uncomment below and update the code to test the property xdp_action
-      //var instance = new InterServerManagementApi.ScrubIpsLogRowSchema();
+      //var instance = new InterserverApiClient.ScrubIpsLogRowSchema();
       //expect(instance).to.be();
     });
 

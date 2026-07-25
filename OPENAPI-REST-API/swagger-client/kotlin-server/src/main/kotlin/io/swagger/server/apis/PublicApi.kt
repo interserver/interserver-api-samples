@@ -36,10 +36,11 @@ import myadmin-client-kotlin-server.infrastructure.ApiPrincipal
 
 import io.swagger.server.models.BuyItNowList
 import io.swagger.server.models.CaptchaResponse
-import io.swagger.server.models.InlineResponse2005
 import io.swagger.server.models.InlineResponse2006
 import io.swagger.server.models.InlineResponse2007
+import io.swagger.server.models.InlineResponse2008
 import io.swagger.server.models.InlineResponse401
+import io.swagger.server.models.InlineResponseMap200
 import io.swagger.server.models.LoginErrorResponse
 import io.swagger.server.models.LoginInfo
 import io.swagger.server.models.LoginSubmissionExample
@@ -53,6 +54,39 @@ import io.swagger.server.models.ServicesInfo
 fun Route.PublicApi() {
     val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
+    get<Paths.getAccountCurrencies> {  _: Paths.getAccountCurrencies ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """[ "", "" ]"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    get<Paths.getAccountLocales> {  _: Paths.getAccountLocales ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "key" : {
+    "name" : "name",
+    "local_name" : "local_name"
+  }
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
     get<Paths.getCaptcha> {  _: Paths.getCaptcha ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {

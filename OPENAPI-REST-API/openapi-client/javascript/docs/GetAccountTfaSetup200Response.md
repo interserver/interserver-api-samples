@@ -1,4 +1,4 @@
-# InterServerManagementApi.GetAccountTfaSetup200Response
+# InterserverApiClient.GetAccountTfaSetup200Response
 
 ## Properties
 

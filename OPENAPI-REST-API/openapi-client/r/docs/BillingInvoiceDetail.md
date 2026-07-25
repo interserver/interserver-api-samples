@@ -1,4 +1,4 @@
-# openapi::BillingInvoiceDetail
+# interserverapi::BillingInvoiceDetail
 
 Detailed invoice data payload returned for a single invoice.
 

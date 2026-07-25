@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsOrderPackageCosts
+# InterServerAPI::Object::VpsOrderPackageCosts
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsOrderPackageCosts;
+use InterServerAPI::Object::VpsOrderPackageCosts;
 ```
 
 ## Properties

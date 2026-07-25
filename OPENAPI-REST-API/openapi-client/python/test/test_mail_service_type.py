@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_service_type import MailServiceType
+from interserver_api_client.models.mail_service_type import MailServiceType
 
 class TestMailServiceType(unittest.TestCase):
     """MailServiceType unit test stubs"""

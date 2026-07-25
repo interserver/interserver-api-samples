@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoOauthConfigProvidersValue = Initialize-PSOpenAPIToolsAccountInfoOauthConfigProvidersValue  -Enabled null `
+$AccountInfoOauthConfigProvidersValue = Initialize-InterserverApiAccountInfoOauthConfigProvidersValue  -Enabled null `
  -Linked null `
  -Account null `
  -Url null

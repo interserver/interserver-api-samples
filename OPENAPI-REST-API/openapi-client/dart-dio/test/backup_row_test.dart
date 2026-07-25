@@ -1,44 +1,44 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BackupRow
 void main() {
-  final instance = BackupRowBuilder();
-  // TODO add properties to the builder and call build()
+  final BackupRow? instance = /* BackupRow(...) */ null;
+  // TODO add properties to the entity
 
   group(BackupRow, () {
     // The id of the backup.
-    // String backupId
+    // Optional<String?> backupId
     test('to test the property `backupId`', () async {
       // TODO
     });
 
     // The name of the backup.
-    // String backupName
+    // Optional<String?> backupName
     test('to test the property `backupName`', () async {
       // TODO
     });
 
     // The cost of the backup.
-    // String backupCost
+    // Optional<String?> backupCost
     test('to test the property `backupCost`', () async {
       // TODO
     });
 
     // The username of the backup.
-    // String backupUsername
+    // Optional<String?> backupUsername
     test('to test the property `backupUsername`', () async {
       // TODO
     });
 
     // The status of the backup.
-    // String backupStatus
+    // Optional<String?> backupStatus
     test('to test the property `backupStatus`', () async {
       // TODO
     });
 
     // The services name of the backup.
-    // String servicesName
+    // Optional<String?> servicesName
     test('to test the property `servicesName`', () async {
       // TODO
     });

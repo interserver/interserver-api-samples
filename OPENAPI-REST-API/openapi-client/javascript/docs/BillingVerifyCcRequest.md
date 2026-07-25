@@ -1,4 +1,4 @@
-# InterServerManagementApi.BillingVerifyCcRequest
+# InterserverApiClient.BillingVerifyCcRequest
 
 ## Properties
 

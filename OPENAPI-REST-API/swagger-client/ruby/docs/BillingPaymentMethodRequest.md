@@ -1,4 +1,4 @@
-# SwaggerClient::BillingPaymentMethodRequest
+# InterserverApiClient::BillingPaymentMethodRequest
 
 ## Properties
 Name | Type | Description | Notes

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainSearchResponse = Initialize-PSOpenAPIToolsDomainSearchResponse  -Success null `
+$DomainSearchResponse = Initialize-InterserverApiDomainSearchResponse  -Success null `
  -ResponseText null `
  -ResponseTime null `
  -Lookup null `

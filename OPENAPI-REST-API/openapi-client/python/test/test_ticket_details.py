@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.ticket_details import TicketDetails
+from interserver_api_client.models.ticket_details import TicketDetails
 
 class TestTicketDetails(unittest.TestCase):
     """TicketDetails unit test stubs"""

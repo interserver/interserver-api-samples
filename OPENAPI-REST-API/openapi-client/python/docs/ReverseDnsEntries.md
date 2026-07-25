@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.reverse_dns_entries import ReverseDnsEntries
+from interserver_api_client.models.reverse_dns_entries import ReverseDnsEntries
 
 # TODO update the JSON string below
 json = "{}"

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.server_switchport import ServerSwitchport
+from interserver_api_client.models.server_switchport import ServerSwitchport
 
 # TODO update the JSON string below
 json = "{}"

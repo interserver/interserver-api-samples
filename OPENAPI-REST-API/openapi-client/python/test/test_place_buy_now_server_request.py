@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.place_buy_now_server_request import PlaceBuyNowServerRequest
+from interserver_api_client.models.place_buy_now_server_request import PlaceBuyNowServerRequest
 
 class TestPlaceBuyNowServerRequest(unittest.TestCase):
     """PlaceBuyNowServerRequest unit test stubs"""

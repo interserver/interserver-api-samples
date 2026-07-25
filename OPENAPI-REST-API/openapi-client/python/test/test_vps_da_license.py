@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_da_license import VpsDALicense
+from interserver_api_client.models.vps_da_license import VpsDALicense
 
 class TestVpsDALicense(unittest.TestCase):
     """VpsDALicense unit test stubs"""

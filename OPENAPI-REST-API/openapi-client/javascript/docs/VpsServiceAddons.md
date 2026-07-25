@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsServiceAddons
+# InterserverApiClient.VpsServiceAddons
 
 ## Properties
 

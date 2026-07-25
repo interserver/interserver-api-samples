@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_whois_privacy_request import DomainWhoisPrivacyRequest
+from interserver_api_client.models.domain_whois_privacy_request import DomainWhoisPrivacyRequest
 
 class TestDomainWhoisPrivacyRequest(unittest.TestCase):
     """DomainWhoisPrivacyRequest unit test stubs"""

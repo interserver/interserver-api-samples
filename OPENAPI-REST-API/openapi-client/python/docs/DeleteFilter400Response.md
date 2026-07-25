@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.delete_filter400_response import DeleteFilter400Response
+from interserver_api_client.models.delete_filter400_response import DeleteFilter400Response
 
 # TODO update the JSON string below
 json = "{}"

@@ -16,4 +16,3 @@ case class CloseTicketResponseSchema(
   success: Option[Boolean] = None,
   text: Option[String] = None
 )
-

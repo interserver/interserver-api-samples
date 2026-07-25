@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DenyRuleNew } from './api';
+import { DenyRuleNew } from '@interserver/myadmin-client';
 
 const instance: DenyRuleNew = {
     type,

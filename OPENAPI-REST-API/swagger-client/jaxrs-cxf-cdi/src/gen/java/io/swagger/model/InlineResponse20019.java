@@ -2,6 +2,12 @@ package io.swagger.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.InlineResponse20019Ips;
+import io.swagger.model.InlineResponse20019PackageCosts;
+import io.swagger.model.InlineResponse20019ServiceTypes;
+import java.util.ArrayList;
+import java.util.List;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -12,68 +18,68 @@ import javax.xml.bind.annotation.*;
 
 
 public class InlineResponse20019   {
-  private String text = null;
-  private Integer invoice = null;
-  private Integer order = null;
+  private InlineResponse20019PackageCosts packageCosts = null;
+  private List<InlineResponse20019ServiceTypes> serviceTypes = new ArrayList<InlineResponse20019ServiceTypes>();
+  private List<InlineResponse20019Ips> ips = new ArrayList<InlineResponse20019Ips>();
 
   /**
-   * Status message.
    **/
-  public InlineResponse20019 text(String text) {
-    this.text = text;
+  public InlineResponse20019 packageCosts(InlineResponse20019PackageCosts packageCosts) {
+    this.packageCosts = packageCosts;
     return this;
   }
 
   
   
-  @Schema(example = "Order Completed", description = "Status message.")
-  @JsonProperty("text")
+  @Schema(description = "")
+  @JsonProperty("packageCosts")
   @NotNull
-  public String getText() {
-    return text;
+  @Valid
+  public InlineResponse20019PackageCosts getPackageCosts() {
+    return packageCosts;
   }
-  public void setText(String text) {
-    this.text = text;
+  public void setPackageCosts(InlineResponse20019PackageCosts packageCosts) {
+    this.packageCosts = packageCosts;
   }
 
   /**
-   * Invoice ID for payment.
    **/
-  public InlineResponse20019 invoice(Integer invoice) {
-    this.invoice = invoice;
+  public InlineResponse20019 serviceTypes(List<InlineResponse20019ServiceTypes> serviceTypes) {
+    this.serviceTypes = serviceTypes;
     return this;
   }
 
   
   
-  @Schema(description = "Invoice ID for payment.")
-  @JsonProperty("invoice")
+  @Schema(description = "")
+  @JsonProperty("serviceTypes")
   @NotNull
-  public Integer getInvoice() {
-    return invoice;
+  @Valid
+  public List<InlineResponse20019ServiceTypes> getServiceTypes() {
+    return serviceTypes;
   }
-  public void setInvoice(Integer invoice) {
-    this.invoice = invoice;
+  public void setServiceTypes(List<InlineResponse20019ServiceTypes> serviceTypes) {
+    this.serviceTypes = serviceTypes;
   }
 
   /**
-   * Server order ID.
    **/
-  public InlineResponse20019 order(Integer order) {
-    this.order = order;
+  public InlineResponse20019 ips(List<InlineResponse20019Ips> ips) {
+    this.ips = ips;
     return this;
   }
 
   
   
-  @Schema(description = "Server order ID.")
-  @JsonProperty("order")
+  @Schema(description = "")
+  @JsonProperty("ips")
   @NotNull
-  public Integer getOrder() {
-    return order;
+  @Valid
+  public List<InlineResponse20019Ips> getIps() {
+    return ips;
   }
-  public void setOrder(Integer order) {
-    this.order = order;
+  public void setIps(List<InlineResponse20019Ips> ips) {
+    this.ips = ips;
   }
 
 
@@ -86,14 +92,14 @@ public class InlineResponse20019   {
       return false;
     }
     InlineResponse20019 inlineResponse20019 = (InlineResponse20019) o;
-    return Objects.equals(text, inlineResponse20019.text) &&
-        Objects.equals(invoice, inlineResponse20019.invoice) &&
-        Objects.equals(order, inlineResponse20019.order);
+    return Objects.equals(packageCosts, inlineResponse20019.packageCosts) &&
+        Objects.equals(serviceTypes, inlineResponse20019.serviceTypes) &&
+        Objects.equals(ips, inlineResponse20019.ips);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, invoice, order);
+    return Objects.hash(packageCosts, serviceTypes, ips);
   }
 
   @Override
@@ -101,9 +107,9 @@ public class InlineResponse20019   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20019 {\n");
     
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    invoice: ").append(toIndentedString(invoice)).append("\n");
-    sb.append("    order: ").append(toIndentedString(order)).append("\n");
+    sb.append("    packageCosts: ").append(toIndentedString(packageCosts)).append("\n");
+    sb.append("    serviceTypes: ").append(toIndentedString(serviceTypes)).append("\n");
+    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("}");
     return sb.toString();
   }

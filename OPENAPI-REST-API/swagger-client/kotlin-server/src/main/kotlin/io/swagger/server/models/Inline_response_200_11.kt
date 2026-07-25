@@ -13,13 +13,12 @@
 
 /**
  * 
+ * @param success 
  * @param text 
- * @param url A pre-signed download URL valid for 24 hours.
  */
 data class InlineResponse20011 (
 
-    val text: kotlin.String? = null,
-    /* A pre-signed download URL valid for 24 hours. */
-    val url: kotlin.String? = null
+    val success: kotlin.Boolean,
+    val text: kotlin.String
 ) {
 }

@@ -300,6 +300,27 @@ object VPSApi {
     } yield resp
   }
 
+  def getVpsBackup(host: String, id: Integer): Task[QueueResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[QueueResponse] = jsonOf[QueueResponse]
+
+    val path = "/vps/{id}/backup".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[QueueResponse](req)
+
+    } yield resp
+  }
+
   def getVpsBackups(host: String, id: Integer, all: String)(implicit allQuery: QueryParam[String]): Task[VpsBackupRows] = {
     implicit val returnTypeDecoder: EntityDecoder[VpsBackupRows] = jsonOf[VpsBackupRows]
 
@@ -359,6 +380,44 @@ object VPSApi {
     } yield resp
   }
 
+  def getVpsChangeHostname(host: String, id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/change_hostname".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
+  def getVpsChangeRootPassword(host: String, id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/change_root_password".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
   def getVpsChangeTimezone(host: String, id: Integer): Task[List[String]] = {
     implicit val returnTypeDecoder: EntityDecoder[List[String]] = jsonOf[List[String]]
 
@@ -397,6 +456,25 @@ object VPSApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[Vps](req)
+
+    } yield resp
+  }
+
+  def getVpsInsertCd(host: String, id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/insert_cd".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
   }
@@ -460,6 +538,25 @@ object VPSApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[VpsTemplatesList](req)
+
+    } yield resp
+  }
+
+  def getVpsResetPassword(host: String, id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/reset_password".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
   }
@@ -580,27 +677,6 @@ object VPSApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[SuccessTextResponse](req)
-
-    } yield resp
-  }
-
-  def postVpsBackup(host: String, id: Integer): Task[QueueResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[QueueResponse] = jsonOf[QueueResponse]
-
-    val path = "/vps/{id}/backup".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
-
-    val httpMethod = Method.GET
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[QueueResponse](req)
 
     } yield resp
   }
@@ -872,6 +948,25 @@ object VPSApi {
     } yield resp
   }
 
+  def postVpsTrafficUsage(host: String, id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/traffic_usage".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
   def postVpsViewDesktop(host: String, id: Integer): Task[Unit] = {
     val path = "/vps/{id}/view_desktop".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
@@ -908,6 +1003,25 @@ object VPSApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(VpsOrderPutRequest)
       resp          <- client.expect[VpsOrderPutResponse](req)
+
+    } yield resp
+  }
+
+  def putVpsBuyHdSpace(host: String, id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/buy_hd_space".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.PUT
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
   }
@@ -1213,6 +1327,27 @@ class HttpServiceVPSApi(service: HttpService) {
     } yield resp
   }
 
+  def getVpsBackup(id: Integer): Task[QueueResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[QueueResponse] = jsonOf[QueueResponse]
+
+    val path = "/vps/{id}/backup".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[QueueResponse](req)
+
+    } yield resp
+  }
+
   def getVpsBackups(id: Integer, all: String)(implicit allQuery: QueryParam[String]): Task[VpsBackupRows] = {
     implicit val returnTypeDecoder: EntityDecoder[VpsBackupRows] = jsonOf[VpsBackupRows]
 
@@ -1272,6 +1407,44 @@ class HttpServiceVPSApi(service: HttpService) {
     } yield resp
   }
 
+  def getVpsChangeHostname(id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/change_hostname".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
+  def getVpsChangeRootPassword(id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/change_root_password".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
   def getVpsChangeTimezone(id: Integer): Task[List[String]] = {
     implicit val returnTypeDecoder: EntityDecoder[List[String]] = jsonOf[List[String]]
 
@@ -1310,6 +1483,25 @@ class HttpServiceVPSApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[Vps](req)
+
+    } yield resp
+  }
+
+  def getVpsInsertCd(id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/insert_cd".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
   }
@@ -1373,6 +1565,25 @@ class HttpServiceVPSApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[VpsTemplatesList](req)
+
+    } yield resp
+  }
+
+  def getVpsResetPassword(id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/reset_password".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
   }
@@ -1493,27 +1704,6 @@ class HttpServiceVPSApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[SuccessTextResponse](req)
-
-    } yield resp
-  }
-
-  def postVpsBackup(id: Integer): Task[QueueResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[QueueResponse] = jsonOf[QueueResponse]
-
-    val path = "/vps/{id}/backup".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
-
-    val httpMethod = Method.GET
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[QueueResponse](req)
 
     } yield resp
   }
@@ -1785,6 +1975,25 @@ class HttpServiceVPSApi(service: HttpService) {
     } yield resp
   }
 
+  def postVpsTrafficUsage(id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/traffic_usage".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
   def postVpsViewDesktop(id: Integer): Task[Unit] = {
     val path = "/vps/{id}/view_desktop".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
 
@@ -1821,6 +2030,25 @@ class HttpServiceVPSApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(VpsOrderPutRequest)
       resp          <- client.expect[VpsOrderPutResponse](req)
+
+    } yield resp
+  }
+
+  def putVpsBuyHdSpace(id: Integer): Task[Unit] = {
+    val path = "/vps/{id}/buy_hd_space".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.PUT
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
   }

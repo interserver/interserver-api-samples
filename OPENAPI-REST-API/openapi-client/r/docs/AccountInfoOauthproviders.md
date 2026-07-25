@@ -1,4 +1,4 @@
-# openapi::AccountInfoOauthproviders
+# interserverapi::AccountInfoOauthproviders
 
 
 ## Properties

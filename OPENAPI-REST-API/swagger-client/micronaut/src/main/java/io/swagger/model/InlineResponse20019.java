@@ -3,7 +3,12 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.InlineResponse20019Ips;
+import io.swagger.model.InlineResponse20019PackageCosts;
+import io.swagger.model.InlineResponse20019ServiceTypes;
 import io.swagger.v3.oas.annotations.media.Schema;
+import java.util.ArrayList;
+import java.util.List;
 import io.micronaut.core.annotation.Introspected;
 import io.micronaut.validation.Validated;
 import javax.validation.Valid;
@@ -16,73 +21,92 @@ import javax.validation.constraints.*;
 @Introspected
 
 public class InlineResponse20019   {
-  @JsonProperty("text")
-  private String text = null;
+  @JsonProperty("packageCosts")
+  private InlineResponse20019PackageCosts packageCosts = null;
 
-  @JsonProperty("invoice")
-  private Integer invoice = null;
+  @JsonProperty("serviceTypes")
+  @Valid
+  private List<InlineResponse20019ServiceTypes> serviceTypes = null;
 
-  @JsonProperty("order")
-  private Integer order = null;
+  @JsonProperty("ips")
+  @Valid
+  private List<InlineResponse20019Ips> ips = null;
 
-  public InlineResponse20019 text(String text) {
-    this.text = text;
+  public InlineResponse20019 packageCosts(InlineResponse20019PackageCosts packageCosts) {
+    this.packageCosts = packageCosts;
     return this;
   }
 
   /**
-   * Status message.
-   * @return text
+   * Get packageCosts
+   * @return packageCosts
   **/
-  @Schema(example = "Order Completed", description = "Status message.")
+  @Schema(description = "")
   @NotNull
 
-  public String getText() {
-    return text;
+  @Valid
+  public InlineResponse20019PackageCosts getPackageCosts() {
+    return packageCosts;
   }
 
-  public void setText(String text) {
-    this.text = text;
+  public void setPackageCosts(InlineResponse20019PackageCosts packageCosts) {
+    this.packageCosts = packageCosts;
   }
 
-  public InlineResponse20019 invoice(Integer invoice) {
-    this.invoice = invoice;
+  public InlineResponse20019 serviceTypes(List<InlineResponse20019ServiceTypes> serviceTypes) {
+    this.serviceTypes = serviceTypes;
+    return this;
+  }
+
+  public InlineResponse20019 addServiceTypesItem(InlineResponse20019ServiceTypes serviceTypesItem) {
+    if (this.serviceTypes == null) {
+      this.serviceTypes = new ArrayList<InlineResponse20019ServiceTypes>();
+    }
+    this.serviceTypes.add(serviceTypesItem);
     return this;
   }
 
   /**
-   * Invoice ID for payment.
-   * @return invoice
+   * Get serviceTypes
+   * @return serviceTypes
   **/
-  @Schema(description = "Invoice ID for payment.")
+  @Schema(description = "")
   @NotNull
-
-  public Integer getInvoice() {
-    return invoice;
+  @Valid
+  public List<InlineResponse20019ServiceTypes> getServiceTypes() {
+    return serviceTypes;
   }
 
-  public void setInvoice(Integer invoice) {
-    this.invoice = invoice;
+  public void setServiceTypes(List<InlineResponse20019ServiceTypes> serviceTypes) {
+    this.serviceTypes = serviceTypes;
   }
 
-  public InlineResponse20019 order(Integer order) {
-    this.order = order;
+  public InlineResponse20019 ips(List<InlineResponse20019Ips> ips) {
+    this.ips = ips;
+    return this;
+  }
+
+  public InlineResponse20019 addIpsItem(InlineResponse20019Ips ipsItem) {
+    if (this.ips == null) {
+      this.ips = new ArrayList<InlineResponse20019Ips>();
+    }
+    this.ips.add(ipsItem);
     return this;
   }
 
   /**
-   * Server order ID.
-   * @return order
+   * Get ips
+   * @return ips
   **/
-  @Schema(description = "Server order ID.")
+  @Schema(description = "")
   @NotNull
-
-  public Integer getOrder() {
-    return order;
+  @Valid
+  public List<InlineResponse20019Ips> getIps() {
+    return ips;
   }
 
-  public void setOrder(Integer order) {
-    this.order = order;
+  public void setIps(List<InlineResponse20019Ips> ips) {
+    this.ips = ips;
   }
 
 
@@ -95,14 +119,14 @@ public class InlineResponse20019   {
       return false;
     }
     InlineResponse20019 inlineResponse20019 = (InlineResponse20019) o;
-    return Objects.equals(this.text, inlineResponse20019.text) &&
-        Objects.equals(this.invoice, inlineResponse20019.invoice) &&
-        Objects.equals(this.order, inlineResponse20019.order);
+    return Objects.equals(this.packageCosts, inlineResponse20019.packageCosts) &&
+        Objects.equals(this.serviceTypes, inlineResponse20019.serviceTypes) &&
+        Objects.equals(this.ips, inlineResponse20019.ips);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, invoice, order);
+    return Objects.hash(packageCosts, serviceTypes, ips);
   }
 
   @Override
@@ -110,9 +134,9 @@ public class InlineResponse20019   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20019 {\n");
     
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    invoice: ").append(toIndentedString(invoice)).append("\n");
-    sb.append("    order: ").append(toIndentedString(order)).append("\n");
+    sb.append("    packageCosts: ").append(toIndentedString(packageCosts)).append("\n");
+    sb.append("    serviceTypes: ").append(toIndentedString(serviceTypes)).append("\n");
+    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("}");
     return sb.toString();
   }

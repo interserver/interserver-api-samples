@@ -1,4 +1,4 @@
-# SwaggerClient::ServerNetworkInfoAssets
+# InterserverApiClient::ServerNetworkInfoAssets
 
 ## Properties
 Name | Type | Description | Notes

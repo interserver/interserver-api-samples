@@ -1,4 +1,4 @@
-# SwaggerClient::DomainWhoisPrivacyRequest
+# InterserverApiClient::DomainWhoisPrivacyRequest
 
 ## Properties
 Name | Type | Description | Notes

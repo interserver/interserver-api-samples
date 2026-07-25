@@ -1,4 +1,4 @@
-# SwaggerClient::ScrubIpFilterTypes
+# InterserverApiClient::ScrubIpFilterTypes
 
 ## Properties
 Name | Type | Description | Notes

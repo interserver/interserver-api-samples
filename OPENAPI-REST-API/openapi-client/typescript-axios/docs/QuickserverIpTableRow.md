@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverIpTableRow } from './api';
+import { QuickserverIpTableRow } from '@interserver/myadmin-client';
 
 const instance: QuickserverIpTableRow = {
     desc,

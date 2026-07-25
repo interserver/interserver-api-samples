@@ -16,11 +16,11 @@
 #' \dontrun{
 #' ####################  AddDnsDomain  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_domain <- "domain_example" # character | The domain name.
 #' var_ip <- "ip_example" # character | IP Address to point the domain to.
 #'
-#' #Create DNS Domain
+#' #Create a new authoritative DNS zone seeded with apex A + NS + SOA records
 #' api_instance <- DNSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -40,7 +40,7 @@
 #'
 #' ####################  AddDnsRecord  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "472" # character | The DNS Domain ID.
 #' var_name <- "name_example" # character | Name part of record
 #' var_type <- DnsRecordType$new() # DnsRecordType | 
@@ -48,7 +48,7 @@
 #' var_ttl <- 86400 # integer | Time-to-live (Optional)
 #' var_prio <- 0 # integer | Priority (Optional)
 #'
-#' #Add DNS Record to Domain
+#' #Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
 #' api_instance <- DNSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -65,10 +65,10 @@
 #'
 #' ####################  DeleteDnsDomain  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "id_example" # character | The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
 #'
-#' #Delete DNS Domain
+#' #Permanently delete a DNS zone and every record it contains
 #' api_instance <- DNSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -88,11 +88,11 @@
 #'
 #' ####################  DeleteDnsRecord  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_domain_id <- 56 # integer | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
 #' var_record_id <- 56 # integer | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 #'
-#' #Delete DNS Record
+#' #Permanently delete one DNS record from a zone — zone itself is preserved
 #' api_instance <- DNSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -112,10 +112,10 @@
 #'
 #' ####################  GetDnsDomain  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
 #'
-#' #List Domain DNS Records
+#' #List every DNS record in one zone with the IDs needed to edit or delete them
 #' api_instance <- DNSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -135,9 +135,9 @@
 #'
 #' ####################  GetDnsList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List DNS Domains
+#' #List DNS zones hosted on the account with each zone's apex A-record IP
 #' api_instance <- DNSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -157,7 +157,7 @@
 #'
 #' ####################  UpdateDnsRecord  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_domain_id <- 56 # integer | The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
 #' var_record_id <- 56 # integer | The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
 #' var_name <- "name_example" # character |  (Optional)
@@ -169,7 +169,7 @@
 #' var_ordername <- "ordername_example" # character |  (Optional)
 #' var_auth <- "auth_example" # character |  (Optional)
 #'
-#' #Update DNS Record
+#' #Replace values on an existing DNS record (name, type, content, ttl, priority)
 #' api_instance <- DNSApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -209,7 +209,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create DNS Domain
+    #' Create a new authoritative DNS zone seeded with apex A + NS + SOA records
     #'
     #' @param domain The domain name.
     #' @param ip IP Address to point the domain to.
@@ -232,7 +232,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create DNS Domain
+    #' Create a new authoritative DNS zone seeded with apex A + NS + SOA records
     #'
     #' @param domain The domain name.
     #' @param ip IP Address to point the domain to.
@@ -337,7 +337,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Add DNS Record to Domain
+    #' Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
     #'
     #' @param id The DNS Domain ID.
     #' @param name Name part of record
@@ -362,7 +362,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Add DNS Record to Domain
+    #' Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
     #'
     #' @param id The DNS Domain ID.
     #' @param name Name part of record
@@ -485,7 +485,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete DNS Domain
+    #' Permanently delete a DNS zone and every record it contains
     #'
     #' @param id The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
     #' @param data_file (optional) name of the data file to save the result
@@ -507,7 +507,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete DNS Domain
+    #' Permanently delete a DNS zone and every record it contains
     #'
     #' @param id The DNS domain ID to delete. Use the `id` from `GET /dns` to identify the domain.
     #' @param data_file (optional) name of the data file to save the result
@@ -605,7 +605,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete DNS Record
+    #' Permanently delete one DNS record from a zone — zone itself is preserved
     #'
     #' @param domain_id The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
     #' @param record_id The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
@@ -628,7 +628,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete DNS Record
+    #' Permanently delete one DNS record from a zone — zone itself is preserved
     #'
     #' @param domain_id The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
     #' @param record_id The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
@@ -739,7 +739,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Domain DNS Records
+    #' List every DNS record in one zone with the IDs needed to edit or delete them
     #'
     #' @param id The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
     #' @param data_file (optional) name of the data file to save the result
@@ -761,7 +761,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Domain DNS Records
+    #' List every DNS record in one zone with the IDs needed to edit or delete them
     #'
     #' @param id The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
     #' @param data_file (optional) name of the data file to save the result
@@ -859,7 +859,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' List DNS Domains
+    #' List DNS zones hosted on the account with each zone's apex A-record IP
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -880,7 +880,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' List DNS Domains
+    #' List DNS zones hosted on the account with each zone's apex A-record IP
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -965,7 +965,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update DNS Record
+    #' Replace values on an existing DNS record (name, type, content, ttl, priority)
     #'
     #' @param domain_id The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
     #' @param record_id The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.
@@ -996,7 +996,7 @@ DNSApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update DNS Record
+    #' Replace values on an existing DNS record (name, type, content, ttl, priority)
     #'
     #' @param domain_id The DNS domain ID. Use the `id` from `GET /dns` to identify the domain.
     #' @param record_id The DNS record ID within the domain. Use the record `id` from `GET /dns/{id}` to identify the record.

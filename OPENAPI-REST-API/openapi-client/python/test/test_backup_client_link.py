@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_client_link import BackupClientLink
+from interserver_api_client.models.backup_client_link import BackupClientLink
 
 class TestBackupClientLink(unittest.TestCase):
     """BackupClientLink unit test stubs"""

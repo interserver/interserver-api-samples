@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.scrub_ip_filter_types_filters_value import ScrubIpFilterTypesFiltersValue
+from interserver_api_client.models.scrub_ip_filter_types_filters_value import ScrubIpFilterTypesFiltersValue
 
 class TestScrubIpFilterTypesFiltersValue(unittest.TestCase):
     """ScrubIpFilterTypesFiltersValue unit test stubs"""

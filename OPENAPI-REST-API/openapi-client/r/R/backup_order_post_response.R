@@ -201,7 +201,7 @@ BackupOrderPostResponse <- R6::R6Class(
         self$`continue` <- this_object$`continue`
       }
       if (!is.null(this_object$`errors`)) {
-        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("openapi"))
+        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`total_cost`)) {
         self$`total_cost` <- this_object$`total_cost`
@@ -210,10 +210,10 @@ BackupOrderPostResponse <- R6::R6Class(
         self$`iid` <- this_object$`iid`
       }
       if (!is.null(this_object$`iids`)) {
-        self$`iids` <- ApiClient$new()$deserializeObj(this_object$`iids`, "array[character]", loadNamespace("openapi"))
+        self$`iids` <- ApiClient$new()$deserializeObj(this_object$`iids`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`real_iids`)) {
-        self$`real_iids` <- ApiClient$new()$deserializeObj(this_object$`real_iids`, "array[character]", loadNamespace("openapi"))
+        self$`real_iids` <- ApiClient$new()$deserializeObj(this_object$`real_iids`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`serviceId`)) {
         self$`serviceId` <- this_object$`serviceId`
@@ -248,11 +248,11 @@ BackupOrderPostResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`continue` <- this_object$`continue`
-      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("openapi"))
+      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[character]", loadNamespace("interserverapi"))
       self$`total_cost` <- this_object$`total_cost`
       self$`iid` <- this_object$`iid`
-      self$`iids` <- ApiClient$new()$deserializeObj(this_object$`iids`, "array[character]", loadNamespace("openapi"))
-      self$`real_iids` <- ApiClient$new()$deserializeObj(this_object$`real_iids`, "array[character]", loadNamespace("openapi"))
+      self$`iids` <- ApiClient$new()$deserializeObj(this_object$`iids`, "array[character]", loadNamespace("interserverapi"))
+      self$`real_iids` <- ApiClient$new()$deserializeObj(this_object$`real_iids`, "array[character]", loadNamespace("interserverapi"))
       self$`serviceId` <- this_object$`serviceId`
       self$`invoice_description` <- this_object$`invoice_description`
       self$`cj_params` <- BackupOrderPostResponseCjParams$new()$fromJSON(jsonlite::toJSON(this_object$`cj_params`, auto_unbox = TRUE, digits = NA))

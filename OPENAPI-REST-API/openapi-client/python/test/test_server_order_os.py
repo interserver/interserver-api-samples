@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_os import ServerOrderOS
+from interserver_api_client.models.server_order_os import ServerOrderOS
 
 class TestServerOrderOS(unittest.TestCase):
     """ServerOrderOS unit test stubs"""

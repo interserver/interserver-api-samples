@@ -1,4 +1,4 @@
-# openapi::ViewTicketResponse
+# interserverapi::ViewTicketResponse
 
 Ticket details
 

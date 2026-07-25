@@ -20,4 +20,3 @@ case class GenericResponse(
   status: String,
   text: String
 )
-

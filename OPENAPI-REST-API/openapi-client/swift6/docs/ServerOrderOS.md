@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Operating System ID. | [optional] 
+**_id** | **String** | Operating System ID. | [optional] 
 **price** | **Int** | Operating System price. | [optional] 
 **img** | **String** | Operating System image. | [optional] 
 **shortDesc** | **String** | Short description of the OS. | [optional] 

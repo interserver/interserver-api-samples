@@ -1,4 +1,4 @@
-# openapi::ViewMailLogStartDateParameter
+# interserverapi::ViewMailLogStartDateParameter
 
 
 ## Properties

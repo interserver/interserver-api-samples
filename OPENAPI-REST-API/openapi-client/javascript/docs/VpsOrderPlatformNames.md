@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsOrderPlatformNames
+# InterserverApiClient.VpsOrderPlatformNames
 
 ## Properties
 

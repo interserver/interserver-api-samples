@@ -32,4 +32,3 @@ case class LicensesOrderServiceTypes11482(
   /* Module of Service */
   services_module: Option[String] = None
 )
-

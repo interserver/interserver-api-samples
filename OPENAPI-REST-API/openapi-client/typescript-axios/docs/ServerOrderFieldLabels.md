@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderFieldLabels } from './api';
+import { ServerOrderFieldLabels } from '@interserver/myadmin-client';
 
 const instance: ServerOrderFieldLabels = {
     bandwidth,

@@ -1,4 +1,4 @@
-# InterServerManagementApi.ScrubIpPlaceOrder
+# InterserverApiClient.ScrubIpPlaceOrder
 
 ## Properties
 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailClientLink = Initialize-PSOpenAPIToolsMailClientLink  -Label Invoices `
+$MailClientLink = Initialize-InterserverApiMailClientLink  -Label Invoices `
  -Link invoices `
  -Icon fas fa-file-invoice-dollar fa-w-12 `
  -IconText  `

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EnableScrub500Response = Initialize-PSOpenAPIToolsEnableScrub500Response  -Success false `
+$EnableScrub500Response = Initialize-InterserverApiEnableScrub500Response  -Success false `
  -Text Unable to enable Scrub on your IP.
 ```
 

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.login_success_response import LoginSuccessResponse
+from interserver_api_client.models.login_success_response import LoginSuccessResponse
 
 # TODO update the JSON string below
 json = "{}"

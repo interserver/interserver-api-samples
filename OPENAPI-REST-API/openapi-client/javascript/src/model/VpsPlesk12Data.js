@@ -17,7 +17,7 @@ import VpsPleskLicense from './VpsPleskLicense';
 /**
  * The VpsPlesk12Data model module.
  * @module model/VpsPlesk12Data
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsPlesk12Data {
     /**

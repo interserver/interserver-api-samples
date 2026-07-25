@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsOrderLocationStock1 model module.
  * @module model/VpsOrderLocationStock1
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderLocationStock1 {
     /**

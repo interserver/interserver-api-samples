@@ -13,4 +13,8 @@ Map of VPS service IDs to their hostnames for the account dashboard.
 |**_2578866** | **String** | Link to a VPS. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ChargeInvoiceRows } from './api';
+import { ChargeInvoiceRows } from '@interserver/myadmin-client';
 
 const instance: ChargeInvoiceRows = {
     success,

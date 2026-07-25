@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsServiceExtra();
+    instance = new InterserverApiClient.VpsServiceExtra();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('VpsServiceExtra', function() {
     it('should create an instance of VpsServiceExtra', function() {
       // uncomment below and update the code to test VpsServiceExtra
-      //var instance = new InterServerManagementApi.VpsServiceExtra();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsServiceExtra);
+      //var instance = new InterserverApiClient.VpsServiceExtra();
+      //expect(instance).to.be.a(InterserverApiClient.VpsServiceExtra);
     });
 
     it('should have the property spice (base name: "spice")', function() {
       // uncomment below and update the code to test the property spice
-      //var instance = new InterServerManagementApi.VpsServiceExtra();
+      //var instance = new InterserverApiClient.VpsServiceExtra();
       //expect(instance).to.be();
     });
 
     it('should have the property snapshots (base name: "snapshots")', function() {
       // uncomment below and update the code to test the property snapshots
-      //var instance = new InterServerManagementApi.VpsServiceExtra();
+      //var instance = new InterserverApiClient.VpsServiceExtra();
       //expect(instance).to.be();
     });
 

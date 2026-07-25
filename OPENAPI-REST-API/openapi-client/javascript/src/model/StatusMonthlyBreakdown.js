@@ -17,7 +17,7 @@ import MonthlyCounts from './MonthlyCounts';
 /**
  * The StatusMonthlyBreakdown model module.
  * @module model/StatusMonthlyBreakdown
- * @version 0.9.0
+ * @version 1.0.0
  */
 class StatusMonthlyBreakdown {
     /**

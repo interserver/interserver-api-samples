@@ -8,17 +8,16 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
-import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import io.swagger.model.Account2faBody1;
 import io.swagger.model.AccountFeatures;
 import io.swagger.model.AccountInfo;
 import io.swagger.model.AccountInfoPost;
 import io.swagger.model.AccountSshKey;
-import io.swagger.model.BillingAddCcRequest;
 import io.swagger.model.GenericResponse;
 import io.swagger.model.InlineResponse200;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.InlineResponseMap200;
 import io.swagger.model.IpLimitRange;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.SuccessTextResponse;
@@ -34,22 +33,6 @@ import javax.ws.rs.core.SecurityContext;
 
 
 public class AccountApiServiceImpl implements AccountApi {
-      public Response addAccountCreditCard(MultipartFormDataInput input,String name,String address,String city,String state,String country,String zip,String cc,String ccExp,String ccCcv2,SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
-      public Response addAccountCreditCard(MultipartFormDataInput input,BillingAddCcRequest body,SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
-      public Response changeAccountUsername(SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
-      public Response deleteAccountCreditCard(String id,SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
       public Response deleteAccountOauthName(String name,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
@@ -62,7 +45,15 @@ public class AccountApiServiceImpl implements AccountApi {
       // do some magic!
       return Response.ok().build();
   }
+      public Response getAccountCurrencies(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
       public Response getAccountInfo(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response getAccountLocales(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -83,10 +74,6 @@ public class AccountApiServiceImpl implements AccountApi {
       return Response.ok().build();
   }
       public Response updateAccountApiKey(SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
-      public Response updateAccountCreditCard(Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

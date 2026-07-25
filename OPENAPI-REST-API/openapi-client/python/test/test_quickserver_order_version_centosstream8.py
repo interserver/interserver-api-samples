@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_order_version_centosstream8 import QuickserverOrderVersionCentosstream8
+from interserver_api_client.models.quickserver_order_version_centosstream8 import QuickserverOrderVersionCentosstream8
 
 class TestQuickserverOrderVersionCentosstream8(unittest.TestCase):
     """QuickserverOrderVersionCentosstream8 unit test stubs"""

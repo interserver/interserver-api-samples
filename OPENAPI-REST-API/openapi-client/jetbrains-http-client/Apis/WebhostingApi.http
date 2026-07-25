@@ -1,92 +1,117 @@
 ## WebhostingApi
 
-### Place Website Order
-## Place Website Order
+### Place a new webhosting order, create the invoice, and queue provisioning
+## Place a new webhosting order, create the invoice, and queue provisioning
 POST https://my.interserver.net/apiv2/websites/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Website Ordering Information
-## Website Ordering Information
+{
+ "hostname": "<string>",
+ "packageId": "<number>",
+ "rootpass": "<string>",
+ "period": "<number>",
+ "coupon": "<string>",
+ "serviceOfferId": "<number>",
+ "script": "<number>",
+ "comment": "<string>",
+ "registerDomain": "<string>"
+}
+
+
+### Read the webhosting order catalog — plans, packages, promo offers, pricing
+## Read the webhosting order catalog — plans, packages, promo offers, pricing
 GET https://my.interserver.net/apiv2/websites/order
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Website IP Information
-## Get Website IP Information
+### Read website IPs, current reverse DNS, and additional-IP pricing
+## Read website IPs, current reverse DNS, and additional-IP pricing
 GET https://my.interserver.net/apiv2/websites/{{id}}/buy_ip
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Website Order
-## Get Website Order
+### Read full configuration and status detail for one webhosting service
+## Read full configuration and status detail for one webhosting service
 GET https://my.interserver.net/apiv2/websites/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Website Invoices
-## Get Website Invoices
+### List all billing invoices and recurring charges scoped to one website
+## List all billing invoices and recurring charges scoped to one website
 GET https://my.interserver.net/apiv2/websites/{{id}}/invoices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Website Listing
-## Get Website Listing
+### List the caller&#39;s webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
+## List the caller&#39;s webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
 GET https://my.interserver.net/apiv2/websites
 Accept: application/json
 Accept: multipart/form-data
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Website Backups
-## Get Website Backups
+### List off-site cpmove backups stored in Swift — list or inline-download archive
+## List off-site cpmove backups stored in Swift — list or inline-download archive
 GET https://my.interserver.net/apiv2/websites/{{id}}/backups
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Hosting Panel Auto Login
-## Hosting Panel Auto Login
+### Get a one-time auto-login URL for the website&#39;s control panel
+## Get a one-time auto-login URL for the website&#39;s control panel
 GET https://my.interserver.net/apiv2/websites/{{id}}/login
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Resend Website Welcome Email
-## Resend Website Welcome Email
+### Resend the webhosting welcome email with control-panel credentials and URL
+## Resend the webhosting welcome email with control-panel credentials and URL
 GET https://my.interserver.net/apiv2/websites/{{id}}/welcome_email
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Website Reverse DNS
-## Get Website Reverse DNS
+### Read current reverse-DNS (PTR) records for the website&#39;s IPs
+## Read current reverse-DNS (PTR) records for the website&#39;s IPs
 GET https://my.interserver.net/apiv2/websites/{{id}}/reverse_dns
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Website IP DNS
-## Update Website IP DNS
+### Buy an additional IP for the website OR update reverse DNS records
+## Buy an additional IP for the website OR update reverse DNS records
 POST https://my.interserver.net/apiv2/websites/{{id}}/buy_ip
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -96,12 +121,13 @@ sessionid: {{apiKey}}
 }
 
 
-### Request Website Migration
-## Request Website Migration
+### Submit a request for InterServer staff to migrate a website from another host
+## Submit a request for InterServer staff to migrate a website from another host
 POST https://my.interserver.net/apiv2/websites/{{id}}/migration
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -123,12 +149,13 @@ sessionid: {{apiKey}}
 }
 
 
-### Update Website Reverse DNS
-## Update Website Reverse DNS
+### Bulk-update reverse-DNS (PTR) records for one or more website IPs
+## Bulk-update reverse-DNS (PTR) records for one or more website IPs
 POST https://my.interserver.net/apiv2/websites/{{id}}/reverse_dns
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -138,26 +165,43 @@ sessionid: {{apiKey}}
 }
 
 
-### Validate Webhosting Order
-## Validate Webhosting Order
+### Validate a webhosting order and preview cost — dry run, no charge
+## Validate a webhosting order and preview cost — dry run, no charge
 PUT https://my.interserver.net/apiv2/websites/order
+Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Website Order
-## Update Website Order
+{
+ "hostname": "<string>",
+ "packageId": "<number>",
+ "rootpass": "<string>",
+ "period": "<number>",
+ "coupon": "<string>",
+ "serviceOfferId": "<number>",
+ "script": "<number>",
+ "comment": "<string>",
+ "registerDomain": "<string>"
+}
+
+
+### POST mutation hook for the website detail page (use dedicated ops where possible)
+## POST mutation hook for the website detail page (use dedicated ops where possible)
 POST https://my.interserver.net/apiv2/websites/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Cancel Website
-## Cancel Website
+### Schedule termination of a webhosting service — wipes panel account at cycle end
+## Schedule termination of a webhosting service — wipes panel account at cycle end
 DELETE https://my.interserver.net/apiv2/websites/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

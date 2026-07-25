@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailApi();
+    instance = new InterserverApiClient.MailApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -292,6 +292,16 @@
       it('should call updateMailInfo successfully', function(done) {
         //uncomment below and update the code to test updateMailInfo
         //instance.updateMailInfo(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('updateRule', function() {
+      it('should call updateRule successfully', function(done) {
+        //uncomment below and update the code to test updateRule
+        //instance.updateRule(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

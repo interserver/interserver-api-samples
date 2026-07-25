@@ -28,4 +28,3 @@ case class Service(
   services_field2: String,
   services_module: String
 )
-

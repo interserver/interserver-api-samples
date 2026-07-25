@@ -52,21 +52,25 @@ trait VPSApiEndpoints[F[*]] {
   def doVpsStop(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def downloadVpsBackup(id: Int, downloadQsBackupRequest: DownloadQsBackupRequest, all: Option[GetQsBackupsAllParameter] = None)(using auth: _Authorization.ApiKey): F[DownloadQsBackup200Response]
   def getNewVps()(using auth: _Authorization.ApiKey): F[VpsOrder]
+  def getVpsBackup(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def getVpsBackups(id: Int, all: Option[GetQsBackupsAllParameter] = None)(using auth: _Authorization.ApiKey): F[VpsBackupRows]
   def getVpsBuyHdSpace(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def getVpsBuyIp(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
+  def getVpsChangeHostname(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
+  def getVpsChangeRootPassword(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def getVpsChangeTimezone(id: Int)(using auth: _Authorization.ApiKey): F[Seq[String]]
   def getVpsInfo(id: Int)(using auth: _Authorization.ApiKey): F[Vps]
+  def getVpsInsertCd(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def getVpsInvoices(id: Int)(using auth: _Authorization.ApiKey): F[ChargeInvoiceRows]
   def getVpsList()(using auth: _Authorization.ApiKey): F[Seq[VpsRow]]
   def getVpsReinstallOs(id: Int)(using auth: _Authorization.ApiKey): F[VpsTemplatesList]
+  def getVpsResetPassword(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def getVpsReverseDns(id: Int)(using auth: _Authorization.ApiKey): F[ReverseDnsEntries]
   def getVpsSetupVnc(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def getVpsSlices(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def getVpsTrafficUsage(id: Int)(using auth: _Authorization.ApiKey): F[VpsTrafficResponse]
   def getVpsViewDesktop(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def getVpsWelcomeEmail(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def postVpsBackup(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def postVpsBuyHdSpace(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def postVpsBuyIp(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def postVpsChangeHostname(id: Int, hostname: Option[String] = None)(using auth: _Authorization.ApiKey): F[QueueResponse]
@@ -80,8 +84,10 @@ trait VPSApiEndpoints[F[*]] {
   def postVpsReverseDns(id: Int, reverseDnsEntries: ReverseDnsEntries)(using auth: _Authorization.ApiKey): F[TextResponse]
   def postVpsSetupVnc(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def postVpsSlices(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
+  def postVpsTrafficUsage(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def postVpsViewDesktop(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def putVps(vpsOrderPutRequest: Option[VpsOrderPutRequest] = None)(using auth: _Authorization.ApiKey): F[VpsOrderPutResponse]
+  def putVpsBuyHdSpace(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def updateVpsInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def vPSCancel(id: Int)(using auth: _Authorization.ApiKey): F[VPSCancel200Response]
 
@@ -332,6 +338,25 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
+  override def getVpsBackup(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, QueueResponse](
+      method = "GET",
+      path = s"/vps/${id}/backup",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => parseJson[F, QueueResponse]("QueueResponse", r)
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
   override def getVpsBackups(id: Int, all: Option[GetQsBackupsAllParameter] = None)(using auth: _Authorization.ApiKey): F[VpsBackupRows] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
@@ -392,6 +417,44 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
+  override def getVpsChangeHostname(id: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, Unit](
+      method = "GET",
+      path = s"/vps/${id}/change_hostname",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => Concurrent[F].pure(())
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
+  override def getVpsChangeRootPassword(id: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, Unit](
+      method = "GET",
+      path = s"/vps/${id}/change_root_password",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => Concurrent[F].pure(())
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
   override def getVpsChangeTimezone(id: Int)(using auth: _Authorization.ApiKey): F[Seq[String]] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
@@ -426,6 +489,25 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
       auth = Some(auth)) {
         
         case r if r.status.code == 200 => parseJson[F, Vps]("Vps", r)
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
+  override def getVpsInsertCd(id: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, Unit](
+      method = "GET",
+      path = s"/vps/${id}/insert_cd",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => Concurrent[F].pure(())
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }
@@ -483,6 +565,25 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
       auth = Some(auth)) {
         
         case r if r.status.code == 200 => parseJson[F, VpsTemplatesList]("VpsTemplatesList", r)
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
+  override def getVpsResetPassword(id: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, Unit](
+      method = "GET",
+      path = s"/vps/${id}/reset_password",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => Concurrent[F].pure(())
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }
@@ -597,25 +698,6 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
       auth = Some(auth)) {
         
         case r if r.status.code == 200 => parseJson[F, SuccessTextResponse]("SuccessTextResponse", r)
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
-
-  override def postVpsBackup(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "application/json")
-    ).flatten
-
-    _executeRequest[Unit, QueueResponse](
-      method = "GET",
-      path = s"/vps/${id}/backup",
-      body = None,
-      formParameters = None,
-      queryParameters = Nil,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => parseJson[F, QueueResponse]("QueueResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }
@@ -888,6 +970,25 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
+  override def postVpsTrafficUsage(id: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, Unit](
+      method = "POST",
+      path = s"/vps/${id}/traffic_usage",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => Concurrent[F].pure(())
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
   override def postVpsViewDesktop(id: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
@@ -922,6 +1023,25 @@ class VPSApiEndpointsImpl[F[*]: Concurrent](
       auth = Some(auth)) {
         
         case r if r.status.code == 200 => parseJson[F, VpsOrderPutResponse]("VpsOrderPutResponse", r)
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
+  override def putVpsBuyHdSpace(id: Int)(using auth: _Authorization.ApiKey): F[Unit] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, Unit](
+      method = "PUT",
+      path = s"/vps/${id}/buy_hd_space",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => Concurrent[F].pure(())
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }

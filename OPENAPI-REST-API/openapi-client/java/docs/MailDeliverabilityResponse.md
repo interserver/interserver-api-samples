@@ -13,4 +13,8 @@ Deliverability statistics for a mail service.
 |**tableData** | **List&lt;List&lt;String&gt;&gt;** | Detailed deliverability breakdown by sender or domain. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -17,4 +17,3 @@ case class HomeServicesDomains(
   /* Number of domains. */
   count: Option[Int] = None
 )
-

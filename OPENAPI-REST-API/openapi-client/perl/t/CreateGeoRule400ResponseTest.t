@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::CreateGeoRule400Response');
+use_ok('InterServerAPI::Object::CreateGeoRule400Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::CreateGeoRule400Response->new();
+#my $instance = InterServerAPI::Object::CreateGeoRule400Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::CreateGeoRule400Response');
+#isa_ok($instance, 'InterServerAPI::Object::CreateGeoRule400Response');
 
 
 done_testing();

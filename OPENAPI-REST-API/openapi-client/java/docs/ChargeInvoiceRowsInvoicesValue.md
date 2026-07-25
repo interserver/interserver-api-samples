@@ -28,4 +28,8 @@
 | NUMBER_1 | new BigDecimal(&quot;1&quot;) |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

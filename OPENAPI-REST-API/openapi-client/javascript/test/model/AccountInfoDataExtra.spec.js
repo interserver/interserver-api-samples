@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoDataExtra();
+    instance = new InterserverApiClient.AccountInfoDataExtra();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('AccountInfoDataExtra', function() {
     it('should create an instance of AccountInfoDataExtra', function() {
       // uncomment below and update the code to test AccountInfoDataExtra
-      //var instance = new InterServerManagementApi.AccountInfoDataExtra();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoDataExtra);
+      //var instance = new InterserverApiClient.AccountInfoDataExtra();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoDataExtra);
     });
 
     it('should have the property private_whois (base name: "private_whois")', function() {
       // uncomment below and update the code to test the property private_whois
-      //var instance = new InterServerManagementApi.AccountInfoDataExtra();
+      //var instance = new InterserverApiClient.AccountInfoDataExtra();
       //expect(instance).to.be();
     });
 

@@ -6,7 +6,8 @@ import io.swagger.model.*;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse2003;
+import io.swagger.model.FloatingIpOrderRequest;
+import io.swagger.model.InlineResponse2004;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -24,7 +25,7 @@ import javax.ws.rs.core.SecurityContext;
 
 public class FloatingIpsApiServiceImpl implements FloatingIpsApiService {
       @Override
-      public Response addFloatingIp(SecurityContext securityContext) {
+      public Response addFloatingIp(FloatingIpOrderRequest body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -69,7 +70,7 @@ public class FloatingIpsApiServiceImpl implements FloatingIpsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response putFloatingIps(SecurityContext securityContext) {
+      public Response putFloatingIps(FloatingIpOrderRequest body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

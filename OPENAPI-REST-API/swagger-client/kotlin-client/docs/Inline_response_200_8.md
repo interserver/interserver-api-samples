@@ -3,5 +3,4 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | [**kotlin.Boolean**](.md) |  | 
-**text** | [**kotlin.String**](.md) |  | 
+**login** | [**kotlin.Boolean**](.md) | Whether the 2FA verification succeeded and the user is now logged in. |  [optional]

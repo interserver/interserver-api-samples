@@ -1,4 +1,4 @@
-# InterServerManagementApi.DnsRecordType
+# InterserverApiClient.DnsRecordType
 
 ## Enum
 
@@ -100,5 +100,7 @@
 * `WKS` (value: `"WKS"`)
 
 * `URI⏎` (value: `"URI⏎"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 

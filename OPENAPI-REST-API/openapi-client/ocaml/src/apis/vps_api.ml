@@ -314,6 +314,30 @@ let get_new_vps () =
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Vps_order.of_yojson) resp body
 
+let get_vps_backup ~id =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/vps/{id}/backup" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ id in
+    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
+    Request.read_json_body_as (JsonSupport.unwrap Queue_response.of_yojson) resp body
+
 let get_vps_backups ~id ?all () =
     let open Lwt.Infix in
     let uri = Request.build_uri "/vps/{id}/backups" in
@@ -389,6 +413,54 @@ let get_vps_buy_ip ~id =
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.handle_unit_response resp
 
+let get_vps_change_hostname ~id =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/vps/{id}/change_hostname" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ id in
+    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
+    Request.handle_unit_response resp
+
+let get_vps_change_root_password ~id =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/vps/{id}/change_root_password" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ id in
+    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
+    Request.handle_unit_response resp
+
 let get_vps_change_timezone ~id =
     let open Lwt.Infix in
     let uri = Request.build_uri "/vps/{id}/change_timezone" in
@@ -436,6 +508,30 @@ let get_vps_info ~id =
  id in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Vps.of_yojson) resp body
+
+let get_vps_insert_cd ~id =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/vps/{id}/insert_cd" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ id in
+    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
+    Request.handle_unit_response resp
 
 let get_vps_invoices ~id =
     let open Lwt.Infix in
@@ -493,6 +589,30 @@ let get_vps_reinstall_os ~id =
  id in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Vps_templates_list.of_yojson) resp body
+
+let get_vps_reset_password ~id =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/vps/{id}/reset_password" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ id in
+    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
+    Request.handle_unit_response resp
 
 let get_vps_reverse_dns ~id =
     let open Lwt.Infix in
@@ -637,30 +757,6 @@ let get_vps_welcome_email ~id =
  id in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
-
-let post_vps_backup ~id =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/vps/{id}/backup" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    let uri = Request.replace_path_param uri "id"     
-    Int32.to_string
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
-        
- id in
-    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.read_json_body_as (JsonSupport.unwrap Queue_response.of_yojson) resp body
 
 let post_vps_buy_hd_space ~id =
     let open Lwt.Infix in
@@ -1136,6 +1232,30 @@ let post_vps_slices ~id =
     Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
     Request.handle_unit_response resp
 
+let post_vps_traffic_usage ~id =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/vps/{id}/traffic_usage" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ id in
+    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
+    Request.handle_unit_response resp
+
 let post_vps_view_desktop ~id =
     let open Lwt.Infix in
     let uri = Request.build_uri "/vps/{id}/view_desktop" in
@@ -1183,6 +1303,30 @@ let put_vps ~vps_order_put_request_t () =
     in
     Cohttp_lwt_unix.Client.call `PUT uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Vps_order_put_response.of_yojson) resp body
+
+let put_vps_buy_hd_space ~id =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/vps/{id}/buy_hd_space" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    let uri = Request.replace_path_param uri "id"     
+    Int32.to_string
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
+        
+ id in
+    Cohttp_lwt_unix.Client.call `PUT uri ~headers >>= fun (resp, body) ->
+    Request.handle_unit_response resp
 
 let update_vps_info ~id =
     let open Lwt.Infix in

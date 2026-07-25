@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerSwitchport
+# InterserverApiClient.ServerSwitchport
 
 ## Properties
 

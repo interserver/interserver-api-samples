@@ -12,4 +12,8 @@ Create firewall rule for your ip
 |**port** | **Integer** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

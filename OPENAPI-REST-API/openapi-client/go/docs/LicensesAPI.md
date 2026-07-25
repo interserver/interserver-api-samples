@@ -4,25 +4,24 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddLicense**](LicensesAPI.md#AddLicense) | **Post** /licenses/order | Place License Order
-[**GetLicenseInfo**](LicensesAPI.md#GetLicenseInfo) | **Get** /licenses/{id} | Get License
-[**GetLicenseInvoices**](LicensesAPI.md#GetLicenseInvoices) | **Get** /licenses/{id}/invoices | Get License Invoices
-[**GetLicenseList**](LicensesAPI.md#GetLicenseList) | **Get** /licenses | List Licenses
-[**GetLicenseOrderCatTagInfo**](LicensesAPI.md#GetLicenseOrderCatTagInfo) | **Get** /licenses/order/{catTag} | Get License Order Information for Category
-[**GetLicensesWelcomeEmail**](LicensesAPI.md#GetLicensesWelcomeEmail) | **Get** /licenses/{id}/welcome_email | Resend License Welcome Email
-[**GetNewLicense**](LicensesAPI.md#GetNewLicense) | **Get** /licenses/order | Get License Order Information
-[**LicensesCancel**](LicensesAPI.md#LicensesCancel) | **Delete** /licenses/{id} | Cancel License
-[**PostLicenseChangeIp**](LicensesAPI.md#PostLicenseChangeIp) | **Post** /licenses/{id}/change_ip | Change License IP
-[**PutLicenses**](LicensesAPI.md#PutLicenses) | **Put** /licenses/order | Validate License Order
-[**UpdateLicenseInfo**](LicensesAPI.md#UpdateLicenseInfo) | **Post** /licenses/{id} | Update License
+[**AddLicense**](LicensesAPI.md#AddLicense) | **Post** /licenses/order | Order a new software license and create the recurring invoice
+[**GetLicenseInfo**](LicensesAPI.md#GetLicenseInfo) | **Get** /licenses/{id} | Get full details for one license including status, IP, and links
+[**GetLicenseInvoices**](LicensesAPI.md#GetLicenseInvoices) | **Get** /licenses/{id}/invoices | List all billing invoices tied to one software license service
+[**GetLicenseList**](LicensesAPI.md#GetLicenseList) | **Get** /licenses | List all software licenses owned by the authenticated customer
+[**GetLicensesWelcomeEmail**](LicensesAPI.md#GetLicensesWelcomeEmail) | **Get** /licenses/{id}/welcome_email | Resend the license welcome email with the key and activation steps
+[**GetNewLicense**](LicensesAPI.md#GetNewLicense) | **Get** /licenses/order | Get available license types, packages, and pricing for ordering
+[**LicensesCancel**](LicensesAPI.md#LicensesCancel) | **Delete** /licenses/{id} | Cancel a license service and stop future billing (irreversible)
+[**PostLicenseChangeIp**](LicensesAPI.md#PostLicenseChangeIp) | **Post** /licenses/{id}/change_ip | Rebind a license to a new IP address (may incur a vendor fee)
+[**PutLicenses**](LicensesAPI.md#PutLicenses) | **Put** /licenses/order | Validate a software license order before placing it (dry run preview)
+[**UpdateLicenseInfo**](LicensesAPI.md#UpdateLicenseInfo) | **Post** /licenses/{id} | Update mutable fields on a license service (e.g. assigned IP)
 
 
 
 ## AddLicense
 
-> ServiceOrderPostResponse AddLicense(ctx).Execute()
+> ServiceOrderPostResponse AddLicense(ctx).LicenseOrderRequest(licenseOrderRequest).Execute()
 
-Place License Order
+Order a new software license and create the recurring invoice
 
 
 
@@ -39,10 +38,11 @@ import (
 )
 
 func main() {
+	licenseOrderRequest := *openapiclient.NewLicenseOrderRequest(int32(123), "Ip_example", false) // LicenseOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.LicensesAPI.AddLicense(context.Background()).Execute()
+	resp, r, err := apiClient.LicensesAPI.AddLicense(context.Background()).LicenseOrderRequest(licenseOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LicensesAPI.AddLicense``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -54,12 +54,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAddLicenseRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **licenseOrderRequest** | [**LicenseOrderRequest**](LicenseOrderRequest.md) |  | 
 
 ### Return type
 
@@ -71,7 +75,7 @@ Other parameters are passed through a pointer to a apiAddLicenseRequest struct v
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -83,7 +87,7 @@ Other parameters are passed through a pointer to a apiAddLicenseRequest struct v
 
 > License GetLicenseInfo(ctx, id).Execute()
 
-Get License
+Get full details for one license including status, IP, and links
 
 
 
@@ -153,7 +157,7 @@ Name | Type | Description  | Notes
 
 > ChargeInvoiceRows GetLicenseInvoices(ctx, id).Execute()
 
-Get License Invoices
+List all billing invoices tied to one software license service
 
 
 
@@ -223,7 +227,7 @@ Name | Type | Description  | Notes
 
 > []LicenseRow GetLicenseList(ctx).Execute()
 
-List Licenses
+List all software licenses owned by the authenticated customer
 
 
 
@@ -280,79 +284,11 @@ Other parameters are passed through a pointer to a apiGetLicenseListRequest stru
 [[Back to README]](../README.md)
 
 
-## GetLicenseOrderCatTagInfo
-
-> GetLicenseOrderCatTagInfo(ctx, catTag).Execute()
-
-Get License Order Information for Category
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	catTag := "catTag_example" // string | The license category tag (e.g. `cpanel`, `plesk`). Obtain valid values from the `GET /licenses/order` response.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.LicensesAPI.GetLicenseOrderCatTagInfo(context.Background(), catTag).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LicensesAPI.GetLicenseOrderCatTagInfo``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**catTag** | **string** | The license category tag (e.g. &#x60;cpanel&#x60;, &#x60;plesk&#x60;). Obtain valid values from the &#x60;GET /licenses/order&#x60; response. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetLicenseOrderCatTagInfoRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetLicensesWelcomeEmail
 
 > SuccessTextResponse GetLicensesWelcomeEmail(ctx, id).Execute()
 
-Resend License Welcome Email
+Resend the license welcome email with the key and activation steps
 
 
 
@@ -422,7 +358,7 @@ Name | Type | Description  | Notes
 
 > LicensesOrder GetNewLicense(ctx).Execute()
 
-Get License Order Information
+Get available license types, packages, and pricing for ordering
 
 
 
@@ -483,7 +419,7 @@ Other parameters are passed through a pointer to a apiGetNewLicenseRequest struc
 
 > LicensesCancel200Response LicensesCancel(ctx, id).Execute()
 
-Cancel License
+Cancel a license service and stop future billing (irreversible)
 
 
 
@@ -553,7 +489,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse PostLicenseChangeIp(ctx, id).IpObject(ipObject).Execute()
 
-Change License IP
+Rebind a license to a new IP address (may incur a vendor fee)
 
 
 
@@ -623,9 +559,9 @@ Name | Type | Description  | Notes
 
 ## PutLicenses
 
-> PutLicenses(ctx).Execute()
+> PutLicenses(ctx).LicenseOrderRequest(licenseOrderRequest).Execute()
 
-Validate License Order
+Validate a software license order before placing it (dry run preview)
 
 
 
@@ -642,10 +578,11 @@ import (
 )
 
 func main() {
+	licenseOrderRequest := *openapiclient.NewLicenseOrderRequest(int32(123), "Ip_example", false) // LicenseOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.LicensesAPI.PutLicenses(context.Background()).Execute()
+	r, err := apiClient.LicensesAPI.PutLicenses(context.Background()).LicenseOrderRequest(licenseOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `LicensesAPI.PutLicenses``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -655,12 +592,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPutLicensesRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **licenseOrderRequest** | [**LicenseOrderRequest**](LicenseOrderRequest.md) |  | 
 
 ### Return type
 
@@ -672,7 +613,7 @@ Other parameters are passed through a pointer to a apiPutLicensesRequest struct 
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -684,7 +625,7 @@ Other parameters are passed through a pointer to a apiPutLicensesRequest struct 
 
 > SuccessTextResponse UpdateLicenseInfo(ctx, id).Execute()
 
-Update License
+Update mutable fields on a license service (e.g. assigned IP)
 
 
 

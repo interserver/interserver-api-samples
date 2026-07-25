@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::PostWebsiteMigrationRequest');
+use_ok('InterServerAPI::Object::PostWebsiteMigrationRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::PostWebsiteMigrationRequest->new();
+#my $instance = InterServerAPI::Object::PostWebsiteMigrationRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::PostWebsiteMigrationRequest');
+#isa_ok($instance, 'InterServerAPI::Object::PostWebsiteMigrationRequest');
 
 
 done_testing();

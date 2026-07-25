@@ -10,4 +10,8 @@ DNSSEC DS records currently configured for a domain.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,8 +1,8 @@
-# openapi.model.Home
+# interserver_api.model.Home
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **balance** | **String** | Balance with currency. | 
 **fullName** | **String** | Users full name. | 
 **email** | **String** | User email address. | 
-**tickets** | **BuiltList&lt;String&gt;** | List of tickets. | 
+**tickets** | **List&lt;String&gt;** | List of tickets. | 
 **ticketStatus** | [**HomeTicketStatus**](HomeTicketStatus.md) |  | 
 **ticketStatusView** | [**HomeTicketStatusView**](HomeTicketStatusView.md) |  | 
 **details** | [**HomeDetails**](HomeDetails.md) |  | 

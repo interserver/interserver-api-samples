@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.mail_schema_extra_info_tables import MailSchemaExtraInfoTables
+from interserver_api_client.models.mail_schema_extra_info_tables import MailSchemaExtraInfoTables
 
 # TODO update the JSON string below
 json = "{}"

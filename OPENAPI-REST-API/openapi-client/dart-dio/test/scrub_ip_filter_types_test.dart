@@ -1,18 +1,18 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ScrubIpFilterTypes
 void main() {
-  final instance = ScrubIpFilterTypesBuilder();
-  // TODO add properties to the builder and call build()
+  final ScrubIpFilterTypes? instance = /* ScrubIpFilterTypes(...) */ null;
+  // TODO add properties to the entity
 
   group(ScrubIpFilterTypes, () {
-    // bool success
+    // Optional<bool?> success
     test('to test the property `success`', () async {
       // TODO
     });
 
-    // BuiltMap<String, ScrubIpFilterTypesFiltersValue> filters
+    // Optional<Map<String, ScrubIpFilterTypesFiltersValue>?> filters
     test('to test the property `filters`', () async {
       // TODO
     });

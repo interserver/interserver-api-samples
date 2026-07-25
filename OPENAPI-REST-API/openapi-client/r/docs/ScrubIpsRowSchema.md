@@ -1,4 +1,4 @@
-# openapi::ScrubIpsRowSchema
+# interserverapi::ScrubIpsRowSchema
 
 
 ## Properties

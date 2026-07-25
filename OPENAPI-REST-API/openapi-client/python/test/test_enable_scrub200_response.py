@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.enable_scrub200_response import EnableScrub200Response
+from interserver_api_client.models.enable_scrub200_response import EnableScrub200Response
 
 class TestEnableScrub200Response(unittest.TestCase):
     """EnableScrub200Response unit test stubs"""

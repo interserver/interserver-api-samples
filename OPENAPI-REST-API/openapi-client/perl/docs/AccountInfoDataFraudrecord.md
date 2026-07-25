@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AccountInfoDataFraudrecord
+# InterServerAPI::Object::AccountInfoDataFraudrecord
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AccountInfoDataFraudrecord;
+use InterServerAPI::Object::AccountInfoDataFraudrecord;
 ```
 
 ## Properties

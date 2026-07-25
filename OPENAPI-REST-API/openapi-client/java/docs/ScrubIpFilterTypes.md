@@ -12,4 +12,8 @@ Available scrub filter types for building firewall rules.
 |**filters** | [**Map&lt;String, ScrubIpFilterTypesFiltersValue&gt;**](ScrubIpFilterTypesFiltersValue.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

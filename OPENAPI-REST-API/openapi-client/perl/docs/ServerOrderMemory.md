@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerOrderMemory
+# InterServerAPI::Object::ServerOrderMemory
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerOrderMemory;
+use InterServerAPI::Object::ServerOrderMemory;
 ```
 
 ## Properties

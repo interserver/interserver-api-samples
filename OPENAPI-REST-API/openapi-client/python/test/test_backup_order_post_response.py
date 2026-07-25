@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_order_post_response import BackupOrderPostResponse
+from interserver_api_client.models.backup_order_post_response import BackupOrderPostResponse
 
 class TestBackupOrderPostResponse(unittest.TestCase):
     """BackupOrderPostResponse unit test stubs"""
@@ -50,7 +50,7 @@ class TestBackupOrderPostResponse(unittest.TestCase):
                     ],
                 service_id = 56,
                 invoice_description = '',
-                cj_params = openapi_client.models.backup_order_post_response_cj_params.BackupOrderPostResponse_cj_params(
+                cj_params = interserver_api_client.models.backup_order_post_response_cj_params.BackupOrderPostResponse_cj_params(
                     container_tag_id = '', 
                     cid = '', 
                     oid = '', 

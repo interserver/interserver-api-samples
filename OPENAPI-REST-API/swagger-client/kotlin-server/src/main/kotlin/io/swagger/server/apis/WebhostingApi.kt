@@ -37,10 +37,10 @@ import myadmin-client-kotlin-server.infrastructure.ApiPrincipal
 import io.swagger.server.models.ChargeInvoiceRows
 import io.swagger.server.models.IdBuyIpBody
 import io.swagger.server.models.IdMigrationBody
-import io.swagger.server.models.InlineResponse20023
-import io.swagger.server.models.InlineResponse20024
 import io.swagger.server.models.InlineResponse20025
 import io.swagger.server.models.InlineResponse20026
+import io.swagger.server.models.InlineResponse20027
+import io.swagger.server.models.InlineResponse20028
 import io.swagger.server.models.InlineResponse401
 import io.swagger.server.models.ReverseDnsEntries
 import io.swagger.server.models.ServiceOrderPostResponse
@@ -49,6 +49,8 @@ import io.swagger.server.models.TextResponse
 import io.swagger.server.models.Website
 import io.swagger.server.models.WebsiteBackups
 import io.swagger.server.models.WebsiteLoginResponse
+import io.swagger.server.models.WebsiteOrderPostRequest
+import io.swagger.server.models.WebsiteOrderPutRequest
 import io.swagger.server.models.WebsiteRow
 import io.swagger.server.models.WebsitesOrder
 

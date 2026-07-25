@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerAssets model module.
  * @module model/ServerAssets
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerAssets {
     /**

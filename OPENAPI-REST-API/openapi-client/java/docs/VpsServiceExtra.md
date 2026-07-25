@@ -11,4 +11,8 @@
 |**snapshots** | [**List&lt;VpsSnapshot&gt;**](VpsSnapshot.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

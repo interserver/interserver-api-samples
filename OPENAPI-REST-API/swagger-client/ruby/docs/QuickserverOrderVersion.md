@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverOrderVersion
+# InterserverApiClient::QuickserverOrderVersion
 
 ## Properties
 Name | Type | Description | Notes

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_scrub_ip_details200_response import GetScrubIpDetails200Response
+from interserver_api_client.models.get_scrub_ip_details200_response import GetScrubIpDetails200Response
 
 class TestGetScrubIpDetails200Response(unittest.TestCase):
     """GetScrubIpDetails200Response unit test stubs"""
@@ -36,7 +36,7 @@ class TestGetScrubIpDetails200Response(unittest.TestCase):
         model = GetScrubIpDetails200Response()
         if include_optional:
             return GetScrubIpDetails200Response(
-                service_info = openapi_client.models.get_scrub_ip_details_200_response_service_info.getScrubIpDetails_200_response_serviceInfo(
+                service_info = interserver_api_client.models.get_scrub_ip_details_200_response_service_info.getScrubIpDetails_200_response_serviceInfo(
                     scrub_ip_id = '', 
                     scrub_ip_type = '', 
                     scrub_ip_custid = '', 
@@ -50,7 +50,7 @@ class TestGetScrubIpDetails200Response(unittest.TestCase):
                     scrub_ip_coupon = '', 
                     scrub_ip_comment = '', ),
                 client_links = [
-                    openapi_client.models.get_scrub_ip_details_200_response_client_links_inner.getScrubIpDetails_200_response_client_links_inner(
+                    interserver_api_client.models.get_scrub_ip_details_200_response_client_links_inner.getScrubIpDetails_200_response_client_links_inner(
                         label = '', 
                         link = '', 
                         icon = '', 
@@ -58,7 +58,7 @@ class TestGetScrubIpDetails200Response(unittest.TestCase):
                         help_text = '', 
                         other_attr = '', )
                     ],
-                billing_details = openapi_client.models.get_scrub_ip_details_200_response_billing_details.getScrubIpDetails_200_response_billingDetails(
+                billing_details = interserver_api_client.models.get_scrub_ip_details_200_response_billing_details.getScrubIpDetails_200_response_billingDetails(
                     service_last_invoice_date = '', 
                     service_payment_status = '', 
                     service_frequency = '', 
@@ -70,17 +70,17 @@ class TestGetScrubIpDetails200Response(unittest.TestCase):
                 cust_currency = '',
                 cust_currency_symbol = '',
                 package = '',
-                extra_info_tables = openapi_client.models.get_scrub_ip_details_200_response_extra_info_tables.getScrubIpDetails_200_response_extraInfoTables(
-                    scrub_ips = openapi_client.models.get_scrub_ip_details_200_response_extra_info_tables_scrub_ips.getScrubIpDetails_200_response_extraInfoTables_scrub_ips(
+                extra_info_tables = interserver_api_client.models.get_scrub_ip_details_200_response_extra_info_tables.getScrubIpDetails_200_response_extraInfoTables(
+                    scrub_ips = interserver_api_client.models.get_scrub_ip_details_200_response_extra_info_tables_scrub_ips.getScrubIpDetails_200_response_extraInfoTables_scrub_ips(
                         title = '', 
                         rows = [
-                            openapi_client.models.get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner.getScrubIpDetails_200_response_extraInfoTables_scrub_ips_rows_inner(
+                            interserver_api_client.models.get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner.getScrubIpDetails_200_response_extraInfoTables_scrub_ips_rows_inner(
                                 desc = '', 
                                 value = '', )
                             ], ), ),
-                filter_firewall = openapi_client.models.get_scrub_ip_details_200_response_filter_firewall.getScrubIpDetails_200_response_filter_firewall(
+                filter_firewall = interserver_api_client.models.get_scrub_ip_details_200_response_filter_firewall.getScrubIpDetails_200_response_filter_firewall(
                     rules = [
-                        openapi_client.models.get_scrub_ip_details_200_response_filter_firewall_rules_inner.getScrubIpDetails_200_response_filter_firewall_rules_inner(
+                        interserver_api_client.models.get_scrub_ip_details_200_response_filter_firewall_rules_inner.getScrubIpDetails_200_response_filter_firewall_rules_inner(
                             id = '', 
                             source_ip = '', 
                             destination_ip = '', 
@@ -91,7 +91,7 @@ class TestGetScrubIpDetails200Response(unittest.TestCase):
                             global_drop = '', )
                         ], 
                     filters = [
-                        openapi_client.models.get_scrub_ip_details_200_response_filter_firewall_filters_inner.getScrubIpDetails_200_response_filter_firewall_filters_inner(
+                        interserver_api_client.models.get_scrub_ip_details_200_response_filter_firewall_filters_inner.getScrubIpDetails_200_response_filter_firewall_filters_inner(
                             daddr = '', 
                             dest = '', 
                             filter_name = '', 

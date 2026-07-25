@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetWebsiteBuyIp200Response();
+    instance = new InterserverApiClient.GetWebsiteBuyIp200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('GetWebsiteBuyIp200Response', function() {
     it('should create an instance of GetWebsiteBuyIp200Response', function() {
       // uncomment below and update the code to test GetWebsiteBuyIp200Response
-      //var instance = new InterServerManagementApi.GetWebsiteBuyIp200Response();
-      //expect(instance).to.be.a(InterServerManagementApi.GetWebsiteBuyIp200Response);
+      //var instance = new InterserverApiClient.GetWebsiteBuyIp200Response();
+      //expect(instance).to.be.a(InterserverApiClient.GetWebsiteBuyIp200Response);
     });
 
     it('should have the property ips (base name: "ips")', function() {
       // uncomment below and update the code to test the property ips
-      //var instance = new InterServerManagementApi.GetWebsiteBuyIp200Response();
+      //var instance = new InterserverApiClient.GetWebsiteBuyIp200Response();
       //expect(instance).to.be();
     });
 

@@ -1,12 +1,6 @@
 #tag Interface
 Protected Interface AccountApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub ChangeAccountUsernameCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.TextResponse)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub DeleteAccountOauthNameCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SuccessTextResponse)
 		  
 		End Sub

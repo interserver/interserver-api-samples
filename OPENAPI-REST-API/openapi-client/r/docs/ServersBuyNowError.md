@@ -1,4 +1,4 @@
-# openapi::ServersBuyNowError
+# interserverapi::ServersBuyNowError
 
 Error response when a buy-it-now server order fails validation.
 

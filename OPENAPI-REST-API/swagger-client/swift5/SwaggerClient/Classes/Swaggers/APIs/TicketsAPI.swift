@@ -11,7 +11,7 @@ import Alamofire
 
 open class TicketsAPI {
     /**
-     Create New Ticket
+     Open a new helpdesk ticket, optionally linked to a service and attachments
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -24,7 +24,7 @@ open class TicketsAPI {
 
 
     /**
-     Create New Ticket
+     Open a new helpdesk ticket, optionally linked to a service and attachments
      - POST /tickets/new
 
      - API Key:
@@ -57,7 +57,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Create New Ticket
+     Open a new helpdesk ticket, optionally linked to a service and attachments
 
      - parameter subject: (form)  
      - parameter body: (form)  
@@ -73,7 +73,7 @@ open class TicketsAPI {
 
 
     /**
-     Create New Ticket
+     Open a new helpdesk ticket, optionally linked to a service and attachments
      - POST /tickets/new
 
      - API Key:
@@ -109,7 +109,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Close Ticket
+     Close an open support ticket via simple GET request (no body required)
 
      - parameter _id: (path) Ticket ID 
      - parameter completion: completion handler to receive the data and the error objects
@@ -122,7 +122,7 @@ open class TicketsAPI {
 
 
     /**
-     Close Ticket
+     Close an open support ticket via simple GET request (no body required)
      - GET /tickets/{id}/close
 
      - API Key:
@@ -157,7 +157,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Close Ticket
+     Close a customer ticket via DELETE verb (closes only, never destroys data)
 
      - parameter _id: (path) Ticket ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -170,7 +170,7 @@ open class TicketsAPI {
 
 
     /**
-     Close Ticket
+     Close a customer ticket via DELETE verb (closes only, never destroys data)
      - DELETE /tickets/{id}
 
      - API Key:
@@ -240,7 +240,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Gets Information for creating a new ticket.
+     Fetch services and product options to populate the new-ticket form
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -256,7 +256,7 @@ open class TicketsAPI {
 
 
     /**
-     Gets Information for creating a new ticket.
+     Fetch services and product options to populate the new-ticket form
      - GET /tickets/new
 
      - API Key:
@@ -283,7 +283,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Ticket Information
+     Get full ticket details including subject, status, and the reply thread
 
      - parameter _id: (path) Ticket ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -296,7 +296,7 @@ open class TicketsAPI {
 
 
     /**
-     Get Ticket Information
+     Get full ticket details including subject, status, and the reply thread
      - GET /tickets/{id}
 
      - API Key:
@@ -387,7 +387,7 @@ open class TicketsAPI {
     }
 
     /**
-     List Support Tickets
+     List the authenticated account's support tickets with status and date filters
 
      - parameter page: (query) Page number for paginated results. (optional, default to 1)
      - parameter period: (query) How far back to show tickets from. Value is in days. (optional, default to 30)
@@ -402,7 +402,7 @@ open class TicketsAPI {
 
 
     /**
-     List Support Tickets
+     List the authenticated account's support tickets with status and date filters
      - GET /tickets
 
      - API Key:
@@ -457,7 +457,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Reply To Ticket
+     Append a reply (and optional attachment, server-access fields) to a ticket
 
      - parameter _id: (path) Ticket ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -470,7 +470,7 @@ open class TicketsAPI {
 
 
     /**
-     Reply To Ticket
+     Append a reply (and optional attachment, server-access fields) to a ticket
      - POST /tickets/{id}
 
      - API Key:
@@ -540,7 +540,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Search Support Tickets
+     Search the authenticated account's tickets by subject, email, or mask ID
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -552,7 +552,7 @@ open class TicketsAPI {
 
 
     /**
-     Search Support Tickets
+     Search the authenticated account's tickets by subject, email, or mask ID
      - POST /tickets
 
      - API Key:
@@ -599,7 +599,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update Ticket
+     Update a ticket's properties such as subject or status (stub, not implemented)
 
      - parameter _id: (path) Ticket ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -612,7 +612,7 @@ open class TicketsAPI {
 
 
     /**
-     Update Ticket
+     Update a ticket's properties such as subject or status (stub, not implemented)
      - PUT /tickets/{id}
 
      - API Key:
@@ -682,7 +682,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Reply Ticket
+     Post a simple text reply to an existing ticket thread (no attachments)
 
      - parameter _id: (path) The ticket ID number. 
      - parameter body: (body)  (optional)
@@ -696,7 +696,7 @@ open class TicketsAPI {
 
 
     /**
-     Reply Ticket
+     Post a simple text reply to an existing ticket thread (no attachments)
      - POST /tickets/{id}/reply
 
      - API Key:
@@ -732,7 +732,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Reply Ticket
+     Post a simple text reply to an existing ticket thread (no attachments)
 
      - parameter _id: (path) The ticket ID number. 
      - parameter content: (form)  (optional)
@@ -746,7 +746,7 @@ open class TicketsAPI {
 
 
     /**
-     Reply Ticket
+     Post a simple text reply to an existing ticket thread (no attachments)
      - POST /tickets/{id}/reply
 
      - API Key:
@@ -782,7 +782,7 @@ open class TicketsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Ticket
+     Update a ticket's custom field values (server-access details, etc.)
 
      - parameter _id: (path) The ticket ID number. 
      - parameter body: (body)  (optional)
@@ -796,7 +796,7 @@ open class TicketsAPI {
 
 
     /**
-     Update Ticket
+     Update a ticket's custom field values (server-access details, etc.)
      - POST /tickets/{id}/update
 
      - API Key:
@@ -840,7 +840,7 @@ open class TicketsAPI {
     }
 
     /**
-     Update Ticket
+     Update a ticket's custom field values (server-access details, etc.)
 
      - parameter _id: (path) The ticket ID number. 
      - parameter ip: (form)  (optional)
@@ -860,7 +860,7 @@ open class TicketsAPI {
 
 
     /**
-     Update Ticket
+     Update a ticket's custom field values (server-access details, etc.)
      - POST /tickets/{id}/update
 
      - API Key:

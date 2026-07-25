@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailBlockRspamd
 void main() {
-  final instance = MailBlockRspamdBuilder();
-  // TODO add properties to the builder and call build()
+  final MailBlockRspamd? instance = /* MailBlockRspamd(...) */ null;
+  // TODO add properties to the entity
 
   group(MailBlockRspamd, () {
     // String from

@@ -1,4 +1,4 @@
-# openapi::ServiceCategories
+# interserverapi::ServiceCategories
 
 The listing of the categories for the services.
 

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AccountInfoOauthConfigProvidersValue model module.
  * @module model/AccountInfoOauthConfigProvidersValue
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AccountInfoOauthConfigProvidersValue {
     /**

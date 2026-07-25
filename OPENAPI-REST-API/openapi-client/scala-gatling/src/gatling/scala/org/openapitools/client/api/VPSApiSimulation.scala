@@ -68,21 +68,25 @@ class VPSApiSimulation extends Simulation {
     val doVpsStopPerSecond = config.getDouble("performance.operationsPerSecond.doVpsStop") * rateMultiplier * instanceMultiplier
     val downloadVpsBackupPerSecond = config.getDouble("performance.operationsPerSecond.downloadVpsBackup") * rateMultiplier * instanceMultiplier
     val getNewVpsPerSecond = config.getDouble("performance.operationsPerSecond.getNewVps") * rateMultiplier * instanceMultiplier
+    val getVpsBackupPerSecond = config.getDouble("performance.operationsPerSecond.getVpsBackup") * rateMultiplier * instanceMultiplier
     val getVpsBackupsPerSecond = config.getDouble("performance.operationsPerSecond.getVpsBackups") * rateMultiplier * instanceMultiplier
     val getVpsBuyHdSpacePerSecond = config.getDouble("performance.operationsPerSecond.getVpsBuyHdSpace") * rateMultiplier * instanceMultiplier
     val getVpsBuyIpPerSecond = config.getDouble("performance.operationsPerSecond.getVpsBuyIp") * rateMultiplier * instanceMultiplier
+    val getVpsChangeHostnamePerSecond = config.getDouble("performance.operationsPerSecond.getVpsChangeHostname") * rateMultiplier * instanceMultiplier
+    val getVpsChangeRootPasswordPerSecond = config.getDouble("performance.operationsPerSecond.getVpsChangeRootPassword") * rateMultiplier * instanceMultiplier
     val getVpsChangeTimezonePerSecond = config.getDouble("performance.operationsPerSecond.getVpsChangeTimezone") * rateMultiplier * instanceMultiplier
     val getVpsInfoPerSecond = config.getDouble("performance.operationsPerSecond.getVpsInfo") * rateMultiplier * instanceMultiplier
+    val getVpsInsertCdPerSecond = config.getDouble("performance.operationsPerSecond.getVpsInsertCd") * rateMultiplier * instanceMultiplier
     val getVpsInvoicesPerSecond = config.getDouble("performance.operationsPerSecond.getVpsInvoices") * rateMultiplier * instanceMultiplier
     val getVpsListPerSecond = config.getDouble("performance.operationsPerSecond.getVpsList") * rateMultiplier * instanceMultiplier
     val getVpsReinstallOsPerSecond = config.getDouble("performance.operationsPerSecond.getVpsReinstallOs") * rateMultiplier * instanceMultiplier
+    val getVpsResetPasswordPerSecond = config.getDouble("performance.operationsPerSecond.getVpsResetPassword") * rateMultiplier * instanceMultiplier
     val getVpsReverseDnsPerSecond = config.getDouble("performance.operationsPerSecond.getVpsReverseDns") * rateMultiplier * instanceMultiplier
     val getVpsSetupVncPerSecond = config.getDouble("performance.operationsPerSecond.getVpsSetupVnc") * rateMultiplier * instanceMultiplier
     val getVpsSlicesPerSecond = config.getDouble("performance.operationsPerSecond.getVpsSlices") * rateMultiplier * instanceMultiplier
     val getVpsTrafficUsagePerSecond = config.getDouble("performance.operationsPerSecond.getVpsTrafficUsage") * rateMultiplier * instanceMultiplier
     val getVpsViewDesktopPerSecond = config.getDouble("performance.operationsPerSecond.getVpsViewDesktop") * rateMultiplier * instanceMultiplier
     val getVpsWelcomeEmailPerSecond = config.getDouble("performance.operationsPerSecond.getVpsWelcomeEmail") * rateMultiplier * instanceMultiplier
-    val postVpsBackupPerSecond = config.getDouble("performance.operationsPerSecond.postVpsBackup") * rateMultiplier * instanceMultiplier
     val postVpsBuyHdSpacePerSecond = config.getDouble("performance.operationsPerSecond.postVpsBuyHdSpace") * rateMultiplier * instanceMultiplier
     val postVpsBuyIpPerSecond = config.getDouble("performance.operationsPerSecond.postVpsBuyIp") * rateMultiplier * instanceMultiplier
     val postVpsChangeHostnamePerSecond = config.getDouble("performance.operationsPerSecond.postVpsChangeHostname") * rateMultiplier * instanceMultiplier
@@ -96,8 +100,10 @@ class VPSApiSimulation extends Simulation {
     val postVpsReverseDnsPerSecond = config.getDouble("performance.operationsPerSecond.postVpsReverseDns") * rateMultiplier * instanceMultiplier
     val postVpsSetupVncPerSecond = config.getDouble("performance.operationsPerSecond.postVpsSetupVnc") * rateMultiplier * instanceMultiplier
     val postVpsSlicesPerSecond = config.getDouble("performance.operationsPerSecond.postVpsSlices") * rateMultiplier * instanceMultiplier
+    val postVpsTrafficUsagePerSecond = config.getDouble("performance.operationsPerSecond.postVpsTrafficUsage") * rateMultiplier * instanceMultiplier
     val postVpsViewDesktopPerSecond = config.getDouble("performance.operationsPerSecond.postVpsViewDesktop") * rateMultiplier * instanceMultiplier
     val putVpsPerSecond = config.getDouble("performance.operationsPerSecond.putVps") * rateMultiplier * instanceMultiplier
+    val putVpsBuyHdSpacePerSecond = config.getDouble("performance.operationsPerSecond.putVpsBuyHdSpace") * rateMultiplier * instanceMultiplier
     val updateVpsInfoPerSecond = config.getDouble("performance.operationsPerSecond.updateVpsInfo") * rateMultiplier * instanceMultiplier
     val vPSCancelPerSecond = config.getDouble("performance.operationsPerSecond.vPSCancel") * rateMultiplier * instanceMultiplier
 
@@ -116,21 +122,25 @@ class VPSApiSimulation extends Simulation {
     val doVpsStopPATHFeeder = csv(userDataDirectory + File.separator + "doVpsStop-pathParams.csv").random
     val downloadVpsBackupQUERYFeeder = csv(userDataDirectory + File.separator + "downloadVpsBackup-queryParams.csv").random
     val downloadVpsBackupPATHFeeder = csv(userDataDirectory + File.separator + "downloadVpsBackup-pathParams.csv").random
+    val getVpsBackupPATHFeeder = csv(userDataDirectory + File.separator + "getVpsBackup-pathParams.csv").random
     val getVpsBackupsQUERYFeeder = csv(userDataDirectory + File.separator + "getVpsBackups-queryParams.csv").random
     val getVpsBackupsPATHFeeder = csv(userDataDirectory + File.separator + "getVpsBackups-pathParams.csv").random
     val getVpsBuyHdSpacePATHFeeder = csv(userDataDirectory + File.separator + "getVpsBuyHdSpace-pathParams.csv").random
     val getVpsBuyIpPATHFeeder = csv(userDataDirectory + File.separator + "getVpsBuyIp-pathParams.csv").random
+    val getVpsChangeHostnamePATHFeeder = csv(userDataDirectory + File.separator + "getVpsChangeHostname-pathParams.csv").random
+    val getVpsChangeRootPasswordPATHFeeder = csv(userDataDirectory + File.separator + "getVpsChangeRootPassword-pathParams.csv").random
     val getVpsChangeTimezonePATHFeeder = csv(userDataDirectory + File.separator + "getVpsChangeTimezone-pathParams.csv").random
     val getVpsInfoPATHFeeder = csv(userDataDirectory + File.separator + "getVpsInfo-pathParams.csv").random
+    val getVpsInsertCdPATHFeeder = csv(userDataDirectory + File.separator + "getVpsInsertCd-pathParams.csv").random
     val getVpsInvoicesPATHFeeder = csv(userDataDirectory + File.separator + "getVpsInvoices-pathParams.csv").random
     val getVpsReinstallOsPATHFeeder = csv(userDataDirectory + File.separator + "getVpsReinstallOs-pathParams.csv").random
+    val getVpsResetPasswordPATHFeeder = csv(userDataDirectory + File.separator + "getVpsResetPassword-pathParams.csv").random
     val getVpsReverseDnsPATHFeeder = csv(userDataDirectory + File.separator + "getVpsReverseDns-pathParams.csv").random
     val getVpsSetupVncPATHFeeder = csv(userDataDirectory + File.separator + "getVpsSetupVnc-pathParams.csv").random
     val getVpsSlicesPATHFeeder = csv(userDataDirectory + File.separator + "getVpsSlices-pathParams.csv").random
     val getVpsTrafficUsagePATHFeeder = csv(userDataDirectory + File.separator + "getVpsTrafficUsage-pathParams.csv").random
     val getVpsViewDesktopPATHFeeder = csv(userDataDirectory + File.separator + "getVpsViewDesktop-pathParams.csv").random
     val getVpsWelcomeEmailPATHFeeder = csv(userDataDirectory + File.separator + "getVpsWelcomeEmail-pathParams.csv").random
-    val postVpsBackupPATHFeeder = csv(userDataDirectory + File.separator + "postVpsBackup-pathParams.csv").random
     val postVpsBuyHdSpacePATHFeeder = csv(userDataDirectory + File.separator + "postVpsBuyHdSpace-pathParams.csv").random
     val postVpsBuyIpPATHFeeder = csv(userDataDirectory + File.separator + "postVpsBuyIp-pathParams.csv").random
     val postVpsChangeHostnamePATHFeeder = csv(userDataDirectory + File.separator + "postVpsChangeHostname-pathParams.csv").random
@@ -144,7 +154,9 @@ class VPSApiSimulation extends Simulation {
     val postVpsReverseDnsPATHFeeder = csv(userDataDirectory + File.separator + "postVpsReverseDns-pathParams.csv").random
     val postVpsSetupVncPATHFeeder = csv(userDataDirectory + File.separator + "postVpsSetupVnc-pathParams.csv").random
     val postVpsSlicesPATHFeeder = csv(userDataDirectory + File.separator + "postVpsSlices-pathParams.csv").random
+    val postVpsTrafficUsagePATHFeeder = csv(userDataDirectory + File.separator + "postVpsTrafficUsage-pathParams.csv").random
     val postVpsViewDesktopPATHFeeder = csv(userDataDirectory + File.separator + "postVpsViewDesktop-pathParams.csv").random
+    val putVpsBuyHdSpacePATHFeeder = csv(userDataDirectory + File.separator + "putVpsBuyHdSpace-pathParams.csv").random
     val updateVpsInfoPATHFeeder = csv(userDataDirectory + File.separator + "updateVpsInfo-pathParams.csv").random
     val VPSCancelPATHFeeder = csv(userDataDirectory + File.separator + "vPSCancel-pathParams.csv").random
 
@@ -322,6 +334,20 @@ class VPSApiSimulation extends Simulation {
     )
 
     
+    val scngetVpsBackup = scenario("getVpsBackupSimulation")
+        .feed(getVpsBackupPATHFeeder)
+        .exec(http("getVpsBackup")
+        .httpRequest("GET","/vps/${id}/backup")
+)
+
+    // Run scngetVpsBackup with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetVpsBackup.inject(
+        rampUsersPerSec(1) to(getVpsBackupPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getVpsBackupPerSecond) during(durationSeconds),
+        rampUsersPerSec(getVpsBackupPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scngetVpsBackups = scenario("getVpsBackupsSimulation")
         .feed(getVpsBackupsQUERYFeeder)
         .feed(getVpsBackupsPATHFeeder)
@@ -366,6 +392,34 @@ class VPSApiSimulation extends Simulation {
     )
 
     
+    val scngetVpsChangeHostname = scenario("getVpsChangeHostnameSimulation")
+        .feed(getVpsChangeHostnamePATHFeeder)
+        .exec(http("getVpsChangeHostname")
+        .httpRequest("GET","/vps/${id}/change_hostname")
+)
+
+    // Run scngetVpsChangeHostname with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetVpsChangeHostname.inject(
+        rampUsersPerSec(1) to(getVpsChangeHostnamePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getVpsChangeHostnamePerSecond) during(durationSeconds),
+        rampUsersPerSec(getVpsChangeHostnamePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scngetVpsChangeRootPassword = scenario("getVpsChangeRootPasswordSimulation")
+        .feed(getVpsChangeRootPasswordPATHFeeder)
+        .exec(http("getVpsChangeRootPassword")
+        .httpRequest("GET","/vps/${id}/change_root_password")
+)
+
+    // Run scngetVpsChangeRootPassword with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetVpsChangeRootPassword.inject(
+        rampUsersPerSec(1) to(getVpsChangeRootPasswordPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getVpsChangeRootPasswordPerSecond) during(durationSeconds),
+        rampUsersPerSec(getVpsChangeRootPasswordPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scngetVpsChangeTimezone = scenario("getVpsChangeTimezoneSimulation")
         .feed(getVpsChangeTimezonePATHFeeder)
         .exec(http("getVpsChangeTimezone")
@@ -391,6 +445,20 @@ class VPSApiSimulation extends Simulation {
         rampUsersPerSec(1) to(getVpsInfoPerSecond) during(rampUpSeconds),
         constantUsersPerSec(getVpsInfoPerSecond) during(durationSeconds),
         rampUsersPerSec(getVpsInfoPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scngetVpsInsertCd = scenario("getVpsInsertCdSimulation")
+        .feed(getVpsInsertCdPATHFeeder)
+        .exec(http("getVpsInsertCd")
+        .httpRequest("GET","/vps/${id}/insert_cd")
+)
+
+    // Run scngetVpsInsertCd with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetVpsInsertCd.inject(
+        rampUsersPerSec(1) to(getVpsInsertCdPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getVpsInsertCdPerSecond) during(durationSeconds),
+        rampUsersPerSec(getVpsInsertCdPerSecond) to(1) during(rampDownSeconds)
     )
 
     
@@ -432,6 +500,20 @@ class VPSApiSimulation extends Simulation {
         rampUsersPerSec(1) to(getVpsReinstallOsPerSecond) during(rampUpSeconds),
         constantUsersPerSec(getVpsReinstallOsPerSecond) during(durationSeconds),
         rampUsersPerSec(getVpsReinstallOsPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scngetVpsResetPassword = scenario("getVpsResetPasswordSimulation")
+        .feed(getVpsResetPasswordPATHFeeder)
+        .exec(http("getVpsResetPassword")
+        .httpRequest("GET","/vps/${id}/reset_password")
+)
+
+    // Run scngetVpsResetPassword with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetVpsResetPassword.inject(
+        rampUsersPerSec(1) to(getVpsResetPasswordPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getVpsResetPasswordPerSecond) during(durationSeconds),
+        rampUsersPerSec(getVpsResetPasswordPerSecond) to(1) during(rampDownSeconds)
     )
 
     
@@ -516,20 +598,6 @@ class VPSApiSimulation extends Simulation {
         rampUsersPerSec(1) to(getVpsWelcomeEmailPerSecond) during(rampUpSeconds),
         constantUsersPerSec(getVpsWelcomeEmailPerSecond) during(durationSeconds),
         rampUsersPerSec(getVpsWelcomeEmailPerSecond) to(1) during(rampDownSeconds)
-    )
-
-    
-    val scnpostVpsBackup = scenario("postVpsBackupSimulation")
-        .feed(postVpsBackupPATHFeeder)
-        .exec(http("postVpsBackup")
-        .httpRequest("GET","/vps/${id}/backup")
-)
-
-    // Run scnpostVpsBackup with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scnpostVpsBackup.inject(
-        rampUsersPerSec(1) to(postVpsBackupPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(postVpsBackupPerSecond) during(durationSeconds),
-        rampUsersPerSec(postVpsBackupPerSecond) to(1) during(rampDownSeconds)
     )
 
     
@@ -715,6 +783,20 @@ class VPSApiSimulation extends Simulation {
     )
 
     
+    val scnpostVpsTrafficUsage = scenario("postVpsTrafficUsageSimulation")
+        .feed(postVpsTrafficUsagePATHFeeder)
+        .exec(http("postVpsTrafficUsage")
+        .httpRequest("POST","/vps/${id}/traffic_usage")
+)
+
+    // Run scnpostVpsTrafficUsage with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnpostVpsTrafficUsage.inject(
+        rampUsersPerSec(1) to(postVpsTrafficUsagePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(postVpsTrafficUsagePerSecond) during(durationSeconds),
+        rampUsersPerSec(postVpsTrafficUsagePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scnpostVpsViewDesktop = scenario("postVpsViewDesktopSimulation")
         .feed(postVpsViewDesktopPATHFeeder)
         .exec(http("postVpsViewDesktop")
@@ -739,6 +821,20 @@ class VPSApiSimulation extends Simulation {
         rampUsersPerSec(1) to(putVpsPerSecond) during(rampUpSeconds),
         constantUsersPerSec(putVpsPerSecond) during(durationSeconds),
         rampUsersPerSec(putVpsPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scnputVpsBuyHdSpace = scenario("putVpsBuyHdSpaceSimulation")
+        .feed(putVpsBuyHdSpacePATHFeeder)
+        .exec(http("putVpsBuyHdSpace")
+        .httpRequest("PUT","/vps/${id}/buy_hd_space")
+)
+
+    // Run scnputVpsBuyHdSpace with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnputVpsBuyHdSpace.inject(
+        rampUsersPerSec(1) to(putVpsBuyHdSpacePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(putVpsBuyHdSpacePerSecond) during(durationSeconds),
+        rampUsersPerSec(putVpsBuyHdSpacePerSecond) to(1) during(rampDownSeconds)
     )
 
     

@@ -1,4 +1,4 @@
-# InterServerManagementApi.GetOrderDetail200ResponseServiceTypesInner
+# InterserverApiClient.GetOrderDetail200ResponseServiceTypesInner
 
 ## Properties
 

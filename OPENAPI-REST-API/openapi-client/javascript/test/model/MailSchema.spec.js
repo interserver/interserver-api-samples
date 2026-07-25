@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailSchema();
+    instance = new InterserverApiClient.MailSchema();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,67 +50,67 @@
   describe('MailSchema', function() {
     it('should create an instance of MailSchema', function() {
       // uncomment below and update the code to test MailSchema
-      //var instance = new InterServerManagementApi.MailSchema();
-      //expect(instance).to.be.a(InterServerManagementApi.MailSchema);
+      //var instance = new InterserverApiClient.MailSchema();
+      //expect(instance).to.be.a(InterserverApiClient.MailSchema);
     });
 
     it('should have the property serviceInfo (base name: "serviceInfo")', function() {
       // uncomment below and update the code to test the property serviceInfo
-      //var instance = new InterServerManagementApi.MailSchema();
+      //var instance = new InterserverApiClient.MailSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property client_links (base name: "client_links")', function() {
       // uncomment below and update the code to test the property client_links
-      //var instance = new InterServerManagementApi.MailSchema();
+      //var instance = new InterserverApiClient.MailSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property billingDetails (base name: "billingDetails")', function() {
       // uncomment below and update the code to test the property billingDetails
-      //var instance = new InterServerManagementApi.MailSchema();
+      //var instance = new InterserverApiClient.MailSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property custCurrency (base name: "custCurrency")', function() {
       // uncomment below and update the code to test the property custCurrency
-      //var instance = new InterServerManagementApi.MailSchema();
+      //var instance = new InterserverApiClient.MailSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property custCurrencySymbol (base name: "custCurrencySymbol")', function() {
       // uncomment below and update the code to test the property custCurrencySymbol
-      //var instance = new InterServerManagementApi.MailSchema();
+      //var instance = new InterserverApiClient.MailSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property _package (base name: "package")', function() {
       // uncomment below and update the code to test the property _package
-      //var instance = new InterServerManagementApi.MailSchema();
+      //var instance = new InterserverApiClient.MailSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property extraInfoTables (base name: "extraInfoTables")', function() {
       // uncomment below and update the code to test the property extraInfoTables
-      //var instance = new InterServerManagementApi.MailSchema();
+      //var instance = new InterserverApiClient.MailSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceType (base name: "serviceType")', function() {
       // uncomment below and update the code to test the property serviceType
-      //var instance = new InterServerManagementApi.MailSchema();
+      //var instance = new InterserverApiClient.MailSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property usage_count (base name: "usage_count")', function() {
       // uncomment below and update the code to test the property usage_count
-      //var instance = new InterServerManagementApi.MailSchema();
+      //var instance = new InterserverApiClient.MailSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceExtra (base name: "serviceExtra")', function() {
       // uncomment below and update the code to test the property serviceExtra
-      //var instance = new InterServerManagementApi.MailSchema();
+      //var instance = new InterserverApiClient.MailSchema();
       //expect(instance).to.be();
     });
 

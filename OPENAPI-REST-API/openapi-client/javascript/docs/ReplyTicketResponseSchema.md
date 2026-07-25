@@ -1,4 +1,4 @@
-# InterServerManagementApi.ReplyTicketResponseSchema
+# InterserverApiClient.ReplyTicketResponseSchema
 
 ## Properties
 

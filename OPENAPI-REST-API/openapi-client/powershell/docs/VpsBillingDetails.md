@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsBillingDetails = Initialize-PSOpenAPIToolsVpsBillingDetails  -ServiceLastInvoiceDate July 26, 2023 `
+$VpsBillingDetails = Initialize-InterserverApiVpsBillingDetails  -ServiceLastInvoiceDate July 26, 2023 `
  -ServicePaymentStatus Paid `
  -ServiceFrequency Monthly `
  -NextDate 2023-08-26T09:41:12.000Z `

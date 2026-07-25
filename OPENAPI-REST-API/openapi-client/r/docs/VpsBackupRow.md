@@ -1,4 +1,4 @@
-# openapi::VpsBackupRow
+# interserverapi::VpsBackupRow
 
 A single backed-up item and information about it.
 

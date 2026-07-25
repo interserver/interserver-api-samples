@@ -15,4 +15,3 @@ package org.openapitools.client.model
 case class ServerLocations(
   `1`: Option[ServerLocation1] = None
 )
-

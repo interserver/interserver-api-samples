@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainLookupResponse = Initialize-PSOpenAPIToolsDomainLookupResponse  -Available null `
+$DomainLookupResponse = Initialize-InterserverApiDomainLookupResponse  -Available null `
  -Premium null `
  -Website null `
  -DomainService null `

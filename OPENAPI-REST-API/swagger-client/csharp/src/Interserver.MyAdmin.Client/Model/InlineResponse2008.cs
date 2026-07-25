@@ -31,41 +31,18 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse2008" /> class.
         /// </summary>
-        /// <param name="success">success (required).</param>
-        /// <param name="text">text (required).</param>
-        public InlineResponse2008(bool? success = default(bool?), string text = default(string))
+        /// <param name="login">Whether the 2FA verification succeeded and the user is now logged in..</param>
+        public InlineResponse2008(bool? login = default(bool?))
         {
-            // to ensure "success" is required (not null)
-            if (success == null)
-            {
-                throw new InvalidDataException("success is a required property for InlineResponse2008 and cannot be null");
-            }
-            else
-            {
-                this.success = success;
-            }
-            // to ensure "text" is required (not null)
-            if (text == null)
-            {
-                throw new InvalidDataException("text is a required property for InlineResponse2008 and cannot be null");
-            }
-            else
-            {
-                this.text = text;
-            }
+            this.login = login;
         }
         
         /// <summary>
-        /// Gets or Sets success
+        /// Whether the 2FA verification succeeded and the user is now logged in.
         /// </summary>
-        [DataMember(Name="success", EmitDefaultValue=false)]
-        public bool? success { get; set; }
-
-        /// <summary>
-        /// Gets or Sets text
-        /// </summary>
-        [DataMember(Name="text", EmitDefaultValue=false)]
-        public string text { get; set; }
+        /// <value>Whether the 2FA verification succeeded and the user is now logged in.</value>
+        [DataMember(Name="login", EmitDefaultValue=false)]
+        public bool? login { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,8 +52,7 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse2008 {\n");
-            sb.Append("  success: ").Append(success).Append("\n");
-            sb.Append("  text: ").Append(text).Append("\n");
+            sb.Append("  login: ").Append(login).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,14 +88,9 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.success == input.success ||
-                    (this.success != null &&
-                    this.success.Equals(input.success))
-                ) && 
-                (
-                    this.text == input.text ||
-                    (this.text != null &&
-                    this.text.Equals(input.text))
+                    this.login == input.login ||
+                    (this.login != null &&
+                    this.login.Equals(input.login))
                 );
         }
 
@@ -132,10 +103,8 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.success != null)
-                    hashCode = hashCode * 59 + this.success.GetHashCode();
-                if (this.text != null)
-                    hashCode = hashCode * 59 + this.text.GetHashCode();
+                if (this.login != null)
+                    hashCode = hashCode * 59 + this.login.GetHashCode();
                 return hashCode;
             }
         }

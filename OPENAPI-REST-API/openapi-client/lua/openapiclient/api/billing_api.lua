@@ -20,7 +20,6 @@ local openapiclient_affiliate_banner_row = require "openapiclient.model.affiliat
 local openapiclient_affiliate_traffic_row = require "openapiclient.model.affiliate_traffic_row"
 local openapiclient_billing_invoice_detail = require "openapiclient.model.billing_invoice_detail"
 local openapiclient_billing_invoice_list = require "openapiclient.model.billing_invoice_list"
-local openapiclient_invoice = require "openapiclient.model.invoice"
 local openapiclient_monthly_counts = require "openapiclient.model.monthly_counts"
 local openapiclient_status_monthly_breakdown = require "openapiclient.model.status_monthly_breakdown"
 local openapiclient_success_text_response = require "openapiclient.model.success_text_response"
@@ -31,7 +30,9 @@ local openapiclient_billing_payment_method_request = require "openapiclient.mode
 local openapiclient_billing_prepay_request = require "openapiclient.model.billing_prepay_request"
 local openapiclient_billing_verify_cc_request = require "openapiclient.model.billing_verify_cc_request"
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
+local openapiclient_get_affiliate_signups_200_response = require "openapiclient.model.get_affiliate_signups_200_response"
 local openapiclient_initiate_payment_200_response = require "openapiclient.model.initiate_payment_200_response"
+local openapiclient_patch_billing_credit_card_verify_request = require "openapiclient.model.patch_billing_credit_card_verify_request"
 
 local billing_api = {}
 local billing_api_mt = {
@@ -57,75 +58,6 @@ local function new_billing_api(authority, basePath, schemes)
 		api_key = {};
 		access_token = nil;
 	}, billing_api_mt)
-end
-
-function billing_api:add_account_credit_card(name, address, city, state, country, zip, cc, cc_exp, cc_ccv2)
-	local req = http_request.new_from_uri({
-		scheme = self.default_scheme;
-		host = self.host;
-		port = self.port;
-		path = string.format("%s/account/creditcards",
-			self.basePath);
-	})
-
-	-- set HTTP verb
-	req.headers:upsert(":method", "POST")
-	-- TODO: create a function to select proper accept
-	--local var_content_type = { "multipart/form-data", "application/json" }
-	req.headers:upsert("accept", "multipart/form-data")
-
-	-- TODO: create a function to select proper content-type
-	--local var_accept = { "application/json" }
-	req.headers:upsert("content-type", "application/json")
-
-	req:set_body(http_util.dict_to_query({
-		["name"] = name;
-		["address"] = address;
-		["city"] = city;
-		["state"] = state;
-		["country"] = country;
-		["zip"] = zip;
-		["cc"] = cc;
-		["cc_exp"] = cc_exp;
-		["cc_ccv2"] = cc_ccv2;
-	}))
-	-- api key in headers 'X-API-KEY'
-	if self.api_key['X-API-KEY'] then
-		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
-	end
-	-- api key in headers 'sessionid'
-	if self.api_key['sessionid'] then
-		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
-	end
-
-	-- make the HTTP call
-	local headers, stream, errno = req:go()
-	if not headers then
-		return nil, stream, errno
-	end
-	local http_status = headers:get(":status")
-	if http_status:sub(1,1) == "2" then
-		local body, err, errno2 = stream:get_body_as_string()
-		-- exception when getting the HTTP body
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		local result, _, err3 = dkjson.decode(body)
-		-- exception when decoding the HTTP body
-		if result == nil then
-			return nil, err3
-		end
-		return openapiclient_success_text_response.cast(result), headers
-	else
-		local body, err, errno2 = stream:get_body_as_string()
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		-- return the error message (http body)
-		return nil, http_status, body
-	end
 end
 
 function billing_api:add_billing_credit_card(billing_add_cc_request)
@@ -237,60 +169,6 @@ function billing_api:add_billing_prepay(billing_prepay_request)
 			return nil, err3
 		end
 		return openapiclient_success_text_response.cast(result), headers
-	else
-		local body, err, errno2 = stream:get_body_as_string()
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		-- return the error message (http body)
-		return nil, http_status, body
-	end
-end
-
-function billing_api:delete_account_credit_card(id)
-	local req = http_request.new_from_uri({
-		scheme = self.default_scheme;
-		host = self.host;
-		port = self.port;
-		path = string.format("%s/account/creditcards/%s",
-			self.basePath, id);
-	})
-
-	-- set HTTP verb
-	req.headers:upsert(":method", "DELETE")
-	-- TODO: create a function to select proper content-type
-	--local var_accept = { "application/json" }
-	req.headers:upsert("content-type", "application/json")
-
-	-- api key in headers 'X-API-KEY'
-	if self.api_key['X-API-KEY'] then
-		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
-	end
-	-- api key in headers 'sessionid'
-	if self.api_key['sessionid'] then
-		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
-	end
-
-	-- make the HTTP call
-	local headers, stream, errno = req:go()
-	if not headers then
-		return nil, stream, errno
-	end
-	local http_status = headers:get(":status")
-	if http_status:sub(1,1) == "2" then
-		local body, err, errno2 = stream:get_body_as_string()
-		-- exception when getting the HTTP body
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		local result, _, err3 = dkjson.decode(body)
-		-- exception when decoding the HTTP body
-		if result == nil then
-			return nil, err3
-		end
-		return result, headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -521,6 +399,49 @@ function billing_api:get_affiliate_banners()
 	end
 end
 
+function billing_api:get_affiliate_download(st, ex, year)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/affiliate/download?st=%s&ex=%s&year=%s",
+			self.basePath, http_util.encodeURIComponent(st), http_util.encodeURIComponent(ex), http_util.encodeURIComponent(year));
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "GET")
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		return nil, headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
 function billing_api:get_affiliate_rich_report()
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
@@ -629,13 +550,13 @@ function billing_api:get_affiliate_sales_graph(days)
 	end
 end
 
-function billing_api:get_affiliate_sales_report()
+function billing_api:get_affiliate_signups(st)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
-		path = string.format("%s/affiliate/sales_report",
-			self.basePath);
+		path = string.format("%s/affiliate/signups?st=%s",
+			self.basePath, http_util.encodeURIComponent(st));
 	})
 
 	-- set HTTP verb
@@ -671,7 +592,7 @@ function billing_api:get_affiliate_sales_report()
 		if result == nil then
 			return nil, err3
 		end
-		return openapiclient_text_response.cast(result), headers
+		return openapiclient_get_affiliate_signups_200_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -1064,69 +985,12 @@ function billing_api:get_billing_pre_pays()
 	end
 end
 
-function billing_api:get_invoices(search_string, skip, limit)
-	local req = http_request.new_from_uri({
-		scheme = self.default_scheme;
-		host = self.host;
-		port = self.port;
-		path = string.format("%s/invoices?searchString=%s&skip=%s&limit=%s",
-			self.basePath, http_util.encodeURIComponent(search_string), http_util.encodeURIComponent(skip), http_util.encodeURIComponent(limit));
-	})
-
-	-- set HTTP verb
-	req.headers:upsert(":method", "GET")
-	-- TODO: create a function to select proper content-type
-	--local var_accept = { "application/json" }
-	req.headers:upsert("content-type", "application/json")
-
-	-- api key in headers 'X-API-KEY'
-	if self.api_key['X-API-KEY'] then
-		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
-	end
-	-- api key in headers 'sessionid'
-	if self.api_key['sessionid'] then
-		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
-	end
-
-	-- make the HTTP call
-	local headers, stream, errno = req:go()
-	if not headers then
-		return nil, stream, errno
-	end
-	local http_status = headers:get(":status")
-	if http_status:sub(1,1) == "2" then
-		local body, err, errno2 = stream:get_body_as_string()
-		-- exception when getting the HTTP body
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		local result, _, err3 = dkjson.decode(body)
-		-- exception when decoding the HTTP body
-		if result == nil then
-			return nil, err3
-		end
-		for _, ob in ipairs(result) do
-			openapiclient_invoice.cast(ob)
-		end
-		return result, headers
-	else
-		local body, err, errno2 = stream:get_body_as_string()
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		-- return the error message (http body)
-		return nil, http_status, body
-	end
-end
-
 function billing_api:initiate_payment(method, invoices)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
-		path = string.format("%s/pay/%s/%s",
+		path = string.format("%s/billing/pay/%s/%s",
 			self.basePath, method, invoices);
 	})
 
@@ -1164,6 +1028,66 @@ function billing_api:initiate_payment(method, invoices)
 			return nil, err3
 		end
 		return openapiclient_initiate_payment_200_response.cast(result), headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
+function billing_api:patch_billing_credit_card_verify(id, patch_billing_credit_card_verify_request)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/billing/creditcards/%s/verify",
+			self.basePath, id);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "PATCH")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json", "multipart/form-data" }
+	req.headers:upsert("accept", "application/json")
+
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(patch_billing_credit_card_verify_request))
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_success_text_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -1235,129 +1159,12 @@ function billing_api:post_billing_credit_card_verify(id, billing_verify_cc_reque
 	end
 end
 
-function billing_api:update_account_credit_card(id)
-	local req = http_request.new_from_uri({
-		scheme = self.default_scheme;
-		host = self.host;
-		port = self.port;
-		path = string.format("%s/account/creditcards/%s",
-			self.basePath, id);
-	})
-
-	-- set HTTP verb
-	req.headers:upsert(":method", "POST")
-	-- TODO: create a function to select proper content-type
-	--local var_accept = { "application/json" }
-	req.headers:upsert("content-type", "application/json")
-
-	-- api key in headers 'X-API-KEY'
-	if self.api_key['X-API-KEY'] then
-		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
-	end
-	-- api key in headers 'sessionid'
-	if self.api_key['sessionid'] then
-		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
-	end
-
-	-- make the HTTP call
-	local headers, stream, errno = req:go()
-	if not headers then
-		return nil, stream, errno
-	end
-	local http_status = headers:get(":status")
-	if http_status:sub(1,1) == "2" then
-		local body, err, errno2 = stream:get_body_as_string()
-		-- exception when getting the HTTP body
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		local result, _, err3 = dkjson.decode(body)
-		-- exception when decoding the HTTP body
-		if result == nil then
-			return nil, err3
-		end
-		return result, headers
-	else
-		local body, err, errno2 = stream:get_body_as_string()
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		-- return the error message (http body)
-		return nil, http_status, body
-	end
-end
-
 function billing_api:update_affiliate_dock_setup(affiliate_dock_title, affiliate_dock_description, referrer_coupon)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
 		path = string.format("%s/affiliate/dock_setup",
-			self.basePath);
-	})
-
-	-- set HTTP verb
-	req.headers:upsert(":method", "POST")
-	-- TODO: create a function to select proper accept
-	--local var_content_type = { "multipart/form-data", "application/json" }
-	req.headers:upsert("accept", "multipart/form-data")
-
-	-- TODO: create a function to select proper content-type
-	--local var_accept = { "application/json" }
-	req.headers:upsert("content-type", "application/json")
-
-	req:set_body(http_util.dict_to_query({
-		["affiliate_dock_title"] = affiliate_dock_title;
-		["affiliate_dock_description"] = affiliate_dock_description;
-		["referrer_coupon"] = referrer_coupon;
-	}))
-	-- api key in headers 'X-API-KEY'
-	if self.api_key['X-API-KEY'] then
-		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
-	end
-	-- api key in headers 'sessionid'
-	if self.api_key['sessionid'] then
-		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
-	end
-
-	-- make the HTTP call
-	local headers, stream, errno = req:go()
-	if not headers then
-		return nil, stream, errno
-	end
-	local http_status = headers:get(":status")
-	if http_status:sub(1,1) == "2" then
-		local body, err, errno2 = stream:get_body_as_string()
-		-- exception when getting the HTTP body
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		local result, _, err3 = dkjson.decode(body)
-		-- exception when decoding the HTTP body
-		if result == nil then
-			return nil, err3
-		end
-		return openapiclient_text_response.cast(result), headers
-	else
-		local body, err, errno2 = stream:get_body_as_string()
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		-- return the error message (http body)
-		return nil, http_status, body
-	end
-end
-
-function billing_api:update_affiliate_landing_page(affiliate_dock_title, affiliate_dock_description, referrer_coupon)
-	local req = http_request.new_from_uri({
-		scheme = self.default_scheme;
-		host = self.host;
-		port = self.port;
-		path = string.format("%s/affiliate/landing_pg",
 			self.basePath);
 	})
 

@@ -17,7 +17,7 @@ import HomeServicesServersLinks from './HomeServicesServersLinks';
 /**
  * The HomeServicesServers model module.
  * @module model/HomeServicesServers
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeServicesServers {
     /**

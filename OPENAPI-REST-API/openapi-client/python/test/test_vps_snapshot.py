@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_snapshot import VpsSnapshot
+from interserver_api_client.models.vps_snapshot import VpsSnapshot
 
 class TestVpsSnapshot(unittest.TestCase):
     """VpsSnapshot unit test stubs"""

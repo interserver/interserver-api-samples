@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.template_request import TemplateRequest
+from interserver_api_client.models.template_request import TemplateRequest
 
 class TestTemplateRequest(unittest.TestCase):
     """TemplateRequest unit test stubs"""

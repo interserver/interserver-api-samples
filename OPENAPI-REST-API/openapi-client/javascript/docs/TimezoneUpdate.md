@@ -1,4 +1,4 @@
-# InterServerManagementApi.TimezoneUpdate
+# InterserverApiClient.TimezoneUpdate
 
 ## Properties
 

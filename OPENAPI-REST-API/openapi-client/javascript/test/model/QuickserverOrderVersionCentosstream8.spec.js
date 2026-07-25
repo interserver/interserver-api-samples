@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QuickserverOrderVersionCentosstream8();
+    instance = new InterserverApiClient.QuickserverOrderVersionCentosstream8();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('QuickserverOrderVersionCentosstream8', function() {
     it('should create an instance of QuickserverOrderVersionCentosstream8', function() {
       // uncomment below and update the code to test QuickserverOrderVersionCentosstream8
-      //var instance = new InterServerManagementApi.QuickserverOrderVersionCentosstream8();
-      //expect(instance).to.be.a(InterServerManagementApi.QuickserverOrderVersionCentosstream8);
+      //var instance = new InterserverApiClient.QuickserverOrderVersionCentosstream8();
+      //expect(instance).to.be.a(InterserverApiClient.QuickserverOrderVersionCentosstream8);
     });
 
     it('should have the property centosstream_8 (base name: "centosstream-8")', function() {
       // uncomment below and update the code to test the property centosstream_8
-      //var instance = new InterServerManagementApi.QuickserverOrderVersionCentosstream8();
+      //var instance = new InterserverApiClient.QuickserverOrderVersionCentosstream8();
       //expect(instance).to.be();
     });
 

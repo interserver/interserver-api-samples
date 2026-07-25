@@ -1,4 +1,4 @@
-# InterServerManagementApi.ViewMailLogStartDateParameter
+# InterserverApiClient.ViewMailLogStartDateParameter
 
 ## Properties
 

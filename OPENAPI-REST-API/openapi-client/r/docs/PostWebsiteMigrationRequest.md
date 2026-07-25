@@ -1,4 +1,4 @@
-# openapi::PostWebsiteMigrationRequest
+# interserverapi::PostWebsiteMigrationRequest
 
 
 ## Properties

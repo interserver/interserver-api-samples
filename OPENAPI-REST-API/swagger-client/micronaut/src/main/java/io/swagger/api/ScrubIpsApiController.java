@@ -12,8 +12,6 @@ import io.swagger.model.DeleteFirewallRule;
 
 import io.swagger.model.DeleteGeoFirewallRule;
 
-import io.swagger.model.InlineResponse20012;
-
 import io.swagger.model.InlineResponse20013;
 
 import io.swagger.model.InlineResponse20014;
@@ -25,6 +23,10 @@ import io.swagger.model.InlineResponse20016;
 import io.swagger.model.InlineResponse20017;
 
 import io.swagger.model.InlineResponse20018;
+
+import io.swagger.model.InlineResponse20019;
+
+import io.swagger.model.InlineResponse20020;
 
 import io.swagger.model.InlineResponse201;
 
@@ -80,7 +82,7 @@ import java.util.Map;
 public class ScrubIpsApiController implements ScrubIpsApi {
 
     @Override
-    public Single<HttpResponse<InlineResponse20013>> cancelScrubIp(Integer id) {
+    public Single<HttpResponse<InlineResponse20014>> cancelScrubIp(Integer id) {
         // TODO: Implement me
         return ScrubIpsApi.super.cancelScrubIp(id);
     }
@@ -104,31 +106,31 @@ public class ScrubIpsApiController implements ScrubIpsApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20017>> deleteFilter(@NotNull @Valid CreateFilter body, Integer id) {
+    public Single<HttpResponse<InlineResponse20018>> deleteFilter(@NotNull @Valid CreateFilter body, Integer id) {
         // TODO: Implement me
         return ScrubIpsApi.super.deleteFilter(body, id);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20015>> disableScrub(Integer id) {
+    public Single<HttpResponse<InlineResponse20016>> disableScrub(Integer id) {
         // TODO: Implement me
         return ScrubIpsApi.super.disableScrub(id);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20014>> enableScrub(Integer id) {
+    public Single<HttpResponse<InlineResponse20015>> enableScrub(Integer id) {
         // TODO: Implement me
         return ScrubIpsApi.super.enableScrub(id);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20018>> getOrderDetail() {
+    public Single<HttpResponse<InlineResponse20019>> getOrderDetail() {
         // TODO: Implement me
         return ScrubIpsApi.super.getOrderDetail();
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20012>> getScrubIpDetails(Integer id) {
+    public Single<HttpResponse<InlineResponse20013>> getScrubIpDetails(Integer id) {
         // TODO: Implement me
         return ScrubIpsApi.super.getScrubIpDetails(id);
     }
@@ -164,13 +166,19 @@ public class ScrubIpsApiController implements ScrubIpsApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20016>> scrubIpsDeleteGeoRule(@NotNull @Valid DeleteGeoFirewallRule body, Integer id) {
+    public Single<HttpResponse<InlineResponse20020>> putScrubIps(@NotNull @Valid ScrubIpPlaceOrder body) {
+        // TODO: Implement me
+        return ScrubIpsApi.super.putScrubIps(body);
+    }
+
+    @Override
+    public Single<HttpResponse<InlineResponse20017>> scrubIpsDeleteGeoRule(@NotNull @Valid DeleteGeoFirewallRule body, Integer id) {
         // TODO: Implement me
         return ScrubIpsApi.super.scrubIpsDeleteGeoRule(body, id);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20016>> scrubIpsDeleteRule(@NotNull @Valid DeleteFirewallRule body, Integer id) {
+    public Single<HttpResponse<InlineResponse20017>> scrubIpsDeleteRule(@NotNull @Valid DeleteFirewallRule body, Integer id) {
         // TODO: Implement me
         return ScrubIpsApi.super.scrubIpsDeleteRule(body, id);
     }

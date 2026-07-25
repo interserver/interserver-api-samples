@@ -75,7 +75,7 @@ GetWebsiteBuyIp200Response <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ips`)) {
-        self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "map(character)", loadNamespace("openapi"))
+        self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "map(character)", loadNamespace("interserverapi"))
       }
       self
     },
@@ -98,7 +98,7 @@ GetWebsiteBuyIp200Response <- R6::R6Class(
     #' @return the instance of GetWebsiteBuyIp200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "map(character)", loadNamespace("openapi"))
+      self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "map(character)", loadNamespace("interserverapi"))
       self
     },
 

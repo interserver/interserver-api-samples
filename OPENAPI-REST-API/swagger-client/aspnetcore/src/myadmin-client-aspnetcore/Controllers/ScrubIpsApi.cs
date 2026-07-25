@@ -28,9 +28,9 @@ namespace myadmin-client-aspnetcore.Controllers
     public class ScrubIpsApiController : ControllerBase
     { 
         /// <summary>
-        /// Cancel Scrub IP Service
+        /// Cancel a Scrub IP service and stop its recurring DDoS billing
         /// </summary>
-        /// <remarks>Cancels the Scrub IP DDoS protection service. The protection will be removed and billing will stop at the end of the current billing cycle.</remarks>
+        /// <remarks>Cancels the Scrub IP DDoS protection service. The protected IP is removed from the scrubbing infrastructure and the recurring invoice is closed; protection stops at end of the current billing cycle. Use only when the customer no longer needs DDoS scrubbing for the IP. Path param: &#x60;id&#x60; (integer, required) — service ID from getScrubIpsList. No request body. Returns {success: true, text: &#x27;Scrub Ips is canceled.&#x27;}. Errors: 401 unauthenticated; 404/Invalid Service if id is not owned by the session account; 409 if the service is not in a cancellable state. Caveat: leaves the underlying VPS/server IP exposed to attacks once protection ends; contact billing for refund handling. Siblings: getScrubIpDetails, disableScrub, getScrubIpInvoices.</remarks>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="200">Request OK</response>
         /// <response code="401">Unauthorized</response>
@@ -39,12 +39,12 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CancelScrubIp")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20013), description: "Request OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20014), description: "Request OK")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult CancelScrubIp([FromRoute][Required]int? id)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20013));
+            // return StatusCode(200, default(InlineResponse20014));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
@@ -52,15 +52,15 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Scrub Ips is canceled.\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20013>(exampleJson)
-                        : default(InlineResponse20013);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20014>(exampleJson)
+                        : default(InlineResponse20014);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// Create Traffic Filter
+        /// Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
         /// </summary>
-        /// <remarks>Creates a traffic filter for the Scrub IP service. Filters apply predefined scrubbing profiles (e.g., DNS, HTTP) to specific destination ports. Use &#x60;GET /scrub_ips/filter_types&#x60; to list available filter types.</remarks>
+        /// <remarks>Attaches a named scrubbing profile to a destination port on the protected IP, applying protocol-aware mitigation (DNS amplification protection, HTTP rate limiting, synproxy SYN-cookies). Call getScrubIpFilterTypes first to list valid &#x60;filter_type&#x60; values. Path param: &#x60;id&#x60; (integer, required) — service ID. Body (CreateFilter): &#x60;filter_type&#x60; (string, required, one of getScrubIpFilterTypes keys), &#x60;port&#x60; (int, required, &gt;&#x3D; 0). Destination IP is locked to the service IP server-side; synproxy uses a different shape internally. Returns 201 {success: true, text: &#x27;New filter has been created.&#x27;}. Errors: 400 &#x27;Filter type is empty/invalid&#x27;, &#x27;Port is invalid&#x27;, or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::filterCreate fails. Siblings: deleteFilter, getScrubIpFilterTypes, createRule.</remarks>
         /// <param name="body"></param>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="201">Request OK</response>
@@ -99,9 +99,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Create Geo Firewall Rule
+        /// Add a geographic firewall rule (block/allow by country code or ASN)
         /// </summary>
-        /// <remarks>Creates a geographic-based firewall rule for the Scrub IP service. Geo rules allow you to block or allow traffic from specific countries or regions.</remarks>
+        /// <remarks>Creates a geo-based XDP rule on the scrubber for the service&#x27;s protected IP. Use to block traffic from specific countries or ASNs (botnet source regions) or to allow only known regions. Path param: &#x60;id&#x60; (integer, required) — service ID. Body (CreateGeoFirewallRule): &#x60;country_code&#x60; (int, country numeric ID) OR &#x60;asn&#x60; (int) — at least one is required, &#x60;destination_port&#x60; (int, defaults 80), &#x60;xdp_action&#x60; (0 allow, 1 drop, defaults 1). Destination IP is locked to the service IP server-side. Returns 201 {success: true} when created. Errors: 400 errors[] &#x27;Country or Asn is required.&#x27; or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::geoFirewallCreate fails. Caveat: country_code is an internal numeric ID, not ISO-3166. Siblings: scrubIpsDeleteGeoRule, createRule, createFilter.</remarks>
         /// <param name="body"></param>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="201">Create firewall rule for scrub ip</response>
@@ -140,9 +140,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Create Firewall Rule
+        /// Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
         /// </summary>
-        /// <remarks>Creates a new firewall rule for the Scrub IP service. Rules allow you to block or allow traffic based on source IP, destination port, and protocol.</remarks>
+        /// <remarks>Creates an XDP firewall rule on the scrubber for the service&#x27;s protected IP. Use to whitelist a known good source, block an abusive source, or restrict a destination port. Path param: &#x60;id&#x60; (integer, required) — service ID. Body (CreateFirewallRule): &#x60;source_ip&#x60; (IPv4, 0 &#x3D; any), &#x60;source_port&#x60; (int, 0 &#x3D; any), &#x60;destination_port&#x60; (int, 0 &#x3D; any), &#x60;protocol_id&#x60; (1 ICMP or 2 TCP/UDP — must be 1 or 2), &#x60;xdp_action&#x60; (0 allow, 1 drop). Destination IP is locked to the service IP server-side. Returns 201 {success: true} when created. Errors: 400 with &#x60;errors[]&#x60; for invalid source_ip/protocol_id/xdp_action or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::firewallCreate fails. Caveat: rules are stateless and may interact with active filters. Siblings: scrubIpsDeleteRule, createGeoRule, createFilter.</remarks>
         /// <param name="body"></param>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="201">Create firewall rule for scrub ip</response>
@@ -181,9 +181,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Delete Traffic Filter
+        /// Remove a scrubbing filter by matching filter_type and port
         /// </summary>
-        /// <remarks>Removes an existing traffic filter from the Scrub IP service. Provide the same filter parameters used during creation to identify which filter to remove.</remarks>
+        /// <remarks>Removes a previously attached scrubbing profile from the protected IP. Identification is by composite key, not &#x60;rule_id&#x60; — pass the same &#x60;filter_type&#x60; and &#x60;port&#x60; that were used in &#x60;createFilter&#x60;. The endpoint splits &#x60;filter_type&#x60; on &#x60;_&#x60; to dispatch to the correct delete shape (synproxy vs generic). Sibling ops: &#x60;createFilter&#x60;, &#x60;getScrubIpFilterTypes&#x60;.  **Path:** &#x60;id&#x60; (integer, required) — Scrub IP service ID.  **Body fields:** - &#x60;filter_type&#x60; (string, required) — must match an enabled type from &#x60;getScrubIpFilterTypes&#x60;. - &#x60;port&#x60; (integer, required) — must be &#x60;&gt; 0&#x60;.  **Returns:** &#x60;{ success: true, text: &#x27;Filter is deleted.&#x27; }&#x60;.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;Filter is required.&#x27;&#x60; / &#x60;&#x27;Port is required.&#x27;&#x60; / &#x60;&#x27;Invalid filter&#x27;&#x60; / &#x60;Invalid Service&#x60;. - &#x60;401&#x60; — unauthenticated. - &#x60;500&#x60; — upstream &#x60;Scrub::filterDelete&#x60; failed.  **Caveat:** the port loses its protocol-specific scrubbing protection until &#x60;createFilter&#x60; is called again with the same composite key. </remarks>
         /// <param name="body"></param>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="200">Delete filter for scrub ip</response>
@@ -195,14 +195,14 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("DeleteFilter")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20017), description: "Delete filter for scrub ip")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20018), description: "Delete filter for scrub ip")]
         [SwaggerResponse(statusCode: 400, type: typeof(InlineResponse4005), description: "Bad Request")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         [SwaggerResponse(statusCode: 500, type: typeof(InlineResponse5005), description: "Internal Server Error")]
         public virtual IActionResult DeleteFilter([FromBody]CreateFilter body, [FromRoute][Required]int? id)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20017));
+            // return StatusCode(200, default(InlineResponse20018));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(InlineResponse4005));
@@ -216,15 +216,15 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Filter is deleted.\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20017>(exampleJson)
-                        : default(InlineResponse20017);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20018>(exampleJson)
+                        : default(InlineResponse20018);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// Disable Scrub Protection
+        /// Disable DDoS scrubbing and remove the BGP announcement on the IP
         /// </summary>
-        /// <remarks>Disables DDoS scrubbing protection on the IP address. Traffic will no longer be routed through the scrubbing infrastructure.</remarks>
+        /// <remarks>Withdraws the BGP announcement from Wanguard so the IP stops being routed through scrubbing; traffic resumes flowing directly to the backend. Use for maintenance windows or migration off scrub. Path param: &#x60;id&#x60; (integer, required) — service ID from getScrubIpsList. No body (HTTP GET). The endpoint reads the stored Wanguard &#x60;href&#x60; from the service&#x27;s &#x60;extra&#x60; JSON to know which announcement to delete; clears &#x60;extra&#x60; on success. Returns {success: true, text: &#x27;Scrub is disabled on your IP.&#x27;}. Errors: 400 Invalid Service if id is not owned, or &#x27;Scrub is not enabled in this service.&#x27; if there is no active announcement; 401 unauthenticated; 500 if upstream delete fails. Caveat: leaves the IP unprotected against DDoS until enableScrub is called. Siblings: enableScrub, cancelScrubIp, getScrubIpDetails.</remarks>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="200">Request OK</response>
         /// <response code="400">Bad request</response>
@@ -235,14 +235,14 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("DisableScrub")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20015), description: "Request OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20016), description: "Request OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(InlineResponse400), description: "Bad request")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         [SwaggerResponse(statusCode: 500, type: typeof(InlineResponse5001), description: "Internal Server Error")]
         public virtual IActionResult DisableScrub([FromRoute][Required]int? id)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20015));
+            // return StatusCode(200, default(InlineResponse20016));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(InlineResponse400));
@@ -256,15 +256,15 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Scrub is disabled on your IP.\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20015>(exampleJson)
-                        : default(InlineResponse20015);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20016>(exampleJson)
+                        : default(InlineResponse20016);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// Enable Scrub Protection
+        /// Enable DDoS scrubbing (BGP announcement) on the service&#x27;s protected IP
         /// </summary>
-        /// <remarks>Enables DDoS scrubbing protection on the IP address associated with this service. Traffic will be routed through the scrubbing infrastructure to filter malicious packets.</remarks>
+        /// <remarks>Routes the service&#x27;s protected IP through the Wanguard scrubbing infrastructure by creating a BGP announcement, so inbound traffic passes through filtering before reaching the backend. Call after placeScrubOrder activation, after disableScrub, or whenever the announcement was lost. Path param: &#x60;id&#x60; (integer, required) — service ID from getScrubIpsList. No request body (HTTP GET). Returns {success: true, text: &#x27;Scrub is enabled on your IP.&#x27;} on 201 from Wanguard, persisted into the service&#x27;s &#x60;extra&#x60; column. Errors: 400 Invalid Service if id is not owned by the session account; 401 unauthenticated; 500 if the upstream Wanguard call fails. Caveat: enabling re-routes live traffic and can briefly disrupt active sessions. Siblings: disableScrub, getScrubIpDetails, getScrubIpLogs.</remarks>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="200">Request OK</response>
         /// <response code="401">Unauthorized</response>
@@ -274,13 +274,13 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("EnableScrub")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20014), description: "Request OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20015), description: "Request OK")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         [SwaggerResponse(statusCode: 500, type: typeof(InlineResponse500), description: "Internal Server Error")]
         public virtual IActionResult EnableScrub([FromRoute][Required]int? id)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20014));
+            // return StatusCode(200, default(InlineResponse20015));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
@@ -291,15 +291,15 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Scrub is enabled on your IP.\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20014>(exampleJson)
-                        : default(InlineResponse20014);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20015>(exampleJson)
+                        : default(InlineResponse20015);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// Get Scrub IP Ordering Information
+        /// Get plans, pricing, and eligible IPs for a new Scrub IP order
         /// </summary>
-        /// <remarks>Returns the available Scrub IP service plans and pricing information needed to build an order form.</remarks>
+        /// <remarks>Returns the data needed to render a new-order form: &#x60;packageCosts&#x60; (default services_id and recurring price in customer currency with symbol), &#x60;serviceTypes&#x60; (each buyable plan with services_id, services_name, services_cost, services_module), and &#x60;ips&#x60; (the customer&#x27;s existing VPS/server/floating IPs eligible to be put behind a scrubber, each with service_id, service_module, service_hostname). Use as a precursor to putScrubIps (validate) or placeScrubOrder (commit). No path/query/body parameters. Returns object. Errors: 401 unauthenticated. Caveat: ips list is filtered to the session account; pricing is converted to the customer&#x27;s currency. Siblings: putScrubIps, placeScrubOrder, getScrubIpsList.</remarks>
         /// <response code="200">Order details</response>
         /// <response code="401">Unauthorized</response>
         [HttpGet]
@@ -307,12 +307,12 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("GetOrderDetail")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20018), description: "Order details")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20019), description: "Order details")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult GetOrderDetail()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20018));
+            // return StatusCode(200, default(InlineResponse20019));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
@@ -320,15 +320,15 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"packageCosts\" : {\n    \"package_cost\" : 5,\n    \"currencySymbol\" : \"$\",\n    \"currency\" : \"USD\",\n    \"package_id\" : 11552\n  },\n  \"serviceTypes\" : [ {\n    \"services_id\" : 11552,\n    \"services_field1\" : \"\",\n    \"services_field2\" : \"\",\n    \"services_name\" : \"Current IP + Scrub\",\n    \"services_cost\" : 5,\n    \"services_module\" : \"scrub_ips\"\n  }, {\n    \"services_id\" : 11552,\n    \"services_field1\" : \"\",\n    \"services_field2\" : \"\",\n    \"services_name\" : \"Current IP + Scrub\",\n    \"services_cost\" : 5,\n    \"services_module\" : \"scrub_ips\"\n  } ],\n  \"ips\" : [ {\n    \"service_hostname\" : \"server.gtest.com\",\n    \"service_id\" : 12345,\n    \"service_module\" : \"vps\"\n  }, {\n    \"service_hostname\" : \"server.gtest.com\",\n    \"service_id\" : 12345,\n    \"service_module\" : \"vps\"\n  } ]\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20018>(exampleJson)
-                        : default(InlineResponse20018);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20019>(exampleJson)
+                        : default(InlineResponse20019);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// Get Scrub IP Details
+        /// Get full Scrub IP service detail (rules + geo + filters)
         /// </summary>
-        /// <remarks>Returns detailed information about a Scrub IP service, including connection details, billing information, active firewall rules, and traffic filters.</remarks>
+        /// <remarks>Returns the full service-detail payload for one Scrub IP — used to render the dashboard or before mutating rules/filters. Includes &#x60;serviceInfo&#x60; (status, scrubbed IP, custid), &#x60;billingDetails&#x60; (cost, frequency), &#x60;client_links&#x60; (allowed self-service actions), and &#x60;filter_firewall&#x60; with the active firewall &#x60;rules&#x60;, geographic &#x60;geo_rules&#x60;, and traffic &#x60;filters&#x60;. Each rule/filter row carries its own &#x60;id&#x60; used by the delete endpoints. Sibling ops: &#x60;getScrubIpsList&#x60;, &#x60;enableScrub&#x60;, &#x60;disableScrub&#x60;, &#x60;createRule&#x60;, &#x60;scrubIpsDeleteRule&#x60;, &#x60;createGeoRule&#x60;, &#x60;scrubIpsDeleteGeoRule&#x60;, &#x60;createFilter&#x60;, &#x60;deleteFilter&#x60;, &#x60;getScrubIpInvoices&#x60;, &#x60;getScrubIpLogs&#x60;, &#x60;cancelScrubIp&#x60;.  **Path:** &#x60;id&#x60; (integer, required) — service ID from &#x60;getScrubIpsList&#x60;.  **Body / query:** None.  **Returns:** object with &#x60;serviceInfo&#x60;, &#x60;billingDetails&#x60;, &#x60;client_links&#x60;, &#x60;filter_firewall&#x60; (&#x60;rules&#x60; / &#x60;geo_rules&#x60; / &#x60;filters&#x60;).  **Auth:** Session/API key. Ownership enforced via &#x60;scrub_ips_custid&#x60;.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;Invalid Service&#x60; — &#x60;id&#x60; is not owned by the session account.  **Caveat:** rule/filter IDs are regenerated after recreate — re-fetch before calling a delete endpoint.  **Related calls:** - **Mutations:** &#x60;enableScrub&#x60;, &#x60;disableScrub&#x60;, &#x60;createRule&#x60;, &#x60;createGeoRule&#x60;, &#x60;createFilter&#x60;. - **Deletes:** &#x60;scrubIpsDeleteRule&#x60;, &#x60;scrubIpsDeleteGeoRule&#x60;, &#x60;deleteFilter&#x60;. - **Billing / activity:** &#x60;getScrubIpInvoices&#x60;, &#x60;getScrubIpLogs&#x60;. - **Cancel:** &#x60;cancelScrubIp&#x60;. </remarks>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="200">Scrub IP service details including firewall rules and filters.</response>
         /// <response code="401">Unauthorized</response>
@@ -337,12 +337,12 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("GetScrubIpDetails")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20012), description: "Scrub IP service details including firewall rules and filters.")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20013), description: "Scrub IP service details including firewall rules and filters.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult GetScrubIpDetails([FromRoute][Required]int? id)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20012));
+            // return StatusCode(200, default(InlineResponse20013));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
@@ -350,15 +350,15 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"serviceInfo\" : {\n    \"scrub_ip_id\" : \"123\",\n    \"scrub_ip_type\" : \"11552\",\n    \"scrub_ip_custid\" : \"456\",\n    \"scrub_ip_order_date\" : \"2025-12-26 08:24:02\",\n    \"scrub_ip_ip\" : \"11.24.11.23\",\n    \"scrub_ip_service_id\" : \"11111\",\n    \"scrub_ip_service_module\" : \"servers\",\n    \"scrub_ip_status\" : \"active\",\n    \"scrub_ip_invoice\" : \"654321\",\n    \"scrub_ip_currency\" : \"USD\",\n    \"scrub_ip_coupon\" : \"0\",\n    \"scrub_ip_comment\" : \"\"\n  },\n  \"client_links\" : [ {\n    \"label\" : \"Invoices\",\n    \"link\" : \"invoices\",\n    \"icon\" : \"fas fa-file-invoice-dollar fa-w-12\",\n    \"icon_text\" : \"\",\n    \"help_text\" : \"Invoice History\"\n  }, {\n    \"label\" : \"Cancel Scrub IPs\",\n    \"link\" : \"cancel\",\n    \"icon\" : \"fas fa-times\",\n    \"icon_text\" : \"\",\n    \"help_text\" : \"Cancel Scrub IPs\"\n  }, {\n    \"label\" : \"Disable Scrub\",\n    \"link\" : \"scrub_action\",\n    \"icon\" : \"fa fa-shield text-lg\",\n    \"icon_text\" : \"\",\n    \"help_text\" : \"Enable/Disable Scrub\",\n    \"other_attr\" : \"\"\n  }, {\n    \"label\" : \"Scrub Documentation\",\n    \"link\" : \"https://www.interserver.net/tips/kb/scrub/\",\n    \"icon\" : \"fa fa-file text-lg\",\n    \"icon_text\" : \"\",\n    \"help_text\" : \"Scrub Documentation\",\n    \"other_attr\" : \"target= \\"_blank\\"\"\n  } ],\n  \"billingDetails\" : {\n    \"service_last_invoice_date\" : \"December 26, 2025\",\n    \"service_payment_status\" : \"Paid\",\n    \"service_frequency\" : \"Monthly\",\n    \"next_date\" : \"2026-01-26 08:24:02\",\n    \"service_next_invoice_date\" : \"January 26, 2026\",\n    \"service_currency\" : \"USD\",\n    \"service_currency_symbol\" : \"$\",\n    \"service_cost_info\" : \"5.00\"\n  },\n  \"custCurrency\" : \"USD\",\n  \"custCurrencySymbol\" : \"$\",\n  \"package\" : \"Current IP + Scrub\",\n  \"extraInfoTables\" : {\n    \"scrub_ips\" : {\n      \"title\" : \"Connection Information\",\n      \"rows\" : [ {\n        \"desc\" : \"IP\",\n        \"value\" : \"11.12.12.12\"\n      }, {\n        \"desc\" : \"Scrub\",\n        \"value\" : \"Enabled\"\n      } ]\n    }\n  },\n  \"filter_firewall\" : {\n    \"rules\" : [ ],\n    \"filters\" : [ {\n      \"daddr\" : \"2331742347\",\n      \"dest\" : \"80\",\n      \"filter_name\" : \"dns\",\n      \"destination_ip\" : \"11.12.12.12\",\n      \"filter\" : \"Dns\"\n    }, {\n      \"daddr\" : \"2331742347\",\n      \"dest\" : \"443\",\n      \"filter_name\" : \"dns\",\n      \"destination_ip\" : \"11.12.12.12\",\n      \"filter\" : \"Dns\"\n    } ],\n    \"scrub_enabled\" : 21104\n  }\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20012>(exampleJson)
-                        : default(InlineResponse20012);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20013>(exampleJson)
+                        : default(InlineResponse20013);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// List Scrub Filter Types
+        /// List enabled traffic filter profiles available for createFilter
         /// </summary>
-        /// <remarks>Returns the list of scrub filter types that can be used when creating filter rules via &#x60;/scrub_ips/{id}/create_filter&#x60;.</remarks>
+        /// <remarks>Returns the catalog of scrub filter profiles (e.g. dns, http, synproxy) currently enabled on the scrubbing platform, keyed by filter_name with a humanized display &#x60;name&#x60; and &#x60;desc&#x60;. Call this to populate a dropdown before invoking createFilter — the &#x60;filter_type&#x60; field on that endpoint must be one of the keys returned here. Not service-scoped: no path/query/body parameters and the same set applies to every Scrub IP. Returns {success: true, filters: {&lt;filter_name&gt;: {name, desc}, ...}}. Errors: 401 unauthenticated. Caveat: only filters with enabled&#x3D;1 are returned; profile semantics are platform-defined (synproxy uses different request shape internally). Siblings: createFilter, deleteFilter, getScrubIpDetails.</remarks>
         /// <response code="200">Supported scrub filter types for building firewall rules.</response>
         /// <response code="401">Unauthorized</response>
         [HttpGet]
@@ -385,9 +385,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Get ScrubIp Invoices
+        /// List recurring and one-time invoices billed for this Scrub IP service
         /// </summary>
-        /// <remarks>Retrieves invoices associated with the scrub IP service. Use these invoices to confirm billing status or to initiate payment.</remarks>
+        /// <remarks>Returns the recurring and one-time invoices generated for the Scrub IP service so the caller can verify billing status, present a payment history, or initiate payment on an unpaid invoice. Use after placeScrubOrder (to find the new invoice id) or before cancelScrubIp (to surface outstanding balance). Path param: &#x60;id&#x60; (integer, required) — service ID from getScrubIpsList. No body/query parameters. Returns ChargeInvoiceRows (array of invoice objects with id, amount, status, due dates). Errors: 401 unauthenticated; empty result if id is not owned by the session account. Caveat: paid invoices remain in history; filter on status client-side. Siblings: getScrubIpDetails, placeScrubOrder, cancelScrubIp.</remarks>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="200">Get Invoices response</response>
         /// <response code="401">Unauthorized</response>
@@ -415,9 +415,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Get Scrub IP Logs
+        /// Get last 50000 packet/event log entries for the protected IP
         /// </summary>
-        /// <remarks>Returns the activity and event logs for the Scrub IP service, including scrubbing events and configuration changes.</remarks>
+        /// <remarks>Pulls scrubbing telemetry directly from the SCRUBLOGS clickhouse-style backend: timestamp, source IP, target IP, target port, protocol (ICMP/IGMP/TCP/UDP/etc.), byte_count, action (Allow/Drop/Challenge), and the matching filter label. Use for incident analysis, validating new firewall rules, or proving a DDoS attack hit the scrubber. Path param: &#x60;id&#x60; (string, required) — service ID. No body/query parameters. Timestamps are converted to the customer&#x27;s timezone. Returns array of log rows (ScrubIpsLogRowSchema), most recent first, capped at 50000. Errors: 401 unauthenticated; returns false if id is not owned or upstream returns no data — not a 404. Caveat: large response; logs are not real-time and source IPs are reverse-byte-ordered. Siblings: getScrubIpDetails, enableScrub, createRule.</remarks>
         /// <param name="id">Scrub Order ID</param>
         /// <response code="200">Scrub Ips logs</response>
         /// <response code="401">Unauthorized</response>
@@ -445,9 +445,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// List Scrub IP Services
+        /// List all Scrub IP DDoS protection services on the authenticated account
         /// </summary>
-        /// <remarks>Returns all Scrub IP DDoS protection services on your account with their current status and associated IP addresses.</remarks>
+        /// <remarks>Returns every Scrub IP service belonging to the authenticated customer with status, protected IP, plan name, and recurring cost. Use this for dashboards, picking a service ID for downstream calls (getScrubIpDetails, enableScrub, createRule, getScrubIpLogs), or auditing which IPs are routed through DDoS scrubbing. No path/query/body parameters; service ownership is enforced via session account_id. Returns an array of {id, repeat_invoices_cost, ip, status, services_name}; empty array if no scrub services. Errors: 401 unauthenticated. Caveat: only customer-owned services are visible. Siblings: getScrubIpDetails, getOrderDetail, placeScrubOrder, cancelScrubIp.</remarks>
         /// <response code="200">Scrub Ips list</response>
         /// <response code="401">Unauthorized</response>
         /// <response code="0">Default response</response>
@@ -478,9 +478,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Place Scrub IP Order
+        /// Place a new Scrub IP DDoS protection order and generate an invoice
         /// </summary>
-        /// <remarks>Places an order for a new Scrub IP DDoS protection service. On success, an invoice is generated for payment.</remarks>
+        /// <remarks>Commits the order: re-runs validate_buy_scrub_ip then place_buy_scrub_ip which creates the service row, repeat_invoice, and a one-time invoice for the prorated charge. Use putScrubIps first to surface errors without billing. No path parameters. Body (ScrubIpPlaceOrder): &#x60;serviceType&#x60; (services_id), &#x60;ip&#x60; (eligible IP from getOrderDetail). Returns 201 {success: true, text: &#x27;ScrubIp order is placed.&#x27;, order_details: {total_cost, service_id, invoice_id, invoice_description, cj_params}}. Errors: 400 {success: false, text: &#x27;Unable to place order.&#x27;, errors: []} on validation; 401 unauthenticated; 422 on invalid serviceType/ip; 409 if the IP is already protected. Caveat: invoice is unpaid at creation — pay via Pay endpoints to activate. Siblings: putScrubIps, getOrderDetail, enableScrub, getScrubIpInvoices.</remarks>
         /// <param name="body"></param>
         /// <response code="201">Request OK</response>
         /// <response code="401">Unauthorized</response>
@@ -508,9 +508,39 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Delete Geo Firewall Rule
+        /// Validate a Scrub IP order and return effective pricing without billing
         /// </summary>
-        /// <remarks>Removes an existing geographic-based firewall rule from the Scrub IP service. Use the &#x60;rule_id&#x60; from the service details response to identify the rule to delete.</remarks>
+        /// <remarks>Dry-runs a Scrub IP purchase via validate_buy_scrub_ip and returns whether the order would succeed plus the resolved pricing — without creating an invoice. Use to render a real-time price/error panel as the user picks options. No path parameters. Body (ScrubIpPlaceOrder): &#x60;serviceType&#x60; (services_id from getOrderDetail.serviceTypes), &#x60;ip&#x60; (one of getOrderDetail.ips), optional &#x60;coupon&#x60;. Returns {continue: bool, errors: [], serviceType, serviceCost, originalCost, repeatServiceCost}. Errors: 401 unauthenticated; validation failures appear in &#x60;errors&#x60;, not as HTTP 4xx. Caveat: idempotent — call as often as needed; 422 on invalid coupon surfaces in the errors array. Siblings: getOrderDetail, placeScrubOrder, getScrubIpsList.</remarks>
+        /// <param name="body"></param>
+        /// <response code="200">Scrub IP order validation result.</response>
+        /// <response code="401">Unauthorized</response>
+        [HttpPut]
+        [Route("/apiv2/scrub_ips/order")]
+        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
+        [ValidateModelState]
+        [SwaggerOperation("PutScrubIps")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20020), description: "Scrub IP order validation result.")]
+        [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
+        public virtual IActionResult PutScrubIps([FromBody]ScrubIpPlaceOrder body)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(InlineResponse20020));
+
+            //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(401, default(InlineResponse401));
+            string exampleJson = null;
+            exampleJson = "{\n  \"serviceType\" : 0,\n  \"repeatServiceCost\" : 5.962133916683182,\n  \"serviceCost\" : 6.027456183070403,\n  \"continue\" : true,\n  \"originalCost\" : 1.4658129805029452,\n  \"errors\" : [ \"errors\", \"errors\" ]\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<InlineResponse20020>(exampleJson)
+                        : default(InlineResponse20020);            //TODO: Change the data returned
+            return new ObjectResult(example);
+        }
+
+        /// <summary>
+        /// Delete a geo firewall rule by rule_id from getScrubIpDetails
+        /// </summary>
+        /// <remarks>Removes a previously created geographic firewall rule from the Scrub IP service. The rule_id must come from the &#x60;filter_firewall.geo_rules[].id&#x60; array returned by getScrubIpDetails — the endpoint validates the id belongs to this service before deleting. Path param: &#x60;id&#x60; (integer, required) — Scrub IP service ID. Body (JSON): {&#x60;rule_id&#x60;: integer, required}. Returns {success: true, text: &#x27;Firewall Rule has been deleted.&#x27;}. Errors: 400 Invalid Service, &#x27;Rule Id is required.&#x27; or &#x27;Invalid rule id&#x27; (rule does not belong to this service); 401 unauthenticated; 500 if upstream Scrub::geoFirewallDelete fails. Caveat: removing a country/ASN block re-admits that traffic. Siblings: createGeoRule, scrubIpsDeleteRule, deleteFilter, getScrubIpDetails.</remarks>
         /// <param name="body"></param>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="200">Delete firewall rule for scrub ip</response>
@@ -522,14 +552,14 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ScrubIpsDeleteGeoRule")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20016), description: "Delete firewall rule for scrub ip")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20017), description: "Delete firewall rule for scrub ip")]
         [SwaggerResponse(statusCode: 400, type: typeof(InlineResponse4002), description: "Bad Request")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         [SwaggerResponse(statusCode: 500, type: typeof(InlineResponse5003), description: "Internal Server Error")]
         public virtual IActionResult ScrubIpsDeleteGeoRule([FromBody]DeleteGeoFirewallRule body, [FromRoute][Required]int? id)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20016));
+            // return StatusCode(200, default(InlineResponse20017));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(InlineResponse4002));
@@ -543,15 +573,15 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Firewall Rule has been deleted.\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20016>(exampleJson)
-                        : default(InlineResponse20016);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20017>(exampleJson)
+                        : default(InlineResponse20017);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// Delete Firewall Rule
+        /// Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
         /// </summary>
-        /// <remarks>Removes an existing firewall rule from the Scrub IP service. Use the &#x60;rule_id&#x60; from the service details response to identify the rule to delete.</remarks>
+        /// <remarks>Removes a previously created L3/L4 firewall rule from the Scrub IP service. The rule_id must come from the &#x60;filter_firewall.rules[].id&#x60; array returned by getScrubIpDetails — the endpoint validates the id belongs to this service before deleting. Path param: &#x60;id&#x60; (integer, required) — Scrub IP service ID. Body (JSON): {&#x60;rule_id&#x60;: integer, required}. Returns {success: true, text: &#x27;Firewall Rule has been deleted.&#x27;}. Errors: 400 Invalid Service, &#x27;rule_id is required.&#x27; or &#x27;Invalid rule id&#x27; (rule does not belong to this service); 401 unauthenticated; 500 if upstream Scrub::firewallDelete fails. Caveat: if the rule was the only protection against a specific source, deleting it re-exposes the IP. Siblings: createRule, scrubIpsDeleteGeoRule, deleteFilter, getScrubIpDetails.</remarks>
         /// <param name="body"></param>
         /// <param name="id">ScrubIp ID number</param>
         /// <response code="200">Delete firewall rule for scrub ip</response>
@@ -563,14 +593,14 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ScrubIpsDeleteRule")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20016), description: "Delete firewall rule for scrub ip")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20017), description: "Delete firewall rule for scrub ip")]
         [SwaggerResponse(statusCode: 400, type: typeof(InlineResponse4002), description: "Bad Request")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         [SwaggerResponse(statusCode: 500, type: typeof(InlineResponse5003), description: "Internal Server Error")]
         public virtual IActionResult ScrubIpsDeleteRule([FromBody]DeleteFirewallRule body, [FromRoute][Required]int? id)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20016));
+            // return StatusCode(200, default(InlineResponse20017));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(InlineResponse4002));
@@ -584,8 +614,8 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Firewall Rule has been deleted.\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20016>(exampleJson)
-                        : default(InlineResponse20016);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20017>(exampleJson)
+                        : default(InlineResponse20017);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
     }

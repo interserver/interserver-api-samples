@@ -1,4 +1,4 @@
-# SwaggerClient::DomainRow
+# InterserverApiClient::DomainRow
 
 ## Properties
 Name | Type | Description | Notes

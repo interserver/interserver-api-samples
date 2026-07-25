@@ -5,15 +5,6 @@
  *
  *)
 
-let change_account_username () =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/account/username" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
-    Request.read_json_body_as (JsonSupport.unwrap Text_response.of_yojson) resp body
-
 let delete_account_oauth_name ~name =
     let open Lwt.Infix in
     let uri = Request.build_uri "/account/oauth/{name}" in

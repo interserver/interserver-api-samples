@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BuyItNowRow();
+    instance = new InterserverApiClient.BuyItNowRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('BuyItNowRow', function() {
     it('should create an instance of BuyItNowRow', function() {
       // uncomment below and update the code to test BuyItNowRow
-      //var instance = new InterServerManagementApi.BuyItNowRow();
-      //expect(instance).to.be.a(InterServerManagementApi.BuyItNowRow);
+      //var instance = new InterserverApiClient.BuyItNowRow();
+      //expect(instance).to.be.a(InterserverApiClient.BuyItNowRow);
     });
 
     it('should have the property server_id (base name: "server_id")', function() {
       // uncomment below and update the code to test the property server_id
-      //var instance = new InterServerManagementApi.BuyItNowRow();
+      //var instance = new InterserverApiClient.BuyItNowRow();
       //expect(instance).to.be();
     });
 
     it('should have the property cpu (base name: "cpu")', function() {
       // uncomment below and update the code to test the property cpu
-      //var instance = new InterServerManagementApi.BuyItNowRow();
+      //var instance = new InterserverApiClient.BuyItNowRow();
       //expect(instance).to.be();
     });
 
     it('should have the property memory (base name: "memory")', function() {
       // uncomment below and update the code to test the property memory
-      //var instance = new InterServerManagementApi.BuyItNowRow();
+      //var instance = new InterserverApiClient.BuyItNowRow();
       //expect(instance).to.be();
     });
 
     it('should have the property disk (base name: "disk")', function() {
       // uncomment below and update the code to test the property disk
-      //var instance = new InterServerManagementApi.BuyItNowRow();
+      //var instance = new InterserverApiClient.BuyItNowRow();
       //expect(instance).to.be();
     });
 
     it('should have the property bandwidth (base name: "bandwidth")', function() {
       // uncomment below and update the code to test the property bandwidth
-      //var instance = new InterServerManagementApi.BuyItNowRow();
+      //var instance = new InterserverApiClient.BuyItNowRow();
       //expect(instance).to.be();
     });
 
     it('should have the property ips (base name: "ips")', function() {
       // uncomment below and update the code to test the property ips
-      //var instance = new InterServerManagementApi.BuyItNowRow();
+      //var instance = new InterserverApiClient.BuyItNowRow();
       //expect(instance).to.be();
     });
 
     it('should have the property location (base name: "location")', function() {
       // uncomment below and update the code to test the property location
-      //var instance = new InterServerManagementApi.BuyItNowRow();
+      //var instance = new InterserverApiClient.BuyItNowRow();
       //expect(instance).to.be();
     });
 
     it('should have the property price (base name: "price")', function() {
       // uncomment below and update the code to test the property price
-      //var instance = new InterServerManagementApi.BuyItNowRow();
+      //var instance = new InterserverApiClient.BuyItNowRow();
       //expect(instance).to.be();
     });
 

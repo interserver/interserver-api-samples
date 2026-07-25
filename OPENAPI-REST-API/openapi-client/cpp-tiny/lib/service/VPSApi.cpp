@@ -625,6 +625,57 @@ using namespace Tiny;
         }
 
         Response<
+            QueueResponse
+        >
+        VPSApi::
+        getVpsBackup(
+            
+            int id
+            
+        )
+        {
+            std::string url = basepath + "/vps/{id}/backup"; //id 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_id("{");
+                s_id.append("id");
+                s_id.append("}");
+
+                int pos = url.find(s_id);
+
+                url.erase(pos, s_id.length());
+                url.insert(pos, stringify(id));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            QueueResponse obj(output_string);
+
+
+            Response<QueueResponse> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
             VpsBackupRows
         >
         VPSApi::
@@ -736,6 +787,98 @@ using namespace Tiny;
         )
         {
             std::string url = basepath + "/vps/{id}/buy_ip"; //id 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_id("{");
+                s_id.append("id");
+                s_id.append("}");
+
+                int pos = url.find(s_id);
+
+                url.erase(pos, s_id.length());
+                url.insert(pos, stringify(id));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+            Response<String> response(output, httpCode);
+            return response;
+        }
+
+        Response<
+            String
+        >
+        VPSApi::
+        getVpsChangeHostname(
+            
+            int id
+            
+        )
+        {
+            std::string url = basepath + "/vps/{id}/change_hostname"; //id 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_id("{");
+                s_id.append("id");
+                s_id.append("}");
+
+                int pos = url.find(s_id);
+
+                url.erase(pos, s_id.length());
+                url.insert(pos, stringify(id));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+            Response<String> response(output, httpCode);
+            return response;
+        }
+
+        Response<
+            String
+        >
+        VPSApi::
+        getVpsChangeRootPassword(
+            
+            int id
+            
+        )
+        {
+            std::string url = basepath + "/vps/{id}/change_root_password"; //id 
 
 
             // Headers  | 
@@ -890,6 +1033,52 @@ using namespace Tiny;
 
 
             Response<Vps> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            String
+        >
+        VPSApi::
+        getVpsInsertCd(
+            
+            int id
+            
+        )
+        {
+            std::string url = basepath + "/vps/{id}/insert_cd"; //id 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_id("{");
+                s_id.append("id");
+                s_id.append("}");
+
+                int pos = url.find(s_id);
+
+                url.erase(pos, s_id.length());
+                url.insert(pos, stringify(id));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+            Response<String> response(output, httpCode);
             return response;
         }
 
@@ -1052,6 +1241,52 @@ using namespace Tiny;
 
 
             Response<VpsTemplatesList> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            String
+        >
+        VPSApi::
+        getVpsResetPassword(
+            
+            int id
+            
+        )
+        {
+            std::string url = basepath + "/vps/{id}/reset_password"; //id 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_id("{");
+                s_id.append("id");
+                s_id.append("}");
+
+                int pos = url.find(s_id);
+
+                url.erase(pos, s_id.length());
+                url.insert(pos, stringify(id));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+            Response<String> response(output, httpCode);
             return response;
         }
 
@@ -1343,57 +1578,6 @@ using namespace Tiny;
 
 
             Response<SuccessTextResponse> response(obj, httpCode);
-            return response;
-        }
-
-        Response<
-            QueueResponse
-        >
-        VPSApi::
-        postVpsBackup(
-            
-            int id
-            
-        )
-        {
-            std::string url = basepath + "/vps/{id}/backup"; //id 
-
-
-            // Headers  | 
-
-            // Query    | 
-
-            // Form     | 
-
-
-
-                std::string s_id("{");
-                s_id.append("id");
-                s_id.append("}");
-
-                int pos = url.find(s_id);
-
-                url.erase(pos, s_id.length());
-                url.insert(pos, stringify(id));
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | GET
-            // Body     | 
-            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-
-
-            QueueResponse obj(output_string);
-
-
-            Response<QueueResponse> response(obj, httpCode);
             return response;
         }
 
@@ -2105,6 +2289,52 @@ using namespace Tiny;
             String
         >
         VPSApi::
+        postVpsTrafficUsage(
+            
+            int id
+            
+        )
+        {
+            std::string url = basepath + "/vps/{id}/traffic_usage"; //id 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_id("{");
+                s_id.append("id");
+                s_id.append("}");
+
+                int pos = url.find(s_id);
+
+                url.erase(pos, s_id.length());
+                url.insert(pos, stringify(id));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | POST
+            // Body     | 
+            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+            Response<String> response(output, httpCode);
+            return response;
+        }
+
+        Response<
+            String
+        >
+        VPSApi::
         postVpsViewDesktop(
             
             int id
@@ -2193,6 +2423,52 @@ using namespace Tiny;
 
 
             Response<VpsOrderPutResponse> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            String
+        >
+        VPSApi::
+        putVpsBuyHdSpace(
+            
+            int id
+            
+        )
+        {
+            std::string url = basepath + "/vps/{id}/buy_hd_space"; //id 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_id("{");
+                s_id.append("id");
+                s_id.append("}");
+
+                int pos = url.find(s_id);
+
+                url.erase(pos, s_id.length());
+                url.insert(pos, stringify(id));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | PUT
+            // Body     | 
+            int httpCode = sendRequest(url, "PUT", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+            Response<String> response(output, httpCode);
             return response;
         }
 

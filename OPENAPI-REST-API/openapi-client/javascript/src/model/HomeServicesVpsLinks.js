@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The HomeServicesVpsLinks model module.
  * @module model/HomeServicesVpsLinks
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeServicesVpsLinks {
     /**

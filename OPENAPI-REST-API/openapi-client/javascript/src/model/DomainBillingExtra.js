@@ -18,7 +18,7 @@ import DomainProvProcessPending from './DomainProvProcessPending';
 /**
  * The DomainBillingExtra model module.
  * @module model/DomainBillingExtra
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainBillingExtra {
     /**

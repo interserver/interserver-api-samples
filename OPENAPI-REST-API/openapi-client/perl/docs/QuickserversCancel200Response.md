@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::QuickserversCancel200Response
+# InterServerAPI::Object::QuickserversCancel200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::QuickserversCancel200Response;
+use InterServerAPI::Object::QuickserversCancel200Response;
 ```
 
 ## Properties

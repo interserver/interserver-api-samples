@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DownloadQsBackupRequest } from './api';
+import { DownloadQsBackupRequest } from '@interserver/myadmin-client';
 
 const instance: DownloadQsBackupRequest = {
     file,

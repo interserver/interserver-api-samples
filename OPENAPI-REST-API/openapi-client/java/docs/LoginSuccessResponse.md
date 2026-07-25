@@ -15,4 +15,8 @@ The response from a successful login.
 |**gravatar** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

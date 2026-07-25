@@ -1,23 +1,23 @@
-# openapi.model.ServerBillingDetails
+# interserver_api.model.ServerBillingDetails
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**serviceLastInvoiceDate** | **String** |  | [optional] 
-**servicePaymentStatus** | **String** |  | [optional] 
-**serviceFrequency** | **String** |  | [optional] 
-**nextDate** | **String** |  | [optional] 
-**serviceNextInvoiceDate** | **String** |  | [optional] 
-**serviceCurrency** | **String** |  | [optional] 
-**serviceCurrencySymbol** | **String** |  | [optional] 
-**serviceCostInfo** | **String** |  | [optional] 
-**serviceExtra** | **BuiltList&lt;String&gt;** |  | [optional] 
-**serviceExtraJson** | **String** |  | [optional] 
+**serviceLastInvoiceDate** | **Optional&lt;String?&gt;** |  | [optional] 
+**servicePaymentStatus** | **Optional&lt;String?&gt;** |  | [optional] 
+**serviceFrequency** | **Optional&lt;String?&gt;** |  | [optional] 
+**nextDate** | **Optional&lt;String?&gt;** |  | [optional] 
+**serviceNextInvoiceDate** | **Optional&lt;String?&gt;** |  | [optional] 
+**serviceCurrency** | **Optional&lt;String?&gt;** |  | [optional] 
+**serviceCurrencySymbol** | **Optional&lt;String?&gt;** |  | [optional] 
+**serviceCostInfo** | **Optional&lt;String?&gt;** |  | [optional] 
+**serviceExtra** | **Optional&lt;List&lt;String&gt;?&gt;** |  | [optional] 
+**serviceExtraJson** | **Optional&lt;String?&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

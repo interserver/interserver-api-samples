@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_details_modules_licenses import HomeDetailsModulesLicenses
+from interserver_api_client.models.home_details_modules_licenses import HomeDetailsModulesLicenses
 
 class TestHomeDetailsModulesLicenses(unittest.TestCase):
     """HomeDetailsModulesLicenses unit test stubs"""

@@ -17,4 +17,3 @@ case class MailStatsTypeVolume(
   from: Option[MailStatsTypeVolumeFrom] = None,
   ip: Option[MailStatsTypeVolumeIp] = None
 )
-

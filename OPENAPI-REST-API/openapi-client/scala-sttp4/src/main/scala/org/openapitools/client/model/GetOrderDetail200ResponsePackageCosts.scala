@@ -18,4 +18,3 @@ case class GetOrderDetail200ResponsePackageCosts(
   currency: Option[String] = None,
   currencySymbol: Option[String] = None
 )
-

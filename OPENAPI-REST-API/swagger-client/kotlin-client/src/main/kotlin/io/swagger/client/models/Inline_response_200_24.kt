@@ -14,11 +14,12 @@ package io.swagger.client.models
 
 /**
  * 
- * @param ips A map of IP addresses to their current reverse DNS hostnames.
+ * @param success 
+ * @param text 
  */
 data class InlineResponse20024 (
 
-    /* A map of IP addresses to their current reverse DNS hostnames. */
-    val ips: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
+    val success: kotlin.Boolean,
+    val text: kotlin.String
 ) {
 }

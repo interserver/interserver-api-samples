@@ -1,12 +1,6 @@
 #tag Interface
 Protected Interface BillingApiCallbackHandler
 	#tag Method, Flags = &h0
-		Sub AddAccountCreditCardCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SuccessTextResponse)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub AddBillingCreditCardCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SuccessTextResponse)
 		  
 		End Sub
@@ -14,12 +8,6 @@ Protected Interface BillingApiCallbackHandler
 
 	#tag Method, Flags = &h0
 		Sub AddBillingPrepayCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SuccessTextResponse)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub DeleteAccountCreditCardCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As String)
 		  
 		End Sub
 	#tag EndMethod
@@ -49,6 +37,12 @@ Protected Interface BillingApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub GetAffiliateDownloadCallback(status As OpenAPIClient.OpenAPIClientException)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub GetAffiliateRichReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.TextResponse)
 		  
 		End Sub
@@ -61,7 +55,7 @@ Protected Interface BillingApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub GetAffiliateSalesReportCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.TextResponse)
+		Sub GetAffiliateSignupsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.GetAffiliateSignups200Response)
 		  
 		End Sub
 	#tag EndMethod
@@ -109,13 +103,13 @@ Protected Interface BillingApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub GetInvoicesCallback(status As OpenAPIClient.OpenAPIClientException, data() As OpenAPIClient.Models.Invoice)
+		Sub InitiatePaymentCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.InitiatePayment200Response)
 		  
 		End Sub
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub InitiatePaymentCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.InitiatePayment200Response)
+		Sub PatchBillingCreditCardVerifyCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SuccessTextResponse)
 		  
 		End Sub
 	#tag EndMethod
@@ -127,19 +121,7 @@ Protected Interface BillingApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub UpdateAccountCreditCardCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As String)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub UpdateAffiliateDockSetupCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.TextResponse)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub UpdateAffiliateLandingPageCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.TextResponse)
 		  
 		End Sub
 	#tag EndMethod

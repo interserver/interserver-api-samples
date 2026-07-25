@@ -10,4 +10,8 @@ Map of OAuth providers and their linked status on the account.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

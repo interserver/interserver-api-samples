@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.modules import Modules
+from interserver_api_client.models.modules import Modules
 
 class TestModules(unittest.TestCase):
     """Modules unit test stubs"""

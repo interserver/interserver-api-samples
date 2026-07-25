@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainOrder } from './api';
+import { DomainOrder } from '@interserver/myadmin-client';
 
 const instance: DomainOrder = {
     whoisPrivacyCost,

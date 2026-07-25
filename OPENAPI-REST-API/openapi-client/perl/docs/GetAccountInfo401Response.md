@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::GetAccountInfo401Response
+# InterServerAPI::Object::GetAccountInfo401Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::GetAccountInfo401Response;
+use InterServerAPI::Object::GetAccountInfo401Response;
 ```
 
 ## Properties

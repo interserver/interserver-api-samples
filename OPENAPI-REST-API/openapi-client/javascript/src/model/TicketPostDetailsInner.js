@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TicketPostDetailsInner model module.
  * @module model/TicketPostDetailsInner
- * @version 0.9.0
+ * @version 1.0.0
  */
 class TicketPostDetailsInner {
     /**
@@ -175,7 +175,13 @@ TicketPostDetailsInner['CreatorEnum'] = {
      * value: "Staff"
      * @const
      */
-    "Staff": "Staff"
+    "Staff": "Staff",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 

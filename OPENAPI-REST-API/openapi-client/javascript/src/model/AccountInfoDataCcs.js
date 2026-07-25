@@ -17,7 +17,7 @@ import AccountInfoDataCc from './AccountInfoDataCc';
 /**
  * The AccountInfoDataCcs model module.
  * @module model/AccountInfoDataCcs
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AccountInfoDataCcs {
     /**

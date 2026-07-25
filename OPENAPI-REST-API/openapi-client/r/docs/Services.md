@@ -1,4 +1,4 @@
-# openapi::Services
+# interserverapi::Services
 
 The list of service packages.
 

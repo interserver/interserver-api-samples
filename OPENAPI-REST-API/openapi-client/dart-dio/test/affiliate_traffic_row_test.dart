@@ -1,38 +1,38 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for AffiliateTrafficRow
 void main() {
-  final instance = AffiliateTrafficRowBuilder();
-  // TODO add properties to the builder and call build()
+  final AffiliateTrafficRow? instance = /* AffiliateTrafficRow(...) */ null;
+  // TODO add properties to the entity
 
   group(AffiliateTrafficRow, () {
-    // String trafficId
+    // Optional<String?> trafficId
     test('to test the property `trafficId`', () async {
       // TODO
     });
 
-    // String trafficIp
+    // Optional<String?> trafficIp
     test('to test the property `trafficIp`', () async {
       // TODO
     });
 
-    // String trafficUrl
+    // Optional<String?> trafficUrl
     test('to test the property `trafficUrl`', () async {
       // TODO
     });
 
-    // String trafficAffiliate
+    // Optional<String?> trafficAffiliate
     test('to test the property `trafficAffiliate`', () async {
       // TODO
     });
 
-    // String trafficReferrer
+    // Optional<String?> trafficReferrer
     test('to test the property `trafficReferrer`', () async {
       // TODO
     });
 
-    // String trafficTimestamp
+    // Optional<String?> trafficTimestamp
     test('to test the property `trafficTimestamp`', () async {
       // TODO
     });

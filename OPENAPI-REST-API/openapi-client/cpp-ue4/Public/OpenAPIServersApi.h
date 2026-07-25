@@ -60,8 +60,8 @@ public:
 	class PlaceBuyNowServerResponse;
 	class PostServerReverseDnsRequest;
 	class PostServerReverseDnsResponse;
-	class PutServersRequest;
-	class PutServersResponse;
+	class ServerBulkIpmiPowerGetRequest;
+	class ServerBulkIpmiPowerGetResponse;
 	class ServerIpmiLiveGetRequest;
 	class ServerIpmiLiveGetResponse;
 	class ServerIpmiLivePostRequest;
@@ -86,7 +86,7 @@ public:
     DECLARE_DELEGATE_OneParam(FGetServersWelcomeEmailDelegate, const GetServersWelcomeEmailResponse&);
     DECLARE_DELEGATE_OneParam(FPlaceBuyNowServerDelegate, const PlaceBuyNowServerResponse&);
     DECLARE_DELEGATE_OneParam(FPostServerReverseDnsDelegate, const PostServerReverseDnsResponse&);
-    DECLARE_DELEGATE_OneParam(FPutServersDelegate, const PutServersResponse&);
+    DECLARE_DELEGATE_OneParam(FServerBulkIpmiPowerGetDelegate, const ServerBulkIpmiPowerGetResponse&);
     DECLARE_DELEGATE_OneParam(FServerIpmiLiveGetDelegate, const ServerIpmiLiveGetResponse&);
     DECLARE_DELEGATE_OneParam(FServerIpmiLivePostDelegate, const ServerIpmiLivePostResponse&);
     DECLARE_DELEGATE_OneParam(FServerIpmiPowerGetDelegate, const ServerIpmiPowerGetResponse&);
@@ -105,7 +105,7 @@ public:
     FHttpRequestPtr GetServersWelcomeEmail(const GetServersWelcomeEmailRequest& Request, const FGetServersWelcomeEmailDelegate& Delegate = FGetServersWelcomeEmailDelegate()) const;
     FHttpRequestPtr PlaceBuyNowServer(const PlaceBuyNowServerRequest& Request, const FPlaceBuyNowServerDelegate& Delegate = FPlaceBuyNowServerDelegate()) const;
     FHttpRequestPtr PostServerReverseDns(const PostServerReverseDnsRequest& Request, const FPostServerReverseDnsDelegate& Delegate = FPostServerReverseDnsDelegate()) const;
-    FHttpRequestPtr PutServers(const PutServersRequest& Request, const FPutServersDelegate& Delegate = FPutServersDelegate()) const;
+    FHttpRequestPtr ServerBulkIpmiPowerGet(const ServerBulkIpmiPowerGetRequest& Request, const FServerBulkIpmiPowerGetDelegate& Delegate = FServerBulkIpmiPowerGetDelegate()) const;
     FHttpRequestPtr ServerIpmiLiveGet(const ServerIpmiLiveGetRequest& Request, const FServerIpmiLiveGetDelegate& Delegate = FServerIpmiLiveGetDelegate()) const;
     FHttpRequestPtr ServerIpmiLivePost(const ServerIpmiLivePostRequest& Request, const FServerIpmiLivePostDelegate& Delegate = FServerIpmiLivePostDelegate()) const;
     FHttpRequestPtr ServerIpmiPowerGet(const ServerIpmiPowerGetRequest& Request, const FServerIpmiPowerGetDelegate& Delegate = FServerIpmiPowerGetDelegate()) const;
@@ -125,7 +125,7 @@ private:
     void OnGetServersWelcomeEmailResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetServersWelcomeEmailDelegate Delegate) const;
     void OnPlaceBuyNowServerResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPlaceBuyNowServerDelegate Delegate) const;
     void OnPostServerReverseDnsResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostServerReverseDnsDelegate Delegate) const;
-    void OnPutServersResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPutServersDelegate Delegate) const;
+    void OnServerBulkIpmiPowerGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FServerBulkIpmiPowerGetDelegate Delegate) const;
     void OnServerIpmiLiveGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FServerIpmiLiveGetDelegate Delegate) const;
     void OnServerIpmiLivePostResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FServerIpmiLivePostDelegate Delegate) const;
     void OnServerIpmiPowerGetResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FServerIpmiPowerGetDelegate Delegate) const;

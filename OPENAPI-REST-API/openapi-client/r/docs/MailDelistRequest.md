@@ -1,4 +1,4 @@
-# openapi::MailDelistRequest
+# interserverapi::MailDelistRequest
 
 Payload for removing a sender from mail blocklists.
 

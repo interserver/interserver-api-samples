@@ -11,4 +11,8 @@ Post reply to your ticket
 |**content** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

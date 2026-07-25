@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BackupOrderPutRequest();
+    instance = new InterserverApiClient.BackupOrderPutRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('BackupOrderPutRequest', function() {
     it('should create an instance of BackupOrderPutRequest', function() {
       // uncomment below and update the code to test BackupOrderPutRequest
-      //var instance = new InterServerManagementApi.BackupOrderPutRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.BackupOrderPutRequest);
+      //var instance = new InterserverApiClient.BackupOrderPutRequest();
+      //expect(instance).to.be.a(InterserverApiClient.BackupOrderPutRequest);
     });
 
     it('should have the property validateOnly (base name: "validateOnly")', function() {
       // uncomment below and update the code to test the property validateOnly
-      //var instance = new InterServerManagementApi.BackupOrderPutRequest();
+      //var instance = new InterserverApiClient.BackupOrderPutRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceType (base name: "serviceType")', function() {
       // uncomment below and update the code to test the property serviceType
-      //var instance = new InterServerManagementApi.BackupOrderPutRequest();
+      //var instance = new InterserverApiClient.BackupOrderPutRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property coupon (base name: "coupon")', function() {
       // uncomment below and update the code to test the property coupon
-      //var instance = new InterServerManagementApi.BackupOrderPutRequest();
+      //var instance = new InterserverApiClient.BackupOrderPutRequest();
       //expect(instance).to.be();
     });
 

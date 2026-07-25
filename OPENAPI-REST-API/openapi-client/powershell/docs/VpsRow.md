@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsRow = Initialize-PSOpenAPIToolsVpsRow  -VpsId 100 `
+$VpsRow = Initialize-InterserverApiVpsRow  -VpsId 100 `
  -VpsName Builder `
  -RepeatInvoicesCost 10.00 `
  -VpsHostname vps100 `

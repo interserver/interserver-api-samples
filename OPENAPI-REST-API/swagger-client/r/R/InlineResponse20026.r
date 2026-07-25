@@ -8,8 +8,7 @@
 
 #' InlineResponse20026 Class
 #'
-#' @field text 
-#' @field ticket 
+#' @field ips 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,52 +16,37 @@
 InlineResponse20026 <- R6::R6Class(
   'InlineResponse20026',
   public = list(
-    `text` = NULL,
-    `ticket` = NULL,
-    initialize = function(`text`, `ticket`){
-      if (!missing(`text`)) {
-        stopifnot(is.character(`text`), length(`text`) == 1)
-        self$`text` <- `text`
-      }
-      if (!missing(`ticket`)) {
-        stopifnot(is.numeric(`ticket`), length(`ticket`) == 1)
-        self$`ticket` <- `ticket`
+    `ips` = NULL,
+    initialize = function(`ips`){
+      if (!missing(`ips`)) {
+        self$`ips` <- `ips`
       }
     },
     toJSON = function() {
       InlineResponse20026Object <- list()
-      if (!is.null(self$`text`)) {
-        InlineResponse20026Object[['text']] <- self$`text`
-      }
-      if (!is.null(self$`ticket`)) {
-        InlineResponse20026Object[['ticket']] <- self$`ticket`
+      if (!is.null(self$`ips`)) {
+        InlineResponse20026Object[['ips']] <- self$`ips`
       }
 
       InlineResponse20026Object
     },
     fromJSON = function(InlineResponse20026Json) {
       InlineResponse20026Object <- jsonlite::fromJSON(InlineResponse20026Json)
-      if (!is.null(InlineResponse20026Object$`text`)) {
-        self$`text` <- InlineResponse20026Object$`text`
-      }
-      if (!is.null(InlineResponse20026Object$`ticket`)) {
-        self$`ticket` <- InlineResponse20026Object$`ticket`
+      if (!is.null(InlineResponse20026Object$`ips`)) {
+        self$`ips` <- InlineResponse20026Object$`ips`
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "text": %s,
-           "ticket": %d
+           "ips": %s
         }',
-        self$`text`,
-        self$`ticket`
+        self$`ips`
       )
     },
     fromJSONString = function(InlineResponse20026Json) {
       InlineResponse20026Object <- jsonlite::fromJSON(InlineResponse20026Json)
-      self$`text` <- InlineResponse20026Object$`text`
-      self$`ticket` <- InlineResponse20026Object$`ticket`
+      self$`ips` <- InlineResponse20026Object$`ips`
     }
   )
 )

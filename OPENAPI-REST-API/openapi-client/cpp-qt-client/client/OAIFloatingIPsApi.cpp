@@ -237,7 +237,7 @@ QString OAIFloatingIPsApi::getParamStyleDelimiter(const QString &style, const QS
     }
 }
 
-void OAIFloatingIPsApi::addFloatingIp() {
+void OAIFloatingIPsApi::addFloatingIp(const OAIFloatingIpOrderRequest &oai_floating_ip_order_request) {
     QString fullPath = QString(_serverConfigs["addFloatingIp"][_serverIndices.value("addFloatingIp")].URL()+"/floating_ips/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -253,7 +253,12 @@ void OAIFloatingIPsApi::addFloatingIp() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
+    {
 
+        
+        QByteArray output = oai_floating_ip_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -736,7 +741,7 @@ void OAIFloatingIPsApi::postFloatingIpsChangeIpCallback(OAIHttpRequestWorker *wo
     }
 }
 
-void OAIFloatingIPsApi::putFloatingIps() {
+void OAIFloatingIPsApi::putFloatingIps(const OAIFloatingIpOrderRequest &oai_floating_ip_order_request) {
     QString fullPath = QString(_serverConfigs["putFloatingIps"][_serverIndices.value("putFloatingIps")].URL()+"/floating_ips/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -752,7 +757,12 @@ void OAIFloatingIPsApi::putFloatingIps() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "PUT");
 
+    {
 
+        
+        QByteArray output = oai_floating_ip_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }

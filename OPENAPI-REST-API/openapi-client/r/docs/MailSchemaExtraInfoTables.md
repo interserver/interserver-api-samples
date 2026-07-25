@@ -1,4 +1,4 @@
-# openapi::MailSchemaExtraInfoTables
+# interserverapi::MailSchemaExtraInfoTables
 
 Additional information tables for the mail service.
 

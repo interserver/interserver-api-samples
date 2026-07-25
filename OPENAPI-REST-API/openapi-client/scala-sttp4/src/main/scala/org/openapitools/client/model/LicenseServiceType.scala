@@ -35,4 +35,3 @@ case class LicenseServiceType(
   /* Service module */
   services_module: Option[String] = None
 )
-

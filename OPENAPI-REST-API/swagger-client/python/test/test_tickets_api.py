@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.tickets_api import TicketsApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.tickets_api import TicketsApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestTicketsApi(unittest.TestCase):
@@ -31,77 +31,77 @@ class TestTicketsApi(unittest.TestCase):
     def test_add_new_ticket(self):
         """Test case for add_new_ticket
 
-        Create New Ticket  # noqa: E501
+        Open a new helpdesk ticket, optionally linked to a service and attachments  # noqa: E501
         """
         pass
 
     def test_close_ticket(self):
         """Test case for close_ticket
 
-        Close Ticket  # noqa: E501
+        Close an open support ticket via simple GET request (no body required)  # noqa: E501
         """
         pass
 
     def test_delete_ticket_info(self):
         """Test case for delete_ticket_info
 
-        Close Ticket  # noqa: E501
+        Close a customer ticket via DELETE verb (closes only, never destroys data)  # noqa: E501
         """
         pass
 
     def test_get_new_ticket(self):
         """Test case for get_new_ticket
 
-        Gets Information for creating a new ticket.  # noqa: E501
+        Fetch services and product options to populate the new-ticket form  # noqa: E501
         """
         pass
 
     def test_get_ticket_info(self):
         """Test case for get_ticket_info
 
-        Get Ticket Information  # noqa: E501
+        Get full ticket details including subject, status, and the reply thread  # noqa: E501
         """
         pass
 
     def test_get_tickets_list(self):
         """Test case for get_tickets_list
 
-        List Support Tickets  # noqa: E501
+        List the authenticated account's support tickets with status and date filters  # noqa: E501
         """
         pass
 
     def test_post_ticket_info(self):
         """Test case for post_ticket_info
 
-        Reply To Ticket  # noqa: E501
+        Append a reply (and optional attachment, server-access fields) to a ticket  # noqa: E501
         """
         pass
 
     def test_post_tickets_list(self):
         """Test case for post_tickets_list
 
-        Search Support Tickets  # noqa: E501
+        Search the authenticated account's tickets by subject, email, or mask ID  # noqa: E501
         """
         pass
 
     def test_put_ticket_info(self):
         """Test case for put_ticket_info
 
-        Update Ticket  # noqa: E501
+        Update a ticket's properties such as subject or status (stub, not implemented)  # noqa: E501
         """
         pass
 
     def test_reply_ticket(self):
         """Test case for reply_ticket
 
-        Reply Ticket  # noqa: E501
+        Post a simple text reply to an existing ticket thread (no attachments)  # noqa: E501
         """
         pass
 
     def test_update_ticket_info(self):
         """Test case for update_ticket_info
 
-        Update Ticket  # noqa: E501
+        Update a ticket's custom field values (server-access details, etc.)  # noqa: E501
         """
         pass
 

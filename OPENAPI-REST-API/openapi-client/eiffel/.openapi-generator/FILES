@@ -27,8 +27,6 @@ docs/AFFILIATE_BANNER_ROW.md
 docs/AFFILIATE_DOCK_SETUP.md
 docs/AFFILIATE_PAYMENT_SETUP.md
 docs/AFFILIATE_TRAFFIC_ROW.md
-docs/ASSET_SERVER.md
-docs/ASSET_SERVER_CPU_INNER.md
 docs/BACKUP.md
 docs/BACKUPS_API.md
 docs/BACKUPS_ORDER.md
@@ -47,7 +45,6 @@ docs/BACKUP_ORDER_PUT_RESPONSE.md
 docs/BACKUP_ROW.md
 docs/BACKUP_SERVICE_INFO.md
 docs/BACKUP_SERVICE_MASTER.md
-docs/BANDWIDTH.md
 docs/BILLING_ADD_CC_REQUEST.md
 docs/BILLING_API.md
 docs/BILLING_INVOICE_DETAIL.md
@@ -74,11 +71,6 @@ docs/CHARGE_INVOICE_ROWS_INVOICES_VALUE.md
 docs/CHARGE_INVOICE_ROWS_INVOICES_VALUE_PAID_INVOICES_VALUE.md
 docs/CHARGE_INVOICE_ROWS_INVOICES_VALUE_PAID_INVOICES_VALUE_REFUND_INVOICES_VALUE.md
 docs/CLOSE_TICKET_RESPONSE_SCHEMA.md
-docs/CONFIG_IDS.md
-docs/CONFIG_LISTS.md
-docs/CONTROL_PANEL.md
-docs/CPU.md
-docs/CPU_WITH_DEFAULTS.md
 docs/CREATE_FILTER.md
 docs/CREATE_FILTER_201_RESPONSE.md
 docs/CREATE_FILTER_400_RESPONSE.md
@@ -94,6 +86,7 @@ docs/DELETE_FILTER_400_RESPONSE.md
 docs/DELETE_FILTER_500_RESPONSE.md
 docs/DELETE_FIREWALL_RULE.md
 docs/DELETE_GEO_FIREWALL_RULE.md
+docs/DELETE_MAIL_ALERT_REQUEST.md
 docs/DENY_RULE_NEW.md
 docs/DENY_RULE_RECORD.md
 docs/DISABLE_SCRUB_200_RESPONSE.md
@@ -126,11 +119,11 @@ docs/DOMAIN_NAMESERVER_POST_REQUEST.md
 docs/DOMAIN_NAMESERVER_PUT_REQUEST.md
 docs/DOMAIN_NAME_SERVER.md
 docs/DOMAIN_ORDER.md
+docs/DOMAIN_ORDER_REQUEST.md
 docs/DOMAIN_ORDER_RESPONSE.md
 docs/DOMAIN_ORDER_RESPONSE_ATTRIBUTES.md
 docs/DOMAIN_ORDER_SERVICES.md
 docs/DOMAIN_ORDER_SERVICES10001.md
-docs/DOMAIN_ORDER_TLD_SERVICES.md
 docs/DOMAIN_OWNER_CONTACT.md
 docs/DOMAIN_PROV_PROCESS_PENDING.md
 docs/DOMAIN_PROV_PROCESS_PENDING_ATTRIBUTES.md
@@ -146,13 +139,14 @@ docs/EMAIL_ADDRESS.md
 docs/EMAIL_ADDRESS_NAME.md
 docs/ENABLE_SCRUB_200_RESPONSE.md
 docs/ENABLE_SCRUB_500_RESPONSE.md
-docs/FIELD_LABEL.md
 docs/FLOATINGIPS_API.md
 docs/FLOATING_IPS_CANCEL_200_RESPONSE.md
-docs/FORM_VALUES.md
+docs/FLOATING_IP_ORDER_REQUEST.md
 docs/GENERIC_RESPONSE.md
 docs/GET_ACCOUNT_INFO_401_RESPONSE.md
+docs/GET_ACCOUNT_LOCALES_200_RESPONSE_VALUE.md
 docs/GET_ACCOUNT_TFA_SETUP_200_RESPONSE.md
+docs/GET_AFFILIATE_SIGNUPS_200_RESPONSE.md
 docs/GET_OAUTH_REDIRECT_200_RESPONSE.md
 docs/GET_ORDER_DETAIL_200_RESPONSE.md
 docs/GET_ORDER_DETAIL_200_RESPONSE_IPS_INNER.md
@@ -169,7 +163,6 @@ docs/GET_SCRUB_IP_DETAILS_200_RESPONSE_FILTER_FIREWALL_FILTERS_INNER.md
 docs/GET_SCRUB_IP_DETAILS_200_RESPONSE_FILTER_FIREWALL_RULES_INNER.md
 docs/GET_SCRUB_IP_DETAILS_200_RESPONSE_SERVICE_INFO.md
 docs/GET_WEBSITE_BUY_IP_200_RESPONSE.md
-docs/HARD_DRIVE.md
 docs/HOME.md
 docs/HOME_DETAILS.md
 docs/HOME_DETAILS_MODULES.md
@@ -196,10 +189,6 @@ docs/HOME_TICKET_STATUS.md
 docs/HOME_TICKET_STATUS_VIEW.md
 docs/HOSTNAME_OBJECT.md
 docs/INITIATE_PAYMENT_200_RESPONSE.md
-docs/INLINE_OBJECT.md
-docs/INVOICE.md
-docs/INVOICE_ROW.md
-docs/IP_BLOCK.md
 docs/IP_LIMIT_RANGE.md
 docs/IP_OBJECT.md
 docs/LICENSE.md
@@ -216,6 +205,7 @@ docs/LICENSE_CLIENT_LINK.md
 docs/LICENSE_EXTRA_INFO_TABLES.md
 docs/LICENSE_IP_INFO.md
 docs/LICENSE_IP_INFO_ROW.md
+docs/LICENSE_ORDER_REQUEST.md
 docs/LICENSE_ROW.md
 docs/LICENSE_SERVICE_INFO.md
 docs/LICENSE_SERVICE_TYPE.md
@@ -246,6 +236,7 @@ docs/MAIL_EXTRA_INFO_TABLE_ROW.md
 docs/MAIL_LOG.md
 docs/MAIL_LOG_ENTRY.md
 docs/MAIL_ORDER.md
+docs/MAIL_ORDER_REQUEST.md
 docs/MAIL_ROW.md
 docs/MAIL_SCHEMA.md
 docs/MAIL_SCHEMA_EXTRA_INFO_TABLES.md
@@ -258,15 +249,13 @@ docs/MAIL_STATS_TYPE_VOLUME_IP.md
 docs/MAIL_STATS_TYPE_VOLUME_TO.md
 docs/MAIL_TUTORIALS_TABLE.md
 docs/MAIL_TUTORIALS_TABLE_ROW.md
-docs/MEMORY_OPTION.md
 docs/MODULES.md
 docs/MODULE_SETTINGS.md
 docs/MONTHLY_COUNTS.md
-docs/OPERATING_SYSTEM.md
 docs/PASSWORD_REQUEST.md
+docs/PATCH_BILLING_CREDIT_CARD_VERIFY_REQUEST.md
 docs/PATCH_OAUTH_TWO_FACTOR_200_RESPONSE.md
 docs/PATCH_OAUTH_TWO_FACTOR_REQUEST.md
-docs/PAYMENT_INVOICE_ROWS.md
 docs/PLACE_BUY_NOW_SERVER_REQUEST.md
 docs/PLACE_SCRUB_ORDER_201_RESPONSE.md
 docs/PLACE_SCRUB_ORDER_201_RESPONSE_ORDER_DETAILS.md
@@ -278,6 +267,8 @@ docs/POST_WEBSITE_BUY_IP_REQUEST.md
 docs/POST_WEBSITE_MIGRATION_200_RESPONSE.md
 docs/POST_WEBSITE_MIGRATION_REQUEST.md
 docs/PUBLIC_API.md
+docs/PUT_SCRUB_IPS_200_RESPONSE.md
+docs/QS_ORDER_REQUEST.md
 docs/QUEUE_RESPONSE.md
 docs/QUICKSERVER.md
 docs/QUICKSERVERS_API.md
@@ -302,8 +293,6 @@ docs/QUICKSERVER_ROW.md
 docs/QUICKSERVER_SERVICE_EXTRA.md
 docs/QUICKSERVER_SERVICE_INFO.md
 docs/QUICKSERVER_SERVICE_MASTER.md
-docs/RAID_OPTION.md
-docs/REGION.md
 docs/REPLY_TICKET_REQUEST.md
 docs/REPLY_TICKET_RESPONSE_SCHEMA.md
 docs/RESTORE_REQUEST.md
@@ -329,6 +318,8 @@ docs/SERVERS_CANCEL_200_RESPONSE.md
 docs/SERVER_ASSET.md
 docs/SERVER_ASSETS.md
 docs/SERVER_BILLING_DETAILS.md
+docs/SERVER_BULK_IPMI_POWER_RESPONSE.md
+docs/SERVER_BULK_IPMI_POWER_RESPONSE_RESULTS_INNER.md
 docs/SERVER_CLIENT_LINK.md
 docs/SERVER_EXTRA_INFO_TABLES.md
 docs/SERVER_IPMI_LIVE_INFO.md
@@ -351,7 +342,6 @@ docs/SERVER_ORDER_CP_LI.md
 docs/SERVER_ORDER_FIELD_LABEL.md
 docs/SERVER_ORDER_FIELD_LABELS.md
 docs/SERVER_ORDER_FORM_VALUES.md
-docs/SERVER_ORDER_GET_RESPONSE.md
 docs/SERVER_ORDER_IP.md
 docs/SERVER_ORDER_IPS_LI.md
 docs/SERVER_ORDER_MEMORY.md
@@ -359,6 +349,8 @@ docs/SERVER_ORDER_MEMORY_LI.md
 docs/SERVER_ORDER_MEMORY_LI_254.md
 docs/SERVER_ORDER_OS.md
 docs/SERVER_ORDER_OS_LI.md
+docs/SERVER_ORDER_POST_REQUEST.md
+docs/SERVER_ORDER_POST_REQUEST_HD.md
 docs/SERVER_ORDER_RAID.md
 docs/SERVER_ROW.md
 docs/SERVER_SERVICE_INFO.md
@@ -373,6 +365,7 @@ docs/SERVICE_TYPE.md
 docs/SERVICE_TYPES.md
 docs/SSLCERTIFICATES_API.md
 docs/SSL_CANCEL_200_RESPONSE.md
+docs/SSL_ORDER_REQUEST.md
 docs/STATUS_MONTHLY_BREAKDOWN.md
 docs/SUCCESS_TEXT_RESPONSE.md
 docs/TEMPLATE_REQUEST.md
@@ -433,7 +426,6 @@ docs/VPS_SERVICE_MASTER.md
 docs/VPS_SNAPSHOT.md
 docs/VPS_TEMPLATES_LIST.md
 docs/VPS_TEMPLATE_ROW.md
-docs/VPS_TRAFFIC_DATA_DATA_RESPONSE.md
 docs/VPS_TRAFFIC_DATA_DATA_SECTION_RESPONSE.md
 docs/VPS_TRAFFIC_DATA_DATA_SECTION_RESPONSE_INNER.md
 docs/VPS_TRAFFIC_DATA_SECTION_RESPONSE.md
@@ -465,6 +457,8 @@ docs/WEBSITE_BILLING_DETAILS.md
 docs/WEBSITE_CLIENT_LINK.md
 docs/WEBSITE_EXTRA_INFO_TABLES.md
 docs/WEBSITE_LOGIN_RESPONSE.md
+docs/WEBSITE_ORDER_POST_REQUEST.md
+docs/WEBSITE_ORDER_PUT_REQUEST.md
 docs/WEBSITE_ROW.md
 docs/WEBSITE_SERVICE_INFO.md
 docs/WEBSITE_SERVICE_MASTER.md
@@ -511,8 +505,6 @@ src/domain/affiliate_banner_row.e
 src/domain/affiliate_dock_setup.e
 src/domain/affiliate_payment_setup.e
 src/domain/affiliate_traffic_row.e
-src/domain/asset_server.e
-src/domain/asset_server_cpu_inner.e
 src/domain/backup.e
 src/domain/backup_billing_details.e
 src/domain/backup_client_link.e
@@ -530,7 +522,6 @@ src/domain/backup_service_master.e
 src/domain/backups_order.e
 src/domain/backups_order_package_costs.e
 src/domain/backups_order_service_types.e
-src/domain/bandwidth.e
 src/domain/billing_add_cc_request.e
 src/domain/billing_invoice_detail.e
 src/domain/billing_invoice_list.e
@@ -556,11 +547,6 @@ src/domain/charge_invoice_rows_invoices_value.e
 src/domain/charge_invoice_rows_invoices_value_paid_invoices_value.e
 src/domain/charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.e
 src/domain/close_ticket_response_schema.e
-src/domain/config_ids.e
-src/domain/config_lists.e
-src/domain/control_panel.e
-src/domain/cpu.e
-src/domain/cpu_with_defaults.e
 src/domain/create_filter.e
 src/domain/create_filter_201_response.e
 src/domain/create_filter_400_response.e
@@ -576,6 +562,7 @@ src/domain/delete_filter_400_response.e
 src/domain/delete_filter_500_response.e
 src/domain/delete_firewall_rule.e
 src/domain/delete_geo_firewall_rule.e
+src/domain/delete_mail_alert_request.e
 src/domain/deny_rule_new.e
 src/domain/deny_rule_record.e
 src/domain/disable_scrub_200_response.e
@@ -606,11 +593,11 @@ src/domain/domain_nameserver_get_response_inner.e
 src/domain/domain_nameserver_post_request.e
 src/domain/domain_nameserver_put_request.e
 src/domain/domain_order.e
+src/domain/domain_order_request.e
 src/domain/domain_order_response.e
 src/domain/domain_order_response_attributes.e
 src/domain/domain_order_services.e
 src/domain/domain_order_services10001.e
-src/domain/domain_order_tld_services.e
 src/domain/domain_owner_contact.e
 src/domain/domain_prov_process_pending.e
 src/domain/domain_prov_process_pending_attributes.e
@@ -626,12 +613,13 @@ src/domain/email_address.e
 src/domain/email_address_name.e
 src/domain/enable_scrub_200_response.e
 src/domain/enable_scrub_500_response.e
-src/domain/field_label.e
+src/domain/floating_ip_order_request.e
 src/domain/floating_ips_cancel_200_response.e
-src/domain/form_values.e
 src/domain/generic_response.e
 src/domain/get_account_info_401_response.e
+src/domain/get_account_locales_200_response_value.e
 src/domain/get_account_tfa_setup_200_response.e
+src/domain/get_affiliate_signups_200_response.e
 src/domain/get_oauth_redirect_200_response.e
 src/domain/get_order_detail_200_response.e
 src/domain/get_order_detail_200_response_ips_inner.e
@@ -648,7 +636,6 @@ src/domain/get_scrub_ip_details_200_response_filter_firewall_filters_inner.e
 src/domain/get_scrub_ip_details_200_response_filter_firewall_rules_inner.e
 src/domain/get_scrub_ip_details_200_response_service_info.e
 src/domain/get_website_buy_ip_200_response.e
-src/domain/hard_drive.e
 src/domain/home.e
 src/domain/home_details.e
 src/domain/home_details_modules.e
@@ -675,10 +662,6 @@ src/domain/home_ticket_status.e
 src/domain/home_ticket_status_view.e
 src/domain/hostname_object.e
 src/domain/initiate_payment_200_response.e
-src/domain/inline_object.e
-src/domain/invoice.e
-src/domain/invoice_row.e
-src/domain/ip_block.e
 src/domain/ip_limit_range.e
 src/domain/ip_object.e
 src/domain/license.e
@@ -687,6 +670,7 @@ src/domain/license_client_link.e
 src/domain/license_extra_info_tables.e
 src/domain/license_ip_info.e
 src/domain/license_ip_info_row.e
+src/domain/license_order_request.e
 src/domain/license_row.e
 src/domain/license_service_info.e
 src/domain/license_service_type.e
@@ -723,6 +707,7 @@ src/domain/mail_extra_info_table_row.e
 src/domain/mail_log.e
 src/domain/mail_log_entry.e
 src/domain/mail_order.e
+src/domain/mail_order_request.e
 src/domain/mail_row.e
 src/domain/mail_schema.e
 src/domain/mail_schema_extra_info_tables.e
@@ -735,15 +720,13 @@ src/domain/mail_stats_type_volume_ip.e
 src/domain/mail_stats_type_volume_to.e
 src/domain/mail_tutorials_table.e
 src/domain/mail_tutorials_table_row.e
-src/domain/memory_option.e
 src/domain/module_settings.e
 src/domain/modules.e
 src/domain/monthly_counts.e
-src/domain/operating_system.e
 src/domain/password_request.e
+src/domain/patch_billing_credit_card_verify_request.e
 src/domain/patch_oauth_two_factor_200_response.e
 src/domain/patch_oauth_two_factor_request.e
-src/domain/payment_invoice_rows.e
 src/domain/place_buy_now_server_request.e
 src/domain/place_scrub_order_201_response.e
 src/domain/place_scrub_order_201_response_order_details.e
@@ -754,6 +737,8 @@ src/domain/post_website_buy_ip_200_response.e
 src/domain/post_website_buy_ip_request.e
 src/domain/post_website_migration_200_response.e
 src/domain/post_website_migration_request.e
+src/domain/put_scrub_ips_200_response.e
+src/domain/qs_order_request.e
 src/domain/queue_response.e
 src/domain/quickserver.e
 src/domain/quickserver_addons.e
@@ -777,8 +762,6 @@ src/domain/quickserver_service_extra.e
 src/domain/quickserver_service_info.e
 src/domain/quickserver_service_master.e
 src/domain/quickservers_cancel_200_response.e
-src/domain/raid_option.e
-src/domain/region.e
 src/domain/reply_ticket_request.e
 src/domain/reply_ticket_response_schema.e
 src/domain/restore_request.e
@@ -798,6 +781,8 @@ src/domain/server.e
 src/domain/server_asset.e
 src/domain/server_assets.e
 src/domain/server_billing_details.e
+src/domain/server_bulk_ipmi_power_response.e
+src/domain/server_bulk_ipmi_power_response_results_inner.e
 src/domain/server_client_link.e
 src/domain/server_extra_info_tables.e
 src/domain/server_ipmi_live_info.e
@@ -820,7 +805,6 @@ src/domain/server_order_cpu_li.e
 src/domain/server_order_field_label.e
 src/domain/server_order_field_labels.e
 src/domain/server_order_form_values.e
-src/domain/server_order_get_response.e
 src/domain/server_order_ip.e
 src/domain/server_order_ips_li.e
 src/domain/server_order_memory.e
@@ -828,6 +812,8 @@ src/domain/server_order_memory_li.e
 src/domain/server_order_memory_li_254.e
 src/domain/server_order_os.e
 src/domain/server_order_os_li.e
+src/domain/server_order_post_request.e
+src/domain/server_order_post_request_hd.e
 src/domain/server_order_raid.e
 src/domain/server_row.e
 src/domain/server_service_info.e
@@ -845,6 +831,7 @@ src/domain/service_types.e
 src/domain/services.e
 src/domain/services_info.e
 src/domain/ssl_cancel_200_response.e
+src/domain/ssl_order_request.e
 src/domain/status_monthly_breakdown.e
 src/domain/success_text_response.e
 src/domain/template_request.e
@@ -903,7 +890,6 @@ src/domain/vps_service_master.e
 src/domain/vps_snapshot.e
 src/domain/vps_template_row.e
 src/domain/vps_templates_list.e
-src/domain/vps_traffic_data_data_response.e
 src/domain/vps_traffic_data_data_section_response.e
 src/domain/vps_traffic_data_data_section_response_inner.e
 src/domain/vps_traffic_data_section_response.e
@@ -924,6 +910,8 @@ src/domain/website_billing_details.e
 src/domain/website_client_link.e
 src/domain/website_extra_info_tables.e
 src/domain/website_login_response.e
+src/domain/website_order_post_request.e
+src/domain/website_order_put_request.e
 src/domain/website_row.e
 src/domain/website_service_info.e
 src/domain/website_service_master.e

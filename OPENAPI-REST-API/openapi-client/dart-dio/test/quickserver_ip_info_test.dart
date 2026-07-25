@@ -1,19 +1,19 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for QuickserverIpInfo
 void main() {
-  final instance = QuickserverIpInfoBuilder();
-  // TODO add properties to the builder and call build()
+  final QuickserverIpInfo? instance = /* QuickserverIpInfo(...) */ null;
+  // TODO add properties to the entity
 
   group(QuickserverIpInfo, () {
     // Table title
-    // String title
+    // Optional<String?> title
     test('to test the property `title`', () async {
       // TODO
     });
 
-    // BuiltList<QuickserverIpTableRow> rows
+    // Optional<List<QuickserverIpTableRow>?> rows
     test('to test the property `rows`', () async {
       // TODO
     });

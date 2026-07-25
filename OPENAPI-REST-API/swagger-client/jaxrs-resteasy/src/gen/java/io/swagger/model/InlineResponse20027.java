@@ -5,83 +5,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.model.InlineResponse20027Bandwidth;
-import io.swagger.model.InlineResponse20027Cp;
-import io.swagger.model.InlineResponse20027Ips;
-import io.swagger.model.InlineResponse20027Os;
-import io.swagger.model.InlineResponse20027Raid;
-import java.util.List;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
 public class InlineResponse20027   {
-  private List<InlineResponse20027Bandwidth> bandwidth = new ArrayList<InlineResponse20027Bandwidth>();  private List<InlineResponse20027Ips> ips = new ArrayList<InlineResponse20027Ips>();  private List<InlineResponse20027Os> os = new ArrayList<InlineResponse20027Os>();  private List<InlineResponse20027Cp> cp = new ArrayList<InlineResponse20027Cp>();  private List<InlineResponse20027Raid> raid = new ArrayList<InlineResponse20027Raid>();
+  private String message = null;  private Boolean success = null;
 
   /**
    **/
   
   @Schema(description = "")
-  @JsonProperty("bandwidth")
+  @JsonProperty("message")
   @NotNull
-  public List<InlineResponse20027Bandwidth> getBandwidth() {
-    return bandwidth;
+  public String getMessage() {
+    return message;
   }
-  public void setBandwidth(List<InlineResponse20027Bandwidth> bandwidth) {
-    this.bandwidth = bandwidth;
-  }
-
-  /**
-   **/
-  
-  @Schema(description = "")
-  @JsonProperty("ips")
-  @NotNull
-  public List<InlineResponse20027Ips> getIps() {
-    return ips;
-  }
-  public void setIps(List<InlineResponse20027Ips> ips) {
-    this.ips = ips;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
   /**
    **/
   
   @Schema(description = "")
-  @JsonProperty("os")
+  @JsonProperty("success")
   @NotNull
-  public List<InlineResponse20027Os> getOs() {
-    return os;
+  public Boolean isSuccess() {
+    return success;
   }
-  public void setOs(List<InlineResponse20027Os> os) {
-    this.os = os;
-  }
-
-  /**
-   **/
-  
-  @Schema(description = "")
-  @JsonProperty("cp")
-  @NotNull
-  public List<InlineResponse20027Cp> getCp() {
-    return cp;
-  }
-  public void setCp(List<InlineResponse20027Cp> cp) {
-    this.cp = cp;
-  }
-
-  /**
-   **/
-  
-  @Schema(description = "")
-  @JsonProperty("raid")
-  @NotNull
-  public List<InlineResponse20027Raid> getRaid() {
-    return raid;
-  }
-  public void setRaid(List<InlineResponse20027Raid> raid) {
-    this.raid = raid;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
 
@@ -94,16 +49,13 @@ public class InlineResponse20027   {
       return false;
     }
     InlineResponse20027 inlineResponse20027 = (InlineResponse20027) o;
-    return Objects.equals(bandwidth, inlineResponse20027.bandwidth) &&
-        Objects.equals(ips, inlineResponse20027.ips) &&
-        Objects.equals(os, inlineResponse20027.os) &&
-        Objects.equals(cp, inlineResponse20027.cp) &&
-        Objects.equals(raid, inlineResponse20027.raid);
+    return Objects.equals(message, inlineResponse20027.message) &&
+        Objects.equals(success, inlineResponse20027.success);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bandwidth, ips, os, cp, raid);
+    return Objects.hash(message, success);
   }
 
   @Override
@@ -111,11 +63,8 @@ public class InlineResponse20027   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20027 {\n");
     
-    sb.append("    bandwidth: ").append(toIndentedString(bandwidth)).append("\n");
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
-    sb.append("    os: ").append(toIndentedString(os)).append("\n");
-    sb.append("    cp: ").append(toIndentedString(cp)).append("\n");
-    sb.append("    raid: ").append(toIndentedString(raid)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }

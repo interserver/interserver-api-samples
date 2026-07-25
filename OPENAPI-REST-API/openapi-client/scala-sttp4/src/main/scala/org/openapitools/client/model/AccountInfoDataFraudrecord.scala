@@ -18,4 +18,3 @@ case class AccountInfoDataFraudrecord(
   reliability: Option[String] = None,
   code: Option[String] = None
 )
-

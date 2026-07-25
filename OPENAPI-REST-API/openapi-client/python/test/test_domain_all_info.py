@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_all_info import DomainAllInfo
+from interserver_api_client.models.domain_all_info import DomainAllInfo
 
 class TestDomainAllInfo(unittest.TestCase):
     """DomainAllInfo unit test stubs"""
@@ -37,9 +37,9 @@ class TestDomainAllInfo(unittest.TestCase):
         if include_optional:
             return DomainAllInfo(
                 ops_version = '',
-                attributes = openapi_client.models.domain_all_info_attributes.DomainAllInfo_attributes(
-                    contact_set = openapi_client.models.domain_all_info_attributes_contact_set.DomainAllInfo_attributes_contact_set(
-                        owner = openapi_client.models.domain_owner_contact.DomainOwnerContact(
+                attributes = interserver_api_client.models.domain_all_info_attributes.DomainAllInfo_attributes(
+                    contact_set = interserver_api_client.models.domain_all_info_attributes_contact_set.DomainAllInfo_attributes_contact_set(
+                        owner = interserver_api_client.models.domain_owner_contact.DomainOwnerContact(
                             postal_code = '', 
                             org_name = '', 
                             country = '', 
@@ -54,7 +54,7 @@ class TestDomainAllInfo(unittest.TestCase):
                             city = '', 
                             phone = '', 
                             address1 = '', ), 
-                        admin = openapi_client.models.domain_admin_contact.DomainAdminContact(
+                        admin = interserver_api_client.models.domain_admin_contact.DomainAdminContact(
                             status = '', 
                             state = '', 
                             org_name = '', 
@@ -69,7 +69,7 @@ class TestDomainAllInfo(unittest.TestCase):
                             phone = '', 
                             first_name = '', 
                             last_name = '', ), 
-                        tech = openapi_client.models.domain_tech_contact.DomainTechContact(
+                        tech = interserver_api_client.models.domain_tech_contact.DomainTechContact(
                             state = '', 
                             status = '', 
                             org_name = '', 
@@ -92,7 +92,7 @@ class TestDomainAllInfo(unittest.TestCase):
                     sponsoring_rsp = '', 
                     gdpr_consent_status = '', 
                     nameserver_list = [
-                        openapi_client.models.domain_name_server.DomainNameServer(
+                        interserver_api_client.models.domain_name_server.DomainNameServer(
                             sortorder = '', 
                             name = '', 
                             ipaddress = '', )

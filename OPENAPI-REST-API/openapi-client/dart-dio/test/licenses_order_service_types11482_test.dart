@@ -1,62 +1,62 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LicensesOrderServiceTypes11482
 void main() {
-  final instance = LicensesOrderServiceTypes11482Builder();
-  // TODO add properties to the builder and call build()
+  final LicensesOrderServiceTypes11482? instance = /* LicensesOrderServiceTypes11482(...) */ null;
+  // TODO add properties to the entity
 
   group(LicensesOrderServiceTypes11482, () {
     // Service ID
-    // String servicesId
+    // Optional<String?> servicesId
     test('to test the property `servicesId`', () async {
       // TODO
     });
 
     // Service Name
-    // String servicesName
+    // Optional<String?> servicesName
     test('to test the property `servicesName`', () async {
       // TODO
     });
 
     // Service Cost
-    // String servicesCost
+    // Optional<String?> servicesCost
     test('to test the property `servicesCost`', () async {
       // TODO
     });
 
     // Service Category
-    // String servicesCategory
+    // Optional<String?> servicesCategory
     test('to test the property `servicesCategory`', () async {
       // TODO
     });
 
     // Buyable flag for Service
-    // String servicesBuyable
+    // Optional<String?> servicesBuyable
     test('to test the property `servicesBuyable`', () async {
       // TODO
     });
 
     // Service Type
-    // String servicesType
+    // Optional<String?> servicesType
     test('to test the property `servicesType`', () async {
       // TODO
     });
 
     // Field 1 of Service
-    // String servicesField1
+    // Optional<String?> servicesField1
     test('to test the property `servicesField1`', () async {
       // TODO
     });
 
     // Field 2 of Service
-    // String servicesField2
+    // Optional<String?> servicesField2
     test('to test the property `servicesField2`', () async {
       // TODO
     });
 
     // Module of Service
-    // String servicesModule
+    // Optional<String?> servicesModule
     test('to test the property `servicesModule`', () async {
       // TODO
     });

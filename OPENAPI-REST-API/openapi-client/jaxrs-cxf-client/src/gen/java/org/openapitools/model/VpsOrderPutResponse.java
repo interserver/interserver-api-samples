@@ -108,7 +108,7 @@ public class VpsOrderPutResponse  {
    * @return _continue
   **/
   @JsonProperty("continue")
-  public Boolean getContinue() {
+  public Boolean isContinue() {
     return _continue;
   }
 

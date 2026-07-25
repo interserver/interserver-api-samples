@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerIpmiLiveRequest } from './api';
+import { ServerIpmiLiveRequest } from '@interserver/myadmin-client';
 
 const instance: ServerIpmiLiveRequest = {
     ip,

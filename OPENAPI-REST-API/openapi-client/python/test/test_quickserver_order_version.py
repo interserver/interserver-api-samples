@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_order_version import QuickserverOrderVersion
+from interserver_api_client.models.quickserver_order_version import QuickserverOrderVersion
 
 class TestQuickserverOrderVersion(unittest.TestCase):
     """QuickserverOrderVersion unit test stubs"""
@@ -36,7 +36,7 @@ class TestQuickserverOrderVersion(unittest.TestCase):
         model = QuickserverOrderVersion()
         if include_optional:
             return QuickserverOrderVersion(
-                centosstream_8 = openapi_client.models.quickserver_order_version_centosstream8.QuickserverOrderVersionCentosstream8()
+                centosstream_8 = interserver_api_client.models.quickserver_order_version_centosstream8.QuickserverOrderVersionCentosstream8()
             )
         else:
             return QuickserverOrderVersion(

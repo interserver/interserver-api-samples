@@ -13,4 +13,8 @@ Error response when a buy-it-now server order fails validation.
 |**errors** | **List&lt;String&gt;** | List of specific validation error messages. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

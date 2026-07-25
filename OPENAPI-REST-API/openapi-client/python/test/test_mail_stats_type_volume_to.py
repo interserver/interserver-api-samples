@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_stats_type_volume_to import MailStatsTypeVolumeTo
+from interserver_api_client.models.mail_stats_type_volume_to import MailStatsTypeVolumeTo
 
 class TestMailStatsTypeVolumeTo(unittest.TestCase):
     """MailStatsTypeVolumeTo unit test stubs"""

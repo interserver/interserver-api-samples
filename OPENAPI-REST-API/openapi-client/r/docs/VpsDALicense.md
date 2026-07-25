@@ -1,4 +1,4 @@
-# openapi::VpsDALicense
+# interserverapi::VpsDALicense
 
 A DirectAdmin license tier option.
 

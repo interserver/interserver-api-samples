@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_field_label import ServerOrderFieldLabel
+from interserver_api_client.models.server_order_field_label import ServerOrderFieldLabel
 
 class TestServerOrderFieldLabel(unittest.TestCase):
     """ServerOrderFieldLabel unit test stubs"""

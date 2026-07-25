@@ -1,4 +1,4 @@
-# InterServerManagementApi.HostnameObject
+# InterserverApiClient.HostnameObject
 
 ## Properties
 

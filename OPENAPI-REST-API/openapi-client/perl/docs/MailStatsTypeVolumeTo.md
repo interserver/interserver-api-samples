@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailStatsTypeVolumeTo
+# InterServerAPI::Object::MailStatsTypeVolumeTo
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailStatsTypeVolumeTo;
+use InterServerAPI::Object::MailStatsTypeVolumeTo;
 ```
 
 ## Properties

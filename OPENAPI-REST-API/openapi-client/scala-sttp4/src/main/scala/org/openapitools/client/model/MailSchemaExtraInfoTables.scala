@@ -19,4 +19,3 @@ case class MailSchemaExtraInfoTables(
   mail: Option[MailExtraInfoTable] = None,
   tutorials: Option[MailTutorialsTable] = None
 )
-

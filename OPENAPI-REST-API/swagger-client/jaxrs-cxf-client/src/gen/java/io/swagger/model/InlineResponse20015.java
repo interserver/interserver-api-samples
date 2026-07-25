@@ -18,7 +18,7 @@ public class InlineResponse20015   {
   @Schema(example = "true", required = true, description = "")
   private Boolean success = null;
   
-  @Schema(example = "Scrub is disabled on your IP.", required = true, description = "")
+  @Schema(example = "Scrub is enabled on your IP.", required = true, description = "")
   private String text = null;
  /**
    * Get success

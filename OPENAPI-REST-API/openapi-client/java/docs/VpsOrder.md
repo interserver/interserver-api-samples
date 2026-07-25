@@ -41,4 +41,8 @@ Pricing and configuration options for ordering a new VPS, including slice costs 
 |**currencySymbol** | **String** | Currency Symbol |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

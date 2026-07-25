@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.domain_all_info_attributes import DomainAllInfoAttributes  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.domain_all_info_attributes import DomainAllInfoAttributes  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestDomainAllInfoAttributes(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestDomainAllInfoAttributes(unittest.TestCase):
     def testDomainAllInfoAttributes(self):
         """Test DomainAllInfoAttributes"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.domain_all_info_attributes.DomainAllInfoAttributes()  # noqa: E501
+        # model = interserver_api_client.models.domain_all_info_attributes.DomainAllInfoAttributes()  # noqa: E501
         pass
 
 

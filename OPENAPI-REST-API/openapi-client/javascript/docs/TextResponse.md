@@ -1,4 +1,4 @@
-# InterServerManagementApi.TextResponse
+# InterserverApiClient.TextResponse
 
 ## Properties
 

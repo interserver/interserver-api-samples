@@ -98,7 +98,7 @@ ReverseDnsEntries <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`ips`)) {
-        self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "map(AnyType)", loadNamespace("openapi"))
+        self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "map(AnyType)", loadNamespace("interserverapi"))
       }
       self
     },
@@ -121,7 +121,7 @@ ReverseDnsEntries <- R6::R6Class(
     #' @return the instance of ReverseDnsEntries
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "map(AnyType)", loadNamespace("openapi"))
+      self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "map(AnyType)", loadNamespace("interserverapi"))
       self
     },
 

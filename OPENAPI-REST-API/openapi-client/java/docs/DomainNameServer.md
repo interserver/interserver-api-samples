@@ -13,4 +13,8 @@ A single registered nameserver entry with glue IPs.
 |**ipaddress** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

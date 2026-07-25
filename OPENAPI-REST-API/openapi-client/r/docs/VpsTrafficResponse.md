@@ -1,4 +1,4 @@
-# openapi::VpsTrafficResponse
+# interserverapi::VpsTrafficResponse
 
 VPS Traffic Information
 

@@ -16,4 +16,8 @@ Users services.
 |**backups** | [**HomeServicesBackups**](HomeServicesBackups.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailLog();
+    instance = new InterserverApiClient.MailLog();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('MailLog', function() {
     it('should create an instance of MailLog', function() {
       // uncomment below and update the code to test MailLog
-      //var instance = new InterServerManagementApi.MailLog();
-      //expect(instance).to.be.a(InterServerManagementApi.MailLog);
+      //var instance = new InterserverApiClient.MailLog();
+      //expect(instance).to.be.a(InterserverApiClient.MailLog);
     });
 
     it('should have the property total (base name: "total")', function() {
       // uncomment below and update the code to test the property total
-      //var instance = new InterServerManagementApi.MailLog();
+      //var instance = new InterserverApiClient.MailLog();
       //expect(instance).to.be();
     });
 
     it('should have the property skip (base name: "skip")', function() {
       // uncomment below and update the code to test the property skip
-      //var instance = new InterServerManagementApi.MailLog();
+      //var instance = new InterserverApiClient.MailLog();
       //expect(instance).to.be();
     });
 
     it('should have the property limit (base name: "limit")', function() {
       // uncomment below and update the code to test the property limit
-      //var instance = new InterServerManagementApi.MailLog();
+      //var instance = new InterserverApiClient.MailLog();
       //expect(instance).to.be();
     });
 
     it('should have the property emails (base name: "emails")', function() {
       // uncomment below and update the code to test the property emails
-      //var instance = new InterServerManagementApi.MailLog();
+      //var instance = new InterserverApiClient.MailLog();
       //expect(instance).to.be();
     });
 

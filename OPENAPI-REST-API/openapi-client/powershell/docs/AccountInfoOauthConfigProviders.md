@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoOauthConfigProviders = Initialize-PSOpenAPIToolsAccountInfoOauthConfigProviders 
+$AccountInfoOauthConfigProviders = Initialize-InterserverApiAccountInfoOauthConfigProviders 
 ```
 
 - Convert the resource to JSON

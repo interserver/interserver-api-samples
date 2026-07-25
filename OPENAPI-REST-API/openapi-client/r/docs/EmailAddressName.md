@@ -1,4 +1,4 @@
-# openapi::EmailAddressName
+# interserverapi::EmailAddressName
 
 An email contact.
 

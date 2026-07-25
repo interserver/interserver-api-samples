@@ -127,16 +127,16 @@ MailDelistResponse <- R6::R6Class(
         self$`id` <- this_object$`id`
       }
       if (!is.null(this_object$`local`)) {
-        self$`local` <- ApiClient$new()$deserializeObj(this_object$`local`, "array[object]", loadNamespace("openapi"))
+        self$`local` <- ApiClient$new()$deserializeObj(this_object$`local`, "array[object]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`mbtrap`)) {
-        self$`mbtrap` <- ApiClient$new()$deserializeObj(this_object$`mbtrap`, "array[object]", loadNamespace("openapi"))
+        self$`mbtrap` <- ApiClient$new()$deserializeObj(this_object$`mbtrap`, "array[object]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`subject`)) {
-        self$`subject` <- ApiClient$new()$deserializeObj(this_object$`subject`, "array[object]", loadNamespace("openapi"))
+        self$`subject` <- ApiClient$new()$deserializeObj(this_object$`subject`, "array[object]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`manual`)) {
-        self$`manual` <- ApiClient$new()$deserializeObj(this_object$`manual`, "array[object]", loadNamespace("openapi"))
+        self$`manual` <- ApiClient$new()$deserializeObj(this_object$`manual`, "array[object]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -160,10 +160,10 @@ MailDelistResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`id` <- this_object$`id`
-      self$`local` <- ApiClient$new()$deserializeObj(this_object$`local`, "array[object]", loadNamespace("openapi"))
-      self$`mbtrap` <- ApiClient$new()$deserializeObj(this_object$`mbtrap`, "array[object]", loadNamespace("openapi"))
-      self$`subject` <- ApiClient$new()$deserializeObj(this_object$`subject`, "array[object]", loadNamespace("openapi"))
-      self$`manual` <- ApiClient$new()$deserializeObj(this_object$`manual`, "array[object]", loadNamespace("openapi"))
+      self$`local` <- ApiClient$new()$deserializeObj(this_object$`local`, "array[object]", loadNamespace("interserverapi"))
+      self$`mbtrap` <- ApiClient$new()$deserializeObj(this_object$`mbtrap`, "array[object]", loadNamespace("interserverapi"))
+      self$`subject` <- ApiClient$new()$deserializeObj(this_object$`subject`, "array[object]", loadNamespace("interserverapi"))
+      self$`manual` <- ApiClient$new()$deserializeObj(this_object$`manual`, "array[object]", loadNamespace("interserverapi"))
       self
     },
 

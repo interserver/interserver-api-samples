@@ -1,4 +1,4 @@
-# SwaggerClient::IpLimitRange
+# InterserverApiClient::IpLimitRange
 
 ## Properties
 Name | Type | Description | Notes

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_stats_type import MailStatsType
+from interserver_api_client.models.mail_stats_type import MailStatsType
 
 class TestMailStatsType(unittest.TestCase):
     """MailStatsType unit test stubs"""
@@ -43,16 +43,16 @@ class TestMailStatsType(unittest.TestCase):
                 cost = 1.337,
                 received = 56,
                 sent = 56,
-                volume = openapi_client.models.mail_stats_type_volume.MailStatsType_volume(
-                    to = openapi_client.models.mail_stats_type_volume_to.MailStatsType_volume_to(
+                volume = interserver_api_client.models.mail_stats_type_volume.MailStatsType_volume(
+                    to = interserver_api_client.models.mail_stats_type_volume_to.MailStatsType_volume_to(
                         client@domain/com = 56, 
                         user@site/net = 56, 
                         sales@company/com = 56, 
                         client@anothersite/com = 56, ), 
-                    from = openapi_client.models.mail_stats_type_volume_from.MailStatsType_volume_from(
+                    from = interserver_api_client.models.mail_stats_type_volume_from.MailStatsType_volume_from(
                         billing@somedomain/com = 56, 
                         sales@somedomain/com = 56, ), 
-                    ip = openapi_client.models.mail_stats_type_volume_ip.MailStatsType_volume_ip(
+                    ip = interserver_api_client.models.mail_stats_type_volume_ip.MailStatsType_volume_ip(
                         1/1/1/1 = 56, 
                         2/2/2/2 = 56, 
                         3/3/3/3 = 56, 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_billing_details import DomainBillingDetails
+from interserver_api_client.models.domain_billing_details import DomainBillingDetails
 
 class TestDomainBillingDetails(unittest.TestCase):
     """DomainBillingDetails unit test stubs"""
@@ -44,13 +44,13 @@ class TestDomainBillingDetails(unittest.TestCase):
                 service_currency = '',
                 service_currency_symbol = '',
                 service_cost_info = '',
-                service_extra = openapi_client.models.domain_billing_extra.DomainBillingExtra(
-                    order = openapi_client.models.domain_order_response.DomainOrderResponse(
+                service_extra = interserver_api_client.models.domain_billing_extra.DomainBillingExtra(
+                    order = interserver_api_client.models.domain_order_response.DomainOrderResponse(
                         _ops_version = '', 
                         protocol = '', 
                         is_success = '', 
                         action = '', 
-                        attributes = openapi_client.models.domain_order_response_attributes.DomainOrderResponse_attributes(
+                        attributes = interserver_api_client.models.domain_order_response_attributes.DomainOrderResponse_attributes(
                             id = '', 
                             admin_email = '', ), 
                         response_text = '', 
@@ -58,7 +58,7 @@ class TestDomainBillingDetails(unittest.TestCase):
                         response_code = '', ), 
                     order_id = '', 
                     domain_id = '', 
-                    prov_process_pending = openapi_client.models.domain_prov_process_pending.DomainProvProcessPending(
+                    prov_process_pending = interserver_api_client.models.domain_prov_process_pending.DomainProvProcessPending(
                         _ops_version = '', 
                         response_text = '', 
                         protocol = '', 

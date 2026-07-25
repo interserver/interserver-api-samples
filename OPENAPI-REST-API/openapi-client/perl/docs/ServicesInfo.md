@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServicesInfo
+# InterServerAPI::Object::ServicesInfo
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServicesInfo;
+use InterServerAPI::Object::ServicesInfo;
 ```
 
 ## Properties

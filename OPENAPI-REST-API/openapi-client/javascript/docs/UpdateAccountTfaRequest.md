@@ -1,4 +1,4 @@
-# InterServerManagementApi.UpdateAccountTfaRequest
+# InterserverApiClient.UpdateAccountTfaRequest
 
 ## Properties
 

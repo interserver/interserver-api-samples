@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverBillingDetails
+# InterserverApiClient::QuickserverBillingDetails
 
 ## Properties
 Name | Type | Description | Notes

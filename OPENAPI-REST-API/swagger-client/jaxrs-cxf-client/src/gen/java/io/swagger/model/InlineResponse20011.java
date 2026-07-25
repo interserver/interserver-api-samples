@@ -15,14 +15,29 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse20011   {
   
-  @Schema(description = "")
-  private String text = null;
+  @Schema(required = true, description = "")
+  private Boolean success = null;
   
-  @Schema(description = "A pre-signed download URL valid for 24 hours.")
+  @Schema(required = true, description = "")
+  private String text = null;
  /**
-   * A pre-signed download URL valid for 24 hours.  
+   * Get success
+   * @return success
   **/
-  private String url = null;
+  @JsonProperty("success")
+  public Boolean isSuccess() {
+    return success;
+  }
+
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
+  public InlineResponse20011 success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+
  /**
    * Get text
    * @return text
@@ -41,32 +56,14 @@ public class InlineResponse20011   {
     return this;
   }
 
- /**
-   * A pre-signed download URL valid for 24 hours.
-   * @return url
-  **/
-  @JsonProperty("url")
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  public InlineResponse20011 url(String url) {
-    this.url = url;
-    return this;
-  }
-
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20011 {\n");
     
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

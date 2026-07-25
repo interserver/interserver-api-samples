@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.ssl_certificates_api import SSLCertificatesApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.ssl_certificates_api import SSLCertificatesApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestSSLCertificatesApi(unittest.TestCase):
@@ -31,63 +31,63 @@ class TestSSLCertificatesApi(unittest.TestCase):
     def test_add_ssl(self):
         """Test case for add_ssl
 
-        Place SSL Cert Order  # noqa: E501
+        Place a new SSL certificate order - creates invoice and queues issuance  # noqa: E501
         """
         pass
 
     def test_get_new_ssl(self):
         """Test case for get_new_ssl
 
-        SSL Cert Ordering Information  # noqa: E501
+        Get available SSL certificate packages and pricing for placing a new order  # noqa: E501
         """
         pass
 
     def test_get_ssl_info(self):
         """Test case for get_ssl_info
 
-        Get SSL Cert Info  # noqa: E501
+        Get full details for one SSL certificate by id - status, expiration, links  # noqa: E501
         """
         pass
 
     def test_get_ssl_invoices(self):
         """Test case for get_ssl_invoices
 
-        Get SSL Cert Invoices  # noqa: E501
+        List all billing invoices and charges tied to one SSL certificate by id  # noqa: E501
         """
         pass
 
     def test_get_ssl_list(self):
         """Test case for get_ssl_list
 
-        List SSL Certs  # noqa: E501
+        List all SSL certificates on the authenticated customer account with status and hostname  # noqa: E501
         """
         pass
 
     def test_get_ssl_welcome_email(self):
         """Test case for get_ssl_welcome_email
 
-        Resend SSL Welcome Email  # noqa: E501
+        Resend the SSL welcome email with cert credentials and install instructions  # noqa: E501
         """
         pass
 
     def test_put_ssl(self):
         """Test case for put_ssl
 
-        Validate SSL Cert Order  # noqa: E501
+        Validate an SSL certificate order without charging - dry-run before addSsl  # noqa: E501
         """
         pass
 
     def test_ssl_cancel(self):
         """Test case for ssl_cancel
 
-        Cancel SSL Certificate Service  # noqa: E501
+        Cancel an SSL certificate service - stops renewals at end of billing cycle  # noqa: E501
         """
         pass
 
     def test_update_ssl_info(self):
         """Test case for update_ssl_info
 
-        Update SSL Cert Order  # noqa: E501
+        Update mutable settings on an existing SSL certificate order by id  # noqa: E501
         """
         pass
 

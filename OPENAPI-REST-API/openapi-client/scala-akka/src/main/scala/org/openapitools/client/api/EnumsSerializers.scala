@@ -25,10 +25,13 @@ object EnumsSerializers {
     new EnumNameSerializer(DenyRuleNewEnums.`Type`) :+
     new EnumNameSerializer(DenyRuleRecordEnums.`Type`) :+
     new EnumNameSerializer(DomainNameserverGetResponseInnerEnums.CanDelete) :+
+    new EnumNameSerializer(DomainOrderRequestEnums.`Type`) :+
+    new EnumNameSerializer(DomainOrderRequestEnums.WhoisPrivacy) :+
     new EnumNameSerializer(GetScrubIpDetails200ResponseServiceInfoEnums.ScrubIpStatus) :+
     new EnumNameSerializer(InitiatePayment200ResponseEnums.`Type`) :+
     new EnumNameSerializer(MailStatsTypeEnums.Time) :+
     new EnumNameSerializer(ServerIpmiPowerRequestEnums.Action) :+
+    new EnumNameSerializer(SslOrderRequestEnums.CsrType) :+
     new EnumNameSerializer(TicketCustomFieldDetailsEnums.CustomerServerAccess) :+
     new EnumNameSerializer(TicketPostDetailsInnerEnums.Creator) :+
     new EnumNameSerializer(UpdateTicketEnums.CustomerServerAccess) :+

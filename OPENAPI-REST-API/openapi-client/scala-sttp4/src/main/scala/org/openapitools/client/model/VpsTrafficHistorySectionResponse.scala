@@ -21,4 +21,3 @@ case class VpsTrafficHistorySectionResponse(
   data: Seq[VpsTrafficHistorySectionDataResponse],
   times: Seq[OffsetDateTime]
 )
-

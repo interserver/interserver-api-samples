@@ -1,103 +1,103 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for Domain
 void main() {
-  final instance = DomainBuilder();
-  // TODO add properties to the builder and call build()
+  final Domain? instance = /* Domain(...) */ null;
+  // TODO add properties to the entity
 
   group(Domain, () {
-    // DomainServiceInfo serviceInfo
+    // Optional<DomainServiceInfo?> serviceInfo
     test('to test the property `serviceInfo`', () async {
       // TODO
     });
 
-    // BuiltMap<String, DomainServiceType> serviceTypes
+    // Optional<Map<String, DomainServiceType>?> serviceTypes
     test('to test the property `serviceTypes`', () async {
       // TODO
     });
 
-    // BuiltList<DomainClientLink> clientLinks
+    // Optional<List<DomainClientLink>?> clientLinks
     test('to test the property `clientLinks`', () async {
       // TODO
     });
 
-    // DomainBillingDetails billingDetails
+    // Optional<DomainBillingDetails?> billingDetails
     test('to test the property `billingDetails`', () async {
       // TODO
     });
 
-    // String custCurrency
+    // Optional<String?> custCurrency
     test('to test the property `custCurrency`', () async {
       // TODO
     });
 
-    // String custCurrencySymbol
+    // Optional<String?> custCurrencySymbol
     test('to test the property `custCurrencySymbol`', () async {
       // TODO
     });
 
-    // DomainBillingExtra serviceExtra
+    // Optional<DomainBillingExtra?> serviceExtra
     test('to test the property `serviceExtra`', () async {
       // TODO
     });
 
-    // BackupExtraInfoTables extraInfoTables
+    // Optional<BackupExtraInfoTables?> extraInfoTables
     test('to test the property `extraInfoTables`', () async {
       // TODO
     });
 
-    // DomainServiceType serviceType
+    // Optional<DomainServiceType?> serviceType
     test('to test the property `serviceType`', () async {
       // TODO
     });
 
-    // DomainContactDetails contactDetails
+    // Optional<DomainContactDetails?> contactDetails
     test('to test the property `contactDetails`', () async {
       // TODO
     });
 
-    // String pwarning
+    // Optional<String?> pwarning
     test('to test the property `pwarning`', () async {
       // TODO
     });
 
-    // String transferInfo
+    // Optional<String?> transferInfo
     test('to test the property `transferInfo`', () async {
       // TODO
     });
 
-    // bool errors
+    // Optional<bool?> errors
     test('to test the property `errors`', () async {
       // TODO
     });
 
-    // BuiltList<String> domainLogs
+    // Optional<List<String>?> domainLogs
     test('to test the property `domainLogs`', () async {
       // TODO
     });
 
-    // DomainAllInfo allInfo
+    // Optional<DomainAllInfo?> allInfo
     test('to test the property `allInfo`', () async {
       // TODO
     });
 
-    // String registrarStatus
+    // Optional<String?> registrarStatus
     test('to test the property `registrarStatus`', () async {
       // TODO
     });
 
-    // String locked
+    // Optional<String?> locked
     test('to test the property `locked`', () async {
       // TODO
     });
 
-    // String whoisPrivacy
+    // Optional<String?> whoisPrivacy
     test('to test the property `whoisPrivacy`', () async {
       // TODO
     });
 
-    // String autoRenew
+    // Optional<String?> autoRenew
     test('to test the property `autoRenew`', () async {
       // TODO
     });

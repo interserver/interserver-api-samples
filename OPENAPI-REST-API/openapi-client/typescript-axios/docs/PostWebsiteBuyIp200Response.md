@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PostWebsiteBuyIp200Response } from './api';
+import { PostWebsiteBuyIp200Response } from '@interserver/myadmin-client';
 
 const instance: PostWebsiteBuyIp200Response = {
     message,

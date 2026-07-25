@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for HomeDetails
 void main() {
-  final instance = HomeDetailsBuilder();
-  // TODO add properties to the builder and call build()
+  final HomeDetails? instance = /* HomeDetails(...) */ null;
+  // TODO add properties to the entity
 
   group(HomeDetails, () {
-    // HomeDetailsModules modules
+    // Optional<HomeDetailsModules?> modules
     test('to test the property `modules`', () async {
       // TODO
     });

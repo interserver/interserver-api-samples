@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailRow } from './api';
+import { MailRow } from '@interserver/myadmin-client';
 
 const instance: MailRow = {
     mail_id,

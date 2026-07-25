@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailStatsTypeVolumeTo = Initialize-PSOpenAPIToolsMailStatsTypeVolumeTo  -ClientdomainCom null `
+$MailStatsTypeVolumeTo = Initialize-InterserverApiMailStatsTypeVolumeTo  -ClientdomainCom null `
  -UsersiteNet null `
  -SalescompanyCom null `
  -ClientanothersiteCom null

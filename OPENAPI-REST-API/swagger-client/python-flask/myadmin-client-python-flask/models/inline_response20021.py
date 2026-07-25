@@ -14,25 +14,30 @@ class InlineResponse20021(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, success: bool=None, text: str=None):  # noqa: E501
+    def __init__(self, text: str=None, invoice: int=None, order: int=None):  # noqa: E501
         """InlineResponse20021 - a model defined in Swagger
 
-        :param success: The success of this InlineResponse20021.  # noqa: E501
-        :type success: bool
         :param text: The text of this InlineResponse20021.  # noqa: E501
         :type text: str
+        :param invoice: The invoice of this InlineResponse20021.  # noqa: E501
+        :type invoice: int
+        :param order: The order of this InlineResponse20021.  # noqa: E501
+        :type order: int
         """
         self.swagger_types = {
-            'success': bool,
-            'text': str
+            'text': str,
+            'invoice': int,
+            'order': int
         }
 
         self.attribute_map = {
-            'success': 'success',
-            'text': 'text'
+            'text': 'text',
+            'invoice': 'invoice',
+            'order': 'order'
         }
-        self._success = success
         self._text = text
+        self._invoice = invoice
+        self._order = order
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20021':
@@ -46,32 +51,10 @@ class InlineResponse20021(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def success(self) -> bool:
-        """Gets the success of this InlineResponse20021.
-
-
-        :return: The success of this InlineResponse20021.
-        :rtype: bool
-        """
-        return self._success
-
-    @success.setter
-    def success(self, success: bool):
-        """Sets the success of this InlineResponse20021.
-
-
-        :param success: The success of this InlineResponse20021.
-        :type success: bool
-        """
-        if success is None:
-            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
-
-        self._success = success
-
-    @property
     def text(self) -> str:
         """Gets the text of this InlineResponse20021.
 
+        Status message.  # noqa: E501
 
         :return: The text of this InlineResponse20021.
         :rtype: str
@@ -82,11 +65,56 @@ class InlineResponse20021(Model):
     def text(self, text: str):
         """Sets the text of this InlineResponse20021.
 
+        Status message.  # noqa: E501
 
         :param text: The text of this InlineResponse20021.
         :type text: str
         """
-        if text is None:
-            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
 
         self._text = text
+
+    @property
+    def invoice(self) -> int:
+        """Gets the invoice of this InlineResponse20021.
+
+        Invoice ID for payment.  # noqa: E501
+
+        :return: The invoice of this InlineResponse20021.
+        :rtype: int
+        """
+        return self._invoice
+
+    @invoice.setter
+    def invoice(self, invoice: int):
+        """Sets the invoice of this InlineResponse20021.
+
+        Invoice ID for payment.  # noqa: E501
+
+        :param invoice: The invoice of this InlineResponse20021.
+        :type invoice: int
+        """
+
+        self._invoice = invoice
+
+    @property
+    def order(self) -> int:
+        """Gets the order of this InlineResponse20021.
+
+        Server order ID.  # noqa: E501
+
+        :return: The order of this InlineResponse20021.
+        :rtype: int
+        """
+        return self._order
+
+    @order.setter
+    def order(self, order: int):
+        """Sets the order of this InlineResponse20021.
+
+        Server order ID.  # noqa: E501
+
+        :param order: The order of this InlineResponse20021.
+        :type order: int
+        """
+
+        self._order = order

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::VpsPlesk12Data');
+use_ok('InterServerAPI::Object::VpsPlesk12Data');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::VpsPlesk12Data->new();
+#my $instance = InterServerAPI::Object::VpsPlesk12Data->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::VpsPlesk12Data');
+#isa_ok($instance, 'InterServerAPI::Object::VpsPlesk12Data');
 
 
 done_testing();

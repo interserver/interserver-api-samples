@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::GetScrubIpDetails200ResponseClientLinksInner');
+use_ok('InterServerAPI::Object::GetScrubIpDetails200ResponseClientLinksInner');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::GetScrubIpDetails200ResponseClientLinksInner->new();
+#my $instance = InterServerAPI::Object::GetScrubIpDetails200ResponseClientLinksInner->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::GetScrubIpDetails200ResponseClientLinksInner');
+#isa_ok($instance, 'InterServerAPI::Object::GetScrubIpDetails200ResponseClientLinksInner');
 
 
 done_testing();

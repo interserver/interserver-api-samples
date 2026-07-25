@@ -4,40 +4,41 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddMail**](MailAPI.md#AddMail) | **Post** /mail/order | Place Mail Order
-[**AddRule**](MailAPI.md#AddRule) | **Post** /mail/{id}/rules | Create Deny Rule
-[**CreateMailAlert**](MailAPI.md#CreateMailAlert) | **Post** /mail/{id}/alerts | Create Mail Alert
-[**DeleteMailAlert**](MailAPI.md#DeleteMailAlert) | **Delete** /mail/{id}/alerts | Delete Mail Alert
-[**DeleteRule**](MailAPI.md#DeleteRule) | **Delete** /mail/{id}/rules/{rule} | Delete Deny Rule
-[**DelistBlock**](MailAPI.md#DelistBlock) | **Post** /mail/{id}/blocks/delete | Remove Email Address from Block List
-[**GetMailAlerts**](MailAPI.md#GetMailAlerts) | **Get** /mail/{id}/alerts | List Mail Alerts
-[**GetMailBlocks**](MailAPI.md#GetMailBlocks) | **Get** /mail/{id}/blocks | List Blocked Email Addresses
-[**GetMailDelist**](MailAPI.md#GetMailDelist) | **Get** /mail/{id}/delist | Get Delist Status
-[**GetMailDeliverability**](MailAPI.md#GetMailDeliverability) | **Get** /mail/{id}/deliverability | Get Deliverability Metrics
-[**GetMailInfo**](MailAPI.md#GetMailInfo) | **Get** /mail/{id} | Get Mail Order
-[**GetMailInvoices**](MailAPI.md#GetMailInvoices) | **Get** /mail/{id}/invoices | Get Mail Invoices
-[**GetMailList**](MailAPI.md#GetMailList) | **Get** /mail | List Mail Orders
-[**GetMailWelcomeEmail**](MailAPI.md#GetMailWelcomeEmail) | **Get** /mail/{id}/welcome_email | Resend Mail Welcome Email
-[**GetNewMail**](MailAPI.md#GetNewMail) | **Get** /mail/order | Get Mail Ordering Information
-[**GetRules**](MailAPI.md#GetRules) | **Get** /mail/{id}/rules | List Deny Rules
-[**GetStats**](MailAPI.md#GetStats) | **Get** /mail/{id}/stats | Get Mail Usage Statistics
-[**MailCancel**](MailAPI.md#MailCancel) | **Delete** /mail/{id} | Cancel Mail
-[**PostMailDelist**](MailAPI.md#PostMailDelist) | **Post** /mail/{id}/delist | Delist a Blocked Sender
-[**PutMail**](MailAPI.md#PutMail) | **Put** /mail/order | Validate Mail Order
-[**ResetMailPassword**](MailAPI.md#ResetMailPassword) | **Get** /mail/{id}/reset_password | Reset Mail Password
-[**SendAdvMail**](MailAPI.md#SendAdvMail) | **Post** /mail/{id}/advsend | Send Email with Advanced Options
-[**SendMail**](MailAPI.md#SendMail) | **Post** /mail/{id}/send | Send Email
-[**UpdateMailAlert**](MailAPI.md#UpdateMailAlert) | **Put** /mail/{id}/alerts | Update Mail Alert
-[**UpdateMailInfo**](MailAPI.md#UpdateMailInfo) | **Post** /mail/{id} | Update Mail Order
-[**ViewMailLog**](MailAPI.md#ViewMailLog) | **Get** /mail/{id}/log | View Mail Log
+[**AddMail**](MailAPI.md#AddMail) | **Post** /mail/order | Place a new Mail Baby order, generate invoice, and queue provisioning
+[**AddRule**](MailAPI.md#AddRule) | **Post** /mail/{id}/rules | Create a new deny rule to auto-block matching submissions
+[**CreateMailAlert**](MailAPI.md#CreateMailAlert) | **Post** /mail/{id}/alerts | Create a new Mail Baby alert for delivery, bounce, or quota events
+[**DeleteMailAlert**](MailAPI.md#DeleteMailAlert) | **Delete** /mail/{id}/alerts | Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+[**DeleteRule**](MailAPI.md#DeleteRule) | **Delete** /mail/{id}/rules/{rule} | Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
+[**DelistBlock**](MailAPI.md#DelistBlock) | **Post** /mail/{id}/blocks/delete | Delist a sender email from rspamd / mailchannels / mailbaby block lists
+[**GetMailAlerts**](MailAPI.md#GetMailAlerts) | **Get** /mail/{id}/alerts | List configured delivery/bounce/quota alerts for one Mail Baby service
+[**GetMailBlocks**](MailAPI.md#GetMailBlocks) | **Get** /mail/{id}/blocks | List recent local-blocklist hits and spam-trap captures for the mail user
+[**GetMailDelist**](MailAPI.md#GetMailDelist) | **Get** /mail/{id}/delist | Read blocklist diagnostics and find senders eligible for delisting
+[**GetMailDeliverability**](MailAPI.md#GetMailDeliverability) | **Get** /mail/{id}/deliverability | Read delivered vs bounced totals broken down by sender (or by recipient domain)
+[**GetMailInfo**](MailAPI.md#GetMailInfo) | **Get** /mail/{id} | Read full detail for one Mail Baby service including SMTP credentials
+[**GetMailInvoices**](MailAPI.md#GetMailInvoices) | **Get** /mail/{id}/invoices | List billing invoices linked to this Mail Baby service
+[**GetMailList**](MailAPI.md#GetMailList) | **Get** /mail | List every Mail Baby SMTP relay service on the account
+[**GetMailWelcomeEmail**](MailAPI.md#GetMailWelcomeEmail) | **Get** /mail/{id}/welcome_email | Resend the Mail Baby welcome email with SMTP credentials and setup info
+[**GetNewMail**](MailAPI.md#GetNewMail) | **Get** /mail/order | Read the Mail Baby order catalog — plans, package costs, service-type metadata
+[**GetRules**](MailAPI.md#GetRules) | **Get** /mail/{id}/rules | List configured deny rules (sender/recipient blocks) for a Mail Baby service
+[**GetStats**](MailAPI.md#GetStats) | **Get** /mail/{id}/stats | Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
+[**MailCancel**](MailAPI.md#MailCancel) | **Delete** /mail/{id} | Cancel a Mail Baby service and stop the recurring invoice
+[**PostMailDelist**](MailAPI.md#PostMailDelist) | **Post** /mail/{id}/delist | Delist a sender from rspamd / mailchannels / mailbaby block lists
+[**PutMail**](MailAPI.md#PutMail) | **Put** /mail/order | Validate Mail Baby order, quote pricing, and verify coupon — no charge
+[**ResetMailPassword**](MailAPI.md#ResetMailPassword) | **Get** /mail/{id}/reset_password | Rotate the SMTP password and email the new credential to the account owner
+[**SendAdvMail**](MailAPI.md#SendAdvMail) | **Post** /mail/{id}/advsend | Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
+[**SendMail**](MailAPI.md#SendMail) | **Post** /mail/{id}/send | Send a simple single-recipient email through the Mail Baby SMTP relay
+[**UpdateMailAlert**](MailAPI.md#UpdateMailAlert) | **Put** /mail/{id}/alerts | Update an existing Mail Baby alert by alert_id
+[**UpdateMailInfo**](MailAPI.md#UpdateMailInfo) | **Post** /mail/{id} | POST mutation hook for the Mail Baby service detail page
+[**UpdateRule**](MailAPI.md#UpdateRule) | **Put** /mail/{id}/rules/{rule} | Update an existing Mail Baby deny rule&#39;s type and match data
+[**ViewMailLog**](MailAPI.md#ViewMailLog) | **Get** /mail/{id}/log | Search and paginate per-message Mail Baby delivery log entries
 
 
 
 ## AddMail
 
-> ServiceOrderPostResponse AddMail(ctx).Execute()
+> ServiceOrderPostResponse AddMail(ctx).MailOrderRequest(mailOrderRequest).Execute()
 
-Place Mail Order
+Place a new Mail Baby order, generate invoice, and queue provisioning
 
 
 
@@ -54,10 +55,11 @@ import (
 )
 
 func main() {
+	mailOrderRequest := *openapiclient.NewMailOrderRequest(int32(123)) // MailOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MailAPI.AddMail(context.Background()).Execute()
+	resp, r, err := apiClient.MailAPI.AddMail(context.Background()).MailOrderRequest(mailOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MailAPI.AddMail``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -69,12 +71,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAddMailRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mailOrderRequest** | [**MailOrderRequest**](MailOrderRequest.md) |  | 
 
 ### Return type
 
@@ -86,7 +92,7 @@ Other parameters are passed through a pointer to a apiAddMailRequest struct via 
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -98,7 +104,7 @@ Other parameters are passed through a pointer to a apiAddMailRequest struct via 
 
 > GenericResponse AddRule(ctx, id).DenyRuleNew(denyRuleNew).Execute()
 
-Create Deny Rule
+Create a new deny rule to auto-block matching submissions
 
 
 
@@ -170,7 +176,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse CreateMailAlert(ctx, id).MailAlertRequest(mailAlertRequest).Execute()
 
-Create Mail Alert
+Create a new Mail Baby alert for delivery, bounce, or quota events
 
 
 
@@ -240,9 +246,9 @@ Name | Type | Description  | Notes
 
 ## DeleteMailAlert
 
-> SuccessTextResponse DeleteMailAlert(ctx, id).AlertId(alertId).Execute()
+> SuccessTextResponse DeleteMailAlert(ctx, id).DeleteMailAlertRequest(deleteMailAlertRequest).Execute()
 
-Delete Mail Alert
+Delete a Mail Baby alert by alert_id (hard delete — no recovery)
 
 
 
@@ -260,11 +266,11 @@ import (
 
 func main() {
 	id := int32(56) // int32 | The mail service ID. Use `mail_id` from `GET /mail`.
-	alertId := int32(56) // int32 | Alert ID to delete.
+	deleteMailAlertRequest := *openapiclient.NewDeleteMailAlertRequest(int32(123)) // DeleteMailAlertRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MailAPI.DeleteMailAlert(context.Background(), id).AlertId(alertId).Execute()
+	resp, r, err := apiClient.MailAPI.DeleteMailAlert(context.Background(), id).DeleteMailAlertRequest(deleteMailAlertRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MailAPI.DeleteMailAlert``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -290,7 +296,7 @@ Other parameters are passed through a pointer to a apiDeleteMailAlertRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **alertId** | **int32** | Alert ID to delete. | 
+ **deleteMailAlertRequest** | [**DeleteMailAlertRequest**](DeleteMailAlertRequest.md) |  | 
 
 ### Return type
 
@@ -302,7 +308,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json, multipart/form-data
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -314,7 +320,7 @@ Name | Type | Description  | Notes
 
 > GenericResponse DeleteRule(ctx, id, rule).Execute()
 
-Delete Deny Rule
+Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
 
 
 
@@ -387,7 +393,7 @@ Name | Type | Description  | Notes
 
 > GenericResponse DelistBlock(ctx, id).Email(email).Execute()
 
-Remove Email Address from Block List
+Delist a sender email from rspamd / mailchannels / mailbaby block lists
 
 
 
@@ -459,7 +465,7 @@ Name | Type | Description  | Notes
 
 > MailAlertsResponse GetMailAlerts(ctx, id).Execute()
 
-List Mail Alerts
+List configured delivery/bounce/quota alerts for one Mail Baby service
 
 
 
@@ -529,7 +535,7 @@ Name | Type | Description  | Notes
 
 > MailBlocks GetMailBlocks(ctx, id).Execute()
 
-List Blocked Email Addresses
+List recent local-blocklist hits and spam-trap captures for the mail user
 
 
 
@@ -599,7 +605,7 @@ Name | Type | Description  | Notes
 
 > MailDelistResponse GetMailDelist(ctx, id).Execute()
 
-Get Delist Status
+Read blocklist diagnostics and find senders eligible for delisting
 
 
 
@@ -669,7 +675,7 @@ Name | Type | Description  | Notes
 
 > MailDeliverabilityResponse GetMailDeliverability(ctx, id).Execute()
 
-Get Deliverability Metrics
+Read delivered vs bounced totals broken down by sender (or by recipient domain)
 
 
 
@@ -739,7 +745,7 @@ Name | Type | Description  | Notes
 
 > MailSchema GetMailInfo(ctx, id).Execute()
 
-Get Mail Order
+Read full detail for one Mail Baby service including SMTP credentials
 
 
 
@@ -809,7 +815,7 @@ Name | Type | Description  | Notes
 
 > ChargeInvoiceRows GetMailInvoices(ctx, id).Execute()
 
-Get Mail Invoices
+List billing invoices linked to this Mail Baby service
 
 
 
@@ -879,7 +885,7 @@ Name | Type | Description  | Notes
 
 > []MailRow GetMailList(ctx).Execute()
 
-List Mail Orders
+List every Mail Baby SMTP relay service on the account
 
 
 
@@ -940,7 +946,7 @@ Other parameters are passed through a pointer to a apiGetMailListRequest struct 
 
 > SuccessTextResponse GetMailWelcomeEmail(ctx, id).Execute()
 
-Resend Mail Welcome Email
+Resend the Mail Baby welcome email with SMTP credentials and setup info
 
 
 
@@ -1010,7 +1016,7 @@ Name | Type | Description  | Notes
 
 > MailOrder GetNewMail(ctx).Execute()
 
-Get Mail Ordering Information
+Read the Mail Baby order catalog — plans, package costs, service-type metadata
 
 
 
@@ -1071,7 +1077,7 @@ Other parameters are passed through a pointer to a apiGetNewMailRequest struct v
 
 > []DenyRuleRecord GetRules(ctx, id).Execute()
 
-List Deny Rules
+List configured deny rules (sender/recipient blocks) for a Mail Baby service
 
 
 
@@ -1141,7 +1147,7 @@ Name | Type | Description  | Notes
 
 > MailStatsType GetStats(ctx, id).Time(time).Execute()
 
-Get Mail Usage Statistics
+Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
 
 
 
@@ -1213,7 +1219,7 @@ Name | Type | Description  | Notes
 
 > MailCancel200Response MailCancel(ctx, id).Execute()
 
-Cancel Mail
+Cancel a Mail Baby service and stop the recurring invoice
 
 
 
@@ -1283,7 +1289,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse PostMailDelist(ctx, id).MailDelistRequest(mailDelistRequest).Execute()
 
-Delist a Blocked Sender
+Delist a sender from rspamd / mailchannels / mailbaby block lists
 
 
 
@@ -1353,9 +1359,9 @@ Name | Type | Description  | Notes
 
 ## PutMail
 
-> PutMail(ctx).Execute()
+> PutMail(ctx).MailOrderRequest(mailOrderRequest).Execute()
 
-Validate Mail Order
+Validate Mail Baby order, quote pricing, and verify coupon — no charge
 
 
 
@@ -1372,10 +1378,11 @@ import (
 )
 
 func main() {
+	mailOrderRequest := *openapiclient.NewMailOrderRequest(int32(123)) // MailOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.MailAPI.PutMail(context.Background()).Execute()
+	r, err := apiClient.MailAPI.PutMail(context.Background()).MailOrderRequest(mailOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MailAPI.PutMail``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -1385,12 +1392,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPutMailRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mailOrderRequest** | [**MailOrderRequest**](MailOrderRequest.md) |  | 
 
 ### Return type
 
@@ -1402,7 +1413,7 @@ Other parameters are passed through a pointer to a apiPutMailRequest struct via 
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1414,7 +1425,7 @@ Other parameters are passed through a pointer to a apiPutMailRequest struct via 
 
 > SuccessTextResponse ResetMailPassword(ctx, id).Execute()
 
-Reset Mail Password
+Rotate the SMTP password and email the new credential to the account owner
 
 
 
@@ -1484,7 +1495,7 @@ Name | Type | Description  | Notes
 
 > GenericResponse SendAdvMail(ctx, id).SendMailAdv(sendMailAdv).Execute()
 
-Send Email with Advanced Options
+Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
 
 
 
@@ -1556,7 +1567,7 @@ Name | Type | Description  | Notes
 
 > GenericResponse SendMail(ctx, id).SendMail(sendMail).Execute()
 
-Send Email
+Send a simple single-recipient email through the Mail Baby SMTP relay
 
 
 
@@ -1628,7 +1639,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateMailAlert(ctx, id).MailAlertUpdateRequest(mailAlertUpdateRequest).Execute()
 
-Update Mail Alert
+Update an existing Mail Baby alert by alert_id
 
 
 
@@ -1700,7 +1711,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateMailInfo(ctx, id).Execute()
 
-Update Mail Order
+POST mutation hook for the Mail Baby service detail page
 
 
 
@@ -1766,11 +1777,86 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## UpdateRule
+
+> GenericResponse UpdateRule(ctx, id, rule).DenyRuleNew(denyRuleNew).Execute()
+
+Update an existing Mail Baby deny rule's type and match data
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | The mail service ID. Use `mail_id` from `GET /mail`.
+	rule := "rule_example" // string | The ID of the deny rule to update.
+	denyRuleNew := *openapiclient.NewDenyRuleNew("email", "domeinwo@server.guesshost.net") // DenyRuleNew | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MailAPI.UpdateRule(context.Background(), id, rule).DenyRuleNew(denyRuleNew).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MailAPI.UpdateRule``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateRule`: GenericResponse
+	fmt.Fprintf(os.Stdout, "Response from `MailAPI.UpdateRule`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | The mail service ID. Use &#x60;mail_id&#x60; from &#x60;GET /mail&#x60;. | 
+**rule** | **string** | The ID of the deny rule to update. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateRuleRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **denyRuleNew** | [**DenyRuleNew**](DenyRuleNew.md) |  | 
+
+### Return type
+
+[**GenericResponse**](GenericResponse.md)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ViewMailLog
 
 > MailLog ViewMailLog(ctx, id).Id2(id2).Origin(origin).Mx(mx).From(from).To(to).Subject(subject).Mailid(mailid).MessageId(messageId).Replyto(replyto).Headerfrom(headerfrom).Delivered(delivered).Skip(skip).Limit(limit).StartDate(startDate).EndDate(endDate).Sort(sort).Dir(dir).Groupby(groupby).Execute()
 
-View Mail Log
+Search and paginate per-message Mail Baby delivery log entries
 
 
 

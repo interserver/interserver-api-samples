@@ -1,4 +1,4 @@
-# openapi::DomainAllInfoAttributesContactSet
+# interserverapi::DomainAllInfoAttributesContactSet
 
 
 ## Properties

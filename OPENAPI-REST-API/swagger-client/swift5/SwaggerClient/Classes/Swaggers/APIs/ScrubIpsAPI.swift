@@ -11,12 +11,12 @@ import Alamofire
 
 open class ScrubIpsAPI {
     /**
-     Cancel Scrub IP Service
+     Cancel a Scrub IP service and stop its recurring DDoS billing
 
      - parameter _id: (path) ScrubIp ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func cancelScrubIp(_id: Int, completion: @escaping ((_ data: InlineResponse20013?,_ error: Error?) -> Void)) {
+    open class func cancelScrubIp(_id: Int, completion: @escaping ((_ data: InlineResponse20014?,_ error: Error?) -> Void)) {
         cancelScrubIpWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -24,7 +24,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Cancel Scrub IP Service
+     Cancel a Scrub IP service and stop its recurring DDoS billing
      - DELETE /scrub_ips/{id}
 
      - API Key:
@@ -42,9 +42,9 @@ open class ScrubIpsAPI {
 }}]
      - parameter _id: (path) ScrubIp ID number 
 
-     - returns: RequestBuilder<InlineResponse20013> 
+     - returns: RequestBuilder<InlineResponse20014> 
      */
-    open class func cancelScrubIpWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20013> {
+    open class func cancelScrubIpWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20014> {
         var path = "/scrub_ips/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -54,12 +54,12 @@ open class ScrubIpsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20013>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20014>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Create Traffic Filter
+     Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
 
      - parameter body: (body)  
      - parameter _id: (path) ScrubIp ID number 
@@ -73,7 +73,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Create Traffic Filter
+     Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
      - POST /scrub_ips/{id}/create_filter
 
      - API Key:
@@ -109,7 +109,7 @@ open class ScrubIpsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Create Geo Firewall Rule
+     Add a geographic firewall rule (block/allow by country code or ASN)
 
      - parameter body: (body)  
      - parameter _id: (path) ScrubIp ID number 
@@ -123,7 +123,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Create Geo Firewall Rule
+     Add a geographic firewall rule (block/allow by country code or ASN)
      - POST /scrub_ips/{id}/create_geo_rule
 
      - API Key:
@@ -159,7 +159,7 @@ open class ScrubIpsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Create Firewall Rule
+     Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
 
      - parameter body: (body)  
      - parameter _id: (path) ScrubIp ID number 
@@ -173,7 +173,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Create Firewall Rule
+     Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
      - POST /scrub_ips/{id}/create_rule
 
      - API Key:
@@ -209,13 +209,13 @@ open class ScrubIpsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Delete Traffic Filter
+     Remove a scrubbing filter by matching filter_type and port
 
      - parameter body: (body)  
      - parameter _id: (path) ScrubIp ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteFilter(body: CreateFilter, _id: Int, completion: @escaping ((_ data: InlineResponse20017?,_ error: Error?) -> Void)) {
+    open class func deleteFilter(body: CreateFilter, _id: Int, completion: @escaping ((_ data: InlineResponse20018?,_ error: Error?) -> Void)) {
         deleteFilterWithRequestBuilder(body: body, _id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -223,7 +223,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Delete Traffic Filter
+     Remove a scrubbing filter by matching filter_type and port
      - POST /scrub_ips/{id}/delete_filter
 
      - API Key:
@@ -242,9 +242,9 @@ open class ScrubIpsAPI {
      - parameter body: (body)  
      - parameter _id: (path) ScrubIp ID number 
 
-     - returns: RequestBuilder<InlineResponse20017> 
+     - returns: RequestBuilder<InlineResponse20018> 
      */
-    open class func deleteFilterWithRequestBuilder(body: CreateFilter, _id: Int) -> RequestBuilder<InlineResponse20017> {
+    open class func deleteFilterWithRequestBuilder(body: CreateFilter, _id: Int) -> RequestBuilder<InlineResponse20018> {
         var path = "/scrub_ips/{id}/delete_filter"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -254,17 +254,17 @@ open class ScrubIpsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20017>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20018>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Disable Scrub Protection
+     Disable DDoS scrubbing and remove the BGP announcement on the IP
 
      - parameter _id: (path) ScrubIp ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func disableScrub(_id: Int, completion: @escaping ((_ data: InlineResponse20015?,_ error: Error?) -> Void)) {
+    open class func disableScrub(_id: Int, completion: @escaping ((_ data: InlineResponse20016?,_ error: Error?) -> Void)) {
         disableScrubWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -272,7 +272,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Disable Scrub Protection
+     Disable DDoS scrubbing and remove the BGP announcement on the IP
      - GET /scrub_ips/{id}/disable
 
      - API Key:
@@ -290,9 +290,9 @@ open class ScrubIpsAPI {
 }}]
      - parameter _id: (path) ScrubIp ID number 
 
-     - returns: RequestBuilder<InlineResponse20015> 
+     - returns: RequestBuilder<InlineResponse20016> 
      */
-    open class func disableScrubWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20015> {
+    open class func disableScrubWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20016> {
         var path = "/scrub_ips/{id}/disable"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -302,17 +302,17 @@ open class ScrubIpsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20015>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20016>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Enable Scrub Protection
+     Enable DDoS scrubbing (BGP announcement) on the service's protected IP
 
      - parameter _id: (path) ScrubIp ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func enableScrub(_id: Int, completion: @escaping ((_ data: InlineResponse20014?,_ error: Error?) -> Void)) {
+    open class func enableScrub(_id: Int, completion: @escaping ((_ data: InlineResponse20015?,_ error: Error?) -> Void)) {
         enableScrubWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -320,7 +320,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Enable Scrub Protection
+     Enable DDoS scrubbing (BGP announcement) on the service's protected IP
      - GET /scrub_ips/{id}/enable
 
      - API Key:
@@ -338,9 +338,9 @@ open class ScrubIpsAPI {
 }}]
      - parameter _id: (path) ScrubIp ID number 
 
-     - returns: RequestBuilder<InlineResponse20014> 
+     - returns: RequestBuilder<InlineResponse20015> 
      */
-    open class func enableScrubWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20014> {
+    open class func enableScrubWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20015> {
         var path = "/scrub_ips/{id}/enable"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -350,16 +350,16 @@ open class ScrubIpsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20014>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20015>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Scrub IP Ordering Information
+     Get plans, pricing, and eligible IPs for a new Scrub IP order
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getOrderDetail(completion: @escaping ((_ data: InlineResponse20018?,_ error: Error?) -> Void)) {
+    open class func getOrderDetail(completion: @escaping ((_ data: InlineResponse20019?,_ error: Error?) -> Void)) {
         getOrderDetailWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -367,7 +367,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Get Scrub IP Ordering Information
+     Get plans, pricing, and eligible IPs for a new Scrub IP order
      - GET /scrub_ips/order
 
      - API Key:
@@ -412,26 +412,26 @@ open class ScrubIpsAPI {
   } ]
 }}]
 
-     - returns: RequestBuilder<InlineResponse20018> 
+     - returns: RequestBuilder<InlineResponse20019> 
      */
-    open class func getOrderDetailWithRequestBuilder() -> RequestBuilder<InlineResponse20018> {
+    open class func getOrderDetailWithRequestBuilder() -> RequestBuilder<InlineResponse20019> {
         let path = "/scrub_ips/order"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20018>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20019>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Scrub IP Details
+     Get full Scrub IP service detail (rules + geo + filters)
 
      - parameter _id: (path) ScrubIp ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getScrubIpDetails(_id: Int, completion: @escaping ((_ data: InlineResponse20012?,_ error: Error?) -> Void)) {
+    open class func getScrubIpDetails(_id: Int, completion: @escaping ((_ data: InlineResponse20013?,_ error: Error?) -> Void)) {
         getScrubIpDetailsWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -439,7 +439,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Get Scrub IP Details
+     Get full Scrub IP service detail (rules + geo + filters)
      - GET /scrub_ips/{id}
 
      - API Key:
@@ -538,9 +538,9 @@ open class ScrubIpsAPI {
 }}]
      - parameter _id: (path) ScrubIp ID number 
 
-     - returns: RequestBuilder<InlineResponse20012> 
+     - returns: RequestBuilder<InlineResponse20013> 
      */
-    open class func getScrubIpDetailsWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20012> {
+    open class func getScrubIpDetailsWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20013> {
         var path = "/scrub_ips/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -550,12 +550,12 @@ open class ScrubIpsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20012>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20013>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Scrub Filter Types
+     List enabled traffic filter profiles available for createFilter
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -567,7 +567,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     List Scrub Filter Types
+     List enabled traffic filter profiles available for createFilter
      - GET /scrub_ips/filter_types
 
      - API Key:
@@ -603,7 +603,7 @@ open class ScrubIpsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get ScrubIp Invoices
+     List recurring and one-time invoices billed for this Scrub IP service
 
      - parameter _id: (path) ScrubIp ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -616,7 +616,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Get ScrubIp Invoices
+     List recurring and one-time invoices billed for this Scrub IP service
      - GET /scrub_ips/{id}/invoices
 
      - API Key:
@@ -686,7 +686,7 @@ open class ScrubIpsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Scrub IP Logs
+     Get last 50000 packet/event log entries for the protected IP
 
      - parameter _id: (path) Scrub Order ID 
      - parameter completion: completion handler to receive the data and the error objects
@@ -699,7 +699,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Get Scrub IP Logs
+     Get last 50000 packet/event log entries for the protected IP
      - GET /scrub_ips/{id}/logs
 
      - API Key:
@@ -749,7 +749,7 @@ open class ScrubIpsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Scrub IP Services
+     List all Scrub IP DDoS protection services on the authenticated account
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -761,7 +761,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     List Scrub IP Services
+     List all Scrub IP DDoS protection services on the authenticated account
      - GET /scrub_ips
 
      - API Key:
@@ -801,7 +801,7 @@ open class ScrubIpsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Place Scrub IP Order
+     Place a new Scrub IP DDoS protection order and generate an invoice
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -814,7 +814,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Place Scrub IP Order
+     Place a new Scrub IP DDoS protection order and generate an invoice
      - POST /scrub_ips/order
 
      - API Key:
@@ -862,13 +862,62 @@ open class ScrubIpsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Delete Geo Firewall Rule
+     Validate a Scrub IP order and return effective pricing without billing
+
+     - parameter body: (body)  
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func putScrubIps(body: ScrubIpPlaceOrder, completion: @escaping ((_ data: InlineResponse20020?,_ error: Error?) -> Void)) {
+        putScrubIpsWithRequestBuilder(body: body).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Validate a Scrub IP order and return effective pricing without billing
+     - PUT /scrub_ips/order
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "serviceType" : 0,
+  "repeatServiceCost" : 5.962133916683182,
+  "serviceCost" : 6.027456183070403,
+  "continue" : true,
+  "originalCost" : 1.4658129805029452,
+  "errors" : [ "errors", "errors" ]
+}}]
+     - parameter body: (body)  
+
+     - returns: RequestBuilder<InlineResponse20020> 
+     */
+    open class func putScrubIpsWithRequestBuilder(body: ScrubIpPlaceOrder) -> RequestBuilder<InlineResponse20020> {
+        let path = "/scrub_ips/order"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<InlineResponse20020>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    /**
+     Delete a geo firewall rule by rule_id from getScrubIpDetails
 
      - parameter body: (body)  
      - parameter _id: (path) ScrubIp ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func scrubIpsDeleteGeoRule(body: DeleteGeoFirewallRule, _id: Int, completion: @escaping ((_ data: InlineResponse20016?,_ error: Error?) -> Void)) {
+    open class func scrubIpsDeleteGeoRule(body: DeleteGeoFirewallRule, _id: Int, completion: @escaping ((_ data: InlineResponse20017?,_ error: Error?) -> Void)) {
         scrubIpsDeleteGeoRuleWithRequestBuilder(body: body, _id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -876,7 +925,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Delete Geo Firewall Rule
+     Delete a geo firewall rule by rule_id from getScrubIpDetails
      - POST /scrub_ips/{id}/delete_geo_rule
 
      - API Key:
@@ -895,9 +944,9 @@ open class ScrubIpsAPI {
      - parameter body: (body)  
      - parameter _id: (path) ScrubIp ID number 
 
-     - returns: RequestBuilder<InlineResponse20016> 
+     - returns: RequestBuilder<InlineResponse20017> 
      */
-    open class func scrubIpsDeleteGeoRuleWithRequestBuilder(body: DeleteGeoFirewallRule, _id: Int) -> RequestBuilder<InlineResponse20016> {
+    open class func scrubIpsDeleteGeoRuleWithRequestBuilder(body: DeleteGeoFirewallRule, _id: Int) -> RequestBuilder<InlineResponse20017> {
         var path = "/scrub_ips/{id}/delete_geo_rule"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -907,18 +956,18 @@ open class ScrubIpsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20016>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20017>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Delete Firewall Rule
+     Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
 
      - parameter body: (body)  
      - parameter _id: (path) ScrubIp ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func scrubIpsDeleteRule(body: DeleteFirewallRule, _id: Int, completion: @escaping ((_ data: InlineResponse20016?,_ error: Error?) -> Void)) {
+    open class func scrubIpsDeleteRule(body: DeleteFirewallRule, _id: Int, completion: @escaping ((_ data: InlineResponse20017?,_ error: Error?) -> Void)) {
         scrubIpsDeleteRuleWithRequestBuilder(body: body, _id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -926,7 +975,7 @@ open class ScrubIpsAPI {
 
 
     /**
-     Delete Firewall Rule
+     Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
      - POST /scrub_ips/{id}/delete_rule
 
      - API Key:
@@ -945,9 +994,9 @@ open class ScrubIpsAPI {
      - parameter body: (body)  
      - parameter _id: (path) ScrubIp ID number 
 
-     - returns: RequestBuilder<InlineResponse20016> 
+     - returns: RequestBuilder<InlineResponse20017> 
      */
-    open class func scrubIpsDeleteRuleWithRequestBuilder(body: DeleteFirewallRule, _id: Int) -> RequestBuilder<InlineResponse20016> {
+    open class func scrubIpsDeleteRuleWithRequestBuilder(body: DeleteFirewallRule, _id: Int) -> RequestBuilder<InlineResponse20017> {
         var path = "/scrub_ips/{id}/delete_rule"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -957,7 +1006,7 @@ open class ScrubIpsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20016>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20017>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }

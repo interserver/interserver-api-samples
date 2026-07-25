@@ -15,4 +15,3 @@ package org.openapitools.client.model
 case class AccountInfoDataExtra(
   private_whois: Option[String] = None
 )
-

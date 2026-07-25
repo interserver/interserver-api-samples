@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainNameserverGetResponseInner
+# InterServerAPI::Object::DomainNameserverGetResponseInner
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainNameserverGetResponseInner;
+use InterServerAPI::Object::DomainNameserverGetResponseInner;
 ```
 
 ## Properties

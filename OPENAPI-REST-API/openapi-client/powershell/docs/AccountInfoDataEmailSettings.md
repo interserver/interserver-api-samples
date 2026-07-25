@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoDataEmailSettings = Initialize-PSOpenAPIToolsAccountInfoDataEmailSettings  -AdminCcBadResponse null `
+$AccountInfoDataEmailSettings = Initialize-InterserverApiAccountInfoDataEmailSettings  -AdminCcBadResponse null `
  -AdminMassCommunicationsTpl null
 ```
 

@@ -16,9 +16,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -27,35 +24,50 @@ import javax.validation.Valid;
  */
 
 public class InlineResponse20024   {
-  @JsonProperty("ips")
-  private Map<String, String> ips = null;
+  @JsonProperty("success")
+  private Boolean success = null;
 
-  public InlineResponse20024 ips(Map<String, String> ips) {
-    this.ips = ips;
-    return this;
-  }
+  @JsonProperty("text")
+  private String text = null;
 
-  public InlineResponse20024 putIpsItem(String key, String ipsItem) {
-    if (this.ips == null) {
-      this.ips = new HashMap<String, String>();
-    }
-    this.ips.put(key, ipsItem);
+  public InlineResponse20024 success(Boolean success) {
+    this.success = success;
     return this;
   }
 
   /**
-   * A map of IP addresses to their current reverse DNS hostnames.
-   * @return ips
+   * Get success
+   * @return success
    **/
-  @JsonProperty("ips")
-  @Schema(description = "A map of IP addresses to their current reverse DNS hostnames.")
+  @JsonProperty("success")
+  @Schema(required = true, description = "")
   @NotNull
-  public Map<String, String> getIps() {
-    return ips;
+  public Boolean isSuccess() {
+    return success;
   }
 
-  public void setIps(Map<String, String> ips) {
-    this.ips = ips;
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
+
+  public InlineResponse20024 text(String text) {
+    this.text = text;
+    return this;
+  }
+
+  /**
+   * Get text
+   * @return text
+   **/
+  @JsonProperty("text")
+  @Schema(required = true, description = "")
+  @NotNull
+  public String getText() {
+    return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
   }
 
 
@@ -68,12 +80,13 @@ public class InlineResponse20024   {
       return false;
     }
     InlineResponse20024 inlineResponse20024 = (InlineResponse20024) o;
-    return Objects.equals(this.ips, inlineResponse20024.ips);
+    return Objects.equals(this.success, inlineResponse20024.success) &&
+        Objects.equals(this.text, inlineResponse20024.text);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(ips);
+    return Objects.hash(success, text);
   }
 
 
@@ -82,7 +95,8 @@ public class InlineResponse20024   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20024 {\n");
     
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }

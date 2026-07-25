@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetOauthRedirect200Response } from './api';
+import { GetOauthRedirect200Response } from '@interserver/myadmin-client';
 
 const instance: GetOauthRedirect200Response = {
     redirect_url,

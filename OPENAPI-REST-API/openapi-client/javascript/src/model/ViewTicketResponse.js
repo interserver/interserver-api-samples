@@ -19,7 +19,7 @@ import TicketPostDetails from './TicketPostDetails';
 /**
  * The ViewTicketResponse model module.
  * @module model/ViewTicketResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ViewTicketResponse {
     /**

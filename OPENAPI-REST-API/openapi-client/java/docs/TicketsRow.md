@@ -23,4 +23,8 @@ Information about a single ticket.
 |**checked** | **Boolean** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

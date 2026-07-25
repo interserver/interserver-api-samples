@@ -28,4 +28,8 @@
 |**cpuGraphData** | **Object** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

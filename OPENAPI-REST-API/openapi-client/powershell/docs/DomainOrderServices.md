@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainOrderServices = Initialize-PSOpenAPIToolsDomainOrderServices  -DomainOrderServices10001 null
+$DomainOrderServices = Initialize-InterserverApiDomainOrderServices  -DomainOrderServices10001 null
 ```
 
 - Convert the resource to JSON

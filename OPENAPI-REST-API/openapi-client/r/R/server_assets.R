@@ -158,10 +158,10 @@ ServerAssets <- R6::R6Class(
         self$`type` <- this_object$`type`
       }
       if (!is.null(this_object$`header`)) {
-        self$`header` <- ApiClient$new()$deserializeObj(this_object$`header`, "array[character]", loadNamespace("openapi"))
+        self$`header` <- ApiClient$new()$deserializeObj(this_object$`header`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`rows`)) {
-        self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[array[character]]", loadNamespace("openapi"))
+        self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[array[character]]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -187,8 +187,8 @@ ServerAssets <- R6::R6Class(
       self$`title` <- this_object$`title`
       self$`size` <- this_object$`size`
       self$`type` <- this_object$`type`
-      self$`header` <- ApiClient$new()$deserializeObj(this_object$`header`, "array[character]", loadNamespace("openapi"))
-      self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[array[character]]", loadNamespace("openapi"))
+      self$`header` <- ApiClient$new()$deserializeObj(this_object$`header`, "array[character]", loadNamespace("interserverapi"))
+      self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[array[character]]", loadNamespace("interserverapi"))
       self
     },
 

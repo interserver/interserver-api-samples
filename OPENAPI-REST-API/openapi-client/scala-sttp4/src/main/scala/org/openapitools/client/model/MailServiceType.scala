@@ -35,4 +35,3 @@ case class MailServiceType(
   /* The module of the service type. */
   services_module: Option[String] = None
 )
-

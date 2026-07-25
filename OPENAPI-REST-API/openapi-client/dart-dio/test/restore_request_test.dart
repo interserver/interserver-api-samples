@@ -1,18 +1,18 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for RestoreRequest
 void main() {
-  final instance = RestoreRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final RestoreRequest? instance = /* RestoreRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(RestoreRequest, () {
-    // String backup
+    // Optional<String?> backup
     test('to test the property `backup`', () async {
       // TODO
     });
 
-    // String password
+    // Optional<String?> password
     test('to test the property `password`', () async {
       // TODO
     });

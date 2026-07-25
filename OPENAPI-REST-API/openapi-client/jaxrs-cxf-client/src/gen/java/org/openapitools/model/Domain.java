@@ -332,7 +332,7 @@ public class Domain  {
    * @return errors
   **/
   @JsonProperty("errors")
-  public Boolean getErrors() {
+  public Boolean isErrors() {
     return errors;
   }
 

@@ -267,20 +267,6 @@ entity AffiliateTrafficRow {
     traffic_timestamp: String
 }
 
-entity AssetServer {
-    id: Integer
-    Region: String
-    price: String
-    CPU: List<AssetServerCPUInner>
-    Memory: List<AssetServerCPUInner>
-    Bandwidth: List<AssetServerCPUInner>
-    IPs: List<AssetServerCPUInner>
-    HD: Map
-}
-
-entity AssetServerCPUInner {
-}
-
 entity Backup {
     serviceInfo: BackupServiceInfo
     client_links: List<BackupClientLink>
@@ -427,13 +413,6 @@ entity BackupsOrderPackageCosts {
 
 entity BackupsOrderServiceTypes {
     11006: BackupsOrderServiceTypes
-}
-
-entity Bandwidth {
-    id: Integer
-    short_desc: String
-    monthly_price: BigDecimal
-    monthly_price_display: String
 }
 
 entity BillingAddCcRequest {
@@ -613,56 +592,6 @@ entity CloseTicketResponseSchema {
     text: String
 }
 
-entity ConfigIds {
-    memory: Integer
-    hd: Integer
-    bandwidth: Integer
-    ips: Integer
-    os: Integer
-    cp: Integer
-    raid: Integer
-}
-
-entity ConfigLists {
-    cpu_li: Map
-    memory_li: Map
-    hd_li: Map
-    bandwidth_li: Map
-    ips_li: Map
-    os_li: Map
-    cp_li: Map
-    raid_li: List<RaidOption>
-}
-
-entity ControlPanel {
-    id: Integer
-    short_desc: String
-    monthly_price: BigDecimal
-}
-
-entity Cpu {
-    id: Integer
-    short_desc: String
-    long_desc: String
-    type: String
-    speed: String
-    num_cores: String
-    num_cpus: String
-    benchmark: String
-    monthly_price: BigDecimal
-    monthly_price_display: String
-    max_ram: String
-    min_ram: String
-    max_lff: String
-    max_sff: String
-    max_nve: String
-    visible: String
-    active: String
-}
-
-entity CpuWithDefaults {
-}
-
 entity CreateFilter {
     * filter_type: String
     * port: Integer
@@ -742,6 +671,10 @@ entity DeleteFirewallRule {
 
 entity DeleteGeoFirewallRule {
     * rule_id: Integer
+}
+
+entity DeleteMailAlertRequest {
+    * alert_id: Integer
 }
 
 entity DenyRuleNew {
@@ -1004,6 +937,13 @@ entity DomainOrder {
     tldServices: Object
 }
 
+entity DomainOrderRequest {
+    * hostname: String
+    type: String
+    coupon: String
+    whois_privacy: String
+}
+
 entity DomainOrderResponse {
     _OPS_version: String
     protocol: String
@@ -1036,13 +976,6 @@ entity DomainOrderServices10001 {
     services_field2: String
     services_module: String
     services_hidden: String
-}
-
-entity DomainOrderTldServices {
-    .asia: Integer
-    .be: Integer
-    .biz: Integer
-    .ca: Integer
 }
 
 entity DomainOwnerContact {
@@ -1188,25 +1121,15 @@ entity EnableScrub500Response {
     * text: String
 }
 
-entity FieldLabel {
-    name: String
-    active: Integer
+entity FloatingIpOrderRequest {
+    * serviceType: Integer
+    coupon: String
+    comment: String
 }
 
 entity FloatingIpsCancel200Response {
     * success: Boolean
     * text: String
-}
-
-entity FormValues {
-    memory: Integer
-    bandwidth: Integer
-    ips: Integer
-    os: Integer
-    cp: Integer
-    raid: Integer
-    hd: Integer
-    region: Integer
 }
 
 entity GenericResponse {
@@ -1219,9 +1142,18 @@ entity GetAccountInfo401Response {
     * message: String
 }
 
+entity GetAccountLocales200ResponseValue {
+    name: String
+    local_name: String
+}
+
 entity GetAccountTfaSetup200Response {
     2fa_google_key: String
     2fa_google_split: String
+}
+
+entity GetAffiliateSignups200Response {
+    data: Object
 }
 
 entity GetOauthRedirect200Response {
@@ -1343,15 +1275,6 @@ entity GetScrubIpDetails200ResponseServiceInfo {
 
 entity GetWebsiteBuyIp200Response {
     ips: Map
-}
-
-entity HardDrive {
-    id: Integer
-    short_desc: String
-    size: String
-    drive_type: String
-    monthly_price: BigDecimal
-    monthly_price_display: String
 }
 
 entity Home {
@@ -1530,25 +1453,6 @@ entity InitiatePayment200Response {
     text: String
 }
 
-entity InlineObject {
-    * code: String
-    * message: String
-}
-
-entity Invoice {
-    id: Long
-}
-
-entity InvoiceRow {
-}
-
-entity IpBlock {
-    id: Integer
-    short_desc: String
-    qty: String
-    monthly_price: BigDecimal
-}
-
 entity IpLimitRange {
     * start: String
     * end: String
@@ -1607,6 +1511,15 @@ entity LicenseIpInfo {
 entity LicenseIpInfoRow {
     desc: String
     value: String
+}
+
+entity LicenseOrderRequest {
+    * package: Integer
+    * ip: String
+    * tos: Boolean
+    frequency: Integer
+    coupon: String
+    comment: String
 }
 
 entity LicenseRow {
@@ -1883,6 +1796,12 @@ entity MailOrder {
     comment: String
 }
 
+entity MailOrderRequest {
+    * serviceType: Integer
+    coupon: String
+    comment: String
+}
+
 entity MailRow {
     mail_id: String
     repeat_invoices_cost: String
@@ -1984,13 +1903,6 @@ entity MailTutorialsTableRow {
     value: String
 }
 
-entity MemoryOption {
-    id: Integer
-    short_desc: String
-    monthly_price: BigDecimal
-    monthly_price_display: String
-}
-
 entity ModuleSettings {
     * SERVICE_ID_OFFSET: Integer
     * USE_REPEAT_INVOICE: Boolean
@@ -2018,14 +1930,12 @@ entity Modules {
 entity MonthlyCounts {
 }
 
-entity OperatingSystem {
-    id: Integer
-    short_desc: String
-    monthly_price: BigDecimal
-}
-
 entity PasswordRequest {
     * password: String
+}
+
+entity PatchBillingCreditCardVerifyRequest {
+    * cc_ccv2: String
 }
 
 entity PatchOauthTwoFactor200Response {
@@ -2035,9 +1945,6 @@ entity PatchOauthTwoFactor200Response {
 entity PatchOauthTwoFactorRequest {
     * account_id: Integer
     * code: String
-}
-
-entity PaymentInvoiceRows {
 }
 
 entity PlaceBuyNowServerRequest {
@@ -2111,6 +2018,23 @@ entity PostWebsiteMigrationRequest {
     domainRegPortal: String
     domainRegEmail: String
     domainRegPassword: String
+}
+
+entity PutScrubIps200Response {
+    continue: Boolean
+    errors: List<String>
+    serviceType: Integer
+    serviceCost: BigDecimal
+    originalCost: BigDecimal
+    repeatServiceCost: BigDecimal
+}
+
+entity QsOrderRequest {
+    * server: Integer
+    * password: String
+    * tos: Boolean
+    os: String
+    comment: String
 }
 
 entity QueueResponse {
@@ -2314,17 +2238,6 @@ entity QuickserversCancel200Response {
     * text: String
 }
 
-entity RaidOption {
-    id: Integer
-    short_desc: String
-    monthly_price: BigDecimal
-}
-
-entity Region {
-    region_id: Integer
-    region_name: String
-}
-
 entity ReplyTicketRequest {
     content: String
 }
@@ -2498,6 +2411,17 @@ entity ServerBillingDetails {
     service_cost_info: String
     service_extra: List<String>
     service_extra_json: String
+}
+
+entity ServerBulkIpmiPowerResponse {
+    * results: List<ServerBulkIpmiPowerResponseResultsInner>
+}
+
+entity ServerBulkIpmiPowerResponseResultsInner {
+    id: Integer
+    asset: Integer
+    text: String
+    error: String
 }
 
 entity ServerClientLink {
@@ -2680,28 +2604,6 @@ entity ServerOrderFormValues {
     hd: String
 }
 
-entity ServerOrderGetResponse {
-    * form_values: FormValues
-    * config_ids: ConfigIds
-    * cpu: Integer
-    * cpu_li: Map
-    * config_li: ConfigLists
-    * frequency: Integer
-    * currency: String
-    * country: String
-    * step: String
-    field_label: Map
-    cpu_cores: Map
-    currencySymbol: String
-    custid: Integer
-    ima: String
-    regions: List<Region>
-    asset_servers: List<AssetServer>
-    buy_it_servers: List<Object>
-    display_showmore: String
-    cust_discount: BigDecimal
-}
-
 entity ServerOrderIP {
     id: String
     price: Integer
@@ -2755,6 +2657,25 @@ entity ServerOrderOS {
 
 entity ServerOrderOsLi {
     51: ServerOrderOS
+}
+
+entity ServerOrderPostRequest {
+    * cpu: Integer
+    * hd: ServerOrderPostRequestHd
+    * memory: Integer
+    * bandwidth: Integer
+    * ips: Integer
+    * os: Integer
+    * cp: Integer
+    * raid: Integer
+    * region: Integer
+    * servername: String
+    * rootpass: String
+    * tos: Boolean
+    comment: String
+}
+
+entity ServerOrderPostRequestHd {
 }
 
 entity ServerOrderRAID {
@@ -2907,6 +2828,29 @@ entity ServicesInfo {
 entity SslCancel200Response {
     * success: Boolean
     * text: String
+}
+
+entity SslOrderRequest {
+    * ssl: Integer
+    * hostname: String
+    * approver_email: String
+    frequency: Integer
+    coupon: String
+    csr_type: String
+    csr: String
+    firstname: String
+    lastname: String
+    email: String
+    address: String
+    city: String
+    state: String
+    zip: String
+    country: String
+    phone: String
+    company: String
+    department: String
+    agency: String
+    business_category: String
 }
 
 entity StatusMonthlyBreakdown {
@@ -3432,9 +3376,6 @@ entity VpsTemplatesList {
     * templates: List<VpsTemplateRow>
 }
 
-entity VpsTrafficDataDataResponse {
-}
-
 entity VpsTrafficDataSectionResponse {
     * name: String
     * data: List<VPSTrafficDataDataSectionResponse>
@@ -3551,6 +3492,30 @@ entity WebsiteExtraInfoTables {
 entity WebsiteLoginResponse {
     type: String
     location: String
+}
+
+entity WebsiteOrderPostRequest {
+    * hostname: String
+    * packageId: Integer
+    rootpass: String
+    period: Integer
+    coupon: String
+    serviceOfferId: Integer
+    script: Integer
+    comment: String
+    registerDomain: Boolean
+}
+
+entity WebsiteOrderPutRequest {
+    * hostname: String
+    * packageId: Integer
+    rootpass: String
+    period: Integer
+    coupon: String
+    serviceOfferId: Integer
+    script: Integer
+    comment: String
+    registerDomain: Boolean
 }
 
 entity WebsiteRow {
@@ -3690,7 +3655,6 @@ entity WebsitesOrderServiceTypes {
     * 11447: WebsitesOrderServiceTypes
 }
 
-Cpu <|--- CpuWithDefaults
 DenyRuleNew <|--- DenyRuleRecord
 
 Server -- "0..*" ServerClientLink : client_links
@@ -3720,6 +3684,7 @@ GetScrubIpDetails200Response -- "0..*" GetScrubIpDetails200ResponseClientLinksIn
 GetScrubIpDetails200Response -- GetScrubIpDetails200ResponseBillingDetails : billingDetails
 GetScrubIpDetails200Response -- GetScrubIpDetails200ResponseExtraInfoTables : extraInfoTables
 GetScrubIpDetails200Response -- GetScrubIpDetails200ResponseFilterFirewall : filter_firewall
+ServerOrderPostRequest -- ServerOrderPostRequestHd : hd
 DomainOrder -- DomainOrderServices : services
 DomainOrderServices -- DomainOrderServices10001 : DomainOrderServices10001
 LicenseIpInfo -- "0..*" LicenseIpInfoRow : rows
@@ -3821,9 +3786,9 @@ ServerOrderCpuLi -- ServerOrderCPU : 254
 GetScrubIpDetails200ResponseFilterFirewall -- "0..*" GetScrubIpDetails200ResponseFilterFirewallRulesInner : rules
 GetScrubIpDetails200ResponseFilterFirewall -- "0..*" GetScrubIpDetails200ResponseFilterFirewallFiltersInner : filters
 ServerOrderMemoryLi -- ServerOrderMemoryLi254 : 254
+ServerBulkIpmiPowerResponse -- "0..*" ServerBulkIpmiPowerResponseResultsInner : results
 DomainBillingExtra -- DomainOrderResponse : order
 DomainBillingExtra -- DomainProvProcessPending : provProcessPending
-ConfigLists -- "0..*" RaidOption : raid_li
 WebsitesOrderServiceTypes -- WebsitesOrderServiceTypes : 11447
 QuickserverBillingDetails -- QuickserverServiceExtra : service_extra
 WebsiteExtraInfoTables -- WebsiteTable : links
@@ -3842,11 +3807,6 @@ Tickets -- TicketsCountArray : countArray
 LicensesOrder -- LicensesOrderServiceCategories : serviceCategories
 LicensesOrder -- LicensesOrderPackageCosts : packageCosts
 LicensesOrder -- LicensesOrderServiceTypes : serviceTypes
-ServerOrderGetResponse -- FormValues : form_values
-ServerOrderGetResponse -- ConfigIds : config_ids
-ServerOrderGetResponse -- ConfigLists : config_li
-ServerOrderGetResponse -- "0..*" Region : regions
-ServerOrderGetResponse -- "0..*" AssetServer : asset_servers
 VpsTrafficUsageResponse -- VpsTrafficTotalsSectionResponse : current
 VpsTrafficUsageResponse -- VpsTrafficTotalsSectionResponse : peak
 VpsTrafficUsageResponse -- VpsTrafficUsageAverageResponse : average
@@ -3917,10 +3877,6 @@ HomeDetailsModules -- HomeDetailsModulesServers : servers
 HomeDetailsModules -- HomeDetailsModulesQuickservers : quickservers
 HomeServicesLicenses -- HomeServicesLicensesLinks : links
 LoginInfo -- LoginServiceCounts : counts
-AssetServer -- "0..*" AssetServerCPUInner : CPU
-AssetServer -- "0..*" AssetServerCPUInner : Memory
-AssetServer -- "0..*" AssetServerCPUInner : Bandwidth
-AssetServer -- "0..*" AssetServerCPUInner : IPs
 PlaceScrubOrder201Response -- PlaceScrubOrder201ResponseOrderDetails : order_details
 ServerOrderIpsLi -- ServerOrderIP : 9
 VpsBillingDetails -- VpsServiceExtra : service_extra

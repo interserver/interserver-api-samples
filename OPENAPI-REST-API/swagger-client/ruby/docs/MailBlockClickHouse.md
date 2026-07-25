@@ -1,4 +1,4 @@
-# SwaggerClient::MailBlockClickHouse
+# InterserverApiClient::MailBlockClickHouse
 
 ## Properties
 Name | Type | Description | Notes

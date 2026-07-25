@@ -22,4 +22,3 @@ case class ServersBuyNowResponse(
   text: Option[String] = None,
   order_details: Option[ServersBuyNowResponseOrderDetails] = None
 )
-

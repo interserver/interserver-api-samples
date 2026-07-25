@@ -17,7 +17,7 @@ import MailLogEntry from './MailLogEntry';
 /**
  * The MailLog model module.
  * @module model/MailLog
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailLog {
     /**

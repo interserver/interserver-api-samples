@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LicenseBillingDetails model module.
  * @module model/LicenseBillingDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicenseBillingDetails {
     /**

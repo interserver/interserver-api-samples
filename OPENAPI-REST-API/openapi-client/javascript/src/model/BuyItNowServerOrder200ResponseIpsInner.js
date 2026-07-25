@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BuyItNowServerOrder200ResponseIpsInner model module.
  * @module model/BuyItNowServerOrder200ResponseIpsInner
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BuyItNowServerOrder200ResponseIpsInner {
     /**

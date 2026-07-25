@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerOrderConfigIds();
+    instance = new InterserverApiClient.ServerOrderConfigIds();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,49 +50,49 @@
   describe('ServerOrderConfigIds', function() {
     it('should create an instance of ServerOrderConfigIds', function() {
       // uncomment below and update the code to test ServerOrderConfigIds
-      //var instance = new InterServerManagementApi.ServerOrderConfigIds();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerOrderConfigIds);
+      //var instance = new InterserverApiClient.ServerOrderConfigIds();
+      //expect(instance).to.be.a(InterserverApiClient.ServerOrderConfigIds);
     });
 
     it('should have the property memory (base name: "memory")', function() {
       // uncomment below and update the code to test the property memory
-      //var instance = new InterServerManagementApi.ServerOrderConfigIds();
+      //var instance = new InterserverApiClient.ServerOrderConfigIds();
       //expect(instance).to.be();
     });
 
     it('should have the property bandwidth (base name: "bandwidth")', function() {
       // uncomment below and update the code to test the property bandwidth
-      //var instance = new InterServerManagementApi.ServerOrderConfigIds();
+      //var instance = new InterserverApiClient.ServerOrderConfigIds();
       //expect(instance).to.be();
     });
 
     it('should have the property ips (base name: "ips")', function() {
       // uncomment below and update the code to test the property ips
-      //var instance = new InterServerManagementApi.ServerOrderConfigIds();
+      //var instance = new InterserverApiClient.ServerOrderConfigIds();
       //expect(instance).to.be();
     });
 
     it('should have the property os (base name: "os")', function() {
       // uncomment below and update the code to test the property os
-      //var instance = new InterServerManagementApi.ServerOrderConfigIds();
+      //var instance = new InterserverApiClient.ServerOrderConfigIds();
       //expect(instance).to.be();
     });
 
     it('should have the property cp (base name: "cp")', function() {
       // uncomment below and update the code to test the property cp
-      //var instance = new InterServerManagementApi.ServerOrderConfigIds();
+      //var instance = new InterserverApiClient.ServerOrderConfigIds();
       //expect(instance).to.be();
     });
 
     it('should have the property raid (base name: "raid")', function() {
       // uncomment below and update the code to test the property raid
-      //var instance = new InterServerManagementApi.ServerOrderConfigIds();
+      //var instance = new InterserverApiClient.ServerOrderConfigIds();
       //expect(instance).to.be();
     });
 
     it('should have the property hd (base name: "hd")', function() {
       // uncomment below and update the code to test the property hd
-      //var instance = new InterServerManagementApi.ServerOrderConfigIds();
+      //var instance = new InterserverApiClient.ServerOrderConfigIds();
       //expect(instance).to.be();
     });
 

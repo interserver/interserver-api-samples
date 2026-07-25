@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The QuickserverOrderServerDetails381 model module.
  * @module model/QuickserverOrderServerDetails381
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverOrderServerDetails381 {
     /**

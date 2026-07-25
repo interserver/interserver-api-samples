@@ -68,6 +68,7 @@ class QuickServersApiSimulation extends Simulation {
     val doQsStopPerSecond = config.getDouble("performance.operationsPerSecond.doQsStop") * rateMultiplier * instanceMultiplier
     val downloadQsBackupPerSecond = config.getDouble("performance.operationsPerSecond.downloadQsBackup") * rateMultiplier * instanceMultiplier
     val getNewQsPerSecond = config.getDouble("performance.operationsPerSecond.getNewQs") * rateMultiplier * instanceMultiplier
+    val getQsBackupPerSecond = config.getDouble("performance.operationsPerSecond.getQsBackup") * rateMultiplier * instanceMultiplier
     val getQsBackupsPerSecond = config.getDouble("performance.operationsPerSecond.getQsBackups") * rateMultiplier * instanceMultiplier
     val getQsChangeHostnamePerSecond = config.getDouble("performance.operationsPerSecond.getQsChangeHostname") * rateMultiplier * instanceMultiplier
     val getQsChangeRootPasswordPerSecond = config.getDouble("performance.operationsPerSecond.getQsChangeRootPassword") * rateMultiplier * instanceMultiplier
@@ -84,7 +85,6 @@ class QuickServersApiSimulation extends Simulation {
     val getQsTrafficUsagePerSecond = config.getDouble("performance.operationsPerSecond.getQsTrafficUsage") * rateMultiplier * instanceMultiplier
     val getQsViewDesktopPerSecond = config.getDouble("performance.operationsPerSecond.getQsViewDesktop") * rateMultiplier * instanceMultiplier
     val getQsWelcomeEmailPerSecond = config.getDouble("performance.operationsPerSecond.getQsWelcomeEmail") * rateMultiplier * instanceMultiplier
-    val postQsBackupPerSecond = config.getDouble("performance.operationsPerSecond.postQsBackup") * rateMultiplier * instanceMultiplier
     val postQsChangeHostnamePerSecond = config.getDouble("performance.operationsPerSecond.postQsChangeHostname") * rateMultiplier * instanceMultiplier
     val postQsChangeRootPasswordPerSecond = config.getDouble("performance.operationsPerSecond.postQsChangeRootPassword") * rateMultiplier * instanceMultiplier
     val postQsChangeTimezonePerSecond = config.getDouble("performance.operationsPerSecond.postQsChangeTimezone") * rateMultiplier * instanceMultiplier
@@ -116,6 +116,7 @@ class QuickServersApiSimulation extends Simulation {
     val doQsStopPATHFeeder = csv(userDataDirectory + File.separator + "doQsStop-pathParams.csv").random
     val downloadQsBackupQUERYFeeder = csv(userDataDirectory + File.separator + "downloadQsBackup-queryParams.csv").random
     val downloadQsBackupPATHFeeder = csv(userDataDirectory + File.separator + "downloadQsBackup-pathParams.csv").random
+    val getQsBackupPATHFeeder = csv(userDataDirectory + File.separator + "getQsBackup-pathParams.csv").random
     val getQsBackupsQUERYFeeder = csv(userDataDirectory + File.separator + "getQsBackups-queryParams.csv").random
     val getQsBackupsPATHFeeder = csv(userDataDirectory + File.separator + "getQsBackups-pathParams.csv").random
     val getQsChangeHostnamePATHFeeder = csv(userDataDirectory + File.separator + "getQsChangeHostname-pathParams.csv").random
@@ -132,7 +133,6 @@ class QuickServersApiSimulation extends Simulation {
     val getQsTrafficUsagePATHFeeder = csv(userDataDirectory + File.separator + "getQsTrafficUsage-pathParams.csv").random
     val getQsViewDesktopPATHFeeder = csv(userDataDirectory + File.separator + "getQsViewDesktop-pathParams.csv").random
     val getQsWelcomeEmailPATHFeeder = csv(userDataDirectory + File.separator + "getQsWelcomeEmail-pathParams.csv").random
-    val postQsBackupPATHFeeder = csv(userDataDirectory + File.separator + "postQsBackup-pathParams.csv").random
     val postQsChangeHostnamePATHFeeder = csv(userDataDirectory + File.separator + "postQsChangeHostname-pathParams.csv").random
     val postQsChangeRootPasswordPATHFeeder = csv(userDataDirectory + File.separator + "postQsChangeRootPassword-pathParams.csv").random
     val postQsChangeTimezonePATHFeeder = csv(userDataDirectory + File.separator + "postQsChangeTimezone-pathParams.csv").random
@@ -169,8 +169,8 @@ class QuickServersApiSimulation extends Simulation {
         .feed(deleteQsBackupPATHFeeder)
         .exec(http("deleteQsBackup")
         .httpRequest("DELETE","/qs/${id}/backups")
-        .queryParam("all","${all}")
         .queryParam("file","${file}")
+        .queryParam("all","${all}")
 )
 
     // Run scndeleteQsBackup with warm up and reach a constant rate for entire duration
@@ -319,6 +319,20 @@ class QuickServersApiSimulation extends Simulation {
         rampUsersPerSec(1) to(getNewQsPerSecond) during(rampUpSeconds),
         constantUsersPerSec(getNewQsPerSecond) during(durationSeconds),
         rampUsersPerSec(getNewQsPerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
+    val scngetQsBackup = scenario("getQsBackupSimulation")
+        .feed(getQsBackupPATHFeeder)
+        .exec(http("getQsBackup")
+        .httpRequest("GET","/qs/${id}/backup")
+)
+
+    // Run scngetQsBackup with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scngetQsBackup.inject(
+        rampUsersPerSec(1) to(getQsBackupPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(getQsBackupPerSecond) during(durationSeconds),
+        rampUsersPerSec(getQsBackupPerSecond) to(1) during(rampDownSeconds)
     )
 
     
@@ -544,20 +558,6 @@ class QuickServersApiSimulation extends Simulation {
         rampUsersPerSec(1) to(getQsWelcomeEmailPerSecond) during(rampUpSeconds),
         constantUsersPerSec(getQsWelcomeEmailPerSecond) during(durationSeconds),
         rampUsersPerSec(getQsWelcomeEmailPerSecond) to(1) during(rampDownSeconds)
-    )
-
-    
-    val scnpostQsBackup = scenario("postQsBackupSimulation")
-        .feed(postQsBackupPATHFeeder)
-        .exec(http("postQsBackup")
-        .httpRequest("POST","/qs/${id}/backup")
-)
-
-    // Run scnpostQsBackup with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scnpostQsBackup.inject(
-        rampUsersPerSec(1) to(postQsBackupPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(postQsBackupPerSecond) during(durationSeconds),
-        rampUsersPerSec(postQsBackupPerSecond) to(1) during(rampDownSeconds)
     )
 
     

@@ -17,4 +17,3 @@ case class VpsServiceExtra(
   spice: Option[Int] = None,
   snapshots: Option[Seq[VpsSnapshot]] = None
 )
-

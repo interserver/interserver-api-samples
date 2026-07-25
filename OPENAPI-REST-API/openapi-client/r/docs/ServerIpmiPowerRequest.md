@@ -1,4 +1,4 @@
-# openapi::ServerIpmiPowerRequest
+# interserverapi::ServerIpmiPowerRequest
 
 IPMI Power command for servers
 

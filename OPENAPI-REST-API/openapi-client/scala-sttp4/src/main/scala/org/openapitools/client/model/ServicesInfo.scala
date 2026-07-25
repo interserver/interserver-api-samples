@@ -21,4 +21,3 @@ case class ServicesInfo(
   serviceTypes: ServiceTypes,
   serviceCategories: ServiceCategories
 )
-

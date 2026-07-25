@@ -21,4 +21,3 @@ case class ChargeInvoiceRows(
   /* List of invoices for the service. */
   invoices: Option[Map[String, ChargeInvoiceRowsInvoicesValue]] = None
 )
-

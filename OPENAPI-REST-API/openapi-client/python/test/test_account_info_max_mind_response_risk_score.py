@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_info_max_mind_response_risk_score import AccountInfoMaxMindResponseRiskScore
+from interserver_api_client.models.account_info_max_mind_response_risk_score import AccountInfoMaxMindResponseRiskScore
 
 class TestAccountInfoMaxMindResponseRiskScore(unittest.TestCase):
     """AccountInfoMaxMindResponseRiskScore unit test stubs"""

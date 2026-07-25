@@ -1,4 +1,4 @@
-# openapi::DomainOrderResponse
+# interserverapi::DomainOrderResponse
 
 Registrar response metadata returned after a domain order.
 

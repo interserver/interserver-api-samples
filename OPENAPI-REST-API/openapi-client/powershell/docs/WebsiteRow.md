@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsiteRow = Initialize-PSOpenAPIToolsWebsiteRow  -WebsiteId 376359 `
+$WebsiteRow = Initialize-InterserverApiWebsiteRow  -WebsiteId 376359 `
  -WebsiteHostname hussfamily.com `
  -RepeatInvoicesCost 5.99 `
  -WebsiteStatus active `

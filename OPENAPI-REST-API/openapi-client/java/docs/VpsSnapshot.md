@@ -13,4 +13,8 @@ A VPS snapshot (point-in-time backup) stored on the host node.
 |**date** | **Integer** | Unix timestamp of when the snapshot was created. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

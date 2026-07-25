@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BillingInvoiceDetail
 void main() {
-  final instance = BillingInvoiceDetailBuilder();
-  // TODO add properties to the builder and call build()
+  final BillingInvoiceDetail? instance = /* BillingInvoiceDetail(...) */ null;
+  // TODO add properties to the entity
 
   group(BillingInvoiceDetail, () {
   });

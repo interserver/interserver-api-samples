@@ -1,4 +1,4 @@
-# InterServerManagementApi.SslCancel200Response
+# InterserverApiClient.SslCancel200Response
 
 ## Properties
 

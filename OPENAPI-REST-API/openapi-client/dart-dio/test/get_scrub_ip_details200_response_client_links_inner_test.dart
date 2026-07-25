@@ -1,38 +1,38 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for GetScrubIpDetails200ResponseClientLinksInner
 void main() {
-  final instance = GetScrubIpDetails200ResponseClientLinksInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final GetScrubIpDetails200ResponseClientLinksInner? instance = /* GetScrubIpDetails200ResponseClientLinksInner(...) */ null;
+  // TODO add properties to the entity
 
   group(GetScrubIpDetails200ResponseClientLinksInner, () {
-    // String label
+    // Optional<String?> label
     test('to test the property `label`', () async {
       // TODO
     });
 
-    // String link
+    // Optional<String?> link
     test('to test the property `link`', () async {
       // TODO
     });
 
-    // String icon
+    // Optional<String?> icon
     test('to test the property `icon`', () async {
       // TODO
     });
 
-    // String iconText
+    // Optional<String?> iconText
     test('to test the property `iconText`', () async {
       // TODO
     });
 
-    // String helpText
+    // Optional<String?> helpText
     test('to test the property `helpText`', () async {
       // TODO
     });
 
-    // String otherAttr
+    // Optional<String?> otherAttr
     test('to test the property `otherAttr`', () async {
       // TODO
     });

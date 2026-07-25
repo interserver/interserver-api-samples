@@ -27,6 +27,8 @@ module.exports = {
         [{"scrub_ip_id":123,"repeat_invoices_cost":5,"scrub_ip_ip":"1.2.3.5","scrub_ip_status":"active","services_name":"Current IP + Scrub"},{"scrub_ip_id":456,"repeat_invoices_cost":5,"scrub_ip_ip":"4.3.2.1","scrub_ip_status":"expired","services_name":"Current IP + Scrub"}],
     "placeScrubOrder_201_responseSample": 
         { data: {} },
+    "putScrubIps_200_responseSample": 
+        { data: {} },
     "scrubIpsDeleteRule_200_responseSample": 
         { data: {} },
     "scrubIpsDeleteRule_200_responseSample": 

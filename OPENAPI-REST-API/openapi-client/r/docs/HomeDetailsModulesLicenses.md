@@ -1,4 +1,4 @@
-# openapi::HomeDetailsModulesLicenses
+# interserverapi::HomeDetailsModulesLicenses
 
 Dashboard module configuration for software license services.
 

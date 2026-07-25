@@ -1,4 +1,4 @@
-# openapi::BackupExtraInfoTables
+# interserverapi::BackupExtraInfoTables
 
 Supplementary information tables for a backup service (IP info, etc.).
 

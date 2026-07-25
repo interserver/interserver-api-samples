@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoDataExtra = Initialize-PSOpenAPIToolsAccountInfoDataExtra  -PrivateWhois null
+$AccountInfoDataExtra = Initialize-InterserverApiAccountInfoDataExtra  -PrivateWhois null
 ```
 
 - Convert the resource to JSON

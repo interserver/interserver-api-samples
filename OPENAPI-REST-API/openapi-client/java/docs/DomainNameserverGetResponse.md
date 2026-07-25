@@ -10,4 +10,8 @@ List of registered nameserver hosts with glue record metadata.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

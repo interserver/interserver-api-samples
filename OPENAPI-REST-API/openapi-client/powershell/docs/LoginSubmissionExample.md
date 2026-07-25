@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LoginSubmissionExample = Initialize-PSOpenAPIToolsLoginSubmissionExample  -Login null `
+$LoginSubmissionExample = Initialize-InterserverApiLoginSubmissionExample  -Login null `
  -Passwd null `
  -Remember null `
  -GRecaptchaResponse null `

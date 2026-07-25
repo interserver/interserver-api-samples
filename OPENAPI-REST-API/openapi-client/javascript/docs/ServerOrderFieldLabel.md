@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerOrderFieldLabel
+# InterserverApiClient.ServerOrderFieldLabel
 
 ## Properties
 

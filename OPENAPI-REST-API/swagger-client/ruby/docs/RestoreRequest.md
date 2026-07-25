@@ -1,4 +1,4 @@
-# SwaggerClient::RestoreRequest
+# InterserverApiClient::RestoreRequest
 
 ## Properties
 Name | Type | Description | Notes

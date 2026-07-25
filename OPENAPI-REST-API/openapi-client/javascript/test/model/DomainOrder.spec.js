@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainOrder();
+    instance = new InterserverApiClient.DomainOrder();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('DomainOrder', function() {
     it('should create an instance of DomainOrder', function() {
       // uncomment below and update the code to test DomainOrder
-      //var instance = new InterServerManagementApi.DomainOrder();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainOrder);
+      //var instance = new InterserverApiClient.DomainOrder();
+      //expect(instance).to.be.a(InterserverApiClient.DomainOrder);
     });
 
     it('should have the property whoisPrivacyCost (base name: "whoisPrivacyCost")', function() {
       // uncomment below and update the code to test the property whoisPrivacyCost
-      //var instance = new InterServerManagementApi.DomainOrder();
+      //var instance = new InterserverApiClient.DomainOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property services (base name: "services")', function() {
       // uncomment below and update the code to test the property services
-      //var instance = new InterServerManagementApi.DomainOrder();
+      //var instance = new InterserverApiClient.DomainOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property tldServices (base name: "tldServices")', function() {
       // uncomment below and update the code to test the property tldServices
-      //var instance = new InterServerManagementApi.DomainOrder();
+      //var instance = new InterserverApiClient.DomainOrder();
       //expect(instance).to.be();
     });
 

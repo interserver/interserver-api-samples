@@ -17,7 +17,7 @@ import ServersBuyNowResponseOrderDetails from './ServersBuyNowResponseOrderDetai
 /**
  * The ServersBuyNowResponse model module.
  * @module model/ServersBuyNowResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServersBuyNowResponse {
     /**

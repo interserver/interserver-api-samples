@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailBlockClickHouse = Initialize-PSOpenAPIToolsMailBlockClickHouse  -Date null `
+$MailBlockClickHouse = Initialize-InterserverApiMailBlockClickHouse  -Date null `
  -VarFrom null `
  -MessageId null `
  -Subject null `

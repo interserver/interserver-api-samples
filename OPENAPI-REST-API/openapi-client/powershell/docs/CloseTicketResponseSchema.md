@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CloseTicketResponseSchema = Initialize-PSOpenAPIToolsCloseTicketResponseSchema  -Success null `
+$CloseTicketResponseSchema = Initialize-InterserverApiCloseTicketResponseSchema  -Success null `
  -Text null
 ```
 

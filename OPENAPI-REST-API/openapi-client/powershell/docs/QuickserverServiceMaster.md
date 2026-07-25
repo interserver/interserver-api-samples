@@ -41,7 +41,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverServiceMaster = Initialize-PSOpenAPIToolsQuickserverServiceMaster  -QsId 365 `
+$QuickserverServiceMaster = Initialize-InterserverApiQuickserverServiceMaster  -QsId 365 `
  -QsName Qs365 `
  -QsIp  `
  -QsType 14 `

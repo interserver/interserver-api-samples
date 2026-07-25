@@ -1,19 +1,19 @@
-# openapi.model.WebsiteClientLink
+# interserver_api.model.WebsiteClientLink
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**label** | **String** | Label for the link | [optional] 
-**link** | **String** | Link URL | [optional] 
-**icon** | **String** | Icon for the link | [optional] 
-**iconText** | **String** | Icon text for the link | [optional] 
-**helpText** | **String** | Help text for the link | [optional] 
-**otherAttr** | **String** | Other attributes for the link | [optional] 
+**label** | **Optional&lt;String?&gt;** | Label for the link | [optional] 
+**link** | **Optional&lt;String?&gt;** | Link URL | [optional] 
+**icon** | **Optional&lt;String?&gt;** | Icon for the link | [optional] 
+**iconText** | **Optional&lt;String?&gt;** | Icon text for the link | [optional] 
+**helpText** | **Optional&lt;String?&gt;** | Help text for the link | [optional] 
+**otherAttr** | **Optional&lt;String?&gt;** | Other attributes for the link | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

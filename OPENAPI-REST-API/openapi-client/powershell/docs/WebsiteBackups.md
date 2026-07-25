@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsiteBackups = Initialize-PSOpenAPIToolsWebsiteBackups 
+$WebsiteBackups = Initialize-InterserverApiWebsiteBackups 
 ```
 
 - Convert the resource to JSON

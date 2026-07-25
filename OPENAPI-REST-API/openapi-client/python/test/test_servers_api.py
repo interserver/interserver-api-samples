@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.servers_api import ServersApi
+from interserver_api_client.api.servers_api import ServersApi
 
 
 class TestServersApi(unittest.TestCase):
@@ -30,126 +30,126 @@ class TestServersApi(unittest.TestCase):
     def test_add_server(self) -> None:
         """Test case for add_server
 
-        Place Server Order
+        Place a custom dedicated server order, creating a real billable invoice
         """
         pass
 
     def test_buy_it_now_server_order(self) -> None:
         """Test case for buy_it_now_server_order
 
-        Get Buy Now Server Options
+        Get configurable options for a Rapid Deploy / coupon dedicated server
         """
         pass
 
     def test_get_mp_servers(self) -> None:
         """Test case for get_mp_servers
 
-        List Marketplace Servers
+        List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
         """
         pass
 
     def test_get_new_server(self) -> None:
         """Test case for get_new_server
 
-        Server Ordering Information
+        Get custom dedicated server ordering options, regions, and pricing
         """
         pass
 
     def test_get_server_info(self) -> None:
         """Test case for get_server_info
 
-        Get Server Order
+        Get full hardware, network, and lifecycle details for a dedicated server
         """
         pass
 
     def test_get_server_invoices(self) -> None:
         """Test case for get_server_invoices
 
-        Get Server Invoices
+        List billing invoices (charges + payments) tied to one dedicated server
         """
         pass
 
     def test_get_server_list(self) -> None:
         """Test case for get_server_list
 
-        List Servers
+        List all dedicated servers owned by the authenticated customer
         """
         pass
 
     def test_get_server_reverse_dns(self) -> None:
         """Test case for get_server_reverse_dns
 
-        Reverse DNS Info
+        List current reverse-DNS (PTR) records for a dedicated server's IPs
         """
         pass
 
     def test_get_servers_welcome_email(self) -> None:
         """Test case for get_servers_welcome_email
 
-        Resend Server Welcome Email
+        Resend the dedicated server welcome email with setup credentials
         """
         pass
 
     def test_place_buy_now_server(self) -> None:
         """Test case for place_buy_now_server
 
-        Place Buy Now Server Order
+        Place a Rapid Deploy / coupon dedicated server order; creates real invoice
         """
         pass
 
     def test_post_server_reverse_dns(self) -> None:
         """Test case for post_server_reverse_dns
 
-        Update Reverse DNS
+        Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
         """
         pass
 
-    def test_put_servers(self) -> None:
-        """Test case for put_servers
+    def test_server_bulk_ipmi_power_get(self) -> None:
+        """Test case for server_bulk_ipmi_power_get
 
-        Validate Server Order
+        Read IPMI chassis power status for many dedicated servers in one call
         """
         pass
 
     def test_server_ipmi_live_get(self) -> None:
         """Test case for server_ipmi_live_get
 
-        Server IPMI Live Information
+        Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
         """
         pass
 
     def test_server_ipmi_live_post(self) -> None:
         """Test case for server_ipmi_live_post
 
-        Server IPMI Live Setup
+        Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
         """
         pass
 
     def test_server_ipmi_power_get(self) -> None:
         """Test case for server_ipmi_power_get
 
-        Get IPMI Power Status
+        Read IPMI chassis power status for a dedicated server (single)
         """
         pass
 
     def test_server_ipmi_power_post(self) -> None:
         """Test case for server_ipmi_power_post
 
-        Server IPMI Power
+        DESTRUCTIVE — change chassis power state on a bare-metal server
         """
         pass
 
     def test_servers_cancel(self) -> None:
         """Test case for servers_cancel
 
-        Cancel Server Service
+        Cancel a dedicated server service at the end of the current billing cycle
         """
         pass
 
     def test_update_server_info(self) -> None:
         """Test case for update_server_info
 
-        Update Server Order
+        Update settings on a dedicated server order (shares handler with view)
         """
         pass
 

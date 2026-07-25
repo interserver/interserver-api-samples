@@ -11,12 +11,40 @@ import Foundation
 public struct InlineResponse20013: Codable {
 
 
-    public var success: Bool
+    public var serviceInfo: InlineResponse20013ServiceInfo?
 
-    public var text: String
-    public init(success: Bool, text: String) { 
-        self.success = success
-        self.text = text
+    public var clientLinks: [InlineResponse20013ClientLinks]?
+
+    public var billingDetails: InlineResponse20013BillingDetails?
+
+    public var custCurrency: String?
+
+    public var custCurrencySymbol: String?
+
+    public var package: String?
+
+    public var extraInfoTables: InlineResponse20013ExtraInfoTables?
+
+    public var filterFirewall: InlineResponse20013FilterFirewall?
+    public init(serviceInfo: InlineResponse20013ServiceInfo? = nil, clientLinks: [InlineResponse20013ClientLinks]? = nil, billingDetails: InlineResponse20013BillingDetails? = nil, custCurrency: String? = nil, custCurrencySymbol: String? = nil, package: String? = nil, extraInfoTables: InlineResponse20013ExtraInfoTables? = nil, filterFirewall: InlineResponse20013FilterFirewall? = nil) { 
+        self.serviceInfo = serviceInfo
+        self.clientLinks = clientLinks
+        self.billingDetails = billingDetails
+        self.custCurrency = custCurrency
+        self.custCurrencySymbol = custCurrencySymbol
+        self.package = package
+        self.extraInfoTables = extraInfoTables
+        self.filterFirewall = filterFirewall
+    }
+    public enum CodingKeys: String, CodingKey { 
+        case serviceInfo
+        case clientLinks = "client_links"
+        case billingDetails
+        case custCurrency
+        case custCurrencySymbol
+        case package
+        case extraInfoTables
+        case filterFirewall = "filter_firewall"
     }
 
 }

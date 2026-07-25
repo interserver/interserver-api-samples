@@ -1,4 +1,4 @@
-# openapi::HomeDetailsModulesDomains
+# interserverapi::HomeDetailsModulesDomains
 
 Dashboard module configuration for domain registration services.
 

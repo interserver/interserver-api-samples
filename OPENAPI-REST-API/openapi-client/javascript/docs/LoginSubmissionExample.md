@@ -1,4 +1,4 @@
-# InterServerManagementApi.LoginSubmissionExample
+# InterserverApiClient.LoginSubmissionExample
 
 ## Properties
 

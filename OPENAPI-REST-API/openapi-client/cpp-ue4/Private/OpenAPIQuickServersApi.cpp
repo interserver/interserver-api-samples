@@ -457,6 +457,33 @@ void OpenAPIQuickServersApi::OnGetNewQsResponse(FHttpRequestPtr HttpRequest, FHt
 	Delegate.ExecuteIfBound(Response);
 }
 
+FHttpRequestPtr OpenAPIQuickServersApi::GetQsBackup(const GetQsBackupRequest& Request, const FGetQsBackupDelegate& Delegate /*= FGetQsBackupDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIQuickServersApi::OnGetQsBackupResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIQuickServersApi::OnGetQsBackupResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetQsBackupDelegate Delegate) const
+{
+	GetQsBackupResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 FHttpRequestPtr OpenAPIQuickServersApi::GetQsBackups(const GetQsBackupsRequest& Request, const FGetQsBackupsDelegate& Delegate /*= FGetQsBackupsDelegate()*/) const
 {
 	if (!IsValid())
@@ -885,33 +912,6 @@ FHttpRequestPtr OpenAPIQuickServersApi::GetQsWelcomeEmail(const GetQsWelcomeEmai
 void OpenAPIQuickServersApi::OnGetQsWelcomeEmailResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetQsWelcomeEmailDelegate Delegate) const
 {
 	GetQsWelcomeEmailResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
-FHttpRequestPtr OpenAPIQuickServersApi::PostQsBackup(const PostQsBackupRequest& Request, const FPostQsBackupDelegate& Delegate /*= FPostQsBackupDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIQuickServersApi::OnPostQsBackupResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPIQuickServersApi::OnPostQsBackupResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FPostQsBackupDelegate Delegate) const
-{
-	PostQsBackupResponse Response;
 	HandleResponse(HttpResponse, bSucceeded, Response);
 	Delegate.ExecuteIfBound(Response);
 }

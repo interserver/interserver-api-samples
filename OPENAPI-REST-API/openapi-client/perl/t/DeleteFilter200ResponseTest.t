@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DeleteFilter200Response');
+use_ok('InterServerAPI::Object::DeleteFilter200Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DeleteFilter200Response->new();
+#my $instance = InterServerAPI::Object::DeleteFilter200Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DeleteFilter200Response');
+#isa_ok($instance, 'InterServerAPI::Object::DeleteFilter200Response');
 
 
 done_testing();

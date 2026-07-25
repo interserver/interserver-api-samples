@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BuyItNowList
 void main() {
-  final instance = BuyItNowListBuilder();
-  // TODO add properties to the builder and call build()
+  final BuyItNowList? instance = /* BuyItNowList(...) */ null;
+  // TODO add properties to the entity
 
   group(BuyItNowList, () {
   });

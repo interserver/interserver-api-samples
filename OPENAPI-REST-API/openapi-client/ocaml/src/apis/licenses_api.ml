@@ -5,13 +5,28 @@
  *
  *)
 
-let add_license () =
+let add_license ~license_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/licenses/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                License_order_request.to_yojson
+    
+    
+    
+ license_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Service_order_post_response.of_yojson) resp body
 
 let get_license_info ~id =
@@ -70,30 +85,6 @@ let get_license_list () =
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
     Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
     Request.read_json_body_as_list_of (JsonSupport.unwrap License_row.of_yojson) resp body
-
-let get_license_order_cat_tag_info ~cat_tag =
-    let open Lwt.Infix in
-    let uri = Request.build_uri "/licenses/order/{catTag}" in
-    let headers = Request.default_headers in
-    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
-    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    let uri = Request.replace_path_param uri "catTag"     
-    
-    
-    
-    
-    
-    
-    
-    
-    (fun x -> x)
-    
-    
-        
-        
- cat_tag in
-    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
-    Request.handle_unit_response resp
 
 let get_licenses_welcome_email ~id =
     let open Lwt.Infix in
@@ -191,13 +182,28 @@ let post_license_change_ip ~id ~ip_object_t =
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
-let put_licenses () =
+let put_licenses ~license_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/licenses/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `PUT uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                License_order_request.to_yojson
+    
+    
+    
+ license_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `PUT uri ~headers ~body >>= fun (resp, body) ->
     Request.handle_unit_response resp
 
 let update_license_info ~id =

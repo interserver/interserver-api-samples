@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::TimezoneUpdate
+# InterServerAPI::Object::TimezoneUpdate
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::TimezoneUpdate;
+use InterServerAPI::Object::TimezoneUpdate;
 ```
 
 ## Properties

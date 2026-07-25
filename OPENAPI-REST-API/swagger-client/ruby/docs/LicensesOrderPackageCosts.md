@@ -1,4 +1,4 @@
-# SwaggerClient::LicensesOrderPackageCosts
+# InterserverApiClient::LicensesOrderPackageCosts
 
 ## Properties
 Name | Type | Description | Notes

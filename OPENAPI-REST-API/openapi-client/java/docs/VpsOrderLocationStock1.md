@@ -12,4 +12,8 @@
 |**hyperv** | **Boolean** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

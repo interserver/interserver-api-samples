@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TicketNew = Initialize-PSOpenAPIToolsTicketNew  -Subject null `
+$TicketNew = Initialize-InterserverApiTicketNew  -Subject null `
  -Body null `
  -ServiceId null `
  -ServiceModule null

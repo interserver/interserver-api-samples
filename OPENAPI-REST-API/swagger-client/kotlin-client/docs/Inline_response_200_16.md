@@ -3,5 +3,5 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | [**kotlin.Boolean**](.md) |  |  [optional]
-**text** | [**kotlin.String**](.md) |  |  [optional]
+**success** | [**kotlin.Boolean**](.md) |  | 
+**text** | [**kotlin.String**](.md) |  | 

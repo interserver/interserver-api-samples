@@ -20,4 +20,3 @@ case class QuickserverIpInfo(
   title: Option[String] = None,
   rows: Option[Seq[QuickserverIpTableRow]] = None
 )
-

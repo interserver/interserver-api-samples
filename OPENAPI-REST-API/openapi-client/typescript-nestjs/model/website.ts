@@ -9,11 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { WebsiteClientLink } from './websiteClientLink';
-import { WebsiteBillingDetails } from './websiteBillingDetails';
-import { WebsiteServiceInfo } from './websiteServiceInfo';
-import { WebsiteExtraInfoTables } from './websiteExtraInfoTables';
-import { WebsiteServiceMaster } from './websiteServiceMaster';
+import { WebsiteClientLink } from './website-client-link';
+import { WebsiteBillingDetails } from './website-billing-details';
+import { WebsiteServiceInfo } from './website-service-info';
+import { WebsiteExtraInfoTables } from './website-extra-info-tables';
+import { WebsiteServiceMaster } from './website-service-master';
 
 
 /**

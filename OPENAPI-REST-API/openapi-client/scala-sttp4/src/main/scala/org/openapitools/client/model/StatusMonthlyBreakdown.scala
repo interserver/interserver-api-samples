@@ -23,4 +23,3 @@ case class StatusMonthlyBreakdown(
   locked: MonthlyCounts,
   paid: MonthlyCounts
 )
-

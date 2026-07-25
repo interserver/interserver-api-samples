@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoDataFraudrecord = Initialize-PSOpenAPIToolsAccountInfoDataFraudrecord  -Score null `
+$AccountInfoDataFraudrecord = Initialize-InterserverApiAccountInfoDataFraudrecord  -Score null `
  -Count null `
  -Reliability null `
  -Code null

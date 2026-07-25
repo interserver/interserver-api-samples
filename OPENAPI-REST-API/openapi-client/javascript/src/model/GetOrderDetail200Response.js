@@ -19,7 +19,7 @@ import GetOrderDetail200ResponseServiceTypesInner from './GetOrderDetail200Respo
 /**
  * The GetOrderDetail200Response model module.
  * @module model/GetOrderDetail200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetOrderDetail200Response {
     /**

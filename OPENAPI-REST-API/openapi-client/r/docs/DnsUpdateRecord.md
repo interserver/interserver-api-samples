@@ -1,4 +1,4 @@
-# openapi::DnsUpdateRecord
+# interserverapi::DnsUpdateRecord
 
 The request data to update a dns record.
 

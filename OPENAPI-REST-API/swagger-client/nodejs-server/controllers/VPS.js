@@ -143,6 +143,16 @@ module.exports.getNewVps = function getNewVps (req, res, next) {
     });
 };
 
+module.exports.getVpsBackup = function getVpsBackup (req, res, next, id) {
+  VPS.getVpsBackup(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.getVpsBackups = function getVpsBackups (req, res, next, id, all) {
   VPS.getVpsBackups(id, all)
     .then(function (response) {
@@ -173,6 +183,26 @@ module.exports.getVpsBuyIp = function getVpsBuyIp (req, res, next, id) {
     });
 };
 
+module.exports.getVpsChangeHostname = function getVpsChangeHostname (req, res, next, id) {
+  VPS.getVpsChangeHostname(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.getVpsChangeRootPassword = function getVpsChangeRootPassword (req, res, next, id) {
+  VPS.getVpsChangeRootPassword(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.getVpsChangeTimezone = function getVpsChangeTimezone (req, res, next, id) {
   VPS.getVpsChangeTimezone(id)
     .then(function (response) {
@@ -185,6 +215,16 @@ module.exports.getVpsChangeTimezone = function getVpsChangeTimezone (req, res, n
 
 module.exports.getVpsInfo = function getVpsInfo (req, res, next, id) {
   VPS.getVpsInfo(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.getVpsInsertCd = function getVpsInsertCd (req, res, next, id) {
+  VPS.getVpsInsertCd(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -215,6 +255,16 @@ module.exports.getVpsList = function getVpsList (req, res, next) {
 
 module.exports.getVpsReinstallOs = function getVpsReinstallOs (req, res, next, id) {
   VPS.getVpsReinstallOs(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.getVpsResetPassword = function getVpsResetPassword (req, res, next, id) {
+  VPS.getVpsResetPassword(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -275,16 +325,6 @@ module.exports.getVpsViewDesktop = function getVpsViewDesktop (req, res, next, i
 
 module.exports.getVpsWelcomeEmail = function getVpsWelcomeEmail (req, res, next, id) {
   VPS.getVpsWelcomeEmail(id)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.postVpsBackup = function postVpsBackup (req, res, next, id) {
-  VPS.postVpsBackup(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -503,6 +543,16 @@ module.exports.postVpsSlices = function postVpsSlices (req, res, next, id) {
     });
 };
 
+module.exports.postVpsTrafficUsage = function postVpsTrafficUsage (req, res, next, id) {
+  VPS.postVpsTrafficUsage(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.postVpsViewDesktop = function postVpsViewDesktop (req, res, next, id) {
   VPS.postVpsViewDesktop(id)
     .then(function (response) {
@@ -525,6 +575,16 @@ module.exports.putVps = function putVps (req, res, next, body) {
 
 module.exports.putVps = function putVps (req, res, next, body) {
   VPS.putVps(body)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.putVpsBuyHdSpace = function putVpsBuyHdSpace (req, res, next, id) {
+  VPS.putVpsBuyHdSpace(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })

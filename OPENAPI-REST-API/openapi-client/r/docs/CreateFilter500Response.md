@@ -1,4 +1,4 @@
-# openapi::CreateFilter500Response
+# interserverapi::CreateFilter500Response
 
 
 ## Properties

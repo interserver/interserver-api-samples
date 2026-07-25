@@ -1,4 +1,4 @@
-# SwaggerClient::VpsTrafficUsageAverageSectionResponse
+# InterserverApiClient::VpsTrafficUsageAverageSectionResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -22,4 +22,3 @@ case class GetScrubIpDetails200ResponseBillingDetails(
   service_currency_symbol: Option[String] = None,
   service_cost_info: Option[String] = None
 )
-

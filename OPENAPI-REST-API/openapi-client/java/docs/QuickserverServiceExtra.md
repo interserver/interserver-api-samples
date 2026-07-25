@@ -10,4 +10,8 @@
 |**platform** | **String** | Platform information |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

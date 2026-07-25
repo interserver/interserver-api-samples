@@ -1,4 +1,4 @@
-# SwaggerClient::ReplyTicketResponseSchema
+# InterserverApiClient::ReplyTicketResponseSchema
 
 ## Properties
 Name | Type | Description | Notes

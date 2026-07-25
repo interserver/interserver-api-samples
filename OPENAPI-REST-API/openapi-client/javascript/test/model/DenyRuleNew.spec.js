@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DenyRuleNew();
+    instance = new InterserverApiClient.DenyRuleNew();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('DenyRuleNew', function() {
     it('should create an instance of DenyRuleNew', function() {
       // uncomment below and update the code to test DenyRuleNew
-      //var instance = new InterServerManagementApi.DenyRuleNew();
-      //expect(instance).to.be.a(InterServerManagementApi.DenyRuleNew);
+      //var instance = new InterserverApiClient.DenyRuleNew();
+      //expect(instance).to.be.a(InterserverApiClient.DenyRuleNew);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.DenyRuleNew();
+      //var instance = new InterserverApiClient.DenyRuleNew();
       //expect(instance).to.be();
     });
 
     it('should have the property data (base name: "data")', function() {
       // uncomment below and update the code to test the property data
-      //var instance = new InterServerManagementApi.DenyRuleNew();
+      //var instance = new InterserverApiClient.DenyRuleNew();
       //expect(instance).to.be();
     });
 
     it('should have the property user (base name: "user")', function() {
       // uncomment below and update the code to test the property user
-      //var instance = new InterServerManagementApi.DenyRuleNew();
+      //var instance = new InterserverApiClient.DenyRuleNew();
       //expect(instance).to.be();
     });
 

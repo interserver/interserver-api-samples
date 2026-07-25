@@ -12,111 +12,177 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  CancelScrubIp200Response,
-  ChargeInvoiceRows,
-  CreateFilter,
-  CreateFilter201Response,
-  CreateFilter400Response,
-  CreateFilter500Response,
-  CreateFirewallRule,
-  CreateGeoFirewallRule,
-  CreateGeoRule400Response,
-  CreateRule201Response,
-  CreateRule400Response,
-  CreateRule500Response,
-  DeleteFilter200Response,
-  DeleteFilter400Response,
-  DeleteFilter500Response,
-  DeleteFirewallRule,
-  DeleteGeoFirewallRule,
-  DisableScrub200Response,
-  DisableScrub400Response,
-  DisableScrub500Response,
-  EnableScrub200Response,
-  EnableScrub500Response,
-  GetAccountInfo401Response,
-  GetOrderDetail200Response,
-  GetScrubIpDetails200Response,
-  PlaceScrubOrder201Response,
-  ScrubIpFilterTypes,
-  ScrubIpPlaceOrder,
-  ScrubIpsDeleteRule200Response,
-  ScrubIpsDeleteRule400Response,
-  ScrubIpsDeleteRule500Response,
-  ScrubIpsLogRowSchema,
-  ScrubIpsRowSchema,
-} from '../models/index';
 import {
+    type CancelScrubIp200Response,
     CancelScrubIp200ResponseFromJSON,
     CancelScrubIp200ResponseToJSON,
+} from '../models/CancelScrubIp200Response';
+import {
+    type ChargeInvoiceRows,
     ChargeInvoiceRowsFromJSON,
     ChargeInvoiceRowsToJSON,
+} from '../models/ChargeInvoiceRows';
+import {
+    type CreateFilter,
     CreateFilterFromJSON,
     CreateFilterToJSON,
+} from '../models/CreateFilter';
+import {
+    type CreateFilter201Response,
     CreateFilter201ResponseFromJSON,
     CreateFilter201ResponseToJSON,
+} from '../models/CreateFilter201Response';
+import {
+    type CreateFilter400Response,
     CreateFilter400ResponseFromJSON,
     CreateFilter400ResponseToJSON,
+} from '../models/CreateFilter400Response';
+import {
+    type CreateFilter500Response,
     CreateFilter500ResponseFromJSON,
     CreateFilter500ResponseToJSON,
+} from '../models/CreateFilter500Response';
+import {
+    type CreateFirewallRule,
     CreateFirewallRuleFromJSON,
     CreateFirewallRuleToJSON,
+} from '../models/CreateFirewallRule';
+import {
+    type CreateGeoFirewallRule,
     CreateGeoFirewallRuleFromJSON,
     CreateGeoFirewallRuleToJSON,
+} from '../models/CreateGeoFirewallRule';
+import {
+    type CreateGeoRule400Response,
     CreateGeoRule400ResponseFromJSON,
     CreateGeoRule400ResponseToJSON,
+} from '../models/CreateGeoRule400Response';
+import {
+    type CreateRule201Response,
     CreateRule201ResponseFromJSON,
     CreateRule201ResponseToJSON,
+} from '../models/CreateRule201Response';
+import {
+    type CreateRule400Response,
     CreateRule400ResponseFromJSON,
     CreateRule400ResponseToJSON,
+} from '../models/CreateRule400Response';
+import {
+    type CreateRule500Response,
     CreateRule500ResponseFromJSON,
     CreateRule500ResponseToJSON,
+} from '../models/CreateRule500Response';
+import {
+    type DeleteFilter200Response,
     DeleteFilter200ResponseFromJSON,
     DeleteFilter200ResponseToJSON,
+} from '../models/DeleteFilter200Response';
+import {
+    type DeleteFilter400Response,
     DeleteFilter400ResponseFromJSON,
     DeleteFilter400ResponseToJSON,
+} from '../models/DeleteFilter400Response';
+import {
+    type DeleteFilter500Response,
     DeleteFilter500ResponseFromJSON,
     DeleteFilter500ResponseToJSON,
+} from '../models/DeleteFilter500Response';
+import {
+    type DeleteFirewallRule,
     DeleteFirewallRuleFromJSON,
     DeleteFirewallRuleToJSON,
+} from '../models/DeleteFirewallRule';
+import {
+    type DeleteGeoFirewallRule,
     DeleteGeoFirewallRuleFromJSON,
     DeleteGeoFirewallRuleToJSON,
+} from '../models/DeleteGeoFirewallRule';
+import {
+    type DisableScrub200Response,
     DisableScrub200ResponseFromJSON,
     DisableScrub200ResponseToJSON,
+} from '../models/DisableScrub200Response';
+import {
+    type DisableScrub400Response,
     DisableScrub400ResponseFromJSON,
     DisableScrub400ResponseToJSON,
+} from '../models/DisableScrub400Response';
+import {
+    type DisableScrub500Response,
     DisableScrub500ResponseFromJSON,
     DisableScrub500ResponseToJSON,
+} from '../models/DisableScrub500Response';
+import {
+    type EnableScrub200Response,
     EnableScrub200ResponseFromJSON,
     EnableScrub200ResponseToJSON,
+} from '../models/EnableScrub200Response';
+import {
+    type EnableScrub500Response,
     EnableScrub500ResponseFromJSON,
     EnableScrub500ResponseToJSON,
+} from '../models/EnableScrub500Response';
+import {
+    type GetAccountInfo401Response,
     GetAccountInfo401ResponseFromJSON,
     GetAccountInfo401ResponseToJSON,
+} from '../models/GetAccountInfo401Response';
+import {
+    type GetOrderDetail200Response,
     GetOrderDetail200ResponseFromJSON,
     GetOrderDetail200ResponseToJSON,
+} from '../models/GetOrderDetail200Response';
+import {
+    type GetScrubIpDetails200Response,
     GetScrubIpDetails200ResponseFromJSON,
     GetScrubIpDetails200ResponseToJSON,
+} from '../models/GetScrubIpDetails200Response';
+import {
+    type PlaceScrubOrder201Response,
     PlaceScrubOrder201ResponseFromJSON,
     PlaceScrubOrder201ResponseToJSON,
+} from '../models/PlaceScrubOrder201Response';
+import {
+    type PutScrubIps200Response,
+    PutScrubIps200ResponseFromJSON,
+    PutScrubIps200ResponseToJSON,
+} from '../models/PutScrubIps200Response';
+import {
+    type ScrubIpFilterTypes,
     ScrubIpFilterTypesFromJSON,
     ScrubIpFilterTypesToJSON,
+} from '../models/ScrubIpFilterTypes';
+import {
+    type ScrubIpPlaceOrder,
     ScrubIpPlaceOrderFromJSON,
     ScrubIpPlaceOrderToJSON,
+} from '../models/ScrubIpPlaceOrder';
+import {
+    type ScrubIpsDeleteRule200Response,
     ScrubIpsDeleteRule200ResponseFromJSON,
     ScrubIpsDeleteRule200ResponseToJSON,
+} from '../models/ScrubIpsDeleteRule200Response';
+import {
+    type ScrubIpsDeleteRule400Response,
     ScrubIpsDeleteRule400ResponseFromJSON,
     ScrubIpsDeleteRule400ResponseToJSON,
+} from '../models/ScrubIpsDeleteRule400Response';
+import {
+    type ScrubIpsDeleteRule500Response,
     ScrubIpsDeleteRule500ResponseFromJSON,
     ScrubIpsDeleteRule500ResponseToJSON,
+} from '../models/ScrubIpsDeleteRule500Response';
+import {
+    type ScrubIpsLogRowSchema,
     ScrubIpsLogRowSchemaFromJSON,
     ScrubIpsLogRowSchemaToJSON,
+} from '../models/ScrubIpsLogRowSchema';
+import {
+    type ScrubIpsRowSchema,
     ScrubIpsRowSchemaFromJSON,
     ScrubIpsRowSchemaToJSON,
-} from '../models/index';
+} from '../models/ScrubIpsRowSchema';
 
 export interface CancelScrubIpRequest {
     id: number;
@@ -166,6 +232,10 @@ export interface PlaceScrubOrderRequest {
     scrubIpPlaceOrder: ScrubIpPlaceOrder;
 }
 
+export interface PutScrubIpsRequest {
+    scrubIpPlaceOrder: ScrubIpPlaceOrder;
+}
+
 export interface ScrubIpsDeleteGeoRuleRequest {
     id: number;
     deleteGeoFirewallRule: DeleteGeoFirewallRule;
@@ -206,7 +276,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -217,8 +287,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Cancels the Scrub IP DDoS protection service. The protection will be removed and billing will stop at the end of the current billing cycle.
-     * Cancel Scrub IP Service
+     * Cancels the Scrub IP DDoS protection service. The protected IP is removed from the scrubbing infrastructure and the recurring invoice is closed; protection stops at end of the current billing cycle. Use only when the customer no longer needs DDoS scrubbing for the IP. Path param: `id` (integer, required) — service ID from getScrubIpsList. No request body. Returns {success: true, text: \'Scrub Ips is canceled.\'}. Errors: 401 unauthenticated; 404/Invalid Service if id is not owned by the session account; 409 if the service is not in a cancellable state. Caveat: leaves the underlying VPS/server IP exposed to attacks once protection ends; contact billing for refund handling. Siblings: getScrubIpDetails, disableScrub, getScrubIpInvoices.
+     * Cancel a Scrub IP service and stop its recurring DDoS billing
      */
     async cancelScrubIpRaw(requestParameters: CancelScrubIpRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CancelScrubIp200Response>> {
         const requestOptions = await this.cancelScrubIpRequestOpts(requestParameters);
@@ -228,8 +298,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Cancels the Scrub IP DDoS protection service. The protection will be removed and billing will stop at the end of the current billing cycle.
-     * Cancel Scrub IP Service
+     * Cancels the Scrub IP DDoS protection service. The protected IP is removed from the scrubbing infrastructure and the recurring invoice is closed; protection stops at end of the current billing cycle. Use only when the customer no longer needs DDoS scrubbing for the IP. Path param: `id` (integer, required) — service ID from getScrubIpsList. No request body. Returns {success: true, text: \'Scrub Ips is canceled.\'}. Errors: 401 unauthenticated; 404/Invalid Service if id is not owned by the session account; 409 if the service is not in a cancellable state. Caveat: leaves the underlying VPS/server IP exposed to attacks once protection ends; contact billing for refund handling. Siblings: getScrubIpDetails, disableScrub, getScrubIpInvoices.
+     * Cancel a Scrub IP service and stop its recurring DDoS billing
      */
     async cancelScrubIp(requestParameters: CancelScrubIpRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CancelScrubIp200Response> {
         const response = await this.cancelScrubIpRaw(requestParameters, initOverrides);
@@ -270,7 +340,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}/create_filter`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -282,8 +352,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a traffic filter for the Scrub IP service. Filters apply predefined scrubbing profiles (e.g., DNS, HTTP) to specific destination ports. Use `GET /scrub_ips/filter_types` to list available filter types.
-     * Create Traffic Filter
+     * Attaches a named scrubbing profile to a destination port on the protected IP, applying protocol-aware mitigation (DNS amplification protection, HTTP rate limiting, synproxy SYN-cookies). Call getScrubIpFilterTypes first to list valid `filter_type` values. Path param: `id` (integer, required) — service ID. Body (CreateFilter): `filter_type` (string, required, one of getScrubIpFilterTypes keys), `port` (int, required, >= 0). Destination IP is locked to the service IP server-side; synproxy uses a different shape internally. Returns 201 {success: true, text: \'New filter has been created.\'}. Errors: 400 \'Filter type is empty/invalid\', \'Port is invalid\', or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::filterCreate fails. Siblings: deleteFilter, getScrubIpFilterTypes, createRule.
+     * Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
      */
     async createFilterRaw(requestParameters: CreateFilterRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateFilter201Response>> {
         const requestOptions = await this.createFilterRequestOpts(requestParameters);
@@ -293,8 +363,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a traffic filter for the Scrub IP service. Filters apply predefined scrubbing profiles (e.g., DNS, HTTP) to specific destination ports. Use `GET /scrub_ips/filter_types` to list available filter types.
-     * Create Traffic Filter
+     * Attaches a named scrubbing profile to a destination port on the protected IP, applying protocol-aware mitigation (DNS amplification protection, HTTP rate limiting, synproxy SYN-cookies). Call getScrubIpFilterTypes first to list valid `filter_type` values. Path param: `id` (integer, required) — service ID. Body (CreateFilter): `filter_type` (string, required, one of getScrubIpFilterTypes keys), `port` (int, required, >= 0). Destination IP is locked to the service IP server-side; synproxy uses a different shape internally. Returns 201 {success: true, text: \'New filter has been created.\'}. Errors: 400 \'Filter type is empty/invalid\', \'Port is invalid\', or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::filterCreate fails. Siblings: deleteFilter, getScrubIpFilterTypes, createRule.
+     * Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
      */
     async createFilter(requestParameters: CreateFilterRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateFilter201Response> {
         const response = await this.createFilterRaw(requestParameters, initOverrides);
@@ -335,7 +405,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}/create_geo_rule`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -347,8 +417,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a geographic-based firewall rule for the Scrub IP service. Geo rules allow you to block or allow traffic from specific countries or regions.
-     * Create Geo Firewall Rule
+     * Creates a geo-based XDP rule on the scrubber for the service\'s protected IP. Use to block traffic from specific countries or ASNs (botnet source regions) or to allow only known regions. Path param: `id` (integer, required) — service ID. Body (CreateGeoFirewallRule): `country_code` (int, country numeric ID) OR `asn` (int) — at least one is required, `destination_port` (int, defaults 80), `xdp_action` (0 allow, 1 drop, defaults 1). Destination IP is locked to the service IP server-side. Returns 201 {success: true} when created. Errors: 400 errors[] \'Country or Asn is required.\' or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::geoFirewallCreate fails. Caveat: country_code is an internal numeric ID, not ISO-3166. Siblings: scrubIpsDeleteGeoRule, createRule, createFilter.
+     * Add a geographic firewall rule (block/allow by country code or ASN)
      */
     async createGeoRuleRaw(requestParameters: CreateGeoRuleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRule201Response>> {
         const requestOptions = await this.createGeoRuleRequestOpts(requestParameters);
@@ -358,8 +428,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a geographic-based firewall rule for the Scrub IP service. Geo rules allow you to block or allow traffic from specific countries or regions.
-     * Create Geo Firewall Rule
+     * Creates a geo-based XDP rule on the scrubber for the service\'s protected IP. Use to block traffic from specific countries or ASNs (botnet source regions) or to allow only known regions. Path param: `id` (integer, required) — service ID. Body (CreateGeoFirewallRule): `country_code` (int, country numeric ID) OR `asn` (int) — at least one is required, `destination_port` (int, defaults 80), `xdp_action` (0 allow, 1 drop, defaults 1). Destination IP is locked to the service IP server-side. Returns 201 {success: true} when created. Errors: 400 errors[] \'Country or Asn is required.\' or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::geoFirewallCreate fails. Caveat: country_code is an internal numeric ID, not ISO-3166. Siblings: scrubIpsDeleteGeoRule, createRule, createFilter.
+     * Add a geographic firewall rule (block/allow by country code or ASN)
      */
     async createGeoRule(requestParameters: CreateGeoRuleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateRule201Response> {
         const response = await this.createGeoRuleRaw(requestParameters, initOverrides);
@@ -400,7 +470,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}/create_rule`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -412,8 +482,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a new firewall rule for the Scrub IP service. Rules allow you to block or allow traffic based on source IP, destination port, and protocol.
-     * Create Firewall Rule
+     * Creates an XDP firewall rule on the scrubber for the service\'s protected IP. Use to whitelist a known good source, block an abusive source, or restrict a destination port. Path param: `id` (integer, required) — service ID. Body (CreateFirewallRule): `source_ip` (IPv4, 0 = any), `source_port` (int, 0 = any), `destination_port` (int, 0 = any), `protocol_id` (1 ICMP or 2 TCP/UDP — must be 1 or 2), `xdp_action` (0 allow, 1 drop). Destination IP is locked to the service IP server-side. Returns 201 {success: true} when created. Errors: 400 with `errors[]` for invalid source_ip/protocol_id/xdp_action or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::firewallCreate fails. Caveat: rules are stateless and may interact with active filters. Siblings: scrubIpsDeleteRule, createGeoRule, createFilter.
+     * Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
      */
     async createRuleRaw(requestParameters: CreateRuleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRule201Response>> {
         const requestOptions = await this.createRuleRequestOpts(requestParameters);
@@ -423,8 +493,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates a new firewall rule for the Scrub IP service. Rules allow you to block or allow traffic based on source IP, destination port, and protocol.
-     * Create Firewall Rule
+     * Creates an XDP firewall rule on the scrubber for the service\'s protected IP. Use to whitelist a known good source, block an abusive source, or restrict a destination port. Path param: `id` (integer, required) — service ID. Body (CreateFirewallRule): `source_ip` (IPv4, 0 = any), `source_port` (int, 0 = any), `destination_port` (int, 0 = any), `protocol_id` (1 ICMP or 2 TCP/UDP — must be 1 or 2), `xdp_action` (0 allow, 1 drop). Destination IP is locked to the service IP server-side. Returns 201 {success: true} when created. Errors: 400 with `errors[]` for invalid source_ip/protocol_id/xdp_action or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::firewallCreate fails. Caveat: rules are stateless and may interact with active filters. Siblings: scrubIpsDeleteRule, createGeoRule, createFilter.
+     * Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
      */
     async createRule(requestParameters: CreateRuleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateRule201Response> {
         const response = await this.createRuleRaw(requestParameters, initOverrides);
@@ -465,7 +535,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}/delete_filter`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -477,8 +547,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Removes an existing traffic filter from the Scrub IP service. Provide the same filter parameters used during creation to identify which filter to remove.
-     * Delete Traffic Filter
+     * Removes a previously attached scrubbing profile from the protected IP. Identification is by composite key, not `rule_id` — pass the same `filter_type` and `port` that were used in `createFilter`. The endpoint splits `filter_type` on `_` to dispatch to the correct delete shape (synproxy vs generic). Sibling ops: `createFilter`, `getScrubIpFilterTypes`.  **Path:** `id` (integer, required) — Scrub IP service ID.  **Body fields:** - `filter_type` (string, required) — must match an enabled type from `getScrubIpFilterTypes`. - `port` (integer, required) — must be `> 0`.  **Returns:** `{ success: true, text: \'Filter is deleted.\' }`.  **Errors:** - `400` — `\'Filter is required.\'` / `\'Port is required.\'` / `\'Invalid filter\'` / `Invalid Service`. - `401` — unauthenticated. - `500` — upstream `Scrub::filterDelete` failed.  **Caveat:** the port loses its protocol-specific scrubbing protection until `createFilter` is called again with the same composite key. 
+     * Remove a scrubbing filter by matching filter_type and port
      */
     async deleteFilterRaw(requestParameters: DeleteFilterRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteFilter200Response>> {
         const requestOptions = await this.deleteFilterRequestOpts(requestParameters);
@@ -488,8 +558,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Removes an existing traffic filter from the Scrub IP service. Provide the same filter parameters used during creation to identify which filter to remove.
-     * Delete Traffic Filter
+     * Removes a previously attached scrubbing profile from the protected IP. Identification is by composite key, not `rule_id` — pass the same `filter_type` and `port` that were used in `createFilter`. The endpoint splits `filter_type` on `_` to dispatch to the correct delete shape (synproxy vs generic). Sibling ops: `createFilter`, `getScrubIpFilterTypes`.  **Path:** `id` (integer, required) — Scrub IP service ID.  **Body fields:** - `filter_type` (string, required) — must match an enabled type from `getScrubIpFilterTypes`. - `port` (integer, required) — must be `> 0`.  **Returns:** `{ success: true, text: \'Filter is deleted.\' }`.  **Errors:** - `400` — `\'Filter is required.\'` / `\'Port is required.\'` / `\'Invalid filter\'` / `Invalid Service`. - `401` — unauthenticated. - `500` — upstream `Scrub::filterDelete` failed.  **Caveat:** the port loses its protocol-specific scrubbing protection until `createFilter` is called again with the same composite key. 
+     * Remove a scrubbing filter by matching filter_type and port
      */
     async deleteFilter(requestParameters: DeleteFilterRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteFilter200Response> {
         const response = await this.deleteFilterRaw(requestParameters, initOverrides);
@@ -521,7 +591,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}/disable`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -532,8 +602,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Disables DDoS scrubbing protection on the IP address. Traffic will no longer be routed through the scrubbing infrastructure.
-     * Disable Scrub Protection
+     * Withdraws the BGP announcement from Wanguard so the IP stops being routed through scrubbing; traffic resumes flowing directly to the backend. Use for maintenance windows or migration off scrub. Path param: `id` (integer, required) — service ID from getScrubIpsList. No body (HTTP GET). The endpoint reads the stored Wanguard `href` from the service\'s `extra` JSON to know which announcement to delete; clears `extra` on success. Returns {success: true, text: \'Scrub is disabled on your IP.\'}. Errors: 400 Invalid Service if id is not owned, or \'Scrub is not enabled in this service.\' if there is no active announcement; 401 unauthenticated; 500 if upstream delete fails. Caveat: leaves the IP unprotected against DDoS until enableScrub is called. Siblings: enableScrub, cancelScrubIp, getScrubIpDetails.
+     * Disable DDoS scrubbing and remove the BGP announcement on the IP
      */
     async disableScrubRaw(requestParameters: DisableScrubRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DisableScrub200Response>> {
         const requestOptions = await this.disableScrubRequestOpts(requestParameters);
@@ -543,8 +613,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Disables DDoS scrubbing protection on the IP address. Traffic will no longer be routed through the scrubbing infrastructure.
-     * Disable Scrub Protection
+     * Withdraws the BGP announcement from Wanguard so the IP stops being routed through scrubbing; traffic resumes flowing directly to the backend. Use for maintenance windows or migration off scrub. Path param: `id` (integer, required) — service ID from getScrubIpsList. No body (HTTP GET). The endpoint reads the stored Wanguard `href` from the service\'s `extra` JSON to know which announcement to delete; clears `extra` on success. Returns {success: true, text: \'Scrub is disabled on your IP.\'}. Errors: 400 Invalid Service if id is not owned, or \'Scrub is not enabled in this service.\' if there is no active announcement; 401 unauthenticated; 500 if upstream delete fails. Caveat: leaves the IP unprotected against DDoS until enableScrub is called. Siblings: enableScrub, cancelScrubIp, getScrubIpDetails.
+     * Disable DDoS scrubbing and remove the BGP announcement on the IP
      */
     async disableScrub(requestParameters: DisableScrubRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DisableScrub200Response> {
         const response = await this.disableScrubRaw(requestParameters, initOverrides);
@@ -576,7 +646,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}/enable`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -587,8 +657,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Enables DDoS scrubbing protection on the IP address associated with this service. Traffic will be routed through the scrubbing infrastructure to filter malicious packets.
-     * Enable Scrub Protection
+     * Routes the service\'s protected IP through the Wanguard scrubbing infrastructure by creating a BGP announcement, so inbound traffic passes through filtering before reaching the backend. Call after placeScrubOrder activation, after disableScrub, or whenever the announcement was lost. Path param: `id` (integer, required) — service ID from getScrubIpsList. No request body (HTTP GET). Returns {success: true, text: \'Scrub is enabled on your IP.\'} on 201 from Wanguard, persisted into the service\'s `extra` column. Errors: 400 Invalid Service if id is not owned by the session account; 401 unauthenticated; 500 if the upstream Wanguard call fails. Caveat: enabling re-routes live traffic and can briefly disrupt active sessions. Siblings: disableScrub, getScrubIpDetails, getScrubIpLogs.
+     * Enable DDoS scrubbing (BGP announcement) on the service\'s protected IP
      */
     async enableScrubRaw(requestParameters: EnableScrubRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EnableScrub200Response>> {
         const requestOptions = await this.enableScrubRequestOpts(requestParameters);
@@ -598,8 +668,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Enables DDoS scrubbing protection on the IP address associated with this service. Traffic will be routed through the scrubbing infrastructure to filter malicious packets.
-     * Enable Scrub Protection
+     * Routes the service\'s protected IP through the Wanguard scrubbing infrastructure by creating a BGP announcement, so inbound traffic passes through filtering before reaching the backend. Call after placeScrubOrder activation, after disableScrub, or whenever the announcement was lost. Path param: `id` (integer, required) — service ID from getScrubIpsList. No request body (HTTP GET). Returns {success: true, text: \'Scrub is enabled on your IP.\'} on 201 from Wanguard, persisted into the service\'s `extra` column. Errors: 400 Invalid Service if id is not owned by the session account; 401 unauthenticated; 500 if the upstream Wanguard call fails. Caveat: enabling re-routes live traffic and can briefly disrupt active sessions. Siblings: disableScrub, getScrubIpDetails, getScrubIpLogs.
+     * Enable DDoS scrubbing (BGP announcement) on the service\'s protected IP
      */
     async enableScrub(requestParameters: EnableScrubRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EnableScrub200Response> {
         const response = await this.enableScrubRaw(requestParameters, initOverrides);
@@ -634,8 +704,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the available Scrub IP service plans and pricing information needed to build an order form.
-     * Get Scrub IP Ordering Information
+     * Returns the data needed to render a new-order form: `packageCosts` (default services_id and recurring price in customer currency with symbol), `serviceTypes` (each buyable plan with services_id, services_name, services_cost, services_module), and `ips` (the customer\'s existing VPS/server/floating IPs eligible to be put behind a scrubber, each with service_id, service_module, service_hostname). Use as a precursor to putScrubIps (validate) or placeScrubOrder (commit). No path/query/body parameters. Returns object. Errors: 401 unauthenticated. Caveat: ips list is filtered to the session account; pricing is converted to the customer\'s currency. Siblings: putScrubIps, placeScrubOrder, getScrubIpsList.
+     * Get plans, pricing, and eligible IPs for a new Scrub IP order
      */
     async getOrderDetailRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetOrderDetail200Response>> {
         const requestOptions = await this.getOrderDetailRequestOpts();
@@ -645,8 +715,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the available Scrub IP service plans and pricing information needed to build an order form.
-     * Get Scrub IP Ordering Information
+     * Returns the data needed to render a new-order form: `packageCosts` (default services_id and recurring price in customer currency with symbol), `serviceTypes` (each buyable plan with services_id, services_name, services_cost, services_module), and `ips` (the customer\'s existing VPS/server/floating IPs eligible to be put behind a scrubber, each with service_id, service_module, service_hostname). Use as a precursor to putScrubIps (validate) or placeScrubOrder (commit). No path/query/body parameters. Returns object. Errors: 401 unauthenticated. Caveat: ips list is filtered to the session account; pricing is converted to the customer\'s currency. Siblings: putScrubIps, placeScrubOrder, getScrubIpsList.
+     * Get plans, pricing, and eligible IPs for a new Scrub IP order
      */
     async getOrderDetail(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetOrderDetail200Response> {
         const response = await this.getOrderDetailRaw(initOverrides);
@@ -678,7 +748,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -689,8 +759,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns detailed information about a Scrub IP service, including connection details, billing information, active firewall rules, and traffic filters.
-     * Get Scrub IP Details
+     * Returns the full service-detail payload for one Scrub IP — used to render the dashboard or before mutating rules/filters. Includes `serviceInfo` (status, scrubbed IP, custid), `billingDetails` (cost, frequency), `client_links` (allowed self-service actions), and `filter_firewall` with the active firewall `rules`, geographic `geo_rules`, and traffic `filters`. Each rule/filter row carries its own `id` used by the delete endpoints. Sibling ops: `getScrubIpsList`, `enableScrub`, `disableScrub`, `createRule`, `scrubIpsDeleteRule`, `createGeoRule`, `scrubIpsDeleteGeoRule`, `createFilter`, `deleteFilter`, `getScrubIpInvoices`, `getScrubIpLogs`, `cancelScrubIp`.  **Path:** `id` (integer, required) — service ID from `getScrubIpsList`.  **Body / query:** None.  **Returns:** object with `serviceInfo`, `billingDetails`, `client_links`, `filter_firewall` (`rules` / `geo_rules` / `filters`).  **Auth:** Session/API key. Ownership enforced via `scrub_ips_custid`.  **Errors:** - `401` — unauthenticated. - `Invalid Service` — `id` is not owned by the session account.  **Caveat:** rule/filter IDs are regenerated after recreate — re-fetch before calling a delete endpoint.  **Related calls:** - **Mutations:** `enableScrub`, `disableScrub`, `createRule`, `createGeoRule`, `createFilter`. - **Deletes:** `scrubIpsDeleteRule`, `scrubIpsDeleteGeoRule`, `deleteFilter`. - **Billing / activity:** `getScrubIpInvoices`, `getScrubIpLogs`. - **Cancel:** `cancelScrubIp`. 
+     * Get full Scrub IP service detail (rules + geo + filters)
      */
     async getScrubIpDetailsRaw(requestParameters: GetScrubIpDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetScrubIpDetails200Response>> {
         const requestOptions = await this.getScrubIpDetailsRequestOpts(requestParameters);
@@ -700,8 +770,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns detailed information about a Scrub IP service, including connection details, billing information, active firewall rules, and traffic filters.
-     * Get Scrub IP Details
+     * Returns the full service-detail payload for one Scrub IP — used to render the dashboard or before mutating rules/filters. Includes `serviceInfo` (status, scrubbed IP, custid), `billingDetails` (cost, frequency), `client_links` (allowed self-service actions), and `filter_firewall` with the active firewall `rules`, geographic `geo_rules`, and traffic `filters`. Each rule/filter row carries its own `id` used by the delete endpoints. Sibling ops: `getScrubIpsList`, `enableScrub`, `disableScrub`, `createRule`, `scrubIpsDeleteRule`, `createGeoRule`, `scrubIpsDeleteGeoRule`, `createFilter`, `deleteFilter`, `getScrubIpInvoices`, `getScrubIpLogs`, `cancelScrubIp`.  **Path:** `id` (integer, required) — service ID from `getScrubIpsList`.  **Body / query:** None.  **Returns:** object with `serviceInfo`, `billingDetails`, `client_links`, `filter_firewall` (`rules` / `geo_rules` / `filters`).  **Auth:** Session/API key. Ownership enforced via `scrub_ips_custid`.  **Errors:** - `401` — unauthenticated. - `Invalid Service` — `id` is not owned by the session account.  **Caveat:** rule/filter IDs are regenerated after recreate — re-fetch before calling a delete endpoint.  **Related calls:** - **Mutations:** `enableScrub`, `disableScrub`, `createRule`, `createGeoRule`, `createFilter`. - **Deletes:** `scrubIpsDeleteRule`, `scrubIpsDeleteGeoRule`, `deleteFilter`. - **Billing / activity:** `getScrubIpInvoices`, `getScrubIpLogs`. - **Cancel:** `cancelScrubIp`. 
+     * Get full Scrub IP service detail (rules + geo + filters)
      */
     async getScrubIpDetails(requestParameters: GetScrubIpDetailsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetScrubIpDetails200Response> {
         const response = await this.getScrubIpDetailsRaw(requestParameters, initOverrides);
@@ -736,8 +806,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the list of scrub filter types that can be used when creating filter rules via `/scrub_ips/{id}/create_filter`.
-     * List Scrub Filter Types
+     * Returns the catalog of scrub filter profiles (e.g. dns, http, synproxy) currently enabled on the scrubbing platform, keyed by filter_name with a humanized display `name` and `desc`. Call this to populate a dropdown before invoking createFilter — the `filter_type` field on that endpoint must be one of the keys returned here. Not service-scoped: no path/query/body parameters and the same set applies to every Scrub IP. Returns {success: true, filters: {<filter_name>: {name, desc}, ...}}. Errors: 401 unauthenticated. Caveat: only filters with enabled=1 are returned; profile semantics are platform-defined (synproxy uses different request shape internally). Siblings: createFilter, deleteFilter, getScrubIpDetails.
+     * List enabled traffic filter profiles available for createFilter
      */
     async getScrubIpFilterTypesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ScrubIpFilterTypes>> {
         const requestOptions = await this.getScrubIpFilterTypesRequestOpts();
@@ -747,8 +817,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the list of scrub filter types that can be used when creating filter rules via `/scrub_ips/{id}/create_filter`.
-     * List Scrub Filter Types
+     * Returns the catalog of scrub filter profiles (e.g. dns, http, synproxy) currently enabled on the scrubbing platform, keyed by filter_name with a humanized display `name` and `desc`. Call this to populate a dropdown before invoking createFilter — the `filter_type` field on that endpoint must be one of the keys returned here. Not service-scoped: no path/query/body parameters and the same set applies to every Scrub IP. Returns {success: true, filters: {<filter_name>: {name, desc}, ...}}. Errors: 401 unauthenticated. Caveat: only filters with enabled=1 are returned; profile semantics are platform-defined (synproxy uses different request shape internally). Siblings: createFilter, deleteFilter, getScrubIpDetails.
+     * List enabled traffic filter profiles available for createFilter
      */
     async getScrubIpFilterTypes(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ScrubIpFilterTypes> {
         const response = await this.getScrubIpFilterTypesRaw(initOverrides);
@@ -780,7 +850,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}/invoices`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -791,8 +861,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves invoices associated with the scrub IP service. Use these invoices to confirm billing status or to initiate payment.
-     * Get ScrubIp Invoices
+     * Returns the recurring and one-time invoices generated for the Scrub IP service so the caller can verify billing status, present a payment history, or initiate payment on an unpaid invoice. Use after placeScrubOrder (to find the new invoice id) or before cancelScrubIp (to surface outstanding balance). Path param: `id` (integer, required) — service ID from getScrubIpsList. No body/query parameters. Returns ChargeInvoiceRows (array of invoice objects with id, amount, status, due dates). Errors: 401 unauthenticated; empty result if id is not owned by the session account. Caveat: paid invoices remain in history; filter on status client-side. Siblings: getScrubIpDetails, placeScrubOrder, cancelScrubIp.
+     * List recurring and one-time invoices billed for this Scrub IP service
      */
     async getScrubIpInvoicesRaw(requestParameters: GetScrubIpInvoicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChargeInvoiceRows>> {
         const requestOptions = await this.getScrubIpInvoicesRequestOpts(requestParameters);
@@ -802,8 +872,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves invoices associated with the scrub IP service. Use these invoices to confirm billing status or to initiate payment.
-     * Get ScrubIp Invoices
+     * Returns the recurring and one-time invoices generated for the Scrub IP service so the caller can verify billing status, present a payment history, or initiate payment on an unpaid invoice. Use after placeScrubOrder (to find the new invoice id) or before cancelScrubIp (to surface outstanding balance). Path param: `id` (integer, required) — service ID from getScrubIpsList. No body/query parameters. Returns ChargeInvoiceRows (array of invoice objects with id, amount, status, due dates). Errors: 401 unauthenticated; empty result if id is not owned by the session account. Caveat: paid invoices remain in history; filter on status client-side. Siblings: getScrubIpDetails, placeScrubOrder, cancelScrubIp.
+     * List recurring and one-time invoices billed for this Scrub IP service
      */
     async getScrubIpInvoices(requestParameters: GetScrubIpInvoicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChargeInvoiceRows> {
         const response = await this.getScrubIpInvoicesRaw(requestParameters, initOverrides);
@@ -835,7 +905,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}/logs`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -846,8 +916,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the activity and event logs for the Scrub IP service, including scrubbing events and configuration changes.
-     * Get Scrub IP Logs
+     * Pulls scrubbing telemetry directly from the SCRUBLOGS clickhouse-style backend: timestamp, source IP, target IP, target port, protocol (ICMP/IGMP/TCP/UDP/etc.), byte_count, action (Allow/Drop/Challenge), and the matching filter label. Use for incident analysis, validating new firewall rules, or proving a DDoS attack hit the scrubber. Path param: `id` (string, required) — service ID. No body/query parameters. Timestamps are converted to the customer\'s timezone. Returns array of log rows (ScrubIpsLogRowSchema), most recent first, capped at 50000. Errors: 401 unauthenticated; returns false if id is not owned or upstream returns no data — not a 404. Caveat: large response; logs are not real-time and source IPs are reverse-byte-ordered. Siblings: getScrubIpDetails, enableScrub, createRule.
+     * Get last 50000 packet/event log entries for the protected IP
      */
     async getScrubIpLogsRaw(requestParameters: GetScrubIpLogsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ScrubIpsLogRowSchema>>> {
         const requestOptions = await this.getScrubIpLogsRequestOpts(requestParameters);
@@ -857,8 +927,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the activity and event logs for the Scrub IP service, including scrubbing events and configuration changes.
-     * Get Scrub IP Logs
+     * Pulls scrubbing telemetry directly from the SCRUBLOGS clickhouse-style backend: timestamp, source IP, target IP, target port, protocol (ICMP/IGMP/TCP/UDP/etc.), byte_count, action (Allow/Drop/Challenge), and the matching filter label. Use for incident analysis, validating new firewall rules, or proving a DDoS attack hit the scrubber. Path param: `id` (string, required) — service ID. No body/query parameters. Timestamps are converted to the customer\'s timezone. Returns array of log rows (ScrubIpsLogRowSchema), most recent first, capped at 50000. Errors: 401 unauthenticated; returns false if id is not owned or upstream returns no data — not a 404. Caveat: large response; logs are not real-time and source IPs are reverse-byte-ordered. Siblings: getScrubIpDetails, enableScrub, createRule.
+     * Get last 50000 packet/event log entries for the protected IP
      */
     async getScrubIpLogs(requestParameters: GetScrubIpLogsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ScrubIpsLogRowSchema>> {
         const response = await this.getScrubIpLogsRaw(requestParameters, initOverrides);
@@ -893,8 +963,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns all Scrub IP DDoS protection services on your account with their current status and associated IP addresses.
-     * List Scrub IP Services
+     * Returns every Scrub IP service belonging to the authenticated customer with status, protected IP, plan name, and recurring cost. Use this for dashboards, picking a service ID for downstream calls (getScrubIpDetails, enableScrub, createRule, getScrubIpLogs), or auditing which IPs are routed through DDoS scrubbing. No path/query/body parameters; service ownership is enforced via session account_id. Returns an array of {id, repeat_invoices_cost, ip, status, services_name}; empty array if no scrub services. Errors: 401 unauthenticated. Caveat: only customer-owned services are visible. Siblings: getScrubIpDetails, getOrderDetail, placeScrubOrder, cancelScrubIp.
+     * List all Scrub IP DDoS protection services on the authenticated account
      */
     async getScrubIpsListRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ScrubIpsRowSchema>>> {
         const requestOptions = await this.getScrubIpsListRequestOpts();
@@ -904,8 +974,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns all Scrub IP DDoS protection services on your account with their current status and associated IP addresses.
-     * List Scrub IP Services
+     * Returns every Scrub IP service belonging to the authenticated customer with status, protected IP, plan name, and recurring cost. Use this for dashboards, picking a service ID for downstream calls (getScrubIpDetails, enableScrub, createRule, getScrubIpLogs), or auditing which IPs are routed through DDoS scrubbing. No path/query/body parameters; service ownership is enforced via session account_id. Returns an array of {id, repeat_invoices_cost, ip, status, services_name}; empty array if no scrub services. Errors: 401 unauthenticated. Caveat: only customer-owned services are visible. Siblings: getScrubIpDetails, getOrderDetail, placeScrubOrder, cancelScrubIp.
+     * List all Scrub IP DDoS protection services on the authenticated account
      */
     async getScrubIpsList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ScrubIpsRowSchema>> {
         const response = await this.getScrubIpsListRaw(initOverrides);
@@ -950,8 +1020,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Places an order for a new Scrub IP DDoS protection service. On success, an invoice is generated for payment.
-     * Place Scrub IP Order
+     * Commits the order: re-runs validate_buy_scrub_ip then place_buy_scrub_ip which creates the service row, repeat_invoice, and a one-time invoice for the prorated charge. Use putScrubIps first to surface errors without billing. No path parameters. Body (ScrubIpPlaceOrder): `serviceType` (services_id), `ip` (eligible IP from getOrderDetail). Returns 201 {success: true, text: \'ScrubIp order is placed.\', order_details: {total_cost, service_id, invoice_id, invoice_description, cj_params}}. Errors: 400 {success: false, text: \'Unable to place order.\', errors: []} on validation; 401 unauthenticated; 422 on invalid serviceType/ip; 409 if the IP is already protected. Caveat: invoice is unpaid at creation — pay via Pay endpoints to activate. Siblings: putScrubIps, getOrderDetail, enableScrub, getScrubIpInvoices.
+     * Place a new Scrub IP DDoS protection order and generate an invoice
      */
     async placeScrubOrderRaw(requestParameters: PlaceScrubOrderRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlaceScrubOrder201Response>> {
         const requestOptions = await this.placeScrubOrderRequestOpts(requestParameters);
@@ -961,11 +1031,68 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Places an order for a new Scrub IP DDoS protection service. On success, an invoice is generated for payment.
-     * Place Scrub IP Order
+     * Commits the order: re-runs validate_buy_scrub_ip then place_buy_scrub_ip which creates the service row, repeat_invoice, and a one-time invoice for the prorated charge. Use putScrubIps first to surface errors without billing. No path parameters. Body (ScrubIpPlaceOrder): `serviceType` (services_id), `ip` (eligible IP from getOrderDetail). Returns 201 {success: true, text: \'ScrubIp order is placed.\', order_details: {total_cost, service_id, invoice_id, invoice_description, cj_params}}. Errors: 400 {success: false, text: \'Unable to place order.\', errors: []} on validation; 401 unauthenticated; 422 on invalid serviceType/ip; 409 if the IP is already protected. Caveat: invoice is unpaid at creation — pay via Pay endpoints to activate. Siblings: putScrubIps, getOrderDetail, enableScrub, getScrubIpInvoices.
+     * Place a new Scrub IP DDoS protection order and generate an invoice
      */
     async placeScrubOrder(requestParameters: PlaceScrubOrderRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlaceScrubOrder201Response> {
         const response = await this.placeScrubOrderRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for putScrubIps without sending the request
+     */
+    async putScrubIpsRequestOpts(requestParameters: PutScrubIpsRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['scrubIpPlaceOrder'] == null) {
+            throw new runtime.RequiredError(
+                'scrubIpPlaceOrder',
+                'Required parameter "scrubIpPlaceOrder" was null or undefined when calling putScrubIps().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["X-API-KEY"] = await this.configuration.apiKey("X-API-KEY"); // apiKeyAuth authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["sessionid"] = await this.configuration.apiKey("sessionid"); // sessionIdHeaderAuth authentication
+        }
+
+
+        let urlPath = `/scrub_ips/order`;
+
+        return {
+            path: urlPath,
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ScrubIpPlaceOrderToJSON(requestParameters['scrubIpPlaceOrder']),
+        };
+    }
+
+    /**
+     * Dry-runs a Scrub IP purchase via validate_buy_scrub_ip and returns whether the order would succeed plus the resolved pricing — without creating an invoice. Use to render a real-time price/error panel as the user picks options. No path parameters. Body (ScrubIpPlaceOrder): `serviceType` (services_id from getOrderDetail.serviceTypes), `ip` (one of getOrderDetail.ips), optional `coupon`. Returns {continue: bool, errors: [], serviceType, serviceCost, originalCost, repeatServiceCost}. Errors: 401 unauthenticated; validation failures appear in `errors`, not as HTTP 4xx. Caveat: idempotent — call as often as needed; 422 on invalid coupon surfaces in the errors array. Siblings: getOrderDetail, placeScrubOrder, getScrubIpsList.
+     * Validate a Scrub IP order and return effective pricing without billing
+     */
+    async putScrubIpsRaw(requestParameters: PutScrubIpsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PutScrubIps200Response>> {
+        const requestOptions = await this.putScrubIpsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PutScrubIps200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Dry-runs a Scrub IP purchase via validate_buy_scrub_ip and returns whether the order would succeed plus the resolved pricing — without creating an invoice. Use to render a real-time price/error panel as the user picks options. No path parameters. Body (ScrubIpPlaceOrder): `serviceType` (services_id from getOrderDetail.serviceTypes), `ip` (one of getOrderDetail.ips), optional `coupon`. Returns {continue: bool, errors: [], serviceType, serviceCost, originalCost, repeatServiceCost}. Errors: 401 unauthenticated; validation failures appear in `errors`, not as HTTP 4xx. Caveat: idempotent — call as often as needed; 422 on invalid coupon surfaces in the errors array. Siblings: getOrderDetail, placeScrubOrder, getScrubIpsList.
+     * Validate a Scrub IP order and return effective pricing without billing
+     */
+    async putScrubIps(requestParameters: PutScrubIpsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PutScrubIps200Response> {
+        const response = await this.putScrubIpsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -1003,7 +1130,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}/delete_geo_rule`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -1015,8 +1142,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Removes an existing geographic-based firewall rule from the Scrub IP service. Use the `rule_id` from the service details response to identify the rule to delete.
-     * Delete Geo Firewall Rule
+     * Removes a previously created geographic firewall rule from the Scrub IP service. The rule_id must come from the `filter_firewall.geo_rules[].id` array returned by getScrubIpDetails — the endpoint validates the id belongs to this service before deleting. Path param: `id` (integer, required) — Scrub IP service ID. Body (JSON): {`rule_id`: integer, required}. Returns {success: true, text: \'Firewall Rule has been deleted.\'}. Errors: 400 Invalid Service, \'Rule Id is required.\' or \'Invalid rule id\' (rule does not belong to this service); 401 unauthenticated; 500 if upstream Scrub::geoFirewallDelete fails. Caveat: removing a country/ASN block re-admits that traffic. Siblings: createGeoRule, scrubIpsDeleteRule, deleteFilter, getScrubIpDetails.
+     * Delete a geo firewall rule by rule_id from getScrubIpDetails
      */
     async scrubIpsDeleteGeoRuleRaw(requestParameters: ScrubIpsDeleteGeoRuleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ScrubIpsDeleteRule200Response>> {
         const requestOptions = await this.scrubIpsDeleteGeoRuleRequestOpts(requestParameters);
@@ -1026,8 +1153,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Removes an existing geographic-based firewall rule from the Scrub IP service. Use the `rule_id` from the service details response to identify the rule to delete.
-     * Delete Geo Firewall Rule
+     * Removes a previously created geographic firewall rule from the Scrub IP service. The rule_id must come from the `filter_firewall.geo_rules[].id` array returned by getScrubIpDetails — the endpoint validates the id belongs to this service before deleting. Path param: `id` (integer, required) — Scrub IP service ID. Body (JSON): {`rule_id`: integer, required}. Returns {success: true, text: \'Firewall Rule has been deleted.\'}. Errors: 400 Invalid Service, \'Rule Id is required.\' or \'Invalid rule id\' (rule does not belong to this service); 401 unauthenticated; 500 if upstream Scrub::geoFirewallDelete fails. Caveat: removing a country/ASN block re-admits that traffic. Siblings: createGeoRule, scrubIpsDeleteRule, deleteFilter, getScrubIpDetails.
+     * Delete a geo firewall rule by rule_id from getScrubIpDetails
      */
     async scrubIpsDeleteGeoRule(requestParameters: ScrubIpsDeleteGeoRuleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ScrubIpsDeleteRule200Response> {
         const response = await this.scrubIpsDeleteGeoRuleRaw(requestParameters, initOverrides);
@@ -1068,7 +1195,7 @@ export class ScrubIpsApi extends runtime.BaseAPI {
 
 
         let urlPath = `/scrub_ips/{id}/delete_rule`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -1080,8 +1207,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Removes an existing firewall rule from the Scrub IP service. Use the `rule_id` from the service details response to identify the rule to delete.
-     * Delete Firewall Rule
+     * Removes a previously created L3/L4 firewall rule from the Scrub IP service. The rule_id must come from the `filter_firewall.rules[].id` array returned by getScrubIpDetails — the endpoint validates the id belongs to this service before deleting. Path param: `id` (integer, required) — Scrub IP service ID. Body (JSON): {`rule_id`: integer, required}. Returns {success: true, text: \'Firewall Rule has been deleted.\'}. Errors: 400 Invalid Service, \'rule_id is required.\' or \'Invalid rule id\' (rule does not belong to this service); 401 unauthenticated; 500 if upstream Scrub::firewallDelete fails. Caveat: if the rule was the only protection against a specific source, deleting it re-exposes the IP. Siblings: createRule, scrubIpsDeleteGeoRule, deleteFilter, getScrubIpDetails.
+     * Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
      */
     async scrubIpsDeleteRuleRaw(requestParameters: ScrubIpsDeleteRuleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ScrubIpsDeleteRule200Response>> {
         const requestOptions = await this.scrubIpsDeleteRuleRequestOpts(requestParameters);
@@ -1091,8 +1218,8 @@ export class ScrubIpsApi extends runtime.BaseAPI {
     }
 
     /**
-     * Removes an existing firewall rule from the Scrub IP service. Use the `rule_id` from the service details response to identify the rule to delete.
-     * Delete Firewall Rule
+     * Removes a previously created L3/L4 firewall rule from the Scrub IP service. The rule_id must come from the `filter_firewall.rules[].id` array returned by getScrubIpDetails — the endpoint validates the id belongs to this service before deleting. Path param: `id` (integer, required) — Scrub IP service ID. Body (JSON): {`rule_id`: integer, required}. Returns {success: true, text: \'Firewall Rule has been deleted.\'}. Errors: 400 Invalid Service, \'rule_id is required.\' or \'Invalid rule id\' (rule does not belong to this service); 401 unauthenticated; 500 if upstream Scrub::firewallDelete fails. Caveat: if the rule was the only protection against a specific source, deleting it re-exposes the IP. Siblings: createRule, scrubIpsDeleteGeoRule, deleteFilter, getScrubIpDetails.
+     * Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
      */
     async scrubIpsDeleteRule(requestParameters: ScrubIpsDeleteRuleRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ScrubIpsDeleteRule200Response> {
         const response = await this.scrubIpsDeleteRuleRaw(requestParameters, initOverrides);

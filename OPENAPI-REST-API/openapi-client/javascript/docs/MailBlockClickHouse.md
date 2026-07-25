@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailBlockClickHouse
+# InterserverApiClient.MailBlockClickHouse
 
 ## Properties
 

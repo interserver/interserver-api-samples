@@ -20,4 +20,3 @@ case class AccountFeatures(
   disable_reset: Option[Int] = None,
   disable_reinstall: Option[Int] = None
 )
-

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_ip_info import VpsIPInfo
+from interserver_api_client.models.vps_ip_info import VpsIPInfo
 
 class TestVpsIPInfo(unittest.TestCase):
     """VpsIPInfo unit test stubs"""
@@ -38,7 +38,7 @@ class TestVpsIPInfo(unittest.TestCase):
             return VpsIPInfo(
                 title = 'IP Information',
                 rows = [
-                    openapi_client.models.vps_ip_info_row.VpsIPInfoRow(
+                    interserver_api_client.models.vps_ip_info_row.VpsIPInfoRow(
                         desc = '', 
                         value = '', )
                     ]

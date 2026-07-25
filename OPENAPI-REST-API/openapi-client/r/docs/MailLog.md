@@ -1,4 +1,4 @@
-# openapi::MailLog
+# interserverapi::MailLog
 
 Paginated mail log response.  Contains the full matched count (`total`) plus a page of `MailLogEntry` records.  The `total` reflects the grouping mode: with `groupby=recipient` it counts delivery attempts, with `groupby=message` it counts unique messages.
 

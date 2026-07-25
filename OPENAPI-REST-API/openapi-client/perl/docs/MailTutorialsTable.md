@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailTutorialsTable
+# InterServerAPI::Object::MailTutorialsTable
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailTutorialsTable;
+use InterServerAPI::Object::MailTutorialsTable;
 ```
 
 ## Properties

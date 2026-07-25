@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MonthlyCounts();
+    instance = new InterserverApiClient.MonthlyCounts();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('MonthlyCounts', function() {
     it('should create an instance of MonthlyCounts', function() {
       // uncomment below and update the code to test MonthlyCounts
-      //var instance = new InterServerManagementApi.MonthlyCounts();
-      //expect(instance).to.be.a(InterServerManagementApi.MonthlyCounts);
+      //var instance = new InterserverApiClient.MonthlyCounts();
+      //expect(instance).to.be.a(InterserverApiClient.MonthlyCounts);
     });
 
   });

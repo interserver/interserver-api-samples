@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.ticket_new_response import TicketNewResponse
+from interserver_api_client.models.ticket_new_response import TicketNewResponse
 
 class TestTicketNewResponse(unittest.TestCase):
     """TicketNewResponse unit test stubs"""

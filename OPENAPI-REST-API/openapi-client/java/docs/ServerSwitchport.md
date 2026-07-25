@@ -19,4 +19,8 @@
 |**vlans6** | **List&lt;String&gt;** | List of IPv6 VLANs associated with the switchport. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,33 +1,33 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LoginSuccessResponse
 void main() {
-  final instance = LoginSuccessResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final LoginSuccessResponse? instance = /* LoginSuccessResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(LoginSuccessResponse, () {
-    // String sessionId
+    // Optional<String?> sessionId
     test('to test the property `sessionId`', () async {
       // TODO
     });
 
-    // int accountId
+    // Optional<int?> accountId
     test('to test the property `accountId`', () async {
       // TODO
     });
 
-    // String accountLid
+    // Optional<String?> accountLid
     test('to test the property `accountLid`', () async {
       // TODO
     });
 
-    // String ima
+    // Optional<String?> ima
     test('to test the property `ima`', () async {
       // TODO
     });
 
-    // String gravatar
+    // Optional<String?> gravatar
     test('to test the property `gravatar`', () async {
       // TODO
     });

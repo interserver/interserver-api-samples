@@ -352,7 +352,7 @@ public class AccountInfoPost  {
    * @return disableReset
   **/
   @JsonProperty("disable_reset")
-  public Boolean getDisableReset() {
+  public Boolean isDisableReset() {
     return disableReset;
   }
 
@@ -370,7 +370,7 @@ public class AccountInfoPost  {
    * @return disableReinstall
   **/
   @JsonProperty("disable_reinstall")
-  public Boolean getDisableReinstall() {
+  public Boolean isDisableReinstall() {
     return disableReinstall;
   }
 
@@ -388,7 +388,7 @@ public class AccountInfoPost  {
    * @return disableServerNotifications
   **/
   @JsonProperty("disable_server_notifications")
-  public Boolean getDisableServerNotifications() {
+  public Boolean isDisableServerNotifications() {
     return disableServerNotifications;
   }
 
@@ -406,7 +406,7 @@ public class AccountInfoPost  {
    * @return disableEmailNotifications
   **/
   @JsonProperty("disable_email_notifications")
-  public Boolean getDisableEmailNotifications() {
+  public Boolean isDisableEmailNotifications() {
     return disableEmailNotifications;
   }
 

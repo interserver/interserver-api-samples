@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerAsset
 void main() {
-  final instance = ServerAssetBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerAsset? instance = /* ServerAsset(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerAsset, () {
     // Unique identifier for the asset.
@@ -218,19 +218,19 @@ void main() {
     });
 
     // List of switchports associated with the asset.
-    // BuiltList<int> switchports
+    // List<int> switchports
     test('to test the property `switchports`', () async {
       // TODO
     });
 
     // List of VLANs associated with the asset.
-    // BuiltList<String> vlans
+    // List<String> vlans
     test('to test the property `vlans`', () async {
       // TODO
     });
 
     // List of IPv6 VLANs associated with the asset.
-    // BuiltList<String> vlans6
+    // List<String> vlans6
     test('to test the property `vlans6`', () async {
       // TODO
     });
@@ -241,55 +241,55 @@ void main() {
     });
 
     // MAC address associated with the asset.
-    // String mac
+    // Optional<String?> mac
     test('to test the property `mac`', () async {
       // TODO
     });
 
     // IPMI admin username associated with the asset.
-    // String ipmiAdminUsername
+    // Optional<String?> ipmiAdminUsername
     test('to test the property `ipmiAdminUsername`', () async {
       // TODO
     });
 
     // IPMI admin password associated with the asset.
-    // String ipmiAdminPassword
+    // Optional<String?> ipmiAdminPassword
     test('to test the property `ipmiAdminPassword`', () async {
       // TODO
     });
 
     // IPMI client username associated with the asset.
-    // String ipmiClientUsername
+    // Optional<String?> ipmiClientUsername
     test('to test the property `ipmiClientUsername`', () async {
       // TODO
     });
 
     // IPMI client password associated with the asset.
-    // String ipmiClientPassword
+    // Optional<String?> ipmiClientPassword
     test('to test the property `ipmiClientPassword`', () async {
       // TODO
     });
 
     // IPMI update status associated with the asset.
-    // String ipmiUpdated
+    // Optional<String?> ipmiUpdated
     test('to test the property `ipmiUpdated`', () async {
       // TODO
     });
 
     // Timestamp of asset creation.
-    // String createTimestamp
+    // Optional<String?> createTimestamp
     test('to test the property `createTimestamp`', () async {
       // TODO
     });
 
     // Timestamp of asset update.
-    // String updateTimestamp
+    // Optional<String?> updateTimestamp
     test('to test the property `updateTimestamp`', () async {
       // TODO
     });
 
     // Comment associated with the asset.
-    // String comment
+    // Optional<String?> comment
     test('to test the property `comment`', () async {
       // TODO
     });

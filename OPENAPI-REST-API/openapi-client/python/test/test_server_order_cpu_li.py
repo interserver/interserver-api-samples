@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_cpu_li import ServerOrderCpuLi
+from interserver_api_client.models.server_order_cpu_li import ServerOrderCpuLi
 
 class TestServerOrderCpuLi(unittest.TestCase):
     """ServerOrderCpuLi unit test stubs"""
@@ -36,7 +36,7 @@ class TestServerOrderCpuLi(unittest.TestCase):
         model = ServerOrderCpuLi()
         if include_optional:
             return ServerOrderCpuLi(
-                var_254 = openapi_client.models.server_order_cpu.ServerOrderCPU(
+                var_254 = interserver_api_client.models.server_order_cpu.ServerOrderCPU(
                     id = '254', 
                     price = 0, 
                     img = 'ryzen.png', 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupLoginResponse = Initialize-PSOpenAPIToolsBackupLoginResponse  -Success null `
+$BackupLoginResponse = Initialize-InterserverApiBackupLoginResponse  -Success null `
  -Text null
 ```
 

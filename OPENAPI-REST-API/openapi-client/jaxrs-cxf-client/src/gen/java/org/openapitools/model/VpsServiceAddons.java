@@ -125,7 +125,7 @@ public class VpsServiceAddons  {
    * @return hasCpanel
   **/
   @JsonProperty("has_cpanel")
-  public Boolean getHasCpanel() {
+  public Boolean isHasCpanel() {
     return hasCpanel;
   }
 
@@ -143,7 +143,7 @@ public class VpsServiceAddons  {
    * @return hasDirectadmin
   **/
   @JsonProperty("has_directadmin")
-  public Boolean getHasDirectadmin() {
+  public Boolean isHasDirectadmin() {
     return hasDirectadmin;
   }
 
@@ -161,7 +161,7 @@ public class VpsServiceAddons  {
    * @return hasFantastico
   **/
   @JsonProperty("has_fantastico")
-  public Boolean getHasFantastico() {
+  public Boolean isHasFantastico() {
     return hasFantastico;
   }
 
@@ -179,7 +179,7 @@ public class VpsServiceAddons  {
    * @return hasSoftaculous
   **/
   @JsonProperty("has_softaculous")
-  public Boolean getHasSoftaculous() {
+  public Boolean isHasSoftaculous() {
     return hasSoftaculous;
   }
 
@@ -197,7 +197,7 @@ public class VpsServiceAddons  {
    * @return hasHdspace
   **/
   @JsonProperty("has_hdspace")
-  public Boolean getHasHdspace() {
+  public Boolean isHasHdspace() {
     return hasHdspace;
   }
 
@@ -215,7 +215,7 @@ public class VpsServiceAddons  {
    * @return dedicatedIp
   **/
   @JsonProperty("dedicated_ip")
-  public Boolean getDedicatedIp() {
+  public Boolean isDedicatedIp() {
     return dedicatedIp;
   }
 

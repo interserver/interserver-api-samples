@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeServicesVps = Initialize-PSOpenAPIToolsHomeServicesVps  -Links null `
+$HomeServicesVps = Initialize-InterserverApiHomeServicesVps  -Links null `
  -Count 20
 ```
 

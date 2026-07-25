@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerOrderFormValues
+# InterserverApiClient.ServerOrderFormValues
 
 ## Properties
 

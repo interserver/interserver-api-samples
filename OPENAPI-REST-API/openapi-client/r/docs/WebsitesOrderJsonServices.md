@@ -1,4 +1,4 @@
-# openapi::WebsitesOrderJsonServices
+# interserverapi::WebsitesOrderJsonServices
 
 Schema for the jsonServices field in WebsitesOrder
 

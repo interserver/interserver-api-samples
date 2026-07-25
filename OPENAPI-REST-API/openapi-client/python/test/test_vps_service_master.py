@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_service_master import VpsServiceMaster
+from interserver_api_client.models.vps_service_master import VpsServiceMaster
 
 class TestVpsServiceMaster(unittest.TestCase):
     """VpsServiceMaster unit test stubs"""

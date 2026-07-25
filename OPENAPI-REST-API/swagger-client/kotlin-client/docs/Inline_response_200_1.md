@@ -3,5 +3,4 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | [**kotlin.Boolean**](.md) |  | 
-**text** | [**kotlin.String**](.md) |  | 
+**&#x60;data&#x60;** | [**kotlin.Any**](.md) | Affiliate signup statistics and client-side data. |  [optional]

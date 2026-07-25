@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_service_master import VpsServiceMaster
+from interserver_api_client.models.vps_service_master import VpsServiceMaster
 
 # TODO update the JSON string below
 json = "{}"

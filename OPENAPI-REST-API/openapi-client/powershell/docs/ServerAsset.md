@@ -56,7 +56,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerAsset = Initialize-PSOpenAPIToolsServerAsset  -Id 3497 `
+$ServerAsset = Initialize-InterserverApiServerAsset  -Id 3497 `
  -OrderId 16058 `
  -Hostname myserver.host.com `
  -Status active `

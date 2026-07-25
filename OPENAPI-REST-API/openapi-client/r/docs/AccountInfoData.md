@@ -1,4 +1,4 @@
-# openapi::AccountInfoData
+# interserverapi::AccountInfoData
 
 Detailed account profile data including contact info, billing, API keys, and security settings.
 

@@ -140,29 +140,29 @@ class CreateFirewallRule {
 }
 
 /// 1 = TCP, 2 = UDP
-class CreateFirewallRuleProtocolIdEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CreateFirewallRuleProtocolIdEnum._(this.value);
+enum CreateFirewallRuleProtocolIdEnum {
+  number1._(1),
+  number2._(2),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CreateFirewallRuleProtocolIdEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final int value;
+  final int _value;
 
   @override
-  String toString() => value.toString();
+  String toString() => _value.toString();
 
-  int toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  int toJson() => _value;
 
-  static const number1 = CreateFirewallRuleProtocolIdEnum._(1);
-  static const number2 = CreateFirewallRuleProtocolIdEnum._(2);
-
-  /// List of all possible values in this [enum][CreateFirewallRuleProtocolIdEnum].
-  static const values = <CreateFirewallRuleProtocolIdEnum>[
-    number1,
-    number2,
-  ];
-
+  /// Returns the instance of [CreateFirewallRuleProtocolIdEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CreateFirewallRuleProtocolIdEnum? fromJson(dynamic value) => CreateFirewallRuleProtocolIdEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CreateFirewallRuleProtocolIdEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CreateFirewallRuleProtocolIdEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CreateFirewallRuleProtocolIdEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -184,9 +184,10 @@ class CreateFirewallRuleProtocolIdEnumTypeTransformer {
 
   const CreateFirewallRuleProtocolIdEnumTypeTransformer._();
 
-  int encode(CreateFirewallRuleProtocolIdEnum data) => data.value;
+  int encode(CreateFirewallRuleProtocolIdEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CreateFirewallRuleProtocolIdEnum.
+  /// Returns the instance of [CreateFirewallRuleProtocolIdEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -195,6 +196,9 @@ class CreateFirewallRuleProtocolIdEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CreateFirewallRuleProtocolIdEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CreateFirewallRuleProtocolIdEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case 1: return CreateFirewallRuleProtocolIdEnum.number1;
@@ -208,35 +212,35 @@ class CreateFirewallRuleProtocolIdEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CreateFirewallRuleProtocolIdEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CreateFirewallRuleProtocolIdEnumTypeTransformer? _instance;
 }
 
 
 /// 1 = Block,  0 = Whitelist
-class CreateFirewallRuleXdpActionEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CreateFirewallRuleXdpActionEnum._(this.value);
+enum CreateFirewallRuleXdpActionEnum {
+  number0._(0),
+  number1._(1),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CreateFirewallRuleXdpActionEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final int value;
+  final int _value;
 
   @override
-  String toString() => value.toString();
+  String toString() => _value.toString();
 
-  int toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  int toJson() => _value;
 
-  static const number0 = CreateFirewallRuleXdpActionEnum._(0);
-  static const number1 = CreateFirewallRuleXdpActionEnum._(1);
-
-  /// List of all possible values in this [enum][CreateFirewallRuleXdpActionEnum].
-  static const values = <CreateFirewallRuleXdpActionEnum>[
-    number0,
-    number1,
-  ];
-
+  /// Returns the instance of [CreateFirewallRuleXdpActionEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CreateFirewallRuleXdpActionEnum? fromJson(dynamic value) => CreateFirewallRuleXdpActionEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CreateFirewallRuleXdpActionEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CreateFirewallRuleXdpActionEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CreateFirewallRuleXdpActionEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -258,9 +262,10 @@ class CreateFirewallRuleXdpActionEnumTypeTransformer {
 
   const CreateFirewallRuleXdpActionEnumTypeTransformer._();
 
-  int encode(CreateFirewallRuleXdpActionEnum data) => data.value;
+  int encode(CreateFirewallRuleXdpActionEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CreateFirewallRuleXdpActionEnum.
+  /// Returns the instance of [CreateFirewallRuleXdpActionEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -269,6 +274,9 @@ class CreateFirewallRuleXdpActionEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CreateFirewallRuleXdpActionEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CreateFirewallRuleXdpActionEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case 0: return CreateFirewallRuleXdpActionEnum.number0;
@@ -282,7 +290,7 @@ class CreateFirewallRuleXdpActionEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CreateFirewallRuleXdpActionEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CreateFirewallRuleXdpActionEnumTypeTransformer? _instance;
 }
 

@@ -1,4 +1,4 @@
-# openapi::Website
+# interserverapi::Website
 
 Full detail view of a webhosting service including billing, service configuration, and panel access links.
 

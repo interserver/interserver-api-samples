@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::AccountInfoDataFraudrecord');
+use_ok('InterServerAPI::Object::AccountInfoDataFraudrecord');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::AccountInfoDataFraudrecord->new();
+#my $instance = InterServerAPI::Object::AccountInfoDataFraudrecord->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::AccountInfoDataFraudrecord');
+#isa_ok($instance, 'InterServerAPI::Object::AccountInfoDataFraudrecord');
 
 
 done_testing();

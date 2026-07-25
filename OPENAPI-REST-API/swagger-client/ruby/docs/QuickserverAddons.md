@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverAddons
+# InterserverApiClient::QuickserverAddons
 
 ## Properties
 Name | Type | Description | Notes

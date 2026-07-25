@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Backup = Initialize-PSOpenAPIToolsBackup  -ServiceInfo null `
+$Backup = Initialize-InterserverApiBackup  -ServiceInfo null `
  -ClientLinks null `
  -BillingDetails null `
  -CustCurrency USD `

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerClientLink = Initialize-PSOpenAPIToolsServerClientLink  -Label null `
+$ServerClientLink = Initialize-InterserverApiServerClientLink  -Label null `
  -Link null `
  -Icon null `
  -IconText null `

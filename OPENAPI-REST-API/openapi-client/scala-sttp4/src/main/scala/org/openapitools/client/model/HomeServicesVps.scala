@@ -17,4 +17,3 @@ case class HomeServicesVps(
   /* Number of VPS services. */
   count: Option[Int] = None
 )
-

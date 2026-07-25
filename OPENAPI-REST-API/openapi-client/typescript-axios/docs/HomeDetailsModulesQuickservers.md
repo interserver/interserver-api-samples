@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { HomeDetailsModulesQuickservers } from './api';
+import { HomeDetailsModulesQuickservers } from '@interserver/myadmin-client';
 
 const instance: HomeDetailsModulesQuickservers = {
     icon,

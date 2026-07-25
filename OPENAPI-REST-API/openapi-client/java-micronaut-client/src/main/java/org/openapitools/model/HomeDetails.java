@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   HomeDetails.JSON_PROPERTY_MODULES
 })
 @JsonTypeName("Home_details")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class HomeDetails {
     public static final String JSON_PROPERTY_MODULES = "modules";

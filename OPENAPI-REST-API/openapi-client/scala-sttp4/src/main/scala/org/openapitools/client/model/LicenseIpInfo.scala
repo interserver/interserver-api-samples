@@ -20,4 +20,3 @@ case class LicenseIpInfo(
   title: Option[String] = None,
   rows: Option[Seq[LicenseIpInfoRow]] = None
 )
-

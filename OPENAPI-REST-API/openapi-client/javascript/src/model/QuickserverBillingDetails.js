@@ -17,7 +17,7 @@ import QuickserverServiceExtra from './QuickserverServiceExtra';
 /**
  * The QuickserverBillingDetails model module.
  * @module model/QuickserverBillingDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverBillingDetails {
     /**

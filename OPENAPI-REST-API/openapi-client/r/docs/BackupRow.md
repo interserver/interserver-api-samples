@@ -1,4 +1,4 @@
-# openapi::BackupRow
+# interserverapi::BackupRow
 
 A result row from the `Backups` `GET` request.
 

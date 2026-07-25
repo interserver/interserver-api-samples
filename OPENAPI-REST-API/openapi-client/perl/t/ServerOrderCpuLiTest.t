@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerOrderCpuLi');
+use_ok('InterServerAPI::Object::ServerOrderCpuLi');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerOrderCpuLi->new();
+#my $instance = InterServerAPI::Object::ServerOrderCpuLi->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerOrderCpuLi');
+#isa_ok($instance, 'InterServerAPI::Object::ServerOrderCpuLi');
 
 
 done_testing();

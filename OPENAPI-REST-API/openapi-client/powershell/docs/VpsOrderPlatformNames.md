@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderPlatformNames = Initialize-PSOpenAPIToolsVpsOrderPlatformNames  -Kvm KVM `
+$VpsOrderPlatformNames = Initialize-InterserverApiVpsOrderPlatformNames  -Kvm KVM `
  -Kvmstorage KVM Storage `
  -Hyperv HyperV
 ```

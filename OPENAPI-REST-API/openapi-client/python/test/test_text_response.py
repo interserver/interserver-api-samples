@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.text_response import TextResponse
+from interserver_api_client.models.text_response import TextResponse
 
 class TestTextResponse(unittest.TestCase):
     """TextResponse unit test stubs"""

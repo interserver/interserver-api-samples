@@ -66,20 +66,68 @@ namespace Interserver.MyAdmin.Client.Test
 
 
         /// <summary>
-        /// Test the property 'success'
+        /// Test the property 'serviceInfo'
         /// </summary>
         [Test]
-        public void successTest()
+        public void serviceInfoTest()
         {
-            // TODO unit test for the property 'success'
+            // TODO unit test for the property 'serviceInfo'
         }
         /// <summary>
-        /// Test the property 'text'
+        /// Test the property 'client_links'
         /// </summary>
         [Test]
-        public void textTest()
+        public void client_linksTest()
         {
-            // TODO unit test for the property 'text'
+            // TODO unit test for the property 'client_links'
+        }
+        /// <summary>
+        /// Test the property 'billingDetails'
+        /// </summary>
+        [Test]
+        public void billingDetailsTest()
+        {
+            // TODO unit test for the property 'billingDetails'
+        }
+        /// <summary>
+        /// Test the property 'custCurrency'
+        /// </summary>
+        [Test]
+        public void custCurrencyTest()
+        {
+            // TODO unit test for the property 'custCurrency'
+        }
+        /// <summary>
+        /// Test the property 'custCurrencySymbol'
+        /// </summary>
+        [Test]
+        public void custCurrencySymbolTest()
+        {
+            // TODO unit test for the property 'custCurrencySymbol'
+        }
+        /// <summary>
+        /// Test the property 'package'
+        /// </summary>
+        [Test]
+        public void packageTest()
+        {
+            // TODO unit test for the property 'package'
+        }
+        /// <summary>
+        /// Test the property 'extraInfoTables'
+        /// </summary>
+        [Test]
+        public void extraInfoTablesTest()
+        {
+            // TODO unit test for the property 'extraInfoTables'
+        }
+        /// <summary>
+        /// Test the property 'filter_firewall'
+        /// </summary>
+        [Test]
+        public void filter_firewallTest()
+        {
+            // TODO unit test for the property 'filter_firewall'
         }
 
     }

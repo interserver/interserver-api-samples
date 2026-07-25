@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_order_post_response_cj_params import BackupOrderPostResponseCjParams
+from interserver_api_client.models.backup_order_post_response_cj_params import BackupOrderPostResponseCjParams
 
 class TestBackupOrderPostResponseCjParams(unittest.TestCase):
     """BackupOrderPostResponseCjParams unit test stubs"""

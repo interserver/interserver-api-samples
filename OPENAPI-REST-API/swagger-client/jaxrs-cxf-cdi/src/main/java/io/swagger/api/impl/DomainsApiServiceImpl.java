@@ -18,7 +18,7 @@ import io.swagger.model.DomainOrder;
 import io.swagger.model.DomainRow;
 import io.swagger.model.DomainSearchResponse;
 import io.swagger.model.DomainWhoisPrivacyRequest;
-import io.swagger.model.InlineResponse2002;
+import io.swagger.model.InlineResponse2003;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
@@ -36,7 +36,7 @@ import javax.ws.rs.core.SecurityContext;
 
 public class DomainsApiServiceImpl implements DomainsApiService {
       @Override
-      public Response addDomain(SecurityContext securityContext) {
+      public Response addDomain(Map<String, Object> body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -66,7 +66,7 @@ public class DomainsApiServiceImpl implements DomainsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response deleteDomainDnssec(Integer id, String action, SecurityContext securityContext) {
+      public Response deleteDomainDnssec(Integer id, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -106,16 +106,6 @@ public class DomainsApiServiceImpl implements DomainsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response getDomainOrderFields(String domain, String regType, SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().entity("magic!").build();
-  }
-      @Override
-      public Response getDomainOrderSearchResults(String domain, SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().entity("magic!").build();
-  }
-      @Override
       public Response getDomainRenewal(Integer id, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
@@ -151,7 +141,7 @@ public class DomainsApiServiceImpl implements DomainsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response patchDomains(SecurityContext securityContext) {
+      public Response patchDomains(Map<String, Object> body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -161,12 +151,17 @@ public class DomainsApiServiceImpl implements DomainsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
+      public Response postDomainSearch(String name, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
       public Response postDomainTransfer(Integer id, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response putDomains(SecurityContext securityContext) {
+      public Response putDomains(Map<String, Object> body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -181,7 +176,7 @@ public class DomainsApiServiceImpl implements DomainsApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response updateDomainInfo(String id, SecurityContext securityContext) {
+      public Response updateDomainInfo(Integer id, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

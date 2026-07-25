@@ -1,8 +1,8 @@
-# openapi.model.WebsitesOrderServiceOffer
+# interserver_api.model.WebsitesOrderServiceOffer
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
@@ -17,8 +17,8 @@ Name | Type | Description | Notes
 **allowCoupon** | **String** | Indicates if coupons are allowed (1 for yes, 0 for no). | 
 **serviceModule** | **String** | The module of the service offer. | 
 **createdAt** | **String** | The creation timestamp of the service offer. | 
-**updatedAt** | **String** | The update timestamp of the service offer. | [optional] 
-**deletedAt** | **String** | The deletion timestamp of the service offer. | [optional] 
+**updatedAt** | **Optional&lt;String?&gt;** | The update timestamp of the service offer. | [optional] 
+**deletedAt** | **Optional&lt;String?&gt;** | The deletion timestamp of the service offer. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

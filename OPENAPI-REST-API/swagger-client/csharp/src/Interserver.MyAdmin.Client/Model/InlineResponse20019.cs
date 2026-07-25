@@ -31,36 +31,33 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20019" /> class.
         /// </summary>
-        /// <param name="text">Status message..</param>
-        /// <param name="invoice">Invoice ID for payment..</param>
-        /// <param name="order">Server order ID..</param>
-        public InlineResponse20019(string text = default(string), int? invoice = default(int?), int? order = default(int?))
+        /// <param name="packageCosts">packageCosts.</param>
+        /// <param name="serviceTypes">serviceTypes.</param>
+        /// <param name="ips">ips.</param>
+        public InlineResponse20019(InlineResponse20019PackageCosts packageCosts = default(InlineResponse20019PackageCosts), List<InlineResponse20019ServiceTypes> serviceTypes = default(List<InlineResponse20019ServiceTypes>), List<InlineResponse20019Ips> ips = default(List<InlineResponse20019Ips>))
         {
-            this.text = text;
-            this.invoice = invoice;
-            this.order = order;
+            this.packageCosts = packageCosts;
+            this.serviceTypes = serviceTypes;
+            this.ips = ips;
         }
         
         /// <summary>
-        /// Status message.
+        /// Gets or Sets packageCosts
         /// </summary>
-        /// <value>Status message.</value>
-        [DataMember(Name="text", EmitDefaultValue=false)]
-        public string text { get; set; }
+        [DataMember(Name="packageCosts", EmitDefaultValue=false)]
+        public InlineResponse20019PackageCosts packageCosts { get; set; }
 
         /// <summary>
-        /// Invoice ID for payment.
+        /// Gets or Sets serviceTypes
         /// </summary>
-        /// <value>Invoice ID for payment.</value>
-        [DataMember(Name="invoice", EmitDefaultValue=false)]
-        public int? invoice { get; set; }
+        [DataMember(Name="serviceTypes", EmitDefaultValue=false)]
+        public List<InlineResponse20019ServiceTypes> serviceTypes { get; set; }
 
         /// <summary>
-        /// Server order ID.
+        /// Gets or Sets ips
         /// </summary>
-        /// <value>Server order ID.</value>
-        [DataMember(Name="order", EmitDefaultValue=false)]
-        public int? order { get; set; }
+        [DataMember(Name="ips", EmitDefaultValue=false)]
+        public List<InlineResponse20019Ips> ips { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,9 +67,9 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20019 {\n");
-            sb.Append("  text: ").Append(text).Append("\n");
-            sb.Append("  invoice: ").Append(invoice).Append("\n");
-            sb.Append("  order: ").Append(order).Append("\n");
+            sb.Append("  packageCosts: ").Append(packageCosts).Append("\n");
+            sb.Append("  serviceTypes: ").Append(serviceTypes).Append("\n");
+            sb.Append("  ips: ").Append(ips).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,19 +105,21 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.text == input.text ||
-                    (this.text != null &&
-                    this.text.Equals(input.text))
+                    this.packageCosts == input.packageCosts ||
+                    (this.packageCosts != null &&
+                    this.packageCosts.Equals(input.packageCosts))
                 ) && 
                 (
-                    this.invoice == input.invoice ||
-                    (this.invoice != null &&
-                    this.invoice.Equals(input.invoice))
+                    this.serviceTypes == input.serviceTypes ||
+                    this.serviceTypes != null &&
+                    input.serviceTypes != null &&
+                    this.serviceTypes.SequenceEqual(input.serviceTypes)
                 ) && 
                 (
-                    this.order == input.order ||
-                    (this.order != null &&
-                    this.order.Equals(input.order))
+                    this.ips == input.ips ||
+                    this.ips != null &&
+                    input.ips != null &&
+                    this.ips.SequenceEqual(input.ips)
                 );
         }
 
@@ -133,12 +132,12 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.text != null)
-                    hashCode = hashCode * 59 + this.text.GetHashCode();
-                if (this.invoice != null)
-                    hashCode = hashCode * 59 + this.invoice.GetHashCode();
-                if (this.order != null)
-                    hashCode = hashCode * 59 + this.order.GetHashCode();
+                if (this.packageCosts != null)
+                    hashCode = hashCode * 59 + this.packageCosts.GetHashCode();
+                if (this.serviceTypes != null)
+                    hashCode = hashCode * 59 + this.serviceTypes.GetHashCode();
+                if (this.ips != null)
+                    hashCode = hashCode * 59 + this.ips.GetHashCode();
                 return hashCode;
             }
         }

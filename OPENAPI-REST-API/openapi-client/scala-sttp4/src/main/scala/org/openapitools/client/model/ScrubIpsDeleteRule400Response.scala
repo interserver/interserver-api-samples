@@ -16,4 +16,3 @@ case class ScrubIpsDeleteRule400Response(
   success: Option[Boolean] = None,
   text: Option[String] = None
 )
-

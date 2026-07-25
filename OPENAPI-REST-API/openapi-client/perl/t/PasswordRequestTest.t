@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::PasswordRequest');
+use_ok('InterServerAPI::Object::PasswordRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::PasswordRequest->new();
+#my $instance = InterServerAPI::Object::PasswordRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::PasswordRequest');
+#isa_ok($instance, 'InterServerAPI::Object::PasswordRequest');
 
 
 done_testing();

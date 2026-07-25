@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JValue
 
 case class InitiatePayment200Response(
   /* The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result). */
@@ -22,7 +23,7 @@ case class InitiatePayment200Response(
   /* HTTP method for the form submission (when type is `submit`). */
   method: Option[String] = None,
   /* Form field name-value pairs to submit (when type is `submit`). */
-  items: Option[Any] = None,
+  items: Option[JValue] = None,
   /* Status or result text. */
   text: Option[String] = None
 )

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for UpdateAccountTfaRequest
 void main() {
-  final instance = UpdateAccountTfaRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final UpdateAccountTfaRequest? instance = /* UpdateAccountTfaRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(UpdateAccountTfaRequest, () {
     // The 6-digit verification code from your authenticator app.

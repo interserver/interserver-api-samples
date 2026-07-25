@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::IpLimitRange');
+use_ok('InterServerAPI::Object::IpLimitRange');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::IpLimitRange->new();
+#my $instance = InterServerAPI::Object::IpLimitRange->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::IpLimitRange');
+#isa_ok($instance, 'InterServerAPI::Object::IpLimitRange');
 
 
 done_testing();

@@ -11,4 +11,8 @@ CPU options for the server order.
 |**_254** | [**ServerOrderCPU**](ServerOrderCPU.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

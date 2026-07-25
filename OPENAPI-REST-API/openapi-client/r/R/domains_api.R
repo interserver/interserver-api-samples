@@ -16,9 +16,10 @@
 #' \dontrun{
 #' ####################  AddDomain  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_domain_order_request <- DomainOrderRequest$new("hostname_example", "register", "coupon_example", "enable") # DomainOrderRequest | 
 #'
-#' #Place Domain Order
+#' #Place a new domain registration or transfer order, generate billing invoice
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -31,18 +32,18 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$AddDomain(data_file = "result.txt")
-#' result <- api_instance$AddDomain()
+#' # result <- api_instance$AddDomain(var_domain_order_requestdata_file = "result.txt")
+#' result <- api_instance$AddDomain(var_domain_order_request)
 #' dput(result)
 #'
 #'
 #' ####################  AddDomainDnssec  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #' var_domain_dnssec_request <- DomainDnssecRequest$new(c(123), c(123), c("digest_example"), c(123)) # DomainDnssecRequest | 
 #'
-#' #Add Domain DNSSEC Records
+#' #Register DNSSEC DS records on the domain at OpenSRS
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -62,11 +63,11 @@
 #'
 #' ####################  AddDomainNameserver  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #' var_domain_nameserver_post_request <- DomainNameserverPostRequest$new("name_example", "ipAddress_example") # DomainNameserverPostRequest | 
 #'
-#' #Add Registered Nameserver
+#' #Register a new nameserver host with glue IP at the registry (registered nameserver)
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -86,10 +87,10 @@
 #'
 #' ####################  CancelDomain  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Cancel Domain Order
+#' #Cancel a domain order in the billing system to stop auto-renewals
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -109,11 +110,10 @@
 #'
 #' ####################  DeleteDomainDnssec  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
-#' var_action <- "action_example" # character | Set to `delete` to remove all DNSSEC records.
 #'
-#' #Remove Domain DNSSEC Records
+#' #Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -126,18 +126,18 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$DeleteDomainDnssec(var_id, var_actiondata_file = "result.txt")
-#' result <- api_instance$DeleteDomainDnssec(var_id, var_action)
+#' # result <- api_instance$DeleteDomainDnssec(var_iddata_file = "result.txt")
+#' result <- api_instance$DeleteDomainDnssec(var_id)
 #' dput(result)
 #'
 #'
 #' ####################  DeleteDomainNameserver  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #' var_index <- 56 # integer | The index of the registered nameserver from the registered nameservers list to delete.  
 #'
-#' #Delete Registered Nameserver
+#' #Remove one registered nameserver glue record from the domain
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -157,10 +157,10 @@
 #'
 #' ####################  GetDomainContact  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Get Domain Contact Details
+#' #Read the current registrant/admin/tech/billing contact field set for a domain
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -180,10 +180,10 @@
 #'
 #' ####################  GetDomainDnssec  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Get Domain DNSSEC Records
+#' #Read the DNSSEC DS record set currently registered with the registrar
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -203,10 +203,10 @@
 #'
 #' ####################  GetDomainInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Get Domain Order
+#' #Read full billing, registrar, and service detail for one domain
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -226,10 +226,10 @@
 #'
 #' ####################  GetDomainInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Get Domain Invoices
+#' #List all billing invoices scoped to one domain order
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -249,10 +249,10 @@
 #'
 #' ####################  GetDomainLookup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_name <- "name_example" # character | The full domain name to look up (for example `example.com`).
 #'
-#' #Lookup Domain Availability and Pricing
+#' #Check availability, premium status, and pricing for a specific domain
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -272,10 +272,10 @@
 #'
 #' ####################  GetDomainNameservers  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #List Registered Nameservers
+#' #List registered nameserver hosts and glue IP addresses for a domain
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -293,53 +293,12 @@
 #' dput(result)
 #'
 #'
-#' ####################  GetDomainOrderFields  ####################
-#'
-#' library(openapi)
-#' var_domain <- "domain_example" # character | The fully qualified domain name (e.g. `example.com`).
-#' var_reg_type <- "reg_type_example" # character | The registration type. Common values include `register` for new registrations and `transfer` for inbound transfers.
-#'
-#' #Get Domain Order Fields
-#' api_instance <- DomainsApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' api_instance$GetDomainOrderFields(var_domain, var_reg_type)
-#'
-#'
-#' ####################  GetDomainOrderSearchResults  ####################
-#'
-#' library(openapi)
-#' var_domain <- "domain_example" # character | The fully qualified domain name to look up (e.g. `example.com`).
-#'
-#' #Get Domain Order Search Results
-#' api_instance <- DomainsApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' api_instance$GetDomainOrderSearchResults(var_domain)
-#'
-#'
 #' ####################  GetDomainRenewal  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Start Domain Renewal Flow
+#' #Read renewal pricing, expiry, and whether a renewal invoice already exists
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -359,10 +318,10 @@
 #'
 #' ####################  GetDomainSearch  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_name <- "name_example" # character | The base domain name to search (for example `example` or `example.com`).
 #'
-#' #Search Domain Suggestions
+#' #Get registrar-suggested domain alternatives and bulk availability for a search term
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -382,10 +341,10 @@
 #'
 #' ####################  GetDomainTransfer  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Start Domain Transfer Flow
+#' #Read OpenSRS transfer status for an in-progress domain transfer order
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -405,10 +364,10 @@
 #'
 #' ####################  GetDomainWhoisPrivacy  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Get Whois Privacy Status
+#' #Read Whois privacy availability, current state, and add-on pricing for a domain
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -428,9 +387,9 @@
 #'
 #' ####################  GetDomainsList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Domain Orders
+#' #List every domain registration on the account with billing and registration metadata
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -450,10 +409,10 @@
 #'
 #' ####################  GetDomainsWelcomeEmail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Resend Domain Welcome Email
+#' #Resend the domain welcome email with registration details and management instructions
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -473,9 +432,9 @@
 #'
 #' ####################  GetNewDomain  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Domain Ordering Information
+#' #Read the buyable domain TLD service catalog and Whois privacy pricing
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -495,9 +454,10 @@
 #'
 #' ####################  PatchDomains  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_domain_order_request <- DomainOrderRequest$new("hostname_example", "register", "coupon_example", "enable") # DomainOrderRequest | 
 #'
-#' #Validate Domain Order
+#' #Validate posted domain-order field values before committing — dry run
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -509,15 +469,15 @@
 #' # Configure API key authorization: sessionIdHeaderAuth
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$PatchDomains()
+#' api_instance$PatchDomains(var_domain_order_request)
 #'
 #'
 #' ####################  PostDomainRenewal  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Request Domain Renewal
+#' #Submit a domain renewal request and generate the renewal invoice
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -535,12 +495,32 @@
 #' dput(result)
 #'
 #'
+#' ####################  PostDomainSearch  ####################
+#'
+#' library(interserverapi)
+#' var_name <- "name_example" # character | The base domain name to search (for example `example` or `example.com`).
+#'
+#' #Get the full order form data for a hostname in one round-trip (search → order preview)
+#' api_instance <- DomainsApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' api_instance$PostDomainSearch(var_name)
+#'
+#'
 #' ####################  PostDomainTransfer  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Request Domain Transfer
+#' #Re-poll OpenSRS transfer status for a domain order via POST
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -560,9 +540,10 @@
 #'
 #' ####################  PutDomains  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_domain_order_request <- DomainOrderRequest$new("hostname_example", "register", "coupon_example", "enable") # DomainOrderRequest | 
 #'
-#' #Domain Order Search
+#' #Preview per-TLD field requirements for a domain order — no commit
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -574,16 +555,16 @@
 #' # Configure API key authorization: sessionIdHeaderAuth
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$PutDomains()
+#' api_instance$PutDomains(var_domain_order_request)
 #'
 #'
 #' ####################  UpdateDomainContact  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #' var_domain_contact_details <- DomainContactDetails$new("status_example", "state_example", "org_name_example", "country_example", "postal_code_example", "email_example", "fax_example", "address2_example", "address3_example", "address1_example", "city_example", "phone_example", "first_name_example", "last_name_example") # DomainContactDetails | 
 #'
-#' #Update Domain Contact Details
+#' #Update registrant/admin contact details and push them to OpenSRS
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -603,10 +584,10 @@
 #'
 #' ####################  UpdateDomainInfo  ####################
 #'
-#' library(openapi)
-#' var_id <- "id_example" # character | The domain service ID. Use `domain_id` from `GET /domains`.
+#' library(interserverapi)
+#' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #'
-#' #Update Domain Order
+#' #POST mutation hook for the domain detail page (use dedicated ops where possible)
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -626,11 +607,11 @@
 #'
 #' ####################  UpdateDomainNameservers  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #' var_domain_nameserver_put_request <- DomainNameserverPutRequest$new(c("nameserver_example")) # DomainNameserverPutRequest | 
 #'
-#' #Replace Nameserver Set
+#' #Replace the full authoritative-nameserver delegation list at the registrar
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -650,11 +631,11 @@
 #'
 #' ####################  UpdateDomainWhoisPrivacy  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The domain service ID. Use `domain_id` from `GET /domains`.
 #' var_domain_whois_privacy_request <- DomainWhoisPrivacyRequest$new("func_example", "csrf_token_example", "domain_firstname_example", "domain_lastname_example", "domain_email_example", "domain_address_example", "domain_address2_example", "domain_address3_example", "domain_city_example", "domain_state_example", "domain_zip_example", "domain_country_example", "domain_phone_example", "domain_fax_example", "domain_company_example", "domain_extra_example") # DomainWhoisPrivacyRequest | 
 #'
-#' #Update Whois Privacy
+#' #Order, enable, or cancel the Whois privacy add-on for a domain
 #' api_instance <- DomainsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -694,15 +675,16 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Domain Order
+    #' Place a new domain registration or transfer order, generate billing invoice
     #'
+    #' @param domain_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return ServiceOrderPostResponse
-    AddDomain = function(data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$AddDomainWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+    AddDomain = function(domain_order_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$AddDomainWithHttpInfo(domain_order_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -715,14 +697,15 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Domain Order
+    #' Place a new domain registration or transfer order, generate billing invoice
     #'
+    #' @param domain_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (ServiceOrderPostResponse) with additional information such as HTTP status code, headers
-    AddDomainWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+    AddDomainWithHttpInfo = function(domain_order_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -731,6 +714,20 @@ DomainsApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`domain_order_request`)) {
+        stop("Missing required parameter `domain_order_request`.")
+      }
+
+      if (!missing(`domain_order_request`) && is.null(`domain_order_request`)) {
+        stop("Invalid value for `domain_order_request` when calling DomainsApi$AddDomain, `domain_order_request` is not nullable")
+      }
+
+      if (!is.null(`domain_order_request`)) {
+        local_var_body <- `domain_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/domains/order"
       # API key authentication
@@ -747,7 +744,7 @@ DomainsApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -800,7 +797,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Add Domain DNSSEC Records
+    #' Register DNSSEC DS records on the domain at OpenSRS
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param domain_dnssec_request 
@@ -823,7 +820,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Add Domain DNSSEC Records
+    #' Register DNSSEC DS records on the domain at OpenSRS
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param domain_dnssec_request 
@@ -936,7 +933,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Add Registered Nameserver
+    #' Register a new nameserver host with glue IP at the registry (registered nameserver)
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param domain_nameserver_post_request 
@@ -959,7 +956,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Add Registered Nameserver
+    #' Register a new nameserver host with glue IP at the registry (registered nameserver)
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param domain_nameserver_post_request 
@@ -1072,7 +1069,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Domain Order
+    #' Cancel a domain order in the billing system to stop auto-renewals
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1094,7 +1091,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Domain Order
+    #' Cancel a domain order in the billing system to stop auto-renewals
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1192,17 +1189,16 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Remove Domain DNSSEC Records
+    #' Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
-    #' @param action Set to `delete` to remove all DNSSEC records.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return SuccessTextResponse
-    DeleteDomainDnssec = function(id, action, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$DeleteDomainDnssecWithHttpInfo(id, action, data_file = data_file, ..., .parse = .parse)
+    DeleteDomainDnssec = function(id, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$DeleteDomainDnssecWithHttpInfo(id, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1215,16 +1211,15 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Remove Domain DNSSEC Records
+    #' Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
-    #' @param action Set to `delete` to remove all DNSSEC records.
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (SuccessTextResponse) with additional information such as HTTP status code, headers
-    DeleteDomainDnssecWithHttpInfo = function(id, action, data_file = NULL, ..., .parse = TRUE) {
+    DeleteDomainDnssecWithHttpInfo = function(id, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1238,19 +1233,9 @@ DomainsApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
-      if (missing(`action`)) {
-        stop("Missing required parameter `action`.")
-      }
-
       if (!missing(`id`) && is.null(`id`)) {
         stop("Invalid value for `id` when calling DomainsApi$DeleteDomainDnssec, `id` is not nullable")
       }
-
-      if (!missing(`action`) && is.null(`action`)) {
-        stop("Invalid value for `action` when calling DomainsApi$DeleteDomainDnssec, `action` is not nullable")
-      }
-
-      query_params[["action"]] <- `action`
 
       local_var_url_path <- "/domains/{id}/dnssec"
       if (!missing(`id`)) {
@@ -1324,7 +1309,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Registered Nameserver
+    #' Remove one registered nameserver glue record from the domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param index The index of the registered nameserver from the registered nameservers list to delete.  
@@ -1347,7 +1332,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Registered Nameserver
+    #' Remove one registered nameserver glue record from the domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param index The index of the registered nameserver from the registered nameservers list to delete.  
@@ -1456,7 +1441,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain Contact Details
+    #' Read the current registrant/admin/tech/billing contact field set for a domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1478,7 +1463,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain Contact Details
+    #' Read the current registrant/admin/tech/billing contact field set for a domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1576,7 +1561,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain DNSSEC Records
+    #' Read the DNSSEC DS record set currently registered with the registrar
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1598,7 +1583,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain DNSSEC Records
+    #' Read the DNSSEC DS record set currently registered with the registrar
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1696,7 +1681,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain Order
+    #' Read full billing, registrar, and service detail for one domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1718,7 +1703,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain Order
+    #' Read full billing, registrar, and service detail for one domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1816,7 +1801,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain Invoices
+    #' List all billing invoices scoped to one domain order
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1838,7 +1823,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain Invoices
+    #' List all billing invoices scoped to one domain order
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1936,7 +1921,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Lookup Domain Availability and Pricing
+    #' Check availability, premium status, and pricing for a specific domain
     #'
     #' @param name The full domain name to look up (for example `example.com`).
     #' @param data_file (optional) name of the data file to save the result
@@ -1958,7 +1943,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Lookup Domain Availability and Pricing
+    #' Check availability, premium status, and pricing for a specific domain
     #'
     #' @param name The full domain name to look up (for example `example.com`).
     #' @param data_file (optional) name of the data file to save the result
@@ -2056,7 +2041,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Registered Nameservers
+    #' List registered nameserver hosts and glue IP addresses for a domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2078,7 +2063,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Registered Nameservers
+    #' List registered nameserver hosts and glue IP addresses for a domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2176,223 +2161,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain Order Fields
-    #'
-    #' @param domain The fully qualified domain name (e.g. `example.com`).
-    #' @param reg_type The registration type. Common values include `register` for new registrations and `transfer` for inbound transfers.
-    #' @param ... Other optional arguments
-    #'
-    #' @return void
-    GetDomainOrderFields = function(domain, reg_type, ...) {
-      local_var_response <- self$GetDomainOrderFieldsWithHttpInfo(domain, reg_type, ...)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Get Domain Order Fields
-    #'
-    #' @param domain The fully qualified domain name (e.g. `example.com`).
-    #' @param reg_type The registration type. Common values include `register` for new registrations and `transfer` for inbound transfers.
-    #' @param ... Other optional arguments
-    #'
-    #' @return API response (void) with additional information such as HTTP status code, headers
-    GetDomainOrderFieldsWithHttpInfo = function(domain, reg_type, ...) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`domain`)) {
-        stop("Missing required parameter `domain`.")
-      }
-
-      if (missing(`reg_type`)) {
-        stop("Missing required parameter `reg_type`.")
-      }
-
-      if (!missing(`domain`) && is.null(`domain`)) {
-        stop("Invalid value for `domain` when calling DomainsApi$GetDomainOrderFields, `domain` is not nullable")
-      }
-
-      if (!missing(`reg_type`) && is.null(`reg_type`)) {
-        stop("Invalid value for `reg_type` when calling DomainsApi$GetDomainOrderFields, `reg_type` is not nullable")
-      }
-
-      local_var_url_path <- "/domains/order/{domain}/{regType}"
-      if (!missing(`domain`)) {
-        local_var_url_path <- gsub("\\{domain\\}", URLencode(as.character(`domain`), reserved = TRUE), local_var_url_path)
-      }
-
-      if (!missing(`reg_type`)) {
-        local_var_url_path <- gsub("\\{regType\\}", URLencode(as.character(`reg_type`), reserved = TRUE), local_var_url_path)
-      }
-
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        local_var_resp$content <- NULL
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Get Domain Order Search Results
-    #'
-    #' @param domain The fully qualified domain name to look up (e.g. `example.com`).
-    #' @param ... Other optional arguments
-    #'
-    #' @return void
-    GetDomainOrderSearchResults = function(domain, ...) {
-      local_var_response <- self$GetDomainOrderSearchResultsWithHttpInfo(domain, ...)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Get Domain Order Search Results
-    #'
-    #' @param domain The fully qualified domain name to look up (e.g. `example.com`).
-    #' @param ... Other optional arguments
-    #'
-    #' @return API response (void) with additional information such as HTTP status code, headers
-    GetDomainOrderSearchResultsWithHttpInfo = function(domain, ...) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`domain`)) {
-        stop("Missing required parameter `domain`.")
-      }
-
-      if (!missing(`domain`) && is.null(`domain`)) {
-        stop("Invalid value for `domain` when calling DomainsApi$GetDomainOrderSearchResults, `domain` is not nullable")
-      }
-
-      local_var_url_path <- "/domains/order/{domain}"
-      if (!missing(`domain`)) {
-        local_var_url_path <- gsub("\\{domain\\}", URLencode(as.character(`domain`), reserved = TRUE), local_var_url_path)
-      }
-
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "GET",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        local_var_resp$content <- NULL
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Start Domain Renewal Flow
+    #' Read renewal pricing, expiry, and whether a renewal invoice already exists
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2414,7 +2183,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Start Domain Renewal Flow
+    #' Read renewal pricing, expiry, and whether a renewal invoice already exists
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2512,7 +2281,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Search Domain Suggestions
+    #' Get registrar-suggested domain alternatives and bulk availability for a search term
     #'
     #' @param name The base domain name to search (for example `example` or `example.com`).
     #' @param data_file (optional) name of the data file to save the result
@@ -2534,7 +2303,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Search Domain Suggestions
+    #' Get registrar-suggested domain alternatives and bulk availability for a search term
     #'
     #' @param name The base domain name to search (for example `example` or `example.com`).
     #' @param data_file (optional) name of the data file to save the result
@@ -2632,7 +2401,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Start Domain Transfer Flow
+    #' Read OpenSRS transfer status for an in-progress domain transfer order
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2654,7 +2423,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Start Domain Transfer Flow
+    #' Read OpenSRS transfer status for an in-progress domain transfer order
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2752,7 +2521,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Whois Privacy Status
+    #' Read Whois privacy availability, current state, and add-on pricing for a domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2774,7 +2543,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Whois Privacy Status
+    #' Read Whois privacy availability, current state, and add-on pricing for a domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2872,7 +2641,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Domain Orders
+    #' List every domain registration on the account with billing and registration metadata
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2893,7 +2662,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Domain Orders
+    #' List every domain registration on the account with billing and registration metadata
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2978,7 +2747,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Domain Welcome Email
+    #' Resend the domain welcome email with registration details and management instructions
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3000,7 +2769,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Domain Welcome Email
+    #' Resend the domain welcome email with registration details and management instructions
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3098,7 +2867,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain Ordering Information
+    #' Read the buyable domain TLD service catalog and Whois privacy pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -3119,7 +2888,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Domain Ordering Information
+    #' Read the buyable domain TLD service catalog and Whois privacy pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -3204,13 +2973,14 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Domain Order
+    #' Validate posted domain-order field values before committing — dry run
     #'
+    #' @param domain_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return void
-    PatchDomains = function(...) {
-      local_var_response <- self$PatchDomainsWithHttpInfo(...)
+    PatchDomains = function(domain_order_request, ...) {
+      local_var_response <- self$PatchDomainsWithHttpInfo(domain_order_request, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -3223,12 +2993,13 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Domain Order
+    #' Validate posted domain-order field values before committing — dry run
     #'
+    #' @param domain_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    PatchDomainsWithHttpInfo = function(...) {
+    PatchDomainsWithHttpInfo = function(domain_order_request, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -3237,6 +3008,20 @@ DomainsApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`domain_order_request`)) {
+        stop("Missing required parameter `domain_order_request`.")
+      }
+
+      if (!missing(`domain_order_request`) && is.null(`domain_order_request`)) {
+        stop("Invalid value for `domain_order_request` when calling DomainsApi$PatchDomains, `domain_order_request` is not nullable")
+      }
+
+      if (!is.null(`domain_order_request`)) {
+        local_var_body <- `domain_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/domains/order"
       # API key authentication
@@ -3253,7 +3038,7 @@ DomainsApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "PATCH",
@@ -3291,7 +3076,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Request Domain Renewal
+    #' Submit a domain renewal request and generate the renewal invoice
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3313,7 +3098,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Request Domain Renewal
+    #' Submit a domain renewal request and generate the renewal invoice
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3411,7 +3196,108 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Request Domain Transfer
+    #' Get the full order form data for a hostname in one round-trip (search → order preview)
+    #'
+    #' @param name The base domain name to search (for example `example` or `example.com`).
+    #' @param ... Other optional arguments
+    #'
+    #' @return void
+    PostDomainSearch = function(name, ...) {
+      local_var_response <- self$PostDomainSearchWithHttpInfo(name, ...)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Get the full order form data for a hostname in one round-trip (search → order preview)
+    #'
+    #' @param name The base domain name to search (for example `example` or `example.com`).
+    #' @param ... Other optional arguments
+    #'
+    #' @return API response (void) with additional information such as HTTP status code, headers
+    PostDomainSearchWithHttpInfo = function(name, ...) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`name`)) {
+        stop("Missing required parameter `name`.")
+      }
+
+      if (!missing(`name`) && is.null(`name`)) {
+        stop("Invalid value for `name` when calling DomainsApi$PostDomainSearch, `name` is not nullable")
+      }
+
+      local_var_url_path <- "/domains/search/{name}"
+      if (!missing(`name`)) {
+        local_var_url_path <- gsub("\\{name\\}", URLencode(as.character(`name`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "POST",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        local_var_resp$content <- NULL
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' Re-poll OpenSRS transfer status for a domain order via POST
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3433,7 +3319,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Request Domain Transfer
+    #' Re-poll OpenSRS transfer status for a domain order via POST
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3531,13 +3417,14 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Domain Order Search
+    #' Preview per-TLD field requirements for a domain order — no commit
     #'
+    #' @param domain_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return void
-    PutDomains = function(...) {
-      local_var_response <- self$PutDomainsWithHttpInfo(...)
+    PutDomains = function(domain_order_request, ...) {
+      local_var_response <- self$PutDomainsWithHttpInfo(domain_order_request, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -3550,12 +3437,13 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Domain Order Search
+    #' Preview per-TLD field requirements for a domain order — no commit
     #'
+    #' @param domain_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    PutDomainsWithHttpInfo = function(...) {
+    PutDomainsWithHttpInfo = function(domain_order_request, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -3564,6 +3452,20 @@ DomainsApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`domain_order_request`)) {
+        stop("Missing required parameter `domain_order_request`.")
+      }
+
+      if (!missing(`domain_order_request`) && is.null(`domain_order_request`)) {
+        stop("Invalid value for `domain_order_request` when calling DomainsApi$PutDomains, `domain_order_request` is not nullable")
+      }
+
+      if (!is.null(`domain_order_request`)) {
+        local_var_body <- `domain_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/domains/order"
       # API key authentication
@@ -3580,7 +3482,7 @@ DomainsApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "PUT",
@@ -3618,7 +3520,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Domain Contact Details
+    #' Update registrant/admin contact details and push them to OpenSRS
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param domain_contact_details 
@@ -3641,7 +3543,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Domain Contact Details
+    #' Update registrant/admin contact details and push them to OpenSRS
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param domain_contact_details 
@@ -3754,7 +3656,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Domain Order
+    #' POST mutation hook for the domain detail page (use dedicated ops where possible)
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3776,7 +3678,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Domain Order
+    #' POST mutation hook for the domain detail page (use dedicated ops where possible)
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3874,7 +3776,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Replace Nameserver Set
+    #' Replace the full authoritative-nameserver delegation list at the registrar
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param domain_nameserver_put_request 
@@ -3897,7 +3799,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Replace Nameserver Set
+    #' Replace the full authoritative-nameserver delegation list at the registrar
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param domain_nameserver_put_request 
@@ -4010,7 +3912,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Whois Privacy
+    #' Order, enable, or cancel the Whois privacy add-on for a domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param domain_whois_privacy_request 
@@ -4033,7 +3935,7 @@ DomainsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Whois Privacy
+    #' Order, enable, or cancel the Whois privacy add-on for a domain
     #'
     #' @param id The domain service ID. Use `domain_id` from `GET /domains`.
     #' @param domain_whois_privacy_request 

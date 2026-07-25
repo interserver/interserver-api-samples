@@ -24,11 +24,31 @@ import javax.validation.Valid;
  */
 
 public class InlineResponse20011   {
+  @JsonProperty("success")
+  private Boolean success = null;
+
   @JsonProperty("text")
   private String text = null;
 
-  @JsonProperty("url")
-  private String url = null;
+  public InlineResponse20011 success(Boolean success) {
+    this.success = success;
+    return this;
+  }
+
+  /**
+   * Get success
+   * @return success
+   **/
+  @JsonProperty("success")
+  @Schema(required = true, description = "")
+  @NotNull
+  public Boolean isSuccess() {
+    return success;
+  }
+
+  public void setSuccess(Boolean success) {
+    this.success = success;
+  }
 
   public InlineResponse20011 text(String text) {
     this.text = text;
@@ -40,7 +60,7 @@ public class InlineResponse20011   {
    * @return text
    **/
   @JsonProperty("text")
-  @Schema(description = "")
+  @Schema(required = true, description = "")
   @NotNull
   public String getText() {
     return text;
@@ -48,26 +68,6 @@ public class InlineResponse20011   {
 
   public void setText(String text) {
     this.text = text;
-  }
-
-  public InlineResponse20011 url(String url) {
-    this.url = url;
-    return this;
-  }
-
-  /**
-   * A pre-signed download URL valid for 24 hours.
-   * @return url
-   **/
-  @JsonProperty("url")
-  @Schema(description = "A pre-signed download URL valid for 24 hours.")
-  @NotNull
-  public String getUrl() {
-    return url;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
   }
 
 
@@ -80,13 +80,13 @@ public class InlineResponse20011   {
       return false;
     }
     InlineResponse20011 inlineResponse20011 = (InlineResponse20011) o;
-    return Objects.equals(this.text, inlineResponse20011.text) &&
-        Objects.equals(this.url, inlineResponse20011.url);
+    return Objects.equals(this.success, inlineResponse20011.success) &&
+        Objects.equals(this.text, inlineResponse20011.text);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, url);
+    return Objects.hash(success, text);
   }
 
 
@@ -95,8 +95,8 @@ public class InlineResponse20011   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20011 {\n");
     
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

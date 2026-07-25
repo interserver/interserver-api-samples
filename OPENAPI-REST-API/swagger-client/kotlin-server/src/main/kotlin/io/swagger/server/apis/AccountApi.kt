@@ -53,22 +53,6 @@ import io.swagger.server.models.TextResponse
 fun Route.AccountApi() {
     val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
-    post<Paths.changeAccountUsername> {  _: Paths.changeAccountUsername ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """{
-  "text" : "You were successfull."
-}"""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
     delete<Paths.deleteAccountOauthName> {  _: Paths.deleteAccountOauthName ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {

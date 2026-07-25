@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateAccountTfaRequest = Initialize-PSOpenAPIToolsUpdateAccountTfaRequest  -Var2faGoogleCode null
+$UpdateAccountTfaRequest = Initialize-InterserverApiUpdateAccountTfaRequest  -Var2faGoogleCode null
 ```
 
 - Convert the resource to JSON

@@ -28,4 +28,3 @@ case class MailRow(
   /* The services name of the mail. */
   services_name: Option[String] = None
 )
-

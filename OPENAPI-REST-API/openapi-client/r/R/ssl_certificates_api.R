@@ -16,9 +16,10 @@
 #' \dontrun{
 #' ####################  AddSsl  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_ssl_order_request <- SslOrderRequest$new(123, "hostname_example", "approver_email_example", 123, "coupon_example", "generated", "csr_example", "firstname_example", "lastname_example", "email_example", "address_example", "city_example", "state_example", "zip_example", "country_example", "phone_example", "company_example", "department_example", "agency_example", "business_category_example") # SslOrderRequest | 
 #'
-#' #Place SSL Cert Order
+#' #Place a new SSL certificate order - creates invoice and queues issuance
 #' api_instance <- SSLCertificatesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -31,16 +32,16 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$AddSsl(data_file = "result.txt")
-#' result <- api_instance$AddSsl()
+#' # result <- api_instance$AddSsl(var_ssl_order_requestdata_file = "result.txt")
+#' result <- api_instance$AddSsl(var_ssl_order_request)
 #' dput(result)
 #'
 #'
 #' ####################  GetNewSsl  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #SSL Cert Ordering Information
+#' #Get available SSL certificate packages and pricing for placing a new order
 #' api_instance <- SSLCertificatesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -60,10 +61,10 @@
 #'
 #' ####################  GetSslInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | SSL certificate ID number.
 #'
-#' #Get SSL Cert Info
+#' #Get full details for one SSL certificate by id - status, expiration, links
 #' api_instance <- SSLCertificatesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -83,10 +84,10 @@
 #'
 #' ####################  GetSslInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | SSL Cert ID number
 #'
-#' #Get SSL Cert Invoices
+#' #List all billing invoices and charges tied to one SSL certificate by id
 #' api_instance <- SSLCertificatesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -106,9 +107,9 @@
 #'
 #' ####################  GetSslList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List SSL Certs
+#' #List all SSL certificates on the authenticated customer account with status and hostname
 #' api_instance <- SSLCertificatesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -125,10 +126,10 @@
 #'
 #' ####################  GetSslWelcomeEmail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | SSL Cert ID number
 #'
-#' #Resend SSL Welcome Email
+#' #Resend the SSL welcome email with cert credentials and install instructions
 #' api_instance <- SSLCertificatesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -148,9 +149,10 @@
 #'
 #' ####################  PutSsl  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_ssl_order_request <- SslOrderRequest$new(123, "hostname_example", "approver_email_example", 123, "coupon_example", "generated", "csr_example", "firstname_example", "lastname_example", "email_example", "address_example", "city_example", "state_example", "zip_example", "country_example", "phone_example", "company_example", "department_example", "agency_example", "business_category_example") # SslOrderRequest | 
 #'
-#' #Validate SSL Cert Order
+#' #Validate an SSL certificate order without charging - dry-run before addSsl
 #' api_instance <- SSLCertificatesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -162,15 +164,15 @@
 #' # Configure API key authorization: sessionIdHeaderAuth
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$PutSsl()
+#' api_instance$PutSsl(var_ssl_order_request)
 #'
 #'
 #' ####################  SslCancel  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | SSL Cert ID number
 #'
-#' #Cancel SSL Certificate Service
+#' #Cancel an SSL certificate service - stops renewals at end of billing cycle
 #' api_instance <- SSLCertificatesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -190,10 +192,10 @@
 #'
 #' ####################  UpdateSslInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "id_example" # character | SSL certificate ID number.
 #'
-#' #Update SSL Cert Order
+#' #Update mutable settings on an existing SSL certificate order by id
 #' api_instance <- SSLCertificatesApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -233,15 +235,16 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place SSL Cert Order
+    #' Place a new SSL certificate order - creates invoice and queues issuance
     #'
+    #' @param ssl_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return ServiceOrderPostResponse
-    AddSsl = function(data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$AddSslWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+    AddSsl = function(ssl_order_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$AddSslWithHttpInfo(ssl_order_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -254,14 +257,15 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place SSL Cert Order
+    #' Place a new SSL certificate order - creates invoice and queues issuance
     #'
+    #' @param ssl_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (ServiceOrderPostResponse) with additional information such as HTTP status code, headers
-    AddSslWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+    AddSslWithHttpInfo = function(ssl_order_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -270,6 +274,20 @@ SSLCertificatesApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`ssl_order_request`)) {
+        stop("Missing required parameter `ssl_order_request`.")
+      }
+
+      if (!missing(`ssl_order_request`) && is.null(`ssl_order_request`)) {
+        stop("Invalid value for `ssl_order_request` when calling SSLCertificatesApi$AddSsl, `ssl_order_request` is not nullable")
+      }
+
+      if (!is.null(`ssl_order_request`)) {
+        local_var_body <- `ssl_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/ssl/order"
       # API key authentication
@@ -286,7 +304,7 @@ SSLCertificatesApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -339,7 +357,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' SSL Cert Ordering Information
+    #' Get available SSL certificate packages and pricing for placing a new order
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -360,7 +378,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' SSL Cert Ordering Information
+    #' Get available SSL certificate packages and pricing for placing a new order
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -445,7 +463,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get SSL Cert Info
+    #' Get full details for one SSL certificate by id - status, expiration, links
     #'
     #' @param id SSL certificate ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -467,7 +485,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get SSL Cert Info
+    #' Get full details for one SSL certificate by id - status, expiration, links
     #'
     #' @param id SSL certificate ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -565,7 +583,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get SSL Cert Invoices
+    #' List all billing invoices and charges tied to one SSL certificate by id
     #'
     #' @param id SSL Cert ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -587,7 +605,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get SSL Cert Invoices
+    #' List all billing invoices and charges tied to one SSL certificate by id
     #'
     #' @param id SSL Cert ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -685,7 +703,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' List SSL Certs
+    #' List all SSL certificates on the authenticated customer account with status and hostname
     #'
     #' @param ... Other optional arguments
     #'
@@ -704,7 +722,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' List SSL Certs
+    #' List all SSL certificates on the authenticated customer account with status and hostname
     #'
     #' @param ... Other optional arguments
     #'
@@ -772,7 +790,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend SSL Welcome Email
+    #' Resend the SSL welcome email with cert credentials and install instructions
     #'
     #' @param id SSL Cert ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -794,7 +812,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend SSL Welcome Email
+    #' Resend the SSL welcome email with cert credentials and install instructions
     #'
     #' @param id SSL Cert ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -892,13 +910,14 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate SSL Cert Order
+    #' Validate an SSL certificate order without charging - dry-run before addSsl
     #'
+    #' @param ssl_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return void
-    PutSsl = function(...) {
-      local_var_response <- self$PutSslWithHttpInfo(...)
+    PutSsl = function(ssl_order_request, ...) {
+      local_var_response <- self$PutSslWithHttpInfo(ssl_order_request, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -911,12 +930,13 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate SSL Cert Order
+    #' Validate an SSL certificate order without charging - dry-run before addSsl
     #'
+    #' @param ssl_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    PutSslWithHttpInfo = function(...) {
+    PutSslWithHttpInfo = function(ssl_order_request, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -925,6 +945,20 @@ SSLCertificatesApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`ssl_order_request`)) {
+        stop("Missing required parameter `ssl_order_request`.")
+      }
+
+      if (!missing(`ssl_order_request`) && is.null(`ssl_order_request`)) {
+        stop("Invalid value for `ssl_order_request` when calling SSLCertificatesApi$PutSsl, `ssl_order_request` is not nullable")
+      }
+
+      if (!is.null(`ssl_order_request`)) {
+        local_var_body <- `ssl_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/ssl/order"
       # API key authentication
@@ -941,7 +975,7 @@ SSLCertificatesApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "PUT",
@@ -979,7 +1013,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel SSL Certificate Service
+    #' Cancel an SSL certificate service - stops renewals at end of billing cycle
     #'
     #' @param id SSL Cert ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1001,7 +1035,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel SSL Certificate Service
+    #' Cancel an SSL certificate service - stops renewals at end of billing cycle
     #'
     #' @param id SSL Cert ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -1099,7 +1133,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update SSL Cert Order
+    #' Update mutable settings on an existing SSL certificate order by id
     #'
     #' @param id SSL certificate ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1121,7 +1155,7 @@ SSLCertificatesApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update SSL Cert Order
+    #' Update mutable settings on an existing SSL certificate order by id
     #'
     #' @param id SSL certificate ID number.
     #' @param data_file (optional) name of the data file to save the result

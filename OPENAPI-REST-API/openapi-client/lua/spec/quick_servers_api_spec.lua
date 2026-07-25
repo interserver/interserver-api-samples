@@ -99,6 +99,13 @@ describe("quick_servers_api", function()
     end)
   end)
 
+  -- unit tests for get_qs_backup
+  describe("get_qs_backup test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for get_qs_backups
   describe("get_qs_backups test", function()
     it("should work", function()
@@ -206,13 +213,6 @@ describe("quick_servers_api", function()
 
   -- unit tests for get_qs_welcome_email
   describe("get_qs_welcome_email test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for post_qs_backup
-  describe("post_qs_backup test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

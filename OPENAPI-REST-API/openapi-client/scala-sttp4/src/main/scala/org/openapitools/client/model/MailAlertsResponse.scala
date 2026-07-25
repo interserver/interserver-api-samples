@@ -17,5 +17,4 @@ import scala.collection.mutable.ListBuffer
    * Alert configuration entries for a mail service.
    */
 case class MailAlertsResponse(
-)
-
+) extends ListBuffer[MailAlertsResponseInner]

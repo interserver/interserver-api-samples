@@ -14,4 +14,8 @@ New helpdesk ticket request.
 |**serviceModule** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

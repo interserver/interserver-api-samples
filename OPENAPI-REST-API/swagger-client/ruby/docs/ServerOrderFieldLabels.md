@@ -1,4 +1,4 @@
-# SwaggerClient::ServerOrderFieldLabels
+# InterserverApiClient::ServerOrderFieldLabels
 
 ## Properties
 Name | Type | Description | Notes

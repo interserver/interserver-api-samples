@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsPleskLicense } from './api';
+import { VpsPleskLicense } from '@interserver/myadmin-client';
 
 const instance: VpsPleskLicense = {
     id,

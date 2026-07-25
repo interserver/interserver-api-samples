@@ -11,123 +11,76 @@
 part of openapi.api;
 
 /// Type of DNS Record
-class DnsRecordType {
-  /// Instantiate a new enum with the provided [value].
-  const DnsRecordType._(this.value);
+enum DnsRecordType {
+  A._(r'A'),
+  A6._(r'A6'),
+  AAAA._(r'AAAA'),
+  AFSDB._(r'AFSDB'),
+  ALIAS._(r'ALIAS'),
+  CAA._(r'CAA'),
+  CDNSKEY._(r'CDNSKEY'),
+  CDS._(r'CDS'),
+  CERT._(r'CERT'),
+  CNAME._(r'CNAME'),
+  DHCID._(r'DHCID'),
+  DLV._(r'DLV'),
+  DNSKEY._(r'DNSKEY'),
+  DNAME._(r'DNAME'),
+  DS._(r'DS'),
+  EUI48._(r'EUI48'),
+  EUI64._(r'EUI64'),
+  HINFO._(r'HINFO'),
+  IPSECKEY._(r'IPSECKEY'),
+  KEY._(r'KEY'),
+  KX._(r'KX'),
+  LOC._(r'LOC'),
+  MAILA._(r'MAILA'),
+  MAILB._(r'MAILB'),
+  MINFO._(r'MINFO'),
+  MR._(r'MR'),
+  MX._(r'MX'),
+  NAPTR._(r'NAPTR'),
+  NS._(r'NS'),
+  NSEC._(r'NSEC'),
+  NSEC3._(r'NSEC3'),
+  NSEC3PARAM._(r'NSEC3PARAM'),
+  OPENPGPKEY._(r'OPENPGPKEY'),
+  OPT._(r'OPT'),
+  PTR._(r'PTR'),
+  RKEY._(r'RKEY'),
+  RP._(r'RP'),
+  RRSIG._(r'RRSIG'),
+  SIG._(r'SIG'),
+  SOA._(r'SOA'),
+  SPF._(r'SPF'),
+  SRV._(r'SRV'),
+  SSHFP._(r'SSHFP'),
+  TLSA._(r'TLSA'),
+  TKEY._(r'TKEY'),
+  TSIG._(r'TSIG'),
+  TXT._(r'TXT'),
+  WKS._(r'WKS'),
+  uRI._(r'URI⏎'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const DnsRecordType._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const A = DnsRecordType._(r'A');
-  static const a6 = DnsRecordType._(r'A6');
-  static const AAAA = DnsRecordType._(r'AAAA');
-  static const AFSDB = DnsRecordType._(r'AFSDB');
-  static const ALIAS = DnsRecordType._(r'ALIAS');
-  static const CAA = DnsRecordType._(r'CAA');
-  static const CDNSKEY = DnsRecordType._(r'CDNSKEY');
-  static const CDS = DnsRecordType._(r'CDS');
-  static const CERT = DnsRecordType._(r'CERT');
-  static const CNAME = DnsRecordType._(r'CNAME');
-  static const DHCID = DnsRecordType._(r'DHCID');
-  static const DLV = DnsRecordType._(r'DLV');
-  static const DNSKEY = DnsRecordType._(r'DNSKEY');
-  static const DNAME = DnsRecordType._(r'DNAME');
-  static const DS = DnsRecordType._(r'DS');
-  static const eUI48 = DnsRecordType._(r'EUI48');
-  static const eUI64 = DnsRecordType._(r'EUI64');
-  static const HINFO = DnsRecordType._(r'HINFO');
-  static const IPSECKEY = DnsRecordType._(r'IPSECKEY');
-  static const KEY = DnsRecordType._(r'KEY');
-  static const KX = DnsRecordType._(r'KX');
-  static const LOC = DnsRecordType._(r'LOC');
-  static const MAILA = DnsRecordType._(r'MAILA');
-  static const MAILB = DnsRecordType._(r'MAILB');
-  static const MINFO = DnsRecordType._(r'MINFO');
-  static const MR = DnsRecordType._(r'MR');
-  static const MX = DnsRecordType._(r'MX');
-  static const NAPTR = DnsRecordType._(r'NAPTR');
-  static const NS = DnsRecordType._(r'NS');
-  static const NSEC = DnsRecordType._(r'NSEC');
-  static const nSEC3 = DnsRecordType._(r'NSEC3');
-  static const nSEC3PARAM = DnsRecordType._(r'NSEC3PARAM');
-  static const OPENPGPKEY = DnsRecordType._(r'OPENPGPKEY');
-  static const OPT = DnsRecordType._(r'OPT');
-  static const PTR = DnsRecordType._(r'PTR');
-  static const RKEY = DnsRecordType._(r'RKEY');
-  static const RP = DnsRecordType._(r'RP');
-  static const RRSIG = DnsRecordType._(r'RRSIG');
-  static const SIG = DnsRecordType._(r'SIG');
-  static const SOA = DnsRecordType._(r'SOA');
-  static const SPF = DnsRecordType._(r'SPF');
-  static const SRV = DnsRecordType._(r'SRV');
-  static const SSHFP = DnsRecordType._(r'SSHFP');
-  static const TLSA = DnsRecordType._(r'TLSA');
-  static const TKEY = DnsRecordType._(r'TKEY');
-  static const TSIG = DnsRecordType._(r'TSIG');
-  static const TXT = DnsRecordType._(r'TXT');
-  static const WKS = DnsRecordType._(r'WKS');
-  static const uRI = DnsRecordType._(r'URI⏎');
-
-  /// List of all possible values in this [enum][DnsRecordType].
-  static const values = <DnsRecordType>[
-    A,
-    a6,
-    AAAA,
-    AFSDB,
-    ALIAS,
-    CAA,
-    CDNSKEY,
-    CDS,
-    CERT,
-    CNAME,
-    DHCID,
-    DLV,
-    DNSKEY,
-    DNAME,
-    DS,
-    eUI48,
-    eUI64,
-    HINFO,
-    IPSECKEY,
-    KEY,
-    KX,
-    LOC,
-    MAILA,
-    MAILB,
-    MINFO,
-    MR,
-    MX,
-    NAPTR,
-    NS,
-    NSEC,
-    nSEC3,
-    nSEC3PARAM,
-    OPENPGPKEY,
-    OPT,
-    PTR,
-    RKEY,
-    RP,
-    RRSIG,
-    SIG,
-    SOA,
-    SPF,
-    SRV,
-    SSHFP,
-    TLSA,
-    TKEY,
-    TSIG,
-    TXT,
-    WKS,
-    uRI,
-  ];
-
+  /// Returns the instance of [DnsRecordType] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static DnsRecordType? fromJson(dynamic value) => DnsRecordTypeTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [DnsRecordType]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<DnsRecordType> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DnsRecordType>[];
     if (json is List && json.isNotEmpty) {
@@ -149,9 +102,11 @@ class DnsRecordTypeTypeTransformer {
 
   const DnsRecordTypeTypeTransformer._();
 
-  String encode(DnsRecordType data) => data.value;
+  /// Encodes this enum as a value suitable for JSON.
+  String encode(DnsRecordType data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a DnsRecordType.
+  /// Returns the instance of [DnsRecordType] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -160,10 +115,13 @@ class DnsRecordTypeTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   DnsRecordType? decode(dynamic data, {bool allowNull = true}) {
+    if (data is DnsRecordType) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'A': return DnsRecordType.A;
-        case r'A6': return DnsRecordType.a6;
+        case r'A6': return DnsRecordType.A6;
         case r'AAAA': return DnsRecordType.AAAA;
         case r'AFSDB': return DnsRecordType.AFSDB;
         case r'ALIAS': return DnsRecordType.ALIAS;
@@ -177,8 +135,8 @@ class DnsRecordTypeTypeTransformer {
         case r'DNSKEY': return DnsRecordType.DNSKEY;
         case r'DNAME': return DnsRecordType.DNAME;
         case r'DS': return DnsRecordType.DS;
-        case r'EUI48': return DnsRecordType.eUI48;
-        case r'EUI64': return DnsRecordType.eUI64;
+        case r'EUI48': return DnsRecordType.EUI48;
+        case r'EUI64': return DnsRecordType.EUI64;
         case r'HINFO': return DnsRecordType.HINFO;
         case r'IPSECKEY': return DnsRecordType.IPSECKEY;
         case r'KEY': return DnsRecordType.KEY;
@@ -192,8 +150,8 @@ class DnsRecordTypeTypeTransformer {
         case r'NAPTR': return DnsRecordType.NAPTR;
         case r'NS': return DnsRecordType.NS;
         case r'NSEC': return DnsRecordType.NSEC;
-        case r'NSEC3': return DnsRecordType.nSEC3;
-        case r'NSEC3PARAM': return DnsRecordType.nSEC3PARAM;
+        case r'NSEC3': return DnsRecordType.NSEC3;
+        case r'NSEC3PARAM': return DnsRecordType.NSEC3PARAM;
         case r'OPENPGPKEY': return DnsRecordType.OPENPGPKEY;
         case r'OPT': return DnsRecordType.OPT;
         case r'PTR': return DnsRecordType.PTR;
@@ -220,7 +178,7 @@ class DnsRecordTypeTypeTransformer {
     return null;
   }
 
-  /// Singleton [DnsRecordTypeTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static DnsRecordTypeTypeTransformer? _instance;
 }
 

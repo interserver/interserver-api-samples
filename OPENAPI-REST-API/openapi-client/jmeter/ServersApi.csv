@@ -1,2 +1,2 @@
-testCase,httpStatusCode,id,id,id,id,placeBuyNowServerRequest,id,reverseDnsEntries,id,id,ip,asset,id,id,action,asset,id,id
-Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,serverOrderPostRequest,id,id,id,id,placeBuyNowServerRequest,reverseDnsEntries,id,ids,id,ip,id,asset,id,action,id,asset,id,id
+Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

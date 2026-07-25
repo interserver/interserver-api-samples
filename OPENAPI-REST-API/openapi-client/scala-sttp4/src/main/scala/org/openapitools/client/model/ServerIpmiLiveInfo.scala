@@ -23,4 +23,3 @@ case class ServerIpmiLiveInfo(
   client_username: Option[String] = None,
   client_password: Option[String] = None
 )
-

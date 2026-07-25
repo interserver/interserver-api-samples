@@ -45,4 +45,8 @@
 |**serverExtra** | **String** | Additional information about the server. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

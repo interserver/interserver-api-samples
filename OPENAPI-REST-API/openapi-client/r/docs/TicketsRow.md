@@ -1,4 +1,4 @@
-# openapi::TicketsRow
+# interserverapi::TicketsRow
 
 Information about a single ticket.
 

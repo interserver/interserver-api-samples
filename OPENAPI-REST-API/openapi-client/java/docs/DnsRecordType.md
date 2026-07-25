@@ -67,7 +67,7 @@
 
 * `NSEC3` (value: `"NSEC3"`)
 
-* `NSEC3_PARAM` (value: `"NSEC3PARAM"`)
+* `NSEC3PARAM` (value: `"NSEC3PARAM"`)
 
 * `OPENPGPKEY` (value: `"OPENPGPKEY"`)
 
@@ -101,7 +101,7 @@
 
 * `WKS` (value: `"WKS"`)
 
-* `URI_` (value: `"URI⏎"`)
+* `urI⏎` (value: `"URI⏎"`)
 
 
 

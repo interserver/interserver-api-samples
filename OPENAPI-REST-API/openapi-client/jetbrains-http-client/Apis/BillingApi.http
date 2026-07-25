@@ -1,21 +1,12 @@
 ## BillingApi
 
-### Add Credit Card to Account
-## Add Credit Card to Account
-POST https://my.interserver.net/apiv2/account/creditcards
-Content-Type: multipart/form-data
-Content-Type: application/json
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Add Credit Card for Billing
-## Add Credit Card for Billing
+### Store a credit card on the account — may return a verification flow
+## Store a credit card on the account — may return a verification flow
 POST https://my.interserver.net/apiv2/billing/creditcards
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -33,12 +24,13 @@ sessionid: {{apiKey}}
 }
 
 
-### Create Prepay Deposit
-## Create Prepay Deposit
+### Create a prepay deposit and return an invoice id to fund it
+## Create a prepay deposit and return an invoice id to fund it
 POST https://my.interserver.net/apiv2/billing/prepays
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -50,148 +42,173 @@ sessionid: {{apiKey}}
 }
 
 
-### Remove Credit Card
-## Remove Credit Card
-DELETE https://my.interserver.net/apiv2/account/creditcards/{{id}}
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Delete Credit Card
-## Delete Credit Card
+### Remove a stored credit card from the account
+## Remove a stored credit card from the account
 DELETE https://my.interserver.net/apiv2/billing/creditcards/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Delete Invoice
-## Delete Invoice
+### Cancel a pending unpaid invoice — and its pending service or repeat invoice
+## Cancel a pending unpaid invoice — and its pending service or repeat invoice
 DELETE https://my.interserver.net/apiv2/billing/invoices/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Delete Prepay Balance
-## Delete Prepay Balance
+### Delete an unfunded prepay or strip its unpaid funding invoices
+## Delete an unfunded prepay or strip its unpaid funding invoices
 DELETE https://my.interserver.net/apiv2/billing/prepays/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Affiliate Banner Assets
-## List Affiliate Banner Assets
+### List affiliate banner image assets with filename and dimensions
+## List affiliate banner image assets with filename and dimensions
 GET https://my.interserver.net/apiv2/affiliate/banners
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Affiliate Performance Report
-## Get Affiliate Performance Report
+### Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+## Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+GET https://my.interserver.net/apiv2/affiliate/download?st={{st}}&ex={{ex}}&year={{year}}
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Read a combined affiliate performance summary (HTML payload)
+## Read a combined affiliate performance summary (HTML payload)
 GET https://my.interserver.net/apiv2/affiliate/rich_report
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Affiliate Sales Graph Data
-## Get Affiliate Sales Graph Data
+### Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
+## Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
 GET https://my.interserver.net/apiv2/affiliate/sales_graph?days={{days}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Affiliate Sales Report
-## Get Affiliate Sales Report
-GET https://my.interserver.net/apiv2/affiliate/sales_report
+### Read affiliate signup stats and per-customer conversion data
+## Read affiliate signup stats and per-customer conversion data
+GET https://my.interserver.net/apiv2/affiliate/signups?st={{st}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Affiliate Traffic Graph Data
-## Get Affiliate Traffic Graph Data
+### Read aggregated affiliate referral click/visit time-series for chart rendering
+## Read aggregated affiliate referral click/visit time-series for chart rendering
 GET https://my.interserver.net/apiv2/affiliate/traffic_graph?days={{days}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Affiliate Web Traffic Entries
-## List Affiliate Web Traffic Entries
+### List the 20 most recent affiliate referral visits with IP, referrer, timestamp
+## List the 20 most recent affiliate referral visits with IP, referrer, timestamp
 GET https://my.interserver.net/apiv2/affiliate/web_traffic
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Shopping Cart Contents
-## Get Shopping Cart Contents
+### Read the current shopping cart contents, totals, and available payment methods
+## Read the current shopping cart contents, totals, and available payment methods
 GET https://my.interserver.net/apiv2/billing/cart
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Credit Card Verification Requirements
-## Get Credit Card Verification Requirements
+### Probe whether a stored card still needs micro-charge verification
+## Probe whether a stored card still needs micro-charge verification
 GET https://my.interserver.net/apiv2/billing/creditcards/{{id}}/verify
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Invoice Details
-## Get Invoice Details
+### Read full invoice detail — line items, totals, paid status, customer info
+## Read full invoice detail — line items, totals, paid status, customer info
 GET https://my.interserver.net/apiv2/billing/invoices/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Account Invoices
-## List Account Invoices
+### List every invoice on the account with summary totals and paid/unpaid status
+## List every invoice on the account with summary totals and paid/unpaid status
 GET https://my.interserver.net/apiv2/billing/invoices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Prepay Balances
-## List Prepay Balances
+### List prepay deposits on the account — remaining balance and auto-use flags
+## List prepay deposits on the account — remaining balance and auto-use flags
 GET https://my.interserver.net/apiv2/billing/prepays
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Invoices
-## Get Invoices
-GET https://my.interserver.net/apiv2/invoices?searchString={{searchString}}&skip={{skip}}&limit={{limit}}
+### Pay invoices through the chosen gateway — returns the next-step action
+## Pay invoices through the chosen gateway — returns the next-step action
+GET https://my.interserver.net/apiv2/billing/pay/{{method}}/{{invoices}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Initiate Payment
-## Initiate Payment
-GET https://my.interserver.net/apiv2/pay/{{method}}/{{invoices}}
+### Place two micro-charges on the card to start CVV verification (step 1 of 2)
+## Place two micro-charges on the card to start CVV verification (step 1 of 2)
+PATCH https://my.interserver.net/apiv2/billing/creditcards/{{id}}/verify
+Content-Type: application/json
+Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Submit Credit Card Verification
-## Submit Credit Card Verification
+{
+ "cc_ccv2": "<string>"
+}
+
+
+### Submit two micro-charge amounts to finalize card verification (step 2 of 2)
+## Submit two micro-charge amounts to finalize card verification (step 2 of 2)
 POST https://my.interserver.net/apiv2/billing/creditcards/{{id}}/verify
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -205,58 +222,44 @@ sessionid: {{apiKey}}
 }
 
 
-### Update Credit Card
-## Update Credit Card
-POST https://my.interserver.net/apiv2/account/creditcards/{{id}}
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Configure Affiliate Dock Settings
-## Configure Affiliate Dock Settings
+### Configure the affiliate landing dock title, description, and referrer coupon
+## Configure the affiliate landing dock title, description, and referrer coupon
 POST https://my.interserver.net/apiv2/affiliate/dock_setup
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Configure Affiliate Landing Page
-## Configure Affiliate Landing Page
-POST https://my.interserver.net/apiv2/affiliate/landing_pg
-Content-Type: multipart/form-data
-Content-Type: application/json
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Configure Affiliate Payout Preferences
-## Configure Affiliate Payout Preferences
+### Configure how affiliate commissions get paid out (PayPal or internal prepay)
+## Configure how affiliate commissions get paid out (PayPal or internal prepay)
 POST https://my.interserver.net/apiv2/affiliate/payment_setup
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Credit Card Details
-## Update Credit Card Details
+### Refresh stored card expiration and re-trigger MaxMind fraud scoring
+## Refresh stored card expiration and re-trigger MaxMind fraud scoring
 POST https://my.interserver.net/apiv2/billing/creditcards/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update Default Payment Method
-## Update Default Payment Method
+### Set the account&#39;s default payment method for recurring/auto charges
+## Set the account&#39;s default payment method for recurring/auto charges
 POST https://my.interserver.net/apiv2/billing/payment_method
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

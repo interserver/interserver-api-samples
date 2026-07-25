@@ -26,4 +26,3 @@ case class SendMail(
   /* The main email contents. */
   body: String
 )
-

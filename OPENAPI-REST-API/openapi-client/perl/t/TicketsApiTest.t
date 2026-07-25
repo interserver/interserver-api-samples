@@ -24,10 +24,10 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::TicketsApi');
+use_ok('InterServerAPI::TicketsApi');
 
-my $api = OpenAPIClient::TicketsApi->new();
-isa_ok($api, 'OpenAPIClient::TicketsApi');
+my $api = InterServerAPI::TicketsApi->new();
+isa_ok($api, 'InterServerAPI::TicketsApi');
 
 #
 # add_new_ticket test

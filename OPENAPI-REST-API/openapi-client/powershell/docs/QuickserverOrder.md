@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverOrder = Initialize-PSOpenAPIToolsQuickserverOrder  -QsId 221 `
+$QuickserverOrder = Initialize-InterserverApiQuickserverOrder  -QsId 221 `
  -ServerDetails null `
  -Templates null `
  -Version null `

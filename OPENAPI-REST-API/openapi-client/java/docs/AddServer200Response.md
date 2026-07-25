@@ -12,4 +12,8 @@
 |**order** | **Integer** | Server order ID. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

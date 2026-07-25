@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.TicketPostDetails();
+    instance = new InterserverApiClient.TicketPostDetails();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('TicketPostDetails', function() {
     it('should create an instance of TicketPostDetails', function() {
       // uncomment below and update the code to test TicketPostDetails
-      //var instance = new InterServerManagementApi.TicketPostDetails();
-      //expect(instance).to.be.a(InterServerManagementApi.TicketPostDetails);
+      //var instance = new InterserverApiClient.TicketPostDetails();
+      //expect(instance).to.be.a(InterserverApiClient.TicketPostDetails);
     });
 
   });

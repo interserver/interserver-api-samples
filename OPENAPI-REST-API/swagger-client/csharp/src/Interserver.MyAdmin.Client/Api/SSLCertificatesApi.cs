@@ -24,48 +24,50 @@ namespace Interserver.MyAdmin.Client.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Place SSL Cert Order
+        /// Place a new SSL certificate order - creates invoice and queues issuance
         /// </summary>
         /// <remarks>
-        /// Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+        /// [DESTRUCTIVE] Use after putSsl returns continue&#x3D;true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue&#x3D;false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;putSsl&#x60; (validate), &#x60;getSslInfo&#x60; (poll), &#x60;getSslInvoices&#x60;, &#x60;initiatePayment&#x60; (settle invoice), &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ServiceOrderPostResponse</returns>
-        ServiceOrderPostResponse AddSsl ();
+        ServiceOrderPostResponse AddSsl (SslOrderRequest body);
 
         /// <summary>
-        /// Place SSL Cert Order
+        /// Place a new SSL certificate order - creates invoice and queues issuance
         /// </summary>
         /// <remarks>
-        /// Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+        /// [DESTRUCTIVE] Use after putSsl returns continue&#x3D;true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue&#x3D;false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;putSsl&#x60; (validate), &#x60;getSslInfo&#x60; (poll), &#x60;getSslInvoices&#x60;, &#x60;initiatePayment&#x60; (settle invoice), &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
-        ApiResponse<ServiceOrderPostResponse> AddSslWithHttpInfo ();
+        ApiResponse<ServiceOrderPostResponse> AddSslWithHttpInfo (SslOrderRequest body);
         /// <summary>
-        /// SSL Cert Ordering Information
+        /// Get available SSL certificate packages and pricing for placing a new order
         /// </summary>
         /// <remarks>
-        /// Retrieves available SSL certificate types and pricing for ordering.
+        /// Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer&#x27;s currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: &#x60;putSsl&#x60; (validate), &#x60;addSsl&#x60; (commit), &#x60;getSslList&#x60; (existing certs), &#x60;getSslInfo&#x60; (per-cert).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
         Object GetNewSsl ();
 
         /// <summary>
-        /// SSL Cert Ordering Information
+        /// Get available SSL certificate packages and pricing for placing a new order
         /// </summary>
         /// <remarks>
-        /// Retrieves available SSL certificate types and pricing for ordering.
+        /// Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer&#x27;s currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: &#x60;putSsl&#x60; (validate), &#x60;addSsl&#x60; (commit), &#x60;getSslList&#x60; (existing certs), &#x60;getSslInfo&#x60; (per-cert).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> GetNewSslWithHttpInfo ();
         /// <summary>
-        /// Get SSL Cert Info
+        /// Get full details for one SSL certificate by id - status, expiration, links
         /// </summary>
         /// <remarks>
-        /// Returns detailed information about a specific SSL certificate including its domain and expiration.
+        /// Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: &#x60;updateSslInfo&#x60;, &#x60;getSslInvoices&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslList&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -73,20 +75,20 @@ namespace Interserver.MyAdmin.Client.Api
         Object GetSslInfo (int? id);
 
         /// <summary>
-        /// Get SSL Cert Info
+        /// Get full details for one SSL certificate by id - status, expiration, links
         /// </summary>
         /// <remarks>
-        /// Returns detailed information about a specific SSL certificate including its domain and expiration.
+        /// Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: &#x60;updateSslInfo&#x60;, &#x60;getSslInvoices&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslList&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
         /// <returns>ApiResponse of Object</returns>
         ApiResponse<Object> GetSslInfoWithHttpInfo (int? id);
         /// <summary>
-        /// Get SSL Cert Invoices
+        /// List all billing invoices and charges tied to one SSL certificate by id
         /// </summary>
         /// <remarks>
-        /// Returns the billing invoices associated with this SSL certificate.
+        /// Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;getBillingInvoice&#x60; (per-invoice detail), &#x60;initiatePayment&#x60; (settle unpaid).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -94,39 +96,39 @@ namespace Interserver.MyAdmin.Client.Api
         ChargeInvoiceRows GetSslInvoices (int? id);
 
         /// <summary>
-        /// Get SSL Cert Invoices
+        /// List all billing invoices and charges tied to one SSL certificate by id
         /// </summary>
         /// <remarks>
-        /// Returns the billing invoices associated with this SSL certificate.
+        /// Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;getBillingInvoice&#x60; (per-invoice detail), &#x60;initiatePayment&#x60; (settle unpaid).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
         /// <returns>ApiResponse of ChargeInvoiceRows</returns>
         ApiResponse<ChargeInvoiceRows> GetSslInvoicesWithHttpInfo (int? id);
         /// <summary>
-        /// List SSL Certs
+        /// List all SSL certificates on the authenticated customer account with status and hostname
         /// </summary>
         /// <remarks>
-        /// Returns all SSL certificate services on the account with their current status.
+        /// Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (order new cert).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns></returns>
         void GetSslList ();
 
         /// <summary>
-        /// List SSL Certs
+        /// List all SSL certificates on the authenticated customer account with status and hostname
         /// </summary>
         /// <remarks>
-        /// Returns all SSL certificate services on the account with their current status.
+        /// Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (order new cert).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> GetSslListWithHttpInfo ();
         /// <summary>
-        /// Resend SSL Welcome Email
+        /// Resend the SSL welcome email with cert credentials and install instructions
         /// </summary>
         /// <remarks>
-        /// Resends the welcome email for the order.
+        /// Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module&#x27;s ssl_welcome_email function to re-send to the account&#x27;s email on file. Returns SuccessTextResponse: text&#x3D;&#x27;Welcome Email has been resent.&#x27; Returns 401 unauthenticated, 404 if id not found or not owned by session customer (&#x27;Invalid Service Passed&#x27;), 409 if cert status is not &#x27;active&#x27; (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer&#x27;s address has changed.  Sibling ops: &#x60;getSslInfo&#x60; (verify status), &#x60;sslCancel&#x60; (terminate), &#x60;updateAccountInfo&#x60; (change email first).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -134,60 +136,62 @@ namespace Interserver.MyAdmin.Client.Api
         SuccessTextResponse GetSslWelcomeEmail (int? id);
 
         /// <summary>
-        /// Resend SSL Welcome Email
+        /// Resend the SSL welcome email with cert credentials and install instructions
         /// </summary>
         /// <remarks>
-        /// Resends the welcome email for the order.
+        /// Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module&#x27;s ssl_welcome_email function to re-send to the account&#x27;s email on file. Returns SuccessTextResponse: text&#x3D;&#x27;Welcome Email has been resent.&#x27; Returns 401 unauthenticated, 404 if id not found or not owned by session customer (&#x27;Invalid Service Passed&#x27;), 409 if cert status is not &#x27;active&#x27; (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer&#x27;s address has changed.  Sibling ops: &#x60;getSslInfo&#x60; (verify status), &#x60;sslCancel&#x60; (terminate), &#x60;updateAccountInfo&#x60; (change email first).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
         /// <returns>ApiResponse of SuccessTextResponse</returns>
         ApiResponse<SuccessTextResponse> GetSslWelcomeEmailWithHttpInfo (int? id);
         /// <summary>
-        /// Validate SSL Cert Order
+        /// Validate an SSL certificate order without charging - dry-run before addSsl
         /// </summary>
         /// <remarks>
-        /// Validates an SSL certificate order before placing it.
+        /// Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue&#x3D;false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (commit).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns></returns>
-        void PutSsl ();
+        void PutSsl (SslOrderRequest body);
 
         /// <summary>
-        /// Validate SSL Cert Order
+        /// Validate an SSL certificate order without charging - dry-run before addSsl
         /// </summary>
         /// <remarks>
-        /// Validates an SSL certificate order before placing it.
+        /// Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue&#x3D;false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (commit).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PutSslWithHttpInfo ();
+        ApiResponse<Object> PutSslWithHttpInfo (SslOrderRequest body);
         /// <summary>
-        /// Cancel SSL Certificate Service
+        /// Cancel an SSL certificate service - stops renewals at end of billing cycle
         /// </summary>
         /// <remarks>
-        /// Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+        /// [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: &#x60;getSslInfo&#x60; (verify cert), &#x60;getSslInvoices&#x60; (check unpaid), &#x60;addSsl&#x60; (re-order).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>InlineResponse20021</returns>
-        InlineResponse20021 SslCancel (int? id);
+        /// <returns>InlineResponse20023</returns>
+        InlineResponse20023 SslCancel (int? id);
 
         /// <summary>
-        /// Cancel SSL Certificate Service
+        /// Cancel an SSL certificate service - stops renewals at end of billing cycle
         /// </summary>
         /// <remarks>
-        /// Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+        /// [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: &#x60;getSslInfo&#x60; (verify cert), &#x60;getSslInvoices&#x60; (check unpaid), &#x60;addSsl&#x60; (re-order).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>ApiResponse of InlineResponse20021</returns>
-        ApiResponse<InlineResponse20021> SslCancelWithHttpInfo (int? id);
+        /// <returns>ApiResponse of InlineResponse20023</returns>
+        ApiResponse<InlineResponse20023> SslCancelWithHttpInfo (int? id);
         /// <summary>
-        /// Update SSL Cert Order
+        /// Update mutable settings on an existing SSL certificate order by id
         /// </summary>
         /// <remarks>
-        /// Updates settings on an SSL certificate order.
+        /// Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: &#x60;getSslInfo&#x60; (read), &#x60;sslCancel&#x60; (terminate), &#x60;getSslWelcomeEmail&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -195,10 +199,10 @@ namespace Interserver.MyAdmin.Client.Api
         SuccessTextResponse UpdateSslInfo (string id);
 
         /// <summary>
-        /// Update SSL Cert Order
+        /// Update mutable settings on an existing SSL certificate order by id
         /// </summary>
         /// <remarks>
-        /// Updates settings on an SSL certificate order.
+        /// Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: &#x60;getSslInfo&#x60; (read), &#x60;sslCancel&#x60; (terminate), &#x60;getSslWelcomeEmail&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -207,48 +211,50 @@ namespace Interserver.MyAdmin.Client.Api
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Place SSL Cert Order
+        /// Place a new SSL certificate order - creates invoice and queues issuance
         /// </summary>
         /// <remarks>
-        /// Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+        /// [DESTRUCTIVE] Use after putSsl returns continue&#x3D;true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue&#x3D;false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;putSsl&#x60; (validate), &#x60;getSslInfo&#x60; (poll), &#x60;getSslInvoices&#x60;, &#x60;initiatePayment&#x60; (settle invoice), &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ServiceOrderPostResponse</returns>
-        System.Threading.Tasks.Task<ServiceOrderPostResponse> AddSslAsync ();
+        System.Threading.Tasks.Task<ServiceOrderPostResponse> AddSslAsync (SslOrderRequest body);
 
         /// <summary>
-        /// Place SSL Cert Order
+        /// Place a new SSL certificate order - creates invoice and queues issuance
         /// </summary>
         /// <remarks>
-        /// Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+        /// [DESTRUCTIVE] Use after putSsl returns continue&#x3D;true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue&#x3D;false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;putSsl&#x60; (validate), &#x60;getSslInfo&#x60; (poll), &#x60;getSslInvoices&#x60;, &#x60;initiatePayment&#x60; (settle invoice), &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddSslAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddSslAsyncWithHttpInfo (SslOrderRequest body);
         /// <summary>
-        /// SSL Cert Ordering Information
+        /// Get available SSL certificate packages and pricing for placing a new order
         /// </summary>
         /// <remarks>
-        /// Retrieves available SSL certificate types and pricing for ordering.
+        /// Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer&#x27;s currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: &#x60;putSsl&#x60; (validate), &#x60;addSsl&#x60; (commit), &#x60;getSslList&#x60; (existing certs), &#x60;getSslInfo&#x60; (per-cert).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
         System.Threading.Tasks.Task<Object> GetNewSslAsync ();
 
         /// <summary>
-        /// SSL Cert Ordering Information
+        /// Get available SSL certificate packages and pricing for placing a new order
         /// </summary>
         /// <remarks>
-        /// Retrieves available SSL certificate types and pricing for ordering.
+        /// Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer&#x27;s currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: &#x60;putSsl&#x60; (validate), &#x60;addSsl&#x60; (commit), &#x60;getSslList&#x60; (existing certs), &#x60;getSslInfo&#x60; (per-cert).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetNewSslAsyncWithHttpInfo ();
         /// <summary>
-        /// Get SSL Cert Info
+        /// Get full details for one SSL certificate by id - status, expiration, links
         /// </summary>
         /// <remarks>
-        /// Returns detailed information about a specific SSL certificate including its domain and expiration.
+        /// Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: &#x60;updateSslInfo&#x60;, &#x60;getSslInvoices&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslList&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -256,20 +262,20 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<Object> GetSslInfoAsync (int? id);
 
         /// <summary>
-        /// Get SSL Cert Info
+        /// Get full details for one SSL certificate by id - status, expiration, links
         /// </summary>
         /// <remarks>
-        /// Returns detailed information about a specific SSL certificate including its domain and expiration.
+        /// Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: &#x60;updateSslInfo&#x60;, &#x60;getSslInvoices&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslList&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
         /// <returns>Task of ApiResponse (Object)</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetSslInfoAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// Get SSL Cert Invoices
+        /// List all billing invoices and charges tied to one SSL certificate by id
         /// </summary>
         /// <remarks>
-        /// Returns the billing invoices associated with this SSL certificate.
+        /// Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;getBillingInvoice&#x60; (per-invoice detail), &#x60;initiatePayment&#x60; (settle unpaid).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -277,39 +283,39 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<ChargeInvoiceRows> GetSslInvoicesAsync (int? id);
 
         /// <summary>
-        /// Get SSL Cert Invoices
+        /// List all billing invoices and charges tied to one SSL certificate by id
         /// </summary>
         /// <remarks>
-        /// Returns the billing invoices associated with this SSL certificate.
+        /// Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;getBillingInvoice&#x60; (per-invoice detail), &#x60;initiatePayment&#x60; (settle unpaid).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
         /// <returns>Task of ApiResponse (ChargeInvoiceRows)</returns>
         System.Threading.Tasks.Task<ApiResponse<ChargeInvoiceRows>> GetSslInvoicesAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// List SSL Certs
+        /// List all SSL certificates on the authenticated customer account with status and hostname
         /// </summary>
         /// <remarks>
-        /// Returns all SSL certificate services on the account with their current status.
+        /// Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (order new cert).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of void</returns>
         System.Threading.Tasks.Task GetSslListAsync ();
 
         /// <summary>
-        /// List SSL Certs
+        /// List all SSL certificates on the authenticated customer account with status and hostname
         /// </summary>
         /// <remarks>
-        /// Returns all SSL certificate services on the account with their current status.
+        /// Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (order new cert).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> GetSslListAsyncWithHttpInfo ();
         /// <summary>
-        /// Resend SSL Welcome Email
+        /// Resend the SSL welcome email with cert credentials and install instructions
         /// </summary>
         /// <remarks>
-        /// Resends the welcome email for the order.
+        /// Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module&#x27;s ssl_welcome_email function to re-send to the account&#x27;s email on file. Returns SuccessTextResponse: text&#x3D;&#x27;Welcome Email has been resent.&#x27; Returns 401 unauthenticated, 404 if id not found or not owned by session customer (&#x27;Invalid Service Passed&#x27;), 409 if cert status is not &#x27;active&#x27; (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer&#x27;s address has changed.  Sibling ops: &#x60;getSslInfo&#x60; (verify status), &#x60;sslCancel&#x60; (terminate), &#x60;updateAccountInfo&#x60; (change email first).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -317,60 +323,62 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<SuccessTextResponse> GetSslWelcomeEmailAsync (int? id);
 
         /// <summary>
-        /// Resend SSL Welcome Email
+        /// Resend the SSL welcome email with cert credentials and install instructions
         /// </summary>
         /// <remarks>
-        /// Resends the welcome email for the order.
+        /// Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module&#x27;s ssl_welcome_email function to re-send to the account&#x27;s email on file. Returns SuccessTextResponse: text&#x3D;&#x27;Welcome Email has been resent.&#x27; Returns 401 unauthenticated, 404 if id not found or not owned by session customer (&#x27;Invalid Service Passed&#x27;), 409 if cert status is not &#x27;active&#x27; (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer&#x27;s address has changed.  Sibling ops: &#x60;getSslInfo&#x60; (verify status), &#x60;sslCancel&#x60; (terminate), &#x60;updateAccountInfo&#x60; (change email first).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
         /// <returns>Task of ApiResponse (SuccessTextResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<SuccessTextResponse>> GetSslWelcomeEmailAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// Validate SSL Cert Order
+        /// Validate an SSL certificate order without charging - dry-run before addSsl
         /// </summary>
         /// <remarks>
-        /// Validates an SSL certificate order before placing it.
+        /// Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue&#x3D;false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (commit).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task PutSslAsync ();
+        System.Threading.Tasks.Task PutSslAsync (SslOrderRequest body);
 
         /// <summary>
-        /// Validate SSL Cert Order
+        /// Validate an SSL certificate order without charging - dry-run before addSsl
         /// </summary>
         /// <remarks>
-        /// Validates an SSL certificate order before placing it.
+        /// Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue&#x3D;false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (commit).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> PutSslAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<Object>> PutSslAsyncWithHttpInfo (SslOrderRequest body);
         /// <summary>
-        /// Cancel SSL Certificate Service
+        /// Cancel an SSL certificate service - stops renewals at end of billing cycle
         /// </summary>
         /// <remarks>
-        /// Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+        /// [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: &#x60;getSslInfo&#x60; (verify cert), &#x60;getSslInvoices&#x60; (check unpaid), &#x60;addSsl&#x60; (re-order).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>Task of InlineResponse20021</returns>
-        System.Threading.Tasks.Task<InlineResponse20021> SslCancelAsync (int? id);
+        /// <returns>Task of InlineResponse20023</returns>
+        System.Threading.Tasks.Task<InlineResponse20023> SslCancelAsync (int? id);
 
         /// <summary>
-        /// Cancel SSL Certificate Service
+        /// Cancel an SSL certificate service - stops renewals at end of billing cycle
         /// </summary>
         /// <remarks>
-        /// Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+        /// [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: &#x60;getSslInfo&#x60; (verify cert), &#x60;getSslInvoices&#x60; (check unpaid), &#x60;addSsl&#x60; (re-order).
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>Task of ApiResponse (InlineResponse20021)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse20021>> SslCancelAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (InlineResponse20023)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse20023>> SslCancelAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// Update SSL Cert Order
+        /// Update mutable settings on an existing SSL certificate order by id
         /// </summary>
         /// <remarks>
-        /// Updates settings on an SSL certificate order.
+        /// Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: &#x60;getSslInfo&#x60; (read), &#x60;sslCancel&#x60; (terminate), &#x60;getSslWelcomeEmail&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -378,10 +386,10 @@ namespace Interserver.MyAdmin.Client.Api
         System.Threading.Tasks.Task<SuccessTextResponse> UpdateSslInfoAsync (string id);
 
         /// <summary>
-        /// Update SSL Cert Order
+        /// Update mutable settings on an existing SSL certificate order by id
         /// </summary>
         /// <remarks>
-        /// Updates settings on an SSL certificate order.
+        /// Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: &#x60;getSslInfo&#x60; (read), &#x60;sslCancel&#x60; (terminate), &#x60;getSslWelcomeEmail&#x60;.
         /// </remarks>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -499,23 +507,28 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Place SSL Cert Order Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+        /// Place a new SSL certificate order - creates invoice and queues issuance [DESTRUCTIVE] Use after putSsl returns continue&#x3D;true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue&#x3D;false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;putSsl&#x60; (validate), &#x60;getSslInfo&#x60; (poll), &#x60;getSslInvoices&#x60;, &#x60;initiatePayment&#x60; (settle invoice), &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ServiceOrderPostResponse</returns>
-        public ServiceOrderPostResponse AddSsl ()
+        public ServiceOrderPostResponse AddSsl (SslOrderRequest body)
         {
-             ApiResponse<ServiceOrderPostResponse> localVarResponse = AddSslWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = AddSslWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Place SSL Cert Order Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+        /// Place a new SSL certificate order - creates invoice and queues issuance [DESTRUCTIVE] Use after putSsl returns continue&#x3D;true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue&#x3D;false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;putSsl&#x60; (validate), &#x60;getSslInfo&#x60; (poll), &#x60;getSslInvoices&#x60;, &#x60;initiatePayment&#x60; (settle invoice), &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ApiResponse of ServiceOrderPostResponse</returns>
-        public ApiResponse< ServiceOrderPostResponse > AddSslWithHttpInfo ()
+        public ApiResponse< ServiceOrderPostResponse > AddSslWithHttpInfo (SslOrderRequest body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling SSLCertificatesApi->AddSsl");
 
             var localVarPath = "/ssl/order";
             var localVarPathParams = new Dictionary<String, String>();
@@ -527,6 +540,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -538,6 +552,14 @@ namespace Interserver.MyAdmin.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (apiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
             {
@@ -573,24 +595,29 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Place SSL Cert Order Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+        /// Place a new SSL certificate order - creates invoice and queues issuance [DESTRUCTIVE] Use after putSsl returns continue&#x3D;true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue&#x3D;false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;putSsl&#x60; (validate), &#x60;getSslInfo&#x60; (poll), &#x60;getSslInvoices&#x60;, &#x60;initiatePayment&#x60; (settle invoice), &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ServiceOrderPostResponse</returns>
-        public async System.Threading.Tasks.Task<ServiceOrderPostResponse> AddSslAsync ()
+        public async System.Threading.Tasks.Task<ServiceOrderPostResponse> AddSslAsync (SslOrderRequest body)
         {
-             ApiResponse<ServiceOrderPostResponse> localVarResponse = await AddSslAsyncWithHttpInfo();
+             ApiResponse<ServiceOrderPostResponse> localVarResponse = await AddSslAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Place SSL Cert Order Places an order for a new SSL certificate. Use &#x60;PUT /ssl/order&#x60; to validate the order first.
+        /// Place a new SSL certificate order - creates invoice and queues issuance [DESTRUCTIVE] Use after putSsl returns continue&#x3D;true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue&#x3D;false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;putSsl&#x60; (validate), &#x60;getSslInfo&#x60; (poll), &#x60;getSslInvoices&#x60;, &#x60;initiatePayment&#x60; (settle invoice), &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ApiResponse (ServiceOrderPostResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddSslAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<ServiceOrderPostResponse>> AddSslAsyncWithHttpInfo (SslOrderRequest body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling SSLCertificatesApi->AddSsl");
 
             var localVarPath = "/ssl/order";
             var localVarPathParams = new Dictionary<String, String>();
@@ -602,6 +629,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -613,6 +641,14 @@ namespace Interserver.MyAdmin.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (apiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
             {
@@ -648,7 +684,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// SSL Cert Ordering Information Retrieves available SSL certificate types and pricing for ordering.
+        /// Get available SSL certificate packages and pricing for placing a new order Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer&#x27;s currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: &#x60;putSsl&#x60; (validate), &#x60;addSsl&#x60; (commit), &#x60;getSslList&#x60; (existing certs), &#x60;getSslInfo&#x60; (per-cert).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Object</returns>
@@ -659,7 +695,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// SSL Cert Ordering Information Retrieves available SSL certificate types and pricing for ordering.
+        /// Get available SSL certificate packages and pricing for placing a new order Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer&#x27;s currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: &#x60;putSsl&#x60; (validate), &#x60;addSsl&#x60; (commit), &#x60;getSslList&#x60; (existing certs), &#x60;getSslInfo&#x60; (per-cert).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object</returns>
@@ -722,7 +758,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// SSL Cert Ordering Information Retrieves available SSL certificate types and pricing for ordering.
+        /// Get available SSL certificate packages and pricing for placing a new order Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer&#x27;s currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: &#x60;putSsl&#x60; (validate), &#x60;addSsl&#x60; (commit), &#x60;getSslList&#x60; (existing certs), &#x60;getSslInfo&#x60; (per-cert).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of Object</returns>
@@ -734,7 +770,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// SSL Cert Ordering Information Retrieves available SSL certificate types and pricing for ordering.
+        /// Get available SSL certificate packages and pricing for placing a new order Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer&#x27;s currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: &#x60;putSsl&#x60; (validate), &#x60;addSsl&#x60; (commit), &#x60;getSslList&#x60; (existing certs), &#x60;getSslInfo&#x60; (per-cert).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (Object)</returns>
@@ -797,7 +833,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get SSL Cert Info Returns detailed information about a specific SSL certificate including its domain and expiration.
+        /// Get full details for one SSL certificate by id - status, expiration, links Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: &#x60;updateSslInfo&#x60;, &#x60;getSslInvoices&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslList&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -809,7 +845,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get SSL Cert Info Returns detailed information about a specific SSL certificate including its domain and expiration.
+        /// Get full details for one SSL certificate by id - status, expiration, links Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: &#x60;updateSslInfo&#x60;, &#x60;getSslInvoices&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslList&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -877,7 +913,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get SSL Cert Info Returns detailed information about a specific SSL certificate including its domain and expiration.
+        /// Get full details for one SSL certificate by id - status, expiration, links Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: &#x60;updateSslInfo&#x60;, &#x60;getSslInvoices&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslList&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -890,7 +926,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get SSL Cert Info Returns detailed information about a specific SSL certificate including its domain and expiration.
+        /// Get full details for one SSL certificate by id - status, expiration, links Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: &#x60;updateSslInfo&#x60;, &#x60;getSslInvoices&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslList&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -958,7 +994,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get SSL Cert Invoices Returns the billing invoices associated with this SSL certificate.
+        /// List all billing invoices and charges tied to one SSL certificate by id Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;getBillingInvoice&#x60; (per-invoice detail), &#x60;initiatePayment&#x60; (settle unpaid).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -970,7 +1006,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get SSL Cert Invoices Returns the billing invoices associated with this SSL certificate.
+        /// List all billing invoices and charges tied to one SSL certificate by id Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;getBillingInvoice&#x60; (per-invoice detail), &#x60;initiatePayment&#x60; (settle unpaid).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -1038,7 +1074,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get SSL Cert Invoices Returns the billing invoices associated with this SSL certificate.
+        /// List all billing invoices and charges tied to one SSL certificate by id Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;getBillingInvoice&#x60; (per-invoice detail), &#x60;initiatePayment&#x60; (settle unpaid).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -1051,7 +1087,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Get SSL Cert Invoices Returns the billing invoices associated with this SSL certificate.
+        /// List all billing invoices and charges tied to one SSL certificate by id Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;sslCancel&#x60;, &#x60;getSslWelcomeEmail&#x60;, &#x60;getBillingInvoice&#x60; (per-invoice detail), &#x60;initiatePayment&#x60; (settle unpaid).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -1119,7 +1155,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List SSL Certs Returns all SSL certificate services on the account with their current status.
+        /// List all SSL certificates on the authenticated customer account with status and hostname Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (order new cert).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns></returns>
@@ -1129,7 +1165,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List SSL Certs Returns all SSL certificate services on the account with their current status.
+        /// List all SSL certificates on the authenticated customer account with status and hostname Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (order new cert).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of Object(void)</returns>
@@ -1192,7 +1228,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List SSL Certs Returns all SSL certificate services on the account with their current status.
+        /// List all SSL certificates on the authenticated customer account with status and hostname Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (order new cert).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of void</returns>
@@ -1203,7 +1239,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// List SSL Certs Returns all SSL certificate services on the account with their current status.
+        /// List all SSL certificates on the authenticated customer account with status and hostname Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: &#x60;getSslInfo&#x60;, &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (order new cert).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse</returns>
@@ -1266,7 +1302,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Resend SSL Welcome Email Resends the welcome email for the order.
+        /// Resend the SSL welcome email with cert credentials and install instructions Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module&#x27;s ssl_welcome_email function to re-send to the account&#x27;s email on file. Returns SuccessTextResponse: text&#x3D;&#x27;Welcome Email has been resent.&#x27; Returns 401 unauthenticated, 404 if id not found or not owned by session customer (&#x27;Invalid Service Passed&#x27;), 409 if cert status is not &#x27;active&#x27; (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer&#x27;s address has changed.  Sibling ops: &#x60;getSslInfo&#x60; (verify status), &#x60;sslCancel&#x60; (terminate), &#x60;updateAccountInfo&#x60; (change email first).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -1278,7 +1314,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Resend SSL Welcome Email Resends the welcome email for the order.
+        /// Resend the SSL welcome email with cert credentials and install instructions Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module&#x27;s ssl_welcome_email function to re-send to the account&#x27;s email on file. Returns SuccessTextResponse: text&#x3D;&#x27;Welcome Email has been resent.&#x27; Returns 401 unauthenticated, 404 if id not found or not owned by session customer (&#x27;Invalid Service Passed&#x27;), 409 if cert status is not &#x27;active&#x27; (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer&#x27;s address has changed.  Sibling ops: &#x60;getSslInfo&#x60; (verify status), &#x60;sslCancel&#x60; (terminate), &#x60;updateAccountInfo&#x60; (change email first).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -1346,7 +1382,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Resend SSL Welcome Email Resends the welcome email for the order.
+        /// Resend the SSL welcome email with cert credentials and install instructions Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module&#x27;s ssl_welcome_email function to re-send to the account&#x27;s email on file. Returns SuccessTextResponse: text&#x3D;&#x27;Welcome Email has been resent.&#x27; Returns 401 unauthenticated, 404 if id not found or not owned by session customer (&#x27;Invalid Service Passed&#x27;), 409 if cert status is not &#x27;active&#x27; (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer&#x27;s address has changed.  Sibling ops: &#x60;getSslInfo&#x60; (verify status), &#x60;sslCancel&#x60; (terminate), &#x60;updateAccountInfo&#x60; (change email first).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -1359,7 +1395,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Resend SSL Welcome Email Resends the welcome email for the order.
+        /// Resend the SSL welcome email with cert credentials and install instructions Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module&#x27;s ssl_welcome_email function to re-send to the account&#x27;s email on file. Returns SuccessTextResponse: text&#x3D;&#x27;Welcome Email has been resent.&#x27; Returns 401 unauthenticated, 404 if id not found or not owned by session customer (&#x27;Invalid Service Passed&#x27;), 409 if cert status is not &#x27;active&#x27; (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer&#x27;s address has changed.  Sibling ops: &#x60;getSslInfo&#x60; (verify status), &#x60;sslCancel&#x60; (terminate), &#x60;updateAccountInfo&#x60; (change email first).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
@@ -1427,22 +1463,27 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Validate SSL Cert Order Validates an SSL certificate order before placing it.
+        /// Validate an SSL certificate order without charging - dry-run before addSsl Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue&#x3D;false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (commit).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns></returns>
-        public void PutSsl ()
+        public void PutSsl (SslOrderRequest body)
         {
-             PutSslWithHttpInfo();
+             PutSslWithHttpInfo(body);
         }
 
         /// <summary>
-        /// Validate SSL Cert Order Validates an SSL certificate order before placing it.
+        /// Validate an SSL certificate order without charging - dry-run before addSsl Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue&#x3D;false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (commit).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> PutSslWithHttpInfo ()
+        public ApiResponse<Object> PutSslWithHttpInfo (SslOrderRequest body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling SSLCertificatesApi->PutSsl");
 
             var localVarPath = "/ssl/order";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1454,6 +1495,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1465,6 +1507,14 @@ namespace Interserver.MyAdmin.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (apiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
             {
@@ -1500,23 +1550,28 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Validate SSL Cert Order Validates an SSL certificate order before placing it.
+        /// Validate an SSL certificate order without charging - dry-run before addSsl Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue&#x3D;false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (commit).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task PutSslAsync ()
+        public async System.Threading.Tasks.Task PutSslAsync (SslOrderRequest body)
         {
-             await PutSslAsyncWithHttpInfo();
+             await PutSslAsyncWithHttpInfo(body);
 
         }
 
         /// <summary>
-        /// Validate SSL Cert Order Validates an SSL certificate order before placing it.
+        /// Validate an SSL certificate order without charging - dry-run before addSsl Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue&#x3D;false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: &#x60;getNewSsl&#x60; (catalog), &#x60;addSsl&#x60; (commit).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutSslAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> PutSslAsyncWithHttpInfo (SslOrderRequest body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling SSLCertificatesApi->PutSsl");
 
             var localVarPath = "/ssl/order";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1528,6 +1583,7 @@ namespace Interserver.MyAdmin.Client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1539,6 +1595,14 @@ namespace Interserver.MyAdmin.Client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (apiKeyAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("X-API-KEY")))
             {
@@ -1574,24 +1638,24 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Cancel SSL Certificate Service Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+        /// Cancel an SSL certificate service - stops renewals at end of billing cycle [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: &#x60;getSslInfo&#x60; (verify cert), &#x60;getSslInvoices&#x60; (check unpaid), &#x60;addSsl&#x60; (re-order).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>InlineResponse20021</returns>
-        public InlineResponse20021 SslCancel (int? id)
+        /// <returns>InlineResponse20023</returns>
+        public InlineResponse20023 SslCancel (int? id)
         {
-             ApiResponse<InlineResponse20021> localVarResponse = SslCancelWithHttpInfo(id);
+             ApiResponse<InlineResponse20023> localVarResponse = SslCancelWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Cancel SSL Certificate Service Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+        /// Cancel an SSL certificate service - stops renewals at end of billing cycle [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: &#x60;getSslInfo&#x60; (verify cert), &#x60;getSslInvoices&#x60; (check unpaid), &#x60;addSsl&#x60; (re-order).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>ApiResponse of InlineResponse20021</returns>
-        public ApiResponse< InlineResponse20021 > SslCancelWithHttpInfo (int? id)
+        /// <returns>ApiResponse of InlineResponse20023</returns>
+        public ApiResponse< InlineResponse20023 > SslCancelWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1648,31 +1712,31 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20021>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20023>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20021) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20021)));
+                (InlineResponse20023) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20023)));
         }
 
         /// <summary>
-        /// Cancel SSL Certificate Service Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+        /// Cancel an SSL certificate service - stops renewals at end of billing cycle [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: &#x60;getSslInfo&#x60; (verify cert), &#x60;getSslInvoices&#x60; (check unpaid), &#x60;addSsl&#x60; (re-order).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>Task of InlineResponse20021</returns>
-        public async System.Threading.Tasks.Task<InlineResponse20021> SslCancelAsync (int? id)
+        /// <returns>Task of InlineResponse20023</returns>
+        public async System.Threading.Tasks.Task<InlineResponse20023> SslCancelAsync (int? id)
         {
-             ApiResponse<InlineResponse20021> localVarResponse = await SslCancelAsyncWithHttpInfo(id);
+             ApiResponse<InlineResponse20023> localVarResponse = await SslCancelAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Cancel SSL Certificate Service Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+        /// Cancel an SSL certificate service - stops renewals at end of billing cycle [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: &#x60;getSslInfo&#x60; (verify cert), &#x60;getSslInvoices&#x60; (check unpaid), &#x60;addSsl&#x60; (re-order).
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL Cert ID number</param>
-        /// <returns>Task of ApiResponse (InlineResponse20021)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20021>> SslCancelAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (InlineResponse20023)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse20023>> SslCancelAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -1729,13 +1793,13 @@ namespace Interserver.MyAdmin.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InlineResponse20021>(localVarStatusCode,
+            return new ApiResponse<InlineResponse20023>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (InlineResponse20021) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20021)));
+                (InlineResponse20023) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse20023)));
         }
 
         /// <summary>
-        /// Update SSL Cert Order Updates settings on an SSL certificate order.
+        /// Update mutable settings on an existing SSL certificate order by id Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: &#x60;getSslInfo&#x60; (read), &#x60;sslCancel&#x60; (terminate), &#x60;getSslWelcomeEmail&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -1747,7 +1811,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update SSL Cert Order Updates settings on an SSL certificate order.
+        /// Update mutable settings on an existing SSL certificate order by id Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: &#x60;getSslInfo&#x60; (read), &#x60;sslCancel&#x60; (terminate), &#x60;getSslWelcomeEmail&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -1815,7 +1879,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update SSL Cert Order Updates settings on an SSL certificate order.
+        /// Update mutable settings on an existing SSL certificate order by id Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: &#x60;getSslInfo&#x60; (read), &#x60;sslCancel&#x60; (terminate), &#x60;getSslWelcomeEmail&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>
@@ -1828,7 +1892,7 @@ namespace Interserver.MyAdmin.Client.Api
         }
 
         /// <summary>
-        /// Update SSL Cert Order Updates settings on an SSL certificate order.
+        /// Update mutable settings on an existing SSL certificate order by id Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: &#x60;getSslInfo&#x60; (read), &#x60;sslCancel&#x60; (terminate), &#x60;getSslWelcomeEmail&#x60;.
         /// </summary>
         /// <exception cref="Interserver.MyAdmin.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">SSL certificate ID number.</param>

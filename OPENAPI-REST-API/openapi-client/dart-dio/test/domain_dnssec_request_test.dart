@@ -1,32 +1,32 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainDnssecRequest
 void main() {
-  final instance = DomainDnssecRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainDnssecRequest? instance = /* DomainDnssecRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainDnssecRequest, () {
     // List of DNSSEC algorithm IDs for each record.
-    // BuiltList<int> algorithm
+    // Optional<List<int>?> algorithm
     test('to test the property `algorithm`', () async {
       // TODO
     });
 
     // List of digest type IDs for each record.
-    // BuiltList<int> digestType
+    // Optional<List<int>?> digestType
     test('to test the property `digestType`', () async {
       // TODO
     });
 
     // List of hex digests for each record.
-    // BuiltList<String> digest
+    // Optional<List<String>?> digest
     test('to test the property `digest`', () async {
       // TODO
     });
 
     // List of key tag values corresponding to each record.
-    // BuiltList<int> keyTag
+    // Optional<List<int>?> keyTag
     test('to test the property `keyTag`', () async {
       // TODO
     });

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The EnableScrub500Response model module.
  * @module model/EnableScrub500Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class EnableScrub500Response {
     /**

@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainBillingExtra } from './api';
+import { DomainBillingExtra } from '@interserver/myadmin-client';
 
 const instance: DomainBillingExtra = {
     order,

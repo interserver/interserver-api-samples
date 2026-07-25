@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailBlockClickHouse();
+    instance = new InterserverApiClient.MailBlockClickHouse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('MailBlockClickHouse', function() {
     it('should create an instance of MailBlockClickHouse', function() {
       // uncomment below and update the code to test MailBlockClickHouse
-      //var instance = new InterServerManagementApi.MailBlockClickHouse();
-      //expect(instance).to.be.a(InterServerManagementApi.MailBlockClickHouse);
+      //var instance = new InterserverApiClient.MailBlockClickHouse();
+      //expect(instance).to.be.a(InterserverApiClient.MailBlockClickHouse);
     });
 
     it('should have the property date (base name: "date")', function() {
       // uncomment below and update the code to test the property date
-      //var instance = new InterServerManagementApi.MailBlockClickHouse();
+      //var instance = new InterserverApiClient.MailBlockClickHouse();
       //expect(instance).to.be();
     });
 
     it('should have the property from (base name: "from")', function() {
       // uncomment below and update the code to test the property from
-      //var instance = new InterServerManagementApi.MailBlockClickHouse();
+      //var instance = new InterserverApiClient.MailBlockClickHouse();
       //expect(instance).to.be();
     });
 
     it('should have the property messageId (base name: "messageId")', function() {
       // uncomment below and update the code to test the property messageId
-      //var instance = new InterServerManagementApi.MailBlockClickHouse();
+      //var instance = new InterserverApiClient.MailBlockClickHouse();
       //expect(instance).to.be();
     });
 
     it('should have the property subject (base name: "subject")', function() {
       // uncomment below and update the code to test the property subject
-      //var instance = new InterServerManagementApi.MailBlockClickHouse();
+      //var instance = new InterserverApiClient.MailBlockClickHouse();
       //expect(instance).to.be();
     });
 
     it('should have the property to (base name: "to")', function() {
       // uncomment below and update the code to test the property to
-      //var instance = new InterServerManagementApi.MailBlockClickHouse();
+      //var instance = new InterserverApiClient.MailBlockClickHouse();
       //expect(instance).to.be();
     });
 

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DeleteFirewallRule
 void main() {
-  final instance = DeleteFirewallRuleBuilder();
-  // TODO add properties to the builder and call build()
+  final DeleteFirewallRule? instance = /* DeleteFirewallRule(...) */ null;
+  // TODO add properties to the entity
 
   group(DeleteFirewallRule, () {
     // int ruleId

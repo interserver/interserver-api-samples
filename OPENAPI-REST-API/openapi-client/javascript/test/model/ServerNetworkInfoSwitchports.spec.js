@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerNetworkInfoSwitchports();
+    instance = new InterserverApiClient.ServerNetworkInfoSwitchports();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('ServerNetworkInfoSwitchports', function() {
     it('should create an instance of ServerNetworkInfoSwitchports', function() {
       // uncomment below and update the code to test ServerNetworkInfoSwitchports
-      //var instance = new InterServerManagementApi.ServerNetworkInfoSwitchports();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerNetworkInfoSwitchports);
+      //var instance = new InterserverApiClient.ServerNetworkInfoSwitchports();
+      //expect(instance).to.be.a(InterserverApiClient.ServerNetworkInfoSwitchports);
     });
 
     it('should have the property _10414 (base name: "10414")', function() {
       // uncomment below and update the code to test the property _10414
-      //var instance = new InterServerManagementApi.ServerNetworkInfoSwitchports();
+      //var instance = new InterserverApiClient.ServerNetworkInfoSwitchports();
       //expect(instance).to.be();
     });
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PublicApi();
+    instance = new InterserverApiClient.PublicApi();
   });
 
   var getProperty = function(object, getter, property) {
@@ -48,6 +48,26 @@
   }
 
   describe('PublicApi', function() {
+    describe('getAccountCurrencies', function() {
+      it('should call getAccountCurrencies successfully', function(done) {
+        //uncomment below and update the code to test getAccountCurrencies
+        //instance.getAccountCurrencies(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('getAccountLocales', function() {
+      it('should call getAccountLocales successfully', function(done) {
+        //uncomment below and update the code to test getAccountLocales
+        //instance.getAccountLocales(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('getCaptcha', function() {
       it('should call getCaptcha successfully', function(done) {
         //uncomment below and update the code to test getCaptcha

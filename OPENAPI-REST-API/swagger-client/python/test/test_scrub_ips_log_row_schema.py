@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.scrub_ips_log_row_schema import ScrubIpsLogRowSchema  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.scrub_ips_log_row_schema import ScrubIpsLogRowSchema  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestScrubIpsLogRowSchema(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestScrubIpsLogRowSchema(unittest.TestCase):
     def testScrubIpsLogRowSchema(self):
         """Test ScrubIpsLogRowSchema"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.scrub_ips_log_row_schema.ScrubIpsLogRowSchema()  # noqa: E501
+        # model = interserver_api_client.models.scrub_ips_log_row_schema.ScrubIpsLogRowSchema()  # noqa: E501
         pass
 
 

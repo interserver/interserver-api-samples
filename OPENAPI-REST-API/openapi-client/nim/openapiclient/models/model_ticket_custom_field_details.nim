@@ -16,6 +16,7 @@ import options
 type CustomerServerAccess* {.pure.} = enum
   Y
   N
+  UnknownDefaultOpenApi
 
 type TicketCustomFieldDetails* = object
   ## Optional fields providing additional info in ticket
@@ -30,10 +31,12 @@ func `%`*(v: CustomerServerAccess): JsonNode =
   result = case v:
     of CustomerServerAccess.Y: %"y"
     of CustomerServerAccess.N: %"n"
+    of CustomerServerAccess.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: CustomerServerAccess): string =
   result = case v:
     of CustomerServerAccess.Y: $("y")
     of CustomerServerAccess.N: $("n")
+    of CustomerServerAccess.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[CustomerServerAccess]): CustomerServerAccess =
   if node.kind != JString:
@@ -44,6 +47,8 @@ proc to*(node: JsonNode, T: typedesc[CustomerServerAccess]): CustomerServerAcces
     return CustomerServerAccess.Y
   of $("n"):
     return CustomerServerAccess.N
+  of $("11184809"):
+    return CustomerServerAccess.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for CustomerServerAccess: " & strVal)
 

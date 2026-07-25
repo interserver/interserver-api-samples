@@ -10,4 +10,8 @@
 |**_65** | [**ServerOrderMemory**](ServerOrderMemory.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

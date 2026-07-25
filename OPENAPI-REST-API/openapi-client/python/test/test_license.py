@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.license import License
+from interserver_api_client.models.license import License
 
 class TestLicense(unittest.TestCase):
     """License unit test stubs"""
@@ -36,7 +36,7 @@ class TestLicense(unittest.TestCase):
         model = License()
         if include_optional:
             return License(
-                service_info = openapi_client.models.license_service_info.LicenseServiceInfo(
+                service_info = interserver_api_client.models.license_service_info.LicenseServiceInfo(
                     license_id = '386522', 
                     license_type = '5034', 
                     license_currency = 'USD', 
@@ -50,7 +50,7 @@ class TestLicense(unittest.TestCase):
                     license_coupon = '1836', 
                     license_extra = '', ),
                 client_links = [
-                    openapi_client.models.license_client_link.LicenseClientLink(
+                    interserver_api_client.models.license_client_link.LicenseClientLink(
                         label = 'Invoices', 
                         link = 'invoices', 
                         icon = 'fas fa-file-invoice-dollar fa-w-12', 
@@ -58,7 +58,7 @@ class TestLicense(unittest.TestCase):
                         help_text = 'Invoice History', 
                         other_attr = '', )
                     ],
-                billing_details = openapi_client.models.license_billing_details.LicenseBillingDetails(
+                billing_details = interserver_api_client.models.license_billing_details.LicenseBillingDetails(
                     service_last_invoice_date = 'August 14, 2023', 
                     service_payment_status = 'Paid', 
                     service_frequency = 'Monthly', 
@@ -78,16 +78,16 @@ class TestLicense(unittest.TestCase):
                 service_extra = [
                     ''
                     ],
-                extra_info_tables = openapi_client.models.license_extra_info_tables.License_extraInfoTables(
-                    ip_info = openapi_client.models.license_ip_info.LicenseIpInfo(
+                extra_info_tables = interserver_api_client.models.license_extra_info_tables.License_extraInfoTables(
+                    ip_info = interserver_api_client.models.license_ip_info.LicenseIpInfo(
                         title = 'IP Information', 
                         rows = [
-                            openapi_client.models.license_ip_info_row.LicenseIpInfoRow(
+                            interserver_api_client.models.license_ip_info_row.LicenseIpInfoRow(
                                 desc = 'Netmask', 
                                 value = '255.255.255.248', )
                             ], ), ),
                 service_overview_extra = '',
-                service_type = openapi_client.models.license_service_type.LicenseServiceType(
+                service_type = interserver_api_client.models.license_service_type.LicenseServiceType(
                     services_id = '5034', 
                     services_name = 'KernelCare License', 
                     services_cost = '2.95', 
@@ -101,7 +101,7 @@ class TestLicense(unittest.TestCase):
             )
         else:
             return License(
-                service_info = openapi_client.models.license_service_info.LicenseServiceInfo(
+                service_info = interserver_api_client.models.license_service_info.LicenseServiceInfo(
                     license_id = '386522', 
                     license_type = '5034', 
                     license_currency = 'USD', 
@@ -115,7 +115,7 @@ class TestLicense(unittest.TestCase):
                     license_coupon = '1836', 
                     license_extra = '', ),
                 client_links = [
-                    openapi_client.models.license_client_link.LicenseClientLink(
+                    interserver_api_client.models.license_client_link.LicenseClientLink(
                         label = 'Invoices', 
                         link = 'invoices', 
                         icon = 'fas fa-file-invoice-dollar fa-w-12', 
@@ -123,7 +123,7 @@ class TestLicense(unittest.TestCase):
                         help_text = 'Invoice History', 
                         other_attr = '', )
                     ],
-                billing_details = openapi_client.models.license_billing_details.LicenseBillingDetails(
+                billing_details = interserver_api_client.models.license_billing_details.LicenseBillingDetails(
                     service_last_invoice_date = 'August 14, 2023', 
                     service_payment_status = 'Paid', 
                     service_frequency = 'Monthly', 
@@ -143,16 +143,16 @@ class TestLicense(unittest.TestCase):
                 service_extra = [
                     ''
                     ],
-                extra_info_tables = openapi_client.models.license_extra_info_tables.License_extraInfoTables(
-                    ip_info = openapi_client.models.license_ip_info.LicenseIpInfo(
+                extra_info_tables = interserver_api_client.models.license_extra_info_tables.License_extraInfoTables(
+                    ip_info = interserver_api_client.models.license_ip_info.LicenseIpInfo(
                         title = 'IP Information', 
                         rows = [
-                            openapi_client.models.license_ip_info_row.LicenseIpInfoRow(
+                            interserver_api_client.models.license_ip_info_row.LicenseIpInfoRow(
                                 desc = 'Netmask', 
                                 value = '255.255.255.248', )
                             ], ), ),
                 service_overview_extra = '',
-                service_type = openapi_client.models.license_service_type.LicenseServiceType(
+                service_type = interserver_api_client.models.license_service_type.LicenseServiceType(
                     services_id = '5034', 
                     services_name = 'KernelCare License', 
                     services_cost = '2.95', 

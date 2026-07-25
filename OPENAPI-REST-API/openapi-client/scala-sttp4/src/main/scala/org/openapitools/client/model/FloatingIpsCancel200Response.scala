@@ -16,4 +16,3 @@ case class FloatingIpsCancel200Response(
   success: Boolean,
   text: String
 )
-

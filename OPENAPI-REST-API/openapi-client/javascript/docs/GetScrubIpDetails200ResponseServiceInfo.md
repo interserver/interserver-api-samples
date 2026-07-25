@@ -1,4 +1,4 @@
-# InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo
+# InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo
 
 ## Properties
 
@@ -29,6 +29,8 @@ Name | Type | Description | Notes
 * `canceled` (value: `"canceled"`)
 
 * `expired` (value: `"expired"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 
 

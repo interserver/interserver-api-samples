@@ -29,7 +29,7 @@ public class InlineResponse20017   {
   /**
    **/
   
-  @Schema(example = "Filter is deleted.", description = "")
+  @Schema(example = "Firewall Rule has been deleted.", description = "")
   @JsonProperty("text")
   @NotNull
   public String getText() {

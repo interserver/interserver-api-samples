@@ -1,4 +1,4 @@
-# openapi::BuyItNowList
+# interserverapi::BuyItNowList
 
 Marketplace buy it now servers list
 

@@ -11,6 +11,7 @@ import io.swagger.server.model.DenyRuleRecord
 import io.swagger.server.model.EmailAddress
 import io.swagger.server.model.EmailAddressName
 import io.swagger.server.model.GenericResponse
+import io.swagger.server.model.Id_alerts_body
 import io.swagger.server.model.MailAlertRequest
 import io.swagger.server.model.MailAlertUpdateRequest
 import io.swagger.server.model.MailAlertsResponse
@@ -21,6 +22,7 @@ import io.swagger.server.model.MailDelistResponse
 import io.swagger.server.model.MailDeliverabilityResponse
 import io.swagger.server.model.MailLog
 import io.swagger.server.model.MailOrder
+import io.swagger.server.model.MailOrderRequest
 import io.swagger.server.model.MailRow
 import io.swagger.server.model.MailSchema
 import io.swagger.server.model.MailStatsType
@@ -29,7 +31,7 @@ import io.swagger.server.model.SendMailAdv
 import io.swagger.server.model.ServiceOrderPostResponse
 import io.swagger.server.model.SuccessTextResponse
 import io.swagger.server.model.endDate
-import io.swagger.server.model.inline_response_200_8
+import io.swagger.server.model.inline_response_200_9
 import io.swagger.server.model.inline_response_401
 import io.swagger.server.model.startDate
 
@@ -46,9 +48,9 @@ class MailApi(
           
             
               
-                
-                  mailService.addMail()
-               
+                entity(as[MailOrderRequest]){ body =>
+                  mailService.addMail(body = body)
+                }
              
            
          
@@ -87,17 +89,17 @@ class MailApi(
     } ~
     path() { (id) => 
       delete {
-        parameters("alert_id".as[Int]) { (alertId) =>
+        
           
-            
+            formFields("alert_id".as[Int]) { (alertId) =>
               
-                
-                  mailService.deleteMailAlert(id = id, alertId = alertId)
-               
+                entity(as[Id_alerts_body]){ body =>
+                  mailService.deleteMailAlert(body = body, alertId = alertId, id = id)
+                }
              
-           
+            }
          
-        }
+       
       }
     } ~
     path() { (id, rule) => 
@@ -331,9 +333,9 @@ class MailApi(
           
             
               
-                
-                  mailService.putMail()
-               
+                entity(as[MailOrderRequest]){ body =>
+                  mailService.putMail(body = body)
+                }
              
            
          
@@ -415,6 +417,21 @@ class MailApi(
        
       }
     } ~
+    path() { (id, rule) => 
+      put {
+        
+          
+            formFields("user".as[String], "type".as[String], "data".as[String]) { (user, &#x60;type&#x60;, data) =>
+              
+                entity(as[DenyRuleNew]){ body =>
+                  mailService.updateRule(body = body, user = user, &#x60;type&#x60; = &#x60;type&#x60;, data = data, id = id, rule = rule)
+                }
+             
+            }
+         
+       
+      }
+    } ~
     path() { (id) => 
       get {
         parameters("id".as[Long].?, "origin".as[String].?, "mx".as[String].?, "from".as[String].?, "to".as[String].?, "subject".as[String].?, "mailid".as[String].?, "messageId".as[String].?, "replyto".as[String].?, "headerfrom".as[String].?, "delivered".as[Int].?, "skip".as[Int].?, "limit".as[Int].?, "startDate".as[String].?, "endDate".as[String].?, "sort".as[String].?, "dir".as[String].?, "groupby".as[String].?) { (id, origin, mx, from, to, subject, mailid, messageId, replyto, headerfrom, delivered, skip, limit, startDate, endDate, sort, dir, groupby) =>
@@ -439,10 +456,10 @@ trait MailApiService {
   def addMail401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
+   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def addMail()
+  def addMail(body: MailOrderRequest)
       (implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def addRule200(responseGenericResponse: GenericResponse)(implicit toEntityMarshallerGenericResponse: ToEntityMarshaller[GenericResponse]): Route =
@@ -481,7 +498,7 @@ trait MailApiService {
    * Code: 200, Message: A response indicating the operation completed successfully with a text message., DataType: SuccessTextResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def deleteMailAlert(id: Int, alertId: Int)
+  def deleteMailAlert(body: Id_alerts_body, alertId: Int, id: Int)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def deleteRule200(responseGenericResponse: GenericResponse)(implicit toEntityMarshallerGenericResponse: ToEntityMarshaller[GenericResponse]): Route =
@@ -648,16 +665,16 @@ trait MailApiService {
   def getStats(id: Int, time: Option[String])
       (implicit toEntityMarshallerMailStatsType: ToEntityMarshaller[MailStatsType], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def mailCancel200(responseinline_response_200_8: inline_response_200_8)(implicit toEntityMarshallerinline_response_200_8: ToEntityMarshaller[inline_response_200_8]): Route =
-    complete((200, responseinline_response_200_8))
+  def mailCancel200(responseinline_response_200_9: inline_response_200_9)(implicit toEntityMarshallerinline_response_200_9: ToEntityMarshaller[inline_response_200_9]): Route =
+    complete((200, responseinline_response_200_9))
   def mailCancel401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Mail Cancel, DataType: inline_response_200_8
+   * Code: 200, Message: Mail Cancel, DataType: inline_response_200_9
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def mailCancel(id: Int)
-      (implicit toEntityMarshallerinline_response_200_8: ToEntityMarshaller[inline_response_200_8], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_9: ToEntityMarshaller[inline_response_200_9], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def postMailDelist200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
     complete((200, responseSuccessTextResponse))
@@ -678,7 +695,7 @@ trait MailApiService {
    * Code: 200, Message: Validate Mail order response.
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def putMail()
+  def putMail(body: MailOrderRequest)
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def resetMailPassword200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
@@ -748,6 +765,23 @@ trait MailApiService {
   def updateMailInfo(id: String)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
+  def updateRule200(responseGenericResponse: GenericResponse)(implicit toEntityMarshallerGenericResponse: ToEntityMarshaller[GenericResponse]): Route =
+    complete((200, responseGenericResponse))
+  def updateRule400(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((400, responseinline_response_401))
+  def updateRule401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  def updateRule404(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((404, responseinline_response_401))
+  /**
+   * Code: 200, Message: Deny rule updated successfully., DataType: GenericResponse
+   * Code: 400, Message: The specified resource was not found, DataType: inline_response_401
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   * Code: 404, Message: The specified resource was not found, DataType: inline_response_401
+   */
+  def updateRule(body: DenyRuleNew, user: String, &#x60;type&#x60;: String, data: String, id: Int, rule: String)
+      (implicit toEntityMarshallerGenericResponse: ToEntityMarshaller[GenericResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
   def viewMailLog200(responseMailLog: MailLog)(implicit toEntityMarshallerMailLog: ToEntityMarshaller[MailLog]): Route =
     complete((200, responseMailLog))
   def viewMailLog400: Route =
@@ -762,6 +796,8 @@ trait MailApiService {
 }
 
 trait MailApiMarshaller {
+  implicit def fromRequestUnmarshallerMailOrderRequest: FromRequestUnmarshaller[MailOrderRequest]
+
   implicit def fromRequestUnmarshallerMailAlertRequest: FromRequestUnmarshaller[MailAlertRequest]
 
   implicit def fromRequestUnmarshallerMailDelistRequest: FromRequestUnmarshaller[MailDelistRequest]
@@ -769,6 +805,8 @@ trait MailApiMarshaller {
   implicit def fromRequestUnmarshallerSendMailAdv: FromRequestUnmarshaller[SendMailAdv]
 
   implicit def fromRequestUnmarshallerMailAlertUpdateRequest: FromRequestUnmarshaller[MailAlertUpdateRequest]
+
+  implicit def fromRequestUnmarshallerId_alerts_body: FromRequestUnmarshaller[Id_alerts_body]
 
   implicit def fromRequestUnmarshallerDenyRuleNew: FromRequestUnmarshaller[DenyRuleNew]
 
@@ -863,7 +901,7 @@ trait MailApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_8: ToEntityMarshaller[inline_response_200_8]
+  implicit def toEntityMarshallerinline_response_200_9: ToEntityMarshaller[inline_response_200_9]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -898,6 +936,14 @@ trait MailApiMarshaller {
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerGenericResponse: ToEntityMarshaller[GenericResponse]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

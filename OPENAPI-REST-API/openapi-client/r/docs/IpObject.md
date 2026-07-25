@@ -1,4 +1,4 @@
-# openapi::IpObject
+# interserverapi::IpObject
 
 IP Address
 

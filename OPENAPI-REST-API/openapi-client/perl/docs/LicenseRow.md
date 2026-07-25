@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::LicenseRow
+# InterServerAPI::Object::LicenseRow
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::LicenseRow;
+use InterServerAPI::Object::LicenseRow;
 ```
 
 ## Properties

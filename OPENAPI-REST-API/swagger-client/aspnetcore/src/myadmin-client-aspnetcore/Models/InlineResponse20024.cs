@@ -27,12 +27,20 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20024 : IEquatable<InlineResponse20024>
     { 
         /// <summary>
-        /// A map of IP addresses to their current reverse DNS hostnames.
+        /// Gets or Sets Success
         /// </summary>
-        /// <value>A map of IP addresses to their current reverse DNS hostnames.</value>
+        [Required]
 
-        [DataMember(Name="ips")]
-        public Dictionary<string, string> Ips { get; set; }
+        [DataMember(Name="success")]
+        public bool? Success { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Text
+        /// </summary>
+        [Required]
+
+        [DataMember(Name="text")]
+        public string Text { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -42,7 +50,8 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20024 {\n");
-            sb.Append("  Ips: ").Append(Ips).Append("\n");
+            sb.Append("  Success: ").Append(Success).Append("\n");
+            sb.Append("  Text: ").Append(Text).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -80,9 +89,14 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Ips == other.Ips ||
-                    Ips != null &&
-                    Ips.SequenceEqual(other.Ips)
+                    Success == other.Success ||
+                    Success != null &&
+                    Success.Equals(other.Success)
+                ) && 
+                (
+                    Text == other.Text ||
+                    Text != null &&
+                    Text.Equals(other.Text)
                 );
         }
 
@@ -96,8 +110,10 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Ips != null)
-                    hashCode = hashCode * 59 + Ips.GetHashCode();
+                    if (Success != null)
+                    hashCode = hashCode * 59 + Success.GetHashCode();
+                    if (Text != null)
+                    hashCode = hashCode * 59 + Text.GetHashCode();
                 return hashCode;
             }
         }

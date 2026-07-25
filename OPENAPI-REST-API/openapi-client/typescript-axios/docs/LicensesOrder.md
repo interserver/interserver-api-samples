@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LicensesOrder } from './api';
+import { LicensesOrder } from '@interserver/myadmin-client';
 
 const instance: LicensesOrder = {
     serviceCategories,

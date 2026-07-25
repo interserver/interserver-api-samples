@@ -2,170 +2,50 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.model.InlineResponse20012BillingDetails;
-import io.swagger.model.InlineResponse20012ClientLinks;
-import io.swagger.model.InlineResponse20012ExtraInfoTables;
-import io.swagger.model.InlineResponse20012FilterFirewall;
-import io.swagger.model.InlineResponse20012ServiceInfo;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.ArrayList;
-import java.util.List;
 
 
 
 
 
 public class InlineResponse20012   {
-  @JsonProperty("serviceInfo")
-  private InlineResponse20012ServiceInfo serviceInfo = null;
-  @JsonProperty("client_links")
-  private List<InlineResponse20012ClientLinks> clientLinks = null;
-  @JsonProperty("billingDetails")
-  private InlineResponse20012BillingDetails billingDetails = null;
-  @JsonProperty("custCurrency")
-  private String custCurrency = null;
-  @JsonProperty("custCurrencySymbol")
-  private String custCurrencySymbol = null;
-  @JsonProperty("package")
-  private String _package = null;
-  @JsonProperty("extraInfoTables")
-  private InlineResponse20012ExtraInfoTables extraInfoTables = null;
-  @JsonProperty("filter_firewall")
-  private InlineResponse20012FilterFirewall filterFirewall = null;
+  @JsonProperty("text")
+  private String text = null;
+  @JsonProperty("url")
+  private String url = null;
   /**
    **/
-  public InlineResponse20012 serviceInfo(InlineResponse20012ServiceInfo serviceInfo) {
-    this.serviceInfo = serviceInfo;
+  public InlineResponse20012 text(String text) {
+    this.text = text;
     return this;
   }
 
   
   @Schema(description = "")
-  @JsonProperty("serviceInfo")
-  public InlineResponse20012ServiceInfo getServiceInfo() {
-    return serviceInfo;
+  @JsonProperty("text")
+  public String getText() {
+    return text;
   }
-  public void setServiceInfo(InlineResponse20012ServiceInfo serviceInfo) {
-    this.serviceInfo = serviceInfo;
+  public void setText(String text) {
+    this.text = text;
   }
 
   /**
+   * A pre-signed download URL valid for 24 hours.
    **/
-  public InlineResponse20012 clientLinks(List<InlineResponse20012ClientLinks> clientLinks) {
-    this.clientLinks = clientLinks;
+  public InlineResponse20012 url(String url) {
+    this.url = url;
     return this;
   }
 
   
-  @Schema(description = "")
-  @JsonProperty("client_links")
-  public List<InlineResponse20012ClientLinks> getClientLinks() {
-    return clientLinks;
+  @Schema(description = "A pre-signed download URL valid for 24 hours.")
+  @JsonProperty("url")
+  public String getUrl() {
+    return url;
   }
-  public void setClientLinks(List<InlineResponse20012ClientLinks> clientLinks) {
-    this.clientLinks = clientLinks;
-  }
-
-  /**
-   **/
-  public InlineResponse20012 billingDetails(InlineResponse20012BillingDetails billingDetails) {
-    this.billingDetails = billingDetails;
-    return this;
-  }
-
-  
-  @Schema(description = "")
-  @JsonProperty("billingDetails")
-  public InlineResponse20012BillingDetails getBillingDetails() {
-    return billingDetails;
-  }
-  public void setBillingDetails(InlineResponse20012BillingDetails billingDetails) {
-    this.billingDetails = billingDetails;
-  }
-
-  /**
-   **/
-  public InlineResponse20012 custCurrency(String custCurrency) {
-    this.custCurrency = custCurrency;
-    return this;
-  }
-
-  
-  @Schema(description = "")
-  @JsonProperty("custCurrency")
-  public String getCustCurrency() {
-    return custCurrency;
-  }
-  public void setCustCurrency(String custCurrency) {
-    this.custCurrency = custCurrency;
-  }
-
-  /**
-   **/
-  public InlineResponse20012 custCurrencySymbol(String custCurrencySymbol) {
-    this.custCurrencySymbol = custCurrencySymbol;
-    return this;
-  }
-
-  
-  @Schema(description = "")
-  @JsonProperty("custCurrencySymbol")
-  public String getCustCurrencySymbol() {
-    return custCurrencySymbol;
-  }
-  public void setCustCurrencySymbol(String custCurrencySymbol) {
-    this.custCurrencySymbol = custCurrencySymbol;
-  }
-
-  /**
-   **/
-  public InlineResponse20012 _package(String _package) {
-    this._package = _package;
-    return this;
-  }
-
-  
-  @Schema(description = "")
-  @JsonProperty("package")
-  public String getPackage() {
-    return _package;
-  }
-  public void setPackage(String _package) {
-    this._package = _package;
-  }
-
-  /**
-   **/
-  public InlineResponse20012 extraInfoTables(InlineResponse20012ExtraInfoTables extraInfoTables) {
-    this.extraInfoTables = extraInfoTables;
-    return this;
-  }
-
-  
-  @Schema(description = "")
-  @JsonProperty("extraInfoTables")
-  public InlineResponse20012ExtraInfoTables getExtraInfoTables() {
-    return extraInfoTables;
-  }
-  public void setExtraInfoTables(InlineResponse20012ExtraInfoTables extraInfoTables) {
-    this.extraInfoTables = extraInfoTables;
-  }
-
-  /**
-   **/
-  public InlineResponse20012 filterFirewall(InlineResponse20012FilterFirewall filterFirewall) {
-    this.filterFirewall = filterFirewall;
-    return this;
-  }
-
-  
-  @Schema(description = "")
-  @JsonProperty("filter_firewall")
-  public InlineResponse20012FilterFirewall getFilterFirewall() {
-    return filterFirewall;
-  }
-  public void setFilterFirewall(InlineResponse20012FilterFirewall filterFirewall) {
-    this.filterFirewall = filterFirewall;
+  public void setUrl(String url) {
+    this.url = url;
   }
 
 
@@ -178,33 +58,21 @@ public class InlineResponse20012   {
       return false;
     }
     InlineResponse20012 inlineResponse20012 = (InlineResponse20012) o;
-    return Objects.equals(serviceInfo, inlineResponse20012.serviceInfo) &&
-        Objects.equals(clientLinks, inlineResponse20012.clientLinks) &&
-        Objects.equals(billingDetails, inlineResponse20012.billingDetails) &&
-        Objects.equals(custCurrency, inlineResponse20012.custCurrency) &&
-        Objects.equals(custCurrencySymbol, inlineResponse20012.custCurrencySymbol) &&
-        Objects.equals(_package, inlineResponse20012._package) &&
-        Objects.equals(extraInfoTables, inlineResponse20012.extraInfoTables) &&
-        Objects.equals(filterFirewall, inlineResponse20012.filterFirewall);
+    return Objects.equals(text, inlineResponse20012.text) &&
+        Objects.equals(url, inlineResponse20012.url);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(serviceInfo, clientLinks, billingDetails, custCurrency, custCurrencySymbol, _package, extraInfoTables, filterFirewall);
+    return Objects.hash(text, url);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20012 {\n");
-    sb.append("    serviceInfo: ").append(toIndentedString(serviceInfo)).append("\n");
-    sb.append("    clientLinks: ").append(toIndentedString(clientLinks)).append("\n");
-    sb.append("    billingDetails: ").append(toIndentedString(billingDetails)).append("\n");
-    sb.append("    custCurrency: ").append(toIndentedString(custCurrency)).append("\n");
-    sb.append("    custCurrencySymbol: ").append(toIndentedString(custCurrencySymbol)).append("\n");
-    sb.append("    _package: ").append(toIndentedString(_package)).append("\n");
-    sb.append("    extraInfoTables: ").append(toIndentedString(extraInfoTables)).append("\n");
-    sb.append("    filterFirewall: ").append(toIndentedString(filterFirewall)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

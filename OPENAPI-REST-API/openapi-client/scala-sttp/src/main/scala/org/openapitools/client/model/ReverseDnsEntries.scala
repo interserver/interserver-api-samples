@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JValue
 
   /**
    * ReverseDnsEntries
@@ -18,6 +19,6 @@ package org.openapitools.client.model
    */
 case class ReverseDnsEntries(
   /* The IPs you have access to and their current reverse dns mapping. */
-  ips: Option[Map[String, org.json4s.JValue]] = None
+  ips: Option[Map[String, JValue]] = None
 )
 

@@ -1,4 +1,4 @@
-# openapi::DomainAllInfoAttributes
+# interserverapi::DomainAllInfoAttributes
 
 
 ## Properties

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountFeatures } from './api';
+import { AccountFeatures } from '@interserver/myadmin-client';
 
 const instance: AccountFeatures = {
     disable_reset,

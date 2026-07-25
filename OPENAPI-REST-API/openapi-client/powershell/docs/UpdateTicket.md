@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$UpdateTicket = Initialize-PSOpenAPIToolsUpdateTicket  -Ip null `
+$UpdateTicket = Initialize-InterserverApiUpdateTicket  -Ip null `
  -IpAddress null `
  -CustomerServerAccess null `
  -RootPassword null `

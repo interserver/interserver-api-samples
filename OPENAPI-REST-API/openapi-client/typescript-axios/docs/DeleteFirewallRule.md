@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DeleteFirewallRule } from './api';
+import { DeleteFirewallRule } from '@interserver/myadmin-client';
 
 const instance: DeleteFirewallRule = {
     rule_id,

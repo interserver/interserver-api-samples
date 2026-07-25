@@ -1,4 +1,4 @@
-# openapi::GetOauthRedirect200Response
+# interserverapi::GetOauthRedirect200Response
 
 
 ## Properties

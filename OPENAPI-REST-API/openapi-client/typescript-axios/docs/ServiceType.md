@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServiceType } from './api';
+import { ServiceType } from '@interserver/myadmin-client';
 
 const instance: ServiceType = {
     st_id,

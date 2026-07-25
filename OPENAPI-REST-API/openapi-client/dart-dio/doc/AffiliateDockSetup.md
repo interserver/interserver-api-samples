@@ -1,16 +1,16 @@
-# openapi.model.AffiliateDockSetup
+# interserver_api.model.AffiliateDockSetup
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**affiliateDockTitle** | **String** |  | [optional] 
-**affiliateDockDescription** | **String** |  | [optional] 
-**referrerCoupon** | **String** |  | [optional] 
+**affiliateDockTitle** | **Optional&lt;String?&gt;** |  | [optional] 
+**affiliateDockDescription** | **Optional&lt;String?&gt;** |  | [optional] 
+**referrerCoupon** | **Optional&lt;String?&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

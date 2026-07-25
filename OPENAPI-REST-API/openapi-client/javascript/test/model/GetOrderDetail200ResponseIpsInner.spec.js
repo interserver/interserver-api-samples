@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetOrderDetail200ResponseIpsInner();
+    instance = new InterserverApiClient.GetOrderDetail200ResponseIpsInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('GetOrderDetail200ResponseIpsInner', function() {
     it('should create an instance of GetOrderDetail200ResponseIpsInner', function() {
       // uncomment below and update the code to test GetOrderDetail200ResponseIpsInner
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseIpsInner();
-      //expect(instance).to.be.a(InterServerManagementApi.GetOrderDetail200ResponseIpsInner);
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseIpsInner();
+      //expect(instance).to.be.a(InterserverApiClient.GetOrderDetail200ResponseIpsInner);
     });
 
     it('should have the property service_id (base name: "service_id")', function() {
       // uncomment below and update the code to test the property service_id
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseIpsInner();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseIpsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property service_module (base name: "service_module")', function() {
       // uncomment below and update the code to test the property service_module
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseIpsInner();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseIpsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property service_hostname (base name: "service_hostname")', function() {
       // uncomment below and update the code to test the property service_hostname
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponseIpsInner();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponseIpsInner();
       //expect(instance).to.be();
     });
 

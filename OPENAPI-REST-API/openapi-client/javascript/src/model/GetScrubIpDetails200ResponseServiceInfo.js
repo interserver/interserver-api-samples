@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetScrubIpDetails200ResponseServiceInfo model module.
  * @module model/GetScrubIpDetails200ResponseServiceInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetScrubIpDetails200ResponseServiceInfo {
     /**
@@ -243,7 +243,13 @@ GetScrubIpDetails200ResponseServiceInfo['ScrubIpStatusEnum'] = {
      * value: "expired"
      * @const
      */
-    "expired": "expired"
+    "expired": "expired",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 

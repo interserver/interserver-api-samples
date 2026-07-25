@@ -20,4 +20,3 @@ case class ScrubIpPlaceOrder(
   service_type: Int,
   ip: String
 )
-

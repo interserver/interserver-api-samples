@@ -11,4 +11,8 @@ Schema for the jsonServiceOffers field in WebsitesOrder
 |**_1026** | [**List&lt;WebsitesOrderJsonServiceOffersItem&gt;**](WebsitesOrderJsonServiceOffersItem.md) | Array of service offers |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

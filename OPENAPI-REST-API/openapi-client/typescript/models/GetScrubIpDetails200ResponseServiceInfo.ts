@@ -112,10 +112,5 @@ export class GetScrubIpDetails200ResponseServiceInfo {
     }
 }
 
-export enum GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum {
-    Active = 'active',
-    Pending = 'pending',
-    Canceled = 'canceled',
-    Expired = 'expired'
-}
+    export type GetScrubIpDetails200ResponseServiceInfoScrubIpStatusEnum = "active" | "pending" | "canceled" | "expired" ;
 

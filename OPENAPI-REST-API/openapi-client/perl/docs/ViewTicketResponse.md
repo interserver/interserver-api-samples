@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ViewTicketResponse
+# InterServerAPI::Object::ViewTicketResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ViewTicketResponse;
+use InterServerAPI::Object::ViewTicketResponse;
 ```
 
 ## Properties

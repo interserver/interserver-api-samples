@@ -17,7 +17,7 @@ import QuickserverIpTableRow from './QuickserverIpTableRow';
 /**
  * The QuickserverIpInfo model module.
  * @module model/QuickserverIpInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverIpInfo {
     /**

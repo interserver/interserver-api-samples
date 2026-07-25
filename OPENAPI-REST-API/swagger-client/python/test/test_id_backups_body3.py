@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.id_backups_body3 import IdBackupsBody3  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.id_backups_body3 import IdBackupsBody3  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestIdBackupsBody3(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestIdBackupsBody3(unittest.TestCase):
     def testIdBackupsBody3(self):
         """Test IdBackupsBody3"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.id_backups_body3.IdBackupsBody3()  # noqa: E501
+        # model = interserver_api_client.models.id_backups_body3.IdBackupsBody3()  # noqa: E501
         pass
 
 

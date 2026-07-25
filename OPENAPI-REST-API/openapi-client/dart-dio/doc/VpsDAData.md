@@ -1,14 +1,14 @@
-# openapi.model.VpsDAData
+# interserver_api.model.VpsDAData
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**free** | [**VpsDALicense**](VpsDALicense.md) |  | [optional] 
+**free** | [**Optional&lt;VpsDALicense?&gt;**](VpsDALicense.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

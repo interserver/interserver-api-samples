@@ -38,7 +38,7 @@ public class InlineResponse20014   {
   }
 
   
-  @Schema(example = "Scrub is enabled on your IP.", required = true, description = "")
+  @Schema(example = "Scrub Ips is canceled.", required = true, description = "")
   @JsonProperty("text")
   public String getText() {
     return text;

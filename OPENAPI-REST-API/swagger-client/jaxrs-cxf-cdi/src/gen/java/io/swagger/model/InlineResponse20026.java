@@ -2,6 +2,9 @@ package io.swagger.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -12,47 +15,26 @@ import javax.xml.bind.annotation.*;
 
 
 public class InlineResponse20026   {
-  private String text = null;
-  private Integer ticket = null;
+  private Map<String, String> ips = new HashMap<String, String>();
 
   /**
-   * Confirmation message.
+   * A map of IP addresses to their current reverse DNS hostnames.
    **/
-  public InlineResponse20026 text(String text) {
-    this.text = text;
+  public InlineResponse20026 ips(Map<String, String> ips) {
+    this.ips = ips;
     return this;
   }
 
   
   
-  @Schema(description = "Confirmation message.")
-  @JsonProperty("text")
+  @Schema(description = "A map of IP addresses to their current reverse DNS hostnames.")
+  @JsonProperty("ips")
   @NotNull
-  public String getText() {
-    return text;
+  public Map<String, String> getIps() {
+    return ips;
   }
-  public void setText(String text) {
-    this.text = text;
-  }
-
-  /**
-   * The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.
-   **/
-  public InlineResponse20026 ticket(Integer ticket) {
-    this.ticket = ticket;
-    return this;
-  }
-
-  
-  
-  @Schema(description = "The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.")
-  @JsonProperty("ticket")
-  @NotNull
-  public Integer getTicket() {
-    return ticket;
-  }
-  public void setTicket(Integer ticket) {
-    this.ticket = ticket;
+  public void setIps(Map<String, String> ips) {
+    this.ips = ips;
   }
 
 
@@ -65,13 +47,12 @@ public class InlineResponse20026   {
       return false;
     }
     InlineResponse20026 inlineResponse20026 = (InlineResponse20026) o;
-    return Objects.equals(text, inlineResponse20026.text) &&
-        Objects.equals(ticket, inlineResponse20026.ticket);
+    return Objects.equals(ips, inlineResponse20026.ips);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, ticket);
+    return Objects.hash(ips);
   }
 
   @Override
@@ -79,8 +60,7 @@ public class InlineResponse20026   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20026 {\n");
     
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
-    sb.append("    ticket: ").append(toIndentedString(ticket)).append("\n");
+    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
     sb.append("}");
     return sb.toString();
   }

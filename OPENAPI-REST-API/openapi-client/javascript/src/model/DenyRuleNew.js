@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DenyRuleNew model module.
  * @module model/DenyRuleNew
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DenyRuleNew {
     /**
@@ -149,7 +149,13 @@ DenyRuleNew['TypeEnum'] = {
      * value: "destination"
      * @const
      */
-    "destination": "destination"
+    "destination": "destination",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 

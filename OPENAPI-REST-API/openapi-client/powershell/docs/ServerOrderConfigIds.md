@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderConfigIds = Initialize-PSOpenAPIToolsServerOrderConfigIds  -Memory 22 `
+$ServerOrderConfigIds = Initialize-InterserverApiServerOrderConfigIds  -Memory 22 `
  -Bandwidth 3 `
  -Ips 9 `
  -Os 5 `

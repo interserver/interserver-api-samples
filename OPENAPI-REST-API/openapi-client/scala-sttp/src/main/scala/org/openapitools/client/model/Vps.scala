@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JValue
 
 case class Vps(
   serviceInfo: VpsServiceInfo,
@@ -31,6 +32,6 @@ case class Vps(
   plesk12_data: VpsPlesk12Data,
   serviceAddons: VpsServiceAddons,
   os_template: Option[String] = None,
-  cpu_graph_data: Option[org.json4s.JValue] = None
+  cpu_graph_data: Option[JValue] = None
 )
 

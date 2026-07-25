@@ -40,6 +40,7 @@ import org.openapitools.client.models.GetAccountInfo401Response
 import org.openapitools.client.models.GetOrderDetail200Response
 import org.openapitools.client.models.GetScrubIpDetails200Response
 import org.openapitools.client.models.PlaceScrubOrder201Response
+import org.openapitools.client.models.PutScrubIps200Response
 import org.openapitools.client.models.ScrubIpFilterTypes
 import org.openapitools.client.models.ScrubIpPlaceOrder
 import org.openapitools.client.models.ScrubIpsDeleteRule200Response
@@ -66,6 +67,7 @@ trait ScrubIpsApiEndpoints[F[*]] {
   def getScrubIpLogs(id: String)(using auth: _Authorization.ApiKey): F[Seq[ScrubIpsLogRowSchema]]
   def getScrubIpsList()(using auth: _Authorization.ApiKey): F[Seq[ScrubIpsRowSchema]]
   def placeScrubOrder(scrubIpPlaceOrder: ScrubIpPlaceOrder)(using auth: _Authorization.ApiKey): F[PlaceScrubOrder201Response]
+  def putScrubIps(scrubIpPlaceOrder: ScrubIpPlaceOrder)(using auth: _Authorization.ApiKey): F[PutScrubIps200Response]
   def scrubIpsDeleteGeoRule(id: Int, deleteGeoFirewallRule: DeleteGeoFirewallRule)(using auth: _Authorization.ApiKey): F[ScrubIpsDeleteRule200Response]
   def scrubIpsDeleteRule(id: Int, deleteFirewallRule: DeleteFirewallRule)(using auth: _Authorization.ApiKey): F[ScrubIpsDeleteRule200Response]
 
@@ -355,6 +357,25 @@ class ScrubIpsApiEndpointsImpl[F[*]: Concurrent](
       auth = Some(auth)) {
         
         case r if r.status.code == 201 => parseJson[F, PlaceScrubOrder201Response]("PlaceScrubOrder201Response", r)
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
+  override def putScrubIps(scrubIpPlaceOrder: ScrubIpPlaceOrder)(using auth: _Authorization.ApiKey): F[PutScrubIps200Response] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[ScrubIpPlaceOrder, PutScrubIps200Response](
+      method = "PUT",
+      path = s"/scrub_ips/order",
+      body = Some(scrubIpPlaceOrder),
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => parseJson[F, PutScrubIps200Response]("PutScrubIps200Response", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }

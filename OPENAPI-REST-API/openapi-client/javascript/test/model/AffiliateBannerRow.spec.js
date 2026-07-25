@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AffiliateBannerRow();
+    instance = new InterserverApiClient.AffiliateBannerRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('AffiliateBannerRow', function() {
     it('should create an instance of AffiliateBannerRow', function() {
       // uncomment below and update the code to test AffiliateBannerRow
-      //var instance = new InterServerManagementApi.AffiliateBannerRow();
-      //expect(instance).to.be.a(InterServerManagementApi.AffiliateBannerRow);
+      //var instance = new InterserverApiClient.AffiliateBannerRow();
+      //expect(instance).to.be.a(InterserverApiClient.AffiliateBannerRow);
     });
 
     it('should have the property image (base name: "image")', function() {
       // uncomment below and update the code to test the property image
-      //var instance = new InterServerManagementApi.AffiliateBannerRow();
+      //var instance = new InterserverApiClient.AffiliateBannerRow();
       //expect(instance).to.be();
     });
 
     it('should have the property width (base name: "width")', function() {
       // uncomment below and update the code to test the property width
-      //var instance = new InterServerManagementApi.AffiliateBannerRow();
+      //var instance = new InterserverApiClient.AffiliateBannerRow();
       //expect(instance).to.be();
     });
 
     it('should have the property height (base name: "height")', function() {
       // uncomment below and update the code to test the property height
-      //var instance = new InterServerManagementApi.AffiliateBannerRow();
+      //var instance = new InterserverApiClient.AffiliateBannerRow();
       //expect(instance).to.be();
     });
 

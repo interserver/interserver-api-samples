@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailBlocks
+# InterserverApiClient.MailBlocks
 
 ## Properties
 

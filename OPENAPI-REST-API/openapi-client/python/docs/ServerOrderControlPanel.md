@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.server_order_control_panel import ServerOrderControlPanel
+from interserver_api_client.models.server_order_control_panel import ServerOrderControlPanel
 
 # TODO update the JSON string below
 json = "{}"

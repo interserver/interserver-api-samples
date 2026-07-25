@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::CreateFilter');
+use_ok('InterServerAPI::Object::CreateFilter');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::CreateFilter->new();
+#my $instance = InterServerAPI::Object::CreateFilter->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::CreateFilter');
+#isa_ok($instance, 'InterServerAPI::Object::CreateFilter');
 
 
 done_testing();

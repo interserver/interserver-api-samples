@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.reverse_dns_entries import ReverseDnsEntries  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.reverse_dns_entries import ReverseDnsEntries  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestReverseDnsEntries(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestReverseDnsEntries(unittest.TestCase):
     def testReverseDnsEntries(self):
         """Test ReverseDnsEntries"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.reverse_dns_entries.ReverseDnsEntries()  # noqa: E501
+        # model = interserver_api_client.models.reverse_dns_entries.ReverseDnsEntries()  # noqa: E501
         pass
 
 

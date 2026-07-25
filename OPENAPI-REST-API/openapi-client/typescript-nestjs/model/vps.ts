@@ -9,16 +9,16 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { VpsClientLink } from './vpsClientLink';
-import { VpsServiceAddons } from './vpsServiceAddons';
-import { VpsPlesk12Data } from './vpsPlesk12Data';
-import { VpsCPData } from './vpsCPData';
-import { VpsServiceExtra } from './vpsServiceExtra';
-import { VpsDAData } from './vpsDAData';
-import { VpsBillingDetails } from './vpsBillingDetails';
-import { VpsExtraInfoTables } from './vpsExtraInfoTables';
-import { VpsServiceInfo } from './vpsServiceInfo';
-import { VpsServiceMaster } from './vpsServiceMaster';
+import { VpsClientLink } from './vps-client-link';
+import { VpsServiceAddons } from './vps-service-addons';
+import { VpsPlesk12Data } from './vps-plesk12-data';
+import { VpsCPData } from './vps-cp-data';
+import { VpsServiceExtra } from './vps-service-extra';
+import { VpsDAData } from './vps-da-data';
+import { VpsBillingDetails } from './vps-billing-details';
+import { VpsExtraInfoTables } from './vps-extra-info-tables';
+import { VpsServiceInfo } from './vps-service-info';
+import { VpsServiceMaster } from './vps-service-master';
 
 
 export interface Vps { 

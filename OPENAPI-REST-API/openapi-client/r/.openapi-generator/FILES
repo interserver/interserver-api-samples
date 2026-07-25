@@ -33,8 +33,6 @@ R/affiliate_payment_setup.R
 R/affiliate_traffic_row.R
 R/api_client.R
 R/api_response.R
-R/asset_server.R
-R/asset_server_cpu_inner.R
 R/backup.R
 R/backup_billing_details.R
 R/backup_client_link.R
@@ -53,7 +51,6 @@ R/backups_api.R
 R/backups_order.R
 R/backups_order_package_costs.R
 R/backups_order_service_types.R
-R/bandwidth.R
 R/billing_add_cc_request.R
 R/billing_api.R
 R/billing_invoice_detail.R
@@ -80,11 +77,6 @@ R/charge_invoice_rows_invoices_value.R
 R/charge_invoice_rows_invoices_value_paid_invoices_value.R
 R/charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.R
 R/close_ticket_response_schema.R
-R/config_ids.R
-R/config_lists.R
-R/control_panel.R
-R/cpu.R
-R/cpu_with_defaults.R
 R/create_filter.R
 R/create_filter201_response.R
 R/create_filter400_response.R
@@ -100,6 +92,7 @@ R/delete_filter400_response.R
 R/delete_filter500_response.R
 R/delete_firewall_rule.R
 R/delete_geo_firewall_rule.R
+R/delete_mail_alert_request.R
 R/deny_rule_new.R
 R/deny_rule_record.R
 R/disable_scrub200_response.R
@@ -131,11 +124,11 @@ R/domain_nameserver_get_response_inner.R
 R/domain_nameserver_post_request.R
 R/domain_nameserver_put_request.R
 R/domain_order.R
+R/domain_order_request.R
 R/domain_order_response.R
 R/domain_order_response_attributes.R
 R/domain_order_services.R
 R/domain_order_services10001.R
-R/domain_order_tld_services.R
 R/domain_owner_contact.R
 R/domain_prov_process_pending.R
 R/domain_prov_process_pending_attributes.R
@@ -152,13 +145,14 @@ R/email_address.R
 R/email_address_name.R
 R/enable_scrub200_response.R
 R/enable_scrub500_response.R
-R/field_label.R
+R/floating_ip_order_request.R
 R/floating_ips_api.R
 R/floating_ips_cancel200_response.R
-R/form_values.R
 R/generic_response.R
 R/get_account_info401_response.R
+R/get_account_locales200_response_value.R
 R/get_account_tfa_setup200_response.R
+R/get_affiliate_signups200_response.R
 R/get_oauth_redirect200_response.R
 R/get_order_detail200_response.R
 R/get_order_detail200_response_ips_inner.R
@@ -175,7 +169,6 @@ R/get_scrub_ip_details200_response_filter_firewall_filters_inner.R
 R/get_scrub_ip_details200_response_filter_firewall_rules_inner.R
 R/get_scrub_ip_details200_response_service_info.R
 R/get_website_buy_ip200_response.R
-R/hard_drive.R
 R/home.R
 R/home_details.R
 R/home_details_modules.R
@@ -202,10 +195,6 @@ R/home_ticket_status.R
 R/home_ticket_status_view.R
 R/hostname_object.R
 R/initiate_payment200_response.R
-R/inline_object.R
-R/invoice.R
-R/invoice_row.R
-R/ip_block.R
 R/ip_limit_range.R
 R/ip_object.R
 R/license.R
@@ -214,6 +203,7 @@ R/license_client_link.R
 R/license_extra_info_tables.R
 R/license_ip_info.R
 R/license_ip_info_row.R
+R/license_order_request.R
 R/license_row.R
 R/license_service_info.R
 R/license_service_type.R
@@ -252,6 +242,7 @@ R/mail_extra_info_table_row.R
 R/mail_log.R
 R/mail_log_entry.R
 R/mail_order.R
+R/mail_order_request.R
 R/mail_row.R
 R/mail_schema.R
 R/mail_schema_extra_info_tables.R
@@ -264,15 +255,13 @@ R/mail_stats_type_volume_ip.R
 R/mail_stats_type_volume_to.R
 R/mail_tutorials_table.R
 R/mail_tutorials_table_row.R
-R/memory_option.R
 R/module_settings.R
 R/modules.R
 R/monthly_counts.R
-R/operating_system.R
 R/password_request.R
+R/patch_billing_credit_card_verify_request.R
 R/patch_oauth_two_factor200_response.R
 R/patch_oauth_two_factor_request.R
-R/payment_invoice_rows.R
 R/place_buy_now_server_request.R
 R/place_scrub_order201_response.R
 R/place_scrub_order201_response_order_details.R
@@ -284,6 +273,8 @@ R/post_website_buy_ip_request.R
 R/post_website_migration200_response.R
 R/post_website_migration_request.R
 R/public_api.R
+R/put_scrub_ips200_response.R
+R/qs_order_request.R
 R/queue_response.R
 R/quick_servers_api.R
 R/quickserver.R
@@ -308,8 +299,6 @@ R/quickserver_service_extra.R
 R/quickserver_service_info.R
 R/quickserver_service_master.R
 R/quickservers_cancel200_response.R
-R/raid_option.R
-R/region.R
 R/reply_ticket_request.R
 R/reply_ticket_response_schema.R
 R/restore_request.R
@@ -330,6 +319,8 @@ R/server.R
 R/server_asset.R
 R/server_assets.R
 R/server_billing_details.R
+R/server_bulk_ipmi_power_response.R
+R/server_bulk_ipmi_power_response_results_inner.R
 R/server_client_link.R
 R/server_extra_info_tables.R
 R/server_ipmi_live_info.R
@@ -352,7 +343,6 @@ R/server_order_cpu_li.R
 R/server_order_field_label.R
 R/server_order_field_labels.R
 R/server_order_form_values.R
-R/server_order_get_response.R
 R/server_order_ip.R
 R/server_order_ips_li.R
 R/server_order_memory.R
@@ -360,6 +350,8 @@ R/server_order_memory_li.R
 R/server_order_memory_li254.R
 R/server_order_os.R
 R/server_order_os_li.R
+R/server_order_post_request.R
+R/server_order_post_request_hd.R
 R/server_order_raid.R
 R/server_row.R
 R/server_service_info.R
@@ -379,6 +371,7 @@ R/services.R
 R/services_info.R
 R/ssl_cancel200_response.R
 R/ssl_certificates_api.R
+R/ssl_order_request.R
 R/status_monthly_breakdown.R
 R/success_text_response.R
 R/template_request.R
@@ -439,7 +432,6 @@ R/vps_service_master.R
 R/vps_snapshot.R
 R/vps_template_row.R
 R/vps_templates_list.R
-R/vps_traffic_data_data_response.R
 R/vps_traffic_data_data_section_response.R
 R/vps_traffic_data_data_section_response_inner.R
 R/vps_traffic_data_section_response.R
@@ -461,6 +453,8 @@ R/website_billing_details.R
 R/website_client_link.R
 R/website_extra_info_tables.R
 R/website_login_response.R
+R/website_order_post_request.R
+R/website_order_put_request.R
 R/website_row.R
 R/website_service_info.R
 R/website_service_master.R
@@ -502,8 +496,6 @@ docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
 docs/AffiliateTrafficRow.md
-docs/AssetServer.md
-docs/AssetServerCPUInner.md
 docs/Backup.md
 docs/BackupBillingDetails.md
 docs/BackupClientLink.md
@@ -522,7 +514,6 @@ docs/BackupsApi.md
 docs/BackupsOrder.md
 docs/BackupsOrderPackageCosts.md
 docs/BackupsOrderServiceTypes.md
-docs/Bandwidth.md
 docs/BillingAddCcRequest.md
 docs/BillingApi.md
 docs/BillingInvoiceDetail.md
@@ -549,11 +540,6 @@ docs/ChargeInvoiceRowsInvoicesValue.md
 docs/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.md
 docs/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.md
 docs/CloseTicketResponseSchema.md
-docs/ConfigIds.md
-docs/ConfigLists.md
-docs/ControlPanel.md
-docs/Cpu.md
-docs/CpuWithDefaults.md
 docs/CreateFilter.md
 docs/CreateFilter201Response.md
 docs/CreateFilter400Response.md
@@ -570,6 +556,7 @@ docs/DeleteFilter400Response.md
 docs/DeleteFilter500Response.md
 docs/DeleteFirewallRule.md
 docs/DeleteGeoFirewallRule.md
+docs/DeleteMailAlertRequest.md
 docs/DenyRuleNew.md
 docs/DenyRuleRecord.md
 docs/DisableScrub200Response.md
@@ -600,11 +587,11 @@ docs/DomainNameserverGetResponseInner.md
 docs/DomainNameserverPostRequest.md
 docs/DomainNameserverPutRequest.md
 docs/DomainOrder.md
+docs/DomainOrderRequest.md
 docs/DomainOrderResponse.md
 docs/DomainOrderResponseAttributes.md
 docs/DomainOrderServices.md
 docs/DomainOrderServices10001.md
-docs/DomainOrderTldServices.md
 docs/DomainOwnerContact.md
 docs/DomainProvProcessPending.md
 docs/DomainProvProcessPendingAttributes.md
@@ -621,13 +608,14 @@ docs/EmailAddress.md
 docs/EmailAddressName.md
 docs/EnableScrub200Response.md
 docs/EnableScrub500Response.md
-docs/FieldLabel.md
 docs/FloatingIPsApi.md
+docs/FloatingIpOrderRequest.md
 docs/FloatingIpsCancel200Response.md
-docs/FormValues.md
 docs/GenericResponse.md
 docs/GetAccountInfo401Response.md
+docs/GetAccountLocales200ResponseValue.md
 docs/GetAccountTfaSetup200Response.md
+docs/GetAffiliateSignups200Response.md
 docs/GetOauthRedirect200Response.md
 docs/GetOrderDetail200Response.md
 docs/GetOrderDetail200ResponseIpsInner.md
@@ -644,7 +632,6 @@ docs/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.md
 docs/GetScrubIpDetails200ResponseFilterFirewallRulesInner.md
 docs/GetScrubIpDetails200ResponseServiceInfo.md
 docs/GetWebsiteBuyIp200Response.md
-docs/HardDrive.md
 docs/Home.md
 docs/HomeDetails.md
 docs/HomeDetailsModules.md
@@ -671,10 +658,6 @@ docs/HomeTicketStatus.md
 docs/HomeTicketStatusView.md
 docs/HostnameObject.md
 docs/InitiatePayment200Response.md
-docs/InlineObject.md
-docs/Invoice.md
-docs/InvoiceRow.md
-docs/IpBlock.md
 docs/IpLimitRange.md
 docs/IpObject.md
 docs/License.md
@@ -683,6 +666,7 @@ docs/LicenseClientLink.md
 docs/LicenseExtraInfoTables.md
 docs/LicenseIpInfo.md
 docs/LicenseIpInfoRow.md
+docs/LicenseOrderRequest.md
 docs/LicenseRow.md
 docs/LicenseServiceInfo.md
 docs/LicenseServiceType.md
@@ -721,6 +705,7 @@ docs/MailExtraInfoTableRow.md
 docs/MailLog.md
 docs/MailLogEntry.md
 docs/MailOrder.md
+docs/MailOrderRequest.md
 docs/MailRow.md
 docs/MailSchema.md
 docs/MailSchemaExtraInfoTables.md
@@ -733,15 +718,13 @@ docs/MailStatsTypeVolumeIp.md
 docs/MailStatsTypeVolumeTo.md
 docs/MailTutorialsTable.md
 docs/MailTutorialsTableRow.md
-docs/MemoryOption.md
 docs/ModuleSettings.md
 docs/Modules.md
 docs/MonthlyCounts.md
-docs/OperatingSystem.md
 docs/PasswordRequest.md
+docs/PatchBillingCreditCardVerifyRequest.md
 docs/PatchOauthTwoFactor200Response.md
 docs/PatchOauthTwoFactorRequest.md
-docs/PaymentInvoiceRows.md
 docs/PlaceBuyNowServerRequest.md
 docs/PlaceScrubOrder201Response.md
 docs/PlaceScrubOrder201ResponseOrderDetails.md
@@ -753,6 +736,8 @@ docs/PostWebsiteBuyIpRequest.md
 docs/PostWebsiteMigration200Response.md
 docs/PostWebsiteMigrationRequest.md
 docs/PublicApi.md
+docs/PutScrubIps200Response.md
+docs/QsOrderRequest.md
 docs/QueueResponse.md
 docs/QuickServersApi.md
 docs/Quickserver.md
@@ -777,8 +762,6 @@ docs/QuickserverServiceExtra.md
 docs/QuickserverServiceInfo.md
 docs/QuickserverServiceMaster.md
 docs/QuickserversCancel200Response.md
-docs/RaidOption.md
-docs/Region.md
 docs/ReplyTicketRequest.md
 docs/ReplyTicketResponseSchema.md
 docs/RestoreRequest.md
@@ -800,6 +783,8 @@ docs/Server.md
 docs/ServerAsset.md
 docs/ServerAssets.md
 docs/ServerBillingDetails.md
+docs/ServerBulkIpmiPowerResponse.md
+docs/ServerBulkIpmiPowerResponseResultsInner.md
 docs/ServerClientLink.md
 docs/ServerExtraInfoTables.md
 docs/ServerIpmiLiveInfo.md
@@ -822,7 +807,6 @@ docs/ServerOrderCpuLi.md
 docs/ServerOrderFieldLabel.md
 docs/ServerOrderFieldLabels.md
 docs/ServerOrderFormValues.md
-docs/ServerOrderGetResponse.md
 docs/ServerOrderIP.md
 docs/ServerOrderIpsLi.md
 docs/ServerOrderMemory.md
@@ -830,6 +814,8 @@ docs/ServerOrderMemoryLi.md
 docs/ServerOrderMemoryLi254.md
 docs/ServerOrderOS.md
 docs/ServerOrderOsLi.md
+docs/ServerOrderPostRequest.md
+docs/ServerOrderPostRequestHd.md
 docs/ServerOrderRAID.md
 docs/ServerRow.md
 docs/ServerServiceInfo.md
@@ -848,6 +834,7 @@ docs/ServiceTypes.md
 docs/Services.md
 docs/ServicesInfo.md
 docs/SslCancel200Response.md
+docs/SslOrderRequest.md
 docs/StatusMonthlyBreakdown.md
 docs/SuccessTextResponse.md
 docs/TemplateRequest.md
@@ -910,7 +897,6 @@ docs/VpsServiceMaster.md
 docs/VpsSnapshot.md
 docs/VpsTemplateRow.md
 docs/VpsTemplatesList.md
-docs/VpsTrafficDataDataResponse.md
 docs/VpsTrafficDataSectionResponse.md
 docs/VpsTrafficHistoryResponse.md
 docs/VpsTrafficHistorySectionDataResponse.md
@@ -930,6 +916,8 @@ docs/WebsiteBillingDetails.md
 docs/WebsiteClientLink.md
 docs/WebsiteExtraInfoTables.md
 docs/WebsiteLoginResponse.md
+docs/WebsiteOrderPostRequest.md
+docs/WebsiteOrderPutRequest.md
 docs/WebsiteRow.md
 docs/WebsiteServiceInfo.md
 docs/WebsiteServiceMaster.md
@@ -972,8 +960,6 @@ tests/testthat/test_affiliate_banner_row.R
 tests/testthat/test_affiliate_dock_setup.R
 tests/testthat/test_affiliate_payment_setup.R
 tests/testthat/test_affiliate_traffic_row.R
-tests/testthat/test_asset_server.R
-tests/testthat/test_asset_server_cpu_inner.R
 tests/testthat/test_backup.R
 tests/testthat/test_backup_billing_details.R
 tests/testthat/test_backup_client_link.R
@@ -992,7 +978,6 @@ tests/testthat/test_backups_api.R
 tests/testthat/test_backups_order.R
 tests/testthat/test_backups_order_package_costs.R
 tests/testthat/test_backups_order_service_types.R
-tests/testthat/test_bandwidth.R
 tests/testthat/test_billing_add_cc_request.R
 tests/testthat/test_billing_api.R
 tests/testthat/test_billing_invoice_detail.R
@@ -1019,11 +1004,6 @@ tests/testthat/test_charge_invoice_rows_invoices_value.R
 tests/testthat/test_charge_invoice_rows_invoices_value_paid_invoices_value.R
 tests/testthat/test_charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.R
 tests/testthat/test_close_ticket_response_schema.R
-tests/testthat/test_config_ids.R
-tests/testthat/test_config_lists.R
-tests/testthat/test_control_panel.R
-tests/testthat/test_cpu.R
-tests/testthat/test_cpu_with_defaults.R
 tests/testthat/test_create_filter.R
 tests/testthat/test_create_filter201_response.R
 tests/testthat/test_create_filter400_response.R
@@ -1039,6 +1019,7 @@ tests/testthat/test_delete_filter400_response.R
 tests/testthat/test_delete_filter500_response.R
 tests/testthat/test_delete_firewall_rule.R
 tests/testthat/test_delete_geo_firewall_rule.R
+tests/testthat/test_delete_mail_alert_request.R
 tests/testthat/test_deny_rule_new.R
 tests/testthat/test_deny_rule_record.R
 tests/testthat/test_disable_scrub200_response.R
@@ -1070,11 +1051,11 @@ tests/testthat/test_domain_nameserver_get_response_inner.R
 tests/testthat/test_domain_nameserver_post_request.R
 tests/testthat/test_domain_nameserver_put_request.R
 tests/testthat/test_domain_order.R
+tests/testthat/test_domain_order_request.R
 tests/testthat/test_domain_order_response.R
 tests/testthat/test_domain_order_response_attributes.R
 tests/testthat/test_domain_order_services.R
 tests/testthat/test_domain_order_services10001.R
-tests/testthat/test_domain_order_tld_services.R
 tests/testthat/test_domain_owner_contact.R
 tests/testthat/test_domain_prov_process_pending.R
 tests/testthat/test_domain_prov_process_pending_attributes.R
@@ -1091,13 +1072,14 @@ tests/testthat/test_email_address.R
 tests/testthat/test_email_address_name.R
 tests/testthat/test_enable_scrub200_response.R
 tests/testthat/test_enable_scrub500_response.R
-tests/testthat/test_field_label.R
+tests/testthat/test_floating_ip_order_request.R
 tests/testthat/test_floating_ips_api.R
 tests/testthat/test_floating_ips_cancel200_response.R
-tests/testthat/test_form_values.R
 tests/testthat/test_generic_response.R
 tests/testthat/test_get_account_info401_response.R
+tests/testthat/test_get_account_locales200_response_value.R
 tests/testthat/test_get_account_tfa_setup200_response.R
+tests/testthat/test_get_affiliate_signups200_response.R
 tests/testthat/test_get_oauth_redirect200_response.R
 tests/testthat/test_get_order_detail200_response.R
 tests/testthat/test_get_order_detail200_response_ips_inner.R
@@ -1114,7 +1096,6 @@ tests/testthat/test_get_scrub_ip_details200_response_filter_firewall_filters_inn
 tests/testthat/test_get_scrub_ip_details200_response_filter_firewall_rules_inner.R
 tests/testthat/test_get_scrub_ip_details200_response_service_info.R
 tests/testthat/test_get_website_buy_ip200_response.R
-tests/testthat/test_hard_drive.R
 tests/testthat/test_home.R
 tests/testthat/test_home_details.R
 tests/testthat/test_home_details_modules.R
@@ -1141,10 +1122,6 @@ tests/testthat/test_home_ticket_status.R
 tests/testthat/test_home_ticket_status_view.R
 tests/testthat/test_hostname_object.R
 tests/testthat/test_initiate_payment200_response.R
-tests/testthat/test_inline_object.R
-tests/testthat/test_invoice.R
-tests/testthat/test_invoice_row.R
-tests/testthat/test_ip_block.R
 tests/testthat/test_ip_limit_range.R
 tests/testthat/test_ip_object.R
 tests/testthat/test_license.R
@@ -1153,6 +1130,7 @@ tests/testthat/test_license_client_link.R
 tests/testthat/test_license_extra_info_tables.R
 tests/testthat/test_license_ip_info.R
 tests/testthat/test_license_ip_info_row.R
+tests/testthat/test_license_order_request.R
 tests/testthat/test_license_row.R
 tests/testthat/test_license_service_info.R
 tests/testthat/test_license_service_type.R
@@ -1191,6 +1169,7 @@ tests/testthat/test_mail_extra_info_table_row.R
 tests/testthat/test_mail_log.R
 tests/testthat/test_mail_log_entry.R
 tests/testthat/test_mail_order.R
+tests/testthat/test_mail_order_request.R
 tests/testthat/test_mail_row.R
 tests/testthat/test_mail_schema.R
 tests/testthat/test_mail_schema_extra_info_tables.R
@@ -1203,15 +1182,13 @@ tests/testthat/test_mail_stats_type_volume_ip.R
 tests/testthat/test_mail_stats_type_volume_to.R
 tests/testthat/test_mail_tutorials_table.R
 tests/testthat/test_mail_tutorials_table_row.R
-tests/testthat/test_memory_option.R
 tests/testthat/test_module_settings.R
 tests/testthat/test_modules.R
 tests/testthat/test_monthly_counts.R
-tests/testthat/test_operating_system.R
 tests/testthat/test_password_request.R
+tests/testthat/test_patch_billing_credit_card_verify_request.R
 tests/testthat/test_patch_oauth_two_factor200_response.R
 tests/testthat/test_patch_oauth_two_factor_request.R
-tests/testthat/test_payment_invoice_rows.R
 tests/testthat/test_place_buy_now_server_request.R
 tests/testthat/test_place_scrub_order201_response.R
 tests/testthat/test_place_scrub_order201_response_order_details.R
@@ -1223,6 +1200,8 @@ tests/testthat/test_post_website_buy_ip_request.R
 tests/testthat/test_post_website_migration200_response.R
 tests/testthat/test_post_website_migration_request.R
 tests/testthat/test_public_api.R
+tests/testthat/test_put_scrub_ips200_response.R
+tests/testthat/test_qs_order_request.R
 tests/testthat/test_queue_response.R
 tests/testthat/test_quick_servers_api.R
 tests/testthat/test_quickserver.R
@@ -1247,8 +1226,6 @@ tests/testthat/test_quickserver_service_extra.R
 tests/testthat/test_quickserver_service_info.R
 tests/testthat/test_quickserver_service_master.R
 tests/testthat/test_quickservers_cancel200_response.R
-tests/testthat/test_raid_option.R
-tests/testthat/test_region.R
 tests/testthat/test_reply_ticket_request.R
 tests/testthat/test_reply_ticket_response_schema.R
 tests/testthat/test_restore_request.R
@@ -1269,6 +1246,8 @@ tests/testthat/test_server.R
 tests/testthat/test_server_asset.R
 tests/testthat/test_server_assets.R
 tests/testthat/test_server_billing_details.R
+tests/testthat/test_server_bulk_ipmi_power_response.R
+tests/testthat/test_server_bulk_ipmi_power_response_results_inner.R
 tests/testthat/test_server_client_link.R
 tests/testthat/test_server_extra_info_tables.R
 tests/testthat/test_server_ipmi_live_info.R
@@ -1291,7 +1270,6 @@ tests/testthat/test_server_order_cpu_li.R
 tests/testthat/test_server_order_field_label.R
 tests/testthat/test_server_order_field_labels.R
 tests/testthat/test_server_order_form_values.R
-tests/testthat/test_server_order_get_response.R
 tests/testthat/test_server_order_ip.R
 tests/testthat/test_server_order_ips_li.R
 tests/testthat/test_server_order_memory.R
@@ -1299,6 +1277,8 @@ tests/testthat/test_server_order_memory_li.R
 tests/testthat/test_server_order_memory_li254.R
 tests/testthat/test_server_order_os.R
 tests/testthat/test_server_order_os_li.R
+tests/testthat/test_server_order_post_request.R
+tests/testthat/test_server_order_post_request_hd.R
 tests/testthat/test_server_order_raid.R
 tests/testthat/test_server_row.R
 tests/testthat/test_server_service_info.R
@@ -1318,6 +1298,7 @@ tests/testthat/test_services.R
 tests/testthat/test_services_info.R
 tests/testthat/test_ssl_cancel200_response.R
 tests/testthat/test_ssl_certificates_api.R
+tests/testthat/test_ssl_order_request.R
 tests/testthat/test_status_monthly_breakdown.R
 tests/testthat/test_success_text_response.R
 tests/testthat/test_template_request.R
@@ -1378,7 +1359,6 @@ tests/testthat/test_vps_service_master.R
 tests/testthat/test_vps_snapshot.R
 tests/testthat/test_vps_template_row.R
 tests/testthat/test_vps_templates_list.R
-tests/testthat/test_vps_traffic_data_data_response.R
 tests/testthat/test_vps_traffic_data_data_section_response.R
 tests/testthat/test_vps_traffic_data_data_section_response_inner.R
 tests/testthat/test_vps_traffic_data_section_response.R
@@ -1400,6 +1380,8 @@ tests/testthat/test_website_billing_details.R
 tests/testthat/test_website_client_link.R
 tests/testthat/test_website_extra_info_tables.R
 tests/testthat/test_website_login_response.R
+tests/testthat/test_website_order_post_request.R
+tests/testthat/test_website_order_put_request.R
 tests/testthat/test_website_row.R
 tests/testthat/test_website_service_info.R
 tests/testthat/test_website_service_master.R

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BackupExtraInfoTables } from './api';
+import { BackupExtraInfoTables } from '@interserver/myadmin-client';
 
 const instance: BackupExtraInfoTables = {
     ip_info,

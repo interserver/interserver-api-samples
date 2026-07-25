@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AffiliatePaymentSetup
+# InterServerAPI::Object::AffiliatePaymentSetup
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AffiliatePaymentSetup;
+use InterServerAPI::Object::AffiliatePaymentSetup;
 ```
 
 ## Properties

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.post_oauth_callback200_response import PostOauthCallback200Response
+from interserver_api_client.models.post_oauth_callback200_response import PostOauthCallback200Response
 
 # TODO update the JSON string below
 json = "{}"

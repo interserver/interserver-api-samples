@@ -1,4 +1,4 @@
-# openapi::DomainNameserverGetResponseInner
+# interserverapi::DomainNameserverGetResponseInner
 
 
 ## Properties

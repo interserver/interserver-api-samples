@@ -94,7 +94,7 @@ public class DomainLookupResponse  {
    * @return available
   **/
   @JsonProperty("available")
-  public Boolean getAvailable() {
+  public Boolean isAvailable() {
     return available;
   }
 
@@ -112,7 +112,7 @@ public class DomainLookupResponse  {
    * @return premium
   **/
   @JsonProperty("premium")
-  public Boolean getPremium() {
+  public Boolean isPremium() {
     return premium;
   }
 
@@ -130,7 +130,7 @@ public class DomainLookupResponse  {
    * @return website
   **/
   @JsonProperty("website")
-  public Boolean getWebsite() {
+  public Boolean isWebsite() {
     return website;
   }
 
@@ -148,7 +148,7 @@ public class DomainLookupResponse  {
    * @return domainService
   **/
   @JsonProperty("domain_service")
-  public Boolean getDomainService() {
+  public Boolean isDomainService() {
     return domainService;
   }
 
@@ -184,7 +184,7 @@ public class DomainLookupResponse  {
    * @return whoisPrivacy
   **/
   @JsonProperty("whois_privacy")
-  public Boolean getWhoisPrivacy() {
+  public Boolean isWhoisPrivacy() {
     return whoisPrivacy;
   }
 

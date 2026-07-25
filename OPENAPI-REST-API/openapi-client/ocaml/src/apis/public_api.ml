@@ -5,6 +5,24 @@
  *
  *)
 
+let get_account_currencies () =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/account/currencies" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
+    Request.read_json_body_as_list_of (JsonSupport.to_string) resp body
+
+let get_account_locales () =
+    let open Lwt.Infix in
+    let uri = Request.build_uri "/account/locales" in
+    let headers = Request.default_headers in
+    let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
+    let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
+    Cohttp_lwt_unix.Client.call `GET uri ~headers >>= fun (resp, body) ->
+    Request.read_json_body_as_map_of (JsonSupport.unwrap Get_account_locales_200_response_value.of_yojson) resp body
+
 let get_captcha () =
     let open Lwt.Infix in
     let uri = Request.build_uri "/captcha" in

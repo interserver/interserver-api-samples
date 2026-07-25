@@ -14,34 +14,12 @@
 #'
 #' @examples
 #' \dontrun{
-#' ####################  ChangeAccountUsername  ####################
-#'
-#' library(openapi)
-#'
-#' #Change Account Username
-#' api_instance <- AccountApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$ChangeAccountUsername(data_file = "result.txt")
-#' result <- api_instance$ChangeAccountUsername()
-#' dput(result)
-#'
-#'
 #' ####################  DeleteAccountOauthName  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_name <- "name_example" # character | 
 #'
-#' #Unlink OAuth Account
+#' #Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -61,9 +39,9 @@
 #'
 #' ####################  DeleteAccountTfa  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Disable Two-Factor Authentication
+#' #Disable two-factor authentication and remove the TOTP secret
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -83,10 +61,10 @@
 #'
 #' ####################  DeleteIpLimit  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_ip_limit_range <- IpLimitRange$new("start_example", "end_example") # IpLimitRange |  (Optional)
 #'
-#' #Remove IP Access Restriction
+#' #Remove one IP range from the account allow-list (PATCH on /account/iplimits)
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -106,9 +84,9 @@
 #'
 #' ####################  GetAccountInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Retrieve Account Details
+#' #Read full account profile, billing address, and security settings
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -128,9 +106,9 @@
 #'
 #' ####################  GetAccountTfaSetup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Two-Factor Setup Data
+#' #Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -150,9 +128,9 @@
 #'
 #' ####################  GetHome  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Home Data
+#' #Aggregate dashboard payload — service counts, recent activity, alerts
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -172,9 +150,9 @@
 #'
 #' ####################  GetSearch  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Search Autocomplete
+#' #Global autocomplete across the caller's services, domains, and records
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -194,9 +172,9 @@
 #'
 #' ####################  Logout  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Log Out
+#' #Destroy the current API/web session — token becomes unusable
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -216,10 +194,10 @@
 #'
 #' ####################  LogoutAccountOauth  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_name <- "name_example" # character | 
 #'
-#' #Logout of OAuth
+#' #Sign out of the upstream OAuth provider session (does not unlink the account)
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -239,9 +217,9 @@
 #'
 #' ####################  UpdateAccountApiKey  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Generate New API Key
+#' #Rotate the account's REST/MCP API key — old key is invalidated immediately
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -261,11 +239,11 @@
 #'
 #' ####################  UpdateAccountFeatures  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_disable_reset <- 56 # integer |  (Optional)
 #' var_disable_reinstall <- 56 # integer |  (Optional)
 #'
-#' #Update Account Feature Flags
+#' #Toggle account-wide safety locks for password reset and OS reinstall
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -285,7 +263,7 @@
 #'
 #' ####################  UpdateAccountInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_name <- "name_example" # character | Your name.
 #' var_address <- "address_example" # character | Your address.
 #' var_city <- "city_example" # character | Your city.
@@ -304,7 +282,7 @@
 #' var_disable_email_notifications <- "disable_email_notifications_example" # character | Set to `true` to disable email notifications, or `false` to enable them. (Optional)
 #' var_gstin <- "gstin_example" # character | Your GST identification number (if applicable). (Optional)
 #'
-#' #Update Account Information
+#' #Update contact and billing-address fields on the customer profile
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -324,11 +302,11 @@
 #'
 #' ####################  UpdateAccountIpLimits  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_start <- "start_example" # character | The begining (or first) IP address in the range.
 #' var_end <- "end_example" # character | The ending (or last) IP address in the range.
 #'
-#' #Add IP Access Restriction
+#' #Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -348,10 +326,10 @@
 #'
 #' ####################  UpdateAccountPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_password <- "password_example" # character | 
 #'
-#' #Change Account Password
+#' #Change the account login password (verifies current, kills other sessions)
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -371,10 +349,10 @@
 #'
 #' ####################  UpdateAccountSshKey  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_ssh_key <- "ssh_key_example" # character |  (Optional)
 #'
-#' #Update SSH Keys
+#' #Set the account-level SSH public key auto-installed on new VPS/dedicated orders
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -394,10 +372,10 @@
 #'
 #' ####################  UpdateAccountTfa  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_var_2fa_google_code <- "var_2fa_google_code_example" # character | The 6-digit verification code from your authenticator app.
 #'
-#' #Enable Two-Factor Authentication
+#' #Verify TOTP code and enable two-factor authentication on the account
 #' api_instance <- AccountApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -437,113 +415,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Account Username
-    #'
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return TextResponse
-    ChangeAccountUsername = function(data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$ChangeAccountUsernameWithHttpInfo(data_file = data_file, ..., .parse = .parse)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Change Account Username
-    #'
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return API response (TextResponse) with additional information such as HTTP status code, headers
-    ChangeAccountUsernameWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      local_var_url_path <- "/account/username"
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-        if (!.parse) {
-          local_var_resp$content <- local_var_resp$response_as_text()
-          return(local_var_resp)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "TextResponse"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Unlink OAuth Account
+    #' Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
     #'
     #' @param name 
     #' @param data_file (optional) name of the data file to save the result
@@ -565,7 +437,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Unlink OAuth Account
+    #' Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
     #'
     #' @param name 
     #' @param data_file (optional) name of the data file to save the result
@@ -663,7 +535,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable Two-Factor Authentication
+    #' Disable two-factor authentication and remove the TOTP secret
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -684,7 +556,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable Two-Factor Authentication
+    #' Disable two-factor authentication and remove the TOTP secret
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -769,7 +641,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Remove IP Access Restriction
+    #' Remove one IP range from the account allow-list (PATCH on /account/iplimits)
     #'
     #' @param ip_limit_range (optional) No description
     #' @param data_file (optional) name of the data file to save the result
@@ -791,7 +663,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Remove IP Access Restriction
+    #' Remove one IP range from the account allow-list (PATCH on /account/iplimits)
     #'
     #' @param ip_limit_range (optional) No description
     #' @param data_file (optional) name of the data file to save the result
@@ -887,7 +759,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Retrieve Account Details
+    #' Read full account profile, billing address, and security settings
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -908,7 +780,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Retrieve Account Details
+    #' Read full account profile, billing address, and security settings
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -993,7 +865,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Two-Factor Setup Data
+    #' Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1014,7 +886,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Two-Factor Setup Data
+    #' Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1099,7 +971,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Home Data
+    #' Aggregate dashboard payload — service counts, recent activity, alerts
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1120,7 +992,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Home Data
+    #' Aggregate dashboard payload — service counts, recent activity, alerts
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1205,7 +1077,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Search Autocomplete
+    #' Global autocomplete across the caller's services, domains, and records
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1226,7 +1098,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Search Autocomplete
+    #' Global autocomplete across the caller's services, domains, and records
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1311,7 +1183,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Log Out
+    #' Destroy the current API/web session — token becomes unusable
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1332,7 +1204,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Log Out
+    #' Destroy the current API/web session — token becomes unusable
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1417,7 +1289,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Logout of OAuth
+    #' Sign out of the upstream OAuth provider session (does not unlink the account)
     #'
     #' @param name 
     #' @param data_file (optional) name of the data file to save the result
@@ -1439,7 +1311,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Logout of OAuth
+    #' Sign out of the upstream OAuth provider session (does not unlink the account)
     #'
     #' @param name 
     #' @param data_file (optional) name of the data file to save the result
@@ -1537,7 +1409,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Generate New API Key
+    #' Rotate the account's REST/MCP API key — old key is invalidated immediately
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1558,7 +1430,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Generate New API Key
+    #' Rotate the account's REST/MCP API key — old key is invalidated immediately
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1643,7 +1515,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Account Feature Flags
+    #' Toggle account-wide safety locks for password reset and OS reinstall
     #'
     #' @param disable_reset (optional) No description
     #' @param disable_reinstall (optional) No description
@@ -1666,7 +1538,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Account Feature Flags
+    #' Toggle account-wide safety locks for password reset and OS reinstall
     #'
     #' @param disable_reset (optional) No description
     #' @param disable_reinstall (optional) No description
@@ -1763,7 +1635,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Account Information
+    #' Update contact and billing-address fields on the customer profile
     #'
     #' @param name Your name.
     #' @param address Your address.
@@ -1801,7 +1673,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Account Information
+    #' Update contact and billing-address fields on the customer profile
     #'
     #' @param name Your name.
     #' @param address Your address.
@@ -2016,7 +1888,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Add IP Access Restriction
+    #' Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
     #'
     #' @param start The begining (or first) IP address in the range.
     #' @param end The ending (or last) IP address in the range.
@@ -2039,7 +1911,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Add IP Access Restriction
+    #' Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
     #'
     #' @param start The begining (or first) IP address in the range.
     #' @param end The ending (or last) IP address in the range.
@@ -2144,7 +2016,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Account Password
+    #' Change the account login password (verifies current, kills other sessions)
     #'
     #' @param password 
     #' @param data_file (optional) name of the data file to save the result
@@ -2166,7 +2038,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Account Password
+    #' Change the account login password (verifies current, kills other sessions)
     #'
     #' @param password 
     #' @param data_file (optional) name of the data file to save the result
@@ -2261,7 +2133,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update SSH Keys
+    #' Set the account-level SSH public key auto-installed on new VPS/dedicated orders
     #'
     #' @param ssh_key (optional) No description
     #' @param data_file (optional) name of the data file to save the result
@@ -2283,7 +2155,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update SSH Keys
+    #' Set the account-level SSH public key auto-installed on new VPS/dedicated orders
     #'
     #' @param ssh_key (optional) No description
     #' @param data_file (optional) name of the data file to save the result
@@ -2374,7 +2246,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Enable Two-Factor Authentication
+    #' Verify TOTP code and enable two-factor authentication on the account
     #'
     #' @param var_2fa_google_code The 6-digit verification code from your authenticator app.
     #' @param data_file (optional) name of the data file to save the result
@@ -2396,7 +2268,7 @@ AccountApi <- R6::R6Class(
     },
 
     #' @description
-    #' Enable Two-Factor Authentication
+    #' Verify TOTP code and enable two-factor authentication on the account
     #'
     #' @param var_2fa_google_code The 6-digit verification code from your authenticator app.
     #' @param data_file (optional) name of the data file to save the result

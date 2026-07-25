@@ -413,27 +413,6 @@ export interface AffiliateTrafficRow {
 
 
 /**
- * A pre-configured asset server available for immediate provisioning.
- */
-export interface AssetServer {
-  id?: number;
-  Region?: string;
-  price?: string;
-  CPU?: Array<AssetServerCPUInner>;
-  Memory?: Array<AssetServerCPUInner>;
-  Bandwidth?: Array<AssetServerCPUInner>;
-  IPs?: Array<AssetServerCPUInner>;
-  HD?: { [key: string]: string; };
-}
-
-/**
- * @type AssetServerCPUInner
- * @export
- */
-export type AssetServerCPUInner = object | string;
-
-
-/**
  * Full detail view of a backup service including billing, service info, and configuration.
  */
 export interface Backup {
@@ -803,17 +782,6 @@ export interface BackupsOrderServiceTypes {
 
 
 /**
- * A bandwidth option available for a dedicated server configuration.
- */
-export interface Bandwidth {
-  id?: number;
-  short_desc?: string;
-  monthly_price?: number;
-  monthly_price_display?: string;
-}
-
-
-/**
  * Request to add a new creditcard into the system.
  */
 export interface BillingAddCcRequest {
@@ -1114,114 +1082,6 @@ export interface CloseTicketResponseSchema {
 
 
 /**
- * Internal configuration IDs mapped from the selected form values for a server order.
- */
-export interface ConfigIds {
-  /**
-   * Configuration ID for the selected memory option.
-   */
-  memory?: number;
-  /**
-   * Configuration ID for the selected hard drive option.
-   */
-  hd?: number;
-  /**
-   * Configuration ID for the selected bandwidth option.
-   */
-  bandwidth?: number;
-  /**
-   * Configuration ID for the selected IP block option.
-   */
-  ips?: number;
-  /**
-   * Configuration ID for the selected operating system.
-   */
-  os?: number;
-  /**
-   * Configuration ID for the selected control panel.
-   */
-  cp?: number;
-  /**
-   * Configuration ID for the selected RAID option.
-   */
-  raid?: number;
-}
-
-
-/**
- * All available configuration options (CPU, memory, storage, bandwidth, OS, control panel, RAID) for building a dedicated server order.
- */
-export interface ConfigLists {
-  cpu_li?: { [key: string]: Cpu; };
-  memory_li?: { [key: string]: { [key: string]: MemoryOption; }; };
-  hd_li?: { [key: string]: { [key: string]: HardDrive; }; };
-  bandwidth_li?: { [key: string]: Bandwidth; };
-  ips_li?: { [key: string]: IpBlock; };
-  os_li?: { [key: string]: OperatingSystem; };
-  cp_li?: { [key: string]: ControlPanel; };
-  raid_li?: Array<RaidOption>;
-}
-
-
-/**
- * A hosting control panel option (e.g., cPanel, Plesk) available for server provisioning.
- */
-export interface ControlPanel {
-  id?: number;
-  short_desc?: string;
-  monthly_price?: number;
-}
-
-
-/**
- * A CPU option available for dedicated server ordering.
- */
-export interface Cpu {
-  id?: number;
-  short_desc?: string;
-  long_desc?: string;
-  type?: string;
-  speed?: string;
-  num_cores?: string;
-  num_cpus?: string;
-  benchmark?: string;
-  monthly_price?: number;
-  monthly_price_display?: string;
-  max_ram?: string;
-  min_ram?: string;
-  max_lff?: string;
-  max_sff?: string;
-  max_nve?: string;
-  visible?: string;
-  active?: string;
-}
-
-
-export interface CpuWithDefaults {
-  id?: number;
-  short_desc?: string;
-  long_desc?: string;
-  type?: string;
-  speed?: string;
-  num_cores?: string;
-  num_cpus?: string;
-  benchmark?: string;
-  monthly_price?: number;
-  monthly_price_display?: string;
-  max_ram?: string;
-  min_ram?: string;
-  max_lff?: string;
-  max_sff?: string;
-  max_nve?: string;
-  visible?: string;
-  active?: string;
-  memory_det?: MemoryOption;
-  hd_det?: HardDrive;
-  monthly_fee?: string;
-}
-
-
-/**
  * Create firewall rule for your ip
  */
 export interface CreateFilter {
@@ -1362,6 +1222,14 @@ export interface DeleteFirewallRule {
  */
 export interface DeleteGeoFirewallRule {
   rule_id: number;
+}
+
+
+export interface DeleteMailAlertRequest {
+  /**
+   * The ID of the alert to delete.
+   */
+  alert_id: number;
 }
 
 
@@ -1926,6 +1794,39 @@ export interface DomainOrder {
 
 
 /**
+ * Request body for the domain order flow: putDomains (returns required fields), patchDomains (validates fields), addDomain (places the order). The TLD is resolved from hostname. Per-TLD registrant/contact fields returned by putDomains may be supplied as additional properties on patchDomains/addDomain.
+ */
+export interface DomainOrderRequest extends any {
+  /**
+   * Fully-qualified domain to register or transfer (e.g. example.com).
+   */
+  hostname: string;
+  /**
+   * Order type.
+   */
+  type?: DomainOrderRequestTypeEnum;
+  /**
+   * Coupon code (addDomain only).
+   */
+  coupon?: string;
+  /**
+   * Set to \"enable\" to add Whois privacy (addDomain only).
+   */
+  whois_privacy?: DomainOrderRequestWhoisPrivacyEnum;
+}
+
+/**
+ * Enum for the type property.
+ */
+export type DomainOrderRequestTypeEnum = 'register' | 'transfer';
+
+/**
+ * Enum for the whois_privacy property.
+ */
+export type DomainOrderRequestWhoisPrivacyEnum = 'enable' | 'disable';
+
+
+/**
  * Registrar response metadata returned after a domain order.
  */
 export interface DomainOrderResponse {
@@ -2008,29 +1909,6 @@ export interface DomainOrderServices10001 {
    * Hidden flag for Service
    */
   services_hidden?: string;
-}
-
-
-/**
- * Example map of TLDs to service IDs for domain ordering.
- */
-export interface DomainOrderTldServices {
-  /**
-   * Service ID for .asia TLD
-   */
-  _asia?: number;
-  /**
-   * Service ID for .be TLD
-   */
-  _be?: number;
-  /**
-   * Service ID for .biz TLD
-   */
-  _biz?: number;
-  /**
-   * Service ID for .ca TLD
-   */
-  _ca?: number;
 }
 
 
@@ -2304,56 +2182,27 @@ export interface EnableScrub500Response {
 
 
 /**
- * A display label for a server order form field.
+ * Request body to validate (putFloating_ips) or place (addFloatingIp) a floating IP order. Service type ids come from getNewFloatingIp.serviceTypes.
  */
-export interface FieldLabel {
-  name?: string;
-  active?: number;
+export interface FloatingIpOrderRequest {
+  /**
+   * Floating IP plan service type id from getNewFloatingIp.serviceTypes (must be buyable).
+   */
+  serviceType: number;
+  /**
+   * Coupon code.
+   */
+  coupon?: string;
+  /**
+   * Free-form note saved on the service row (used on addFloatingIp).
+   */
+  comment?: string;
 }
 
 
 export interface FloatingIpsCancel200Response {
   success: boolean;
   text: string;
-}
-
-
-/**
- * Currently selected configuration option IDs for a server order form.
- */
-export interface FormValues {
-  /**
-   * Selected memory option ID.
-   */
-  memory?: number;
-  /**
-   * Selected bandwidth option ID.
-   */
-  bandwidth?: number;
-  /**
-   * Selected IP block option ID.
-   */
-  ips?: number;
-  /**
-   * Selected operating system option ID.
-   */
-  os?: number;
-  /**
-   * Selected control panel option ID.
-   */
-  cp?: number;
-  /**
-   * Selected RAID option ID.
-   */
-  raid?: number;
-  /**
-   * Selected hard drive option ID.
-   */
-  hd?: number;
-  /**
-   * Selected datacenter region ID.
-   */
-  region?: number;
 }
 
 
@@ -2372,6 +2221,18 @@ export interface GetAccountInfo401Response {
 }
 
 
+export interface GetAccountLocales200ResponseValue {
+  /**
+   * English display name of the locale.
+   */
+  name?: string;
+  /**
+   * Display name of the locale in its own language.
+   */
+  local_name?: string;
+}
+
+
 export interface GetAccountTfaSetup200Response {
   /**
    * Base64-encoded secret key for TOTP setup.
@@ -2381,6 +2242,14 @@ export interface GetAccountTfaSetup200Response {
    * Human-readable formatted key (chunks of 4 characters).
    */
   _2fa_google_split?: string;
+}
+
+
+export interface GetAffiliateSignups200Response {
+  /**
+   * Affiliate signup statistics and client-side data.
+   */
+  data?: object;
 }
 
 
@@ -2529,19 +2398,6 @@ export interface GetWebsiteBuyIp200Response {
    * A map of IP addresses to their current reverse DNS hostnames.
    */
   ips?: { [key: string]: string; };
-}
-
-
-/**
- * A hard drive option available for a dedicated server configuration.
- */
-export interface HardDrive {
-  id?: number;
-  short_desc?: string;
-  size?: string;
-  drive_type?: string;
-  monthly_price?: number;
-  monthly_price_display?: string;
 }
 
 
@@ -3025,35 +2881,6 @@ export interface InitiatePayment200Response {
 export type InitiatePayment200ResponseTypeEnum = 'redirect' | 'submit' | 'single';
 
 
-export interface InlineObject {
-  code: string;
-  message: string;
-}
-
-
-/**
- * An invoice record
- */
-export interface Invoice {
-  id?: number;
-}
-
-
-export interface InvoiceRow extends Array<string> {
-}
-
-
-/**
- * An IP address block option available for a dedicated server configuration.
- */
-export interface IpBlock {
-  id?: number;
-  short_desc?: string;
-  qty?: string;
-  monthly_price?: number;
-}
-
-
 /**
  * The lower and upper bounds of an ip range.
  */
@@ -3221,6 +3048,37 @@ export interface LicenseIpInfoRow {
    * Row value
    */
   value?: string;
+}
+
+
+/**
+ * Request body to validate (putLicenses) or place (addLicense) a license order. Package ids come from getNewLicense.serviceTypes.
+ */
+export interface LicenseOrderRequest {
+  /**
+   * License service type id from getNewLicense.serviceTypes (must be buyable).
+   */
+  _package: number;
+  /**
+   * IP address the license is bound to.
+   */
+  ip: string;
+  /**
+   * Terms-of-service acceptance. Must be true to place the order.
+   */
+  tos: boolean;
+  /**
+   * Billing frequency in months.
+   */
+  frequency?: number;
+  /**
+   * Coupon code.
+   */
+  coupon?: string;
+  /**
+   * Free-form note saved on the service row.
+   */
+  comment?: string;
 }
 
 
@@ -3985,6 +3843,25 @@ export interface MailOrder {
 
 
 /**
+ * Request body to validate (putMail) or place (addMail) a mail order. Service type ids come from getNewMail.serviceTypes.
+ */
+export interface MailOrderRequest {
+  /**
+   * Mail plan service type id from getNewMail.serviceTypes (must be buyable).
+   */
+  serviceType: number;
+  /**
+   * Coupon code.
+   */
+  coupon?: string;
+  /**
+   * Free-form note saved on the service row (used on addMail).
+   */
+  comment?: string;
+}
+
+
+/**
  * A result row from the `Mail` `GET` request.
  */
 export interface MailRow {
@@ -4235,17 +4112,6 @@ export interface MailTutorialsTableRow {
 
 
 /**
- * A memory (RAM) upgrade option available for a dedicated server configuration.
- */
-export interface MemoryOption {
-  id?: number;
-  short_desc?: string;
-  monthly_price?: number;
-  monthly_price_display?: string;
-}
-
-
-/**
  * The settings for a module.
  */
 export interface ModuleSettings {
@@ -4285,20 +4151,18 @@ export interface MonthlyCounts extends number {
 
 
 /**
- * An operating system option available for server provisioning.
- */
-export interface OperatingSystem {
-  id?: number;
-  short_desc?: string;
-  monthly_price?: number;
-}
-
-
-/**
  * Request containing a password
  */
 export interface PasswordRequest {
   password: string;
+}
+
+
+export interface PatchBillingCreditCardVerifyRequest {
+  /**
+   * The CVV/CVC code on the back of the credit card.
+   */
+  cc_ccv2: string;
 }
 
 
@@ -4319,10 +4183,6 @@ export interface PatchOauthTwoFactorRequest {
    * The 6-digit two-factor authentication code.
    */
   code: string;
-}
-
-
-export interface PaymentInvoiceRows extends Array<InvoiceRow> {
 }
 
 
@@ -4481,6 +4341,43 @@ export interface PostWebsiteMigrationRequest {
    * Password for the domain registrar account.
    */
   domainRegPassword?: string;
+}
+
+
+export interface PutScrubIps200Response {
+  _continue?: boolean;
+  errors?: Array<string>;
+  serviceType?: number;
+  serviceCost?: number;
+  originalCost?: number;
+  repeatServiceCost?: number;
+}
+
+
+/**
+ * Request body to validate (putQs) or place (addQs) a QuickServer order. Server and OS template come from getNewQs.
+ */
+export interface QsOrderRequest {
+  /**
+   * QuickServer plan/server id from getNewQs.
+   */
+  server: number;
+  /**
+   * Root password for the QuickServer.
+   */
+  password: string;
+  /**
+   * Terms-of-service acceptance. Must be true to place the order.
+   */
+  tos: boolean;
+  /**
+   * OS template file name from getNewQs (falls back to a default if unrecognized).
+   */
+  os?: string;
+  /**
+   * Free-form note saved on the service row.
+   */
+  comment?: string;
 }
 
 
@@ -5084,25 +4981,6 @@ export interface QuickserversCancel200Response {
 
 
 /**
- * A RAID configuration option available for a dedicated server.
- */
-export interface RaidOption {
-  id?: number;
-  short_desc?: string;
-  monthly_price?: number;
-}
-
-
-/**
- * A datacenter region where a server can be provisioned.
- */
-export interface Region {
-  region_id?: number;
-  region_name?: string;
-}
-
-
-/**
  * Post reply to your ticket
  */
 export interface ReplyTicketRequest {
@@ -5515,6 +5393,34 @@ export interface ServerBillingDetails {
   service_cost_info?: string;
   service_extra?: Array<string>;
   service_extra_json?: string;
+}
+
+
+/**
+ * Per-server IPMI power-status results for a bulk lookup.
+ */
+export interface ServerBulkIpmiPowerResponse {
+  results: Array<ServerBulkIpmiPowerResponseResultsInner>;
+}
+
+
+export interface ServerBulkIpmiPowerResponseResultsInner {
+  /**
+   * Server ID this result corresponds to.
+   */
+  id?: number;
+  /**
+   * Asset ID that was queried for the server (omitted on errors before asset selection).
+   */
+  asset?: number;
+  /**
+   * IPMI power-status output for this server.
+   */
+  text?: string;
+  /**
+   * Error message for this server, if processing failed (mutually exclusive with `text`).
+   */
+  error?: string;
 }
 
 
@@ -6014,32 +5920,6 @@ export interface ServerOrderFormValues {
 
 
 /**
- * Configuration options and pricing data returned when starting a dedicated server order.
- */
-export interface ServerOrderGetResponse {
-  form_values: FormValues;
-  config_ids: ConfigIds;
-  cpu: number;
-  cpu_li: { [key: string]: Cpu; };
-  config_li: ConfigLists;
-  frequency: number;
-  currency: string;
-  country: string;
-  step: string;
-  field_label?: { [key: string]: FieldLabel; };
-  cpu_cores?: { [key: string]: { [key: string]: CpuWithDefaults; }; };
-  currencySymbol?: string;
-  custid?: number;
-  ima?: string;
-  regions?: Array<Region>;
-  asset_servers?: Array<AssetServer>;
-  buy_it_servers?: Array<object>;
-  display_showmore?: string;
-  cust_discount?: number;
-}
-
-
-/**
  * An IP block option available when ordering a dedicated server.
  */
 export interface ServerOrderIP {
@@ -6207,6 +6087,69 @@ export interface ServerOrderOS {
 export interface ServerOrderOsLi {
   _51?: ServerOrderOS;
 }
+
+
+/**
+ * Request body to place a custom dedicated server order. All ids come from getNewServer\'s config_li / regions.
+ */
+export interface ServerOrderPostRequest {
+  /**
+   * CPU configuration id from config_li.cpu_li. Constrains valid hd/memory options.
+   */
+  cpu: number;
+  hd: ServerOrderPostRequestHd;
+  /**
+   * Memory configuration id from config_li.memory_li[cpu].
+   */
+  memory: number;
+  /**
+   * Bandwidth configuration id from config_li.bandwidth_li.
+   */
+  bandwidth: number;
+  /**
+   * IP block configuration id from config_li.ips_li.
+   */
+  ips: number;
+  /**
+   * Operating System configuration id from config_li.os_li.
+   */
+  os: number;
+  /**
+   * Control Panel configuration id from config_li.cp_li.
+   */
+  cp: number;
+  /**
+   * RAID configuration id from config_li.raid_li.
+   */
+  raid: number;
+  /**
+   * Region id from the regions list.
+   */
+  region: number;
+  /**
+   * Server hostname. Must pass valid_hostname().
+   */
+  servername: string;
+  /**
+   * Root password for the server.
+   */
+  rootpass: string;
+  /**
+   * Terms-of-service acceptance. Must be true to place the order.
+   */
+  tos: boolean;
+  /**
+   * Optional free-form order comment.
+   */
+  comment?: string;
+}
+
+/**
+ * @type ServerOrderPostRequestHd
+ * Hard-drive configuration id(s) from config_li.hd_li[cpu]. Accepts a single id or an array of ids.
+ * @export
+ */
+export type ServerOrderPostRequestHd = Array<number> | number;
 
 
 /**
@@ -6637,6 +6580,98 @@ export interface SslCancel200Response {
   success: boolean;
   text: string;
 }
+
+
+/**
+ * Request body to validate (putSsl) or place (addSsl) an SSL certificate order. Contact fields default from the account if omitted. Package ids come from getNewSsl.serviceTypes.
+ */
+export interface SslOrderRequest {
+  /**
+   * SSL package service type id from getNewSsl.serviceTypes.
+   */
+  ssl: number;
+  /**
+   * Domain the certificate is issued for. Wildcard certs require *.domain.com format.
+   */
+  hostname: string;
+  /**
+   * Domain-control approver email (required for all SSL orders).
+   */
+  approver_email: string;
+  /**
+   * Billing frequency in months (12, 24, or 36).
+   */
+  frequency?: number;
+  /**
+   * Coupon code.
+   */
+  coupon?: string;
+  /**
+   * Whether the CSR is server-generated or customer-provided.
+   */
+  csr_type?: SslOrderRequestCsrTypeEnum;
+  /**
+   * PEM-encoded CSR (>= 2048-bit) when csr_type=provided.
+   */
+  csr?: string;
+  /**
+   * Contact first name (defaults from account).
+   */
+  firstname?: string;
+  /**
+   * Contact last name (defaults from account).
+   */
+  lastname?: string;
+  /**
+   * Contact email (defaults from account).
+   */
+  email?: string;
+  /**
+   * Contact address (defaults from account).
+   */
+  address?: string;
+  /**
+   * Contact city (defaults from account).
+   */
+  city?: string;
+  /**
+   * Contact state/region (defaults from account).
+   */
+  state?: string;
+  /**
+   * Contact postal code (defaults from account).
+   */
+  zip?: string;
+  /**
+   * Contact country (defaults from account).
+   */
+  country?: string;
+  /**
+   * Contact phone (defaults from account).
+   */
+  phone?: string;
+  /**
+   * Contact company/organization (defaults from account).
+   */
+  company?: string;
+  /**
+   * Contact department (defaults to Administration).
+   */
+  department?: string;
+  /**
+   * EV certificate incorporating agency (only for EV packages).
+   */
+  agency?: string;
+  /**
+   * EV certificate business category (only for EV packages).
+   */
+  business_category?: string;
+}
+
+/**
+ * Enum for the csr_type property.
+ */
+export type SslOrderRequestCsrTypeEnum = 'generated' | 'provided';
 
 
 /**
@@ -7883,13 +7918,6 @@ export interface VpsTemplatesList {
 
 
 /**
- * VPS Traffic Data section Data subsection response
- */
-export interface VpsTrafficDataDataResponse extends Array<VPSTrafficDataDataSectionResponse> {
-}
-
-
-/**
  * VPS Traffic Data Section Response
  */
 export interface VpsTrafficDataSectionResponse {
@@ -8130,6 +8158,92 @@ export interface WebsiteExtraInfoTables {
 export interface WebsiteLoginResponse {
   type?: string;
   location?: string;
+}
+
+
+/**
+ * request to place a webhosting order
+ */
+export interface WebsiteOrderPostRequest {
+  /**
+   * Primary FQDN for the website. Must pass valid_hostname() and the keyword blocklist.
+   */
+  hostname: string;
+  /**
+   * Plan id from getNewWebsite.serviceTypes[].services_id (must be buyable).
+   */
+  packageId: number;
+  /**
+   * Control-panel admin password. If blank, a random password is generated server-side.
+   */
+  rootpass?: string;
+  /**
+   * Billing cycle in months (1 / 6 / 12 / 24 / 36).
+   */
+  period?: number;
+  /**
+   * Coupon code.
+   */
+  coupon?: string;
+  /**
+   * Promo bundle id from getNewWebsite.serviceOffers.
+   */
+  serviceOfferId?: number;
+  /**
+   * Auto-installer id (0 = none).
+   */
+  script?: number;
+  /**
+   * Free-form note saved on the service row.
+   */
+  comment?: string;
+  /**
+   * When true and enableDomainRegistering=true from the catalog, also registers/transfers the domain through the order.
+   */
+  registerDomain?: boolean;
+}
+
+
+/**
+ * request to validate a webhosting order
+ */
+export interface WebsiteOrderPutRequest {
+  /**
+   * Primary FQDN for the website. Must pass valid_hostname() and the keyword blocklist.
+   */
+  hostname: string;
+  /**
+   * Plan id from getNewWebsite.serviceTypes[].services_id (must be buyable).
+   */
+  packageId: number;
+  /**
+   * Control-panel admin password. If blank, a random password is generated server-side.
+   */
+  rootpass?: string;
+  /**
+   * Billing cycle in months (1 / 6 / 12 / 24 / 36).
+   */
+  period?: number;
+  /**
+   * Coupon code.
+   */
+  coupon?: string;
+  /**
+   * Promo bundle id from getNewWebsite.serviceOffers.
+   */
+  serviceOfferId?: number;
+  /**
+   * Auto-installer id (0 = none).
+   */
+  script?: number;
+  /**
+   * Free-form note saved on the service row.
+   */
+  comment?: string;
+  /**
+   * When true and enableDomainRegistering=true from the catalog, also registers/transfers the domain through the order.
+   */
+  registerDomain?: boolean;
 }
 
 

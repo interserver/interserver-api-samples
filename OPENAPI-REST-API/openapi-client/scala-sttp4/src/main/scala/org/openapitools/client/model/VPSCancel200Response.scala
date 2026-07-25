@@ -16,4 +16,3 @@ case class VPSCancel200Response(
   success: Boolean,
   text: String
 )
-

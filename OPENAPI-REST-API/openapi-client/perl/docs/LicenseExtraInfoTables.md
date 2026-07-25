@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::LicenseExtraInfoTables
+# InterServerAPI::Object::LicenseExtraInfoTables
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::LicenseExtraInfoTables;
+use InterServerAPI::Object::LicenseExtraInfoTables;
 ```
 
 ## Properties

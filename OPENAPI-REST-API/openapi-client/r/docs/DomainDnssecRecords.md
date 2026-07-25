@@ -1,4 +1,4 @@
-# openapi::DomainDnssecRecords
+# interserverapi::DomainDnssecRecords
 
 DNSSEC DS records currently configured for a domain.
 

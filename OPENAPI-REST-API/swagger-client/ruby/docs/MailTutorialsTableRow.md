@@ -1,4 +1,4 @@
-# SwaggerClient::MailTutorialsTableRow
+# InterserverApiClient::MailTutorialsTableRow
 
 ## Properties
 Name | Type | Description | Notes

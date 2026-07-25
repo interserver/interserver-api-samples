@@ -37,8 +37,8 @@ import myadmin-client-kotlin-server.infrastructure.ApiPrincipal
 import io.swagger.server.models.ChargeInvoiceRows
 import io.swagger.server.models.HostnameObject
 import io.swagger.server.models.IdBackupsBody2
-import io.swagger.server.models.InlineResponse20011
-import io.swagger.server.models.InlineResponse20022
+import io.swagger.server.models.InlineResponse20012
+import io.swagger.server.models.InlineResponse20024
 import io.swagger.server.models.InlineResponse401
 import io.swagger.server.models.PasswordRequest
 import io.swagger.server.models.QueueResponse
@@ -343,6 +343,23 @@ fun Route.VPSApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
+    get<Paths.getVpsBackup> {  _: Paths.getVpsBackup ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "text" : "Action has been sent to the server. Please allow up to 2 minutes for action to be completed.",
+  "queueId" : 14670065
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
     get<Paths.getVpsBackups> {  _: Paths.getVpsBackups ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
@@ -384,6 +401,22 @@ fun Route.VPSApi() {
         }
     }
     get<Paths.getVpsBuyIp> {  _: Paths.getVpsBuyIp ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            call.respond(HttpStatusCode.NotImplemented)
+        }
+    }
+    get<Paths.getVpsChangeHostname> {  _: Paths.getVpsChangeHostname ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            call.respond(HttpStatusCode.NotImplemented)
+        }
+    }
+    get<Paths.getVpsChangeRootPassword> {  _: Paths.getVpsChangeRootPassword ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
@@ -571,6 +604,14 @@ fun Route.VPSApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
+    get<Paths.getVpsInsertCd> {  _: Paths.getVpsInsertCd ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            call.respond(HttpStatusCode.NotImplemented)
+        }
+    }
     get<Paths.getVpsInvoices> {  _: Paths.getVpsInvoices ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
@@ -690,6 +731,14 @@ fun Route.VPSApi() {
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }        }
+    }
+    get<Paths.getVpsResetPassword> {  _: Paths.getVpsResetPassword ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            call.respond(HttpStatusCode.NotImplemented)
+        }
     }
     get<Paths.getVpsReverseDns> {  _: Paths.getVpsReverseDns ->
         val principal = call.authentication.principal<ApiPrincipal>()
@@ -820,23 +869,6 @@ fun Route.VPSApi() {
             val exampleContentString = """{
   "success" : true,
   "text" : "Ok"
-}"""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
-    get<Paths.postVpsBackup> {  _: Paths.postVpsBackup ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """{
-  "text" : "Action has been sent to the server. Please allow up to 2 minutes for action to be completed.",
-  "queueId" : 14670065
 }"""
             
             when(exampleContentType) {
@@ -1038,6 +1070,14 @@ fun Route.VPSApi() {
             call.respond(HttpStatusCode.NotImplemented)
         }
     }
+    post<Paths.postVpsTrafficUsage> {  _: Paths.postVpsTrafficUsage ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            call.respond(HttpStatusCode.NotImplemented)
+        }
+    }
     post<Paths.postVpsViewDesktop> {  _: Paths.postVpsViewDesktop ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
@@ -1071,7 +1111,7 @@ fun Route.VPSApi() {
   "controlpanel" : "none",
   "period" : 1,
   "location" : 1,
-  "version" : "24.04",
+  "version" : "ubuntu24",
   "hostname" : "server.blank.com",
   "coupon" : "",
   "rootpass" : "string"
@@ -1082,6 +1122,14 @@ fun Route.VPSApi() {
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }        }
+    }
+    put<Paths.putVpsBuyHdSpace> {  _: Paths.putVpsBuyHdSpace ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            call.respond(HttpStatusCode.NotImplemented)
+        }
     }
     post<Paths.updateVpsInfo> {  _: Paths.updateVpsInfo ->
         val principal = call.authentication.principal<ApiPrincipal>()

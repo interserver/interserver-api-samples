@@ -19,4 +19,8 @@ A VPS OS Template.
 |**templateDir** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

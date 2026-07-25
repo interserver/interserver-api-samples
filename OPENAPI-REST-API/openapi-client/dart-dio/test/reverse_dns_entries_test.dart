@@ -1,14 +1,14 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ReverseDnsEntries
 void main() {
-  final instance = ReverseDnsEntriesBuilder();
-  // TODO add properties to the builder and call build()
+  final ReverseDnsEntries? instance = /* ReverseDnsEntries(...) */ null;
+  // TODO add properties to the entity
 
   group(ReverseDnsEntries, () {
     // The IPs you have access to and their current reverse dns mapping.
-    // BuiltMap<String, JsonObject> ips
+    // Optional<Map<String, Object>?> ips
     test('to test the property `ips`', () async {
       // TODO
     });

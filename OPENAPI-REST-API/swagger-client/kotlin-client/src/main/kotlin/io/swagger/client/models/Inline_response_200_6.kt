@@ -14,23 +14,11 @@ package io.swagger.client.models
 
 /**
  * 
- * @param login Whether the user was logged in to an existing account.
- * @param signup Whether a new account was created.
- * @param linked Whether the OAuth provider was linked to an existing account.
- * @param accountId The account ID associated with the OAuth login.
- * @param errorCode Error code if additional verification is needed (e.g. `2fa_required`).
+ * @param redirectUrl The URL to redirect the user to for OAuth authentication.
  */
 data class InlineResponse2006 (
 
-    /* Whether the user was logged in to an existing account. */
-    val login: kotlin.Boolean? = null,
-    /* Whether a new account was created. */
-    val signup: kotlin.Boolean? = null,
-    /* Whether the OAuth provider was linked to an existing account. */
-    val linked: kotlin.Boolean? = null,
-    /* The account ID associated with the OAuth login. */
-    val accountId: kotlin.Int? = null,
-    /* Error code if additional verification is needed (e.g. `2fa_required`). */
-    val errorCode: kotlin.String? = null
+    /* The URL to redirect the user to for OAuth authentication. */
+    val redirectUrl: kotlin.String? = null
 ) {
 }

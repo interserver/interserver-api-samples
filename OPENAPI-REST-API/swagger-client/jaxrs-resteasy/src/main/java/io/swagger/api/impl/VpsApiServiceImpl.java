@@ -12,8 +12,8 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.HostnameObject;
 import io.swagger.model.IdBackupsBody2;
-import io.swagger.model.InlineResponse20011;
-import io.swagger.model.InlineResponse20022;
+import io.swagger.model.InlineResponse20012;
+import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.QueueResponse;
@@ -118,6 +118,11 @@ public class VpsApiServiceImpl implements VpsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
+      public Response getVpsBackup(Integer id,SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
       public Response getVpsBackups(Integer id,String all,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
@@ -133,12 +138,27 @@ public class VpsApiServiceImpl implements VpsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
+      public Response getVpsChangeHostname(Integer id,SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
+      public Response getVpsChangeRootPassword(Integer id,SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
       public Response getVpsChangeTimezone(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
       public Response getVpsInfo(Integer id,SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
+      public Response getVpsInsertCd(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -154,6 +174,11 @@ public class VpsApiServiceImpl implements VpsApiService {
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
       public Response getVpsReinstallOs(Integer id,SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
+      public Response getVpsResetPassword(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -184,11 +209,6 @@ public class VpsApiServiceImpl implements VpsApiService {
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
       public Response getVpsWelcomeEmail(String id,SecurityContext securityContext)
-      throws NotFoundException {
-      // do some magic!
-      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-  }
-      public Response postVpsBackup(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -298,6 +318,11 @@ public class VpsApiServiceImpl implements VpsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
+      public Response postVpsTrafficUsage(Integer id,SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
       public Response postVpsViewDesktop(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
@@ -309,6 +334,11 @@ public class VpsApiServiceImpl implements VpsApiService {
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
       public Response putVps(String osDistro,Integer slices,String vpsPlatform,String controlpanel,Integer period,Integer location,String osVersion,String hostname,String coupon,String rootpass,String comment,SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
+      public Response putVpsBuyHdSpace(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

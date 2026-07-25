@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderBandwidthLi = Initialize-PSOpenAPIToolsServerOrderBandwidthLi  -Var15 null
+$ServerOrderBandwidthLi = Initialize-InterserverApiServerOrderBandwidthLi  -Var15 null
 ```
 
 - Convert the resource to JSON

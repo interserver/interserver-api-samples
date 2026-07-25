@@ -17,7 +17,7 @@ import MailExtraInfoTableRow from './MailExtraInfoTableRow';
 /**
  * The MailExtraInfoTable model module.
  * @module model/MailExtraInfoTable
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailExtraInfoTable {
     /**

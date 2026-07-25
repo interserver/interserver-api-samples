@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsOrderPutResponse } from './api';
+import { VpsOrderPutResponse } from '@interserver/myadmin-client';
 
 const instance: VpsOrderPutResponse = {
     _continue,

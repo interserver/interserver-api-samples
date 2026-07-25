@@ -1,4 +1,4 @@
-# openapi::QuickserverIpTableRow
+# interserverapi::QuickserverIpTableRow
 
 A single row in the QuickServer IP information table.
 

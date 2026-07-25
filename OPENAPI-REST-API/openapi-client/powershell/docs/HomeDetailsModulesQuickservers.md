@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeDetailsModulesQuickservers = Initialize-PSOpenAPIToolsHomeDetailsModulesQuickservers  -Icon database `
+$HomeDetailsModulesQuickservers = Initialize-InterserverApiHomeDetailsModulesQuickservers  -Icon database `
  -ViewLink view_qs `
  -Heading Quick Servers `
  -BuyLink order_quickserver `

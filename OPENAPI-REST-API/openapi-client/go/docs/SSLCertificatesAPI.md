@@ -4,23 +4,23 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddSsl**](SSLCertificatesAPI.md#AddSsl) | **Post** /ssl/order | Place SSL Cert Order
-[**GetNewSsl**](SSLCertificatesAPI.md#GetNewSsl) | **Get** /ssl/order | SSL Cert Ordering Information
-[**GetSslInfo**](SSLCertificatesAPI.md#GetSslInfo) | **Get** /ssl/{id} | Get SSL Cert Info
-[**GetSslInvoices**](SSLCertificatesAPI.md#GetSslInvoices) | **Get** /ssl/{id}/invoices | Get SSL Cert Invoices
-[**GetSslList**](SSLCertificatesAPI.md#GetSslList) | **Get** /ssl | List SSL Certs
-[**GetSslWelcomeEmail**](SSLCertificatesAPI.md#GetSslWelcomeEmail) | **Get** /ssl/{id}/welcome_email | Resend SSL Welcome Email
-[**PutSsl**](SSLCertificatesAPI.md#PutSsl) | **Put** /ssl/order | Validate SSL Cert Order
-[**SslCancel**](SSLCertificatesAPI.md#SslCancel) | **Delete** /ssl/{id} | Cancel SSL Certificate Service
-[**UpdateSslInfo**](SSLCertificatesAPI.md#UpdateSslInfo) | **Post** /ssl/{id} | Update SSL Cert Order
+[**AddSsl**](SSLCertificatesAPI.md#AddSsl) | **Post** /ssl/order | Place a new SSL certificate order - creates invoice and queues issuance
+[**GetNewSsl**](SSLCertificatesAPI.md#GetNewSsl) | **Get** /ssl/order | Get available SSL certificate packages and pricing for placing a new order
+[**GetSslInfo**](SSLCertificatesAPI.md#GetSslInfo) | **Get** /ssl/{id} | Get full details for one SSL certificate by id - status, expiration, links
+[**GetSslInvoices**](SSLCertificatesAPI.md#GetSslInvoices) | **Get** /ssl/{id}/invoices | List all billing invoices and charges tied to one SSL certificate by id
+[**GetSslList**](SSLCertificatesAPI.md#GetSslList) | **Get** /ssl | List all SSL certificates on the authenticated customer account with status and hostname
+[**GetSslWelcomeEmail**](SSLCertificatesAPI.md#GetSslWelcomeEmail) | **Get** /ssl/{id}/welcome_email | Resend the SSL welcome email with cert credentials and install instructions
+[**PutSsl**](SSLCertificatesAPI.md#PutSsl) | **Put** /ssl/order | Validate an SSL certificate order without charging - dry-run before addSsl
+[**SslCancel**](SSLCertificatesAPI.md#SslCancel) | **Delete** /ssl/{id} | Cancel an SSL certificate service - stops renewals at end of billing cycle
+[**UpdateSslInfo**](SSLCertificatesAPI.md#UpdateSslInfo) | **Post** /ssl/{id} | Update mutable settings on an existing SSL certificate order by id
 
 
 
 ## AddSsl
 
-> ServiceOrderPostResponse AddSsl(ctx).Execute()
+> ServiceOrderPostResponse AddSsl(ctx).SslOrderRequest(sslOrderRequest).Execute()
 
-Place SSL Cert Order
+Place a new SSL certificate order - creates invoice and queues issuance
 
 
 
@@ -37,10 +37,11 @@ import (
 )
 
 func main() {
+	sslOrderRequest := *openapiclient.NewSslOrderRequest(int32(123), "Hostname_example", "ApproverEmail_example") // SslOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SSLCertificatesAPI.AddSsl(context.Background()).Execute()
+	resp, r, err := apiClient.SSLCertificatesAPI.AddSsl(context.Background()).SslOrderRequest(sslOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SSLCertificatesAPI.AddSsl``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -52,12 +53,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiAddSslRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sslOrderRequest** | [**SslOrderRequest**](SslOrderRequest.md) |  | 
 
 ### Return type
 
@@ -69,7 +74,7 @@ Other parameters are passed through a pointer to a apiAddSslRequest struct via t
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -81,7 +86,7 @@ Other parameters are passed through a pointer to a apiAddSslRequest struct via t
 
 > map[string]interface{} GetNewSsl(ctx).Execute()
 
-SSL Cert Ordering Information
+Get available SSL certificate packages and pricing for placing a new order
 
 
 
@@ -142,7 +147,7 @@ Other parameters are passed through a pointer to a apiGetNewSslRequest struct vi
 
 > map[string]interface{} GetSslInfo(ctx, id).Execute()
 
-Get SSL Cert Info
+Get full details for one SSL certificate by id - status, expiration, links
 
 
 
@@ -212,7 +217,7 @@ Name | Type | Description  | Notes
 
 > ChargeInvoiceRows GetSslInvoices(ctx, id).Execute()
 
-Get SSL Cert Invoices
+List all billing invoices and charges tied to one SSL certificate by id
 
 
 
@@ -282,7 +287,7 @@ Name | Type | Description  | Notes
 
 > GetSslList(ctx).Execute()
 
-List SSL Certs
+List all SSL certificates on the authenticated customer account with status and hostname
 
 
 
@@ -341,7 +346,7 @@ Other parameters are passed through a pointer to a apiGetSslListRequest struct v
 
 > SuccessTextResponse GetSslWelcomeEmail(ctx, id).Execute()
 
-Resend SSL Welcome Email
+Resend the SSL welcome email with cert credentials and install instructions
 
 
 
@@ -409,9 +414,9 @@ Name | Type | Description  | Notes
 
 ## PutSsl
 
-> PutSsl(ctx).Execute()
+> PutSsl(ctx).SslOrderRequest(sslOrderRequest).Execute()
 
-Validate SSL Cert Order
+Validate an SSL certificate order without charging - dry-run before addSsl
 
 
 
@@ -428,10 +433,11 @@ import (
 )
 
 func main() {
+	sslOrderRequest := *openapiclient.NewSslOrderRequest(int32(123), "Hostname_example", "ApproverEmail_example") // SslOrderRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.SSLCertificatesAPI.PutSsl(context.Background()).Execute()
+	r, err := apiClient.SSLCertificatesAPI.PutSsl(context.Background()).SslOrderRequest(sslOrderRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `SSLCertificatesAPI.PutSsl``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -441,12 +447,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiPutSslRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sslOrderRequest** | [**SslOrderRequest**](SslOrderRequest.md) |  | 
 
 ### Return type
 
@@ -458,7 +468,7 @@ Other parameters are passed through a pointer to a apiPutSslRequest struct via t
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -470,7 +480,7 @@ Other parameters are passed through a pointer to a apiPutSslRequest struct via t
 
 > SslCancel200Response SslCancel(ctx, id).Execute()
 
-Cancel SSL Certificate Service
+Cancel an SSL certificate service - stops renewals at end of billing cycle
 
 
 
@@ -540,7 +550,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateSslInfo(ctx, id).Execute()
 
-Update SSL Cert Order
+Update mutable settings on an existing SSL certificate order by id
 
 
 

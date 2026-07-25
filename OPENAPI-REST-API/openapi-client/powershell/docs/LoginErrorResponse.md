@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LoginErrorResponse = Initialize-PSOpenAPIToolsLoginErrorResponse  -Message null `
+$LoginErrorResponse = Initialize-InterserverApiLoginErrorResponse  -Message null `
  -Field null
 ```
 

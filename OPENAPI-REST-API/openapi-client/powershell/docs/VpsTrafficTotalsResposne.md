@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsTrafficTotalsResposne = Initialize-PSOpenAPIToolsVpsTrafficTotalsResposne  -Day null `
+$VpsTrafficTotalsResposne = Initialize-InterserverApiVpsTrafficTotalsResposne  -Day null `
  -Month null `
  -Year null `
  -All null

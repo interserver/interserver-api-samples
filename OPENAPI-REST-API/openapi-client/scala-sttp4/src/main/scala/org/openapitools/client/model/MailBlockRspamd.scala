@@ -20,4 +20,3 @@ case class MailBlockRspamd(
   from: String,
   subject: String
 )
-

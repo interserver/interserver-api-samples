@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.licenses_order_service_categories509 import LicensesOrderServiceCategories509  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.licenses_order_service_categories509 import LicensesOrderServiceCategories509  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestLicensesOrderServiceCategories509(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestLicensesOrderServiceCategories509(unittest.TestCase):
     def testLicensesOrderServiceCategories509(self):
         """Test LicensesOrderServiceCategories509"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.licenses_order_service_categories509.LicensesOrderServiceCategories509()  # noqa: E501
+        # model = interserver_api_client.models.licenses_order_service_categories509.LicensesOrderServiceCategories509()  # noqa: E501
         pass
 
 

@@ -6,9 +6,10 @@ import io.swagger.model.*;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20023;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ServiceOrderPostResponse;
+import io.swagger.model.SslOrderRequest;
 import io.swagger.model.SuccessTextResponse;
 
 import java.util.List;
@@ -23,7 +24,7 @@ import javax.ws.rs.core.SecurityContext;
 
 public class SslApiServiceImpl implements SslApiService {
       @Override
-      public Response addSsl(SecurityContext securityContext) {
+      public Response addSsl(SslOrderRequest body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -53,7 +54,7 @@ public class SslApiServiceImpl implements SslApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response putSsl(SecurityContext securityContext) {
+      public Response putSsl(SslOrderRequest body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

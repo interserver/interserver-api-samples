@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.one_of_buy_it_now_row_cpu_items import OneOfBuyItNowRowCpuItems  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.one_of_buy_it_now_row_cpu_items import OneOfBuyItNowRowCpuItems  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestOneOfBuyItNowRowCpuItems(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestOneOfBuyItNowRowCpuItems(unittest.TestCase):
     def testOneOfBuyItNowRowCpuItems(self):
         """Test OneOfBuyItNowRowCpuItems"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.one_of_buy_it_now_row_cpu_items.OneOfBuyItNowRowCpuItems()  # noqa: E501
+        # model = interserver_api_client.models.one_of_buy_it_now_row_cpu_items.OneOfBuyItNowRowCpuItems()  # noqa: E501
         pass
 
 

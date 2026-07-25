@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Website = Initialize-PSOpenAPIToolsWebsite  -ServiceInfo null `
+$Website = Initialize-InterserverApiWebsite  -ServiceInfo null `
  -ClientLinks null `
  -BillingDetails null `
  -CustCurrency USD `

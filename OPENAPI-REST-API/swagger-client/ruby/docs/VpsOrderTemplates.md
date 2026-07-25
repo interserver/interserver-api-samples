@@ -1,4 +1,4 @@
-# SwaggerClient::VpsOrderTemplates
+# InterserverApiClient::VpsOrderTemplates
 
 ## Properties
 Name | Type | Description | Notes

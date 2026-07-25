@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailAlertsResponseInner } from './api';
+import { MailAlertsResponseInner } from '@interserver/myadmin-client';
 
 const instance: MailAlertsResponseInner = {
     alert_id,

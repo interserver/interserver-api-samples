@@ -1,4 +1,4 @@
-# openapi::DomainClientLink
+# interserverapi::DomainClientLink
 
 Links and labels for domain-related UI actions.
 

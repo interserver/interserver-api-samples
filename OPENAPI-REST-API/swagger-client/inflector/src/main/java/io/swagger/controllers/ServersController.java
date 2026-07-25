@@ -11,17 +11,19 @@ import java.util.List;
 import io.swagger.model.*;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20019;
-import io.swagger.model.InlineResponse20020;
-import io.swagger.model.InlineResponse20027;
+import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20022;
+import io.swagger.model.InlineResponse20029;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.OrderBuyNowServerBody;
 import io.swagger.model.ReverseDnsEntries;
 import io.swagger.model.Server;
+import io.swagger.model.ServerBulkIpmiPowerResponse;
 import io.swagger.model.ServerIpmiLiveInfo;
 import io.swagger.model.ServerIpmiLiveRequest;
 import io.swagger.model.ServerIpmiPowerRequest;
 import io.swagger.model.ServerOrder;
+import io.swagger.model.ServerOrderPostRequest;
 import io.swagger.model.ServerRow;
 import io.swagger.model.ServersBuyNowError;
 import io.swagger.model.ServersBuyNowResponse;
@@ -37,7 +39,8 @@ public class ServersController  {
    **/
 
   /*
-    public ResponseContext addServer(RequestContext request ) {
+    public ResponseContext addServer(RequestContext request , ServerOrderPostRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -112,7 +115,8 @@ public class ServersController  {
   */
 
   /*
-    public ResponseContext putServers(RequestContext request ) {
+    public ResponseContext serverBulkIpmiPowerGet(RequestContext request , String ids 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

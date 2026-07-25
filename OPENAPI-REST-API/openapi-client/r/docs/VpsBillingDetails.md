@@ -1,4 +1,4 @@
-# openapi::VpsBillingDetails
+# interserverapi::VpsBillingDetails
 
 Billing information for a VPS service including payment status, billing cycle, and cost.
 

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SendMailAdv } from './api';
+import { SendMailAdv } from '@interserver/myadmin-client';
 
 const instance: SendMailAdv = {
     subject,

@@ -1,4 +1,4 @@
-# openapi::ReverseDnsEntries
+# interserverapi::ReverseDnsEntries
 
 The Reverse DNS entries.
 

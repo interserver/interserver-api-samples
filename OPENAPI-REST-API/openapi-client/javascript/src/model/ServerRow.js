@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerRow model module.
  * @module model/ServerRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerRow {
     /**

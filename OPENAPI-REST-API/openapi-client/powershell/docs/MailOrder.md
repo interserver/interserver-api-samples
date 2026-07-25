@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailOrder = Initialize-PSOpenAPIToolsMailOrder  -Id 21472 `
+$MailOrder = Initialize-InterserverApiMailOrder  -Id 21472 `
  -Status active `
  -Username mb21472 `
  -Comment null

@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverOrderDistroSelUbuntu
+# InterserverApiClient.QuickserverOrderDistroSelUbuntu
 
 ## Properties
 

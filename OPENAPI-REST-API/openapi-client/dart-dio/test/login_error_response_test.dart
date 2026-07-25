@@ -1,18 +1,18 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LoginErrorResponse
 void main() {
-  final instance = LoginErrorResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final LoginErrorResponse? instance = /* LoginErrorResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(LoginErrorResponse, () {
-    // String message
+    // Optional<String?> message
     test('to test the property `message`', () async {
       // TODO
     });
 
-    // String field
+    // Optional<String?> field
     test('to test the property `field`', () async {
       // TODO
     });

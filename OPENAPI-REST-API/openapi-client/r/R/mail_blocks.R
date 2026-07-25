@@ -122,13 +122,13 @@ MailBlocks <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`local`)) {
-        self$`local` <- ApiClient$new()$deserializeObj(this_object$`local`, "array[MailBlockClickHouse]", loadNamespace("openapi"))
+        self$`local` <- ApiClient$new()$deserializeObj(this_object$`local`, "array[MailBlockClickHouse]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`mbtrap`)) {
-        self$`mbtrap` <- ApiClient$new()$deserializeObj(this_object$`mbtrap`, "array[MailBlockClickHouse]", loadNamespace("openapi"))
+        self$`mbtrap` <- ApiClient$new()$deserializeObj(this_object$`mbtrap`, "array[MailBlockClickHouse]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`subject`)) {
-        self$`subject` <- ApiClient$new()$deserializeObj(this_object$`subject`, "array[MailBlockRspamd]", loadNamespace("openapi"))
+        self$`subject` <- ApiClient$new()$deserializeObj(this_object$`subject`, "array[MailBlockRspamd]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -151,9 +151,9 @@ MailBlocks <- R6::R6Class(
     #' @return the instance of MailBlocks
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`local` <- ApiClient$new()$deserializeObj(this_object$`local`, "array[MailBlockClickHouse]", loadNamespace("openapi"))
-      self$`mbtrap` <- ApiClient$new()$deserializeObj(this_object$`mbtrap`, "array[MailBlockClickHouse]", loadNamespace("openapi"))
-      self$`subject` <- ApiClient$new()$deserializeObj(this_object$`subject`, "array[MailBlockRspamd]", loadNamespace("openapi"))
+      self$`local` <- ApiClient$new()$deserializeObj(this_object$`local`, "array[MailBlockClickHouse]", loadNamespace("interserverapi"))
+      self$`mbtrap` <- ApiClient$new()$deserializeObj(this_object$`mbtrap`, "array[MailBlockClickHouse]", loadNamespace("interserverapi"))
+      self$`subject` <- ApiClient$new()$deserializeObj(this_object$`subject`, "array[MailBlockRspamd]", loadNamespace("interserverapi"))
       self
     },
 

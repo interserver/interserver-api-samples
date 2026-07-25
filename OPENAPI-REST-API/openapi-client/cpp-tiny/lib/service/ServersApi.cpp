@@ -9,6 +9,9 @@ using namespace Tiny;
         >
         ServersApi::
         addServer(
+            
+            ServerOrderPostRequest serverOrderPostRequest
+            
         )
         {
             std::string url = basepath + "/servers/order"; //
@@ -19,6 +22,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -27,7 +31,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | 
+            // Body     | serverOrderPostRequest
+
+
+
+            payload = serverOrderPostRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
@@ -538,18 +547,22 @@ using namespace Tiny;
         }
 
         Response<
-            String
+            ServerBulkIpmiPowerResponse
         >
         ServersApi::
-        putServers(
+        serverBulkIpmiPowerGet(
+            
+            std::string ids
+            
         )
         {
-            std::string url = basepath + "/servers/order"; //
+            std::string url = basepath + "/servers/bulk/ipmi_power"; //
 
 
             // Headers  | 
 
-            // Query    | 
+            // Query    | ids 
+            addQueryParam("ids",ids);
 
             // Form     | 
 
@@ -559,16 +572,21 @@ using namespace Tiny;
 
             std::string payload = "";
             // Send Request
-            // METHOD | PUT
+            // METHOD | GET
             // Body     | 
-            int httpCode = sendRequest(url, "PUT", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
             String output = getResponseBody();
             std::string output_string = output.c_str();
 
 
-            Response<String> response(output, httpCode);
+
+
+            ServerBulkIpmiPowerResponse obj(output_string);
+
+
+            Response<ServerBulkIpmiPowerResponse> response(obj, httpCode);
             return response;
         }
 

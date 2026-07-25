@@ -17,7 +17,7 @@ import WebsitesOrderJsonServiceOffersItem from './WebsitesOrderJsonServiceOffers
 /**
  * The WebsitesOrderJsonServiceOffers model module.
  * @module model/WebsitesOrderJsonServiceOffers
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsitesOrderJsonServiceOffers {
     /**

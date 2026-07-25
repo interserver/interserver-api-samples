@@ -24,10 +24,10 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::DNSApi');
+use_ok('InterServerAPI::DNSApi');
 
-my $api = OpenAPIClient::DNSApi->new();
-isa_ok($api, 'OpenAPIClient::DNSApi');
+my $api = InterServerAPI::DNSApi->new();
+isa_ok($api, 'InterServerAPI::DNSApi');
 
 #
 # add_dns_domain test

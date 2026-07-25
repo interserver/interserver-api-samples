@@ -1,4 +1,4 @@
-# openapi::DomainTechContact
+# interserverapi::DomainTechContact
 
 Technical contact information for a domain registration.
 

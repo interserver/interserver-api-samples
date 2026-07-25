@@ -1,4 +1,4 @@
-# openapi::WebhostingCancel200Response
+# interserverapi::WebhostingCancel200Response
 
 
 ## Properties

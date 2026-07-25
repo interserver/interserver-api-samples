@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_ip_info import BackupIPInfo
+from interserver_api_client.models.backup_ip_info import BackupIPInfo
 
 class TestBackupIPInfo(unittest.TestCase):
     """BackupIPInfo unit test stubs"""
@@ -38,7 +38,7 @@ class TestBackupIPInfo(unittest.TestCase):
             return BackupIPInfo(
                 title = 'IP Information',
                 rows = [
-                    openapi_client.models.backup_ip_info_row.BackupIPInfoRow(
+                    interserver_api_client.models.backup_ip_info_row.BackupIPInfoRow(
                         desc = 'Netmask', 
                         value = '255.255.255.248', )
                     ]

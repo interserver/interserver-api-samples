@@ -21,4 +21,8 @@ A bandwidth option available when ordering a dedicated server.
 |**monthlyPriceDisplay** | **String** | Display of monthly bandwidth price. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

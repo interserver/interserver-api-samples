@@ -21,4 +21,8 @@ Object representing a server order.
 |**raidLi** | [**List&lt;ServerOrderRAID&gt;**](ServerOrderRAID.md) | RAID options for the server order. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

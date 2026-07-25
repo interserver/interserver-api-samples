@@ -13,12 +13,18 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse20024 {
     /// <summary>
-    /// A map of IP addresses to their current reverse DNS hostnames.
+    /// Gets or Sets Success
     /// </summary>
-    /// <value>A map of IP addresses to their current reverse DNS hostnames.</value>
-    [DataMember(Name="ips", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "ips")]
-    public Dictionary<string, string> Ips { get; set; }
+    [DataMember(Name="success", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "success")]
+    public bool? Success { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Text
+    /// </summary>
+    [DataMember(Name="text", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "text")]
+    public string Text { get; set; }
 
 
     /// <summary>
@@ -28,7 +34,8 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse20024 {\n");
-      sb.Append("  Ips: ").Append(Ips).Append("\n");
+      sb.Append("  Success: ").Append(Success).Append("\n");
+      sb.Append("  Text: ").Append(Text).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

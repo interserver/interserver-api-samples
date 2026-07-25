@@ -60,22 +60,32 @@ void OAIVPSApi::initializeServerConfigs() {
     _serverIndices.insert("downloadVpsBackup", 0);
     _serverConfigs.insert("getNewVps", defaultConf);
     _serverIndices.insert("getNewVps", 0);
+    _serverConfigs.insert("getVpsBackup", defaultConf);
+    _serverIndices.insert("getVpsBackup", 0);
     _serverConfigs.insert("getVpsBackups", defaultConf);
     _serverIndices.insert("getVpsBackups", 0);
     _serverConfigs.insert("getVpsBuyHdSpace", defaultConf);
     _serverIndices.insert("getVpsBuyHdSpace", 0);
     _serverConfigs.insert("getVpsBuyIp", defaultConf);
     _serverIndices.insert("getVpsBuyIp", 0);
+    _serverConfigs.insert("getVpsChangeHostname", defaultConf);
+    _serverIndices.insert("getVpsChangeHostname", 0);
+    _serverConfigs.insert("getVpsChangeRootPassword", defaultConf);
+    _serverIndices.insert("getVpsChangeRootPassword", 0);
     _serverConfigs.insert("getVpsChangeTimezone", defaultConf);
     _serverIndices.insert("getVpsChangeTimezone", 0);
     _serverConfigs.insert("getVpsInfo", defaultConf);
     _serverIndices.insert("getVpsInfo", 0);
+    _serverConfigs.insert("getVpsInsertCd", defaultConf);
+    _serverIndices.insert("getVpsInsertCd", 0);
     _serverConfigs.insert("getVpsInvoices", defaultConf);
     _serverIndices.insert("getVpsInvoices", 0);
     _serverConfigs.insert("getVpsList", defaultConf);
     _serverIndices.insert("getVpsList", 0);
     _serverConfigs.insert("getVpsReinstallOs", defaultConf);
     _serverIndices.insert("getVpsReinstallOs", 0);
+    _serverConfigs.insert("getVpsResetPassword", defaultConf);
+    _serverIndices.insert("getVpsResetPassword", 0);
     _serverConfigs.insert("getVpsReverseDns", defaultConf);
     _serverIndices.insert("getVpsReverseDns", 0);
     _serverConfigs.insert("getVpsSetupVnc", defaultConf);
@@ -88,8 +98,6 @@ void OAIVPSApi::initializeServerConfigs() {
     _serverIndices.insert("getVpsViewDesktop", 0);
     _serverConfigs.insert("getVpsWelcomeEmail", defaultConf);
     _serverIndices.insert("getVpsWelcomeEmail", 0);
-    _serverConfigs.insert("postVpsBackup", defaultConf);
-    _serverIndices.insert("postVpsBackup", 0);
     _serverConfigs.insert("postVpsBuyHdSpace", defaultConf);
     _serverIndices.insert("postVpsBuyHdSpace", 0);
     _serverConfigs.insert("postVpsBuyIp", defaultConf);
@@ -116,10 +124,14 @@ void OAIVPSApi::initializeServerConfigs() {
     _serverIndices.insert("postVpsSetupVnc", 0);
     _serverConfigs.insert("postVpsSlices", defaultConf);
     _serverIndices.insert("postVpsSlices", 0);
+    _serverConfigs.insert("postVpsTrafficUsage", defaultConf);
+    _serverIndices.insert("postVpsTrafficUsage", 0);
     _serverConfigs.insert("postVpsViewDesktop", defaultConf);
     _serverIndices.insert("postVpsViewDesktop", 0);
     _serverConfigs.insert("putVps", defaultConf);
     _serverIndices.insert("putVps", 0);
+    _serverConfigs.insert("putVpsBuyHdSpace", defaultConf);
+    _serverIndices.insert("putVpsBuyHdSpace", 0);
     _serverConfigs.insert("updateVpsInfo", defaultConf);
     _serverIndices.insert("updateVpsInfo", 0);
     _serverConfigs.insert("vPSCancel", defaultConf);
@@ -1126,6 +1138,72 @@ void OAIVPSApi::getNewVpsCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
+void OAIVPSApi::getVpsBackup(const qint32 &id) {
+    QString fullPath = QString(_serverConfigs["getVpsBackup"][_serverIndices.value("getVpsBackup")].URL()+"/vps/{id}/backup");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "GET");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIVPSApi::getVpsBackupCallback);
+    connect(this, &OAIVPSApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIVPSApi::getVpsBackupCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    OAIQueueResponse output(QString(worker->response));
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT getVpsBackupSignal(output);
+        Q_EMIT getVpsBackupSignalFull(worker, output);
+    } else {
+        Q_EMIT getVpsBackupSignalError(output, error_type, error_str);
+        Q_EMIT getVpsBackupSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
 void OAIVPSApi::getVpsBackups(const qint32 &id, const ::OpenAPI::OptionalParam<QString> &all) {
     QString fullPath = QString(_serverConfigs["getVpsBackups"][_serverIndices.value("getVpsBackups")].URL()+"/vps/{id}/backups");
     
@@ -1338,6 +1416,136 @@ void OAIVPSApi::getVpsBuyIpCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
+void OAIVPSApi::getVpsChangeHostname(const qint32 &id) {
+    QString fullPath = QString(_serverConfigs["getVpsChangeHostname"][_serverIndices.value("getVpsChangeHostname")].URL()+"/vps/{id}/change_hostname");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "GET");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIVPSApi::getVpsChangeHostnameCallback);
+    connect(this, &OAIVPSApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIVPSApi::getVpsChangeHostnameCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT getVpsChangeHostnameSignal();
+        Q_EMIT getVpsChangeHostnameSignalFull(worker);
+    } else {
+        Q_EMIT getVpsChangeHostnameSignalError(error_type, error_str);
+        Q_EMIT getVpsChangeHostnameSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
+void OAIVPSApi::getVpsChangeRootPassword(const qint32 &id) {
+    QString fullPath = QString(_serverConfigs["getVpsChangeRootPassword"][_serverIndices.value("getVpsChangeRootPassword")].URL()+"/vps/{id}/change_root_password");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "GET");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIVPSApi::getVpsChangeRootPasswordCallback);
+    connect(this, &OAIVPSApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIVPSApi::getVpsChangeRootPasswordCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT getVpsChangeRootPasswordSignal();
+        Q_EMIT getVpsChangeRootPasswordSignalFull(worker);
+    } else {
+        Q_EMIT getVpsChangeRootPasswordSignalError(error_type, error_str);
+        Q_EMIT getVpsChangeRootPasswordSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
 void OAIVPSApi::getVpsChangeTimezone(const qint32 &id) {
     QString fullPath = QString(_serverConfigs["getVpsChangeTimezone"][_serverIndices.value("getVpsChangeTimezone")].URL()+"/vps/{id}/change_timezone");
     
@@ -1476,6 +1684,71 @@ void OAIVPSApi::getVpsInfoCallback(OAIHttpRequestWorker *worker) {
     } else {
         Q_EMIT getVpsInfoSignalError(output, error_type, error_str);
         Q_EMIT getVpsInfoSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
+void OAIVPSApi::getVpsInsertCd(const qint32 &id) {
+    QString fullPath = QString(_serverConfigs["getVpsInsertCd"][_serverIndices.value("getVpsInsertCd")].URL()+"/vps/{id}/insert_cd");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "GET");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIVPSApi::getVpsInsertCdCallback);
+    connect(this, &OAIVPSApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIVPSApi::getVpsInsertCdCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT getVpsInsertCdSignal();
+        Q_EMIT getVpsInsertCdSignalFull(worker);
+    } else {
+        Q_EMIT getVpsInsertCdSignalError(error_type, error_str);
+        Q_EMIT getVpsInsertCdSignalErrorFull(worker, error_type, error_str);
     }
 }
 
@@ -1669,6 +1942,71 @@ void OAIVPSApi::getVpsReinstallOsCallback(OAIHttpRequestWorker *worker) {
     } else {
         Q_EMIT getVpsReinstallOsSignalError(output, error_type, error_str);
         Q_EMIT getVpsReinstallOsSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
+void OAIVPSApi::getVpsResetPassword(const qint32 &id) {
+    QString fullPath = QString(_serverConfigs["getVpsResetPassword"][_serverIndices.value("getVpsResetPassword")].URL()+"/vps/{id}/reset_password");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "GET");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIVPSApi::getVpsResetPasswordCallback);
+    connect(this, &OAIVPSApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIVPSApi::getVpsResetPasswordCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT getVpsResetPasswordSignal();
+        Q_EMIT getVpsResetPasswordSignalFull(worker);
+    } else {
+        Q_EMIT getVpsResetPasswordSignalError(error_type, error_str);
+        Q_EMIT getVpsResetPasswordSignalErrorFull(worker, error_type, error_str);
     }
 }
 
@@ -2062,72 +2400,6 @@ void OAIVPSApi::getVpsWelcomeEmailCallback(OAIHttpRequestWorker *worker) {
     } else {
         Q_EMIT getVpsWelcomeEmailSignalError(output, error_type, error_str);
         Q_EMIT getVpsWelcomeEmailSignalErrorFull(worker, error_type, error_str);
-    }
-}
-
-void OAIVPSApi::postVpsBackup(const qint32 &id) {
-    QString fullPath = QString(_serverConfigs["postVpsBackup"][_serverIndices.value("postVpsBackup")].URL()+"/vps/{id}/backup");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    
-    {
-        QString idPathParam("{");
-        idPathParam.append("id").append("}");
-        QString pathPrefix, pathSuffix, pathDelimiter;
-        QString pathStyle = "simple";
-        if (pathStyle == "")
-            pathStyle = "simple";
-        pathPrefix = getParamStylePrefix(pathStyle);
-        pathSuffix = getParamStyleSuffix(pathStyle);
-        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
-        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
-        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
-    }
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "GET");
-
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIVPSApi::postVpsBackupCallback);
-    connect(this, &OAIVPSApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAIVPSApi::postVpsBackupCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    OAIQueueResponse output(QString(worker->response));
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT postVpsBackupSignal(output);
-        Q_EMIT postVpsBackupSignalFull(worker, output);
-    } else {
-        Q_EMIT postVpsBackupSignalError(output, error_type, error_str);
-        Q_EMIT postVpsBackupSignalErrorFull(worker, error_type, error_str);
     }
 }
 
@@ -3028,6 +3300,71 @@ void OAIVPSApi::postVpsSlicesCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
+void OAIVPSApi::postVpsTrafficUsage(const qint32 &id) {
+    QString fullPath = QString(_serverConfigs["postVpsTrafficUsage"][_serverIndices.value("postVpsTrafficUsage")].URL()+"/vps/{id}/traffic_usage");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "POST");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIVPSApi::postVpsTrafficUsageCallback);
+    connect(this, &OAIVPSApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIVPSApi::postVpsTrafficUsageCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT postVpsTrafficUsageSignal();
+        Q_EMIT postVpsTrafficUsageSignalFull(worker);
+    } else {
+        Q_EMIT postVpsTrafficUsageSignalError(error_type, error_str);
+        Q_EMIT postVpsTrafficUsageSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
 void OAIVPSApi::postVpsViewDesktop(const qint32 &id) {
     QString fullPath = QString(_serverConfigs["postVpsViewDesktop"][_serverIndices.value("postVpsViewDesktop")].URL()+"/vps/{id}/view_desktop");
     
@@ -3147,6 +3484,71 @@ void OAIVPSApi::putVpsCallback(OAIHttpRequestWorker *worker) {
     } else {
         Q_EMIT putVpsSignalError(output, error_type, error_str);
         Q_EMIT putVpsSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
+void OAIVPSApi::putVpsBuyHdSpace(const qint32 &id) {
+    QString fullPath = QString(_serverConfigs["putVpsBuyHdSpace"][_serverIndices.value("putVpsBuyHdSpace")].URL()+"/vps/{id}/buy_hd_space");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "PUT");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIVPSApi::putVpsBuyHdSpaceCallback);
+    connect(this, &OAIVPSApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIVPSApi::putVpsBuyHdSpaceCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT putVpsBuyHdSpaceSignal();
+        Q_EMIT putVpsBuyHdSpaceSignalFull(worker);
+    } else {
+        Q_EMIT putVpsBuyHdSpaceSignalError(error_type, error_str);
+        Q_EMIT putVpsBuyHdSpaceSignalErrorFull(worker, error_type, error_str);
     }
 }
 

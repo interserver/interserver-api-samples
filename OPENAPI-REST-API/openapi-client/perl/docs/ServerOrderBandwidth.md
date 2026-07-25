@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerOrderBandwidth
+# InterServerAPI::Object::ServerOrderBandwidth
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerOrderBandwidth;
+use InterServerAPI::Object::ServerOrderBandwidth;
 ```
 
 ## Properties

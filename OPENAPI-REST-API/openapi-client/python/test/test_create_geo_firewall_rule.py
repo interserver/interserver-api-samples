@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.create_geo_firewall_rule import CreateGeoFirewallRule
+from interserver_api_client.models.create_geo_firewall_rule import CreateGeoFirewallRule
 
 class TestCreateGeoFirewallRule(unittest.TestCase):
     """CreateGeoFirewallRule unit test stubs"""

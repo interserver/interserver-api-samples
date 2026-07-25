@@ -19,4 +19,3 @@ case class VpsTemplatesList(
   /* A listing of the templates. */
   templates: Seq[VpsTemplateRow]
 )
-

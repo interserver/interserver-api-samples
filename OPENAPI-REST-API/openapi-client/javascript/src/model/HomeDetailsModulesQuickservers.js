@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The HomeDetailsModulesQuickservers model module.
  * @module model/HomeDetailsModulesQuickservers
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeDetailsModulesQuickservers {
     /**

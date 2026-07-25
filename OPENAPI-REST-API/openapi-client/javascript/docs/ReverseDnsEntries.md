@@ -1,4 +1,4 @@
-# InterServerManagementApi.ReverseDnsEntries
+# InterserverApiClient.ReverseDnsEntries
 
 ## Properties
 

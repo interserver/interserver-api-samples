@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsTrafficDataSectionResponse();
+    instance = new InterserverApiClient.VpsTrafficDataSectionResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('VpsTrafficDataSectionResponse', function() {
     it('should create an instance of VpsTrafficDataSectionResponse', function() {
       // uncomment below and update the code to test VpsTrafficDataSectionResponse
-      //var instance = new InterServerManagementApi.VpsTrafficDataSectionResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsTrafficDataSectionResponse);
+      //var instance = new InterserverApiClient.VpsTrafficDataSectionResponse();
+      //expect(instance).to.be.a(InterserverApiClient.VpsTrafficDataSectionResponse);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.VpsTrafficDataSectionResponse();
+      //var instance = new InterserverApiClient.VpsTrafficDataSectionResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property data (base name: "data")', function() {
       // uncomment below and update the code to test the property data
-      //var instance = new InterServerManagementApi.VpsTrafficDataSectionResponse();
+      //var instance = new InterserverApiClient.VpsTrafficDataSectionResponse();
       //expect(instance).to.be();
     });
 

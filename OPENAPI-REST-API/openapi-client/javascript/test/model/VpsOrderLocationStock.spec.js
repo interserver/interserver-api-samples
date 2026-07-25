@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsOrderLocationStock();
+    instance = new InterserverApiClient.VpsOrderLocationStock();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('VpsOrderLocationStock', function() {
     it('should create an instance of VpsOrderLocationStock', function() {
       // uncomment below and update the code to test VpsOrderLocationStock
-      //var instance = new InterServerManagementApi.VpsOrderLocationStock();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsOrderLocationStock);
+      //var instance = new InterserverApiClient.VpsOrderLocationStock();
+      //expect(instance).to.be.a(InterserverApiClient.VpsOrderLocationStock);
     });
 
     it('should have the property _1 (base name: "1")', function() {
       // uncomment below and update the code to test the property _1
-      //var instance = new InterServerManagementApi.VpsOrderLocationStock();
+      //var instance = new InterserverApiClient.VpsOrderLocationStock();
       //expect(instance).to.be();
     });
 

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::HomeServicesWebhostingLinks
+# InterServerAPI::Object::HomeServicesWebhostingLinks
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::HomeServicesWebhostingLinks;
+use InterServerAPI::Object::HomeServicesWebhostingLinks;
 ```
 
 ## Properties

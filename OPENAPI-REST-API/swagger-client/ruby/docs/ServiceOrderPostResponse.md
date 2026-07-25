@@ -1,4 +1,4 @@
-# SwaggerClient::ServiceOrderPostResponse
+# InterserverApiClient::ServiceOrderPostResponse
 
 ## Properties
 Name | Type | Description | Notes

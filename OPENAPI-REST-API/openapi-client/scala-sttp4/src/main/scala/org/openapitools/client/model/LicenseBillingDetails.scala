@@ -40,4 +40,3 @@ case class LicenseBillingDetails(
   /* Additional service information in JSON format */
   service_extra_json: Option[String] = None
 )
-

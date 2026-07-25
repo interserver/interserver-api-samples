@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainContactDetails = Initialize-PSOpenAPIToolsDomainContactDetails  -Status null `
+$DomainContactDetails = Initialize-InterserverApiDomainContactDetails  -Status null `
  -State null `
  -OrgName null `
  -Country null `

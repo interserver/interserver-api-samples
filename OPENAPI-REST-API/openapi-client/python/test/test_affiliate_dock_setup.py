@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.affiliate_dock_setup import AffiliateDockSetup
+from interserver_api_client.models.affiliate_dock_setup import AffiliateDockSetup
 
 class TestAffiliateDockSetup(unittest.TestCase):
     """AffiliateDockSetup unit test stubs"""

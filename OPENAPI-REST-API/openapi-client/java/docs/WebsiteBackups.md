@@ -10,4 +10,8 @@ List of available backups for a webhosting service with their names and sizes.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

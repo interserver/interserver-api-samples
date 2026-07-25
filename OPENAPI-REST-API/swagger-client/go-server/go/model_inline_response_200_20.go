@@ -11,7 +11,15 @@ package myadmin-client-go-server
 
 type InlineResponse20020 struct {
 
-	Success bool `json:"success"`
+	Continue_ bool `json:"continue,omitempty"`
 
-	Text string `json:"text"`
+	Errors []string `json:"errors,omitempty"`
+
+	ServiceType int32 `json:"serviceType,omitempty"`
+
+	ServiceCost float64 `json:"serviceCost,omitempty"`
+
+	OriginalCost float64 `json:"originalCost,omitempty"`
+
+	RepeatServiceCost float64 `json:"repeatServiceCost,omitempty"`
 }

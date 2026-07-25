@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DnsListItem();
+    instance = new InterserverApiClient.DnsListItem();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('DnsListItem', function() {
     it('should create an instance of DnsListItem', function() {
       // uncomment below and update the code to test DnsListItem
-      //var instance = new InterServerManagementApi.DnsListItem();
-      //expect(instance).to.be.a(InterServerManagementApi.DnsListItem);
+      //var instance = new InterserverApiClient.DnsListItem();
+      //expect(instance).to.be.a(InterserverApiClient.DnsListItem);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.DnsListItem();
+      //var instance = new InterserverApiClient.DnsListItem();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.DnsListItem();
+      //var instance = new InterserverApiClient.DnsListItem();
       //expect(instance).to.be();
     });
 
     it('should have the property content (base name: "content")', function() {
       // uncomment below and update the code to test the property content
-      //var instance = new InterServerManagementApi.DnsListItem();
+      //var instance = new InterserverApiClient.DnsListItem();
       //expect(instance).to.be();
     });
 

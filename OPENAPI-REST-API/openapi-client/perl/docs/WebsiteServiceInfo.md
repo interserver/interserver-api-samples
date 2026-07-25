@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::WebsiteServiceInfo
+# InterServerAPI::Object::WebsiteServiceInfo
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::WebsiteServiceInfo;
+use InterServerAPI::Object::WebsiteServiceInfo;
 ```
 
 ## Properties

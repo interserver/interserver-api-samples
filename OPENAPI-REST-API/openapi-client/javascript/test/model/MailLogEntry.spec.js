@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailLogEntry();
+    instance = new InterserverApiClient.MailLogEntry();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,157 +50,157 @@
   describe('MailLogEntry', function() {
     it('should create an instance of MailLogEntry', function() {
       // uncomment below and update the code to test MailLogEntry
-      //var instance = new InterServerManagementApi.MailLogEntry();
-      //expect(instance).to.be.a(InterServerManagementApi.MailLogEntry);
+      //var instance = new InterserverApiClient.MailLogEntry();
+      //expect(instance).to.be.a(InterserverApiClient.MailLogEntry);
     });
 
     it('should have the property _id (base name: "_id")', function() {
       // uncomment below and update the code to test the property _id
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property from (base name: "from")', function() {
       // uncomment below and update the code to test the property from
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property to (base name: "to")', function() {
       // uncomment below and update the code to test the property to
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property created (base name: "created")', function() {
       // uncomment below and update the code to test the property created
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property time (base name: "time")', function() {
       // uncomment below and update the code to test the property time
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property user (base name: "user")', function() {
       // uncomment below and update the code to test the property user
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property transtype (base name: "transtype")', function() {
       // uncomment below and update the code to test the property transtype
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property origin (base name: "origin")', function() {
       // uncomment below and update the code to test the property origin
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property _interface (base name: "interface")', function() {
       // uncomment below and update the code to test the property _interface
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property subject (base name: "subject")', function() {
       // uncomment below and update the code to test the property subject
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property messageId (base name: "messageId")', function() {
       // uncomment below and update the code to test the property messageId
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property sendingZone (base name: "sendingZone")', function() {
       // uncomment below and update the code to test the property sendingZone
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property bodySize (base name: "bodySize")', function() {
       // uncomment below and update the code to test the property bodySize
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property seq (base name: "seq")', function() {
       // uncomment below and update the code to test the property seq
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property delivered (base name: "delivered")', function() {
       // uncomment below and update the code to test the property delivered
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property code (base name: "code")', function() {
       // uncomment below and update the code to test the property code
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property recipient (base name: "recipient")', function() {
       // uncomment below and update the code to test the property recipient
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property response (base name: "response")', function() {
       // uncomment below and update the code to test the property response
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property domain (base name: "domain")', function() {
       // uncomment below and update the code to test the property domain
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property locked (base name: "locked")', function() {
       // uncomment below and update the code to test the property locked
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property lockTime (base name: "lockTime")', function() {
       // uncomment below and update the code to test the property lockTime
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property assigned (base name: "assigned")', function() {
       // uncomment below and update the code to test the property assigned
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property queued (base name: "queued")', function() {
       // uncomment below and update the code to test the property queued
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 
     it('should have the property mxHostname (base name: "mxHostname")', function() {
       // uncomment below and update the code to test the property mxHostname
-      //var instance = new InterServerManagementApi.MailLogEntry();
+      //var instance = new InterserverApiClient.MailLogEntry();
       //expect(instance).to.be();
     });
 

@@ -32,6 +32,7 @@ import org.openapitools.client.api.DomainNameserverGetResponse
 import org.openapitools.client.api.DomainNameserverPostRequest
 import org.openapitools.client.api.DomainNameserverPutRequest
 import org.openapitools.client.api.DomainOrder
+import org.openapitools.client.api.DomainOrderRequest
 import org.openapitools.client.api.DomainRow
 import org.openapitools.client.api.DomainSearchResponse
 import org.openapitools.client.api.DomainWhoisPrivacyRequest
@@ -46,7 +47,7 @@ object DomainsApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addDomain(host: String): Task[ServiceOrderPostResponse] = {
+  def addDomain(host: String, DomainOrderRequest: DomainOrderRequest): Task[ServiceOrderPostResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
 
     val path = "/domains/order"
@@ -61,7 +62,7 @@ object DomainsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(DomainOrderRequest)
       resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
@@ -130,7 +131,7 @@ object DomainsApi {
     } yield resp
   }
 
-  def deleteDomainDnssec(host: String, id: Integer, action: String)(implicit actionQuery: QueryParam[String]): Task[SuccessTextResponse] = {
+  def deleteDomainDnssec(host: String, id: Integer): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
 
     val path = "/domains/{id}/dnssec".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
@@ -140,7 +141,7 @@ object DomainsApi {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("action", Some(actionQuery.toParamString(action))))
+      )
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
@@ -298,44 +299,6 @@ object DomainsApi {
     } yield resp
   }
 
-  def getDomainOrderFields(host: String, domain: String, regType: String): Task[Unit] = {
-    val path = "/domains/order/{domain}/{regType}".replaceAll("\\{" + "domain" + "\\}",escape(domain.toString)).replaceAll("\\{" + "regType" + "\\}",escape(regType.toString))
-
-    val httpMethod = Method.GET
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
-
-    } yield resp
-  }
-
-  def getDomainOrderSearchResults(host: String, domain: String): Task[Unit] = {
-    val path = "/domains/order/{domain}".replaceAll("\\{" + "domain" + "\\}",escape(domain.toString))
-
-    val httpMethod = Method.GET
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
-
-    } yield resp
-  }
-
   def getDomainRenewal(host: String, id: Integer): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
 
@@ -483,7 +446,7 @@ object DomainsApi {
     } yield resp
   }
 
-  def patchDomains(host: String): Task[Unit] = {
+  def patchDomains(host: String, DomainOrderRequest: DomainOrderRequest): Task[Unit] = {
     val path = "/domains/order"
 
     val httpMethod = Method.PATCH
@@ -496,7 +459,7 @@ object DomainsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(DomainOrderRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -523,6 +486,25 @@ object DomainsApi {
     } yield resp
   }
 
+  def postDomainSearch(host: String, name: String): Task[Unit] = {
+    val path = "/domains/search/{name}".replaceAll("\\{" + "name" + "\\}",escape(name.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
   def postDomainTransfer(host: String, id: Integer): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
 
@@ -544,7 +526,7 @@ object DomainsApi {
     } yield resp
   }
 
-  def putDomains(host: String): Task[Unit] = {
+  def putDomains(host: String, DomainOrderRequest: DomainOrderRequest): Task[Unit] = {
     val path = "/domains/order"
 
     val httpMethod = Method.PUT
@@ -557,7 +539,7 @@ object DomainsApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(DomainOrderRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -584,7 +566,7 @@ object DomainsApi {
     } yield resp
   }
 
-  def updateDomainInfo(host: String, id: String): Task[SuccessTextResponse] = {
+  def updateDomainInfo(host: String, id: Integer): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
 
     val path = "/domains/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
@@ -654,7 +636,7 @@ class HttpServiceDomainsApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addDomain(): Task[ServiceOrderPostResponse] = {
+  def addDomain(DomainOrderRequest: DomainOrderRequest): Task[ServiceOrderPostResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
 
     val path = "/domains/order"
@@ -669,7 +651,7 @@ class HttpServiceDomainsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(DomainOrderRequest)
       resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
@@ -738,7 +720,7 @@ class HttpServiceDomainsApi(service: HttpService) {
     } yield resp
   }
 
-  def deleteDomainDnssec(id: Integer, action: String)(implicit actionQuery: QueryParam[String]): Task[SuccessTextResponse] = {
+  def deleteDomainDnssec(id: Integer): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
 
     val path = "/domains/{id}/dnssec".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
@@ -748,7 +730,7 @@ class HttpServiceDomainsApi(service: HttpService) {
     val headers = Headers(
       )
     val queryParams = Query(
-      ("action", Some(actionQuery.toParamString(action))))
+      )
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
@@ -906,44 +888,6 @@ class HttpServiceDomainsApi(service: HttpService) {
     } yield resp
   }
 
-  def getDomainOrderFields(domain: String, regType: String): Task[Unit] = {
-    val path = "/domains/order/{domain}/{regType}".replaceAll("\\{" + "domain" + "\\}",escape(domain.toString)).replaceAll("\\{" + "regType" + "\\}",escape(regType.toString))
-
-    val httpMethod = Method.GET
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
-
-    } yield resp
-  }
-
-  def getDomainOrderSearchResults(domain: String): Task[Unit] = {
-    val path = "/domains/order/{domain}".replaceAll("\\{" + "domain" + "\\}",escape(domain.toString))
-
-    val httpMethod = Method.GET
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
-
-    } yield resp
-  }
-
   def getDomainRenewal(id: Integer): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
 
@@ -1091,7 +1035,7 @@ class HttpServiceDomainsApi(service: HttpService) {
     } yield resp
   }
 
-  def patchDomains(): Task[Unit] = {
+  def patchDomains(DomainOrderRequest: DomainOrderRequest): Task[Unit] = {
     val path = "/domains/order"
 
     val httpMethod = Method.PATCH
@@ -1104,7 +1048,7 @@ class HttpServiceDomainsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(DomainOrderRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -1131,6 +1075,25 @@ class HttpServiceDomainsApi(service: HttpService) {
     } yield resp
   }
 
+  def postDomainSearch(name: String): Task[Unit] = {
+    val path = "/domains/search/{name}".replaceAll("\\{" + "name" + "\\}",escape(name.toString))
+
+    val httpMethod = Method.POST
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+
+    } yield resp
+  }
+
   def postDomainTransfer(id: Integer): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
 
@@ -1152,7 +1115,7 @@ class HttpServiceDomainsApi(service: HttpService) {
     } yield resp
   }
 
-  def putDomains(): Task[Unit] = {
+  def putDomains(DomainOrderRequest: DomainOrderRequest): Task[Unit] = {
     val path = "/domains/order"
 
     val httpMethod = Method.PUT
@@ -1165,7 +1128,7 @@ class HttpServiceDomainsApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(DomainOrderRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -1192,7 +1155,7 @@ class HttpServiceDomainsApi(service: HttpService) {
     } yield resp
   }
 
-  def updateDomainInfo(id: String): Task[SuccessTextResponse] = {
+  def updateDomainInfo(id: Integer): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
 
     val path = "/domains/{id}".replaceAll("\\{" + "id" + "\\}",escape(id.toString))

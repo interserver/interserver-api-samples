@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ScrubIpFilterTypesFiltersValue
+# InterServerAPI::Object::ScrubIpFilterTypesFiltersValue
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ScrubIpFilterTypesFiltersValue;
+use InterServerAPI::Object::ScrubIpFilterTypesFiltersValue;
 ```
 
 ## Properties

@@ -1,4 +1,4 @@
-# openapi::DeleteFilter500Response
+# interserverapi::DeleteFilter500Response
 
 
 ## Properties

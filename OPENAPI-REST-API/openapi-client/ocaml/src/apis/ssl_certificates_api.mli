@@ -5,12 +5,12 @@
  *
  *)
 
-val add_ssl : unit -> Service_order_post_response.t Lwt.t
+val add_ssl : ssl_order_request_t:Ssl_order_request.t -> Service_order_post_response.t Lwt.t
 val get_new_ssl : unit -> Yojson.Safe.t Lwt.t
 val get_ssl_info : id:int32 -> Yojson.Safe.t Lwt.t
 val get_ssl_invoices : id:int32 -> Charge_invoice_rows.t Lwt.t
 val get_ssl_list : unit -> unit Lwt.t
 val get_ssl_welcome_email : id:int32 -> Success_text_response.t Lwt.t
-val put_ssl : unit -> unit Lwt.t
+val put_ssl : ssl_order_request_t:Ssl_order_request.t -> unit Lwt.t
 val ssl_cancel : id:int32 -> Ssl_cancel_200_response.t Lwt.t
 val update_ssl_info : id:string -> Success_text_response.t Lwt.t

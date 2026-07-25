@@ -1,4 +1,4 @@
-# openapi::CloseTicketResponseSchema
+# interserverapi::CloseTicketResponseSchema
 
 
 ## Properties

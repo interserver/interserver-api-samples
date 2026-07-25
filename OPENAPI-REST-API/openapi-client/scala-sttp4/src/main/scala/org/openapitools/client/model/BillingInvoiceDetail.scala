@@ -17,5 +17,4 @@ package org.openapitools.client.model
    * Detailed invoice data payload returned for a single invoice.
    */
 case class BillingInvoiceDetail(
-)
-
+) extends Map[String, String]

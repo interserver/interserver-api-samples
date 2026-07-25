@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Domain = Initialize-PSOpenAPIToolsDomain  -ServiceInfo null `
+$Domain = Initialize-InterserverApiDomain  -ServiceInfo null `
  -ServiceTypes null `
  -ClientLinks null `
  -BillingDetails null `

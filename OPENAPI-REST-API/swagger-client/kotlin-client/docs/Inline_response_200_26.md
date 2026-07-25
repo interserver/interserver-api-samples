@@ -3,5 +3,4 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**text** | [**kotlin.String**](.md) | Confirmation message. |  [optional]
-**ticket** | [**kotlin.Int**](.md) | The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress. |  [optional]
+**ips** | [**kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt;**](.md) | A map of IP addresses to their current reverse DNS hostnames. |  [optional]

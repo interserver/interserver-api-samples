@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.mail_delist_response import MailDelistResponse
+from interserver_api_client.models.mail_delist_response import MailDelistResponse
 
 # TODO update the JSON string below
 json = "{}"

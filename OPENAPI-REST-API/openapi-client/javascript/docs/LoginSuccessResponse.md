@@ -1,4 +1,4 @@
-# InterServerManagementApi.LoginSuccessResponse
+# InterserverApiClient.LoginSuccessResponse
 
 ## Properties
 

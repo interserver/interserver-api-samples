@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsServiceInfo();
+    instance = new InterserverApiClient.VpsServiceInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,169 +50,169 @@
   describe('VpsServiceInfo', function() {
     it('should create an instance of VpsServiceInfo', function() {
       // uncomment below and update the code to test VpsServiceInfo
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsServiceInfo);
+      //var instance = new InterserverApiClient.VpsServiceInfo();
+      //expect(instance).to.be.a(InterserverApiClient.VpsServiceInfo);
     });
 
     it('should have the property vps_id (base name: "vps_id")', function() {
       // uncomment below and update the code to test the property vps_id
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_custid (base name: "vps_custid")', function() {
       // uncomment below and update the code to test the property vps_custid
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_server (base name: "vps_server")', function() {
       // uncomment below and update the code to test the property vps_server
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_ip (base name: "vps_ip")', function() {
       // uncomment below and update the code to test the property vps_ip
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_ipv6 (base name: "vps_ipv6")', function() {
       // uncomment below and update the code to test the property vps_ipv6
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_vzid (base name: "vps_vzid")', function() {
       // uncomment below and update the code to test the property vps_vzid
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_currency (base name: "vps_currency")', function() {
       // uncomment below and update the code to test the property vps_currency
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_type (base name: "vps_type")', function() {
       // uncomment below and update the code to test the property vps_type
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_order_date (base name: "vps_order_date")', function() {
       // uncomment below and update the code to test the property vps_order_date
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_status (base name: "vps_status")', function() {
       // uncomment below and update the code to test the property vps_status
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_invoice (base name: "vps_invoice")', function() {
       // uncomment below and update the code to test the property vps_invoice
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_coupon (base name: "vps_coupon")', function() {
       // uncomment below and update the code to test the property vps_coupon
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_extra (base name: "vps_extra")', function() {
       // uncomment below and update the code to test the property vps_extra
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_hostname (base name: "vps_hostname")', function() {
       // uncomment below and update the code to test the property vps_hostname
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_server_status (base name: "vps_server_status")', function() {
       // uncomment below and update the code to test the property vps_server_status
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_comment (base name: "vps_comment")', function() {
       // uncomment below and update the code to test the property vps_comment
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_slices (base name: "vps_slices")', function() {
       // uncomment below and update the code to test the property vps_slices
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_vnc (base name: "vps_vnc")', function() {
       // uncomment below and update the code to test the property vps_vnc
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_vnc_port (base name: "vps_vnc_port")', function() {
       // uncomment below and update the code to test the property vps_vnc_port
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_rootpass (base name: "vps_rootpass")', function() {
       // uncomment below and update the code to test the property vps_rootpass
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_mac (base name: "vps_mac")', function() {
       // uncomment below and update the code to test the property vps_mac
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_os (base name: "vps_os")', function() {
       // uncomment below and update the code to test the property vps_os
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_version (base name: "vps_version")', function() {
       // uncomment below and update the code to test the property vps_version
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_location (base name: "vps_location")', function() {
       // uncomment below and update the code to test the property vps_location
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_platform (base name: "vps_platform")', function() {
       // uncomment below and update the code to test the property vps_platform
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_diskused (base name: "vps_diskused")', function() {
       // uncomment below and update the code to test the property vps_diskused
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vps_diskmax (base name: "vps_diskmax")', function() {
       // uncomment below and update the code to test the property vps_diskmax
-      //var instance = new InterServerManagementApi.VpsServiceInfo();
+      //var instance = new InterserverApiClient.VpsServiceInfo();
       //expect(instance).to.be();
     });
 

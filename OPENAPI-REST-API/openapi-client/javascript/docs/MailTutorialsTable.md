@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailTutorialsTable
+# InterserverApiClient.MailTutorialsTable
 
 ## Properties
 

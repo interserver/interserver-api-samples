@@ -9,17 +9,16 @@ import Foundation
 
 
 open class InlineResponse20011: JSONEncodable {
+    public var success: Bool?
     public var text: String?
-    /** A pre-signed download URL valid for 24 hours. */
-    public var url: String?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
+        nillableDictionary["success"] = self.success
         nillableDictionary["text"] = self.text
-        nillableDictionary["url"] = self.url
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

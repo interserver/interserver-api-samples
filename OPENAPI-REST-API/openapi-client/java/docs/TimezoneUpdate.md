@@ -11,4 +11,8 @@ The request to update the time zone of a vps.
 |**timezone** | **String** | The time zone |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

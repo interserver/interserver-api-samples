@@ -1,4 +1,4 @@
-# openapi::MailExtraInfoTableRow
+# interserverapi::MailExtraInfoTableRow
 
 A single row in the mail service supplementary information table.
 

@@ -8,6 +8,8 @@ import io.swagger.model.AffiliatePaymentSetup;
 
 import io.swagger.model.AffiliateTrafficRow;
 
+import io.swagger.model.InlineResponse2001;
+
 import io.swagger.model.InlineResponse401;
 
 import io.swagger.model.MonthlyCounts;
@@ -36,6 +38,12 @@ public class AffiliateApiController implements AffiliateApi {
     }
 
     @Override
+    public Single<HttpResponse<Void>> getAffiliateDownload(@Nullable String st, @Nullable String ex, @Nullable Integer year) {
+        // TODO: Implement me
+        return AffiliateApi.super.getAffiliateDownload(st, ex, year);
+    }
+
+    @Override
     public Single<HttpResponse<TextResponse>> getAffiliateRichReport() {
         // TODO: Implement me
         return AffiliateApi.super.getAffiliateRichReport();
@@ -48,9 +56,9 @@ public class AffiliateApiController implements AffiliateApi {
     }
 
     @Override
-    public Single<HttpResponse<TextResponse>> getAffiliateSalesReport() {
+    public Single<HttpResponse<InlineResponse2001>> getAffiliateSignups(@Nullable String st) {
         // TODO: Implement me
-        return AffiliateApi.super.getAffiliateSalesReport();
+        return AffiliateApi.super.getAffiliateSignups(st);
     }
 
     @Override
@@ -75,18 +83,6 @@ public class AffiliateApiController implements AffiliateApi {
     public Single<HttpResponse<TextResponse>> updateAffiliateDockSetup(@NotNull @Valid AffiliateDockSetup body) {
         // TODO: Implement me
         return AffiliateApi.super.updateAffiliateDockSetup(body);
-    }
-
-    @Override
-    public Single<HttpResponse<TextResponse>> updateAffiliateLandingPage(@NotNull String affiliateDockTitle, @NotNull String affiliateDockDescription, @NotNull String referrerCoupon) {
-        // TODO: Implement me
-        return AffiliateApi.super.updateAffiliateLandingPage(affiliateDockTitle, affiliateDockDescription, referrerCoupon);
-    }
-
-    @Override
-    public Single<HttpResponse<TextResponse>> updateAffiliateLandingPage(@NotNull @Valid AffiliateDockSetup body) {
-        // TODO: Implement me
-        return AffiliateApi.super.updateAffiliateLandingPage(body);
     }
 
     @Override

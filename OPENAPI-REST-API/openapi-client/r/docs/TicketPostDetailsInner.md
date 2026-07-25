@@ -1,4 +1,4 @@
-# openapi::TicketPostDetailsInner
+# interserverapi::TicketPostDetailsInner
 
 
 ## Properties

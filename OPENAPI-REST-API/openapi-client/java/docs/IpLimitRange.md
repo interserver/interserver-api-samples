@@ -12,4 +12,8 @@ The lower and upper bounds of an ip range.
 |**end** | **String** | The ending (or last) IP address in the range. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

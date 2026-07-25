@@ -11,26 +11,15 @@
  */
 package io.swagger.client.models
 
-import io.swagger.client.models.InlineResponse20027Bandwidth
-import io.swagger.client.models.InlineResponse20027Cp
-import io.swagger.client.models.InlineResponse20027Ips
-import io.swagger.client.models.InlineResponse20027Os
-import io.swagger.client.models.InlineResponse20027Raid
 
 /**
  * 
- * @param bandwidth 
- * @param ips 
- * @param os 
- * @param cp 
- * @param raid 
+ * @param message 
+ * @param success 
  */
 data class InlineResponse20027 (
 
-    val bandwidth: kotlin.Array<InlineResponse20027Bandwidth>? = null,
-    val ips: kotlin.Array<InlineResponse20027Ips>? = null,
-    val os: kotlin.Array<InlineResponse20027Os>? = null,
-    val cp: kotlin.Array<InlineResponse20027Cp>? = null,
-    val raid: kotlin.Array<InlineResponse20027Raid>? = null
+    val message: kotlin.String? = null,
+    val success: kotlin.Boolean? = null
 ) {
 }

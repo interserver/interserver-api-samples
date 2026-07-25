@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { HostnameObject } from './api';
+import { HostnameObject } from '@interserver/myadmin-client';
 
 const instance: HostnameObject = {
     hostname,

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerOrderCPU();
+    instance = new InterserverApiClient.ServerOrderCPU();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,157 +50,157 @@
   describe('ServerOrderCPU', function() {
     it('should create an instance of ServerOrderCPU', function() {
       // uncomment below and update the code to test ServerOrderCPU
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerOrderCPU);
+      //var instance = new InterserverApiClient.ServerOrderCPU();
+      //expect(instance).to.be.a(InterserverApiClient.ServerOrderCPU);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property price (base name: "price")', function() {
       // uncomment below and update the code to test the property price
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property img (base name: "img")', function() {
       // uncomment below and update the code to test the property img
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property short_desc (base name: "short_desc")', function() {
       // uncomment below and update the code to test the property short_desc
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property long_desc (base name: "long_desc")', function() {
       // uncomment below and update the code to test the property long_desc
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property location (base name: "location")', function() {
       // uncomment below and update the code to test the property location
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property fsb (base name: "fsb")', function() {
       // uncomment below and update the code to test the property fsb
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property manu (base name: "manu")', function() {
       // uncomment below and update the code to test the property manu
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property speed (base name: "speed")', function() {
       // uncomment below and update the code to test the property speed
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property cache (base name: "cache")', function() {
       // uncomment below and update the code to test the property cache
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property active (base name: "active")', function() {
       // uncomment below and update the code to test the property active
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property num_cores (base name: "num_cores")', function() {
       // uncomment below and update the code to test the property num_cores
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property num_cpus (base name: "num_cpus")', function() {
       // uncomment below and update the code to test the property num_cpus
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property benchmark (base name: "benchmark")', function() {
       // uncomment below and update the code to test the property benchmark
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property monthly_price (base name: "monthly_price")', function() {
       // uncomment below and update the code to test the property monthly_price
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property max_ram (base name: "max_ram")', function() {
       // uncomment below and update the code to test the property max_ram
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property min_ram (base name: "min_ram")', function() {
       // uncomment below and update the code to test the property min_ram
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property max_lff (base name: "max_lff")', function() {
       // uncomment below and update the code to test the property max_lff
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property max_sff (base name: "max_sff")', function() {
       // uncomment below and update the code to test the property max_sff
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property max_nve (base name: "max_nve")', function() {
       // uncomment below and update the code to test the property max_nve
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property visible (base name: "visible")', function() {
       // uncomment below and update the code to test the property visible
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property hd_ids (base name: "hd_ids")', function() {
       // uncomment below and update the code to test the property hd_ids
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property price_display (base name: "price_display")', function() {
       // uncomment below and update the code to test the property price_display
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 
     it('should have the property monthly_price_display (base name: "monthly_price_display")', function() {
       // uncomment below and update the code to test the property monthly_price_display
-      //var instance = new InterServerManagementApi.ServerOrderCPU();
+      //var instance = new InterserverApiClient.ServerOrderCPU();
       //expect(instance).to.be();
     });
 

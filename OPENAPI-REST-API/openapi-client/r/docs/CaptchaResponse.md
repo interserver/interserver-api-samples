@@ -1,4 +1,4 @@
-# openapi::CaptchaResponse
+# interserverapi::CaptchaResponse
 
 A base-64 encoded captcha image.
 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain import Domain
+from interserver_api_client.models.domain import Domain
 
 class TestDomain(unittest.TestCase):
     """Domain unit test stubs"""
@@ -36,7 +36,7 @@ class TestDomain(unittest.TestCase):
         model = Domain()
         if include_optional:
             return Domain(
-                service_info = openapi_client.models.domain_service_info.DomainServiceInfo(
+                service_info = interserver_api_client.models.domain_service_info.DomainServiceInfo(
                     domain_id = '', 
                     domain_hostname = '', 
                     domain_username = '', 
@@ -50,7 +50,7 @@ class TestDomain(unittest.TestCase):
                     domain_invoice = '', 
                     domain_coupon = '', ),
                 service_types = {
-                    'key' : openapi_client.models.domain_service_type.DomainServiceType(
+                    'key' : interserver_api_client.models.domain_service_type.DomainServiceType(
                         services_id = '', 
                         services_name = '', 
                         services_cost = '', 
@@ -62,14 +62,14 @@ class TestDomain(unittest.TestCase):
                         services_module = '', )
                     },
                 client_links = [
-                    openapi_client.models.domain_client_link.DomainClientLink(
+                    interserver_api_client.models.domain_client_link.DomainClientLink(
                         label = '', 
                         link = '', 
                         icon = '', 
                         icon_text = '', 
                         help_text = '', )
                     ],
-                billing_details = openapi_client.models.domain_billing_details.DomainBillingDetails(
+                billing_details = interserver_api_client.models.domain_billing_details.DomainBillingDetails(
                     service_last_invoice_date = '', 
                     service_payment_status = '', 
                     service_frequency = '', 
@@ -78,13 +78,13 @@ class TestDomain(unittest.TestCase):
                     service_currency = '', 
                     service_currency_symbol = '', 
                     service_cost_info = '', 
-                    service_extra = openapi_client.models.domain_billing_extra.DomainBillingExtra(
-                        order = openapi_client.models.domain_order_response.DomainOrderResponse(
+                    service_extra = interserver_api_client.models.domain_billing_extra.DomainBillingExtra(
+                        order = interserver_api_client.models.domain_order_response.DomainOrderResponse(
                             _ops_version = '', 
                             protocol = '', 
                             is_success = '', 
                             action = '', 
-                            attributes = openapi_client.models.domain_order_response_attributes.DomainOrderResponse_attributes(
+                            attributes = interserver_api_client.models.domain_order_response_attributes.DomainOrderResponse_attributes(
                                 id = '', 
                                 admin_email = '', ), 
                             response_text = '', 
@@ -92,7 +92,7 @@ class TestDomain(unittest.TestCase):
                             response_code = '', ), 
                         order_id = '', 
                         domain_id = '', 
-                        prov_process_pending = openapi_client.models.domain_prov_process_pending.DomainProvProcessPending(
+                        prov_process_pending = interserver_api_client.models.domain_prov_process_pending.DomainProvProcessPending(
                             _ops_version = '', 
                             response_text = '', 
                             protocol = '', 
@@ -116,13 +116,13 @@ class TestDomain(unittest.TestCase):
                     service_extra_json = '', ),
                 cust_currency = '',
                 cust_currency_symbol = '',
-                service_extra = openapi_client.models.domain_billing_extra.DomainBillingExtra(
-                    order = openapi_client.models.domain_order_response.DomainOrderResponse(
+                service_extra = interserver_api_client.models.domain_billing_extra.DomainBillingExtra(
+                    order = interserver_api_client.models.domain_order_response.DomainOrderResponse(
                         _ops_version = '', 
                         protocol = '', 
                         is_success = '', 
                         action = '', 
-                        attributes = openapi_client.models.domain_order_response_attributes.DomainOrderResponse_attributes(
+                        attributes = interserver_api_client.models.domain_order_response_attributes.DomainOrderResponse_attributes(
                             id = '', 
                             admin_email = '', ), 
                         response_text = '', 
@@ -130,7 +130,7 @@ class TestDomain(unittest.TestCase):
                         response_code = '', ), 
                     order_id = '', 
                     domain_id = '', 
-                    prov_process_pending = openapi_client.models.domain_prov_process_pending.DomainProvProcessPending(
+                    prov_process_pending = interserver_api_client.models.domain_prov_process_pending.DomainProvProcessPending(
                         _ops_version = '', 
                         response_text = '', 
                         protocol = '', 
@@ -151,15 +151,15 @@ class TestDomain(unittest.TestCase):
                     country = '', 
                     phone = '', 
                     fax = '', ),
-                extra_info_tables = openapi_client.models.backup_extra_info_tables.BackupExtraInfoTables(
-                    ip_info = openapi_client.models.backup_ip_info.BackupIPInfo(
+                extra_info_tables = interserver_api_client.models.backup_extra_info_tables.BackupExtraInfoTables(
+                    ip_info = interserver_api_client.models.backup_ip_info.BackupIPInfo(
                         title = 'IP Information', 
                         rows = [
-                            openapi_client.models.backup_ip_info_row.BackupIPInfoRow(
+                            interserver_api_client.models.backup_ip_info_row.BackupIPInfoRow(
                                 desc = 'Netmask', 
                                 value = '255.255.255.248', )
                             ], ), ),
-                service_type = openapi_client.models.domain_service_type.DomainServiceType(
+                service_type = interserver_api_client.models.domain_service_type.DomainServiceType(
                     services_id = '', 
                     services_name = '', 
                     services_cost = '', 
@@ -169,7 +169,7 @@ class TestDomain(unittest.TestCase):
                     services_field1 = '', 
                     services_field2 = '', 
                     services_module = '', ),
-                contact_details = openapi_client.models.domain_contact_details.DomainContactDetails(
+                contact_details = interserver_api_client.models.domain_contact_details.DomainContactDetails(
                     status = '', 
                     state = '', 
                     org_name = '', 
@@ -190,11 +190,11 @@ class TestDomain(unittest.TestCase):
                 domain_logs = [
                     ''
                     ],
-                all_info = openapi_client.models.domain_all_info.DomainAllInfo(
+                all_info = interserver_api_client.models.domain_all_info.DomainAllInfo(
                     _ops_version = '', 
-                    attributes = openapi_client.models.domain_all_info_attributes.DomainAllInfo_attributes(
-                        contact_set = openapi_client.models.domain_all_info_attributes_contact_set.DomainAllInfo_attributes_contact_set(
-                            owner = openapi_client.models.domain_owner_contact.DomainOwnerContact(
+                    attributes = interserver_api_client.models.domain_all_info_attributes.DomainAllInfo_attributes(
+                        contact_set = interserver_api_client.models.domain_all_info_attributes_contact_set.DomainAllInfo_attributes_contact_set(
+                            owner = interserver_api_client.models.domain_owner_contact.DomainOwnerContact(
                                 postal_code = '', 
                                 org_name = '', 
                                 country = '', 
@@ -209,7 +209,7 @@ class TestDomain(unittest.TestCase):
                                 city = '', 
                                 phone = '', 
                                 address1 = '', ), 
-                            admin = openapi_client.models.domain_admin_contact.DomainAdminContact(
+                            admin = interserver_api_client.models.domain_admin_contact.DomainAdminContact(
                                 status = '', 
                                 state = '', 
                                 org_name = '', 
@@ -224,7 +224,7 @@ class TestDomain(unittest.TestCase):
                                 phone = '', 
                                 first_name = '', 
                                 last_name = '', ), 
-                            tech = openapi_client.models.domain_tech_contact.DomainTechContact(
+                            tech = interserver_api_client.models.domain_tech_contact.DomainTechContact(
                                 state = '', 
                                 status = '', 
                                 org_name = '', 
@@ -247,7 +247,7 @@ class TestDomain(unittest.TestCase):
                         sponsoring_rsp = '', 
                         gdpr_consent_status = '', 
                         nameserver_list = [
-                            openapi_client.models.domain_name_server.DomainNameServer(
+                            interserver_api_client.models.domain_name_server.DomainNameServer(
                                 sortorder = '', 
                                 name = '', 
                                 ipaddress = '', )

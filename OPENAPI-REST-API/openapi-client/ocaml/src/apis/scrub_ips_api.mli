@@ -19,5 +19,6 @@ val get_scrub_ip_invoices : id:int32 -> Charge_invoice_rows.t Lwt.t
 val get_scrub_ip_logs : id:string -> Scrub_ips_log_row_schema.t list Lwt.t
 val get_scrub_ips_list : unit -> Scrub_ips_row_schema.t list Lwt.t
 val place_scrub_order : scrub_ip_place_order_t:Scrub_ip_place_order.t -> Place_scrub_order_201_response.t Lwt.t
+val put_scrub_ips : scrub_ip_place_order_t:Scrub_ip_place_order.t -> Put_scrub_ips_200_response.t Lwt.t
 val scrub_ips_delete_geo_rule : id:int32 -> delete_geo_firewall_rule_t:Delete_geo_firewall_rule.t -> Scrub_ips_delete_rule_200_response.t Lwt.t
 val scrub_ips_delete_rule : id:int32 -> delete_firewall_rule_t:Delete_firewall_rule.t -> Scrub_ips_delete_rule_200_response.t Lwt.t

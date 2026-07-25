@@ -2,11 +2,11 @@ package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
 
-import io.swagger.model.InlineResponse20019;
+import io.swagger.model.InlineResponse20021;
 
-import io.swagger.model.InlineResponse20020;
+import io.swagger.model.InlineResponse20022;
 
-import io.swagger.model.InlineResponse20027;
+import io.swagger.model.InlineResponse20029;
 
 import io.swagger.model.InlineResponse401;
 
@@ -16,6 +16,8 @@ import io.swagger.model.ReverseDnsEntries;
 
 import io.swagger.model.Server;
 
+import io.swagger.model.ServerBulkIpmiPowerResponse;
+
 import io.swagger.model.ServerIpmiLiveInfo;
 
 import io.swagger.model.ServerIpmiLiveRequest;
@@ -23,6 +25,8 @@ import io.swagger.model.ServerIpmiLiveRequest;
 import io.swagger.model.ServerIpmiPowerRequest;
 
 import io.swagger.model.ServerOrder;
+
+import io.swagger.model.ServerOrderPostRequest;
 
 import io.swagger.model.ServerRow;
 
@@ -48,13 +52,13 @@ import java.util.Map;
 public class ServersApiController implements ServersApi {
 
     @Override
-    public Single<HttpResponse<InlineResponse20019>> addServer() {
+    public Single<HttpResponse<InlineResponse20021>> addServer(@NotNull @Valid ServerOrderPostRequest body) {
         // TODO: Implement me
-        return ServersApi.super.addServer();
+        return ServersApi.super.addServer(body);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20027>> buyItNowServerOrder() {
+    public Single<HttpResponse<InlineResponse20029>> buyItNowServerOrder() {
         // TODO: Implement me
         return ServersApi.super.buyItNowServerOrder();
     }
@@ -114,9 +118,9 @@ public class ServersApiController implements ServersApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> putServers() {
+    public Single<HttpResponse<ServerBulkIpmiPowerResponse>> serverBulkIpmiPowerGet(@NotNull String ids) {
         // TODO: Implement me
-        return ServersApi.super.putServers();
+        return ServersApi.super.serverBulkIpmiPowerGet(ids);
     }
 
     @Override
@@ -156,7 +160,7 @@ public class ServersApiController implements ServersApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20020>> serversCancel(Integer id) {
+    public Single<HttpResponse<InlineResponse20022>> serversCancel(Integer id) {
         // TODO: Implement me
         return ServersApi.super.serversCancel(id);
     }

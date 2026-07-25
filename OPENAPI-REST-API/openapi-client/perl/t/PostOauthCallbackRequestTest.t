@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::PostOauthCallbackRequest');
+use_ok('InterServerAPI::Object::PostOauthCallbackRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::PostOauthCallbackRequest->new();
+#my $instance = InterServerAPI::Object::PostOauthCallbackRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::PostOauthCallbackRequest');
+#isa_ok($instance, 'InterServerAPI::Object::PostOauthCallbackRequest');
 
 
 done_testing();

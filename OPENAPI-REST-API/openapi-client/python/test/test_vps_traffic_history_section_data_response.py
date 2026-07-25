@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_traffic_history_section_data_response import VpsTrafficHistorySectionDataResponse
+from interserver_api_client.models.vps_traffic_history_section_data_response import VpsTrafficHistorySectionDataResponse
 
 class TestVpsTrafficHistorySectionDataResponse(unittest.TestCase):
     """VpsTrafficHistorySectionDataResponse unit test stubs"""

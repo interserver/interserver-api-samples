@@ -146,19 +146,19 @@ BuyItNowServerOrder200Response <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`bandwidth`)) {
-        self$`bandwidth` <- ApiClient$new()$deserializeObj(this_object$`bandwidth`, "array[BuyItNowServerOrder200ResponseBandwidthInner]", loadNamespace("openapi"))
+        self$`bandwidth` <- ApiClient$new()$deserializeObj(this_object$`bandwidth`, "array[BuyItNowServerOrder200ResponseBandwidthInner]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`ips`)) {
-        self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[BuyItNowServerOrder200ResponseIpsInner]", loadNamespace("openapi"))
+        self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[BuyItNowServerOrder200ResponseIpsInner]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`os`)) {
-        self$`os` <- ApiClient$new()$deserializeObj(this_object$`os`, "array[BuyItNowServerOrder200ResponseOsInner]", loadNamespace("openapi"))
+        self$`os` <- ApiClient$new()$deserializeObj(this_object$`os`, "array[BuyItNowServerOrder200ResponseOsInner]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`cp`)) {
-        self$`cp` <- ApiClient$new()$deserializeObj(this_object$`cp`, "array[BuyItNowServerOrder200ResponseCpInner]", loadNamespace("openapi"))
+        self$`cp` <- ApiClient$new()$deserializeObj(this_object$`cp`, "array[BuyItNowServerOrder200ResponseCpInner]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`raid`)) {
-        self$`raid` <- ApiClient$new()$deserializeObj(this_object$`raid`, "array[BuyItNowServerOrder200ResponseRaidInner]", loadNamespace("openapi"))
+        self$`raid` <- ApiClient$new()$deserializeObj(this_object$`raid`, "array[BuyItNowServerOrder200ResponseRaidInner]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -181,11 +181,11 @@ BuyItNowServerOrder200Response <- R6::R6Class(
     #' @return the instance of BuyItNowServerOrder200Response
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`bandwidth` <- ApiClient$new()$deserializeObj(this_object$`bandwidth`, "array[BuyItNowServerOrder200ResponseBandwidthInner]", loadNamespace("openapi"))
-      self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[BuyItNowServerOrder200ResponseIpsInner]", loadNamespace("openapi"))
-      self$`os` <- ApiClient$new()$deserializeObj(this_object$`os`, "array[BuyItNowServerOrder200ResponseOsInner]", loadNamespace("openapi"))
-      self$`cp` <- ApiClient$new()$deserializeObj(this_object$`cp`, "array[BuyItNowServerOrder200ResponseCpInner]", loadNamespace("openapi"))
-      self$`raid` <- ApiClient$new()$deserializeObj(this_object$`raid`, "array[BuyItNowServerOrder200ResponseRaidInner]", loadNamespace("openapi"))
+      self$`bandwidth` <- ApiClient$new()$deserializeObj(this_object$`bandwidth`, "array[BuyItNowServerOrder200ResponseBandwidthInner]", loadNamespace("interserverapi"))
+      self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[BuyItNowServerOrder200ResponseIpsInner]", loadNamespace("interserverapi"))
+      self$`os` <- ApiClient$new()$deserializeObj(this_object$`os`, "array[BuyItNowServerOrder200ResponseOsInner]", loadNamespace("interserverapi"))
+      self$`cp` <- ApiClient$new()$deserializeObj(this_object$`cp`, "array[BuyItNowServerOrder200ResponseCpInner]", loadNamespace("interserverapi"))
+      self$`raid` <- ApiClient$new()$deserializeObj(this_object$`raid`, "array[BuyItNowServerOrder200ResponseRaidInner]", loadNamespace("interserverapi"))
       self
     },
 

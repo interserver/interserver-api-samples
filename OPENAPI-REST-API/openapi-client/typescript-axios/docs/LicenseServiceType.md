@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LicenseServiceType } from './api';
+import { LicenseServiceType } from '@interserver/myadmin-client';
 
 const instance: LicenseServiceType = {
     services_id,

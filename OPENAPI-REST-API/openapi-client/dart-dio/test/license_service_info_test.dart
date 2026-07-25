@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LicenseServiceInfo
 void main() {
-  final instance = LicenseServiceInfoBuilder();
-  // TODO add properties to the builder and call build()
+  final LicenseServiceInfo? instance = /* LicenseServiceInfo(...) */ null;
+  // TODO add properties to the entity
 
   group(LicenseServiceInfo, () {
     // License ID
@@ -26,7 +26,7 @@ void main() {
     });
 
     // License order date
-    // DateTime licenseOrderDate
+    // OffsetDateTime licenseOrderDate
     test('to test the property `licenseOrderDate`', () async {
       // TODO
     });
@@ -62,19 +62,19 @@ void main() {
     });
 
     // License hostname
-    // String licenseHostname
+    // Optional<String?> licenseHostname
     test('to test the property `licenseHostname`', () async {
       // TODO
     });
 
     // License key
-    // String licenseKey
+    // Optional<String?> licenseKey
     test('to test the property `licenseKey`', () async {
       // TODO
     });
 
     // Additional license information
-    // String licenseExtra
+    // Optional<String?> licenseExtra
     test('to test the property `licenseExtra`', () async {
       // TODO
     });

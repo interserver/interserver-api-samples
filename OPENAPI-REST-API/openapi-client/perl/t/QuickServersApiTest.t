@@ -24,16 +24,17 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::QuickServersApi');
+use_ok('InterServerAPI::QuickServersApi');
 
-my $api = OpenAPIClient::QuickServersApi->new();
-isa_ok($api, 'OpenAPIClient::QuickServersApi');
+my $api = InterServerAPI::QuickServersApi->new();
+isa_ok($api, 'InterServerAPI::QuickServersApi');
 
 #
 # add_qs test
 #
 # uncomment below and update the test
-#my $add_qs_result = $api->add_qs();
+#my $add_qs_qs_order_request = undef; # replace NULL with a proper value
+#my $add_qs_result = $api->add_qs(qs_order_request => $add_qs_qs_order_request);
 
 #
 # delete_qs_backup test
@@ -114,6 +115,13 @@ isa_ok($api, 'OpenAPIClient::QuickServersApi');
 #
 # uncomment below and update the test
 #my $get_new_qs_result = $api->get_new_qs();
+
+#
+# get_qs_backup test
+#
+# uncomment below and update the test
+#my $get_qs_backup_id = undef; # replace NULL with a proper value
+#my $get_qs_backup_result = $api->get_qs_backup(id => $get_qs_backup_id);
 
 #
 # get_qs_backups test
@@ -228,13 +236,6 @@ isa_ok($api, 'OpenAPIClient::QuickServersApi');
 #my $get_qs_welcome_email_result = $api->get_qs_welcome_email(id => $get_qs_welcome_email_id);
 
 #
-# post_qs_backup test
-#
-# uncomment below and update the test
-#my $post_qs_backup_id = undef; # replace NULL with a proper value
-#my $post_qs_backup_result = $api->post_qs_backup(id => $post_qs_backup_id);
-
-#
 # post_qs_change_hostname test
 #
 # uncomment below and update the test
@@ -325,7 +326,8 @@ isa_ok($api, 'OpenAPIClient::QuickServersApi');
 # put_qs test
 #
 # uncomment below and update the test
-#my $put_qs_result = $api->put_qs();
+#my $put_qs_qs_order_request = undef; # replace NULL with a proper value
+#my $put_qs_result = $api->put_qs(qs_order_request => $put_qs_qs_order_request);
 
 #
 # quickservers_cancel test

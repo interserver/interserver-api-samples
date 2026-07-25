@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.server_order_memory import ServerOrderMemory
+from interserver_api_client.models.server_order_memory import ServerOrderMemory
 
 # TODO update the JSON string below
 json = "{}"

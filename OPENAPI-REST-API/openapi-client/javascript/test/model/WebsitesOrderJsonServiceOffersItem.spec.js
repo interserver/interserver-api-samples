@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+    instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,79 +50,79 @@
   describe('WebsitesOrderJsonServiceOffersItem', function() {
     it('should create an instance of WebsitesOrderJsonServiceOffersItem', function() {
       // uncomment below and update the code to test WebsitesOrderJsonServiceOffersItem
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
-      //expect(instance).to.be.a(InterServerManagementApi.WebsitesOrderJsonServiceOffersItem);
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
+      //expect(instance).to.be.a(InterserverApiClient.WebsitesOrderJsonServiceOffersItem);
     });
 
     it('should have the property service_offer_id (base name: "service_offer_id")', function() {
       // uncomment below and update the code to test the property service_offer_id
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property service_id (base name: "service_id")', function() {
       // uncomment below and update the code to test the property service_id
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property intro_cost (base name: "intro_cost")', function() {
       // uncomment below and update the code to test the property intro_cost
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property renewal_cost (base name: "renewal_cost")', function() {
       // uncomment below and update the code to test the property renewal_cost
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property intro_frequency (base name: "intro_frequency")', function() {
       // uncomment below and update the code to test the property intro_frequency
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property renewal_frequency (base name: "renewal_frequency")', function() {
       // uncomment below and update the code to test the property renewal_frequency
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property allow_coupon (base name: "allow_coupon")', function() {
       // uncomment below and update the code to test the property allow_coupon
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property service_module (base name: "service_module")', function() {
       // uncomment below and update the code to test the property service_module
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property created_at (base name: "created_at")', function() {
       // uncomment below and update the code to test the property created_at
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property updated_at (base name: "updated_at")', function() {
       // uncomment below and update the code to test the property updated_at
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property deleted_at (base name: "deleted_at")', function() {
       // uncomment below and update the code to test the property deleted_at
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 
     it('should have the property currencySymbol (base name: "currencySymbol")', function() {
       // uncomment below and update the code to test the property currencySymbol
-      //var instance = new InterServerManagementApi.WebsitesOrderJsonServiceOffersItem();
+      //var instance = new InterserverApiClient.WebsitesOrderJsonServiceOffersItem();
       //expect(instance).to.be();
     });
 

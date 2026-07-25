@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.license_billing_details import LicenseBillingDetails
+from interserver_api_client.models.license_billing_details import LicenseBillingDetails
 
 class TestLicenseBillingDetails(unittest.TestCase):
     """LicenseBillingDetails unit test stubs"""

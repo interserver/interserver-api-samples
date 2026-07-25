@@ -16,4 +16,3 @@ case class UpdateAccountTfaRequest(
   /* The 6-digit verification code from your authenticator app. */
   `2fa_google_code`: String
 )
-

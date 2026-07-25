@@ -1,8 +1,8 @@
-# openapi.model.SslCancel200Response
+# interserver_api.model.SslCancel200Response
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

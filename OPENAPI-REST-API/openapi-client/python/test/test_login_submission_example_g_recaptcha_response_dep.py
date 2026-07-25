@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.login_submission_example_g_recaptcha_response_dep import LoginSubmissionExampleGRecaptchaResponseDep
+from interserver_api_client.models.login_submission_example_g_recaptcha_response_dep import LoginSubmissionExampleGRecaptchaResponseDep
 
 class TestLoginSubmissionExampleGRecaptchaResponseDep(unittest.TestCase):
     """LoginSubmissionExampleGRecaptchaResponseDep unit test stubs"""

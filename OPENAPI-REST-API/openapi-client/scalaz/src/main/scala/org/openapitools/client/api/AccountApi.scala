@@ -37,27 +37,6 @@ object AccountApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def changeAccountUsername(host: String): Task[TextResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[TextResponse] = jsonOf[TextResponse]
-
-    val path = "/account/username"
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[TextResponse](req)
-
-    } yield resp
-  }
-
   def deleteAccountOauthName(host: String, name: String): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]
 
@@ -400,27 +379,6 @@ class HttpServiceAccountApi(service: HttpService) {
   val client = Client.fromHttpService(service)
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
-
-  def changeAccountUsername(): Task[TextResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[TextResponse] = jsonOf[TextResponse]
-
-    val path = "/account/username"
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[TextResponse](req)
-
-    } yield resp
-  }
 
   def deleteAccountOauthName(name: String): Task[SuccessTextResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[SuccessTextResponse] = jsonOf[SuccessTextResponse]

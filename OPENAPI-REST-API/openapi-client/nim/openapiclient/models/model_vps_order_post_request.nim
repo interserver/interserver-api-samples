@@ -17,11 +17,13 @@ type VpsPlatform* {.pure.} = enum
   Kvm
   Hyperv
   Kvmstorage
+  UnknownDefaultOpenApi
 
 type Controlpanel* {.pure.} = enum
   None
   Cpanel
   Da
+  UnknownDefaultOpenApi
 
 type VpsOrderPostRequest* = object
   ## request to validate a vps order
@@ -42,11 +44,13 @@ func `%`*(v: VpsPlatform): JsonNode =
     of VpsPlatform.Kvm: %"kvm"
     of VpsPlatform.Hyperv: %"hyperv"
     of VpsPlatform.Kvmstorage: %"kvmstorage"
+    of VpsPlatform.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: VpsPlatform): string =
   result = case v:
     of VpsPlatform.Kvm: $("kvm")
     of VpsPlatform.Hyperv: $("hyperv")
     of VpsPlatform.Kvmstorage: $("kvmstorage")
+    of VpsPlatform.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[VpsPlatform]): VpsPlatform =
   if node.kind != JString:
@@ -59,6 +63,8 @@ proc to*(node: JsonNode, T: typedesc[VpsPlatform]): VpsPlatform =
     return VpsPlatform.Hyperv
   of $("kvmstorage"):
     return VpsPlatform.Kvmstorage
+  of $("11184809"):
+    return VpsPlatform.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for VpsPlatform: " & strVal)
 
@@ -67,11 +73,13 @@ func `%`*(v: Controlpanel): JsonNode =
     of Controlpanel.None: %"none"
     of Controlpanel.Cpanel: %"cpanel"
     of Controlpanel.Da: %"da"
+    of Controlpanel.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: Controlpanel): string =
   result = case v:
     of Controlpanel.None: $("none")
     of Controlpanel.Cpanel: $("cpanel")
     of Controlpanel.Da: $("da")
+    of Controlpanel.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[Controlpanel]): Controlpanel =
   if node.kind != JString:
@@ -84,6 +92,8 @@ proc to*(node: JsonNode, T: typedesc[Controlpanel]): Controlpanel =
     return Controlpanel.Cpanel
   of $("da"):
     return Controlpanel.Da
+  of $("11184809"):
+    return Controlpanel.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for Controlpanel: " & strVal)
 

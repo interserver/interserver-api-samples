@@ -7,7 +7,8 @@ import io.swagger.model.EmailAddress;
 import io.swagger.model.EmailAddressName;
 import io.swagger.model.EndDate;
 import io.swagger.model.GenericResponse;
-import io.swagger.model.InlineResponse2008;
+import io.swagger.model.IdAlertsBody;
+import io.swagger.model.InlineResponse2009;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.MailAlertRequest;
 import io.swagger.model.MailAlertUpdateRequest;
@@ -19,6 +20,7 @@ import io.swagger.model.MailDelistResponse;
 import io.swagger.model.MailDeliverabilityResponse;
 import io.swagger.model.MailLog;
 import io.swagger.model.MailOrder;
+import io.swagger.model.MailOrderRequest;
 import io.swagger.model.MailRow;
 import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
@@ -46,8 +48,9 @@ class MailApiControllerTest {
 
     @Test
     void addMailTest() {
+        MailOrderRequest body = null;
         try {
-            //TODO: api.addMail().blockingGet();
+            //TODO: api.addMail(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -77,10 +80,10 @@ class MailApiControllerTest {
 
     @Test
     void deleteMailAlertTest() {
+        IdAlertsBody body = null;
         Integer id = null;
-        Integer alertId = null;
         try {
-            //TODO: api.deleteMailAlert(id, alertId).blockingGet();
+            //TODO: api.deleteMailAlert(body, id).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -240,8 +243,9 @@ class MailApiControllerTest {
 
     @Test
     void putMailTest() {
+        MailOrderRequest body = null;
         try {
-            //TODO: api.putMail().blockingGet();
+            //TODO: api.putMail(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -295,6 +299,18 @@ class MailApiControllerTest {
         String id = null;
         try {
             //TODO: api.updateMailInfo(id).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void updateRuleTest() {
+        DenyRuleNew body = null;
+        Integer id = null;
+        String rule = null;
+        try {
+            //TODO: api.updateRule(body, id, rule).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ScrubIpPlaceOrder } from './api';
+import { ScrubIpPlaceOrder } from '@interserver/myadmin-client';
 
 const instance: ScrubIpPlaceOrder = {
     service_type,

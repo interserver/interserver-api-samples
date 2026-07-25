@@ -1,4 +1,4 @@
-# openapi::LicenseExtraInfoTables
+# interserverapi::LicenseExtraInfoTables
 
 
 ## Properties

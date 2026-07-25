@@ -68,4 +68,3 @@ case class MailLogEntry(
   /* The MX hostname the relay connected to for delivery.  Corresponds to the `mx` filter parameter. */
   mxHostname: Option[String] = None
 )
-

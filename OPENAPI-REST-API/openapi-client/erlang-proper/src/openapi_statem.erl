@@ -61,11 +61,11 @@ initial_state() -> #{}.
 %% add_website
 %%==============================================================================
 
-add_website() ->
-  openapi_api:add_website().
+add_website(OpenapiWebsiteOrderPostRequest) ->
+  openapi_api:add_website(OpenapiWebsiteOrderPostRequest).
 
 add_website_args(_S) ->
-  [].
+  [openapi_website_order_post_request:openapi_website_order_post_request()].
 
 %%==============================================================================
 %% get_new_website
@@ -191,11 +191,11 @@ post_websites_reverse_dns_args(_S) ->
 %% put_websites
 %%==============================================================================
 
-put_websites() ->
-  openapi_api:put_websites().
+put_websites(OpenapiWebsiteOrderPutRequest) ->
+  openapi_api:put_websites(OpenapiWebsiteOrderPutRequest).
 
 put_websites_args(_S) ->
-  [].
+  [openapi_website_order_put_request:openapi_website_order_put_request()].
 
 %%==============================================================================
 %% update_website_info

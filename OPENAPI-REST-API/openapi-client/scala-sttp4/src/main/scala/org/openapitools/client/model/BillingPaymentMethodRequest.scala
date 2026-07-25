@@ -22,4 +22,3 @@ case class BillingPaymentMethodRequest(
   /* Whether automatic credit card payments are enabled. */
   cc_auto: Option[String] = None
 )
-

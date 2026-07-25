@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverOrderServerDetails381 = Initialize-PSOpenAPIToolsQuickserverOrderServerDetails381  -Cpu AMD Ryzen 9 5900X 12-Core Processor `
+$QuickserverOrderServerDetails381 = Initialize-InterserverApiQuickserverOrderServerDetails381  -Cpu AMD Ryzen 9 5900X 12-Core Processor `
  -Ram 119GB `
  -Hd 1760GB `
  -Cores 24 `

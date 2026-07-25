@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainWhoisPrivacyRequest } from './api';
+import { DomainWhoisPrivacyRequest } from '@interserver/myadmin-client';
 
 const instance: DomainWhoisPrivacyRequest = {
     func,

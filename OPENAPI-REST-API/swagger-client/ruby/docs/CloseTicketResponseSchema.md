@@ -1,4 +1,4 @@
-# SwaggerClient::CloseTicketResponseSchema
+# InterserverApiClient::CloseTicketResponseSchema
 
 ## Properties
 Name | Type | Description | Notes

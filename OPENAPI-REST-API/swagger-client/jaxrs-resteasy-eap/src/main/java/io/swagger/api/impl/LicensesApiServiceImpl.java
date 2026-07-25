@@ -4,10 +4,11 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse2004;
+import io.swagger.model.InlineResponse2005;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
 import io.swagger.model.License;
+import io.swagger.model.LicenseOrderRequest;
 import io.swagger.model.LicenseRow;
 import io.swagger.model.LicensesOrder;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -23,7 +24,7 @@ import javax.ws.rs.core.SecurityContext;
 
 
 public class LicensesApiServiceImpl implements LicensesApi {
-      public Response addLicense(SecurityContext securityContext) {
+      public Response addLicense(LicenseOrderRequest body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -36,10 +37,6 @@ public class LicensesApiServiceImpl implements LicensesApi {
       return Response.ok().build();
   }
       public Response getLicenseList(SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
-      public Response getLicenseOrderCatTagInfo(String catTag,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -63,7 +60,7 @@ public class LicensesApiServiceImpl implements LicensesApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response putLicenses(SecurityContext securityContext) {
+      public Response putLicenses(LicenseOrderRequest body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

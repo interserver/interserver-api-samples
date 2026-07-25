@@ -23,4 +23,3 @@ case class QuickserverOrder(
   version: Option[QuickserverOrderVersion] = None,
   distro_sel: Option[QuickserverOrderDistroSel] = None
 )
-

@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsTemplatesList
+# InterserverApiClient.VpsTemplatesList
 
 ## Properties
 

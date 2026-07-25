@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::FloatingIpsCancel200Response
+# InterServerAPI::Object::FloatingIpsCancel200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::FloatingIpsCancel200Response;
+use InterServerAPI::Object::FloatingIpsCancel200Response;
 ```
 
 ## Properties

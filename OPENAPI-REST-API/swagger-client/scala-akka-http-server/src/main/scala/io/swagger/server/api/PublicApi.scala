@@ -15,10 +15,11 @@ import io.swagger.server.model.LoginSuccessResponse
 import io.swagger.server.model.Oauth_body
 import io.swagger.server.model.Oauth_body_2
 import io.swagger.server.model.ServicesInfo
-import io.swagger.server.model.inline_response_200_5
 import io.swagger.server.model.inline_response_200_6
 import io.swagger.server.model.inline_response_200_7
+import io.swagger.server.model.inline_response_200_8
 import io.swagger.server.model.inline_response_401
+import io.swagger.server.model.inline_response_map200
 
 class PublicApi(
     publicService: PublicApiService,
@@ -27,6 +28,36 @@ class PublicApi(
   import publicMarshaller._
 
   lazy val route: Route =
+    path() { 
+      get {
+        
+          
+            
+              
+                
+                  publicService.getAccountCurrencies()
+               
+             
+           
+         
+       
+      }
+    } ~
+    path() { 
+      get {
+        
+          
+            
+              
+                
+                  publicService.getAccountLocales()
+               
+             
+           
+         
+       
+      }
+    } ~
     path() { 
       get {
         
@@ -211,6 +242,28 @@ class PublicApi(
 
 trait PublicApiService {
 
+  def getAccountCurrencies200(responseStringarray: List[String]): Route =
+    complete((200, responseStringarray))
+  def getAccountCurrencies401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: An array of enabled currency codes., DataType: List[String]
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def getAccountCurrencies()
+      (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
+  def getAccountLocales200(responseinline_response_map200map: Map[String, inline_response_map200])(implicit toEntityMarshallerinline_response_map200map: ToEntityMarshaller[Map[String, inline_response_map200]]): Route =
+    complete((200, responseinline_response_map200map))
+  def getAccountLocales401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Map of locale identifiers to display names., DataType: Map[String, inline_response_map200]
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def getAccountLocales()
+      (implicit toEntityMarshallerinline_response_map200map: ToEntityMarshaller[Map[String, inline_response_map200]], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
   def getCaptcha200(responseCaptchaResponse: CaptchaResponse)(implicit toEntityMarshallerCaptchaResponse: ToEntityMarshaller[CaptchaResponse]): Route =
     complete((200, responseCaptchaResponse))
   def getCaptcha401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -266,16 +319,16 @@ trait PublicApiService {
   def getMPServers()
       (implicit toEntityMarshallerBuyItNowList: ToEntityMarshaller[BuyItNowList], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def getOauthRedirect200(responseinline_response_200_5: inline_response_200_5)(implicit toEntityMarshallerinline_response_200_5: ToEntityMarshaller[inline_response_200_5]): Route =
-    complete((200, responseinline_response_200_5))
+  def getOauthRedirect200(responseinline_response_200_6: inline_response_200_6)(implicit toEntityMarshallerinline_response_200_6: ToEntityMarshaller[inline_response_200_6]): Route =
+    complete((200, responseinline_response_200_6))
   def getOauthRedirect401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: OAuth redirect URL for the requested provider., DataType: inline_response_200_5
+   * Code: 200, Message: OAuth redirect URL for the requested provider., DataType: inline_response_200_6
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def getOauthRedirect(provider: String)
-      (implicit toEntityMarshallerinline_response_200_5: ToEntityMarshaller[inline_response_200_5], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_6: ToEntityMarshaller[inline_response_200_6], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getTimezones200(responseStringarray: List[String]): Route =
     complete((200, responseStringarray))
@@ -284,16 +337,16 @@ trait PublicApiService {
    */
   def getTimezones(): Route
 
-  def patchOauthTwoFactor200(responseinline_response_200_7: inline_response_200_7)(implicit toEntityMarshallerinline_response_200_7: ToEntityMarshaller[inline_response_200_7]): Route =
-    complete((200, responseinline_response_200_7))
+  def patchOauthTwoFactor200(responseinline_response_200_8: inline_response_200_8)(implicit toEntityMarshallerinline_response_200_8: ToEntityMarshaller[inline_response_200_8]): Route =
+    complete((200, responseinline_response_200_8))
   def patchOauthTwoFactor401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: OAuth 2FA verification result., DataType: inline_response_200_7
+   * Code: 200, Message: OAuth 2FA verification result., DataType: inline_response_200_8
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def patchOauthTwoFactor(body: Oauth_body_2, accountId: Int, code: String)
-      (implicit toEntityMarshallerinline_response_200_7: ToEntityMarshaller[inline_response_200_7], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_8: ToEntityMarshaller[inline_response_200_8], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def pingServer200(responseString: String): Route =
     complete((200, responseString))
@@ -309,16 +362,16 @@ trait PublicApiService {
   def pingServer()
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def postOauthCallback200(responseinline_response_200_6: inline_response_200_6)(implicit toEntityMarshallerinline_response_200_6: ToEntityMarshaller[inline_response_200_6]): Route =
-    complete((200, responseinline_response_200_6))
+  def postOauthCallback200(responseinline_response_200_7: inline_response_200_7)(implicit toEntityMarshallerinline_response_200_7: ToEntityMarshaller[inline_response_200_7]): Route =
+    complete((200, responseinline_response_200_7))
   def postOauthCallback401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: OAuth callback result., DataType: inline_response_200_6
+   * Code: 200, Message: OAuth callback result., DataType: inline_response_200_7
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def postOauthCallback(provider: String, body: Oauth_body, provider: Option[String])
-      (implicit toEntityMarshallerinline_response_200_6: ToEntityMarshaller[inline_response_200_6], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_7: ToEntityMarshaller[inline_response_200_7], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def submitLogin200(responseLoginSuccessResponse: LoginSuccessResponse)(implicit toEntityMarshallerLoginSuccessResponse: ToEntityMarshaller[LoginSuccessResponse]): Route =
     complete((200, responseLoginSuccessResponse))
@@ -355,6 +408,12 @@ trait PublicApiMarshaller {
   implicit def fromRequestUnmarshallerOauth_body: FromRequestUnmarshaller[Oauth_body]
 
 
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerinline_response_map200map: ToEntityMarshaller[Map[String, inline_response_map200]]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
   implicit def toEntityMarshallerCaptchaResponse: ToEntityMarshaller[CaptchaResponse]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
@@ -373,17 +432,17 @@ trait PublicApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_5: ToEntityMarshaller[inline_response_200_5]
+  implicit def toEntityMarshallerinline_response_200_6: ToEntityMarshaller[inline_response_200_6]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerinline_response_200_8: ToEntityMarshaller[inline_response_200_8]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_200_7: ToEntityMarshaller[inline_response_200_7]
-
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
-  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
-
-  implicit def toEntityMarshallerinline_response_200_6: ToEntityMarshaller[inline_response_200_6]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

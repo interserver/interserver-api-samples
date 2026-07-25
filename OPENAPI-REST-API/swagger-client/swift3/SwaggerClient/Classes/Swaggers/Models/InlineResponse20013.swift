@@ -9,16 +9,28 @@ import Foundation
 
 
 open class InlineResponse20013: JSONEncodable {
-    public var success: Bool?
-    public var text: String?
+    public var serviceInfo: InlineResponse20013ServiceInfo?
+    public var clientLinks: [InlineResponse20013ClientLinks]?
+    public var billingDetails: InlineResponse20013BillingDetails?
+    public var custCurrency: String?
+    public var custCurrencySymbol: String?
+    public var package: String?
+    public var extraInfoTables: InlineResponse20013ExtraInfoTables?
+    public var filterFirewall: InlineResponse20013FilterFirewall?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["success"] = self.success
-        nillableDictionary["text"] = self.text
+        nillableDictionary["serviceInfo"] = self.serviceInfo?.encodeToJSON()
+        nillableDictionary["client_links"] = self.clientLinks?.encodeToJSON()
+        nillableDictionary["billingDetails"] = self.billingDetails?.encodeToJSON()
+        nillableDictionary["custCurrency"] = self.custCurrency
+        nillableDictionary["custCurrencySymbol"] = self.custCurrencySymbol
+        nillableDictionary["package"] = self.package
+        nillableDictionary["extraInfoTables"] = self.extraInfoTables?.encodeToJSON()
+        nillableDictionary["filter_firewall"] = self.filterFirewall?.encodeToJSON()
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

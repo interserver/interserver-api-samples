@@ -4,13 +4,13 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddDnsDomain**](DNSAPI.md#AddDnsDomain) | **Post** /dns | Create DNS Domain
-[**AddDnsRecord**](DNSAPI.md#AddDnsRecord) | **Post** /dns/{id} | Add DNS Record to Domain
-[**DeleteDnsDomain**](DNSAPI.md#DeleteDnsDomain) | **Delete** /dns/{id} | Delete DNS Domain
-[**DeleteDnsRecord**](DNSAPI.md#DeleteDnsRecord) | **Delete** /dns/{domainId}/{recordId} | Delete DNS Record
-[**GetDnsDomain**](DNSAPI.md#GetDnsDomain) | **Get** /dns/{id} | List Domain DNS Records
-[**GetDnsList**](DNSAPI.md#GetDnsList) | **Get** /dns | List DNS Domains
-[**UpdateDnsRecord**](DNSAPI.md#UpdateDnsRecord) | **Post** /dns/{domainId}/{recordId} | Update DNS Record
+[**AddDnsDomain**](DNSAPI.md#AddDnsDomain) | **Post** /dns | Create a new authoritative DNS zone seeded with apex A + NS + SOA records
+[**AddDnsRecord**](DNSAPI.md#AddDnsRecord) | **Post** /dns/{id} | Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
+[**DeleteDnsDomain**](DNSAPI.md#DeleteDnsDomain) | **Delete** /dns/{id} | Permanently delete a DNS zone and every record it contains
+[**DeleteDnsRecord**](DNSAPI.md#DeleteDnsRecord) | **Delete** /dns/{domainId}/{recordId} | Permanently delete one DNS record from a zone — zone itself is preserved
+[**GetDnsDomain**](DNSAPI.md#GetDnsDomain) | **Get** /dns/{id} | List every DNS record in one zone with the IDs needed to edit or delete them
+[**GetDnsList**](DNSAPI.md#GetDnsList) | **Get** /dns | List DNS zones hosted on the account with each zone&#39;s apex A-record IP
+[**UpdateDnsRecord**](DNSAPI.md#UpdateDnsRecord) | **Post** /dns/{domainId}/{recordId} | Replace values on an existing DNS record (name, type, content, ttl, priority)
 
 
 
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 > SuccessTextResponse AddDnsDomain(ctx).Domain(domain).Ip(ip).Execute()
 
-Create DNS Domain
+Create a new authoritative DNS zone seeded with apex A + NS + SOA records
 
 
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 > AddDnsRecord(ctx, id).Name(name).Type_(type_).Content(content).Ttl(ttl).Prio(prio).Execute()
 
-Add DNS Record to Domain
+Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
 
 
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse DeleteDnsDomain(ctx, id).Execute()
 
-Delete DNS Domain
+Permanently delete a DNS zone and every record it contains
 
 
 
@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse DeleteDnsRecord(ctx, domainId, recordId).Execute()
 
-Delete DNS Record
+Permanently delete one DNS record from a zone — zone itself is preserved
 
 
 
@@ -307,7 +307,7 @@ Name | Type | Description  | Notes
 
 > []DnsRecord GetDnsDomain(ctx, id).Execute()
 
-List Domain DNS Records
+List every DNS record in one zone with the IDs needed to edit or delete them
 
 
 
@@ -377,7 +377,7 @@ Name | Type | Description  | Notes
 
 > []DnsListItem GetDnsList(ctx).Execute()
 
-List DNS Domains
+List DNS zones hosted on the account with each zone's apex A-record IP
 
 
 
@@ -438,7 +438,7 @@ Other parameters are passed through a pointer to a apiGetDnsListRequest struct v
 
 > SuccessTextResponse UpdateDnsRecord(ctx, domainId, recordId).Name(name).Type_(type_).Content(content).Ttl(ttl).Prio(prio).Disabled(disabled).Ordername(ordername).Auth(auth).Execute()
 
-Update DNS Record
+Replace values on an existing DNS record (name, type, content, ttl, priority)
 
 
 

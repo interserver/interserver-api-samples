@@ -1,4 +1,4 @@
-# openapi::QuickserverOrderServerDetails
+# interserverapi::QuickserverOrderServerDetails
 
 Server details.
 

@@ -11,13 +11,7 @@ package myadmin-client-go-server
 
 type InlineResponse20027 struct {
 
-	Bandwidth []InlineResponse20027Bandwidth `json:"bandwidth,omitempty"`
+	Message string `json:"message,omitempty"`
 
-	Ips []InlineResponse20027Ips `json:"ips,omitempty"`
-
-	Os []InlineResponse20027Os `json:"os,omitempty"`
-
-	Cp []InlineResponse20027Cp `json:"cp,omitempty"`
-
-	Raid []InlineResponse20027Raid `json:"raid,omitempty"`
+	Success bool `json:"success,omitempty"`
 }

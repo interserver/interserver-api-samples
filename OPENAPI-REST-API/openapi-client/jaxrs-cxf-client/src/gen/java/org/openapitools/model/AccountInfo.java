@@ -262,7 +262,7 @@ public class AccountInfo  {
    * @return enableLocales
   **/
   @JsonProperty("enableLocales")
-  public Boolean getEnableLocales() {
+  public Boolean isEnableLocales() {
     return enableLocales;
   }
 
@@ -280,7 +280,7 @@ public class AccountInfo  {
    * @return enableCurrencies
   **/
   @JsonProperty("enableCurrencies")
-  public Boolean getEnableCurrencies() {
+  public Boolean isEnableCurrencies() {
     return enableCurrencies;
   }
 

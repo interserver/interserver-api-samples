@@ -11,49 +11,7 @@ import Alamofire
 
 open class AccountAPI {
     /**
-     Change Account Username
-
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func changeAccountUsername(completion: @escaping ((_ data: TextResponse?,_ error: Error?) -> Void)) {
-        changeAccountUsernameWithRequestBuilder().execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Change Account Username
-     - POST /account/username
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - examples: [{contentType=application/json, example={
-  "text" : "You were successfull."
-}}]
-
-     - returns: RequestBuilder<TextResponse> 
-     */
-    open class func changeAccountUsernameWithRequestBuilder() -> RequestBuilder<TextResponse> {
-        let path = "/account/username"
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<TextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-    /**
-     Unlink OAuth Account
+     Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
 
      - parameter name: (path)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -66,7 +24,7 @@ open class AccountAPI {
 
 
     /**
-     Unlink OAuth Account
+     Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
      - DELETE /account/oauth/{name}
 
      - API Key:
@@ -101,7 +59,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Disable Two-Factor Authentication
+     Disable two-factor authentication and remove the TOTP secret
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -113,7 +71,7 @@ open class AccountAPI {
 
 
     /**
-     Disable Two-Factor Authentication
+     Disable two-factor authentication and remove the TOTP secret
      - DELETE /account/2fa
 
      - API Key:
@@ -144,7 +102,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Remove IP Access Restriction
+     Remove one IP range from the account allow-list (PATCH on /account/iplimits)
 
      - parameter body: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
@@ -157,7 +115,7 @@ open class AccountAPI {
 
 
     /**
-     Remove IP Access Restriction
+     Remove one IP range from the account allow-list (PATCH on /account/iplimits)
      - PATCH /account/iplimits
 
      - API Key:
@@ -189,7 +147,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Retrieve Account Details
+     Read full account profile, billing address, and security settings
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -201,7 +159,7 @@ open class AccountAPI {
 
 
     /**
-     Retrieve Account Details
+     Read full account profile, billing address, and security settings
      - GET /account
 
      - API Key:
@@ -540,7 +498,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Two-Factor Setup Data
+     Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -552,7 +510,7 @@ open class AccountAPI {
 
 
     /**
-     Get Two-Factor Setup Data
+     Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
      - GET /account/2fa
 
      - API Key:
@@ -583,7 +541,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Home Data
+     Aggregate dashboard payload — service counts, recent activity, alerts
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -595,7 +553,7 @@ open class AccountAPI {
 
 
     /**
-     Get Home Data
+     Aggregate dashboard payload — service counts, recent activity, alerts
      - GET /home
 
      - API Key:
@@ -738,7 +696,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Search Autocomplete
+     Global autocomplete across the caller's services, domains, and records
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -750,7 +708,7 @@ open class AccountAPI {
 
 
     /**
-     Search Autocomplete
+     Global autocomplete across the caller's services, domains, and records
      - GET /search
 
      - API Key:
@@ -780,7 +738,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Log Out
+     Destroy the current API/web session — token becomes unusable
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -792,7 +750,7 @@ open class AccountAPI {
 
 
     /**
-     Log Out
+     Destroy the current API/web session — token becomes unusable
      - GET /logout
 
      - API Key:
@@ -823,7 +781,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Logout of OAuth
+     Sign out of the upstream OAuth provider session (does not unlink the account)
 
      - parameter name: (path)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -836,7 +794,7 @@ open class AccountAPI {
 
 
     /**
-     Logout of OAuth
+     Sign out of the upstream OAuth provider session (does not unlink the account)
      - GET /account/oauth/{name}/logout
 
      - API Key:
@@ -871,7 +829,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Generate New API Key
+     Rotate the account's REST/MCP API key — old key is invalidated immediately
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -883,7 +841,7 @@ open class AccountAPI {
 
 
     /**
-     Generate New API Key
+     Rotate the account's REST/MCP API key — old key is invalidated immediately
      - POST /account/apikey
 
      - API Key:
@@ -914,7 +872,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update Account Feature Flags
+     Toggle account-wide safety locks for password reset and OS reinstall
 
      - parameter disableReset: (form)  
      - parameter disableReinstall: (form)  
@@ -928,7 +886,7 @@ open class AccountAPI {
 
 
     /**
-     Update Account Feature Flags
+     Toggle account-wide safety locks for password reset and OS reinstall
      - POST /account/features
 
      - API Key:
@@ -961,7 +919,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Account Feature Flags
+     Toggle account-wide safety locks for password reset and OS reinstall
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -974,7 +932,7 @@ open class AccountAPI {
 
 
     /**
-     Update Account Feature Flags
+     Toggle account-wide safety locks for password reset and OS reinstall
      - POST /account/features
 
      - API Key:
@@ -1006,7 +964,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Account Information
+     Update contact and billing-address fields on the customer profile
 
      - parameter name: (form)  
      - parameter company: (form)  
@@ -1035,7 +993,7 @@ open class AccountAPI {
 
 
     /**
-     Update Account Information
+     Update contact and billing-address fields on the customer profile
      - POST /account
 
      - API Key:
@@ -1083,7 +1041,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Account Information
+     Update contact and billing-address fields on the customer profile
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -1096,7 +1054,7 @@ open class AccountAPI {
 
 
     /**
-     Update Account Information
+     Update contact and billing-address fields on the customer profile
      - POST /account
 
      - API Key:
@@ -1128,7 +1086,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Add IP Access Restriction
+     Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
 
      - parameter start: (form)  
      - parameter end: (form)  
@@ -1142,7 +1100,7 @@ open class AccountAPI {
 
 
     /**
-     Add IP Access Restriction
+     Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
      - POST /account/iplimits
 
      - API Key:
@@ -1175,7 +1133,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Add IP Access Restriction
+     Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
 
      - parameter body: (body) The lower and upper bounds of an ip range. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1188,7 +1146,7 @@ open class AccountAPI {
 
 
     /**
-     Add IP Access Restriction
+     Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
      - POST /account/iplimits
 
      - API Key:
@@ -1220,7 +1178,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change Account Password
+     Change the account login password (verifies current, kills other sessions)
 
      - parameter password: (form)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -1233,7 +1191,7 @@ open class AccountAPI {
 
 
     /**
-     Change Account Password
+     Change the account login password (verifies current, kills other sessions)
      - POST /account/password
 
      - API Key:
@@ -1264,7 +1222,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change Account Password
+     Change the account login password (verifies current, kills other sessions)
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -1277,7 +1235,7 @@ open class AccountAPI {
 
 
     /**
-     Change Account Password
+     Change the account login password (verifies current, kills other sessions)
      - POST /account/password
 
      - API Key:
@@ -1308,7 +1266,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update SSH Keys
+     Set the account-level SSH public key auto-installed on new VPS/dedicated orders
 
      - parameter sshKey: (form)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -1321,7 +1279,7 @@ open class AccountAPI {
 
 
     /**
-     Update SSH Keys
+     Set the account-level SSH public key auto-installed on new VPS/dedicated orders
      - POST /account/sshkey
 
      - API Key:
@@ -1353,7 +1311,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update SSH Keys
+     Set the account-level SSH public key auto-installed on new VPS/dedicated orders
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -1366,7 +1324,7 @@ open class AccountAPI {
 
 
     /**
-     Update SSH Keys
+     Set the account-level SSH public key auto-installed on new VPS/dedicated orders
      - POST /account/sshkey
 
      - API Key:
@@ -1398,7 +1356,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Enable Two-Factor Authentication
+     Verify TOTP code and enable two-factor authentication on the account
 
      - parameter _2faGoogleCode: (form)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -1411,7 +1369,7 @@ open class AccountAPI {
 
 
     /**
-     Enable Two-Factor Authentication
+     Verify TOTP code and enable two-factor authentication on the account
      - POST /account/2fa
 
      - API Key:
@@ -1443,7 +1401,7 @@ open class AccountAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Enable Two-Factor Authentication
+     Verify TOTP code and enable two-factor authentication on the account
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -1456,7 +1414,7 @@ open class AccountAPI {
 
 
     /**
-     Enable Two-Factor Authentication
+     Verify TOTP code and enable two-factor authentication on the account
      - POST /account/2fa
 
      - API Key:

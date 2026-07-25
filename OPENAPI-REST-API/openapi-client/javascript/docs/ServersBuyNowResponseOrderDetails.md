@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServersBuyNowResponseOrderDetails
+# InterserverApiClient.ServersBuyNowResponseOrderDetails
 
 ## Properties
 

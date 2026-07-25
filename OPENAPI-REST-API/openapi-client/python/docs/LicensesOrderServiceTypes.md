@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.licenses_order_service_types import LicensesOrderServiceTypes
+from interserver_api_client.models.licenses_order_service_types import LicensesOrderServiceTypes
 
 # TODO update the JSON string below
 json = "{}"

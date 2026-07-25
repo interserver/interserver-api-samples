@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.delete_firewall_rule import DeleteFirewallRule
+from interserver_api_client.models.delete_firewall_rule import DeleteFirewallRule
 
 class TestDeleteFirewallRule(unittest.TestCase):
     """DeleteFirewallRule unit test stubs"""

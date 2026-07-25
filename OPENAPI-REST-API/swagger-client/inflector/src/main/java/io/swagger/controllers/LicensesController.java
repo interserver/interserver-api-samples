@@ -11,10 +11,11 @@ import java.util.List;
 import io.swagger.model.*;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse2004;
+import io.swagger.model.InlineResponse2005;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
 import io.swagger.model.License;
+import io.swagger.model.LicenseOrderRequest;
 import io.swagger.model.LicenseRow;
 import io.swagger.model.LicensesOrder;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -29,7 +30,8 @@ public class LicensesController  {
    **/
 
   /*
-    public ResponseContext addLicense(RequestContext request ) {
+    public ResponseContext addLicense(RequestContext request , LicenseOrderRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -50,13 +52,6 @@ public class LicensesController  {
 
   /*
     public ResponseContext getLicenseList(RequestContext request ) {
-        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
-    }
-  */
-
-  /*
-    public ResponseContext getLicenseOrderCatTagInfo(RequestContext request , String catTag 
-) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -98,7 +93,8 @@ public class LicensesController  {
   */
 
   /*
-    public ResponseContext putLicenses(RequestContext request ) {
+    public ResponseContext putLicenses(RequestContext request , LicenseOrderRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

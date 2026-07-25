@@ -1,4 +1,4 @@
-# openapi::QuickserverOrderDistroSel
+# interserverapi::QuickserverOrderDistroSel
 
 Distribution selection.
 

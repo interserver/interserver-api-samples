@@ -18,5 +18,5 @@ case class BuyItNowRowCpuInnerOneOf(
   speed: Option[String] = None,
   num_cpus: Option[String] = None,
   num_cores: Option[String] = None
-)
+) extends BuyItNowRowCpuInner
 

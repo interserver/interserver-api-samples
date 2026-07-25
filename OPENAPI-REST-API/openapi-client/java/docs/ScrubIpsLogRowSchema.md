@@ -17,4 +17,8 @@
 |**xdpAction** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

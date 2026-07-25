@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_plesk_license import VpsPleskLicense
+from interserver_api_client.models.vps_plesk_license import VpsPleskLicense
 
 class TestVpsPleskLicense(unittest.TestCase):
     """VpsPleskLicense unit test stubs"""

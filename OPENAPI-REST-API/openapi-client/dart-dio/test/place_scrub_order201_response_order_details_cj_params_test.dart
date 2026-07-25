@@ -1,48 +1,48 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for PlaceScrubOrder201ResponseOrderDetailsCjParams
 void main() {
-  final instance = PlaceScrubOrder201ResponseOrderDetailsCjParamsBuilder();
-  // TODO add properties to the builder and call build()
+  final PlaceScrubOrder201ResponseOrderDetailsCjParams? instance = /* PlaceScrubOrder201ResponseOrderDetailsCjParams(...) */ null;
+  // TODO add properties to the entity
 
   group(PlaceScrubOrder201ResponseOrderDetailsCjParams, () {
-    // int containerTagId
+    // Optional<int?> containerTagId
     test('to test the property `containerTagId`', () async {
       // TODO
     });
 
-    // int CID
+    // Optional<int?> CID
     test('to test the property `CID`', () async {
       // TODO
     });
 
-    // String OID
+    // Optional<String?> OID
     test('to test the property `OID`', () async {
       // TODO
     });
 
-    // int TYPE
+    // Optional<int?> TYPE
     test('to test the property `TYPE`', () async {
       // TODO
     });
 
-    // String iTEM1
-    test('to test the property `iTEM1`', () async {
+    // Optional<String?> ITEM1
+    test('to test the property `ITEM1`', () async {
       // TODO
     });
 
-    // int aMT1
-    test('to test the property `aMT1`', () async {
+    // Optional<int?> AMT1
+    test('to test the property `AMT1`', () async {
       // TODO
     });
 
-    // int qTY1
-    test('to test the property `qTY1`', () async {
+    // Optional<int?> QTY1
+    test('to test the property `QTY1`', () async {
       // TODO
     });
 
-    // String CURRENCY
+    // Optional<String?> CURRENCY
     test('to test the property `CURRENCY`', () async {
       // TODO
     });

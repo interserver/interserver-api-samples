@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_switchport import ServerSwitchport
+from interserver_api_client.models.server_switchport import ServerSwitchport
 
 class TestServerSwitchport(unittest.TestCase):
     """ServerSwitchport unit test stubs"""

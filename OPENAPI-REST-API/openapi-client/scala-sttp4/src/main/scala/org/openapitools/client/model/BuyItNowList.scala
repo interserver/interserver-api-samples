@@ -18,5 +18,4 @@ import scala.collection.mutable.ListBuffer
    * Marketplace buy it now servers list
    */
 case class BuyItNowList(
-)
-
+) extends ListBuffer[BuyItNowRow]

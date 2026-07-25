@@ -19,4 +19,8 @@ Service type definition for a domain registration, including name, pricing, and 
 |**servicesModule** | **String** | Backend module handling this service type. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -35,7 +35,5 @@ case class DnsRecord(
   ordername: String,
   auth: String
 )
-
 object DnsRecordEnums {
-
 }

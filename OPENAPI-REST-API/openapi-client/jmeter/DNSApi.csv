@@ -1,2 +1,2 @@
-testCase,httpStatusCode,domain,ip,id,name,type,content,ttl,prio,id,domainId,recordId,id,domainId,recordId,name,type,content,ttl,prio,disabled,ordername,auth
+testCase,httpStatusCode,domain,ip,name,type,content,id,ttl,prio,id,domainId,recordId,id,domainId,recordId,name,type,content,ttl,prio,disabled,ordername,auth
 Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

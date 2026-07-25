@@ -49,4 +49,3 @@ case class Quickserver(
   hdd: String,
   service_overview_extra: Seq[String]
 )
-

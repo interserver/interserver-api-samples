@@ -14,12 +14,12 @@ package io.swagger.client.models
 
 /**
  * 
- * @param message 
  * @param success 
+ * @param text 
  */
 data class InlineResponse20025 (
 
-    val message: kotlin.String? = null,
-    val success: kotlin.Boolean? = null
+    val success: kotlin.Boolean,
+    val text: kotlin.String
 ) {
 }

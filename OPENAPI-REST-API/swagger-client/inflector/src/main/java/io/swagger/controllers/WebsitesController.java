@@ -13,10 +13,10 @@ import io.swagger.model.*;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBuyIpBody;
 import io.swagger.model.IdMigrationBody;
-import io.swagger.model.InlineResponse20023;
-import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse20025;
 import io.swagger.model.InlineResponse20026;
+import io.swagger.model.InlineResponse20027;
+import io.swagger.model.InlineResponse20028;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ReverseDnsEntries;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -25,6 +25,8 @@ import io.swagger.model.TextResponse;
 import io.swagger.model.Website;
 import io.swagger.model.WebsiteBackups;
 import io.swagger.model.WebsiteLoginResponse;
+import io.swagger.model.WebsiteOrderPostRequest;
+import io.swagger.model.WebsiteOrderPutRequest;
 import io.swagger.model.WebsiteRow;
 import io.swagger.model.WebsitesOrder;
 
@@ -37,7 +39,8 @@ public class WebsitesController  {
    **/
 
   /*
-    public ResponseContext addWebsite(RequestContext request ) {
+    public ResponseContext addWebsite(RequestContext request , WebsiteOrderPostRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -164,7 +167,8 @@ public class WebsitesController  {
   */
 
   /*
-    public ResponseContext putWebsites(RequestContext request ) {
+    public ResponseContext putWebsites(RequestContext request , WebsiteOrderPutRequest body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

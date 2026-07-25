@@ -18,7 +18,7 @@ import TicketsRow from './TicketsRow';
 /**
  * The Tickets model module.
  * @module model/Tickets
- * @version 0.9.0
+ * @version 1.0.0
  */
 class Tickets {
     /**

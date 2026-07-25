@@ -17,7 +17,7 @@ import AccountInfoLimitsInner from './AccountInfoLimitsInner';
 /**
  * The AccountInfoLimits model module.
  * @module model/AccountInfoLimits
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AccountInfoLimits extends Array {
     /**

@@ -17,5 +17,4 @@ package org.openapitools.client.model
    * Maps country codes to their available currency options.
    */
 case class AccountInfoCountryCurrencies(
-)
-
+) extends Map[String, Seq]

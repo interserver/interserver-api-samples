@@ -11,4 +11,8 @@ URL
 |**url** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

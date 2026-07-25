@@ -1,4 +1,4 @@
-# InterServerManagementApi.CreateFirewallRule
+# InterserverApiClient.CreateFirewallRule
 
 ## Properties
 
@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 
 * `2` (value: `2`)
 
+* `unknown_default_open_api` (value: `11184809`)
+
 
 
 
@@ -29,6 +31,8 @@ Name | Type | Description | Notes
 * `0` (value: `0`)
 
 * `1` (value: `1`)
+
+* `unknown_default_open_api` (value: `11184809`)
 
 
 

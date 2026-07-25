@@ -1,4 +1,4 @@
-# InterServerManagementApi.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue
+# InterserverApiClient.ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue
 
 ## Properties
 

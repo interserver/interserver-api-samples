@@ -3,5 +3,4 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **Boolean** |  | 
-**text** | **String** |  | 
+**data** | **Object** | Affiliate signup statistics and client-side data. |  [optional]

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PostOauthCallback200Response } from './api';
+import { PostOauthCallback200Response } from '@interserver/myadmin-client';
 
 const instance: PostOauthCallback200Response = {
     login,

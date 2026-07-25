@@ -38,4 +38,3 @@ case class VpsBillingDetails(
   /* Additional information in JSON format */
   service_extra_json: Option[String] = None
 )
-

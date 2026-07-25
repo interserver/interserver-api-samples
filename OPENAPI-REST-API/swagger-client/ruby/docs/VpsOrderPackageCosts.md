@@ -1,4 +1,4 @@
-# SwaggerClient::VpsOrderPackageCosts
+# InterserverApiClient::VpsOrderPackageCosts
 
 ## Properties
 Name | Type | Description | Notes

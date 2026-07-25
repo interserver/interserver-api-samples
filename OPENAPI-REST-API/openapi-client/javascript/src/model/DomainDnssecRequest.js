@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainDnssecRequest model module.
  * @module model/DomainDnssecRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainDnssecRequest {
     /**

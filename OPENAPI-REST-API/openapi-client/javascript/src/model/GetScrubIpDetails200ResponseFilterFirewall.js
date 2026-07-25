@@ -18,7 +18,7 @@ import GetScrubIpDetails200ResponseFilterFirewallRulesInner from './GetScrubIpDe
 /**
  * The GetScrubIpDetails200ResponseFilterFirewall model module.
  * @module model/GetScrubIpDetails200ResponseFilterFirewall
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetScrubIpDetails200ResponseFilterFirewall {
     /**

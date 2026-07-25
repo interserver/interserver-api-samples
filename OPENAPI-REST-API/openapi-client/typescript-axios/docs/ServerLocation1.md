@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerLocation1 } from './api';
+import { ServerLocation1 } from '@interserver/myadmin-client';
 
 const instance: ServerLocation1 = {
     location_id,

@@ -1,4 +1,4 @@
-# openapi::AccountInfoLimitsInner
+# interserverapi::AccountInfoLimitsInner
 
 
 ## Properties

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerNetworkInfoSwitchports } from './api';
+import { ServerNetworkInfoSwitchports } from '@interserver/myadmin-client';
 
 const instance: ServerNetworkInfoSwitchports = {
     _10414,

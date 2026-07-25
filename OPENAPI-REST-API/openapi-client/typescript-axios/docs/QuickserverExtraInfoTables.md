@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverExtraInfoTables } from './api';
+import { QuickserverExtraInfoTables } from '@interserver/myadmin-client';
 
 const instance: QuickserverExtraInfoTables = {
     ip_info,

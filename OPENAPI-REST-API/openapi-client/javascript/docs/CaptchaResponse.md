@@ -1,4 +1,4 @@
-# InterServerManagementApi.CaptchaResponse
+# InterserverApiClient.CaptchaResponse
 
 ## Properties
 

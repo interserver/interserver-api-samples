@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The HomeDetailsModulesServers model module.
  * @module model/HomeDetailsModulesServers
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeDetailsModulesServers {
     /**

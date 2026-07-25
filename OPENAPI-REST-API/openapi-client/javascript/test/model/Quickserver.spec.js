@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.Quickserver();
+    instance = new InterserverApiClient.Quickserver();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,133 +50,133 @@
   describe('Quickserver', function() {
     it('should create an instance of Quickserver', function() {
       // uncomment below and update the code to test Quickserver
-      //var instance = new InterServerManagementApi.Quickserver();
-      //expect(instance).to.be.a(InterServerManagementApi.Quickserver);
+      //var instance = new InterserverApiClient.Quickserver();
+      //expect(instance).to.be.a(InterserverApiClient.Quickserver);
     });
 
     it('should have the property serviceInfo (base name: "serviceInfo")', function() {
       // uncomment below and update the code to test the property serviceInfo
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property client_links (base name: "client_links")', function() {
       // uncomment below and update the code to test the property client_links
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property billingDetails (base name: "billingDetails")', function() {
       // uncomment below and update the code to test the property billingDetails
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property custCurrency (base name: "custCurrency")', function() {
       // uncomment below and update the code to test the property custCurrency
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property custCurrencySymbol (base name: "custCurrencySymbol")', function() {
       // uncomment below and update the code to test the property custCurrencySymbol
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceMaster (base name: "serviceMaster")', function() {
       // uncomment below and update the code to test the property serviceMaster
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property _package (base name: "package")', function() {
       // uncomment below and update the code to test the property _package
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property os_template (base name: "os_template")', function() {
       // uncomment below and update the code to test the property os_template
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceExtra (base name: "serviceExtra")', function() {
       // uncomment below and update the code to test the property serviceExtra
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property extraInfoTables (base name: "extraInfoTables")', function() {
       // uncomment below and update the code to test the property extraInfoTables
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property cpu_graph_data (base name: "cpu_graph_data")', function() {
       // uncomment below and update the code to test the property cpu_graph_data
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property bandwidth_xaxis (base name: "bandwidth_xaxis")', function() {
       // uncomment below and update the code to test the property bandwidth_xaxis
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property bandwidth_yaxis (base name: "bandwidth_yaxis")', function() {
       // uncomment below and update the code to test the property bandwidth_yaxis
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property module (base name: "module")', function() {
       // uncomment below and update the code to test the property module
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property token (base name: "token")', function() {
       // uncomment below and update the code to test the property token
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property service_disk_used (base name: "service_disk_used")', function() {
       // uncomment below and update the code to test the property service_disk_used
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property service_disk_total (base name: "service_disk_total")', function() {
       // uncomment below and update the code to test the property service_disk_total
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property disk_percentage (base name: "disk_percentage")', function() {
       // uncomment below and update the code to test the property disk_percentage
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property memory (base name: "memory")', function() {
       // uncomment below and update the code to test the property memory
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property hdd (base name: "hdd")', function() {
       // uncomment below and update the code to test the property hdd
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 
     it('should have the property service_overview_extra (base name: "service_overview_extra")', function() {
       // uncomment below and update the code to test the property service_overview_extra
-      //var instance = new InterServerManagementApi.Quickserver();
+      //var instance = new InterserverApiClient.Quickserver();
       //expect(instance).to.be();
     });
 

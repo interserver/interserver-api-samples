@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VPSTrafficDataDataSectionResponseInner
 void main() {
-  final instance = VPSTrafficDataDataSectionResponseInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final VPSTrafficDataDataSectionResponseInner? instance = /* VPSTrafficDataDataSectionResponseInner(...) */ null;
+  // TODO add properties to the entity
 
   group(VPSTrafficDataDataSectionResponseInner, () {
   });

@@ -11,4 +11,8 @@ Templates details.
 |**ubuntu** | **QuickserverOrderTemplatesUbuntu64** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

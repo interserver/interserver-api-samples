@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailLogEntry } from './api';
+import { MailLogEntry } from '@interserver/myadmin-client';
 
 const instance: MailLogEntry = {
     _id,

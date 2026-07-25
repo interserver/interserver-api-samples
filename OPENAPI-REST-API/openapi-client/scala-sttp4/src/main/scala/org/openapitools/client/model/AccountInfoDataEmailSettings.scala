@@ -16,4 +16,3 @@ case class AccountInfoDataEmailSettings(
   admin_cc_bad_response: Option[String] = None,
   admin_mass_communications_tpl: Option[String] = None
 )
-

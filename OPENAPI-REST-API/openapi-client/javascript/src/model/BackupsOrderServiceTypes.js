@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BackupsOrderServiceTypes model module.
  * @module model/BackupsOrderServiceTypes
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BackupsOrderServiceTypes {
     /**

@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupsOrderServiceTypes
+# InterserverApiClient.BackupsOrderServiceTypes
 
 ## Properties
 

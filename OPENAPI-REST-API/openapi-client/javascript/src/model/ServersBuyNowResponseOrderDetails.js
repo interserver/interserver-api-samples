@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServersBuyNowResponseOrderDetails model module.
  * @module model/ServersBuyNowResponseOrderDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServersBuyNowResponseOrderDetails {
     /**

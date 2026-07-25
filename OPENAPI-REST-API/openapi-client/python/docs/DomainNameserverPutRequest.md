@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.domain_nameserver_put_request import DomainNameserverPutRequest
+from interserver_api_client.models.domain_nameserver_put_request import DomainNameserverPutRequest
 
 # TODO update the JSON string below
 json = "{}"

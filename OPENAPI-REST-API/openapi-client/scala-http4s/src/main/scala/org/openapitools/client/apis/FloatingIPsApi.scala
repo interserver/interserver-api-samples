@@ -15,6 +15,7 @@ import io.circe.Encoder
 import org.http4s.Uri
 import org.http4s.client.Client as Http4sClient
 import org.openapitools.client.models.ChargeInvoiceRows
+import org.openapitools.client.models.FloatingIpOrderRequest
 import org.openapitools.client.models.FloatingIpsCancel200Response
 import org.openapitools.client.models.GetAccountInfo401Response
 import io.circe.Json
@@ -25,7 +26,7 @@ import org.openapitools.client.models.*
 
 trait FloatingIPsApiEndpoints[F[*]] {
 
-  def addFloatingIp()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
+  def addFloatingIp(floatingIpOrderRequest: FloatingIpOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def floatingIpsCancel(id: Int)(using auth: _Authorization.ApiKey): F[FloatingIpsCancel200Response]
   def getFloatingIpInfo(id: Int)(using auth: _Authorization.ApiKey): F[Json]
   def getFloatingIpInvoices(id: Int)(using auth: _Authorization.ApiKey): F[ChargeInvoiceRows]
@@ -33,7 +34,7 @@ trait FloatingIPsApiEndpoints[F[*]] {
   def getFloatingIpsWelcomeEmail(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def getNewFloatingIp()(using auth: _Authorization.ApiKey): F[Json]
   def postFloatingIpsChangeIp(id: Int, ip: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def putFloatingIps()(using auth: _Authorization.ApiKey): F[Unit]
+  def putFloatingIps(floatingIpOrderRequest: FloatingIpOrderRequest)(using auth: _Authorization.ApiKey): F[Unit]
   def updateFloatingIpInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
 
 }
@@ -48,15 +49,15 @@ class FloatingIPsApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addFloatingIp()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
+  override def addFloatingIp(floatingIpOrderRequest: FloatingIpOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, ServiceOrderPostResponse](
+    _executeRequest[FloatingIpOrderRequest, ServiceOrderPostResponse](
       method = "POST",
       path = s"/floating_ips/order",
-      body = None,
+      body = Some(floatingIpOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -204,15 +205,15 @@ class FloatingIPsApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def putFloatingIps()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def putFloatingIps(floatingIpOrderRequest: FloatingIpOrderRequest)(using auth: _Authorization.ApiKey): F[Unit] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[FloatingIpOrderRequest, Unit](
       method = "PUT",
       path = s"/floating_ips/order",
-      body = None,
+      body = Some(floatingIpOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,

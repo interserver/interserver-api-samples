@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::BillingPrepayRequest');
+use_ok('InterServerAPI::Object::BillingPrepayRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::BillingPrepayRequest->new();
+#my $instance = InterServerAPI::Object::BillingPrepayRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::BillingPrepayRequest');
+#isa_ok($instance, 'InterServerAPI::Object::BillingPrepayRequest');
 
 
 done_testing();

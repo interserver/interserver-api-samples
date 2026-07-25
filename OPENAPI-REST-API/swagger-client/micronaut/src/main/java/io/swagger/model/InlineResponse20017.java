@@ -51,7 +51,7 @@ public class InlineResponse20017   {
    * Get text
    * @return text
   **/
-  @Schema(example = "Filter is deleted.", description = "")
+  @Schema(example = "Firewall Rule has been deleted.", description = "")
   @NotNull
 
   public String getText() {

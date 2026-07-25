@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainNameserverGetResponseInner
+# InterserverApiClient.DomainNameserverGetResponseInner
 
 ## Properties
 
@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 * `0` (value: `"0"`)
 
 * `1` (value: `"1"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 
 

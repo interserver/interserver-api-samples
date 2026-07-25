@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.buy_it_now_list import BuyItNowList  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.buy_it_now_list import BuyItNowList  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestBuyItNowList(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestBuyItNowList(unittest.TestCase):
     def testBuyItNowList(self):
         """Test BuyItNowList"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.buy_it_now_list.BuyItNowList()  # noqa: E501
+        # model = interserver_api_client.models.buy_it_now_list.BuyItNowList()  # noqa: E501
         pass
 
 

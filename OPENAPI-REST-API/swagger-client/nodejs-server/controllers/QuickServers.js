@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var QuickServers = require('../service/QuickServersService');
 
-module.exports.addQs = function addQs (req, res, next) {
-  QuickServers.addQs()
+module.exports.addQs = function addQs (req, res, next, body) {
+  QuickServers.addQs(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -125,6 +125,16 @@ module.exports.downloadQsBackup = function downloadQsBackup (req, res, next, bod
 
 module.exports.getNewQs = function getNewQs (req, res, next) {
   QuickServers.getNewQs()
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.getQsBackup = function getQsBackup (req, res, next, id) {
+  QuickServers.getQsBackup(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -293,16 +303,6 @@ module.exports.getQsWelcomeEmail = function getQsWelcomeEmail (req, res, next, i
     });
 };
 
-module.exports.postQsBackup = function postQsBackup (req, res, next, id) {
-  QuickServers.postQsBackup(id)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.postQsChangeHostname = function postQsChangeHostname (req, res, next, id) {
   QuickServers.postQsChangeHostname(id)
     .then(function (response) {
@@ -453,8 +453,8 @@ module.exports.postQuickServerRestore = function postQuickServerRestore (req, re
     });
 };
 
-module.exports.putQs = function putQs (req, res, next) {
-  QuickServers.putQs()
+module.exports.putQs = function putQs (req, res, next, body) {
+  QuickServers.putQs(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

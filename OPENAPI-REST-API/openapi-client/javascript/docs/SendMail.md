@@ -1,4 +1,4 @@
-# InterServerManagementApi.SendMail
+# InterserverApiClient.SendMail
 
 ## Properties
 

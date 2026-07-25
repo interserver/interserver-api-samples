@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The HomeServicesBackups model module.
  * @module model/HomeServicesBackups
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeServicesBackups {
     /**

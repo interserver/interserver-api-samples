@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServersBuyNowResponseOrderDetails = Initialize-PSOpenAPIToolsServersBuyNowResponseOrderDetails  -ServiceId 1234 `
+$ServersBuyNowResponseOrderDetails = Initialize-InterserverApiServersBuyNowResponseOrderDetails  -ServiceId 1234 `
  -InvoiceId 2342355
 ```
 

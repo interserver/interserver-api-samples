@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeServicesWebhostingLinks = Initialize-PSOpenAPIToolsHomeServicesWebhostingLinks  -Var376359 Doefamily.com `
+$HomeServicesWebhostingLinks = Initialize-InterserverApiHomeServicesWebhostingLinks  -Var376359 Doefamily.com `
  -Var376473 fancytush.com `
  -Var386218 admincoded.net
 ```

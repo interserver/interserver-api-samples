@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverAddonsRow = Initialize-PSOpenAPIToolsQuickserverAddonsRow  -Desc Additional IP Address `
+$QuickserverAddonsRow = Initialize-InterserverApiQuickserverAddonsRow  -Desc Additional IP Address `
  -Value 
 ```
 

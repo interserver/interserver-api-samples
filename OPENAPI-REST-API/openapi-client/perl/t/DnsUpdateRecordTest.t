@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DnsUpdateRecord');
+use_ok('InterServerAPI::Object::DnsUpdateRecord');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DnsUpdateRecord->new();
+#my $instance = InterServerAPI::Object::DnsUpdateRecord->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DnsUpdateRecord');
+#isa_ok($instance, 'InterServerAPI::Object::DnsUpdateRecord');
 
 
 done_testing();

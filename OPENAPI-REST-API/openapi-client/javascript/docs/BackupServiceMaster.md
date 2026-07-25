@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupServiceMaster
+# InterserverApiClient.BackupServiceMaster
 
 ## Properties
 

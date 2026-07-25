@@ -28,4 +28,3 @@ case class DomainRow(
   /* The billing / registration status of the domain. */
   domain_status: Option[String] = None
 )
-

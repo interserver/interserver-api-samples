@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetOrderDetail200ResponsePackageCosts } from './api';
+import { GetOrderDetail200ResponsePackageCosts } from '@interserver/myadmin-client';
 
 const instance: GetOrderDetail200ResponsePackageCosts = {
     package_id,

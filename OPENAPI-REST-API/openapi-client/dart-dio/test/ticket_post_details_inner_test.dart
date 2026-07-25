@@ -1,48 +1,48 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for TicketPostDetailsInner
 void main() {
-  final instance = TicketPostDetailsInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final TicketPostDetailsInner? instance = /* TicketPostDetailsInner(...) */ null;
+  // TODO add properties to the entity
 
   group(TicketPostDetailsInner, () {
-    // int postId
+    // Optional<int?> postId
     test('to test the property `postId`', () async {
       // TODO
     });
 
-    // String date
+    // Optional<String?> date
     test('to test the property `date`', () async {
       // TODO
     });
 
-    // String contents
+    // Optional<String?> contents
     test('to test the property `contents`', () async {
       // TODO
     });
 
-    // String creator
+    // Optional<String?> creator
     test('to test the property `creator`', () async {
       // TODO
     });
 
-    // String creatorEmail
+    // Optional<String?> creatorEmail
     test('to test the property `creatorEmail`', () async {
       // TODO
     });
 
-    // String creatorName
+    // Optional<String?> creatorName
     test('to test the property `creatorName`', () async {
       // TODO
     });
 
-    // int hasattachments
+    // Optional<int?> hasattachments
     test('to test the property `hasattachments`', () async {
       // TODO
     });
 
-    // String attachmentDownload
+    // Optional<String?> attachmentDownload
     test('to test the property `attachmentDownload`', () async {
       // TODO
     });

@@ -110,10 +110,10 @@ VpsTrafficHistorySectionResponse <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`data`)) {
-        self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VpsTrafficHistorySectionDataResponse]", loadNamespace("openapi"))
+        self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VpsTrafficHistorySectionDataResponse]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`times`)) {
-        self$`times` <- ApiClient$new()$deserializeObj(this_object$`times`, "array[character]", loadNamespace("openapi"))
+        self$`times` <- ApiClient$new()$deserializeObj(this_object$`times`, "array[character]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -136,8 +136,8 @@ VpsTrafficHistorySectionResponse <- R6::R6Class(
     #' @return the instance of VpsTrafficHistorySectionResponse
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VpsTrafficHistorySectionDataResponse]", loadNamespace("openapi"))
-      self$`times` <- ApiClient$new()$deserializeObj(this_object$`times`, "array[character]", loadNamespace("openapi"))
+      self$`data` <- ApiClient$new()$deserializeObj(this_object$`data`, "array[VpsTrafficHistorySectionDataResponse]", loadNamespace("interserverapi"))
+      self$`times` <- ApiClient$new()$deserializeObj(this_object$`times`, "array[character]", loadNamespace("interserverapi"))
       self
     },
 

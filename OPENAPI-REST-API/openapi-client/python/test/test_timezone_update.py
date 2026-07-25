@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.timezone_update import TimezoneUpdate
+from interserver_api_client.models.timezone_update import TimezoneUpdate
 
 class TestTimezoneUpdate(unittest.TestCase):
     """TimezoneUpdate unit test stubs"""

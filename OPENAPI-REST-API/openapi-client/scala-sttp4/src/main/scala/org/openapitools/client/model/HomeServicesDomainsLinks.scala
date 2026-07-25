@@ -23,4 +23,3 @@ case class HomeServicesDomainsLinks(
   /* Link to a domain. */
   `592337`: Option[String] = None
 )
-

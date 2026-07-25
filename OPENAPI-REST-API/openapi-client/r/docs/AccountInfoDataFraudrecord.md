@@ -1,4 +1,4 @@
-# openapi::AccountInfoDataFraudrecord
+# interserverapi::AccountInfoDataFraudrecord
 
 
 ## Properties

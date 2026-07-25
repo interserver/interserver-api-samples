@@ -26,4 +26,3 @@ case class ServerRow(
   /* The status of the server. */
   server_status: String
 )
-

@@ -221,31 +221,30 @@ class VpsOrderPostRequest {
 }
 
 /// VPS Platform
-class VpsOrderPostRequestVpsPlatformEnum {
-  /// Instantiate a new enum with the provided [value].
-  const VpsOrderPostRequestVpsPlatformEnum._(this.value);
+enum VpsOrderPostRequestVpsPlatformEnum {
+  kvm._(r'kvm'),
+  hyperv._(r'hyperv'),
+  kvmstorage._(r'kvmstorage'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const VpsOrderPostRequestVpsPlatformEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const kvm = VpsOrderPostRequestVpsPlatformEnum._(r'kvm');
-  static const hyperv = VpsOrderPostRequestVpsPlatformEnum._(r'hyperv');
-  static const kvmstorage = VpsOrderPostRequestVpsPlatformEnum._(r'kvmstorage');
-
-  /// List of all possible values in this [enum][VpsOrderPostRequestVpsPlatformEnum].
-  static const values = <VpsOrderPostRequestVpsPlatformEnum>[
-    kvm,
-    hyperv,
-    kvmstorage,
-  ];
-
+  /// Returns the instance of [VpsOrderPostRequestVpsPlatformEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static VpsOrderPostRequestVpsPlatformEnum? fromJson(dynamic value) => VpsOrderPostRequestVpsPlatformEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [VpsOrderPostRequestVpsPlatformEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<VpsOrderPostRequestVpsPlatformEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <VpsOrderPostRequestVpsPlatformEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -267,9 +266,10 @@ class VpsOrderPostRequestVpsPlatformEnumTypeTransformer {
 
   const VpsOrderPostRequestVpsPlatformEnumTypeTransformer._();
 
-  String encode(VpsOrderPostRequestVpsPlatformEnum data) => data.value;
+  String encode(VpsOrderPostRequestVpsPlatformEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a VpsOrderPostRequestVpsPlatformEnum.
+  /// Returns the instance of [VpsOrderPostRequestVpsPlatformEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -278,6 +278,9 @@ class VpsOrderPostRequestVpsPlatformEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   VpsOrderPostRequestVpsPlatformEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is VpsOrderPostRequestVpsPlatformEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'kvm': return VpsOrderPostRequestVpsPlatformEnum.kvm;
@@ -292,37 +295,36 @@ class VpsOrderPostRequestVpsPlatformEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [VpsOrderPostRequestVpsPlatformEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static VpsOrderPostRequestVpsPlatformEnumTypeTransformer? _instance;
 }
 
 
 /// Control Panel
-class VpsOrderPostRequestControlpanelEnum {
-  /// Instantiate a new enum with the provided [value].
-  const VpsOrderPostRequestControlpanelEnum._(this.value);
+enum VpsOrderPostRequestControlpanelEnum {
+  none._(r'none'),
+  cpanel._(r'cpanel'),
+  da._(r'da'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const VpsOrderPostRequestControlpanelEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const none = VpsOrderPostRequestControlpanelEnum._(r'none');
-  static const cpanel = VpsOrderPostRequestControlpanelEnum._(r'cpanel');
-  static const da = VpsOrderPostRequestControlpanelEnum._(r'da');
-
-  /// List of all possible values in this [enum][VpsOrderPostRequestControlpanelEnum].
-  static const values = <VpsOrderPostRequestControlpanelEnum>[
-    none,
-    cpanel,
-    da,
-  ];
-
+  /// Returns the instance of [VpsOrderPostRequestControlpanelEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static VpsOrderPostRequestControlpanelEnum? fromJson(dynamic value) => VpsOrderPostRequestControlpanelEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [VpsOrderPostRequestControlpanelEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<VpsOrderPostRequestControlpanelEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <VpsOrderPostRequestControlpanelEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -344,9 +346,10 @@ class VpsOrderPostRequestControlpanelEnumTypeTransformer {
 
   const VpsOrderPostRequestControlpanelEnumTypeTransformer._();
 
-  String encode(VpsOrderPostRequestControlpanelEnum data) => data.value;
+  String encode(VpsOrderPostRequestControlpanelEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a VpsOrderPostRequestControlpanelEnum.
+  /// Returns the instance of [VpsOrderPostRequestControlpanelEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -355,6 +358,9 @@ class VpsOrderPostRequestControlpanelEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   VpsOrderPostRequestControlpanelEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is VpsOrderPostRequestControlpanelEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'none': return VpsOrderPostRequestControlpanelEnum.none;
@@ -369,7 +375,7 @@ class VpsOrderPostRequestControlpanelEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [VpsOrderPostRequestControlpanelEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static VpsOrderPostRequestControlpanelEnumTypeTransformer? _instance;
 }
 

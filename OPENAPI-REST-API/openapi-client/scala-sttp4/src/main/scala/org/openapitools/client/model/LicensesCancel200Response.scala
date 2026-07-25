@@ -16,4 +16,3 @@ case class LicensesCancel200Response(
   success: Boolean,
   text: String
 )
-

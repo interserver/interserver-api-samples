@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **realIids** | **string[]** |  | [optional]
 **serviceId** | **int** |  | [optional]
 **invoiceDescription** | **string** |  | [optional]
-**cjParams** | [**\Interserver\MyAdmin\Model\BackupOrderPostResponseCjParams**](BackupOrderPostResponseCjParams.md) |  | [optional]
+**cjParams** | [**\Interserver\\MyAdmin\Model\BackupOrderPostResponseCjParams**](BackupOrderPostResponseCjParams.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

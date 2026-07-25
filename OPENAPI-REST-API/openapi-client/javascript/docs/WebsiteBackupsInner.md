@@ -1,4 +1,4 @@
-# InterServerManagementApi.WebsiteBackupsInner
+# InterserverApiClient.WebsiteBackupsInner
 
 ## Properties
 

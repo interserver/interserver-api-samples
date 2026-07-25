@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailClientLink } from './api';
+import { MailClientLink } from '@interserver/myadmin-client';
 
 const instance: MailClientLink = {
     label,

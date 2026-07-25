@@ -19,4 +19,3 @@ case class VpsOrderOsNames(
   opensuse: Option[String] = None,
   ubuntu: Option[String] = None
 )
-

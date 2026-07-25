@@ -1,4 +1,4 @@
-# InterServerManagementApi.AffiliateTrafficRow
+# InterserverApiClient.AffiliateTrafficRow
 
 ## Properties
 

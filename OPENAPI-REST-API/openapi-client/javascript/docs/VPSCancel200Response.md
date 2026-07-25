@@ -1,4 +1,4 @@
-# InterServerManagementApi.VPSCancel200Response
+# InterserverApiClient.VPSCancel200Response
 
 ## Properties
 

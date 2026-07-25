@@ -1,4 +1,4 @@
-# openapi::ReplyTicketRequest
+# interserverapi::ReplyTicketRequest
 
 Post reply to your ticket
 

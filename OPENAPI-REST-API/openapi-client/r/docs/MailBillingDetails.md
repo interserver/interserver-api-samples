@@ -1,4 +1,4 @@
-# openapi::MailBillingDetails
+# interserverapi::MailBillingDetails
 
 Billing information for a mail service including payment status, billing cycle, and cost.
 

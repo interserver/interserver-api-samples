@@ -1,4 +1,4 @@
-# SwaggerClient::HomeTicketStatusView
+# InterserverApiClient::HomeTicketStatusView
 
 ## Properties
 Name | Type | Description | Notes

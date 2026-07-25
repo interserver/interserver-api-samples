@@ -1,4 +1,4 @@
-# InterServerManagementApi.FloatingIpsCancel200Response
+# InterserverApiClient.FloatingIpsCancel200Response
 
 ## Properties
 

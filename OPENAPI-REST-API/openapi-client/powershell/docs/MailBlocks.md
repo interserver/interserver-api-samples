@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailBlocks = Initialize-PSOpenAPIToolsMailBlocks  -VarLocal null `
+$MailBlocks = Initialize-InterserverApiMailBlocks  -VarLocal null `
  -Mbtrap null `
  -Subject null
 ```

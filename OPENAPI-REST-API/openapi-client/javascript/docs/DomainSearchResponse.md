@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainSearchResponse
+# InterserverApiClient.DomainSearchResponse
 
 ## Properties
 

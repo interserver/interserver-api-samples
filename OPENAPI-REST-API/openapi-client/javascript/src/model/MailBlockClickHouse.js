@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailBlockClickHouse model module.
  * @module model/MailBlockClickHouse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailBlockClickHouse {
     /**

@@ -20,4 +20,3 @@ case class LicensesOrder(
   packageCosts: Option[LicensesOrderPackageCosts] = None,
   serviceTypes: Option[LicensesOrderServiceTypes] = None
 )
-

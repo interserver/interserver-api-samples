@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.dns_list_item import DnsListItem
+from interserver_api_client.models.dns_list_item import DnsListItem
 
 class TestDnsListItem(unittest.TestCase):
     """DnsListItem unit test stubs"""

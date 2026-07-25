@@ -1,9 +1,7 @@
 .openapi-generator-ignore
 Dockerfile
 README.md
-_client.sh
-client.sh
-client.sh.bash-completion
+_interserver-api
 docs/AccountApi.md
 docs/AccountFeatures.md
 docs/AccountInfo.md
@@ -29,8 +27,6 @@ docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
 docs/AffiliateTrafficRow.md
-docs/AssetServer.md
-docs/AssetServerCPUInner.md
 docs/Backup.md
 docs/BackupBillingDetails.md
 docs/BackupClientLink.md
@@ -49,7 +45,6 @@ docs/BackupsApi.md
 docs/BackupsOrder.md
 docs/BackupsOrderPackageCosts.md
 docs/BackupsOrderServiceTypes.md
-docs/Bandwidth.md
 docs/BillingAddCcRequest.md
 docs/BillingApi.md
 docs/BillingInvoiceDetail.md
@@ -76,11 +71,6 @@ docs/ChargeInvoiceRowsInvoicesValue.md
 docs/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.md
 docs/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.md
 docs/CloseTicketResponseSchema.md
-docs/ConfigIds.md
-docs/ConfigLists.md
-docs/ControlPanel.md
-docs/Cpu.md
-docs/CpuWithDefaults.md
 docs/CreateFilter.md
 docs/CreateFilter201Response.md
 docs/CreateFilter400Response.md
@@ -97,6 +87,7 @@ docs/DeleteFilter400Response.md
 docs/DeleteFilter500Response.md
 docs/DeleteFirewallRule.md
 docs/DeleteGeoFirewallRule.md
+docs/DeleteMailAlertRequest.md
 docs/DenyRuleNew.md
 docs/DenyRuleRecord.md
 docs/DisableScrub200Response.md
@@ -127,11 +118,11 @@ docs/DomainNameserverGetResponseInner.md
 docs/DomainNameserverPostRequest.md
 docs/DomainNameserverPutRequest.md
 docs/DomainOrder.md
+docs/DomainOrderRequest.md
 docs/DomainOrderResponse.md
 docs/DomainOrderResponseAttributes.md
 docs/DomainOrderServices.md
 docs/DomainOrderServices10001.md
-docs/DomainOrderTldServices.md
 docs/DomainOwnerContact.md
 docs/DomainProvProcessPending.md
 docs/DomainProvProcessPendingAttributes.md
@@ -148,13 +139,14 @@ docs/EmailAddress.md
 docs/EmailAddressName.md
 docs/EnableScrub200Response.md
 docs/EnableScrub500Response.md
-docs/FieldLabel.md
 docs/FloatingIPsApi.md
+docs/FloatingIpOrderRequest.md
 docs/FloatingIpsCancel200Response.md
-docs/FormValues.md
 docs/GenericResponse.md
 docs/GetAccountInfo401Response.md
+docs/GetAccountLocales200ResponseValue.md
 docs/GetAccountTfaSetup200Response.md
+docs/GetAffiliateSignups200Response.md
 docs/GetOauthRedirect200Response.md
 docs/GetOrderDetail200Response.md
 docs/GetOrderDetail200ResponseIpsInner.md
@@ -171,7 +163,6 @@ docs/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.md
 docs/GetScrubIpDetails200ResponseFilterFirewallRulesInner.md
 docs/GetScrubIpDetails200ResponseServiceInfo.md
 docs/GetWebsiteBuyIp200Response.md
-docs/HardDrive.md
 docs/Home.md
 docs/HomeDetails.md
 docs/HomeDetailsModules.md
@@ -198,10 +189,6 @@ docs/HomeTicketStatus.md
 docs/HomeTicketStatusView.md
 docs/HostnameObject.md
 docs/InitiatePayment200Response.md
-docs/InlineObject.md
-docs/Invoice.md
-docs/InvoiceRow.md
-docs/IpBlock.md
 docs/IpLimitRange.md
 docs/IpObject.md
 docs/License.md
@@ -210,6 +197,7 @@ docs/LicenseClientLink.md
 docs/LicenseExtraInfoTables.md
 docs/LicenseIpInfo.md
 docs/LicenseIpInfoRow.md
+docs/LicenseOrderRequest.md
 docs/LicenseRow.md
 docs/LicenseServiceInfo.md
 docs/LicenseServiceType.md
@@ -248,6 +236,7 @@ docs/MailExtraInfoTableRow.md
 docs/MailLog.md
 docs/MailLogEntry.md
 docs/MailOrder.md
+docs/MailOrderRequest.md
 docs/MailRow.md
 docs/MailSchema.md
 docs/MailSchemaExtraInfoTables.md
@@ -260,15 +249,13 @@ docs/MailStatsTypeVolumeIp.md
 docs/MailStatsTypeVolumeTo.md
 docs/MailTutorialsTable.md
 docs/MailTutorialsTableRow.md
-docs/MemoryOption.md
 docs/ModuleSettings.md
 docs/Modules.md
 docs/MonthlyCounts.md
-docs/OperatingSystem.md
 docs/PasswordRequest.md
+docs/PatchBillingCreditCardVerifyRequest.md
 docs/PatchOauthTwoFactor200Response.md
 docs/PatchOauthTwoFactorRequest.md
-docs/PaymentInvoiceRows.md
 docs/PlaceBuyNowServerRequest.md
 docs/PlaceScrubOrder201Response.md
 docs/PlaceScrubOrder201ResponseOrderDetails.md
@@ -280,6 +267,8 @@ docs/PostWebsiteBuyIpRequest.md
 docs/PostWebsiteMigration200Response.md
 docs/PostWebsiteMigrationRequest.md
 docs/PublicApi.md
+docs/PutScrubIps200Response.md
+docs/QsOrderRequest.md
 docs/QueueResponse.md
 docs/QuickServersApi.md
 docs/Quickserver.md
@@ -304,8 +293,6 @@ docs/QuickserverServiceExtra.md
 docs/QuickserverServiceInfo.md
 docs/QuickserverServiceMaster.md
 docs/QuickserversCancel200Response.md
-docs/RaidOption.md
-docs/Region.md
 docs/ReplyTicketRequest.md
 docs/ReplyTicketResponseSchema.md
 docs/RestoreRequest.md
@@ -327,6 +314,8 @@ docs/Server.md
 docs/ServerAsset.md
 docs/ServerAssets.md
 docs/ServerBillingDetails.md
+docs/ServerBulkIpmiPowerResponse.md
+docs/ServerBulkIpmiPowerResponseResultsInner.md
 docs/ServerClientLink.md
 docs/ServerExtraInfoTables.md
 docs/ServerIpmiLiveInfo.md
@@ -349,7 +338,6 @@ docs/ServerOrderCpuLi.md
 docs/ServerOrderFieldLabel.md
 docs/ServerOrderFieldLabels.md
 docs/ServerOrderFormValues.md
-docs/ServerOrderGetResponse.md
 docs/ServerOrderIP.md
 docs/ServerOrderIpsLi.md
 docs/ServerOrderMemory.md
@@ -357,6 +345,8 @@ docs/ServerOrderMemoryLi.md
 docs/ServerOrderMemoryLi254.md
 docs/ServerOrderOS.md
 docs/ServerOrderOsLi.md
+docs/ServerOrderPostRequest.md
+docs/ServerOrderPostRequestHd.md
 docs/ServerOrderRAID.md
 docs/ServerRow.md
 docs/ServerServiceInfo.md
@@ -375,6 +365,7 @@ docs/ServiceTypes.md
 docs/Services.md
 docs/ServicesInfo.md
 docs/SslCancel200Response.md
+docs/SslOrderRequest.md
 docs/StatusMonthlyBreakdown.md
 docs/SuccessTextResponse.md
 docs/TemplateRequest.md
@@ -437,7 +428,6 @@ docs/VpsServiceMaster.md
 docs/VpsSnapshot.md
 docs/VpsTemplateRow.md
 docs/VpsTemplatesList.md
-docs/VpsTrafficDataDataResponse.md
 docs/VpsTrafficDataSectionResponse.md
 docs/VpsTrafficHistoryResponse.md
 docs/VpsTrafficHistorySectionDataResponse.md
@@ -457,6 +447,8 @@ docs/WebsiteBillingDetails.md
 docs/WebsiteClientLink.md
 docs/WebsiteExtraInfoTables.md
 docs/WebsiteLoginResponse.md
+docs/WebsiteOrderPostRequest.md
+docs/WebsiteOrderPutRequest.md
 docs/WebsiteRow.md
 docs/WebsiteServiceInfo.md
 docs/WebsiteServiceMaster.md
@@ -472,3 +464,5 @@ docs/WebsitesOrderPackges.md
 docs/WebsitesOrderServiceOffer.md
 docs/WebsitesOrderServiceOffers.md
 docs/WebsitesOrderServiceTypes.md
+interserver-api
+interserver-api.bash-completion

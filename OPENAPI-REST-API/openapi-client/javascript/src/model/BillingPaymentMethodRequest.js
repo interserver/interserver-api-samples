@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BillingPaymentMethodRequest model module.
  * @module model/BillingPaymentMethodRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BillingPaymentMethodRequest {
     /**

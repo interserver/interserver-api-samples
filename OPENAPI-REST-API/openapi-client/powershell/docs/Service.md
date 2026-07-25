@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Service = Initialize-PSOpenAPIToolsService  -ServicesId 31 `
+$Service = Initialize-InterserverApiService  -ServicesId 31 `
  -ServicesName OpenVZ VPS Slice `
  -ServicesCost 6 `
  -ServicesCurrency USD `

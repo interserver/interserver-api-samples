@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainNameserverPutRequest();
+    instance = new InterserverApiClient.DomainNameserverPutRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('DomainNameserverPutRequest', function() {
     it('should create an instance of DomainNameserverPutRequest', function() {
       // uncomment below and update the code to test DomainNameserverPutRequest
-      //var instance = new InterServerManagementApi.DomainNameserverPutRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainNameserverPutRequest);
+      //var instance = new InterserverApiClient.DomainNameserverPutRequest();
+      //expect(instance).to.be.a(InterserverApiClient.DomainNameserverPutRequest);
     });
 
     it('should have the property nameserver (base name: "nameserver")', function() {
       // uncomment below and update the code to test the property nameserver
-      //var instance = new InterServerManagementApi.DomainNameserverPutRequest();
+      //var instance = new InterserverApiClient.DomainNameserverPutRequest();
       //expect(instance).to.be();
     });
 

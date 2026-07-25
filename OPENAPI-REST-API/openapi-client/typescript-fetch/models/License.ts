@@ -132,7 +132,7 @@ export function instanceOfLicense(value: object): value is License {
     if (!('billingDetails' in value) || value['billingDetails'] === undefined) return false;
     if (!('custCurrency' in value) || value['custCurrency'] === undefined) return false;
     if (!('custCurrencySymbol' in value) || value['custCurrencySymbol'] === undefined) return false;
-    if (!('_package' in value) || value['_package'] === undefined) return false;
+    if ((!('_package' in (value as Record<string, any>)) && !('package' in (value as Record<string, any>))) || ((value as Record<string, any>)['_package'] === undefined && (value as Record<string, any>)['package'] === undefined)) return false;
     if (!('serviceExtra' in value) || value['serviceExtra'] === undefined) return false;
     if (!('extraInfoTables' in value) || value['extraInfoTables'] === undefined) return false;
     if (!('service_overview_extra' in value) || value['service_overview_extra'] === undefined) return false;

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsTrafficUsageResponse();
+    instance = new InterserverApiClient.VpsTrafficUsageResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('VpsTrafficUsageResponse', function() {
     it('should create an instance of VpsTrafficUsageResponse', function() {
       // uncomment below and update the code to test VpsTrafficUsageResponse
-      //var instance = new InterServerManagementApi.VpsTrafficUsageResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsTrafficUsageResponse);
+      //var instance = new InterserverApiClient.VpsTrafficUsageResponse();
+      //expect(instance).to.be.a(InterserverApiClient.VpsTrafficUsageResponse);
     });
 
     it('should have the property current (base name: "current")', function() {
       // uncomment below and update the code to test the property current
-      //var instance = new InterServerManagementApi.VpsTrafficUsageResponse();
+      //var instance = new InterserverApiClient.VpsTrafficUsageResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property peak (base name: "peak")', function() {
       // uncomment below and update the code to test the property peak
-      //var instance = new InterServerManagementApi.VpsTrafficUsageResponse();
+      //var instance = new InterserverApiClient.VpsTrafficUsageResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property average (base name: "average")', function() {
       // uncomment below and update the code to test the property average
-      //var instance = new InterServerManagementApi.VpsTrafficUsageResponse();
+      //var instance = new InterserverApiClient.VpsTrafficUsageResponse();
       //expect(instance).to.be();
     });
 

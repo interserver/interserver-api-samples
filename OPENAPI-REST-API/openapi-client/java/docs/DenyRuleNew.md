@@ -18,10 +18,14 @@ The data for a email deny rule record.
 
 | Name | Value |
 |---- | -----|
-| DOMAIN | &quot;domain&quot; |
-| EMAIL | &quot;email&quot; |
-| STARTSWITH | &quot;startswith&quot; |
-| DESTINATION | &quot;destination&quot; |
+| domain | &quot;domain&quot; |
+| email | &quot;email&quot; |
+| startswith | &quot;startswith&quot; |
+| destination | &quot;destination&quot; |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

@@ -10,6 +10,8 @@ import io.swagger.model.BillingInvoiceList;
 import io.swagger.model.BillingPaymentMethodRequest;
 import io.swagger.model.BillingPrepayRequest;
 import io.swagger.model.BillingVerifyCcRequest;
+import io.swagger.model.IdVerifyBody;
+import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.SuccessTextResponse;
 
@@ -68,6 +70,18 @@ public class BillingApiServiceImpl implements BillingApi {
       return Response.ok().build();
   }
       public Response getBillingPrePays(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response initiatePayment(String method,String invoices,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response patchBillingCreditCardVerify(IdVerifyBody body,Integer id,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response patchBillingCreditCardVerify(String ccCcv2,Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

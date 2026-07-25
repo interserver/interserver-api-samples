@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_order_templates_hyperv_windows import VpsOrderTemplatesHypervWindows
+from interserver_api_client.models.vps_order_templates_hyperv_windows import VpsOrderTemplatesHypervWindows
 
 class TestVpsOrderTemplatesHypervWindows(unittest.TestCase):
     """VpsOrderTemplatesHypervWindows unit test stubs"""

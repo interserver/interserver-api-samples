@@ -11,4 +11,8 @@ Object containing asset information.
 |**_3497** | [**ServerAsset**](ServerAsset.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

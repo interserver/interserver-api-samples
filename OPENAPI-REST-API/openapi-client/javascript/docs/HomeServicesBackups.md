@@ -1,4 +1,4 @@
-# InterServerManagementApi.HomeServicesBackups
+# InterserverApiClient.HomeServicesBackups
 
 ## Properties
 

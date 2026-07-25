@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerClientLink model module.
  * @module model/ServerClientLink
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerClientLink {
     /**

@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServersBuyNowError
+# InterserverApiClient.ServersBuyNowError
 
 ## Properties
 

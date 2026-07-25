@@ -17,7 +17,7 @@ import VpsBackupRow from './VpsBackupRow';
 /**
  * The VpsBackupRows model module.
  * @module model/VpsBackupRows
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsBackupRows extends Array {
     /**

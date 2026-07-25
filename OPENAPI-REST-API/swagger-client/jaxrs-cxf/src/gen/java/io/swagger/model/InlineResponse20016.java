@@ -16,10 +16,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse20016   {
   
-  @Schema(example = "true", description = "")
+  @Schema(example = "true", required = true, description = "")
   private Boolean success = null;
   
-  @Schema(example = "Firewall Rule has been deleted.", description = "")
+  @Schema(example = "Scrub is disabled on your IP.", required = true, description = "")
   private String text = null;
  /**
    * Get success

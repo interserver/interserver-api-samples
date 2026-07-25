@@ -24,6 +24,7 @@ local openapiclient_service_order_post_response = require "openapiclient.model.s
 local openapiclient_success_text_response = require "openapiclient.model.success_text_response"
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
 local openapiclient_ip_object = require "openapiclient.model.ip_object"
+local openapiclient_license_order_request = require "openapiclient.model.license_order_request"
 local openapiclient_licenses_cancel_200_response = require "openapiclient.model.licenses_cancel_200_response"
 
 local licenses_api = {}
@@ -52,7 +53,7 @@ local function new_licenses_api(authority, basePath, schemes)
 	}, licenses_api_mt)
 end
 
-function licenses_api:add_license()
+function licenses_api:add_license(license_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -63,9 +64,15 @@ function licenses_api:add_license()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "POST")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(license_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -260,49 +267,6 @@ function licenses_api:get_license_list()
 			openapiclient_license_row.cast(ob)
 		end
 		return result, headers
-	else
-		local body, err, errno2 = stream:get_body_as_string()
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		-- return the error message (http body)
-		return nil, http_status, body
-	end
-end
-
-function licenses_api:get_license_order_cat_tag_info(cat_tag)
-	local req = http_request.new_from_uri({
-		scheme = self.default_scheme;
-		host = self.host;
-		port = self.port;
-		path = string.format("%s/licenses/order/%s",
-			self.basePath, cat_tag);
-	})
-
-	-- set HTTP verb
-	req.headers:upsert(":method", "GET")
-	-- TODO: create a function to select proper content-type
-	--local var_accept = { "application/json" }
-	req.headers:upsert("content-type", "application/json")
-
-	-- api key in headers 'X-API-KEY'
-	if self.api_key['X-API-KEY'] then
-		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
-	end
-	-- api key in headers 'sessionid'
-	if self.api_key['sessionid'] then
-		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
-	end
-
-	-- make the HTTP call
-	local headers, stream, errno = req:go()
-	if not headers then
-		return nil, stream, errno
-	end
-	local http_status = headers:get(":status")
-	if http_status:sub(1,1) == "2" then
-		return nil, headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then
@@ -536,7 +500,7 @@ function licenses_api:post_license_change_ip(id, ip_object)
 	end
 end
 
-function licenses_api:put_licenses()
+function licenses_api:put_licenses(license_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -547,9 +511,15 @@ function licenses_api:put_licenses()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "PUT")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(license_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then

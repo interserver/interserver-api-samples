@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerOrderCpuLi
 void main() {
-  final instance = ServerOrderCpuLiBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerOrderCpuLi? instance = /* ServerOrderCpuLi(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerOrderCpuLi, () {
-    // ServerOrderCPU n254
+    // Optional<ServerOrderCPU?> n254
     test('to test the property `n254`', () async {
       // TODO
     });

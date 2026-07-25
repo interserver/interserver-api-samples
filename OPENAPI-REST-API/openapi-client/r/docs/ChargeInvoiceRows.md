@@ -1,4 +1,4 @@
-# openapi::ChargeInvoiceRows
+# interserverapi::ChargeInvoiceRows
 
 Billing invoices associated with a service, including invoice IDs, descriptions, amounts, and payment status.
 

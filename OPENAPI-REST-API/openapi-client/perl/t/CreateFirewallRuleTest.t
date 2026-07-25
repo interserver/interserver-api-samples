@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::CreateFirewallRule');
+use_ok('InterServerAPI::Object::CreateFirewallRule');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::CreateFirewallRule->new();
+#my $instance = InterServerAPI::Object::CreateFirewallRule->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::CreateFirewallRule');
+#isa_ok($instance, 'InterServerAPI::Object::CreateFirewallRule');
 
 
 done_testing();

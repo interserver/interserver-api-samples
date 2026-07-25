@@ -1,4 +1,4 @@
-# openapi::VpsSnapshot
+# interserverapi::VpsSnapshot
 
 A VPS snapshot (point-in-time backup) stored on the host node.
 

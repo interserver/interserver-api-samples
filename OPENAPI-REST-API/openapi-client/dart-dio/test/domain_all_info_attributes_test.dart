@@ -1,68 +1,68 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainAllInfoAttributes
 void main() {
-  final instance = DomainAllInfoAttributesBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainAllInfoAttributes? instance = /* DomainAllInfoAttributes(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainAllInfoAttributes, () {
-    // DomainAllInfoAttributesContactSet contactSet
+    // Optional<DomainAllInfoAttributesContactSet?> contactSet
     test('to test the property `contactSet`', () async {
       // TODO
     });
 
-    // String registryCreatedate
+    // Optional<String?> registryCreatedate
     test('to test the property `registryCreatedate`', () async {
       // TODO
     });
 
-    // String registryExpiredate
+    // Optional<String?> registryExpiredate
     test('to test the property `registryExpiredate`', () async {
       // TODO
     });
 
-    // String tldData
+    // Optional<String?> tldData
     test('to test the property `tldData`', () async {
       // TODO
     });
 
-    // String letExpire
+    // Optional<String?> letExpire
     test('to test the property `letExpire`', () async {
       // TODO
     });
 
-    // String autoRenew
+    // Optional<String?> autoRenew
     test('to test the property `autoRenew`', () async {
       // TODO
     });
 
-    // String sponsoringRsp
+    // Optional<String?> sponsoringRsp
     test('to test the property `sponsoringRsp`', () async {
       // TODO
     });
 
-    // String gdprConsentStatus
+    // Optional<String?> gdprConsentStatus
     test('to test the property `gdprConsentStatus`', () async {
       // TODO
     });
 
-    // BuiltList<DomainNameServer> nameserverList
+    // Optional<List<DomainNameServer>?> nameserverList
     test('to test the property `nameserverList`', () async {
       // TODO
     });
 
-    // String registryUpdatedate
+    // Optional<String?> registryUpdatedate
     test('to test the property `registryUpdatedate`', () async {
       // TODO
     });
 
-    // String affiliateId
+    // Optional<String?> affiliateId
     test('to test the property `affiliateId`', () async {
       // TODO
     });
 
-    // String expiredate
+    // Optional<String?> expiredate
     test('to test the property `expiredate`', () async {
       // TODO
     });

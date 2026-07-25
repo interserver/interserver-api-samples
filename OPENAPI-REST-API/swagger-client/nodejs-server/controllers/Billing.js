@@ -3,26 +3,6 @@
 var utils = require('../utils/writer.js');
 var Billing = require('../service/BillingService');
 
-module.exports.addAccountCreditCard = function addAccountCreditCard (req, res, next, body) {
-  Billing.addAccountCreditCard(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.addAccountCreditCard = function addAccountCreditCard (req, res, next, body) {
-  Billing.addAccountCreditCard(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.addBillingCreditCard = function addBillingCreditCard (req, res, next, body) {
   Billing.addBillingCreditCard(body)
     .then(function (response) {
@@ -55,16 +35,6 @@ module.exports.addBillingPrepay = function addBillingPrepay (req, res, next, bod
 
 module.exports.addBillingPrepay = function addBillingPrepay (req, res, next, body) {
   Billing.addBillingPrepay(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.deleteAccountCreditCard = function deleteAccountCreditCard (req, res, next, id) {
-  Billing.deleteAccountCreditCard(id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -113,6 +83,16 @@ module.exports.getAffiliateBanners = function getAffiliateBanners (req, res, nex
     });
 };
 
+module.exports.getAffiliateDownload = function getAffiliateDownload (req, res, next, st, ex, year) {
+  Billing.getAffiliateDownload(st, ex, year)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.getAffiliateRichReport = function getAffiliateRichReport (req, res, next) {
   Billing.getAffiliateRichReport()
     .then(function (response) {
@@ -133,8 +113,8 @@ module.exports.getAffiliateSalesGraph = function getAffiliateSalesGraph (req, re
     });
 };
 
-module.exports.getAffiliateSalesReport = function getAffiliateSalesReport (req, res, next) {
-  Billing.getAffiliateSalesReport()
+module.exports.getAffiliateSignups = function getAffiliateSignups (req, res, next, st) {
+  Billing.getAffiliateSignups(st)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -213,16 +193,6 @@ module.exports.getBillingPrePays = function getBillingPrePays (req, res, next) {
     });
 };
 
-module.exports.getInvoices = function getInvoices (req, res, next, searchString, skip, limit) {
-  Billing.getInvoices(searchString, skip, limit)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.initiatePayment = function initiatePayment (req, res, next, method, invoices) {
   Billing.initiatePayment(method, invoices)
     .then(function (response) {
@@ -233,8 +203,18 @@ module.exports.initiatePayment = function initiatePayment (req, res, next, metho
     });
 };
 
-module.exports.postBillingCreditCardVerify = function postBillingCreditCardVerify (req, res, next, body, id) {
-  Billing.postBillingCreditCardVerify(body, id)
+module.exports.patchBillingCreditCardVerify = function patchBillingCreditCardVerify (req, res, next, body, id) {
+  Billing.patchBillingCreditCardVerify(body, id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.patchBillingCreditCardVerify = function patchBillingCreditCardVerify (req, res, next, body, id) {
+  Billing.patchBillingCreditCardVerify(body, id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -253,8 +233,8 @@ module.exports.postBillingCreditCardVerify = function postBillingCreditCardVerif
     });
 };
 
-module.exports.updateAccountCreditCard = function updateAccountCreditCard (req, res, next, id) {
-  Billing.updateAccountCreditCard(id)
+module.exports.postBillingCreditCardVerify = function postBillingCreditCardVerify (req, res, next, body, id) {
+  Billing.postBillingCreditCardVerify(body, id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -275,26 +255,6 @@ module.exports.updateAffiliateDockSetup = function updateAffiliateDockSetup (req
 
 module.exports.updateAffiliateDockSetup = function updateAffiliateDockSetup (req, res, next, body) {
   Billing.updateAffiliateDockSetup(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.updateAffiliateLandingPage = function updateAffiliateLandingPage (req, res, next, body) {
-  Billing.updateAffiliateLandingPage(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.updateAffiliateLandingPage = function updateAffiliateLandingPage (req, res, next, body) {
-  Billing.updateAffiliateLandingPage(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

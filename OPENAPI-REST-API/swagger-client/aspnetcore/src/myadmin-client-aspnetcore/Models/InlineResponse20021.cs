@@ -27,20 +27,28 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20021 : IEquatable<InlineResponse20021>
     { 
         /// <summary>
-        /// Gets or Sets Success
+        /// Status message.
         /// </summary>
-        [Required]
-
-        [DataMember(Name="success")]
-        public bool? Success { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Text
-        /// </summary>
-        [Required]
+        /// <value>Status message.</value>
 
         [DataMember(Name="text")]
         public string Text { get; set; }
+
+        /// <summary>
+        /// Invoice ID for payment.
+        /// </summary>
+        /// <value>Invoice ID for payment.</value>
+
+        [DataMember(Name="invoice")]
+        public int? Invoice { get; set; }
+
+        /// <summary>
+        /// Server order ID.
+        /// </summary>
+        /// <value>Server order ID.</value>
+
+        [DataMember(Name="order")]
+        public int? Order { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,8 +58,9 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20021 {\n");
-            sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  Invoice: ").Append(Invoice).Append("\n");
+            sb.Append("  Order: ").Append(Order).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -89,14 +98,19 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Success == other.Success ||
-                    Success != null &&
-                    Success.Equals(other.Success)
-                ) && 
-                (
                     Text == other.Text ||
                     Text != null &&
                     Text.Equals(other.Text)
+                ) && 
+                (
+                    Invoice == other.Invoice ||
+                    Invoice != null &&
+                    Invoice.Equals(other.Invoice)
+                ) && 
+                (
+                    Order == other.Order ||
+                    Order != null &&
+                    Order.Equals(other.Order)
                 );
         }
 
@@ -110,10 +124,12 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Success != null)
-                    hashCode = hashCode * 59 + Success.GetHashCode();
                     if (Text != null)
                     hashCode = hashCode * 59 + Text.GetHashCode();
+                    if (Invoice != null)
+                    hashCode = hashCode * 59 + Invoice.GetHashCode();
+                    if (Order != null)
+                    hashCode = hashCode * 59 + Order.GetHashCode();
                 return hashCode;
             }
         }

@@ -6,17 +6,19 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse20019;
-import io.swagger.model.InlineResponse20020;
-import io.swagger.model.InlineResponse20027;
+import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20022;
+import io.swagger.model.InlineResponse20029;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.OrderBuyNowServerBody;
 import io.swagger.model.ReverseDnsEntries;
 import io.swagger.model.Server;
+import io.swagger.model.ServerBulkIpmiPowerResponse;
 import io.swagger.model.ServerIpmiLiveInfo;
 import io.swagger.model.ServerIpmiLiveRequest;
 import io.swagger.model.ServerIpmiPowerRequest;
 import io.swagger.model.ServerOrder;
+import io.swagger.model.ServerOrderPostRequest;
 import io.swagger.model.ServerRow;
 import io.swagger.model.ServersBuyNowError;
 import io.swagger.model.ServersBuyNowResponse;
@@ -34,7 +36,7 @@ import javax.ws.rs.core.SecurityContext;
 
 
 public interface ServersApiService {
-      Response addServer(SecurityContext securityContext) throws NotFoundException;
+      Response addServer(ServerOrderPostRequest body,SecurityContext securityContext) throws NotFoundException;
       Response buyItNowServerOrder(SecurityContext securityContext) throws NotFoundException;
       Response getNewServer(SecurityContext securityContext) throws NotFoundException;
       Response getServerInfo(Integer id,SecurityContext securityContext) throws NotFoundException;
@@ -45,7 +47,7 @@ public interface ServersApiService {
       Response placeBuyNowServer(OrderBuyNowServerBody body,SecurityContext securityContext) throws NotFoundException;
       Response postServerReverseDns(ReverseDnsEntries body,Integer id,SecurityContext securityContext) throws NotFoundException;
       Response postServerReverseDns(Map<String, Object> ips,Integer id,SecurityContext securityContext) throws NotFoundException;
-      Response putServers(SecurityContext securityContext) throws NotFoundException;
+      Response serverBulkIpmiPowerGet(String ids,SecurityContext securityContext) throws NotFoundException;
       Response serverIpmiLiveGet(Integer id,SecurityContext securityContext) throws NotFoundException;
       Response serverIpmiLivePost(MultipartFormDataInput input,Integer asset,String ip,Integer id,SecurityContext securityContext) throws NotFoundException;
       Response serverIpmiLivePost(MultipartFormDataInput input,ServerIpmiLiveRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;

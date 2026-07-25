@@ -1,4 +1,4 @@
-# openapi::ScrubIpFilterTypesFiltersValue
+# interserverapi::ScrubIpFilterTypesFiltersValue
 
 
 ## Properties

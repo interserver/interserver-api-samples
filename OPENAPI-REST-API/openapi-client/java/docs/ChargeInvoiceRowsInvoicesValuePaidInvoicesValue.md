@@ -18,4 +18,8 @@
 |**refundInvoices** | [**Map&lt;String, ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue&gt;**](ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.md) | This is optional when refund is present this will show |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

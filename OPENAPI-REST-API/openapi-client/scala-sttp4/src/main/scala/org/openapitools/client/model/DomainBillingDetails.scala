@@ -36,4 +36,3 @@ case class DomainBillingDetails(
   /* Raw JSON string of extra billing data. */
   service_extra_json: Option[String] = None
 )
-

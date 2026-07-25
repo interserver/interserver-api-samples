@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DenyRuleNew');
+use_ok('InterServerAPI::Object::DenyRuleNew');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DenyRuleNew->new();
+#my $instance = InterServerAPI::Object::DenyRuleNew->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DenyRuleNew');
+#isa_ok($instance, 'InterServerAPI::Object::DenyRuleNew');
 
 
 done_testing();

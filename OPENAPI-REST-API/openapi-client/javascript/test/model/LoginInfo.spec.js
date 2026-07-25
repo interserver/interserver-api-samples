@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LoginInfo();
+    instance = new InterserverApiClient.LoginInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('LoginInfo', function() {
     it('should create an instance of LoginInfo', function() {
       // uncomment below and update the code to test LoginInfo
-      //var instance = new InterServerManagementApi.LoginInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.LoginInfo);
+      //var instance = new InterserverApiClient.LoginInfo();
+      //expect(instance).to.be.a(InterserverApiClient.LoginInfo);
     });
 
     it('should have the property captcha (base name: "captcha")', function() {
       // uncomment below and update the code to test the property captcha
-      //var instance = new InterServerManagementApi.LoginInfo();
+      //var instance = new InterserverApiClient.LoginInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property counts (base name: "counts")', function() {
       // uncomment below and update the code to test the property counts
-      //var instance = new InterServerManagementApi.LoginInfo();
+      //var instance = new InterserverApiClient.LoginInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property logo (base name: "logo")', function() {
       // uncomment below and update the code to test the property logo
-      //var instance = new InterServerManagementApi.LoginInfo();
+      //var instance = new InterserverApiClient.LoginInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property language (base name: "language")', function() {
       // uncomment below and update the code to test the property language
-      //var instance = new InterServerManagementApi.LoginInfo();
+      //var instance = new InterserverApiClient.LoginInfo();
       //expect(instance).to.be();
     });
 

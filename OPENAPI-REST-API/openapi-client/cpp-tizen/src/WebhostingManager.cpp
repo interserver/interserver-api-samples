@@ -109,7 +109,7 @@ static bool addWebsiteProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 }
 
 static bool addWebsiteHelper(char * accessToken,
-	
+	std::shared_ptr<WebsiteOrderPostRequest> websiteOrderPostRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -129,6 +129,19 @@ static bool addWebsiteHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("WebsiteOrderPostRequest")) {
+		node = converttoJson(&websiteOrderPostRequest, "WebsiteOrderPostRequest", "");
+	}
+	
+	char *jsonStr =  websiteOrderPostRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/websites/order");
 	int pos;
@@ -180,22 +193,22 @@ static bool addWebsiteHelper(char * accessToken,
 
 
 bool WebhostingManager::addWebsiteAsync(char * accessToken,
-	
+	std::shared_ptr<WebsiteOrderPostRequest> websiteOrderPostRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addWebsiteHelper(accessToken,
-	
+	websiteOrderPostRequest, 
 	handler, userData, true);
 }
 
 bool WebhostingManager::addWebsiteSync(char * accessToken,
-	
+	std::shared_ptr<WebsiteOrderPostRequest> websiteOrderPostRequest, 
 	void(* handler)(ServiceOrderPostResponse, Error, void* )
 	, void* userData)
 {
 	return addWebsiteHelper(accessToken,
-	
+	websiteOrderPostRequest, 
 	handler, userData, false);
 }
 
@@ -2134,7 +2147,7 @@ static bool putWebsitesProcessor(MemoryStruct_s p_chunk, long code, char* errorm
 }
 
 static bool putWebsitesHelper(char * accessToken,
-	
+	std::shared_ptr<WebsiteOrderPutRequest> websiteOrderPutRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData, bool isAsync)
 {
@@ -2154,6 +2167,19 @@ static bool putWebsitesHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("WebsiteOrderPutRequest")) {
+		node = converttoJson(&websiteOrderPutRequest, "WebsiteOrderPutRequest", "");
+	}
+	
+	char *jsonStr =  websiteOrderPutRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/websites/order");
 	int pos;
@@ -2205,22 +2231,22 @@ static bool putWebsitesHelper(char * accessToken,
 
 
 bool WebhostingManager::putWebsitesAsync(char * accessToken,
-	
+	std::shared_ptr<WebsiteOrderPutRequest> websiteOrderPutRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putWebsitesHelper(accessToken,
-	
+	websiteOrderPutRequest, 
 	handler, userData, true);
 }
 
 bool WebhostingManager::putWebsitesSync(char * accessToken,
-	
+	std::shared_ptr<WebsiteOrderPutRequest> websiteOrderPutRequest, 
 	
 	void(* handler)(Error, void* ) , void* userData)
 {
 	return putWebsitesHelper(accessToken,
-	
+	websiteOrderPutRequest, 
 	handler, userData, false);
 }
 

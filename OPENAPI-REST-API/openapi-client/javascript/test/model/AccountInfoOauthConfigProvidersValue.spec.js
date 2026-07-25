@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoOauthConfigProvidersValue();
+    instance = new InterserverApiClient.AccountInfoOauthConfigProvidersValue();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('AccountInfoOauthConfigProvidersValue', function() {
     it('should create an instance of AccountInfoOauthConfigProvidersValue', function() {
       // uncomment below and update the code to test AccountInfoOauthConfigProvidersValue
-      //var instance = new InterServerManagementApi.AccountInfoOauthConfigProvidersValue();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoOauthConfigProvidersValue);
+      //var instance = new InterserverApiClient.AccountInfoOauthConfigProvidersValue();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoOauthConfigProvidersValue);
     });
 
     it('should have the property enabled (base name: "enabled")', function() {
       // uncomment below and update the code to test the property enabled
-      //var instance = new InterServerManagementApi.AccountInfoOauthConfigProvidersValue();
+      //var instance = new InterserverApiClient.AccountInfoOauthConfigProvidersValue();
       //expect(instance).to.be();
     });
 
     it('should have the property linked (base name: "linked")', function() {
       // uncomment below and update the code to test the property linked
-      //var instance = new InterServerManagementApi.AccountInfoOauthConfigProvidersValue();
+      //var instance = new InterserverApiClient.AccountInfoOauthConfigProvidersValue();
       //expect(instance).to.be();
     });
 
     it('should have the property account (base name: "account")', function() {
       // uncomment below and update the code to test the property account
-      //var instance = new InterServerManagementApi.AccountInfoOauthConfigProvidersValue();
+      //var instance = new InterserverApiClient.AccountInfoOauthConfigProvidersValue();
       //expect(instance).to.be();
     });
 
     it('should have the property url (base name: "url")', function() {
       // uncomment below and update the code to test the property url
-      //var instance = new InterServerManagementApi.AccountInfoOauthConfigProvidersValue();
+      //var instance = new InterserverApiClient.AccountInfoOauthConfigProvidersValue();
       //expect(instance).to.be();
     });
 

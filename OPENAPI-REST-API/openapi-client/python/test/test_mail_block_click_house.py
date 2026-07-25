@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_block_click_house import MailBlockClickHouse
+from interserver_api_client.models.mail_block_click_house import MailBlockClickHouse
 
 class TestMailBlockClickHouse(unittest.TestCase):
     """MailBlockClickHouse unit test stubs"""

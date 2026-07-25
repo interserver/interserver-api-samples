@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServicesInfo = Initialize-PSOpenAPIToolsServicesInfo  -Modules null `
+$ServicesInfo = Initialize-InterserverApiServicesInfo  -Modules null `
  -Services null `
  -ServiceTypes null `
  -ServiceCategories null

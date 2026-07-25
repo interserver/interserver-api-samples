@@ -14,4 +14,8 @@
 |**errorCode** | **String** | Error code if additional verification is needed (e.g. &#x60;2fa_required&#x60;). |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

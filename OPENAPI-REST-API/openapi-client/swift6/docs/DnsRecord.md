@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The ID of the DNS Record. | 
+**_id** | **String** | The ID of the DNS Record. | 
 **domainId** | **String** | The ID of the Domain this is a record of. | 
 **name** | **String** |  | 
 **type** | [**DnsRecordType**](DnsRecordType.md) |  | 

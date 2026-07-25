@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_plesk12_data import VpsPlesk12Data
+from interserver_api_client.models.vps_plesk12_data import VpsPlesk12Data
 
 # TODO update the JSON string below
 json = "{}"

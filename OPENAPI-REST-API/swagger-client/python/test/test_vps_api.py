@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.vps_api import VPSApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.vps_api import VPSApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestVPSApi(unittest.TestCase):
@@ -31,308 +31,350 @@ class TestVPSApi(unittest.TestCase):
     def test_add_vps(self):
         """Test case for add_vps
 
-        Place VPS Order  # noqa: E501
+        Place a new VPS order, create the invoice, and queue provisioning  # noqa: E501
         """
         pass
 
     def test_delete_vps_backup(self):
         """Test case for delete_vps_backup
 
-        Delete VPS Backup  # noqa: E501
+        Permanently delete a VPS backup file by name (irreversible)  # noqa: E501
         """
         pass
 
     def test_do_vps_block_smtp(self):
         """Test case for do_vps_block_smtp
 
-        Blocks SMTP  # noqa: E501
+        Block outbound SMTP (port 25) on the VPS to prevent spam/abuse  # noqa: E501
         """
         pass
 
     def test_do_vps_disable_cd(self):
         """Test case for do_vps_disable_cd
 
-        Disable CD Drive  # noqa: E501
+        Remove the virtual CD/DVD device entirely from the VPS configuration  # noqa: E501
         """
         pass
 
     def test_do_vps_disable_quota(self):
         """Test case for do_vps_disable_quota
 
-        Disable Quotas  # noqa: E501
+        Disable per-user disk quota enforcement inside the VPS guest OS  # noqa: E501
         """
         pass
 
     def test_do_vps_eject_cd(self):
         """Test case for do_vps_eject_cd
 
-        Eject CD Drive  # noqa: E501
+        Eject the mounted ISO from the VPS virtual CD drive (keep the drive)  # noqa: E501
         """
         pass
 
     def test_do_vps_enable_quota(self):
         """Test case for do_vps_enable_quota
 
-        Enable Quotas  # noqa: E501
+        Enable per-user disk quota enforcement inside the VPS guest OS  # noqa: E501
         """
         pass
 
     def test_do_vps_restart(self):
         """Test case for do_vps_restart
 
-        Restart VPS  # noqa: E501
+        Reboot the VPS — preferred over stop+start for software changes  # noqa: E501
         """
         pass
 
     def test_do_vps_start(self):
         """Test case for do_vps_start
 
-        Start VPS  # noqa: E501
+        Power on a stopped VPS instance  # noqa: E501
         """
         pass
 
     def test_do_vps_stop(self):
         """Test case for do_vps_stop
 
-        Stop VPS  # noqa: E501
+        Power off a running VPS — billing continues until cancellation  # noqa: E501
         """
         pass
 
     def test_download_vps_backup(self):
         """Test case for download_vps_backup
 
-        Download VPS Backup  # noqa: E501
+        Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup  # noqa: E501
         """
         pass
 
     def test_get_new_vps(self):
         """Test case for get_new_vps
 
-        VPS Ordering Information  # noqa: E501
+        Get the VPS order catalog — platforms, OS templates, locations, pricing  # noqa: E501
+        """
+        pass
+
+    def test_get_vps_backup(self):
+        """Test case for get_vps_backup
+
+        Trigger a manual on-demand snapshot/backup of the VPS  # noqa: E501
         """
         pass
 
     def test_get_vps_backups(self):
         """Test case for get_vps_backups
 
-        Get VPS Backups List  # noqa: E501
+        List existing backups for the VPS across Swift, MinIO, and ZFS  # noqa: E501
         """
         pass
 
     def test_get_vps_buy_hd_space(self):
         """Test case for get_vps_buy_hd_space
 
-        HD Space Addon Info  # noqa: E501
+        Get current additional disk size and per-GB monthly cost for the VPS  # noqa: E501
         """
         pass
 
     def test_get_vps_buy_ip(self):
         """Test case for get_vps_buy_ip
 
-        Additional IP Addon Info  # noqa: E501
+        Read current additional IPs, cap, and per-IP monthly cost for the VPS  # noqa: E501
+        """
+        pass
+
+    def test_get_vps_change_hostname(self):
+        """Test case for get_vps_change_hostname
+
+        Read the VPS's current hostname before changing it  # noqa: E501
+        """
+        pass
+
+    def test_get_vps_change_root_password(self):
+        """Test case for get_vps_change_root_password
+
+        Pre-flight check before changing the VPS root password  # noqa: E501
         """
         pass
 
     def test_get_vps_change_timezone(self):
         """Test case for get_vps_change_timezone
 
-        Get Timezone Info  # noqa: E501
+        List IANA timezones supported by the VPS guest OS  # noqa: E501
         """
         pass
 
     def test_get_vps_info(self):
         """Test case for get_vps_info
 
-        Get VPS Order  # noqa: E501
+        Get full details for one VPS — IPs, hostname, OS, slices, status, addons  # noqa: E501
+        """
+        pass
+
+    def test_get_vps_insert_cd(self):
+        """Test case for get_vps_insert_cd
+
+        List ISO templates that can be mounted in the VPS virtual CD drive  # noqa: E501
         """
         pass
 
     def test_get_vps_invoices(self):
         """Test case for get_vps_invoices
 
-        Get VPS Invoices  # noqa: E501
+        List all billing invoices associated with this specific VPS  # noqa: E501
         """
         pass
 
     def test_get_vps_list(self):
         """Test case for get_vps_list
 
-        List VPS Orders  # noqa: E501
+        List all VPS services on the customer's account  # noqa: E501
         """
         pass
 
     def test_get_vps_reinstall_os(self):
         """Test case for get_vps_reinstall_os
 
-        VPS Reinstall OS Options  # noqa: E501
+        List OS templates compatible with this VPS's hypervisor for reinstall  # noqa: E501
+        """
+        pass
+
+    def test_get_vps_reset_password(self):
+        """Test case for get_vps_reset_password
+
+        Pre-flight check before resetting the VPS root password to a random value  # noqa: E501
         """
         pass
 
     def test_get_vps_reverse_dns(self):
         """Test case for get_vps_reverse_dns
 
-        Reverse DNS Info  # noqa: E501
+        Read the current PTR (reverse-DNS) records for every IP on the VPS  # noqa: E501
         """
         pass
 
     def test_get_vps_setup_vnc(self):
         """Test case for get_vps_setup_vnc
 
-        VNC Setup Info  # noqa: E501
+        Read current VNC console connection info for the VPS  # noqa: E501
         """
         pass
 
     def test_get_vps_slices(self):
         """Test case for get_vps_slices
 
-        Slice Upgrade Info  # noqa: E501
+        Read current slice count, min/max range, and prorated per-slice upgrade cost  # noqa: E501
         """
         pass
 
     def test_get_vps_traffic_usage(self):
         """Test case for get_vps_traffic_usage
 
-        Get Traffic Usage  # noqa: E501
+        Read bandwidth traffic usage data for the VPS  # noqa: E501
         """
         pass
 
     def test_get_vps_view_desktop(self):
         """Test case for get_vps_view_desktop
 
-        Get View Desktop Info  # noqa: E501
+        Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS  # noqa: E501
         """
         pass
 
     def test_get_vps_welcome_email(self):
         """Test case for get_vps_welcome_email
 
-        Resend VPS Welcome Email  # noqa: E501
-        """
-        pass
-
-    def test_post_vps_backup(self):
-        """Test case for post_vps_backup
-
-        Start a VPS Backup  # noqa: E501
+        Resend the welcome email containing VPS IP, hostname, and root credentials  # noqa: E501
         """
         pass
 
     def test_post_vps_buy_hd_space(self):
         """Test case for post_vps_buy_hd_space
 
-        Purchase HD Space Addon  # noqa: E501
+        Buy or resize the VPS additional-disk addon and create a prorated invoice  # noqa: E501
         """
         pass
 
     def test_post_vps_buy_ip(self):
         """Test case for post_vps_buy_ip
 
-        Purchase Additional IP  # noqa: E501
+        Purchase one additional IP for the VPS and create the invoice  # noqa: E501
         """
         pass
 
     def test_post_vps_change_hostname(self):
         """Test case for post_vps_change_hostname
 
-        Update VPS Hostname  # noqa: E501
+        Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP  # noqa: E501
         """
         pass
 
     def test_post_vps_change_root_password(self):
         """Test case for post_vps_change_root_password
 
-        Change VPS Root Password  # noqa: E501
+        Set a specific new root/Administrator password on the VPS  # noqa: E501
         """
         pass
 
     def test_post_vps_change_timezone(self):
         """Test case for post_vps_change_timezone
 
-        Change VPS Timezone  # noqa: E501
+        Set the system timezone on the VPS guest OS  # noqa: E501
         """
         pass
 
     def test_post_vps_change_webuzo_password(self):
         """Test case for post_vps_change_webuzo_password
 
-        Change Webuzo Password  # noqa: E501
+        Rotate the Webuzo control panel admin password (re-auth required)  # noqa: E501
         """
         pass
 
     def test_post_vps_insert_cd(self):
         """Test case for post_vps_insert_cd
 
-        Insert CD in VPS  # noqa: E501
+        Mount an ISO image in the VPS virtual CD drive from a URL  # noqa: E501
         """
         pass
 
     def test_post_vps_reinstall_os(self):
         """Test case for post_vps_reinstall_os
 
-        Reinstall VPS OS  # noqa: E501
+        Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)  # noqa: E501
         """
         pass
 
     def test_post_vps_reset_password(self):
         """Test case for post_vps_reset_password
 
-        Reset VPS Password  # noqa: E501
+        Reset the VPS root password to a server-generated random value  # noqa: E501
         """
         pass
 
     def test_post_vps_restore(self):
         """Test case for post_vps_restore
 
-        Restore VPS from Backup  # noqa: E501
+        Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)  # noqa: E501
         """
         pass
 
     def test_post_vps_reverse_dns(self):
         """Test case for post_vps_reverse_dns
 
-        Update Reverse DNS  # noqa: E501
+        Bulk-update PTR (reverse-DNS) records for one or more VPS IPs  # noqa: E501
         """
         pass
 
     def test_post_vps_setup_vnc(self):
         """Test case for post_vps_setup_vnc
 
-        Setup VNC  # noqa: E501
+        Provision or refresh the VNC console endpoint for the VPS  # noqa: E501
         """
         pass
 
     def test_post_vps_slices(self):
         """Test case for post_vps_slices
 
-        Purchase Slice Upgrade  # noqa: E501
+        Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)  # noqa: E501
+        """
+        pass
+
+    def test_post_vps_traffic_usage(self):
+        """Test case for post_vps_traffic_usage
+
+        Search/filter VPS bandwidth usage with custom criteria (reserved)  # noqa: E501
         """
         pass
 
     def test_post_vps_view_desktop(self):
         """Test case for post_vps_view_desktop
 
-        Update View Desktop  # noqa: E501
+        Refresh the remote-desktop session connection info after IP/hostname changes  # noqa: E501
         """
         pass
 
     def test_put_vps(self):
         """Test case for put_vps
 
-        Validate VPS Order  # noqa: E501
+        Validate a VPS order configuration and quote the cost — dry run, no charge  # noqa: E501
+        """
+        pass
+
+    def test_put_vps_buy_hd_space(self):
+        """Test case for put_vps_buy_hd_space
+
+        Preview cost to set additional VPS disk to a target GB size — dry run  # noqa: E501
         """
         pass
 
     def test_update_vps_info(self):
         """Test case for update_vps_info
 
-        Update VPS Order  # noqa: E501
+        Update editable settings on a VPS service record  # noqa: E501
         """
         pass
 
     def test_v_ps_cancel(self):
         """Test case for v_ps_cancel
 
-        Cancel VPS Service  # noqa: E501
+        Cancel a VPS service at the end of the current billing cycle  # noqa: E501
         """
         pass
 

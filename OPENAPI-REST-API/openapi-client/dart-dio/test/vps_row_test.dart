@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsRow
 void main() {
-  final instance = VpsRowBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsRow? instance = /* VpsRow(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsRow, () {
     // The id of the vps.

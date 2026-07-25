@@ -1,14 +1,14 @@
-# openapi.model.ServerOrderOsLi
+# interserver_api.model.ServerOrderOsLi
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**n51** | [**ServerOrderOS**](ServerOrderOS.md) |  | [optional] 
+**n51** | [**Optional&lt;ServerOrderOS?&gt;**](ServerOrderOS.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

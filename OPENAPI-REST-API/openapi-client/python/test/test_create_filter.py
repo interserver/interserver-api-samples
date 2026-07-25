@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.create_filter import CreateFilter
+from interserver_api_client.models.create_filter import CreateFilter
 
 class TestCreateFilter(unittest.TestCase):
     """CreateFilter unit test stubs"""

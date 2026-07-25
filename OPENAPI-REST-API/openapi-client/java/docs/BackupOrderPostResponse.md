@@ -19,4 +19,8 @@ Backup Order Placement Response
 |**cjParams** | [**BackupOrderPostResponseCjParams**](BackupOrderPostResponseCjParams.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,4 +1,4 @@
-# openapi::WebsiteBillingDetails
+# interserverapi::WebsiteBillingDetails
 
 Billing information for a webhosting service including payment status, billing cycle, and cost.
 

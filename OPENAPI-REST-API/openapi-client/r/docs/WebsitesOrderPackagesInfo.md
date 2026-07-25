@@ -1,4 +1,4 @@
-# openapi::WebsitesOrderPackagesInfo
+# interserverapi::WebsitesOrderPackagesInfo
 
 
 ## Properties

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::TemplateRequest');
+use_ok('InterServerAPI::Object::TemplateRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::TemplateRequest->new();
+#my $instance = InterServerAPI::Object::TemplateRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::TemplateRequest');
+#isa_ok($instance, 'InterServerAPI::Object::TemplateRequest');
 
 
 done_testing();

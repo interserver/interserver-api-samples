@@ -18,4 +18,3 @@ case class BuyItNowServerOrder200ResponseIpsInner(
   long_desc: Option[String] = None,
   monthly_price: Option[String] = None
 )
-

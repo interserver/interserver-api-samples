@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ScrubIpFilterTypes();
+    instance = new InterserverApiClient.ScrubIpFilterTypes();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('ScrubIpFilterTypes', function() {
     it('should create an instance of ScrubIpFilterTypes', function() {
       // uncomment below and update the code to test ScrubIpFilterTypes
-      //var instance = new InterServerManagementApi.ScrubIpFilterTypes();
-      //expect(instance).to.be.a(InterServerManagementApi.ScrubIpFilterTypes);
+      //var instance = new InterserverApiClient.ScrubIpFilterTypes();
+      //expect(instance).to.be.a(InterserverApiClient.ScrubIpFilterTypes);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.ScrubIpFilterTypes();
+      //var instance = new InterserverApiClient.ScrubIpFilterTypes();
       //expect(instance).to.be();
     });
 
     it('should have the property filters (base name: "filters")', function() {
       // uncomment below and update the code to test the property filters
-      //var instance = new InterServerManagementApi.ScrubIpFilterTypes();
+      //var instance = new InterserverApiClient.ScrubIpFilterTypes();
       //expect(instance).to.be();
     });
 

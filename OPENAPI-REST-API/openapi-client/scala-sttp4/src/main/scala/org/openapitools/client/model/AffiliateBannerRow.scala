@@ -21,4 +21,3 @@ case class AffiliateBannerRow(
   width: Option[String] = None,
   height: Option[String] = None
 )
-

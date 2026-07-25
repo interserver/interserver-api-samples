@@ -18,7 +18,7 @@ import MailBlockRspamd from './MailBlockRspamd';
 /**
  * The MailBlocks model module.
  * @module model/MailBlocks
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailBlocks {
     /**

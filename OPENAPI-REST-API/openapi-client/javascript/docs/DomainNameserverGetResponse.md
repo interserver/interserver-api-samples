@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainNameserverGetResponse
+# InterserverApiClient.DomainNameserverGetResponse
 
 ## Properties
 

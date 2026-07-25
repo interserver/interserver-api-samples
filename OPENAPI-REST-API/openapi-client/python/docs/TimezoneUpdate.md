@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.timezone_update import TimezoneUpdate
+from interserver_api_client.models.timezone_update import TimezoneUpdate
 
 # TODO update the JSON string below
 json = "{}"

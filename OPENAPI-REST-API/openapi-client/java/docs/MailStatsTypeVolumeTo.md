@@ -13,4 +13,8 @@
 |**clientAtAnothersiteCom** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

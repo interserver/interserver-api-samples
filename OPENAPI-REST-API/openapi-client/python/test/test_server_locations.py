@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_locations import ServerLocations
+from interserver_api_client.models.server_locations import ServerLocations
 
 class TestServerLocations(unittest.TestCase):
     """ServerLocations unit test stubs"""
@@ -36,7 +36,7 @@ class TestServerLocations(unittest.TestCase):
         model = ServerLocations()
         if include_optional:
             return ServerLocations(
-                var_1 = openapi_client.models.server_location1.ServerLocation1(
+                var_1 = interserver_api_client.models.server_location1.ServerLocation1(
                     location_id = 56, 
                     location_name = '', 
                     location_description = '', 

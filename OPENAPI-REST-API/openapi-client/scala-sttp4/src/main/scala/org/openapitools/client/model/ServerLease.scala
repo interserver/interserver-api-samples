@@ -20,4 +20,3 @@ case class ServerLease(
   /* Group identifier for the lease. */
   group: String
 )
-

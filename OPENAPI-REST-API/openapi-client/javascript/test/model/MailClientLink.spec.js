@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailClientLink();
+    instance = new InterserverApiClient.MailClientLink();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('MailClientLink', function() {
     it('should create an instance of MailClientLink', function() {
       // uncomment below and update the code to test MailClientLink
-      //var instance = new InterServerManagementApi.MailClientLink();
-      //expect(instance).to.be.a(InterServerManagementApi.MailClientLink);
+      //var instance = new InterserverApiClient.MailClientLink();
+      //expect(instance).to.be.a(InterserverApiClient.MailClientLink);
     });
 
     it('should have the property label (base name: "label")', function() {
       // uncomment below and update the code to test the property label
-      //var instance = new InterServerManagementApi.MailClientLink();
+      //var instance = new InterserverApiClient.MailClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property link (base name: "link")', function() {
       // uncomment below and update the code to test the property link
-      //var instance = new InterServerManagementApi.MailClientLink();
+      //var instance = new InterserverApiClient.MailClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property icon (base name: "icon")', function() {
       // uncomment below and update the code to test the property icon
-      //var instance = new InterServerManagementApi.MailClientLink();
+      //var instance = new InterserverApiClient.MailClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property icon_text (base name: "icon_text")', function() {
       // uncomment below and update the code to test the property icon_text
-      //var instance = new InterServerManagementApi.MailClientLink();
+      //var instance = new InterserverApiClient.MailClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property help_text (base name: "help_text")', function() {
       // uncomment below and update the code to test the property help_text
-      //var instance = new InterServerManagementApi.MailClientLink();
+      //var instance = new InterserverApiClient.MailClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property other_attr (base name: "other_attr")', function() {
       // uncomment below and update the code to test the property other_attr
-      //var instance = new InterServerManagementApi.MailClientLink();
+      //var instance = new InterserverApiClient.MailClientLink();
       //expect(instance).to.be();
     });
 

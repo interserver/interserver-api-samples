@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BackupsOrder } from './api';
+import { BackupsOrder } from '@interserver/myadmin-client';
 
 const instance: BackupsOrder = {
     packageCosts,

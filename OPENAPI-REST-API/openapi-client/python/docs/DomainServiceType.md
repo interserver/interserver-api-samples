@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.domain_service_type import DomainServiceType
+from interserver_api_client.models.domain_service_type import DomainServiceType
 
 # TODO update the JSON string below
 json = "{}"

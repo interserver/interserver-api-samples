@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebhostingCancel200Response = Initialize-PSOpenAPIToolsWebhostingCancel200Response  -Success null `
+$WebhostingCancel200Response = Initialize-InterserverApiWebhostingCancel200Response  -Success null `
  -Text null
 ```
 

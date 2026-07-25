@@ -17,7 +17,7 @@ import DomainNameserverGetResponseInner from './DomainNameserverGetResponseInner
 /**
  * The DomainNameserverGetResponse model module.
  * @module model/DomainNameserverGetResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainNameserverGetResponse extends Array {
     /**

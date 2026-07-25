@@ -21,7 +21,7 @@ import AccountInfoOauthproviders from './AccountInfoOauthproviders';
 /**
  * The AccountInfo model module.
  * @module model/AccountInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AccountInfo {
     /**

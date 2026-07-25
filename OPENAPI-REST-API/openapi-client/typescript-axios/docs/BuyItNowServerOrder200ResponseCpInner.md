@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BuyItNowServerOrder200ResponseCpInner } from './api';
+import { BuyItNowServerOrder200ResponseCpInner } from '@interserver/myadmin-client';
 
 const instance: BuyItNowServerOrder200ResponseCpInner = {
     id,

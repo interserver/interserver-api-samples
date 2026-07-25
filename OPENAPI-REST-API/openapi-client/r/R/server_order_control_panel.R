@@ -213,7 +213,7 @@ ServerOrderControlPanel <- R6::R6Class(
         self$`monthly_price` <- this_object$`monthly_price`
       }
       if (!is.null(this_object$`types`)) {
-        self$`types` <- ApiClient$new()$deserializeObj(this_object$`types`, "array[character]", loadNamespace("openapi"))
+        self$`types` <- ApiClient$new()$deserializeObj(this_object$`types`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`price_display`)) {
         self$`price_display` <- this_object$`price_display`
@@ -249,7 +249,7 @@ ServerOrderControlPanel <- R6::R6Class(
       self$`long_desc` <- this_object$`long_desc`
       self$`os_type` <- this_object$`os_type`
       self$`monthly_price` <- this_object$`monthly_price`
-      self$`types` <- ApiClient$new()$deserializeObj(this_object$`types`, "array[character]", loadNamespace("openapi"))
+      self$`types` <- ApiClient$new()$deserializeObj(this_object$`types`, "array[character]", loadNamespace("interserverapi"))
       self$`price_display` <- this_object$`price_display`
       self$`monthly_price_display` <- this_object$`monthly_price_display`
       self

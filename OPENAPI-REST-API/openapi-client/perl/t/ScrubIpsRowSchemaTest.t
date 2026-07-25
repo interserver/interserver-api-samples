@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ScrubIpsRowSchema');
+use_ok('InterServerAPI::Object::ScrubIpsRowSchema');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ScrubIpsRowSchema->new();
+#my $instance = InterServerAPI::Object::ScrubIpsRowSchema->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ScrubIpsRowSchema');
+#isa_ok($instance, 'InterServerAPI::Object::ScrubIpsRowSchema');
 
 
 done_testing();

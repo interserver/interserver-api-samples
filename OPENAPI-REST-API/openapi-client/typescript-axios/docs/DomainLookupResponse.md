@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainLookupResponse } from './api';
+import { DomainLookupResponse } from '@interserver/myadmin-client';
 
 const instance: DomainLookupResponse = {
     available,

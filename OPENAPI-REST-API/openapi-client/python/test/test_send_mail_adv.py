@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.send_mail_adv import SendMailAdv
+from interserver_api_client.models.send_mail_adv import SendMailAdv
 
 class TestSendMailAdv(unittest.TestCase):
     """SendMailAdv unit test stubs"""

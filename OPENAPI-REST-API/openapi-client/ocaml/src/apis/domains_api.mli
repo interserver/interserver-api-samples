@@ -5,11 +5,11 @@
  *
  *)
 
-val add_domain : unit -> Service_order_post_response.t Lwt.t
+val add_domain : domain_order_request_t:Domain_order_request.t -> Service_order_post_response.t Lwt.t
 val add_domain_dnssec : id:int32 -> domain_dnssec_request_t:Domain_dnssec_request.t -> Success_text_response.t Lwt.t
 val add_domain_nameserver : id:int32 -> domain_nameserver_post_request_t:Domain_nameserver_post_request.t -> Text_response.t Lwt.t
 val cancel_domain : id:int32 -> Cancel_domain_200_response.t Lwt.t
-val delete_domain_dnssec : id:int32 -> action:string -> Success_text_response.t Lwt.t
+val delete_domain_dnssec : id:int32 -> Success_text_response.t Lwt.t
 val delete_domain_nameserver : id:int32 -> index:int32 -> Text_response.t Lwt.t
 val get_domain_contact : id:int32 -> Domain_contact_details.t Lwt.t
 val get_domain_dnssec : id:int32 -> Domain_dnssec_records.t Lwt.t
@@ -17,8 +17,6 @@ val get_domain_info : id:int32 -> Domain.t Lwt.t
 val get_domain_invoices : id:int32 -> Charge_invoice_rows.t Lwt.t
 val get_domain_lookup : name:string -> Domain_lookup_response.t Lwt.t
 val get_domain_nameservers : id:int32 -> Domain_nameserver_get_response.t Lwt.t
-val get_domain_order_fields : domain:string -> reg_type:string -> unit Lwt.t
-val get_domain_order_search_results : domain:string -> unit Lwt.t
 val get_domain_renewal : id:int32 -> Success_text_response.t Lwt.t
 val get_domain_search : name:string -> Domain_search_response.t Lwt.t
 val get_domain_transfer : id:int32 -> Success_text_response.t Lwt.t
@@ -26,11 +24,12 @@ val get_domain_whois_privacy : id:int32 -> Success_text_response.t Lwt.t
 val get_domains_list : unit -> Domain_row.t list Lwt.t
 val get_domains_welcome_email : id:int32 -> Success_text_response.t Lwt.t
 val get_new_domain : unit -> Domain_order.t Lwt.t
-val patch_domains : unit -> unit Lwt.t
+val patch_domains : domain_order_request_t:Domain_order_request.t -> unit Lwt.t
 val post_domain_renewal : id:int32 -> Success_text_response.t Lwt.t
+val post_domain_search : name:string -> unit Lwt.t
 val post_domain_transfer : id:int32 -> Success_text_response.t Lwt.t
-val put_domains : unit -> unit Lwt.t
+val put_domains : domain_order_request_t:Domain_order_request.t -> unit Lwt.t
 val update_domain_contact : id:int32 -> domain_contact_details_t:Domain_contact_details.t -> Success_text_response.t Lwt.t
-val update_domain_info : id:string -> Success_text_response.t Lwt.t
+val update_domain_info : id:int32 -> Success_text_response.t Lwt.t
 val update_domain_nameservers : id:int32 -> domain_nameserver_put_request_t:Domain_nameserver_put_request.t -> Text_response.t Lwt.t
 val update_domain_whois_privacy : id:int32 -> domain_whois_privacy_request_t:Domain_whois_privacy_request.t -> Success_text_response.t Lwt.t

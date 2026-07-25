@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailDelistRequest } from './api';
+import { MailDelistRequest } from '@interserver/myadmin-client';
 
 const instance: MailDelistRequest = {
     unblock,

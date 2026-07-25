@@ -1,4 +1,4 @@
-# openapi::LicensesOrderServiceTypes11482
+# interserverapi::LicensesOrderServiceTypes11482
 
 
 ## Properties

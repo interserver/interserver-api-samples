@@ -1,4 +1,4 @@
-# openapi::MailExtraInfoTable
+# interserverapi::MailExtraInfoTable
 
 A supplementary information table for a mail service (e.g., connection details).
 

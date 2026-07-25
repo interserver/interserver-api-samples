@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainNameserverGetResponseInner model module.
  * @module model/DomainNameserverGetResponseInner
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainNameserverGetResponseInner {
     /**
@@ -136,7 +136,13 @@ DomainNameserverGetResponseInner['CanDeleteEnum'] = {
      * value: "1"
      * @const
      */
-    "1": "1"
+    "1": "1",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 

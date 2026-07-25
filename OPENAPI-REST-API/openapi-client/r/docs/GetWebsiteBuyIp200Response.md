@@ -1,4 +1,4 @@
-# openapi::GetWebsiteBuyIp200Response
+# interserverapi::GetWebsiteBuyIp200Response
 
 
 ## Properties

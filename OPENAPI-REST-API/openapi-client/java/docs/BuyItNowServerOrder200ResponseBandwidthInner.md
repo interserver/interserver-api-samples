@@ -13,4 +13,8 @@
 |**monthlyPrice** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

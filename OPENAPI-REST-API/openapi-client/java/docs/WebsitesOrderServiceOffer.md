@@ -20,4 +20,8 @@
 |**deletedAt** | **String** | The deletion timestamp of the service offer. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

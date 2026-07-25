@@ -1,4 +1,4 @@
-# openapi::DomainOrderServices
+# interserverapi::DomainOrderServices
 
 Available domain service catalog entries keyed by service ID.
 

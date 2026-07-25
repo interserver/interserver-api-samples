@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsPlesk12Data();
+    instance = new InterserverApiClient.VpsPlesk12Data();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('VpsPlesk12Data', function() {
     it('should create an instance of VpsPlesk12Data', function() {
       // uncomment below and update the code to test VpsPlesk12Data
-      //var instance = new InterServerManagementApi.VpsPlesk12Data();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsPlesk12Data);
+      //var instance = new InterserverApiClient.VpsPlesk12Data();
+      //expect(instance).to.be.a(InterserverApiClient.VpsPlesk12Data);
     });
 
     it('should have the property admin (base name: "admin")', function() {
       // uncomment below and update the code to test the property admin
-      //var instance = new InterServerManagementApi.VpsPlesk12Data();
+      //var instance = new InterserverApiClient.VpsPlesk12Data();
       //expect(instance).to.be();
     });
 
     it('should have the property pro (base name: "pro")', function() {
       // uncomment below and update the code to test the property pro
-      //var instance = new InterServerManagementApi.VpsPlesk12Data();
+      //var instance = new InterserverApiClient.VpsPlesk12Data();
       //expect(instance).to.be();
     });
 
     it('should have the property host (base name: "host")', function() {
       // uncomment below and update the code to test the property host
-      //var instance = new InterServerManagementApi.VpsPlesk12Data();
+      //var instance = new InterserverApiClient.VpsPlesk12Data();
       //expect(instance).to.be();
     });
 

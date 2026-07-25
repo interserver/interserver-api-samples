@@ -20,6 +20,7 @@ import uri
 
 import ../models/model_charge_invoice_rows
 import ../models/model_service_order_post_response
+import ../models/model_ssl_order_request
 import ../models/model_success_text_response
 import ../models/model_get_account_info401response
 import ../models/model_object
@@ -40,62 +41,64 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addSsl*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
-  ## Place SSL Cert Order
+proc addSsl*(httpClient: HttpClient, sslOrderRequest: SslOrderRequest): (Option[ServiceOrderPostResponse], Response) =
+  ## Place a new SSL certificate order - creates invoice and queues issuance
+  httpClient.headers["Content-Type"] = "application/json"
 
-  let response = httpClient.post(basepath & "/ssl/order")
+  let response = httpClient.post(basepath & "/ssl/order", $(%sslOrderRequest))
   constructResult[ServiceOrderPostResponse](response)
 
 
 proc getNewSsl*(httpClient: HttpClient): (Option[JsonNode], Response) =
-  ## SSL Cert Ordering Information
+  ## Get available SSL certificate packages and pricing for placing a new order
 
   let response = httpClient.get(basepath & "/ssl/order")
   constructResult[JsonNode](response)
 
 
 proc getSslInfo*(httpClient: HttpClient, id: int): (Option[JsonNode], Response) =
-  ## Get SSL Cert Info
+  ## Get full details for one SSL certificate by id - status, expiration, links
 
   let response = httpClient.get(basepath & fmt"/ssl/{id}")
   constructResult[JsonNode](response)
 
 
 proc getSslInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get SSL Cert Invoices
+  ## List all billing invoices and charges tied to one SSL certificate by id
 
   let response = httpClient.get(basepath & fmt"/ssl/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getSslList*(httpClient: HttpClient): Response =
-  ## List SSL Certs
+  ## List all SSL certificates on the authenticated customer account with status and hostname
   httpClient.get(basepath & "/ssl")
 
 
 
 proc getSslWelcomeEmail*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Resend SSL Welcome Email
+  ## Resend the SSL welcome email with cert credentials and install instructions
 
   let response = httpClient.get(basepath & fmt"/ssl/{id}/welcome_email")
   constructResult[SuccessTextResponse](response)
 
 
-proc putSsl*(httpClient: HttpClient): Response =
-  ## Validate SSL Cert Order
-  httpClient.put(basepath & "/ssl/order")
+proc putSsl*(httpClient: HttpClient, sslOrderRequest: SslOrderRequest): Response =
+  ## Validate an SSL certificate order without charging - dry-run before addSsl
+  httpClient.headers["Content-Type"] = "application/json"
+  httpClient.put(basepath & "/ssl/order", $(%sslOrderRequest))
 
 
 
 proc sslCancel*(httpClient: HttpClient, id: int): (Option[sslCancel_200_response], Response) =
-  ## Cancel SSL Certificate Service
+  ## Cancel an SSL certificate service - stops renewals at end of billing cycle
 
   let response = httpClient.delete(basepath & fmt"/ssl/{id}")
   constructResult[sslCancel_200_response](response)
 
 
 proc updateSslInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Update SSL Cert Order
+  ## Update mutable settings on an existing SSL certificate order by id
 
   let response = httpClient.post(basepath & fmt"/ssl/{id}")
   constructResult[SuccessTextResponse](response)

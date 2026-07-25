@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainLookupResponse
+# InterServerAPI::Object::DomainLookupResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainLookupResponse;
+use InterServerAPI::Object::DomainLookupResponse;
 ```
 
 ## Properties

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_details_modules_servers import HomeDetailsModulesServers
+from interserver_api_client.models.home_details_modules_servers import HomeDetailsModulesServers
 
 class TestHomeDetailsModulesServers(unittest.TestCase):
     """HomeDetailsModulesServers unit test stubs"""

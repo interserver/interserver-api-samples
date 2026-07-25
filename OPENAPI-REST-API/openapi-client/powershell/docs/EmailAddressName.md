@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$EmailAddressName = Initialize-PSOpenAPIToolsEmailAddressName  -Email user@domain.com `
+$EmailAddressName = Initialize-InterserverApiEmailAddressName  -Email user@domain.com `
  -Name John Smith
 ```
 

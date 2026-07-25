@@ -21,4 +21,3 @@ case class HomeDetailsModules(
   servers: Option[HomeDetailsModulesServers] = None,
   quickservers: Option[HomeDetailsModulesQuickservers] = None
 )
-

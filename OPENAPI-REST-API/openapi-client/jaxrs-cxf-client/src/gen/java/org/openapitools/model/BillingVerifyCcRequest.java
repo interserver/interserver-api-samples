@@ -124,7 +124,7 @@ public class BillingVerifyCcRequest  {
    * @return terms
   **/
   @JsonProperty("terms")
-  public Boolean getTerms() {
+  public Boolean isTerms() {
     return terms;
   }
 

@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsServiceInfo
+# InterserverApiClient.VpsServiceInfo
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# openapi::QuickserversCancel200Response
+# interserverapi::QuickserversCancel200Response
 
 
 ## Properties

@@ -17,4 +17,3 @@ case class VpsOrderLocationStock1(
   kvmstorage: Option[Boolean] = None,
   hyperv: Option[Boolean] = None
 )
-

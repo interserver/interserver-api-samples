@@ -1,4 +1,4 @@
-# openapi::WebsiteRow
+# interserverapi::WebsiteRow
 
 A result row from the `Webhosting` `GET` request.
 

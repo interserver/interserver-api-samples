@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.WebsiteRow();
+    instance = new InterserverApiClient.WebsiteRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('WebsiteRow', function() {
     it('should create an instance of WebsiteRow', function() {
       // uncomment below and update the code to test WebsiteRow
-      //var instance = new InterServerManagementApi.WebsiteRow();
-      //expect(instance).to.be.a(InterServerManagementApi.WebsiteRow);
+      //var instance = new InterserverApiClient.WebsiteRow();
+      //expect(instance).to.be.a(InterserverApiClient.WebsiteRow);
     });
 
     it('should have the property website_id (base name: "website_id")', function() {
       // uncomment below and update the code to test the property website_id
-      //var instance = new InterServerManagementApi.WebsiteRow();
+      //var instance = new InterserverApiClient.WebsiteRow();
       //expect(instance).to.be();
     });
 
     it('should have the property website_hostname (base name: "website_hostname")', function() {
       // uncomment below and update the code to test the property website_hostname
-      //var instance = new InterServerManagementApi.WebsiteRow();
+      //var instance = new InterserverApiClient.WebsiteRow();
       //expect(instance).to.be();
     });
 
     it('should have the property repeat_invoices_cost (base name: "repeat_invoices_cost")', function() {
       // uncomment below and update the code to test the property repeat_invoices_cost
-      //var instance = new InterServerManagementApi.WebsiteRow();
+      //var instance = new InterserverApiClient.WebsiteRow();
       //expect(instance).to.be();
     });
 
     it('should have the property website_status (base name: "website_status")', function() {
       // uncomment below and update the code to test the property website_status
-      //var instance = new InterServerManagementApi.WebsiteRow();
+      //var instance = new InterserverApiClient.WebsiteRow();
       //expect(instance).to.be();
     });
 
     it('should have the property services_name (base name: "services_name")', function() {
       // uncomment below and update the code to test the property services_name
-      //var instance = new InterServerManagementApi.WebsiteRow();
+      //var instance = new InterserverApiClient.WebsiteRow();
       //expect(instance).to.be();
     });
 
     it('should have the property website_comment (base name: "website_comment")', function() {
       // uncomment below and update the code to test the property website_comment
-      //var instance = new InterServerManagementApi.WebsiteRow();
+      //var instance = new InterserverApiClient.WebsiteRow();
       //expect(instance).to.be();
     });
 

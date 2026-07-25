@@ -1,4 +1,4 @@
-# SwaggerClient::WebsiteLoginResponse
+# InterserverApiClient::WebsiteLoginResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -20,4 +20,3 @@ case class CaptchaResponse(
   /* The base64 encoded captcha image. */
   captcha: String
 )
-

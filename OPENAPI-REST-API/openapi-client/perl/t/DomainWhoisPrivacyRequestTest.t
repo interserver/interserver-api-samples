@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DomainWhoisPrivacyRequest');
+use_ok('InterServerAPI::Object::DomainWhoisPrivacyRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DomainWhoisPrivacyRequest->new();
+#my $instance = InterServerAPI::Object::DomainWhoisPrivacyRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DomainWhoisPrivacyRequest');
+#isa_ok($instance, 'InterServerAPI::Object::DomainWhoisPrivacyRequest');
 
 
 done_testing();

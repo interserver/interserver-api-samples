@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicenseClientLink = Initialize-PSOpenAPIToolsLicenseClientLink  -Label Invoices `
+$LicenseClientLink = Initialize-InterserverApiLicenseClientLink  -Label Invoices `
  -Link invoices `
  -Icon fas fa-file-invoice-dollar fa-w-12 `
  -IconText  `

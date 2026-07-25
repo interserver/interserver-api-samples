@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::WebsitesOrderPackages
+# InterServerAPI::Object::WebsitesOrderPackages
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::WebsitesOrderPackages;
+use InterServerAPI::Object::WebsitesOrderPackages;
 ```
 
 ## Properties

@@ -1,4 +1,4 @@
-# InterServerManagementApi.ScrubIpsRowSchema
+# InterserverApiClient.ScrubIpsRowSchema
 
 ## Properties
 

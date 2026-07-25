@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::QuickserverOrderServerDetails381
+# InterServerAPI::Object::QuickserverOrderServerDetails381
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::QuickserverOrderServerDetails381;
+use InterServerAPI::Object::QuickserverOrderServerDetails381;
 ```
 
 ## Properties

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The HomeDetailsModulesWebhosting model module.
  * @module model/HomeDetailsModulesWebhosting
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeDetailsModulesWebhosting {
     /**

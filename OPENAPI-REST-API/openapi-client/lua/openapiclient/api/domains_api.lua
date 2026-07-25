@@ -32,6 +32,7 @@ local openapiclient_domain_contact_details = require "openapiclient.model.domain
 local openapiclient_domain_dnssec_request = require "openapiclient.model.domain_dnssec_request"
 local openapiclient_domain_nameserver_post_request = require "openapiclient.model.domain_nameserver_post_request"
 local openapiclient_domain_nameserver_put_request = require "openapiclient.model.domain_nameserver_put_request"
+local openapiclient_domain_order_request = require "openapiclient.model.domain_order_request"
 local openapiclient_domain_whois_privacy_request = require "openapiclient.model.domain_whois_privacy_request"
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
 
@@ -61,7 +62,7 @@ local function new_domains_api(authority, basePath, schemes)
 	}, domains_api_mt)
 end
 
-function domains_api:add_domain()
+function domains_api:add_domain(domain_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -72,9 +73,15 @@ function domains_api:add_domain()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "POST")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(domain_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -289,13 +296,13 @@ function domains_api:cancel_domain(id)
 	end
 end
 
-function domains_api:delete_domain_dnssec(id, action)
+function domains_api:delete_domain_dnssec(id)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
 		port = self.port;
-		path = string.format("%s/domains/%s/dnssec?action=%s",
-			self.basePath, id, http_util.encodeURIComponent(action));
+		path = string.format("%s/domains/%s/dnssec",
+			self.basePath, id);
 	})
 
 	-- set HTTP verb
@@ -721,92 +728,6 @@ function domains_api:get_domain_nameservers(id)
 	end
 end
 
-function domains_api:get_domain_order_fields(domain, reg_type)
-	local req = http_request.new_from_uri({
-		scheme = self.default_scheme;
-		host = self.host;
-		port = self.port;
-		path = string.format("%s/domains/order/%s/%s",
-			self.basePath, domain, reg_type);
-	})
-
-	-- set HTTP verb
-	req.headers:upsert(":method", "GET")
-	-- TODO: create a function to select proper content-type
-	--local var_accept = { "application/json" }
-	req.headers:upsert("content-type", "application/json")
-
-	-- api key in headers 'X-API-KEY'
-	if self.api_key['X-API-KEY'] then
-		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
-	end
-	-- api key in headers 'sessionid'
-	if self.api_key['sessionid'] then
-		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
-	end
-
-	-- make the HTTP call
-	local headers, stream, errno = req:go()
-	if not headers then
-		return nil, stream, errno
-	end
-	local http_status = headers:get(":status")
-	if http_status:sub(1,1) == "2" then
-		return nil, headers
-	else
-		local body, err, errno2 = stream:get_body_as_string()
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		-- return the error message (http body)
-		return nil, http_status, body
-	end
-end
-
-function domains_api:get_domain_order_search_results(domain)
-	local req = http_request.new_from_uri({
-		scheme = self.default_scheme;
-		host = self.host;
-		port = self.port;
-		path = string.format("%s/domains/order/%s",
-			self.basePath, domain);
-	})
-
-	-- set HTTP verb
-	req.headers:upsert(":method", "GET")
-	-- TODO: create a function to select proper content-type
-	--local var_accept = { "application/json" }
-	req.headers:upsert("content-type", "application/json")
-
-	-- api key in headers 'X-API-KEY'
-	if self.api_key['X-API-KEY'] then
-		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
-	end
-	-- api key in headers 'sessionid'
-	if self.api_key['sessionid'] then
-		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
-	end
-
-	-- make the HTTP call
-	local headers, stream, errno = req:go()
-	if not headers then
-		return nil, stream, errno
-	end
-	local http_status = headers:get(":status")
-	if http_status:sub(1,1) == "2" then
-		return nil, headers
-	else
-		local body, err, errno2 = stream:get_body_as_string()
-		if not body then
-			return nil, err, errno2
-		end
-		stream:shutdown()
-		-- return the error message (http body)
-		return nil, http_status, body
-	end
-end
-
 function domains_api:get_domain_renewal(id)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
@@ -1188,7 +1109,7 @@ function domains_api:get_new_domain()
 	end
 end
 
-function domains_api:patch_domains()
+function domains_api:patch_domains(domain_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -1199,9 +1120,15 @@ function domains_api:patch_domains()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "PATCH")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(domain_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -1285,6 +1212,49 @@ function domains_api:post_domain_renewal(id)
 	end
 end
 
+function domains_api:post_domain_search(name)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/domains/search/%s",
+			self.basePath, name);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "POST")
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		return nil, headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
 function domains_api:post_domain_transfer(id)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
@@ -1339,7 +1309,7 @@ function domains_api:post_domain_transfer(id)
 	end
 end
 
-function domains_api:put_domains()
+function domains_api:put_domains(domain_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -1350,9 +1320,15 @@ function domains_api:put_domains()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "PUT")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(domain_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then

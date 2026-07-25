@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlaceScrubOrder201ResponseOrderDetails } from './api';
+import { PlaceScrubOrder201ResponseOrderDetails } from '@interserver/myadmin-client';
 
 const instance: PlaceScrubOrder201ResponseOrderDetails = {
     total_cost,

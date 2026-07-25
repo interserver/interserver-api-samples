@@ -20,4 +20,8 @@ A control panel option available when ordering a dedicated server.
 |**monthlyPriceDisplay** | **String** | Display of monthly control panel price. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

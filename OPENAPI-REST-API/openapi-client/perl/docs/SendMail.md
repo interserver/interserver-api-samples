@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::SendMail
+# InterServerAPI::Object::SendMail
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::SendMail;
+use InterServerAPI::Object::SendMail;
 ```
 
 ## Properties

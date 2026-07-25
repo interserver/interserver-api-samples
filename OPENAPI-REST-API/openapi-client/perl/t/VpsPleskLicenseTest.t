@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::VpsPleskLicense');
+use_ok('InterServerAPI::Object::VpsPleskLicense');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::VpsPleskLicense->new();
+#my $instance = InterServerAPI::Object::VpsPleskLicense->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::VpsPleskLicense');
+#isa_ok($instance, 'InterServerAPI::Object::VpsPleskLicense');
 
 
 done_testing();

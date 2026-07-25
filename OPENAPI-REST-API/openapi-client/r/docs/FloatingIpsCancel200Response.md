@@ -1,4 +1,4 @@
-# openapi::FloatingIpsCancel200Response
+# interserverapi::FloatingIpsCancel200Response
 
 
 ## Properties

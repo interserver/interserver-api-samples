@@ -20,4 +20,8 @@ Billing information for a mail service including payment status, billing cycle, 
 |**serviceExtraJson** | **String** | Extra JSON information for the service. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

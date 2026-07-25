@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::BackupsOrder');
+use_ok('InterServerAPI::Object::BackupsOrder');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::BackupsOrder->new();
+#my $instance = InterServerAPI::Object::BackupsOrder->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::BackupsOrder');
+#isa_ok($instance, 'InterServerAPI::Object::BackupsOrder');
 
 
 done_testing();

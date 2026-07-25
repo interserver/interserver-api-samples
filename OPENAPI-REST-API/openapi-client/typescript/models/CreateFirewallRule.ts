@@ -75,12 +75,6 @@ export class CreateFirewallRule {
     }
 }
 
-export enum CreateFirewallRuleProtocolIdEnum {
-    NUMBER_1 = 1,
-    NUMBER_2 = 2
-}
-export enum CreateFirewallRuleXdpActionEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1
-}
+    export type CreateFirewallRuleProtocolIdEnum = "1" | "2" ;
+    export type CreateFirewallRuleXdpActionEnum = "0" | "1" ;
 

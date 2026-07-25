@@ -1,4 +1,4 @@
-# openapi::LicenseIpInfoRow
+# interserverapi::LicenseIpInfoRow
 
 A single row in the license IP information table.
 

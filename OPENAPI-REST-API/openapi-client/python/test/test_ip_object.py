@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.ip_object import IpObject
+from interserver_api_client.models.ip_object import IpObject
 
 class TestIpObject(unittest.TestCase):
     """IpObject unit test stubs"""

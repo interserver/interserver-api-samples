@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.billing_invoice_detail import BillingInvoiceDetail
+from interserver_api_client.models.billing_invoice_detail import BillingInvoiceDetail
 
 class TestBillingInvoiceDetail(unittest.TestCase):
     """BillingInvoiceDetail unit test stubs"""

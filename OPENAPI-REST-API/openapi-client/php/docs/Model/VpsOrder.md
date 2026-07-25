@@ -25,14 +25,14 @@ Name | Type | Description | Notes
 **bwType** | **string** | Bandwidth Type |
 **bwTotal** | **float** | Total Bandwidth |
 **maxSlices** | **string** | Maximum Slices |
-**platformPackages** | [**\Interserver\MyAdmin\Model\VpsOrderPlatformPackages**](VpsOrderPlatformPackages.md) |  |
-**platformNames** | [**\Interserver\MyAdmin\Model\VpsOrderPlatformNames**](VpsOrderPlatformNames.md) |  |
-**packageCosts** | [**\Interserver\MyAdmin\Model\VpsOrderPackageCosts**](VpsOrderPackageCosts.md) |  |
-**locationStock** | [**\Interserver\MyAdmin\Model\VpsOrderLocationStock**](VpsOrderLocationStock.md) |  |
-**locationNames** | [**\Interserver\MyAdmin\Model\VpsOrderLocationNames**](VpsOrderLocationNames.md) |  |
-**osNames** | [**\Interserver\MyAdmin\Model\VpsOrderOsNames**](VpsOrderOsNames.md) |  |
-**templates** | [**\Interserver\MyAdmin\Model\VpsOrderTemplates**](VpsOrderTemplates.md) |  |
-**serviceTypes** | [**\Interserver\MyAdmin\Model\VpsOrderServiceTypes**](VpsOrderServiceTypes.md) |  |
+**platformPackages** | [**\Interserver\\MyAdmin\Model\VpsOrderPlatformPackages**](VpsOrderPlatformPackages.md) |  |
+**platformNames** | [**\Interserver\\MyAdmin\Model\VpsOrderPlatformNames**](VpsOrderPlatformNames.md) |  |
+**packageCosts** | [**\Interserver\\MyAdmin\Model\VpsOrderPackageCosts**](VpsOrderPackageCosts.md) |  |
+**locationStock** | [**\Interserver\\MyAdmin\Model\VpsOrderLocationStock**](VpsOrderLocationStock.md) |  |
+**locationNames** | [**\Interserver\\MyAdmin\Model\VpsOrderLocationNames**](VpsOrderLocationNames.md) |  |
+**osNames** | [**\Interserver\\MyAdmin\Model\VpsOrderOsNames**](VpsOrderOsNames.md) |  |
+**templates** | [**\Interserver\\MyAdmin\Model\VpsOrderTemplates**](VpsOrderTemplates.md) |  |
+**serviceTypes** | [**\Interserver\\MyAdmin\Model\VpsOrderServiceTypes**](VpsOrderServiceTypes.md) |  |
 **currency** | **string** | Currency |
 **currencySymbol** | **string** | Currency Symbol |
 

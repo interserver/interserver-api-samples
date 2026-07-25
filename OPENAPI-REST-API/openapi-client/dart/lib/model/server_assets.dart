@@ -118,7 +118,7 @@ class ServerAssets {
             : const [],
         rows: json[r'rows'] is List
           ? (json[r'rows'] as List).map((e) =>
-              e == null ? const  <String>[] : (e as List).cast<String>()
+              e == null ? const <String>[] : (e as List).map((value) => value as String).toList(growable: false)
             ).toList()
           :  const [],
       );

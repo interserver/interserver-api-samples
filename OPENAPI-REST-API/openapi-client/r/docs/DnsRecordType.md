@@ -1,4 +1,4 @@
-# openapi::DnsRecordType
+# interserverapi::DnsRecordType
 
 Type of DNS Record
 

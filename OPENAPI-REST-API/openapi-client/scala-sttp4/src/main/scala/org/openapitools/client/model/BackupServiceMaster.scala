@@ -34,4 +34,3 @@ case class BackupServiceMaster(
   /* Order associated with the backup service. */
   backup_order: Option[Int] = None
 )
-

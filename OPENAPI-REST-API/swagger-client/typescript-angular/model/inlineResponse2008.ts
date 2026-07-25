@@ -11,6 +11,8 @@
  */
 
 export interface InlineResponse2008 { 
-    success: boolean;
-    text: string;
+    /**
+     * Whether the 2FA verification succeeded and the user is now logged in.
+     */
+    login?: boolean;
 }

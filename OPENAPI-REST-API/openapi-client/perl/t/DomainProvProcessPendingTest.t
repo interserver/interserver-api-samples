@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DomainProvProcessPending');
+use_ok('InterServerAPI::Object::DomainProvProcessPending');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DomainProvProcessPending->new();
+#my $instance = InterServerAPI::Object::DomainProvProcessPending->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DomainProvProcessPending');
+#isa_ok($instance, 'InterServerAPI::Object::DomainProvProcessPending');
 
 
 done_testing();

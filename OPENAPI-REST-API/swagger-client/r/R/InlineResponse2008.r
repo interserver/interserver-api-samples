@@ -8,8 +8,7 @@
 
 #' InlineResponse2008 Class
 #'
-#' @field success 
-#' @field text 
+#' @field login 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,51 +16,37 @@
 InlineResponse2008 <- R6::R6Class(
   'InlineResponse2008',
   public = list(
-    `success` = NULL,
-    `text` = NULL,
-    initialize = function(`success`, `text`){
-      if (!missing(`success`)) {
-        self$`success` <- `success`
-      }
-      if (!missing(`text`)) {
-        stopifnot(is.character(`text`), length(`text`) == 1)
-        self$`text` <- `text`
+    `login` = NULL,
+    initialize = function(`login`){
+      if (!missing(`login`)) {
+        self$`login` <- `login`
       }
     },
     toJSON = function() {
       InlineResponse2008Object <- list()
-      if (!is.null(self$`success`)) {
-        InlineResponse2008Object[['success']] <- self$`success`
-      }
-      if (!is.null(self$`text`)) {
-        InlineResponse2008Object[['text']] <- self$`text`
+      if (!is.null(self$`login`)) {
+        InlineResponse2008Object[['login']] <- self$`login`
       }
 
       InlineResponse2008Object
     },
     fromJSON = function(InlineResponse2008Json) {
       InlineResponse2008Object <- jsonlite::fromJSON(InlineResponse2008Json)
-      if (!is.null(InlineResponse2008Object$`success`)) {
-        self$`success` <- InlineResponse2008Object$`success`
-      }
-      if (!is.null(InlineResponse2008Object$`text`)) {
-        self$`text` <- InlineResponse2008Object$`text`
+      if (!is.null(InlineResponse2008Object$`login`)) {
+        self$`login` <- InlineResponse2008Object$`login`
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "success": %s,
-           "text": %s
+           "login": %s
         }',
-        self$`success`,
-        self$`text`
+        self$`login`
       )
     },
     fromJSONString = function(InlineResponse2008Json) {
       InlineResponse2008Object <- jsonlite::fromJSON(InlineResponse2008Json)
-      self$`success` <- InlineResponse2008Object$`success`
-      self$`text` <- InlineResponse2008Object$`text`
+      self$`login` <- InlineResponse2008Object$`login`
     }
   )
 )

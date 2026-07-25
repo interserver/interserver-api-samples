@@ -10,4 +10,8 @@ Ubuntu template details.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

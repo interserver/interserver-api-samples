@@ -1,4 +1,4 @@
-# openapi::BackupsOrder
+# interserverapi::BackupsOrder
 
 Available backup storage packages and pricing for ordering a new backup service.
 

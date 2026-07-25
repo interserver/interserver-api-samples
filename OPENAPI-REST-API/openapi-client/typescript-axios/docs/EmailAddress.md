@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { EmailAddress } from './api';
+import { EmailAddress } from '@interserver/myadmin-client';
 
 const instance: EmailAddress = {
     email,

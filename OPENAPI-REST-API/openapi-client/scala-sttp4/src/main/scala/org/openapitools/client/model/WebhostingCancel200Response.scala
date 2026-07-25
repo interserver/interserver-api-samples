@@ -16,4 +16,3 @@ case class WebhostingCancel200Response(
   success: Boolean,
   text: String
 )
-

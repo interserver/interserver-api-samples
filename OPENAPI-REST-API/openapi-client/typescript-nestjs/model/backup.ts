@@ -9,11 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { BackupServiceMaster } from './backupServiceMaster';
-import { BackupServiceInfo } from './backupServiceInfo';
-import { BackupBillingDetails } from './backupBillingDetails';
-import { BackupClientLink } from './backupClientLink';
-import { BackupExtraInfoTables } from './backupExtraInfoTables';
+import { BackupServiceMaster } from './backup-service-master';
+import { BackupServiceInfo } from './backup-service-info';
+import { BackupBillingDetails } from './backup-billing-details';
+import { BackupClientLink } from './backup-client-link';
+import { BackupExtraInfoTables } from './backup-extra-info-tables';
 
 
 /**

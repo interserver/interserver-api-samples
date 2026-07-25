@@ -23,4 +23,3 @@ case class HomeServicesWebhostingLinks(
   /* Link to a website. */
   `386218`: Option[String] = None
 )
-

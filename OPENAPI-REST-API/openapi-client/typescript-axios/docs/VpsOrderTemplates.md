@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsOrderTemplates } from './api';
+import { VpsOrderTemplates } from '@interserver/myadmin-client';
 
 const instance: VpsOrderTemplates = {
     hyperv,

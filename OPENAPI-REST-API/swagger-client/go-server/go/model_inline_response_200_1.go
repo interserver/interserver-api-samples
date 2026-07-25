@@ -10,8 +10,6 @@
 package myadmin-client-go-server
 
 type InlineResponse2001 struct {
-
-	Success bool `json:"success"`
-
-	Text string `json:"text"`
+	// Affiliate signup statistics and client-side data.
+	Data *interface{} `json:"data,omitempty"`
 }

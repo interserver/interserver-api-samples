@@ -31,41 +31,36 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20021" /> class.
         /// </summary>
-        /// <param name="success">success (required).</param>
-        /// <param name="text">text (required).</param>
-        public InlineResponse20021(bool? success = default(bool?), string text = default(string))
+        /// <param name="text">Status message..</param>
+        /// <param name="invoice">Invoice ID for payment..</param>
+        /// <param name="order">Server order ID..</param>
+        public InlineResponse20021(string text = default(string), int? invoice = default(int?), int? order = default(int?))
         {
-            // to ensure "success" is required (not null)
-            if (success == null)
-            {
-                throw new InvalidDataException("success is a required property for InlineResponse20021 and cannot be null");
-            }
-            else
-            {
-                this.success = success;
-            }
-            // to ensure "text" is required (not null)
-            if (text == null)
-            {
-                throw new InvalidDataException("text is a required property for InlineResponse20021 and cannot be null");
-            }
-            else
-            {
-                this.text = text;
-            }
+            this.text = text;
+            this.invoice = invoice;
+            this.order = order;
         }
         
         /// <summary>
-        /// Gets or Sets success
+        /// Status message.
         /// </summary>
-        [DataMember(Name="success", EmitDefaultValue=false)]
-        public bool? success { get; set; }
-
-        /// <summary>
-        /// Gets or Sets text
-        /// </summary>
+        /// <value>Status message.</value>
         [DataMember(Name="text", EmitDefaultValue=false)]
         public string text { get; set; }
+
+        /// <summary>
+        /// Invoice ID for payment.
+        /// </summary>
+        /// <value>Invoice ID for payment.</value>
+        [DataMember(Name="invoice", EmitDefaultValue=false)]
+        public int? invoice { get; set; }
+
+        /// <summary>
+        /// Server order ID.
+        /// </summary>
+        /// <value>Server order ID.</value>
+        [DataMember(Name="order", EmitDefaultValue=false)]
+        public int? order { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,8 +70,9 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20021 {\n");
-            sb.Append("  success: ").Append(success).Append("\n");
             sb.Append("  text: ").Append(text).Append("\n");
+            sb.Append("  invoice: ").Append(invoice).Append("\n");
+            sb.Append("  order: ").Append(order).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,14 +108,19 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.success == input.success ||
-                    (this.success != null &&
-                    this.success.Equals(input.success))
-                ) && 
-                (
                     this.text == input.text ||
                     (this.text != null &&
                     this.text.Equals(input.text))
+                ) && 
+                (
+                    this.invoice == input.invoice ||
+                    (this.invoice != null &&
+                    this.invoice.Equals(input.invoice))
+                ) && 
+                (
+                    this.order == input.order ||
+                    (this.order != null &&
+                    this.order.Equals(input.order))
                 );
         }
 
@@ -132,10 +133,12 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.success != null)
-                    hashCode = hashCode * 59 + this.success.GetHashCode();
                 if (this.text != null)
                     hashCode = hashCode * 59 + this.text.GetHashCode();
+                if (this.invoice != null)
+                    hashCode = hashCode * 59 + this.invoice.GetHashCode();
+                if (this.order != null)
+                    hashCode = hashCode * 59 + this.order.GetHashCode();
                 return hashCode;
             }
         }

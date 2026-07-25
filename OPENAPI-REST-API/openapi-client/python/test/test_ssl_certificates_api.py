@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.ssl_certificates_api import SSLCertificatesApi
+from interserver_api_client.api.ssl_certificates_api import SSLCertificatesApi
 
 
 class TestSSLCertificatesApi(unittest.TestCase):
@@ -30,63 +30,63 @@ class TestSSLCertificatesApi(unittest.TestCase):
     def test_add_ssl(self) -> None:
         """Test case for add_ssl
 
-        Place SSL Cert Order
+        Place a new SSL certificate order - creates invoice and queues issuance
         """
         pass
 
     def test_get_new_ssl(self) -> None:
         """Test case for get_new_ssl
 
-        SSL Cert Ordering Information
+        Get available SSL certificate packages and pricing for placing a new order
         """
         pass
 
     def test_get_ssl_info(self) -> None:
         """Test case for get_ssl_info
 
-        Get SSL Cert Info
+        Get full details for one SSL certificate by id - status, expiration, links
         """
         pass
 
     def test_get_ssl_invoices(self) -> None:
         """Test case for get_ssl_invoices
 
-        Get SSL Cert Invoices
+        List all billing invoices and charges tied to one SSL certificate by id
         """
         pass
 
     def test_get_ssl_list(self) -> None:
         """Test case for get_ssl_list
 
-        List SSL Certs
+        List all SSL certificates on the authenticated customer account with status and hostname
         """
         pass
 
     def test_get_ssl_welcome_email(self) -> None:
         """Test case for get_ssl_welcome_email
 
-        Resend SSL Welcome Email
+        Resend the SSL welcome email with cert credentials and install instructions
         """
         pass
 
     def test_put_ssl(self) -> None:
         """Test case for put_ssl
 
-        Validate SSL Cert Order
+        Validate an SSL certificate order without charging - dry-run before addSsl
         """
         pass
 
     def test_ssl_cancel(self) -> None:
         """Test case for ssl_cancel
 
-        Cancel SSL Certificate Service
+        Cancel an SSL certificate service - stops renewals at end of billing cycle
         """
         pass
 
     def test_update_ssl_info(self) -> None:
         """Test case for update_ssl_info
 
-        Update SSL Cert Order
+        Update mutable settings on an existing SSL certificate order by id
         """
         pass
 

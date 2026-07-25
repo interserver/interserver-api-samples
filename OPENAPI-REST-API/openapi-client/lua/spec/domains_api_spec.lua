@@ -99,20 +99,6 @@ describe("domains_api", function()
     end)
   end)
 
-  -- unit tests for get_domain_order_fields
-  describe("get_domain_order_fields test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for get_domain_order_search_results
-  describe("get_domain_order_search_results test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for get_domain_renewal
   describe("get_domain_renewal test", function()
     it("should work", function()
@@ -171,6 +157,13 @@ describe("domains_api", function()
 
   -- unit tests for post_domain_renewal
   describe("post_domain_renewal test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
+  -- unit tests for post_domain_search
+  describe("post_domain_search test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

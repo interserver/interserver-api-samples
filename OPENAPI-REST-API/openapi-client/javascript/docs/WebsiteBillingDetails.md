@@ -1,4 +1,4 @@
-# InterServerManagementApi.WebsiteBillingDetails
+# InterserverApiClient.WebsiteBillingDetails
 
 ## Properties
 

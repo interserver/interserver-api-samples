@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.WebsiteLoginResponse();
+    instance = new InterserverApiClient.WebsiteLoginResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('WebsiteLoginResponse', function() {
     it('should create an instance of WebsiteLoginResponse', function() {
       // uncomment below and update the code to test WebsiteLoginResponse
-      //var instance = new InterServerManagementApi.WebsiteLoginResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.WebsiteLoginResponse);
+      //var instance = new InterserverApiClient.WebsiteLoginResponse();
+      //expect(instance).to.be.a(InterserverApiClient.WebsiteLoginResponse);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.WebsiteLoginResponse();
+      //var instance = new InterserverApiClient.WebsiteLoginResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property location (base name: "location")', function() {
       // uncomment below and update the code to test the property location
-      //var instance = new InterServerManagementApi.WebsiteLoginResponse();
+      //var instance = new InterserverApiClient.WebsiteLoginResponse();
       //expect(instance).to.be();
     });
 

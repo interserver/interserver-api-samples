@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.cancel_backup200_response import CancelBackup200Response
+from interserver_api_client.models.cancel_backup200_response import CancelBackup200Response
 
 class TestCancelBackup200Response(unittest.TestCase):
     """CancelBackup200Response unit test stubs"""

@@ -1,4 +1,4 @@
-# openapi::HomeServicesDomainsLinks
+# interserverapi::HomeServicesDomainsLinks
 
 Map of domain service IDs to their hostnames for the account dashboard.
 

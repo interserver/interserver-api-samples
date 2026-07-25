@@ -1,90 +1,90 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainWhoisPrivacyRequest
 void main() {
-  final instance = DomainWhoisPrivacyRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainWhoisPrivacyRequest? instance = /* DomainWhoisPrivacyRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainWhoisPrivacyRequest, () {
     // Action to perform (enable or disableCancel).
-    // String func
+    // Optional<String?> func
     test('to test the property `func`', () async {
       // TODO
     });
 
     // CSRF token if the API requires it for the account.
-    // String csrfToken
+    // Optional<String?> csrfToken
     test('to test the property `csrfToken`', () async {
       // TODO
     });
 
-    // String domainFirstname
+    // Optional<String?> domainFirstname
     test('to test the property `domainFirstname`', () async {
       // TODO
     });
 
-    // String domainLastname
+    // Optional<String?> domainLastname
     test('to test the property `domainLastname`', () async {
       // TODO
     });
 
-    // String domainEmail
+    // Optional<String?> domainEmail
     test('to test the property `domainEmail`', () async {
       // TODO
     });
 
-    // String domainAddress
+    // Optional<String?> domainAddress
     test('to test the property `domainAddress`', () async {
       // TODO
     });
 
-    // String domainAddress2
+    // Optional<String?> domainAddress2
     test('to test the property `domainAddress2`', () async {
       // TODO
     });
 
-    // String domainAddress3
+    // Optional<String?> domainAddress3
     test('to test the property `domainAddress3`', () async {
       // TODO
     });
 
-    // String domainCity
+    // Optional<String?> domainCity
     test('to test the property `domainCity`', () async {
       // TODO
     });
 
-    // String domainState
+    // Optional<String?> domainState
     test('to test the property `domainState`', () async {
       // TODO
     });
 
-    // String domainZip
+    // Optional<String?> domainZip
     test('to test the property `domainZip`', () async {
       // TODO
     });
 
-    // String domainCountry
+    // Optional<String?> domainCountry
     test('to test the property `domainCountry`', () async {
       // TODO
     });
 
-    // String domainPhone
+    // Optional<String?> domainPhone
     test('to test the property `domainPhone`', () async {
       // TODO
     });
 
-    // String domainFax
+    // Optional<String?> domainFax
     test('to test the property `domainFax`', () async {
       // TODO
     });
 
-    // String domainCompany
+    // Optional<String?> domainCompany
     test('to test the property `domainCompany`', () async {
       // TODO
     });
 
-    // String domainExtra
+    // Optional<String?> domainExtra
     test('to test the property `domainExtra`', () async {
       // TODO
     });

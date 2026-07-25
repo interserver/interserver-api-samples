@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LicenseClientLink();
+    instance = new InterserverApiClient.LicenseClientLink();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('LicenseClientLink', function() {
     it('should create an instance of LicenseClientLink', function() {
       // uncomment below and update the code to test LicenseClientLink
-      //var instance = new InterServerManagementApi.LicenseClientLink();
-      //expect(instance).to.be.a(InterServerManagementApi.LicenseClientLink);
+      //var instance = new InterserverApiClient.LicenseClientLink();
+      //expect(instance).to.be.a(InterserverApiClient.LicenseClientLink);
     });
 
     it('should have the property label (base name: "label")', function() {
       // uncomment below and update the code to test the property label
-      //var instance = new InterServerManagementApi.LicenseClientLink();
+      //var instance = new InterserverApiClient.LicenseClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property link (base name: "link")', function() {
       // uncomment below and update the code to test the property link
-      //var instance = new InterServerManagementApi.LicenseClientLink();
+      //var instance = new InterserverApiClient.LicenseClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property icon (base name: "icon")', function() {
       // uncomment below and update the code to test the property icon
-      //var instance = new InterServerManagementApi.LicenseClientLink();
+      //var instance = new InterserverApiClient.LicenseClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property help_text (base name: "help_text")', function() {
       // uncomment below and update the code to test the property help_text
-      //var instance = new InterServerManagementApi.LicenseClientLink();
+      //var instance = new InterserverApiClient.LicenseClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property icon_text (base name: "icon_text")', function() {
       // uncomment below and update the code to test the property icon_text
-      //var instance = new InterServerManagementApi.LicenseClientLink();
+      //var instance = new InterserverApiClient.LicenseClientLink();
       //expect(instance).to.be();
     });
 
     it('should have the property other_attr (base name: "other_attr")', function() {
       // uncomment below and update the code to test the property other_attr
-      //var instance = new InterServerManagementApi.LicenseClientLink();
+      //var instance = new InterserverApiClient.LicenseClientLink();
       //expect(instance).to.be();
     });
 

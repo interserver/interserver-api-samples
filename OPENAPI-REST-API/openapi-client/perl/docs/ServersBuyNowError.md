@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServersBuyNowError
+# InterServerAPI::Object::ServersBuyNowError
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServersBuyNowError;
+use InterServerAPI::Object::ServersBuyNowError;
 ```
 
 ## Properties

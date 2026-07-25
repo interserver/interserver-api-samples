@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailLogEntry model module.
  * @module model/MailLogEntry
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailLogEntry {
     /**

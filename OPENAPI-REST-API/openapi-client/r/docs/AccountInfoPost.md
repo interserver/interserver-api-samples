@@ -1,4 +1,4 @@
-# openapi::AccountInfoPost
+# interserverapi::AccountInfoPost
 
 Request to update account information.
 

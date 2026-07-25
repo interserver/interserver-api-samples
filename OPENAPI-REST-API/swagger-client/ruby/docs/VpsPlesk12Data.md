@@ -1,4 +1,4 @@
-# SwaggerClient::VpsPlesk12Data
+# InterserverApiClient::VpsPlesk12Data
 
 ## Properties
 Name | Type | Description | Notes

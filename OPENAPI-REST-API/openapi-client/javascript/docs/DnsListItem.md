@@ -1,4 +1,4 @@
-# InterServerManagementApi.DnsListItem
+# InterserverApiClient.DnsListItem
 
 ## Properties
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ReverseDnsEntries } from './api';
+import { ReverseDnsEntries } from '@interserver/myadmin-client';
 
 const instance: ReverseDnsEntries = {
     ips,

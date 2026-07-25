@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsiteLoginResponse = Initialize-PSOpenAPIToolsWebsiteLoginResponse  -Type null `
+$WebsiteLoginResponse = Initialize-InterserverApiWebsiteLoginResponse  -Type null `
  -Location null
 ```
 

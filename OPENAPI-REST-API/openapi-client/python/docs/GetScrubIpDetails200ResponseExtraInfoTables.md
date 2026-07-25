@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.get_scrub_ip_details200_response_extra_info_tables import GetScrubIpDetails200ResponseExtraInfoTables
+from interserver_api_client.models.get_scrub_ip_details200_response_extra_info_tables import GetScrubIpDetails200ResponseExtraInfoTables
 
 # TODO update the JSON string below
 json = "{}"

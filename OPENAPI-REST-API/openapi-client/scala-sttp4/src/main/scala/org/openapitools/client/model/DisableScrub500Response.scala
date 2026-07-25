@@ -16,4 +16,3 @@ case class DisableScrub500Response(
   success: Boolean,
   text: String
 )
-

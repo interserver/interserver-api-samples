@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_service_master import BackupServiceMaster
+from interserver_api_client.models.backup_service_master import BackupServiceMaster
 
 class TestBackupServiceMaster(unittest.TestCase):
     """BackupServiceMaster unit test stubs"""

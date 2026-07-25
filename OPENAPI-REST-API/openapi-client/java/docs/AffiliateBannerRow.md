@@ -13,4 +13,8 @@ An affiliate banner image details.
 |**height** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

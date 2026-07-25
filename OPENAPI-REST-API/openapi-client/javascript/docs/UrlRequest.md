@@ -1,4 +1,4 @@
-# InterServerManagementApi.UrlRequest
+# InterserverApiClient.UrlRequest
 
 ## Properties
 

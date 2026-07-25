@@ -7,6 +7,6 @@ import Config
 # any compile-time configuration in here, as it won't be applied.
 # The block below contains prod specific runtime configuration.
 
-if base_url = System.get_env("INTER_SERVER_MANAGEMENT_API_BASE_URI") do
-  config :inter_server_management_api, base_url: base_url
+if base_url = System.get_env("INTERSERVER_API_BASE_URI") do
+  config :interserver_api, base_url: base_url
 end

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CaptchaResponse = Initialize-PSOpenAPIToolsCaptchaResponse  -Captcha data:image/jpeg;base64,/9j/4AAQ
+$CaptchaResponse = Initialize-InterserverApiCaptchaResponse  -Captcha data:image/jpeg;base64,/9j/4AAQ
 ```
 
 - Convert the resource to JSON

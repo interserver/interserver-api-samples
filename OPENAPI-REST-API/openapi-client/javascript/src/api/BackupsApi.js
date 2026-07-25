@@ -27,7 +27,7 @@ import SuccessTextResponse from '../model/SuccessTextResponse';
 /**
 * Backups service.
 * @module api/BackupsApi
-* @version 0.9.0
+* @version 1.0.0
 */
 export default class BackupsApi {
 
@@ -43,25 +43,17 @@ export default class BackupsApi {
     }
 
 
-    /**
-     * Callback function to receive the result of the addBackup operation.
-     * @callback module:api/BackupsApi~addBackupCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/BackupOrderPostResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
-     * Place Backup Order
-     * Places a new backup storage order and generates an invoice. On success, the response includes invoice IDs that can be used with `/billing/invoices/{id}` to view the invoice or `/pay/{method}/{invoices}` to complete payment. The service is provisioned after payment is confirmed.
+     * Place a new off-site backup storage order and generate the invoice
+     * Step 3 of the backup-storage order flow. Revalidates via `validate_buy_storage()`, then calls `place_buy_storage()` which creates a `backups` service row, a `repeat_invoices` recurring entry, and the first `invoices` row. **Real billable order — call `validateBackupOrder` first.** Service is provisioned only after the invoice is paid. Sibling ops: `getNewBackup` (catalog), `validateBackupOrder` (quote), `getBackupInvoices` (billing history), `initiatePayment` (settle).  **Body fields** (JSON or multipart): - `serviceType` (integer, required) — `services_id` from `getNewBackup`. - `coupon` (string, optional) — coupon code. - `period` (integer, optional, default `1`) — billing months. - `comment` (string, optional) — saved on the order row.  **Returns** (on success): `{ continue: true, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — feed `real_iids` into `initiatePayment`. On validation failure: `{ continue: false, errors: [...] }` with HTTP 200.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated. - `422` inside `errors[]` — coupon/plan/duplicate-hostname validation. - Explicit error text when no backend storage server is available for assignment.  **Side effects:** new rows in `backups`, `repeat_invoices`, `invoices`; queued provisioning kicks off only after payment.  **Related calls:** - **Prerequisite:** `validateBackupOrder`. - **Pay:** `getBillingInvoice` → `initiatePayment`. - **Poll status:** `getBackupInfo` (until `backup_status='active'`). 
      * @param {Object} opts Optional parameters
      * @param {Boolean} [validateOnly] 
      * @param {Number} [serviceType] 
      * @param {String} [coupon] 
-     * @param {module:api/BackupsApi~addBackupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/BackupOrderPostResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/BackupOrderPostResponse} and HTTP response
      */
-    addBackup(opts, callback) {
+    addBackupWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = null;
 
@@ -84,26 +76,34 @@ export default class BackupsApi {
       return this.apiClient.callApi(
         '/backups/order', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the cancelBackup operation.
-     * @callback module:api/BackupsApi~cancelBackupCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/CancelBackup200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Place a new off-site backup storage order and generate the invoice
+     * Step 3 of the backup-storage order flow. Revalidates via `validate_buy_storage()`, then calls `place_buy_storage()` which creates a `backups` service row, a `repeat_invoices` recurring entry, and the first `invoices` row. **Real billable order — call `validateBackupOrder` first.** Service is provisioned only after the invoice is paid. Sibling ops: `getNewBackup` (catalog), `validateBackupOrder` (quote), `getBackupInvoices` (billing history), `initiatePayment` (settle).  **Body fields** (JSON or multipart): - `serviceType` (integer, required) — `services_id` from `getNewBackup`. - `coupon` (string, optional) — coupon code. - `period` (integer, optional, default `1`) — billing months. - `comment` (string, optional) — saved on the order row.  **Returns** (on success): `{ continue: true, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — feed `real_iids` into `initiatePayment`. On validation failure: `{ continue: false, errors: [...] }` with HTTP 200.  **Auth:** Session/API key.  **Errors:** - `401` — unauthenticated. - `422` inside `errors[]` — coupon/plan/duplicate-hostname validation. - Explicit error text when no backend storage server is available for assignment.  **Side effects:** new rows in `backups`, `repeat_invoices`, `invoices`; queued provisioning kicks off only after payment.  **Related calls:** - **Prerequisite:** `validateBackupOrder`. - **Pay:** `getBillingInvoice` → `initiatePayment`. - **Poll status:** `getBackupInfo` (until `backup_status='active'`). 
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.validateOnly 
+     * @param {Number} opts.serviceType 
+     * @param {String} opts.coupon 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BackupOrderPostResponse}
      */
+    addBackup(opts) {
+      return this.addBackupWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Cancel Backup Service
-     * Cancels the specified backup storage service. The service remains accessible until the end of the current billing period. This action cannot be undone; a new order must be placed to restore service.
+     * Cancel an off-site backup storage subscription
+     * DESTRUCTIVE. Use to terminate a backup-storage subscription. Delegates to `CancelService::go($id)` with module `backups`, which marks the service for cancellation and stops future recurring billing; data on the storage backend may become inaccessible at end of cycle. Path param: `id` from `getBackupsList`. No body. Returns `BackupsCancelResponse`. Caveats: irreversible — a new order via `addBackup` is required to restore service, with a new IP/username and no migration of prior data. Does NOT delete VPS/QS/webhosting in-place snapshots (those live under their own tags). Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; HTTP 409 if the service is already cancelled or pending cancellation. Siblings: `addBackup`, `getBackupInfo`, `getBackupInvoices`.
      * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
-     * @param {module:api/BackupsApi~cancelBackupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/CancelBackup200Response}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/CancelBackup200Response} and HTTP response
      */
-    cancelBackup(id, callback) {
+    cancelBackupWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -127,26 +127,31 @@ export default class BackupsApi {
       return this.apiClient.callApi(
         '/backups/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getBackupInfo operation.
-     * @callback module:api/BackupsApi~getBackupInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Backup} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Cancel an off-site backup storage subscription
+     * DESTRUCTIVE. Use to terminate a backup-storage subscription. Delegates to `CancelService::go($id)` with module `backups`, which marks the service for cancellation and stops future recurring billing; data on the storage backend may become inaccessible at end of cycle. Path param: `id` from `getBackupsList`. No body. Returns `BackupsCancelResponse`. Caveats: irreversible — a new order via `addBackup` is required to restore service, with a new IP/username and no migration of prior data. Does NOT delete VPS/QS/webhosting in-place snapshots (those live under their own tags). Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; HTTP 409 if the service is already cancelled or pending cancellation. Siblings: `addBackup`, `getBackupInfo`, `getBackupInvoices`.
+     * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/CancelBackup200Response}
      */
+    cancelBackup(id) {
+      return this.cancelBackupWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get Backup Service Details
-     * Returns detailed service information for the specified backup storage order, including `backup_username`, `backup_ip`, `backup_status`, and `backup_quota` in `serviceInfo`. Also returns `client_links`, `billingDetails`, `extraInfoTables`, `package`, and `custCurrency`.
+     * Get details of a specific off-site backup storage service
+     * Use to fetch the full management view for one backup-storage subscription. Path param: `id` (backup service ID from `getBackupsList`). No body. Returns `serviceInfo` (with `backup_username`, `backup_ip`, `backup_status`, `backup_quota`, `backup_type`, `backup_invoice`), plus `billingDetails`, `extraInfoTables`, `package`, `custCurrency`, and `client_links` (rewritten to surface the link target rather than the raw queue URL). `admin_links`, internal `settings`, and `csrf` are stripped. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` does not belong to the caller (cross-account access blocked by `get_service`). Siblings: `getBackupLogin` (open storage panel session), `getBackupInvoices`, `getBackupsWelcomeEmail`, `cancelBackup`, `updateBackupInfo`.
      * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
-     * @param {module:api/BackupsApi~getBackupInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Backup}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Backup} and HTTP response
      */
-    getBackupInfo(id, callback) {
+    getBackupInfoWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -170,26 +175,31 @@ export default class BackupsApi {
       return this.apiClient.callApi(
         '/backups/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getBackupInvoices operation.
-     * @callback module:api/BackupsApi~getBackupInvoicesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ChargeInvoiceRows} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get details of a specific off-site backup storage service
+     * Use to fetch the full management view for one backup-storage subscription. Path param: `id` (backup service ID from `getBackupsList`). No body. Returns `serviceInfo` (with `backup_username`, `backup_ip`, `backup_status`, `backup_quota`, `backup_type`, `backup_invoice`), plus `billingDetails`, `extraInfoTables`, `package`, `custCurrency`, and `client_links` (rewritten to surface the link target rather than the raw queue URL). `admin_links`, internal `settings`, and `csrf` are stripped. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` does not belong to the caller (cross-account access blocked by `get_service`). Siblings: `getBackupLogin` (open storage panel session), `getBackupInvoices`, `getBackupsWelcomeEmail`, `cancelBackup`, `updateBackupInfo`.
+     * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Backup}
      */
+    getBackupInfo(id) {
+      return this.getBackupInfoWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get Backup Order Invoices
-     * Retrieves invoices associated with the backup storage order. Use this to confirm billing status or locate invoices for payment.
+     * List invoices for a single backup-storage subscription
+     * Use to retrieve all invoices tied to one off-site backup storage service — useful for confirming billing status, locating an unpaid invoice to pay, or reconciling renewals. Path param: `id` from `getBackupsList`. Delegates to the shared `InvoicesList::go()` handler with module `backups`. No body. Returns `ChargeInvoiceRows` (array of invoice rows with `invoices_id`, status, amount, dates). Feed `invoices_id` into `getBillingInvoice` for full detail or `/billing/pay/{method}/{invoices}` to settle an unpaid invoice. For the account-wide invoice list use the Billing tag instead. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller. Siblings: `getBackupInfo`, `addBackup`.
      * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
-     * @param {module:api/BackupsApi~getBackupInvoicesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ChargeInvoiceRows}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ChargeInvoiceRows} and HTTP response
      */
-    getBackupInvoices(id, callback) {
+    getBackupInvoicesWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -213,26 +223,31 @@ export default class BackupsApi {
       return this.apiClient.callApi(
         '/backups/{id}/invoices', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getBackupLogin operation.
-     * @callback module:api/BackupsApi~getBackupLoginCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/BackupLoginResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List invoices for a single backup-storage subscription
+     * Use to retrieve all invoices tied to one off-site backup storage service — useful for confirming billing status, locating an unpaid invoice to pay, or reconciling renewals. Path param: `id` from `getBackupsList`. Delegates to the shared `InvoicesList::go()` handler with module `backups`. No body. Returns `ChargeInvoiceRows` (array of invoice rows with `invoices_id`, status, amount, dates). Feed `invoices_id` into `getBillingInvoice` for full detail or `/billing/pay/{method}/{invoices}` to settle an unpaid invoice. For the account-wide invoice list use the Billing tag instead. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller. Siblings: `getBackupInfo`, `addBackup`.
+     * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ChargeInvoiceRows}
      */
+    getBackupInvoices(id) {
+      return this.getBackupInvoicesWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get Backup Storage Panel Login
-     * Creates and returns a login session URL for the backup storage panel. The returned session URL can be used to redirect the user directly into the storage management interface without requiring separate credentials.
+     * Open a single sign-on session URL for the backup storage panel
+     * Use to drop the customer straight into the off-site backup storage management panel without a separate login prompt. Calls `get_storage_session($id)` to mint a one-shot session URL; treat the URL as short-lived and credentials-equivalent — do not log or share. Path param: `id` from `getBackupsList`. No body. Returns `BackupLoginResponse` (`success`, session URL/token, optional connection hints). On `success=false` the handler returns `json_error(text)` (HTTP 400) with the upstream reason. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; backend errors when the storage server is unreachable. Siblings: `getBackupInfo` (SFTP `backup_username`/`backup_ip` for direct connections), `getBackupsWelcomeEmail` (resend setup credentials).
      * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
-     * @param {module:api/BackupsApi~getBackupLoginCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/BackupLoginResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/BackupLoginResponse} and HTTP response
      */
-    getBackupLogin(id, callback) {
+    getBackupLoginWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -256,25 +271,30 @@ export default class BackupsApi {
       return this.apiClient.callApi(
         '/backups/{id}/login', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getBackupsList operation.
-     * @callback module:api/BackupsApi~getBackupsListCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/BackupRow>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Open a single sign-on session URL for the backup storage panel
+     * Use to drop the customer straight into the off-site backup storage management panel without a separate login prompt. Calls `get_storage_session($id)` to mint a one-shot session URL; treat the URL as short-lived and credentials-equivalent — do not log or share. Path param: `id` from `getBackupsList`. No body. Returns `BackupLoginResponse` (`success`, session URL/token, optional connection hints). On `success=false` the handler returns `json_error(text)` (HTTP 400) with the upstream reason. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; backend errors when the storage server is unreachable. Siblings: `getBackupInfo` (SFTP `backup_username`/`backup_ip` for direct connections), `getBackupsWelcomeEmail` (resend setup credentials).
+     * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BackupLoginResponse}
      */
+    getBackupLogin(id) {
+      return this.getBackupLoginWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * List Backup Services
-     * Returns all backup storage services on your account. Each entry includes the `backup_id`, `backup_username`, `backup_ip`, `backup_status`, and `backup_quota`. Use the `backup_id` with `/backups/{id}` to retrieve full service details or `/backups/{id}/login` to obtain a storage panel session.
-     * @param {module:api/BackupsApi~getBackupsListCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/BackupRow>}
+     * List off-site backup storage subscriptions on the authenticated account
+     * Use when enumerating all off-site backup storage services (SFTP-style remote storage subscriptions) on the authenticated customer's account. NOT for VPS/QS/webhosting in-place snapshots — those live under their own tags (`getVpsBackups`, `getQsBackups`, `getWebsitesBackups`). No query params, no body. Returns an array of rows; each row carries `backup_id`, `backup_name`, `backup_username`, `backup_status`, `services_name` (plan), and `backup_cost` (recurring price from `repeat_invoices`). Use `backup_id` as the path `{id}` for `getBackupInfo`, `getBackupLogin`, `getBackupInvoices`, `getBackupsWelcomeEmail`, `cancelBackup`. Errors: HTTP 401 if unauthenticated. Empty array when the customer has no backup services. Siblings: `getBackupInfo`, `getNewBackup`, `addBackup`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/BackupRow>} and HTTP response
      */
-    getBackupsList(callback) {
+    getBackupsListWithHttpInfo() {
       let postBody = null;
 
       let pathParams = {
@@ -293,26 +313,30 @@ export default class BackupsApi {
       return this.apiClient.callApi(
         '/backups', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getBackupsWelcomeEmail operation.
-     * @callback module:api/BackupsApi~getBackupsWelcomeEmailCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List off-site backup storage subscriptions on the authenticated account
+     * Use when enumerating all off-site backup storage services (SFTP-style remote storage subscriptions) on the authenticated customer's account. NOT for VPS/QS/webhosting in-place snapshots — those live under their own tags (`getVpsBackups`, `getQsBackups`, `getWebsitesBackups`). No query params, no body. Returns an array of rows; each row carries `backup_id`, `backup_name`, `backup_username`, `backup_status`, `services_name` (plan), and `backup_cost` (recurring price from `repeat_invoices`). Use `backup_id` as the path `{id}` for `getBackupInfo`, `getBackupLogin`, `getBackupInvoices`, `getBackupsWelcomeEmail`, `cancelBackup`. Errors: HTTP 401 if unauthenticated. Empty array when the customer has no backup services. Siblings: `getBackupInfo`, `getNewBackup`, `addBackup`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/BackupRow>}
      */
+    getBackupsList() {
+      return this.getBackupsListWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Resend Backup Welcome Email
-     * Resends the welcome email for the specified backup service. The email contains connection credentials and setup instructions. Use this when the original welcome email was lost or never received.
+     * Resend the welcome email for an off-site backup storage service
+     * Use when the original welcome email was lost or never arrived. Resends connection credentials (SFTP host, username, quota) and setup instructions to the account email by invoking the module's `backup_welcome_email($id)` helper. Path param: `id` from `getBackupsList`. No body. Returns `SuccessTextResponse` with `text='Welcome Email has been resent.'`. Caveats: only works while the service is `active`; cancelled/pending services will return 409. Email is sent to the customer-of-record on file — there is no override recipient parameter. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller (`Invalid Service Passed`); HTTP 409 if `backup_status` is not `active` (`Service is not active`). Siblings: `getBackupLogin`, `getBackupInfo`.
      * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
-     * @param {module:api/BackupsApi~getBackupsWelcomeEmailCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessTextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessTextResponse} and HTTP response
      */
-    getBackupsWelcomeEmail(id, callback) {
+    getBackupsWelcomeEmailWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -336,25 +360,30 @@ export default class BackupsApi {
       return this.apiClient.callApi(
         '/backups/{id}/welcome_email', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getNewBackup operation.
-     * @callback module:api/BackupsApi~getNewBackupCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/BackupsOrder} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Resend the welcome email for an off-site backup storage service
+     * Use when the original welcome email was lost or never arrived. Resends connection credentials (SFTP host, username, quota) and setup instructions to the account email by invoking the module's `backup_welcome_email($id)` helper. Path param: `id` from `getBackupsList`. No body. Returns `SuccessTextResponse` with `text='Welcome Email has been resent.'`. Caveats: only works while the service is `active`; cancelled/pending services will return 409. Email is sent to the customer-of-record on file — there is no override recipient parameter. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller (`Invalid Service Passed`); HTTP 409 if `backup_status` is not `active` (`Service is not active`). Siblings: `getBackupLogin`, `getBackupInfo`.
+     * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessTextResponse}
      */
+    getBackupsWelcomeEmail(id) {
+      return this.getBackupsWelcomeEmailWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get Backup Order Form Data
-     * Returns available backup storage plans, pricing tiers, and form metadata needed to build an order form. Use the service type IDs from this response when submitting a validation request via `PUT /backups/order` or placing an order via `POST /backups/order`.
-     * @param {module:api/BackupsApi~getNewBackupCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/BackupsOrder}
+     * Get backup-storage order form metadata and pricing tiers
+     * Use before placing an off-site backup storage order to fetch the available plans, their service-type IDs, and per-tier pricing needed to render an order form. No params, no body. Returns `{ packageCosts, serviceTypes }` — `packageCosts` is a map of `services_id` → recurring cost (from `services` where `services_module='backups'` and `services_buyable=1`); `serviceTypes` is the dispatcher output of `run_event('get_service_types', true, 'backups')` describing each tier. Pass the chosen `services_id` as `serviceType` to `validateBackupOrder` (PUT) for a price preview, then to `addBackup` (POST) to commit. Errors: HTTP 401 if unauthenticated. Siblings: `validateBackupOrder`, `addBackup`, `getBackupsList`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/BackupsOrder} and HTTP response
      */
-    getNewBackup(callback) {
+    getNewBackupWithHttpInfo() {
       let postBody = null;
 
       let pathParams = {
@@ -373,26 +402,30 @@ export default class BackupsApi {
       return this.apiClient.callApi(
         '/backups/order', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the updateBackupInfo operation.
-     * @callback module:api/BackupsApi~updateBackupInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get backup-storage order form metadata and pricing tiers
+     * Use before placing an off-site backup storage order to fetch the available plans, their service-type IDs, and per-tier pricing needed to render an order form. No params, no body. Returns `{ packageCosts, serviceTypes }` — `packageCosts` is a map of `services_id` → recurring cost (from `services` where `services_module='backups'` and `services_buyable=1`); `serviceTypes` is the dispatcher output of `run_event('get_service_types', true, 'backups')` describing each tier. Pass the chosen `services_id` as `serviceType` to `validateBackupOrder` (PUT) for a price preview, then to `addBackup` (POST) to commit. Errors: HTTP 401 if unauthenticated. Siblings: `validateBackupOrder`, `addBackup`, `getBackupsList`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BackupsOrder}
      */
+    getNewBackup() {
+      return this.getNewBackupWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Update Backup Information
-     * Updates backup storage service metadata, such as stored credentials or settings for the order.
+     * Update stored metadata for a backup-storage subscription
+     * Use to update non-billing metadata (e.g. stored credentials, comment, hostname) on an existing off-site backup storage service. Path param: `id` from `getBackupsList`. Body fields are forwarded to the same `View::go()` handler as the GET; consult the order form for accepted keys. Returns the standard `SuccessTextResponse`. Caveats: this endpoint does NOT change the plan, quota, or billing — those require cancel + reorder via `cancelBackup` and `addBackup`. It also does NOT trigger any backend SFTP credential rotation. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; HTTP 422 on invalid input. Siblings: `getBackupInfo`, `cancelBackup`, `getBackupLogin`.
      * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
-     * @param {module:api/BackupsApi~updateBackupInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessTextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessTextResponse} and HTTP response
      */
-    updateBackupInfo(id, callback) {
+    updateBackupInfoWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -416,29 +449,34 @@ export default class BackupsApi {
       return this.apiClient.callApi(
         '/backups/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the validateBackupOrder operation.
-     * @callback module:api/BackupsApi~validateBackupOrderCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/BackupOrderPutResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Update stored metadata for a backup-storage subscription
+     * Use to update non-billing metadata (e.g. stored credentials, comment, hostname) on an existing off-site backup storage service. Path param: `id` from `getBackupsList`. Body fields are forwarded to the same `View::go()` handler as the GET; consult the order form for accepted keys. Returns the standard `SuccessTextResponse`. Caveats: this endpoint does NOT change the plan, quota, or billing — those require cancel + reorder via `cancelBackup` and `addBackup`. It also does NOT trigger any backend SFTP credential rotation. Errors: HTTP 401 unauthenticated; HTTP 404 if `id` is not owned by the caller; HTTP 422 on invalid input. Siblings: `getBackupInfo`, `cancelBackup`, `getBackupLogin`.
+     * @param {Number} id The backup service ID. Use the `backup_id` from `GET /backups` to identify the service.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessTextResponse}
      */
+    updateBackupInfo(id) {
+      return this.updateBackupInfoWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Validate Backup Order
-     * Validates a backup storage order without placing it, returning calculated pricing and any validation errors. Use this to display a confirmation screen with the final price before submitting the order via `POST /backups/order`.
+     * Validate a backup-storage order and preview pricing without charging
+     * Use to dry-run a backup order — runs `validate_buy_storage()` to compute final price, apply any coupon, and surface validation errors before the customer commits. No invoice is created and no service is provisioned. Body (JSON or multipart): `serviceType` (services_id from `getNewBackup`), optional `coupon`, `period` (months, default 1), `comment`. Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, hostname, password, coupon, couponCode }`. Use the response to render a confirmation screen, then call `addBackup` (POST same path) to place the order. Errors: HTTP 401 unauthenticated; HTTP 422 surfaced inside `errors[]` (invalid coupon, ineligible plan, duplicate hostname). Siblings: `addBackup`, `getNewBackup`.
      * @param {Object} opts Optional parameters
      * @param {Boolean} [validateOnly] 
      * @param {Number} [serviceType] 
      * @param {String} [coupon] 
-     * @param {module:api/BackupsApi~validateBackupOrderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/BackupOrderPutResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/BackupOrderPutResponse} and HTTP response
      */
-    validateBackupOrder(opts, callback) {
+    validateBackupOrderWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = null;
 
@@ -461,8 +499,24 @@ export default class BackupsApi {
       return this.apiClient.callApi(
         '/backups/order', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
+    }
+
+    /**
+     * Validate a backup-storage order and preview pricing without charging
+     * Use to dry-run a backup order — runs `validate_buy_storage()` to compute final price, apply any coupon, and surface validation errors before the customer commits. No invoice is created and no service is provisioned. Body (JSON or multipart): `serviceType` (services_id from `getNewBackup`), optional `coupon`, `period` (months, default 1), `comment`. Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, hostname, password, coupon, couponCode }`. Use the response to render a confirmation screen, then call `addBackup` (POST same path) to place the order. Errors: HTTP 401 unauthenticated; HTTP 422 surfaced inside `errors[]` (invalid coupon, ineligible plan, duplicate hostname). Siblings: `addBackup`, `getNewBackup`.
+     * @param {Object} opts Optional parameters
+     * @param {Boolean} opts.validateOnly 
+     * @param {Number} opts.serviceType 
+     * @param {String} opts.coupon 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BackupOrderPutResponse}
+     */
+    validateBackupOrder(opts) {
+      return this.validateBackupOrderWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
 
 

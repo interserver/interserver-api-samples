@@ -1,4 +1,4 @@
-# SwaggerClient::MailAlertUpdateRequest
+# InterserverApiClient::MailAlertUpdateRequest
 
 ## Properties
 Name | Type | Description | Notes

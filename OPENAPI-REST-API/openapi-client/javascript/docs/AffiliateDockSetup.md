@@ -1,4 +1,4 @@
-# InterServerManagementApi.AffiliateDockSetup
+# InterserverApiClient.AffiliateDockSetup
 
 ## Properties
 

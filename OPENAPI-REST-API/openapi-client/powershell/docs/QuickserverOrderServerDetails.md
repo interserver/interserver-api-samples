@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverOrderServerDetails = Initialize-PSOpenAPIToolsQuickserverOrderServerDetails  -Var381 null
+$QuickserverOrderServerDetails = Initialize-InterserverApiQuickserverOrderServerDetails  -Var381 null
 ```
 
 - Convert the resource to JSON

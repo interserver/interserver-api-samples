@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CloseTicketResponseSchema model module.
  * @module model/CloseTicketResponseSchema
- * @version 0.9.0
+ * @version 1.0.0
  */
 class CloseTicketResponseSchema {
     /**

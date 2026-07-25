@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeleteFilter400Response = Initialize-PSOpenAPIToolsDeleteFilter400Response  -Success false `
+$DeleteFilter400Response = Initialize-InterserverApiDeleteFilter400Response  -Success false `
  -Text Port is required.
 ```
 

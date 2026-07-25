@@ -1,14 +1,14 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for EmailAddress
 void main() {
-  final instance = EmailAddressBuilder();
-  // TODO add properties to the builder and call build()
+  final EmailAddress? instance = /* EmailAddress(...) */ null;
+  // TODO add properties to the entity
 
   group(EmailAddress, () {
     // an email address
-    // String email
+    // Optional<String?> email
     test('to test the property `email`', () async {
       // TODO
     });

@@ -42,7 +42,7 @@ public class InlineResponse20017   {
   }
 
   
-  @ApiModelProperty(example = "Filter is deleted.", value = "")
+  @ApiModelProperty(example = "Firewall Rule has been deleted.", value = "")
   @JsonProperty("text")
   @NotNull
 

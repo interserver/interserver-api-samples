@@ -11,7 +11,19 @@ package myadmin-client-go-server
 
 type InlineResponse20013 struct {
 
-	Success bool `json:"success"`
+	ServiceInfo *InlineResponse20013ServiceInfo `json:"serviceInfo,omitempty"`
 
-	Text string `json:"text"`
+	ClientLinks []InlineResponse20013ClientLinks `json:"client_links,omitempty"`
+
+	BillingDetails *InlineResponse20013BillingDetails `json:"billingDetails,omitempty"`
+
+	CustCurrency string `json:"custCurrency,omitempty"`
+
+	CustCurrencySymbol string `json:"custCurrencySymbol,omitempty"`
+
+	Package_ string `json:"package,omitempty"`
+
+	ExtraInfoTables *InlineResponse20013ExtraInfoTables `json:"extraInfoTables,omitempty"`
+
+	FilterFirewall *InlineResponse20013FilterFirewall `json:"filter_firewall,omitempty"`
 }

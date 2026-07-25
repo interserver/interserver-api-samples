@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailExtraInfoTableRow = Initialize-PSOpenAPIToolsMailExtraInfoTableRow  -Desc SMTP Server `
+$MailExtraInfoTableRow = Initialize-InterserverApiMailExtraInfoTableRow  -Desc SMTP Server `
  -Value relay.mailbaby.net
 ```
 

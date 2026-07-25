@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverIpInfo } from './api';
+import { QuickserverIpInfo } from '@interserver/myadmin-client';
 
 const instance: QuickserverIpInfo = {
     title,

@@ -22,16 +22,38 @@ case class ServerIpmiPowerRequest(
   /* The Asset ID */
   asset: Option[Int] = None
 )
-
 object ServerIpmiPowerRequestEnums {
 
-  type Action = Action.Value
-  object Action extends Enumeration {
-    val Cycle = Value("cycle")
-    val Reset = Value("reset")
-    val On = Value("on")
-    val Off = Value("off")
-    val Soft = Value("soft")
-  }
+  sealed trait Action
+  object Action {
+    case object Cycle extends Action
+    case object Reset extends Action
+    case object On extends Action
+    case object Off extends Action
+    case object Soft extends Action
 
+    import org.json4s._
+
+    implicit object ActionSerializer extends Serializer[Action] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), Action] = {
+        case (TypeInfo(clazz, _), json) if classOf[Action].isAssignableFrom(clazz) =>
+          json match {
+            case JString("cycle") => Cycle
+            case JString("reset") => Reset
+            case JString("on") => On
+            case JString("off") => Off
+            case JString("soft") => Soft
+            case other => throw new MappingException(s"Invalid Action: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case Cycle => JString("cycle")
+        case Reset => JString("reset")
+        case On => JString("on")
+        case Off => JString("off")
+        case Soft => JString("soft")
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-# openapi::Tickets
+# interserverapi::Tickets
 
 A listing of support tickets.
 

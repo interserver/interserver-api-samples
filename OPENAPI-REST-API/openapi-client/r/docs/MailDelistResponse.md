@@ -1,4 +1,4 @@
-# openapi::MailDelistResponse
+# interserverapi::MailDelistResponse
 
 Blocklist status information for a mail service.
 

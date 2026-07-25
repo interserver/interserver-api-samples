@@ -27,4 +27,3 @@ case class HomeDetailsModulesVps(
   /* Link to view VPS list. */
   list_link: Option[String] = None
 )
-

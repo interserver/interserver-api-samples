@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsSnapshot
+# InterserverApiClient.VpsSnapshot
 
 ## Properties
 

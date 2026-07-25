@@ -20,4 +20,3 @@ case class VpsTrafficUsageAverageResponse(
   in: VpsTrafficUsageAverageSectionResponse,
   out: VpsTrafficUsageAverageSectionResponse
 )
-

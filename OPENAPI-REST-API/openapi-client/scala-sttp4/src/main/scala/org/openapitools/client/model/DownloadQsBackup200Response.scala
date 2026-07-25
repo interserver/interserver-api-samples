@@ -17,4 +17,3 @@ case class DownloadQsBackup200Response(
   /* A pre-signed download URL valid for 24 hours. */
   url: Option[String] = None
 )
-

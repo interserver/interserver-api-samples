@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_all_info_attributes import DomainAllInfoAttributes
+from interserver_api_client.models.domain_all_info_attributes import DomainAllInfoAttributes
 
 class TestDomainAllInfoAttributes(unittest.TestCase):
     """DomainAllInfoAttributes unit test stubs"""
@@ -36,8 +36,8 @@ class TestDomainAllInfoAttributes(unittest.TestCase):
         model = DomainAllInfoAttributes()
         if include_optional:
             return DomainAllInfoAttributes(
-                contact_set = openapi_client.models.domain_all_info_attributes_contact_set.DomainAllInfo_attributes_contact_set(
-                    owner = openapi_client.models.domain_owner_contact.DomainOwnerContact(
+                contact_set = interserver_api_client.models.domain_all_info_attributes_contact_set.DomainAllInfo_attributes_contact_set(
+                    owner = interserver_api_client.models.domain_owner_contact.DomainOwnerContact(
                         postal_code = '', 
                         org_name = '', 
                         country = '', 
@@ -52,7 +52,7 @@ class TestDomainAllInfoAttributes(unittest.TestCase):
                         city = '', 
                         phone = '', 
                         address1 = '', ), 
-                    admin = openapi_client.models.domain_admin_contact.DomainAdminContact(
+                    admin = interserver_api_client.models.domain_admin_contact.DomainAdminContact(
                         status = '', 
                         state = '', 
                         org_name = '', 
@@ -67,7 +67,7 @@ class TestDomainAllInfoAttributes(unittest.TestCase):
                         phone = '', 
                         first_name = '', 
                         last_name = '', ), 
-                    tech = openapi_client.models.domain_tech_contact.DomainTechContact(
+                    tech = interserver_api_client.models.domain_tech_contact.DomainTechContact(
                         state = '', 
                         status = '', 
                         org_name = '', 
@@ -90,7 +90,7 @@ class TestDomainAllInfoAttributes(unittest.TestCase):
                 sponsoring_rsp = '',
                 gdpr_consent_status = '',
                 nameserver_list = [
-                    openapi_client.models.domain_name_server.DomainNameServer(
+                    interserver_api_client.models.domain_name_server.DomainNameServer(
                         sortorder = '', 
                         name = '', 
                         ipaddress = '', )

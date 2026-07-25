@@ -1,4 +1,4 @@
-# SwaggerClient::StatusMonthlyBreakdown
+# InterserverApiClient::StatusMonthlyBreakdown
 
 ## Properties
 Name | Type | Description | Notes

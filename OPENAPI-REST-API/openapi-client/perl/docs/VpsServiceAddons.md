@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsServiceAddons
+# InterServerAPI::Object::VpsServiceAddons
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsServiceAddons;
+use InterServerAPI::Object::VpsServiceAddons;
 ```
 
 ## Properties

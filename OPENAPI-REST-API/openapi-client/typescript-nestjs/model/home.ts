@@ -9,10 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { HomeTicketStatus } from './homeTicketStatus';
-import { HomeDetails } from './homeDetails';
-import { HomeServices } from './homeServices';
-import { HomeTicketStatusView } from './homeTicketStatusView';
+import { HomeTicketStatus } from './home-ticket-status';
+import { HomeDetails } from './home-details';
+import { HomeServices } from './home-services';
+import { HomeTicketStatusView } from './home-ticket-status-view';
 
 
 export interface Home { 

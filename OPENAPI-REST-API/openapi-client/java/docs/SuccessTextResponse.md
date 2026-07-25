@@ -13,4 +13,8 @@ Response with success flag and text description.
 |**action** | **String** | Optional Action relating to the response. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

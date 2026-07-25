@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerExtraInfoTables = Initialize-PSOpenAPIToolsServerExtraInfoTables  -Assets null
+$ServerExtraInfoTables = Initialize-InterserverApiServerExtraInfoTables  -Assets null
 ```
 
 - Convert the resource to JSON

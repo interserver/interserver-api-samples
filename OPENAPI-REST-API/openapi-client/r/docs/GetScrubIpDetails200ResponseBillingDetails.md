@@ -1,4 +1,4 @@
-# openapi::GetScrubIpDetails200ResponseBillingDetails
+# interserverapi::GetScrubIpDetails200ResponseBillingDetails
 
 
 ## Properties

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::PlaceScrubOrder201Response');
+use_ok('InterServerAPI::Object::PlaceScrubOrder201Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::PlaceScrubOrder201Response->new();
+#my $instance = InterServerAPI::Object::PlaceScrubOrder201Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::PlaceScrubOrder201Response');
+#isa_ok($instance, 'InterServerAPI::Object::PlaceScrubOrder201Response');
 
 
 done_testing();

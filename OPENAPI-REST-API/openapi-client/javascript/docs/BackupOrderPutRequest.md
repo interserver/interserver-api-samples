@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupOrderPutRequest
+# InterserverApiClient.BackupOrderPutRequest
 
 ## Properties
 

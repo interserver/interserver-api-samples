@@ -17,5 +17,4 @@ import scala.collection.mutable.ListBuffer
    * VPS Traffic Hisotrty Data Row of Hour/Day Section
    */
 case class VpsTrafficHistorySectionDataResponse(
-)
-
+) extends ListBuffer[VPSTrafficDataDataSectionResponseInner]

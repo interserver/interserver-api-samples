@@ -17,7 +17,7 @@ import MailAlertsResponseInner from './MailAlertsResponseInner';
 /**
  * The MailAlertsResponse model module.
  * @module model/MailAlertsResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailAlertsResponse extends Array {
     /**

@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.quick_servers_api import QuickServersApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.quick_servers_api import QuickServersApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestQuickServersApi(unittest.TestCase):
@@ -31,308 +31,308 @@ class TestQuickServersApi(unittest.TestCase):
     def test_add_qs(self):
         """Test case for add_qs
 
-        Place QuickServer Order  # noqa: E501
+        Place a QuickServer order, generating a real invoice and queuing provisioning  # noqa: E501
         """
         pass
 
     def test_delete_qs_backup(self):
         """Test case for delete_qs_backup
 
-        Delete QuickServer Backup  # noqa: E501
+        Permanently delete a QuickServer backup file from object storage  # noqa: E501
         """
         pass
 
     def test_do_qs_block_smtp(self):
         """Test case for do_qs_block_smtp
 
-        Block QuickServer SMTP  # noqa: E501
+        Block outbound SMTP traffic on a QuickServer to halt mail abuse  # noqa: E501
         """
         pass
 
     def test_do_qs_disable_cd(self):
         """Test case for do_qs_disable_cd
 
-        Disable CD Drive  # noqa: E501
+        Disable the virtual CD/DVD drive device on a QuickServer  # noqa: E501
         """
         pass
 
     def test_do_qs_disable_quota(self):
         """Test case for do_qs_disable_quota
 
-        Disable Quotas  # noqa: E501
+        Disable disk-quota enforcement at OS level on a QuickServer  # noqa: E501
         """
         pass
 
     def test_do_qs_eject_cd(self):
         """Test case for do_qs_eject_cd
 
-        Eject CD Drive  # noqa: E501
+        Eject the currently mounted ISO from a QuickServer's virtual CD drive  # noqa: E501
         """
         pass
 
     def test_do_qs_enable_quota(self):
         """Test case for do_qs_enable_quota
 
-        Enable Quotas  # noqa: E501
+        Enable disk-quota enforcement at OS level on a QuickServer  # noqa: E501
         """
         pass
 
     def test_do_qs_restart(self):
         """Test case for do_qs_restart
 
-        Restart QuickServer  # noqa: E501
+        Reboot a QuickServer with a graceful OS-level restart  # noqa: E501
         """
         pass
 
     def test_do_qs_start(self):
         """Test case for do_qs_start
 
-        Start QuickServer  # noqa: E501
+        Power on a QuickServer that is currently stopped or pending boot  # noqa: E501
         """
         pass
 
     def test_do_qs_stop(self):
         """Test case for do_qs_stop
 
-        Stop QuickServer  # noqa: E501
+        Power off a QuickServer with a graceful shutdown command  # noqa: E501
         """
         pass
 
     def test_download_qs_backup(self):
         """Test case for download_qs_backup
 
-        Download QuickServer Backup  # noqa: E501
+        Generate a 24-hour pre-signed download URL for a QuickServer backup  # noqa: E501
         """
         pass
 
     def test_get_new_qs(self):
         """Test case for get_new_qs
 
-        Get QuickServer Ordering Information  # noqa: E501
+        Get QuickServer order form metadata and available plans/templates  # noqa: E501
+        """
+        pass
+
+    def test_get_qs_backup(self):
+        """Test case for get_qs_backup
+
+        Queue creation of a new QuickServer backup snapshot (note: GET triggers job)  # noqa: E501
         """
         pass
 
     def test_get_qs_backups(self):
         """Test case for get_qs_backups
 
-        List QuickServer Backups  # noqa: E501
+        List available QuickServer backups across Swift, MinIO, and ZFS storage  # noqa: E501
         """
         pass
 
     def test_get_qs_change_hostname(self):
         """Test case for get_qs_change_hostname
 
-        Get QuickServer Hostname  # noqa: E501
+        Get current QuickServer hostname plus change rules and platform support  # noqa: E501
         """
         pass
 
     def test_get_qs_change_root_password(self):
         """Test case for get_qs_change_root_password
 
-        Get Change Root Password Info  # noqa: E501
+        Get metadata for QuickServer root/OS password change requirements  # noqa: E501
         """
         pass
 
     def test_get_qs_change_timezone(self):
         """Test case for get_qs_change_timezone
 
-        Get Timezone Info  # noqa: E501
+        List timezones the QuickServer can be set to via change_timezone  # noqa: E501
         """
         pass
 
     def test_get_qs_change_webuzo_password(self):
         """Test case for get_qs_change_webuzo_password
 
-        Webuzo Change Pass Info  # noqa: E501
+        Get metadata for changing the Webuzo control panel admin password  # noqa: E501
         """
         pass
 
     def test_get_qs_info(self):
         """Test case for get_qs_info
 
-        Get QuickServer Order  # noqa: E501
+        Get full details for one QuickServer including credentials and links  # noqa: E501
         """
         pass
 
     def test_get_qs_insert_cd(self):
         """Test case for get_qs_insert_cd
 
-        Insert CD Information  # noqa: E501
+        List ISO images available to mount on a QuickServer's virtual CD  # noqa: E501
         """
         pass
 
     def test_get_qs_invoices(self):
         """Test case for get_qs_invoices
 
-        Get QuickServer Invoices  # noqa: E501
+        List billing invoices charged for one QuickServer service  # noqa: E501
         """
         pass
 
     def test_get_qs_list(self):
         """Test case for get_qs_list
 
-        List QuickServers  # noqa: E501
+        List QuickServer rapid-deploy dedicated servers on the account  # noqa: E501
         """
         pass
 
     def test_get_qs_reinstall_os(self):
         """Test case for get_qs_reinstall_os
 
-        QuickServer Reinstall OS Options  # noqa: E501
+        List OS templates available for a QuickServer reinstall  # noqa: E501
         """
         pass
 
     def test_get_qs_reset_password(self):
         """Test case for get_qs_reset_password
 
-        Reset QuickServer Password Info  # noqa: E501
+        Get options for QuickServer randomized root password reset  # noqa: E501
         """
         pass
 
     def test_get_qs_reverse_dns(self):
         """Test case for get_qs_reverse_dns
 
-        Reverse DNS Info  # noqa: E501
+        Get reverse DNS (PTR) records for all of a QuickServer's IPs  # noqa: E501
         """
         pass
 
     def test_get_qs_setup_vnc(self):
         """Test case for get_qs_setup_vnc
 
-        VNC Setup Info  # noqa: E501
+        Get current VNC console connection details for a QuickServer  # noqa: E501
         """
         pass
 
     def test_get_qs_traffic_usage(self):
         """Test case for get_qs_traffic_usage
 
-        Get Traffic Usage  # noqa: E501
+        Get bandwidth usage for the QuickServer's current billing period  # noqa: E501
         """
         pass
 
     def test_get_qs_view_desktop(self):
         """Test case for get_qs_view_desktop
 
-        Get View Desktop Info  # noqa: E501
+        Get the full QuickServer dashboard view payload (rich format)  # noqa: E501
         """
         pass
 
     def test_get_qs_welcome_email(self):
         """Test case for get_qs_welcome_email
 
-        Resend QuickServer Welcome Email  # noqa: E501
-        """
-        pass
-
-    def test_post_qs_backup(self):
-        """Test case for post_qs_backup
-
-        Create QuickServer Backup  # noqa: E501
+        Resend the QuickServer welcome email with login credentials  # noqa: E501
         """
         pass
 
     def test_post_qs_change_hostname(self):
         """Test case for post_qs_change_hostname
 
-        Update QuickServer Hostname  # noqa: E501
+        Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)  # noqa: E501
         """
         pass
 
     def test_post_qs_change_root_password(self):
         """Test case for post_qs_change_root_password
 
-        Change Root Password  # noqa: E501
+        Change QuickServer root/administrator password to a chosen value  # noqa: E501
         """
         pass
 
     def test_post_qs_change_timezone(self):
         """Test case for post_qs_change_timezone
 
-        Change QuickServer Timezone  # noqa: E501
+        Change the system timezone on a QuickServer to a catalog entry  # noqa: E501
         """
         pass
 
     def test_post_qs_change_webuzo_password(self):
         """Test case for post_qs_change_webuzo_password
 
-        Change Webuzo Password  # noqa: E501
+        Change Webuzo control panel admin password live (synchronous, not queued)  # noqa: E501
         """
         pass
 
     def test_post_qs_insert_cd(self):
         """Test case for post_qs_insert_cd
 
-        Insert CD in QuickServer  # noqa: E501
+        Mount an ISO image as the QuickServer's virtual CD via URL  # noqa: E501
         """
         pass
 
     def test_post_qs_reinstall_os(self):
         """Test case for post_qs_reinstall_os
 
-        Reinstall QuickServer OS  # noqa: E501
+        Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)  # noqa: E501
         """
         pass
 
     def test_post_qs_reset_password(self):
         """Test case for post_qs_reset_password
 
-        Reset QuickServer Password  # noqa: E501
+        Reset QuickServer root password to a server-generated random value  # noqa: E501
         """
         pass
 
     def test_post_qs_reverse_dns(self):
         """Test case for post_qs_reverse_dns
 
-        Update Reverse DNS  # noqa: E501
+        Update reverse DNS (PTR) records for a QuickServer's IPs  # noqa: E501
         """
         pass
 
     def test_post_qs_setup_vnc(self):
         """Test case for post_qs_setup_vnc
 
-        Setup VNC  # noqa: E501
+        Configure the source IP allowed to reach a QuickServer's VNC console  # noqa: E501
         """
         pass
 
     def test_post_qs_traffic_usage(self):
         """Test case for post_qs_traffic_usage
 
-        Search Traffic Usage  # noqa: E501
+        Query QuickServer bandwidth usage via POST (filtered variant)  # noqa: E501
         """
         pass
 
     def test_post_qs_view_desktop(self):
         """Test case for post_qs_view_desktop
 
-        Update View Desktop  # noqa: E501
+        Submit changes and re-fetch the QuickServer dashboard view payload  # noqa: E501
         """
         pass
 
     def test_post_quick_server_restore(self):
         """Test case for post_quick_server_restore
 
-        Restore QuickServer from Backup  # noqa: E501
+        Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)  # noqa: E501
         """
         pass
 
     def test_put_qs(self):
         """Test case for put_qs
 
-        Validate QuickServer Order  # noqa: E501
+        Validate a QuickServer order without charging or provisioning  # noqa: E501
         """
         pass
 
     def test_quickservers_cancel(self):
         """Test case for quickservers_cancel
 
-        Cancel QuickServer Order  # noqa: E501
+        Cancel a QuickServer service at the end of the current billing cycle  # noqa: E501
         """
         pass
 
     def test_update_qs_info(self):
         """Test case for update_qs_info
 
-        Update QuickServer Order  # noqa: E501
+        Update QuickServer order metadata or stored settings without OS impact  # noqa: E501
         """
         pass
 

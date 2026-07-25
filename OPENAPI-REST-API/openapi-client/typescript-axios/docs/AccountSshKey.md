@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountSshKey } from './api';
+import { AccountSshKey } from '@interserver/myadmin-client';
 
 const instance: AccountSshKey = {
     ssh_key,

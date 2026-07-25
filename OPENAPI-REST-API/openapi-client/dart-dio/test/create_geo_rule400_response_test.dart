@@ -1,23 +1,23 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for CreateGeoRule400Response
 void main() {
-  final instance = CreateGeoRule400ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final CreateGeoRule400Response? instance = /* CreateGeoRule400Response(...) */ null;
+  // TODO add properties to the entity
 
   group(CreateGeoRule400Response, () {
-    // bool success
+    // Optional<bool?> success
     test('to test the property `success`', () async {
       // TODO
     });
 
-    // String text
+    // Optional<String?> text
     test('to test the property `text`', () async {
       // TODO
     });
 
-    // BuiltList<String> errors
+    // Optional<List<String>?> errors
     test('to test the property `errors`', () async {
       // TODO
     });

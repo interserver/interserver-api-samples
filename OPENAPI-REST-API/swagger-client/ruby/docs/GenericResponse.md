@@ -1,4 +1,4 @@
-# SwaggerClient::GenericResponse
+# InterserverApiClient::GenericResponse
 
 ## Properties
 Name | Type | Description | Notes

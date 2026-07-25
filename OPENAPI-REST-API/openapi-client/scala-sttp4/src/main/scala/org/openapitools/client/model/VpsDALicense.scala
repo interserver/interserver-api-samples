@@ -27,4 +27,3 @@ case class VpsDALicense(
   /* Image path for the active state icon. */
   img_active: Option[String] = None
 )
-

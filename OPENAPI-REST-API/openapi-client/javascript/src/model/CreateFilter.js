@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateFilter model module.
  * @module model/CreateFilter
- * @version 0.9.0
+ * @version 1.0.0
  */
 class CreateFilter {
     /**

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServersBuyNowResponseOrderDetails();
+    instance = new InterserverApiClient.ServersBuyNowResponseOrderDetails();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('ServersBuyNowResponseOrderDetails', function() {
     it('should create an instance of ServersBuyNowResponseOrderDetails', function() {
       // uncomment below and update the code to test ServersBuyNowResponseOrderDetails
-      //var instance = new InterServerManagementApi.ServersBuyNowResponseOrderDetails();
-      //expect(instance).to.be.a(InterServerManagementApi.ServersBuyNowResponseOrderDetails);
+      //var instance = new InterserverApiClient.ServersBuyNowResponseOrderDetails();
+      //expect(instance).to.be.a(InterserverApiClient.ServersBuyNowResponseOrderDetails);
     });
 
     it('should have the property service_id (base name: "service_id")', function() {
       // uncomment below and update the code to test the property service_id
-      //var instance = new InterServerManagementApi.ServersBuyNowResponseOrderDetails();
+      //var instance = new InterserverApiClient.ServersBuyNowResponseOrderDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property invoice_id (base name: "invoice_id")', function() {
       // uncomment below and update the code to test the property invoice_id
-      //var instance = new InterServerManagementApi.ServersBuyNowResponseOrderDetails();
+      //var instance = new InterserverApiClient.ServersBuyNowResponseOrderDetails();
       //expect(instance).to.be();
     });
 

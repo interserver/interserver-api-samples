@@ -23,7 +23,7 @@ import HomeDetailsModulesWebhosting from './HomeDetailsModulesWebhosting';
 /**
  * The HomeDetailsModules model module.
  * @module model/HomeDetailsModules
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeDetailsModules {
     /**

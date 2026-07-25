@@ -11,13 +11,29 @@ import Foundation
 
 public struct InlineResponse20020: Codable {
 
-    public var success: Bool
-    public var text: String
+    public var _continue: Bool?
+    public var errors: [String]?
+    public var serviceType: Int?
+    public var serviceCost: Decimal?
+    public var originalCost: Decimal?
+    public var repeatServiceCost: Decimal?
 
-    public init(success: Bool, text: String) {
-        self.success = success
-        self.text = text
+    public init(_continue: Bool? = nil, errors: [String]? = nil, serviceType: Int? = nil, serviceCost: Decimal? = nil, originalCost: Decimal? = nil, repeatServiceCost: Decimal? = nil) {
+        self._continue = _continue
+        self.errors = errors
+        self.serviceType = serviceType
+        self.serviceCost = serviceCost
+        self.originalCost = originalCost
+        self.repeatServiceCost = repeatServiceCost
     }
 
+    public enum CodingKeys: String, CodingKey { 
+        case _continue = "continue"
+        case errors
+        case serviceType
+        case serviceCost
+        case originalCost
+        case repeatServiceCost
+    }
 
 }

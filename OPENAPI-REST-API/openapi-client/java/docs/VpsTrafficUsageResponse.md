@@ -13,4 +13,8 @@ VPS Traffic Usage Section
 |**average** | [**VpsTrafficUsageAverageResponse**](VpsTrafficUsageAverageResponse.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

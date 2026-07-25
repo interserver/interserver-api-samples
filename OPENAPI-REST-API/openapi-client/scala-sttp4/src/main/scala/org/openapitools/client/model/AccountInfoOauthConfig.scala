@@ -20,4 +20,3 @@ case class AccountInfoOauthConfig(
   callback: String,
   providers: AccountInfoOauthConfigProviders
 )
-

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.place_scrub_order201_response import PlaceScrubOrder201Response
+from interserver_api_client.models.place_scrub_order201_response import PlaceScrubOrder201Response
 
 class TestPlaceScrubOrder201Response(unittest.TestCase):
     """PlaceScrubOrder201Response unit test stubs"""
@@ -38,12 +38,12 @@ class TestPlaceScrubOrder201Response(unittest.TestCase):
             return PlaceScrubOrder201Response(
                 success = True,
                 text = 'ScrubIp order is placed.',
-                order_details = openapi_client.models.place_scrub_order_201_response_order_details.placeScrubOrder_201_response_order_details(
+                order_details = interserver_api_client.models.place_scrub_order_201_response_order_details.placeScrubOrder_201_response_order_details(
                     total_cost = 5, 
                     service_id = 12346, 
                     invoice_id = 2746273, 
                     invoice_description = 'Scrub + Current Ip', 
-                    cj_params = openapi_client.models.place_scrub_order_201_response_order_details_cj_params.placeScrubOrder_201_response_order_details_cj_params(
+                    cj_params = interserver_api_client.models.place_scrub_order_201_response_order_details_cj_params.placeScrubOrder_201_response_order_details_cj_params(
                         container_tag_id = 1684, 
                         cid = 2314, 
                         oid = 'scrub_ips12424', 

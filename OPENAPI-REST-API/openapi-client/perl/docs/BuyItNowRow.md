@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BuyItNowRow
+# InterServerAPI::Object::BuyItNowRow
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BuyItNowRow;
+use InterServerAPI::Object::BuyItNowRow;
 ```
 
 ## Properties

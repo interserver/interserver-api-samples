@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WebsiteLoginResponse } from './api';
+import { WebsiteLoginResponse } from '@interserver/myadmin-client';
 
 const instance: WebsiteLoginResponse = {
     type,

@@ -1,58 +1,58 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BackupOrderPutResponse
 void main() {
-  final instance = BackupOrderPutResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final BackupOrderPutResponse? instance = /* BackupOrderPutResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(BackupOrderPutResponse, () {
-    // bool continue_
+    // Optional<bool?> continue_
     test('to test the property `continue_`', () async {
       // TODO
     });
 
-    // BuiltList<String> errors
+    // Optional<List<String>?> errors
     test('to test the property `errors`', () async {
       // TODO
     });
 
-    // int serviceType
+    // Optional<int?> serviceType
     test('to test the property `serviceType`', () async {
       // TODO
     });
 
-    // String serviceCost
+    // Optional<String?> serviceCost
     test('to test the property `serviceCost`', () async {
       // TODO
     });
 
-    // String originalCost
+    // Optional<String?> originalCost
     test('to test the property `originalCost`', () async {
       // TODO
     });
 
-    // String repeatServiceCost
+    // Optional<String?> repeatServiceCost
     test('to test the property `repeatServiceCost`', () async {
       // TODO
     });
 
-    // String hostname
+    // Optional<String?> hostname
     test('to test the property `hostname`', () async {
       // TODO
     });
 
-    // String password
+    // Optional<String?> password
     test('to test the property `password`', () async {
       // TODO
     });
 
-    // String coupon
+    // Optional<String?> coupon
     test('to test the property `coupon`', () async {
       // TODO
     });
 
-    // int couponCode
+    // Optional<int?> couponCode
     test('to test the property `couponCode`', () async {
       // TODO
     });

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailStatsTypeVolumeTo } from './api';
+import { MailStatsTypeVolumeTo } from '@interserver/myadmin-client';
 
 const instance: MailStatsTypeVolumeTo = {
     clientdomain_com,

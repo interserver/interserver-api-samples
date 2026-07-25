@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.IpObject();
+    instance = new InterserverApiClient.IpObject();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('IpObject', function() {
     it('should create an instance of IpObject', function() {
       // uncomment below and update the code to test IpObject
-      //var instance = new InterServerManagementApi.IpObject();
-      //expect(instance).to.be.a(InterServerManagementApi.IpObject);
+      //var instance = new InterserverApiClient.IpObject();
+      //expect(instance).to.be.a(InterserverApiClient.IpObject);
     });
 
     it('should have the property ip (base name: "ip")', function() {
       // uncomment below and update the code to test the property ip
-      //var instance = new InterServerManagementApi.IpObject();
+      //var instance = new InterserverApiClient.IpObject();
       //expect(instance).to.be();
     });
 

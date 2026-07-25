@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.scrub_ips_delete_rule500_response import ScrubIpsDeleteRule500Response
+from interserver_api_client.models.scrub_ips_delete_rule500_response import ScrubIpsDeleteRule500Response
 
 class TestScrubIpsDeleteRule500Response(unittest.TestCase):
     """ScrubIpsDeleteRule500Response unit test stubs"""

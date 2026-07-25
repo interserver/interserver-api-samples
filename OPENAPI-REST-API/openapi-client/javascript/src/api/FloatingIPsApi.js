@@ -14,6 +14,7 @@
 
 import ApiClient from "../ApiClient";
 import ChargeInvoiceRows from '../model/ChargeInvoiceRows';
+import FloatingIpOrderRequest from '../model/FloatingIpOrderRequest';
 import FloatingIpsCancel200Response from '../model/FloatingIpsCancel200Response';
 import GetAccountInfo401Response from '../model/GetAccountInfo401Response';
 import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
@@ -22,7 +23,7 @@ import SuccessTextResponse from '../model/SuccessTextResponse';
 /**
 * FloatingIPs service.
 * @module api/FloatingIPsApi
-* @version 0.9.0
+* @version 1.0.0
 */
 export default class FloatingIPsApi {
 
@@ -38,22 +39,19 @@ export default class FloatingIPsApi {
     }
 
 
-    /**
-     * Callback function to receive the result of the addFloatingIp operation.
-     * @callback module:api/FloatingIPsApi~addFloatingIpCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServiceOrderPostResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
-     * Place Floating IP Order
-     * Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
-     * @param {module:api/FloatingIPsApi~addFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServiceOrderPostResponse}
+     * Place a real Floating IP order, create billing records, and provision the service
+     * Charges the customer and creates a new Floating IP service via `place_buy_floating_ip`. Validate first with `putFloating_ips` to avoid surprise failures. Body (form-encoded): `serviceType` (required, `services_id`), `coupon` (optional), `comment` (optional internal note). On success returns `{ continue:true, errors, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — `iid` is the master invoice ID, `serviceId` is the new `floating_ip_id`. On validation failure returns `{ continue:false, errors:[...] }` with no charge. Errors: 401 if unauthenticated; soft errors in `errors[]`. The newly-issued IP starts unassigned — point it at a target with `postFloatingIpsChangeIp` once the service is `active`.  Sibling ops: `getNewFloatingIp` (catalog), `putFloating_ips` (validate), `getFloatingIpInfo` (poll), `postFloatingIpsChangeIp` (route), `getBillingInvoice` + `initiatePayment` (settle invoice), `floating_ipsCancel`.
+     * @param {module:model/FloatingIpOrderRequest} FloatingIpOrderRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ServiceOrderPostResponse} and HTTP response
      */
-    addFloatingIp(callback) {
-      let postBody = null;
+    addFloatingIpWithHttpInfo(FloatingIpOrderRequest) {
+      let postBody = FloatingIpOrderRequest;
+      // verify the required parameter 'FloatingIpOrderRequest' is set
+      if (FloatingIpOrderRequest === undefined || FloatingIpOrderRequest === null) {
+        throw new Error("Missing the required parameter 'FloatingIpOrderRequest' when calling addFloatingIp");
+      }
 
       let pathParams = {
       };
@@ -65,32 +63,37 @@ export default class FloatingIPsApi {
       };
 
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = ServiceOrderPostResponse;
       return this.apiClient.callApi(
         '/floating_ips/order', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the floatingIpsCancel operation.
-     * @callback module:api/FloatingIPsApi~floatingIpsCancelCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/FloatingIpsCancel200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Place a real Floating IP order, create billing records, and provision the service
+     * Charges the customer and creates a new Floating IP service via `place_buy_floating_ip`. Validate first with `putFloating_ips` to avoid surprise failures. Body (form-encoded): `serviceType` (required, `services_id`), `coupon` (optional), `comment` (optional internal note). On success returns `{ continue:true, errors, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — `iid` is the master invoice ID, `serviceId` is the new `floating_ip_id`. On validation failure returns `{ continue:false, errors:[...] }` with no charge. Errors: 401 if unauthenticated; soft errors in `errors[]`. The newly-issued IP starts unassigned — point it at a target with `postFloatingIpsChangeIp` once the service is `active`.  Sibling ops: `getNewFloatingIp` (catalog), `putFloating_ips` (validate), `getFloatingIpInfo` (poll), `postFloatingIpsChangeIp` (route), `getBillingInvoice` + `initiatePayment` (settle invoice), `floating_ipsCancel`.
+     * @param {module:model/FloatingIpOrderRequest} FloatingIpOrderRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceOrderPostResponse}
      */
+    addFloatingIp(FloatingIpOrderRequest) {
+      return this.addFloatingIpWithHttpInfo(FloatingIpOrderRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Cancel Floating IP
-     * Cancels a Floating IP service. After cancellation the IP assignment is released and the service transitions to a canceled status. No further billing charges will be incurred.
+     * Cancel a Floating IP service and release the IP — destructive, billing stops
+     * Cancels the Floating IP via the shared `Api\\Billing\\CancelService` flow — flips status to canceled, halts recurring billing, and releases the IP back to the pool so it can no longer be re-routed. Not reversible: the customer cannot recover the same IP after release. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `FloatingIpsCancelResponse` shape (success text / cancellation outcome). Errors: 401 if unauthenticated; 404 / cross-customer hidden when `id` is not owned by the caller; 409 if already canceled or otherwise non-cancelable. Confirm with the customer before calling — for routing changes use `postFloatingIpsChangeIp` instead of cancel-and-reorder.  Sibling ops: `getFloatingIpInfo` (status), `getFloatingIpInvoices` (outstanding charges), `postFloatingIpsChangeIp` (re-route instead of cancel), `addFloatingIp` (re-order).
      * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
-     * @param {module:api/FloatingIPsApi~floatingIpsCancelCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/FloatingIpsCancel200Response}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/FloatingIpsCancel200Response} and HTTP response
      */
-    floatingIpsCancel(id, callback) {
+    floatingIpsCancelWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -114,26 +117,31 @@ export default class FloatingIPsApi {
       return this.apiClient.callApi(
         '/floating_ips/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getFloatingIpInfo operation.
-     * @callback module:api/FloatingIPsApi~getFloatingIpInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {Object} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Cancel a Floating IP service and release the IP — destructive, billing stops
+     * Cancels the Floating IP via the shared `Api\\Billing\\CancelService` flow — flips status to canceled, halts recurring billing, and releases the IP back to the pool so it can no longer be re-routed. Not reversible: the customer cannot recover the same IP after release. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `FloatingIpsCancelResponse` shape (success text / cancellation outcome). Errors: 401 if unauthenticated; 404 / cross-customer hidden when `id` is not owned by the caller; 409 if already canceled or otherwise non-cancelable. Confirm with the customer before calling — for routing changes use `postFloatingIpsChangeIp` instead of cancel-and-reorder.  Sibling ops: `getFloatingIpInfo` (status), `getFloatingIpInvoices` (outstanding charges), `postFloatingIpsChangeIp` (re-route instead of cancel), `addFloatingIp` (re-order).
+     * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/FloatingIpsCancel200Response}
      */
+    floatingIpsCancel(id) {
+      return this.floatingIpsCancelWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * View Floating IP
-     * Returns detailed information about a specific Floating IP service including its current target IP assignment.
+     * Fetch full details for one Floating IP service, including current target IP
+     * Use for a Floating IP detail screen, or to read `floating_ip_ip` / `floating_ip_target_ip` before calling `postFloatingIpsChangeIp`. Read-only. Path param `id` (integer, `floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ViewFloatingIp.getDetails()` payload — service info, billing/cost summary, status, target IP, and `client_links` (action URLs the UI can render). Internal-only fields (`admin_links`, `settings`, `csrf`) are stripped. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller (`get_service` filters by custid). Siblings: `postFloatingIpsChangeIp`, `updateFloatingIpInfo`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, `floating_ipsCancel`.
      * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
-     * @param {module:api/FloatingIPsApi~getFloatingIpInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Object} and HTTP response
      */
-    getFloatingIpInfo(id, callback) {
+    getFloatingIpInfoWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -157,26 +165,31 @@ export default class FloatingIPsApi {
       return this.apiClient.callApi(
         '/floating_ips/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getFloatingIpInvoices operation.
-     * @callback module:api/FloatingIPsApi~getFloatingIpInvoicesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ChargeInvoiceRows} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Fetch full details for one Floating IP service, including current target IP
+     * Use for a Floating IP detail screen, or to read `floating_ip_ip` / `floating_ip_target_ip` before calling `postFloatingIpsChangeIp`. Read-only. Path param `id` (integer, `floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ViewFloatingIp.getDetails()` payload — service info, billing/cost summary, status, target IP, and `client_links` (action URLs the UI can render). Internal-only fields (`admin_links`, `settings`, `csrf`) are stripped. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller (`get_service` filters by custid). Siblings: `postFloatingIpsChangeIp`, `updateFloatingIpInfo`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, `floating_ipsCancel`.
+     * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Object}
      */
+    getFloatingIpInfo(id) {
+      return this.getFloatingIpInfoWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get Floating IP Invoices
-     * Returns the billing invoices associated with this Floating IP service.
+     * List all billing invoices charged against a specific Floating IP service
+     * Use for a per-service billing history view — pulls the standard `Api\\Billing\\InvoicesList` rows scoped to this Floating IP. Read-only. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ChargeInvoiceRows` schema: array of invoice rows with id, date, amount, status, etc. Use the invoice IDs with the global billing endpoints (`getBillingInvoice`, `initiatePayment`) for line-item detail. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller. Siblings: `getFloatingIpInfo` (service details), `getFloatingIpsWelcomeEmail`.
      * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
-     * @param {module:api/FloatingIPsApi~getFloatingIpInvoicesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ChargeInvoiceRows}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ChargeInvoiceRows} and HTTP response
      */
-    getFloatingIpInvoices(id, callback) {
+    getFloatingIpInvoicesWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -200,25 +213,30 @@ export default class FloatingIPsApi {
       return this.apiClient.callApi(
         '/floating_ips/{id}/invoices', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getFloatingIpsList operation.
-     * @callback module:api/FloatingIPsApi~getFloatingIpsListCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<Object>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List all billing invoices charged against a specific Floating IP service
+     * Use for a per-service billing history view — pulls the standard `Api\\Billing\\InvoicesList` rows scoped to this Floating IP. Read-only. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ChargeInvoiceRows` schema: array of invoice rows with id, date, amount, status, etc. Use the invoice IDs with the global billing endpoints (`getBillingInvoice`, `initiatePayment`) for line-item detail. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller. Siblings: `getFloatingIpInfo` (service details), `getFloatingIpsWelcomeEmail`.
+     * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ChargeInvoiceRows}
      */
+    getFloatingIpInvoices(id) {
+      return this.getFloatingIpInvoicesWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * List Floating IPs
-     * Returns all Floating IP services on the account with their current status and assignment details.
-     * @param {module:api/FloatingIPsApi~getFloatingIpsListCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<Object>}
+     * List all Floating IP services on the authenticated customer's account
+     * Use to enumerate every Floating IP the caller owns before drilling into a specific one. Read-only; safe to call frequently. No params, no body. Returns an array of rows: `floating_ip_id`, `repeat_invoices_cost` (recurring price), `floating_ip_ip` (the portable IP), `floating_ip_target_ip` (the IP it currently routes to), `floating_ip_status` (active/pending/canceled/etc.), `services_name` (package label). Empty array if the account owns no Floating IPs. Errors: 401 if unauthenticated. Use returned IDs with `getFloatingIpInfo`, `postFloatingIpsChangeIp`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, or `floating_ipsCancel`. To order a new one see `getNewFloatingIp` / `addFloatingIp`.  Sibling ops: `getFloatingIpInfo`, `getNewFloatingIp` (catalog), `addFloatingIp` (order).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<Object>} and HTTP response
      */
-    getFloatingIpsList(callback) {
+    getFloatingIpsListWithHttpInfo() {
       let postBody = null;
 
       let pathParams = {
@@ -237,26 +255,30 @@ export default class FloatingIPsApi {
       return this.apiClient.callApi(
         '/floating_ips', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getFloatingIpsWelcomeEmail operation.
-     * @callback module:api/FloatingIPsApi~getFloatingIpsWelcomeEmailCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List all Floating IP services on the authenticated customer's account
+     * Use to enumerate every Floating IP the caller owns before drilling into a specific one. Read-only; safe to call frequently. No params, no body. Returns an array of rows: `floating_ip_id`, `repeat_invoices_cost` (recurring price), `floating_ip_ip` (the portable IP), `floating_ip_target_ip` (the IP it currently routes to), `floating_ip_status` (active/pending/canceled/etc.), `services_name` (package label). Empty array if the account owns no Floating IPs. Errors: 401 if unauthenticated. Use returned IDs with `getFloatingIpInfo`, `postFloatingIpsChangeIp`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, or `floating_ipsCancel`. To order a new one see `getNewFloatingIp` / `addFloatingIp`.  Sibling ops: `getFloatingIpInfo`, `getNewFloatingIp` (catalog), `addFloatingIp` (order).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<Object>}
      */
+    getFloatingIpsList() {
+      return this.getFloatingIpsListWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Resend Floating IPs Welcome Email
-     * Resends the welcome email for the Floating IP service. The email contains setup instructions and connection details.
+     * Resend the Floating IP welcome / setup email to the account contact
+     * Triggers `floating_ip_welcome_email($id)` to re-deliver the original setup email (the IP, routing instructions, etc.) to the customer's on-file address. Useful when the email was lost or the customer needs the IP/setup details again. No body, no params besides path `id` (`floating_ip_id`). Returns `{ text: 'Welcome Email has been resent.' }`. Errors: 401 if unauthenticated; 404 (`Invalid Service Passed`) if `id` is not owned by the caller; 409 (`Service is not active`) if status is not `active`. Side effect: sends an outbound email — avoid in tight loops. Read state first via `getFloatingIpInfo` if unsure of status.  Sibling ops: `getFloatingIpInfo` (status), `addFloatingIp` (new order), `floating_ipsCancel`.
      * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
-     * @param {module:api/FloatingIPsApi~getFloatingIpsWelcomeEmailCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessTextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessTextResponse} and HTTP response
      */
-    getFloatingIpsWelcomeEmail(id, callback) {
+    getFloatingIpsWelcomeEmailWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -280,25 +302,30 @@ export default class FloatingIPsApi {
       return this.apiClient.callApi(
         '/floating_ips/{id}/welcome_email', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getNewFloatingIp operation.
-     * @callback module:api/FloatingIPsApi~getNewFloatingIpCallback
-     * @param {String} error Error message, if any.
-     * @param {Object} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Resend the Floating IP welcome / setup email to the account contact
+     * Triggers `floating_ip_welcome_email($id)` to re-deliver the original setup email (the IP, routing instructions, etc.) to the customer's on-file address. Useful when the email was lost or the customer needs the IP/setup details again. No body, no params besides path `id` (`floating_ip_id`). Returns `{ text: 'Welcome Email has been resent.' }`. Errors: 401 if unauthenticated; 404 (`Invalid Service Passed`) if `id` is not owned by the caller; 409 (`Service is not active`) if status is not `active`. Side effect: sends an outbound email — avoid in tight loops. Read state first via `getFloatingIpInfo` if unsure of status.  Sibling ops: `getFloatingIpInfo` (status), `addFloatingIp` (new order), `floating_ipsCancel`.
+     * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessTextResponse}
      */
+    getFloatingIpsWelcomeEmail(id) {
+      return this.getFloatingIpsWelcomeEmailWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get Floating IP Ordering Information
-     * Retrieves available options and pricing for ordering a new Floating IP.
-     * @param {module:api/FloatingIPsApi~getNewFloatingIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object}
+     * Get pricing and service-type options for ordering a new Floating IP
+     * Use before showing a Floating IP order form, or before calling `addFloatingIp`, to discover which service types (`serviceTypes`) and prices (`packageCosts`, keyed by `services_id` in the customer's currency) are currently buyable. Read-only; no side effects. No params, no body. Returns `{ packageCosts: { <services_id>: <cost> }, serviceTypes: [ ... ] } `. Costs are `services.services_cost` filtered to `services_buyable=1` for module `floating_ips`. Errors: 401 if unauthenticated. Next steps: validate the chosen `serviceType` with `putFloating_ips`, then place the order with `addFloatingIp`. Floating IPs are portable IPv4 addresses that route to a target IP on one of the customer's active services.  Sibling ops: `putFloating_ips` (validate), `addFloatingIp` (commit), `getFloatingIpsList` (existing IPs).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Object} and HTTP response
      */
-    getNewFloatingIp(callback) {
+    getNewFloatingIpWithHttpInfo() {
       let postBody = null;
 
       let pathParams = {
@@ -317,27 +344,31 @@ export default class FloatingIPsApi {
       return this.apiClient.callApi(
         '/floating_ips/order', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the postFloatingIpsChangeIp operation.
-     * @callback module:api/FloatingIPsApi~postFloatingIpsChangeIpCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get pricing and service-type options for ordering a new Floating IP
+     * Use before showing a Floating IP order form, or before calling `addFloatingIp`, to discover which service types (`serviceTypes`) and prices (`packageCosts`, keyed by `services_id` in the customer's currency) are currently buyable. Read-only; no side effects. No params, no body. Returns `{ packageCosts: { <services_id>: <cost> }, serviceTypes: [ ... ] } `. Costs are `services.services_cost` filtered to `services_buyable=1` for module `floating_ips`. Errors: 401 if unauthenticated. Next steps: validate the chosen `serviceType` with `putFloating_ips`, then place the order with `addFloatingIp`. Floating IPs are portable IPv4 addresses that route to a target IP on one of the customer's active services.  Sibling ops: `putFloating_ips` (validate), `addFloatingIp` (commit), `getFloatingIpsList` (existing IPs).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Object}
      */
+    getNewFloatingIp() {
+      return this.getNewFloatingIpWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Change Floating IP Target
-     * Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use `GET /floating_ips/{id}` to view the current target before making changes.
+     * Re-point a Floating IP to a different target IP on one of the customer's services
+     * Reattaches the Floating IP by removing the old static route on the source switch and adding a new one on the destination switch (via `Sshwitch`), then updates `floating_ip_target_ip`. Use to move a portable IP between the customer's VPS / Quickservers / websites / dedicated servers without renumbering apps. Path param `id` (`floating_ip_id`). Body: `{ ip: <new target IP> }` (also accepts multipart form). Returns `{ success:true, text:'IP Changed' }`. Errors (returned via `json_error`): invalid IP format; IP not in our datacenter; IP not in use by an active service of this customer; service not active; another Floating IP already points to that target; switch lookup failures; route still present after removal. 401 if unauthenticated.  Sibling ops: `getFloatingIpInfo` (read current target), `getFloatingIpsList`, `floating_ipsCancel`. Read current target with `getFloatingIpInfo` first.
      * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
      * @param {String} ip IP Address
-     * @param {module:api/FloatingIPsApi~postFloatingIpsChangeIpCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessTextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessTextResponse} and HTTP response
      */
-    postFloatingIpsChangeIp(id, ip, callback) {
+    postFloatingIpsChangeIpWithHttpInfo(id, ip) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -366,25 +397,37 @@ export default class FloatingIPsApi {
       return this.apiClient.callApi(
         '/floating_ips/{id}/change_ip', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the putFloatingIps operation.
-     * @callback module:api/FloatingIPsApi~putFloatingIpsCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Re-point a Floating IP to a different target IP on one of the customer's services
+     * Reattaches the Floating IP by removing the old static route on the source switch and adding a new one on the destination switch (via `Sshwitch`), then updates `floating_ip_target_ip`. Use to move a portable IP between the customer's VPS / Quickservers / websites / dedicated servers without renumbering apps. Path param `id` (`floating_ip_id`). Body: `{ ip: <new target IP> }` (also accepts multipart form). Returns `{ success:true, text:'IP Changed' }`. Errors (returned via `json_error`): invalid IP format; IP not in our datacenter; IP not in use by an active service of this customer; service not active; another Floating IP already points to that target; switch lookup failures; route still present after removal. 401 if unauthenticated.  Sibling ops: `getFloatingIpInfo` (read current target), `getFloatingIpsList`, `floating_ipsCancel`. Read current target with `getFloatingIpInfo` first.
+     * @param {Number} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
+     * @param {String} ip IP Address
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessTextResponse}
      */
+    postFloatingIpsChangeIp(id, ip) {
+      return this.postFloatingIpsChangeIpWithHttpInfo(id, ip)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Validate Floating IP Order
-     * Validates a Floating IP order before placing it. Use this to check for errors before committing to a purchase.
-     * @param {module:api/FloatingIPsApi~putFloatingIpsCallback} callback The callback function, accepting three arguments: error, data, response
+     * Validate a Floating IP order and price it without charging the customer
+     * Dry-run for `addFloatingIp` — runs `validate_buy_floating_ip` to apply coupons, compute intro/repeat pricing, and surface errors before committing. No charge, no service created. Body fields (form-encoded): `serviceType` (required, `services_id` from `getNewFloatingIp.packageCosts`), `coupon` (optional code). Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, password, introFrequency, coupon, couponCode }`. `continue=true` means the order would succeed; `continue=false` plus populated `errors[]` means it would not. Errors: 401 if unauthenticated; 422-style soft errors arrive in the `errors` array. Use the returned `serviceType` and `couponCode` when calling `addFloatingIp`. Sibling ops: `getNewFloatingIp` (catalog), `addFloatingIp` (commit).
+     * @param {module:model/FloatingIpOrderRequest} FloatingIpOrderRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    putFloatingIps(callback) {
-      let postBody = null;
+    putFloatingIpsWithHttpInfo(FloatingIpOrderRequest) {
+      let postBody = FloatingIpOrderRequest;
+      // verify the required parameter 'FloatingIpOrderRequest' is set
+      if (FloatingIpOrderRequest === undefined || FloatingIpOrderRequest === null) {
+        throw new Error("Missing the required parameter 'FloatingIpOrderRequest' when calling putFloatingIps");
+      }
 
       let pathParams = {
       };
@@ -396,32 +439,37 @@ export default class FloatingIPsApi {
       };
 
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = null;
       return this.apiClient.callApi(
         '/floating_ips/order', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the updateFloatingIpInfo operation.
-     * @callback module:api/FloatingIPsApi~updateFloatingIpInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Validate a Floating IP order and price it without charging the customer
+     * Dry-run for `addFloatingIp` — runs `validate_buy_floating_ip` to apply coupons, compute intro/repeat pricing, and surface errors before committing. No charge, no service created. Body fields (form-encoded): `serviceType` (required, `services_id` from `getNewFloatingIp.packageCosts`), `coupon` (optional code). Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, password, introFrequency, coupon, couponCode }`. `continue=true` means the order would succeed; `continue=false` plus populated `errors[]` means it would not. Errors: 401 if unauthenticated; 422-style soft errors arrive in the `errors` array. Use the returned `serviceType` and `couponCode` when calling `addFloatingIp`. Sibling ops: `getNewFloatingIp` (catalog), `addFloatingIp` (commit).
+     * @param {module:model/FloatingIpOrderRequest} FloatingIpOrderRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    putFloatingIps(FloatingIpOrderRequest) {
+      return this.putFloatingIpsWithHttpInfo(FloatingIpOrderRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Update Floating IP
-     * Updates settings on a Floating IP service, such as its label or configuration metadata.
+     * Update a Floating IP service's editable settings (label / metadata)
+     * Stub edit endpoint that delegates to the same handler as `getFloatingIpInfo` — currently used for label/metadata edits surfaced by `ViewFloatingIp`. To re-route the IP to a different target use the dedicated `postFloatingIpsChangeIp` instead; this op does not change routing. Path param `id` (`floating_ip_id`). Body: form-encoded fields exposed by the Floating IP edit form (label/comment style). Returns the standard success-text response. Errors: 401 if unauthenticated; effectively 404 if `id` not owned by the caller. Read state first with `getFloatingIpInfo`.  Sibling ops: `getFloatingIpInfo` (read), `postFloatingIpsChangeIp` (re-route), `floating_ipsCancel`.
      * @param {String} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
-     * @param {module:api/FloatingIPsApi~updateFloatingIpInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessTextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessTextResponse} and HTTP response
      */
-    updateFloatingIpInfo(id, callback) {
+    updateFloatingIpInfoWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -445,8 +493,21 @@ export default class FloatingIPsApi {
       return this.apiClient.callApi(
         '/floating_ips/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
+    }
+
+    /**
+     * Update a Floating IP service's editable settings (label / metadata)
+     * Stub edit endpoint that delegates to the same handler as `getFloatingIpInfo` — currently used for label/metadata edits surfaced by `ViewFloatingIp`. To re-route the IP to a different target use the dedicated `postFloatingIpsChangeIp` instead; this op does not change routing. Path param `id` (`floating_ip_id`). Body: form-encoded fields exposed by the Floating IP edit form (label/comment style). Returns the standard success-text response. Errors: 401 if unauthenticated; effectively 404 if `id` not owned by the caller. Read state first with `getFloatingIpInfo`.  Sibling ops: `getFloatingIpInfo` (read), `postFloatingIpsChangeIp` (re-route), `floating_ipsCancel`.
+     * @param {String} id The Floating IP service ID. Use the ID from `GET /floating_ips`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessTextResponse}
+     */
+    updateFloatingIpInfo(id) {
+      return this.updateFloatingIpInfoWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
 
 

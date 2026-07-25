@@ -21,8 +21,10 @@ import GetAccountInfo401Response from '../model/GetAccountInfo401Response';
 import PlaceBuyNowServerRequest from '../model/PlaceBuyNowServerRequest';
 import ReverseDnsEntries from '../model/ReverseDnsEntries';
 import Server from '../model/Server';
+import ServerBulkIpmiPowerResponse from '../model/ServerBulkIpmiPowerResponse';
 import ServerIpmiLiveInfo from '../model/ServerIpmiLiveInfo';
 import ServerOrder from '../model/ServerOrder';
+import ServerOrderPostRequest from '../model/ServerOrderPostRequest';
 import ServerRow from '../model/ServerRow';
 import ServersBuyNowError from '../model/ServersBuyNowError';
 import ServersBuyNowResponse from '../model/ServersBuyNowResponse';
@@ -33,7 +35,7 @@ import TextResponse from '../model/TextResponse';
 /**
 * Servers service.
 * @module api/ServersApi
-* @version 0.9.0
+* @version 1.0.0
 */
 export default class ServersApi {
 
@@ -49,22 +51,19 @@ export default class ServersApi {
     }
 
 
-    /**
-     * Callback function to receive the result of the addServer operation.
-     * @callback module:api/ServersApi~addServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/AddServer200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
-     * Place Server Order
-     * Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
-     * @param {module:api/ServersApi~addServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/AddServer200Response}
+     * Place a custom dedicated server order, creating a real billable invoice
+     * Submits a fully custom dedicated server order. Creates a `pending` `servers` row, a `Repeat_Invoice`, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): `cpu` (id from `cpu_li`), `hd[]` (array of drive ids), `memory`, `bandwidth`, `ips`, `os`, `cp`, `raid` (ids from `getNewServer`), `region` (region_id), `servername` (valid hostname), `rootpass`, `tos` (must be true), optional `comment`. `account.server_order_discount` (if set) applies. Returns: `{ text:'Order Completed', invoice, order }`. Errors: 422 'Missing/Invalid <field>'; 401 unauth. Sibling ops: `getNewServer` (options), `placeBuyNowServer` (pre-built path), `getServerInfo` (view new order), `getServerInvoices`.
+     * @param {module:model/ServerOrderPostRequest} ServerOrderPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/AddServer200Response} and HTTP response
      */
-    addServer(callback) {
-      let postBody = null;
+    addServerWithHttpInfo(ServerOrderPostRequest) {
+      let postBody = ServerOrderPostRequest;
+      // verify the required parameter 'ServerOrderPostRequest' is set
+      if (ServerOrderPostRequest === undefined || ServerOrderPostRequest === null) {
+        throw new Error("Missing the required parameter 'ServerOrderPostRequest' when calling addServer");
+      }
 
       let pathParams = {
       };
@@ -76,31 +75,36 @@ export default class ServersApi {
       };
 
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = AddServer200Response;
       return this.apiClient.callApi(
         '/servers/order', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the buyItNowServerOrder operation.
-     * @callback module:api/ServersApi~buyItNowServerOrderCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/BuyItNowServerOrder200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Place a custom dedicated server order, creating a real billable invoice
+     * Submits a fully custom dedicated server order. Creates a `pending` `servers` row, a `Repeat_Invoice`, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): `cpu` (id from `cpu_li`), `hd[]` (array of drive ids), `memory`, `bandwidth`, `ips`, `os`, `cp`, `raid` (ids from `getNewServer`), `region` (region_id), `servername` (valid hostname), `rootpass`, `tos` (must be true), optional `comment`. `account.server_order_discount` (if set) applies. Returns: `{ text:'Order Completed', invoice, order }`. Errors: 422 'Missing/Invalid <field>'; 401 unauth. Sibling ops: `getNewServer` (options), `placeBuyNowServer` (pre-built path), `getServerInfo` (view new order), `getServerInvoices`.
+     * @param {module:model/ServerOrderPostRequest} ServerOrderPostRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/AddServer200Response}
      */
+    addServer(ServerOrderPostRequest) {
+      return this.addServerWithHttpInfo(ServerOrderPostRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get Buy Now Server Options
-     * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`.
-     * @param {module:api/ServersApi~buyItNowServerOrderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/BuyItNowServerOrder200Response}
+     * Get configurable options for a Rapid Deploy / coupon dedicated server
+     * Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (`a=<asset_id>`) or a coupon (`c=<coupon_name>`) so the order form can be rendered before `placeBuyNowServer`. Read-only; no charge. Sibling ops: `placeBuyNowServer` (commit), `getMPServers` (browse marketplace), `addServer` (custom build flow).  **Query (one required):** - `a` (integer) — asset_id from `getMPServers`. - `c` (string) — `server_coupons.name`.  **Returns:** `{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }`. Each option row is `{ id, short_desc, long_desc, monthly_price }` — feed those ids into `placeBuyNowServer`.  **Auth:** Session/API key.  **Errors:** - `400` — `'No Server Coupon or Market-Place Asset Specified'` when neither `a` nor `c` is passed. - `400` — `'Invalid Asset ID'` / `'No Server Coupon with that name'`. - `409` — `'Server already sold!'` (asset already in-cart) or `'Server Out of stock'` (coupon). - `401` — unauthenticated.  **Related calls:** - **Next:** `placeBuyNowServer` (commit the order). - **Browse:** `getMPServers`. - **Custom build alternative:** `addServer`. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/BuyItNowServerOrder200Response} and HTTP response
      */
-    buyItNowServerOrder(callback) {
+    buyItNowServerOrderWithHttpInfo() {
       let postBody = null;
 
       let pathParams = {
@@ -119,25 +123,29 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/order/buy_now_server', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getMPServers operation.
-     * @callback module:api/ServersApi~getMPServersCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/BuyItNowList} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get configurable options for a Rapid Deploy / coupon dedicated server
+     * Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (`a=<asset_id>`) or a coupon (`c=<coupon_name>`) so the order form can be rendered before `placeBuyNowServer`. Read-only; no charge. Sibling ops: `placeBuyNowServer` (commit), `getMPServers` (browse marketplace), `addServer` (custom build flow).  **Query (one required):** - `a` (integer) — asset_id from `getMPServers`. - `c` (string) — `server_coupons.name`.  **Returns:** `{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }`. Each option row is `{ id, short_desc, long_desc, monthly_price }` — feed those ids into `placeBuyNowServer`.  **Auth:** Session/API key.  **Errors:** - `400` — `'No Server Coupon or Market-Place Asset Specified'` when neither `a` nor `c` is passed. - `400` — `'Invalid Asset ID'` / `'No Server Coupon with that name'`. - `409` — `'Server already sold!'` (asset already in-cart) or `'Server Out of stock'` (coupon). - `401` — unauthenticated.  **Related calls:** - **Next:** `placeBuyNowServer` (commit the order). - **Browse:** `getMPServers`. - **Custom build alternative:** `addServer`. 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BuyItNowServerOrder200Response}
      */
+    buyItNowServerOrder() {
+      return this.buyItNowServerOrderWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * List Marketplace Servers
-     * Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
-     * @param {module:api/ServersApi~getMPServersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/BuyItNowList}
+     * List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+     * Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from `mynew.interserver.net/ajax/server_a.php`. Returns: array of `{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }`. The `server_id` is the marketplace asset id — feed it into `buyItNowServerOrder` (GET options for asset `?a=<id>`) and `placeBuyNowServer` (POST to commit). Errors: 401 if session expired. Sibling ops: `buyItNowServerOrder` (configure asset), `placeBuyNowServer` (purchase), `getNewServer`/`addServer` (custom-spec build, not pre-built), `getServerList` (already-owned servers).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/BuyItNowList} and HTTP response
      */
-    getMPServers(callback) {
+    getMPServersWithHttpInfo() {
       let postBody = null;
 
       let pathParams = {
@@ -156,25 +164,29 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/buy_now_servers_list', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getNewServer operation.
-     * @callback module:api/ServersApi~getNewServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerOrder} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+     * Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from `mynew.interserver.net/ajax/server_a.php`. Returns: array of `{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }`. The `server_id` is the marketplace asset id — feed it into `buyItNowServerOrder` (GET options for asset `?a=<id>`) and `placeBuyNowServer` (POST to commit). Errors: 401 if session expired. Sibling ops: `buyItNowServerOrder` (configure asset), `placeBuyNowServer` (purchase), `getNewServer`/`addServer` (custom-spec build, not pre-built), `getServerList` (already-owned servers).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/BuyItNowList}
      */
+    getMPServers() {
+      return this.getMPServersWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Server Ordering Information
-     * Retrieves available server configurations and pricing for ordering a new dedicated server.
-     * @param {module:api/ServersApi~getNewServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerOrder}
+     * Get custom dedicated server ordering options, regions, and pricing
+     * Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with `config_li` keyed by category (`cpu_li`, `hd_li`, `memory_li`, `bandwidth_li`, `ips_li`, `os_li`, `cp_li`, `raid_li`) plus `regions`. Use returned IDs as POST values for `addServer`. Note `hd_li` and `memory_li` are nested by `cpu` id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: `addServer` (commits the order), `buyItNowServerOrder` (pre-built marketplace alternative), `getMPServers` (browse marketplace).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ServerOrder} and HTTP response
      */
-    getNewServer(callback) {
+    getNewServerWithHttpInfo() {
       let postBody = null;
 
       let pathParams = {
@@ -193,26 +205,30 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/order', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getServerInfo operation.
-     * @callback module:api/ServersApi~getServerInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Server} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get custom dedicated server ordering options, regions, and pricing
+     * Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with `config_li` keyed by category (`cpu_li`, `hd_li`, `memory_li`, `bandwidth_li`, `ips_li`, `os_li`, `cp_li`, `raid_li`) plus `regions`. Use returned IDs as POST values for `addServer`. Note `hd_li` and `memory_li` are nested by `cpu` id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: `addServer` (commits the order), `buyItNowServerOrder` (pre-built marketplace alternative), `getMPServers` (browse marketplace).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServerOrder}
      */
+    getNewServer() {
+      return this.getNewServerWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get Server Order
-     * Returns detailed information about a specific server including its hardware configuration, IPs, and status.
+     * Get full hardware, network, and lifecycle details for a dedicated server
+     * Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: `id` (integer server_id, from `getServerList`). No body. Returns: `ViewServer::getDetails()` shape: `serviceInfo`, `networkInfo` (vlans + assets, with `ipmi_admin_username`/`ipmi_admin_password` and admin lease creds REDACTED for client safety), normalized `client_links`, `serviceType`. `admin_links`/raw `settings`/`csrf` stripped. Errors: 404 not owned; 401 unauth. Sibling ops: `getServerInvoices`, `serverIpmiLiveGet`, `serverIpmiPowerGet` (single — prefer `serverBulkIpmiPowerGet` for many), `getServerReverseDns`, `getServersWelcomeEmail`, `serversCancel`.
      * @param {Number} id Server ID number.
-     * @param {module:api/ServersApi~getServerInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Server}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Server} and HTTP response
      */
-    getServerInfo(id, callback) {
+    getServerInfoWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -236,26 +252,31 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getServerInvoices operation.
-     * @callback module:api/ServersApi~getServerInvoicesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ChargeInvoiceRows} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get full hardware, network, and lifecycle details for a dedicated server
+     * Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: `id` (integer server_id, from `getServerList`). No body. Returns: `ViewServer::getDetails()` shape: `serviceInfo`, `networkInfo` (vlans + assets, with `ipmi_admin_username`/`ipmi_admin_password` and admin lease creds REDACTED for client safety), normalized `client_links`, `serviceType`. `admin_links`/raw `settings`/`csrf` stripped. Errors: 404 not owned; 401 unauth. Sibling ops: `getServerInvoices`, `serverIpmiLiveGet`, `serverIpmiPowerGet` (single — prefer `serverBulkIpmiPowerGet` for many), `getServerReverseDns`, `getServersWelcomeEmail`, `serversCancel`.
+     * @param {Number} id Server ID number.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Server}
      */
+    getServerInfo(id) {
+      return this.getServerInfoWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get Server Invoices
-     * Returns the billing invoices associated with this dedicated server.
+     * List billing invoices (charges + payments) tied to one dedicated server
+     * Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: `id` (integer server_id from `getServerList`). No body. Inherits from `MyAdmin\\Api\\Billing\\InvoicesList` with module=servers. Returns: `ChargeInvoiceRows` array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if `id` not owned by the caller; 401 unauth. Sibling ops: `getServerInfo` (current service state), `serversCancel` (cancel), `getBillingInvoice` (single invoice by invoice id), `getVpsInvoices`/`getDomainInvoices` for other modules, `getServersWelcomeEmail` to resend setup info.
      * @param {Number} id Server ID number
-     * @param {module:api/ServersApi~getServerInvoicesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ChargeInvoiceRows}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ChargeInvoiceRows} and HTTP response
      */
-    getServerInvoices(id, callback) {
+    getServerInvoicesWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -279,25 +300,30 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}/invoices', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getServerList operation.
-     * @callback module:api/ServersApi~getServerListCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/ServerRow>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List billing invoices (charges + payments) tied to one dedicated server
+     * Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: `id` (integer server_id from `getServerList`). No body. Inherits from `MyAdmin\\Api\\Billing\\InvoicesList` with module=servers. Returns: `ChargeInvoiceRows` array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if `id` not owned by the caller; 401 unauth. Sibling ops: `getServerInfo` (current service state), `serversCancel` (cancel), `getBillingInvoice` (single invoice by invoice id), `getVpsInvoices`/`getDomainInvoices` for other modules, `getServersWelcomeEmail` to resend setup info.
+     * @param {Number} id Server ID number
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ChargeInvoiceRows}
      */
+    getServerInvoices(id) {
+      return this.getServerInvoicesWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * List Servers
-     * Returns all dedicated server services on the account with their current status and configuration.
-     * @param {module:api/ServersApi~getServerListCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/ServerRow>}
+     * List all dedicated servers owned by the authenticated customer
+     * Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters `servers` by session `account_id`. Returns: array of `{ server_id, account_lid, server_hostname, server_status }`. Use `server_id` with `getServerInfo` for full hardware/network/IPMI details, `getServerInvoices` for billing, or `serverIpmiPowerGet` for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: `getServerInfo` (details), `getVpsList` (virtual instead of physical hardware), `getMPServers` (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer `serverBulkIpmiPowerGet`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/ServerRow>} and HTTP response
      */
-    getServerList(callback) {
+    getServerListWithHttpInfo() {
       let postBody = null;
 
       let pathParams = {
@@ -316,26 +342,30 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getServerReverseDns operation.
-     * @callback module:api/ServersApi~getServerReverseDnsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ReverseDnsEntries} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List all dedicated servers owned by the authenticated customer
+     * Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters `servers` by session `account_id`. Returns: array of `{ server_id, account_lid, server_hostname, server_status }`. Use `server_id` with `getServerInfo` for full hardware/network/IPMI details, `getServerInvoices` for billing, or `serverIpmiPowerGet` for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: `getServerInfo` (details), `getVpsList` (virtual instead of physical hardware), `getMPServers` (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer `serverBulkIpmiPowerGet`.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/ServerRow>}
      */
+    getServerList() {
+      return this.getServerListWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Reverse DNS Info
-     * Returns the current reverse DNS (PTR record) entries for the server's IP addresses.
+     * List current reverse-DNS (PTR) records for a dedicated server's IPs
+     * Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server's VLANs — typically before calling `postServerReverseDns` to update them. Path param: `id` (integer server_id). No body. Walks `networkInfo.vlans`, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via `get_hostname()`. Returns: `{ ips: { '<ipv4>': '<ptr_or_empty_string>', ... } }`. Empty string indicates no PTR set. Errors: 404 if `id` not owned by caller; 401 unauth. Sibling ops: `postServerReverseDns` (update PTRs), `getServerInfo` (full network), `getVpsReverseDns` for VPS, `getDomainNameservers` / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
      * @param {Number} id Server ID number
-     * @param {module:api/ServersApi~getServerReverseDnsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ReverseDnsEntries}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ReverseDnsEntries} and HTTP response
      */
-    getServerReverseDns(id, callback) {
+    getServerReverseDnsWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -359,26 +389,31 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}/reverse_dns', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getServersWelcomeEmail operation.
-     * @callback module:api/ServersApi~getServersWelcomeEmailCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List current reverse-DNS (PTR) records for a dedicated server's IPs
+     * Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server's VLANs — typically before calling `postServerReverseDns` to update them. Path param: `id` (integer server_id). No body. Walks `networkInfo.vlans`, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via `get_hostname()`. Returns: `{ ips: { '<ipv4>': '<ptr_or_empty_string>', ... } }`. Empty string indicates no PTR set. Errors: 404 if `id` not owned by caller; 401 unauth. Sibling ops: `postServerReverseDns` (update PTRs), `getServerInfo` (full network), `getVpsReverseDns` for VPS, `getDomainNameservers` / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
+     * @param {Number} id Server ID number
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ReverseDnsEntries}
      */
+    getServerReverseDns(id) {
+      return this.getServerReverseDnsWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Resend Server Welcome Email
-     * Resends the welcome email for the order.
+     * Resend the dedicated server welcome email with setup credentials
+     * Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: `id` (integer server_id, must be `active`). No body. Invokes `server_welcome_email($id)` which re-sends the welcome message to the account's email. Returns: `{ text:'Welcome Email has been resent.' }`. Errors: 404 if `id` not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: `getServerInfo` (status check), `getServerInvoices`, `getVpsWelcomeEmail` for VPS, `getDomainsWelcomeEmail` for domains.
      * @param {Number} id Server ID number
-     * @param {module:api/ServersApi~getServersWelcomeEmailCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessTextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessTextResponse} and HTTP response
      */
-    getServersWelcomeEmail(id, callback) {
+    getServersWelcomeEmailWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -402,27 +437,32 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}/welcome_email', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the placeBuyNowServer operation.
-     * @callback module:api/ServersApi~placeBuyNowServerCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServersBuyNowResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Resend the dedicated server welcome email with setup credentials
+     * Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: `id` (integer server_id, must be `active`). No body. Invokes `server_welcome_email($id)` which re-sends the welcome message to the account's email. Returns: `{ text:'Welcome Email has been resent.' }`. Errors: 404 if `id` not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: `getServerInfo` (status check), `getServerInvoices`, `getVpsWelcomeEmail` for VPS, `getDomainsWelcomeEmail` for domains.
+     * @param {Number} id Server ID number
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessTextResponse}
      */
+    getServersWelcomeEmail(id) {
+      return this.getServersWelcomeEmailWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Place Buy Now Server Order
-     * Places an order for a buy-it-now dedicated server. Use `GET /servers/order/buy_now_server` to retrieve available server configurations and their IDs before ordering.
+     * Place a Rapid Deploy / coupon dedicated server order; creates real invoice
+     * Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the `servers` row, creates a `Repeat_Invoice` plus the first `invoices` row, marks the asset `MarketPlace-Incart` (or decrements `server_coupons.in_stock`), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: `buyItNowServerOrder` (catalog), `getServerInfo` (poll provisioning), `getServerInvoices` (billing), `addServer` (custom build alternative).  **Query (one required, same as `buyItNowServerOrder`):** - `a` (integer) — asset_id. - `c` (string) — `server_coupons.name`.  **Body fields:** - `hostname` (string, required) — valid FQDN; validated by `valid_hostname`. - `enablepassword` (boolean, optional, default `false`) — when true the client must supply `rootPassword`; otherwise a secure password is generated server-side via `generate_password()`. - `rootPassword` (string, required when `enablepassword=true`) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (`valid_password`). - `os`, `bandwidth`, `ips`, `cp`, `raid` (integer, optional) — option ids from `buyItNowServerOrder`; defaults `30` / `10` / `9` / `1` / `0` applied when missing. - `comments` (string, optional) — appended to the order comment.  **Returns:** `201 { success: true, text: 'Server order is placed.', service_id, invoice_id }`.  **Auth:** Session/API key.  **Errors:** - `400` — `'Server Hostname is missing.'` / `'Invalid Hostname!'` / `'Server Password is missing.'` / password complexity message. - `409` — `'Server already sold!'` / `'Server Out of stock.'` - `401` — unauthenticated.  **Side effects:** inserts `servers` row, creates `repeat_invoices` + `invoices` rows, updates `assets.status` or `server_coupons.in_stock`, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** `buyItNowServerOrder`. - **Next:** `getBillingInvoice` + `initiatePayment` to pay, then poll `getServerInfo` for provisioning state. - **Custom build alternative:** `addServer`. 
      * @param {Object} opts Optional parameters
      * @param {module:model/PlaceBuyNowServerRequest} [PlaceBuyNowServerRequest] 
-     * @param {module:api/ServersApi~placeBuyNowServerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServersBuyNowResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ServersBuyNowResponse} and HTTP response
      */
-    placeBuyNowServer(opts, callback) {
+    placeBuyNowServerWithHttpInfo(opts) {
       opts = opts || {};
       let postBody = opts['PlaceBuyNowServerRequest'];
 
@@ -442,27 +482,33 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/order/buy_now_server', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the postServerReverseDns operation.
-     * @callback module:api/ServersApi~postServerReverseDnsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Place a Rapid Deploy / coupon dedicated server order; creates real invoice
+     * Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the `servers` row, creates a `Repeat_Invoice` plus the first `invoices` row, marks the asset `MarketPlace-Incart` (or decrements `server_coupons.in_stock`), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: `buyItNowServerOrder` (catalog), `getServerInfo` (poll provisioning), `getServerInvoices` (billing), `addServer` (custom build alternative).  **Query (one required, same as `buyItNowServerOrder`):** - `a` (integer) — asset_id. - `c` (string) — `server_coupons.name`.  **Body fields:** - `hostname` (string, required) — valid FQDN; validated by `valid_hostname`. - `enablepassword` (boolean, optional, default `false`) — when true the client must supply `rootPassword`; otherwise a secure password is generated server-side via `generate_password()`. - `rootPassword` (string, required when `enablepassword=true`) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (`valid_password`). - `os`, `bandwidth`, `ips`, `cp`, `raid` (integer, optional) — option ids from `buyItNowServerOrder`; defaults `30` / `10` / `9` / `1` / `0` applied when missing. - `comments` (string, optional) — appended to the order comment.  **Returns:** `201 { success: true, text: 'Server order is placed.', service_id, invoice_id }`.  **Auth:** Session/API key.  **Errors:** - `400` — `'Server Hostname is missing.'` / `'Invalid Hostname!'` / `'Server Password is missing.'` / password complexity message. - `409` — `'Server already sold!'` / `'Server Out of stock.'` - `401` — unauthenticated.  **Side effects:** inserts `servers` row, creates `repeat_invoices` + `invoices` rows, updates `assets.status` or `server_coupons.in_stock`, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** `buyItNowServerOrder`. - **Next:** `getBillingInvoice` + `initiatePayment` to pay, then poll `getServerInfo` for provisioning state. - **Custom build alternative:** `addServer`. 
+     * @param {Object} opts Optional parameters
+     * @param {module:model/PlaceBuyNowServerRequest} opts.PlaceBuyNowServerRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServersBuyNowResponse}
      */
+    placeBuyNowServer(opts) {
+      return this.placeBuyNowServerWithHttpInfo(opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Update Reverse DNS
-     * Updates the reverse DNS (PTR record) entries for the server's IP addresses.
+     * Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
+     * Use to set or remove PTR records for the server's public IPs. Path param: `id` (server_id). Body: `ips` (object mapping `'<ipv4>'` to desired hostname; empty string removes the PTR). Only IPs that already exist on the server's VLANs and whose hostname differs from current are updated; each diff calls `reverse_dns($ip, $host, 'set_reverse'|'remove_reverse')`. Returns: `{ message, success:bool }`. `success:false` with 'No valid IPs were passed or there were no changes' when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: `getServerReverseDns` (read first), `getServerInfo`, VPS counterpart `postVpsReverseDns`.
      * @param {Number} id Server ID number
      * @param {module:model/ReverseDnsEntries} ReverseDnsEntries 
-     * @param {module:api/ServersApi~postServerReverseDnsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TextResponse} and HTTP response
      */
-    postServerReverseDns(id, ReverseDnsEntries, callback) {
+    postServerReverseDnsWithHttpInfo(id, ReverseDnsEntries) {
       let postBody = ReverseDnsEntries;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -490,29 +536,42 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}/reverse_dns', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the putServers operation.
-     * @callback module:api/ServersApi~putServersCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
+     * Use to set or remove PTR records for the server's public IPs. Path param: `id` (server_id). Body: `ips` (object mapping `'<ipv4>'` to desired hostname; empty string removes the PTR). Only IPs that already exist on the server's VLANs and whose hostname differs from current are updated; each diff calls `reverse_dns($ip, $host, 'set_reverse'|'remove_reverse')`. Returns: `{ message, success:bool }`. `success:false` with 'No valid IPs were passed or there were no changes' when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: `getServerReverseDns` (read first), `getServerInfo`, VPS counterpart `postVpsReverseDns`.
+     * @param {Number} id Server ID number
+     * @param {module:model/ReverseDnsEntries} ReverseDnsEntries 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TextResponse}
      */
+    postServerReverseDns(id, ReverseDnsEntries) {
+      return this.postServerReverseDnsWithHttpInfo(id, ReverseDnsEntries)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Validate Server Order
-     * Validates a server order before placing it. Use this to check for errors before committing to a purchase.
-     * @param {module:api/ServersApi~putServersCallback} callback The callback function, accepting three arguments: error, data, response
+     * Read IPMI chassis power status for many dedicated servers in one call
+     * Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: `ids` (required) — comma-separated string `?ids=2313,2314,2315` OR repeated `ids[]` array. Duplicates de-duped; non-positive ints become per-row errors. Returns: `{ results: [ { id, asset?, text|error } ] }`. Errors: 400 'No server IDs provided.' if `ids` empty/missing; 401 unauth. Sibling ops: `serverIpmiPowerGet` (single-server equivalent), `serverIpmiPowerPost` (DESTRUCTIVE — change power; no bulk equivalent — call per server), `getServerList` (discover ids).
+     * @param {String} ids Comma-separated list of Server IDs to query (e.g. `2313,2314,2315`). May also be passed as repeated `ids[]` query parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ServerBulkIpmiPowerResponse} and HTTP response
      */
-    putServers(callback) {
+    serverBulkIpmiPowerGetWithHttpInfo(ids) {
       let postBody = null;
+      // verify the required parameter 'ids' is set
+      if (ids === undefined || ids === null) {
+        throw new Error("Missing the required parameter 'ids' when calling serverBulkIpmiPowerGet");
+      }
 
       let pathParams = {
       };
       let queryParams = {
+        'ids': ids
       };
       let headerParams = {
       };
@@ -522,30 +581,35 @@ export default class ServersApi {
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = null;
+      let returnType = ServerBulkIpmiPowerResponse;
       return this.apiClient.callApi(
-        '/servers/order', 'PUT',
+        '/servers/bulk/ipmi_power', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the serverIpmiLiveGet operation.
-     * @callback module:api/ServersApi~serverIpmiLiveGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerIpmiLiveInfo} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Read IPMI chassis power status for many dedicated servers in one call
+     * Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: `ids` (required) — comma-separated string `?ids=2313,2314,2315` OR repeated `ids[]` array. Duplicates de-duped; non-positive ints become per-row errors. Returns: `{ results: [ { id, asset?, text|error } ] }`. Errors: 400 'No server IDs provided.' if `ids` empty/missing; 401 unauth. Sibling ops: `serverIpmiPowerGet` (single-server equivalent), `serverIpmiPowerPost` (DESTRUCTIVE — change power; no bulk equivalent — call per server), `getServerList` (discover ids).
+     * @param {String} ids Comma-separated list of Server IDs to query (e.g. `2313,2314,2315`). May also be passed as repeated `ids[]` query parameters.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServerBulkIpmiPowerResponse}
      */
+    serverBulkIpmiPowerGet(ids) {
+      return this.serverBulkIpmiPowerGetWithHttpInfo(ids)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Server IPMI Live Information
-     * Returns the current IPMI live connection information for the server.
+     * Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
+     * Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset's IPMI IP, the location's IPMI group, and any active `ipmi_ips` lease (3-hour TTL). Sibling ops: `serverIpmiLivePost` (allocate whitelist slot), `serverIpmiPowerGet` / `serverIpmiPowerPost` (chassis power).  **Path:** `id` (integer, required) — server_id from `getServerList`.  **Body / query:** None. Optionally pass `asset` (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists `{ text (html), public_ip, allowed_ip, client_username, client_password }`. When no lease yet: `{ text: 'Setup not yet completed' }` — then call `serverIpmiLivePost` to allocate a slot.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text `'No IPMI IP Set'` / `'Invalid IPMI IP'` / `'Live IPMI not Available for this location.'` when the asset/location is not configured for IPMI Live.  **Caveat:** returns `client_password` — never log/echo verbatim.  **Related calls:** - **Allocate:** `serverIpmiLivePost`. - **Chassis power:** `serverIpmiPowerGet`, `serverIpmiPowerPost`. 
      * @param {Number} id Server ID number
-     * @param {module:api/ServersApi~serverIpmiLiveGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerIpmiLiveInfo}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ServerIpmiLiveInfo} and HTTP response
      */
-    serverIpmiLiveGet(id, callback) {
+    serverIpmiLiveGetWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -569,29 +633,34 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}/ipmi_live', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the serverIpmiLivePost operation.
-     * @callback module:api/ServersApi~serverIpmiLivePostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServerIpmiLiveInfo} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
+     * Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset's IPMI IP, the location's IPMI group, and any active `ipmi_ips` lease (3-hour TTL). Sibling ops: `serverIpmiLivePost` (allocate whitelist slot), `serverIpmiPowerGet` / `serverIpmiPowerPost` (chassis power).  **Path:** `id` (integer, required) — server_id from `getServerList`.  **Body / query:** None. Optionally pass `asset` (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists `{ text (html), public_ip, allowed_ip, client_username, client_password }`. When no lease yet: `{ text: 'Setup not yet completed' }` — then call `serverIpmiLivePost` to allocate a slot.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text `'No IPMI IP Set'` / `'Invalid IPMI IP'` / `'Live IPMI not Available for this location.'` when the asset/location is not configured for IPMI Live.  **Caveat:** returns `client_password` — never log/echo verbatim.  **Related calls:** - **Allocate:** `serverIpmiLivePost`. - **Chassis power:** `serverIpmiPowerGet`, `serverIpmiPowerPost`. 
+     * @param {Number} id Server ID number
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServerIpmiLiveInfo}
      */
+    serverIpmiLiveGet(id) {
+      return this.serverIpmiLiveGetWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Server IPMI Live Setup
-     * Configures IPMI live access by whitelisting your current IP address for connections to the server's IPMI management interface.
+     * Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
+     * Allocates / refreshes an IPMI Live whitelist slot so the customer's specified IP can reach the BMC's KVM/console for 3 hours. Picks a free `ipmi_ips` row for the location's `ipmi_group`, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via `ipmi_live_setup()`. Sibling ops: `serverIpmiLiveGet` (read current lease), `serverIpmiPowerPost` (DESTRUCTIVE — chassis power).  **Path:** `id` (integer, required) — server_id.  **Body fields:** - `ip` (string, required) — public IPv4 to whitelist. - `asset` (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** `{ text (html), public_ip, allowed_ip, client_username, client_password }` for KVM login.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text — `'An Invalid IP was passed.'`, `'No Live IPs are currently free for use with the IPMI Gateway. Please wait <duration> for the next IP to free up.'`, `'There was an error communicating with the IPMI Management server'`, `'No IPMI IP Set'` / `'Invalid IPMI IP'` / `'Live IPMI not Available for this location.'`.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** `serverIpmiLiveGet`. - **Power control:** `serverIpmiPowerPost`. 
      * @param {Number} id Server ID number
      * @param {String} ip Your IP Address you wish to connect to the IPMI system from.
      * @param {Object} opts Optional parameters
      * @param {Number} [asset] Asset ID
-     * @param {module:api/ServersApi~serverIpmiLivePostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServerIpmiLiveInfo}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ServerIpmiLiveInfo} and HTTP response
      */
-    serverIpmiLivePost(id, ip, opts, callback) {
+    serverIpmiLivePostWithHttpInfo(id, ip, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'id' is set
@@ -622,26 +691,34 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}/ipmi_live', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the serverIpmiPowerGet operation.
-     * @callback module:api/ServersApi~serverIpmiPowerGetCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
+     * Allocates / refreshes an IPMI Live whitelist slot so the customer's specified IP can reach the BMC's KVM/console for 3 hours. Picks a free `ipmi_ips` row for the location's `ipmi_group`, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via `ipmi_live_setup()`. Sibling ops: `serverIpmiLiveGet` (read current lease), `serverIpmiPowerPost` (DESTRUCTIVE — chassis power).  **Path:** `id` (integer, required) — server_id.  **Body fields:** - `ip` (string, required) — public IPv4 to whitelist. - `asset` (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** `{ text (html), public_ip, allowed_ip, client_username, client_password }` for KVM login.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text — `'An Invalid IP was passed.'`, `'No Live IPs are currently free for use with the IPMI Gateway. Please wait <duration> for the next IP to free up.'`, `'There was an error communicating with the IPMI Management server'`, `'No IPMI IP Set'` / `'Invalid IPMI IP'` / `'Live IPMI not Available for this location.'`.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** `serverIpmiLiveGet`. - **Power control:** `serverIpmiPowerPost`. 
+     * @param {Number} id Server ID number
+     * @param {String} ip Your IP Address you wish to connect to the IPMI system from.
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.asset Asset ID
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServerIpmiLiveInfo}
      */
+    serverIpmiLivePost(id, ip, opts) {
+      return this.serverIpmiLivePostWithHttpInfo(id, ip, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get IPMI Power Status
-     * Returns the chassis power status from ipmi.
+     * Read IPMI chassis power status for a dedicated server (single)
+     * Use to check whether a server's chassis is currently `on`/`off` via IPMI before issuing a power action. Path param: `id` (integer server_id). Optional body `asset` (asset_id — defaults to first asset). Issues `ipmitool power status` against the asset's `ipmi_ip` using its location IPMI group/credentials. Returns: `{ text:'Chassis Power is on' }` (or 'off'). Errors: 404 if `id` not owned by caller; 409 if service not active; 'There was an error sending the IPMI command' if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: `serverBulkIpmiPowerGet` (preferred when polling many servers — single round-trip), `serverIpmiPowerPost` (DESTRUCTIVE — change power), `getServerInfo` (full state), `serverIpmiLiveGet` (IPMI Live KVM).
      * @param {Number} id Server ID number
-     * @param {module:api/ServersApi~serverIpmiPowerGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TextResponse} and HTTP response
      */
-    serverIpmiPowerGet(id, callback) {
+    serverIpmiPowerGetWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -665,29 +742,34 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}/ipmi_power', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the serverIpmiPowerPost operation.
-     * @callback module:api/ServersApi~serverIpmiPowerPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Read IPMI chassis power status for a dedicated server (single)
+     * Use to check whether a server's chassis is currently `on`/`off` via IPMI before issuing a power action. Path param: `id` (integer server_id). Optional body `asset` (asset_id — defaults to first asset). Issues `ipmitool power status` against the asset's `ipmi_ip` using its location IPMI group/credentials. Returns: `{ text:'Chassis Power is on' }` (or 'off'). Errors: 404 if `id` not owned by caller; 409 if service not active; 'There was an error sending the IPMI command' if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: `serverBulkIpmiPowerGet` (preferred when polling many servers — single round-trip), `serverIpmiPowerPost` (DESTRUCTIVE — change power), `getServerInfo` (full state), `serverIpmiLiveGet` (IPMI Live KVM).
+     * @param {Number} id Server ID number
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TextResponse}
      */
+    serverIpmiPowerGet(id) {
+      return this.serverIpmiPowerGetWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Server IPMI Power
-     * Uses the IPMI interface to set the Power status on the server.
+     * DESTRUCTIVE — change chassis power state on a bare-metal server
+     * Sends an IPMI chassis power command (`on`, `off`, `cycle`, `reset`, `soft`) to a customer's physical dedicated server. **DESTRUCTIVE on running hardware:** `off` / `cycle` / `reset` are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. `soft` requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: `serverIpmiPowerGet` (read first), `serverBulkIpmiPowerGet` (status only), `serverIpmiLivePost` (KVM access).  **Path:** `id` (integer, required) — server_id.  **Body fields:** - `action` (string, required) — one of `on` / `off` / `cycle` / `reset` / `soft`. - `asset` (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** `{ text: 'Power command sent. Response: <ipmi output>' }`.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `422` / inline error text — `Invalid Action` when `action` is not in the allowed set. - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text — `'There was an error sending the IPMI command.'` when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** `serverIpmiPowerGet`, `serverBulkIpmiPowerGet`. - **KVM console:** `serverIpmiLivePost`. 
      * @param {Number} id Server ID number
      * @param {module:model/String} action The power action to send to the ipmi controller.
      * @param {Object} opts Optional parameters
      * @param {Number} [asset] The Asset ID
-     * @param {module:api/ServersApi~serverIpmiPowerPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/TextResponse} and HTTP response
      */
-    serverIpmiPowerPost(id, action, opts, callback) {
+    serverIpmiPowerPostWithHttpInfo(id, action, opts) {
       opts = opts || {};
       let postBody = null;
       // verify the required parameter 'id' is set
@@ -718,26 +800,34 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}/ipmi_power', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the serversCancel operation.
-     * @callback module:api/ServersApi~serversCancelCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServersCancel200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * DESTRUCTIVE — change chassis power state on a bare-metal server
+     * Sends an IPMI chassis power command (`on`, `off`, `cycle`, `reset`, `soft`) to a customer's physical dedicated server. **DESTRUCTIVE on running hardware:** `off` / `cycle` / `reset` are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. `soft` requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: `serverIpmiPowerGet` (read first), `serverBulkIpmiPowerGet` (status only), `serverIpmiLivePost` (KVM access).  **Path:** `id` (integer, required) — server_id.  **Body fields:** - `action` (string, required) — one of `on` / `off` / `cycle` / `reset` / `soft`. - `asset` (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** `{ text: 'Power command sent. Response: <ipmi output>' }`.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `422` / inline error text — `Invalid Action` when `action` is not in the allowed set. - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text — `'There was an error sending the IPMI command.'` when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** `serverIpmiPowerGet`, `serverBulkIpmiPowerGet`. - **KVM console:** `serverIpmiLivePost`. 
+     * @param {Number} id Server ID number
+     * @param {module:model/String} action The power action to send to the ipmi controller.
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.asset The Asset ID
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/TextResponse}
      */
+    serverIpmiPowerPost(id, action, opts) {
+      return this.serverIpmiPowerPostWithHttpInfo(id, action, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Cancel Server Service
-     * Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
+     * Cancel a dedicated server service at the end of the current billing cycle
+     * Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: `id` (integer server_id, from `getServerList`). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: `{ success:bool, text:'Servers is canceled.' }`. Errors: 404 if `id` not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: `getServerInfo` (current status), `getServerInvoices` (outstanding charges), VPS counterpart `VPSCancel`. To re-order after cancel use `addServer` or `placeBuyNowServer`.
      * @param {Number} id Server ID number
-     * @param {module:api/ServersApi~serversCancelCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServersCancel200Response}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ServersCancel200Response} and HTTP response
      */
-    serversCancel(id, callback) {
+    serversCancelWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -761,26 +851,31 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the updateServerInfo operation.
-     * @callback module:api/ServersApi~updateServerInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Cancel a dedicated server service at the end of the current billing cycle
+     * Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: `id` (integer server_id, from `getServerList`). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: `{ success:bool, text:'Servers is canceled.' }`. Errors: 404 if `id` not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: `getServerInfo` (current status), `getServerInvoices` (outstanding charges), VPS counterpart `VPSCancel`. To re-order after cancel use `addServer` or `placeBuyNowServer`.
+     * @param {Number} id Server ID number
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServersCancel200Response}
      */
+    serversCancel(id) {
+      return this.serversCancelWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Update Server Order
-     * Updates settings on a dedicated server order.
+     * Update settings on a dedicated server order (shares handler with view)
+     * Use to modify metadata on an existing dedicated server order. Path param: `id` (integer server_id). Currently this method shares the same handler as `getServerInfo` (`View::go()`) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as `getServerInfo`. Errors: 404 if `id` not owned by caller; 401 unauth. Sibling ops: prefer `postServerReverseDns` (rDNS), `serverIpmiPowerPost` (power), `serverIpmiLivePost` (IPMI access), `serversCancel` (cancel). For new orders use `addServer` or `placeBuyNowServer`. View-only: `getServerInfo`.
      * @param {String} id Server ID number.
-     * @param {module:api/ServersApi~updateServerInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessTextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessTextResponse} and HTTP response
      */
-    updateServerInfo(id, callback) {
+    updateServerInfoWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -804,8 +899,21 @@ export default class ServersApi {
       return this.apiClient.callApi(
         '/servers/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
+    }
+
+    /**
+     * Update settings on a dedicated server order (shares handler with view)
+     * Use to modify metadata on an existing dedicated server order. Path param: `id` (integer server_id). Currently this method shares the same handler as `getServerInfo` (`View::go()`) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as `getServerInfo`. Errors: 404 if `id` not owned by caller; 401 unauth. Sibling ops: prefer `postServerReverseDns` (rDNS), `serverIpmiPowerPost` (power), `serverIpmiLivePost` (IPMI access), `serversCancel` (cancel). For new orders use `addServer` or `placeBuyNowServer`. View-only: `getServerInfo`.
+     * @param {String} id Server ID number.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessTextResponse}
+     */
+    updateServerInfo(id) {
+      return this.updateServerInfoWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
 
 

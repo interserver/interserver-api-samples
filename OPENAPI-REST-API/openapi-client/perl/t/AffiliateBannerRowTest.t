@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::AffiliateBannerRow');
+use_ok('InterServerAPI::Object::AffiliateBannerRow');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::AffiliateBannerRow->new();
+#my $instance = InterServerAPI::Object::AffiliateBannerRow->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::AffiliateBannerRow');
+#isa_ok($instance, 'InterServerAPI::Object::AffiliateBannerRow');
 
 
 done_testing();

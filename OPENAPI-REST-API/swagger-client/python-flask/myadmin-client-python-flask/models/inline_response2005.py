@@ -14,20 +14,25 @@ class InlineResponse2005(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, redirect_url: str=None):  # noqa: E501
+    def __init__(self, success: bool=None, text: str=None):  # noqa: E501
         """InlineResponse2005 - a model defined in Swagger
 
-        :param redirect_url: The redirect_url of this InlineResponse2005.  # noqa: E501
-        :type redirect_url: str
+        :param success: The success of this InlineResponse2005.  # noqa: E501
+        :type success: bool
+        :param text: The text of this InlineResponse2005.  # noqa: E501
+        :type text: str
         """
         self.swagger_types = {
-            'redirect_url': str
+            'success': bool,
+            'text': str
         }
 
         self.attribute_map = {
-            'redirect_url': 'redirect_url'
+            'success': 'success',
+            'text': 'text'
         }
-        self._redirect_url = redirect_url
+        self._success = success
+        self._text = text
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse2005':
@@ -41,24 +46,47 @@ class InlineResponse2005(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def redirect_url(self) -> str:
-        """Gets the redirect_url of this InlineResponse2005.
+    def success(self) -> bool:
+        """Gets the success of this InlineResponse2005.
 
-        The URL to redirect the user to for OAuth authentication.  # noqa: E501
 
-        :return: The redirect_url of this InlineResponse2005.
+        :return: The success of this InlineResponse2005.
+        :rtype: bool
+        """
+        return self._success
+
+    @success.setter
+    def success(self, success: bool):
+        """Sets the success of this InlineResponse2005.
+
+
+        :param success: The success of this InlineResponse2005.
+        :type success: bool
+        """
+        if success is None:
+            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
+
+        self._success = success
+
+    @property
+    def text(self) -> str:
+        """Gets the text of this InlineResponse2005.
+
+
+        :return: The text of this InlineResponse2005.
         :rtype: str
         """
-        return self._redirect_url
+        return self._text
 
-    @redirect_url.setter
-    def redirect_url(self, redirect_url: str):
-        """Sets the redirect_url of this InlineResponse2005.
+    @text.setter
+    def text(self, text: str):
+        """Sets the text of this InlineResponse2005.
 
-        The URL to redirect the user to for OAuth authentication.  # noqa: E501
 
-        :param redirect_url: The redirect_url of this InlineResponse2005.
-        :type redirect_url: str
+        :param text: The text of this InlineResponse2005.
+        :type text: str
         """
+        if text is None:
+            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
 
-        self._redirect_url = redirect_url
+        self._text = text

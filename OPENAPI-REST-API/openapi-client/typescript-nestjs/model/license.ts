@@ -9,11 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LicenseServiceType } from './licenseServiceType';
-import { LicenseBillingDetails } from './licenseBillingDetails';
-import { LicenseClientLink } from './licenseClientLink';
-import { LicenseExtraInfoTables } from './licenseExtraInfoTables';
-import { LicenseServiceInfo } from './licenseServiceInfo';
+import { LicenseServiceType } from './license-service-type';
+import { LicenseBillingDetails } from './license-billing-details';
+import { LicenseClientLink } from './license-client-link';
+import { LicenseExtraInfoTables } from './license-extra-info-tables';
+import { LicenseServiceInfo } from './license-service-info';
 
 
 export interface License { 

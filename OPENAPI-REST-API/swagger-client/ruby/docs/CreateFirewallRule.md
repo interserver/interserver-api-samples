@@ -1,4 +1,4 @@
-# SwaggerClient::CreateFirewallRule
+# InterserverApiClient::CreateFirewallRule
 
 ## Properties
 Name | Type | Description | Notes

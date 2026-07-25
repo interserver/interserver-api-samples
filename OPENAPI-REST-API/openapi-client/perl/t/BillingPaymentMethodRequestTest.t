@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::BillingPaymentMethodRequest');
+use_ok('InterServerAPI::Object::BillingPaymentMethodRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::BillingPaymentMethodRequest->new();
+#my $instance = InterServerAPI::Object::BillingPaymentMethodRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::BillingPaymentMethodRequest');
+#isa_ok($instance, 'InterServerAPI::Object::BillingPaymentMethodRequest');
 
 
 done_testing();

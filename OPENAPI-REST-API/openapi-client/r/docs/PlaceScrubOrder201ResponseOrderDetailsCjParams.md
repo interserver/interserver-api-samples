@@ -1,4 +1,4 @@
-# openapi::PlaceScrubOrder201ResponseOrderDetailsCjParams
+# interserverapi::PlaceScrubOrder201ResponseOrderDetailsCjParams
 
 
 ## Properties

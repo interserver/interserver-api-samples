@@ -16,9 +16,10 @@
 #' \dontrun{
 #' ####################  AddMail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_mail_order_request <- MailOrderRequest$new(123, "coupon_example", "comment_example") # MailOrderRequest | 
 #'
-#' #Place Mail Order
+#' #Place a new Mail Baby order, generate invoice, and queue provisioning
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -31,18 +32,18 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$AddMail(data_file = "result.txt")
-#' result <- api_instance$AddMail()
+#' # result <- api_instance$AddMail(var_mail_order_requestdata_file = "result.txt")
+#' result <- api_instance$AddMail(var_mail_order_request)
 #' dput(result)
 #'
 #'
 #' ####################  AddRule  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #' var_deny_rule_new <- DenyRuleNew$new("domain", "data_example", "user_example") # DenyRuleNew | These are the fields needed to create a new email deny rule.
 #'
-#' #Create Deny Rule
+#' #Create a new deny rule to auto-block matching submissions
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -62,11 +63,11 @@
 #'
 #' ####################  CreateMailAlert  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #' var_mail_alert_request <- MailAlertRequest$new("type_example", "value_example", "to_example", "enabled_example") # MailAlertRequest | 
 #'
-#' #Create Mail Alert
+#' #Create a new Mail Baby alert for delivery, bounce, or quota events
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -86,11 +87,11 @@
 #'
 #' ####################  DeleteMailAlert  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
-#' var_alert_id <- 56 # integer | Alert ID to delete.
+#' var_delete_mail_alert_request <- deleteMailAlert_request$new(123) # DeleteMailAlertRequest | 
 #'
-#' #Delete Mail Alert
+#' #Delete a Mail Baby alert by alert_id (hard delete — no recovery)
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -103,18 +104,18 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$DeleteMailAlert(var_id, var_alert_iddata_file = "result.txt")
-#' result <- api_instance$DeleteMailAlert(var_id, var_alert_id)
+#' # result <- api_instance$DeleteMailAlert(var_id, var_delete_mail_alert_requestdata_file = "result.txt")
+#' result <- api_instance$DeleteMailAlert(var_id, var_delete_mail_alert_request)
 #' dput(result)
 #'
 #'
 #' ####################  DeleteRule  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #' var_rule <- "34" # character | The ID of the Rules entry.
 #'
-#' #Delete Deny Rule
+#' #Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -134,11 +135,11 @@
 #'
 #' ####################  DelistBlock  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #' var_email <- "email_example" # character | an email address (Optional)
 #'
-#' #Remove Email Address from Block List
+#' #Delist a sender email from rspamd / mailchannels / mailbaby block lists
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -158,10 +159,10 @@
 #'
 #' ####################  GetMailAlerts  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #List Mail Alerts
+#' #List configured delivery/bounce/quota alerts for one Mail Baby service
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -181,10 +182,10 @@
 #'
 #' ####################  GetMailBlocks  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #List Blocked Email Addresses
+#' #List recent local-blocklist hits and spam-trap captures for the mail user
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -204,10 +205,10 @@
 #'
 #' ####################  GetMailDelist  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #Get Delist Status
+#' #Read blocklist diagnostics and find senders eligible for delisting
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -227,10 +228,10 @@
 #'
 #' ####################  GetMailDeliverability  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #Get Deliverability Metrics
+#' #Read delivered vs bounced totals broken down by sender (or by recipient domain)
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -250,10 +251,10 @@
 #'
 #' ####################  GetMailInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #Get Mail Order
+#' #Read full detail for one Mail Baby service including SMTP credentials
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -273,10 +274,10 @@
 #'
 #' ####################  GetMailInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #Get Mail Invoices
+#' #List billing invoices linked to this Mail Baby service
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -296,9 +297,9 @@
 #'
 #' ####################  GetMailList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Mail Orders
+#' #List every Mail Baby SMTP relay service on the account
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -318,10 +319,10 @@
 #'
 #' ####################  GetMailWelcomeEmail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #Resend Mail Welcome Email
+#' #Resend the Mail Baby welcome email with SMTP credentials and setup info
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -341,9 +342,9 @@
 #'
 #' ####################  GetNewMail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Mail Ordering Information
+#' #Read the Mail Baby order catalog — plans, package costs, service-type metadata
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -363,10 +364,10 @@
 #'
 #' ####################  GetRules  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #List Deny Rules
+#' #List configured deny rules (sender/recipient blocks) for a Mail Baby service
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -386,11 +387,11 @@
 #'
 #' ####################  GetStats  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #' var_time <- "time_example" # character | The timeframe for the statistics. (Optional)
 #'
-#' #Get Mail Usage Statistics
+#' #Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -410,10 +411,10 @@
 #'
 #' ####################  MailCancel  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #Cancel Mail
+#' #Cancel a Mail Baby service and stop the recurring invoice
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -433,11 +434,11 @@
 #'
 #' ####################  PostMailDelist  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #' var_mail_delist_request <- MailDelistRequest$new("unblock_example") # MailDelistRequest | 
 #'
-#' #Delist a Blocked Sender
+#' #Delist a sender from rspamd / mailchannels / mailbaby block lists
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -457,9 +458,10 @@
 #'
 #' ####################  PutMail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_mail_order_request <- MailOrderRequest$new(123, "coupon_example", "comment_example") # MailOrderRequest | 
 #'
-#' #Validate Mail Order
+#' #Validate Mail Baby order, quote pricing, and verify coupon — no charge
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -471,15 +473,15 @@
 #' # Configure API key authorization: sessionIdHeaderAuth
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$PutMail()
+#' api_instance$PutMail(var_mail_order_request)
 #'
 #'
 #' ####################  ResetMailPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #Reset Mail Password
+#' #Rotate the SMTP password and email the new credential to the account owner
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -499,11 +501,11 @@
 #'
 #' ####################  SendAdvMail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #' var_send_mail_adv <- SendMailAdv$new("subject_example", "body_example", EmailAddressName$new("email_example", "name_example"), c(EmailAddressName$new("email_example", "name_example")), c(EmailAddressName$new("email_example", "name_example")), c(EmailAddressName$new("email_example", "name_example")), c(EmailAddressName$new("email_example", "name_example")), c(MailAttachment$new("filename_example", "data_example")), 123) # SendMailAdv | 
 #'
-#' #Send Email with Advanced Options
+#' #Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -523,11 +525,11 @@
 #'
 #' ####################  SendMail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #' var_send_mail <- SendMail$new("to_example", "from_example", "subject_example", "body_example") # SendMail | 
 #'
-#' #Send Email
+#' #Send a simple single-recipient email through the Mail Baby SMTP relay
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -547,11 +549,11 @@
 #'
 #' ####################  UpdateMailAlert  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #' var_mail_alert_update_request <- MailAlertUpdateRequest$new(123, "type_example", "value_example", "to_example", "enabled_example") # MailAlertUpdateRequest | 
 #'
-#' #Update Mail Alert
+#' #Update an existing Mail Baby alert by alert_id
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -571,10 +573,10 @@
 #'
 #' ####################  UpdateMailInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "id_example" # character | The mail service ID. Use `mail_id` from `GET /mail`.
 #'
-#' #Update Mail Order
+#' #POST mutation hook for the Mail Baby service detail page
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -592,9 +594,34 @@
 #' dput(result)
 #'
 #'
+#' ####################  UpdateRule  ####################
+#'
+#' library(interserverapi)
+#' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
+#' var_rule <- "rule_example" # character | The ID of the deny rule to update.
+#' var_deny_rule_new <- DenyRuleNew$new("domain", "data_example", "user_example") # DenyRuleNew | 
+#'
+#' #Update an existing Mail Baby deny rule's type and match data
+#' api_instance <- MailApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$UpdateRule(var_id, var_rule, var_deny_rule_newdata_file = "result.txt")
+#' result <- api_instance$UpdateRule(var_id, var_rule, var_deny_rule_new)
+#' dput(result)
+#'
+#'
 #' ####################  ViewMailLog  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The mail service ID. Use `mail_id` from `GET /mail`.
 #' var_id2 <- 2604 # integer | The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`. (Optional)
 #' var_origin <- "1.2.3.4" # character | Filter by the originating IP address from which the message was submitted to the relay.  Must be a valid IPv4 or IPv6 address. (Optional)
@@ -615,7 +642,7 @@
 #' var_dir <- "desc" # character | Sort direction.  `desc` returns newest first (default), `asc` returns oldest first. (Optional)
 #' var_groupby <- "recipient" # character | Controls how results are grouped.  `recipient` (default) returns one row per delivery attempt — a message sent to 4 recipients produces 4 rows, each with its own `recipient`, `delivered`, `response`, and delivery metadata.  `message` collapses to one row per unique message ID; delivery-level fields will reflect one arbitrary recipient per message.  The `total` count in the response matches the grouping mode. (Optional)
 #'
-#' #View Mail Log
+#' #Search and paginate per-message Mail Baby delivery log entries
 #' api_instance <- MailApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -655,15 +682,16 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Mail Order
+    #' Place a new Mail Baby order, generate invoice, and queue provisioning
     #'
+    #' @param mail_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return ServiceOrderPostResponse
-    AddMail = function(data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$AddMailWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+    AddMail = function(mail_order_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$AddMailWithHttpInfo(mail_order_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -676,14 +704,15 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Mail Order
+    #' Place a new Mail Baby order, generate invoice, and queue provisioning
     #'
+    #' @param mail_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (ServiceOrderPostResponse) with additional information such as HTTP status code, headers
-    AddMailWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+    AddMailWithHttpInfo = function(mail_order_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -692,6 +721,20 @@ MailApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`mail_order_request`)) {
+        stop("Missing required parameter `mail_order_request`.")
+      }
+
+      if (!missing(`mail_order_request`) && is.null(`mail_order_request`)) {
+        stop("Invalid value for `mail_order_request` when calling MailApi$AddMail, `mail_order_request` is not nullable")
+      }
+
+      if (!is.null(`mail_order_request`)) {
+        local_var_body <- `mail_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/mail/order"
       # API key authentication
@@ -708,7 +751,7 @@ MailApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -761,7 +804,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Deny Rule
+    #' Create a new deny rule to auto-block matching submissions
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param deny_rule_new These are the fields needed to create a new email deny rule.
@@ -784,7 +827,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Deny Rule
+    #' Create a new deny rule to auto-block matching submissions
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param deny_rule_new These are the fields needed to create a new email deny rule.
@@ -897,7 +940,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Mail Alert
+    #' Create a new Mail Baby alert for delivery, bounce, or quota events
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param mail_alert_request 
@@ -920,7 +963,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create Mail Alert
+    #' Create a new Mail Baby alert for delivery, bounce, or quota events
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param mail_alert_request 
@@ -1033,17 +1076,17 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Mail Alert
+    #' Delete a Mail Baby alert by alert_id (hard delete — no recovery)
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
-    #' @param alert_id Alert ID to delete.
+    #' @param delete_mail_alert_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return SuccessTextResponse
-    DeleteMailAlert = function(id, alert_id, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$DeleteMailAlertWithHttpInfo(id, alert_id, data_file = data_file, ..., .parse = .parse)
+    DeleteMailAlert = function(id, delete_mail_alert_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$DeleteMailAlertWithHttpInfo(id, delete_mail_alert_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1056,16 +1099,16 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Mail Alert
+    #' Delete a Mail Baby alert by alert_id (hard delete — no recovery)
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
-    #' @param alert_id Alert ID to delete.
+    #' @param delete_mail_alert_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (SuccessTextResponse) with additional information such as HTTP status code, headers
-    DeleteMailAlertWithHttpInfo = function(id, alert_id, data_file = NULL, ..., .parse = TRUE) {
+    DeleteMailAlertWithHttpInfo = function(id, delete_mail_alert_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1079,19 +1122,23 @@ MailApi <- R6::R6Class(
         stop("Missing required parameter `id`.")
       }
 
-      if (missing(`alert_id`)) {
-        stop("Missing required parameter `alert_id`.")
+      if (missing(`delete_mail_alert_request`)) {
+        stop("Missing required parameter `delete_mail_alert_request`.")
       }
 
       if (!missing(`id`) && is.null(`id`)) {
         stop("Invalid value for `id` when calling MailApi$DeleteMailAlert, `id` is not nullable")
       }
 
-      if (!missing(`alert_id`) && is.null(`alert_id`)) {
-        stop("Invalid value for `alert_id` when calling MailApi$DeleteMailAlert, `alert_id` is not nullable")
+      if (!missing(`delete_mail_alert_request`) && is.null(`delete_mail_alert_request`)) {
+        stop("Invalid value for `delete_mail_alert_request` when calling MailApi$DeleteMailAlert, `delete_mail_alert_request` is not nullable")
       }
 
-      query_params[["alert_id"]] <- `alert_id`
+      if (!is.null(`delete_mail_alert_request`)) {
+        local_var_body <- `delete_mail_alert_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/mail/{id}/alerts"
       if (!missing(`id`)) {
@@ -1112,7 +1159,7 @@ MailApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json", "multipart/form-data")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "DELETE",
@@ -1165,7 +1212,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Deny Rule
+    #' Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param rule The ID of the Rules entry.
@@ -1188,7 +1235,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete Deny Rule
+    #' Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param rule The ID of the Rules entry.
@@ -1299,7 +1346,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Remove Email Address from Block List
+    #' Delist a sender email from rspamd / mailchannels / mailbaby block lists
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param email (optional) an email address
@@ -1322,7 +1369,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Remove Email Address from Block List
+    #' Delist a sender email from rspamd / mailchannels / mailbaby block lists
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param email (optional) an email address
@@ -1426,7 +1473,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Mail Alerts
+    #' List configured delivery/bounce/quota alerts for one Mail Baby service
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1448,7 +1495,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Mail Alerts
+    #' List configured delivery/bounce/quota alerts for one Mail Baby service
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1546,7 +1593,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Blocked Email Addresses
+    #' List recent local-blocklist hits and spam-trap captures for the mail user
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1568,7 +1615,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Blocked Email Addresses
+    #' List recent local-blocklist hits and spam-trap captures for the mail user
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1666,7 +1713,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Delist Status
+    #' Read blocklist diagnostics and find senders eligible for delisting
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1688,7 +1735,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Delist Status
+    #' Read blocklist diagnostics and find senders eligible for delisting
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1786,7 +1833,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Deliverability Metrics
+    #' Read delivered vs bounced totals broken down by sender (or by recipient domain)
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1808,7 +1855,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Deliverability Metrics
+    #' Read delivered vs bounced totals broken down by sender (or by recipient domain)
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1906,7 +1953,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Mail Order
+    #' Read full detail for one Mail Baby service including SMTP credentials
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1928,7 +1975,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Mail Order
+    #' Read full detail for one Mail Baby service including SMTP credentials
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2026,7 +2073,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Mail Invoices
+    #' List billing invoices linked to this Mail Baby service
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2048,7 +2095,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Mail Invoices
+    #' List billing invoices linked to this Mail Baby service
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2146,7 +2193,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Mail Orders
+    #' List every Mail Baby SMTP relay service on the account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2167,7 +2214,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Mail Orders
+    #' List every Mail Baby SMTP relay service on the account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2252,7 +2299,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Mail Welcome Email
+    #' Resend the Mail Baby welcome email with SMTP credentials and setup info
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2274,7 +2321,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Mail Welcome Email
+    #' Resend the Mail Baby welcome email with SMTP credentials and setup info
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2372,7 +2419,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Mail Ordering Information
+    #' Read the Mail Baby order catalog — plans, package costs, service-type metadata
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2393,7 +2440,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Mail Ordering Information
+    #' Read the Mail Baby order catalog — plans, package costs, service-type metadata
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2478,7 +2525,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Deny Rules
+    #' List configured deny rules (sender/recipient blocks) for a Mail Baby service
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2500,7 +2547,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Deny Rules
+    #' List configured deny rules (sender/recipient blocks) for a Mail Baby service
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2598,7 +2645,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Mail Usage Statistics
+    #' Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param time (optional) The timeframe for the statistics.
@@ -2621,7 +2668,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Mail Usage Statistics
+    #' Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param time (optional) The timeframe for the statistics.
@@ -2729,7 +2776,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Mail
+    #' Cancel a Mail Baby service and stop the recurring invoice
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2751,7 +2798,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Mail
+    #' Cancel a Mail Baby service and stop the recurring invoice
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -2849,7 +2896,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delist a Blocked Sender
+    #' Delist a sender from rspamd / mailchannels / mailbaby block lists
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param mail_delist_request 
@@ -2872,7 +2919,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delist a Blocked Sender
+    #' Delist a sender from rspamd / mailchannels / mailbaby block lists
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param mail_delist_request 
@@ -2985,13 +3032,14 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Mail Order
+    #' Validate Mail Baby order, quote pricing, and verify coupon — no charge
     #'
+    #' @param mail_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return void
-    PutMail = function(...) {
-      local_var_response <- self$PutMailWithHttpInfo(...)
+    PutMail = function(mail_order_request, ...) {
+      local_var_response <- self$PutMailWithHttpInfo(mail_order_request, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -3004,12 +3052,13 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Mail Order
+    #' Validate Mail Baby order, quote pricing, and verify coupon — no charge
     #'
+    #' @param mail_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    PutMailWithHttpInfo = function(...) {
+    PutMailWithHttpInfo = function(mail_order_request, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -3018,6 +3067,20 @@ MailApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`mail_order_request`)) {
+        stop("Missing required parameter `mail_order_request`.")
+      }
+
+      if (!missing(`mail_order_request`) && is.null(`mail_order_request`)) {
+        stop("Invalid value for `mail_order_request` when calling MailApi$PutMail, `mail_order_request` is not nullable")
+      }
+
+      if (!is.null(`mail_order_request`)) {
+        local_var_body <- `mail_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/mail/order"
       # API key authentication
@@ -3034,7 +3097,7 @@ MailApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "PUT",
@@ -3072,7 +3135,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reset Mail Password
+    #' Rotate the SMTP password and email the new credential to the account owner
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3094,7 +3157,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reset Mail Password
+    #' Rotate the SMTP password and email the new credential to the account owner
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3192,7 +3255,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Send Email with Advanced Options
+    #' Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param send_mail_adv 
@@ -3215,7 +3278,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Send Email with Advanced Options
+    #' Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param send_mail_adv 
@@ -3328,7 +3391,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Send Email
+    #' Send a simple single-recipient email through the Mail Baby SMTP relay
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param send_mail 
@@ -3351,7 +3414,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Send Email
+    #' Send a simple single-recipient email through the Mail Baby SMTP relay
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param send_mail 
@@ -3464,7 +3527,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Mail Alert
+    #' Update an existing Mail Baby alert by alert_id
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param mail_alert_update_request 
@@ -3487,7 +3550,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Mail Alert
+    #' Update an existing Mail Baby alert by alert_id
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param mail_alert_update_request 
@@ -3600,7 +3663,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Mail Order
+    #' POST mutation hook for the Mail Baby service detail page
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3622,7 +3685,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Mail Order
+    #' POST mutation hook for the Mail Baby service detail page
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param data_file (optional) name of the data file to save the result
@@ -3720,7 +3783,157 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' View Mail Log
+    #' Update an existing Mail Baby deny rule's type and match data
+    #'
+    #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
+    #' @param rule The ID of the deny rule to update.
+    #' @param deny_rule_new 
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return GenericResponse
+    UpdateRule = function(id, rule, deny_rule_new, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$UpdateRuleWithHttpInfo(id, rule, deny_rule_new, data_file = data_file, ..., .parse = .parse)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Update an existing Mail Baby deny rule's type and match data
+    #'
+    #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
+    #' @param rule The ID of the deny rule to update.
+    #' @param deny_rule_new 
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return API response (GenericResponse) with additional information such as HTTP status code, headers
+    UpdateRuleWithHttpInfo = function(id, rule, deny_rule_new, data_file = NULL, ..., .parse = TRUE) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (missing(`rule`)) {
+        stop("Missing required parameter `rule`.")
+      }
+
+      if (missing(`deny_rule_new`)) {
+        stop("Missing required parameter `deny_rule_new`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling MailApi$UpdateRule, `id` is not nullable")
+      }
+
+      if (!missing(`rule`) && is.null(`rule`)) {
+        stop("Invalid value for `rule` when calling MailApi$UpdateRule, `rule` is not nullable")
+      }
+
+      if (!missing(`deny_rule_new`) && is.null(`deny_rule_new`)) {
+        stop("Invalid value for `deny_rule_new` when calling MailApi$UpdateRule, `deny_rule_new` is not nullable")
+      }
+
+      if (!is.null(`deny_rule_new`)) {
+        local_var_body <- `deny_rule_new`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
+
+      local_var_url_path <- "/mail/{id}/rules/{rule}"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      if (!missing(`rule`)) {
+        local_var_url_path <- gsub("\\{rule\\}", URLencode(as.character(`rule`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list("application/json", "multipart/form-data")
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "PUT",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "GenericResponse"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' Search and paginate per-message Mail Baby delivery log entries
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param id2 (optional) The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.
@@ -3760,7 +3973,7 @@ MailApi <- R6::R6Class(
     },
 
     #' @description
-    #' View Mail Log
+    #' Search and paginate per-message Mail Baby delivery log entries
     #'
     #' @param id The mail service ID. Use `mail_id` from `GET /mail`.
     #' @param id2 (optional) The numeric ID of the mail order to filter by.  When omitted, logs from the first active mail order are returned.  Obtain valid IDs from `GET /mail` or `GET /mail/{id}`.

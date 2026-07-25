@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$Services = Initialize-PSOpenAPIToolsServices 
+$Services = Initialize-InterserverApiServices 
 ```
 
 - Convert the resource to JSON

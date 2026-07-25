@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ScrubIpFilterTypesFiltersValue } from './api';
+import { ScrubIpFilterTypesFiltersValue } from '@interserver/myadmin-client';
 
 const instance: ScrubIpFilterTypesFiltersValue = {
     name,

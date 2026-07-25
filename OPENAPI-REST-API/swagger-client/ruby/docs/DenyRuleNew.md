@@ -1,4 +1,4 @@
-# SwaggerClient::DenyRuleNew
+# InterserverApiClient::DenyRuleNew
 
 ## Properties
 Name | Type | Description | Notes

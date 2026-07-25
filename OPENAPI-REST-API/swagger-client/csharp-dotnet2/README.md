@@ -64,39 +64,11 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("sessionid", "Bearer");
 
             var apiInstance = new AccountApi();
-
-            try
-            {
-                // Change Account Username
-                TextResponse result = apiInstance.ChangeAccountUsername();
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling AccountApi.ChangeAccountUsername: " + e.Message );
-            }
-        }
-    }
-}
-            // Configure API key authorization: apiKeyAuth
-            Configuration.Default.ApiKey.Add("X-API-KEY", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("X-API-KEY", "Bearer");
-            // Configure API key authorization: sessionIdCookieAuth
-            Configuration.Default.ApiKey.Add("sessionid", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("sessionid", "Bearer");
-            // Configure API key authorization: sessionIdHeaderAuth
-            Configuration.Default.ApiKey.Add("sessionid", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("sessionid", "Bearer");
-
-            var apiInstance = new AccountApi();
             var name = name_example;  // string | 
 
             try
             {
-                // Unlink OAuth Account
+                // Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
                 SuccessTextResponse result = apiInstance.DeleteAccountOauthName(name);
                 Debug.WriteLine(result);
             }
@@ -124,7 +96,7 @@ namespace Example
 
             try
             {
-                // Disable Two-Factor Authentication
+                // Disable two-factor authentication and remove the TOTP secret
                 SuccessTextResponse result = apiInstance.DeleteAccountTfa();
                 Debug.WriteLine(result);
             }
@@ -153,7 +125,7 @@ namespace Example
 
             try
             {
-                // Remove IP Access Restriction
+                // Remove one IP range from the account allow-list (PATCH on /account/iplimits)
                 GenericResponse result = apiInstance.DeleteIpLimit(body);
                 Debug.WriteLine(result);
             }
@@ -181,7 +153,7 @@ namespace Example
 
             try
             {
-                // Retrieve Account Details
+                // Read full account profile, billing address, and security settings
                 AccountInfo result = apiInstance.GetAccountInfo();
                 Debug.WriteLine(result);
             }
@@ -209,7 +181,7 @@ namespace Example
 
             try
             {
-                // Get Two-Factor Setup Data
+                // Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
                 InlineResponse200 result = apiInstance.GetAccountTfaSetup();
                 Debug.WriteLine(result);
             }
@@ -237,7 +209,7 @@ namespace Example
 
             try
             {
-                // Get Home Data
+                // Aggregate dashboard payload — service counts, recent activity, alerts
                 Home result = apiInstance.GetHome();
                 Debug.WriteLine(result);
             }
@@ -265,7 +237,7 @@ namespace Example
 
             try
             {
-                // Search Autocomplete
+                // Global autocomplete across the caller's services, domains, and records
                 SearchAutocompleteResponse result = apiInstance.GetSearch();
                 Debug.WriteLine(result);
             }
@@ -293,7 +265,7 @@ namespace Example
 
             try
             {
-                // Log Out
+                // Destroy the current API/web session — token becomes unusable
                 SuccessTextResponse result = apiInstance.Logout();
                 Debug.WriteLine(result);
             }
@@ -322,7 +294,7 @@ namespace Example
 
             try
             {
-                // Logout of OAuth
+                // Sign out of the upstream OAuth provider session (does not unlink the account)
                 SuccessTextResponse result = apiInstance.LogoutAccountOauth(name);
                 Debug.WriteLine(result);
             }
@@ -350,7 +322,7 @@ namespace Example
 
             try
             {
-                // Generate New API Key
+                // Rotate the account's REST/MCP API key — old key is invalidated immediately
                 SuccessTextResponse result = apiInstance.UpdateAccountApiKey();
                 Debug.WriteLine(result);
             }
@@ -380,7 +352,7 @@ namespace Example
 
             try
             {
-                // Update Account Feature Flags
+                // Toggle account-wide safety locks for password reset and OS reinstall
                 SuccessTextResponse result = apiInstance.UpdateAccountFeatures(disableReset, disableReinstall);
                 Debug.WriteLine(result);
             }
@@ -425,7 +397,7 @@ namespace Example
 
             try
             {
-                // Update Account Information
+                // Update contact and billing-address fields on the customer profile
                 SuccessTextResponse result = apiInstance.UpdateAccountInfo(name, company, address, address2, city, state, zip, country, phone, locale, emailInvoices, emailAbuse, disableReset, disableReinstall, disableServerNotifications, disableEmailNotifications, gstin);
                 Debug.WriteLine(result);
             }
@@ -455,7 +427,7 @@ namespace Example
 
             try
             {
-                // Add IP Access Restriction
+                // Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
                 SuccessTextResponse result = apiInstance.UpdateAccountIpLimits(start, end);
                 Debug.WriteLine(result);
             }
@@ -484,7 +456,7 @@ namespace Example
 
             try
             {
-                // Change Account Password
+                // Change the account login password (verifies current, kills other sessions)
                 TextResponse result = apiInstance.UpdateAccountPassword(password);
                 Debug.WriteLine(result);
             }
@@ -513,7 +485,7 @@ namespace Example
 
             try
             {
-                // Update SSH Keys
+                // Set the account-level SSH public key auto-installed on new VPS/dedicated orders
                 SuccessTextResponse result = apiInstance.UpdateAccountSshKey(sshKey);
                 Debug.WriteLine(result);
             }
@@ -542,7 +514,7 @@ namespace Example
 
             try
             {
-                // Enable Two-Factor Authentication
+                // Verify TOTP code and enable two-factor authentication on the account
                 SuccessTextResponse result = apiInstance.UpdateAccountTfa(_2faGoogleCode);
                 Debug.WriteLine(result);
             }
@@ -562,313 +534,317 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AccountApi* | [**ChangeAccountUsername**](docs/AccountApi.md#changeaccountusername) | **POST** /account/username | Change Account Username
-*AccountApi* | [**DeleteAccountOauthName**](docs/AccountApi.md#deleteaccountoauthname) | **DELETE** /account/oauth/{name} | Unlink OAuth Account
-*AccountApi* | [**DeleteAccountTfa**](docs/AccountApi.md#deleteaccounttfa) | **DELETE** /account/2fa | Disable Two-Factor Authentication
-*AccountApi* | [**DeleteIpLimit**](docs/AccountApi.md#deleteiplimit) | **PATCH** /account/iplimits | Remove IP Access Restriction
-*AccountApi* | [**GetAccountInfo**](docs/AccountApi.md#getaccountinfo) | **GET** /account | Retrieve Account Details
-*AccountApi* | [**GetAccountTfaSetup**](docs/AccountApi.md#getaccounttfasetup) | **GET** /account/2fa | Get Two-Factor Setup Data
-*AccountApi* | [**GetHome**](docs/AccountApi.md#gethome) | **GET** /home | Get Home Data
-*AccountApi* | [**GetSearch**](docs/AccountApi.md#getsearch) | **GET** /search | Search Autocomplete
-*AccountApi* | [**Logout**](docs/AccountApi.md#logout) | **GET** /logout | Log Out
-*AccountApi* | [**LogoutAccountOauth**](docs/AccountApi.md#logoutaccountoauth) | **GET** /account/oauth/{name}/logout | Logout of OAuth
-*AccountApi* | [**UpdateAccountApiKey**](docs/AccountApi.md#updateaccountapikey) | **POST** /account/apikey | Generate New API Key
-*AccountApi* | [**UpdateAccountFeatures**](docs/AccountApi.md#updateaccountfeatures) | **POST** /account/features | Update Account Feature Flags
-*AccountApi* | [**UpdateAccountInfo**](docs/AccountApi.md#updateaccountinfo) | **POST** /account | Update Account Information
-*AccountApi* | [**UpdateAccountIpLimits**](docs/AccountApi.md#updateaccountiplimits) | **POST** /account/iplimits | Add IP Access Restriction
-*AccountApi* | [**UpdateAccountPassword**](docs/AccountApi.md#updateaccountpassword) | **POST** /account/password | Change Account Password
-*AccountApi* | [**UpdateAccountSshKey**](docs/AccountApi.md#updateaccountsshkey) | **POST** /account/sshkey | Update SSH Keys
-*AccountApi* | [**UpdateAccountTfa**](docs/AccountApi.md#updateaccounttfa) | **POST** /account/2fa | Enable Two-Factor Authentication
-*BackupsApi* | [**AddBackup**](docs/BackupsApi.md#addbackup) | **POST** /backups/order | Place Backup Order
-*BackupsApi* | [**CancelBackup**](docs/BackupsApi.md#cancelbackup) | **DELETE** /backups/{id} | Cancel Backup Service
-*BackupsApi* | [**GetBackupInfo**](docs/BackupsApi.md#getbackupinfo) | **GET** /backups/{id} | Get Backup Service Details
-*BackupsApi* | [**GetBackupInvoices**](docs/BackupsApi.md#getbackupinvoices) | **GET** /backups/{id}/invoices | Get Backup Order Invoices
-*BackupsApi* | [**GetBackupLogin**](docs/BackupsApi.md#getbackuplogin) | **GET** /backups/{id}/login | Get Backup Storage Panel Login
-*BackupsApi* | [**GetBackupsList**](docs/BackupsApi.md#getbackupslist) | **GET** /backups | List Backup Services
-*BackupsApi* | [**GetBackupsWelcomeEmail**](docs/BackupsApi.md#getbackupswelcomeemail) | **GET** /backups/{id}/welcome_email | Resend Backup Welcome Email
-*BackupsApi* | [**GetNewBackup**](docs/BackupsApi.md#getnewbackup) | **GET** /backups/order | Get Backup Order Form Data
-*BackupsApi* | [**UpdateBackupInfo**](docs/BackupsApi.md#updatebackupinfo) | **POST** /backups/{id} | Update Backup Information
-*BackupsApi* | [**ValidateBackupOrder**](docs/BackupsApi.md#validatebackuporder) | **PUT** /backups/order | Validate Backup Order
-*BillingApi* | [**AddAccountCreditCard**](docs/BillingApi.md#addaccountcreditcard) | **POST** /account/creditcards | Add Credit Card to Account
-*BillingApi* | [**AddBillingCreditCard**](docs/BillingApi.md#addbillingcreditcard) | **POST** /billing/creditcards | Add Credit Card for Billing
-*BillingApi* | [**AddBillingPrepay**](docs/BillingApi.md#addbillingprepay) | **POST** /billing/prepays | Create Prepay Deposit
-*BillingApi* | [**DeleteAccountCreditCard**](docs/BillingApi.md#deleteaccountcreditcard) | **DELETE** /account/creditcards/{id} | Remove Credit Card
-*BillingApi* | [**DeleteBillingCreditCard**](docs/BillingApi.md#deletebillingcreditcard) | **DELETE** /billing/creditcards/{id} | Delete Credit Card
-*BillingApi* | [**DeleteBillingInvoice**](docs/BillingApi.md#deletebillinginvoice) | **DELETE** /billing/invoices/{id} | Delete Invoice
-*BillingApi* | [**DeleteBillingPrepay**](docs/BillingApi.md#deletebillingprepay) | **DELETE** /billing/prepays/{id} | Delete Prepay Balance
-*BillingApi* | [**GetAffiliateBanners**](docs/BillingApi.md#getaffiliatebanners) | **GET** /affiliate/banners | List Affiliate Banner Assets
-*BillingApi* | [**GetAffiliateRichReport**](docs/BillingApi.md#getaffiliaterichreport) | **GET** /affiliate/rich_report | Get Affiliate Performance Report
-*BillingApi* | [**GetAffiliateSalesGraph**](docs/BillingApi.md#getaffiliatesalesgraph) | **GET** /affiliate/sales_graph | Get Affiliate Sales Graph Data
-*BillingApi* | [**GetAffiliateSalesReport**](docs/BillingApi.md#getaffiliatesalesreport) | **GET** /affiliate/sales_report | Get Affiliate Sales Report
-*BillingApi* | [**GetAffiliateTrafficGraph**](docs/BillingApi.md#getaffiliatetrafficgraph) | **GET** /affiliate/traffic_graph | Get Affiliate Traffic Graph Data
-*BillingApi* | [**GetAffiliateWebTraffic**](docs/BillingApi.md#getaffiliatewebtraffic) | **GET** /affiliate/web_traffic | List Affiliate Web Traffic Entries
-*BillingApi* | [**GetBillingCart**](docs/BillingApi.md#getbillingcart) | **GET** /billing/cart | Get Shopping Cart Contents
-*BillingApi* | [**GetBillingCreditCardVerify**](docs/BillingApi.md#getbillingcreditcardverify) | **GET** /billing/creditcards/{id}/verify | Get Credit Card Verification Requirements
-*BillingApi* | [**GetBillingInvoice**](docs/BillingApi.md#getbillinginvoice) | **GET** /billing/invoices/{id} | Get Invoice Details
-*BillingApi* | [**GetBillingInvoices**](docs/BillingApi.md#getbillinginvoices) | **GET** /billing/invoices | List Account Invoices
-*BillingApi* | [**GetBillingPrePays**](docs/BillingApi.md#getbillingprepays) | **GET** /billing/prepays | List Prepay Balances
-*BillingApi* | [**GetInvoices**](docs/BillingApi.md#getinvoices) | **GET** /invoices | Get Invoices
-*BillingApi* | [**InitiatePayment**](docs/BillingApi.md#initiatepayment) | **GET** /pay/{method}/{invoices} | Initiate Payment
-*BillingApi* | [**PostBillingCreditCardVerify**](docs/BillingApi.md#postbillingcreditcardverify) | **POST** /billing/creditcards/{id}/verify | Submit Credit Card Verification
-*BillingApi* | [**UpdateAccountCreditCard**](docs/BillingApi.md#updateaccountcreditcard) | **POST** /account/creditcards/{id} | Update Credit Card
-*BillingApi* | [**UpdateAffiliateDockSetup**](docs/BillingApi.md#updateaffiliatedocksetup) | **POST** /affiliate/dock_setup | Configure Affiliate Dock Settings
-*BillingApi* | [**UpdateAffiliateLandingPage**](docs/BillingApi.md#updateaffiliatelandingpage) | **POST** /affiliate/landing_pg | Configure Affiliate Landing Page
-*BillingApi* | [**UpdateAffiliatePaymentSetup**](docs/BillingApi.md#updateaffiliatepaymentsetup) | **POST** /affiliate/payment_setup | Configure Affiliate Payout Preferences
-*BillingApi* | [**UpdateBillingCreditCard**](docs/BillingApi.md#updatebillingcreditcard) | **POST** /billing/creditcards/{id} | Update Credit Card Details
-*BillingApi* | [**UpdateBillingPaymentMethod**](docs/BillingApi.md#updatebillingpaymentmethod) | **POST** /billing/payment_method | Update Default Payment Method
-*DNSApi* | [**AddDnsDomain**](docs/DNSApi.md#adddnsdomain) | **POST** /dns | Create DNS Domain
-*DNSApi* | [**AddDnsRecord**](docs/DNSApi.md#adddnsrecord) | **POST** /dns/{id} | Add DNS Record to Domain
-*DNSApi* | [**DeleteDnsDomain**](docs/DNSApi.md#deletednsdomain) | **DELETE** /dns/{id} | Delete DNS Domain
-*DNSApi* | [**DeleteDnsRecord**](docs/DNSApi.md#deletednsrecord) | **DELETE** /dns/{domainId}/{recordId} | Delete DNS Record
-*DNSApi* | [**GetDnsDomain**](docs/DNSApi.md#getdnsdomain) | **GET** /dns/{id} | List Domain DNS Records
-*DNSApi* | [**GetDnsList**](docs/DNSApi.md#getdnslist) | **GET** /dns | List DNS Domains
-*DNSApi* | [**UpdateDnsRecord**](docs/DNSApi.md#updatednsrecord) | **POST** /dns/{domainId}/{recordId} | Update DNS Record
-*DomainsApi* | [**AddDomain**](docs/DomainsApi.md#adddomain) | **POST** /domains/order | Place Domain Order
-*DomainsApi* | [**AddDomainDnssec**](docs/DomainsApi.md#adddomaindnssec) | **POST** /domains/{id}/dnssec | Add Domain DNSSEC Records
-*DomainsApi* | [**AddDomainNameserver**](docs/DomainsApi.md#adddomainnameserver) | **POST** /domains/{id}/nameservers | Add Registered Nameserver
-*DomainsApi* | [**CancelDomain**](docs/DomainsApi.md#canceldomain) | **DELETE** /domains/{id} | Cancel Domain Order
-*DomainsApi* | [**DeleteDomainDnssec**](docs/DomainsApi.md#deletedomaindnssec) | **DELETE** /domains/{id}/dnssec | Remove Domain DNSSEC Records
-*DomainsApi* | [**DeleteDomainNameserver**](docs/DomainsApi.md#deletedomainnameserver) | **DELETE** /domains/{id}/nameservers | Delete Registered Nameserver
-*DomainsApi* | [**GetDomainContact**](docs/DomainsApi.md#getdomaincontact) | **GET** /domains/{id}/contact | Get Domain Contact Details
-*DomainsApi* | [**GetDomainDnssec**](docs/DomainsApi.md#getdomaindnssec) | **GET** /domains/{id}/dnssec | Get Domain DNSSEC Records
-*DomainsApi* | [**GetDomainInfo**](docs/DomainsApi.md#getdomaininfo) | **GET** /domains/{id} | Get Domain Order
-*DomainsApi* | [**GetDomainInvoices**](docs/DomainsApi.md#getdomaininvoices) | **GET** /domains/{id}/invoices | Get Domain Invoices
-*DomainsApi* | [**GetDomainLookup**](docs/DomainsApi.md#getdomainlookup) | **GET** /domains/lookup/{name} | Lookup Domain Availability and Pricing
-*DomainsApi* | [**GetDomainNameservers**](docs/DomainsApi.md#getdomainnameservers) | **GET** /domains/{id}/nameservers | List Registered Nameservers
-*DomainsApi* | [**GetDomainOrderFields**](docs/DomainsApi.md#getdomainorderfields) | **GET** /domains/order/{domain}/{regType} | Get Domain Order Fields
-*DomainsApi* | [**GetDomainOrderSearchResults**](docs/DomainsApi.md#getdomainordersearchresults) | **GET** /domains/order/{domain} | Get Domain Order Search Results
-*DomainsApi* | [**GetDomainRenewal**](docs/DomainsApi.md#getdomainrenewal) | **GET** /domains/{id}/renew | Start Domain Renewal Flow
-*DomainsApi* | [**GetDomainSearch**](docs/DomainsApi.md#getdomainsearch) | **GET** /domains/search/{name} | Search Domain Suggestions
-*DomainsApi* | [**GetDomainTransfer**](docs/DomainsApi.md#getdomaintransfer) | **GET** /domains/{id}/transfer | Start Domain Transfer Flow
-*DomainsApi* | [**GetDomainWhoisPrivacy**](docs/DomainsApi.md#getdomainwhoisprivacy) | **GET** /domains/{id}/whois | Get Whois Privacy Status
-*DomainsApi* | [**GetDomainsList**](docs/DomainsApi.md#getdomainslist) | **GET** /domains | List Domain Orders
-*DomainsApi* | [**GetDomainsWelcomeEmail**](docs/DomainsApi.md#getdomainswelcomeemail) | **GET** /domains/{id}/welcome_email | Resend Domain Welcome Email
-*DomainsApi* | [**GetNewDomain**](docs/DomainsApi.md#getnewdomain) | **GET** /domains/order | Get Domain Ordering Information
-*DomainsApi* | [**PatchDomains**](docs/DomainsApi.md#patchdomains) | **PATCH** /domains/order | Validate Domain Order
-*DomainsApi* | [**PostDomainRenewal**](docs/DomainsApi.md#postdomainrenewal) | **POST** /domains/{id}/renew | Request Domain Renewal
-*DomainsApi* | [**PostDomainTransfer**](docs/DomainsApi.md#postdomaintransfer) | **POST** /domains/{id}/transfer | Request Domain Transfer
-*DomainsApi* | [**PutDomains**](docs/DomainsApi.md#putdomains) | **PUT** /domains/order | Domain Order Search
-*DomainsApi* | [**UpdateDomainContact**](docs/DomainsApi.md#updatedomaincontact) | **POST** /domains/{id}/contact | Update Domain Contact Details
-*DomainsApi* | [**UpdateDomainInfo**](docs/DomainsApi.md#updatedomaininfo) | **POST** /domains/{id} | Update Domain Order
-*DomainsApi* | [**UpdateDomainNameservers**](docs/DomainsApi.md#updatedomainnameservers) | **PUT** /domains/{id}/nameservers | Replace Nameserver Set
-*DomainsApi* | [**UpdateDomainWhoisPrivacy**](docs/DomainsApi.md#updatedomainwhoisprivacy) | **POST** /domains/{id}/whois | Update Whois Privacy
-*FloatingIPsApi* | [**AddFloatingIp**](docs/FloatingIPsApi.md#addfloatingip) | **POST** /floating_ips/order | Place Floating IP Order
-*FloatingIPsApi* | [**FloatingIpsCancel**](docs/FloatingIPsApi.md#floatingipscancel) | **DELETE** /floating_ips/{id} | Cancel Floating IP
-*FloatingIPsApi* | [**GetFloatingIpInfo**](docs/FloatingIPsApi.md#getfloatingipinfo) | **GET** /floating_ips/{id} | View Floating IP
-*FloatingIPsApi* | [**GetFloatingIpInvoices**](docs/FloatingIPsApi.md#getfloatingipinvoices) | **GET** /floating_ips/{id}/invoices | Get Floating IP Invoices
-*FloatingIPsApi* | [**GetFloatingIpsList**](docs/FloatingIPsApi.md#getfloatingipslist) | **GET** /floating_ips | List Floating IPs
-*FloatingIPsApi* | [**GetFloatingIpsWelcomeEmail**](docs/FloatingIPsApi.md#getfloatingipswelcomeemail) | **GET** /floating_ips/{id}/welcome_email | Resend Floating IPs Welcome Email
-*FloatingIPsApi* | [**GetNewFloatingIp**](docs/FloatingIPsApi.md#getnewfloatingip) | **GET** /floating_ips/order | Get Floating IP Ordering Information
-*FloatingIPsApi* | [**PostFloatingIpsChangeIp**](docs/FloatingIPsApi.md#postfloatingipschangeip) | **POST** /floating_ips/{id}/change_ip | Change Floating IP Target
-*FloatingIPsApi* | [**PutFloatingIps**](docs/FloatingIPsApi.md#putfloatingips) | **PUT** /floating_ips/order | Validate Floating IP Order
-*FloatingIPsApi* | [**UpdateFloatingIpInfo**](docs/FloatingIPsApi.md#updatefloatingipinfo) | **POST** /floating_ips/{id} | Update Floating IP
-*LicensesApi* | [**AddLicense**](docs/LicensesApi.md#addlicense) | **POST** /licenses/order | Place License Order
-*LicensesApi* | [**GetLicenseInfo**](docs/LicensesApi.md#getlicenseinfo) | **GET** /licenses/{id} | Get License
-*LicensesApi* | [**GetLicenseInvoices**](docs/LicensesApi.md#getlicenseinvoices) | **GET** /licenses/{id}/invoices | Get License Invoices
-*LicensesApi* | [**GetLicenseList**](docs/LicensesApi.md#getlicenselist) | **GET** /licenses | List Licenses
-*LicensesApi* | [**GetLicenseOrderCatTagInfo**](docs/LicensesApi.md#getlicenseordercattaginfo) | **GET** /licenses/order/{catTag} | Get License Order Information for Category
-*LicensesApi* | [**GetLicensesWelcomeEmail**](docs/LicensesApi.md#getlicenseswelcomeemail) | **GET** /licenses/{id}/welcome_email | Resend License Welcome Email
-*LicensesApi* | [**GetNewLicense**](docs/LicensesApi.md#getnewlicense) | **GET** /licenses/order | Get License Order Information
-*LicensesApi* | [**LicensesCancel**](docs/LicensesApi.md#licensescancel) | **DELETE** /licenses/{id} | Cancel License
-*LicensesApi* | [**PostLicenseChangeIp**](docs/LicensesApi.md#postlicensechangeip) | **POST** /licenses/{id}/change_ip | Change License IP
-*LicensesApi* | [**PutLicenses**](docs/LicensesApi.md#putlicenses) | **PUT** /licenses/order | Validate License Order
-*LicensesApi* | [**UpdateLicenseInfo**](docs/LicensesApi.md#updatelicenseinfo) | **POST** /licenses/{id} | Update License
-*MailApi* | [**AddMail**](docs/MailApi.md#addmail) | **POST** /mail/order | Place Mail Order
-*MailApi* | [**AddRule**](docs/MailApi.md#addrule) | **POST** /mail/{id}/rules | Create Deny Rule
-*MailApi* | [**CreateMailAlert**](docs/MailApi.md#createmailalert) | **POST** /mail/{id}/alerts | Create Mail Alert
-*MailApi* | [**DeleteMailAlert**](docs/MailApi.md#deletemailalert) | **DELETE** /mail/{id}/alerts | Delete Mail Alert
-*MailApi* | [**DeleteRule**](docs/MailApi.md#deleterule) | **DELETE** /mail/{id}/rules/{rule} | Delete Deny Rule
-*MailApi* | [**DelistBlock**](docs/MailApi.md#delistblock) | **POST** /mail/{id}/blocks/delete | Remove Email Address from Block List
-*MailApi* | [**GetMailAlerts**](docs/MailApi.md#getmailalerts) | **GET** /mail/{id}/alerts | List Mail Alerts
-*MailApi* | [**GetMailBlocks**](docs/MailApi.md#getmailblocks) | **GET** /mail/{id}/blocks | List Blocked Email Addresses
-*MailApi* | [**GetMailDelist**](docs/MailApi.md#getmaildelist) | **GET** /mail/{id}/delist | Get Delist Status
-*MailApi* | [**GetMailDeliverability**](docs/MailApi.md#getmaildeliverability) | **GET** /mail/{id}/deliverability | Get Deliverability Metrics
-*MailApi* | [**GetMailInfo**](docs/MailApi.md#getmailinfo) | **GET** /mail/{id} | Get Mail Order
-*MailApi* | [**GetMailInvoices**](docs/MailApi.md#getmailinvoices) | **GET** /mail/{id}/invoices | Get Mail Invoices
-*MailApi* | [**GetMailList**](docs/MailApi.md#getmaillist) | **GET** /mail | List Mail Orders
-*MailApi* | [**GetMailWelcomeEmail**](docs/MailApi.md#getmailwelcomeemail) | **GET** /mail/{id}/welcome_email | Resend Mail Welcome Email
-*MailApi* | [**GetNewMail**](docs/MailApi.md#getnewmail) | **GET** /mail/order | Get Mail Ordering Information
-*MailApi* | [**GetRules**](docs/MailApi.md#getrules) | **GET** /mail/{id}/rules | List Deny Rules
-*MailApi* | [**GetStats**](docs/MailApi.md#getstats) | **GET** /mail/{id}/stats | Get Mail Usage Statistics
-*MailApi* | [**MailCancel**](docs/MailApi.md#mailcancel) | **DELETE** /mail/{id} | Cancel Mail
-*MailApi* | [**PostMailDelist**](docs/MailApi.md#postmaildelist) | **POST** /mail/{id}/delist | Delist a Blocked Sender
-*MailApi* | [**PutMail**](docs/MailApi.md#putmail) | **PUT** /mail/order | Validate Mail Order
-*MailApi* | [**ResetMailPassword**](docs/MailApi.md#resetmailpassword) | **GET** /mail/{id}/reset_password | Reset Mail Password
-*MailApi* | [**SendAdvMail**](docs/MailApi.md#sendadvmail) | **POST** /mail/{id}/advsend | Send Email with Advanced Options
-*MailApi* | [**SendMail**](docs/MailApi.md#sendmail) | **POST** /mail/{id}/send | Send Email
-*MailApi* | [**UpdateMailAlert**](docs/MailApi.md#updatemailalert) | **PUT** /mail/{id}/alerts | Update Mail Alert
-*MailApi* | [**UpdateMailInfo**](docs/MailApi.md#updatemailinfo) | **POST** /mail/{id} | Update Mail Order
-*MailApi* | [**ViewMailLog**](docs/MailApi.md#viewmaillog) | **GET** /mail/{id}/log | View Mail Log
-*PublicApi* | [**GetCaptcha**](docs/PublicApi.md#getcaptcha) | **GET** /captcha | Get Captcha Challenge
-*PublicApi* | [**GetCountries**](docs/PublicApi.md#getcountries) | **GET** /account/countries | Get Countries
-*PublicApi* | [**GetInfo**](docs/PublicApi.md#getinfo) | **GET** /info | Get Server Info
-*PublicApi* | [**GetLoginInfo**](docs/PublicApi.md#getlogininfo) | **GET** /login | Get Login Info
-*PublicApi* | [**GetMPServers**](docs/PublicApi.md#getmpservers) | **GET** /buy_now_servers_list | List Marketplace Servers
-*PublicApi* | [**GetOauthRedirect**](docs/PublicApi.md#getoauthredirect) | **GET** /oauth | Get OAuth Redirect URL
-*PublicApi* | [**GetTimezones**](docs/PublicApi.md#gettimezones) | **GET** /account/timezones | Get Available Timezones
-*PublicApi* | [**PatchOauthTwoFactor**](docs/PublicApi.md#patchoauthtwofactor) | **PATCH** /oauth | Complete OAuth Two-Factor Verification
-*PublicApi* | [**PingServer**](docs/PublicApi.md#pingserver) | **GET** /ping | Ping Server
-*PublicApi* | [**PostOauthCallback**](docs/PublicApi.md#postoauthcallback) | **POST** /oauth | OAuth Callback
-*PublicApi* | [**SubmitLogin**](docs/PublicApi.md#submitlogin) | **POST** /login | Submit Login Information
-*PublicApi* | [**SubmitSignup**](docs/PublicApi.md#submitsignup) | **POST** /signup | Submit Signup Information
-*QuickServersApi* | [**AddQs**](docs/QuickServersApi.md#addqs) | **POST** /qs/order | Place QuickServer Order
-*QuickServersApi* | [**DeleteQsBackup**](docs/QuickServersApi.md#deleteqsbackup) | **DELETE** /qs/{id}/backups | Delete QuickServer Backup
-*QuickServersApi* | [**DoQsBlockSmtp**](docs/QuickServersApi.md#doqsblocksmtp) | **GET** /qs/{id}/block_smtp | Block QuickServer SMTP
-*QuickServersApi* | [**DoQsDisableCd**](docs/QuickServersApi.md#doqsdisablecd) | **GET** /qs/{id}/disable_cd | Disable CD Drive
-*QuickServersApi* | [**DoQsDisableQuota**](docs/QuickServersApi.md#doqsdisablequota) | **GET** /qs/{id}/disable_quota | Disable Quotas
-*QuickServersApi* | [**DoQsEjectCd**](docs/QuickServersApi.md#doqsejectcd) | **GET** /qs/{id}/eject_cd | Eject CD Drive
-*QuickServersApi* | [**DoQsEnableQuota**](docs/QuickServersApi.md#doqsenablequota) | **GET** /qs/{id}/enable_quota | Enable Quotas
-*QuickServersApi* | [**DoQsRestart**](docs/QuickServersApi.md#doqsrestart) | **GET** /qs/{id}/restart | Restart QuickServer
-*QuickServersApi* | [**DoQsStart**](docs/QuickServersApi.md#doqsstart) | **GET** /qs/{id}/start | Start QuickServer
-*QuickServersApi* | [**DoQsStop**](docs/QuickServersApi.md#doqsstop) | **GET** /qs/{id}/stop | Stop QuickServer
-*QuickServersApi* | [**DownloadQsBackup**](docs/QuickServersApi.md#downloadqsbackup) | **PATCH** /qs/{id}/backups | Download QuickServer Backup
-*QuickServersApi* | [**GetNewQs**](docs/QuickServersApi.md#getnewqs) | **GET** /qs/order | Get QuickServer Ordering Information
-*QuickServersApi* | [**GetQsBackups**](docs/QuickServersApi.md#getqsbackups) | **GET** /qs/{id}/backups | List QuickServer Backups
-*QuickServersApi* | [**GetQsChangeHostname**](docs/QuickServersApi.md#getqschangehostname) | **GET** /qs/{id}/change_hostname | Get QuickServer Hostname
-*QuickServersApi* | [**GetQsChangeRootPassword**](docs/QuickServersApi.md#getqschangerootpassword) | **GET** /qs/{id}/change_root_password | Get Change Root Password Info
-*QuickServersApi* | [**GetQsChangeTimezone**](docs/QuickServersApi.md#getqschangetimezone) | **GET** /qs/{id}/change_timezone | Get Timezone Info
-*QuickServersApi* | [**GetQsChangeWebuzoPassword**](docs/QuickServersApi.md#getqschangewebuzopassword) | **GET** /qs/{id}/change_webuzo_password | Webuzo Change Pass Info
-*QuickServersApi* | [**GetQsInfo**](docs/QuickServersApi.md#getqsinfo) | **GET** /qs/{id} | Get QuickServer Order
-*QuickServersApi* | [**GetQsInsertCd**](docs/QuickServersApi.md#getqsinsertcd) | **GET** /qs/{id}/insert_cd | Insert CD Information
-*QuickServersApi* | [**GetQsInvoices**](docs/QuickServersApi.md#getqsinvoices) | **GET** /qs/{id}/invoices | Get QuickServer Invoices
-*QuickServersApi* | [**GetQsList**](docs/QuickServersApi.md#getqslist) | **GET** /qs | List QuickServers
-*QuickServersApi* | [**GetQsReinstallOs**](docs/QuickServersApi.md#getqsreinstallos) | **GET** /qs/{id}/reinstall_os | QuickServer Reinstall OS Options
-*QuickServersApi* | [**GetQsResetPassword**](docs/QuickServersApi.md#getqsresetpassword) | **GET** /qs/{id}/reset_password | Reset QuickServer Password Info
-*QuickServersApi* | [**GetQsReverseDns**](docs/QuickServersApi.md#getqsreversedns) | **GET** /qs/{id}/reverse_dns | Reverse DNS Info
-*QuickServersApi* | [**GetQsSetupVnc**](docs/QuickServersApi.md#getqssetupvnc) | **GET** /qs/{id}/setup_vnc | VNC Setup Info
-*QuickServersApi* | [**GetQsTrafficUsage**](docs/QuickServersApi.md#getqstrafficusage) | **GET** /qs/{id}/traffic_usage | Get Traffic Usage
-*QuickServersApi* | [**GetQsViewDesktop**](docs/QuickServersApi.md#getqsviewdesktop) | **GET** /qs/{id}/view_desktop | Get View Desktop Info
-*QuickServersApi* | [**GetQsWelcomeEmail**](docs/QuickServersApi.md#getqswelcomeemail) | **GET** /qs/{id}/welcome_email | Resend QuickServer Welcome Email
-*QuickServersApi* | [**PostQsBackup**](docs/QuickServersApi.md#postqsbackup) | **POST** /qs/{id}/backup | Create QuickServer Backup
-*QuickServersApi* | [**PostQsChangeHostname**](docs/QuickServersApi.md#postqschangehostname) | **POST** /qs/{id}/change_hostname | Update QuickServer Hostname
-*QuickServersApi* | [**PostQsChangeRootPassword**](docs/QuickServersApi.md#postqschangerootpassword) | **POST** /qs/{id}/change_root_password | Change Root Password
-*QuickServersApi* | [**PostQsChangeTimezone**](docs/QuickServersApi.md#postqschangetimezone) | **POST** /qs/{id}/change_timezone | Change QuickServer Timezone
-*QuickServersApi* | [**PostQsChangeWebuzoPassword**](docs/QuickServersApi.md#postqschangewebuzopassword) | **POST** /qs/{id}/change_webuzo_password | Change Webuzo Password
-*QuickServersApi* | [**PostQsInsertCd**](docs/QuickServersApi.md#postqsinsertcd) | **POST** /qs/{id}/insert_cd | Insert CD in QuickServer
-*QuickServersApi* | [**PostQsReinstallOs**](docs/QuickServersApi.md#postqsreinstallos) | **POST** /qs/{id}/reinstall_os | Reinstall QuickServer OS
-*QuickServersApi* | [**PostQsResetPassword**](docs/QuickServersApi.md#postqsresetpassword) | **POST** /qs/{id}/reset_password | Reset QuickServer Password
-*QuickServersApi* | [**PostQsReverseDns**](docs/QuickServersApi.md#postqsreversedns) | **POST** /qs/{id}/reverse_dns | Update Reverse DNS
-*QuickServersApi* | [**PostQsSetupVnc**](docs/QuickServersApi.md#postqssetupvnc) | **POST** /qs/{id}/setup_vnc | Setup VNC
-*QuickServersApi* | [**PostQsTrafficUsage**](docs/QuickServersApi.md#postqstrafficusage) | **POST** /qs/{id}/traffic_usage | Search Traffic Usage
-*QuickServersApi* | [**PostQsViewDesktop**](docs/QuickServersApi.md#postqsviewdesktop) | **POST** /qs/{id}/view_desktop | Update View Desktop
-*QuickServersApi* | [**PostQuickServerRestore**](docs/QuickServersApi.md#postquickserverrestore) | **POST** /qs/{id}/restore | Restore QuickServer from Backup
-*QuickServersApi* | [**PutQs**](docs/QuickServersApi.md#putqs) | **PUT** /qs/order | Validate QuickServer Order
-*QuickServersApi* | [**QuickserversCancel**](docs/QuickServersApi.md#quickserverscancel) | **DELETE** /qs/{id} | Cancel QuickServer Order
-*QuickServersApi* | [**UpdateQsInfo**](docs/QuickServersApi.md#updateqsinfo) | **POST** /qs/{id} | Update QuickServer Order
-*SSLCertificatesApi* | [**AddSsl**](docs/SSLCertificatesApi.md#addssl) | **POST** /ssl/order | Place SSL Cert Order
-*SSLCertificatesApi* | [**GetNewSsl**](docs/SSLCertificatesApi.md#getnewssl) | **GET** /ssl/order | SSL Cert Ordering Information
-*SSLCertificatesApi* | [**GetSslInfo**](docs/SSLCertificatesApi.md#getsslinfo) | **GET** /ssl/{id} | Get SSL Cert Info
-*SSLCertificatesApi* | [**GetSslInvoices**](docs/SSLCertificatesApi.md#getsslinvoices) | **GET** /ssl/{id}/invoices | Get SSL Cert Invoices
-*SSLCertificatesApi* | [**GetSslList**](docs/SSLCertificatesApi.md#getssllist) | **GET** /ssl | List SSL Certs
-*SSLCertificatesApi* | [**GetSslWelcomeEmail**](docs/SSLCertificatesApi.md#getsslwelcomeemail) | **GET** /ssl/{id}/welcome_email | Resend SSL Welcome Email
-*SSLCertificatesApi* | [**PutSsl**](docs/SSLCertificatesApi.md#putssl) | **PUT** /ssl/order | Validate SSL Cert Order
-*SSLCertificatesApi* | [**SslCancel**](docs/SSLCertificatesApi.md#sslcancel) | **DELETE** /ssl/{id} | Cancel SSL Certificate Service
-*SSLCertificatesApi* | [**UpdateSslInfo**](docs/SSLCertificatesApi.md#updatesslinfo) | **POST** /ssl/{id} | Update SSL Cert Order
-*ScrubIpsApi* | [**CancelScrubIp**](docs/ScrubIpsApi.md#cancelscrubip) | **DELETE** /scrub_ips/{id} | Cancel Scrub IP Service
-*ScrubIpsApi* | [**CreateFilter**](docs/ScrubIpsApi.md#createfilter) | **POST** /scrub_ips/{id}/create_filter | Create Traffic Filter
-*ScrubIpsApi* | [**CreateGeoRule**](docs/ScrubIpsApi.md#creategeorule) | **POST** /scrub_ips/{id}/create_geo_rule | Create Geo Firewall Rule
-*ScrubIpsApi* | [**CreateRule**](docs/ScrubIpsApi.md#createrule) | **POST** /scrub_ips/{id}/create_rule | Create Firewall Rule
-*ScrubIpsApi* | [**DeleteFilter**](docs/ScrubIpsApi.md#deletefilter) | **POST** /scrub_ips/{id}/delete_filter | Delete Traffic Filter
-*ScrubIpsApi* | [**DisableScrub**](docs/ScrubIpsApi.md#disablescrub) | **GET** /scrub_ips/{id}/disable | Disable Scrub Protection
-*ScrubIpsApi* | [**EnableScrub**](docs/ScrubIpsApi.md#enablescrub) | **GET** /scrub_ips/{id}/enable | Enable Scrub Protection
-*ScrubIpsApi* | [**GetOrderDetail**](docs/ScrubIpsApi.md#getorderdetail) | **GET** /scrub_ips/order | Get Scrub IP Ordering Information
-*ScrubIpsApi* | [**GetScrubIpDetails**](docs/ScrubIpsApi.md#getscrubipdetails) | **GET** /scrub_ips/{id} | Get Scrub IP Details
-*ScrubIpsApi* | [**GetScrubIpFilterTypes**](docs/ScrubIpsApi.md#getscrubipfiltertypes) | **GET** /scrub_ips/filter_types | List Scrub Filter Types
-*ScrubIpsApi* | [**GetScrubIpInvoices**](docs/ScrubIpsApi.md#getscrubipinvoices) | **GET** /scrub_ips/{id}/invoices | Get ScrubIp Invoices
-*ScrubIpsApi* | [**GetScrubIpLogs**](docs/ScrubIpsApi.md#getscrubiplogs) | **GET** /scrub_ips/{id}/logs | Get Scrub IP Logs
-*ScrubIpsApi* | [**GetScrubIpsList**](docs/ScrubIpsApi.md#getscrubipslist) | **GET** /scrub_ips | List Scrub IP Services
-*ScrubIpsApi* | [**PlaceScrubOrder**](docs/ScrubIpsApi.md#placescruborder) | **POST** /scrub_ips/order | Place Scrub IP Order
-*ScrubIpsApi* | [**ScrubIpsDeleteGeoRule**](docs/ScrubIpsApi.md#scrubipsdeletegeorule) | **POST** /scrub_ips/{id}/delete_geo_rule | Delete Geo Firewall Rule
-*ScrubIpsApi* | [**ScrubIpsDeleteRule**](docs/ScrubIpsApi.md#scrubipsdeleterule) | **POST** /scrub_ips/{id}/delete_rule | Delete Firewall Rule
-*ServersApi* | [**AddServer**](docs/ServersApi.md#addserver) | **POST** /servers/order | Place Server Order
-*ServersApi* | [**BuyItNowServerOrder**](docs/ServersApi.md#buyitnowserverorder) | **GET** /servers/order/buy_now_server | Get Buy Now Server Options
-*ServersApi* | [**GetMPServers**](docs/ServersApi.md#getmpservers) | **GET** /buy_now_servers_list | List Marketplace Servers
-*ServersApi* | [**GetNewServer**](docs/ServersApi.md#getnewserver) | **GET** /servers/order | Server Ordering Information
-*ServersApi* | [**GetServerInfo**](docs/ServersApi.md#getserverinfo) | **GET** /servers/{id} | Get Server Order
-*ServersApi* | [**GetServerInvoices**](docs/ServersApi.md#getserverinvoices) | **GET** /servers/{id}/invoices | Get Server Invoices
-*ServersApi* | [**GetServerList**](docs/ServersApi.md#getserverlist) | **GET** /servers | List Servers
-*ServersApi* | [**GetServerReverseDns**](docs/ServersApi.md#getserverreversedns) | **GET** /servers/{id}/reverse_dns | Reverse DNS Info
-*ServersApi* | [**GetServersWelcomeEmail**](docs/ServersApi.md#getserverswelcomeemail) | **GET** /servers/{id}/welcome_email | Resend Server Welcome Email
-*ServersApi* | [**PlaceBuyNowServer**](docs/ServersApi.md#placebuynowserver) | **POST** /servers/order/buy_now_server | Place Buy Now Server Order
-*ServersApi* | [**PostServerReverseDns**](docs/ServersApi.md#postserverreversedns) | **POST** /servers/{id}/reverse_dns | Update Reverse DNS
-*ServersApi* | [**PutServers**](docs/ServersApi.md#putservers) | **PUT** /servers/order | Validate Server Order
-*ServersApi* | [**ServerIpmiLiveGet**](docs/ServersApi.md#serveripmiliveget) | **GET** /servers/{id}/ipmi_live | Server IPMI Live Information
-*ServersApi* | [**ServerIpmiLivePost**](docs/ServersApi.md#serveripmilivepost) | **POST** /servers/{id}/ipmi_live | Server IPMI Live Setup
-*ServersApi* | [**ServerIpmiPowerGet**](docs/ServersApi.md#serveripmipowerget) | **GET** /servers/{id}/ipmi_power | Get IPMI Power Status
-*ServersApi* | [**ServerIpmiPowerPost**](docs/ServersApi.md#serveripmipowerpost) | **POST** /servers/{id}/ipmi_power | Server IPMI Power
-*ServersApi* | [**ServersCancel**](docs/ServersApi.md#serverscancel) | **DELETE** /servers/{id} | Cancel Server Service
-*ServersApi* | [**UpdateServerInfo**](docs/ServersApi.md#updateserverinfo) | **POST** /servers/{id} | Update Server Order
-*TicketsApi* | [**AddNewTicket**](docs/TicketsApi.md#addnewticket) | **POST** /tickets/new | Create New Ticket
-*TicketsApi* | [**CloseTicket**](docs/TicketsApi.md#closeticket) | **GET** /tickets/{id}/close | Close Ticket
-*TicketsApi* | [**DeleteTicketInfo**](docs/TicketsApi.md#deleteticketinfo) | **DELETE** /tickets/{id} | Close Ticket
-*TicketsApi* | [**GetNewTicket**](docs/TicketsApi.md#getnewticket) | **GET** /tickets/new | Gets Information for creating a new ticket.
-*TicketsApi* | [**GetTicketInfo**](docs/TicketsApi.md#getticketinfo) | **GET** /tickets/{id} | Get Ticket Information
-*TicketsApi* | [**GetTicketsList**](docs/TicketsApi.md#getticketslist) | **GET** /tickets | List Support Tickets
-*TicketsApi* | [**PostTicketInfo**](docs/TicketsApi.md#postticketinfo) | **POST** /tickets/{id} | Reply To Ticket
-*TicketsApi* | [**PostTicketsList**](docs/TicketsApi.md#postticketslist) | **POST** /tickets | Search Support Tickets
-*TicketsApi* | [**PutTicketInfo**](docs/TicketsApi.md#putticketinfo) | **PUT** /tickets/{id} | Update Ticket
-*TicketsApi* | [**ReplyTicket**](docs/TicketsApi.md#replyticket) | **POST** /tickets/{id}/reply | Reply Ticket
-*TicketsApi* | [**UpdateTicketInfo**](docs/TicketsApi.md#updateticketinfo) | **POST** /tickets/{id}/update | Update Ticket
-*VPSApi* | [**AddVps**](docs/VPSApi.md#addvps) | **POST** /vps/order | Place VPS Order
-*VPSApi* | [**DeleteVpsBackup**](docs/VPSApi.md#deletevpsbackup) | **DELETE** /vps/{id}/backups | Delete VPS Backup
-*VPSApi* | [**DoVpsBlockSmtp**](docs/VPSApi.md#dovpsblocksmtp) | **GET** /vps/{id}/block_smtp | Blocks SMTP
-*VPSApi* | [**DoVpsDisableCd**](docs/VPSApi.md#dovpsdisablecd) | **GET** /vps/{id}/disable_cd | Disable CD Drive
-*VPSApi* | [**DoVpsDisableQuota**](docs/VPSApi.md#dovpsdisablequota) | **GET** /vps/{id}/disable_quota | Disable Quotas
-*VPSApi* | [**DoVpsEjectCd**](docs/VPSApi.md#dovpsejectcd) | **GET** /vps/{id}/eject_cd | Eject CD Drive
-*VPSApi* | [**DoVpsEnableQuota**](docs/VPSApi.md#dovpsenablequota) | **GET** /vps/{id}/enable_quota | Enable Quotas
-*VPSApi* | [**DoVpsRestart**](docs/VPSApi.md#dovpsrestart) | **GET** /vps/{id}/restart | Restart VPS
-*VPSApi* | [**DoVpsStart**](docs/VPSApi.md#dovpsstart) | **GET** /vps/{id}/start | Start VPS
-*VPSApi* | [**DoVpsStop**](docs/VPSApi.md#dovpsstop) | **GET** /vps/{id}/stop | Stop VPS
-*VPSApi* | [**DownloadVpsBackup**](docs/VPSApi.md#downloadvpsbackup) | **PATCH** /vps/{id}/backups | Download VPS Backup
-*VPSApi* | [**GetNewVps**](docs/VPSApi.md#getnewvps) | **GET** /vps/order | VPS Ordering Information
-*VPSApi* | [**GetVpsBackups**](docs/VPSApi.md#getvpsbackups) | **GET** /vps/{id}/backups | Get VPS Backups List
-*VPSApi* | [**GetVpsBuyHdSpace**](docs/VPSApi.md#getvpsbuyhdspace) | **GET** /vps/{id}/buy_hd_space | HD Space Addon Info
-*VPSApi* | [**GetVpsBuyIp**](docs/VPSApi.md#getvpsbuyip) | **GET** /vps/{id}/buy_ip | Additional IP Addon Info
-*VPSApi* | [**GetVpsChangeTimezone**](docs/VPSApi.md#getvpschangetimezone) | **GET** /vps/{id}/change_timezone | Get Timezone Info
-*VPSApi* | [**GetVpsInfo**](docs/VPSApi.md#getvpsinfo) | **GET** /vps/{id} | Get VPS Order
-*VPSApi* | [**GetVpsInvoices**](docs/VPSApi.md#getvpsinvoices) | **GET** /vps/{id}/invoices | Get VPS Invoices
-*VPSApi* | [**GetVpsList**](docs/VPSApi.md#getvpslist) | **GET** /vps | List VPS Orders
-*VPSApi* | [**GetVpsReinstallOs**](docs/VPSApi.md#getvpsreinstallos) | **GET** /vps/{id}/reinstall_os | VPS Reinstall OS Options
-*VPSApi* | [**GetVpsReverseDns**](docs/VPSApi.md#getvpsreversedns) | **GET** /vps/{id}/reverse_dns | Reverse DNS Info
-*VPSApi* | [**GetVpsSetupVnc**](docs/VPSApi.md#getvpssetupvnc) | **GET** /vps/{id}/setup_vnc | VNC Setup Info
-*VPSApi* | [**GetVpsSlices**](docs/VPSApi.md#getvpsslices) | **GET** /vps/{id}/slices | Slice Upgrade Info
-*VPSApi* | [**GetVpsTrafficUsage**](docs/VPSApi.md#getvpstrafficusage) | **GET** /vps/{id}/traffic_usage | Get Traffic Usage
-*VPSApi* | [**GetVpsViewDesktop**](docs/VPSApi.md#getvpsviewdesktop) | **GET** /vps/{id}/view_desktop | Get View Desktop Info
-*VPSApi* | [**GetVpsWelcomeEmail**](docs/VPSApi.md#getvpswelcomeemail) | **GET** /vps/{id}/welcome_email | Resend VPS Welcome Email
-*VPSApi* | [**PostVpsBackup**](docs/VPSApi.md#postvpsbackup) | **GET** /vps/{id}/backup | Start a VPS Backup
-*VPSApi* | [**PostVpsBuyHdSpace**](docs/VPSApi.md#postvpsbuyhdspace) | **POST** /vps/{id}/buy_hd_space | Purchase HD Space Addon
-*VPSApi* | [**PostVpsBuyIp**](docs/VPSApi.md#postvpsbuyip) | **POST** /vps/{id}/buy_ip | Purchase Additional IP
-*VPSApi* | [**PostVpsChangeHostname**](docs/VPSApi.md#postvpschangehostname) | **POST** /vps/{id}/change_hostname | Update VPS Hostname
-*VPSApi* | [**PostVpsChangeRootPassword**](docs/VPSApi.md#postvpschangerootpassword) | **POST** /vps/{id}/change_root_password | Change VPS Root Password
-*VPSApi* | [**PostVpsChangeTimezone**](docs/VPSApi.md#postvpschangetimezone) | **POST** /vps/{id}/change_timezone | Change VPS Timezone
-*VPSApi* | [**PostVpsChangeWebuzoPassword**](docs/VPSApi.md#postvpschangewebuzopassword) | **POST** /vps/{id}/change_webuzo_password | Change Webuzo Password
-*VPSApi* | [**PostVpsInsertCd**](docs/VPSApi.md#postvpsinsertcd) | **POST** /vps/{id}/insert_cd | Insert CD in VPS
-*VPSApi* | [**PostVpsReinstallOs**](docs/VPSApi.md#postvpsreinstallos) | **POST** /vps/{id}/reinstall_os | Reinstall VPS OS
-*VPSApi* | [**PostVpsResetPassword**](docs/VPSApi.md#postvpsresetpassword) | **POST** /vps/{id}/reset_password | Reset VPS Password
-*VPSApi* | [**PostVpsRestore**](docs/VPSApi.md#postvpsrestore) | **POST** /vps/{id}/restore | Restore VPS from Backup
-*VPSApi* | [**PostVpsReverseDns**](docs/VPSApi.md#postvpsreversedns) | **POST** /vps/{id}/reverse_dns | Update Reverse DNS
-*VPSApi* | [**PostVpsSetupVnc**](docs/VPSApi.md#postvpssetupvnc) | **POST** /vps/{id}/setup_vnc | Setup VNC
-*VPSApi* | [**PostVpsSlices**](docs/VPSApi.md#postvpsslices) | **POST** /vps/{id}/slices | Purchase Slice Upgrade
-*VPSApi* | [**PostVpsViewDesktop**](docs/VPSApi.md#postvpsviewdesktop) | **POST** /vps/{id}/view_desktop | Update View Desktop
-*VPSApi* | [**PutVps**](docs/VPSApi.md#putvps) | **PUT** /vps/order | Validate VPS Order
-*VPSApi* | [**UpdateVpsInfo**](docs/VPSApi.md#updatevpsinfo) | **POST** /vps/{id} | Update VPS Order
-*VPSApi* | [**VPSCancel**](docs/VPSApi.md#vpscancel) | **DELETE** /vps/{id} | Cancel VPS Service
-*WebhostingApi* | [**AddWebsite**](docs/WebhostingApi.md#addwebsite) | **POST** /websites/order | Place Website Order
-*WebhostingApi* | [**GetNewWebsite**](docs/WebhostingApi.md#getnewwebsite) | **GET** /websites/order | Website Ordering Information
-*WebhostingApi* | [**GetWebsiteBuyIp**](docs/WebhostingApi.md#getwebsitebuyip) | **GET** /websites/{id}/buy_ip | Get Website IP Information
-*WebhostingApi* | [**GetWebsiteInfo**](docs/WebhostingApi.md#getwebsiteinfo) | **GET** /websites/{id} | Get Website Order
-*WebhostingApi* | [**GetWebsiteInvoices**](docs/WebhostingApi.md#getwebsiteinvoices) | **GET** /websites/{id}/invoices | Get Website Invoices
-*WebhostingApi* | [**GetWebsiteList**](docs/WebhostingApi.md#getwebsitelist) | **GET** /websites | Get Website Listing
-*WebhostingApi* | [**GetWebsitesBackups**](docs/WebhostingApi.md#getwebsitesbackups) | **GET** /websites/{id}/backups | Get Website Backups
-*WebhostingApi* | [**GetWebsitesLogin**](docs/WebhostingApi.md#getwebsiteslogin) | **GET** /websites/{id}/login | Hosting Panel Auto Login
-*WebhostingApi* | [**GetWebsitesWelcomeEmail**](docs/WebhostingApi.md#getwebsiteswelcomeemail) | **GET** /websites/{id}/welcome_email | Resend Website Welcome Email
-*WebhostingApi* | [**GettWebsiteReverseDns**](docs/WebhostingApi.md#gettwebsitereversedns) | **GET** /websites/{id}/reverse_dns | Get Website Reverse DNS
-*WebhostingApi* | [**PostWebsiteBuyIp**](docs/WebhostingApi.md#postwebsitebuyip) | **POST** /websites/{id}/buy_ip | Update Website IP DNS
-*WebhostingApi* | [**PostWebsiteMigration**](docs/WebhostingApi.md#postwebsitemigration) | **POST** /websites/{id}/migration | Request Website Migration
-*WebhostingApi* | [**PostWebsitesReverseDns**](docs/WebhostingApi.md#postwebsitesreversedns) | **POST** /websites/{id}/reverse_dns | Update Website Reverse DNS
-*WebhostingApi* | [**PutWebsites**](docs/WebhostingApi.md#putwebsites) | **PUT** /websites/order | Validate Webhosting Order
-*WebhostingApi* | [**UpdateWebsiteInfo**](docs/WebhostingApi.md#updatewebsiteinfo) | **POST** /websites/{id} | Update Website Order
-*WebhostingApi* | [**WebhostingCancel**](docs/WebhostingApi.md#webhostingcancel) | **DELETE** /websites/{id} | Cancel Website
+*AccountApi* | [**DeleteAccountOauthName**](docs/AccountApi.md#deleteaccountoauthname) | **DELETE** /account/oauth/{name} | Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
+*AccountApi* | [**DeleteAccountTfa**](docs/AccountApi.md#deleteaccounttfa) | **DELETE** /account/2fa | Disable two-factor authentication and remove the TOTP secret
+*AccountApi* | [**DeleteIpLimit**](docs/AccountApi.md#deleteiplimit) | **PATCH** /account/iplimits | Remove one IP range from the account allow-list (PATCH on /account/iplimits)
+*AccountApi* | [**GetAccountInfo**](docs/AccountApi.md#getaccountinfo) | **GET** /account | Read full account profile, billing address, and security settings
+*AccountApi* | [**GetAccountTfaSetup**](docs/AccountApi.md#getaccounttfasetup) | **GET** /account/2fa | Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
+*AccountApi* | [**GetHome**](docs/AccountApi.md#gethome) | **GET** /home | Aggregate dashboard payload — service counts, recent activity, alerts
+*AccountApi* | [**GetSearch**](docs/AccountApi.md#getsearch) | **GET** /search | Global autocomplete across the caller's services, domains, and records
+*AccountApi* | [**Logout**](docs/AccountApi.md#logout) | **GET** /logout | Destroy the current API/web session — token becomes unusable
+*AccountApi* | [**LogoutAccountOauth**](docs/AccountApi.md#logoutaccountoauth) | **GET** /account/oauth/{name}/logout | Sign out of the upstream OAuth provider session (does not unlink the account)
+*AccountApi* | [**UpdateAccountApiKey**](docs/AccountApi.md#updateaccountapikey) | **POST** /account/apikey | Rotate the account's REST/MCP API key — old key is invalidated immediately
+*AccountApi* | [**UpdateAccountFeatures**](docs/AccountApi.md#updateaccountfeatures) | **POST** /account/features | Toggle account-wide safety locks for password reset and OS reinstall
+*AccountApi* | [**UpdateAccountInfo**](docs/AccountApi.md#updateaccountinfo) | **POST** /account | Update contact and billing-address fields on the customer profile
+*AccountApi* | [**UpdateAccountIpLimits**](docs/AccountApi.md#updateaccountiplimits) | **POST** /account/iplimits | Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
+*AccountApi* | [**UpdateAccountPassword**](docs/AccountApi.md#updateaccountpassword) | **POST** /account/password | Change the account login password (verifies current, kills other sessions)
+*AccountApi* | [**UpdateAccountSshKey**](docs/AccountApi.md#updateaccountsshkey) | **POST** /account/sshkey | Set the account-level SSH public key auto-installed on new VPS/dedicated orders
+*AccountApi* | [**UpdateAccountTfa**](docs/AccountApi.md#updateaccounttfa) | **POST** /account/2fa | Verify TOTP code and enable two-factor authentication on the account
+*BackupsApi* | [**AddBackup**](docs/BackupsApi.md#addbackup) | **POST** /backups/order | Place a new off-site backup storage order and generate the invoice
+*BackupsApi* | [**CancelBackup**](docs/BackupsApi.md#cancelbackup) | **DELETE** /backups/{id} | Cancel an off-site backup storage subscription
+*BackupsApi* | [**GetBackupInfo**](docs/BackupsApi.md#getbackupinfo) | **GET** /backups/{id} | Get details of a specific off-site backup storage service
+*BackupsApi* | [**GetBackupInvoices**](docs/BackupsApi.md#getbackupinvoices) | **GET** /backups/{id}/invoices | List invoices for a single backup-storage subscription
+*BackupsApi* | [**GetBackupLogin**](docs/BackupsApi.md#getbackuplogin) | **GET** /backups/{id}/login | Open a single sign-on session URL for the backup storage panel
+*BackupsApi* | [**GetBackupsList**](docs/BackupsApi.md#getbackupslist) | **GET** /backups | List off-site backup storage subscriptions on the authenticated account
+*BackupsApi* | [**GetBackupsWelcomeEmail**](docs/BackupsApi.md#getbackupswelcomeemail) | **GET** /backups/{id}/welcome_email | Resend the welcome email for an off-site backup storage service
+*BackupsApi* | [**GetNewBackup**](docs/BackupsApi.md#getnewbackup) | **GET** /backups/order | Get backup-storage order form metadata and pricing tiers
+*BackupsApi* | [**UpdateBackupInfo**](docs/BackupsApi.md#updatebackupinfo) | **POST** /backups/{id} | Update stored metadata for a backup-storage subscription
+*BackupsApi* | [**ValidateBackupOrder**](docs/BackupsApi.md#validatebackuporder) | **PUT** /backups/order | Validate a backup-storage order and preview pricing without charging
+*BillingApi* | [**AddBillingCreditCard**](docs/BillingApi.md#addbillingcreditcard) | **POST** /billing/creditcards | Store a credit card on the account — may return a verification flow
+*BillingApi* | [**AddBillingPrepay**](docs/BillingApi.md#addbillingprepay) | **POST** /billing/prepays | Create a prepay deposit and return an invoice id to fund it
+*BillingApi* | [**DeleteBillingCreditCard**](docs/BillingApi.md#deletebillingcreditcard) | **DELETE** /billing/creditcards/{id} | Remove a stored credit card from the account
+*BillingApi* | [**DeleteBillingInvoice**](docs/BillingApi.md#deletebillinginvoice) | **DELETE** /billing/invoices/{id} | Cancel a pending unpaid invoice — and its pending service or repeat invoice
+*BillingApi* | [**DeleteBillingPrepay**](docs/BillingApi.md#deletebillingprepay) | **DELETE** /billing/prepays/{id} | Delete an unfunded prepay or strip its unpaid funding invoices
+*BillingApi* | [**GetAffiliateBanners**](docs/BillingApi.md#getaffiliatebanners) | **GET** /affiliate/banners | List affiliate banner image assets with filename and dimensions
+*BillingApi* | [**GetAffiliateDownload**](docs/BillingApi.md#getaffiliatedownload) | **GET** /affiliate/download | Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+*BillingApi* | [**GetAffiliateRichReport**](docs/BillingApi.md#getaffiliaterichreport) | **GET** /affiliate/rich_report | Read a combined affiliate performance summary (HTML payload)
+*BillingApi* | [**GetAffiliateSalesGraph**](docs/BillingApi.md#getaffiliatesalesgraph) | **GET** /affiliate/sales_graph | Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
+*BillingApi* | [**GetAffiliateSignups**](docs/BillingApi.md#getaffiliatesignups) | **GET** /affiliate/signups | Read affiliate signup stats and per-customer conversion data
+*BillingApi* | [**GetAffiliateTrafficGraph**](docs/BillingApi.md#getaffiliatetrafficgraph) | **GET** /affiliate/traffic_graph | Read aggregated affiliate referral click/visit time-series for chart rendering
+*BillingApi* | [**GetAffiliateWebTraffic**](docs/BillingApi.md#getaffiliatewebtraffic) | **GET** /affiliate/web_traffic | List the 20 most recent affiliate referral visits with IP, referrer, timestamp
+*BillingApi* | [**GetBillingCart**](docs/BillingApi.md#getbillingcart) | **GET** /billing/cart | Read the current shopping cart contents, totals, and available payment methods
+*BillingApi* | [**GetBillingCreditCardVerify**](docs/BillingApi.md#getbillingcreditcardverify) | **GET** /billing/creditcards/{id}/verify | Probe whether a stored card still needs micro-charge verification
+*BillingApi* | [**GetBillingInvoice**](docs/BillingApi.md#getbillinginvoice) | **GET** /billing/invoices/{id} | Read full invoice detail — line items, totals, paid status, customer info
+*BillingApi* | [**GetBillingInvoices**](docs/BillingApi.md#getbillinginvoices) | **GET** /billing/invoices | List every invoice on the account with summary totals and paid/unpaid status
+*BillingApi* | [**GetBillingPrePays**](docs/BillingApi.md#getbillingprepays) | **GET** /billing/prepays | List prepay deposits on the account — remaining balance and auto-use flags
+*BillingApi* | [**InitiatePayment**](docs/BillingApi.md#initiatepayment) | **GET** /billing/pay/{method}/{invoices} | Pay invoices through the chosen gateway — returns the next-step action
+*BillingApi* | [**PatchBillingCreditCardVerify**](docs/BillingApi.md#patchbillingcreditcardverify) | **PATCH** /billing/creditcards/{id}/verify | Place two micro-charges on the card to start CVV verification (step 1 of 2)
+*BillingApi* | [**PostBillingCreditCardVerify**](docs/BillingApi.md#postbillingcreditcardverify) | **POST** /billing/creditcards/{id}/verify | Submit two micro-charge amounts to finalize card verification (step 2 of 2)
+*BillingApi* | [**UpdateAffiliateDockSetup**](docs/BillingApi.md#updateaffiliatedocksetup) | **POST** /affiliate/dock_setup | Configure the affiliate landing dock title, description, and referrer coupon
+*BillingApi* | [**UpdateAffiliatePaymentSetup**](docs/BillingApi.md#updateaffiliatepaymentsetup) | **POST** /affiliate/payment_setup | Configure how affiliate commissions get paid out (PayPal or internal prepay)
+*BillingApi* | [**UpdateBillingCreditCard**](docs/BillingApi.md#updatebillingcreditcard) | **POST** /billing/creditcards/{id} | Refresh stored card expiration and re-trigger MaxMind fraud scoring
+*BillingApi* | [**UpdateBillingPaymentMethod**](docs/BillingApi.md#updatebillingpaymentmethod) | **POST** /billing/payment_method | Set the account's default payment method for recurring/auto charges
+*DNSApi* | [**AddDnsDomain**](docs/DNSApi.md#adddnsdomain) | **POST** /dns | Create a new authoritative DNS zone seeded with apex A + NS + SOA records
+*DNSApi* | [**AddDnsRecord**](docs/DNSApi.md#adddnsrecord) | **POST** /dns/{id} | Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
+*DNSApi* | [**DeleteDnsDomain**](docs/DNSApi.md#deletednsdomain) | **DELETE** /dns/{id} | Permanently delete a DNS zone and every record it contains
+*DNSApi* | [**DeleteDnsRecord**](docs/DNSApi.md#deletednsrecord) | **DELETE** /dns/{domainId}/{recordId} | Permanently delete one DNS record from a zone — zone itself is preserved
+*DNSApi* | [**GetDnsDomain**](docs/DNSApi.md#getdnsdomain) | **GET** /dns/{id} | List every DNS record in one zone with the IDs needed to edit or delete them
+*DNSApi* | [**GetDnsList**](docs/DNSApi.md#getdnslist) | **GET** /dns | List DNS zones hosted on the account with each zone's apex A-record IP
+*DNSApi* | [**UpdateDnsRecord**](docs/DNSApi.md#updatednsrecord) | **POST** /dns/{domainId}/{recordId} | Replace values on an existing DNS record (name, type, content, ttl, priority)
+*DomainsApi* | [**AddDomain**](docs/DomainsApi.md#adddomain) | **POST** /domains/order | Place a new domain registration or transfer order, generate billing invoice
+*DomainsApi* | [**AddDomainDnssec**](docs/DomainsApi.md#adddomaindnssec) | **POST** /domains/{id}/dnssec | Register DNSSEC DS records on the domain at OpenSRS
+*DomainsApi* | [**AddDomainNameserver**](docs/DomainsApi.md#adddomainnameserver) | **POST** /domains/{id}/nameservers | Register a new nameserver host with glue IP at the registry (registered nameserver)
+*DomainsApi* | [**CancelDomain**](docs/DomainsApi.md#canceldomain) | **DELETE** /domains/{id} | Cancel a domain order in the billing system to stop auto-renewals
+*DomainsApi* | [**DeleteDomainDnssec**](docs/DomainsApi.md#deletedomaindnssec) | **DELETE** /domains/{id}/dnssec | Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
+*DomainsApi* | [**DeleteDomainNameserver**](docs/DomainsApi.md#deletedomainnameserver) | **DELETE** /domains/{id}/nameservers | Remove one registered nameserver glue record from the domain
+*DomainsApi* | [**GetDomainContact**](docs/DomainsApi.md#getdomaincontact) | **GET** /domains/{id}/contact | Read the current registrant/admin/tech/billing contact field set for a domain
+*DomainsApi* | [**GetDomainDnssec**](docs/DomainsApi.md#getdomaindnssec) | **GET** /domains/{id}/dnssec | Read the DNSSEC DS record set currently registered with the registrar
+*DomainsApi* | [**GetDomainInfo**](docs/DomainsApi.md#getdomaininfo) | **GET** /domains/{id} | Read full billing, registrar, and service detail for one domain
+*DomainsApi* | [**GetDomainInvoices**](docs/DomainsApi.md#getdomaininvoices) | **GET** /domains/{id}/invoices | List all billing invoices scoped to one domain order
+*DomainsApi* | [**GetDomainLookup**](docs/DomainsApi.md#getdomainlookup) | **GET** /domains/lookup/{name} | Check availability, premium status, and pricing for a specific domain
+*DomainsApi* | [**GetDomainNameservers**](docs/DomainsApi.md#getdomainnameservers) | **GET** /domains/{id}/nameservers | List registered nameserver hosts and glue IP addresses for a domain
+*DomainsApi* | [**GetDomainRenewal**](docs/DomainsApi.md#getdomainrenewal) | **GET** /domains/{id}/renew | Read renewal pricing, expiry, and whether a renewal invoice already exists
+*DomainsApi* | [**GetDomainSearch**](docs/DomainsApi.md#getdomainsearch) | **GET** /domains/search/{name} | Get registrar-suggested domain alternatives and bulk availability for a search term
+*DomainsApi* | [**GetDomainTransfer**](docs/DomainsApi.md#getdomaintransfer) | **GET** /domains/{id}/transfer | Read OpenSRS transfer status for an in-progress domain transfer order
+*DomainsApi* | [**GetDomainWhoisPrivacy**](docs/DomainsApi.md#getdomainwhoisprivacy) | **GET** /domains/{id}/whois | Read Whois privacy availability, current state, and add-on pricing for a domain
+*DomainsApi* | [**GetDomainsList**](docs/DomainsApi.md#getdomainslist) | **GET** /domains | List every domain registration on the account with billing and registration metadata
+*DomainsApi* | [**GetDomainsWelcomeEmail**](docs/DomainsApi.md#getdomainswelcomeemail) | **GET** /domains/{id}/welcome_email | Resend the domain welcome email with registration details and management instructions
+*DomainsApi* | [**GetNewDomain**](docs/DomainsApi.md#getnewdomain) | **GET** /domains/order | Read the buyable domain TLD service catalog and Whois privacy pricing
+*DomainsApi* | [**PatchDomains**](docs/DomainsApi.md#patchdomains) | **PATCH** /domains/order | Validate posted domain-order field values before committing — dry run
+*DomainsApi* | [**PostDomainRenewal**](docs/DomainsApi.md#postdomainrenewal) | **POST** /domains/{id}/renew | Submit a domain renewal request and generate the renewal invoice
+*DomainsApi* | [**PostDomainSearch**](docs/DomainsApi.md#postdomainsearch) | **POST** /domains/search/{name} | Get the full order form data for a hostname in one round-trip (search → order preview)
+*DomainsApi* | [**PostDomainTransfer**](docs/DomainsApi.md#postdomaintransfer) | **POST** /domains/{id}/transfer | Re-poll OpenSRS transfer status for a domain order via POST
+*DomainsApi* | [**PutDomains**](docs/DomainsApi.md#putdomains) | **PUT** /domains/order | Preview per-TLD field requirements for a domain order — no commit
+*DomainsApi* | [**UpdateDomainContact**](docs/DomainsApi.md#updatedomaincontact) | **POST** /domains/{id}/contact | Update registrant/admin contact details and push them to OpenSRS
+*DomainsApi* | [**UpdateDomainInfo**](docs/DomainsApi.md#updatedomaininfo) | **POST** /domains/{id} | POST mutation hook for the domain detail page (use dedicated ops where possible)
+*DomainsApi* | [**UpdateDomainNameservers**](docs/DomainsApi.md#updatedomainnameservers) | **PUT** /domains/{id}/nameservers | Replace the full authoritative-nameserver delegation list at the registrar
+*DomainsApi* | [**UpdateDomainWhoisPrivacy**](docs/DomainsApi.md#updatedomainwhoisprivacy) | **POST** /domains/{id}/whois | Order, enable, or cancel the Whois privacy add-on for a domain
+*FloatingIPsApi* | [**AddFloatingIp**](docs/FloatingIPsApi.md#addfloatingip) | **POST** /floating_ips/order | Place a real Floating IP order, create billing records, and provision the service
+*FloatingIPsApi* | [**FloatingIpsCancel**](docs/FloatingIPsApi.md#floatingipscancel) | **DELETE** /floating_ips/{id} | Cancel a Floating IP service and release the IP — destructive, billing stops
+*FloatingIPsApi* | [**GetFloatingIpInfo**](docs/FloatingIPsApi.md#getfloatingipinfo) | **GET** /floating_ips/{id} | Fetch full details for one Floating IP service, including current target IP
+*FloatingIPsApi* | [**GetFloatingIpInvoices**](docs/FloatingIPsApi.md#getfloatingipinvoices) | **GET** /floating_ips/{id}/invoices | List all billing invoices charged against a specific Floating IP service
+*FloatingIPsApi* | [**GetFloatingIpsList**](docs/FloatingIPsApi.md#getfloatingipslist) | **GET** /floating_ips | List all Floating IP services on the authenticated customer's account
+*FloatingIPsApi* | [**GetFloatingIpsWelcomeEmail**](docs/FloatingIPsApi.md#getfloatingipswelcomeemail) | **GET** /floating_ips/{id}/welcome_email | Resend the Floating IP welcome / setup email to the account contact
+*FloatingIPsApi* | [**GetNewFloatingIp**](docs/FloatingIPsApi.md#getnewfloatingip) | **GET** /floating_ips/order | Get pricing and service-type options for ordering a new Floating IP
+*FloatingIPsApi* | [**PostFloatingIpsChangeIp**](docs/FloatingIPsApi.md#postfloatingipschangeip) | **POST** /floating_ips/{id}/change_ip | Re-point a Floating IP to a different target IP on one of the customer's services
+*FloatingIPsApi* | [**PutFloatingIps**](docs/FloatingIPsApi.md#putfloatingips) | **PUT** /floating_ips/order | Validate a Floating IP order and price it without charging the customer
+*FloatingIPsApi* | [**UpdateFloatingIpInfo**](docs/FloatingIPsApi.md#updatefloatingipinfo) | **POST** /floating_ips/{id} | Update a Floating IP service's editable settings (label / metadata)
+*LicensesApi* | [**AddLicense**](docs/LicensesApi.md#addlicense) | **POST** /licenses/order | Order a new software license and create the recurring invoice
+*LicensesApi* | [**GetLicenseInfo**](docs/LicensesApi.md#getlicenseinfo) | **GET** /licenses/{id} | Get full details for one license including status, IP, and links
+*LicensesApi* | [**GetLicenseInvoices**](docs/LicensesApi.md#getlicenseinvoices) | **GET** /licenses/{id}/invoices | List all billing invoices tied to one software license service
+*LicensesApi* | [**GetLicenseList**](docs/LicensesApi.md#getlicenselist) | **GET** /licenses | List all software licenses owned by the authenticated customer
+*LicensesApi* | [**GetLicensesWelcomeEmail**](docs/LicensesApi.md#getlicenseswelcomeemail) | **GET** /licenses/{id}/welcome_email | Resend the license welcome email with the key and activation steps
+*LicensesApi* | [**GetNewLicense**](docs/LicensesApi.md#getnewlicense) | **GET** /licenses/order | Get available license types, packages, and pricing for ordering
+*LicensesApi* | [**LicensesCancel**](docs/LicensesApi.md#licensescancel) | **DELETE** /licenses/{id} | Cancel a license service and stop future billing (irreversible)
+*LicensesApi* | [**PostLicenseChangeIp**](docs/LicensesApi.md#postlicensechangeip) | **POST** /licenses/{id}/change_ip | Rebind a license to a new IP address (may incur a vendor fee)
+*LicensesApi* | [**PutLicenses**](docs/LicensesApi.md#putlicenses) | **PUT** /licenses/order | Validate a software license order before placing it (dry run preview)
+*LicensesApi* | [**UpdateLicenseInfo**](docs/LicensesApi.md#updatelicenseinfo) | **POST** /licenses/{id} | Update mutable fields on a license service (e.g. assigned IP)
+*MailApi* | [**AddMail**](docs/MailApi.md#addmail) | **POST** /mail/order | Place a new Mail Baby order, generate invoice, and queue provisioning
+*MailApi* | [**AddRule**](docs/MailApi.md#addrule) | **POST** /mail/{id}/rules | Create a new deny rule to auto-block matching submissions
+*MailApi* | [**CreateMailAlert**](docs/MailApi.md#createmailalert) | **POST** /mail/{id}/alerts | Create a new Mail Baby alert for delivery, bounce, or quota events
+*MailApi* | [**DeleteMailAlert**](docs/MailApi.md#deletemailalert) | **DELETE** /mail/{id}/alerts | Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+*MailApi* | [**DeleteRule**](docs/MailApi.md#deleterule) | **DELETE** /mail/{id}/rules/{rule} | Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
+*MailApi* | [**DelistBlock**](docs/MailApi.md#delistblock) | **POST** /mail/{id}/blocks/delete | Delist a sender email from rspamd / mailchannels / mailbaby block lists
+*MailApi* | [**GetMailAlerts**](docs/MailApi.md#getmailalerts) | **GET** /mail/{id}/alerts | List configured delivery/bounce/quota alerts for one Mail Baby service
+*MailApi* | [**GetMailBlocks**](docs/MailApi.md#getmailblocks) | **GET** /mail/{id}/blocks | List recent local-blocklist hits and spam-trap captures for the mail user
+*MailApi* | [**GetMailDelist**](docs/MailApi.md#getmaildelist) | **GET** /mail/{id}/delist | Read blocklist diagnostics and find senders eligible for delisting
+*MailApi* | [**GetMailDeliverability**](docs/MailApi.md#getmaildeliverability) | **GET** /mail/{id}/deliverability | Read delivered vs bounced totals broken down by sender (or by recipient domain)
+*MailApi* | [**GetMailInfo**](docs/MailApi.md#getmailinfo) | **GET** /mail/{id} | Read full detail for one Mail Baby service including SMTP credentials
+*MailApi* | [**GetMailInvoices**](docs/MailApi.md#getmailinvoices) | **GET** /mail/{id}/invoices | List billing invoices linked to this Mail Baby service
+*MailApi* | [**GetMailList**](docs/MailApi.md#getmaillist) | **GET** /mail | List every Mail Baby SMTP relay service on the account
+*MailApi* | [**GetMailWelcomeEmail**](docs/MailApi.md#getmailwelcomeemail) | **GET** /mail/{id}/welcome_email | Resend the Mail Baby welcome email with SMTP credentials and setup info
+*MailApi* | [**GetNewMail**](docs/MailApi.md#getnewmail) | **GET** /mail/order | Read the Mail Baby order catalog — plans, package costs, service-type metadata
+*MailApi* | [**GetRules**](docs/MailApi.md#getrules) | **GET** /mail/{id}/rules | List configured deny rules (sender/recipient blocks) for a Mail Baby service
+*MailApi* | [**GetStats**](docs/MailApi.md#getstats) | **GET** /mail/{id}/stats | Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
+*MailApi* | [**MailCancel**](docs/MailApi.md#mailcancel) | **DELETE** /mail/{id} | Cancel a Mail Baby service and stop the recurring invoice
+*MailApi* | [**PostMailDelist**](docs/MailApi.md#postmaildelist) | **POST** /mail/{id}/delist | Delist a sender from rspamd / mailchannels / mailbaby block lists
+*MailApi* | [**PutMail**](docs/MailApi.md#putmail) | **PUT** /mail/order | Validate Mail Baby order, quote pricing, and verify coupon — no charge
+*MailApi* | [**ResetMailPassword**](docs/MailApi.md#resetmailpassword) | **GET** /mail/{id}/reset_password | Rotate the SMTP password and email the new credential to the account owner
+*MailApi* | [**SendAdvMail**](docs/MailApi.md#sendadvmail) | **POST** /mail/{id}/advsend | Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
+*MailApi* | [**SendMail**](docs/MailApi.md#sendmail) | **POST** /mail/{id}/send | Send a simple single-recipient email through the Mail Baby SMTP relay
+*MailApi* | [**UpdateMailAlert**](docs/MailApi.md#updatemailalert) | **PUT** /mail/{id}/alerts | Update an existing Mail Baby alert by alert_id
+*MailApi* | [**UpdateMailInfo**](docs/MailApi.md#updatemailinfo) | **POST** /mail/{id} | POST mutation hook for the Mail Baby service detail page
+*MailApi* | [**UpdateRule**](docs/MailApi.md#updaterule) | **PUT** /mail/{id}/rules/{rule} | Update an existing Mail Baby deny rule's type and match data
+*MailApi* | [**ViewMailLog**](docs/MailApi.md#viewmaillog) | **GET** /mail/{id}/log | Search and paginate per-message Mail Baby delivery log entries
+*PublicApi* | [**GetAccountCurrencies**](docs/PublicApi.md#getaccountcurrencies) | **GET** /account/currencies | List enabled currency codes accepted for billing and preferences
+*PublicApi* | [**GetAccountLocales**](docs/PublicApi.md#getaccountlocales) | **GET** /account/locales | List supported UI locales with English and native display names
+*PublicApi* | [**GetCaptcha**](docs/PublicApi.md#getcaptcha) | **GET** /captcha | Fetch a base64 JPEG captcha challenge for human verification
+*PublicApi* | [**GetCountries**](docs/PublicApi.md#getcountries) | **GET** /account/countries | List enabled countries keyed by ISO-2/ISO-3/numeric code
+*PublicApi* | [**GetInfo**](docs/PublicApi.md#getinfo) | **GET** /info | Discover available modules, service packages, categories, and types
+*PublicApi* | [**GetLoginInfo**](docs/PublicApi.md#getlogininfo) | **GET** /login | Fetch logo, captcha, language, and stats for rendering a login page
+*PublicApi* | [**GetMPServers**](docs/PublicApi.md#getmpservers) | **GET** /buy_now_servers_list | List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+*PublicApi* | [**GetOauthRedirect**](docs/PublicApi.md#getoauthredirect) | **GET** /oauth | Begin OAuth login flow — redirect user to provider for authentication
+*PublicApi* | [**GetTimezones**](docs/PublicApi.md#gettimezones) | **GET** /account/timezones | List all PHP timezone identifiers usable on accounts and services
+*PublicApi* | [**PatchOauthTwoFactor**](docs/PublicApi.md#patchoauthtwofactor) | **PATCH** /oauth | Submit 2FA code to finish OAuth login when account has 2FA enabled
+*PublicApi* | [**PingServer**](docs/PublicApi.md#pingserver) | **GET** /ping | Liveness check — returns the JSON string \"pong\" to confirm API is up
+*PublicApi* | [**PostOauthCallback**](docs/PublicApi.md#postoauthcallback) | **POST** /oauth | Complete OAuth login by linking provider to existing or new account
+*PublicApi* | [**SubmitLogin**](docs/PublicApi.md#submitlogin) | **POST** /login | Authenticate with email + password and return a session token
+*PublicApi* | [**SubmitSignup**](docs/PublicApi.md#submitsignup) | **POST** /signup | Create a new customer account (email + password + captcha + ToS)
+*QuickServersApi* | [**AddQs**](docs/QuickServersApi.md#addqs) | **POST** /qs/order | Place a QuickServer order, generating a real invoice and queuing provisioning
+*QuickServersApi* | [**DeleteQsBackup**](docs/QuickServersApi.md#deleteqsbackup) | **DELETE** /qs/{id}/backups | Permanently delete a QuickServer backup file from object storage
+*QuickServersApi* | [**DoQsBlockSmtp**](docs/QuickServersApi.md#doqsblocksmtp) | **GET** /qs/{id}/block_smtp | Block outbound SMTP traffic on a QuickServer to halt mail abuse
+*QuickServersApi* | [**DoQsDisableCd**](docs/QuickServersApi.md#doqsdisablecd) | **GET** /qs/{id}/disable_cd | Disable the virtual CD/DVD drive device on a QuickServer
+*QuickServersApi* | [**DoQsDisableQuota**](docs/QuickServersApi.md#doqsdisablequota) | **GET** /qs/{id}/disable_quota | Disable disk-quota enforcement at OS level on a QuickServer
+*QuickServersApi* | [**DoQsEjectCd**](docs/QuickServersApi.md#doqsejectcd) | **GET** /qs/{id}/eject_cd | Eject the currently mounted ISO from a QuickServer's virtual CD drive
+*QuickServersApi* | [**DoQsEnableQuota**](docs/QuickServersApi.md#doqsenablequota) | **GET** /qs/{id}/enable_quota | Enable disk-quota enforcement at OS level on a QuickServer
+*QuickServersApi* | [**DoQsRestart**](docs/QuickServersApi.md#doqsrestart) | **GET** /qs/{id}/restart | Reboot a QuickServer with a graceful OS-level restart
+*QuickServersApi* | [**DoQsStart**](docs/QuickServersApi.md#doqsstart) | **GET** /qs/{id}/start | Power on a QuickServer that is currently stopped or pending boot
+*QuickServersApi* | [**DoQsStop**](docs/QuickServersApi.md#doqsstop) | **GET** /qs/{id}/stop | Power off a QuickServer with a graceful shutdown command
+*QuickServersApi* | [**DownloadQsBackup**](docs/QuickServersApi.md#downloadqsbackup) | **PATCH** /qs/{id}/backups | Generate a 24-hour pre-signed download URL for a QuickServer backup
+*QuickServersApi* | [**GetNewQs**](docs/QuickServersApi.md#getnewqs) | **GET** /qs/order | Get QuickServer order form metadata and available plans/templates
+*QuickServersApi* | [**GetQsBackup**](docs/QuickServersApi.md#getqsbackup) | **GET** /qs/{id}/backup | Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+*QuickServersApi* | [**GetQsBackups**](docs/QuickServersApi.md#getqsbackups) | **GET** /qs/{id}/backups | List available QuickServer backups across Swift, MinIO, and ZFS storage
+*QuickServersApi* | [**GetQsChangeHostname**](docs/QuickServersApi.md#getqschangehostname) | **GET** /qs/{id}/change_hostname | Get current QuickServer hostname plus change rules and platform support
+*QuickServersApi* | [**GetQsChangeRootPassword**](docs/QuickServersApi.md#getqschangerootpassword) | **GET** /qs/{id}/change_root_password | Get metadata for QuickServer root/OS password change requirements
+*QuickServersApi* | [**GetQsChangeTimezone**](docs/QuickServersApi.md#getqschangetimezone) | **GET** /qs/{id}/change_timezone | List timezones the QuickServer can be set to via change_timezone
+*QuickServersApi* | [**GetQsChangeWebuzoPassword**](docs/QuickServersApi.md#getqschangewebuzopassword) | **GET** /qs/{id}/change_webuzo_password | Get metadata for changing the Webuzo control panel admin password
+*QuickServersApi* | [**GetQsInfo**](docs/QuickServersApi.md#getqsinfo) | **GET** /qs/{id} | Get full details for one QuickServer including credentials and links
+*QuickServersApi* | [**GetQsInsertCd**](docs/QuickServersApi.md#getqsinsertcd) | **GET** /qs/{id}/insert_cd | List ISO images available to mount on a QuickServer's virtual CD
+*QuickServersApi* | [**GetQsInvoices**](docs/QuickServersApi.md#getqsinvoices) | **GET** /qs/{id}/invoices | List billing invoices charged for one QuickServer service
+*QuickServersApi* | [**GetQsList**](docs/QuickServersApi.md#getqslist) | **GET** /qs | List QuickServer rapid-deploy dedicated servers on the account
+*QuickServersApi* | [**GetQsReinstallOs**](docs/QuickServersApi.md#getqsreinstallos) | **GET** /qs/{id}/reinstall_os | List OS templates available for a QuickServer reinstall
+*QuickServersApi* | [**GetQsResetPassword**](docs/QuickServersApi.md#getqsresetpassword) | **GET** /qs/{id}/reset_password | Get options for QuickServer randomized root password reset
+*QuickServersApi* | [**GetQsReverseDns**](docs/QuickServersApi.md#getqsreversedns) | **GET** /qs/{id}/reverse_dns | Get reverse DNS (PTR) records for all of a QuickServer's IPs
+*QuickServersApi* | [**GetQsSetupVnc**](docs/QuickServersApi.md#getqssetupvnc) | **GET** /qs/{id}/setup_vnc | Get current VNC console connection details for a QuickServer
+*QuickServersApi* | [**GetQsTrafficUsage**](docs/QuickServersApi.md#getqstrafficusage) | **GET** /qs/{id}/traffic_usage | Get bandwidth usage for the QuickServer's current billing period
+*QuickServersApi* | [**GetQsViewDesktop**](docs/QuickServersApi.md#getqsviewdesktop) | **GET** /qs/{id}/view_desktop | Get the full QuickServer dashboard view payload (rich format)
+*QuickServersApi* | [**GetQsWelcomeEmail**](docs/QuickServersApi.md#getqswelcomeemail) | **GET** /qs/{id}/welcome_email | Resend the QuickServer welcome email with login credentials
+*QuickServersApi* | [**PostQsChangeHostname**](docs/QuickServersApi.md#postqschangehostname) | **POST** /qs/{id}/change_hostname | Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
+*QuickServersApi* | [**PostQsChangeRootPassword**](docs/QuickServersApi.md#postqschangerootpassword) | **POST** /qs/{id}/change_root_password | Change QuickServer root/administrator password to a chosen value
+*QuickServersApi* | [**PostQsChangeTimezone**](docs/QuickServersApi.md#postqschangetimezone) | **POST** /qs/{id}/change_timezone | Change the system timezone on a QuickServer to a catalog entry
+*QuickServersApi* | [**PostQsChangeWebuzoPassword**](docs/QuickServersApi.md#postqschangewebuzopassword) | **POST** /qs/{id}/change_webuzo_password | Change Webuzo control panel admin password live (synchronous, not queued)
+*QuickServersApi* | [**PostQsInsertCd**](docs/QuickServersApi.md#postqsinsertcd) | **POST** /qs/{id}/insert_cd | Mount an ISO image as the QuickServer's virtual CD via URL
+*QuickServersApi* | [**PostQsReinstallOs**](docs/QuickServersApi.md#postqsreinstallos) | **POST** /qs/{id}/reinstall_os | Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
+*QuickServersApi* | [**PostQsResetPassword**](docs/QuickServersApi.md#postqsresetpassword) | **POST** /qs/{id}/reset_password | Reset QuickServer root password to a server-generated random value
+*QuickServersApi* | [**PostQsReverseDns**](docs/QuickServersApi.md#postqsreversedns) | **POST** /qs/{id}/reverse_dns | Update reverse DNS (PTR) records for a QuickServer's IPs
+*QuickServersApi* | [**PostQsSetupVnc**](docs/QuickServersApi.md#postqssetupvnc) | **POST** /qs/{id}/setup_vnc | Configure the source IP allowed to reach a QuickServer's VNC console
+*QuickServersApi* | [**PostQsTrafficUsage**](docs/QuickServersApi.md#postqstrafficusage) | **POST** /qs/{id}/traffic_usage | Query QuickServer bandwidth usage via POST (filtered variant)
+*QuickServersApi* | [**PostQsViewDesktop**](docs/QuickServersApi.md#postqsviewdesktop) | **POST** /qs/{id}/view_desktop | Submit changes and re-fetch the QuickServer dashboard view payload
+*QuickServersApi* | [**PostQuickServerRestore**](docs/QuickServersApi.md#postquickserverrestore) | **POST** /qs/{id}/restore | Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
+*QuickServersApi* | [**PutQs**](docs/QuickServersApi.md#putqs) | **PUT** /qs/order | Validate a QuickServer order without charging or provisioning
+*QuickServersApi* | [**QuickserversCancel**](docs/QuickServersApi.md#quickserverscancel) | **DELETE** /qs/{id} | Cancel a QuickServer service at the end of the current billing cycle
+*QuickServersApi* | [**UpdateQsInfo**](docs/QuickServersApi.md#updateqsinfo) | **POST** /qs/{id} | Update QuickServer order metadata or stored settings without OS impact
+*SSLCertificatesApi* | [**AddSsl**](docs/SSLCertificatesApi.md#addssl) | **POST** /ssl/order | Place a new SSL certificate order - creates invoice and queues issuance
+*SSLCertificatesApi* | [**GetNewSsl**](docs/SSLCertificatesApi.md#getnewssl) | **GET** /ssl/order | Get available SSL certificate packages and pricing for placing a new order
+*SSLCertificatesApi* | [**GetSslInfo**](docs/SSLCertificatesApi.md#getsslinfo) | **GET** /ssl/{id} | Get full details for one SSL certificate by id - status, expiration, links
+*SSLCertificatesApi* | [**GetSslInvoices**](docs/SSLCertificatesApi.md#getsslinvoices) | **GET** /ssl/{id}/invoices | List all billing invoices and charges tied to one SSL certificate by id
+*SSLCertificatesApi* | [**GetSslList**](docs/SSLCertificatesApi.md#getssllist) | **GET** /ssl | List all SSL certificates on the authenticated customer account with status and hostname
+*SSLCertificatesApi* | [**GetSslWelcomeEmail**](docs/SSLCertificatesApi.md#getsslwelcomeemail) | **GET** /ssl/{id}/welcome_email | Resend the SSL welcome email with cert credentials and install instructions
+*SSLCertificatesApi* | [**PutSsl**](docs/SSLCertificatesApi.md#putssl) | **PUT** /ssl/order | Validate an SSL certificate order without charging - dry-run before addSsl
+*SSLCertificatesApi* | [**SslCancel**](docs/SSLCertificatesApi.md#sslcancel) | **DELETE** /ssl/{id} | Cancel an SSL certificate service - stops renewals at end of billing cycle
+*SSLCertificatesApi* | [**UpdateSslInfo**](docs/SSLCertificatesApi.md#updatesslinfo) | **POST** /ssl/{id} | Update mutable settings on an existing SSL certificate order by id
+*ScrubIpsApi* | [**CancelScrubIp**](docs/ScrubIpsApi.md#cancelscrubip) | **DELETE** /scrub_ips/{id} | Cancel a Scrub IP service and stop its recurring DDoS billing
+*ScrubIpsApi* | [**CreateFilter**](docs/ScrubIpsApi.md#createfilter) | **POST** /scrub_ips/{id}/create_filter | Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
+*ScrubIpsApi* | [**CreateGeoRule**](docs/ScrubIpsApi.md#creategeorule) | **POST** /scrub_ips/{id}/create_geo_rule | Add a geographic firewall rule (block/allow by country code or ASN)
+*ScrubIpsApi* | [**CreateRule**](docs/ScrubIpsApi.md#createrule) | **POST** /scrub_ips/{id}/create_rule | Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
+*ScrubIpsApi* | [**DeleteFilter**](docs/ScrubIpsApi.md#deletefilter) | **POST** /scrub_ips/{id}/delete_filter | Remove a scrubbing filter by matching filter_type and port
+*ScrubIpsApi* | [**DisableScrub**](docs/ScrubIpsApi.md#disablescrub) | **GET** /scrub_ips/{id}/disable | Disable DDoS scrubbing and remove the BGP announcement on the IP
+*ScrubIpsApi* | [**EnableScrub**](docs/ScrubIpsApi.md#enablescrub) | **GET** /scrub_ips/{id}/enable | Enable DDoS scrubbing (BGP announcement) on the service's protected IP
+*ScrubIpsApi* | [**GetOrderDetail**](docs/ScrubIpsApi.md#getorderdetail) | **GET** /scrub_ips/order | Get plans, pricing, and eligible IPs for a new Scrub IP order
+*ScrubIpsApi* | [**GetScrubIpDetails**](docs/ScrubIpsApi.md#getscrubipdetails) | **GET** /scrub_ips/{id} | Get full Scrub IP service detail (rules + geo + filters)
+*ScrubIpsApi* | [**GetScrubIpFilterTypes**](docs/ScrubIpsApi.md#getscrubipfiltertypes) | **GET** /scrub_ips/filter_types | List enabled traffic filter profiles available for createFilter
+*ScrubIpsApi* | [**GetScrubIpInvoices**](docs/ScrubIpsApi.md#getscrubipinvoices) | **GET** /scrub_ips/{id}/invoices | List recurring and one-time invoices billed for this Scrub IP service
+*ScrubIpsApi* | [**GetScrubIpLogs**](docs/ScrubIpsApi.md#getscrubiplogs) | **GET** /scrub_ips/{id}/logs | Get last 50000 packet/event log entries for the protected IP
+*ScrubIpsApi* | [**GetScrubIpsList**](docs/ScrubIpsApi.md#getscrubipslist) | **GET** /scrub_ips | List all Scrub IP DDoS protection services on the authenticated account
+*ScrubIpsApi* | [**PlaceScrubOrder**](docs/ScrubIpsApi.md#placescruborder) | **POST** /scrub_ips/order | Place a new Scrub IP DDoS protection order and generate an invoice
+*ScrubIpsApi* | [**PutScrubIps**](docs/ScrubIpsApi.md#putscrubips) | **PUT** /scrub_ips/order | Validate a Scrub IP order and return effective pricing without billing
+*ScrubIpsApi* | [**ScrubIpsDeleteGeoRule**](docs/ScrubIpsApi.md#scrubipsdeletegeorule) | **POST** /scrub_ips/{id}/delete_geo_rule | Delete a geo firewall rule by rule_id from getScrubIpDetails
+*ScrubIpsApi* | [**ScrubIpsDeleteRule**](docs/ScrubIpsApi.md#scrubipsdeleterule) | **POST** /scrub_ips/{id}/delete_rule | Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
+*ServersApi* | [**AddServer**](docs/ServersApi.md#addserver) | **POST** /servers/order | Place a custom dedicated server order, creating a real billable invoice
+*ServersApi* | [**BuyItNowServerOrder**](docs/ServersApi.md#buyitnowserverorder) | **GET** /servers/order/buy_now_server | Get configurable options for a Rapid Deploy / coupon dedicated server
+*ServersApi* | [**GetMPServers**](docs/ServersApi.md#getmpservers) | **GET** /buy_now_servers_list | List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+*ServersApi* | [**GetNewServer**](docs/ServersApi.md#getnewserver) | **GET** /servers/order | Get custom dedicated server ordering options, regions, and pricing
+*ServersApi* | [**GetServerInfo**](docs/ServersApi.md#getserverinfo) | **GET** /servers/{id} | Get full hardware, network, and lifecycle details for a dedicated server
+*ServersApi* | [**GetServerInvoices**](docs/ServersApi.md#getserverinvoices) | **GET** /servers/{id}/invoices | List billing invoices (charges + payments) tied to one dedicated server
+*ServersApi* | [**GetServerList**](docs/ServersApi.md#getserverlist) | **GET** /servers | List all dedicated servers owned by the authenticated customer
+*ServersApi* | [**GetServerReverseDns**](docs/ServersApi.md#getserverreversedns) | **GET** /servers/{id}/reverse_dns | List current reverse-DNS (PTR) records for a dedicated server's IPs
+*ServersApi* | [**GetServersWelcomeEmail**](docs/ServersApi.md#getserverswelcomeemail) | **GET** /servers/{id}/welcome_email | Resend the dedicated server welcome email with setup credentials
+*ServersApi* | [**PlaceBuyNowServer**](docs/ServersApi.md#placebuynowserver) | **POST** /servers/order/buy_now_server | Place a Rapid Deploy / coupon dedicated server order; creates real invoice
+*ServersApi* | [**PostServerReverseDns**](docs/ServersApi.md#postserverreversedns) | **POST** /servers/{id}/reverse_dns | Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
+*ServersApi* | [**ServerBulkIpmiPowerGet**](docs/ServersApi.md#serverbulkipmipowerget) | **GET** /servers/bulk/ipmi_power | Read IPMI chassis power status for many dedicated servers in one call
+*ServersApi* | [**ServerIpmiLiveGet**](docs/ServersApi.md#serveripmiliveget) | **GET** /servers/{id}/ipmi_live | Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
+*ServersApi* | [**ServerIpmiLivePost**](docs/ServersApi.md#serveripmilivepost) | **POST** /servers/{id}/ipmi_live | Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
+*ServersApi* | [**ServerIpmiPowerGet**](docs/ServersApi.md#serveripmipowerget) | **GET** /servers/{id}/ipmi_power | Read IPMI chassis power status for a dedicated server (single)
+*ServersApi* | [**ServerIpmiPowerPost**](docs/ServersApi.md#serveripmipowerpost) | **POST** /servers/{id}/ipmi_power | DESTRUCTIVE — change chassis power state on a bare-metal server
+*ServersApi* | [**ServersCancel**](docs/ServersApi.md#serverscancel) | **DELETE** /servers/{id} | Cancel a dedicated server service at the end of the current billing cycle
+*ServersApi* | [**UpdateServerInfo**](docs/ServersApi.md#updateserverinfo) | **POST** /servers/{id} | Update settings on a dedicated server order (shares handler with view)
+*TicketsApi* | [**AddNewTicket**](docs/TicketsApi.md#addnewticket) | **POST** /tickets/new | Open a new helpdesk ticket, optionally linked to a service and attachments
+*TicketsApi* | [**CloseTicket**](docs/TicketsApi.md#closeticket) | **GET** /tickets/{id}/close | Close an open support ticket via simple GET request (no body required)
+*TicketsApi* | [**DeleteTicketInfo**](docs/TicketsApi.md#deleteticketinfo) | **DELETE** /tickets/{id} | Close a customer ticket via DELETE verb (closes only, never destroys data)
+*TicketsApi* | [**GetNewTicket**](docs/TicketsApi.md#getnewticket) | **GET** /tickets/new | Fetch services and product options to populate the new-ticket form
+*TicketsApi* | [**GetTicketInfo**](docs/TicketsApi.md#getticketinfo) | **GET** /tickets/{id} | Get full ticket details including subject, status, and the reply thread
+*TicketsApi* | [**GetTicketsList**](docs/TicketsApi.md#getticketslist) | **GET** /tickets | List the authenticated account's support tickets with status and date filters
+*TicketsApi* | [**PostTicketInfo**](docs/TicketsApi.md#postticketinfo) | **POST** /tickets/{id} | Append a reply (and optional attachment, server-access fields) to a ticket
+*TicketsApi* | [**PostTicketsList**](docs/TicketsApi.md#postticketslist) | **POST** /tickets | Search the authenticated account's tickets by subject, email, or mask ID
+*TicketsApi* | [**PutTicketInfo**](docs/TicketsApi.md#putticketinfo) | **PUT** /tickets/{id} | Update a ticket's properties such as subject or status (stub, not implemented)
+*TicketsApi* | [**ReplyTicket**](docs/TicketsApi.md#replyticket) | **POST** /tickets/{id}/reply | Post a simple text reply to an existing ticket thread (no attachments)
+*TicketsApi* | [**UpdateTicketInfo**](docs/TicketsApi.md#updateticketinfo) | **POST** /tickets/{id}/update | Update a ticket's custom field values (server-access details, etc.)
+*VPSApi* | [**AddVps**](docs/VPSApi.md#addvps) | **POST** /vps/order | Place a new VPS order, create the invoice, and queue provisioning
+*VPSApi* | [**DeleteVpsBackup**](docs/VPSApi.md#deletevpsbackup) | **DELETE** /vps/{id}/backups | Permanently delete a VPS backup file by name (irreversible)
+*VPSApi* | [**DoVpsBlockSmtp**](docs/VPSApi.md#dovpsblocksmtp) | **GET** /vps/{id}/block_smtp | Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
+*VPSApi* | [**DoVpsDisableCd**](docs/VPSApi.md#dovpsdisablecd) | **GET** /vps/{id}/disable_cd | Remove the virtual CD/DVD device entirely from the VPS configuration
+*VPSApi* | [**DoVpsDisableQuota**](docs/VPSApi.md#dovpsdisablequota) | **GET** /vps/{id}/disable_quota | Disable per-user disk quota enforcement inside the VPS guest OS
+*VPSApi* | [**DoVpsEjectCd**](docs/VPSApi.md#dovpsejectcd) | **GET** /vps/{id}/eject_cd | Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
+*VPSApi* | [**DoVpsEnableQuota**](docs/VPSApi.md#dovpsenablequota) | **GET** /vps/{id}/enable_quota | Enable per-user disk quota enforcement inside the VPS guest OS
+*VPSApi* | [**DoVpsRestart**](docs/VPSApi.md#dovpsrestart) | **GET** /vps/{id}/restart | Reboot the VPS — preferred over stop+start for software changes
+*VPSApi* | [**DoVpsStart**](docs/VPSApi.md#dovpsstart) | **GET** /vps/{id}/start | Power on a stopped VPS instance
+*VPSApi* | [**DoVpsStop**](docs/VPSApi.md#dovpsstop) | **GET** /vps/{id}/stop | Power off a running VPS — billing continues until cancellation
+*VPSApi* | [**DownloadVpsBackup**](docs/VPSApi.md#downloadvpsbackup) | **PATCH** /vps/{id}/backups | Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
+*VPSApi* | [**GetNewVps**](docs/VPSApi.md#getnewvps) | **GET** /vps/order | Get the VPS order catalog — platforms, OS templates, locations, pricing
+*VPSApi* | [**GetVpsBackup**](docs/VPSApi.md#getvpsbackup) | **GET** /vps/{id}/backup | Trigger a manual on-demand snapshot/backup of the VPS
+*VPSApi* | [**GetVpsBackups**](docs/VPSApi.md#getvpsbackups) | **GET** /vps/{id}/backups | List existing backups for the VPS across Swift, MinIO, and ZFS
+*VPSApi* | [**GetVpsBuyHdSpace**](docs/VPSApi.md#getvpsbuyhdspace) | **GET** /vps/{id}/buy_hd_space | Get current additional disk size and per-GB monthly cost for the VPS
+*VPSApi* | [**GetVpsBuyIp**](docs/VPSApi.md#getvpsbuyip) | **GET** /vps/{id}/buy_ip | Read current additional IPs, cap, and per-IP monthly cost for the VPS
+*VPSApi* | [**GetVpsChangeHostname**](docs/VPSApi.md#getvpschangehostname) | **GET** /vps/{id}/change_hostname | Read the VPS's current hostname before changing it
+*VPSApi* | [**GetVpsChangeRootPassword**](docs/VPSApi.md#getvpschangerootpassword) | **GET** /vps/{id}/change_root_password | Pre-flight check before changing the VPS root password
+*VPSApi* | [**GetVpsChangeTimezone**](docs/VPSApi.md#getvpschangetimezone) | **GET** /vps/{id}/change_timezone | List IANA timezones supported by the VPS guest OS
+*VPSApi* | [**GetVpsInfo**](docs/VPSApi.md#getvpsinfo) | **GET** /vps/{id} | Get full details for one VPS — IPs, hostname, OS, slices, status, addons
+*VPSApi* | [**GetVpsInsertCd**](docs/VPSApi.md#getvpsinsertcd) | **GET** /vps/{id}/insert_cd | List ISO templates that can be mounted in the VPS virtual CD drive
+*VPSApi* | [**GetVpsInvoices**](docs/VPSApi.md#getvpsinvoices) | **GET** /vps/{id}/invoices | List all billing invoices associated with this specific VPS
+*VPSApi* | [**GetVpsList**](docs/VPSApi.md#getvpslist) | **GET** /vps | List all VPS services on the customer's account
+*VPSApi* | [**GetVpsReinstallOs**](docs/VPSApi.md#getvpsreinstallos) | **GET** /vps/{id}/reinstall_os | List OS templates compatible with this VPS's hypervisor for reinstall
+*VPSApi* | [**GetVpsResetPassword**](docs/VPSApi.md#getvpsresetpassword) | **GET** /vps/{id}/reset_password | Pre-flight check before resetting the VPS root password to a random value
+*VPSApi* | [**GetVpsReverseDns**](docs/VPSApi.md#getvpsreversedns) | **GET** /vps/{id}/reverse_dns | Read the current PTR (reverse-DNS) records for every IP on the VPS
+*VPSApi* | [**GetVpsSetupVnc**](docs/VPSApi.md#getvpssetupvnc) | **GET** /vps/{id}/setup_vnc | Read current VNC console connection info for the VPS
+*VPSApi* | [**GetVpsSlices**](docs/VPSApi.md#getvpsslices) | **GET** /vps/{id}/slices | Read current slice count, min/max range, and prorated per-slice upgrade cost
+*VPSApi* | [**GetVpsTrafficUsage**](docs/VPSApi.md#getvpstrafficusage) | **GET** /vps/{id}/traffic_usage | Read bandwidth traffic usage data for the VPS
+*VPSApi* | [**GetVpsViewDesktop**](docs/VPSApi.md#getvpsviewdesktop) | **GET** /vps/{id}/view_desktop | Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
+*VPSApi* | [**GetVpsWelcomeEmail**](docs/VPSApi.md#getvpswelcomeemail) | **GET** /vps/{id}/welcome_email | Resend the welcome email containing VPS IP, hostname, and root credentials
+*VPSApi* | [**PostVpsBuyHdSpace**](docs/VPSApi.md#postvpsbuyhdspace) | **POST** /vps/{id}/buy_hd_space | Buy or resize the VPS additional-disk addon and create a prorated invoice
+*VPSApi* | [**PostVpsBuyIp**](docs/VPSApi.md#postvpsbuyip) | **POST** /vps/{id}/buy_ip | Purchase one additional IP for the VPS and create the invoice
+*VPSApi* | [**PostVpsChangeHostname**](docs/VPSApi.md#postvpschangehostname) | **POST** /vps/{id}/change_hostname | Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
+*VPSApi* | [**PostVpsChangeRootPassword**](docs/VPSApi.md#postvpschangerootpassword) | **POST** /vps/{id}/change_root_password | Set a specific new root/Administrator password on the VPS
+*VPSApi* | [**PostVpsChangeTimezone**](docs/VPSApi.md#postvpschangetimezone) | **POST** /vps/{id}/change_timezone | Set the system timezone on the VPS guest OS
+*VPSApi* | [**PostVpsChangeWebuzoPassword**](docs/VPSApi.md#postvpschangewebuzopassword) | **POST** /vps/{id}/change_webuzo_password | Rotate the Webuzo control panel admin password (re-auth required)
+*VPSApi* | [**PostVpsInsertCd**](docs/VPSApi.md#postvpsinsertcd) | **POST** /vps/{id}/insert_cd | Mount an ISO image in the VPS virtual CD drive from a URL
+*VPSApi* | [**PostVpsReinstallOs**](docs/VPSApi.md#postvpsreinstallos) | **POST** /vps/{id}/reinstall_os | Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
+*VPSApi* | [**PostVpsResetPassword**](docs/VPSApi.md#postvpsresetpassword) | **POST** /vps/{id}/reset_password | Reset the VPS root password to a server-generated random value
+*VPSApi* | [**PostVpsRestore**](docs/VPSApi.md#postvpsrestore) | **POST** /vps/{id}/restore | Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
+*VPSApi* | [**PostVpsReverseDns**](docs/VPSApi.md#postvpsreversedns) | **POST** /vps/{id}/reverse_dns | Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
+*VPSApi* | [**PostVpsSetupVnc**](docs/VPSApi.md#postvpssetupvnc) | **POST** /vps/{id}/setup_vnc | Provision or refresh the VNC console endpoint for the VPS
+*VPSApi* | [**PostVpsSlices**](docs/VPSApi.md#postvpsslices) | **POST** /vps/{id}/slices | Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
+*VPSApi* | [**PostVpsTrafficUsage**](docs/VPSApi.md#postvpstrafficusage) | **POST** /vps/{id}/traffic_usage | Search/filter VPS bandwidth usage with custom criteria (reserved)
+*VPSApi* | [**PostVpsViewDesktop**](docs/VPSApi.md#postvpsviewdesktop) | **POST** /vps/{id}/view_desktop | Refresh the remote-desktop session connection info after IP/hostname changes
+*VPSApi* | [**PutVps**](docs/VPSApi.md#putvps) | **PUT** /vps/order | Validate a VPS order configuration and quote the cost — dry run, no charge
+*VPSApi* | [**PutVpsBuyHdSpace**](docs/VPSApi.md#putvpsbuyhdspace) | **PUT** /vps/{id}/buy_hd_space | Preview cost to set additional VPS disk to a target GB size — dry run
+*VPSApi* | [**UpdateVpsInfo**](docs/VPSApi.md#updatevpsinfo) | **POST** /vps/{id} | Update editable settings on a VPS service record
+*VPSApi* | [**VPSCancel**](docs/VPSApi.md#vpscancel) | **DELETE** /vps/{id} | Cancel a VPS service at the end of the current billing cycle
+*WebhostingApi* | [**AddWebsite**](docs/WebhostingApi.md#addwebsite) | **POST** /websites/order | Place a new webhosting order, create the invoice, and queue provisioning
+*WebhostingApi* | [**GetNewWebsite**](docs/WebhostingApi.md#getnewwebsite) | **GET** /websites/order | Read the webhosting order catalog — plans, packages, promo offers, pricing
+*WebhostingApi* | [**GetWebsiteBuyIp**](docs/WebhostingApi.md#getwebsitebuyip) | **GET** /websites/{id}/buy_ip | Read website IPs, current reverse DNS, and additional-IP pricing
+*WebhostingApi* | [**GetWebsiteInfo**](docs/WebhostingApi.md#getwebsiteinfo) | **GET** /websites/{id} | Read full configuration and status detail for one webhosting service
+*WebhostingApi* | [**GetWebsiteInvoices**](docs/WebhostingApi.md#getwebsiteinvoices) | **GET** /websites/{id}/invoices | List all billing invoices and recurring charges scoped to one website
+*WebhostingApi* | [**GetWebsiteList**](docs/WebhostingApi.md#getwebsitelist) | **GET** /websites | List the caller's webhosting (cPanel/DirectAdmin/Plesk/Webuzo) services
+*WebhostingApi* | [**GetWebsitesBackups**](docs/WebhostingApi.md#getwebsitesbackups) | **GET** /websites/{id}/backups | List off-site cpmove backups stored in Swift — list or inline-download archive
+*WebhostingApi* | [**GetWebsitesLogin**](docs/WebhostingApi.md#getwebsiteslogin) | **GET** /websites/{id}/login | Get a one-time auto-login URL for the website's control panel
+*WebhostingApi* | [**GetWebsitesWelcomeEmail**](docs/WebhostingApi.md#getwebsiteswelcomeemail) | **GET** /websites/{id}/welcome_email | Resend the webhosting welcome email with control-panel credentials and URL
+*WebhostingApi* | [**GettWebsiteReverseDns**](docs/WebhostingApi.md#gettwebsitereversedns) | **GET** /websites/{id}/reverse_dns | Read current reverse-DNS (PTR) records for the website's IPs
+*WebhostingApi* | [**PostWebsiteBuyIp**](docs/WebhostingApi.md#postwebsitebuyip) | **POST** /websites/{id}/buy_ip | Buy an additional IP for the website OR update reverse DNS records
+*WebhostingApi* | [**PostWebsiteMigration**](docs/WebhostingApi.md#postwebsitemigration) | **POST** /websites/{id}/migration | Submit a request for InterServer staff to migrate a website from another host
+*WebhostingApi* | [**PostWebsitesReverseDns**](docs/WebhostingApi.md#postwebsitesreversedns) | **POST** /websites/{id}/reverse_dns | Bulk-update reverse-DNS (PTR) records for one or more website IPs
+*WebhostingApi* | [**PutWebsites**](docs/WebhostingApi.md#putwebsites) | **PUT** /websites/order | Validate a webhosting order and preview cost — dry run, no charge
+*WebhostingApi* | [**UpdateWebsiteInfo**](docs/WebhostingApi.md#updatewebsiteinfo) | **POST** /websites/{id} | POST mutation hook for the website detail page (use dedicated ops where possible)
+*WebhostingApi* | [**WebhostingCancel**](docs/WebhostingApi.md#webhostingcancel) | **DELETE** /websites/{id} | Schedule termination of a webhosting service — wipes panel account at cycle end
 
 <a name="documentation-for-models"></a>
 ## Documentation for Models
@@ -902,7 +878,6 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.AllOfServerOrderFieldLabelsMemory](docs/AllOfServerOrderFieldLabelsMemory.md)
  - [myadmin-client-csharp-dotnet2.Model.AllOfServerOrderFieldLabelsOs](docs/AllOfServerOrderFieldLabelsOs.md)
  - [myadmin-client-csharp-dotnet2.Model.AllOfServerOrderFieldLabelsRaid](docs/AllOfServerOrderFieldLabelsRaid.md)
- - [myadmin-client-csharp-dotnet2.Model.AssetServer](docs/AssetServer.md)
  - [myadmin-client-csharp-dotnet2.Model.Backup](docs/Backup.md)
  - [myadmin-client-csharp-dotnet2.Model.BackupBillingDetails](docs/BackupBillingDetails.md)
  - [myadmin-client-csharp-dotnet2.Model.BackupClientLink](docs/BackupClientLink.md)
@@ -920,7 +895,6 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.BackupsOrder](docs/BackupsOrder.md)
  - [myadmin-client-csharp-dotnet2.Model.BackupsOrderPackageCosts](docs/BackupsOrderPackageCosts.md)
  - [myadmin-client-csharp-dotnet2.Model.BackupsOrderServiceTypes](docs/BackupsOrderServiceTypes.md)
- - [myadmin-client-csharp-dotnet2.Model.Bandwidth](docs/Bandwidth.md)
  - [myadmin-client-csharp-dotnet2.Model.BillingAddCcRequest](docs/BillingAddCcRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.BillingInvoiceDetail](docs/BillingInvoiceDetail.md)
  - [myadmin-client-csharp-dotnet2.Model.BillingInvoiceList](docs/BillingInvoiceList.md)
@@ -935,11 +909,6 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.ChargeInvoiceRowsPaidInvoices](docs/ChargeInvoiceRowsPaidInvoices.md)
  - [myadmin-client-csharp-dotnet2.Model.ChargeInvoiceRowsRefundInvoices](docs/ChargeInvoiceRowsRefundInvoices.md)
  - [myadmin-client-csharp-dotnet2.Model.CloseTicketResponseSchema](docs/CloseTicketResponseSchema.md)
- - [myadmin-client-csharp-dotnet2.Model.ConfigIds](docs/ConfigIds.md)
- - [myadmin-client-csharp-dotnet2.Model.ConfigLists](docs/ConfigLists.md)
- - [myadmin-client-csharp-dotnet2.Model.ControlPanel](docs/ControlPanel.md)
- - [myadmin-client-csharp-dotnet2.Model.Cpu](docs/Cpu.md)
- - [myadmin-client-csharp-dotnet2.Model.CpuWithDefaults](docs/CpuWithDefaults.md)
  - [myadmin-client-csharp-dotnet2.Model.CreateFilter](docs/CreateFilter.md)
  - [myadmin-client-csharp-dotnet2.Model.CreateFirewallRule](docs/CreateFirewallRule.md)
  - [myadmin-client-csharp-dotnet2.Model.CreateGeoFirewallRule](docs/CreateGeoFirewallRule.md)
@@ -972,11 +941,11 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.DomainNameserverPostRequest](docs/DomainNameserverPostRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.DomainNameserverPutRequest](docs/DomainNameserverPutRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.DomainOrder](docs/DomainOrder.md)
+ - [myadmin-client-csharp-dotnet2.Model.DomainOrderRequest](docs/DomainOrderRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.DomainOrderResponse](docs/DomainOrderResponse.md)
  - [myadmin-client-csharp-dotnet2.Model.DomainOrderResponseAttributes](docs/DomainOrderResponseAttributes.md)
  - [myadmin-client-csharp-dotnet2.Model.DomainOrderServices](docs/DomainOrderServices.md)
  - [myadmin-client-csharp-dotnet2.Model.DomainOrderServices10001](docs/DomainOrderServices10001.md)
- - [myadmin-client-csharp-dotnet2.Model.DomainOrderTldServices](docs/DomainOrderTldServices.md)
  - [myadmin-client-csharp-dotnet2.Model.DomainOwnerContact](docs/DomainOwnerContact.md)
  - [myadmin-client-csharp-dotnet2.Model.DomainProvProcessPending](docs/DomainProvProcessPending.md)
  - [myadmin-client-csharp-dotnet2.Model.DomainProvProcessPendingAttributes](docs/DomainProvProcessPendingAttributes.md)
@@ -989,10 +958,8 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.EmailAddress](docs/EmailAddress.md)
  - [myadmin-client-csharp-dotnet2.Model.EmailAddressName](docs/EmailAddressName.md)
  - [myadmin-client-csharp-dotnet2.Model.EndDate](docs/EndDate.md)
- - [myadmin-client-csharp-dotnet2.Model.FieldLabel](docs/FieldLabel.md)
- - [myadmin-client-csharp-dotnet2.Model.FormValues](docs/FormValues.md)
+ - [myadmin-client-csharp-dotnet2.Model.FloatingIpOrderRequest](docs/FloatingIpOrderRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.GenericResponse](docs/GenericResponse.md)
- - [myadmin-client-csharp-dotnet2.Model.HardDrive](docs/HardDrive.md)
  - [myadmin-client-csharp-dotnet2.Model.Home](docs/Home.md)
  - [myadmin-client-csharp-dotnet2.Model.HomeDetails](docs/HomeDetails.md)
  - [myadmin-client-csharp-dotnet2.Model.HomeDetailsModules](docs/HomeDetailsModules.md)
@@ -1018,6 +985,8 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.HomeTicketStatus](docs/HomeTicketStatus.md)
  - [myadmin-client-csharp-dotnet2.Model.HomeTicketStatusView](docs/HomeTicketStatusView.md)
  - [myadmin-client-csharp-dotnet2.Model.HostnameObject](docs/HostnameObject.md)
+ - [myadmin-client-csharp-dotnet2.Model.IdAlertsBody](docs/IdAlertsBody.md)
+ - [myadmin-client-csharp-dotnet2.Model.IdAlertsBody1](docs/IdAlertsBody1.md)
  - [myadmin-client-csharp-dotnet2.Model.IdBackupsBody](docs/IdBackupsBody.md)
  - [myadmin-client-csharp-dotnet2.Model.IdBackupsBody1](docs/IdBackupsBody1.md)
  - [myadmin-client-csharp-dotnet2.Model.IdBackupsBody2](docs/IdBackupsBody2.md)
@@ -1026,30 +995,32 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.IdBuyIpBody1](docs/IdBuyIpBody1.md)
  - [myadmin-client-csharp-dotnet2.Model.IdMigrationBody](docs/IdMigrationBody.md)
  - [myadmin-client-csharp-dotnet2.Model.IdMigrationBody1](docs/IdMigrationBody1.md)
+ - [myadmin-client-csharp-dotnet2.Model.IdVerifyBody](docs/IdVerifyBody.md)
+ - [myadmin-client-csharp-dotnet2.Model.IdVerifyBody1](docs/IdVerifyBody1.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse200](docs/InlineResponse200.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse2001](docs/InlineResponse2001.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20010](docs/InlineResponse20010.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20011](docs/InlineResponse20011.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20012](docs/InlineResponse20012.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20012BillingDetails](docs/InlineResponse20012BillingDetails.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20012ClientLinks](docs/InlineResponse20012ClientLinks.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20012ExtraInfoTables](docs/InlineResponse20012ExtraInfoTables.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20012ExtraInfoTablesScrubIps](docs/InlineResponse20012ExtraInfoTablesScrubIps.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20012ExtraInfoTablesScrubIpsRows](docs/InlineResponse20012ExtraInfoTablesScrubIpsRows.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20012FilterFirewall](docs/InlineResponse20012FilterFirewall.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20012FilterFirewallFilters](docs/InlineResponse20012FilterFirewallFilters.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20012FilterFirewallRules](docs/InlineResponse20012FilterFirewallRules.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20012ServiceInfo](docs/InlineResponse20012ServiceInfo.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20013](docs/InlineResponse20013.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20013BillingDetails](docs/InlineResponse20013BillingDetails.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20013ClientLinks](docs/InlineResponse20013ClientLinks.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20013ExtraInfoTables](docs/InlineResponse20013ExtraInfoTables.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20013ExtraInfoTablesScrubIps](docs/InlineResponse20013ExtraInfoTablesScrubIps.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20013ExtraInfoTablesScrubIpsRows](docs/InlineResponse20013ExtraInfoTablesScrubIpsRows.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20013FilterFirewall](docs/InlineResponse20013FilterFirewall.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20013FilterFirewallFilters](docs/InlineResponse20013FilterFirewallFilters.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20013FilterFirewallRules](docs/InlineResponse20013FilterFirewallRules.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20013ServiceInfo](docs/InlineResponse20013ServiceInfo.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20014](docs/InlineResponse20014.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20015](docs/InlineResponse20015.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20016](docs/InlineResponse20016.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20017](docs/InlineResponse20017.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20018](docs/InlineResponse20018.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20018Ips](docs/InlineResponse20018Ips.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20018PackageCosts](docs/InlineResponse20018PackageCosts.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20018ServiceTypes](docs/InlineResponse20018ServiceTypes.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20019](docs/InlineResponse20019.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20019Ips](docs/InlineResponse20019Ips.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20019PackageCosts](docs/InlineResponse20019PackageCosts.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20019ServiceTypes](docs/InlineResponse20019ServiceTypes.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse2002](docs/InlineResponse2002.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20020](docs/InlineResponse20020.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20021](docs/InlineResponse20021.md)
@@ -1059,11 +1030,13 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20025](docs/InlineResponse20025.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20026](docs/InlineResponse20026.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027](docs/InlineResponse20027.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027Bandwidth](docs/InlineResponse20027Bandwidth.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027Cp](docs/InlineResponse20027Cp.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027Ips](docs/InlineResponse20027Ips.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027Os](docs/InlineResponse20027Os.md)
- - [myadmin-client-csharp-dotnet2.Model.InlineResponse20027Raid](docs/InlineResponse20027Raid.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20028](docs/InlineResponse20028.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20029](docs/InlineResponse20029.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20029Bandwidth](docs/InlineResponse20029Bandwidth.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20029Cp](docs/InlineResponse20029Cp.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20029Ips](docs/InlineResponse20029Ips.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20029Os](docs/InlineResponse20029Os.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponse20029Raid](docs/InlineResponse20029Raid.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse2003](docs/InlineResponse2003.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse2004](docs/InlineResponse2004.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse2005](docs/InlineResponse2005.md)
@@ -1089,9 +1062,7 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse5003](docs/InlineResponse5003.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse5004](docs/InlineResponse5004.md)
  - [myadmin-client-csharp-dotnet2.Model.InlineResponse5005](docs/InlineResponse5005.md)
- - [myadmin-client-csharp-dotnet2.Model.Invoice](docs/Invoice.md)
- - [myadmin-client-csharp-dotnet2.Model.InvoiceRow](docs/InvoiceRow.md)
- - [myadmin-client-csharp-dotnet2.Model.IpBlock](docs/IpBlock.md)
+ - [myadmin-client-csharp-dotnet2.Model.InlineResponseMap200](docs/InlineResponseMap200.md)
  - [myadmin-client-csharp-dotnet2.Model.IpLimitRange](docs/IpLimitRange.md)
  - [myadmin-client-csharp-dotnet2.Model.IpObject](docs/IpObject.md)
  - [myadmin-client-csharp-dotnet2.Model.License](docs/License.md)
@@ -1100,6 +1071,7 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.LicenseExtraInfoTables](docs/LicenseExtraInfoTables.md)
  - [myadmin-client-csharp-dotnet2.Model.LicenseIpInfo](docs/LicenseIpInfo.md)
  - [myadmin-client-csharp-dotnet2.Model.LicenseIpInfoRow](docs/LicenseIpInfoRow.md)
+ - [myadmin-client-csharp-dotnet2.Model.LicenseOrderRequest](docs/LicenseOrderRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.LicenseRow](docs/LicenseRow.md)
  - [myadmin-client-csharp-dotnet2.Model.LicenseServiceInfo](docs/LicenseServiceInfo.md)
  - [myadmin-client-csharp-dotnet2.Model.LicenseServiceType](docs/LicenseServiceType.md)
@@ -1134,6 +1106,7 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.MailLog](docs/MailLog.md)
  - [myadmin-client-csharp-dotnet2.Model.MailLogEntry](docs/MailLogEntry.md)
  - [myadmin-client-csharp-dotnet2.Model.MailOrder](docs/MailOrder.md)
+ - [myadmin-client-csharp-dotnet2.Model.MailOrderRequest](docs/MailOrderRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.MailRow](docs/MailRow.md)
  - [myadmin-client-csharp-dotnet2.Model.MailSchema](docs/MailSchema.md)
  - [myadmin-client-csharp-dotnet2.Model.MailSchemaExtraInfoTables](docs/MailSchemaExtraInfoTables.md)
@@ -1146,7 +1119,6 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.MailStatsTypeVolumeTo](docs/MailStatsTypeVolumeTo.md)
  - [myadmin-client-csharp-dotnet2.Model.MailTutorialsTable](docs/MailTutorialsTable.md)
  - [myadmin-client-csharp-dotnet2.Model.MailTutorialsTableRow](docs/MailTutorialsTableRow.md)
- - [myadmin-client-csharp-dotnet2.Model.MemoryOption](docs/MemoryOption.md)
  - [myadmin-client-csharp-dotnet2.Model.ModuleSettings](docs/ModuleSettings.md)
  - [myadmin-client-csharp-dotnet2.Model.Modules](docs/Modules.md)
  - [myadmin-client-csharp-dotnet2.Model.MonthlyCounts](docs/MonthlyCounts.md)
@@ -1156,17 +1128,13 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.OauthBody3](docs/OauthBody3.md)
  - [myadmin-client-csharp-dotnet2.Model.OneOfAccountInfoMaxMindResponseRiskScore](docs/OneOfAccountInfoMaxMindResponseRiskScore.md)
  - [myadmin-client-csharp-dotnet2.Model.OneOfAccountInfoOauthproviders](docs/OneOfAccountInfoOauthproviders.md)
- - [myadmin-client-csharp-dotnet2.Model.OneOfAssetServerBandwidthItems](docs/OneOfAssetServerBandwidthItems.md)
- - [myadmin-client-csharp-dotnet2.Model.OneOfAssetServerCPUItems](docs/OneOfAssetServerCPUItems.md)
- - [myadmin-client-csharp-dotnet2.Model.OneOfAssetServerIPsItems](docs/OneOfAssetServerIPsItems.md)
- - [myadmin-client-csharp-dotnet2.Model.OneOfAssetServerMemoryItems](docs/OneOfAssetServerMemoryItems.md)
  - [myadmin-client-csharp-dotnet2.Model.OneOfBuyItNowRowCpuItems](docs/OneOfBuyItNowRowCpuItems.md)
+ - [myadmin-client-csharp-dotnet2.Model.OneOfServerOrderPostRequestHd](docs/OneOfServerOrderPostRequestHd.md)
  - [myadmin-client-csharp-dotnet2.Model.OneOfVPSTrafficDataDataSectionResponseItems](docs/OneOfVPSTrafficDataDataSectionResponseItems.md)
  - [myadmin-client-csharp-dotnet2.Model.OneOfVpsTrafficHistorySectionDataResponseItems](docs/OneOfVpsTrafficHistorySectionDataResponseItems.md)
- - [myadmin-client-csharp-dotnet2.Model.OperatingSystem](docs/OperatingSystem.md)
  - [myadmin-client-csharp-dotnet2.Model.OrderBuyNowServerBody](docs/OrderBuyNowServerBody.md)
  - [myadmin-client-csharp-dotnet2.Model.PasswordRequest](docs/PasswordRequest.md)
- - [myadmin-client-csharp-dotnet2.Model.PaymentInvoiceRows](docs/PaymentInvoiceRows.md)
+ - [myadmin-client-csharp-dotnet2.Model.QsOrderRequest](docs/QsOrderRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.QueueResponse](docs/QueueResponse.md)
  - [myadmin-client-csharp-dotnet2.Model.Quickserver](docs/Quickserver.md)
  - [myadmin-client-csharp-dotnet2.Model.QuickserverAddons](docs/QuickserverAddons.md)
@@ -1189,8 +1157,6 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.QuickserverServiceExtra](docs/QuickserverServiceExtra.md)
  - [myadmin-client-csharp-dotnet2.Model.QuickserverServiceInfo](docs/QuickserverServiceInfo.md)
  - [myadmin-client-csharp-dotnet2.Model.QuickserverServiceMaster](docs/QuickserverServiceMaster.md)
- - [myadmin-client-csharp-dotnet2.Model.RaidOption](docs/RaidOption.md)
- - [myadmin-client-csharp-dotnet2.Model.Region](docs/Region.md)
  - [myadmin-client-csharp-dotnet2.Model.ReplyTicketRequest](docs/ReplyTicketRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.ReplyTicketResponseSchema](docs/ReplyTicketResponseSchema.md)
  - [myadmin-client-csharp-dotnet2.Model.RestoreRequest](docs/RestoreRequest.md)
@@ -1207,6 +1173,8 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.ServerAsset](docs/ServerAsset.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerAssets](docs/ServerAssets.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerBillingDetails](docs/ServerBillingDetails.md)
+ - [myadmin-client-csharp-dotnet2.Model.ServerBulkIpmiPowerResponse](docs/ServerBulkIpmiPowerResponse.md)
+ - [myadmin-client-csharp-dotnet2.Model.ServerBulkIpmiPowerResponseResults](docs/ServerBulkIpmiPowerResponseResults.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerClientLink](docs/ServerClientLink.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerExtraInfoTables](docs/ServerExtraInfoTables.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerIpmiLiveInfo](docs/ServerIpmiLiveInfo.md)
@@ -1229,7 +1197,6 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.ServerOrderFieldLabel](docs/ServerOrderFieldLabel.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerOrderFieldLabels](docs/ServerOrderFieldLabels.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerOrderFormValues](docs/ServerOrderFormValues.md)
- - [myadmin-client-csharp-dotnet2.Model.ServerOrderGetResponse](docs/ServerOrderGetResponse.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerOrderIP](docs/ServerOrderIP.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerOrderIpsLi](docs/ServerOrderIpsLi.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerOrderMemory](docs/ServerOrderMemory.md)
@@ -1237,6 +1204,7 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.ServerOrderMemoryLi254](docs/ServerOrderMemoryLi254.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerOrderOS](docs/ServerOrderOS.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerOrderOsLi](docs/ServerOrderOsLi.md)
+ - [myadmin-client-csharp-dotnet2.Model.ServerOrderPostRequest](docs/ServerOrderPostRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerOrderRAID](docs/ServerOrderRAID.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerRow](docs/ServerRow.md)
  - [myadmin-client-csharp-dotnet2.Model.ServerServiceInfo](docs/ServerServiceInfo.md)
@@ -1252,6 +1220,7 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.ServiceTypes](docs/ServiceTypes.md)
  - [myadmin-client-csharp-dotnet2.Model.Services](docs/Services.md)
  - [myadmin-client-csharp-dotnet2.Model.ServicesInfo](docs/ServicesInfo.md)
+ - [myadmin-client-csharp-dotnet2.Model.SslOrderRequest](docs/SslOrderRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.StartDate](docs/StartDate.md)
  - [myadmin-client-csharp-dotnet2.Model.StatusMonthlyBreakdown](docs/StatusMonthlyBreakdown.md)
  - [myadmin-client-csharp-dotnet2.Model.SuccessTextResponse](docs/SuccessTextResponse.md)
@@ -1309,7 +1278,6 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.VpsSnapshot](docs/VpsSnapshot.md)
  - [myadmin-client-csharp-dotnet2.Model.VpsTemplateRow](docs/VpsTemplateRow.md)
  - [myadmin-client-csharp-dotnet2.Model.VpsTemplatesList](docs/VpsTemplatesList.md)
- - [myadmin-client-csharp-dotnet2.Model.VpsTrafficDataDataResponse](docs/VpsTrafficDataDataResponse.md)
  - [myadmin-client-csharp-dotnet2.Model.VpsTrafficDataSectionResponse](docs/VpsTrafficDataSectionResponse.md)
  - [myadmin-client-csharp-dotnet2.Model.VpsTrafficHistoryResponse](docs/VpsTrafficHistoryResponse.md)
  - [myadmin-client-csharp-dotnet2.Model.VpsTrafficHistorySectionDataResponse](docs/VpsTrafficHistorySectionDataResponse.md)
@@ -1327,6 +1295,8 @@ Class | Method | HTTP request | Description
  - [myadmin-client-csharp-dotnet2.Model.WebsiteClientLink](docs/WebsiteClientLink.md)
  - [myadmin-client-csharp-dotnet2.Model.WebsiteExtraInfoTables](docs/WebsiteExtraInfoTables.md)
  - [myadmin-client-csharp-dotnet2.Model.WebsiteLoginResponse](docs/WebsiteLoginResponse.md)
+ - [myadmin-client-csharp-dotnet2.Model.WebsiteOrderPostRequest](docs/WebsiteOrderPostRequest.md)
+ - [myadmin-client-csharp-dotnet2.Model.WebsiteOrderPutRequest](docs/WebsiteOrderPutRequest.md)
  - [myadmin-client-csharp-dotnet2.Model.WebsiteRow](docs/WebsiteRow.md)
  - [myadmin-client-csharp-dotnet2.Model.WebsiteServiceExtra](docs/WebsiteServiceExtra.md)
  - [myadmin-client-csharp-dotnet2.Model.WebsiteServiceInfo](docs/WebsiteServiceInfo.md)

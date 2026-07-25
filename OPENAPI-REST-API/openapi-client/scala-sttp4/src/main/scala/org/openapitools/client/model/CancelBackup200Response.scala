@@ -16,4 +16,3 @@ case class CancelBackup200Response(
   success: Boolean,
   text: String
 )
-

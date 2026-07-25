@@ -5,55 +5,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.model.InlineResponse20018Ips;
-import io.swagger.model.InlineResponse20018PackageCosts;
-import io.swagger.model.InlineResponse20018ServiceTypes;
-import java.util.List;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
 public class InlineResponse20018   {
-  private InlineResponse20018PackageCosts packageCosts = null;  private List<InlineResponse20018ServiceTypes> serviceTypes = new ArrayList<InlineResponse20018ServiceTypes>();  private List<InlineResponse20018Ips> ips = new ArrayList<InlineResponse20018Ips>();
+  private Boolean success = null;  private String text = null;
 
   /**
    **/
   
-  @Schema(description = "")
-  @JsonProperty("packageCosts")
+  @Schema(example = "true", description = "")
+  @JsonProperty("success")
   @NotNull
-  public InlineResponse20018PackageCosts getPackageCosts() {
-    return packageCosts;
+  public Boolean isSuccess() {
+    return success;
   }
-  public void setPackageCosts(InlineResponse20018PackageCosts packageCosts) {
-    this.packageCosts = packageCosts;
-  }
-
-  /**
-   **/
-  
-  @Schema(description = "")
-  @JsonProperty("serviceTypes")
-  @NotNull
-  public List<InlineResponse20018ServiceTypes> getServiceTypes() {
-    return serviceTypes;
-  }
-  public void setServiceTypes(List<InlineResponse20018ServiceTypes> serviceTypes) {
-    this.serviceTypes = serviceTypes;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
   /**
    **/
   
-  @Schema(description = "")
-  @JsonProperty("ips")
+  @Schema(example = "Filter is deleted.", description = "")
+  @JsonProperty("text")
   @NotNull
-  public List<InlineResponse20018Ips> getIps() {
-    return ips;
+  public String getText() {
+    return text;
   }
-  public void setIps(List<InlineResponse20018Ips> ips) {
-    this.ips = ips;
+  public void setText(String text) {
+    this.text = text;
   }
 
 
@@ -66,14 +49,13 @@ public class InlineResponse20018   {
       return false;
     }
     InlineResponse20018 inlineResponse20018 = (InlineResponse20018) o;
-    return Objects.equals(packageCosts, inlineResponse20018.packageCosts) &&
-        Objects.equals(serviceTypes, inlineResponse20018.serviceTypes) &&
-        Objects.equals(ips, inlineResponse20018.ips);
+    return Objects.equals(success, inlineResponse20018.success) &&
+        Objects.equals(text, inlineResponse20018.text);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(packageCosts, serviceTypes, ips);
+    return Objects.hash(success, text);
   }
 
   @Override
@@ -81,9 +63,8 @@ public class InlineResponse20018   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20018 {\n");
     
-    sb.append("    packageCosts: ").append(toIndentedString(packageCosts)).append("\n");
-    sb.append("    serviceTypes: ").append(toIndentedString(serviceTypes)).append("\n");
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("}");
     return sb.toString();
   }

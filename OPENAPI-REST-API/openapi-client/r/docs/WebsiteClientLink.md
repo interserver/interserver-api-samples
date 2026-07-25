@@ -1,4 +1,4 @@
-# openapi::WebsiteClientLink
+# interserverapi::WebsiteClientLink
 
 A navigation link for webhosting-related actions in the client portal.
 

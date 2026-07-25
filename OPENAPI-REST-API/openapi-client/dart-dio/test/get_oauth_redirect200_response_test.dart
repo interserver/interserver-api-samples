@@ -1,14 +1,14 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for GetOauthRedirect200Response
 void main() {
-  final instance = GetOauthRedirect200ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final GetOauthRedirect200Response? instance = /* GetOauthRedirect200Response(...) */ null;
+  // TODO add properties to the entity
 
   group(GetOauthRedirect200Response, () {
     // The URL to redirect the user to for OAuth authentication.
-    // String redirectUrl
+    // Optional<String?> redirectUrl
     test('to test the property `redirectUrl`', () async {
       // TODO
     });

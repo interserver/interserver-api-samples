@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$IpObject = Initialize-PSOpenAPIToolsIpObject  -Ip null
+$IpObject = Initialize-InterserverApiIpObject  -Ip null
 ```
 
 - Convert the resource to JSON

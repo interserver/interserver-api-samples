@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_order_server_details import QuickserverOrderServerDetails
+from interserver_api_client.models.quickserver_order_server_details import QuickserverOrderServerDetails
 
 class TestQuickserverOrderServerDetails(unittest.TestCase):
     """QuickserverOrderServerDetails unit test stubs"""
@@ -36,7 +36,7 @@ class TestQuickserverOrderServerDetails(unittest.TestCase):
         model = QuickserverOrderServerDetails()
         if include_optional:
             return QuickserverOrderServerDetails(
-                var_381 = openapi_client.models.quickserver_order_server_details381.QuickserverOrderServerDetails381(
+                var_381 = interserver_api_client.models.quickserver_order_server_details381.QuickserverOrderServerDetails381(
                     cpu = 'AMD Ryzen 9 5900X 12-Core Processor', 
                     ram = '119GB', 
                     hd = '1760GB', 

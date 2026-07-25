@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderConfigIds } from './api';
+import { ServerOrderConfigIds } from '@interserver/myadmin-client';
 
 const instance: ServerOrderConfigIds = {
     memory,

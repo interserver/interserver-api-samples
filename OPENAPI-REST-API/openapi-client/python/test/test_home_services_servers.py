@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_services_servers import HomeServicesServers
+from interserver_api_client.models.home_services_servers import HomeServicesServers
 
 class TestHomeServicesServers(unittest.TestCase):
     """HomeServicesServers unit test stubs"""
@@ -36,7 +36,7 @@ class TestHomeServicesServers(unittest.TestCase):
         model = HomeServicesServers()
         if include_optional:
             return HomeServicesServers(
-                links = openapi_client.models.home_services_servers_links.HomeServicesServersLinks(
+                links = interserver_api_client.models.home_services_servers_links.HomeServicesServersLinks(
                     16058 = 'anotherserver.com', ),
                 count = 1
             )

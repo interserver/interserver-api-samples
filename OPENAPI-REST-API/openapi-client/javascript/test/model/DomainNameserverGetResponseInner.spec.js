@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainNameserverGetResponseInner();
+    instance = new InterserverApiClient.DomainNameserverGetResponseInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('DomainNameserverGetResponseInner', function() {
     it('should create an instance of DomainNameserverGetResponseInner', function() {
       // uncomment below and update the code to test DomainNameserverGetResponseInner
-      //var instance = new InterServerManagementApi.DomainNameserverGetResponseInner();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainNameserverGetResponseInner);
+      //var instance = new InterserverApiClient.DomainNameserverGetResponseInner();
+      //expect(instance).to.be.a(InterserverApiClient.DomainNameserverGetResponseInner);
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.DomainNameserverGetResponseInner();
+      //var instance = new InterserverApiClient.DomainNameserverGetResponseInner();
       //expect(instance).to.be();
     });
 
     it('should have the property ipaddress (base name: "ipaddress")', function() {
       // uncomment below and update the code to test the property ipaddress
-      //var instance = new InterServerManagementApi.DomainNameserverGetResponseInner();
+      //var instance = new InterserverApiClient.DomainNameserverGetResponseInner();
       //expect(instance).to.be();
     });
 
     it('should have the property can_delete (base name: "can_delete")', function() {
       // uncomment below and update the code to test the property can_delete
-      //var instance = new InterServerManagementApi.DomainNameserverGetResponseInner();
+      //var instance = new InterserverApiClient.DomainNameserverGetResponseInner();
       //expect(instance).to.be();
     });
 

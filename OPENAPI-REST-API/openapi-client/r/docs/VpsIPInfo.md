@@ -1,4 +1,4 @@
-# openapi::VpsIPInfo
+# interserverapi::VpsIPInfo
 
 IP address information table for a VPS service.
 

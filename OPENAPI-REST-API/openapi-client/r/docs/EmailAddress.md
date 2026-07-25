@@ -1,4 +1,4 @@
-# openapi::EmailAddress
+# interserverapi::EmailAddress
 
 an email address
 

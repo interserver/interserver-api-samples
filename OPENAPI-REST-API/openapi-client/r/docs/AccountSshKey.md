@@ -1,4 +1,4 @@
-# openapi::AccountSshKey
+# interserverapi::AccountSshKey
 
 SSH Keys
 

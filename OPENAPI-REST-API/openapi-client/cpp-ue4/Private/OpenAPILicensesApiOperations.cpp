@@ -31,7 +31,7 @@ FString OpenAPILicensesApi::AddLicenseRequest::ComputePath() const
 
 void OpenAPILicensesApi::AddLicenseRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("POST"));
@@ -39,12 +39,23 @@ void OpenAPILicensesApi::AddLicenseRequest::SetupHttpRequest(const FHttpRequestR
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPILicenseOrderRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPILicenseOrderRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPILicenseOrderRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -58,7 +69,7 @@ void OpenAPILicensesApi::AddLicenseResponse::SetHttpResponseCode(EHttpResponseCo
 	switch ((int)InHttpResponseCode)
 	{
 	case 200:
-		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
+		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
 		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
@@ -179,44 +190,6 @@ void OpenAPILicensesApi::GetLicenseListResponse::SetHttpResponseCode(EHttpRespon
 bool OpenAPILicensesApi::GetLicenseListResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
-}
-
-FString OpenAPILicensesApi::GetLicenseOrderCatTagInfoRequest::ComputePath() const
-{
-	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("catTag"), FStringFormatArg(ToUrlString(CatTag)) } };
-
-	FString Path = FString::Format(TEXT("/licenses/order/{catTag}"), PathParams);
-
-	return Path;
-}
-
-void OpenAPILicensesApi::GetLicenseOrderCatTagInfoRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = {  };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("GET"));
-
-}
-
-void OpenAPILicensesApi::GetLicenseOrderCatTagInfoResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("License types and pricing for the specified category."));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPILicensesApi::GetLicenseOrderCatTagInfoResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return true;
 }
 
 FString OpenAPILicensesApi::GetLicensesWelcomeEmailRequest::ComputePath() const
@@ -400,7 +373,7 @@ FString OpenAPILicensesApi::PutLicensesRequest::ComputePath() const
 
 void OpenAPILicensesApi::PutLicensesRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("PUT"));
@@ -408,12 +381,23 @@ void OpenAPILicensesApi::PutLicensesRequest::SetupHttpRequest(const FHttpRequest
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPILicenseOrderRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPILicenseOrderRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPILicenseOrderRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{

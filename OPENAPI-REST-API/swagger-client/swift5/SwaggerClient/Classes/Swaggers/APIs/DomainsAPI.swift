@@ -11,19 +11,20 @@ import Alamofire
 
 open class DomainsAPI {
     /**
-     Place Domain Order
+     Place a new domain registration or transfer order, generate billing invoice
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addDomain(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
-        addDomainWithRequestBuilder().execute { (response, error) -> Void in
+    open class func addDomain(body: Dictionary, completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
+        addDomainWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Place Domain Order
+     Place a new domain registration or transfer order, generate billing invoice
      - POST /domains/order
 
      - API Key:
@@ -45,22 +46,23 @@ open class DomainsAPI {
   "serviceId" : 12345,
   "invoice_description" : "New Service Order"
 }}]
+     - parameter body: (body)  
 
      - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addDomainWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
+    open class func addDomainWithRequestBuilder(body: Dictionary) -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/domains/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Add Domain DNSSEC Records
+     Register DNSSEC DS records on the domain at OpenSRS
 
      - parameter body: (body)  
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
@@ -74,7 +76,7 @@ open class DomainsAPI {
 
 
     /**
-     Add Domain DNSSEC Records
+     Register DNSSEC DS records on the domain at OpenSRS
      - POST /domains/{id}/dnssec
 
      - API Key:
@@ -110,7 +112,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Add Domain DNSSEC Records
+     Register DNSSEC DS records on the domain at OpenSRS
 
      - parameter algorithm: (form)  
      - parameter digestType: (form)  
@@ -127,7 +129,7 @@ open class DomainsAPI {
 
 
     /**
-     Add Domain DNSSEC Records
+     Register DNSSEC DS records on the domain at OpenSRS
      - POST /domains/{id}/dnssec
 
      - API Key:
@@ -166,7 +168,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Add Registered Nameserver
+     Register a new nameserver host with glue IP at the registry (registered nameserver)
 
      - parameter body: (body)  
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
@@ -180,7 +182,7 @@ open class DomainsAPI {
 
 
     /**
-     Add Registered Nameserver
+     Register a new nameserver host with glue IP at the registry (registered nameserver)
      - POST /domains/{id}/nameservers
 
      - API Key:
@@ -215,7 +217,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Add Registered Nameserver
+     Register a new nameserver host with glue IP at the registry (registered nameserver)
 
      - parameter name: (form)  
      - parameter ipAddress: (form)  
@@ -230,7 +232,7 @@ open class DomainsAPI {
 
 
     /**
-     Add Registered Nameserver
+     Register a new nameserver host with glue IP at the registry (registered nameserver)
      - POST /domains/{id}/nameservers
 
      - API Key:
@@ -266,12 +268,12 @@ open class DomainsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Cancel Domain Order
+     Cancel a domain order in the billing system to stop auto-renewals
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func cancelDomain(_id: Int, completion: @escaping ((_ data: InlineResponse2002?,_ error: Error?) -> Void)) {
+    open class func cancelDomain(_id: Int, completion: @escaping ((_ data: InlineResponse2003?,_ error: Error?) -> Void)) {
         cancelDomainWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -279,7 +281,7 @@ open class DomainsAPI {
 
 
     /**
-     Cancel Domain Order
+     Cancel a domain order in the billing system to stop auto-renewals
      - DELETE /domains/{id}
 
      - API Key:
@@ -297,9 +299,9 @@ open class DomainsAPI {
 }}]
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse2002> 
+     - returns: RequestBuilder<InlineResponse2003> 
      */
-    open class func cancelDomainWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2002> {
+    open class func cancelDomainWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2003> {
         var path = "/domains/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -309,26 +311,25 @@ open class DomainsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2002>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2003>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Remove Domain DNSSEC Records
+     Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
-     - parameter action: (query) Set to &#x60;delete&#x60; to remove all DNSSEC records. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func deleteDomainDnssec(_id: Int, action: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
-        deleteDomainDnssecWithRequestBuilder(_id: _id, action: action).execute { (response, error) -> Void in
+    open class func deleteDomainDnssec(_id: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
+        deleteDomainDnssecWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Remove Domain DNSSEC Records
+     Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
      - DELETE /domains/{id}/dnssec
 
      - API Key:
@@ -345,21 +346,17 @@ open class DomainsAPI {
   "text" : "Ok"
 }}]
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
-     - parameter action: (query) Set to &#x60;delete&#x60; to remove all DNSSEC records. 
 
      - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func deleteDomainDnssecWithRequestBuilder(_id: Int, action: String) -> RequestBuilder<SuccessTextResponse> {
+    open class func deleteDomainDnssecWithRequestBuilder(_id: Int) -> RequestBuilder<SuccessTextResponse> {
         var path = "/domains/{id}/dnssec"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-                        "action": action
-        ])
+        let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
@@ -367,7 +364,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Delete Registered Nameserver
+     Remove one registered nameserver glue record from the domain
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter index: (query) The index of the registered nameserver from the registered nameservers list to delete.   
@@ -381,7 +378,7 @@ open class DomainsAPI {
 
 
     /**
-     Delete Registered Nameserver
+     Remove one registered nameserver glue record from the domain
      - DELETE /domains/{id}/nameservers
 
      - API Key:
@@ -419,7 +416,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Domain Contact Details
+     Read the current registrant/admin/tech/billing contact field set for a domain
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -432,7 +429,7 @@ open class DomainsAPI {
 
 
     /**
-     Get Domain Contact Details
+     Read the current registrant/admin/tech/billing contact field set for a domain
      - GET /domains/{id}/contact
 
      - API Key:
@@ -479,7 +476,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Domain DNSSEC Records
+     Read the DNSSEC DS record set currently registered with the registrar
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -492,7 +489,7 @@ open class DomainsAPI {
 
 
     /**
-     Get Domain DNSSEC Records
+     Read the DNSSEC DS record set currently registered with the registrar
      - GET /domains/{id}/dnssec
 
      - API Key:
@@ -534,7 +531,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Domain Order
+     Read full billing, registrar, and service detail for one domain
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -547,7 +544,7 @@ open class DomainsAPI {
 
 
     /**
-     Get Domain Order
+     Read full billing, registrar, and service detail for one domain
      - GET /domains/{id}
 
      - API Key:
@@ -794,7 +791,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Domain Invoices
+     List all billing invoices scoped to one domain order
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -807,7 +804,7 @@ open class DomainsAPI {
 
 
     /**
-     Get Domain Invoices
+     List all billing invoices scoped to one domain order
      - GET /domains/{id}/invoices
 
      - API Key:
@@ -877,7 +874,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Lookup Domain Availability and Pricing
+     Check availability, premium status, and pricing for a specific domain
 
      - parameter name: (path) The full domain name to look up (for example &#x60;example.com&#x60;). 
      - parameter completion: completion handler to receive the data and the error objects
@@ -890,7 +887,7 @@ open class DomainsAPI {
 
 
     /**
-     Lookup Domain Availability and Pricing
+     Check availability, premium status, and pricing for a specific domain
      - GET /domains/lookup/{name}
 
      - API Key:
@@ -934,7 +931,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Registered Nameservers
+     List registered nameserver hosts and glue IP addresses for a domain
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -947,7 +944,7 @@ open class DomainsAPI {
 
 
     /**
-     List Registered Nameservers
+     List registered nameserver hosts and glue IP addresses for a domain
      - GET /domains/{id}/nameservers
 
      - API Key:
@@ -987,108 +984,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Domain Order Fields
-
-     - parameter domain: (path) The fully qualified domain name (e.g. &#x60;example.com&#x60;). 
-     - parameter regType: (path) The registration type. Common values include &#x60;register&#x60; for new registrations and &#x60;transfer&#x60; for inbound transfers. 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func getDomainOrderFields(domain: String, regType: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        getDomainOrderFieldsWithRequestBuilder(domain: domain, regType: regType).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
-        }
-    }
-
-
-    /**
-     Get Domain Order Fields
-     - GET /domains/order/{domain}/{regType}
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - parameter domain: (path) The fully qualified domain name (e.g. &#x60;example.com&#x60;). 
-     - parameter regType: (path) The registration type. Common values include &#x60;register&#x60; for new registrations and &#x60;transfer&#x60; for inbound transfers. 
-
-     - returns: RequestBuilder<Void> 
-     */
-    open class func getDomainOrderFieldsWithRequestBuilder(domain: String, regType: String) -> RequestBuilder<Void> {
-        var path = "/domains/order/{domain}/{regType}"
-        let domainPreEscape = "\(domain)"
-        let domainPostEscape = domainPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{domain}", with: domainPostEscape, options: .literal, range: nil)
-        let regTypePreEscape = "\(regType)"
-        let regTypePostEscape = regTypePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{regType}", with: regTypePostEscape, options: .literal, range: nil)
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-    /**
-     Get Domain Order Search Results
-
-     - parameter domain: (path) The fully qualified domain name to look up (e.g. &#x60;example.com&#x60;). 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func getDomainOrderSearchResults(domain: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        getDomainOrderSearchResultsWithRequestBuilder(domain: domain).execute { (response, error) -> Void in
-            if error == nil {
-                completion((), error)
-            } else {
-                completion(nil, error)
-            }
-        }
-    }
-
-
-    /**
-     Get Domain Order Search Results
-     - GET /domains/order/{domain}
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - parameter domain: (path) The fully qualified domain name to look up (e.g. &#x60;example.com&#x60;). 
-
-     - returns: RequestBuilder<Void> 
-     */
-    open class func getDomainOrderSearchResultsWithRequestBuilder(domain: String) -> RequestBuilder<Void> {
-        var path = "/domains/order/{domain}"
-        let domainPreEscape = "\(domain)"
-        let domainPostEscape = domainPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{domain}", with: domainPostEscape, options: .literal, range: nil)
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-    /**
-     Start Domain Renewal Flow
+     Read renewal pricing, expiry, and whether a renewal invoice already exists
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1101,7 +997,7 @@ open class DomainsAPI {
 
 
     /**
-     Start Domain Renewal Flow
+     Read renewal pricing, expiry, and whether a renewal invoice already exists
      - GET /domains/{id}/renew
 
      - API Key:
@@ -1136,7 +1032,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Search Domain Suggestions
+     Get registrar-suggested domain alternatives and bulk availability for a search term
 
      - parameter name: (path) The base domain name to search (for example &#x60;example&#x60; or &#x60;example.com&#x60;). 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1149,7 +1045,7 @@ open class DomainsAPI {
 
 
     /**
-     Search Domain Suggestions
+     Get registrar-suggested domain alternatives and bulk availability for a search term
      - GET /domains/search/{name}
 
      - API Key:
@@ -1188,7 +1084,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Start Domain Transfer Flow
+     Read OpenSRS transfer status for an in-progress domain transfer order
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1201,7 +1097,7 @@ open class DomainsAPI {
 
 
     /**
-     Start Domain Transfer Flow
+     Read OpenSRS transfer status for an in-progress domain transfer order
      - GET /domains/{id}/transfer
 
      - API Key:
@@ -1236,7 +1132,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Whois Privacy Status
+     Read Whois privacy availability, current state, and add-on pricing for a domain
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1249,7 +1145,7 @@ open class DomainsAPI {
 
 
     /**
-     Get Whois Privacy Status
+     Read Whois privacy availability, current state, and add-on pricing for a domain
      - GET /domains/{id}/whois
 
      - API Key:
@@ -1284,7 +1180,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Domain Orders
+     List every domain registration on the account with billing and registration metadata
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1296,7 +1192,7 @@ open class DomainsAPI {
 
 
     /**
-     List Domain Orders
+     List every domain registration on the account with billing and registration metadata
      - GET /domains
 
      - API Key:
@@ -1336,7 +1232,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Resend Domain Welcome Email
+     Resend the domain welcome email with registration details and management instructions
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1349,7 +1245,7 @@ open class DomainsAPI {
 
 
     /**
-     Resend Domain Welcome Email
+     Resend the domain welcome email with registration details and management instructions
      - GET /domains/{id}/welcome_email
 
      - API Key:
@@ -1384,7 +1280,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Domain Ordering Information
+     Read the buyable domain TLD service catalog and Whois privacy pricing
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1396,7 +1292,7 @@ open class DomainsAPI {
 
 
     /**
-     Get Domain Ordering Information
+     Read the buyable domain TLD service catalog and Whois privacy pricing
      - GET /domains/order
 
      - API Key:
@@ -1442,12 +1338,13 @@ open class DomainsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Validate Domain Order
+     Validate posted domain-order field values before committing — dry run
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func patchDomains(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        patchDomainsWithRequestBuilder().execute { (response, error) -> Void in
+    open class func patchDomains(body: Dictionary, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        patchDomainsWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -1458,7 +1355,7 @@ open class DomainsAPI {
 
 
     /**
-     Validate Domain Order
+     Validate posted domain-order field values before committing — dry run
      - PATCH /domains/order
 
      - API Key:
@@ -1470,22 +1367,23 @@ open class DomainsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - parameter body: (body)  
 
      - returns: RequestBuilder<Void> 
      */
-    open class func patchDomainsWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func patchDomainsWithRequestBuilder(body: Dictionary) -> RequestBuilder<Void> {
         let path = "/domains/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Request Domain Renewal
+     Submit a domain renewal request and generate the renewal invoice
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1498,7 +1396,7 @@ open class DomainsAPI {
 
 
     /**
-     Request Domain Renewal
+     Submit a domain renewal request and generate the renewal invoice
      - POST /domains/{id}/renew
 
      - API Key:
@@ -1533,7 +1431,55 @@ open class DomainsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Request Domain Transfer
+     Get the full order form data for a hostname in one round-trip (search → order preview)
+
+     - parameter name: (path) The base domain name to search (for example &#x60;example&#x60; or &#x60;example.com&#x60;). 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func postDomainSearch(name: String, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        postDomainSearchWithRequestBuilder(name: name).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Get the full order form data for a hostname in one round-trip (search → order preview)
+     - POST /domains/search/{name}
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - parameter name: (path) The base domain name to search (for example &#x60;example&#x60; or &#x60;example.com&#x60;). 
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func postDomainSearchWithRequestBuilder(name: String) -> RequestBuilder<Void> {
+        var path = "/domains/search/{name}"
+        let namePreEscape = "\(name)"
+        let namePostEscape = namePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{name}", with: namePostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
+     Re-poll OpenSRS transfer status for a domain order via POST
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1546,7 +1492,7 @@ open class DomainsAPI {
 
 
     /**
-     Request Domain Transfer
+     Re-poll OpenSRS transfer status for a domain order via POST
      - POST /domains/{id}/transfer
 
      - API Key:
@@ -1581,12 +1527,13 @@ open class DomainsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Domain Order Search
+     Preview per-TLD field requirements for a domain order — no commit
 
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func putDomains(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        putDomainsWithRequestBuilder().execute { (response, error) -> Void in
+    open class func putDomains(body: Dictionary, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        putDomainsWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -1597,7 +1544,7 @@ open class DomainsAPI {
 
 
     /**
-     Domain Order Search
+     Preview per-TLD field requirements for a domain order — no commit
      - PUT /domains/order
 
      - API Key:
@@ -1609,22 +1556,23 @@ open class DomainsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - parameter body: (body)  
 
      - returns: RequestBuilder<Void> 
      */
-    open class func putDomainsWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func putDomainsWithRequestBuilder(body: Dictionary) -> RequestBuilder<Void> {
         let path = "/domains/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         let url = URLComponents(string: URLString)
 
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Domain Contact Details
+     Update registrant/admin contact details and push them to OpenSRS
 
      - parameter body: (body)  
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
@@ -1638,7 +1586,7 @@ open class DomainsAPI {
 
 
     /**
-     Update Domain Contact Details
+     Update registrant/admin contact details and push them to OpenSRS
      - POST /domains/{id}/contact
 
      - API Key:
@@ -1674,7 +1622,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Domain Contact Details
+     Update registrant/admin contact details and push them to OpenSRS
 
      - parameter status: (form)  
      - parameter state: (form)  
@@ -1701,7 +1649,7 @@ open class DomainsAPI {
 
 
     /**
-     Update Domain Contact Details
+     Update registrant/admin contact details and push them to OpenSRS
      - POST /domains/{id}/contact
 
      - API Key:
@@ -1750,12 +1698,12 @@ open class DomainsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Domain Order
+     POST mutation hook for the domain detail page (use dedicated ops where possible)
 
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func updateDomainInfo(_id: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
+    open class func updateDomainInfo(_id: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
         updateDomainInfoWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -1763,7 +1711,7 @@ open class DomainsAPI {
 
 
     /**
-     Update Domain Order
+     POST mutation hook for the domain detail page (use dedicated ops where possible)
      - POST /domains/{id}
 
      - API Key:
@@ -1783,7 +1731,7 @@ open class DomainsAPI {
 
      - returns: RequestBuilder<SuccessTextResponse> 
      */
-    open class func updateDomainInfoWithRequestBuilder(_id: String) -> RequestBuilder<SuccessTextResponse> {
+    open class func updateDomainInfoWithRequestBuilder(_id: Int) -> RequestBuilder<SuccessTextResponse> {
         var path = "/domains/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -1798,7 +1746,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Replace Nameserver Set
+     Replace the full authoritative-nameserver delegation list at the registrar
 
      - parameter body: (body)  
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
@@ -1812,7 +1760,7 @@ open class DomainsAPI {
 
 
     /**
-     Replace Nameserver Set
+     Replace the full authoritative-nameserver delegation list at the registrar
      - PUT /domains/{id}/nameservers
 
      - API Key:
@@ -1847,7 +1795,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Replace Nameserver Set
+     Replace the full authoritative-nameserver delegation list at the registrar
 
      - parameter nameserver: (form)  
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
@@ -1861,7 +1809,7 @@ open class DomainsAPI {
 
 
     /**
-     Replace Nameserver Set
+     Replace the full authoritative-nameserver delegation list at the registrar
      - PUT /domains/{id}/nameservers
 
      - API Key:
@@ -1896,7 +1844,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Whois Privacy
+     Order, enable, or cancel the Whois privacy add-on for a domain
 
      - parameter body: (body)  
      - parameter _id: (path) The domain service ID. Use &#x60;domain_id&#x60; from &#x60;GET /domains&#x60;. 
@@ -1910,7 +1858,7 @@ open class DomainsAPI {
 
 
     /**
-     Update Whois Privacy
+     Order, enable, or cancel the Whois privacy add-on for a domain
      - POST /domains/{id}/whois
 
      - API Key:
@@ -1946,7 +1894,7 @@ open class DomainsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Whois Privacy
+     Order, enable, or cancel the Whois privacy add-on for a domain
 
      - parameter _func: (form)  
      - parameter csrfToken: (form)  
@@ -1975,7 +1923,7 @@ open class DomainsAPI {
 
 
     /**
-     Update Whois Privacy
+     Order, enable, or cancel the Whois privacy add-on for a domain
      - POST /domains/{id}/whois
 
      - API Key:

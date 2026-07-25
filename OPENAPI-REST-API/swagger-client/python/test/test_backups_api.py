@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.backups_api import BackupsApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.backups_api import BackupsApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestBackupsApi(unittest.TestCase):
@@ -31,70 +31,70 @@ class TestBackupsApi(unittest.TestCase):
     def test_add_backup(self):
         """Test case for add_backup
 
-        Place Backup Order  # noqa: E501
+        Place a new off-site backup storage order and generate the invoice  # noqa: E501
         """
         pass
 
     def test_cancel_backup(self):
         """Test case for cancel_backup
 
-        Cancel Backup Service  # noqa: E501
+        Cancel an off-site backup storage subscription  # noqa: E501
         """
         pass
 
     def test_get_backup_info(self):
         """Test case for get_backup_info
 
-        Get Backup Service Details  # noqa: E501
+        Get details of a specific off-site backup storage service  # noqa: E501
         """
         pass
 
     def test_get_backup_invoices(self):
         """Test case for get_backup_invoices
 
-        Get Backup Order Invoices  # noqa: E501
+        List invoices for a single backup-storage subscription  # noqa: E501
         """
         pass
 
     def test_get_backup_login(self):
         """Test case for get_backup_login
 
-        Get Backup Storage Panel Login  # noqa: E501
+        Open a single sign-on session URL for the backup storage panel  # noqa: E501
         """
         pass
 
     def test_get_backups_list(self):
         """Test case for get_backups_list
 
-        List Backup Services  # noqa: E501
+        List off-site backup storage subscriptions on the authenticated account  # noqa: E501
         """
         pass
 
     def test_get_backups_welcome_email(self):
         """Test case for get_backups_welcome_email
 
-        Resend Backup Welcome Email  # noqa: E501
+        Resend the welcome email for an off-site backup storage service  # noqa: E501
         """
         pass
 
     def test_get_new_backup(self):
         """Test case for get_new_backup
 
-        Get Backup Order Form Data  # noqa: E501
+        Get backup-storage order form metadata and pricing tiers  # noqa: E501
         """
         pass
 
     def test_update_backup_info(self):
         """Test case for update_backup_info
 
-        Update Backup Information  # noqa: E501
+        Update stored metadata for a backup-storage subscription  # noqa: E501
         """
         pass
 
     def test_validate_backup_order(self):
         """Test case for validate_backup_order
 
-        Validate Backup Order  # noqa: E501
+        Validate a backup-storage order and preview pricing without charging  # noqa: E501
         """
         pass
 

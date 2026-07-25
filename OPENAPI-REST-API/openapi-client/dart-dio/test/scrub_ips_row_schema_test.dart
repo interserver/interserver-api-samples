@@ -1,33 +1,33 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ScrubIpsRowSchema
 void main() {
-  final instance = ScrubIpsRowSchemaBuilder();
-  // TODO add properties to the builder and call build()
+  final ScrubIpsRowSchema? instance = /* ScrubIpsRowSchema(...) */ null;
+  // TODO add properties to the entity
 
   group(ScrubIpsRowSchema, () {
-    // int scrubIpId
+    // Optional<int?> scrubIpId
     test('to test the property `scrubIpId`', () async {
       // TODO
     });
 
-    // num repeatInvoicesCost
+    // Optional<num?> repeatInvoicesCost
     test('to test the property `repeatInvoicesCost`', () async {
       // TODO
     });
 
-    // String scrubIpIp
+    // Optional<String?> scrubIpIp
     test('to test the property `scrubIpIp`', () async {
       // TODO
     });
 
-    // String scrubIpStatus
+    // Optional<String?> scrubIpStatus
     test('to test the property `scrubIpStatus`', () async {
       // TODO
     });
 
-    // String servicesName
+    // Optional<String?> servicesName
     test('to test the property `servicesName`', () async {
       // TODO
     });

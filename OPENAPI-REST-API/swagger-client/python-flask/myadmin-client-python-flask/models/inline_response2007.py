@@ -14,20 +14,40 @@ class InlineResponse2007(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, login: bool=None):  # noqa: E501
+    def __init__(self, login: bool=None, signup: bool=None, linked: bool=None, account_id: int=None, error_code: str=None):  # noqa: E501
         """InlineResponse2007 - a model defined in Swagger
 
         :param login: The login of this InlineResponse2007.  # noqa: E501
         :type login: bool
+        :param signup: The signup of this InlineResponse2007.  # noqa: E501
+        :type signup: bool
+        :param linked: The linked of this InlineResponse2007.  # noqa: E501
+        :type linked: bool
+        :param account_id: The account_id of this InlineResponse2007.  # noqa: E501
+        :type account_id: int
+        :param error_code: The error_code of this InlineResponse2007.  # noqa: E501
+        :type error_code: str
         """
         self.swagger_types = {
-            'login': bool
+            'login': bool,
+            'signup': bool,
+            'linked': bool,
+            'account_id': int,
+            'error_code': str
         }
 
         self.attribute_map = {
-            'login': 'login'
+            'login': 'login',
+            'signup': 'signup',
+            'linked': 'linked',
+            'account_id': 'account_id',
+            'error_code': 'error_code'
         }
         self._login = login
+        self._signup = signup
+        self._linked = linked
+        self._account_id = account_id
+        self._error_code = error_code
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse2007':
@@ -44,7 +64,7 @@ class InlineResponse2007(Model):
     def login(self) -> bool:
         """Gets the login of this InlineResponse2007.
 
-        Whether the 2FA verification succeeded and the user is now logged in.  # noqa: E501
+        Whether the user was logged in to an existing account.  # noqa: E501
 
         :return: The login of this InlineResponse2007.
         :rtype: bool
@@ -55,10 +75,102 @@ class InlineResponse2007(Model):
     def login(self, login: bool):
         """Sets the login of this InlineResponse2007.
 
-        Whether the 2FA verification succeeded and the user is now logged in.  # noqa: E501
+        Whether the user was logged in to an existing account.  # noqa: E501
 
         :param login: The login of this InlineResponse2007.
         :type login: bool
         """
 
         self._login = login
+
+    @property
+    def signup(self) -> bool:
+        """Gets the signup of this InlineResponse2007.
+
+        Whether a new account was created.  # noqa: E501
+
+        :return: The signup of this InlineResponse2007.
+        :rtype: bool
+        """
+        return self._signup
+
+    @signup.setter
+    def signup(self, signup: bool):
+        """Sets the signup of this InlineResponse2007.
+
+        Whether a new account was created.  # noqa: E501
+
+        :param signup: The signup of this InlineResponse2007.
+        :type signup: bool
+        """
+
+        self._signup = signup
+
+    @property
+    def linked(self) -> bool:
+        """Gets the linked of this InlineResponse2007.
+
+        Whether the OAuth provider was linked to an existing account.  # noqa: E501
+
+        :return: The linked of this InlineResponse2007.
+        :rtype: bool
+        """
+        return self._linked
+
+    @linked.setter
+    def linked(self, linked: bool):
+        """Sets the linked of this InlineResponse2007.
+
+        Whether the OAuth provider was linked to an existing account.  # noqa: E501
+
+        :param linked: The linked of this InlineResponse2007.
+        :type linked: bool
+        """
+
+        self._linked = linked
+
+    @property
+    def account_id(self) -> int:
+        """Gets the account_id of this InlineResponse2007.
+
+        The account ID associated with the OAuth login.  # noqa: E501
+
+        :return: The account_id of this InlineResponse2007.
+        :rtype: int
+        """
+        return self._account_id
+
+    @account_id.setter
+    def account_id(self, account_id: int):
+        """Sets the account_id of this InlineResponse2007.
+
+        The account ID associated with the OAuth login.  # noqa: E501
+
+        :param account_id: The account_id of this InlineResponse2007.
+        :type account_id: int
+        """
+
+        self._account_id = account_id
+
+    @property
+    def error_code(self) -> str:
+        """Gets the error_code of this InlineResponse2007.
+
+        Error code if additional verification is needed (e.g. `2fa_required`).  # noqa: E501
+
+        :return: The error_code of this InlineResponse2007.
+        :rtype: str
+        """
+        return self._error_code
+
+    @error_code.setter
+    def error_code(self, error_code: str):
+        """Sets the error_code of this InlineResponse2007.
+
+        Error code if additional verification is needed (e.g. `2fa_required`).  # noqa: E501
+
+        :param error_code: The error_code of this InlineResponse2007.
+        :type error_code: str
+        """
+
+        self._error_code = error_code

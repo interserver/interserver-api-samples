@@ -10,4 +10,8 @@ Maps country codes to their available currency options.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

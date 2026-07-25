@@ -1,74 +1,74 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LicenseBillingDetails
 void main() {
-  final instance = LicenseBillingDetailsBuilder();
-  // TODO add properties to the builder and call build()
+  final LicenseBillingDetails? instance = /* LicenseBillingDetails(...) */ null;
+  // TODO add properties to the entity
 
   group(LicenseBillingDetails, () {
     // Last invoice date
-    // String serviceLastInvoiceDate
+    // Optional<String?> serviceLastInvoiceDate
     test('to test the property `serviceLastInvoiceDate`', () async {
       // TODO
     });
 
     // Payment status
-    // String servicePaymentStatus
+    // Optional<String?> servicePaymentStatus
     test('to test the property `servicePaymentStatus`', () async {
       // TODO
     });
 
     // Service frequency
-    // String serviceFrequency
+    // Optional<String?> serviceFrequency
     test('to test the property `serviceFrequency`', () async {
       // TODO
     });
 
     // Next date
-    // DateTime nextDate
+    // Optional<OffsetDateTime?> nextDate
     test('to test the property `nextDate`', () async {
       // TODO
     });
 
     // Next invoice date
-    // String serviceNextInvoiceDate
+    // Optional<String?> serviceNextInvoiceDate
     test('to test the property `serviceNextInvoiceDate`', () async {
       // TODO
     });
 
     // Service currency
-    // String serviceCurrency
+    // Optional<String?> serviceCurrency
     test('to test the property `serviceCurrency`', () async {
       // TODO
     });
 
     // Service currency symbol
-    // String serviceCurrencySymbol
+    // Optional<String?> serviceCurrencySymbol
     test('to test the property `serviceCurrencySymbol`', () async {
       // TODO
     });
 
     // Service coupon
-    // String serviceCoupon
+    // Optional<String?> serviceCoupon
     test('to test the property `serviceCoupon`', () async {
       // TODO
     });
 
     // Service cost information
-    // String serviceCostInfo
+    // Optional<String?> serviceCostInfo
     test('to test the property `serviceCostInfo`', () async {
       // TODO
     });
 
     // Additional service information
-    // BuiltList<String> serviceExtra
+    // Optional<List<String>?> serviceExtra
     test('to test the property `serviceExtra`', () async {
       // TODO
     });
 
     // Additional service information in JSON format
-    // String serviceExtraJson
+    // Optional<String?> serviceExtraJson
     test('to test the property `serviceExtraJson`', () async {
       // TODO
     });

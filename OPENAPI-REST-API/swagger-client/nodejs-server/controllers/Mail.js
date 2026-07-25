@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var Mail = require('../service/MailService');
 
-module.exports.addMail = function addMail (req, res, next) {
-  Mail.addMail()
+module.exports.addMail = function addMail (req, res, next, body) {
+  Mail.addMail(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -53,8 +53,18 @@ module.exports.createMailAlert = function createMailAlert (req, res, next, body,
     });
 };
 
-module.exports.deleteMailAlert = function deleteMailAlert (req, res, next, id, alert_id) {
-  Mail.deleteMailAlert(id, alert_id)
+module.exports.deleteMailAlert = function deleteMailAlert (req, res, next, body, id) {
+  Mail.deleteMailAlert(body, id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.deleteMailAlert = function deleteMailAlert (req, res, next, body, id) {
+  Mail.deleteMailAlert(body, id)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -233,8 +243,8 @@ module.exports.postMailDelist = function postMailDelist (req, res, next, body, i
     });
 };
 
-module.exports.putMail = function putMail (req, res, next) {
-  Mail.putMail()
+module.exports.putMail = function putMail (req, res, next, body) {
+  Mail.putMail(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -315,6 +325,26 @@ module.exports.updateMailAlert = function updateMailAlert (req, res, next, body,
 
 module.exports.updateMailInfo = function updateMailInfo (req, res, next, id) {
   Mail.updateMailInfo(id)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.updateRule = function updateRule (req, res, next, body, id, rule) {
+  Mail.updateRule(body, id, rule)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.updateRule = function updateRule (req, res, next, body, id, rule) {
+  Mail.updateRule(body, id, rule)
     .then(function (response) {
       utils.writeJson(res, response);
     })

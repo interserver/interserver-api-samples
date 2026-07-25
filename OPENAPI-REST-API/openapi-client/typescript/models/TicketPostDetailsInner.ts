@@ -84,8 +84,5 @@ export class TicketPostDetailsInner {
     }
 }
 
-export enum TicketPostDetailsInnerCreatorEnum {
-    User = 'User',
-    Staff = 'Staff'
-}
+    export type TicketPostDetailsInnerCreatorEnum = "User" | "Staff" ;
 

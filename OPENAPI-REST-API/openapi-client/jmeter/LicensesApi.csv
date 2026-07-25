@@ -1,2 +1,2 @@
-testCase,httpStatusCode,id,id,catTag,id,id,id,ipObject,id
-Success,200,0,0,0,0,0,0,0,0
+testCase,httpStatusCode,licenseOrderRequest,id,id,id,id,ipObject,id,licenseOrderRequest,id
+Success,200,0,0,0,0,0,0,0,0,0

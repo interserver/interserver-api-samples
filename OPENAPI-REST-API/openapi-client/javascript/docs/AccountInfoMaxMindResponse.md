@@ -1,4 +1,4 @@
-# InterServerManagementApi.AccountInfoMaxMindResponse
+# InterserverApiClient.AccountInfoMaxMindResponse
 
 ## Properties
 

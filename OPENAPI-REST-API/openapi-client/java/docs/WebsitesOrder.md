@@ -21,4 +21,8 @@ Schema for the WebsitesOrder object
 |**packges** | [**WebsitesOrderPackges**](WebsitesOrderPackges.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -17,4 +17,3 @@ case class HomeServicesWebhosting(
   /* Number of web hosting services. */
   count: Option[Int] = None
 )
-

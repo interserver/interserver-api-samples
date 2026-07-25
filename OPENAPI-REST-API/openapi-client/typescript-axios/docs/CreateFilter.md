@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CreateFilter } from './api';
+import { CreateFilter } from '@interserver/myadmin-client';
 
 const instance: CreateFilter = {
     filter_type,

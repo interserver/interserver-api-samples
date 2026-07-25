@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TicketPostDetailsInner = Initialize-PSOpenAPIToolsTicketPostDetailsInner  -PostId null `
+$TicketPostDetailsInner = Initialize-InterserverApiTicketPostDetailsInner  -PostId null `
  -Date null `
  -Contents null `
  -Creator null `

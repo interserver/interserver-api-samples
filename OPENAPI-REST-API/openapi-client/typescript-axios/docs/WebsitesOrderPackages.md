@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WebsitesOrderPackages } from './api';
+import { WebsitesOrderPackages } from '@interserver/myadmin-client';
 
 const instance: WebsitesOrderPackages = {
     _11447,

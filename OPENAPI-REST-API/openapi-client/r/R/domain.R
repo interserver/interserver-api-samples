@@ -321,10 +321,10 @@ Domain <- R6::R6Class(
         self$`serviceInfo` <- `serviceinfo_object`
       }
       if (!is.null(this_object$`serviceTypes`)) {
-        self$`serviceTypes` <- ApiClient$new()$deserializeObj(this_object$`serviceTypes`, "map(DomainServiceType)", loadNamespace("openapi"))
+        self$`serviceTypes` <- ApiClient$new()$deserializeObj(this_object$`serviceTypes`, "map(DomainServiceType)", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`client_links`)) {
-        self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[DomainClientLink]", loadNamespace("openapi"))
+        self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[DomainClientLink]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`billingDetails`)) {
         `billingdetails_object` <- DomainBillingDetails$new()
@@ -367,7 +367,7 @@ Domain <- R6::R6Class(
         self$`errors` <- this_object$`errors`
       }
       if (!is.null(this_object$`domain_logs`)) {
-        self$`domain_logs` <- ApiClient$new()$deserializeObj(this_object$`domain_logs`, "array[character]", loadNamespace("openapi"))
+        self$`domain_logs` <- ApiClient$new()$deserializeObj(this_object$`domain_logs`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`allInfo`)) {
         `allinfo_object` <- DomainAllInfo$new()
@@ -408,8 +408,8 @@ Domain <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`serviceInfo` <- DomainServiceInfo$new()$fromJSON(jsonlite::toJSON(this_object$`serviceInfo`, auto_unbox = TRUE, digits = NA))
-      self$`serviceTypes` <- ApiClient$new()$deserializeObj(this_object$`serviceTypes`, "map(DomainServiceType)", loadNamespace("openapi"))
-      self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[DomainClientLink]", loadNamespace("openapi"))
+      self$`serviceTypes` <- ApiClient$new()$deserializeObj(this_object$`serviceTypes`, "map(DomainServiceType)", loadNamespace("interserverapi"))
+      self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[DomainClientLink]", loadNamespace("interserverapi"))
       self$`billingDetails` <- DomainBillingDetails$new()$fromJSON(jsonlite::toJSON(this_object$`billingDetails`, auto_unbox = TRUE, digits = NA))
       self$`custCurrency` <- this_object$`custCurrency`
       self$`custCurrencySymbol` <- this_object$`custCurrencySymbol`
@@ -420,7 +420,7 @@ Domain <- R6::R6Class(
       self$`pwarning` <- this_object$`pwarning`
       self$`transfer_info` <- this_object$`transfer_info`
       self$`errors` <- this_object$`errors`
-      self$`domain_logs` <- ApiClient$new()$deserializeObj(this_object$`domain_logs`, "array[character]", loadNamespace("openapi"))
+      self$`domain_logs` <- ApiClient$new()$deserializeObj(this_object$`domain_logs`, "array[character]", loadNamespace("interserverapi"))
       self$`allInfo` <- DomainAllInfo$new()$fromJSON(jsonlite::toJSON(this_object$`allInfo`, auto_unbox = TRUE, digits = NA))
       self$`registrarStatus` <- this_object$`registrarStatus`
       self$`locked` <- this_object$`locked`

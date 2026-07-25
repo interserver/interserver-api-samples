@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverOrderVersionCentosstream8
+# InterserverApiClient::QuickserverOrderVersionCentosstream8
 
 ## Properties
 Name | Type | Description | Notes

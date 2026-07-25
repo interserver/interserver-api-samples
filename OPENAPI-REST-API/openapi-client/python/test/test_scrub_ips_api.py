@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.scrub_ips_api import ScrubIpsApi
+from interserver_api_client.api.scrub_ips_api import ScrubIpsApi
 
 
 class TestScrubIpsApi(unittest.TestCase):
@@ -30,112 +30,119 @@ class TestScrubIpsApi(unittest.TestCase):
     def test_cancel_scrub_ip(self) -> None:
         """Test case for cancel_scrub_ip
 
-        Cancel Scrub IP Service
+        Cancel a Scrub IP service and stop its recurring DDoS billing
         """
         pass
 
     def test_create_filter(self) -> None:
         """Test case for create_filter
 
-        Create Traffic Filter
+        Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
         """
         pass
 
     def test_create_geo_rule(self) -> None:
         """Test case for create_geo_rule
 
-        Create Geo Firewall Rule
+        Add a geographic firewall rule (block/allow by country code or ASN)
         """
         pass
 
     def test_create_rule(self) -> None:
         """Test case for create_rule
 
-        Create Firewall Rule
+        Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
         """
         pass
 
     def test_delete_filter(self) -> None:
         """Test case for delete_filter
 
-        Delete Traffic Filter
+        Remove a scrubbing filter by matching filter_type and port
         """
         pass
 
     def test_disable_scrub(self) -> None:
         """Test case for disable_scrub
 
-        Disable Scrub Protection
+        Disable DDoS scrubbing and remove the BGP announcement on the IP
         """
         pass
 
     def test_enable_scrub(self) -> None:
         """Test case for enable_scrub
 
-        Enable Scrub Protection
+        Enable DDoS scrubbing (BGP announcement) on the service's protected IP
         """
         pass
 
     def test_get_order_detail(self) -> None:
         """Test case for get_order_detail
 
-        Get Scrub IP Ordering Information
+        Get plans, pricing, and eligible IPs for a new Scrub IP order
         """
         pass
 
     def test_get_scrub_ip_details(self) -> None:
         """Test case for get_scrub_ip_details
 
-        Get Scrub IP Details
+        Get full Scrub IP service detail (rules + geo + filters)
         """
         pass
 
     def test_get_scrub_ip_filter_types(self) -> None:
         """Test case for get_scrub_ip_filter_types
 
-        List Scrub Filter Types
+        List enabled traffic filter profiles available for createFilter
         """
         pass
 
     def test_get_scrub_ip_invoices(self) -> None:
         """Test case for get_scrub_ip_invoices
 
-        Get ScrubIp Invoices
+        List recurring and one-time invoices billed for this Scrub IP service
         """
         pass
 
     def test_get_scrub_ip_logs(self) -> None:
         """Test case for get_scrub_ip_logs
 
-        Get Scrub IP Logs
+        Get last 50000 packet/event log entries for the protected IP
         """
         pass
 
     def test_get_scrub_ips_list(self) -> None:
         """Test case for get_scrub_ips_list
 
-        List Scrub IP Services
+        List all Scrub IP DDoS protection services on the authenticated account
         """
         pass
 
     def test_place_scrub_order(self) -> None:
         """Test case for place_scrub_order
 
-        Place Scrub IP Order
+        Place a new Scrub IP DDoS protection order and generate an invoice
+        """
+        pass
+
+    def test_put_scrub_ips(self) -> None:
+        """Test case for put_scrub_ips
+
+        Validate a Scrub IP order and return effective pricing without billing
         """
         pass
 
     def test_scrub_ips_delete_geo_rule(self) -> None:
         """Test case for scrub_ips_delete_geo_rule
 
-        Delete Geo Firewall Rule
+        Delete a geo firewall rule by rule_id from getScrubIpDetails
         """
         pass
 
     def test_scrub_ips_delete_rule(self) -> None:
         """Test case for scrub_ips_delete_rule
 
-        Delete Firewall Rule
+        Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
         """
         pass
 

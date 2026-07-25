@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerOrderOS model module.
  * @module model/ServerOrderOS
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderOS {
     /**

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsTrafficUsageResponse = Initialize-PSOpenAPIToolsVpsTrafficUsageResponse  -Current null `
+$VpsTrafficUsageResponse = Initialize-InterserverApiVpsTrafficUsageResponse  -Current null `
  -Peak null `
  -Average null
 ```

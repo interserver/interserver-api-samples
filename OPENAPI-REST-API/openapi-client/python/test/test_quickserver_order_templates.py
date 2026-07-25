@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_order_templates import QuickserverOrderTemplates
+from interserver_api_client.models.quickserver_order_templates import QuickserverOrderTemplates
 
 class TestQuickserverOrderTemplates(unittest.TestCase):
     """QuickserverOrderTemplates unit test stubs"""

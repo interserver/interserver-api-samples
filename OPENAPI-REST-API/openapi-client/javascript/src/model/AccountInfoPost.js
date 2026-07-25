@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AccountInfoPost model module.
  * @module model/AccountInfoPost
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AccountInfoPost {
     /**

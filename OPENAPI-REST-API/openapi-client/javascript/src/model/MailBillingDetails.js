@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailBillingDetails model module.
  * @module model/MailBillingDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailBillingDetails {
     /**

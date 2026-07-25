@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.licenses_order_service_types import LicensesOrderServiceTypes
+from interserver_api_client.models.licenses_order_service_types import LicensesOrderServiceTypes
 
 class TestLicensesOrderServiceTypes(unittest.TestCase):
     """LicensesOrderServiceTypes unit test stubs"""
@@ -36,7 +36,7 @@ class TestLicensesOrderServiceTypes(unittest.TestCase):
         model = LicensesOrderServiceTypes()
         if include_optional:
             return LicensesOrderServiceTypes(
-                licenses_order_service_types11482 = openapi_client.models.licenses_order_service_types11482.LicensesOrderServiceTypes11482(
+                licenses_order_service_types11482 = interserver_api_client.models.licenses_order_service_types11482.LicensesOrderServiceTypes11482(
                     services_id = '11482', 
                     services_name = 'DirectAdmin Standard', 
                     services_cost = '21.75', 

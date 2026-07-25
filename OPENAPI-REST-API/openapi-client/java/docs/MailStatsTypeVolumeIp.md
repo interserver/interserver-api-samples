@@ -13,4 +13,8 @@
 |**_4_4_4_4** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

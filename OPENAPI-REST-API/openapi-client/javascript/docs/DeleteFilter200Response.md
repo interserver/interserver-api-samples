@@ -1,4 +1,4 @@
-# InterServerManagementApi.DeleteFilter200Response
+# InterserverApiClient.DeleteFilter200Response
 
 ## Properties
 

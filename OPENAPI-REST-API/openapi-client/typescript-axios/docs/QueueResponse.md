@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QueueResponse } from './api';
+import { QueueResponse } from '@interserver/myadmin-client';
 
 const instance: QueueResponse = {
     text,

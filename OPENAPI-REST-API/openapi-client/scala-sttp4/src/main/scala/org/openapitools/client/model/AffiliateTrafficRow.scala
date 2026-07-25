@@ -24,4 +24,3 @@ case class AffiliateTrafficRow(
   traffic_referrer: Option[String] = None,
   traffic_timestamp: Option[String] = None
 )
-

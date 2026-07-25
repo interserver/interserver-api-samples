@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DenyRuleNew
 void main() {
-  //final instance = DenyRuleNewBuilder();
-  // TODO add properties to the builder and call build()
+  final DenyRuleNew? instance = /* DenyRuleNew(...) */ null;
+  // TODO add properties to the entity
 
   group(DenyRuleNew, () {
     // The type of deny rule.
@@ -20,7 +20,7 @@ void main() {
     });
 
     // Mail account username that will be tied to this rule.  If not specified the first active mail order will be used.
-    // String user
+    // Optional<String?> user
     test('to test the property `user`', () async {
       // TODO
     });

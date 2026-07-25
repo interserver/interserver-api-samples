@@ -1,4 +1,4 @@
-# SwaggerClient::WebsiteRow
+# InterserverApiClient::WebsiteRow
 
 ## Properties
 Name | Type | Description | Notes

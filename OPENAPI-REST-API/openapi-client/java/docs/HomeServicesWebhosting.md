@@ -11,4 +11,8 @@
 |**count** | **Integer** | Number of web hosting services. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -107,7 +107,7 @@ public class ModuleSettings  {
    * @return USE_REPEAT_INVOICE
   **/
   @JsonProperty("USE_REPEAT_INVOICE")
-  public Boolean getUSEREPEATINVOICE() {
+  public Boolean isUSEREPEATINVOICE() {
     return USE_REPEAT_INVOICE;
   }
 
@@ -125,7 +125,7 @@ public class ModuleSettings  {
    * @return USE_PACKAGES
   **/
   @JsonProperty("USE_PACKAGES")
-  public Boolean getUSEPACKAGES() {
+  public Boolean isUSEPACKAGES() {
     return USE_PACKAGES;
   }
 

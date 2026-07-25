@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::TicketsCountArray
+# InterServerAPI::Object::TicketsCountArray
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::TicketsCountArray;
+use InterServerAPI::Object::TicketsCountArray;
 ```
 
 ## Properties

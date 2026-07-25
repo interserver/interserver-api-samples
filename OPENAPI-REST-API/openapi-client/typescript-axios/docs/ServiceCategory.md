@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServiceCategory } from './api';
+import { ServiceCategory } from '@interserver/myadmin-client';
 
 const instance: ServiceCategory = {
     category_id,

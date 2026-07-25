@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicensesOrder = Initialize-PSOpenAPIToolsLicensesOrder  -ServiceCategories null `
+$LicensesOrder = Initialize-InterserverApiLicensesOrder  -ServiceCategories null `
  -PackageCosts null `
  -ServiceTypes null
 ```

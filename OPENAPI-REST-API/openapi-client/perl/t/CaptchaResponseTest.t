@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::CaptchaResponse');
+use_ok('InterServerAPI::Object::CaptchaResponse');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::CaptchaResponse->new();
+#my $instance = InterServerAPI::Object::CaptchaResponse->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::CaptchaResponse');
+#isa_ok($instance, 'InterServerAPI::Object::CaptchaResponse');
 
 
 done_testing();

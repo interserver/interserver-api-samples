@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.CreateFirewallRule();
+    instance = new InterserverApiClient.CreateFirewallRule();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('CreateFirewallRule', function() {
     it('should create an instance of CreateFirewallRule', function() {
       // uncomment below and update the code to test CreateFirewallRule
-      //var instance = new InterServerManagementApi.CreateFirewallRule();
-      //expect(instance).to.be.a(InterServerManagementApi.CreateFirewallRule);
+      //var instance = new InterserverApiClient.CreateFirewallRule();
+      //expect(instance).to.be.a(InterserverApiClient.CreateFirewallRule);
     });
 
     it('should have the property protocol_id (base name: "protocol_id")', function() {
       // uncomment below and update the code to test the property protocol_id
-      //var instance = new InterServerManagementApi.CreateFirewallRule();
+      //var instance = new InterserverApiClient.CreateFirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property xdp_action (base name: "xdp_action")', function() {
       // uncomment below and update the code to test the property xdp_action
-      //var instance = new InterServerManagementApi.CreateFirewallRule();
+      //var instance = new InterserverApiClient.CreateFirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property destination_port (base name: "destination_port")', function() {
       // uncomment below and update the code to test the property destination_port
-      //var instance = new InterServerManagementApi.CreateFirewallRule();
+      //var instance = new InterserverApiClient.CreateFirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property source_ip (base name: "source_ip")', function() {
       // uncomment below and update the code to test the property source_ip
-      //var instance = new InterServerManagementApi.CreateFirewallRule();
+      //var instance = new InterserverApiClient.CreateFirewallRule();
       //expect(instance).to.be();
     });
 
     it('should have the property source_port (base name: "source_port")', function() {
       // uncomment below and update the code to test the property source_port
-      //var instance = new InterServerManagementApi.CreateFirewallRule();
+      //var instance = new InterserverApiClient.CreateFirewallRule();
       //expect(instance).to.be();
     });
 

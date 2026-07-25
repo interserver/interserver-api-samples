@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_cp_li import ServerOrderCpLi
+from interserver_api_client.models.server_order_cp_li import ServerOrderCpLi
 
 class TestServerOrderCpLi(unittest.TestCase):
     """ServerOrderCpLi unit test stubs"""
@@ -36,7 +36,7 @@ class TestServerOrderCpLi(unittest.TestCase):
         model = ServerOrderCpLi()
         if include_optional:
             return ServerOrderCpLi(
-                var_9 = openapi_client.models.server_order_control_panel.ServerOrderControlPanel(
+                var_9 = interserver_api_client.models.server_order_control_panel.ServerOrderControlPanel(
                     id = '9', 
                     price = 80, 
                     img = 'cpanel.gif', 

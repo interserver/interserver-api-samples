@@ -1,4 +1,4 @@
-# openapi::TimezoneUpdate
+# interserverapi::TimezoneUpdate
 
 The request to update the time zone of a vps.
 

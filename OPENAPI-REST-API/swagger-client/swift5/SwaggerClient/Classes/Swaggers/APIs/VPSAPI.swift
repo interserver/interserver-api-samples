@@ -11,7 +11,7 @@ import Alamofire
 
 open class VPSAPI {
     /**
-     Place VPS Order
+     Place a new VPS order, create the invoice, and queue provisioning
 
      - parameter body: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
@@ -24,7 +24,7 @@ open class VPSAPI {
 
 
     /**
-     Place VPS Order
+     Place a new VPS order, create the invoice, and queue provisioning
      - POST /vps/order
 
      - API Key:
@@ -80,7 +80,7 @@ open class VPSAPI {
     }
 
     /**
-     Place VPS Order
+     Place a new VPS order, create the invoice, and queue provisioning
 
      - parameter osDistro: (form)  (optional)
      - parameter slices: (form)  (optional)
@@ -103,7 +103,7 @@ open class VPSAPI {
 
 
     /**
-     Place VPS Order
+     Place a new VPS order, create the invoice, and queue provisioning
      - POST /vps/order
 
      - API Key:
@@ -159,7 +159,7 @@ open class VPSAPI {
     }
 
     /**
-     Delete VPS Backup
+     Permanently delete a VPS backup file by name (irreversible)
 
      - parameter _id: (path) VPS ID number 
      - parameter file: (query) The backup filename to delete. 
@@ -174,7 +174,7 @@ open class VPSAPI {
 
 
     /**
-     Delete VPS Backup
+     Permanently delete a VPS backup file by name (irreversible)
      - DELETE /vps/{id}/backups
 
      - API Key:
@@ -215,7 +215,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Blocks SMTP
+     Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
 
      - parameter _id: (path) VPS ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -228,7 +228,7 @@ open class VPSAPI {
 
 
     /**
-     Blocks SMTP
+     Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
      - GET /vps/{id}/block_smtp
 
      - API Key:
@@ -263,7 +263,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Disable CD Drive
+     Remove the virtual CD/DVD device entirely from the VPS configuration
 
      - parameter _id: (path) VPS ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -276,7 +276,7 @@ open class VPSAPI {
 
 
     /**
-     Disable CD Drive
+     Remove the virtual CD/DVD device entirely from the VPS configuration
      - GET /vps/{id}/disable_cd
 
      - API Key:
@@ -311,7 +311,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Disable Quotas
+     Disable per-user disk quota enforcement inside the VPS guest OS
 
      - parameter _id: (path) VPS ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -324,7 +324,7 @@ open class VPSAPI {
 
 
     /**
-     Disable Quotas
+     Disable per-user disk quota enforcement inside the VPS guest OS
      - GET /vps/{id}/disable_quota
 
      - API Key:
@@ -359,7 +359,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Eject CD Drive
+     Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
 
      - parameter _id: (path) VPS ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -372,7 +372,7 @@ open class VPSAPI {
 
 
     /**
-     Eject CD Drive
+     Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
      - GET /vps/{id}/eject_cd
 
      - API Key:
@@ -407,7 +407,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Enable Quotas
+     Enable per-user disk quota enforcement inside the VPS guest OS
 
      - parameter _id: (path) VPS ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -420,7 +420,7 @@ open class VPSAPI {
 
 
     /**
-     Enable Quotas
+     Enable per-user disk quota enforcement inside the VPS guest OS
      - GET /vps/{id}/enable_quota
 
      - API Key:
@@ -455,7 +455,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Restart VPS
+     Reboot the VPS — preferred over stop+start for software changes
 
      - parameter _id: (path) VPS ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -468,7 +468,7 @@ open class VPSAPI {
 
 
     /**
-     Restart VPS
+     Reboot the VPS — preferred over stop+start for software changes
      - GET /vps/{id}/restart
 
      - API Key:
@@ -503,7 +503,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Start VPS
+     Power on a stopped VPS instance
 
      - parameter _id: (path) VPS ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -516,7 +516,7 @@ open class VPSAPI {
 
 
     /**
-     Start VPS
+     Power on a stopped VPS instance
      - GET /vps/{id}/start
 
      - API Key:
@@ -551,7 +551,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Stop VPS
+     Power off a running VPS — billing continues until cancellation
 
      - parameter _id: (path) VPS ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -564,7 +564,7 @@ open class VPSAPI {
 
 
     /**
-     Stop VPS
+     Power off a running VPS — billing continues until cancellation
      - GET /vps/{id}/stop
 
      - API Key:
@@ -607,14 +607,14 @@ open class VPSAPI {
     }
 
     /**
-     Download VPS Backup
+     Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
 
      - parameter body: (body)  
      - parameter _id: (path) VPS ID number 
      - parameter all: (query) Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func downloadVpsBackup(body: IdBackupsBody2, _id: Int, all: All_downloadVpsBackup? = nil, completion: @escaping ((_ data: InlineResponse20011?,_ error: Error?) -> Void)) {
+    open class func downloadVpsBackup(body: IdBackupsBody2, _id: Int, all: All_downloadVpsBackup? = nil, completion: @escaping ((_ data: InlineResponse20012?,_ error: Error?) -> Void)) {
         downloadVpsBackupWithRequestBuilder(body: body, _id: _id, all: all).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -622,7 +622,7 @@ open class VPSAPI {
 
 
     /**
-     Download VPS Backup
+     Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
      - PATCH /vps/{id}/backups
 
      - API Key:
@@ -642,9 +642,9 @@ open class VPSAPI {
      - parameter _id: (path) VPS ID number 
      - parameter all: (query) Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. (optional)
 
-     - returns: RequestBuilder<InlineResponse20011> 
+     - returns: RequestBuilder<InlineResponse20012> 
      */
-    open class func downloadVpsBackupWithRequestBuilder(body: IdBackupsBody2, _id: Int, all: All_downloadVpsBackup? = nil) -> RequestBuilder<InlineResponse20011> {
+    open class func downloadVpsBackupWithRequestBuilder(body: IdBackupsBody2, _id: Int, all: All_downloadVpsBackup? = nil) -> RequestBuilder<InlineResponse20012> {
         var path = "/vps/{id}/backups"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -657,7 +657,7 @@ open class VPSAPI {
         ])
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20011>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20012>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -670,14 +670,14 @@ open class VPSAPI {
     }
 
     /**
-     Download VPS Backup
+     Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
 
      - parameter file: (form)  
      - parameter _id: (path) VPS ID number 
      - parameter all: (query) Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func downloadVpsBackup(file: String, _id: Int, all: All_downloadVpsBackup? = nil, completion: @escaping ((_ data: InlineResponse20011?,_ error: Error?) -> Void)) {
+    open class func downloadVpsBackup(file: String, _id: Int, all: All_downloadVpsBackup? = nil, completion: @escaping ((_ data: InlineResponse20012?,_ error: Error?) -> Void)) {
         downloadVpsBackupWithRequestBuilder(file: file, _id: _id, all: all).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -685,7 +685,7 @@ open class VPSAPI {
 
 
     /**
-     Download VPS Backup
+     Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
      - PATCH /vps/{id}/backups
 
      - API Key:
@@ -705,9 +705,9 @@ open class VPSAPI {
      - parameter _id: (path) VPS ID number 
      - parameter all: (query) Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. (optional)
 
-     - returns: RequestBuilder<InlineResponse20011> 
+     - returns: RequestBuilder<InlineResponse20012> 
      */
-    open class func downloadVpsBackupWithRequestBuilder(file: String, _id: Int, all: All_downloadVpsBackup? = nil) -> RequestBuilder<InlineResponse20011> {
+    open class func downloadVpsBackupWithRequestBuilder(file: String, _id: Int, all: All_downloadVpsBackup? = nil) -> RequestBuilder<InlineResponse20012> {
         var path = "/vps/{id}/backups"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -720,12 +720,12 @@ open class VPSAPI {
         ])
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20011>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20012>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     VPS Ordering Information
+     Get the VPS order catalog — platforms, OS templates, locations, pricing
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -737,7 +737,7 @@ open class VPSAPI {
 
 
     /**
-     VPS Ordering Information
+     Get the VPS order catalog — platforms, OS templates, locations, pricing
      - GET /vps/order
 
      - API Key:
@@ -837,6 +837,54 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
+     Trigger a manual on-demand snapshot/backup of the VPS
+
+     - parameter _id: (path) VPS ID number 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getVpsBackup(_id: Int, completion: @escaping ((_ data: QueueResponse?,_ error: Error?) -> Void)) {
+        getVpsBackupWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Trigger a manual on-demand snapshot/backup of the VPS
+     - GET /vps/{id}/backup
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "text" : "Action has been sent to the server. Please allow up to 2 minutes for action to be completed.",
+  "queueId" : 14670065
+}}]
+     - parameter _id: (path) VPS ID number 
+
+     - returns: RequestBuilder<QueueResponse> 
+     */
+    open class func getVpsBackupWithRequestBuilder(_id: Int) -> RequestBuilder<QueueResponse> {
+        var path = "/vps/{id}/backup"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<QueueResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
      * enum for parameter all
      */
     public enum All_getVpsBackups: String { 
@@ -845,7 +893,7 @@ open class VPSAPI {
     }
 
     /**
-     Get VPS Backups List
+     List existing backups for the VPS across Swift, MinIO, and ZFS
 
      - parameter _id: (path) VPS ID number 
      - parameter all: (query) Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS. (optional)
@@ -859,7 +907,7 @@ open class VPSAPI {
 
 
     /**
-     Get VPS Backups List
+     List existing backups for the VPS across Swift, MinIO, and ZFS
      - GET /vps/{id}/backups
 
      - API Key:
@@ -913,7 +961,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     HD Space Addon Info
+     Get current additional disk size and per-GB monthly cost for the VPS
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -930,7 +978,7 @@ open class VPSAPI {
 
 
     /**
-     HD Space Addon Info
+     Get current additional disk size and per-GB monthly cost for the VPS
      - GET /vps/{id}/buy_hd_space
 
      - API Key:
@@ -961,7 +1009,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Additional IP Addon Info
+     Read current additional IPs, cap, and per-IP monthly cost for the VPS
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -978,7 +1026,7 @@ open class VPSAPI {
 
 
     /**
-     Additional IP Addon Info
+     Read current additional IPs, cap, and per-IP monthly cost for the VPS
      - GET /vps/{id}/buy_ip
 
      - API Key:
@@ -1009,7 +1057,103 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Timezone Info
+     Read the VPS's current hostname before changing it
+
+     - parameter _id: (path) VPS ID number 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getVpsChangeHostname(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        getVpsChangeHostnameWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Read the VPS's current hostname before changing it
+     - GET /vps/{id}/change_hostname
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - parameter _id: (path) VPS ID number 
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getVpsChangeHostnameWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
+        var path = "/vps/{id}/change_hostname"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
+     Pre-flight check before changing the VPS root password
+
+     - parameter _id: (path) VPS ID number 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getVpsChangeRootPassword(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        getVpsChangeRootPasswordWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Pre-flight check before changing the VPS root password
+     - GET /vps/{id}/change_root_password
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - parameter _id: (path) VPS ID number 
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getVpsChangeRootPasswordWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
+        var path = "/vps/{id}/change_root_password"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
+     List IANA timezones supported by the VPS guest OS
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1022,7 +1166,7 @@ open class VPSAPI {
 
 
     /**
-     Get Timezone Info
+     List IANA timezones supported by the VPS guest OS
      - GET /vps/{id}/change_timezone
 
      - API Key:
@@ -1054,7 +1198,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get VPS Order
+     Get full details for one VPS — IPs, hostname, OS, slices, status, addons
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1067,7 +1211,7 @@ open class VPSAPI {
 
 
     /**
-     Get VPS Order
+     Get full details for one VPS — IPs, hostname, OS, slices, status, addons
      - GET /vps/{id}
 
      - API Key:
@@ -1251,7 +1395,55 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get VPS Invoices
+     List ISO templates that can be mounted in the VPS virtual CD drive
+
+     - parameter _id: (path) VPS ID number 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getVpsInsertCd(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        getVpsInsertCdWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     List ISO templates that can be mounted in the VPS virtual CD drive
+     - GET /vps/{id}/insert_cd
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - parameter _id: (path) VPS ID number 
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getVpsInsertCdWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
+        var path = "/vps/{id}/insert_cd"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
+     List all billing invoices associated with this specific VPS
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1264,7 +1456,7 @@ open class VPSAPI {
 
 
     /**
-     Get VPS Invoices
+     List all billing invoices associated with this specific VPS
      - GET /vps/{id}/invoices
 
      - API Key:
@@ -1334,7 +1526,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List VPS Orders
+     List all VPS services on the customer's account
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -1346,7 +1538,7 @@ open class VPSAPI {
 
 
     /**
-     List VPS Orders
+     List all VPS services on the customer's account
      - GET /vps
 
      - API Key:
@@ -1392,7 +1584,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     VPS Reinstall OS Options
+     List OS templates compatible with this VPS's hypervisor for reinstall
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1405,7 +1597,7 @@ open class VPSAPI {
 
 
     /**
-     VPS Reinstall OS Options
+     List OS templates compatible with this VPS's hypervisor for reinstall
      - GET /vps/{id}/reinstall_os
 
      - API Key:
@@ -1459,7 +1651,55 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Reverse DNS Info
+     Pre-flight check before resetting the VPS root password to a random value
+
+     - parameter _id: (path) VPS ID number 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getVpsResetPassword(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        getVpsResetPasswordWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Pre-flight check before resetting the VPS root password to a random value
+     - GET /vps/{id}/reset_password
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - parameter _id: (path) VPS ID number 
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getVpsResetPasswordWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
+        var path = "/vps/{id}/reset_password"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
+     Read the current PTR (reverse-DNS) records for every IP on the VPS
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1472,7 +1712,7 @@ open class VPSAPI {
 
 
     /**
-     Reverse DNS Info
+     Read the current PTR (reverse-DNS) records for every IP on the VPS
      - GET /vps/{id}/reverse_dns
 
      - API Key:
@@ -1509,7 +1749,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     VNC Setup Info
+     Read current VNC console connection info for the VPS
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1526,7 +1766,7 @@ open class VPSAPI {
 
 
     /**
-     VNC Setup Info
+     Read current VNC console connection info for the VPS
      - GET /vps/{id}/setup_vnc
 
      - API Key:
@@ -1557,7 +1797,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Slice Upgrade Info
+     Read current slice count, min/max range, and prorated per-slice upgrade cost
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1574,7 +1814,7 @@ open class VPSAPI {
 
 
     /**
-     Slice Upgrade Info
+     Read current slice count, min/max range, and prorated per-slice upgrade cost
      - GET /vps/{id}/slices
 
      - API Key:
@@ -1605,7 +1845,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Traffic Usage
+     Read bandwidth traffic usage data for the VPS
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1618,7 +1858,7 @@ open class VPSAPI {
 
 
     /**
-     Get Traffic Usage
+     Read bandwidth traffic usage data for the VPS
      - GET /vps/{id}/traffic_usage
 
      - API Key:
@@ -1713,7 +1953,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get View Desktop Info
+     Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1730,7 +1970,7 @@ open class VPSAPI {
 
 
     /**
-     Get View Desktop Info
+     Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
      - GET /vps/{id}/view_desktop
 
      - API Key:
@@ -1761,7 +2001,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Resend VPS Welcome Email
+     Resend the welcome email containing VPS IP, hostname, and root credentials
 
      - parameter _id: (path) VPS ID 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1774,7 +2014,7 @@ open class VPSAPI {
 
 
     /**
-     Resend VPS Welcome Email
+     Resend the welcome email containing VPS IP, hostname, and root credentials
      - GET /vps/{id}/welcome_email
 
      - API Key:
@@ -1809,55 +2049,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Start a VPS Backup
-
-     - parameter _id: (path) VPS ID number 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func postVpsBackup(_id: Int, completion: @escaping ((_ data: QueueResponse?,_ error: Error?) -> Void)) {
-        postVpsBackupWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Start a VPS Backup
-     - GET /vps/{id}/backup
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - examples: [{contentType=application/json, example={
-  "text" : "Action has been sent to the server. Please allow up to 2 minutes for action to be completed.",
-  "queueId" : 14670065
-}}]
-     - parameter _id: (path) VPS ID number 
-
-     - returns: RequestBuilder<QueueResponse> 
-     */
-    open class func postVpsBackupWithRequestBuilder(_id: Int) -> RequestBuilder<QueueResponse> {
-        var path = "/vps/{id}/backup"
-        let _idPreEscape = "\(_id)"
-        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<QueueResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-    /**
-     Purchase HD Space Addon
+     Buy or resize the VPS additional-disk addon and create a prorated invoice
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1874,7 +2066,7 @@ open class VPSAPI {
 
 
     /**
-     Purchase HD Space Addon
+     Buy or resize the VPS additional-disk addon and create a prorated invoice
      - POST /vps/{id}/buy_hd_space
 
      - API Key:
@@ -1905,7 +2097,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Purchase Additional IP
+     Purchase one additional IP for the VPS and create the invoice
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1922,7 +2114,7 @@ open class VPSAPI {
 
 
     /**
-     Purchase Additional IP
+     Purchase one additional IP for the VPS and create the invoice
      - POST /vps/{id}/buy_ip
 
      - API Key:
@@ -1953,7 +2145,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update VPS Hostname
+     Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
 
      - parameter hostname: (form)  
      - parameter _id: (path) VPS ID number 
@@ -1967,7 +2159,7 @@ open class VPSAPI {
 
 
     /**
-     Update VPS Hostname
+     Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
      - POST /vps/{id}/change_hostname
 
      - API Key:
@@ -2003,7 +2195,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update VPS Hostname
+     Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
 
      - parameter body: (body)  
      - parameter _id: (path) VPS ID number 
@@ -2017,7 +2209,7 @@ open class VPSAPI {
 
 
     /**
-     Update VPS Hostname
+     Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
      - POST /vps/{id}/change_hostname
 
      - API Key:
@@ -2053,7 +2245,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change VPS Root Password
+     Set a specific new root/Administrator password on the VPS
 
      - parameter password: (form)  
      - parameter _id: (path) VPS ID number 
@@ -2067,7 +2259,7 @@ open class VPSAPI {
 
 
     /**
-     Change VPS Root Password
+     Set a specific new root/Administrator password on the VPS
      - POST /vps/{id}/change_root_password
 
      - API Key:
@@ -2103,7 +2295,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change VPS Root Password
+     Set a specific new root/Administrator password on the VPS
 
      - parameter body: (body)  
      - parameter _id: (path) VPS ID number 
@@ -2117,7 +2309,7 @@ open class VPSAPI {
 
 
     /**
-     Change VPS Root Password
+     Set a specific new root/Administrator password on the VPS
      - POST /vps/{id}/change_root_password
 
      - API Key:
@@ -2153,7 +2345,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change VPS Timezone
+     Set the system timezone on the VPS guest OS
 
      - parameter timezone: (form)  
      - parameter _id: (path) VPS ID number 
@@ -2167,7 +2359,7 @@ open class VPSAPI {
 
 
     /**
-     Change VPS Timezone
+     Set the system timezone on the VPS guest OS
      - POST /vps/{id}/change_timezone
 
      - API Key:
@@ -2203,7 +2395,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change VPS Timezone
+     Set the system timezone on the VPS guest OS
 
      - parameter body: (body)  
      - parameter _id: (path) VPS ID number 
@@ -2217,7 +2409,7 @@ open class VPSAPI {
 
 
     /**
-     Change VPS Timezone
+     Set the system timezone on the VPS guest OS
      - POST /vps/{id}/change_timezone
 
      - API Key:
@@ -2253,7 +2445,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change Webuzo Password
+     Rotate the Webuzo control panel admin password (re-auth required)
 
      - parameter password: (form)  
      - parameter _id: (path) VPS ID number 
@@ -2267,7 +2459,7 @@ open class VPSAPI {
 
 
     /**
-     Change Webuzo Password
+     Rotate the Webuzo control panel admin password (re-auth required)
      - POST /vps/{id}/change_webuzo_password
 
      - API Key:
@@ -2303,7 +2495,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Change Webuzo Password
+     Rotate the Webuzo control panel admin password (re-auth required)
 
      - parameter body: (body)  
      - parameter _id: (path) VPS ID number 
@@ -2317,7 +2509,7 @@ open class VPSAPI {
 
 
     /**
-     Change Webuzo Password
+     Rotate the Webuzo control panel admin password (re-auth required)
      - POST /vps/{id}/change_webuzo_password
 
      - API Key:
@@ -2353,7 +2545,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Insert CD in VPS
+     Mount an ISO image in the VPS virtual CD drive from a URL
 
      - parameter url: (form)  
      - parameter _id: (path) VPS ID number 
@@ -2367,7 +2559,7 @@ open class VPSAPI {
 
 
     /**
-     Insert CD in VPS
+     Mount an ISO image in the VPS virtual CD drive from a URL
      - POST /vps/{id}/insert_cd
 
      - API Key:
@@ -2403,7 +2595,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Insert CD in VPS
+     Mount an ISO image in the VPS virtual CD drive from a URL
 
      - parameter body: (body)  
      - parameter _id: (path) VPS ID number 
@@ -2417,7 +2609,7 @@ open class VPSAPI {
 
 
     /**
-     Insert CD in VPS
+     Mount an ISO image in the VPS virtual CD drive from a URL
      - POST /vps/{id}/insert_cd
 
      - API Key:
@@ -2453,7 +2645,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Reinstall VPS OS
+     Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
 
      - parameter template: (form)  
      - parameter password: (form)  
@@ -2469,7 +2661,7 @@ open class VPSAPI {
 
 
     /**
-     Reinstall VPS OS
+     Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
      - POST /vps/{id}/reinstall_os
 
      - API Key:
@@ -2507,7 +2699,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Reinstall VPS OS
+     Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
 
      - parameter body: (body)  
      - parameter _id: (path) VPS ID number 
@@ -2521,7 +2713,7 @@ open class VPSAPI {
 
 
     /**
-     Reinstall VPS OS
+     Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
      - POST /vps/{id}/reinstall_os
 
      - API Key:
@@ -2557,7 +2749,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Reset VPS Password
+     Reset the VPS root password to a server-generated random value
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -2570,7 +2762,7 @@ open class VPSAPI {
 
 
     /**
-     Reset VPS Password
+     Reset the VPS root password to a server-generated random value
      - POST /vps/{id}/reset_password
 
      - API Key:
@@ -2605,7 +2797,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Restore VPS from Backup
+     Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
 
      - parameter body: (body) VPS Restore request 
      - parameter _id: (path) VPS ID number 
@@ -2619,7 +2811,7 @@ open class VPSAPI {
 
 
     /**
-     Restore VPS from Backup
+     Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
      - POST /vps/{id}/restore
 
      - API Key:
@@ -2655,7 +2847,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Restore VPS from Backup
+     Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
 
      - parameter backup: (form)  
      - parameter password: (form)  
@@ -2670,7 +2862,7 @@ open class VPSAPI {
 
 
     /**
-     Restore VPS from Backup
+     Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
      - POST /vps/{id}/restore
 
      - API Key:
@@ -2707,7 +2899,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Reverse DNS
+     Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
 
      - parameter body: (body)  
      - parameter _id: (path) VPS ID number 
@@ -2721,7 +2913,7 @@ open class VPSAPI {
 
 
     /**
-     Update Reverse DNS
+     Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
      - POST /vps/{id}/reverse_dns
 
      - API Key:
@@ -2756,7 +2948,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Reverse DNS
+     Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
 
      - parameter ips: (form)  
      - parameter _id: (path) VPS ID number 
@@ -2770,7 +2962,7 @@ open class VPSAPI {
 
 
     /**
-     Update Reverse DNS
+     Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
      - POST /vps/{id}/reverse_dns
 
      - API Key:
@@ -2805,7 +2997,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Setup VNC
+     Provision or refresh the VNC console endpoint for the VPS
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -2818,7 +3010,7 @@ open class VPSAPI {
 
 
     /**
-     Setup VNC
+     Provision or refresh the VNC console endpoint for the VPS
      - POST /vps/{id}/setup_vnc
 
      - API Key:
@@ -2853,7 +3045,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Purchase Slice Upgrade
+     Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -2870,7 +3062,7 @@ open class VPSAPI {
 
 
     /**
-     Purchase Slice Upgrade
+     Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
      - POST /vps/{id}/slices
 
      - API Key:
@@ -2901,7 +3093,55 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update View Desktop
+     Search/filter VPS bandwidth usage with custom criteria (reserved)
+
+     - parameter _id: (path) VPS ID number 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func postVpsTrafficUsage(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        postVpsTrafficUsageWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Search/filter VPS bandwidth usage with custom criteria (reserved)
+     - POST /vps/{id}/traffic_usage
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - parameter _id: (path) VPS ID number 
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func postVpsTrafficUsageWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
+        var path = "/vps/{id}/traffic_usage"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
+     Refresh the remote-desktop session connection info after IP/hostname changes
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
@@ -2918,7 +3158,7 @@ open class VPSAPI {
 
 
     /**
-     Update View Desktop
+     Refresh the remote-desktop session connection info after IP/hostname changes
      - POST /vps/{id}/view_desktop
 
      - API Key:
@@ -2949,7 +3189,7 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Validate VPS Order
+     Validate a VPS order configuration and quote the cost — dry run, no charge
 
      - parameter body: (body)  (optional)
      - parameter completion: completion handler to receive the data and the error objects
@@ -2962,7 +3202,7 @@ open class VPSAPI {
 
 
     /**
-     Validate VPS Order
+     Validate a VPS order configuration and quote the cost — dry run, no charge
      - PUT /vps/order
 
      - API Key:
@@ -2993,7 +3233,7 @@ open class VPSAPI {
   "controlpanel" : "none",
   "period" : 1,
   "location" : 1,
-  "version" : "24.04",
+  "version" : "ubuntu24",
   "hostname" : "server.blank.com",
   "coupon" : "",
   "rootpass" : "string"
@@ -3032,7 +3272,7 @@ open class VPSAPI {
     }
 
     /**
-     Validate VPS Order
+     Validate a VPS order configuration and quote the cost — dry run, no charge
 
      - parameter osDistro: (form)  (optional)
      - parameter slices: (form)  (optional)
@@ -3055,7 +3295,7 @@ open class VPSAPI {
 
 
     /**
-     Validate VPS Order
+     Validate a VPS order configuration and quote the cost — dry run, no charge
      - PUT /vps/order
 
      - API Key:
@@ -3086,7 +3326,7 @@ open class VPSAPI {
   "controlpanel" : "none",
   "period" : 1,
   "location" : 1,
-  "version" : "24.04",
+  "version" : "ubuntu24",
   "hostname" : "server.blank.com",
   "coupon" : "",
   "rootpass" : "string"
@@ -3117,7 +3357,55 @@ open class VPSAPI {
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update VPS Order
+     Preview cost to set additional VPS disk to a target GB size — dry run
+
+     - parameter _id: (path) VPS ID number 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func putVpsBuyHdSpace(_id: Int, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        putVpsBuyHdSpaceWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Preview cost to set additional VPS disk to a target GB size — dry run
+     - PUT /vps/{id}/buy_hd_space
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - parameter _id: (path) VPS ID number 
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func putVpsBuyHdSpaceWithRequestBuilder(_id: Int) -> RequestBuilder<Void> {
+        var path = "/vps/{id}/buy_hd_space"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
+     Update editable settings on a VPS service record
 
      - parameter _id: (path) VPS ID number. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -3130,7 +3418,7 @@ open class VPSAPI {
 
 
     /**
-     Update VPS Order
+     Update editable settings on a VPS service record
      - POST /vps/{id}
 
      - API Key:
@@ -3165,12 +3453,12 @@ open class VPSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Cancel VPS Service
+     Cancel a VPS service at the end of the current billing cycle
 
      - parameter _id: (path) VPS ID number 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func vPSCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20022?,_ error: Error?) -> Void)) {
+    open class func vPSCancel(_id: Int, completion: @escaping ((_ data: InlineResponse20024?,_ error: Error?) -> Void)) {
         vPSCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -3178,7 +3466,7 @@ open class VPSAPI {
 
 
     /**
-     Cancel VPS Service
+     Cancel a VPS service at the end of the current billing cycle
      - DELETE /vps/{id}
 
      - API Key:
@@ -3196,9 +3484,9 @@ open class VPSAPI {
 }}]
      - parameter _id: (path) VPS ID number 
 
-     - returns: RequestBuilder<InlineResponse20022> 
+     - returns: RequestBuilder<InlineResponse20024> 
      */
-    open class func vPSCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20022> {
+    open class func vPSCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse20024> {
         var path = "/vps/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -3208,7 +3496,7 @@ open class VPSAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse20022>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20024>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

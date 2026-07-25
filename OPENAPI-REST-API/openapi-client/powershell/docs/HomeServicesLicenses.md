@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeServicesLicenses = Initialize-PSOpenAPIToolsHomeServicesLicenses  -Links null `
+$HomeServicesLicenses = Initialize-InterserverApiHomeServicesLicenses  -Links null `
  -Count 1
 ```
 

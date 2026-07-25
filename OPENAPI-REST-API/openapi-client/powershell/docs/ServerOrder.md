@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrder = Initialize-PSOpenAPIToolsServerOrder  -FormValues null `
+$ServerOrder = Initialize-InterserverApiServerOrder  -FormValues null `
  -ConfigIds null `
  -Cpu 184 `
  -FieldLabel null `

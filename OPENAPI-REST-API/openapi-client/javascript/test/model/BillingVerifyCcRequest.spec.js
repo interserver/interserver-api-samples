@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BillingVerifyCcRequest();
+    instance = new InterserverApiClient.BillingVerifyCcRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('BillingVerifyCcRequest', function() {
     it('should create an instance of BillingVerifyCcRequest', function() {
       // uncomment below and update the code to test BillingVerifyCcRequest
-      //var instance = new InterServerManagementApi.BillingVerifyCcRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.BillingVerifyCcRequest);
+      //var instance = new InterserverApiClient.BillingVerifyCcRequest();
+      //expect(instance).to.be.a(InterserverApiClient.BillingVerifyCcRequest);
     });
 
     it('should have the property idx (base name: "idx")', function() {
       // uncomment below and update the code to test the property idx
-      //var instance = new InterServerManagementApi.BillingVerifyCcRequest();
+      //var instance = new InterserverApiClient.BillingVerifyCcRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property cc_ccv2 (base name: "cc_ccv2")', function() {
       // uncomment below and update the code to test the property cc_ccv2
-      //var instance = new InterServerManagementApi.BillingVerifyCcRequest();
+      //var instance = new InterserverApiClient.BillingVerifyCcRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property cc_amount1 (base name: "cc_amount1")', function() {
       // uncomment below and update the code to test the property cc_amount1
-      //var instance = new InterServerManagementApi.BillingVerifyCcRequest();
+      //var instance = new InterserverApiClient.BillingVerifyCcRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property cc_amount2 (base name: "cc_amount2")', function() {
       // uncomment below and update the code to test the property cc_amount2
-      //var instance = new InterServerManagementApi.BillingVerifyCcRequest();
+      //var instance = new InterserverApiClient.BillingVerifyCcRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property terms (base name: "terms")', function() {
       // uncomment below and update the code to test the property terms
-      //var instance = new InterServerManagementApi.BillingVerifyCcRequest();
+      //var instance = new InterserverApiClient.BillingVerifyCcRequest();
       //expect(instance).to.be();
     });
 

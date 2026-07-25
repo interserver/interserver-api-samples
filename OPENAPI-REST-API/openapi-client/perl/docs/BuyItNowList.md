@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BuyItNowList
+# InterServerAPI::Object::BuyItNowList
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BuyItNowList;
+use InterServerAPI::Object::BuyItNowList;
 ```
 
 ## Properties

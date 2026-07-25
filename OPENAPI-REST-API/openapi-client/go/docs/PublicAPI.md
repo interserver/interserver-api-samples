@@ -4,26 +4,150 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetCaptcha**](PublicAPI.md#GetCaptcha) | **Get** /captcha | Get Captcha Challenge
-[**GetCountries**](PublicAPI.md#GetCountries) | **Get** /account/countries | Get Countries
-[**GetInfo**](PublicAPI.md#GetInfo) | **Get** /info | Get Server Info
-[**GetLoginInfo**](PublicAPI.md#GetLoginInfo) | **Get** /login | Get Login Info
-[**GetMPServers**](PublicAPI.md#GetMPServers) | **Get** /buy_now_servers_list | List Marketplace Servers
-[**GetOauthRedirect**](PublicAPI.md#GetOauthRedirect) | **Get** /oauth | Get OAuth Redirect URL
-[**GetTimezones**](PublicAPI.md#GetTimezones) | **Get** /account/timezones | Get Available Timezones
-[**PatchOauthTwoFactor**](PublicAPI.md#PatchOauthTwoFactor) | **Patch** /oauth | Complete OAuth Two-Factor Verification
-[**PingServer**](PublicAPI.md#PingServer) | **Get** /ping | Ping Server
-[**PostOauthCallback**](PublicAPI.md#PostOauthCallback) | **Post** /oauth | OAuth Callback
-[**SubmitLogin**](PublicAPI.md#SubmitLogin) | **Post** /login | Submit Login Information
-[**SubmitSignup**](PublicAPI.md#SubmitSignup) | **Post** /signup | Submit Signup Information
+[**GetAccountCurrencies**](PublicAPI.md#GetAccountCurrencies) | **Get** /account/currencies | List enabled currency codes accepted for billing and preferences
+[**GetAccountLocales**](PublicAPI.md#GetAccountLocales) | **Get** /account/locales | List supported UI locales with English and native display names
+[**GetCaptcha**](PublicAPI.md#GetCaptcha) | **Get** /captcha | Fetch a base64 JPEG captcha challenge for human verification
+[**GetCountries**](PublicAPI.md#GetCountries) | **Get** /account/countries | List enabled countries keyed by ISO-2/ISO-3/numeric code
+[**GetInfo**](PublicAPI.md#GetInfo) | **Get** /info | Discover available modules, service packages, categories, and types
+[**GetLoginInfo**](PublicAPI.md#GetLoginInfo) | **Get** /login | Fetch logo, captcha, language, and stats for rendering a login page
+[**GetMPServers**](PublicAPI.md#GetMPServers) | **Get** /buy_now_servers_list | List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+[**GetOauthRedirect**](PublicAPI.md#GetOauthRedirect) | **Get** /oauth | Begin OAuth login flow — redirect user to provider for authentication
+[**GetTimezones**](PublicAPI.md#GetTimezones) | **Get** /account/timezones | List all PHP timezone identifiers usable on accounts and services
+[**PatchOauthTwoFactor**](PublicAPI.md#PatchOauthTwoFactor) | **Patch** /oauth | Submit 2FA code to finish OAuth login when account has 2FA enabled
+[**PingServer**](PublicAPI.md#PingServer) | **Get** /ping | Liveness check — returns the JSON string \&quot;pong\&quot; to confirm API is up
+[**PostOauthCallback**](PublicAPI.md#PostOauthCallback) | **Post** /oauth | Complete OAuth login by linking provider to existing or new account
+[**SubmitLogin**](PublicAPI.md#SubmitLogin) | **Post** /login | Authenticate with email + password and return a session token
+[**SubmitSignup**](PublicAPI.md#SubmitSignup) | **Post** /signup | Create a new customer account (email + password + captcha + ToS)
 
+
+
+## GetAccountCurrencies
+
+> []string GetAccountCurrencies(ctx).Execute()
+
+List enabled currency codes accepted for billing and preferences
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PublicAPI.GetAccountCurrencies(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PublicAPI.GetAccountCurrencies``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAccountCurrencies`: []string
+	fmt.Fprintf(os.Stdout, "Response from `PublicAPI.GetAccountCurrencies`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAccountCurrenciesRequest struct via the builder pattern
+
+
+### Return type
+
+**[]string**
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAccountLocales
+
+> map[string]GetAccountLocales200ResponseValue GetAccountLocales(ctx).Execute()
+
+List supported UI locales with English and native display names
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PublicAPI.GetAccountLocales(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PublicAPI.GetAccountLocales``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAccountLocales`: map[string]GetAccountLocales200ResponseValue
+	fmt.Fprintf(os.Stdout, "Response from `PublicAPI.GetAccountLocales`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAccountLocalesRequest struct via the builder pattern
+
+
+### Return type
+
+[**map[string]GetAccountLocales200ResponseValue**](GetAccountLocales200ResponseValue.md)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetCaptcha
 
 > CaptchaResponse GetCaptcha(ctx).Execute()
 
-Get Captcha Challenge
+Fetch a base64 JPEG captcha challenge for human verification
 
 
 
@@ -84,7 +208,7 @@ Other parameters are passed through a pointer to a apiGetCaptchaRequest struct v
 
 > map[string]interface{} GetCountries(ctx).FetchBy(fetchBy).Execute()
 
-Get Countries
+List enabled countries keyed by ISO-2/ISO-3/numeric code
 
 
 
@@ -150,7 +274,7 @@ Name | Type | Description  | Notes
 
 > ServicesInfo GetInfo(ctx).Execute()
 
-Get Server Info
+Discover available modules, service packages, categories, and types
 
 
 
@@ -211,7 +335,7 @@ Other parameters are passed through a pointer to a apiGetInfoRequest struct via 
 
 > LoginInfo GetLoginInfo(ctx).Execute()
 
-Get Login Info
+Fetch logo, captcha, language, and stats for rendering a login page
 
 
 
@@ -272,7 +396,7 @@ Other parameters are passed through a pointer to a apiGetLoginInfoRequest struct
 
 > BuyItNowList GetMPServers(ctx).Execute()
 
-List Marketplace Servers
+List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 
 
 
@@ -333,7 +457,7 @@ Other parameters are passed through a pointer to a apiGetMPServersRequest struct
 
 > GetOauthRedirect200Response GetOauthRedirect(ctx).Provider(provider).Execute()
 
-Get OAuth Redirect URL
+Begin OAuth login flow — redirect user to provider for authentication
 
 
 
@@ -399,7 +523,7 @@ Name | Type | Description  | Notes
 
 > []string GetTimezones(ctx).Execute()
 
-Get Available Timezones
+List all PHP timezone identifiers usable on accounts and services
 
 
 
@@ -460,7 +584,7 @@ Other parameters are passed through a pointer to a apiGetTimezonesRequest struct
 
 > PatchOauthTwoFactor200Response PatchOauthTwoFactor(ctx).PatchOauthTwoFactorRequest(patchOauthTwoFactorRequest).Execute()
 
-Complete OAuth Two-Factor Verification
+Submit 2FA code to finish OAuth login when account has 2FA enabled
 
 
 
@@ -526,7 +650,7 @@ Name | Type | Description  | Notes
 
 > string PingServer(ctx).Execute()
 
-Ping Server
+Liveness check — returns the JSON string \"pong\" to confirm API is up
 
 
 
@@ -587,7 +711,7 @@ Other parameters are passed through a pointer to a apiPingServerRequest struct v
 
 > PostOauthCallback200Response PostOauthCallback(ctx).Provider(provider).PostOauthCallbackRequest(postOauthCallbackRequest).Execute()
 
-OAuth Callback
+Complete OAuth login by linking provider to existing or new account
 
 
 
@@ -655,7 +779,7 @@ Name | Type | Description  | Notes
 
 > LoginSuccessResponse SubmitLogin(ctx).Login(login).Passwd(passwd).Remember(remember).GRecaptchaResponse(gRecaptchaResponse).Tfa(tfa).Execute()
 
-Submit Login Information
+Authenticate with email + password and return a session token
 
 
 
@@ -729,7 +853,7 @@ Name | Type | Description  | Notes
 
 > SubmitSignup(ctx).LoginSubmissionExample(loginSubmissionExample).Execute()
 
-Submit Signup Information
+Create a new customer account (email + password + captcha + ToS)
 
 
 

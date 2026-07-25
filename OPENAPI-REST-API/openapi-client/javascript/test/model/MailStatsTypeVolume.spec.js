@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailStatsTypeVolume();
+    instance = new InterserverApiClient.MailStatsTypeVolume();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('MailStatsTypeVolume', function() {
     it('should create an instance of MailStatsTypeVolume', function() {
       // uncomment below and update the code to test MailStatsTypeVolume
-      //var instance = new InterServerManagementApi.MailStatsTypeVolume();
-      //expect(instance).to.be.a(InterServerManagementApi.MailStatsTypeVolume);
+      //var instance = new InterserverApiClient.MailStatsTypeVolume();
+      //expect(instance).to.be.a(InterserverApiClient.MailStatsTypeVolume);
     });
 
     it('should have the property to (base name: "to")', function() {
       // uncomment below and update the code to test the property to
-      //var instance = new InterServerManagementApi.MailStatsTypeVolume();
+      //var instance = new InterserverApiClient.MailStatsTypeVolume();
       //expect(instance).to.be();
     });
 
     it('should have the property from (base name: "from")', function() {
       // uncomment below and update the code to test the property from
-      //var instance = new InterServerManagementApi.MailStatsTypeVolume();
+      //var instance = new InterserverApiClient.MailStatsTypeVolume();
       //expect(instance).to.be();
     });
 
     it('should have the property ip (base name: "ip")', function() {
       // uncomment below and update the code to test the property ip
-      //var instance = new InterServerManagementApi.MailStatsTypeVolume();
+      //var instance = new InterserverApiClient.MailStatsTypeVolume();
       //expect(instance).to.be();
     });
 

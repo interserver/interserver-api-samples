@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.UpdateTicket();
+    instance = new InterserverApiClient.UpdateTicket();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,49 +50,49 @@
   describe('UpdateTicket', function() {
     it('should create an instance of UpdateTicket', function() {
       // uncomment below and update the code to test UpdateTicket
-      //var instance = new InterServerManagementApi.UpdateTicket();
-      //expect(instance).to.be.a(InterServerManagementApi.UpdateTicket);
+      //var instance = new InterserverApiClient.UpdateTicket();
+      //expect(instance).to.be.a(InterserverApiClient.UpdateTicket);
     });
 
     it('should have the property ip (base name: "ip")', function() {
       // uncomment below and update the code to test the property ip
-      //var instance = new InterServerManagementApi.UpdateTicket();
+      //var instance = new InterserverApiClient.UpdateTicket();
       //expect(instance).to.be();
     });
 
     it('should have the property ip_address (base name: "ip_address")', function() {
       // uncomment below and update the code to test the property ip_address
-      //var instance = new InterServerManagementApi.UpdateTicket();
+      //var instance = new InterserverApiClient.UpdateTicket();
       //expect(instance).to.be();
     });
 
     it('should have the property customer_server_access (base name: "customer_server_access")', function() {
       // uncomment below and update the code to test the property customer_server_access
-      //var instance = new InterServerManagementApi.UpdateTicket();
+      //var instance = new InterserverApiClient.UpdateTicket();
       //expect(instance).to.be();
     });
 
     it('should have the property root_password (base name: "root_password")', function() {
       // uncomment below and update the code to test the property root_password
-      //var instance = new InterServerManagementApi.UpdateTicket();
+      //var instance = new InterserverApiClient.UpdateTicket();
       //expect(instance).to.be();
     });
 
     it('should have the property sudo_username (base name: "sudo_username")', function() {
       // uncomment below and update the code to test the property sudo_username
-      //var instance = new InterServerManagementApi.UpdateTicket();
+      //var instance = new InterserverApiClient.UpdateTicket();
       //expect(instance).to.be();
     });
 
     it('should have the property sudo_password (base name: "sudo_password")', function() {
       // uncomment below and update the code to test the property sudo_password
-      //var instance = new InterServerManagementApi.UpdateTicket();
+      //var instance = new InterserverApiClient.UpdateTicket();
       //expect(instance).to.be();
     });
 
     it('should have the property port (base name: "port")', function() {
       // uncomment below and update the code to test the property port
-      //var instance = new InterServerManagementApi.UpdateTicket();
+      //var instance = new InterserverApiClient.UpdateTicket();
       //expect(instance).to.be();
     });
 

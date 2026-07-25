@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The QuickserverOrderTemplatesUbuntu64 model module.
  * @module model/QuickserverOrderTemplatesUbuntu64
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverOrderTemplatesUbuntu64 extends Array {
     /**

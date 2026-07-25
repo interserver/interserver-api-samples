@@ -12,4 +12,8 @@ A single row in the backup IP information table.
 |**value** | **String** | Value of the IP information. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

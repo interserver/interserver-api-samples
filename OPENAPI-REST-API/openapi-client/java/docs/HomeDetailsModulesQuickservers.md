@@ -15,4 +15,8 @@ Dashboard module configuration for QuickServer services.
 |**listLink** | **String** | Link to view quick servers list. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

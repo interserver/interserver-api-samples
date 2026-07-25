@@ -72,7 +72,7 @@ void OpenAPIVPSApi::AddVpsResponse::SetHttpResponseCode(EHttpResponseCodes::Type
 	switch ((int)InHttpResponseCode)
 	{
 	case 200:
-		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
+		SetResponseString(TEXT("Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;."));
 		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
@@ -647,6 +647,44 @@ bool OpenAPIVPSApi::GetNewVpsResponse::FromJson(const TSharedPtr<FJsonValue>& Js
 	return TryGetJsonValue(JsonValue, Content);
 }
 
+FString OpenAPIVPSApi::GetVpsBackupRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
+
+	FString Path = FString::Format(TEXT("/vps/{id}/backup"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIVPSApi::GetVpsBackupRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("GET"));
+
+}
+
+void OpenAPIVPSApi::GetVpsBackupResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Response message from sending a service queue."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIVPSApi::GetVpsBackupResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return TryGetJsonValue(JsonValue, Content);
+}
+
 inline FString ToString(const OpenAPIVPSApi::GetVpsBackupsRequest::AllEnum& Value)
 {
 	switch (Value)
@@ -822,6 +860,82 @@ bool OpenAPIVPSApi::GetVpsBuyIpResponse::FromJson(const TSharedPtr<FJsonValue>& 
 	return true;
 }
 
+FString OpenAPIVPSApi::GetVpsChangeHostnameRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
+
+	FString Path = FString::Format(TEXT("/vps/{id}/change_hostname"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIVPSApi::GetVpsChangeHostnameRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("GET"));
+
+}
+
+void OpenAPIVPSApi::GetVpsChangeHostnameResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Current hostname information for the VPS."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIVPSApi::GetVpsChangeHostnameResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return true;
+}
+
+FString OpenAPIVPSApi::GetVpsChangeRootPasswordRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
+
+	FString Path = FString::Format(TEXT("/vps/{id}/change_root_password"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIVPSApi::GetVpsChangeRootPasswordRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("GET"));
+
+}
+
+void OpenAPIVPSApi::GetVpsChangeRootPasswordResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Password requirements and current state."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIVPSApi::GetVpsChangeRootPasswordResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return true;
+}
+
 FString OpenAPIVPSApi::GetVpsChangeTimezoneRequest::ComputePath() const
 {
 	TMap<FString, FStringFormatArg> PathParams = { 
@@ -896,6 +1010,44 @@ void OpenAPIVPSApi::GetVpsInfoResponse::SetHttpResponseCode(EHttpResponseCodes::
 bool OpenAPIVPSApi::GetVpsInfoResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
+}
+
+FString OpenAPIVPSApi::GetVpsInsertCdRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
+
+	FString Path = FString::Format(TEXT("/vps/{id}/insert_cd"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIVPSApi::GetVpsInsertCdRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("GET"));
+
+}
+
+void OpenAPIVPSApi::GetVpsInsertCdResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Available CD/ISO images for the VPS."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIVPSApi::GetVpsInsertCdResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return true;
 }
 
 FString OpenAPIVPSApi::GetVpsInvoicesRequest::ComputePath() const
@@ -1006,6 +1158,44 @@ void OpenAPIVPSApi::GetVpsReinstallOsResponse::SetHttpResponseCode(EHttpResponse
 bool OpenAPIVPSApi::GetVpsReinstallOsResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
+}
+
+FString OpenAPIVPSApi::GetVpsResetPasswordRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
+
+	FString Path = FString::Format(TEXT("/vps/{id}/reset_password"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIVPSApi::GetVpsResetPasswordRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("GET"));
+
+}
+
+void OpenAPIVPSApi::GetVpsResetPasswordResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Password reset requirements and current state."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIVPSApi::GetVpsResetPasswordResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return true;
 }
 
 FString OpenAPIVPSApi::GetVpsReverseDnsRequest::ComputePath() const
@@ -1232,44 +1422,6 @@ void OpenAPIVPSApi::GetVpsWelcomeEmailResponse::SetHttpResponseCode(EHttpRespons
 }
 
 bool OpenAPIVPSApi::GetVpsWelcomeEmailResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
-{
-	return TryGetJsonValue(JsonValue, Content);
-}
-
-FString OpenAPIVPSApi::PostVpsBackupRequest::ComputePath() const
-{
-	TMap<FString, FStringFormatArg> PathParams = { 
-	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
-
-	FString Path = FString::Format(TEXT("/vps/{id}/backup"), PathParams);
-
-	return Path;
-}
-
-void OpenAPIVPSApi::PostVpsBackupRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
-{
-	static const TArray<FString> Consumes = {  };
-	//static const TArray<FString> Produces = { TEXT("application/json") };
-
-	HttpRequest->SetVerb(TEXT("GET"));
-
-}
-
-void OpenAPIVPSApi::PostVpsBackupResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
-{
-	Response::SetHttpResponseCode(InHttpResponseCode);
-	switch ((int)InHttpResponseCode)
-	{
-	case 200:
-		SetResponseString(TEXT("Response message from sending a service queue."));
-		break;
-	case 401:
-		SetResponseString(TEXT("Unauthorized"));
-		break;
-	}
-}
-
-bool OpenAPIVPSApi::PostVpsBackupResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
 }
@@ -2121,6 +2273,58 @@ bool OpenAPIVPSApi::PostVpsSlicesResponse::FromJson(const TSharedPtr<FJsonValue>
 	return true;
 }
 
+FString OpenAPIVPSApi::PostVpsTrafficUsageRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
+
+	FString Path = FString::Format(TEXT("/vps/{id}/traffic_usage"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIVPSApi::PostVpsTrafficUsageRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("POST"));
+
+	// Default to Json Body request
+	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
+	{
+	}
+	else if (Consumes.Contains(TEXT("multipart/form-data")))
+	{
+	}
+	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
+	{
+	}
+	else
+	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
+	}
+}
+
+void OpenAPIVPSApi::PostVpsTrafficUsageResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Filtered traffic usage search results."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIVPSApi::PostVpsTrafficUsageResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return true;
+}
+
 FString OpenAPIVPSApi::PostVpsViewDesktopRequest::ComputePath() const
 {
 	TMap<FString, FStringFormatArg> PathParams = { 
@@ -2233,6 +2437,58 @@ void OpenAPIVPSApi::PutVpsResponse::SetHttpResponseCode(EHttpResponseCodes::Type
 bool OpenAPIVPSApi::PutVpsResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
 	return TryGetJsonValue(JsonValue, Content);
+}
+
+FString OpenAPIVPSApi::PutVpsBuyHdSpaceRequest::ComputePath() const
+{
+	TMap<FString, FStringFormatArg> PathParams = { 
+	{ TEXT("id"), FStringFormatArg(ToUrlString(Id)) } };
+
+	FString Path = FString::Format(TEXT("/vps/{id}/buy_hd_space"), PathParams);
+
+	return Path;
+}
+
+void OpenAPIVPSApi::PutVpsBuyHdSpaceRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+{
+	static const TArray<FString> Consumes = {  };
+	//static const TArray<FString> Produces = { TEXT("application/json") };
+
+	HttpRequest->SetVerb(TEXT("PUT"));
+
+	// Default to Json Body request
+	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
+	{
+	}
+	else if (Consumes.Contains(TEXT("multipart/form-data")))
+	{
+	}
+	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
+	{
+	}
+	else
+	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
+	}
+}
+
+void OpenAPIVPSApi::PutVpsBuyHdSpaceResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+{
+	Response::SetHttpResponseCode(InHttpResponseCode);
+	switch ((int)InHttpResponseCode)
+	{
+	case 200:
+		SetResponseString(TEXT("Pricing preview for the requested HD space size."));
+		break;
+	case 401:
+		SetResponseString(TEXT("Unauthorized"));
+		break;
+	}
+}
+
+bool OpenAPIVPSApi::PutVpsBuyHdSpaceResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+{
+	return true;
 }
 
 FString OpenAPIVPSApi::UpdateVpsInfoRequest::ComputePath() const

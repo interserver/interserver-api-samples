@@ -1,4 +1,4 @@
-# openapi::PasswordRequest
+# interserverapi::PasswordRequest
 
 Request containing a password
 

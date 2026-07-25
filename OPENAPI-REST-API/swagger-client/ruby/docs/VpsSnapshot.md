@@ -1,4 +1,4 @@
-# SwaggerClient::VpsSnapshot
+# InterserverApiClient::VpsSnapshot
 
 ## Properties
 Name | Type | Description | Notes

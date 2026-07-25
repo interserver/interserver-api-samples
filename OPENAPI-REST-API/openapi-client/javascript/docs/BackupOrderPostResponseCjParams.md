@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupOrderPostResponseCjParams
+# InterserverApiClient.BackupOrderPostResponseCjParams
 
 ## Properties
 

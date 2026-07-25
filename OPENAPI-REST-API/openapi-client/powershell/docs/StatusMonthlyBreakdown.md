@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$StatusMonthlyBreakdown = Initialize-PSOpenAPIToolsStatusMonthlyBreakdown  -Default null `
+$StatusMonthlyBreakdown = Initialize-InterserverApiStatusMonthlyBreakdown  -Default null `
  -Failed null `
  -Rejected null `
  -Pending null `

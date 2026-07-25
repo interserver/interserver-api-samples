@@ -11,4 +11,8 @@
 |**rows** | [**List&lt;QuickserverAddonsRow&gt;**](QuickserverAddonsRow.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

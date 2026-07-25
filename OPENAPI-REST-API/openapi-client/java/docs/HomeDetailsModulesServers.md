@@ -15,4 +15,8 @@ Dashboard module configuration for dedicated server services.
 |**listLink** | **String** | Link to view servers list. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

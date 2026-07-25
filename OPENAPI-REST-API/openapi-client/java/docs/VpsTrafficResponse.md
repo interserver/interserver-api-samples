@@ -12,11 +12,15 @@ VPS Traffic Information
 |**target** | **String** |  |  |
 |**interval** | **Integer** |  |  |
 |**history** | [**VpsTrafficHistoryResponse**](VpsTrafficHistoryResponse.md) |  |  |
-|**last** | **Date** |  |  |
-|**times** | **List&lt;Date&gt;** |  |  |
+|**last** | **OffsetDateTime** |  |  |
+|**times** | **List&lt;OffsetDateTime&gt;** |  |  |
 |**totals** | [**VpsTrafficTotalsResposne**](VpsTrafficTotalsResposne.md) |  |  |
 |**usage** | [**VpsTrafficUsageResponse**](VpsTrafficUsageResponse.md) |  |  |
 |**data** | [**List&lt;VpsTrafficDataSectionResponse&gt;**](VpsTrafficDataSectionResponse.md) |  |  |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

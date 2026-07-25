@@ -11,4 +11,8 @@ DirectAdmin license options available for a VPS.
 |**free** | [**VpsDALicense**](VpsDALicense.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

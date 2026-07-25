@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var Servers = require('../service/ServersService');
 
-module.exports.addServer = function addServer (req, res, next) {
-  Servers.addServer()
+module.exports.addServer = function addServer (req, res, next, body) {
+  Servers.addServer(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -123,8 +123,8 @@ module.exports.postServerReverseDns = function postServerReverseDns (req, res, n
     });
 };
 
-module.exports.putServers = function putServers (req, res, next) {
-  Servers.putServers()
+module.exports.serverBulkIpmiPowerGet = function serverBulkIpmiPowerGet (req, res, next, ids) {
+  Servers.serverBulkIpmiPowerGet(ids)
     .then(function (response) {
       utils.writeJson(res, response);
     })

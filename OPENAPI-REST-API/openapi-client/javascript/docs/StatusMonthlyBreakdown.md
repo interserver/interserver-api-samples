@@ -1,4 +1,4 @@
-# InterServerManagementApi.StatusMonthlyBreakdown
+# InterserverApiClient.StatusMonthlyBreakdown
 
 ## Properties
 

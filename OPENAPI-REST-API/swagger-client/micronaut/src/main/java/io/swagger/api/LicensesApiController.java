@@ -2,13 +2,15 @@ package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
 
-import io.swagger.model.InlineResponse2004;
+import io.swagger.model.InlineResponse2005;
 
 import io.swagger.model.InlineResponse401;
 
 import io.swagger.model.IpObject;
 
 import io.swagger.model.License;
+
+import io.swagger.model.LicenseOrderRequest;
 
 import io.swagger.model.LicenseRow;
 
@@ -32,9 +34,9 @@ import java.util.Map;
 public class LicensesApiController implements LicensesApi {
 
     @Override
-    public Single<HttpResponse<ServiceOrderPostResponse>> addLicense() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addLicense(@NotNull @Valid LicenseOrderRequest body) {
         // TODO: Implement me
-        return LicensesApi.super.addLicense();
+        return LicensesApi.super.addLicense(body);
     }
 
     @Override
@@ -56,12 +58,6 @@ public class LicensesApiController implements LicensesApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> getLicenseOrderCatTagInfo(String catTag) {
-        // TODO: Implement me
-        return LicensesApi.super.getLicenseOrderCatTagInfo(catTag);
-    }
-
-    @Override
     public Single<HttpResponse<SuccessTextResponse>> getLicensesWelcomeEmail(Integer id) {
         // TODO: Implement me
         return LicensesApi.super.getLicensesWelcomeEmail(id);
@@ -74,7 +70,7 @@ public class LicensesApiController implements LicensesApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse2004>> licensesCancel(Integer id) {
+    public Single<HttpResponse<InlineResponse2005>> licensesCancel(Integer id) {
         // TODO: Implement me
         return LicensesApi.super.licensesCancel(id);
     }
@@ -92,9 +88,9 @@ public class LicensesApiController implements LicensesApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> putLicenses() {
+    public Single<HttpResponse<Void>> putLicenses(@NotNull @Valid LicenseOrderRequest body) {
         // TODO: Implement me
-        return LicensesApi.super.putLicenses();
+        return LicensesApi.super.putLicenses(body);
     }
 
     @Override

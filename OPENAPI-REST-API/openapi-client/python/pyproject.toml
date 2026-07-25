@@ -1,5 +1,5 @@
 [project]
-name = "openapi_client"
+name = "interserver_api_client"
 version = "1.0.0"
 description = "InterServer Management API"
 authors = [
@@ -11,7 +11,7 @@ keywords = ["OpenAPI", "OpenAPI-Generator", "InterServer Management API"]
 requires-python = ">=3.9"
 
 dependencies = [
-  "urllib3 (>=2.1.0,<3.0.0)",
+  "urllib3 (>=2.6.3,<3.0.0)",
   "python-dateutil (>=2.8.2)",
   "pydantic (>=2.11)",
   "typing-extensions (>=4.7.1)",
@@ -24,7 +24,7 @@ Repository = "https://github.com/GIT_USER_ID/GIT_REPO_ID"
 requires-poetry = ">=2.0"
 
 [tool.poetry.group.dev.dependencies]
-pytest = ">= 7.2.1"
+pytest = ">= 8.4.2"
 pytest-cov = ">= 2.8.1"
 tox = ">= 3.9.0"
 flake8 = ">= 4.0.0"
@@ -41,7 +41,7 @@ extension-pkg-whitelist = "pydantic"
 
 [tool.mypy]
 files = [
-  "openapi_client",
+  "interserver_api_client",
   #"test",  # auto-generated tests
   "tests", # hand-written tests
 ]
@@ -79,7 +79,7 @@ disallow_any_generics = true
 
 [[tool.mypy.overrides]]
 module = [
-  "openapi_client.configuration",
+  "interserver_api_client.configuration",
 ]
 warn_unused_ignores = true
 strict_equality = true

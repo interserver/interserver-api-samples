@@ -1,4 +1,4 @@
-# openapi::AccountInfoCountryCurrencies
+# interserverapi::AccountInfoCountryCurrencies
 
 Maps country codes to their available currency options.
 

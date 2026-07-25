@@ -13,4 +13,8 @@ Request payload for creating a new prepay balance.
 |**automaticUse** | **String** | Whether the prepay balance should be used automatically. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

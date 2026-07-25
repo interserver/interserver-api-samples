@@ -17,82 +17,85 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_mail Place Mail Order
+#' add_mail Place a new Mail Baby order, generate invoice, and queue provisioning
 #'
 #'
-#' add_rule Create Deny Rule
+#' add_rule Create a new deny rule to auto-block matching submissions
 #'
 #'
-#' create_mail_alert Create Mail Alert
+#' create_mail_alert Create a new Mail Baby alert for delivery, bounce, or quota events
 #'
 #'
-#' delete_mail_alert Delete Mail Alert
+#' delete_mail_alert Delete a Mail Baby alert by alert_id (hard delete — no recovery)
 #'
 #'
-#' delete_rule Delete Deny Rule
+#' delete_rule Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
 #'
 #'
-#' delist_block Remove Email Address from Block List
+#' delist_block Delist a sender email from rspamd / mailchannels / mailbaby block lists
 #'
 #'
-#' get_mail_alerts List Mail Alerts
+#' get_mail_alerts List configured delivery/bounce/quota alerts for one Mail Baby service
 #'
 #'
-#' get_mail_blocks List Blocked Email Addresses
+#' get_mail_blocks List recent local-blocklist hits and spam-trap captures for the mail user
 #'
 #'
-#' get_mail_delist Get Delist Status
+#' get_mail_delist Read blocklist diagnostics and find senders eligible for delisting
 #'
 #'
-#' get_mail_deliverability Get Deliverability Metrics
+#' get_mail_deliverability Read delivered vs bounced totals broken down by sender (or by recipient domain)
 #'
 #'
-#' get_mail_info Get Mail Order
+#' get_mail_info Read full detail for one Mail Baby service including SMTP credentials
 #'
 #'
-#' get_mail_invoices Get Mail Invoices
+#' get_mail_invoices List billing invoices linked to this Mail Baby service
 #'
 #'
-#' get_mail_list List Mail Orders
+#' get_mail_list List every Mail Baby SMTP relay service on the account
 #'
 #'
-#' get_mail_welcome_email Resend Mail Welcome Email
+#' get_mail_welcome_email Resend the Mail Baby welcome email with SMTP credentials and setup info
 #'
 #'
-#' get_new_mail Get Mail Ordering Information
+#' get_new_mail Read the Mail Baby order catalog — plans, package costs, service-type metadata
 #'
 #'
-#' get_rules List Deny Rules
+#' get_rules List configured deny rules (sender/recipient blocks) for a Mail Baby service
 #'
 #'
-#' get_stats Get Mail Usage Statistics
+#' get_stats Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
 #'
 #'
-#' mail_cancel Cancel Mail
+#' mail_cancel Cancel a Mail Baby service and stop the recurring invoice
 #'
 #'
-#' post_mail_delist Delist a Blocked Sender
+#' post_mail_delist Delist a sender from rspamd / mailchannels / mailbaby block lists
 #'
 #'
-#' put_mail Validate Mail Order
+#' put_mail Validate Mail Baby order, quote pricing, and verify coupon — no charge
 #'
 #'
-#' reset_mail_password Reset Mail Password
+#' reset_mail_password Rotate the SMTP password and email the new credential to the account owner
 #'
 #'
-#' send_adv_mail Send Email with Advanced Options
+#' send_adv_mail Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
 #'
 #'
-#' send_mail Send Email
+#' send_mail Send a simple single-recipient email through the Mail Baby SMTP relay
 #'
 #'
-#' update_mail_alert Update Mail Alert
+#' update_mail_alert Update an existing Mail Baby alert by alert_id
 #'
 #'
-#' update_mail_info Update Mail Order
+#' update_mail_info POST mutation hook for the Mail Baby service detail page
 #'
 #'
-#' view_mail_log View Mail Log
+#' update_rule Update an existing Mail Baby deny rule&#x27;s type and match data
+#'
+#'
+#' view_mail_log Search and paginate per-message Mail Baby delivery log entries
 #'
 #' }
 #'
@@ -110,10 +113,16 @@ MailApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    add_mail = function(...){
+    add_mail = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/mail/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -215,13 +224,19 @@ MailApi <- R6::R6Class(
       }
 
     }
-    delete_mail_alert = function(id, alert_id, ...){
+    delete_mail_alert = function(body, alert_id, id, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
 
-      if (!missing(`alert_id`)) {
-        queryParams['alert_id'] <- alert_id
+      body <- list(
+          "alert_id" = alert_id
+      )
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
       }
 
       urlPath <- "/mail/{id}/alerts"
@@ -639,7 +654,7 @@ MailApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse2008$new()
+        returnObject <- InlineResponse2009$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -687,10 +702,16 @@ MailApi <- R6::R6Class(
       }
 
     }
-    put_mail = function(...){
+    put_mail = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/mail/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -885,6 +906,50 @@ MailApi <- R6::R6Class(
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         returnObject <- SuccessTextResponse$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    update_rule = function(body, user, type, data, id, rule, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      body <- list(
+          "user" = user,
+          "type" = type,
+          "data" = data
+      )
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/mail/{id}/rules/{rule}"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
+      }
+
+      if (!missing(`rule`)) {
+        urlPath <- gsub(paste0("\\{", "rule", "\\}"), `rule`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- GenericResponse$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

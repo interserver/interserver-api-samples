@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.dns_api import DNSApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.dns_api import DNSApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestDNSApi(unittest.TestCase):
@@ -31,49 +31,49 @@ class TestDNSApi(unittest.TestCase):
     def test_add_dns_domain(self):
         """Test case for add_dns_domain
 
-        Create DNS Domain  # noqa: E501
+        Create a new authoritative DNS zone seeded with apex A + NS + SOA records  # noqa: E501
         """
         pass
 
     def test_add_dns_record(self):
         """Test case for add_dns_record
 
-        Add DNS Record to Domain  # noqa: E501
+        Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone  # noqa: E501
         """
         pass
 
     def test_delete_dns_domain(self):
         """Test case for delete_dns_domain
 
-        Delete DNS Domain  # noqa: E501
+        Permanently delete a DNS zone and every record it contains  # noqa: E501
         """
         pass
 
     def test_delete_dns_record(self):
         """Test case for delete_dns_record
 
-        Delete DNS Record  # noqa: E501
+        Permanently delete one DNS record from a zone — zone itself is preserved  # noqa: E501
         """
         pass
 
     def test_get_dns_domain(self):
         """Test case for get_dns_domain
 
-        List Domain DNS Records  # noqa: E501
+        List every DNS record in one zone with the IDs needed to edit or delete them  # noqa: E501
         """
         pass
 
     def test_get_dns_list(self):
         """Test case for get_dns_list
 
-        List DNS Domains  # noqa: E501
+        List DNS zones hosted on the account with each zone's apex A-record IP  # noqa: E501
         """
         pass
 
     def test_update_dns_record(self):
         """Test case for update_dns_record
 
-        Update DNS Record  # noqa: E501
+        Replace values on an existing DNS record (name, type, content, ttl, priority)  # noqa: E501
         """
         pass
 

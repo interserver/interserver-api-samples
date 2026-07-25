@@ -11,7 +11,8 @@ import io.swagger.model.EmailAddress;
 import io.swagger.model.EmailAddressName;
 import io.swagger.model.EndDate;
 import io.swagger.model.GenericResponse;
-import io.swagger.model.InlineResponse2008;
+import io.swagger.model.IdAlertsBody;
+import io.swagger.model.InlineResponse2009;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.MailAlertRequest;
 import io.swagger.model.MailAlertUpdateRequest;
@@ -23,6 +24,7 @@ import io.swagger.model.MailDelistResponse;
 import io.swagger.model.MailDeliverabilityResponse;
 import io.swagger.model.MailLog;
 import io.swagger.model.MailOrder;
+import io.swagger.model.MailOrderRequest;
 import io.swagger.model.MailRow;
 import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
@@ -42,7 +44,7 @@ import javax.ws.rs.core.SecurityContext;
 
 
 public class MailApiServiceImpl implements MailApi {
-      public Response addMail(SecurityContext securityContext) {
+      public Response addMail(MailOrderRequest body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -62,7 +64,11 @@ public class MailApiServiceImpl implements MailApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response deleteMailAlert(Integer id,Integer alertId,SecurityContext securityContext) {
+      public Response deleteMailAlert(IdAlertsBody body,Integer id,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response deleteMailAlert(Integer alertId,Integer id,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -134,7 +140,7 @@ public class MailApiServiceImpl implements MailApi {
       // do some magic!
       return Response.ok().build();
   }
-      public Response putMail(SecurityContext securityContext) {
+      public Response putMail(MailOrderRequest body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -167,6 +173,14 @@ public class MailApiServiceImpl implements MailApi {
       return Response.ok().build();
   }
       public Response updateMailInfo(String id,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response updateRule(DenyRuleNew body,Integer id,String rule,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response updateRule(String user,String type,String data,Integer id,String rule,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

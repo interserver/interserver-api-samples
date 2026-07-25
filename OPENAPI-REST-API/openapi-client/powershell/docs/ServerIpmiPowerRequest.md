@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerIpmiPowerRequest = Initialize-PSOpenAPIToolsServerIpmiPowerRequest  -Asset 5432 `
+$ServerIpmiPowerRequest = Initialize-InterserverApiServerIpmiPowerRequest  -Asset 5432 `
  -Action on
 ```
 

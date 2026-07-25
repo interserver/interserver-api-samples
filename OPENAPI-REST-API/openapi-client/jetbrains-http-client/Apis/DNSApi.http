@@ -1,63 +1,70 @@
 ## DNSApi
 
-### Create DNS Domain
-## Create DNS Domain
+### Create a new authoritative DNS zone seeded with apex A + NS + SOA records
+## Create a new authoritative DNS zone seeded with apex A + NS + SOA records
 POST https://my.interserver.net/apiv2/dns
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Add DNS Record to Domain
-## Add DNS Record to Domain
+### Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
+## Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
 POST https://my.interserver.net/apiv2/dns/{{id}}
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Delete DNS Domain
-## Delete DNS Domain
+### Permanently delete a DNS zone and every record it contains
+## Permanently delete a DNS zone and every record it contains
 DELETE https://my.interserver.net/apiv2/dns/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Delete DNS Record
-## Delete DNS Record
+### Permanently delete one DNS record from a zone — zone itself is preserved
+## Permanently delete one DNS record from a zone — zone itself is preserved
 DELETE https://my.interserver.net/apiv2/dns/{{domainId}}/{{recordId}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Domain DNS Records
-## List Domain DNS Records
+### List every DNS record in one zone with the IDs needed to edit or delete them
+## List every DNS record in one zone with the IDs needed to edit or delete them
 GET https://my.interserver.net/apiv2/dns/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List DNS Domains
-## List DNS Domains
+### List DNS zones hosted on the account with each zone&#39;s apex A-record IP
+## List DNS zones hosted on the account with each zone&#39;s apex A-record IP
 GET https://my.interserver.net/apiv2/dns
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update DNS Record
-## Update DNS Record
+### Replace values on an existing DNS record (name, type, content, ttl, priority)
+## Replace values on an existing DNS record (name, type, content, ttl, priority)
 POST https://my.interserver.net/apiv2/dns/{{domainId}}/{{recordId}}
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

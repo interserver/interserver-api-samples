@@ -1,4 +1,4 @@
-# InterServerManagementApi.InitiatePayment200Response
+# InterserverApiClient.InitiatePayment200Response
 
 ## Properties
 
@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 * `submit` (value: `"submit"`)
 
 * `single` (value: `"single"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 
 

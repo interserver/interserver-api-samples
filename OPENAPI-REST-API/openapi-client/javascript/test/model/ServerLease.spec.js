@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerLease();
+    instance = new InterserverApiClient.ServerLease();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('ServerLease', function() {
     it('should create an instance of ServerLease', function() {
       // uncomment below and update the code to test ServerLease
-      //var instance = new InterServerManagementApi.ServerLease();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerLease);
+      //var instance = new InterserverApiClient.ServerLease();
+      //expect(instance).to.be.a(InterserverApiClient.ServerLease);
     });
 
     it('should have the property mac (base name: "mac")', function() {
       // uncomment below and update the code to test the property mac
-      //var instance = new InterServerManagementApi.ServerLease();
+      //var instance = new InterserverApiClient.ServerLease();
       //expect(instance).to.be();
     });
 
     it('should have the property authenticated (base name: "authenticated")', function() {
       // uncomment below and update the code to test the property authenticated
-      //var instance = new InterServerManagementApi.ServerLease();
+      //var instance = new InterserverApiClient.ServerLease();
       //expect(instance).to.be();
     });
 
     it('should have the property group (base name: "group")', function() {
       // uncomment below and update the code to test the property group
-      //var instance = new InterServerManagementApi.ServerLease();
+      //var instance = new InterserverApiClient.ServerLease();
       //expect(instance).to.be();
     });
 

@@ -1,328 +1,328 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for AccountInfoData
 void main() {
-  final instance = AccountInfoDataBuilder();
-  // TODO add properties to the builder and call build()
+  final AccountInfoData? instance = /* AccountInfoData(...) */ null;
+  // TODO add properties to the entity
 
   group(AccountInfoData, () {
-    // String group
+    // Optional<String?> group
     test('to test the property `group`', () async {
       // TODO
     });
 
-    // String address
+    // Optional<String?> address
     test('to test the property `address`', () async {
       // TODO
     });
 
-    // String city
+    // Optional<String?> city
     test('to test the property `city`', () async {
       // TODO
     });
 
-    // String country
+    // Optional<String?> country
     test('to test the property `country`', () async {
       // TODO
     });
 
-    // String disableCc
+    // Optional<String?> disableCc
     test('to test the property `disableCc`', () async {
       // TODO
     });
 
-    // String fraudrecordScore
+    // Optional<String?> fraudrecordScore
     test('to test the property `fraudrecordScore`', () async {
       // TODO
     });
 
-    // String ima
+    // Optional<String?> ima
     test('to test the property `ima`', () async {
       // TODO
     });
 
-    // String name
+    // Optional<String?> name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // String paymentMethod
+    // Optional<String?> paymentMethod
     test('to test the property `paymentMethod`', () async {
       // TODO
     });
 
-    // String phone
+    // Optional<String?> phone
     test('to test the property `phone`', () async {
       // TODO
     });
 
-    // String pin
+    // Optional<String?> pin
     test('to test the property `pin`', () async {
       // TODO
     });
 
-    // String state
+    // Optional<String?> state
     test('to test the property `state`', () async {
       // TODO
     });
 
-    // String status
+    // Optional<String?> status
     test('to test the property `status`', () async {
       // TODO
     });
 
-    // String zip
+    // Optional<String?> zip
     test('to test the property `zip`', () async {
       // TODO
     });
 
-    // String accountId
+    // Optional<String?> accountId
     test('to test the property `accountId`', () async {
       // TODO
     });
 
-    // String accountLid
+    // Optional<String?> accountLid
     test('to test the property `accountLid`', () async {
       // TODO
     });
 
-    // String address2
+    // Optional<String?> address2
     test('to test the property `address2`', () async {
       // TODO
     });
 
-    // String affiliateDockDescription
+    // Optional<String?> affiliateDockDescription
     test('to test the property `affiliateDockDescription`', () async {
       // TODO
     });
 
-    // String affiliateDockTitle
+    // Optional<String?> affiliateDockTitle
     test('to test the property `affiliateDockTitle`', () async {
       // TODO
     });
 
-    // String affiliatePaymentMethod
+    // Optional<String?> affiliatePaymentMethod
     test('to test the property `affiliatePaymentMethod`', () async {
       // TODO
     });
 
-    // String affiliatePaypal
+    // Optional<String?> affiliatePaypal
     test('to test the property `affiliatePaypal`', () async {
       // TODO
     });
 
-    // String cc
+    // Optional<String?> cc
     test('to test the property `cc`', () async {
       // TODO
     });
 
-    // String ccAuto
+    // Optional<String?> ccAuto
     test('to test the property `ccAuto`', () async {
       // TODO
     });
 
-    // String ccExp
+    // Optional<String?> ccExp
     test('to test the property `ccExp`', () async {
       // TODO
     });
 
-    // String ccType
+    // Optional<String?> ccType
     test('to test the property `ccType`', () async {
       // TODO
     });
 
-    // String ccWhitelist
+    // Optional<String?> ccWhitelist
     test('to test the property `ccWhitelist`', () async {
       // TODO
     });
 
-    // AccountInfoDataCcs ccs
+    // Optional<AccountInfoDataCcs?> ccs
     test('to test the property `ccs`', () async {
       // TODO
     });
 
-    // String ccsAdded
+    // Optional<String?> ccsAdded
     test('to test the property `ccsAdded`', () async {
       // TODO
     });
 
-    // String company
+    // Optional<String?> company
     test('to test the property `company`', () async {
       // TODO
     });
 
-    // String currency
+    // Optional<String?> currency
     test('to test the property `currency`', () async {
       // TODO
     });
 
-    // String disableReinstall
+    // Optional<String?> disableReinstall
     test('to test the property `disableReinstall`', () async {
       // TODO
     });
 
-    // String disableReset
+    // Optional<String?> disableReset
     test('to test the property `disableReset`', () async {
       // TODO
     });
 
-    // String email
+    // Optional<String?> email
     test('to test the property `email`', () async {
       // TODO
     });
 
-    // String emailAbuse
+    // Optional<String?> emailAbuse
     test('to test the property `emailAbuse`', () async {
       // TODO
     });
 
-    // AccountInfoDataEmailSettings emailSettings
+    // Optional<AccountInfoDataEmailSettings?> emailSettings
     test('to test the property `emailSettings`', () async {
       // TODO
     });
 
-    // AccountInfoDataExtra extra
+    // Optional<AccountInfoDataExtra?> extra
     test('to test the property `extra`', () async {
       // TODO
     });
 
-    // String facebookId
+    // Optional<String?> facebookId
     test('to test the property `facebookId`', () async {
       // TODO
     });
 
-    // String facebookUrl
+    // Optional<String?> facebookUrl
     test('to test the property `facebookUrl`', () async {
       // TODO
     });
 
-    // String firstname
+    // Optional<String?> firstname
     test('to test the property `firstname`', () async {
       // TODO
     });
 
-    // AccountInfoDataFraudrecord fraudrecord
+    // Optional<AccountInfoDataFraudrecord?> fraudrecord
     test('to test the property `fraudrecord`', () async {
       // TODO
     });
 
-    // String githubId
+    // Optional<String?> githubId
     test('to test the property `githubId`', () async {
       // TODO
     });
 
-    // String githubUrl
+    // Optional<String?> githubUrl
     test('to test the property `githubUrl`', () async {
       // TODO
     });
 
-    // String googleId
+    // Optional<String?> googleId
     test('to test the property `googleId`', () async {
       // TODO
     });
 
-    // String googleUrl
+    // Optional<String?> googleUrl
     test('to test the property `googleUrl`', () async {
       // TODO
     });
 
-    // String innertellId
+    // Optional<String?> innertellId
     test('to test the property `innertellId`', () async {
       // TODO
     });
 
-    // String lastname
+    // Optional<String?> lastname
     test('to test the property `lastname`', () async {
       // TODO
     });
 
-    // String locale
+    // Optional<String?> locale
     test('to test the property `locale`', () async {
       // TODO
     });
 
-    // AccountInfoMaxMindResponse maxmind
+    // Optional<AccountInfoMaxMindResponse?> maxmind
     test('to test the property `maxmind`', () async {
       // TODO
     });
 
-    // String maxmindScore
+    // Optional<String?> maxmindScore
     test('to test the property `maxmindScore`', () async {
       // TODO
     });
 
-    // String mbId
+    // Optional<String?> mbId
     test('to test the property `mbId`', () async {
       // TODO
     });
 
-    // String modernbillId
+    // Optional<String?> modernbillId
     test('to test the property `modernbillId`', () async {
       // TODO
     });
 
-    // String picture
+    // Optional<String?> picture
     test('to test the property `picture`', () async {
       // TODO
     });
 
-    // String referrerCoupon
+    // Optional<String?> referrerCoupon
     test('to test the property `referrerCoupon`', () async {
       // TODO
     });
 
-    // String resellerMarkup
+    // Optional<String?> resellerMarkup
     test('to test the property `resellerMarkup`', () async {
       // TODO
     });
 
-    // String username
+    // Optional<String?> username
     test('to test the property `username`', () async {
       // TODO
     });
 
-    // String sshKey
+    // Optional<String?> sshKey
     test('to test the property `sshKey`', () async {
       // TODO
     });
 
-    // String sshKeyWrapped
+    // Optional<String?> sshKeyWrapped
     test('to test the property `sshKeyWrapped`', () async {
       // TODO
     });
 
-    // String apiKey
+    // Optional<String?> apiKey
     test('to test the property `apiKey`', () async {
       // TODO
     });
 
-    // String apiKeyWrapped
+    // Optional<String?> apiKeyWrapped
     test('to test the property `apiKeyWrapped`', () async {
       // TODO
     });
 
-    // String n2faGoogleKey
+    // Optional<String?> n2faGoogleKey
     test('to test the property `n2faGoogleKey`', () async {
       // TODO
     });
 
-    // bool n2faGoogleEnabled
+    // Optional<bool?> n2faGoogleEnabled
     test('to test the property `n2faGoogleEnabled`', () async {
       // TODO
     });
 
-    // int n2faGoogle
+    // Optional<int?> n2faGoogle
     test('to test the property `n2faGoogle`', () async {
       // TODO
     });
 
-    // String n2faGoogleSplit
+    // Optional<String?> n2faGoogleSplit
     test('to test the property `n2faGoogleSplit`', () async {
       // TODO
     });
 
-    // String n2faGoogleQr
+    // Optional<String?> n2faGoogleQr
     test('to test the property `n2faGoogleQr`', () async {
       // TODO
     });

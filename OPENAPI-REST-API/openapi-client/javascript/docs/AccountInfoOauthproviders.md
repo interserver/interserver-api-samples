@@ -1,4 +1,4 @@
-# InterServerManagementApi.AccountInfoOauthproviders
+# InterserverApiClient.AccountInfoOauthproviders
 
 ## Properties
 

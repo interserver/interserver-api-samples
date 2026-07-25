@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeDetailsModulesLicenses = Initialize-PSOpenAPIToolsHomeDetailsModulesLicenses  -Icon id-card `
+$HomeDetailsModulesLicenses = Initialize-InterserverApiHomeDetailsModulesLicenses  -Icon id-card `
  -ViewLink view_license `
  -Heading Licenses `
  -BuyLink order_license `

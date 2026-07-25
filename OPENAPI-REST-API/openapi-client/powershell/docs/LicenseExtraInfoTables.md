@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicenseExtraInfoTables = Initialize-PSOpenAPIToolsLicenseExtraInfoTables  -IpInfo null
+$LicenseExtraInfoTables = Initialize-InterserverApiLicenseExtraInfoTables  -IpInfo null
 ```
 
 - Convert the resource to JSON

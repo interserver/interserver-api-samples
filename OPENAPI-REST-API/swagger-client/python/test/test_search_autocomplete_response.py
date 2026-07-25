@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.search_autocomplete_response import SearchAutocompleteResponse  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.search_autocomplete_response import SearchAutocompleteResponse  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestSearchAutocompleteResponse(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestSearchAutocompleteResponse(unittest.TestCase):
     def testSearchAutocompleteResponse(self):
         """Test SearchAutocompleteResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.search_autocomplete_response.SearchAutocompleteResponse()  # noqa: E501
+        # model = interserver_api_client.models.search_autocomplete_response.SearchAutocompleteResponse()  # noqa: E501
         pass
 
 

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.server_ipmi_live_info import ServerIpmiLiveInfo
+from interserver_api_client.models.server_ipmi_live_info import ServerIpmiLiveInfo
 
 # TODO update the JSON string below
 json = "{}"

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsTrafficHistorySectionDataResponse
 void main() {
-  final instance = VpsTrafficHistorySectionDataResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsTrafficHistorySectionDataResponse? instance = /* VpsTrafficHistorySectionDataResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsTrafficHistorySectionDataResponse, () {
   });

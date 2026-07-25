@@ -1,23 +1,23 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainNameServer
 void main() {
-  final instance = DomainNameServerBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainNameServer? instance = /* DomainNameServer(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainNameServer, () {
-    // String sortorder
+    // Optional<String?> sortorder
     test('to test the property `sortorder`', () async {
       // TODO
     });
 
-    // String name
+    // Optional<String?> name
     test('to test the property `name`', () async {
       // TODO
     });
 
-    // String ipaddress
+    // Optional<String?> ipaddress
     test('to test the property `ipaddress`', () async {
       // TODO
     });

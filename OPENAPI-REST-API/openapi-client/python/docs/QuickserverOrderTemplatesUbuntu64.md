@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.quickserver_order_templates_ubuntu64 import QuickserverOrderTemplatesUbuntu64
+from interserver_api_client.models.quickserver_order_templates_ubuntu64 import QuickserverOrderTemplatesUbuntu64
 
 # TODO update the JSON string below
 json = "{}"

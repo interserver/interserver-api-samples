@@ -43,29 +43,22 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc changeAccountUsername*(httpClient: HttpClient): (Option[TextResponse], Response) =
-  ## Change Account Username
-
-  let response = httpClient.post(basepath & "/account/username")
-  constructResult[TextResponse](response)
-
-
 proc deleteAccountOauthName*(httpClient: HttpClient, name: string): (Option[SuccessTextResponse], Response) =
-  ## Unlink OAuth Account
+  ## Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
 
   let response = httpClient.delete(basepath & fmt"/account/oauth/{name}")
   constructResult[SuccessTextResponse](response)
 
 
 proc deleteAccountTfa*(httpClient: HttpClient): (Option[SuccessTextResponse], Response) =
-  ## Disable Two-Factor Authentication
+  ## Disable two-factor authentication and remove the TOTP secret
 
   let response = httpClient.delete(basepath & "/account/2fa")
   constructResult[SuccessTextResponse](response)
 
 
 proc deleteIpLimit*(httpClient: HttpClient, ipLimitRange: IpLimitRange): (Option[GenericResponse], Response) =
-  ## Remove IP Access Restriction
+  ## Remove one IP range from the account allow-list (PATCH on /account/iplimits)
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.patch(basepath & "/account/iplimits", $(%ipLimitRange))
@@ -73,56 +66,56 @@ proc deleteIpLimit*(httpClient: HttpClient, ipLimitRange: IpLimitRange): (Option
 
 
 proc getAccountInfo*(httpClient: HttpClient): (Option[AccountInfo], Response) =
-  ## Retrieve Account Details
+  ## Read full account profile, billing address, and security settings
 
   let response = httpClient.get(basepath & "/account")
   constructResult[AccountInfo](response)
 
 
 proc getAccountTfaSetup*(httpClient: HttpClient): (Option[getAccountTfaSetup_200_response], Response) =
-  ## Get Two-Factor Setup Data
+  ## Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
 
   let response = httpClient.get(basepath & "/account/2fa")
   constructResult[getAccountTfaSetup_200_response](response)
 
 
 proc getHome*(httpClient: HttpClient): (Option[Home], Response) =
-  ## Get Home Data
+  ## Aggregate dashboard payload — service counts, recent activity, alerts
 
   let response = httpClient.get(basepath & "/home")
   constructResult[Home](response)
 
 
 proc getSearch*(httpClient: HttpClient): (Option[Table[string, JsonNode]], Response) =
-  ## Search Autocomplete
+  ## Global autocomplete across the caller's services, domains, and records
 
   let response = httpClient.get(basepath & "/search")
   constructResult[Table[string, JsonNode]](response)
 
 
 proc logout*(httpClient: HttpClient): (Option[SuccessTextResponse], Response) =
-  ## Log Out
+  ## Destroy the current API/web session — token becomes unusable
 
   let response = httpClient.get(basepath & "/logout")
   constructResult[SuccessTextResponse](response)
 
 
 proc logoutAccountOauth*(httpClient: HttpClient, name: string): (Option[SuccessTextResponse], Response) =
-  ## Logout of OAuth
+  ## Sign out of the upstream OAuth provider session (does not unlink the account)
 
   let response = httpClient.get(basepath & fmt"/account/oauth/{name}/logout")
   constructResult[SuccessTextResponse](response)
 
 
 proc updateAccountApiKey*(httpClient: HttpClient): (Option[SuccessTextResponse], Response) =
-  ## Generate New API Key
+  ## Rotate the account's REST/MCP API key — old key is invalidated immediately
 
   let response = httpClient.post(basepath & "/account/apikey")
   constructResult[SuccessTextResponse](response)
 
 
 proc updateAccountFeatures*(httpClient: HttpClient, disableReset: int, disableReinstall: int): (Option[SuccessTextResponse], Response) =
-  ## Update Account Feature Flags
+  ## Toggle account-wide safety locks for password reset and OS reinstall
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "disable_reset": $disableReset, # 
@@ -134,7 +127,7 @@ proc updateAccountFeatures*(httpClient: HttpClient, disableReset: int, disableRe
 
 
 proc updateAccountInfo*(httpClient: HttpClient, name: string, address: string, city: string, state: string, zip: string, country: string, phone: string, company: string, address2: string, locale: string, emailInvoices: string, emailAbuse: string, disableReset: bool, disableReinstall: bool, disableServerNotifications: bool, disableEmailNotifications: bool, gstin: string): (Option[SuccessTextResponse], Response) =
-  ## Update Account Information
+  ## Update contact and billing-address fields on the customer profile
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "name": $name, # Your name.
@@ -161,7 +154,7 @@ proc updateAccountInfo*(httpClient: HttpClient, name: string, address: string, c
 
 
 proc updateAccountIpLimits*(httpClient: HttpClient, start: string, `end`: string): (Option[SuccessTextResponse], Response) =
-  ## Add IP Access Restriction
+  ## Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "start": $start, # The begining (or first) IP address in the range.
@@ -173,7 +166,7 @@ proc updateAccountIpLimits*(httpClient: HttpClient, start: string, `end`: string
 
 
 proc updateAccountPassword*(httpClient: HttpClient, password: string): (Option[TextResponse], Response) =
-  ## Change Account Password
+  ## Change the account login password (verifies current, kills other sessions)
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "password": $password, # 
@@ -184,7 +177,7 @@ proc updateAccountPassword*(httpClient: HttpClient, password: string): (Option[T
 
 
 proc updateAccountSshKey*(httpClient: HttpClient, sshKey: string): (Option[SuccessTextResponse], Response) =
-  ## Update SSH Keys
+  ## Set the account-level SSH public key auto-installed on new VPS/dedicated orders
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "ssh_key": $sshKey, # 
@@ -195,7 +188,7 @@ proc updateAccountSshKey*(httpClient: HttpClient, sshKey: string): (Option[Succe
 
 
 proc updateAccountTfa*(httpClient: HttpClient, `2faGoogleCode`: string): (Option[SuccessTextResponse], Response) =
-  ## Enable Two-Factor Authentication
+  ## Verify TOTP code and enable two-factor authentication on the account
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "2fa_google_code": $`2faGoogleCode`, # The 6-digit verification code from your authenticator app.

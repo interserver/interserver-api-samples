@@ -16,23 +16,27 @@ class FloatingIPsApi {
 
   final ApiClient apiClient;
 
-  /// Place Floating IP Order
+  /// Place a real Floating IP order, create billing records, and provision the service
   ///
-  /// Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
+  /// Charges the customer and creates a new Floating IP service via `place_buy_floating_ip`. Validate first with `putFloating_ips` to avoid surprise failures. Body (form-encoded): `serviceType` (required, `services_id`), `coupon` (optional), `comment` (optional internal note). On success returns `{ continue:true, errors, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — `iid` is the master invoice ID, `serviceId` is the new `floating_ip_id`. On validation failure returns `{ continue:false, errors:[...] }` with no charge. Errors: 401 if unauthenticated; soft errors in `errors[]`. The newly-issued IP starts unassigned — point it at a target with `postFloatingIpsChangeIp` once the service is `active`.  Sibling ops: `getNewFloatingIp` (catalog), `putFloating_ips` (validate), `getFloatingIpInfo` (poll), `postFloatingIpsChangeIp` (route), `getBillingInvoice` + `initiatePayment` (settle invoice), `floating_ipsCancel`.
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> addFloatingIpWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [FloatingIpOrderRequest] floatingIpOrderRequest (required):
+  Future<Response> addFloatingIpWithHttpInfo(FloatingIpOrderRequest floatingIpOrderRequest, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/floating_ips/order';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = floatingIpOrderRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -43,14 +47,19 @@ class FloatingIPsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Place Floating IP Order
+  /// Place a real Floating IP order, create billing records, and provision the service
   ///
-  /// Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
-  Future<ServiceOrderPostResponse?> addFloatingIp() async {
-    final response = await addFloatingIpWithHttpInfo();
+  /// Charges the customer and creates a new Floating IP service via `place_buy_floating_ip`. Validate first with `putFloating_ips` to avoid surprise failures. Body (form-encoded): `serviceType` (required, `services_id`), `coupon` (optional), `comment` (optional internal note). On success returns `{ continue:true, errors, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — `iid` is the master invoice ID, `serviceId` is the new `floating_ip_id`. On validation failure returns `{ continue:false, errors:[...] }` with no charge. Errors: 401 if unauthenticated; soft errors in `errors[]`. The newly-issued IP starts unassigned — point it at a target with `postFloatingIpsChangeIp` once the service is `active`.  Sibling ops: `getNewFloatingIp` (catalog), `putFloating_ips` (validate), `getFloatingIpInfo` (poll), `postFloatingIpsChangeIp` (route), `getBillingInvoice` + `initiatePayment` (settle invoice), `floating_ipsCancel`.
+  ///
+  /// Parameters:
+  ///
+  /// * [FloatingIpOrderRequest] floatingIpOrderRequest (required):
+  Future<ServiceOrderPostResponse?> addFloatingIp(FloatingIpOrderRequest floatingIpOrderRequest, { Future<void>? abortTrigger, }) async {
+    final response = await addFloatingIpWithHttpInfo(floatingIpOrderRequest, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -64,9 +73,9 @@ class FloatingIPsApi {
     return null;
   }
 
-  /// Cancel Floating IP
+  /// Cancel a Floating IP service and release the IP — destructive, billing stops
   ///
-  /// Cancels a Floating IP service. After cancellation the IP assignment is released and the service transitions to a canceled status. No further billing charges will be incurred.
+  /// Cancels the Floating IP via the shared `Api\\Billing\\CancelService` flow — flips status to canceled, halts recurring billing, and releases the IP back to the pool so it can no longer be re-routed. Not reversible: the customer cannot recover the same IP after release. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `FloatingIpsCancelResponse` shape (success text / cancellation outcome). Errors: 401 if unauthenticated; 404 / cross-customer hidden when `id` is not owned by the caller; 409 if already canceled or otherwise non-cancelable. Confirm with the customer before calling — for routing changes use `postFloatingIpsChangeIp` instead of cancel-and-reorder.  Sibling ops: `getFloatingIpInfo` (status), `getFloatingIpInvoices` (outstanding charges), `postFloatingIpsChangeIp` (re-route instead of cancel), `addFloatingIp` (re-order).
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -74,7 +83,7 @@ class FloatingIPsApi {
   ///
   /// * [int] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<Response> floatingIpsCancelWithHttpInfo(int id,) async {
+  Future<Response> floatingIpsCancelWithHttpInfo(int id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/floating_ips/{id}'
       .replaceAll('{id}', id.toString());
@@ -97,19 +106,20 @@ class FloatingIPsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Cancel Floating IP
+  /// Cancel a Floating IP service and release the IP — destructive, billing stops
   ///
-  /// Cancels a Floating IP service. After cancellation the IP assignment is released and the service transitions to a canceled status. No further billing charges will be incurred.
+  /// Cancels the Floating IP via the shared `Api\\Billing\\CancelService` flow — flips status to canceled, halts recurring billing, and releases the IP back to the pool so it can no longer be re-routed. Not reversible: the customer cannot recover the same IP after release. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `FloatingIpsCancelResponse` shape (success text / cancellation outcome). Errors: 401 if unauthenticated; 404 / cross-customer hidden when `id` is not owned by the caller; 409 if already canceled or otherwise non-cancelable. Confirm with the customer before calling — for routing changes use `postFloatingIpsChangeIp` instead of cancel-and-reorder.  Sibling ops: `getFloatingIpInfo` (status), `getFloatingIpInvoices` (outstanding charges), `postFloatingIpsChangeIp` (re-route instead of cancel), `addFloatingIp` (re-order).
   ///
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<FloatingIpsCancel200Response?> floatingIpsCancel(int id,) async {
-    final response = await floatingIpsCancelWithHttpInfo(id,);
+  Future<FloatingIpsCancel200Response?> floatingIpsCancel(int id, { Future<void>? abortTrigger, }) async {
+    final response = await floatingIpsCancelWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -123,9 +133,9 @@ class FloatingIPsApi {
     return null;
   }
 
-  /// View Floating IP
+  /// Fetch full details for one Floating IP service, including current target IP
   ///
-  /// Returns detailed information about a specific Floating IP service including its current target IP assignment.
+  /// Use for a Floating IP detail screen, or to read `floating_ip_ip` / `floating_ip_target_ip` before calling `postFloatingIpsChangeIp`. Read-only. Path param `id` (integer, `floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ViewFloatingIp.getDetails()` payload — service info, billing/cost summary, status, target IP, and `client_links` (action URLs the UI can render). Internal-only fields (`admin_links`, `settings`, `csrf`) are stripped. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller (`get_service` filters by custid). Siblings: `postFloatingIpsChangeIp`, `updateFloatingIpInfo`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, `floating_ipsCancel`.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -133,7 +143,7 @@ class FloatingIPsApi {
   ///
   /// * [int] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<Response> getFloatingIpInfoWithHttpInfo(int id,) async {
+  Future<Response> getFloatingIpInfoWithHttpInfo(int id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/floating_ips/{id}'
       .replaceAll('{id}', id.toString());
@@ -156,19 +166,20 @@ class FloatingIPsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// View Floating IP
+  /// Fetch full details for one Floating IP service, including current target IP
   ///
-  /// Returns detailed information about a specific Floating IP service including its current target IP assignment.
+  /// Use for a Floating IP detail screen, or to read `floating_ip_ip` / `floating_ip_target_ip` before calling `postFloatingIpsChangeIp`. Read-only. Path param `id` (integer, `floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ViewFloatingIp.getDetails()` payload — service info, billing/cost summary, status, target IP, and `client_links` (action URLs the UI can render). Internal-only fields (`admin_links`, `settings`, `csrf`) are stripped. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller (`get_service` filters by custid). Siblings: `postFloatingIpsChangeIp`, `updateFloatingIpInfo`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, `floating_ipsCancel`.
   ///
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<Object?> getFloatingIpInfo(int id,) async {
-    final response = await getFloatingIpInfoWithHttpInfo(id,);
+  Future<Object?> getFloatingIpInfo(int id, { Future<void>? abortTrigger, }) async {
+    final response = await getFloatingIpInfoWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -182,9 +193,9 @@ class FloatingIPsApi {
     return null;
   }
 
-  /// Get Floating IP Invoices
+  /// List all billing invoices charged against a specific Floating IP service
   ///
-  /// Returns the billing invoices associated with this Floating IP service.
+  /// Use for a per-service billing history view — pulls the standard `Api\\Billing\\InvoicesList` rows scoped to this Floating IP. Read-only. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ChargeInvoiceRows` schema: array of invoice rows with id, date, amount, status, etc. Use the invoice IDs with the global billing endpoints (`getBillingInvoice`, `initiatePayment`) for line-item detail. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller. Siblings: `getFloatingIpInfo` (service details), `getFloatingIpsWelcomeEmail`.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -192,7 +203,7 @@ class FloatingIPsApi {
   ///
   /// * [int] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<Response> getFloatingIpInvoicesWithHttpInfo(int id,) async {
+  Future<Response> getFloatingIpInvoicesWithHttpInfo(int id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/floating_ips/{id}/invoices'
       .replaceAll('{id}', id.toString());
@@ -215,19 +226,20 @@ class FloatingIPsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Get Floating IP Invoices
+  /// List all billing invoices charged against a specific Floating IP service
   ///
-  /// Returns the billing invoices associated with this Floating IP service.
+  /// Use for a per-service billing history view — pulls the standard `Api\\Billing\\InvoicesList` rows scoped to this Floating IP. Read-only. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ChargeInvoiceRows` schema: array of invoice rows with id, date, amount, status, etc. Use the invoice IDs with the global billing endpoints (`getBillingInvoice`, `initiatePayment`) for line-item detail. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller. Siblings: `getFloatingIpInfo` (service details), `getFloatingIpsWelcomeEmail`.
   ///
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<ChargeInvoiceRows?> getFloatingIpInvoices(int id,) async {
-    final response = await getFloatingIpInvoicesWithHttpInfo(id,);
+  Future<ChargeInvoiceRows?> getFloatingIpInvoices(int id, { Future<void>? abortTrigger, }) async {
+    final response = await getFloatingIpInvoicesWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -241,12 +253,12 @@ class FloatingIPsApi {
     return null;
   }
 
-  /// List Floating IPs
+  /// List all Floating IP services on the authenticated customer's account
   ///
-  /// Returns all Floating IP services on the account with their current status and assignment details.
+  /// Use to enumerate every Floating IP the caller owns before drilling into a specific one. Read-only; safe to call frequently. No params, no body. Returns an array of rows: `floating_ip_id`, `repeat_invoices_cost` (recurring price), `floating_ip_ip` (the portable IP), `floating_ip_target_ip` (the IP it currently routes to), `floating_ip_status` (active/pending/canceled/etc.), `services_name` (package label). Empty array if the account owns no Floating IPs. Errors: 401 if unauthenticated. Use returned IDs with `getFloatingIpInfo`, `postFloatingIpsChangeIp`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, or `floating_ipsCancel`. To order a new one see `getNewFloatingIp` / `addFloatingIp`.  Sibling ops: `getFloatingIpInfo`, `getNewFloatingIp` (catalog), `addFloatingIp` (order).
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getFloatingIpsListWithHttpInfo() async {
+  Future<Response> getFloatingIpsListWithHttpInfo({ Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/floating_ips';
 
@@ -268,14 +280,15 @@ class FloatingIPsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// List Floating IPs
+  /// List all Floating IP services on the authenticated customer's account
   ///
-  /// Returns all Floating IP services on the account with their current status and assignment details.
-  Future<List<Object>?> getFloatingIpsList() async {
-    final response = await getFloatingIpsListWithHttpInfo();
+  /// Use to enumerate every Floating IP the caller owns before drilling into a specific one. Read-only; safe to call frequently. No params, no body. Returns an array of rows: `floating_ip_id`, `repeat_invoices_cost` (recurring price), `floating_ip_ip` (the portable IP), `floating_ip_target_ip` (the IP it currently routes to), `floating_ip_status` (active/pending/canceled/etc.), `services_name` (package label). Empty array if the account owns no Floating IPs. Errors: 401 if unauthenticated. Use returned IDs with `getFloatingIpInfo`, `postFloatingIpsChangeIp`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, or `floating_ipsCancel`. To order a new one see `getNewFloatingIp` / `addFloatingIp`.  Sibling ops: `getFloatingIpInfo`, `getNewFloatingIp` (catalog), `addFloatingIp` (order).
+  Future<List<Object>?> getFloatingIpsList({ Future<void>? abortTrigger, }) async {
+    final response = await getFloatingIpsListWithHttpInfo(abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -292,9 +305,9 @@ class FloatingIPsApi {
     return null;
   }
 
-  /// Resend Floating IPs Welcome Email
+  /// Resend the Floating IP welcome / setup email to the account contact
   ///
-  /// Resends the welcome email for the Floating IP service. The email contains setup instructions and connection details.
+  /// Triggers `floating_ip_welcome_email($id)` to re-deliver the original setup email (the IP, routing instructions, etc.) to the customer's on-file address. Useful when the email was lost or the customer needs the IP/setup details again. No body, no params besides path `id` (`floating_ip_id`). Returns `{ text: 'Welcome Email has been resent.' }`. Errors: 401 if unauthenticated; 404 (`Invalid Service Passed`) if `id` is not owned by the caller; 409 (`Service is not active`) if status is not `active`. Side effect: sends an outbound email — avoid in tight loops. Read state first via `getFloatingIpInfo` if unsure of status.  Sibling ops: `getFloatingIpInfo` (status), `addFloatingIp` (new order), `floating_ipsCancel`.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -302,7 +315,7 @@ class FloatingIPsApi {
   ///
   /// * [int] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<Response> getFloatingIpsWelcomeEmailWithHttpInfo(int id,) async {
+  Future<Response> getFloatingIpsWelcomeEmailWithHttpInfo(int id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/floating_ips/{id}/welcome_email'
       .replaceAll('{id}', id.toString());
@@ -325,19 +338,20 @@ class FloatingIPsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Resend Floating IPs Welcome Email
+  /// Resend the Floating IP welcome / setup email to the account contact
   ///
-  /// Resends the welcome email for the Floating IP service. The email contains setup instructions and connection details.
+  /// Triggers `floating_ip_welcome_email($id)` to re-deliver the original setup email (the IP, routing instructions, etc.) to the customer's on-file address. Useful when the email was lost or the customer needs the IP/setup details again. No body, no params besides path `id` (`floating_ip_id`). Returns `{ text: 'Welcome Email has been resent.' }`. Errors: 401 if unauthenticated; 404 (`Invalid Service Passed`) if `id` is not owned by the caller; 409 (`Service is not active`) if status is not `active`. Side effect: sends an outbound email — avoid in tight loops. Read state first via `getFloatingIpInfo` if unsure of status.  Sibling ops: `getFloatingIpInfo` (status), `addFloatingIp` (new order), `floating_ipsCancel`.
   ///
   /// Parameters:
   ///
   /// * [int] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<SuccessTextResponse?> getFloatingIpsWelcomeEmail(int id,) async {
-    final response = await getFloatingIpsWelcomeEmailWithHttpInfo(id,);
+  Future<SuccessTextResponse?> getFloatingIpsWelcomeEmail(int id, { Future<void>? abortTrigger, }) async {
+    final response = await getFloatingIpsWelcomeEmailWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -351,12 +365,12 @@ class FloatingIPsApi {
     return null;
   }
 
-  /// Get Floating IP Ordering Information
+  /// Get pricing and service-type options for ordering a new Floating IP
   ///
-  /// Retrieves available options and pricing for ordering a new Floating IP.
+  /// Use before showing a Floating IP order form, or before calling `addFloatingIp`, to discover which service types (`serviceTypes`) and prices (`packageCosts`, keyed by `services_id` in the customer's currency) are currently buyable. Read-only; no side effects. No params, no body. Returns `{ packageCosts: { <services_id>: <cost> }, serviceTypes: [ ... ] } `. Costs are `services.services_cost` filtered to `services_buyable=1` for module `floating_ips`. Errors: 401 if unauthenticated. Next steps: validate the chosen `serviceType` with `putFloating_ips`, then place the order with `addFloatingIp`. Floating IPs are portable IPv4 addresses that route to a target IP on one of the customer's active services.  Sibling ops: `putFloating_ips` (validate), `addFloatingIp` (commit), `getFloatingIpsList` (existing IPs).
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> getNewFloatingIpWithHttpInfo() async {
+  Future<Response> getNewFloatingIpWithHttpInfo({ Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/floating_ips/order';
 
@@ -378,14 +392,15 @@ class FloatingIPsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Get Floating IP Ordering Information
+  /// Get pricing and service-type options for ordering a new Floating IP
   ///
-  /// Retrieves available options and pricing for ordering a new Floating IP.
-  Future<Object?> getNewFloatingIp() async {
-    final response = await getNewFloatingIpWithHttpInfo();
+  /// Use before showing a Floating IP order form, or before calling `addFloatingIp`, to discover which service types (`serviceTypes`) and prices (`packageCosts`, keyed by `services_id` in the customer's currency) are currently buyable. Read-only; no side effects. No params, no body. Returns `{ packageCosts: { <services_id>: <cost> }, serviceTypes: [ ... ] } `. Costs are `services.services_cost` filtered to `services_buyable=1` for module `floating_ips`. Errors: 401 if unauthenticated. Next steps: validate the chosen `serviceType` with `putFloating_ips`, then place the order with `addFloatingIp`. Floating IPs are portable IPv4 addresses that route to a target IP on one of the customer's active services.  Sibling ops: `putFloating_ips` (validate), `addFloatingIp` (commit), `getFloatingIpsList` (existing IPs).
+  Future<Object?> getNewFloatingIp({ Future<void>? abortTrigger, }) async {
+    final response = await getNewFloatingIpWithHttpInfo(abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -399,9 +414,9 @@ class FloatingIPsApi {
     return null;
   }
 
-  /// Change Floating IP Target
+  /// Re-point a Floating IP to a different target IP on one of the customer's services
   ///
-  /// Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use `GET /floating_ips/{id}` to view the current target before making changes.
+  /// Reattaches the Floating IP by removing the old static route on the source switch and adding a new one on the destination switch (via `Sshwitch`), then updates `floating_ip_target_ip`. Use to move a portable IP between the customer's VPS / Quickservers / websites / dedicated servers without renumbering apps. Path param `id` (`floating_ip_id`). Body: `{ ip: <new target IP> }` (also accepts multipart form). Returns `{ success:true, text:'IP Changed' }`. Errors (returned via `json_error`): invalid IP format; IP not in our datacenter; IP not in use by an active service of this customer; service not active; another Floating IP already points to that target; switch lookup failures; route still present after removal. 401 if unauthenticated.  Sibling ops: `getFloatingIpInfo` (read current target), `getFloatingIpsList`, `floating_ipsCancel`. Read current target with `getFloatingIpInfo` first.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -412,7 +427,7 @@ class FloatingIPsApi {
   ///
   /// * [String] ip (required):
   ///   IP Address
-  Future<Response> postFloatingIpsChangeIpWithHttpInfo(int id, String ip,) async {
+  Future<Response> postFloatingIpsChangeIpWithHttpInfo(int id, String ip, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/floating_ips/{id}/change_ip'
       .replaceAll('{id}', id.toString());
@@ -444,12 +459,13 @@ class FloatingIPsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Change Floating IP Target
+  /// Re-point a Floating IP to a different target IP on one of the customer's services
   ///
-  /// Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use `GET /floating_ips/{id}` to view the current target before making changes.
+  /// Reattaches the Floating IP by removing the old static route on the source switch and adding a new one on the destination switch (via `Sshwitch`), then updates `floating_ip_target_ip`. Use to move a portable IP between the customer's VPS / Quickservers / websites / dedicated servers without renumbering apps. Path param `id` (`floating_ip_id`). Body: `{ ip: <new target IP> }` (also accepts multipart form). Returns `{ success:true, text:'IP Changed' }`. Errors (returned via `json_error`): invalid IP format; IP not in our datacenter; IP not in use by an active service of this customer; service not active; another Floating IP already points to that target; switch lookup failures; route still present after removal. 401 if unauthenticated.  Sibling ops: `getFloatingIpInfo` (read current target), `getFloatingIpsList`, `floating_ipsCancel`. Read current target with `getFloatingIpInfo` first.
   ///
   /// Parameters:
   ///
@@ -458,8 +474,8 @@ class FloatingIPsApi {
   ///
   /// * [String] ip (required):
   ///   IP Address
-  Future<SuccessTextResponse?> postFloatingIpsChangeIp(int id, String ip,) async {
-    final response = await postFloatingIpsChangeIpWithHttpInfo(id, ip,);
+  Future<SuccessTextResponse?> postFloatingIpsChangeIp(int id, String ip, { Future<void>? abortTrigger, }) async {
+    final response = await postFloatingIpsChangeIpWithHttpInfo(id, ip, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
@@ -473,23 +489,27 @@ class FloatingIPsApi {
     return null;
   }
 
-  /// Validate Floating IP Order
+  /// Validate a Floating IP order and price it without charging the customer
   ///
-  /// Validates a Floating IP order before placing it. Use this to check for errors before committing to a purchase.
+  /// Dry-run for `addFloatingIp` — runs `validate_buy_floating_ip` to apply coupons, compute intro/repeat pricing, and surface errors before committing. No charge, no service created. Body fields (form-encoded): `serviceType` (required, `services_id` from `getNewFloatingIp.packageCosts`), `coupon` (optional code). Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, password, introFrequency, coupon, couponCode }`. `continue=true` means the order would succeed; `continue=false` plus populated `errors[]` means it would not. Errors: 401 if unauthenticated; 422-style soft errors arrive in the `errors` array. Use the returned `serviceType` and `couponCode` when calling `addFloatingIp`. Sibling ops: `getNewFloatingIp` (catalog), `addFloatingIp` (commit).
   ///
   /// Note: This method returns the HTTP [Response].
-  Future<Response> putFloatingIpsWithHttpInfo() async {
+  ///
+  /// Parameters:
+  ///
+  /// * [FloatingIpOrderRequest] floatingIpOrderRequest (required):
+  Future<Response> putFloatingIpsWithHttpInfo(FloatingIpOrderRequest floatingIpOrderRequest, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/floating_ips/order';
 
     // ignore: prefer_final_locals
-    Object? postBody;
+    Object? postBody = floatingIpOrderRequest;
 
     final queryParams = <QueryParam>[];
     final headerParams = <String, String>{};
     final formParams = <String, String>{};
 
-    const contentTypes = <String>[];
+    const contentTypes = <String>['application/json'];
 
 
     return apiClient.invokeAPI(
@@ -500,22 +520,27 @@ class FloatingIPsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Validate Floating IP Order
+  /// Validate a Floating IP order and price it without charging the customer
   ///
-  /// Validates a Floating IP order before placing it. Use this to check for errors before committing to a purchase.
-  Future<void> putFloatingIps() async {
-    final response = await putFloatingIpsWithHttpInfo();
+  /// Dry-run for `addFloatingIp` — runs `validate_buy_floating_ip` to apply coupons, compute intro/repeat pricing, and surface errors before committing. No charge, no service created. Body fields (form-encoded): `serviceType` (required, `services_id` from `getNewFloatingIp.packageCosts`), `coupon` (optional code). Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, password, introFrequency, coupon, couponCode }`. `continue=true` means the order would succeed; `continue=false` plus populated `errors[]` means it would not. Errors: 401 if unauthenticated; 422-style soft errors arrive in the `errors` array. Use the returned `serviceType` and `couponCode` when calling `addFloatingIp`. Sibling ops: `getNewFloatingIp` (catalog), `addFloatingIp` (commit).
+  ///
+  /// Parameters:
+  ///
+  /// * [FloatingIpOrderRequest] floatingIpOrderRequest (required):
+  Future<void> putFloatingIps(FloatingIpOrderRequest floatingIpOrderRequest, { Future<void>? abortTrigger, }) async {
+    final response = await putFloatingIpsWithHttpInfo(floatingIpOrderRequest, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }
   }
 
-  /// Update Floating IP
+  /// Update a Floating IP service's editable settings (label / metadata)
   ///
-  /// Updates settings on a Floating IP service, such as its label or configuration metadata.
+  /// Stub edit endpoint that delegates to the same handler as `getFloatingIpInfo` — currently used for label/metadata edits surfaced by `ViewFloatingIp`. To re-route the IP to a different target use the dedicated `postFloatingIpsChangeIp` instead; this op does not change routing. Path param `id` (`floating_ip_id`). Body: form-encoded fields exposed by the Floating IP edit form (label/comment style). Returns the standard success-text response. Errors: 401 if unauthenticated; effectively 404 if `id` not owned by the caller. Read state first with `getFloatingIpInfo`.  Sibling ops: `getFloatingIpInfo` (read), `postFloatingIpsChangeIp` (re-route), `floating_ipsCancel`.
   ///
   /// Note: This method returns the HTTP [Response].
   ///
@@ -523,7 +548,7 @@ class FloatingIPsApi {
   ///
   /// * [String] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<Response> updateFloatingIpInfoWithHttpInfo(String id,) async {
+  Future<Response> updateFloatingIpInfoWithHttpInfo(String id, { Future<void>? abortTrigger, }) async {
     // ignore: prefer_const_declarations
     final path = r'/floating_ips/{id}'
       .replaceAll('{id}', id);
@@ -546,19 +571,20 @@ class FloatingIPsApi {
       headerParams,
       formParams,
       contentTypes.isEmpty ? null : contentTypes.first,
+      abortTrigger: abortTrigger,
     );
   }
 
-  /// Update Floating IP
+  /// Update a Floating IP service's editable settings (label / metadata)
   ///
-  /// Updates settings on a Floating IP service, such as its label or configuration metadata.
+  /// Stub edit endpoint that delegates to the same handler as `getFloatingIpInfo` — currently used for label/metadata edits surfaced by `ViewFloatingIp`. To re-route the IP to a different target use the dedicated `postFloatingIpsChangeIp` instead; this op does not change routing. Path param `id` (`floating_ip_id`). Body: form-encoded fields exposed by the Floating IP edit form (label/comment style). Returns the standard success-text response. Errors: 401 if unauthenticated; effectively 404 if `id` not owned by the caller. Read state first with `getFloatingIpInfo`.  Sibling ops: `getFloatingIpInfo` (read), `postFloatingIpsChangeIp` (re-route), `floating_ipsCancel`.
   ///
   /// Parameters:
   ///
   /// * [String] id (required):
   ///   The Floating IP service ID. Use the ID from `GET /floating_ips`.
-  Future<SuccessTextResponse?> updateFloatingIpInfo(String id,) async {
-    final response = await updateFloatingIpInfoWithHttpInfo(id,);
+  Future<SuccessTextResponse?> updateFloatingIpInfo(String id, { Future<void>? abortTrigger, }) async {
+    final response = await updateFloatingIpInfoWithHttpInfo(id, abortTrigger: abortTrigger,);
     if (response.statusCode >= HttpStatus.badRequest) {
       throw ApiException(response.statusCode, await _decodeBodyBytes(response));
     }

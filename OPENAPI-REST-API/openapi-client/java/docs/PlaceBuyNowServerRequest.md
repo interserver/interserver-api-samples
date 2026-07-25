@@ -12,4 +12,8 @@
 |**serverRootPassword** | **String** | The root or administrator password to set on the server. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

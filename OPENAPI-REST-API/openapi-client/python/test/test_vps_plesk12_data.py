@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_plesk12_data import VpsPlesk12Data
+from interserver_api_client.models.vps_plesk12_data import VpsPlesk12Data
 
 class TestVpsPlesk12Data(unittest.TestCase):
     """VpsPlesk12Data unit test stubs"""
@@ -36,17 +36,17 @@ class TestVpsPlesk12Data(unittest.TestCase):
         model = VpsPlesk12Data()
         if include_optional:
             return VpsPlesk12Data(
-                admin = openapi_client.models.vps_plesk_license.VpsPleskLicense(
+                admin = interserver_api_client.models.vps_plesk_license.VpsPleskLicense(
                     id = 56, 
                     name = '', 
                     sub_name = '', 
                     cost = 56, ),
-                pro = openapi_client.models.vps_plesk_license.VpsPleskLicense(
+                pro = interserver_api_client.models.vps_plesk_license.VpsPleskLicense(
                     id = 56, 
                     name = '', 
                     sub_name = '', 
                     cost = 56, ),
-                host = openapi_client.models.vps_plesk_license.VpsPleskLicense(
+                host = interserver_api_client.models.vps_plesk_license.VpsPleskLicense(
                     id = 56, 
                     name = '', 
                     sub_name = '', 

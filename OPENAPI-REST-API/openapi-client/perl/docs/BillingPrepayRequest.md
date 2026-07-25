@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BillingPrepayRequest
+# InterServerAPI::Object::BillingPrepayRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BillingPrepayRequest;
+use InterServerAPI::Object::BillingPrepayRequest;
 ```
 
 ## Properties

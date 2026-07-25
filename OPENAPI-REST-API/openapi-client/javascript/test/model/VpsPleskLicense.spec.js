@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsPleskLicense();
+    instance = new InterserverApiClient.VpsPleskLicense();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('VpsPleskLicense', function() {
     it('should create an instance of VpsPleskLicense', function() {
       // uncomment below and update the code to test VpsPleskLicense
-      //var instance = new InterServerManagementApi.VpsPleskLicense();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsPleskLicense);
+      //var instance = new InterserverApiClient.VpsPleskLicense();
+      //expect(instance).to.be.a(InterserverApiClient.VpsPleskLicense);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.VpsPleskLicense();
+      //var instance = new InterserverApiClient.VpsPleskLicense();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.VpsPleskLicense();
+      //var instance = new InterserverApiClient.VpsPleskLicense();
       //expect(instance).to.be();
     });
 
     it('should have the property sub_name (base name: "sub_name")', function() {
       // uncomment below and update the code to test the property sub_name
-      //var instance = new InterServerManagementApi.VpsPleskLicense();
+      //var instance = new InterserverApiClient.VpsPleskLicense();
       //expect(instance).to.be();
     });
 
     it('should have the property cost (base name: "cost")', function() {
       // uncomment below and update the code to test the property cost
-      //var instance = new InterServerManagementApi.VpsPleskLicense();
+      //var instance = new InterserverApiClient.VpsPleskLicense();
       //expect(instance).to.be();
     });
 

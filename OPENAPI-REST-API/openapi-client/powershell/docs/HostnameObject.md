@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HostnameObject = Initialize-PSOpenAPIToolsHostnameObject  -Hostname null
+$HostnameObject = Initialize-InterserverApiHostnameObject  -Hostname null
 ```
 
 - Convert the resource to JSON

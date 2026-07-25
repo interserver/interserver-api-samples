@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::LicenseBillingDetails
+# InterServerAPI::Object::LicenseBillingDetails
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::LicenseBillingDetails;
+use InterServerAPI::Object::LicenseBillingDetails;
 ```
 
 ## Properties

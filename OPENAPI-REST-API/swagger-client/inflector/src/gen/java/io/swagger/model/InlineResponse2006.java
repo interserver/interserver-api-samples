@@ -9,104 +9,24 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 public class InlineResponse2006   {
-  @JsonProperty("login")
-  private Boolean login = null;
-  @JsonProperty("signup")
-  private Boolean signup = null;
-  @JsonProperty("linked")
-  private Boolean linked = null;
-  @JsonProperty("account_id")
-  private Integer accountId = null;
-  @JsonProperty("error_code")
-  private String errorCode = null;
+  @JsonProperty("redirect_url")
+  private String redirectUrl = null;
   /**
-   * Whether the user was logged in to an existing account.
+   * The URL to redirect the user to for OAuth authentication.
    **/
-  public InlineResponse2006 login(Boolean login) {
-    this.login = login;
+  public InlineResponse2006 redirectUrl(String redirectUrl) {
+    this.redirectUrl = redirectUrl;
     return this;
   }
 
   
-  @Schema(description = "Whether the user was logged in to an existing account.")
-  @JsonProperty("login")
-  public Boolean isLogin() {
-    return login;
+  @Schema(description = "The URL to redirect the user to for OAuth authentication.")
+  @JsonProperty("redirect_url")
+  public String getRedirectUrl() {
+    return redirectUrl;
   }
-  public void setLogin(Boolean login) {
-    this.login = login;
-  }
-
-  /**
-   * Whether a new account was created.
-   **/
-  public InlineResponse2006 signup(Boolean signup) {
-    this.signup = signup;
-    return this;
-  }
-
-  
-  @Schema(description = "Whether a new account was created.")
-  @JsonProperty("signup")
-  public Boolean isSignup() {
-    return signup;
-  }
-  public void setSignup(Boolean signup) {
-    this.signup = signup;
-  }
-
-  /**
-   * Whether the OAuth provider was linked to an existing account.
-   **/
-  public InlineResponse2006 linked(Boolean linked) {
-    this.linked = linked;
-    return this;
-  }
-
-  
-  @Schema(description = "Whether the OAuth provider was linked to an existing account.")
-  @JsonProperty("linked")
-  public Boolean isLinked() {
-    return linked;
-  }
-  public void setLinked(Boolean linked) {
-    this.linked = linked;
-  }
-
-  /**
-   * The account ID associated with the OAuth login.
-   **/
-  public InlineResponse2006 accountId(Integer accountId) {
-    this.accountId = accountId;
-    return this;
-  }
-
-  
-  @Schema(description = "The account ID associated with the OAuth login.")
-  @JsonProperty("account_id")
-  public Integer getAccountId() {
-    return accountId;
-  }
-  public void setAccountId(Integer accountId) {
-    this.accountId = accountId;
-  }
-
-  /**
-   * Error code if additional verification is needed (e.g. `2fa_required`).
-   **/
-  public InlineResponse2006 errorCode(String errorCode) {
-    this.errorCode = errorCode;
-    return this;
-  }
-
-  
-  @Schema(description = "Error code if additional verification is needed (e.g. `2fa_required`).")
-  @JsonProperty("error_code")
-  public String getErrorCode() {
-    return errorCode;
-  }
-  public void setErrorCode(String errorCode) {
-    this.errorCode = errorCode;
+  public void setRedirectUrl(String redirectUrl) {
+    this.redirectUrl = redirectUrl;
   }
 
 
@@ -119,27 +39,19 @@ public class InlineResponse2006   {
       return false;
     }
     InlineResponse2006 inlineResponse2006 = (InlineResponse2006) o;
-    return Objects.equals(login, inlineResponse2006.login) &&
-        Objects.equals(signup, inlineResponse2006.signup) &&
-        Objects.equals(linked, inlineResponse2006.linked) &&
-        Objects.equals(accountId, inlineResponse2006.accountId) &&
-        Objects.equals(errorCode, inlineResponse2006.errorCode);
+    return Objects.equals(redirectUrl, inlineResponse2006.redirectUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(login, signup, linked, accountId, errorCode);
+    return Objects.hash(redirectUrl);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2006 {\n");
-    sb.append("    login: ").append(toIndentedString(login)).append("\n");
-    sb.append("    signup: ").append(toIndentedString(signup)).append("\n");
-    sb.append("    linked: ").append(toIndentedString(linked)).append("\n");
-    sb.append("    accountId: ").append(toIndentedString(accountId)).append("\n");
-    sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
+    sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }

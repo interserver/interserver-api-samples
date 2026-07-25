@@ -3,5 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **Boolean** |  | 
-**text** | **String** |  | 
+**text** | **String** | Status message. |  [optional]
+**invoice** | **Integer** | Invoice ID for payment. |  [optional]
+**order** | **Integer** | Server order ID. |  [optional]

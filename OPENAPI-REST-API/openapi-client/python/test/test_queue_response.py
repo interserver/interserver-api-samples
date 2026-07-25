@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.queue_response import QueueResponse
+from interserver_api_client.models.queue_response import QueueResponse
 
 class TestQueueResponse(unittest.TestCase):
     """QueueResponse unit test stubs"""

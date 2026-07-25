@@ -43,13 +43,6 @@ describe("licenses_api", function()
     end)
   end)
 
-  -- unit tests for get_license_order_cat_tag_info
-  describe("get_license_order_cat_tag_info test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for get_licenses_welcome_email
   describe("get_licenses_welcome_email test", function()
     it("should work", function()

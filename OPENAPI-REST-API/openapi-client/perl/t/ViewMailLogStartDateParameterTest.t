@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ViewMailLogStartDateParameter');
+use_ok('InterServerAPI::Object::ViewMailLogStartDateParameter');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ViewMailLogStartDateParameter->new();
+#my $instance = InterServerAPI::Object::ViewMailLogStartDateParameter->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ViewMailLogStartDateParameter');
+#isa_ok($instance, 'InterServerAPI::Object::ViewMailLogStartDateParameter');
 
 
 done_testing();

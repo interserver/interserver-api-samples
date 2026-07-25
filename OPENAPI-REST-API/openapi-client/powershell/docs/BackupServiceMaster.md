@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupServiceMaster = Initialize-PSOpenAPIToolsBackupServiceMaster  -BackupId 38 `
+$BackupServiceMaster = Initialize-InterserverApiBackupServiceMaster  -BackupId 38 `
  -BackupName storage1400.is.cc `
  -BackupIp 44.22.11.88 `
  -BackupType 703 `

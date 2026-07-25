@@ -8,9 +8,9 @@
 
 #' InlineResponse20019 Class
 #'
-#' @field text 
-#' @field invoice 
-#' @field order 
+#' @field packageCosts 
+#' @field serviceTypes 
+#' @field ips 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -18,66 +18,79 @@
 InlineResponse20019 <- R6::R6Class(
   'InlineResponse20019',
   public = list(
-    `text` = NULL,
-    `invoice` = NULL,
-    `order` = NULL,
-    initialize = function(`text`, `invoice`, `order`){
-      if (!missing(`text`)) {
-        stopifnot(is.character(`text`), length(`text`) == 1)
-        self$`text` <- `text`
+    `packageCosts` = NULL,
+    `serviceTypes` = NULL,
+    `ips` = NULL,
+    initialize = function(`packageCosts`, `serviceTypes`, `ips`){
+      if (!missing(`packageCosts`)) {
+        stopifnot(R6::is.R6(`packageCosts`))
+        self$`packageCosts` <- `packageCosts`
       }
-      if (!missing(`invoice`)) {
-        stopifnot(is.numeric(`invoice`), length(`invoice`) == 1)
-        self$`invoice` <- `invoice`
+      if (!missing(`serviceTypes`)) {
+        stopifnot(is.list(`serviceTypes`), length(`serviceTypes`) != 0)
+        lapply(`serviceTypes`, function(x) stopifnot(R6::is.R6(x)))
+        self$`serviceTypes` <- `serviceTypes`
       }
-      if (!missing(`order`)) {
-        stopifnot(is.numeric(`order`), length(`order`) == 1)
-        self$`order` <- `order`
+      if (!missing(`ips`)) {
+        stopifnot(is.list(`ips`), length(`ips`) != 0)
+        lapply(`ips`, function(x) stopifnot(R6::is.R6(x)))
+        self$`ips` <- `ips`
       }
     },
     toJSON = function() {
       InlineResponse20019Object <- list()
-      if (!is.null(self$`text`)) {
-        InlineResponse20019Object[['text']] <- self$`text`
+      if (!is.null(self$`packageCosts`)) {
+        InlineResponse20019Object[['packageCosts']] <- self$`packageCosts`$toJSON()
       }
-      if (!is.null(self$`invoice`)) {
-        InlineResponse20019Object[['invoice']] <- self$`invoice`
+      if (!is.null(self$`serviceTypes`)) {
+        InlineResponse20019Object[['serviceTypes']] <- lapply(self$`serviceTypes`, function(x) x$toJSON())
       }
-      if (!is.null(self$`order`)) {
-        InlineResponse20019Object[['order']] <- self$`order`
+      if (!is.null(self$`ips`)) {
+        InlineResponse20019Object[['ips']] <- lapply(self$`ips`, function(x) x$toJSON())
       }
 
       InlineResponse20019Object
     },
     fromJSON = function(InlineResponse20019Json) {
       InlineResponse20019Object <- jsonlite::fromJSON(InlineResponse20019Json)
-      if (!is.null(InlineResponse20019Object$`text`)) {
-        self$`text` <- InlineResponse20019Object$`text`
+      if (!is.null(InlineResponse20019Object$`packageCosts`)) {
+        packageCostsObject <- InlineResponse20019PackageCosts$new()
+        packageCostsObject$fromJSON(jsonlite::toJSON(InlineResponse20019Object$packageCosts, auto_unbox = TRUE))
+        self$`packageCosts` <- packageCostsObject
       }
-      if (!is.null(InlineResponse20019Object$`invoice`)) {
-        self$`invoice` <- InlineResponse20019Object$`invoice`
+      if (!is.null(InlineResponse20019Object$`serviceTypes`)) {
+        self$`serviceTypes` <- lapply(InlineResponse20019Object$`serviceTypes`, function(x) {
+          serviceTypesObject <- InlineResponse20019ServiceTypes$new()
+          serviceTypesObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
+          serviceTypesObject
+        })
       }
-      if (!is.null(InlineResponse20019Object$`order`)) {
-        self$`order` <- InlineResponse20019Object$`order`
+      if (!is.null(InlineResponse20019Object$`ips`)) {
+        self$`ips` <- lapply(InlineResponse20019Object$`ips`, function(x) {
+          ipsObject <- InlineResponse20019Ips$new()
+          ipsObject$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE))
+          ipsObject
+        })
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "text": %s,
-           "invoice": %d,
-           "order": %d
+           "packageCosts": %s,
+           "serviceTypes": [%s],
+           "ips": [%s]
         }',
-        self$`text`,
-        self$`invoice`,
-        self$`order`
+        self$`packageCosts`$toJSON(),
+        lapply(self$`serviceTypes`, function(x) paste(x$toJSON(), sep=",")),
+        lapply(self$`ips`, function(x) paste(x$toJSON(), sep=","))
       )
     },
     fromJSONString = function(InlineResponse20019Json) {
       InlineResponse20019Object <- jsonlite::fromJSON(InlineResponse20019Json)
-      self$`text` <- InlineResponse20019Object$`text`
-      self$`invoice` <- InlineResponse20019Object$`invoice`
-      self$`order` <- InlineResponse20019Object$`order`
+      InlineResponse20019PackageCostsObject <- InlineResponse20019PackageCosts$new()
+      self$`packageCosts` <- InlineResponse20019PackageCostsObject$fromJSON(jsonlite::toJSON(InlineResponse20019Object$packageCosts, auto_unbox = TRUE))
+      self$`serviceTypes` <- lapply(InlineResponse20019Object$`serviceTypes`, function(x) InlineResponse20019ServiceTypes$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
+      self$`ips` <- lapply(InlineResponse20019Object$`ips`, function(x) InlineResponse20019Ips$new()$fromJSON(jsonlite::toJSON(x, auto_unbox = TRUE)))
     }
   )
 )

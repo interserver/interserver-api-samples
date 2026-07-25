@@ -1,4 +1,4 @@
-# openapi::AccountInfoMaxMindResponse
+# interserverapi::AccountInfoMaxMindResponse
 
 MaxMind fraud detection scoring data for a credit card transaction.
 

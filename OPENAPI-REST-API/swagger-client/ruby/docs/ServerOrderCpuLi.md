@@ -1,4 +1,4 @@
-# SwaggerClient::ServerOrderCpuLi
+# InterserverApiClient::ServerOrderCpuLi
 
 ## Properties
 Name | Type | Description | Notes

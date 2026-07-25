@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsiteBillingDetails = Initialize-PSOpenAPIToolsWebsiteBillingDetails  -ServiceLastInvoiceDate null `
+$WebsiteBillingDetails = Initialize-InterserverApiWebsiteBillingDetails  -ServiceLastInvoiceDate null `
  -ServicePaymentStatus null `
  -ServiceFrequency null `
  -NextDate null `

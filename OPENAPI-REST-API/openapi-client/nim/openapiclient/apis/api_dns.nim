@@ -40,7 +40,7 @@ template constructResult[T](response: Response): untyped =
 
 
 proc addDnsDomain*(httpClient: HttpClient, domain: string, ip: string): (Option[SuccessTextResponse], Response) =
-  ## Create DNS Domain
+  ## Create a new authoritative DNS zone seeded with apex A + NS + SOA records
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "domain": $domain, # The domain name.
@@ -52,7 +52,7 @@ proc addDnsDomain*(httpClient: HttpClient, domain: string, ip: string): (Option[
 
 
 proc addDnsRecord*(httpClient: HttpClient, id: string, name: string, `type`: DnsRecordType, content: string, ttl: int, prio: int): Response =
-  ## Add DNS Record to Domain
+  ## Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "name": $name, # Name part of record
@@ -66,35 +66,35 @@ proc addDnsRecord*(httpClient: HttpClient, id: string, name: string, `type`: Dns
 
 
 proc deleteDnsDomain*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Delete DNS Domain
+  ## Permanently delete a DNS zone and every record it contains
 
   let response = httpClient.delete(basepath & fmt"/dns/{id}")
   constructResult[SuccessTextResponse](response)
 
 
 proc deleteDnsRecord*(httpClient: HttpClient, domainId: int, recordId: int): (Option[SuccessTextResponse], Response) =
-  ## Delete DNS Record
+  ## Permanently delete one DNS record from a zone — zone itself is preserved
 
   let response = httpClient.delete(basepath & fmt"/dns/{domainId}/{recordId}")
   constructResult[SuccessTextResponse](response)
 
 
 proc getDnsDomain*(httpClient: HttpClient, id: int): (Option[seq[DnsRecord]], Response) =
-  ## List Domain DNS Records
+  ## List every DNS record in one zone with the IDs needed to edit or delete them
 
   let response = httpClient.get(basepath & fmt"/dns/{id}")
   constructResult[seq[DnsRecord]](response)
 
 
 proc getDnsList*(httpClient: HttpClient): (Option[seq[DnsListItem]], Response) =
-  ## List DNS Domains
+  ## List DNS zones hosted on the account with each zone's apex A-record IP
 
   let response = httpClient.get(basepath & "/dns")
   constructResult[seq[DnsListItem]](response)
 
 
 proc updateDnsRecord*(httpClient: HttpClient, domainId: int, recordId: int, name: string, `type`: DnsRecordType, content: string, ttl: string, prio: string, disabled: string, ordername: string, auth: string): (Option[SuccessTextResponse], Response) =
-  ## Update DNS Record
+  ## Replace values on an existing DNS record (name, type, content, ttl, priority)
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "name": $name, # 

@@ -1,78 +1,78 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainTechContact
 void main() {
-  final instance = DomainTechContactBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainTechContact? instance = /* DomainTechContact(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainTechContact, () {
-    // String state
+    // Optional<String?> state
     test('to test the property `state`', () async {
       // TODO
     });
 
-    // String status
+    // Optional<String?> status
     test('to test the property `status`', () async {
       // TODO
     });
 
-    // String orgName
+    // Optional<String?> orgName
     test('to test the property `orgName`', () async {
       // TODO
     });
 
-    // String country
+    // Optional<String?> country
     test('to test the property `country`', () async {
       // TODO
     });
 
-    // String postalCode
+    // Optional<String?> postalCode
     test('to test the property `postalCode`', () async {
       // TODO
     });
 
-    // String fax
+    // Optional<String?> fax
     test('to test the property `fax`', () async {
       // TODO
     });
 
-    // String email
+    // Optional<String?> email
     test('to test the property `email`', () async {
       // TODO
     });
 
-    // String address2
+    // Optional<String?> address2
     test('to test the property `address2`', () async {
       // TODO
     });
 
-    // String address3
+    // Optional<String?> address3
     test('to test the property `address3`', () async {
       // TODO
     });
 
-    // String address1
+    // Optional<String?> address1
     test('to test the property `address1`', () async {
       // TODO
     });
 
-    // String city
+    // Optional<String?> city
     test('to test the property `city`', () async {
       // TODO
     });
 
-    // String phone
+    // Optional<String?> phone
     test('to test the property `phone`', () async {
       // TODO
     });
 
-    // String firstName
+    // Optional<String?> firstName
     test('to test the property `firstName`', () async {
       // TODO
     });
 
-    // String lastName
+    // Optional<String?> lastName
     test('to test the property `lastName`', () async {
       // TODO
     });

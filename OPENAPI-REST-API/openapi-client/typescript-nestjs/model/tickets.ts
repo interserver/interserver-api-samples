@@ -9,8 +9,8 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { TicketsCountArray } from './ticketsCountArray';
-import { TicketsRow } from './ticketsRow';
+import { TicketsCountArray } from './tickets-count-array';
+import { TicketsRow } from './tickets-row';
 
 
 /**

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::TicketCustomFieldDetails');
+use_ok('InterServerAPI::Object::TicketCustomFieldDetails');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::TicketCustomFieldDetails->new();
+#my $instance = InterServerAPI::Object::TicketCustomFieldDetails->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::TicketCustomFieldDetails');
+#isa_ok($instance, 'InterServerAPI::Object::TicketCustomFieldDetails');
 
 
 done_testing();

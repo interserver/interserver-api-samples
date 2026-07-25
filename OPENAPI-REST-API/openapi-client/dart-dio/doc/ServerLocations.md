@@ -1,14 +1,14 @@
-# openapi.model.ServerLocations
+# interserver_api.model.ServerLocations
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**n1** | [**ServerLocation1**](ServerLocation1.md) |  | [optional] 
+**n1** | [**Optional&lt;ServerLocation1?&gt;**](ServerLocation1.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

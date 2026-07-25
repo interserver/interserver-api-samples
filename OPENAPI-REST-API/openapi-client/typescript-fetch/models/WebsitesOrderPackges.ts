@@ -39,7 +39,7 @@ export interface WebsitesOrderPackges {
  * Check if a given object implements the WebsitesOrderPackges interface.
  */
 export function instanceOfWebsitesOrderPackges(value: object): value is WebsitesOrderPackges {
-    if (!('_11440' in value) || value['_11440'] === undefined) return false;
+    if ((!('_11440' in (value as Record<string, any>)) && !('11440' in (value as Record<string, any>))) || ((value as Record<string, any>)['_11440'] === undefined && (value as Record<string, any>)['11440'] === undefined)) return false;
     return true;
 }
 

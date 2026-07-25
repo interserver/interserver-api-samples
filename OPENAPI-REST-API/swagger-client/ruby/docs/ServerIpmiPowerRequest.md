@@ -1,4 +1,4 @@
-# SwaggerClient::ServerIpmiPowerRequest
+# InterserverApiClient::ServerIpmiPowerRequest
 
 ## Properties
 Name | Type | Description | Notes

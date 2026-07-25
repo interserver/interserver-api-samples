@@ -17,7 +17,7 @@ import VpsOrderLocationStock1 from './VpsOrderLocationStock1';
 /**
  * The VpsOrderLocationStock model module.
  * @module model/VpsOrderLocationStock
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderLocationStock {
     /**

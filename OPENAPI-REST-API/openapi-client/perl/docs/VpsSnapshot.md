@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsSnapshot
+# InterServerAPI::Object::VpsSnapshot
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsSnapshot;
+use InterServerAPI::Object::VpsSnapshot;
 ```
 
 ## Properties

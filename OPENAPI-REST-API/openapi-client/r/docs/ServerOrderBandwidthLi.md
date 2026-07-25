@@ -1,4 +1,4 @@
-# openapi::ServerOrderBandwidthLi
+# interserverapi::ServerOrderBandwidthLi
 
 Bandwidth options for the server order.
 

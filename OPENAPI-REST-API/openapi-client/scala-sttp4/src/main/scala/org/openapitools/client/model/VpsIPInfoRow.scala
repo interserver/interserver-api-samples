@@ -18,4 +18,3 @@ case class VpsIPInfoRow(
   /* Value */
   value: Option[String] = None
 )
-

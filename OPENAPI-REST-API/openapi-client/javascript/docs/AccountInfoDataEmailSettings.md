@@ -1,4 +1,4 @@
-# InterServerManagementApi.AccountInfoDataEmailSettings
+# InterserverApiClient.AccountInfoDataEmailSettings
 
 ## Properties
 

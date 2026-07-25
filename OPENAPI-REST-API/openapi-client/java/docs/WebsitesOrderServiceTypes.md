@@ -11,4 +11,8 @@ The service types data.
 |**_11447** | [**WebsitesOrderServiceTypes**](WebsitesOrderServiceTypes.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

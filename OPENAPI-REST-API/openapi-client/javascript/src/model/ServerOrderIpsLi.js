@@ -17,7 +17,7 @@ import ServerOrderIP from './ServerOrderIP';
 /**
  * The ServerOrderIpsLi model module.
  * @module model/ServerOrderIpsLi
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderIpsLi {
     /**

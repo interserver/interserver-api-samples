@@ -12,11 +12,34 @@
 package org.openapitools.client.model
 
 
-case class BuyItNowRowCpuInner(
+sealed trait BuyItNowRowCpuInner
+
+case class BuyItNowRowCpuInnerOneOf(
   img: Option[String] = None,
   `type`: Option[String] = None,
   speed: Option[String] = None,
   num_cpus: Option[String] = None,
   num_cores: Option[String] = None
-)
+) extends BuyItNowRowCpuInner
 
+object BuyItNowRowCpuInner {
+
+  import org.json4s._
+
+  // oneOf without discriminator - json4s custom serializer
+  implicit object BuyItNowRowCpuInnerSerializer extends Serializer[BuyItNowRowCpuInner] {
+    def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), BuyItNowRowCpuInner] = {
+      case (TypeInfo(clazz, _), json) if classOf[BuyItNowRowCpuInner].isAssignableFrom(clazz) =>
+        // Try each oneOf type in order
+        Extraction.extract[BuyItNowRowCpuInnerOneOf](json) match {
+          case x: BuyItNowRowCpuInnerOneOf => return x
+          case _ => // continue
+        }
+        throw new MappingException(s"Can't convert $json to BuyItNowRowCpuInner")
+    }
+
+    def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+      case x: BuyItNowRowCpuInnerOneOf => Extraction.decompose(x)
+    }
+  }
+}

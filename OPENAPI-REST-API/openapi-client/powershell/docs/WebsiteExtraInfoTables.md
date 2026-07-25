@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsiteExtraInfoTables = Initialize-PSOpenAPIToolsWebsiteExtraInfoTables  -Links null `
+$WebsiteExtraInfoTables = Initialize-InterserverApiWebsiteExtraInfoTables  -Links null `
  -Preview null `
  -Dns null
 ```

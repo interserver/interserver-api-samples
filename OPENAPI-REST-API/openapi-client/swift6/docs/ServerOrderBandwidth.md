@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Bandwidth ID. | [optional] 
+**_id** | **String** | Bandwidth ID. | [optional] 
 **price** | **Int** | Bandwidth price. | [optional] 
 **img** | **String** | Bandwidth image. | [optional] 
 **shortDesc** | **String** | Short description of the bandwidth. | [optional] 

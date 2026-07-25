@@ -1,4 +1,4 @@
-# SwaggerClient::HomeServicesLicenses
+# InterserverApiClient::HomeServicesLicenses
 
 ## Properties
 Name | Type | Description | Notes

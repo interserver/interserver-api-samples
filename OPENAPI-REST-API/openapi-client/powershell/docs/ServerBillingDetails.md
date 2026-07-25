@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerBillingDetails = Initialize-PSOpenAPIToolsServerBillingDetails  -ServiceLastInvoiceDate null `
+$ServerBillingDetails = Initialize-InterserverApiServerBillingDetails  -ServiceLastInvoiceDate null `
  -ServicePaymentStatus null `
  -ServiceFrequency null `
  -NextDate null `

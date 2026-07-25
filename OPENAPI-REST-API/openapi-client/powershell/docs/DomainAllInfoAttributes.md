@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainAllInfoAttributes = Initialize-PSOpenAPIToolsDomainAllInfoAttributes  -ContactSet null `
+$DomainAllInfoAttributes = Initialize-InterserverApiDomainAllInfoAttributes  -ContactSet null `
  -RegistryCreatedate null `
  -RegistryExpiredate null `
  -TldData null `

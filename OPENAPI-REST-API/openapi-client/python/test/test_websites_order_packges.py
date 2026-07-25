@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.websites_order_packges import WebsitesOrderPackges
+from interserver_api_client.models.websites_order_packges import WebsitesOrderPackges
 
 class TestWebsitesOrderPackges(unittest.TestCase):
     """WebsitesOrderPackges unit test stubs"""
@@ -36,7 +36,7 @@ class TestWebsitesOrderPackges(unittest.TestCase):
         model = WebsitesOrderPackges()
         if include_optional:
             return WebsitesOrderPackges(
-                var_11440 = openapi_client.models.websites_order_packages_info.WebsitesOrderPackagesInfo(
+                var_11440 = interserver_api_client.models.websites_order_packages_info.WebsitesOrderPackagesInfo(
                     services_id = '11440', 
                     services_name = 'DA BOOST X', 
                     services_cost = '69.95', 
@@ -53,7 +53,7 @@ class TestWebsitesOrderPackges(unittest.TestCase):
             )
         else:
             return WebsitesOrderPackges(
-                var_11440 = openapi_client.models.websites_order_packages_info.WebsitesOrderPackagesInfo(
+                var_11440 = interserver_api_client.models.websites_order_packages_info.WebsitesOrderPackagesInfo(
                     services_id = '11440', 
                     services_name = 'DA BOOST X', 
                     services_cost = '69.95', 

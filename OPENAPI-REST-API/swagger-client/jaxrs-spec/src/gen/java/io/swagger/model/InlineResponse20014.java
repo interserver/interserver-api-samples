@@ -42,7 +42,7 @@ public class InlineResponse20014   {
   }
 
   
-  @ApiModelProperty(example = "Scrub is enabled on your IP.", required = true, value = "")
+  @ApiModelProperty(example = "Scrub Ips is canceled.", required = true, value = "")
   @JsonProperty("text")
   @NotNull
 

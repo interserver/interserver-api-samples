@@ -1,4 +1,4 @@
-# openapi::LicenseServiceInfo
+# interserverapi::LicenseServiceInfo
 
 
 ## Properties

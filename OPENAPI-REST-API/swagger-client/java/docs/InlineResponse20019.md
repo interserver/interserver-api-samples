@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**text** | **String** | Status message. |  [optional]
-**invoice** | **Integer** | Invoice ID for payment. |  [optional]
-**order** | **Integer** | Server order ID. |  [optional]
+**packageCosts** | [**InlineResponse20019PackageCosts**](InlineResponse20019PackageCosts.md) |  |  [optional]
+**serviceTypes** | [**List&lt;InlineResponse20019ServiceTypes&gt;**](InlineResponse20019ServiceTypes.md) |  |  [optional]
+**ips** | [**List&lt;InlineResponse20019Ips&gt;**](InlineResponse20019Ips.md) |  |  [optional]

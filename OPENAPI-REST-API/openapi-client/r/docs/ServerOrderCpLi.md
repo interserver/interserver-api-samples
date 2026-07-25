@@ -1,4 +1,4 @@
-# openapi::ServerOrderCpLi
+# interserverapi::ServerOrderCpLi
 
 Control Panel options for the server order.
 

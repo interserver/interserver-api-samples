@@ -16,4 +16,8 @@
 |**quickservers** | [**HomeDetailsModulesQuickservers**](HomeDetailsModulesQuickservers.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

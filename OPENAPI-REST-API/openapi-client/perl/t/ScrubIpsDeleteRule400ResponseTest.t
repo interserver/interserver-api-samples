@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ScrubIpsDeleteRule400Response');
+use_ok('InterServerAPI::Object::ScrubIpsDeleteRule400Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ScrubIpsDeleteRule400Response->new();
+#my $instance = InterServerAPI::Object::ScrubIpsDeleteRule400Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ScrubIpsDeleteRule400Response');
+#isa_ok($instance, 'InterServerAPI::Object::ScrubIpsDeleteRule400Response');
 
 
 done_testing();

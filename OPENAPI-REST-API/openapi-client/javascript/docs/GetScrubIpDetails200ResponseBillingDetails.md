@@ -1,4 +1,4 @@
-# InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails
+# InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails
 
 ## Properties
 

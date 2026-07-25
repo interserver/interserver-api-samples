@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderIpsLi = Initialize-PSOpenAPIToolsServerOrderIpsLi  -Var9 null
+$ServerOrderIpsLi = Initialize-InterserverApiServerOrderIpsLi  -Var9 null
 ```
 
 - Convert the resource to JSON

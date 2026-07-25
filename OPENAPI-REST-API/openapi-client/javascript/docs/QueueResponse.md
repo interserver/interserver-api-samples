@@ -1,4 +1,4 @@
-# InterServerManagementApi.QueueResponse
+# InterserverApiClient.QueueResponse
 
 ## Properties
 

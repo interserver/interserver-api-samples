@@ -20,4 +20,3 @@ case class AffiliatePaymentSetup(
   affiliate_paypal: Option[String] = None,
   affiliate_payment_method: Option[String] = None
 )
-

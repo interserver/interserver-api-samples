@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicenseRow = Initialize-PSOpenAPIToolsLicenseRow  -LicenseId 386111 `
+$LicenseRow = Initialize-InterserverApiLicenseRow  -LicenseId 386111 `
  -LicenseHostname  `
  -LicenseIp 66.45.228.100 `
  -ServicesName Imunify360 up to 30 users `

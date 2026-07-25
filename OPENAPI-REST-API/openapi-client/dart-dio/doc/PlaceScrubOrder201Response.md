@@ -1,16 +1,16 @@
-# openapi.model.PlaceScrubOrder201Response
+# interserver_api.model.PlaceScrubOrder201Response
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **bool** |  | [optional] 
-**text** | **String** |  | [optional] 
-**orderDetails** | [**PlaceScrubOrder201ResponseOrderDetails**](PlaceScrubOrder201ResponseOrderDetails.md) |  | [optional] 
+**success** | **Optional&lt;bool?&gt;** |  | [optional] 
+**text** | **Optional&lt;String?&gt;** |  | [optional] 
+**orderDetails** | [**Optional&lt;PlaceScrubOrder201ResponseOrderDetails?&gt;**](PlaceScrubOrder201ResponseOrderDetails.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

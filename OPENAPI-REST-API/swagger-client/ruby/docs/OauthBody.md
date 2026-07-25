@@ -1,4 +1,4 @@
-# SwaggerClient::OauthBody
+# InterserverApiClient::OauthBody
 
 ## Properties
 Name | Type | Description | Notes

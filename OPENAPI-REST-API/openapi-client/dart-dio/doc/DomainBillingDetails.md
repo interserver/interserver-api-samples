@@ -1,23 +1,23 @@
-# openapi.model.DomainBillingDetails
+# interserver_api.model.DomainBillingDetails
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**serviceLastInvoiceDate** | **String** | Date of the last invoice for the domain. | [optional] 
-**servicePaymentStatus** | **String** | Current payment status (e.g., Paid, Unpaid). | [optional] 
-**serviceFrequency** | **String** | Billing frequency (e.g., Yearly, Monthly). | [optional] 
-**nextDate** | **String** | Next billing date (ISO 8601). | [optional] 
-**serviceNextInvoiceDate** | **String** | Human-readable next invoice date. | [optional] 
-**serviceCurrency** | **String** | Billing currency code. | [optional] 
-**serviceCurrencySymbol** | **String** | Billing currency symbol. | [optional] 
-**serviceCostInfo** | **String** | Cost breakdown information. | [optional] 
-**serviceExtra** | [**DomainBillingExtra**](DomainBillingExtra.md) |  | [optional] 
-**serviceExtraJson** | **String** | Raw JSON string of extra billing data. | [optional] 
+**serviceLastInvoiceDate** | **Optional&lt;String?&gt;** | Date of the last invoice for the domain. | [optional] 
+**servicePaymentStatus** | **Optional&lt;String?&gt;** | Current payment status (e.g., Paid, Unpaid). | [optional] 
+**serviceFrequency** | **Optional&lt;String?&gt;** | Billing frequency (e.g., Yearly, Monthly). | [optional] 
+**nextDate** | **Optional&lt;String?&gt;** | Next billing date (ISO 8601). | [optional] 
+**serviceNextInvoiceDate** | **Optional&lt;String?&gt;** | Human-readable next invoice date. | [optional] 
+**serviceCurrency** | **Optional&lt;String?&gt;** | Billing currency code. | [optional] 
+**serviceCurrencySymbol** | **Optional&lt;String?&gt;** | Billing currency symbol. | [optional] 
+**serviceCostInfo** | **Optional&lt;String?&gt;** | Cost breakdown information. | [optional] 
+**serviceExtra** | [**Optional&lt;DomainBillingExtra?&gt;**](DomainBillingExtra.md) |  | [optional] 
+**serviceExtraJson** | **Optional&lt;String?&gt;** | Raw JSON string of extra billing data. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

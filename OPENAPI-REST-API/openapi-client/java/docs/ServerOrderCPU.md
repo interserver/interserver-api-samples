@@ -35,4 +35,8 @@ A CPU option available when ordering a dedicated server.
 |**monthlyPriceDisplay** | **String** | Display of monthly CPU price. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

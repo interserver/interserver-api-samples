@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ViewMailLogStartDateParameter = Initialize-PSOpenAPIToolsViewMailLogStartDateParameter 
+$ViewMailLogStartDateParameter = Initialize-InterserverApiViewMailLogStartDateParameter 
 ```
 
 - Convert the resource to JSON

@@ -19,4 +19,8 @@
 |**serviceExtra** | **List&lt;String&gt;** | Extra information for the mail service. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

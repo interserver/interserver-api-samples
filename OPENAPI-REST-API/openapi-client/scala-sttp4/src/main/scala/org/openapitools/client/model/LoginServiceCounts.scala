@@ -24,4 +24,3 @@ case class LoginServiceCounts(
   /* The number of total server orders that have been placed in our billing system. */
   servers: Int
 )
-

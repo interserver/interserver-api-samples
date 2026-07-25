@@ -16,4 +16,3 @@ case class PostOauthCallbackRequest(
   /* The OAuth provider name (e.g. `Google`). */
   provider: Option[String] = None
 )
-

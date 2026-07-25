@@ -374,7 +374,7 @@ VpsOrderPutResponse <- R6::R6Class(
         self$`continue` <- this_object$`continue`
       }
       if (!is.null(this_object$`errors`)) {
-        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AnyType]", loadNamespace("openapi"))
+        self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AnyType]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`coupon_code`)) {
         self$`coupon_code` <- this_object$`coupon_code`
@@ -458,7 +458,7 @@ VpsOrderPutResponse <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`continue` <- this_object$`continue`
-      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AnyType]", loadNamespace("openapi"))
+      self$`errors` <- ApiClient$new()$deserializeObj(this_object$`errors`, "array[AnyType]", loadNamespace("interserverapi"))
       self$`coupon_code` <- this_object$`coupon_code`
       self$`service_cost` <- this_object$`service_cost`
       self$`slice_cost` <- this_object$`slice_cost`

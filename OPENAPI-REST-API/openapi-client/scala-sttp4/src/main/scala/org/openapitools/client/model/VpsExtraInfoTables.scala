@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class VpsExtraInfoTables(
   ip_info: Option[VpsIPInfo] = None
 )
-

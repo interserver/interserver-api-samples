@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DisableScrub200Response } from './api';
+import { DisableScrub200Response } from '@interserver/myadmin-client';
 
 const instance: DisableScrub200Response = {
     success,

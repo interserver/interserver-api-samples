@@ -249,7 +249,7 @@ QString OAIWebhostingApi::getParamStyleDelimiter(const QString &style, const QSt
     }
 }
 
-void OAIWebhostingApi::addWebsite() {
+void OAIWebhostingApi::addWebsite(const OAIWebsiteOrderPostRequest &oai_website_order_post_request) {
     QString fullPath = QString(_serverConfigs["addWebsite"][_serverIndices.value("addWebsite")].URL()+"/websites/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -265,7 +265,12 @@ void OAIWebhostingApi::addWebsite() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
+    {
 
+        
+        QByteArray output = oai_website_order_post_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -1089,7 +1094,7 @@ void OAIWebhostingApi::postWebsitesReverseDnsCallback(OAIHttpRequestWorker *work
     }
 }
 
-void OAIWebhostingApi::putWebsites() {
+void OAIWebhostingApi::putWebsites(const OAIWebsiteOrderPutRequest &oai_website_order_put_request) {
     QString fullPath = QString(_serverConfigs["putWebsites"][_serverIndices.value("putWebsites")].URL()+"/websites/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -1105,7 +1110,12 @@ void OAIWebhostingApi::putWebsites() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "PUT");
 
+    {
 
+        
+        QByteArray output = oai_website_order_put_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::WebsiteBackupsInner');
+use_ok('InterServerAPI::Object::WebsiteBackupsInner');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::WebsiteBackupsInner->new();
+#my $instance = InterServerAPI::Object::WebsiteBackupsInner->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::WebsiteBackupsInner');
+#isa_ok($instance, 'InterServerAPI::Object::WebsiteBackupsInner');
 
 
 done_testing();

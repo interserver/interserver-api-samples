@@ -26,4 +26,3 @@ case class TicketDetails(
   created_on: Option[String] = None,
   updated_on: Option[String] = None
 )
-

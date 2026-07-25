@@ -1,4 +1,4 @@
-# openapi::PlaceScrubOrder201ResponseOrderDetails
+# interserverapi::PlaceScrubOrder201ResponseOrderDetails
 
 
 ## Properties

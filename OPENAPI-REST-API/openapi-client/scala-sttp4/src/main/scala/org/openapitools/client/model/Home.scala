@@ -38,4 +38,3 @@ case class Home(
   /* Affiliate amount with currency. */
   AFFILIATE_AMOUNT: String
 )
-

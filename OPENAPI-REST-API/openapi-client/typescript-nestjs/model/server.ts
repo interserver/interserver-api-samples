@@ -9,12 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ServerServiceInfo } from './serverServiceInfo';
-import { ServerExtraInfoTables } from './serverExtraInfoTables';
-import { ServerBillingDetails } from './serverBillingDetails';
-import { ServerClientLink } from './serverClientLink';
-import { ServerLocations } from './serverLocations';
-import { ServerNetworkInfo } from './serverNetworkInfo';
+import { ServerServiceInfo } from './server-service-info';
+import { ServerExtraInfoTables } from './server-extra-info-tables';
+import { ServerBillingDetails } from './server-billing-details';
+import { ServerClientLink } from './server-client-link';
+import { ServerLocations } from './server-locations';
+import { ServerNetworkInfo } from './server-network-info';
 
 
 export interface Server { 

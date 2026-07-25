@@ -1,4 +1,4 @@
-# openapi::AccountInfoMaxMindResponseRiskScore
+# interserverapi::AccountInfoMaxMindResponseRiskScore
 
 
 ## Properties

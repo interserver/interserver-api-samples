@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::SuccessTextResponse');
+use_ok('InterServerAPI::Object::SuccessTextResponse');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::SuccessTextResponse->new();
+#my $instance = InterServerAPI::Object::SuccessTextResponse->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::SuccessTextResponse');
+#isa_ok($instance, 'InterServerAPI::Object::SuccessTextResponse');
 
 
 done_testing();

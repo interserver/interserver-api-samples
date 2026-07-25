@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.dns_new_domain import DnsNewDomain
+from interserver_api_client.models.dns_new_domain import DnsNewDomain
 
 class TestDnsNewDomain(unittest.TestCase):
     """DnsNewDomain unit test stubs"""

@@ -13,12 +13,18 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse2005 {
     /// <summary>
-    /// The URL to redirect the user to for OAuth authentication.
+    /// Gets or Sets Success
     /// </summary>
-    /// <value>The URL to redirect the user to for OAuth authentication.</value>
-    [DataMember(Name="redirect_url", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "redirect_url")]
-    public string RedirectUrl { get; set; }
+    [DataMember(Name="success", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "success")]
+    public bool? Success { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Text
+    /// </summary>
+    [DataMember(Name="text", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "text")]
+    public string Text { get; set; }
 
 
     /// <summary>
@@ -28,7 +34,8 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse2005 {\n");
-      sb.Append("  RedirectUrl: ").Append(RedirectUrl).Append("\n");
+      sb.Append("  Success: ").Append(Success).Append("\n");
+      sb.Append("  Text: ").Append(Text).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

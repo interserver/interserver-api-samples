@@ -7,6 +7,8 @@ import io.swagger.model.BillingInvoiceList;
 import io.swagger.model.BillingPaymentMethodRequest;
 import io.swagger.model.BillingPrepayRequest;
 import io.swagger.model.BillingVerifyCcRequest;
+import io.swagger.model.IdVerifyBody;
+import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.SuccessTextResponse;
 
@@ -118,6 +120,28 @@ class BillingApiControllerTest {
     void getBillingPrePaysTest() {
         try {
             //TODO: api.getBillingPrePays().blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void initiatePaymentTest() {
+        String method = null;
+        String invoices = null;
+        try {
+            //TODO: api.initiatePayment(method, invoices).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void patchBillingCreditCardVerifyTest() {
+        IdVerifyBody body = null;
+        Integer id = null;
+        try {
+            //TODO: api.patchBillingCreditCardVerify(body, id).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

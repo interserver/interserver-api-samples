@@ -42,7 +42,7 @@ import io.swagger.server.models.BackupOrderPutResponse
 import io.swagger.server.models.BackupRow
 import io.swagger.server.models.BackupsOrder
 import io.swagger.server.models.ChargeInvoiceRows
-import io.swagger.server.models.InlineResponse2001
+import io.swagger.server.models.InlineResponse2002
 import io.swagger.server.models.InlineResponse401
 import io.swagger.server.models.SuccessTextResponse
 

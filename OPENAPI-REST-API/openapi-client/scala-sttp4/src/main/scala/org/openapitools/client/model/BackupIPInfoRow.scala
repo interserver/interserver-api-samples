@@ -21,4 +21,3 @@ case class BackupIPInfoRow(
   /* Value of the IP information. */
   value: Option[String] = None
 )
-

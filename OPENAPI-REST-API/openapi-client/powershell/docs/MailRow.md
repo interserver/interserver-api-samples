@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailRow = Initialize-PSOpenAPIToolsMailRow  -MailId 5652 `
+$MailRow = Initialize-InterserverApiMailRow  -MailId 5652 `
  -RepeatInvoicesCost 5.99 `
  -MailUsername mb5652 `
  -MailStatus expired `

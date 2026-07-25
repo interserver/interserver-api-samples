@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LicenseClientLink } from './api';
+import { LicenseClientLink } from '@interserver/myadmin-client';
 
 const instance: LicenseClientLink = {
     label,

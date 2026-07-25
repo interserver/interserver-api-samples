@@ -10,4 +10,8 @@ The listing of the categories for the services.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

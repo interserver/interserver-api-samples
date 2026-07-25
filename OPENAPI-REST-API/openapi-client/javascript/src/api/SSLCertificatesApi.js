@@ -17,12 +17,13 @@ import ChargeInvoiceRows from '../model/ChargeInvoiceRows';
 import GetAccountInfo401Response from '../model/GetAccountInfo401Response';
 import ServiceOrderPostResponse from '../model/ServiceOrderPostResponse';
 import SslCancel200Response from '../model/SslCancel200Response';
+import SslOrderRequest from '../model/SslOrderRequest';
 import SuccessTextResponse from '../model/SuccessTextResponse';
 
 /**
 * SSLCertificates service.
 * @module api/SSLCertificatesApi
-* @version 0.9.0
+* @version 1.0.0
 */
 export default class SSLCertificatesApi {
 
@@ -38,22 +39,19 @@ export default class SSLCertificatesApi {
     }
 
 
-    /**
-     * Callback function to receive the result of the addSsl operation.
-     * @callback module:api/SSLCertificatesApi~addSslCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ServiceOrderPostResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
 
     /**
-     * Place SSL Cert Order
-     * Places an order for a new SSL certificate. Use `PUT /ssl/order` to validate the order first.
-     * @param {module:api/SSLCertificatesApi~addSslCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ServiceOrderPostResponse}
+     * Place a new SSL certificate order - creates invoice and queues issuance
+     * [DESTRUCTIVE] Use after putSsl returns continue=true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue=false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: `getNewSsl` (catalog), `putSsl` (validate), `getSslInfo` (poll), `getSslInvoices`, `initiatePayment` (settle invoice), `getSslWelcomeEmail`, `sslCancel`.
+     * @param {module:model/SslOrderRequest} SslOrderRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ServiceOrderPostResponse} and HTTP response
      */
-    addSsl(callback) {
-      let postBody = null;
+    addSslWithHttpInfo(SslOrderRequest) {
+      let postBody = SslOrderRequest;
+      // verify the required parameter 'SslOrderRequest' is set
+      if (SslOrderRequest === undefined || SslOrderRequest === null) {
+        throw new Error("Missing the required parameter 'SslOrderRequest' when calling addSsl");
+      }
 
       let pathParams = {
       };
@@ -65,31 +63,36 @@ export default class SSLCertificatesApi {
       };
 
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = ServiceOrderPostResponse;
       return this.apiClient.callApi(
         '/ssl/order', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getNewSsl operation.
-     * @callback module:api/SSLCertificatesApi~getNewSslCallback
-     * @param {String} error Error message, if any.
-     * @param {Object} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Place a new SSL certificate order - creates invoice and queues issuance
+     * [DESTRUCTIVE] Use after putSsl returns continue=true to commit the SSL order. Body (form): frequency (default 12 months), service_type, hostname, csr, coupon_code, plus per-type vars/extra. Re-runs validate_buy_ssl then calls place_buy_ssl which creates the service row, generates invoice (iid/iids/real_iids), and returns serviceId, serviceCost, invoice_description. CA validation is async - issuance takes minutes to hours and may require DNS or email validation post-order. If validation fails, returns continue=false with errors and no charge. Returns 401 unauthenticated, 422 invalid input. Caveat: cert is not active until invoice paid AND CA validation completes. Poll status via getSslInfo; resend instructions via getSslWelcomeEmail.  Sibling ops: `getNewSsl` (catalog), `putSsl` (validate), `getSslInfo` (poll), `getSslInvoices`, `initiatePayment` (settle invoice), `getSslWelcomeEmail`, `sslCancel`.
+     * @param {module:model/SslOrderRequest} SslOrderRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ServiceOrderPostResponse}
      */
+    addSsl(SslOrderRequest) {
+      return this.addSslWithHttpInfo(SslOrderRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * SSL Cert Ordering Information
-     * Retrieves available SSL certificate types and pricing for ordering.
-     * @param {module:api/SSLCertificatesApi~getNewSslCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object}
+     * Get available SSL certificate packages and pricing for placing a new order
+     * Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer's currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: `putSsl` (validate), `addSsl` (commit), `getSslList` (existing certs), `getSslInfo` (per-cert).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Object} and HTTP response
      */
-    getNewSsl(callback) {
+    getNewSslWithHttpInfo() {
       let postBody = null;
 
       let pathParams = {
@@ -108,26 +111,30 @@ export default class SSLCertificatesApi {
       return this.apiClient.callApi(
         '/ssl/order', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getSslInfo operation.
-     * @callback module:api/SSLCertificatesApi~getSslInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {Object} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get available SSL certificate packages and pricing for placing a new order
+     * Use before addSsl to discover which DV/OV/EV certificate types and validation tiers are buyable, plus their costs. Returns object with packageCosts (services_id keyed map of float costs) and serviceTypes (full list of SSL product offerings from the get_service_types event). No parameters required - prices are in the customer's currency. Returns 401 if unauthenticated. Show these to the customer to pick a service_type, then call putSsl to dry-run validation (hostname, CSR, coupon) without charging, then addSsl to commit. Costs do not include taxes or applied coupons — putSsl returns the actual computed price with discounts.  Sibling ops: `putSsl` (validate), `addSsl` (commit), `getSslList` (existing certs), `getSslInfo` (per-cert).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Object}
      */
+    getNewSsl() {
+      return this.getNewSslWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get SSL Cert Info
-     * Returns detailed information about a specific SSL certificate including its domain and expiration.
+     * Get full details for one SSL certificate by id - status, expiration, links
+     * Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: `updateSslInfo`, `getSslInvoices`, `getSslWelcomeEmail`, `sslCancel`, `getSslList`.
      * @param {Number} id SSL certificate ID number.
-     * @param {module:api/SSLCertificatesApi~getSslInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Object}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Object} and HTTP response
      */
-    getSslInfo(id, callback) {
+    getSslInfoWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -151,26 +158,31 @@ export default class SSLCertificatesApi {
       return this.apiClient.callApi(
         '/ssl/{id}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getSslInvoices operation.
-     * @callback module:api/SSLCertificatesApi~getSslInvoicesCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/ChargeInvoiceRows} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Get full details for one SSL certificate by id - status, expiration, links
+     * Use to inspect a single SSL cert after locating its id via getSslList. Path param id (integer, required) is the ssl_id; cross-account ids return 404 (get_service enforces ownership). Returns the ViewSSL detail payload: hostname, service_type, status, expiration, company, plus client_links (rewrite/reissue/install actions available to the customer). admin_links, settings, csrf are stripped from client responses. Returns 401 unauthenticated, 404 if id not owned by the session customer. Reissue/rekey/install actions surfaced in client_links are time-sensitive and may require fresh DNS validation. Pair with getSslInvoices for billing history, getSslWelcomeEmail to resend, sslCancel to terminate, updateSslInfo to modify settings.  Sibling ops: `updateSslInfo`, `getSslInvoices`, `getSslWelcomeEmail`, `sslCancel`, `getSslList`.
+     * @param {Number} id SSL certificate ID number.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Object}
      */
+    getSslInfo(id) {
+      return this.getSslInfoWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Get SSL Cert Invoices
-     * Returns the billing invoices associated with this SSL certificate.
+     * List all billing invoices and charges tied to one SSL certificate by id
+     * Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: `getSslInfo`, `sslCancel`, `getSslWelcomeEmail`, `getBillingInvoice` (per-invoice detail), `initiatePayment` (settle unpaid).
      * @param {Number} id SSL Cert ID number
-     * @param {module:api/SSLCertificatesApi~getSslInvoicesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/ChargeInvoiceRows}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ChargeInvoiceRows} and HTTP response
      */
-    getSslInvoices(id, callback) {
+    getSslInvoicesWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -194,24 +206,30 @@ export default class SSLCertificatesApi {
       return this.apiClient.callApi(
         '/ssl/{id}/invoices', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getSslList operation.
-     * @callback module:api/SSLCertificatesApi~getSslListCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * List all billing invoices and charges tied to one SSL certificate by id
+     * Use to retrieve the full invoice history for a single SSL cert - initial order, renewals, and any addon charges. Path param id (integer, required) is the ssl_id; ownership is enforced via get_service so cross-account ids return an Invalid Service error. Returns ChargeInvoiceRows: success bool plus invoices array of charge/invoice rows with iid, date, cost, status (paid/unpaid/refunded), and description. Returns 401 unauthenticated, 400 if the id resolves to no service. Useful for auditing renewals before sslCancel, reconciling payment failures, or showing the customer their billing history.  Sibling ops: `getSslInfo`, `sslCancel`, `getSslWelcomeEmail`, `getBillingInvoice` (per-invoice detail), `initiatePayment` (settle unpaid).
+     * @param {Number} id SSL Cert ID number
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ChargeInvoiceRows}
      */
+    getSslInvoices(id) {
+      return this.getSslInvoicesWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * List SSL Certs
-     * Returns all SSL certificate services on the account with their current status.
-     * @param {module:api/SSLCertificatesApi~getSslListCallback} callback The callback function, accepting three arguments: error, data, response
+     * List all SSL certificates on the authenticated customer account with status and hostname
+     * Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: `getSslInfo`, `getNewSsl` (catalog), `addSsl` (order new cert).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    getSslList(callback) {
+    getSslListWithHttpInfo() {
       let postBody = null;
 
       let pathParams = {
@@ -230,26 +248,30 @@ export default class SSLCertificatesApi {
       return this.apiClient.callApi(
         '/ssl', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the getSslWelcomeEmail operation.
-     * @callback module:api/SSLCertificatesApi~getSslWelcomeEmailCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * List all SSL certificates on the authenticated customer account with status and hostname
+     * Use to enumerate every SSL certificate (DV/OV/EV) the current customer owns before drilling into a specific cert. Returns an array of SslRow objects with id, hostname, services_name (package), status (pending/active/expired/canceled), and company. No query parameters - results are auto-scoped to the session account_id. Empty array if customer has no certs. Returns 401 if unauthenticated. Pair the returned id with getSslInfo for full details, getSslInvoices for billing, getSslWelcomeEmail to resend credentials, sslCancel to terminate, or addSsl to order a new cert. Status values may be stale relative to CA - issuance/validation can take minutes to hours after order.  Sibling ops: `getSslInfo`, `getNewSsl` (catalog), `addSsl` (order new cert).
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    getSslList() {
+      return this.getSslListWithHttpInfo()
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Resend SSL Welcome Email
-     * Resends the welcome email for the order.
+     * Resend the SSL welcome email with cert credentials and install instructions
+     * Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module's ssl_welcome_email function to re-send to the account's email on file. Returns SuccessTextResponse: text='Welcome Email has been resent.' Returns 401 unauthenticated, 404 if id not found or not owned by session customer ('Invalid Service Passed'), 409 if cert status is not 'active' (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer's address has changed.  Sibling ops: `getSslInfo` (verify status), `sslCancel` (terminate), `updateAccountInfo` (change email first).
      * @param {Number} id SSL Cert ID number
-     * @param {module:api/SSLCertificatesApi~getSslWelcomeEmailCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessTextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessTextResponse} and HTTP response
      */
-    getSslWelcomeEmail(id, callback) {
+    getSslWelcomeEmailWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -273,25 +295,36 @@ export default class SSLCertificatesApi {
       return this.apiClient.callApi(
         '/ssl/{id}/welcome_email', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the putSsl operation.
-     * @callback module:api/SSLCertificatesApi~putSslCallback
-     * @param {String} error Error message, if any.
-     * @param data This operation does not return a value.
-     * @param {String} response The complete HTTP response.
+     * Resend the SSL welcome email with cert credentials and install instructions
+     * Use when a customer lost the original welcome email containing CSR submission steps, validation links, or installation guidance for an active SSL cert. Path param id (integer, required) is the ssl_id. Triggers the module's ssl_welcome_email function to re-send to the account's email on file. Returns SuccessTextResponse: text='Welcome Email has been resent.' Returns 401 unauthenticated, 404 if id not found or not owned by session customer ('Invalid Service Passed'), 409 if cert status is not 'active' (pending/canceled/expired certs do not have a welcome email to resend). Caveat: cannot change the destination email - update the account profile first if the customer's address has changed.  Sibling ops: `getSslInfo` (verify status), `sslCancel` (terminate), `updateAccountInfo` (change email first).
+     * @param {Number} id SSL Cert ID number
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessTextResponse}
      */
+    getSslWelcomeEmail(id) {
+      return this.getSslWelcomeEmailWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Validate SSL Cert Order
-     * Validates an SSL certificate order before placing it.
-     * @param {module:api/SSLCertificatesApi~putSslCallback} callback The callback function, accepting three arguments: error, data, response
+     * Validate an SSL certificate order without charging - dry-run before addSsl
+     * Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue=false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: `getNewSsl` (catalog), `addSsl` (commit).
+     * @param {module:model/SslOrderRequest} SslOrderRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    putSsl(callback) {
-      let postBody = null;
+    putSslWithHttpInfo(SslOrderRequest) {
+      let postBody = SslOrderRequest;
+      // verify the required parameter 'SslOrderRequest' is set
+      if (SslOrderRequest === undefined || SslOrderRequest === null) {
+        throw new Error("Missing the required parameter 'SslOrderRequest' when calling putSsl");
+      }
 
       let pathParams = {
       };
@@ -303,32 +336,37 @@ export default class SSLCertificatesApi {
       };
 
       let authNames = ['sessionIdCookieAuth', 'apiKeyAuth', 'sessionIdHeaderAuth'];
-      let contentTypes = [];
+      let contentTypes = ['application/json'];
       let accepts = ['application/json'];
       let returnType = null;
       return this.apiClient.callApi(
         '/ssl/order', 'PUT',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the sslCancel operation.
-     * @callback module:api/SSLCertificatesApi~sslCancelCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SslCancel200Response} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Validate an SSL certificate order without charging - dry-run before addSsl
+     * Use after getNewSsl and before addSsl to verify hostname, CSR, service_type, frequency, and coupon_code are acceptable without creating an invoice or charging the customer. Body params (form): frequency (months, default 12), service_type, hostname, csr, coupon_code, plus extra/vars per cert type. Returns continue (bool), errors (array), serviceType, serviceCost (after coupon), originalCost, hostname, couponCode. If continue=false the errors array explains what to fix - typical issues are invalid hostname/CSR mismatch, expired coupon, or unsupported service_type. Returns 401 if unauthenticated, 422 on validation failure semantics. No state is mutated. Always run this before addSsl to prevent failed charges. Sibling ops: `getNewSsl` (catalog), `addSsl` (commit).
+     * @param {module:model/SslOrderRequest} SslOrderRequest 
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
+    putSsl(SslOrderRequest) {
+      return this.putSslWithHttpInfo(SslOrderRequest)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Cancel SSL Certificate Service
-     * Cancels the SSL certificate service. The certificate will not be renewed and billing will stop at the end of the current billing cycle.
+     * Cancel an SSL certificate service - stops renewals at end of billing cycle
+     * [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: `getSslInfo` (verify cert), `getSslInvoices` (check unpaid), `addSsl` (re-order).
      * @param {Number} id SSL Cert ID number
-     * @param {module:api/SSLCertificatesApi~sslCancelCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SslCancel200Response}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SslCancel200Response} and HTTP response
      */
-    sslCancel(id, callback) {
+    sslCancelWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -352,26 +390,31 @@ export default class SSLCertificatesApi {
       return this.apiClient.callApi(
         '/ssl/{id}', 'DELETE',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
     }
 
     /**
-     * Callback function to receive the result of the updateSslInfo operation.
-     * @callback module:api/SSLCertificatesApi~updateSslInfoCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/SuccessTextResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
+     * Cancel an SSL certificate service - stops renewals at end of billing cycle
+     * [DESTRUCTIVE] Use to cancel a customer-owned SSL cert. Path param id (integer, required) is the ssl_id. Cancellation marks the service for non-renewal - the cert stays valid until its current paid period ends, after which auto-billing stops. The CA-issued certificate itself is NOT revoked by this call (file a separate revocation request if needed). Returns SSLCancelResponse with success bool and text. Returns 401 unauthenticated, 404 if id not owned by session customer, error if the cancel_service hook fails. Caveat: irreversible at the billing level - re-enabling requires a new addSsl order. Verify the right cert with getSslInfo and confirm no unpaid charges via getSslInvoices first.  Sibling ops: `getSslInfo` (verify cert), `getSslInvoices` (check unpaid), `addSsl` (re-order).
+     * @param {Number} id SSL Cert ID number
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SslCancel200Response}
      */
+    sslCancel(id) {
+      return this.sslCancelWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
 
     /**
-     * Update SSL Cert Order
-     * Updates settings on an SSL certificate order.
+     * Update mutable settings on an existing SSL certificate order by id
+     * Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: `getSslInfo` (read), `sslCancel` (terminate), `getSslWelcomeEmail`.
      * @param {String} id SSL certificate ID number.
-     * @param {module:api/SSLCertificatesApi~updateSslInfoCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/SuccessTextResponse}
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/SuccessTextResponse} and HTTP response
      */
-    updateSslInfo(id, callback) {
+    updateSslInfoWithHttpInfo(id) {
       let postBody = null;
       // verify the required parameter 'id' is set
       if (id === undefined || id === null) {
@@ -395,8 +438,21 @@ export default class SSLCertificatesApi {
       return this.apiClient.callApi(
         '/ssl/{id}', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
+        authNames, contentTypes, accepts, returnType, null
       );
+    }
+
+    /**
+     * Update mutable settings on an existing SSL certificate order by id
+     * Use to modify mutable fields on a customer-owned SSL cert (e.g. contact info, renewal preferences, hostname or CSR data depending on cert state and CA rules). Path param id (string/int, required) is the ssl_id. Body params depend on the cert package and which fields the underlying service supports - inspect getSslInfo client_links first to see which actions are exposed. Returns SuccessTextResponse on success. Returns 401 unauthenticated, 404 if id not owned, 409 if cert state forbids the change (e.g. canceled or pending CA validation), 422 on invalid field values. Caveat: changes that affect the certificate identity (hostname, CSR) typically trigger a reissue with the CA which is time-sensitive and may require new DNS or email validation.  Sibling ops: `getSslInfo` (read), `sslCancel` (terminate), `getSslWelcomeEmail`.
+     * @param {String} id SSL certificate ID number.
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SuccessTextResponse}
+     */
+    updateSslInfo(id) {
+      return this.updateSslInfoWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
     }
 
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DenyRuleRecord = Initialize-PSOpenAPIToolsDenyRuleRecord  -User mb20682 `
+$DenyRuleRecord = Initialize-InterserverApiDenyRuleRecord  -User mb20682 `
  -Type email `
  -VarData domeinwo@server.guesshost.net `
  -Id 41124 `

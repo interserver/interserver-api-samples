@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PlaceScrubOrder201ResponseOrderDetailsCjParams } from './api';
+import { PlaceScrubOrder201ResponseOrderDetailsCjParams } from '@interserver/myadmin-client';
 
 const instance: PlaceScrubOrder201ResponseOrderDetailsCjParams = {
     containerTagId,

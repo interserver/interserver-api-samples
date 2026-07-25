@@ -1,4 +1,4 @@
-# openapi::HomeServicesVpsLinks
+# interserverapi::HomeServicesVpsLinks
 
 Map of VPS service IDs to their hostnames for the account dashboard.
 

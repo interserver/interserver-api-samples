@@ -1,4 +1,4 @@
-# SwaggerClient::ServerClientLink
+# InterserverApiClient::ServerClientLink
 
 ## Properties
 Name | Type | Description | Notes

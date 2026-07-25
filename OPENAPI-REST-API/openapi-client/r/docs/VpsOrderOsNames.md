@@ -1,4 +1,4 @@
-# openapi::VpsOrderOsNames
+# interserverapi::VpsOrderOsNames
 
 OS Names
 

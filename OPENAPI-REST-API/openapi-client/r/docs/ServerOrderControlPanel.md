@@ -1,4 +1,4 @@
-# openapi::ServerOrderControlPanel
+# interserverapi::ServerOrderControlPanel
 
 A control panel option available when ordering a dedicated server.
 

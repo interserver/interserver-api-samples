@@ -1,4 +1,4 @@
-# InterServerManagementApi.AccountInfoCountryCurrencies
+# InterserverApiClient.AccountInfoCountryCurrencies
 
 ## Properties
 

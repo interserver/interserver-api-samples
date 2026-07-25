@@ -18,4 +18,8 @@ Provisioning status data for a pending domain order.
 |**attributes** | [**DomainProvProcessPendingAttributes**](DomainProvProcessPendingAttributes.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

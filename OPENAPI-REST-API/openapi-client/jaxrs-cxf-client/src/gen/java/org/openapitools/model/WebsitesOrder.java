@@ -172,7 +172,7 @@ public class WebsitesOrder  {
    * @return enableDomainRegistering
   **/
   @JsonProperty("enableDomainRegistering")
-  public Boolean getEnableDomainRegistering() {
+  public Boolean isEnableDomainRegistering() {
     return enableDomainRegistering;
   }
 

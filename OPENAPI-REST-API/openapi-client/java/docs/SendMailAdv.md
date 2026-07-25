@@ -19,4 +19,8 @@ Details for an Email
 |**id** | **Long** | (optional)  ID of the Mail order within our system to use as the Mail Account. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

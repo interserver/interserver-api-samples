@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.backup_order_put_response import BackupOrderPutResponse  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.backup_order_put_response import BackupOrderPutResponse  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestBackupOrderPutResponse(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestBackupOrderPutResponse(unittest.TestCase):
     def testBackupOrderPutResponse(self):
         """Test BackupOrderPutResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.backup_order_put_response.BackupOrderPutResponse()  # noqa: E501
+        # model = interserver_api_client.models.backup_order_put_response.BackupOrderPutResponse()  # noqa: E501
         pass
 
 

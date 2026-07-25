@@ -1,4 +1,4 @@
-# SwaggerClient::ServerOrderMemoryLi
+# InterserverApiClient::ServerOrderMemoryLi
 
 ## Properties
 Name | Type | Description | Notes

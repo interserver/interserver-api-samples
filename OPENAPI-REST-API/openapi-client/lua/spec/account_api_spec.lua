@@ -15,13 +15,6 @@ Please update as you see appropriate
 ]]
 describe("account_api", function()
   local openapiclient_account_api = require "openapiclient.api.account_api"
-  -- unit tests for change_account_username
-  describe("change_account_username test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for delete_account_oauth_name
   describe("delete_account_oauth_name test", function()
     it("should work", function()

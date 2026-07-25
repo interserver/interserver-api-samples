@@ -21,4 +21,8 @@ Credit card information stored on the account.
 |**verified** | **Boolean** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

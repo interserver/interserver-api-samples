@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateRule400Response = Initialize-PSOpenAPIToolsCreateRule400Response  -Success false `
+$CreateRule400Response = Initialize-InterserverApiCreateRule400Response  -Success false `
  -Text Bad Request `
  -Errors null
 ```

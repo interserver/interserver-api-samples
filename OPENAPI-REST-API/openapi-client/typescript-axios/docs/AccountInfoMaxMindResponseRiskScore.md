@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoMaxMindResponseRiskScore } from './api';
+import { AccountInfoMaxMindResponseRiskScore } from '@interserver/myadmin-client';
 
 const instance: AccountInfoMaxMindResponseRiskScore = {
 };

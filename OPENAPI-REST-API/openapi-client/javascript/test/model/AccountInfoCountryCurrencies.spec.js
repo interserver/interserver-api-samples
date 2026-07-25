@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoCountryCurrencies();
+    instance = new InterserverApiClient.AccountInfoCountryCurrencies();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('AccountInfoCountryCurrencies', function() {
     it('should create an instance of AccountInfoCountryCurrencies', function() {
       // uncomment below and update the code to test AccountInfoCountryCurrencies
-      //var instance = new InterServerManagementApi.AccountInfoCountryCurrencies();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoCountryCurrencies);
+      //var instance = new InterserverApiClient.AccountInfoCountryCurrencies();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoCountryCurrencies);
     });
 
   });

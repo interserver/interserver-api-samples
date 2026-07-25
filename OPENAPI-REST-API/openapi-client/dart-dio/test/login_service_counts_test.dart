@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LoginServiceCounts
 void main() {
-  final instance = LoginServiceCountsBuilder();
-  // TODO add properties to the builder and call build()
+  final LoginServiceCounts? instance = /* LoginServiceCounts(...) */ null;
+  // TODO add properties to the entity
 
   group(LoginServiceCounts, () {
     // The number of total VPS orders that have been placed in our billing system.

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainNameserverGetResponseInner } from './api';
+import { DomainNameserverGetResponseInner } from '@interserver/myadmin-client';
 
 const instance: DomainNameserverGetResponseInner = {
     name,

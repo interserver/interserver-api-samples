@@ -1,67 +1,67 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for QuickserverBillingDetails
 void main() {
-  final instance = QuickserverBillingDetailsBuilder();
-  // TODO add properties to the builder and call build()
+  final QuickserverBillingDetails? instance = /* QuickserverBillingDetails(...) */ null;
+  // TODO add properties to the entity
 
   group(QuickserverBillingDetails, () {
     // Last invoice date
-    // String serviceLastInvoiceDate
+    // Optional<String?> serviceLastInvoiceDate
     test('to test the property `serviceLastInvoiceDate`', () async {
       // TODO
     });
 
     // Payment status
-    // String servicePaymentStatus
+    // Optional<String?> servicePaymentStatus
     test('to test the property `servicePaymentStatus`', () async {
       // TODO
     });
 
     // Service frequency
-    // String serviceFrequency
+    // Optional<String?> serviceFrequency
     test('to test the property `serviceFrequency`', () async {
       // TODO
     });
 
     // Next date
-    // String nextDate
+    // Optional<String?> nextDate
     test('to test the property `nextDate`', () async {
       // TODO
     });
 
     // Next invoice date
-    // String serviceNextInvoiceDate
+    // Optional<String?> serviceNextInvoiceDate
     test('to test the property `serviceNextInvoiceDate`', () async {
       // TODO
     });
 
     // Currency
-    // String serviceCurrency
+    // Optional<String?> serviceCurrency
     test('to test the property `serviceCurrency`', () async {
       // TODO
     });
 
     // Currency symbol
-    // String serviceCurrencySymbol
+    // Optional<String?> serviceCurrencySymbol
     test('to test the property `serviceCurrencySymbol`', () async {
       // TODO
     });
 
     // Cost information
-    // String serviceCostInfo
+    // Optional<String?> serviceCostInfo
     test('to test the property `serviceCostInfo`', () async {
       // TODO
     });
 
-    // QuickserverServiceExtra serviceExtra
+    // Optional<QuickserverServiceExtra?> serviceExtra
     test('to test the property `serviceExtra`', () async {
       // TODO
     });
 
     // Extra information (JSON format)
-    // String serviceExtraJson
+    // Optional<String?> serviceExtraJson
     test('to test the property `serviceExtraJson`', () async {
       // TODO
     });

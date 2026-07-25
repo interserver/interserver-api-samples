@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.TicketPostDetailsInner();
+    instance = new InterserverApiClient.TicketPostDetailsInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('TicketPostDetailsInner', function() {
     it('should create an instance of TicketPostDetailsInner', function() {
       // uncomment below and update the code to test TicketPostDetailsInner
-      //var instance = new InterServerManagementApi.TicketPostDetailsInner();
-      //expect(instance).to.be.a(InterServerManagementApi.TicketPostDetailsInner);
+      //var instance = new InterserverApiClient.TicketPostDetailsInner();
+      //expect(instance).to.be.a(InterserverApiClient.TicketPostDetailsInner);
     });
 
     it('should have the property post_id (base name: "post_id")', function() {
       // uncomment below and update the code to test the property post_id
-      //var instance = new InterServerManagementApi.TicketPostDetailsInner();
+      //var instance = new InterserverApiClient.TicketPostDetailsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property date (base name: "date")', function() {
       // uncomment below and update the code to test the property date
-      //var instance = new InterServerManagementApi.TicketPostDetailsInner();
+      //var instance = new InterserverApiClient.TicketPostDetailsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property contents (base name: "contents")', function() {
       // uncomment below and update the code to test the property contents
-      //var instance = new InterServerManagementApi.TicketPostDetailsInner();
+      //var instance = new InterserverApiClient.TicketPostDetailsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property creator (base name: "creator")', function() {
       // uncomment below and update the code to test the property creator
-      //var instance = new InterServerManagementApi.TicketPostDetailsInner();
+      //var instance = new InterserverApiClient.TicketPostDetailsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property creator_email (base name: "creator_email")', function() {
       // uncomment below and update the code to test the property creator_email
-      //var instance = new InterServerManagementApi.TicketPostDetailsInner();
+      //var instance = new InterserverApiClient.TicketPostDetailsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property creator_name (base name: "creator_name")', function() {
       // uncomment below and update the code to test the property creator_name
-      //var instance = new InterServerManagementApi.TicketPostDetailsInner();
+      //var instance = new InterserverApiClient.TicketPostDetailsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property hasattachments (base name: "hasattachments")', function() {
       // uncomment below and update the code to test the property hasattachments
-      //var instance = new InterServerManagementApi.TicketPostDetailsInner();
+      //var instance = new InterserverApiClient.TicketPostDetailsInner();
       //expect(instance).to.be();
     });
 
     it('should have the property attachment_download (base name: "attachment_download")', function() {
       // uncomment below and update the code to test the property attachment_download
-      //var instance = new InterServerManagementApi.TicketPostDetailsInner();
+      //var instance = new InterserverApiClient.TicketPostDetailsInner();
       //expect(instance).to.be();
     });
 

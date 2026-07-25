@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerNetworkInfoAssets = Initialize-PSOpenAPIToolsServerNetworkInfoAssets  -Var3497 null
+$ServerNetworkInfoAssets = Initialize-InterserverApiServerNetworkInfoAssets  -Var3497 null
 ```
 
 - Convert the resource to JSON

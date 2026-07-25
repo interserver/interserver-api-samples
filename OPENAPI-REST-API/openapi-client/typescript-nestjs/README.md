@@ -1,4 +1,4 @@
-## @1.0.0
+## @interserver/api-client@1.0.0
 
 ### Building
 
@@ -15,8 +15,8 @@ In your Nestjs project:
 
 ```
 // without configuring providers
-import { ApiModule } from '';
-import { HttpModule } from '@nestjs/common';
+import { ApiModule } from '@interserver/api-client';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
     imports: [
@@ -30,7 +30,7 @@ export class AppModule {}
 
 ```
 // configuring providers
-import { ApiModule, Configuration, ConfigurationParameters } from '';
+import { ApiModule, Configuration, ConfigurationParameters } from '@interserver/api-client';
 
 export function apiConfigFactory (): Configuration => {
   const params: ConfigurationParameters = {
@@ -49,7 +49,7 @@ export class AppModule {}
 ```
 
 ```
-import { DefaultApi } from '';
+import { DefaultApi } from '@interserver/api-client';
 
 export class AppComponent {
     constructor(private apiGateway: DefaultApi) { }
@@ -66,7 +66,7 @@ in order to avoid naming conflicts:
 ```
 import { ApiModule } from 'my-api-path';
 import { ApiModule as OtherApiModule } from 'my-other-api-path';
-import { HttpModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -85,7 +85,7 @@ export class AppModule {
 If different than the generated base path, during app bootstrap, you can provide the base path to your service.
 
 ```
-import { BASE_PATH } from '';
+import { BASE_PATH } from '@interserver/api-client';
 
 bootstrap(AppComponent, [
     { provide: BASE_PATH, useValue: 'https://your-web-service.com' },
@@ -94,7 +94,7 @@ bootstrap(AppComponent, [
 or
 
 ```
-import { BASE_PATH } from '';
+import { BASE_PATH } from '@interserver/api-client';
 
 @Module({
     imports: [],
@@ -143,7 +143,7 @@ export const environment = {
 
 In the src/app/app.module.ts:
 ```
-import { BASE_PATH } from '';
+import { BASE_PATH } from '@interserver/api-client';
 import { environment } from '../environments/environment';
 
 @Module({

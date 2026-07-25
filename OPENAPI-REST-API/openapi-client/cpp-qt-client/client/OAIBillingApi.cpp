@@ -36,14 +36,10 @@ void OAIBillingApi::initializeServerConfigs() {
     QUrl("https://my.interserver.net/apiv2"),
     "Live API Endpoint",
     QMap<QString, OAIServerVariable>()));
-    _serverConfigs.insert("addAccountCreditCard", defaultConf);
-    _serverIndices.insert("addAccountCreditCard", 0);
     _serverConfigs.insert("addBillingCreditCard", defaultConf);
     _serverIndices.insert("addBillingCreditCard", 0);
     _serverConfigs.insert("addBillingPrepay", defaultConf);
     _serverIndices.insert("addBillingPrepay", 0);
-    _serverConfigs.insert("deleteAccountCreditCard", defaultConf);
-    _serverIndices.insert("deleteAccountCreditCard", 0);
     _serverConfigs.insert("deleteBillingCreditCard", defaultConf);
     _serverIndices.insert("deleteBillingCreditCard", 0);
     _serverConfigs.insert("deleteBillingInvoice", defaultConf);
@@ -52,12 +48,14 @@ void OAIBillingApi::initializeServerConfigs() {
     _serverIndices.insert("deleteBillingPrepay", 0);
     _serverConfigs.insert("getAffiliateBanners", defaultConf);
     _serverIndices.insert("getAffiliateBanners", 0);
+    _serverConfigs.insert("getAffiliateDownload", defaultConf);
+    _serverIndices.insert("getAffiliateDownload", 0);
     _serverConfigs.insert("getAffiliateRichReport", defaultConf);
     _serverIndices.insert("getAffiliateRichReport", 0);
     _serverConfigs.insert("getAffiliateSalesGraph", defaultConf);
     _serverIndices.insert("getAffiliateSalesGraph", 0);
-    _serverConfigs.insert("getAffiliateSalesReport", defaultConf);
-    _serverIndices.insert("getAffiliateSalesReport", 0);
+    _serverConfigs.insert("getAffiliateSignups", defaultConf);
+    _serverIndices.insert("getAffiliateSignups", 0);
     _serverConfigs.insert("getAffiliateTrafficGraph", defaultConf);
     _serverIndices.insert("getAffiliateTrafficGraph", 0);
     _serverConfigs.insert("getAffiliateWebTraffic", defaultConf);
@@ -72,18 +70,14 @@ void OAIBillingApi::initializeServerConfigs() {
     _serverIndices.insert("getBillingInvoices", 0);
     _serverConfigs.insert("getBillingPrePays", defaultConf);
     _serverIndices.insert("getBillingPrePays", 0);
-    _serverConfigs.insert("getInvoices", defaultConf);
-    _serverIndices.insert("getInvoices", 0);
     _serverConfigs.insert("initiatePayment", defaultConf);
     _serverIndices.insert("initiatePayment", 0);
+    _serverConfigs.insert("patchBillingCreditCardVerify", defaultConf);
+    _serverIndices.insert("patchBillingCreditCardVerify", 0);
     _serverConfigs.insert("postBillingCreditCardVerify", defaultConf);
     _serverIndices.insert("postBillingCreditCardVerify", 0);
-    _serverConfigs.insert("updateAccountCreditCard", defaultConf);
-    _serverIndices.insert("updateAccountCreditCard", 0);
     _serverConfigs.insert("updateAffiliateDockSetup", defaultConf);
     _serverIndices.insert("updateAffiliateDockSetup", 0);
-    _serverConfigs.insert("updateAffiliateLandingPage", defaultConf);
-    _serverIndices.insert("updateAffiliateLandingPage", 0);
     _serverConfigs.insert("updateAffiliatePaymentSetup", defaultConf);
     _serverIndices.insert("updateAffiliatePaymentSetup", 0);
     _serverConfigs.insert("updateBillingCreditCard", defaultConf);
@@ -271,94 +265,6 @@ QString OAIBillingApi::getParamStyleDelimiter(const QString &style, const QStrin
     }
 }
 
-void OAIBillingApi::addAccountCreditCard(const ::OpenAPI::OptionalParam<QString> &name, const ::OpenAPI::OptionalParam<QString> &address, const ::OpenAPI::OptionalParam<QString> &city, const ::OpenAPI::OptionalParam<QString> &state, const ::OpenAPI::OptionalParam<QString> &country, const ::OpenAPI::OptionalParam<QString> &zip, const ::OpenAPI::OptionalParam<QString> &cc, const ::OpenAPI::OptionalParam<QString> &cc_exp, const ::OpenAPI::OptionalParam<QString> &cc_ccv2) {
-    QString fullPath = QString(_serverConfigs["addAccountCreditCard"][_serverIndices.value("addAccountCreditCard")].URL()+"/account/creditcards");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "POST");
-
-    if (name.hasValue())
-    {
-        input.add_var("name", ::OpenAPI::toStringValue(name.value()));
-    }
-    if (address.hasValue())
-    {
-        input.add_var("address", ::OpenAPI::toStringValue(address.value()));
-    }
-    if (city.hasValue())
-    {
-        input.add_var("city", ::OpenAPI::toStringValue(city.value()));
-    }
-    if (state.hasValue())
-    {
-        input.add_var("state", ::OpenAPI::toStringValue(state.value()));
-    }
-    if (country.hasValue())
-    {
-        input.add_var("country", ::OpenAPI::toStringValue(country.value()));
-    }
-    if (zip.hasValue())
-    {
-        input.add_var("zip", ::OpenAPI::toStringValue(zip.value()));
-    }
-    if (cc.hasValue())
-    {
-        input.add_var("cc", ::OpenAPI::toStringValue(cc.value()));
-    }
-    if (cc_exp.hasValue())
-    {
-        input.add_var("cc_exp", ::OpenAPI::toStringValue(cc_exp.value()));
-    }
-    if (cc_ccv2.hasValue())
-    {
-        input.add_var("cc_ccv2", ::OpenAPI::toStringValue(cc_ccv2.value()));
-    }
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::addAccountCreditCardCallback);
-    connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAIBillingApi::addAccountCreditCardCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    OAISuccessTextResponse output(QString(worker->response));
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT addAccountCreditCardSignal(output);
-        Q_EMIT addAccountCreditCardSignalFull(worker, output);
-    } else {
-        Q_EMIT addAccountCreditCardSignalError(output, error_type, error_str);
-        Q_EMIT addAccountCreditCardSignalErrorFull(worker, error_type, error_str);
-    }
-}
-
 void OAIBillingApi::addBillingCreditCard(const OAIBillingAddCcRequest &oai_billing_add_cc_request) {
     QString fullPath = QString(_serverConfigs["addBillingCreditCard"][_serverIndices.value("addBillingCreditCard")].URL()+"/billing/creditcards");
     
@@ -470,73 +376,6 @@ void OAIBillingApi::addBillingPrepayCallback(OAIHttpRequestWorker *worker) {
     } else {
         Q_EMIT addBillingPrepaySignalError(output, error_type, error_str);
         Q_EMIT addBillingPrepaySignalErrorFull(worker, error_type, error_str);
-    }
-}
-
-void OAIBillingApi::deleteAccountCreditCard(const QString &id) {
-    QString fullPath = QString(_serverConfigs["deleteAccountCreditCard"][_serverIndices.value("deleteAccountCreditCard")].URL()+"/account/creditcards/{id}");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    
-    {
-        QString idPathParam("{");
-        idPathParam.append("id").append("}");
-        QString pathPrefix, pathSuffix, pathDelimiter;
-        QString pathStyle = "simple";
-        if (pathStyle == "")
-            pathStyle = "simple";
-        pathPrefix = getParamStylePrefix(pathStyle);
-        pathSuffix = getParamStyleSuffix(pathStyle);
-        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
-        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
-        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
-    }
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "DELETE");
-
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::deleteAccountCreditCardCallback);
-    connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAIBillingApi::deleteAccountCreditCardCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    QString output;
-    ::OpenAPI::fromStringValue(QString(worker->response), output);
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT deleteAccountCreditCardSignal(output);
-        Q_EMIT deleteAccountCreditCardSignalFull(worker, output);
-    } else {
-        Q_EMIT deleteAccountCreditCardSignalError(output, error_type, error_str);
-        Q_EMIT deleteAccountCreditCardSignalErrorFull(worker, error_type, error_str);
     }
 }
 
@@ -799,6 +638,103 @@ void OAIBillingApi::getAffiliateBannersCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
+void OAIBillingApi::getAffiliateDownload(const ::OpenAPI::OptionalParam<QString> &st, const ::OpenAPI::OptionalParam<QString> &ex, const ::OpenAPI::OptionalParam<qint32> &year) {
+    QString fullPath = QString(_serverConfigs["getAffiliateDownload"][_serverIndices.value("getAffiliateDownload")].URL()+"/affiliate/download");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    QString queryPrefix, querySuffix, queryDelimiter, queryStyle;
+    if (st.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "st", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("st")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(st.stringValue())));
+    }
+    if (ex.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "ex", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("ex")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ex.stringValue())));
+    }
+    if (year.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "year", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("year")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(year.stringValue())));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "GET");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::getAffiliateDownloadCallback);
+    connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIBillingApi::getAffiliateDownloadCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT getAffiliateDownloadSignal();
+        Q_EMIT getAffiliateDownloadSignalFull(worker);
+    } else {
+        Q_EMIT getAffiliateDownloadSignalError(error_type, error_str);
+        Q_EMIT getAffiliateDownloadSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
 void OAIBillingApi::getAffiliateRichReport() {
     QString fullPath = QString(_serverConfigs["getAffiliateRichReport"][_serverIndices.value("getAffiliateRichReport")].URL()+"/affiliate/rich_report");
     
@@ -919,8 +855,8 @@ void OAIBillingApi::getAffiliateSalesGraphCallback(OAIHttpRequestWorker *worker)
     }
 }
 
-void OAIBillingApi::getAffiliateSalesReport() {
-    QString fullPath = QString(_serverConfigs["getAffiliateSalesReport"][_serverIndices.value("getAffiliateSalesReport")].URL()+"/affiliate/sales_report");
+void OAIBillingApi::getAffiliateSignups(const ::OpenAPI::OptionalParam<QString> &st) {
+    QString fullPath = QString(_serverConfigs["getAffiliateSignups"][_serverIndices.value("getAffiliateSignups")].URL()+"/affiliate/signups");
     
     if (_apiKeys.contains("apiKeyAuth")) {
         addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
@@ -930,6 +866,22 @@ void OAIBillingApi::getAffiliateSalesReport() {
         addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
     }
     
+    QString queryPrefix, querySuffix, queryDelimiter, queryStyle;
+    if (st.hasValue())
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "st", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("st")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(st.stringValue())));
+    }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
     worker->setWorkingDirectory(_workingDirectory);
@@ -941,7 +893,7 @@ void OAIBillingApi::getAffiliateSalesReport() {
     }
 
 
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::getAffiliateSalesReportCallback);
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::getAffiliateSignupsCallback);
     connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
     connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
@@ -952,22 +904,22 @@ void OAIBillingApi::getAffiliateSalesReport() {
     worker->execute(&input);
 }
 
-void OAIBillingApi::getAffiliateSalesReportCallback(OAIHttpRequestWorker *worker) {
+void OAIBillingApi::getAffiliateSignupsCallback(OAIHttpRequestWorker *worker) {
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
 
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
-    OAITextResponse output(QString(worker->response));
+    OAIGetAffiliateSignups_200_response output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getAffiliateSalesReportSignal(output);
-        Q_EMIT getAffiliateSalesReportSignalFull(worker, output);
+        Q_EMIT getAffiliateSignupsSignal(output);
+        Q_EMIT getAffiliateSignupsSignalFull(worker, output);
     } else {
-        Q_EMIT getAffiliateSalesReportSignalError(output, error_type, error_str);
-        Q_EMIT getAffiliateSalesReportSignalErrorFull(worker, error_type, error_str);
+        Q_EMIT getAffiliateSignupsSignalError(output, error_type, error_str);
+        Q_EMIT getAffiliateSignupsSignalErrorFull(worker, error_type, error_str);
     }
 }
 
@@ -1388,115 +1340,8 @@ void OAIBillingApi::getBillingPrePaysCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIBillingApi::getInvoices(const ::OpenAPI::OptionalParam<QString> &search_string, const ::OpenAPI::OptionalParam<qint32> &skip, const ::OpenAPI::OptionalParam<qint32> &limit) {
-    QString fullPath = QString(_serverConfigs["getInvoices"][_serverIndices.value("getInvoices")].URL()+"/invoices");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    QString queryPrefix, querySuffix, queryDelimiter, queryStyle;
-    if (search_string.hasValue())
-    {
-        queryStyle = "form";
-        if (queryStyle == "")
-            queryStyle = "form";
-        queryPrefix = getParamStylePrefix(queryStyle);
-        querySuffix = getParamStyleSuffix(queryStyle);
-        queryDelimiter = getParamStyleDelimiter(queryStyle, "searchString", true);
-        if (fullPath.indexOf("?") > 0)
-            fullPath.append(queryPrefix);
-        else
-            fullPath.append("?");
-
-        fullPath.append(QUrl::toPercentEncoding("searchString")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(search_string.stringValue())));
-    }
-    if (skip.hasValue())
-    {
-        queryStyle = "form";
-        if (queryStyle == "")
-            queryStyle = "form";
-        queryPrefix = getParamStylePrefix(queryStyle);
-        querySuffix = getParamStyleSuffix(queryStyle);
-        queryDelimiter = getParamStyleDelimiter(queryStyle, "skip", true);
-        if (fullPath.indexOf("?") > 0)
-            fullPath.append(queryPrefix);
-        else
-            fullPath.append("?");
-
-        fullPath.append(QUrl::toPercentEncoding("skip")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(skip.stringValue())));
-    }
-    if (limit.hasValue())
-    {
-        queryStyle = "form";
-        if (queryStyle == "")
-            queryStyle = "form";
-        queryPrefix = getParamStylePrefix(queryStyle);
-        querySuffix = getParamStyleSuffix(queryStyle);
-        queryDelimiter = getParamStyleDelimiter(queryStyle, "limit", true);
-        if (fullPath.indexOf("?") > 0)
-            fullPath.append(queryPrefix);
-        else
-            fullPath.append("?");
-
-        fullPath.append(QUrl::toPercentEncoding("limit")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(limit.stringValue())));
-    }
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "GET");
-
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::getInvoicesCallback);
-    connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAIBillingApi::getInvoicesCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    QList<OAIInvoice> output;
-    QString json(worker->response);
-    QByteArray array(json.toStdString().c_str());
-    QJsonDocument doc = QJsonDocument::fromJson(array);
-    QJsonArray jsonArray = doc.array();
-    for (QJsonValue obj : jsonArray) {
-        OAIInvoice val;
-        ::OpenAPI::fromJsonValue(val, obj);
-        output.append(val);
-    }
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getInvoicesSignal(output);
-        Q_EMIT getInvoicesSignalFull(worker, output);
-    } else {
-        Q_EMIT getInvoicesSignalError(output, error_type, error_str);
-        Q_EMIT getInvoicesSignalErrorFull(worker, error_type, error_str);
-    }
-}
-
 void OAIBillingApi::initiatePayment(const QString &method, const QString &invoices) {
-    QString fullPath = QString(_serverConfigs["initiatePayment"][_serverIndices.value("initiatePayment")].URL()+"/pay/{method}/{invoices}");
+    QString fullPath = QString(_serverConfigs["initiatePayment"][_serverIndices.value("initiatePayment")].URL()+"/billing/pay/{method}/{invoices}");
     
     if (_apiKeys.contains("apiKeyAuth")) {
         addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
@@ -1575,6 +1420,77 @@ void OAIBillingApi::initiatePaymentCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
+void OAIBillingApi::patchBillingCreditCardVerify(const qint32 &id, const OAIPatchBillingCreditCardVerify_request &oai_patch_billing_credit_card_verify_request) {
+    QString fullPath = QString(_serverConfigs["patchBillingCreditCardVerify"][_serverIndices.value("patchBillingCreditCardVerify")].URL()+"/billing/creditcards/{id}/verify");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "PATCH");
+
+    {
+
+        
+        QByteArray output = oai_patch_billing_credit_card_verify_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::patchBillingCreditCardVerifyCallback);
+    connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIBillingApi::patchBillingCreditCardVerifyCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    OAISuccessTextResponse output(QString(worker->response));
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT patchBillingCreditCardVerifySignal(output);
+        Q_EMIT patchBillingCreditCardVerifySignalFull(worker, output);
+    } else {
+        Q_EMIT patchBillingCreditCardVerifySignalError(output, error_type, error_str);
+        Q_EMIT patchBillingCreditCardVerifySignalErrorFull(worker, error_type, error_str);
+    }
+}
+
 void OAIBillingApi::postBillingCreditCardVerify(const qint32 &id, const OAIBillingVerifyCcRequest &oai_billing_verify_cc_request) {
     QString fullPath = QString(_serverConfigs["postBillingCreditCardVerify"][_serverIndices.value("postBillingCreditCardVerify")].URL()+"/billing/creditcards/{id}/verify");
     
@@ -1646,73 +1562,6 @@ void OAIBillingApi::postBillingCreditCardVerifyCallback(OAIHttpRequestWorker *wo
     }
 }
 
-void OAIBillingApi::updateAccountCreditCard(const qint32 &id) {
-    QString fullPath = QString(_serverConfigs["updateAccountCreditCard"][_serverIndices.value("updateAccountCreditCard")].URL()+"/account/creditcards/{id}");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    
-    {
-        QString idPathParam("{");
-        idPathParam.append("id").append("}");
-        QString pathPrefix, pathSuffix, pathDelimiter;
-        QString pathStyle = "simple";
-        if (pathStyle == "")
-            pathStyle = "simple";
-        pathPrefix = getParamStylePrefix(pathStyle);
-        pathSuffix = getParamStyleSuffix(pathStyle);
-        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
-        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
-        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
-    }
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "POST");
-
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::updateAccountCreditCardCallback);
-    connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAIBillingApi::updateAccountCreditCardCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    QString output;
-    ::OpenAPI::fromStringValue(QString(worker->response), output);
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateAccountCreditCardSignal(output);
-        Q_EMIT updateAccountCreditCardSignalFull(worker, output);
-    } else {
-        Q_EMIT updateAccountCreditCardSignalError(output, error_type, error_str);
-        Q_EMIT updateAccountCreditCardSignalErrorFull(worker, error_type, error_str);
-    }
-}
-
 void OAIBillingApi::updateAffiliateDockSetup(const ::OpenAPI::OptionalParam<QString> &affiliate_dock_title, const ::OpenAPI::OptionalParam<QString> &affiliate_dock_description, const ::OpenAPI::OptionalParam<QString> &referrer_coupon) {
     QString fullPath = QString(_serverConfigs["updateAffiliateDockSetup"][_serverIndices.value("updateAffiliateDockSetup")].URL()+"/affiliate/dock_setup");
     
@@ -1774,70 +1623,6 @@ void OAIBillingApi::updateAffiliateDockSetupCallback(OAIHttpRequestWorker *worke
     } else {
         Q_EMIT updateAffiliateDockSetupSignalError(output, error_type, error_str);
         Q_EMIT updateAffiliateDockSetupSignalErrorFull(worker, error_type, error_str);
-    }
-}
-
-void OAIBillingApi::updateAffiliateLandingPage(const ::OpenAPI::OptionalParam<QString> &affiliate_dock_title, const ::OpenAPI::OptionalParam<QString> &affiliate_dock_description, const ::OpenAPI::OptionalParam<QString> &referrer_coupon) {
-    QString fullPath = QString(_serverConfigs["updateAffiliateLandingPage"][_serverIndices.value("updateAffiliateLandingPage")].URL()+"/affiliate/landing_pg");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "POST");
-
-    if (affiliate_dock_title.hasValue())
-    {
-        input.add_var("affiliate_dock_title", ::OpenAPI::toStringValue(affiliate_dock_title.value()));
-    }
-    if (affiliate_dock_description.hasValue())
-    {
-        input.add_var("affiliate_dock_description", ::OpenAPI::toStringValue(affiliate_dock_description.value()));
-    }
-    if (referrer_coupon.hasValue())
-    {
-        input.add_var("referrer_coupon", ::OpenAPI::toStringValue(referrer_coupon.value()));
-    }
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIBillingApi::updateAffiliateLandingPageCallback);
-    connect(this, &OAIBillingApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAIBillingApi::updateAffiliateLandingPageCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    OAITextResponse output(QString(worker->response));
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT updateAffiliateLandingPageSignal(output);
-        Q_EMIT updateAffiliateLandingPageSignalFull(worker, output);
-    } else {
-        Q_EMIT updateAffiliateLandingPageSignalError(output, error_type, error_str);
-        Q_EMIT updateAffiliateLandingPageSignalErrorFull(worker, error_type, error_str);
     }
 }
 

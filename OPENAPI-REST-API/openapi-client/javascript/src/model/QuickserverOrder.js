@@ -20,7 +20,7 @@ import QuickserverOrderVersion from './QuickserverOrderVersion';
 /**
  * The QuickserverOrder model module.
  * @module model/QuickserverOrder
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverOrder {
     /**

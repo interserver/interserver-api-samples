@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerServiceInfo();
+    instance = new InterserverApiClient.ServerServiceInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,223 +50,223 @@
   describe('ServerServiceInfo', function() {
     it('should create an instance of ServerServiceInfo', function() {
       // uncomment below and update the code to test ServerServiceInfo
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerServiceInfo);
+      //var instance = new InterserverApiClient.ServerServiceInfo();
+      //expect(instance).to.be.a(InterserverApiClient.ServerServiceInfo);
     });
 
     it('should have the property server_id (base name: "server_id")', function() {
       // uncomment below and update the code to test the property server_id
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_hostname (base name: "server_hostname")', function() {
       // uncomment below and update the code to test the property server_hostname
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_custid (base name: "server_custid")', function() {
       // uncomment below and update the code to test the property server_custid
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_type (base name: "server_type")', function() {
       // uncomment below and update the code to test the property server_type
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_currency (base name: "server_currency")', function() {
       // uncomment below and update the code to test the property server_currency
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_order_date (base name: "server_order_date")', function() {
       // uncomment below and update the code to test the property server_order_date
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_invoice (base name: "server_invoice")', function() {
       // uncomment below and update the code to test the property server_invoice
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_coupon (base name: "server_coupon")', function() {
       // uncomment below and update the code to test the property server_coupon
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_status (base name: "server_status")', function() {
       // uncomment below and update the code to test the property server_status
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_root (base name: "server_root")', function() {
       // uncomment below and update the code to test the property server_root
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_dedicated_tag (base name: "server_dedicated_tag")', function() {
       // uncomment below and update the code to test the property server_dedicated_tag
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_custom_tag (base name: "server_custom_tag")', function() {
       // uncomment below and update the code to test the property server_custom_tag
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_comment (base name: "server_comment")', function() {
       // uncomment below and update the code to test the property server_comment
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_initial_bill (base name: "server_initial_bill")', function() {
       // uncomment below and update the code to test the property server_initial_bill
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_hardware (base name: "server_hardware")', function() {
       // uncomment below and update the code to test the property server_hardware
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_ips (base name: "server_ips")', function() {
       // uncomment below and update the code to test the property server_ips
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_monthly_bill (base name: "server_monthly_bill")', function() {
       // uncomment below and update the code to test the property server_monthly_bill
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_setup (base name: "server_setup")', function() {
       // uncomment below and update the code to test the property server_setup
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_discount (base name: "server_discount")', function() {
       // uncomment below and update the code to test the property server_discount
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_rep (base name: "server_rep")', function() {
       // uncomment below and update the code to test the property server_rep
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_date (base name: "server_date")', function() {
       // uncomment below and update the code to test the property server_date
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_total_cost (base name: "server_total_cost")', function() {
       // uncomment below and update the code to test the property server_total_cost
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_location (base name: "server_location")', function() {
       // uncomment below and update the code to test the property server_location
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_hardware_ordered (base name: "server_hardware_ordered")', function() {
       // uncomment below and update the code to test the property server_hardware_ordered
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_billed (base name: "server_billed")', function() {
       // uncomment below and update the code to test the property server_billed
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_welcome_email (base name: "server_welcome_email")', function() {
       // uncomment below and update the code to test the property server_welcome_email
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_dedicated_cpu (base name: "server_dedicated_cpu")', function() {
       // uncomment below and update the code to test the property server_dedicated_cpu
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_dedicated_memory (base name: "server_dedicated_memory")', function() {
       // uncomment below and update the code to test the property server_dedicated_memory
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_dedicated_hd1 (base name: "server_dedicated_hd1")', function() {
       // uncomment below and update the code to test the property server_dedicated_hd1
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_dedicated_hd2 (base name: "server_dedicated_hd2")', function() {
       // uncomment below and update the code to test the property server_dedicated_hd2
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_dedicated_bandwidth (base name: "server_dedicated_bandwidth")', function() {
       // uncomment below and update the code to test the property server_dedicated_bandwidth
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_dedicated_ips (base name: "server_dedicated_ips")', function() {
       // uncomment below and update the code to test the property server_dedicated_ips
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_dedicated_os (base name: "server_dedicated_os")', function() {
       // uncomment below and update the code to test the property server_dedicated_os
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_dedicated_cp (base name: "server_dedicated_cp")', function() {
       // uncomment below and update the code to test the property server_dedicated_cp
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_dedicated_raid (base name: "server_dedicated_raid")', function() {
       // uncomment below and update the code to test the property server_dedicated_raid
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property server_extra (base name: "server_extra")', function() {
       // uncomment below and update the code to test the property server_extra
-      //var instance = new InterServerManagementApi.ServerServiceInfo();
+      //var instance = new InterserverApiClient.ServerServiceInfo();
       //expect(instance).to.be();
     });
 

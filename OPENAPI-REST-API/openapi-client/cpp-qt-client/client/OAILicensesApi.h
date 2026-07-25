@@ -22,6 +22,7 @@
 #include "OAIGetAccountInfo_401_response.h"
 #include "OAIIpObject.h"
 #include "OAILicense.h"
+#include "OAILicenseOrderRequest.h"
 #include "OAILicenseRow.h"
 #include "OAILicensesCancel_200_response.h"
 #include "OAILicensesOrder.h"
@@ -66,8 +67,10 @@ public:
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
-
-    virtual void addLicense();
+    /**
+    * @param[in]  oai_license_order_request OAILicenseOrderRequest [required]
+    */
+    virtual void addLicense(const OAILicenseOrderRequest &oai_license_order_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -81,11 +84,6 @@ public:
 
 
     virtual void getLicenseList();
-
-    /**
-    * @param[in]  cat_tag QString [required]
-    */
-    virtual void getLicenseOrderCatTagInfo(const QString &cat_tag);
 
     /**
     * @param[in]  id qint32 [required]
@@ -106,8 +104,10 @@ public:
     */
     virtual void postLicenseChangeIp(const qint32 &id, const OAIIpObject &oaiip_object);
 
-
-    virtual void putLicenses();
+    /**
+    * @param[in]  oai_license_order_request OAILicenseOrderRequest [required]
+    */
+    virtual void putLicenses(const OAILicenseOrderRequest &oai_license_order_request);
 
     /**
     * @param[in]  id QString [required]
@@ -148,7 +148,6 @@ private:
     void getLicenseInfoCallback(OAIHttpRequestWorker *worker);
     void getLicenseInvoicesCallback(OAIHttpRequestWorker *worker);
     void getLicenseListCallback(OAIHttpRequestWorker *worker);
-    void getLicenseOrderCatTagInfoCallback(OAIHttpRequestWorker *worker);
     void getLicensesWelcomeEmailCallback(OAIHttpRequestWorker *worker);
     void getNewLicenseCallback(OAIHttpRequestWorker *worker);
     void licensesCancelCallback(OAIHttpRequestWorker *worker);
@@ -162,7 +161,6 @@ Q_SIGNALS:
     void getLicenseInfoSignal(OAILicense summary);
     void getLicenseInvoicesSignal(OAIChargeInvoiceRows summary);
     void getLicenseListSignal(QList<OAILicenseRow> summary);
-    void getLicenseOrderCatTagInfoSignal();
     void getLicensesWelcomeEmailSignal(OAISuccessTextResponse summary);
     void getNewLicenseSignal(OAILicensesOrder summary);
     void licensesCancelSignal(OAILicensesCancel_200_response summary);
@@ -175,7 +173,6 @@ Q_SIGNALS:
     void getLicenseInfoSignalFull(OAIHttpRequestWorker *worker, OAILicense summary);
     void getLicenseInvoicesSignalFull(OAIHttpRequestWorker *worker, OAIChargeInvoiceRows summary);
     void getLicenseListSignalFull(OAIHttpRequestWorker *worker, QList<OAILicenseRow> summary);
-    void getLicenseOrderCatTagInfoSignalFull(OAIHttpRequestWorker *worker);
     void getLicensesWelcomeEmailSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void getNewLicenseSignalFull(OAIHttpRequestWorker *worker, OAILicensesOrder summary);
     void licensesCancelSignalFull(OAIHttpRequestWorker *worker, OAILicensesCancel_200_response summary);
@@ -187,7 +184,6 @@ Q_SIGNALS:
     void getLicenseInfoSignalError(OAILicense summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getLicenseInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getLicenseListSignalError(QList<OAILicenseRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getLicenseOrderCatTagInfoSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getLicensesWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getNewLicenseSignalError(OAILicensesOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void licensesCancelSignalError(OAILicensesCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -199,7 +195,6 @@ Q_SIGNALS:
     void getLicenseInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getLicenseInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getLicenseListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getLicenseOrderCatTagInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getLicensesWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getNewLicenseSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void licensesCancelSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

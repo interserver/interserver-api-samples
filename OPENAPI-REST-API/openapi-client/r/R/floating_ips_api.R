@@ -16,9 +16,10 @@
 #' \dontrun{
 #' ####################  AddFloatingIp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_floating_ip_order_request <- FloatingIpOrderRequest$new(123, "coupon_example", "comment_example") # FloatingIpOrderRequest | 
 #'
-#' #Place Floating IP Order
+#' #Place a real Floating IP order, create billing records, and provision the service
 #' api_instance <- FloatingIPsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -31,17 +32,17 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$AddFloatingIp(data_file = "result.txt")
-#' result <- api_instance$AddFloatingIp()
+#' # result <- api_instance$AddFloatingIp(var_floating_ip_order_requestdata_file = "result.txt")
+#' result <- api_instance$AddFloatingIp(var_floating_ip_order_request)
 #' dput(result)
 #'
 #'
 #' ####################  FloatingIpsCancel  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 #'
-#' #Cancel Floating IP
+#' #Cancel a Floating IP service and release the IP — destructive, billing stops
 #' api_instance <- FloatingIPsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -61,10 +62,10 @@
 #'
 #' ####################  GetFloatingIpInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 #'
-#' #View Floating IP
+#' #Fetch full details for one Floating IP service, including current target IP
 #' api_instance <- FloatingIPsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -84,10 +85,10 @@
 #'
 #' ####################  GetFloatingIpInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 #'
-#' #Get Floating IP Invoices
+#' #List all billing invoices charged against a specific Floating IP service
 #' api_instance <- FloatingIPsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -107,9 +108,9 @@
 #'
 #' ####################  GetFloatingIpsList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Floating IPs
+#' #List all Floating IP services on the authenticated customer's account
 #' api_instance <- FloatingIPsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -129,10 +130,10 @@
 #'
 #' ####################  GetFloatingIpsWelcomeEmail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 #'
-#' #Resend Floating IPs Welcome Email
+#' #Resend the Floating IP welcome / setup email to the account contact
 #' api_instance <- FloatingIPsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -152,9 +153,9 @@
 #'
 #' ####################  GetNewFloatingIp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Floating IP Ordering Information
+#' #Get pricing and service-type options for ordering a new Floating IP
 #' api_instance <- FloatingIPsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -174,11 +175,11 @@
 #'
 #' ####################  PostFloatingIpsChangeIp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 #' var_ip <- "ip_example" # character | IP Address
 #'
-#' #Change Floating IP Target
+#' #Re-point a Floating IP to a different target IP on one of the customer's services
 #' api_instance <- FloatingIPsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -198,9 +199,10 @@
 #'
 #' ####################  PutFloatingIps  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_floating_ip_order_request <- FloatingIpOrderRequest$new(123, "coupon_example", "comment_example") # FloatingIpOrderRequest | 
 #'
-#' #Validate Floating IP Order
+#' #Validate a Floating IP order and price it without charging the customer
 #' api_instance <- FloatingIPsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -212,15 +214,15 @@
 #' # Configure API key authorization: sessionIdHeaderAuth
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$PutFloatingIps()
+#' api_instance$PutFloatingIps(var_floating_ip_order_request)
 #'
 #'
 #' ####################  UpdateFloatingIpInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "id_example" # character | The Floating IP service ID. Use the ID from `GET /floating_ips`.
 #'
-#' #Update Floating IP
+#' #Update a Floating IP service's editable settings (label / metadata)
 #' api_instance <- FloatingIPsApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -260,15 +262,16 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Floating IP Order
+    #' Place a real Floating IP order, create billing records, and provision the service
     #'
+    #' @param floating_ip_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return ServiceOrderPostResponse
-    AddFloatingIp = function(data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$AddFloatingIpWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+    AddFloatingIp = function(floating_ip_order_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$AddFloatingIpWithHttpInfo(floating_ip_order_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -281,14 +284,15 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place Floating IP Order
+    #' Place a real Floating IP order, create billing records, and provision the service
     #'
+    #' @param floating_ip_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (ServiceOrderPostResponse) with additional information such as HTTP status code, headers
-    AddFloatingIpWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+    AddFloatingIpWithHttpInfo = function(floating_ip_order_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -297,6 +301,20 @@ FloatingIPsApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`floating_ip_order_request`)) {
+        stop("Missing required parameter `floating_ip_order_request`.")
+      }
+
+      if (!missing(`floating_ip_order_request`) && is.null(`floating_ip_order_request`)) {
+        stop("Invalid value for `floating_ip_order_request` when calling FloatingIPsApi$AddFloatingIp, `floating_ip_order_request` is not nullable")
+      }
+
+      if (!is.null(`floating_ip_order_request`)) {
+        local_var_body <- `floating_ip_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/floating_ips/order"
       # API key authentication
@@ -313,7 +331,7 @@ FloatingIPsApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -366,7 +384,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Floating IP
+    #' Cancel a Floating IP service and release the IP — destructive, billing stops
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param data_file (optional) name of the data file to save the result
@@ -388,7 +406,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel Floating IP
+    #' Cancel a Floating IP service and release the IP — destructive, billing stops
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param data_file (optional) name of the data file to save the result
@@ -486,7 +504,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' View Floating IP
+    #' Fetch full details for one Floating IP service, including current target IP
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param data_file (optional) name of the data file to save the result
@@ -508,7 +526,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' View Floating IP
+    #' Fetch full details for one Floating IP service, including current target IP
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param data_file (optional) name of the data file to save the result
@@ -606,7 +624,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Floating IP Invoices
+    #' List all billing invoices charged against a specific Floating IP service
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param data_file (optional) name of the data file to save the result
@@ -628,7 +646,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Floating IP Invoices
+    #' List all billing invoices charged against a specific Floating IP service
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param data_file (optional) name of the data file to save the result
@@ -726,7 +744,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Floating IPs
+    #' List all Floating IP services on the authenticated customer's account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -747,7 +765,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Floating IPs
+    #' List all Floating IP services on the authenticated customer's account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -832,7 +850,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Floating IPs Welcome Email
+    #' Resend the Floating IP welcome / setup email to the account contact
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param data_file (optional) name of the data file to save the result
@@ -854,7 +872,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend Floating IPs Welcome Email
+    #' Resend the Floating IP welcome / setup email to the account contact
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param data_file (optional) name of the data file to save the result
@@ -952,7 +970,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Floating IP Ordering Information
+    #' Get pricing and service-type options for ordering a new Floating IP
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -973,7 +991,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Floating IP Ordering Information
+    #' Get pricing and service-type options for ordering a new Floating IP
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1058,7 +1076,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Floating IP Target
+    #' Re-point a Floating IP to a different target IP on one of the customer's services
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param ip IP Address
@@ -1081,7 +1099,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Floating IP Target
+    #' Re-point a Floating IP to a different target IP on one of the customer's services
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param ip IP Address
@@ -1189,13 +1207,14 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Floating IP Order
+    #' Validate a Floating IP order and price it without charging the customer
     #'
+    #' @param floating_ip_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return void
-    PutFloatingIps = function(...) {
-      local_var_response <- self$PutFloatingIpsWithHttpInfo(...)
+    PutFloatingIps = function(floating_ip_order_request, ...) {
+      local_var_response <- self$PutFloatingIpsWithHttpInfo(floating_ip_order_request, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1208,12 +1227,13 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate Floating IP Order
+    #' Validate a Floating IP order and price it without charging the customer
     #'
+    #' @param floating_ip_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    PutFloatingIpsWithHttpInfo = function(...) {
+    PutFloatingIpsWithHttpInfo = function(floating_ip_order_request, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1222,6 +1242,20 @@ FloatingIPsApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`floating_ip_order_request`)) {
+        stop("Missing required parameter `floating_ip_order_request`.")
+      }
+
+      if (!missing(`floating_ip_order_request`) && is.null(`floating_ip_order_request`)) {
+        stop("Invalid value for `floating_ip_order_request` when calling FloatingIPsApi$PutFloatingIps, `floating_ip_order_request` is not nullable")
+      }
+
+      if (!is.null(`floating_ip_order_request`)) {
+        local_var_body <- `floating_ip_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/floating_ips/order"
       # API key authentication
@@ -1238,7 +1272,7 @@ FloatingIPsApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "PUT",
@@ -1276,7 +1310,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Floating IP
+    #' Update a Floating IP service's editable settings (label / metadata)
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param data_file (optional) name of the data file to save the result
@@ -1298,7 +1332,7 @@ FloatingIPsApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Floating IP
+    #' Update a Floating IP service's editable settings (label / metadata)
     #'
     #' @param id The Floating IP service ID. Use the ID from `GET /floating_ips`.
     #' @param data_file (optional) name of the data file to save the result

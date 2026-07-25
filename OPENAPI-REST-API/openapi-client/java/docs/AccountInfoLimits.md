@@ -10,4 +10,8 @@ IP address ranges used to restrict account access to specific IPs.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

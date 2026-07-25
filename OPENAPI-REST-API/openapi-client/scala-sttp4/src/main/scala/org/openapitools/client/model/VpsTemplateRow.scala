@@ -27,4 +27,3 @@ case class VpsTemplateRow(
   template_name: Option[String] = None,
   template_dir: Option[String] = None
 )
-

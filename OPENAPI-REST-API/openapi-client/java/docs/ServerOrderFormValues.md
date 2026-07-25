@@ -17,4 +17,8 @@ Form values for the server order.
 |**hd** | **String** | Hard Drives value for the server order. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

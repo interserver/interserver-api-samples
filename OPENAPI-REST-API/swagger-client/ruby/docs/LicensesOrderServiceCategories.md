@@ -1,4 +1,4 @@
-# SwaggerClient::LicensesOrderServiceCategories
+# InterserverApiClient::LicensesOrderServiceCategories
 
 ## Properties
 Name | Type | Description | Notes

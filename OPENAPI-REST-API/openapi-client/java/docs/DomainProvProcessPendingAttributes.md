@@ -13,4 +13,8 @@
 |**fAutoRenew** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

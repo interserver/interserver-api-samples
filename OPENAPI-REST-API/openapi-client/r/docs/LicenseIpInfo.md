@@ -1,4 +1,4 @@
-# openapi::LicenseIpInfo
+# interserverapi::LicenseIpInfo
 
 IP address information table for a software license service.
 

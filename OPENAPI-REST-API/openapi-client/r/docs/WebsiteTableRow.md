@@ -1,4 +1,4 @@
-# openapi::WebsiteTableRow
+# interserverapi::WebsiteTableRow
 
 
 ## Properties

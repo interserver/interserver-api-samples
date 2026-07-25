@@ -9,6 +9,9 @@ using namespace Tiny;
         >
         QuickServersApi::
         addQs(
+            
+            QsOrderRequest qsOrderRequest
+            
         )
         {
             std::string url = basepath + "/qs/order"; //
@@ -19,6 +22,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -27,7 +31,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | 
+            // Body     | qsOrderRequest
+
+
+
+            payload = qsOrderRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
@@ -612,6 +621,57 @@ using namespace Tiny;
 
 
             Response<QuickserverOrder> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            QueueResponse
+        >
+        QuickServersApi::
+        getQsBackup(
+            
+            int id
+            
+        )
+        {
+            std::string url = basepath + "/qs/{id}/backup"; //id 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+
+
+
+                std::string s_id("{");
+                s_id.append("id");
+                s_id.append("}");
+
+                int pos = url.find(s_id);
+
+                url.erase(pos, s_id.length());
+                url.insert(pos, stringify(id));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            QueueResponse obj(output_string);
+
+
+            Response<QueueResponse> response(obj, httpCode);
             return response;
         }
 
@@ -1428,57 +1488,6 @@ using namespace Tiny;
             QueueResponse
         >
         QuickServersApi::
-        postQsBackup(
-            
-            int id
-            
-        )
-        {
-            std::string url = basepath + "/qs/{id}/backup"; //id 
-
-
-            // Headers  | 
-
-            // Query    | 
-
-            // Form     | 
-
-
-
-                std::string s_id("{");
-                s_id.append("id");
-                s_id.append("}");
-
-                int pos = url.find(s_id);
-
-                url.erase(pos, s_id.length());
-                url.insert(pos, stringify(id));
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | POST
-            // Body     | 
-            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-
-
-            QueueResponse obj(output_string);
-
-
-            Response<QueueResponse> response(obj, httpCode);
-            return response;
-        }
-
-        Response<
-            QueueResponse
-        >
-        QuickServersApi::
         postQsChangeHostname(
             
             int id
@@ -2105,6 +2114,9 @@ using namespace Tiny;
         >
         QuickServersApi::
         putQs(
+            
+            QsOrderRequest qsOrderRequest
+            
         )
         {
             std::string url = basepath + "/qs/order"; //
@@ -2115,6 +2127,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -2123,7 +2136,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PUT
-            // Body     | 
+            // Body     | qsOrderRequest
+
+
+
+            payload = qsOrderRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "PUT", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request

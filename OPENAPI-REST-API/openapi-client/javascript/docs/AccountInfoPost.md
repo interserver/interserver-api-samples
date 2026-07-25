@@ -1,4 +1,4 @@
-# InterServerManagementApi.AccountInfoPost
+# InterserverApiClient.AccountInfoPost
 
 ## Properties
 

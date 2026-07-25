@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoDataCc();
+    instance = new InterserverApiClient.AccountInfoDataCc();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,73 +50,73 @@
   describe('AccountInfoDataCc', function() {
     it('should create an instance of AccountInfoDataCc', function() {
       // uncomment below and update the code to test AccountInfoDataCc
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoDataCc);
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoDataCc);
     });
 
     it('should have the property cc (base name: "cc")', function() {
       // uncomment below and update the code to test the property cc
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 
     it('should have the property cc_exp (base name: "cc_exp")', function() {
       // uncomment below and update the code to test the property cc_exp
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 
     it('should have the property address (base name: "address")', function() {
       // uncomment below and update the code to test the property address
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 
     it('should have the property city (base name: "city")', function() {
       // uncomment below and update the code to test the property city
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 
     it('should have the property state (base name: "state")', function() {
       // uncomment below and update the code to test the property state
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 
     it('should have the property zip (base name: "zip")', function() {
       // uncomment below and update the code to test the property zip
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 
     it('should have the property country (base name: "country")', function() {
       // uncomment below and update the code to test the property country
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 
     it('should have the property maxmind_riskscore (base name: "maxmind_riskscore")', function() {
       // uncomment below and update the code to test the property maxmind_riskscore
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 
     it('should have the property maxmind (base name: "maxmind")', function() {
       // uncomment below and update the code to test the property maxmind
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 
     it('should have the property verified (base name: "verified")', function() {
       // uncomment below and update the code to test the property verified
-      //var instance = new InterServerManagementApi.AccountInfoDataCc();
+      //var instance = new InterserverApiClient.AccountInfoDataCc();
       //expect(instance).to.be();
     });
 

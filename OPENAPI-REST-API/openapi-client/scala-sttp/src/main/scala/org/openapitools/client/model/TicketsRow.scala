@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JValue
 
   /**
    * TicketsRow
@@ -27,7 +28,7 @@ case class TicketsRow(
   departmenttitle: String,
   ticketid: Int,
   can_close: String,
-  attachments: org.json4s.JValue,
+  attachments: JValue,
   status_text: String,
   checked: Boolean
 )

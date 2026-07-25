@@ -1,53 +1,53 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsOrderServiceTypes32
 void main() {
-  final instance = VpsOrderServiceTypes32Builder();
-  // TODO add properties to the builder and call build()
+  final VpsOrderServiceTypes32? instance = /* VpsOrderServiceTypes32(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsOrderServiceTypes32, () {
-    // String servicesId
+    // Optional<String?> servicesId
     test('to test the property `servicesId`', () async {
       // TODO
     });
 
-    // String servicesName
+    // Optional<String?> servicesName
     test('to test the property `servicesName`', () async {
       // TODO
     });
 
-    // String servicesCost
+    // Optional<String?> servicesCost
     test('to test the property `servicesCost`', () async {
       // TODO
     });
 
-    // String servicesCategory
+    // Optional<String?> servicesCategory
     test('to test the property `servicesCategory`', () async {
       // TODO
     });
 
-    // String servicesBuyable
+    // Optional<String?> servicesBuyable
     test('to test the property `servicesBuyable`', () async {
       // TODO
     });
 
-    // String servicesType
+    // Optional<String?> servicesType
     test('to test the property `servicesType`', () async {
       // TODO
     });
 
-    // String servicesField1
+    // Optional<String?> servicesField1
     test('to test the property `servicesField1`', () async {
       // TODO
     });
 
-    // String servicesField2
+    // Optional<String?> servicesField2
     test('to test the property `servicesField2`', () async {
       // TODO
     });
 
-    // String servicesModule
+    // Optional<String?> servicesModule
     test('to test the property `servicesModule`', () async {
       // TODO
     });

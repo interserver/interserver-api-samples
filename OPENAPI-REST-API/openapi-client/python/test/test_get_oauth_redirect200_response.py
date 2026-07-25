@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_oauth_redirect200_response import GetOauthRedirect200Response
+from interserver_api_client.models.get_oauth_redirect200_response import GetOauthRedirect200Response
 
 class TestGetOauthRedirect200Response(unittest.TestCase):
     """GetOauthRedirect200Response unit test stubs"""

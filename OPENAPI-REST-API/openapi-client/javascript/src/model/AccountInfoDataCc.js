@@ -17,7 +17,7 @@ import AccountInfoMaxMindResponse from './AccountInfoMaxMindResponse';
 /**
  * The AccountInfoDataCc model module.
  * @module model/AccountInfoDataCc
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AccountInfoDataCc {
     /**

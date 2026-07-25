@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoLimitsInner = Initialize-PSOpenAPIToolsAccountInfoLimitsInner  -Start null `
+$AccountInfoLimitsInner = Initialize-InterserverApiAccountInfoLimitsInner  -Start null `
  -VarEnd null
 ```
 

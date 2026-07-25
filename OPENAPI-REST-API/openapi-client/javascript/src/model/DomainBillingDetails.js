@@ -17,7 +17,7 @@ import DomainBillingExtra from './DomainBillingExtra';
 /**
  * The DomainBillingDetails model module.
  * @module model/DomainBillingDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainBillingDetails {
     /**

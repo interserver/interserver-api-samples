@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::AccountInfoMaxMindResponse');
+use_ok('InterServerAPI::Object::AccountInfoMaxMindResponse');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::AccountInfoMaxMindResponse->new();
+#my $instance = InterServerAPI::Object::AccountInfoMaxMindResponse->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::AccountInfoMaxMindResponse');
+#isa_ok($instance, 'InterServerAPI::Object::AccountInfoMaxMindResponse');
 
 
 done_testing();

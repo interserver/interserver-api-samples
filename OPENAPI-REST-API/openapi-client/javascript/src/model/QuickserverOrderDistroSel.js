@@ -17,7 +17,7 @@ import QuickserverOrderDistroSelUbuntu from './QuickserverOrderDistroSelUbuntu';
 /**
  * The QuickserverOrderDistroSel model module.
  * @module model/QuickserverOrderDistroSel
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverOrderDistroSel {
     /**

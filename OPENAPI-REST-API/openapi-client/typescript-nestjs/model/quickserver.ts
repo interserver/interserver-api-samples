@@ -9,12 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { QuickserverBillingDetails } from './quickserverBillingDetails';
-import { QuickserverServiceInfo } from './quickserverServiceInfo';
-import { QuickserverExtraInfoTables } from './quickserverExtraInfoTables';
-import { QuickserverServiceExtra } from './quickserverServiceExtra';
-import { QuickserverServiceMaster } from './quickserverServiceMaster';
-import { QuickserverClientLink } from './quickserverClientLink';
+import { QuickserverBillingDetails } from './quickserver-billing-details';
+import { QuickserverServiceInfo } from './quickserver-service-info';
+import { QuickserverExtraInfoTables } from './quickserver-extra-info-tables';
+import { QuickserverServiceExtra } from './quickserver-service-extra';
+import { QuickserverServiceMaster } from './quickserver-service-master';
+import { QuickserverClientLink } from './quickserver-client-link';
 
 
 export interface Quickserver { 

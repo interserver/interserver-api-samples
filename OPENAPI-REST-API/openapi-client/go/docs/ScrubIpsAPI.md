@@ -4,22 +4,23 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CancelScrubIp**](ScrubIpsAPI.md#CancelScrubIp) | **Delete** /scrub_ips/{id} | Cancel Scrub IP Service
-[**CreateFilter**](ScrubIpsAPI.md#CreateFilter) | **Post** /scrub_ips/{id}/create_filter | Create Traffic Filter
-[**CreateGeoRule**](ScrubIpsAPI.md#CreateGeoRule) | **Post** /scrub_ips/{id}/create_geo_rule | Create Geo Firewall Rule
-[**CreateRule**](ScrubIpsAPI.md#CreateRule) | **Post** /scrub_ips/{id}/create_rule | Create Firewall Rule
-[**DeleteFilter**](ScrubIpsAPI.md#DeleteFilter) | **Post** /scrub_ips/{id}/delete_filter | Delete Traffic Filter
-[**DisableScrub**](ScrubIpsAPI.md#DisableScrub) | **Get** /scrub_ips/{id}/disable | Disable Scrub Protection
-[**EnableScrub**](ScrubIpsAPI.md#EnableScrub) | **Get** /scrub_ips/{id}/enable | Enable Scrub Protection
-[**GetOrderDetail**](ScrubIpsAPI.md#GetOrderDetail) | **Get** /scrub_ips/order | Get Scrub IP Ordering Information
-[**GetScrubIpDetails**](ScrubIpsAPI.md#GetScrubIpDetails) | **Get** /scrub_ips/{id} | Get Scrub IP Details
-[**GetScrubIpFilterTypes**](ScrubIpsAPI.md#GetScrubIpFilterTypes) | **Get** /scrub_ips/filter_types | List Scrub Filter Types
-[**GetScrubIpInvoices**](ScrubIpsAPI.md#GetScrubIpInvoices) | **Get** /scrub_ips/{id}/invoices | Get ScrubIp Invoices
-[**GetScrubIpLogs**](ScrubIpsAPI.md#GetScrubIpLogs) | **Get** /scrub_ips/{id}/logs | Get Scrub IP Logs
-[**GetScrubIpsList**](ScrubIpsAPI.md#GetScrubIpsList) | **Get** /scrub_ips | List Scrub IP Services
-[**PlaceScrubOrder**](ScrubIpsAPI.md#PlaceScrubOrder) | **Post** /scrub_ips/order | Place Scrub IP Order
-[**ScrubIpsDeleteGeoRule**](ScrubIpsAPI.md#ScrubIpsDeleteGeoRule) | **Post** /scrub_ips/{id}/delete_geo_rule | Delete Geo Firewall Rule
-[**ScrubIpsDeleteRule**](ScrubIpsAPI.md#ScrubIpsDeleteRule) | **Post** /scrub_ips/{id}/delete_rule | Delete Firewall Rule
+[**CancelScrubIp**](ScrubIpsAPI.md#CancelScrubIp) | **Delete** /scrub_ips/{id} | Cancel a Scrub IP service and stop its recurring DDoS billing
+[**CreateFilter**](ScrubIpsAPI.md#CreateFilter) | **Post** /scrub_ips/{id}/create_filter | Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
+[**CreateGeoRule**](ScrubIpsAPI.md#CreateGeoRule) | **Post** /scrub_ips/{id}/create_geo_rule | Add a geographic firewall rule (block/allow by country code or ASN)
+[**CreateRule**](ScrubIpsAPI.md#CreateRule) | **Post** /scrub_ips/{id}/create_rule | Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
+[**DeleteFilter**](ScrubIpsAPI.md#DeleteFilter) | **Post** /scrub_ips/{id}/delete_filter | Remove a scrubbing filter by matching filter_type and port
+[**DisableScrub**](ScrubIpsAPI.md#DisableScrub) | **Get** /scrub_ips/{id}/disable | Disable DDoS scrubbing and remove the BGP announcement on the IP
+[**EnableScrub**](ScrubIpsAPI.md#EnableScrub) | **Get** /scrub_ips/{id}/enable | Enable DDoS scrubbing (BGP announcement) on the service&#39;s protected IP
+[**GetOrderDetail**](ScrubIpsAPI.md#GetOrderDetail) | **Get** /scrub_ips/order | Get plans, pricing, and eligible IPs for a new Scrub IP order
+[**GetScrubIpDetails**](ScrubIpsAPI.md#GetScrubIpDetails) | **Get** /scrub_ips/{id} | Get full Scrub IP service detail (rules + geo + filters)
+[**GetScrubIpFilterTypes**](ScrubIpsAPI.md#GetScrubIpFilterTypes) | **Get** /scrub_ips/filter_types | List enabled traffic filter profiles available for createFilter
+[**GetScrubIpInvoices**](ScrubIpsAPI.md#GetScrubIpInvoices) | **Get** /scrub_ips/{id}/invoices | List recurring and one-time invoices billed for this Scrub IP service
+[**GetScrubIpLogs**](ScrubIpsAPI.md#GetScrubIpLogs) | **Get** /scrub_ips/{id}/logs | Get last 50000 packet/event log entries for the protected IP
+[**GetScrubIpsList**](ScrubIpsAPI.md#GetScrubIpsList) | **Get** /scrub_ips | List all Scrub IP DDoS protection services on the authenticated account
+[**PlaceScrubOrder**](ScrubIpsAPI.md#PlaceScrubOrder) | **Post** /scrub_ips/order | Place a new Scrub IP DDoS protection order and generate an invoice
+[**PutScrubIps**](ScrubIpsAPI.md#PutScrubIps) | **Put** /scrub_ips/order | Validate a Scrub IP order and return effective pricing without billing
+[**ScrubIpsDeleteGeoRule**](ScrubIpsAPI.md#ScrubIpsDeleteGeoRule) | **Post** /scrub_ips/{id}/delete_geo_rule | Delete a geo firewall rule by rule_id from getScrubIpDetails
+[**ScrubIpsDeleteRule**](ScrubIpsAPI.md#ScrubIpsDeleteRule) | **Post** /scrub_ips/{id}/delete_rule | Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
 
 
 
@@ -27,7 +28,7 @@ Method | HTTP request | Description
 
 > CancelScrubIp200Response CancelScrubIp(ctx, id).Execute()
 
-Cancel Scrub IP Service
+Cancel a Scrub IP service and stop its recurring DDoS billing
 
 
 
@@ -97,7 +98,7 @@ Name | Type | Description  | Notes
 
 > CreateFilter201Response CreateFilter(ctx, id).CreateFilter(createFilter).Execute()
 
-Create Traffic Filter
+Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
 
 
 
@@ -169,7 +170,7 @@ Name | Type | Description  | Notes
 
 > CreateRule201Response CreateGeoRule(ctx, id).CreateGeoFirewallRule(createGeoFirewallRule).Execute()
 
-Create Geo Firewall Rule
+Add a geographic firewall rule (block/allow by country code or ASN)
 
 
 
@@ -241,7 +242,7 @@ Name | Type | Description  | Notes
 
 > CreateRule201Response CreateRule(ctx, id).CreateFirewallRule(createFirewallRule).Execute()
 
-Create Firewall Rule
+Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
 
 
 
@@ -313,7 +314,7 @@ Name | Type | Description  | Notes
 
 > DeleteFilter200Response DeleteFilter(ctx, id).CreateFilter(createFilter).Execute()
 
-Delete Traffic Filter
+Remove a scrubbing filter by matching filter_type and port
 
 
 
@@ -385,7 +386,7 @@ Name | Type | Description  | Notes
 
 > DisableScrub200Response DisableScrub(ctx, id).Execute()
 
-Disable Scrub Protection
+Disable DDoS scrubbing and remove the BGP announcement on the IP
 
 
 
@@ -455,7 +456,7 @@ Name | Type | Description  | Notes
 
 > EnableScrub200Response EnableScrub(ctx, id).Execute()
 
-Enable Scrub Protection
+Enable DDoS scrubbing (BGP announcement) on the service's protected IP
 
 
 
@@ -525,7 +526,7 @@ Name | Type | Description  | Notes
 
 > GetOrderDetail200Response GetOrderDetail(ctx).Execute()
 
-Get Scrub IP Ordering Information
+Get plans, pricing, and eligible IPs for a new Scrub IP order
 
 
 
@@ -586,7 +587,7 @@ Other parameters are passed through a pointer to a apiGetOrderDetailRequest stru
 
 > GetScrubIpDetails200Response GetScrubIpDetails(ctx, id).Execute()
 
-Get Scrub IP Details
+Get full Scrub IP service detail (rules + geo + filters)
 
 
 
@@ -656,7 +657,7 @@ Name | Type | Description  | Notes
 
 > ScrubIpFilterTypes GetScrubIpFilterTypes(ctx).Execute()
 
-List Scrub Filter Types
+List enabled traffic filter profiles available for createFilter
 
 
 
@@ -717,7 +718,7 @@ Other parameters are passed through a pointer to a apiGetScrubIpFilterTypesReque
 
 > ChargeInvoiceRows GetScrubIpInvoices(ctx, id).Execute()
 
-Get ScrubIp Invoices
+List recurring and one-time invoices billed for this Scrub IP service
 
 
 
@@ -787,7 +788,7 @@ Name | Type | Description  | Notes
 
 > []ScrubIpsLogRowSchema GetScrubIpLogs(ctx, id).Execute()
 
-Get Scrub IP Logs
+Get last 50000 packet/event log entries for the protected IP
 
 
 
@@ -857,7 +858,7 @@ Name | Type | Description  | Notes
 
 > []ScrubIpsRowSchema GetScrubIpsList(ctx).Execute()
 
-List Scrub IP Services
+List all Scrub IP DDoS protection services on the authenticated account
 
 
 
@@ -918,7 +919,7 @@ Other parameters are passed through a pointer to a apiGetScrubIpsListRequest str
 
 > PlaceScrubOrder201Response PlaceScrubOrder(ctx).ScrubIpPlaceOrder(scrubIpPlaceOrder).Execute()
 
-Place Scrub IP Order
+Place a new Scrub IP DDoS protection order and generate an invoice
 
 
 
@@ -980,11 +981,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PutScrubIps
+
+> PutScrubIps200Response PutScrubIps(ctx).ScrubIpPlaceOrder(scrubIpPlaceOrder).Execute()
+
+Validate a Scrub IP order and return effective pricing without billing
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	scrubIpPlaceOrder := *openapiclient.NewScrubIpPlaceOrder(int32(102), "1.2.3.4") // ScrubIpPlaceOrder | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ScrubIpsAPI.PutScrubIps(context.Background()).ScrubIpPlaceOrder(scrubIpPlaceOrder).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ScrubIpsAPI.PutScrubIps``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PutScrubIps`: PutScrubIps200Response
+	fmt.Fprintf(os.Stdout, "Response from `ScrubIpsAPI.PutScrubIps`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutScrubIpsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scrubIpPlaceOrder** | [**ScrubIpPlaceOrder**](ScrubIpPlaceOrder.md) |  | 
+
+### Return type
+
+[**PutScrubIps200Response**](PutScrubIps200Response.md)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ScrubIpsDeleteGeoRule
 
 > ScrubIpsDeleteRule200Response ScrubIpsDeleteGeoRule(ctx, id).DeleteGeoFirewallRule(deleteGeoFirewallRule).Execute()
 
-Delete Geo Firewall Rule
+Delete a geo firewall rule by rule_id from getScrubIpDetails
 
 
 
@@ -1056,7 +1123,7 @@ Name | Type | Description  | Notes
 
 > ScrubIpsDeleteRule200Response ScrubIpsDeleteRule(ctx, id).DeleteFirewallRule(deleteFirewallRule).Execute()
 
-Delete Firewall Rule
+Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
 
 
 

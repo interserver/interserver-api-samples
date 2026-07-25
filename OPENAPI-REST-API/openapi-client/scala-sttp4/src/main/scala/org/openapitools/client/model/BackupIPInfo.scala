@@ -20,4 +20,3 @@ case class BackupIPInfo(
   title: Option[String] = None,
   rows: Option[Seq[BackupIPInfoRow]] = None
 )
-

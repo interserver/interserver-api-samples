@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetScrubIpDetails200ResponseFilterFirewall } from './api';
+import { GetScrubIpDetails200ResponseFilterFirewall } from '@interserver/myadmin-client';
 
 const instance: GetScrubIpDetails200ResponseFilterFirewall = {
     rules,

@@ -60,8 +60,6 @@ models/AffiliateBannerRow.gd
 models/AffiliateDockSetup.gd
 models/AffiliatePaymentSetup.gd
 models/AffiliateTrafficRow.gd
-models/AssetServer.gd
-models/AssetServerCPUInner.gd
 models/Backup.gd
 models/BackupBillingDetails.gd
 models/BackupClientLink.gd
@@ -79,7 +77,6 @@ models/BackupServiceMaster.gd
 models/BackupsOrder.gd
 models/BackupsOrderPackageCosts.gd
 models/BackupsOrderServiceTypes.gd
-models/Bandwidth.gd
 models/BillingAddCcRequest.gd
 models/BillingInvoiceDetail.gd
 models/BillingInvoiceList.gd
@@ -105,11 +102,6 @@ models/ChargeInvoiceRowsInvoicesValue.gd
 models/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.gd
 models/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.gd
 models/CloseTicketResponseSchema.gd
-models/ConfigIds.gd
-models/ConfigLists.gd
-models/ControlPanel.gd
-models/Cpu.gd
-models/CpuWithDefaults.gd
 models/CreateFilter.gd
 models/CreateFilter201Response.gd
 models/CreateFilter400Response.gd
@@ -125,6 +117,7 @@ models/DeleteFilter400Response.gd
 models/DeleteFilter500Response.gd
 models/DeleteFirewallRule.gd
 models/DeleteGeoFirewallRule.gd
+models/DeleteMailAlertRequest.gd
 models/DenyRuleNew.gd
 models/DenyRuleRecord.gd
 models/DisableScrub200Response.gd
@@ -155,11 +148,11 @@ models/DomainNameserverGetResponseInner.gd
 models/DomainNameserverPostRequest.gd
 models/DomainNameserverPutRequest.gd
 models/DomainOrder.gd
+models/DomainOrderRequest.gd
 models/DomainOrderResponse.gd
 models/DomainOrderResponseAttributes.gd
 models/DomainOrderServices.gd
 models/DomainOrderServices10001.gd
-models/DomainOrderTldServices.gd
 models/DomainOwnerContact.gd
 models/DomainProvProcessPending.gd
 models/DomainProvProcessPendingAttributes.gd
@@ -175,12 +168,13 @@ models/EmailAddress.gd
 models/EmailAddressName.gd
 models/EnableScrub200Response.gd
 models/EnableScrub500Response.gd
-models/FieldLabel.gd
+models/FloatingIpOrderRequest.gd
 models/FloatingIpsCancel200Response.gd
-models/FormValues.gd
 models/GenericResponse.gd
 models/GetAccountInfo401Response.gd
+models/GetAccountLocales200ResponseValue.gd
 models/GetAccountTfaSetup200Response.gd
+models/GetAffiliateSignups200Response.gd
 models/GetOauthRedirect200Response.gd
 models/GetOrderDetail200Response.gd
 models/GetOrderDetail200ResponseIpsInner.gd
@@ -197,7 +191,6 @@ models/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.gd
 models/GetScrubIpDetails200ResponseFilterFirewallRulesInner.gd
 models/GetScrubIpDetails200ResponseServiceInfo.gd
 models/GetWebsiteBuyIp200Response.gd
-models/HardDrive.gd
 models/Home.gd
 models/HomeDetails.gd
 models/HomeDetailsModules.gd
@@ -224,10 +217,6 @@ models/HomeTicketStatus.gd
 models/HomeTicketStatusView.gd
 models/HostnameObject.gd
 models/InitiatePayment200Response.gd
-models/InlineObject.gd
-models/Invoice.gd
-models/InvoiceRow.gd
-models/IpBlock.gd
 models/IpLimitRange.gd
 models/IpObject.gd
 models/License.gd
@@ -236,6 +225,7 @@ models/LicenseClientLink.gd
 models/LicenseExtraInfoTables.gd
 models/LicenseIpInfo.gd
 models/LicenseIpInfoRow.gd
+models/LicenseOrderRequest.gd
 models/LicenseRow.gd
 models/LicenseServiceInfo.gd
 models/LicenseServiceType.gd
@@ -272,6 +262,7 @@ models/MailExtraInfoTableRow.gd
 models/MailLog.gd
 models/MailLogEntry.gd
 models/MailOrder.gd
+models/MailOrderRequest.gd
 models/MailRow.gd
 models/MailSchema.gd
 models/MailSchemaExtraInfoTables.gd
@@ -284,15 +275,13 @@ models/MailStatsTypeVolumeIp.gd
 models/MailStatsTypeVolumeTo.gd
 models/MailTutorialsTable.gd
 models/MailTutorialsTableRow.gd
-models/MemoryOption.gd
 models/ModuleSettings.gd
 models/Modules.gd
 models/MonthlyCounts.gd
-models/OperatingSystem.gd
 models/PasswordRequest.gd
+models/PatchBillingCreditCardVerifyRequest.gd
 models/PatchOauthTwoFactor200Response.gd
 models/PatchOauthTwoFactorRequest.gd
-models/PaymentInvoiceRows.gd
 models/PlaceBuyNowServerRequest.gd
 models/PlaceScrubOrder201Response.gd
 models/PlaceScrubOrder201ResponseOrderDetails.gd
@@ -303,6 +292,8 @@ models/PostWebsiteBuyIp200Response.gd
 models/PostWebsiteBuyIpRequest.gd
 models/PostWebsiteMigration200Response.gd
 models/PostWebsiteMigrationRequest.gd
+models/PutScrubIps200Response.gd
+models/QsOrderRequest.gd
 models/QueueResponse.gd
 models/Quickserver.gd
 models/QuickserverAddons.gd
@@ -326,8 +317,6 @@ models/QuickserverServiceExtra.gd
 models/QuickserverServiceInfo.gd
 models/QuickserverServiceMaster.gd
 models/QuickserversCancel200Response.gd
-models/RaidOption.gd
-models/Region.gd
 models/ReplyTicketRequest.gd
 models/ReplyTicketResponseSchema.gd
 models/RestoreRequest.gd
@@ -347,6 +336,8 @@ models/Server.gd
 models/ServerAsset.gd
 models/ServerAssets.gd
 models/ServerBillingDetails.gd
+models/ServerBulkIpmiPowerResponse.gd
+models/ServerBulkIpmiPowerResponseResultsInner.gd
 models/ServerClientLink.gd
 models/ServerExtraInfoTables.gd
 models/ServerIpmiLiveInfo.gd
@@ -369,7 +360,6 @@ models/ServerOrderCpuLi.gd
 models/ServerOrderFieldLabel.gd
 models/ServerOrderFieldLabels.gd
 models/ServerOrderFormValues.gd
-models/ServerOrderGetResponse.gd
 models/ServerOrderIP.gd
 models/ServerOrderIpsLi.gd
 models/ServerOrderMemory.gd
@@ -377,6 +367,8 @@ models/ServerOrderMemoryLi.gd
 models/ServerOrderMemoryLi254.gd
 models/ServerOrderOS.gd
 models/ServerOrderOsLi.gd
+models/ServerOrderPostRequest.gd
+models/ServerOrderPostRequestHd.gd
 models/ServerOrderRAID.gd
 models/ServerRow.gd
 models/ServerServiceInfo.gd
@@ -394,6 +386,7 @@ models/ServiceTypes.gd
 models/Services.gd
 models/ServicesInfo.gd
 models/SslCancel200Response.gd
+models/SslOrderRequest.gd
 models/StatusMonthlyBreakdown.gd
 models/SuccessTextResponse.gd
 models/TemplateRequest.gd
@@ -454,7 +447,6 @@ models/VpsServiceMaster.gd
 models/VpsSnapshot.gd
 models/VpsTemplateRow.gd
 models/VpsTemplatesList.gd
-models/VpsTrafficDataDataResponse.gd
 models/VpsTrafficDataSectionResponse.gd
 models/VpsTrafficHistoryResponse.gd
 models/VpsTrafficHistorySectionDataResponse.gd
@@ -473,6 +465,8 @@ models/WebsiteBillingDetails.gd
 models/WebsiteClientLink.gd
 models/WebsiteExtraInfoTables.gd
 models/WebsiteLoginResponse.gd
+models/WebsiteOrderPostRequest.gd
+models/WebsiteOrderPutRequest.gd
 models/WebsiteRow.gd
 models/WebsiteServiceInfo.gd
 models/WebsiteServiceMaster.gd

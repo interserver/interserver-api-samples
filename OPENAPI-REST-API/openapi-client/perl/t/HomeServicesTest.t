@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::HomeServices');
+use_ok('InterServerAPI::Object::HomeServices');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::HomeServices->new();
+#my $instance = InterServerAPI::Object::HomeServices->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::HomeServices');
+#isa_ok($instance, 'InterServerAPI::Object::HomeServices');
 
 
 done_testing();

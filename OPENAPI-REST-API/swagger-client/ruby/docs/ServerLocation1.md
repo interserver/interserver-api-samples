@@ -1,4 +1,4 @@
-# SwaggerClient::ServerLocation1
+# InterserverApiClient::ServerLocation1
 
 ## Properties
 Name | Type | Description | Notes

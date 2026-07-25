@@ -11,7 +11,31 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JValue
 
-case class AccountInfoOauthproviders(
-)
+sealed trait AccountInfoOauthproviders
 
+case class AccountInfoOauthConfigProviders(
+) extends AccountInfoOauthproviders
+
+object AccountInfoOauthproviders {
+
+  import org.json4s._
+
+  // oneOf without discriminator - json4s custom serializer
+  implicit object AccountInfoOauthprovidersSerializer extends Serializer[AccountInfoOauthproviders] {
+    def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), AccountInfoOauthproviders] = {
+      case (TypeInfo(clazz, _), json) if classOf[AccountInfoOauthproviders].isAssignableFrom(clazz) =>
+        // Try each oneOf type in order
+        Extraction.extract[AccountInfoOauthConfigProviders](json) match {
+          case x: AccountInfoOauthConfigProviders => return x
+          case _ => // continue
+        }
+        throw new MappingException(s"Can't convert $json to AccountInfoOauthproviders")
+    }
+
+    def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+      case x: AccountInfoOauthConfigProviders => Extraction.decompose(x)
+    }
+  }
+}

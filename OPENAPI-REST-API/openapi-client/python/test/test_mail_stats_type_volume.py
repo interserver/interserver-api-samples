@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_stats_type_volume import MailStatsTypeVolume
+from interserver_api_client.models.mail_stats_type_volume import MailStatsTypeVolume
 
 class TestMailStatsTypeVolume(unittest.TestCase):
     """MailStatsTypeVolume unit test stubs"""
@@ -36,15 +36,15 @@ class TestMailStatsTypeVolume(unittest.TestCase):
         model = MailStatsTypeVolume()
         if include_optional:
             return MailStatsTypeVolume(
-                to = openapi_client.models.mail_stats_type_volume_to.MailStatsType_volume_to(
+                to = interserver_api_client.models.mail_stats_type_volume_to.MailStatsType_volume_to(
                     client@domain/com = 56, 
                     user@site/net = 56, 
                     sales@company/com = 56, 
                     client@anothersite/com = 56, ),
-                var_from = openapi_client.models.mail_stats_type_volume_from.MailStatsType_volume_from(
+                var_from = interserver_api_client.models.mail_stats_type_volume_from.MailStatsType_volume_from(
                     billing@somedomain/com = 56, 
                     sales@somedomain/com = 56, ),
-                ip = openapi_client.models.mail_stats_type_volume_ip.MailStatsType_volume_ip(
+                ip = interserver_api_client.models.mail_stats_type_volume_ip.MailStatsType_volume_ip(
                     1/1/1/1 = 56, 
                     2/2/2/2 = 56, 
                     3/3/3/3 = 56, 

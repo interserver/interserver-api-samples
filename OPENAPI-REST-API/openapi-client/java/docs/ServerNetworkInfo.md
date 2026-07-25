@@ -13,4 +13,8 @@
 |**switchports** | [**ServerNetworkInfoSwitchports**](ServerNetworkInfoSwitchports.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

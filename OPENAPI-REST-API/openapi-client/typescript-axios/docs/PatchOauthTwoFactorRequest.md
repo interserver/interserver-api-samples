@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PatchOauthTwoFactorRequest } from './api';
+import { PatchOauthTwoFactorRequest } from '@interserver/myadmin-client';
 
 const instance: PatchOauthTwoFactorRequest = {
     account_id,

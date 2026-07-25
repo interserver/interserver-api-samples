@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::QuickserverOrderVersionCentosstream8
+# InterServerAPI::Object::QuickserverOrderVersionCentosstream8
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::QuickserverOrderVersionCentosstream8;
+use InterServerAPI::Object::QuickserverOrderVersionCentosstream8;
 ```
 
 ## Properties

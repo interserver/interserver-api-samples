@@ -1,4 +1,4 @@
-# openapi::DomainServiceInfo
+# interserverapi::DomainServiceInfo
 
 Detailed domain service record for a domain order.
 

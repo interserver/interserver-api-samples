@@ -17,7 +17,7 @@ import DomainOrderResponseAttributes from './DomainOrderResponseAttributes';
 /**
  * The DomainOrderResponse model module.
  * @module model/DomainOrderResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainOrderResponse {
     /**

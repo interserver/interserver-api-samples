@@ -1,4 +1,4 @@
-# SwaggerClient::AccountSshKey
+# InterserverApiClient::AccountSshKey
 
 ## Properties
 Name | Type | Description | Notes

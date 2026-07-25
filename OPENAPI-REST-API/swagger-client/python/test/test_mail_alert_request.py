@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.mail_alert_request import MailAlertRequest  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.mail_alert_request import MailAlertRequest  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestMailAlertRequest(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestMailAlertRequest(unittest.TestCase):
     def testMailAlertRequest(self):
         """Test MailAlertRequest"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.mail_alert_request.MailAlertRequest()  # noqa: E501
+        # model = interserver_api_client.models.mail_alert_request.MailAlertRequest()  # noqa: E501
         pass
 
 

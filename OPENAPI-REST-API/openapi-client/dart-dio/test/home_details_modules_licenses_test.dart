@@ -1,38 +1,38 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for HomeDetailsModulesLicenses
 void main() {
-  final instance = HomeDetailsModulesLicensesBuilder();
-  // TODO add properties to the builder and call build()
+  final HomeDetailsModulesLicenses? instance = /* HomeDetailsModulesLicenses(...) */ null;
+  // TODO add properties to the entity
 
   group(HomeDetailsModulesLicenses, () {
     // The icon for licenses.
-    // String icon
+    // Optional<String?> icon
     test('to test the property `icon`', () async {
       // TODO
     });
 
     // Link to view license.
-    // String viewLink
+    // Optional<String?> viewLink
     test('to test the property `viewLink`', () async {
       // TODO
     });
 
     // Heading for licenses.
-    // String heading
+    // Optional<String?> heading
     test('to test the property `heading`', () async {
       // TODO
     });
 
     // Link to order license.
-    // String buyLink
+    // Optional<String?> buyLink
     test('to test the property `buyLink`', () async {
       // TODO
     });
 
     // Link to view licenses list.
-    // String listLink
+    // Optional<String?> listLink
     test('to test the property `listLink`', () async {
       // TODO
     });

@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.servers_api import ServersApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.servers_api import ServersApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestServersApi(unittest.TestCase):
@@ -31,126 +31,126 @@ class TestServersApi(unittest.TestCase):
     def test_add_server(self):
         """Test case for add_server
 
-        Place Server Order  # noqa: E501
+        Place a custom dedicated server order, creating a real billable invoice  # noqa: E501
         """
         pass
 
     def test_buy_it_now_server_order(self):
         """Test case for buy_it_now_server_order
 
-        Get Buy Now Server Options  # noqa: E501
+        Get configurable options for a Rapid Deploy / coupon dedicated server  # noqa: E501
         """
         pass
 
     def test_get_mp_servers(self):
         """Test case for get_mp_servers
 
-        List Marketplace Servers  # noqa: E501
+        List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing  # noqa: E501
         """
         pass
 
     def test_get_new_server(self):
         """Test case for get_new_server
 
-        Server Ordering Information  # noqa: E501
+        Get custom dedicated server ordering options, regions, and pricing  # noqa: E501
         """
         pass
 
     def test_get_server_info(self):
         """Test case for get_server_info
 
-        Get Server Order  # noqa: E501
+        Get full hardware, network, and lifecycle details for a dedicated server  # noqa: E501
         """
         pass
 
     def test_get_server_invoices(self):
         """Test case for get_server_invoices
 
-        Get Server Invoices  # noqa: E501
+        List billing invoices (charges + payments) tied to one dedicated server  # noqa: E501
         """
         pass
 
     def test_get_server_list(self):
         """Test case for get_server_list
 
-        List Servers  # noqa: E501
+        List all dedicated servers owned by the authenticated customer  # noqa: E501
         """
         pass
 
     def test_get_server_reverse_dns(self):
         """Test case for get_server_reverse_dns
 
-        Reverse DNS Info  # noqa: E501
+        List current reverse-DNS (PTR) records for a dedicated server's IPs  # noqa: E501
         """
         pass
 
     def test_get_servers_welcome_email(self):
         """Test case for get_servers_welcome_email
 
-        Resend Server Welcome Email  # noqa: E501
+        Resend the dedicated server welcome email with setup credentials  # noqa: E501
         """
         pass
 
     def test_place_buy_now_server(self):
         """Test case for place_buy_now_server
 
-        Place Buy Now Server Order  # noqa: E501
+        Place a Rapid Deploy / coupon dedicated server order; creates real invoice  # noqa: E501
         """
         pass
 
     def test_post_server_reverse_dns(self):
         """Test case for post_server_reverse_dns
 
-        Update Reverse DNS  # noqa: E501
+        Update reverse-DNS (PTR) hostnames on a dedicated server's IPs  # noqa: E501
         """
         pass
 
-    def test_put_servers(self):
-        """Test case for put_servers
+    def test_server_bulk_ipmi_power_get(self):
+        """Test case for server_bulk_ipmi_power_get
 
-        Validate Server Order  # noqa: E501
+        Read IPMI chassis power status for many dedicated servers in one call  # noqa: E501
         """
         pass
 
     def test_server_ipmi_live_get(self):
         """Test case for server_ipmi_live_get
 
-        Server IPMI Live Information  # noqa: E501
+        Read current IPMI Live whitelist + KVM gateway URL for a dedicated server  # noqa: E501
         """
         pass
 
     def test_server_ipmi_live_post(self):
         """Test case for server_ipmi_live_post
 
-        Server IPMI Live Setup  # noqa: E501
+        Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)  # noqa: E501
         """
         pass
 
     def test_server_ipmi_power_get(self):
         """Test case for server_ipmi_power_get
 
-        Get IPMI Power Status  # noqa: E501
+        Read IPMI chassis power status for a dedicated server (single)  # noqa: E501
         """
         pass
 
     def test_server_ipmi_power_post(self):
         """Test case for server_ipmi_power_post
 
-        Server IPMI Power  # noqa: E501
+        DESTRUCTIVE — change chassis power state on a bare-metal server  # noqa: E501
         """
         pass
 
     def test_servers_cancel(self):
         """Test case for servers_cancel
 
-        Cancel Server Service  # noqa: E501
+        Cancel a dedicated server service at the end of the current billing cycle  # noqa: E501
         """
         pass
 
     def test_update_server_info(self):
         """Test case for update_server_info
 
-        Update Server Order  # noqa: E501
+        Update settings on a dedicated server order (shares handler with view)  # noqa: E501
         """
         pass
 

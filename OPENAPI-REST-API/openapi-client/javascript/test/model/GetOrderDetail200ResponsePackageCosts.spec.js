@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetOrderDetail200ResponsePackageCosts();
+    instance = new InterserverApiClient.GetOrderDetail200ResponsePackageCosts();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('GetOrderDetail200ResponsePackageCosts', function() {
     it('should create an instance of GetOrderDetail200ResponsePackageCosts', function() {
       // uncomment below and update the code to test GetOrderDetail200ResponsePackageCosts
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponsePackageCosts();
-      //expect(instance).to.be.a(InterServerManagementApi.GetOrderDetail200ResponsePackageCosts);
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponsePackageCosts();
+      //expect(instance).to.be.a(InterserverApiClient.GetOrderDetail200ResponsePackageCosts);
     });
 
     it('should have the property package_id (base name: "package_id")', function() {
       // uncomment below and update the code to test the property package_id
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponsePackageCosts();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponsePackageCosts();
       //expect(instance).to.be();
     });
 
     it('should have the property package_cost (base name: "package_cost")', function() {
       // uncomment below and update the code to test the property package_cost
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponsePackageCosts();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponsePackageCosts();
       //expect(instance).to.be();
     });
 
     it('should have the property currency (base name: "currency")', function() {
       // uncomment below and update the code to test the property currency
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponsePackageCosts();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponsePackageCosts();
       //expect(instance).to.be();
     });
 
     it('should have the property currencySymbol (base name: "currencySymbol")', function() {
       // uncomment below and update the code to test the property currencySymbol
-      //var instance = new InterServerManagementApi.GetOrderDetail200ResponsePackageCosts();
+      //var instance = new InterserverApiClient.GetOrderDetail200ResponsePackageCosts();
       //expect(instance).to.be();
     });
 

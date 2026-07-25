@@ -17,34 +17,34 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_floating_ip Place Floating IP Order
+#' add_floating_ip Place a real Floating IP order, create billing records, and provision the service
 #'
 #'
-#' floating_ips_cancel Cancel Floating IP
+#' floating_ips_cancel Cancel a Floating IP service and release the IP — destructive, billing stops
 #'
 #'
-#' get_floating_ip_info View Floating IP
+#' get_floating_ip_info Fetch full details for one Floating IP service, including current target IP
 #'
 #'
-#' get_floating_ip_invoices Get Floating IP Invoices
+#' get_floating_ip_invoices List all billing invoices charged against a specific Floating IP service
 #'
 #'
-#' get_floating_ips_list List Floating IPs
+#' get_floating_ips_list List all Floating IP services on the authenticated customer&#x27;s account
 #'
 #'
-#' get_floating_ips_welcome_email Resend Floating IPs Welcome Email
+#' get_floating_ips_welcome_email Resend the Floating IP welcome / setup email to the account contact
 #'
 #'
-#' get_new_floating_ip Get Floating IP Ordering Information
+#' get_new_floating_ip Get pricing and service-type options for ordering a new Floating IP
 #'
 #'
-#' post_floating_ips_change_ip Change Floating IP Target
+#' post_floating_ips_change_ip Re-point a Floating IP to a different target IP on one of the customer&#x27;s services
 #'
 #'
-#' put_floating_ips Validate Floating IP Order
+#' put_floating_ips Validate a Floating IP order and price it without charging the customer
 #'
 #'
-#' update_floating_ip_info Update Floating IP
+#' update_floating_ip_info Update a Floating IP service&#x27;s editable settings (label / metadata)
 #'
 #' }
 #'
@@ -62,10 +62,16 @@ FloatingIPsApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    add_floating_ip = function(...){
+    add_floating_ip = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/floating_ips/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -104,7 +110,7 @@ FloatingIPsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse2003$new()
+        returnObject <- InlineResponse2004$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -284,10 +290,16 @@ FloatingIPsApi <- R6::R6Class(
       }
 
     }
-    put_floating_ips = function(...){
+    put_floating_ips = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/floating_ips/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),

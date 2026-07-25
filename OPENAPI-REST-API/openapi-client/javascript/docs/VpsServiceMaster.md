@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsServiceMaster
+# InterserverApiClient.VpsServiceMaster
 
 ## Properties
 

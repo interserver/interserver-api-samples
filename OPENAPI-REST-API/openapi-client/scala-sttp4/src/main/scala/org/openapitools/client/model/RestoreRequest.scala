@@ -20,4 +20,3 @@ case class RestoreRequest(
   backup: Option[String] = None,
   password: Option[String] = None
 )
-

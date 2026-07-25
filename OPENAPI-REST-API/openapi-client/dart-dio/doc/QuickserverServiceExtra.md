@@ -1,14 +1,14 @@
-# openapi.model.QuickserverServiceExtra
+# interserver_api.model.QuickserverServiceExtra
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**platform** | **String** | Platform information | [optional] 
+**platform** | **Optional&lt;String?&gt;** | Platform information | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

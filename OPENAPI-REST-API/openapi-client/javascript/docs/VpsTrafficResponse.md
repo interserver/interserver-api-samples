@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsTrafficResponse
+# InterserverApiClient.VpsTrafficResponse
 
 ## Properties
 

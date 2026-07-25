@@ -11,15 +11,32 @@
  */
 package io.swagger.client.models
 
+import io.swagger.client.models.InlineResponse20013BillingDetails
+import io.swagger.client.models.InlineResponse20013ClientLinks
+import io.swagger.client.models.InlineResponse20013ExtraInfoTables
+import io.swagger.client.models.InlineResponse20013FilterFirewall
+import io.swagger.client.models.InlineResponse20013ServiceInfo
 
 /**
  * 
- * @param success 
- * @param text 
+ * @param serviceInfo 
+ * @param clientLinks 
+ * @param billingDetails 
+ * @param custCurrency 
+ * @param custCurrencySymbol 
+ * @param &#x60;package&#x60; 
+ * @param extraInfoTables 
+ * @param filterFirewall 
  */
 data class InlineResponse20013 (
 
-    val success: kotlin.Boolean,
-    val text: kotlin.String
+    val serviceInfo: InlineResponse20013ServiceInfo? = null,
+    val clientLinks: kotlin.Array<InlineResponse20013ClientLinks>? = null,
+    val billingDetails: InlineResponse20013BillingDetails? = null,
+    val custCurrency: kotlin.String? = null,
+    val custCurrencySymbol: kotlin.String? = null,
+    val `package`: kotlin.String? = null,
+    val extraInfoTables: InlineResponse20013ExtraInfoTables? = null,
+    val filterFirewall: InlineResponse20013FilterFirewall? = null
 ) {
 }

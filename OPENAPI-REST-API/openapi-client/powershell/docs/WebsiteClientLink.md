@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsiteClientLink = Initialize-PSOpenAPIToolsWebsiteClientLink  -Label null `
+$WebsiteClientLink = Initialize-InterserverApiWebsiteClientLink  -Label null `
  -Link null `
  -Icon null `
  -IconText null `

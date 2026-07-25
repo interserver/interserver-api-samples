@@ -1,4 +1,4 @@
-# SwaggerClient::LicenseExtraInfoTables
+# InterserverApiClient::LicenseExtraInfoTables
 
 ## Properties
 Name | Type | Description | Notes

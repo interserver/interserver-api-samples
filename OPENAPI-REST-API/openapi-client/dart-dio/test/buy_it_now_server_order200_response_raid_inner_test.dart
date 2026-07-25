@@ -1,28 +1,28 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for BuyItNowServerOrder200ResponseRaidInner
 void main() {
-  final instance = BuyItNowServerOrder200ResponseRaidInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final BuyItNowServerOrder200ResponseRaidInner? instance = /* BuyItNowServerOrder200ResponseRaidInner(...) */ null;
+  // TODO add properties to the entity
 
   group(BuyItNowServerOrder200ResponseRaidInner, () {
-    // String id
+    // Optional<String?> id
     test('to test the property `id`', () async {
       // TODO
     });
 
-    // String shortDesc
+    // Optional<String?> shortDesc
     test('to test the property `shortDesc`', () async {
       // TODO
     });
 
-    // String longDesc
+    // Optional<String?> longDesc
     test('to test the property `longDesc`', () async {
       // TODO
     });
 
-    // String monthlyPrice
+    // Optional<String?> monthlyPrice
     test('to test the property `monthlyPrice`', () async {
       // TODO
     });

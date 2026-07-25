@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GenericResponse } from './api';
+import { GenericResponse } from '@interserver/myadmin-client';
 
 const instance: GenericResponse = {
     status,

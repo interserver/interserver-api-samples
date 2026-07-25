@@ -1,4 +1,4 @@
-# SwaggerClient::ServerOrderControlPanel
+# InterserverApiClient::ServerOrderControlPanel
 
 ## Properties
 Name | Type | Description | Notes

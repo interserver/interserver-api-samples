@@ -11,113 +11,7 @@ import Alamofire
 
 open class BillingAPI {
     /**
-     Add Credit Card to Account
-
-     - parameter name: (form)  
-     - parameter address: (form)  
-     - parameter city: (form)  
-     - parameter state: (form)  
-     - parameter country: (form)  
-     - parameter zip: (form)  
-     - parameter cc: (form)  
-     - parameter ccExp: (form)  
-     - parameter ccCcv2: (form)  
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func addAccountCreditCard(name: String, address: String, city: String, state: String, country: String, zip: String, cc: String, ccExp: String, ccCcv2: String, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
-        addAccountCreditCardWithRequestBuilder(name: name, address: address, city: city, state: state, country: country, zip: zip, cc: cc, ccExp: ccExp, ccCcv2: ccCcv2).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Add Credit Card to Account
-     - POST /account/creditcards
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - examples: [{contentType=application/json, example={
-  "success" : true,
-  "text" : "Ok"
-}}]
-     - parameter name: (form)  
-     - parameter address: (form)  
-     - parameter city: (form)  
-     - parameter state: (form)  
-     - parameter country: (form)  
-     - parameter zip: (form)  
-     - parameter cc: (form)  
-     - parameter ccExp: (form)  
-     - parameter ccCcv2: (form)  
-
-     - returns: RequestBuilder<SuccessTextResponse> 
-     */
-    open class func addAccountCreditCardWithRequestBuilder(name: String, address: String, city: String, state: String, country: String, zip: String, cc: String, ccExp: String, ccCcv2: String) -> RequestBuilder<SuccessTextResponse> {
-        let path = "/account/creditcards"
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-    /**
-     Add Credit Card to Account
-
-     - parameter body: (body)  
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func addAccountCreditCard(body: BillingAddCcRequest, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
-        addAccountCreditCardWithRequestBuilder(body: body).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Add Credit Card to Account
-     - POST /account/creditcards
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - examples: [{contentType=application/json, example={
-  "success" : true,
-  "text" : "Ok"
-}}]
-     - parameter body: (body)  
-
-     - returns: RequestBuilder<SuccessTextResponse> 
-     */
-    open class func addAccountCreditCardWithRequestBuilder(body: BillingAddCcRequest) -> RequestBuilder<SuccessTextResponse> {
-        let path = "/account/creditcards"
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-    /**
-     Add Credit Card for Billing
+     Store a credit card on the account — may return a verification flow
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -130,7 +24,7 @@ open class BillingAPI {
 
 
     /**
-     Add Credit Card for Billing
+     Store a credit card on the account — may return a verification flow
      - POST /billing/creditcards
 
      - API Key:
@@ -162,7 +56,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Add Credit Card for Billing
+     Store a credit card on the account — may return a verification flow
 
      - parameter name: (form)  
      - parameter address: (form)  
@@ -183,7 +77,7 @@ open class BillingAPI {
 
 
     /**
-     Add Credit Card for Billing
+     Store a credit card on the account — may return a verification flow
      - POST /billing/creditcards
 
      - API Key:
@@ -223,7 +117,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Create Prepay Deposit
+     Create a prepay deposit and return an invoice id to fund it
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -236,7 +130,7 @@ open class BillingAPI {
 
 
     /**
-     Create Prepay Deposit
+     Create a prepay deposit and return an invoice id to fund it
      - POST /billing/prepays
 
      - API Key:
@@ -268,7 +162,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Create Prepay Deposit
+     Create a prepay deposit and return an invoice id to fund it
 
      - parameter module: (form)  
      - parameter amount: (form)  
@@ -283,7 +177,7 @@ open class BillingAPI {
 
 
     /**
-     Create Prepay Deposit
+     Create a prepay deposit and return an invoice id to fund it
      - POST /billing/prepays
 
      - API Key:
@@ -317,52 +211,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Remove Credit Card
-
-     - parameter _id: (path) The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func deleteAccountCreditCard(_id: String, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        deleteAccountCreditCardWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Remove Credit Card
-     - DELETE /account/creditcards/{id}
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - examples: [{contentType=application/json, example=""}]
-     - parameter _id: (path) The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-
-     - returns: RequestBuilder<String> 
-     */
-    open class func deleteAccountCreditCardWithRequestBuilder(_id: String) -> RequestBuilder<String> {
-        var path = "/account/creditcards/{id}"
-        let _idPreEscape = "\(_id)"
-        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<String>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-    /**
-     Delete Credit Card
+     Remove a stored credit card from the account
 
      - parameter _id: (path) The credit card ID to remove. Use IDs from &#x60;GET /billing/creditcards&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -375,7 +224,7 @@ open class BillingAPI {
 
 
     /**
-     Delete Credit Card
+     Remove a stored credit card from the account
      - DELETE /billing/creditcards/{id}
 
      - API Key:
@@ -410,7 +259,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Delete Invoice
+     Cancel a pending unpaid invoice — and its pending service or repeat invoice
 
      - parameter _id: (path) The invoice ID to delete. Only unpaid invoices can be deleted. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -423,7 +272,7 @@ open class BillingAPI {
 
 
     /**
-     Delete Invoice
+     Cancel a pending unpaid invoice — and its pending service or repeat invoice
      - DELETE /billing/invoices/{id}
 
      - API Key:
@@ -458,7 +307,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Delete Prepay Balance
+     Delete an unfunded prepay or strip its unpaid funding invoices
 
      - parameter _id: (path) The prepay balance ID to delete. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -471,7 +320,7 @@ open class BillingAPI {
 
 
     /**
-     Delete Prepay Balance
+     Delete an unfunded prepay or strip its unpaid funding invoices
      - DELETE /billing/prepays/{id}
 
      - API Key:
@@ -506,7 +355,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Affiliate Banner Assets
+     List affiliate banner image assets with filename and dimensions
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -518,7 +367,7 @@ open class BillingAPI {
 
 
     /**
-     List Affiliate Banner Assets
+     List affiliate banner image assets with filename and dimensions
      - GET /affiliate/banners
 
      - API Key:
@@ -554,7 +403,71 @@ open class BillingAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Affiliate Performance Report
+     * enum for parameter ex
+     */
+    public enum Ex_getAffiliateDownload: String { 
+        case csv = "csv"
+        case xls = "xls"
+        case xlsx = "xlsx"
+        case pdf = "pdf"
+    }
+
+    /**
+     Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+
+     - parameter st: (query) Filter by status. (optional)
+     - parameter ex: (query) Export format: csv, xls, xlsx, or pdf. Defaults to csv. (optional)
+     - parameter year: (query) Year to filter the report. Defaults to the current year. (optional)
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func getAffiliateDownload(st: String? = nil, ex: Ex_getAffiliateDownload? = nil, year: Int? = nil, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        getAffiliateDownloadWithRequestBuilder(st: st, ex: ex, year: year).execute { (response, error) -> Void in
+            if error == nil {
+                completion((), error)
+            } else {
+                completion(nil, error)
+            }
+        }
+    }
+
+
+    /**
+     Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+     - GET /affiliate/download
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - parameter st: (query) Filter by status. (optional)
+     - parameter ex: (query) Export format: csv, xls, xlsx, or pdf. Defaults to csv. (optional)
+     - parameter year: (query) Year to filter the report. Defaults to the current year. (optional)
+
+     - returns: RequestBuilder<Void> 
+     */
+    open class func getAffiliateDownloadWithRequestBuilder(st: String? = nil, ex: Ex_getAffiliateDownload? = nil, year: Int? = nil) -> RequestBuilder<Void> {
+        let path = "/affiliate/download"
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+                        "st": st, 
+                        "ex": ex?.rawValue, 
+                        "year": year?.encodeToJSON()
+        ])
+
+
+        let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+    /**
+     Read a combined affiliate performance summary (HTML payload)
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -566,7 +479,7 @@ open class BillingAPI {
 
 
     /**
-     Get Affiliate Performance Report
+     Read a combined affiliate performance summary (HTML payload)
      - GET /affiliate/rich_report
 
      - API Key:
@@ -596,7 +509,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Affiliate Sales Graph Data
+     Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
 
      - parameter days: (query) Number of days of sales history to include in the graph data. Determines the time window for the returned data points. (optional)
      - parameter completion: completion handler to receive the data and the error objects
@@ -609,7 +522,7 @@ open class BillingAPI {
 
 
     /**
-     Get Affiliate Sales Graph Data
+     Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
      - GET /affiliate/sales_graph
 
      - API Key:
@@ -645,20 +558,21 @@ open class BillingAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Affiliate Sales Report
+     Read affiliate signup stats and per-customer conversion data
 
+     - parameter st: (query) Filter signups by status. Use &#x60;default&#x60; to show all or pass a specific status value to narrow results. (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func getAffiliateSalesReport(completion: @escaping ((_ data: TextResponse?,_ error: Error?) -> Void)) {
-        getAffiliateSalesReportWithRequestBuilder().execute { (response, error) -> Void in
+    open class func getAffiliateSignups(st: String? = nil, completion: @escaping ((_ data: InlineResponse2001?,_ error: Error?) -> Void)) {
+        getAffiliateSignupsWithRequestBuilder(st: st).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Get Affiliate Sales Report
-     - GET /affiliate/sales_report
+     Read affiliate signup stats and per-customer conversion data
+     - GET /affiliate/signups
 
      - API Key:
        - type: apiKey X-API-KEY 
@@ -670,24 +584,28 @@ open class BillingAPI {
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
      - examples: [{contentType=application/json, example={
-  "text" : "You were successfull."
+  "data" : { }
 }}]
+     - parameter st: (query) Filter signups by status. Use &#x60;default&#x60; to show all or pass a specific status value to narrow results. (optional)
 
-     - returns: RequestBuilder<TextResponse> 
+     - returns: RequestBuilder<InlineResponse2001> 
      */
-    open class func getAffiliateSalesReportWithRequestBuilder() -> RequestBuilder<TextResponse> {
-        let path = "/affiliate/sales_report"
+    open class func getAffiliateSignupsWithRequestBuilder(st: String? = nil) -> RequestBuilder<InlineResponse2001> {
+        let path = "/affiliate/signups"
         let URLString = SwaggerClientAPI.basePath + path
         let parameters: [String:Any]? = nil
-        let url = URLComponents(string: URLString)
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems([
+                        "st": st
+        ])
 
 
-        let requestBuilder: RequestBuilder<TextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2001>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Affiliate Traffic Graph Data
+     Read aggregated affiliate referral click/visit time-series for chart rendering
 
      - parameter days: (query) Number of days of traffic history to include in the graph data. Determines the time window for the returned data points. (optional)
      - parameter completion: completion handler to receive the data and the error objects
@@ -700,7 +618,7 @@ open class BillingAPI {
 
 
     /**
-     Get Affiliate Traffic Graph Data
+     Read aggregated affiliate referral click/visit time-series for chart rendering
      - GET /affiliate/traffic_graph
 
      - API Key:
@@ -734,7 +652,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Affiliate Web Traffic Entries
+     List the 20 most recent affiliate referral visits with IP, referrer, timestamp
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -746,7 +664,7 @@ open class BillingAPI {
 
 
     /**
-     List Affiliate Web Traffic Entries
+     List the 20 most recent affiliate referral visits with IP, referrer, timestamp
      - GET /affiliate/web_traffic
 
      - API Key:
@@ -788,7 +706,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Shopping Cart Contents
+     Read the current shopping cart contents, totals, and available payment methods
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -804,7 +722,7 @@ open class BillingAPI {
 
 
     /**
-     Get Shopping Cart Contents
+     Read the current shopping cart contents, totals, and available payment methods
      - GET /billing/cart
 
      - API Key:
@@ -832,7 +750,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Credit Card Verification Requirements
+     Probe whether a stored card still needs micro-charge verification
 
      - parameter _id: (path) The credit card ID to verify. Use the ID returned from &#x60;POST /billing/creditcards&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -845,7 +763,7 @@ open class BillingAPI {
 
 
     /**
-     Get Credit Card Verification Requirements
+     Probe whether a stored card still needs micro-charge verification
      - GET /billing/creditcards/{id}/verify
 
      - API Key:
@@ -880,7 +798,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Invoice Details
+     Read full invoice detail — line items, totals, paid status, customer info
 
      - parameter _id: (path) The invoice ID. Use IDs from &#x60;GET /billing/invoices&#x60; or from order responses. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -893,7 +811,7 @@ open class BillingAPI {
 
 
     /**
-     Get Invoice Details
+     Read full invoice detail — line items, totals, paid status, customer info
      - GET /billing/invoices/{id}
 
      - API Key:
@@ -927,7 +845,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Account Invoices
+     List every invoice on the account with summary totals and paid/unpaid status
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -939,7 +857,7 @@ open class BillingAPI {
 
 
     /**
-     List Account Invoices
+     List every invoice on the account with summary totals and paid/unpaid status
      - GET /billing/invoices
 
      - API Key:
@@ -970,7 +888,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Prepay Balances
+     List prepay deposits on the account — remaining balance and auto-use flags
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -986,7 +904,7 @@ open class BillingAPI {
 
 
     /**
-     List Prepay Balances
+     List prepay deposits on the account — remaining balance and auto-use flags
      - GET /billing/prepays
 
      - API Key:
@@ -1014,61 +932,6 @@ open class BillingAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Invoices
-
-     - parameter searchString: (query) pass an optional search string for looking up inventory (optional)
-     - parameter skip: (query) number of records to skip for pagination (optional)
-     - parameter limit: (query) maximum number of records to return (optional)
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func getInvoices(searchString: String? = nil, skip: Int? = nil, limit: Int? = nil, completion: @escaping ((_ data: [Invoice]?,_ error: Error?) -> Void)) {
-        getInvoicesWithRequestBuilder(searchString: searchString, skip: skip, limit: limit).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Get Invoices
-     - GET /invoices
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - examples: [{contentType=application/json, example=[ {
-  "id" : 0
-}, {
-  "id" : 0
-} ]}]
-     - parameter searchString: (query) pass an optional search string for looking up inventory (optional)
-     - parameter skip: (query) number of records to skip for pagination (optional)
-     - parameter limit: (query) maximum number of records to return (optional)
-
-     - returns: RequestBuilder<[Invoice]> 
-     */
-    open class func getInvoicesWithRequestBuilder(searchString: String? = nil, skip: Int? = nil, limit: Int? = nil) -> RequestBuilder<[Invoice]> {
-        let path = "/invoices"
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        var url = URLComponents(string: URLString)
-        url?.queryItems = APIHelper.mapValuesToQueryItems([
-                        "searchString": searchString, 
-                        "skip": skip?.encodeToJSON(), 
-                        "limit": limit?.encodeToJSON()
-        ])
-
-
-        let requestBuilder: RequestBuilder<[Invoice]>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-    /**
      * enum for parameter method
      */
     public enum Method_initiatePayment: String { 
@@ -1084,13 +947,13 @@ open class BillingAPI {
     }
 
     /**
-     Initiate Payment
+     Pay invoices through the chosen gateway — returns the next-step action
 
      - parameter method: (path) The payment method to use. Valid values: &#x60;cc&#x60; (credit card), &#x60;paypal&#x60;, &#x60;prepay&#x60;, &#x60;payssion&#x60;, &#x60;payu&#x60;, &#x60;ccavenue&#x60;, &#x60;cashfree&#x60;, &#x60;coinbase&#x60;, &#x60;btcpay&#x60;. 
-     - parameter invoices: (path) A comma-separated list of invoice IDs to pay. These IDs are returned by order endpoints (e.g. &#x60;/backups/order&#x60;, &#x60;/vps/order&#x60;) and by &#x60;/billing/invoices&#x60;. 
+     - parameter invoices: (path) A comma-separated list of invoice IDs or invoice Tags to pay. These IDs are returned by order endpoints (e.g. &#x60;/backups/order&#x60;, &#x60;/vps/order&#x60;) and by &#x60;/billing/invoices&#x60;. Invoice tags accepted are SERVICE&lt;module&gt;&lt;id&gt;, RINV&lt;module&gt;&lt;repeat invoice id&gt;, INV&lt;module&gt;&lt;invoice id&gt;, PREPAY&lt;prepay id&gt;&lt;invoice id&gt;, and &lt;invoice id&gt;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func initiatePayment(method: Method_initiatePayment, invoices: String, completion: @escaping ((_ data: InlineResponse2009?,_ error: Error?) -> Void)) {
+    open class func initiatePayment(method: Method_initiatePayment, invoices: String, completion: @escaping ((_ data: InlineResponse20010?,_ error: Error?) -> Void)) {
         initiatePaymentWithRequestBuilder(method: method, invoices: invoices).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -1098,8 +961,8 @@ open class BillingAPI {
 
 
     /**
-     Initiate Payment
-     - GET /pay/{method}/{invoices}
+     Pay invoices through the chosen gateway — returns the next-step action
+     - GET /billing/pay/{method}/{invoices}
 
      - API Key:
        - type: apiKey X-API-KEY 
@@ -1119,12 +982,12 @@ open class BillingAPI {
   "items" : { }
 }}]
      - parameter method: (path) The payment method to use. Valid values: &#x60;cc&#x60; (credit card), &#x60;paypal&#x60;, &#x60;prepay&#x60;, &#x60;payssion&#x60;, &#x60;payu&#x60;, &#x60;ccavenue&#x60;, &#x60;cashfree&#x60;, &#x60;coinbase&#x60;, &#x60;btcpay&#x60;. 
-     - parameter invoices: (path) A comma-separated list of invoice IDs to pay. These IDs are returned by order endpoints (e.g. &#x60;/backups/order&#x60;, &#x60;/vps/order&#x60;) and by &#x60;/billing/invoices&#x60;. 
+     - parameter invoices: (path) A comma-separated list of invoice IDs or invoice Tags to pay. These IDs are returned by order endpoints (e.g. &#x60;/backups/order&#x60;, &#x60;/vps/order&#x60;) and by &#x60;/billing/invoices&#x60;. Invoice tags accepted are SERVICE&lt;module&gt;&lt;id&gt;, RINV&lt;module&gt;&lt;repeat invoice id&gt;, INV&lt;module&gt;&lt;invoice id&gt;, PREPAY&lt;prepay id&gt;&lt;invoice id&gt;, and &lt;invoice id&gt;. 
 
-     - returns: RequestBuilder<InlineResponse2009> 
+     - returns: RequestBuilder<InlineResponse20010> 
      */
-    open class func initiatePaymentWithRequestBuilder(method: Method_initiatePayment, invoices: String) -> RequestBuilder<InlineResponse2009> {
-        var path = "/pay/{method}/{invoices}"
+    open class func initiatePaymentWithRequestBuilder(method: Method_initiatePayment, invoices: String) -> RequestBuilder<InlineResponse20010> {
+        var path = "/billing/pay/{method}/{invoices}"
         let methodPreEscape = "\(method.rawValue)"
         let methodPostEscape = methodPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         path = path.replacingOccurrences(of: "{method}", with: methodPostEscape, options: .literal, range: nil)
@@ -1136,12 +999,112 @@ open class BillingAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2009>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse20010>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Submit Credit Card Verification
+     Place two micro-charges on the card to start CVV verification (step 1 of 2)
+
+     - parameter body: (body)  
+     - parameter _id: (path) The credit card ID to verify. Use the ID returned from &#x60;POST /billing/creditcards&#x60;. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func patchBillingCreditCardVerify(body: IdVerifyBody, _id: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
+        patchBillingCreditCardVerifyWithRequestBuilder(body: body, _id: _id).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Place two micro-charges on the card to start CVV verification (step 1 of 2)
+     - PATCH /billing/creditcards/{id}/verify
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
+     - parameter body: (body)  
+     - parameter _id: (path) The credit card ID to verify. Use the ID returned from &#x60;POST /billing/creditcards&#x60;. 
+
+     - returns: RequestBuilder<SuccessTextResponse> 
+     */
+    open class func patchBillingCreditCardVerifyWithRequestBuilder(body: IdVerifyBody, _id: Int) -> RequestBuilder<SuccessTextResponse> {
+        var path = "/billing/creditcards/{id}/verify"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    /**
+     Place two micro-charges on the card to start CVV verification (step 1 of 2)
+
+     - parameter ccCcv2: (form)  
+     - parameter _id: (path) The credit card ID to verify. Use the ID returned from &#x60;POST /billing/creditcards&#x60;. 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func patchBillingCreditCardVerify(ccCcv2: String, _id: Int, completion: @escaping ((_ data: SuccessTextResponse?,_ error: Error?) -> Void)) {
+        patchBillingCreditCardVerifyWithRequestBuilder(ccCcv2: ccCcv2, _id: _id).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Place two micro-charges on the card to start CVV verification (step 1 of 2)
+     - PATCH /billing/creditcards/{id}/verify
+
+     - API Key:
+       - type: apiKey X-API-KEY 
+       - name: apiKeyAuth
+     - API Key:
+       - type: apiKey sessionid (QUERY)
+       - name: sessionIdCookieAuth
+     - API Key:
+       - type: apiKey sessionid 
+       - name: sessionIdHeaderAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true,
+  "text" : "Ok"
+}}]
+     - parameter ccCcv2: (form)  
+     - parameter _id: (path) The credit card ID to verify. Use the ID returned from &#x60;POST /billing/creditcards&#x60;. 
+
+     - returns: RequestBuilder<SuccessTextResponse> 
+     */
+    open class func patchBillingCreditCardVerifyWithRequestBuilder(ccCcv2: String, _id: Int) -> RequestBuilder<SuccessTextResponse> {
+        var path = "/billing/creditcards/{id}/verify"
+        let _idPreEscape = "\(_id)"
+        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
+        let URLString = SwaggerClientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+        let url = URLComponents(string: URLString)
+
+
+        let requestBuilder: RequestBuilder<SuccessTextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PATCH", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+    /**
+     Submit two micro-charge amounts to finalize card verification (step 2 of 2)
 
      - parameter body: (body)  
      - parameter _id: (path) The credit card ID to verify. Use the ID returned from &#x60;POST /billing/creditcards&#x60;. 
@@ -1155,7 +1118,7 @@ open class BillingAPI {
 
 
     /**
-     Submit Credit Card Verification
+     Submit two micro-charge amounts to finalize card verification (step 2 of 2)
      - POST /billing/creditcards/{id}/verify
 
      - API Key:
@@ -1191,7 +1154,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Submit Credit Card Verification
+     Submit two micro-charge amounts to finalize card verification (step 2 of 2)
 
      - parameter idx: (form)  
      - parameter ccCcv2: (form)  
@@ -1209,7 +1172,7 @@ open class BillingAPI {
 
 
     /**
-     Submit Credit Card Verification
+     Submit two micro-charge amounts to finalize card verification (step 2 of 2)
      - POST /billing/creditcards/{id}/verify
 
      - API Key:
@@ -1249,52 +1212,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Credit Card
-
-     - parameter _id: (path) The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func updateAccountCreditCard(_id: Int, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        updateAccountCreditCardWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Update Credit Card
-     - POST /account/creditcards/{id}
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - examples: [{contentType=application/json, example=""}]
-     - parameter _id: (path) The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. 
-
-     - returns: RequestBuilder<String> 
-     */
-    open class func updateAccountCreditCardWithRequestBuilder(_id: Int) -> RequestBuilder<String> {
-        var path = "/account/creditcards/{id}"
-        let _idPreEscape = "\(_id)"
-        let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{id}", with: _idPostEscape, options: .literal, range: nil)
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<String>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-    /**
-     Configure Affiliate Dock Settings
+     Configure the affiliate landing dock title, description, and referrer coupon
 
      - parameter affiliateDockTitle: (form)  
      - parameter affiliateDockDescription: (form)  
@@ -1309,7 +1227,7 @@ open class BillingAPI {
 
 
     /**
-     Configure Affiliate Dock Settings
+     Configure the affiliate landing dock title, description, and referrer coupon
      - POST /affiliate/dock_setup
 
      - API Key:
@@ -1342,7 +1260,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Configure Affiliate Dock Settings
+     Configure the affiliate landing dock title, description, and referrer coupon
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -1355,7 +1273,7 @@ open class BillingAPI {
 
 
     /**
-     Configure Affiliate Dock Settings
+     Configure the affiliate landing dock title, description, and referrer coupon
      - POST /affiliate/dock_setup
 
      - API Key:
@@ -1386,99 +1304,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Configure Affiliate Landing Page
-
-     - parameter affiliateDockTitle: (form)  
-     - parameter affiliateDockDescription: (form)  
-     - parameter referrerCoupon: (form)  
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func updateAffiliateLandingPage(affiliateDockTitle: String, affiliateDockDescription: String, referrerCoupon: String, completion: @escaping ((_ data: TextResponse?,_ error: Error?) -> Void)) {
-        updateAffiliateLandingPageWithRequestBuilder(affiliateDockTitle: affiliateDockTitle, affiliateDockDescription: affiliateDockDescription, referrerCoupon: referrerCoupon).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Configure Affiliate Landing Page
-     - POST /affiliate/landing_pg
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - examples: [{contentType=application/json, example={
-  "text" : "You were successfull."
-}}]
-     - parameter affiliateDockTitle: (form)  
-     - parameter affiliateDockDescription: (form)  
-     - parameter referrerCoupon: (form)  
-
-     - returns: RequestBuilder<TextResponse> 
-     */
-    open class func updateAffiliateLandingPageWithRequestBuilder(affiliateDockTitle: String, affiliateDockDescription: String, referrerCoupon: String) -> RequestBuilder<TextResponse> {
-        let path = "/affiliate/landing_pg"
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<TextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-    /**
-     Configure Affiliate Landing Page
-
-     - parameter body: (body)  
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func updateAffiliateLandingPage(body: AffiliateDockSetup, completion: @escaping ((_ data: TextResponse?,_ error: Error?) -> Void)) {
-        updateAffiliateLandingPageWithRequestBuilder(body: body).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Configure Affiliate Landing Page
-     - POST /affiliate/landing_pg
-
-     - API Key:
-       - type: apiKey X-API-KEY 
-       - name: apiKeyAuth
-     - API Key:
-       - type: apiKey sessionid (QUERY)
-       - name: sessionIdCookieAuth
-     - API Key:
-       - type: apiKey sessionid 
-       - name: sessionIdHeaderAuth
-     - examples: [{contentType=application/json, example={
-  "text" : "You were successfull."
-}}]
-     - parameter body: (body)  
-
-     - returns: RequestBuilder<TextResponse> 
-     */
-    open class func updateAffiliateLandingPageWithRequestBuilder(body: AffiliateDockSetup) -> RequestBuilder<TextResponse> {
-        let path = "/affiliate/landing_pg"
-        let URLString = SwaggerClientAPI.basePath + path
-        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
-        let url = URLComponents(string: URLString)
-
-
-        let requestBuilder: RequestBuilder<TextResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-    /**
-     Configure Affiliate Payout Preferences
+     Configure how affiliate commissions get paid out (PayPal or internal prepay)
 
      - parameter affiliatePaypal: (form)  
      - parameter affiliatePaymentMethod: (form)  
@@ -1492,7 +1318,7 @@ open class BillingAPI {
 
 
     /**
-     Configure Affiliate Payout Preferences
+     Configure how affiliate commissions get paid out (PayPal or internal prepay)
      - POST /affiliate/payment_setup
 
      - API Key:
@@ -1524,7 +1350,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Configure Affiliate Payout Preferences
+     Configure how affiliate commissions get paid out (PayPal or internal prepay)
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -1537,7 +1363,7 @@ open class BillingAPI {
 
 
     /**
-     Configure Affiliate Payout Preferences
+     Configure how affiliate commissions get paid out (PayPal or internal prepay)
      - POST /affiliate/payment_setup
 
      - API Key:
@@ -1568,7 +1394,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Credit Card Details
+     Refresh stored card expiration and re-trigger MaxMind fraud scoring
 
      - parameter _id: (path) The credit card ID. Use IDs from &#x60;GET /billing/creditcards&#x60; or the response from &#x60;POST /billing/creditcards&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -1581,7 +1407,7 @@ open class BillingAPI {
 
 
     /**
-     Update Credit Card Details
+     Refresh stored card expiration and re-trigger MaxMind fraud scoring
      - POST /billing/creditcards/{id}
 
      - API Key:
@@ -1616,7 +1442,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update Default Payment Method
+     Set the account's default payment method for recurring/auto charges
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -1629,7 +1455,7 @@ open class BillingAPI {
 
 
     /**
-     Update Default Payment Method
+     Set the account's default payment method for recurring/auto charges
      - POST /billing/payment_method
 
      - API Key:
@@ -1661,7 +1487,7 @@ open class BillingAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update Default Payment Method
+     Set the account's default payment method for recurring/auto charges
 
      - parameter paymentMethod: (form)  
      - parameter ccAuto: (form)  
@@ -1675,7 +1501,7 @@ open class BillingAPI {
 
 
     /**
-     Update Default Payment Method
+     Set the account's default payment method for recurring/auto charges
      - POST /billing/payment_method
 
      - API Key:

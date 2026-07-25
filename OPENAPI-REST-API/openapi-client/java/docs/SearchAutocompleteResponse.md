@@ -10,4 +10,8 @@ Autocomplete search results for the authenticated account.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

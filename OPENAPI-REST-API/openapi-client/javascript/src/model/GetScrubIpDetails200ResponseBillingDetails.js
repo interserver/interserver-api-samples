@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetScrubIpDetails200ResponseBillingDetails model module.
  * @module model/GetScrubIpDetails200ResponseBillingDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetScrubIpDetails200ResponseBillingDetails {
     /**

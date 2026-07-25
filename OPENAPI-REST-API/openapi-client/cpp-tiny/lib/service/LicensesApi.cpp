@@ -9,6 +9,9 @@ using namespace Tiny;
         >
         LicensesApi::
         addLicense(
+            
+            LicenseOrderRequest licenseOrderRequest
+            
         )
         {
             std::string url = basepath + "/licenses/order"; //
@@ -19,6 +22,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -27,7 +31,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | 
+            // Body     | licenseOrderRequest
+
+
+
+            payload = licenseOrderRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
@@ -203,52 +212,6 @@ using namespace Tiny;
 
 
             Response<std::list<LicenseRow>> response(obj, httpCode);
-            return response;
-        }
-
-        Response<
-            String
-        >
-        LicensesApi::
-        getLicenseOrderCatTagInfo(
-            
-            std::string catTag
-            
-        )
-        {
-            std::string url = basepath + "/licenses/order/{catTag}"; //catTag 
-
-
-            // Headers  | 
-
-            // Query    | 
-
-            // Form     | 
-
-
-
-                std::string s_catTag("{");
-                s_catTag.append("catTag");
-                s_catTag.append("}");
-
-                int pos = url.find(s_catTag);
-
-                url.erase(pos, s_catTag.length());
-                url.insert(pos, stringify(catTag));
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | GET
-            // Body     | 
-            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-            Response<String> response(output, httpCode);
             return response;
         }
 
@@ -459,6 +422,9 @@ using namespace Tiny;
         >
         LicensesApi::
         putLicenses(
+            
+            LicenseOrderRequest licenseOrderRequest
+            
         )
         {
             std::string url = basepath + "/licenses/order"; //
@@ -469,6 +435,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -477,7 +444,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PUT
-            // Body     | 
+            // Body     | licenseOrderRequest
+
+
+
+            payload = licenseOrderRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "PUT", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request

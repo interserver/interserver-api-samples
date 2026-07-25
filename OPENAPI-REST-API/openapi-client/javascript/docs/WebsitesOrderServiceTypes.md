@@ -1,4 +1,4 @@
-# InterServerManagementApi.WebsitesOrderServiceTypes
+# InterserverApiClient.WebsitesOrderServiceTypes
 
 ## Properties
 

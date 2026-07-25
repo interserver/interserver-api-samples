@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   VpsPlesk12Data.JSON_PROPERTY_HOST
 })
 @JsonTypeName("VpsPlesk12Data")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class VpsPlesk12Data {
     public static final String JSON_PROPERTY_ADMIN = "admin";

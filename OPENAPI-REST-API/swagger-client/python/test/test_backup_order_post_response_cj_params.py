@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.backup_order_post_response_cj_params import BackupOrderPostResponseCjParams  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.backup_order_post_response_cj_params import BackupOrderPostResponseCjParams  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestBackupOrderPostResponseCjParams(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestBackupOrderPostResponseCjParams(unittest.TestCase):
     def testBackupOrderPostResponseCjParams(self):
         """Test BackupOrderPostResponseCjParams"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.backup_order_post_response_cj_params.BackupOrderPostResponseCjParams()  # noqa: E501
+        # model = interserver_api_client.models.backup_order_post_response_cj_params.BackupOrderPostResponseCjParams()  # noqa: E501
         pass
 
 

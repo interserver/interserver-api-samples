@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailRow();
+    instance = new InterserverApiClient.MailRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('MailRow', function() {
     it('should create an instance of MailRow', function() {
       // uncomment below and update the code to test MailRow
-      //var instance = new InterServerManagementApi.MailRow();
-      //expect(instance).to.be.a(InterServerManagementApi.MailRow);
+      //var instance = new InterserverApiClient.MailRow();
+      //expect(instance).to.be.a(InterserverApiClient.MailRow);
     });
 
     it('should have the property mail_id (base name: "mail_id")', function() {
       // uncomment below and update the code to test the property mail_id
-      //var instance = new InterServerManagementApi.MailRow();
+      //var instance = new InterserverApiClient.MailRow();
       //expect(instance).to.be();
     });
 
     it('should have the property repeat_invoices_cost (base name: "repeat_invoices_cost")', function() {
       // uncomment below and update the code to test the property repeat_invoices_cost
-      //var instance = new InterServerManagementApi.MailRow();
+      //var instance = new InterserverApiClient.MailRow();
       //expect(instance).to.be();
     });
 
     it('should have the property mail_username (base name: "mail_username")', function() {
       // uncomment below and update the code to test the property mail_username
-      //var instance = new InterServerManagementApi.MailRow();
+      //var instance = new InterserverApiClient.MailRow();
       //expect(instance).to.be();
     });
 
     it('should have the property mail_status (base name: "mail_status")', function() {
       // uncomment below and update the code to test the property mail_status
-      //var instance = new InterServerManagementApi.MailRow();
+      //var instance = new InterserverApiClient.MailRow();
       //expect(instance).to.be();
     });
 
     it('should have the property services_name (base name: "services_name")', function() {
       // uncomment below and update the code to test the property services_name
-      //var instance = new InterServerManagementApi.MailRow();
+      //var instance = new InterserverApiClient.MailRow();
       //expect(instance).to.be();
     });
 

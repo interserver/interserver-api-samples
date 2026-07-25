@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailDeliverabilityResponse();
+    instance = new InterserverApiClient.MailDeliverabilityResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('MailDeliverabilityResponse', function() {
     it('should create an instance of MailDeliverabilityResponse', function() {
       // uncomment below and update the code to test MailDeliverabilityResponse
-      //var instance = new InterServerManagementApi.MailDeliverabilityResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.MailDeliverabilityResponse);
+      //var instance = new InterserverApiClient.MailDeliverabilityResponse();
+      //expect(instance).to.be.a(InterserverApiClient.MailDeliverabilityResponse);
     });
 
     it('should have the property stat (base name: "stat")', function() {
       // uncomment below and update the code to test the property stat
-      //var instance = new InterServerManagementApi.MailDeliverabilityResponse();
+      //var instance = new InterserverApiClient.MailDeliverabilityResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property percent (base name: "percent")', function() {
       // uncomment below and update the code to test the property percent
-      //var instance = new InterServerManagementApi.MailDeliverabilityResponse();
+      //var instance = new InterserverApiClient.MailDeliverabilityResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property table_data (base name: "table_data")', function() {
       // uncomment below and update the code to test the property table_data
-      //var instance = new InterServerManagementApi.MailDeliverabilityResponse();
+      //var instance = new InterserverApiClient.MailDeliverabilityResponse();
       //expect(instance).to.be();
     });
 

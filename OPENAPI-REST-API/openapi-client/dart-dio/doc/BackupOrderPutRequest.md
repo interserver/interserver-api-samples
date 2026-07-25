@@ -1,16 +1,16 @@
-# openapi.model.BackupOrderPutRequest
+# interserver_api.model.BackupOrderPutRequest
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**validateOnly** | **bool** |  | [optional] 
-**serviceType** | **int** |  | [optional] 
-**coupon** | **String** |  | [optional] 
+**validateOnly** | **Optional&lt;bool?&gt;** |  | [optional] 
+**serviceType** | **Optional&lt;int?&gt;** |  | [optional] 
+**coupon** | **Optional&lt;String?&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

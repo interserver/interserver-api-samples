@@ -146,7 +146,7 @@ MailLog <- R6::R6Class(
         self$`limit` <- this_object$`limit`
       }
       if (!is.null(this_object$`emails`)) {
-        self$`emails` <- ApiClient$new()$deserializeObj(this_object$`emails`, "array[MailLogEntry]", loadNamespace("openapi"))
+        self$`emails` <- ApiClient$new()$deserializeObj(this_object$`emails`, "array[MailLogEntry]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -172,7 +172,7 @@ MailLog <- R6::R6Class(
       self$`total` <- this_object$`total`
       self$`skip` <- this_object$`skip`
       self$`limit` <- this_object$`limit`
-      self$`emails` <- ApiClient$new()$deserializeObj(this_object$`emails`, "array[MailLogEntry]", loadNamespace("openapi"))
+      self$`emails` <- ApiClient$new()$deserializeObj(this_object$`emails`, "array[MailLogEntry]", loadNamespace("interserverapi"))
       self
     },
 

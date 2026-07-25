@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BackupOrderPostResponseCjParams } from './api';
+import { BackupOrderPostResponseCjParams } from '@interserver/myadmin-client';
 
 const instance: BackupOrderPostResponseCjParams = {
     containerTagId,

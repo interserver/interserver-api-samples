@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for Server
 void main() {
-  final instance = ServerBuilder();
-  // TODO add properties to the builder and call build()
+  final Server? instance = /* Server(...) */ null;
+  // TODO add properties to the entity
 
   group(Server, () {
     // bool ipmiAuth
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<ServerClientLink> clientLinks
+    // List<ServerClientLink> clientLinks
     test('to test the property `clientLinks`', () async {
       // TODO
     });
@@ -37,7 +37,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<String> serviceExtra
+    // List<String> serviceExtra
     test('to test the property `serviceExtra`', () async {
       // TODO
     });

@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailBillingDetails
+# InterserverApiClient.MailBillingDetails
 
 ## Properties
 

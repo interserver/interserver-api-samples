@@ -1,4 +1,4 @@
-# openapi::WebsitesOrderJsonServiceOffersItem
+# interserverapi::WebsitesOrderJsonServiceOffersItem
 
 
 ## Properties

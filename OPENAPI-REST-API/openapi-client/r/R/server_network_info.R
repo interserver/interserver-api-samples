@@ -132,10 +132,10 @@ ServerNetworkInfo <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`vlans`)) {
-        self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("openapi"))
+        self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`vlans6`)) {
-        self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("openapi"))
+        self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`assets`)) {
         `assets_object` <- ServerNetworkInfoAssets$new()
@@ -168,8 +168,8 @@ ServerNetworkInfo <- R6::R6Class(
     #' @return the instance of ServerNetworkInfo
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("openapi"))
-      self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("openapi"))
+      self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("interserverapi"))
+      self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("interserverapi"))
       self$`assets` <- ServerNetworkInfoAssets$new()$fromJSON(jsonlite::toJSON(this_object$`assets`, auto_unbox = TRUE, digits = NA))
       self$`switchports` <- ServerNetworkInfoSwitchports$new()$fromJSON(jsonlite::toJSON(this_object$`switchports`, auto_unbox = TRUE, digits = NA))
       self

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.charge_invoice_rows_invoices_value_paid_invoices_value import ChargeInvoiceRowsInvoicesValuePaidInvoicesValue
+from interserver_api_client.models.charge_invoice_rows_invoices_value_paid_invoices_value import ChargeInvoiceRowsInvoicesValuePaidInvoicesValue
 
 class TestChargeInvoiceRowsInvoicesValuePaidInvoicesValue(unittest.TestCase):
     """ChargeInvoiceRowsInvoicesValuePaidInvoicesValue unit test stubs"""
@@ -45,7 +45,7 @@ class TestChargeInvoiceRowsInvoicesValuePaidInvoicesValue(unittest.TestCase):
                 invoices_date_formatted = '',
                 payment_type = '',
                 refund_invoices = {
-                    'key' : openapi_client.models.charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.ChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value(
+                    'key' : interserver_api_client.models.charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.ChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value(
                         invoices_id = 1.337, 
                         invoices_description = '', 
                         invoices_amount = 1.337, 

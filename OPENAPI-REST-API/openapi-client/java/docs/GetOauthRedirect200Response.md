@@ -10,4 +10,8 @@
 |**redirectUrl** | **String** | The URL to redirect the user to for OAuth authentication. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

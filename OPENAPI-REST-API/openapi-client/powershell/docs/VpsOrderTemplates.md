@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderTemplates = Initialize-PSOpenAPIToolsVpsOrderTemplates  -Hyperv null
+$VpsOrderTemplates = Initialize-InterserverApiVpsOrderTemplates  -Hyperv null
 ```
 
 - Convert the resource to JSON

@@ -15,56 +15,168 @@ package org.openapitools.client.model
   /**
    * Type of DNS Record
    */
+sealed trait DnsRecordType
 
-object DnsRecordType extends Enumeration {
-    type DnsRecordType = DnsRecordType.Value
-    val `A` = Value("A")
-    val A6 = Value("A6")
-    val AAAA = Value("AAAA")
-    val AFSDB = Value("AFSDB")
-    val ALIAS = Value("ALIAS")
-    val CAA = Value("CAA")
-    val CDNSKEY = Value("CDNSKEY")
-    val CDS = Value("CDS")
-    val CERT = Value("CERT")
-    val CNAME = Value("CNAME")
-    val DHCID = Value("DHCID")
-    val DLV = Value("DLV")
-    val DNSKEY = Value("DNSKEY")
-    val DNAME = Value("DNAME")
-    val DS = Value("DS")
-    val EUI48 = Value("EUI48")
-    val EUI64 = Value("EUI64")
-    val HINFO = Value("HINFO")
-    val IPSECKEY = Value("IPSECKEY")
-    val KEY = Value("KEY")
-    val KX = Value("KX")
-    val LOC = Value("LOC")
-    val MAILA = Value("MAILA")
-    val MAILB = Value("MAILB")
-    val MINFO = Value("MINFO")
-    val MR = Value("MR")
-    val MX = Value("MX")
-    val NAPTR = Value("NAPTR")
-    val NS = Value("NS")
-    val NSEC = Value("NSEC")
-    val NSEC3 = Value("NSEC3")
-    val NSEC3PARAM = Value("NSEC3PARAM")
-    val OPENPGPKEY = Value("OPENPGPKEY")
-    val OPT = Value("OPT")
-    val PTR = Value("PTR")
-    val RKEY = Value("RKEY")
-    val RP = Value("RP")
-    val RRSIG = Value("RRSIG")
-    val SIG = Value("SIG")
-    val SOA = Value("SOA")
-    val SPF = Value("SPF")
-    val SRV = Value("SRV")
-    val SSHFP = Value("SSHFP")
-    val TLSA = Value("TLSA")
-    val TKEY = Value("TKEY")
-    val TSIG = Value("TSIG")
-    val TXT = Value("TXT")
-    val WKS = Value("WKS")
-    val URI = Value("URI⏎")
+object DnsRecordType {
+  case object `A` extends DnsRecordType
+  case object A6 extends DnsRecordType
+  case object AAAA extends DnsRecordType
+  case object AFSDB extends DnsRecordType
+  case object ALIAS extends DnsRecordType
+  case object CAA extends DnsRecordType
+  case object CDNSKEY extends DnsRecordType
+  case object CDS extends DnsRecordType
+  case object CERT extends DnsRecordType
+  case object CNAME extends DnsRecordType
+  case object DHCID extends DnsRecordType
+  case object DLV extends DnsRecordType
+  case object DNSKEY extends DnsRecordType
+  case object DNAME extends DnsRecordType
+  case object DS extends DnsRecordType
+  case object EUI48 extends DnsRecordType
+  case object EUI64 extends DnsRecordType
+  case object HINFO extends DnsRecordType
+  case object IPSECKEY extends DnsRecordType
+  case object KEY extends DnsRecordType
+  case object KX extends DnsRecordType
+  case object LOC extends DnsRecordType
+  case object MAILA extends DnsRecordType
+  case object MAILB extends DnsRecordType
+  case object MINFO extends DnsRecordType
+  case object MR extends DnsRecordType
+  case object MX extends DnsRecordType
+  case object NAPTR extends DnsRecordType
+  case object NS extends DnsRecordType
+  case object NSEC extends DnsRecordType
+  case object NSEC3 extends DnsRecordType
+  case object NSEC3PARAM extends DnsRecordType
+  case object OPENPGPKEY extends DnsRecordType
+  case object OPT extends DnsRecordType
+  case object PTR extends DnsRecordType
+  case object RKEY extends DnsRecordType
+  case object RP extends DnsRecordType
+  case object RRSIG extends DnsRecordType
+  case object SIG extends DnsRecordType
+  case object SOA extends DnsRecordType
+  case object SPF extends DnsRecordType
+  case object SRV extends DnsRecordType
+  case object SSHFP extends DnsRecordType
+  case object TLSA extends DnsRecordType
+  case object TKEY extends DnsRecordType
+  case object TSIG extends DnsRecordType
+  case object TXT extends DnsRecordType
+  case object WKS extends DnsRecordType
+  case object URI extends DnsRecordType
+
+  import org.json4s._
+
+  implicit object DnsRecordTypeSerializer extends Serializer[DnsRecordType] {
+    def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), DnsRecordType] = {
+      case (TypeInfo(clazz, _), json) if classOf[DnsRecordType].isAssignableFrom(clazz) =>
+        json match {
+          case JString("A") => `A`
+          case JString("A6") => A6
+          case JString("AAAA") => AAAA
+          case JString("AFSDB") => AFSDB
+          case JString("ALIAS") => ALIAS
+          case JString("CAA") => CAA
+          case JString("CDNSKEY") => CDNSKEY
+          case JString("CDS") => CDS
+          case JString("CERT") => CERT
+          case JString("CNAME") => CNAME
+          case JString("DHCID") => DHCID
+          case JString("DLV") => DLV
+          case JString("DNSKEY") => DNSKEY
+          case JString("DNAME") => DNAME
+          case JString("DS") => DS
+          case JString("EUI48") => EUI48
+          case JString("EUI64") => EUI64
+          case JString("HINFO") => HINFO
+          case JString("IPSECKEY") => IPSECKEY
+          case JString("KEY") => KEY
+          case JString("KX") => KX
+          case JString("LOC") => LOC
+          case JString("MAILA") => MAILA
+          case JString("MAILB") => MAILB
+          case JString("MINFO") => MINFO
+          case JString("MR") => MR
+          case JString("MX") => MX
+          case JString("NAPTR") => NAPTR
+          case JString("NS") => NS
+          case JString("NSEC") => NSEC
+          case JString("NSEC3") => NSEC3
+          case JString("NSEC3PARAM") => NSEC3PARAM
+          case JString("OPENPGPKEY") => OPENPGPKEY
+          case JString("OPT") => OPT
+          case JString("PTR") => PTR
+          case JString("RKEY") => RKEY
+          case JString("RP") => RP
+          case JString("RRSIG") => RRSIG
+          case JString("SIG") => SIG
+          case JString("SOA") => SOA
+          case JString("SPF") => SPF
+          case JString("SRV") => SRV
+          case JString("SSHFP") => SSHFP
+          case JString("TLSA") => TLSA
+          case JString("TKEY") => TKEY
+          case JString("TSIG") => TSIG
+          case JString("TXT") => TXT
+          case JString("WKS") => WKS
+          case JString("URI⏎") => URI
+          case other => throw new MappingException(s"Invalid DnsRecordType: $other")
+        }
+    }
+
+    def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+      case `A` => JString("A")
+      case A6 => JString("A6")
+      case AAAA => JString("AAAA")
+      case AFSDB => JString("AFSDB")
+      case ALIAS => JString("ALIAS")
+      case CAA => JString("CAA")
+      case CDNSKEY => JString("CDNSKEY")
+      case CDS => JString("CDS")
+      case CERT => JString("CERT")
+      case CNAME => JString("CNAME")
+      case DHCID => JString("DHCID")
+      case DLV => JString("DLV")
+      case DNSKEY => JString("DNSKEY")
+      case DNAME => JString("DNAME")
+      case DS => JString("DS")
+      case EUI48 => JString("EUI48")
+      case EUI64 => JString("EUI64")
+      case HINFO => JString("HINFO")
+      case IPSECKEY => JString("IPSECKEY")
+      case KEY => JString("KEY")
+      case KX => JString("KX")
+      case LOC => JString("LOC")
+      case MAILA => JString("MAILA")
+      case MAILB => JString("MAILB")
+      case MINFO => JString("MINFO")
+      case MR => JString("MR")
+      case MX => JString("MX")
+      case NAPTR => JString("NAPTR")
+      case NS => JString("NS")
+      case NSEC => JString("NSEC")
+      case NSEC3 => JString("NSEC3")
+      case NSEC3PARAM => JString("NSEC3PARAM")
+      case OPENPGPKEY => JString("OPENPGPKEY")
+      case OPT => JString("OPT")
+      case PTR => JString("PTR")
+      case RKEY => JString("RKEY")
+      case RP => JString("RP")
+      case RRSIG => JString("RRSIG")
+      case SIG => JString("SIG")
+      case SOA => JString("SOA")
+      case SPF => JString("SPF")
+      case SRV => JString("SRV")
+      case SSHFP => JString("SSHFP")
+      case TLSA => JString("TLSA")
+      case TKEY => JString("TKEY")
+      case TSIG => JString("TSIG")
+      case TXT => JString("TXT")
+      case WKS => JString("WKS")
+      case URI => JString("URI⏎")
+    }
+  }
 }

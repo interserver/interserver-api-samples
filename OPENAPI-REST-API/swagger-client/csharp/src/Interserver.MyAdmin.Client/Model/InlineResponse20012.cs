@@ -31,73 +31,26 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20012" /> class.
         /// </summary>
-        /// <param name="serviceInfo">serviceInfo.</param>
-        /// <param name="clientLinks">clientLinks.</param>
-        /// <param name="billingDetails">billingDetails.</param>
-        /// <param name="custCurrency">custCurrency.</param>
-        /// <param name="custCurrencySymbol">custCurrencySymbol.</param>
-        /// <param name="package">package.</param>
-        /// <param name="extraInfoTables">extraInfoTables.</param>
-        /// <param name="filterFirewall">filterFirewall.</param>
-        public InlineResponse20012(InlineResponse20012ServiceInfo serviceInfo = default(InlineResponse20012ServiceInfo), List<InlineResponse20012ClientLinks> clientLinks = default(List<InlineResponse20012ClientLinks>), InlineResponse20012BillingDetails billingDetails = default(InlineResponse20012BillingDetails), string custCurrency = default(string), string custCurrencySymbol = default(string), string package = default(string), InlineResponse20012ExtraInfoTables extraInfoTables = default(InlineResponse20012ExtraInfoTables), InlineResponse20012FilterFirewall filterFirewall = default(InlineResponse20012FilterFirewall))
+        /// <param name="text">text.</param>
+        /// <param name="url">A pre-signed download URL valid for 24 hours..</param>
+        public InlineResponse20012(string text = default(string), string url = default(string))
         {
-            this.serviceInfo = serviceInfo;
-            this.client_links = clientLinks;
-            this.billingDetails = billingDetails;
-            this.custCurrency = custCurrency;
-            this.custCurrencySymbol = custCurrencySymbol;
-            this.package = package;
-            this.extraInfoTables = extraInfoTables;
-            this.filter_firewall = filterFirewall;
+            this.text = text;
+            this.url = url;
         }
         
         /// <summary>
-        /// Gets or Sets serviceInfo
+        /// Gets or Sets text
         /// </summary>
-        [DataMember(Name="serviceInfo", EmitDefaultValue=false)]
-        public InlineResponse20012ServiceInfo serviceInfo { get; set; }
+        [DataMember(Name="text", EmitDefaultValue=false)]
+        public string text { get; set; }
 
         /// <summary>
-        /// Gets or Sets client_links
+        /// A pre-signed download URL valid for 24 hours.
         /// </summary>
-        [DataMember(Name="client_links", EmitDefaultValue=false)]
-        public List<InlineResponse20012ClientLinks> client_links { get; set; }
-
-        /// <summary>
-        /// Gets or Sets billingDetails
-        /// </summary>
-        [DataMember(Name="billingDetails", EmitDefaultValue=false)]
-        public InlineResponse20012BillingDetails billingDetails { get; set; }
-
-        /// <summary>
-        /// Gets or Sets custCurrency
-        /// </summary>
-        [DataMember(Name="custCurrency", EmitDefaultValue=false)]
-        public string custCurrency { get; set; }
-
-        /// <summary>
-        /// Gets or Sets custCurrencySymbol
-        /// </summary>
-        [DataMember(Name="custCurrencySymbol", EmitDefaultValue=false)]
-        public string custCurrencySymbol { get; set; }
-
-        /// <summary>
-        /// Gets or Sets package
-        /// </summary>
-        [DataMember(Name="package", EmitDefaultValue=false)]
-        public string package { get; set; }
-
-        /// <summary>
-        /// Gets or Sets extraInfoTables
-        /// </summary>
-        [DataMember(Name="extraInfoTables", EmitDefaultValue=false)]
-        public InlineResponse20012ExtraInfoTables extraInfoTables { get; set; }
-
-        /// <summary>
-        /// Gets or Sets filter_firewall
-        /// </summary>
-        [DataMember(Name="filter_firewall", EmitDefaultValue=false)]
-        public InlineResponse20012FilterFirewall filter_firewall { get; set; }
+        /// <value>A pre-signed download URL valid for 24 hours.</value>
+        [DataMember(Name="url", EmitDefaultValue=false)]
+        public string url { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,14 +60,8 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20012 {\n");
-            sb.Append("  serviceInfo: ").Append(serviceInfo).Append("\n");
-            sb.Append("  client_links: ").Append(client_links).Append("\n");
-            sb.Append("  billingDetails: ").Append(billingDetails).Append("\n");
-            sb.Append("  custCurrency: ").Append(custCurrency).Append("\n");
-            sb.Append("  custCurrencySymbol: ").Append(custCurrencySymbol).Append("\n");
-            sb.Append("  package: ").Append(package).Append("\n");
-            sb.Append("  extraInfoTables: ").Append(extraInfoTables).Append("\n");
-            sb.Append("  filter_firewall: ").Append(filter_firewall).Append("\n");
+            sb.Append("  text: ").Append(text).Append("\n");
+            sb.Append("  url: ").Append(url).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -150,45 +97,14 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.serviceInfo == input.serviceInfo ||
-                    (this.serviceInfo != null &&
-                    this.serviceInfo.Equals(input.serviceInfo))
+                    this.text == input.text ||
+                    (this.text != null &&
+                    this.text.Equals(input.text))
                 ) && 
                 (
-                    this.client_links == input.client_links ||
-                    this.client_links != null &&
-                    input.client_links != null &&
-                    this.client_links.SequenceEqual(input.client_links)
-                ) && 
-                (
-                    this.billingDetails == input.billingDetails ||
-                    (this.billingDetails != null &&
-                    this.billingDetails.Equals(input.billingDetails))
-                ) && 
-                (
-                    this.custCurrency == input.custCurrency ||
-                    (this.custCurrency != null &&
-                    this.custCurrency.Equals(input.custCurrency))
-                ) && 
-                (
-                    this.custCurrencySymbol == input.custCurrencySymbol ||
-                    (this.custCurrencySymbol != null &&
-                    this.custCurrencySymbol.Equals(input.custCurrencySymbol))
-                ) && 
-                (
-                    this.package == input.package ||
-                    (this.package != null &&
-                    this.package.Equals(input.package))
-                ) && 
-                (
-                    this.extraInfoTables == input.extraInfoTables ||
-                    (this.extraInfoTables != null &&
-                    this.extraInfoTables.Equals(input.extraInfoTables))
-                ) && 
-                (
-                    this.filter_firewall == input.filter_firewall ||
-                    (this.filter_firewall != null &&
-                    this.filter_firewall.Equals(input.filter_firewall))
+                    this.url == input.url ||
+                    (this.url != null &&
+                    this.url.Equals(input.url))
                 );
         }
 
@@ -201,22 +117,10 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.serviceInfo != null)
-                    hashCode = hashCode * 59 + this.serviceInfo.GetHashCode();
-                if (this.client_links != null)
-                    hashCode = hashCode * 59 + this.client_links.GetHashCode();
-                if (this.billingDetails != null)
-                    hashCode = hashCode * 59 + this.billingDetails.GetHashCode();
-                if (this.custCurrency != null)
-                    hashCode = hashCode * 59 + this.custCurrency.GetHashCode();
-                if (this.custCurrencySymbol != null)
-                    hashCode = hashCode * 59 + this.custCurrencySymbol.GetHashCode();
-                if (this.package != null)
-                    hashCode = hashCode * 59 + this.package.GetHashCode();
-                if (this.extraInfoTables != null)
-                    hashCode = hashCode * 59 + this.extraInfoTables.GetHashCode();
-                if (this.filter_firewall != null)
-                    hashCode = hashCode * 59 + this.filter_firewall.GetHashCode();
+                if (this.text != null)
+                    hashCode = hashCode * 59 + this.text.GetHashCode();
+                if (this.url != null)
+                    hashCode = hashCode * 59 + this.url.GetHashCode();
                 return hashCode;
             }
         }

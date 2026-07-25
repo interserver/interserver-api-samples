@@ -2,11 +2,9 @@ package io.swagger.server.model
 
 
 /**
- * @param success 
- * @param text 
+ * @param login Whether the 2FA verification succeeded and the user is now logged in.
  */
 case class Inline_response_200_8 (
-  success: Boolean,
-  text: String
+  login: Option[Boolean]
 )
 

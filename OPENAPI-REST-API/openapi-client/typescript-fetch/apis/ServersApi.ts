@@ -12,60 +12,101 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  AddServer200Response,
-  BuyItNowList,
-  BuyItNowServerOrder200Response,
-  ChargeInvoiceRows,
-  GetAccountInfo401Response,
-  PlaceBuyNowServerRequest,
-  ReverseDnsEntries,
-  Server,
-  ServerIpmiLiveInfo,
-  ServerOrder,
-  ServerRow,
-  ServersBuyNowError,
-  ServersBuyNowResponse,
-  ServersCancel200Response,
-  SuccessTextResponse,
-  TextResponse,
-} from '../models/index';
 import {
+    type AddServer200Response,
     AddServer200ResponseFromJSON,
     AddServer200ResponseToJSON,
+} from '../models/AddServer200Response';
+import {
+    type BuyItNowList,
     BuyItNowListFromJSON,
     BuyItNowListToJSON,
+} from '../models/BuyItNowList';
+import {
+    type BuyItNowServerOrder200Response,
     BuyItNowServerOrder200ResponseFromJSON,
     BuyItNowServerOrder200ResponseToJSON,
+} from '../models/BuyItNowServerOrder200Response';
+import {
+    type ChargeInvoiceRows,
     ChargeInvoiceRowsFromJSON,
     ChargeInvoiceRowsToJSON,
+} from '../models/ChargeInvoiceRows';
+import {
+    type GetAccountInfo401Response,
     GetAccountInfo401ResponseFromJSON,
     GetAccountInfo401ResponseToJSON,
+} from '../models/GetAccountInfo401Response';
+import {
+    type PlaceBuyNowServerRequest,
     PlaceBuyNowServerRequestFromJSON,
     PlaceBuyNowServerRequestToJSON,
+} from '../models/PlaceBuyNowServerRequest';
+import {
+    type ReverseDnsEntries,
     ReverseDnsEntriesFromJSON,
     ReverseDnsEntriesToJSON,
+} from '../models/ReverseDnsEntries';
+import {
+    type Server,
     ServerFromJSON,
     ServerToJSON,
+} from '../models/Server';
+import {
+    type ServerBulkIpmiPowerResponse,
+    ServerBulkIpmiPowerResponseFromJSON,
+    ServerBulkIpmiPowerResponseToJSON,
+} from '../models/ServerBulkIpmiPowerResponse';
+import {
+    type ServerIpmiLiveInfo,
     ServerIpmiLiveInfoFromJSON,
     ServerIpmiLiveInfoToJSON,
+} from '../models/ServerIpmiLiveInfo';
+import {
+    type ServerOrder,
     ServerOrderFromJSON,
     ServerOrderToJSON,
+} from '../models/ServerOrder';
+import {
+    type ServerOrderPostRequest,
+    ServerOrderPostRequestFromJSON,
+    ServerOrderPostRequestToJSON,
+} from '../models/ServerOrderPostRequest';
+import {
+    type ServerRow,
     ServerRowFromJSON,
     ServerRowToJSON,
+} from '../models/ServerRow';
+import {
+    type ServersBuyNowError,
     ServersBuyNowErrorFromJSON,
     ServersBuyNowErrorToJSON,
+} from '../models/ServersBuyNowError';
+import {
+    type ServersBuyNowResponse,
     ServersBuyNowResponseFromJSON,
     ServersBuyNowResponseToJSON,
+} from '../models/ServersBuyNowResponse';
+import {
+    type ServersCancel200Response,
     ServersCancel200ResponseFromJSON,
     ServersCancel200ResponseToJSON,
+} from '../models/ServersCancel200Response';
+import {
+    type SuccessTextResponse,
     SuccessTextResponseFromJSON,
     SuccessTextResponseToJSON,
+} from '../models/SuccessTextResponse';
+import {
+    type TextResponse,
     TextResponseFromJSON,
     TextResponseToJSON,
-} from '../models/index';
+} from '../models/TextResponse';
+
+export interface AddServerRequest {
+    serverOrderPostRequest: ServerOrderPostRequest;
+}
 
 export interface GetServerInfoRequest {
     id: number;
@@ -90,6 +131,10 @@ export interface PlaceBuyNowServerOperationRequest {
 export interface PostServerReverseDnsRequest {
     id: number;
     reverseDnsEntries: ReverseDnsEntries;
+}
+
+export interface ServerBulkIpmiPowerGetRequest {
+    ids: string;
 }
 
 export interface ServerIpmiLiveGetRequest {
@@ -128,10 +173,19 @@ export class ServersApi extends runtime.BaseAPI {
     /**
      * Creates request options for addServer without sending the request
      */
-    async addServerRequestOpts(): Promise<runtime.RequestOpts> {
+    async addServerRequestOpts(requestParameters: AddServerRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['serverOrderPostRequest'] == null) {
+            throw new runtime.RequiredError(
+                'serverOrderPostRequest',
+                'Required parameter "serverOrderPostRequest" was null or undefined when calling addServer().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["X-API-KEY"] = await this.configuration.apiKey("X-API-KEY"); // apiKeyAuth authentication
@@ -149,26 +203,27 @@ export class ServersApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: ServerOrderPostRequestToJSON(requestParameters['serverOrderPostRequest']),
         };
     }
 
     /**
-     * Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
-     * Place Server Order
+     * Submits a fully custom dedicated server order. Creates a `pending` `servers` row, a `Repeat_Invoice`, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): `cpu` (id from `cpu_li`), `hd[]` (array of drive ids), `memory`, `bandwidth`, `ips`, `os`, `cp`, `raid` (ids from `getNewServer`), `region` (region_id), `servername` (valid hostname), `rootpass`, `tos` (must be true), optional `comment`. `account.server_order_discount` (if set) applies. Returns: `{ text:\'Order Completed\', invoice, order }`. Errors: 422 \'Missing/Invalid <field>\'; 401 unauth. Sibling ops: `getNewServer` (options), `placeBuyNowServer` (pre-built path), `getServerInfo` (view new order), `getServerInvoices`.
+     * Place a custom dedicated server order, creating a real billable invoice
      */
-    async addServerRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AddServer200Response>> {
-        const requestOptions = await this.addServerRequestOpts();
+    async addServerRaw(requestParameters: AddServerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AddServer200Response>> {
+        const requestOptions = await this.addServerRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => AddServer200ResponseFromJSON(jsonValue));
     }
 
     /**
-     * Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first.
-     * Place Server Order
+     * Submits a fully custom dedicated server order. Creates a `pending` `servers` row, a `Repeat_Invoice`, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): `cpu` (id from `cpu_li`), `hd[]` (array of drive ids), `memory`, `bandwidth`, `ips`, `os`, `cp`, `raid` (ids from `getNewServer`), `region` (region_id), `servername` (valid hostname), `rootpass`, `tos` (must be true), optional `comment`. `account.server_order_discount` (if set) applies. Returns: `{ text:\'Order Completed\', invoice, order }`. Errors: 422 \'Missing/Invalid <field>\'; 401 unauth. Sibling ops: `getNewServer` (options), `placeBuyNowServer` (pre-built path), `getServerInfo` (view new order), `getServerInvoices`.
+     * Place a custom dedicated server order, creating a real billable invoice
      */
-    async addServer(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AddServer200Response> {
-        const response = await this.addServerRaw(initOverrides);
+    async addServer(requestParameters: AddServerRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AddServer200Response> {
+        const response = await this.addServerRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -200,8 +255,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`.
-     * Get Buy Now Server Options
+     * Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (`a=<asset_id>`) or a coupon (`c=<coupon_name>`) so the order form can be rendered before `placeBuyNowServer`. Read-only; no charge. Sibling ops: `placeBuyNowServer` (commit), `getMPServers` (browse marketplace), `addServer` (custom build flow).  **Query (one required):** - `a` (integer) — asset_id from `getMPServers`. - `c` (string) — `server_coupons.name`.  **Returns:** `{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }`. Each option row is `{ id, short_desc, long_desc, monthly_price }` — feed those ids into `placeBuyNowServer`.  **Auth:** Session/API key.  **Errors:** - `400` — `\'No Server Coupon or Market-Place Asset Specified\'` when neither `a` nor `c` is passed. - `400` — `\'Invalid Asset ID\'` / `\'No Server Coupon with that name\'`. - `409` — `\'Server already sold!\'` (asset already in-cart) or `\'Server Out of stock\'` (coupon). - `401` — unauthenticated.  **Related calls:** - **Next:** `placeBuyNowServer` (commit the order). - **Browse:** `getMPServers`. - **Custom build alternative:** `addServer`. 
+     * Get configurable options for a Rapid Deploy / coupon dedicated server
      */
     async buyItNowServerOrderRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BuyItNowServerOrder200Response>> {
         const requestOptions = await this.buyItNowServerOrderRequestOpts();
@@ -211,8 +266,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`.
-     * Get Buy Now Server Options
+     * Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (`a=<asset_id>`) or a coupon (`c=<coupon_name>`) so the order form can be rendered before `placeBuyNowServer`. Read-only; no charge. Sibling ops: `placeBuyNowServer` (commit), `getMPServers` (browse marketplace), `addServer` (custom build flow).  **Query (one required):** - `a` (integer) — asset_id from `getMPServers`. - `c` (string) — `server_coupons.name`.  **Returns:** `{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }`. Each option row is `{ id, short_desc, long_desc, monthly_price }` — feed those ids into `placeBuyNowServer`.  **Auth:** Session/API key.  **Errors:** - `400` — `\'No Server Coupon or Market-Place Asset Specified\'` when neither `a` nor `c` is passed. - `400` — `\'Invalid Asset ID\'` / `\'No Server Coupon with that name\'`. - `409` — `\'Server already sold!\'` (asset already in-cart) or `\'Server Out of stock\'` (coupon). - `401` — unauthenticated.  **Related calls:** - **Next:** `placeBuyNowServer` (commit the order). - **Browse:** `getMPServers`. - **Custom build alternative:** `addServer`. 
+     * Get configurable options for a Rapid Deploy / coupon dedicated server
      */
     async buyItNowServerOrder(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BuyItNowServerOrder200Response> {
         const response = await this.buyItNowServerOrderRaw(initOverrides);
@@ -247,8 +302,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
-     * List Marketplace Servers
+     * Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from `mynew.interserver.net/ajax/server_a.php`. Returns: array of `{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }`. The `server_id` is the marketplace asset id — feed it into `buyItNowServerOrder` (GET options for asset `?a=<id>`) and `placeBuyNowServer` (POST to commit). Errors: 401 if session expired. Sibling ops: `buyItNowServerOrder` (configure asset), `placeBuyNowServer` (purchase), `getNewServer`/`addServer` (custom-spec build, not pre-built), `getServerList` (already-owned servers).
+     * List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
      */
     async getMPServersRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BuyItNowList>> {
         const requestOptions = await this.getMPServersRequestOpts();
@@ -258,8 +313,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.
-     * List Marketplace Servers
+     * Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from `mynew.interserver.net/ajax/server_a.php`. Returns: array of `{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }`. The `server_id` is the marketplace asset id — feed it into `buyItNowServerOrder` (GET options for asset `?a=<id>`) and `placeBuyNowServer` (POST to commit). Errors: 401 if session expired. Sibling ops: `buyItNowServerOrder` (configure asset), `placeBuyNowServer` (purchase), `getNewServer`/`addServer` (custom-spec build, not pre-built), `getServerList` (already-owned servers).
+     * List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
      */
     async getMPServers(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BuyItNowList> {
         const response = await this.getMPServersRaw(initOverrides);
@@ -294,8 +349,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves available server configurations and pricing for ordering a new dedicated server.
-     * Server Ordering Information
+     * Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with `config_li` keyed by category (`cpu_li`, `hd_li`, `memory_li`, `bandwidth_li`, `ips_li`, `os_li`, `cp_li`, `raid_li`) plus `regions`. Use returned IDs as POST values for `addServer`. Note `hd_li` and `memory_li` are nested by `cpu` id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: `addServer` (commits the order), `buyItNowServerOrder` (pre-built marketplace alternative), `getMPServers` (browse marketplace).
+     * Get custom dedicated server ordering options, regions, and pricing
      */
     async getNewServerRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServerOrder>> {
         const requestOptions = await this.getNewServerRequestOpts();
@@ -305,8 +360,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves available server configurations and pricing for ordering a new dedicated server.
-     * Server Ordering Information
+     * Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with `config_li` keyed by category (`cpu_li`, `hd_li`, `memory_li`, `bandwidth_li`, `ips_li`, `os_li`, `cp_li`, `raid_li`) plus `regions`. Use returned IDs as POST values for `addServer`. Note `hd_li` and `memory_li` are nested by `cpu` id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: `addServer` (commits the order), `buyItNowServerOrder` (pre-built marketplace alternative), `getMPServers` (browse marketplace).
+     * Get custom dedicated server ordering options, regions, and pricing
      */
     async getNewServer(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServerOrder> {
         const response = await this.getNewServerRaw(initOverrides);
@@ -338,7 +393,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -349,8 +404,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns detailed information about a specific server including its hardware configuration, IPs, and status.
-     * Get Server Order
+     * Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: `id` (integer server_id, from `getServerList`). No body. Returns: `ViewServer::getDetails()` shape: `serviceInfo`, `networkInfo` (vlans + assets, with `ipmi_admin_username`/`ipmi_admin_password` and admin lease creds REDACTED for client safety), normalized `client_links`, `serviceType`. `admin_links`/raw `settings`/`csrf` stripped. Errors: 404 not owned; 401 unauth. Sibling ops: `getServerInvoices`, `serverIpmiLiveGet`, `serverIpmiPowerGet` (single — prefer `serverBulkIpmiPowerGet` for many), `getServerReverseDns`, `getServersWelcomeEmail`, `serversCancel`.
+     * Get full hardware, network, and lifecycle details for a dedicated server
      */
     async getServerInfoRaw(requestParameters: GetServerInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Server>> {
         const requestOptions = await this.getServerInfoRequestOpts(requestParameters);
@@ -360,8 +415,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns detailed information about a specific server including its hardware configuration, IPs, and status.
-     * Get Server Order
+     * Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: `id` (integer server_id, from `getServerList`). No body. Returns: `ViewServer::getDetails()` shape: `serviceInfo`, `networkInfo` (vlans + assets, with `ipmi_admin_username`/`ipmi_admin_password` and admin lease creds REDACTED for client safety), normalized `client_links`, `serviceType`. `admin_links`/raw `settings`/`csrf` stripped. Errors: 404 not owned; 401 unauth. Sibling ops: `getServerInvoices`, `serverIpmiLiveGet`, `serverIpmiPowerGet` (single — prefer `serverBulkIpmiPowerGet` for many), `getServerReverseDns`, `getServersWelcomeEmail`, `serversCancel`.
+     * Get full hardware, network, and lifecycle details for a dedicated server
      */
     async getServerInfo(requestParameters: GetServerInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Server> {
         const response = await this.getServerInfoRaw(requestParameters, initOverrides);
@@ -393,7 +448,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}/invoices`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -404,8 +459,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the billing invoices associated with this dedicated server.
-     * Get Server Invoices
+     * Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: `id` (integer server_id from `getServerList`). No body. Inherits from `MyAdmin\\Api\\Billing\\InvoicesList` with module=servers. Returns: `ChargeInvoiceRows` array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if `id` not owned by the caller; 401 unauth. Sibling ops: `getServerInfo` (current service state), `serversCancel` (cancel), `getBillingInvoice` (single invoice by invoice id), `getVpsInvoices`/`getDomainInvoices` for other modules, `getServersWelcomeEmail` to resend setup info.
+     * List billing invoices (charges + payments) tied to one dedicated server
      */
     async getServerInvoicesRaw(requestParameters: GetServerInvoicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChargeInvoiceRows>> {
         const requestOptions = await this.getServerInvoicesRequestOpts(requestParameters);
@@ -415,8 +470,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the billing invoices associated with this dedicated server.
-     * Get Server Invoices
+     * Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: `id` (integer server_id from `getServerList`). No body. Inherits from `MyAdmin\\Api\\Billing\\InvoicesList` with module=servers. Returns: `ChargeInvoiceRows` array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if `id` not owned by the caller; 401 unauth. Sibling ops: `getServerInfo` (current service state), `serversCancel` (cancel), `getBillingInvoice` (single invoice by invoice id), `getVpsInvoices`/`getDomainInvoices` for other modules, `getServersWelcomeEmail` to resend setup info.
+     * List billing invoices (charges + payments) tied to one dedicated server
      */
     async getServerInvoices(requestParameters: GetServerInvoicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChargeInvoiceRows> {
         const response = await this.getServerInvoicesRaw(requestParameters, initOverrides);
@@ -451,8 +506,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns all dedicated server services on the account with their current status and configuration.
-     * List Servers
+     * Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters `servers` by session `account_id`. Returns: array of `{ server_id, account_lid, server_hostname, server_status }`. Use `server_id` with `getServerInfo` for full hardware/network/IPMI details, `getServerInvoices` for billing, or `serverIpmiPowerGet` for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: `getServerInfo` (details), `getVpsList` (virtual instead of physical hardware), `getMPServers` (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer `serverBulkIpmiPowerGet`.
+     * List all dedicated servers owned by the authenticated customer
      */
     async getServerListRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ServerRow>>> {
         const requestOptions = await this.getServerListRequestOpts();
@@ -462,8 +517,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns all dedicated server services on the account with their current status and configuration.
-     * List Servers
+     * Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters `servers` by session `account_id`. Returns: array of `{ server_id, account_lid, server_hostname, server_status }`. Use `server_id` with `getServerInfo` for full hardware/network/IPMI details, `getServerInvoices` for billing, or `serverIpmiPowerGet` for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: `getServerInfo` (details), `getVpsList` (virtual instead of physical hardware), `getMPServers` (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer `serverBulkIpmiPowerGet`.
+     * List all dedicated servers owned by the authenticated customer
      */
     async getServerList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ServerRow>> {
         const response = await this.getServerListRaw(initOverrides);
@@ -495,7 +550,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}/reverse_dns`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -506,8 +561,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the current reverse DNS (PTR record) entries for the server\'s IP addresses.
-     * Reverse DNS Info
+     * Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server\'s VLANs — typically before calling `postServerReverseDns` to update them. Path param: `id` (integer server_id). No body. Walks `networkInfo.vlans`, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via `get_hostname()`. Returns: `{ ips: { \'<ipv4>\': \'<ptr_or_empty_string>\', ... } }`. Empty string indicates no PTR set. Errors: 404 if `id` not owned by caller; 401 unauth. Sibling ops: `postServerReverseDns` (update PTRs), `getServerInfo` (full network), `getVpsReverseDns` for VPS, `getDomainNameservers` / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
+     * List current reverse-DNS (PTR) records for a dedicated server\'s IPs
      */
     async getServerReverseDnsRaw(requestParameters: GetServerReverseDnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ReverseDnsEntries>> {
         const requestOptions = await this.getServerReverseDnsRequestOpts(requestParameters);
@@ -517,8 +572,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the current reverse DNS (PTR record) entries for the server\'s IP addresses.
-     * Reverse DNS Info
+     * Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server\'s VLANs — typically before calling `postServerReverseDns` to update them. Path param: `id` (integer server_id). No body. Walks `networkInfo.vlans`, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via `get_hostname()`. Returns: `{ ips: { \'<ipv4>\': \'<ptr_or_empty_string>\', ... } }`. Empty string indicates no PTR set. Errors: 404 if `id` not owned by caller; 401 unauth. Sibling ops: `postServerReverseDns` (update PTRs), `getServerInfo` (full network), `getVpsReverseDns` for VPS, `getDomainNameservers` / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.
+     * List current reverse-DNS (PTR) records for a dedicated server\'s IPs
      */
     async getServerReverseDns(requestParameters: GetServerReverseDnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ReverseDnsEntries> {
         const response = await this.getServerReverseDnsRaw(requestParameters, initOverrides);
@@ -550,7 +605,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}/welcome_email`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -561,8 +616,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Resends the welcome email for the order.
-     * Resend Server Welcome Email
+     * Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: `id` (integer server_id, must be `active`). No body. Invokes `server_welcome_email($id)` which re-sends the welcome message to the account\'s email. Returns: `{ text:\'Welcome Email has been resent.\' }`. Errors: 404 if `id` not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: `getServerInfo` (status check), `getServerInvoices`, `getVpsWelcomeEmail` for VPS, `getDomainsWelcomeEmail` for domains.
+     * Resend the dedicated server welcome email with setup credentials
      */
     async getServersWelcomeEmailRaw(requestParameters: GetServersWelcomeEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessTextResponse>> {
         const requestOptions = await this.getServersWelcomeEmailRequestOpts(requestParameters);
@@ -572,8 +627,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Resends the welcome email for the order.
-     * Resend Server Welcome Email
+     * Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: `id` (integer server_id, must be `active`). No body. Invokes `server_welcome_email($id)` which re-sends the welcome message to the account\'s email. Returns: `{ text:\'Welcome Email has been resent.\' }`. Errors: 404 if `id` not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: `getServerInfo` (status check), `getServerInvoices`, `getVpsWelcomeEmail` for VPS, `getDomainsWelcomeEmail` for domains.
+     * Resend the dedicated server welcome email with setup credentials
      */
     async getServersWelcomeEmail(requestParameters: GetServersWelcomeEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessTextResponse> {
         const response = await this.getServersWelcomeEmailRaw(requestParameters, initOverrides);
@@ -611,8 +666,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Places an order for a buy-it-now dedicated server. Use `GET /servers/order/buy_now_server` to retrieve available server configurations and their IDs before ordering.
-     * Place Buy Now Server Order
+     * Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the `servers` row, creates a `Repeat_Invoice` plus the first `invoices` row, marks the asset `MarketPlace-Incart` (or decrements `server_coupons.in_stock`), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: `buyItNowServerOrder` (catalog), `getServerInfo` (poll provisioning), `getServerInvoices` (billing), `addServer` (custom build alternative).  **Query (one required, same as `buyItNowServerOrder`):** - `a` (integer) — asset_id. - `c` (string) — `server_coupons.name`.  **Body fields:** - `hostname` (string, required) — valid FQDN; validated by `valid_hostname`. - `enablepassword` (boolean, optional, default `false`) — when true the client must supply `rootPassword`; otherwise a secure password is generated server-side via `generate_password()`. - `rootPassword` (string, required when `enablepassword=true`) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (`valid_password`). - `os`, `bandwidth`, `ips`, `cp`, `raid` (integer, optional) — option ids from `buyItNowServerOrder`; defaults `30` / `10` / `9` / `1` / `0` applied when missing. - `comments` (string, optional) — appended to the order comment.  **Returns:** `201 { success: true, text: \'Server order is placed.\', service_id, invoice_id }`.  **Auth:** Session/API key.  **Errors:** - `400` — `\'Server Hostname is missing.\'` / `\'Invalid Hostname!\'` / `\'Server Password is missing.\'` / password complexity message. - `409` — `\'Server already sold!\'` / `\'Server Out of stock.\'` - `401` — unauthenticated.  **Side effects:** inserts `servers` row, creates `repeat_invoices` + `invoices` rows, updates `assets.status` or `server_coupons.in_stock`, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** `buyItNowServerOrder`. - **Next:** `getBillingInvoice` + `initiatePayment` to pay, then poll `getServerInfo` for provisioning state. - **Custom build alternative:** `addServer`. 
+     * Place a Rapid Deploy / coupon dedicated server order; creates real invoice
      */
     async placeBuyNowServerRaw(requestParameters: PlaceBuyNowServerOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServersBuyNowResponse>> {
         const requestOptions = await this.placeBuyNowServerRequestOpts(requestParameters);
@@ -622,8 +677,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Places an order for a buy-it-now dedicated server. Use `GET /servers/order/buy_now_server` to retrieve available server configurations and their IDs before ordering.
-     * Place Buy Now Server Order
+     * Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the `servers` row, creates a `Repeat_Invoice` plus the first `invoices` row, marks the asset `MarketPlace-Incart` (or decrements `server_coupons.in_stock`), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: `buyItNowServerOrder` (catalog), `getServerInfo` (poll provisioning), `getServerInvoices` (billing), `addServer` (custom build alternative).  **Query (one required, same as `buyItNowServerOrder`):** - `a` (integer) — asset_id. - `c` (string) — `server_coupons.name`.  **Body fields:** - `hostname` (string, required) — valid FQDN; validated by `valid_hostname`. - `enablepassword` (boolean, optional, default `false`) — when true the client must supply `rootPassword`; otherwise a secure password is generated server-side via `generate_password()`. - `rootPassword` (string, required when `enablepassword=true`) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (`valid_password`). - `os`, `bandwidth`, `ips`, `cp`, `raid` (integer, optional) — option ids from `buyItNowServerOrder`; defaults `30` / `10` / `9` / `1` / `0` applied when missing. - `comments` (string, optional) — appended to the order comment.  **Returns:** `201 { success: true, text: \'Server order is placed.\', service_id, invoice_id }`.  **Auth:** Session/API key.  **Errors:** - `400` — `\'Server Hostname is missing.\'` / `\'Invalid Hostname!\'` / `\'Server Password is missing.\'` / password complexity message. - `409` — `\'Server already sold!\'` / `\'Server Out of stock.\'` - `401` — unauthenticated.  **Side effects:** inserts `servers` row, creates `repeat_invoices` + `invoices` rows, updates `assets.status` or `server_coupons.in_stock`, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** `buyItNowServerOrder`. - **Next:** `getBillingInvoice` + `initiatePayment` to pay, then poll `getServerInfo` for provisioning state. - **Custom build alternative:** `addServer`. 
+     * Place a Rapid Deploy / coupon dedicated server order; creates real invoice
      */
     async placeBuyNowServer(requestParameters: PlaceBuyNowServerOperationRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServersBuyNowResponse> {
         const response = await this.placeBuyNowServerRaw(requestParameters, initOverrides);
@@ -664,7 +719,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}/reverse_dns`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -676,8 +731,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates the reverse DNS (PTR record) entries for the server\'s IP addresses.
-     * Update Reverse DNS
+     * Use to set or remove PTR records for the server\'s public IPs. Path param: `id` (server_id). Body: `ips` (object mapping `\'<ipv4>\'` to desired hostname; empty string removes the PTR). Only IPs that already exist on the server\'s VLANs and whose hostname differs from current are updated; each diff calls `reverse_dns($ip, $host, \'set_reverse\'|\'remove_reverse\')`. Returns: `{ message, success:bool }`. `success:false` with \'No valid IPs were passed or there were no changes\' when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: `getServerReverseDns` (read first), `getServerInfo`, VPS counterpart `postVpsReverseDns`.
+     * Update reverse-DNS (PTR) hostnames on a dedicated server\'s IPs
      */
     async postServerReverseDnsRaw(requestParameters: PostServerReverseDnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextResponse>> {
         const requestOptions = await this.postServerReverseDnsRequestOpts(requestParameters);
@@ -687,8 +742,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates the reverse DNS (PTR record) entries for the server\'s IP addresses.
-     * Update Reverse DNS
+     * Use to set or remove PTR records for the server\'s public IPs. Path param: `id` (server_id). Body: `ips` (object mapping `\'<ipv4>\'` to desired hostname; empty string removes the PTR). Only IPs that already exist on the server\'s VLANs and whose hostname differs from current are updated; each diff calls `reverse_dns($ip, $host, \'set_reverse\'|\'remove_reverse\')`. Returns: `{ message, success:bool }`. `success:false` with \'No valid IPs were passed or there were no changes\' when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: `getServerReverseDns` (read first), `getServerInfo`, VPS counterpart `postVpsReverseDns`.
+     * Update reverse-DNS (PTR) hostnames on a dedicated server\'s IPs
      */
     async postServerReverseDns(requestParameters: PostServerReverseDnsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextResponse> {
         const response = await this.postServerReverseDnsRaw(requestParameters, initOverrides);
@@ -696,10 +751,21 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Creates request options for putServers without sending the request
+     * Creates request options for serverBulkIpmiPowerGet without sending the request
      */
-    async putServersRequestOpts(): Promise<runtime.RequestOpts> {
+    async serverBulkIpmiPowerGetRequestOpts(requestParameters: ServerBulkIpmiPowerGetRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['ids'] == null) {
+            throw new runtime.RequiredError(
+                'ids',
+                'Required parameter "ids" was null or undefined when calling serverBulkIpmiPowerGet().'
+            );
+        }
+
         const queryParameters: any = {};
+
+        if (requestParameters['ids'] != null) {
+            queryParameters['ids'] = requestParameters['ids'];
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -712,33 +778,34 @@ export class ServersApi extends runtime.BaseAPI {
         }
 
 
-        let urlPath = `/servers/order`;
+        let urlPath = `/servers/bulk/ipmi_power`;
 
         return {
             path: urlPath,
-            method: 'PUT',
+            method: 'GET',
             headers: headerParameters,
             query: queryParameters,
         };
     }
 
     /**
-     * Validates a server order before placing it. Use this to check for errors before committing to a purchase.
-     * Validate Server Order
+     * Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: `ids` (required) — comma-separated string `?ids=2313,2314,2315` OR repeated `ids[]` array. Duplicates de-duped; non-positive ints become per-row errors. Returns: `{ results: [ { id, asset?, text|error } ] }`. Errors: 400 \'No server IDs provided.\' if `ids` empty/missing; 401 unauth. Sibling ops: `serverIpmiPowerGet` (single-server equivalent), `serverIpmiPowerPost` (DESTRUCTIVE — change power; no bulk equivalent — call per server), `getServerList` (discover ids).
+     * Read IPMI chassis power status for many dedicated servers in one call
      */
-    async putServersRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const requestOptions = await this.putServersRequestOpts();
+    async serverBulkIpmiPowerGetRaw(requestParameters: ServerBulkIpmiPowerGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServerBulkIpmiPowerResponse>> {
+        const requestOptions = await this.serverBulkIpmiPowerGetRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => ServerBulkIpmiPowerResponseFromJSON(jsonValue));
     }
 
     /**
-     * Validates a server order before placing it. Use this to check for errors before committing to a purchase.
-     * Validate Server Order
+     * Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: `ids` (required) — comma-separated string `?ids=2313,2314,2315` OR repeated `ids[]` array. Duplicates de-duped; non-positive ints become per-row errors. Returns: `{ results: [ { id, asset?, text|error } ] }`. Errors: 400 \'No server IDs provided.\' if `ids` empty/missing; 401 unauth. Sibling ops: `serverIpmiPowerGet` (single-server equivalent), `serverIpmiPowerPost` (DESTRUCTIVE — change power; no bulk equivalent — call per server), `getServerList` (discover ids).
+     * Read IPMI chassis power status for many dedicated servers in one call
      */
-    async putServers(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.putServersRaw(initOverrides);
+    async serverBulkIpmiPowerGet(requestParameters: ServerBulkIpmiPowerGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServerBulkIpmiPowerResponse> {
+        const response = await this.serverBulkIpmiPowerGetRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
@@ -766,7 +833,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}/ipmi_live`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -777,8 +844,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the current IPMI live connection information for the server.
-     * Server IPMI Live Information
+     * Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset\'s IPMI IP, the location\'s IPMI group, and any active `ipmi_ips` lease (3-hour TTL). Sibling ops: `serverIpmiLivePost` (allocate whitelist slot), `serverIpmiPowerGet` / `serverIpmiPowerPost` (chassis power).  **Path:** `id` (integer, required) — server_id from `getServerList`.  **Body / query:** None. Optionally pass `asset` (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists `{ text (html), public_ip, allowed_ip, client_username, client_password }`. When no lease yet: `{ text: \'Setup not yet completed\' }` — then call `serverIpmiLivePost` to allocate a slot.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text `\'No IPMI IP Set\'` / `\'Invalid IPMI IP\'` / `\'Live IPMI not Available for this location.\'` when the asset/location is not configured for IPMI Live.  **Caveat:** returns `client_password` — never log/echo verbatim.  **Related calls:** - **Allocate:** `serverIpmiLivePost`. - **Chassis power:** `serverIpmiPowerGet`, `serverIpmiPowerPost`. 
+     * Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
      */
     async serverIpmiLiveGetRaw(requestParameters: ServerIpmiLiveGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServerIpmiLiveInfo>> {
         const requestOptions = await this.serverIpmiLiveGetRequestOpts(requestParameters);
@@ -788,8 +855,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the current IPMI live connection information for the server.
-     * Server IPMI Live Information
+     * Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset\'s IPMI IP, the location\'s IPMI group, and any active `ipmi_ips` lease (3-hour TTL). Sibling ops: `serverIpmiLivePost` (allocate whitelist slot), `serverIpmiPowerGet` / `serverIpmiPowerPost` (chassis power).  **Path:** `id` (integer, required) — server_id from `getServerList`.  **Body / query:** None. Optionally pass `asset` (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists `{ text (html), public_ip, allowed_ip, client_username, client_password }`. When no lease yet: `{ text: \'Setup not yet completed\' }` — then call `serverIpmiLivePost` to allocate a slot.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text `\'No IPMI IP Set\'` / `\'Invalid IPMI IP\'` / `\'Live IPMI not Available for this location.\'` when the asset/location is not configured for IPMI Live.  **Caveat:** returns `client_password` — never log/echo verbatim.  **Related calls:** - **Allocate:** `serverIpmiLivePost`. - **Chassis power:** `serverIpmiPowerGet`, `serverIpmiPowerPost`. 
+     * Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
      */
     async serverIpmiLiveGet(requestParameters: ServerIpmiLiveGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServerIpmiLiveInfo> {
         const response = await this.serverIpmiLiveGetRaw(requestParameters, initOverrides);
@@ -851,7 +918,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}/ipmi_live`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -863,8 +930,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Configures IPMI live access by whitelisting your current IP address for connections to the server\'s IPMI management interface.
-     * Server IPMI Live Setup
+     * Allocates / refreshes an IPMI Live whitelist slot so the customer\'s specified IP can reach the BMC\'s KVM/console for 3 hours. Picks a free `ipmi_ips` row for the location\'s `ipmi_group`, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via `ipmi_live_setup()`. Sibling ops: `serverIpmiLiveGet` (read current lease), `serverIpmiPowerPost` (DESTRUCTIVE — chassis power).  **Path:** `id` (integer, required) — server_id.  **Body fields:** - `ip` (string, required) — public IPv4 to whitelist. - `asset` (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** `{ text (html), public_ip, allowed_ip, client_username, client_password }` for KVM login.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text — `\'An Invalid IP was passed.\'`, `\'No Live IPs are currently free for use with the IPMI Gateway. Please wait <duration> for the next IP to free up.\'`, `\'There was an error communicating with the IPMI Management server\'`, `\'No IPMI IP Set\'` / `\'Invalid IPMI IP\'` / `\'Live IPMI not Available for this location.\'`.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** `serverIpmiLiveGet`. - **Power control:** `serverIpmiPowerPost`. 
+     * Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
      */
     async serverIpmiLivePostRaw(requestParameters: ServerIpmiLivePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServerIpmiLiveInfo>> {
         const requestOptions = await this.serverIpmiLivePostRequestOpts(requestParameters);
@@ -874,8 +941,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Configures IPMI live access by whitelisting your current IP address for connections to the server\'s IPMI management interface.
-     * Server IPMI Live Setup
+     * Allocates / refreshes an IPMI Live whitelist slot so the customer\'s specified IP can reach the BMC\'s KVM/console for 3 hours. Picks a free `ipmi_ips` row for the location\'s `ipmi_group`, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via `ipmi_live_setup()`. Sibling ops: `serverIpmiLiveGet` (read current lease), `serverIpmiPowerPost` (DESTRUCTIVE — chassis power).  **Path:** `id` (integer, required) — server_id.  **Body fields:** - `ip` (string, required) — public IPv4 to whitelist. - `asset` (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** `{ text (html), public_ip, allowed_ip, client_username, client_password }` for KVM login.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text — `\'An Invalid IP was passed.\'`, `\'No Live IPs are currently free for use with the IPMI Gateway. Please wait <duration> for the next IP to free up.\'`, `\'There was an error communicating with the IPMI Management server\'`, `\'No IPMI IP Set\'` / `\'Invalid IPMI IP\'` / `\'Live IPMI not Available for this location.\'`.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** `serverIpmiLiveGet`. - **Power control:** `serverIpmiPowerPost`. 
+     * Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
      */
     async serverIpmiLivePost(requestParameters: ServerIpmiLivePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServerIpmiLiveInfo> {
         const response = await this.serverIpmiLivePostRaw(requestParameters, initOverrides);
@@ -907,7 +974,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}/ipmi_power`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -918,8 +985,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the chassis power status from ipmi.
-     * Get IPMI Power Status
+     * Use to check whether a server\'s chassis is currently `on`/`off` via IPMI before issuing a power action. Path param: `id` (integer server_id). Optional body `asset` (asset_id — defaults to first asset). Issues `ipmitool power status` against the asset\'s `ipmi_ip` using its location IPMI group/credentials. Returns: `{ text:\'Chassis Power is on\' }` (or \'off\'). Errors: 404 if `id` not owned by caller; 409 if service not active; \'There was an error sending the IPMI command\' if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: `serverBulkIpmiPowerGet` (preferred when polling many servers — single round-trip), `serverIpmiPowerPost` (DESTRUCTIVE — change power), `getServerInfo` (full state), `serverIpmiLiveGet` (IPMI Live KVM).
+     * Read IPMI chassis power status for a dedicated server (single)
      */
     async serverIpmiPowerGetRaw(requestParameters: ServerIpmiPowerGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextResponse>> {
         const requestOptions = await this.serverIpmiPowerGetRequestOpts(requestParameters);
@@ -929,8 +996,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the chassis power status from ipmi.
-     * Get IPMI Power Status
+     * Use to check whether a server\'s chassis is currently `on`/`off` via IPMI before issuing a power action. Path param: `id` (integer server_id). Optional body `asset` (asset_id — defaults to first asset). Issues `ipmitool power status` against the asset\'s `ipmi_ip` using its location IPMI group/credentials. Returns: `{ text:\'Chassis Power is on\' }` (or \'off\'). Errors: 404 if `id` not owned by caller; 409 if service not active; \'There was an error sending the IPMI command\' if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: `serverBulkIpmiPowerGet` (preferred when polling many servers — single round-trip), `serverIpmiPowerPost` (DESTRUCTIVE — change power), `getServerInfo` (full state), `serverIpmiLiveGet` (IPMI Live KVM).
+     * Read IPMI chassis power status for a dedicated server (single)
      */
     async serverIpmiPowerGet(requestParameters: ServerIpmiPowerGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextResponse> {
         const response = await this.serverIpmiPowerGetRaw(requestParameters, initOverrides);
@@ -992,7 +1059,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}/ipmi_power`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -1004,8 +1071,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uses the IPMI interface to set the Power status on the server.
-     * Server IPMI Power
+     * Sends an IPMI chassis power command (`on`, `off`, `cycle`, `reset`, `soft`) to a customer\'s physical dedicated server. **DESTRUCTIVE on running hardware:** `off` / `cycle` / `reset` are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. `soft` requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: `serverIpmiPowerGet` (read first), `serverBulkIpmiPowerGet` (status only), `serverIpmiLivePost` (KVM access).  **Path:** `id` (integer, required) — server_id.  **Body fields:** - `action` (string, required) — one of `on` / `off` / `cycle` / `reset` / `soft`. - `asset` (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** `{ text: \'Power command sent. Response: <ipmi output>\' }`.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `422` / inline error text — `Invalid Action` when `action` is not in the allowed set. - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text — `\'There was an error sending the IPMI command.\'` when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** `serverIpmiPowerGet`, `serverBulkIpmiPowerGet`. - **KVM console:** `serverIpmiLivePost`. 
+     * DESTRUCTIVE — change chassis power state on a bare-metal server
      */
     async serverIpmiPowerPostRaw(requestParameters: ServerIpmiPowerPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TextResponse>> {
         const requestOptions = await this.serverIpmiPowerPostRequestOpts(requestParameters);
@@ -1015,8 +1082,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Uses the IPMI interface to set the Power status on the server.
-     * Server IPMI Power
+     * Sends an IPMI chassis power command (`on`, `off`, `cycle`, `reset`, `soft`) to a customer\'s physical dedicated server. **DESTRUCTIVE on running hardware:** `off` / `cycle` / `reset` are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. `soft` requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: `serverIpmiPowerGet` (read first), `serverBulkIpmiPowerGet` (status only), `serverIpmiLivePost` (KVM access).  **Path:** `id` (integer, required) — server_id.  **Body fields:** - `action` (string, required) — one of `on` / `off` / `cycle` / `reset` / `soft`. - `asset` (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** `{ text: \'Power command sent. Response: <ipmi output>\' }`.  **Auth:** Session/API key. Ownership enforced via `server_custid`.  **Errors:** - `422` / inline error text — `Invalid Action` when `action` is not in the allowed set. - `404` — `id` not owned, or `asset` not on this server. - `409` — service not `active`. - `200` with error text — `\'There was an error sending the IPMI command.\'` when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** `serverIpmiPowerGet`, `serverBulkIpmiPowerGet`. - **KVM console:** `serverIpmiLivePost`. 
+     * DESTRUCTIVE — change chassis power state on a bare-metal server
      */
     async serverIpmiPowerPost(requestParameters: ServerIpmiPowerPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TextResponse> {
         const response = await this.serverIpmiPowerPostRaw(requestParameters, initOverrides);
@@ -1048,7 +1115,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -1059,8 +1126,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
-     * Cancel Server Service
+     * Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: `id` (integer server_id, from `getServerList`). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: `{ success:bool, text:\'Servers is canceled.\' }`. Errors: 404 if `id` not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: `getServerInfo` (current status), `getServerInvoices` (outstanding charges), VPS counterpart `VPSCancel`. To re-order after cancel use `addServer` or `placeBuyNowServer`.
+     * Cancel a dedicated server service at the end of the current billing cycle
      */
     async serversCancelRaw(requestParameters: ServersCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServersCancel200Response>> {
         const requestOptions = await this.serversCancelRequestOpts(requestParameters);
@@ -1070,8 +1137,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.
-     * Cancel Server Service
+     * Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: `id` (integer server_id, from `getServerList`). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: `{ success:bool, text:\'Servers is canceled.\' }`. Errors: 404 if `id` not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: `getServerInfo` (current status), `getServerInvoices` (outstanding charges), VPS counterpart `VPSCancel`. To re-order after cancel use `addServer` or `placeBuyNowServer`.
+     * Cancel a dedicated server service at the end of the current billing cycle
      */
     async serversCancel(requestParameters: ServersCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServersCancel200Response> {
         const response = await this.serversCancelRaw(requestParameters, initOverrides);
@@ -1103,7 +1170,7 @@ export class ServersApi extends runtime.BaseAPI {
 
 
         let urlPath = `/servers/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -1114,8 +1181,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates settings on a dedicated server order.
-     * Update Server Order
+     * Use to modify metadata on an existing dedicated server order. Path param: `id` (integer server_id). Currently this method shares the same handler as `getServerInfo` (`View::go()`) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as `getServerInfo`. Errors: 404 if `id` not owned by caller; 401 unauth. Sibling ops: prefer `postServerReverseDns` (rDNS), `serverIpmiPowerPost` (power), `serverIpmiLivePost` (IPMI access), `serversCancel` (cancel). For new orders use `addServer` or `placeBuyNowServer`. View-only: `getServerInfo`.
+     * Update settings on a dedicated server order (shares handler with view)
      */
     async updateServerInfoRaw(requestParameters: UpdateServerInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessTextResponse>> {
         const requestOptions = await this.updateServerInfoRequestOpts(requestParameters);
@@ -1125,8 +1192,8 @@ export class ServersApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates settings on a dedicated server order.
-     * Update Server Order
+     * Use to modify metadata on an existing dedicated server order. Path param: `id` (integer server_id). Currently this method shares the same handler as `getServerInfo` (`View::go()`) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as `getServerInfo`. Errors: 404 if `id` not owned by caller; 401 unauth. Sibling ops: prefer `postServerReverseDns` (rDNS), `serverIpmiPowerPost` (power), `serverIpmiLivePost` (IPMI access), `serversCancel` (cancel). For new orders use `addServer` or `placeBuyNowServer`. View-only: `getServerInfo`.
+     * Update settings on a dedicated server order (shares handler with view)
      */
     async updateServerInfo(requestParameters: UpdateServerInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessTextResponse> {
         const response = await this.updateServerInfoRaw(requestParameters, initOverrides);

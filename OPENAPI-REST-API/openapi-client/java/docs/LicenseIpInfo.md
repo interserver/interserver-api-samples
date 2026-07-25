@@ -12,4 +12,8 @@ IP address information table for a software license service.
 |**rows** | [**List&lt;LicenseIpInfoRow&gt;**](LicenseIpInfoRow.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

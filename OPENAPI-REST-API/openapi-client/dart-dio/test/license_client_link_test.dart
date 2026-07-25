@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LicenseClientLink
 void main() {
-  final instance = LicenseClientLinkBuilder();
-  // TODO add properties to the builder and call build()
+  final LicenseClientLink? instance = /* LicenseClientLink(...) */ null;
+  // TODO add properties to the entity
 
   group(LicenseClientLink, () {
     // Link label
@@ -32,13 +32,13 @@ void main() {
     });
 
     // Icon text
-    // String iconText
+    // Optional<String?> iconText
     test('to test the property `iconText`', () async {
       // TODO
     });
 
     // Other attributes
-    // String otherAttr
+    // Optional<String?> otherAttr
     test('to test the property `otherAttr`', () async {
       // TODO
     });

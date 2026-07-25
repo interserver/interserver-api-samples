@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_delist_request import MailDelistRequest
+from interserver_api_client.models.mail_delist_request import MailDelistRequest
 
 class TestMailDelistRequest(unittest.TestCase):
     """MailDelistRequest unit test stubs"""

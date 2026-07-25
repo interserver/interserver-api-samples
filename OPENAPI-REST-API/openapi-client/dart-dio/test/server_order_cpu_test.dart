@@ -1,158 +1,158 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerOrderCPU
 void main() {
-  final instance = ServerOrderCPUBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerOrderCPU? instance = /* ServerOrderCPU(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerOrderCPU, () {
     // CPU ID.
-    // String id
+    // Optional<String?> id
     test('to test the property `id`', () async {
       // TODO
     });
 
     // CPU price.
-    // int price
+    // Optional<int?> price
     test('to test the property `price`', () async {
       // TODO
     });
 
     // CPU image.
-    // String img
+    // Optional<String?> img
     test('to test the property `img`', () async {
       // TODO
     });
 
     // Short description of the CPU.
-    // String shortDesc
+    // Optional<String?> shortDesc
     test('to test the property `shortDesc`', () async {
       // TODO
     });
 
     // Long description of the CPU.
-    // String longDesc
+    // Optional<String?> longDesc
     test('to test the property `longDesc`', () async {
       // TODO
     });
 
     // Location of the CPU.
-    // String location
+    // Optional<String?> location
     test('to test the property `location`', () async {
       // TODO
     });
 
     // Front Side Bus information.
-    // String fsb
+    // Optional<String?> fsb
     test('to test the property `fsb`', () async {
       // TODO
     });
 
     // Manufacturer information.
-    // String manu
+    // Optional<String?> manu
     test('to test the property `manu`', () async {
       // TODO
     });
 
     // CPU type.
-    // String type
+    // Optional<String?> type
     test('to test the property `type`', () async {
       // TODO
     });
 
     // CPU speed.
-    // String speed
+    // Optional<String?> speed
     test('to test the property `speed`', () async {
       // TODO
     });
 
     // Cache information.
-    // String cache
+    // Optional<String?> cache
     test('to test the property `cache`', () async {
       // TODO
     });
 
     // Active status.
-    // String active
+    // Optional<String?> active
     test('to test the property `active`', () async {
       // TODO
     });
 
     // Number of cores.
-    // String numCores
+    // Optional<String?> numCores
     test('to test the property `numCores`', () async {
       // TODO
     });
 
     // Number of CPUs.
-    // String numCpus
+    // Optional<String?> numCpus
     test('to test the property `numCpus`', () async {
       // TODO
     });
 
     // CPU benchmark.
-    // String benchmark
+    // Optional<String?> benchmark
     test('to test the property `benchmark`', () async {
       // TODO
     });
 
     // Monthly price.
-    // int monthlyPrice
+    // Optional<int?> monthlyPrice
     test('to test the property `monthlyPrice`', () async {
       // TODO
     });
 
     // Maximum RAM supported.
-    // String maxRam
+    // Optional<String?> maxRam
     test('to test the property `maxRam`', () async {
       // TODO
     });
 
     // Minimum RAM required.
-    // String minRam
+    // Optional<String?> minRam
     test('to test the property `minRam`', () async {
       // TODO
     });
 
     // Maximum LFF (Large Form Factor) supported.
-    // String maxLff
+    // Optional<String?> maxLff
     test('to test the property `maxLff`', () async {
       // TODO
     });
 
     // Maximum SFF (Small Form Factor) supported.
-    // String maxSff
+    // Optional<String?> maxSff
     test('to test the property `maxSff`', () async {
       // TODO
     });
 
     // Maximum NVMe drives supported.
-    // String maxNve
+    // Optional<String?> maxNve
     test('to test the property `maxNve`', () async {
       // TODO
     });
 
     // Visibility status.
-    // String visible
+    // Optional<String?> visible
     test('to test the property `visible`', () async {
       // TODO
     });
 
     // Hard drive IDs.
-    // String hdIds
+    // Optional<String?> hdIds
     test('to test the property `hdIds`', () async {
       // TODO
     });
 
     // Display of CPU price.
-    // String priceDisplay
+    // Optional<String?> priceDisplay
     test('to test the property `priceDisplay`', () async {
       // TODO
     });
 
     // Display of monthly CPU price.
-    // String monthlyPriceDisplay
+    // Optional<String?> monthlyPriceDisplay
     test('to test the property `monthlyPriceDisplay`', () async {
       // TODO
     });

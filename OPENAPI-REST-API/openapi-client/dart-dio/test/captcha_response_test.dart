@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for CaptchaResponse
 void main() {
-  final instance = CaptchaResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final CaptchaResponse? instance = /* CaptchaResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(CaptchaResponse, () {
     // The base64 encoded captcha image.

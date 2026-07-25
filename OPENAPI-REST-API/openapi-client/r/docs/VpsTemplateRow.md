@@ -1,4 +1,4 @@
-# openapi::VpsTemplateRow
+# interserverapi::VpsTemplateRow
 
 A VPS OS Template.
 

@@ -1,4 +1,4 @@
-# InterServerManagementApi.ViewTicketResponse
+# InterserverApiClient.ViewTicketResponse
 
 ## Properties
 

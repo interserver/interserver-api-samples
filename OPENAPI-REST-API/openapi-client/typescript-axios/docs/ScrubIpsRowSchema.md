@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ScrubIpsRowSchema } from './api';
+import { ScrubIpsRowSchema } from '@interserver/myadmin-client';
 
 const instance: ScrubIpsRowSchema = {
     scrub_ip_id,

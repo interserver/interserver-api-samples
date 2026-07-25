@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::PostWebsiteMigration200Response
+# InterServerAPI::Object::PostWebsiteMigration200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::PostWebsiteMigration200Response;
+use InterServerAPI::Object::PostWebsiteMigration200Response;
 ```
 
 ## Properties

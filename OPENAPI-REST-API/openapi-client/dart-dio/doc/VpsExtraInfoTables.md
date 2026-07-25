@@ -1,14 +1,14 @@
-# openapi.model.VpsExtraInfoTables
+# interserver_api.model.VpsExtraInfoTables
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ipInfo** | [**VpsIPInfo**](VpsIPInfo.md) |  | [optional] 
+**ipInfo** | [**Optional&lt;VpsIPInfo?&gt;**](VpsIPInfo.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

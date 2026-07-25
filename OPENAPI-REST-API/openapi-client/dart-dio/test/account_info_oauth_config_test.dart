@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for AccountInfoOauthConfig
 void main() {
-  final instance = AccountInfoOauthConfigBuilder();
-  // TODO add properties to the builder and call build()
+  final AccountInfoOauthConfig? instance = /* AccountInfoOauthConfig(...) */ null;
+  // TODO add properties to the entity
 
   group(AccountInfoOauthConfig, () {
     // String callback

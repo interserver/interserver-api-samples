@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsTrafficUsageResponse
+# InterServerAPI::Object::VpsTrafficUsageResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsTrafficUsageResponse;
+use InterServerAPI::Object::VpsTrafficUsageResponse;
 ```
 
 ## Properties

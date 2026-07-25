@@ -41,7 +41,8 @@ import io.swagger.server.models.EmailAddress
 import io.swagger.server.models.EmailAddressName
 import io.swagger.server.models.EndDate
 import io.swagger.server.models.GenericResponse
-import io.swagger.server.models.InlineResponse2008
+import io.swagger.server.models.IdAlertsBody
+import io.swagger.server.models.InlineResponse2009
 import io.swagger.server.models.InlineResponse401
 import io.swagger.server.models.MailAlertRequest
 import io.swagger.server.models.MailAlertUpdateRequest
@@ -53,6 +54,7 @@ import io.swagger.server.models.MailDelistResponse
 import io.swagger.server.models.MailDeliverabilityResponse
 import io.swagger.server.models.MailLog
 import io.swagger.server.models.MailOrder
+import io.swagger.server.models.MailOrderRequest
 import io.swagger.server.models.MailRow
 import io.swagger.server.models.MailSchema
 import io.swagger.server.models.MailStatsType
@@ -665,6 +667,23 @@ fun Route.MailApi() {
             val exampleContentString = """{
   "success" : true,
   "text" : "Ok"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    put<Paths.updateRule> {  _: Paths.updateRule ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "status" : "ok",
+  "text" : "The command completed successfully."
 }"""
             
             when(exampleContentType) {

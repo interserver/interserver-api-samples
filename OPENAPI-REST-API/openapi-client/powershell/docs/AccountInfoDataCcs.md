@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoDataCcs = Initialize-PSOpenAPIToolsAccountInfoDataCcs 
+$AccountInfoDataCcs = Initialize-InterserverApiAccountInfoDataCcs 
 ```
 
 - Convert the resource to JSON

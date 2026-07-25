@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.licenses_api import LicensesApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.licenses_api import LicensesApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestLicensesApi(unittest.TestCase):
@@ -31,77 +31,70 @@ class TestLicensesApi(unittest.TestCase):
     def test_add_license(self):
         """Test case for add_license
 
-        Place License Order  # noqa: E501
+        Order a new software license and create the recurring invoice  # noqa: E501
         """
         pass
 
     def test_get_license_info(self):
         """Test case for get_license_info
 
-        Get License  # noqa: E501
+        Get full details for one license including status, IP, and links  # noqa: E501
         """
         pass
 
     def test_get_license_invoices(self):
         """Test case for get_license_invoices
 
-        Get License Invoices  # noqa: E501
+        List all billing invoices tied to one software license service  # noqa: E501
         """
         pass
 
     def test_get_license_list(self):
         """Test case for get_license_list
 
-        List Licenses  # noqa: E501
-        """
-        pass
-
-    def test_get_license_order_cat_tag_info(self):
-        """Test case for get_license_order_cat_tag_info
-
-        Get License Order Information for Category  # noqa: E501
+        List all software licenses owned by the authenticated customer  # noqa: E501
         """
         pass
 
     def test_get_licenses_welcome_email(self):
         """Test case for get_licenses_welcome_email
 
-        Resend License Welcome Email  # noqa: E501
+        Resend the license welcome email with the key and activation steps  # noqa: E501
         """
         pass
 
     def test_get_new_license(self):
         """Test case for get_new_license
 
-        Get License Order Information  # noqa: E501
+        Get available license types, packages, and pricing for ordering  # noqa: E501
         """
         pass
 
     def test_licenses_cancel(self):
         """Test case for licenses_cancel
 
-        Cancel License  # noqa: E501
+        Cancel a license service and stop future billing (irreversible)  # noqa: E501
         """
         pass
 
     def test_post_license_change_ip(self):
         """Test case for post_license_change_ip
 
-        Change License IP  # noqa: E501
+        Rebind a license to a new IP address (may incur a vendor fee)  # noqa: E501
         """
         pass
 
     def test_put_licenses(self):
         """Test case for put_licenses
 
-        Validate License Order  # noqa: E501
+        Validate a software license order before placing it (dry run preview)  # noqa: E501
         """
         pass
 
     def test_update_license_info(self):
         """Test case for update_license_info
 
-        Update License  # noqa: E501
+        Update mutable fields on a license service (e.g. assigned IP)  # noqa: E501
         """
         pass
 

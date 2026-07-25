@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailAlertsResponseInner = Initialize-PSOpenAPIToolsMailAlertsResponseInner  -AlertId null `
+$MailAlertsResponseInner = Initialize-InterserverApiMailAlertsResponseInner  -AlertId null `
  -AlertType null `
  -AlertValue null `
  -AlertTo null `

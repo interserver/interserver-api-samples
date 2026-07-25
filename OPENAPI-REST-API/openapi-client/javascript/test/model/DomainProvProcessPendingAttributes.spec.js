@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainProvProcessPendingAttributes();
+    instance = new InterserverApiClient.DomainProvProcessPendingAttributes();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('DomainProvProcessPendingAttributes', function() {
     it('should create an instance of DomainProvProcessPendingAttributes', function() {
       // uncomment below and update the code to test DomainProvProcessPendingAttributes
-      //var instance = new InterServerManagementApi.DomainProvProcessPendingAttributes();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainProvProcessPendingAttributes);
+      //var instance = new InterserverApiClient.DomainProvProcessPendingAttributes();
+      //expect(instance).to.be.a(InterserverApiClient.DomainProvProcessPendingAttributes);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.DomainProvProcessPendingAttributes();
+      //var instance = new InterserverApiClient.DomainProvProcessPendingAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property order_id (base name: "order_id")', function() {
       // uncomment below and update the code to test the property order_id
-      //var instance = new InterServerManagementApi.DomainProvProcessPendingAttributes();
+      //var instance = new InterserverApiClient.DomainProvProcessPendingAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property registration_expiration_date (base name: "registration expiration date")', function() {
       // uncomment below and update the code to test the property registration_expiration_date
-      //var instance = new InterServerManagementApi.DomainProvProcessPendingAttributes();
+      //var instance = new InterserverApiClient.DomainProvProcessPendingAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property f_auto_renew (base name: "f_auto_renew")', function() {
       // uncomment below and update the code to test the property f_auto_renew
-      //var instance = new InterServerManagementApi.DomainProvProcessPendingAttributes();
+      //var instance = new InterserverApiClient.DomainProvProcessPendingAttributes();
       //expect(instance).to.be();
     });
 

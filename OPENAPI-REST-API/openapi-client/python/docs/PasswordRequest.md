@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.password_request import PasswordRequest
+from interserver_api_client.models.password_request import PasswordRequest
 
 # TODO update the JSON string below
 json = "{}"

@@ -1,4 +1,4 @@
-# SwaggerClient::TicketPostDetailsInner
+# InterserverApiClient::TicketPostDetailsInner
 
 ## Properties
 Name | Type | Description | Notes

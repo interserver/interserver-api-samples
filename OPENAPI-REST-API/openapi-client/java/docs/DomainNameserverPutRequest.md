@@ -11,4 +11,8 @@ Payload for replacing the assigned nameserver list for a domain.
 |**nameserver** | **List&lt;String&gt;** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

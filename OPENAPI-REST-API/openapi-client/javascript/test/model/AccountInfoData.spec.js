@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoData();
+    instance = new InterserverApiClient.AccountInfoData();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,391 +50,391 @@
   describe('AccountInfoData', function() {
     it('should create an instance of AccountInfoData', function() {
       // uncomment below and update the code to test AccountInfoData
-      //var instance = new InterServerManagementApi.AccountInfoData();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoData);
+      //var instance = new InterserverApiClient.AccountInfoData();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoData);
     });
 
     it('should have the property group (base name: "group")', function() {
       // uncomment below and update the code to test the property group
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property address (base name: "address")', function() {
       // uncomment below and update the code to test the property address
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property city (base name: "city")', function() {
       // uncomment below and update the code to test the property city
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property country (base name: "country")', function() {
       // uncomment below and update the code to test the property country
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property disable_cc (base name: "disable_cc")', function() {
       // uncomment below and update the code to test the property disable_cc
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property fraudrecord_score (base name: "fraudrecord_score")', function() {
       // uncomment below and update the code to test the property fraudrecord_score
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property ima (base name: "ima")', function() {
       // uncomment below and update the code to test the property ima
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property payment_method (base name: "payment_method")', function() {
       // uncomment below and update the code to test the property payment_method
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property phone (base name: "phone")', function() {
       // uncomment below and update the code to test the property phone
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property pin (base name: "pin")', function() {
       // uncomment below and update the code to test the property pin
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property state (base name: "state")', function() {
       // uncomment below and update the code to test the property state
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property zip (base name: "zip")', function() {
       // uncomment below and update the code to test the property zip
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property account_id (base name: "account_id")', function() {
       // uncomment below and update the code to test the property account_id
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property account_lid (base name: "account_lid")', function() {
       // uncomment below and update the code to test the property account_lid
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property address2 (base name: "address2")', function() {
       // uncomment below and update the code to test the property address2
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property affiliate_dock_description (base name: "affiliate_dock_description")', function() {
       // uncomment below and update the code to test the property affiliate_dock_description
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property affiliate_dock_title (base name: "affiliate_dock_title")', function() {
       // uncomment below and update the code to test the property affiliate_dock_title
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property affiliate_payment_method (base name: "affiliate_payment_method")', function() {
       // uncomment below and update the code to test the property affiliate_payment_method
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property affiliate_paypal (base name: "affiliate_paypal")', function() {
       // uncomment below and update the code to test the property affiliate_paypal
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property cc (base name: "cc")', function() {
       // uncomment below and update the code to test the property cc
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property cc_auto (base name: "cc_auto")', function() {
       // uncomment below and update the code to test the property cc_auto
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property cc_exp (base name: "cc_exp")', function() {
       // uncomment below and update the code to test the property cc_exp
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property cc_type (base name: "cc_type")', function() {
       // uncomment below and update the code to test the property cc_type
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property cc_whitelist (base name: "cc_whitelist")', function() {
       // uncomment below and update the code to test the property cc_whitelist
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property ccs (base name: "ccs")', function() {
       // uncomment below and update the code to test the property ccs
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property ccs_added (base name: "ccs_added")', function() {
       // uncomment below and update the code to test the property ccs_added
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property company (base name: "company")', function() {
       // uncomment below and update the code to test the property company
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property currency (base name: "currency")', function() {
       // uncomment below and update the code to test the property currency
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property disable_reinstall (base name: "disable_reinstall")', function() {
       // uncomment below and update the code to test the property disable_reinstall
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property disable_reset (base name: "disable_reset")', function() {
       // uncomment below and update the code to test the property disable_reset
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property email (base name: "email")', function() {
       // uncomment below and update the code to test the property email
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property email_abuse (base name: "email_abuse")', function() {
       // uncomment below and update the code to test the property email_abuse
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property email_settings (base name: "email_settings")', function() {
       // uncomment below and update the code to test the property email_settings
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property extra (base name: "extra")', function() {
       // uncomment below and update the code to test the property extra
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property facebook_id (base name: "facebook_id")', function() {
       // uncomment below and update the code to test the property facebook_id
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property facebook_url (base name: "facebook_url")', function() {
       // uncomment below and update the code to test the property facebook_url
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property firstname (base name: "firstname")', function() {
       // uncomment below and update the code to test the property firstname
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property fraudrecord (base name: "fraudrecord")', function() {
       // uncomment below and update the code to test the property fraudrecord
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property github_id (base name: "github_id")', function() {
       // uncomment below and update the code to test the property github_id
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property github_url (base name: "github_url")', function() {
       // uncomment below and update the code to test the property github_url
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property google_id (base name: "google_id")', function() {
       // uncomment below and update the code to test the property google_id
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property google_url (base name: "google_url")', function() {
       // uncomment below and update the code to test the property google_url
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property innertell_id (base name: "innertell_id")', function() {
       // uncomment below and update the code to test the property innertell_id
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property lastname (base name: "lastname")', function() {
       // uncomment below and update the code to test the property lastname
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property locale (base name: "locale")', function() {
       // uncomment below and update the code to test the property locale
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property maxmind (base name: "maxmind")', function() {
       // uncomment below and update the code to test the property maxmind
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property maxmind_score (base name: "maxmind_score")', function() {
       // uncomment below and update the code to test the property maxmind_score
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property mb_id (base name: "mb_id")', function() {
       // uncomment below and update the code to test the property mb_id
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property modernbill_id (base name: "modernbill_id")', function() {
       // uncomment below and update the code to test the property modernbill_id
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property picture (base name: "picture")', function() {
       // uncomment below and update the code to test the property picture
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property referrer_coupon (base name: "referrer_coupon")', function() {
       // uncomment below and update the code to test the property referrer_coupon
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property reseller_markup (base name: "reseller_markup")', function() {
       // uncomment below and update the code to test the property reseller_markup
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property username (base name: "username")', function() {
       // uncomment below and update the code to test the property username
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property ssh_key (base name: "ssh_key")', function() {
       // uncomment below and update the code to test the property ssh_key
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property ssh_key_wrapped (base name: "ssh_key_wrapped")', function() {
       // uncomment below and update the code to test the property ssh_key_wrapped
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property api_key (base name: "api_key")', function() {
       // uncomment below and update the code to test the property api_key
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property api_key_wrapped (base name: "api_key_wrapped")', function() {
       // uncomment below and update the code to test the property api_key_wrapped
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property _2fa_google_key (base name: "2fa_google_key")', function() {
       // uncomment below and update the code to test the property _2fa_google_key
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property _2fa_google_enabled (base name: "2fa_google_enabled")', function() {
       // uncomment below and update the code to test the property _2fa_google_enabled
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property _2fa_google (base name: "2fa_google")', function() {
       // uncomment below and update the code to test the property _2fa_google
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property _2fa_google_split (base name: "2fa_google_split")', function() {
       // uncomment below and update the code to test the property _2fa_google_split
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 
     it('should have the property _2fa_google_qr (base name: "2fa_google_qr")', function() {
       // uncomment below and update the code to test the property _2fa_google_qr
-      //var instance = new InterServerManagementApi.AccountInfoData();
+      //var instance = new InterserverApiClient.AccountInfoData();
       //expect(instance).to.be();
     });
 

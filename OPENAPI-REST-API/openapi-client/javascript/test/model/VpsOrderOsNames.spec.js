@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsOrderOsNames();
+    instance = new InterserverApiClient.VpsOrderOsNames();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('VpsOrderOsNames', function() {
     it('should create an instance of VpsOrderOsNames', function() {
       // uncomment below and update the code to test VpsOrderOsNames
-      //var instance = new InterServerManagementApi.VpsOrderOsNames();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsOrderOsNames);
+      //var instance = new InterserverApiClient.VpsOrderOsNames();
+      //expect(instance).to.be.a(InterserverApiClient.VpsOrderOsNames);
     });
 
     it('should have the property opensuse (base name: "opensuse")', function() {
       // uncomment below and update the code to test the property opensuse
-      //var instance = new InterServerManagementApi.VpsOrderOsNames();
+      //var instance = new InterserverApiClient.VpsOrderOsNames();
       //expect(instance).to.be();
     });
 
     it('should have the property ubuntu (base name: "ubuntu")', function() {
       // uncomment below and update the code to test the property ubuntu
-      //var instance = new InterServerManagementApi.VpsOrderOsNames();
+      //var instance = new InterserverApiClient.VpsOrderOsNames();
       //expect(instance).to.be();
     });
 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_tutorials_table import MailTutorialsTable
+from interserver_api_client.models.mail_tutorials_table import MailTutorialsTable
 
 class TestMailTutorialsTable(unittest.TestCase):
     """MailTutorialsTable unit test stubs"""
@@ -38,7 +38,7 @@ class TestMailTutorialsTable(unittest.TestCase):
             return MailTutorialsTable(
                 title = 'Tutorials',
                 rows = [
-                    openapi_client.models.mail_tutorials_table_row.MailTutorialsTableRow(
+                    interserver_api_client.models.mail_tutorials_table_row.MailTutorialsTableRow(
                         desc = 'cPanel Tutorial', 
                         value = '<a class="link" href="https://mail.baby/cpanel/" target="_blank">Click Here</a>', )
                     ]

@@ -1,4 +1,4 @@
-# SwaggerClient::EmailAddressName
+# InterserverApiClient::EmailAddressName
 
 ## Properties
 Name | Type | Description | Notes

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.quickserver_row import QuickserverRow
+from interserver_api_client.models.quickserver_row import QuickserverRow
 
 # TODO update the JSON string below
 json = "{}"

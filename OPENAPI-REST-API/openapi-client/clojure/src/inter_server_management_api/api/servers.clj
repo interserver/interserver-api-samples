@@ -14,6 +14,7 @@
             [inter-server-management-api.specs.enable-scrub-500-response :refer :all]
             [inter-server-management-api.specs.login-error-response :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall-rules-inner :refer :all]
+            [inter-server-management-api.specs.server-order-post-request :refer :all]
             [inter-server-management-api.specs.account-info-data-extra :refer :all]
             [inter-server-management-api.specs.server-order-memory-li-254 :refer :all]
             [inter-server-management-api.specs.affiliate-traffic-row :refer :all]
@@ -23,6 +24,7 @@
             [inter-server-management-api.specs.quickserver-order-distro-sel-ubuntu :refer :all]
             [inter-server-management-api.specs.domain :refer :all]
             [inter-server-management-api.specs.generic-response :refer :all]
+            [inter-server-management-api.specs.floating-ip-order-request :refer :all]
             [inter-server-management-api.specs.mail-blocks :refer :all]
             [inter-server-management-api.specs.update-account-tfa-request :refer :all]
             [inter-server-management-api.specs.billing-invoice-detail :refer :all]
@@ -34,13 +36,14 @@
             [inter-server-management-api.specs.licenses-cancel-200-response :refer :all]
             [inter-server-management-api.specs.text-response :refer :all]
             [inter-server-management-api.specs.server-network-info :refer :all]
-            [inter-server-management-api.specs.hard-drive :refer :all]
             [inter-server-management-api.specs.account-info-oauth-config-providers :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall :refer :all]
             [inter-server-management-api.specs.success-text-response :refer :all]
             [inter-server-management-api.specs.server-order-control-panel :refer :all]
+            [inter-server-management-api.specs.get-affiliate-signups-200-response :refer :all]
             [inter-server-management-api.specs.get-scrub-ip-details-200-response-filter-firewall-filters-inner :refer :all]
             [inter-server-management-api.specs.websites-order-json-service-offers-item :refer :all]
+            [inter-server-management-api.specs.put-scrub-ips-200-response :refer :all]
             [inter-server-management-api.specs.ticket-post-details-inner :refer :all]
             [inter-server-management-api.specs.website :refer :all]
             [inter-server-management-api.specs.reverse-dns-entries :refer :all]
@@ -50,14 +53,13 @@
             [inter-server-management-api.specs.post-website-buy-ip-request :refer :all]
             [inter-server-management-api.specs.domain-prov-process-pending-attributes :refer :all]
             [inter-server-management-api.specs.create-filter-201-response :refer :all]
-            [inter-server-management-api.specs.asset-server-cpu-inner :refer :all]
             [inter-server-management-api.specs.websites-order :refer :all]
             [inter-server-management-api.specs.ticket-details :refer :all]
             [inter-server-management-api.specs.webhosting-cancel-200-response :refer :all]
-            [inter-server-management-api.specs.field-label :refer :all]
             [inter-server-management-api.specs.download-qs-backup-200-response :refer :all]
             [inter-server-management-api.specs.vps-traffic-data-data-section-response :refer :all]
             [inter-server-management-api.specs.send-mail-adv :refer :all]
+            [inter-server-management-api.specs.license-order-request :refer :all]
             [inter-server-management-api.specs.domain-all-info-attributes :refer :all]
             [inter-server-management-api.specs.server-order :refer :all]
             [inter-server-management-api.specs.service-category :refer :all]
@@ -98,10 +100,10 @@
             [inter-server-management-api.specs.scrub-ips-log-row-schema :refer :all]
             [inter-server-management-api.specs.website-table :refer :all]
             [inter-server-management-api.specs.domain-name-server :refer :all]
-            [inter-server-management-api.specs.config-ids :refer :all]
             [inter-server-management-api.specs.ticket-new-response :refer :all]
             [inter-server-management-api.specs.affiliate-dock-setup :refer :all]
             [inter-server-management-api.specs.server-order-os :refer :all]
+            [inter-server-management-api.specs.website-order-put-request :refer :all]
             [inter-server-management-api.specs.account-info-max-mind-response-risk-score :refer :all]
             [inter-server-management-api.specs.billing-add-cc-request :refer :all]
             [inter-server-management-api.specs.account-info-max-mind-response :refer :all]
@@ -112,6 +114,7 @@
             [inter-server-management-api.specs.billing-payment-method-request :refer :all]
             [inter-server-management-api.specs.home :refer :all]
             [inter-server-management-api.specs.server-locations :refer :all]
+            [inter-server-management-api.specs.ssl-order-request :refer :all]
             [inter-server-management-api.specs.service :refer :all]
             [inter-server-management-api.specs.server-order-os-li :refer :all]
             [inter-server-management-api.specs.vps :refer :all]
@@ -119,6 +122,7 @@
             [inter-server-management-api.specs.backup :refer :all]
             [inter-server-management-api.specs.account-info-data-ccs :refer :all]
             [inter-server-management-api.specs.disable-scrub-400-response :refer :all]
+            [inter-server-management-api.specs.mail-order-request :refer :all]
             [inter-server-management-api.specs.websites-order-packages :refer :all]
             [inter-server-management-api.specs.quickserver-billing-details :refer :all]
             [inter-server-management-api.specs.get-oauth-redirect-200-response :refer :all]
@@ -127,6 +131,7 @@
             [inter-server-management-api.specs.server-service-info :refer :all]
             [inter-server-management-api.specs.home-details-modules-vps :refer :all]
             [inter-server-management-api.specs.backup-order-put-response :refer :all]
+            [inter-server-management-api.specs.website-order-post-request :refer :all]
             [inter-server-management-api.specs.scrub-ip-filter-types-filters-value :refer :all]
             [inter-server-management-api.specs.patch-oauth-two-factor-request :refer :all]
             [inter-server-management-api.specs.home-ticket-status-view :refer :all]
@@ -136,6 +141,7 @@
             [inter-server-management-api.specs.create-geo-firewall-rule :refer :all]
             [inter-server-management-api.specs.create-rule-400-response :refer :all]
             [inter-server-management-api.specs.account-info-data-email-settings :refer :all]
+            [inter-server-management-api.specs.qs-order-request :refer :all]
             [inter-server-management-api.specs.mail-delist-response :refer :all]
             [inter-server-management-api.specs.server-order-cpu :refer :all]
             [inter-server-management-api.specs.domain-nameserver-post-request :refer :all]
@@ -150,16 +156,16 @@
             [inter-server-management-api.specs.domain-service-info :refer :all]
             [inter-server-management-api.specs.scrub-ips-delete-rule-200-response :refer :all]
             [inter-server-management-api.specs.server-extra-info-tables :refer :all]
-            [inter-server-management-api.specs.asset-server :refer :all]
             [inter-server-management-api.specs.dns-record-type :refer :all]
             [inter-server-management-api.specs.domain-nameserver-get-response :refer :all]
             [inter-server-management-api.specs.licenses-order-service-categories :refer :all]
+            [inter-server-management-api.specs.server-bulk-ipmi-power-response :refer :all]
             [inter-server-management-api.specs.vps-order-platform-names :refer :all]
             [inter-server-management-api.specs.quickserver-order :refer :all]
             [inter-server-management-api.specs.websites-order-packges :refer :all]
             [inter-server-management-api.specs.servers-buy-now-error :refer :all]
-            [inter-server-management-api.specs.cpu-with-defaults :refer :all]
             [inter-server-management-api.specs.close-ticket-response-schema :refer :all]
+            [inter-server-management-api.specs.server-order-post-request-hd :refer :all]
             [inter-server-management-api.specs.quickserver-order-templates-ubuntu64 :refer :all]
             [inter-server-management-api.specs.vps-extra-info-tables :refer :all]
             [inter-server-management-api.specs.home-services-licenses :refer :all]
@@ -169,7 +175,7 @@
             [inter-server-management-api.specs.mail-log :refer :all]
             [inter-server-management-api.specs.domain-prov-process-pending :refer :all]
             [inter-server-management-api.specs.domain-lookup-response :refer :all]
-            [inter-server-management-api.specs.operating-system :refer :all]
+            [inter-server-management-api.specs.domain-order-request :refer :all]
             [inter-server-management-api.specs.dns-record :refer :all]
             [inter-server-management-api.specs.vps-order-os-names :refer :all]
             [inter-server-management-api.specs.vps-traffic-totals-section-response :refer :all]
@@ -177,13 +183,11 @@
             [inter-server-management-api.specs.buy-it-now-row-cpu-inner :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-extra-info-tables :refer :all]
-            [inter-server-management-api.specs.inline-object :refer :all]
             [inter-server-management-api.specs.vps-cp-data :refer :all]
             [inter-server-management-api.specs.server-order-cpu-li :refer :all]
             [inter-server-management-api.specs.domain-order-services :refer :all]
             [inter-server-management-api.specs.login-info :refer :all]
             [inter-server-management-api.specs.home-services-vps-links :refer :all]
-            [inter-server-management-api.specs.cpu :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-row :refer :all]
             [inter-server-management-api.specs.website-service-info :refer :all]
@@ -211,10 +215,8 @@
             [inter-server-management-api.specs.server-ipmi-power-request :refer :all]
             [inter-server-management-api.specs.quickservers-cancel-200-response :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response-ips-inner :refer :all]
-            [inter-server-management-api.specs.form-values :refer :all]
             [inter-server-management-api.specs.service-type :refer :all]
             [inter-server-management-api.specs.vps-snapshot :refer :all]
-            [inter-server-management-api.specs.raid-option :refer :all]
             [inter-server-management-api.specs.service-categories :refer :all]
             [inter-server-management-api.specs.vps-order :refer :all]
             [inter-server-management-api.specs.backup-service-extra :refer :all]
@@ -229,10 +231,8 @@
             [inter-server-management-api.specs.vps-order-templates :refer :all]
             [inter-server-management-api.specs.restore-request :refer :all]
             [inter-server-management-api.specs.account-info :refer :all]
-            [inter-server-management-api.specs.control-panel :refer :all]
             [inter-server-management-api.specs.backup-extra-info-tables :refer :all]
             [inter-server-management-api.specs.send-mail :refer :all]
-            [inter-server-management-api.specs.ip-block :refer :all]
             [inter-server-management-api.specs.servers-buy-now-response :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response-ips-inner :refer :all]
             [inter-server-management-api.specs.domain-billing-details :refer :all]
@@ -259,10 +259,10 @@
             [inter-server-management-api.specs.create-filter :refer :all]
             [inter-server-management-api.specs.buy-it-now-server-order-200-response-raid-inner :refer :all]
             [inter-server-management-api.specs.vps-traffic-totals-resposne :refer :all]
+            [inter-server-management-api.specs.server-bulk-ipmi-power-response-results-inner :refer :all]
             [inter-server-management-api.specs.dns-list-item :refer :all]
             [inter-server-management-api.specs.cancel-domain-200-response :refer :all]
             [inter-server-management-api.specs.home-details :refer :all]
-            [inter-server-management-api.specs.domain-order-tld-services :refer :all]
             [inter-server-management-api.specs.server-ipmi-live-info :refer :all]
             [inter-server-management-api.specs.home-services-domains-links :refer :all]
             [inter-server-management-api.specs.home-services :refer :all]
@@ -271,7 +271,7 @@
             [inter-server-management-api.specs.account-info-limits :refer :all]
             [inter-server-management-api.specs.queue-response :refer :all]
             [inter-server-management-api.specs.cancel-scrub-ip-200-response :refer :all]
-            [inter-server-management-api.specs.bandwidth :refer :all]
+            [inter-server-management-api.specs.delete-mail-alert-request :refer :all]
             [inter-server-management-api.specs.services :refer :all]
             [inter-server-management-api.specs.get-order-detail-200-response-package-costs :refer :all]
             [inter-server-management-api.specs.domain-client-link :refer :all]
@@ -283,7 +283,6 @@
             [inter-server-management-api.specs.vps-order-location-names :refer :all]
             [inter-server-management-api.specs.get-website-buy-ip-200-response :refer :all]
             [inter-server-management-api.specs.licenses-order-service-categories509 :refer :all]
-            [inter-server-management-api.specs.memory-option :refer :all]
             [inter-server-management-api.specs.domain-all-info :refer :all]
             [inter-server-management-api.specs.login-service-counts :refer :all]
             [inter-server-management-api.specs.domain-dnssec-records :refer :all]
@@ -302,7 +301,6 @@
             [inter-server-management-api.specs.websites-order-json-service-offers :refer :all]
             [inter-server-management-api.specs.domain-owner-contact :refer :all]
             [inter-server-management-api.specs.mail-tutorials-table :refer :all]
-            [inter-server-management-api.specs.region :refer :all]
             [inter-server-management-api.specs.domain-admin-contact :refer :all]
             [inter-server-management-api.specs.vps-traffic-usage-response :refer :all]
             [inter-server-management-api.specs.service-order-post-response :refer :all]
@@ -324,6 +322,7 @@
             [inter-server-management-api.specs.quickserver-ip-table-row :refer :all]
             [inter-server-management-api.specs.email-address :refer :all]
             [inter-server-management-api.specs.vps-plesk-license :refer :all]
+            [inter-server-management-api.specs.get-account-locales-200-response-value :refer :all]
             [inter-server-management-api.specs.vps-traffic-history-section-data-response :refer :all]
             [inter-server-management-api.specs.backup-service-master :refer :all]
             [inter-server-management-api.specs.vps-traffic-history-response :refer :all]
@@ -394,8 +393,6 @@
             [inter-server-management-api.specs.quickserver :refer :all]
             [inter-server-management-api.specs.reply-ticket-response-schema :refer :all]
             [inter-server-management-api.specs.vps-order-put-request :refer :all]
-            [inter-server-management-api.specs.vps-traffic-data-data-response :refer :all]
-            [inter-server-management-api.specs.server-order-get-response :refer :all]
             [inter-server-management-api.specs.mail-stats-type-volume-from :refer :all]
             [inter-server-management-api.specs.mail-alerts-response-inner :refer :all]
             [inter-server-management-api.specs.domain-tech-contact :refer :all]
@@ -407,7 +404,6 @@
             [inter-server-management-api.specs.billing-verify-cc-request :refer :all]
             [inter-server-management-api.specs.vps-order-service-types :refer :all]
             [inter-server-management-api.specs.mail-attachment :refer :all]
-            [inter-server-management-api.specs.invoice-row :refer :all]
             [inter-server-management-api.specs.place-scrub-order-201-response-order-details-cj-params :refer :all]
             [inter-server-management-api.specs.delete-firewall-rule :refer :all]
             [inter-server-management-api.specs.tickets :refer :all]
@@ -422,13 +418,13 @@
             [inter-server-management-api.specs.timezone-update :refer :all]
             [inter-server-management-api.specs.servers-cancel-200-response :refer :all]
             [inter-server-management-api.specs.server-order-memory :refer :all]
-            [inter-server-management-api.specs.config-lists :refer :all]
             [inter-server-management-api.specs.website-backups :refer :all]
             [inter-server-management-api.specs.vps-ip-info :refer :all]
             [inter-server-management-api.specs.domain-billing-extra :refer :all]
             [inter-server-management-api.specs.backup-order-post-response :refer :all]
             [inter-server-management-api.specs.scrub-ips-row-schema :refer :all]
             [inter-server-management-api.specs.scrub-ip-place-order :refer :all]
+            [inter-server-management-api.specs.patch-billing-credit-card-verify-request :refer :all]
             [inter-server-management-api.specs.license-service-info :refer :all]
             [inter-server-management-api.specs.server-lease :refer :all]
             [inter-server-management-api.specs.charge-invoice-rows-invoices-value-paid-invoices-value-refund-invoices-value :refer :all]
@@ -446,13 +442,11 @@
             [inter-server-management-api.specs.post-website-migration-200-response :refer :all]
             [inter-server-management-api.specs.quickserver-ip-info :refer :all]
             [inter-server-management-api.specs.licenses-order :refer :all]
-            [inter-server-management-api.specs.payment-invoice-rows :refer :all]
             [inter-server-management-api.specs.license-row :refer :all]
             [inter-server-management-api.specs.server-order-bandwidth :refer :all]
             [inter-server-management-api.specs.quickserver-service-extra :refer :all]
             [inter-server-management-api.specs.quickserver-client-link :refer :all]
             [inter-server-management-api.specs.download-qs-backup-request :refer :all]
-            [inter-server-management-api.specs.invoice :refer :all]
             [inter-server-management-api.specs.licenses-order-service-types :refer :all]
             [inter-server-management-api.specs.mail-tutorials-table-row :refer :all]
             [inter-server-management-api.specs.vps-service-extra :refer :all]
@@ -461,31 +455,58 @@
 
 
 (defn-spec add-server-with-http-info any?
-  "Place Server Order
-  Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first."
-  []
+  "Place a custom dedicated server order, creating a real billable invoice
+  Submits a fully custom dedicated server order. Creates a `pending` `servers` row, a `Repeat_Invoice`, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first.
+Body (form fields): `cpu` (id from `cpu_li`), `hd[]` (array of drive ids), `memory`, `bandwidth`, `ips`, `os`, `cp`, `raid` (ids from `getNewServer`), `region` (region_id), `servername` (valid hostname), `rootpass`, `tos` (must be true), optional `comment`. `account.server_order_discount` (if set) applies.
+Returns: `{ text:'Order Completed', invoice, order }`. Errors: 422 'Missing/Invalid <field>'; 401 unauth.
+Sibling ops: `getNewServer` (options), `placeBuyNowServer` (pre-built path), `getServerInfo` (view new order), `getServerInvoices`."
+  [server-order-post-request server-order-post-request]
+  (check-required-params server-order-post-request)
   (call-api "/servers/order" :post
             {:path-params   {}
              :header-params {}
              :query-params  {}
              :form-params   {}
-             :content-types []
+             :body-param    server-order-post-request
+             :content-types ["application/json"]
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec add-server add-server-200-response-spec
-  "Place Server Order
-  Places an order for a new dedicated server. Use `PUT /servers/order` to validate the order first."
-  []
-  (let [res (:data (add-server-with-http-info))]
+  "Place a custom dedicated server order, creating a real billable invoice
+  Submits a fully custom dedicated server order. Creates a `pending` `servers` row, a `Repeat_Invoice`, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first.
+Body (form fields): `cpu` (id from `cpu_li`), `hd[]` (array of drive ids), `memory`, `bandwidth`, `ips`, `os`, `cp`, `raid` (ids from `getNewServer`), `region` (region_id), `servername` (valid hostname), `rootpass`, `tos` (must be true), optional `comment`. `account.server_order_discount` (if set) applies.
+Returns: `{ text:'Order Completed', invoice, order }`. Errors: 422 'Missing/Invalid <field>'; 401 unauth.
+Sibling ops: `getNewServer` (options), `placeBuyNowServer` (pre-built path), `getServerInfo` (view new order), `getServerInvoices`."
+  [server-order-post-request server-order-post-request]
+  (let [res (:data (add-server-with-http-info server-order-post-request))]
     (if (:decode-models *api-context*)
        (st/decode add-server-200-response-spec res st/string-transformer)
        res)))
 
 
 (defn-spec buy-it-now-server-order-with-http-info any?
-  "Get Buy Now Server Options
-  Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`."
+  "Get configurable options for a Rapid Deploy / coupon dedicated server
+  Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (`a=<asset_id>`) or a coupon (`c=<coupon_name>`) so the order form can be rendered before `placeBuyNowServer`. Read-only; no charge. Sibling ops: `placeBuyNowServer` (commit), `getMPServers` (browse marketplace), `addServer` (custom build flow).
+
+**Query (one required):**
+- `a` (integer) — asset_id from `getMPServers`.
+- `c` (string) — `server_coupons.name`.
+
+**Returns:** `{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }`. Each option row is `{ id, short_desc, long_desc, monthly_price }` — feed those ids into `placeBuyNowServer`.
+
+**Auth:** Session/API key.
+
+**Errors:**
+- `400` — `'No Server Coupon or Market-Place Asset Specified'` when neither `a` nor `c` is passed.
+- `400` — `'Invalid Asset ID'` / `'No Server Coupon with that name'`.
+- `409` — `'Server already sold!'` (asset already in-cart) or `'Server Out of stock'` (coupon).
+- `401` — unauthenticated.
+
+**Related calls:**
+- **Next:** `placeBuyNowServer` (commit the order).
+- **Browse:** `getMPServers`.
+- **Custom build alternative:** `addServer`."
   []
   (call-api "/servers/order/buy_now_server" :get
             {:path-params   {}
@@ -497,8 +518,27 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec buy-it-now-server-order buy-it-now-server-order-200-response-spec
-  "Get Buy Now Server Options
-  Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via `POST /servers/order/buy_now_server`."
+  "Get configurable options for a Rapid Deploy / coupon dedicated server
+  Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (`a=<asset_id>`) or a coupon (`c=<coupon_name>`) so the order form can be rendered before `placeBuyNowServer`. Read-only; no charge. Sibling ops: `placeBuyNowServer` (commit), `getMPServers` (browse marketplace), `addServer` (custom build flow).
+
+**Query (one required):**
+- `a` (integer) — asset_id from `getMPServers`.
+- `c` (string) — `server_coupons.name`.
+
+**Returns:** `{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }`. Each option row is `{ id, short_desc, long_desc, monthly_price }` — feed those ids into `placeBuyNowServer`.
+
+**Auth:** Session/API key.
+
+**Errors:**
+- `400` — `'No Server Coupon or Market-Place Asset Specified'` when neither `a` nor `c` is passed.
+- `400` — `'Invalid Asset ID'` / `'No Server Coupon with that name'`.
+- `409` — `'Server already sold!'` (asset already in-cart) or `'Server Out of stock'` (coupon).
+- `401` — unauthenticated.
+
+**Related calls:**
+- **Next:** `placeBuyNowServer` (commit the order).
+- **Browse:** `getMPServers`.
+- **Custom build alternative:** `addServer`."
   []
   (let [res (:data (buy-it-now-server-order-with-http-info))]
     (if (:decode-models *api-context*)
@@ -507,8 +547,10 @@
 
 
 (defn-spec get-mp-servers-with-http-info any?
-  "List Marketplace Servers
-  Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase."
+  "List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+  Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from `mynew.interserver.net/ajax/server_a.php`.
+Returns: array of `{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }`. The `server_id` is the marketplace asset id — feed it into `buyItNowServerOrder` (GET options for asset `?a=<id>`) and `placeBuyNowServer` (POST to commit). Errors: 401 if session expired.
+Sibling ops: `buyItNowServerOrder` (configure asset), `placeBuyNowServer` (purchase), `getNewServer`/`addServer` (custom-spec build, not pre-built), `getServerList` (already-owned servers)."
   []
   (call-api "/buy_now_servers_list" :get
             {:path-params   {}
@@ -520,8 +562,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-mp-servers buy-it-now-list-spec
-  "List Marketplace Servers
-  Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase."
+  "List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
+  Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from `mynew.interserver.net/ajax/server_a.php`.
+Returns: array of `{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }`. The `server_id` is the marketplace asset id — feed it into `buyItNowServerOrder` (GET options for asset `?a=<id>`) and `placeBuyNowServer` (POST to commit). Errors: 401 if session expired.
+Sibling ops: `buyItNowServerOrder` (configure asset), `placeBuyNowServer` (purchase), `getNewServer`/`addServer` (custom-spec build, not pre-built), `getServerList` (already-owned servers)."
   []
   (let [res (:data (get-mp-servers-with-http-info))]
     (if (:decode-models *api-context*)
@@ -530,8 +574,10 @@
 
 
 (defn-spec get-new-server-with-http-info any?
-  "Server Ordering Information
-  Retrieves available server configurations and pricing for ordering a new dedicated server."
+  "Get custom dedicated server ordering options, regions, and pricing
+  Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body.
+Returns: object with `config_li` keyed by category (`cpu_li`, `hd_li`, `memory_li`, `bandwidth_li`, `ips_li`, `os_li`, `cp_li`, `raid_li`) plus `regions`. Use returned IDs as POST values for `addServer`. Note `hd_li` and `memory_li` are nested by `cpu` id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated.
+Sibling ops: `addServer` (commits the order), `buyItNowServerOrder` (pre-built marketplace alternative), `getMPServers` (browse marketplace)."
   []
   (call-api "/servers/order" :get
             {:path-params   {}
@@ -543,8 +589,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-new-server server-order-spec
-  "Server Ordering Information
-  Retrieves available server configurations and pricing for ordering a new dedicated server."
+  "Get custom dedicated server ordering options, regions, and pricing
+  Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body.
+Returns: object with `config_li` keyed by category (`cpu_li`, `hd_li`, `memory_li`, `bandwidth_li`, `ips_li`, `os_li`, `cp_li`, `raid_li`) plus `regions`. Use returned IDs as POST values for `addServer`. Note `hd_li` and `memory_li` are nested by `cpu` id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated.
+Sibling ops: `addServer` (commits the order), `buyItNowServerOrder` (pre-built marketplace alternative), `getMPServers` (browse marketplace)."
   []
   (let [res (:data (get-new-server-with-http-info))]
     (if (:decode-models *api-context*)
@@ -553,8 +601,10 @@
 
 
 (defn-spec get-server-info-with-http-info any?
-  "Get Server Order
-  Returns detailed information about a specific server including its hardware configuration, IPs, and status."
+  "Get full hardware, network, and lifecycle details for a dedicated server
+  Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: `id` (integer server_id, from `getServerList`). No body.
+Returns: `ViewServer::getDetails()` shape: `serviceInfo`, `networkInfo` (vlans + assets, with `ipmi_admin_username`/`ipmi_admin_password` and admin lease creds REDACTED for client safety), normalized `client_links`, `serviceType`. `admin_links`/raw `settings`/`csrf` stripped. Errors: 404 not owned; 401 unauth.
+Sibling ops: `getServerInvoices`, `serverIpmiLiveGet`, `serverIpmiPowerGet` (single — prefer `serverBulkIpmiPowerGet` for many), `getServerReverseDns`, `getServersWelcomeEmail`, `serversCancel`."
   [id int?]
   (check-required-params id)
   (call-api "/servers/{id}" :get
@@ -567,8 +617,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-server-info server-spec
-  "Get Server Order
-  Returns detailed information about a specific server including its hardware configuration, IPs, and status."
+  "Get full hardware, network, and lifecycle details for a dedicated server
+  Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: `id` (integer server_id, from `getServerList`). No body.
+Returns: `ViewServer::getDetails()` shape: `serviceInfo`, `networkInfo` (vlans + assets, with `ipmi_admin_username`/`ipmi_admin_password` and admin lease creds REDACTED for client safety), normalized `client_links`, `serviceType`. `admin_links`/raw `settings`/`csrf` stripped. Errors: 404 not owned; 401 unauth.
+Sibling ops: `getServerInvoices`, `serverIpmiLiveGet`, `serverIpmiPowerGet` (single — prefer `serverBulkIpmiPowerGet` for many), `getServerReverseDns`, `getServersWelcomeEmail`, `serversCancel`."
   [id int?]
   (let [res (:data (get-server-info-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -577,8 +629,10 @@
 
 
 (defn-spec get-server-invoices-with-http-info any?
-  "Get Server Invoices
-  Returns the billing invoices associated with this dedicated server."
+  "List billing invoices (charges + payments) tied to one dedicated server
+  Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: `id` (integer server_id from `getServerList`). No body. Inherits from `MyAdmin\\Api\\Billing\\InvoicesList` with module=servers.
+Returns: `ChargeInvoiceRows` array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if `id` not owned by the caller; 401 unauth.
+Sibling ops: `getServerInfo` (current service state), `serversCancel` (cancel), `getBillingInvoice` (single invoice by invoice id), `getVpsInvoices`/`getDomainInvoices` for other modules, `getServersWelcomeEmail` to resend setup info."
   [id int?]
   (check-required-params id)
   (call-api "/servers/{id}/invoices" :get
@@ -591,8 +645,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-server-invoices charge-invoice-rows-spec
-  "Get Server Invoices
-  Returns the billing invoices associated with this dedicated server."
+  "List billing invoices (charges + payments) tied to one dedicated server
+  Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: `id` (integer server_id from `getServerList`). No body. Inherits from `MyAdmin\\Api\\Billing\\InvoicesList` with module=servers.
+Returns: `ChargeInvoiceRows` array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if `id` not owned by the caller; 401 unauth.
+Sibling ops: `getServerInfo` (current service state), `serversCancel` (cancel), `getBillingInvoice` (single invoice by invoice id), `getVpsInvoices`/`getDomainInvoices` for other modules, `getServersWelcomeEmail` to resend setup info."
   [id int?]
   (let [res (:data (get-server-invoices-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -601,8 +657,10 @@
 
 
 (defn-spec get-server-list-with-http-info any?
-  "List Servers
-  Returns all dedicated server services on the account with their current status and configuration."
+  "List all dedicated servers owned by the authenticated customer
+  Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters `servers` by session `account_id`.
+Returns: array of `{ server_id, account_lid, server_hostname, server_status }`. Use `server_id` with `getServerInfo` for full hardware/network/IPMI details, `getServerInvoices` for billing, or `serverIpmiPowerGet` for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers.
+Sibling ops: `getServerInfo` (details), `getVpsList` (virtual instead of physical hardware), `getMPServers` (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer `serverBulkIpmiPowerGet`."
   []
   (call-api "/servers" :get
             {:path-params   {}
@@ -614,8 +672,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-server-list (s/coll-of server-row-spec)
-  "List Servers
-  Returns all dedicated server services on the account with their current status and configuration."
+  "List all dedicated servers owned by the authenticated customer
+  Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters `servers` by session `account_id`.
+Returns: array of `{ server_id, account_lid, server_hostname, server_status }`. Use `server_id` with `getServerInfo` for full hardware/network/IPMI details, `getServerInvoices` for billing, or `serverIpmiPowerGet` for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers.
+Sibling ops: `getServerInfo` (details), `getVpsList` (virtual instead of physical hardware), `getMPServers` (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer `serverBulkIpmiPowerGet`."
   []
   (let [res (:data (get-server-list-with-http-info))]
     (if (:decode-models *api-context*)
@@ -624,8 +684,10 @@
 
 
 (defn-spec get-server-reverse-dns-with-http-info any?
-  "Reverse DNS Info
-  Returns the current reverse DNS (PTR record) entries for the server's IP addresses."
+  "List current reverse-DNS (PTR) records for a dedicated server's IPs
+  Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server's VLANs — typically before calling `postServerReverseDns` to update them. Path param: `id` (integer server_id). No body. Walks `networkInfo.vlans`, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via `get_hostname()`.
+Returns: `{ ips: { '<ipv4>': '<ptr_or_empty_string>', ... } }`. Empty string indicates no PTR set. Errors: 404 if `id` not owned by caller; 401 unauth.
+Sibling ops: `postServerReverseDns` (update PTRs), `getServerInfo` (full network), `getVpsReverseDns` for VPS, `getDomainNameservers` / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant."
   [id int?]
   (check-required-params id)
   (call-api "/servers/{id}/reverse_dns" :get
@@ -638,8 +700,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-server-reverse-dns reverse-dns-entries-spec
-  "Reverse DNS Info
-  Returns the current reverse DNS (PTR record) entries for the server's IP addresses."
+  "List current reverse-DNS (PTR) records for a dedicated server's IPs
+  Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server's VLANs — typically before calling `postServerReverseDns` to update them. Path param: `id` (integer server_id). No body. Walks `networkInfo.vlans`, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via `get_hostname()`.
+Returns: `{ ips: { '<ipv4>': '<ptr_or_empty_string>', ... } }`. Empty string indicates no PTR set. Errors: 404 if `id` not owned by caller; 401 unauth.
+Sibling ops: `postServerReverseDns` (update PTRs), `getServerInfo` (full network), `getVpsReverseDns` for VPS, `getDomainNameservers` / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant."
   [id int?]
   (let [res (:data (get-server-reverse-dns-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -648,8 +712,10 @@
 
 
 (defn-spec get-servers-welcome-email-with-http-info any?
-  "Resend Server Welcome Email
-  Resends the welcome email for the order."
+  "Resend the dedicated server welcome email with setup credentials
+  Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: `id` (integer server_id, must be `active`). No body. Invokes `server_welcome_email($id)` which re-sends the welcome message to the account's email.
+Returns: `{ text:'Welcome Email has been resent.' }`. Errors: 404 if `id` not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering.
+Sibling ops: `getServerInfo` (status check), `getServerInvoices`, `getVpsWelcomeEmail` for VPS, `getDomainsWelcomeEmail` for domains."
   [id int?]
   (check-required-params id)
   (call-api "/servers/{id}/welcome_email" :get
@@ -662,8 +728,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec get-servers-welcome-email success-text-response-spec
-  "Resend Server Welcome Email
-  Resends the welcome email for the order."
+  "Resend the dedicated server welcome email with setup credentials
+  Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: `id` (integer server_id, must be `active`). No body. Invokes `server_welcome_email($id)` which re-sends the welcome message to the account's email.
+Returns: `{ text:'Welcome Email has been resent.' }`. Errors: 404 if `id` not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering.
+Sibling ops: `getServerInfo` (status check), `getServerInvoices`, `getVpsWelcomeEmail` for VPS, `getDomainsWelcomeEmail` for domains."
   [id int?]
   (let [res (:data (get-servers-welcome-email-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -672,8 +740,35 @@
 
 
 (defn-spec place-buy-now-server-with-http-info any?
-  "Place Buy Now Server Order
-  Places an order for a buy-it-now dedicated server. Use `GET /servers/order/buy_now_server` to retrieve available server configurations and their IDs before ordering."
+  "Place a Rapid Deploy / coupon dedicated server order; creates real invoice
+  Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the `servers` row, creates a `Repeat_Invoice` plus the first `invoices` row, marks the asset `MarketPlace-Incart` (or decrements `server_coupons.in_stock`), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: `buyItNowServerOrder` (catalog), `getServerInfo` (poll provisioning), `getServerInvoices` (billing), `addServer` (custom build alternative).
+
+**Query (one required, same as `buyItNowServerOrder`):**
+- `a` (integer) — asset_id.
+- `c` (string) — `server_coupons.name`.
+
+**Body fields:**
+- `hostname` (string, required) — valid FQDN; validated by `valid_hostname`.
+- `enablepassword` (boolean, optional, default `false`) — when true the client must supply `rootPassword`; otherwise a secure password is generated server-side via `generate_password()`.
+- `rootPassword` (string, required when `enablepassword=true`) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (`valid_password`).
+- `os`, `bandwidth`, `ips`, `cp`, `raid` (integer, optional) — option ids from `buyItNowServerOrder`; defaults `30` / `10` / `9` / `1` / `0` applied when missing.
+- `comments` (string, optional) — appended to the order comment.
+
+**Returns:** `201 { success: true, text: 'Server order is placed.', service_id, invoice_id }`.
+
+**Auth:** Session/API key.
+
+**Errors:**
+- `400` — `'Server Hostname is missing.'` / `'Invalid Hostname!'` / `'Server Password is missing.'` / password complexity message.
+- `409` — `'Server already sold!'` / `'Server Out of stock.'`
+- `401` — unauthenticated.
+
+**Side effects:** inserts `servers` row, creates `repeat_invoices` + `invoices` rows, updates `assets.status` or `server_coupons.in_stock`, queues admin + customer welcome emails.
+
+**Related calls:**
+- **Prerequisite:** `buyItNowServerOrder`.
+- **Next:** `getBillingInvoice` + `initiatePayment` to pay, then poll `getServerInfo` for provisioning state.
+- **Custom build alternative:** `addServer`."
   ([] (place-buy-now-server-with-http-info nil))
   ([{:keys [place-buy-now-server-request]} (s/map-of keyword? any?)]
    (call-api "/servers/order/buy_now_server" :post
@@ -687,8 +782,35 @@
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
 (defn-spec place-buy-now-server servers-buy-now-response-spec
-  "Place Buy Now Server Order
-  Places an order for a buy-it-now dedicated server. Use `GET /servers/order/buy_now_server` to retrieve available server configurations and their IDs before ordering."
+  "Place a Rapid Deploy / coupon dedicated server order; creates real invoice
+  Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the `servers` row, creates a `Repeat_Invoice` plus the first `invoices` row, marks the asset `MarketPlace-Incart` (or decrements `server_coupons.in_stock`), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: `buyItNowServerOrder` (catalog), `getServerInfo` (poll provisioning), `getServerInvoices` (billing), `addServer` (custom build alternative).
+
+**Query (one required, same as `buyItNowServerOrder`):**
+- `a` (integer) — asset_id.
+- `c` (string) — `server_coupons.name`.
+
+**Body fields:**
+- `hostname` (string, required) — valid FQDN; validated by `valid_hostname`.
+- `enablepassword` (boolean, optional, default `false`) — when true the client must supply `rootPassword`; otherwise a secure password is generated server-side via `generate_password()`.
+- `rootPassword` (string, required when `enablepassword=true`) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (`valid_password`).
+- `os`, `bandwidth`, `ips`, `cp`, `raid` (integer, optional) — option ids from `buyItNowServerOrder`; defaults `30` / `10` / `9` / `1` / `0` applied when missing.
+- `comments` (string, optional) — appended to the order comment.
+
+**Returns:** `201 { success: true, text: 'Server order is placed.', service_id, invoice_id }`.
+
+**Auth:** Session/API key.
+
+**Errors:**
+- `400` — `'Server Hostname is missing.'` / `'Invalid Hostname!'` / `'Server Password is missing.'` / password complexity message.
+- `409` — `'Server already sold!'` / `'Server Out of stock.'`
+- `401` — unauthenticated.
+
+**Side effects:** inserts `servers` row, creates `repeat_invoices` + `invoices` rows, updates `assets.status` or `server_coupons.in_stock`, queues admin + customer welcome emails.
+
+**Related calls:**
+- **Prerequisite:** `buyItNowServerOrder`.
+- **Next:** `getBillingInvoice` + `initiatePayment` to pay, then poll `getServerInfo` for provisioning state.
+- **Custom build alternative:** `addServer`."
   ([] (place-buy-now-server nil))
   ([optional-params any?]
    (let [res (:data (place-buy-now-server-with-http-info optional-params))]
@@ -698,8 +820,10 @@
 
 
 (defn-spec post-server-reverse-dns-with-http-info any?
-  "Update Reverse DNS
-  Updates the reverse DNS (PTR record) entries for the server's IP addresses."
+  "Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
+  Use to set or remove PTR records for the server's public IPs. Path param: `id` (server_id). Body: `ips` (object mapping `'<ipv4>'` to desired hostname; empty string removes the PTR). Only IPs that already exist on the server's VLANs and whose hostname differs from current are updated; each diff calls `reverse_dns($ip, $host, 'set_reverse'|'remove_reverse')`.
+Returns: `{ message, success:bool }`. `success:false` with 'No valid IPs were passed or there were no changes' when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream.
+Sibling ops: `getServerReverseDns` (read first), `getServerInfo`, VPS counterpart `postVpsReverseDns`."
   [id int?, reverse-dns-entries reverse-dns-entries]
   (check-required-params id reverse-dns-entries)
   (call-api "/servers/{id}/reverse_dns" :post
@@ -713,8 +837,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec post-server-reverse-dns text-response-spec
-  "Update Reverse DNS
-  Updates the reverse DNS (PTR record) entries for the server's IP addresses."
+  "Update reverse-DNS (PTR) hostnames on a dedicated server's IPs
+  Use to set or remove PTR records for the server's public IPs. Path param: `id` (server_id). Body: `ips` (object mapping `'<ipv4>'` to desired hostname; empty string removes the PTR). Only IPs that already exist on the server's VLANs and whose hostname differs from current are updated; each diff calls `reverse_dns($ip, $host, 'set_reverse'|'remove_reverse')`.
+Returns: `{ message, success:bool }`. `success:false` with 'No valid IPs were passed or there were no changes' when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream.
+Sibling ops: `getServerReverseDns` (read first), `getServerInfo`, VPS counterpart `postVpsReverseDns`."
   [id int?, reverse-dns-entries reverse-dns-entries]
   (let [res (:data (post-server-reverse-dns-with-http-info id reverse-dns-entries))]
     (if (:decode-models *api-context*)
@@ -722,32 +848,56 @@
        res)))
 
 
-(defn-spec put-servers-with-http-info any?
-  "Validate Server Order
-  Validates a server order before placing it. Use this to check for errors before committing to a purchase."
-  []
-  (call-api "/servers/order" :put
+(defn-spec server-bulk-ipmi-power-get-with-http-info any?
+  "Read IPMI chassis power status for many dedicated servers in one call
+  Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state.
+Query: `ids` (required) — comma-separated string `?ids=2313,2314,2315` OR repeated `ids[]` array. Duplicates de-duped; non-positive ints become per-row errors. Returns: `{ results: [ { id, asset?, text|error } ] }`. Errors: 400 'No server IDs provided.' if `ids` empty/missing; 401 unauth.
+Sibling ops: `serverIpmiPowerGet` (single-server equivalent), `serverIpmiPowerPost` (DESTRUCTIVE — change power; no bulk equivalent — call per server), `getServerList` (discover ids)."
+  [ids string?]
+  (check-required-params ids)
+  (call-api "/servers/bulk/ipmi_power" :get
             {:path-params   {}
              :header-params {}
-             :query-params  {}
+             :query-params  {"ids" ids }
              :form-params   {}
              :content-types []
              :accepts       ["application/json"]
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
-(defn-spec put-servers any?
-  "Validate Server Order
-  Validates a server order before placing it. Use this to check for errors before committing to a purchase."
-  []
-  (let [res (:data (put-servers-with-http-info))]
+(defn-spec server-bulk-ipmi-power-get server-bulk-ipmi-power-response-spec
+  "Read IPMI chassis power status for many dedicated servers in one call
+  Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state.
+Query: `ids` (required) — comma-separated string `?ids=2313,2314,2315` OR repeated `ids[]` array. Duplicates de-duped; non-positive ints become per-row errors. Returns: `{ results: [ { id, asset?, text|error } ] }`. Errors: 400 'No server IDs provided.' if `ids` empty/missing; 401 unauth.
+Sibling ops: `serverIpmiPowerGet` (single-server equivalent), `serverIpmiPowerPost` (DESTRUCTIVE — change power; no bulk equivalent — call per server), `getServerList` (discover ids)."
+  [ids string?]
+  (let [res (:data (server-bulk-ipmi-power-get-with-http-info ids))]
     (if (:decode-models *api-context*)
-       (st/decode any? res st/string-transformer)
+       (st/decode server-bulk-ipmi-power-response-spec res st/string-transformer)
        res)))
 
 
 (defn-spec server-ipmi-live-get-with-http-info any?
-  "Server IPMI Live Information
-  Returns the current IPMI live connection information for the server."
+  "Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
+  Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset's IPMI IP, the location's IPMI group, and any active `ipmi_ips` lease (3-hour TTL). Sibling ops: `serverIpmiLivePost` (allocate whitelist slot), `serverIpmiPowerGet` / `serverIpmiPowerPost` (chassis power).
+
+**Path:** `id` (integer, required) — server_id from `getServerList`.
+
+**Body / query:** None. Optionally pass `asset` (asset_id) to target a specific asset; default is first asset.
+
+**Returns:** when an active lease exists `{ text (html), public_ip, allowed_ip, client_username, client_password }`. When no lease yet: `{ text: 'Setup not yet completed' }` — then call `serverIpmiLivePost` to allocate a slot.
+
+**Auth:** Session/API key. Ownership enforced via `server_custid`.
+
+**Errors:**
+- `404` — `id` not owned, or `asset` not on this server.
+- `409` — service not `active`.
+- `200` with error text `'No IPMI IP Set'` / `'Invalid IPMI IP'` / `'Live IPMI not Available for this location.'` when the asset/location is not configured for IPMI Live.
+
+**Caveat:** returns `client_password` — never log/echo verbatim.
+
+**Related calls:**
+- **Allocate:** `serverIpmiLivePost`.
+- **Chassis power:** `serverIpmiPowerGet`, `serverIpmiPowerPost`."
   [id int?]
   (check-required-params id)
   (call-api "/servers/{id}/ipmi_live" :get
@@ -760,8 +910,27 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec server-ipmi-live-get server-ipmi-live-info-spec
-  "Server IPMI Live Information
-  Returns the current IPMI live connection information for the server."
+  "Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
+  Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset's IPMI IP, the location's IPMI group, and any active `ipmi_ips` lease (3-hour TTL). Sibling ops: `serverIpmiLivePost` (allocate whitelist slot), `serverIpmiPowerGet` / `serverIpmiPowerPost` (chassis power).
+
+**Path:** `id` (integer, required) — server_id from `getServerList`.
+
+**Body / query:** None. Optionally pass `asset` (asset_id) to target a specific asset; default is first asset.
+
+**Returns:** when an active lease exists `{ text (html), public_ip, allowed_ip, client_username, client_password }`. When no lease yet: `{ text: 'Setup not yet completed' }` — then call `serverIpmiLivePost` to allocate a slot.
+
+**Auth:** Session/API key. Ownership enforced via `server_custid`.
+
+**Errors:**
+- `404` — `id` not owned, or `asset` not on this server.
+- `409` — service not `active`.
+- `200` with error text `'No IPMI IP Set'` / `'Invalid IPMI IP'` / `'Live IPMI not Available for this location.'` when the asset/location is not configured for IPMI Live.
+
+**Caveat:** returns `client_password` — never log/echo verbatim.
+
+**Related calls:**
+- **Allocate:** `serverIpmiLivePost`.
+- **Chassis power:** `serverIpmiPowerGet`, `serverIpmiPowerPost`."
   [id int?]
   (let [res (:data (server-ipmi-live-get-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -770,8 +939,29 @@
 
 
 (defn-spec server-ipmi-live-post-with-http-info any?
-  "Server IPMI Live Setup
-  Configures IPMI live access by whitelisting your current IP address for connections to the server's IPMI management interface."
+  "Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
+  Allocates / refreshes an IPMI Live whitelist slot so the customer's specified IP can reach the BMC's KVM/console for 3 hours. Picks a free `ipmi_ips` row for the location's `ipmi_group`, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via `ipmi_live_setup()`. Sibling ops: `serverIpmiLiveGet` (read current lease), `serverIpmiPowerPost` (DESTRUCTIVE — chassis power).
+
+**Path:** `id` (integer, required) — server_id.
+
+**Body fields:**
+- `ip` (string, required) — public IPv4 to whitelist.
+- `asset` (integer, optional) — asset_id; defaults to first asset on the server.
+
+**Returns:** `{ text (html), public_ip, allowed_ip, client_username, client_password }` for KVM login.
+
+**Auth:** Session/API key. Ownership enforced via `server_custid`.
+
+**Errors:**
+- `404` — `id` not owned, or `asset` not on this server.
+- `409` — service not `active`.
+- `200` with error text — `'An Invalid IP was passed.'`, `'No Live IPs are currently free for use with the IPMI Gateway. Please wait <duration> for the next IP to free up.'`, `'There was an error communicating with the IPMI Management server'`, `'No IPMI IP Set'` / `'Invalid IPMI IP'` / `'Live IPMI not Available for this location.'`.
+
+**Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.
+
+**Related calls:**
+- **Read current lease:** `serverIpmiLiveGet`.
+- **Power control:** `serverIpmiPowerPost`."
   ([id int?, ip string?, ] (server-ipmi-live-post-with-http-info id ip nil))
   ([id int?, ip string?, {:keys [asset]} (s/map-of keyword? any?)]
    (check-required-params id ip)
@@ -785,8 +975,29 @@
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
 (defn-spec server-ipmi-live-post server-ipmi-live-info-spec
-  "Server IPMI Live Setup
-  Configures IPMI live access by whitelisting your current IP address for connections to the server's IPMI management interface."
+  "Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
+  Allocates / refreshes an IPMI Live whitelist slot so the customer's specified IP can reach the BMC's KVM/console for 3 hours. Picks a free `ipmi_ips` row for the location's `ipmi_group`, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via `ipmi_live_setup()`. Sibling ops: `serverIpmiLiveGet` (read current lease), `serverIpmiPowerPost` (DESTRUCTIVE — chassis power).
+
+**Path:** `id` (integer, required) — server_id.
+
+**Body fields:**
+- `ip` (string, required) — public IPv4 to whitelist.
+- `asset` (integer, optional) — asset_id; defaults to first asset on the server.
+
+**Returns:** `{ text (html), public_ip, allowed_ip, client_username, client_password }` for KVM login.
+
+**Auth:** Session/API key. Ownership enforced via `server_custid`.
+
+**Errors:**
+- `404` — `id` not owned, or `asset` not on this server.
+- `409` — service not `active`.
+- `200` with error text — `'An Invalid IP was passed.'`, `'No Live IPs are currently free for use with the IPMI Gateway. Please wait <duration> for the next IP to free up.'`, `'There was an error communicating with the IPMI Management server'`, `'No IPMI IP Set'` / `'Invalid IPMI IP'` / `'Live IPMI not Available for this location.'`.
+
+**Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.
+
+**Related calls:**
+- **Read current lease:** `serverIpmiLiveGet`.
+- **Power control:** `serverIpmiPowerPost`."
   ([id int?, ip string?, ] (server-ipmi-live-post id ip nil))
   ([id int?, ip string?, optional-params any?]
    (let [res (:data (server-ipmi-live-post-with-http-info id ip optional-params))]
@@ -796,8 +1007,10 @@
 
 
 (defn-spec server-ipmi-power-get-with-http-info any?
-  "Get IPMI Power Status
-  Returns the chassis power status from ipmi."
+  "Read IPMI chassis power status for a dedicated server (single)
+  Use to check whether a server's chassis is currently `on`/`off` via IPMI before issuing a power action. Path param: `id` (integer server_id). Optional body `asset` (asset_id — defaults to first asset). Issues `ipmitool power status` against the asset's `ipmi_ip` using its location IPMI group/credentials.
+Returns: `{ text:'Chassis Power is on' }` (or 'off'). Errors: 404 if `id` not owned by caller; 409 if service not active; 'There was an error sending the IPMI command' if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors.
+Sibling ops: `serverBulkIpmiPowerGet` (preferred when polling many servers — single round-trip), `serverIpmiPowerPost` (DESTRUCTIVE — change power), `getServerInfo` (full state), `serverIpmiLiveGet` (IPMI Live KVM)."
   [id int?]
   (check-required-params id)
   (call-api "/servers/{id}/ipmi_power" :get
@@ -810,8 +1023,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec server-ipmi-power-get text-response-spec
-  "Get IPMI Power Status
-  Returns the chassis power status from ipmi."
+  "Read IPMI chassis power status for a dedicated server (single)
+  Use to check whether a server's chassis is currently `on`/`off` via IPMI before issuing a power action. Path param: `id` (integer server_id). Optional body `asset` (asset_id — defaults to first asset). Issues `ipmitool power status` against the asset's `ipmi_ip` using its location IPMI group/credentials.
+Returns: `{ text:'Chassis Power is on' }` (or 'off'). Errors: 404 if `id` not owned by caller; 409 if service not active; 'There was an error sending the IPMI command' if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors.
+Sibling ops: `serverBulkIpmiPowerGet` (preferred when polling many servers — single round-trip), `serverIpmiPowerPost` (DESTRUCTIVE — change power), `getServerInfo` (full state), `serverIpmiLiveGet` (IPMI Live KVM)."
   [id int?]
   (let [res (:data (server-ipmi-power-get-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -820,8 +1035,28 @@
 
 
 (defn-spec server-ipmi-power-post-with-http-info any?
-  "Server IPMI Power
-  Uses the IPMI interface to set the Power status on the server."
+  "DESTRUCTIVE — change chassis power state on a bare-metal server
+  Sends an IPMI chassis power command (`on`, `off`, `cycle`, `reset`, `soft`) to a customer's physical dedicated server. **DESTRUCTIVE on running hardware:** `off` / `cycle` / `reset` are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. `soft` requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: `serverIpmiPowerGet` (read first), `serverBulkIpmiPowerGet` (status only), `serverIpmiLivePost` (KVM access).
+
+**Path:** `id` (integer, required) — server_id.
+
+**Body fields:**
+- `action` (string, required) — one of `on` / `off` / `cycle` / `reset` / `soft`.
+- `asset` (integer, optional) — asset_id; defaults to first asset on the server.
+
+**Returns:** `{ text: 'Power command sent. Response: <ipmi output>' }`.
+
+**Auth:** Session/API key. Ownership enforced via `server_custid`.
+
+**Errors:**
+- `422` / inline error text — `Invalid Action` when `action` is not in the allowed set.
+- `404` — `id` not owned, or `asset` not on this server.
+- `409` — service not `active`.
+- `200` with error text — `'There was an error sending the IPMI command.'` when BMC is unreachable or rate-limiting.
+
+**Related calls:**
+- **Status (single / bulk):** `serverIpmiPowerGet`, `serverBulkIpmiPowerGet`.
+- **KVM console:** `serverIpmiLivePost`."
   ([id int?, action string?, ] (server-ipmi-power-post-with-http-info id action nil))
   ([id int?, action string?, {:keys [asset]} (s/map-of keyword? any?)]
    (check-required-params id action)
@@ -835,8 +1070,28 @@
               :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]})))
 
 (defn-spec server-ipmi-power-post text-response-spec
-  "Server IPMI Power
-  Uses the IPMI interface to set the Power status on the server."
+  "DESTRUCTIVE — change chassis power state on a bare-metal server
+  Sends an IPMI chassis power command (`on`, `off`, `cycle`, `reset`, `soft`) to a customer's physical dedicated server. **DESTRUCTIVE on running hardware:** `off` / `cycle` / `reset` are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. `soft` requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: `serverIpmiPowerGet` (read first), `serverBulkIpmiPowerGet` (status only), `serverIpmiLivePost` (KVM access).
+
+**Path:** `id` (integer, required) — server_id.
+
+**Body fields:**
+- `action` (string, required) — one of `on` / `off` / `cycle` / `reset` / `soft`.
+- `asset` (integer, optional) — asset_id; defaults to first asset on the server.
+
+**Returns:** `{ text: 'Power command sent. Response: <ipmi output>' }`.
+
+**Auth:** Session/API key. Ownership enforced via `server_custid`.
+
+**Errors:**
+- `422` / inline error text — `Invalid Action` when `action` is not in the allowed set.
+- `404` — `id` not owned, or `asset` not on this server.
+- `409` — service not `active`.
+- `200` with error text — `'There was an error sending the IPMI command.'` when BMC is unreachable or rate-limiting.
+
+**Related calls:**
+- **Status (single / bulk):** `serverIpmiPowerGet`, `serverBulkIpmiPowerGet`.
+- **KVM console:** `serverIpmiLivePost`."
   ([id int?, action string?, ] (server-ipmi-power-post id action nil))
   ([id int?, action string?, optional-params any?]
    (let [res (:data (server-ipmi-power-post-with-http-info id action optional-params))]
@@ -846,8 +1101,10 @@
 
 
 (defn-spec servers-cancel-with-http-info any?
-  "Cancel Server Service
-  Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle."
+  "Cancel a dedicated server service at the end of the current billing cycle
+  Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: `id` (integer server_id, from `getServerList`). No body.
+Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: `{ success:bool, text:'Servers is canceled.' }`. Errors: 404 if `id` not owned by caller; 409 if already cancelled or non-active; 401 unauth.
+Sibling ops: `getServerInfo` (current status), `getServerInvoices` (outstanding charges), VPS counterpart `VPSCancel`. To re-order after cancel use `addServer` or `placeBuyNowServer`."
   [id int?]
   (check-required-params id)
   (call-api "/servers/{id}" :delete
@@ -860,8 +1117,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec servers-cancel servers-cancel-200-response-spec
-  "Cancel Server Service
-  Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle."
+  "Cancel a dedicated server service at the end of the current billing cycle
+  Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: `id` (integer server_id, from `getServerList`). No body.
+Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: `{ success:bool, text:'Servers is canceled.' }`. Errors: 404 if `id` not owned by caller; 409 if already cancelled or non-active; 401 unauth.
+Sibling ops: `getServerInfo` (current status), `getServerInvoices` (outstanding charges), VPS counterpart `VPSCancel`. To re-order after cancel use `addServer` or `placeBuyNowServer`."
   [id int?]
   (let [res (:data (servers-cancel-with-http-info id))]
     (if (:decode-models *api-context*)
@@ -870,8 +1129,10 @@
 
 
 (defn-spec update-server-info-with-http-info any?
-  "Update Server Order
-  Updates settings on a dedicated server order."
+  "Update settings on a dedicated server order (shares handler with view)
+  Use to modify metadata on an existing dedicated server order. Path param: `id` (integer server_id). Currently this method shares the same handler as `getServerInfo` (`View::go()`) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below.
+Returns: same payload shape as `getServerInfo`. Errors: 404 if `id` not owned by caller; 401 unauth.
+Sibling ops: prefer `postServerReverseDns` (rDNS), `serverIpmiPowerPost` (power), `serverIpmiLivePost` (IPMI access), `serversCancel` (cancel). For new orders use `addServer` or `placeBuyNowServer`. View-only: `getServerInfo`."
   [id string?]
   (check-required-params id)
   (call-api "/servers/{id}" :post
@@ -884,8 +1145,10 @@
              :auth-names    ["sessionIdCookieAuth" "apiKeyAuth" "sessionIdHeaderAuth"]}))
 
 (defn-spec update-server-info success-text-response-spec
-  "Update Server Order
-  Updates settings on a dedicated server order."
+  "Update settings on a dedicated server order (shares handler with view)
+  Use to modify metadata on an existing dedicated server order. Path param: `id` (integer server_id). Currently this method shares the same handler as `getServerInfo` (`View::go()`) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below.
+Returns: same payload shape as `getServerInfo`. Errors: 404 if `id` not owned by caller; 401 unauth.
+Sibling ops: prefer `postServerReverseDns` (rDNS), `serverIpmiPowerPost` (power), `serverIpmiLivePost` (IPMI access), `serversCancel` (cancel). For new orders use `addServer` or `placeBuyNowServer`. View-only: `getServerInfo`."
   [id string?]
   (let [res (:data (update-server-info-with-http-info id))]
     (if (:decode-models *api-context*)

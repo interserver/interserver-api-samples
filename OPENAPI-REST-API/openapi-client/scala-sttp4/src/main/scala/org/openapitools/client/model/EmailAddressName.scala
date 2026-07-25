@@ -22,4 +22,3 @@ case class EmailAddressName(
   /* Name to use for the sending contact. */
   name: Option[String] = None
 )
-

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetScrubIpDetails200ResponseExtraInfoTables();
+    instance = new InterserverApiClient.GetScrubIpDetails200ResponseExtraInfoTables();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('GetScrubIpDetails200ResponseExtraInfoTables', function() {
     it('should create an instance of GetScrubIpDetails200ResponseExtraInfoTables', function() {
       // uncomment below and update the code to test GetScrubIpDetails200ResponseExtraInfoTables
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseExtraInfoTables();
-      //expect(instance).to.be.a(InterServerManagementApi.GetScrubIpDetails200ResponseExtraInfoTables);
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseExtraInfoTables();
+      //expect(instance).to.be.a(InterserverApiClient.GetScrubIpDetails200ResponseExtraInfoTables);
     });
 
     it('should have the property scrub_ips (base name: "scrub_ips")', function() {
       // uncomment below and update the code to test the property scrub_ips
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseExtraInfoTables();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseExtraInfoTables();
       //expect(instance).to.be();
     });
 

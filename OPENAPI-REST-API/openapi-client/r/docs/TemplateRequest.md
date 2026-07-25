@@ -1,4 +1,4 @@
-# openapi::TemplateRequest
+# interserverapi::TemplateRequest
 
 VPS OS Template Request
 

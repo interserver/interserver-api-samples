@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateRule201Response = Initialize-PSOpenAPIToolsCreateRule201Response  -Success true `
+$CreateRule201Response = Initialize-InterserverApiCreateRule201Response  -Success true `
  -Text New firewall Rule has been created.
 ```
 

@@ -24,6 +24,7 @@ import HelperCodecs._
 import org.openapitools.client.api.BuyItNowList
 import org.openapitools.client.api.CaptchaResponse
 import org.openapitools.client.api.GetAccountInfo401Response
+import org.openapitools.client.api.GetAccountLocales200ResponseValue
 import org.openapitools.client.api.GetOauthRedirect200Response
 import org.openapitools.client.api.LoginErrorResponse
 import org.openapitools.client.api.LoginInfo
@@ -41,6 +42,48 @@ object PublicApi {
   val client = PooledHttp1Client()
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
+
+  def getAccountCurrencies(host: String): Task[List[String]] = {
+    implicit val returnTypeDecoder: EntityDecoder[List[String]] = jsonOf[List[String]]
+
+    val path = "/account/currencies"
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[List[String]](req)
+
+    } yield resp
+  }
+
+  def getAccountLocales(host: String): Task[Map[String, GetAccountLocales200ResponseValue]] = {
+    implicit val returnTypeDecoder: EntityDecoder[Map[String, GetAccountLocales200ResponseValue]] = jsonOf[Map[String, GetAccountLocales200ResponseValue]]
+
+    val path = "/account/locales"
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[Map[String, GetAccountLocales200ResponseValue]](req)
+
+    } yield resp
+  }
 
   def getCaptcha(host: String): Task[CaptchaResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[CaptchaResponse] = jsonOf[CaptchaResponse]
@@ -298,6 +341,48 @@ class HttpServicePublicApi(service: HttpService) {
   val client = Client.fromHttpService(service)
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
+
+  def getAccountCurrencies(): Task[List[String]] = {
+    implicit val returnTypeDecoder: EntityDecoder[List[String]] = jsonOf[List[String]]
+
+    val path = "/account/currencies"
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[List[String]](req)
+
+    } yield resp
+  }
+
+  def getAccountLocales(): Task[Map[String, GetAccountLocales200ResponseValue]] = {
+    implicit val returnTypeDecoder: EntityDecoder[Map[String, GetAccountLocales200ResponseValue]] = jsonOf[Map[String, GetAccountLocales200ResponseValue]]
+
+    val path = "/account/locales"
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[Map[String, GetAccountLocales200ResponseValue]](req)
+
+    } yield resp
+  }
 
   def getCaptcha(): Task[CaptchaResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[CaptchaResponse] = jsonOf[CaptchaResponse]

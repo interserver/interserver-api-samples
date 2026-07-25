@@ -40,8 +40,6 @@ OpenAPIClient/Sources/Models/AffiliateBannerRow.swift
 OpenAPIClient/Sources/Models/AffiliateDockSetup.swift
 OpenAPIClient/Sources/Models/AffiliatePaymentSetup.swift
 OpenAPIClient/Sources/Models/AffiliateTrafficRow.swift
-OpenAPIClient/Sources/Models/AssetServer.swift
-OpenAPIClient/Sources/Models/AssetServerCPUInner.swift
 OpenAPIClient/Sources/Models/Backup.swift
 OpenAPIClient/Sources/Models/BackupBillingDetails.swift
 OpenAPIClient/Sources/Models/BackupClientLink.swift
@@ -59,7 +57,6 @@ OpenAPIClient/Sources/Models/BackupServiceMaster.swift
 OpenAPIClient/Sources/Models/BackupsOrder.swift
 OpenAPIClient/Sources/Models/BackupsOrderPackageCosts.swift
 OpenAPIClient/Sources/Models/BackupsOrderServiceTypes.swift
-OpenAPIClient/Sources/Models/Bandwidth.swift
 OpenAPIClient/Sources/Models/BillingAddCcRequest.swift
 OpenAPIClient/Sources/Models/BillingInvoiceDetail.swift
 OpenAPIClient/Sources/Models/BillingInvoiceList.swift
@@ -85,11 +82,6 @@ OpenAPIClient/Sources/Models/ChargeInvoiceRowsInvoicesValue.swift
 OpenAPIClient/Sources/Models/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.swift
 OpenAPIClient/Sources/Models/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.swift
 OpenAPIClient/Sources/Models/CloseTicketResponseSchema.swift
-OpenAPIClient/Sources/Models/ConfigIds.swift
-OpenAPIClient/Sources/Models/ConfigLists.swift
-OpenAPIClient/Sources/Models/ControlPanel.swift
-OpenAPIClient/Sources/Models/Cpu.swift
-OpenAPIClient/Sources/Models/CpuWithDefaults.swift
 OpenAPIClient/Sources/Models/CreateFilter.swift
 OpenAPIClient/Sources/Models/CreateFilter201Response.swift
 OpenAPIClient/Sources/Models/CreateFilter400Response.swift
@@ -105,6 +97,7 @@ OpenAPIClient/Sources/Models/DeleteFilter400Response.swift
 OpenAPIClient/Sources/Models/DeleteFilter500Response.swift
 OpenAPIClient/Sources/Models/DeleteFirewallRule.swift
 OpenAPIClient/Sources/Models/DeleteGeoFirewallRule.swift
+OpenAPIClient/Sources/Models/DeleteMailAlertRequest.swift
 OpenAPIClient/Sources/Models/DenyRuleNew.swift
 OpenAPIClient/Sources/Models/DenyRuleRecord.swift
 OpenAPIClient/Sources/Models/DisableScrub200Response.swift
@@ -135,11 +128,11 @@ OpenAPIClient/Sources/Models/DomainNameserverGetResponseInner.swift
 OpenAPIClient/Sources/Models/DomainNameserverPostRequest.swift
 OpenAPIClient/Sources/Models/DomainNameserverPutRequest.swift
 OpenAPIClient/Sources/Models/DomainOrder.swift
+OpenAPIClient/Sources/Models/DomainOrderRequest.swift
 OpenAPIClient/Sources/Models/DomainOrderResponse.swift
 OpenAPIClient/Sources/Models/DomainOrderResponseAttributes.swift
 OpenAPIClient/Sources/Models/DomainOrderServices.swift
 OpenAPIClient/Sources/Models/DomainOrderServices10001.swift
-OpenAPIClient/Sources/Models/DomainOrderTldServices.swift
 OpenAPIClient/Sources/Models/DomainOwnerContact.swift
 OpenAPIClient/Sources/Models/DomainProvProcessPending.swift
 OpenAPIClient/Sources/Models/DomainProvProcessPendingAttributes.swift
@@ -155,12 +148,13 @@ OpenAPIClient/Sources/Models/EmailAddress.swift
 OpenAPIClient/Sources/Models/EmailAddressName.swift
 OpenAPIClient/Sources/Models/EnableScrub200Response.swift
 OpenAPIClient/Sources/Models/EnableScrub500Response.swift
-OpenAPIClient/Sources/Models/FieldLabel.swift
+OpenAPIClient/Sources/Models/FloatingIpOrderRequest.swift
 OpenAPIClient/Sources/Models/FloatingIpsCancel200Response.swift
-OpenAPIClient/Sources/Models/FormValues.swift
 OpenAPIClient/Sources/Models/GenericResponse.swift
 OpenAPIClient/Sources/Models/GetAccountInfo401Response.swift
+OpenAPIClient/Sources/Models/GetAccountLocales200ResponseValue.swift
 OpenAPIClient/Sources/Models/GetAccountTfaSetup200Response.swift
+OpenAPIClient/Sources/Models/GetAffiliateSignups200Response.swift
 OpenAPIClient/Sources/Models/GetOauthRedirect200Response.swift
 OpenAPIClient/Sources/Models/GetOrderDetail200Response.swift
 OpenAPIClient/Sources/Models/GetOrderDetail200ResponseIpsInner.swift
@@ -177,7 +171,6 @@ OpenAPIClient/Sources/Models/GetScrubIpDetails200ResponseFilterFirewallFiltersIn
 OpenAPIClient/Sources/Models/GetScrubIpDetails200ResponseFilterFirewallRulesInner.swift
 OpenAPIClient/Sources/Models/GetScrubIpDetails200ResponseServiceInfo.swift
 OpenAPIClient/Sources/Models/GetWebsiteBuyIp200Response.swift
-OpenAPIClient/Sources/Models/HardDrive.swift
 OpenAPIClient/Sources/Models/Home.swift
 OpenAPIClient/Sources/Models/HomeDetails.swift
 OpenAPIClient/Sources/Models/HomeDetailsModules.swift
@@ -204,10 +197,6 @@ OpenAPIClient/Sources/Models/HomeTicketStatus.swift
 OpenAPIClient/Sources/Models/HomeTicketStatusView.swift
 OpenAPIClient/Sources/Models/HostnameObject.swift
 OpenAPIClient/Sources/Models/InitiatePayment200Response.swift
-OpenAPIClient/Sources/Models/InlineObject.swift
-OpenAPIClient/Sources/Models/Invoice.swift
-OpenAPIClient/Sources/Models/InvoiceRow.swift
-OpenAPIClient/Sources/Models/IpBlock.swift
 OpenAPIClient/Sources/Models/IpLimitRange.swift
 OpenAPIClient/Sources/Models/IpObject.swift
 OpenAPIClient/Sources/Models/License.swift
@@ -216,6 +205,7 @@ OpenAPIClient/Sources/Models/LicenseClientLink.swift
 OpenAPIClient/Sources/Models/LicenseExtraInfoTables.swift
 OpenAPIClient/Sources/Models/LicenseIpInfo.swift
 OpenAPIClient/Sources/Models/LicenseIpInfoRow.swift
+OpenAPIClient/Sources/Models/LicenseOrderRequest.swift
 OpenAPIClient/Sources/Models/LicenseRow.swift
 OpenAPIClient/Sources/Models/LicenseServiceInfo.swift
 OpenAPIClient/Sources/Models/LicenseServiceType.swift
@@ -252,6 +242,7 @@ OpenAPIClient/Sources/Models/MailExtraInfoTableRow.swift
 OpenAPIClient/Sources/Models/MailLog.swift
 OpenAPIClient/Sources/Models/MailLogEntry.swift
 OpenAPIClient/Sources/Models/MailOrder.swift
+OpenAPIClient/Sources/Models/MailOrderRequest.swift
 OpenAPIClient/Sources/Models/MailRow.swift
 OpenAPIClient/Sources/Models/MailSchema.swift
 OpenAPIClient/Sources/Models/MailSchemaExtraInfoTables.swift
@@ -264,15 +255,13 @@ OpenAPIClient/Sources/Models/MailStatsTypeVolumeIp.swift
 OpenAPIClient/Sources/Models/MailStatsTypeVolumeTo.swift
 OpenAPIClient/Sources/Models/MailTutorialsTable.swift
 OpenAPIClient/Sources/Models/MailTutorialsTableRow.swift
-OpenAPIClient/Sources/Models/MemoryOption.swift
 OpenAPIClient/Sources/Models/ModuleSettings.swift
 OpenAPIClient/Sources/Models/Modules.swift
 OpenAPIClient/Sources/Models/MonthlyCounts.swift
-OpenAPIClient/Sources/Models/OperatingSystem.swift
 OpenAPIClient/Sources/Models/PasswordRequest.swift
+OpenAPIClient/Sources/Models/PatchBillingCreditCardVerifyRequest.swift
 OpenAPIClient/Sources/Models/PatchOauthTwoFactor200Response.swift
 OpenAPIClient/Sources/Models/PatchOauthTwoFactorRequest.swift
-OpenAPIClient/Sources/Models/PaymentInvoiceRows.swift
 OpenAPIClient/Sources/Models/PlaceBuyNowServerRequest.swift
 OpenAPIClient/Sources/Models/PlaceScrubOrder201Response.swift
 OpenAPIClient/Sources/Models/PlaceScrubOrder201ResponseOrderDetails.swift
@@ -283,6 +272,8 @@ OpenAPIClient/Sources/Models/PostWebsiteBuyIp200Response.swift
 OpenAPIClient/Sources/Models/PostWebsiteBuyIpRequest.swift
 OpenAPIClient/Sources/Models/PostWebsiteMigration200Response.swift
 OpenAPIClient/Sources/Models/PostWebsiteMigrationRequest.swift
+OpenAPIClient/Sources/Models/PutScrubIps200Response.swift
+OpenAPIClient/Sources/Models/QsOrderRequest.swift
 OpenAPIClient/Sources/Models/QueueResponse.swift
 OpenAPIClient/Sources/Models/Quickserver.swift
 OpenAPIClient/Sources/Models/QuickserverAddons.swift
@@ -306,8 +297,6 @@ OpenAPIClient/Sources/Models/QuickserverServiceExtra.swift
 OpenAPIClient/Sources/Models/QuickserverServiceInfo.swift
 OpenAPIClient/Sources/Models/QuickserverServiceMaster.swift
 OpenAPIClient/Sources/Models/QuickserversCancel200Response.swift
-OpenAPIClient/Sources/Models/RaidOption.swift
-OpenAPIClient/Sources/Models/Region.swift
 OpenAPIClient/Sources/Models/ReplyTicketRequest.swift
 OpenAPIClient/Sources/Models/ReplyTicketResponseSchema.swift
 OpenAPIClient/Sources/Models/RestoreRequest.swift
@@ -327,6 +316,8 @@ OpenAPIClient/Sources/Models/Server.swift
 OpenAPIClient/Sources/Models/ServerAsset.swift
 OpenAPIClient/Sources/Models/ServerAssets.swift
 OpenAPIClient/Sources/Models/ServerBillingDetails.swift
+OpenAPIClient/Sources/Models/ServerBulkIpmiPowerResponse.swift
+OpenAPIClient/Sources/Models/ServerBulkIpmiPowerResponseResultsInner.swift
 OpenAPIClient/Sources/Models/ServerClientLink.swift
 OpenAPIClient/Sources/Models/ServerExtraInfoTables.swift
 OpenAPIClient/Sources/Models/ServerIpmiLiveInfo.swift
@@ -349,7 +340,6 @@ OpenAPIClient/Sources/Models/ServerOrderCpuLi.swift
 OpenAPIClient/Sources/Models/ServerOrderFieldLabel.swift
 OpenAPIClient/Sources/Models/ServerOrderFieldLabels.swift
 OpenAPIClient/Sources/Models/ServerOrderFormValues.swift
-OpenAPIClient/Sources/Models/ServerOrderGetResponse.swift
 OpenAPIClient/Sources/Models/ServerOrderIP.swift
 OpenAPIClient/Sources/Models/ServerOrderIpsLi.swift
 OpenAPIClient/Sources/Models/ServerOrderMemory.swift
@@ -357,6 +347,8 @@ OpenAPIClient/Sources/Models/ServerOrderMemoryLi.swift
 OpenAPIClient/Sources/Models/ServerOrderMemoryLi254.swift
 OpenAPIClient/Sources/Models/ServerOrderOS.swift
 OpenAPIClient/Sources/Models/ServerOrderOsLi.swift
+OpenAPIClient/Sources/Models/ServerOrderPostRequest.swift
+OpenAPIClient/Sources/Models/ServerOrderPostRequestHd.swift
 OpenAPIClient/Sources/Models/ServerOrderRAID.swift
 OpenAPIClient/Sources/Models/ServerRow.swift
 OpenAPIClient/Sources/Models/ServerServiceInfo.swift
@@ -374,6 +366,7 @@ OpenAPIClient/Sources/Models/ServiceTypes.swift
 OpenAPIClient/Sources/Models/Services.swift
 OpenAPIClient/Sources/Models/ServicesInfo.swift
 OpenAPIClient/Sources/Models/SslCancel200Response.swift
+OpenAPIClient/Sources/Models/SslOrderRequest.swift
 OpenAPIClient/Sources/Models/StatusMonthlyBreakdown.swift
 OpenAPIClient/Sources/Models/SuccessTextResponse.swift
 OpenAPIClient/Sources/Models/TemplateRequest.swift
@@ -434,7 +427,6 @@ OpenAPIClient/Sources/Models/VpsServiceMaster.swift
 OpenAPIClient/Sources/Models/VpsSnapshot.swift
 OpenAPIClient/Sources/Models/VpsTemplateRow.swift
 OpenAPIClient/Sources/Models/VpsTemplatesList.swift
-OpenAPIClient/Sources/Models/VpsTrafficDataDataResponse.swift
 OpenAPIClient/Sources/Models/VpsTrafficDataSectionResponse.swift
 OpenAPIClient/Sources/Models/VpsTrafficHistoryResponse.swift
 OpenAPIClient/Sources/Models/VpsTrafficHistorySectionDataResponse.swift
@@ -453,6 +445,8 @@ OpenAPIClient/Sources/Models/WebsiteBillingDetails.swift
 OpenAPIClient/Sources/Models/WebsiteClientLink.swift
 OpenAPIClient/Sources/Models/WebsiteExtraInfoTables.swift
 OpenAPIClient/Sources/Models/WebsiteLoginResponse.swift
+OpenAPIClient/Sources/Models/WebsiteOrderPostRequest.swift
+OpenAPIClient/Sources/Models/WebsiteOrderPutRequest.swift
 OpenAPIClient/Sources/Models/WebsiteRow.swift
 OpenAPIClient/Sources/Models/WebsiteServiceInfo.swift
 OpenAPIClient/Sources/Models/WebsiteServiceMaster.swift

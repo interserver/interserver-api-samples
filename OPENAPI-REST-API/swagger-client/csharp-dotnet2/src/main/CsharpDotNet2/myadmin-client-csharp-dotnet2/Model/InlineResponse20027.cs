@@ -13,39 +13,18 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse20027 {
     /// <summary>
-    /// Gets or Sets Bandwidth
+    /// Gets or Sets Message
     /// </summary>
-    [DataMember(Name="bandwidth", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "bandwidth")]
-    public List<InlineResponse20027Bandwidth> Bandwidth { get; set; }
+    [DataMember(Name="message", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "message")]
+    public string Message { get; set; }
 
     /// <summary>
-    /// Gets or Sets Ips
+    /// Gets or Sets Success
     /// </summary>
-    [DataMember(Name="ips", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "ips")]
-    public List<InlineResponse20027Ips> Ips { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Os
-    /// </summary>
-    [DataMember(Name="os", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "os")]
-    public List<InlineResponse20027Os> Os { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Cp
-    /// </summary>
-    [DataMember(Name="cp", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "cp")]
-    public List<InlineResponse20027Cp> Cp { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Raid
-    /// </summary>
-    [DataMember(Name="raid", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "raid")]
-    public List<InlineResponse20027Raid> Raid { get; set; }
+    [DataMember(Name="success", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "success")]
+    public bool? Success { get; set; }
 
 
     /// <summary>
@@ -55,11 +34,8 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse20027 {\n");
-      sb.Append("  Bandwidth: ").Append(Bandwidth).Append("\n");
-      sb.Append("  Ips: ").Append(Ips).Append("\n");
-      sb.Append("  Os: ").Append(Os).Append("\n");
-      sb.Append("  Cp: ").Append(Cp).Append("\n");
-      sb.Append("  Raid: ").Append(Raid).Append("\n");
+      sb.Append("  Message: ").Append(Message).Append("\n");
+      sb.Append("  Success: ").Append(Success).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

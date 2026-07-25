@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsBackupRows
+# InterServerAPI::Object::VpsBackupRows
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsBackupRows;
+use InterServerAPI::Object::VpsBackupRows;
 ```
 
 ## Properties

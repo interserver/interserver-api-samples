@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class ServerOrderCpLi(
   `9`: Option[ServerOrderControlPanel] = None
 )
-

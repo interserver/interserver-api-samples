@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BackupOrderPostResponse } from './api';
+import { BackupOrderPostResponse } from '@interserver/myadmin-client';
 
 const instance: BackupOrderPostResponse = {
     _continue,

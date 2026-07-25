@@ -1,4 +1,4 @@
-# SwaggerClient::TemplateRequest
+# InterserverApiClient::TemplateRequest
 
 ## Properties
 Name | Type | Description | Notes

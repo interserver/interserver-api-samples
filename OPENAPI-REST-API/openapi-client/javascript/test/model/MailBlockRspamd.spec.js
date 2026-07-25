@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailBlockRspamd();
+    instance = new InterserverApiClient.MailBlockRspamd();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('MailBlockRspamd', function() {
     it('should create an instance of MailBlockRspamd', function() {
       // uncomment below and update the code to test MailBlockRspamd
-      //var instance = new InterServerManagementApi.MailBlockRspamd();
-      //expect(instance).to.be.a(InterServerManagementApi.MailBlockRspamd);
+      //var instance = new InterserverApiClient.MailBlockRspamd();
+      //expect(instance).to.be.a(InterserverApiClient.MailBlockRspamd);
     });
 
     it('should have the property from (base name: "from")', function() {
       // uncomment below and update the code to test the property from
-      //var instance = new InterServerManagementApi.MailBlockRspamd();
+      //var instance = new InterserverApiClient.MailBlockRspamd();
       //expect(instance).to.be();
     });
 
     it('should have the property subject (base name: "subject")', function() {
       // uncomment below and update the code to test the property subject
-      //var instance = new InterServerManagementApi.MailBlockRspamd();
+      //var instance = new InterserverApiClient.MailBlockRspamd();
       //expect(instance).to.be();
     });
 

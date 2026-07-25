@@ -1,4 +1,4 @@
-# SwaggerClient::VpsOrderPlatformNames
+# InterserverApiClient::VpsOrderPlatformNames
 
 ## Properties
 Name | Type | Description | Notes

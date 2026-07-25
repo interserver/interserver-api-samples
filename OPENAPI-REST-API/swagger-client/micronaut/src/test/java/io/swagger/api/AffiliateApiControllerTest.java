@@ -4,6 +4,7 @@ import io.swagger.model.AffiliateBannerRow;
 import io.swagger.model.AffiliateDockSetup;
 import io.swagger.model.AffiliatePaymentSetup;
 import io.swagger.model.AffiliateTrafficRow;
+import io.swagger.model.InlineResponse2001;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.MonthlyCounts;
 import io.swagger.model.StatusMonthlyBreakdown;
@@ -35,6 +36,18 @@ class AffiliateApiControllerTest {
     }
 
     @Test
+    void getAffiliateDownloadTest() {
+        String st = null;
+        String ex = null;
+        Integer year = null;
+        try {
+            //TODO: api.getAffiliateDownload(st, ex, year).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
     void getAffiliateRichReportTest() {
         try {
             //TODO: api.getAffiliateRichReport().blockingGet();
@@ -54,9 +67,10 @@ class AffiliateApiControllerTest {
     }
 
     @Test
-    void getAffiliateSalesReportTest() {
+    void getAffiliateSignupsTest() {
+        String st = null;
         try {
-            //TODO: api.getAffiliateSalesReport().blockingGet();
+            //TODO: api.getAffiliateSignups(st).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -88,18 +102,6 @@ class AffiliateApiControllerTest {
         String referrerCoupon = null;
         try {
             //TODO: api.updateAffiliateDockSetup(affiliateDockTitle, affiliateDockDescription, referrerCoupon).blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
-    void updateAffiliateLandingPageFormTest() {
-        String affiliateDockTitle = null;
-        String affiliateDockDescription = null;
-        String referrerCoupon = null;
-        try {
-            //TODO: api.updateAffiliateLandingPage(affiliateDockTitle, affiliateDockDescription, referrerCoupon).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

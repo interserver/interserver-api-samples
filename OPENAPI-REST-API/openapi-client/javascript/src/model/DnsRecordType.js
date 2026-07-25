@@ -362,6 +362,13 @@ export default class DnsRecordType {
         "URI⏎" = "URI⏎";
 
     
+        /**
+         * value: "unknown_default_open_api"
+         * @const
+         */
+        "unknown_default_open_api" = "unknown_default_open_api";
+
+    
 
     /**
     * Returns a <code>DnsRecordType</code> enum value from a Javascript object name.

@@ -17,4 +17,3 @@ case class PlaceScrubOrder201Response(
   text: Option[String] = None,
   order_details: Option[PlaceScrubOrder201ResponseOrderDetails] = None
 )
-

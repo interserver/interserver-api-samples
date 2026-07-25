@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::WebhostingCancel200Response
+# InterServerAPI::Object::WebhostingCancel200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::WebhostingCancel200Response;
+use InterServerAPI::Object::WebhostingCancel200Response;
 ```
 
 ## Properties

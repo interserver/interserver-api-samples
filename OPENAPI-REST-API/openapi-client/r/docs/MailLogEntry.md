@@ -1,4 +1,4 @@
-# openapi::MailLogEntry
+# interserverapi::MailLogEntry
 
 A single email record in the mail log.  Combines data from the message store (envelope metadata), the queue release table (delivery status and response), and the sender delivery table (MX routing details).  When `groupby=recipient` each row represents one delivery attempt; when `groupby=message` delivery fields reflect one arbitrary recipient.
 

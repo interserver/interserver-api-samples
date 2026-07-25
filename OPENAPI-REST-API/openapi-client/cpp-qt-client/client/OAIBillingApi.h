@@ -27,10 +27,11 @@
 #include "OAIBillingPrepayRequest.h"
 #include "OAIBillingVerifyCcRequest.h"
 #include "OAIGetAccountInfo_401_response.h"
+#include "OAIGetAffiliateSignups_200_response.h"
 #include "OAIInitiatePayment_200_response.h"
-#include "OAIInvoice.h"
 #include "OAIMonthlyCounts.h"
 #include "OAIObject.h"
+#include "OAIPatchBillingCreditCardVerify_request.h"
 #include "OAIStatusMonthlyBreakdown.h"
 #include "OAISuccessTextResponse.h"
 #include "OAITextResponse.h"
@@ -74,19 +75,6 @@ public:
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
     /**
-    * @param[in]  name QString [optional]
-    * @param[in]  address QString [optional]
-    * @param[in]  city QString [optional]
-    * @param[in]  state QString [optional]
-    * @param[in]  country QString [optional]
-    * @param[in]  zip QString [optional]
-    * @param[in]  cc QString [optional]
-    * @param[in]  cc_exp QString [optional]
-    * @param[in]  cc_ccv2 QString [optional]
-    */
-    virtual void addAccountCreditCard(const ::OpenAPI::OptionalParam<QString> &name = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &address = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &city = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &state = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &country = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &zip = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &cc = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &cc_exp = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &cc_ccv2 = ::OpenAPI::OptionalParam<QString>());
-
-    /**
     * @param[in]  oai_billing_add_cc_request OAIBillingAddCcRequest [required]
     */
     virtual void addBillingCreditCard(const OAIBillingAddCcRequest &oai_billing_add_cc_request);
@@ -95,11 +83,6 @@ public:
     * @param[in]  oai_billing_prepay_request OAIBillingPrepayRequest [required]
     */
     virtual void addBillingPrepay(const OAIBillingPrepayRequest &oai_billing_prepay_request);
-
-    /**
-    * @param[in]  id QString [required]
-    */
-    virtual void deleteAccountCreditCard(const QString &id);
 
     /**
     * @param[in]  id qint32 [required]
@@ -119,6 +102,13 @@ public:
 
     virtual void getAffiliateBanners();
 
+    /**
+    * @param[in]  st QString [optional]
+    * @param[in]  ex QString [optional]
+    * @param[in]  year qint32 [optional]
+    */
+    virtual void getAffiliateDownload(const ::OpenAPI::OptionalParam<QString> &st = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &ex = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<qint32> &year = ::OpenAPI::OptionalParam<qint32>());
+
 
     virtual void getAffiliateRichReport();
 
@@ -127,8 +117,10 @@ public:
     */
     virtual void getAffiliateSalesGraph(const ::OpenAPI::OptionalParam<qint32> &days = ::OpenAPI::OptionalParam<qint32>());
 
-
-    virtual void getAffiliateSalesReport();
+    /**
+    * @param[in]  st QString [optional]
+    */
+    virtual void getAffiliateSignups(const ::OpenAPI::OptionalParam<QString> &st = ::OpenAPI::OptionalParam<QString>());
 
     /**
     * @param[in]  days qint32 [optional]
@@ -158,17 +150,16 @@ public:
     virtual void getBillingPrePays();
 
     /**
-    * @param[in]  search_string QString [optional]
-    * @param[in]  skip qint32 [optional]
-    * @param[in]  limit qint32 [optional]
-    */
-    virtual void getInvoices(const ::OpenAPI::OptionalParam<QString> &search_string = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<qint32> &skip = ::OpenAPI::OptionalParam<qint32>(), const ::OpenAPI::OptionalParam<qint32> &limit = ::OpenAPI::OptionalParam<qint32>());
-
-    /**
     * @param[in]  method QString [required]
     * @param[in]  invoices QString [required]
     */
     virtual void initiatePayment(const QString &method, const QString &invoices);
+
+    /**
+    * @param[in]  id qint32 [required]
+    * @param[in]  oai_patch_billing_credit_card_verify_request OAIPatchBillingCreditCardVerify_request [required]
+    */
+    virtual void patchBillingCreditCardVerify(const qint32 &id, const OAIPatchBillingCreditCardVerify_request &oai_patch_billing_credit_card_verify_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -177,23 +168,11 @@ public:
     virtual void postBillingCreditCardVerify(const qint32 &id, const OAIBillingVerifyCcRequest &oai_billing_verify_cc_request);
 
     /**
-    * @param[in]  id qint32 [required]
-    */
-    virtual void updateAccountCreditCard(const qint32 &id);
-
-    /**
     * @param[in]  affiliate_dock_title QString [optional]
     * @param[in]  affiliate_dock_description QString [optional]
     * @param[in]  referrer_coupon QString [optional]
     */
     virtual void updateAffiliateDockSetup(const ::OpenAPI::OptionalParam<QString> &affiliate_dock_title = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &affiliate_dock_description = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &referrer_coupon = ::OpenAPI::OptionalParam<QString>());
-
-    /**
-    * @param[in]  affiliate_dock_title QString [optional]
-    * @param[in]  affiliate_dock_description QString [optional]
-    * @param[in]  referrer_coupon QString [optional]
-    */
-    virtual void updateAffiliateLandingPage(const ::OpenAPI::OptionalParam<QString> &affiliate_dock_title = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &affiliate_dock_description = ::OpenAPI::OptionalParam<QString>(), const ::OpenAPI::OptionalParam<QString> &referrer_coupon = ::OpenAPI::OptionalParam<QString>());
 
     /**
     * @param[in]  affiliate_paypal QString [optional]
@@ -241,17 +220,16 @@ private:
     OauthPassword _passwordFlow;
     OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
-    void addAccountCreditCardCallback(OAIHttpRequestWorker *worker);
     void addBillingCreditCardCallback(OAIHttpRequestWorker *worker);
     void addBillingPrepayCallback(OAIHttpRequestWorker *worker);
-    void deleteAccountCreditCardCallback(OAIHttpRequestWorker *worker);
     void deleteBillingCreditCardCallback(OAIHttpRequestWorker *worker);
     void deleteBillingInvoiceCallback(OAIHttpRequestWorker *worker);
     void deleteBillingPrepayCallback(OAIHttpRequestWorker *worker);
     void getAffiliateBannersCallback(OAIHttpRequestWorker *worker);
+    void getAffiliateDownloadCallback(OAIHttpRequestWorker *worker);
     void getAffiliateRichReportCallback(OAIHttpRequestWorker *worker);
     void getAffiliateSalesGraphCallback(OAIHttpRequestWorker *worker);
-    void getAffiliateSalesReportCallback(OAIHttpRequestWorker *worker);
+    void getAffiliateSignupsCallback(OAIHttpRequestWorker *worker);
     void getAffiliateTrafficGraphCallback(OAIHttpRequestWorker *worker);
     void getAffiliateWebTrafficCallback(OAIHttpRequestWorker *worker);
     void getBillingCartCallback(OAIHttpRequestWorker *worker);
@@ -259,29 +237,26 @@ private:
     void getBillingInvoiceCallback(OAIHttpRequestWorker *worker);
     void getBillingInvoicesCallback(OAIHttpRequestWorker *worker);
     void getBillingPrePaysCallback(OAIHttpRequestWorker *worker);
-    void getInvoicesCallback(OAIHttpRequestWorker *worker);
     void initiatePaymentCallback(OAIHttpRequestWorker *worker);
+    void patchBillingCreditCardVerifyCallback(OAIHttpRequestWorker *worker);
     void postBillingCreditCardVerifyCallback(OAIHttpRequestWorker *worker);
-    void updateAccountCreditCardCallback(OAIHttpRequestWorker *worker);
     void updateAffiliateDockSetupCallback(OAIHttpRequestWorker *worker);
-    void updateAffiliateLandingPageCallback(OAIHttpRequestWorker *worker);
     void updateAffiliatePaymentSetupCallback(OAIHttpRequestWorker *worker);
     void updateBillingCreditCardCallback(OAIHttpRequestWorker *worker);
     void updateBillingPaymentMethodCallback(OAIHttpRequestWorker *worker);
 
 Q_SIGNALS:
 
-    void addAccountCreditCardSignal(OAISuccessTextResponse summary);
     void addBillingCreditCardSignal(OAISuccessTextResponse summary);
     void addBillingPrepaySignal(OAISuccessTextResponse summary);
-    void deleteAccountCreditCardSignal(QString summary);
     void deleteBillingCreditCardSignal(OAISuccessTextResponse summary);
     void deleteBillingInvoiceSignal(OAISuccessTextResponse summary);
     void deleteBillingPrepaySignal(OAISuccessTextResponse summary);
     void getAffiliateBannersSignal(QList<OAIAffiliateBannerRow> summary);
+    void getAffiliateDownloadSignal();
     void getAffiliateRichReportSignal(OAITextResponse summary);
     void getAffiliateSalesGraphSignal(OAIStatusMonthlyBreakdown summary);
-    void getAffiliateSalesReportSignal(OAITextResponse summary);
+    void getAffiliateSignupsSignal(OAIGetAffiliateSignups_200_response summary);
     void getAffiliateTrafficGraphSignal(OAIMonthlyCounts<QString, qint32> summary);
     void getAffiliateWebTrafficSignal(QList<OAIAffiliateTrafficRow> summary);
     void getBillingCartSignal(OAIObject summary);
@@ -289,28 +264,25 @@ Q_SIGNALS:
     void getBillingInvoiceSignal(OAIBillingInvoiceDetail<QString, QString> summary);
     void getBillingInvoicesSignal(OAIBillingInvoiceList summary);
     void getBillingPrePaysSignal(OAIObject summary);
-    void getInvoicesSignal(QList<OAIInvoice> summary);
     void initiatePaymentSignal(OAIInitiatePayment_200_response summary);
+    void patchBillingCreditCardVerifySignal(OAISuccessTextResponse summary);
     void postBillingCreditCardVerifySignal(OAISuccessTextResponse summary);
-    void updateAccountCreditCardSignal(QString summary);
     void updateAffiliateDockSetupSignal(OAITextResponse summary);
-    void updateAffiliateLandingPageSignal(OAITextResponse summary);
     void updateAffiliatePaymentSetupSignal(OAITextResponse summary);
     void updateBillingCreditCardSignal(OAISuccessTextResponse summary);
     void updateBillingPaymentMethodSignal(OAISuccessTextResponse summary);
 
 
-    void addAccountCreditCardSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void addBillingCreditCardSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void addBillingPrepaySignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
-    void deleteAccountCreditCardSignalFull(OAIHttpRequestWorker *worker, QString summary);
     void deleteBillingCreditCardSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void deleteBillingInvoiceSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void deleteBillingPrepaySignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void getAffiliateBannersSignalFull(OAIHttpRequestWorker *worker, QList<OAIAffiliateBannerRow> summary);
+    void getAffiliateDownloadSignalFull(OAIHttpRequestWorker *worker);
     void getAffiliateRichReportSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void getAffiliateSalesGraphSignalFull(OAIHttpRequestWorker *worker, OAIStatusMonthlyBreakdown summary);
-    void getAffiliateSalesReportSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
+    void getAffiliateSignupsSignalFull(OAIHttpRequestWorker *worker, OAIGetAffiliateSignups_200_response summary);
     void getAffiliateTrafficGraphSignalFull(OAIHttpRequestWorker *worker, OAIMonthlyCounts<QString, qint32> summary);
     void getAffiliateWebTrafficSignalFull(OAIHttpRequestWorker *worker, QList<OAIAffiliateTrafficRow> summary);
     void getBillingCartSignalFull(OAIHttpRequestWorker *worker, OAIObject summary);
@@ -318,27 +290,24 @@ Q_SIGNALS:
     void getBillingInvoiceSignalFull(OAIHttpRequestWorker *worker, OAIBillingInvoiceDetail<QString, QString> summary);
     void getBillingInvoicesSignalFull(OAIHttpRequestWorker *worker, OAIBillingInvoiceList summary);
     void getBillingPrePaysSignalFull(OAIHttpRequestWorker *worker, OAIObject summary);
-    void getInvoicesSignalFull(OAIHttpRequestWorker *worker, QList<OAIInvoice> summary);
     void initiatePaymentSignalFull(OAIHttpRequestWorker *worker, OAIInitiatePayment_200_response summary);
+    void patchBillingCreditCardVerifySignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void postBillingCreditCardVerifySignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
-    void updateAccountCreditCardSignalFull(OAIHttpRequestWorker *worker, QString summary);
     void updateAffiliateDockSetupSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
-    void updateAffiliateLandingPageSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void updateAffiliatePaymentSetupSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void updateBillingCreditCardSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void updateBillingPaymentMethodSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
 
-    void addAccountCreditCardSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void addBillingCreditCardSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void addBillingPrepaySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void deleteAccountCreditCardSignalError(QString summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteBillingCreditCardSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteBillingInvoiceSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteBillingPrepaySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getAffiliateBannersSignalError(QList<OAIAffiliateBannerRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getAffiliateDownloadSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getAffiliateRichReportSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getAffiliateSalesGraphSignalError(OAIStatusMonthlyBreakdown summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getAffiliateSalesReportSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getAffiliateSignupsSignalError(OAIGetAffiliateSignups_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getAffiliateTrafficGraphSignalError(OAIMonthlyCounts<QString, qint32> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getAffiliateWebTrafficSignalError(QList<OAIAffiliateTrafficRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getBillingCartSignalError(OAIObject summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -346,27 +315,24 @@ Q_SIGNALS:
     void getBillingInvoiceSignalError(OAIBillingInvoiceDetail<QString, QString> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getBillingInvoicesSignalError(OAIBillingInvoiceList summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getBillingPrePaysSignalError(OAIObject summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getInvoicesSignalError(QList<OAIInvoice> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void initiatePaymentSignalError(OAIInitiatePayment_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void patchBillingCreditCardVerifySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postBillingCreditCardVerifySignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateAccountCreditCardSignalError(QString summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateAffiliateDockSetupSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateAffiliateLandingPageSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateAffiliatePaymentSetupSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateBillingCreditCardSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateBillingPaymentMethodSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
-    void addAccountCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void addBillingCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void addBillingPrepaySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void deleteAccountCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteBillingCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteBillingInvoiceSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void deleteBillingPrepaySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getAffiliateBannersSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getAffiliateDownloadSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getAffiliateRichReportSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getAffiliateSalesGraphSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getAffiliateSalesReportSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getAffiliateSignupsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getAffiliateTrafficGraphSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getAffiliateWebTrafficSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getBillingCartSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -374,12 +340,10 @@ Q_SIGNALS:
     void getBillingInvoiceSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getBillingInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getBillingPrePaysSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void initiatePaymentSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void patchBillingCreditCardVerifySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postBillingCreditCardVerifySignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateAccountCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateAffiliateDockSetupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void updateAffiliateLandingPageSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateAffiliatePaymentSetupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateBillingCreditCardSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateBillingPaymentMethodSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

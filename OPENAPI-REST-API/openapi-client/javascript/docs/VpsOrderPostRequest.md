@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsOrderPostRequest
+# InterserverApiClient.VpsOrderPostRequest
 
 ## Properties
 
@@ -27,6 +27,8 @@ Name | Type | Description | Notes
 
 * `kvmstorage` (value: `"kvmstorage"`)
 
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
+
 
 
 
@@ -39,6 +41,8 @@ Name | Type | Description | Notes
 * `cpanel` (value: `"cpanel"`)
 
 * `da` (value: `"da"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 
 

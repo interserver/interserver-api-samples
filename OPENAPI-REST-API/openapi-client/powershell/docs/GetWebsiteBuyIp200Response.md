@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetWebsiteBuyIp200Response = Initialize-PSOpenAPIToolsGetWebsiteBuyIp200Response  -Ips null
+$GetWebsiteBuyIp200Response = Initialize-InterserverApiGetWebsiteBuyIp200Response  -Ips null
 ```
 
 - Convert the resource to JSON

@@ -71,4 +71,3 @@ case class VpsOrder(
   /* Currency Symbol */
   currencySymbol: String
 )
-

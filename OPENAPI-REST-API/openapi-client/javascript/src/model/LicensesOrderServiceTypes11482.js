@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LicensesOrderServiceTypes11482 model module.
  * @module model/LicensesOrderServiceTypes11482
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicensesOrderServiceTypes11482 {
     /**

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CloseTicketResponseSchema } from './api';
+import { CloseTicketResponseSchema } from '@interserver/myadmin-client';
 
 const instance: CloseTicketResponseSchema = {
     success,

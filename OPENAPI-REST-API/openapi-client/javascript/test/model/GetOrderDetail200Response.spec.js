@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetOrderDetail200Response();
+    instance = new InterserverApiClient.GetOrderDetail200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('GetOrderDetail200Response', function() {
     it('should create an instance of GetOrderDetail200Response', function() {
       // uncomment below and update the code to test GetOrderDetail200Response
-      //var instance = new InterServerManagementApi.GetOrderDetail200Response();
-      //expect(instance).to.be.a(InterServerManagementApi.GetOrderDetail200Response);
+      //var instance = new InterserverApiClient.GetOrderDetail200Response();
+      //expect(instance).to.be.a(InterserverApiClient.GetOrderDetail200Response);
     });
 
     it('should have the property packageCosts (base name: "packageCosts")', function() {
       // uncomment below and update the code to test the property packageCosts
-      //var instance = new InterServerManagementApi.GetOrderDetail200Response();
+      //var instance = new InterserverApiClient.GetOrderDetail200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceTypes (base name: "serviceTypes")', function() {
       // uncomment below and update the code to test the property serviceTypes
-      //var instance = new InterServerManagementApi.GetOrderDetail200Response();
+      //var instance = new InterserverApiClient.GetOrderDetail200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property ips (base name: "ips")', function() {
       // uncomment below and update the code to test the property ips
-      //var instance = new InterServerManagementApi.GetOrderDetail200Response();
+      //var instance = new InterserverApiClient.GetOrderDetail200Response();
       //expect(instance).to.be();
     });
 

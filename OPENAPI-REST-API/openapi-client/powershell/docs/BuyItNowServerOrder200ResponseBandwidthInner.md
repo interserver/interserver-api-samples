@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BuyItNowServerOrder200ResponseBandwidthInner = Initialize-PSOpenAPIToolsBuyItNowServerOrder200ResponseBandwidthInner  -Id 10 `
+$BuyItNowServerOrder200ResponseBandwidthInner = Initialize-InterserverApiBuyItNowServerOrder200ResponseBandwidthInner  -Id 10 `
  -ShortDesc 1GBPS Unmetered `
  -LongDesc  `
  -MonthlyPrice 0

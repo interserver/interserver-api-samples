@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ScrubIpsLogRowSchema
+# InterServerAPI::Object::ScrubIpsLogRowSchema
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ScrubIpsLogRowSchema;
+use InterServerAPI::Object::ScrubIpsLogRowSchema;
 ```
 
 ## Properties

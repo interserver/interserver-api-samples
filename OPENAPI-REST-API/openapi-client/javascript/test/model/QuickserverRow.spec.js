@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QuickserverRow();
+    instance = new InterserverApiClient.QuickserverRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('QuickserverRow', function() {
     it('should create an instance of QuickserverRow', function() {
       // uncomment below and update the code to test QuickserverRow
-      //var instance = new InterServerManagementApi.QuickserverRow();
-      //expect(instance).to.be.a(InterServerManagementApi.QuickserverRow);
+      //var instance = new InterserverApiClient.QuickserverRow();
+      //expect(instance).to.be.a(InterserverApiClient.QuickserverRow);
     });
 
     it('should have the property qs_id (base name: "qs_id")', function() {
       // uncomment below and update the code to test the property qs_id
-      //var instance = new InterServerManagementApi.QuickserverRow();
+      //var instance = new InterserverApiClient.QuickserverRow();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_name (base name: "qs_name")', function() {
       // uncomment below and update the code to test the property qs_name
-      //var instance = new InterServerManagementApi.QuickserverRow();
+      //var instance = new InterserverApiClient.QuickserverRow();
       //expect(instance).to.be();
     });
 
     it('should have the property cost (base name: "cost")', function() {
       // uncomment below and update the code to test the property cost
-      //var instance = new InterServerManagementApi.QuickserverRow();
+      //var instance = new InterserverApiClient.QuickserverRow();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_hostname (base name: "qs_hostname")', function() {
       // uncomment below and update the code to test the property qs_hostname
-      //var instance = new InterServerManagementApi.QuickserverRow();
+      //var instance = new InterserverApiClient.QuickserverRow();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_status (base name: "qs_status")', function() {
       // uncomment below and update the code to test the property qs_status
-      //var instance = new InterServerManagementApi.QuickserverRow();
+      //var instance = new InterserverApiClient.QuickserverRow();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_comment (base name: "qs_comment")', function() {
       // uncomment below and update the code to test the property qs_comment
-      //var instance = new InterServerManagementApi.QuickserverRow();
+      //var instance = new InterserverApiClient.QuickserverRow();
       //expect(instance).to.be();
     });
 

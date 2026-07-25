@@ -1,4 +1,4 @@
-# SwaggerClient::HomeDetailsModulesServers
+# InterserverApiClient::HomeDetailsModulesServers
 
 ## Properties
 Name | Type | Description | Notes

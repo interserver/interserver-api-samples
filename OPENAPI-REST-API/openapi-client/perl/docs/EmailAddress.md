@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::EmailAddress
+# InterServerAPI::Object::EmailAddress
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::EmailAddress;
+use InterServerAPI::Object::EmailAddress;
 ```
 
 ## Properties

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ViewTicketResponse = Initialize-PSOpenAPIToolsViewTicketResponse  -Success null `
+$ViewTicketResponse = Initialize-InterserverApiViewTicketResponse  -Success null `
  -Ticket null `
  -TicketCustomFields null `
  -TicketPosts null

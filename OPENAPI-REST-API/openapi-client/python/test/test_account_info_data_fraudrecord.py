@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_info_data_fraudrecord import AccountInfoDataFraudrecord
+from interserver_api_client.models.account_info_data_fraudrecord import AccountInfoDataFraudrecord
 
 class TestAccountInfoDataFraudrecord(unittest.TestCase):
     """AccountInfoDataFraudrecord unit test stubs"""

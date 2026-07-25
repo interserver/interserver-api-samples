@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LicenseExtraInfoTables } from './api';
+import { LicenseExtraInfoTables } from '@interserver/myadmin-client';
 
 const instance: LicenseExtraInfoTables = {
     ip_info,

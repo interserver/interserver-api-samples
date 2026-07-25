@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BackupOrderPostResponse
+# InterServerAPI::Object::BackupOrderPostResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BackupOrderPostResponse;
+use InterServerAPI::Object::BackupOrderPostResponse;
 ```
 
 ## Properties

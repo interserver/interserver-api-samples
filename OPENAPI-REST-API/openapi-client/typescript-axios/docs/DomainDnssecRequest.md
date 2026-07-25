@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainDnssecRequest } from './api';
+import { DomainDnssecRequest } from '@interserver/myadmin-client';
 
 const instance: DomainDnssecRequest = {
     algorithm,

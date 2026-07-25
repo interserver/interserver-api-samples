@@ -18,4 +18,3 @@ case class WebsiteTableRow(
   /* Value for the row */
   value: Option[String] = None
 )
-

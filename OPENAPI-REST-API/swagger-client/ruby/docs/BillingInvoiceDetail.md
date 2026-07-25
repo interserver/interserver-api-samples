@@ -1,4 +1,4 @@
-# SwaggerClient::BillingInvoiceDetail
+# InterserverApiClient::BillingInvoiceDetail
 
 ## Properties
 Name | Type | Description | Notes

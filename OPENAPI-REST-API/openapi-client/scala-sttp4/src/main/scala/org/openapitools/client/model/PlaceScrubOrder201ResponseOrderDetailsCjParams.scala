@@ -22,4 +22,3 @@ case class PlaceScrubOrder201ResponseOrderDetailsCjParams(
   QTY1: Option[Int] = None,
   CURRENCY: Option[String] = None
 )
-

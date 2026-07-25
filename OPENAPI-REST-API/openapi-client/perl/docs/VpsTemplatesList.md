@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsTemplatesList
+# InterServerAPI::Object::VpsTemplatesList
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsTemplatesList;
+use InterServerAPI::Object::VpsTemplatesList;
 ```
 
 ## Properties

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.HomeServicesDomains();
+    instance = new InterserverApiClient.HomeServicesDomains();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('HomeServicesDomains', function() {
     it('should create an instance of HomeServicesDomains', function() {
       // uncomment below and update the code to test HomeServicesDomains
-      //var instance = new InterServerManagementApi.HomeServicesDomains();
-      //expect(instance).to.be.a(InterServerManagementApi.HomeServicesDomains);
+      //var instance = new InterserverApiClient.HomeServicesDomains();
+      //expect(instance).to.be.a(InterserverApiClient.HomeServicesDomains);
     });
 
     it('should have the property links (base name: "links")', function() {
       // uncomment below and update the code to test the property links
-      //var instance = new InterServerManagementApi.HomeServicesDomains();
+      //var instance = new InterserverApiClient.HomeServicesDomains();
       //expect(instance).to.be();
     });
 
     it('should have the property count (base name: "count")', function() {
       // uncomment below and update the code to test the property count
-      //var instance = new InterServerManagementApi.HomeServicesDomains();
+      //var instance = new InterserverApiClient.HomeServicesDomains();
       //expect(instance).to.be();
     });
 

@@ -18,4 +18,3 @@ case class DomainDnssecRecordsInner(
   digest: Option[String] = None,
   key_tag: Option[String] = None
 )
-

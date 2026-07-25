@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::AccountInfoCountryCurrencies');
+use_ok('InterServerAPI::Object::AccountInfoCountryCurrencies');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::AccountInfoCountryCurrencies->new();
+#my $instance = InterServerAPI::Object::AccountInfoCountryCurrencies->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::AccountInfoCountryCurrencies');
+#isa_ok($instance, 'InterServerAPI::Object::AccountInfoCountryCurrencies');
 
 
 done_testing();

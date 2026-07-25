@@ -1,18 +1,18 @@
-# openapi.model.BuyItNowRowCpuInner
+# interserver_api.model.BuyItNowRowCpuInner
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**img** | **String** |  | [optional] 
-**type** | **String** |  | [optional] 
-**speed** | **String** |  | [optional] 
-**numCpus** | **String** |  | [optional] 
-**numCores** | **String** |  | [optional] 
+**img** | **Optional&lt;String?&gt;** |  | [optional] 
+**type** | **Optional&lt;String?&gt;** |  | [optional] 
+**speed** | **Optional&lt;String?&gt;** |  | [optional] 
+**numCpus** | **Optional&lt;String?&gt;** |  | [optional] 
+**numCores** | **Optional&lt;String?&gt;** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

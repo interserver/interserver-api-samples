@@ -17,7 +17,7 @@ import GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner from './GetS
 /**
  * The GetScrubIpDetails200ResponseExtraInfoTablesScrubIps model module.
  * @module model/GetScrubIpDetails200ResponseExtraInfoTablesScrubIps
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetScrubIpDetails200ResponseExtraInfoTablesScrubIps {
     /**

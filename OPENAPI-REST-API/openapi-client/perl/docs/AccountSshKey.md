@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AccountSshKey
+# InterServerAPI::Object::AccountSshKey
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AccountSshKey;
+use InterServerAPI::Object::AccountSshKey;
 ```
 
 ## Properties

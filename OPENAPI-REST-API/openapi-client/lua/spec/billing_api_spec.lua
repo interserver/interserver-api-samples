@@ -15,13 +15,6 @@ Please update as you see appropriate
 ]]
 describe("billing_api", function()
   local openapiclient_billing_api = require "openapiclient.api.billing_api"
-  -- unit tests for add_account_credit_card
-  describe("add_account_credit_card test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for add_billing_credit_card
   describe("add_billing_credit_card test", function()
     it("should work", function()
@@ -31,13 +24,6 @@ describe("billing_api", function()
 
   -- unit tests for add_billing_prepay
   describe("add_billing_prepay test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for delete_account_credit_card
-  describe("delete_account_credit_card test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
@@ -71,6 +57,13 @@ describe("billing_api", function()
     end)
   end)
 
+  -- unit tests for get_affiliate_download
+  describe("get_affiliate_download test", function()
+    it("should work", function()
+      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
+    end)
+  end)
+
   -- unit tests for get_affiliate_rich_report
   describe("get_affiliate_rich_report test", function()
     it("should work", function()
@@ -85,8 +78,8 @@ describe("billing_api", function()
     end)
   end)
 
-  -- unit tests for get_affiliate_sales_report
-  describe("get_affiliate_sales_report test", function()
+  -- unit tests for get_affiliate_signups
+  describe("get_affiliate_signups test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
@@ -141,15 +134,15 @@ describe("billing_api", function()
     end)
   end)
 
-  -- unit tests for get_invoices
-  describe("get_invoices test", function()
+  -- unit tests for initiate_payment
+  describe("initiate_payment test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
   end)
 
-  -- unit tests for initiate_payment
-  describe("initiate_payment test", function()
+  -- unit tests for patch_billing_credit_card_verify
+  describe("patch_billing_credit_card_verify test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)
@@ -162,22 +155,8 @@ describe("billing_api", function()
     end)
   end)
 
-  -- unit tests for update_account_credit_card
-  describe("update_account_credit_card test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
   -- unit tests for update_affiliate_dock_setup
   describe("update_affiliate_dock_setup test", function()
-    it("should work", function()
-      -- TODO assertion here: http://olivinelabs.com/busted/#asserts
-    end)
-  end)
-
-  -- unit tests for update_affiliate_landing_page
-  describe("update_affiliate_landing_page test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_details_modules_webhosting import HomeDetailsModulesWebhosting
+from interserver_api_client.models.home_details_modules_webhosting import HomeDetailsModulesWebhosting
 
 class TestHomeDetailsModulesWebhosting(unittest.TestCase):
     """HomeDetailsModulesWebhosting unit test stubs"""

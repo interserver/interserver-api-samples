@@ -1,4 +1,4 @@
-# InterServerManagementApi.EmailAddressName
+# InterserverApiClient.EmailAddressName
 
 ## Properties
 

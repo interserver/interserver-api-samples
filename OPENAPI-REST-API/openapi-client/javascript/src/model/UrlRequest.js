@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The UrlRequest model module.
  * @module model/UrlRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class UrlRequest {
     /**

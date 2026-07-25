@@ -90,7 +90,7 @@ class MailDeliverabilityResponse {
         percent: num.parse('${json[r'percent']}'),
         tableData: json[r'table_data'] is List
           ? (json[r'table_data'] as List).map((e) =>
-              e == null ? const  <String>[] : (e as List).cast<String>()
+              e == null ? const <String>[] : (e as List).map((value) => value as String).toList(growable: false)
             ).toList()
           :  const [],
       );

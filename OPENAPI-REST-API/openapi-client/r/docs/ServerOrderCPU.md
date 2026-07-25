@@ -1,4 +1,4 @@
-# openapi::ServerOrderCPU
+# interserverapi::ServerOrderCPU
 
 A CPU option available when ordering a dedicated server.
 

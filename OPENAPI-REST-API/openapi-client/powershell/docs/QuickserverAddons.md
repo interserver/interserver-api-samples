@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverAddons = Initialize-PSOpenAPIToolsQuickserverAddons  -Title Addons `
+$QuickserverAddons = Initialize-InterserverApiQuickserverAddons  -Title Addons `
  -Rows null
 ```
 

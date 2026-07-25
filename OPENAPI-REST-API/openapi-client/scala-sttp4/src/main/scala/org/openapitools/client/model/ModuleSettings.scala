@@ -36,4 +36,3 @@ case class ModuleSettings(
   TITLE_FIELD2: Option[String] = None,
   TITLE_FIELD3: Option[String] = None
 )
-

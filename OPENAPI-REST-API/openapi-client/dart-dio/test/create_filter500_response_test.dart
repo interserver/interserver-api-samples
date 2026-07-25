@@ -1,18 +1,18 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for CreateFilter500Response
 void main() {
-  final instance = CreateFilter500ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final CreateFilter500Response? instance = /* CreateFilter500Response(...) */ null;
+  // TODO add properties to the entity
 
   group(CreateFilter500Response, () {
-    // bool success
+    // Optional<bool?> success
     test('to test the property `success`', () async {
       // TODO
     });
 
-    // String text
+    // Optional<String?> text
     test('to test the property `text`', () async {
       // TODO
     });

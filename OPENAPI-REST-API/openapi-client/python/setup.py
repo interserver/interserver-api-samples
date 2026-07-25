@@ -19,11 +19,11 @@ from setuptools import setup, find_packages  # noqa: H301
 #
 # prerequisite: setuptools
 # http://pypi.python.org/pypi/setuptools
-NAME = "openapi-client"
+NAME = "interserver-api-client"
 VERSION = "1.0.0"
-PYTHON_REQUIRES = ">= 3.9"
+PYTHON_REQUIRES = ">= 3.10"
 REQUIRES = [
-    "urllib3 >= 2.1.0, < 3.0.0",
+    "urllib3 >= 2.6.3, < 3.0.0",
     "python-dateutil >= 2.8.2",
     "pydantic >= 2.11",
     "typing-extensions >= 4.7.1",
@@ -35,7 +35,7 @@ setup(
     description="InterServer Management API",
     author="InterServer Support Staff",
     author_email="support@interserver.net",
-    url="",
+    url="https://github.com/detain/interserver-api-samples",
     keywords=["OpenAPI", "OpenAPI-Generator", "InterServer Management API"],
     install_requires=REQUIRES,
     packages=find_packages(exclude=["test", "tests"]),
@@ -45,5 +45,5 @@ setup(
     long_description="""\
     # Overview  The InterServer Management API provides programmatic access to manage your InterServer services. Use this REST API to automate provisioning, configuration, and billing operations across your account.  The API covers the following service categories: - [Domains](https://www.interserver.net/domains/) — registration, transfers, and DNS management - [Web Hosting](https://www.interserver.net/hosting/) — shared and reseller hosting - [VPS Hosting](https://www.interserver.net/vps/) — virtual private servers - [Dedicated Servers](https://www.interserver.net/dedicated/) — bare metal and [Rapid Deploy Servers](https://www.interserver.net/dedicated/rapid-deploy.html) - [Backups](https://www.interserver.net/storage/) — storage and backup services - Licenses — control panel and software licenses - [Mail](https://www.mail.baby/) — mail delivery services - SSL — certificate provisioning - Billing — invoices, payment methods, and account management  For interactive testing, see the [API documentation](/api-docs/).  # Authentication  Most endpoints require authentication. Two methods are supported:  ## API Key (Preferred)  Generate an API key from the [Account Security](https://my.interserver.net/account_security) page on [my.interserver.net](https://my.interserver.net/). Pass it in the &#x60;X-API-KEY&#x60; request header:  &#x60;&#x60;&#x60; X-API-KEY: your-api-key-here &#x60;&#x60;&#x60;  ## Session-Based Authentication  Alternatively, authenticate by creating a session:  1. **Log in** — Send a &#x60;POST&#x60; request to &#x60;/login&#x60; with your account credentials. The response includes a session identifier. 2. **Pass the session ID** — Include the session identifier in the &#x60;sessionid&#x60; header on subsequent requests:  &#x60;&#x60;&#x60; sessionid: your-session-id-here &#x60;&#x60;&#x60;  API key authentication is recommended for most integrations as it does not expire and avoids the overhead of session management.  
     """,  # noqa: E501
-    package_data={"openapi_client": ["py.typed"]},
+    package_data={"interserver_api_client": ["py.typed"]},
 )

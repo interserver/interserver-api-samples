@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ScrubIpsDeleteRule400Response
+# InterServerAPI::Object::ScrubIpsDeleteRule400Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ScrubIpsDeleteRule400Response;
+use InterServerAPI::Object::ScrubIpsDeleteRule400Response;
 ```
 
 ## Properties

@@ -265,7 +265,7 @@ DomainAllInfoAttributes <- R6::R6Class(
         self$`gdpr_consent_status` <- this_object$`gdpr_consent_status`
       }
       if (!is.null(this_object$`nameserver_list`)) {
-        self$`nameserver_list` <- ApiClient$new()$deserializeObj(this_object$`nameserver_list`, "array[DomainNameServer]", loadNamespace("openapi"))
+        self$`nameserver_list` <- ApiClient$new()$deserializeObj(this_object$`nameserver_list`, "array[DomainNameServer]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`registry_updatedate`)) {
         self$`registry_updatedate` <- this_object$`registry_updatedate`
@@ -305,7 +305,7 @@ DomainAllInfoAttributes <- R6::R6Class(
       self$`auto_renew` <- this_object$`auto_renew`
       self$`sponsoring_rsp` <- this_object$`sponsoring_rsp`
       self$`gdpr_consent_status` <- this_object$`gdpr_consent_status`
-      self$`nameserver_list` <- ApiClient$new()$deserializeObj(this_object$`nameserver_list`, "array[DomainNameServer]", loadNamespace("openapi"))
+      self$`nameserver_list` <- ApiClient$new()$deserializeObj(this_object$`nameserver_list`, "array[DomainNameServer]", loadNamespace("interserverapi"))
       self$`registry_updatedate` <- this_object$`registry_updatedate`
       self$`affiliate_id` <- this_object$`affiliate_id`
       self$`expiredate` <- this_object$`expiredate`

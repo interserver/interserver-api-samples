@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DnsRecord = Initialize-PSOpenAPIToolsDnsRecord  -Id 472 `
+$DnsRecord = Initialize-InterserverApiDnsRecord  -Id 472 `
  -DomainId 68 `
  -Name hussfamily.com `
  -Type null `

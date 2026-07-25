@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::CancelDomain200Response');
+use_ok('InterServerAPI::Object::CancelDomain200Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::CancelDomain200Response->new();
+#my $instance = InterServerAPI::Object::CancelDomain200Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::CancelDomain200Response');
+#isa_ok($instance, 'InterServerAPI::Object::CancelDomain200Response');
 
 
 done_testing();

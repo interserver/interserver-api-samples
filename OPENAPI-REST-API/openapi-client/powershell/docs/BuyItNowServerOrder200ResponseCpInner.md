@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BuyItNowServerOrder200ResponseCpInner = Initialize-PSOpenAPIToolsBuyItNowServerOrder200ResponseCpInner  -Id 1 `
+$BuyItNowServerOrder200ResponseCpInner = Initialize-InterserverApiBuyItNowServerOrder200ResponseCpInner  -Id 1 `
  -ShortDesc None `
  -LongDesc  `
  -OsType  `

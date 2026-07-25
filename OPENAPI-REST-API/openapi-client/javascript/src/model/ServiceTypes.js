@@ -17,7 +17,7 @@ import ServiceType from './ServiceType';
 /**
  * The ServiceTypes model module.
  * @module model/ServiceTypes
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServiceTypes {
     /**

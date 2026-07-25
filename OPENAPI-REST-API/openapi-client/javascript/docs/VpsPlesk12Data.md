@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsPlesk12Data
+# InterserverApiClient.VpsPlesk12Data
 
 ## Properties
 

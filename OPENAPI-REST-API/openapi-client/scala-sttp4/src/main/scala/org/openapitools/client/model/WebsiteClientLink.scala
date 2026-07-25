@@ -29,4 +29,3 @@ case class WebsiteClientLink(
   /* Other attributes for the link */
   other_attr: Option[String] = None
 )
-

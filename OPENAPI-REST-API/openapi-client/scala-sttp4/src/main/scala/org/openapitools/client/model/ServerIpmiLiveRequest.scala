@@ -22,4 +22,3 @@ case class ServerIpmiLiveRequest(
   /* Asset ID */
   asset: Option[Int] = None
 )
-

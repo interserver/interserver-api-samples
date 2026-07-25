@@ -18,13 +18,29 @@ case class DomainNameserverGetResponseInner(
   /* Whether the registrar allows deletion of this nameserver entry. */
   can_delete: DomainNameserverGetResponseInnerEnums.CanDelete
 )
-
 object DomainNameserverGetResponseInnerEnums {
 
-  type CanDelete = CanDelete.Value
-  object CanDelete extends Enumeration {
-    val `0` = Value("0")
-    val `1` = Value("1")
-  }
+  sealed trait CanDelete
+  object CanDelete {
+    case object `0` extends CanDelete
+    case object `1` extends CanDelete
 
+    import org.json4s._
+
+    implicit object CanDeleteSerializer extends Serializer[CanDelete] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), CanDelete] = {
+        case (TypeInfo(clazz, _), json) if classOf[CanDelete].isAssignableFrom(clazz) =>
+          json match {
+            case JString("0") => `0`
+            case JString("1") => `1`
+            case other => throw new MappingException(s"Invalid CanDelete: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case `0` => JString("0")
+        case `1` => JString("1")
+      }
+    }
+  }
 }

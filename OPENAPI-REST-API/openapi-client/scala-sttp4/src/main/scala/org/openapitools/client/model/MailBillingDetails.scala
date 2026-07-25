@@ -37,4 +37,3 @@ case class MailBillingDetails(
   /* Extra JSON information for the service. */
   service_extra_json: Option[String] = None
 )
-

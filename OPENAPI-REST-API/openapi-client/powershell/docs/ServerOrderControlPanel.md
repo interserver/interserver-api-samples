@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderControlPanel = Initialize-PSOpenAPIToolsServerOrderControlPanel  -Id 9 `
+$ServerOrderControlPanel = Initialize-InterserverApiServerOrderControlPanel  -Id 9 `
  -Price 80 `
  -Img cpanel.gif `
  -ShortDesc cPanel ($45+) `

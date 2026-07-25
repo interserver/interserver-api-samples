@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderOS } from './api';
+import { ServerOrderOS } from '@interserver/myadmin-client';
 
 const instance: ServerOrderOS = {
     id,

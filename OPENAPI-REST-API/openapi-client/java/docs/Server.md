@@ -20,4 +20,8 @@
 |**serviceInfo** | [**ServerServiceInfo**](ServerServiceInfo.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

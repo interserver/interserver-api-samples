@@ -19,4 +19,3 @@ case class DomainNameserverPostRequest(
   name: String,
   ipAddress: String
 )
-

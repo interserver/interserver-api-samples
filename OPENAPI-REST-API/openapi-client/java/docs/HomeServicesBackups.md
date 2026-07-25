@@ -11,4 +11,8 @@
 |**count** | **Integer** | Number of backups. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

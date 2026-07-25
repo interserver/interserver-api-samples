@@ -1,4 +1,4 @@
-# openapi::CreateGeoRule400Response
+# interserverapi::CreateGeoRule400Response
 
 
 ## Properties

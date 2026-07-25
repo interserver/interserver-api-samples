@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainNameserverGetResponseInner = Initialize-PSOpenAPIToolsDomainNameserverGetResponseInner  -Name ns1.domain.com `
+$DomainNameserverGetResponseInner = Initialize-InterserverApiDomainNameserverGetResponseInner  -Name ns1.domain.com `
  -Ipaddress 1.2.3.4 `
  -CanDelete 1
 ```

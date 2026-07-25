@@ -58,8 +58,8 @@ void OAIServersApi::initializeServerConfigs() {
     _serverIndices.insert("placeBuyNowServer", 0);
     _serverConfigs.insert("postServerReverseDns", defaultConf);
     _serverIndices.insert("postServerReverseDns", 0);
-    _serverConfigs.insert("putServers", defaultConf);
-    _serverIndices.insert("putServers", 0);
+    _serverConfigs.insert("serverBulkIpmiPowerGet", defaultConf);
+    _serverIndices.insert("serverBulkIpmiPowerGet", 0);
     _serverConfigs.insert("serverIpmiLiveGet", defaultConf);
     _serverIndices.insert("serverIpmiLiveGet", 0);
     _serverConfigs.insert("serverIpmiLivePost", defaultConf);
@@ -253,7 +253,7 @@ QString OAIServersApi::getParamStyleDelimiter(const QString &style, const QStrin
     }
 }
 
-void OAIServersApi::addServer() {
+void OAIServersApi::addServer(const OAIServerOrderPostRequest &oai_server_order_post_request) {
     QString fullPath = QString(_serverConfigs["addServer"][_serverIndices.value("addServer")].URL()+"/servers/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -269,7 +269,12 @@ void OAIServersApi::addServer() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
+    {
 
+        
+        QByteArray output = oai_server_order_post_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -914,8 +919,8 @@ void OAIServersApi::postServerReverseDnsCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIServersApi::putServers() {
-    QString fullPath = QString(_serverConfigs["putServers"][_serverIndices.value("putServers")].URL()+"/servers/order");
+void OAIServersApi::serverBulkIpmiPowerGet(const QString &ids) {
+    QString fullPath = QString(_serverConfigs["serverBulkIpmiPowerGet"][_serverIndices.value("serverBulkIpmiPowerGet")].URL()+"/servers/bulk/ipmi_power");
     
     if (_apiKeys.contains("apiKeyAuth")) {
         addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
@@ -925,10 +930,26 @@ void OAIServersApi::putServers() {
         addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
     }
     
+    QString queryPrefix, querySuffix, queryDelimiter, queryStyle;
+    
+    {
+        queryStyle = "form";
+        if (queryStyle == "")
+            queryStyle = "form";
+        queryPrefix = getParamStylePrefix(queryStyle);
+        querySuffix = getParamStyleSuffix(queryStyle);
+        queryDelimiter = getParamStyleDelimiter(queryStyle, "ids", true);
+        if (fullPath.indexOf("?") > 0)
+            fullPath.append(queryPrefix);
+        else
+            fullPath.append("?");
+
+        fullPath.append(QUrl::toPercentEncoding("ids")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(ids)));
+    }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
     worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "PUT");
+    OAIHttpRequestInput input(fullPath, "GET");
 
 
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
@@ -936,7 +957,7 @@ void OAIServersApi::putServers() {
     }
 
 
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIServersApi::putServersCallback);
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIServersApi::serverBulkIpmiPowerGetCallback);
     connect(this, &OAIServersApi::abortRequestsSignal, worker, &QObject::deleteLater);
     connect(worker, &QObject::destroyed, this, [this] {
         if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
@@ -947,21 +968,22 @@ void OAIServersApi::putServers() {
     worker->execute(&input);
 }
 
-void OAIServersApi::putServersCallback(OAIHttpRequestWorker *worker) {
+void OAIServersApi::serverBulkIpmiPowerGetCallback(OAIHttpRequestWorker *worker) {
     QString error_str = worker->error_str;
     QNetworkReply::NetworkError error_type = worker->error_type;
 
     if (worker->error_type != QNetworkReply::NoError) {
         error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
     }
+    OAIServerBulkIpmiPowerResponse output(QString(worker->response));
     worker->deleteLater();
 
     if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT putServersSignal();
-        Q_EMIT putServersSignalFull(worker);
+        Q_EMIT serverBulkIpmiPowerGetSignal(output);
+        Q_EMIT serverBulkIpmiPowerGetSignalFull(worker, output);
     } else {
-        Q_EMIT putServersSignalError(error_type, error_str);
-        Q_EMIT putServersSignalErrorFull(worker, error_type, error_str);
+        Q_EMIT serverBulkIpmiPowerGetSignalError(output, error_type, error_str);
+        Q_EMIT serverBulkIpmiPowerGetSignalErrorFull(worker, error_type, error_str);
     }
 }
 

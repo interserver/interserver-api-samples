@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_billing_details import BackupBillingDetails
+from interserver_api_client.models.backup_billing_details import BackupBillingDetails
 
 class TestBackupBillingDetails(unittest.TestCase):
     """BackupBillingDetails unit test stubs"""

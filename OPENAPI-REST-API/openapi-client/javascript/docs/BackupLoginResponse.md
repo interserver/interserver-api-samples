@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupLoginResponse
+# InterserverApiClient.BackupLoginResponse
 
 ## Properties
 

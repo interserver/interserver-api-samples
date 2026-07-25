@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsServiceAddons } from './api';
+import { VpsServiceAddons } from '@interserver/myadmin-client';
 
 const instance: VpsServiceAddons = {
     has_cpanel,

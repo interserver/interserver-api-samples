@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LicensesOrderServiceCategories509 model module.
  * @module model/LicensesOrderServiceCategories509
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicensesOrderServiceCategories509 {
     /**

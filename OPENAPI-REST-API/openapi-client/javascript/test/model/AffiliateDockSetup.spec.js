@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AffiliateDockSetup();
+    instance = new InterserverApiClient.AffiliateDockSetup();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('AffiliateDockSetup', function() {
     it('should create an instance of AffiliateDockSetup', function() {
       // uncomment below and update the code to test AffiliateDockSetup
-      //var instance = new InterServerManagementApi.AffiliateDockSetup();
-      //expect(instance).to.be.a(InterServerManagementApi.AffiliateDockSetup);
+      //var instance = new InterserverApiClient.AffiliateDockSetup();
+      //expect(instance).to.be.a(InterserverApiClient.AffiliateDockSetup);
     });
 
     it('should have the property affiliate_dock_title (base name: "affiliate_dock_title")', function() {
       // uncomment below and update the code to test the property affiliate_dock_title
-      //var instance = new InterServerManagementApi.AffiliateDockSetup();
+      //var instance = new InterserverApiClient.AffiliateDockSetup();
       //expect(instance).to.be();
     });
 
     it('should have the property affiliate_dock_description (base name: "affiliate_dock_description")', function() {
       // uncomment below and update the code to test the property affiliate_dock_description
-      //var instance = new InterServerManagementApi.AffiliateDockSetup();
+      //var instance = new InterserverApiClient.AffiliateDockSetup();
       //expect(instance).to.be();
     });
 
     it('should have the property referrer_coupon (base name: "referrer_coupon")', function() {
       // uncomment below and update the code to test the property referrer_coupon
-      //var instance = new InterServerManagementApi.AffiliateDockSetup();
+      //var instance = new InterserverApiClient.AffiliateDockSetup();
       //expect(instance).to.be();
     });
 

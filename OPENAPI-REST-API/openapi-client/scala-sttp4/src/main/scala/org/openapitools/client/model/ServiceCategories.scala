@@ -16,5 +16,4 @@ package org.openapitools.client.model
    * The listing of the categories for the services.
    */
 case class ServiceCategories(
-)
-
+) extends Map[String, ServiceCategory]

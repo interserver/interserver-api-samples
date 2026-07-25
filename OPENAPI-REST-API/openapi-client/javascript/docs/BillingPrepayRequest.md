@@ -1,4 +1,4 @@
-# InterServerManagementApi.BillingPrepayRequest
+# InterserverApiClient.BillingPrepayRequest
 
 ## Properties
 

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for EnableScrub200Response
 void main() {
-  final instance = EnableScrub200ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final EnableScrub200Response? instance = /* EnableScrub200Response(...) */ null;
+  // TODO add properties to the entity
 
   group(EnableScrub200Response, () {
     // bool success

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AffiliateBannerRow = Initialize-PSOpenAPIToolsAffiliateBannerRow  -Image null `
+$AffiliateBannerRow = Initialize-InterserverApiAffiliateBannerRow  -Image null `
  -Width null `
  -Height null
 ```

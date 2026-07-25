@@ -34,6 +34,8 @@
 #include "OAIWebsite.h"
 #include "OAIWebsiteBackups.h"
 #include "OAIWebsiteLoginResponse.h"
+#include "OAIWebsiteOrderPostRequest.h"
+#include "OAIWebsiteOrderPutRequest.h"
 #include "OAIWebsiteRow.h"
 #include "OAIWebsitesOrder.h"
 #include <QString>
@@ -75,8 +77,10 @@ public:
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
-
-    virtual void addWebsite();
+    /**
+    * @param[in]  oai_website_order_post_request OAIWebsiteOrderPostRequest [required]
+    */
+    virtual void addWebsite(const OAIWebsiteOrderPostRequest &oai_website_order_post_request);
 
 
     virtual void getNewWebsite();
@@ -137,8 +141,10 @@ public:
     */
     virtual void postWebsitesReverseDns(const qint32 &id, const OAIReverseDnsEntries &oai_reverse_dns_entries);
 
-
-    virtual void putWebsites();
+    /**
+    * @param[in]  oai_website_order_put_request OAIWebsiteOrderPutRequest [required]
+    */
+    virtual void putWebsites(const OAIWebsiteOrderPutRequest &oai_website_order_put_request);
 
     /**
     * @param[in]  id QString [required]

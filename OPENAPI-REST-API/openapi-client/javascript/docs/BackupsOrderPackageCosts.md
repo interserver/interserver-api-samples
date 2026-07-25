@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupsOrderPackageCosts
+# InterserverApiClient.BackupsOrderPackageCosts
 
 ## Properties
 

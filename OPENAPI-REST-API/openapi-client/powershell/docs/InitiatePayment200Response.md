@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$InitiatePayment200Response = Initialize-PSOpenAPIToolsInitiatePayment200Response  -Type null `
+$InitiatePayment200Response = Initialize-InterserverApiInitiatePayment200Response  -Type null `
  -Redirect null `
  -Action null `
  -Method null `

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerOrderControlPanel model module.
  * @module model/ServerOrderControlPanel
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderControlPanel {
     /**

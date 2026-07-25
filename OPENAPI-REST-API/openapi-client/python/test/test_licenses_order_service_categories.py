@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.licenses_order_service_categories import LicensesOrderServiceCategories
+from interserver_api_client.models.licenses_order_service_categories import LicensesOrderServiceCategories
 
 class TestLicensesOrderServiceCategories(unittest.TestCase):
     """LicensesOrderServiceCategories unit test stubs"""
@@ -36,7 +36,7 @@ class TestLicensesOrderServiceCategories(unittest.TestCase):
         model = LicensesOrderServiceCategories()
         if include_optional:
             return LicensesOrderServiceCategories(
-                licenses_order_service_categories509 = openapi_client.models.licenses_order_service_categories509.LicensesOrderServiceCategories509(
+                licenses_order_service_categories509 = interserver_api_client.models.licenses_order_service_categories509.LicensesOrderServiceCategories509(
                     category_id = '509', 
                     category_name = 'Webuzo', 
                     category_tag = 'webuzo', 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderOsLi = Initialize-PSOpenAPIToolsServerOrderOsLi  -Var51 null
+$ServerOrderOsLi = Initialize-InterserverApiServerOrderOsLi  -Var51 null
 ```
 
 - Convert the resource to JSON

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.servers_buy_now_response_order_details import ServersBuyNowResponseOrderDetails
+from interserver_api_client.models.servers_buy_now_response_order_details import ServersBuyNowResponseOrderDetails
 
 class TestServersBuyNowResponseOrderDetails(unittest.TestCase):
     """ServersBuyNowResponseOrderDetails unit test stubs"""

@@ -20,4 +20,3 @@ case class GetScrubIpDetails200ResponseClientLinksInner(
   help_text: Option[String] = None,
   other_attr: Option[String] = None
 )
-

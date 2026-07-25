@@ -25,12 +25,6 @@ Protected Interface LicensesApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub GetLicenseOrderCatTagInfoCallback(status As OpenAPIClient.OpenAPIClientException)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub GetLicensesWelcomeEmailCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SuccessTextResponse)
 		  
 		End Sub

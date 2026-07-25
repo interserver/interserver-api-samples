@@ -4,8 +4,8 @@ import six
 from myadmin-client-python-flask.models.charge_invoice_rows import ChargeInvoiceRows  # noqa: E501
 from myadmin-client-python-flask.models.hostname_object import HostnameObject  # noqa: E501
 from myadmin-client-python-flask.models.id_backups_body2 import IdBackupsBody2  # noqa: E501
-from myadmin-client-python-flask.models.inline_response20011 import InlineResponse20011  # noqa: E501
-from myadmin-client-python-flask.models.inline_response20022 import InlineResponse20022  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20012 import InlineResponse20012  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20024 import InlineResponse20024  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
 from myadmin-client-python-flask.models.password_request import PasswordRequest  # noqa: E501
 from myadmin-client-python-flask.models.queue_response import QueueResponse  # noqa: E501
@@ -30,9 +30,9 @@ from myadmin-client-python-flask import util
 
 
 def add_vps(body=None):  # noqa: E501
-    """Place VPS Order
+    """Place a new VPS order, create the invoice, and queue provisioning
 
-    Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first. # noqa: E501
+    Step 3 of the VPS order flow — actually places the order. Revalidates the same configuration that &#x60;putVps&#x60; accepts (so the request is safe even if &#x60;putVps&#x60; was skipped), then calls &#x60;place_buy_vps&#x60;: allocates a backing hypervisor server via &#x60;get_vps_next_server&#x60;, creates a &#x60;Repeat_Invoice&#x60; ORM row for the recurring charge, generates the initial &#x60;invoices&#x60; row via &#x60;$repeat_invoice-&gt;invoice()&#x60;, inserts a &#x60;vps&#x60; service record with &#x60;vps_status&#x3D;&#x27;pending&#x27;&#x60;, and creates any control-panel addon invoices (CPanel/DirectAdmin). Returns the new service id plus invoice ids the caller must pay before provisioning runs. **Real money** — call &#x60;putVps&#x60; first to preview cost. Sibling ops: &#x60;getNewVps&#x60;, &#x60;putVps&#x60;, &#x60;getVpsInfo&#x60;, &#x60;VPSCancel&#x60;.  **Body fields:** Identical to &#x60;putVps&#x60;. Required: &#x60;osDistro&#x60;, &#x60;osVersion&#x60;, &#x60;vpsPlatform&#x60;, &#x60;slices&#x60;. Optional: &#x60;location&#x60; (default 1), &#x60;period&#x60; (default 1), &#x60;coupon&#x60;, &#x60;hostname&#x60;, &#x60;rootpass&#x60;, &#x60;controlpanel&#x60; (default &#x60;none&#x60;), &#x60;comment&#x60;. Same validation rules apply (slice range, rootpass regex for Linux, hostname FQDN format, platform↔OS↔controlpanel compatibility).  **Returned fields** (schema &#x60;ServiceOrderPostResponse&#x60;): - &#x60;success&#x60; (bool) — &#x60;true&#x60; on successful placement. - &#x60;serviceid&#x60; (integer) — new VPS id; use this with &#x60;getVpsInfo&#x60; to poll status. - &#x60;iid&#x60; (string) — primary invoice id (numeric). - &#x60;real_iids&#x60; (array of strings) — numeric invoice ids to pass to &#x60;initiatePayment&#x60; (&#x60;invoices&#x60; path param). - &#x60;iids&#x60; (array of strings) — tagged invoice ids (e.g. &#x60;SERVICEvps12345&#x60;) — alternative payment identifier. - &#x60;total_cost&#x60; (decimal string) — total to pay across all generated invoices. - &#x60;invoice_description&#x60; (string) — human-readable summary (e.g. &#x60;KVM 2 Slices&#x60;). - &#x60;cj_params&#x60; (object) — Commission Junction tracking parameters (affiliate flows).  **Side effects:** - Inserts row into &#x60;vps&#x60; table (&#x60;vps_status&#x3D;&#x27;pending&#x27;&#x60;). - Inserts &#x60;repeat_invoices&#x60; row for the recurring charge. - Inserts &#x60;invoices&#x60; row for the first period charge. - Inserts additional &#x60;invoices&#x60; rows for CPanel/DirectAdmin addons if &#x60;controlpanel !&#x3D; &#x27;none&#x27;&#x60;. - Logs a &#x60;vps&#x60; signup event in &#x60;history_log&#x60;. - Saves root password to &#x60;history_log&#x60; (encrypted at rest).  **Errors:** - &#x60;400 Bad Request&#x60; — validation failed; response body is the &#x60;errors&#x60; array from validation. - &#x60;401 Unauthorized&#x60; — missing session/API key.  **Related calls:** - **Prerequisite:** &#x60;getNewVps&#x60; (catalog), &#x60;putVps&#x60; (preview cost — strongly recommended). - **Next:** &#x60;getBillingInvoice&#x60; (review invoice line items), &#x60;initiatePayment&#x60; (&#x60;GET /billing/pay/{method}/{invoices}&#x60; — pay with &#x60;real_iids&#x60;), then &#x60;getVpsInfo&#x60; (poll for &#x60;vps_status &#x3D;&#x3D; \&quot;active\&quot;&#x60;), &#x60;getVpsWelcomeEmail&#x60; (resend credentials). - **Cancel before paying:** &#x60;VPSCancel&#x60;.  **Example request body:** Same as &#x60;putVps&#x60;.  **Example response:** &#x60;&#x60;&#x60;json {   \&quot;success\&quot;: true,   \&quot;serviceid\&quot;: 12345,   \&quot;iid\&quot;: \&quot;25296600\&quot;,   \&quot;real_iids\&quot;: [\&quot;25296600\&quot;],   \&quot;iids\&quot;: [\&quot;SERVICEvps12345\&quot;],   \&quot;total_cost\&quot;: \&quot;12.00\&quot;,   \&quot;invoice_description\&quot;: \&quot;KVM 2 Slices\&quot;,   \&quot;cj_params\&quot;: {} } &#x60;&#x60;&#x60; **Full ordering happy path:** &#x60;&#x60;&#x60;text GET /vps/order                                  -&gt; catalog (getNewVps) PUT /vps/order { ...config }                    -&gt; price quote (putVps) POST /vps/order { ...config }                   -&gt; { serviceid, real_iids } (addVps) GET /billing/invoices/{iid}                     -&gt; confirm invoice (getBillingInvoice) GET /billing/pay/cc/{real_iids[0]}              -&gt; pay (payInvoice; type&#x3D;submit|redirect|single) GET /vps/{serviceid}                            -&gt; poll until vps_status&#x3D;&#x3D;\&quot;active\&quot; (getVpsInfo) &#x60;&#x60;&#x60;  # noqa: E501
 
     :param body: 
     :type body: dict | bytes
@@ -45,9 +45,9 @@ def add_vps(body=None):  # noqa: E501
 
 
 def add_vps(os_distro=None, slices=None, vps_platform=None, controlpanel=None, period=None, location=None, os_version=None, hostname=None, coupon=None, rootpass=None, comment=None):  # noqa: E501
-    """Place VPS Order
+    """Place a new VPS order, create the invoice, and queue provisioning
 
-    Places an order for a new VPS. Use &#x60;PUT /vps/order&#x60; to validate the order first. # noqa: E501
+    Step 3 of the VPS order flow — actually places the order. Revalidates the same configuration that &#x60;putVps&#x60; accepts (so the request is safe even if &#x60;putVps&#x60; was skipped), then calls &#x60;place_buy_vps&#x60;: allocates a backing hypervisor server via &#x60;get_vps_next_server&#x60;, creates a &#x60;Repeat_Invoice&#x60; ORM row for the recurring charge, generates the initial &#x60;invoices&#x60; row via &#x60;$repeat_invoice-&gt;invoice()&#x60;, inserts a &#x60;vps&#x60; service record with &#x60;vps_status&#x3D;&#x27;pending&#x27;&#x60;, and creates any control-panel addon invoices (CPanel/DirectAdmin). Returns the new service id plus invoice ids the caller must pay before provisioning runs. **Real money** — call &#x60;putVps&#x60; first to preview cost. Sibling ops: &#x60;getNewVps&#x60;, &#x60;putVps&#x60;, &#x60;getVpsInfo&#x60;, &#x60;VPSCancel&#x60;.  **Body fields:** Identical to &#x60;putVps&#x60;. Required: &#x60;osDistro&#x60;, &#x60;osVersion&#x60;, &#x60;vpsPlatform&#x60;, &#x60;slices&#x60;. Optional: &#x60;location&#x60; (default 1), &#x60;period&#x60; (default 1), &#x60;coupon&#x60;, &#x60;hostname&#x60;, &#x60;rootpass&#x60;, &#x60;controlpanel&#x60; (default &#x60;none&#x60;), &#x60;comment&#x60;. Same validation rules apply (slice range, rootpass regex for Linux, hostname FQDN format, platform↔OS↔controlpanel compatibility).  **Returned fields** (schema &#x60;ServiceOrderPostResponse&#x60;): - &#x60;success&#x60; (bool) — &#x60;true&#x60; on successful placement. - &#x60;serviceid&#x60; (integer) — new VPS id; use this with &#x60;getVpsInfo&#x60; to poll status. - &#x60;iid&#x60; (string) — primary invoice id (numeric). - &#x60;real_iids&#x60; (array of strings) — numeric invoice ids to pass to &#x60;initiatePayment&#x60; (&#x60;invoices&#x60; path param). - &#x60;iids&#x60; (array of strings) — tagged invoice ids (e.g. &#x60;SERVICEvps12345&#x60;) — alternative payment identifier. - &#x60;total_cost&#x60; (decimal string) — total to pay across all generated invoices. - &#x60;invoice_description&#x60; (string) — human-readable summary (e.g. &#x60;KVM 2 Slices&#x60;). - &#x60;cj_params&#x60; (object) — Commission Junction tracking parameters (affiliate flows).  **Side effects:** - Inserts row into &#x60;vps&#x60; table (&#x60;vps_status&#x3D;&#x27;pending&#x27;&#x60;). - Inserts &#x60;repeat_invoices&#x60; row for the recurring charge. - Inserts &#x60;invoices&#x60; row for the first period charge. - Inserts additional &#x60;invoices&#x60; rows for CPanel/DirectAdmin addons if &#x60;controlpanel !&#x3D; &#x27;none&#x27;&#x60;. - Logs a &#x60;vps&#x60; signup event in &#x60;history_log&#x60;. - Saves root password to &#x60;history_log&#x60; (encrypted at rest).  **Errors:** - &#x60;400 Bad Request&#x60; — validation failed; response body is the &#x60;errors&#x60; array from validation. - &#x60;401 Unauthorized&#x60; — missing session/API key.  **Related calls:** - **Prerequisite:** &#x60;getNewVps&#x60; (catalog), &#x60;putVps&#x60; (preview cost — strongly recommended). - **Next:** &#x60;getBillingInvoice&#x60; (review invoice line items), &#x60;initiatePayment&#x60; (&#x60;GET /billing/pay/{method}/{invoices}&#x60; — pay with &#x60;real_iids&#x60;), then &#x60;getVpsInfo&#x60; (poll for &#x60;vps_status &#x3D;&#x3D; \&quot;active\&quot;&#x60;), &#x60;getVpsWelcomeEmail&#x60; (resend credentials). - **Cancel before paying:** &#x60;VPSCancel&#x60;.  **Example request body:** Same as &#x60;putVps&#x60;.  **Example response:** &#x60;&#x60;&#x60;json {   \&quot;success\&quot;: true,   \&quot;serviceid\&quot;: 12345,   \&quot;iid\&quot;: \&quot;25296600\&quot;,   \&quot;real_iids\&quot;: [\&quot;25296600\&quot;],   \&quot;iids\&quot;: [\&quot;SERVICEvps12345\&quot;],   \&quot;total_cost\&quot;: \&quot;12.00\&quot;,   \&quot;invoice_description\&quot;: \&quot;KVM 2 Slices\&quot;,   \&quot;cj_params\&quot;: {} } &#x60;&#x60;&#x60; **Full ordering happy path:** &#x60;&#x60;&#x60;text GET /vps/order                                  -&gt; catalog (getNewVps) PUT /vps/order { ...config }                    -&gt; price quote (putVps) POST /vps/order { ...config }                   -&gt; { serviceid, real_iids } (addVps) GET /billing/invoices/{iid}                     -&gt; confirm invoice (getBillingInvoice) GET /billing/pay/cc/{real_iids[0]}              -&gt; pay (payInvoice; type&#x3D;submit|redirect|single) GET /vps/{serviceid}                            -&gt; poll until vps_status&#x3D;&#x3D;\&quot;active\&quot; (getVpsInfo) &#x60;&#x60;&#x60;  # noqa: E501
 
     :param os_distro: 
     :type os_distro: str
@@ -78,9 +78,9 @@ def add_vps(os_distro=None, slices=None, vps_platform=None, controlpanel=None, p
 
 
 def delete_vps_backup(id, file, all=None):  # noqa: E501
-    """Delete VPS Backup
+    """Permanently delete a VPS backup file by name (irreversible)
 
-    Permanently removes the specified backup file from storage. Use &#x60;GET /vps/{id}/backups&#x60; to list available backup filenames before deleting. # noqa: E501
+    Removes a backup file from storage to free space. For &#x60;minio&#x60;-typed backups runs &#x60;mc rm --force --recursive&#x60; on the path; for &#x60;swift&#x60;-typed backups removes the storage object via the Swift API. ZFS-typed backups **cannot** be deleted through this endpoint — they return an error directing the caller to open a support ticket. **Irreversible** — once deleted the backup cannot be used with &#x60;postVpsRestore&#x60; or &#x60;downloadVpsBackup&#x60;. Sibling ops: &#x60;getVpsBackups&#x60; (list), &#x60;downloadVpsBackup&#x60; (download first), &#x60;getVpsBackup&#x60; (create new).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Query params:** - &#x60;file&#x60; (string, required) — exact &#x60;name&#x60; from &#x60;getVpsBackups&#x60; (the canonical backup identifier).  **Returns:** &#x60;SuccessTextResponse&#x60; — &#x60;Backup &lt;name&gt; removed.&#x60; on success.  **Side effects:** - **minio**: &#x60;mc rm --force --recursive&#x60; removes the entire backup directory. - **swift**: deletes the listed object(s) plus any multi-part &#x60;extra&#x60; segments.  **Auth:** Session/API key. Ownership enforced via parent VPS.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;No file specified&#x60; — &#x60;file&#x60; query param missing. - **ZFS backup:** &#x60;This type of backup if not removable. Please contact support if you need this removed.&#x60; - **MinIO rm failure:** &#x60;Error removing file &lt;name&gt;&#x60;.  **Related calls:** - **List first to get &#x60;name&#x60;:** &#x60;getVpsBackups&#x60;. - **Download before deleting:** &#x60;downloadVpsBackup&#x60; (MinIO only; Swift/ZFS disabled). - **Restore (don&#x27;t delete):** &#x60;postVpsRestore&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -95,9 +95,9 @@ def delete_vps_backup(id, file, all=None):  # noqa: E501
 
 
 def do_vps_block_smtp(id):  # noqa: E501
-    """Blocks SMTP
+    """Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
 
-    Blocks outbound SMTP (port 25) on the VPS to prevent spam. Useful for VPS that do not need to send email. # noqa: E501
+    Blocks outbound SMTP (port 25) traffic on the VPS at the hypervisor level — typical for cPanel/WHM customers who route through a smart relay, or for VPS that should never emit mail directly. Queues a &#x60;block_smtp&#x60; action on the &#x60;vpsqueue&#x60; and triggers a VNC re-setup. Despite being GET, this is a side-effecting action and the MCP parser flags it accordingly. **One-way from the client side:** there is no public unblock endpoint — re-enabling outbound SMTP requires a support ticket so abuse history can be reviewed. Sibling ops: &#x60;getVpsInfo&#x60; (verify state), &#x60;doVpsRestart&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;{ text, queueId }&#x60; — &#x60;queueId&#x60; references the &#x60;queue_log&#x60; row; allow up to 2 minutes for the iptables/firewall rule to take effect.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;409 VPS is not active&#x60; — &#x60;vps_status !&#x3D; \&quot;active\&quot;&#x60;.  **Reversibility:** Not client-reversible — open a ticket.  **Related calls:** - **Verify state:** &#x60;getVpsInfo&#x60;. - **General lifecycle:** &#x60;doVpsStart&#x60;, &#x60;doVpsStop&#x60;, &#x60;doVpsRestart&#x60;.  # noqa: E501
 
     :param id: VPS ID number.
     :type id: int
@@ -108,9 +108,9 @@ def do_vps_block_smtp(id):  # noqa: E501
 
 
 def do_vps_disable_cd(id):  # noqa: E501
-    """Disable CD Drive
+    """Remove the virtual CD/DVD device entirely from the VPS configuration
 
-    Disables the virtual CD drive on the VPS. # noqa: E501
+    Removes the virtual CD/DVD device from the VPS hardware configuration entirely — distinct from &#x60;doVpsEjectCd&#x60;, which only unmounts the ISO but leaves the drive attached. Queues a &#x60;disable_cd&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) and triggers a VNC re-setup. Side-effecting GET. Reversible by attaching a new CD via &#x60;postVpsInsertCd&#x60;. Sibling ops: &#x60;doVpsEjectCd&#x60; (eject ISO but keep drive), &#x60;getVpsInsertCd&#x60; (list ISOs), &#x60;postVpsInsertCd&#x60; (mount ISO).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;{ text, queueId }&#x60; — allow ~2 minutes for hypervisor action.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;disable_cd&#x60; row. - Calls &#x60;vps_resetup_vnc()&#x60; to refresh the VNC config.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Re-attach drive:** &#x60;postVpsInsertCd&#x60; (provide ISO URL). - **Just unmount the ISO:** &#x60;doVpsEjectCd&#x60;.  # noqa: E501
 
     :param id: VPS ID number.
     :type id: int
@@ -121,9 +121,9 @@ def do_vps_disable_cd(id):  # noqa: E501
 
 
 def do_vps_disable_quota(id):  # noqa: E501
-    """Disable Quotas
+    """Disable per-user disk quota enforcement inside the VPS guest OS
 
-    Disables disk quota enforcement on the VPS. # noqa: E501
+    Stops enforcing per-user disk quotas inside the VPS guest OS — useful when an application or user workflow conflicts with quota limits. Queues a &#x60;disable_quota&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) and triggers a VNC re-setup. Side-effecting GET. Reversible via &#x60;doVpsEnableQuota&#x60;. Sibling op: &#x60;doVpsEnableQuota&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;{ text, queueId }&#x60; — allow ~2 minutes.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;disable_quota&#x60; row. - Calls &#x60;vps_resetup_vnc()&#x60;.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Re-enable:** &#x60;doVpsEnableQuota&#x60;.  # noqa: E501
 
     :param id: VPS ID number.
     :type id: int
@@ -134,9 +134,9 @@ def do_vps_disable_quota(id):  # noqa: E501
 
 
 def do_vps_eject_cd(id):  # noqa: E501
-    """Eject CD Drive
+    """Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
 
-    Ejects the virtual CD from the VPS CD drive. # noqa: E501
+    Unmounts whatever ISO is currently in the VPS virtual CD drive, leaving the drive attached so another ISO can be mounted. Distinct from &#x60;doVpsDisableCd&#x60; (which removes the drive itself). Queues an &#x60;eject_cd&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) and triggers a VNC re-setup. Side-effecting GET. Sibling ops: &#x60;getVpsInsertCd&#x60; (list available ISOs), &#x60;postVpsInsertCd&#x60; (mount a different one), &#x60;doVpsDisableCd&#x60; (remove drive entirely).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;{ text, queueId }&#x60; — allow ~2 minutes.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;eject_cd&#x60; row. - Calls &#x60;vps_resetup_vnc()&#x60;.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Mount a different ISO:** &#x60;postVpsInsertCd&#x60;. - **Remove the drive entirely:** &#x60;doVpsDisableCd&#x60;.  # noqa: E501
 
     :param id: VPS ID number.
     :type id: int
@@ -147,9 +147,9 @@ def do_vps_eject_cd(id):  # noqa: E501
 
 
 def do_vps_enable_quota(id):  # noqa: E501
-    """Enable Quotas
+    """Enable per-user disk quota enforcement inside the VPS guest OS
 
-    Enables disk quota enforcement on the VPS. # noqa: E501
+    Turns on per-user disk-quota enforcement inside the VPS guest OS. Queues an &#x60;enable_quota&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) and triggers a VNC re-setup. Side-effecting GET. Reversible via &#x60;doVpsDisableQuota&#x60;. Sibling op: &#x60;doVpsDisableQuota&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;{ text, queueId }&#x60; — allow ~2 minutes.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;enable_quota&#x60; row. - Calls &#x60;vps_resetup_vnc()&#x60;.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Disable later:** &#x60;doVpsDisableQuota&#x60;.  # noqa: E501
 
     :param id: VPS ID number.
     :type id: int
@@ -160,9 +160,9 @@ def do_vps_enable_quota(id):  # noqa: E501
 
 
 def do_vps_restart(id):  # noqa: E501
-    """Restart VPS
+    """Reboot the VPS — preferred over stop+start for software changes
 
-    Restarts the VPS. # noqa: E501
+    Reboots the VPS — typically after a kernel update, configuration change, or to recover from an unresponsive state. **Preferred over &#x60;doVpsStop&#x60; followed by &#x60;doVpsStart&#x60;** because it preserves the boot context and lets the hypervisor handle the sequence atomically. Queues a &#x60;restart&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) and triggers a VNC re-setup. Side-effecting GET. Idempotent in effect — restarting a running VPS reboots it, restarting a stopped VPS starts it. Sibling ops: &#x60;doVpsStart&#x60;, &#x60;doVpsStop&#x60;, &#x60;getVpsInfo&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;{ text, queueId }&#x60; — allow ~2 minutes; poll &#x60;getVpsInfo&#x60; to confirm state.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;restart&#x60; row. - Calls &#x60;vps_resetup_vnc()&#x60; to refresh the VNC config.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60; — also returned for &#x60;cancelled&#x60;/&#x60;suspended&#x60; services.  **Related calls:** - **Verify state:** &#x60;getVpsInfo&#x60;. - **Power off only:** &#x60;doVpsStop&#x60;. - **Power on:** &#x60;doVpsStart&#x60;. - **Boot from CD:** &#x60;postVpsInsertCd&#x60; then &#x60;doVpsRestart&#x60;.  # noqa: E501
 
     :param id: VPS ID number.
     :type id: int
@@ -173,9 +173,9 @@ def do_vps_restart(id):  # noqa: E501
 
 
 def do_vps_start(id):  # noqa: E501
-    """Start VPS
+    """Power on a stopped VPS instance
 
-    Powers on the VPS. # noqa: E501
+    Powers on a stopped VPS. Queues a &#x60;start&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) and triggers a VNC re-setup. Side-effecting GET, idempotent in practice — calling on an already-running VPS is a no-op at the hypervisor. The &#x60;vps_status&#x60; field at the service level remains &#x60;active&#x60; (status reflects billing/lifecycle, not running power state); use &#x60;getVpsTrafficUsage&#x60; or external monitoring to confirm the VPS is actually up. Sibling ops: &#x60;doVpsStop&#x60;, &#x60;doVpsRestart&#x60;, &#x60;getVpsInfo&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;{ text, queueId }&#x60; — &#x60;queueId&#x60; references the &#x60;queue_log&#x60; entry. Allow ~10–30 s for the hypervisor to act.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;start&#x60; row. - Calls &#x60;vps_resetup_vnc()&#x60;.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60; — service is &#x60;cancelled&#x60;, &#x60;suspended&#x60; (non-payment), or &#x60;pending&#x60;. Resolve via payment (&#x60;initiatePayment&#x60;) for &#x60;suspended&#x60;, or contact support for &#x60;cancelled&#x60;/&#x60;pending&#x60; issues.  **Related calls:** - **Reboot instead:** &#x60;doVpsRestart&#x60; (preferred over stop+start). - **Power off:** &#x60;doVpsStop&#x60;. - **Current state:** &#x60;getVpsInfo&#x60;.  # noqa: E501
 
     :param id: VPS ID number.
     :type id: int
@@ -186,9 +186,9 @@ def do_vps_start(id):  # noqa: E501
 
 
 def do_vps_stop(id):  # noqa: E501
-    """Stop VPS
+    """Power off a running VPS — billing continues until cancellation
 
-    Powers off the VPS. # noqa: E501
+    Halts the VPS without rebooting — typical before manually triggering a snapshot, freeing hypervisor resources, or temporarily taking a workload offline. Queues a &#x60;stop&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) and triggers a VNC re-setup. Side-effecting GET, idempotent — stopping an already-stopped VPS is a no-op. **Billing continues while the VPS is stopped** — to stop both the workload and billing, use &#x60;VPSCancel&#x60;. Sibling ops: &#x60;doVpsStart&#x60;, &#x60;doVpsRestart&#x60;, &#x60;VPSCancel&#x60;, &#x60;getVpsBackup&#x60; (snapshot first).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;{ text, queueId }&#x60;. Allow ~10–30 s.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;stop&#x60; row. - Calls &#x60;vps_resetup_vnc()&#x60;.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Reboot instead:** &#x60;doVpsRestart&#x60; (preferred for software changes). - **Power on later:** &#x60;doVpsStart&#x60;. - **Snapshot first:** &#x60;getVpsBackup&#x60;. - **Stop billing too:** &#x60;VPSCancel&#x60;.  # noqa: E501
 
     :param id: VPS ID number.
     :type id: int
@@ -199,9 +199,9 @@ def do_vps_stop(id):  # noqa: E501
 
 
 def download_vps_backup(body, id, all=None):  # noqa: E501
-    """Download VPS Backup
+    """Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
 
-    Generates a pre-signed download URL for the specified backup file. The URL is valid for 24 hours. Use &#x60;GET /vps/{id}/backups&#x60; to list available backup filenames. # noqa: E501
+    Generates a time-limited download link for a MinIO/S3-backed VPS backup so the customer can fetch it off-platform. Runs &#x60;mc share download --expire&#x3D;24h&#x60; against the resolved backup path and returns the resulting public URL — valid for 24 hours from issue. Only &#x60;minio&#x60;-typed backups are downloadable; &#x60;swift&#x60; and &#x60;zfs&#x60; backups have direct download disabled (returns an error directing the customer to support). Sibling ops: &#x60;getVpsBackups&#x60; (list to find &#x60;name&#x60;), &#x60;postVpsRestore&#x60; (restore in place — no download needed), &#x60;deleteVpsBackup&#x60;, &#x60;getVpsBackup&#x60; (create new).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body (JSON or multipart, required):** - &#x60;file&#x60; (string, required) — exact &#x60;name&#x60; from &#x60;getVpsBackups&#x60;.  **Returns:** - &#x60;text&#x60; (string) — &#x60;URL available for the next 24 hours&#x60;. - &#x60;url&#x60; (string) — pre-signed download URL (HTTPS).  **Auth:** Session/API key. Ownership enforced via parent VPS.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;No file specified&#x60; — &#x60;file&#x60; body field missing. - **Swift backup:** &#x60;Downloads for this type have been disabled. Please contact support if you need this backup.&#x60; - **ZFS backup:** same disabled message. - **MinIO share failure:** &#x60;Error sharing file &lt;name&gt;&#x60;.  **Related calls:** - **Prerequisite:** &#x60;getVpsBackups&#x60; (find a backup with &#x60;type &#x3D;&#x3D; \&quot;minio\&quot;&#x60;). - **Alternative:** &#x60;postVpsRestore&#x60; (restore in place — no download). - **Cleanup after download:** &#x60;deleteVpsBackup&#x60;.  # noqa: E501
 
     :param body: 
     :type body: dict | bytes
@@ -210,7 +210,7 @@ def download_vps_backup(body, id, all=None):  # noqa: E501
     :param all: Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS.
     :type all: str
 
-    :rtype: InlineResponse20011
+    :rtype: InlineResponse20012
     """
     if connexion.request.is_json:
         body = IdBackupsBody2.from_dict(connexion.request.get_json())  # noqa: E501
@@ -218,9 +218,9 @@ def download_vps_backup(body, id, all=None):  # noqa: E501
 
 
 def download_vps_backup(file, id, all=None):  # noqa: E501
-    """Download VPS Backup
+    """Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
 
-    Generates a pre-signed download URL for the specified backup file. The URL is valid for 24 hours. Use &#x60;GET /vps/{id}/backups&#x60; to list available backup filenames. # noqa: E501
+    Generates a time-limited download link for a MinIO/S3-backed VPS backup so the customer can fetch it off-platform. Runs &#x60;mc share download --expire&#x3D;24h&#x60; against the resolved backup path and returns the resulting public URL — valid for 24 hours from issue. Only &#x60;minio&#x60;-typed backups are downloadable; &#x60;swift&#x60; and &#x60;zfs&#x60; backups have direct download disabled (returns an error directing the customer to support). Sibling ops: &#x60;getVpsBackups&#x60; (list to find &#x60;name&#x60;), &#x60;postVpsRestore&#x60; (restore in place — no download needed), &#x60;deleteVpsBackup&#x60;, &#x60;getVpsBackup&#x60; (create new).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body (JSON or multipart, required):** - &#x60;file&#x60; (string, required) — exact &#x60;name&#x60; from &#x60;getVpsBackups&#x60;.  **Returns:** - &#x60;text&#x60; (string) — &#x60;URL available for the next 24 hours&#x60;. - &#x60;url&#x60; (string) — pre-signed download URL (HTTPS).  **Auth:** Session/API key. Ownership enforced via parent VPS.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;No file specified&#x60; — &#x60;file&#x60; body field missing. - **Swift backup:** &#x60;Downloads for this type have been disabled. Please contact support if you need this backup.&#x60; - **ZFS backup:** same disabled message. - **MinIO share failure:** &#x60;Error sharing file &lt;name&gt;&#x60;.  **Related calls:** - **Prerequisite:** &#x60;getVpsBackups&#x60; (find a backup with &#x60;type &#x3D;&#x3D; \&quot;minio\&quot;&#x60;). - **Alternative:** &#x60;postVpsRestore&#x60; (restore in place — no download). - **Cleanup after download:** &#x60;deleteVpsBackup&#x60;.  # noqa: E501
 
     :param file: 
     :type file: str
@@ -229,15 +229,15 @@ def download_vps_backup(file, id, all=None):  # noqa: E501
     :param all: Set to &#x60;1&#x60; to list all backups across all services, not just the ones for the given VPS.
     :type all: str
 
-    :rtype: InlineResponse20011
+    :rtype: InlineResponse20012
     """
     return 'do some magic!'
 
 
 def get_new_vps():  # noqa: E501
-    """VPS Ordering Information
+    """Get the VPS order catalog — platforms, OS templates, locations, pricing
 
-    Retrieves available VPS configurations, OS templates, and pricing for ordering. # noqa: E501
+    Step 1 of the VPS order flow. Returns the full ordering catalog the customer needs to build a valid VPS configuration: virtualization platforms (&#x60;kvm&#x60;, &#x60;kvmstorage&#x60;, &#x60;hyperv&#x60;), OS templates grouped by platform+distro, datacenter locations with current stock flags, per-slice resource costs converted to the customer&#x27;s billing currency, control-panel prices, and slice resource defaults (RAM/HD/BW per slice, max slices per VPS). No path or query params, no body. The response drives the order form; once the user picks a config, call &#x60;putVps&#x60; for a dry-run price quote, then &#x60;addVps&#x60; to actually place the order. Sibling ops: &#x60;putVps&#x60;, &#x60;addVps&#x60;, &#x60;getVpsList&#x60; (existing VPS).  **Returned top-level fields** (schema &#x60;VpsOrder&#x60;): - &#x60;platformNames&#x60; (object) — display names keyed by platform tag (&#x60;{kvm: \&quot;KVM\&quot;, kvmstorage: \&quot;KVM Storage\&quot;, hyperv: \&quot;HyperV\&quot;}&#x60;). - &#x60;platformPackages&#x60; (object) — service-type ids keyed by platform tag (&#x60;{kvm: 32, kvmstorage: 57, hyperv: 54}&#x60;). - &#x60;packageCosts&#x60; (object) — base list cost keyed by service-type id. - &#x60;templates&#x60; (object) — nested &#x60;{platform: {os: {template_file: template_version}}}&#x60; template tree. - &#x60;osNames&#x60; (object) — display name per &#x60;template_os&#x60; key. - &#x60;locationNames&#x60; (object) — &#x60;{1: \&quot;New Jersey\&quot;, 2: \&quot;Los Angeles\&quot;, 3: \&quot;Dallas, TX\&quot;}&#x60;. - &#x60;locationStock&#x60; (object) — &#x60;{location_id: {platform_tag: bool}}&#x60; — &#x60;true&#x60; &#x3D; in stock. - &#x60;vpsSlice&lt;Platform&gt;Cost&#x60; (float) — per-slice cost per platform in customer currency (e.g. &#x60;vpsSliceKvmLCost&#x60;, &#x60;vpsSliceKvmStorageCost&#x60;, &#x60;vpsSliceHypervCost&#x60;, &#x60;vpsSliceOvzCost&#x60;). - &#x60;cpanelCost&#x60;, &#x60;daCost&#x60; (float) — control-panel addon costs. - &#x60;ramSlice&#x60;, &#x60;hdSlice&#x60;, &#x60;bwSlice&#x60; (int) — RAM (MB), HD (GB), BW (GB) per slice. - &#x60;maxSlices&#x60; (int) — &#x60;VPS_SLICE_MAX&#x60; cap for non-admin callers. - &#x60;currency&#x60;, &#x60;currencySymbol&#x60; (string) — derived from the account profile.  **Auth:** Session or API key.  **Errors:** - &#x60;401 Unauthorized&#x60; — missing session/API key.  **Related calls:** - **Next:** &#x60;putVps&#x60; (validate + quote a chosen config — no charge), &#x60;addVps&#x60; (place the order). - **After ordering:** pay via &#x60;initiatePayment&#x60; with the returned &#x60;real_iids&#x60;, then poll &#x60;getVpsInfo&#x60; until &#x60;vps_status &#x3D;&#x3D; \&quot;active\&quot;&#x60;.  **Example happy-path response (abridged):** &#x60;&#x60;&#x60;json {   \&quot;platformNames\&quot;: {\&quot;kvm\&quot;: \&quot;KVM\&quot;, \&quot;kvmstorage\&quot;: \&quot;KVM Storage\&quot;, \&quot;hyperv\&quot;: \&quot;HyperV\&quot;},   \&quot;platformPackages\&quot;: {\&quot;kvm\&quot;: 32, \&quot;kvmstorage\&quot;: 57, \&quot;hyperv\&quot;: 54},   \&quot;locationNames\&quot;: {\&quot;1\&quot;: \&quot;New Jersey\&quot;, \&quot;2\&quot;: \&quot;Los Angeles\&quot;, \&quot;3\&quot;: \&quot;Dallas, TX\&quot;},   \&quot;locationStock\&quot;: {\&quot;1\&quot;: {\&quot;kvm\&quot;: true, \&quot;kvmstorage\&quot;: true, \&quot;hyperv\&quot;: false}},   \&quot;osNames\&quot;: {\&quot;centos-7-x86_64\&quot;: \&quot;CentOS 7\&quot;, \&quot;ubuntu-22.04-x86_64\&quot;: \&quot;Ubuntu 22.04\&quot;},   \&quot;templates\&quot;: {\&quot;kvm\&quot;: {\&quot;centos-7-x86_64\&quot;: {\&quot;centos-7-x86_64.qcow2\&quot;: \&quot;7\&quot;}}},   \&quot;vpsSliceKvmLCost\&quot;: 6.00,   \&quot;cpanelCost\&quot;: 18.00,   \&quot;ramSlice\&quot;: 2048, \&quot;hdSlice\&quot;: 25, \&quot;bwSlice\&quot;: 2000, \&quot;maxSlices\&quot;: 8,   \&quot;currency\&quot;: \&quot;USD\&quot;, \&quot;currencySymbol\&quot;: \&quot;$\&quot; } &#x60;&#x60;&#x60;  # noqa: E501
 
 
     :rtype: VpsOrder
@@ -245,10 +245,23 @@ def get_new_vps():  # noqa: E501
     return 'do some magic!'
 
 
-def get_vps_backups(id, all=None):  # noqa: E501
-    """Get VPS Backups List
+def get_vps_backup(id):  # noqa: E501
+    """Trigger a manual on-demand snapshot/backup of the VPS
 
-    Returns the available backups for the VPS across all storage systems (Swift, MinIO, ZFS). Use the backup &#x60;name&#x60; value with &#x60;PATCH /vps/{id}/backups&#x60; to download or &#x60;DELETE /vps/{id}/backups&#x60; to remove a backup. Use &#x60;POST /vps/{id}/restore&#x60; to restore from a backup. # noqa: E501
+    Creates an on-demand backup of the VPS — typically called before a risky change (OS reinstall, slice upgrade, restore from older backup). Enqueues a &#x60;backup&#x60; action on the hypervisor (&#x60;history_log&#x60; &#x60;vpsqueue&#x60; entry) and returns immediately; the actual snapshot runs asynchronously and may take a few minutes. Despite being GET, this is a side-effecting action and the MCP parser flags it accordingly. The new backup, once complete, appears in &#x60;getVpsBackups&#x60; keyed by &#x60;name&#x60;. Sibling ops: &#x60;getVpsBackups&#x60; (list), &#x60;downloadVpsBackup&#x60; (download via pre-signed URL), &#x60;deleteVpsBackup&#x60;, &#x60;postVpsRestore&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;{ text: \&quot;Action has been sent to the server. Please allow up to 2 minutes for action to be completed.\&quot;, queueId: &lt;integer&gt; }&#x60; — &#x60;queueId&#x60; is the row id in &#x60;queue_log&#x60;/&#x60;history_log&#x60; and can be used to track action status.  **Backup limits (per platform):** - KVM / KVM Storage: backups **enabled**. - HyperV, OpenVZ, SSD-OpenVZ, Virtuozzo, SSD-Virtuozzo: **disabled** server-side (returns 400 \&quot;Backups are disabled for this type\&quot;). - Max 4 backups per VPS for non-admin callers. If at the cap, returns \&quot;Currently 4 backups per VPS max\&quot; — delete an old one first via &#x60;deleteVpsBackup&#x60;.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;409 VPS is not active&#x60; — &#x60;vps_status !&#x3D; \&quot;active\&quot;&#x60;. - &#x60;400 Backups are disabled for this type&#x60; — incompatible platform. - &#x60;400 Currently 4 backups per VPS max&#x60; — at cap.  **Related calls:** - **List existing:** &#x60;getVpsBackups&#x60;. - **Download:** &#x60;downloadVpsBackup&#x60; (PATCH; returns 24-hr pre-signed URL for MinIO backups; Swift/ZFS disabled). - **Delete:** &#x60;deleteVpsBackup&#x60; (DELETE; Swift/MinIO only). - **Restore from a backup:** &#x60;postVpsRestore&#x60;.  # noqa: E501
+
+    :param id: VPS ID number
+    :type id: int
+
+    :rtype: QueueResponse
+    """
+    return 'do some magic!'
+
+
+def get_vps_backups(id, all=None):  # noqa: E501
+    """List existing backups for the VPS across Swift, MinIO, and ZFS
+
+    Enumerates the backup files available for the VPS across all backend storage systems (OpenStack Swift, MinIO/S3, and ZFS snapshots). Each entry&#x27;s &#x60;name&#x60; is the canonical identifier the caller must pass to sibling endpoints (&#x60;downloadVpsBackup&#x60;, &#x60;deleteVpsBackup&#x60;, &#x60;postVpsRestore&#x60;) — there is no separate integer id. The list is filtered to the VPS&#x27;s owner by default; admins can list all backups on the account by passing &#x60;all&#x3D;1&#x60;. Sibling ops: &#x60;getVpsBackup&#x60; (create new), &#x60;downloadVpsBackup&#x60;, &#x60;deleteVpsBackup&#x60;, &#x60;postVpsRestore&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Query params:** - &#x60;all&#x60; (string, optional, enum &#x60;0&#x60;/&#x60;1&#x60;, default &#x60;0&#x60;) — set to &#x60;1&#x60; to list every backup across all services on the account, not just the ones for &#x60;{id}&#x60;.  **Returns:** &#x60;VpsBackupRows&#x60; — array of objects: - &#x60;name&#x60; (string) — canonical identifier, e.g. &#x60;vps-12345-2026-05-12.tar.gz&#x60;. - &#x60;type&#x60; (string enum) — &#x60;swift&#x60; / &#x60;minio&#x60; / &#x60;zfs&#x60;. Determines which operations are available (see Sibling notes). - &#x60;service&#x60; (integer) — VPS id the backup belongs to. - &#x60;path&#x60; (string) — storage path/URL. - &#x60;size&#x60; (integer) — bytes. - &#x60;repoIdx&#x60; (integer) — repository index (0 or 1 for Swift; selects which credentials/bucket). - &#x60;extra&#x60; (array, optional) — multi-part backup pieces.  **Auth:** Session/API key. Ownership enforced via &#x60;vps_custid&#x60; on the parent VPS.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller.  **Capability matrix by backup type:** - &#x60;swift&#x60;: list ✓, download ✗ (disabled — contact support), delete ✓. - &#x60;minio&#x60;: list ✓, download ✓ (24-hr pre-signed URL via &#x60;downloadVpsBackup&#x60;), delete ✓. - &#x60;zfs&#x60;: list ✓, download ✗ (disabled), delete ✗ (open a ticket).  **Related calls:** - **Create new:** &#x60;getVpsBackup&#x60;. - **Download:** &#x60;downloadVpsBackup&#x60; (PATCH). - **Delete:** &#x60;deleteVpsBackup&#x60; (DELETE). - **Restore:** &#x60;postVpsRestore&#x60; — pass &#x60;backup&#x60; as &#x60;&lt;type&gt;:&lt;service&gt;:&lt;name&gt;&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -261,9 +274,9 @@ def get_vps_backups(id, all=None):  # noqa: E501
 
 
 def get_vps_buy_hd_space(id):  # noqa: E501
-    """HD Space Addon Info
+    """Get current additional disk size and per-GB monthly cost for the VPS
 
-    Returns available hard drive space addon options and pricing for the VPS. # noqa: E501
+    Step 1 of the disk-space addon flow. Returns the current \&quot;Additional N GB Space\&quot; already purchased for the VPS (0 if none) and the per-GB monthly cost in USD — both adjusted for the customer&#x27;s reseller pricing tier via &#x60;get_reseller_price&#x60;. Read-only. Use this to populate a disk-upgrade form before calling &#x60;putVpsBuyHdSpace&#x60; (preview) and &#x60;postVpsBuyHdSpace&#x60; (commit). For whole-plan upgrades (CPU+RAM+disk together) use the slices flow instead (&#x60;getVpsSlices&#x60; / &#x60;postVpsSlices&#x60;). Sibling ops: &#x60;putVpsBuyHdSpace&#x60;, &#x60;postVpsBuyHdSpace&#x60;, &#x60;postVpsSlices&#x60;, &#x60;getVpsInfo&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** - &#x60;gbCost&#x60; (float) — per-GB monthly cost in USD (after reseller discount). - &#x60;size&#x60; (integer) — current additional GB already purchased (0 if none).  **Auth:** Session/API key. Ownership enforced via parent VPS.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - **Pre-condition:** an existing &#x60;Additional N GB Space for VPS {id}&#x60; repeat-invoice is required for the lookup to find a baseline; if it isn&#x27;t parseable, the endpoint returns an error asking the customer to contact support. New installs always start at &#x60;size: 0&#x60;.  **Related calls:** - **Next (preview):** &#x60;putVpsBuyHdSpace&#x60; — returns prorated &#x60;diffCost&#x60; for a target size. - **Next (commit):** &#x60;postVpsBuyHdSpace&#x60; — creates/updates the addon repeat invoice. - **Alternative path (whole plan):** &#x60;getVpsSlices&#x60; → &#x60;postVpsSlices&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -274,9 +287,35 @@ def get_vps_buy_hd_space(id):  # noqa: E501
 
 
 def get_vps_buy_ip(id):  # noqa: E501
-    """Additional IP Addon Info
+    """Read current additional IPs, cap, and per-IP monthly cost for the VPS
 
-    Returns available additional IP address options and pricing for the VPS. # noqa: E501
+    Step 1 of the additional-IP addon flow. Returns the list of extra IPs already on the VPS (each with a &#x60;cancel_link&#x60; for removing that specific addon), how many more are allowed (&#x60;maxIps&#x60; &#x3D; &#x60;VPS_MAX_IPS&#x60; constant), and the per-IP monthly cost converted to the VPS&#x27;s billing currency. Read-only. Use to render the \&quot;buy another IP\&quot; form and to enforce the cap before calling &#x60;postVpsBuyIp&#x60;. Sibling ops: &#x60;postVpsBuyIp&#x60; (purchase one more), &#x60;postVpsReverseDns&#x60; (set PTR on the new IP), &#x60;getVpsReverseDns&#x60;, &#x60;getVpsInfo&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** - &#x60;ipsDetails&#x60; (array) — one entry per existing extra IP. Each entry includes:   - &#x60;ip&#x60; (string) — the IPv4 address (parsed from the repeat-invoice description).   - &#x60;cancel_link&#x60; (string) — relative URL &#x60;cancel_addon?module&#x3D;vps&amp;r&#x3D;&lt;repeat_invoice_id&gt;&#x60; to cancel that specific IP addon.   - The underlying &#x60;repeat_invoices&#x60; / &#x60;invoices&#x60; columns (description, amount, dates, etc.). - &#x60;ipCount&#x60; (integer) — current count of extra IPs already purchased. - &#x60;maxIps&#x60; (integer) — hard cap (&#x60;VPS_MAX_IPS&#x60;). - &#x60;ipCost&#x60; (float) — per-IP monthly cost, converted from &#x60;VPS_IP_COST&#x60; to the VPS&#x27;s billing currency. - &#x60;currency&#x60; (string) — VPS billing currency code (ISO 4217, e.g. &#x60;USD&#x60;). - &#x60;currencySymbol&#x60; (string).  **Auth:** Session/API key. Ownership enforced via parent VPS.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller.  **Related calls:** - **Next (buy one more):** &#x60;postVpsBuyIp&#x60; — auto-allocates the next free IP on the same hypervisor. - **After activation:** &#x60;postVpsReverseDns&#x60; (set PTR for the new IP), &#x60;getVpsInfo&#x60; (verify allocation). - **Cancel an existing extra IP:** follow the &#x60;cancel_link&#x60; URL (renders the cancel-addon page).  # noqa: E501
+
+    :param id: VPS ID number
+    :type id: int
+
+    :rtype: None
+    """
+    return 'do some magic!'
+
+
+def get_vps_change_hostname(id):  # noqa: E501
+    """Read the VPS&#x27;s current hostname before changing it
+
+    Step 1 of the hostname-change flow. Returns the hostname currently stored on the &#x60;vps&#x60; row so the customer can confirm the existing value before submitting a new one. Read-only. **Platform restriction:** hostname changes through &#x60;postVpsChangeHostname&#x60; are only supported on OpenVZ/SSD-OpenVZ/Virtuozzo/SSD-Virtuozzo; KVM and HyperV require a support ticket — so for those platforms this endpoint is informational only. Sibling ops: &#x60;postVpsChangeHostname&#x60; (apply new value), &#x60;postVpsReverseDns&#x60; (PTR for primary IP — auto-updated by &#x60;postVpsChangeHostname&#x60;).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** Current hostname (object form: &#x60;{ hostname: \&quot;&lt;fqdn&gt;\&quot; }&#x60;).  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;409 VPS is not active&#x60; — &#x60;vps_status !&#x3D; \&quot;active\&quot;&#x60;.  **Related calls:** - **Next:** &#x60;postVpsChangeHostname&#x60; (OpenVZ/Virtuozzo only; auto-updates PTR for the primary IP). - **PTR for extra IPs:** &#x60;postVpsReverseDns&#x60;. - **Verify after change:** &#x60;getVpsInfo&#x60;.  # noqa: E501
+
+    :param id: VPS ID number
+    :type id: int
+
+    :rtype: None
+    """
+    return 'do some magic!'
+
+
+def get_vps_change_root_password(id):  # noqa: E501
+    """Pre-flight check before changing the VPS root password
+
+    Step 1 of the root-password change flow. Validates ownership and active status; the response is a placeholder/policy object the dashboard uses to render the form (current implementation does not yet return a populated policy — it short-circuits after the ownership/status checks). Read-only. Use to confirm the VPS exists and is active before calling &#x60;postVpsChangeRootPassword&#x60;. For a server-generated random password instead, use &#x60;postVpsResetPassword&#x60;. Sibling ops: &#x60;postVpsChangeRootPassword&#x60;, &#x60;postVpsResetPassword&#x60;, &#x60;postVpsChangeWebuzoPassword&#x60; (Webuzo control panel).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** Object with password requirements/state. Currently a no-op pre-check; reserved for future policy fields (min length, complexity rules, last-change timestamp).  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;409 VPS is not active&#x60; — &#x60;vps_status !&#x3D; \&quot;active\&quot;&#x60;.  **Related calls:** - **Next (specific password):** &#x60;postVpsChangeRootPassword&#x60;. - **Random password:** &#x60;postVpsResetPassword&#x60;. - **Webuzo control panel password:** &#x60;postVpsChangeWebuzoPassword&#x60; (separate credential).  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -287,9 +326,9 @@ def get_vps_buy_ip(id):  # noqa: E501
 
 
 def get_vps_change_timezone(id):  # noqa: E501
-    """Get Timezone Info
+    """List IANA timezones supported by the VPS guest OS
 
-    Returns the list of available timezones that can be set on the VPS. # noqa: E501
+    Step 1 of the timezone-change flow. Returns the list of IANA timezone identifiers the VPS accepts (e.g. &#x60;America/New_York&#x60;, &#x60;Europe/London&#x60;, &#x60;Asia/Tokyo&#x60;) — sourced from &#x60;/usr/share/zoneinfo/zone.tab&#x60; on the MyAdmin host. Use to populate a timezone picker before calling &#x60;postVpsChangeTimezone&#x60;. Read-only. Sibling op: &#x60;postVpsChangeTimezone&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** Array of strings — IANA timezone identifiers, sorted alphabetically.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Next:** &#x60;postVpsChangeTimezone&#x60; (must pass a value present in this array). - **Account-level timezone:** &#x60;updateAccountInfo&#x60; (sets the default for new VPS).  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -300,9 +339,9 @@ def get_vps_change_timezone(id):  # noqa: E501
 
 
 def get_vps_info(id):  # noqa: E501
-    """Get VPS Order
+    """Get full details for one VPS — IPs, hostname, OS, slices, status, addons
 
-    Returns detailed information about a specific VPS including its IPs, hostname, OS, and resource allocation. # noqa: E501
+    Returns everything the customer dashboard shows for a single VPS — hostname, primary IP plus any extra IPs, OS, allocated slices (CPU/RAM/disk), current &#x60;vps_status&#x60;, plan/service-type, datacenter location, billing currency, and &#x60;serviceAddons&#x60; (extra IPs and additional GB disk). Read-only. Backed by &#x60;ViewVPS::getDetails()&#x60;; ownership is enforced via &#x60;get_service($id, &#x27;vps&#x27;)&#x60; — cross-customer requests return 404. Use to render a VPS detail page, to verify ownership before mutating, or to poll &#x60;vps_status&#x60; after &#x60;addVps&#x60; (status flips &#x60;pending&#x60; → &#x60;active&#x60; once provisioning completes). Sibling ops: &#x60;getVpsList&#x60;, &#x60;doVpsRestart&#x60;/&#x60;doVpsStart&#x60;/&#x60;doVpsStop&#x60; (lifecycle), &#x60;getVpsTrafficUsage&#x60; (bandwidth), &#x60;getVpsBackups&#x60;, &#x60;getVpsInvoices&#x60;, &#x60;updateVpsInfo&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Returned fields** (schema &#x60;Vps&#x60; plus extras): - Core: &#x60;vps_id&#x60;, &#x60;vps_hostname&#x60;, &#x60;vps_ip&#x60;, &#x60;vps_status&#x60;, &#x60;vps_slices&#x60;, &#x60;vps_os&#x60;, &#x60;vps_type&#x60; (service-type id), &#x60;vps_server&#x60; (backing hypervisor id), &#x60;vps_custid&#x60;, &#x60;vps_comment&#x60;, &#x60;vps_coupon&#x60;. - &#x60;services_name&#x60; (string) — plan name (e.g. &#x60;KVM&#x60;, &#x60;HyperV&#x60;). - &#x60;client_links&#x60; (array) — UI action links (&#x60;{name, link, icon}&#x60;) for restart, snapshot, console, etc. Internal &#x60;?link&#x3D;queue&amp;action&#x3D;...&#x60; URLs are pre-resolved. - &#x60;serviceAddons&#x60; (object) — &#x60;{extra_ips: [...], additional_gb: &lt;int&gt;}&#x60; populated from &#x60;repeat_invoices&#x60; rows that match &#x60;Additional IP*&#x60; / &#x60;Additional N GB Space*&#x60; patterns. - **Stripped fields:** &#x60;admin_links&#x60;, &#x60;settings&#x60;, &#x60;csrf&#x60; are removed before response.  **Auth:** Session or API key. Customer must own the VPS (enforced via &#x60;vps_custid&#x60; match).  **Errors:** - &#x60;401 Unauthorized&#x60; — missing session/API key. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; does not exist or is owned by a different account.  **Related calls:** - **Lifecycle:** &#x60;doVpsStart&#x60;, &#x60;doVpsStop&#x60;, &#x60;doVpsRestart&#x60;. - **Maintenance:** &#x60;postVpsChangeHostname&#x60;, &#x60;postVpsChangeRootPassword&#x60;, &#x60;postVpsReverseDns&#x60;. - **Upgrade:** &#x60;getVpsSlices&#x60;/&#x60;postVpsSlices&#x60;, &#x60;getVpsBuyHdSpace&#x60;/&#x60;putVpsBuyHdSpace&#x60;/&#x60;postVpsBuyHdSpace&#x60;, &#x60;getVpsBuyIp&#x60;/&#x60;postVpsBuyIp&#x60;. - **Backups:** &#x60;getVpsBackup&#x60; (create), &#x60;getVpsBackups&#x60; (list), &#x60;downloadVpsBackup&#x60;, &#x60;postVpsRestore&#x60;. - **Billing:** &#x60;getVpsInvoices&#x60;, &#x60;VPSCancel&#x60;. - **Metrics:** &#x60;getVpsTrafficUsage&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -312,10 +351,23 @@ def get_vps_info(id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_vps_invoices(id):  # noqa: E501
-    """Get VPS Invoices
+def get_vps_insert_cd(id):  # noqa: E501
+    """List ISO templates that can be mounted in the VPS virtual CD drive
 
-    Returns the billing invoices associated with this VPS. # noqa: E501
+    Step 1 of the CD-mount flow. Returns the catalog of ISO images the customer can mount in the VPS virtual CD drive — typically rescue ISOs, OS installers, or recovery media. Read-only. Use to populate a CD/ISO picker before calling &#x60;postVpsInsertCd&#x60; with a chosen URL. Sibling ops: &#x60;postVpsInsertCd&#x60; (mount), &#x60;doVpsEjectCd&#x60; (unmount), &#x60;doVpsDisableCd&#x60; (remove drive), &#x60;doVpsRestart&#x60; (boot from mounted CD).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** Object with available ISO templates (current implementation returns the platform&#x27;s CD options).  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Next:** &#x60;postVpsInsertCd&#x60; (provide &#x60;url&#x60; for the ISO to mount). - **Boot from CD:** &#x60;doVpsRestart&#x60; after mounting.  # noqa: E501
+
+    :param id: VPS ID number
+    :type id: int
+
+    :rtype: None
+    """
+    return 'do some magic!'
+
+
+def get_vps_invoices(id):  # noqa: E501
+    """List all billing invoices associated with this specific VPS
+
+    Returns the billing history for one VPS — initial purchase invoice, monthly/period renewal invoices, addon invoices (extra IPs, additional disk space), and any prorated upgrade invoices for slice changes. Read-only. Backed by &#x60;Billing\\InvoicesList::go()&#x60;. Use to render a per-VPS billing-history view, to find an unpaid invoice id to pass to &#x60;initiatePayment&#x60;, or to confirm a recent charge. Sibling ops: &#x60;getVpsInfo&#x60;, &#x60;getBillingInvoice&#x60; (single invoice detail), &#x60;initiatePayment&#x60;, &#x60;addVps&#x60; (creates the first invoice).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;ChargeInvoiceRows&#x60; — array of invoice rows with &#x60;id&#x60;, &#x60;amount&#x60;, &#x60;paid&#x60;, &#x60;description&#x60;, &#x60;date&#x60;, &#x60;due_date&#x60;, &#x60;currency&#x60;, &#x60;module&#x3D;vps&#x60;, &#x60;service&#x3D;{id}&#x60;, and any addon-specific fields. Order is most-recent-first.  **Auth:** Session/API key. Ownership enforced via parent VPS.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid Service Passed&#x60; — &#x60;id&#x60; not owned by caller.  **Related calls:** - **Single invoice detail:** &#x60;getBillingInvoice&#x60;. - **Pay an unpaid invoice:** &#x60;initiatePayment&#x60; (&#x60;GET /billing/pay/{method}/{invoices}&#x60;). - **All invoices across account:** &#x60;getBillingInvoices&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -326,9 +378,9 @@ def get_vps_invoices(id):  # noqa: E501
 
 
 def get_vps_list():  # noqa: E501
-    """List VPS Orders
+    """List all VPS services on the customer&#x27;s account
 
-    Returns all VPS services on the account with their current status and configuration. # noqa: E501
+    Enumerates every VPS owned by the authenticated customer — status, hostname, primary IP, plan name, and monthly cost. The canonical entry point for finding a VPS &#x60;id&#x60; to pass into other VPS operations (&#x60;getVpsInfo&#x60;, lifecycle, billing, backups, etc.). No path params, no query params, no body. Server-side filtered by session account; rows come from the &#x60;vps&#x60; table joined to &#x60;repeat_invoices&#x60; (for cost) and &#x60;services&#x60; (for plan name). Returns an array of &#x60;VpsRow&#x60; (empty array if the account has no VPS). Sibling ops: &#x60;getVpsInfo&#x60; (full detail), &#x60;getNewVps&#x60;/&#x60;putVps&#x60;/&#x60;addVps&#x60; (order a new one).  **Returned fields (per row):** - &#x60;vps_id&#x60; (integer) — canonical VPS id, used in every &#x60;/vps/{id}/*&#x60; path. - &#x60;vps_name&#x60; (string) — display name shown in the dashboard. - &#x60;vps_hostname&#x60; (string) — FQDN currently assigned to the VPS. - &#x60;vps_ip&#x60; (string) — primary IPv4 address. - &#x60;vps_status&#x60; (string enum) — &#x60;active&#x60;, &#x60;pending&#x60; (awaiting payment/provisioning), &#x60;suspended&#x60; (non-payment), or &#x60;cancelled&#x60;. - &#x60;services_name&#x60; (string) — service-type name (e.g. &#x60;KVM&#x60;, &#x60;KVM Storage&#x60;, &#x60;HyperV&#x60;). - &#x60;repeat_invoices_cost&#x60; (decimal) — current monthly cost in the VPS&#x27;s billing currency. - &#x60;vps_comment&#x60; (string|null) — customer-provided note.  **Auth:** Session (&#x60;sessionid&#x60; header) or API key (&#x60;X-API-KEY&#x60; header). API key preferred for integrations.  **Errors:** - &#x60;401 Unauthorized&#x60; — missing/invalid session or API key.  **Related calls:** - **Next (per-VPS):** &#x60;getVpsInfo&#x60; (full detail incl. extra IPs, slices, addons), &#x60;getVpsInvoices&#x60; (billing per VPS), &#x60;doVpsRestart&#x60;/&#x60;doVpsStart&#x60;/&#x60;doVpsStop&#x60; (lifecycle). - **Order a new VPS:** &#x60;getNewVps&#x60; (catalog) → &#x60;putVps&#x60; (validate + quote) → &#x60;addVps&#x60; (place + invoice). - **Cancel:** &#x60;VPSCancel&#x60; (end of cycle, customer-initiated).  # noqa: E501
 
 
     :rtype: List[VpsRow]
@@ -337,9 +389,9 @@ def get_vps_list():  # noqa: E501
 
 
 def get_vps_reinstall_os(id):  # noqa: E501
-    """VPS Reinstall OS Options
+    """List OS templates compatible with this VPS&#x27;s hypervisor for reinstall
 
-    Returns the list of available OS templates for reinstalling the VPS. # noqa: E501
+    Step 1 of the OS-reinstall flow. Returns the list of OS templates that can be installed on this specific VPS — filtered server-side by the VPS&#x27;s backing hypervisor type (KVM, HyperV, OpenVZ, Virtuozzo) and by &#x60;template_available&#x3D;1&#x60; (non-admin callers only see published templates). Use to populate the reinstall picker; the &#x60;template_file&#x60; from a chosen row is what &#x60;postVpsReinstallOs&#x60; accepts. **Reinstall destroys all data** — recommend a backup via &#x60;getVpsBackup&#x60; first. Sibling ops: &#x60;postVpsReinstallOs&#x60; (commit reinstall), &#x60;getVpsBackup&#x60; (snapshot first), &#x60;postVpsRestore&#x60; (restore from backup instead).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;VpsTemplatesList&#x60;: - &#x60;templates&#x60; (array) — one entry per available template:   - &#x60;template_id&#x60; (integer)   - &#x60;template_name&#x60; (string) — display name (e.g. &#x60;CentOS 7&#x60;).   - &#x60;template_version&#x60; (string) — version (e.g. &#x60;7&#x60;).   - &#x60;template_file&#x60; (string) — **canonical identifier** to pass to &#x60;postVpsReinstallOs&#x60; (e.g. &#x60;centos-7-x86_64.qcow2&#x60;).   - &#x60;template_os&#x60; (string) — OS family tag.   - &#x60;template_type&#x60; (integer) — internal hypervisor type id.   - &#x60;template_available&#x60; (integer) — &#x60;1&#x60; for non-admin visible templates.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Snapshot before reinstall:** &#x60;getVpsBackup&#x60;. - **Commit reinstall:** &#x60;postVpsReinstallOs&#x60; (pass &#x60;template_file&#x60; + MyAdmin login password). - **Alternative — restore old backup:** &#x60;postVpsRestore&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -349,10 +401,23 @@ def get_vps_reinstall_os(id):  # noqa: E501
     return 'do some magic!'
 
 
-def get_vps_reverse_dns(id):  # noqa: E501
-    """Reverse DNS Info
+def get_vps_reset_password(id):  # noqa: E501
+    """Pre-flight check before resetting the VPS root password to a random value
 
-    Returns the current reverse DNS (PTR record) entries for the VPS IP addresses. # noqa: E501
+    Step 1 of the random-root-password reset flow. Validates ownership and active status; the response describes the reset behavior (currently a passthrough — full implementation reserved for future policy fields). Read-only. Use to confirm the VPS exists and is active before triggering the reset via &#x60;postVpsResetPassword&#x60;. For a customer-chosen password use &#x60;postVpsChangeRootPassword&#x60; instead. Sibling ops: &#x60;postVpsResetPassword&#x60;, &#x60;postVpsChangeRootPassword&#x60;, &#x60;postVpsChangeWebuzoPassword&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** Object with reset options (reserved for policy info).  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Next (random):** &#x60;postVpsResetPassword&#x60;. - **Specific password instead:** &#x60;postVpsChangeRootPassword&#x60;.  # noqa: E501
+
+    :param id: VPS ID number
+    :type id: int
+
+    :rtype: None
+    """
+    return 'do some magic!'
+
+
+def get_vps_reverse_dns(id):  # noqa: E501
+    """Read the current PTR (reverse-DNS) records for every IP on the VPS
+
+    Returns the PTR/reverse-DNS hostname currently resolving for every IP attached to the VPS — primary &#x60;vps_ip&#x60; plus any extras purchased via &#x60;postVpsBuyIp&#x60;. PTRs are read live via &#x60;get_hostname()&#x60; (DNS lookup), not cached. Read-only. Sibling ops: &#x60;postVpsReverseDns&#x60; (update entries), &#x60;getVpsBuyIp&#x60; (add more IPs first), &#x60;postVpsChangeHostname&#x60; (auto-updates PTR for the primary IP).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;ReverseDnsEntries&#x60; — &#x60;{ ips: { \&quot;&lt;ip&gt;\&quot;: \&quot;&lt;ptr-hostname&gt;\&quot;, ... } }&#x60;. Empty string for IPs with no PTR set.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Update PTRs:** &#x60;postVpsReverseDns&#x60;. - **Add IPs first:** &#x60;getVpsBuyIp&#x60; → &#x60;postVpsBuyIp&#x60;. - **Hostname change (auto-PTR for primary):** &#x60;postVpsChangeHostname&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -363,9 +428,9 @@ def get_vps_reverse_dns(id):  # noqa: E501
 
 
 def get_vps_setup_vnc(id):  # noqa: E501
-    """VNC Setup Info
+    """Read current VNC console connection info for the VPS
 
-    Returns the current VNC connection information for the VPS. # noqa: E501
+    Returns the VNC IP/port the customer can connect to for an out-of-band console (KVM-style remote console — useful when SSH/RDP is unavailable, during boot, or for rescue work). Read-only. **Note:** the current implementation is a stub for some platforms — if you get an empty response, call &#x60;postVpsSetupVnc&#x60; to (re)provision the VNC endpoint, then call this again. Sibling ops: &#x60;postVpsSetupVnc&#x60;, &#x60;getVpsViewDesktop&#x60; (Windows GUI access via RDP/HTML5).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** Object with VNC connection info (IP, port, credentials when provisioned).  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Provision/refresh VNC:** &#x60;postVpsSetupVnc&#x60;. - **Windows remote desktop:** &#x60;getVpsViewDesktop&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -376,9 +441,9 @@ def get_vps_setup_vnc(id):  # noqa: E501
 
 
 def get_vps_slices(id):  # noqa: E501
-    """Slice Upgrade Info
+    """Read current slice count, min/max range, and prorated per-slice upgrade cost
 
-    Returns available slice upgrade options and pricing for the VPS. # noqa: E501
+    Step 1 of the slice upgrade/downgrade flow. A \&quot;slice\&quot; bundles RAM, disk, and CPU on the VPS — the smallest unit of vertical scaling. Returns the current slice count (&#x60;vps_slices&#x60;), the range available (&#x60;min_slices &#x3D; current&#x60;, &#x60;max_slices &#x3D; host capacity&#x60;), the per-slice recurring cost (after coupon and frequency discount), the prorated cost for the remainder of the current cycle, and the underlying resource units (&#x60;slice_ram&#x60; in MB, &#x60;slice_hd&#x60; in GB). Read-only. Use to render an upgrade picker before calling &#x60;postVpsSlices&#x60;. Sibling ops: &#x60;postVpsSlices&#x60; (commit), &#x60;postVpsBuyHdSpace&#x60; (disk-only addon).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** - &#x60;min_slices&#x60; (integer) — current allocation; floor for downgrades is also this value (downgrade decreases from here). - &#x60;max_slices&#x60; (integer) — host-capacity-limited upper bound (&#x60;get_vps_max_slices()&#x60;). - &#x60;slice_cost&#x60; (float) — per-slice recurring cost in customer currency. - &#x60;prorated_slice_cost&#x60; (float) — prorated cost for the remainder of the current billing cycle. - &#x60;frequency&#x60; (integer) — billing cycle in months (1/6/12/24/36). - &#x60;slice_ram&#x60; (integer) — RAM (GB) per slice. - &#x60;slice_hd&#x60; (integer) — disk (GB) per slice. For KVM Storage (service-type 57) this comes from &#x60;services_field2.slice_hd&#x60;. - &#x60;vps_slices&#x60; (integer) — current count. - &#x60;vps_cost&#x60; (float) — current monthly cost.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Next:** &#x60;postVpsSlices&#x60; (commit; creates prorated invoice for upgrades, opens ticket for active services). - **Disk-only:** &#x60;getVpsBuyHdSpace&#x60;/&#x60;putVpsBuyHdSpace&#x60;/&#x60;postVpsBuyHdSpace&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -389,9 +454,9 @@ def get_vps_slices(id):  # noqa: E501
 
 
 def get_vps_traffic_usage(id):  # noqa: E501
-    """Get Traffic Usage
+    """Read bandwidth traffic usage data for the VPS
 
-    Returns bandwidth traffic usage data for the VPS. # noqa: E501
+    Returns bandwidth-consumption data for the VPS — inbound/outbound bytes per day and aggregated totals against the plan&#x27;s &#x60;bwSlice&#x60; × &#x60;vps_slices&#x60; allowance. Pulled via &#x60;vps_bandwidth_data($vps_id)&#x60; from the bandwidth-tracking subsystem. Read-only. For custom date-range or granularity filters use &#x60;postVpsTrafficUsage&#x60; (currently mirrors GET behavior but reserved for filter parameters). Sibling ops: &#x60;postVpsTrafficUsage&#x60;, &#x60;getVpsInfo&#x60; (BW allowance fields are shown there).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;VpsTrafficResponse&#x60; — array/object with bandwidth usage points (timestamp, inbound bytes, outbound bytes, totals).  **Auth:** Session/API key. Ownership enforced via parent VPS.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;.  **Related calls:** - **Filtered query:** &#x60;postVpsTrafficUsage&#x60; (reserved for date-range filters). - **Plan allowance:** &#x60;getVpsInfo&#x60; returns &#x60;bw_total&#x60; / &#x60;slices&#x60; you can compute against.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -402,9 +467,9 @@ def get_vps_traffic_usage(id):  # noqa: E501
 
 
 def get_vps_view_desktop(id):  # noqa: E501
-    """Get View Desktop Info
+    """Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
 
-    Returns remote desktop connection information for the VPS. # noqa: E501
+    Returns remote-desktop connection details for a Windows VPS or any VPS with a GUI session — IP, port, recommended client, and the &#x60;client_links&#x60; the dashboard surfaces for launching the session. Backed by &#x60;ViewVPS::getDetails()&#x60;; response shape mirrors &#x60;getVpsInfo&#x60; minus the &#x60;admin_links&#x60; block. Sibling ops: &#x60;postVpsViewDesktop&#x60; (refresh), &#x60;getVpsSetupVnc&#x60;/&#x60;postVpsSetupVnc&#x60; (low-level VNC console).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** Same shape as &#x60;getVpsInfo&#x60; (sans &#x60;admin_links&#x60;) — includes &#x60;client_links&#x60; with RDP/HTML5 launch URLs.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Refresh session:** &#x60;postVpsViewDesktop&#x60;. - **Low-level console:** &#x60;getVpsSetupVnc&#x60; / &#x60;postVpsSetupVnc&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -415,9 +480,9 @@ def get_vps_view_desktop(id):  # noqa: E501
 
 
 def get_vps_welcome_email(id):  # noqa: E501
-    """Resend VPS Welcome Email
+    """Resend the welcome email containing VPS IP, hostname, and root credentials
 
-    Resends the welcome email containing connection details and credentials for the VPS order. # noqa: E501
+    Resends the VPS welcome email — the original new-service email containing IP, hostname, root/Administrator credentials, and connection instructions. Calls &#x60;vps_welcome_email($id)&#x60; to regenerate and dispatch via the standard mail pipeline. Use when the customer didn&#x27;t receive (or lost) the original right after provisioning. The dashboard&#x27;s \&quot;show credentials\&quot; view is the alternative for in-app retrieval. Sibling ops: &#x60;getVpsInfo&#x60; (shows connection details in the response), &#x60;postVpsChangeRootPassword&#x60; / &#x60;postVpsResetPassword&#x60; (rotate before resending if security is a concern).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;SuccessTextResponse&#x60; — &#x60;Welcome Email has been resent.&#x60;  **Side effects:** - Sends an email to the account&#x27;s billing email address with the credentials currently stored in &#x60;history_log&#x60; for this VPS.  **Auth:** Session/API key. Ownership enforced via &#x60;vps_custid&#x60;.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid Service Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;409 Service is not active&#x60; — &#x60;vps_status !&#x3D; \&quot;active\&quot;&#x60;.  **Related calls:** - **In-app credential view:** &#x60;getVpsInfo&#x60;. - **Before resending, rotate password:** &#x60;postVpsResetPassword&#x60; or &#x60;postVpsChangeRootPassword&#x60;.  # noqa: E501
 
     :param id: VPS ID
     :type id: str
@@ -427,23 +492,10 @@ def get_vps_welcome_email(id):  # noqa: E501
     return 'do some magic!'
 
 
-def post_vps_backup(id):  # noqa: E501
-    """Start a VPS Backup
-
-    Creates a backup of the VPS. The backup can be downloaded or restored later via the backups endpoints. # noqa: E501
-
-    :param id: VPS ID number
-    :type id: int
-
-    :rtype: QueueResponse
-    """
-    return 'do some magic!'
-
-
 def post_vps_buy_hd_space(id):  # noqa: E501
-    """Purchase HD Space Addon
+    """Buy or resize the VPS additional-disk addon and create a prorated invoice
 
-    Purchases additional hard drive space for the VPS. # noqa: E501
+    Step 3 of the disk-space addon flow — commit. Creates or updates the &#x60;Additional N GB Space for VPS {id}&#x60; &#x60;repeat_invoices&#x60; row with the new size and recurring cost, then generates a one-off prorated &#x60;invoices&#x60; row for the immediate difference. The hypervisor disk-grow action is queued either immediately (&#x60;update_hdsize&#x60; in &#x60;vpsqueue&#x60;) when no charge is owed, or after the invoice is paid. When increasing from an existing size, any unpaid prior addon invoice is deleted and any already-paid one is credited against &#x60;diffCost&#x60;. **Real money** — call &#x60;putVpsBuyHdSpace&#x60; first to preview. Sibling ops: &#x60;getVpsBuyHdSpace&#x60;, &#x60;putVpsBuyHdSpace&#x60;, &#x60;postVpsSlices&#x60;, &#x60;initiatePayment&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;size&#x60; (integer, required) — target additional GB. Range &#x60;1..100&#x60;. Must differ from current.  **Returns:** - When immediate charge owed: &#x60;{ text: \&quot;Invoice Created, Please Pay This To Activate Extra Space\&quot;, invoice: &lt;integer&gt; }&#x60; — pass &#x60;invoice&#x60; to &#x60;initiatePayment&#x60;. - When no charge owed (downgrade/credit): &#x60;{ text: \&quot;Repeat Invoice Updated, Server Size Update Queued\&quot; }&#x60; — disk grow already queued.  **Side effects:** - Inserts or updates &#x60;repeat_invoices&#x60; row for the addon. - Inserts &#x60;invoices&#x60; row for &#x60;diffCost&#x60; when &gt; 0. - Deletes any unpaid prior addon invoices for the same VPS within the last month. - Credits any paid prior invoice against &#x60;diffCost&#x60;. - Queues &#x60;update_hdsize&#x60; in &#x60;vpsqueue&#x60; when no payment is owed.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;Invalid Size Specified&#x60; — &#x60;size&#x60; out of &#x60;1..100&#x60;. - &#x60;No Change Made, Size The Same&#x60;. - **Pre-condition:** an existing addon row is required. If not found, the request short-circuits (&#x60;go()&#x60; returns without acting); use the order flow for the very first addon, or &#x60;postVpsSlices&#x60; for whole-plan upgrades.  **Related calls:** - **Preview first:** &#x60;putVpsBuyHdSpace&#x60;. - **Pay the invoice:** &#x60;initiatePayment&#x60; (&#x60;GET /billing/pay/{method}/{invoices}&#x60;). - **Whole-plan upgrades:** &#x60;postVpsSlices&#x60; (bundles disk + RAM + CPU).  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -454,9 +506,9 @@ def post_vps_buy_hd_space(id):  # noqa: E501
 
 
 def post_vps_buy_ip(id):  # noqa: E501
-    """Purchase Additional IP
+    """Purchase one additional IP for the VPS and create the invoice
 
-    Purchases an additional IP address for the VPS. # noqa: E501
+    Step 2 of the additional-IP addon flow — commit. Auto-selects the next free IP on the same hypervisor via &#x60;vps_get_next_ip&#x60;, creates a &#x60;Additional IP for VPS {id}&#x60; recurring invoice (&#x60;repeat_invoices&#x60;), and generates an immediate one-off &#x60;invoices&#x60; row at the current IP cost. **Real money.** The network-side IP allocation happens once the invoice is paid; the IP is bound to the VPS during the next provisioning sweep. Sibling ops: &#x60;getVpsBuyIp&#x60; (preview), &#x60;initiatePayment&#x60;, &#x60;getVpsInfo&#x60; (verify), &#x60;postVpsReverseDns&#x60; (set PTR after activation).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None — the next free IP is auto-selected.  **Returns:** - &#x60;text&#x60; (string) — &#x60;Ordered Additional IP successfully.&#x60; - &#x60;invoice&#x60; (integer) — new invoice id to pay via &#x60;initiatePayment&#x60;.  **Side effects:** - Reserves the next free IP on the VPS&#x27;s &#x60;vps_server&#x60; (parked until payment). - Inserts &#x60;repeat_invoices&#x60; row (&#x60;Additional IP for VPS {id}&#x60;, recurring at &#x60;ipCost&#x60;, frequency from parent service). - Inserts &#x60;invoices&#x60; row for the immediate one-period charge. - Logs the addon creation in &#x60;myadmin_log&#x60;.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;VPS already has the maximum number of IPs allowed. If you require additional IPs please contact support.&#x60; — &#x60;ipCount &gt;&#x3D; maxIps&#x60; (&#x60;VPS_MAX_IPS&#x60;). - &#x60;No available free ips on this server. Please contact support to order additional ips.&#x60; — &#x60;vps_get_next_ip&#x60; returned false.  **Related calls:** - **Prerequisite:** &#x60;getVpsBuyIp&#x60; (capacity check + preview). - **Next:** &#x60;initiatePayment&#x60; with the returned &#x60;invoice&#x60; id, then &#x60;getVpsInfo&#x60; to confirm allocation. - **Post-activation:** &#x60;postVpsReverseDns&#x60; to set the PTR for the new IP.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -467,9 +519,9 @@ def post_vps_buy_ip(id):  # noqa: E501
 
 
 def post_vps_change_hostname(hostname, id):  # noqa: E501
-    """Update VPS Hostname
+    """Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
 
-    Changes the hostname of the VPS. This queues a background task to update the server. # noqa: E501
+    Renames the VPS — validates the FQDN with &#x60;valid_hostname()&#x60;, sets the reverse-DNS PTR record for the primary IP (&#x60;reverse_dns($vps_ip, $hostname)&#x60;), and either updates the &#x60;vps_hostname&#x60; column directly (if the VPS is still &#x60;pending&#x60;) or queues a &#x60;change_hostname&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) for active services. **Platform restriction:** rejected unless the VPS runs on OpenVZ, SSD-OpenVZ, Virtuozzo, or SSD-Virtuozzo — KVM/HyperV must open a support ticket. Sibling ops: &#x60;getVpsChangeHostname&#x60;, &#x60;postVpsReverseDns&#x60;, &#x60;getVpsInfo&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — new FQDN (e.g. &#x60;web1.example.com&#x60;). Validated by &#x60;valid_hostname()&#x60;.  **Returns:** - For active services: &#x60;{ text, queueId }&#x60; — &#x60;queueId&#x60; references the &#x60;queue_log&#x60; row. Allow ~2 minutes. - For pending services: &#x60;{ text: \&quot;Hostname Updated\&quot; }&#x60; — applied in place.  **Side effects:** - Sets PTR record for &#x60;vps_ip&#x60; via &#x60;reverse_dns()&#x60;. - Either updates &#x60;vps_hostname&#x60; directly (pending) or queues &#x60;change_hostname&#x60; (active) plus logs &#x60;change_hostname&#x60; history entry with the &#x60;old to new&#x60; transition.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;Invalid Hostname&#x60; — fails &#x60;valid_hostname()&#x60;. - &#x60;No change in hostname&#x60; — value matches current. - &#x60;Hostname changing is only enabled on OpenVZ/Virtuozzo Platforms currently. Contact support and we can change it for you.&#x60; — wrong platform.  **Related calls:** - **Prerequisite:** &#x60;getVpsChangeHostname&#x60; (read current). - **Extra IPs need separate PTR updates:** &#x60;postVpsReverseDns&#x60;. - **Verify:** &#x60;getVpsInfo&#x60; (look for updated &#x60;vps_hostname&#x60;).  # noqa: E501
 
     :param hostname: 
     :type hostname: str
@@ -482,9 +534,9 @@ def post_vps_change_hostname(hostname, id):  # noqa: E501
 
 
 def post_vps_change_hostname(body, id):  # noqa: E501
-    """Update VPS Hostname
+    """Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
 
-    Changes the hostname of the VPS. This queues a background task to update the server. # noqa: E501
+    Renames the VPS — validates the FQDN with &#x60;valid_hostname()&#x60;, sets the reverse-DNS PTR record for the primary IP (&#x60;reverse_dns($vps_ip, $hostname)&#x60;), and either updates the &#x60;vps_hostname&#x60; column directly (if the VPS is still &#x60;pending&#x60;) or queues a &#x60;change_hostname&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) for active services. **Platform restriction:** rejected unless the VPS runs on OpenVZ, SSD-OpenVZ, Virtuozzo, or SSD-Virtuozzo — KVM/HyperV must open a support ticket. Sibling ops: &#x60;getVpsChangeHostname&#x60;, &#x60;postVpsReverseDns&#x60;, &#x60;getVpsInfo&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — new FQDN (e.g. &#x60;web1.example.com&#x60;). Validated by &#x60;valid_hostname()&#x60;.  **Returns:** - For active services: &#x60;{ text, queueId }&#x60; — &#x60;queueId&#x60; references the &#x60;queue_log&#x60; row. Allow ~2 minutes. - For pending services: &#x60;{ text: \&quot;Hostname Updated\&quot; }&#x60; — applied in place.  **Side effects:** - Sets PTR record for &#x60;vps_ip&#x60; via &#x60;reverse_dns()&#x60;. - Either updates &#x60;vps_hostname&#x60; directly (pending) or queues &#x60;change_hostname&#x60; (active) plus logs &#x60;change_hostname&#x60; history entry with the &#x60;old to new&#x60; transition.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;Invalid Hostname&#x60; — fails &#x60;valid_hostname()&#x60;. - &#x60;No change in hostname&#x60; — value matches current. - &#x60;Hostname changing is only enabled on OpenVZ/Virtuozzo Platforms currently. Contact support and we can change it for you.&#x60; — wrong platform.  **Related calls:** - **Prerequisite:** &#x60;getVpsChangeHostname&#x60; (read current). - **Extra IPs need separate PTR updates:** &#x60;postVpsReverseDns&#x60;. - **Verify:** &#x60;getVpsInfo&#x60; (look for updated &#x60;vps_hostname&#x60;).  # noqa: E501
 
     :param body: 
     :type body: dict | bytes
@@ -499,9 +551,9 @@ def post_vps_change_hostname(body, id):  # noqa: E501
 
 
 def post_vps_change_root_password(password, id):  # noqa: E501
-    """Change VPS Root Password
+    """Set a specific new root/Administrator password on the VPS
 
-    Changes the root password of the VPS. # noqa: E501
+    Sets a specific root password (Administrator on Windows) chosen by the customer. Queues a &#x60;change_root&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) and records the new password in &#x60;history_log&#x60; as a &#x60;change_root_password&#x60; entry for operator reference. The password takes effect within ~2 minutes. **Caveat:** there is no rollback — to \&quot;undo\&quot;, set another new password. For a server-generated random password instead, use &#x60;postVpsResetPassword&#x60;. Sibling ops: &#x60;getVpsChangeRootPassword&#x60;, &#x60;postVpsResetPassword&#x60;, &#x60;postVpsChangeWebuzoPassword&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;password&#x60; (string, required) — new root/Administrator password. The endpoint does not enforce a regex here (the hypervisor agent applies platform policy), but &#x60;validate_buy_vps&#x60;-style strength is strongly recommended: 8+ chars, upper, lower, digit, special.  **Returns:** &#x60;{ text, queueId }&#x60; — &#x60;queueId&#x60; tracks the action in &#x60;queue_log&#x60;.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;change_root&#x60; row. - Inserts &#x60;history_log&#x60; &#x60;change_root_password&#x60; audit entry storing the new password (operator-readable for support).  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;400 Missing field \&quot;password\&quot;&#x60;.  **Related calls:** - **Pre-flight:** &#x60;getVpsChangeRootPassword&#x60;. - **Random instead:** &#x60;postVpsResetPassword&#x60;. - **Control panel password:** &#x60;postVpsChangeWebuzoPassword&#x60;. - **Verify:** &#x60;getVpsInfo&#x60; (no field change — verification is operational, not via API).  # noqa: E501
 
     :param password: 
     :type password: str
@@ -514,9 +566,9 @@ def post_vps_change_root_password(password, id):  # noqa: E501
 
 
 def post_vps_change_root_password(body, id):  # noqa: E501
-    """Change VPS Root Password
+    """Set a specific new root/Administrator password on the VPS
 
-    Changes the root password of the VPS. # noqa: E501
+    Sets a specific root password (Administrator on Windows) chosen by the customer. Queues a &#x60;change_root&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) and records the new password in &#x60;history_log&#x60; as a &#x60;change_root_password&#x60; entry for operator reference. The password takes effect within ~2 minutes. **Caveat:** there is no rollback — to \&quot;undo\&quot;, set another new password. For a server-generated random password instead, use &#x60;postVpsResetPassword&#x60;. Sibling ops: &#x60;getVpsChangeRootPassword&#x60;, &#x60;postVpsResetPassword&#x60;, &#x60;postVpsChangeWebuzoPassword&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;password&#x60; (string, required) — new root/Administrator password. The endpoint does not enforce a regex here (the hypervisor agent applies platform policy), but &#x60;validate_buy_vps&#x60;-style strength is strongly recommended: 8+ chars, upper, lower, digit, special.  **Returns:** &#x60;{ text, queueId }&#x60; — &#x60;queueId&#x60; tracks the action in &#x60;queue_log&#x60;.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;change_root&#x60; row. - Inserts &#x60;history_log&#x60; &#x60;change_root_password&#x60; audit entry storing the new password (operator-readable for support).  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;400 Missing field \&quot;password\&quot;&#x60;.  **Related calls:** - **Pre-flight:** &#x60;getVpsChangeRootPassword&#x60;. - **Random instead:** &#x60;postVpsResetPassword&#x60;. - **Control panel password:** &#x60;postVpsChangeWebuzoPassword&#x60;. - **Verify:** &#x60;getVpsInfo&#x60; (no field change — verification is operational, not via API).  # noqa: E501
 
     :param body: 
     :type body: dict | bytes
@@ -531,9 +583,9 @@ def post_vps_change_root_password(body, id):  # noqa: E501
 
 
 def post_vps_change_timezone(timezone, id):  # noqa: E501
-    """Change VPS Timezone
+    """Set the system timezone on the VPS guest OS
 
-    Changes the system timezone on the VPS. # noqa: E501
+    Step 2 of the timezone-change flow — commit. Validates &#x60;timezone&#x60; against the list from &#x60;getVpsChangeTimezone&#x60;, then queues a &#x60;change_timezone&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;). Action takes effect within ~2 minutes. Sibling op: &#x60;getVpsChangeTimezone&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;timezone&#x60; (string, required) — IANA identifier; **must** be one of the values returned by &#x60;getVpsChangeTimezone&#x60; (in-array check enforced server-side).  **Returns:** &#x60;{ text, queueId }&#x60;.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;change_timezone&#x60; row with the validated value.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;422 Invalid timezone&#x60; — value not in the supported list.  **Related calls:** - **Prerequisite:** &#x60;getVpsChangeTimezone&#x60; (the only valid source for &#x60;timezone&#x60; values).  # noqa: E501
 
     :param timezone: 
     :type timezone: str
@@ -546,9 +598,9 @@ def post_vps_change_timezone(timezone, id):  # noqa: E501
 
 
 def post_vps_change_timezone(body, id):  # noqa: E501
-    """Change VPS Timezone
+    """Set the system timezone on the VPS guest OS
 
-    Changes the system timezone on the VPS. # noqa: E501
+    Step 2 of the timezone-change flow — commit. Validates &#x60;timezone&#x60; against the list from &#x60;getVpsChangeTimezone&#x60;, then queues a &#x60;change_timezone&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;). Action takes effect within ~2 minutes. Sibling op: &#x60;getVpsChangeTimezone&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;timezone&#x60; (string, required) — IANA identifier; **must** be one of the values returned by &#x60;getVpsChangeTimezone&#x60; (in-array check enforced server-side).  **Returns:** &#x60;{ text, queueId }&#x60;.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;change_timezone&#x60; row with the validated value.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;422 Invalid timezone&#x60; — value not in the supported list.  **Related calls:** - **Prerequisite:** &#x60;getVpsChangeTimezone&#x60; (the only valid source for &#x60;timezone&#x60; values).  # noqa: E501
 
     :param body: 
     :type body: dict | bytes
@@ -563,9 +615,9 @@ def post_vps_change_timezone(body, id):  # noqa: E501
 
 
 def post_vps_change_webuzo_password(password, id):  # noqa: E501
-    """Change Webuzo Password
+    """Rotate the Webuzo control panel admin password (re-auth required)
 
-    Changes the Webuzo control panel password on the VPS. # noqa: E501
+    Rotates the admin password on the Webuzo control panel that ships pre-installed on certain VPS templates. Re-authenticates the caller via their MyAdmin account password (&#x60;account_passwd&#x60; md5 check), then calls the Webuzo SDK (&#x60;Webuzo_API::change_password&#x60;) to apply the new password, updates the stored credential in &#x60;history_log&#x60;, and emails the customer a confirmation via the &#x60;client/client_email.tpl&#x60; template. Used for the control panel only — for the underlying OS root/Administrator password use &#x60;postVpsChangeRootPassword&#x60;/&#x60;postVpsResetPassword&#x60;. Sibling ops: &#x60;postVpsChangeRootPassword&#x60;, &#x60;postVpsResetPassword&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields (both required):** - &#x60;password&#x60; (string, required) — new Webuzo admin password. Validated by &#x60;valid_password()&#x60;. - &#x60;login_password&#x60; (string, required) — the customer&#x27;s current MyAdmin account password (re-auth check; md5-compared to &#x60;accounts.account_passwd&#x60;).  **Returns:** &#x60;{ text }&#x60; — &#x60;Password updated successfully!&#x60;  **Side effects:** - Calls Webuzo API to apply new password. - Updates the &#x60;Webuzo Details&#x60; row in &#x60;history_log&#x60; with the new value. - Sends a confirmation email to the account&#x27;s billing email. - Logs the rotation in &#x60;myadmin_log&#x60;.  **Auth:** Session/API key plus re-auth via &#x60;login_password&#x60;.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;Missing Password&#x60; / &#x60;Missing Login Password&#x60; — body field absent. - &#x60;Login Password is incorrect!&#x60; — &#x60;login_password&#x60; doesn&#x27;t match stored hash. - &#x60;New Password is not valid&#x60; — fails &#x60;valid_password()&#x60;. - &#x60;Missing Existing Webuzo Password Details.&#x60; — no Webuzo credential in &#x60;history_log&#x60; (contact support). - &#x60;Unable to update password. Please contact support team for further assistance.&#x60; — Webuzo API call failed.  **Related calls:** - **OS root password instead:** &#x60;postVpsChangeRootPassword&#x60;, &#x60;postVpsResetPassword&#x60;. - **Account password rotation:** &#x60;updateAccountPassword&#x60;.  # noqa: E501
 
     :param password: 
     :type password: str
@@ -578,9 +630,9 @@ def post_vps_change_webuzo_password(password, id):  # noqa: E501
 
 
 def post_vps_change_webuzo_password(body, id):  # noqa: E501
-    """Change Webuzo Password
+    """Rotate the Webuzo control panel admin password (re-auth required)
 
-    Changes the Webuzo control panel password on the VPS. # noqa: E501
+    Rotates the admin password on the Webuzo control panel that ships pre-installed on certain VPS templates. Re-authenticates the caller via their MyAdmin account password (&#x60;account_passwd&#x60; md5 check), then calls the Webuzo SDK (&#x60;Webuzo_API::change_password&#x60;) to apply the new password, updates the stored credential in &#x60;history_log&#x60;, and emails the customer a confirmation via the &#x60;client/client_email.tpl&#x60; template. Used for the control panel only — for the underlying OS root/Administrator password use &#x60;postVpsChangeRootPassword&#x60;/&#x60;postVpsResetPassword&#x60;. Sibling ops: &#x60;postVpsChangeRootPassword&#x60;, &#x60;postVpsResetPassword&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields (both required):** - &#x60;password&#x60; (string, required) — new Webuzo admin password. Validated by &#x60;valid_password()&#x60;. - &#x60;login_password&#x60; (string, required) — the customer&#x27;s current MyAdmin account password (re-auth check; md5-compared to &#x60;accounts.account_passwd&#x60;).  **Returns:** &#x60;{ text }&#x60; — &#x60;Password updated successfully!&#x60;  **Side effects:** - Calls Webuzo API to apply new password. - Updates the &#x60;Webuzo Details&#x60; row in &#x60;history_log&#x60; with the new value. - Sends a confirmation email to the account&#x27;s billing email. - Logs the rotation in &#x60;myadmin_log&#x60;.  **Auth:** Session/API key plus re-auth via &#x60;login_password&#x60;.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;Missing Password&#x60; / &#x60;Missing Login Password&#x60; — body field absent. - &#x60;Login Password is incorrect!&#x60; — &#x60;login_password&#x60; doesn&#x27;t match stored hash. - &#x60;New Password is not valid&#x60; — fails &#x60;valid_password()&#x60;. - &#x60;Missing Existing Webuzo Password Details.&#x60; — no Webuzo credential in &#x60;history_log&#x60; (contact support). - &#x60;Unable to update password. Please contact support team for further assistance.&#x60; — Webuzo API call failed.  **Related calls:** - **OS root password instead:** &#x60;postVpsChangeRootPassword&#x60;, &#x60;postVpsResetPassword&#x60;. - **Account password rotation:** &#x60;updateAccountPassword&#x60;.  # noqa: E501
 
     :param body: 
     :type body: dict | bytes
@@ -595,9 +647,9 @@ def post_vps_change_webuzo_password(body, id):  # noqa: E501
 
 
 def post_vps_insert_cd(url, id):  # noqa: E501
-    """Insert CD in VPS
+    """Mount an ISO image in the VPS virtual CD drive from a URL
 
-    Mounts an ISO image in the VPS virtual CD drive from the given URL. # noqa: E501
+    Mounts an ISO image in the VPS virtual CD drive from the supplied URL — used to boot into rescue media, run an OS installer, or temporarily attach removable media. Queues an &#x60;insert_cd&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) with the URL. After mounting, restart the VPS with &#x60;doVpsRestart&#x60; to boot from the CD. Sibling ops: &#x60;getVpsInsertCd&#x60; (list), &#x60;doVpsEjectCd&#x60; (unmount), &#x60;doVpsDisableCd&#x60; (remove drive), &#x60;doVpsRestart&#x60; (boot from CD).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;url&#x60; (string, required) — http(s):// URL to a &#x60;.iso&#x60; file accessible from the hypervisor.  **Returns:** &#x60;{ text, queueId }&#x60; — allow ~2 minutes.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;insert_cd&#x60; row with the URL.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **List options first:** &#x60;getVpsInsertCd&#x60;. - **Boot the ISO:** &#x60;doVpsRestart&#x60;. - **Unmount when done:** &#x60;doVpsEjectCd&#x60;.  # noqa: E501
 
     :param url: 
     :type url: str
@@ -610,9 +662,9 @@ def post_vps_insert_cd(url, id):  # noqa: E501
 
 
 def post_vps_insert_cd(body, id):  # noqa: E501
-    """Insert CD in VPS
+    """Mount an ISO image in the VPS virtual CD drive from a URL
 
-    Mounts an ISO image in the VPS virtual CD drive from the given URL. # noqa: E501
+    Mounts an ISO image in the VPS virtual CD drive from the supplied URL — used to boot into rescue media, run an OS installer, or temporarily attach removable media. Queues an &#x60;insert_cd&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;) with the URL. After mounting, restart the VPS with &#x60;doVpsRestart&#x60; to boot from the CD. Sibling ops: &#x60;getVpsInsertCd&#x60; (list), &#x60;doVpsEjectCd&#x60; (unmount), &#x60;doVpsDisableCd&#x60; (remove drive), &#x60;doVpsRestart&#x60; (boot from CD).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;url&#x60; (string, required) — http(s):// URL to a &#x60;.iso&#x60; file accessible from the hypervisor.  **Returns:** &#x60;{ text, queueId }&#x60; — allow ~2 minutes.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;insert_cd&#x60; row with the URL.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **List options first:** &#x60;getVpsInsertCd&#x60;. - **Boot the ISO:** &#x60;doVpsRestart&#x60;. - **Unmount when done:** &#x60;doVpsEjectCd&#x60;.  # noqa: E501
 
     :param body: 
     :type body: dict | bytes
@@ -627,9 +679,9 @@ def post_vps_insert_cd(body, id):  # noqa: E501
 
 
 def post_vps_reinstall_os(template, password, local_password, id):  # noqa: E501
-    """Reinstall VPS OS
+    """Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
 
-    Reinstalls the operating system on the VPS. Warning - all data will be erased. # noqa: E501
+    **DESTRUCTIVE.** Wipes the VPS disk and reinstalls the chosen OS template. Re-authenticates via the customer&#x27;s MyAdmin account password (&#x60;auth-&gt;authenticate&#x60; against &#x60;account_lid&#x60;+&#x60;localPassword&#x60;), updates the &#x60;vps&#x60; row (&#x60;vps_server_status&#x3D;&#x27;Reinstalling&#x27;&#x60;, &#x60;vps_os&#x3D;&lt;template&gt;&#x60;), saves any new root password to &#x60;history_log&#x60;, and queues a &#x60;reinstall_os&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;). **No rollback** — recover by restoring a backup via &#x60;postVpsRestore&#x60; (must have been created beforehand). Allow ~2 minutes for reinstall to start. Sibling ops: &#x60;getVpsReinstallOs&#x60; (list templates), &#x60;getVpsBackup&#x60; (snapshot before reinstalling), &#x60;postVpsRestore&#x60; (alternative — restore from backup instead).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields (required):** - &#x60;template&#x60; (string, required) — &#x60;template_file&#x60; from &#x60;getVpsReinstallOs.templates[].template_file&#x60;. Rejected if not found in &#x60;vps_templates&#x60; for the VPS&#x27;s &#x60;template_type&#x60;. - &#x60;localPassword&#x60; (string, required) — the customer&#x27;s current MyAdmin account password (re-auth check).  **Body fields (optional):** - &#x60;password&#x60; (string, optional) — new root password to set during reinstall. If absent, the template default is used.  **Returns:** &#x60;{ text: \&quot;Reinstall to has been sent to the server. Please allow up to 2 minutes for action to be completed.\&quot; }&#x60;. If the VPS is &#x60;pending&#x60; rather than &#x60;active&#x60;, the OS selection is saved for activation and &#x60;{ text: \&quot;OS selection has been updated in our system for when the service is activated.\&quot; }&#x60; is returned.  **Side effects:** - Updates &#x60;vps_server_status&#x60; and &#x60;vps_os&#x60; columns. - Inserts new password into &#x60;history_log&#x60; when provided. - Inserts &#x60;vpsqueue&#x60; &#x60;reinstall_os&#x60; row (active services only).  **Auth:** Session/API key plus re-auth via &#x60;localPassword&#x60;.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;Missing Account Password&#x60; — &#x60;localPassword&#x60; body field absent/empty. - &#x60;Invalid Account Password&#x60; — &#x60;localPassword&#x60; re-auth failed. - &#x60;This Template &lt;name&gt; does not exist&#x60; — &#x60;template&#x60; not found for this VPS&#x27;s platform.  **Related calls:** - **Prerequisite:** &#x60;getVpsReinstallOs&#x60; (find valid &#x60;template_file&#x60;). - **Recommended pre-step:** &#x60;getVpsBackup&#x60; (snapshot). - **Alternative (preserve state):** &#x60;postVpsRestore&#x60;. - **Verify after reinstall:** &#x60;getVpsInfo&#x60; (look for updated &#x60;vps_os&#x60;).  # noqa: E501
 
     :param template: 
     :type template: str
@@ -650,9 +702,9 @@ def post_vps_reinstall_os(template, password, local_password, id):  # noqa: E501
 
 
 def post_vps_reinstall_os(body, id):  # noqa: E501
-    """Reinstall VPS OS
+    """Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
 
-    Reinstalls the operating system on the VPS. Warning - all data will be erased. # noqa: E501
+    **DESTRUCTIVE.** Wipes the VPS disk and reinstalls the chosen OS template. Re-authenticates via the customer&#x27;s MyAdmin account password (&#x60;auth-&gt;authenticate&#x60; against &#x60;account_lid&#x60;+&#x60;localPassword&#x60;), updates the &#x60;vps&#x60; row (&#x60;vps_server_status&#x3D;&#x27;Reinstalling&#x27;&#x60;, &#x60;vps_os&#x3D;&lt;template&gt;&#x60;), saves any new root password to &#x60;history_log&#x60;, and queues a &#x60;reinstall_os&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;). **No rollback** — recover by restoring a backup via &#x60;postVpsRestore&#x60; (must have been created beforehand). Allow ~2 minutes for reinstall to start. Sibling ops: &#x60;getVpsReinstallOs&#x60; (list templates), &#x60;getVpsBackup&#x60; (snapshot before reinstalling), &#x60;postVpsRestore&#x60; (alternative — restore from backup instead).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields (required):** - &#x60;template&#x60; (string, required) — &#x60;template_file&#x60; from &#x60;getVpsReinstallOs.templates[].template_file&#x60;. Rejected if not found in &#x60;vps_templates&#x60; for the VPS&#x27;s &#x60;template_type&#x60;. - &#x60;localPassword&#x60; (string, required) — the customer&#x27;s current MyAdmin account password (re-auth check).  **Body fields (optional):** - &#x60;password&#x60; (string, optional) — new root password to set during reinstall. If absent, the template default is used.  **Returns:** &#x60;{ text: \&quot;Reinstall to has been sent to the server. Please allow up to 2 minutes for action to be completed.\&quot; }&#x60;. If the VPS is &#x60;pending&#x60; rather than &#x60;active&#x60;, the OS selection is saved for activation and &#x60;{ text: \&quot;OS selection has been updated in our system for when the service is activated.\&quot; }&#x60; is returned.  **Side effects:** - Updates &#x60;vps_server_status&#x60; and &#x60;vps_os&#x60; columns. - Inserts new password into &#x60;history_log&#x60; when provided. - Inserts &#x60;vpsqueue&#x60; &#x60;reinstall_os&#x60; row (active services only).  **Auth:** Session/API key plus re-auth via &#x60;localPassword&#x60;.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;Missing Account Password&#x60; — &#x60;localPassword&#x60; body field absent/empty. - &#x60;Invalid Account Password&#x60; — &#x60;localPassword&#x60; re-auth failed. - &#x60;This Template &lt;name&gt; does not exist&#x60; — &#x60;template&#x60; not found for this VPS&#x27;s platform.  **Related calls:** - **Prerequisite:** &#x60;getVpsReinstallOs&#x60; (find valid &#x60;template_file&#x60;). - **Recommended pre-step:** &#x60;getVpsBackup&#x60; (snapshot). - **Alternative (preserve state):** &#x60;postVpsRestore&#x60;. - **Verify after reinstall:** &#x60;getVpsInfo&#x60; (look for updated &#x60;vps_os&#x60;).  # noqa: E501
 
     :param body: 
     :type body: dict | bytes
@@ -667,9 +719,9 @@ def post_vps_reinstall_os(body, id):  # noqa: E501
 
 
 def post_vps_reset_password(id):  # noqa: E501
-    """Reset VPS Password
+    """Reset the VPS root password to a server-generated random value
 
-    Resets the root password on the VPS to a new randomly generated password. # noqa: E501
+    Resets the VPS root/Administrator password to a fresh random value generated on the hypervisor — typical when the customer has lost the existing password and cannot recover it. Queues a &#x60;reset_password&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;). The new password is delivered via the standard hypervisor password-change channel (logged to &#x60;history_log&#x60; and surfaced through &#x60;getVpsWelcomeEmail&#x60; / dashboard credential views). **No rollback** — to undo, set a new password via &#x60;postVpsChangeRootPassword&#x60; or call &#x60;postVpsResetPassword&#x60; again. Sibling ops: &#x60;getVpsResetPassword&#x60;, &#x60;postVpsChangeRootPassword&#x60;, &#x60;postVpsChangeWebuzoPassword&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None — password is generated server-side.  **Returns:** &#x60;{ text, queueId }&#x60; — allow ~2 minutes.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;reset_password&#x60; row; hypervisor agent generates and applies the new password.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Specific password instead:** &#x60;postVpsChangeRootPassword&#x60;. - **Retrieve the new credentials:** &#x60;getVpsWelcomeEmail&#x60; (resends with current credentials).  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -680,9 +732,9 @@ def post_vps_reset_password(id):  # noqa: E501
 
 
 def post_vps_restore(body, id):  # noqa: E501
-    """Restore VPS from Backup
+    """Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
 
-    Initiates a restore of the VPS from a previously created backup. The restore operation overwrites the current disk contents. Use &#x60;GET /vps/{id}/backups&#x60; to retrieve available backup names. # noqa: E501
+    **DESTRUCTIVE.** Overwrites the VPS disk with a previously created backup. Re-authenticates via the customer&#x27;s MyAdmin password (when set), validates the backup row from &#x60;getVpsBackups&#x60;, checks disk capacity (skipped for ZFS), then queues &#x60;snapshot_restore&#x60; (ZFS — instant) or &#x60;restore&#x60; (Swift/MinIO — copy) on the hypervisor. Allow ~10 minutes. **Recommended pre-step:** &#x60;getVpsBackup&#x60; to snapshot current state first. Sibling ops: &#x60;getVpsBackups&#x60;, &#x60;getVpsBackup&#x60;, &#x60;postVpsReinstallOs&#x60; (wipe to fresh OS instead).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;backup&#x60; (string, required) — composite key &#x60;&lt;type&gt;:&lt;service&gt;:&lt;name&gt;&#x60; matching one of the entries from &#x60;getVpsBackups&#x60;. &#x60;type&#x60; is &#x60;swift&#x60; / &#x60;minio&#x60; / &#x60;zfs&#x60;; &#x60;service&#x60; is the originating VPS id; &#x60;name&#x60; is the backup filename. - &#x60;password&#x60; (string, required for non-admin callers when the account has a password set) — the customer&#x27;s MyAdmin account password (re-auth check via &#x60;auth-&gt;authenticate&#x60;).  **Returns:** &#x60;{ text: \&quot;Action has been sent to the server. Please allow up to 10 minutes for action to be completed.\&quot;, queueId: &lt;integer&gt; }&#x60;.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;snapshot_restore&#x60; (ZFS) or &#x60;restore&#x60; (Swift/MinIO) row. - Calls &#x60;vps_resetup_vnc()&#x60;.  **Auth:** Session/API key plus re-auth via &#x60;password&#x60; for non-admin callers.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;You do not seem to currently have a backup that you are allowed to restore yourself.&#x60; — no eligible backups found (admin-only Swift backups are excluded for non-admin callers). - &#x60;Invalid Password&#x60; — &#x60;password&#x60; re-auth failed. - &#x60;Invalid Backup Image&#x60; — &#x60;backup&#x60; doesn&#x27;t match any row in &#x60;getVpsBackups&#x60;. - &#x60;Not Enough Space To Restore Backup. (Backup Takes up X bytes, The VPS Has Y)&#x60; — disk-size check failed (skipped for ZFS).  **Related calls:** - **Find the backup:** &#x60;getVpsBackups&#x60; (capture &#x60;type&#x60;, &#x60;service&#x60;, &#x60;name&#x60;). - **Snapshot before restoring:** &#x60;getVpsBackup&#x60;. - **Alternative (fresh OS, no data preserved):** &#x60;postVpsReinstallOs&#x60;. - **Verify after restore:** &#x60;getVpsInfo&#x60;.  # noqa: E501
 
     :param body: VPS Restore request
     :type body: dict | bytes
@@ -697,9 +749,9 @@ def post_vps_restore(body, id):  # noqa: E501
 
 
 def post_vps_restore(backup, password, id):  # noqa: E501
-    """Restore VPS from Backup
+    """Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
 
-    Initiates a restore of the VPS from a previously created backup. The restore operation overwrites the current disk contents. Use &#x60;GET /vps/{id}/backups&#x60; to retrieve available backup names. # noqa: E501
+    **DESTRUCTIVE.** Overwrites the VPS disk with a previously created backup. Re-authenticates via the customer&#x27;s MyAdmin password (when set), validates the backup row from &#x60;getVpsBackups&#x60;, checks disk capacity (skipped for ZFS), then queues &#x60;snapshot_restore&#x60; (ZFS — instant) or &#x60;restore&#x60; (Swift/MinIO — copy) on the hypervisor. Allow ~10 minutes. **Recommended pre-step:** &#x60;getVpsBackup&#x60; to snapshot current state first. Sibling ops: &#x60;getVpsBackups&#x60;, &#x60;getVpsBackup&#x60;, &#x60;postVpsReinstallOs&#x60; (wipe to fresh OS instead).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;backup&#x60; (string, required) — composite key &#x60;&lt;type&gt;:&lt;service&gt;:&lt;name&gt;&#x60; matching one of the entries from &#x60;getVpsBackups&#x60;. &#x60;type&#x60; is &#x60;swift&#x60; / &#x60;minio&#x60; / &#x60;zfs&#x60;; &#x60;service&#x60; is the originating VPS id; &#x60;name&#x60; is the backup filename. - &#x60;password&#x60; (string, required for non-admin callers when the account has a password set) — the customer&#x27;s MyAdmin account password (re-auth check via &#x60;auth-&gt;authenticate&#x60;).  **Returns:** &#x60;{ text: \&quot;Action has been sent to the server. Please allow up to 10 minutes for action to be completed.\&quot;, queueId: &lt;integer&gt; }&#x60;.  **Side effects:** - Inserts &#x60;vpsqueue&#x60; &#x60;snapshot_restore&#x60; (ZFS) or &#x60;restore&#x60; (Swift/MinIO) row. - Calls &#x60;vps_resetup_vnc()&#x60;.  **Auth:** Session/API key plus re-auth via &#x60;password&#x60; for non-admin callers.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;You do not seem to currently have a backup that you are allowed to restore yourself.&#x60; — no eligible backups found (admin-only Swift backups are excluded for non-admin callers). - &#x60;Invalid Password&#x60; — &#x60;password&#x60; re-auth failed. - &#x60;Invalid Backup Image&#x60; — &#x60;backup&#x60; doesn&#x27;t match any row in &#x60;getVpsBackups&#x60;. - &#x60;Not Enough Space To Restore Backup. (Backup Takes up X bytes, The VPS Has Y)&#x60; — disk-size check failed (skipped for ZFS).  **Related calls:** - **Find the backup:** &#x60;getVpsBackups&#x60; (capture &#x60;type&#x60;, &#x60;service&#x60;, &#x60;name&#x60;). - **Snapshot before restoring:** &#x60;getVpsBackup&#x60;. - **Alternative (fresh OS, no data preserved):** &#x60;postVpsReinstallOs&#x60;. - **Verify after restore:** &#x60;getVpsInfo&#x60;.  # noqa: E501
 
     :param backup: 
     :type backup: str
@@ -714,9 +766,9 @@ def post_vps_restore(backup, password, id):  # noqa: E501
 
 
 def post_vps_reverse_dns(body, id):  # noqa: E501
-    """Update Reverse DNS
+    """Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
 
-    Updates the reverse DNS (PTR record) entries for the VPS IP addresses. # noqa: E501
+    Sets the PTR hostname for each VPS IP — bulk update via the &#x60;ips&#x60; map. Calls &#x60;reverse_dns($ip, $newHostname)&#x60; for every IP in the body whose value differs from the current PTR; IPs not currently attached to the VPS are silently ignored. Propagation depends on the reverse-zone TTL but is typically minutes, not instant. Sibling ops: &#x60;getVpsReverseDns&#x60;, &#x60;postVpsChangeHostname&#x60; (auto-sets PTR for primary IP), &#x60;getVpsBuyIp&#x60;/&#x60;postVpsBuyIp&#x60; (add more IPs first).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;ips&#x60; (object, required) — &#x60;{ \&quot;&lt;ip&gt;\&quot;: \&quot;&lt;new-hostname&gt;\&quot;, ... }&#x60;. Only IPs that already belong to the VPS will be updated; others are ignored. Empty-string values are skipped.  **Returns:** &#x60;{ message: \&quot;DNS Updated\&quot;, success: true }&#x60;.  **Side effects:** - One &#x60;reverse_dns()&#x60; call per IP whose value changed. - PTR records are written to the in-addr.arpa zone; propagation depends on TTL.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Read current PTRs first:** &#x60;getVpsReverseDns&#x60;. - **For the primary IP:** &#x60;postVpsChangeHostname&#x60; (renames the VPS hostname and auto-PTRs in one go). - **Adding IPs:** &#x60;getVpsBuyIp&#x60; → &#x60;postVpsBuyIp&#x60; → &#x60;postVpsReverseDns&#x60;.  # noqa: E501
 
     :param body: 
     :type body: dict | bytes
@@ -731,9 +783,9 @@ def post_vps_reverse_dns(body, id):  # noqa: E501
 
 
 def post_vps_reverse_dns(ips, id):  # noqa: E501
-    """Update Reverse DNS
+    """Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
 
-    Updates the reverse DNS (PTR record) entries for the VPS IP addresses. # noqa: E501
+    Sets the PTR hostname for each VPS IP — bulk update via the &#x60;ips&#x60; map. Calls &#x60;reverse_dns($ip, $newHostname)&#x60; for every IP in the body whose value differs from the current PTR; IPs not currently attached to the VPS are silently ignored. Propagation depends on the reverse-zone TTL but is typically minutes, not instant. Sibling ops: &#x60;getVpsReverseDns&#x60;, &#x60;postVpsChangeHostname&#x60; (auto-sets PTR for primary IP), &#x60;getVpsBuyIp&#x60;/&#x60;postVpsBuyIp&#x60; (add more IPs first).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;ips&#x60; (object, required) — &#x60;{ \&quot;&lt;ip&gt;\&quot;: \&quot;&lt;new-hostname&gt;\&quot;, ... }&#x60;. Only IPs that already belong to the VPS will be updated; others are ignored. Empty-string values are skipped.  **Returns:** &#x60;{ message: \&quot;DNS Updated\&quot;, success: true }&#x60;.  **Side effects:** - One &#x60;reverse_dns()&#x60; call per IP whose value changed. - PTR records are written to the in-addr.arpa zone; propagation depends on TTL.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Read current PTRs first:** &#x60;getVpsReverseDns&#x60;. - **For the primary IP:** &#x60;postVpsChangeHostname&#x60; (renames the VPS hostname and auto-PTRs in one go). - **Adding IPs:** &#x60;getVpsBuyIp&#x60; → &#x60;postVpsBuyIp&#x60; → &#x60;postVpsReverseDns&#x60;.  # noqa: E501
 
     :param ips: 
     :type ips: Dict[str, ]
@@ -746,9 +798,9 @@ def post_vps_reverse_dns(ips, id):  # noqa: E501
 
 
 def post_vps_setup_vnc(id):  # noqa: E501
-    """Setup VNC
+    """Provision or refresh the VNC console endpoint for the VPS
 
-    Sets up or refreshes the VNC console connection for the VPS. # noqa: E501
+    (Re)establishes out-of-band VNC console access on the VPS — typically after a network change, hypervisor migration, or when troubleshooting boot issues. Validates the supplied VNC IP via &#x60;validIp()&#x60;, persists it to the &#x60;vps&#x60; row (&#x60;vps_vnc&#x60; column), and queues a &#x60;setup_vnc&#x60; action on the hypervisor (&#x60;vpsqueue&#x60;). Sibling ops: &#x60;getVpsSetupVnc&#x60; (read current), &#x60;getVpsViewDesktop&#x60; (Windows GUI/RDP path).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;vnc&#x60; (string, required) — IPv4 address for the VNC endpoint. Validated by &#x60;validIp()&#x60;.  **Returns:** &#x60;{ text, queueId }&#x60; — allow ~2 minutes for the hypervisor to bring up the listener.  **Side effects:** - Updates &#x60;vps.vps_vnc&#x60; to the new IP. - Inserts &#x60;vpsqueue&#x60; &#x60;setup_vnc&#x60; row.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;Invalid IP \&quot;&lt;value&gt;\&quot; or is blank&#x60; — &#x60;vnc&#x60; failed &#x60;validIp()&#x60;.  **Related calls:** - **Read after provisioning:** &#x60;getVpsSetupVnc&#x60;. - **Windows GUI access:** &#x60;getVpsViewDesktop&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -759,9 +811,22 @@ def post_vps_setup_vnc(id):  # noqa: E501
 
 
 def post_vps_slices(id):  # noqa: E501
-    """Purchase Slice Upgrade
+    """Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
 
-    Purchases a slice upgrade for the VPS to increase CPU, RAM, and disk resources. # noqa: E501
+    Changes the VPS&#x27;s slice count — bumps or shrinks CPU/RAM/disk allocation. Deletes any unpaid prior slice-upgrade invoices for this VPS, updates the recurring &#x60;repeat_invoices&#x60; row to the new slice count&#x27;s cost, creates a one-off &#x60;invoices&#x60; row prorated for the rest of the cycle, and either auto-opens a support ticket (active services — slice upgrades typically need a manual hypervisor action) or queues &#x60;set_slices&#x60; directly. Downgrades complete free and immediately (&#x60;paid&#x3D;1&#x60; zero-amount invoice). **Real money** on upgrades. Sibling ops: &#x60;getVpsSlices&#x60;, &#x60;postVpsBuyHdSpace&#x60;, &#x60;initiatePayment&#x60;, &#x60;getVpsInfo&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;slices&#x60; (integer, required) — target slice count. &#x60;min_slices ≤ slices ≤ max_slices&#x60; per &#x60;getVpsSlices&#x60;. Must differ from current.  **Returns:** - **Upgrade with payment owed:** &#x60;{ text: \&quot;Thank you for your upgrade request. Kindly Pay the invoice to activate the upgrade.\&quot;, invoice: &lt;integer&gt; }&#x60; — pay via &#x60;initiatePayment&#x60;. - **Active VPS, upgrade queued via ticket:** &#x60;{ text: \&quot;Thank you for your upgrade request. A ticket has been automatically opened for you. Please allow us 24 hours to complete your upgrade. ...\&quot; }&#x60;. - **Downgrade:** &#x60;{ text: \&quot;You have downgraded N slices from your VPS, the changes will be apply shortly.\&quot; }&#x60;.  **Side effects:** - Deletes unpaid &#x60;N Slice Upgrade for VPS {id}&#x60; invoices. - Updates &#x60;repeat_invoices&#x60; recurring cost and description (&#x60;&lt;plan_name&gt; N Slices&#x60;). - Creates a new &#x60;invoices&#x60; row for the prorated upgrade amount (or &#x60;paid&#x3D;1&#x60; zero-amount for downgrades). - Updates &#x60;vps.vps_slices&#x60; and &#x60;vps.vps_currency&#x60;. - **Active VPS:** opens a support ticket via &#x60;create_ticket()&#x60; so an operator can resize manually, OR (when &#x60;$deferUpgradeViaTicket&#x60; is false) inserts &#x60;vpsqueue&#x60; &#x60;set_slices&#x60; row.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;. - &#x60;Must pass the slices field.&#x60; — body field missing. - &#x60;Invalid Slices. You requested N but that amount is not available currently.&#x60; — out of range. - &#x60;No Changes were made, Please Try Again!&#x60; — equals current. - &#x60;Please activate the service first.&#x60; — VPS not in &#x60;pending&#x60;/&#x60;active&#x60;.  **Related calls:** - **Prerequisite:** &#x60;getVpsSlices&#x60; (read range + prorated cost). - **Pay the upgrade invoice:** &#x60;initiatePayment&#x60; with the returned &#x60;invoice&#x60; id. - **Disk-only addon:** &#x60;postVpsBuyHdSpace&#x60;. - **Verify:** &#x60;getVpsInfo&#x60;.  # noqa: E501
+
+    :param id: VPS ID number
+    :type id: int
+
+    :rtype: None
+    """
+    return 'do some magic!'
+
+
+def post_vps_traffic_usage(id):  # noqa: E501
+    """Search/filter VPS bandwidth usage with custom criteria (reserved)
+
+    Filtered variant of the bandwidth-usage endpoint — reserved for date-range and granularity filters. The current implementation mirrors &#x60;getVpsTrafficUsage&#x60; behavior and returns the full dataset; the body shape is reserved for future filter parameters (start/end date, day/hour granularity). Sibling op: &#x60;getVpsTrafficUsage&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** Filter fields (reserved — date range, granularity).  **Returns:** Same &#x60;VpsTrafficResponse&#x60; shape as &#x60;getVpsTrafficUsage&#x60;.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;.  **Related calls:** - **Unfiltered alternative:** &#x60;getVpsTrafficUsage&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -772,9 +837,9 @@ def post_vps_slices(id):  # noqa: E501
 
 
 def post_vps_view_desktop(id):  # noqa: E501
-    """Update View Desktop
+    """Refresh the remote-desktop session connection info after IP/hostname changes
 
-    Updates or refreshes the remote desktop session for the VPS. # noqa: E501
+    Force-refreshes the remote-desktop connection metadata — typically called after a hostname change (&#x60;postVpsChangeHostname&#x60;), IP addition (&#x60;postVpsBuyIp&#x60;), or reverse-DNS update (&#x60;postVpsReverseDns&#x60;) so the dashboard can re-fetch via its form-action pattern. Returns the same payload as &#x60;getVpsViewDesktop&#x60;. Sibling op: &#x60;getVpsViewDesktop&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None (form-action pattern).  **Returns:** Same shape as &#x60;getVpsViewDesktop&#x60;.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60;. - &#x60;409 VPS is not active&#x60;.  **Related calls:** - **Read without refresh:** &#x60;getVpsViewDesktop&#x60;. - **Common triggers:** &#x60;postVpsChangeHostname&#x60;, &#x60;postVpsBuyIp&#x60;, &#x60;postVpsReverseDns&#x60;.  Path param: &#x60;id&#x60; (integer). No body.  Returns the VPS view-desktop payload. Errors: HTTP 404 wrong owner, HTTP 409 not &#x60;active&#x60;. Sibling: &#x60;getVpsViewDesktop&#x60;, &#x60;postVpsSetupVnc&#x60;.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
@@ -785,9 +850,9 @@ def post_vps_view_desktop(id):  # noqa: E501
 
 
 def put_vps(body=None):  # noqa: E501
-    """Validate VPS Order
+    """Validate a VPS order configuration and quote the cost — dry run, no charge
 
-    Validates a VPS order before placing it. Returns cost breakdown and any validation errors. # noqa: E501
+    Step 2 of the VPS order flow. Validates a chosen VPS configuration (platform, OS, slices, location, control panel, coupon, etc.) against stock and policy, applies any coupon discount and frequency discount, and returns a cost breakdown — without creating any invoice or service record. Use this to preview the first-month and recurring cost before the customer commits via &#x60;addVps&#x60;. The body shape is identical between &#x60;putVps&#x60; and &#x60;addVps&#x60;; the only difference is the HTTP verb — PUT validates, POST commits. Sibling ops: &#x60;getNewVps&#x60; (catalog), &#x60;addVps&#x60; (place order).  **Required body fields:** - &#x60;osDistro&#x60; (string) — OS template tag from &#x60;getNewVps.osNames&#x60; (e.g. &#x60;centos-7-x86_64&#x60;). - &#x60;osVersion&#x60; (string) — OS version from &#x60;getNewVps.templates[platform][os][template_file]&#x60;. - &#x60;vpsPlatform&#x60; (string) — one of the keys in &#x60;getNewVps.platformNames&#x60;: &#x60;kvm&#x60;, &#x60;kvmstorage&#x60;, &#x60;hyperv&#x60;, &#x60;openvz&#x60;, &#x60;ssdopenvz&#x60;, &#x60;virtuozzo&#x60;, &#x60;ssdvirtuozzo&#x60;, &#x60;lxc&#x60;, &#x60;cloudkvm&#x60;, &#x60;docker&#x60;. HTML stripped server-side. - &#x60;slices&#x60; (integer) — &#x60;1 ≤ slices ≤ getNewVps.maxSlices&#x60;. Windows (&#x60;kvm&#x60; with &#x60;osDistro&#x60; starting &#x60;windows&#x60; or &#x60;os&#x3D;&#x3D;5&#x60;, plus &#x60;hyperv&#x60;/&#x60;cloudkvm&#x60; Windows) requires &#x60;slices ≥ 2&#x60;.  **Optional body fields:** - &#x60;location&#x60; (integer, default 1) — &#x60;1&#x60;&#x3D;NJ, &#x60;2&#x60;&#x3D;LA, &#x60;3&#x60;&#x3D;TX. Out-of-stock platforms in a location auto-fail with an error. - &#x60;period&#x60; (integer, default 1) — billing cycle in months: &#x60;1&#x60; / &#x60;6&#x60; / &#x60;12&#x60; / &#x60;24&#x60; / &#x60;36&#x60;. Discounts: 6mo&#x3D;5%, 12mo&#x3D;10%, 24mo&#x3D;15%, 36mo&#x3D;20%. - &#x60;controlpanel&#x60; (string, default &#x60;none&#x60;) — &#x60;none&#x60; / &#x60;cpanel&#x60; (forces CentOS) / &#x60;da&#x60; (DirectAdmin). Incompatible with Windows. - &#x60;coupon&#x60; (string) — coupon code; validated against &#x60;coupons&#x60; table (custid match, module&#x3D;&#x60;vps&#x60;, applies-to-service-type, usable count). Returns \&quot;Invalid Coupon\&quot; if not found/usable. - &#x60;hostname&#x60; (string) — FQDN matching &#x60;/^.*\\..*\\..*$/&#x60; (e.g. &#x60;server.example.com&#x60;). Skipped for Windows KVM (auto-set to &#x60;vps{id}&#x60; server-side). - &#x60;rootpass&#x60; (string) — required for all Linux platforms. Must match &#x60;/(?&#x3D;.{8,})(?&#x3D;.*[a-z])(?&#x3D;.*[A-Z])(?&#x3D;.*\\d)(?&#x3D;.*\\W)/&#x60;. Not required for Windows. - &#x60;comment&#x60; (string) — free-form note saved on the &#x60;vps&#x60; row.  **Returned fields** (schema &#x60;VpsOrderPutResponse&#x60;): - &#x60;continue&#x60; (bool) — &#x60;true&#x60; if validation passed and the order can be POSTed. If &#x60;false&#x60;, render &#x60;errors&#x60; and do not call &#x60;addVps&#x60;. - &#x60;errors&#x60; (array of strings) — human-readable validation messages. - &#x60;coupon_code&#x60; (integer) — id of the matched coupon row, or &#x60;0&#x60; if no coupon applied. - &#x60;service_cost&#x60; (float) — first-period cost in customer currency (includes coupon + period discount). - &#x60;slice_cost&#x60; (float) — per-slice cost after coupon. - &#x60;repeat_service_cost&#x60; (float) — recurring monthly/period cost after coupon and period discount. - &#x60;original_slice_cost&#x60;, &#x60;original_cost&#x60; (float) — undiscounted reference values. - &#x60;service_type&#x60; (integer) — resolved service-type id (e.g. KVM Linux&#x3D;33, KVM Win&#x3D;32, KVM Storage&#x3D;57, HyperV&#x3D;54, OpenVZ&#x3D;31, Virtuozzo&#x3D;55). - &#x60;monthly_service_cost&#x60; (float) — recurring cost normalized to monthly.  **Side effects:** None — &#x60;PUT /vps/order&#x60; is a pure read.  **Errors:** - &#x60;400&#x60; — missing required field (&#x60;osDistro&#x60; / &#x60;vpsPlatform&#x60; / &#x60;slices&#x60; / &#x60;osVersion&#x60;) or invalid &#x60;location&#x60;. Body shape: &#x60;{error: \&quot;Missing field &lt;name&gt;\&quot;}&#x60;. - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Prerequisite:** &#x60;getNewVps&#x60; (provides every option value referenced in the body). - **Next:** &#x60;addVps&#x60; (place the order with the same body once &#x60;continue &#x3D;&#x3D; true&#x60;).  **Example request body:** &#x60;&#x60;&#x60;json {   \&quot;vpsPlatform\&quot;: \&quot;kvm\&quot;,   \&quot;osDistro\&quot;: \&quot;centos-7-x86_64\&quot;,   \&quot;osVersion\&quot;: \&quot;centos-7-x86_64.qcow2\&quot;,   \&quot;slices\&quot;: 2,   \&quot;location\&quot;: 1,   \&quot;period\&quot;: 1,   \&quot;controlpanel\&quot;: \&quot;none\&quot;,   \&quot;hostname\&quot;: \&quot;web1.example.com\&quot;,   \&quot;rootpass\&quot;: \&quot;Sup3rS3cret!\&quot;,   \&quot;coupon\&quot;: \&quot;\&quot; } &#x60;&#x60;&#x60; **Example response (validation passed):** &#x60;&#x60;&#x60;json {   \&quot;continue\&quot;: true,   \&quot;errors\&quot;: [],   \&quot;coupon_code\&quot;: 0,   \&quot;service_cost\&quot;: 12.00,   \&quot;slice_cost\&quot;: 6.00,   \&quot;repeat_service_cost\&quot;: 12.00,   \&quot;service_type\&quot;: 33,   \&quot;monthly_service_cost\&quot;: 12.00,   \&quot;platform\&quot;: \&quot;kvm\&quot;, \&quot;os\&quot;: \&quot;centos-7-x86_64\&quot;,   \&quot;slices\&quot;: 2, \&quot;location\&quot;: 1, \&quot;period\&quot;: 1,   \&quot;hostname\&quot;: \&quot;web1.example.com\&quot; } &#x60;&#x60;&#x60;  # noqa: E501
 
     :param body: 
     :type body: dict | bytes
@@ -800,9 +865,9 @@ def put_vps(body=None):  # noqa: E501
 
 
 def put_vps(os_distro=None, slices=None, vps_platform=None, controlpanel=None, period=None, location=None, os_version=None, hostname=None, coupon=None, rootpass=None, comment=None):  # noqa: E501
-    """Validate VPS Order
+    """Validate a VPS order configuration and quote the cost — dry run, no charge
 
-    Validates a VPS order before placing it. Returns cost breakdown and any validation errors. # noqa: E501
+    Step 2 of the VPS order flow. Validates a chosen VPS configuration (platform, OS, slices, location, control panel, coupon, etc.) against stock and policy, applies any coupon discount and frequency discount, and returns a cost breakdown — without creating any invoice or service record. Use this to preview the first-month and recurring cost before the customer commits via &#x60;addVps&#x60;. The body shape is identical between &#x60;putVps&#x60; and &#x60;addVps&#x60;; the only difference is the HTTP verb — PUT validates, POST commits. Sibling ops: &#x60;getNewVps&#x60; (catalog), &#x60;addVps&#x60; (place order).  **Required body fields:** - &#x60;osDistro&#x60; (string) — OS template tag from &#x60;getNewVps.osNames&#x60; (e.g. &#x60;centos-7-x86_64&#x60;). - &#x60;osVersion&#x60; (string) — OS version from &#x60;getNewVps.templates[platform][os][template_file]&#x60;. - &#x60;vpsPlatform&#x60; (string) — one of the keys in &#x60;getNewVps.platformNames&#x60;: &#x60;kvm&#x60;, &#x60;kvmstorage&#x60;, &#x60;hyperv&#x60;, &#x60;openvz&#x60;, &#x60;ssdopenvz&#x60;, &#x60;virtuozzo&#x60;, &#x60;ssdvirtuozzo&#x60;, &#x60;lxc&#x60;, &#x60;cloudkvm&#x60;, &#x60;docker&#x60;. HTML stripped server-side. - &#x60;slices&#x60; (integer) — &#x60;1 ≤ slices ≤ getNewVps.maxSlices&#x60;. Windows (&#x60;kvm&#x60; with &#x60;osDistro&#x60; starting &#x60;windows&#x60; or &#x60;os&#x3D;&#x3D;5&#x60;, plus &#x60;hyperv&#x60;/&#x60;cloudkvm&#x60; Windows) requires &#x60;slices ≥ 2&#x60;.  **Optional body fields:** - &#x60;location&#x60; (integer, default 1) — &#x60;1&#x60;&#x3D;NJ, &#x60;2&#x60;&#x3D;LA, &#x60;3&#x60;&#x3D;TX. Out-of-stock platforms in a location auto-fail with an error. - &#x60;period&#x60; (integer, default 1) — billing cycle in months: &#x60;1&#x60; / &#x60;6&#x60; / &#x60;12&#x60; / &#x60;24&#x60; / &#x60;36&#x60;. Discounts: 6mo&#x3D;5%, 12mo&#x3D;10%, 24mo&#x3D;15%, 36mo&#x3D;20%. - &#x60;controlpanel&#x60; (string, default &#x60;none&#x60;) — &#x60;none&#x60; / &#x60;cpanel&#x60; (forces CentOS) / &#x60;da&#x60; (DirectAdmin). Incompatible with Windows. - &#x60;coupon&#x60; (string) — coupon code; validated against &#x60;coupons&#x60; table (custid match, module&#x3D;&#x60;vps&#x60;, applies-to-service-type, usable count). Returns \&quot;Invalid Coupon\&quot; if not found/usable. - &#x60;hostname&#x60; (string) — FQDN matching &#x60;/^.*\\..*\\..*$/&#x60; (e.g. &#x60;server.example.com&#x60;). Skipped for Windows KVM (auto-set to &#x60;vps{id}&#x60; server-side). - &#x60;rootpass&#x60; (string) — required for all Linux platforms. Must match &#x60;/(?&#x3D;.{8,})(?&#x3D;.*[a-z])(?&#x3D;.*[A-Z])(?&#x3D;.*\\d)(?&#x3D;.*\\W)/&#x60;. Not required for Windows. - &#x60;comment&#x60; (string) — free-form note saved on the &#x60;vps&#x60; row.  **Returned fields** (schema &#x60;VpsOrderPutResponse&#x60;): - &#x60;continue&#x60; (bool) — &#x60;true&#x60; if validation passed and the order can be POSTed. If &#x60;false&#x60;, render &#x60;errors&#x60; and do not call &#x60;addVps&#x60;. - &#x60;errors&#x60; (array of strings) — human-readable validation messages. - &#x60;coupon_code&#x60; (integer) — id of the matched coupon row, or &#x60;0&#x60; if no coupon applied. - &#x60;service_cost&#x60; (float) — first-period cost in customer currency (includes coupon + period discount). - &#x60;slice_cost&#x60; (float) — per-slice cost after coupon. - &#x60;repeat_service_cost&#x60; (float) — recurring monthly/period cost after coupon and period discount. - &#x60;original_slice_cost&#x60;, &#x60;original_cost&#x60; (float) — undiscounted reference values. - &#x60;service_type&#x60; (integer) — resolved service-type id (e.g. KVM Linux&#x3D;33, KVM Win&#x3D;32, KVM Storage&#x3D;57, HyperV&#x3D;54, OpenVZ&#x3D;31, Virtuozzo&#x3D;55). - &#x60;monthly_service_cost&#x60; (float) — recurring cost normalized to monthly.  **Side effects:** None — &#x60;PUT /vps/order&#x60; is a pure read.  **Errors:** - &#x60;400&#x60; — missing required field (&#x60;osDistro&#x60; / &#x60;vpsPlatform&#x60; / &#x60;slices&#x60; / &#x60;osVersion&#x60;) or invalid &#x60;location&#x60;. Body shape: &#x60;{error: \&quot;Missing field &lt;name&gt;\&quot;}&#x60;. - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Prerequisite:** &#x60;getNewVps&#x60; (provides every option value referenced in the body). - **Next:** &#x60;addVps&#x60; (place the order with the same body once &#x60;continue &#x3D;&#x3D; true&#x60;).  **Example request body:** &#x60;&#x60;&#x60;json {   \&quot;vpsPlatform\&quot;: \&quot;kvm\&quot;,   \&quot;osDistro\&quot;: \&quot;centos-7-x86_64\&quot;,   \&quot;osVersion\&quot;: \&quot;centos-7-x86_64.qcow2\&quot;,   \&quot;slices\&quot;: 2,   \&quot;location\&quot;: 1,   \&quot;period\&quot;: 1,   \&quot;controlpanel\&quot;: \&quot;none\&quot;,   \&quot;hostname\&quot;: \&quot;web1.example.com\&quot;,   \&quot;rootpass\&quot;: \&quot;Sup3rS3cret!\&quot;,   \&quot;coupon\&quot;: \&quot;\&quot; } &#x60;&#x60;&#x60; **Example response (validation passed):** &#x60;&#x60;&#x60;json {   \&quot;continue\&quot;: true,   \&quot;errors\&quot;: [],   \&quot;coupon_code\&quot;: 0,   \&quot;service_cost\&quot;: 12.00,   \&quot;slice_cost\&quot;: 6.00,   \&quot;repeat_service_cost\&quot;: 12.00,   \&quot;service_type\&quot;: 33,   \&quot;monthly_service_cost\&quot;: 12.00,   \&quot;platform\&quot;: \&quot;kvm\&quot;, \&quot;os\&quot;: \&quot;centos-7-x86_64\&quot;,   \&quot;slices\&quot;: 2, \&quot;location\&quot;: 1, \&quot;period\&quot;: 1,   \&quot;hostname\&quot;: \&quot;web1.example.com\&quot; } &#x60;&#x60;&#x60;  # noqa: E501
 
     :param os_distro: 
     :type os_distro: str
@@ -832,10 +897,23 @@ def put_vps(os_distro=None, slices=None, vps_platform=None, controlpanel=None, p
     return 'do some magic!'
 
 
-def update_vps_info(id):  # noqa: E501
-    """Update VPS Order
+def put_vps_buy_hd_space(id):  # noqa: E501
+    """Preview cost to set additional VPS disk to a target GB size — dry run
 
-    Updates settings on a VPS order. # noqa: E501
+    Step 2 of the disk-space addon flow. Dry-run that quotes a new \&quot;Additional N GB Space\&quot; addon at the target size, prorated to the VPS&#x27;s existing billing cycle. **No invoice is created and no charge happens.** Use to show the customer the immediate prorated &#x60;diffCost&#x60; and the new recurring &#x60;cost&#x60; before they commit via &#x60;postVpsBuyHdSpace&#x60;. Sibling ops: &#x60;getVpsBuyHdSpace&#x60;, &#x60;postVpsBuyHdSpace&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body fields:** - &#x60;size&#x60; (integer, required) — target additional GB. Range &#x60;1 ≤ size ≤ 100&#x60;; rejected with \&quot;Invalid Size Specified\&quot; otherwise. Rejected with \&quot;No Change Made, Size The Same\&quot; if it equals current.  **Returns:** - &#x60;gbCost&#x60; (float) — per-GB monthly cost in USD. - &#x60;curSize&#x60; (integer) — currently purchased additional GB. - &#x60;newSize&#x60; (integer) — requested target size. - &#x60;cost&#x60; (float) — new recurring cost (size × gbCost × frequency). - &#x60;diffCost&#x60; (float) — prorated immediate charge for the partial cycle plus the remainder of the period (when frequency &gt; 1). - &#x60;frequency&#x60; (integer) — billing cycle in months (e.g. 1, 6, 12).  **Side effects:** None — pure read.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401&#x60; — unauthenticated. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller. - &#x60;Invalid Size Specified&#x60; — &#x60;size&#x60; out of &#x60;1..100&#x60;. - &#x60;No Change Made, Size The Same&#x60; — &#x60;size &#x3D;&#x3D; curSize&#x60;.  **Related calls:** - **Prerequisite:** &#x60;getVpsBuyHdSpace&#x60; (read current state). - **Next:** &#x60;postVpsBuyHdSpace&#x60; (commit; creates invoice when diffCost &gt; 0, queues immediate update otherwise).  # noqa: E501
+
+    :param id: VPS ID number
+    :type id: int
+
+    :rtype: None
+    """
+    return 'do some magic!'
+
+
+def update_vps_info(id):  # noqa: E501
+    """Update editable settings on a VPS service record
+
+    Write-back endpoint for the VPS service record — typically the dashboard&#x27;s \&quot;save changes\&quot; action. The body is processed by &#x60;ViewVPS::getDetails()&#x60;, the same handler as the GET, so the accepted fields mirror what the VPS detail view edits in place (e.g. customer comment/label, display preferences). For lifecycle or provisioning changes use the dedicated endpoints — they enforce platform-specific validation and queue hypervisor actions correctly. Sibling ops: &#x60;getVpsInfo&#x60;, &#x60;VPSCancel&#x60;, and all the dedicated mutation endpoints listed below.  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** Form-encoded or JSON with editable fields (handler decides which are persisted). Most callers should use the dedicated endpoints instead.  **Returns:** &#x60;SuccessTextResponse&#x60; — &#x60;{text: \&quot;...\&quot;}&#x60; on success.  **Auth:** Session/API key. Ownership enforced via &#x60;vps_custid&#x60; match.  **Errors:** - &#x60;401 Unauthorized&#x60; — missing session/API key. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller.  **Prefer these dedicated endpoints when applicable:** - Hostname → &#x60;postVpsChangeHostname&#x60; (OpenVZ/Virtuozzo only). - Root password → &#x60;postVpsChangeRootPassword&#x60; (specific value) or &#x60;postVpsResetPassword&#x60; (random). - Reverse DNS → &#x60;postVpsReverseDns&#x60;. - Slice upgrade/downgrade → &#x60;getVpsSlices&#x60; → &#x60;postVpsSlices&#x60; (creates prorated invoice). - Additional disk → &#x60;getVpsBuyHdSpace&#x60; → &#x60;putVpsBuyHdSpace&#x60; → &#x60;postVpsBuyHdSpace&#x60;. - Additional IPs → &#x60;getVpsBuyIp&#x60; → &#x60;postVpsBuyIp&#x60;. - Timezone → &#x60;getVpsChangeTimezone&#x60; → &#x60;postVpsChangeTimezone&#x60;. - Cancel service entirely → &#x60;VPSCancel&#x60;.  # noqa: E501
 
     :param id: VPS ID number.
     :type id: str
@@ -846,13 +924,13 @@ def update_vps_info(id):  # noqa: E501
 
 
 def vps_cancel(id):  # noqa: E501
-    """Cancel VPS Service
+    """Cancel a VPS service at the end of the current billing cycle
 
-    Cancels the VPS service. The server will be deprovisioned and billing will stop at the end of the current billing cycle. # noqa: E501
+    Customer-facing cancel — schedules termination, stops future renewals, and queues deprovisioning. Billing continues until the end of the already-paid period, and the customer keeps access until then; this endpoint does **not** issue refunds. Delegates to &#x60;Billing\\CancelService::go()&#x60; (shared cancellation handler used across all service modules). The repeat-invoice is marked for cancellation and the VPS row&#x27;s status will eventually flip to &#x60;cancelled&#x60;. Reversible: a customer can typically un-cancel before the cycle ends by opening a support ticket. Sibling ops: &#x60;getVpsInfo&#x60; (verify status), &#x60;getVpsInvoices&#x60; (review final invoices), &#x60;getVpsBackup&#x60; (snapshot before cancellation).  **Path param:** - &#x60;id&#x60; (integer, required) — VPS id from &#x60;getVpsList.vps_id&#x60;.  **Body:** None.  **Returns:** &#x60;VPSCancelResponse&#x60; — confirmation text plus the scheduled cancellation date.  **Side effects:** - Sets the &#x60;repeat_invoices&#x60; row for the VPS to non-renewing. - Logs the cancellation event in &#x60;history_log&#x60;. - Queues &#x60;vpsqueue&#x60; deprovisioning action to run at end-of-cycle. - Does NOT immediately stop the VPS — power state is unchanged until the cycle ends.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;401 Unauthorized&#x60; — missing session/API key. - &#x60;404 Invalid VPS Passed&#x60; — &#x60;id&#x60; not owned by caller.  **Related calls:** - **Before cancelling:** &#x60;getVpsBackup&#x60; (create a final snapshot), &#x60;downloadVpsBackup&#x60; (export it). - **After cancelling:** &#x60;getVpsInfo&#x60; (confirm &#x60;vps_status&#x60; flipped), &#x60;getVpsInvoices&#x60; (final invoices). - **Sibling cancels on other modules:** &#x60;CancelDomain&#x60;, &#x60;mailCancel&#x60;, &#x60;webhostingCancel&#x60;, etc. all use the same &#x60;CancelService&#x60; handler.  # noqa: E501
 
     :param id: VPS ID number
     :type id: int
 
-    :rtype: InlineResponse20022
+    :rtype: InlineResponse20024
     """
     return 'do some magic!'

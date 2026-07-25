@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetOrderDetail200Response = Initialize-PSOpenAPIToolsGetOrderDetail200Response  -PackageCosts null `
+$GetOrderDetail200Response = Initialize-InterserverApiGetOrderDetail200Response  -PackageCosts null `
  -ServiceTypes null `
  -Ips null
 ```

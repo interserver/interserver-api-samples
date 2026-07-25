@@ -23,6 +23,8 @@ module.exports = {
         { data: {} },
     "VpsOrderSample": 
         { data: {} },
+    "QueueResponseSample": 
+        { data: {} },
     "VpsBackupRowsSample": 
         { data: {} },
     "VpsSample": 
@@ -38,8 +40,6 @@ module.exports = {
     "VpsTrafficResponseSample": 
         { data: {} },
     "SuccessTextResponseSample": 
-        { data: {} },
-    "QueueResponseSample": 
         { data: {} },
     "QueueResponseSample": 
         { data: {} },

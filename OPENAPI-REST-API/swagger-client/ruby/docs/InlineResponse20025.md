@@ -1,8 +1,8 @@
-# SwaggerClient::InlineResponse20025
+# InterserverApiClient::InlineResponse20025
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **String** |  | [optional] 
-**success** | **BOOLEAN** |  | [optional] 
+**success** | **BOOLEAN** |  | 
+**text** | **String** |  | 
 

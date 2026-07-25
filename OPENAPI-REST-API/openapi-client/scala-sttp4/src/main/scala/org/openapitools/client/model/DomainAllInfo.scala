@@ -25,4 +25,3 @@ case class DomainAllInfo(
   action: Option[String] = None,
   is_success: Option[String] = None
 )
-

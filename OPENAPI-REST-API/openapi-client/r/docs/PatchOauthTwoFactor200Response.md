@@ -1,4 +1,4 @@
-# openapi::PatchOauthTwoFactor200Response
+# interserverapi::PatchOauthTwoFactor200Response
 
 
 ## Properties

@@ -11,12 +11,11 @@ import Foundation
 
 public struct InlineResponse2001: Codable {
 
-    public var success: Bool
-    public var text: String
+    /** Affiliate signup statistics and client-side data. */
+    public var data: Any?
 
-    public init(success: Bool, text: String) {
-        self.success = success
-        self.text = text
+    public init(data: Any? = nil) {
+        self.data = data
     }
 
 

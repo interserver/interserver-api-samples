@@ -1,4 +1,4 @@
-# SwaggerClient::LicenseBillingDetails
+# InterserverApiClient::LicenseBillingDetails
 
 ## Properties
 Name | Type | Description | Notes

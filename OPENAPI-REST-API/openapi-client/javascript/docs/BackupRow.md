@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupRow
+# InterserverApiClient.BackupRow
 
 ## Properties
 

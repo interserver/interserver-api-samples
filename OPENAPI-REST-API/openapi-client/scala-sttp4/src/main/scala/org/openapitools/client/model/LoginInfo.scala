@@ -25,4 +25,3 @@ case class LoginInfo(
   /* The desired langauge to render the site with. */
   language: Option[String] = None
 )
-

@@ -20,4 +20,3 @@ case class AddServer200Response(
   /* Server order ID. */
   order: Option[Int] = None
 )
-

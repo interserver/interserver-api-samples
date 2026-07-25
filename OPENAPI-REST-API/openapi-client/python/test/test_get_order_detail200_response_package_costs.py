@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_order_detail200_response_package_costs import GetOrderDetail200ResponsePackageCosts
+from interserver_api_client.models.get_order_detail200_response_package_costs import GetOrderDetail200ResponsePackageCosts
 
 class TestGetOrderDetail200ResponsePackageCosts(unittest.TestCase):
     """GetOrderDetail200ResponsePackageCosts unit test stubs"""

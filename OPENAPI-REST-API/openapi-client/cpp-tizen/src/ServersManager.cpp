@@ -109,7 +109,7 @@ static bool addServerProcessor(MemoryStruct_s p_chunk, long code, char* errormsg
 }
 
 static bool addServerHelper(char * accessToken,
-	
+	std::shared_ptr<ServerOrderPostRequest> serverOrderPostRequest, 
 	void(* handler)(AddServer_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
@@ -129,6 +129,19 @@ static bool addServerHelper(char * accessToken,
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
+
+	if (isprimitive("ServerOrderPostRequest")) {
+		node = converttoJson(&serverOrderPostRequest, "ServerOrderPostRequest", "");
+	}
+	
+	char *jsonStr =  serverOrderPostRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
 
 	string url("/servers/order");
 	int pos;
@@ -180,22 +193,22 @@ static bool addServerHelper(char * accessToken,
 
 
 bool ServersManager::addServerAsync(char * accessToken,
-	
+	std::shared_ptr<ServerOrderPostRequest> serverOrderPostRequest, 
 	void(* handler)(AddServer_200_response, Error, void* )
 	, void* userData)
 {
 	return addServerHelper(accessToken,
-	
+	serverOrderPostRequest, 
 	handler, userData, true);
 }
 
 bool ServersManager::addServerSync(char * accessToken,
-	
+	std::shared_ptr<ServerOrderPostRequest> serverOrderPostRequest, 
 	void(* handler)(AddServer_200_response, Error, void* )
 	, void* userData)
 {
 	return addServerHelper(accessToken,
-	
+	serverOrderPostRequest, 
 	handler, userData, false);
 }
 
@@ -1758,24 +1771,56 @@ bool ServersManager::postServerReverseDnsSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool putServersProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+static bool serverBulkIpmiPowerGetProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
+	void(* handler)(ServerBulkIpmiPowerResponse, Error, void* )
+	= reinterpret_cast<void(*)(ServerBulkIpmiPowerResponse, Error, void* )> (voidHandler);
 	
-	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
+	ServerBulkIpmiPowerResponse out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
 
 
-		handler(error, userData);
+
+
+		if (isprimitive("ServerBulkIpmiPowerResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "ServerBulkIpmiPowerResponse", "ServerBulkIpmiPowerResponse");
+			json_node_free(pJson);
+
+			if ("ServerBulkIpmiPowerResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
 		return true;
-
-
+		//TODO: handle case where json parsing has an error
 
 	} else {
 		Error error;
@@ -1786,15 +1831,15 @@ static bool putServersProcessor(MemoryStruct_s p_chunk, long code, char* errorms
 		} else {
 			error = Error(code, string("Unknown Error"));
 		}
-		handler(error, userData);
+		 handler(out, error, userData);
 		return false;
-	}
+			}
 }
 
-static bool putServersHelper(char * accessToken,
-	
-	
-	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+static bool serverBulkIpmiPowerGetHelper(char * accessToken,
+	std::string ids, 
+	void(* handler)(ServerBulkIpmiPowerResponse, Error, void* )
+	, void* userData, bool isAsync)
 {
 
 	//TODO: maybe delete headerList after its used to free up space?
@@ -1809,11 +1854,15 @@ static bool putServersHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&ids, "std::string");
+	queryParams.insert(pair<string, string>("ids", itemAtq));
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
 
-	string url("/servers/order");
+	string url("/servers/bulk/ipmi_power");
 	int pos;
 
 
@@ -1821,9 +1870,9 @@ static bool putServersHelper(char * accessToken,
 	MemoryStruct_s* p_chunk = new MemoryStruct_s();
 	long code;
 	char* errormsg = NULL;
-	string myhttpmethod("PUT");
+	string myhttpmethod("GET");
 
-	if(strcmp("PUT", "PUT") == 0){
+	if(strcmp("PUT", "GET") == 0){
 		if(strcmp("", mBody.c_str()) == 0){
 			mBody.append("{}");
 		}
@@ -1832,7 +1881,7 @@ static bool putServersHelper(char * accessToken,
 	if(!isAsync){
 		NetClient::easycurl(ServersManager::getBasePath(), url, myhttpmethod, queryParams,
 			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = putServersProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+		bool retval = serverBulkIpmiPowerGetProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
 		curl_slist_free_all(headerList);
 		if (p_chunk) {
@@ -1850,7 +1899,7 @@ static bool putServersHelper(char * accessToken,
 		RequestInfo *requestInfo = NULL;
 
 		requestInfo = new(nothrow) RequestInfo (ServersManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), putServersProcessor);;
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), serverBulkIpmiPowerGetProcessor);;
 		if(requestInfo == NULL)
 			return false;
 
@@ -1862,23 +1911,23 @@ static bool putServersHelper(char * accessToken,
 
 
 
-bool ServersManager::putServersAsync(char * accessToken,
-	
-	
-	void(* handler)(Error, void* ) , void* userData)
+bool ServersManager::serverBulkIpmiPowerGetAsync(char * accessToken,
+	std::string ids, 
+	void(* handler)(ServerBulkIpmiPowerResponse, Error, void* )
+	, void* userData)
 {
-	return putServersHelper(accessToken,
-	
+	return serverBulkIpmiPowerGetHelper(accessToken,
+	ids, 
 	handler, userData, true);
 }
 
-bool ServersManager::putServersSync(char * accessToken,
-	
-	
-	void(* handler)(Error, void* ) , void* userData)
+bool ServersManager::serverBulkIpmiPowerGetSync(char * accessToken,
+	std::string ids, 
+	void(* handler)(ServerBulkIpmiPowerResponse, Error, void* )
+	, void* userData)
 {
-	return putServersHelper(accessToken,
-	
+	return serverBulkIpmiPowerGetHelper(accessToken,
+	ids, 
 	handler, userData, false);
 }
 

@@ -3,6 +3,26 @@
 var utils = require('../utils/writer.js');
 var Public = require('../service/PublicService');
 
+module.exports.getAccountCurrencies = function getAccountCurrencies (req, res, next) {
+  Public.getAccountCurrencies()
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.getAccountLocales = function getAccountLocales (req, res, next) {
+  Public.getAccountLocales()
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.getCaptcha = function getCaptcha (req, res, next) {
   Public.getCaptcha()
     .then(function (response) {

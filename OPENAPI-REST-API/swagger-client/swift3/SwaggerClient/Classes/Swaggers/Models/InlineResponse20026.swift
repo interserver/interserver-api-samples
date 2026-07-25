@@ -9,18 +9,15 @@ import Foundation
 
 
 open class InlineResponse20026: JSONEncodable {
-    /** Confirmation message. */
-    public var text: String?
-    /** The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress. */
-    public var ticket: Int32?
+    /** A map of IP addresses to their current reverse DNS hostnames. */
+    public var ips: [String:String]?
 
     public init() {}
 
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
-        nillableDictionary["text"] = self.text
-        nillableDictionary["ticket"] = self.ticket?.encodeToJSON()
+        nillableDictionary["ips"] = self.ips?.encodeToJSON()
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

@@ -1,4 +1,4 @@
-# InterServerManagementApi.BackupIPInfo
+# InterserverApiClient.BackupIPInfo
 
 ## Properties
 

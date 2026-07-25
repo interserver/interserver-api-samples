@@ -14,7 +14,9 @@ import io.swagger.model.EndDate;
 
 import io.swagger.model.GenericResponse;
 
-import io.swagger.model.InlineResponse2008;
+import io.swagger.model.IdAlertsBody;
+
+import io.swagger.model.InlineResponse2009;
 
 import io.swagger.model.InlineResponse401;
 
@@ -37,6 +39,8 @@ import io.swagger.model.MailDeliverabilityResponse;
 import io.swagger.model.MailLog;
 
 import io.swagger.model.MailOrder;
+
+import io.swagger.model.MailOrderRequest;
 
 import io.swagger.model.MailRow;
 
@@ -68,9 +72,9 @@ import java.util.Map;
 public class MailApiController implements MailApi {
 
     @Override
-    public Single<HttpResponse<ServiceOrderPostResponse>> addMail() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addMail(@NotNull @Valid MailOrderRequest body) {
         // TODO: Implement me
-        return MailApi.super.addMail();
+        return MailApi.super.addMail(body);
     }
 
     @Override
@@ -98,9 +102,15 @@ public class MailApiController implements MailApi {
     }
 
     @Override
-    public Single<HttpResponse<SuccessTextResponse>> deleteMailAlert(Integer id, @NotNull Integer alertId) {
+    public Single<HttpResponse<SuccessTextResponse>> deleteMailAlert(@NotNull @Valid IdAlertsBody body, Integer id) {
         // TODO: Implement me
-        return MailApi.super.deleteMailAlert(id, alertId);
+        return MailApi.super.deleteMailAlert(body, id);
+    }
+
+    @Override
+    public Single<HttpResponse<SuccessTextResponse>> deleteMailAlert(@NotNull Integer alertId, Integer id) {
+        // TODO: Implement me
+        return MailApi.super.deleteMailAlert(alertId, id);
     }
 
     @Override
@@ -188,7 +198,7 @@ public class MailApiController implements MailApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse2008>> mailCancel(Integer id) {
+    public Single<HttpResponse<InlineResponse2009>> mailCancel(Integer id) {
         // TODO: Implement me
         return MailApi.super.mailCancel(id);
     }
@@ -206,9 +216,9 @@ public class MailApiController implements MailApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> putMail() {
+    public Single<HttpResponse<Void>> putMail(@NotNull @Valid MailOrderRequest body) {
         // TODO: Implement me
-        return MailApi.super.putMail();
+        return MailApi.super.putMail(body);
     }
 
     @Override
@@ -257,6 +267,18 @@ public class MailApiController implements MailApi {
     public Single<HttpResponse<SuccessTextResponse>> updateMailInfo(String id) {
         // TODO: Implement me
         return MailApi.super.updateMailInfo(id);
+    }
+
+    @Override
+    public Single<HttpResponse<GenericResponse>> updateRule(@NotNull @Valid DenyRuleNew body, Integer id, String rule) {
+        // TODO: Implement me
+        return MailApi.super.updateRule(body, id, rule);
+    }
+
+    @Override
+    public Single<HttpResponse<GenericResponse>> updateRule(@NotNull String user, @NotNull String type, @NotNull String data, Integer id, String rule) {
+        // TODO: Implement me
+        return MailApi.super.updateRule(user, type, data, id, rule);
     }
 
     @Override

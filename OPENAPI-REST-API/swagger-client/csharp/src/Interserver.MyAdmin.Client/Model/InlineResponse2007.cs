@@ -31,18 +31,54 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse2007" /> class.
         /// </summary>
-        /// <param name="login">Whether the 2FA verification succeeded and the user is now logged in..</param>
-        public InlineResponse2007(bool? login = default(bool?))
+        /// <param name="login">Whether the user was logged in to an existing account..</param>
+        /// <param name="signup">Whether a new account was created..</param>
+        /// <param name="linked">Whether the OAuth provider was linked to an existing account..</param>
+        /// <param name="accountId">The account ID associated with the OAuth login..</param>
+        /// <param name="errorCode">Error code if additional verification is needed (e.g. &#x60;2fa_required&#x60;)..</param>
+        public InlineResponse2007(bool? login = default(bool?), bool? signup = default(bool?), bool? linked = default(bool?), int? accountId = default(int?), string errorCode = default(string))
         {
             this.login = login;
+            this.signup = signup;
+            this.linked = linked;
+            this.account_id = accountId;
+            this.error_code = errorCode;
         }
         
         /// <summary>
-        /// Whether the 2FA verification succeeded and the user is now logged in.
+        /// Whether the user was logged in to an existing account.
         /// </summary>
-        /// <value>Whether the 2FA verification succeeded and the user is now logged in.</value>
+        /// <value>Whether the user was logged in to an existing account.</value>
         [DataMember(Name="login", EmitDefaultValue=false)]
         public bool? login { get; set; }
+
+        /// <summary>
+        /// Whether a new account was created.
+        /// </summary>
+        /// <value>Whether a new account was created.</value>
+        [DataMember(Name="signup", EmitDefaultValue=false)]
+        public bool? signup { get; set; }
+
+        /// <summary>
+        /// Whether the OAuth provider was linked to an existing account.
+        /// </summary>
+        /// <value>Whether the OAuth provider was linked to an existing account.</value>
+        [DataMember(Name="linked", EmitDefaultValue=false)]
+        public bool? linked { get; set; }
+
+        /// <summary>
+        /// The account ID associated with the OAuth login.
+        /// </summary>
+        /// <value>The account ID associated with the OAuth login.</value>
+        [DataMember(Name="account_id", EmitDefaultValue=false)]
+        public int? account_id { get; set; }
+
+        /// <summary>
+        /// Error code if additional verification is needed (e.g. &#x60;2fa_required&#x60;).
+        /// </summary>
+        /// <value>Error code if additional verification is needed (e.g. &#x60;2fa_required&#x60;).</value>
+        [DataMember(Name="error_code", EmitDefaultValue=false)]
+        public string error_code { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -53,6 +89,10 @@ namespace Interserver.MyAdmin.Client.Model
             var sb = new StringBuilder();
             sb.Append("class InlineResponse2007 {\n");
             sb.Append("  login: ").Append(login).Append("\n");
+            sb.Append("  signup: ").Append(signup).Append("\n");
+            sb.Append("  linked: ").Append(linked).Append("\n");
+            sb.Append("  account_id: ").Append(account_id).Append("\n");
+            sb.Append("  error_code: ").Append(error_code).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,6 +131,26 @@ namespace Interserver.MyAdmin.Client.Model
                     this.login == input.login ||
                     (this.login != null &&
                     this.login.Equals(input.login))
+                ) && 
+                (
+                    this.signup == input.signup ||
+                    (this.signup != null &&
+                    this.signup.Equals(input.signup))
+                ) && 
+                (
+                    this.linked == input.linked ||
+                    (this.linked != null &&
+                    this.linked.Equals(input.linked))
+                ) && 
+                (
+                    this.account_id == input.account_id ||
+                    (this.account_id != null &&
+                    this.account_id.Equals(input.account_id))
+                ) && 
+                (
+                    this.error_code == input.error_code ||
+                    (this.error_code != null &&
+                    this.error_code.Equals(input.error_code))
                 );
         }
 
@@ -105,6 +165,14 @@ namespace Interserver.MyAdmin.Client.Model
                 int hashCode = 41;
                 if (this.login != null)
                     hashCode = hashCode * 59 + this.login.GetHashCode();
+                if (this.signup != null)
+                    hashCode = hashCode * 59 + this.signup.GetHashCode();
+                if (this.linked != null)
+                    hashCode = hashCode * 59 + this.linked.GetHashCode();
+                if (this.account_id != null)
+                    hashCode = hashCode * 59 + this.account_id.GetHashCode();
+                if (this.error_code != null)
+                    hashCode = hashCode * 59 + this.error_code.GetHashCode();
                 return hashCode;
             }
         }

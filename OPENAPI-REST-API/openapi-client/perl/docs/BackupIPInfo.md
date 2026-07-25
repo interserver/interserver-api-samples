@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BackupIPInfo
+# InterServerAPI::Object::BackupIPInfo
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BackupIPInfo;
+use InterServerAPI::Object::BackupIPInfo;
 ```
 
 ## Properties

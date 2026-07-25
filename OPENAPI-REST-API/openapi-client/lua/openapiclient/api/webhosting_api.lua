@@ -34,6 +34,8 @@ local openapiclient_post_website_buy_ip_request = require "openapiclient.model.p
 local openapiclient_post_website_migration_request = require "openapiclient.model.post_website_migration_request"
 local openapiclient_reverse_dns_entries = require "openapiclient.model.reverse_dns_entries"
 local openapiclient_webhosting_cancel_200_response = require "openapiclient.model.webhosting_cancel_200_response"
+local openapiclient_website_order_post_request = require "openapiclient.model.website_order_post_request"
+local openapiclient_website_order_put_request = require "openapiclient.model.website_order_put_request"
 
 local webhosting_api = {}
 local webhosting_api_mt = {
@@ -61,7 +63,7 @@ local function new_webhosting_api(authority, basePath, schemes)
 	}, webhosting_api_mt)
 end
 
-function webhosting_api:add_website()
+function webhosting_api:add_website(website_order_post_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -72,9 +74,15 @@ function webhosting_api:add_website()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "POST")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(website_order_post_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -784,7 +792,7 @@ function webhosting_api:post_websites_reverse_dns(id, reverse_dns_entries)
 	end
 end
 
-function webhosting_api:put_websites()
+function webhosting_api:put_websites(website_order_put_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -795,9 +803,15 @@ function webhosting_api:put_websites()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "PUT")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(website_order_put_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then

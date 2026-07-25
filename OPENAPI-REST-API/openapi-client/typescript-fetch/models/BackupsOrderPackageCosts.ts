@@ -31,7 +31,7 @@ export interface BackupsOrderPackageCosts {
  * Check if a given object implements the BackupsOrderPackageCosts interface.
  */
 export function instanceOfBackupsOrderPackageCosts(value: object): value is BackupsOrderPackageCosts {
-    if (!('_11006' in value) || value['_11006'] === undefined) return false;
+    if ((!('_11006' in (value as Record<string, any>)) && !('11006' in (value as Record<string, any>))) || ((value as Record<string, any>)['_11006'] === undefined && (value as Record<string, any>)['11006'] === undefined)) return false;
     return true;
 }
 

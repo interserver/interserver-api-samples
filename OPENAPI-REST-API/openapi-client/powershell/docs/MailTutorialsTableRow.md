@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailTutorialsTableRow = Initialize-PSOpenAPIToolsMailTutorialsTableRow  -Desc cPanel Tutorial `
+$MailTutorialsTableRow = Initialize-InterserverApiMailTutorialsTableRow  -Desc cPanel Tutorial `
  -Value &lt;a class&#x3D;&quot;link&quot; href&#x3D;&quot;https://mail.baby/cpanel/&quot; target&#x3D;&quot;_blank&quot;&gt;Click Here&lt;/a&gt;
 ```
 

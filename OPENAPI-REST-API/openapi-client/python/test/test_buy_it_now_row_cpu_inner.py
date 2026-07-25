@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.buy_it_now_row_cpu_inner import BuyItNowRowCpuInner
+from interserver_api_client.models.buy_it_now_row_cpu_inner import BuyItNowRowCpuInner
 
 class TestBuyItNowRowCpuInner(unittest.TestCase):
     """BuyItNowRowCpuInner unit test stubs"""

@@ -1,4 +1,4 @@
-# openapi::PlaceBuyNowServerRequest
+# interserverapi::PlaceBuyNowServerRequest
 
 
 ## Properties

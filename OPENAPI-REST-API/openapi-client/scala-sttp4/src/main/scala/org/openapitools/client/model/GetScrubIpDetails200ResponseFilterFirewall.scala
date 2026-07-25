@@ -17,4 +17,3 @@ case class GetScrubIpDetails200ResponseFilterFirewall(
   filters: Option[Seq[GetScrubIpDetails200ResponseFilterFirewallFiltersInner]] = None,
   scrub_enabled: Option[Int] = None
 )
-

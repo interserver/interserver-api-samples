@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsBackupRows();
+    instance = new InterserverApiClient.VpsBackupRows();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('VpsBackupRows', function() {
     it('should create an instance of VpsBackupRows', function() {
       // uncomment below and update the code to test VpsBackupRows
-      //var instance = new InterServerManagementApi.VpsBackupRows();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsBackupRows);
+      //var instance = new InterserverApiClient.VpsBackupRows();
+      //expect(instance).to.be.a(InterserverApiClient.VpsBackupRows);
     });
 
   });

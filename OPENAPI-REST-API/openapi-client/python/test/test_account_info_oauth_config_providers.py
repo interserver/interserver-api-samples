@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_info_oauth_config_providers import AccountInfoOauthConfigProviders
+from interserver_api_client.models.account_info_oauth_config_providers import AccountInfoOauthConfigProviders
 
 class TestAccountInfoOauthConfigProviders(unittest.TestCase):
     """AccountInfoOauthConfigProviders unit test stubs"""

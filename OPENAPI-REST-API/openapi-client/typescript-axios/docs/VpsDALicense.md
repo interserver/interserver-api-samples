@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsDALicense } from './api';
+import { VpsDALicense } from '@interserver/myadmin-client';
 
 const instance: VpsDALicense = {
     name,

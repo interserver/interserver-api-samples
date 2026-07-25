@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_assets import ServerAssets
+from interserver_api_client.models.server_assets import ServerAssets
 
 class TestServerAssets(unittest.TestCase):
     """ServerAssets unit test stubs"""

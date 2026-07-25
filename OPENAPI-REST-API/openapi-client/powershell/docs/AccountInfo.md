@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfo = Initialize-PSOpenAPIToolsAccountInfo  -Custid null `
+$AccountInfo = Initialize-InterserverApiAccountInfo  -Custid null `
  -Ima null `
  -VarData null `
  -Ip null `

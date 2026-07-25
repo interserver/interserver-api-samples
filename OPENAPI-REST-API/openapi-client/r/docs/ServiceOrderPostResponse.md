@@ -1,4 +1,4 @@
-# openapi::ServiceOrderPostResponse
+# interserverapi::ServiceOrderPostResponse
 
 Generic response returned after placing a service order. Contains invoice IDs for payment and the new service ID.
 

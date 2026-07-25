@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsBackupRow();
+    instance = new InterserverApiClient.VpsBackupRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('VpsBackupRow', function() {
     it('should create an instance of VpsBackupRow', function() {
       // uncomment below and update the code to test VpsBackupRow
-      //var instance = new InterServerManagementApi.VpsBackupRow();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsBackupRow);
+      //var instance = new InterserverApiClient.VpsBackupRow();
+      //expect(instance).to.be.a(InterserverApiClient.VpsBackupRow);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.VpsBackupRow();
+      //var instance = new InterserverApiClient.VpsBackupRow();
       //expect(instance).to.be();
     });
 
     it('should have the property service (base name: "service")', function() {
       // uncomment below and update the code to test the property service
-      //var instance = new InterServerManagementApi.VpsBackupRow();
+      //var instance = new InterserverApiClient.VpsBackupRow();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.VpsBackupRow();
+      //var instance = new InterserverApiClient.VpsBackupRow();
       //expect(instance).to.be();
     });
 
     it('should have the property size (base name: "size")', function() {
       // uncomment below and update the code to test the property size
-      //var instance = new InterServerManagementApi.VpsBackupRow();
+      //var instance = new InterserverApiClient.VpsBackupRow();
       //expect(instance).to.be();
     });
 
     it('should have the property date (base name: "date")', function() {
       // uncomment below and update the code to test the property date
-      //var instance = new InterServerManagementApi.VpsBackupRow();
+      //var instance = new InterserverApiClient.VpsBackupRow();
       //expect(instance).to.be();
     });
 

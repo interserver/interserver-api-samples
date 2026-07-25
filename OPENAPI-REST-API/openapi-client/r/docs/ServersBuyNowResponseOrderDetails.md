@@ -1,4 +1,4 @@
-# openapi::ServersBuyNowResponseOrderDetails
+# interserverapi::ServersBuyNowResponseOrderDetails
 
 Details of the placed order.
 

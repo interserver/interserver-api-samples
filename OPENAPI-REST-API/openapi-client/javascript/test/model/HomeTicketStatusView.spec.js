@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.HomeTicketStatusView();
+    instance = new InterserverApiClient.HomeTicketStatusView();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('HomeTicketStatusView', function() {
     it('should create an instance of HomeTicketStatusView', function() {
       // uncomment below and update the code to test HomeTicketStatusView
-      //var instance = new InterServerManagementApi.HomeTicketStatusView();
-      //expect(instance).to.be.a(InterServerManagementApi.HomeTicketStatusView);
+      //var instance = new InterserverApiClient.HomeTicketStatusView();
+      //expect(instance).to.be.a(InterserverApiClient.HomeTicketStatusView);
     });
 
     it('should have the property _4 (base name: "4")', function() {
       // uncomment below and update the code to test the property _4
-      //var instance = new InterServerManagementApi.HomeTicketStatusView();
+      //var instance = new InterserverApiClient.HomeTicketStatusView();
       //expect(instance).to.be();
     });
 
     it('should have the property _5 (base name: "5")', function() {
       // uncomment below and update the code to test the property _5
-      //var instance = new InterServerManagementApi.HomeTicketStatusView();
+      //var instance = new InterserverApiClient.HomeTicketStatusView();
       //expect(instance).to.be();
     });
 
     it('should have the property _6 (base name: "6")', function() {
       // uncomment below and update the code to test the property _6
-      //var instance = new InterServerManagementApi.HomeTicketStatusView();
+      //var instance = new InterserverApiClient.HomeTicketStatusView();
       //expect(instance).to.be();
     });
 

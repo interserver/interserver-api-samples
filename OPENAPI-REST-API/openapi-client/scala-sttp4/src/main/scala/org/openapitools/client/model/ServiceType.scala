@@ -22,4 +22,3 @@ case class ServiceType(
   st_category: Int,
   st_module: String
 )
-

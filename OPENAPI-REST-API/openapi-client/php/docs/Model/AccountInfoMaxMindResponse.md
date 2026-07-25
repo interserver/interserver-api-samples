@@ -50,7 +50,7 @@ Name | Type | Description | Notes
 **carderEmail** | **string** |  | [optional]
 **highRiskUsername** | **string** |  | [optional]
 **highRiskPassword** | **string** |  | [optional]
-**riskScore** | [**\Interserver\MyAdmin\Model\AccountInfoMaxMindResponseRiskScore**](AccountInfoMaxMindResponseRiskScore.md) |  | [optional]
+**riskScore** | [**\Interserver\\MyAdmin\Model\AccountInfoMaxMindResponseRiskScore**](AccountInfoMaxMindResponseRiskScore.md) |  | [optional]
 **isTransProxy** | **string** |  | [optional]
 **prepaid** | **string** |  | [optional]
 **minfraudVersion** | **string** |  | [optional]

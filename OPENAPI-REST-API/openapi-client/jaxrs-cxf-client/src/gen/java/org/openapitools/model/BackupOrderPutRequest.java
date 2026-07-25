@@ -29,7 +29,7 @@ public class BackupOrderPutRequest  {
    * @return validateOnly
   **/
   @JsonProperty("validateOnly")
-  public Boolean getValidateOnly() {
+  public Boolean isValidateOnly() {
     return validateOnly;
   }
 

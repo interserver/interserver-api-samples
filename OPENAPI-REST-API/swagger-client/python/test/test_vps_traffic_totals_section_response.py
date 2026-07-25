@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.vps_traffic_totals_section_response import VpsTrafficTotalsSectionResponse  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.vps_traffic_totals_section_response import VpsTrafficTotalsSectionResponse  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestVpsTrafficTotalsSectionResponse(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestVpsTrafficTotalsSectionResponse(unittest.TestCase):
     def testVpsTrafficTotalsSectionResponse(self):
         """Test VpsTrafficTotalsSectionResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.vps_traffic_totals_section_response.VpsTrafficTotalsSectionResponse()  # noqa: E501
+        # model = interserver_api_client.models.vps_traffic_totals_section_response.VpsTrafficTotalsSectionResponse()  # noqa: E501
         pass
 
 

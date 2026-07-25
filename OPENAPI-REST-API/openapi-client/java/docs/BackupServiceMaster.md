@@ -19,4 +19,8 @@
 |**backupOrder** | **Integer** | Order associated with the backup service. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

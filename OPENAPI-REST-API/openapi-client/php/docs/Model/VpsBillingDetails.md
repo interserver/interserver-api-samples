@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **serviceCurrencySymbol** | **string** | Currency symbol | [optional]
 **serviceCoupon** | **string** | Billing coupon code | [optional]
 **serviceCostInfo** | **string** | Cost information | [optional]
-**serviceExtra** | [**\Interserver\MyAdmin\Model\VpsServiceExtra**](VpsServiceExtra.md) |  | [optional]
+**serviceExtra** | [**\Interserver\\MyAdmin\Model\VpsServiceExtra**](VpsServiceExtra.md) |  | [optional]
 **serviceExtraJson** | **string** | Additional information in JSON format | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

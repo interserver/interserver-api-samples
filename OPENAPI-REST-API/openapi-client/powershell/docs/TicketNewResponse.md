@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TicketNewResponse = Initialize-PSOpenAPIToolsTicketNewResponse  -TicketId null `
+$TicketNewResponse = Initialize-InterserverApiTicketNewResponse  -TicketId null `
  -Text null `
  -Success null
 ```

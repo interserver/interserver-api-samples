@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.Home();
+    instance = new InterserverApiClient.Home();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,91 +50,91 @@
   describe('Home', function() {
     it('should create an instance of Home', function() {
       // uncomment below and update the code to test Home
-      //var instance = new InterServerManagementApi.Home();
-      //expect(instance).to.be.a(InterServerManagementApi.Home);
+      //var instance = new InterserverApiClient.Home();
+      //expect(instance).to.be.a(InterserverApiClient.Home);
     });
 
     it('should have the property last_login_ip (base name: "last_login_ip")', function() {
       // uncomment below and update the code to test the property last_login_ip
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property last_login (base name: "last_login")', function() {
       // uncomment below and update the code to test the property last_login
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property currency (base name: "currency")', function() {
       // uncomment below and update the code to test the property currency
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property amount (base name: "amount")', function() {
       // uncomment below and update the code to test the property amount
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property invoice_list (base name: "invoice_list")', function() {
       // uncomment below and update the code to test the property invoice_list
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property balance (base name: "balance")', function() {
       // uncomment below and update the code to test the property balance
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property full_name (base name: "full_name")', function() {
       // uncomment below and update the code to test the property full_name
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property email (base name: "email")', function() {
       // uncomment below and update the code to test the property email
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property tickets (base name: "tickets")', function() {
       // uncomment below and update the code to test the property tickets
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property ticketStatus (base name: "ticketStatus")', function() {
       // uncomment below and update the code to test the property ticketStatus
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property ticketStatusView (base name: "ticketStatusView")', function() {
       // uncomment below and update the code to test the property ticketStatusView
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property details (base name: "details")', function() {
       // uncomment below and update the code to test the property details
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property services (base name: "services")', function() {
       // uncomment below and update the code to test the property services
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 
     it('should have the property AFFILIATE_AMOUNT (base name: "AFFILIATE_AMOUNT")', function() {
       // uncomment below and update the code to test the property AFFILIATE_AMOUNT
-      //var instance = new InterServerManagementApi.Home();
+      //var instance = new InterserverApiClient.Home();
       //expect(instance).to.be();
     });
 

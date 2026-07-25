@@ -19,4 +19,8 @@ Request to add a new creditcard into the system.
 |**ccCcv2** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

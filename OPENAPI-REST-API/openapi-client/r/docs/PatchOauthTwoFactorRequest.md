@@ -1,4 +1,4 @@
-# openapi::PatchOauthTwoFactorRequest
+# interserverapi::PatchOauthTwoFactorRequest
 
 
 ## Properties

@@ -27,4 +27,3 @@ case class HomeDetailsModulesServers(
   /* Link to view servers list. */
   list_link: Option[String] = None
 )
-

@@ -30,4 +30,3 @@ case class MailSchema(
   /* Extra information for the mail service. */
   serviceExtra: Option[Seq[String]] = None
 )
-

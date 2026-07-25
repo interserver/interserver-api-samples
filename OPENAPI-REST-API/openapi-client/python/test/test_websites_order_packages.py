@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.websites_order_packages import WebsitesOrderPackages
+from interserver_api_client.models.websites_order_packages import WebsitesOrderPackages
 
 class TestWebsitesOrderPackages(unittest.TestCase):
     """WebsitesOrderPackages unit test stubs"""

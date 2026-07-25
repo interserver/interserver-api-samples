@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerIpmiLiveInfo');
+use_ok('InterServerAPI::Object::ServerIpmiLiveInfo');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerIpmiLiveInfo->new();
+#my $instance = InterServerAPI::Object::ServerIpmiLiveInfo->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerIpmiLiveInfo');
+#isa_ok($instance, 'InterServerAPI::Object::ServerIpmiLiveInfo');
 
 
 done_testing();

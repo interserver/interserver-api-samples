@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverOrder } from './api';
+import { QuickserverOrder } from '@interserver/myadmin-client';
 
 const instance: QuickserverOrder = {
     qs_id,

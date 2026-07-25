@@ -21,4 +21,3 @@ case class MailExtraInfoTable(
   /* The rows of the extra info table. */
   rows: Option[Seq[MailExtraInfoTableRow]] = None
 )
-

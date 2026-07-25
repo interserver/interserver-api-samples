@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.CreateRule201Response();
+    instance = new InterserverApiClient.CreateRule201Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('CreateRule201Response', function() {
     it('should create an instance of CreateRule201Response', function() {
       // uncomment below and update the code to test CreateRule201Response
-      //var instance = new InterServerManagementApi.CreateRule201Response();
-      //expect(instance).to.be.a(InterServerManagementApi.CreateRule201Response);
+      //var instance = new InterserverApiClient.CreateRule201Response();
+      //expect(instance).to.be.a(InterserverApiClient.CreateRule201Response);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.CreateRule201Response();
+      //var instance = new InterserverApiClient.CreateRule201Response();
       //expect(instance).to.be();
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.CreateRule201Response();
+      //var instance = new InterserverApiClient.CreateRule201Response();
       //expect(instance).to.be();
     });
 

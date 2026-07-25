@@ -1,4 +1,4 @@
-# InterServerManagementApi.HomeDetailsModulesWebhosting
+# InterserverApiClient.HomeDetailsModulesWebhosting
 
 ## Properties
 

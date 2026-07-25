@@ -22,4 +22,3 @@ case class VpsTrafficTotalsResposne(
   year: VpsTrafficTotalsSectionResponse,
   all: VpsTrafficTotalsSectionResponse
 )
-

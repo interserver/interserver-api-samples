@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerExtraInfoTables();
+    instance = new InterserverApiClient.ServerExtraInfoTables();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('ServerExtraInfoTables', function() {
     it('should create an instance of ServerExtraInfoTables', function() {
       // uncomment below and update the code to test ServerExtraInfoTables
-      //var instance = new InterServerManagementApi.ServerExtraInfoTables();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerExtraInfoTables);
+      //var instance = new InterserverApiClient.ServerExtraInfoTables();
+      //expect(instance).to.be.a(InterserverApiClient.ServerExtraInfoTables);
     });
 
     it('should have the property assets (base name: "assets")', function() {
       // uncomment below and update the code to test the property assets
-      //var instance = new InterServerManagementApi.ServerExtraInfoTables();
+      //var instance = new InterserverApiClient.ServerExtraInfoTables();
       //expect(instance).to.be();
     });
 

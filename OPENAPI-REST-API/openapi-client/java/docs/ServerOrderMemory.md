@@ -22,4 +22,8 @@ A memory (RAM) option available when ordering a dedicated server.
 |**monthlyPriceDisplay** | **String** | Display of monthly memory price. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

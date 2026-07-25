@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainProvProcessPendingAttributes model module.
  * @module model/DomainProvProcessPendingAttributes
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainProvProcessPendingAttributes {
     /**

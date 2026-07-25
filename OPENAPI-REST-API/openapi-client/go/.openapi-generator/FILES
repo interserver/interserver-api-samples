@@ -46,8 +46,6 @@ docs/AffiliateBannerRow.md
 docs/AffiliateDockSetup.md
 docs/AffiliatePaymentSetup.md
 docs/AffiliateTrafficRow.md
-docs/AssetServer.md
-docs/AssetServerCPUInner.md
 docs/Backup.md
 docs/BackupBillingDetails.md
 docs/BackupClientLink.md
@@ -66,7 +64,6 @@ docs/BackupsAPI.md
 docs/BackupsOrder.md
 docs/BackupsOrderPackageCosts.md
 docs/BackupsOrderServiceTypes.md
-docs/Bandwidth.md
 docs/BillingAPI.md
 docs/BillingAddCcRequest.md
 docs/BillingInvoiceDetail.md
@@ -93,11 +90,6 @@ docs/ChargeInvoiceRowsInvoicesValue.md
 docs/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.md
 docs/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.md
 docs/CloseTicketResponseSchema.md
-docs/ConfigIds.md
-docs/ConfigLists.md
-docs/ControlPanel.md
-docs/Cpu.md
-docs/CpuWithDefaults.md
 docs/CreateFilter.md
 docs/CreateFilter201Response.md
 docs/CreateFilter400Response.md
@@ -114,6 +106,7 @@ docs/DeleteFilter400Response.md
 docs/DeleteFilter500Response.md
 docs/DeleteFirewallRule.md
 docs/DeleteGeoFirewallRule.md
+docs/DeleteMailAlertRequest.md
 docs/DenyRuleNew.md
 docs/DenyRuleRecord.md
 docs/DisableScrub200Response.md
@@ -144,11 +137,11 @@ docs/DomainNameserverGetResponseInner.md
 docs/DomainNameserverPostRequest.md
 docs/DomainNameserverPutRequest.md
 docs/DomainOrder.md
+docs/DomainOrderRequest.md
 docs/DomainOrderResponse.md
 docs/DomainOrderResponseAttributes.md
 docs/DomainOrderServices.md
 docs/DomainOrderServices10001.md
-docs/DomainOrderTldServices.md
 docs/DomainOwnerContact.md
 docs/DomainProvProcessPending.md
 docs/DomainProvProcessPendingAttributes.md
@@ -165,13 +158,14 @@ docs/EmailAddress.md
 docs/EmailAddressName.md
 docs/EnableScrub200Response.md
 docs/EnableScrub500Response.md
-docs/FieldLabel.md
 docs/FloatingIPsAPI.md
+docs/FloatingIpOrderRequest.md
 docs/FloatingIpsCancel200Response.md
-docs/FormValues.md
 docs/GenericResponse.md
 docs/GetAccountInfo401Response.md
+docs/GetAccountLocales200ResponseValue.md
 docs/GetAccountTfaSetup200Response.md
+docs/GetAffiliateSignups200Response.md
 docs/GetOauthRedirect200Response.md
 docs/GetOrderDetail200Response.md
 docs/GetOrderDetail200ResponseIpsInner.md
@@ -188,7 +182,6 @@ docs/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.md
 docs/GetScrubIpDetails200ResponseFilterFirewallRulesInner.md
 docs/GetScrubIpDetails200ResponseServiceInfo.md
 docs/GetWebsiteBuyIp200Response.md
-docs/HardDrive.md
 docs/Home.md
 docs/HomeDetails.md
 docs/HomeDetailsModules.md
@@ -215,10 +208,6 @@ docs/HomeTicketStatus.md
 docs/HomeTicketStatusView.md
 docs/HostnameObject.md
 docs/InitiatePayment200Response.md
-docs/InlineObject.md
-docs/Invoice.md
-docs/InvoiceRow.md
-docs/IpBlock.md
 docs/IpLimitRange.md
 docs/IpObject.md
 docs/License.md
@@ -227,6 +216,7 @@ docs/LicenseClientLink.md
 docs/LicenseExtraInfoTables.md
 docs/LicenseIpInfo.md
 docs/LicenseIpInfoRow.md
+docs/LicenseOrderRequest.md
 docs/LicenseRow.md
 docs/LicenseServiceInfo.md
 docs/LicenseServiceType.md
@@ -265,6 +255,7 @@ docs/MailExtraInfoTableRow.md
 docs/MailLog.md
 docs/MailLogEntry.md
 docs/MailOrder.md
+docs/MailOrderRequest.md
 docs/MailRow.md
 docs/MailSchema.md
 docs/MailSchemaExtraInfoTables.md
@@ -277,15 +268,13 @@ docs/MailStatsTypeVolumeIp.md
 docs/MailStatsTypeVolumeTo.md
 docs/MailTutorialsTable.md
 docs/MailTutorialsTableRow.md
-docs/MemoryOption.md
 docs/ModuleSettings.md
 docs/Modules.md
 docs/MonthlyCounts.md
-docs/OperatingSystem.md
 docs/PasswordRequest.md
+docs/PatchBillingCreditCardVerifyRequest.md
 docs/PatchOauthTwoFactor200Response.md
 docs/PatchOauthTwoFactorRequest.md
-docs/PaymentInvoiceRows.md
 docs/PlaceBuyNowServerRequest.md
 docs/PlaceScrubOrder201Response.md
 docs/PlaceScrubOrder201ResponseOrderDetails.md
@@ -297,6 +286,8 @@ docs/PostWebsiteBuyIpRequest.md
 docs/PostWebsiteMigration200Response.md
 docs/PostWebsiteMigrationRequest.md
 docs/PublicAPI.md
+docs/PutScrubIps200Response.md
+docs/QsOrderRequest.md
 docs/QueueResponse.md
 docs/QuickServersAPI.md
 docs/Quickserver.md
@@ -321,8 +312,6 @@ docs/QuickserverServiceExtra.md
 docs/QuickserverServiceInfo.md
 docs/QuickserverServiceMaster.md
 docs/QuickserversCancel200Response.md
-docs/RaidOption.md
-docs/Region.md
 docs/ReplyTicketRequest.md
 docs/ReplyTicketResponseSchema.md
 docs/RestoreRequest.md
@@ -344,6 +333,8 @@ docs/Server.md
 docs/ServerAsset.md
 docs/ServerAssets.md
 docs/ServerBillingDetails.md
+docs/ServerBulkIpmiPowerResponse.md
+docs/ServerBulkIpmiPowerResponseResultsInner.md
 docs/ServerClientLink.md
 docs/ServerExtraInfoTables.md
 docs/ServerIpmiLiveInfo.md
@@ -366,7 +357,6 @@ docs/ServerOrderCpuLi.md
 docs/ServerOrderFieldLabel.md
 docs/ServerOrderFieldLabels.md
 docs/ServerOrderFormValues.md
-docs/ServerOrderGetResponse.md
 docs/ServerOrderIP.md
 docs/ServerOrderIpsLi.md
 docs/ServerOrderMemory.md
@@ -374,6 +364,8 @@ docs/ServerOrderMemoryLi.md
 docs/ServerOrderMemoryLi254.md
 docs/ServerOrderOS.md
 docs/ServerOrderOsLi.md
+docs/ServerOrderPostRequest.md
+docs/ServerOrderPostRequestHd.md
 docs/ServerOrderRAID.md
 docs/ServerRow.md
 docs/ServerServiceInfo.md
@@ -392,6 +384,7 @@ docs/ServiceTypes.md
 docs/Services.md
 docs/ServicesInfo.md
 docs/SslCancel200Response.md
+docs/SslOrderRequest.md
 docs/StatusMonthlyBreakdown.md
 docs/SuccessTextResponse.md
 docs/TemplateRequest.md
@@ -454,7 +447,6 @@ docs/VpsServiceMaster.md
 docs/VpsSnapshot.md
 docs/VpsTemplateRow.md
 docs/VpsTemplatesList.md
-docs/VpsTrafficDataDataResponse.md
 docs/VpsTrafficDataSectionResponse.md
 docs/VpsTrafficHistoryResponse.md
 docs/VpsTrafficHistorySectionDataResponse.md
@@ -474,6 +466,8 @@ docs/WebsiteBillingDetails.md
 docs/WebsiteClientLink.md
 docs/WebsiteExtraInfoTables.md
 docs/WebsiteLoginResponse.md
+docs/WebsiteOrderPostRequest.md
+docs/WebsiteOrderPutRequest.md
 docs/WebsiteRow.md
 docs/WebsiteServiceInfo.md
 docs/WebsiteServiceMaster.md
@@ -516,8 +510,6 @@ model_affiliate_banner_row.go
 model_affiliate_dock_setup.go
 model_affiliate_payment_setup.go
 model_affiliate_traffic_row.go
-model_asset_server.go
-model_asset_server_cpu_inner.go
 model_backup.go
 model_backup_billing_details.go
 model_backup_client_link.go
@@ -535,7 +527,6 @@ model_backup_service_master.go
 model_backups_order.go
 model_backups_order_package_costs.go
 model_backups_order_service_types.go
-model_bandwidth.go
 model_billing_add_cc_request.go
 model_billing_invoice_detail.go
 model_billing_invoice_list.go
@@ -561,11 +552,6 @@ model_charge_invoice_rows_invoices_value.go
 model_charge_invoice_rows_invoices_value_paid_invoices_value.go
 model_charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.go
 model_close_ticket_response_schema.go
-model_config_ids.go
-model_config_lists.go
-model_control_panel.go
-model_cpu.go
-model_cpu_with_defaults.go
 model_create_filter.go
 model_create_filter_201_response.go
 model_create_filter_400_response.go
@@ -581,6 +567,7 @@ model_delete_filter_400_response.go
 model_delete_filter_500_response.go
 model_delete_firewall_rule.go
 model_delete_geo_firewall_rule.go
+model_delete_mail_alert_request.go
 model_deny_rule_new.go
 model_deny_rule_record.go
 model_disable_scrub_200_response.go
@@ -611,11 +598,11 @@ model_domain_nameserver_get_response_inner.go
 model_domain_nameserver_post_request.go
 model_domain_nameserver_put_request.go
 model_domain_order.go
+model_domain_order_request.go
 model_domain_order_response.go
 model_domain_order_response_attributes.go
 model_domain_order_services.go
 model_domain_order_services10001.go
-model_domain_order_tld_services.go
 model_domain_owner_contact.go
 model_domain_prov_process_pending.go
 model_domain_prov_process_pending_attributes.go
@@ -631,12 +618,13 @@ model_email_address.go
 model_email_address_name.go
 model_enable_scrub_200_response.go
 model_enable_scrub_500_response.go
-model_field_label.go
+model_floating_ip_order_request.go
 model_floating_ips_cancel_200_response.go
-model_form_values.go
 model_generic_response.go
 model_get_account_info_401_response.go
+model_get_account_locales_200_response_value.go
 model_get_account_tfa_setup_200_response.go
+model_get_affiliate_signups_200_response.go
 model_get_oauth_redirect_200_response.go
 model_get_order_detail_200_response.go
 model_get_order_detail_200_response_ips_inner.go
@@ -653,7 +641,6 @@ model_get_scrub_ip_details_200_response_filter_firewall_filters_inner.go
 model_get_scrub_ip_details_200_response_filter_firewall_rules_inner.go
 model_get_scrub_ip_details_200_response_service_info.go
 model_get_website_buy_ip_200_response.go
-model_hard_drive.go
 model_home.go
 model_home_details.go
 model_home_details_modules.go
@@ -680,10 +667,6 @@ model_home_ticket_status.go
 model_home_ticket_status_view.go
 model_hostname_object.go
 model_initiate_payment_200_response.go
-model_inline_object.go
-model_invoice.go
-model_invoice_row.go
-model_ip_block.go
 model_ip_limit_range.go
 model_ip_object.go
 model_license.go
@@ -692,6 +675,7 @@ model_license_client_link.go
 model_license_extra_info_tables.go
 model_license_ip_info.go
 model_license_ip_info_row.go
+model_license_order_request.go
 model_license_row.go
 model_license_service_info.go
 model_license_service_type.go
@@ -728,6 +712,7 @@ model_mail_extra_info_table_row.go
 model_mail_log.go
 model_mail_log_entry.go
 model_mail_order.go
+model_mail_order_request.go
 model_mail_row.go
 model_mail_schema.go
 model_mail_schema_extra_info_tables.go
@@ -740,15 +725,13 @@ model_mail_stats_type_volume_ip.go
 model_mail_stats_type_volume_to.go
 model_mail_tutorials_table.go
 model_mail_tutorials_table_row.go
-model_memory_option.go
 model_module_settings.go
 model_modules.go
 model_monthly_counts.go
-model_operating_system.go
 model_password_request.go
+model_patch_billing_credit_card_verify_request.go
 model_patch_oauth_two_factor_200_response.go
 model_patch_oauth_two_factor_request.go
-model_payment_invoice_rows.go
 model_place_buy_now_server_request.go
 model_place_scrub_order_201_response.go
 model_place_scrub_order_201_response_order_details.go
@@ -759,6 +742,8 @@ model_post_website_buy_ip_200_response.go
 model_post_website_buy_ip_request.go
 model_post_website_migration_200_response.go
 model_post_website_migration_request.go
+model_put_scrub_ips_200_response.go
+model_qs_order_request.go
 model_queue_response.go
 model_quickserver.go
 model_quickserver_addons.go
@@ -782,8 +767,6 @@ model_quickserver_service_extra.go
 model_quickserver_service_info.go
 model_quickserver_service_master.go
 model_quickservers_cancel_200_response.go
-model_raid_option.go
-model_region.go
 model_reply_ticket_request.go
 model_reply_ticket_response_schema.go
 model_restore_request.go
@@ -803,6 +786,8 @@ model_server.go
 model_server_asset.go
 model_server_assets.go
 model_server_billing_details.go
+model_server_bulk_ipmi_power_response.go
+model_server_bulk_ipmi_power_response_results_inner.go
 model_server_client_link.go
 model_server_extra_info_tables.go
 model_server_ipmi_live_info.go
@@ -825,7 +810,6 @@ model_server_order_cpu_li.go
 model_server_order_field_label.go
 model_server_order_field_labels.go
 model_server_order_form_values.go
-model_server_order_get_response.go
 model_server_order_ip.go
 model_server_order_ips_li.go
 model_server_order_memory.go
@@ -833,6 +817,8 @@ model_server_order_memory_li.go
 model_server_order_memory_li_254.go
 model_server_order_os.go
 model_server_order_os_li.go
+model_server_order_post_request.go
+model_server_order_post_request_hd.go
 model_server_order_raid.go
 model_server_row.go
 model_server_service_info.go
@@ -850,6 +836,7 @@ model_service_types.go
 model_services.go
 model_services_info.go
 model_ssl_cancel_200_response.go
+model_ssl_order_request.go
 model_status_monthly_breakdown.go
 model_success_text_response.go
 model_template_request.go
@@ -908,7 +895,6 @@ model_vps_service_master.go
 model_vps_snapshot.go
 model_vps_template_row.go
 model_vps_templates_list.go
-model_vps_traffic_data_data_response.go
 model_vps_traffic_data_data_section_response.go
 model_vps_traffic_data_data_section_response_inner.go
 model_vps_traffic_data_section_response.go
@@ -929,6 +915,8 @@ model_website_billing_details.go
 model_website_client_link.go
 model_website_extra_info_tables.go
 model_website_login_response.go
+model_website_order_post_request.go
+model_website_order_put_request.go
 model_website_row.go
 model_website_service_info.go
 model_website_service_master.go

@@ -6,9 +6,9 @@ import io.swagger.model.HostnameObject;
 
 import io.swagger.model.IdBackupsBody2;
 
-import io.swagger.model.InlineResponse20011;
+import io.swagger.model.InlineResponse20012;
 
-import io.swagger.model.InlineResponse20022;
+import io.swagger.model.InlineResponse20024;
 
 import io.swagger.model.InlineResponse401;
 
@@ -130,13 +130,13 @@ public class VpsApiController implements VpsApi {
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20011>> downloadVpsBackup(@NotNull @Valid IdBackupsBody2 body, Integer id, @Nullable String all) {
+    public Single<HttpResponse<InlineResponse20012>> downloadVpsBackup(@NotNull @Valid IdBackupsBody2 body, Integer id, @Nullable String all) {
         // TODO: Implement me
         return VpsApi.super.downloadVpsBackup(body, id, all);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20011>> downloadVpsBackup(@NotNull String file, Integer id, @Nullable String all) {
+    public Single<HttpResponse<InlineResponse20012>> downloadVpsBackup(@NotNull String file, Integer id, @Nullable String all) {
         // TODO: Implement me
         return VpsApi.super.downloadVpsBackup(file, id, all);
     }
@@ -145,6 +145,12 @@ public class VpsApiController implements VpsApi {
     public Single<HttpResponse<VpsOrder>> getNewVps() {
         // TODO: Implement me
         return VpsApi.super.getNewVps();
+    }
+
+    @Override
+    public Single<HttpResponse<QueueResponse>> getVpsBackup(Integer id) {
+        // TODO: Implement me
+        return VpsApi.super.getVpsBackup(id);
     }
 
     @Override
@@ -166,6 +172,18 @@ public class VpsApiController implements VpsApi {
     }
 
     @Override
+    public Single<HttpResponse<Void>> getVpsChangeHostname(Integer id) {
+        // TODO: Implement me
+        return VpsApi.super.getVpsChangeHostname(id);
+    }
+
+    @Override
+    public Single<HttpResponse<Void>> getVpsChangeRootPassword(Integer id) {
+        // TODO: Implement me
+        return VpsApi.super.getVpsChangeRootPassword(id);
+    }
+
+    @Override
     public Single<HttpResponse<List<String>>> getVpsChangeTimezone(Integer id) {
         // TODO: Implement me
         return VpsApi.super.getVpsChangeTimezone(id);
@@ -175,6 +193,12 @@ public class VpsApiController implements VpsApi {
     public Single<HttpResponse<Vps>> getVpsInfo(Integer id) {
         // TODO: Implement me
         return VpsApi.super.getVpsInfo(id);
+    }
+
+    @Override
+    public Single<HttpResponse<Void>> getVpsInsertCd(Integer id) {
+        // TODO: Implement me
+        return VpsApi.super.getVpsInsertCd(id);
     }
 
     @Override
@@ -193,6 +217,12 @@ public class VpsApiController implements VpsApi {
     public Single<HttpResponse<VpsTemplatesList>> getVpsReinstallOs(Integer id) {
         // TODO: Implement me
         return VpsApi.super.getVpsReinstallOs(id);
+    }
+
+    @Override
+    public Single<HttpResponse<Void>> getVpsResetPassword(Integer id) {
+        // TODO: Implement me
+        return VpsApi.super.getVpsResetPassword(id);
     }
 
     @Override
@@ -229,12 +259,6 @@ public class VpsApiController implements VpsApi {
     public Single<HttpResponse<SuccessTextResponse>> getVpsWelcomeEmail(String id) {
         // TODO: Implement me
         return VpsApi.super.getVpsWelcomeEmail(id);
-    }
-
-    @Override
-    public Single<HttpResponse<QueueResponse>> postVpsBackup(Integer id) {
-        // TODO: Implement me
-        return VpsApi.super.postVpsBackup(id);
     }
 
     @Override
@@ -364,6 +388,12 @@ public class VpsApiController implements VpsApi {
     }
 
     @Override
+    public Single<HttpResponse<Void>> postVpsTrafficUsage(Integer id) {
+        // TODO: Implement me
+        return VpsApi.super.postVpsTrafficUsage(id);
+    }
+
+    @Override
     public Single<HttpResponse<Void>> postVpsViewDesktop(Integer id) {
         // TODO: Implement me
         return VpsApi.super.postVpsViewDesktop(id);
@@ -382,13 +412,19 @@ public class VpsApiController implements VpsApi {
     }
 
     @Override
+    public Single<HttpResponse<Void>> putVpsBuyHdSpace(Integer id) {
+        // TODO: Implement me
+        return VpsApi.super.putVpsBuyHdSpace(id);
+    }
+
+    @Override
     public Single<HttpResponse<SuccessTextResponse>> updateVpsInfo(String id) {
         // TODO: Implement me
         return VpsApi.super.updateVpsInfo(id);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20022>> vPSCancel(Integer id) {
+    public Single<HttpResponse<InlineResponse20024>> vPSCancel(Integer id) {
         // TODO: Implement me
         return VpsApi.super.vPSCancel(id);
     }

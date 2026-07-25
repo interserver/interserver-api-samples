@@ -12,4 +12,8 @@ OS Names
 |**ubuntu** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -63,6 +63,7 @@ type DnsRecordType* {.pure.} = enum
   TXT
   WKS
   `URI⏎`
+  UnknownDefaultOpenApi
 
 func `%`*(v: DnsRecordType): JsonNode =
   result = case v:
@@ -115,6 +116,7 @@ func `%`*(v: DnsRecordType): JsonNode =
     of DnsRecordType.TXT: %"TXT"
     of DnsRecordType.WKS: %"WKS"
     of DnsRecordType.`URI⏎`: %"URI⏎"
+    of DnsRecordType.UnknownDefaultOpenApi: %"11184809"
 
 func `$`*(v: DnsRecordType): string =
   result = case v:
@@ -167,6 +169,7 @@ func `$`*(v: DnsRecordType): string =
     of DnsRecordType.TXT: $("TXT")
     of DnsRecordType.WKS: $("WKS")
     of DnsRecordType.`URI⏎`: $("URI⏎")
+    of DnsRecordType.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[DnsRecordType]): DnsRecordType =
   if node.kind != JString:
@@ -271,6 +274,8 @@ proc to*(node: JsonNode, T: typedesc[DnsRecordType]): DnsRecordType =
     return DnsRecordType.WKS
   of $("URI⏎"):
     return DnsRecordType.`URI⏎`
+  of $("11184809"):
+    return DnsRecordType.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for DnsRecordType: " & strVal)
 

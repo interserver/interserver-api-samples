@@ -136,33 +136,31 @@ class DenyRuleNew {
 }
 
 /// The type of deny rule.
-class DenyRuleNewTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const DenyRuleNewTypeEnum._(this.value);
+enum DenyRuleNewTypeEnum {
+  domain._(r'domain'),
+  email._(r'email'),
+  startswith._(r'startswith'),
+  destination._(r'destination'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const DenyRuleNewTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const domain = DenyRuleNewTypeEnum._(r'domain');
-  static const email = DenyRuleNewTypeEnum._(r'email');
-  static const startswith = DenyRuleNewTypeEnum._(r'startswith');
-  static const destination = DenyRuleNewTypeEnum._(r'destination');
-
-  /// List of all possible values in this [enum][DenyRuleNewTypeEnum].
-  static const values = <DenyRuleNewTypeEnum>[
-    domain,
-    email,
-    startswith,
-    destination,
-  ];
-
+  /// Returns the instance of [DenyRuleNewTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static DenyRuleNewTypeEnum? fromJson(dynamic value) => DenyRuleNewTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [DenyRuleNewTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<DenyRuleNewTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <DenyRuleNewTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -184,9 +182,10 @@ class DenyRuleNewTypeEnumTypeTransformer {
 
   const DenyRuleNewTypeEnumTypeTransformer._();
 
-  String encode(DenyRuleNewTypeEnum data) => data.value;
+  String encode(DenyRuleNewTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a DenyRuleNewTypeEnum.
+  /// Returns the instance of [DenyRuleNewTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -195,6 +194,9 @@ class DenyRuleNewTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   DenyRuleNewTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is DenyRuleNewTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'domain': return DenyRuleNewTypeEnum.domain;
@@ -210,7 +212,7 @@ class DenyRuleNewTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [DenyRuleNewTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static DenyRuleNewTypeEnumTypeTransformer? _instance;
 }
 

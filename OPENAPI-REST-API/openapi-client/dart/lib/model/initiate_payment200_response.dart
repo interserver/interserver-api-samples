@@ -198,31 +198,30 @@ class InitiatePayment200Response {
 }
 
 /// The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
-class InitiatePayment200ResponseTypeEnum {
-  /// Instantiate a new enum with the provided [value].
-  const InitiatePayment200ResponseTypeEnum._(this.value);
+enum InitiatePayment200ResponseTypeEnum {
+  redirect._(r'redirect'),
+  submit._(r'submit'),
+  single._(r'single'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const InitiatePayment200ResponseTypeEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const redirect = InitiatePayment200ResponseTypeEnum._(r'redirect');
-  static const submit = InitiatePayment200ResponseTypeEnum._(r'submit');
-  static const single = InitiatePayment200ResponseTypeEnum._(r'single');
-
-  /// List of all possible values in this [enum][InitiatePayment200ResponseTypeEnum].
-  static const values = <InitiatePayment200ResponseTypeEnum>[
-    redirect,
-    submit,
-    single,
-  ];
-
+  /// Returns the instance of [InitiatePayment200ResponseTypeEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static InitiatePayment200ResponseTypeEnum? fromJson(dynamic value) => InitiatePayment200ResponseTypeEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [InitiatePayment200ResponseTypeEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<InitiatePayment200ResponseTypeEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <InitiatePayment200ResponseTypeEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -244,9 +243,10 @@ class InitiatePayment200ResponseTypeEnumTypeTransformer {
 
   const InitiatePayment200ResponseTypeEnumTypeTransformer._();
 
-  String encode(InitiatePayment200ResponseTypeEnum data) => data.value;
+  String encode(InitiatePayment200ResponseTypeEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a InitiatePayment200ResponseTypeEnum.
+  /// Returns the instance of [InitiatePayment200ResponseTypeEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -255,6 +255,9 @@ class InitiatePayment200ResponseTypeEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   InitiatePayment200ResponseTypeEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is InitiatePayment200ResponseTypeEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'redirect': return InitiatePayment200ResponseTypeEnum.redirect;
@@ -269,7 +272,7 @@ class InitiatePayment200ResponseTypeEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [InitiatePayment200ResponseTypeEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static InitiatePayment200ResponseTypeEnumTypeTransformer? _instance;
 }
 

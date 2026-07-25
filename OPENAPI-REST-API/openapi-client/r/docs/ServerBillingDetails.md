@@ -1,4 +1,4 @@
-# openapi::ServerBillingDetails
+# interserverapi::ServerBillingDetails
 
 Billing information for a dedicated server service including payment status, billing cycle, and cost.
 

@@ -1,4 +1,4 @@
-# openapi::MailAlertsResponse
+# interserverapi::MailAlertsResponse
 
 Alert configuration entries for a mail service.
 

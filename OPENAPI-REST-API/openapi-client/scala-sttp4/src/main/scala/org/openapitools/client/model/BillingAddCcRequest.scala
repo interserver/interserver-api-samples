@@ -27,4 +27,3 @@ case class BillingAddCcRequest(
   cc_exp: Option[String] = None,
   cc_ccv2: Option[String] = None
 )
-

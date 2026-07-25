@@ -19,4 +19,3 @@ case class HomeServicesLicensesLinks(
   /* Link to a license. */
   `386522`: Option[String] = None
 )
-

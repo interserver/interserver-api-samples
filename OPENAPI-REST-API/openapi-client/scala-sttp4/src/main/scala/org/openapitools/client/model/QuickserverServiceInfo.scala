@@ -67,4 +67,3 @@ case class QuickserverServiceInfo(
   /* Platform (null) */
   qs_platform: Option[String] = None
 )
-

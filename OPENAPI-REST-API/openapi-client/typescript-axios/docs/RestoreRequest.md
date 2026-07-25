@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { RestoreRequest } from './api';
+import { RestoreRequest } from '@interserver/myadmin-client';
 
 const instance: RestoreRequest = {
     backup,

@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsServiceMaster } from './api';
+import { VpsServiceMaster } from '@interserver/myadmin-client';
 
 const instance: VpsServiceMaster = {
     vps_id,

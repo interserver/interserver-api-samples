@@ -17,7 +17,7 @@ import VpsTrafficHistorySectionResponse from './VpsTrafficHistorySectionResponse
 /**
  * The VpsTrafficHistoryResponse model module.
  * @module model/VpsTrafficHistoryResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsTrafficHistoryResponse {
     /**

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerOrderRAID');
+use_ok('InterServerAPI::Object::ServerOrderRAID');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerOrderRAID->new();
+#my $instance = InterServerAPI::Object::ServerOrderRAID->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerOrderRAID');
+#isa_ok($instance, 'InterServerAPI::Object::ServerOrderRAID');
 
 
 done_testing();

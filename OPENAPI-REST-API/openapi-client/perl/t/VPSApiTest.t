@@ -24,10 +24,10 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::VPSApi');
+use_ok('InterServerAPI::VPSApi');
 
-my $api = OpenAPIClient::VPSApi->new();
-isa_ok($api, 'OpenAPIClient::VPSApi');
+my $api = InterServerAPI::VPSApi->new();
+isa_ok($api, 'InterServerAPI::VPSApi');
 
 #
 # add_vps test
@@ -117,6 +117,13 @@ isa_ok($api, 'OpenAPIClient::VPSApi');
 #my $get_new_vps_result = $api->get_new_vps();
 
 #
+# get_vps_backup test
+#
+# uncomment below and update the test
+#my $get_vps_backup_id = undef; # replace NULL with a proper value
+#my $get_vps_backup_result = $api->get_vps_backup(id => $get_vps_backup_id);
+
+#
 # get_vps_backups test
 #
 # uncomment below and update the test
@@ -139,6 +146,20 @@ isa_ok($api, 'OpenAPIClient::VPSApi');
 #my $get_vps_buy_ip_result = $api->get_vps_buy_ip(id => $get_vps_buy_ip_id);
 
 #
+# get_vps_change_hostname test
+#
+# uncomment below and update the test
+#my $get_vps_change_hostname_id = undef; # replace NULL with a proper value
+#my $get_vps_change_hostname_result = $api->get_vps_change_hostname(id => $get_vps_change_hostname_id);
+
+#
+# get_vps_change_root_password test
+#
+# uncomment below and update the test
+#my $get_vps_change_root_password_id = undef; # replace NULL with a proper value
+#my $get_vps_change_root_password_result = $api->get_vps_change_root_password(id => $get_vps_change_root_password_id);
+
+#
 # get_vps_change_timezone test
 #
 # uncomment below and update the test
@@ -151,6 +172,13 @@ isa_ok($api, 'OpenAPIClient::VPSApi');
 # uncomment below and update the test
 #my $get_vps_info_id = undef; # replace NULL with a proper value
 #my $get_vps_info_result = $api->get_vps_info(id => $get_vps_info_id);
+
+#
+# get_vps_insert_cd test
+#
+# uncomment below and update the test
+#my $get_vps_insert_cd_id = undef; # replace NULL with a proper value
+#my $get_vps_insert_cd_result = $api->get_vps_insert_cd(id => $get_vps_insert_cd_id);
 
 #
 # get_vps_invoices test
@@ -171,6 +199,13 @@ isa_ok($api, 'OpenAPIClient::VPSApi');
 # uncomment below and update the test
 #my $get_vps_reinstall_os_id = undef; # replace NULL with a proper value
 #my $get_vps_reinstall_os_result = $api->get_vps_reinstall_os(id => $get_vps_reinstall_os_id);
+
+#
+# get_vps_reset_password test
+#
+# uncomment below and update the test
+#my $get_vps_reset_password_id = undef; # replace NULL with a proper value
+#my $get_vps_reset_password_result = $api->get_vps_reset_password(id => $get_vps_reset_password_id);
 
 #
 # get_vps_reverse_dns test
@@ -213,13 +248,6 @@ isa_ok($api, 'OpenAPIClient::VPSApi');
 # uncomment below and update the test
 #my $get_vps_welcome_email_id = undef; # replace NULL with a proper value
 #my $get_vps_welcome_email_result = $api->get_vps_welcome_email(id => $get_vps_welcome_email_id);
-
-#
-# post_vps_backup test
-#
-# uncomment below and update the test
-#my $post_vps_backup_id = undef; # replace NULL with a proper value
-#my $post_vps_backup_result = $api->post_vps_backup(id => $post_vps_backup_id);
 
 #
 # post_vps_buy_hd_space test
@@ -323,6 +351,13 @@ isa_ok($api, 'OpenAPIClient::VPSApi');
 #my $post_vps_slices_result = $api->post_vps_slices(id => $post_vps_slices_id);
 
 #
+# post_vps_traffic_usage test
+#
+# uncomment below and update the test
+#my $post_vps_traffic_usage_id = undef; # replace NULL with a proper value
+#my $post_vps_traffic_usage_result = $api->post_vps_traffic_usage(id => $post_vps_traffic_usage_id);
+
+#
 # post_vps_view_desktop test
 #
 # uncomment below and update the test
@@ -335,6 +370,13 @@ isa_ok($api, 'OpenAPIClient::VPSApi');
 # uncomment below and update the test
 #my $put_vps_vps_order_put_request = undef; # replace NULL with a proper value
 #my $put_vps_result = $api->put_vps(vps_order_put_request => $put_vps_vps_order_put_request);
+
+#
+# put_vps_buy_hd_space test
+#
+# uncomment below and update the test
+#my $put_vps_buy_hd_space_id = undef; # replace NULL with a proper value
+#my $put_vps_buy_hd_space_result = $api->put_vps_buy_hd_space(id => $put_vps_buy_hd_space_id);
 
 #
 # update_vps_info test

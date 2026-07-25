@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.domain_all_info_attributes import DomainAllInfoAttributes
+from interserver_api_client.models.domain_all_info_attributes import DomainAllInfoAttributes
 
 # TODO update the JSON string below
 json = "{}"

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_attachment import MailAttachment
+from interserver_api_client.models.mail_attachment import MailAttachment
 
 class TestMailAttachment(unittest.TestCase):
     """MailAttachment unit test stubs"""

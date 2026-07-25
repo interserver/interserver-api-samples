@@ -285,7 +285,7 @@ public class TicketsRow  {
    * @return checked
   **/
   @JsonProperty("checked")
-  public Boolean getChecked() {
+  public Boolean isChecked() {
     return checked;
   }
 

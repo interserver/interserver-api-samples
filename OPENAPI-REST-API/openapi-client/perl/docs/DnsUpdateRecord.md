@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DnsUpdateRecord
+# InterServerAPI::Object::DnsUpdateRecord
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DnsUpdateRecord;
+use InterServerAPI::Object::DnsUpdateRecord;
 ```
 
 ## Properties

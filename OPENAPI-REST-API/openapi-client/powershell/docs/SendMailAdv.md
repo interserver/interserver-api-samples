@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SendMailAdv = Initialize-PSOpenAPIToolsSendMailAdv  -Subject Your Package has been Delivered! `
+$SendMailAdv = Initialize-InterserverApiSendMailAdv  -Subject Your Package has been Delivered! `
  -Body The package you ordered on 2021-01-23 has been delivered. If the package is broken into many pieces, please blaim someone else. `
  -VarFrom null `
  -To [{&quot;email&quot;:&quot;user@domain.com&quot;,&quot;name&quot;:&quot;John Smith&quot;}] `

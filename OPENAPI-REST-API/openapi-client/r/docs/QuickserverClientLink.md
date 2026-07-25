@@ -1,4 +1,4 @@
-# openapi::QuickserverClientLink
+# interserverapi::QuickserverClientLink
 
 A navigation link for QuickServer-related actions in the client portal.
 

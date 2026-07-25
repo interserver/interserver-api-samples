@@ -1,4 +1,4 @@
-# openapi::MailRow
+# interserverapi::MailRow
 
 A result row from the `Mail` `GET` request.
 

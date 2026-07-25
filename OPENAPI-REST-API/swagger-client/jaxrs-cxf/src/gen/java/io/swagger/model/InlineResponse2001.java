@@ -16,46 +16,27 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse2001   {
   
-  @Schema(required = true, description = "")
-  private Boolean success = null;
-  
-  @Schema(required = true, description = "")
-  private String text = null;
+  @Schema(description = "Affiliate signup statistics and client-side data.")
  /**
-   * Get success
-   * @return success
+   * Affiliate signup statistics and client-side data.  
   **/
-  @JsonProperty("success")
-  @NotNull
-  public Boolean isSuccess() {
-    return success;
-  }
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  public InlineResponse2001 success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
+  private Object data = null;
  /**
-   * Get text
-   * @return text
+   * Affiliate signup statistics and client-side data.
+   * @return data
   **/
-  @JsonProperty("text")
+  @JsonProperty("data")
   @NotNull
-  public String getText() {
-    return text;
+  public Object getData() {
+    return data;
   }
 
-  public void setText(String text) {
-    this.text = text;
+  public void setData(Object data) {
+    this.data = data;
   }
 
-  public InlineResponse2001 text(String text) {
-    this.text = text;
+  public InlineResponse2001 data(Object data) {
+    this.data = data;
     return this;
   }
 
@@ -65,8 +46,7 @@ public class InlineResponse2001   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2001 {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

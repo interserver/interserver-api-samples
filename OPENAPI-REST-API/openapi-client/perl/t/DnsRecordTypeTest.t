@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DnsRecordType');
+use_ok('InterServerAPI::Object::DnsRecordType');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DnsRecordType->new();
+#my $instance = InterServerAPI::Object::DnsRecordType->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DnsRecordType');
+#isa_ok($instance, 'InterServerAPI::Object::DnsRecordType');
 
 
 done_testing();

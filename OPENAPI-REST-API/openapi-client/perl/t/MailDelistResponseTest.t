@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::MailDelistResponse');
+use_ok('InterServerAPI::Object::MailDelistResponse');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::MailDelistResponse->new();
+#my $instance = InterServerAPI::Object::MailDelistResponse->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::MailDelistResponse');
+#isa_ok($instance, 'InterServerAPI::Object::MailDelistResponse');
 
 
 done_testing();

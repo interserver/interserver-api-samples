@@ -20,7 +20,7 @@ import VpsTrafficUsageResponse from './VpsTrafficUsageResponse';
 /**
  * The VpsTrafficResponse model module.
  * @module model/VpsTrafficResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsTrafficResponse {
     /**

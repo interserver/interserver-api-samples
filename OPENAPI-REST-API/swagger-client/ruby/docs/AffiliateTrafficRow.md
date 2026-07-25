@@ -1,4 +1,4 @@
-# SwaggerClient::AffiliateTrafficRow
+# InterserverApiClient::AffiliateTrafficRow
 
 ## Properties
 Name | Type | Description | Notes

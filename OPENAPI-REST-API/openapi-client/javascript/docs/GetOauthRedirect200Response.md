@@ -1,4 +1,4 @@
-# InterServerManagementApi.GetOauthRedirect200Response
+# InterserverApiClient.GetOauthRedirect200Response
 
 ## Properties
 

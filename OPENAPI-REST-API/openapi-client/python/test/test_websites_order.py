@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.websites_order import WebsitesOrder
+from interserver_api_client.models.websites_order import WebsitesOrder
 
 class TestWebsitesOrder(unittest.TestCase):
     """WebsitesOrder unit test stubs"""
@@ -40,14 +40,14 @@ class TestWebsitesOrder(unittest.TestCase):
                 website = '',
                 period = 1,
                 service_offer_id = 0,
-                packages = openapi_client.models.websites_order_packages.WebsitesOrderPackages(
+                packages = interserver_api_client.models.websites_order_packages.WebsitesOrderPackages(
                     11447 = 'Web Hosting Direct Admin (PriceLock)', ),
                 enable_domain_registering = False,
-                json_services = openapi_client.models.websites_order_json_services.WebsitesOrderJsonServices(
+                json_services = interserver_api_client.models.websites_order_json_services.WebsitesOrderJsonServices(
                     11447 = '5.00', ),
-                json_service_offers = openapi_client.models.websites_order_json_service_offers.WebsitesOrderJsonServiceOffers(
+                json_service_offers = interserver_api_client.models.websites_order_json_service_offers.WebsitesOrderJsonServiceOffers(
                     1026 = [
-                        openapi_client.models.websites_order_json_service_offers_item.WebsitesOrderJsonServiceOffersItem(
+                        interserver_api_client.models.websites_order_json_service_offers_item.WebsitesOrderJsonServiceOffersItem(
                             service_offer_id = '136', 
                             service_id = '1026', 
                             intro_cost = 96, 
@@ -61,8 +61,8 @@ class TestWebsitesOrder(unittest.TestCase):
                             deleted_at = '', 
                             currency_symbol = '$', )
                         ], ),
-                service_types = openapi_client.models.websites_order_service_types.WebsitesOrder_serviceTypes(
-                    11447 = openapi_client.models.websites_order_service_types.WebsitesOrderServiceTypes(
+                service_types = interserver_api_client.models.websites_order_service_types.WebsitesOrder_serviceTypes(
+                    11447 = interserver_api_client.models.websites_order_service_types.WebsitesOrderServiceTypes(
                         services_id = '11447', 
                         services_name = 'Web Hosting Direct Admin (PriceLock)', 
                         services_cost = '5.00', 
@@ -76,9 +76,9 @@ class TestWebsitesOrder(unittest.TestCase):
                         services_description = '', 
                         services_moreinfo_url = '', 
                         services_hidden = '1', ), ),
-                service_offers = openapi_client.models.websites_order_service_offers.WebsitesOrder_serviceOffers(
+                service_offers = interserver_api_client.models.websites_order_service_offers.WebsitesOrder_serviceOffers(
                     1026 = [
-                        openapi_client.models.websites_order_service_offer.WebsitesOrderServiceOffer(
+                        interserver_api_client.models.websites_order_service_offer.WebsitesOrderServiceOffer(
                             service_offer_id = '136', 
                             service_id = '1026', 
                             intro_cost = '96.00', 
@@ -91,8 +91,8 @@ class TestWebsitesOrder(unittest.TestCase):
                             updated_at = '', 
                             deleted_at = '', )
                         ], ),
-                packges = openapi_client.models.websites_order_packges.WebsitesOrder_packges(
-                    11440 = openapi_client.models.websites_order_packages_info.WebsitesOrderPackagesInfo(
+                packges = interserver_api_client.models.websites_order_packges.WebsitesOrder_packges(
+                    11440 = interserver_api_client.models.websites_order_packages_info.WebsitesOrderPackagesInfo(
                         services_id = '11440', 
                         services_name = 'DA BOOST X', 
                         services_cost = '69.95', 
@@ -113,14 +113,14 @@ class TestWebsitesOrder(unittest.TestCase):
                 website = '',
                 period = 1,
                 service_offer_id = 0,
-                packages = openapi_client.models.websites_order_packages.WebsitesOrderPackages(
+                packages = interserver_api_client.models.websites_order_packages.WebsitesOrderPackages(
                     11447 = 'Web Hosting Direct Admin (PriceLock)', ),
                 enable_domain_registering = False,
-                json_services = openapi_client.models.websites_order_json_services.WebsitesOrderJsonServices(
+                json_services = interserver_api_client.models.websites_order_json_services.WebsitesOrderJsonServices(
                     11447 = '5.00', ),
-                json_service_offers = openapi_client.models.websites_order_json_service_offers.WebsitesOrderJsonServiceOffers(
+                json_service_offers = interserver_api_client.models.websites_order_json_service_offers.WebsitesOrderJsonServiceOffers(
                     1026 = [
-                        openapi_client.models.websites_order_json_service_offers_item.WebsitesOrderJsonServiceOffersItem(
+                        interserver_api_client.models.websites_order_json_service_offers_item.WebsitesOrderJsonServiceOffersItem(
                             service_offer_id = '136', 
                             service_id = '1026', 
                             intro_cost = 96, 
@@ -134,8 +134,8 @@ class TestWebsitesOrder(unittest.TestCase):
                             deleted_at = '', 
                             currency_symbol = '$', )
                         ], ),
-                service_types = openapi_client.models.websites_order_service_types.WebsitesOrder_serviceTypes(
-                    11447 = openapi_client.models.websites_order_service_types.WebsitesOrderServiceTypes(
+                service_types = interserver_api_client.models.websites_order_service_types.WebsitesOrder_serviceTypes(
+                    11447 = interserver_api_client.models.websites_order_service_types.WebsitesOrderServiceTypes(
                         services_id = '11447', 
                         services_name = 'Web Hosting Direct Admin (PriceLock)', 
                         services_cost = '5.00', 
@@ -149,9 +149,9 @@ class TestWebsitesOrder(unittest.TestCase):
                         services_description = '', 
                         services_moreinfo_url = '', 
                         services_hidden = '1', ), ),
-                service_offers = openapi_client.models.websites_order_service_offers.WebsitesOrder_serviceOffers(
+                service_offers = interserver_api_client.models.websites_order_service_offers.WebsitesOrder_serviceOffers(
                     1026 = [
-                        openapi_client.models.websites_order_service_offer.WebsitesOrderServiceOffer(
+                        interserver_api_client.models.websites_order_service_offer.WebsitesOrderServiceOffer(
                             service_offer_id = '136', 
                             service_id = '1026', 
                             intro_cost = '96.00', 

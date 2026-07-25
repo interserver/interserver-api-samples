@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BillingPrepayRequest = Initialize-PSOpenAPIToolsBillingPrepayRequest  -Module null `
+$BillingPrepayRequest = Initialize-InterserverApiBillingPrepayRequest  -Module null `
  -Amount null `
  -AutomaticUse 1
 ```

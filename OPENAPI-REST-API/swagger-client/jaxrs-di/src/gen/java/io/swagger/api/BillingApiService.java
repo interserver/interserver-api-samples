@@ -12,6 +12,8 @@ import io.swagger.model.BillingInvoiceList;
 import io.swagger.model.BillingPaymentMethodRequest;
 import io.swagger.model.BillingPrepayRequest;
 import io.swagger.model.BillingVerifyCcRequest;
+import io.swagger.model.IdVerifyBody;
+import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.SuccessTextResponse;
 
@@ -37,6 +39,9 @@ public interface BillingApiService {
     public Response getBillingInvoice(Integer id,SecurityContext securityContext);
     public Response getBillingInvoices(SecurityContext securityContext);
     public Response getBillingPrePays(SecurityContext securityContext);
+    public Response initiatePayment(String method,String invoices,SecurityContext securityContext);
+    public Response patchBillingCreditCardVerify(IdVerifyBody body,Integer id,SecurityContext securityContext);
+    public Response patchBillingCreditCardVerify(String ccCcv2,Integer id,SecurityContext securityContext);
     public Response postBillingCreditCardVerify(BillingVerifyCcRequest body,Integer id,SecurityContext securityContext);
     public Response postBillingCreditCardVerify(Integer idx,String ccCcv2,String ccAmount1,String ccAmount2,Boolean terms,Integer id,SecurityContext securityContext);
     public Response updateBillingCreditCard(Integer id,SecurityContext securityContext);

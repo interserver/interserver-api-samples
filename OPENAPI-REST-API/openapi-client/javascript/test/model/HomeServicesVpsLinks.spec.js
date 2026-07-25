@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.HomeServicesVpsLinks();
+    instance = new InterserverApiClient.HomeServicesVpsLinks();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('HomeServicesVpsLinks', function() {
     it('should create an instance of HomeServicesVpsLinks', function() {
       // uncomment below and update the code to test HomeServicesVpsLinks
-      //var instance = new InterServerManagementApi.HomeServicesVpsLinks();
-      //expect(instance).to.be.a(InterServerManagementApi.HomeServicesVpsLinks);
+      //var instance = new InterserverApiClient.HomeServicesVpsLinks();
+      //expect(instance).to.be.a(InterserverApiClient.HomeServicesVpsLinks);
     });
 
     it('should have the property _465503 (base name: "465503")', function() {
       // uncomment below and update the code to test the property _465503
-      //var instance = new InterServerManagementApi.HomeServicesVpsLinks();
+      //var instance = new InterserverApiClient.HomeServicesVpsLinks();
       //expect(instance).to.be();
     });
 
     it('should have the property _2500081 (base name: "2500081")', function() {
       // uncomment below and update the code to test the property _2500081
-      //var instance = new InterServerManagementApi.HomeServicesVpsLinks();
+      //var instance = new InterserverApiClient.HomeServicesVpsLinks();
       //expect(instance).to.be();
     });
 
     it('should have the property _2578866 (base name: "2578866")', function() {
       // uncomment below and update the code to test the property _2578866
-      //var instance = new InterServerManagementApi.HomeServicesVpsLinks();
+      //var instance = new InterserverApiClient.HomeServicesVpsLinks();
       //expect(instance).to.be();
     });
 

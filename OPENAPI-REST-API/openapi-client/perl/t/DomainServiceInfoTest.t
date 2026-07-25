@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DomainServiceInfo');
+use_ok('InterServerAPI::Object::DomainServiceInfo');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DomainServiceInfo->new();
+#my $instance = InterServerAPI::Object::DomainServiceInfo->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DomainServiceInfo');
+#isa_ok($instance, 'InterServerAPI::Object::DomainServiceInfo');
 
 
 done_testing();

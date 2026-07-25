@@ -1,4 +1,4 @@
-# SwaggerClient::LicenseRow
+# InterserverApiClient::LicenseRow
 
 ## Properties
 Name | Type | Description | Notes

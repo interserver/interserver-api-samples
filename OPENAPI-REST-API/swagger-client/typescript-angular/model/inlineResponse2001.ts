@@ -11,6 +11,8 @@
  */
 
 export interface InlineResponse2001 { 
-    success: boolean;
-    text: string;
+    /**
+     * Affiliate signup statistics and client-side data.
+     */
+    data?: any;
 }

@@ -8,8 +8,8 @@
 
 #' InlineResponse20025 Class
 #'
-#' @field message 
 #' @field success 
+#' @field text 
 #'
 #' @importFrom R6 R6Class
 #' @importFrom jsonlite fromJSON toJSON
@@ -17,51 +17,51 @@
 InlineResponse20025 <- R6::R6Class(
   'InlineResponse20025',
   public = list(
-    `message` = NULL,
     `success` = NULL,
-    initialize = function(`message`, `success`){
-      if (!missing(`message`)) {
-        stopifnot(is.character(`message`), length(`message`) == 1)
-        self$`message` <- `message`
-      }
+    `text` = NULL,
+    initialize = function(`success`, `text`){
       if (!missing(`success`)) {
         self$`success` <- `success`
+      }
+      if (!missing(`text`)) {
+        stopifnot(is.character(`text`), length(`text`) == 1)
+        self$`text` <- `text`
       }
     },
     toJSON = function() {
       InlineResponse20025Object <- list()
-      if (!is.null(self$`message`)) {
-        InlineResponse20025Object[['message']] <- self$`message`
-      }
       if (!is.null(self$`success`)) {
         InlineResponse20025Object[['success']] <- self$`success`
+      }
+      if (!is.null(self$`text`)) {
+        InlineResponse20025Object[['text']] <- self$`text`
       }
 
       InlineResponse20025Object
     },
     fromJSON = function(InlineResponse20025Json) {
       InlineResponse20025Object <- jsonlite::fromJSON(InlineResponse20025Json)
-      if (!is.null(InlineResponse20025Object$`message`)) {
-        self$`message` <- InlineResponse20025Object$`message`
-      }
       if (!is.null(InlineResponse20025Object$`success`)) {
         self$`success` <- InlineResponse20025Object$`success`
+      }
+      if (!is.null(InlineResponse20025Object$`text`)) {
+        self$`text` <- InlineResponse20025Object$`text`
       }
     },
     toJSONString = function() {
        sprintf(
         '{
-           "message": %s,
-           "success": %s
+           "success": %s,
+           "text": %s
         }',
-        self$`message`,
-        self$`success`
+        self$`success`,
+        self$`text`
       )
     },
     fromJSONString = function(InlineResponse20025Json) {
       InlineResponse20025Object <- jsonlite::fromJSON(InlineResponse20025Json)
-      self$`message` <- InlineResponse20025Object$`message`
       self$`success` <- InlineResponse20025Object$`success`
+      self$`text` <- InlineResponse20025Object$`text`
     }
   )
 )

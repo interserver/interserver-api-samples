@@ -17,40 +17,46 @@
 #' @section Methods:
 #' \describe{
 #'
-#' get_captcha Get Captcha Challenge
+#' get_account_currencies List enabled currency codes accepted for billing and preferences
 #'
 #'
-#' get_countries Get Countries
+#' get_account_locales List supported UI locales with English and native display names
 #'
 #'
-#' get_info Get Server Info
+#' get_captcha Fetch a base64 JPEG captcha challenge for human verification
 #'
 #'
-#' get_login_info Get Login Info
+#' get_countries List enabled countries keyed by ISO-2/ISO-3/numeric code
 #'
 #'
-#' get_mp_servers List Marketplace Servers
+#' get_info Discover available modules, service packages, categories, and types
 #'
 #'
-#' get_oauth_redirect Get OAuth Redirect URL
+#' get_login_info Fetch logo, captcha, language, and stats for rendering a login page
 #'
 #'
-#' get_timezones Get Available Timezones
+#' get_mp_servers List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 #'
 #'
-#' patch_oauth_two_factor Complete OAuth Two-Factor Verification
+#' get_oauth_redirect Begin OAuth login flow — redirect user to provider for authentication
 #'
 #'
-#' ping_server Ping Server
+#' get_timezones List all PHP timezone identifiers usable on accounts and services
 #'
 #'
-#' post_oauth_callback OAuth Callback
+#' patch_oauth_two_factor Submit 2FA code to finish OAuth login when account has 2FA enabled
 #'
 #'
-#' submit_login Submit Login Information
+#' ping_server Liveness check — returns the JSON string \&quot;pong\&quot; to confirm API is up
 #'
 #'
-#' submit_signup Submit Signup Information
+#' post_oauth_callback Complete OAuth login by linking provider to existing or new account
+#'
+#'
+#' submit_login Authenticate with email + password and return a session token
+#'
+#'
+#' submit_signup Create a new customer account (email + password + captcha + ToS)
 #'
 #' }
 #'
@@ -68,6 +74,54 @@ PublicApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
+    get_account_currencies = function(...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/account/currencies"
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- Character$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    get_account_locales = function(...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/account/locales"
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- InlineResponseMap200$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
     get_captcha = function(...){
       args <- list(...)
       queryParams <- list()
@@ -210,7 +264,7 @@ PublicApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse2005$new()
+        returnObject <- InlineResponse2006$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -269,7 +323,7 @@ PublicApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse2007$new()
+        returnObject <- InlineResponse2008$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -331,7 +385,7 @@ PublicApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse2006$new()
+        returnObject <- InlineResponse2007$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

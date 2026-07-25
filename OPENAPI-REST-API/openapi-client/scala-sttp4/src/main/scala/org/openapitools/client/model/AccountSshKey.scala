@@ -19,4 +19,3 @@ package org.openapitools.client.model
 case class AccountSshKey(
   ssh_key: Option[String] = None
 )
-

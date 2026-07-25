@@ -1,4 +1,4 @@
-# InterServerManagementApi.SuccessTextResponse
+# InterserverApiClient.SuccessTextResponse
 
 ## Properties
 

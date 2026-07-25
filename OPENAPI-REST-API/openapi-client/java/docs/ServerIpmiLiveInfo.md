@@ -15,4 +15,8 @@ Information about the IPMI connection.
 |**clientPassword** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainOrderResponseAttributes } from './api';
+import { DomainOrderResponseAttributes } from '@interserver/myadmin-client';
 
 const instance: DomainOrderResponseAttributes = {
     id,

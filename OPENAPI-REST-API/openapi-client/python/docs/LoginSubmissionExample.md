@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.login_submission_example import LoginSubmissionExample
+from interserver_api_client.models.login_submission_example import LoginSubmissionExample
 
 # TODO update the JSON string below
 json = "{}"

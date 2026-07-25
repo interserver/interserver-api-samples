@@ -21,6 +21,7 @@
 #include "OAIBuyItNowList.h"
 #include "OAICaptchaResponse.h"
 #include "OAIGetAccountInfo_401_response.h"
+#include "OAIGetAccountLocales_200_response_value.h"
 #include "OAIGetOauthRedirect_200_response.h"
 #include "OAILoginErrorResponse.h"
 #include "OAILoginInfo.h"
@@ -33,6 +34,7 @@
 #include "OAIPostOauthCallback_200_response.h"
 #include "OAIPostOauthCallback_request.h"
 #include "OAIServicesInfo.h"
+#include <QMap>
 #include <QString>
 
 #include <QObject>
@@ -71,6 +73,12 @@ public:
     QString getParamStylePrefix(const QString &style);
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
+
+
+    virtual void getAccountCurrencies();
+
+
+    virtual void getAccountLocales();
 
 
     virtual void getCaptcha();
@@ -155,6 +163,8 @@ private:
     OauthPassword _passwordFlow;
     OauthMethod _OauthMethod = OauthMethod::INVALID_VALUE_OPENAPI_GENERATED;
 
+    void getAccountCurrenciesCallback(OAIHttpRequestWorker *worker);
+    void getAccountLocalesCallback(OAIHttpRequestWorker *worker);
     void getCaptchaCallback(OAIHttpRequestWorker *worker);
     void getCountriesCallback(OAIHttpRequestWorker *worker);
     void getInfoCallback(OAIHttpRequestWorker *worker);
@@ -170,6 +180,8 @@ private:
 
 Q_SIGNALS:
 
+    void getAccountCurrenciesSignal(QList<QString> summary);
+    void getAccountLocalesSignal(QMap<QString, OAIGetAccountLocales_200_response_value> summary);
     void getCaptchaSignal(OAICaptchaResponse summary);
     void getCountriesSignal(OAIObject summary);
     void getInfoSignal(OAIServicesInfo summary);
@@ -184,6 +196,8 @@ Q_SIGNALS:
     void submitSignupSignal();
 
 
+    void getAccountCurrenciesSignalFull(OAIHttpRequestWorker *worker, QList<QString> summary);
+    void getAccountLocalesSignalFull(OAIHttpRequestWorker *worker, QMap<QString, OAIGetAccountLocales_200_response_value> summary);
     void getCaptchaSignalFull(OAIHttpRequestWorker *worker, OAICaptchaResponse summary);
     void getCountriesSignalFull(OAIHttpRequestWorker *worker, OAIObject summary);
     void getInfoSignalFull(OAIHttpRequestWorker *worker, OAIServicesInfo summary);
@@ -197,6 +211,8 @@ Q_SIGNALS:
     void submitLoginSignalFull(OAIHttpRequestWorker *worker, OAILoginSuccessResponse summary);
     void submitSignupSignalFull(OAIHttpRequestWorker *worker);
 
+    void getAccountCurrenciesSignalError(QList<QString> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getAccountLocalesSignalError(QMap<QString, OAIGetAccountLocales_200_response_value> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getCaptchaSignalError(OAICaptchaResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getCountriesSignalError(OAIObject summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getInfoSignalError(OAIServicesInfo summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -210,6 +226,8 @@ Q_SIGNALS:
     void submitLoginSignalError(OAILoginSuccessResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void submitSignupSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
 
+    void getAccountCurrenciesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getAccountLocalesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getCaptchaSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getCountriesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

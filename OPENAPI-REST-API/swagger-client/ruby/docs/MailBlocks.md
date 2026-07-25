@@ -1,4 +1,4 @@
-# SwaggerClient::MailBlocks
+# InterserverApiClient::MailBlocks
 
 ## Properties
 Name | Type | Description | Notes

@@ -25,6 +25,7 @@ import org.openapitools.client.api.ChargeInvoiceRows
 import org.openapitools.client.api.DownloadQsBackup200Response
 import org.openapitools.client.api.DownloadQsBackupRequest
 import org.openapitools.client.api.GetAccountInfo401Response
+import org.openapitools.client.api.QsOrderRequest
 import org.openapitools.client.api.QueueResponse
 import org.openapitools.client.api.Quickserver
 import org.openapitools.client.api.QuickserverOrder
@@ -44,7 +45,7 @@ object QuickServersApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addQs(host: String): Task[ServiceOrderPostResponse] = {
+  def addQs(host: String, QsOrderRequest: QsOrderRequest): Task[ServiceOrderPostResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
 
     val path = "/qs/order"
@@ -59,7 +60,7 @@ object QuickServersApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(QsOrderRequest)
       resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
@@ -292,6 +293,27 @@ object QuickServersApi {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[QuickserverOrder](req)
+
+    } yield resp
+  }
+
+  def getQsBackup(host: String, id: Integer): Task[QueueResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[QueueResponse] = jsonOf[QueueResponse]
+
+    val path = "/qs/{id}/backup".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[QueueResponse](req)
 
     } yield resp
   }
@@ -616,27 +638,6 @@ object QuickServersApi {
     } yield resp
   }
 
-  def postQsBackup(host: String, id: Integer): Task[QueueResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[QueueResponse] = jsonOf[QueueResponse]
-
-    val path = "/qs/{id}/backup".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(host + path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[QueueResponse](req)
-
-    } yield resp
-  }
-
   def postQsChangeHostname(host: String, id: Integer): Task[QueueResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[QueueResponse] = jsonOf[QueueResponse]
 
@@ -885,7 +886,7 @@ object QuickServersApi {
     } yield resp
   }
 
-  def putQs(host: String): Task[Unit] = {
+  def putQs(host: String, QsOrderRequest: QsOrderRequest): Task[Unit] = {
     val path = "/qs/order"
 
     val httpMethod = Method.PUT
@@ -898,7 +899,7 @@ object QuickServersApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(QsOrderRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp
@@ -953,7 +954,7 @@ class HttpServiceQuickServersApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addQs(): Task[ServiceOrderPostResponse] = {
+  def addQs(QsOrderRequest: QsOrderRequest): Task[ServiceOrderPostResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[ServiceOrderPostResponse] = jsonOf[ServiceOrderPostResponse]
 
     val path = "/qs/order"
@@ -968,7 +969,7 @@ class HttpServiceQuickServersApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(QsOrderRequest)
       resp          <- client.expect[ServiceOrderPostResponse](req)
 
     } yield resp
@@ -1201,6 +1202,27 @@ class HttpServiceQuickServersApi(service: HttpService) {
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
       resp          <- client.expect[QuickserverOrder](req)
+
+    } yield resp
+  }
+
+  def getQsBackup(id: Integer): Task[QueueResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[QueueResponse] = jsonOf[QueueResponse]
+
+    val path = "/qs/{id}/backup".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
+
+    val httpMethod = Method.GET
+    val contentType = `Content-Type`(MediaType.`application/json`)
+    val headers = Headers(
+      )
+    val queryParams = Query(
+      )
+
+    for {
+      uri           <- Task.fromDisjunction(Uri.fromString(path))
+      uriWithParams =  uri.copy(query = queryParams)
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      resp          <- client.expect[QueueResponse](req)
 
     } yield resp
   }
@@ -1525,27 +1547,6 @@ class HttpServiceQuickServersApi(service: HttpService) {
     } yield resp
   }
 
-  def postQsBackup(id: Integer): Task[QueueResponse] = {
-    implicit val returnTypeDecoder: EntityDecoder[QueueResponse] = jsonOf[QueueResponse]
-
-    val path = "/qs/{id}/backup".replaceAll("\\{" + "id" + "\\}",escape(id.toString))
-
-    val httpMethod = Method.POST
-    val contentType = `Content-Type`(MediaType.`application/json`)
-    val headers = Headers(
-      )
-    val queryParams = Query(
-      )
-
-    for {
-      uri           <- Task.fromDisjunction(Uri.fromString(path))
-      uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.expect[QueueResponse](req)
-
-    } yield resp
-  }
-
   def postQsChangeHostname(id: Integer): Task[QueueResponse] = {
     implicit val returnTypeDecoder: EntityDecoder[QueueResponse] = jsonOf[QueueResponse]
 
@@ -1794,7 +1795,7 @@ class HttpServiceQuickServersApi(service: HttpService) {
     } yield resp
   }
 
-  def putQs(): Task[Unit] = {
+  def putQs(QsOrderRequest: QsOrderRequest): Task[Unit] = {
     val path = "/qs/order"
 
     val httpMethod = Method.PUT
@@ -1807,7 +1808,7 @@ class HttpServiceQuickServersApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(QsOrderRequest)
       resp          <- client.fetch[Unit](req)(_ => Task.now(()))
 
     } yield resp

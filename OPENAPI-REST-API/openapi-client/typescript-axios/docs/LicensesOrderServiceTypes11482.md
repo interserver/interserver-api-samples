@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LicensesOrderServiceTypes11482 } from './api';
+import { LicensesOrderServiceTypes11482 } from '@interserver/myadmin-client';
 
 const instance: LicensesOrderServiceTypes11482 = {
     services_id,

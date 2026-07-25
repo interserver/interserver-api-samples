@@ -1,4 +1,4 @@
-# openapi::SendMailAdv
+# interserverapi::SendMailAdv
 
 Details for an Email
 

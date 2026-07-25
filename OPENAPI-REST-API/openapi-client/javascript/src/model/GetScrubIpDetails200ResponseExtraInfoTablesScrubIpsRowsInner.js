@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner model module.
  * @module model/GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner {
     /**

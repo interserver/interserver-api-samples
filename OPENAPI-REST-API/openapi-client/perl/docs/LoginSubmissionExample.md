@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::LoginSubmissionExample
+# InterServerAPI::Object::LoginSubmissionExample
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::LoginSubmissionExample;
+use InterServerAPI::Object::LoginSubmissionExample;
 ```
 
 ## Properties

@@ -1,9 +1,9 @@
-defmodule InterServerManagementAPI.Mixfile do
+defmodule InterserverApi.Mixfile do
   use Mix.Project
 
   def project do
     [
-      app: :inter_server_management_api,
+      app: :interserver_api,
       version: "1.0.0",
       elixir: "~> 1.18",
       build_embedded: Mix.env() == :prod,
@@ -43,7 +43,7 @@ defmodule InterServerManagementAPI.Mixfile do
 
    defp package do
       [
-        name: "inter_server_management_api",
+        name: "interserver_api",
         files: ~w(.formatter.exs config lib mix.exs README* LICENSE*),
       ]
   end

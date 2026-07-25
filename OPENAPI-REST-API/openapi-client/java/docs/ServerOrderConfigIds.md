@@ -17,4 +17,8 @@ Configuration IDs for the server order.
 |**hd** | **String** | Hard Drives configuration ID for the server order. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

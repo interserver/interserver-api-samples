@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateGeoRule400Response model module.
  * @module model/CreateGeoRule400Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class CreateGeoRule400Response {
     /**

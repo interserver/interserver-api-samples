@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue } from './api';
+import { ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue } from '@interserver/myadmin-client';
 
 const instance: ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue = {
     invoices_id,

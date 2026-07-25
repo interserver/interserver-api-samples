@@ -16,4 +16,8 @@ A navigation link for mail service actions in the client portal.
 |**otherAttr** | **String** | Additional attributes for the client link. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

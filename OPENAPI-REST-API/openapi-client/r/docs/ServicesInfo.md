@@ -1,4 +1,4 @@
-# openapi::ServicesInfo
+# interserverapi::ServicesInfo
 
 Contains the complete catalog of available modules, services, service types, and service categories.
 

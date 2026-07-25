@@ -12,4 +12,8 @@ Ticket statuses.
 |**onHold** | **Integer** | Count of tickets on hold. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

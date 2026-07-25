@@ -1,28 +1,28 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailStatsTypeVolumeTo
 void main() {
-  final instance = MailStatsTypeVolumeToBuilder();
-  // TODO add properties to the builder and call build()
+  final MailStatsTypeVolumeTo? instance = /* MailStatsTypeVolumeTo(...) */ null;
+  // TODO add properties to the entity
 
   group(MailStatsTypeVolumeTo, () {
-    // int clientAtDomainPeriodCom
+    // Optional<int?> clientAtDomainPeriodCom
     test('to test the property `clientAtDomainPeriodCom`', () async {
       // TODO
     });
 
-    // int userAtSitePeriodNet
+    // Optional<int?> userAtSitePeriodNet
     test('to test the property `userAtSitePeriodNet`', () async {
       // TODO
     });
 
-    // int salesAtCompanyPeriodCom
+    // Optional<int?> salesAtCompanyPeriodCom
     test('to test the property `salesAtCompanyPeriodCom`', () async {
       // TODO
     });
 
-    // int clientAtAnothersitePeriodCom
+    // Optional<int?> clientAtAnothersitePeriodCom
     test('to test the property `clientAtAnothersitePeriodCom`', () async {
       // TODO
     });

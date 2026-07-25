@@ -1,4 +1,4 @@
-# SwaggerClient::MailStatsTypeVolumeTo
+# InterserverApiClient::MailStatsTypeVolumeTo
 
 ## Properties
 Name | Type | Description | Notes

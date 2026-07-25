@@ -1,4 +1,4 @@
-# openapi::MailServiceType
+# interserverapi::MailServiceType
 
 Service type definition for a mail service, including name, pricing, and category.
 

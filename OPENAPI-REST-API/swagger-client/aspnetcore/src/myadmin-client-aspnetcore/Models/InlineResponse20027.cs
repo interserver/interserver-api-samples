@@ -27,39 +27,18 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20027 : IEquatable<InlineResponse20027>
     { 
         /// <summary>
-        /// Gets or Sets Bandwidth
+        /// Gets or Sets Message
         /// </summary>
 
-        [DataMember(Name="bandwidth")]
-        public List<InlineResponse20027Bandwidth> Bandwidth { get; set; }
+        [DataMember(Name="message")]
+        public string Message { get; set; }
 
         /// <summary>
-        /// Gets or Sets Ips
+        /// Gets or Sets Success
         /// </summary>
 
-        [DataMember(Name="ips")]
-        public List<InlineResponse20027Ips> Ips { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Os
-        /// </summary>
-
-        [DataMember(Name="os")]
-        public List<InlineResponse20027Os> Os { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Cp
-        /// </summary>
-
-        [DataMember(Name="cp")]
-        public List<InlineResponse20027Cp> Cp { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Raid
-        /// </summary>
-
-        [DataMember(Name="raid")]
-        public List<InlineResponse20027Raid> Raid { get; set; }
+        [DataMember(Name="success")]
+        public bool? Success { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,11 +48,8 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20027 {\n");
-            sb.Append("  Bandwidth: ").Append(Bandwidth).Append("\n");
-            sb.Append("  Ips: ").Append(Ips).Append("\n");
-            sb.Append("  Os: ").Append(Os).Append("\n");
-            sb.Append("  Cp: ").Append(Cp).Append("\n");
-            sb.Append("  Raid: ").Append(Raid).Append("\n");
+            sb.Append("  Message: ").Append(Message).Append("\n");
+            sb.Append("  Success: ").Append(Success).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -111,29 +87,14 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Bandwidth == other.Bandwidth ||
-                    Bandwidth != null &&
-                    Bandwidth.SequenceEqual(other.Bandwidth)
+                    Message == other.Message ||
+                    Message != null &&
+                    Message.Equals(other.Message)
                 ) && 
                 (
-                    Ips == other.Ips ||
-                    Ips != null &&
-                    Ips.SequenceEqual(other.Ips)
-                ) && 
-                (
-                    Os == other.Os ||
-                    Os != null &&
-                    Os.SequenceEqual(other.Os)
-                ) && 
-                (
-                    Cp == other.Cp ||
-                    Cp != null &&
-                    Cp.SequenceEqual(other.Cp)
-                ) && 
-                (
-                    Raid == other.Raid ||
-                    Raid != null &&
-                    Raid.SequenceEqual(other.Raid)
+                    Success == other.Success ||
+                    Success != null &&
+                    Success.Equals(other.Success)
                 );
         }
 
@@ -147,16 +108,10 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Bandwidth != null)
-                    hashCode = hashCode * 59 + Bandwidth.GetHashCode();
-                    if (Ips != null)
-                    hashCode = hashCode * 59 + Ips.GetHashCode();
-                    if (Os != null)
-                    hashCode = hashCode * 59 + Os.GetHashCode();
-                    if (Cp != null)
-                    hashCode = hashCode * 59 + Cp.GetHashCode();
-                    if (Raid != null)
-                    hashCode = hashCode * 59 + Raid.GetHashCode();
+                    if (Message != null)
+                    hashCode = hashCode * 59 + Message.GetHashCode();
+                    if (Success != null)
+                    hashCode = hashCode * 59 + Success.GetHashCode();
                 return hashCode;
             }
         }

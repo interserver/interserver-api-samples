@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderOS = Initialize-PSOpenAPIToolsServerOrderOS  -Id 51 `
+$ServerOrderOS = Initialize-InterserverApiServerOrderOS  -Id 51 `
  -Price 0 `
  -Img null `
  -ShortDesc AlmaLinux `

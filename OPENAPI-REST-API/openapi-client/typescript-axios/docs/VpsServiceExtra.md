@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsServiceExtra } from './api';
+import { VpsServiceExtra } from '@interserver/myadmin-client';
 
 const instance: VpsServiceExtra = {
     spice,

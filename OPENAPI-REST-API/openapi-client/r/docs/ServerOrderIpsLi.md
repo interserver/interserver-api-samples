@@ -1,4 +1,4 @@
-# openapi::ServerOrderIpsLi
+# interserverapi::ServerOrderIpsLi
 
 IP options for the server order.
 

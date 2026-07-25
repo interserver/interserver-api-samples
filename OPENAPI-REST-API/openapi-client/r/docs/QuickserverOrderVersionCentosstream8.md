@@ -1,4 +1,4 @@
-# openapi::QuickserverOrderVersionCentosstream8
+# interserverapi::QuickserverOrderVersionCentosstream8
 
 
 ## Properties

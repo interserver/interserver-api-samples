@@ -1,4 +1,4 @@
-# openapi::HomeServicesWebhosting
+# interserverapi::HomeServicesWebhosting
 
 
 ## Properties

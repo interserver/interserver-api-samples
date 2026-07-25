@@ -12,7 +12,8 @@ import io.swagger.model.EmailAddress;
 import io.swagger.model.EmailAddressName;
 import io.swagger.model.EndDate;
 import io.swagger.model.GenericResponse;
-import io.swagger.model.InlineResponse2008;
+import io.swagger.model.IdAlertsBody;
+import io.swagger.model.InlineResponse2009;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.MailAlertRequest;
 import io.swagger.model.MailAlertUpdateRequest;
@@ -24,6 +25,7 @@ import io.swagger.model.MailDelistResponse;
 import io.swagger.model.MailDeliverabilityResponse;
 import io.swagger.model.MailLog;
 import io.swagger.model.MailOrder;
+import io.swagger.model.MailOrderRequest;
 import io.swagger.model.MailRow;
 import io.swagger.model.MailSchema;
 import io.swagger.model.MailStatsType;
@@ -44,12 +46,13 @@ import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 
 public abstract class MailApiService {
-    public abstract Response addMail(SecurityContext securityContext) throws NotFoundException;
+    public abstract Response addMail(MailOrderRequest body,SecurityContext securityContext) throws NotFoundException;
     public abstract Response addRule(DenyRuleNew body,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response addRule(String user,String type,String data,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response createMailAlert(MailAlertRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response createMailAlert(String type,String value,String to,String enabled,Integer id,SecurityContext securityContext) throws NotFoundException;
-    public abstract Response deleteMailAlert(Integer id, @NotNull Integer alertId,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response deleteMailAlert(IdAlertsBody body,Integer id,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response deleteMailAlert(Integer alertId,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response deleteRule(Integer id,String rule,SecurityContext securityContext) throws NotFoundException;
     public abstract Response delistBlock(String email,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response delistBlock(EmailAddress body,Integer id,SecurityContext securityContext) throws NotFoundException;
@@ -67,7 +70,7 @@ public abstract class MailApiService {
     public abstract Response mailCancel(Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response postMailDelist(MailDelistRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response postMailDelist(String unblock,Integer id,SecurityContext securityContext) throws NotFoundException;
-    public abstract Response putMail(SecurityContext securityContext) throws NotFoundException;
+    public abstract Response putMail(MailOrderRequest body,SecurityContext securityContext) throws NotFoundException;
     public abstract Response resetMailPassword(Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response sendAdvMail(SendMailAdv body,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response sendAdvMail(String subject,String body,EmailAddressName from,List<EmailAddressName> to,List<EmailAddressName> replyto,List<EmailAddressName> cc,List<EmailAddressName> bcc,List<MailAttachment> attachments,Long id2,Integer id,SecurityContext securityContext) throws NotFoundException;
@@ -76,5 +79,7 @@ public abstract class MailApiService {
     public abstract Response updateMailAlert(MailAlertUpdateRequest body,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response updateMailAlert(Integer alertId,String type,String value,String to,String enabled,Integer id,SecurityContext securityContext) throws NotFoundException;
     public abstract Response updateMailInfo(String id,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response updateRule(DenyRuleNew body,Integer id,String rule,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response updateRule(String user,String type,String data,Integer id,String rule,SecurityContext securityContext) throws NotFoundException;
     public abstract Response viewMailLog(Integer id, Long id, String origin, String mx, String from, String to, String subject, @Size(min=18,max=19) String mailid, String messageId, String replyto, String headerfrom, Integer delivered, @Min(0) Integer skip, @Min(1) @Max(10000) Integer limit, StartDate startDate, EndDate endDate, String sort, String dir, String groupby,SecurityContext securityContext) throws NotFoundException;
 }

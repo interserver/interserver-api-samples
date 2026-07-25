@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$CreateFirewallRule = Initialize-PSOpenAPIToolsCreateFirewallRule  -DestinationPort 22 `
+$CreateFirewallRule = Initialize-InterserverApiCreateFirewallRule  -DestinationPort 22 `
  -SourceIp 1.2.4.5 `
  -SourcePort 1302 `
  -ProtocolId 1 `

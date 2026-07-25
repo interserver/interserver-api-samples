@@ -1,4 +1,4 @@
-# InterServerManagementApi.WebsiteServiceInfo
+# InterserverApiClient.WebsiteServiceInfo
 
 ## Properties
 

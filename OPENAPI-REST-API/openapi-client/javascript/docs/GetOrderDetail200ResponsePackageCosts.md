@@ -1,4 +1,4 @@
-# InterServerManagementApi.GetOrderDetail200ResponsePackageCosts
+# InterserverApiClient.GetOrderDetail200ResponsePackageCosts
 
 ## Properties
 

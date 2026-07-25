@@ -29,13 +29,29 @@ case class ChargeInvoiceRowsInvoicesValue(
   /* This is optional when invoices_paid = 1 this array will show */
   paid_invoices: Option[Map[String, ChargeInvoiceRowsInvoicesValuePaidInvoicesValue]] = None
 )
-
 object ChargeInvoiceRowsInvoicesValueEnums {
 
-  type InvoicesPaid = InvoicesPaid.Value
-  object InvoicesPaid extends Enumeration {
-    val `0` = Value("0")
-    val `1` = Value("1")
-  }
+  sealed trait InvoicesPaid
+  object InvoicesPaid {
+    case object `0` extends InvoicesPaid
+    case object `1` extends InvoicesPaid
 
+    import org.json4s._
+
+    implicit object InvoicesPaidSerializer extends Serializer[InvoicesPaid] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), InvoicesPaid] = {
+        case (TypeInfo(clazz, _), json) if classOf[InvoicesPaid].isAssignableFrom(clazz) =>
+          json match {
+            case JString("0") => `0`
+            case JString("1") => `1`
+            case other => throw new MappingException(s"Invalid InvoicesPaid: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case `0` => JString("0")
+        case `1` => JString("1")
+      }
+    }
+  }
 }

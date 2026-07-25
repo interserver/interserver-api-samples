@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The RestoreRequest model module.
  * @module model/RestoreRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class RestoreRequest {
     /**

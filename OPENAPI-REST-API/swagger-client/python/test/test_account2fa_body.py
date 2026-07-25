@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.account2fa_body import Account2faBody  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.account2fa_body import Account2faBody  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestAccount2faBody(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestAccount2faBody(unittest.TestCase):
     def testAccount2faBody(self):
         """Test Account2faBody"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.account2fa_body.Account2faBody()  # noqa: E501
+        # model = interserver_api_client.models.account2fa_body.Account2faBody()  # noqa: E501
         pass
 
 

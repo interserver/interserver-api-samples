@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainNameServer } from './api';
+import { DomainNameServer } from '@interserver/myadmin-client';
 
 const instance: DomainNameServer = {
     sortorder,

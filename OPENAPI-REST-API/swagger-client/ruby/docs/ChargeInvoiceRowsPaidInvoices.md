@@ -1,4 +1,4 @@
-# SwaggerClient::ChargeInvoiceRowsPaidInvoices
+# InterserverApiClient::ChargeInvoiceRowsPaidInvoices
 
 ## Properties
 Name | Type | Description | Notes

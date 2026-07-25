@@ -255,29 +255,29 @@ class ChargeInvoiceRowsInvoicesValue {
 }
 
 
-class ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum {
-  /// Instantiate a new enum with the provided [value].
-  const ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum._(this.value);
+enum ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum {
+  n0._('0'),
+  n1._('1'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final num value;
+  final num _value;
 
   @override
-  String toString() => value.toString();
+  String toString() => _value.toString();
 
-  num toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  num toJson() => _value;
 
-  static const n0 = ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum._('0');
-  static const n1 = ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum._('1');
-
-  /// List of all possible values in this [enum][ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum].
-  static const values = <ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum>[
-    n0,
-    n1,
-  ];
-
+  /// Returns the instance of [ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum? fromJson(dynamic value) => ChargeInvoiceRowsInvoicesValueInvoicesPaidEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -299,9 +299,10 @@ class ChargeInvoiceRowsInvoicesValueInvoicesPaidEnumTypeTransformer {
 
   const ChargeInvoiceRowsInvoicesValueInvoicesPaidEnumTypeTransformer._();
 
-  num encode(ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum data) => data.value;
+  num encode(ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum.
+  /// Returns the instance of [ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -310,6 +311,9 @@ class ChargeInvoiceRowsInvoicesValueInvoicesPaidEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case '0': return ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum.n0;
@@ -323,7 +327,7 @@ class ChargeInvoiceRowsInvoicesValueInvoicesPaidEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [ChargeInvoiceRowsInvoicesValueInvoicesPaidEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static ChargeInvoiceRowsInvoicesValueInvoicesPaidEnumTypeTransformer? _instance;
 }
 

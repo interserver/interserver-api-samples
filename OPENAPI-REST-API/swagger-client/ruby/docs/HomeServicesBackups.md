@@ -1,4 +1,4 @@
-# SwaggerClient::HomeServicesBackups
+# InterserverApiClient::HomeServicesBackups
 
 ## Properties
 Name | Type | Description | Notes

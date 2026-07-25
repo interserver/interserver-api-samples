@@ -5,7 +5,8 @@ import io.swagger.model.*;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse2003;
+import io.swagger.model.FloatingIpOrderRequest;
+import io.swagger.model.InlineResponse2004;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -24,7 +25,7 @@ import javax.ws.rs.core.SecurityContext;
 @RequestScoped
 
 public class FloatingIpsApiServiceImpl implements FloatingIpsApiService {
-      public Response addFloatingIp(SecurityContext securityContext)
+      public Response addFloatingIp(FloatingIpOrderRequest body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -69,7 +70,7 @@ public class FloatingIpsApiServiceImpl implements FloatingIpsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response putFloatingIps(SecurityContext securityContext)
+      public Response putFloatingIps(FloatingIpOrderRequest body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

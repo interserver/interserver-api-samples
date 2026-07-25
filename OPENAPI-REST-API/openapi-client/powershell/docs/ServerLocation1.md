@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerLocation1 = Initialize-PSOpenAPIToolsServerLocation1  -LocationId null `
+$ServerLocation1 = Initialize-InterserverApiServerLocation1  -LocationId null `
  -LocationName null `
  -LocationDescription null `
  -LocationLat null `

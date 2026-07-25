@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerIpmiLiveInfo } from './api';
+import { ServerIpmiLiveInfo } from '@interserver/myadmin-client';
 
 const instance: ServerIpmiLiveInfo = {
     text,

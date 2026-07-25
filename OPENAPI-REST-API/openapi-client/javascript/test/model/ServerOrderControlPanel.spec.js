@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerOrderControlPanel();
+    instance = new InterserverApiClient.ServerOrderControlPanel();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,67 +50,67 @@
   describe('ServerOrderControlPanel', function() {
     it('should create an instance of ServerOrderControlPanel', function() {
       // uncomment below and update the code to test ServerOrderControlPanel
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerOrderControlPanel);
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
+      //expect(instance).to.be.a(InterserverApiClient.ServerOrderControlPanel);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
       //expect(instance).to.be();
     });
 
     it('should have the property price (base name: "price")', function() {
       // uncomment below and update the code to test the property price
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
       //expect(instance).to.be();
     });
 
     it('should have the property img (base name: "img")', function() {
       // uncomment below and update the code to test the property img
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
       //expect(instance).to.be();
     });
 
     it('should have the property short_desc (base name: "short_desc")', function() {
       // uncomment below and update the code to test the property short_desc
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
       //expect(instance).to.be();
     });
 
     it('should have the property long_desc (base name: "long_desc")', function() {
       // uncomment below and update the code to test the property long_desc
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
       //expect(instance).to.be();
     });
 
     it('should have the property os_type (base name: "os_type")', function() {
       // uncomment below and update the code to test the property os_type
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
       //expect(instance).to.be();
     });
 
     it('should have the property monthly_price (base name: "monthly_price")', function() {
       // uncomment below and update the code to test the property monthly_price
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
       //expect(instance).to.be();
     });
 
     it('should have the property types (base name: "types")', function() {
       // uncomment below and update the code to test the property types
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
       //expect(instance).to.be();
     });
 
     it('should have the property price_display (base name: "price_display")', function() {
       // uncomment below and update the code to test the property price_display
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
       //expect(instance).to.be();
     });
 
     it('should have the property monthly_price_display (base name: "monthly_price_display")', function() {
       // uncomment below and update the code to test the property monthly_price_display
-      //var instance = new InterServerManagementApi.ServerOrderControlPanel();
+      //var instance = new InterserverApiClient.ServerOrderControlPanel();
       //expect(instance).to.be();
     });
 

@@ -10,8 +10,6 @@
 package myadmin-client-go-server
 
 type InlineResponse2008 struct {
-
-	Success bool `json:"success"`
-
-	Text string `json:"text"`
+	// Whether the 2FA verification succeeded and the user is now logged in.
+	Login bool `json:"login,omitempty"`
 }

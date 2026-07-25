@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.website_login_response import WebsiteLoginResponse  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.website_login_response import WebsiteLoginResponse  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestWebsiteLoginResponse(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestWebsiteLoginResponse(unittest.TestCase):
     def testWebsiteLoginResponse(self):
         """Test WebsiteLoginResponse"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.website_login_response.WebsiteLoginResponse()  # noqa: E501
+        # model = interserver_api_client.models.website_login_response.WebsiteLoginResponse()  # noqa: E501
         pass
 
 

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::CancelBackup200Response');
+use_ok('InterServerAPI::Object::CancelBackup200Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::CancelBackup200Response->new();
+#my $instance = InterServerAPI::Object::CancelBackup200Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::CancelBackup200Response');
+#isa_ok($instance, 'InterServerAPI::Object::CancelBackup200Response');
 
 
 done_testing();

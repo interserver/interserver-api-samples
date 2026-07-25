@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_client_link import MailClientLink
+from interserver_api_client.models.mail_client_link import MailClientLink
 
 class TestMailClientLink(unittest.TestCase):
     """MailClientLink unit test stubs"""

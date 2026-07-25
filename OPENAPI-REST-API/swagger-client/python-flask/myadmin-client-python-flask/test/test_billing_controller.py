@@ -15,9 +15,10 @@ from myadmin-client-python-flask.models.billing_invoice_list import BillingInvoi
 from myadmin-client-python-flask.models.billing_payment_method_request import BillingPaymentMethodRequest  # noqa: E501
 from myadmin-client-python-flask.models.billing_prepay_request import BillingPrepayRequest  # noqa: E501
 from myadmin-client-python-flask.models.billing_verify_cc_request import BillingVerifyCcRequest  # noqa: E501
-from myadmin-client-python-flask.models.inline_response2009 import InlineResponse2009  # noqa: E501
+from myadmin-client-python-flask.models.id_verify_body import IdVerifyBody  # noqa: E501
+from myadmin-client-python-flask.models.inline_response2001 import InlineResponse2001  # noqa: E501
+from myadmin-client-python-flask.models.inline_response20010 import InlineResponse20010  # noqa: E501
 from myadmin-client-python-flask.models.inline_response401 import InlineResponse401  # noqa: E501
-from myadmin-client-python-flask.models.invoice import Invoice  # noqa: E501
 from myadmin-client-python-flask.models.monthly_counts import MonthlyCounts  # noqa: E501
 from myadmin-client-python-flask.models.status_monthly_breakdown import StatusMonthlyBreakdown  # noqa: E501
 from myadmin-client-python-flask.models.success_text_response import SuccessTextResponse  # noqa: E501
@@ -28,34 +29,10 @@ from myadmin-client-python-flask.test import BaseTestCase
 class TestBillingController(BaseTestCase):
     """BillingController integration test stubs"""
 
-    def test_add_account_credit_card(self):
-        """Test case for add_account_credit_card
-
-        Add Credit Card to Account
-        """
-        body = BillingAddCcRequest()
-        data = dict(name='name_example',
-                    address='address_example',
-                    city='city_example',
-                    state='state_example',
-                    country='country_example',
-                    zip='zip_example',
-                    cc='cc_example',
-                    cc_exp='cc_exp_example',
-                    cc_ccv2='cc_ccv2_example')
-        response = self.client.open(
-            '/apiv2/account/creditcards',
-            method='POST',
-            data=json.dumps(body),
-            data=data,
-            content_type='multipart/form-data')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_add_billing_credit_card(self):
         """Test case for add_billing_credit_card
 
-        Add Credit Card for Billing
+        Store a credit card on the account — may return a verification flow
         """
         body = BillingAddCcRequest()
         data = dict(name='name_example',
@@ -79,7 +56,7 @@ class TestBillingController(BaseTestCase):
     def test_add_billing_prepay(self):
         """Test case for add_billing_prepay
 
-        Create Prepay Deposit
+        Create a prepay deposit and return an invoice id to fund it
         """
         body = BillingPrepayRequest()
         data = dict(module='module_example',
@@ -94,21 +71,10 @@ class TestBillingController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_delete_account_credit_card(self):
-        """Test case for delete_account_credit_card
-
-        Remove Credit Card
-        """
-        response = self.client.open(
-            '/apiv2/account/creditcards/{id}'.format(id='id_example'),
-            method='DELETE')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_delete_billing_credit_card(self):
         """Test case for delete_billing_credit_card
 
-        Delete Credit Card
+        Remove a stored credit card from the account
         """
         response = self.client.open(
             '/apiv2/billing/creditcards/{id}'.format(id=56),
@@ -119,7 +85,7 @@ class TestBillingController(BaseTestCase):
     def test_delete_billing_invoice(self):
         """Test case for delete_billing_invoice
 
-        Delete Invoice
+        Cancel a pending unpaid invoice — and its pending service or repeat invoice
         """
         response = self.client.open(
             '/apiv2/billing/invoices/{id}'.format(id=56),
@@ -130,7 +96,7 @@ class TestBillingController(BaseTestCase):
     def test_delete_billing_prepay(self):
         """Test case for delete_billing_prepay
 
-        Delete Prepay Balance
+        Delete an unfunded prepay or strip its unpaid funding invoices
         """
         response = self.client.open(
             '/apiv2/billing/prepays/{id}'.format(id=56),
@@ -141,7 +107,7 @@ class TestBillingController(BaseTestCase):
     def test_get_affiliate_banners(self):
         """Test case for get_affiliate_banners
 
-        List Affiliate Banner Assets
+        List affiliate banner image assets with filename and dimensions
         """
         response = self.client.open(
             '/apiv2/affiliate/banners',
@@ -149,10 +115,25 @@ class TestBillingController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
+    def test_get_affiliate_download(self):
+        """Test case for get_affiliate_download
+
+        Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+        """
+        query_string = [('st', 'st_example'),
+                        ('ex', 'ex_example'),
+                        ('year', 56)]
+        response = self.client.open(
+            '/apiv2/affiliate/download',
+            method='GET',
+            query_string=query_string)
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
     def test_get_affiliate_rich_report(self):
         """Test case for get_affiliate_rich_report
 
-        Get Affiliate Performance Report
+        Read a combined affiliate performance summary (HTML payload)
         """
         response = self.client.open(
             '/apiv2/affiliate/rich_report',
@@ -163,7 +144,7 @@ class TestBillingController(BaseTestCase):
     def test_get_affiliate_sales_graph(self):
         """Test case for get_affiliate_sales_graph
 
-        Get Affiliate Sales Graph Data
+        Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
         """
         query_string = [('days', 56)]
         response = self.client.open(
@@ -173,21 +154,23 @@ class TestBillingController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_get_affiliate_sales_report(self):
-        """Test case for get_affiliate_sales_report
+    def test_get_affiliate_signups(self):
+        """Test case for get_affiliate_signups
 
-        Get Affiliate Sales Report
+        Read affiliate signup stats and per-customer conversion data
         """
+        query_string = [('st', 'st_example')]
         response = self.client.open(
-            '/apiv2/affiliate/sales_report',
-            method='GET')
+            '/apiv2/affiliate/signups',
+            method='GET',
+            query_string=query_string)
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_get_affiliate_traffic_graph(self):
         """Test case for get_affiliate_traffic_graph
 
-        Get Affiliate Traffic Graph Data
+        Read aggregated affiliate referral click/visit time-series for chart rendering
         """
         query_string = [('days', 56)]
         response = self.client.open(
@@ -200,7 +183,7 @@ class TestBillingController(BaseTestCase):
     def test_get_affiliate_web_traffic(self):
         """Test case for get_affiliate_web_traffic
 
-        List Affiliate Web Traffic Entries
+        List the 20 most recent affiliate referral visits with IP, referrer, timestamp
         """
         response = self.client.open(
             '/apiv2/affiliate/web_traffic',
@@ -211,7 +194,7 @@ class TestBillingController(BaseTestCase):
     def test_get_billing_cart(self):
         """Test case for get_billing_cart
 
-        Get Shopping Cart Contents
+        Read the current shopping cart contents, totals, and available payment methods
         """
         response = self.client.open(
             '/apiv2/billing/cart',
@@ -222,7 +205,7 @@ class TestBillingController(BaseTestCase):
     def test_get_billing_credit_card_verify(self):
         """Test case for get_billing_credit_card_verify
 
-        Get Credit Card Verification Requirements
+        Probe whether a stored card still needs micro-charge verification
         """
         response = self.client.open(
             '/apiv2/billing/creditcards/{id}/verify'.format(id=56),
@@ -233,7 +216,7 @@ class TestBillingController(BaseTestCase):
     def test_get_billing_invoice(self):
         """Test case for get_billing_invoice
 
-        Get Invoice Details
+        Read full invoice detail — line items, totals, paid status, customer info
         """
         response = self.client.open(
             '/apiv2/billing/invoices/{id}'.format(id=56),
@@ -244,7 +227,7 @@ class TestBillingController(BaseTestCase):
     def test_get_billing_invoices(self):
         """Test case for get_billing_invoices
 
-        List Account Invoices
+        List every invoice on the account with summary totals and paid/unpaid status
         """
         response = self.client.open(
             '/apiv2/billing/invoices',
@@ -255,7 +238,7 @@ class TestBillingController(BaseTestCase):
     def test_get_billing_pre_pays(self):
         """Test case for get_billing_pre_pays
 
-        List Prepay Balances
+        List prepay deposits on the account — remaining balance and auto-use flags
         """
         response = self.client.open(
             '/apiv2/billing/prepays',
@@ -263,36 +246,37 @@ class TestBillingController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_get_invoices(self):
-        """Test case for get_invoices
-
-        Get Invoices
-        """
-        query_string = [('search_string', 'search_string_example'),
-                        ('skip', 1),
-                        ('limit', 50)]
-        response = self.client.open(
-            '/apiv2/invoices',
-            method='GET',
-            query_string=query_string)
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_initiate_payment(self):
         """Test case for initiate_payment
 
-        Initiate Payment
+        Pay invoices through the chosen gateway — returns the next-step action
         """
         response = self.client.open(
-            '/apiv2/pay/{method}/{invoices}'.format(method='method_example', invoices='invoices_example'),
+            '/apiv2/billing/pay/{method}/{invoices}'.format(method='method_example', invoices='invoices_example'),
             method='GET')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
+    def test_patch_billing_credit_card_verify(self):
+        """Test case for patch_billing_credit_card_verify
+
+        Place two micro-charges on the card to start CVV verification (step 1 of 2)
+        """
+        body = IdVerifyBody()
+        data = dict(cc_ccv2='cc_ccv2_example')
+        response = self.client.open(
+            '/apiv2/billing/creditcards/{id}/verify'.format(id=56),
+            method='PATCH',
+            data=json.dumps(body),
+            data=data,
+            content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
     def test_post_billing_credit_card_verify(self):
         """Test case for post_billing_credit_card_verify
 
-        Submit Credit Card Verification
+        Submit two micro-charge amounts to finalize card verification (step 2 of 2)
         """
         body = BillingVerifyCcRequest()
         data = dict(idx=56,
@@ -309,21 +293,10 @@ class TestBillingController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_update_account_credit_card(self):
-        """Test case for update_account_credit_card
-
-        Update Credit Card
-        """
-        response = self.client.open(
-            '/apiv2/account/creditcards/{id}'.format(id=56),
-            method='POST')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_update_affiliate_dock_setup(self):
         """Test case for update_affiliate_dock_setup
 
-        Configure Affiliate Dock Settings
+        Configure the affiliate landing dock title, description, and referrer coupon
         """
         body = AffiliateDockSetup()
         data = dict(affiliate_dock_title='affiliate_dock_title_example',
@@ -338,28 +311,10 @@ class TestBillingController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_update_affiliate_landing_page(self):
-        """Test case for update_affiliate_landing_page
-
-        Configure Affiliate Landing Page
-        """
-        body = AffiliateDockSetup()
-        data = dict(affiliate_dock_title='affiliate_dock_title_example',
-                    affiliate_dock_description='affiliate_dock_description_example',
-                    referrer_coupon='referrer_coupon_example')
-        response = self.client.open(
-            '/apiv2/affiliate/landing_pg',
-            method='POST',
-            data=json.dumps(body),
-            data=data,
-            content_type='multipart/form-data')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_update_affiliate_payment_setup(self):
         """Test case for update_affiliate_payment_setup
 
-        Configure Affiliate Payout Preferences
+        Configure how affiliate commissions get paid out (PayPal or internal prepay)
         """
         body = AffiliatePaymentSetup()
         data = dict(affiliate_paypal='affiliate_paypal_example',
@@ -376,7 +331,7 @@ class TestBillingController(BaseTestCase):
     def test_update_billing_credit_card(self):
         """Test case for update_billing_credit_card
 
-        Update Credit Card Details
+        Refresh stored card expiration and re-trigger MaxMind fraud scoring
         """
         response = self.client.open(
             '/apiv2/billing/creditcards/{id}'.format(id=56),
@@ -387,7 +342,7 @@ class TestBillingController(BaseTestCase):
     def test_update_billing_payment_method(self):
         """Test case for update_billing_payment_method
 
-        Update Default Payment Method
+        Set the account's default payment method for recurring/auto charges
         """
         body = BillingPaymentMethodRequest()
         data = dict(payment_method='payment_method_example',

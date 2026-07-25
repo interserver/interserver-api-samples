@@ -15,7 +15,11 @@ A result row from the `Licenses` `GET` request.
 |**cost** | **String** | The cost of the license. |  [optional] |
 |**licenseStatus** | **String** | The status of the license. |  [optional] |
 |**invoicesPaid** | **String** | The invoices paid of the license. |  [optional] |
-|**invoicesDate** | **Date** | The invoices date of the license. |  [optional] |
+|**invoicesDate** | **OffsetDateTime** | The invoices date of the license. |  [optional] |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

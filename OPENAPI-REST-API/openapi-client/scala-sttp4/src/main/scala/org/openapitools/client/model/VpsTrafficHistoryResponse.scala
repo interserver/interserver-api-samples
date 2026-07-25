@@ -20,4 +20,3 @@ case class VpsTrafficHistoryResponse(
   hour: VpsTrafficHistorySectionResponse,
   day: VpsTrafficHistorySectionResponse
 )
-

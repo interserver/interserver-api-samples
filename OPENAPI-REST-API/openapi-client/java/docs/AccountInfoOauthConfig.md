@@ -12,4 +12,8 @@ OAuth integration configuration including callback URL and available providers.
 |**providers** | **AccountInfoOauthConfigProviders** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

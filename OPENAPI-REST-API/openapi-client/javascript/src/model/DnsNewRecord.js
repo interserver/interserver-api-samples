@@ -17,7 +17,7 @@ import DnsRecordType from './DnsRecordType';
 /**
  * The DnsNewRecord model module.
  * @module model/DnsNewRecord
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DnsNewRecord {
     /**

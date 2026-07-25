@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.ip_limit_range import IpLimitRange
+from interserver_api_client.models.ip_limit_range import IpLimitRange
 
 class TestIpLimitRange(unittest.TestCase):
     """IpLimitRange unit test stubs"""

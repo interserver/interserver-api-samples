@@ -1,4 +1,4 @@
-# openapi::ServerServiceInfo
+# interserverapi::ServerServiceInfo
 
 
 ## Properties

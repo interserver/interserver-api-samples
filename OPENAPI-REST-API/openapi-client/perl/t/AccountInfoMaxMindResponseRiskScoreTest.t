@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::AccountInfoMaxMindResponseRiskScore');
+use_ok('InterServerAPI::Object::AccountInfoMaxMindResponseRiskScore');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::AccountInfoMaxMindResponseRiskScore->new();
+#my $instance = InterServerAPI::Object::AccountInfoMaxMindResponseRiskScore->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::AccountInfoMaxMindResponseRiskScore');
+#isa_ok($instance, 'InterServerAPI::Object::AccountInfoMaxMindResponseRiskScore');
 
 
 done_testing();

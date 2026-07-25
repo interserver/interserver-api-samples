@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsRow
+# InterServerAPI::Object::VpsRow
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsRow;
+use InterServerAPI::Object::VpsRow;
 ```
 
 ## Properties

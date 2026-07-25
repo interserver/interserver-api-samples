@@ -20,6 +20,7 @@ local openapiclient_charge_invoice_rows = require "openapiclient.model.charge_in
 local openapiclient_service_order_post_response = require "openapiclient.model.service_order_post_response"
 local openapiclient_success_text_response = require "openapiclient.model.success_text_response"
 local openapiclient_todo_object_mapping = require "openapiclient.model.todo_object_mapping"
+local openapiclient_floating_ip_order_request = require "openapiclient.model.floating_ip_order_request"
 local openapiclient_floating_ips_cancel_200_response = require "openapiclient.model.floating_ips_cancel_200_response"
 local openapiclient_get_account_info_401_response = require "openapiclient.model.get_account_info_401_response"
 
@@ -49,7 +50,7 @@ local function new_floating_ips_api(authority, basePath, schemes)
 	}, floating_ips_api_mt)
 end
 
-function floating_ips_api:add_floating_ip()
+function floating_ips_api:add_floating_ip(floating_ip_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -60,9 +61,15 @@ function floating_ips_api:add_floating_ip()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "POST")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(floating_ip_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then
@@ -491,7 +498,7 @@ function floating_ips_api:post_floating_ips_change_ip(id, ip)
 	end
 end
 
-function floating_ips_api:put_floating_ips()
+function floating_ips_api:put_floating_ips(floating_ip_order_request)
 	local req = http_request.new_from_uri({
 		scheme = self.default_scheme;
 		host = self.host;
@@ -502,9 +509,15 @@ function floating_ips_api:put_floating_ips()
 
 	-- set HTTP verb
 	req.headers:upsert(":method", "PUT")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
 	-- TODO: create a function to select proper content-type
 	--local var_accept = { "application/json" }
 	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(floating_ip_order_request))
 
 	-- api key in headers 'X-API-KEY'
 	if self.api_key['X-API-KEY'] then

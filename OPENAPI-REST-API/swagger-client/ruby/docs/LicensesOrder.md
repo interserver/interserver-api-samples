@@ -1,4 +1,4 @@
-# SwaggerClient::LicensesOrder
+# InterserverApiClient::LicensesOrder
 
 ## Properties
 Name | Type | Description | Notes

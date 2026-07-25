@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var FloatingIPs = require('../service/FloatingIPsService');
 
-module.exports.addFloatingIp = function addFloatingIp (req, res, next) {
-  FloatingIPs.addFloatingIp()
+module.exports.addFloatingIp = function addFloatingIp (req, res, next, body) {
+  FloatingIPs.addFloatingIp(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -93,8 +93,8 @@ module.exports.postFloatingIpsChangeIp = function postFloatingIpsChangeIp (req, 
     });
 };
 
-module.exports.putFloating_ips = function putFloating_ips (req, res, next) {
-  FloatingIPs.putFloating_ips()
+module.exports.putFloating_ips = function putFloating_ips (req, res, next, body) {
+  FloatingIPs.putFloating_ips(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

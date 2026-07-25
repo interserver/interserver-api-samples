@@ -1,4 +1,4 @@
-# openapi::ServerOrderMemory
+# interserverapi::ServerOrderMemory
 
 A memory (RAM) option available when ordering a dedicated server.
 

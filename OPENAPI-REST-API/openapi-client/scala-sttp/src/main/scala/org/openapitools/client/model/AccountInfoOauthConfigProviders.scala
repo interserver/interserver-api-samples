@@ -17,5 +17,5 @@ package org.openapitools.client.model
    * Map of OAuth providers and their linked status on the account.
    */
 case class AccountInfoOauthConfigProviders(
-)
+) extends AccountInfoOauthproviders
 

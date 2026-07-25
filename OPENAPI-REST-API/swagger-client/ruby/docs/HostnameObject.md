@@ -1,4 +1,4 @@
-# SwaggerClient::HostnameObject
+# InterserverApiClient::HostnameObject
 
 ## Properties
 Name | Type | Description | Notes

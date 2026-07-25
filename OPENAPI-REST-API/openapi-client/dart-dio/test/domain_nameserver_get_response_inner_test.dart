@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainNameserverGetResponseInner
 void main() {
-  final instance = DomainNameserverGetResponseInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainNameserverGetResponseInner? instance = /* DomainNameserverGetResponseInner(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainNameserverGetResponseInner, () {
     // String name

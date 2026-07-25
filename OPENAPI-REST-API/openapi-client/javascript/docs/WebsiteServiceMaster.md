@@ -1,4 +1,4 @@
-# InterServerManagementApi.WebsiteServiceMaster
+# InterserverApiClient.WebsiteServiceMaster
 
 ## Properties
 

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VPSTrafficDataDataSectionResponse
+# InterServerAPI::Object::VPSTrafficDataDataSectionResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VPSTrafficDataDataSectionResponse;
+use InterServerAPI::Object::VPSTrafficDataDataSectionResponse;
 ```
 
 ## Properties

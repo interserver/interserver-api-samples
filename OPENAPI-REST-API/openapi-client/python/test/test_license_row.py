@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.license_row import LicenseRow
+from interserver_api_client.models.license_row import LicenseRow
 
 class TestLicenseRow(unittest.TestCase):
     """LicenseRow unit test stubs"""

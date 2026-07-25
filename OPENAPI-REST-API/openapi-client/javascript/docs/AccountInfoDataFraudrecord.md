@@ -1,4 +1,4 @@
-# InterServerManagementApi.AccountInfoDataFraudrecord
+# InterserverApiClient.AccountInfoDataFraudrecord
 
 ## Properties
 

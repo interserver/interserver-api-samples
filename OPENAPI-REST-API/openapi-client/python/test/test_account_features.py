@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.account_features import AccountFeatures
+from interserver_api_client.models.account_features import AccountFeatures
 
 class TestAccountFeatures(unittest.TestCase):
     """AccountFeatures unit test stubs"""

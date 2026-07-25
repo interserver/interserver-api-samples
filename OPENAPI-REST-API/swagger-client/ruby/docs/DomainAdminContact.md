@@ -1,4 +1,4 @@
-# SwaggerClient::DomainAdminContact
+# InterserverApiClient::DomainAdminContact
 
 ## Properties
 Name | Type | Description | Notes

@@ -17,7 +17,7 @@ import VpsServiceExtra from './VpsServiceExtra';
 /**
  * The VpsBillingDetails model module.
  * @module model/VpsBillingDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsBillingDetails {
     /**

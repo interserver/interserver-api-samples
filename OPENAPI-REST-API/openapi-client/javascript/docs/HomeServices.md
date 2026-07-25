@@ -1,4 +1,4 @@
-# InterServerManagementApi.HomeServices
+# InterserverApiClient.HomeServices
 
 ## Properties
 

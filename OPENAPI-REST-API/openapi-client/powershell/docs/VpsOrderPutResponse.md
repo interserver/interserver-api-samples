@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderPutResponse = Initialize-PSOpenAPIToolsVpsOrderPutResponse  -VarContinue null `
+$VpsOrderPutResponse = Initialize-InterserverApiVpsOrderPutResponse  -VarContinue null `
  -Errors null `
  -CouponCode null `
  -ServiceCost null `

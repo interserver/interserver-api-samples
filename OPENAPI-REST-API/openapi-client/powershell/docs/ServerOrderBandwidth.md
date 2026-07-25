@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderBandwidth = Initialize-PSOpenAPIToolsServerOrderBandwidth  -Id 15 `
+$ServerOrderBandwidth = Initialize-InterserverApiServerOrderBandwidth  -Id 15 `
  -Price 0 `
  -Img bandwidth.jpg `
  -ShortDesc 150TB (10Gb Port) `

@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for QuickserverIpTableRow
 void main() {
-  final instance = QuickserverIpTableRowBuilder();
-  // TODO add properties to the builder and call build()
+  final QuickserverIpTableRow? instance = /* QuickserverIpTableRow(...) */ null;
+  // TODO add properties to the entity
 
   group(QuickserverIpTableRow, () {
     // Description
-    // String desc
+    // Optional<String?> desc
     test('to test the property `desc`', () async {
       // TODO
     });
 
     // Value
-    // String value
+    // Optional<String?> value
     test('to test the property `value`', () async {
       // TODO
     });

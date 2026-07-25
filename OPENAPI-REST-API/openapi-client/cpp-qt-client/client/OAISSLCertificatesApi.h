@@ -23,6 +23,7 @@
 #include "OAIObject.h"
 #include "OAIServiceOrderPostResponse.h"
 #include "OAISslCancel_200_response.h"
+#include "OAISslOrderRequest.h"
 #include "OAISuccessTextResponse.h"
 #include <QString>
 
@@ -63,8 +64,10 @@ public:
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
-
-    virtual void addSsl();
+    /**
+    * @param[in]  oai_ssl_order_request OAISslOrderRequest [required]
+    */
+    virtual void addSsl(const OAISslOrderRequest &oai_ssl_order_request);
 
 
     virtual void getNewSsl();
@@ -87,8 +90,10 @@ public:
     */
     virtual void getSslWelcomeEmail(const qint32 &id);
 
-
-    virtual void putSsl();
+    /**
+    * @param[in]  oai_ssl_order_request OAISslOrderRequest [required]
+    */
+    virtual void putSsl(const OAISslOrderRequest &oai_ssl_order_request);
 
     /**
     * @param[in]  id qint32 [required]

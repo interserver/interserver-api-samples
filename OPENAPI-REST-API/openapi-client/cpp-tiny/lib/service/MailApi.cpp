@@ -9,6 +9,9 @@ using namespace Tiny;
         >
         MailApi::
         addMail(
+            
+            MailOrderRequest mailOrderRequest
+            
         )
         {
             std::string url = basepath + "/mail/order"; //
@@ -19,6 +22,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -27,7 +31,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | 
+            // Body     | mailOrderRequest
+
+
+
+            payload = mailOrderRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
@@ -173,7 +182,7 @@ using namespace Tiny;
             int id
             , 
             
-            int alertId
+            DeleteMailAlert_request deleteMailAlertRequest
             
         )
         {
@@ -182,10 +191,10 @@ using namespace Tiny;
 
             // Headers  | 
 
-            // Query    | alertId 
-            addQueryParam("alert_id",alertId);
+            // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -202,7 +211,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | DELETE
-            // Body     | 
+            // Body     | deleteMailAlertRequest
+
+
+
+            payload = deleteMailAlertRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "DELETE", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
@@ -1036,6 +1050,9 @@ using namespace Tiny;
         >
         MailApi::
         putMail(
+            
+            MailOrderRequest mailOrderRequest
+            
         )
         {
             std::string url = basepath + "/mail/order"; //
@@ -1046,6 +1063,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -1054,7 +1072,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PUT
-            // Body     | 
+            // Body     | mailOrderRequest
+
+
+
+            payload = mailOrderRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "PUT", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
@@ -1345,6 +1368,77 @@ using namespace Tiny;
 
 
             Response<SuccessTextResponse> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            GenericResponse
+        >
+        MailApi::
+        updateRule(
+            
+            int id
+            , 
+            
+            std::string rule
+            , 
+            
+            DenyRuleNew denyRuleNew
+            
+        )
+        {
+            std::string url = basepath + "/mail/{id}/rules/{rule}"; //id rule 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+            addHeader("Content-Type", "application/json");
+
+
+
+                std::string s_id("{");
+                s_id.append("id");
+                s_id.append("}");
+
+                int pos = url.find(s_id);
+
+                url.erase(pos, s_id.length());
+                url.insert(pos, stringify(id));
+                std::string s_rule("{");
+                s_rule.append("rule");
+                s_rule.append("}");
+
+                int pos = url.find(s_rule);
+
+                url.erase(pos, s_rule.length());
+                url.insert(pos, stringify(rule));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | PUT
+            // Body     | denyRuleNew
+
+
+
+            payload = denyRuleNew.toJson().dump();
+
+            int httpCode = sendRequest(url, "PUT", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            GenericResponse obj(output_string);
+
+
+            Response<GenericResponse> response(obj, httpCode);
             return response;
         }
 

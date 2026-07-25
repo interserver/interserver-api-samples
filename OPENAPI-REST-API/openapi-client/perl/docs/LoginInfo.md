@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::LoginInfo
+# InterServerAPI::Object::LoginInfo
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::LoginInfo;
+use InterServerAPI::Object::LoginInfo;
 ```
 
 ## Properties

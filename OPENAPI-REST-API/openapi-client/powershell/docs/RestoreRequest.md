@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$RestoreRequest = Initialize-PSOpenAPIToolsRestoreRequest  -Backup null `
+$RestoreRequest = Initialize-InterserverApiRestoreRequest  -Backup null `
  -Password null
 ```
 

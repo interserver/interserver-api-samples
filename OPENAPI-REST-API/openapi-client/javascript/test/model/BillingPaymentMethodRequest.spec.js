@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BillingPaymentMethodRequest();
+    instance = new InterserverApiClient.BillingPaymentMethodRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('BillingPaymentMethodRequest', function() {
     it('should create an instance of BillingPaymentMethodRequest', function() {
       // uncomment below and update the code to test BillingPaymentMethodRequest
-      //var instance = new InterServerManagementApi.BillingPaymentMethodRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.BillingPaymentMethodRequest);
+      //var instance = new InterserverApiClient.BillingPaymentMethodRequest();
+      //expect(instance).to.be.a(InterserverApiClient.BillingPaymentMethodRequest);
     });
 
     it('should have the property payment_method (base name: "payment_method")', function() {
       // uncomment below and update the code to test the property payment_method
-      //var instance = new InterServerManagementApi.BillingPaymentMethodRequest();
+      //var instance = new InterserverApiClient.BillingPaymentMethodRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property cc_auto (base name: "cc_auto")', function() {
       // uncomment below and update the code to test the property cc_auto
-      //var instance = new InterServerManagementApi.BillingPaymentMethodRequest();
+      //var instance = new InterserverApiClient.BillingPaymentMethodRequest();
       //expect(instance).to.be();
     });
 

@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainWhoisPrivacyRequest
+# InterserverApiClient.DomainWhoisPrivacyRequest
 
 ## Properties
 

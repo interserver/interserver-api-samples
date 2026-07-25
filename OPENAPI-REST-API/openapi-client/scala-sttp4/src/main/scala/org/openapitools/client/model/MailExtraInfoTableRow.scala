@@ -21,4 +21,3 @@ case class MailExtraInfoTableRow(
   /* The value of the extra info table row. */
   value: Option[String] = None
 )
-

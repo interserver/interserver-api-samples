@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsDALicense = Initialize-PSOpenAPIToolsVpsDALicense  -Name null `
+$VpsDALicense = Initialize-InterserverApiVpsDALicense  -Name null `
  -SubName null `
  -Cost null `
  -ImgDisabled null `

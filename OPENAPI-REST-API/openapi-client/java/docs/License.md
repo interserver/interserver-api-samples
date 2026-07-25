@@ -20,4 +20,8 @@
 |**licenseKey** | **String** | License key |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

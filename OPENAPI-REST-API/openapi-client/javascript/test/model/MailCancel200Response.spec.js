@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailCancel200Response();
+    instance = new InterserverApiClient.MailCancel200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('MailCancel200Response', function() {
     it('should create an instance of MailCancel200Response', function() {
       // uncomment below and update the code to test MailCancel200Response
-      //var instance = new InterServerManagementApi.MailCancel200Response();
-      //expect(instance).to.be.a(InterServerManagementApi.MailCancel200Response);
+      //var instance = new InterserverApiClient.MailCancel200Response();
+      //expect(instance).to.be.a(InterserverApiClient.MailCancel200Response);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.MailCancel200Response();
+      //var instance = new InterserverApiClient.MailCancel200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.MailCancel200Response();
+      //var instance = new InterserverApiClient.MailCancel200Response();
       //expect(instance).to.be();
     });
 

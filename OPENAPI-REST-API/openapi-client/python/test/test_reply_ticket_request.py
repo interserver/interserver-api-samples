@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.reply_ticket_request import ReplyTicketRequest
+from interserver_api_client.models.reply_ticket_request import ReplyTicketRequest
 
 class TestReplyTicketRequest(unittest.TestCase):
     """ReplyTicketRequest unit test stubs"""

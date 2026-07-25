@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerOrderMemory
+# InterserverApiClient.ServerOrderMemory
 
 ## Properties
 

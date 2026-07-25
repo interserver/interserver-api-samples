@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for CreateFirewallRule
 void main() {
-  final instance = CreateFirewallRuleBuilder();
-  // TODO add properties to the builder and call build()
+  final CreateFirewallRule? instance = /* CreateFirewallRule(...) */ null;
+  // TODO add properties to the entity
 
   group(CreateFirewallRule, () {
     // 1 = TCP, 2 = UDP
@@ -19,18 +19,18 @@ void main() {
       // TODO
     });
 
-    // int destinationPort (default value: 80)
+    // Optional<int?> destinationPort (default value: 80)
     test('to test the property `destinationPort`', () async {
       // TODO
     });
 
     // Source IP address to match. Use '0.0.0.0' to match any source.
-    // String sourceIp (default value: '0.0.0.0')
+    // Optional<String?> sourceIp (default value: '0.0.0.0')
     test('to test the property `sourceIp`', () async {
       // TODO
     });
 
-    // int sourcePort (default value: 0)
+    // Optional<int?> sourcePort (default value: 0)
     test('to test the property `sourcePort`', () async {
       // TODO
     });

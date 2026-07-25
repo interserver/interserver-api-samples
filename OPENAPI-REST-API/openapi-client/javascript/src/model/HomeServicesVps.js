@@ -17,7 +17,7 @@ import HomeServicesVpsLinks from './HomeServicesVpsLinks';
 /**
  * The HomeServicesVps model module.
  * @module model/HomeServicesVps
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeServicesVps {
     /**

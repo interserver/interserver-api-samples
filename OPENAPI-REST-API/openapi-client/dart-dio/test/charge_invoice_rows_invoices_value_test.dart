@@ -1,63 +1,63 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ChargeInvoiceRowsInvoicesValue
 void main() {
-  final instance = ChargeInvoiceRowsInvoicesValueBuilder();
-  // TODO add properties to the builder and call build()
+  final ChargeInvoiceRowsInvoicesValue? instance = /* ChargeInvoiceRowsInvoicesValue(...) */ null;
+  // TODO add properties to the entity
 
   group(ChargeInvoiceRowsInvoicesValue, () {
     // Unique invoice ID.
-    // num invoicesId
+    // Optional<num?> invoicesId
     test('to test the property `invoicesId`', () async {
       // TODO
     });
 
     // Description of the invoice charge.
-    // String invoicesDescription
+    // Optional<String?> invoicesDescription
     test('to test the property `invoicesDescription`', () async {
       // TODO
     });
 
     // Invoice amount.
-    // num invoicesAmount
+    // Optional<num?> invoicesAmount
     test('to test the property `invoicesAmount`', () async {
       // TODO
     });
 
     // Invoice date.
-    // String invoicesDate
+    // Optional<String?> invoicesDate
     test('to test the property `invoicesDate`', () async {
       // TODO
     });
 
-    // num invoicesPaid
+    // Optional<num?> invoicesPaid
     test('to test the property `invoicesPaid`', () async {
       // TODO
     });
 
-    // String invoicesDueDate
+    // Optional<String?> invoicesDueDate
     test('to test the property `invoicesDueDate`', () async {
       // TODO
     });
 
-    // String invoicesCurrency
+    // Optional<String?> invoicesCurrency
     test('to test the property `invoicesCurrency`', () async {
       // TODO
     });
 
-    // String currencySymbol
+    // Optional<String?> currencySymbol
     test('to test the property `currencySymbol`', () async {
       // TODO
     });
 
-    // String invoicesDateFormatted
+    // Optional<String?> invoicesDateFormatted
     test('to test the property `invoicesDateFormatted`', () async {
       // TODO
     });
 
     // This is optional when invoices_paid = 1 this array will show
-    // BuiltMap<String, ChargeInvoiceRowsInvoicesValuePaidInvoicesValue> paidInvoices
+    // Optional<Map<String, ChargeInvoiceRowsInvoicesValuePaidInvoicesValue>?> paidInvoices
     test('to test the property `paidInvoices`', () async {
       // TODO
     });

@@ -150,29 +150,29 @@ class CreateGeoFirewallRule {
 }
 
 /// 1 = Block,  0 = Whitelist
-class CreateGeoFirewallRuleXdpActionEnum {
-  /// Instantiate a new enum with the provided [value].
-  const CreateGeoFirewallRuleXdpActionEnum._(this.value);
+enum CreateGeoFirewallRuleXdpActionEnum {
+  number0._(0),
+  number1._(1),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const CreateGeoFirewallRuleXdpActionEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final int value;
+  final int _value;
 
   @override
-  String toString() => value.toString();
+  String toString() => _value.toString();
 
-  int toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  int toJson() => _value;
 
-  static const number0 = CreateGeoFirewallRuleXdpActionEnum._(0);
-  static const number1 = CreateGeoFirewallRuleXdpActionEnum._(1);
-
-  /// List of all possible values in this [enum][CreateGeoFirewallRuleXdpActionEnum].
-  static const values = <CreateGeoFirewallRuleXdpActionEnum>[
-    number0,
-    number1,
-  ];
-
+  /// Returns the instance of [CreateGeoFirewallRuleXdpActionEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static CreateGeoFirewallRuleXdpActionEnum? fromJson(dynamic value) => CreateGeoFirewallRuleXdpActionEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [CreateGeoFirewallRuleXdpActionEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<CreateGeoFirewallRuleXdpActionEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <CreateGeoFirewallRuleXdpActionEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -194,9 +194,10 @@ class CreateGeoFirewallRuleXdpActionEnumTypeTransformer {
 
   const CreateGeoFirewallRuleXdpActionEnumTypeTransformer._();
 
-  int encode(CreateGeoFirewallRuleXdpActionEnum data) => data.value;
+  int encode(CreateGeoFirewallRuleXdpActionEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a CreateGeoFirewallRuleXdpActionEnum.
+  /// Returns the instance of [CreateGeoFirewallRuleXdpActionEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -205,6 +206,9 @@ class CreateGeoFirewallRuleXdpActionEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   CreateGeoFirewallRuleXdpActionEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is CreateGeoFirewallRuleXdpActionEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case 0: return CreateGeoFirewallRuleXdpActionEnum.number0;
@@ -218,7 +222,7 @@ class CreateGeoFirewallRuleXdpActionEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [CreateGeoFirewallRuleXdpActionEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static CreateGeoFirewallRuleXdpActionEnumTypeTransformer? _instance;
 }
 

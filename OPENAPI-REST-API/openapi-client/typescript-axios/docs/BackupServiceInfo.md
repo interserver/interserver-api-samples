@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BackupServiceInfo } from './api';
+import { BackupServiceInfo } from '@interserver/myadmin-client';
 
 const instance: BackupServiceInfo = {
     backup_id,

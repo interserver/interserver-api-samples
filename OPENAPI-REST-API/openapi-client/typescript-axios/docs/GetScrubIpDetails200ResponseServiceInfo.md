@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetScrubIpDetails200ResponseServiceInfo } from './api';
+import { GetScrubIpDetails200ResponseServiceInfo } from '@interserver/myadmin-client';
 
 const instance: GetScrubIpDetails200ResponseServiceInfo = {
     scrub_ip_id,

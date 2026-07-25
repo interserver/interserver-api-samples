@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupExtraInfoTables = Initialize-PSOpenAPIToolsBackupExtraInfoTables  -IpInfo null
+$BackupExtraInfoTables = Initialize-InterserverApiBackupExtraInfoTables  -IpInfo null
 ```
 
 - Convert the resource to JSON

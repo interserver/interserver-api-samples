@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backups_order_service_types import BackupsOrderServiceTypes
+from interserver_api_client.models.backups_order_service_types import BackupsOrderServiceTypes
 
 class TestBackupsOrderServiceTypes(unittest.TestCase):
     """BackupsOrderServiceTypes unit test stubs"""
@@ -36,7 +36,7 @@ class TestBackupsOrderServiceTypes(unittest.TestCase):
         model = BackupsOrderServiceTypes()
         if include_optional:
             return BackupsOrderServiceTypes(
-                var_11006 = openapi_client.models.backups_order_service_types.BackupsOrderServiceTypes(
+                var_11006 = interserver_api_client.models.backups_order_service_types.BackupsOrderServiceTypes(
                     services_id = '11006', 
                     services_name = 'Storage ST 700', 
                     services_cost = '84.00', 

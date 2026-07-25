@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.TicketNew();
+    instance = new InterserverApiClient.TicketNew();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('TicketNew', function() {
     it('should create an instance of TicketNew', function() {
       // uncomment below and update the code to test TicketNew
-      //var instance = new InterServerManagementApi.TicketNew();
-      //expect(instance).to.be.a(InterServerManagementApi.TicketNew);
+      //var instance = new InterserverApiClient.TicketNew();
+      //expect(instance).to.be.a(InterserverApiClient.TicketNew);
     });
 
     it('should have the property subject (base name: "subject")', function() {
       // uncomment below and update the code to test the property subject
-      //var instance = new InterServerManagementApi.TicketNew();
+      //var instance = new InterserverApiClient.TicketNew();
       //expect(instance).to.be();
     });
 
     it('should have the property body (base name: "body")', function() {
       // uncomment below and update the code to test the property body
-      //var instance = new InterServerManagementApi.TicketNew();
+      //var instance = new InterserverApiClient.TicketNew();
       //expect(instance).to.be();
     });
 
     it('should have the property service_id (base name: "service_id")', function() {
       // uncomment below and update the code to test the property service_id
-      //var instance = new InterServerManagementApi.TicketNew();
+      //var instance = new InterserverApiClient.TicketNew();
       //expect(instance).to.be();
     });
 
     it('should have the property service_module (base name: "service_module")', function() {
       // uncomment below and update the code to test the property service_module
-      //var instance = new InterServerManagementApi.TicketNew();
+      //var instance = new InterserverApiClient.TicketNew();
       //expect(instance).to.be();
     });
 

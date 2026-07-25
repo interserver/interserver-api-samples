@@ -141,14 +141,6 @@ export class VpsOrderPutRequest {
     }
 }
 
-export enum VpsOrderPutRequestVpsPlatformEnum {
-    Kvm = 'kvm',
-    Hyperv = 'hyperv',
-    Kvmstorage = 'kvmstorage'
-}
-export enum VpsOrderPutRequestControlpanelEnum {
-    None = 'none',
-    Cpanel = 'cpanel',
-    Da = 'da'
-}
+    export type VpsOrderPutRequestVpsPlatformEnum = "kvm" | "hyperv" | "kvmstorage" ;
+    export type VpsOrderPutRequestControlpanelEnum = "none" | "cpanel" | "da" ;
 

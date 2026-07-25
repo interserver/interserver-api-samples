@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsitesOrderPackages = Initialize-PSOpenAPIToolsWebsitesOrderPackages  -Var11447 Web Hosting Direct Admin (PriceLock)
+$WebsitesOrderPackages = Initialize-InterserverApiWebsitesOrderPackages  -Var11447 Web Hosting Direct Admin (PriceLock)
 ```
 
 - Convert the resource to JSON

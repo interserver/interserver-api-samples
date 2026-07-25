@@ -26,8 +26,6 @@ HEADERS += \
     $${PWD}/OAIAffiliateDockSetup.h \
     $${PWD}/OAIAffiliatePaymentSetup.h \
     $${PWD}/OAIAffiliateTrafficRow.h \
-    $${PWD}/OAIAssetServer.h \
-    $${PWD}/OAIAssetServer_CPU_inner.h \
     $${PWD}/OAIBackup.h \
     $${PWD}/OAIBackupBillingDetails.h \
     $${PWD}/OAIBackupClientLink.h \
@@ -46,7 +44,6 @@ HEADERS += \
     $${PWD}/OAIBackupsOrderPackageCosts.h \
     $${PWD}/OAIBackupsOrderServiceTypes.h \
     $${PWD}/OAIBackupsOrder_serviceTypes.h \
-    $${PWD}/OAIBandwidth.h \
     $${PWD}/OAIBillingAddCcRequest.h \
     $${PWD}/OAIBillingInvoiceDetail.h \
     $${PWD}/OAIBillingInvoiceList.h \
@@ -72,11 +69,6 @@ HEADERS += \
     $${PWD}/OAIChargeInvoiceRows_invoices_value_paid_invoices_value.h \
     $${PWD}/OAIChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value.h \
     $${PWD}/OAICloseTicketResponseSchema.h \
-    $${PWD}/OAIConfigIds.h \
-    $${PWD}/OAIConfigLists.h \
-    $${PWD}/OAIControlPanel.h \
-    $${PWD}/OAICpu.h \
-    $${PWD}/OAICpuWithDefaults.h \
     $${PWD}/OAICreateFilter.h \
     $${PWD}/OAICreateFilter_201_response.h \
     $${PWD}/OAICreateFilter_400_response.h \
@@ -90,6 +82,7 @@ HEADERS += \
     $${PWD}/OAIDeleteFilter_200_response.h \
     $${PWD}/OAIDeleteFilter_400_response.h \
     $${PWD}/OAIDeleteFilter_500_response.h \
+    $${PWD}/OAIDeleteMailAlert_request.h \
     $${PWD}/OAIDelete_Firewall_Rule.h \
     $${PWD}/OAIDelete_Geo_Firewall_Rule.h \
     $${PWD}/OAIDenyRuleNew.h \
@@ -122,10 +115,10 @@ HEADERS += \
     $${PWD}/OAIDomainNameserverPostRequest.h \
     $${PWD}/OAIDomainNameserverPutRequest.h \
     $${PWD}/OAIDomainOrder.h \
+    $${PWD}/OAIDomainOrderRequest.h \
     $${PWD}/OAIDomainOrderResponse.h \
     $${PWD}/OAIDomainOrderResponse_attributes.h \
     $${PWD}/OAIDomainOrderServices10001.h \
-    $${PWD}/OAIDomainOrderTldServices.h \
     $${PWD}/OAIDomainOrder_services.h \
     $${PWD}/OAIDomainOwnerContact.h \
     $${PWD}/OAIDomainProvProcessPending.h \
@@ -142,12 +135,13 @@ HEADERS += \
     $${PWD}/OAIEmailAddressName.h \
     $${PWD}/OAIEnableScrub_200_response.h \
     $${PWD}/OAIEnableScrub_500_response.h \
-    $${PWD}/OAIFieldLabel.h \
+    $${PWD}/OAIFloatingIpOrderRequest.h \
     $${PWD}/OAIFloating_ipsCancel_200_response.h \
-    $${PWD}/OAIFormValues.h \
     $${PWD}/OAIGenericResponse.h \
     $${PWD}/OAIGetAccountInfo_401_response.h \
+    $${PWD}/OAIGetAccountLocales_200_response_value.h \
     $${PWD}/OAIGetAccountTfaSetup_200_response.h \
+    $${PWD}/OAIGetAffiliateSignups_200_response.h \
     $${PWD}/OAIGetOauthRedirect_200_response.h \
     $${PWD}/OAIGetOrderDetail_200_response.h \
     $${PWD}/OAIGetOrderDetail_200_response_ips_inner.h \
@@ -164,7 +158,6 @@ HEADERS += \
     $${PWD}/OAIGetScrubIpDetails_200_response_filter_firewall_rules_inner.h \
     $${PWD}/OAIGetScrubIpDetails_200_response_serviceInfo.h \
     $${PWD}/OAIGetWebsiteBuyIp_200_response.h \
-    $${PWD}/OAIHardDrive.h \
     $${PWD}/OAIHome.h \
     $${PWD}/OAIHomeDetailsModulesBackups.h \
     $${PWD}/OAIHomeDetailsModulesDomains.h \
@@ -191,10 +184,6 @@ HEADERS += \
     $${PWD}/OAIHome_ticketStatusView.h \
     $${PWD}/OAIHostnameObject.h \
     $${PWD}/OAIInitiatePayment_200_response.h \
-    $${PWD}/OAIInline_object.h \
-    $${PWD}/OAIInvoice.h \
-    $${PWD}/OAIInvoiceRow.h \
-    $${PWD}/OAIIpBlock.h \
     $${PWD}/OAIIpLimitRange.h \
     $${PWD}/OAIIpObject.h \
     $${PWD}/OAILicense.h \
@@ -202,6 +191,7 @@ HEADERS += \
     $${PWD}/OAILicenseClientLink.h \
     $${PWD}/OAILicenseIpInfo.h \
     $${PWD}/OAILicenseIpInfoRow.h \
+    $${PWD}/OAILicenseOrderRequest.h \
     $${PWD}/OAILicenseRow.h \
     $${PWD}/OAILicenseServiceInfo.h \
     $${PWD}/OAILicenseServiceType.h \
@@ -239,6 +229,7 @@ HEADERS += \
     $${PWD}/OAIMailLog.h \
     $${PWD}/OAIMailLogEntry.h \
     $${PWD}/OAIMailOrder.h \
+    $${PWD}/OAIMailOrderRequest.h \
     $${PWD}/OAIMailRow.h \
     $${PWD}/OAIMailSchema.h \
     $${PWD}/OAIMailSchema_extraInfoTables.h \
@@ -251,15 +242,13 @@ HEADERS += \
     $${PWD}/OAIMailStatsType_volume_to.h \
     $${PWD}/OAIMailTutorialsTable.h \
     $${PWD}/OAIMailTutorialsTableRow.h \
-    $${PWD}/OAIMemoryOption.h \
     $${PWD}/OAIModuleSettings.h \
     $${PWD}/OAIModules.h \
     $${PWD}/OAIMonthlyCounts.h \
-    $${PWD}/OAIOperatingSystem.h \
     $${PWD}/OAIPasswordRequest.h \
+    $${PWD}/OAIPatchBillingCreditCardVerify_request.h \
     $${PWD}/OAIPatchOauthTwoFactor_200_response.h \
     $${PWD}/OAIPatchOauthTwoFactor_request.h \
-    $${PWD}/OAIPaymentInvoiceRows.h \
     $${PWD}/OAIPlaceBuyNowServer_request.h \
     $${PWD}/OAIPlaceScrubOrder_201_response.h \
     $${PWD}/OAIPlaceScrubOrder_201_response_order_details.h \
@@ -270,6 +259,8 @@ HEADERS += \
     $${PWD}/OAIPostWebsiteBuyIp_request.h \
     $${PWD}/OAIPostWebsiteMigration_200_response.h \
     $${PWD}/OAIPostWebsiteMigration_request.h \
+    $${PWD}/OAIPutScrubIps_200_response.h \
+    $${PWD}/OAIQsOrderRequest.h \
     $${PWD}/OAIQueueResponse.h \
     $${PWD}/OAIQuickserver.h \
     $${PWD}/OAIQuickserverAddons.h \
@@ -294,8 +285,6 @@ HEADERS += \
     $${PWD}/OAIQuickserver_extraInfoTables.h \
     $${PWD}/OAIQuickserver_serviceExtra.h \
     $${PWD}/OAIQuickserversCancel_200_response.h \
-    $${PWD}/OAIRaidOption.h \
-    $${PWD}/OAIRegion.h \
     $${PWD}/OAIReplyTicketRequest.h \
     $${PWD}/OAIReplyTicketResponseSchema.h \
     $${PWD}/OAIRestoreRequest.h \
@@ -315,6 +304,8 @@ HEADERS += \
     $${PWD}/OAIServerAsset.h \
     $${PWD}/OAIServerAssets.h \
     $${PWD}/OAIServerBillingDetails.h \
+    $${PWD}/OAIServerBulkIpmiPowerResponse.h \
+    $${PWD}/OAIServerBulkIpmiPowerResponse_results_inner.h \
     $${PWD}/OAIServerClientLink.h \
     $${PWD}/OAIServerExtraInfoTables.h \
     $${PWD}/OAIServerIpmiLiveInfo.h \
@@ -333,10 +324,11 @@ HEADERS += \
     $${PWD}/OAIServerOrderFieldLabel.h \
     $${PWD}/OAIServerOrderFieldLabels.h \
     $${PWD}/OAIServerOrderFormValues.h \
-    $${PWD}/OAIServerOrderGetResponse.h \
     $${PWD}/OAIServerOrderIP.h \
     $${PWD}/OAIServerOrderMemory.h \
     $${PWD}/OAIServerOrderOS.h \
+    $${PWD}/OAIServerOrderPostRequest.h \
+    $${PWD}/OAIServerOrderPostRequest_hd.h \
     $${PWD}/OAIServerOrderRAID.h \
     $${PWD}/OAIServerOrder_bandwidth_li.h \
     $${PWD}/OAIServerOrder_cp_li.h \
@@ -362,6 +354,7 @@ HEADERS += \
     $${PWD}/OAIServices.h \
     $${PWD}/OAIServicesInfo.h \
     $${PWD}/OAISslCancel_200_response.h \
+    $${PWD}/OAISslOrderRequest.h \
     $${PWD}/OAIStatusMonthlyBreakdown.h \
     $${PWD}/OAISuccessTextResponse.h \
     $${PWD}/OAITemplateRequest.h \
@@ -422,7 +415,6 @@ HEADERS += \
     $${PWD}/OAIVpsSnapshot.h \
     $${PWD}/OAIVpsTemplateRow.h \
     $${PWD}/OAIVpsTemplatesList.h \
-    $${PWD}/OAIVpsTrafficDataDataResponse.h \
     $${PWD}/OAIVpsTrafficDataSectionResponse.h \
     $${PWD}/OAIVpsTrafficHistoryResponse.h \
     $${PWD}/OAIVpsTrafficHistorySectionDataResponse.h \
@@ -441,6 +433,8 @@ HEADERS += \
     $${PWD}/OAIWebsiteClientLink.h \
     $${PWD}/OAIWebsiteExtraInfoTables.h \
     $${PWD}/OAIWebsiteLoginResponse.h \
+    $${PWD}/OAIWebsiteOrderPostRequest.h \
+    $${PWD}/OAIWebsiteOrderPutRequest.h \
     $${PWD}/OAIWebsiteRow.h \
     $${PWD}/OAIWebsiteServiceInfo.h \
     $${PWD}/OAIWebsiteServiceMaster.h \
@@ -510,8 +504,6 @@ SOURCES += \
     $${PWD}/OAIAffiliateDockSetup.cpp \
     $${PWD}/OAIAffiliatePaymentSetup.cpp \
     $${PWD}/OAIAffiliateTrafficRow.cpp \
-    $${PWD}/OAIAssetServer.cpp \
-    $${PWD}/OAIAssetServer_CPU_inner.cpp \
     $${PWD}/OAIBackup.cpp \
     $${PWD}/OAIBackupBillingDetails.cpp \
     $${PWD}/OAIBackupClientLink.cpp \
@@ -530,7 +522,6 @@ SOURCES += \
     $${PWD}/OAIBackupsOrderPackageCosts.cpp \
     $${PWD}/OAIBackupsOrderServiceTypes.cpp \
     $${PWD}/OAIBackupsOrder_serviceTypes.cpp \
-    $${PWD}/OAIBandwidth.cpp \
     $${PWD}/OAIBillingAddCcRequest.cpp \
     $${PWD}/OAIBillingInvoiceDetail.cpp \
     $${PWD}/OAIBillingInvoiceList.cpp \
@@ -556,11 +547,6 @@ SOURCES += \
     $${PWD}/OAIChargeInvoiceRows_invoices_value_paid_invoices_value.cpp \
     $${PWD}/OAIChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value.cpp \
     $${PWD}/OAICloseTicketResponseSchema.cpp \
-    $${PWD}/OAIConfigIds.cpp \
-    $${PWD}/OAIConfigLists.cpp \
-    $${PWD}/OAIControlPanel.cpp \
-    $${PWD}/OAICpu.cpp \
-    $${PWD}/OAICpuWithDefaults.cpp \
     $${PWD}/OAICreateFilter.cpp \
     $${PWD}/OAICreateFilter_201_response.cpp \
     $${PWD}/OAICreateFilter_400_response.cpp \
@@ -574,6 +560,7 @@ SOURCES += \
     $${PWD}/OAIDeleteFilter_200_response.cpp \
     $${PWD}/OAIDeleteFilter_400_response.cpp \
     $${PWD}/OAIDeleteFilter_500_response.cpp \
+    $${PWD}/OAIDeleteMailAlert_request.cpp \
     $${PWD}/OAIDelete_Firewall_Rule.cpp \
     $${PWD}/OAIDelete_Geo_Firewall_Rule.cpp \
     $${PWD}/OAIDenyRuleNew.cpp \
@@ -606,10 +593,10 @@ SOURCES += \
     $${PWD}/OAIDomainNameserverPostRequest.cpp \
     $${PWD}/OAIDomainNameserverPutRequest.cpp \
     $${PWD}/OAIDomainOrder.cpp \
+    $${PWD}/OAIDomainOrderRequest.cpp \
     $${PWD}/OAIDomainOrderResponse.cpp \
     $${PWD}/OAIDomainOrderResponse_attributes.cpp \
     $${PWD}/OAIDomainOrderServices10001.cpp \
-    $${PWD}/OAIDomainOrderTldServices.cpp \
     $${PWD}/OAIDomainOrder_services.cpp \
     $${PWD}/OAIDomainOwnerContact.cpp \
     $${PWD}/OAIDomainProvProcessPending.cpp \
@@ -626,12 +613,13 @@ SOURCES += \
     $${PWD}/OAIEmailAddressName.cpp \
     $${PWD}/OAIEnableScrub_200_response.cpp \
     $${PWD}/OAIEnableScrub_500_response.cpp \
-    $${PWD}/OAIFieldLabel.cpp \
+    $${PWD}/OAIFloatingIpOrderRequest.cpp \
     $${PWD}/OAIFloating_ipsCancel_200_response.cpp \
-    $${PWD}/OAIFormValues.cpp \
     $${PWD}/OAIGenericResponse.cpp \
     $${PWD}/OAIGetAccountInfo_401_response.cpp \
+    $${PWD}/OAIGetAccountLocales_200_response_value.cpp \
     $${PWD}/OAIGetAccountTfaSetup_200_response.cpp \
+    $${PWD}/OAIGetAffiliateSignups_200_response.cpp \
     $${PWD}/OAIGetOauthRedirect_200_response.cpp \
     $${PWD}/OAIGetOrderDetail_200_response.cpp \
     $${PWD}/OAIGetOrderDetail_200_response_ips_inner.cpp \
@@ -648,7 +636,6 @@ SOURCES += \
     $${PWD}/OAIGetScrubIpDetails_200_response_filter_firewall_rules_inner.cpp \
     $${PWD}/OAIGetScrubIpDetails_200_response_serviceInfo.cpp \
     $${PWD}/OAIGetWebsiteBuyIp_200_response.cpp \
-    $${PWD}/OAIHardDrive.cpp \
     $${PWD}/OAIHome.cpp \
     $${PWD}/OAIHomeDetailsModulesBackups.cpp \
     $${PWD}/OAIHomeDetailsModulesDomains.cpp \
@@ -675,10 +662,6 @@ SOURCES += \
     $${PWD}/OAIHome_ticketStatusView.cpp \
     $${PWD}/OAIHostnameObject.cpp \
     $${PWD}/OAIInitiatePayment_200_response.cpp \
-    $${PWD}/OAIInline_object.cpp \
-    $${PWD}/OAIInvoice.cpp \
-    $${PWD}/OAIInvoiceRow.cpp \
-    $${PWD}/OAIIpBlock.cpp \
     $${PWD}/OAIIpLimitRange.cpp \
     $${PWD}/OAIIpObject.cpp \
     $${PWD}/OAILicense.cpp \
@@ -686,6 +669,7 @@ SOURCES += \
     $${PWD}/OAILicenseClientLink.cpp \
     $${PWD}/OAILicenseIpInfo.cpp \
     $${PWD}/OAILicenseIpInfoRow.cpp \
+    $${PWD}/OAILicenseOrderRequest.cpp \
     $${PWD}/OAILicenseRow.cpp \
     $${PWD}/OAILicenseServiceInfo.cpp \
     $${PWD}/OAILicenseServiceType.cpp \
@@ -723,6 +707,7 @@ SOURCES += \
     $${PWD}/OAIMailLog.cpp \
     $${PWD}/OAIMailLogEntry.cpp \
     $${PWD}/OAIMailOrder.cpp \
+    $${PWD}/OAIMailOrderRequest.cpp \
     $${PWD}/OAIMailRow.cpp \
     $${PWD}/OAIMailSchema.cpp \
     $${PWD}/OAIMailSchema_extraInfoTables.cpp \
@@ -735,15 +720,13 @@ SOURCES += \
     $${PWD}/OAIMailStatsType_volume_to.cpp \
     $${PWD}/OAIMailTutorialsTable.cpp \
     $${PWD}/OAIMailTutorialsTableRow.cpp \
-    $${PWD}/OAIMemoryOption.cpp \
     $${PWD}/OAIModuleSettings.cpp \
     $${PWD}/OAIModules.cpp \
     $${PWD}/OAIMonthlyCounts.cpp \
-    $${PWD}/OAIOperatingSystem.cpp \
     $${PWD}/OAIPasswordRequest.cpp \
+    $${PWD}/OAIPatchBillingCreditCardVerify_request.cpp \
     $${PWD}/OAIPatchOauthTwoFactor_200_response.cpp \
     $${PWD}/OAIPatchOauthTwoFactor_request.cpp \
-    $${PWD}/OAIPaymentInvoiceRows.cpp \
     $${PWD}/OAIPlaceBuyNowServer_request.cpp \
     $${PWD}/OAIPlaceScrubOrder_201_response.cpp \
     $${PWD}/OAIPlaceScrubOrder_201_response_order_details.cpp \
@@ -754,6 +737,8 @@ SOURCES += \
     $${PWD}/OAIPostWebsiteBuyIp_request.cpp \
     $${PWD}/OAIPostWebsiteMigration_200_response.cpp \
     $${PWD}/OAIPostWebsiteMigration_request.cpp \
+    $${PWD}/OAIPutScrubIps_200_response.cpp \
+    $${PWD}/OAIQsOrderRequest.cpp \
     $${PWD}/OAIQueueResponse.cpp \
     $${PWD}/OAIQuickserver.cpp \
     $${PWD}/OAIQuickserverAddons.cpp \
@@ -778,8 +763,6 @@ SOURCES += \
     $${PWD}/OAIQuickserver_extraInfoTables.cpp \
     $${PWD}/OAIQuickserver_serviceExtra.cpp \
     $${PWD}/OAIQuickserversCancel_200_response.cpp \
-    $${PWD}/OAIRaidOption.cpp \
-    $${PWD}/OAIRegion.cpp \
     $${PWD}/OAIReplyTicketRequest.cpp \
     $${PWD}/OAIReplyTicketResponseSchema.cpp \
     $${PWD}/OAIRestoreRequest.cpp \
@@ -799,6 +782,8 @@ SOURCES += \
     $${PWD}/OAIServerAsset.cpp \
     $${PWD}/OAIServerAssets.cpp \
     $${PWD}/OAIServerBillingDetails.cpp \
+    $${PWD}/OAIServerBulkIpmiPowerResponse.cpp \
+    $${PWD}/OAIServerBulkIpmiPowerResponse_results_inner.cpp \
     $${PWD}/OAIServerClientLink.cpp \
     $${PWD}/OAIServerExtraInfoTables.cpp \
     $${PWD}/OAIServerIpmiLiveInfo.cpp \
@@ -817,10 +802,11 @@ SOURCES += \
     $${PWD}/OAIServerOrderFieldLabel.cpp \
     $${PWD}/OAIServerOrderFieldLabels.cpp \
     $${PWD}/OAIServerOrderFormValues.cpp \
-    $${PWD}/OAIServerOrderGetResponse.cpp \
     $${PWD}/OAIServerOrderIP.cpp \
     $${PWD}/OAIServerOrderMemory.cpp \
     $${PWD}/OAIServerOrderOS.cpp \
+    $${PWD}/OAIServerOrderPostRequest.cpp \
+    $${PWD}/OAIServerOrderPostRequest_hd.cpp \
     $${PWD}/OAIServerOrderRAID.cpp \
     $${PWD}/OAIServerOrder_bandwidth_li.cpp \
     $${PWD}/OAIServerOrder_cp_li.cpp \
@@ -846,6 +832,7 @@ SOURCES += \
     $${PWD}/OAIServices.cpp \
     $${PWD}/OAIServicesInfo.cpp \
     $${PWD}/OAISslCancel_200_response.cpp \
+    $${PWD}/OAISslOrderRequest.cpp \
     $${PWD}/OAIStatusMonthlyBreakdown.cpp \
     $${PWD}/OAISuccessTextResponse.cpp \
     $${PWD}/OAITemplateRequest.cpp \
@@ -906,7 +893,6 @@ SOURCES += \
     $${PWD}/OAIVpsSnapshot.cpp \
     $${PWD}/OAIVpsTemplateRow.cpp \
     $${PWD}/OAIVpsTemplatesList.cpp \
-    $${PWD}/OAIVpsTrafficDataDataResponse.cpp \
     $${PWD}/OAIVpsTrafficDataSectionResponse.cpp \
     $${PWD}/OAIVpsTrafficHistoryResponse.cpp \
     $${PWD}/OAIVpsTrafficHistorySectionDataResponse.cpp \
@@ -925,6 +911,8 @@ SOURCES += \
     $${PWD}/OAIWebsiteClientLink.cpp \
     $${PWD}/OAIWebsiteExtraInfoTables.cpp \
     $${PWD}/OAIWebsiteLoginResponse.cpp \
+    $${PWD}/OAIWebsiteOrderPostRequest.cpp \
+    $${PWD}/OAIWebsiteOrderPutRequest.cpp \
     $${PWD}/OAIWebsiteRow.cpp \
     $${PWD}/OAIWebsiteServiceInfo.cpp \
     $${PWD}/OAIWebsiteServiceMaster.cpp \

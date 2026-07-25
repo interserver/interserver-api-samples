@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.vps_api import VPSApi
+from interserver_api_client.api.vps_api import VPSApi
 
 
 class TestVPSApi(unittest.TestCase):
@@ -30,308 +30,350 @@ class TestVPSApi(unittest.TestCase):
     def test_add_vps(self) -> None:
         """Test case for add_vps
 
-        Place VPS Order
+        Place a new VPS order, create the invoice, and queue provisioning
         """
         pass
 
     def test_delete_vps_backup(self) -> None:
         """Test case for delete_vps_backup
 
-        Delete VPS Backup
+        Permanently delete a VPS backup file by name (irreversible)
         """
         pass
 
     def test_do_vps_block_smtp(self) -> None:
         """Test case for do_vps_block_smtp
 
-        Blocks SMTP
+        Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
         """
         pass
 
     def test_do_vps_disable_cd(self) -> None:
         """Test case for do_vps_disable_cd
 
-        Disable CD Drive
+        Remove the virtual CD/DVD device entirely from the VPS configuration
         """
         pass
 
     def test_do_vps_disable_quota(self) -> None:
         """Test case for do_vps_disable_quota
 
-        Disable Quotas
+        Disable per-user disk quota enforcement inside the VPS guest OS
         """
         pass
 
     def test_do_vps_eject_cd(self) -> None:
         """Test case for do_vps_eject_cd
 
-        Eject CD Drive
+        Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
         """
         pass
 
     def test_do_vps_enable_quota(self) -> None:
         """Test case for do_vps_enable_quota
 
-        Enable Quotas
+        Enable per-user disk quota enforcement inside the VPS guest OS
         """
         pass
 
     def test_do_vps_restart(self) -> None:
         """Test case for do_vps_restart
 
-        Restart VPS
+        Reboot the VPS — preferred over stop+start for software changes
         """
         pass
 
     def test_do_vps_start(self) -> None:
         """Test case for do_vps_start
 
-        Start VPS
+        Power on a stopped VPS instance
         """
         pass
 
     def test_do_vps_stop(self) -> None:
         """Test case for do_vps_stop
 
-        Stop VPS
+        Power off a running VPS — billing continues until cancellation
         """
         pass
 
     def test_download_vps_backup(self) -> None:
         """Test case for download_vps_backup
 
-        Download VPS Backup
+        Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
         """
         pass
 
     def test_get_new_vps(self) -> None:
         """Test case for get_new_vps
 
-        VPS Ordering Information
+        Get the VPS order catalog — platforms, OS templates, locations, pricing
+        """
+        pass
+
+    def test_get_vps_backup(self) -> None:
+        """Test case for get_vps_backup
+
+        Trigger a manual on-demand snapshot/backup of the VPS
         """
         pass
 
     def test_get_vps_backups(self) -> None:
         """Test case for get_vps_backups
 
-        Get VPS Backups List
+        List existing backups for the VPS across Swift, MinIO, and ZFS
         """
         pass
 
     def test_get_vps_buy_hd_space(self) -> None:
         """Test case for get_vps_buy_hd_space
 
-        HD Space Addon Info
+        Get current additional disk size and per-GB monthly cost for the VPS
         """
         pass
 
     def test_get_vps_buy_ip(self) -> None:
         """Test case for get_vps_buy_ip
 
-        Additional IP Addon Info
+        Read current additional IPs, cap, and per-IP monthly cost for the VPS
+        """
+        pass
+
+    def test_get_vps_change_hostname(self) -> None:
+        """Test case for get_vps_change_hostname
+
+        Read the VPS's current hostname before changing it
+        """
+        pass
+
+    def test_get_vps_change_root_password(self) -> None:
+        """Test case for get_vps_change_root_password
+
+        Pre-flight check before changing the VPS root password
         """
         pass
 
     def test_get_vps_change_timezone(self) -> None:
         """Test case for get_vps_change_timezone
 
-        Get Timezone Info
+        List IANA timezones supported by the VPS guest OS
         """
         pass
 
     def test_get_vps_info(self) -> None:
         """Test case for get_vps_info
 
-        Get VPS Order
+        Get full details for one VPS — IPs, hostname, OS, slices, status, addons
+        """
+        pass
+
+    def test_get_vps_insert_cd(self) -> None:
+        """Test case for get_vps_insert_cd
+
+        List ISO templates that can be mounted in the VPS virtual CD drive
         """
         pass
 
     def test_get_vps_invoices(self) -> None:
         """Test case for get_vps_invoices
 
-        Get VPS Invoices
+        List all billing invoices associated with this specific VPS
         """
         pass
 
     def test_get_vps_list(self) -> None:
         """Test case for get_vps_list
 
-        List VPS Orders
+        List all VPS services on the customer's account
         """
         pass
 
     def test_get_vps_reinstall_os(self) -> None:
         """Test case for get_vps_reinstall_os
 
-        VPS Reinstall OS Options
+        List OS templates compatible with this VPS's hypervisor for reinstall
+        """
+        pass
+
+    def test_get_vps_reset_password(self) -> None:
+        """Test case for get_vps_reset_password
+
+        Pre-flight check before resetting the VPS root password to a random value
         """
         pass
 
     def test_get_vps_reverse_dns(self) -> None:
         """Test case for get_vps_reverse_dns
 
-        Reverse DNS Info
+        Read the current PTR (reverse-DNS) records for every IP on the VPS
         """
         pass
 
     def test_get_vps_setup_vnc(self) -> None:
         """Test case for get_vps_setup_vnc
 
-        VNC Setup Info
+        Read current VNC console connection info for the VPS
         """
         pass
 
     def test_get_vps_slices(self) -> None:
         """Test case for get_vps_slices
 
-        Slice Upgrade Info
+        Read current slice count, min/max range, and prorated per-slice upgrade cost
         """
         pass
 
     def test_get_vps_traffic_usage(self) -> None:
         """Test case for get_vps_traffic_usage
 
-        Get Traffic Usage
+        Read bandwidth traffic usage data for the VPS
         """
         pass
 
     def test_get_vps_view_desktop(self) -> None:
         """Test case for get_vps_view_desktop
 
-        Get View Desktop Info
+        Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
         """
         pass
 
     def test_get_vps_welcome_email(self) -> None:
         """Test case for get_vps_welcome_email
 
-        Resend VPS Welcome Email
-        """
-        pass
-
-    def test_post_vps_backup(self) -> None:
-        """Test case for post_vps_backup
-
-        Start a VPS Backup
+        Resend the welcome email containing VPS IP, hostname, and root credentials
         """
         pass
 
     def test_post_vps_buy_hd_space(self) -> None:
         """Test case for post_vps_buy_hd_space
 
-        Purchase HD Space Addon
+        Buy or resize the VPS additional-disk addon and create a prorated invoice
         """
         pass
 
     def test_post_vps_buy_ip(self) -> None:
         """Test case for post_vps_buy_ip
 
-        Purchase Additional IP
+        Purchase one additional IP for the VPS and create the invoice
         """
         pass
 
     def test_post_vps_change_hostname(self) -> None:
         """Test case for post_vps_change_hostname
 
-        Update VPS Hostname
+        Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
         """
         pass
 
     def test_post_vps_change_root_password(self) -> None:
         """Test case for post_vps_change_root_password
 
-        Change VPS Root Password
+        Set a specific new root/Administrator password on the VPS
         """
         pass
 
     def test_post_vps_change_timezone(self) -> None:
         """Test case for post_vps_change_timezone
 
-        Change VPS Timezone
+        Set the system timezone on the VPS guest OS
         """
         pass
 
     def test_post_vps_change_webuzo_password(self) -> None:
         """Test case for post_vps_change_webuzo_password
 
-        Change Webuzo Password
+        Rotate the Webuzo control panel admin password (re-auth required)
         """
         pass
 
     def test_post_vps_insert_cd(self) -> None:
         """Test case for post_vps_insert_cd
 
-        Insert CD in VPS
+        Mount an ISO image in the VPS virtual CD drive from a URL
         """
         pass
 
     def test_post_vps_reinstall_os(self) -> None:
         """Test case for post_vps_reinstall_os
 
-        Reinstall VPS OS
+        Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
         """
         pass
 
     def test_post_vps_reset_password(self) -> None:
         """Test case for post_vps_reset_password
 
-        Reset VPS Password
+        Reset the VPS root password to a server-generated random value
         """
         pass
 
     def test_post_vps_restore(self) -> None:
         """Test case for post_vps_restore
 
-        Restore VPS from Backup
+        Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
         """
         pass
 
     def test_post_vps_reverse_dns(self) -> None:
         """Test case for post_vps_reverse_dns
 
-        Update Reverse DNS
+        Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
         """
         pass
 
     def test_post_vps_setup_vnc(self) -> None:
         """Test case for post_vps_setup_vnc
 
-        Setup VNC
+        Provision or refresh the VNC console endpoint for the VPS
         """
         pass
 
     def test_post_vps_slices(self) -> None:
         """Test case for post_vps_slices
 
-        Purchase Slice Upgrade
+        Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
+        """
+        pass
+
+    def test_post_vps_traffic_usage(self) -> None:
+        """Test case for post_vps_traffic_usage
+
+        Search/filter VPS bandwidth usage with custom criteria (reserved)
         """
         pass
 
     def test_post_vps_view_desktop(self) -> None:
         """Test case for post_vps_view_desktop
 
-        Update View Desktop
+        Refresh the remote-desktop session connection info after IP/hostname changes
         """
         pass
 
     def test_put_vps(self) -> None:
         """Test case for put_vps
 
-        Validate VPS Order
+        Validate a VPS order configuration and quote the cost — dry run, no charge
+        """
+        pass
+
+    def test_put_vps_buy_hd_space(self) -> None:
+        """Test case for put_vps_buy_hd_space
+
+        Preview cost to set additional VPS disk to a target GB size — dry run
         """
         pass
 
     def test_update_vps_info(self) -> None:
         """Test case for update_vps_info
 
-        Update VPS Order
+        Update editable settings on a VPS service record
         """
         pass
 
     def test_v_ps_cancel(self) -> None:
         """Test case for v_ps_cancel
 
-        Cancel VPS Service
+        Cancel a VPS service at the end of the current billing cycle
         """
         pass
 

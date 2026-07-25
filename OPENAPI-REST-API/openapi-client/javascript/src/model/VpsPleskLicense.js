@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsPleskLicense model module.
  * @module model/VpsPleskLicense
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsPleskLicense {
     /**

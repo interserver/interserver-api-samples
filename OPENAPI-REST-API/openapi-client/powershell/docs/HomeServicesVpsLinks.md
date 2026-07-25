@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeServicesVpsLinks = Initialize-PSOpenAPIToolsHomeServicesVpsLinks  -Var465503 vps465503 `
+$HomeServicesVpsLinks = Initialize-InterserverApiHomeServicesVpsLinks  -Var465503 vps465503 `
  -Var2500081 vps2500081 `
  -Var2578866 vps2578866
 ```

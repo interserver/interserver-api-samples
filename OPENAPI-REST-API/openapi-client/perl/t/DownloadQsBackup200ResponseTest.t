@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DownloadQsBackup200Response');
+use_ok('InterServerAPI::Object::DownloadQsBackup200Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DownloadQsBackup200Response->new();
+#my $instance = InterServerAPI::Object::DownloadQsBackup200Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DownloadQsBackup200Response');
+#isa_ok($instance, 'InterServerAPI::Object::DownloadQsBackup200Response');
 
 
 done_testing();

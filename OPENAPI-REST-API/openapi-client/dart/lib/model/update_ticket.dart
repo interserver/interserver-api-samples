@@ -209,29 +209,29 @@ class UpdateTicket {
 }
 
 
-class UpdateTicketCustomerServerAccessEnum {
-  /// Instantiate a new enum with the provided [value].
-  const UpdateTicketCustomerServerAccessEnum._(this.value);
+enum UpdateTicketCustomerServerAccessEnum {
+  y._(r'y'),
+  n._(r'n'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const UpdateTicketCustomerServerAccessEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const y = UpdateTicketCustomerServerAccessEnum._(r'y');
-  static const n = UpdateTicketCustomerServerAccessEnum._(r'n');
-
-  /// List of all possible values in this [enum][UpdateTicketCustomerServerAccessEnum].
-  static const values = <UpdateTicketCustomerServerAccessEnum>[
-    y,
-    n,
-  ];
-
+  /// Returns the instance of [UpdateTicketCustomerServerAccessEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static UpdateTicketCustomerServerAccessEnum? fromJson(dynamic value) => UpdateTicketCustomerServerAccessEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [UpdateTicketCustomerServerAccessEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<UpdateTicketCustomerServerAccessEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <UpdateTicketCustomerServerAccessEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -253,9 +253,10 @@ class UpdateTicketCustomerServerAccessEnumTypeTransformer {
 
   const UpdateTicketCustomerServerAccessEnumTypeTransformer._();
 
-  String encode(UpdateTicketCustomerServerAccessEnum data) => data.value;
+  String encode(UpdateTicketCustomerServerAccessEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a UpdateTicketCustomerServerAccessEnum.
+  /// Returns the instance of [UpdateTicketCustomerServerAccessEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -264,6 +265,9 @@ class UpdateTicketCustomerServerAccessEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   UpdateTicketCustomerServerAccessEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is UpdateTicketCustomerServerAccessEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'y': return UpdateTicketCustomerServerAccessEnum.y;
@@ -277,7 +281,7 @@ class UpdateTicketCustomerServerAccessEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [UpdateTicketCustomerServerAccessEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static UpdateTicketCustomerServerAccessEnumTypeTransformer? _instance;
 }
 

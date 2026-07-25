@@ -75,7 +75,7 @@ DomainNameserverPutRequest <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`nameserver`)) {
-        self$`nameserver` <- ApiClient$new()$deserializeObj(this_object$`nameserver`, "array[character]", loadNamespace("openapi"))
+        self$`nameserver` <- ApiClient$new()$deserializeObj(this_object$`nameserver`, "array[character]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -98,7 +98,7 @@ DomainNameserverPutRequest <- R6::R6Class(
     #' @return the instance of DomainNameserverPutRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`nameserver` <- ApiClient$new()$deserializeObj(this_object$`nameserver`, "array[character]", loadNamespace("openapi"))
+      self$`nameserver` <- ApiClient$new()$deserializeObj(this_object$`nameserver`, "array[character]", loadNamespace("interserverapi"))
       self
     },
 

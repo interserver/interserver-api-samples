@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainAllInfo = Initialize-PSOpenAPIToolsDomainAllInfo  -OPSVersion null `
+$DomainAllInfo = Initialize-InterserverApiDomainAllInfo  -OPSVersion null `
  -Attributes null `
  -Object null `
  -Protocol null `

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PatchOauthTwoFactor200Response = Initialize-PSOpenAPIToolsPatchOauthTwoFactor200Response  -Login null
+$PatchOauthTwoFactor200Response = Initialize-InterserverApiPatchOauthTwoFactor200Response  -Login null
 ```
 
 - Convert the resource to JSON

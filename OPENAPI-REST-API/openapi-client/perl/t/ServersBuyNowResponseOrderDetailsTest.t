@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServersBuyNowResponseOrderDetails');
+use_ok('InterServerAPI::Object::ServersBuyNowResponseOrderDetails');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServersBuyNowResponseOrderDetails->new();
+#my $instance = InterServerAPI::Object::ServersBuyNowResponseOrderDetails->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServersBuyNowResponseOrderDetails');
+#isa_ok($instance, 'InterServerAPI::Object::ServersBuyNowResponseOrderDetails');
 
 
 done_testing();

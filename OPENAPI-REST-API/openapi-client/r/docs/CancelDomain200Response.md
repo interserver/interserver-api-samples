@@ -1,4 +1,4 @@
-# openapi::CancelDomain200Response
+# interserverapi::CancelDomain200Response
 
 
 ## Properties

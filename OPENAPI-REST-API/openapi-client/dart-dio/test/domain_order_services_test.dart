@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainOrderServices
 void main() {
-  final instance = DomainOrderServicesBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainOrderServices? instance = /* DomainOrderServices(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainOrderServices, () {
-    // DomainOrderServices10001 domainOrderServices10001
+    // Optional<DomainOrderServices10001?> domainOrderServices10001
     test('to test the property `domainOrderServices10001`', () async {
       // TODO
     });

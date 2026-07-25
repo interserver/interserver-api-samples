@@ -17,4 +17,3 @@ case class VpsPlesk12Data(
   pro: Option[VpsPleskLicense] = None,
   host: Option[VpsPleskLicense] = None
 )
-

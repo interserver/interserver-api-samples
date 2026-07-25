@@ -269,19 +269,19 @@ VpsServiceAddons <- R6::R6Class(
         self$`dedicated_ip` <- this_object$`dedicated_ip`
       }
       if (!is.null(this_object$`extra_ips`)) {
-        self$`extra_ips` <- ApiClient$new()$deserializeObj(this_object$`extra_ips`, "array[character]", loadNamespace("openapi"))
+        self$`extra_ips` <- ApiClient$new()$deserializeObj(this_object$`extra_ips`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`extra_ips6`)) {
-        self$`extra_ips6` <- ApiClient$new()$deserializeObj(this_object$`extra_ips6`, "array[character]", loadNamespace("openapi"))
+        self$`extra_ips6` <- ApiClient$new()$deserializeObj(this_object$`extra_ips6`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`unpaid_ips`)) {
-        self$`unpaid_ips` <- ApiClient$new()$deserializeObj(this_object$`unpaid_ips`, "array[character]", loadNamespace("openapi"))
+        self$`unpaid_ips` <- ApiClient$new()$deserializeObj(this_object$`unpaid_ips`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`ips`)) {
-        self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[character]", loadNamespace("openapi"))
+        self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`ips6`)) {
-        self$`ips6` <- ApiClient$new()$deserializeObj(this_object$`ips6`, "array[character]", loadNamespace("openapi"))
+        self$`ips6` <- ApiClient$new()$deserializeObj(this_object$`ips6`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`cpanel_id`)) {
         self$`cpanel_id` <- this_object$`cpanel_id`
@@ -290,10 +290,10 @@ VpsServiceAddons <- R6::R6Class(
         self$`cost` <- this_object$`cost`
       }
       if (!is.null(this_object$`ids`)) {
-        self$`ids` <- ApiClient$new()$deserializeObj(this_object$`ids`, "array[character]", loadNamespace("openapi"))
+        self$`ids` <- ApiClient$new()$deserializeObj(this_object$`ids`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`rdata`)) {
-        self$`rdata` <- ApiClient$new()$deserializeObj(this_object$`rdata`, "array[character]", loadNamespace("openapi"))
+        self$`rdata` <- ApiClient$new()$deserializeObj(this_object$`rdata`, "array[character]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -322,15 +322,15 @@ VpsServiceAddons <- R6::R6Class(
       self$`has_softaculous` <- this_object$`has_softaculous`
       self$`has_hdspace` <- this_object$`has_hdspace`
       self$`dedicated_ip` <- this_object$`dedicated_ip`
-      self$`extra_ips` <- ApiClient$new()$deserializeObj(this_object$`extra_ips`, "array[character]", loadNamespace("openapi"))
-      self$`extra_ips6` <- ApiClient$new()$deserializeObj(this_object$`extra_ips6`, "array[character]", loadNamespace("openapi"))
-      self$`unpaid_ips` <- ApiClient$new()$deserializeObj(this_object$`unpaid_ips`, "array[character]", loadNamespace("openapi"))
-      self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[character]", loadNamespace("openapi"))
-      self$`ips6` <- ApiClient$new()$deserializeObj(this_object$`ips6`, "array[character]", loadNamespace("openapi"))
+      self$`extra_ips` <- ApiClient$new()$deserializeObj(this_object$`extra_ips`, "array[character]", loadNamespace("interserverapi"))
+      self$`extra_ips6` <- ApiClient$new()$deserializeObj(this_object$`extra_ips6`, "array[character]", loadNamespace("interserverapi"))
+      self$`unpaid_ips` <- ApiClient$new()$deserializeObj(this_object$`unpaid_ips`, "array[character]", loadNamespace("interserverapi"))
+      self$`ips` <- ApiClient$new()$deserializeObj(this_object$`ips`, "array[character]", loadNamespace("interserverapi"))
+      self$`ips6` <- ApiClient$new()$deserializeObj(this_object$`ips6`, "array[character]", loadNamespace("interserverapi"))
       self$`cpanel_id` <- this_object$`cpanel_id`
       self$`cost` <- this_object$`cost`
-      self$`ids` <- ApiClient$new()$deserializeObj(this_object$`ids`, "array[character]", loadNamespace("openapi"))
-      self$`rdata` <- ApiClient$new()$deserializeObj(this_object$`rdata`, "array[character]", loadNamespace("openapi"))
+      self$`ids` <- ApiClient$new()$deserializeObj(this_object$`ids`, "array[character]", loadNamespace("interserverapi"))
+      self$`rdata` <- ApiClient$new()$deserializeObj(this_object$`rdata`, "array[character]", loadNamespace("interserverapi"))
       self
     },
 

@@ -35,4 +35,3 @@ case class SendMailAdv(
   /* (optional)  ID of the Mail order within our system to use as the Mail Account. */
   id: Option[Long] = None
 )
-

@@ -1,4 +1,4 @@
-# InterServerManagementApi.GetOrderDetail200ResponseIpsInner
+# InterserverApiClient.GetOrderDetail200ResponseIpsInner
 
 ## Properties
 

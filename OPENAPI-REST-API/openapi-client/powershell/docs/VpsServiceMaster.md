@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsServiceMaster = Initialize-PSOpenAPIToolsVpsServiceMaster  -VpsId 2439 `
+$VpsServiceMaster = Initialize-InterserverApiVpsServiceMaster  -VpsId 2439 `
  -VpsName Mystaging `
  -VpsIp 10.11.12.13 `
  -VpsType 14 `

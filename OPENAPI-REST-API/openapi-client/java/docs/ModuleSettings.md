@@ -28,4 +28,8 @@ The settings for a module.
 |**TITLE_FIELD3** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

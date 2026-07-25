@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { License } from './api';
+import { License } from '@interserver/myadmin-client';
 
 const instance: License = {
     serviceInfo,

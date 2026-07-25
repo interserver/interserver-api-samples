@@ -16,6 +16,7 @@ import options
 type Creator* {.pure.} = enum
   User
   Staff
+  UnknownDefaultOpenApi
 
 type TicketPostDetailsInner* = object
   ## 
@@ -32,10 +33,12 @@ func `%`*(v: Creator): JsonNode =
   result = case v:
     of Creator.User: %"User"
     of Creator.Staff: %"Staff"
+    of Creator.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: Creator): string =
   result = case v:
     of Creator.User: $("User")
     of Creator.Staff: $("Staff")
+    of Creator.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[Creator]): Creator =
   if node.kind != JString:
@@ -46,6 +49,8 @@ proc to*(node: JsonNode, T: typedesc[Creator]): Creator =
     return Creator.User
   of $("Staff"):
     return Creator.Staff
+  of $("11184809"):
+    return Creator.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for Creator: " & strVal)
 

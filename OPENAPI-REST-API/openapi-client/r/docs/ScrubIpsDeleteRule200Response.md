@@ -1,4 +1,4 @@
-# openapi::ScrubIpsDeleteRule200Response
+# interserverapi::ScrubIpsDeleteRule200Response
 
 
 ## Properties

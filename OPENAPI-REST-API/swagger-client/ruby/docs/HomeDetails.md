@@ -1,4 +1,4 @@
-# SwaggerClient::HomeDetails
+# InterserverApiClient::HomeDetails
 
 ## Properties
 Name | Type | Description | Notes

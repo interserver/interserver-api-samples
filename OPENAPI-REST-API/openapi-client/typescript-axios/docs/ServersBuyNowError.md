@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServersBuyNowError } from './api';
+import { ServersBuyNowError } from '@interserver/myadmin-client';
 
 const instance: ServersBuyNowError = {
     success,

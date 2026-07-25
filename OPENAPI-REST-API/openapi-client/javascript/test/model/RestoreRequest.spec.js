@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.RestoreRequest();
+    instance = new InterserverApiClient.RestoreRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('RestoreRequest', function() {
     it('should create an instance of RestoreRequest', function() {
       // uncomment below and update the code to test RestoreRequest
-      //var instance = new InterServerManagementApi.RestoreRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.RestoreRequest);
+      //var instance = new InterserverApiClient.RestoreRequest();
+      //expect(instance).to.be.a(InterserverApiClient.RestoreRequest);
     });
 
     it('should have the property backup (base name: "backup")', function() {
       // uncomment below and update the code to test the property backup
-      //var instance = new InterServerManagementApi.RestoreRequest();
+      //var instance = new InterserverApiClient.RestoreRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property password (base name: "password")', function() {
       // uncomment below and update the code to test the property password
-      //var instance = new InterServerManagementApi.RestoreRequest();
+      //var instance = new InterserverApiClient.RestoreRequest();
       //expect(instance).to.be();
     });
 

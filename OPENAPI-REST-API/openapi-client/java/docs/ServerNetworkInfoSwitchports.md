@@ -11,4 +11,8 @@ Object containing switchport information.
 |**_10414** | [**ServerSwitchport**](ServerSwitchport.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

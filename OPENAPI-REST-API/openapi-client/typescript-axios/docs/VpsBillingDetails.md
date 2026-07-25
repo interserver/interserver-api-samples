@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsBillingDetails } from './api';
+import { VpsBillingDetails } from '@interserver/myadmin-client';
 
 const instance: VpsBillingDetails = {
     service_last_invoice_date,

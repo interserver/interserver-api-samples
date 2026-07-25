@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverOrderVersionCentosstream8 = Initialize-PSOpenAPIToolsQuickserverOrderVersionCentosstream8  -Centosstream8 8 Stream (64 bits)
+$QuickserverOrderVersionCentosstream8 = Initialize-InterserverApiQuickserverOrderVersionCentosstream8  -Centosstream8 8 Stream (64 bits)
 ```
 
 - Convert the resource to JSON

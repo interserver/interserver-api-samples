@@ -1,4 +1,4 @@
-# openapi::BackupIPInfoRow
+# interserverapi::BackupIPInfoRow
 
 A single row in the backup IP information table.
 

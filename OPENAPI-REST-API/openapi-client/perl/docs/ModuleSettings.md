@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ModuleSettings
+# InterServerAPI::Object::ModuleSettings
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ModuleSettings;
+use InterServerAPI::Object::ModuleSettings;
 ```
 
 ## Properties

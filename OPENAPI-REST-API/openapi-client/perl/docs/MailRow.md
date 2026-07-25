@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailRow
+# InterServerAPI::Object::MailRow
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailRow;
+use InterServerAPI::Object::MailRow;
 ```
 
 ## Properties

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverBillingDetails = Initialize-PSOpenAPIToolsQuickserverBillingDetails  -ServiceLastInvoiceDate April 11, 2023 `
+$QuickserverBillingDetails = Initialize-InterserverApiQuickserverBillingDetails  -ServiceLastInvoiceDate April 11, 2023 `
  -ServicePaymentStatus Paid `
  -ServiceFrequency Monthly `
  -NextDate 2023-05-11T20:00:06.000Z `

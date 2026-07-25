@@ -19,18 +19,19 @@ import org.openapitools.client.models.GetAccountInfo401Response
 import io.circe.Json
 import org.openapitools.client.models.ServiceOrderPostResponse
 import org.openapitools.client.models.SslCancel200Response
+import org.openapitools.client.models.SslOrderRequest
 import org.openapitools.client.models.SuccessTextResponse
 import org.openapitools.client.models.*
 
 trait SSLCertificatesApiEndpoints[F[*]] {
 
-  def addSsl()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
+  def addSsl(sslOrderRequest: SslOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def getNewSsl()(using auth: _Authorization.ApiKey): F[Json]
   def getSslInfo(id: Int)(using auth: _Authorization.ApiKey): F[Json]
   def getSslInvoices(id: Int)(using auth: _Authorization.ApiKey): F[ChargeInvoiceRows]
   def getSslList()(using auth: _Authorization.ApiKey): F[Unit]
   def getSslWelcomeEmail(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
-  def putSsl()(using auth: _Authorization.ApiKey): F[Unit]
+  def putSsl(sslOrderRequest: SslOrderRequest)(using auth: _Authorization.ApiKey): F[Unit]
   def sslCancel(id: Int)(using auth: _Authorization.ApiKey): F[SslCancel200Response]
   def updateSslInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
 
@@ -46,15 +47,15 @@ class SSLCertificatesApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addSsl()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
+  override def addSsl(sslOrderRequest: SslOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, ServiceOrderPostResponse](
+    _executeRequest[SslOrderRequest, ServiceOrderPostResponse](
       method = "POST",
       path = s"/ssl/order",
-      body = None,
+      body = Some(sslOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -161,15 +162,15 @@ class SSLCertificatesApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def putSsl()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def putSsl(sslOrderRequest: SslOrderRequest)(using auth: _Authorization.ApiKey): F[Unit] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[SslOrderRequest, Unit](
       method = "PUT",
       path = s"/ssl/order",
-      body = None,
+      body = Some(sslOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,

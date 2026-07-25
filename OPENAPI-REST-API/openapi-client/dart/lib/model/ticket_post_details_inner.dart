@@ -226,29 +226,29 @@ class TicketPostDetailsInner {
 }
 
 
-class TicketPostDetailsInnerCreatorEnum {
-  /// Instantiate a new enum with the provided [value].
-  const TicketPostDetailsInnerCreatorEnum._(this.value);
+enum TicketPostDetailsInnerCreatorEnum {
+  user._(r'User'),
+  staff._(r'Staff'),
+  ;
+
+  /// Instantiate a new enum with the provided value.
+  const TicketPostDetailsInnerCreatorEnum._(this._value);
 
   /// The underlying value of this enum member.
-  final String value;
+  final String _value;
 
   @override
-  String toString() => value;
+  String toString() => _value;
 
-  String toJson() => value;
+  /// Encodes this enum as a value suitable for JSON.
+  String toJson() => _value;
 
-  static const user = TicketPostDetailsInnerCreatorEnum._(r'User');
-  static const staff = TicketPostDetailsInnerCreatorEnum._(r'Staff');
-
-  /// List of all possible values in this [enum][TicketPostDetailsInnerCreatorEnum].
-  static const values = <TicketPostDetailsInnerCreatorEnum>[
-    user,
-    staff,
-  ];
-
+  /// Returns the instance of [TicketPostDetailsInnerCreatorEnum] that was successfully decoded
+  /// from the passed [value] on success, null otherwise.
   static TicketPostDetailsInnerCreatorEnum? fromJson(dynamic value) => TicketPostDetailsInnerCreatorEnumTypeTransformer().decode(value);
 
+  /// Returns a [List] containing instances of [TicketPostDetailsInnerCreatorEnum]
+  /// that were successfully decoded from the passed [JSON][json].
   static List<TicketPostDetailsInnerCreatorEnum> listFromJson(dynamic json, {bool growable = false,}) {
     final result = <TicketPostDetailsInnerCreatorEnum>[];
     if (json is List && json.isNotEmpty) {
@@ -270,9 +270,10 @@ class TicketPostDetailsInnerCreatorEnumTypeTransformer {
 
   const TicketPostDetailsInnerCreatorEnumTypeTransformer._();
 
-  String encode(TicketPostDetailsInnerCreatorEnum data) => data.value;
+  String encode(TicketPostDetailsInnerCreatorEnum data) => data._value;
 
-  /// Decodes a [dynamic value][data] to a TicketPostDetailsInnerCreatorEnum.
+  /// Returns the instance of [TicketPostDetailsInnerCreatorEnum] that was successfully decoded
+  /// from the passed [data] value on success, null otherwise.
   ///
   /// If [allowNull] is true and the [dynamic value][data] cannot be decoded successfully,
   /// then null is returned. However, if [allowNull] is false and the [dynamic value][data]
@@ -281,6 +282,9 @@ class TicketPostDetailsInnerCreatorEnumTypeTransformer {
   /// The [allowNull] is very handy when an API changes and a new enum value is added or removed,
   /// and users are still using an old app with the old code.
   TicketPostDetailsInnerCreatorEnum? decode(dynamic data, {bool allowNull = true}) {
+    if (data is TicketPostDetailsInnerCreatorEnum) {
+      return data;
+    }
     if (data != null) {
       switch (data) {
         case r'User': return TicketPostDetailsInnerCreatorEnum.user;
@@ -294,7 +298,7 @@ class TicketPostDetailsInnerCreatorEnumTypeTransformer {
     return null;
   }
 
-  /// Singleton [TicketPostDetailsInnerCreatorEnumTypeTransformer] instance.
+  /// The singleton instance of this transformer.
   static TicketPostDetailsInnerCreatorEnumTypeTransformer? _instance;
 }
 

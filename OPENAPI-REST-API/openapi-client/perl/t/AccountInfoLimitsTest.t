@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::AccountInfoLimits');
+use_ok('InterServerAPI::Object::AccountInfoLimits');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::AccountInfoLimits->new();
+#my $instance = InterServerAPI::Object::AccountInfoLimits->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::AccountInfoLimits');
+#isa_ok($instance, 'InterServerAPI::Object::AccountInfoLimits');
 
 
 done_testing();

@@ -1,4 +1,4 @@
-# SwaggerClient::ScrubIpsRowSchema
+# InterserverApiClient::ScrubIpsRowSchema
 
 ## Properties
 Name | Type | Description | Notes

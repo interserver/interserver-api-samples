@@ -10,4 +10,8 @@ The listing of service types
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

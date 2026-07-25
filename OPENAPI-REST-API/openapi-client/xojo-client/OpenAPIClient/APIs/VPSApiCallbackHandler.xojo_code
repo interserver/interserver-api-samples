@@ -73,6 +73,12 @@ Protected Interface VPSApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub GetVpsBackupCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.QueueResponse)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub GetVpsBackupsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As VpsBackupRows)
 		  
 		End Sub
@@ -91,6 +97,18 @@ Protected Interface VPSApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub GetVpsChangeHostnameCallback(status As OpenAPIClient.OpenAPIClientException)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub GetVpsChangeRootPasswordCallback(status As OpenAPIClient.OpenAPIClientException)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub GetVpsChangeTimezoneCallback(status As OpenAPIClient.OpenAPIClientException, data() As String)
 		  
 		End Sub
@@ -98,6 +116,12 @@ Protected Interface VPSApiCallbackHandler
 
 	#tag Method, Flags = &h0
 		Sub GetVpsInfoCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.Vps)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub GetVpsInsertCdCallback(status As OpenAPIClient.OpenAPIClientException)
 		  
 		End Sub
 	#tag EndMethod
@@ -116,6 +140,12 @@ Protected Interface VPSApiCallbackHandler
 
 	#tag Method, Flags = &h0
 		Sub GetVpsReinstallOsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.VpsTemplatesList)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub GetVpsResetPasswordCallback(status As OpenAPIClient.OpenAPIClientException)
 		  
 		End Sub
 	#tag EndMethod
@@ -152,12 +182,6 @@ Protected Interface VPSApiCallbackHandler
 
 	#tag Method, Flags = &h0
 		Sub GetVpsWelcomeEmailCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SuccessTextResponse)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub PostVpsBackupCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.QueueResponse)
 		  
 		End Sub
 	#tag EndMethod
@@ -241,6 +265,12 @@ Protected Interface VPSApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Sub PostVpsTrafficUsageCallback(status As OpenAPIClient.OpenAPIClientException)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Sub PostVpsViewDesktopCallback(status As OpenAPIClient.OpenAPIClientException)
 		  
 		End Sub
@@ -248,6 +278,12 @@ Protected Interface VPSApiCallbackHandler
 
 	#tag Method, Flags = &h0
 		Sub PutVpsCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.VpsOrderPutResponse)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub PutVpsBuyHdSpaceCallback(status As OpenAPIClient.OpenAPIClientException)
 		  
 		End Sub
 	#tag EndMethod

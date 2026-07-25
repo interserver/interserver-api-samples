@@ -19,4 +19,8 @@ An IP block option available when ordering a dedicated server.
 |**monthlyPriceDisplay** | **String** | Display of monthly IP price. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

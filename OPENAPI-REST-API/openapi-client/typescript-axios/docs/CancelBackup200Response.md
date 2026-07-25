@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CancelBackup200Response } from './api';
+import { CancelBackup200Response } from '@interserver/myadmin-client';
 
 const instance: CancelBackup200Response = {
     success,

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainBillingDetails } from './api';
+import { DomainBillingDetails } from '@interserver/myadmin-client';
 
 const instance: DomainBillingDetails = {
     service_last_invoice_date,

@@ -11,46 +11,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class InlineResponse2001   {
 
-  private @Valid Boolean success = null;
-
-  private @Valid String text = null;
+  private @Valid Object data = null;
 
   /**
+   * Affiliate signup statistics and client-side data.
    **/
-  public InlineResponse2001 success(Boolean success) {
-    this.success = success;
+  public InlineResponse2001 data(Object data) {
+    this.data = data;
     return this;
   }
 
   
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("success")
+  @ApiModelProperty(value = "Affiliate signup statistics and client-side data.")
+  @JsonProperty("data")
   @NotNull
 
-  public Boolean isSuccess() {
-    return success;
+  public Object getData() {
+    return data;
   }
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  /**
-   **/
-  public InlineResponse2001 text(String text) {
-    this.text = text;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("text")
-  @NotNull
-
-  public String getText() {
-    return text;
-  }
-  public void setText(String text) {
-    this.text = text;
+  public void setData(Object data) {
+    this.data = data;
   }
 
 
@@ -63,13 +43,12 @@ public class InlineResponse2001   {
       return false;
     }
     InlineResponse2001 inlineResponse2001 = (InlineResponse2001) o;
-    return Objects.equals(success, inlineResponse2001.success) &&
-        Objects.equals(text, inlineResponse2001.text);
+    return Objects.equals(data, inlineResponse2001.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, text);
+    return Objects.hash(data);
   }
 
   @Override
@@ -77,8 +56,7 @@ public class InlineResponse2001   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2001 {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
   }

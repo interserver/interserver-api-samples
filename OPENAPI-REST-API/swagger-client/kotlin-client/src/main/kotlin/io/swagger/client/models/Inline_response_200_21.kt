@@ -14,12 +14,17 @@ package io.swagger.client.models
 
 /**
  * 
- * @param success 
- * @param text 
+ * @param text Status message.
+ * @param invoice Invoice ID for payment.
+ * @param order Server order ID.
  */
 data class InlineResponse20021 (
 
-    val success: kotlin.Boolean,
-    val text: kotlin.String
+    /* Status message. */
+    val text: kotlin.String? = null,
+    /* Invoice ID for payment. */
+    val invoice: kotlin.Int? = null,
+    /* Server order ID. */
+    val order: kotlin.Int? = null
 ) {
 }

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerSwitchport } from './api';
+import { ServerSwitchport } from '@interserver/myadmin-client';
 
 const instance: ServerSwitchport = {
     switchport_id,

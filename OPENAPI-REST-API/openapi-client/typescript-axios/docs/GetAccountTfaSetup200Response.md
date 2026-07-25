@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetAccountTfaSetup200Response } from './api';
+import { GetAccountTfaSetup200Response } from '@interserver/myadmin-client';
 
 const instance: GetAccountTfaSetup200Response = {
     _2fa_google_key,

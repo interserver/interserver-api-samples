@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderCPU } from './api';
+import { ServerOrderCPU } from '@interserver/myadmin-client';
 
 const instance: ServerOrderCPU = {
     id,

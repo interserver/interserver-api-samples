@@ -1,48 +1,48 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for GetScrubIpDetails200ResponseBillingDetails
 void main() {
-  final instance = GetScrubIpDetails200ResponseBillingDetailsBuilder();
-  // TODO add properties to the builder and call build()
+  final GetScrubIpDetails200ResponseBillingDetails? instance = /* GetScrubIpDetails200ResponseBillingDetails(...) */ null;
+  // TODO add properties to the entity
 
   group(GetScrubIpDetails200ResponseBillingDetails, () {
-    // String serviceLastInvoiceDate
+    // Optional<String?> serviceLastInvoiceDate
     test('to test the property `serviceLastInvoiceDate`', () async {
       // TODO
     });
 
-    // String servicePaymentStatus
+    // Optional<String?> servicePaymentStatus
     test('to test the property `servicePaymentStatus`', () async {
       // TODO
     });
 
-    // String serviceFrequency
+    // Optional<String?> serviceFrequency
     test('to test the property `serviceFrequency`', () async {
       // TODO
     });
 
-    // String nextDate
+    // Optional<String?> nextDate
     test('to test the property `nextDate`', () async {
       // TODO
     });
 
-    // String serviceNextInvoiceDate
+    // Optional<String?> serviceNextInvoiceDate
     test('to test the property `serviceNextInvoiceDate`', () async {
       // TODO
     });
 
-    // String serviceCurrency
+    // Optional<String?> serviceCurrency
     test('to test the property `serviceCurrency`', () async {
       // TODO
     });
 
-    // String serviceCurrencySymbol
+    // Optional<String?> serviceCurrencySymbol
     test('to test the property `serviceCurrencySymbol`', () async {
       // TODO
     });
 
-    // String serviceCostInfo
+    // Optional<String?> serviceCostInfo
     test('to test the property `serviceCostInfo`', () async {
       // TODO
     });

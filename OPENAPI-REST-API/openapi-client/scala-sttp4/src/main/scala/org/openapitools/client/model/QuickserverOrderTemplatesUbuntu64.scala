@@ -17,5 +17,4 @@ import scala.collection.mutable.ListBuffer
    * Ubuntu template details.
    */
 case class QuickserverOrderTemplatesUbuntu64(
-)
-
+) extends ListBuffer[Seq]

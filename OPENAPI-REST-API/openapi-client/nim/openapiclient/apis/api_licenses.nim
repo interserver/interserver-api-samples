@@ -21,6 +21,7 @@ import uri
 import ../models/model_charge_invoice_rows
 import ../models/model_ip_object
 import ../models/model_license
+import ../models/model_license_order_request
 import ../models/model_license_row
 import ../models/model_licenses_order
 import ../models/model_service_order_post_response
@@ -43,77 +44,73 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addLicense*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
-  ## Place License Order
+proc addLicense*(httpClient: HttpClient, licenseOrderRequest: LicenseOrderRequest): (Option[ServiceOrderPostResponse], Response) =
+  ## Order a new software license and create the recurring invoice
+  httpClient.headers["Content-Type"] = "application/json"
 
-  let response = httpClient.post(basepath & "/licenses/order")
+  let response = httpClient.post(basepath & "/licenses/order", $(%licenseOrderRequest))
   constructResult[ServiceOrderPostResponse](response)
 
 
 proc getLicenseInfo*(httpClient: HttpClient, id: int): (Option[License], Response) =
-  ## Get License
+  ## Get full details for one license including status, IP, and links
 
   let response = httpClient.get(basepath & fmt"/licenses/{id}")
   constructResult[License](response)
 
 
 proc getLicenseInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get License Invoices
+  ## List all billing invoices tied to one software license service
 
   let response = httpClient.get(basepath & fmt"/licenses/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getLicenseList*(httpClient: HttpClient): (Option[seq[LicenseRow]], Response) =
-  ## List Licenses
+  ## List all software licenses owned by the authenticated customer
 
   let response = httpClient.get(basepath & "/licenses")
   constructResult[seq[LicenseRow]](response)
 
 
-proc getLicenseOrderCatTagInfo*(httpClient: HttpClient, catTag: string): Response =
-  ## Get License Order Information for Category
-  httpClient.get(basepath & fmt"/licenses/order/{catTag}")
-
-
-
 proc getLicensesWelcomeEmail*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Resend License Welcome Email
+  ## Resend the license welcome email with the key and activation steps
 
   let response = httpClient.get(basepath & fmt"/licenses/{id}/welcome_email")
   constructResult[SuccessTextResponse](response)
 
 
 proc getNewLicense*(httpClient: HttpClient): (Option[LicensesOrder], Response) =
-  ## Get License Order Information
+  ## Get available license types, packages, and pricing for ordering
 
   let response = httpClient.get(basepath & "/licenses/order")
   constructResult[LicensesOrder](response)
 
 
 proc licensesCancel*(httpClient: HttpClient, id: int): (Option[licensesCancel_200_response], Response) =
-  ## Cancel License
+  ## Cancel a license service and stop future billing (irreversible)
 
   let response = httpClient.delete(basepath & fmt"/licenses/{id}")
   constructResult[licensesCancel_200_response](response)
 
 
 proc postLicenseChangeIp*(httpClient: HttpClient, id: int, ipObject: IpObject): (Option[SuccessTextResponse], Response) =
-  ## Change License IP
+  ## Rebind a license to a new IP address (may incur a vendor fee)
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/licenses/{id}/change_ip", $(%ipObject))
   constructResult[SuccessTextResponse](response)
 
 
-proc putLicenses*(httpClient: HttpClient): Response =
-  ## Validate License Order
-  httpClient.put(basepath & "/licenses/order")
+proc putLicenses*(httpClient: HttpClient, licenseOrderRequest: LicenseOrderRequest): Response =
+  ## Validate a software license order before placing it (dry run preview)
+  httpClient.headers["Content-Type"] = "application/json"
+  httpClient.put(basepath & "/licenses/order", $(%licenseOrderRequest))
 
 
 
 proc updateLicenseInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Update License
+  ## Update mutable fields on a license service (e.g. assigned IP)
 
   let response = httpClient.post(basepath & fmt"/licenses/{id}")
   constructResult[SuccessTextResponse](response)

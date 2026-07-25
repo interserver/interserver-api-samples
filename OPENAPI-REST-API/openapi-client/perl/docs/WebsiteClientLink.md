@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::WebsiteClientLink
+# InterServerAPI::Object::WebsiteClientLink
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::WebsiteClientLink;
+use InterServerAPI::Object::WebsiteClientLink;
 ```
 
 ## Properties

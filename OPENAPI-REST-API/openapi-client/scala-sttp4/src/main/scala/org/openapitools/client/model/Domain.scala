@@ -36,4 +36,3 @@ case class Domain(
   whoisPrivacy: Option[String] = None,
   autoRenew: Option[String] = None
 )
-

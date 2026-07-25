@@ -1,4 +1,4 @@
-# SwaggerClient::BillingPrepayRequest
+# InterserverApiClient::BillingPrepayRequest
 
 ## Properties
 Name | Type | Description | Notes

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backups_order import BackupsOrder
+from interserver_api_client.models.backups_order import BackupsOrder
 
 class TestBackupsOrder(unittest.TestCase):
     """BackupsOrder unit test stubs"""
@@ -36,10 +36,10 @@ class TestBackupsOrder(unittest.TestCase):
         model = BackupsOrder()
         if include_optional:
             return BackupsOrder(
-                package_costs = openapi_client.models.backups_order_package_costs.BackupsOrderPackageCosts(
+                package_costs = interserver_api_client.models.backups_order_package_costs.BackupsOrderPackageCosts(
                     11006 = 84, ),
-                service_types = openapi_client.models.backups_order_service_types.BackupsOrder_serviceTypes(
-                    11006 = openapi_client.models.backups_order_service_types.BackupsOrderServiceTypes(
+                service_types = interserver_api_client.models.backups_order_service_types.BackupsOrder_serviceTypes(
+                    11006 = interserver_api_client.models.backups_order_service_types.BackupsOrderServiceTypes(
                         services_id = '11006', 
                         services_name = 'Storage ST 700', 
                         services_cost = '84.00', 
@@ -52,10 +52,10 @@ class TestBackupsOrder(unittest.TestCase):
             )
         else:
             return BackupsOrder(
-                package_costs = openapi_client.models.backups_order_package_costs.BackupsOrderPackageCosts(
+                package_costs = interserver_api_client.models.backups_order_package_costs.BackupsOrderPackageCosts(
                     11006 = 84, ),
-                service_types = openapi_client.models.backups_order_service_types.BackupsOrder_serviceTypes(
-                    11006 = openapi_client.models.backups_order_service_types.BackupsOrderServiceTypes(
+                service_types = interserver_api_client.models.backups_order_service_types.BackupsOrder_serviceTypes(
+                    11006 = interserver_api_client.models.backups_order_service_types.BackupsOrderServiceTypes(
                         services_id = '11006', 
                         services_name = 'Storage ST 700', 
                         services_cost = '84.00', 

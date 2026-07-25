@@ -17,37 +17,37 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_new_ticket Create New Ticket
+#' add_new_ticket Open a new helpdesk ticket, optionally linked to a service and attachments
 #'
 #'
-#' close_ticket Close Ticket
+#' close_ticket Close an open support ticket via simple GET request (no body required)
 #'
 #'
-#' delete_ticket_info Close Ticket
+#' delete_ticket_info Close a customer ticket via DELETE verb (closes only, never destroys data)
 #'
 #'
-#' get_new_ticket Gets Information for creating a new ticket.
+#' get_new_ticket Fetch services and product options to populate the new-ticket form
 #'
 #'
-#' get_ticket_info Get Ticket Information
+#' get_ticket_info Get full ticket details including subject, status, and the reply thread
 #'
 #'
-#' get_tickets_list List Support Tickets
+#' get_tickets_list List the authenticated account&#x27;s support tickets with status and date filters
 #'
 #'
-#' post_ticket_info Reply To Ticket
+#' post_ticket_info Append a reply (and optional attachment, server-access fields) to a ticket
 #'
 #'
-#' post_tickets_list Search Support Tickets
+#' post_tickets_list Search the authenticated account&#x27;s tickets by subject, email, or mask ID
 #'
 #'
-#' put_ticket_info Update Ticket
+#' put_ticket_info Update a ticket&#x27;s properties such as subject or status (stub, not implemented)
 #'
 #'
-#' reply_ticket Reply Ticket
+#' reply_ticket Post a simple text reply to an existing ticket thread (no attachments)
 #'
 #'
-#' update_ticket_info Update Ticket
+#' update_ticket_info Update a ticket&#x27;s custom field values (server-access details, etc.)
 #'
 #' }
 #'

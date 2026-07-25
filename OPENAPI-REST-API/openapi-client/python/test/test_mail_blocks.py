@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_blocks import MailBlocks
+from interserver_api_client.models.mail_blocks import MailBlocks
 
 class TestMailBlocks(unittest.TestCase):
     """MailBlocks unit test stubs"""

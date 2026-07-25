@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_extra_info_tables import ServerExtraInfoTables
+from interserver_api_client.models.server_extra_info_tables import ServerExtraInfoTables
 
 class TestServerExtraInfoTables(unittest.TestCase):
     """ServerExtraInfoTables unit test stubs"""

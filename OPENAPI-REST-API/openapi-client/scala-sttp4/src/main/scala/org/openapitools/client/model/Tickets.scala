@@ -32,4 +32,3 @@ case class Tickets(
   countArray: TicketsCountArray,
   viewText: String
 )
-

@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsitesOrder = Initialize-PSOpenAPIToolsWebsitesOrder  -Step order_form `
+$WebsitesOrder = Initialize-InterserverApiWebsitesOrder  -Step order_form `
  -Website  `
  -Period 1 `
  -ServiceOfferId 0 `

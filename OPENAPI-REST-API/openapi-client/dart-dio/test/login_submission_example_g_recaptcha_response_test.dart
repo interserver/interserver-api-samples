@@ -1,33 +1,33 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LoginSubmissionExampleGRecaptchaResponse
 void main() {
-  final instance = LoginSubmissionExampleGRecaptchaResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final LoginSubmissionExampleGRecaptchaResponse? instance = /* LoginSubmissionExampleGRecaptchaResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(LoginSubmissionExampleGRecaptchaResponse, () {
-    // bool vIsShallow
+    // Optional<bool?> vIsShallow
     test('to test the property `vIsShallow`', () async {
       // TODO
     });
 
-    // LoginSubmissionExampleGRecaptchaResponseDep dep
+    // Optional<LoginSubmissionExampleGRecaptchaResponseDep?> dep
     test('to test the property `dep`', () async {
       // TODO
     });
 
-    // bool vIsRef
+    // Optional<bool?> vIsRef
     test('to test the property `vIsRef`', () async {
       // TODO
     });
 
-    // String rawValue
+    // Optional<String?> rawValue
     test('to test the property `rawValue`', () async {
       // TODO
     });
 
-    // String value
+    // Optional<String?> value
     test('to test the property `value`', () async {
       // TODO
     });

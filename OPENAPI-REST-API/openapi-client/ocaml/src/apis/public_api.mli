@@ -5,6 +5,8 @@
  *
  *)
 
+val get_account_currencies : unit -> string list Lwt.t
+val get_account_locales : unit -> (string * Get_account_locales_200_response_value.t) list Lwt.t
 val get_captcha : unit -> Captcha_response.t Lwt.t
 val get_countries : ?fetch_by:Enums.fetch_by -> unit -> Yojson.Safe.t Lwt.t
 val get_info : unit -> Services_info.t Lwt.t

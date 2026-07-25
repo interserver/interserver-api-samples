@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderFieldLabel } from './api';
+import { ServerOrderFieldLabel } from '@interserver/myadmin-client';
 
 const instance: ServerOrderFieldLabel = {
     name,

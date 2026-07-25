@@ -1,4 +1,4 @@
-# openapi::ServerSwitchport
+# interserverapi::ServerSwitchport
 
 
 ## Properties

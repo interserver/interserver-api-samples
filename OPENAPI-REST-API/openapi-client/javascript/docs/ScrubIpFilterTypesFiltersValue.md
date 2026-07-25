@@ -1,4 +1,4 @@
-# InterServerManagementApi.ScrubIpFilterTypesFiltersValue
+# InterserverApiClient.ScrubIpFilterTypesFiltersValue
 
 ## Properties
 

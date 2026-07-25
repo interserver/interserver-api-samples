@@ -19,6 +19,7 @@ import typetraits
 import uri
 
 import ../models/model_charge_invoice_rows
+import ../models/model_floating_ip_order_request
 import ../models/model_service_order_post_response
 import ../models/model_success_text_response
 import ../models/model_floating_ips_cancel200response
@@ -40,57 +41,58 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addFloatingIp*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
-  ## Place Floating IP Order
+proc addFloatingIp*(httpClient: HttpClient, floatingIpOrderRequest: FloatingIpOrderRequest): (Option[ServiceOrderPostResponse], Response) =
+  ## Place a real Floating IP order, create billing records, and provision the service
+  httpClient.headers["Content-Type"] = "application/json"
 
-  let response = httpClient.post(basepath & "/floating_ips/order")
+  let response = httpClient.post(basepath & "/floating_ips/order", $(%floatingIpOrderRequest))
   constructResult[ServiceOrderPostResponse](response)
 
 
 proc floatingIpsCancel*(httpClient: HttpClient, id: int): (Option[floating_ipsCancel_200_response], Response) =
-  ## Cancel Floating IP
+  ## Cancel a Floating IP service and release the IP — destructive, billing stops
 
   let response = httpClient.delete(basepath & fmt"/floating_ips/{id}")
   constructResult[floating_ipsCancel_200_response](response)
 
 
 proc getFloatingIpInfo*(httpClient: HttpClient, id: int): (Option[JsonNode], Response) =
-  ## View Floating IP
+  ## Fetch full details for one Floating IP service, including current target IP
 
   let response = httpClient.get(basepath & fmt"/floating_ips/{id}")
   constructResult[JsonNode](response)
 
 
 proc getFloatingIpInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get Floating IP Invoices
+  ## List all billing invoices charged against a specific Floating IP service
 
   let response = httpClient.get(basepath & fmt"/floating_ips/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getFloatingIpsList*(httpClient: HttpClient): (Option[seq[JsonNode]], Response) =
-  ## List Floating IPs
+  ## List all Floating IP services on the authenticated customer's account
 
   let response = httpClient.get(basepath & "/floating_ips")
   constructResult[seq[JsonNode]](response)
 
 
 proc getFloatingIpsWelcomeEmail*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Resend Floating IPs Welcome Email
+  ## Resend the Floating IP welcome / setup email to the account contact
 
   let response = httpClient.get(basepath & fmt"/floating_ips/{id}/welcome_email")
   constructResult[SuccessTextResponse](response)
 
 
 proc getNewFloatingIp*(httpClient: HttpClient): (Option[JsonNode], Response) =
-  ## Get Floating IP Ordering Information
+  ## Get pricing and service-type options for ordering a new Floating IP
 
   let response = httpClient.get(basepath & "/floating_ips/order")
   constructResult[JsonNode](response)
 
 
 proc postFloatingIpsChangeIp*(httpClient: HttpClient, id: int, ip: string): (Option[SuccessTextResponse], Response) =
-  ## Change Floating IP Target
+  ## Re-point a Floating IP to a different target IP on one of the customer's services
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "ip": $ip, # IP Address
@@ -100,14 +102,15 @@ proc postFloatingIpsChangeIp*(httpClient: HttpClient, id: int, ip: string): (Opt
   constructResult[SuccessTextResponse](response)
 
 
-proc putFloatingIps*(httpClient: HttpClient): Response =
-  ## Validate Floating IP Order
-  httpClient.put(basepath & "/floating_ips/order")
+proc putFloatingIps*(httpClient: HttpClient, floatingIpOrderRequest: FloatingIpOrderRequest): Response =
+  ## Validate a Floating IP order and price it without charging the customer
+  httpClient.headers["Content-Type"] = "application/json"
+  httpClient.put(basepath & "/floating_ips/order", $(%floatingIpOrderRequest))
 
 
 
 proc updateFloatingIpInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Update Floating IP
+  ## Update a Floating IP service's editable settings (label / metadata)
 
   let response = httpClient.post(basepath & fmt"/floating_ips/{id}")
   constructResult[SuccessTextResponse](response)

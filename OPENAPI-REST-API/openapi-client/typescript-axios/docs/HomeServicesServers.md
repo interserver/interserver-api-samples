@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { HomeServicesServers } from './api';
+import { HomeServicesServers } from '@interserver/myadmin-client';
 
 const instance: HomeServicesServers = {
     links,

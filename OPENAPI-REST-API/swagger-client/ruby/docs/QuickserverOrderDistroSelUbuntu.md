@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverOrderDistroSelUbuntu
+# InterserverApiClient::QuickserverOrderDistroSelUbuntu
 
 ## Properties
 Name | Type | Description | Notes

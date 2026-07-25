@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailAlertUpdateRequest();
+    instance = new InterserverApiClient.MailAlertUpdateRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('MailAlertUpdateRequest', function() {
     it('should create an instance of MailAlertUpdateRequest', function() {
       // uncomment below and update the code to test MailAlertUpdateRequest
-      //var instance = new InterServerManagementApi.MailAlertUpdateRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.MailAlertUpdateRequest);
+      //var instance = new InterserverApiClient.MailAlertUpdateRequest();
+      //expect(instance).to.be.a(InterserverApiClient.MailAlertUpdateRequest);
     });
 
     it('should have the property alert_id (base name: "alert_id")', function() {
       // uncomment below and update the code to test the property alert_id
-      //var instance = new InterServerManagementApi.MailAlertUpdateRequest();
+      //var instance = new InterserverApiClient.MailAlertUpdateRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.MailAlertUpdateRequest();
+      //var instance = new InterserverApiClient.MailAlertUpdateRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property value (base name: "value")', function() {
       // uncomment below and update the code to test the property value
-      //var instance = new InterServerManagementApi.MailAlertUpdateRequest();
+      //var instance = new InterserverApiClient.MailAlertUpdateRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property to (base name: "to")', function() {
       // uncomment below and update the code to test the property to
-      //var instance = new InterServerManagementApi.MailAlertUpdateRequest();
+      //var instance = new InterserverApiClient.MailAlertUpdateRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property enabled (base name: "enabled")', function() {
       // uncomment below and update the code to test the property enabled
-      //var instance = new InterServerManagementApi.MailAlertUpdateRequest();
+      //var instance = new InterserverApiClient.MailAlertUpdateRequest();
       //expect(instance).to.be();
     });
 

@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JObject
 
   /**
    * Full detail view of a webhosting service including billing, service configuration, and panel access links.
@@ -26,7 +27,6 @@ case class Website(
   serviceMaster: Option[WebsiteServiceMaster] = None,
   /* Package information */
   `package`: Option[String] = None,
-  serviceExtra: Option[Seq[Any]] = None,
+  serviceExtra: Option[Seq[org.json4s.JObject]] = None,
   extraInfoTables: Option[WebsiteExtraInfoTables] = None
 )
-

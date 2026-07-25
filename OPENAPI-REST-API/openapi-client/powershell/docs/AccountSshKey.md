@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountSshKey = Initialize-PSOpenAPIToolsAccountSshKey  -SshKey null
+$AccountSshKey = Initialize-InterserverApiAccountSshKey  -SshKey null
 ```
 
 - Convert the resource to JSON

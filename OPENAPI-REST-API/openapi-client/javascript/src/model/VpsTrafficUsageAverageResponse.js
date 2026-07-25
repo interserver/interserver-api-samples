@@ -17,7 +17,7 @@ import VpsTrafficUsageAverageSectionResponse from './VpsTrafficUsageAverageSecti
 /**
  * The VpsTrafficUsageAverageResponse model module.
  * @module model/VpsTrafficUsageAverageResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsTrafficUsageAverageResponse {
     /**

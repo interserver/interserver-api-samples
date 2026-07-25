@@ -1,4 +1,4 @@
-# SwaggerClient::VpsTrafficUsageResponse
+# InterserverApiClient::VpsTrafficUsageResponse
 
 ## Properties
 Name | Type | Description | Notes

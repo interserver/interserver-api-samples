@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.captcha_response import CaptchaResponse
+from interserver_api_client.models.captcha_response import CaptchaResponse
 
 # TODO update the JSON string below
 json = "{}"

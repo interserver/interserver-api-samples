@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DnsRecord
+# InterServerAPI::Object::DnsRecord
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DnsRecord;
+use InterServerAPI::Object::DnsRecord;
 ```
 
 ## Properties

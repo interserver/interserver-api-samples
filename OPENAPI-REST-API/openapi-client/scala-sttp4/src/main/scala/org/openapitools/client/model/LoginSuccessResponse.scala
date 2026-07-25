@@ -23,4 +23,3 @@ case class LoginSuccessResponse(
   ima: Option[String] = None,
   gravatar: Option[String] = None
 )
-

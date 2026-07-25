@@ -11,4 +11,8 @@ IP Address
 |**ip** | **String** | IP Address |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

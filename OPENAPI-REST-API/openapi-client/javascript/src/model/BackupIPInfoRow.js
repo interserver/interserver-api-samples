@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BackupIPInfoRow model module.
  * @module model/BackupIPInfoRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BackupIPInfoRow {
     /**

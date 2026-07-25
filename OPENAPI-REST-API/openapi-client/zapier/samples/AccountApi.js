@@ -1,6 +1,4 @@
 module.exports = {
-    "TextResponseSample": 
-        { data: {} },
     "SuccessTextResponseSample": 
         { data: {} },
     "SuccessTextResponseSample": 

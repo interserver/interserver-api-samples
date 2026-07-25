@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServiceOrderPostResponse
+# InterserverApiClient.ServiceOrderPostResponse
 
 ## Properties
 

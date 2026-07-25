@@ -23,4 +23,3 @@ case class HomeServicesVpsLinks(
   /* Link to a VPS. */
   `2578866`: Option[String] = None
 )
-

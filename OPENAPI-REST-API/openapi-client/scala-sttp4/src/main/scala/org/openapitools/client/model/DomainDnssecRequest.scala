@@ -25,4 +25,3 @@ case class DomainDnssecRequest(
   /* List of key tag values corresponding to each record. */
   key_tag: Option[Seq[Int]] = None
 )
-

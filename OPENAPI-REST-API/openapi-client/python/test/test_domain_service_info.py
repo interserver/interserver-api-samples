@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_service_info import DomainServiceInfo
+from interserver_api_client.models.domain_service_info import DomainServiceInfo
 
 class TestDomainServiceInfo(unittest.TestCase):
     """DomainServiceInfo unit test stubs"""

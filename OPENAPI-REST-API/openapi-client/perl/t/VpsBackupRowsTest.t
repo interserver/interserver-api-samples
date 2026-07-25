@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::VpsBackupRows');
+use_ok('InterServerAPI::Object::VpsBackupRows');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::VpsBackupRows->new();
+#my $instance = InterServerAPI::Object::VpsBackupRows->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::VpsBackupRows');
+#isa_ok($instance, 'InterServerAPI::Object::VpsBackupRows');
 
 
 done_testing();

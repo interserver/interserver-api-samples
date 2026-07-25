@@ -16,4 +16,3 @@ case class UpdateTicketResponseSchema(
   success: Option[Boolean] = None,
   message: Option[String] = None
 )
-

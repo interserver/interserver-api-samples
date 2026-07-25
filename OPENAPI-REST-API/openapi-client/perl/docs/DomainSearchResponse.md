@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainSearchResponse
+# InterServerAPI::Object::DomainSearchResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainSearchResponse;
+use InterServerAPI::Object::DomainSearchResponse;
 ```
 
 ## Properties

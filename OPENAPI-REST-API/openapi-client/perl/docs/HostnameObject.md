@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::HostnameObject
+# InterServerAPI::Object::HostnameObject
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::HostnameObject;
+use InterServerAPI::Object::HostnameObject;
 ```
 
 ## Properties

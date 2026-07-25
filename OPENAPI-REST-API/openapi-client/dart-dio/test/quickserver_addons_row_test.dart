@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for QuickserverAddonsRow
 void main() {
-  final instance = QuickserverAddonsRowBuilder();
-  // TODO add properties to the builder and call build()
+  final QuickserverAddonsRow? instance = /* QuickserverAddonsRow(...) */ null;
+  // TODO add properties to the entity
 
   group(QuickserverAddonsRow, () {
     // Description
-    // String desc
+    // Optional<String?> desc
     test('to test the property `desc`', () async {
       // TODO
     });
 
     // Value
-    // String value
+    // Optional<String?> value
     test('to test the property `value`', () async {
       // TODO
     });

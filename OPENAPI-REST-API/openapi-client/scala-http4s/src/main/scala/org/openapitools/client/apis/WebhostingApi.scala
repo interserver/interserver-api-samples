@@ -31,13 +31,15 @@ import org.openapitools.client.models.WebhostingCancel200Response
 import org.openapitools.client.models.Website
 import org.openapitools.client.models.WebsiteBackups
 import org.openapitools.client.models.WebsiteLoginResponse
+import org.openapitools.client.models.WebsiteOrderPostRequest
+import org.openapitools.client.models.WebsiteOrderPutRequest
 import org.openapitools.client.models.WebsiteRow
 import org.openapitools.client.models.WebsitesOrder
 import org.openapitools.client.models.*
 
 trait WebhostingApiEndpoints[F[*]] {
 
-  def addWebsite()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
+  def addWebsite(websiteOrderPostRequest: WebsiteOrderPostRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def getNewWebsite()(using auth: _Authorization.ApiKey): F[WebsitesOrder]
   def getWebsiteBuyIp(id: Int)(using auth: _Authorization.ApiKey): F[GetWebsiteBuyIp200Response]
   def getWebsiteInfo(id: Int)(using auth: _Authorization.ApiKey): F[Website]
@@ -50,7 +52,7 @@ trait WebhostingApiEndpoints[F[*]] {
   def postWebsiteBuyIp(id: Int, postWebsiteBuyIpRequest: PostWebsiteBuyIpRequest)(using auth: _Authorization.ApiKey): F[PostWebsiteBuyIp200Response]
   def postWebsiteMigration(id: Int, postWebsiteMigrationRequest: PostWebsiteMigrationRequest)(using auth: _Authorization.ApiKey): F[PostWebsiteMigration200Response]
   def postWebsitesReverseDns(id: Int, reverseDnsEntries: ReverseDnsEntries)(using auth: _Authorization.ApiKey): F[TextResponse]
-  def putWebsites()(using auth: _Authorization.ApiKey): F[Unit]
+  def putWebsites(websiteOrderPutRequest: WebsiteOrderPutRequest)(using auth: _Authorization.ApiKey): F[Unit]
   def updateWebsiteInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def webhostingCancel(id: String)(using auth: _Authorization.ApiKey): F[WebhostingCancel200Response]
 
@@ -66,15 +68,15 @@ class WebhostingApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addWebsite()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
+  override def addWebsite(websiteOrderPostRequest: WebsiteOrderPostRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, ServiceOrderPostResponse](
+    _executeRequest[WebsiteOrderPostRequest, ServiceOrderPostResponse](
       method = "POST",
       path = s"/websites/order",
-      body = None,
+      body = Some(websiteOrderPostRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -313,15 +315,15 @@ class WebhostingApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def putWebsites()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def putWebsites(websiteOrderPutRequest: WebsiteOrderPutRequest)(using auth: _Authorization.ApiKey): F[Unit] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[WebsiteOrderPutRequest, Unit](
       method = "PUT",
       path = s"/websites/order",
-      body = None,
+      body = Some(websiteOrderPutRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,

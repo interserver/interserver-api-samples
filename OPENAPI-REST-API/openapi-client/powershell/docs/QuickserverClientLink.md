@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverClientLink = Initialize-PSOpenAPIToolsQuickserverClientLink  -Label Invoices `
+$QuickserverClientLink = Initialize-InterserverApiQuickserverClientLink  -Label Invoices `
  -Link invoices `
  -Icon fas fa-file-invoice-dollar fa-w-12 `
  -IconText  `

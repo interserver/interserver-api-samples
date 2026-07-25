@@ -1,4 +1,4 @@
-# openapi::MailBlocks
+# interserverapi::MailBlocks
 
 The listing of blocked emails.
 

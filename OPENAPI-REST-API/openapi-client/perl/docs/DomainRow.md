@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DomainRow
+# InterServerAPI::Object::DomainRow
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DomainRow;
+use InterServerAPI::Object::DomainRow;
 ```
 
 ## Properties

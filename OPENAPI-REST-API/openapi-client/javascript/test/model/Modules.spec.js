@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.Modules();
+    instance = new InterserverApiClient.Modules();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('Modules', function() {
     it('should create an instance of Modules', function() {
       // uncomment below and update the code to test Modules
-      //var instance = new InterServerManagementApi.Modules();
-      //expect(instance).to.be.a(InterServerManagementApi.Modules);
+      //var instance = new InterserverApiClient.Modules();
+      //expect(instance).to.be.a(InterserverApiClient.Modules);
     });
 
   });

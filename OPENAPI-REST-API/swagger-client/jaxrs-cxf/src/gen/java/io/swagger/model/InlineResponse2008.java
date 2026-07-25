@@ -16,46 +16,27 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class InlineResponse2008   {
   
-  @Schema(required = true, description = "")
-  private Boolean success = null;
-  
-  @Schema(required = true, description = "")
-  private String text = null;
+  @Schema(description = "Whether the 2FA verification succeeded and the user is now logged in.")
  /**
-   * Get success
-   * @return success
+   * Whether the 2FA verification succeeded and the user is now logged in.  
   **/
-  @JsonProperty("success")
-  @NotNull
-  public Boolean isSuccess() {
-    return success;
-  }
-
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  public InlineResponse2008 success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
+  private Boolean login = null;
  /**
-   * Get text
-   * @return text
+   * Whether the 2FA verification succeeded and the user is now logged in.
+   * @return login
   **/
-  @JsonProperty("text")
+  @JsonProperty("login")
   @NotNull
-  public String getText() {
-    return text;
+  public Boolean isLogin() {
+    return login;
   }
 
-  public void setText(String text) {
-    this.text = text;
+  public void setLogin(Boolean login) {
+    this.login = login;
   }
 
-  public InlineResponse2008 text(String text) {
-    this.text = text;
+  public InlineResponse2008 login(Boolean login) {
+    this.login = login;
     return this;
   }
 
@@ -65,8 +46,7 @@ public class InlineResponse2008   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2008 {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
-    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    login: ").append(toIndentedString(login)).append("\n");
     sb.append("}");
     return sb.toString();
   }

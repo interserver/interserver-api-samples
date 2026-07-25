@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.InitiatePayment200Response();
+    instance = new InterserverApiClient.InitiatePayment200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('InitiatePayment200Response', function() {
     it('should create an instance of InitiatePayment200Response', function() {
       // uncomment below and update the code to test InitiatePayment200Response
-      //var instance = new InterServerManagementApi.InitiatePayment200Response();
-      //expect(instance).to.be.a(InterServerManagementApi.InitiatePayment200Response);
+      //var instance = new InterserverApiClient.InitiatePayment200Response();
+      //expect(instance).to.be.a(InterserverApiClient.InitiatePayment200Response);
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.InitiatePayment200Response();
+      //var instance = new InterserverApiClient.InitiatePayment200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property redirect (base name: "redirect")', function() {
       // uncomment below and update the code to test the property redirect
-      //var instance = new InterServerManagementApi.InitiatePayment200Response();
+      //var instance = new InterserverApiClient.InitiatePayment200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property action (base name: "action")', function() {
       // uncomment below and update the code to test the property action
-      //var instance = new InterServerManagementApi.InitiatePayment200Response();
+      //var instance = new InterserverApiClient.InitiatePayment200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property method (base name: "method")', function() {
       // uncomment below and update the code to test the property method
-      //var instance = new InterServerManagementApi.InitiatePayment200Response();
+      //var instance = new InterserverApiClient.InitiatePayment200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property items (base name: "items")', function() {
       // uncomment below and update the code to test the property items
-      //var instance = new InterServerManagementApi.InitiatePayment200Response();
+      //var instance = new InterserverApiClient.InitiatePayment200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.InitiatePayment200Response();
+      //var instance = new InterserverApiClient.InitiatePayment200Response();
       //expect(instance).to.be();
     });
 

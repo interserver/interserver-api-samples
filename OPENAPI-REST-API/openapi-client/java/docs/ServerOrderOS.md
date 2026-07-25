@@ -19,4 +19,8 @@ An operating system option available when ordering a dedicated server.
 |**monthlyPriceDisplay** | **String** | Display of monthly OS price. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

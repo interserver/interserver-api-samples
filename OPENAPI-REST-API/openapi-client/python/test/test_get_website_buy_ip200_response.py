@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_website_buy_ip200_response import GetWebsiteBuyIp200Response
+from interserver_api_client.models.get_website_buy_ip200_response import GetWebsiteBuyIp200Response
 
 class TestGetWebsiteBuyIp200Response(unittest.TestCase):
     """GetWebsiteBuyIp200Response unit test stubs"""

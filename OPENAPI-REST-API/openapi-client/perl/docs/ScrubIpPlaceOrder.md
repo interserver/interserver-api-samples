@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ScrubIpPlaceOrder
+# InterServerAPI::Object::ScrubIpPlaceOrder
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ScrubIpPlaceOrder;
+use InterServerAPI::Object::ScrubIpPlaceOrder;
 ```
 
 ## Properties

@@ -13,4 +13,8 @@ Map of webhosting service IDs to their hostnames for the account dashboard.
 |**_386218** | **String** | Link to a website. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The QuickserversCancel200Response model module.
  * @module model/QuickserversCancel200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserversCancel200Response {
     /**

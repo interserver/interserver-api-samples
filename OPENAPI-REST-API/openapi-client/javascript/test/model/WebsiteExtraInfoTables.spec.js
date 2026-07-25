@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.WebsiteExtraInfoTables();
+    instance = new InterserverApiClient.WebsiteExtraInfoTables();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('WebsiteExtraInfoTables', function() {
     it('should create an instance of WebsiteExtraInfoTables', function() {
       // uncomment below and update the code to test WebsiteExtraInfoTables
-      //var instance = new InterServerManagementApi.WebsiteExtraInfoTables();
-      //expect(instance).to.be.a(InterServerManagementApi.WebsiteExtraInfoTables);
+      //var instance = new InterserverApiClient.WebsiteExtraInfoTables();
+      //expect(instance).to.be.a(InterserverApiClient.WebsiteExtraInfoTables);
     });
 
     it('should have the property links (base name: "links")', function() {
       // uncomment below and update the code to test the property links
-      //var instance = new InterServerManagementApi.WebsiteExtraInfoTables();
+      //var instance = new InterserverApiClient.WebsiteExtraInfoTables();
       //expect(instance).to.be();
     });
 
     it('should have the property preview (base name: "preview")', function() {
       // uncomment below and update the code to test the property preview
-      //var instance = new InterServerManagementApi.WebsiteExtraInfoTables();
+      //var instance = new InterserverApiClient.WebsiteExtraInfoTables();
       //expect(instance).to.be();
     });
 
     it('should have the property dns (base name: "dns")', function() {
       // uncomment below and update the code to test the property dns
-      //var instance = new InterServerManagementApi.WebsiteExtraInfoTables();
+      //var instance = new InterserverApiClient.WebsiteExtraInfoTables();
       //expect(instance).to.be();
     });
 

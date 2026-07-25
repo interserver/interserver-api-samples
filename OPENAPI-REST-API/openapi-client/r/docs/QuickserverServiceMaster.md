@@ -1,4 +1,4 @@
-# openapi::QuickserverServiceMaster
+# interserverapi::QuickserverServiceMaster
 
 Information about the host node running this QuickServer, including hardware specs and resource utilization.
 

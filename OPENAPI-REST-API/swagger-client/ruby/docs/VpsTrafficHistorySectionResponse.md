@@ -1,4 +1,4 @@
-# SwaggerClient::VpsTrafficHistorySectionResponse
+# InterserverApiClient::VpsTrafficHistorySectionResponse
 
 ## Properties
 Name | Type | Description | Notes

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerNetworkInfo();
+    instance = new InterserverApiClient.ServerNetworkInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('ServerNetworkInfo', function() {
     it('should create an instance of ServerNetworkInfo', function() {
       // uncomment below and update the code to test ServerNetworkInfo
-      //var instance = new InterServerManagementApi.ServerNetworkInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerNetworkInfo);
+      //var instance = new InterserverApiClient.ServerNetworkInfo();
+      //expect(instance).to.be.a(InterserverApiClient.ServerNetworkInfo);
     });
 
     it('should have the property vlans (base name: "vlans")', function() {
       // uncomment below and update the code to test the property vlans
-      //var instance = new InterServerManagementApi.ServerNetworkInfo();
+      //var instance = new InterserverApiClient.ServerNetworkInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property vlans6 (base name: "vlans6")', function() {
       // uncomment below and update the code to test the property vlans6
-      //var instance = new InterServerManagementApi.ServerNetworkInfo();
+      //var instance = new InterserverApiClient.ServerNetworkInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property assets (base name: "assets")', function() {
       // uncomment below and update the code to test the property assets
-      //var instance = new InterServerManagementApi.ServerNetworkInfo();
+      //var instance = new InterserverApiClient.ServerNetworkInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property switchports (base name: "switchports")', function() {
       // uncomment below and update the code to test the property switchports
-      //var instance = new InterServerManagementApi.ServerNetworkInfo();
+      //var instance = new InterserverApiClient.ServerNetworkInfo();
       //expect(instance).to.be();
     });
 

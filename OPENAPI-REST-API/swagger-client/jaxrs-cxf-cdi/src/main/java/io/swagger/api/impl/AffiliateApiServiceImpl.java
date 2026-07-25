@@ -9,6 +9,7 @@ import io.swagger.model.AffiliateBannerRow;
 import io.swagger.model.AffiliateDockSetup;
 import io.swagger.model.AffiliatePaymentSetup;
 import io.swagger.model.AffiliateTrafficRow;
+import io.swagger.model.InlineResponse2001;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.MonthlyCounts;
 import io.swagger.model.StatusMonthlyBreakdown;
@@ -31,6 +32,11 @@ public class AffiliateApiServiceImpl implements AffiliateApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
+      public Response getAffiliateDownload(String st, String ex, Integer year, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
       public Response getAffiliateRichReport(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
@@ -41,7 +47,7 @@ public class AffiliateApiServiceImpl implements AffiliateApiService {
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response getAffiliateSalesReport(SecurityContext securityContext) {
+      public Response getAffiliateSignups(String st, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -62,16 +68,6 @@ public class AffiliateApiServiceImpl implements AffiliateApiService {
   }
       @Override
       public Response updateAffiliateDockSetup(AffiliateDockSetup body, SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().entity("magic!").build();
-  }
-      @Override
-      public Response updateAffiliateLandingPage(String affiliateDockTitle, String affiliateDockDescription, String referrerCoupon, SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().entity("magic!").build();
-  }
-      @Override
-      public Response updateAffiliateLandingPage(AffiliateDockSetup body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

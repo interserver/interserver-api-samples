@@ -12,4 +12,8 @@ Payload for adding a registered nameserver (glue record).
 |**ipAddress** | **String** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

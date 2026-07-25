@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicenseServiceInfo = Initialize-PSOpenAPIToolsLicenseServiceInfo  -LicenseId 386522 `
+$LicenseServiceInfo = Initialize-InterserverApiLicenseServiceInfo  -LicenseId 386522 `
  -LicenseType 5034 `
  -LicenseCurrency USD `
  -LicenseOrderDate 2020-01-14T10:48:14Z `

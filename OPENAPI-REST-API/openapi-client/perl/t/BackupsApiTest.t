@@ -24,10 +24,10 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::BackupsApi');
+use_ok('InterServerAPI::BackupsApi');
 
-my $api = OpenAPIClient::BackupsApi->new();
-isa_ok($api, 'OpenAPIClient::BackupsApi');
+my $api = InterServerAPI::BackupsApi->new();
+isa_ok($api, 'InterServerAPI::BackupsApi');
 
 #
 # add_backup test

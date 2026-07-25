@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class QuickserverOrderTemplates(
   Ubuntu: Option[QuickserverOrderTemplatesUbuntu64] = None
 )
-

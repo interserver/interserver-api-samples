@@ -31,12 +31,28 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20016" /> class.
         /// </summary>
-        /// <param name="success">success.</param>
-        /// <param name="text">text.</param>
+        /// <param name="success">success (required).</param>
+        /// <param name="text">text (required).</param>
         public InlineResponse20016(bool? success = default(bool?), string text = default(string))
         {
-            this.success = success;
-            this.text = text;
+            // to ensure "success" is required (not null)
+            if (success == null)
+            {
+                throw new InvalidDataException("success is a required property for InlineResponse20016 and cannot be null");
+            }
+            else
+            {
+                this.success = success;
+            }
+            // to ensure "text" is required (not null)
+            if (text == null)
+            {
+                throw new InvalidDataException("text is a required property for InlineResponse20016 and cannot be null");
+            }
+            else
+            {
+                this.text = text;
+            }
         }
         
         /// <summary>

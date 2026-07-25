@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsOrderOsNames model module.
  * @module model/VpsOrderOsNames
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderOsNames {
     /**

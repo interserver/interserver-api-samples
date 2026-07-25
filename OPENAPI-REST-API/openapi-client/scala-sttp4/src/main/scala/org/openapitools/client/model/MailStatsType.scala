@@ -26,18 +26,44 @@ case class MailStatsType(
   sent: Option[Int] = None,
   volume: Option[MailStatsTypeVolume] = None
 )
-
 object MailStatsTypeEnums {
 
-  type Time = Time.Value
-  object Time extends Enumeration {
-    val All = Value("all")
-    val Billing = Value("billing")
-    val Month = Value("month")
-    val `7d` = Value("7d")
-    val `24h` = Value("24h")
-    val Today = Value("today")
-    val `1h` = Value("1h")
-  }
+  sealed trait Time
+  object Time {
+    case object All extends Time
+    case object Billing extends Time
+    case object Month extends Time
+    case object `7d` extends Time
+    case object `24h` extends Time
+    case object Today extends Time
+    case object `1h` extends Time
 
+    import org.json4s._
+
+    implicit object TimeSerializer extends Serializer[Time] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), Time] = {
+        case (TypeInfo(clazz, _), json) if classOf[Time].isAssignableFrom(clazz) =>
+          json match {
+            case JString("all") => All
+            case JString("billing") => Billing
+            case JString("month") => Month
+            case JString("7d") => `7d`
+            case JString("24h") => `24h`
+            case JString("today") => Today
+            case JString("1h") => `1h`
+            case other => throw new MappingException(s"Invalid Time: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case All => JString("all")
+        case Billing => JString("billing")
+        case Month => JString("month")
+        case `7d` => JString("7d")
+        case `24h` => JString("24h")
+        case Today => JString("today")
+        case `1h` => JString("1h")
+      }
+    }
+  }
 }

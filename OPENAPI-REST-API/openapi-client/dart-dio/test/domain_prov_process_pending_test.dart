@@ -1,48 +1,48 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainProvProcessPending
 void main() {
-  final instance = DomainProvProcessPendingBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainProvProcessPending? instance = /* DomainProvProcessPending(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainProvProcessPending, () {
-    // String oPSVersion
+    // Optional<String?> oPSVersion
     test('to test the property `oPSVersion`', () async {
       // TODO
     });
 
-    // String responseText
+    // Optional<String?> responseText
     test('to test the property `responseText`', () async {
       // TODO
     });
 
-    // String protocol
+    // Optional<String?> protocol
     test('to test the property `protocol`', () async {
       // TODO
     });
 
-    // String responseCode
+    // Optional<String?> responseCode
     test('to test the property `responseCode`', () async {
       // TODO
     });
 
-    // String action
+    // Optional<String?> action
     test('to test the property `action`', () async {
       // TODO
     });
 
-    // String object
+    // Optional<String?> object
     test('to test the property `object`', () async {
       // TODO
     });
 
-    // String isSuccess
+    // Optional<String?> isSuccess
     test('to test the property `isSuccess`', () async {
       // TODO
     });
 
-    // DomainProvProcessPendingAttributes attributes
+    // Optional<DomainProvProcessPendingAttributes?> attributes
     test('to test the property `attributes`', () async {
       // TODO
     });

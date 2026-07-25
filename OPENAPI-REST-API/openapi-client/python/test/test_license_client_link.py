@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.license_client_link import LicenseClientLink
+from interserver_api_client.models.license_client_link import LicenseClientLink
 
 class TestLicenseClientLink(unittest.TestCase):
     """LicenseClientLink unit test stubs"""

@@ -69,7 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddLicenseTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.AddLicense();
+            //LicenseOrderRequest body = null;
+            //var response = instance.AddLicense(body);
             //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
@@ -105,17 +106,6 @@ namespace Interserver.MyAdmin.Client.Test
             //Assert.IsInstanceOf<List<LicenseRow>> (response, "response is List<LicenseRow>");
         }
         /// <summary>
-        /// Test GetLicenseOrderCatTagInfo
-        /// </summary>
-        [Test]
-        public void GetLicenseOrderCatTagInfoTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string catTag = null;
-            //instance.GetLicenseOrderCatTagInfo(catTag);
-            
-        }
-        /// <summary>
         /// Test GetLicensesWelcomeEmail
         /// </summary>
         [Test]
@@ -145,7 +135,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.LicensesCancel(id);
-            //Assert.IsInstanceOf<InlineResponse2004> (response, "response is InlineResponse2004");
+            //Assert.IsInstanceOf<InlineResponse2005> (response, "response is InlineResponse2005");
         }
         /// <summary>
         /// Test PostLicenseChangeIp
@@ -166,7 +156,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void PutLicensesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PutLicenses();
+            //LicenseOrderRequest body = null;
+            //instance.PutLicenses(body);
             
         }
         /// <summary>

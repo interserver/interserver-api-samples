@@ -1,12 +1,5 @@
 package io.swagger.model;
 
-import io.swagger.model.InlineResponse20027Bandwidth;
-import io.swagger.model.InlineResponse20027Cp;
-import io.swagger.model.InlineResponse20027Ips;
-import io.swagger.model.InlineResponse20027Os;
-import io.swagger.model.InlineResponse20027Raid;
-import java.util.ArrayList;
-import java.util.List;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,136 +17,45 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class InlineResponse20027   {
   
   @Schema(description = "")
-  private List<InlineResponse20027Bandwidth> bandwidth = null;
+  private String message = null;
   
   @Schema(description = "")
-  private List<InlineResponse20027Ips> ips = null;
-  
-  @Schema(description = "")
-  private List<InlineResponse20027Os> os = null;
-  
-  @Schema(description = "")
-  private List<InlineResponse20027Cp> cp = null;
-  
-  @Schema(description = "")
-  private List<InlineResponse20027Raid> raid = null;
+  private Boolean success = null;
  /**
-   * Get bandwidth
-   * @return bandwidth
+   * Get message
+   * @return message
   **/
-  @JsonProperty("bandwidth")
+  @JsonProperty("message")
   @NotNull
-  public List<InlineResponse20027Bandwidth> getBandwidth() {
-    return bandwidth;
+  public String getMessage() {
+    return message;
   }
 
-  public void setBandwidth(List<InlineResponse20027Bandwidth> bandwidth) {
-    this.bandwidth = bandwidth;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
-  public InlineResponse20027 bandwidth(List<InlineResponse20027Bandwidth> bandwidth) {
-    this.bandwidth = bandwidth;
-    return this;
-  }
-
-  public InlineResponse20027 addBandwidthItem(InlineResponse20027Bandwidth bandwidthItem) {
-    this.bandwidth.add(bandwidthItem);
+  public InlineResponse20027 message(String message) {
+    this.message = message;
     return this;
   }
 
  /**
-   * Get ips
-   * @return ips
+   * Get success
+   * @return success
   **/
-  @JsonProperty("ips")
+  @JsonProperty("success")
   @NotNull
-  public List<InlineResponse20027Ips> getIps() {
-    return ips;
+  public Boolean isSuccess() {
+    return success;
   }
 
-  public void setIps(List<InlineResponse20027Ips> ips) {
-    this.ips = ips;
+  public void setSuccess(Boolean success) {
+    this.success = success;
   }
 
-  public InlineResponse20027 ips(List<InlineResponse20027Ips> ips) {
-    this.ips = ips;
-    return this;
-  }
-
-  public InlineResponse20027 addIpsItem(InlineResponse20027Ips ipsItem) {
-    this.ips.add(ipsItem);
-    return this;
-  }
-
- /**
-   * Get os
-   * @return os
-  **/
-  @JsonProperty("os")
-  @NotNull
-  public List<InlineResponse20027Os> getOs() {
-    return os;
-  }
-
-  public void setOs(List<InlineResponse20027Os> os) {
-    this.os = os;
-  }
-
-  public InlineResponse20027 os(List<InlineResponse20027Os> os) {
-    this.os = os;
-    return this;
-  }
-
-  public InlineResponse20027 addOsItem(InlineResponse20027Os osItem) {
-    this.os.add(osItem);
-    return this;
-  }
-
- /**
-   * Get cp
-   * @return cp
-  **/
-  @JsonProperty("cp")
-  @NotNull
-  public List<InlineResponse20027Cp> getCp() {
-    return cp;
-  }
-
-  public void setCp(List<InlineResponse20027Cp> cp) {
-    this.cp = cp;
-  }
-
-  public InlineResponse20027 cp(List<InlineResponse20027Cp> cp) {
-    this.cp = cp;
-    return this;
-  }
-
-  public InlineResponse20027 addCpItem(InlineResponse20027Cp cpItem) {
-    this.cp.add(cpItem);
-    return this;
-  }
-
- /**
-   * Get raid
-   * @return raid
-  **/
-  @JsonProperty("raid")
-  @NotNull
-  public List<InlineResponse20027Raid> getRaid() {
-    return raid;
-  }
-
-  public void setRaid(List<InlineResponse20027Raid> raid) {
-    this.raid = raid;
-  }
-
-  public InlineResponse20027 raid(List<InlineResponse20027Raid> raid) {
-    this.raid = raid;
-    return this;
-  }
-
-  public InlineResponse20027 addRaidItem(InlineResponse20027Raid raidItem) {
-    this.raid.add(raidItem);
+  public InlineResponse20027 success(Boolean success) {
+    this.success = success;
     return this;
   }
 
@@ -163,11 +65,8 @@ public class InlineResponse20027   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20027 {\n");
     
-    sb.append("    bandwidth: ").append(toIndentedString(bandwidth)).append("\n");
-    sb.append("    ips: ").append(toIndentedString(ips)).append("\n");
-    sb.append("    os: ").append(toIndentedString(os)).append("\n");
-    sb.append("    cp: ").append(toIndentedString(cp)).append("\n");
-    sb.append("    raid: ").append(toIndentedString(raid)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("}");
     return sb.toString();
   }

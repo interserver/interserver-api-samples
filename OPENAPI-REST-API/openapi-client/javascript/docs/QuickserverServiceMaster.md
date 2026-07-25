@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverServiceMaster
+# InterserverApiClient.QuickserverServiceMaster
 
 ## Properties
 

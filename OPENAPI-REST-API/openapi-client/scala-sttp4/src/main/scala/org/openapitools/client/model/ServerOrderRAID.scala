@@ -35,4 +35,3 @@ case class ServerOrderRAID(
   /* Display of monthly RAID price. */
   monthly_price_display: Option[String] = None
 )
-

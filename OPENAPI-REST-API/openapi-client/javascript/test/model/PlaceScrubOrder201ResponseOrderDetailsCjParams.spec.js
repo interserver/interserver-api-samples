@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams();
+    instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('PlaceScrubOrder201ResponseOrderDetailsCjParams', function() {
     it('should create an instance of PlaceScrubOrder201ResponseOrderDetailsCjParams', function() {
       // uncomment below and update the code to test PlaceScrubOrder201ResponseOrderDetailsCjParams
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams();
-      //expect(instance).to.be.a(InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams);
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams();
+      //expect(instance).to.be.a(InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams);
     });
 
     it('should have the property containerTagId (base name: "containerTagId")', function() {
       // uncomment below and update the code to test the property containerTagId
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams();
       //expect(instance).to.be();
     });
 
     it('should have the property CID (base name: "CID")', function() {
       // uncomment below and update the code to test the property CID
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams();
       //expect(instance).to.be();
     });
 
     it('should have the property OID (base name: "OID")', function() {
       // uncomment below and update the code to test the property OID
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams();
       //expect(instance).to.be();
     });
 
     it('should have the property TYPE (base name: "TYPE")', function() {
       // uncomment below and update the code to test the property TYPE
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams();
       //expect(instance).to.be();
     });
 
     it('should have the property ITEM1 (base name: "ITEM1")', function() {
       // uncomment below and update the code to test the property ITEM1
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams();
       //expect(instance).to.be();
     });
 
     it('should have the property AMT1 (base name: "AMT1")', function() {
       // uncomment below and update the code to test the property AMT1
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams();
       //expect(instance).to.be();
     });
 
     it('should have the property QTY1 (base name: "QTY1")', function() {
       // uncomment below and update the code to test the property QTY1
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams();
       //expect(instance).to.be();
     });
 
     it('should have the property CURRENCY (base name: "CURRENCY")', function() {
       // uncomment below and update the code to test the property CURRENCY
-      //var instance = new InterServerManagementApi.PlaceScrubOrder201ResponseOrderDetailsCjParams();
+      //var instance = new InterserverApiClient.PlaceScrubOrder201ResponseOrderDetailsCjParams();
       //expect(instance).to.be();
     });
 

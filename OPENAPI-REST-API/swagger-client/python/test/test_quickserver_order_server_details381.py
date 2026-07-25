@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.quickserver_order_server_details381 import QuickserverOrderServerDetails381  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.quickserver_order_server_details381 import QuickserverOrderServerDetails381  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestQuickserverOrderServerDetails381(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestQuickserverOrderServerDetails381(unittest.TestCase):
     def testQuickserverOrderServerDetails381(self):
         """Test QuickserverOrderServerDetails381"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.quickserver_order_server_details381.QuickserverOrderServerDetails381()  # noqa: E501
+        # model = interserver_api_client.models.quickserver_order_server_details381.QuickserverOrderServerDetails381()  # noqa: E501
         pass
 
 

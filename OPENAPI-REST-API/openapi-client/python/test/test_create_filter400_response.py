@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.create_filter400_response import CreateFilter400Response
+from interserver_api_client.models.create_filter400_response import CreateFilter400Response
 
 class TestCreateFilter400Response(unittest.TestCase):
     """CreateFilter400Response unit test stubs"""

@@ -35,7 +35,8 @@ import myadmin-client-kotlin-server.infrastructure.ApiPrincipal
 
 
 import io.swagger.server.models.ChargeInvoiceRows
-import io.swagger.server.models.InlineResponse2003
+import io.swagger.server.models.FloatingIpOrderRequest
+import io.swagger.server.models.InlineResponse2004
 import io.swagger.server.models.InlineResponse401
 import io.swagger.server.models.IpObject
 import io.swagger.server.models.ServiceOrderPostResponse

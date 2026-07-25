@@ -12,4 +12,8 @@ VPS Traffic Data Section Response
 |**data** | **List&lt;VPSTrafficDataDataSectionResponse&gt;** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

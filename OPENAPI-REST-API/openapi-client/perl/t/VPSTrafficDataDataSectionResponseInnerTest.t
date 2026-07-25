@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::VPSTrafficDataDataSectionResponseInner');
+use_ok('InterServerAPI::Object::VPSTrafficDataDataSectionResponseInner');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::VPSTrafficDataDataSectionResponseInner->new();
+#my $instance = InterServerAPI::Object::VPSTrafficDataDataSectionResponseInner->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::VPSTrafficDataDataSectionResponseInner');
+#isa_ok($instance, 'InterServerAPI::Object::VPSTrafficDataDataSectionResponseInner');
 
 
 done_testing();

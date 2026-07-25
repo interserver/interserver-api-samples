@@ -1,28 +1,28 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DomainDnssecRecordsInner
 void main() {
-  final instance = DomainDnssecRecordsInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final DomainDnssecRecordsInner? instance = /* DomainDnssecRecordsInner(...) */ null;
+  // TODO add properties to the entity
 
   group(DomainDnssecRecordsInner, () {
-    // String algorithm
+    // Optional<String?> algorithm
     test('to test the property `algorithm`', () async {
       // TODO
     });
 
-    // String digestType
+    // Optional<String?> digestType
     test('to test the property `digestType`', () async {
       // TODO
     });
 
-    // String digest
+    // Optional<String?> digest
     test('to test the property `digest`', () async {
       // TODO
     });
 
-    // String keyTag
+    // Optional<String?> keyTag
     test('to test the property `keyTag`', () async {
       // TODO
     });

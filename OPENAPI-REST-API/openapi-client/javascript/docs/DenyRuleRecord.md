@@ -1,4 +1,4 @@
-# InterServerManagementApi.DenyRuleRecord
+# InterserverApiClient.DenyRuleRecord
 
 ## Properties
 
@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 * `startswith` (value: `"startswith"`)
 
 * `destination` (value: `"destination"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 
 

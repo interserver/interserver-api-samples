@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ScrubIpPlaceOrder = Initialize-PSOpenAPIToolsScrubIpPlaceOrder  -ServiceType 102 `
+$ScrubIpPlaceOrder = Initialize-InterserverApiScrubIpPlaceOrder  -ServiceType 102 `
  -Ip 1.2.3.4
 ```
 

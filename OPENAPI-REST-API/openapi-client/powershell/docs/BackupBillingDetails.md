@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupBillingDetails = Initialize-PSOpenAPIToolsBackupBillingDetails  -ServiceLastInvoiceDate December 29, 2021 `
+$BackupBillingDetails = Initialize-InterserverApiBackupBillingDetails  -ServiceLastInvoiceDate December 29, 2021 `
  -ServicePaymentStatus Paid `
  -ServiceFrequency Monthly `
  -NextDate 2022-01-29T14:09:57.000Z `

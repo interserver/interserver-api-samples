@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderControlPanel } from './api';
+import { ServerOrderControlPanel } from '@interserver/myadmin-client';
 
 const instance: ServerOrderControlPanel = {
     id,

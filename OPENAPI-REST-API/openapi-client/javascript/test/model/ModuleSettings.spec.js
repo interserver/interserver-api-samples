@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ModuleSettings();
+    instance = new InterserverApiClient.ModuleSettings();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,115 +50,115 @@
   describe('ModuleSettings', function() {
     it('should create an instance of ModuleSettings', function() {
       // uncomment below and update the code to test ModuleSettings
-      //var instance = new InterServerManagementApi.ModuleSettings();
-      //expect(instance).to.be.a(InterServerManagementApi.ModuleSettings);
+      //var instance = new InterserverApiClient.ModuleSettings();
+      //expect(instance).to.be.a(InterserverApiClient.ModuleSettings);
     });
 
     it('should have the property SERVICE_ID_OFFSET (base name: "SERVICE_ID_OFFSET")', function() {
       // uncomment below and update the code to test the property SERVICE_ID_OFFSET
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property USE_REPEAT_INVOICE (base name: "USE_REPEAT_INVOICE")', function() {
       // uncomment below and update the code to test the property USE_REPEAT_INVOICE
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property USE_PACKAGES (base name: "USE_PACKAGES")', function() {
       // uncomment below and update the code to test the property USE_PACKAGES
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property BILLING_DAYS_OFFSET (base name: "BILLING_DAYS_OFFSET")', function() {
       // uncomment below and update the code to test the property BILLING_DAYS_OFFSET
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property IMGNAME (base name: "IMGNAME")', function() {
       // uncomment below and update the code to test the property IMGNAME
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property REPEAT_BILLING_METHOD (base name: "REPEAT_BILLING_METHOD")', function() {
       // uncomment below and update the code to test the property REPEAT_BILLING_METHOD
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property DELETE_PENDING_DAYS (base name: "DELETE_PENDING_DAYS")', function() {
       // uncomment below and update the code to test the property DELETE_PENDING_DAYS
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property SUSPEND_DAYS (base name: "SUSPEND_DAYS")', function() {
       // uncomment below and update the code to test the property SUSPEND_DAYS
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property SUSPEND_WARNING_DAYS (base name: "SUSPEND_WARNING_DAYS")', function() {
       // uncomment below and update the code to test the property SUSPEND_WARNING_DAYS
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property TITLE (base name: "TITLE")', function() {
       // uncomment below and update the code to test the property TITLE
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property MENUNAME (base name: "MENUNAME")', function() {
       // uncomment below and update the code to test the property MENUNAME
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property EMAIL_FROM (base name: "EMAIL_FROM")', function() {
       // uncomment below and update the code to test the property EMAIL_FROM
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property TBLNAME (base name: "TBLNAME")', function() {
       // uncomment below and update the code to test the property TBLNAME
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property TABLE (base name: "TABLE")', function() {
       // uncomment below and update the code to test the property TABLE
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property TITLE_FIELD (base name: "TITLE_FIELD")', function() {
       // uncomment below and update the code to test the property TITLE_FIELD
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property PREFIX (base name: "PREFIX")', function() {
       // uncomment below and update the code to test the property PREFIX
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property TITLE_FIELD2 (base name: "TITLE_FIELD2")', function() {
       // uncomment below and update the code to test the property TITLE_FIELD2
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 
     it('should have the property TITLE_FIELD3 (base name: "TITLE_FIELD3")', function() {
       // uncomment below and update the code to test the property TITLE_FIELD3
-      //var instance = new InterServerManagementApi.ModuleSettings();
+      //var instance = new InterserverApiClient.ModuleSettings();
       //expect(instance).to.be();
     });
 

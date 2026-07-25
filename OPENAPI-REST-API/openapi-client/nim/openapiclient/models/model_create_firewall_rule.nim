@@ -16,10 +16,12 @@ import options
 type ProtocolId* {.pure.} = enum
   `1`
   `2`
+  UnknownDefaultOpenApi
 
 type XdpAction* {.pure.} = enum
   `0`
   `1`
+  UnknownDefaultOpenApi
 
 type CreateFirewallRule* = object
   ## Create firewall rule for your ip
@@ -33,10 +35,12 @@ func `%`*(v: ProtocolId): JsonNode =
   result = case v:
     of ProtocolId.`1`: %"1"
     of ProtocolId.`2`: %"2"
+    of ProtocolId.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: ProtocolId): string =
   result = case v:
     of ProtocolId.`1`: $("1")
     of ProtocolId.`2`: $("2")
+    of ProtocolId.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[ProtocolId]): ProtocolId =
   if node.kind != JString:
@@ -47,6 +51,8 @@ proc to*(node: JsonNode, T: typedesc[ProtocolId]): ProtocolId =
     return ProtocolId.`1`
   of $("2"):
     return ProtocolId.`2`
+  of $("11184809"):
+    return ProtocolId.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for ProtocolId: " & strVal)
 
@@ -54,10 +60,12 @@ func `%`*(v: XdpAction): JsonNode =
   result = case v:
     of XdpAction.`0`: %"0"
     of XdpAction.`1`: %"1"
+    of XdpAction.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: XdpAction): string =
   result = case v:
     of XdpAction.`0`: $("0")
     of XdpAction.`1`: $("1")
+    of XdpAction.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[XdpAction]): XdpAction =
   if node.kind != JString:
@@ -68,6 +76,8 @@ proc to*(node: JsonNode, T: typedesc[XdpAction]): XdpAction =
     return XdpAction.`0`
   of $("1"):
     return XdpAction.`1`
+  of $("11184809"):
+    return XdpAction.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for XdpAction: " & strVal)
 

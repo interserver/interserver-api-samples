@@ -1,18 +1,18 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsOrderOsNames
 void main() {
-  final instance = VpsOrderOsNamesBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsOrderOsNames? instance = /* VpsOrderOsNames(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsOrderOsNames, () {
-    // String opensuse
+    // Optional<String?> opensuse
     test('to test the property `opensuse`', () async {
       // TODO
     });
 
-    // String ubuntu
+    // Optional<String?> ubuntu
     test('to test the property `ubuntu`', () async {
       // TODO
     });

@@ -1,4 +1,4 @@
-# SwaggerClient::IpObject
+# InterserverApiClient::IpObject
 
 ## Properties
 Name | Type | Description | Notes

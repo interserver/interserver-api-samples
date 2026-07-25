@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainOwnerContact = Initialize-PSOpenAPIToolsDomainOwnerContact  -PostalCode null `
+$DomainOwnerContact = Initialize-InterserverApiDomainOwnerContact  -PostalCode null `
  -OrgName null `
  -Country null `
  -Status null `

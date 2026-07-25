@@ -1,4 +1,4 @@
-# openapi::BillingVerifyCcRequest
+# interserverapi::BillingVerifyCcRequest
 
 Payload for verifying a credit card through the verification flow.
 

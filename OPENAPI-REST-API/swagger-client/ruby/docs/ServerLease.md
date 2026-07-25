@@ -1,4 +1,4 @@
-# SwaggerClient::ServerLease
+# InterserverApiClient::ServerLease
 
 ## Properties
 Name | Type | Description | Notes

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsOrderServiceTypes32();
+    instance = new InterserverApiClient.VpsOrderServiceTypes32();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,61 +50,61 @@
   describe('VpsOrderServiceTypes32', function() {
     it('should create an instance of VpsOrderServiceTypes32', function() {
       // uncomment below and update the code to test VpsOrderServiceTypes32
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes32();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsOrderServiceTypes32);
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes32();
+      //expect(instance).to.be.a(InterserverApiClient.VpsOrderServiceTypes32);
     });
 
     it('should have the property services_id (base name: "services_id")', function() {
       // uncomment below and update the code to test the property services_id
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes32();
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes32();
       //expect(instance).to.be();
     });
 
     it('should have the property services_name (base name: "services_name")', function() {
       // uncomment below and update the code to test the property services_name
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes32();
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes32();
       //expect(instance).to.be();
     });
 
     it('should have the property services_cost (base name: "services_cost")', function() {
       // uncomment below and update the code to test the property services_cost
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes32();
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes32();
       //expect(instance).to.be();
     });
 
     it('should have the property services_category (base name: "services_category")', function() {
       // uncomment below and update the code to test the property services_category
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes32();
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes32();
       //expect(instance).to.be();
     });
 
     it('should have the property services_buyable (base name: "services_buyable")', function() {
       // uncomment below and update the code to test the property services_buyable
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes32();
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes32();
       //expect(instance).to.be();
     });
 
     it('should have the property services_type (base name: "services_type")', function() {
       // uncomment below and update the code to test the property services_type
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes32();
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes32();
       //expect(instance).to.be();
     });
 
     it('should have the property services_field1 (base name: "services_field1")', function() {
       // uncomment below and update the code to test the property services_field1
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes32();
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes32();
       //expect(instance).to.be();
     });
 
     it('should have the property services_field2 (base name: "services_field2")', function() {
       // uncomment below and update the code to test the property services_field2
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes32();
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes32();
       //expect(instance).to.be();
     });
 
     it('should have the property services_module (base name: "services_module")', function() {
       // uncomment below and update the code to test the property services_module
-      //var instance = new InterServerManagementApi.VpsOrderServiceTypes32();
+      //var instance = new InterserverApiClient.VpsOrderServiceTypes32();
       //expect(instance).to.be();
     });
 

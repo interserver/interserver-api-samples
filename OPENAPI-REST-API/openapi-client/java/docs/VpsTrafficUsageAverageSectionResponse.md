@@ -13,4 +13,8 @@ VPS Traffic Usage Average Section Response
 |**value** | **Integer** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

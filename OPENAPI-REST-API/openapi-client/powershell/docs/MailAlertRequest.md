@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailAlertRequest = Initialize-PSOpenAPIToolsMailAlertRequest  -Type null `
+$MailAlertRequest = Initialize-InterserverApiMailAlertRequest  -Type null `
  -Value null `
  -To null `
  -Enabled null

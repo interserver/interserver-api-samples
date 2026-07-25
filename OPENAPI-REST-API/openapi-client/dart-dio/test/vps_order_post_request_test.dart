@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsOrderPostRequest
 void main() {
-  final instance = VpsOrderPostRequestBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsOrderPostRequest? instance = /* VpsOrderPostRequest(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsOrderPostRequest, () {
     // OS Distribution
@@ -56,19 +56,19 @@ void main() {
     });
 
     // Control Panel
-    // String controlpanel
+    // Optional<String?> controlpanel
     test('to test the property `controlpanel`', () async {
       // TODO
     });
 
     // Coupon
-    // String coupon (default value: '')
+    // Optional<String?> coupon (default value: '')
     test('to test the property `coupon`', () async {
       // TODO
     });
 
     // Order comments or notes
-    // String comment (default value: '')
+    // Optional<String?> comment (default value: '')
     test('to test the property `comment`', () async {
       // TODO
     });

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { GetAccountInfo401Response } from './api';
+import { GetAccountInfo401Response } from '@interserver/myadmin-client';
 
 const instance: GetAccountInfo401Response = {
     code,

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CreateRule500Response
+# InterServerAPI::Object::CreateRule500Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CreateRule500Response;
+use InterServerAPI::Object::CreateRule500Response;
 ```
 
 ## Properties

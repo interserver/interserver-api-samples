@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::LoginSubmissionExampleGRecaptchaResponse
+# InterServerAPI::Object::LoginSubmissionExampleGRecaptchaResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::LoginSubmissionExampleGRecaptchaResponse;
+use InterServerAPI::Object::LoginSubmissionExampleGRecaptchaResponse;
 ```
 
 ## Properties

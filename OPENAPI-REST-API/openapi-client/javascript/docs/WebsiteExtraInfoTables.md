@@ -1,4 +1,4 @@
-# InterServerManagementApi.WebsiteExtraInfoTables
+# InterserverApiClient.WebsiteExtraInfoTables
 
 ## Properties
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainAllInfoAttributes();
+    instance = new InterserverApiClient.DomainAllInfoAttributes();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,79 +50,79 @@
   describe('DomainAllInfoAttributes', function() {
     it('should create an instance of DomainAllInfoAttributes', function() {
       // uncomment below and update the code to test DomainAllInfoAttributes
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainAllInfoAttributes);
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
+      //expect(instance).to.be.a(InterserverApiClient.DomainAllInfoAttributes);
     });
 
     it('should have the property contact_set (base name: "contact_set")', function() {
       // uncomment below and update the code to test the property contact_set
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property registry_createdate (base name: "registry_createdate")', function() {
       // uncomment below and update the code to test the property registry_createdate
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property registry_expiredate (base name: "registry_expiredate")', function() {
       // uncomment below and update the code to test the property registry_expiredate
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property tld_data (base name: "tld_data")', function() {
       // uncomment below and update the code to test the property tld_data
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property let_expire (base name: "let_expire")', function() {
       // uncomment below and update the code to test the property let_expire
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property auto_renew (base name: "auto_renew")', function() {
       // uncomment below and update the code to test the property auto_renew
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property sponsoring_rsp (base name: "sponsoring_rsp")', function() {
       // uncomment below and update the code to test the property sponsoring_rsp
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property gdpr_consent_status (base name: "gdpr_consent_status")', function() {
       // uncomment below and update the code to test the property gdpr_consent_status
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property nameserver_list (base name: "nameserver_list")', function() {
       // uncomment below and update the code to test the property nameserver_list
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property registry_updatedate (base name: "registry_updatedate")', function() {
       // uncomment below and update the code to test the property registry_updatedate
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property affiliate_id (base name: "affiliate_id")', function() {
       // uncomment below and update the code to test the property affiliate_id
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 
     it('should have the property expiredate (base name: "expiredate")', function() {
       // uncomment below and update the code to test the property expiredate
-      //var instance = new InterServerManagementApi.DomainAllInfoAttributes();
+      //var instance = new InterserverApiClient.DomainAllInfoAttributes();
       //expect(instance).to.be();
     });
 

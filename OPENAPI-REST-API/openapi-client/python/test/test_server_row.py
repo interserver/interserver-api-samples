@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_row import ServerRow
+from interserver_api_client.models.server_row import ServerRow
 
 class TestServerRow(unittest.TestCase):
     """ServerRow unit test stubs"""

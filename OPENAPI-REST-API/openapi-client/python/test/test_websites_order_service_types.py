@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.websites_order_service_types import WebsitesOrderServiceTypes
+from interserver_api_client.models.websites_order_service_types import WebsitesOrderServiceTypes
 
 class TestWebsitesOrderServiceTypes(unittest.TestCase):
     """WebsitesOrderServiceTypes unit test stubs"""
@@ -36,7 +36,7 @@ class TestWebsitesOrderServiceTypes(unittest.TestCase):
         model = WebsitesOrderServiceTypes()
         if include_optional:
             return WebsitesOrderServiceTypes(
-                var_11447 = openapi_client.models.websites_order_service_types.WebsitesOrderServiceTypes(
+                var_11447 = interserver_api_client.models.websites_order_service_types.WebsitesOrderServiceTypes(
                     services_id = '11447', 
                     services_name = 'Web Hosting Direct Admin (PriceLock)', 
                     services_cost = '5.00', 
@@ -53,7 +53,7 @@ class TestWebsitesOrderServiceTypes(unittest.TestCase):
             )
         else:
             return WebsitesOrderServiceTypes(
-                var_11447 = openapi_client.models.websites_order_service_types.WebsitesOrderServiceTypes(
+                var_11447 = interserver_api_client.models.websites_order_service_types.WebsitesOrderServiceTypes(
                     services_id = '11447', 
                     services_name = 'Web Hosting Direct Admin (PriceLock)', 
                     services_cost = '5.00', 

@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.backups_order_package_costs import BackupsOrderPackageCosts  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.backups_order_package_costs import BackupsOrderPackageCosts  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestBackupsOrderPackageCosts(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestBackupsOrderPackageCosts(unittest.TestCase):
     def testBackupsOrderPackageCosts(self):
         """Test BackupsOrderPackageCosts"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.backups_order_package_costs.BackupsOrderPackageCosts()  # noqa: E501
+        # model = interserver_api_client.models.backups_order_package_costs.BackupsOrderPackageCosts()  # noqa: E501
         pass
 
 

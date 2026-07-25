@@ -1,4 +1,4 @@
-# SwaggerClient::IdMigrationBody
+# InterserverApiClient::IdMigrationBody
 
 ## Properties
 Name | Type | Description | Notes

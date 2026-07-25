@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_nameserver_put_request import DomainNameserverPutRequest
+from interserver_api_client.models.domain_nameserver_put_request import DomainNameserverPutRequest
 
 class TestDomainNameserverPutRequest(unittest.TestCase):
     """DomainNameserverPutRequest unit test stubs"""

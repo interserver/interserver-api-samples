@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.HomeDetails();
+    instance = new InterserverApiClient.HomeDetails();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('HomeDetails', function() {
     it('should create an instance of HomeDetails', function() {
       // uncomment below and update the code to test HomeDetails
-      //var instance = new InterServerManagementApi.HomeDetails();
-      //expect(instance).to.be.a(InterServerManagementApi.HomeDetails);
+      //var instance = new InterserverApiClient.HomeDetails();
+      //expect(instance).to.be.a(InterserverApiClient.HomeDetails);
     });
 
     it('should have the property modules (base name: "modules")', function() {
       // uncomment below and update the code to test the property modules
-      //var instance = new InterServerManagementApi.HomeDetails();
+      //var instance = new InterserverApiClient.HomeDetails();
       //expect(instance).to.be();
     });
 

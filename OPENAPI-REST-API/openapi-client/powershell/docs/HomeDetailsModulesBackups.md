@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeDetailsModulesBackups = Initialize-PSOpenAPIToolsHomeDetailsModulesBackups  -Icon warehouse `
+$HomeDetailsModulesBackups = Initialize-InterserverApiHomeDetailsModulesBackups  -Icon warehouse `
  -ViewLink view_backup `
  -Heading Storages `
  -BuyLink order_storage `

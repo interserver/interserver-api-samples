@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsOrderPackageCosts
+# InterserverApiClient.VpsOrderPackageCosts
 
 ## Properties
 

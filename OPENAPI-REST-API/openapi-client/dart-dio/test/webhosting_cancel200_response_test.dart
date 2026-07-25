@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for WebhostingCancel200Response
 void main() {
-  final instance = WebhostingCancel200ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final WebhostingCancel200Response? instance = /* WebhostingCancel200Response(...) */ null;
+  // TODO add properties to the entity
 
   group(WebhostingCancel200Response, () {
     // bool success

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsServiceMaster
+# InterServerAPI::Object::VpsServiceMaster
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsServiceMaster;
+use InterServerAPI::Object::VpsServiceMaster;
 ```
 
 ## Properties

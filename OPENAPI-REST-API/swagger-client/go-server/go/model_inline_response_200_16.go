@@ -11,7 +11,7 @@ package myadmin-client-go-server
 
 type InlineResponse20016 struct {
 
-	Success bool `json:"success,omitempty"`
+	Success bool `json:"success"`
 
-	Text string `json:"text,omitempty"`
+	Text string `json:"text"`
 }

@@ -17,7 +17,7 @@ import QuickserverOrderServerDetails381 from './QuickserverOrderServerDetails381
 /**
  * The QuickserverOrderServerDetails model module.
  * @module model/QuickserverOrderServerDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverOrderServerDetails {
     /**

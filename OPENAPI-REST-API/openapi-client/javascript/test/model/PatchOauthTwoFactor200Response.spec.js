@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PatchOauthTwoFactor200Response();
+    instance = new InterserverApiClient.PatchOauthTwoFactor200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('PatchOauthTwoFactor200Response', function() {
     it('should create an instance of PatchOauthTwoFactor200Response', function() {
       // uncomment below and update the code to test PatchOauthTwoFactor200Response
-      //var instance = new InterServerManagementApi.PatchOauthTwoFactor200Response();
-      //expect(instance).to.be.a(InterServerManagementApi.PatchOauthTwoFactor200Response);
+      //var instance = new InterserverApiClient.PatchOauthTwoFactor200Response();
+      //expect(instance).to.be.a(InterserverApiClient.PatchOauthTwoFactor200Response);
     });
 
     it('should have the property login (base name: "login")', function() {
       // uncomment below and update the code to test the property login
-      //var instance = new InterServerManagementApi.PatchOauthTwoFactor200Response();
+      //var instance = new InterserverApiClient.PatchOauthTwoFactor200Response();
       //expect(instance).to.be();
     });
 

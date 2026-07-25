@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerIpmiPowerRequest
+# InterServerAPI::Object::ServerIpmiPowerRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerIpmiPowerRequest;
+use InterServerAPI::Object::ServerIpmiPowerRequest;
 ```
 
 ## Properties

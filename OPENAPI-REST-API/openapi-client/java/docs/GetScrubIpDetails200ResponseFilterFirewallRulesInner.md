@@ -17,4 +17,8 @@
 |**globalDrop** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,2 +1,2 @@
-testCase,httpStatusCode,id,domainDnssecRequest,id,domainNameserverPostRequest,id,id,action,id,index,id,id,id,id,name,id,domain,regType,domain,id,name,id,id,id,id,id,id,domainContactDetails,id,id,domainNameserverPutRequest,id,domainWhoisPrivacyRequest
+testCase,httpStatusCode,domainOrderRequest,domainDnssecRequest,id,domainNameserverPostRequest,id,id,id,id,index,id,id,id,id,name,id,id,name,id,id,id,domainOrderRequest,id,name,id,domainOrderRequest,domainContactDetails,id,id,domainNameserverPutRequest,id,domainWhoisPrivacyRequest,id
 Success,200,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

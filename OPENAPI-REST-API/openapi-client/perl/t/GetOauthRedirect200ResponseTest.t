@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::GetOauthRedirect200Response');
+use_ok('InterServerAPI::Object::GetOauthRedirect200Response');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::GetOauthRedirect200Response->new();
+#my $instance = InterServerAPI::Object::GetOauthRedirect200Response->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::GetOauthRedirect200Response');
+#isa_ok($instance, 'InterServerAPI::Object::GetOauthRedirect200Response');
 
 
 done_testing();

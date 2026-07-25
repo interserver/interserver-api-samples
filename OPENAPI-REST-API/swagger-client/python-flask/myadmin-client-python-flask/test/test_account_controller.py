@@ -25,21 +25,10 @@ from myadmin-client-python-flask.test import BaseTestCase
 class TestAccountController(BaseTestCase):
     """AccountController integration test stubs"""
 
-    def test_change_account_username(self):
-        """Test case for change_account_username
-
-        Change Account Username
-        """
-        response = self.client.open(
-            '/apiv2/account/username',
-            method='POST')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_delete_account_oauth_name(self):
         """Test case for delete_account_oauth_name
 
-        Unlink OAuth Account
+        Unlink a third-party OAuth/social provider (Google, GitHub, etc.) from the account
         """
         response = self.client.open(
             '/apiv2/account/oauth/{name}'.format(name='name_example'),
@@ -50,7 +39,7 @@ class TestAccountController(BaseTestCase):
     def test_delete_account_tfa(self):
         """Test case for delete_account_tfa
 
-        Disable Two-Factor Authentication
+        Disable two-factor authentication and remove the TOTP secret
         """
         response = self.client.open(
             '/apiv2/account/2fa',
@@ -61,7 +50,7 @@ class TestAccountController(BaseTestCase):
     def test_delete_ip_limit(self):
         """Test case for delete_ip_limit
 
-        Remove IP Access Restriction
+        Remove one IP range from the account allow-list (PATCH on /account/iplimits)
         """
         body = IpLimitRange()
         response = self.client.open(
@@ -75,7 +64,7 @@ class TestAccountController(BaseTestCase):
     def test_get_account_info(self):
         """Test case for get_account_info
 
-        Retrieve Account Details
+        Read full account profile, billing address, and security settings
         """
         response = self.client.open(
             '/apiv2/account',
@@ -86,7 +75,7 @@ class TestAccountController(BaseTestCase):
     def test_get_account_tfa_setup(self):
         """Test case for get_account_tfa_setup
 
-        Get Two-Factor Setup Data
+        Fetch TOTP secret to enroll a 2FA authenticator app (Google Authenticator etc.)
         """
         response = self.client.open(
             '/apiv2/account/2fa',
@@ -97,7 +86,7 @@ class TestAccountController(BaseTestCase):
     def test_get_home(self):
         """Test case for get_home
 
-        Get Home Data
+        Aggregate dashboard payload — service counts, recent activity, alerts
         """
         response = self.client.open(
             '/apiv2/home',
@@ -108,7 +97,7 @@ class TestAccountController(BaseTestCase):
     def test_get_search(self):
         """Test case for get_search
 
-        Search Autocomplete
+        Global autocomplete across the caller's services, domains, and records
         """
         response = self.client.open(
             '/apiv2/search',
@@ -119,7 +108,7 @@ class TestAccountController(BaseTestCase):
     def test_logout(self):
         """Test case for logout
 
-        Log Out
+        Destroy the current API/web session — token becomes unusable
         """
         response = self.client.open(
             '/apiv2/logout',
@@ -130,7 +119,7 @@ class TestAccountController(BaseTestCase):
     def test_logout_account_oauth(self):
         """Test case for logout_account_oauth
 
-        Logout of OAuth
+        Sign out of the upstream OAuth provider session (does not unlink the account)
         """
         response = self.client.open(
             '/apiv2/account/oauth/{name}/logout'.format(name='name_example'),
@@ -141,7 +130,7 @@ class TestAccountController(BaseTestCase):
     def test_update_account_api_key(self):
         """Test case for update_account_api_key
 
-        Generate New API Key
+        Rotate the account's REST/MCP API key — old key is invalidated immediately
         """
         response = self.client.open(
             '/apiv2/account/apikey',
@@ -152,7 +141,7 @@ class TestAccountController(BaseTestCase):
     def test_update_account_features(self):
         """Test case for update_account_features
 
-        Update Account Feature Flags
+        Toggle account-wide safety locks for password reset and OS reinstall
         """
         body = AccountFeatures()
         data = dict(disable_reset=56,
@@ -169,7 +158,7 @@ class TestAccountController(BaseTestCase):
     def test_update_account_info(self):
         """Test case for update_account_info
 
-        Update Account Information
+        Update contact and billing-address fields on the customer profile
         """
         body = AccountInfoPost()
         data = dict(name='name_example',
@@ -201,7 +190,7 @@ class TestAccountController(BaseTestCase):
     def test_update_account_ip_limits(self):
         """Test case for update_account_ip_limits
 
-        Add IP Access Restriction
+        Add an IP CIDR/range to the account's API+web allow-list (lockout-safe)
         """
         body = IpLimitRange()
         data = dict(start='start_example',
@@ -218,7 +207,7 @@ class TestAccountController(BaseTestCase):
     def test_update_account_password(self):
         """Test case for update_account_password
 
-        Change Account Password
+        Change the account login password (verifies current, kills other sessions)
         """
         body = PasswordRequest()
         data = dict(password='password_example')
@@ -234,7 +223,7 @@ class TestAccountController(BaseTestCase):
     def test_update_account_ssh_key(self):
         """Test case for update_account_ssh_key
 
-        Update SSH Keys
+        Set the account-level SSH public key auto-installed on new VPS/dedicated orders
         """
         body = AccountSshKey()
         data = dict(ssh_key='ssh_key_example')
@@ -250,7 +239,7 @@ class TestAccountController(BaseTestCase):
     def test_update_account_tfa(self):
         """Test case for update_account_tfa
 
-        Enable Two-Factor Authentication
+        Verify TOTP code and enable two-factor authentication on the account
         """
         body = Account2faBody1()
         data = dict(_2fa_google_code='_2fa_google_code_example')

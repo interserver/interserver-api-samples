@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.backup_row import BackupRow
+from interserver_api_client.models.backup_row import BackupRow
 
 # TODO update the JSON string below
 json = "{}"

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DnsUpdateRecord } from './api';
+import { DnsUpdateRecord } from '@interserver/myadmin-client';
 
 const instance: DnsUpdateRecord = {
     name,

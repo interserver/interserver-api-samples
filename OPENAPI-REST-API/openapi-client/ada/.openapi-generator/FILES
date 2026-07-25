@@ -1,6 +1,6 @@
 .openapi-generator-ignore
 config.gpr
-defaultproject.gpr
+interserver_api.gpr
 src/-client.adb
 src/.ads
 src/client/-clients.adb

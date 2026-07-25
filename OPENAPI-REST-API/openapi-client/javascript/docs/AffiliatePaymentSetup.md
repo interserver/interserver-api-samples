@@ -1,4 +1,4 @@
-# InterServerManagementApi.AffiliatePaymentSetup
+# InterserverApiClient.AffiliatePaymentSetup
 
 ## Properties
 

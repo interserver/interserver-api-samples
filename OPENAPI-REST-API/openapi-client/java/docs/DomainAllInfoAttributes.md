@@ -21,4 +21,8 @@
 |**expiredate** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

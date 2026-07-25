@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::StatusMonthlyBreakdown');
+use_ok('InterServerAPI::Object::StatusMonthlyBreakdown');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::StatusMonthlyBreakdown->new();
+#my $instance = InterServerAPI::Object::StatusMonthlyBreakdown->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::StatusMonthlyBreakdown');
+#isa_ok($instance, 'InterServerAPI::Object::StatusMonthlyBreakdown');
 
 
 done_testing();

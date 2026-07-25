@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsTrafficTotalsSectionResponse = Initialize-PSOpenAPIToolsVpsTrafficTotalsSectionResponse  -VarIn null `
+$VpsTrafficTotalsSectionResponse = Initialize-InterserverApiVpsTrafficTotalsSectionResponse  -VarIn null `
  -Out null
 ```
 

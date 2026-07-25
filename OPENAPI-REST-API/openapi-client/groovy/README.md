@@ -48,8 +48,7 @@ This Groovy package, using the [http-builder-ng library](https://http-builder-ng
 
 - API version: 0.9.0
 - Package version: 1.0.0
-- Build date: 2026-04-02T08:03:12.188842047-04:00[America/New_York]
-- Generator version: 7.21.0
+- Generator version: 7.24.0
 - Build package: org.openapitools.codegen.languages.GroovyClientCodegen
 For more information, please visit [https://www.interserver.net/contact-us.html](https://www.interserver.net/contact-us.html)
 
@@ -77,11 +76,12 @@ Then, run:
 
 ```groovy
 def apiInstance = new AccountApi()
+def name = "name_example" // String | 
 
-apiInstance.changeAccountUsername()
+apiInstance.deleteAccountOauthName(name)
     {
     // on success
-    def result = (TextResponse)it
+    def result = (SuccessTextResponse)it
     println result
     
 }

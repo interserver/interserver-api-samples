@@ -16,9 +16,10 @@
 #' \dontrun{
 #' ####################  AddQs  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_qs_order_request <- QsOrderRequest$new(123, "password_example", "tos_example", "os_example", "comment_example") # QsOrderRequest | 
 #'
-#' #Place QuickServer Order
+#' #Place a QuickServer order, generating a real invoice and queuing provisioning
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -31,19 +32,19 @@
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
 #' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$AddQs(data_file = "result.txt")
-#' result <- api_instance$AddQs()
+#' # result <- api_instance$AddQs(var_qs_order_requestdata_file = "result.txt")
+#' result <- api_instance$AddQs(var_qs_order_request)
 #' dput(result)
 #'
 #'
 #' ####################  DeleteQsBackup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #' var_file <- "file_example" # character | The backup filename to delete.
 #' var_all <- "all_example" # character | Set to `1` to list all backups across all services, not just the ones for the given QuickServer. (Optional)
 #'
-#' #Delete QuickServer Backup
+#' #Permanently delete a QuickServer backup file from object storage
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -63,10 +64,10 @@
 #'
 #' ####################  DoQsBlockSmtp  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number.
 #'
-#' #Block QuickServer SMTP
+#' #Block outbound SMTP traffic on a QuickServer to halt mail abuse
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -86,10 +87,10 @@
 #'
 #' ####################  DoQsDisableCd  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number.
 #'
-#' #Disable CD Drive
+#' #Disable the virtual CD/DVD drive device on a QuickServer
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -109,10 +110,10 @@
 #'
 #' ####################  DoQsDisableQuota  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number.
 #'
-#' #Disable Quotas
+#' #Disable disk-quota enforcement at OS level on a QuickServer
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -132,10 +133,10 @@
 #'
 #' ####################  DoQsEjectCd  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number.
 #'
-#' #Eject CD Drive
+#' #Eject the currently mounted ISO from a QuickServer's virtual CD drive
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -155,10 +156,10 @@
 #'
 #' ####################  DoQsEnableQuota  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number.
 #'
-#' #Enable Quotas
+#' #Enable disk-quota enforcement at OS level on a QuickServer
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -178,10 +179,10 @@
 #'
 #' ####################  DoQsRestart  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number.
 #'
-#' #Restart QuickServer
+#' #Reboot a QuickServer with a graceful OS-level restart
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -201,10 +202,10 @@
 #'
 #' ####################  DoQsStart  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number.
 #'
-#' #Start QuickServer
+#' #Power on a QuickServer that is currently stopped or pending boot
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -224,10 +225,10 @@
 #'
 #' ####################  DoQsStop  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number.
 #'
-#' #Stop QuickServer
+#' #Power off a QuickServer with a graceful shutdown command
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -247,12 +248,12 @@
 #'
 #' ####################  DownloadQsBackup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #' var_download_qs_backup_request <- downloadQsBackup_request$new("file_example") # DownloadQsBackupRequest | 
 #' var_all <- "all_example" # character | Set to `1` to list all backups across all services, not just the ones for the given QuickServer. (Optional)
 #'
-#' #Download QuickServer Backup
+#' #Generate a 24-hour pre-signed download URL for a QuickServer backup
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -272,9 +273,9 @@
 #'
 #' ####################  GetNewQs  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get QuickServer Ordering Information
+#' #Get QuickServer order form metadata and available plans/templates
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -292,13 +293,36 @@
 #' dput(result)
 #'
 #'
+#' ####################  GetQsBackup  ####################
+#'
+#' library(interserverapi)
+#' var_id <- 56 # integer | QuickServer ID number
+#'
+#' #Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+#' api_instance <- QuickServersApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$GetQsBackup(var_iddata_file = "result.txt")
+#' result <- api_instance$GetQsBackup(var_id)
+#' dput(result)
+#'
+#'
 #' ####################  GetQsBackups  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #' var_all <- "all_example" # character | Set to `1` to list all backups across all services, not just the ones for the given QuickServer. (Optional)
 #'
-#' #List QuickServer Backups
+#' #List available QuickServer backups across Swift, MinIO, and ZFS storage
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -318,10 +342,10 @@
 #'
 #' ####################  GetQsChangeHostname  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Get QuickServer Hostname
+#' #Get current QuickServer hostname plus change rules and platform support
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -338,10 +362,10 @@
 #'
 #' ####################  GetQsChangeRootPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Get Change Root Password Info
+#' #Get metadata for QuickServer root/OS password change requirements
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -358,10 +382,10 @@
 #'
 #' ####################  GetQsChangeTimezone  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Get Timezone Info
+#' #List timezones the QuickServer can be set to via change_timezone
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -381,10 +405,10 @@
 #'
 #' ####################  GetQsChangeWebuzoPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Webuzo Change Pass Info
+#' #Get metadata for changing the Webuzo control panel admin password
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -401,10 +425,10 @@
 #'
 #' ####################  GetQsInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number.
 #'
-#' #Get QuickServer Order
+#' #Get full details for one QuickServer including credentials and links
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -424,10 +448,10 @@
 #'
 #' ####################  GetQsInsertCd  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Insert CD Information
+#' #List ISO images available to mount on a QuickServer's virtual CD
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -444,10 +468,10 @@
 #'
 #' ####################  GetQsInvoices  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Get QuickServer Invoices
+#' #List billing invoices charged for one QuickServer service
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -467,9 +491,9 @@
 #'
 #' ####################  GetQsList  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List QuickServers
+#' #List QuickServer rapid-deploy dedicated servers on the account
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -489,10 +513,10 @@
 #'
 #' ####################  GetQsReinstallOs  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #QuickServer Reinstall OS Options
+#' #List OS templates available for a QuickServer reinstall
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -512,10 +536,10 @@
 #'
 #' ####################  GetQsResetPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Reset QuickServer Password Info
+#' #Get options for QuickServer randomized root password reset
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -532,10 +556,10 @@
 #'
 #' ####################  GetQsReverseDns  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Reverse DNS Info
+#' #Get reverse DNS (PTR) records for all of a QuickServer's IPs
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -555,10 +579,10 @@
 #'
 #' ####################  GetQsSetupVnc  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #VNC Setup Info
+#' #Get current VNC console connection details for a QuickServer
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -575,10 +599,10 @@
 #'
 #' ####################  GetQsTrafficUsage  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Get Traffic Usage
+#' #Get bandwidth usage for the QuickServer's current billing period
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -595,10 +619,10 @@
 #'
 #' ####################  GetQsViewDesktop  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Get View Desktop Info
+#' #Get the full QuickServer dashboard view payload (rich format)
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -615,10 +639,10 @@
 #'
 #' ####################  GetQsWelcomeEmail  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "133123" # character | Quickserver ID
 #'
-#' #Resend QuickServer Welcome Email
+#' #Resend the QuickServer welcome email with login credentials
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -636,35 +660,12 @@
 #' dput(result)
 #'
 #'
-#' ####################  PostQsBackup  ####################
-#'
-#' library(openapi)
-#' var_id <- 56 # integer | QuickServer ID number
-#'
-#' #Create QuickServer Backup
-#' api_instance <- QuickServersApi$new()
-#'
-#' # Configure API key authorization: sessionIdCookieAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: apiKeyAuth
-#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
-#'
-#' # Configure API key authorization: sessionIdHeaderAuth
-#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
-#'
-#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
-#' # result <- api_instance$PostQsBackup(var_iddata_file = "result.txt")
-#' result <- api_instance$PostQsBackup(var_id)
-#' dput(result)
-#'
-#'
 #' ####################  PostQsChangeHostname  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Update QuickServer Hostname
+#' #Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -684,10 +685,10 @@
 #'
 #' ####################  PostQsChangeRootPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Change Root Password
+#' #Change QuickServer root/administrator password to a chosen value
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -707,11 +708,11 @@
 #'
 #' ####################  PostQsChangeTimezone  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #' var_timezone <- "timezone_example" # character | The time zone
 #'
-#' #Change QuickServer Timezone
+#' #Change the system timezone on a QuickServer to a catalog entry
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -731,10 +732,10 @@
 #'
 #' ####################  PostQsChangeWebuzoPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Change Webuzo Password
+#' #Change Webuzo control panel admin password live (synchronous, not queued)
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -754,10 +755,10 @@
 #'
 #' ####################  PostQsInsertCd  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Insert CD in QuickServer
+#' #Mount an ISO image as the QuickServer's virtual CD via URL
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -777,10 +778,10 @@
 #'
 #' ####################  PostQsReinstallOs  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Reinstall QuickServer OS
+#' #Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -800,10 +801,10 @@
 #'
 #' ####################  PostQsResetPassword  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Reset QuickServer Password
+#' #Reset QuickServer root password to a server-generated random value
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -823,11 +824,11 @@
 #'
 #' ####################  PostQsReverseDns  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #' var_reverse_dns_entries <- ReverseDnsEntries$new(c(key = TODO)) # ReverseDnsEntries | 
 #'
-#' #Update Reverse DNS
+#' #Update reverse DNS (PTR) records for a QuickServer's IPs
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -847,10 +848,10 @@
 #'
 #' ####################  PostQsSetupVnc  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Setup VNC
+#' #Configure the source IP allowed to reach a QuickServer's VNC console
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -870,10 +871,10 @@
 #'
 #' ####################  PostQsTrafficUsage  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Search Traffic Usage
+#' #Query QuickServer bandwidth usage via POST (filtered variant)
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -890,10 +891,10 @@
 #'
 #' ####################  PostQsViewDesktop  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Update View Desktop
+#' #Submit changes and re-fetch the QuickServer dashboard view payload
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -910,11 +911,11 @@
 #'
 #' ####################  PostQuickServerRestore  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #' var_restore_request <- RestoreRequest$new("backup_example", "password_example") # RestoreRequest | QuickServer Restore request
 #'
-#' #Restore QuickServer from Backup
+#' #Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -934,9 +935,10 @@
 #'
 #' ####################  PutQs  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
+#' var_qs_order_request <- QsOrderRequest$new(123, "password_example", "tos_example", "os_example", "comment_example") # QsOrderRequest | 
 #'
-#' #Validate QuickServer Order
+#' #Validate a QuickServer order without charging or provisioning
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -948,15 +950,15 @@
 #' # Configure API key authorization: sessionIdHeaderAuth
 #' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
 #'
-#' api_instance$PutQs()
+#' api_instance$PutQs(var_qs_order_request)
 #'
 #'
 #' ####################  QuickserversCancel  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- 56 # integer | QuickServer ID number
 #'
-#' #Cancel QuickServer Order
+#' #Cancel a QuickServer service at the end of the current billing cycle
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -976,10 +978,10 @@
 #'
 #' ####################  UpdateQsInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_id <- "id_example" # character | QuickServer ID number.
 #'
-#' #Update QuickServer Order
+#' #Update QuickServer order metadata or stored settings without OS impact
 #' api_instance <- QuickServersApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -1019,15 +1021,16 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place QuickServer Order
+    #' Place a QuickServer order, generating a real invoice and queuing provisioning
     #'
+    #' @param qs_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return ServiceOrderPostResponse
-    AddQs = function(data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$AddQsWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+    AddQs = function(qs_order_request, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$AddQsWithHttpInfo(qs_order_request, data_file = data_file, ..., .parse = .parse)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -1040,14 +1043,15 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Place QuickServer Order
+    #' Place a QuickServer order, generating a real invoice and queuing provisioning
     #'
+    #' @param qs_order_request 
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
     #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
     #'
     #' @return API response (ServiceOrderPostResponse) with additional information such as HTTP status code, headers
-    AddQsWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+    AddQsWithHttpInfo = function(qs_order_request, data_file = NULL, ..., .parse = TRUE) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -1056,6 +1060,20 @@ QuickServersApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`qs_order_request`)) {
+        stop("Missing required parameter `qs_order_request`.")
+      }
+
+      if (!missing(`qs_order_request`) && is.null(`qs_order_request`)) {
+        stop("Invalid value for `qs_order_request` when calling QuickServersApi$AddQs, `qs_order_request` is not nullable")
+      }
+
+      if (!is.null(`qs_order_request`)) {
+        local_var_body <- `qs_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/qs/order"
       # API key authentication
@@ -1072,7 +1090,7 @@ QuickServersApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "POST",
@@ -1125,7 +1143,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete QuickServer Backup
+    #' Permanently delete a QuickServer backup file from object storage
     #'
     #' @param id QuickServer ID number
     #' @param file The backup filename to delete.
@@ -1149,7 +1167,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Delete QuickServer Backup
+    #' Permanently delete a QuickServer backup file from object storage
     #'
     #' @param id QuickServer ID number
     #' @param file The backup filename to delete.
@@ -1268,7 +1286,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Block QuickServer SMTP
+    #' Block outbound SMTP traffic on a QuickServer to halt mail abuse
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1290,7 +1308,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Block QuickServer SMTP
+    #' Block outbound SMTP traffic on a QuickServer to halt mail abuse
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1388,7 +1406,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable CD Drive
+    #' Disable the virtual CD/DVD drive device on a QuickServer
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1410,7 +1428,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable CD Drive
+    #' Disable the virtual CD/DVD drive device on a QuickServer
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1508,7 +1526,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable Quotas
+    #' Disable disk-quota enforcement at OS level on a QuickServer
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1530,7 +1548,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Disable Quotas
+    #' Disable disk-quota enforcement at OS level on a QuickServer
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1628,7 +1646,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Eject CD Drive
+    #' Eject the currently mounted ISO from a QuickServer's virtual CD drive
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1650,7 +1668,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Eject CD Drive
+    #' Eject the currently mounted ISO from a QuickServer's virtual CD drive
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1748,7 +1766,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Enable Quotas
+    #' Enable disk-quota enforcement at OS level on a QuickServer
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1770,7 +1788,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Enable Quotas
+    #' Enable disk-quota enforcement at OS level on a QuickServer
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1868,7 +1886,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Restart QuickServer
+    #' Reboot a QuickServer with a graceful OS-level restart
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1890,7 +1908,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Restart QuickServer
+    #' Reboot a QuickServer with a graceful OS-level restart
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -1988,7 +2006,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Start QuickServer
+    #' Power on a QuickServer that is currently stopped or pending boot
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -2010,7 +2028,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Start QuickServer
+    #' Power on a QuickServer that is currently stopped or pending boot
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -2108,7 +2126,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Stop QuickServer
+    #' Power off a QuickServer with a graceful shutdown command
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -2130,7 +2148,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Stop QuickServer
+    #' Power off a QuickServer with a graceful shutdown command
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -2228,7 +2246,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Download QuickServer Backup
+    #' Generate a 24-hour pre-signed download URL for a QuickServer backup
     #'
     #' @param id QuickServer ID number
     #' @param download_qs_backup_request 
@@ -2252,7 +2270,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Download QuickServer Backup
+    #' Generate a 24-hour pre-signed download URL for a QuickServer backup
     #'
     #' @param id QuickServer ID number
     #' @param download_qs_backup_request 
@@ -2375,7 +2393,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get QuickServer Ordering Information
+    #' Get QuickServer order form metadata and available plans/templates
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2396,7 +2414,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get QuickServer Ordering Information
+    #' Get QuickServer order form metadata and available plans/templates
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -2481,7 +2499,127 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' List QuickServer Backups
+    #' Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+    #'
+    #' @param id QuickServer ID number
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return QueueResponse
+    GetQsBackup = function(id, data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$GetQsBackupWithHttpInfo(id, data_file = data_file, ..., .parse = .parse)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
+    #'
+    #' @param id QuickServer ID number
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return API response (QueueResponse) with additional information such as HTTP status code, headers
+    GetQsBackupWithHttpInfo = function(id, data_file = NULL, ..., .parse = TRUE) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      if (missing(`id`)) {
+        stop("Missing required parameter `id`.")
+      }
+
+      if (!missing(`id`) && is.null(`id`)) {
+        stop("Invalid value for `id` when calling QuickServersApi$GetQsBackup, `id` is not nullable")
+      }
+
+      local_var_url_path <- "/qs/{id}/backup"
+      if (!missing(`id`)) {
+        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
+      }
+
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "QueueResponse"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' List available QuickServer backups across Swift, MinIO, and ZFS storage
     #'
     #' @param id QuickServer ID number
     #' @param all (optional) Set to `1` to list all backups across all services, not just the ones for the given QuickServer.
@@ -2504,7 +2642,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' List QuickServer Backups
+    #' List available QuickServer backups across Swift, MinIO, and ZFS storage
     #'
     #' @param id QuickServer ID number
     #' @param all (optional) Set to `1` to list all backups across all services, not just the ones for the given QuickServer.
@@ -2612,7 +2750,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get QuickServer Hostname
+    #' Get current QuickServer hostname plus change rules and platform support
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -2632,7 +2770,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get QuickServer Hostname
+    #' Get current QuickServer hostname plus change rules and platform support
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -2713,7 +2851,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Change Root Password Info
+    #' Get metadata for QuickServer root/OS password change requirements
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -2733,7 +2871,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Change Root Password Info
+    #' Get metadata for QuickServer root/OS password change requirements
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -2814,7 +2952,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Timezone Info
+    #' List timezones the QuickServer can be set to via change_timezone
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -2836,7 +2974,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Timezone Info
+    #' List timezones the QuickServer can be set to via change_timezone
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -2934,7 +3072,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Webuzo Change Pass Info
+    #' Get metadata for changing the Webuzo control panel admin password
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -2954,7 +3092,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Webuzo Change Pass Info
+    #' Get metadata for changing the Webuzo control panel admin password
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -3035,7 +3173,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get QuickServer Order
+    #' Get full details for one QuickServer including credentials and links
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -3057,7 +3195,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get QuickServer Order
+    #' Get full details for one QuickServer including credentials and links
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -3155,7 +3293,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Insert CD Information
+    #' List ISO images available to mount on a QuickServer's virtual CD
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -3175,7 +3313,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Insert CD Information
+    #' List ISO images available to mount on a QuickServer's virtual CD
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -3256,7 +3394,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get QuickServer Invoices
+    #' List billing invoices charged for one QuickServer service
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3278,7 +3416,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get QuickServer Invoices
+    #' List billing invoices charged for one QuickServer service
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3376,7 +3514,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' List QuickServers
+    #' List QuickServer rapid-deploy dedicated servers on the account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -3397,7 +3535,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' List QuickServers
+    #' List QuickServer rapid-deploy dedicated servers on the account
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -3482,7 +3620,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' QuickServer Reinstall OS Options
+    #' List OS templates available for a QuickServer reinstall
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3504,7 +3642,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' QuickServer Reinstall OS Options
+    #' List OS templates available for a QuickServer reinstall
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3602,7 +3740,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reset QuickServer Password Info
+    #' Get options for QuickServer randomized root password reset
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -3622,7 +3760,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reset QuickServer Password Info
+    #' Get options for QuickServer randomized root password reset
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -3703,7 +3841,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reverse DNS Info
+    #' Get reverse DNS (PTR) records for all of a QuickServer's IPs
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3725,7 +3863,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reverse DNS Info
+    #' Get reverse DNS (PTR) records for all of a QuickServer's IPs
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -3823,7 +3961,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' VNC Setup Info
+    #' Get current VNC console connection details for a QuickServer
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -3843,7 +3981,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' VNC Setup Info
+    #' Get current VNC console connection details for a QuickServer
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -3924,7 +4062,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Traffic Usage
+    #' Get bandwidth usage for the QuickServer's current billing period
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -3944,7 +4082,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Traffic Usage
+    #' Get bandwidth usage for the QuickServer's current billing period
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -4025,7 +4163,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get View Desktop Info
+    #' Get the full QuickServer dashboard view payload (rich format)
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -4045,7 +4183,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get View Desktop Info
+    #' Get the full QuickServer dashboard view payload (rich format)
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -4126,7 +4264,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend QuickServer Welcome Email
+    #' Resend the QuickServer welcome email with login credentials
     #'
     #' @param id Quickserver ID
     #' @param data_file (optional) name of the data file to save the result
@@ -4148,7 +4286,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Resend QuickServer Welcome Email
+    #' Resend the QuickServer welcome email with login credentials
     #'
     #' @param id Quickserver ID
     #' @param data_file (optional) name of the data file to save the result
@@ -4246,127 +4384,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Create QuickServer Backup
-    #'
-    #' @param id QuickServer ID number
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return QueueResponse
-    PostQsBackup = function(id, data_file = NULL, ..., .parse = TRUE) {
-      local_var_response <- self$PostQsBackupWithHttpInfo(id, data_file = data_file, ..., .parse = .parse)
-      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
-        return(local_var_response$content)
-      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
-        return(local_var_response)
-      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
-        return(local_var_response)
-      }
-    },
-
-    #' @description
-    #' Create QuickServer Backup
-    #'
-    #' @param id QuickServer ID number
-    #' @param data_file (optional) name of the data file to save the result
-    #' @param ... Other optional arguments
-    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
-    #'
-    #' @return API response (QueueResponse) with additional information such as HTTP status code, headers
-    PostQsBackupWithHttpInfo = function(id, data_file = NULL, ..., .parse = TRUE) {
-      args <- list(...)
-      query_params <- list()
-      header_params <- c()
-      form_params <- list()
-      file_params <- list()
-      local_var_body <- NULL
-      oauth_scopes <- NULL
-      is_oauth <- FALSE
-
-      if (missing(`id`)) {
-        stop("Missing required parameter `id`.")
-      }
-
-      if (!missing(`id`) && is.null(`id`)) {
-        stop("Invalid value for `id` when calling QuickServersApi$PostQsBackup, `id` is not nullable")
-      }
-
-      local_var_url_path <- "/qs/{id}/backup"
-      if (!missing(`id`)) {
-        local_var_url_path <- gsub("\\{id\\}", URLencode(as.character(`id`), reserved = TRUE), local_var_url_path)
-      }
-
-      # API key authentication
-      # API key authentication
-      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
-        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
-      }
-      # API key authentication
-      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
-        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
-      }
-
-      # The Accept request HTTP header
-      local_var_accepts <- list("application/json")
-
-      # The Content-Type representation header
-      local_var_content_types <- list()
-
-      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
-                                 method = "POST",
-                                 query_params = query_params,
-                                 header_params = header_params,
-                                 form_params = form_params,
-                                 file_params = file_params,
-                                 accepts = local_var_accepts,
-                                 content_types = local_var_content_types,
-                                 body = local_var_body,
-                                 is_oauth = is_oauth,
-                                 oauth_scopes = oauth_scopes,
-                                 ...)
-
-      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
-        # save response in a file
-        if (!is.null(data_file)) {
-          self$api_client$WriteFile(local_var_resp, data_file)
-        }
-        if (!.parse) {
-          local_var_resp$content <- local_var_resp$response_as_text()
-          return(local_var_resp)
-        }
-
-        deserialized_resp_obj <- tryCatch(
-          self$api_client$DeserializeResponse(local_var_resp, "QueueResponse"),
-          error = function(e) {
-            stop("Failed to deserialize response")
-          }
-        )
-        local_var_resp$content <- deserialized_resp_obj
-        return(local_var_resp)
-      } 
-      
-      local_var_error_msg <- local_var_resp$response_as_text()      
-      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
-        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
-        ApiResponse$new(content = "API client error",
-                        response = local_var_resp,
-                        status_code = local_var_resp$status_code)
-      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
-        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
-          local_var_resp$response <- "API server error"
-        }
-        return(local_var_resp)
-      }
-    },
-
-    #' @description
-    #' Update QuickServer Hostname
+    #' Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -4388,7 +4406,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update QuickServer Hostname
+    #' Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -4486,7 +4504,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Root Password
+    #' Change QuickServer root/administrator password to a chosen value
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -4508,7 +4526,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Root Password
+    #' Change QuickServer root/administrator password to a chosen value
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -4606,7 +4624,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change QuickServer Timezone
+    #' Change the system timezone on a QuickServer to a catalog entry
     #'
     #' @param id QuickServer ID number
     #' @param timezone The time zone
@@ -4629,7 +4647,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change QuickServer Timezone
+    #' Change the system timezone on a QuickServer to a catalog entry
     #'
     #' @param id QuickServer ID number
     #' @param timezone The time zone
@@ -4737,7 +4755,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Webuzo Password
+    #' Change Webuzo control panel admin password live (synchronous, not queued)
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -4759,7 +4777,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Change Webuzo Password
+    #' Change Webuzo control panel admin password live (synchronous, not queued)
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -4857,7 +4875,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Insert CD in QuickServer
+    #' Mount an ISO image as the QuickServer's virtual CD via URL
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -4879,7 +4897,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Insert CD in QuickServer
+    #' Mount an ISO image as the QuickServer's virtual CD via URL
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -4977,7 +4995,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reinstall QuickServer OS
+    #' Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -4999,7 +5017,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reinstall QuickServer OS
+    #' Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -5097,7 +5115,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reset QuickServer Password
+    #' Reset QuickServer root password to a server-generated random value
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -5119,7 +5137,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Reset QuickServer Password
+    #' Reset QuickServer root password to a server-generated random value
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -5217,7 +5235,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Reverse DNS
+    #' Update reverse DNS (PTR) records for a QuickServer's IPs
     #'
     #' @param id QuickServer ID number
     #' @param reverse_dns_entries 
@@ -5240,7 +5258,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update Reverse DNS
+    #' Update reverse DNS (PTR) records for a QuickServer's IPs
     #'
     #' @param id QuickServer ID number
     #' @param reverse_dns_entries 
@@ -5353,7 +5371,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Setup VNC
+    #' Configure the source IP allowed to reach a QuickServer's VNC console
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -5375,7 +5393,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Setup VNC
+    #' Configure the source IP allowed to reach a QuickServer's VNC console
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -5473,7 +5491,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Search Traffic Usage
+    #' Query QuickServer bandwidth usage via POST (filtered variant)
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -5493,7 +5511,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Search Traffic Usage
+    #' Query QuickServer bandwidth usage via POST (filtered variant)
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -5574,7 +5592,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update View Desktop
+    #' Submit changes and re-fetch the QuickServer dashboard view payload
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -5594,7 +5612,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update View Desktop
+    #' Submit changes and re-fetch the QuickServer dashboard view payload
     #'
     #' @param id QuickServer ID number
     #' @param ... Other optional arguments
@@ -5675,7 +5693,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Restore QuickServer from Backup
+    #' Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
     #'
     #' @param id QuickServer ID number
     #' @param restore_request QuickServer Restore request
@@ -5698,7 +5716,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Restore QuickServer from Backup
+    #' Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
     #'
     #' @param id QuickServer ID number
     #' @param restore_request QuickServer Restore request
@@ -5811,13 +5829,14 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate QuickServer Order
+    #' Validate a QuickServer order without charging or provisioning
     #'
+    #' @param qs_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return void
-    PutQs = function(...) {
-      local_var_response <- self$PutQsWithHttpInfo(...)
+    PutQs = function(qs_order_request, ...) {
+      local_var_response <- self$PutQsWithHttpInfo(qs_order_request, ...)
       if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
         return(local_var_response$content)
       } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
@@ -5830,12 +5849,13 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Validate QuickServer Order
+    #' Validate a QuickServer order without charging or provisioning
     #'
+    #' @param qs_order_request 
     #' @param ... Other optional arguments
     #'
     #' @return API response (void) with additional information such as HTTP status code, headers
-    PutQsWithHttpInfo = function(...) {
+    PutQsWithHttpInfo = function(qs_order_request, ...) {
       args <- list(...)
       query_params <- list()
       header_params <- c()
@@ -5844,6 +5864,20 @@ QuickServersApi <- R6::R6Class(
       local_var_body <- NULL
       oauth_scopes <- NULL
       is_oauth <- FALSE
+
+      if (missing(`qs_order_request`)) {
+        stop("Missing required parameter `qs_order_request`.")
+      }
+
+      if (!missing(`qs_order_request`) && is.null(`qs_order_request`)) {
+        stop("Invalid value for `qs_order_request` when calling QuickServersApi$PutQs, `qs_order_request` is not nullable")
+      }
+
+      if (!is.null(`qs_order_request`)) {
+        local_var_body <- `qs_order_request`$toJSONString()
+      } else {
+        local_var_body <- NULL
+      }
 
       local_var_url_path <- "/qs/order"
       # API key authentication
@@ -5860,7 +5894,7 @@ QuickServersApi <- R6::R6Class(
       local_var_accepts <- list("application/json")
 
       # The Content-Type representation header
-      local_var_content_types <- list()
+      local_var_content_types <- list("application/json")
 
       local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
                                  method = "PUT",
@@ -5898,7 +5932,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel QuickServer Order
+    #' Cancel a QuickServer service at the end of the current billing cycle
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -5920,7 +5954,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Cancel QuickServer Order
+    #' Cancel a QuickServer service at the end of the current billing cycle
     #'
     #' @param id QuickServer ID number
     #' @param data_file (optional) name of the data file to save the result
@@ -6018,7 +6052,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update QuickServer Order
+    #' Update QuickServer order metadata or stored settings without OS impact
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result
@@ -6040,7 +6074,7 @@ QuickServersApi <- R6::R6Class(
     },
 
     #' @description
-    #' Update QuickServer Order
+    #' Update QuickServer order metadata or stored settings without OS impact
     #'
     #' @param id QuickServer ID number.
     #' @param data_file (optional) name of the data file to save the result

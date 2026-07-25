@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_order_put_request import VpsOrderPutRequest
+from interserver_api_client.models.vps_order_put_request import VpsOrderPutRequest
 
 class TestVpsOrderPutRequest(unittest.TestCase):
     """VpsOrderPutRequest unit test stubs"""

@@ -1,15 +1,15 @@
-# openapi.model.MailExtraInfoTableRow
+# interserver_api.model.MailExtraInfoTableRow
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**desc** | **String** | The description of the extra info table row. | [optional] 
-**value** | **String** | The value of the extra info table row. | [optional] 
+**desc** | **Optional&lt;String?&gt;** | The description of the extra info table row. | [optional] 
+**value** | **Optional&lt;String?&gt;** | The value of the extra info table row. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

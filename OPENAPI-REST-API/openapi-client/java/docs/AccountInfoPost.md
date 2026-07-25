@@ -27,4 +27,8 @@ Request to update account information.
 |**gstin** | **String** | Your GST identification number (if applicable). |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

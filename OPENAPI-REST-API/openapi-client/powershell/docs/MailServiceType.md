@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailServiceType = Initialize-PSOpenAPIToolsMailServiceType  -ServicesId 10880 `
+$MailServiceType = Initialize-InterserverApiMailServiceType  -ServicesId 10880 `
  -ServicesName MailBaby Mail `
  -ServicesCost 1.00 `
  -ServicesCategory 800 `

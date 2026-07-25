@@ -1,4 +1,4 @@
-# openapi::HostnameObject
+# interserverapi::HostnameObject
 
 Request specifying the hostname.
 

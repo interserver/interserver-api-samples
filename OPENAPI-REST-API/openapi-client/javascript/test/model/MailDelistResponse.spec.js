@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailDelistResponse();
+    instance = new InterserverApiClient.MailDelistResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('MailDelistResponse', function() {
     it('should create an instance of MailDelistResponse', function() {
       // uncomment below and update the code to test MailDelistResponse
-      //var instance = new InterServerManagementApi.MailDelistResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.MailDelistResponse);
+      //var instance = new InterserverApiClient.MailDelistResponse();
+      //expect(instance).to.be.a(InterserverApiClient.MailDelistResponse);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.MailDelistResponse();
+      //var instance = new InterserverApiClient.MailDelistResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property local (base name: "local")', function() {
       // uncomment below and update the code to test the property local
-      //var instance = new InterServerManagementApi.MailDelistResponse();
+      //var instance = new InterserverApiClient.MailDelistResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property mbtrap (base name: "mbtrap")', function() {
       // uncomment below and update the code to test the property mbtrap
-      //var instance = new InterServerManagementApi.MailDelistResponse();
+      //var instance = new InterserverApiClient.MailDelistResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property subject (base name: "subject")', function() {
       // uncomment below and update the code to test the property subject
-      //var instance = new InterServerManagementApi.MailDelistResponse();
+      //var instance = new InterserverApiClient.MailDelistResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property manual (base name: "manual")', function() {
       // uncomment below and update the code to test the property manual
-      //var instance = new InterServerManagementApi.MailDelistResponse();
+      //var instance = new InterserverApiClient.MailDelistResponse();
       //expect(instance).to.be();
     });
 

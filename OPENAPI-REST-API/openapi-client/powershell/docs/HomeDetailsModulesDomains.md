@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeDetailsModulesDomains = Initialize-PSOpenAPIToolsHomeDetailsModulesDomains  -Icon globe `
+$HomeDetailsModulesDomains = Initialize-InterserverApiHomeDetailsModulesDomains  -Icon globe `
  -ViewLink view_domain `
  -Heading Domains `
  -BuyLink domain_order `

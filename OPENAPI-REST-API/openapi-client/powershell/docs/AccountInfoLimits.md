@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoLimits = Initialize-PSOpenAPIToolsAccountInfoLimits 
+$AccountInfoLimits = Initialize-InterserverApiAccountInfoLimits 
 ```
 
 - Convert the resource to JSON

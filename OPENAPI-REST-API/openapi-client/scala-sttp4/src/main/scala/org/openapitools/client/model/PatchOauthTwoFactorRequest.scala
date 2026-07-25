@@ -18,4 +18,3 @@ case class PatchOauthTwoFactorRequest(
   /* The 6-digit two-factor authentication code. */
   code: String
 )
-

@@ -22,4 +22,8 @@
 |**servicesHidden** | **String** | Indicates if the package is hidden (1 for yes, 0 for no). |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

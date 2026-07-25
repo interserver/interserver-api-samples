@@ -1,4 +1,4 @@
-# openapi::SslCancel200Response
+# interserverapi::SslCancel200Response
 
 
 ## Properties

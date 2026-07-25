@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
+    instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('GetScrubIpDetails200ResponseFilterFirewallFiltersInner', function() {
     it('should create an instance of GetScrubIpDetails200ResponseFilterFirewallFiltersInner', function() {
       // uncomment below and update the code to test GetScrubIpDetails200ResponseFilterFirewallFiltersInner
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
-      //expect(instance).to.be.a(InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewallFiltersInner);
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
+      //expect(instance).to.be.a(InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewallFiltersInner);
     });
 
     it('should have the property daddr (base name: "daddr")', function() {
       // uncomment below and update the code to test the property daddr
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
       //expect(instance).to.be();
     });
 
     it('should have the property dest (base name: "dest")', function() {
       // uncomment below and update the code to test the property dest
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
       //expect(instance).to.be();
     });
 
     it('should have the property filter_name (base name: "filter_name")', function() {
       // uncomment below and update the code to test the property filter_name
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
       //expect(instance).to.be();
     });
 
     it('should have the property destination_ip (base name: "destination_ip")', function() {
       // uncomment below and update the code to test the property destination_ip
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
       //expect(instance).to.be();
     });
 
     it('should have the property filter (base name: "filter")', function() {
       // uncomment below and update the code to test the property filter
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseFilterFirewallFiltersInner();
       //expect(instance).to.be();
     });
 

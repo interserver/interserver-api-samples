@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ScrubIpsDeleteRule500Response } from './api';
+import { ScrubIpsDeleteRule500Response } from '@interserver/myadmin-client';
 
 const instance: ScrubIpsDeleteRule500Response = {
     success,

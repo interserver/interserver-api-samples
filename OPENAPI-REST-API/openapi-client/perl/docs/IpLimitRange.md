@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::IpLimitRange
+# InterServerAPI::Object::IpLimitRange
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::IpLimitRange;
+use InterServerAPI::Object::IpLimitRange;
 ```
 
 ## Properties

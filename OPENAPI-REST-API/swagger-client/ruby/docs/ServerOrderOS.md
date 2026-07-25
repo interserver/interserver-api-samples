@@ -1,4 +1,4 @@
-# SwaggerClient::ServerOrderOS
+# InterserverApiClient::ServerOrderOS
 
 ## Properties
 Name | Type | Description | Notes

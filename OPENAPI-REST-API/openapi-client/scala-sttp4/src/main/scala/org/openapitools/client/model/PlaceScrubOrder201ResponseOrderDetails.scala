@@ -19,4 +19,3 @@ case class PlaceScrubOrder201ResponseOrderDetails(
   invoice_description: Option[String] = None,
   cj_params: Option[PlaceScrubOrder201ResponseOrderDetailsCjParams] = None
 )
-

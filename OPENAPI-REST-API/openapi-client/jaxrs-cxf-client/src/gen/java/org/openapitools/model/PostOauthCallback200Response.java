@@ -47,7 +47,7 @@ public class PostOauthCallback200Response  {
    * @return login
   **/
   @JsonProperty("login")
-  public Boolean getLogin() {
+  public Boolean isLogin() {
     return login;
   }
 
@@ -65,7 +65,7 @@ public class PostOauthCallback200Response  {
    * @return signup
   **/
   @JsonProperty("signup")
-  public Boolean getSignup() {
+  public Boolean isSignup() {
     return signup;
   }
 
@@ -83,7 +83,7 @@ public class PostOauthCallback200Response  {
    * @return linked
   **/
   @JsonProperty("linked")
-  public Boolean getLinked() {
+  public Boolean isLinked() {
     return linked;
   }
 

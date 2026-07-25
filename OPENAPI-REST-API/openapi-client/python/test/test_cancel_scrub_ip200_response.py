@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.cancel_scrub_ip200_response import CancelScrubIp200Response
+from interserver_api_client.models.cancel_scrub_ip200_response import CancelScrubIp200Response
 
 class TestCancelScrubIp200Response(unittest.TestCase):
     """CancelScrubIp200Response unit test stubs"""

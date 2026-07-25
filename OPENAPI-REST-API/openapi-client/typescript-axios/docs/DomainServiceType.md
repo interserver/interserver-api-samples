@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainServiceType } from './api';
+import { DomainServiceType } from '@interserver/myadmin-client';
 
 const instance: DomainServiceType = {
     services_id,

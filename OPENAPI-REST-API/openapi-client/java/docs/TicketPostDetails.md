@@ -10,4 +10,8 @@ Fetches every posts of ticket
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SendMail = Initialize-PSOpenAPIToolsSendMail  -To johndoe@company.com `
+$SendMail = Initialize-InterserverApiSendMail  -To johndoe@company.com `
  -VarFrom janedoe@company.com `
  -Subject Attention Client `
  -Body This is an email to inform you that something noteworthy happened.

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { FloatingIpsCancel200Response } from './api';
+import { FloatingIpsCancel200Response } from '@interserver/myadmin-client';
 
 const instance: FloatingIpsCancel200Response = {
     success,

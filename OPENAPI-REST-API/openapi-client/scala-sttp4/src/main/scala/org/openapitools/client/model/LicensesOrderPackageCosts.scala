@@ -19,4 +19,3 @@ case class LicensesOrderPackageCosts(
   /* Cost of package with ID 11468 */
   LicensesOrderPackageCosts11468: Option[Double] = None
 )
-

@@ -19,4 +19,8 @@ Service type definition for a mail service, including name, pricing, and categor
 |**servicesModule** | **String** | The module of the service type. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

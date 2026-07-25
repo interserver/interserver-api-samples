@@ -12,4 +12,8 @@ Place ScrubIP Order
 |**ip** | **String** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

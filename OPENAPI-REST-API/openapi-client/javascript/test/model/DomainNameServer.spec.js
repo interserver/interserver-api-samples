@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainNameServer();
+    instance = new InterserverApiClient.DomainNameServer();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('DomainNameServer', function() {
     it('should create an instance of DomainNameServer', function() {
       // uncomment below and update the code to test DomainNameServer
-      //var instance = new InterServerManagementApi.DomainNameServer();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainNameServer);
+      //var instance = new InterserverApiClient.DomainNameServer();
+      //expect(instance).to.be.a(InterserverApiClient.DomainNameServer);
     });
 
     it('should have the property sortorder (base name: "sortorder")', function() {
       // uncomment below and update the code to test the property sortorder
-      //var instance = new InterServerManagementApi.DomainNameServer();
+      //var instance = new InterserverApiClient.DomainNameServer();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.DomainNameServer();
+      //var instance = new InterserverApiClient.DomainNameServer();
       //expect(instance).to.be();
     });
 
     it('should have the property ipaddress (base name: "ipaddress")', function() {
       // uncomment below and update the code to test the property ipaddress
-      //var instance = new InterServerManagementApi.DomainNameServer();
+      //var instance = new InterserverApiClient.DomainNameServer();
       //expect(instance).to.be();
     });
 

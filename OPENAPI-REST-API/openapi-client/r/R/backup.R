@@ -199,7 +199,7 @@ Backup <- R6::R6Class(
         self$`serviceInfo` <- `serviceinfo_object`
       }
       if (!is.null(this_object$`client_links`)) {
-        self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[BackupClientLink]", loadNamespace("openapi"))
+        self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[BackupClientLink]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`billingDetails`)) {
         `billingdetails_object` <- BackupBillingDetails$new()
@@ -250,7 +250,7 @@ Backup <- R6::R6Class(
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       self$`serviceInfo` <- BackupServiceInfo$new()$fromJSON(jsonlite::toJSON(this_object$`serviceInfo`, auto_unbox = TRUE, digits = NA))
-      self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[BackupClientLink]", loadNamespace("openapi"))
+      self$`client_links` <- ApiClient$new()$deserializeObj(this_object$`client_links`, "array[BackupClientLink]", loadNamespace("interserverapi"))
       self$`billingDetails` <- BackupBillingDetails$new()$fromJSON(jsonlite::toJSON(this_object$`billingDetails`, auto_unbox = TRUE, digits = NA))
       self$`custCurrency` <- this_object$`custCurrency`
       self$`custCurrencySymbol` <- this_object$`custCurrencySymbol`

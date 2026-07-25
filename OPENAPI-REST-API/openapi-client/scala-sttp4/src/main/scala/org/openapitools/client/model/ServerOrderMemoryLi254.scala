@@ -15,4 +15,3 @@ package org.openapitools.client.model
 case class ServerOrderMemoryLi254(
   `65`: Option[ServerOrderMemory] = None
 )
-

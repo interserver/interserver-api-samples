@@ -1,4 +1,4 @@
-# InterServerManagementApi.LoginSubmissionExampleGRecaptchaResponseDep
+# InterserverApiClient.LoginSubmissionExampleGRecaptchaResponseDep
 
 ## Properties
 

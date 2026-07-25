@@ -28,4 +28,3 @@ case class BackupOrderPutResponse(
   coupon: Option[String] = None,
   couponCode: Option[Int] = None
 )
-

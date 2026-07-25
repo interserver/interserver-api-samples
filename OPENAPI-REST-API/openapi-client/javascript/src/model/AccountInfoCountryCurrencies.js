@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AccountInfoCountryCurrencies model module.
  * @module model/AccountInfoCountryCurrencies
- * @version 0.9.0
+ * @version 1.0.0
  */
 class AccountInfoCountryCurrencies {
     /**

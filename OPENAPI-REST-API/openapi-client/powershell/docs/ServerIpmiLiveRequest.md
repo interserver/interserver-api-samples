@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerIpmiLiveRequest = Initialize-PSOpenAPIToolsServerIpmiLiveRequest  -Asset 5431 `
+$ServerIpmiLiveRequest = Initialize-InterserverApiServerIpmiLiveRequest  -Asset 5431 `
  -Ip 1.2.3.4
 ```
 

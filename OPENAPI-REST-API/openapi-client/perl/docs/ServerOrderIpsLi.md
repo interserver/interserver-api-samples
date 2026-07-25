@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerOrderIpsLi
+# InterServerAPI::Object::ServerOrderIpsLi
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerOrderIpsLi;
+use InterServerAPI::Object::ServerOrderIpsLi;
 ```
 
 ## Properties

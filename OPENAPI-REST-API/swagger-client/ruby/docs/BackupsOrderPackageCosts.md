@@ -1,4 +1,4 @@
-# SwaggerClient::BackupsOrderPackageCosts
+# InterserverApiClient::BackupsOrderPackageCosts
 
 ## Properties
 Name | Type | Description | Notes

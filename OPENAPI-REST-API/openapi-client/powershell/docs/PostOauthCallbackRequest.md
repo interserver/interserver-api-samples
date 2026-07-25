@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PostOauthCallbackRequest = Initialize-PSOpenAPIToolsPostOauthCallbackRequest  -Provider null
+$PostOauthCallbackRequest = Initialize-InterserverApiPostOauthCallbackRequest  -Provider null
 ```
 
 - Convert the resource to JSON

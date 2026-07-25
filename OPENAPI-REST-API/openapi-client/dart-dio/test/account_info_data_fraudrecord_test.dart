@@ -1,28 +1,28 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for AccountInfoDataFraudrecord
 void main() {
-  final instance = AccountInfoDataFraudrecordBuilder();
-  // TODO add properties to the builder and call build()
+  final AccountInfoDataFraudrecord? instance = /* AccountInfoDataFraudrecord(...) */ null;
+  // TODO add properties to the entity
 
   group(AccountInfoDataFraudrecord, () {
-    // String score
+    // Optional<String?> score
     test('to test the property `score`', () async {
       // TODO
     });
 
-    // String count
+    // Optional<String?> count
     test('to test the property `count`', () async {
       // TODO
     });
 
-    // String reliability
+    // Optional<String?> reliability
     test('to test the property `reliability`', () async {
       // TODO
     });
 
-    // String code
+    // Optional<String?> code
     test('to test the property `code`', () async {
       // TODO
     });

@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailAlertsResponseInner
+# InterserverApiClient.MailAlertsResponseInner
 
 ## Properties
 

@@ -111,16 +111,16 @@ DomainDnssecRequest <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`algorithm`)) {
-        self$`algorithm` <- ApiClient$new()$deserializeObj(this_object$`algorithm`, "array[integer]", loadNamespace("openapi"))
+        self$`algorithm` <- ApiClient$new()$deserializeObj(this_object$`algorithm`, "array[integer]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`digest_type`)) {
-        self$`digest_type` <- ApiClient$new()$deserializeObj(this_object$`digest_type`, "array[integer]", loadNamespace("openapi"))
+        self$`digest_type` <- ApiClient$new()$deserializeObj(this_object$`digest_type`, "array[integer]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`digest`)) {
-        self$`digest` <- ApiClient$new()$deserializeObj(this_object$`digest`, "array[character]", loadNamespace("openapi"))
+        self$`digest` <- ApiClient$new()$deserializeObj(this_object$`digest`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`key_tag`)) {
-        self$`key_tag` <- ApiClient$new()$deserializeObj(this_object$`key_tag`, "array[integer]", loadNamespace("openapi"))
+        self$`key_tag` <- ApiClient$new()$deserializeObj(this_object$`key_tag`, "array[integer]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -143,10 +143,10 @@ DomainDnssecRequest <- R6::R6Class(
     #' @return the instance of DomainDnssecRequest
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`algorithm` <- ApiClient$new()$deserializeObj(this_object$`algorithm`, "array[integer]", loadNamespace("openapi"))
-      self$`digest_type` <- ApiClient$new()$deserializeObj(this_object$`digest_type`, "array[integer]", loadNamespace("openapi"))
-      self$`digest` <- ApiClient$new()$deserializeObj(this_object$`digest`, "array[character]", loadNamespace("openapi"))
-      self$`key_tag` <- ApiClient$new()$deserializeObj(this_object$`key_tag`, "array[integer]", loadNamespace("openapi"))
+      self$`algorithm` <- ApiClient$new()$deserializeObj(this_object$`algorithm`, "array[integer]", loadNamespace("interserverapi"))
+      self$`digest_type` <- ApiClient$new()$deserializeObj(this_object$`digest_type`, "array[integer]", loadNamespace("interserverapi"))
+      self$`digest` <- ApiClient$new()$deserializeObj(this_object$`digest`, "array[character]", loadNamespace("interserverapi"))
+      self$`key_tag` <- ApiClient$new()$deserializeObj(this_object$`key_tag`, "array[integer]", loadNamespace("interserverapi"))
       self
     },
 

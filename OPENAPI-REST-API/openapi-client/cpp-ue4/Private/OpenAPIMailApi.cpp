@@ -808,6 +808,33 @@ void OpenAPIMailApi::OnUpdateMailInfoResponse(FHttpRequestPtr HttpRequest, FHttp
 	Delegate.ExecuteIfBound(Response);
 }
 
+FHttpRequestPtr OpenAPIMailApi::UpdateRule(const UpdateRuleRequest& Request, const FUpdateRuleDelegate& Delegate /*= FUpdateRuleDelegate()*/) const
+{
+	if (!IsValid())
+		return nullptr;
+
+	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
+	HttpRequest->SetURL(*(Url + Request.ComputePath()));
+
+	for(const auto& It : AdditionalHeaderParams)
+	{
+		HttpRequest->SetHeader(It.Key, It.Value);
+	}
+
+	Request.SetupHttpRequest(HttpRequest);
+
+	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIMailApi::OnUpdateRuleResponse, Delegate);
+	HttpRequest->ProcessRequest();
+	return HttpRequest;
+}
+
+void OpenAPIMailApi::OnUpdateRuleResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FUpdateRuleDelegate Delegate) const
+{
+	UpdateRuleResponse Response;
+	HandleResponse(HttpResponse, bSucceeded, Response);
+	Delegate.ExecuteIfBound(Response);
+}
+
 FHttpRequestPtr OpenAPIMailApi::ViewMailLog(const ViewMailLogRequest& Request, const FViewMailLogDelegate& Delegate /*= FViewMailLogDelegate()*/) const
 {
 	if (!IsValid())

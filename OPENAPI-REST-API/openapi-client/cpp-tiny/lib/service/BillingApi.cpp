@@ -8,83 +8,6 @@ using namespace Tiny;
             SuccessTextResponse
         >
         BillingApi::
-        addAccountCreditCard(
-            
-            std::string name
-            , 
-            
-            std::string address
-            , 
-            
-            std::string city
-            , 
-            
-            std::string state
-            , 
-            
-            std::string country
-            , 
-            
-            std::string zip
-            , 
-            
-            std::string cc
-            , 
-            
-            std::string ccExp
-            , 
-            
-            std::string ccCcv2
-            
-        )
-        {
-            std::string url = basepath + "/account/creditcards"; //
-
-
-            // Headers  | 
-
-            // Query    | 
-
-            // Form     | name address city state country zip cc ccExp ccCcv2 
-            addHeader("Content-Type", "application/x-www-form-urlencoded");
-
-            addFormParam("name",name);
-            addFormParam("address",address);
-            addFormParam("city",city);
-            addFormParam("state",state);
-            addFormParam("country",country);
-            addFormParam("zip",zip);
-            addFormParam("cc",cc);
-            addFormParam("cc_exp",ccExp);
-            addFormParam("cc_ccv2",ccCcv2);
-
-
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | POST
-            // Body     | 
-            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-
-
-            SuccessTextResponse obj(output_string);
-
-
-            Response<SuccessTextResponse> response(obj, httpCode);
-            return response;
-        }
-
-        Response<
-            SuccessTextResponse
-        >
-        BillingApi::
         addBillingCreditCard(
             
             BillingAddCcRequest billingAddCcRequest
@@ -176,59 +99,6 @@ using namespace Tiny;
 
 
             Response<SuccessTextResponse> response(obj, httpCode);
-            return response;
-        }
-
-        Response<
-            std::string
-        >
-        BillingApi::
-        deleteAccountCreditCard(
-            
-            std::string id
-            
-        )
-        {
-            std::string url = basepath + "/account/creditcards/{id}"; //id 
-
-
-            // Headers  | 
-
-            // Query    | 
-
-            // Form     | 
-
-
-
-                std::string s_id("{");
-                s_id.append("id");
-                s_id.append("}");
-
-                int pos = url.find(s_id);
-
-                url.erase(pos, s_id.length());
-                url.insert(pos, stringify(id));
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | DELETE
-            // Body     | 
-            int httpCode = sendRequest(url, "DELETE", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-
-            bourne::json jsonPayload(output_string);
-            std::string obj;
-            jsonToValue(&obj, jsonPayload, "std::string");
-
-
-
-            Response<std::string> response(obj, httpCode);
             return response;
         }
 
@@ -446,6 +316,53 @@ using namespace Tiny;
         }
 
         Response<
+            String
+        >
+        BillingApi::
+        getAffiliateDownload(
+            
+            std::string st
+            , 
+            
+            std::string ex
+            , 
+            
+            int year
+            
+        )
+        {
+            std::string url = basepath + "/affiliate/download"; //
+
+
+            // Headers  | 
+
+            // Query    | st ex year 
+            addQueryParam("st",st);
+            addQueryParam("ex",ex);
+            addQueryParam("year",year);
+
+            // Form     | 
+
+
+
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | GET
+            // Body     | 
+            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+            Response<String> response(output, httpCode);
+            return response;
+        }
+
+        Response<
             TextResponse
         >
         BillingApi::
@@ -530,18 +447,22 @@ using namespace Tiny;
         }
 
         Response<
-            TextResponse
+            GetAffiliateSignups_200_response
         >
         BillingApi::
-        getAffiliateSalesReport(
+        getAffiliateSignups(
+            
+            std::string st
+            
         )
         {
-            std::string url = basepath + "/affiliate/sales_report"; //
+            std::string url = basepath + "/affiliate/signups"; //
 
 
             // Headers  | 
 
-            // Query    | 
+            // Query    | st 
+            addQueryParam("st",st);
 
             // Form     | 
 
@@ -562,10 +483,10 @@ using namespace Tiny;
 
 
 
-            TextResponse obj(output_string);
+            GetAffiliateSignups_200_response obj(output_string);
 
 
-            Response<TextResponse> response(obj, httpCode);
+            Response<GetAffiliateSignups_200_response> response(obj, httpCode);
             return response;
         }
 
@@ -896,78 +817,6 @@ using namespace Tiny;
         }
 
         Response<
-            std::list<Invoice>
-        >
-        BillingApi::
-        getInvoices(
-            
-            std::string searchString
-            , 
-            
-            int skip
-            , 
-            
-            int limit
-            
-        )
-        {
-            std::string url = basepath + "/invoices"; //
-
-
-            // Headers  | 
-
-            // Query    | searchString skip limit 
-            addQueryParam("searchString",searchString);
-            addQueryParam("skip",skip);
-            addQueryParam("limit",limit);
-
-            // Form     | 
-
-
-
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | GET
-            // Body     | 
-            int httpCode = sendRequest(url, "GET", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-
-            std::list<Invoice> obj = std::list<Invoice>();
-            bourne::json jsonPayload(output_string);
-
-
-
-
-
-
-
-
-            
-            for(auto& var : jsonPayload.array_range())
-            {
-                Invoice tmp(var.dump());
-                obj.push_back(tmp);
-            }
-            
-
-
-
-
-
-
-
-            Response<std::list<Invoice>> response(obj, httpCode);
-            return response;
-        }
-
-        Response<
             InitiatePayment_200_response
         >
         BillingApi::
@@ -980,7 +829,7 @@ using namespace Tiny;
             
         )
         {
-            std::string url = basepath + "/pay/{method}/{invoices}"; //method invoices 
+            std::string url = basepath + "/billing/pay/{method}/{invoices}"; //method invoices 
 
 
             // Headers  | 
@@ -1026,6 +875,66 @@ using namespace Tiny;
 
 
             Response<InitiatePayment_200_response> response(obj, httpCode);
+            return response;
+        }
+
+        Response<
+            SuccessTextResponse
+        >
+        BillingApi::
+        patchBillingCreditCardVerify(
+            
+            int id
+            , 
+            
+            PatchBillingCreditCardVerify_request patchBillingCreditCardVerifyRequest
+            
+        )
+        {
+            std::string url = basepath + "/billing/creditcards/{id}/verify"; //id 
+
+
+            // Headers  | 
+
+            // Query    | 
+
+            // Form     | 
+            addHeader("Content-Type", "application/json");
+
+
+
+                std::string s_id("{");
+                s_id.append("id");
+                s_id.append("}");
+
+                int pos = url.find(s_id);
+
+                url.erase(pos, s_id.length());
+                url.insert(pos, stringify(id));
+
+
+            std::string payload = "";
+            // Send Request
+            // METHOD | PATCH
+            // Body     | patchBillingCreditCardVerifyRequest
+
+
+
+            payload = patchBillingCreditCardVerifyRequest.toJson().dump();
+
+            int httpCode = sendRequest(url, "PATCH", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
+
+            // Handle Request
+            String output = getResponseBody();
+            std::string output_string = output.c_str();
+
+
+
+
+            SuccessTextResponse obj(output_string);
+
+
+            Response<SuccessTextResponse> response(obj, httpCode);
             return response;
         }
 
@@ -1090,59 +999,6 @@ using namespace Tiny;
         }
 
         Response<
-            std::string
-        >
-        BillingApi::
-        updateAccountCreditCard(
-            
-            int id
-            
-        )
-        {
-            std::string url = basepath + "/account/creditcards/{id}"; //id 
-
-
-            // Headers  | 
-
-            // Query    | 
-
-            // Form     | 
-
-
-
-                std::string s_id("{");
-                s_id.append("id");
-                s_id.append("}");
-
-                int pos = url.find(s_id);
-
-                url.erase(pos, s_id.length());
-                url.insert(pos, stringify(id));
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | POST
-            // Body     | 
-            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-
-            bourne::json jsonPayload(output_string);
-            std::string obj;
-            jsonToValue(&obj, jsonPayload, "std::string");
-
-
-
-            Response<std::string> response(obj, httpCode);
-            return response;
-        }
-
-        Response<
             TextResponse
         >
         BillingApi::
@@ -1159,59 +1015,6 @@ using namespace Tiny;
         )
         {
             std::string url = basepath + "/affiliate/dock_setup"; //
-
-
-            // Headers  | 
-
-            // Query    | 
-
-            // Form     | affiliateDockTitle affiliateDockDescription referrerCoupon 
-            addHeader("Content-Type", "application/x-www-form-urlencoded");
-
-            addFormParam("affiliate_dock_title",affiliateDockTitle);
-            addFormParam("affiliate_dock_description",affiliateDockDescription);
-            addFormParam("referrer_coupon",referrerCoupon);
-
-
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | POST
-            // Body     | 
-            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-
-
-            TextResponse obj(output_string);
-
-
-            Response<TextResponse> response(obj, httpCode);
-            return response;
-        }
-
-        Response<
-            TextResponse
-        >
-        BillingApi::
-        updateAffiliateLandingPage(
-            
-            std::string affiliateDockTitle
-            , 
-            
-            std::string affiliateDockDescription
-            , 
-            
-            std::string referrerCoupon
-            
-        )
-        {
-            std::string url = basepath + "/affiliate/landing_pg"; //
 
 
             // Headers  | 

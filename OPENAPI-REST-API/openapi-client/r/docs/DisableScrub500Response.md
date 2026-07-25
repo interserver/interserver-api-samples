@@ -1,4 +1,4 @@
-# openapi::DisableScrub500Response
+# interserverapi::DisableScrub500Response
 
 
 ## Properties

@@ -17,25 +17,25 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_dns_domain Create DNS Domain
+#' add_dns_domain Create a new authoritative DNS zone seeded with apex A + NS + SOA records
 #'
 #'
-#' add_dns_record Add DNS Record to Domain
+#' add_dns_record Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
 #'
 #'
-#' delete_dns_domain Delete DNS Domain
+#' delete_dns_domain Permanently delete a DNS zone and every record it contains
 #'
 #'
-#' delete_dns_record Delete DNS Record
+#' delete_dns_record Permanently delete one DNS record from a zone — zone itself is preserved
 #'
 #'
-#' get_dns_domain List Domain DNS Records
+#' get_dns_domain List every DNS record in one zone with the IDs needed to edit or delete them
 #'
 #'
-#' get_dns_list List DNS Domains
+#' get_dns_list List DNS zones hosted on the account with each zone&#x27;s apex A-record IP
 #'
 #'
-#' update_dns_record Update DNS Record
+#' update_dns_record Replace values on an existing DNS record (name, type, content, ttl, priority)
 #'
 #' }
 #'

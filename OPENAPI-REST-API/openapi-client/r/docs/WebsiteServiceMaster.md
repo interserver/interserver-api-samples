@@ -1,4 +1,4 @@
-# openapi::WebsiteServiceMaster
+# interserverapi::WebsiteServiceMaster
 
 
 ## Properties

@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { Domain } from './api';
+import { Domain } from '@interserver/myadmin-client';
 
 const instance: Domain = {
     serviceInfo,

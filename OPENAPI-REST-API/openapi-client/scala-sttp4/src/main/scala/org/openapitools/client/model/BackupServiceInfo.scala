@@ -47,4 +47,3 @@ case class BackupServiceInfo(
   /* Backup comment. */
   backup_comment: Option[String] = None
 )
-

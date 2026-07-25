@@ -47,8 +47,6 @@ src/gatling/scala/org/openapitools/client/model/AffiliateBannerRow.scala
 src/gatling/scala/org/openapitools/client/model/AffiliateDockSetup.scala
 src/gatling/scala/org/openapitools/client/model/AffiliatePaymentSetup.scala
 src/gatling/scala/org/openapitools/client/model/AffiliateTrafficRow.scala
-src/gatling/scala/org/openapitools/client/model/AssetServer.scala
-src/gatling/scala/org/openapitools/client/model/AssetServerCPUInner.scala
 src/gatling/scala/org/openapitools/client/model/Backup.scala
 src/gatling/scala/org/openapitools/client/model/BackupBillingDetails.scala
 src/gatling/scala/org/openapitools/client/model/BackupClientLink.scala
@@ -66,7 +64,6 @@ src/gatling/scala/org/openapitools/client/model/BackupServiceMaster.scala
 src/gatling/scala/org/openapitools/client/model/BackupsOrder.scala
 src/gatling/scala/org/openapitools/client/model/BackupsOrderPackageCosts.scala
 src/gatling/scala/org/openapitools/client/model/BackupsOrderServiceTypes.scala
-src/gatling/scala/org/openapitools/client/model/Bandwidth.scala
 src/gatling/scala/org/openapitools/client/model/BillingAddCcRequest.scala
 src/gatling/scala/org/openapitools/client/model/BillingInvoiceDetail.scala
 src/gatling/scala/org/openapitools/client/model/BillingInvoiceList.scala
@@ -92,11 +89,6 @@ src/gatling/scala/org/openapitools/client/model/ChargeInvoiceRowsInvoicesValue.s
 src/gatling/scala/org/openapitools/client/model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.scala
 src/gatling/scala/org/openapitools/client/model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.scala
 src/gatling/scala/org/openapitools/client/model/CloseTicketResponseSchema.scala
-src/gatling/scala/org/openapitools/client/model/ConfigIds.scala
-src/gatling/scala/org/openapitools/client/model/ConfigLists.scala
-src/gatling/scala/org/openapitools/client/model/ControlPanel.scala
-src/gatling/scala/org/openapitools/client/model/Cpu.scala
-src/gatling/scala/org/openapitools/client/model/CpuWithDefaults.scala
 src/gatling/scala/org/openapitools/client/model/CreateFilter.scala
 src/gatling/scala/org/openapitools/client/model/CreateFilter201Response.scala
 src/gatling/scala/org/openapitools/client/model/CreateFilter400Response.scala
@@ -112,6 +104,7 @@ src/gatling/scala/org/openapitools/client/model/DeleteFilter400Response.scala
 src/gatling/scala/org/openapitools/client/model/DeleteFilter500Response.scala
 src/gatling/scala/org/openapitools/client/model/DeleteFirewallRule.scala
 src/gatling/scala/org/openapitools/client/model/DeleteGeoFirewallRule.scala
+src/gatling/scala/org/openapitools/client/model/DeleteMailAlertRequest.scala
 src/gatling/scala/org/openapitools/client/model/DenyRuleNew.scala
 src/gatling/scala/org/openapitools/client/model/DenyRuleRecord.scala
 src/gatling/scala/org/openapitools/client/model/DisableScrub200Response.scala
@@ -142,11 +135,11 @@ src/gatling/scala/org/openapitools/client/model/DomainNameserverGetResponseInner
 src/gatling/scala/org/openapitools/client/model/DomainNameserverPostRequest.scala
 src/gatling/scala/org/openapitools/client/model/DomainNameserverPutRequest.scala
 src/gatling/scala/org/openapitools/client/model/DomainOrder.scala
+src/gatling/scala/org/openapitools/client/model/DomainOrderRequest.scala
 src/gatling/scala/org/openapitools/client/model/DomainOrderResponse.scala
 src/gatling/scala/org/openapitools/client/model/DomainOrderResponseAttributes.scala
 src/gatling/scala/org/openapitools/client/model/DomainOrderServices.scala
 src/gatling/scala/org/openapitools/client/model/DomainOrderServices10001.scala
-src/gatling/scala/org/openapitools/client/model/DomainOrderTldServices.scala
 src/gatling/scala/org/openapitools/client/model/DomainOwnerContact.scala
 src/gatling/scala/org/openapitools/client/model/DomainProvProcessPending.scala
 src/gatling/scala/org/openapitools/client/model/DomainProvProcessPendingAttributes.scala
@@ -162,12 +155,13 @@ src/gatling/scala/org/openapitools/client/model/EmailAddress.scala
 src/gatling/scala/org/openapitools/client/model/EmailAddressName.scala
 src/gatling/scala/org/openapitools/client/model/EnableScrub200Response.scala
 src/gatling/scala/org/openapitools/client/model/EnableScrub500Response.scala
-src/gatling/scala/org/openapitools/client/model/FieldLabel.scala
+src/gatling/scala/org/openapitools/client/model/FloatingIpOrderRequest.scala
 src/gatling/scala/org/openapitools/client/model/FloatingIpsCancel200Response.scala
-src/gatling/scala/org/openapitools/client/model/FormValues.scala
 src/gatling/scala/org/openapitools/client/model/GenericResponse.scala
 src/gatling/scala/org/openapitools/client/model/GetAccountInfo401Response.scala
+src/gatling/scala/org/openapitools/client/model/GetAccountLocales200ResponseValue.scala
 src/gatling/scala/org/openapitools/client/model/GetAccountTfaSetup200Response.scala
+src/gatling/scala/org/openapitools/client/model/GetAffiliateSignups200Response.scala
 src/gatling/scala/org/openapitools/client/model/GetOauthRedirect200Response.scala
 src/gatling/scala/org/openapitools/client/model/GetOrderDetail200Response.scala
 src/gatling/scala/org/openapitools/client/model/GetOrderDetail200ResponseIpsInner.scala
@@ -184,7 +178,6 @@ src/gatling/scala/org/openapitools/client/model/GetScrubIpDetails200ResponseFilt
 src/gatling/scala/org/openapitools/client/model/GetScrubIpDetails200ResponseFilterFirewallRulesInner.scala
 src/gatling/scala/org/openapitools/client/model/GetScrubIpDetails200ResponseServiceInfo.scala
 src/gatling/scala/org/openapitools/client/model/GetWebsiteBuyIp200Response.scala
-src/gatling/scala/org/openapitools/client/model/HardDrive.scala
 src/gatling/scala/org/openapitools/client/model/Home.scala
 src/gatling/scala/org/openapitools/client/model/HomeDetails.scala
 src/gatling/scala/org/openapitools/client/model/HomeDetailsModules.scala
@@ -211,10 +204,6 @@ src/gatling/scala/org/openapitools/client/model/HomeTicketStatus.scala
 src/gatling/scala/org/openapitools/client/model/HomeTicketStatusView.scala
 src/gatling/scala/org/openapitools/client/model/HostnameObject.scala
 src/gatling/scala/org/openapitools/client/model/InitiatePayment200Response.scala
-src/gatling/scala/org/openapitools/client/model/InlineObject.scala
-src/gatling/scala/org/openapitools/client/model/Invoice.scala
-src/gatling/scala/org/openapitools/client/model/InvoiceRow.scala
-src/gatling/scala/org/openapitools/client/model/IpBlock.scala
 src/gatling/scala/org/openapitools/client/model/IpLimitRange.scala
 src/gatling/scala/org/openapitools/client/model/IpObject.scala
 src/gatling/scala/org/openapitools/client/model/License.scala
@@ -223,6 +212,7 @@ src/gatling/scala/org/openapitools/client/model/LicenseClientLink.scala
 src/gatling/scala/org/openapitools/client/model/LicenseExtraInfoTables.scala
 src/gatling/scala/org/openapitools/client/model/LicenseIpInfo.scala
 src/gatling/scala/org/openapitools/client/model/LicenseIpInfoRow.scala
+src/gatling/scala/org/openapitools/client/model/LicenseOrderRequest.scala
 src/gatling/scala/org/openapitools/client/model/LicenseRow.scala
 src/gatling/scala/org/openapitools/client/model/LicenseServiceInfo.scala
 src/gatling/scala/org/openapitools/client/model/LicenseServiceType.scala
@@ -259,6 +249,7 @@ src/gatling/scala/org/openapitools/client/model/MailExtraInfoTableRow.scala
 src/gatling/scala/org/openapitools/client/model/MailLog.scala
 src/gatling/scala/org/openapitools/client/model/MailLogEntry.scala
 src/gatling/scala/org/openapitools/client/model/MailOrder.scala
+src/gatling/scala/org/openapitools/client/model/MailOrderRequest.scala
 src/gatling/scala/org/openapitools/client/model/MailRow.scala
 src/gatling/scala/org/openapitools/client/model/MailSchema.scala
 src/gatling/scala/org/openapitools/client/model/MailSchemaExtraInfoTables.scala
@@ -271,15 +262,13 @@ src/gatling/scala/org/openapitools/client/model/MailStatsTypeVolumeIp.scala
 src/gatling/scala/org/openapitools/client/model/MailStatsTypeVolumeTo.scala
 src/gatling/scala/org/openapitools/client/model/MailTutorialsTable.scala
 src/gatling/scala/org/openapitools/client/model/MailTutorialsTableRow.scala
-src/gatling/scala/org/openapitools/client/model/MemoryOption.scala
 src/gatling/scala/org/openapitools/client/model/ModuleSettings.scala
 src/gatling/scala/org/openapitools/client/model/Modules.scala
 src/gatling/scala/org/openapitools/client/model/MonthlyCounts.scala
-src/gatling/scala/org/openapitools/client/model/OperatingSystem.scala
 src/gatling/scala/org/openapitools/client/model/PasswordRequest.scala
+src/gatling/scala/org/openapitools/client/model/PatchBillingCreditCardVerifyRequest.scala
 src/gatling/scala/org/openapitools/client/model/PatchOauthTwoFactor200Response.scala
 src/gatling/scala/org/openapitools/client/model/PatchOauthTwoFactorRequest.scala
-src/gatling/scala/org/openapitools/client/model/PaymentInvoiceRows.scala
 src/gatling/scala/org/openapitools/client/model/PlaceBuyNowServerRequest.scala
 src/gatling/scala/org/openapitools/client/model/PlaceScrubOrder201Response.scala
 src/gatling/scala/org/openapitools/client/model/PlaceScrubOrder201ResponseOrderDetails.scala
@@ -290,6 +279,8 @@ src/gatling/scala/org/openapitools/client/model/PostWebsiteBuyIp200Response.scal
 src/gatling/scala/org/openapitools/client/model/PostWebsiteBuyIpRequest.scala
 src/gatling/scala/org/openapitools/client/model/PostWebsiteMigration200Response.scala
 src/gatling/scala/org/openapitools/client/model/PostWebsiteMigrationRequest.scala
+src/gatling/scala/org/openapitools/client/model/PutScrubIps200Response.scala
+src/gatling/scala/org/openapitools/client/model/QsOrderRequest.scala
 src/gatling/scala/org/openapitools/client/model/QueueResponse.scala
 src/gatling/scala/org/openapitools/client/model/Quickserver.scala
 src/gatling/scala/org/openapitools/client/model/QuickserverAddons.scala
@@ -313,8 +304,6 @@ src/gatling/scala/org/openapitools/client/model/QuickserverServiceExtra.scala
 src/gatling/scala/org/openapitools/client/model/QuickserverServiceInfo.scala
 src/gatling/scala/org/openapitools/client/model/QuickserverServiceMaster.scala
 src/gatling/scala/org/openapitools/client/model/QuickserversCancel200Response.scala
-src/gatling/scala/org/openapitools/client/model/RaidOption.scala
-src/gatling/scala/org/openapitools/client/model/Region.scala
 src/gatling/scala/org/openapitools/client/model/ReplyTicketRequest.scala
 src/gatling/scala/org/openapitools/client/model/ReplyTicketResponseSchema.scala
 src/gatling/scala/org/openapitools/client/model/RestoreRequest.scala
@@ -334,6 +323,8 @@ src/gatling/scala/org/openapitools/client/model/Server.scala
 src/gatling/scala/org/openapitools/client/model/ServerAsset.scala
 src/gatling/scala/org/openapitools/client/model/ServerAssets.scala
 src/gatling/scala/org/openapitools/client/model/ServerBillingDetails.scala
+src/gatling/scala/org/openapitools/client/model/ServerBulkIpmiPowerResponse.scala
+src/gatling/scala/org/openapitools/client/model/ServerBulkIpmiPowerResponseResultsInner.scala
 src/gatling/scala/org/openapitools/client/model/ServerClientLink.scala
 src/gatling/scala/org/openapitools/client/model/ServerExtraInfoTables.scala
 src/gatling/scala/org/openapitools/client/model/ServerIpmiLiveInfo.scala
@@ -356,7 +347,6 @@ src/gatling/scala/org/openapitools/client/model/ServerOrderCpuLi.scala
 src/gatling/scala/org/openapitools/client/model/ServerOrderFieldLabel.scala
 src/gatling/scala/org/openapitools/client/model/ServerOrderFieldLabels.scala
 src/gatling/scala/org/openapitools/client/model/ServerOrderFormValues.scala
-src/gatling/scala/org/openapitools/client/model/ServerOrderGetResponse.scala
 src/gatling/scala/org/openapitools/client/model/ServerOrderIP.scala
 src/gatling/scala/org/openapitools/client/model/ServerOrderIpsLi.scala
 src/gatling/scala/org/openapitools/client/model/ServerOrderMemory.scala
@@ -364,6 +354,8 @@ src/gatling/scala/org/openapitools/client/model/ServerOrderMemoryLi.scala
 src/gatling/scala/org/openapitools/client/model/ServerOrderMemoryLi254.scala
 src/gatling/scala/org/openapitools/client/model/ServerOrderOS.scala
 src/gatling/scala/org/openapitools/client/model/ServerOrderOsLi.scala
+src/gatling/scala/org/openapitools/client/model/ServerOrderPostRequest.scala
+src/gatling/scala/org/openapitools/client/model/ServerOrderPostRequestHd.scala
 src/gatling/scala/org/openapitools/client/model/ServerOrderRAID.scala
 src/gatling/scala/org/openapitools/client/model/ServerRow.scala
 src/gatling/scala/org/openapitools/client/model/ServerServiceInfo.scala
@@ -381,6 +373,7 @@ src/gatling/scala/org/openapitools/client/model/ServiceTypes.scala
 src/gatling/scala/org/openapitools/client/model/Services.scala
 src/gatling/scala/org/openapitools/client/model/ServicesInfo.scala
 src/gatling/scala/org/openapitools/client/model/SslCancel200Response.scala
+src/gatling/scala/org/openapitools/client/model/SslOrderRequest.scala
 src/gatling/scala/org/openapitools/client/model/StatusMonthlyBreakdown.scala
 src/gatling/scala/org/openapitools/client/model/SuccessTextResponse.scala
 src/gatling/scala/org/openapitools/client/model/TemplateRequest.scala
@@ -441,7 +434,6 @@ src/gatling/scala/org/openapitools/client/model/VpsServiceMaster.scala
 src/gatling/scala/org/openapitools/client/model/VpsSnapshot.scala
 src/gatling/scala/org/openapitools/client/model/VpsTemplateRow.scala
 src/gatling/scala/org/openapitools/client/model/VpsTemplatesList.scala
-src/gatling/scala/org/openapitools/client/model/VpsTrafficDataDataResponse.scala
 src/gatling/scala/org/openapitools/client/model/VpsTrafficDataSectionResponse.scala
 src/gatling/scala/org/openapitools/client/model/VpsTrafficHistoryResponse.scala
 src/gatling/scala/org/openapitools/client/model/VpsTrafficHistorySectionDataResponse.scala
@@ -460,6 +452,8 @@ src/gatling/scala/org/openapitools/client/model/WebsiteBillingDetails.scala
 src/gatling/scala/org/openapitools/client/model/WebsiteClientLink.scala
 src/gatling/scala/org/openapitools/client/model/WebsiteExtraInfoTables.scala
 src/gatling/scala/org/openapitools/client/model/WebsiteLoginResponse.scala
+src/gatling/scala/org/openapitools/client/model/WebsiteOrderPostRequest.scala
+src/gatling/scala/org/openapitools/client/model/WebsiteOrderPutRequest.scala
 src/gatling/scala/org/openapitools/client/model/WebsiteRow.scala
 src/gatling/scala/org/openapitools/client/model/WebsiteServiceInfo.scala
 src/gatling/scala/org/openapitools/client/model/WebsiteServiceMaster.scala

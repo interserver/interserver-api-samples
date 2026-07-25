@@ -14,25 +14,20 @@ class InlineResponse2001(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, success: bool=None, text: str=None):  # noqa: E501
+    def __init__(self, data: object=None):  # noqa: E501
         """InlineResponse2001 - a model defined in Swagger
 
-        :param success: The success of this InlineResponse2001.  # noqa: E501
-        :type success: bool
-        :param text: The text of this InlineResponse2001.  # noqa: E501
-        :type text: str
+        :param data: The data of this InlineResponse2001.  # noqa: E501
+        :type data: object
         """
         self.swagger_types = {
-            'success': bool,
-            'text': str
+            'data': object
         }
 
         self.attribute_map = {
-            'success': 'success',
-            'text': 'text'
+            'data': 'data'
         }
-        self._success = success
-        self._text = text
+        self._data = data
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse2001':
@@ -46,47 +41,24 @@ class InlineResponse2001(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def success(self) -> bool:
-        """Gets the success of this InlineResponse2001.
+    def data(self) -> object:
+        """Gets the data of this InlineResponse2001.
 
+        Affiliate signup statistics and client-side data.  # noqa: E501
 
-        :return: The success of this InlineResponse2001.
-        :rtype: bool
+        :return: The data of this InlineResponse2001.
+        :rtype: object
         """
-        return self._success
+        return self._data
 
-    @success.setter
-    def success(self, success: bool):
-        """Sets the success of this InlineResponse2001.
+    @data.setter
+    def data(self, data: object):
+        """Sets the data of this InlineResponse2001.
 
+        Affiliate signup statistics and client-side data.  # noqa: E501
 
-        :param success: The success of this InlineResponse2001.
-        :type success: bool
+        :param data: The data of this InlineResponse2001.
+        :type data: object
         """
-        if success is None:
-            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
 
-        self._success = success
-
-    @property
-    def text(self) -> str:
-        """Gets the text of this InlineResponse2001.
-
-
-        :return: The text of this InlineResponse2001.
-        :rtype: str
-        """
-        return self._text
-
-    @text.setter
-    def text(self, text: str):
-        """Sets the text of this InlineResponse2001.
-
-
-        :param text: The text of this InlineResponse2001.
-        :type text: str
-        """
-        if text is None:
-            raise ValueError("Invalid value for `text`, must not be `None`")  # noqa: E501
-
-        self._text = text
+        self._data = data

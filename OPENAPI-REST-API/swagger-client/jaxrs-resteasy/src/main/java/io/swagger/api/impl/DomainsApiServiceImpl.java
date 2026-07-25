@@ -16,7 +16,7 @@ import io.swagger.model.DomainOrder;
 import io.swagger.model.DomainRow;
 import io.swagger.model.DomainSearchResponse;
 import io.swagger.model.DomainWhoisPrivacyRequest;
-import io.swagger.model.InlineResponse2002;
+import io.swagger.model.InlineResponse2003;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
@@ -35,7 +35,7 @@ import javax.ws.rs.core.SecurityContext;
 @RequestScoped
 
 public class DomainsApiServiceImpl implements DomainsApiService {
-      public Response addDomain(SecurityContext securityContext)
+      public Response addDomain(Map<String, Object> body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -65,7 +65,7 @@ public class DomainsApiServiceImpl implements DomainsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response deleteDomainDnssec(Integer id,String action,SecurityContext securityContext)
+      public Response deleteDomainDnssec(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -105,16 +105,6 @@ public class DomainsApiServiceImpl implements DomainsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response getDomainOrderFields(String domain,String regType,SecurityContext securityContext)
-      throws NotFoundException {
-      // do some magic!
-      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-  }
-      public Response getDomainOrderSearchResults(String domain,SecurityContext securityContext)
-      throws NotFoundException {
-      // do some magic!
-      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-  }
       public Response getDomainRenewal(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
@@ -150,7 +140,7 @@ public class DomainsApiServiceImpl implements DomainsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response patchDomains(SecurityContext securityContext)
+      public Response patchDomains(Map<String, Object> body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -160,12 +150,17 @@ public class DomainsApiServiceImpl implements DomainsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
+      public Response postDomainSearch(String name,SecurityContext securityContext)
+      throws NotFoundException {
+      // do some magic!
+      return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+  }
       public Response postDomainTransfer(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response putDomains(SecurityContext securityContext)
+      public Response putDomains(Map<String, Object> body,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -180,7 +175,7 @@ public class DomainsApiServiceImpl implements DomainsApiService {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response updateDomainInfo(String id,SecurityContext securityContext)
+      public Response updateDomainInfo(Integer id,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

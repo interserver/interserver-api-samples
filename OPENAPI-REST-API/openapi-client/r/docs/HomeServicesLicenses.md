@@ -1,4 +1,4 @@
-# openapi::HomeServicesLicenses
+# interserverapi::HomeServicesLicenses
 
 
 ## Properties

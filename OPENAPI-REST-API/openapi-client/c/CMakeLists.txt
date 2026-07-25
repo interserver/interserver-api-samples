@@ -72,8 +72,6 @@ set(SRCS
     model/affiliate_dock_setup.c
     model/affiliate_payment_setup.c
     model/affiliate_traffic_row.c
-    model/asset_server.c
-    model/asset_server_cpu_inner.c
     model/backup.c
     model/backup_billing_details.c
     model/backup_client_link.c
@@ -91,7 +89,6 @@ set(SRCS
     model/backups_order.c
     model/backups_order_package_costs.c
     model/backups_order_service_types.c
-    model/bandwidth.c
     model/billing_add_cc_request.c
     model/billing_invoice_detail.c
     model/billing_invoice_list.c
@@ -117,11 +114,6 @@ set(SRCS
     model/charge_invoice_rows_invoices_value_paid_invoices_value.c
     model/charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.c
     model/close_ticket_response_schema.c
-    model/config_ids.c
-    model/config_lists.c
-    model/control_panel.c
-    model/cpu.c
-    model/cpu_with_defaults.c
     model/create_filter.c
     model/create_filter_201_response.c
     model/create_filter_400_response.c
@@ -137,6 +129,7 @@ set(SRCS
     model/delete_filter_500_response.c
     model/delete_firewall_rule.c
     model/delete_geo_firewall_rule.c
+    model/delete_mail_alert_request.c
     model/deny_rule_new.c
     model/deny_rule_record.c
     model/disable_scrub_200_response.c
@@ -167,11 +160,11 @@ set(SRCS
     model/domain_nameserver_post_request.c
     model/domain_nameserver_put_request.c
     model/domain_order.c
+    model/domain_order_request.c
     model/domain_order_response.c
     model/domain_order_response_attributes.c
     model/domain_order_services.c
     model/domain_order_services10001.c
-    model/domain_order_tld_services.c
     model/domain_owner_contact.c
     model/domain_prov_process_pending.c
     model/domain_prov_process_pending_attributes.c
@@ -187,12 +180,13 @@ set(SRCS
     model/email_address_name.c
     model/enable_scrub_200_response.c
     model/enable_scrub_500_response.c
-    model/field_label.c
+    model/floating_ip_order_request.c
     model/floating_ips_cancel_200_response.c
-    model/form_values.c
     model/generic_response.c
     model/get_account_info_401_response.c
+    model/get_account_locales_200_response_value.c
     model/get_account_tfa_setup_200_response.c
+    model/get_affiliate_signups_200_response.c
     model/get_oauth_redirect_200_response.c
     model/get_order_detail_200_response.c
     model/get_order_detail_200_response_ips_inner.c
@@ -209,7 +203,6 @@ set(SRCS
     model/get_scrub_ip_details_200_response_filter_firewall_rules_inner.c
     model/get_scrub_ip_details_200_response_service_info.c
     model/get_website_buy_ip_200_response.c
-    model/hard_drive.c
     model/home.c
     model/home_details.c
     model/home_details_modules.c
@@ -236,10 +229,6 @@ set(SRCS
     model/home_ticket_status_view.c
     model/hostname_object.c
     model/initiate_payment_200_response.c
-    model/inline_object.c
-    model/invoice.c
-    model/invoice_row.c
-    model/ip_block.c
     model/ip_limit_range.c
     model/ip_object.c
     model/license.c
@@ -248,6 +237,7 @@ set(SRCS
     model/license_extra_info_tables.c
     model/license_ip_info.c
     model/license_ip_info_row.c
+    model/license_order_request.c
     model/license_row.c
     model/license_service_info.c
     model/license_service_type.c
@@ -284,6 +274,7 @@ set(SRCS
     model/mail_log.c
     model/mail_log_entry.c
     model/mail_order.c
+    model/mail_order_request.c
     model/mail_row.c
     model/mail_schema.c
     model/mail_schema_extra_info_tables.c
@@ -296,15 +287,13 @@ set(SRCS
     model/mail_stats_type_volume_to.c
     model/mail_tutorials_table.c
     model/mail_tutorials_table_row.c
-    model/memory_option.c
     model/module_settings.c
     model/modules.c
     model/monthly_counts.c
-    model/operating_system.c
     model/password_request.c
+    model/patch_billing_credit_card_verify_request.c
     model/patch_oauth_two_factor_200_response.c
     model/patch_oauth_two_factor_request.c
-    model/payment_invoice_rows.c
     model/place_buy_now_server_request.c
     model/place_scrub_order_201_response.c
     model/place_scrub_order_201_response_order_details.c
@@ -315,6 +304,8 @@ set(SRCS
     model/post_website_buy_ip_request.c
     model/post_website_migration_200_response.c
     model/post_website_migration_request.c
+    model/put_scrub_ips_200_response.c
+    model/qs_order_request.c
     model/queue_response.c
     model/quickserver.c
     model/quickserver_addons.c
@@ -338,8 +329,6 @@ set(SRCS
     model/quickserver_service_info.c
     model/quickserver_service_master.c
     model/quickservers_cancel_200_response.c
-    model/raid_option.c
-    model/region.c
     model/reply_ticket_request.c
     model/reply_ticket_response_schema.c
     model/restore_request.c
@@ -359,6 +348,8 @@ set(SRCS
     model/server_asset.c
     model/server_assets.c
     model/server_billing_details.c
+    model/server_bulk_ipmi_power_response.c
+    model/server_bulk_ipmi_power_response_results_inner.c
     model/server_client_link.c
     model/server_extra_info_tables.c
     model/server_ipmi_live_info.c
@@ -381,7 +372,6 @@ set(SRCS
     model/server_order_field_label.c
     model/server_order_field_labels.c
     model/server_order_form_values.c
-    model/server_order_get_response.c
     model/server_order_ip.c
     model/server_order_ips_li.c
     model/server_order_memory.c
@@ -389,6 +379,8 @@ set(SRCS
     model/server_order_memory_li_254.c
     model/server_order_os.c
     model/server_order_os_li.c
+    model/server_order_post_request.c
+    model/server_order_post_request_hd.c
     model/server_order_raid.c
     model/server_row.c
     model/server_service_info.c
@@ -406,6 +398,7 @@ set(SRCS
     model/services.c
     model/services_info.c
     model/ssl_cancel_200_response.c
+    model/ssl_order_request.c
     model/status_monthly_breakdown.c
     model/success_text_response.c
     model/template_request.c
@@ -464,7 +457,6 @@ set(SRCS
     model/vps_snapshot.c
     model/vps_template_row.c
     model/vps_templates_list.c
-    model/vps_traffic_data_data_response.c
     model/vps_traffic_data_data_section_response.c
     model/vps_traffic_data_data_section_response_inner.c
     model/vps_traffic_data_section_response.c
@@ -485,6 +477,8 @@ set(SRCS
     model/website_client_link.c
     model/website_extra_info_tables.c
     model/website_login_response.c
+    model/website_order_post_request.c
+    model/website_order_put_request.c
     model/website_row.c
     model/website_service_info.c
     model/website_service_master.c
@@ -551,8 +545,6 @@ set(HDRS
     model/affiliate_dock_setup.h
     model/affiliate_payment_setup.h
     model/affiliate_traffic_row.h
-    model/asset_server.h
-    model/asset_server_cpu_inner.h
     model/backup.h
     model/backup_billing_details.h
     model/backup_client_link.h
@@ -570,7 +562,6 @@ set(HDRS
     model/backups_order.h
     model/backups_order_package_costs.h
     model/backups_order_service_types.h
-    model/bandwidth.h
     model/billing_add_cc_request.h
     model/billing_invoice_detail.h
     model/billing_invoice_list.h
@@ -596,11 +587,6 @@ set(HDRS
     model/charge_invoice_rows_invoices_value_paid_invoices_value.h
     model/charge_invoice_rows_invoices_value_paid_invoices_value_refund_invoices_value.h
     model/close_ticket_response_schema.h
-    model/config_ids.h
-    model/config_lists.h
-    model/control_panel.h
-    model/cpu.h
-    model/cpu_with_defaults.h
     model/create_filter.h
     model/create_filter_201_response.h
     model/create_filter_400_response.h
@@ -616,6 +602,7 @@ set(HDRS
     model/delete_filter_500_response.h
     model/delete_firewall_rule.h
     model/delete_geo_firewall_rule.h
+    model/delete_mail_alert_request.h
     model/deny_rule_new.h
     model/deny_rule_record.h
     model/disable_scrub_200_response.h
@@ -646,11 +633,11 @@ set(HDRS
     model/domain_nameserver_post_request.h
     model/domain_nameserver_put_request.h
     model/domain_order.h
+    model/domain_order_request.h
     model/domain_order_response.h
     model/domain_order_response_attributes.h
     model/domain_order_services.h
     model/domain_order_services10001.h
-    model/domain_order_tld_services.h
     model/domain_owner_contact.h
     model/domain_prov_process_pending.h
     model/domain_prov_process_pending_attributes.h
@@ -666,12 +653,13 @@ set(HDRS
     model/email_address_name.h
     model/enable_scrub_200_response.h
     model/enable_scrub_500_response.h
-    model/field_label.h
+    model/floating_ip_order_request.h
     model/floating_ips_cancel_200_response.h
-    model/form_values.h
     model/generic_response.h
     model/get_account_info_401_response.h
+    model/get_account_locales_200_response_value.h
     model/get_account_tfa_setup_200_response.h
+    model/get_affiliate_signups_200_response.h
     model/get_oauth_redirect_200_response.h
     model/get_order_detail_200_response.h
     model/get_order_detail_200_response_ips_inner.h
@@ -688,7 +676,6 @@ set(HDRS
     model/get_scrub_ip_details_200_response_filter_firewall_rules_inner.h
     model/get_scrub_ip_details_200_response_service_info.h
     model/get_website_buy_ip_200_response.h
-    model/hard_drive.h
     model/home.h
     model/home_details.h
     model/home_details_modules.h
@@ -715,10 +702,6 @@ set(HDRS
     model/home_ticket_status_view.h
     model/hostname_object.h
     model/initiate_payment_200_response.h
-    model/inline_object.h
-    model/invoice.h
-    model/invoice_row.h
-    model/ip_block.h
     model/ip_limit_range.h
     model/ip_object.h
     model/license.h
@@ -727,6 +710,7 @@ set(HDRS
     model/license_extra_info_tables.h
     model/license_ip_info.h
     model/license_ip_info_row.h
+    model/license_order_request.h
     model/license_row.h
     model/license_service_info.h
     model/license_service_type.h
@@ -763,6 +747,7 @@ set(HDRS
     model/mail_log.h
     model/mail_log_entry.h
     model/mail_order.h
+    model/mail_order_request.h
     model/mail_row.h
     model/mail_schema.h
     model/mail_schema_extra_info_tables.h
@@ -775,15 +760,13 @@ set(HDRS
     model/mail_stats_type_volume_to.h
     model/mail_tutorials_table.h
     model/mail_tutorials_table_row.h
-    model/memory_option.h
     model/module_settings.h
     model/modules.h
     model/monthly_counts.h
-    model/operating_system.h
     model/password_request.h
+    model/patch_billing_credit_card_verify_request.h
     model/patch_oauth_two_factor_200_response.h
     model/patch_oauth_two_factor_request.h
-    model/payment_invoice_rows.h
     model/place_buy_now_server_request.h
     model/place_scrub_order_201_response.h
     model/place_scrub_order_201_response_order_details.h
@@ -794,6 +777,8 @@ set(HDRS
     model/post_website_buy_ip_request.h
     model/post_website_migration_200_response.h
     model/post_website_migration_request.h
+    model/put_scrub_ips_200_response.h
+    model/qs_order_request.h
     model/queue_response.h
     model/quickserver.h
     model/quickserver_addons.h
@@ -817,8 +802,6 @@ set(HDRS
     model/quickserver_service_info.h
     model/quickserver_service_master.h
     model/quickservers_cancel_200_response.h
-    model/raid_option.h
-    model/region.h
     model/reply_ticket_request.h
     model/reply_ticket_response_schema.h
     model/restore_request.h
@@ -838,6 +821,8 @@ set(HDRS
     model/server_asset.h
     model/server_assets.h
     model/server_billing_details.h
+    model/server_bulk_ipmi_power_response.h
+    model/server_bulk_ipmi_power_response_results_inner.h
     model/server_client_link.h
     model/server_extra_info_tables.h
     model/server_ipmi_live_info.h
@@ -860,7 +845,6 @@ set(HDRS
     model/server_order_field_label.h
     model/server_order_field_labels.h
     model/server_order_form_values.h
-    model/server_order_get_response.h
     model/server_order_ip.h
     model/server_order_ips_li.h
     model/server_order_memory.h
@@ -868,6 +852,8 @@ set(HDRS
     model/server_order_memory_li_254.h
     model/server_order_os.h
     model/server_order_os_li.h
+    model/server_order_post_request.h
+    model/server_order_post_request_hd.h
     model/server_order_raid.h
     model/server_row.h
     model/server_service_info.h
@@ -885,6 +871,7 @@ set(HDRS
     model/services.h
     model/services_info.h
     model/ssl_cancel_200_response.h
+    model/ssl_order_request.h
     model/status_monthly_breakdown.h
     model/success_text_response.h
     model/template_request.h
@@ -943,7 +930,6 @@ set(HDRS
     model/vps_snapshot.h
     model/vps_template_row.h
     model/vps_templates_list.h
-    model/vps_traffic_data_data_response.h
     model/vps_traffic_data_data_section_response.h
     model/vps_traffic_data_data_section_response_inner.h
     model/vps_traffic_data_section_response.h
@@ -964,6 +950,8 @@ set(HDRS
     model/website_client_link.h
     model/website_extra_info_tables.h
     model/website_login_response.h
+    model/website_order_post_request.h
+    model/website_order_put_request.h
     model/website_row.h
     model/website_service_info.h
     model/website_service_master.h

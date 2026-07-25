@@ -13,8 +13,8 @@ import io.swagger.model.*;
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.HostnameObject;
 import io.swagger.model.IdBackupsBody2;
-import io.swagger.model.InlineResponse20011;
-import io.swagger.model.InlineResponse20022;
+import io.swagger.model.InlineResponse20012;
+import io.swagger.model.InlineResponse20024;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.QueueResponse;
@@ -158,6 +158,13 @@ public class VpsController  {
   */
 
   /*
+    public ResponseContext getVpsBackup(RequestContext request , Integer id 
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
     public ResponseContext getVpsBackups(RequestContext request , Integer id 
 , String all 
 ) {
@@ -180,6 +187,20 @@ public class VpsController  {
   */
 
   /*
+    public ResponseContext getVpsChangeHostname(RequestContext request , Integer id 
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext getVpsChangeRootPassword(RequestContext request , Integer id 
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
     public ResponseContext getVpsChangeTimezone(RequestContext request , Integer id 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
@@ -188,6 +209,13 @@ public class VpsController  {
 
   /*
     public ResponseContext getVpsInfo(RequestContext request , Integer id 
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext getVpsInsertCd(RequestContext request , Integer id 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
@@ -208,6 +236,13 @@ public class VpsController  {
 
   /*
     public ResponseContext getVpsReinstallOs(RequestContext request , Integer id 
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext getVpsResetPassword(RequestContext request , Integer id 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
@@ -250,13 +285,6 @@ public class VpsController  {
 
   /*
     public ResponseContext getVpsWelcomeEmail(RequestContext request , String id 
-) {
-        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
-    }
-  */
-
-  /*
-    public ResponseContext postVpsBackup(RequestContext request , Integer id 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
@@ -429,6 +457,13 @@ public class VpsController  {
   */
 
   /*
+    public ResponseContext postVpsTrafficUsage(RequestContext request , Integer id 
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
     public ResponseContext postVpsViewDesktop(RequestContext request , Integer id 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
@@ -454,6 +489,13 @@ public class VpsController  {
 ,  String coupon
 ,  String rootpass
 ,  String comment
+) {
+        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
+    }
+  */
+
+  /*
+    public ResponseContext putVpsBuyHdSpace(RequestContext request , Integer id 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }

@@ -40,4 +40,3 @@ case class WebsitesOrderPackagesInfo(
   /* Indicates if the package is hidden (1 for yes, 0 for no). */
   services_hidden: Option[String] = None
 )
-

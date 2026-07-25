@@ -28,4 +28,3 @@ case class VpsBackupRow(
   /* The creation date of the backup in a unix timestamp. */
   date: Int
 )
-

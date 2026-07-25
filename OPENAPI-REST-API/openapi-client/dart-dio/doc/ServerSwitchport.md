@@ -1,8 +1,8 @@
-# openapi.model.ServerSwitchport
+# interserver_api.model.ServerSwitchport
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **justport** | **String** | Port identifier. | 
 **graphId** | **String** | Identifier for the graph associated with the switchport. | 
 **assetId** | **int** | Unique identifier of the asset associated with the switchport. | 
-**vlans** | **BuiltList&lt;String&gt;** | List of VLANs associated with the switchport. | [optional] 
-**vlans6** | **BuiltList&lt;String&gt;** | List of IPv6 VLANs associated with the switchport. | [optional] 
+**vlans** | **Optional&lt;List&lt;String&gt;?&gt;** | List of VLANs associated with the switchport. | [optional] 
+**vlans6** | **Optional&lt;List&lt;String&gt;?&gt;** | List of IPv6 VLANs associated with the switchport. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,4 +1,4 @@
-# openapi::ServerNetworkInfoSwitchports
+# interserverapi::ServerNetworkInfoSwitchports
 
 Object containing switchport information.
 

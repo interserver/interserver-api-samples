@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.website import Website
+from interserver_api_client.models.website import Website
 
 class TestWebsite(unittest.TestCase):
     """Website unit test stubs"""
@@ -36,7 +36,7 @@ class TestWebsite(unittest.TestCase):
         model = Website()
         if include_optional:
             return Website(
-                service_info = openapi_client.models.website_service_info.WebsiteServiceInfo(
+                service_info = interserver_api_client.models.website_service_info.WebsiteServiceInfo(
                     website_id = '1196829', 
                     website_server = '543', 
                     website_type = '11363', 
@@ -53,7 +53,7 @@ class TestWebsite(unittest.TestCase):
                     website_username = 'vintagev', 
                     website_server_status = '', ),
                 client_links = [
-                    openapi_client.models.website_client_link.WebsiteClientLink(
+                    interserver_api_client.models.website_client_link.WebsiteClientLink(
                         label = '', 
                         link = '', 
                         icon = '', 
@@ -61,7 +61,7 @@ class TestWebsite(unittest.TestCase):
                         help_text = '', 
                         other_attr = '', )
                     ],
-                billing_details = openapi_client.models.website_billing_details.WebsiteBillingDetails(
+                billing_details = interserver_api_client.models.website_billing_details.WebsiteBillingDetails(
                     service_last_invoice_date = '', 
                     service_payment_status = '', 
                     service_frequency = '', 
@@ -71,11 +71,11 @@ class TestWebsite(unittest.TestCase):
                     service_currency_symbol = '$', 
                     service_coupon = '', 
                     service_cost_info = '', 
-                    service_extra = openapi_client.models.website_service_extra.WebsiteServiceExtra(), 
+                    service_extra = interserver_api_client.models.website_service_extra.WebsiteServiceExtra(), 
                     service_extra_json = '', ),
                 cust_currency = 'USD',
                 cust_currency_symbol = '$',
-                service_master = openapi_client.models.website_service_master.WebsiteServiceMaster(
+                service_master = interserver_api_client.models.website_service_master.WebsiteServiceMaster(
                     website_id = '543', 
                     website_name = 'vda4200.is.cc', 
                     website_ip = '74.50.80.15', 
@@ -92,17 +92,17 @@ class TestWebsite(unittest.TestCase):
                     website_dns2 = 'vda4200b.trouble-free.net', ),
                 package = 'Web Hosting Direct Admin',
                 service_extra = [
-                    openapi_client.models.website_service_extra.WebsiteServiceExtra()
+                    interserver_api_client.models.website_service_extra.WebsiteServiceExtra()
                     ],
-                extra_info_tables = openapi_client.models.website_extra_info_tables.WebsiteExtraInfoTables(
-                    links = openapi_client.models.website_table.WebsiteTable(
+                extra_info_tables = interserver_api_client.models.website_extra_info_tables.WebsiteExtraInfoTables(
+                    links = interserver_api_client.models.website_table.WebsiteTable(
                         title = '', 
                         rows = [
-                            openapi_client.models.website_table_row.WebsiteTableRow(
+                            interserver_api_client.models.website_table_row.WebsiteTableRow(
                                 desc = '', 
                                 value = '', )
                             ], ), 
-                    preview = openapi_client.models.website_table.WebsiteTable(
+                    preview = interserver_api_client.models.website_table.WebsiteTable(
                         title = '', ), 
                     dns = , )
             )

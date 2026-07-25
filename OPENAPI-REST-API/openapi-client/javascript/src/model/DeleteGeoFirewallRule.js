@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DeleteGeoFirewallRule model module.
  * @module model/DeleteGeoFirewallRule
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DeleteGeoFirewallRule {
     /**

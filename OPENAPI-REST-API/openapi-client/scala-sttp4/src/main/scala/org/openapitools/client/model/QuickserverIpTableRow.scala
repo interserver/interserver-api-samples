@@ -21,4 +21,3 @@ case class QuickserverIpTableRow(
   /* Value */
   value: Option[String] = None
 )
-

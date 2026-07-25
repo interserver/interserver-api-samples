@@ -20,4 +20,3 @@ case class IpObject(
   /* IP Address */
   ip: String
 )
-

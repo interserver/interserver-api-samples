@@ -1,4 +1,4 @@
-# openapi::VpsRow
+# interserverapi::VpsRow
 
 A result row from the `Vps` `GET` request.
 

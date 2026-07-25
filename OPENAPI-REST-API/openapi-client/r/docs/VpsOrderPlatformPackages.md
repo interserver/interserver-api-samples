@@ -1,4 +1,4 @@
-# openapi::VpsOrderPlatformPackages
+# interserverapi::VpsOrderPlatformPackages
 
 Platform Packages
 

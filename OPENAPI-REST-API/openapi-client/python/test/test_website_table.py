@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.website_table import WebsiteTable
+from interserver_api_client.models.website_table import WebsiteTable
 
 class TestWebsiteTable(unittest.TestCase):
     """WebsiteTable unit test stubs"""
@@ -38,7 +38,7 @@ class TestWebsiteTable(unittest.TestCase):
             return WebsiteTable(
                 title = '',
                 rows = [
-                    openapi_client.models.website_table_row.WebsiteTableRow(
+                    interserver_api_client.models.website_table_row.WebsiteTableRow(
                         desc = '', 
                         value = '', )
                     ]

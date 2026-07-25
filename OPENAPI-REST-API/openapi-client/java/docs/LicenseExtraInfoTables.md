@@ -10,4 +10,8 @@
 |**ipInfo** | [**LicenseIpInfo**](LicenseIpInfo.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

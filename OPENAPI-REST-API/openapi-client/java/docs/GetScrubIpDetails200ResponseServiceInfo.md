@@ -26,10 +26,14 @@
 
 | Name | Value |
 |---- | -----|
-| ACTIVE | &quot;active&quot; |
-| PENDING | &quot;pending&quot; |
-| CANCELED | &quot;canceled&quot; |
-| EXPIRED | &quot;expired&quot; |
+| active | &quot;active&quot; |
+| pending | &quot;pending&quot; |
+| canceled | &quot;canceled&quot; |
+| expired | &quot;expired&quot; |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

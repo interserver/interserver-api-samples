@@ -1,4 +1,4 @@
-# InterServerManagementApi.GenericResponse
+# InterserverApiClient.GenericResponse
 
 ## Properties
 

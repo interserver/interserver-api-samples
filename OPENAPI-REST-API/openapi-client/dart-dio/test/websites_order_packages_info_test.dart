@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for WebsitesOrderPackagesInfo
 void main() {
-  final instance = WebsitesOrderPackagesInfoBuilder();
-  // TODO add properties to the builder and call build()
+  final WebsitesOrderPackagesInfo? instance = /* WebsitesOrderPackagesInfo(...) */ null;
+  // TODO add properties to the entity
 
   group(WebsitesOrderPackagesInfo, () {
     // The ID of the package.
@@ -56,31 +56,31 @@ void main() {
     });
 
     // Additional field 1 for the package.
-    // String servicesField1
+    // Optional<String?> servicesField1
     test('to test the property `servicesField1`', () async {
       // TODO
     });
 
     // Additional field 2 for the package.
-    // String servicesField2
+    // Optional<String?> servicesField2
     test('to test the property `servicesField2`', () async {
       // TODO
     });
 
     // HTML content for the package.
-    // String servicesHtml
+    // Optional<String?> servicesHtml
     test('to test the property `servicesHtml`', () async {
       // TODO
     });
 
     // URL for more information about the package.
-    // String servicesMoreinfoUrl
+    // Optional<String?> servicesMoreinfoUrl
     test('to test the property `servicesMoreinfoUrl`', () async {
       // TODO
     });
 
     // Indicates if the package is hidden (1 for yes, 0 for no).
-    // String servicesHidden
+    // Optional<String?> servicesHidden
     test('to test the property `servicesHidden`', () async {
       // TODO
     });

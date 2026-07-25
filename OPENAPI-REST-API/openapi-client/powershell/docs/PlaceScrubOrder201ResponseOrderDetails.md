@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PlaceScrubOrder201ResponseOrderDetails = Initialize-PSOpenAPIToolsPlaceScrubOrder201ResponseOrderDetails  -TotalCost 5 `
+$PlaceScrubOrder201ResponseOrderDetails = Initialize-InterserverApiPlaceScrubOrder201ResponseOrderDetails  -TotalCost 5 `
  -ServiceId 12346 `
  -InvoiceId 2746273 `
  -InvoiceDescription Scrub + Current Ip `

@@ -4,123 +4,38 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddAccountCreditCard**](BillingAPI.md#AddAccountCreditCard) | **Post** /account/creditcards | Add Credit Card to Account
-[**AddBillingCreditCard**](BillingAPI.md#AddBillingCreditCard) | **Post** /billing/creditcards | Add Credit Card for Billing
-[**AddBillingPrepay**](BillingAPI.md#AddBillingPrepay) | **Post** /billing/prepays | Create Prepay Deposit
-[**DeleteAccountCreditCard**](BillingAPI.md#DeleteAccountCreditCard) | **Delete** /account/creditcards/{id} | Remove Credit Card
-[**DeleteBillingCreditCard**](BillingAPI.md#DeleteBillingCreditCard) | **Delete** /billing/creditcards/{id} | Delete Credit Card
-[**DeleteBillingInvoice**](BillingAPI.md#DeleteBillingInvoice) | **Delete** /billing/invoices/{id} | Delete Invoice
-[**DeleteBillingPrepay**](BillingAPI.md#DeleteBillingPrepay) | **Delete** /billing/prepays/{id} | Delete Prepay Balance
-[**GetAffiliateBanners**](BillingAPI.md#GetAffiliateBanners) | **Get** /affiliate/banners | List Affiliate Banner Assets
-[**GetAffiliateRichReport**](BillingAPI.md#GetAffiliateRichReport) | **Get** /affiliate/rich_report | Get Affiliate Performance Report
-[**GetAffiliateSalesGraph**](BillingAPI.md#GetAffiliateSalesGraph) | **Get** /affiliate/sales_graph | Get Affiliate Sales Graph Data
-[**GetAffiliateSalesReport**](BillingAPI.md#GetAffiliateSalesReport) | **Get** /affiliate/sales_report | Get Affiliate Sales Report
-[**GetAffiliateTrafficGraph**](BillingAPI.md#GetAffiliateTrafficGraph) | **Get** /affiliate/traffic_graph | Get Affiliate Traffic Graph Data
-[**GetAffiliateWebTraffic**](BillingAPI.md#GetAffiliateWebTraffic) | **Get** /affiliate/web_traffic | List Affiliate Web Traffic Entries
-[**GetBillingCart**](BillingAPI.md#GetBillingCart) | **Get** /billing/cart | Get Shopping Cart Contents
-[**GetBillingCreditCardVerify**](BillingAPI.md#GetBillingCreditCardVerify) | **Get** /billing/creditcards/{id}/verify | Get Credit Card Verification Requirements
-[**GetBillingInvoice**](BillingAPI.md#GetBillingInvoice) | **Get** /billing/invoices/{id} | Get Invoice Details
-[**GetBillingInvoices**](BillingAPI.md#GetBillingInvoices) | **Get** /billing/invoices | List Account Invoices
-[**GetBillingPrePays**](BillingAPI.md#GetBillingPrePays) | **Get** /billing/prepays | List Prepay Balances
-[**GetInvoices**](BillingAPI.md#GetInvoices) | **Get** /invoices | Get Invoices
-[**InitiatePayment**](BillingAPI.md#InitiatePayment) | **Get** /pay/{method}/{invoices} | Initiate Payment
-[**PostBillingCreditCardVerify**](BillingAPI.md#PostBillingCreditCardVerify) | **Post** /billing/creditcards/{id}/verify | Submit Credit Card Verification
-[**UpdateAccountCreditCard**](BillingAPI.md#UpdateAccountCreditCard) | **Post** /account/creditcards/{id} | Update Credit Card
-[**UpdateAffiliateDockSetup**](BillingAPI.md#UpdateAffiliateDockSetup) | **Post** /affiliate/dock_setup | Configure Affiliate Dock Settings
-[**UpdateAffiliateLandingPage**](BillingAPI.md#UpdateAffiliateLandingPage) | **Post** /affiliate/landing_pg | Configure Affiliate Landing Page
-[**UpdateAffiliatePaymentSetup**](BillingAPI.md#UpdateAffiliatePaymentSetup) | **Post** /affiliate/payment_setup | Configure Affiliate Payout Preferences
-[**UpdateBillingCreditCard**](BillingAPI.md#UpdateBillingCreditCard) | **Post** /billing/creditcards/{id} | Update Credit Card Details
-[**UpdateBillingPaymentMethod**](BillingAPI.md#UpdateBillingPaymentMethod) | **Post** /billing/payment_method | Update Default Payment Method
+[**AddBillingCreditCard**](BillingAPI.md#AddBillingCreditCard) | **Post** /billing/creditcards | Store a credit card on the account — may return a verification flow
+[**AddBillingPrepay**](BillingAPI.md#AddBillingPrepay) | **Post** /billing/prepays | Create a prepay deposit and return an invoice id to fund it
+[**DeleteBillingCreditCard**](BillingAPI.md#DeleteBillingCreditCard) | **Delete** /billing/creditcards/{id} | Remove a stored credit card from the account
+[**DeleteBillingInvoice**](BillingAPI.md#DeleteBillingInvoice) | **Delete** /billing/invoices/{id} | Cancel a pending unpaid invoice — and its pending service or repeat invoice
+[**DeleteBillingPrepay**](BillingAPI.md#DeleteBillingPrepay) | **Delete** /billing/prepays/{id} | Delete an unfunded prepay or strip its unpaid funding invoices
+[**GetAffiliateBanners**](BillingAPI.md#GetAffiliateBanners) | **Get** /affiliate/banners | List affiliate banner image assets with filename and dimensions
+[**GetAffiliateDownload**](BillingAPI.md#GetAffiliateDownload) | **Get** /affiliate/download | Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+[**GetAffiliateRichReport**](BillingAPI.md#GetAffiliateRichReport) | **Get** /affiliate/rich_report | Read a combined affiliate performance summary (HTML payload)
+[**GetAffiliateSalesGraph**](BillingAPI.md#GetAffiliateSalesGraph) | **Get** /affiliate/sales_graph | Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
+[**GetAffiliateSignups**](BillingAPI.md#GetAffiliateSignups) | **Get** /affiliate/signups | Read affiliate signup stats and per-customer conversion data
+[**GetAffiliateTrafficGraph**](BillingAPI.md#GetAffiliateTrafficGraph) | **Get** /affiliate/traffic_graph | Read aggregated affiliate referral click/visit time-series for chart rendering
+[**GetAffiliateWebTraffic**](BillingAPI.md#GetAffiliateWebTraffic) | **Get** /affiliate/web_traffic | List the 20 most recent affiliate referral visits with IP, referrer, timestamp
+[**GetBillingCart**](BillingAPI.md#GetBillingCart) | **Get** /billing/cart | Read the current shopping cart contents, totals, and available payment methods
+[**GetBillingCreditCardVerify**](BillingAPI.md#GetBillingCreditCardVerify) | **Get** /billing/creditcards/{id}/verify | Probe whether a stored card still needs micro-charge verification
+[**GetBillingInvoice**](BillingAPI.md#GetBillingInvoice) | **Get** /billing/invoices/{id} | Read full invoice detail — line items, totals, paid status, customer info
+[**GetBillingInvoices**](BillingAPI.md#GetBillingInvoices) | **Get** /billing/invoices | List every invoice on the account with summary totals and paid/unpaid status
+[**GetBillingPrePays**](BillingAPI.md#GetBillingPrePays) | **Get** /billing/prepays | List prepay deposits on the account — remaining balance and auto-use flags
+[**InitiatePayment**](BillingAPI.md#InitiatePayment) | **Get** /billing/pay/{method}/{invoices} | Pay invoices through the chosen gateway — returns the next-step action
+[**PatchBillingCreditCardVerify**](BillingAPI.md#PatchBillingCreditCardVerify) | **Patch** /billing/creditcards/{id}/verify | Place two micro-charges on the card to start CVV verification (step 1 of 2)
+[**PostBillingCreditCardVerify**](BillingAPI.md#PostBillingCreditCardVerify) | **Post** /billing/creditcards/{id}/verify | Submit two micro-charge amounts to finalize card verification (step 2 of 2)
+[**UpdateAffiliateDockSetup**](BillingAPI.md#UpdateAffiliateDockSetup) | **Post** /affiliate/dock_setup | Configure the affiliate landing dock title, description, and referrer coupon
+[**UpdateAffiliatePaymentSetup**](BillingAPI.md#UpdateAffiliatePaymentSetup) | **Post** /affiliate/payment_setup | Configure how affiliate commissions get paid out (PayPal or internal prepay)
+[**UpdateBillingCreditCard**](BillingAPI.md#UpdateBillingCreditCard) | **Post** /billing/creditcards/{id} | Refresh stored card expiration and re-trigger MaxMind fraud scoring
+[**UpdateBillingPaymentMethod**](BillingAPI.md#UpdateBillingPaymentMethod) | **Post** /billing/payment_method | Set the account&#39;s default payment method for recurring/auto charges
 
-
-
-## AddAccountCreditCard
-
-> SuccessTextResponse AddAccountCreditCard(ctx).Name(name).Address(address).City(city).State(state).Country(country).Zip(zip).Cc(cc).CcExp(ccExp).CcCcv2(ccCcv2).Execute()
-
-Add Credit Card to Account
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	name := "name_example" // string |  (optional)
-	address := "address_example" // string |  (optional)
-	city := "city_example" // string |  (optional)
-	state := "state_example" // string |  (optional)
-	country := "country_example" // string |  (optional)
-	zip := "zip_example" // string |  (optional)
-	cc := "cc_example" // string |  (optional)
-	ccExp := "ccExp_example" // string |  (optional)
-	ccCcv2 := "ccCcv2_example" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.AddAccountCreditCard(context.Background()).Name(name).Address(address).City(city).State(state).Country(country).Zip(zip).Cc(cc).CcExp(ccExp).CcCcv2(ccCcv2).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.AddAccountCreditCard``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddAccountCreditCard`: SuccessTextResponse
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.AddAccountCreditCard`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiAddAccountCreditCardRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **name** | **string** |  | 
- **address** | **string** |  | 
- **city** | **string** |  | 
- **state** | **string** |  | 
- **country** | **string** |  | 
- **zip** | **string** |  | 
- **cc** | **string** |  | 
- **ccExp** | **string** |  | 
- **ccCcv2** | **string** |  | 
-
-### Return type
-
-[**SuccessTextResponse**](SuccessTextResponse.md)
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data, application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
 
 
 ## AddBillingCreditCard
 
 > SuccessTextResponse AddBillingCreditCard(ctx).BillingAddCcRequest(billingAddCcRequest).Execute()
 
-Add Credit Card for Billing
+Store a credit card on the account — may return a verification flow
 
 
 
@@ -186,7 +101,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse AddBillingPrepay(ctx).BillingPrepayRequest(billingPrepayRequest).Execute()
 
-Create Prepay Deposit
+Create a prepay deposit and return an invoice id to fund it
 
 
 
@@ -248,81 +163,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteAccountCreditCard
-
-> string DeleteAccountCreditCard(ctx, id).Execute()
-
-Remove Credit Card
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	id := "id_example" // string | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.DeleteAccountCreditCard(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.DeleteAccountCreditCard``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeleteAccountCreditCard`: string
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.DeleteAccountCreditCard`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **string** | The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiDeleteAccountCreditCardRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-**string**
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## DeleteBillingCreditCard
 
 > SuccessTextResponse DeleteBillingCreditCard(ctx, id).Execute()
 
-Delete Credit Card
+Remove a stored credit card from the account
 
 
 
@@ -392,7 +237,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse DeleteBillingInvoice(ctx, id).Execute()
 
-Delete Invoice
+Cancel a pending unpaid invoice — and its pending service or repeat invoice
 
 
 
@@ -462,7 +307,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse DeleteBillingPrepay(ctx, id).Execute()
 
-Delete Prepay Balance
+Delete an unfunded prepay or strip its unpaid funding invoices
 
 
 
@@ -532,7 +377,7 @@ Name | Type | Description  | Notes
 
 > []AffiliateBannerRow GetAffiliateBanners(ctx).Execute()
 
-List Affiliate Banner Assets
+List affiliate banner image assets with filename and dimensions
 
 
 
@@ -589,11 +434,79 @@ Other parameters are passed through a pointer to a apiGetAffiliateBannersRequest
 [[Back to README]](../README.md)
 
 
+## GetAffiliateDownload
+
+> GetAffiliateDownload(ctx).St(st).Ex(ex).Year(year).Execute()
+
+Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	st := "st_example" // string | Filter by status. (optional)
+	ex := "ex_example" // string | Export format: csv, xls, xlsx, or pdf. Defaults to csv. (optional)
+	year := int32(56) // int32 | Year to filter the report. Defaults to the current year. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.BillingAPI.GetAffiliateDownload(context.Background()).St(st).Ex(ex).Year(year).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetAffiliateDownload``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAffiliateDownloadRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **st** | **string** | Filter by status. | 
+ **ex** | **string** | Export format: csv, xls, xlsx, or pdf. Defaults to csv. | 
+ **year** | **int32** | Year to filter the report. Defaults to the current year. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetAffiliateRichReport
 
 > TextResponse GetAffiliateRichReport(ctx).Execute()
 
-Get Affiliate Performance Report
+Read a combined affiliate performance summary (HTML payload)
 
 
 
@@ -654,7 +567,7 @@ Other parameters are passed through a pointer to a apiGetAffiliateRichReportRequ
 
 > StatusMonthlyBreakdown GetAffiliateSalesGraph(ctx).Days(days).Execute()
 
-Get Affiliate Sales Graph Data
+Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
 
 
 
@@ -716,11 +629,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetAffiliateSalesReport
+## GetAffiliateSignups
 
-> TextResponse GetAffiliateSalesReport(ctx).Execute()
+> GetAffiliateSignups200Response GetAffiliateSignups(ctx).St(st).Execute()
 
-Get Affiliate Sales Report
+Read affiliate signup stats and per-customer conversion data
 
 
 
@@ -737,31 +650,36 @@ import (
 )
 
 func main() {
+	st := "st_example" // string | Filter signups by status. Use `default` to show all or pass a specific status value to narrow results. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.GetAffiliateSalesReport(context.Background()).Execute()
+	resp, r, err := apiClient.BillingAPI.GetAffiliateSignups(context.Background()).St(st).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetAffiliateSalesReport``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetAffiliateSignups``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetAffiliateSalesReport`: TextResponse
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetAffiliateSalesReport`: %v\n", resp)
+	// response from `GetAffiliateSignups`: GetAffiliateSignups200Response
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetAffiliateSignups`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetAffiliateSalesReportRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetAffiliateSignupsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **st** | **string** | Filter signups by status. Use &#x60;default&#x60; to show all or pass a specific status value to narrow results. | 
 
 ### Return type
 
-[**TextResponse**](TextResponse.md)
+[**GetAffiliateSignups200Response**](GetAffiliateSignups200Response.md)
 
 ### Authorization
 
@@ -781,7 +699,7 @@ Other parameters are passed through a pointer to a apiGetAffiliateSalesReportReq
 
 > MonthlyCounts GetAffiliateTrafficGraph(ctx).Days(days).Execute()
 
-Get Affiliate Traffic Graph Data
+Read aggregated affiliate referral click/visit time-series for chart rendering
 
 
 
@@ -847,7 +765,7 @@ Name | Type | Description  | Notes
 
 > []AffiliateTrafficRow GetAffiliateWebTraffic(ctx).Execute()
 
-List Affiliate Web Traffic Entries
+List the 20 most recent affiliate referral visits with IP, referrer, timestamp
 
 
 
@@ -908,7 +826,7 @@ Other parameters are passed through a pointer to a apiGetAffiliateWebTrafficRequ
 
 > map[string]interface{} GetBillingCart(ctx).Execute()
 
-Get Shopping Cart Contents
+Read the current shopping cart contents, totals, and available payment methods
 
 
 
@@ -969,7 +887,7 @@ Other parameters are passed through a pointer to a apiGetBillingCartRequest stru
 
 > SuccessTextResponse GetBillingCreditCardVerify(ctx, id).Execute()
 
-Get Credit Card Verification Requirements
+Probe whether a stored card still needs micro-charge verification
 
 
 
@@ -1039,7 +957,7 @@ Name | Type | Description  | Notes
 
 > BillingInvoiceDetail GetBillingInvoice(ctx, id).Execute()
 
-Get Invoice Details
+Read full invoice detail — line items, totals, paid status, customer info
 
 
 
@@ -1109,7 +1027,7 @@ Name | Type | Description  | Notes
 
 > BillingInvoiceList GetBillingInvoices(ctx).Execute()
 
-List Account Invoices
+List every invoice on the account with summary totals and paid/unpaid status
 
 
 
@@ -1170,7 +1088,7 @@ Other parameters are passed through a pointer to a apiGetBillingInvoicesRequest 
 
 > map[string]interface{} GetBillingPrePays(ctx).Execute()
 
-List Prepay Balances
+List prepay deposits on the account — remaining balance and auto-use flags
 
 
 
@@ -1227,81 +1145,11 @@ Other parameters are passed through a pointer to a apiGetBillingPrePaysRequest s
 [[Back to README]](../README.md)
 
 
-## GetInvoices
-
-> []Invoice GetInvoices(ctx).SearchString(searchString).Skip(skip).Limit(limit).Execute()
-
-Get Invoices
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	searchString := "searchString_example" // string | pass an optional search string for looking up inventory (optional)
-	skip := int32(56) // int32 | number of records to skip for pagination (optional)
-	limit := int32(56) // int32 | maximum number of records to return (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.GetInvoices(context.Background()).SearchString(searchString).Skip(skip).Limit(limit).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetInvoices``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetInvoices`: []Invoice
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetInvoices`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetInvoicesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **searchString** | **string** | pass an optional search string for looking up inventory | 
- **skip** | **int32** | number of records to skip for pagination | 
- **limit** | **int32** | maximum number of records to return | 
-
-### Return type
-
-[**[]Invoice**](Invoice.md)
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## InitiatePayment
 
 > InitiatePayment200Response InitiatePayment(ctx, method, invoices).Execute()
 
-Initiate Payment
+Pay invoices through the chosen gateway — returns the next-step action
 
 
 
@@ -1319,7 +1167,7 @@ import (
 
 func main() {
 	method := "method_example" // string | The payment method to use. Valid values: `cc` (credit card), `paypal`, `prepay`, `payssion`, `payu`, `ccavenue`, `cashfree`, `coinbase`, `btcpay`.
-	invoices := "invoices_example" // string | A comma-separated list of invoice IDs to pay. These IDs are returned by order endpoints (e.g. `/backups/order`, `/vps/order`) and by `/billing/invoices`.
+	invoices := "invoices_example" // string | A comma-separated list of invoice IDs or invoice Tags to pay. These IDs are returned by order endpoints (e.g. `/backups/order`, `/vps/order`) and by `/billing/invoices`. Invoice tags accepted are SERVICE<module><id>, RINV<module><repeat invoice id>, INV<module><invoice id>, PREPAY<prepay id><invoice id>, and <invoice id>.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1340,7 +1188,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **method** | **string** | The payment method to use. Valid values: &#x60;cc&#x60; (credit card), &#x60;paypal&#x60;, &#x60;prepay&#x60;, &#x60;payssion&#x60;, &#x60;payu&#x60;, &#x60;ccavenue&#x60;, &#x60;cashfree&#x60;, &#x60;coinbase&#x60;, &#x60;btcpay&#x60;. | 
-**invoices** | **string** | A comma-separated list of invoice IDs to pay. These IDs are returned by order endpoints (e.g. &#x60;/backups/order&#x60;, &#x60;/vps/order&#x60;) and by &#x60;/billing/invoices&#x60;. | 
+**invoices** | **string** | A comma-separated list of invoice IDs or invoice Tags to pay. These IDs are returned by order endpoints (e.g. &#x60;/backups/order&#x60;, &#x60;/vps/order&#x60;) and by &#x60;/billing/invoices&#x60;. Invoice tags accepted are SERVICE&lt;module&gt;&lt;id&gt;, RINV&lt;module&gt;&lt;repeat invoice id&gt;, INV&lt;module&gt;&lt;invoice id&gt;, PREPAY&lt;prepay id&gt;&lt;invoice id&gt;, and &lt;invoice id&gt;. | 
 
 ### Other Parameters
 
@@ -1370,11 +1218,83 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PatchBillingCreditCardVerify
+
+> SuccessTextResponse PatchBillingCreditCardVerify(ctx, id).PatchBillingCreditCardVerifyRequest(patchBillingCreditCardVerifyRequest).Execute()
+
+Place two micro-charges on the card to start CVV verification (step 1 of 2)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | The credit card ID to verify. Use the ID returned from `POST /billing/creditcards`.
+	patchBillingCreditCardVerifyRequest := *openapiclient.NewPatchBillingCreditCardVerifyRequest("CcCcv2_example") // PatchBillingCreditCardVerifyRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.PatchBillingCreditCardVerify(context.Background(), id).PatchBillingCreditCardVerifyRequest(patchBillingCreditCardVerifyRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.PatchBillingCreditCardVerify``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PatchBillingCreditCardVerify`: SuccessTextResponse
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.PatchBillingCreditCardVerify`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | The credit card ID to verify. Use the ID returned from &#x60;POST /billing/creditcards&#x60;. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPatchBillingCreditCardVerifyRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **patchBillingCreditCardVerifyRequest** | [**PatchBillingCreditCardVerifyRequest**](PatchBillingCreditCardVerifyRequest.md) |  | 
+
+### Return type
+
+[**SuccessTextResponse**](SuccessTextResponse.md)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json, multipart/form-data
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostBillingCreditCardVerify
 
 > SuccessTextResponse PostBillingCreditCardVerify(ctx, id).BillingVerifyCcRequest(billingVerifyCcRequest).Execute()
 
-Submit Credit Card Verification
+Submit two micro-charge amounts to finalize card verification (step 2 of 2)
 
 
 
@@ -1442,81 +1362,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateAccountCreditCard
-
-> string UpdateAccountCreditCard(ctx, id).Execute()
-
-Update Credit Card
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	id := int32(56) // int32 | The credit card ID. Use the card ID returned from `POST /account/creditcards` or listed in `/billing/creditcards`.
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.UpdateAccountCreditCard(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.UpdateAccountCreditCard``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateAccountCreditCard`: string
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.UpdateAccountCreditCard`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | The credit card ID. Use the card ID returned from &#x60;POST /account/creditcards&#x60; or listed in &#x60;/billing/creditcards&#x60;. | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateAccountCreditCardRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-**string**
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## UpdateAffiliateDockSetup
 
 > TextResponse UpdateAffiliateDockSetup(ctx).AffiliateDockTitle(affiliateDockTitle).AffiliateDockDescription(affiliateDockDescription).ReferrerCoupon(referrerCoupon).Execute()
 
-Configure Affiliate Dock Settings
+Configure the affiliate landing dock title, description, and referrer coupon
 
 
 
@@ -1582,81 +1432,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateAffiliateLandingPage
-
-> TextResponse UpdateAffiliateLandingPage(ctx).AffiliateDockTitle(affiliateDockTitle).AffiliateDockDescription(affiliateDockDescription).ReferrerCoupon(referrerCoupon).Execute()
-
-Configure Affiliate Landing Page
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	affiliateDockTitle := "affiliateDockTitle_example" // string |  (optional)
-	affiliateDockDescription := "affiliateDockDescription_example" // string |  (optional)
-	referrerCoupon := "referrerCoupon_example" // string |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.UpdateAffiliateLandingPage(context.Background()).AffiliateDockTitle(affiliateDockTitle).AffiliateDockDescription(affiliateDockDescription).ReferrerCoupon(referrerCoupon).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.UpdateAffiliateLandingPage``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `UpdateAffiliateLandingPage`: TextResponse
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.UpdateAffiliateLandingPage`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiUpdateAffiliateLandingPageRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **affiliateDockTitle** | **string** |  | 
- **affiliateDockDescription** | **string** |  | 
- **referrerCoupon** | **string** |  | 
-
-### Return type
-
-[**TextResponse**](TextResponse.md)
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data, application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## UpdateAffiliatePaymentSetup
 
 > TextResponse UpdateAffiliatePaymentSetup(ctx).AffiliatePaypal(affiliatePaypal).AffiliatePaymentMethod(affiliatePaymentMethod).Execute()
 
-Configure Affiliate Payout Preferences
+Configure how affiliate commissions get paid out (PayPal or internal prepay)
 
 
 
@@ -1724,7 +1504,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateBillingCreditCard(ctx, id).Execute()
 
-Update Credit Card Details
+Refresh stored card expiration and re-trigger MaxMind fraud scoring
 
 
 
@@ -1794,7 +1574,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse UpdateBillingPaymentMethod(ctx).BillingPaymentMethodRequest(billingPaymentMethodRequest).Execute()
 
-Update Default Payment Method
+Set the account's default payment method for recurring/auto charges
 
 
 

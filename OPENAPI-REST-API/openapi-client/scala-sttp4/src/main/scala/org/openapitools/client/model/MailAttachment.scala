@@ -22,4 +22,3 @@ case class MailAttachment(
   /* The file contents base64 encoded */
   data: String
 )
-

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsCPData model module.
  * @module model/VpsCPData
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsCPData {
     /**

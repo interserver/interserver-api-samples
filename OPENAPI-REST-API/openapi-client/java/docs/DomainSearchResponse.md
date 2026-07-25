@@ -16,4 +16,8 @@ Lookup and suggestion results returned for a domain search.
 |**tlds** | **List&lt;String&gt;** | TLDs evaluated during the search. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -86,4 +86,3 @@ case class ServerServiceInfo(
   /* Additional information about the server. */
   server_extra: Option[String] = None
 )
-

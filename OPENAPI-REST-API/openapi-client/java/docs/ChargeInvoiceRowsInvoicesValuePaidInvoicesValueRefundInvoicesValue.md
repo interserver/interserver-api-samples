@@ -16,4 +16,8 @@
 |**invoicesDateFormatted** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

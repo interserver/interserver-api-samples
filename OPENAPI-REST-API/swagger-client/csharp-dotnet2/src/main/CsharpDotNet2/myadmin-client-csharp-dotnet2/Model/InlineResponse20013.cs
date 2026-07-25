@@ -13,18 +13,60 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse20013 {
     /// <summary>
-    /// Gets or Sets Success
+    /// Gets or Sets ServiceInfo
     /// </summary>
-    [DataMember(Name="success", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "success")]
-    public bool? Success { get; set; }
+    [DataMember(Name="serviceInfo", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "serviceInfo")]
+    public InlineResponse20013ServiceInfo ServiceInfo { get; set; }
 
     /// <summary>
-    /// Gets or Sets Text
+    /// Gets or Sets ClientLinks
     /// </summary>
-    [DataMember(Name="text", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "text")]
-    public string Text { get; set; }
+    [DataMember(Name="client_links", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "client_links")]
+    public List<InlineResponse20013ClientLinks> ClientLinks { get; set; }
+
+    /// <summary>
+    /// Gets or Sets BillingDetails
+    /// </summary>
+    [DataMember(Name="billingDetails", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "billingDetails")]
+    public InlineResponse20013BillingDetails BillingDetails { get; set; }
+
+    /// <summary>
+    /// Gets or Sets CustCurrency
+    /// </summary>
+    [DataMember(Name="custCurrency", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "custCurrency")]
+    public string CustCurrency { get; set; }
+
+    /// <summary>
+    /// Gets or Sets CustCurrencySymbol
+    /// </summary>
+    [DataMember(Name="custCurrencySymbol", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "custCurrencySymbol")]
+    public string CustCurrencySymbol { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Package
+    /// </summary>
+    [DataMember(Name="package", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "package")]
+    public string Package { get; set; }
+
+    /// <summary>
+    /// Gets or Sets ExtraInfoTables
+    /// </summary>
+    [DataMember(Name="extraInfoTables", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "extraInfoTables")]
+    public InlineResponse20013ExtraInfoTables ExtraInfoTables { get; set; }
+
+    /// <summary>
+    /// Gets or Sets FilterFirewall
+    /// </summary>
+    [DataMember(Name="filter_firewall", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "filter_firewall")]
+    public InlineResponse20013FilterFirewall FilterFirewall { get; set; }
 
 
     /// <summary>
@@ -34,8 +76,14 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse20013 {\n");
-      sb.Append("  Success: ").Append(Success).Append("\n");
-      sb.Append("  Text: ").Append(Text).Append("\n");
+      sb.Append("  ServiceInfo: ").Append(ServiceInfo).Append("\n");
+      sb.Append("  ClientLinks: ").Append(ClientLinks).Append("\n");
+      sb.Append("  BillingDetails: ").Append(BillingDetails).Append("\n");
+      sb.Append("  CustCurrency: ").Append(CustCurrency).Append("\n");
+      sb.Append("  CustCurrencySymbol: ").Append(CustCurrencySymbol).Append("\n");
+      sb.Append("  Package: ").Append(Package).Append("\n");
+      sb.Append("  ExtraInfoTables: ").Append(ExtraInfoTables).Append("\n");
+      sb.Append("  FilterFirewall: ").Append(FilterFirewall).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

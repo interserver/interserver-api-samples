@@ -92,8 +92,8 @@ describe("servers_api", function()
     end)
   end)
 
-  -- unit tests for put_servers
-  describe("put_servers test", function()
+  -- unit tests for server_bulk_ipmi_power_get
+  describe("server_bulk_ipmi_power_get test", function()
     it("should work", function()
       -- TODO assertion here: http://olivinelabs.com/busted/#asserts
     end)

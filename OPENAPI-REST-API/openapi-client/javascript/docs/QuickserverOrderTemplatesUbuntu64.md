@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverOrderTemplatesUbuntu64
+# InterserverApiClient.QuickserverOrderTemplatesUbuntu64
 
 ## Properties
 

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BillingPrepayRequest();
+    instance = new InterserverApiClient.BillingPrepayRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('BillingPrepayRequest', function() {
     it('should create an instance of BillingPrepayRequest', function() {
       // uncomment below and update the code to test BillingPrepayRequest
-      //var instance = new InterServerManagementApi.BillingPrepayRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.BillingPrepayRequest);
+      //var instance = new InterserverApiClient.BillingPrepayRequest();
+      //expect(instance).to.be.a(InterserverApiClient.BillingPrepayRequest);
     });
 
     it('should have the property module (base name: "module")', function() {
       // uncomment below and update the code to test the property module
-      //var instance = new InterServerManagementApi.BillingPrepayRequest();
+      //var instance = new InterserverApiClient.BillingPrepayRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property amount (base name: "amount")', function() {
       // uncomment below and update the code to test the property amount
-      //var instance = new InterServerManagementApi.BillingPrepayRequest();
+      //var instance = new InterserverApiClient.BillingPrepayRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property automatic_use (base name: "automatic_use")', function() {
       // uncomment below and update the code to test the property automatic_use
-      //var instance = new InterServerManagementApi.BillingPrepayRequest();
+      //var instance = new InterserverApiClient.BillingPrepayRequest();
       //expect(instance).to.be();
     });
 

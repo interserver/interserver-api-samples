@@ -13,4 +13,8 @@ Platform Names
 |**hyperv** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

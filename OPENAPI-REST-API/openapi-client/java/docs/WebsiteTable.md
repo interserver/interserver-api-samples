@@ -11,4 +11,8 @@
 |**rows** | [**List&lt;WebsiteTableRow&gt;**](WebsiteTableRow.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

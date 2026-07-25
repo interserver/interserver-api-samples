@@ -11,6 +11,7 @@
  */
 package org.openapitools.client.model
 
+import org.json4s.JObject
 
   /**
    * Blocklist status information for a mail service.
@@ -19,12 +20,11 @@ case class MailDelistResponse(
   /* Mail service ID. */
   id: Option[Int] = None,
   /* Local blocklist entries. */
-  local: Option[Seq[Any]] = None,
+  local: Option[Seq[org.json4s.JObject]] = None,
   /* MailBaby trap block entries. */
-  mbtrap: Option[Seq[Any]] = None,
+  mbtrap: Option[Seq[org.json4s.JObject]] = None,
   /* Subject-based block entries. */
-  subject: Option[Seq[Any]] = None,
+  subject: Option[Seq[org.json4s.JObject]] = None,
   /* Manually blocked entries. */
-  manual: Option[Seq[Any]] = None
+  manual: Option[Seq[org.json4s.JObject]] = None
 )
-

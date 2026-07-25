@@ -17,4 +17,3 @@ case class QuickserverAddons(
   title: Option[String] = None,
   rows: Option[Seq[QuickserverAddonsRow]] = None
 )
-

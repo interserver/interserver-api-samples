@@ -1,4 +1,4 @@
-# openapi::DomainDnssecRequest
+# interserverapi::DomainDnssecRequest
 
 Request payload for adding DNSSEC DS records to a domain.
 

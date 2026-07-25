@@ -16,4 +16,3 @@ case class BackupsOrderPackageCosts(
   /* The cost associated with package 11006. */
   `11006`: Int
 )
-

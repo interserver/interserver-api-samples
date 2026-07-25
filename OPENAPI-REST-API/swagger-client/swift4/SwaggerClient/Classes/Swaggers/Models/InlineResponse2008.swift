@@ -11,12 +11,10 @@ import Foundation
 public struct InlineResponse2008: Codable {
 
 
-    public var success: Bool
-
-    public var text: String
-    public init(success: Bool, text: String) { 
-        self.success = success
-        self.text = text
+    /** Whether the 2FA verification succeeded and the user is now logged in. */
+    public var login: Bool?
+    public init(login: Bool? = nil) { 
+        self.login = login
     }
 
 }

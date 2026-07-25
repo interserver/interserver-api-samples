@@ -61,7 +61,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoMaxMindResponse = Initialize-PSOpenAPIToolsAccountInfoMaxMindResponse  -Distance null `
+$AccountInfoMaxMindResponse = Initialize-InterserverApiAccountInfoMaxMindResponse  -Distance null `
  -CountryMatch null `
  -CountryCode null `
  -FreeMail null `

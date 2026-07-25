@@ -73,6 +73,38 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO unit test for the property 'login'
         }
+        /// <summary>
+        /// Test the property 'signup'
+        /// </summary>
+        [Test]
+        public void signupTest()
+        {
+            // TODO unit test for the property 'signup'
+        }
+        /// <summary>
+        /// Test the property 'linked'
+        /// </summary>
+        [Test]
+        public void linkedTest()
+        {
+            // TODO unit test for the property 'linked'
+        }
+        /// <summary>
+        /// Test the property 'account_id'
+        /// </summary>
+        [Test]
+        public void account_idTest()
+        {
+            // TODO unit test for the property 'account_id'
+        }
+        /// <summary>
+        /// Test the property 'error_code'
+        /// </summary>
+        [Test]
+        public void error_codeTest()
+        {
+            // TODO unit test for the property 'error_code'
+        }
 
     }
 

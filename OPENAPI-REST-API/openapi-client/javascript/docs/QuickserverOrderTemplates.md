@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverOrderTemplates
+# InterserverApiClient.QuickserverOrderTemplates
 
 ## Properties
 

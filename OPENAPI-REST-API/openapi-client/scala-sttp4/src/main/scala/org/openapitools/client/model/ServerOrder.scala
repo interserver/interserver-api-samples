@@ -30,4 +30,3 @@ case class ServerOrder(
   /* RAID options for the server order. */
   raid_li: Option[Seq[ServerOrderRAID]] = None
 )
-

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.websites_order_json_service_offers_item import WebsitesOrderJsonServiceOffersItem
+from interserver_api_client.models.websites_order_json_service_offers_item import WebsitesOrderJsonServiceOffersItem
 
 class TestWebsitesOrderJsonServiceOffersItem(unittest.TestCase):
     """WebsitesOrderJsonServiceOffersItem unit test stubs"""

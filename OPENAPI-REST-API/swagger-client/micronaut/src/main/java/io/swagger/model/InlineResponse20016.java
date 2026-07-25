@@ -31,7 +31,7 @@ public class InlineResponse20016   {
    * Get success
    * @return success
   **/
-  @Schema(example = "true", description = "")
+  @Schema(example = "true", required = true, description = "")
   @NotNull
 
   public Boolean isSuccess() {
@@ -51,7 +51,7 @@ public class InlineResponse20016   {
    * Get text
    * @return text
   **/
-  @Schema(example = "Firewall Rule has been deleted.", description = "")
+  @Schema(example = "Scrub is disabled on your IP.", required = true, description = "")
   @NotNull
 
   public String getText() {

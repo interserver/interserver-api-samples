@@ -26,4 +26,3 @@ case class DomainAllInfoAttributes(
   affiliate_id: Option[String] = None,
   expiredate: Option[String] = None
 )
-

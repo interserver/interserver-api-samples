@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VPSTrafficDataDataSectionResponseInner model module.
  * @module model/VPSTrafficDataDataSectionResponseInner
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VPSTrafficDataDataSectionResponseInner {
     /**

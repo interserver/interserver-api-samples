@@ -12,4 +12,8 @@
 |**closed** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

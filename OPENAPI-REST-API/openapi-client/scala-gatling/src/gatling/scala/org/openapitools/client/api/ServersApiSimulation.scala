@@ -67,7 +67,7 @@ class ServersApiSimulation extends Simulation {
     val getServersWelcomeEmailPerSecond = config.getDouble("performance.operationsPerSecond.getServersWelcomeEmail") * rateMultiplier * instanceMultiplier
     val placeBuyNowServerPerSecond = config.getDouble("performance.operationsPerSecond.placeBuyNowServer") * rateMultiplier * instanceMultiplier
     val postServerReverseDnsPerSecond = config.getDouble("performance.operationsPerSecond.postServerReverseDns") * rateMultiplier * instanceMultiplier
-    val putServersPerSecond = config.getDouble("performance.operationsPerSecond.putServers") * rateMultiplier * instanceMultiplier
+    val serverBulkIpmiPowerGetPerSecond = config.getDouble("performance.operationsPerSecond.serverBulkIpmiPowerGet") * rateMultiplier * instanceMultiplier
     val serverIpmiLiveGetPerSecond = config.getDouble("performance.operationsPerSecond.serverIpmiLiveGet") * rateMultiplier * instanceMultiplier
     val serverIpmiLivePostPerSecond = config.getDouble("performance.operationsPerSecond.serverIpmiLivePost") * rateMultiplier * instanceMultiplier
     val serverIpmiPowerGetPerSecond = config.getDouble("performance.operationsPerSecond.serverIpmiPowerGet") * rateMultiplier * instanceMultiplier
@@ -83,6 +83,7 @@ class ServersApiSimulation extends Simulation {
     val getServerReverseDnsPATHFeeder = csv(userDataDirectory + File.separator + "getServerReverseDns-pathParams.csv").random
     val getServersWelcomeEmailPATHFeeder = csv(userDataDirectory + File.separator + "getServersWelcomeEmail-pathParams.csv").random
     val postServerReverseDnsPATHFeeder = csv(userDataDirectory + File.separator + "postServerReverseDns-pathParams.csv").random
+    val serverBulkIpmiPowerGetQUERYFeeder = csv(userDataDirectory + File.separator + "serverBulkIpmiPowerGet-queryParams.csv").random
     val serverIpmiLiveGetPATHFeeder = csv(userDataDirectory + File.separator + "serverIpmiLiveGet-pathParams.csv").random
     val serverIpmiLivePostPATHFeeder = csv(userDataDirectory + File.separator + "serverIpmiLivePost-pathParams.csv").random
     val serverIpmiPowerGetPATHFeeder = csv(userDataDirectory + File.separator + "serverIpmiPowerGet-pathParams.csv").random
@@ -241,16 +242,18 @@ class ServersApiSimulation extends Simulation {
     )
 
     
-    val scnputServers = scenario("putServersSimulation")
-        .exec(http("putServers")
-        .httpRequest("PUT","/servers/order")
+    val scnserverBulkIpmiPowerGet = scenario("serverBulkIpmiPowerGetSimulation")
+        .feed(serverBulkIpmiPowerGetQUERYFeeder)
+        .exec(http("serverBulkIpmiPowerGet")
+        .httpRequest("GET","/servers/bulk/ipmi_power")
+        .queryParam("ids","${ids}")
 )
 
-    // Run scnputServers with warm up and reach a constant rate for entire duration
-    scenarioBuilders += scnputServers.inject(
-        rampUsersPerSec(1) to(putServersPerSecond) during(rampUpSeconds),
-        constantUsersPerSec(putServersPerSecond) during(durationSeconds),
-        rampUsersPerSec(putServersPerSecond) to(1) during(rampDownSeconds)
+    // Run scnserverBulkIpmiPowerGet with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnserverBulkIpmiPowerGet.inject(
+        rampUsersPerSec(1) to(serverBulkIpmiPowerGetPerSecond) during(rampUpSeconds),
+        constantUsersPerSec(serverBulkIpmiPowerGetPerSecond) during(durationSeconds),
+        rampUsersPerSec(serverBulkIpmiPowerGetPerSecond) to(1) during(rampDownSeconds)
     )
 
     

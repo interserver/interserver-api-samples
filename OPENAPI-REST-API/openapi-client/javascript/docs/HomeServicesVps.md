@@ -1,4 +1,4 @@
-# InterServerManagementApi.HomeServicesVps
+# InterserverApiClient.HomeServicesVps
 
 ## Properties
 

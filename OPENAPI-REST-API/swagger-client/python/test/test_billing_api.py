@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.billing_api import BillingApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.billing_api import BillingApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestBillingApi(unittest.TestCase):
@@ -28,192 +28,171 @@ class TestBillingApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_add_account_credit_card(self):
-        """Test case for add_account_credit_card
-
-        Add Credit Card to Account  # noqa: E501
-        """
-        pass
-
     def test_add_billing_credit_card(self):
         """Test case for add_billing_credit_card
 
-        Add Credit Card for Billing  # noqa: E501
+        Store a credit card on the account — may return a verification flow  # noqa: E501
         """
         pass
 
     def test_add_billing_prepay(self):
         """Test case for add_billing_prepay
 
-        Create Prepay Deposit  # noqa: E501
-        """
-        pass
-
-    def test_delete_account_credit_card(self):
-        """Test case for delete_account_credit_card
-
-        Remove Credit Card  # noqa: E501
+        Create a prepay deposit and return an invoice id to fund it  # noqa: E501
         """
         pass
 
     def test_delete_billing_credit_card(self):
         """Test case for delete_billing_credit_card
 
-        Delete Credit Card  # noqa: E501
+        Remove a stored credit card from the account  # noqa: E501
         """
         pass
 
     def test_delete_billing_invoice(self):
         """Test case for delete_billing_invoice
 
-        Delete Invoice  # noqa: E501
+        Cancel a pending unpaid invoice — and its pending service or repeat invoice  # noqa: E501
         """
         pass
 
     def test_delete_billing_prepay(self):
         """Test case for delete_billing_prepay
 
-        Delete Prepay Balance  # noqa: E501
+        Delete an unfunded prepay or strip its unpaid funding invoices  # noqa: E501
         """
         pass
 
     def test_get_affiliate_banners(self):
         """Test case for get_affiliate_banners
 
-        List Affiliate Banner Assets  # noqa: E501
+        List affiliate banner image assets with filename and dimensions  # noqa: E501
+        """
+        pass
+
+    def test_get_affiliate_download(self):
+        """Test case for get_affiliate_download
+
+        Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download  # noqa: E501
         """
         pass
 
     def test_get_affiliate_rich_report(self):
         """Test case for get_affiliate_rich_report
 
-        Get Affiliate Performance Report  # noqa: E501
+        Read a combined affiliate performance summary (HTML payload)  # noqa: E501
         """
         pass
 
     def test_get_affiliate_sales_graph(self):
         """Test case for get_affiliate_sales_graph
 
-        Get Affiliate Sales Graph Data  # noqa: E501
+        Read aggregated affiliate sales time-series (monthly buckets) for chart rendering  # noqa: E501
         """
         pass
 
-    def test_get_affiliate_sales_report(self):
-        """Test case for get_affiliate_sales_report
+    def test_get_affiliate_signups(self):
+        """Test case for get_affiliate_signups
 
-        Get Affiliate Sales Report  # noqa: E501
+        Read affiliate signup stats and per-customer conversion data  # noqa: E501
         """
         pass
 
     def test_get_affiliate_traffic_graph(self):
         """Test case for get_affiliate_traffic_graph
 
-        Get Affiliate Traffic Graph Data  # noqa: E501
+        Read aggregated affiliate referral click/visit time-series for chart rendering  # noqa: E501
         """
         pass
 
     def test_get_affiliate_web_traffic(self):
         """Test case for get_affiliate_web_traffic
 
-        List Affiliate Web Traffic Entries  # noqa: E501
+        List the 20 most recent affiliate referral visits with IP, referrer, timestamp  # noqa: E501
         """
         pass
 
     def test_get_billing_cart(self):
         """Test case for get_billing_cart
 
-        Get Shopping Cart Contents  # noqa: E501
+        Read the current shopping cart contents, totals, and available payment methods  # noqa: E501
         """
         pass
 
     def test_get_billing_credit_card_verify(self):
         """Test case for get_billing_credit_card_verify
 
-        Get Credit Card Verification Requirements  # noqa: E501
+        Probe whether a stored card still needs micro-charge verification  # noqa: E501
         """
         pass
 
     def test_get_billing_invoice(self):
         """Test case for get_billing_invoice
 
-        Get Invoice Details  # noqa: E501
+        Read full invoice detail — line items, totals, paid status, customer info  # noqa: E501
         """
         pass
 
     def test_get_billing_invoices(self):
         """Test case for get_billing_invoices
 
-        List Account Invoices  # noqa: E501
+        List every invoice on the account with summary totals and paid/unpaid status  # noqa: E501
         """
         pass
 
     def test_get_billing_pre_pays(self):
         """Test case for get_billing_pre_pays
 
-        List Prepay Balances  # noqa: E501
-        """
-        pass
-
-    def test_get_invoices(self):
-        """Test case for get_invoices
-
-        Get Invoices  # noqa: E501
+        List prepay deposits on the account — remaining balance and auto-use flags  # noqa: E501
         """
         pass
 
     def test_initiate_payment(self):
         """Test case for initiate_payment
 
-        Initiate Payment  # noqa: E501
+        Pay invoices through the chosen gateway — returns the next-step action  # noqa: E501
+        """
+        pass
+
+    def test_patch_billing_credit_card_verify(self):
+        """Test case for patch_billing_credit_card_verify
+
+        Place two micro-charges on the card to start CVV verification (step 1 of 2)  # noqa: E501
         """
         pass
 
     def test_post_billing_credit_card_verify(self):
         """Test case for post_billing_credit_card_verify
 
-        Submit Credit Card Verification  # noqa: E501
-        """
-        pass
-
-    def test_update_account_credit_card(self):
-        """Test case for update_account_credit_card
-
-        Update Credit Card  # noqa: E501
+        Submit two micro-charge amounts to finalize card verification (step 2 of 2)  # noqa: E501
         """
         pass
 
     def test_update_affiliate_dock_setup(self):
         """Test case for update_affiliate_dock_setup
 
-        Configure Affiliate Dock Settings  # noqa: E501
-        """
-        pass
-
-    def test_update_affiliate_landing_page(self):
-        """Test case for update_affiliate_landing_page
-
-        Configure Affiliate Landing Page  # noqa: E501
+        Configure the affiliate landing dock title, description, and referrer coupon  # noqa: E501
         """
         pass
 
     def test_update_affiliate_payment_setup(self):
         """Test case for update_affiliate_payment_setup
 
-        Configure Affiliate Payout Preferences  # noqa: E501
+        Configure how affiliate commissions get paid out (PayPal or internal prepay)  # noqa: E501
         """
         pass
 
     def test_update_billing_credit_card(self):
         """Test case for update_billing_credit_card
 
-        Update Credit Card Details  # noqa: E501
+        Refresh stored card expiration and re-trigger MaxMind fraud scoring  # noqa: E501
         """
         pass
 
     def test_update_billing_payment_method(self):
         """Test case for update_billing_payment_method
 
-        Update Default Payment Method  # noqa: E501
+        Set the account's default payment method for recurring/auto charges  # noqa: E501
         """
         pass
 

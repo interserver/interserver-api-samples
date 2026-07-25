@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AffiliateBannerRow
+# InterServerAPI::Object::AffiliateBannerRow
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AffiliateBannerRow;
+use InterServerAPI::Object::AffiliateBannerRow;
 ```
 
 ## Properties

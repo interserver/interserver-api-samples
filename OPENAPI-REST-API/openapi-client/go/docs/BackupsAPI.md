@@ -4,16 +4,16 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddBackup**](BackupsAPI.md#AddBackup) | **Post** /backups/order | Place Backup Order
-[**CancelBackup**](BackupsAPI.md#CancelBackup) | **Delete** /backups/{id} | Cancel Backup Service
-[**GetBackupInfo**](BackupsAPI.md#GetBackupInfo) | **Get** /backups/{id} | Get Backup Service Details
-[**GetBackupInvoices**](BackupsAPI.md#GetBackupInvoices) | **Get** /backups/{id}/invoices | Get Backup Order Invoices
-[**GetBackupLogin**](BackupsAPI.md#GetBackupLogin) | **Get** /backups/{id}/login | Get Backup Storage Panel Login
-[**GetBackupsList**](BackupsAPI.md#GetBackupsList) | **Get** /backups | List Backup Services
-[**GetBackupsWelcomeEmail**](BackupsAPI.md#GetBackupsWelcomeEmail) | **Get** /backups/{id}/welcome_email | Resend Backup Welcome Email
-[**GetNewBackup**](BackupsAPI.md#GetNewBackup) | **Get** /backups/order | Get Backup Order Form Data
-[**UpdateBackupInfo**](BackupsAPI.md#UpdateBackupInfo) | **Post** /backups/{id} | Update Backup Information
-[**ValidateBackupOrder**](BackupsAPI.md#ValidateBackupOrder) | **Put** /backups/order | Validate Backup Order
+[**AddBackup**](BackupsAPI.md#AddBackup) | **Post** /backups/order | Place a new off-site backup storage order and generate the invoice
+[**CancelBackup**](BackupsAPI.md#CancelBackup) | **Delete** /backups/{id} | Cancel an off-site backup storage subscription
+[**GetBackupInfo**](BackupsAPI.md#GetBackupInfo) | **Get** /backups/{id} | Get details of a specific off-site backup storage service
+[**GetBackupInvoices**](BackupsAPI.md#GetBackupInvoices) | **Get** /backups/{id}/invoices | List invoices for a single backup-storage subscription
+[**GetBackupLogin**](BackupsAPI.md#GetBackupLogin) | **Get** /backups/{id}/login | Open a single sign-on session URL for the backup storage panel
+[**GetBackupsList**](BackupsAPI.md#GetBackupsList) | **Get** /backups | List off-site backup storage subscriptions on the authenticated account
+[**GetBackupsWelcomeEmail**](BackupsAPI.md#GetBackupsWelcomeEmail) | **Get** /backups/{id}/welcome_email | Resend the welcome email for an off-site backup storage service
+[**GetNewBackup**](BackupsAPI.md#GetNewBackup) | **Get** /backups/order | Get backup-storage order form metadata and pricing tiers
+[**UpdateBackupInfo**](BackupsAPI.md#UpdateBackupInfo) | **Post** /backups/{id} | Update stored metadata for a backup-storage subscription
+[**ValidateBackupOrder**](BackupsAPI.md#ValidateBackupOrder) | **Put** /backups/order | Validate a backup-storage order and preview pricing without charging
 
 
 
@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 > BackupOrderPostResponse AddBackup(ctx).ValidateOnly(validateOnly).ServiceType(serviceType).Coupon(coupon).Execute()
 
-Place Backup Order
+Place a new off-site backup storage order and generate the invoice
 
 
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 > CancelBackup200Response CancelBackup(ctx, id).Execute()
 
-Cancel Backup Service
+Cancel an off-site backup storage subscription
 
 
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 > Backup GetBackupInfo(ctx, id).Execute()
 
-Get Backup Service Details
+Get details of a specific off-site backup storage service
 
 
 
@@ -231,7 +231,7 @@ Name | Type | Description  | Notes
 
 > ChargeInvoiceRows GetBackupInvoices(ctx, id).Execute()
 
-Get Backup Order Invoices
+List invoices for a single backup-storage subscription
 
 
 
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 > BackupLoginResponse GetBackupLogin(ctx, id).Execute()
 
-Get Backup Storage Panel Login
+Open a single sign-on session URL for the backup storage panel
 
 
 
@@ -371,7 +371,7 @@ Name | Type | Description  | Notes
 
 > []BackupRow GetBackupsList(ctx).Execute()
 
-List Backup Services
+List off-site backup storage subscriptions on the authenticated account
 
 
 
@@ -432,7 +432,7 @@ Other parameters are passed through a pointer to a apiGetBackupsListRequest stru
 
 > SuccessTextResponse GetBackupsWelcomeEmail(ctx, id).Execute()
 
-Resend Backup Welcome Email
+Resend the welcome email for an off-site backup storage service
 
 
 
@@ -502,7 +502,7 @@ Name | Type | Description  | Notes
 
 > BackupsOrder GetNewBackup(ctx).Execute()
 
-Get Backup Order Form Data
+Get backup-storage order form metadata and pricing tiers
 
 
 
@@ -563,7 +563,7 @@ Other parameters are passed through a pointer to a apiGetNewBackupRequest struct
 
 > SuccessTextResponse UpdateBackupInfo(ctx, id).Execute()
 
-Update Backup Information
+Update stored metadata for a backup-storage subscription
 
 
 
@@ -633,7 +633,7 @@ Name | Type | Description  | Notes
 
 > BackupOrderPutResponse ValidateBackupOrder(ctx).ValidateOnly(validateOnly).ServiceType(serviceType).Coupon(coupon).Execute()
 
-Validate Backup Order
+Validate a backup-storage order and preview pricing without charging
 
 
 

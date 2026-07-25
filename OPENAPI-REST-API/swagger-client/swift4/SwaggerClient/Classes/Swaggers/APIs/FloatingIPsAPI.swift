@@ -12,21 +12,21 @@ import Alamofire
 
 open class FloatingIPsAPI {
     /**
-     Place Floating IP Order
-
+     Place a real Floating IP order, create billing records, and provision the service
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func addFloatingIp(completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
-        addFloatingIpWithRequestBuilder().execute { (response, error) -> Void in
+    open class func addFloatingIp(body: FloatingIpOrderRequest, completion: @escaping ((_ data: ServiceOrderPostResponse?,_ error: Error?) -> Void)) {
+        addFloatingIpWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Place Floating IP Order
+     Place a real Floating IP order, create billing records, and provision the service
      - POST /floating_ips/order
-     - Places an order for a new Floating IP service. Use `PUT /floating_ips/order` to validate the order first.
+     - Charges the customer and creates a new Floating IP service via `place_buy_floating_ip`. Validate first with `putFloating_ips` to avoid surprise failures. Body (form-encoded): `serviceType` (required, `services_id`), `coupon` (optional), `comment` (optional internal note). On success returns `{ continue:true, errors, total_cost, iid, iids, real_iids, serviceId, invoice_description, cj_params }` — `iid` is the master invoice ID, `serviceId` is the new `floating_ip_id`. On validation failure returns `{ continue:false, errors:[...] }` with no charge. Errors: 401 if unauthenticated; soft errors in `errors[]`. The newly-issued IP starts unassigned — point it at a target with `postFloatingIpsChangeIp` once the service is `active`.  Sibling ops: `getNewFloatingIp` (catalog), `putFloating_ips` (validate), `getFloatingIpInfo` (poll), `postFloatingIpsChangeIp` (route), `getBillingInvoice` + `initiatePayment` (settle invoice), `floating_ipsCancel`.
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth
@@ -46,28 +46,29 @@ open class FloatingIPsAPI {
   "serviceId" : 12345,
   "invoice_description" : "New Service Order"
 }}]
+     - parameter body: (body)  
 
      - returns: RequestBuilder<ServiceOrderPostResponse> 
      */
-    open class func addFloatingIpWithRequestBuilder() -> RequestBuilder<ServiceOrderPostResponse> {
+    open class func addFloatingIpWithRequestBuilder(body: FloatingIpOrderRequest) -> RequestBuilder<ServiceOrderPostResponse> {
         let path = "/floating_ips/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
         let requestBuilder: RequestBuilder<ServiceOrderPostResponse>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**
-     Cancel Floating IP
+     Cancel a Floating IP service and release the IP — destructive, billing stops
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func floatingIpsCancel(_id: Int, completion: @escaping ((_ data: InlineResponse2003?,_ error: Error?) -> Void)) {
+    open class func floatingIpsCancel(_id: Int, completion: @escaping ((_ data: InlineResponse2004?,_ error: Error?) -> Void)) {
         floatingIpsCancelWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -75,9 +76,9 @@ open class FloatingIPsAPI {
 
 
     /**
-     Cancel Floating IP
+     Cancel a Floating IP service and release the IP — destructive, billing stops
      - DELETE /floating_ips/{id}
-     - Cancels a Floating IP service. After cancellation the IP assignment is released and the service transitions to a canceled status. No further billing charges will be incurred.
+     - Cancels the Floating IP via the shared `Api\\Billing\\CancelService` flow — flips status to canceled, halts recurring billing, and releases the IP back to the pool so it can no longer be re-routed. Not reversible: the customer cannot recover the same IP after release. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `FloatingIpsCancelResponse` shape (success text / cancellation outcome). Errors: 401 if unauthenticated; 404 / cross-customer hidden when `id` is not owned by the caller; 409 if already canceled or otherwise non-cancelable. Confirm with the customer before calling — for routing changes use `postFloatingIpsChangeIp` instead of cancel-and-reorder.  Sibling ops: `getFloatingIpInfo` (status), `getFloatingIpInvoices` (outstanding charges), `postFloatingIpsChangeIp` (re-route instead of cancel), `addFloatingIp` (re-order).
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth
@@ -93,9 +94,9 @@ open class FloatingIPsAPI {
 }}]
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
 
-     - returns: RequestBuilder<InlineResponse2003> 
+     - returns: RequestBuilder<InlineResponse2004> 
      */
-    open class func floatingIpsCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2003> {
+    open class func floatingIpsCancelWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2004> {
         var path = "/floating_ips/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -106,13 +107,13 @@ open class FloatingIPsAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
-        let requestBuilder: RequestBuilder<InlineResponse2003>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2004>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
     /**
-     View Floating IP
+     Fetch full details for one Floating IP service, including current target IP
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -124,9 +125,9 @@ open class FloatingIPsAPI {
 
 
     /**
-     View Floating IP
+     Fetch full details for one Floating IP service, including current target IP
      - GET /floating_ips/{id}
-     - Returns detailed information about a specific Floating IP service including its current target IP assignment.
+     - Use for a Floating IP detail screen, or to read `floating_ip_ip` / `floating_ip_target_ip` before calling `postFloatingIpsChangeIp`. Read-only. Path param `id` (integer, `floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ViewFloatingIp.getDetails()` payload — service info, billing/cost summary, status, target IP, and `client_links` (action URLs the UI can render). Internal-only fields (`admin_links`, `settings`, `csrf`) are stripped. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller (`get_service` filters by custid). Siblings: `postFloatingIpsChangeIp`, `updateFloatingIpInfo`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, `floating_ipsCancel`.
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth
@@ -158,7 +159,7 @@ open class FloatingIPsAPI {
     }
 
     /**
-     Get Floating IP Invoices
+     List all billing invoices charged against a specific Floating IP service
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -170,9 +171,9 @@ open class FloatingIPsAPI {
 
 
     /**
-     Get Floating IP Invoices
+     List all billing invoices charged against a specific Floating IP service
      - GET /floating_ips/{id}/invoices
-     - Returns the billing invoices associated with this Floating IP service.
+     - Use for a per-service billing history view — pulls the standard `Api\\Billing\\InvoicesList` rows scoped to this Floating IP. Read-only. Path param `id` (`floating_ip_id` from `getFloatingIpsList`). No body. Returns the `ChargeInvoiceRows` schema: array of invoice rows with id, date, amount, status, etc. Use the invoice IDs with the global billing endpoints (`getBillingInvoice`, `initiatePayment`) for line-item detail. Errors: 401 if unauthenticated; effectively 404 / cross-customer hidden when `id` is not owned by the caller. Siblings: `getFloatingIpInfo` (service details), `getFloatingIpsWelcomeEmail`.
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth
@@ -242,7 +243,7 @@ open class FloatingIPsAPI {
     }
 
     /**
-     List Floating IPs
+     List all Floating IP services on the authenticated customer's account
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -254,9 +255,9 @@ open class FloatingIPsAPI {
 
 
     /**
-     List Floating IPs
+     List all Floating IP services on the authenticated customer's account
      - GET /floating_ips
-     - Returns all Floating IP services on the account with their current status and assignment details.
+     - Use to enumerate every Floating IP the caller owns before drilling into a specific one. Read-only; safe to call frequently. No params, no body. Returns an array of rows: `floating_ip_id`, `repeat_invoices_cost` (recurring price), `floating_ip_ip` (the portable IP), `floating_ip_target_ip` (the IP it currently routes to), `floating_ip_status` (active/pending/canceled/etc.), `services_name` (package label). Empty array if the account owns no Floating IPs. Errors: 401 if unauthenticated. Use returned IDs with `getFloatingIpInfo`, `postFloatingIpsChangeIp`, `getFloatingIpInvoices`, `getFloatingIpsWelcomeEmail`, or `floating_ipsCancel`. To order a new one see `getNewFloatingIp` / `addFloatingIp`.  Sibling ops: `getFloatingIpInfo`, `getNewFloatingIp` (catalog), `addFloatingIp` (order).
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth
@@ -284,7 +285,7 @@ open class FloatingIPsAPI {
     }
 
     /**
-     Resend Floating IPs Welcome Email
+     Resend the Floating IP welcome / setup email to the account contact
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -296,9 +297,9 @@ open class FloatingIPsAPI {
 
 
     /**
-     Resend Floating IPs Welcome Email
+     Resend the Floating IP welcome / setup email to the account contact
      - GET /floating_ips/{id}/welcome_email
-     - Resends the welcome email for the Floating IP service. The email contains setup instructions and connection details.
+     - Triggers `floating_ip_welcome_email($id)` to re-deliver the original setup email (the IP, routing instructions, etc.) to the customer's on-file address. Useful when the email was lost or the customer needs the IP/setup details again. No body, no params besides path `id` (`floating_ip_id`). Returns `{ text: 'Welcome Email has been resent.' }`. Errors: 401 if unauthenticated; 404 (`Invalid Service Passed`) if `id` is not owned by the caller; 409 (`Service is not active`) if status is not `active`. Side effect: sends an outbound email — avoid in tight loops. Read state first via `getFloatingIpInfo` if unsure of status.  Sibling ops: `getFloatingIpInfo` (status), `addFloatingIp` (new order), `floating_ipsCancel`.
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth
@@ -333,7 +334,7 @@ open class FloatingIPsAPI {
     }
 
     /**
-     Get Floating IP Ordering Information
+     Get pricing and service-type options for ordering a new Floating IP
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -345,9 +346,9 @@ open class FloatingIPsAPI {
 
 
     /**
-     Get Floating IP Ordering Information
+     Get pricing and service-type options for ordering a new Floating IP
      - GET /floating_ips/order
-     - Retrieves available options and pricing for ordering a new Floating IP.
+     - Use before showing a Floating IP order form, or before calling `addFloatingIp`, to discover which service types (`serviceTypes`) and prices (`packageCosts`, keyed by `services_id` in the customer's currency) are currently buyable. Read-only; no side effects. No params, no body. Returns `{ packageCosts: { <services_id>: <cost> }, serviceTypes: [ ... ] } `. Costs are `services.services_cost` filtered to `services_buyable=1` for module `floating_ips`. Errors: 401 if unauthenticated. Next steps: validate the chosen `serviceType` with `putFloating_ips`, then place the order with `addFloatingIp`. Floating IPs are portable IPv4 addresses that route to a target IP on one of the customer's active services.  Sibling ops: `putFloating_ips` (validate), `addFloatingIp` (commit), `getFloatingIpsList` (existing IPs).
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth
@@ -375,7 +376,7 @@ open class FloatingIPsAPI {
     }
 
     /**
-     Change Floating IP Target
+     Re-point a Floating IP to a different target IP on one of the customer's services
      - parameter ip: (form)       - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -387,9 +388,9 @@ open class FloatingIPsAPI {
 
 
     /**
-     Change Floating IP Target
+     Re-point a Floating IP to a different target IP on one of the customer's services
      - POST /floating_ips/{id}/change_ip
-     - Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use `GET /floating_ips/{id}` to view the current target before making changes.
+     - Reattaches the Floating IP by removing the old static route on the source switch and adding a new one on the destination switch (via `Sshwitch`), then updates `floating_ip_target_ip`. Use to move a portable IP between the customer's VPS / Quickservers / websites / dedicated servers without renumbering apps. Path param `id` (`floating_ip_id`). Body: `{ ip: <new target IP> }` (also accepts multipart form). Returns `{ success:true, text:'IP Changed' }`. Errors (returned via `json_error`): invalid IP format; IP not in our datacenter; IP not in use by an active service of this customer; service not active; another Floating IP already points to that target; switch lookup failures; route still present after removal. 401 if unauthenticated.  Sibling ops: `getFloatingIpInfo` (read current target), `getFloatingIpsList`, `floating_ipsCancel`. Read current target with `getFloatingIpInfo` first.
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth
@@ -424,7 +425,7 @@ open class FloatingIPsAPI {
     }
 
     /**
-     Change Floating IP Target
+     Re-point a Floating IP to a different target IP on one of the customer's services
      - parameter body: (body)       - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -436,9 +437,9 @@ open class FloatingIPsAPI {
 
 
     /**
-     Change Floating IP Target
+     Re-point a Floating IP to a different target IP on one of the customer's services
      - POST /floating_ips/{id}/change_ip
-     - Changes the target IP address that the Floating IP points to. The Floating IP service must be active. Use `GET /floating_ips/{id}` to view the current target before making changes.
+     - Reattaches the Floating IP by removing the old static route on the source switch and adding a new one on the destination switch (via `Sshwitch`), then updates `floating_ip_target_ip`. Use to move a portable IP between the customer's VPS / Quickservers / websites / dedicated servers without renumbering apps. Path param `id` (`floating_ip_id`). Body: `{ ip: <new target IP> }` (also accepts multipart form). Returns `{ success:true, text:'IP Changed' }`. Errors (returned via `json_error`): invalid IP format; IP not in our datacenter; IP not in use by an active service of this customer; service not active; another Floating IP already points to that target; switch lookup failures; route still present after removal. 401 if unauthenticated.  Sibling ops: `getFloatingIpInfo` (read current target), `getFloatingIpsList`, `floating_ipsCancel`. Read current target with `getFloatingIpInfo` first.
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth
@@ -473,12 +474,12 @@ open class FloatingIPsAPI {
     }
 
     /**
-     Validate Floating IP Order
-
+     Validate a Floating IP order and price it without charging the customer
+     - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func putFloatingIps(completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
-        putFloatingIpsWithRequestBuilder().execute { (response, error) -> Void in
+    open class func putFloatingIps(body: FloatingIpOrderRequest, completion: @escaping ((_ data: Void?,_ error: Error?) -> Void)) {
+        putFloatingIpsWithRequestBuilder(body: body).execute { (response, error) -> Void in
             if error == nil {
                 completion((), error)
             } else {
@@ -489,9 +490,9 @@ open class FloatingIPsAPI {
 
 
     /**
-     Validate Floating IP Order
+     Validate a Floating IP order and price it without charging the customer
      - PUT /floating_ips/order
-     - Validates a Floating IP order before placing it. Use this to check for errors before committing to a purchase.
+     - Dry-run for `addFloatingIp` — runs `validate_buy_floating_ip` to apply coupons, compute intro/repeat pricing, and surface errors before committing. No charge, no service created. Body fields (form-encoded): `serviceType` (required, `services_id` from `getNewFloatingIp.packageCosts`), `coupon` (optional code). Returns `{ continue, errors, serviceType, serviceCost, originalCost, repeatServiceCost, password, introFrequency, coupon, couponCode }`. `continue=true` means the order would succeed; `continue=false` plus populated `errors[]` means it would not. Errors: 401 if unauthenticated; 422-style soft errors arrive in the `errors` array. Use the returned `serviceType` and `couponCode` when calling `addFloatingIp`. Sibling ops: `getNewFloatingIp` (catalog), `addFloatingIp` (commit).
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth
@@ -501,24 +502,25 @@ open class FloatingIPsAPI {
      - API Key:
        - type: apiKey sessionid 
        - name: sessionIdHeaderAuth
+     - parameter body: (body)  
 
      - returns: RequestBuilder<Void> 
      */
-    open class func putFloatingIpsWithRequestBuilder() -> RequestBuilder<Void> {
+    open class func putFloatingIpsWithRequestBuilder(body: FloatingIpOrderRequest) -> RequestBuilder<Void> {
         let path = "/floating_ips/order"
         let URLString = SwaggerClientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
         ])
 
         let requestBuilder: RequestBuilder<Void>.Type = SwaggerClientAPI.requestBuilderFactory.getNonDecodableBuilder()
 
-        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**
-     Update Floating IP
+     Update a Floating IP service's editable settings (label / metadata)
      - parameter _id: (path) The Floating IP service ID. Use the ID from &#x60;GET /floating_ips&#x60;. 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -530,9 +532,9 @@ open class FloatingIPsAPI {
 
 
     /**
-     Update Floating IP
+     Update a Floating IP service's editable settings (label / metadata)
      - POST /floating_ips/{id}
-     - Updates settings on a Floating IP service, such as its label or configuration metadata.
+     - Stub edit endpoint that delegates to the same handler as `getFloatingIpInfo` — currently used for label/metadata edits surfaced by `ViewFloatingIp`. To re-route the IP to a different target use the dedicated `postFloatingIpsChangeIp` instead; this op does not change routing. Path param `id` (`floating_ip_id`). Body: form-encoded fields exposed by the Floating IP edit form (label/comment style). Returns the standard success-text response. Errors: 401 if unauthenticated; effectively 404 if `id` not owned by the caller. Read state first with `getFloatingIpInfo`.  Sibling ops: `getFloatingIpInfo` (read), `postFloatingIpsChangeIp` (re-route), `floating_ipsCancel`.
      - API Key:
        - type: apiKey X-API-KEY 
        - name: apiKeyAuth

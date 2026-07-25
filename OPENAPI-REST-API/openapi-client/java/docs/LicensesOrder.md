@@ -13,4 +13,8 @@ Available license packages and pricing for ordering a new software license.
 |**serviceTypes** | [**LicensesOrderServiceTypes**](LicensesOrderServiceTypes.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,4 +1,4 @@
-# InterServerManagementApi.BillingPaymentMethodRequest
+# InterserverApiClient.BillingPaymentMethodRequest
 
 ## Properties
 

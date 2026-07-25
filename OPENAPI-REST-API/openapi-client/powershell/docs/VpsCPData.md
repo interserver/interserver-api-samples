@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsCPData = Initialize-PSOpenAPIToolsVpsCPData  -Name null `
+$VpsCPData = Initialize-InterserverApiVpsCPData  -Name null `
  -Cost null
 ```
 

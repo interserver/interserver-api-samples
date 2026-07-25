@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainAllInfo } from './api';
+import { DomainAllInfo } from '@interserver/myadmin-client';
 
 const instance: DomainAllInfo = {
     _OPS_version,

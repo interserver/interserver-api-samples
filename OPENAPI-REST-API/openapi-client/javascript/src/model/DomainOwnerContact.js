@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainOwnerContact model module.
  * @module model/DomainOwnerContact
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainOwnerContact {
     /**

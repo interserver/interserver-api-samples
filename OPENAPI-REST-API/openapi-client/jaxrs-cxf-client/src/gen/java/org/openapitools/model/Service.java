@@ -148,7 +148,7 @@ public class Service  {
    * @return servicesBuyable
   **/
   @JsonProperty("services_buyable")
-  public Boolean getServicesBuyable() {
+  public Boolean isServicesBuyable() {
     return servicesBuyable;
   }
 

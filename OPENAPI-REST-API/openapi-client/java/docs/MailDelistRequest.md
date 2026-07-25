@@ -11,4 +11,8 @@ Payload for removing a sender from mail blocklists.
 |**unblock** | **String** | Email address to delist. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

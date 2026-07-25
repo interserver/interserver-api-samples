@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.license_extra_info_tables import LicenseExtraInfoTables
+from interserver_api_client.models.license_extra_info_tables import LicenseExtraInfoTables
 
 class TestLicenseExtraInfoTables(unittest.TestCase):
     """LicenseExtraInfoTables unit test stubs"""
@@ -36,10 +36,10 @@ class TestLicenseExtraInfoTables(unittest.TestCase):
         model = LicenseExtraInfoTables()
         if include_optional:
             return LicenseExtraInfoTables(
-                ip_info = openapi_client.models.license_ip_info.LicenseIpInfo(
+                ip_info = interserver_api_client.models.license_ip_info.LicenseIpInfo(
                     title = 'IP Information', 
                     rows = [
-                        openapi_client.models.license_ip_info_row.LicenseIpInfoRow(
+                        interserver_api_client.models.license_ip_info_row.LicenseIpInfoRow(
                             desc = 'Netmask', 
                             value = '255.255.255.248', )
                         ], )

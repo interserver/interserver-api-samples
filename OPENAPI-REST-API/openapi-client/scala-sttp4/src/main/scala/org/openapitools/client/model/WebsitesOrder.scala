@@ -33,4 +33,3 @@ case class WebsitesOrder(
   serviceOffers: WebsitesOrderServiceOffers,
   packges: Option[WebsitesOrderPackges] = None
 )
-

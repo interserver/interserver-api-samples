@@ -10,4 +10,8 @@ The modules and settings.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

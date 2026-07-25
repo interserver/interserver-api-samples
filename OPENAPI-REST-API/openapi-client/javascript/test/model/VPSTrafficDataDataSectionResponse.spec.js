@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VPSTrafficDataDataSectionResponse();
+    instance = new InterserverApiClient.VPSTrafficDataDataSectionResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('VPSTrafficDataDataSectionResponse', function() {
     it('should create an instance of VPSTrafficDataDataSectionResponse', function() {
       // uncomment below and update the code to test VPSTrafficDataDataSectionResponse
-      //var instance = new InterServerManagementApi.VPSTrafficDataDataSectionResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.VPSTrafficDataDataSectionResponse);
+      //var instance = new InterserverApiClient.VPSTrafficDataDataSectionResponse();
+      //expect(instance).to.be.a(InterserverApiClient.VPSTrafficDataDataSectionResponse);
     });
 
   });

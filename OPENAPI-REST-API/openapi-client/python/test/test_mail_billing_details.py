@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_billing_details import MailBillingDetails
+from interserver_api_client.models.mail_billing_details import MailBillingDetails
 
 class TestMailBillingDetails(unittest.TestCase):
     """MailBillingDetails unit test stubs"""

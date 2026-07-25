@@ -1,4 +1,4 @@
-# openapi::BackupServiceMaster
+# interserverapi::BackupServiceMaster
 
 
 ## Properties

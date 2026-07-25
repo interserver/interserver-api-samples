@@ -1,4 +1,4 @@
-# InterServerManagementApi.IpObject
+# InterserverApiClient.IpObject
 
 ## Properties
 

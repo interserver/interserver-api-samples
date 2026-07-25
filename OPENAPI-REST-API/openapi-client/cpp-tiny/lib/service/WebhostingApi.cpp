@@ -9,6 +9,9 @@ using namespace Tiny;
         >
         WebhostingApi::
         addWebsite(
+            
+            WebsiteOrderPostRequest websiteOrderPostRequest
+            
         )
         {
             std::string url = basepath + "/websites/order"; //
@@ -19,6 +22,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -27,7 +31,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | POST
-            // Body     | 
+            // Body     | websiteOrderPostRequest
+
+
+
+            payload = websiteOrderPostRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request
@@ -686,6 +695,9 @@ using namespace Tiny;
         >
         WebhostingApi::
         putWebsites(
+            
+            WebsiteOrderPutRequest websiteOrderPutRequest
+            
         )
         {
             std::string url = basepath + "/websites/order"; //
@@ -696,6 +708,7 @@ using namespace Tiny;
             // Query    | 
 
             // Form     | 
+            addHeader("Content-Type", "application/json");
 
 
 
@@ -704,7 +717,12 @@ using namespace Tiny;
             std::string payload = "";
             // Send Request
             // METHOD | PUT
-            // Body     | 
+            // Body     | websiteOrderPutRequest
+
+
+
+            payload = websiteOrderPutRequest.toJson().dump();
+
             int httpCode = sendRequest(url, "PUT", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
 
             // Handle Request

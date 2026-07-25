@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupOrderPutResponse = Initialize-PSOpenAPIToolsBackupOrderPutResponse  -VarContinue null `
+$BackupOrderPutResponse = Initialize-InterserverApiBackupOrderPutResponse  -VarContinue null `
  -Errors null `
  -ServiceType null `
  -ServiceCost null `

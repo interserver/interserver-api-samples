@@ -1,4 +1,4 @@
-# SwaggerClient::DomainOrderServices
+# InterserverApiClient::DomainOrderServices
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverBillingDetails
+# InterserverApiClient.QuickserverBillingDetails
 
 ## Properties
 

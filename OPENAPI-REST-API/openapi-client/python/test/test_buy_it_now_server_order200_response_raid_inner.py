@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.buy_it_now_server_order200_response_raid_inner import BuyItNowServerOrder200ResponseRaidInner
+from interserver_api_client.models.buy_it_now_server_order200_response_raid_inner import BuyItNowServerOrder200ResponseRaidInner
 
 class TestBuyItNowServerOrder200ResponseRaidInner(unittest.TestCase):
     """BuyItNowServerOrder200ResponseRaidInner unit test stubs"""

@@ -71,7 +71,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.CancelScrubIp(id);
-            //Assert.IsInstanceOf<InlineResponse20013> (response, "response is InlineResponse20013");
+            //Assert.IsInstanceOf<InlineResponse20014> (response, "response is InlineResponse20014");
         }
         /// <summary>
         /// Test CreateFilter
@@ -119,7 +119,7 @@ namespace Interserver.MyAdmin.Client.Test
             //CreateFilter body = null;
             //int? id = null;
             //var response = instance.DeleteFilter(body, id);
-            //Assert.IsInstanceOf<InlineResponse20017> (response, "response is InlineResponse20017");
+            //Assert.IsInstanceOf<InlineResponse20018> (response, "response is InlineResponse20018");
         }
         /// <summary>
         /// Test DisableScrub
@@ -130,7 +130,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.DisableScrub(id);
-            //Assert.IsInstanceOf<InlineResponse20015> (response, "response is InlineResponse20015");
+            //Assert.IsInstanceOf<InlineResponse20016> (response, "response is InlineResponse20016");
         }
         /// <summary>
         /// Test EnableScrub
@@ -141,7 +141,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.EnableScrub(id);
-            //Assert.IsInstanceOf<InlineResponse20014> (response, "response is InlineResponse20014");
+            //Assert.IsInstanceOf<InlineResponse20015> (response, "response is InlineResponse20015");
         }
         /// <summary>
         /// Test GetOrderDetail
@@ -151,7 +151,7 @@ namespace Interserver.MyAdmin.Client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.GetOrderDetail();
-            //Assert.IsInstanceOf<InlineResponse20018> (response, "response is InlineResponse20018");
+            //Assert.IsInstanceOf<InlineResponse20019> (response, "response is InlineResponse20019");
         }
         /// <summary>
         /// Test GetScrubIpDetails
@@ -162,7 +162,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.GetScrubIpDetails(id);
-            //Assert.IsInstanceOf<InlineResponse20012> (response, "response is InlineResponse20012");
+            //Assert.IsInstanceOf<InlineResponse20013> (response, "response is InlineResponse20013");
         }
         /// <summary>
         /// Test GetScrubIpFilterTypes
@@ -218,6 +218,17 @@ namespace Interserver.MyAdmin.Client.Test
             //Assert.IsInstanceOf<InlineResponse2012> (response, "response is InlineResponse2012");
         }
         /// <summary>
+        /// Test PutScrubIps
+        /// </summary>
+        [Test]
+        public void PutScrubIpsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //ScrubIpPlaceOrder body = null;
+            //var response = instance.PutScrubIps(body);
+            //Assert.IsInstanceOf<InlineResponse20020> (response, "response is InlineResponse20020");
+        }
+        /// <summary>
         /// Test ScrubIpsDeleteGeoRule
         /// </summary>
         [Test]
@@ -227,7 +238,7 @@ namespace Interserver.MyAdmin.Client.Test
             //DeleteGeoFirewallRule body = null;
             //int? id = null;
             //var response = instance.ScrubIpsDeleteGeoRule(body, id);
-            //Assert.IsInstanceOf<InlineResponse20016> (response, "response is InlineResponse20016");
+            //Assert.IsInstanceOf<InlineResponse20017> (response, "response is InlineResponse20017");
         }
         /// <summary>
         /// Test ScrubIpsDeleteRule
@@ -239,7 +250,7 @@ namespace Interserver.MyAdmin.Client.Test
             //DeleteFirewallRule body = null;
             //int? id = null;
             //var response = instance.ScrubIpsDeleteRule(body, id);
-            //Assert.IsInstanceOf<InlineResponse20016> (response, "response is InlineResponse20016");
+            //Assert.IsInstanceOf<InlineResponse20017> (response, "response is InlineResponse20017");
         }
     }
 

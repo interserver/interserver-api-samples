@@ -1,8 +1,8 @@
-# openapi.model.CancelBackup200Response
+# interserver_api.model.CancelBackup200Response
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties

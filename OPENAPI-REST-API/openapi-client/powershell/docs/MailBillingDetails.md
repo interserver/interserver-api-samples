@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailBillingDetails = Initialize-PSOpenAPIToolsMailBillingDetails  -ServiceLastInvoiceDate July 16, 2023 `
+$MailBillingDetails = Initialize-InterserverApiMailBillingDetails  -ServiceLastInvoiceDate July 16, 2023 `
  -ServicePaymentStatus Unpaid `
  -ServiceFrequency Monthly `
  -NextDate 2023-08-16T00:55:05.000Z `

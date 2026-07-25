@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::BackupRow');
+use_ok('InterServerAPI::Object::BackupRow');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::BackupRow->new();
+#my $instance = InterServerAPI::Object::BackupRow->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::BackupRow');
+#isa_ok($instance, 'InterServerAPI::Object::BackupRow');
 
 
 done_testing();

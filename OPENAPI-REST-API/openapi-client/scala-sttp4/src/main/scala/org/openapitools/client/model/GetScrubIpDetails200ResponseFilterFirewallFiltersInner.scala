@@ -19,4 +19,3 @@ case class GetScrubIpDetails200ResponseFilterFirewallFiltersInner(
   destination_ip: Option[String] = None,
   filter: Option[String] = None
 )
-

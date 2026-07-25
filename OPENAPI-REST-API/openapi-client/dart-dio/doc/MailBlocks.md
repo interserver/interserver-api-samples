@@ -1,16 +1,16 @@
-# openapi.model.MailBlocks
+# interserver_api.model.MailBlocks
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**local** | [**BuiltList&lt;MailBlockClickHouse&gt;**](MailBlockClickHouse.md) |  | 
-**mbtrap** | [**BuiltList&lt;MailBlockClickHouse&gt;**](MailBlockClickHouse.md) |  | 
-**subject** | [**BuiltList&lt;MailBlockRspamd&gt;**](MailBlockRspamd.md) |  | 
+**local** | [**List&lt;MailBlockClickHouse&gt;**](MailBlockClickHouse.md) |  | 
+**mbtrap** | [**List&lt;MailBlockClickHouse&gt;**](MailBlockClickHouse.md) |  | 
+**subject** | [**List&lt;MailBlockRspamd&gt;**](MailBlockRspamd.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

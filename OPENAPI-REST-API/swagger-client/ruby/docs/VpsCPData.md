@@ -1,4 +1,4 @@
-# SwaggerClient::VpsCPData
+# InterserverApiClient::VpsCPData
 
 ## Properties
 Name | Type | Description | Notes

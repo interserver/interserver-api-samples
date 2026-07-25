@@ -1,24 +1,24 @@
-# openapi.model.DomainOrderServices10001
+# interserver_api.model.DomainOrderServices10001
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**servicesId** | **String** | Service ID | [optional] 
-**servicesName** | **String** | Service Name | [optional] 
-**servicesCost** | **String** | Service Cost | [optional] 
-**servicesCurrency** | **String** | Currency of Service Cost | [optional] 
-**servicesCategory** | **String** | Service Category | [optional] 
-**servicesBuyable** | **String** | Buyable flag for Service | [optional] 
-**servicesType** | **String** | Service Type | [optional] 
-**servicesField1** | **String** | Field 1 of Service | [optional] 
-**servicesField2** | **String** | Field 2 of Service | [optional] 
-**servicesModule** | **String** | Module of Service | [optional] 
-**servicesHidden** | **String** | Hidden flag for Service | [optional] 
+**servicesId** | **Optional&lt;String?&gt;** | Service ID | [optional] 
+**servicesName** | **Optional&lt;String?&gt;** | Service Name | [optional] 
+**servicesCost** | **Optional&lt;String?&gt;** | Service Cost | [optional] 
+**servicesCurrency** | **Optional&lt;String?&gt;** | Currency of Service Cost | [optional] 
+**servicesCategory** | **Optional&lt;String?&gt;** | Service Category | [optional] 
+**servicesBuyable** | **Optional&lt;String?&gt;** | Buyable flag for Service | [optional] 
+**servicesType** | **Optional&lt;String?&gt;** | Service Type | [optional] 
+**servicesField1** | **Optional&lt;String?&gt;** | Field 1 of Service | [optional] 
+**servicesField2** | **Optional&lt;String?&gt;** | Field 2 of Service | [optional] 
+**servicesModule** | **Optional&lt;String?&gt;** | Module of Service | [optional] 
+**servicesHidden** | **Optional&lt;String?&gt;** | Hidden flag for Service | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

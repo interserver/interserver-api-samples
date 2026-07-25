@@ -11,6 +11,36 @@
  */
 
 export interface InlineResponse20010 { 
-    success: boolean;
-    text: string;
+    /**
+     * The response type indicating how to handle the payment. Possible values: `redirect` (redirect user to a URL), `submit` (submit a form to a URL), `single` (immediate result).
+     */
+    type?: InlineResponse20010.TypeEnum;
+    /**
+     * URL to redirect the user to for payment (when type is `redirect`).
+     */
+    redirect?: string;
+    /**
+     * Form action URL (when type is `submit`).
+     */
+    action?: string;
+    /**
+     * HTTP method for the form submission (when type is `submit`).
+     */
+    method?: string;
+    /**
+     * Form field name-value pairs to submit (when type is `submit`).
+     */
+    items?: any;
+    /**
+     * Status or result text.
+     */
+    text?: string;
+}
+export namespace InlineResponse20010 {
+    export type TypeEnum = 'redirect' | 'submit' | 'single';
+    export const TypeEnum = {
+        Redirect: 'redirect' as TypeEnum,
+        Submit: 'submit' as TypeEnum,
+        Single: 'single' as TypeEnum
+    };
 }

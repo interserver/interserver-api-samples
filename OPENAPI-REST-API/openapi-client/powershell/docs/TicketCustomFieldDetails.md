@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TicketCustomFieldDetails = Initialize-PSOpenAPIToolsTicketCustomFieldDetails  -CustomerServerAccess null `
+$TicketCustomFieldDetails = Initialize-InterserverApiTicketCustomFieldDetails  -CustomerServerAccess null `
  -IpAddress null `
  -RootPassword null `
  -SudoUser null `

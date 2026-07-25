@@ -17,7 +17,7 @@ import PlaceScrubOrder201ResponseOrderDetailsCjParams from './PlaceScrubOrder201
 /**
  * The PlaceScrubOrder201ResponseOrderDetails model module.
  * @module model/PlaceScrubOrder201ResponseOrderDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class PlaceScrubOrder201ResponseOrderDetails {
     /**

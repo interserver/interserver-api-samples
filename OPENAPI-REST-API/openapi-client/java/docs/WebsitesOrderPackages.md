@@ -11,4 +11,8 @@ Schema for the packages field in WebsitesOrder
 |**_11447** | **String** | Package description |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

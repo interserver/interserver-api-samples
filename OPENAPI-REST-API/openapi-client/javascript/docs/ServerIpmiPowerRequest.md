@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerIpmiPowerRequest
+# InterserverApiClient.ServerIpmiPowerRequest
 
 ## Properties
 
@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 * `off` (value: `"off"`)
 
 * `soft` (value: `"soft"`)
+
+* `unknown_default_open_api` (value: `"unknown_default_open_api"`)
 
 
 

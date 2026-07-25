@@ -1,4 +1,4 @@
-# InterServerManagementApi.BuyItNowRow
+# InterserverApiClient.BuyItNowRow
 
 ## Properties
 

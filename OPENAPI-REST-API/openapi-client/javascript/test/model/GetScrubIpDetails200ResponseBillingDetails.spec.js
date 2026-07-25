@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails();
+    instance = new InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('GetScrubIpDetails200ResponseBillingDetails', function() {
     it('should create an instance of GetScrubIpDetails200ResponseBillingDetails', function() {
       // uncomment below and update the code to test GetScrubIpDetails200ResponseBillingDetails
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails();
-      //expect(instance).to.be.a(InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails);
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails();
+      //expect(instance).to.be.a(InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails);
     });
 
     it('should have the property service_last_invoice_date (base name: "service_last_invoice_date")', function() {
       // uncomment below and update the code to test the property service_last_invoice_date
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property service_payment_status (base name: "service_payment_status")', function() {
       // uncomment below and update the code to test the property service_payment_status
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property service_frequency (base name: "service_frequency")', function() {
       // uncomment below and update the code to test the property service_frequency
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property next_date (base name: "next_date")', function() {
       // uncomment below and update the code to test the property next_date
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property service_next_invoice_date (base name: "service_next_invoice_date")', function() {
       // uncomment below and update the code to test the property service_next_invoice_date
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property service_currency (base name: "service_currency")', function() {
       // uncomment below and update the code to test the property service_currency
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property service_currency_symbol (base name: "service_currency_symbol")', function() {
       // uncomment below and update the code to test the property service_currency_symbol
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails();
       //expect(instance).to.be();
     });
 
     it('should have the property service_cost_info (base name: "service_cost_info")', function() {
       // uncomment below and update the code to test the property service_cost_info
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseBillingDetails();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseBillingDetails();
       //expect(instance).to.be();
     });
 

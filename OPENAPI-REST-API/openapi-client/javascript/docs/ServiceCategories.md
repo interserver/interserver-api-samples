@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServiceCategories
+# InterserverApiClient.ServiceCategories
 
 ## Properties
 

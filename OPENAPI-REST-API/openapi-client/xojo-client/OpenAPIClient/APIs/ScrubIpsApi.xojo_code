@@ -3,14 +3,14 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub CancelScrubIp(, id As Integer)
 		  // Operation cancelScrubIp
-		  // Cancel Scrub IP Service
+		  // Cancel a Scrub IP service and stop its recurring DDoS billing
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  //
 		  // Invokes ScrubIpsApiCallbackHandler.CancelScrubIpCallback(CancelScrubIp200Response) on completion. 
 		  //
 		  // - DELETE /scrub_ips/{id}
-		  // - Cancels the Scrub IP DDoS protection service. The protection will be removed and billing will stop at the end of the current billing cycle.
+		  // - Cancels the Scrub IP DDoS protection service. The protected IP is removed from the scrubbing infrastructure and the recurring invoice is closed; protection stops at end of the current billing cycle. Use only when the customer no longer needs DDoS scrubbing for the IP. Path param: `id` (integer, required) — service ID from getScrubIpsList. No request body. Returns {success: true, text: 'Scrub Ips is canceled.'}. Errors: 401 unauthenticated; 404/Invalid Service if id is not owned by the session account; 409 if the service is not in a cancellable state. Caveat: leaves the underlying VPS/server IP exposed to attacks once protection ends; contact billing for refund handling. Siblings: getScrubIpDetails, disableScrub, getScrubIpInvoices.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -149,7 +149,7 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub CreateFilter(, id As Integer, createFilter As OpenAPIClient.Models.CreateFilter)
 		  // Operation createFilter
-		  // Create Traffic Filter
+		  // Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  // - parameter createFilter: (body)  
@@ -157,7 +157,7 @@ Protected Class ScrubIpsApi
 		  // Invokes ScrubIpsApiCallbackHandler.CreateFilterCallback(CreateFilter201Response) on completion. 
 		  //
 		  // - POST /scrub_ips/{id}/create_filter
-		  // - Creates a traffic filter for the Scrub IP service. Filters apply predefined scrubbing profiles (e.g., DNS, HTTP) to specific destination ports. Use `GET /scrub_ips/filter_types` to list available filter types.
+		  // - Attaches a named scrubbing profile to a destination port on the protected IP, applying protocol-aware mitigation (DNS amplification protection, HTTP rate limiting, synproxy SYN-cookies). Call getScrubIpFilterTypes first to list valid `filter_type` values. Path param: `id` (integer, required) — service ID. Body (CreateFilter): `filter_type` (string, required, one of getScrubIpFilterTypes keys), `port` (int, required, >= 0). Destination IP is locked to the service IP server-side; synproxy uses a different shape internally. Returns 201 {success: true, text: 'New filter has been created.'}. Errors: 400 'Filter type is empty/invalid', 'Port is invalid', or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::filterCreate fails. Siblings: deleteFilter, getScrubIpFilterTypes, createRule.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -296,7 +296,7 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub CreateGeoRule(, id As Integer, createGeoFirewallRule As OpenAPIClient.Models.CreateGeoFirewallRule)
 		  // Operation createGeoRule
-		  // Create Geo Firewall Rule
+		  // Add a geographic firewall rule (block/allow by country code or ASN)
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  // - parameter createGeoFirewallRule: (body)  
@@ -304,7 +304,7 @@ Protected Class ScrubIpsApi
 		  // Invokes ScrubIpsApiCallbackHandler.CreateGeoRuleCallback(CreateRule201Response) on completion. 
 		  //
 		  // - POST /scrub_ips/{id}/create_geo_rule
-		  // - Creates a geographic-based firewall rule for the Scrub IP service. Geo rules allow you to block or allow traffic from specific countries or regions.
+		  // - Creates a geo-based XDP rule on the scrubber for the service's protected IP. Use to block traffic from specific countries or ASNs (botnet source regions) or to allow only known regions. Path param: `id` (integer, required) — service ID. Body (CreateGeoFirewallRule): `country_code` (int, country numeric ID) OR `asn` (int) — at least one is required, `destination_port` (int, defaults 80), `xdp_action` (0 allow, 1 drop, defaults 1). Destination IP is locked to the service IP server-side. Returns 201 {success: true} when created. Errors: 400 errors[] 'Country or Asn is required.' or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::geoFirewallCreate fails. Caveat: country_code is an internal numeric ID, not ISO-3166. Siblings: scrubIpsDeleteGeoRule, createRule, createFilter.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -443,7 +443,7 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub CreateRule(, id As Integer, createFirewallRule As OpenAPIClient.Models.CreateFirewallRule)
 		  // Operation createRule
-		  // Create Firewall Rule
+		  // Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  // - parameter createFirewallRule: (body)  
@@ -451,7 +451,7 @@ Protected Class ScrubIpsApi
 		  // Invokes ScrubIpsApiCallbackHandler.CreateRuleCallback(CreateRule201Response) on completion. 
 		  //
 		  // - POST /scrub_ips/{id}/create_rule
-		  // - Creates a new firewall rule for the Scrub IP service. Rules allow you to block or allow traffic based on source IP, destination port, and protocol.
+		  // - Creates an XDP firewall rule on the scrubber for the service's protected IP. Use to whitelist a known good source, block an abusive source, or restrict a destination port. Path param: `id` (integer, required) — service ID. Body (CreateFirewallRule): `source_ip` (IPv4, 0 = any), `source_port` (int, 0 = any), `destination_port` (int, 0 = any), `protocol_id` (1 ICMP or 2 TCP/UDP — must be 1 or 2), `xdp_action` (0 allow, 1 drop). Destination IP is locked to the service IP server-side. Returns 201 {success: true} when created. Errors: 400 with `errors[]` for invalid source_ip/protocol_id/xdp_action or Invalid Service; 401 unauthenticated; 500 if upstream Scrub::firewallCreate fails. Caveat: rules are stateless and may interact with active filters. Siblings: scrubIpsDeleteRule, createGeoRule, createFilter.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -590,7 +590,7 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub DeleteFilter(, id As Integer, createFilter As OpenAPIClient.Models.CreateFilter)
 		  // Operation deleteFilter
-		  // Delete Traffic Filter
+		  // Remove a scrubbing filter by matching filter_type and port
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  // - parameter createFilter: (body)  
@@ -598,7 +598,7 @@ Protected Class ScrubIpsApi
 		  // Invokes ScrubIpsApiCallbackHandler.DeleteFilterCallback(DeleteFilter200Response) on completion. 
 		  //
 		  // - POST /scrub_ips/{id}/delete_filter
-		  // - Removes an existing traffic filter from the Scrub IP service. Provide the same filter parameters used during creation to identify which filter to remove.
+		  // - Removes a previously attached scrubbing profile from the protected IP. Identification is by composite key, not `rule_id` — pass the same `filter_type` and `port` that were used in `createFilter`. The endpoint splits `filter_type` on `_` to dispatch to the correct delete shape (synproxy vs generic). Sibling ops: `createFilter`, `getScrubIpFilterTypes`.  **Path:** `id` (integer, required) — Scrub IP service ID.  **Body fields:** - `filter_type` (string, required) — must match an enabled type from `getScrubIpFilterTypes`. - `port` (integer, required) — must be `> 0`.  **Returns:** `{ success: true, text: 'Filter is deleted.' }`.  **Errors:** - `400` — `'Filter is required.'` / `'Port is required.'` / `'Invalid filter'` / `Invalid Service`. - `401` — unauthenticated. - `500` — upstream `Scrub::filterDelete` failed.  **Caveat:** the port loses its protocol-specific scrubbing protection until `createFilter` is called again with the same composite key. 
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -737,14 +737,14 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub DisableScrub(, id As Integer)
 		  // Operation disableScrub
-		  // Disable Scrub Protection
+		  // Disable DDoS scrubbing and remove the BGP announcement on the IP
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  //
 		  // Invokes ScrubIpsApiCallbackHandler.DisableScrubCallback(DisableScrub200Response) on completion. 
 		  //
 		  // - GET /scrub_ips/{id}/disable
-		  // - Disables DDoS scrubbing protection on the IP address. Traffic will no longer be routed through the scrubbing infrastructure.
+		  // - Withdraws the BGP announcement from Wanguard so the IP stops being routed through scrubbing; traffic resumes flowing directly to the backend. Use for maintenance windows or migration off scrub. Path param: `id` (integer, required) — service ID from getScrubIpsList. No body (HTTP GET). The endpoint reads the stored Wanguard `href` from the service's `extra` JSON to know which announcement to delete; clears `extra` on success. Returns {success: true, text: 'Scrub is disabled on your IP.'}. Errors: 400 Invalid Service if id is not owned, or 'Scrub is not enabled in this service.' if there is no active announcement; 401 unauthenticated; 500 if upstream delete fails. Caveat: leaves the IP unprotected against DDoS until enableScrub is called. Siblings: enableScrub, cancelScrubIp, getScrubIpDetails.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -883,14 +883,14 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub EnableScrub(, id As Integer)
 		  // Operation enableScrub
-		  // Enable Scrub Protection
+		  // Enable DDoS scrubbing (BGP announcement) on the service's protected IP
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  //
 		  // Invokes ScrubIpsApiCallbackHandler.EnableScrubCallback(EnableScrub200Response) on completion. 
 		  //
 		  // - GET /scrub_ips/{id}/enable
-		  // - Enables DDoS scrubbing protection on the IP address associated with this service. Traffic will be routed through the scrubbing infrastructure to filter malicious packets.
+		  // - Routes the service's protected IP through the Wanguard scrubbing infrastructure by creating a BGP announcement, so inbound traffic passes through filtering before reaching the backend. Call after placeScrubOrder activation, after disableScrub, or whenever the announcement was lost. Path param: `id` (integer, required) — service ID from getScrubIpsList. No request body (HTTP GET). Returns {success: true, text: 'Scrub is enabled on your IP.'} on 201 from Wanguard, persisted into the service's `extra` column. Errors: 400 Invalid Service if id is not owned by the session account; 401 unauthenticated; 500 if the upstream Wanguard call fails. Caveat: enabling re-routes live traffic and can briefly disrupt active sessions. Siblings: disableScrub, getScrubIpDetails, getScrubIpLogs.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -1029,13 +1029,13 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub GetOrderDetail()
 		  // Operation getOrderDetail
-		  // Get Scrub IP Ordering Information
+		  // Get plans, pricing, and eligible IPs for a new Scrub IP order
 		  // - 
 		  //
 		  // Invokes ScrubIpsApiCallbackHandler.GetOrderDetailCallback(GetOrderDetail200Response) on completion. 
 		  //
 		  // - GET /scrub_ips/order
-		  // - Returns the available Scrub IP service plans and pricing information needed to build an order form.
+		  // - Returns the data needed to render a new-order form: `packageCosts` (default services_id and recurring price in customer currency with symbol), `serviceTypes` (each buyable plan with services_id, services_name, services_cost, services_module), and `ips` (the customer's existing VPS/server/floating IPs eligible to be put behind a scrubber, each with service_id, service_module, service_hostname). Use as a precursor to putScrubIps (validate) or placeScrubOrder (commit). No path/query/body parameters. Returns object. Errors: 401 unauthenticated. Caveat: ips list is filtered to the session account; pricing is converted to the customer's currency. Siblings: putScrubIps, placeScrubOrder, getScrubIpsList.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -1171,14 +1171,14 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub GetScrubIpDetails(, id As Integer)
 		  // Operation getScrubIpDetails
-		  // Get Scrub IP Details
+		  // Get full Scrub IP service detail (rules + geo + filters)
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  //
 		  // Invokes ScrubIpsApiCallbackHandler.GetScrubIpDetailsCallback(GetScrubIpDetails200Response) on completion. 
 		  //
 		  // - GET /scrub_ips/{id}
-		  // - Returns detailed information about a Scrub IP service, including connection details, billing information, active firewall rules, and traffic filters.
+		  // - Returns the full service-detail payload for one Scrub IP — used to render the dashboard or before mutating rules/filters. Includes `serviceInfo` (status, scrubbed IP, custid), `billingDetails` (cost, frequency), `client_links` (allowed self-service actions), and `filter_firewall` with the active firewall `rules`, geographic `geo_rules`, and traffic `filters`. Each rule/filter row carries its own `id` used by the delete endpoints. Sibling ops: `getScrubIpsList`, `enableScrub`, `disableScrub`, `createRule`, `scrubIpsDeleteRule`, `createGeoRule`, `scrubIpsDeleteGeoRule`, `createFilter`, `deleteFilter`, `getScrubIpInvoices`, `getScrubIpLogs`, `cancelScrubIp`.  **Path:** `id` (integer, required) — service ID from `getScrubIpsList`.  **Body / query:** None.  **Returns:** object with `serviceInfo`, `billingDetails`, `client_links`, `filter_firewall` (`rules` / `geo_rules` / `filters`).  **Auth:** Session/API key. Ownership enforced via `scrub_ips_custid`.  **Errors:** - `401` — unauthenticated. - `Invalid Service` — `id` is not owned by the session account.  **Caveat:** rule/filter IDs are regenerated after recreate — re-fetch before calling a delete endpoint.  **Related calls:** - **Mutations:** `enableScrub`, `disableScrub`, `createRule`, `createGeoRule`, `createFilter`. - **Deletes:** `scrubIpsDeleteRule`, `scrubIpsDeleteGeoRule`, `deleteFilter`. - **Billing / activity:** `getScrubIpInvoices`, `getScrubIpLogs`. - **Cancel:** `cancelScrubIp`. 
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -1317,13 +1317,13 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub GetScrubIpFilterTypes()
 		  // Operation getScrubIpFilterTypes
-		  // List Scrub Filter Types
+		  // List enabled traffic filter profiles available for createFilter
 		  // - 
 		  //
 		  // Invokes ScrubIpsApiCallbackHandler.GetScrubIpFilterTypesCallback(ScrubIpFilterTypes) on completion. 
 		  //
 		  // - GET /scrub_ips/filter_types
-		  // - Returns the list of scrub filter types that can be used when creating filter rules via `/scrub_ips/{id}/create_filter`.
+		  // - Returns the catalog of scrub filter profiles (e.g. dns, http, synproxy) currently enabled on the scrubbing platform, keyed by filter_name with a humanized display `name` and `desc`. Call this to populate a dropdown before invoking createFilter — the `filter_type` field on that endpoint must be one of the keys returned here. Not service-scoped: no path/query/body parameters and the same set applies to every Scrub IP. Returns {success: true, filters: {<filter_name>: {name, desc}, ...}}. Errors: 401 unauthenticated. Caveat: only filters with enabled=1 are returned; profile semantics are platform-defined (synproxy uses different request shape internally). Siblings: createFilter, deleteFilter, getScrubIpDetails.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -1459,14 +1459,14 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub GetScrubIpInvoices(, id As Integer)
 		  // Operation getScrubIpInvoices
-		  // Get ScrubIp Invoices
+		  // List recurring and one-time invoices billed for this Scrub IP service
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  //
 		  // Invokes ScrubIpsApiCallbackHandler.GetScrubIpInvoicesCallback(ChargeInvoiceRows) on completion. 
 		  //
 		  // - GET /scrub_ips/{id}/invoices
-		  // - Retrieves invoices associated with the scrub IP service. Use these invoices to confirm billing status or to initiate payment.
+		  // - Returns the recurring and one-time invoices generated for the Scrub IP service so the caller can verify billing status, present a payment history, or initiate payment on an unpaid invoice. Use after placeScrubOrder (to find the new invoice id) or before cancelScrubIp (to surface outstanding balance). Path param: `id` (integer, required) — service ID from getScrubIpsList. No body/query parameters. Returns ChargeInvoiceRows (array of invoice objects with id, amount, status, due dates). Errors: 401 unauthenticated; empty result if id is not owned by the session account. Caveat: paid invoices remain in history; filter on status client-side. Siblings: getScrubIpDetails, placeScrubOrder, cancelScrubIp.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -1605,14 +1605,14 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub GetScrubIpLogs(, id As String)
 		  // Operation getScrubIpLogs
-		  // Get Scrub IP Logs
+		  // Get last 50000 packet/event log entries for the protected IP
 		  // - 
 		  // - parameter id: (path) Scrub Order ID 
 		  //
 		  // Invokes ScrubIpsApiCallbackHandler.GetScrubIpLogsCallback(ScrubIpsLogRowSchema) on completion. 
 		  //
 		  // - GET /scrub_ips/{id}/logs
-		  // - Returns the activity and event logs for the Scrub IP service, including scrubbing events and configuration changes.
+		  // - Pulls scrubbing telemetry directly from the SCRUBLOGS clickhouse-style backend: timestamp, source IP, target IP, target port, protocol (ICMP/IGMP/TCP/UDP/etc.), byte_count, action (Allow/Drop/Challenge), and the matching filter label. Use for incident analysis, validating new firewall rules, or proving a DDoS attack hit the scrubber. Path param: `id` (string, required) — service ID. No body/query parameters. Timestamps are converted to the customer's timezone. Returns array of log rows (ScrubIpsLogRowSchema), most recent first, capped at 50000. Errors: 401 unauthenticated; returns false if id is not owned or upstream returns no data — not a 404. Caveat: large response; logs are not real-time and source IPs are reverse-byte-ordered. Siblings: getScrubIpDetails, enableScrub, createRule.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -1749,13 +1749,13 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub GetScrubIpsList()
 		  // Operation getScrubIpsList
-		  // List Scrub IP Services
+		  // List all Scrub IP DDoS protection services on the authenticated account
 		  // - 
 		  //
 		  // Invokes ScrubIpsApiCallbackHandler.GetScrubIpsListCallback(ScrubIpsRowSchema) on completion. 
 		  //
 		  // - GET /scrub_ips
-		  // - Returns all Scrub IP DDoS protection services on your account with their current status and associated IP addresses.
+		  // - Returns every Scrub IP service belonging to the authenticated customer with status, protected IP, plan name, and recurring cost. Use this for dashboards, picking a service ID for downstream calls (getScrubIpDetails, enableScrub, createRule, getScrubIpLogs), or auditing which IPs are routed through DDoS scrubbing. No path/query/body parameters; service ownership is enforced via session account_id. Returns an array of {id, repeat_invoices_cost, ip, status, services_name}; empty array if no scrub services. Errors: 401 unauthenticated. Caveat: only customer-owned services are visible. Siblings: getScrubIpDetails, getOrderDetail, placeScrubOrder, cancelScrubIp.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -1889,14 +1889,14 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub PlaceScrubOrder(, scrubIpPlaceOrder As OpenAPIClient.Models.ScrubIpPlaceOrder)
 		  // Operation placeScrubOrder
-		  // Place Scrub IP Order
+		  // Place a new Scrub IP DDoS protection order and generate an invoice
 		  // - 
 		  // - parameter scrubIpPlaceOrder: (body)  
 		  //
 		  // Invokes ScrubIpsApiCallbackHandler.PlaceScrubOrderCallback(PlaceScrubOrder201Response) on completion. 
 		  //
 		  // - POST /scrub_ips/order
-		  // - Places an order for a new Scrub IP DDoS protection service. On success, an invoice is generated for payment.
+		  // - Commits the order: re-runs validate_buy_scrub_ip then place_buy_scrub_ip which creates the service row, repeat_invoice, and a one-time invoice for the prorated charge. Use putScrubIps first to surface errors without billing. No path parameters. Body (ScrubIpPlaceOrder): `serviceType` (services_id), `ip` (eligible IP from getOrderDetail). Returns 201 {success: true, text: 'ScrubIp order is placed.', order_details: {total_cost, service_id, invoice_id, invoice_description, cj_params}}. Errors: 400 {success: false, text: 'Unable to place order.', errors: []} on validation; 401 unauthenticated; 422 on invalid serviceType/ip; 409 if the IP is already protected. Caveat: invoice is unpaid at creation — pay via Pay endpoints to activate. Siblings: putScrubIps, getOrderDetail, enableScrub, getScrubIpInvoices.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -2030,9 +2030,152 @@ Protected Class ScrubIpsApi
 
 
 	#tag Method, Flags = &h0
+		Sub PutScrubIps(, scrubIpPlaceOrder As OpenAPIClient.Models.ScrubIpPlaceOrder)
+		  // Operation putScrubIps
+		  // Validate a Scrub IP order and return effective pricing without billing
+		  // - 
+		  // - parameter scrubIpPlaceOrder: (body)  
+		  //
+		  // Invokes ScrubIpsApiCallbackHandler.PutScrubIpsCallback(PutScrubIps200Response) on completion. 
+		  //
+		  // - PUT /scrub_ips/order
+		  // - Dry-runs a Scrub IP purchase via validate_buy_scrub_ip and returns whether the order would succeed plus the resolved pricing — without creating an invoice. Use to render a real-time price/error panel as the user picks options. No path parameters. Body (ScrubIpPlaceOrder): `serviceType` (services_id from getOrderDetail.serviceTypes), `ip` (one of getOrderDetail.ips), optional `coupon`. Returns {continue: bool, errors: [], serviceType, serviceCost, originalCost, repeatServiceCost}. Errors: 401 unauthenticated; validation failures appear in `errors`, not as HTTP 4xx. Caveat: idempotent — call as often as needed; 422 on invalid coupon surfaces in the errors array. Siblings: getOrderDetail, placeScrubOrder, getScrubIpsList.
+		  // - defaultResponse: Nil
+		  //
+		  // - API Key:
+		  //   - type: apiKey sessionid 
+		  //   - name: sessionIdCookieAuth
+		  // - API Key:
+		  //   - type: apiKey X-API-KEY (HEADER)
+		  //   - name: apiKeyAuth
+		  // - API Key:
+		  //   - type: apiKey sessionid (HEADER)
+		  //   - name: sessionIdHeaderAuth
+		  //
+		  
+		  Dim localVarHTTPSocket As New HTTPSecureSocket
+		  Me.PrivateFuncPrepareSocket(localVarHTTPSocket)
+		  localVarHTTPSocket.SetRequestContent(Xoson.toJSON(scrubIpPlaceOrder), "application/json")
+		  
+		  If me.ApiKeysessionIdCookieAuth = "" Then Raise New OpenAPIClient.OpenAPIClientException(kErrorCannotAuthenticate, "API key is unset. Please assign a value to `ScrubIpsApi.ApiKeysessionIdCookieAuth` before invoking `ScrubIpsApi.PutScrubIps()`.")
+		  
+		  
+		  If me.ApiKeyapiKeyAuth = "" Then Raise New OpenAPIClient.OpenAPIClientException(kErrorCannotAuthenticate, "API key is unset. Please assign a value to `ScrubIpsApi.ApiKeyapiKeyAuth` before invoking `ScrubIpsApi.PutScrubIps()`.")
+		  
+		  localVarHTTPSocket.SetRequestHeader(EncodeURLComponent("X-API-KEY"), EncodeURLComponent(me.ApiKeyapiKeyAuth))
+		  If me.ApiKeysessionIdHeaderAuth = "" Then Raise New OpenAPIClient.OpenAPIClientException(kErrorCannotAuthenticate, "API key is unset. Please assign a value to `ScrubIpsApi.ApiKeysessionIdHeaderAuth` before invoking `ScrubIpsApi.PutScrubIps()`.")
+		  
+		  localVarHTTPSocket.SetRequestHeader(EncodeURLComponent("sessionid"), EncodeURLComponent(me.ApiKeysessionIdHeaderAuth))
+		  
+
+
+		  Dim localVarPath As String = "/scrub_ips/order"
+		  
+		  
+		  
+		  AddHandler localVarHTTPSocket.PageReceived, addressof me.PutScrubIps_handler
+		  AddHandler localVarHTTPSocket.Error, addressof Me.PutScrubIps_error
+		  
+		  
+		  localVarHTTPSocket.SendRequest("PUT", Me.BasePath + localVarPath)
+		  if localVarHTTPSocket.LastErrorCode <> 0 then
+		    Dim localVarException As New OpenAPIClient.OpenAPIClientException(localVarHTTPSocket.LastErrorCode)
+			Raise localVarException
+		  end if
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Function PutScrubIpsPrivateFuncDeserializeResponse(HTTPStatus As Integer, Headers As InternetHeaders, error As OpenAPIClient.OpenAPIClientException, Content As String, ByRef outData As OpenAPIClient.Models.PutScrubIps200Response) As Boolean
+		  Dim contentType As String = Headers.Value("Content-Type")
+		  Dim contentEncoding As TextEncoding = OpenAPIClient.EncodingFromContentType(contentType)
+		  Content = DefineEncoding(Content, contentEncoding)
+		  
+		  If HTTPStatus > 199 and HTTPStatus < 300 then
+		    If contentType.LeftB(16) = "application/json" then
+		      
+			  outData = New OpenAPIClient.Models.PutScrubIps200Response
+			  Try
+		        Xoson.fromJSON(outData, Content.toText())
+
+		      Catch e As JSONException
+		        error.Message = error.Message + " with JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xojo.Data.InvalidJSONException
+		        error.Message = error.Message + " with Xojo.Data.JSON parse exception: " + e.Message
+		        error.ErrorNumber = kErrorInvalidJSON
+		        Return False
+		        
+		      Catch e As Xoson.XosonException
+		        error.Message = error.Message + " with Xoson parse exception: " + e.Message
+		        error.ErrorNumber = kErrorXosonProblem
+		        Return False
+
+		      End Try
+		      
+		      
+		    ElseIf contentType.LeftB(19) = "multipart/form-data" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    ElseIf contentType.LeftB(33) = "application/x-www-form-urlencoded" then
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    Else
+		      error.Message = "Unsupported media type: " + contentType
+		      error.ErrorNumber = kErrorUnsupportedMediaType
+		      Return False
+
+		    End If
+		  Else
+		    error.Message = error.Message + ". " + Content
+			error.ErrorNumber = kErrorHTTPFail
+		    Return False
+		  End If
+		  
+		  Return True
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub PutScrubIps_error(sender As HTTPSecureSocket, Code As Integer)
+		  If sender <> nil Then sender.Close()
+
+		  Dim error As New OpenAPIClient.OpenAPIClientException(Code)
+		  Dim data As OpenAPIClient.Models.PutScrubIps200Response
+		  CallbackHandler.PutScrubIpsCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h21
+		Private Sub PutScrubIps_handler(sender As HTTPSecureSocket, URL As String, HTTPStatus As Integer, Headers As InternetHeaders, Content As String)
+		  #Pragma Unused URL
+		  
+
+		  If sender <> nil Then sender.Close()
+		  
+		  Dim error As New OpenAPIClient.OpenAPIClientException(HTTPStatus, "", Content)
+		  
+		  Dim data As OpenAPIClient.Models.PutScrubIps200Response
+		  Call PutScrubIpsPrivateFuncDeserializeResponse(HTTPStatus, Headers, error, Content, data)
+		  
+		  CallbackHandler.PutScrubIpsCallback(error, data)
+		End Sub
+	#tag EndMethod
+
+
+
+
+	#tag Method, Flags = &h0
 		Sub ScrubIpsDeleteGeoRule(, id As Integer, deleteGeoFirewallRule As OpenAPIClient.Models.DeleteGeoFirewallRule)
 		  // Operation scrubIpsDeleteGeoRule
-		  // Delete Geo Firewall Rule
+		  // Delete a geo firewall rule by rule_id from getScrubIpDetails
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  // - parameter deleteGeoFirewallRule: (body)  
@@ -2040,7 +2183,7 @@ Protected Class ScrubIpsApi
 		  // Invokes ScrubIpsApiCallbackHandler.ScrubIpsDeleteGeoRuleCallback(ScrubIpsDeleteRule200Response) on completion. 
 		  //
 		  // - POST /scrub_ips/{id}/delete_geo_rule
-		  // - Removes an existing geographic-based firewall rule from the Scrub IP service. Use the `rule_id` from the service details response to identify the rule to delete.
+		  // - Removes a previously created geographic firewall rule from the Scrub IP service. The rule_id must come from the `filter_firewall.geo_rules[].id` array returned by getScrubIpDetails — the endpoint validates the id belongs to this service before deleting. Path param: `id` (integer, required) — Scrub IP service ID. Body (JSON): {`rule_id`: integer, required}. Returns {success: true, text: 'Firewall Rule has been deleted.'}. Errors: 400 Invalid Service, 'Rule Id is required.' or 'Invalid rule id' (rule does not belong to this service); 401 unauthenticated; 500 if upstream Scrub::geoFirewallDelete fails. Caveat: removing a country/ASN block re-admits that traffic. Siblings: createGeoRule, scrubIpsDeleteRule, deleteFilter, getScrubIpDetails.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:
@@ -2179,7 +2322,7 @@ Protected Class ScrubIpsApi
 	#tag Method, Flags = &h0
 		Sub ScrubIpsDeleteRule(, id As Integer, deleteFirewallRule As OpenAPIClient.Models.DeleteFirewallRule)
 		  // Operation scrubIpsDeleteRule
-		  // Delete Firewall Rule
+		  // Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
 		  // - 
 		  // - parameter id: (path) ScrubIp ID number 
 		  // - parameter deleteFirewallRule: (body)  
@@ -2187,7 +2330,7 @@ Protected Class ScrubIpsApi
 		  // Invokes ScrubIpsApiCallbackHandler.ScrubIpsDeleteRuleCallback(ScrubIpsDeleteRule200Response) on completion. 
 		  //
 		  // - POST /scrub_ips/{id}/delete_rule
-		  // - Removes an existing firewall rule from the Scrub IP service. Use the `rule_id` from the service details response to identify the rule to delete.
+		  // - Removes a previously created L3/L4 firewall rule from the Scrub IP service. The rule_id must come from the `filter_firewall.rules[].id` array returned by getScrubIpDetails — the endpoint validates the id belongs to this service before deleting. Path param: `id` (integer, required) — Scrub IP service ID. Body (JSON): {`rule_id`: integer, required}. Returns {success: true, text: 'Firewall Rule has been deleted.'}. Errors: 400 Invalid Service, 'rule_id is required.' or 'Invalid rule id' (rule does not belong to this service); 401 unauthenticated; 500 if upstream Scrub::firewallDelete fails. Caveat: if the rule was the only protection against a specific source, deleting it re-exposes the IP. Siblings: createRule, scrubIpsDeleteGeoRule, deleteFilter, getScrubIpDetails.
 		  // - defaultResponse: Nil
 		  //
 		  // - API Key:

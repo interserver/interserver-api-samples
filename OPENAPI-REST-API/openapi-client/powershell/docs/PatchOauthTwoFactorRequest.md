@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$PatchOauthTwoFactorRequest = Initialize-PSOpenAPIToolsPatchOauthTwoFactorRequest  -AccountId null `
+$PatchOauthTwoFactorRequest = Initialize-InterserverApiPatchOauthTwoFactorRequest  -AccountId null `
  -Code null
 ```
 

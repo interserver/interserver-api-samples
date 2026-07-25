@@ -64,6 +64,8 @@ void OAIScrubIpsApi::initializeServerConfigs() {
     _serverIndices.insert("getScrubIpsList", 0);
     _serverConfigs.insert("placeScrubOrder", defaultConf);
     _serverIndices.insert("placeScrubOrder", 0);
+    _serverConfigs.insert("putScrubIps", defaultConf);
+    _serverIndices.insert("putScrubIps", 0);
     _serverConfigs.insert("scrubIpsDeleteGeoRule", defaultConf);
     _serverIndices.insert("scrubIpsDeleteGeoRule", 0);
     _serverConfigs.insert("scrubIpsDeleteRule", defaultConf);
@@ -1157,6 +1159,63 @@ void OAIScrubIpsApi::placeScrubOrderCallback(OAIHttpRequestWorker *worker) {
     } else {
         Q_EMIT placeScrubOrderSignalError(output, error_type, error_str);
         Q_EMIT placeScrubOrderSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
+void OAIScrubIpsApi::putScrubIps(const OAIScrubIpPlaceOrder &oai_scrub_ip_place_order) {
+    QString fullPath = QString(_serverConfigs["putScrubIps"][_serverIndices.value("putScrubIps")].URL()+"/scrub_ips/order");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "PUT");
+
+    {
+
+        
+        QByteArray output = oai_scrub_ip_place_order.asJson().toUtf8();
+        input.request_body.append(output);
+    }
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIScrubIpsApi::putScrubIpsCallback);
+    connect(this, &OAIScrubIpsApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIScrubIpsApi::putScrubIpsCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    OAIPutScrubIps_200_response output(QString(worker->response));
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT putScrubIpsSignal(output);
+        Q_EMIT putScrubIpsSignalFull(worker, output);
+    } else {
+        Q_EMIT putScrubIpsSignalError(output, error_type, error_str);
+        Q_EMIT putScrubIpsSignalErrorFull(worker, error_type, error_str);
     }
 }
 

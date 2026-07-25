@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainSearchResponse } from './api';
+import { DomainSearchResponse } from '@interserver/myadmin-client';
 
 const instance: DomainSearchResponse = {
     success,

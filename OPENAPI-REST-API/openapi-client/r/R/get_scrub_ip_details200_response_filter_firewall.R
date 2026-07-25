@@ -123,10 +123,10 @@ GetScrubIpDetails200ResponseFilterFirewall <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`rules`)) {
-        self$`rules` <- ApiClient$new()$deserializeObj(this_object$`rules`, "array[GetScrubIpDetails200ResponseFilterFirewallRulesInner]", loadNamespace("openapi"))
+        self$`rules` <- ApiClient$new()$deserializeObj(this_object$`rules`, "array[GetScrubIpDetails200ResponseFilterFirewallRulesInner]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`filters`)) {
-        self$`filters` <- ApiClient$new()$deserializeObj(this_object$`filters`, "array[GetScrubIpDetails200ResponseFilterFirewallFiltersInner]", loadNamespace("openapi"))
+        self$`filters` <- ApiClient$new()$deserializeObj(this_object$`filters`, "array[GetScrubIpDetails200ResponseFilterFirewallFiltersInner]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`scrub_enabled`)) {
         self$`scrub_enabled` <- this_object$`scrub_enabled`
@@ -152,8 +152,8 @@ GetScrubIpDetails200ResponseFilterFirewall <- R6::R6Class(
     #' @return the instance of GetScrubIpDetails200ResponseFilterFirewall
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`rules` <- ApiClient$new()$deserializeObj(this_object$`rules`, "array[GetScrubIpDetails200ResponseFilterFirewallRulesInner]", loadNamespace("openapi"))
-      self$`filters` <- ApiClient$new()$deserializeObj(this_object$`filters`, "array[GetScrubIpDetails200ResponseFilterFirewallFiltersInner]", loadNamespace("openapi"))
+      self$`rules` <- ApiClient$new()$deserializeObj(this_object$`rules`, "array[GetScrubIpDetails200ResponseFilterFirewallRulesInner]", loadNamespace("interserverapi"))
+      self$`filters` <- ApiClient$new()$deserializeObj(this_object$`filters`, "array[GetScrubIpDetails200ResponseFilterFirewallFiltersInner]", loadNamespace("interserverapi"))
       self$`scrub_enabled` <- this_object$`scrub_enabled`
       self
     },

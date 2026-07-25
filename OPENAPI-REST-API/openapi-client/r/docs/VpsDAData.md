@@ -1,4 +1,4 @@
-# openapi::VpsDAData
+# interserverapi::VpsDAData
 
 DirectAdmin license options available for a VPS.
 

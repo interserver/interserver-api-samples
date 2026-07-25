@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderPackageCosts = Initialize-PSOpenAPIToolsVpsOrderPackageCosts  -Var57 6
+$VpsOrderPackageCosts = Initialize-InterserverApiVpsOrderPackageCosts  -Var57 6
 ```
 
 - Convert the resource to JSON

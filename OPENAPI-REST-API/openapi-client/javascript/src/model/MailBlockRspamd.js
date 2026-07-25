@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailBlockRspamd model module.
  * @module model/MailBlockRspamd
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailBlockRspamd {
     /**

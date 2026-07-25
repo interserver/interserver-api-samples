@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for QueueResponse
 void main() {
-  final instance = QueueResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final QueueResponse? instance = /* QueueResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(QueueResponse, () {
     // Response text

@@ -13,4 +13,8 @@
 |**cost** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

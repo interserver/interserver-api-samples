@@ -11,4 +11,8 @@
 |**adminMassCommunicationsTpl** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

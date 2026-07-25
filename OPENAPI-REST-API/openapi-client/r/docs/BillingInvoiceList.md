@@ -1,4 +1,4 @@
-# openapi::BillingInvoiceList
+# interserverapi::BillingInvoiceList
 
 Summary list of invoices for the account.
 

@@ -10,4 +10,8 @@ Alert configuration entries for a mail service.
 |------------ | ------------- | ------------- | -------------|
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

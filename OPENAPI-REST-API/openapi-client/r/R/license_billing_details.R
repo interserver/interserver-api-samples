@@ -232,7 +232,7 @@ LicenseBillingDetails <- R6::R6Class(
         self$`service_cost_info` <- this_object$`service_cost_info`
       }
       if (!is.null(this_object$`service_extra`)) {
-        self$`service_extra` <- ApiClient$new()$deserializeObj(this_object$`service_extra`, "array[character]", loadNamespace("openapi"))
+        self$`service_extra` <- ApiClient$new()$deserializeObj(this_object$`service_extra`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`service_extra_json`)) {
         self$`service_extra_json` <- this_object$`service_extra_json`
@@ -267,7 +267,7 @@ LicenseBillingDetails <- R6::R6Class(
       self$`service_currency_symbol` <- this_object$`service_currency_symbol`
       self$`service_coupon` <- this_object$`service_coupon`
       self$`service_cost_info` <- this_object$`service_cost_info`
-      self$`service_extra` <- ApiClient$new()$deserializeObj(this_object$`service_extra`, "array[character]", loadNamespace("openapi"))
+      self$`service_extra` <- ApiClient$new()$deserializeObj(this_object$`service_extra`, "array[character]", loadNamespace("interserverapi"))
       self$`service_extra_json` <- this_object$`service_extra_json`
       self
     },

@@ -1,4 +1,4 @@
-# openapi::DomainOrder
+# interserverapi::DomainOrder
 
 Ordering metadata for domain registration and transfers.
 

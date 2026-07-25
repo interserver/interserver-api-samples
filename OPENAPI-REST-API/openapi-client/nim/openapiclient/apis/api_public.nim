@@ -27,6 +27,7 @@ import ../models/model_login_submission_example_g_recaptcha_response
 import ../models/model_login_success_response
 import ../models/model_services_info
 import ../models/model_get_account_info401response
+import ../models/model_get_account_locales200response_value
 import ../models/model_get_oauth_redirect200response
 import ../models/model_object
 import ../models/model_patch_oauth_two_factor200response
@@ -49,15 +50,29 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
+proc getAccountCurrencies*(httpClient: HttpClient): (Option[seq[string]], Response) =
+  ## List enabled currency codes accepted for billing and preferences
+
+  let response = httpClient.get(basepath & "/account/currencies")
+  constructResult[seq[string]](response)
+
+
+proc getAccountLocales*(httpClient: HttpClient): (Option[Table[string, getAccountLocales_200_response_value]], Response) =
+  ## List supported UI locales with English and native display names
+
+  let response = httpClient.get(basepath & "/account/locales")
+  constructResult[Table[string, getAccountLocales_200_response_value]](response)
+
+
 proc getCaptcha*(httpClient: HttpClient): (Option[CaptchaResponse], Response) =
-  ## Get Captcha Challenge
+  ## Fetch a base64 JPEG captcha challenge for human verification
 
   let response = httpClient.get(basepath & "/captcha")
   constructResult[CaptchaResponse](response)
 
 
 proc getCountries*(httpClient: HttpClient, fetchBy: string): (Option[JsonNode], Response) =
-  ## Get Countries
+  ## List enabled countries keyed by ISO-2/ISO-3/numeric code
   var query_params_list: seq[(string, string)] = @[]
   if $fetchBy != "":
     query_params_list.add(("fetch_by", $fetchBy))
@@ -68,28 +83,28 @@ proc getCountries*(httpClient: HttpClient, fetchBy: string): (Option[JsonNode], 
 
 
 proc getInfo*(httpClient: HttpClient): (Option[ServicesInfo], Response) =
-  ## Get Server Info
+  ## Discover available modules, service packages, categories, and types
 
   let response = httpClient.get(basepath & "/info")
   constructResult[ServicesInfo](response)
 
 
 proc getLoginInfo*(httpClient: HttpClient): (Option[LoginInfo], Response) =
-  ## Get Login Info
+  ## Fetch logo, captcha, language, and stats for rendering a login page
 
   let response = httpClient.get(basepath & "/login")
   constructResult[LoginInfo](response)
 
 
 proc getMPServers*(httpClient: HttpClient): (Option[seq[BuyItNowRow]], Response) =
-  ## List Marketplace Servers
+  ## List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 
   let response = httpClient.get(basepath & "/buy_now_servers_list")
   constructResult[seq[BuyItNowRow]](response)
 
 
 proc getOauthRedirect*(httpClient: HttpClient, provider: string): (Option[getOauthRedirect_200_response], Response) =
-  ## Get OAuth Redirect URL
+  ## Begin OAuth login flow — redirect user to provider for authentication
   var query_params_list: seq[(string, string)] = @[]
   query_params_list.add(("provider", $provider))
   let url_encoded_query_params = encodeQuery(query_params_list)
@@ -99,14 +114,14 @@ proc getOauthRedirect*(httpClient: HttpClient, provider: string): (Option[getOau
 
 
 proc getTimezones*(httpClient: HttpClient): (Option[seq[string]], Response) =
-  ## Get Available Timezones
+  ## List all PHP timezone identifiers usable on accounts and services
 
   let response = httpClient.get(basepath & "/account/timezones")
   constructResult[seq[string]](response)
 
 
 proc patchOauthTwoFactor*(httpClient: HttpClient, patchOauthTwoFactorRequest: PatchOauthTwoFactorRequest): (Option[patchOauthTwoFactor_200_response], Response) =
-  ## Complete OAuth Two-Factor Verification
+  ## Submit 2FA code to finish OAuth login when account has 2FA enabled
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.patch(basepath & "/oauth", $(%patchOauthTwoFactorRequest))
@@ -114,14 +129,14 @@ proc patchOauthTwoFactor*(httpClient: HttpClient, patchOauthTwoFactorRequest: Pa
 
 
 proc pingServer*(httpClient: HttpClient): (Option[string], Response) =
-  ## Ping Server
+  ## Liveness check — returns the JSON string \"pong\" to confirm API is up
 
   let response = httpClient.get(basepath & "/ping")
   constructResult[string](response)
 
 
 proc postOauthCallback*(httpClient: HttpClient, provider: string, postOauthCallbackRequest: PostOauthCallbackRequest): (Option[postOauthCallback_200_response], Response) =
-  ## OAuth Callback
+  ## Complete OAuth login by linking provider to existing or new account
   httpClient.headers["Content-Type"] = "application/json"
   var query_params_list: seq[(string, string)] = @[]
   query_params_list.add(("provider", $provider))
@@ -132,7 +147,7 @@ proc postOauthCallback*(httpClient: HttpClient, provider: string, postOauthCallb
 
 
 proc submitLogin*(httpClient: HttpClient, login: string, passwd: string, remember: string, gRecaptchaResponse: LoginSubmissionExample_g_recaptcha_response, tfa: string): (Option[LoginSuccessResponse], Response) =
-  ## Submit Login Information
+  ## Authenticate with email + password and return a session token
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "login": $login, # 
@@ -147,7 +162,7 @@ proc submitLogin*(httpClient: HttpClient, login: string, passwd: string, remembe
 
 
 proc submitSignup*(httpClient: HttpClient, loginSubmissionExample: LoginSubmissionExample): Response =
-  ## Submit Signup Information
+  ## Create a new customer account (email + password + captcha + ToS)
   httpClient.headers["Content-Type"] = "application/json"
   httpClient.post(basepath & "/signup", $(%loginSubmissionExample))
 

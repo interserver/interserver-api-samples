@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.ticket_custom_field_details import TicketCustomFieldDetails
+from interserver_api_client.models.ticket_custom_field_details import TicketCustomFieldDetails
 
 # TODO update the JSON string below
 json = "{}"

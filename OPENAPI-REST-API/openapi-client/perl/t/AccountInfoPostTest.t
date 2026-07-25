@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::AccountInfoPost');
+use_ok('InterServerAPI::Object::AccountInfoPost');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::AccountInfoPost->new();
+#my $instance = InterServerAPI::Object::AccountInfoPost->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::AccountInfoPost');
+#isa_ok($instance, 'InterServerAPI::Object::AccountInfoPost');
 
 
 done_testing();

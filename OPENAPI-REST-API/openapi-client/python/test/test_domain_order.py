@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_order import DomainOrder
+from interserver_api_client.models.domain_order import DomainOrder
 
 class TestDomainOrder(unittest.TestCase):
     """DomainOrder unit test stubs"""
@@ -37,8 +37,8 @@ class TestDomainOrder(unittest.TestCase):
         if include_optional:
             return DomainOrder(
                 whois_privacy_cost = '5',
-                services = openapi_client.models.domain_order_services.DomainOrder_services(
-                    domain_order_services10001 = openapi_client.models.domain_order_services10001.DomainOrderServices10001(
+                services = interserver_api_client.models.domain_order_services.DomainOrder_services(
+                    domain_order_services10001 = interserver_api_client.models.domain_order_services10001.DomainOrderServices10001(
                         services_id = '10001', 
                         services_name = '.asia Domain Name Registration', 
                         services_cost = '19.00', 

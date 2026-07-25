@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.QuickserverServiceMaster();
+    instance = new InterserverApiClient.QuickserverServiceMaster();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,205 +50,205 @@
   describe('QuickserverServiceMaster', function() {
     it('should create an instance of QuickserverServiceMaster', function() {
       // uncomment below and update the code to test QuickserverServiceMaster
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
-      //expect(instance).to.be.a(InterServerManagementApi.QuickserverServiceMaster);
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
+      //expect(instance).to.be.a(InterserverApiClient.QuickserverServiceMaster);
     });
 
     it('should have the property qs_id (base name: "qs_id")', function() {
       // uncomment below and update the code to test the property qs_id
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_name (base name: "qs_name")', function() {
       // uncomment below and update the code to test the property qs_name
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_ip (base name: "qs_ip")', function() {
       // uncomment below and update the code to test the property qs_ip
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_type (base name: "qs_type")', function() {
       // uncomment below and update the code to test the property qs_type
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_hdsize (base name: "qs_hdsize")', function() {
       // uncomment below and update the code to test the property qs_hdsize
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_hdfree (base name: "qs_hdfree")', function() {
       // uncomment below and update the code to test the property qs_hdfree
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_bits (base name: "qs_bits")', function() {
       // uncomment below and update the code to test the property qs_bits
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_load (base name: "qs_load")', function() {
       // uncomment below and update the code to test the property qs_load
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_ram (base name: "qs_ram")', function() {
       // uncomment below and update the code to test the property qs_ram
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_cpu_model (base name: "qs_cpu_model")', function() {
       // uncomment below and update the code to test the property qs_cpu_model
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_cpu_mhz (base name: "qs_cpu_mhz")', function() {
       // uncomment below and update the code to test the property qs_cpu_mhz
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_location (base name: "qs_location")', function() {
       // uncomment below and update the code to test the property qs_location
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_available (base name: "qs_available")', function() {
       // uncomment below and update the code to test the property qs_available
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_cost (base name: "qs_cost")', function() {
       // uncomment below and update the code to test the property qs_cost
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_last_update (base name: "qs_last_update")', function() {
       // uncomment below and update the code to test the property qs_last_update
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_cores (base name: "qs_cores")', function() {
       // uncomment below and update the code to test the property qs_cores
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_iowait (base name: "qs_iowait")', function() {
       // uncomment below and update the code to test the property qs_iowait
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_raid_status (base name: "qs_raid_status")', function() {
       // uncomment below and update the code to test the property qs_raid_status
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_drive_type (base name: "qs_drive_type")', function() {
       // uncomment below and update the code to test the property qs_drive_type
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_order (base name: "qs_order")', function() {
       // uncomment below and update the code to test the property qs_order
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_raid_building (base name: "qs_raid_building")', function() {
       // uncomment below and update the code to test the property qs_raid_building
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_kernel (base name: "qs_kernel")', function() {
       // uncomment below and update the code to test the property qs_kernel
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_ioping (base name: "qs_ioping")', function() {
       // uncomment below and update the code to test the property qs_ioping
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_speed (base name: "qs_speed")', function() {
       // uncomment below and update the code to test the property qs_speed
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_distro (base name: "qs_distro")', function() {
       // uncomment below and update the code to test the property qs_distro
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_distro_version (base name: "qs_distro_version")', function() {
       // uncomment below and update the code to test the property qs_distro_version
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_bytes_sec_in (base name: "qs_bytes_sec_in")', function() {
       // uncomment below and update the code to test the property qs_bytes_sec_in
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_bytes_sec_out (base name: "qs_bytes_sec_out")', function() {
       // uncomment below and update the code to test the property qs_bytes_sec_out
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_packets_sec_in (base name: "qs_packets_sec_in")', function() {
       // uncomment below and update the code to test the property qs_packets_sec_in
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_packets_sec_out (base name: "qs_packets_sec_out")', function() {
       // uncomment below and update the code to test the property qs_packets_sec_out
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_last_install_time (base name: "qs_last_install_time")', function() {
       // uncomment below and update the code to test the property qs_last_install_time
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_partitions (base name: "qs_partitions")', function() {
       // uncomment below and update the code to test the property qs_partitions
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 
     it('should have the property qs_cpu_flags (base name: "qs_cpu_flags")', function() {
       // uncomment below and update the code to test the property qs_cpu_flags
-      //var instance = new InterServerManagementApi.QuickserverServiceMaster();
+      //var instance = new InterserverApiClient.QuickserverServiceMaster();
       //expect(instance).to.be();
     });
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { UrlRequest } from './api';
+import { UrlRequest } from '@interserver/myadmin-client';
 
 const instance: UrlRequest = {
     url,

@@ -13,4 +13,8 @@ Parameters to submit to validate your backup order
 |**coupon** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

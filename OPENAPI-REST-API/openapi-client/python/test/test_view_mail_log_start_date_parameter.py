@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.view_mail_log_start_date_parameter import ViewMailLogStartDateParameter
+from interserver_api_client.models.view_mail_log_start_date_parameter import ViewMailLogStartDateParameter
 
 class TestViewMailLogStartDateParameter(unittest.TestCase):
     """ViewMailLogStartDateParameter unit test stubs"""

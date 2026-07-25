@@ -31,4 +31,3 @@ case class ServerOrderConfigIds(
   /* Hard Drives configuration ID for the server order. */
   hd: Option[String] = None
 )
-

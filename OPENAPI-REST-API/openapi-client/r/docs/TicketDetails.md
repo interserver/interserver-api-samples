@@ -1,4 +1,4 @@
-# openapi::TicketDetails
+# interserverapi::TicketDetails
 
 Detailed ticket information
 

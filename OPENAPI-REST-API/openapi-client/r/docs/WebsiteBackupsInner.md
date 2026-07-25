@@ -1,4 +1,4 @@
-# openapi::WebsiteBackupsInner
+# interserverapi::WebsiteBackupsInner
 
 
 ## Properties

@@ -1,4 +1,4 @@
-# InterServerManagementApi.HomeDetailsModulesQuickservers
+# InterserverApiClient.HomeDetailsModulesQuickservers
 
 ## Properties
 

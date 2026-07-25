@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::LoginSubmissionExampleGRecaptchaResponseDep');
+use_ok('InterServerAPI::Object::LoginSubmissionExampleGRecaptchaResponseDep');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::LoginSubmissionExampleGRecaptchaResponseDep->new();
+#my $instance = InterServerAPI::Object::LoginSubmissionExampleGRecaptchaResponseDep->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::LoginSubmissionExampleGRecaptchaResponseDep');
+#isa_ok($instance, 'InterServerAPI::Object::LoginSubmissionExampleGRecaptchaResponseDep');
 
 
 done_testing();

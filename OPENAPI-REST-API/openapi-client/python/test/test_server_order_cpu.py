@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_cpu import ServerOrderCPU
+from interserver_api_client.models.server_order_cpu import ServerOrderCPU
 
 class TestServerOrderCPU(unittest.TestCase):
     """ServerOrderCPU unit test stubs"""

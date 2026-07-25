@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_order_detail200_response_ips_inner import GetOrderDetail200ResponseIpsInner
+from interserver_api_client.models.get_order_detail200_response_ips_inner import GetOrderDetail200ResponseIpsInner
 
 class TestGetOrderDetail200ResponseIpsInner(unittest.TestCase):
     """GetOrderDetail200ResponseIpsInner unit test stubs"""

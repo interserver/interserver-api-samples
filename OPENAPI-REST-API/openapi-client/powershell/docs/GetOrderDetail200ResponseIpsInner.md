@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$GetOrderDetail200ResponseIpsInner = Initialize-PSOpenAPIToolsGetOrderDetail200ResponseIpsInner  -ServiceId 12345 `
+$GetOrderDetail200ResponseIpsInner = Initialize-InterserverApiGetOrderDetail200ResponseIpsInner  -ServiceId 12345 `
  -ServiceModule vps `
  -ServiceHostname server.gtest.com
 ```

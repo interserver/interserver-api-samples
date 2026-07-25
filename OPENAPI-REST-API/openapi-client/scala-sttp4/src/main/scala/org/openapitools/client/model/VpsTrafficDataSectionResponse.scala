@@ -20,4 +20,3 @@ case class VpsTrafficDataSectionResponse(
   name: String,
   data: Seq[VPSTrafficDataDataSectionResponse]
 )
-

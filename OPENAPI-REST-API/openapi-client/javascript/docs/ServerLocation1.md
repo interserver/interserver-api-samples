@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerLocation1
+# InterserverApiClient.ServerLocation1
 
 ## Properties
 

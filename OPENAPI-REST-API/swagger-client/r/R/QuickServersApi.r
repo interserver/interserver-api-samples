@@ -17,136 +17,136 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_qs Place QuickServer Order
+#' add_qs Place a QuickServer order, generating a real invoice and queuing provisioning
 #'
 #'
-#' delete_qs_backup Delete QuickServer Backup
+#' delete_qs_backup Permanently delete a QuickServer backup file from object storage
 #'
 #'
-#' do_qs_block_smtp Block QuickServer SMTP
+#' do_qs_block_smtp Block outbound SMTP traffic on a QuickServer to halt mail abuse
 #'
 #'
-#' do_qs_disable_cd Disable CD Drive
+#' do_qs_disable_cd Disable the virtual CD/DVD drive device on a QuickServer
 #'
 #'
-#' do_qs_disable_quota Disable Quotas
+#' do_qs_disable_quota Disable disk-quota enforcement at OS level on a QuickServer
 #'
 #'
-#' do_qs_eject_cd Eject CD Drive
+#' do_qs_eject_cd Eject the currently mounted ISO from a QuickServer&#x27;s virtual CD drive
 #'
 #'
-#' do_qs_enable_quota Enable Quotas
+#' do_qs_enable_quota Enable disk-quota enforcement at OS level on a QuickServer
 #'
 #'
-#' do_qs_restart Restart QuickServer
+#' do_qs_restart Reboot a QuickServer with a graceful OS-level restart
 #'
 #'
-#' do_qs_start Start QuickServer
+#' do_qs_start Power on a QuickServer that is currently stopped or pending boot
 #'
 #'
-#' do_qs_stop Stop QuickServer
+#' do_qs_stop Power off a QuickServer with a graceful shutdown command
 #'
 #'
-#' download_qs_backup Download QuickServer Backup
+#' download_qs_backup Generate a 24-hour pre-signed download URL for a QuickServer backup
 #'
 #'
-#' get_new_qs Get QuickServer Ordering Information
+#' get_new_qs Get QuickServer order form metadata and available plans/templates
 #'
 #'
-#' get_qs_backups List QuickServer Backups
+#' get_qs_backup Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
 #'
 #'
-#' get_qs_change_hostname Get QuickServer Hostname
+#' get_qs_backups List available QuickServer backups across Swift, MinIO, and ZFS storage
 #'
 #'
-#' get_qs_change_root_password Get Change Root Password Info
+#' get_qs_change_hostname Get current QuickServer hostname plus change rules and platform support
 #'
 #'
-#' get_qs_change_timezone Get Timezone Info
+#' get_qs_change_root_password Get metadata for QuickServer root/OS password change requirements
 #'
 #'
-#' get_qs_change_webuzo_password Webuzo Change Pass Info
+#' get_qs_change_timezone List timezones the QuickServer can be set to via change_timezone
 #'
 #'
-#' get_qs_info Get QuickServer Order
+#' get_qs_change_webuzo_password Get metadata for changing the Webuzo control panel admin password
 #'
 #'
-#' get_qs_insert_cd Insert CD Information
+#' get_qs_info Get full details for one QuickServer including credentials and links
 #'
 #'
-#' get_qs_invoices Get QuickServer Invoices
+#' get_qs_insert_cd List ISO images available to mount on a QuickServer&#x27;s virtual CD
 #'
 #'
-#' get_qs_list List QuickServers
+#' get_qs_invoices List billing invoices charged for one QuickServer service
 #'
 #'
-#' get_qs_reinstall_os QuickServer Reinstall OS Options
+#' get_qs_list List QuickServer rapid-deploy dedicated servers on the account
 #'
 #'
-#' get_qs_reset_password Reset QuickServer Password Info
+#' get_qs_reinstall_os List OS templates available for a QuickServer reinstall
 #'
 #'
-#' get_qs_reverse_dns Reverse DNS Info
+#' get_qs_reset_password Get options for QuickServer randomized root password reset
 #'
 #'
-#' get_qs_setup_vnc VNC Setup Info
+#' get_qs_reverse_dns Get reverse DNS (PTR) records for all of a QuickServer&#x27;s IPs
 #'
 #'
-#' get_qs_traffic_usage Get Traffic Usage
+#' get_qs_setup_vnc Get current VNC console connection details for a QuickServer
 #'
 #'
-#' get_qs_view_desktop Get View Desktop Info
+#' get_qs_traffic_usage Get bandwidth usage for the QuickServer&#x27;s current billing period
 #'
 #'
-#' get_qs_welcome_email Resend QuickServer Welcome Email
+#' get_qs_view_desktop Get the full QuickServer dashboard view payload (rich format)
 #'
 #'
-#' post_qs_backup Create QuickServer Backup
+#' get_qs_welcome_email Resend the QuickServer welcome email with login credentials
 #'
 #'
-#' post_qs_change_hostname Update QuickServer Hostname
+#' post_qs_change_hostname Change a QuickServer&#x27;s system hostname (OpenVZ/Virtuozzo only)
 #'
 #'
-#' post_qs_change_root_password Change Root Password
+#' post_qs_change_root_password Change QuickServer root/administrator password to a chosen value
 #'
 #'
-#' post_qs_change_timezone Change QuickServer Timezone
+#' post_qs_change_timezone Change the system timezone on a QuickServer to a catalog entry
 #'
 #'
-#' post_qs_change_webuzo_password Change Webuzo Password
+#' post_qs_change_webuzo_password Change Webuzo control panel admin password live (synchronous, not queued)
 #'
 #'
-#' post_qs_insert_cd Insert CD in QuickServer
+#' post_qs_insert_cd Mount an ISO image as the QuickServer&#x27;s virtual CD via URL
 #'
 #'
-#' post_qs_reinstall_os Reinstall QuickServer OS
+#' post_qs_reinstall_os Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
 #'
 #'
-#' post_qs_reset_password Reset QuickServer Password
+#' post_qs_reset_password Reset QuickServer root password to a server-generated random value
 #'
 #'
-#' post_qs_reverse_dns Update Reverse DNS
+#' post_qs_reverse_dns Update reverse DNS (PTR) records for a QuickServer&#x27;s IPs
 #'
 #'
-#' post_qs_setup_vnc Setup VNC
+#' post_qs_setup_vnc Configure the source IP allowed to reach a QuickServer&#x27;s VNC console
 #'
 #'
-#' post_qs_traffic_usage Search Traffic Usage
+#' post_qs_traffic_usage Query QuickServer bandwidth usage via POST (filtered variant)
 #'
 #'
-#' post_qs_view_desktop Update View Desktop
+#' post_qs_view_desktop Submit changes and re-fetch the QuickServer dashboard view payload
 #'
 #'
-#' post_quick_server_restore Restore QuickServer from Backup
+#' post_quick_server_restore Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
 #'
 #'
-#' put_qs Validate QuickServer Order
+#' put_qs Validate a QuickServer order without charging or provisioning
 #'
 #'
-#' quickservers_cancel Cancel QuickServer Order
+#' quickservers_cancel Cancel a QuickServer service at the end of the current billing cycle
 #'
 #'
-#' update_qs_info Update QuickServer Order
+#' update_qs_info Update QuickServer order metadata or stored settings without OS impact
 #'
 #' }
 #'
@@ -164,10 +164,16 @@ QuickServersApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    add_qs = function(...){
+    add_qs = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/qs/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -480,7 +486,7 @@ QuickServersApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20011$new()
+        returnObject <- InlineResponse20012$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -505,6 +511,34 @@ QuickServersApi <- R6::R6Class(
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         returnObject <- QuickserverOrder$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    get_qs_backup = function(id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/qs/{id}/backup"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- QueueResponse$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -946,34 +980,6 @@ QuickServersApi <- R6::R6Class(
       }
 
     }
-    post_qs_backup = function(id, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      urlPath <- "/qs/{id}/backup"
-      if (!missing(`id`)) {
-        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
-      }
-
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "POST",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- QueueResponse$new()
-        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
-        Response$new(returnObject, resp)
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
     post_qs_change_hostname = function(id, ...){
       args <- list(...)
       queryParams <- list()
@@ -1337,10 +1343,16 @@ QuickServersApi <- R6::R6Class(
       }
 
     }
-    put_qs = function(...){
+    put_qs = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/qs/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -1377,7 +1389,7 @@ QuickServersApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20010$new()
+        returnObject <- InlineResponse20011$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

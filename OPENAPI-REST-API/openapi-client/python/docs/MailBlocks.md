@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.mail_blocks import MailBlocks
+from interserver_api_client.models.mail_blocks import MailBlocks
 
 # TODO update the JSON string below
 json = "{}"

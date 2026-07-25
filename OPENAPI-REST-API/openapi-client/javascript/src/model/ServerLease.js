@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerLease model module.
  * @module model/ServerLease
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerLease {
     /**

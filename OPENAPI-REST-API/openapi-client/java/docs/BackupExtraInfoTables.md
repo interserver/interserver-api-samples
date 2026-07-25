@@ -11,4 +11,8 @@ Supplementary information tables for a backup service (IP info, etc.).
 |**ipInfo** | [**BackupIPInfo**](BackupIPInfo.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

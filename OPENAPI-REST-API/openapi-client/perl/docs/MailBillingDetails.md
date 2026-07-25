@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailBillingDetails
+# InterServerAPI::Object::MailBillingDetails
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailBillingDetails;
+use InterServerAPI::Object::MailBillingDetails;
 ```
 
 ## Properties

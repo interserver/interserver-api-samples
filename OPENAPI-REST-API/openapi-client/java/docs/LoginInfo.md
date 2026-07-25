@@ -14,4 +14,8 @@ Basic information useful for rendering a login page.
 |**language** | **String** | The desired langauge to render the site with. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

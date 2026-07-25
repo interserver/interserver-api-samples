@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.account_info_limits import AccountInfoLimits
+from interserver_api_client.models.account_info_limits import AccountInfoLimits
 
 # TODO update the JSON string below
 json = "{}"

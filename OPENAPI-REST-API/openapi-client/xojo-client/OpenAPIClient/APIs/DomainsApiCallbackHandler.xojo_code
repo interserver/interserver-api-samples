@@ -73,18 +73,6 @@ Protected Interface DomainsApiCallbackHandler
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub GetDomainOrderFieldsCallback(status As OpenAPIClient.OpenAPIClientException)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
-		Sub GetDomainOrderSearchResultsCallback(status As OpenAPIClient.OpenAPIClientException)
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub GetDomainRenewalCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SuccessTextResponse)
 		  
 		End Sub
@@ -134,6 +122,12 @@ Protected Interface DomainsApiCallbackHandler
 
 	#tag Method, Flags = &h0
 		Sub PostDomainRenewalCallback(status As OpenAPIClient.OpenAPIClientException, Optional data As OpenAPIClient.Models.SuccessTextResponse)
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub PostDomainSearchCallback(status As OpenAPIClient.OpenAPIClientException)
 		  
 		End Sub
 	#tag EndMethod

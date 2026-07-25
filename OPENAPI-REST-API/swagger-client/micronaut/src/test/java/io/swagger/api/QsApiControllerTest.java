@@ -2,9 +2,10 @@ package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
 import io.swagger.model.IdBackupsBody;
-import io.swagger.model.InlineResponse20010;
 import io.swagger.model.InlineResponse20011;
+import io.swagger.model.InlineResponse20012;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.QsOrderRequest;
 import io.swagger.model.QueueResponse;
 import io.swagger.model.Quickserver;
 import io.swagger.model.QuickserverOrder;
@@ -36,8 +37,9 @@ class QsApiControllerTest {
 
     @Test
     void addQsTest() {
+        QsOrderRequest body = null;
         try {
-            //TODO: api.addQs().blockingGet();
+            //TODO: api.addQs(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -151,6 +153,16 @@ class QsApiControllerTest {
     void getNewQsTest() {
         try {
             //TODO: api.getNewQs().blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void getQsBackupTest() {
+        Integer id = null;
+        try {
+            //TODO: api.getQsBackup(id).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -317,16 +329,6 @@ class QsApiControllerTest {
     }
 
     @Test
-    void postQsBackupTest() {
-        Integer id = null;
-        try {
-            //TODO: api.postQsBackup(id).blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
     void postQsChangeHostnameTest() {
         Integer id = null;
         try {
@@ -451,8 +453,9 @@ class QsApiControllerTest {
 
     @Test
     void putQsTest() {
+        QsOrderRequest body = null;
         try {
-            //TODO: api.putQs().blockingGet();
+            //TODO: api.putQs(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

@@ -10,4 +10,8 @@
 |**_2faGoogleCode** | **String** | The 6-digit verification code from your authenticator app. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

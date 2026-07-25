@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ServerOrderBandwidth } from './api';
+import { ServerOrderBandwidth } from '@interserver/myadmin-client';
 
 const instance: ServerOrderBandwidth = {
     id,

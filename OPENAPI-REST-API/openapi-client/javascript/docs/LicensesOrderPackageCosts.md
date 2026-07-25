@@ -1,4 +1,4 @@
-# InterServerManagementApi.LicensesOrderPackageCosts
+# InterserverApiClient.LicensesOrderPackageCosts
 
 ## Properties
 

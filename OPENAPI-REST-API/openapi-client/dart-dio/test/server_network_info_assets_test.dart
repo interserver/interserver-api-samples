@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerNetworkInfoAssets
 void main() {
-  final instance = ServerNetworkInfoAssetsBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerNetworkInfoAssets? instance = /* ServerNetworkInfoAssets(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerNetworkInfoAssets, () {
     // ServerAsset n3497

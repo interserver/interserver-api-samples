@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerIpmiLiveRequest();
+    instance = new InterserverApiClient.ServerIpmiLiveRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('ServerIpmiLiveRequest', function() {
     it('should create an instance of ServerIpmiLiveRequest', function() {
       // uncomment below and update the code to test ServerIpmiLiveRequest
-      //var instance = new InterServerManagementApi.ServerIpmiLiveRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerIpmiLiveRequest);
+      //var instance = new InterserverApiClient.ServerIpmiLiveRequest();
+      //expect(instance).to.be.a(InterserverApiClient.ServerIpmiLiveRequest);
     });
 
     it('should have the property ip (base name: "ip")', function() {
       // uncomment below and update the code to test the property ip
-      //var instance = new InterServerManagementApi.ServerIpmiLiveRequest();
+      //var instance = new InterserverApiClient.ServerIpmiLiveRequest();
       //expect(instance).to.be();
     });
 
     it('should have the property asset (base name: "asset")', function() {
       // uncomment below and update the code to test the property asset
-      //var instance = new InterServerManagementApi.ServerIpmiLiveRequest();
+      //var instance = new InterserverApiClient.ServerIpmiLiveRequest();
       //expect(instance).to.be();
     });
 

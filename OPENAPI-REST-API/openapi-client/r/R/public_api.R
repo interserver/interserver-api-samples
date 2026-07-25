@@ -14,11 +14,55 @@
 #'
 #' @examples
 #' \dontrun{
+#' ####################  GetAccountCurrencies  ####################
+#'
+#' library(interserverapi)
+#'
+#' #List enabled currency codes accepted for billing and preferences
+#' api_instance <- PublicApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$GetAccountCurrencies(data_file = "result.txt")
+#' result <- api_instance$GetAccountCurrencies()
+#' dput(result)
+#'
+#'
+#' ####################  GetAccountLocales  ####################
+#'
+#' library(interserverapi)
+#'
+#' #List supported UI locales with English and native display names
+#' api_instance <- PublicApi$new()
+#'
+#' # Configure API key authorization: sessionIdCookieAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: apiKeyAuth
+#' api_instance$api_client$api_keys["X-API-KEY"] <- Sys.getenv("API_KEY")
+#'
+#' # Configure API key authorization: sessionIdHeaderAuth
+#' api_instance$api_client$api_keys["sessionid"] <- Sys.getenv("API_KEY")
+#'
+#' # to save the result into a file, simply add the optional `data_file` parameter, e.g.
+#' # result <- api_instance$GetAccountLocales(data_file = "result.txt")
+#' result <- api_instance$GetAccountLocales()
+#' dput(result)
+#'
+#'
 #' ####################  GetCaptcha  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Captcha Challenge
+#' #Fetch a base64 JPEG captcha challenge for human verification
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -38,10 +82,10 @@
 #'
 #' ####################  GetCountries  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_fetch_by <- "fetch_by_example" # character | Get countries by iso2 or iso3 or numcode (Optional)
 #'
-#' #Get Countries
+#' #List enabled countries keyed by ISO-2/ISO-3/numeric code
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -61,9 +105,9 @@
 #'
 #' ####################  GetInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Server Info
+#' #Discover available modules, service packages, categories, and types
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -83,9 +127,9 @@
 #'
 #' ####################  GetLoginInfo  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Login Info
+#' #Fetch logo, captcha, language, and stats for rendering a login page
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -105,9 +149,9 @@
 #'
 #' ####################  GetMPServers  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #List Marketplace Servers
+#' #List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -127,10 +171,10 @@
 #'
 #' ####################  GetOauthRedirect  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_provider <- "provider_example" # character | The OAuth provider name (e.g. `Google`).
 #'
-#' #Get OAuth Redirect URL
+#' #Begin OAuth login flow — redirect user to provider for authentication
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -150,9 +194,9 @@
 #'
 #' ####################  GetTimezones  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Get Available Timezones
+#' #List all PHP timezone identifiers usable on accounts and services
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -172,10 +216,10 @@
 #'
 #' ####################  PatchOauthTwoFactor  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_patch_oauth_two_factor_request <- patchOauthTwoFactor_request$new(123, "code_example") # PatchOauthTwoFactorRequest | 
 #'
-#' #Complete OAuth Two-Factor Verification
+#' #Submit 2FA code to finish OAuth login when account has 2FA enabled
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -195,9 +239,9 @@
 #'
 #' ####################  PingServer  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #'
-#' #Ping Server
+#' #Liveness check — returns the JSON string \"pong\" to confirm API is up
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -217,11 +261,11 @@
 #'
 #' ####################  PostOauthCallback  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_provider <- "provider_example" # character | The OAuth provider name (e.g. `Google`).
 #' var_post_oauth_callback_request <- postOauthCallback_request$new("provider_example") # PostOauthCallbackRequest |  (Optional)
 #'
-#' #OAuth Callback
+#' #Complete OAuth login by linking provider to existing or new account
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -241,14 +285,14 @@
 #'
 #' ####################  SubmitLogin  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_login <- "login_example" # character | 
 #' var_passwd <- "passwd_example" # character | 
 #' var_remember <- "remember_example" # character |  (Optional)
 #' var_g_recaptcha_response <- LoginSubmissionExample_g_recaptcha_response$new("__v_isShallow_example", LoginSubmissionExample_g_recaptcha_response_dep$new(123, 123), "__v_isRef_example", "_rawValue_example", "_value_example") # LoginSubmissionExampleGRecaptchaResponse |  (Optional)
 #' var_tfa <- "tfa_example" # character | Two Factor Authentication Response. (Optional)
 #'
-#' #Submit Login Information
+#' #Authenticate with email + password and return a session token
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -268,10 +312,10 @@
 #'
 #' ####################  SubmitSignup  ####################
 #'
-#' library(openapi)
+#' library(interserverapi)
 #' var_login_submission_example <- LoginSubmissionExample$new("login_example", "passwd_example", "remember_example", LoginSubmissionExample_g_recaptcha_response$new("__v_isShallow_example", LoginSubmissionExample_g_recaptcha_response_dep$new(123, 123), "__v_isRef_example", "_rawValue_example", "_value_example"), "tfa_example") # LoginSubmissionExample |  (Optional)
 #'
-#' #Submit Signup Information
+#' #Create a new customer account (email + password + captcha + ToS)
 #' api_instance <- PublicApi$new()
 #'
 #' # Configure API key authorization: sessionIdCookieAuth
@@ -308,7 +352,219 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Captcha Challenge
+    #' List enabled currency codes accepted for billing and preferences
+    #'
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return array[character]
+    GetAccountCurrencies = function(data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$GetAccountCurrenciesWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' List enabled currency codes accepted for billing and preferences
+    #'
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return API response (array[character]) with additional information such as HTTP status code, headers
+    GetAccountCurrenciesWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      local_var_url_path <- "/account/currencies"
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "array[character]"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' List supported UI locales with English and native display names
+    #'
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return map(GetAccountLocales200ResponseValue)
+    GetAccountLocales = function(data_file = NULL, ..., .parse = TRUE) {
+      local_var_response <- self$GetAccountLocalesWithHttpInfo(data_file = data_file, ..., .parse = .parse)
+      if (local_var_response$status_code >= 200 && local_var_response$status_code <= 299) {
+        return(local_var_response$content)
+      } else if (local_var_response$status_code >= 300 && local_var_response$status_code <= 399) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 400 && local_var_response$status_code <= 499) {
+        return(local_var_response)
+      } else if (local_var_response$status_code >= 500 && local_var_response$status_code <= 599) {
+        return(local_var_response)
+      }
+    },
+
+    #' @description
+    #' List supported UI locales with English and native display names
+    #'
+    #' @param data_file (optional) name of the data file to save the result
+    #' @param ... Other optional arguments
+    #' @param .parse Logical. If \code{TRUE} then the response will be parsed to a generated type. If \code{FALSE} the response will be returned as unparsed text.
+    #'
+    #' @return API response (map(GetAccountLocales200ResponseValue)) with additional information such as HTTP status code, headers
+    GetAccountLocalesWithHttpInfo = function(data_file = NULL, ..., .parse = TRUE) {
+      args <- list(...)
+      query_params <- list()
+      header_params <- c()
+      form_params <- list()
+      file_params <- list()
+      local_var_body <- NULL
+      oauth_scopes <- NULL
+      is_oauth <- FALSE
+
+      local_var_url_path <- "/account/locales"
+      # API key authentication
+      # API key authentication
+      if ("X-API-KEY" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["X-API-KEY"]) > 0) {
+        header_params["X-API-KEY"] <- paste(unlist(self$api_client$api_keys["X-API-KEY"]), collapse = "")
+      }
+      # API key authentication
+      if ("sessionid" %in% names(self$api_client$api_keys) && nchar(self$api_client$api_keys["sessionid"]) > 0) {
+        header_params["sessionid"] <- paste(unlist(self$api_client$api_keys["sessionid"]), collapse = "")
+      }
+
+      # The Accept request HTTP header
+      local_var_accepts <- list("application/json")
+
+      # The Content-Type representation header
+      local_var_content_types <- list()
+
+      local_var_resp <- self$api_client$CallApi(url = paste0(self$api_client$base_path, local_var_url_path),
+                                 method = "GET",
+                                 query_params = query_params,
+                                 header_params = header_params,
+                                 form_params = form_params,
+                                 file_params = file_params,
+                                 accepts = local_var_accepts,
+                                 content_types = local_var_content_types,
+                                 body = local_var_body,
+                                 is_oauth = is_oauth,
+                                 oauth_scopes = oauth_scopes,
+                                 ...)
+
+      if (local_var_resp$status_code >= 200 && local_var_resp$status_code <= 299) {
+        # save response in a file
+        if (!is.null(data_file)) {
+          self$api_client$WriteFile(local_var_resp, data_file)
+        }
+        if (!.parse) {
+          local_var_resp$content <- local_var_resp$response_as_text()
+          return(local_var_resp)
+        }
+
+        deserialized_resp_obj <- tryCatch(
+          self$api_client$DeserializeResponse(local_var_resp, "map(GetAccountLocales200ResponseValue)"),
+          error = function(e) {
+            stop("Failed to deserialize response")
+          }
+        )
+        local_var_resp$content <- deserialized_resp_obj
+        return(local_var_resp)
+      } 
+      
+      local_var_error_msg <- local_var_resp$response_as_text()      
+      if (local_var_resp$status_code >= 300 && local_var_resp$status_code <= 399) {
+        ApiResponse$new(content = paste("Server returned ", local_var_resp$status_code, " response status code."),
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 400 && local_var_resp$status_code <= 499) {
+        ApiResponse$new(content = "API client error",
+                        response = local_var_resp,
+                        status_code = local_var_resp$status_code)
+      } else if (local_var_resp$status_code >= 500 && local_var_resp$status_code <= 599) {
+        if (is.null(local_var_resp$response) || all(local_var_resp$response == "")) {
+          local_var_resp$response <- "API server error"
+        }
+        return(local_var_resp)
+      }
+    },
+
+    #' @description
+    #' Fetch a base64 JPEG captcha challenge for human verification
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -329,7 +585,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Captcha Challenge
+    #' Fetch a base64 JPEG captcha challenge for human verification
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -414,7 +670,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Countries
+    #' List enabled countries keyed by ISO-2/ISO-3/numeric code
     #'
     #' @param fetch_by (optional) Get countries by iso2 or iso3 or numcode
     #' @param data_file (optional) name of the data file to save the result
@@ -436,7 +692,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Countries
+    #' List enabled countries keyed by ISO-2/ISO-3/numeric code
     #'
     #' @param fetch_by (optional) Get countries by iso2 or iso3 or numcode
     #' @param data_file (optional) name of the data file to save the result
@@ -531,7 +787,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Server Info
+    #' Discover available modules, service packages, categories, and types
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -552,7 +808,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Server Info
+    #' Discover available modules, service packages, categories, and types
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -637,7 +893,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Login Info
+    #' Fetch logo, captcha, language, and stats for rendering a login page
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -658,7 +914,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Login Info
+    #' Fetch logo, captcha, language, and stats for rendering a login page
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -743,7 +999,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Marketplace Servers
+    #' List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -764,7 +1020,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' List Marketplace Servers
+    #' List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -849,7 +1105,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get OAuth Redirect URL
+    #' Begin OAuth login flow — redirect user to provider for authentication
     #'
     #' @param provider The OAuth provider name (e.g. `Google`).
     #' @param data_file (optional) name of the data file to save the result
@@ -871,7 +1127,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get OAuth Redirect URL
+    #' Begin OAuth login flow — redirect user to provider for authentication
     #'
     #' @param provider The OAuth provider name (e.g. `Google`).
     #' @param data_file (optional) name of the data file to save the result
@@ -967,7 +1223,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Available Timezones
+    #' List all PHP timezone identifiers usable on accounts and services
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -988,7 +1244,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Get Available Timezones
+    #' List all PHP timezone identifiers usable on accounts and services
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1073,7 +1329,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Complete OAuth Two-Factor Verification
+    #' Submit 2FA code to finish OAuth login when account has 2FA enabled
     #'
     #' @param patch_oauth_two_factor_request 
     #' @param data_file (optional) name of the data file to save the result
@@ -1095,7 +1351,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Complete OAuth Two-Factor Verification
+    #' Submit 2FA code to finish OAuth login when account has 2FA enabled
     #'
     #' @param patch_oauth_two_factor_request 
     #' @param data_file (optional) name of the data file to save the result
@@ -1195,7 +1451,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Ping Server
+    #' Liveness check — returns the JSON string \"pong\" to confirm API is up
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1216,7 +1472,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Ping Server
+    #' Liveness check — returns the JSON string \"pong\" to confirm API is up
     #'
     #' @param data_file (optional) name of the data file to save the result
     #' @param ... Other optional arguments
@@ -1301,7 +1557,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' OAuth Callback
+    #' Complete OAuth login by linking provider to existing or new account
     #'
     #' @param provider The OAuth provider name (e.g. `Google`).
     #' @param post_oauth_callback_request (optional) No description
@@ -1324,7 +1580,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' OAuth Callback
+    #' Complete OAuth login by linking provider to existing or new account
     #'
     #' @param provider The OAuth provider name (e.g. `Google`).
     #' @param post_oauth_callback_request (optional) No description
@@ -1431,7 +1687,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Submit Login Information
+    #' Authenticate with email + password and return a session token
     #'
     #' @param login 
     #' @param passwd 
@@ -1457,7 +1713,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Submit Login Information
+    #' Authenticate with email + password and return a session token
     #'
     #' @param login 
     #' @param passwd 
@@ -1580,7 +1836,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Submit Signup Information
+    #' Create a new customer account (email + password + captcha + ToS)
     #'
     #' @param login_submission_example (optional) No description
     #' @param ... Other optional arguments
@@ -1600,7 +1856,7 @@ PublicApi <- R6::R6Class(
     },
 
     #' @description
-    #' Submit Signup Information
+    #' Create a new customer account (email + password + captcha + ToS)
     #'
     #' @param login_submission_example (optional) No description
     #' @param ... Other optional arguments

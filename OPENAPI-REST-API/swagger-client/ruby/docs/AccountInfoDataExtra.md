@@ -1,4 +1,4 @@
-# SwaggerClient::AccountInfoDataExtra
+# InterserverApiClient::AccountInfoDataExtra
 
 ## Properties
 Name | Type | Description | Notes

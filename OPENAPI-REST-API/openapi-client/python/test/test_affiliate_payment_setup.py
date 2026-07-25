@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.affiliate_payment_setup import AffiliatePaymentSetup
+from interserver_api_client.models.affiliate_payment_setup import AffiliatePaymentSetup
 
 class TestAffiliatePaymentSetup(unittest.TestCase):
     """AffiliatePaymentSetup unit test stubs"""

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.quickserver_billing_details import QuickserverBillingDetails
+from interserver_api_client.models.quickserver_billing_details import QuickserverBillingDetails
 
 # TODO update the JSON string below
 json = "{}"

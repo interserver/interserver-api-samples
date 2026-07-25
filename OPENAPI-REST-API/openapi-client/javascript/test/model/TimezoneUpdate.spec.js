@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.TimezoneUpdate();
+    instance = new InterserverApiClient.TimezoneUpdate();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('TimezoneUpdate', function() {
     it('should create an instance of TimezoneUpdate', function() {
       // uncomment below and update the code to test TimezoneUpdate
-      //var instance = new InterServerManagementApi.TimezoneUpdate();
-      //expect(instance).to.be.a(InterServerManagementApi.TimezoneUpdate);
+      //var instance = new InterserverApiClient.TimezoneUpdate();
+      //expect(instance).to.be.a(InterserverApiClient.TimezoneUpdate);
     });
 
     it('should have the property timezone (base name: "timezone")', function() {
       // uncomment below and update the code to test the property timezone
-      //var instance = new InterServerManagementApi.TimezoneUpdate();
+      //var instance = new InterserverApiClient.TimezoneUpdate();
       //expect(instance).to.be();
     });
 

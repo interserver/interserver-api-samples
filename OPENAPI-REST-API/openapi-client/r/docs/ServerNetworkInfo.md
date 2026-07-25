@@ -1,4 +1,4 @@
-# openapi::ServerNetworkInfo
+# interserverapi::ServerNetworkInfo
 
 
 ## Properties

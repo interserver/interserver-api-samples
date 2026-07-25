@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsOrderPackageCosts model module.
  * @module model/VpsOrderPackageCosts
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderPackageCosts {
     /**

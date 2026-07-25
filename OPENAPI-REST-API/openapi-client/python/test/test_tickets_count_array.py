@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.tickets_count_array import TicketsCountArray
+from interserver_api_client.models.tickets_count_array import TicketsCountArray
 
 class TestTicketsCountArray(unittest.TestCase):
     """TicketsCountArray unit test stubs"""

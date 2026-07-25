@@ -18,4 +18,3 @@ case class PostWebsiteMigration200Response(
   /* The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress. */
   ticket: Option[Int] = None
 )
-

@@ -12,4 +12,8 @@ A single tutorial entry with a label and URL.
 |**value** | **String** | The value of the tutorials table row. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

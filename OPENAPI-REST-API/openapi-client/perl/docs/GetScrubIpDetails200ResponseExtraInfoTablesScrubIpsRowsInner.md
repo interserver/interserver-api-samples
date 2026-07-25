@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner
+# InterServerAPI::Object::GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner;
+use InterServerAPI::Object::GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner;
 ```
 
 ## Properties

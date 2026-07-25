@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServiceTypes();
+    instance = new InterserverApiClient.ServiceTypes();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('ServiceTypes', function() {
     it('should create an instance of ServiceTypes', function() {
       // uncomment below and update the code to test ServiceTypes
-      //var instance = new InterServerManagementApi.ServiceTypes();
-      //expect(instance).to.be.a(InterServerManagementApi.ServiceTypes);
+      //var instance = new InterserverApiClient.ServiceTypes();
+      //expect(instance).to.be.a(InterserverApiClient.ServiceTypes);
     });
 
   });

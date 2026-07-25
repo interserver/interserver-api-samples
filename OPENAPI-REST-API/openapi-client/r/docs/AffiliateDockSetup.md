@@ -1,4 +1,4 @@
-# openapi::AffiliateDockSetup
+# interserverapi::AffiliateDockSetup
 
 Affiliate Landing Page information.
 

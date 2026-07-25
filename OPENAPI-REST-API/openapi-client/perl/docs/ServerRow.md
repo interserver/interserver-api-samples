@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerRow
+# InterServerAPI::Object::ServerRow
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerRow;
+use InterServerAPI::Object::ServerRow;
 ```
 
 ## Properties

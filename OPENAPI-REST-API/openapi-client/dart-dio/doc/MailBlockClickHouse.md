@@ -1,14 +1,14 @@
-# openapi.model.MailBlockClickHouse
+# interserver_api.model.MailBlockClickHouse
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**date** | [**Date**](Date.md) |  | 
+**date** | [**OffsetDate**](OffsetDate.md) |  | 
 **from** | **String** |  | 
 **messageId** | **String** |  | 
 **subject** | **String** |  | 

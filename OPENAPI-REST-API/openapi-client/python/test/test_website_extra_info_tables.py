@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.website_extra_info_tables import WebsiteExtraInfoTables
+from interserver_api_client.models.website_extra_info_tables import WebsiteExtraInfoTables
 
 class TestWebsiteExtraInfoTables(unittest.TestCase):
     """WebsiteExtraInfoTables unit test stubs"""
@@ -36,24 +36,24 @@ class TestWebsiteExtraInfoTables(unittest.TestCase):
         model = WebsiteExtraInfoTables()
         if include_optional:
             return WebsiteExtraInfoTables(
-                links = openapi_client.models.website_table.WebsiteTable(
+                links = interserver_api_client.models.website_table.WebsiteTable(
                     title = '', 
                     rows = [
-                        openapi_client.models.website_table_row.WebsiteTableRow(
+                        interserver_api_client.models.website_table_row.WebsiteTableRow(
                             desc = '', 
                             value = '', )
                         ], ),
-                preview = openapi_client.models.website_table.WebsiteTable(
+                preview = interserver_api_client.models.website_table.WebsiteTable(
                     title = '', 
                     rows = [
-                        openapi_client.models.website_table_row.WebsiteTableRow(
+                        interserver_api_client.models.website_table_row.WebsiteTableRow(
                             desc = '', 
                             value = '', )
                         ], ),
-                dns = openapi_client.models.website_table.WebsiteTable(
+                dns = interserver_api_client.models.website_table.WebsiteTable(
                     title = '', 
                     rows = [
-                        openapi_client.models.website_table_row.WebsiteTableRow(
+                        interserver_api_client.models.website_table_row.WebsiteTableRow(
                             desc = '', 
                             value = '', )
                         ], )

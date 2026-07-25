@@ -17,7 +17,7 @@ import DomainAllInfoAttributes from './DomainAllInfoAttributes';
 /**
  * The DomainAllInfo model module.
  * @module model/DomainAllInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainAllInfo {
     /**

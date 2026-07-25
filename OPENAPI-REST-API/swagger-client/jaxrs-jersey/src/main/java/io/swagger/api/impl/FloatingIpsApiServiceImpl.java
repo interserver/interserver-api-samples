@@ -4,7 +4,8 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 
 import io.swagger.model.ChargeInvoiceRows;
-import io.swagger.model.InlineResponse2003;
+import io.swagger.model.FloatingIpOrderRequest;
+import io.swagger.model.InlineResponse2004;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.IpObject;
 import io.swagger.model.ServiceOrderPostResponse;
@@ -24,7 +25,7 @@ import javax.validation.constraints.*;
 
 public class FloatingIpsApiServiceImpl extends FloatingIpsApiService {
     @Override
-    public Response addFloatingIp(SecurityContext securityContext) throws NotFoundException {
+    public Response addFloatingIp(FloatingIpOrderRequest body, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -69,7 +70,7 @@ public class FloatingIpsApiServiceImpl extends FloatingIpsApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
-    public Response putFloatingIps(SecurityContext securityContext) throws NotFoundException {
+    public Response putFloatingIps(FloatingIpOrderRequest body, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }

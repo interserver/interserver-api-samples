@@ -1,4 +1,4 @@
-# SwaggerClient::QuickserverIpTableRow
+# InterserverApiClient::QuickserverIpTableRow
 
 ## Properties
 Name | Type | Description | Notes

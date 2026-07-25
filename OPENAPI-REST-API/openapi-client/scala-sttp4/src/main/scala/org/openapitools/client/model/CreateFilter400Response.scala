@@ -17,4 +17,3 @@ case class CreateFilter400Response(
   text: Option[String] = None,
   errors: Option[Seq[String]] = None
 )
-

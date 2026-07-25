@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailClientLink model module.
  * @module model/MailClientLink
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailClientLink {
     /**

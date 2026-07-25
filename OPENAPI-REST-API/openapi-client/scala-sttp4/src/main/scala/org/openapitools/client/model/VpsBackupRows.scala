@@ -18,5 +18,4 @@ import scala.collection.mutable.ListBuffer
    * The listing of the backups for your service.
    */
 case class VpsBackupRows(
-)
-
+) extends ListBuffer[VpsBackupRow]

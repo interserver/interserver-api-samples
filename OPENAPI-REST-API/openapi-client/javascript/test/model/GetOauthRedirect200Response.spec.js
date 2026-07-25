@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetOauthRedirect200Response();
+    instance = new InterserverApiClient.GetOauthRedirect200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('GetOauthRedirect200Response', function() {
     it('should create an instance of GetOauthRedirect200Response', function() {
       // uncomment below and update the code to test GetOauthRedirect200Response
-      //var instance = new InterServerManagementApi.GetOauthRedirect200Response();
-      //expect(instance).to.be.a(InterServerManagementApi.GetOauthRedirect200Response);
+      //var instance = new InterserverApiClient.GetOauthRedirect200Response();
+      //expect(instance).to.be.a(InterserverApiClient.GetOauthRedirect200Response);
     });
 
     it('should have the property redirect_url (base name: "redirect_url")', function() {
       // uncomment below and update the code to test the property redirect_url
-      //var instance = new InterServerManagementApi.GetOauthRedirect200Response();
+      //var instance = new InterserverApiClient.GetOauthRedirect200Response();
       //expect(instance).to.be();
     });
 

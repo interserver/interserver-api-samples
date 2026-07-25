@@ -12,4 +12,8 @@ Details of the placed order.
 |**invoiceId** | **BigDecimal** | The invoice ID generated for the order. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AffiliatePaymentSetup = Initialize-PSOpenAPIToolsAffiliatePaymentSetup  -AffiliatePaypal null `
+$AffiliatePaymentSetup = Initialize-InterserverApiAffiliatePaymentSetup  -AffiliatePaypal null `
  -AffiliatePaymentMethod null
 ```
 

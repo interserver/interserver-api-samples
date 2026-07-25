@@ -109,4 +109,3 @@ case class ServerAsset(
   /* Comment associated with the asset. */
   comment: Option[String] = None
 )
-

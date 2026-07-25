@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ReplyTicketRequest
+# InterServerAPI::Object::ReplyTicketRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ReplyTicketRequest;
+use InterServerAPI::Object::ReplyTicketRequest;
 ```
 
 ## Properties

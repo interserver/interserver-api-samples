@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.TicketsCountArray();
+    instance = new InterserverApiClient.TicketsCountArray();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('TicketsCountArray', function() {
     it('should create an instance of TicketsCountArray', function() {
       // uncomment below and update the code to test TicketsCountArray
-      //var instance = new InterServerManagementApi.TicketsCountArray();
-      //expect(instance).to.be.a(InterServerManagementApi.TicketsCountArray);
+      //var instance = new InterserverApiClient.TicketsCountArray();
+      //expect(instance).to.be.a(InterserverApiClient.TicketsCountArray);
     });
 
     it('should have the property Open (base name: "Open")', function() {
       // uncomment below and update the code to test the property Open
-      //var instance = new InterServerManagementApi.TicketsCountArray();
+      //var instance = new InterserverApiClient.TicketsCountArray();
       //expect(instance).to.be();
     });
 
     it('should have the property On_Hold (base name: "On Hold")', function() {
       // uncomment below and update the code to test the property On_Hold
-      //var instance = new InterServerManagementApi.TicketsCountArray();
+      //var instance = new InterserverApiClient.TicketsCountArray();
       //expect(instance).to.be();
     });
 
     it('should have the property Closed (base name: "Closed")', function() {
       // uncomment below and update the code to test the property Closed
-      //var instance = new InterServerManagementApi.TicketsCountArray();
+      //var instance = new InterserverApiClient.TicketsCountArray();
       //expect(instance).to.be();
     });
 

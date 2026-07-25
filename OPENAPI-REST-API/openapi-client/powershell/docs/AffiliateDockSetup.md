@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AffiliateDockSetup = Initialize-PSOpenAPIToolsAffiliateDockSetup  -AffiliateDockTitle null `
+$AffiliateDockSetup = Initialize-InterserverApiAffiliateDockSetup  -AffiliateDockTitle null `
  -AffiliateDockDescription null `
  -ReferrerCoupon null
 ```

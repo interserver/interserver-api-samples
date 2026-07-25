@@ -29,6 +29,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <summary>
         /// Gets or Sets Success
         /// </summary>
+        [Required]
 
         [DataMember(Name="success")]
         public bool? Success { get; set; }
@@ -36,6 +37,7 @@ namespace myadmin-client-aspnetcore.Models
         /// <summary>
         /// Gets or Sets Text
         /// </summary>
+        [Required]
 
         [DataMember(Name="text")]
         public string Text { get; set; }

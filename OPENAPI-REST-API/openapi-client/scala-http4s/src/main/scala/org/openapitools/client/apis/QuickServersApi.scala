@@ -19,6 +19,7 @@ import org.openapitools.client.models.DownloadQsBackup200Response
 import org.openapitools.client.models.DownloadQsBackupRequest
 import org.openapitools.client.models.GetAccountInfo401Response
 import org.openapitools.client.models.GetQsBackupsAllParameter
+import org.openapitools.client.models.QsOrderRequest
 import org.openapitools.client.models.QueueResponse
 import org.openapitools.client.models.Quickserver
 import org.openapitools.client.models.QuickserverOrder
@@ -36,7 +37,7 @@ import org.openapitools.client.models.*
 
 trait QuickServersApiEndpoints[F[*]] {
 
-  def addQs()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
+  def addQs(qsOrderRequest: QsOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse]
   def deleteQsBackup(id: Int, file: String, all: Option[GetQsBackupsAllParameter] = None)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def doQsBlockSmtp(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def doQsDisableCd(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
@@ -48,6 +49,7 @@ trait QuickServersApiEndpoints[F[*]] {
   def doQsStop(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def downloadQsBackup(id: Int, downloadQsBackupRequest: DownloadQsBackupRequest, all: Option[GetQsBackupsAllParameter] = None)(using auth: _Authorization.ApiKey): F[DownloadQsBackup200Response]
   def getNewQs()(using auth: _Authorization.ApiKey): F[QuickserverOrder]
+  def getQsBackup(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def getQsBackups(id: Int, all: Option[GetQsBackupsAllParameter] = None)(using auth: _Authorization.ApiKey): F[VpsBackupRows]
   def getQsChangeHostname(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def getQsChangeRootPassword(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
@@ -64,7 +66,6 @@ trait QuickServersApiEndpoints[F[*]] {
   def getQsTrafficUsage(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def getQsViewDesktop(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def getQsWelcomeEmail(id: String)(using auth: _Authorization.ApiKey): F[TextResponse]
-  def postQsBackup(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def postQsChangeHostname(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def postQsChangeRootPassword(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse]
   def postQsChangeTimezone(id: Int, timezone: String)(using auth: _Authorization.ApiKey): F[QueueResponse]
@@ -77,7 +78,7 @@ trait QuickServersApiEndpoints[F[*]] {
   def postQsTrafficUsage(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def postQsViewDesktop(id: Int)(using auth: _Authorization.ApiKey): F[Unit]
   def postQuickServerRestore(id: Int, restoreRequest: RestoreRequest)(using auth: _Authorization.ApiKey): F[QueueResponse]
-  def putQs()(using auth: _Authorization.ApiKey): F[Unit]
+  def putQs(qsOrderRequest: QsOrderRequest)(using auth: _Authorization.ApiKey): F[Unit]
   def quickserversCancel(id: Int)(using auth: _Authorization.ApiKey): F[QuickserversCancel200Response]
   def updateQsInfo(id: String)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
 
@@ -93,15 +94,15 @@ class QuickServersApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addQs()(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
+  override def addQs(qsOrderRequest: QsOrderRequest)(using auth: _Authorization.ApiKey): F[ServiceOrderPostResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, ServiceOrderPostResponse](
+    _executeRequest[QsOrderRequest, ServiceOrderPostResponse](
       method = "POST",
       path = s"/qs/order",
-      body = None,
+      body = Some(qsOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -324,6 +325,25 @@ class QuickServersApiEndpointsImpl[F[*]: Concurrent](
       auth = Some(auth)) {
         
         case r if r.status.code == 200 => parseJson[F, QuickserverOrder]("QuickserverOrder", r)
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
+  override def getQsBackup(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, QueueResponse](
+      method = "GET",
+      path = s"/qs/${id}/backup",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => parseJson[F, QueueResponse]("QueueResponse", r)
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }
@@ -635,25 +655,6 @@ class QuickServersApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def postQsBackup(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse] = {
-    val requestHeaders = Seq(
-      Some("Content-Type" -> "application/json")
-    ).flatten
-
-    _executeRequest[Unit, QueueResponse](
-      method = "POST",
-      path = s"/qs/${id}/backup",
-      body = None,
-      formParameters = None,
-      queryParameters = Nil,
-      requestHeaders = requestHeaders,
-      auth = Some(auth)) {
-        
-        case r if r.status.code == 200 => parseJson[F, QueueResponse]("QueueResponse", r)
-        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
-    }
-  }
-
   override def postQsChangeHostname(id: Int)(using auth: _Authorization.ApiKey): F[QueueResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
@@ -886,15 +887,15 @@ class QuickServersApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def putQs()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def putQs(qsOrderRequest: QsOrderRequest)(using auth: _Authorization.ApiKey): F[Unit] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, Unit](
+    _executeRequest[QsOrderRequest, Unit](
       method = "PUT",
       path = s"/qs/order",
-      body = None,
+      body = Some(qsOrderRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,

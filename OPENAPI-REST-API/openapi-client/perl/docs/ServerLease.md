@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerLease
+# InterServerAPI::Object::ServerLease
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerLease;
+use InterServerAPI::Object::ServerLease;
 ```
 
 ## Properties

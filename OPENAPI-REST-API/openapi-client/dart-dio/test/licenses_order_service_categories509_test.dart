@@ -1,32 +1,32 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for LicensesOrderServiceCategories509
 void main() {
-  final instance = LicensesOrderServiceCategories509Builder();
-  // TODO add properties to the builder and call build()
+  final LicensesOrderServiceCategories509? instance = /* LicensesOrderServiceCategories509(...) */ null;
+  // TODO add properties to the entity
 
   group(LicensesOrderServiceCategories509, () {
     // Category ID
-    // String categoryId
+    // Optional<String?> categoryId
     test('to test the property `categoryId`', () async {
       // TODO
     });
 
     // Category Name
-    // String categoryName
+    // Optional<String?> categoryName
     test('to test the property `categoryName`', () async {
       // TODO
     });
 
     // Category Tag
-    // String categoryTag
+    // Optional<String?> categoryTag
     test('to test the property `categoryTag`', () async {
       // TODO
     });
 
     // Category Module
-    // String categoryModule
+    // Optional<String?> categoryModule
     test('to test the property `categoryModule`', () async {
       // TODO
     });

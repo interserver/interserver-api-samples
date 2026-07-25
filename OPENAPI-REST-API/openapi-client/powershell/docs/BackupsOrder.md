@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupsOrder = Initialize-PSOpenAPIToolsBackupsOrder  -PackageCosts null `
+$BackupsOrder = Initialize-InterserverApiBackupsOrder  -PackageCosts null `
  -ServiceTypes null
 ```
 

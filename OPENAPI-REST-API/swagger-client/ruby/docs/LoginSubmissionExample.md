@@ -1,4 +1,4 @@
-# SwaggerClient::LoginSubmissionExample
+# InterserverApiClient::LoginSubmissionExample
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::PatchOauthTwoFactorRequest
+# InterServerAPI::Object::PatchOauthTwoFactorRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::PatchOauthTwoFactorRequest;
+use InterServerAPI::Object::PatchOauthTwoFactorRequest;
 ```
 
 ## Properties

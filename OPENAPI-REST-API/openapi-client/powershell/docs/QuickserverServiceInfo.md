@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverServiceInfo = Initialize-PSOpenAPIToolsQuickserverServiceInfo  -QsId 24355 `
+$QuickserverServiceInfo = Initialize-InterserverApiQuickserverServiceInfo  -QsId 24355 `
  -QsCustid 771282 `
  -QsServer 365 `
  -QsIp  `

@@ -1,50 +1,50 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerOrderFieldLabels
 void main() {
-  final instance = ServerOrderFieldLabelsBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerOrderFieldLabels? instance = /* ServerOrderFieldLabels(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerOrderFieldLabels, () {
     // Bandwidth field label.
-    // ServerOrderFieldLabel bandwidth
+    // Optional<ServerOrderFieldLabel?> bandwidth
     test('to test the property `bandwidth`', () async {
       // TODO
     });
 
     // IPs field label.
-    // ServerOrderFieldLabel ips
+    // Optional<ServerOrderFieldLabel?> ips
     test('to test the property `ips`', () async {
       // TODO
     });
 
     // Operating System field label.
-    // ServerOrderFieldLabel os
+    // Optional<ServerOrderFieldLabel?> os
     test('to test the property `os`', () async {
       // TODO
     });
 
     // Control Panel field label.
-    // ServerOrderFieldLabel cp
+    // Optional<ServerOrderFieldLabel?> cp
     test('to test the property `cp`', () async {
       // TODO
     });
 
     // RAID field label.
-    // ServerOrderFieldLabel raid
+    // Optional<ServerOrderFieldLabel?> raid
     test('to test the property `raid`', () async {
       // TODO
     });
 
     // Memory field label.
-    // ServerOrderFieldLabel memory
+    // Optional<ServerOrderFieldLabel?> memory
     test('to test the property `memory`', () async {
       // TODO
     });
 
     // Hard Drives field label
-    // ServerOrderFieldLabel hd
+    // Optional<ServerOrderFieldLabel?> hd
     test('to test the property `hd`', () async {
       // TODO
     });

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainRow } from './api';
+import { DomainRow } from '@interserver/myadmin-client';
 
 const instance: DomainRow = {
     domain_id,

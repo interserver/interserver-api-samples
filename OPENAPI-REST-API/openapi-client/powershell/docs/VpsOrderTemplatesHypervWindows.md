@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderTemplatesHypervWindows = Initialize-PSOpenAPIToolsVpsOrderTemplatesHypervWindows  -Windows2019Standard 2019 Standard `
+$VpsOrderTemplatesHypervWindows = Initialize-InterserverApiVpsOrderTemplatesHypervWindows  -Windows2019Standard 2019 Standard `
  -Windows2022 2022
 ```
 

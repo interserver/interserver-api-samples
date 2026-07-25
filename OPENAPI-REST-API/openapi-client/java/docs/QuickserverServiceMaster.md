@@ -43,4 +43,8 @@ Information about the host node running this QuickServer, including hardware spe
 |**qsCpuFlags** | **String** | CPU flags |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The QuickserverOrderDistroSelUbuntu model module.
  * @module model/QuickserverOrderDistroSelUbuntu
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverOrderDistroSelUbuntu {
     /**

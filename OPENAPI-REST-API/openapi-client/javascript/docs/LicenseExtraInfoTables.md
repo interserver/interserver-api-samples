@@ -1,4 +1,4 @@
-# InterServerManagementApi.LicenseExtraInfoTables
+# InterserverApiClient.LicenseExtraInfoTables
 
 ## Properties
 

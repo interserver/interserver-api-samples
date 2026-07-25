@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainDnssecRecords();
+    instance = new InterserverApiClient.DomainDnssecRecords();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('DomainDnssecRecords', function() {
     it('should create an instance of DomainDnssecRecords', function() {
       // uncomment below and update the code to test DomainDnssecRecords
-      //var instance = new InterServerManagementApi.DomainDnssecRecords();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainDnssecRecords);
+      //var instance = new InterserverApiClient.DomainDnssecRecords();
+      //expect(instance).to.be.a(InterserverApiClient.DomainDnssecRecords);
     });
 
   });

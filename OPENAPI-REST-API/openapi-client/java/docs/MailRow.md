@@ -15,4 +15,8 @@ A result row from the `Mail` `GET` request.
 |**servicesName** | **String** | The services name of the mail. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

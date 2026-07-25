@@ -1,14 +1,14 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for HomeServicesServersLinks
 void main() {
-  final instance = HomeServicesServersLinksBuilder();
-  // TODO add properties to the builder and call build()
+  final HomeServicesServersLinks? instance = /* HomeServicesServersLinks(...) */ null;
+  // TODO add properties to the entity
 
   group(HomeServicesServersLinks, () {
     // Link to a server.
-    // String n16058
+    // Optional<String?> n16058
     test('to test the property `n16058`', () async {
       // TODO
     });

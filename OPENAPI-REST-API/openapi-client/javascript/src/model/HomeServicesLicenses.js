@@ -17,7 +17,7 @@ import HomeServicesLicensesLinks from './HomeServicesLicensesLinks';
 /**
  * The HomeServicesLicenses model module.
  * @module model/HomeServicesLicenses
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeServicesLicenses {
     /**

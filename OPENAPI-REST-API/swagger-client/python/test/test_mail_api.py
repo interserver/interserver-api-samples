@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.mail_api import MailApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.mail_api import MailApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestMailApi(unittest.TestCase):
@@ -31,182 +31,189 @@ class TestMailApi(unittest.TestCase):
     def test_add_mail(self):
         """Test case for add_mail
 
-        Place Mail Order  # noqa: E501
+        Place a new Mail Baby order, generate invoice, and queue provisioning  # noqa: E501
         """
         pass
 
     def test_add_rule(self):
         """Test case for add_rule
 
-        Create Deny Rule  # noqa: E501
+        Create a new deny rule to auto-block matching submissions  # noqa: E501
         """
         pass
 
     def test_create_mail_alert(self):
         """Test case for create_mail_alert
 
-        Create Mail Alert  # noqa: E501
+        Create a new Mail Baby alert for delivery, bounce, or quota events  # noqa: E501
         """
         pass
 
     def test_delete_mail_alert(self):
         """Test case for delete_mail_alert
 
-        Delete Mail Alert  # noqa: E501
+        Delete a Mail Baby alert by alert_id (hard delete — no recovery)  # noqa: E501
         """
         pass
 
     def test_delete_rule(self):
         """Test case for delete_rule
 
-        Delete Deny Rule  # noqa: E501
+        Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)  # noqa: E501
         """
         pass
 
     def test_delist_block(self):
         """Test case for delist_block
 
-        Remove Email Address from Block List  # noqa: E501
+        Delist a sender email from rspamd / mailchannels / mailbaby block lists  # noqa: E501
         """
         pass
 
     def test_get_mail_alerts(self):
         """Test case for get_mail_alerts
 
-        List Mail Alerts  # noqa: E501
+        List configured delivery/bounce/quota alerts for one Mail Baby service  # noqa: E501
         """
         pass
 
     def test_get_mail_blocks(self):
         """Test case for get_mail_blocks
 
-        List Blocked Email Addresses  # noqa: E501
+        List recent local-blocklist hits and spam-trap captures for the mail user  # noqa: E501
         """
         pass
 
     def test_get_mail_delist(self):
         """Test case for get_mail_delist
 
-        Get Delist Status  # noqa: E501
+        Read blocklist diagnostics and find senders eligible for delisting  # noqa: E501
         """
         pass
 
     def test_get_mail_deliverability(self):
         """Test case for get_mail_deliverability
 
-        Get Deliverability Metrics  # noqa: E501
+        Read delivered vs bounced totals broken down by sender (or by recipient domain)  # noqa: E501
         """
         pass
 
     def test_get_mail_info(self):
         """Test case for get_mail_info
 
-        Get Mail Order  # noqa: E501
+        Read full detail for one Mail Baby service including SMTP credentials  # noqa: E501
         """
         pass
 
     def test_get_mail_invoices(self):
         """Test case for get_mail_invoices
 
-        Get Mail Invoices  # noqa: E501
+        List billing invoices linked to this Mail Baby service  # noqa: E501
         """
         pass
 
     def test_get_mail_list(self):
         """Test case for get_mail_list
 
-        List Mail Orders  # noqa: E501
+        List every Mail Baby SMTP relay service on the account  # noqa: E501
         """
         pass
 
     def test_get_mail_welcome_email(self):
         """Test case for get_mail_welcome_email
 
-        Resend Mail Welcome Email  # noqa: E501
+        Resend the Mail Baby welcome email with SMTP credentials and setup info  # noqa: E501
         """
         pass
 
     def test_get_new_mail(self):
         """Test case for get_new_mail
 
-        Get Mail Ordering Information  # noqa: E501
+        Read the Mail Baby order catalog — plans, package costs, service-type metadata  # noqa: E501
         """
         pass
 
     def test_get_rules(self):
         """Test case for get_rules
 
-        List Deny Rules  # noqa: E501
+        List configured deny rules (sender/recipient blocks) for a Mail Baby service  # noqa: E501
         """
         pass
 
     def test_get_stats(self):
         """Test case for get_stats
 
-        Get Mail Usage Statistics  # noqa: E501
+        Read Mail Baby usage counts, send volume totals, top destinations, and projected cost  # noqa: E501
         """
         pass
 
     def test_mail_cancel(self):
         """Test case for mail_cancel
 
-        Cancel Mail  # noqa: E501
+        Cancel a Mail Baby service and stop the recurring invoice  # noqa: E501
         """
         pass
 
     def test_post_mail_delist(self):
         """Test case for post_mail_delist
 
-        Delist a Blocked Sender  # noqa: E501
+        Delist a sender from rspamd / mailchannels / mailbaby block lists  # noqa: E501
         """
         pass
 
     def test_put_mail(self):
         """Test case for put_mail
 
-        Validate Mail Order  # noqa: E501
+        Validate Mail Baby order, quote pricing, and verify coupon — no charge  # noqa: E501
         """
         pass
 
     def test_reset_mail_password(self):
         """Test case for reset_mail_password
 
-        Reset Mail Password  # noqa: E501
+        Rotate the SMTP password and email the new credential to the account owner  # noqa: E501
         """
         pass
 
     def test_send_adv_mail(self):
         """Test case for send_adv_mail
 
-        Send Email with Advanced Options  # noqa: E501
+        Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient  # noqa: E501
         """
         pass
 
     def test_send_mail(self):
         """Test case for send_mail
 
-        Send Email  # noqa: E501
+        Send a simple single-recipient email through the Mail Baby SMTP relay  # noqa: E501
         """
         pass
 
     def test_update_mail_alert(self):
         """Test case for update_mail_alert
 
-        Update Mail Alert  # noqa: E501
+        Update an existing Mail Baby alert by alert_id  # noqa: E501
         """
         pass
 
     def test_update_mail_info(self):
         """Test case for update_mail_info
 
-        Update Mail Order  # noqa: E501
+        POST mutation hook for the Mail Baby service detail page  # noqa: E501
+        """
+        pass
+
+    def test_update_rule(self):
+        """Test case for update_rule
+
+        Update an existing Mail Baby deny rule's type and match data  # noqa: E501
         """
         pass
 
     def test_view_mail_log(self):
         """Test case for view_mail_log
 
-        View Mail Log  # noqa: E501
+        Search and paginate per-message Mail Baby delivery log entries  # noqa: E501
         """
         pass
 

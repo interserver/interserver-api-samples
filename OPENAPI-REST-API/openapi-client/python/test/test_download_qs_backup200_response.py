@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.download_qs_backup200_response import DownloadQsBackup200Response
+from interserver_api_client.models.download_qs_backup200_response import DownloadQsBackup200Response
 
 class TestDownloadQsBackup200Response(unittest.TestCase):
     """DownloadQsBackup200Response unit test stubs"""

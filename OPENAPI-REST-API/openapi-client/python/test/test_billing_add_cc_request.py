@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.billing_add_cc_request import BillingAddCcRequest
+from interserver_api_client.models.billing_add_cc_request import BillingAddCcRequest
 
 class TestBillingAddCcRequest(unittest.TestCase):
     """BillingAddCcRequest unit test stubs"""

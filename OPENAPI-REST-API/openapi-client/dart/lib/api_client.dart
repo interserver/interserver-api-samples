@@ -44,8 +44,9 @@ class ApiClient {
     Object? body,
     Map<String, String> headerParams,
     Map<String, String> formParams,
-    String? contentType,
-  ) async {
+    String? contentType, {
+    Future<void>? abortTrigger,
+  }) async {
     await authentication?.applyToParams(queryParams, headerParams);
 
     headerParams.addAll(_defaultHeaderMap);
@@ -63,7 +64,7 @@ class ApiClient {
         body is MultipartFile && (contentType == null ||
         !contentType.toLowerCase().startsWith('multipart/form-data'))
       ) {
-        final request = StreamedRequest(method, uri);
+        final request = AbortableStreamedRequest(method, uri, abortTrigger: abortTrigger);
         request.headers.addAll(headerParams);
         request.contentLength = body.length;
         body.finalize().listen(
@@ -78,7 +79,7 @@ class ApiClient {
       }
 
       if (body is MultipartRequest) {
-        final request = MultipartRequest(method, uri);
+        final request = AbortableMultipartRequest(method, uri, abortTrigger: abortTrigger);
         request.fields.addAll(body.fields);
         request.files.addAll(body.files);
         request.headers.addAll(body.headers);
@@ -92,14 +93,19 @@ class ApiClient {
         : await serializeAsync(body);
       final nullableHeaderParams = headerParams.isEmpty ? null : headerParams;
 
-      switch(method) {
-        case 'POST': return await _client.post(uri, headers: nullableHeaderParams, body: msgBody,);
-        case 'PUT': return await _client.put(uri, headers: nullableHeaderParams, body: msgBody,);
-        case 'DELETE': return await _client.delete(uri, headers: nullableHeaderParams, body: msgBody,);
-        case 'PATCH': return await _client.patch(uri, headers: nullableHeaderParams, body: msgBody,);
-        case 'HEAD': return await _client.head(uri, headers: nullableHeaderParams,);
-        case 'GET': return await _client.get(uri, headers: nullableHeaderParams,);
+      final request = AbortableRequest(method, uri, abortTrigger: abortTrigger);
+      if (nullableHeaderParams != null) {
+        request.headers.addAll(nullableHeaderParams);
       }
+      if (msgBody is String && msgBody.isNotEmpty) {
+        request.body = msgBody;
+      } else if (msgBody is List<int> && msgBody.isNotEmpty) {
+        request.bodyBytes = msgBody;
+      } else if (msgBody is Map<String, String>) {
+        request.bodyFields = msgBody;
+      }
+      final response = await _client.send(request);
+      return Response.fromStream(response);
     } on SocketException catch (error, trace) {
       throw ApiException.withInner(
         HttpStatus.badRequest,
@@ -136,11 +142,6 @@ class ApiClient {
         trace,
       );
     }
-
-    throw ApiException(
-      HttpStatus.badRequest,
-      'Invalid HTTP operation: $method $path',
-    );
   }
 
   Future<dynamic> deserializeAsync(String value, String targetType, {bool growable = false,}) async =>
@@ -230,10 +231,6 @@ class ApiClient {
           return AffiliatePaymentSetup.fromJson(value);
         case 'AffiliateTrafficRow':
           return AffiliateTrafficRow.fromJson(value);
-        case 'AssetServer':
-          return AssetServer.fromJson(value);
-        case 'AssetServerCPUInner':
-          return AssetServerCPUInner.fromJson(value);
         case 'Backup':
           return Backup.fromJson(value);
         case 'BackupBillingDetails':
@@ -268,8 +265,6 @@ class ApiClient {
           return BackupsOrderPackageCosts.fromJson(value);
         case 'BackupsOrderServiceTypes':
           return BackupsOrderServiceTypes.fromJson(value);
-        case 'Bandwidth':
-          return Bandwidth.fromJson(value);
         case 'BillingAddCcRequest':
           return BillingAddCcRequest.fromJson(value);
         case 'BillingInvoiceDetail':
@@ -320,16 +315,6 @@ class ApiClient {
           return ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.fromJson(value);
         case 'CloseTicketResponseSchema':
           return CloseTicketResponseSchema.fromJson(value);
-        case 'ConfigIds':
-          return ConfigIds.fromJson(value);
-        case 'ConfigLists':
-          return ConfigLists.fromJson(value);
-        case 'ControlPanel':
-          return ControlPanel.fromJson(value);
-        case 'Cpu':
-          return Cpu.fromJson(value);
-        case 'CpuWithDefaults':
-          return CpuWithDefaults.fromJson(value);
         case 'CreateFilter':
           return CreateFilter.fromJson(value);
         case 'CreateFilter201Response':
@@ -360,6 +345,8 @@ class ApiClient {
           return DeleteFirewallRule.fromJson(value);
         case 'DeleteGeoFirewallRule':
           return DeleteGeoFirewallRule.fromJson(value);
+        case 'DeleteMailAlertRequest':
+          return DeleteMailAlertRequest.fromJson(value);
         case 'DenyRuleNew':
           return DenyRuleNew.fromJson(value);
         case 'DenyRuleRecord':
@@ -420,6 +407,8 @@ class ApiClient {
           return DomainNameserverPutRequest.fromJson(value);
         case 'DomainOrder':
           return DomainOrder.fromJson(value);
+        case 'DomainOrderRequest':
+          return DomainOrderRequest.fromJson(value);
         case 'DomainOrderResponse':
           return DomainOrderResponse.fromJson(value);
         case 'DomainOrderResponseAttributes':
@@ -428,8 +417,6 @@ class ApiClient {
           return DomainOrderServices.fromJson(value);
         case 'DomainOrderServices10001':
           return DomainOrderServices10001.fromJson(value);
-        case 'DomainOrderTldServices':
-          return DomainOrderTldServices.fromJson(value);
         case 'DomainOwnerContact':
           return DomainOwnerContact.fromJson(value);
         case 'DomainProvProcessPending':
@@ -460,18 +447,20 @@ class ApiClient {
           return EnableScrub200Response.fromJson(value);
         case 'EnableScrub500Response':
           return EnableScrub500Response.fromJson(value);
-        case 'FieldLabel':
-          return FieldLabel.fromJson(value);
+        case 'FloatingIpOrderRequest':
+          return FloatingIpOrderRequest.fromJson(value);
         case 'FloatingIpsCancel200Response':
           return FloatingIpsCancel200Response.fromJson(value);
-        case 'FormValues':
-          return FormValues.fromJson(value);
         case 'GenericResponse':
           return GenericResponse.fromJson(value);
         case 'GetAccountInfo401Response':
           return GetAccountInfo401Response.fromJson(value);
+        case 'GetAccountLocales200ResponseValue':
+          return GetAccountLocales200ResponseValue.fromJson(value);
         case 'GetAccountTfaSetup200Response':
           return GetAccountTfaSetup200Response.fromJson(value);
+        case 'GetAffiliateSignups200Response':
+          return GetAffiliateSignups200Response.fromJson(value);
         case 'GetOauthRedirect200Response':
           return GetOauthRedirect200Response.fromJson(value);
         case 'GetOrderDetail200Response':
@@ -504,8 +493,6 @@ class ApiClient {
           return GetScrubIpDetails200ResponseServiceInfo.fromJson(value);
         case 'GetWebsiteBuyIp200Response':
           return GetWebsiteBuyIp200Response.fromJson(value);
-        case 'HardDrive':
-          return HardDrive.fromJson(value);
         case 'Home':
           return Home.fromJson(value);
         case 'HomeDetails':
@@ -558,14 +545,6 @@ class ApiClient {
           return HostnameObject.fromJson(value);
         case 'InitiatePayment200Response':
           return InitiatePayment200Response.fromJson(value);
-        case 'InlineObject':
-          return InlineObject.fromJson(value);
-        case 'Invoice':
-          return Invoice.fromJson(value);
-        case 'InvoiceRow':
-          return InvoiceRow.fromJson(value);
-        case 'IpBlock':
-          return IpBlock.fromJson(value);
         case 'IpLimitRange':
           return IpLimitRange.fromJson(value);
         case 'IpObject':
@@ -582,6 +561,8 @@ class ApiClient {
           return LicenseIpInfo.fromJson(value);
         case 'LicenseIpInfoRow':
           return LicenseIpInfoRow.fromJson(value);
+        case 'LicenseOrderRequest':
+          return LicenseOrderRequest.fromJson(value);
         case 'LicenseRow':
           return LicenseRow.fromJson(value);
         case 'LicenseServiceInfo':
@@ -654,6 +635,8 @@ class ApiClient {
           return MailLogEntry.fromJson(value);
         case 'MailOrder':
           return MailOrder.fromJson(value);
+        case 'MailOrderRequest':
+          return MailOrderRequest.fromJson(value);
         case 'MailRow':
           return MailRow.fromJson(value);
         case 'MailSchema':
@@ -678,24 +661,20 @@ class ApiClient {
           return MailTutorialsTable.fromJson(value);
         case 'MailTutorialsTableRow':
           return MailTutorialsTableRow.fromJson(value);
-        case 'MemoryOption':
-          return MemoryOption.fromJson(value);
         case 'ModuleSettings':
           return ModuleSettings.fromJson(value);
         case 'Modules':
           return Modules.fromJson(value);
         case 'MonthlyCounts':
           return MonthlyCounts.fromJson(value);
-        case 'OperatingSystem':
-          return OperatingSystem.fromJson(value);
         case 'PasswordRequest':
           return PasswordRequest.fromJson(value);
+        case 'PatchBillingCreditCardVerifyRequest':
+          return PatchBillingCreditCardVerifyRequest.fromJson(value);
         case 'PatchOauthTwoFactor200Response':
           return PatchOauthTwoFactor200Response.fromJson(value);
         case 'PatchOauthTwoFactorRequest':
           return PatchOauthTwoFactorRequest.fromJson(value);
-        case 'PaymentInvoiceRows':
-          return PaymentInvoiceRows.fromJson(value);
         case 'PlaceBuyNowServerRequest':
           return PlaceBuyNowServerRequest.fromJson(value);
         case 'PlaceScrubOrder201Response':
@@ -716,6 +695,10 @@ class ApiClient {
           return PostWebsiteMigration200Response.fromJson(value);
         case 'PostWebsiteMigrationRequest':
           return PostWebsiteMigrationRequest.fromJson(value);
+        case 'PutScrubIps200Response':
+          return PutScrubIps200Response.fromJson(value);
+        case 'QsOrderRequest':
+          return QsOrderRequest.fromJson(value);
         case 'QueueResponse':
           return QueueResponse.fromJson(value);
         case 'Quickserver':
@@ -762,10 +745,6 @@ class ApiClient {
           return QuickserverServiceMaster.fromJson(value);
         case 'QuickserversCancel200Response':
           return QuickserversCancel200Response.fromJson(value);
-        case 'RaidOption':
-          return RaidOption.fromJson(value);
-        case 'Region':
-          return Region.fromJson(value);
         case 'ReplyTicketRequest':
           return ReplyTicketRequest.fromJson(value);
         case 'ReplyTicketResponseSchema':
@@ -804,6 +783,10 @@ class ApiClient {
           return ServerAssets.fromJson(value);
         case 'ServerBillingDetails':
           return ServerBillingDetails.fromJson(value);
+        case 'ServerBulkIpmiPowerResponse':
+          return ServerBulkIpmiPowerResponse.fromJson(value);
+        case 'ServerBulkIpmiPowerResponseResultsInner':
+          return ServerBulkIpmiPowerResponseResultsInner.fromJson(value);
         case 'ServerClientLink':
           return ServerClientLink.fromJson(value);
         case 'ServerExtraInfoTables':
@@ -848,8 +831,6 @@ class ApiClient {
           return ServerOrderFieldLabels.fromJson(value);
         case 'ServerOrderFormValues':
           return ServerOrderFormValues.fromJson(value);
-        case 'ServerOrderGetResponse':
-          return ServerOrderGetResponse.fromJson(value);
         case 'ServerOrderIP':
           return ServerOrderIP.fromJson(value);
         case 'ServerOrderIpsLi':
@@ -864,6 +845,10 @@ class ApiClient {
           return ServerOrderOS.fromJson(value);
         case 'ServerOrderOsLi':
           return ServerOrderOsLi.fromJson(value);
+        case 'ServerOrderPostRequest':
+          return ServerOrderPostRequest.fromJson(value);
+        case 'ServerOrderPostRequestHd':
+          return ServerOrderPostRequestHd.fromJson(value);
         case 'ServerOrderRAID':
           return ServerOrderRAID.fromJson(value);
         case 'ServerRow':
@@ -898,6 +883,8 @@ class ApiClient {
           return ServicesInfo.fromJson(value);
         case 'SslCancel200Response':
           return SslCancel200Response.fromJson(value);
+        case 'SslOrderRequest':
+          return SslOrderRequest.fromJson(value);
         case 'StatusMonthlyBreakdown':
           return StatusMonthlyBreakdown.fromJson(value);
         case 'SuccessTextResponse':
@@ -1018,8 +1005,6 @@ class ApiClient {
           return VpsTemplateRow.fromJson(value);
         case 'VpsTemplatesList':
           return VpsTemplatesList.fromJson(value);
-        case 'VpsTrafficDataDataResponse':
-          return VpsTrafficDataDataResponse.fromJson(value);
         case 'VpsTrafficDataSectionResponse':
           return VpsTrafficDataSectionResponse.fromJson(value);
         case 'VpsTrafficHistoryResponse':
@@ -1056,6 +1041,10 @@ class ApiClient {
           return WebsiteExtraInfoTables.fromJson(value);
         case 'WebsiteLoginResponse':
           return WebsiteLoginResponse.fromJson(value);
+        case 'WebsiteOrderPostRequest':
+          return WebsiteOrderPostRequest.fromJson(value);
+        case 'WebsiteOrderPutRequest':
+          return WebsiteOrderPutRequest.fromJson(value);
         case 'WebsiteRow':
           return WebsiteRow.fromJson(value);
         case 'WebsiteServiceInfo':

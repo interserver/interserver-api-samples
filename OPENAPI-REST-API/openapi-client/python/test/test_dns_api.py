@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.dns_api import DNSApi
+from interserver_api_client.api.dns_api import DNSApi
 
 
 class TestDNSApi(unittest.TestCase):
@@ -30,49 +30,49 @@ class TestDNSApi(unittest.TestCase):
     def test_add_dns_domain(self) -> None:
         """Test case for add_dns_domain
 
-        Create DNS Domain
+        Create a new authoritative DNS zone seeded with apex A + NS + SOA records
         """
         pass
 
     def test_add_dns_record(self) -> None:
         """Test case for add_dns_record
 
-        Add DNS Record to Domain
+        Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
         """
         pass
 
     def test_delete_dns_domain(self) -> None:
         """Test case for delete_dns_domain
 
-        Delete DNS Domain
+        Permanently delete a DNS zone and every record it contains
         """
         pass
 
     def test_delete_dns_record(self) -> None:
         """Test case for delete_dns_record
 
-        Delete DNS Record
+        Permanently delete one DNS record from a zone — zone itself is preserved
         """
         pass
 
     def test_get_dns_domain(self) -> None:
         """Test case for get_dns_domain
 
-        List Domain DNS Records
+        List every DNS record in one zone with the IDs needed to edit or delete them
         """
         pass
 
     def test_get_dns_list(self) -> None:
         """Test case for get_dns_list
 
-        List DNS Domains
+        List DNS zones hosted on the account with each zone's apex A-record IP
         """
         pass
 
     def test_update_dns_record(self) -> None:
         """Test case for update_dns_record
 
-        Update DNS Record
+        Replace values on an existing DNS record (name, type, content, ttl, priority)
         """
         pass
 

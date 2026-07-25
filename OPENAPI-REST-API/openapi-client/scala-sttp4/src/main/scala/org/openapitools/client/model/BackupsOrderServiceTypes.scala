@@ -15,4 +15,3 @@ package org.openapitools.client.model
 case class BackupsOrderServiceTypes(
   `11006`: Option[BackupsOrderServiceTypes] = None
 )
-

@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for DnsNewRecord
 void main() {
-  final instance = DnsNewRecordBuilder();
-  // TODO add properties to the builder and call build()
+  final DnsNewRecord? instance = /* DnsNewRecord(...) */ null;
+  // TODO add properties to the entity
 
   group(DnsNewRecord, () {
     // Name part of record
@@ -25,13 +25,13 @@ void main() {
     });
 
     // Time-to-live
-    // int ttl (default value: 86400)
+    // Optional<int?> ttl (default value: 86400)
     test('to test the property `ttl`', () async {
       // TODO
     });
 
     // Priority
-    // int prio (default value: 0)
+    // Optional<int?> prio (default value: 0)
     test('to test the property `prio`', () async {
       // TODO
     });

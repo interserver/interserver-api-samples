@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.get_account_tfa_setup200_response import GetAccountTfaSetup200Response
+from interserver_api_client.models.get_account_tfa_setup200_response import GetAccountTfaSetup200Response
 
 # TODO update the JSON string below
 json = "{}"

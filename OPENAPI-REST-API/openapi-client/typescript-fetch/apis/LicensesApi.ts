@@ -12,39 +12,61 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
-import type {
-  ChargeInvoiceRows,
-  GetAccountInfo401Response,
-  IpObject,
-  License,
-  LicenseRow,
-  LicensesCancel200Response,
-  LicensesOrder,
-  ServiceOrderPostResponse,
-  SuccessTextResponse,
-} from '../models/index';
 import {
+    type ChargeInvoiceRows,
     ChargeInvoiceRowsFromJSON,
     ChargeInvoiceRowsToJSON,
+} from '../models/ChargeInvoiceRows';
+import {
+    type GetAccountInfo401Response,
     GetAccountInfo401ResponseFromJSON,
     GetAccountInfo401ResponseToJSON,
+} from '../models/GetAccountInfo401Response';
+import {
+    type IpObject,
     IpObjectFromJSON,
     IpObjectToJSON,
+} from '../models/IpObject';
+import {
+    type License,
     LicenseFromJSON,
     LicenseToJSON,
+} from '../models/License';
+import {
+    type LicenseOrderRequest,
+    LicenseOrderRequestFromJSON,
+    LicenseOrderRequestToJSON,
+} from '../models/LicenseOrderRequest';
+import {
+    type LicenseRow,
     LicenseRowFromJSON,
     LicenseRowToJSON,
+} from '../models/LicenseRow';
+import {
+    type LicensesCancel200Response,
     LicensesCancel200ResponseFromJSON,
     LicensesCancel200ResponseToJSON,
+} from '../models/LicensesCancel200Response';
+import {
+    type LicensesOrder,
     LicensesOrderFromJSON,
     LicensesOrderToJSON,
+} from '../models/LicensesOrder';
+import {
+    type ServiceOrderPostResponse,
     ServiceOrderPostResponseFromJSON,
     ServiceOrderPostResponseToJSON,
+} from '../models/ServiceOrderPostResponse';
+import {
+    type SuccessTextResponse,
     SuccessTextResponseFromJSON,
     SuccessTextResponseToJSON,
-} from '../models/index';
+} from '../models/SuccessTextResponse';
+
+export interface AddLicenseRequest {
+    licenseOrderRequest: LicenseOrderRequest;
+}
 
 export interface GetLicenseInfoRequest {
     id: number;
@@ -52,10 +74,6 @@ export interface GetLicenseInfoRequest {
 
 export interface GetLicenseInvoicesRequest {
     id: number;
-}
-
-export interface GetLicenseOrderCatTagInfoRequest {
-    catTag: string;
 }
 
 export interface GetLicensesWelcomeEmailRequest {
@@ -71,6 +89,10 @@ export interface PostLicenseChangeIpRequest {
     ipObject: IpObject;
 }
 
+export interface PutLicensesRequest {
+    licenseOrderRequest: LicenseOrderRequest;
+}
+
 export interface UpdateLicenseInfoRequest {
     id: string;
 }
@@ -83,10 +105,19 @@ export class LicensesApi extends runtime.BaseAPI {
     /**
      * Creates request options for addLicense without sending the request
      */
-    async addLicenseRequestOpts(): Promise<runtime.RequestOpts> {
+    async addLicenseRequestOpts(requestParameters: AddLicenseRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['licenseOrderRequest'] == null) {
+            throw new runtime.RequiredError(
+                'licenseOrderRequest',
+                'Required parameter "licenseOrderRequest" was null or undefined when calling addLicense().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["X-API-KEY"] = await this.configuration.apiKey("X-API-KEY"); // apiKeyAuth authentication
@@ -104,26 +135,27 @@ export class LicensesApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
+            body: LicenseOrderRequestToJSON(requestParameters['licenseOrderRequest']),
         };
     }
 
     /**
-     * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
-     * Place License Order
+     * Places an order for a new software license (cPanel, Plesk, LiteSpeed, etc.). Re-runs validate_buy_license then place_buy_license, which creates the repeat_invoices row, the first invoice, and queues payment processing. Always call putLicenses first to surface validation errors cheaply; addLicense re-validates and returns error JSON if continue=false. Body (form or JSON): package (services_id from getNewLicense), ip (target server IP the license binds to), frequency (billing months), coupon, comment, tos (truthy). No path params. Returns ServiceOrderPostResponse with the new service id and invoice info. Errors: 401 unauthenticated; validation or payment failures return json_error with the underlying message. Caveat: provisioning is asynchronous — poll getLicenseInfo for status.  Sibling ops: `getNewLicense` (catalog), `putLicenses` (validate), `getLicenseInfo` (poll status), `getLicenseInvoices`, `getBillingInvoice` + `initiatePayment` (settle invoice), `licensesCancel`.
+     * Order a new software license and create the recurring invoice
      */
-    async addLicenseRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServiceOrderPostResponse>> {
-        const requestOptions = await this.addLicenseRequestOpts();
+    async addLicenseRaw(requestParameters: AddLicenseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ServiceOrderPostResponse>> {
+        const requestOptions = await this.addLicenseRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => ServiceOrderPostResponseFromJSON(jsonValue));
     }
 
     /**
-     * Places an order for a new software license. Use `PUT /licenses/order` to validate the order first.
-     * Place License Order
+     * Places an order for a new software license (cPanel, Plesk, LiteSpeed, etc.). Re-runs validate_buy_license then place_buy_license, which creates the repeat_invoices row, the first invoice, and queues payment processing. Always call putLicenses first to surface validation errors cheaply; addLicense re-validates and returns error JSON if continue=false. Body (form or JSON): package (services_id from getNewLicense), ip (target server IP the license binds to), frequency (billing months), coupon, comment, tos (truthy). No path params. Returns ServiceOrderPostResponse with the new service id and invoice info. Errors: 401 unauthenticated; validation or payment failures return json_error with the underlying message. Caveat: provisioning is asynchronous — poll getLicenseInfo for status.  Sibling ops: `getNewLicense` (catalog), `putLicenses` (validate), `getLicenseInfo` (poll status), `getLicenseInvoices`, `getBillingInvoice` + `initiatePayment` (settle invoice), `licensesCancel`.
+     * Order a new software license and create the recurring invoice
      */
-    async addLicense(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServiceOrderPostResponse> {
-        const response = await this.addLicenseRaw(initOverrides);
+    async addLicense(requestParameters: AddLicenseRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ServiceOrderPostResponse> {
+        const response = await this.addLicenseRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -152,7 +184,7 @@ export class LicensesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/licenses/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -163,8 +195,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns detailed information about a specific license including its type, IP assignment, and status.
-     * Get License
+     * Returns rich detail for a single license service: serviceInfo row (license_id, hostname, license_ip, license_status, license_type), the underlying services row (name, cost, frequency), client_links for self-service actions (change IP, cancel, resend welcome email, view invoices), and provisioning state. Use after getLicenseList to drill into a specific license, or as the canonical lookup before postLicenseChangeIp / licensesCancel / getLicenseInvoices. Path: id (license_id from list). No body. Errors: 401 unauthenticated; 404 if id is invalid or owned by a different customer. Caveat: admin_links/settings/csrf are stripped — use admin endpoints for those. Sibling endpoints: updateLicenseInfo (mutate fields), postLicenseChangeIp.
+     * Get full details for one license including status, IP, and links
      */
     async getLicenseInfoRaw(requestParameters: GetLicenseInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<License>> {
         const requestOptions = await this.getLicenseInfoRequestOpts(requestParameters);
@@ -174,8 +206,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns detailed information about a specific license including its type, IP assignment, and status.
-     * Get License
+     * Returns rich detail for a single license service: serviceInfo row (license_id, hostname, license_ip, license_status, license_type), the underlying services row (name, cost, frequency), client_links for self-service actions (change IP, cancel, resend welcome email, view invoices), and provisioning state. Use after getLicenseList to drill into a specific license, or as the canonical lookup before postLicenseChangeIp / licensesCancel / getLicenseInvoices. Path: id (license_id from list). No body. Errors: 401 unauthenticated; 404 if id is invalid or owned by a different customer. Caveat: admin_links/settings/csrf are stripped — use admin endpoints for those. Sibling endpoints: updateLicenseInfo (mutate fields), postLicenseChangeIp.
+     * Get full details for one license including status, IP, and links
      */
     async getLicenseInfo(requestParameters: GetLicenseInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<License> {
         const response = await this.getLicenseInfoRaw(requestParameters, initOverrides);
@@ -207,7 +239,7 @@ export class LicensesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/licenses/{id}/invoices`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -218,8 +250,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the billing invoices associated with this license service.
-     * Get License Invoices
+     * Returns the full invoice history for a single license service: the original setup invoice plus every recurring renewal invoice generated by the repeat_invoices entry. Use this for billing reconciliation, to display past charges in the customer UI, or to confirm a renewal posted before contacting support. Path: id (license_id from getLicenseList). No body. Returns ChargeInvoiceRows: an array of invoice rows with id, date, amount, paid status, and payment method. Errors: 401 unauthenticated; returns success=false with HTTP 400 if the service id is invalid or owned by a different customer. Caveat: only invoices linked via repeat_invoices_id are included — manual one-off charges from staff may not appear here. Sibling endpoints: getLicenseInfo, licensesCancel.
+     * List all billing invoices tied to one software license service
      */
     async getLicenseInvoicesRaw(requestParameters: GetLicenseInvoicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ChargeInvoiceRows>> {
         const requestOptions = await this.getLicenseInvoicesRequestOpts(requestParameters);
@@ -229,8 +261,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns the billing invoices associated with this license service.
-     * Get License Invoices
+     * Returns the full invoice history for a single license service: the original setup invoice plus every recurring renewal invoice generated by the repeat_invoices entry. Use this for billing reconciliation, to display past charges in the customer UI, or to confirm a renewal posted before contacting support. Path: id (license_id from getLicenseList). No body. Returns ChargeInvoiceRows: an array of invoice rows with id, date, amount, paid status, and payment method. Errors: 401 unauthenticated; returns success=false with HTTP 400 if the service id is invalid or owned by a different customer. Caveat: only invoices linked via repeat_invoices_id are included — manual one-off charges from staff may not appear here. Sibling endpoints: getLicenseInfo, licensesCancel.
+     * List all billing invoices tied to one software license service
      */
     async getLicenseInvoices(requestParameters: GetLicenseInvoicesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ChargeInvoiceRows> {
         const response = await this.getLicenseInvoicesRaw(requestParameters, initOverrides);
@@ -265,8 +297,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns all software license services on the account with their current status and IP assignments.
-     * List Licenses
+     * Lists every software license service (cPanel, Plesk, LiteSpeed, CloudLinux, etc.) on the authenticated customer\'s account. Use this as the entry point for license management to discover the license_id needed by every other Licenses endpoint. Returns an array of rows including license_id, hostname, bound IP, services_name (license type), recurring cost, status (pending/active/canceled), and last invoice date/paid state. No path or query parameters; the customer scope is taken from the session. Errors: 401 when the session is missing or expired. Caveats: list is unpaginated, includes canceled rows so callers should filter by status. Sibling: getLicenseInfo for full details on one license.
+     * List all software licenses owned by the authenticated customer
      */
     async getLicenseListRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<LicenseRow>>> {
         const requestOptions = await this.getLicenseListRequestOpts();
@@ -276,66 +308,12 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Returns all software license services on the account with their current status and IP assignments.
-     * List Licenses
+     * Lists every software license service (cPanel, Plesk, LiteSpeed, CloudLinux, etc.) on the authenticated customer\'s account. Use this as the entry point for license management to discover the license_id needed by every other Licenses endpoint. Returns an array of rows including license_id, hostname, bound IP, services_name (license type), recurring cost, status (pending/active/canceled), and last invoice date/paid state. No path or query parameters; the customer scope is taken from the session. Errors: 401 when the session is missing or expired. Caveats: list is unpaginated, includes canceled rows so callers should filter by status. Sibling: getLicenseInfo for full details on one license.
+     * List all software licenses owned by the authenticated customer
      */
     async getLicenseList(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<LicenseRow>> {
         const response = await this.getLicenseListRaw(initOverrides);
         return await response.value();
-    }
-
-    /**
-     * Creates request options for getLicenseOrderCatTagInfo without sending the request
-     */
-    async getLicenseOrderCatTagInfoRequestOpts(requestParameters: GetLicenseOrderCatTagInfoRequest): Promise<runtime.RequestOpts> {
-        if (requestParameters['catTag'] == null) {
-            throw new runtime.RequiredError(
-                'catTag',
-                'Required parameter "catTag" was null or undefined when calling getLicenseOrderCatTagInfo().'
-            );
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["X-API-KEY"] = await this.configuration.apiKey("X-API-KEY"); // apiKeyAuth authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["sessionid"] = await this.configuration.apiKey("sessionid"); // sessionIdHeaderAuth authentication
-        }
-
-
-        let urlPath = `/licenses/order/{catTag}`;
-        urlPath = urlPath.replace(`{${"catTag"}}`, encodeURIComponent(String(requestParameters['catTag'])));
-
-        return {
-            path: urlPath,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        };
-    }
-
-    /**
-     * Returns the available license types and pricing for a specific license category. Use the category tags from `GET /licenses/order` to identify valid values.
-     * Get License Order Information for Category
-     */
-    async getLicenseOrderCatTagInfoRaw(requestParameters: GetLicenseOrderCatTagInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const requestOptions = await this.getLicenseOrderCatTagInfoRequestOpts(requestParameters);
-        const response = await this.request(requestOptions, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     * Returns the available license types and pricing for a specific license category. Use the category tags from `GET /licenses/order` to identify valid values.
-     * Get License Order Information for Category
-     */
-    async getLicenseOrderCatTagInfo(requestParameters: GetLicenseOrderCatTagInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.getLicenseOrderCatTagInfoRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -363,7 +341,7 @@ export class LicensesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/licenses/{id}/welcome_email`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -374,8 +352,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Resends the welcome email for the license service. The email contains the license key and activation instructions.
-     * Resend License Welcome Email
+     * Resends the welcome email for an active license to the account email on file. The email contains the license key, the bound IP, and vendor-specific activation instructions (e.g. cPanel /usr/local/cpanel/cpkeyclt, LiteSpeed lswsctrl). Use this when the customer lost the original email or rotated mailboxes — the key itself is unchanged. Path: id (license_id). No body. Returns SuccessTextResponse with a translated confirmation. Errors: 401 unauthenticated; 404 if the id is invalid or not owned by the session customer; 409 if the license status is not active (cancelled licenses cannot resend). Caveat: delivery is best-effort — check the email log if it does not arrive. Sibling endpoints: getLicenseInfo, postLicenseChangeIp.
+     * Resend the license welcome email with the key and activation steps
      */
     async getLicensesWelcomeEmailRaw(requestParameters: GetLicensesWelcomeEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessTextResponse>> {
         const requestOptions = await this.getLicensesWelcomeEmailRequestOpts(requestParameters);
@@ -385,8 +363,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Resends the welcome email for the license service. The email contains the license key and activation instructions.
-     * Resend License Welcome Email
+     * Resends the welcome email for an active license to the account email on file. The email contains the license key, the bound IP, and vendor-specific activation instructions (e.g. cPanel /usr/local/cpanel/cpkeyclt, LiteSpeed lswsctrl). Use this when the customer lost the original email or rotated mailboxes — the key itself is unchanged. Path: id (license_id). No body. Returns SuccessTextResponse with a translated confirmation. Errors: 401 unauthenticated; 404 if the id is invalid or not owned by the session customer; 409 if the license status is not active (cancelled licenses cannot resend). Caveat: delivery is best-effort — check the email log if it does not arrive. Sibling endpoints: getLicenseInfo, postLicenseChangeIp.
+     * Resend the license welcome email with the key and activation steps
      */
     async getLicensesWelcomeEmail(requestParameters: GetLicensesWelcomeEmailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessTextResponse> {
         const response = await this.getLicensesWelcomeEmailRaw(requestParameters, initOverrides);
@@ -421,8 +399,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves available license types, categories, and pricing for ordering a new license.
-     * Get License Order Information
+     * Returns the catalog needed to build the license-order form: service categories (category_id->name), buyable service types (services_id, name, cost, billing frequency), package costs map keyed by services_id, the customer\'s currency symbol, and per-package field metadata via get_license_fields. Use this before addLicense to render type/package pickers and to validate a chosen package_id exists and is buyable (services_hidden=0, services_buyable=1). No path params or body. Returns LicensesOrder schema. Errors: 401 if unauthenticated. Sibling endpoints: putLicenses (validate selection), addLicense (place order). Note: pricing is converted to the session currency; coupon/IP/frequency are evaluated in the validate step, not here.
+     * Get available license types, packages, and pricing for ordering
      */
     async getNewLicenseRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LicensesOrder>> {
         const requestOptions = await this.getNewLicenseRequestOpts();
@@ -432,8 +410,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Retrieves available license types, categories, and pricing for ordering a new license.
-     * Get License Order Information
+     * Returns the catalog needed to build the license-order form: service categories (category_id->name), buyable service types (services_id, name, cost, billing frequency), package costs map keyed by services_id, the customer\'s currency symbol, and per-package field metadata via get_license_fields. Use this before addLicense to render type/package pickers and to validate a chosen package_id exists and is buyable (services_hidden=0, services_buyable=1). No path params or body. Returns LicensesOrder schema. Errors: 401 if unauthenticated. Sibling endpoints: putLicenses (validate selection), addLicense (place order). Note: pricing is converted to the session currency; coupon/IP/frequency are evaluated in the validate step, not here.
+     * Get available license types, packages, and pricing for ordering
      */
     async getNewLicense(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LicensesOrder> {
         const response = await this.getNewLicenseRaw(initOverrides);
@@ -465,7 +443,7 @@ export class LicensesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/licenses/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -476,8 +454,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Cancels a license service. After cancellation the license key is deactivated and the service transitions to a canceled status. No further billing charges will be incurred.
-     * Cancel License
+     * Cancels a license service: invokes cancel_service which marks the service canceled, deactivates the license key with the upstream vendor, and stops the recurring invoice so no further charges occur. Use carefully — once vendor-side deactivation propagates the key stops working on the bound machine. Path: id (license_id from getLicenseList). No body. Returns LicensesCancelResponse with success and a translated text message. Errors: 401 unauthenticated; the underlying handler returns success=false JSON if the service id is invalid or cancellation fails (contact support path). Caveats: no prorated refund by default; pre-paid time is forfeited per TOS. Sibling endpoints: getLicenseInfo, getLicenseInvoices for billing history before cancelling.
+     * Cancel a license service and stop future billing (irreversible)
      */
     async licensesCancelRaw(requestParameters: LicensesCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<LicensesCancel200Response>> {
         const requestOptions = await this.licensesCancelRequestOpts(requestParameters);
@@ -487,8 +465,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Cancels a license service. After cancellation the license key is deactivated and the service transitions to a canceled status. No further billing charges will be incurred.
-     * Cancel License
+     * Cancels a license service: invokes cancel_service which marks the service canceled, deactivates the license key with the upstream vendor, and stops the recurring invoice so no further charges occur. Use carefully — once vendor-side deactivation propagates the key stops working on the bound machine. Path: id (license_id from getLicenseList). No body. Returns LicensesCancelResponse with success and a translated text message. Errors: 401 unauthenticated; the underlying handler returns success=false JSON if the service id is invalid or cancellation fails (contact support path). Caveats: no prorated refund by default; pre-paid time is forfeited per TOS. Sibling endpoints: getLicenseInfo, getLicenseInvoices for billing history before cancelling.
+     * Cancel a license service and stop future billing (irreversible)
      */
     async licensesCancel(requestParameters: LicensesCancelRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LicensesCancel200Response> {
         const response = await this.licensesCancelRaw(requestParameters, initOverrides);
@@ -529,7 +507,7 @@ export class LicensesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/licenses/{id}/change_ip`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -541,8 +519,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Changes the IP address associated with the license. The service must be active. Use `GET /licenses/{id}` to view the current IP assignment before making changes.
-     * Change License IP
+     * Changes the IP address that the license is bound to and triggers re-issuance with the upstream vendor (cPanel store, LiteSpeed key server, Plesk, etc.). The service must be active. Use getLicenseInfo first to read the current license_ip, then submit the new IP. Path: id (license_id). Body (JSON or multipart): IpObject with the new ip field. Returns SuccessTextResponse on success. Errors: 401 unauthenticated; 404 invalid id or not owned; 409 if status != active; 422-style failures from the vendor are returned via json_error with the upstream status_text. Caveats: many vendors charge a per-change fee and rate-limit changes (e.g. cPanel allows limited free changes per period); the new IP must be reachable for license verification. Sibling: updateLicenseInfo.
+     * Rebind a license to a new IP address (may incur a vendor fee)
      */
     async postLicenseChangeIpRaw(requestParameters: PostLicenseChangeIpRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessTextResponse>> {
         const requestOptions = await this.postLicenseChangeIpRequestOpts(requestParameters);
@@ -552,8 +530,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Changes the IP address associated with the license. The service must be active. Use `GET /licenses/{id}` to view the current IP assignment before making changes.
-     * Change License IP
+     * Changes the IP address that the license is bound to and triggers re-issuance with the upstream vendor (cPanel store, LiteSpeed key server, Plesk, etc.). The service must be active. Use getLicenseInfo first to read the current license_ip, then submit the new IP. Path: id (license_id). Body (JSON or multipart): IpObject with the new ip field. Returns SuccessTextResponse on success. Errors: 401 unauthenticated; 404 invalid id or not owned; 409 if status != active; 422-style failures from the vendor are returned via json_error with the upstream status_text. Caveats: many vendors charge a per-change fee and rate-limit changes (e.g. cPanel allows limited free changes per period); the new IP must be reachable for license verification. Sibling: updateLicenseInfo.
+     * Rebind a license to a new IP address (may incur a vendor fee)
      */
     async postLicenseChangeIp(requestParameters: PostLicenseChangeIpRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessTextResponse> {
         const response = await this.postLicenseChangeIpRaw(requestParameters, initOverrides);
@@ -563,10 +541,19 @@ export class LicensesApi extends runtime.BaseAPI {
     /**
      * Creates request options for putLicenses without sending the request
      */
-    async putLicensesRequestOpts(): Promise<runtime.RequestOpts> {
+    async putLicensesRequestOpts(requestParameters: PutLicensesRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['licenseOrderRequest'] == null) {
+            throw new runtime.RequiredError(
+                'licenseOrderRequest',
+                'Required parameter "licenseOrderRequest" was null or undefined when calling putLicenses().'
+            );
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["X-API-KEY"] = await this.configuration.apiKey("X-API-KEY"); // apiKeyAuth authentication
@@ -584,26 +571,27 @@ export class LicensesApi extends runtime.BaseAPI {
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
+            body: LicenseOrderRequestToJSON(requestParameters['licenseOrderRequest']),
         };
     }
 
     /**
-     * Validates a license order before placing it. Use this to check for errors before committing to a purchase.
-     * Validate License Order
+     * Dry-runs validate_buy_license against the same payload addLicense will accept, returning a structured result with continue=true/false plus errors[], normalized package, ip, service_cost, original_cost, coupon_code, custid, currency and service_extra. Always call this before addLicense to surface package/IP/coupon/TOS issues without creating an invoice. Body fields (form or JSON): package (services_id), ip, frequency (billing cycle months), coupon, comment, tos. No path params. Returns the validation object. Errors: 401 unauthenticated; 422-style errors are returned inside the body with continue=false rather than as HTTP errors. Caveat: a valid PUT does not reserve inventory; addLicense re-validates. Sibling: addLicense, getNewLicense.
+     * Validate a software license order before placing it (dry run preview)
      */
-    async putLicensesRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const requestOptions = await this.putLicensesRequestOpts();
+    async putLicensesRaw(requestParameters: PutLicensesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const requestOptions = await this.putLicensesRequestOpts(requestParameters);
         const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.VoidApiResponse(response);
     }
 
     /**
-     * Validates a license order before placing it. Use this to check for errors before committing to a purchase.
-     * Validate License Order
+     * Dry-runs validate_buy_license against the same payload addLicense will accept, returning a structured result with continue=true/false plus errors[], normalized package, ip, service_cost, original_cost, coupon_code, custid, currency and service_extra. Always call this before addLicense to surface package/IP/coupon/TOS issues without creating an invoice. Body fields (form or JSON): package (services_id), ip, frequency (billing cycle months), coupon, comment, tos. No path params. Returns the validation object. Errors: 401 unauthenticated; 422-style errors are returned inside the body with continue=false rather than as HTTP errors. Caveat: a valid PUT does not reserve inventory; addLicense re-validates. Sibling: addLicense, getNewLicense.
+     * Validate a software license order before placing it (dry run preview)
      */
-    async putLicenses(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.putLicensesRaw(initOverrides);
+    async putLicenses(requestParameters: PutLicensesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.putLicensesRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -631,7 +619,7 @@ export class LicensesApi extends runtime.BaseAPI {
 
 
         let urlPath = `/licenses/{id}`;
-        urlPath = urlPath.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters['id'])));
+        urlPath = urlPath.replace('{id}', encodeURIComponent(String(requestParameters['id'])));
 
         return {
             path: urlPath,
@@ -642,8 +630,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates settings on a license service such as its assigned IP.
-     * Update License
+     * Updates settings on an existing license service. The primary mutable field is the bound IP, but the endpoint shares routing with View::go so other future fields flow through here. For IP changes prefer postLicenseChangeIp which has explicit semantics and triggers vendor rebinding. Path: id (license_id). Body: fields to update (form or JSON); shape varies by license type. Returns SuccessTextResponse. Errors: 401 unauthenticated; 404 if id is invalid or not owned; 409 if license is not active. Caveats: vendor-side propagation (cPanel store, LiteSpeed key server, etc.) is asynchronous; some IP/hostname changes incur a fee per vendor policy. Sibling: getLicenseInfo (read), postLicenseChangeIp (dedicated).
+     * Update mutable fields on a license service (e.g. assigned IP)
      */
     async updateLicenseInfoRaw(requestParameters: UpdateLicenseInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SuccessTextResponse>> {
         const requestOptions = await this.updateLicenseInfoRequestOpts(requestParameters);
@@ -653,8 +641,8 @@ export class LicensesApi extends runtime.BaseAPI {
     }
 
     /**
-     * Updates settings on a license service such as its assigned IP.
-     * Update License
+     * Updates settings on an existing license service. The primary mutable field is the bound IP, but the endpoint shares routing with View::go so other future fields flow through here. For IP changes prefer postLicenseChangeIp which has explicit semantics and triggers vendor rebinding. Path: id (license_id). Body: fields to update (form or JSON); shape varies by license type. Returns SuccessTextResponse. Errors: 401 unauthenticated; 404 if id is invalid or not owned; 409 if license is not active. Caveats: vendor-side propagation (cPanel store, LiteSpeed key server, etc.) is asynchronous; some IP/hostname changes incur a fee per vendor policy. Sibling: getLicenseInfo (read), postLicenseChangeIp (dedicated).
+     * Update mutable fields on a license service (e.g. assigned IP)
      */
     async updateLicenseInfo(requestParameters: UpdateLicenseInfoRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SuccessTextResponse> {
         const response = await this.updateLicenseInfoRaw(requestParameters, initOverrides);

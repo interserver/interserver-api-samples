@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.servers_buy_now_response import ServersBuyNowResponse
+from interserver_api_client.models.servers_buy_now_response import ServersBuyNowResponse
 
 class TestServersBuyNowResponse(unittest.TestCase):
     """ServersBuyNowResponse unit test stubs"""
@@ -38,7 +38,7 @@ class TestServersBuyNowResponse(unittest.TestCase):
             return ServersBuyNowResponse(
                 success = True,
                 text = 'Server order is placed.',
-                order_details = openapi_client.models.servers_buy_now_response_order_details.ServersBuyNowResponse_order_details(
+                order_details = interserver_api_client.models.servers_buy_now_response_order_details.ServersBuyNowResponse_order_details(
                     service_id = 1234, 
                     invoice_id = 2342355, )
             )

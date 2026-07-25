@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerSwitchport');
+use_ok('InterServerAPI::Object::ServerSwitchport');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerSwitchport->new();
+#my $instance = InterServerAPI::Object::ServerSwitchport->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerSwitchport');
+#isa_ok($instance, 'InterServerAPI::Object::ServerSwitchport');
 
 
 done_testing();

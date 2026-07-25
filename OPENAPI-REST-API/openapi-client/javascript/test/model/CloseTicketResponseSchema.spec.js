@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.CloseTicketResponseSchema();
+    instance = new InterserverApiClient.CloseTicketResponseSchema();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('CloseTicketResponseSchema', function() {
     it('should create an instance of CloseTicketResponseSchema', function() {
       // uncomment below and update the code to test CloseTicketResponseSchema
-      //var instance = new InterServerManagementApi.CloseTicketResponseSchema();
-      //expect(instance).to.be.a(InterServerManagementApi.CloseTicketResponseSchema);
+      //var instance = new InterserverApiClient.CloseTicketResponseSchema();
+      //expect(instance).to.be.a(InterserverApiClient.CloseTicketResponseSchema);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.CloseTicketResponseSchema();
+      //var instance = new InterserverApiClient.CloseTicketResponseSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property text (base name: "text")', function() {
       // uncomment below and update the code to test the property text
-      //var instance = new InterServerManagementApi.CloseTicketResponseSchema();
+      //var instance = new InterserverApiClient.CloseTicketResponseSchema();
       //expect(instance).to.be();
     });
 

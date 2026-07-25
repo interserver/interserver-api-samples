@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { CreateGeoFirewallRule } from './api';
+import { CreateGeoFirewallRule } from '@interserver/myadmin-client';
 
 const instance: CreateGeoFirewallRule = {
     xdp_action,

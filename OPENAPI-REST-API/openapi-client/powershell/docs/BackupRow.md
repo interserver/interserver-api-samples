@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupRow = Initialize-PSOpenAPIToolsBackupRow  -BackupId 2414 `
+$BackupRow = Initialize-InterserverApiBackupRow  -BackupId 2414 `
  -BackupName storage-nj.interserver.net `
  -BackupCost 5.99 `
  -BackupUsername detainin2414 `

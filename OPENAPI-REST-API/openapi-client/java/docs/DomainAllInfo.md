@@ -18,4 +18,8 @@ Complete domain registration information returned from the registrar, including 
 |**isSuccess** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

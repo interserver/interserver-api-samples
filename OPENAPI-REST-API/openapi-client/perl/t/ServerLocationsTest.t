@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerLocations');
+use_ok('InterServerAPI::Object::ServerLocations');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerLocations->new();
+#my $instance = InterServerAPI::Object::ServerLocations->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerLocations');
+#isa_ok($instance, 'InterServerAPI::Object::ServerLocations');
 
 
 done_testing();

@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WebsitesOrderPackagesInfo } from './api';
+import { WebsitesOrderPackagesInfo } from '@interserver/myadmin-client';
 
 const instance: WebsitesOrderPackagesInfo = {
     services_id,

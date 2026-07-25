@@ -12,6 +12,31 @@
 package org.openapitools.client.model
 
 
-case class ViewMailLogStartDateParameter(
-)
+sealed trait ViewMailLogStartDateParameter
 
+object ViewMailLogStartDateParameter {
+
+  import org.json4s._
+
+  // oneOf without discriminator - json4s custom serializer
+  implicit object ViewMailLogStartDateParameterSerializer extends Serializer[ViewMailLogStartDateParameter] {
+    def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), ViewMailLogStartDateParameter] = {
+      case (TypeInfo(clazz, _), json) if classOf[ViewMailLogStartDateParameter].isAssignableFrom(clazz) =>
+        // Try each oneOf type in order
+        Extraction.extract[Long](json) match {
+          case x: Long => return x
+          case _ => // continue
+        }
+        Extraction.extract[String](json) match {
+          case x: String => return x
+          case _ => // continue
+        }
+        throw new MappingException(s"Can't convert $json to ViewMailLogStartDateParameter")
+    }
+
+    def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+      case x: Long => Extraction.decompose(x)
+      case x: String => Extraction.decompose(x)
+    }
+  }
+}

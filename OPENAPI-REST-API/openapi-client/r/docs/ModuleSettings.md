@@ -1,4 +1,4 @@
-# openapi::ModuleSettings
+# interserverapi::ModuleSettings
 
 The settings for a module.
 

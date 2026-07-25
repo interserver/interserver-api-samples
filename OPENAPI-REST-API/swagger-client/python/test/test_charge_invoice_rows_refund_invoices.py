@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.charge_invoice_rows_refund_invoices import ChargeInvoiceRowsRefundInvoices  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.charge_invoice_rows_refund_invoices import ChargeInvoiceRowsRefundInvoices  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestChargeInvoiceRowsRefundInvoices(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestChargeInvoiceRowsRefundInvoices(unittest.TestCase):
     def testChargeInvoiceRowsRefundInvoices(self):
         """Test ChargeInvoiceRowsRefundInvoices"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.charge_invoice_rows_refund_invoices.ChargeInvoiceRowsRefundInvoices()  # noqa: E501
+        # model = interserver_api_client.models.charge_invoice_rows_refund_invoices.ChargeInvoiceRowsRefundInvoices()  # noqa: E501
         pass
 
 

@@ -1,4 +1,4 @@
-# openapi::MailServiceInfo
+# interserverapi::MailServiceInfo
 
 
 ## Properties

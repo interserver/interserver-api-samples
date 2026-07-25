@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainRow = Initialize-PSOpenAPIToolsDomainRow  -DomainId 59237 `
+$DomainRow = Initialize-InterserverApiDomainRow  -DomainId 59237 `
  -DomainHostname mydomain.com `
  -DomainExpireDate 2023-08-14T00:59:38.000Z `
  -Cost 11.00 `

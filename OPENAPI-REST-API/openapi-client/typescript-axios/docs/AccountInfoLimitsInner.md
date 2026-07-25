@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoLimitsInner } from './api';
+import { AccountInfoLimitsInner } from '@interserver/myadmin-client';
 
 const instance: AccountInfoLimitsInner = {
     start,

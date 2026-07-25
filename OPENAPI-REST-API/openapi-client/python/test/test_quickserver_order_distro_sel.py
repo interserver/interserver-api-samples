@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_order_distro_sel import QuickserverOrderDistroSel
+from interserver_api_client.models.quickserver_order_distro_sel import QuickserverOrderDistroSel
 
 class TestQuickserverOrderDistroSel(unittest.TestCase):
     """QuickserverOrderDistroSel unit test stubs"""
@@ -36,7 +36,7 @@ class TestQuickserverOrderDistroSel(unittest.TestCase):
         model = QuickserverOrderDistroSel()
         if include_optional:
             return QuickserverOrderDistroSel(
-                ubuntu = openapi_client.models.quickserver_order_distro_sel_ubuntu.QuickserverOrderDistroSelUbuntu()
+                ubuntu = interserver_api_client.models.quickserver_order_distro_sel_ubuntu.QuickserverOrderDistroSelUbuntu()
             )
         else:
             return QuickserverOrderDistroSel(

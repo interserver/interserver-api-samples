@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainAdminContact
+# InterserverApiClient.DomainAdminContact
 
 ## Properties
 

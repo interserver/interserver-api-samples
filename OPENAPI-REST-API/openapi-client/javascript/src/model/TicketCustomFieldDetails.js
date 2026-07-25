@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TicketCustomFieldDetails model module.
  * @module model/TicketCustomFieldDetails
- * @version 0.9.0
+ * @version 1.0.0
  */
 class TicketCustomFieldDetails {
     /**
@@ -152,7 +152,13 @@ TicketCustomFieldDetails['CustomerServerAccessEnum'] = {
      * value: "n"
      * @const
      */
-    "n": "n"
+    "n": "n",
+
+    /**
+     * value: "unknown_default_open_api"
+     * @const
+     */
+    "unknown_default_open_api": "unknown_default_open_api"
 };
 
 

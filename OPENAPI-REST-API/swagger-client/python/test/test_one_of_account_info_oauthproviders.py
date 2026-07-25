@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.one_of_account_info_oauthproviders import OneOfAccountInfoOauthproviders  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.one_of_account_info_oauthproviders import OneOfAccountInfoOauthproviders  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestOneOfAccountInfoOauthproviders(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestOneOfAccountInfoOauthproviders(unittest.TestCase):
     def testOneOfAccountInfoOauthproviders(self):
         """Test OneOfAccountInfoOauthproviders"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.one_of_account_info_oauthproviders.OneOfAccountInfoOauthproviders()  # noqa: E501
+        # model = interserver_api_client.models.one_of_account_info_oauthproviders.OneOfAccountInfoOauthproviders()  # noqa: E501
         pass
 
 

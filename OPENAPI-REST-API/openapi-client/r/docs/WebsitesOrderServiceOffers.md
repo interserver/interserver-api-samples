@@ -1,4 +1,4 @@
-# openapi::WebsitesOrderServiceOffers
+# interserverapi::WebsitesOrderServiceOffers
 
 The service offers data.
 

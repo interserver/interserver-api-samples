@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailStatsTypeVolumeTo();
+    instance = new InterserverApiClient.MailStatsTypeVolumeTo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('MailStatsTypeVolumeTo', function() {
     it('should create an instance of MailStatsTypeVolumeTo', function() {
       // uncomment below and update the code to test MailStatsTypeVolumeTo
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeTo();
-      //expect(instance).to.be.a(InterServerManagementApi.MailStatsTypeVolumeTo);
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeTo();
+      //expect(instance).to.be.a(InterserverApiClient.MailStatsTypeVolumeTo);
     });
 
     it('should have the property clientdomain_com (base name: "client@domain.com")', function() {
       // uncomment below and update the code to test the property clientdomain_com
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeTo();
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeTo();
       //expect(instance).to.be();
     });
 
     it('should have the property usersite_net (base name: "user@site.net")', function() {
       // uncomment below and update the code to test the property usersite_net
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeTo();
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeTo();
       //expect(instance).to.be();
     });
 
     it('should have the property salescompany_com (base name: "sales@company.com")', function() {
       // uncomment below and update the code to test the property salescompany_com
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeTo();
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeTo();
       //expect(instance).to.be();
     });
 
     it('should have the property clientanothersite_com (base name: "client@anothersite.com")', function() {
       // uncomment below and update the code to test the property clientanothersite_com
-      //var instance = new InterServerManagementApi.MailStatsTypeVolumeTo();
+      //var instance = new InterserverApiClient.MailStatsTypeVolumeTo();
       //expect(instance).to.be();
     });
 

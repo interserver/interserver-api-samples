@@ -1,23 +1,23 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for TicketsCountArray
 void main() {
-  final instance = TicketsCountArrayBuilder();
-  // TODO add properties to the builder and call build()
+  final TicketsCountArray? instance = /* TicketsCountArray(...) */ null;
+  // TODO add properties to the entity
 
   group(TicketsCountArray, () {
-    // int open
+    // Optional<int?> open
     test('to test the property `open`', () async {
       // TODO
     });
 
-    // int onHold
+    // Optional<int?> onHold
     test('to test the property `onHold`', () async {
       // TODO
     });
 
-    // int closed
+    // Optional<int?> closed
     test('to test the property `closed`', () async {
       // TODO
     });

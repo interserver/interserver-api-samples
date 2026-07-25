@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServersBuyNowResponse = Initialize-PSOpenAPIToolsServersBuyNowResponse  -Success true `
+$ServersBuyNowResponse = Initialize-InterserverApiServersBuyNowResponse  -Success true `
  -Text Server order is placed. `
  -OrderDetails null
 ```

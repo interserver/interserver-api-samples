@@ -17,7 +17,7 @@ import ServerAsset from './ServerAsset';
 /**
  * The ServerNetworkInfoAssets model module.
  * @module model/ServerNetworkInfoAssets
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerNetworkInfoAssets {
     /**

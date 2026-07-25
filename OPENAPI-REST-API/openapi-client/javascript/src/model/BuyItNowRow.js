@@ -17,7 +17,7 @@ import BuyItNowRowCpuInner from './BuyItNowRowCpuInner';
 /**
  * The BuyItNowRow model module.
  * @module model/BuyItNowRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BuyItNowRow {
     /**

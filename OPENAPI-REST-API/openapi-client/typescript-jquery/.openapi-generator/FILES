@@ -43,8 +43,6 @@ model/AffiliateBannerRow.ts
 model/AffiliateDockSetup.ts
 model/AffiliatePaymentSetup.ts
 model/AffiliateTrafficRow.ts
-model/AssetServer.ts
-model/AssetServerCPUInner.ts
 model/Backup.ts
 model/BackupBillingDetails.ts
 model/BackupClientLink.ts
@@ -62,7 +60,6 @@ model/BackupServiceMaster.ts
 model/BackupsOrder.ts
 model/BackupsOrderPackageCosts.ts
 model/BackupsOrderServiceTypes.ts
-model/Bandwidth.ts
 model/BillingAddCcRequest.ts
 model/BillingInvoiceDetail.ts
 model/BillingInvoiceList.ts
@@ -88,11 +85,6 @@ model/ChargeInvoiceRowsInvoicesValue.ts
 model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.ts
 model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.ts
 model/CloseTicketResponseSchema.ts
-model/ConfigIds.ts
-model/ConfigLists.ts
-model/ControlPanel.ts
-model/Cpu.ts
-model/CpuWithDefaults.ts
 model/CreateFilter.ts
 model/CreateFilter201Response.ts
 model/CreateFilter400Response.ts
@@ -108,6 +100,7 @@ model/DeleteFilter400Response.ts
 model/DeleteFilter500Response.ts
 model/DeleteFirewallRule.ts
 model/DeleteGeoFirewallRule.ts
+model/DeleteMailAlertRequest.ts
 model/DenyRuleNew.ts
 model/DenyRuleRecord.ts
 model/DisableScrub200Response.ts
@@ -138,11 +131,11 @@ model/DomainNameserverGetResponseInner.ts
 model/DomainNameserverPostRequest.ts
 model/DomainNameserverPutRequest.ts
 model/DomainOrder.ts
+model/DomainOrderRequest.ts
 model/DomainOrderResponse.ts
 model/DomainOrderResponseAttributes.ts
 model/DomainOrderServices.ts
 model/DomainOrderServices10001.ts
-model/DomainOrderTldServices.ts
 model/DomainOwnerContact.ts
 model/DomainProvProcessPending.ts
 model/DomainProvProcessPendingAttributes.ts
@@ -158,12 +151,13 @@ model/EmailAddress.ts
 model/EmailAddressName.ts
 model/EnableScrub200Response.ts
 model/EnableScrub500Response.ts
-model/FieldLabel.ts
+model/FloatingIpOrderRequest.ts
 model/FloatingIpsCancel200Response.ts
-model/FormValues.ts
 model/GenericResponse.ts
 model/GetAccountInfo401Response.ts
+model/GetAccountLocales200ResponseValue.ts
 model/GetAccountTfaSetup200Response.ts
+model/GetAffiliateSignups200Response.ts
 model/GetOauthRedirect200Response.ts
 model/GetOrderDetail200Response.ts
 model/GetOrderDetail200ResponseIpsInner.ts
@@ -180,7 +174,6 @@ model/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.ts
 model/GetScrubIpDetails200ResponseFilterFirewallRulesInner.ts
 model/GetScrubIpDetails200ResponseServiceInfo.ts
 model/GetWebsiteBuyIp200Response.ts
-model/HardDrive.ts
 model/Home.ts
 model/HomeDetails.ts
 model/HomeDetailsModules.ts
@@ -207,10 +200,6 @@ model/HomeTicketStatus.ts
 model/HomeTicketStatusView.ts
 model/HostnameObject.ts
 model/InitiatePayment200Response.ts
-model/InlineObject.ts
-model/Invoice.ts
-model/InvoiceRow.ts
-model/IpBlock.ts
 model/IpLimitRange.ts
 model/IpObject.ts
 model/License.ts
@@ -219,6 +208,7 @@ model/LicenseClientLink.ts
 model/LicenseExtraInfoTables.ts
 model/LicenseIpInfo.ts
 model/LicenseIpInfoRow.ts
+model/LicenseOrderRequest.ts
 model/LicenseRow.ts
 model/LicenseServiceInfo.ts
 model/LicenseServiceType.ts
@@ -255,6 +245,7 @@ model/MailExtraInfoTableRow.ts
 model/MailLog.ts
 model/MailLogEntry.ts
 model/MailOrder.ts
+model/MailOrderRequest.ts
 model/MailRow.ts
 model/MailSchema.ts
 model/MailSchemaExtraInfoTables.ts
@@ -267,15 +258,13 @@ model/MailStatsTypeVolumeIp.ts
 model/MailStatsTypeVolumeTo.ts
 model/MailTutorialsTable.ts
 model/MailTutorialsTableRow.ts
-model/MemoryOption.ts
 model/ModuleSettings.ts
 model/Modules.ts
 model/MonthlyCounts.ts
-model/OperatingSystem.ts
 model/PasswordRequest.ts
+model/PatchBillingCreditCardVerifyRequest.ts
 model/PatchOauthTwoFactor200Response.ts
 model/PatchOauthTwoFactorRequest.ts
-model/PaymentInvoiceRows.ts
 model/PlaceBuyNowServerRequest.ts
 model/PlaceScrubOrder201Response.ts
 model/PlaceScrubOrder201ResponseOrderDetails.ts
@@ -286,6 +275,8 @@ model/PostWebsiteBuyIp200Response.ts
 model/PostWebsiteBuyIpRequest.ts
 model/PostWebsiteMigration200Response.ts
 model/PostWebsiteMigrationRequest.ts
+model/PutScrubIps200Response.ts
+model/QsOrderRequest.ts
 model/QueueResponse.ts
 model/Quickserver.ts
 model/QuickserverAddons.ts
@@ -309,8 +300,6 @@ model/QuickserverServiceExtra.ts
 model/QuickserverServiceInfo.ts
 model/QuickserverServiceMaster.ts
 model/QuickserversCancel200Response.ts
-model/RaidOption.ts
-model/Region.ts
 model/ReplyTicketRequest.ts
 model/ReplyTicketResponseSchema.ts
 model/RestoreRequest.ts
@@ -330,6 +319,8 @@ model/Server.ts
 model/ServerAsset.ts
 model/ServerAssets.ts
 model/ServerBillingDetails.ts
+model/ServerBulkIpmiPowerResponse.ts
+model/ServerBulkIpmiPowerResponseResultsInner.ts
 model/ServerClientLink.ts
 model/ServerExtraInfoTables.ts
 model/ServerIpmiLiveInfo.ts
@@ -352,7 +343,6 @@ model/ServerOrderCpuLi.ts
 model/ServerOrderFieldLabel.ts
 model/ServerOrderFieldLabels.ts
 model/ServerOrderFormValues.ts
-model/ServerOrderGetResponse.ts
 model/ServerOrderIP.ts
 model/ServerOrderIpsLi.ts
 model/ServerOrderMemory.ts
@@ -360,6 +350,8 @@ model/ServerOrderMemoryLi.ts
 model/ServerOrderMemoryLi254.ts
 model/ServerOrderOS.ts
 model/ServerOrderOsLi.ts
+model/ServerOrderPostRequest.ts
+model/ServerOrderPostRequestHd.ts
 model/ServerOrderRAID.ts
 model/ServerRow.ts
 model/ServerServiceInfo.ts
@@ -377,6 +369,7 @@ model/ServiceTypes.ts
 model/Services.ts
 model/ServicesInfo.ts
 model/SslCancel200Response.ts
+model/SslOrderRequest.ts
 model/StatusMonthlyBreakdown.ts
 model/SuccessTextResponse.ts
 model/TemplateRequest.ts
@@ -437,7 +430,6 @@ model/VpsServiceMaster.ts
 model/VpsSnapshot.ts
 model/VpsTemplateRow.ts
 model/VpsTemplatesList.ts
-model/VpsTrafficDataDataResponse.ts
 model/VpsTrafficDataSectionResponse.ts
 model/VpsTrafficHistoryResponse.ts
 model/VpsTrafficHistorySectionDataResponse.ts
@@ -456,6 +448,8 @@ model/WebsiteBillingDetails.ts
 model/WebsiteClientLink.ts
 model/WebsiteExtraInfoTables.ts
 model/WebsiteLoginResponse.ts
+model/WebsiteOrderPostRequest.ts
+model/WebsiteOrderPutRequest.ts
 model/WebsiteRow.ts
 model/WebsiteServiceInfo.ts
 model/WebsiteServiceMaster.ts

@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for MailBlockClickHouse
 void main() {
-  final instance = MailBlockClickHouseBuilder();
-  // TODO add properties to the builder and call build()
+  final MailBlockClickHouse? instance = /* MailBlockClickHouse(...) */ null;
+  // TODO add properties to the entity
 
   group(MailBlockClickHouse, () {
-    // Date date
+    // OffsetDate date
     test('to test the property `date`', () async {
       // TODO
     });

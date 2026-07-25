@@ -11,4 +11,8 @@ Delete geo firewall rule for your scrub ip
 |**ruleId** | **Integer** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

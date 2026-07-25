@@ -18,4 +18,8 @@ Generic response returned after placing a service order. Contains invoice IDs fo
 |**invoiceDescription** | **String** | Human-readable description of the invoice. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

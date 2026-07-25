@@ -1,4 +1,4 @@
-# SwaggerClient::BuyItNowRow
+# InterserverApiClient::BuyItNowRow
 
 ## Properties
 Name | Type | Description | Notes

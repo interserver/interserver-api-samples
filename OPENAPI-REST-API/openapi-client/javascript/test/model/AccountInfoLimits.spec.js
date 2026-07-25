@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountInfoLimits();
+    instance = new InterserverApiClient.AccountInfoLimits();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('AccountInfoLimits', function() {
     it('should create an instance of AccountInfoLimits', function() {
       // uncomment below and update the code to test AccountInfoLimits
-      //var instance = new InterServerManagementApi.AccountInfoLimits();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountInfoLimits);
+      //var instance = new InterserverApiClient.AccountInfoLimits();
+      //expect(instance).to.be.a(InterserverApiClient.AccountInfoLimits);
     });
 
   });

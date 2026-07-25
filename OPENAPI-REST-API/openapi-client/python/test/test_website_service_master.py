@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.website_service_master import WebsiteServiceMaster
+from interserver_api_client.models.website_service_master import WebsiteServiceMaster
 
 class TestWebsiteServiceMaster(unittest.TestCase):
     """WebsiteServiceMaster unit test stubs"""

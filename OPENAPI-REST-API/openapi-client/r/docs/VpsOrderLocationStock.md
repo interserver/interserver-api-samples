@@ -1,4 +1,4 @@
-# openapi::VpsOrderLocationStock
+# interserverapi::VpsOrderLocationStock
 
 Location Stock
 

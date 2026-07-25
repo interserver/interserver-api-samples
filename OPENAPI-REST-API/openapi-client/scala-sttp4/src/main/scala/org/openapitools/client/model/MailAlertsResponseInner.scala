@@ -19,4 +19,3 @@ case class MailAlertsResponseInner(
   alert_to: Option[String] = None,
   alert_enabled: Option[String] = None
 )
-

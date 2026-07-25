@@ -5,13 +5,28 @@
  *
  *)
 
-let add_floating_ip () =
+let add_floating_ip ~floating_ip_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/floating_ips/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `POST uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Floating_ip_order_request.to_yojson
+    
+    
+    
+ floating_ip_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Service_order_post_response.of_yojson) resp body
 
 let floating_ips_cancel ~id =
@@ -169,13 +184,28 @@ let post_floating_ips_change_ip ~id ~ip =
     Cohttp_lwt_unix.Client.call `POST uri ~headers ~body >>= fun (resp, body) ->
     Request.read_json_body_as (JsonSupport.unwrap Success_text_response.of_yojson) resp body
 
-let put_floating_ips () =
+let put_floating_ips ~floating_ip_order_request_t =
     let open Lwt.Infix in
     let uri = Request.build_uri "/floating_ips/order" in
     let headers = Request.default_headers in
     let headers = Cohttp.Header.add headers "X-API-KEY" Request.api_key in
     let headers = Cohttp.Header.add headers "sessionid" Request.api_key in
-    Cohttp_lwt_unix.Client.call `PUT uri ~headers >>= fun (resp, body) ->
+    let body = Request.
+        
+        write_as_json_body     
+    
+    
+    
+    
+    
+    
+                Floating_ip_order_request.to_yojson
+    
+    
+    
+ floating_ip_order_request_t
+    in
+    Cohttp_lwt_unix.Client.call `PUT uri ~headers ~body >>= fun (resp, body) ->
     Request.handle_unit_response resp
 
 let update_floating_ip_info ~id =

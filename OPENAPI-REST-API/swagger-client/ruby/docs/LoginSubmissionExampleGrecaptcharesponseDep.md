@@ -1,4 +1,4 @@
-# SwaggerClient::LoginSubmissionExampleGrecaptcharesponseDep
+# InterserverApiClient::LoginSubmissionExampleGrecaptcharesponseDep
 
 ## Properties
 Name | Type | Description | Notes

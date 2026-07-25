@@ -1,4 +1,4 @@
-# SwaggerClient::CaptchaResponse
+# InterserverApiClient::CaptchaResponse
 
 ## Properties
 Name | Type | Description | Notes

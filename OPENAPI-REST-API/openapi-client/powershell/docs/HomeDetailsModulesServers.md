@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$HomeDetailsModulesServers = Initialize-PSOpenAPIToolsHomeDetailsModulesServers  -Icon server `
+$HomeDetailsModulesServers = Initialize-InterserverApiHomeDetailsModulesServers  -Icon server `
  -ViewLink view_server `
  -Heading Dedicated Servers `
  -BuyLink order_server `

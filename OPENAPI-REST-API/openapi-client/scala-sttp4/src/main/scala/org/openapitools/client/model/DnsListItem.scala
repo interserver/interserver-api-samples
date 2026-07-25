@@ -21,4 +21,3 @@ case class DnsListItem(
   name: Option[String] = None,
   content: Option[String] = None
 )
-

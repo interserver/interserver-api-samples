@@ -1,4 +1,4 @@
-# InterServerManagementApi.AffiliateBannerRow
+# InterserverApiClient.AffiliateBannerRow
 
 ## Properties
 

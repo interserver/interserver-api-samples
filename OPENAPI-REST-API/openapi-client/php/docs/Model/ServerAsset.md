@@ -42,7 +42,7 @@ Name | Type | Description | Notes
 **switchports** | **int[]** | List of switchports associated with the asset. |
 **vlans** | **string[]** | List of VLANs associated with the asset. |
 **vlans6** | **string[]** | List of IPv6 VLANs associated with the asset. |
-**lease** | [**\Interserver\MyAdmin\Model\ServerLease**](ServerLease.md) |  |
+**lease** | [**\Interserver\\MyAdmin\Model\ServerLease**](ServerLease.md) |  |
 **mac** | **string** | MAC address associated with the asset. | [optional]
 **ipmiAdminUsername** | **string** | IPMI admin username associated with the asset. | [optional]
 **ipmiAdminPassword** | **string** | IPMI admin password associated with the asset. | [optional]

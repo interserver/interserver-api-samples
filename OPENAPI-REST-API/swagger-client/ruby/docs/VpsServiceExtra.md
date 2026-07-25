@@ -1,4 +1,4 @@
-# SwaggerClient::VpsServiceExtra
+# InterserverApiClient::VpsServiceExtra
 
 ## Properties
 Name | Type | Description | Notes

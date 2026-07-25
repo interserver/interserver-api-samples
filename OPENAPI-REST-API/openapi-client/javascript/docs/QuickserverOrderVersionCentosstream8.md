@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverOrderVersionCentosstream8
+# InterserverApiClient.QuickserverOrderVersionCentosstream8
 
 ## Properties
 

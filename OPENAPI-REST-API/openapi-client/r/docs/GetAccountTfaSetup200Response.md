@@ -1,4 +1,4 @@
-# openapi::GetAccountTfaSetup200Response
+# interserverapi::GetAccountTfaSetup200Response
 
 
 ## Properties

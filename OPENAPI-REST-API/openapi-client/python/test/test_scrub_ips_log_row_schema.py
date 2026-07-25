@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.scrub_ips_log_row_schema import ScrubIpsLogRowSchema
+from interserver_api_client.models.scrub_ips_log_row_schema import ScrubIpsLogRowSchema
 
 class TestScrubIpsLogRowSchema(unittest.TestCase):
     """ScrubIpsLogRowSchema unit test stubs"""

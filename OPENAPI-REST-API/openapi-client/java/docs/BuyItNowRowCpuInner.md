@@ -14,4 +14,8 @@
 |**numCores** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

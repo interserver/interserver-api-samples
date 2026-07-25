@@ -1,4 +1,4 @@
-# openapi::MailOrder
+# interserverapi::MailOrder
 
 A mail order record
 

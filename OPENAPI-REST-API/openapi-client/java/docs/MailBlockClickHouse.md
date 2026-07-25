@@ -8,11 +8,15 @@ A block entry from the clickhouse mailblocks server.
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**date** | **Date** |  |  |
+|**date** | **LocalDate** |  |  |
 |**from** | **String** |  |  |
 |**messageId** | **String** |  |  |
 |**subject** | **String** |  |  |
 |**to** | **String** |  |  |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

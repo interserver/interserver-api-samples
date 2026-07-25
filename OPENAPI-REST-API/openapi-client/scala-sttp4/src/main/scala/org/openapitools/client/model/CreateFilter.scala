@@ -20,4 +20,3 @@ case class CreateFilter(
   filter_type: String,
   port: Int
 )
-

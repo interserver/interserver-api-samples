@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverServiceExtra = Initialize-PSOpenAPIToolsQuickserverServiceExtra  -Platform kvm
+$QuickserverServiceExtra = Initialize-InterserverApiQuickserverServiceExtra  -Platform kvm
 ```
 
 - Convert the resource to JSON

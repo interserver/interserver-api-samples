@@ -1,4 +1,4 @@
-# openapi::ServerAssets
+# interserverapi::ServerAssets
 
 
 ## Properties

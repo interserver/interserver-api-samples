@@ -1,4 +1,4 @@
-# openapi::MailClientLink
+# interserverapi::MailClientLink
 
 A navigation link for mail service actions in the client portal.
 

@@ -1,4 +1,4 @@
-# openapi::DomainRow
+# interserverapi::DomainRow
 
 A result row from the `Domains` `GET` request.
 

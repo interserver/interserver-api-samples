@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class ServerOrderCpuLi(
   `254`: Option[ServerOrderCPU] = None
 )
-

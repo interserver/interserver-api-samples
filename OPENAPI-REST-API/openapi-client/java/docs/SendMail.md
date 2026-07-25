@@ -14,4 +14,8 @@ Details for an Email
 |**body** | **String** | The main email contents. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

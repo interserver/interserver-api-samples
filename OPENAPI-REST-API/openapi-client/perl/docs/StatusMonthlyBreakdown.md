@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::StatusMonthlyBreakdown
+# InterServerAPI::Object::StatusMonthlyBreakdown
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::StatusMonthlyBreakdown;
+use InterServerAPI::Object::StatusMonthlyBreakdown;
 ```
 
 ## Properties

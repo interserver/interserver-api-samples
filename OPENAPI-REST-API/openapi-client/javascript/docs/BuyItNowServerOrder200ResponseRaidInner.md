@@ -1,4 +1,4 @@
-# InterServerManagementApi.BuyItNowServerOrder200ResponseRaidInner
+# InterserverApiClient.BuyItNowServerOrder200ResponseRaidInner
 
 ## Properties
 

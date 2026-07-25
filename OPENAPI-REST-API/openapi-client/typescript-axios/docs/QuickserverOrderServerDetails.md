@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverOrderServerDetails } from './api';
+import { QuickserverOrderServerDetails } from '@interserver/myadmin-client';
 
 const instance: QuickserverOrderServerDetails = {
     _381,

@@ -20,4 +20,8 @@ Billing information for a QuickServer service including payment status, billing 
 |**serviceExtraJson** | **String** | Extra information (JSON format) |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

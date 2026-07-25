@@ -1,18 +1,20 @@
 ## ScrubIpsApi
 
-### Cancel Scrub IP Service
-## Cancel Scrub IP Service
+### Cancel a Scrub IP service and stop its recurring DDoS billing
+## Cancel a Scrub IP service and stop its recurring DDoS billing
 DELETE https://my.interserver.net/apiv2/scrub_ips/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Create Traffic Filter
-## Create Traffic Filter
+### Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
+## Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
 POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/create_filter
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -23,11 +25,12 @@ sessionid: {{apiKey}}
 }
 
 
-### Create Geo Firewall Rule
-## Create Geo Firewall Rule
+### Add a geographic firewall rule (block/allow by country code or ASN)
+## Add a geographic firewall rule (block/allow by country code or ASN)
 POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/create_geo_rule
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -40,11 +43,12 @@ sessionid: {{apiKey}}
 }
 
 
-### Create Firewall Rule
-## Create Firewall Rule
+### Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
+## Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
 POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/create_rule
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -58,11 +62,12 @@ sessionid: {{apiKey}}
 }
 
 
-### Delete Traffic Filter
-## Delete Traffic Filter
+### Remove a scrubbing filter by matching filter_type and port
+## Remove a scrubbing filter by matching filter_type and port
 POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/delete_filter
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -73,75 +78,84 @@ sessionid: {{apiKey}}
 }
 
 
-### Disable Scrub Protection
-## Disable Scrub Protection
+### Disable DDoS scrubbing and remove the BGP announcement on the IP
+## Disable DDoS scrubbing and remove the BGP announcement on the IP
 GET https://my.interserver.net/apiv2/scrub_ips/{{id}}/disable
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Enable Scrub Protection
-## Enable Scrub Protection
+### Enable DDoS scrubbing (BGP announcement) on the service&#39;s protected IP
+## Enable DDoS scrubbing (BGP announcement) on the service&#39;s protected IP
 GET https://my.interserver.net/apiv2/scrub_ips/{{id}}/enable
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Scrub IP Ordering Information
-## Get Scrub IP Ordering Information
+### Get plans, pricing, and eligible IPs for a new Scrub IP order
+## Get plans, pricing, and eligible IPs for a new Scrub IP order
 GET https://my.interserver.net/apiv2/scrub_ips/order
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Scrub IP Details
-## Get Scrub IP Details
+### Get full Scrub IP service detail (rules + geo + filters)
+## Get full Scrub IP service detail (rules + geo + filters)
 GET https://my.interserver.net/apiv2/scrub_ips/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Scrub Filter Types
-## List Scrub Filter Types
+### List enabled traffic filter profiles available for createFilter
+## List enabled traffic filter profiles available for createFilter
 GET https://my.interserver.net/apiv2/scrub_ips/filter_types
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get ScrubIp Invoices
-## Get ScrubIp Invoices
+### List recurring and one-time invoices billed for this Scrub IP service
+## List recurring and one-time invoices billed for this Scrub IP service
 GET https://my.interserver.net/apiv2/scrub_ips/{{id}}/invoices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get Scrub IP Logs
-## Get Scrub IP Logs
+### Get last 50000 packet/event log entries for the protected IP
+## Get last 50000 packet/event log entries for the protected IP
 GET https://my.interserver.net/apiv2/scrub_ips/{{id}}/logs
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### List Scrub IP Services
-## List Scrub IP Services
+### List all Scrub IP DDoS protection services on the authenticated account
+## List all Scrub IP DDoS protection services on the authenticated account
 GET https://my.interserver.net/apiv2/scrub_ips
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Place Scrub IP Order
-## Place Scrub IP Order
+### Place a new Scrub IP DDoS protection order and generate an invoice
+## Place a new Scrub IP DDoS protection order and generate an invoice
 POST https://my.interserver.net/apiv2/scrub_ips/order
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -152,11 +166,28 @@ sessionid: {{apiKey}}
 }
 
 
-### Delete Geo Firewall Rule
-## Delete Geo Firewall Rule
+### Validate a Scrub IP order and return effective pricing without billing
+## Validate a Scrub IP order and return effective pricing without billing
+PUT https://my.interserver.net/apiv2/scrub_ips/order
+Content-Type: application/json
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+{
+ "service_type": "<number>",
+ "ip": "<string>"
+}
+
+
+### Delete a geo firewall rule by rule_id from getScrubIpDetails
+## Delete a geo firewall rule by rule_id from getScrubIpDetails
 POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/delete_geo_rule
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -166,11 +197,12 @@ sessionid: {{apiKey}}
 }
 
 
-### Delete Firewall Rule
-## Delete Firewall Rule
+### Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
+## Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
 POST https://my.interserver.net/apiv2/scrub_ips/{{id}}/delete_rule
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MailStatsTypeVolumeFrom } from './api';
+import { MailStatsTypeVolumeFrom } from '@interserver/myadmin-client';
 
 const instance: MailStatsTypeVolumeFrom = {
     billingsomedomain_com,

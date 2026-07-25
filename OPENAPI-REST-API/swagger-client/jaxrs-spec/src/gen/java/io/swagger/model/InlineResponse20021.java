@@ -11,30 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class InlineResponse20021   {
 
-  private @Valid Boolean success = null;
-
   private @Valid String text = null;
 
-  /**
-   **/
-  public InlineResponse20021 success(Boolean success) {
-    this.success = success;
-    return this;
-  }
+  private @Valid Integer invoice = null;
 
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("success")
-  @NotNull
-
-  public Boolean isSuccess() {
-    return success;
-  }
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
+  private @Valid Integer order = null;
 
   /**
+   * Status message.
    **/
   public InlineResponse20021 text(String text) {
     this.text = text;
@@ -42,7 +26,7 @@ public class InlineResponse20021   {
   }
 
   
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(example = "Order Completed", value = "Status message.")
   @JsonProperty("text")
   @NotNull
 
@@ -51,6 +35,46 @@ public class InlineResponse20021   {
   }
   public void setText(String text) {
     this.text = text;
+  }
+
+  /**
+   * Invoice ID for payment.
+   **/
+  public InlineResponse20021 invoice(Integer invoice) {
+    this.invoice = invoice;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Invoice ID for payment.")
+  @JsonProperty("invoice")
+  @NotNull
+
+  public Integer getInvoice() {
+    return invoice;
+  }
+  public void setInvoice(Integer invoice) {
+    this.invoice = invoice;
+  }
+
+  /**
+   * Server order ID.
+   **/
+  public InlineResponse20021 order(Integer order) {
+    this.order = order;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "Server order ID.")
+  @JsonProperty("order")
+  @NotNull
+
+  public Integer getOrder() {
+    return order;
+  }
+  public void setOrder(Integer order) {
+    this.order = order;
   }
 
 
@@ -63,13 +87,14 @@ public class InlineResponse20021   {
       return false;
     }
     InlineResponse20021 inlineResponse20021 = (InlineResponse20021) o;
-    return Objects.equals(success, inlineResponse20021.success) &&
-        Objects.equals(text, inlineResponse20021.text);
+    return Objects.equals(text, inlineResponse20021.text) &&
+        Objects.equals(invoice, inlineResponse20021.invoice) &&
+        Objects.equals(order, inlineResponse20021.order);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, text);
+    return Objects.hash(text, invoice, order);
   }
 
   @Override
@@ -77,8 +102,9 @@ public class InlineResponse20021   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20021 {\n");
     
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    invoice: ").append(toIndentedString(invoice)).append("\n");
+    sb.append("    order: ").append(toIndentedString(order)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$WebsiteServiceMaster = Initialize-PSOpenAPIToolsWebsiteServiceMaster  -WebsiteId 543 `
+$WebsiteServiceMaster = Initialize-InterserverApiWebsiteServiceMaster  -WebsiteId 543 `
  -WebsiteName vda4200.is.cc `
  -WebsiteIp 74.50.80.15 `
  -WebsiteType 206 `

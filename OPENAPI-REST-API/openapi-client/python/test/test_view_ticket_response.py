@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.view_ticket_response import ViewTicketResponse
+from interserver_api_client.models.view_ticket_response import ViewTicketResponse
 
 class TestViewTicketResponse(unittest.TestCase):
     """ViewTicketResponse unit test stubs"""
@@ -37,7 +37,7 @@ class TestViewTicketResponse(unittest.TestCase):
         if include_optional:
             return ViewTicketResponse(
                 success = True,
-                ticket = openapi_client.models.ticket_information.Ticket Information(
+                ticket = interserver_api_client.models.ticket_information.Ticket Information(
                     ticketid = 56, 
                     ticketmaskid = '', 
                     department = '', 
@@ -46,7 +46,7 @@ class TestViewTicketResponse(unittest.TestCase):
                     subject = '', 
                     created_on = '', 
                     updated_on = '', ),
-                ticket_custom_fields = openapi_client.models.ticket_custom_field_values.Ticket custom field values(
+                ticket_custom_fields = interserver_api_client.models.ticket_custom_field_values.Ticket custom field values(
                     customer_server_access = 'y', 
                     ip_address = '', 
                     root_password = '', 
@@ -54,7 +54,7 @@ class TestViewTicketResponse(unittest.TestCase):
                     sudo_password = 56, 
                     port = 56, ),
                 ticket_posts = [
-                    openapi_client.models.ticket_post_details_inner.TicketPostDetails_inner(
+                    interserver_api_client.models.ticket_post_details_inner.TicketPostDetails_inner(
                         post_id = 56, 
                         date = '', 
                         contents = '', 
@@ -68,7 +68,7 @@ class TestViewTicketResponse(unittest.TestCase):
         else:
             return ViewTicketResponse(
                 success = True,
-                ticket = openapi_client.models.ticket_information.Ticket Information(
+                ticket = interserver_api_client.models.ticket_information.Ticket Information(
                     ticketid = 56, 
                     ticketmaskid = '', 
                     department = '', 

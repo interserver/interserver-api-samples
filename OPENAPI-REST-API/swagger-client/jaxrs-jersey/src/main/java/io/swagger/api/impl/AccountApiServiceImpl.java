@@ -8,10 +8,10 @@ import io.swagger.model.AccountFeatures;
 import io.swagger.model.AccountInfo;
 import io.swagger.model.AccountInfoPost;
 import io.swagger.model.AccountSshKey;
-import io.swagger.model.BillingAddCcRequest;
 import io.swagger.model.GenericResponse;
 import io.swagger.model.InlineResponse200;
 import io.swagger.model.InlineResponse401;
+import io.swagger.model.InlineResponseMap200;
 import io.swagger.model.IpLimitRange;
 import io.swagger.model.PasswordRequest;
 import io.swagger.model.SuccessTextResponse;
@@ -31,26 +31,6 @@ import javax.validation.constraints.*;
 
 public class AccountApiServiceImpl extends AccountApiService {
     @Override
-    public Response addAccountCreditCard(String name, String address, String city, String state, String country, String zip, String cc, String ccExp, String ccCcv2, SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-    }
-    @Override
-    public Response addAccountCreditCard(BillingAddCcRequest body, SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-    }
-    @Override
-    public Response changeAccountUsername(SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-    }
-    @Override
-    public Response deleteAccountCreditCard(String id, SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-    }
-    @Override
     public Response deleteAccountOauthName(String name, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
@@ -66,7 +46,17 @@ public class AccountApiServiceImpl extends AccountApiService {
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
     @Override
+    public Response getAccountCurrencies(SecurityContext securityContext) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
     public Response getAccountInfo(SecurityContext securityContext) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response getAccountLocales(SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }
@@ -92,11 +82,6 @@ public class AccountApiServiceImpl extends AccountApiService {
     }
     @Override
     public Response updateAccountApiKey(SecurityContext securityContext) throws NotFoundException {
-        // do some magic!
-        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
-    }
-    @Override
-    public Response updateAccountCreditCard(Integer id, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }

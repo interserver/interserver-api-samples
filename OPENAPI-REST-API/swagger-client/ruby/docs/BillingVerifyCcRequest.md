@@ -1,4 +1,4 @@
-# SwaggerClient::BillingVerifyCcRequest
+# InterserverApiClient::BillingVerifyCcRequest
 
 ## Properties
 Name | Type | Description | Notes

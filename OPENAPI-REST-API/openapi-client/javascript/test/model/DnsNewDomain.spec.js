@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DnsNewDomain();
+    instance = new InterserverApiClient.DnsNewDomain();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('DnsNewDomain', function() {
     it('should create an instance of DnsNewDomain', function() {
       // uncomment below and update the code to test DnsNewDomain
-      //var instance = new InterServerManagementApi.DnsNewDomain();
-      //expect(instance).to.be.a(InterServerManagementApi.DnsNewDomain);
+      //var instance = new InterserverApiClient.DnsNewDomain();
+      //expect(instance).to.be.a(InterserverApiClient.DnsNewDomain);
     });
 
     it('should have the property domain (base name: "domain")', function() {
       // uncomment below and update the code to test the property domain
-      //var instance = new InterServerManagementApi.DnsNewDomain();
+      //var instance = new InterserverApiClient.DnsNewDomain();
       //expect(instance).to.be();
     });
 
     it('should have the property ip (base name: "ip")', function() {
       // uncomment below and update the code to test the property ip
-      //var instance = new InterServerManagementApi.DnsNewDomain();
+      //var instance = new InterserverApiClient.DnsNewDomain();
       //expect(instance).to.be();
     });
 

@@ -20,4 +20,3 @@ case class VpsOrderPlatformPackages(
   kvmstorage: Option[Double] = None,
   hyperv: Option[Double] = None
 )
-

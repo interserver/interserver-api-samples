@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SuccessTextResponse = Initialize-PSOpenAPIToolsSuccessTextResponse  -Success null `
+$SuccessTextResponse = Initialize-InterserverApiSuccessTextResponse  -Success null `
  -Text null `
  -Action null
 ```

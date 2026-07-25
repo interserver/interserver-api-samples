@@ -18,6 +18,7 @@ type `Type`* {.pure.} = enum
   Email
   Startswith
   Destination
+  UnknownDefaultOpenApi
 
 type DenyRuleRecord* = object
   ## The data for a email deny rule record.
@@ -33,12 +34,14 @@ func `%`*(v: `Type`): JsonNode =
     of `Type`.Email: %"email"
     of `Type`.Startswith: %"startswith"
     of `Type`.Destination: %"destination"
+    of `Type`.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: `Type`): string =
   result = case v:
     of `Type`.Domain: $("domain")
     of `Type`.Email: $("email")
     of `Type`.Startswith: $("startswith")
     of `Type`.Destination: $("destination")
+    of `Type`.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[`Type`]): `Type` =
   if node.kind != JString:
@@ -53,6 +56,8 @@ proc to*(node: JsonNode, T: typedesc[`Type`]): `Type` =
     return `Type`.Startswith
   of $("destination"):
     return `Type`.Destination
+  of $("11184809"):
+    return `Type`.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for `Type`: " & strVal)
 

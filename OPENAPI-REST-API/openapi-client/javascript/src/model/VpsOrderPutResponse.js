@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsOrderPutResponse model module.
  * @module model/VpsOrderPutResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderPutResponse {
     /**

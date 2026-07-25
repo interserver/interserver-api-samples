@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CloseTicketResponseSchema
+# InterServerAPI::Object::CloseTicketResponseSchema
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CloseTicketResponseSchema;
+use InterServerAPI::Object::CloseTicketResponseSchema;
 ```
 
 ## Properties

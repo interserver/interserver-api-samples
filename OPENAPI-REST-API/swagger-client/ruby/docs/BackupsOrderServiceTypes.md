@@ -1,4 +1,4 @@
-# SwaggerClient::BackupsOrderServiceTypes
+# InterserverApiClient::BackupsOrderServiceTypes
 
 ## Properties
 Name | Type | Description | Notes

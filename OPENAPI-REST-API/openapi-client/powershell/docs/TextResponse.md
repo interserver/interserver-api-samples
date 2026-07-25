@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TextResponse = Initialize-PSOpenAPIToolsTextResponse  -Text &quot;You were successfull.&quot; `
+$TextResponse = Initialize-InterserverApiTextResponse  -Text &quot;You were successfull.&quot; `
  -Message null
 ```
 

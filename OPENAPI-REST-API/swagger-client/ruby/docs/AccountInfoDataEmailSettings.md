@@ -1,4 +1,4 @@
-# SwaggerClient::AccountInfoDataEmailSettings
+# InterserverApiClient::AccountInfoDataEmailSettings
 
 ## Properties
 Name | Type | Description | Notes

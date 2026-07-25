@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CreateFirewallRule model module.
  * @module model/CreateFirewallRule
- * @version 0.9.0
+ * @version 1.0.0
  */
 class CreateFirewallRule {
     /**
@@ -151,7 +151,13 @@ CreateFirewallRule['ProtocolIdEnum'] = {
      * value: 2
      * @const
      */
-    "2": 2
+    "2": 2,
+
+    /**
+     * value: 11184809
+     * @const
+     */
+    "unknown_default_open_api": 11184809
 };
 
 
@@ -172,7 +178,13 @@ CreateFirewallRule['XdpActionEnum'] = {
      * value: 1
      * @const
      */
-    "1": 1
+    "1": 1,
+
+    /**
+     * value: 11184809
+     * @const
+     */
+    "unknown_default_open_api": 11184809
 };
 
 

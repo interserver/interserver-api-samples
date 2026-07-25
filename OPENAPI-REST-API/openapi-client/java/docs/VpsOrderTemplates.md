@@ -11,4 +11,8 @@ Templates
 |**hyperv** | [**VpsOrderTemplatesHyperv**](VpsOrderTemplatesHyperv.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

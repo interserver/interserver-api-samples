@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DeleteGeoFirewallRule = Initialize-PSOpenAPIToolsDeleteGeoFirewallRule  -RuleId 2045
+$DeleteGeoFirewallRule = Initialize-InterserverApiDeleteGeoFirewallRule  -RuleId 2045
 ```
 
 - Convert the resource to JSON

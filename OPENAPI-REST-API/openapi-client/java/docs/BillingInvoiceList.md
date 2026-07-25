@@ -12,4 +12,8 @@ Summary list of invoices for the account.
 |**summary** | **Object** | Totals and summary data for the invoices list. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

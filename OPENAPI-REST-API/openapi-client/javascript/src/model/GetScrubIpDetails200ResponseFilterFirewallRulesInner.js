@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetScrubIpDetails200ResponseFilterFirewallRulesInner model module.
  * @module model/GetScrubIpDetails200ResponseFilterFirewallRulesInner
- * @version 0.9.0
+ * @version 1.0.0
  */
 class GetScrubIpDetails200ResponseFilterFirewallRulesInner {
     /**

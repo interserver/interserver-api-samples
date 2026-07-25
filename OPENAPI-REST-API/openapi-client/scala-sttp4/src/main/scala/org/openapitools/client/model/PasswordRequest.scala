@@ -19,4 +19,3 @@ package org.openapitools.client.model
 case class PasswordRequest(
   password: String
 )
-

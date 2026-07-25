@@ -21,4 +21,3 @@ case class MailTutorialsTable(
   /* The rows of the tutorials table. */
   rows: Option[Seq[MailTutorialsTableRow]] = None
 )
-

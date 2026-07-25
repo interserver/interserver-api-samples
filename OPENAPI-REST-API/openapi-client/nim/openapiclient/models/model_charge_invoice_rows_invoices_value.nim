@@ -17,6 +17,7 @@ import model_charge_invoice_rows_invoices_value_paid_invoices_value
 type InvoicesPaid* {.pure.} = enum
   `0`
   `1`
+  UnknownDefaultOpenApi
 
 type ChargeInvoiceRowsInvoicesValue* = object
   ## 
@@ -35,10 +36,12 @@ func `%`*(v: InvoicesPaid): JsonNode =
   result = case v:
     of InvoicesPaid.`0`: %"0"
     of InvoicesPaid.`1`: %"1"
+    of InvoicesPaid.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: InvoicesPaid): string =
   result = case v:
     of InvoicesPaid.`0`: $("0")
     of InvoicesPaid.`1`: $("1")
+    of InvoicesPaid.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[InvoicesPaid]): InvoicesPaid =
   if node.kind != JString:
@@ -49,6 +52,8 @@ proc to*(node: JsonNode, T: typedesc[InvoicesPaid]): InvoicesPaid =
     return InvoicesPaid.`0`
   of $("1"):
     return InvoicesPaid.`1`
+  of $("11184809"):
+    return InvoicesPaid.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for InvoicesPaid: " & strVal)
 

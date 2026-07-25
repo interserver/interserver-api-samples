@@ -17,4 +17,3 @@ case class GetOrderDetail200ResponseIpsInner(
   service_module: Option[String] = None,
   service_hostname: Option[String] = None
 )
-

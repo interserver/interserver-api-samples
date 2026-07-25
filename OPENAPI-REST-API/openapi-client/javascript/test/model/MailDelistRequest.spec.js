@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailDelistRequest();
+    instance = new InterserverApiClient.MailDelistRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('MailDelistRequest', function() {
     it('should create an instance of MailDelistRequest', function() {
       // uncomment below and update the code to test MailDelistRequest
-      //var instance = new InterServerManagementApi.MailDelistRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.MailDelistRequest);
+      //var instance = new InterserverApiClient.MailDelistRequest();
+      //expect(instance).to.be.a(InterserverApiClient.MailDelistRequest);
     });
 
     it('should have the property unblock (base name: "unblock")', function() {
       // uncomment below and update the code to test the property unblock
-      //var instance = new InterServerManagementApi.MailDelistRequest();
+      //var instance = new InterserverApiClient.MailDelistRequest();
       //expect(instance).to.be();
     });
 

@@ -1,4 +1,4 @@
-# SwaggerClient::VpsOrderLocationStock
+# InterserverApiClient::VpsOrderLocationStock
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# InterServerManagementApi.PostWebsiteMigrationRequest
+# InterserverApiClient.PostWebsiteMigrationRequest
 
 ## Properties
 

@@ -60,10 +60,6 @@ void OAIDomainsApi::initializeServerConfigs() {
     _serverIndices.insert("getDomainLookup", 0);
     _serverConfigs.insert("getDomainNameservers", defaultConf);
     _serverIndices.insert("getDomainNameservers", 0);
-    _serverConfigs.insert("getDomainOrderFields", defaultConf);
-    _serverIndices.insert("getDomainOrderFields", 0);
-    _serverConfigs.insert("getDomainOrderSearchResults", defaultConf);
-    _serverIndices.insert("getDomainOrderSearchResults", 0);
     _serverConfigs.insert("getDomainRenewal", defaultConf);
     _serverIndices.insert("getDomainRenewal", 0);
     _serverConfigs.insert("getDomainSearch", defaultConf);
@@ -82,6 +78,8 @@ void OAIDomainsApi::initializeServerConfigs() {
     _serverIndices.insert("patchDomains", 0);
     _serverConfigs.insert("postDomainRenewal", defaultConf);
     _serverIndices.insert("postDomainRenewal", 0);
+    _serverConfigs.insert("postDomainSearch", defaultConf);
+    _serverIndices.insert("postDomainSearch", 0);
     _serverConfigs.insert("postDomainTransfer", defaultConf);
     _serverIndices.insert("postDomainTransfer", 0);
     _serverConfigs.insert("putDomains", defaultConf);
@@ -275,7 +273,7 @@ QString OAIDomainsApi::getParamStyleDelimiter(const QString &style, const QStrin
     }
 }
 
-void OAIDomainsApi::addDomain() {
+void OAIDomainsApi::addDomain(const OAIDomainOrderRequest &oai_domain_order_request) {
     QString fullPath = QString(_serverConfigs["addDomain"][_serverIndices.value("addDomain")].URL()+"/domains/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -291,7 +289,12 @@ void OAIDomainsApi::addDomain() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
+    {
 
+        
+        QByteArray output = oai_domain_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -535,7 +538,7 @@ void OAIDomainsApi::cancelDomainCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIDomainsApi::deleteDomainDnssec(const qint32 &id, const QString &action) {
+void OAIDomainsApi::deleteDomainDnssec(const qint32 &id) {
     QString fullPath = QString(_serverConfigs["deleteDomainDnssec"][_serverIndices.value("deleteDomainDnssec")].URL()+"/domains/{id}/dnssec");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -559,22 +562,6 @@ void OAIDomainsApi::deleteDomainDnssec(const qint32 &id, const QString &action) 
         pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
         QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
         fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
-    }
-    QString queryPrefix, querySuffix, queryDelimiter, queryStyle;
-    
-    {
-        queryStyle = "form";
-        if (queryStyle == "")
-            queryStyle = "form";
-        queryPrefix = getParamStylePrefix(queryStyle);
-        querySuffix = getParamStyleSuffix(queryStyle);
-        queryDelimiter = getParamStyleDelimiter(queryStyle, "action", true);
-        if (fullPath.indexOf("?") > 0)
-            fullPath.append(queryPrefix);
-        else
-            fullPath.append("?");
-
-        fullPath.append(QUrl::toPercentEncoding("action")).append(querySuffix).append(QUrl::toPercentEncoding(::OpenAPI::toStringValue(action)));
     }
     OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
     worker->setTimeOut(_timeOut);
@@ -1095,150 +1082,6 @@ void OAIDomainsApi::getDomainNameserversCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIDomainsApi::getDomainOrderFields(const QString &domain, const QString &reg_type) {
-    QString fullPath = QString(_serverConfigs["getDomainOrderFields"][_serverIndices.value("getDomainOrderFields")].URL()+"/domains/order/{domain}/{regType}");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    
-    {
-        QString domainPathParam("{");
-        domainPathParam.append("domain").append("}");
-        QString pathPrefix, pathSuffix, pathDelimiter;
-        QString pathStyle = "simple";
-        if (pathStyle == "")
-            pathStyle = "simple";
-        pathPrefix = getParamStylePrefix(pathStyle);
-        pathSuffix = getParamStyleSuffix(pathStyle);
-        pathDelimiter = getParamStyleDelimiter(pathStyle, "domain", false);
-        QString paramString = (pathStyle == "matrix") ? pathPrefix+"domain"+pathSuffix : pathPrefix;
-        fullPath.replace(domainPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(domain)));
-    }
-    
-    {
-        QString reg_typePathParam("{");
-        reg_typePathParam.append("regType").append("}");
-        QString pathPrefix, pathSuffix, pathDelimiter;
-        QString pathStyle = "simple";
-        if (pathStyle == "")
-            pathStyle = "simple";
-        pathPrefix = getParamStylePrefix(pathStyle);
-        pathSuffix = getParamStyleSuffix(pathStyle);
-        pathDelimiter = getParamStyleDelimiter(pathStyle, "regType", false);
-        QString paramString = (pathStyle == "matrix") ? pathPrefix+"regType"+pathSuffix : pathPrefix;
-        fullPath.replace(reg_typePathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(reg_type)));
-    }
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "GET");
-
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIDomainsApi::getDomainOrderFieldsCallback);
-    connect(this, &OAIDomainsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAIDomainsApi::getDomainOrderFieldsCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getDomainOrderFieldsSignal();
-        Q_EMIT getDomainOrderFieldsSignalFull(worker);
-    } else {
-        Q_EMIT getDomainOrderFieldsSignalError(error_type, error_str);
-        Q_EMIT getDomainOrderFieldsSignalErrorFull(worker, error_type, error_str);
-    }
-}
-
-void OAIDomainsApi::getDomainOrderSearchResults(const QString &domain) {
-    QString fullPath = QString(_serverConfigs["getDomainOrderSearchResults"][_serverIndices.value("getDomainOrderSearchResults")].URL()+"/domains/order/{domain}");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    
-    {
-        QString domainPathParam("{");
-        domainPathParam.append("domain").append("}");
-        QString pathPrefix, pathSuffix, pathDelimiter;
-        QString pathStyle = "simple";
-        if (pathStyle == "")
-            pathStyle = "simple";
-        pathPrefix = getParamStylePrefix(pathStyle);
-        pathSuffix = getParamStyleSuffix(pathStyle);
-        pathDelimiter = getParamStyleDelimiter(pathStyle, "domain", false);
-        QString paramString = (pathStyle == "matrix") ? pathPrefix+"domain"+pathSuffix : pathPrefix;
-        fullPath.replace(domainPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(domain)));
-    }
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "GET");
-
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIDomainsApi::getDomainOrderSearchResultsCallback);
-    connect(this, &OAIDomainsApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAIDomainsApi::getDomainOrderSearchResultsCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT getDomainOrderSearchResultsSignal();
-        Q_EMIT getDomainOrderSearchResultsSignalFull(worker);
-    } else {
-        Q_EMIT getDomainOrderSearchResultsSignalError(error_type, error_str);
-        Q_EMIT getDomainOrderSearchResultsSignalErrorFull(worker, error_type, error_str);
-    }
-}
-
 void OAIDomainsApi::getDomainRenewal(const qint32 &id) {
     QString fullPath = QString(_serverConfigs["getDomainRenewal"][_serverIndices.value("getDomainRenewal")].URL()+"/domains/{id}/renew");
     
@@ -1682,7 +1525,7 @@ void OAIDomainsApi::getNewDomainCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIDomainsApi::patchDomains() {
+void OAIDomainsApi::patchDomains(const OAIDomainOrderRequest &oai_domain_order_request) {
     QString fullPath = QString(_serverConfigs["patchDomains"][_serverIndices.value("patchDomains")].URL()+"/domains/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -1698,7 +1541,12 @@ void OAIDomainsApi::patchDomains() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "PATCH");
 
+    {
 
+        
+        QByteArray output = oai_domain_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -1799,6 +1647,71 @@ void OAIDomainsApi::postDomainRenewalCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
+void OAIDomainsApi::postDomainSearch(const QString &name) {
+    QString fullPath = QString(_serverConfigs["postDomainSearch"][_serverIndices.value("postDomainSearch")].URL()+"/domains/search/{name}");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString namePathParam("{");
+        namePathParam.append("name").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "name", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"name"+pathSuffix : pathPrefix;
+        fullPath.replace(namePathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(name)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "POST");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIDomainsApi::postDomainSearchCallback);
+    connect(this, &OAIDomainsApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIDomainsApi::postDomainSearchCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT postDomainSearchSignal();
+        Q_EMIT postDomainSearchSignalFull(worker);
+    } else {
+        Q_EMIT postDomainSearchSignalError(error_type, error_str);
+        Q_EMIT postDomainSearchSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
 void OAIDomainsApi::postDomainTransfer(const qint32 &id) {
     QString fullPath = QString(_serverConfigs["postDomainTransfer"][_serverIndices.value("postDomainTransfer")].URL()+"/domains/{id}/transfer");
     
@@ -1865,7 +1778,7 @@ void OAIDomainsApi::postDomainTransferCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIDomainsApi::putDomains() {
+void OAIDomainsApi::putDomains(const OAIDomainOrderRequest &oai_domain_order_request) {
     QString fullPath = QString(_serverConfigs["putDomains"][_serverIndices.value("putDomains")].URL()+"/domains/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -1881,7 +1794,12 @@ void OAIDomainsApi::putDomains() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "PUT");
 
+    {
 
+        
+        QByteArray output = oai_domain_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -1987,7 +1905,7 @@ void OAIDomainsApi::updateDomainContactCallback(OAIHttpRequestWorker *worker) {
     }
 }
 
-void OAIDomainsApi::updateDomainInfo(const QString &id) {
+void OAIDomainsApi::updateDomainInfo(const qint32 &id) {
     QString fullPath = QString(_serverConfigs["updateDomainInfo"][_serverIndices.value("updateDomainInfo")].URL()+"/domains/{id}");
     
     if (_apiKeys.contains("apiKeyAuth")) {

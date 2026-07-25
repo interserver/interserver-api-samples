@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerOrderRAID
+# InterServerAPI::Object::ServerOrderRAID
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerOrderRAID;
+use InterServerAPI::Object::ServerOrderRAID;
 ```
 
 ## Properties

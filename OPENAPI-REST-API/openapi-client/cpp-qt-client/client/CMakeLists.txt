@@ -35,8 +35,6 @@ add_library(${PROJECT_NAME}
   OAIAffiliateDockSetup.h
   OAIAffiliatePaymentSetup.h
   OAIAffiliateTrafficRow.h
-  OAIAssetServer.h
-  OAIAssetServer_CPU_inner.h
   OAIBackup.h
   OAIBackupBillingDetails.h
   OAIBackupClientLink.h
@@ -55,7 +53,6 @@ add_library(${PROJECT_NAME}
   OAIBackupsOrderPackageCosts.h
   OAIBackupsOrderServiceTypes.h
   OAIBackupsOrder_serviceTypes.h
-  OAIBandwidth.h
   OAIBillingAddCcRequest.h
   OAIBillingInvoiceDetail.h
   OAIBillingInvoiceList.h
@@ -81,11 +78,6 @@ add_library(${PROJECT_NAME}
   OAIChargeInvoiceRows_invoices_value_paid_invoices_value.h
   OAIChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value.h
   OAICloseTicketResponseSchema.h
-  OAIConfigIds.h
-  OAIConfigLists.h
-  OAIControlPanel.h
-  OAICpu.h
-  OAICpuWithDefaults.h
   OAICreateFilter.h
   OAICreateFilter_201_response.h
   OAICreateFilter_400_response.h
@@ -99,6 +91,7 @@ add_library(${PROJECT_NAME}
   OAIDeleteFilter_200_response.h
   OAIDeleteFilter_400_response.h
   OAIDeleteFilter_500_response.h
+  OAIDeleteMailAlert_request.h
   OAIDelete_Firewall_Rule.h
   OAIDelete_Geo_Firewall_Rule.h
   OAIDenyRuleNew.h
@@ -131,10 +124,10 @@ add_library(${PROJECT_NAME}
   OAIDomainNameserverPostRequest.h
   OAIDomainNameserverPutRequest.h
   OAIDomainOrder.h
+  OAIDomainOrderRequest.h
   OAIDomainOrderResponse.h
   OAIDomainOrderResponse_attributes.h
   OAIDomainOrderServices10001.h
-  OAIDomainOrderTldServices.h
   OAIDomainOrder_services.h
   OAIDomainOwnerContact.h
   OAIDomainProvProcessPending.h
@@ -151,12 +144,13 @@ add_library(${PROJECT_NAME}
   OAIEmailAddressName.h
   OAIEnableScrub_200_response.h
   OAIEnableScrub_500_response.h
-  OAIFieldLabel.h
+  OAIFloatingIpOrderRequest.h
   OAIFloating_ipsCancel_200_response.h
-  OAIFormValues.h
   OAIGenericResponse.h
   OAIGetAccountInfo_401_response.h
+  OAIGetAccountLocales_200_response_value.h
   OAIGetAccountTfaSetup_200_response.h
+  OAIGetAffiliateSignups_200_response.h
   OAIGetOauthRedirect_200_response.h
   OAIGetOrderDetail_200_response.h
   OAIGetOrderDetail_200_response_ips_inner.h
@@ -173,7 +167,6 @@ add_library(${PROJECT_NAME}
   OAIGetScrubIpDetails_200_response_filter_firewall_rules_inner.h
   OAIGetScrubIpDetails_200_response_serviceInfo.h
   OAIGetWebsiteBuyIp_200_response.h
-  OAIHardDrive.h
   OAIHome.h
   OAIHomeDetailsModulesBackups.h
   OAIHomeDetailsModulesDomains.h
@@ -200,10 +193,6 @@ add_library(${PROJECT_NAME}
   OAIHome_ticketStatusView.h
   OAIHostnameObject.h
   OAIInitiatePayment_200_response.h
-  OAIInline_object.h
-  OAIInvoice.h
-  OAIInvoiceRow.h
-  OAIIpBlock.h
   OAIIpLimitRange.h
   OAIIpObject.h
   OAILicense.h
@@ -211,6 +200,7 @@ add_library(${PROJECT_NAME}
   OAILicenseClientLink.h
   OAILicenseIpInfo.h
   OAILicenseIpInfoRow.h
+  OAILicenseOrderRequest.h
   OAILicenseRow.h
   OAILicenseServiceInfo.h
   OAILicenseServiceType.h
@@ -248,6 +238,7 @@ add_library(${PROJECT_NAME}
   OAIMailLog.h
   OAIMailLogEntry.h
   OAIMailOrder.h
+  OAIMailOrderRequest.h
   OAIMailRow.h
   OAIMailSchema.h
   OAIMailSchema_extraInfoTables.h
@@ -260,15 +251,13 @@ add_library(${PROJECT_NAME}
   OAIMailStatsType_volume_to.h
   OAIMailTutorialsTable.h
   OAIMailTutorialsTableRow.h
-  OAIMemoryOption.h
   OAIModuleSettings.h
   OAIModules.h
   OAIMonthlyCounts.h
-  OAIOperatingSystem.h
   OAIPasswordRequest.h
+  OAIPatchBillingCreditCardVerify_request.h
   OAIPatchOauthTwoFactor_200_response.h
   OAIPatchOauthTwoFactor_request.h
-  OAIPaymentInvoiceRows.h
   OAIPlaceBuyNowServer_request.h
   OAIPlaceScrubOrder_201_response.h
   OAIPlaceScrubOrder_201_response_order_details.h
@@ -279,6 +268,8 @@ add_library(${PROJECT_NAME}
   OAIPostWebsiteBuyIp_request.h
   OAIPostWebsiteMigration_200_response.h
   OAIPostWebsiteMigration_request.h
+  OAIPutScrubIps_200_response.h
+  OAIQsOrderRequest.h
   OAIQueueResponse.h
   OAIQuickserver.h
   OAIQuickserverAddons.h
@@ -303,8 +294,6 @@ add_library(${PROJECT_NAME}
   OAIQuickserver_extraInfoTables.h
   OAIQuickserver_serviceExtra.h
   OAIQuickserversCancel_200_response.h
-  OAIRaidOption.h
-  OAIRegion.h
   OAIReplyTicketRequest.h
   OAIReplyTicketResponseSchema.h
   OAIRestoreRequest.h
@@ -324,6 +313,8 @@ add_library(${PROJECT_NAME}
   OAIServerAsset.h
   OAIServerAssets.h
   OAIServerBillingDetails.h
+  OAIServerBulkIpmiPowerResponse.h
+  OAIServerBulkIpmiPowerResponse_results_inner.h
   OAIServerClientLink.h
   OAIServerExtraInfoTables.h
   OAIServerIpmiLiveInfo.h
@@ -342,10 +333,11 @@ add_library(${PROJECT_NAME}
   OAIServerOrderFieldLabel.h
   OAIServerOrderFieldLabels.h
   OAIServerOrderFormValues.h
-  OAIServerOrderGetResponse.h
   OAIServerOrderIP.h
   OAIServerOrderMemory.h
   OAIServerOrderOS.h
+  OAIServerOrderPostRequest.h
+  OAIServerOrderPostRequest_hd.h
   OAIServerOrderRAID.h
   OAIServerOrder_bandwidth_li.h
   OAIServerOrder_cp_li.h
@@ -371,6 +363,7 @@ add_library(${PROJECT_NAME}
   OAIServices.h
   OAIServicesInfo.h
   OAISslCancel_200_response.h
+  OAISslOrderRequest.h
   OAIStatusMonthlyBreakdown.h
   OAISuccessTextResponse.h
   OAITemplateRequest.h
@@ -431,7 +424,6 @@ add_library(${PROJECT_NAME}
   OAIVpsSnapshot.h
   OAIVpsTemplateRow.h
   OAIVpsTemplatesList.h
-  OAIVpsTrafficDataDataResponse.h
   OAIVpsTrafficDataSectionResponse.h
   OAIVpsTrafficHistoryResponse.h
   OAIVpsTrafficHistorySectionDataResponse.h
@@ -450,6 +442,8 @@ add_library(${PROJECT_NAME}
   OAIWebsiteClientLink.h
   OAIWebsiteExtraInfoTables.h
   OAIWebsiteLoginResponse.h
+  OAIWebsiteOrderPostRequest.h
+  OAIWebsiteOrderPutRequest.h
   OAIWebsiteRow.h
   OAIWebsiteServiceInfo.h
   OAIWebsiteServiceMaster.h
@@ -514,8 +508,6 @@ add_library(${PROJECT_NAME}
   OAIAffiliateDockSetup.cpp
   OAIAffiliatePaymentSetup.cpp
   OAIAffiliateTrafficRow.cpp
-  OAIAssetServer.cpp
-  OAIAssetServer_CPU_inner.cpp
   OAIBackup.cpp
   OAIBackupBillingDetails.cpp
   OAIBackupClientLink.cpp
@@ -534,7 +526,6 @@ add_library(${PROJECT_NAME}
   OAIBackupsOrderPackageCosts.cpp
   OAIBackupsOrderServiceTypes.cpp
   OAIBackupsOrder_serviceTypes.cpp
-  OAIBandwidth.cpp
   OAIBillingAddCcRequest.cpp
   OAIBillingInvoiceDetail.cpp
   OAIBillingInvoiceList.cpp
@@ -560,11 +551,6 @@ add_library(${PROJECT_NAME}
   OAIChargeInvoiceRows_invoices_value_paid_invoices_value.cpp
   OAIChargeInvoiceRows_invoices_value_paid_invoices_value_refund_invoices_value.cpp
   OAICloseTicketResponseSchema.cpp
-  OAIConfigIds.cpp
-  OAIConfigLists.cpp
-  OAIControlPanel.cpp
-  OAICpu.cpp
-  OAICpuWithDefaults.cpp
   OAICreateFilter.cpp
   OAICreateFilter_201_response.cpp
   OAICreateFilter_400_response.cpp
@@ -578,6 +564,7 @@ add_library(${PROJECT_NAME}
   OAIDeleteFilter_200_response.cpp
   OAIDeleteFilter_400_response.cpp
   OAIDeleteFilter_500_response.cpp
+  OAIDeleteMailAlert_request.cpp
   OAIDelete_Firewall_Rule.cpp
   OAIDelete_Geo_Firewall_Rule.cpp
   OAIDenyRuleNew.cpp
@@ -610,10 +597,10 @@ add_library(${PROJECT_NAME}
   OAIDomainNameserverPostRequest.cpp
   OAIDomainNameserverPutRequest.cpp
   OAIDomainOrder.cpp
+  OAIDomainOrderRequest.cpp
   OAIDomainOrderResponse.cpp
   OAIDomainOrderResponse_attributes.cpp
   OAIDomainOrderServices10001.cpp
-  OAIDomainOrderTldServices.cpp
   OAIDomainOrder_services.cpp
   OAIDomainOwnerContact.cpp
   OAIDomainProvProcessPending.cpp
@@ -630,12 +617,13 @@ add_library(${PROJECT_NAME}
   OAIEmailAddressName.cpp
   OAIEnableScrub_200_response.cpp
   OAIEnableScrub_500_response.cpp
-  OAIFieldLabel.cpp
+  OAIFloatingIpOrderRequest.cpp
   OAIFloating_ipsCancel_200_response.cpp
-  OAIFormValues.cpp
   OAIGenericResponse.cpp
   OAIGetAccountInfo_401_response.cpp
+  OAIGetAccountLocales_200_response_value.cpp
   OAIGetAccountTfaSetup_200_response.cpp
+  OAIGetAffiliateSignups_200_response.cpp
   OAIGetOauthRedirect_200_response.cpp
   OAIGetOrderDetail_200_response.cpp
   OAIGetOrderDetail_200_response_ips_inner.cpp
@@ -652,7 +640,6 @@ add_library(${PROJECT_NAME}
   OAIGetScrubIpDetails_200_response_filter_firewall_rules_inner.cpp
   OAIGetScrubIpDetails_200_response_serviceInfo.cpp
   OAIGetWebsiteBuyIp_200_response.cpp
-  OAIHardDrive.cpp
   OAIHome.cpp
   OAIHomeDetailsModulesBackups.cpp
   OAIHomeDetailsModulesDomains.cpp
@@ -679,10 +666,6 @@ add_library(${PROJECT_NAME}
   OAIHome_ticketStatusView.cpp
   OAIHostnameObject.cpp
   OAIInitiatePayment_200_response.cpp
-  OAIInline_object.cpp
-  OAIInvoice.cpp
-  OAIInvoiceRow.cpp
-  OAIIpBlock.cpp
   OAIIpLimitRange.cpp
   OAIIpObject.cpp
   OAILicense.cpp
@@ -690,6 +673,7 @@ add_library(${PROJECT_NAME}
   OAILicenseClientLink.cpp
   OAILicenseIpInfo.cpp
   OAILicenseIpInfoRow.cpp
+  OAILicenseOrderRequest.cpp
   OAILicenseRow.cpp
   OAILicenseServiceInfo.cpp
   OAILicenseServiceType.cpp
@@ -727,6 +711,7 @@ add_library(${PROJECT_NAME}
   OAIMailLog.cpp
   OAIMailLogEntry.cpp
   OAIMailOrder.cpp
+  OAIMailOrderRequest.cpp
   OAIMailRow.cpp
   OAIMailSchema.cpp
   OAIMailSchema_extraInfoTables.cpp
@@ -739,15 +724,13 @@ add_library(${PROJECT_NAME}
   OAIMailStatsType_volume_to.cpp
   OAIMailTutorialsTable.cpp
   OAIMailTutorialsTableRow.cpp
-  OAIMemoryOption.cpp
   OAIModuleSettings.cpp
   OAIModules.cpp
   OAIMonthlyCounts.cpp
-  OAIOperatingSystem.cpp
   OAIPasswordRequest.cpp
+  OAIPatchBillingCreditCardVerify_request.cpp
   OAIPatchOauthTwoFactor_200_response.cpp
   OAIPatchOauthTwoFactor_request.cpp
-  OAIPaymentInvoiceRows.cpp
   OAIPlaceBuyNowServer_request.cpp
   OAIPlaceScrubOrder_201_response.cpp
   OAIPlaceScrubOrder_201_response_order_details.cpp
@@ -758,6 +741,8 @@ add_library(${PROJECT_NAME}
   OAIPostWebsiteBuyIp_request.cpp
   OAIPostWebsiteMigration_200_response.cpp
   OAIPostWebsiteMigration_request.cpp
+  OAIPutScrubIps_200_response.cpp
+  OAIQsOrderRequest.cpp
   OAIQueueResponse.cpp
   OAIQuickserver.cpp
   OAIQuickserverAddons.cpp
@@ -782,8 +767,6 @@ add_library(${PROJECT_NAME}
   OAIQuickserver_extraInfoTables.cpp
   OAIQuickserver_serviceExtra.cpp
   OAIQuickserversCancel_200_response.cpp
-  OAIRaidOption.cpp
-  OAIRegion.cpp
   OAIReplyTicketRequest.cpp
   OAIReplyTicketResponseSchema.cpp
   OAIRestoreRequest.cpp
@@ -803,6 +786,8 @@ add_library(${PROJECT_NAME}
   OAIServerAsset.cpp
   OAIServerAssets.cpp
   OAIServerBillingDetails.cpp
+  OAIServerBulkIpmiPowerResponse.cpp
+  OAIServerBulkIpmiPowerResponse_results_inner.cpp
   OAIServerClientLink.cpp
   OAIServerExtraInfoTables.cpp
   OAIServerIpmiLiveInfo.cpp
@@ -821,10 +806,11 @@ add_library(${PROJECT_NAME}
   OAIServerOrderFieldLabel.cpp
   OAIServerOrderFieldLabels.cpp
   OAIServerOrderFormValues.cpp
-  OAIServerOrderGetResponse.cpp
   OAIServerOrderIP.cpp
   OAIServerOrderMemory.cpp
   OAIServerOrderOS.cpp
+  OAIServerOrderPostRequest.cpp
+  OAIServerOrderPostRequest_hd.cpp
   OAIServerOrderRAID.cpp
   OAIServerOrder_bandwidth_li.cpp
   OAIServerOrder_cp_li.cpp
@@ -850,6 +836,7 @@ add_library(${PROJECT_NAME}
   OAIServices.cpp
   OAIServicesInfo.cpp
   OAISslCancel_200_response.cpp
+  OAISslOrderRequest.cpp
   OAIStatusMonthlyBreakdown.cpp
   OAISuccessTextResponse.cpp
   OAITemplateRequest.cpp
@@ -910,7 +897,6 @@ add_library(${PROJECT_NAME}
   OAIVpsSnapshot.cpp
   OAIVpsTemplateRow.cpp
   OAIVpsTemplatesList.cpp
-  OAIVpsTrafficDataDataResponse.cpp
   OAIVpsTrafficDataSectionResponse.cpp
   OAIVpsTrafficHistoryResponse.cpp
   OAIVpsTrafficHistorySectionDataResponse.cpp
@@ -929,6 +915,8 @@ add_library(${PROJECT_NAME}
   OAIWebsiteClientLink.cpp
   OAIWebsiteExtraInfoTables.cpp
   OAIWebsiteLoginResponse.cpp
+  OAIWebsiteOrderPostRequest.cpp
+  OAIWebsiteOrderPutRequest.cpp
   OAIWebsiteRow.cpp
   OAIWebsiteServiceInfo.cpp
   OAIWebsiteServiceMaster.cpp

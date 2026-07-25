@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VpsServiceInfo model module.
  * @module model/VpsServiceInfo
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsServiceInfo {
     /**

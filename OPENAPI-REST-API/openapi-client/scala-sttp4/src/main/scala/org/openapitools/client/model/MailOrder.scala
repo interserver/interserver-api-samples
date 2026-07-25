@@ -26,4 +26,3 @@ case class MailOrder(
   /* Optional order comment. */
   comment: Option[String] = None
 )
-

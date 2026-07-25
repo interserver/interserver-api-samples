@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.mail_api import MailApi
+from interserver_api_client.api.mail_api import MailApi
 
 
 class TestMailApi(unittest.TestCase):
@@ -30,182 +30,189 @@ class TestMailApi(unittest.TestCase):
     def test_add_mail(self) -> None:
         """Test case for add_mail
 
-        Place Mail Order
+        Place a new Mail Baby order, generate invoice, and queue provisioning
         """
         pass
 
     def test_add_rule(self) -> None:
         """Test case for add_rule
 
-        Create Deny Rule
+        Create a new deny rule to auto-block matching submissions
         """
         pass
 
     def test_create_mail_alert(self) -> None:
         """Test case for create_mail_alert
 
-        Create Mail Alert
+        Create a new Mail Baby alert for delivery, bounce, or quota events
         """
         pass
 
     def test_delete_mail_alert(self) -> None:
         """Test case for delete_mail_alert
 
-        Delete Mail Alert
+        Delete a Mail Baby alert by alert_id (hard delete — no recovery)
         """
         pass
 
     def test_delete_rule(self) -> None:
         """Test case for delete_rule
 
-        Delete Deny Rule
+        Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
         """
         pass
 
     def test_delist_block(self) -> None:
         """Test case for delist_block
 
-        Remove Email Address from Block List
+        Delist a sender email from rspamd / mailchannels / mailbaby block lists
         """
         pass
 
     def test_get_mail_alerts(self) -> None:
         """Test case for get_mail_alerts
 
-        List Mail Alerts
+        List configured delivery/bounce/quota alerts for one Mail Baby service
         """
         pass
 
     def test_get_mail_blocks(self) -> None:
         """Test case for get_mail_blocks
 
-        List Blocked Email Addresses
+        List recent local-blocklist hits and spam-trap captures for the mail user
         """
         pass
 
     def test_get_mail_delist(self) -> None:
         """Test case for get_mail_delist
 
-        Get Delist Status
+        Read blocklist diagnostics and find senders eligible for delisting
         """
         pass
 
     def test_get_mail_deliverability(self) -> None:
         """Test case for get_mail_deliverability
 
-        Get Deliverability Metrics
+        Read delivered vs bounced totals broken down by sender (or by recipient domain)
         """
         pass
 
     def test_get_mail_info(self) -> None:
         """Test case for get_mail_info
 
-        Get Mail Order
+        Read full detail for one Mail Baby service including SMTP credentials
         """
         pass
 
     def test_get_mail_invoices(self) -> None:
         """Test case for get_mail_invoices
 
-        Get Mail Invoices
+        List billing invoices linked to this Mail Baby service
         """
         pass
 
     def test_get_mail_list(self) -> None:
         """Test case for get_mail_list
 
-        List Mail Orders
+        List every Mail Baby SMTP relay service on the account
         """
         pass
 
     def test_get_mail_welcome_email(self) -> None:
         """Test case for get_mail_welcome_email
 
-        Resend Mail Welcome Email
+        Resend the Mail Baby welcome email with SMTP credentials and setup info
         """
         pass
 
     def test_get_new_mail(self) -> None:
         """Test case for get_new_mail
 
-        Get Mail Ordering Information
+        Read the Mail Baby order catalog — plans, package costs, service-type metadata
         """
         pass
 
     def test_get_rules(self) -> None:
         """Test case for get_rules
 
-        List Deny Rules
+        List configured deny rules (sender/recipient blocks) for a Mail Baby service
         """
         pass
 
     def test_get_stats(self) -> None:
         """Test case for get_stats
 
-        Get Mail Usage Statistics
+        Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
         """
         pass
 
     def test_mail_cancel(self) -> None:
         """Test case for mail_cancel
 
-        Cancel Mail
+        Cancel a Mail Baby service and stop the recurring invoice
         """
         pass
 
     def test_post_mail_delist(self) -> None:
         """Test case for post_mail_delist
 
-        Delist a Blocked Sender
+        Delist a sender from rspamd / mailchannels / mailbaby block lists
         """
         pass
 
     def test_put_mail(self) -> None:
         """Test case for put_mail
 
-        Validate Mail Order
+        Validate Mail Baby order, quote pricing, and verify coupon — no charge
         """
         pass
 
     def test_reset_mail_password(self) -> None:
         """Test case for reset_mail_password
 
-        Reset Mail Password
+        Rotate the SMTP password and email the new credential to the account owner
         """
         pass
 
     def test_send_adv_mail(self) -> None:
         """Test case for send_adv_mail
 
-        Send Email with Advanced Options
+        Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
         """
         pass
 
     def test_send_mail(self) -> None:
         """Test case for send_mail
 
-        Send Email
+        Send a simple single-recipient email through the Mail Baby SMTP relay
         """
         pass
 
     def test_update_mail_alert(self) -> None:
         """Test case for update_mail_alert
 
-        Update Mail Alert
+        Update an existing Mail Baby alert by alert_id
         """
         pass
 
     def test_update_mail_info(self) -> None:
         """Test case for update_mail_info
 
-        Update Mail Order
+        POST mutation hook for the Mail Baby service detail page
+        """
+        pass
+
+    def test_update_rule(self) -> None:
+        """Test case for update_rule
+
+        Update an existing Mail Baby deny rule's type and match data
         """
         pass
 
     def test_view_mail_log(self) -> None:
         """Test case for view_mail_log
 
-        View Mail Log
+        Search and paginate per-message Mail Baby delivery log entries
         """
         pass
 

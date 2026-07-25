@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderFieldLabels = Initialize-PSOpenAPIToolsServerOrderFieldLabels  -Bandwidth null `
+$ServerOrderFieldLabels = Initialize-InterserverApiServerOrderFieldLabels  -Bandwidth null `
  -Ips null `
  -Os null `
  -Cp null `

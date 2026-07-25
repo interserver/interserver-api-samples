@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SearchAutocompleteResponse model module.
  * @module model/SearchAutocompleteResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class SearchAutocompleteResponse {
     /**

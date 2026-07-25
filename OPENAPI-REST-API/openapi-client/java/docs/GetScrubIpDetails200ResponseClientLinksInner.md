@@ -15,4 +15,8 @@
 |**otherAttr** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

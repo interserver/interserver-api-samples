@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.create_rule500_response import CreateRule500Response
+from interserver_api_client.models.create_rule500_response import CreateRule500Response
 
 class TestCreateRule500Response(unittest.TestCase):
     """CreateRule500Response unit test stubs"""

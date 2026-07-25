@@ -3,16 +3,6 @@
 var utils = require('../utils/writer.js');
 var Account = require('../service/AccountService');
 
-module.exports.changeAccountUsername = function changeAccountUsername (req, res, next) {
-  Account.changeAccountUsername()
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.deleteAccountOauthName = function deleteAccountOauthName (req, res, next, name) {
   Account.deleteAccountOauthName(name)
     .then(function (response) {

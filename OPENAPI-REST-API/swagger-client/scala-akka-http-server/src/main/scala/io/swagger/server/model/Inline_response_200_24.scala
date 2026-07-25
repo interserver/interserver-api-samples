@@ -2,9 +2,11 @@ package io.swagger.server.model
 
 
 /**
- * @param ips A map of IP addresses to their current reverse DNS hostnames.
+ * @param success 
+ * @param text 
  */
 case class Inline_response_200_24 (
-  ips: Option[Map[String, String]]
+  success: Boolean,
+  text: String
 )
 

@@ -14,6 +14,10 @@ import io.swagger.model.BillingPrepayRequest;
 
 import io.swagger.model.BillingVerifyCcRequest;
 
+import io.swagger.model.IdVerifyBody;
+
+import io.swagger.model.InlineResponse20010;
+
 import io.swagger.model.InlineResponse401;
 
 import io.swagger.model.SuccessTextResponse;
@@ -101,6 +105,24 @@ public class BillingApiController implements BillingApi {
     public Single<HttpResponse<Object>> getBillingPrePays() {
         // TODO: Implement me
         return BillingApi.super.getBillingPrePays();
+    }
+
+    @Override
+    public Single<HttpResponse<InlineResponse20010>> initiatePayment(String method, String invoices) {
+        // TODO: Implement me
+        return BillingApi.super.initiatePayment(method, invoices);
+    }
+
+    @Override
+    public Single<HttpResponse<SuccessTextResponse>> patchBillingCreditCardVerify(@NotNull @Valid IdVerifyBody body, Integer id) {
+        // TODO: Implement me
+        return BillingApi.super.patchBillingCreditCardVerify(body, id);
+    }
+
+    @Override
+    public Single<HttpResponse<SuccessTextResponse>> patchBillingCreditCardVerify(@NotNull String ccCcv2, Integer id) {
+        // TODO: Implement me
+        return BillingApi.super.patchBillingCreditCardVerify(ccCcv2, id);
     }
 
     @Override

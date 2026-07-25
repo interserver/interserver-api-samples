@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LoginSuccessResponse } from './api';
+import { LoginSuccessResponse } from '@interserver/myadmin-client';
 
 const instance: LoginSuccessResponse = {
     sessionId,

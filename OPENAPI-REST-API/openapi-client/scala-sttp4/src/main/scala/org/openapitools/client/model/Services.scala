@@ -16,5 +16,4 @@ package org.openapitools.client.model
    * The list of service packages.
    */
 case class Services(
-)
-
+) extends Map[String, Service]

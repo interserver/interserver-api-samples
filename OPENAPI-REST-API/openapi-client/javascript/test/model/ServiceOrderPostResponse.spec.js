@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServiceOrderPostResponse();
+    instance = new InterserverApiClient.ServiceOrderPostResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,55 +50,55 @@
   describe('ServiceOrderPostResponse', function() {
     it('should create an instance of ServiceOrderPostResponse', function() {
       // uncomment below and update the code to test ServiceOrderPostResponse
-      //var instance = new InterServerManagementApi.ServiceOrderPostResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.ServiceOrderPostResponse);
+      //var instance = new InterserverApiClient.ServiceOrderPostResponse();
+      //expect(instance).to.be.a(InterserverApiClient.ServiceOrderPostResponse);
     });
 
     it('should have the property _continue (base name: "continue")', function() {
       // uncomment below and update the code to test the property _continue
-      //var instance = new InterServerManagementApi.ServiceOrderPostResponse();
+      //var instance = new InterserverApiClient.ServiceOrderPostResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property errors (base name: "errors")', function() {
       // uncomment below and update the code to test the property errors
-      //var instance = new InterServerManagementApi.ServiceOrderPostResponse();
+      //var instance = new InterserverApiClient.ServiceOrderPostResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property total_cost (base name: "total_cost")', function() {
       // uncomment below and update the code to test the property total_cost
-      //var instance = new InterServerManagementApi.ServiceOrderPostResponse();
+      //var instance = new InterserverApiClient.ServiceOrderPostResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property iid (base name: "iid")', function() {
       // uncomment below and update the code to test the property iid
-      //var instance = new InterServerManagementApi.ServiceOrderPostResponse();
+      //var instance = new InterserverApiClient.ServiceOrderPostResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property iids (base name: "iids")', function() {
       // uncomment below and update the code to test the property iids
-      //var instance = new InterServerManagementApi.ServiceOrderPostResponse();
+      //var instance = new InterserverApiClient.ServiceOrderPostResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property real_iids (base name: "real_iids")', function() {
       // uncomment below and update the code to test the property real_iids
-      //var instance = new InterServerManagementApi.ServiceOrderPostResponse();
+      //var instance = new InterserverApiClient.ServiceOrderPostResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceId (base name: "serviceId")', function() {
       // uncomment below and update the code to test the property serviceId
-      //var instance = new InterServerManagementApi.ServiceOrderPostResponse();
+      //var instance = new InterserverApiClient.ServiceOrderPostResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property invoice_description (base name: "invoice_description")', function() {
       // uncomment below and update the code to test the property invoice_description
-      //var instance = new InterServerManagementApi.ServiceOrderPostResponse();
+      //var instance = new InterserverApiClient.ServiceOrderPostResponse();
       //expect(instance).to.be();
     });
 

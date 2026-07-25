@@ -1,4 +1,4 @@
-# openapi::HomeDetailsModules
+# interserverapi::HomeDetailsModules
 
 
 ## Properties

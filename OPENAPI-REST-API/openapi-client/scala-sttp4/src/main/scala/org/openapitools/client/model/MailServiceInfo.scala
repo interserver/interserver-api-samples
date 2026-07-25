@@ -42,4 +42,3 @@ case class MailServiceInfo(
   /* Additional comments for the mail service. */
   mail_comment: Option[String] = None
 )
-

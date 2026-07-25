@@ -29,8 +29,8 @@ class ModuleSettings {
     required this.TABLE,
     required this.TITLE_FIELD,
     required this.PREFIX,
-    this.tITLEFIELD2,
-    this.tITLEFIELD3,
+    this.TITLE_FIELD2,
+    this.TITLE_FIELD3,
   });
 
   int SERVICE_ID_OFFSET;
@@ -71,7 +71,7 @@ class ModuleSettings {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? tITLEFIELD2;
+  String? TITLE_FIELD2;
 
   ///
   /// Please note: This property should have been non-nullable! Since the specification file
@@ -79,7 +79,7 @@ class ModuleSettings {
   /// source code must fall back to having a nullable type.
   /// Consider adding a "default:" property in the specification file to hide this note.
   ///
-  String? tITLEFIELD3;
+  String? TITLE_FIELD3;
 
   @override
   bool operator ==(Object other) => identical(this, other) || other is ModuleSettings &&
@@ -99,8 +99,8 @@ class ModuleSettings {
     other.TABLE == TABLE &&
     other.TITLE_FIELD == TITLE_FIELD &&
     other.PREFIX == PREFIX &&
-    other.tITLEFIELD2 == tITLEFIELD2 &&
-    other.tITLEFIELD3 == tITLEFIELD3;
+    other.TITLE_FIELD2 == TITLE_FIELD2 &&
+    other.TITLE_FIELD3 == TITLE_FIELD3;
 
   @override
   int get hashCode =>
@@ -121,11 +121,11 @@ class ModuleSettings {
     (TABLE.hashCode) +
     (TITLE_FIELD.hashCode) +
     (PREFIX.hashCode) +
-    (tITLEFIELD2 == null ? 0 : tITLEFIELD2!.hashCode) +
-    (tITLEFIELD3 == null ? 0 : tITLEFIELD3!.hashCode);
+    (TITLE_FIELD2 == null ? 0 : TITLE_FIELD2!.hashCode) +
+    (TITLE_FIELD3 == null ? 0 : TITLE_FIELD3!.hashCode);
 
   @override
-  String toString() => 'ModuleSettings[SERVICE_ID_OFFSET=$SERVICE_ID_OFFSET, USE_REPEAT_INVOICE=$USE_REPEAT_INVOICE, USE_PACKAGES=$USE_PACKAGES, BILLING_DAYS_OFFSET=$BILLING_DAYS_OFFSET, IMGNAME=$IMGNAME, REPEAT_BILLING_METHOD=$REPEAT_BILLING_METHOD, DELETE_PENDING_DAYS=$DELETE_PENDING_DAYS, SUSPEND_DAYS=$SUSPEND_DAYS, SUSPEND_WARNING_DAYS=$SUSPEND_WARNING_DAYS, TITLE=$TITLE, MENUNAME=$MENUNAME, EMAIL_FROM=$EMAIL_FROM, TBLNAME=$TBLNAME, TABLE=$TABLE, TITLE_FIELD=$TITLE_FIELD, PREFIX=$PREFIX, tITLEFIELD2=$tITLEFIELD2, tITLEFIELD3=$tITLEFIELD3]';
+  String toString() => 'ModuleSettings[SERVICE_ID_OFFSET=$SERVICE_ID_OFFSET, USE_REPEAT_INVOICE=$USE_REPEAT_INVOICE, USE_PACKAGES=$USE_PACKAGES, BILLING_DAYS_OFFSET=$BILLING_DAYS_OFFSET, IMGNAME=$IMGNAME, REPEAT_BILLING_METHOD=$REPEAT_BILLING_METHOD, DELETE_PENDING_DAYS=$DELETE_PENDING_DAYS, SUSPEND_DAYS=$SUSPEND_DAYS, SUSPEND_WARNING_DAYS=$SUSPEND_WARNING_DAYS, TITLE=$TITLE, MENUNAME=$MENUNAME, EMAIL_FROM=$EMAIL_FROM, TBLNAME=$TBLNAME, TABLE=$TABLE, TITLE_FIELD=$TITLE_FIELD, PREFIX=$PREFIX, TITLE_FIELD2=$TITLE_FIELD2, TITLE_FIELD3=$TITLE_FIELD3]';
 
   Map<String, dynamic> toJson() {
     final json = <String, dynamic>{};
@@ -145,13 +145,13 @@ class ModuleSettings {
       json[r'TABLE'] = this.TABLE;
       json[r'TITLE_FIELD'] = this.TITLE_FIELD;
       json[r'PREFIX'] = this.PREFIX;
-    if (this.tITLEFIELD2 != null) {
-      json[r'TITLE_FIELD2'] = this.tITLEFIELD2;
+    if (this.TITLE_FIELD2 != null) {
+      json[r'TITLE_FIELD2'] = this.TITLE_FIELD2;
     } else {
       json[r'TITLE_FIELD2'] = null;
     }
-    if (this.tITLEFIELD3 != null) {
-      json[r'TITLE_FIELD3'] = this.tITLEFIELD3;
+    if (this.TITLE_FIELD3 != null) {
+      json[r'TITLE_FIELD3'] = this.TITLE_FIELD3;
     } else {
       json[r'TITLE_FIELD3'] = null;
     }
@@ -221,8 +221,8 @@ class ModuleSettings {
         TABLE: mapValueOfType<String>(json, r'TABLE')!,
         TITLE_FIELD: mapValueOfType<String>(json, r'TITLE_FIELD')!,
         PREFIX: mapValueOfType<String>(json, r'PREFIX')!,
-        tITLEFIELD2: mapValueOfType<String>(json, r'TITLE_FIELD2'),
-        tITLEFIELD3: mapValueOfType<String>(json, r'TITLE_FIELD3'),
+        TITLE_FIELD2: mapValueOfType<String>(json, r'TITLE_FIELD2'),
+        TITLE_FIELD3: mapValueOfType<String>(json, r'TITLE_FIELD3'),
       );
     }
     return null;

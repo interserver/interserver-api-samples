@@ -1,4 +1,4 @@
-# InterServerManagementApi.VpsOrderLocationStock1
+# InterserverApiClient.VpsOrderLocationStock1
 
 ## Properties
 

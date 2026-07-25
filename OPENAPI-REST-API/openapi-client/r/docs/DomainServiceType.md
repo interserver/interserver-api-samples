@@ -1,4 +1,4 @@
-# openapi::DomainServiceType
+# interserverapi::DomainServiceType
 
 Service type definition for a domain registration, including name, pricing, and category.
 

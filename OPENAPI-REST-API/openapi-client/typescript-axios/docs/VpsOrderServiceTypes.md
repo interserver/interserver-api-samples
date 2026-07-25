@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsOrderServiceTypes } from './api';
+import { VpsOrderServiceTypes } from '@interserver/myadmin-client';
 
 const instance: VpsOrderServiceTypes = {
     _32,

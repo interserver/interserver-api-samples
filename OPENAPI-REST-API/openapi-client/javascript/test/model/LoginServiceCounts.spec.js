@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LoginServiceCounts();
+    instance = new InterserverApiClient.LoginServiceCounts();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('LoginServiceCounts', function() {
     it('should create an instance of LoginServiceCounts', function() {
       // uncomment below and update the code to test LoginServiceCounts
-      //var instance = new InterServerManagementApi.LoginServiceCounts();
-      //expect(instance).to.be.a(InterServerManagementApi.LoginServiceCounts);
+      //var instance = new InterserverApiClient.LoginServiceCounts();
+      //expect(instance).to.be.a(InterserverApiClient.LoginServiceCounts);
     });
 
     it('should have the property vps (base name: "vps")', function() {
       // uncomment below and update the code to test the property vps
-      //var instance = new InterServerManagementApi.LoginServiceCounts();
+      //var instance = new InterserverApiClient.LoginServiceCounts();
       //expect(instance).to.be();
     });
 
     it('should have the property websites (base name: "websites")', function() {
       // uncomment below and update the code to test the property websites
-      //var instance = new InterServerManagementApi.LoginServiceCounts();
+      //var instance = new InterserverApiClient.LoginServiceCounts();
       //expect(instance).to.be();
     });
 
     it('should have the property servers (base name: "servers")', function() {
       // uncomment below and update the code to test the property servers
-      //var instance = new InterServerManagementApi.LoginServiceCounts();
+      //var instance = new InterserverApiClient.LoginServiceCounts();
       //expect(instance).to.be();
     });
 

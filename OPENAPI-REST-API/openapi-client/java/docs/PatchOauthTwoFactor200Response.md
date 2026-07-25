@@ -10,4 +10,8 @@
 |**login** | **Boolean** | Whether the 2FA verification succeeded and the user is now logged in. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

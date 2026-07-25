@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverAddonsRow } from './api';
+import { QuickserverAddonsRow } from '@interserver/myadmin-client';
 
 const instance: QuickserverAddonsRow = {
     desc,

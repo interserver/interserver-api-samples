@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DnsNewDomain } from './api';
+import { DnsNewDomain } from '@interserver/myadmin-client';
 
 const instance: DnsNewDomain = {
     domain,

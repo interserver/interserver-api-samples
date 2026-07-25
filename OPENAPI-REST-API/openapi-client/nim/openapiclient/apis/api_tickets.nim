@@ -45,7 +45,7 @@ template constructResult[T](response: Response): untyped =
 
 
 proc addNewTicket*(httpClient: HttpClient, ticketNew: TicketNew): (Option[TicketNewResponse], Response) =
-  ## Create New Ticket
+  ## Open a new helpdesk ticket, optionally linked to a service and attachments
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & "/tickets/new", $(%ticketNew))
@@ -53,34 +53,34 @@ proc addNewTicket*(httpClient: HttpClient, ticketNew: TicketNew): (Option[Ticket
 
 
 proc closeTicket*(httpClient: HttpClient, id: string): (Option[CloseTicketResponseSchema], Response) =
-  ## Close Ticket
+  ## Close an open support ticket via simple GET request (no body required)
 
   let response = httpClient.get(basepath & fmt"/tickets/{id}/close")
   constructResult[CloseTicketResponseSchema](response)
 
 
 proc deleteTicketInfo*(httpClient: HttpClient, id: float): (Option[ViewTicketResponse], Response) =
-  ## Close Ticket
+  ## Close a customer ticket via DELETE verb (closes only, never destroys data)
 
   let response = httpClient.delete(basepath & fmt"/tickets/{id}")
   constructResult[ViewTicketResponse](response)
 
 
 proc getNewTicket*(httpClient: HttpClient): Response =
-  ## Gets Information for creating a new ticket.
+  ## Fetch services and product options to populate the new-ticket form
   httpClient.get(basepath & "/tickets/new")
 
 
 
 proc getTicketInfo*(httpClient: HttpClient, id: float): (Option[ViewTicketResponse], Response) =
-  ## Get Ticket Information
+  ## Get full ticket details including subject, status, and the reply thread
 
   let response = httpClient.get(basepath & fmt"/tickets/{id}")
   constructResult[ViewTicketResponse](response)
 
 
 proc getTicketsList*(httpClient: HttpClient, page: int, period: string, view: string): (Option[Tickets], Response) =
-  ## List Support Tickets
+  ## List the authenticated account's support tickets with status and date filters
   var query_params_list: seq[(string, string)] = @[]
   if $page != "":
     query_params_list.add(("page", $page))
@@ -95,28 +95,28 @@ proc getTicketsList*(httpClient: HttpClient, page: int, period: string, view: st
 
 
 proc postTicketInfo*(httpClient: HttpClient, id: float): (Option[ViewTicketResponse], Response) =
-  ## Reply To Ticket
+  ## Append a reply (and optional attachment, server-access fields) to a ticket
 
   let response = httpClient.post(basepath & fmt"/tickets/{id}")
   constructResult[ViewTicketResponse](response)
 
 
 proc postTicketsList*(httpClient: HttpClient): (Option[Tickets], Response) =
-  ## Search Support Tickets
+  ## Search the authenticated account's tickets by subject, email, or mask ID
 
   let response = httpClient.post(basepath & "/tickets")
   constructResult[Tickets](response)
 
 
 proc putTicketInfo*(httpClient: HttpClient, id: float): (Option[ViewTicketResponse], Response) =
-  ## Update Ticket
+  ## Update a ticket's properties such as subject or status (stub, not implemented)
 
   let response = httpClient.put(basepath & fmt"/tickets/{id}")
   constructResult[ViewTicketResponse](response)
 
 
 proc replyTicket*(httpClient: HttpClient, id: float, replyTicketRequest: ReplyTicketRequest): (Option[ReplyTicketResponseSchema], Response) =
-  ## Reply Ticket
+  ## Post a simple text reply to an existing ticket thread (no attachments)
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/tickets/{id}/reply", $(%replyTicketRequest))
@@ -124,7 +124,7 @@ proc replyTicket*(httpClient: HttpClient, id: float, replyTicketRequest: ReplyTi
 
 
 proc updateTicketInfo*(httpClient: HttpClient, id: float, updateTicket: UpdateTicket): (Option[UpdateTicketResponseSchema], Response) =
-  ## Update Ticket
+  ## Update a ticket's custom field values (server-access details, etc.)
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/tickets/{id}/update", $(%updateTicket))

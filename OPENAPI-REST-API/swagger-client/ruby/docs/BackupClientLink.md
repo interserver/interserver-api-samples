@@ -1,4 +1,4 @@
-# SwaggerClient::BackupClientLink
+# InterserverApiClient::BackupClientLink
 
 ## Properties
 Name | Type | Description | Notes

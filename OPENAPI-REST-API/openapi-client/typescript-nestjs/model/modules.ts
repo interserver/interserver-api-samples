@@ -9,7 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { ModuleSettings } from './moduleSettings';
+import { ModuleSettings } from './module-settings';
 
 
 /**

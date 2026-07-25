@@ -1,4 +1,4 @@
-# openapi::DomainBillingDetails
+# interserverapi::DomainBillingDetails
 
 Billing information for a domain service including payment status, dates, and cost.
 

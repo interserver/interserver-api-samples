@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerNetworkInfoAssets
+# InterServerAPI::Object::ServerNetworkInfoAssets
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerNetworkInfoAssets;
+use InterServerAPI::Object::ServerNetworkInfoAssets;
 ```
 
 ## Properties

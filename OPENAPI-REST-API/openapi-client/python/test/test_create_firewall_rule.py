@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.create_firewall_rule import CreateFirewallRule
+from interserver_api_client.models.create_firewall_rule import CreateFirewallRule
 
 class TestCreateFirewallRule(unittest.TestCase):
     """CreateFirewallRule unit test stubs"""

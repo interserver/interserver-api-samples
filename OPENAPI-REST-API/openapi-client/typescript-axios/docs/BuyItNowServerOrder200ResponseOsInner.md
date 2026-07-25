@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BuyItNowServerOrder200ResponseOsInner } from './api';
+import { BuyItNowServerOrder200ResponseOsInner } from '@interserver/myadmin-client';
 
 const instance: BuyItNowServerOrder200ResponseOsInner = {
     id,

@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.vps_order_put_response import VpsOrderPutResponse
+from interserver_api_client.models.vps_order_put_response import VpsOrderPutResponse
 
 # TODO update the JSON string below
 json = "{}"

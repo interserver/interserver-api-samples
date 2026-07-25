@@ -1,4 +1,4 @@
-# SwaggerClient::TicketsCountArray
+# InterserverApiClient::TicketsCountArray
 
 ## Properties
 Name | Type | Description | Notes

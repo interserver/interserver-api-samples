@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ModuleSettings = Initialize-PSOpenAPIToolsModuleSettings  -SERVICEIDOFFSET 0 `
+$ModuleSettings = Initialize-InterserverApiModuleSettings  -SERVICEIDOFFSET 0 `
  -USEREPEATINVOICE true `
  -USEPACKAGES true `
  -BILLINGDAYSOFFSET 0 `

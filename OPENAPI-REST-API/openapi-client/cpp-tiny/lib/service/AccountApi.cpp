@@ -5,46 +5,6 @@ using namespace Tiny;
 
 
         Response<
-            TextResponse
-        >
-        AccountApi::
-        changeAccountUsername(
-        )
-        {
-            std::string url = basepath + "/account/username"; //
-
-
-            // Headers  | 
-
-            // Query    | 
-
-            // Form     | 
-
-
-
-
-
-            std::string payload = "";
-            // Send Request
-            // METHOD | POST
-            // Body     | 
-            int httpCode = sendRequest(url, "POST", reinterpret_cast<uint8_t*>(&payload[0]), payload.length());
-
-            // Handle Request
-            String output = getResponseBody();
-            std::string output_string = output.c_str();
-
-
-
-
-            TextResponse obj(output_string);
-
-
-            Response<TextResponse> response(obj, httpCode);
-            return response;
-        }
-
-        Response<
             SuccessTextResponse
         >
         AccountApi::

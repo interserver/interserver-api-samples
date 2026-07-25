@@ -1,4 +1,4 @@
-# InterServerManagementApi.AccountSshKey
+# InterserverApiClient.AccountSshKey
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# InterServerManagementApi.LicenseBillingDetails
+# InterserverApiClient.LicenseBillingDetails
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# openapi::DomainOrderServices10001
+# interserverapi::DomainOrderServices10001
 
 Example schema for a domain service catalog entry.
 

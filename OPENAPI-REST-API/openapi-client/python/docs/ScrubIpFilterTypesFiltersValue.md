@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.scrub_ip_filter_types_filters_value import ScrubIpFilterTypesFiltersValue
+from interserver_api_client.models.scrub_ip_filter_types_filters_value import ScrubIpFilterTypesFiltersValue
 
 # TODO update the JSON string below
 json = "{}"

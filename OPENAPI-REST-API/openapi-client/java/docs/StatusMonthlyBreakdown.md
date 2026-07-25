@@ -16,4 +16,8 @@ Monthly mail delivery status breakdown, showing counts per status category.
 |**paid** | **MonthlyCounts** |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

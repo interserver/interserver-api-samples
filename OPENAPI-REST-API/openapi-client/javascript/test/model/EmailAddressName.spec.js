@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.EmailAddressName();
+    instance = new InterserverApiClient.EmailAddressName();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('EmailAddressName', function() {
     it('should create an instance of EmailAddressName', function() {
       // uncomment below and update the code to test EmailAddressName
-      //var instance = new InterServerManagementApi.EmailAddressName();
-      //expect(instance).to.be.a(InterServerManagementApi.EmailAddressName);
+      //var instance = new InterserverApiClient.EmailAddressName();
+      //expect(instance).to.be.a(InterserverApiClient.EmailAddressName);
     });
 
     it('should have the property email (base name: "email")', function() {
       // uncomment below and update the code to test the property email
-      //var instance = new InterServerManagementApi.EmailAddressName();
+      //var instance = new InterserverApiClient.EmailAddressName();
       //expect(instance).to.be();
     });
 
     it('should have the property name (base name: "name")', function() {
       // uncomment below and update the code to test the property name
-      //var instance = new InterServerManagementApi.EmailAddressName();
+      //var instance = new InterserverApiClient.EmailAddressName();
       //expect(instance).to.be();
     });
 

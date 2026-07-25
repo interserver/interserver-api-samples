@@ -24,25 +24,10 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::BillingApi');
+use_ok('InterServerAPI::BillingApi');
 
-my $api = OpenAPIClient::BillingApi->new();
-isa_ok($api, 'OpenAPIClient::BillingApi');
-
-#
-# add_account_credit_card test
-#
-# uncomment below and update the test
-#my $add_account_credit_card_name = undef; # replace NULL with a proper value
-#my $add_account_credit_card_address = undef; # replace NULL with a proper value
-#my $add_account_credit_card_city = undef; # replace NULL with a proper value
-#my $add_account_credit_card_state = undef; # replace NULL with a proper value
-#my $add_account_credit_card_country = undef; # replace NULL with a proper value
-#my $add_account_credit_card_zip = undef; # replace NULL with a proper value
-#my $add_account_credit_card_cc = undef; # replace NULL with a proper value
-#my $add_account_credit_card_cc_exp = undef; # replace NULL with a proper value
-#my $add_account_credit_card_cc_ccv2 = undef; # replace NULL with a proper value
-#my $add_account_credit_card_result = $api->add_account_credit_card(name => $add_account_credit_card_name, address => $add_account_credit_card_address, city => $add_account_credit_card_city, state => $add_account_credit_card_state, country => $add_account_credit_card_country, zip => $add_account_credit_card_zip, cc => $add_account_credit_card_cc, cc_exp => $add_account_credit_card_cc_exp, cc_ccv2 => $add_account_credit_card_cc_ccv2);
+my $api = InterServerAPI::BillingApi->new();
+isa_ok($api, 'InterServerAPI::BillingApi');
 
 #
 # add_billing_credit_card test
@@ -57,13 +42,6 @@ isa_ok($api, 'OpenAPIClient::BillingApi');
 # uncomment below and update the test
 #my $add_billing_prepay_billing_prepay_request = undef; # replace NULL with a proper value
 #my $add_billing_prepay_result = $api->add_billing_prepay(billing_prepay_request => $add_billing_prepay_billing_prepay_request);
-
-#
-# delete_account_credit_card test
-#
-# uncomment below and update the test
-#my $delete_account_credit_card_id = undef; # replace NULL with a proper value
-#my $delete_account_credit_card_result = $api->delete_account_credit_card(id => $delete_account_credit_card_id);
 
 #
 # delete_billing_credit_card test
@@ -93,6 +71,15 @@ isa_ok($api, 'OpenAPIClient::BillingApi');
 #my $get_affiliate_banners_result = $api->get_affiliate_banners();
 
 #
+# get_affiliate_download test
+#
+# uncomment below and update the test
+#my $get_affiliate_download_st = undef; # replace NULL with a proper value
+#my $get_affiliate_download_ex = undef; # replace NULL with a proper value
+#my $get_affiliate_download_year = undef; # replace NULL with a proper value
+#my $get_affiliate_download_result = $api->get_affiliate_download(st => $get_affiliate_download_st, ex => $get_affiliate_download_ex, year => $get_affiliate_download_year);
+
+#
 # get_affiliate_rich_report test
 #
 # uncomment below and update the test
@@ -106,10 +93,11 @@ isa_ok($api, 'OpenAPIClient::BillingApi');
 #my $get_affiliate_sales_graph_result = $api->get_affiliate_sales_graph(days => $get_affiliate_sales_graph_days);
 
 #
-# get_affiliate_sales_report test
+# get_affiliate_signups test
 #
 # uncomment below and update the test
-#my $get_affiliate_sales_report_result = $api->get_affiliate_sales_report();
+#my $get_affiliate_signups_st = undef; # replace NULL with a proper value
+#my $get_affiliate_signups_result = $api->get_affiliate_signups(st => $get_affiliate_signups_st);
 
 #
 # get_affiliate_traffic_graph test
@@ -157,21 +145,20 @@ isa_ok($api, 'OpenAPIClient::BillingApi');
 #my $get_billing_pre_pays_result = $api->get_billing_pre_pays();
 
 #
-# get_invoices test
-#
-# uncomment below and update the test
-#my $get_invoices_search_string = undef; # replace NULL with a proper value
-#my $get_invoices_skip = undef; # replace NULL with a proper value
-#my $get_invoices_limit = undef; # replace NULL with a proper value
-#my $get_invoices_result = $api->get_invoices(search_string => $get_invoices_search_string, skip => $get_invoices_skip, limit => $get_invoices_limit);
-
-#
 # initiate_payment test
 #
 # uncomment below and update the test
 #my $initiate_payment_method = undef; # replace NULL with a proper value
 #my $initiate_payment_invoices = undef; # replace NULL with a proper value
 #my $initiate_payment_result = $api->initiate_payment(method => $initiate_payment_method, invoices => $initiate_payment_invoices);
+
+#
+# patch_billing_credit_card_verify test
+#
+# uncomment below and update the test
+#my $patch_billing_credit_card_verify_id = undef; # replace NULL with a proper value
+#my $patch_billing_credit_card_verify_patch_billing_credit_card_verify_request = undef; # replace NULL with a proper value
+#my $patch_billing_credit_card_verify_result = $api->patch_billing_credit_card_verify(id => $patch_billing_credit_card_verify_id, patch_billing_credit_card_verify_request => $patch_billing_credit_card_verify_patch_billing_credit_card_verify_request);
 
 #
 # post_billing_credit_card_verify test
@@ -182,13 +169,6 @@ isa_ok($api, 'OpenAPIClient::BillingApi');
 #my $post_billing_credit_card_verify_result = $api->post_billing_credit_card_verify(id => $post_billing_credit_card_verify_id, billing_verify_cc_request => $post_billing_credit_card_verify_billing_verify_cc_request);
 
 #
-# update_account_credit_card test
-#
-# uncomment below and update the test
-#my $update_account_credit_card_id = undef; # replace NULL with a proper value
-#my $update_account_credit_card_result = $api->update_account_credit_card(id => $update_account_credit_card_id);
-
-#
 # update_affiliate_dock_setup test
 #
 # uncomment below and update the test
@@ -196,15 +176,6 @@ isa_ok($api, 'OpenAPIClient::BillingApi');
 #my $update_affiliate_dock_setup_affiliate_dock_description = undef; # replace NULL with a proper value
 #my $update_affiliate_dock_setup_referrer_coupon = undef; # replace NULL with a proper value
 #my $update_affiliate_dock_setup_result = $api->update_affiliate_dock_setup(affiliate_dock_title => $update_affiliate_dock_setup_affiliate_dock_title, affiliate_dock_description => $update_affiliate_dock_setup_affiliate_dock_description, referrer_coupon => $update_affiliate_dock_setup_referrer_coupon);
-
-#
-# update_affiliate_landing_page test
-#
-# uncomment below and update the test
-#my $update_affiliate_landing_page_affiliate_dock_title = undef; # replace NULL with a proper value
-#my $update_affiliate_landing_page_affiliate_dock_description = undef; # replace NULL with a proper value
-#my $update_affiliate_landing_page_referrer_coupon = undef; # replace NULL with a proper value
-#my $update_affiliate_landing_page_result = $api->update_affiliate_landing_page(affiliate_dock_title => $update_affiliate_landing_page_affiliate_dock_title, affiliate_dock_description => $update_affiliate_landing_page_affiliate_dock_description, referrer_coupon => $update_affiliate_landing_page_referrer_coupon);
 
 #
 # update_affiliate_payment_setup test

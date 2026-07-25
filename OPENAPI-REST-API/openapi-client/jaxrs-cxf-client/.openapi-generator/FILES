@@ -40,8 +40,6 @@ src/gen/java/org/openapitools/model/AffiliateBannerRow.java
 src/gen/java/org/openapitools/model/AffiliateDockSetup.java
 src/gen/java/org/openapitools/model/AffiliatePaymentSetup.java
 src/gen/java/org/openapitools/model/AffiliateTrafficRow.java
-src/gen/java/org/openapitools/model/AssetServer.java
-src/gen/java/org/openapitools/model/AssetServerCPUInner.java
 src/gen/java/org/openapitools/model/Backup.java
 src/gen/java/org/openapitools/model/BackupBillingDetails.java
 src/gen/java/org/openapitools/model/BackupClientLink.java
@@ -59,7 +57,6 @@ src/gen/java/org/openapitools/model/BackupServiceMaster.java
 src/gen/java/org/openapitools/model/BackupsOrder.java
 src/gen/java/org/openapitools/model/BackupsOrderPackageCosts.java
 src/gen/java/org/openapitools/model/BackupsOrderServiceTypes.java
-src/gen/java/org/openapitools/model/Bandwidth.java
 src/gen/java/org/openapitools/model/BillingAddCcRequest.java
 src/gen/java/org/openapitools/model/BillingInvoiceDetail.java
 src/gen/java/org/openapitools/model/BillingInvoiceList.java
@@ -85,11 +82,6 @@ src/gen/java/org/openapitools/model/ChargeInvoiceRowsInvoicesValue.java
 src/gen/java/org/openapitools/model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.java
 src/gen/java/org/openapitools/model/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.java
 src/gen/java/org/openapitools/model/CloseTicketResponseSchema.java
-src/gen/java/org/openapitools/model/ConfigIds.java
-src/gen/java/org/openapitools/model/ConfigLists.java
-src/gen/java/org/openapitools/model/ControlPanel.java
-src/gen/java/org/openapitools/model/Cpu.java
-src/gen/java/org/openapitools/model/CpuWithDefaults.java
 src/gen/java/org/openapitools/model/CreateFilter.java
 src/gen/java/org/openapitools/model/CreateFilter201Response.java
 src/gen/java/org/openapitools/model/CreateFilter400Response.java
@@ -105,6 +97,7 @@ src/gen/java/org/openapitools/model/DeleteFilter400Response.java
 src/gen/java/org/openapitools/model/DeleteFilter500Response.java
 src/gen/java/org/openapitools/model/DeleteFirewallRule.java
 src/gen/java/org/openapitools/model/DeleteGeoFirewallRule.java
+src/gen/java/org/openapitools/model/DeleteMailAlertRequest.java
 src/gen/java/org/openapitools/model/DenyRuleNew.java
 src/gen/java/org/openapitools/model/DenyRuleRecord.java
 src/gen/java/org/openapitools/model/DisableScrub200Response.java
@@ -135,11 +128,11 @@ src/gen/java/org/openapitools/model/DomainNameserverGetResponseInner.java
 src/gen/java/org/openapitools/model/DomainNameserverPostRequest.java
 src/gen/java/org/openapitools/model/DomainNameserverPutRequest.java
 src/gen/java/org/openapitools/model/DomainOrder.java
+src/gen/java/org/openapitools/model/DomainOrderRequest.java
 src/gen/java/org/openapitools/model/DomainOrderResponse.java
 src/gen/java/org/openapitools/model/DomainOrderResponseAttributes.java
 src/gen/java/org/openapitools/model/DomainOrderServices.java
 src/gen/java/org/openapitools/model/DomainOrderServices10001.java
-src/gen/java/org/openapitools/model/DomainOrderTldServices.java
 src/gen/java/org/openapitools/model/DomainOwnerContact.java
 src/gen/java/org/openapitools/model/DomainProvProcessPending.java
 src/gen/java/org/openapitools/model/DomainProvProcessPendingAttributes.java
@@ -155,12 +148,13 @@ src/gen/java/org/openapitools/model/EmailAddress.java
 src/gen/java/org/openapitools/model/EmailAddressName.java
 src/gen/java/org/openapitools/model/EnableScrub200Response.java
 src/gen/java/org/openapitools/model/EnableScrub500Response.java
-src/gen/java/org/openapitools/model/FieldLabel.java
+src/gen/java/org/openapitools/model/FloatingIpOrderRequest.java
 src/gen/java/org/openapitools/model/FloatingIpsCancel200Response.java
-src/gen/java/org/openapitools/model/FormValues.java
 src/gen/java/org/openapitools/model/GenericResponse.java
 src/gen/java/org/openapitools/model/GetAccountInfo401Response.java
+src/gen/java/org/openapitools/model/GetAccountLocales200ResponseValue.java
 src/gen/java/org/openapitools/model/GetAccountTfaSetup200Response.java
+src/gen/java/org/openapitools/model/GetAffiliateSignups200Response.java
 src/gen/java/org/openapitools/model/GetOauthRedirect200Response.java
 src/gen/java/org/openapitools/model/GetOrderDetail200Response.java
 src/gen/java/org/openapitools/model/GetOrderDetail200ResponseIpsInner.java
@@ -177,7 +171,6 @@ src/gen/java/org/openapitools/model/GetScrubIpDetails200ResponseFilterFirewallFi
 src/gen/java/org/openapitools/model/GetScrubIpDetails200ResponseFilterFirewallRulesInner.java
 src/gen/java/org/openapitools/model/GetScrubIpDetails200ResponseServiceInfo.java
 src/gen/java/org/openapitools/model/GetWebsiteBuyIp200Response.java
-src/gen/java/org/openapitools/model/HardDrive.java
 src/gen/java/org/openapitools/model/Home.java
 src/gen/java/org/openapitools/model/HomeDetails.java
 src/gen/java/org/openapitools/model/HomeDetailsModules.java
@@ -204,10 +197,6 @@ src/gen/java/org/openapitools/model/HomeTicketStatus.java
 src/gen/java/org/openapitools/model/HomeTicketStatusView.java
 src/gen/java/org/openapitools/model/HostnameObject.java
 src/gen/java/org/openapitools/model/InitiatePayment200Response.java
-src/gen/java/org/openapitools/model/InlineObject.java
-src/gen/java/org/openapitools/model/Invoice.java
-src/gen/java/org/openapitools/model/InvoiceRow.java
-src/gen/java/org/openapitools/model/IpBlock.java
 src/gen/java/org/openapitools/model/IpLimitRange.java
 src/gen/java/org/openapitools/model/IpObject.java
 src/gen/java/org/openapitools/model/License.java
@@ -216,6 +205,7 @@ src/gen/java/org/openapitools/model/LicenseClientLink.java
 src/gen/java/org/openapitools/model/LicenseExtraInfoTables.java
 src/gen/java/org/openapitools/model/LicenseIpInfo.java
 src/gen/java/org/openapitools/model/LicenseIpInfoRow.java
+src/gen/java/org/openapitools/model/LicenseOrderRequest.java
 src/gen/java/org/openapitools/model/LicenseRow.java
 src/gen/java/org/openapitools/model/LicenseServiceInfo.java
 src/gen/java/org/openapitools/model/LicenseServiceType.java
@@ -252,6 +242,7 @@ src/gen/java/org/openapitools/model/MailExtraInfoTableRow.java
 src/gen/java/org/openapitools/model/MailLog.java
 src/gen/java/org/openapitools/model/MailLogEntry.java
 src/gen/java/org/openapitools/model/MailOrder.java
+src/gen/java/org/openapitools/model/MailOrderRequest.java
 src/gen/java/org/openapitools/model/MailRow.java
 src/gen/java/org/openapitools/model/MailSchema.java
 src/gen/java/org/openapitools/model/MailSchemaExtraInfoTables.java
@@ -264,15 +255,13 @@ src/gen/java/org/openapitools/model/MailStatsTypeVolumeIp.java
 src/gen/java/org/openapitools/model/MailStatsTypeVolumeTo.java
 src/gen/java/org/openapitools/model/MailTutorialsTable.java
 src/gen/java/org/openapitools/model/MailTutorialsTableRow.java
-src/gen/java/org/openapitools/model/MemoryOption.java
 src/gen/java/org/openapitools/model/ModuleSettings.java
 src/gen/java/org/openapitools/model/Modules.java
 src/gen/java/org/openapitools/model/MonthlyCounts.java
-src/gen/java/org/openapitools/model/OperatingSystem.java
 src/gen/java/org/openapitools/model/PasswordRequest.java
+src/gen/java/org/openapitools/model/PatchBillingCreditCardVerifyRequest.java
 src/gen/java/org/openapitools/model/PatchOauthTwoFactor200Response.java
 src/gen/java/org/openapitools/model/PatchOauthTwoFactorRequest.java
-src/gen/java/org/openapitools/model/PaymentInvoiceRows.java
 src/gen/java/org/openapitools/model/PlaceBuyNowServerRequest.java
 src/gen/java/org/openapitools/model/PlaceScrubOrder201Response.java
 src/gen/java/org/openapitools/model/PlaceScrubOrder201ResponseOrderDetails.java
@@ -283,6 +272,8 @@ src/gen/java/org/openapitools/model/PostWebsiteBuyIp200Response.java
 src/gen/java/org/openapitools/model/PostWebsiteBuyIpRequest.java
 src/gen/java/org/openapitools/model/PostWebsiteMigration200Response.java
 src/gen/java/org/openapitools/model/PostWebsiteMigrationRequest.java
+src/gen/java/org/openapitools/model/PutScrubIps200Response.java
+src/gen/java/org/openapitools/model/QsOrderRequest.java
 src/gen/java/org/openapitools/model/QueueResponse.java
 src/gen/java/org/openapitools/model/Quickserver.java
 src/gen/java/org/openapitools/model/QuickserverAddons.java
@@ -306,8 +297,6 @@ src/gen/java/org/openapitools/model/QuickserverServiceExtra.java
 src/gen/java/org/openapitools/model/QuickserverServiceInfo.java
 src/gen/java/org/openapitools/model/QuickserverServiceMaster.java
 src/gen/java/org/openapitools/model/QuickserversCancel200Response.java
-src/gen/java/org/openapitools/model/RaidOption.java
-src/gen/java/org/openapitools/model/Region.java
 src/gen/java/org/openapitools/model/ReplyTicketRequest.java
 src/gen/java/org/openapitools/model/ReplyTicketResponseSchema.java
 src/gen/java/org/openapitools/model/RestoreRequest.java
@@ -327,6 +316,8 @@ src/gen/java/org/openapitools/model/Server.java
 src/gen/java/org/openapitools/model/ServerAsset.java
 src/gen/java/org/openapitools/model/ServerAssets.java
 src/gen/java/org/openapitools/model/ServerBillingDetails.java
+src/gen/java/org/openapitools/model/ServerBulkIpmiPowerResponse.java
+src/gen/java/org/openapitools/model/ServerBulkIpmiPowerResponseResultsInner.java
 src/gen/java/org/openapitools/model/ServerClientLink.java
 src/gen/java/org/openapitools/model/ServerExtraInfoTables.java
 src/gen/java/org/openapitools/model/ServerIpmiLiveInfo.java
@@ -349,7 +340,6 @@ src/gen/java/org/openapitools/model/ServerOrderCpuLi.java
 src/gen/java/org/openapitools/model/ServerOrderFieldLabel.java
 src/gen/java/org/openapitools/model/ServerOrderFieldLabels.java
 src/gen/java/org/openapitools/model/ServerOrderFormValues.java
-src/gen/java/org/openapitools/model/ServerOrderGetResponse.java
 src/gen/java/org/openapitools/model/ServerOrderIP.java
 src/gen/java/org/openapitools/model/ServerOrderIpsLi.java
 src/gen/java/org/openapitools/model/ServerOrderMemory.java
@@ -357,6 +347,8 @@ src/gen/java/org/openapitools/model/ServerOrderMemoryLi.java
 src/gen/java/org/openapitools/model/ServerOrderMemoryLi254.java
 src/gen/java/org/openapitools/model/ServerOrderOS.java
 src/gen/java/org/openapitools/model/ServerOrderOsLi.java
+src/gen/java/org/openapitools/model/ServerOrderPostRequest.java
+src/gen/java/org/openapitools/model/ServerOrderPostRequestHd.java
 src/gen/java/org/openapitools/model/ServerOrderRAID.java
 src/gen/java/org/openapitools/model/ServerRow.java
 src/gen/java/org/openapitools/model/ServerServiceInfo.java
@@ -374,6 +366,7 @@ src/gen/java/org/openapitools/model/ServiceTypes.java
 src/gen/java/org/openapitools/model/Services.java
 src/gen/java/org/openapitools/model/ServicesInfo.java
 src/gen/java/org/openapitools/model/SslCancel200Response.java
+src/gen/java/org/openapitools/model/SslOrderRequest.java
 src/gen/java/org/openapitools/model/StatusMonthlyBreakdown.java
 src/gen/java/org/openapitools/model/SuccessTextResponse.java
 src/gen/java/org/openapitools/model/TemplateRequest.java
@@ -434,7 +427,6 @@ src/gen/java/org/openapitools/model/VpsServiceMaster.java
 src/gen/java/org/openapitools/model/VpsSnapshot.java
 src/gen/java/org/openapitools/model/VpsTemplateRow.java
 src/gen/java/org/openapitools/model/VpsTemplatesList.java
-src/gen/java/org/openapitools/model/VpsTrafficDataDataResponse.java
 src/gen/java/org/openapitools/model/VpsTrafficDataSectionResponse.java
 src/gen/java/org/openapitools/model/VpsTrafficHistoryResponse.java
 src/gen/java/org/openapitools/model/VpsTrafficHistorySectionDataResponse.java
@@ -453,6 +445,8 @@ src/gen/java/org/openapitools/model/WebsiteBillingDetails.java
 src/gen/java/org/openapitools/model/WebsiteClientLink.java
 src/gen/java/org/openapitools/model/WebsiteExtraInfoTables.java
 src/gen/java/org/openapitools/model/WebsiteLoginResponse.java
+src/gen/java/org/openapitools/model/WebsiteOrderPostRequest.java
+src/gen/java/org/openapitools/model/WebsiteOrderPutRequest.java
 src/gen/java/org/openapitools/model/WebsiteRow.java
 src/gen/java/org/openapitools/model/WebsiteServiceInfo.java
 src/gen/java/org/openapitools/model/WebsiteServiceMaster.java

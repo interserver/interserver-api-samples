@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainTechContact model module.
  * @module model/DomainTechContact
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainTechContact {
     /**

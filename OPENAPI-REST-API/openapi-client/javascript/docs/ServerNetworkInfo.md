@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerNetworkInfo
+# InterserverApiClient.ServerNetworkInfo
 
 ## Properties
 

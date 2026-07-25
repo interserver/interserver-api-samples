@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$SearchAutocompleteResponse = Initialize-PSOpenAPIToolsSearchAutocompleteResponse 
+$SearchAutocompleteResponse = Initialize-InterserverApiSearchAutocompleteResponse 
 ```
 
 - Convert the resource to JSON

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_order_distro_sel_ubuntu import QuickserverOrderDistroSelUbuntu
+from interserver_api_client.models.quickserver_order_distro_sel_ubuntu import QuickserverOrderDistroSelUbuntu
 
 class TestQuickserverOrderDistroSelUbuntu(unittest.TestCase):
     """QuickserverOrderDistroSelUbuntu unit test stubs"""

@@ -23,4 +23,8 @@
 |**websiteDns2** | **String** | DNS server 2 for the service master |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_ipmi_power_request import ServerIpmiPowerRequest
+from interserver_api_client.models.server_ipmi_power_request import ServerIpmiPowerRequest
 
 class TestServerIpmiPowerRequest(unittest.TestCase):
     """ServerIpmiPowerRequest unit test stubs"""

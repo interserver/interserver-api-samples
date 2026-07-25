@@ -1,4 +1,4 @@
-# openapi::GenericResponse
+# interserverapi::GenericResponse
 
 Generic Response
 

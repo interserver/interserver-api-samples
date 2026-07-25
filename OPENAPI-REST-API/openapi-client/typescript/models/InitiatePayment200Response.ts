@@ -88,9 +88,5 @@ export class InitiatePayment200Response {
     }
 }
 
-export enum InitiatePayment200ResponseTypeEnum {
-    Redirect = 'redirect',
-    Submit = 'submit',
-    Single = 'single'
-}
+    export type InitiatePayment200ResponseTypeEnum = "redirect" | "submit" | "single" ;
 

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.reply_ticket_response_schema import ReplyTicketResponseSchema
+from interserver_api_client.models.reply_ticket_response_schema import ReplyTicketResponseSchema
 
 class TestReplyTicketResponseSchema(unittest.TestCase):
     """ReplyTicketResponseSchema unit test stubs"""

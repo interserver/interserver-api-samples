@@ -1,4 +1,4 @@
-# openapi::DisableScrub200Response
+# interserverapi::DisableScrub200Response
 
 
 ## Properties

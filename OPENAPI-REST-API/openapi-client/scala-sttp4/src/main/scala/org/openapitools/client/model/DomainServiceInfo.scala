@@ -29,4 +29,3 @@ case class DomainServiceInfo(
   domain_invoice: Option[String] = None,
   domain_coupon: Option[String] = None
 )
-

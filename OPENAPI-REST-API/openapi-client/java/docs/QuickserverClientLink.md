@@ -16,4 +16,8 @@ A navigation link for QuickServer-related actions in the client portal.
 |**otherAttr** | **String** | Other attribute |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

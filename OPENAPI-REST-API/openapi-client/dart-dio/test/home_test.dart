@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for Home
 void main() {
-  final instance = HomeBuilder();
-  // TODO add properties to the builder and call build()
+  final Home? instance = /* Home(...) */ null;
+  // TODO add properties to the entity
 
   group(Home, () {
     // Last login IP.
@@ -56,7 +56,7 @@ void main() {
     });
 
     // List of tickets.
-    // BuiltList<String> tickets
+    // List<String> tickets
     test('to test the property `tickets`', () async {
       // TODO
     });

@@ -1,4 +1,4 @@
-# InterServerManagementApi.LicensesCancel200Response
+# InterserverApiClient.LicensesCancel200Response
 
 ## Properties
 

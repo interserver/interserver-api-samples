@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailBlockRspamd
+# InterserverApiClient.MailBlockRspamd
 
 ## Properties
 

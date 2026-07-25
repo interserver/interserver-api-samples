@@ -83,4 +83,3 @@ case class QuickserverServiceMaster(
   /* CPU flags */
   qs_cpu_flags: Option[String] = None
 )
-

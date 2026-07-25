@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.post_website_migration_request import PostWebsiteMigrationRequest
+from interserver_api_client.models.post_website_migration_request import PostWebsiteMigrationRequest
 
 class TestPostWebsiteMigrationRequest(unittest.TestCase):
     """PostWebsiteMigrationRequest unit test stubs"""

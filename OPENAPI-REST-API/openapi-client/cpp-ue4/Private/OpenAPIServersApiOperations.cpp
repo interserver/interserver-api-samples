@@ -31,7 +31,7 @@ FString OpenAPIServersApi::AddServerRequest::ComputePath() const
 
 void OpenAPIServersApi::AddServerRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
-	static const TArray<FString> Consumes = {  };
+	static const TArray<FString> Consumes = { TEXT("application/json") };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
 	HttpRequest->SetVerb(TEXT("POST"));
@@ -39,12 +39,23 @@ void OpenAPIServersApi::AddServerRequest::SetupHttpRequest(const FHttpRequestRef
 	// Default to Json Body request
 	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
 	{
+		// Body parameters
+		FString JsonBody;
+		JsonWriter Writer = TJsonWriterFactory<>::Create(&JsonBody);
+
+		WriteJsonValue(Writer, OpenAPIServerOrderPostRequest);
+		Writer->Close();
+
+		HttpRequest->SetHeader(TEXT("Content-Type"), TEXT("application/json; charset=utf-8"));
+		HttpRequest->SetContentAsString(JsonBody);
 	}
 	else if (Consumes.Contains(TEXT("multipart/form-data")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIServerOrderPostRequest) was ignored, not supported in multipart form"));
 	}
 	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
 	{
+		UE_LOG(LogOpenAPI, Error, TEXT("Body parameter (OpenAPIServerOrderPostRequest) was ignored, not supported in urlencoded requests"));
 	}
 	else
 	{
@@ -491,42 +502,36 @@ bool OpenAPIServersApi::PostServerReverseDnsResponse::FromJson(const TSharedPtr<
 	return TryGetJsonValue(JsonValue, Content);
 }
 
-FString OpenAPIServersApi::PutServersRequest::ComputePath() const
+FString OpenAPIServersApi::ServerBulkIpmiPowerGetRequest::ComputePath() const
 {
-	FString Path(TEXT("/servers/order"));
+	FString Path(TEXT("/servers/bulk/ipmi_power"));
+	TArray<FString> QueryParams;
+	QueryParams.Add(FString(TEXT("ids=")) + ToUrlString(Ids));
+	Path += TCHAR('?');
+	Path += FString::Join(QueryParams, TEXT("&"));
+
 	return Path;
 }
 
-void OpenAPIServersApi::PutServersRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
+void OpenAPIServersApi::ServerBulkIpmiPowerGetRequest::SetupHttpRequest(const FHttpRequestRef& HttpRequest) const
 {
 	static const TArray<FString> Consumes = {  };
 	//static const TArray<FString> Produces = { TEXT("application/json") };
 
-	HttpRequest->SetVerb(TEXT("PUT"));
+	HttpRequest->SetVerb(TEXT("GET"));
 
-	// Default to Json Body request
-	if (Consumes.Num() == 0 || Consumes.Contains(TEXT("application/json")))
-	{
-	}
-	else if (Consumes.Contains(TEXT("multipart/form-data")))
-	{
-	}
-	else if (Consumes.Contains(TEXT("application/x-www-form-urlencoded")))
-	{
-	}
-	else
-	{
-		UE_LOG(LogOpenAPI, Error, TEXT("Request ContentType not supported (%s)"), *FString::Join(Consumes, TEXT(",")));
-	}
 }
 
-void OpenAPIServersApi::PutServersResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
+void OpenAPIServersApi::ServerBulkIpmiPowerGetResponse::SetHttpResponseCode(EHttpResponseCodes::Type InHttpResponseCode)
 {
 	Response::SetHttpResponseCode(InHttpResponseCode);
 	switch ((int)InHttpResponseCode)
 	{
 	case 200:
-		SetResponseString(TEXT("Validate Server order response"));
+		SetResponseString(TEXT("Bulk IPMI power status response, one entry per requested server."));
+		break;
+	case 400:
+		SetResponseString(TEXT("The specified resource was not found"));
 		break;
 	case 401:
 		SetResponseString(TEXT("Unauthorized"));
@@ -534,9 +539,9 @@ void OpenAPIServersApi::PutServersResponse::SetHttpResponseCode(EHttpResponseCod
 	}
 }
 
-bool OpenAPIServersApi::PutServersResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
+bool OpenAPIServersApi::ServerBulkIpmiPowerGetResponse::FromJson(const TSharedPtr<FJsonValue>& JsonValue)
 {
-	return true;
+	return TryGetJsonValue(JsonValue, Content);
 }
 
 FString OpenAPIServersApi::ServerIpmiLiveGetRequest::ComputePath() const

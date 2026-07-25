@@ -134,6 +134,17 @@ let groupby_to_yojson e =
     | `List [json] -> json
     | json -> json
 
+type csr_type = [
+| `Generated [@printer fun fmt _ -> Format.pp_print_string fmt "generated"] [@name "generated"]
+| `Provided [@printer fun fmt _ -> Format.pp_print_string fmt "provided"] [@name "provided"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let csr_type_of_yojson json = csr_type_of_yojson (`List [json])
+let csr_type_to_yojson e =
+    match csr_type_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
 type controlpanel = [
 | `Cpanel [@printer fun fmt _ -> Format.pp_print_string fmt "cpanel"] [@name "cpanel"]
 | `Da [@printer fun fmt _ -> Format.pp_print_string fmt "da"] [@name "da"]
@@ -143,6 +154,19 @@ type controlpanel = [
 let controlpanel_of_yojson json = controlpanel_of_yojson (`List [json])
 let controlpanel_to_yojson e =
     match controlpanel_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type ex = [
+| `Csv [@printer fun fmt _ -> Format.pp_print_string fmt "csv"] [@name "csv"]
+| `Pdf [@printer fun fmt _ -> Format.pp_print_string fmt "pdf"] [@name "pdf"]
+| `Xls [@printer fun fmt _ -> Format.pp_print_string fmt "xls"] [@name "xls"]
+| `Xlsx [@printer fun fmt _ -> Format.pp_print_string fmt "xlsx"] [@name "xlsx"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let ex_of_yojson json = ex_of_yojson (`List [json])
+let ex_to_yojson e =
+    match ex_to_yojson e with
     | `List [json] -> json
     | json -> json
 
@@ -222,6 +246,28 @@ type view = [
 let view_of_yojson json = view_of_yojson (`List [json])
 let view_to_yojson e =
     match view_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type whois_privacy = [
+| `Disable [@printer fun fmt _ -> Format.pp_print_string fmt "disable"] [@name "disable"]
+| `Enable [@printer fun fmt _ -> Format.pp_print_string fmt "enable"] [@name "enable"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let whois_privacy_of_yojson json = whois_privacy_of_yojson (`List [json])
+let whois_privacy_to_yojson e =
+    match whois_privacy_to_yojson e with
+    | `List [json] -> json
+    | json -> json
+
+type domainorderrequest_type = [
+| `Register [@printer fun fmt _ -> Format.pp_print_string fmt "register"] [@name "register"]
+| `Transfer [@printer fun fmt _ -> Format.pp_print_string fmt "transfer"] [@name "transfer"]
+] [@@deriving yojson, show { with_path = false }, eq];;
+
+let domainorderrequest_type_of_yojson json = domainorderrequest_type_of_yojson (`List [json])
+let domainorderrequest_type_to_yojson e =
+    match domainorderrequest_type_to_yojson e with
     | `List [json] -> json
     | json -> json
 

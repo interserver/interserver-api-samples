@@ -71,4 +71,3 @@ case class AccountInfoMaxMindResponse(
   explanation: Option[String] = None,
   female_name: Option[String] = None
 )
-

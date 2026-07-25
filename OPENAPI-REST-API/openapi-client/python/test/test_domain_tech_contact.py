@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_tech_contact import DomainTechContact
+from interserver_api_client.models.domain_tech_contact import DomainTechContact
 
 class TestDomainTechContact(unittest.TestCase):
     """DomainTechContact unit test stubs"""

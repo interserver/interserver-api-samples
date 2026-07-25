@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_order_put_request import BackupOrderPutRequest
+from interserver_api_client.models.backup_order_put_request import BackupOrderPutRequest
 
 class TestBackupOrderPutRequest(unittest.TestCase):
     """BackupOrderPutRequest unit test stubs"""

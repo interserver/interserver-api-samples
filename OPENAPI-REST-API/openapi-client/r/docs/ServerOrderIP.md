@@ -1,4 +1,4 @@
-# openapi::ServerOrderIP
+# interserverapi::ServerOrderIP
 
 An IP block option available when ordering a dedicated server.
 

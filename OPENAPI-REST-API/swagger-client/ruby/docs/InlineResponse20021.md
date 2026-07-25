@@ -1,8 +1,9 @@
-# SwaggerClient::InlineResponse20021
+# InterserverApiClient::InlineResponse20021
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **BOOLEAN** |  | 
-**text** | **String** |  | 
+**text** | **String** | Status message. | [optional] 
+**invoice** | **Integer** | Invoice ID for payment. | [optional] 
+**order** | **Integer** | Server order ID. | [optional] 
 

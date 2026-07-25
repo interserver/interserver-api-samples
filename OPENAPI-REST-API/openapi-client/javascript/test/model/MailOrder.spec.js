@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailOrder();
+    instance = new InterserverApiClient.MailOrder();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,31 +50,31 @@
   describe('MailOrder', function() {
     it('should create an instance of MailOrder', function() {
       // uncomment below and update the code to test MailOrder
-      //var instance = new InterServerManagementApi.MailOrder();
-      //expect(instance).to.be.a(InterServerManagementApi.MailOrder);
+      //var instance = new InterserverApiClient.MailOrder();
+      //expect(instance).to.be.a(InterserverApiClient.MailOrder);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.MailOrder();
+      //var instance = new InterserverApiClient.MailOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property status (base name: "status")', function() {
       // uncomment below and update the code to test the property status
-      //var instance = new InterServerManagementApi.MailOrder();
+      //var instance = new InterserverApiClient.MailOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property username (base name: "username")', function() {
       // uncomment below and update the code to test the property username
-      //var instance = new InterServerManagementApi.MailOrder();
+      //var instance = new InterserverApiClient.MailOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property comment (base name: "comment")', function() {
       // uncomment below and update the code to test the property comment
-      //var instance = new InterServerManagementApi.MailOrder();
+      //var instance = new InterserverApiClient.MailOrder();
       //expect(instance).to.be();
     });
 

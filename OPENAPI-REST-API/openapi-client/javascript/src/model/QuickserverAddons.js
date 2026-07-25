@@ -17,7 +17,7 @@ import QuickserverAddonsRow from './QuickserverAddonsRow';
 /**
  * The QuickserverAddons model module.
  * @module model/QuickserverAddons
- * @version 0.9.0
+ * @version 1.0.0
  */
 class QuickserverAddons {
     /**

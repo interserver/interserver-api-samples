@@ -17,5 +17,4 @@ package org.openapitools.client.model
    * Collection of credit cards on the account, keyed by card ID.
    */
 case class AccountInfoDataCcs(
-)
-
+) extends Map[String, AccountInfoDataCc]

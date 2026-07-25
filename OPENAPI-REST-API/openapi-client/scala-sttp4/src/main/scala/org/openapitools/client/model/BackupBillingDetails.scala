@@ -34,4 +34,3 @@ case class BackupBillingDetails(
   /* JSON representation of extra service information. */
   service_extra_json: Option[String] = None
 )
-

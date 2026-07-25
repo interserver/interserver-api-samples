@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerIpmiLiveRequest
+# InterserverApiClient.ServerIpmiLiveRequest
 
 ## Properties
 

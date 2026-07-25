@@ -1,273 +1,273 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for AccountInfoMaxMindResponse
 void main() {
-  final instance = AccountInfoMaxMindResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final AccountInfoMaxMindResponse? instance = /* AccountInfoMaxMindResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(AccountInfoMaxMindResponse, () {
-    // String distance
+    // Optional<String?> distance
     test('to test the property `distance`', () async {
       // TODO
     });
 
-    // String countryMatch
+    // Optional<String?> countryMatch
     test('to test the property `countryMatch`', () async {
       // TODO
     });
 
-    // String countryCode
+    // Optional<String?> countryCode
     test('to test the property `countryCode`', () async {
       // TODO
     });
 
-    // String freeMail
+    // Optional<String?> freeMail
     test('to test the property `freeMail`', () async {
       // TODO
     });
 
-    // String anonymousProxy
+    // Optional<String?> anonymousProxy
     test('to test the property `anonymousProxy`', () async {
       // TODO
     });
 
-    // String score
+    // Optional<String?> score
     test('to test the property `score`', () async {
       // TODO
     });
 
-    // String binMatch
+    // Optional<String?> binMatch
     test('to test the property `binMatch`', () async {
       // TODO
     });
 
-    // String binCountry
+    // Optional<String?> binCountry
     test('to test the property `binCountry`', () async {
       // TODO
     });
 
-    // String err
+    // Optional<String?> err
     test('to test the property `err`', () async {
       // TODO
     });
 
-    // String proxyScore
+    // Optional<String?> proxyScore
     test('to test the property `proxyScore`', () async {
       // TODO
     });
 
-    // String ipRegion
+    // Optional<String?> ipRegion
     test('to test the property `ipRegion`', () async {
       // TODO
     });
 
-    // String ipCity
+    // Optional<String?> ipCity
     test('to test the property `ipCity`', () async {
       // TODO
     });
 
-    // String ipLatitude
+    // Optional<String?> ipLatitude
     test('to test the property `ipLatitude`', () async {
       // TODO
     });
 
-    // String ipLongitude
+    // Optional<String?> ipLongitude
     test('to test the property `ipLongitude`', () async {
       // TODO
     });
 
-    // String binName
+    // Optional<String?> binName
     test('to test the property `binName`', () async {
       // TODO
     });
 
-    // String ipIsp
+    // Optional<String?> ipIsp
     test('to test the property `ipIsp`', () async {
       // TODO
     });
 
-    // String ipOrg
+    // Optional<String?> ipOrg
     test('to test the property `ipOrg`', () async {
       // TODO
     });
 
-    // String binNameMatch
+    // Optional<String?> binNameMatch
     test('to test the property `binNameMatch`', () async {
       // TODO
     });
 
-    // String binPhoneMatch
+    // Optional<String?> binPhoneMatch
     test('to test the property `binPhoneMatch`', () async {
       // TODO
     });
 
-    // String binPhone
+    // Optional<String?> binPhone
     test('to test the property `binPhone`', () async {
       // TODO
     });
 
-    // String custPhoneInBillingLoc
+    // Optional<String?> custPhoneInBillingLoc
     test('to test the property `custPhoneInBillingLoc`', () async {
       // TODO
     });
 
-    // String highRiskCountry
+    // Optional<String?> highRiskCountry
     test('to test the property `highRiskCountry`', () async {
       // TODO
     });
 
-    // String queriesRemaining
+    // Optional<String?> queriesRemaining
     test('to test the property `queriesRemaining`', () async {
       // TODO
     });
 
-    // String cityPostalMatch
+    // Optional<String?> cityPostalMatch
     test('to test the property `cityPostalMatch`', () async {
       // TODO
     });
 
-    // String shipCityPostalMatch
+    // Optional<String?> shipCityPostalMatch
     test('to test the property `shipCityPostalMatch`', () async {
       // TODO
     });
 
-    // String maxmindID
+    // Optional<String?> maxmindID
     test('to test the property `maxmindID`', () async {
       // TODO
     });
 
-    // String ipAsnum
+    // Optional<String?> ipAsnum
     test('to test the property `ipAsnum`', () async {
       // TODO
     });
 
-    // String ipUserType
+    // Optional<String?> ipUserType
     test('to test the property `ipUserType`', () async {
       // TODO
     });
 
-    // String ipCountryConf
+    // Optional<String?> ipCountryConf
     test('to test the property `ipCountryConf`', () async {
       // TODO
     });
 
-    // String ipRegionConf
+    // Optional<String?> ipRegionConf
     test('to test the property `ipRegionConf`', () async {
       // TODO
     });
 
-    // String ipCityConf
+    // Optional<String?> ipCityConf
     test('to test the property `ipCityConf`', () async {
       // TODO
     });
 
-    // String ipPostalCode
+    // Optional<String?> ipPostalCode
     test('to test the property `ipPostalCode`', () async {
       // TODO
     });
 
-    // String ipPostalConf
+    // Optional<String?> ipPostalConf
     test('to test the property `ipPostalConf`', () async {
       // TODO
     });
 
-    // String ipAccuracyRadius
+    // Optional<String?> ipAccuracyRadius
     test('to test the property `ipAccuracyRadius`', () async {
       // TODO
     });
 
-    // String ipNetSpeedCell
+    // Optional<String?> ipNetSpeedCell
     test('to test the property `ipNetSpeedCell`', () async {
       // TODO
     });
 
-    // String ipMetroCode
+    // Optional<String?> ipMetroCode
     test('to test the property `ipMetroCode`', () async {
       // TODO
     });
 
-    // String ipAreaCode
+    // Optional<String?> ipAreaCode
     test('to test the property `ipAreaCode`', () async {
       // TODO
     });
 
-    // String ipTimeZone
+    // Optional<String?> ipTimeZone
     test('to test the property `ipTimeZone`', () async {
       // TODO
     });
 
-    // String ipRegionName
+    // Optional<String?> ipRegionName
     test('to test the property `ipRegionName`', () async {
       // TODO
     });
 
-    // String ipDomain
+    // Optional<String?> ipDomain
     test('to test the property `ipDomain`', () async {
       // TODO
     });
 
-    // String ipCountryName
+    // Optional<String?> ipCountryName
     test('to test the property `ipCountryName`', () async {
       // TODO
     });
 
-    // String ipContinentCode
+    // Optional<String?> ipContinentCode
     test('to test the property `ipContinentCode`', () async {
       // TODO
     });
 
-    // String ipCorporateProxy
+    // Optional<String?> ipCorporateProxy
     test('to test the property `ipCorporateProxy`', () async {
       // TODO
     });
 
-    // String carderEmail
+    // Optional<String?> carderEmail
     test('to test the property `carderEmail`', () async {
       // TODO
     });
 
-    // String highRiskUsername
+    // Optional<String?> highRiskUsername
     test('to test the property `highRiskUsername`', () async {
       // TODO
     });
 
-    // String highRiskPassword
+    // Optional<String?> highRiskPassword
     test('to test the property `highRiskPassword`', () async {
       // TODO
     });
 
-    // AccountInfoMaxMindResponseRiskScore riskScore
+    // Optional<AccountInfoMaxMindResponseRiskScore?> riskScore
     test('to test the property `riskScore`', () async {
       // TODO
     });
 
-    // String isTransProxy
+    // Optional<String?> isTransProxy
     test('to test the property `isTransProxy`', () async {
       // TODO
     });
 
-    // String prepaid
+    // Optional<String?> prepaid
     test('to test the property `prepaid`', () async {
       // TODO
     });
 
-    // String minfraudVersion
+    // Optional<String?> minfraudVersion
     test('to test the property `minfraudVersion`', () async {
       // TODO
     });
 
-    // String serviceLevel
+    // Optional<String?> serviceLevel
     test('to test the property `serviceLevel`', () async {
       // TODO
     });
 
-    // String explanation
+    // Optional<String?> explanation
     test('to test the property `explanation`', () async {
       // TODO
     });
 
-    // String femaleName
+    // Optional<String?> femaleName
     test('to test the property `femaleName`', () async {
       // TODO
     });

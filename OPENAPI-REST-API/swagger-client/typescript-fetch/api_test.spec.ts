@@ -21,9 +21,6 @@ describe("AccountApi", () => {
     instance = new api.AccountApi(config)
   });
 
-  test("changeAccountUsername", () => {
-    return expect(instance.changeAccountUsername({})).resolves.toBe(null)
-  })
   test("deleteAccountOauthName", () => {
     const name: string = "name_example"
     return expect(instance.deleteAccountOauthName(name, {})).resolves.toBe(null)
@@ -157,18 +154,6 @@ describe("BillingApi", () => {
     instance = new api.BillingApi(config)
   });
 
-  test("addAccountCreditCard", () => {
-    const name: string = "name_example"
-    const address: string = "address_example"
-    const city: string = "city_example"
-    const state: string = "state_example"
-    const country: string = "country_example"
-    const zip: string = "zip_example"
-    const cc: string = "cc_example"
-    const cc_exp: string = "cc_exp_example"
-    const cc_ccv2: string = "cc_ccv2_example"
-    return expect(instance.addAccountCreditCard(name, address, city, state, country, zip, cc, cc_exp, cc_ccv2, {})).resolves.toBe(null)
-  })
   test("addBillingCreditCard", () => {
     const body: api.BillingAddCcRequest = undefined
     return expect(instance.addBillingCreditCard(body, {})).resolves.toBe(null)
@@ -176,10 +161,6 @@ describe("BillingApi", () => {
   test("addBillingPrepay", () => {
     const body: api.BillingPrepayRequest = undefined
     return expect(instance.addBillingPrepay(body, {})).resolves.toBe(null)
-  })
-  test("deleteAccountCreditCard", () => {
-    const id: string = "id_example"
-    return expect(instance.deleteAccountCreditCard(id, {})).resolves.toBe(null)
   })
   test("deleteBillingCreditCard", () => {
     const id: number = 56
@@ -196,6 +177,12 @@ describe("BillingApi", () => {
   test("getAffiliateBanners", () => {
     return expect(instance.getAffiliateBanners({})).resolves.toBe(null)
   })
+  test("getAffiliateDownload", () => {
+    const st: string = "st_example"
+    const ex: string = "ex_example"
+    const year: number = 56
+    return expect(instance.getAffiliateDownload(st, ex, year, {})).resolves.toBe(null)
+  })
   test("getAffiliateRichReport", () => {
     return expect(instance.getAffiliateRichReport({})).resolves.toBe(null)
   })
@@ -203,8 +190,9 @@ describe("BillingApi", () => {
     const days: number = 56
     return expect(instance.getAffiliateSalesGraph(days, {})).resolves.toBe(null)
   })
-  test("getAffiliateSalesReport", () => {
-    return expect(instance.getAffiliateSalesReport({})).resolves.toBe(null)
+  test("getAffiliateSignups", () => {
+    const st: string = "st_example"
+    return expect(instance.getAffiliateSignups(st, {})).resolves.toBe(null)
   })
   test("getAffiliateTrafficGraph", () => {
     const days: number = 56
@@ -230,37 +218,26 @@ describe("BillingApi", () => {
   test("getBillingPrePays", () => {
     return expect(instance.getBillingPrePays({})).resolves.toBe(null)
   })
-  test("getInvoices", () => {
-    const searchString: string = "searchString_example"
-    const skip: number = 56
-    const limit: number = 56
-    return expect(instance.getInvoices(searchString, skip, limit, {})).resolves.toBe(null)
-  })
   test("initiatePayment", () => {
     const method: string = "method_example"
     const invoices: string = "invoices_example"
     return expect(instance.initiatePayment(method, invoices, {})).resolves.toBe(null)
+  })
+  test("patchBillingCreditCardVerify", () => {
+    const body: api.IdVerifyBody = undefined
+    const id: number = 56
+    return expect(instance.patchBillingCreditCardVerify(body, id, {})).resolves.toBe(null)
   })
   test("postBillingCreditCardVerify", () => {
     const body: api.BillingVerifyCcRequest = undefined
     const id: number = 56
     return expect(instance.postBillingCreditCardVerify(body, id, {})).resolves.toBe(null)
   })
-  test("updateAccountCreditCard", () => {
-    const id: number = 56
-    return expect(instance.updateAccountCreditCard(id, {})).resolves.toBe(null)
-  })
   test("updateAffiliateDockSetup", () => {
     const affiliate_dock_title: string = "affiliate_dock_title_example"
     const affiliate_dock_description: string = "affiliate_dock_description_example"
     const referrer_coupon: string = "referrer_coupon_example"
     return expect(instance.updateAffiliateDockSetup(affiliate_dock_title, affiliate_dock_description, referrer_coupon, {})).resolves.toBe(null)
-  })
-  test("updateAffiliateLandingPage", () => {
-    const affiliate_dock_title: string = "affiliate_dock_title_example"
-    const affiliate_dock_description: string = "affiliate_dock_description_example"
-    const referrer_coupon: string = "referrer_coupon_example"
-    return expect(instance.updateAffiliateLandingPage(affiliate_dock_title, affiliate_dock_description, referrer_coupon, {})).resolves.toBe(null)
   })
   test("updateAffiliatePaymentSetup", () => {
     const affiliate_paypal: string = "affiliate_paypal_example"
@@ -335,7 +312,8 @@ describe("DomainsApi", () => {
   });
 
   test("addDomain", () => {
-    return expect(instance.addDomain({})).resolves.toBe(null)
+    const body: { [key: string]: any; } = undefined
+    return expect(instance.addDomain(body, {})).resolves.toBe(null)
   })
   test("addDomainDnssec", () => {
     const body: api.DomainDnssecRequest = undefined
@@ -353,8 +331,7 @@ describe("DomainsApi", () => {
   })
   test("deleteDomainDnssec", () => {
     const id: number = 56
-    const action: string = "action_example"
-    return expect(instance.deleteDomainDnssec(id, action, {})).resolves.toBe(null)
+    return expect(instance.deleteDomainDnssec(id, {})).resolves.toBe(null)
   })
   test("deleteDomainNameserver", () => {
     const id: number = 56
@@ -385,15 +362,6 @@ describe("DomainsApi", () => {
     const id: number = 56
     return expect(instance.getDomainNameservers(id, {})).resolves.toBe(null)
   })
-  test("getDomainOrderFields", () => {
-    const domain: string = "domain_example"
-    const regType: string = "regType_example"
-    return expect(instance.getDomainOrderFields(domain, regType, {})).resolves.toBe(null)
-  })
-  test("getDomainOrderSearchResults", () => {
-    const domain: string = "domain_example"
-    return expect(instance.getDomainOrderSearchResults(domain, {})).resolves.toBe(null)
-  })
   test("getDomainRenewal", () => {
     const id: number = 56
     return expect(instance.getDomainRenewal(id, {})).resolves.toBe(null)
@@ -421,18 +389,24 @@ describe("DomainsApi", () => {
     return expect(instance.getNewDomain({})).resolves.toBe(null)
   })
   test("patchDomains", () => {
-    return expect(instance.patchDomains({})).resolves.toBe(null)
+    const body: { [key: string]: any; } = undefined
+    return expect(instance.patchDomains(body, {})).resolves.toBe(null)
   })
   test("postDomainRenewal", () => {
     const id: number = 56
     return expect(instance.postDomainRenewal(id, {})).resolves.toBe(null)
+  })
+  test("postDomainSearch", () => {
+    const name: string = "name_example"
+    return expect(instance.postDomainSearch(name, {})).resolves.toBe(null)
   })
   test("postDomainTransfer", () => {
     const id: number = 56
     return expect(instance.postDomainTransfer(id, {})).resolves.toBe(null)
   })
   test("putDomains", () => {
-    return expect(instance.putDomains({})).resolves.toBe(null)
+    const body: { [key: string]: any; } = undefined
+    return expect(instance.putDomains(body, {})).resolves.toBe(null)
   })
   test("updateDomainContact", () => {
     const body: api.DomainContactDetails = undefined
@@ -440,7 +414,7 @@ describe("DomainsApi", () => {
     return expect(instance.updateDomainContact(body, id, {})).resolves.toBe(null)
   })
   test("updateDomainInfo", () => {
-    const id: string = "id_example"
+    const id: number = 56
     return expect(instance.updateDomainInfo(id, {})).resolves.toBe(null)
   })
   test("updateDomainNameservers", () => {
@@ -462,7 +436,8 @@ describe("FloatingIPsApi", () => {
   });
 
   test("addFloatingIp", () => {
-    return expect(instance.addFloatingIp({})).resolves.toBe(null)
+    const body: api.FloatingIpOrderRequest = undefined
+    return expect(instance.addFloatingIp(body, {})).resolves.toBe(null)
   })
   test("floatingIpsCancel", () => {
     const id: number = 56
@@ -492,7 +467,8 @@ describe("FloatingIPsApi", () => {
     return expect(instance.postFloatingIpsChangeIp(ip, id, {})).resolves.toBe(null)
   })
   test("putFloatingIps", () => {
-    return expect(instance.putFloatingIps({})).resolves.toBe(null)
+    const body: api.FloatingIpOrderRequest = undefined
+    return expect(instance.putFloatingIps(body, {})).resolves.toBe(null)
   })
   test("updateFloatingIpInfo", () => {
     const id: string = "id_example"
@@ -507,7 +483,8 @@ describe("LicensesApi", () => {
   });
 
   test("addLicense", () => {
-    return expect(instance.addLicense({})).resolves.toBe(null)
+    const body: api.LicenseOrderRequest = undefined
+    return expect(instance.addLicense(body, {})).resolves.toBe(null)
   })
   test("getLicenseInfo", () => {
     const id: number = 56
@@ -519,10 +496,6 @@ describe("LicensesApi", () => {
   })
   test("getLicenseList", () => {
     return expect(instance.getLicenseList({})).resolves.toBe(null)
-  })
-  test("getLicenseOrderCatTagInfo", () => {
-    const catTag: string = "catTag_example"
-    return expect(instance.getLicenseOrderCatTagInfo(catTag, {})).resolves.toBe(null)
   })
   test("getLicensesWelcomeEmail", () => {
     const id: number = 56
@@ -541,7 +514,8 @@ describe("LicensesApi", () => {
     return expect(instance.postLicenseChangeIp(body, id, {})).resolves.toBe(null)
   })
   test("putLicenses", () => {
-    return expect(instance.putLicenses({})).resolves.toBe(null)
+    const body: api.LicenseOrderRequest = undefined
+    return expect(instance.putLicenses(body, {})).resolves.toBe(null)
   })
   test("updateLicenseInfo", () => {
     const id: string = "id_example"
@@ -556,7 +530,8 @@ describe("MailApi", () => {
   });
 
   test("addMail", () => {
-    return expect(instance.addMail({})).resolves.toBe(null)
+    const body: api.MailOrderRequest = undefined
+    return expect(instance.addMail(body, {})).resolves.toBe(null)
   })
   test("addRule", () => {
     const body: api.DenyRuleNew = {
@@ -575,9 +550,9 @@ describe("MailApi", () => {
     return expect(instance.createMailAlert(body, id, {})).resolves.toBe(null)
   })
   test("deleteMailAlert", () => {
+    const body: api.IdAlertsBody = undefined
     const id: number = 56
-    const alert_id: number = 56
-    return expect(instance.deleteMailAlert(id, alert_id, {})).resolves.toBe(null)
+    return expect(instance.deleteMailAlert(body, id, {})).resolves.toBe(null)
   })
   test("deleteRule", () => {
     const id: number = 56
@@ -642,7 +617,8 @@ describe("MailApi", () => {
     return expect(instance.postMailDelist(body, id, {})).resolves.toBe(null)
   })
   test("putMail", () => {
-    return expect(instance.putMail({})).resolves.toBe(null)
+    const body: api.MailOrderRequest = undefined
+    return expect(instance.putMail(body, {})).resolves.toBe(null)
   })
   test("resetMailPassword", () => {
     const id: number = 56
@@ -684,6 +660,12 @@ describe("MailApi", () => {
     const id: string = "id_example"
     return expect(instance.updateMailInfo(id, {})).resolves.toBe(null)
   })
+  test("updateRule", () => {
+    const body: api.DenyRuleNew = undefined
+    const id: number = 56
+    const rule: string = "rule_example"
+    return expect(instance.updateRule(body, id, rule, {})).resolves.toBe(null)
+  })
   test("viewMailLog", () => {
     const id: number = 56
     const id: number = 789
@@ -714,6 +696,12 @@ describe("PublicApi", () => {
     instance = new api.PublicApi(config)
   });
 
+  test("getAccountCurrencies", () => {
+    return expect(instance.getAccountCurrencies({})).resolves.toBe(null)
+  })
+  test("getAccountLocales", () => {
+    return expect(instance.getAccountLocales({})).resolves.toBe(null)
+  })
   test("getCaptcha", () => {
     return expect(instance.getCaptcha({})).resolves.toBe(null)
   })
@@ -786,7 +774,8 @@ describe("QuickServersApi", () => {
   });
 
   test("addQs", () => {
-    return expect(instance.addQs({})).resolves.toBe(null)
+    const body: api.QsOrderRequest = undefined
+    return expect(instance.addQs(body, {})).resolves.toBe(null)
   })
   test("deleteQsBackup", () => {
     const id: number = 56
@@ -834,6 +823,10 @@ describe("QuickServersApi", () => {
   })
   test("getNewQs", () => {
     return expect(instance.getNewQs({})).resolves.toBe(null)
+  })
+  test("getQsBackup", () => {
+    const id: number = 56
+    return expect(instance.getQsBackup(id, {})).resolves.toBe(null)
   })
   test("getQsBackups", () => {
     const id: number = 56
@@ -899,10 +892,6 @@ describe("QuickServersApi", () => {
     const id: string = "id_example"
     return expect(instance.getQsWelcomeEmail(id, {})).resolves.toBe(null)
   })
-  test("postQsBackup", () => {
-    const id: number = 56
-    return expect(instance.postQsBackup(id, {})).resolves.toBe(null)
-  })
   test("postQsChangeHostname", () => {
     const id: number = 56
     return expect(instance.postQsChangeHostname(id, {})).resolves.toBe(null)
@@ -955,7 +944,8 @@ describe("QuickServersApi", () => {
     return expect(instance.postQuickServerRestore(body, id, {})).resolves.toBe(null)
   })
   test("putQs", () => {
-    return expect(instance.putQs({})).resolves.toBe(null)
+    const body: api.QsOrderRequest = undefined
+    return expect(instance.putQs(body, {})).resolves.toBe(null)
   })
   test("quickserversCancel", () => {
     const id: number = 56
@@ -974,7 +964,8 @@ describe("SSLCertificatesApi", () => {
   });
 
   test("addSsl", () => {
-    return expect(instance.addSsl({})).resolves.toBe(null)
+    const body: api.SslOrderRequest = undefined
+    return expect(instance.addSsl(body, {})).resolves.toBe(null)
   })
   test("getNewSsl", () => {
     return expect(instance.getNewSsl({})).resolves.toBe(null)
@@ -995,7 +986,8 @@ describe("SSLCertificatesApi", () => {
     return expect(instance.getSslWelcomeEmail(id, {})).resolves.toBe(null)
   })
   test("putSsl", () => {
-    return expect(instance.putSsl({})).resolves.toBe(null)
+    const body: api.SslOrderRequest = undefined
+    return expect(instance.putSsl(body, {})).resolves.toBe(null)
   })
   test("sslCancel", () => {
     const id: number = 56
@@ -1070,6 +1062,10 @@ describe("ScrubIpsApi", () => {
     const body: api.ScrubIpPlaceOrder = undefined
     return expect(instance.placeScrubOrder(body, {})).resolves.toBe(null)
   })
+  test("putScrubIps", () => {
+    const body: api.ScrubIpPlaceOrder = undefined
+    return expect(instance.putScrubIps(body, {})).resolves.toBe(null)
+  })
   test("scrubIpsDeleteGeoRule", () => {
     const body: api.DeleteGeoFirewallRule = undefined
     const id: number = 56
@@ -1089,7 +1085,8 @@ describe("ServersApi", () => {
   });
 
   test("addServer", () => {
-    return expect(instance.addServer({})).resolves.toBe(null)
+    const body: api.ServerOrderPostRequest = undefined
+    return expect(instance.addServer(body, {})).resolves.toBe(null)
   })
   test("buyItNowServerOrder", () => {
     return expect(instance.buyItNowServerOrder({})).resolves.toBe(null)
@@ -1128,8 +1125,9 @@ describe("ServersApi", () => {
     const id: number = 56
     return expect(instance.postServerReverseDns(body, id, {})).resolves.toBe(null)
   })
-  test("putServers", () => {
-    return expect(instance.putServers({})).resolves.toBe(null)
+  test("serverBulkIpmiPowerGet", () => {
+    const ids: string = "ids_example"
+    return expect(instance.serverBulkIpmiPowerGet(ids, {})).resolves.toBe(null)
   })
   test("serverIpmiLiveGet", () => {
     const id: number = 56
@@ -1272,6 +1270,10 @@ describe("VPSApi", () => {
   test("getNewVps", () => {
     return expect(instance.getNewVps({})).resolves.toBe(null)
   })
+  test("getVpsBackup", () => {
+    const id: number = 56
+    return expect(instance.getVpsBackup(id, {})).resolves.toBe(null)
+  })
   test("getVpsBackups", () => {
     const id: number = 56
     const all: string = "all_example"
@@ -1285,6 +1287,14 @@ describe("VPSApi", () => {
     const id: number = 56
     return expect(instance.getVpsBuyIp(id, {})).resolves.toBe(null)
   })
+  test("getVpsChangeHostname", () => {
+    const id: number = 56
+    return expect(instance.getVpsChangeHostname(id, {})).resolves.toBe(null)
+  })
+  test("getVpsChangeRootPassword", () => {
+    const id: number = 56
+    return expect(instance.getVpsChangeRootPassword(id, {})).resolves.toBe(null)
+  })
   test("getVpsChangeTimezone", () => {
     const id: number = 56
     return expect(instance.getVpsChangeTimezone(id, {})).resolves.toBe(null)
@@ -1292,6 +1302,10 @@ describe("VPSApi", () => {
   test("getVpsInfo", () => {
     const id: number = 56
     return expect(instance.getVpsInfo(id, {})).resolves.toBe(null)
+  })
+  test("getVpsInsertCd", () => {
+    const id: number = 56
+    return expect(instance.getVpsInsertCd(id, {})).resolves.toBe(null)
   })
   test("getVpsInvoices", () => {
     const id: number = 56
@@ -1303,6 +1317,10 @@ describe("VPSApi", () => {
   test("getVpsReinstallOs", () => {
     const id: number = 56
     return expect(instance.getVpsReinstallOs(id, {})).resolves.toBe(null)
+  })
+  test("getVpsResetPassword", () => {
+    const id: number = 56
+    return expect(instance.getVpsResetPassword(id, {})).resolves.toBe(null)
   })
   test("getVpsReverseDns", () => {
     const id: number = 56
@@ -1327,10 +1345,6 @@ describe("VPSApi", () => {
   test("getVpsWelcomeEmail", () => {
     const id: string = "id_example"
     return expect(instance.getVpsWelcomeEmail(id, {})).resolves.toBe(null)
-  })
-  test("postVpsBackup", () => {
-    const id: number = 56
-    return expect(instance.postVpsBackup(id, {})).resolves.toBe(null)
   })
   test("postVpsBuyHdSpace", () => {
     const id: number = 56
@@ -1394,6 +1408,10 @@ describe("VPSApi", () => {
     const id: number = 56
     return expect(instance.postVpsSlices(id, {})).resolves.toBe(null)
   })
+  test("postVpsTrafficUsage", () => {
+    const id: number = 56
+    return expect(instance.postVpsTrafficUsage(id, {})).resolves.toBe(null)
+  })
   test("postVpsViewDesktop", () => {
     const id: number = 56
     return expect(instance.postVpsViewDesktop(id, {})).resolves.toBe(null)
@@ -1401,6 +1419,10 @@ describe("VPSApi", () => {
   test("putVps", () => {
     const body: api.VpsOrderPutRequest = undefined
     return expect(instance.putVps(body, {})).resolves.toBe(null)
+  })
+  test("putVpsBuyHdSpace", () => {
+    const id: number = 56
+    return expect(instance.putVpsBuyHdSpace(id, {})).resolves.toBe(null)
   })
   test("updateVpsInfo", () => {
     const id: string = "id_example"
@@ -1419,7 +1441,8 @@ describe("WebhostingApi", () => {
   });
 
   test("addWebsite", () => {
-    return expect(instance.addWebsite({})).resolves.toBe(null)
+    const body: api.WebsiteOrderPostRequest = undefined
+    return expect(instance.addWebsite(body, {})).resolves.toBe(null)
   })
   test("getNewWebsite", () => {
     return expect(instance.getNewWebsite({})).resolves.toBe(null)
@@ -1471,7 +1494,8 @@ describe("WebhostingApi", () => {
     return expect(instance.postWebsitesReverseDns(body, id, {})).resolves.toBe(null)
   })
   test("putWebsites", () => {
-    return expect(instance.putWebsites({})).resolves.toBe(null)
+    const body: api.WebsiteOrderPutRequest = undefined
+    return expect(instance.putWebsites(body, {})).resolves.toBe(null)
   })
   test("updateWebsiteInfo", () => {
     const id: string = "id_example"

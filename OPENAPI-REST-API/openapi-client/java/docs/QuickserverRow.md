@@ -16,4 +16,8 @@ A result row from the `Quickservers` `GET` request.
 |**qsComment** | **String** | The comment of the qs. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

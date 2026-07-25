@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_memory_li import ServerOrderMemoryLi
+from interserver_api_client.models.server_order_memory_li import ServerOrderMemoryLi
 
 class TestServerOrderMemoryLi(unittest.TestCase):
     """ServerOrderMemoryLi unit test stubs"""
@@ -36,8 +36,8 @@ class TestServerOrderMemoryLi(unittest.TestCase):
         model = ServerOrderMemoryLi()
         if include_optional:
             return ServerOrderMemoryLi(
-                var_254 = openapi_client.models.server_order_memory_li_254.ServerOrder_memory_li_254(
-                    65 = openapi_client.models.server_order_memory.ServerOrderMemory(
+                var_254 = interserver_api_client.models.server_order_memory_li_254.ServerOrder_memory_li_254(
+                    65 = interserver_api_client.models.server_order_memory.ServerOrderMemory(
                         id = '65', 
                         price = '0', 
                         img = 'hd.jpg', 

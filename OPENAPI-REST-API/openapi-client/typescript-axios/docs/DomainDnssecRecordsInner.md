@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainDnssecRecordsInner } from './api';
+import { DomainDnssecRecordsInner } from '@interserver/myadmin-client';
 
 const instance: DomainDnssecRecordsInner = {
     algorithm,

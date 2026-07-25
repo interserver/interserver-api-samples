@@ -1,4 +1,4 @@
-# openapi::ReplyTicketResponseSchema
+# interserverapi::ReplyTicketResponseSchema
 
 
 ## Properties

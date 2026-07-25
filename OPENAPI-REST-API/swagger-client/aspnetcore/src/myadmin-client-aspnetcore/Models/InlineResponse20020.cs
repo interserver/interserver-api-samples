@@ -27,20 +27,46 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse20020 : IEquatable<InlineResponse20020>
     { 
         /// <summary>
-        /// Gets or Sets Success
+        /// Gets or Sets _Continue
         /// </summary>
-        [Required]
 
-        [DataMember(Name="success")]
-        public bool? Success { get; set; }
+        [DataMember(Name="continue")]
+        public bool? _Continue { get; set; }
 
         /// <summary>
-        /// Gets or Sets Text
+        /// Gets or Sets Errors
         /// </summary>
-        [Required]
 
-        [DataMember(Name="text")]
-        public string Text { get; set; }
+        [DataMember(Name="errors")]
+        public List<string> Errors { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ServiceType
+        /// </summary>
+
+        [DataMember(Name="serviceType")]
+        public int? ServiceType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ServiceCost
+        /// </summary>
+
+        [DataMember(Name="serviceCost")]
+        public decimal? ServiceCost { get; set; }
+
+        /// <summary>
+        /// Gets or Sets OriginalCost
+        /// </summary>
+
+        [DataMember(Name="originalCost")]
+        public decimal? OriginalCost { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RepeatServiceCost
+        /// </summary>
+
+        [DataMember(Name="repeatServiceCost")]
+        public decimal? RepeatServiceCost { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,8 +76,12 @@ namespace myadmin-client-aspnetcore.Models
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20020 {\n");
-            sb.Append("  Success: ").Append(Success).Append("\n");
-            sb.Append("  Text: ").Append(Text).Append("\n");
+            sb.Append("  _Continue: ").Append(_Continue).Append("\n");
+            sb.Append("  Errors: ").Append(Errors).Append("\n");
+            sb.Append("  ServiceType: ").Append(ServiceType).Append("\n");
+            sb.Append("  ServiceCost: ").Append(ServiceCost).Append("\n");
+            sb.Append("  OriginalCost: ").Append(OriginalCost).Append("\n");
+            sb.Append("  RepeatServiceCost: ").Append(RepeatServiceCost).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -89,14 +119,34 @@ namespace myadmin-client-aspnetcore.Models
 
             return 
                 (
-                    Success == other.Success ||
-                    Success != null &&
-                    Success.Equals(other.Success)
+                    _Continue == other._Continue ||
+                    _Continue != null &&
+                    _Continue.Equals(other._Continue)
                 ) && 
                 (
-                    Text == other.Text ||
-                    Text != null &&
-                    Text.Equals(other.Text)
+                    Errors == other.Errors ||
+                    Errors != null &&
+                    Errors.SequenceEqual(other.Errors)
+                ) && 
+                (
+                    ServiceType == other.ServiceType ||
+                    ServiceType != null &&
+                    ServiceType.Equals(other.ServiceType)
+                ) && 
+                (
+                    ServiceCost == other.ServiceCost ||
+                    ServiceCost != null &&
+                    ServiceCost.Equals(other.ServiceCost)
+                ) && 
+                (
+                    OriginalCost == other.OriginalCost ||
+                    OriginalCost != null &&
+                    OriginalCost.Equals(other.OriginalCost)
+                ) && 
+                (
+                    RepeatServiceCost == other.RepeatServiceCost ||
+                    RepeatServiceCost != null &&
+                    RepeatServiceCost.Equals(other.RepeatServiceCost)
                 );
         }
 
@@ -110,10 +160,18 @@ namespace myadmin-client-aspnetcore.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
-                    if (Success != null)
-                    hashCode = hashCode * 59 + Success.GetHashCode();
-                    if (Text != null)
-                    hashCode = hashCode * 59 + Text.GetHashCode();
+                    if (_Continue != null)
+                    hashCode = hashCode * 59 + _Continue.GetHashCode();
+                    if (Errors != null)
+                    hashCode = hashCode * 59 + Errors.GetHashCode();
+                    if (ServiceType != null)
+                    hashCode = hashCode * 59 + ServiceType.GetHashCode();
+                    if (ServiceCost != null)
+                    hashCode = hashCode * 59 + ServiceCost.GetHashCode();
+                    if (OriginalCost != null)
+                    hashCode = hashCode * 59 + OriginalCost.GetHashCode();
+                    if (RepeatServiceCost != null)
+                    hashCode = hashCode * 59 + RepeatServiceCost.GetHashCode();
                 return hashCode;
             }
         }

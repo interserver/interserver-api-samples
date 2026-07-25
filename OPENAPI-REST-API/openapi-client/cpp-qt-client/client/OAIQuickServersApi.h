@@ -22,6 +22,7 @@
 #include "OAIDownloadQsBackup_200_response.h"
 #include "OAIDownloadQsBackup_request.h"
 #include "OAIGetAccountInfo_401_response.h"
+#include "OAIQsOrderRequest.h"
 #include "OAIQueueResponse.h"
 #include "OAIQuickserver.h"
 #include "OAIQuickserverOrder.h"
@@ -73,8 +74,10 @@ public:
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
-
-    virtual void addQs();
+    /**
+    * @param[in]  oaiqs_order_request OAIQsOrderRequest [required]
+    */
+    virtual void addQs(const OAIQsOrderRequest &oaiqs_order_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -132,6 +135,11 @@ public:
 
 
     virtual void getNewQs();
+
+    /**
+    * @param[in]  id qint32 [required]
+    */
+    virtual void getQsBackup(const qint32 &id);
 
     /**
     * @param[in]  id qint32 [required]
@@ -215,11 +223,6 @@ public:
     /**
     * @param[in]  id qint32 [required]
     */
-    virtual void postQsBackup(const qint32 &id);
-
-    /**
-    * @param[in]  id qint32 [required]
-    */
     virtual void postQsChangeHostname(const qint32 &id);
 
     /**
@@ -280,8 +283,10 @@ public:
     */
     virtual void postQuickServerRestore(const qint32 &id, const OAIRestoreRequest &oai_restore_request);
 
-
-    virtual void putQs();
+    /**
+    * @param[in]  oaiqs_order_request OAIQsOrderRequest [required]
+    */
+    virtual void putQs(const OAIQsOrderRequest &oaiqs_order_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -335,6 +340,7 @@ private:
     void doQsStopCallback(OAIHttpRequestWorker *worker);
     void downloadQsBackupCallback(OAIHttpRequestWorker *worker);
     void getNewQsCallback(OAIHttpRequestWorker *worker);
+    void getQsBackupCallback(OAIHttpRequestWorker *worker);
     void getQsBackupsCallback(OAIHttpRequestWorker *worker);
     void getQsChangeHostnameCallback(OAIHttpRequestWorker *worker);
     void getQsChangeRootPasswordCallback(OAIHttpRequestWorker *worker);
@@ -351,7 +357,6 @@ private:
     void getQsTrafficUsageCallback(OAIHttpRequestWorker *worker);
     void getQsViewDesktopCallback(OAIHttpRequestWorker *worker);
     void getQsWelcomeEmailCallback(OAIHttpRequestWorker *worker);
-    void postQsBackupCallback(OAIHttpRequestWorker *worker);
     void postQsChangeHostnameCallback(OAIHttpRequestWorker *worker);
     void postQsChangeRootPasswordCallback(OAIHttpRequestWorker *worker);
     void postQsChangeTimezoneCallback(OAIHttpRequestWorker *worker);
@@ -382,6 +387,7 @@ Q_SIGNALS:
     void doQsStopSignal(OAIQueueResponse summary);
     void downloadQsBackupSignal(OAIDownloadQsBackup_200_response summary);
     void getNewQsSignal(OAIQuickserverOrder summary);
+    void getQsBackupSignal(OAIQueueResponse summary);
     void getQsBackupsSignal(OAIVpsBackupRows<OAIVpsBackupRow> summary);
     void getQsChangeHostnameSignal();
     void getQsChangeRootPasswordSignal();
@@ -398,7 +404,6 @@ Q_SIGNALS:
     void getQsTrafficUsageSignal();
     void getQsViewDesktopSignal();
     void getQsWelcomeEmailSignal(OAITextResponse summary);
-    void postQsBackupSignal(OAIQueueResponse summary);
     void postQsChangeHostnameSignal(OAIQueueResponse summary);
     void postQsChangeRootPasswordSignal(OAIQueueResponse summary);
     void postQsChangeTimezoneSignal(OAIQueueResponse summary);
@@ -428,6 +433,7 @@ Q_SIGNALS:
     void doQsStopSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void downloadQsBackupSignalFull(OAIHttpRequestWorker *worker, OAIDownloadQsBackup_200_response summary);
     void getNewQsSignalFull(OAIHttpRequestWorker *worker, OAIQuickserverOrder summary);
+    void getQsBackupSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void getQsBackupsSignalFull(OAIHttpRequestWorker *worker, OAIVpsBackupRows<OAIVpsBackupRow> summary);
     void getQsChangeHostnameSignalFull(OAIHttpRequestWorker *worker);
     void getQsChangeRootPasswordSignalFull(OAIHttpRequestWorker *worker);
@@ -444,7 +450,6 @@ Q_SIGNALS:
     void getQsTrafficUsageSignalFull(OAIHttpRequestWorker *worker);
     void getQsViewDesktopSignalFull(OAIHttpRequestWorker *worker);
     void getQsWelcomeEmailSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
-    void postQsBackupSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void postQsChangeHostnameSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void postQsChangeRootPasswordSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void postQsChangeTimezoneSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
@@ -473,6 +478,7 @@ Q_SIGNALS:
     void doQsStopSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void downloadQsBackupSignalError(OAIDownloadQsBackup_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getNewQsSignalError(OAIQuickserverOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getQsBackupSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getQsBackupsSignalError(OAIVpsBackupRows<OAIVpsBackupRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getQsChangeHostnameSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getQsChangeRootPasswordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -489,7 +495,6 @@ Q_SIGNALS:
     void getQsTrafficUsageSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getQsViewDesktopSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getQsWelcomeEmailSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void postQsBackupSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postQsChangeHostnameSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postQsChangeRootPasswordSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postQsChangeTimezoneSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -518,6 +523,7 @@ Q_SIGNALS:
     void doQsStopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void downloadQsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getNewQsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getQsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getQsBackupsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getQsChangeHostnameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getQsChangeRootPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -534,7 +540,6 @@ Q_SIGNALS:
     void getQsTrafficUsageSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getQsViewDesktopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getQsWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void postQsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postQsChangeHostnameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postQsChangeRootPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postQsChangeTimezoneSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

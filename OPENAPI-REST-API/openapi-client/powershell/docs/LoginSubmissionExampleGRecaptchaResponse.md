@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LoginSubmissionExampleGRecaptchaResponse = Initialize-PSOpenAPIToolsLoginSubmissionExampleGRecaptchaResponse  -VIsShallow null `
+$LoginSubmissionExampleGRecaptchaResponse = Initialize-InterserverApiLoginSubmissionExampleGRecaptchaResponse  -VIsShallow null `
  -Dep null `
  -VIsRef null `
  -RawValue null `

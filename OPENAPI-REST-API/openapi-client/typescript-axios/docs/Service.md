@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { Service } from './api';
+import { Service } from '@interserver/myadmin-client';
 
 const instance: Service = {
     services_id,

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AccountFeatures();
+    instance = new InterserverApiClient.AccountFeatures();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('AccountFeatures', function() {
     it('should create an instance of AccountFeatures', function() {
       // uncomment below and update the code to test AccountFeatures
-      //var instance = new InterServerManagementApi.AccountFeatures();
-      //expect(instance).to.be.a(InterServerManagementApi.AccountFeatures);
+      //var instance = new InterserverApiClient.AccountFeatures();
+      //expect(instance).to.be.a(InterserverApiClient.AccountFeatures);
     });
 
     it('should have the property disable_reset (base name: "disable_reset")', function() {
       // uncomment below and update the code to test the property disable_reset
-      //var instance = new InterServerManagementApi.AccountFeatures();
+      //var instance = new InterserverApiClient.AccountFeatures();
       //expect(instance).to.be();
     });
 
     it('should have the property disable_reinstall (base name: "disable_reinstall")', function() {
       // uncomment below and update the code to test the property disable_reinstall
-      //var instance = new InterServerManagementApi.AccountFeatures();
+      //var instance = new InterserverApiClient.AccountFeatures();
       //expect(instance).to.be();
     });
 

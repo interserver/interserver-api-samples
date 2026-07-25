@@ -12,4 +12,8 @@
 |**scrubEnabled** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

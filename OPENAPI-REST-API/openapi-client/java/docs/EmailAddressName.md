@@ -12,4 +12,8 @@ An email contact.
 |**name** | **String** | Name to use for the sending contact. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.get_scrub_ip_details200_response_extra_info_tables_scrub_ips import GetScrubIpDetails200ResponseExtraInfoTablesScrubIps
+from interserver_api_client.models.get_scrub_ip_details200_response_extra_info_tables_scrub_ips import GetScrubIpDetails200ResponseExtraInfoTablesScrubIps
 
 # TODO update the JSON string below
 json = "{}"

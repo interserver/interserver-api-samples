@@ -10,4 +10,8 @@
 |**scrubIps** | [**GetScrubIpDetails200ResponseExtraInfoTablesScrubIps**](GetScrubIpDetails200ResponseExtraInfoTablesScrubIps.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

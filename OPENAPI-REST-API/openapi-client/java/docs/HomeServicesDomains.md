@@ -11,4 +11,8 @@
 |**count** | **Integer** | Number of domains. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

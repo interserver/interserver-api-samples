@@ -36,7 +36,7 @@ public class ServersBuyNowResponse  {
    * @return success
   **/
   @JsonProperty("success")
-  public Boolean getSuccess() {
+  public Boolean isSuccess() {
     return success;
   }
 

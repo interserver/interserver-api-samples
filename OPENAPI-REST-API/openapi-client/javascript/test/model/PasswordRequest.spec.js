@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.PasswordRequest();
+    instance = new InterserverApiClient.PasswordRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('PasswordRequest', function() {
     it('should create an instance of PasswordRequest', function() {
       // uncomment below and update the code to test PasswordRequest
-      //var instance = new InterServerManagementApi.PasswordRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.PasswordRequest);
+      //var instance = new InterserverApiClient.PasswordRequest();
+      //expect(instance).to.be.a(InterserverApiClient.PasswordRequest);
     });
 
     it('should have the property password (base name: "password")', function() {
       // uncomment below and update the code to test the property password
-      //var instance = new InterServerManagementApi.PasswordRequest();
+      //var instance = new InterserverApiClient.PasswordRequest();
       //expect(instance).to.be();
     });
 

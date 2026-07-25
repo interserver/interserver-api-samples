@@ -15,4 +15,8 @@ Payload for updating an existing mail alert.
 |**enabled** | **String** | Whether the alert is enabled. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

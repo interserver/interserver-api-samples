@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_service_extra import VpsServiceExtra
+from interserver_api_client.models.vps_service_extra import VpsServiceExtra
 
 class TestVpsServiceExtra(unittest.TestCase):
     """VpsServiceExtra unit test stubs"""
@@ -38,7 +38,7 @@ class TestVpsServiceExtra(unittest.TestCase):
             return VpsServiceExtra(
                 spice = 5903,
                 snapshots = [
-                    openapi_client.models.vps_snapshot.VpsSnapshot(
+                    interserver_api_client.models.vps_snapshot.VpsSnapshot(
                         name = '', 
                         used = 56, 
                         date = 56, )

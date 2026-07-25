@@ -76,7 +76,7 @@ public class ServiceOrderPostResponse  {
    * @return _continue
   **/
   @JsonProperty("continue")
-  public Boolean getContinue() {
+  public Boolean isContinue() {
     return _continue;
   }
 

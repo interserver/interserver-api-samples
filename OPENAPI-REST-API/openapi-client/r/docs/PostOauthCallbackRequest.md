@@ -1,4 +1,4 @@
-# openapi::PostOauthCallbackRequest
+# interserverapi::PostOauthCallbackRequest
 
 
 ## Properties

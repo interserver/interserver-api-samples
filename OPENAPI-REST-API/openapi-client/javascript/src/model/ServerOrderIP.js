@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ServerOrderIP model module.
  * @module model/ServerOrderIP
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderIP {
     /**

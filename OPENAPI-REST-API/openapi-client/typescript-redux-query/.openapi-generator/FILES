@@ -42,8 +42,6 @@ src/models/AffiliateBannerRow.ts
 src/models/AffiliateDockSetup.ts
 src/models/AffiliatePaymentSetup.ts
 src/models/AffiliateTrafficRow.ts
-src/models/AssetServer.ts
-src/models/AssetServerCPUInner.ts
 src/models/Backup.ts
 src/models/BackupBillingDetails.ts
 src/models/BackupClientLink.ts
@@ -61,7 +59,6 @@ src/models/BackupServiceMaster.ts
 src/models/BackupsOrder.ts
 src/models/BackupsOrderPackageCosts.ts
 src/models/BackupsOrderServiceTypes.ts
-src/models/Bandwidth.ts
 src/models/BillingAddCcRequest.ts
 src/models/BillingInvoiceDetail.ts
 src/models/BillingInvoiceList.ts
@@ -87,11 +84,6 @@ src/models/ChargeInvoiceRowsInvoicesValue.ts
 src/models/ChargeInvoiceRowsInvoicesValuePaidInvoicesValue.ts
 src/models/ChargeInvoiceRowsInvoicesValuePaidInvoicesValueRefundInvoicesValue.ts
 src/models/CloseTicketResponseSchema.ts
-src/models/ConfigIds.ts
-src/models/ConfigLists.ts
-src/models/ControlPanel.ts
-src/models/Cpu.ts
-src/models/CpuWithDefaults.ts
 src/models/CreateFilter.ts
 src/models/CreateFilter201Response.ts
 src/models/CreateFilter400Response.ts
@@ -107,6 +99,7 @@ src/models/DeleteFilter400Response.ts
 src/models/DeleteFilter500Response.ts
 src/models/DeleteFirewallRule.ts
 src/models/DeleteGeoFirewallRule.ts
+src/models/DeleteMailAlertRequest.ts
 src/models/DenyRuleNew.ts
 src/models/DenyRuleRecord.ts
 src/models/DisableScrub200Response.ts
@@ -137,11 +130,11 @@ src/models/DomainNameserverGetResponseInner.ts
 src/models/DomainNameserverPostRequest.ts
 src/models/DomainNameserverPutRequest.ts
 src/models/DomainOrder.ts
+src/models/DomainOrderRequest.ts
 src/models/DomainOrderResponse.ts
 src/models/DomainOrderResponseAttributes.ts
 src/models/DomainOrderServices.ts
 src/models/DomainOrderServices10001.ts
-src/models/DomainOrderTldServices.ts
 src/models/DomainOwnerContact.ts
 src/models/DomainProvProcessPending.ts
 src/models/DomainProvProcessPendingAttributes.ts
@@ -157,12 +150,13 @@ src/models/EmailAddress.ts
 src/models/EmailAddressName.ts
 src/models/EnableScrub200Response.ts
 src/models/EnableScrub500Response.ts
-src/models/FieldLabel.ts
+src/models/FloatingIpOrderRequest.ts
 src/models/FloatingIpsCancel200Response.ts
-src/models/FormValues.ts
 src/models/GenericResponse.ts
 src/models/GetAccountInfo401Response.ts
+src/models/GetAccountLocales200ResponseValue.ts
 src/models/GetAccountTfaSetup200Response.ts
+src/models/GetAffiliateSignups200Response.ts
 src/models/GetOauthRedirect200Response.ts
 src/models/GetOrderDetail200Response.ts
 src/models/GetOrderDetail200ResponseIpsInner.ts
@@ -179,7 +173,6 @@ src/models/GetScrubIpDetails200ResponseFilterFirewallFiltersInner.ts
 src/models/GetScrubIpDetails200ResponseFilterFirewallRulesInner.ts
 src/models/GetScrubIpDetails200ResponseServiceInfo.ts
 src/models/GetWebsiteBuyIp200Response.ts
-src/models/HardDrive.ts
 src/models/Home.ts
 src/models/HomeDetails.ts
 src/models/HomeDetailsModules.ts
@@ -206,10 +199,6 @@ src/models/HomeTicketStatus.ts
 src/models/HomeTicketStatusView.ts
 src/models/HostnameObject.ts
 src/models/InitiatePayment200Response.ts
-src/models/InlineObject.ts
-src/models/Invoice.ts
-src/models/InvoiceRow.ts
-src/models/IpBlock.ts
 src/models/IpLimitRange.ts
 src/models/IpObject.ts
 src/models/License.ts
@@ -218,6 +207,7 @@ src/models/LicenseClientLink.ts
 src/models/LicenseExtraInfoTables.ts
 src/models/LicenseIpInfo.ts
 src/models/LicenseIpInfoRow.ts
+src/models/LicenseOrderRequest.ts
 src/models/LicenseRow.ts
 src/models/LicenseServiceInfo.ts
 src/models/LicenseServiceType.ts
@@ -254,6 +244,7 @@ src/models/MailExtraInfoTableRow.ts
 src/models/MailLog.ts
 src/models/MailLogEntry.ts
 src/models/MailOrder.ts
+src/models/MailOrderRequest.ts
 src/models/MailRow.ts
 src/models/MailSchema.ts
 src/models/MailSchemaExtraInfoTables.ts
@@ -266,15 +257,13 @@ src/models/MailStatsTypeVolumeIp.ts
 src/models/MailStatsTypeVolumeTo.ts
 src/models/MailTutorialsTable.ts
 src/models/MailTutorialsTableRow.ts
-src/models/MemoryOption.ts
 src/models/ModuleSettings.ts
 src/models/Modules.ts
 src/models/MonthlyCounts.ts
-src/models/OperatingSystem.ts
 src/models/PasswordRequest.ts
+src/models/PatchBillingCreditCardVerifyRequest.ts
 src/models/PatchOauthTwoFactor200Response.ts
 src/models/PatchOauthTwoFactorRequest.ts
-src/models/PaymentInvoiceRows.ts
 src/models/PlaceBuyNowServerRequest.ts
 src/models/PlaceScrubOrder201Response.ts
 src/models/PlaceScrubOrder201ResponseOrderDetails.ts
@@ -285,6 +274,8 @@ src/models/PostWebsiteBuyIp200Response.ts
 src/models/PostWebsiteBuyIpRequest.ts
 src/models/PostWebsiteMigration200Response.ts
 src/models/PostWebsiteMigrationRequest.ts
+src/models/PutScrubIps200Response.ts
+src/models/QsOrderRequest.ts
 src/models/QueueResponse.ts
 src/models/Quickserver.ts
 src/models/QuickserverAddons.ts
@@ -308,8 +299,6 @@ src/models/QuickserverServiceExtra.ts
 src/models/QuickserverServiceInfo.ts
 src/models/QuickserverServiceMaster.ts
 src/models/QuickserversCancel200Response.ts
-src/models/RaidOption.ts
-src/models/Region.ts
 src/models/ReplyTicketRequest.ts
 src/models/ReplyTicketResponseSchema.ts
 src/models/RestoreRequest.ts
@@ -329,6 +318,8 @@ src/models/Server.ts
 src/models/ServerAsset.ts
 src/models/ServerAssets.ts
 src/models/ServerBillingDetails.ts
+src/models/ServerBulkIpmiPowerResponse.ts
+src/models/ServerBulkIpmiPowerResponseResultsInner.ts
 src/models/ServerClientLink.ts
 src/models/ServerExtraInfoTables.ts
 src/models/ServerIpmiLiveInfo.ts
@@ -351,7 +342,6 @@ src/models/ServerOrderCpuLi.ts
 src/models/ServerOrderFieldLabel.ts
 src/models/ServerOrderFieldLabels.ts
 src/models/ServerOrderFormValues.ts
-src/models/ServerOrderGetResponse.ts
 src/models/ServerOrderIP.ts
 src/models/ServerOrderIpsLi.ts
 src/models/ServerOrderMemory.ts
@@ -359,6 +349,8 @@ src/models/ServerOrderMemoryLi.ts
 src/models/ServerOrderMemoryLi254.ts
 src/models/ServerOrderOS.ts
 src/models/ServerOrderOsLi.ts
+src/models/ServerOrderPostRequest.ts
+src/models/ServerOrderPostRequestHd.ts
 src/models/ServerOrderRAID.ts
 src/models/ServerRow.ts
 src/models/ServerServiceInfo.ts
@@ -376,6 +368,7 @@ src/models/ServiceTypes.ts
 src/models/Services.ts
 src/models/ServicesInfo.ts
 src/models/SslCancel200Response.ts
+src/models/SslOrderRequest.ts
 src/models/StatusMonthlyBreakdown.ts
 src/models/SuccessTextResponse.ts
 src/models/TemplateRequest.ts
@@ -436,7 +429,6 @@ src/models/VpsServiceMaster.ts
 src/models/VpsSnapshot.ts
 src/models/VpsTemplateRow.ts
 src/models/VpsTemplatesList.ts
-src/models/VpsTrafficDataDataResponse.ts
 src/models/VpsTrafficDataSectionResponse.ts
 src/models/VpsTrafficHistoryResponse.ts
 src/models/VpsTrafficHistorySectionDataResponse.ts
@@ -455,6 +447,8 @@ src/models/WebsiteBillingDetails.ts
 src/models/WebsiteClientLink.ts
 src/models/WebsiteExtraInfoTables.ts
 src/models/WebsiteLoginResponse.ts
+src/models/WebsiteOrderPostRequest.ts
+src/models/WebsiteOrderPutRequest.ts
 src/models/WebsiteRow.ts
 src/models/WebsiteServiceInfo.ts
 src/models/WebsiteServiceMaster.ts

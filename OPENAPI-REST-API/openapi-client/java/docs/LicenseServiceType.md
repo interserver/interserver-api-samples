@@ -19,4 +19,8 @@ Service type definition for a software license, including name, pricing, and cat
 |**servicesModule** | **String** | Service module |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

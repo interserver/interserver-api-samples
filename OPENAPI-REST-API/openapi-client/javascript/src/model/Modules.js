@@ -17,7 +17,7 @@ import ModuleSettings from './ModuleSettings';
 /**
  * The Modules model module.
  * @module model/Modules
- * @version 0.9.0
+ * @version 1.0.0
  */
 class Modules {
     /**

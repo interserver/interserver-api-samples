@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderMemory = Initialize-PSOpenAPIToolsServerOrderMemory  -Id 65 `
+$ServerOrderMemory = Initialize-InterserverApiServerOrderMemory  -Id 65 `
  -Price 0 `
  -Img hd.jpg `
  -ShortDesc 20TB SATA `

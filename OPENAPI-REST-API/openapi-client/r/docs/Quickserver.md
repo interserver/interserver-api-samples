@@ -1,4 +1,4 @@
-# openapi::Quickserver
+# interserverapi::Quickserver
 
 
 ## Properties

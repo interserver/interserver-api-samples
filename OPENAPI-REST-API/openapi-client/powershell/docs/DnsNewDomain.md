@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DnsNewDomain = Initialize-PSOpenAPIToolsDnsNewDomain  -Domain mydomain.com `
+$DnsNewDomain = Initialize-InterserverApiDnsNewDomain  -Domain mydomain.com `
  -Ip 1.2.3.4
 ```
 

@@ -17,7 +17,7 @@ import ServerOrderFieldLabel from './ServerOrderFieldLabel';
 /**
  * The ServerOrderFieldLabels model module.
  * @module model/ServerOrderFieldLabels
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderFieldLabels {
     /**

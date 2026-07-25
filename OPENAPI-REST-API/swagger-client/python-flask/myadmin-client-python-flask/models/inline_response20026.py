@@ -14,25 +14,20 @@ class InlineResponse20026(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, text: str=None, ticket: int=None):  # noqa: E501
+    def __init__(self, ips: Dict[str, str]=None):  # noqa: E501
         """InlineResponse20026 - a model defined in Swagger
 
-        :param text: The text of this InlineResponse20026.  # noqa: E501
-        :type text: str
-        :param ticket: The ticket of this InlineResponse20026.  # noqa: E501
-        :type ticket: int
+        :param ips: The ips of this InlineResponse20026.  # noqa: E501
+        :type ips: Dict[str, str]
         """
         self.swagger_types = {
-            'text': str,
-            'ticket': int
+            'ips': Dict[str, str]
         }
 
         self.attribute_map = {
-            'text': 'text',
-            'ticket': 'ticket'
+            'ips': 'ips'
         }
-        self._text = text
-        self._ticket = ticket
+        self._ips = ips
 
     @classmethod
     def from_dict(cls, dikt) -> 'InlineResponse20026':
@@ -46,47 +41,24 @@ class InlineResponse20026(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def text(self) -> str:
-        """Gets the text of this InlineResponse20026.
+    def ips(self) -> Dict[str, str]:
+        """Gets the ips of this InlineResponse20026.
 
-        Confirmation message.  # noqa: E501
+        A map of IP addresses to their current reverse DNS hostnames.  # noqa: E501
 
-        :return: The text of this InlineResponse20026.
-        :rtype: str
+        :return: The ips of this InlineResponse20026.
+        :rtype: Dict[str, str]
         """
-        return self._text
+        return self._ips
 
-    @text.setter
-    def text(self, text: str):
-        """Sets the text of this InlineResponse20026.
+    @ips.setter
+    def ips(self, ips: Dict[str, str]):
+        """Sets the ips of this InlineResponse20026.
 
-        Confirmation message.  # noqa: E501
+        A map of IP addresses to their current reverse DNS hostnames.  # noqa: E501
 
-        :param text: The text of this InlineResponse20026.
-        :type text: str
-        """
-
-        self._text = text
-
-    @property
-    def ticket(self) -> int:
-        """Gets the ticket of this InlineResponse20026.
-
-        The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.  # noqa: E501
-
-        :return: The ticket of this InlineResponse20026.
-        :rtype: int
-        """
-        return self._ticket
-
-    @ticket.setter
-    def ticket(self, ticket: int):
-        """Sets the ticket of this InlineResponse20026.
-
-        The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.  # noqa: E501
-
-        :param ticket: The ticket of this InlineResponse20026.
-        :type ticket: int
+        :param ips: The ips of this InlineResponse20026.
+        :type ips: Dict[str, str]
         """
 
-        self._ticket = ticket
+        self._ips = ips

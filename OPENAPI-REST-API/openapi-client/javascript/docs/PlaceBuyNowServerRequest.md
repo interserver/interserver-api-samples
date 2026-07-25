@@ -1,4 +1,4 @@
-# InterServerManagementApi.PlaceBuyNowServerRequest
+# InterserverApiClient.PlaceBuyNowServerRequest
 
 ## Properties
 

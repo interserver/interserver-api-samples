@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { HomeTicketStatusView } from './api';
+import { HomeTicketStatusView } from '@interserver/myadmin-client';
 
 const instance: HomeTicketStatusView = {
     _4,

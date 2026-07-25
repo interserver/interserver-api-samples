@@ -11,7 +11,7 @@ import Alamofire
 
 open class BackupsAPI {
     /**
-     Place Backup Order
+     Place a new off-site backup storage order and generate the invoice
 
      - parameter validateOnly: (form)  
      - parameter serviceType: (form)  
@@ -26,7 +26,7 @@ open class BackupsAPI {
 
 
     /**
-     Place Backup Order
+     Place a new off-site backup storage order and generate the invoice
      - POST /backups/order
 
      - API Key:
@@ -76,7 +76,7 @@ open class BackupsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Place Backup Order
+     Place a new off-site backup storage order and generate the invoice
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -89,7 +89,7 @@ open class BackupsAPI {
 
 
     /**
-     Place Backup Order
+     Place a new off-site backup storage order and generate the invoice
      - POST /backups/order
 
      - API Key:
@@ -137,12 +137,12 @@ open class BackupsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Cancel Backup Service
+     Cancel an off-site backup storage subscription
 
      - parameter _id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func cancelBackup(_id: Int, completion: @escaping ((_ data: InlineResponse2001?,_ error: Error?) -> Void)) {
+    open class func cancelBackup(_id: Int, completion: @escaping ((_ data: InlineResponse2002?,_ error: Error?) -> Void)) {
         cancelBackupWithRequestBuilder(_id: _id).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -150,7 +150,7 @@ open class BackupsAPI {
 
 
     /**
-     Cancel Backup Service
+     Cancel an off-site backup storage subscription
      - DELETE /backups/{id}
 
      - API Key:
@@ -168,9 +168,9 @@ open class BackupsAPI {
 }}]
      - parameter _id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
 
-     - returns: RequestBuilder<InlineResponse2001> 
+     - returns: RequestBuilder<InlineResponse2002> 
      */
-    open class func cancelBackupWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2001> {
+    open class func cancelBackupWithRequestBuilder(_id: Int) -> RequestBuilder<InlineResponse2002> {
         var path = "/backups/{id}"
         let _idPreEscape = "\(_id)"
         let _idPostEscape = _idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -180,12 +180,12 @@ open class BackupsAPI {
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<InlineResponse2001>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<InlineResponse2002>.Type = SwaggerClientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Backup Service Details
+     Get details of a specific off-site backup storage service
 
      - parameter _id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -198,7 +198,7 @@ open class BackupsAPI {
 
 
     /**
-     Get Backup Service Details
+     Get details of a specific off-site backup storage service
      - GET /backups/{id}
 
      - API Key:
@@ -303,7 +303,7 @@ open class BackupsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Backup Order Invoices
+     List invoices for a single backup-storage subscription
 
      - parameter _id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -316,7 +316,7 @@ open class BackupsAPI {
 
 
     /**
-     Get Backup Order Invoices
+     List invoices for a single backup-storage subscription
      - GET /backups/{id}/invoices
 
      - API Key:
@@ -386,7 +386,7 @@ open class BackupsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Backup Storage Panel Login
+     Open a single sign-on session URL for the backup storage panel
 
      - parameter _id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -399,7 +399,7 @@ open class BackupsAPI {
 
 
     /**
-     Get Backup Storage Panel Login
+     Open a single sign-on session URL for the backup storage panel
      - GET /backups/{id}/login
 
      - API Key:
@@ -434,7 +434,7 @@ open class BackupsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Backup Services
+     List off-site backup storage subscriptions on the authenticated account
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -446,7 +446,7 @@ open class BackupsAPI {
 
 
     /**
-     List Backup Services
+     List off-site backup storage subscriptions on the authenticated account
      - GET /backups
 
      - API Key:
@@ -488,7 +488,7 @@ open class BackupsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Resend Backup Welcome Email
+     Resend the welcome email for an off-site backup storage service
 
      - parameter _id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -501,7 +501,7 @@ open class BackupsAPI {
 
 
     /**
-     Resend Backup Welcome Email
+     Resend the welcome email for an off-site backup storage service
      - GET /backups/{id}/welcome_email
 
      - API Key:
@@ -536,7 +536,7 @@ open class BackupsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Get Backup Order Form Data
+     Get backup-storage order form metadata and pricing tiers
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -548,7 +548,7 @@ open class BackupsAPI {
 
 
     /**
-     Get Backup Order Form Data
+     Get backup-storage order form metadata and pricing tiers
      - GET /backups/order
 
      - API Key:
@@ -593,7 +593,7 @@ open class BackupsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update Backup Information
+     Update stored metadata for a backup-storage subscription
 
      - parameter _id: (path) The backup service ID. Use the &#x60;backup_id&#x60; from &#x60;GET /backups&#x60; to identify the service. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -606,7 +606,7 @@ open class BackupsAPI {
 
 
     /**
-     Update Backup Information
+     Update stored metadata for a backup-storage subscription
      - POST /backups/{id}
 
      - API Key:
@@ -641,7 +641,7 @@ open class BackupsAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Validate Backup Order
+     Validate a backup-storage order and preview pricing without charging
 
      - parameter validateOnly: (form)  
      - parameter serviceType: (form)  
@@ -656,7 +656,7 @@ open class BackupsAPI {
 
 
     /**
-     Validate Backup Order
+     Validate a backup-storage order and preview pricing without charging
      - PUT /backups/order
 
      - API Key:
@@ -698,7 +698,7 @@ open class BackupsAPI {
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Validate Backup Order
+     Validate a backup-storage order and preview pricing without charging
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -711,7 +711,7 @@ open class BackupsAPI {
 
 
     /**
-     Validate Backup Order
+     Validate a backup-storage order and preview pricing without charging
      - PUT /backups/order
 
      - API Key:

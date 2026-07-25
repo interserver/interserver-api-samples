@@ -1,4 +1,4 @@
-# InterServerManagementApi.ScrubIpsDeleteRule200Response
+# InterserverApiClient.ScrubIpsDeleteRule200Response
 
 ## Properties
 

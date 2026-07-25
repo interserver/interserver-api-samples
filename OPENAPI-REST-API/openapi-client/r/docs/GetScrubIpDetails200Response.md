@@ -1,4 +1,4 @@
-# openapi::GetScrubIpDetails200Response
+# interserverapi::GetScrubIpDetails200Response
 
 
 ## Properties

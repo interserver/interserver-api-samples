@@ -15,4 +15,8 @@ A single backed-up item and information about it.
 |**date** | **Integer** | The creation date of the backup in a unix timestamp. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

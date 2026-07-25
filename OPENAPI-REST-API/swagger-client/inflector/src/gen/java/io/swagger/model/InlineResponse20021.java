@@ -9,28 +9,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 public class InlineResponse20021   {
-  @JsonProperty("success")
-  private Boolean success = null;
   @JsonProperty("text")
   private String text = null;
+  @JsonProperty("invoice")
+  private Integer invoice = null;
+  @JsonProperty("order")
+  private Integer order = null;
   /**
-   **/
-  public InlineResponse20021 success(Boolean success) {
-    this.success = success;
-    return this;
-  }
-
-  
-  @Schema(required = true, description = "")
-  @JsonProperty("success")
-  public Boolean isSuccess() {
-    return success;
-  }
-  public void setSuccess(Boolean success) {
-    this.success = success;
-  }
-
-  /**
+   * Status message.
    **/
   public InlineResponse20021 text(String text) {
     this.text = text;
@@ -38,13 +24,49 @@ public class InlineResponse20021   {
   }
 
   
-  @Schema(required = true, description = "")
+  @Schema(example = "Order Completed", description = "Status message.")
   @JsonProperty("text")
   public String getText() {
     return text;
   }
   public void setText(String text) {
     this.text = text;
+  }
+
+  /**
+   * Invoice ID for payment.
+   **/
+  public InlineResponse20021 invoice(Integer invoice) {
+    this.invoice = invoice;
+    return this;
+  }
+
+  
+  @Schema(description = "Invoice ID for payment.")
+  @JsonProperty("invoice")
+  public Integer getInvoice() {
+    return invoice;
+  }
+  public void setInvoice(Integer invoice) {
+    this.invoice = invoice;
+  }
+
+  /**
+   * Server order ID.
+   **/
+  public InlineResponse20021 order(Integer order) {
+    this.order = order;
+    return this;
+  }
+
+  
+  @Schema(description = "Server order ID.")
+  @JsonProperty("order")
+  public Integer getOrder() {
+    return order;
+  }
+  public void setOrder(Integer order) {
+    this.order = order;
   }
 
 
@@ -57,21 +79,23 @@ public class InlineResponse20021   {
       return false;
     }
     InlineResponse20021 inlineResponse20021 = (InlineResponse20021) o;
-    return Objects.equals(success, inlineResponse20021.success) &&
-        Objects.equals(text, inlineResponse20021.text);
+    return Objects.equals(text, inlineResponse20021.text) &&
+        Objects.equals(invoice, inlineResponse20021.invoice) &&
+        Objects.equals(order, inlineResponse20021.order);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(success, text);
+    return Objects.hash(text, invoice, order);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20021 {\n");
-    sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    invoice: ").append(toIndentedString(invoice)).append("\n");
+    sb.append("    order: ").append(toIndentedString(order)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -11,4 +11,8 @@ The service offers data.
 |**_1026** | [**List&lt;WebsitesOrderServiceOffer&gt;**](WebsitesOrderServiceOffer.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

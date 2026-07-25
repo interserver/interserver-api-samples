@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DomainDnssecRequest');
+use_ok('InterServerAPI::Object::DomainDnssecRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DomainDnssecRequest->new();
+#my $instance = InterServerAPI::Object::DomainDnssecRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DomainDnssecRequest');
+#isa_ok($instance, 'InterServerAPI::Object::DomainDnssecRequest');
 
 
 done_testing();

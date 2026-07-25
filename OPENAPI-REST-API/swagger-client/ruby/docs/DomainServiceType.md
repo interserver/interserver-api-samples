@@ -1,4 +1,4 @@
-# SwaggerClient::DomainServiceType
+# InterserverApiClient::DomainServiceType
 
 ## Properties
 Name | Type | Description | Notes

@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerOrderIP = Initialize-PSOpenAPIToolsServerOrderIP  -Id 9 `
+$ServerOrderIP = Initialize-InterserverApiServerOrderIP  -Id 9 `
  -Price 0 `
  -Img ips.jpg `
  -ShortDesc 1 Vlan Ip (/30) `

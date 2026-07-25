@@ -2,11 +2,13 @@ package io.swagger.api;
 
 import io.swagger.model.ChargeInvoiceRows;
 
-import io.swagger.model.InlineResponse20021;
+import io.swagger.model.InlineResponse20023;
 
 import io.swagger.model.InlineResponse401;
 
 import io.swagger.model.ServiceOrderPostResponse;
+
+import io.swagger.model.SslOrderRequest;
 
 import io.swagger.model.SuccessTextResponse;
 
@@ -24,9 +26,9 @@ import java.util.Map;
 public class SslApiController implements SslApi {
 
     @Override
-    public Single<HttpResponse<ServiceOrderPostResponse>> addSsl() {
+    public Single<HttpResponse<ServiceOrderPostResponse>> addSsl(@NotNull @Valid SslOrderRequest body) {
         // TODO: Implement me
-        return SslApi.super.addSsl();
+        return SslApi.super.addSsl(body);
     }
 
     @Override
@@ -60,13 +62,13 @@ public class SslApiController implements SslApi {
     }
 
     @Override
-    public Single<HttpResponse<Void>> putSsl() {
+    public Single<HttpResponse<Void>> putSsl(@NotNull @Valid SslOrderRequest body) {
         // TODO: Implement me
-        return SslApi.super.putSsl();
+        return SslApi.super.putSsl(body);
     }
 
     @Override
-    public Single<HttpResponse<InlineResponse20021>> sslCancel(Integer id) {
+    public Single<HttpResponse<InlineResponse20023>> sslCancel(Integer id) {
         // TODO: Implement me
         return SslApi.super.sslCancel(id);
     }

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { BackupIPInfo } from './api';
+import { BackupIPInfo } from '@interserver/myadmin-client';
 
 const instance: BackupIPInfo = {
     title,

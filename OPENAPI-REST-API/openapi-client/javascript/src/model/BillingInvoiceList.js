@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BillingInvoiceList model module.
  * @module model/BillingInvoiceList
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BillingInvoiceList {
     /**

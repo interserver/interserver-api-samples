@@ -13,4 +13,8 @@ Order counts per module.
 |**servers** | **Integer** | The number of total server orders that have been placed in our billing system. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

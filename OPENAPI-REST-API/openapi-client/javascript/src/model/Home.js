@@ -20,7 +20,7 @@ import HomeTicketStatusView from './HomeTicketStatusView';
 /**
  * The Home model module.
  * @module model/Home
- * @version 0.9.0
+ * @version 1.0.0
  */
 class Home {
     /**

@@ -20,4 +20,3 @@ case class PlaceBuyNowServerRequest(
   /* The root or administrator password to set on the server. */
   server_root_password: Option[String] = None
 )
-

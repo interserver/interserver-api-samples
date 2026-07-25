@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class VpsOrderServiceTypes(
   `32`: Option[VpsOrderServiceTypes32] = None
 )
-

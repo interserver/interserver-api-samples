@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::QuickserverIpInfo
+# InterServerAPI::Object::QuickserverIpInfo
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::QuickserverIpInfo;
+use InterServerAPI::Object::QuickserverIpInfo;
 ```
 
 ## Properties

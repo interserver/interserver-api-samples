@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServersBuyNowError = Initialize-PSOpenAPIToolsServersBuyNowError  -Success false `
+$ServersBuyNowError = Initialize-InterserverApiServersBuyNowError  -Success false `
  -Text Unable to place order. `
  -Errors [&quot;Server ID is missing.&quot;,&quot;Server Hostname is missing.;&quot;,&quot;Password must contain atleast 8 characters, one lowercase letter, one uppercase letter, one number &amp; one special character&quot;]
 ```

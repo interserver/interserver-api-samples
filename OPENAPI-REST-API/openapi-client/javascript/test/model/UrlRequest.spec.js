@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.UrlRequest();
+    instance = new InterserverApiClient.UrlRequest();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('UrlRequest', function() {
     it('should create an instance of UrlRequest', function() {
       // uncomment below and update the code to test UrlRequest
-      //var instance = new InterServerManagementApi.UrlRequest();
-      //expect(instance).to.be.a(InterServerManagementApi.UrlRequest);
+      //var instance = new InterserverApiClient.UrlRequest();
+      //expect(instance).to.be.a(InterserverApiClient.UrlRequest);
     });
 
     it('should have the property url (base name: "url")', function() {
       // uncomment below and update the code to test the property url
-      //var instance = new InterServerManagementApi.UrlRequest();
+      //var instance = new InterserverApiClient.UrlRequest();
       //expect(instance).to.be();
     });
 

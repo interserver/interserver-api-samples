@@ -16,4 +16,8 @@ A navigation link for backup service actions in the client portal.
 |**otherAttr** | **String** | Other attributes of the client link. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

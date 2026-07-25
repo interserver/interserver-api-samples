@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::HomeTicketStatus');
+use_ok('InterServerAPI::Object::HomeTicketStatus');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::HomeTicketStatus->new();
+#my $instance = InterServerAPI::Object::HomeTicketStatus->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::HomeTicketStatus');
+#isa_ok($instance, 'InterServerAPI::Object::HomeTicketStatus');
 
 
 done_testing();

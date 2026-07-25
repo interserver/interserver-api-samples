@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_addons import QuickserverAddons
+from interserver_api_client.models.quickserver_addons import QuickserverAddons
 
 class TestQuickserverAddons(unittest.TestCase):
     """QuickserverAddons unit test stubs"""
@@ -38,7 +38,7 @@ class TestQuickserverAddons(unittest.TestCase):
             return QuickserverAddons(
                 title = 'Addons',
                 rows = [
-                    openapi_client.models.quickserver_addons_row.QuickserverAddonsRow(
+                    interserver_api_client.models.quickserver_addons_row.QuickserverAddonsRow(
                         desc = 'Additional IP Address', 
                         value = '', )
                     ]

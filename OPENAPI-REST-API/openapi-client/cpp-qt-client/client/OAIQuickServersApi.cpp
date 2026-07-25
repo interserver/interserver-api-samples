@@ -60,6 +60,8 @@ void OAIQuickServersApi::initializeServerConfigs() {
     _serverIndices.insert("downloadQsBackup", 0);
     _serverConfigs.insert("getNewQs", defaultConf);
     _serverIndices.insert("getNewQs", 0);
+    _serverConfigs.insert("getQsBackup", defaultConf);
+    _serverIndices.insert("getQsBackup", 0);
     _serverConfigs.insert("getQsBackups", defaultConf);
     _serverIndices.insert("getQsBackups", 0);
     _serverConfigs.insert("getQsChangeHostname", defaultConf);
@@ -92,8 +94,6 @@ void OAIQuickServersApi::initializeServerConfigs() {
     _serverIndices.insert("getQsViewDesktop", 0);
     _serverConfigs.insert("getQsWelcomeEmail", defaultConf);
     _serverIndices.insert("getQsWelcomeEmail", 0);
-    _serverConfigs.insert("postQsBackup", defaultConf);
-    _serverIndices.insert("postQsBackup", 0);
     _serverConfigs.insert("postQsChangeHostname", defaultConf);
     _serverIndices.insert("postQsChangeHostname", 0);
     _serverConfigs.insert("postQsChangeRootPassword", defaultConf);
@@ -305,7 +305,7 @@ QString OAIQuickServersApi::getParamStyleDelimiter(const QString &style, const Q
     }
 }
 
-void OAIQuickServersApi::addQs() {
+void OAIQuickServersApi::addQs(const OAIQsOrderRequest &oaiqs_order_request) {
     QString fullPath = QString(_serverConfigs["addQs"][_serverIndices.value("addQs")].URL()+"/qs/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -321,7 +321,12 @@ void OAIQuickServersApi::addQs() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "POST");
 
+    {
 
+        
+        QByteArray output = oaiqs_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }
@@ -1118,6 +1123,72 @@ void OAIQuickServersApi::getNewQsCallback(OAIHttpRequestWorker *worker) {
     } else {
         Q_EMIT getNewQsSignalError(output, error_type, error_str);
         Q_EMIT getNewQsSignalErrorFull(worker, error_type, error_str);
+    }
+}
+
+void OAIQuickServersApi::getQsBackup(const qint32 &id) {
+    QString fullPath = QString(_serverConfigs["getQsBackup"][_serverIndices.value("getQsBackup")].URL()+"/qs/{id}/backup");
+    
+    if (_apiKeys.contains("apiKeyAuth")) {
+        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
+    }
+    
+    if (_apiKeys.contains("sessionIdHeaderAuth")) {
+        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
+    }
+    
+    
+    {
+        QString idPathParam("{");
+        idPathParam.append("id").append("}");
+        QString pathPrefix, pathSuffix, pathDelimiter;
+        QString pathStyle = "simple";
+        if (pathStyle == "")
+            pathStyle = "simple";
+        pathPrefix = getParamStylePrefix(pathStyle);
+        pathSuffix = getParamStyleSuffix(pathStyle);
+        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
+        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
+        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
+    }
+    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
+    worker->setTimeOut(_timeOut);
+    worker->setWorkingDirectory(_workingDirectory);
+    OAIHttpRequestInput input(fullPath, "GET");
+
+
+    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
+        input.headers.insert(keyValueIt->first, keyValueIt->second);
+    }
+
+
+    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIQuickServersApi::getQsBackupCallback);
+    connect(this, &OAIQuickServersApi::abortRequestsSignal, worker, &QObject::deleteLater);
+    connect(worker, &QObject::destroyed, this, [this] {
+        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
+            Q_EMIT allPendingRequestsCompleted();
+        }
+    });
+
+    worker->execute(&input);
+}
+
+void OAIQuickServersApi::getQsBackupCallback(OAIHttpRequestWorker *worker) {
+    QString error_str = worker->error_str;
+    QNetworkReply::NetworkError error_type = worker->error_type;
+
+    if (worker->error_type != QNetworkReply::NoError) {
+        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
+    }
+    OAIQueueResponse output(QString(worker->response));
+    worker->deleteLater();
+
+    if (worker->error_type == QNetworkReply::NoError) {
+        Q_EMIT getQsBackupSignal(output);
+        Q_EMIT getQsBackupSignalFull(worker, output);
+    } else {
+        Q_EMIT getQsBackupSignalError(output, error_type, error_str);
+        Q_EMIT getQsBackupSignalErrorFull(worker, error_type, error_str);
     }
 }
 
@@ -2189,72 +2260,6 @@ void OAIQuickServersApi::getQsWelcomeEmailCallback(OAIHttpRequestWorker *worker)
     }
 }
 
-void OAIQuickServersApi::postQsBackup(const qint32 &id) {
-    QString fullPath = QString(_serverConfigs["postQsBackup"][_serverIndices.value("postQsBackup")].URL()+"/qs/{id}/backup");
-    
-    if (_apiKeys.contains("apiKeyAuth")) {
-        addHeaders("apiKeyAuth",_apiKeys.find("apiKeyAuth").value());
-    }
-    
-    if (_apiKeys.contains("sessionIdHeaderAuth")) {
-        addHeaders("sessionIdHeaderAuth",_apiKeys.find("sessionIdHeaderAuth").value());
-    }
-    
-    
-    {
-        QString idPathParam("{");
-        idPathParam.append("id").append("}");
-        QString pathPrefix, pathSuffix, pathDelimiter;
-        QString pathStyle = "simple";
-        if (pathStyle == "")
-            pathStyle = "simple";
-        pathPrefix = getParamStylePrefix(pathStyle);
-        pathSuffix = getParamStyleSuffix(pathStyle);
-        pathDelimiter = getParamStyleDelimiter(pathStyle, "id", false);
-        QString paramString = (pathStyle == "matrix") ? pathPrefix+"id"+pathSuffix : pathPrefix;
-        fullPath.replace(idPathParam, paramString+QUrl::toPercentEncoding(::OpenAPI::toStringValue(id)));
-    }
-    OAIHttpRequestWorker *worker = new OAIHttpRequestWorker(this, _manager);
-    worker->setTimeOut(_timeOut);
-    worker->setWorkingDirectory(_workingDirectory);
-    OAIHttpRequestInput input(fullPath, "POST");
-
-
-    for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
-        input.headers.insert(keyValueIt->first, keyValueIt->second);
-    }
-
-
-    connect(worker, &OAIHttpRequestWorker::on_execution_finished, this, &OAIQuickServersApi::postQsBackupCallback);
-    connect(this, &OAIQuickServersApi::abortRequestsSignal, worker, &QObject::deleteLater);
-    connect(worker, &QObject::destroyed, this, [this] {
-        if (findChildren<OAIHttpRequestWorker*>().count() == 0) {
-            Q_EMIT allPendingRequestsCompleted();
-        }
-    });
-
-    worker->execute(&input);
-}
-
-void OAIQuickServersApi::postQsBackupCallback(OAIHttpRequestWorker *worker) {
-    QString error_str = worker->error_str;
-    QNetworkReply::NetworkError error_type = worker->error_type;
-
-    if (worker->error_type != QNetworkReply::NoError) {
-        error_str = QString("%1, %2").arg(worker->error_str, QString(worker->response));
-    }
-    OAIQueueResponse output(QString(worker->response));
-    worker->deleteLater();
-
-    if (worker->error_type == QNetworkReply::NoError) {
-        Q_EMIT postQsBackupSignal(output);
-        Q_EMIT postQsBackupSignalFull(worker, output);
-    } else {
-        Q_EMIT postQsBackupSignalError(output, error_type, error_str);
-        Q_EMIT postQsBackupSignalErrorFull(worker, error_type, error_str);
-    }
-}
-
 void OAIQuickServersApi::postQsChangeHostname(const qint32 &id) {
     QString fullPath = QString(_serverConfigs["postQsChangeHostname"][_serverIndices.value("postQsChangeHostname")].URL()+"/qs/{id}/change_hostname");
     
@@ -3059,7 +3064,7 @@ void OAIQuickServersApi::postQuickServerRestoreCallback(OAIHttpRequestWorker *wo
     }
 }
 
-void OAIQuickServersApi::putQs() {
+void OAIQuickServersApi::putQs(const OAIQsOrderRequest &oaiqs_order_request) {
     QString fullPath = QString(_serverConfigs["putQs"][_serverIndices.value("putQs")].URL()+"/qs/order");
     
     if (_apiKeys.contains("apiKeyAuth")) {
@@ -3075,7 +3080,12 @@ void OAIQuickServersApi::putQs() {
     worker->setWorkingDirectory(_workingDirectory);
     OAIHttpRequestInput input(fullPath, "PUT");
 
+    {
 
+        
+        QByteArray output = oaiqs_order_request.asJson().toUtf8();
+        input.request_body.append(output);
+    }
     for (auto keyValueIt = _defaultHeaders.keyValueBegin(); keyValueIt != _defaultHeaders.keyValueEnd(); keyValueIt++) {
         input.headers.insert(keyValueIt->first, keyValueIt->second);
     }

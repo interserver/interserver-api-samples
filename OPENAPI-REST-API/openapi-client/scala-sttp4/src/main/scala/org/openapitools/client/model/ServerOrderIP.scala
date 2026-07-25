@@ -35,4 +35,3 @@ case class ServerOrderIP(
   /* Display of monthly IP price. */
   monthly_price_display: Option[String] = None
 )
-

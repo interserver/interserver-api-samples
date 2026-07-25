@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainRow model module.
  * @module model/DomainRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainRow {
     /**

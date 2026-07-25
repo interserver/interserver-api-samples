@@ -1,12 +1,5 @@
 package io.swagger.model;
 
-import io.swagger.model.InlineResponse20012BillingDetails;
-import io.swagger.model.InlineResponse20012ClientLinks;
-import io.swagger.model.InlineResponse20012ExtraInfoTables;
-import io.swagger.model.InlineResponse20012FilterFirewall;
-import io.swagger.model.InlineResponse20012ServiceInfo;
-import java.util.ArrayList;
-import java.util.List;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,182 +17,48 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class InlineResponse20012   {
   
   @Schema(description = "")
-  private InlineResponse20012ServiceInfo serviceInfo = null;
+  private String text = null;
   
-  @Schema(description = "")
-  private List<InlineResponse20012ClientLinks> clientLinks = null;
-  
-  @Schema(description = "")
-  private InlineResponse20012BillingDetails billingDetails = null;
-  
-  @Schema(description = "")
-  private String custCurrency = null;
-  
-  @Schema(description = "")
-  private String custCurrencySymbol = null;
-  
-  @Schema(description = "")
-  private String _package = null;
-  
-  @Schema(description = "")
-  private InlineResponse20012ExtraInfoTables extraInfoTables = null;
-  
-  @Schema(description = "")
-  private InlineResponse20012FilterFirewall filterFirewall = null;
+  @Schema(description = "A pre-signed download URL valid for 24 hours.")
  /**
-   * Get serviceInfo
-   * @return serviceInfo
+   * A pre-signed download URL valid for 24 hours.  
   **/
-  @JsonProperty("serviceInfo")
+  private String url = null;
+ /**
+   * Get text
+   * @return text
+  **/
+  @JsonProperty("text")
   @NotNull
-  public InlineResponse20012ServiceInfo getServiceInfo() {
-    return serviceInfo;
+  public String getText() {
+    return text;
   }
 
-  public void setServiceInfo(InlineResponse20012ServiceInfo serviceInfo) {
-    this.serviceInfo = serviceInfo;
+  public void setText(String text) {
+    this.text = text;
   }
 
-  public InlineResponse20012 serviceInfo(InlineResponse20012ServiceInfo serviceInfo) {
-    this.serviceInfo = serviceInfo;
+  public InlineResponse20012 text(String text) {
+    this.text = text;
     return this;
   }
 
  /**
-   * Get clientLinks
-   * @return clientLinks
+   * A pre-signed download URL valid for 24 hours.
+   * @return url
   **/
-  @JsonProperty("client_links")
+  @JsonProperty("url")
   @NotNull
-  public List<InlineResponse20012ClientLinks> getClientLinks() {
-    return clientLinks;
+  public String getUrl() {
+    return url;
   }
 
-  public void setClientLinks(List<InlineResponse20012ClientLinks> clientLinks) {
-    this.clientLinks = clientLinks;
+  public void setUrl(String url) {
+    this.url = url;
   }
 
-  public InlineResponse20012 clientLinks(List<InlineResponse20012ClientLinks> clientLinks) {
-    this.clientLinks = clientLinks;
-    return this;
-  }
-
-  public InlineResponse20012 addClientLinksItem(InlineResponse20012ClientLinks clientLinksItem) {
-    this.clientLinks.add(clientLinksItem);
-    return this;
-  }
-
- /**
-   * Get billingDetails
-   * @return billingDetails
-  **/
-  @JsonProperty("billingDetails")
-  @NotNull
-  public InlineResponse20012BillingDetails getBillingDetails() {
-    return billingDetails;
-  }
-
-  public void setBillingDetails(InlineResponse20012BillingDetails billingDetails) {
-    this.billingDetails = billingDetails;
-  }
-
-  public InlineResponse20012 billingDetails(InlineResponse20012BillingDetails billingDetails) {
-    this.billingDetails = billingDetails;
-    return this;
-  }
-
- /**
-   * Get custCurrency
-   * @return custCurrency
-  **/
-  @JsonProperty("custCurrency")
-  @NotNull
-  public String getCustCurrency() {
-    return custCurrency;
-  }
-
-  public void setCustCurrency(String custCurrency) {
-    this.custCurrency = custCurrency;
-  }
-
-  public InlineResponse20012 custCurrency(String custCurrency) {
-    this.custCurrency = custCurrency;
-    return this;
-  }
-
- /**
-   * Get custCurrencySymbol
-   * @return custCurrencySymbol
-  **/
-  @JsonProperty("custCurrencySymbol")
-  @NotNull
-  public String getCustCurrencySymbol() {
-    return custCurrencySymbol;
-  }
-
-  public void setCustCurrencySymbol(String custCurrencySymbol) {
-    this.custCurrencySymbol = custCurrencySymbol;
-  }
-
-  public InlineResponse20012 custCurrencySymbol(String custCurrencySymbol) {
-    this.custCurrencySymbol = custCurrencySymbol;
-    return this;
-  }
-
- /**
-   * Get _package
-   * @return _package
-  **/
-  @JsonProperty("package")
-  @NotNull
-  public String getPackage() {
-    return _package;
-  }
-
-  public void setPackage(String _package) {
-    this._package = _package;
-  }
-
-  public InlineResponse20012 _package(String _package) {
-    this._package = _package;
-    return this;
-  }
-
- /**
-   * Get extraInfoTables
-   * @return extraInfoTables
-  **/
-  @JsonProperty("extraInfoTables")
-  @NotNull
-  public InlineResponse20012ExtraInfoTables getExtraInfoTables() {
-    return extraInfoTables;
-  }
-
-  public void setExtraInfoTables(InlineResponse20012ExtraInfoTables extraInfoTables) {
-    this.extraInfoTables = extraInfoTables;
-  }
-
-  public InlineResponse20012 extraInfoTables(InlineResponse20012ExtraInfoTables extraInfoTables) {
-    this.extraInfoTables = extraInfoTables;
-    return this;
-  }
-
- /**
-   * Get filterFirewall
-   * @return filterFirewall
-  **/
-  @JsonProperty("filter_firewall")
-  @NotNull
-  public InlineResponse20012FilterFirewall getFilterFirewall() {
-    return filterFirewall;
-  }
-
-  public void setFilterFirewall(InlineResponse20012FilterFirewall filterFirewall) {
-    this.filterFirewall = filterFirewall;
-  }
-
-  public InlineResponse20012 filterFirewall(InlineResponse20012FilterFirewall filterFirewall) {
-    this.filterFirewall = filterFirewall;
+  public InlineResponse20012 url(String url) {
+    this.url = url;
     return this;
   }
 
@@ -209,14 +68,8 @@ public class InlineResponse20012   {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse20012 {\n");
     
-    sb.append("    serviceInfo: ").append(toIndentedString(serviceInfo)).append("\n");
-    sb.append("    clientLinks: ").append(toIndentedString(clientLinks)).append("\n");
-    sb.append("    billingDetails: ").append(toIndentedString(billingDetails)).append("\n");
-    sb.append("    custCurrency: ").append(toIndentedString(custCurrency)).append("\n");
-    sb.append("    custCurrencySymbol: ").append(toIndentedString(custCurrencySymbol)).append("\n");
-    sb.append("    _package: ").append(toIndentedString(_package)).append("\n");
-    sb.append("    extraInfoTables: ").append(toIndentedString(extraInfoTables)).append("\n");
-    sb.append("    filterFirewall: ").append(toIndentedString(filterFirewall)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("}");
     return sb.toString();
   }

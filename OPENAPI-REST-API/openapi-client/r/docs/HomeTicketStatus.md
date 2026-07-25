@@ -1,4 +1,4 @@
-# openapi::HomeTicketStatus
+# interserverapi::HomeTicketStatus
 
 Ticket statuses.
 

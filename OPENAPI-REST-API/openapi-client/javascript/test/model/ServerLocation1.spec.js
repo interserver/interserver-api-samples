@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerLocation1();
+    instance = new InterserverApiClient.ServerLocation1();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('ServerLocation1', function() {
     it('should create an instance of ServerLocation1', function() {
       // uncomment below and update the code to test ServerLocation1
-      //var instance = new InterServerManagementApi.ServerLocation1();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerLocation1);
+      //var instance = new InterserverApiClient.ServerLocation1();
+      //expect(instance).to.be.a(InterserverApiClient.ServerLocation1);
     });
 
     it('should have the property location_id (base name: "location_id")', function() {
       // uncomment below and update the code to test the property location_id
-      //var instance = new InterServerManagementApi.ServerLocation1();
+      //var instance = new InterserverApiClient.ServerLocation1();
       //expect(instance).to.be();
     });
 
     it('should have the property location_name (base name: "location_name")', function() {
       // uncomment below and update the code to test the property location_name
-      //var instance = new InterServerManagementApi.ServerLocation1();
+      //var instance = new InterserverApiClient.ServerLocation1();
       //expect(instance).to.be();
     });
 
     it('should have the property location_lat (base name: "location_lat")', function() {
       // uncomment below and update the code to test the property location_lat
-      //var instance = new InterServerManagementApi.ServerLocation1();
+      //var instance = new InterserverApiClient.ServerLocation1();
       //expect(instance).to.be();
     });
 
     it('should have the property location_long (base name: "location_long")', function() {
       // uncomment below and update the code to test the property location_long
-      //var instance = new InterServerManagementApi.ServerLocation1();
+      //var instance = new InterserverApiClient.ServerLocation1();
       //expect(instance).to.be();
     });
 
     it('should have the property location_description (base name: "location_description")', function() {
       // uncomment below and update the code to test the property location_description
-      //var instance = new InterServerManagementApi.ServerLocation1();
+      //var instance = new InterserverApiClient.ServerLocation1();
       //expect(instance).to.be();
     });
 
     it('should have the property location_ipmi_group (base name: "location_ipmi_group")', function() {
       // uncomment below and update the code to test the property location_ipmi_group
-      //var instance = new InterServerManagementApi.ServerLocation1();
+      //var instance = new InterserverApiClient.ServerLocation1();
       //expect(instance).to.be();
     });
 

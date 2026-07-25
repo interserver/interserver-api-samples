@@ -11,4 +11,8 @@
 |**code** | **String** | The 6-digit two-factor authentication code. |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

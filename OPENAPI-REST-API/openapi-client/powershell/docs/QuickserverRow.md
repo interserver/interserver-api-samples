@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverRow = Initialize-PSOpenAPIToolsQuickserverRow  -QsId 19504 `
+$QuickserverRow = Initialize-InterserverApiQuickserverRow  -QsId 19504 `
  -QsName Quickserver199 `
  -Cost 65.00 `
  -QsHostname qs19504 `

@@ -1,4 +1,4 @@
-# SwaggerClient::AllOfServerOrderFieldLabelsRaid
+# InterserverApiClient::AllOfServerOrderFieldLabelsRaid
 
 ## Properties
 Name | Type | Description | Notes

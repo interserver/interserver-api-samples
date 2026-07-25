@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TicketsCountArray model module.
  * @module model/TicketsCountArray
- * @version 0.9.0
+ * @version 1.0.0
  */
 class TicketsCountArray {
     /**

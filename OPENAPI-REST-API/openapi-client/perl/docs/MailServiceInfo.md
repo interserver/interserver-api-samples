@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailServiceInfo
+# InterServerAPI::Object::MailServiceInfo
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailServiceInfo;
+use InterServerAPI::Object::MailServiceInfo;
 ```
 
 ## Properties

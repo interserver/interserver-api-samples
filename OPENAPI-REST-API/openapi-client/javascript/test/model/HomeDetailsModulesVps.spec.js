@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.HomeDetailsModulesVps();
+    instance = new InterserverApiClient.HomeDetailsModulesVps();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('HomeDetailsModulesVps', function() {
     it('should create an instance of HomeDetailsModulesVps', function() {
       // uncomment below and update the code to test HomeDetailsModulesVps
-      //var instance = new InterServerManagementApi.HomeDetailsModulesVps();
-      //expect(instance).to.be.a(InterServerManagementApi.HomeDetailsModulesVps);
+      //var instance = new InterserverApiClient.HomeDetailsModulesVps();
+      //expect(instance).to.be.a(InterserverApiClient.HomeDetailsModulesVps);
     });
 
     it('should have the property icon (base name: "icon")', function() {
       // uncomment below and update the code to test the property icon
-      //var instance = new InterServerManagementApi.HomeDetailsModulesVps();
+      //var instance = new InterserverApiClient.HomeDetailsModulesVps();
       //expect(instance).to.be();
     });
 
     it('should have the property view_link (base name: "view_link")', function() {
       // uncomment below and update the code to test the property view_link
-      //var instance = new InterServerManagementApi.HomeDetailsModulesVps();
+      //var instance = new InterserverApiClient.HomeDetailsModulesVps();
       //expect(instance).to.be();
     });
 
     it('should have the property heading (base name: "heading")', function() {
       // uncomment below and update the code to test the property heading
-      //var instance = new InterServerManagementApi.HomeDetailsModulesVps();
+      //var instance = new InterserverApiClient.HomeDetailsModulesVps();
       //expect(instance).to.be();
     });
 
     it('should have the property buy_link (base name: "buy_link")', function() {
       // uncomment below and update the code to test the property buy_link
-      //var instance = new InterServerManagementApi.HomeDetailsModulesVps();
+      //var instance = new InterserverApiClient.HomeDetailsModulesVps();
       //expect(instance).to.be();
     });
 
     it('should have the property list_link (base name: "list_link")', function() {
       // uncomment below and update the code to test the property list_link
-      //var instance = new InterServerManagementApi.HomeDetailsModulesVps();
+      //var instance = new InterserverApiClient.HomeDetailsModulesVps();
       //expect(instance).to.be();
     });
 

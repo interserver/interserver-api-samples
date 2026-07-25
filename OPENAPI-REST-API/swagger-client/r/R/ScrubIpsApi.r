@@ -17,52 +17,55 @@
 #' @section Methods:
 #' \describe{
 #'
-#' cancel_scrub_ip Cancel Scrub IP Service
+#' cancel_scrub_ip Cancel a Scrub IP service and stop its recurring DDoS billing
 #'
 #'
-#' create_filter Create Traffic Filter
+#' create_filter Apply a predefined scrubbing filter (DNS/HTTP/synproxy) to a port
 #'
 #'
-#' create_geo_rule Create Geo Firewall Rule
+#' create_geo_rule Add a geographic firewall rule (block/allow by country code or ASN)
 #'
 #'
-#' create_rule Create Firewall Rule
+#' create_rule Add an L3/L4 firewall rule (allow/drop by IP, port, and protocol)
 #'
 #'
-#' delete_filter Delete Traffic Filter
+#' delete_filter Remove a scrubbing filter by matching filter_type and port
 #'
 #'
-#' disable_scrub Disable Scrub Protection
+#' disable_scrub Disable DDoS scrubbing and remove the BGP announcement on the IP
 #'
 #'
-#' enable_scrub Enable Scrub Protection
+#' enable_scrub Enable DDoS scrubbing (BGP announcement) on the service&#x27;s protected IP
 #'
 #'
-#' get_order_detail Get Scrub IP Ordering Information
+#' get_order_detail Get plans, pricing, and eligible IPs for a new Scrub IP order
 #'
 #'
-#' get_scrub_ip_details Get Scrub IP Details
+#' get_scrub_ip_details Get full Scrub IP service detail (rules + geo + filters)
 #'
 #'
-#' get_scrub_ip_filter_types List Scrub Filter Types
+#' get_scrub_ip_filter_types List enabled traffic filter profiles available for createFilter
 #'
 #'
-#' get_scrub_ip_invoices Get ScrubIp Invoices
+#' get_scrub_ip_invoices List recurring and one-time invoices billed for this Scrub IP service
 #'
 #'
-#' get_scrub_ip_logs Get Scrub IP Logs
+#' get_scrub_ip_logs Get last 50000 packet/event log entries for the protected IP
 #'
 #'
-#' get_scrub_ips_list List Scrub IP Services
+#' get_scrub_ips_list List all Scrub IP DDoS protection services on the authenticated account
 #'
 #'
-#' place_scrub_order Place Scrub IP Order
+#' place_scrub_order Place a new Scrub IP DDoS protection order and generate an invoice
 #'
 #'
-#' scrub_ips_delete_geo_rule Delete Geo Firewall Rule
+#' put_scrub_ips Validate a Scrub IP order and return effective pricing without billing
 #'
 #'
-#' scrub_ips_delete_rule Delete Firewall Rule
+#' scrub_ips_delete_geo_rule Delete a geo firewall rule by rule_id from getScrubIpDetails
+#'
+#'
+#' scrub_ips_delete_rule Delete an L3/L4 firewall rule by rule_id from getScrubIpDetails
 #'
 #' }
 #'
@@ -98,7 +101,7 @@ ScrubIpsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20013$new()
+        returnObject <- InlineResponse20014$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -234,7 +237,7 @@ ScrubIpsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20017$new()
+        returnObject <- InlineResponse20018$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -262,7 +265,7 @@ ScrubIpsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20015$new()
+        returnObject <- InlineResponse20016$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -290,7 +293,7 @@ ScrubIpsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20014$new()
+        returnObject <- InlineResponse20015$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -314,7 +317,7 @@ ScrubIpsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20018$new()
+        returnObject <- InlineResponse20019$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -342,7 +345,7 @@ ScrubIpsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20012$new()
+        returnObject <- InlineResponse20013$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -486,6 +489,36 @@ ScrubIpsApi <- R6::R6Class(
       }
 
     }
+    put_scrub_ips = function(body, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/scrub_ips/order"
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- InlineResponse20020$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
     scrub_ips_delete_geo_rule = function(body, id, ...){
       args <- list(...)
       queryParams <- list()
@@ -510,7 +543,7 @@ ScrubIpsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20016$new()
+        returnObject <- InlineResponse20017$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -544,7 +577,7 @@ ScrubIpsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse20016$new()
+        returnObject <- InlineResponse20017$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

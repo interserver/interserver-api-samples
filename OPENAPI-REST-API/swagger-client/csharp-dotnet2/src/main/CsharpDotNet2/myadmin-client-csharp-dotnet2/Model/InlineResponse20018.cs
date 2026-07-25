@@ -13,25 +13,18 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse20018 {
     /// <summary>
-    /// Gets or Sets PackageCosts
+    /// Gets or Sets Success
     /// </summary>
-    [DataMember(Name="packageCosts", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "packageCosts")]
-    public InlineResponse20018PackageCosts PackageCosts { get; set; }
+    [DataMember(Name="success", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "success")]
+    public bool? Success { get; set; }
 
     /// <summary>
-    /// Gets or Sets ServiceTypes
+    /// Gets or Sets Text
     /// </summary>
-    [DataMember(Name="serviceTypes", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "serviceTypes")]
-    public List<InlineResponse20018ServiceTypes> ServiceTypes { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Ips
-    /// </summary>
-    [DataMember(Name="ips", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "ips")]
-    public List<InlineResponse20018Ips> Ips { get; set; }
+    [DataMember(Name="text", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "text")]
+    public string Text { get; set; }
 
 
     /// <summary>
@@ -41,9 +34,8 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse20018 {\n");
-      sb.Append("  PackageCosts: ").Append(PackageCosts).Append("\n");
-      sb.Append("  ServiceTypes: ").Append(ServiceTypes).Append("\n");
-      sb.Append("  Ips: ").Append(Ips).Append("\n");
+      sb.Append("  Success: ").Append(Success).Append("\n");
+      sb.Append("  Text: ").Append(Text).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

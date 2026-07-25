@@ -1,4 +1,4 @@
-# openapi::DomainBillingExtra
+# interserverapi::DomainBillingExtra
 
 Extended billing context for a domain including registrar order details and contact info.
 

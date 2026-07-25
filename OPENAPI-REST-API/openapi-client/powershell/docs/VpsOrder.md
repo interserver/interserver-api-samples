@@ -39,7 +39,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrder = Initialize-PSOpenAPIToolsVpsOrder  -VpsSliceSsdOvzCost 9 `
+$VpsOrder = Initialize-InterserverApiVpsOrder  -VpsSliceSsdOvzCost 9 `
  -VpsSliceOvzCost 6 `
  -VpsSliceSsdVirtuozzoCost 9 `
  -VpsSliceVirtuozzoCost 6 `

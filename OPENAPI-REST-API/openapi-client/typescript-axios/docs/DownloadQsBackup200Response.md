@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DownloadQsBackup200Response } from './api';
+import { DownloadQsBackup200Response } from '@interserver/myadmin-client';
 
 const instance: DownloadQsBackup200Response = {
     text,

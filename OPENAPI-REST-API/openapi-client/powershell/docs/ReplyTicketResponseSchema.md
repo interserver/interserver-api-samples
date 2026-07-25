@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ReplyTicketResponseSchema = Initialize-PSOpenAPIToolsReplyTicketResponseSchema  -Success null `
+$ReplyTicketResponseSchema = Initialize-InterserverApiReplyTicketResponseSchema  -Success null `
  -PostId null
 ```
 

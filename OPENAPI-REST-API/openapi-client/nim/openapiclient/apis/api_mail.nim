@@ -31,6 +31,7 @@ import ../models/model_mail_delist_response
 import ../models/model_mail_deliverability_response
 import ../models/model_mail_log
 import ../models/model_mail_order
+import ../models/model_mail_order_request
 import ../models/model_mail_row
 import ../models/model_mail_schema
 import ../models/model_mail_stats_type
@@ -39,6 +40,7 @@ import ../models/model_send_mail_adv
 import ../models/model_service_order_post_response
 import ../models/model_success_text_response
 import ../models/model_view_mail_log_start_date_parameter
+import ../models/model_delete_mail_alert_request
 import ../models/model_get_account_info401response
 import ../models/model_mail_cancel200response
 
@@ -57,15 +59,16 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addMail*(httpClient: HttpClient): (Option[ServiceOrderPostResponse], Response) =
-  ## Place Mail Order
+proc addMail*(httpClient: HttpClient, mailOrderRequest: MailOrderRequest): (Option[ServiceOrderPostResponse], Response) =
+  ## Place a new Mail Baby order, generate invoice, and queue provisioning
+  httpClient.headers["Content-Type"] = "application/json"
 
-  let response = httpClient.post(basepath & "/mail/order")
+  let response = httpClient.post(basepath & "/mail/order", $(%mailOrderRequest))
   constructResult[ServiceOrderPostResponse](response)
 
 
 proc addRule*(httpClient: HttpClient, id: int, denyRuleNew: DenyRuleNew): (Option[GenericResponse], Response) =
-  ## Create Deny Rule
+  ## Create a new deny rule to auto-block matching submissions
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/mail/{id}/rules", $(%denyRuleNew))
@@ -73,32 +76,29 @@ proc addRule*(httpClient: HttpClient, id: int, denyRuleNew: DenyRuleNew): (Optio
 
 
 proc createMailAlert*(httpClient: HttpClient, id: int, mailAlertRequest: MailAlertRequest): (Option[SuccessTextResponse], Response) =
-  ## Create Mail Alert
+  ## Create a new Mail Baby alert for delivery, bounce, or quota events
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/mail/{id}/alerts", $(%mailAlertRequest))
   constructResult[SuccessTextResponse](response)
 
 
-proc deleteMailAlert*(httpClient: HttpClient, id: int, alertId: int): (Option[SuccessTextResponse], Response) =
-  ## Delete Mail Alert
-  var query_params_list: seq[(string, string)] = @[]
-  query_params_list.add(("alert_id", $alertId))
-  let url_encoded_query_params = encodeQuery(query_params_list)
-
-  let response = httpClient.delete(basepath & fmt"/mail/{id}/alerts" & "?" & url_encoded_query_params)
+proc deleteMailAlert*(httpClient: HttpClient, id: int, deleteMailAlertRequest: DeleteMailAlertRequest): (Option[SuccessTextResponse], Response) =
+  ## Delete a Mail Baby alert by alert_id (hard delete — no recovery)
+  httpClient.headers["Content-Type"] = "application/json"
+  let response = httpClient.request(basepath & fmt"/mail/{id}/alerts", httpMethod = HttpDelete, body = $(%deleteMailAlertRequest))
   constructResult[SuccessTextResponse](response)
 
 
 proc deleteRule*(httpClient: HttpClient, id: int, rule: string): (Option[GenericResponse], Response) =
-  ## Delete Deny Rule
+  ## Delete a Mail Baby deny rule by rule ID (hard delete — no recovery)
 
   let response = httpClient.delete(basepath & fmt"/mail/{id}/rules/{rule}")
   constructResult[GenericResponse](response)
 
 
 proc delistBlock*(httpClient: HttpClient, id: int, email: string): (Option[GenericResponse], Response) =
-  ## Remove Email Address from Block List
+  ## Delist a sender email from rspamd / mailchannels / mailbaby block lists
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "email": $email, # an email address
@@ -109,77 +109,77 @@ proc delistBlock*(httpClient: HttpClient, id: int, email: string): (Option[Gener
 
 
 proc getMailAlerts*(httpClient: HttpClient, id: int): (Option[seq[MailAlertsResponse_inner]], Response) =
-  ## List Mail Alerts
+  ## List configured delivery/bounce/quota alerts for one Mail Baby service
 
   let response = httpClient.get(basepath & fmt"/mail/{id}/alerts")
   constructResult[seq[MailAlertsResponse_inner]](response)
 
 
 proc getMailBlocks*(httpClient: HttpClient, id: int): (Option[MailBlocks], Response) =
-  ## List Blocked Email Addresses
+  ## List recent local-blocklist hits and spam-trap captures for the mail user
 
   let response = httpClient.get(basepath & fmt"/mail/{id}/blocks")
   constructResult[MailBlocks](response)
 
 
 proc getMailDelist*(httpClient: HttpClient, id: int): (Option[MailDelistResponse], Response) =
-  ## Get Delist Status
+  ## Read blocklist diagnostics and find senders eligible for delisting
 
   let response = httpClient.get(basepath & fmt"/mail/{id}/delist")
   constructResult[MailDelistResponse](response)
 
 
 proc getMailDeliverability*(httpClient: HttpClient, id: int): (Option[MailDeliverabilityResponse], Response) =
-  ## Get Deliverability Metrics
+  ## Read delivered vs bounced totals broken down by sender (or by recipient domain)
 
   let response = httpClient.get(basepath & fmt"/mail/{id}/deliverability")
   constructResult[MailDeliverabilityResponse](response)
 
 
 proc getMailInfo*(httpClient: HttpClient, id: int): (Option[MailSchema], Response) =
-  ## Get Mail Order
+  ## Read full detail for one Mail Baby service including SMTP credentials
 
   let response = httpClient.get(basepath & fmt"/mail/{id}")
   constructResult[MailSchema](response)
 
 
 proc getMailInvoices*(httpClient: HttpClient, id: int): (Option[ChargeInvoiceRows], Response) =
-  ## Get Mail Invoices
+  ## List billing invoices linked to this Mail Baby service
 
   let response = httpClient.get(basepath & fmt"/mail/{id}/invoices")
   constructResult[ChargeInvoiceRows](response)
 
 
 proc getMailList*(httpClient: HttpClient): (Option[seq[MailRow]], Response) =
-  ## List Mail Orders
+  ## List every Mail Baby SMTP relay service on the account
 
   let response = httpClient.get(basepath & "/mail")
   constructResult[seq[MailRow]](response)
 
 
 proc getMailWelcomeEmail*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Resend Mail Welcome Email
+  ## Resend the Mail Baby welcome email with SMTP credentials and setup info
 
   let response = httpClient.get(basepath & fmt"/mail/{id}/welcome_email")
   constructResult[SuccessTextResponse](response)
 
 
 proc getNewMail*(httpClient: HttpClient): (Option[MailOrder], Response) =
-  ## Get Mail Ordering Information
+  ## Read the Mail Baby order catalog — plans, package costs, service-type metadata
 
   let response = httpClient.get(basepath & "/mail/order")
   constructResult[MailOrder](response)
 
 
 proc getRules*(httpClient: HttpClient, id: int): (Option[seq[DenyRuleRecord]], Response) =
-  ## List Deny Rules
+  ## List configured deny rules (sender/recipient blocks) for a Mail Baby service
 
   let response = httpClient.get(basepath & fmt"/mail/{id}/rules")
   constructResult[seq[DenyRuleRecord]](response)
 
 
 proc getStats*(httpClient: HttpClient, id: int, time: string): (Option[MailStatsType], Response) =
-  ## Get Mail Usage Statistics
+  ## Read Mail Baby usage counts, send volume totals, top destinations, and projected cost
   var query_params_list: seq[(string, string)] = @[]
   if $time != "":
     query_params_list.add(("time", $time))
@@ -190,35 +190,36 @@ proc getStats*(httpClient: HttpClient, id: int, time: string): (Option[MailStats
 
 
 proc mailCancel*(httpClient: HttpClient, id: int): (Option[mailCancel_200_response], Response) =
-  ## Cancel Mail
+  ## Cancel a Mail Baby service and stop the recurring invoice
 
   let response = httpClient.delete(basepath & fmt"/mail/{id}")
   constructResult[mailCancel_200_response](response)
 
 
 proc postMailDelist*(httpClient: HttpClient, id: int, mailDelistRequest: MailDelistRequest): (Option[SuccessTextResponse], Response) =
-  ## Delist a Blocked Sender
+  ## Delist a sender from rspamd / mailchannels / mailbaby block lists
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/mail/{id}/delist", $(%mailDelistRequest))
   constructResult[SuccessTextResponse](response)
 
 
-proc putMail*(httpClient: HttpClient): Response =
-  ## Validate Mail Order
-  httpClient.put(basepath & "/mail/order")
+proc putMail*(httpClient: HttpClient, mailOrderRequest: MailOrderRequest): Response =
+  ## Validate Mail Baby order, quote pricing, and verify coupon — no charge
+  httpClient.headers["Content-Type"] = "application/json"
+  httpClient.put(basepath & "/mail/order", $(%mailOrderRequest))
 
 
 
 proc resetMailPassword*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Reset Mail Password
+  ## Rotate the SMTP password and email the new credential to the account owner
 
   let response = httpClient.get(basepath & fmt"/mail/{id}/reset_password")
   constructResult[SuccessTextResponse](response)
 
 
 proc sendAdvMail*(httpClient: HttpClient, id: int, sendMailAdv: SendMailAdv): (Option[GenericResponse], Response) =
-  ## Send Email with Advanced Options
+  ## Send email via Mail Baby SMTP relay with attachments, CC/BCC, and multi-recipient
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/mail/{id}/advsend", $(%sendMailAdv))
@@ -226,7 +227,7 @@ proc sendAdvMail*(httpClient: HttpClient, id: int, sendMailAdv: SendMailAdv): (O
 
 
 proc sendMail*(httpClient: HttpClient, id: int, sendMail: SendMail): (Option[GenericResponse], Response) =
-  ## Send Email
+  ## Send a simple single-recipient email through the Mail Baby SMTP relay
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/mail/{id}/send", $(%sendMail))
@@ -234,7 +235,7 @@ proc sendMail*(httpClient: HttpClient, id: int, sendMail: SendMail): (Option[Gen
 
 
 proc updateMailAlert*(httpClient: HttpClient, id: int, mailAlertUpdateRequest: MailAlertUpdateRequest): (Option[SuccessTextResponse], Response) =
-  ## Update Mail Alert
+  ## Update an existing Mail Baby alert by alert_id
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.put(basepath & fmt"/mail/{id}/alerts", $(%mailAlertUpdateRequest))
@@ -242,14 +243,22 @@ proc updateMailAlert*(httpClient: HttpClient, id: int, mailAlertUpdateRequest: M
 
 
 proc updateMailInfo*(httpClient: HttpClient, id: string): (Option[SuccessTextResponse], Response) =
-  ## Update Mail Order
+  ## POST mutation hook for the Mail Baby service detail page
 
   let response = httpClient.post(basepath & fmt"/mail/{id}")
   constructResult[SuccessTextResponse](response)
 
 
+proc updateRule*(httpClient: HttpClient, id: int, rule: string, denyRuleNew: DenyRuleNew): (Option[GenericResponse], Response) =
+  ## Update an existing Mail Baby deny rule's type and match data
+  httpClient.headers["Content-Type"] = "application/json"
+
+  let response = httpClient.put(basepath & fmt"/mail/{id}/rules/{rule}", $(%denyRuleNew))
+  constructResult[GenericResponse](response)
+
+
 proc viewMailLog*(httpClient: HttpClient, id: int, id2: int64, origin: string, mx: string, `from`: string, to: string, subject: string, mailid: string, messageId: string, replyto: string, headerfrom: string, delivered: Delivered, skip: int, limit: int, startDate: ViewMailLogStartDateParameter, endDate: ViewMailLogStartDateParameter, sort: string, dir: string, groupby: string): (Option[MailLog], Response) =
-  ## View Mail Log
+  ## Search and paginate per-message Mail Baby delivery log entries
   var query_params_list: seq[(string, string)] = @[]
   if $id2 != "":
     query_params_list.add(("id", $id2))

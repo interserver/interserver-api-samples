@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DnsNewRecord } from './api';
+import { DnsNewRecord } from '@interserver/myadmin-client';
 
 const instance: DnsNewRecord = {
     name,

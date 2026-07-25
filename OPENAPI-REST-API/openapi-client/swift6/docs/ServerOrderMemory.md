@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Memory ID. | [optional] 
+**_id** | **String** | Memory ID. | [optional] 
 **price** | **String** | Memory price. | [optional] 
 **img** | **String** | Memory image. | [optional] 
 **shortDesc** | **String** | Short description of the memory. | [optional] 

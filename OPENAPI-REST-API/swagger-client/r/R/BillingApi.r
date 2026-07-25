@@ -17,85 +17,76 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_account_credit_card Add Credit Card to Account
+#' add_billing_credit_card Store a credit card on the account — may return a verification flow
 #'
 #'
-#' add_billing_credit_card Add Credit Card for Billing
+#' add_billing_prepay Create a prepay deposit and return an invoice id to fund it
 #'
 #'
-#' add_billing_prepay Create Prepay Deposit
+#' delete_billing_credit_card Remove a stored credit card from the account
 #'
 #'
-#' delete_account_credit_card Remove Credit Card
+#' delete_billing_invoice Cancel a pending unpaid invoice — and its pending service or repeat invoice
 #'
 #'
-#' delete_billing_credit_card Delete Credit Card
+#' delete_billing_prepay Delete an unfunded prepay or strip its unpaid funding invoices
 #'
 #'
-#' delete_billing_invoice Delete Invoice
+#' get_affiliate_banners List affiliate banner image assets with filename and dimensions
 #'
 #'
-#' delete_billing_prepay Delete Prepay Balance
+#' get_affiliate_download Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
 #'
 #'
-#' get_affiliate_banners List Affiliate Banner Assets
+#' get_affiliate_rich_report Read a combined affiliate performance summary (HTML payload)
 #'
 #'
-#' get_affiliate_rich_report Get Affiliate Performance Report
+#' get_affiliate_sales_graph Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
 #'
 #'
-#' get_affiliate_sales_graph Get Affiliate Sales Graph Data
+#' get_affiliate_signups Read affiliate signup stats and per-customer conversion data
 #'
 #'
-#' get_affiliate_sales_report Get Affiliate Sales Report
+#' get_affiliate_traffic_graph Read aggregated affiliate referral click/visit time-series for chart rendering
 #'
 #'
-#' get_affiliate_traffic_graph Get Affiliate Traffic Graph Data
+#' get_affiliate_web_traffic List the 20 most recent affiliate referral visits with IP, referrer, timestamp
 #'
 #'
-#' get_affiliate_web_traffic List Affiliate Web Traffic Entries
+#' get_billing_cart Read the current shopping cart contents, totals, and available payment methods
 #'
 #'
-#' get_billing_cart Get Shopping Cart Contents
+#' get_billing_credit_card_verify Probe whether a stored card still needs micro-charge verification
 #'
 #'
-#' get_billing_credit_card_verify Get Credit Card Verification Requirements
+#' get_billing_invoice Read full invoice detail — line items, totals, paid status, customer info
 #'
 #'
-#' get_billing_invoice Get Invoice Details
+#' get_billing_invoices List every invoice on the account with summary totals and paid/unpaid status
 #'
 #'
-#' get_billing_invoices List Account Invoices
+#' get_billing_pre_pays List prepay deposits on the account — remaining balance and auto-use flags
 #'
 #'
-#' get_billing_pre_pays List Prepay Balances
+#' initiate_payment Pay invoices through the chosen gateway — returns the next-step action
 #'
 #'
-#' get_invoices Get Invoices
+#' patch_billing_credit_card_verify Place two micro-charges on the card to start CVV verification (step 1 of 2)
 #'
 #'
-#' initiate_payment Initiate Payment
+#' post_billing_credit_card_verify Submit two micro-charge amounts to finalize card verification (step 2 of 2)
 #'
 #'
-#' post_billing_credit_card_verify Submit Credit Card Verification
+#' update_affiliate_dock_setup Configure the affiliate landing dock title, description, and referrer coupon
 #'
 #'
-#' update_account_credit_card Update Credit Card
+#' update_affiliate_payment_setup Configure how affiliate commissions get paid out (PayPal or internal prepay)
 #'
 #'
-#' update_affiliate_dock_setup Configure Affiliate Dock Settings
+#' update_billing_credit_card Refresh stored card expiration and re-trigger MaxMind fraud scoring
 #'
 #'
-#' update_affiliate_landing_page Configure Affiliate Landing Page
-#'
-#'
-#' update_affiliate_payment_setup Configure Affiliate Payout Preferences
-#'
-#'
-#' update_billing_credit_card Update Credit Card Details
-#'
-#'
-#' update_billing_payment_method Update Default Payment Method
+#' update_billing_payment_method Set the account&#x27;s default payment method for recurring/auto charges
 #'
 #' }
 #'
@@ -113,48 +104,6 @@ BillingApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    add_account_credit_card = function(name, address, city, state, country, zip, cc, cc_exp, cc_ccv2, body, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      body <- list(
-          "name" = name,
-          "address" = address,
-          "city" = city,
-          "state" = state,
-          "country" = country,
-          "zip" = zip,
-          "cc" = cc,
-          "cc_exp" = cc_exp,
-          "cc_ccv2" = cc_ccv2
-      )
-
-      if (!missing(`body`)) {
-        body <- `body`$toJSONString()
-      } else {
-        body <- NULL
-      }
-
-      urlPath <- "/account/creditcards"
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "POST",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- SuccessTextResponse$new()
-        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
-        Response$new(returnObject, resp)
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
     add_billing_credit_card = function(body, name, address, city, state, country, zip, cc, cc_exp, cc_ccv2, ...){
       args <- list(...)
       queryParams <- list()
@@ -224,34 +173,6 @@ BillingApi <- R6::R6Class(
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
         returnObject <- SuccessTextResponse$new()
-        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
-        Response$new(returnObject, resp)
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
-    delete_account_credit_card = function(id, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      urlPath <- "/account/creditcards/{id}"
-      if (!missing(`id`)) {
-        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
-      }
-
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "DELETE",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- Character$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -369,6 +290,40 @@ BillingApi <- R6::R6Class(
       }
 
     }
+    get_affiliate_download = function(st, ex, year, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      if (!missing(`st`)) {
+        queryParams['st'] <- st
+      }
+
+      if (!missing(`ex`)) {
+        queryParams['ex'] <- ex
+      }
+
+      if (!missing(`year`)) {
+        queryParams['year'] <- year
+      }
+
+      urlPath <- "/affiliate/download"
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        # void response, no need to return anything
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
     get_affiliate_rich_report = function(...){
       args <- list(...)
       queryParams <- list()
@@ -421,12 +376,16 @@ BillingApi <- R6::R6Class(
       }
 
     }
-    get_affiliate_sales_report = function(...){
+    get_affiliate_signups = function(st, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
 
-      urlPath <- "/affiliate/sales_report"
+      if (!missing(`st`)) {
+        queryParams['st'] <- st
+      }
+
+      urlPath <- "/affiliate/signups"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
                                  queryParams = queryParams,
@@ -435,7 +394,7 @@ BillingApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- TextResponse$new()
+        returnObject <- InlineResponse2001$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -625,48 +584,12 @@ BillingApi <- R6::R6Class(
       }
 
     }
-    get_invoices = function(search_string, skip, limit, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      if (!missing(`search_string`)) {
-        queryParams['searchString'] <- search_string
-      }
-
-      if (!missing(`skip`)) {
-        queryParams['skip'] <- skip
-      }
-
-      if (!missing(`limit`)) {
-        queryParams['limit'] <- limit
-      }
-
-      urlPath <- "/invoices"
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "GET",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- Invoice$new()
-        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
-        Response$new(returnObject, resp)
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
     initiate_payment = function(method, invoices, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
 
-      urlPath <- "/pay/{method}/{invoices}"
+      urlPath <- "/billing/pay/{method}/{invoices}"
       if (!missing(`method`)) {
         urlPath <- gsub(paste0("\\{", "method", "\\}"), `method`, urlPath)
       }
@@ -683,7 +606,45 @@ BillingApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse2009$new()
+        returnObject <- InlineResponse20010$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    patch_billing_credit_card_verify = function(body, cc_ccv2, id, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      body <- list(
+          "cc_ccv2" = cc_ccv2
+      )
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/billing/creditcards/{id}/verify"
+      if (!missing(`id`)) {
+        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PATCH",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- SuccessTextResponse$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -735,34 +696,6 @@ BillingApi <- R6::R6Class(
       }
 
     }
-    update_account_credit_card = function(id, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      urlPath <- "/account/creditcards/{id}"
-      if (!missing(`id`)) {
-        urlPath <- gsub(paste0("\\{", "id", "\\}"), `id`, urlPath)
-      }
-
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "POST",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- Character$new()
-        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
-        Response$new(returnObject, resp)
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
     update_affiliate_dock_setup = function(affiliate_dock_title, affiliate_dock_description, referrer_coupon, body, ...){
       args <- list(...)
       queryParams <- list()
@@ -781,42 +714,6 @@ BillingApi <- R6::R6Class(
       }
 
       urlPath <- "/affiliate/dock_setup"
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "POST",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- TextResponse$new()
-        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
-        Response$new(returnObject, resp)
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
-    update_affiliate_landing_page = function(affiliate_dock_title, affiliate_dock_description, referrer_coupon, body, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      body <- list(
-          "affiliate_dock_title" = affiliate_dock_title,
-          "affiliate_dock_description" = affiliate_dock_description,
-          "referrer_coupon" = referrer_coupon
-      )
-
-      if (!missing(`body`)) {
-        body <- `body`$toJSONString()
-      } else {
-        body <- NULL
-      }
-
-      urlPath <- "/affiliate/landing_pg"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "POST",
                                  queryParams = queryParams,

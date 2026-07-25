@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::TextResponse
+# InterServerAPI::Object::TextResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::TextResponse;
+use InterServerAPI::Object::TextResponse;
 ```
 
 ## Properties

@@ -17,7 +17,7 @@ import WebsitesOrderPackagesInfo from './WebsitesOrderPackagesInfo';
 /**
  * The WebsitesOrderPackges model module.
  * @module model/WebsitesOrderPackges
- * @version 0.9.0
+ * @version 1.0.0
  */
 class WebsitesOrderPackges {
     /**

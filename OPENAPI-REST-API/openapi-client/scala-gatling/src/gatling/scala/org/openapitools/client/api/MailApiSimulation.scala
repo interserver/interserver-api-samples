@@ -81,6 +81,7 @@ class MailApiSimulation extends Simulation {
     val sendMailPerSecond = config.getDouble("performance.operationsPerSecond.sendMail") * rateMultiplier * instanceMultiplier
     val updateMailAlertPerSecond = config.getDouble("performance.operationsPerSecond.updateMailAlert") * rateMultiplier * instanceMultiplier
     val updateMailInfoPerSecond = config.getDouble("performance.operationsPerSecond.updateMailInfo") * rateMultiplier * instanceMultiplier
+    val updateRulePerSecond = config.getDouble("performance.operationsPerSecond.updateRule") * rateMultiplier * instanceMultiplier
     val viewMailLogPerSecond = config.getDouble("performance.operationsPerSecond.viewMailLog") * rateMultiplier * instanceMultiplier
 
     val scenarioBuilders: mutable.MutableList[PopulationBuilder] = new mutable.MutableList[PopulationBuilder]()
@@ -88,7 +89,6 @@ class MailApiSimulation extends Simulation {
     // Set up CSV feeders
     val addRulePATHFeeder = csv(userDataDirectory + File.separator + "addRule-pathParams.csv").random
     val createMailAlertPATHFeeder = csv(userDataDirectory + File.separator + "createMailAlert-pathParams.csv").random
-    val deleteMailAlertQUERYFeeder = csv(userDataDirectory + File.separator + "deleteMailAlert-queryParams.csv").random
     val deleteMailAlertPATHFeeder = csv(userDataDirectory + File.separator + "deleteMailAlert-pathParams.csv").random
     val deleteRulePATHFeeder = csv(userDataDirectory + File.separator + "deleteRule-pathParams.csv").random
     val delistBlockPATHFeeder = csv(userDataDirectory + File.separator + "delistBlock-pathParams.csv").random
@@ -109,6 +109,7 @@ class MailApiSimulation extends Simulation {
     val sendMailPATHFeeder = csv(userDataDirectory + File.separator + "sendMail-pathParams.csv").random
     val updateMailAlertPATHFeeder = csv(userDataDirectory + File.separator + "updateMailAlert-pathParams.csv").random
     val updateMailInfoPATHFeeder = csv(userDataDirectory + File.separator + "updateMailInfo-pathParams.csv").random
+    val updateRulePATHFeeder = csv(userDataDirectory + File.separator + "updateRule-pathParams.csv").random
     val viewMailLogQUERYFeeder = csv(userDataDirectory + File.separator + "viewMailLog-queryParams.csv").random
     val viewMailLogPATHFeeder = csv(userDataDirectory + File.separator + "viewMailLog-pathParams.csv").random
 
@@ -157,11 +158,9 @@ class MailApiSimulation extends Simulation {
 
     
     val scndeleteMailAlert = scenario("deleteMailAlertSimulation")
-        .feed(deleteMailAlertQUERYFeeder)
         .feed(deleteMailAlertPATHFeeder)
         .exec(http("deleteMailAlert")
         .httpRequest("DELETE","/mail/${id}/alerts")
-        .queryParam("alert_id","${alert_id}")
 )
 
     // Run scndeleteMailAlert with warm up and reach a constant rate for entire duration
@@ -465,29 +464,43 @@ class MailApiSimulation extends Simulation {
     )
 
     
+    val scnupdateRule = scenario("updateRuleSimulation")
+        .feed(updateRulePATHFeeder)
+        .exec(http("updateRule")
+        .httpRequest("PUT","/mail/${id}/rules/${rule}")
+)
+
+    // Run scnupdateRule with warm up and reach a constant rate for entire duration
+    scenarioBuilders += scnupdateRule.inject(
+        rampUsersPerSec(1) to(updateRulePerSecond) during(rampUpSeconds),
+        constantUsersPerSec(updateRulePerSecond) during(durationSeconds),
+        rampUsersPerSec(updateRulePerSecond) to(1) during(rampDownSeconds)
+    )
+
+    
     val scnviewMailLog = scenario("viewMailLogSimulation")
         .feed(viewMailLogQUERYFeeder)
         .feed(viewMailLogPATHFeeder)
         .exec(http("viewMailLog")
         .httpRequest("GET","/mail/${id}/log")
-        .queryParam("origin","${origin}")
-        .queryParam("mailid","${mailid}")
-        .queryParam("skip","${skip}")
-        .queryParam("limit","${limit}")
-        .queryParam("endDate","${endDate}")
         .queryParam("dir","${dir}")
+        .queryParam("endDate","${endDate}")
+        .queryParam("id","${id}")
+        .queryParam("skip","${skip}")
+        .queryParam("messageId","${messageId}")
+        .queryParam("origin","${origin}")
+        .queryParam("limit","${limit}")
+        .queryParam("from","${from}")
+        .queryParam("replyto","${replyto}")
+        .queryParam("startDate","${startDate}")
+        .queryParam("headerfrom","${headerfrom}")
+        .queryParam("mx","${mx}")
         .queryParam("delivered","${delivered}")
+        .queryParam("sort","${sort}")
         .queryParam("groupby","${groupby}")
         .queryParam("subject","${subject}")
-        .queryParam("from","${from}")
+        .queryParam("mailid","${mailid}")
         .queryParam("to","${to}")
-        .queryParam("mx","${mx}")
-        .queryParam("replyto","${replyto}")
-        .queryParam("messageId","${messageId}")
-        .queryParam("startDate","${startDate}")
-        .queryParam("id","${id}")
-        .queryParam("headerfrom","${headerfrom}")
-        .queryParam("sort","${sort}")
 )
 
     // Run scnviewMailLog with warm up and reach a constant rate for entire duration

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Control Panel ID. | [optional] 
+**_id** | **String** | Control Panel ID. | [optional] 
 **price** | **Int** | Control Panel price. | [optional] 
 **img** | **String** | Control Panel image. | [optional] 
 **shortDesc** | **String** | Short description of the control panel. | [optional] 

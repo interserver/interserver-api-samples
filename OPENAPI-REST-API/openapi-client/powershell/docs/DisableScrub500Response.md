@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DisableScrub500Response = Initialize-PSOpenAPIToolsDisableScrub500Response  -Success false `
+$DisableScrub500Response = Initialize-InterserverApiDisableScrub500Response  -Success false `
  -Text Unable to disable scrub on your IP.
 ```
 

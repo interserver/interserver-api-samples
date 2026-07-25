@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.websites_order_json_services import WebsitesOrderJsonServices  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.websites_order_json_services import WebsitesOrderJsonServices  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestWebsitesOrderJsonServices(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestWebsitesOrderJsonServices(unittest.TestCase):
     def testWebsitesOrderJsonServices(self):
         """Test WebsitesOrderJsonServices"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.websites_order_json_services.WebsitesOrderJsonServices()  # noqa: E501
+        # model = interserver_api_client.models.websites_order_json_services.WebsitesOrderJsonServices()  # noqa: E501
         pass
 
 

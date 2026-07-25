@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsClientLink = Initialize-PSOpenAPIToolsVpsClientLink  -Label null `
+$VpsClientLink = Initialize-InterserverApiVpsClientLink  -Label null `
  -Link null `
  -Icon null `
  -IconText null `

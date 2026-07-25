@@ -37,4 +37,3 @@ case class ServerOrderControlPanel(
   /* Display of monthly control panel price. */
   monthly_price_display: Option[String] = None
 )
-

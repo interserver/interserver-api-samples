@@ -12,4 +12,8 @@ Additional information tables for the mail service.
 |**tutorials** | [**MailTutorialsTable**](MailTutorialsTable.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

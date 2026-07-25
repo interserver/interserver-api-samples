@@ -12,4 +12,8 @@
 |**host** | [**VpsPleskLicense**](VpsPleskLicense.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

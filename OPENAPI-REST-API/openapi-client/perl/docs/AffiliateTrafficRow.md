@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AffiliateTrafficRow
+# InterServerAPI::Object::AffiliateTrafficRow
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AffiliateTrafficRow;
+use InterServerAPI::Object::AffiliateTrafficRow;
 ```
 
 ## Properties

@@ -16,6 +16,7 @@ import options
 type CanDelete* {.pure.} = enum
   `0`
   `1`
+  UnknownDefaultOpenApi
 
 type DomainNameserverGetResponseInner* = object
   ## 
@@ -27,10 +28,12 @@ func `%`*(v: CanDelete): JsonNode =
   result = case v:
     of CanDelete.`0`: %"0"
     of CanDelete.`1`: %"1"
+    of CanDelete.UnknownDefaultOpenApi: %"11184809"
 func `$`*(v: CanDelete): string =
   result = case v:
     of CanDelete.`0`: $("0")
     of CanDelete.`1`: $("1")
+    of CanDelete.UnknownDefaultOpenApi: $("11184809")
 
 proc to*(node: JsonNode, T: typedesc[CanDelete]): CanDelete =
   if node.kind != JString:
@@ -41,6 +44,8 @@ proc to*(node: JsonNode, T: typedesc[CanDelete]): CanDelete =
     return CanDelete.`0`
   of $("1"):
     return CanDelete.`1`
+  of $("11184809"):
+    return CanDelete.UnknownDefaultOpenApi
   else:
     raise newException(ValueError, "Invalid enum value for CanDelete: " & strVal)
 

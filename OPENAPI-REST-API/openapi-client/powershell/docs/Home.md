@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ModelHome = Initialize-PSOpenAPIToolsModelHome  -LastLoginIp 99.88.77.66 `
+$ModelHome = Initialize-InterserverApiModelHome  -LastLoginIp 99.88.77.66 `
  -LastLogin 14:58:pm - 17 Aug, 2023 `
  -Currency $ `
  -Amount $23.50 `

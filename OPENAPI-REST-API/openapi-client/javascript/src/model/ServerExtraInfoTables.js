@@ -17,7 +17,7 @@ import ServerAssets from './ServerAssets';
 /**
  * The ServerExtraInfoTables model module.
  * @module model/ServerExtraInfoTables
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerExtraInfoTables {
     /**

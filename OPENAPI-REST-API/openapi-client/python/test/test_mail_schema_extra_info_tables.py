@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_schema_extra_info_tables import MailSchemaExtraInfoTables
+from interserver_api_client.models.mail_schema_extra_info_tables import MailSchemaExtraInfoTables
 
 class TestMailSchemaExtraInfoTables(unittest.TestCase):
     """MailSchemaExtraInfoTables unit test stubs"""
@@ -36,17 +36,17 @@ class TestMailSchemaExtraInfoTables(unittest.TestCase):
         model = MailSchemaExtraInfoTables()
         if include_optional:
             return MailSchemaExtraInfoTables(
-                mail = openapi_client.models.mail_extra_info_table.MailExtraInfoTable(
+                mail = interserver_api_client.models.mail_extra_info_table.MailExtraInfoTable(
                     title = 'Connection Information', 
                     rows = [
-                        openapi_client.models.mail_extra_info_table_row.MailExtraInfoTableRow(
+                        interserver_api_client.models.mail_extra_info_table_row.MailExtraInfoTableRow(
                             desc = 'SMTP Server', 
                             value = 'relay.mailbaby.net', )
                         ], ),
-                tutorials = openapi_client.models.mail_tutorials_table.MailTutorialsTable(
+                tutorials = interserver_api_client.models.mail_tutorials_table.MailTutorialsTable(
                     title = 'Tutorials', 
                     rows = [
-                        openapi_client.models.mail_tutorials_table_row.MailTutorialsTableRow(
+                        interserver_api_client.models.mail_tutorials_table_row.MailTutorialsTableRow(
                             desc = 'cPanel Tutorial', 
                             value = '<a class="link" href="https://mail.baby/cpanel/" target="_blank">Click Here</a>', )
                         ], )

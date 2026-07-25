@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainProvProcessPending = Initialize-PSOpenAPIToolsDomainProvProcessPending  -OPSVersion null `
+$DomainProvProcessPending = Initialize-InterserverApiDomainProvProcessPending  -OPSVersion null `
  -ResponseText null `
  -Protocol null `
  -ResponseCode null `

@@ -38,6 +38,10 @@ public:
 	void SetHttpRetryManager(FHttpRetrySystem::FManager& RetryManager);
 	FHttpRetrySystem::FManager& GetHttpRetryManager();
 
+	class GetAccountCurrenciesRequest;
+	class GetAccountCurrenciesResponse;
+	class GetAccountLocalesRequest;
+	class GetAccountLocalesResponse;
 	class GetCaptchaRequest;
 	class GetCaptchaResponse;
 	class GetCountriesRequest;
@@ -63,6 +67,8 @@ public:
 	class SubmitSignupRequest;
 	class SubmitSignupResponse;
 	
+    DECLARE_DELEGATE_OneParam(FGetAccountCurrenciesDelegate, const GetAccountCurrenciesResponse&);
+    DECLARE_DELEGATE_OneParam(FGetAccountLocalesDelegate, const GetAccountLocalesResponse&);
     DECLARE_DELEGATE_OneParam(FGetCaptchaDelegate, const GetCaptchaResponse&);
     DECLARE_DELEGATE_OneParam(FGetCountriesDelegate, const GetCountriesResponse&);
     DECLARE_DELEGATE_OneParam(FGetInfoDelegate, const GetInfoResponse&);
@@ -76,6 +82,8 @@ public:
     DECLARE_DELEGATE_OneParam(FSubmitLoginDelegate, const SubmitLoginResponse&);
     DECLARE_DELEGATE_OneParam(FSubmitSignupDelegate, const SubmitSignupResponse&);
     
+    FHttpRequestPtr GetAccountCurrencies(const GetAccountCurrenciesRequest& Request, const FGetAccountCurrenciesDelegate& Delegate = FGetAccountCurrenciesDelegate()) const;
+    FHttpRequestPtr GetAccountLocales(const GetAccountLocalesRequest& Request, const FGetAccountLocalesDelegate& Delegate = FGetAccountLocalesDelegate()) const;
     FHttpRequestPtr GetCaptcha(const GetCaptchaRequest& Request, const FGetCaptchaDelegate& Delegate = FGetCaptchaDelegate()) const;
     FHttpRequestPtr GetCountries(const GetCountriesRequest& Request, const FGetCountriesDelegate& Delegate = FGetCountriesDelegate()) const;
     FHttpRequestPtr GetInfo(const GetInfoRequest& Request, const FGetInfoDelegate& Delegate = FGetInfoDelegate()) const;
@@ -90,6 +98,8 @@ public:
     FHttpRequestPtr SubmitSignup(const SubmitSignupRequest& Request, const FSubmitSignupDelegate& Delegate = FSubmitSignupDelegate()) const;
     
 private:
+    void OnGetAccountCurrenciesResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetAccountCurrenciesDelegate Delegate) const;
+    void OnGetAccountLocalesResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetAccountLocalesDelegate Delegate) const;
     void OnGetCaptchaResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetCaptchaDelegate Delegate) const;
     void OnGetCountriesResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetCountriesDelegate Delegate) const;
     void OnGetInfoResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FGetInfoDelegate Delegate) const;

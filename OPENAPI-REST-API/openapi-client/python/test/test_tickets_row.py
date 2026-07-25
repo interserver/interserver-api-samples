@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.tickets_row import TicketsRow
+from interserver_api_client.models.tickets_row import TicketsRow
 
 class TestTicketsRow(unittest.TestCase):
     """TicketsRow unit test stubs"""

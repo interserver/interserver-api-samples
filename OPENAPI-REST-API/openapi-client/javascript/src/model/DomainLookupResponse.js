@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainLookupResponse model module.
  * @module model/DomainLookupResponse
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainLookupResponse {
     /**

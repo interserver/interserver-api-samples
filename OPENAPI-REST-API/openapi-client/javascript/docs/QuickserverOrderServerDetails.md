@@ -1,4 +1,4 @@
-# InterServerManagementApi.QuickserverOrderServerDetails
+# InterserverApiClient.QuickserverOrderServerDetails
 
 ## Properties
 

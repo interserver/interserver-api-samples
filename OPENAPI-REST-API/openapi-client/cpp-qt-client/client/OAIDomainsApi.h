@@ -29,6 +29,7 @@
 #include "OAIDomainNameserverPostRequest.h"
 #include "OAIDomainNameserverPutRequest.h"
 #include "OAIDomainOrder.h"
+#include "OAIDomainOrderRequest.h"
 #include "OAIDomainRow.h"
 #include "OAIDomainSearchResponse.h"
 #include "OAIDomainWhoisPrivacyRequest.h"
@@ -75,8 +76,10 @@ public:
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
-
-    virtual void addDomain();
+    /**
+    * @param[in]  oai_domain_order_request OAIDomainOrderRequest [required]
+    */
+    virtual void addDomain(const OAIDomainOrderRequest &oai_domain_order_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -97,9 +100,8 @@ public:
 
     /**
     * @param[in]  id qint32 [required]
-    * @param[in]  action QString [required]
     */
-    virtual void deleteDomainDnssec(const qint32 &id, const QString &action);
+    virtual void deleteDomainDnssec(const qint32 &id);
 
     /**
     * @param[in]  id qint32 [required]
@@ -138,17 +140,6 @@ public:
     virtual void getDomainNameservers(const qint32 &id);
 
     /**
-    * @param[in]  domain QString [required]
-    * @param[in]  reg_type QString [required]
-    */
-    virtual void getDomainOrderFields(const QString &domain, const QString &reg_type);
-
-    /**
-    * @param[in]  domain QString [required]
-    */
-    virtual void getDomainOrderSearchResults(const QString &domain);
-
-    /**
     * @param[in]  id qint32 [required]
     */
     virtual void getDomainRenewal(const qint32 &id);
@@ -179,8 +170,10 @@ public:
 
     virtual void getNewDomain();
 
-
-    virtual void patchDomains();
+    /**
+    * @param[in]  oai_domain_order_request OAIDomainOrderRequest [required]
+    */
+    virtual void patchDomains(const OAIDomainOrderRequest &oai_domain_order_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -188,12 +181,19 @@ public:
     virtual void postDomainRenewal(const qint32 &id);
 
     /**
+    * @param[in]  name QString [required]
+    */
+    virtual void postDomainSearch(const QString &name);
+
+    /**
     * @param[in]  id qint32 [required]
     */
     virtual void postDomainTransfer(const qint32 &id);
 
-
-    virtual void putDomains();
+    /**
+    * @param[in]  oai_domain_order_request OAIDomainOrderRequest [required]
+    */
+    virtual void putDomains(const OAIDomainOrderRequest &oai_domain_order_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -202,9 +202,9 @@ public:
     virtual void updateDomainContact(const qint32 &id, const OAIDomainContactDetails &oai_domain_contact_details);
 
     /**
-    * @param[in]  id QString [required]
+    * @param[in]  id qint32 [required]
     */
-    virtual void updateDomainInfo(const QString &id);
+    virtual void updateDomainInfo(const qint32 &id);
 
     /**
     * @param[in]  id qint32 [required]
@@ -260,8 +260,6 @@ private:
     void getDomainInvoicesCallback(OAIHttpRequestWorker *worker);
     void getDomainLookupCallback(OAIHttpRequestWorker *worker);
     void getDomainNameserversCallback(OAIHttpRequestWorker *worker);
-    void getDomainOrderFieldsCallback(OAIHttpRequestWorker *worker);
-    void getDomainOrderSearchResultsCallback(OAIHttpRequestWorker *worker);
     void getDomainRenewalCallback(OAIHttpRequestWorker *worker);
     void getDomainSearchCallback(OAIHttpRequestWorker *worker);
     void getDomainTransferCallback(OAIHttpRequestWorker *worker);
@@ -271,6 +269,7 @@ private:
     void getNewDomainCallback(OAIHttpRequestWorker *worker);
     void patchDomainsCallback(OAIHttpRequestWorker *worker);
     void postDomainRenewalCallback(OAIHttpRequestWorker *worker);
+    void postDomainSearchCallback(OAIHttpRequestWorker *worker);
     void postDomainTransferCallback(OAIHttpRequestWorker *worker);
     void putDomainsCallback(OAIHttpRequestWorker *worker);
     void updateDomainContactCallback(OAIHttpRequestWorker *worker);
@@ -292,8 +291,6 @@ Q_SIGNALS:
     void getDomainInvoicesSignal(OAIChargeInvoiceRows summary);
     void getDomainLookupSignal(OAIDomainLookupResponse summary);
     void getDomainNameserversSignal(OAIDomainNameserverGetResponse<OAIDomainNameserverGetResponse_inner> summary);
-    void getDomainOrderFieldsSignal();
-    void getDomainOrderSearchResultsSignal();
     void getDomainRenewalSignal(OAISuccessTextResponse summary);
     void getDomainSearchSignal(OAIDomainSearchResponse summary);
     void getDomainTransferSignal(OAISuccessTextResponse summary);
@@ -303,6 +300,7 @@ Q_SIGNALS:
     void getNewDomainSignal(OAIDomainOrder summary);
     void patchDomainsSignal();
     void postDomainRenewalSignal(OAISuccessTextResponse summary);
+    void postDomainSearchSignal();
     void postDomainTransferSignal(OAISuccessTextResponse summary);
     void putDomainsSignal();
     void updateDomainContactSignal(OAISuccessTextResponse summary);
@@ -323,8 +321,6 @@ Q_SIGNALS:
     void getDomainInvoicesSignalFull(OAIHttpRequestWorker *worker, OAIChargeInvoiceRows summary);
     void getDomainLookupSignalFull(OAIHttpRequestWorker *worker, OAIDomainLookupResponse summary);
     void getDomainNameserversSignalFull(OAIHttpRequestWorker *worker, OAIDomainNameserverGetResponse<OAIDomainNameserverGetResponse_inner> summary);
-    void getDomainOrderFieldsSignalFull(OAIHttpRequestWorker *worker);
-    void getDomainOrderSearchResultsSignalFull(OAIHttpRequestWorker *worker);
     void getDomainRenewalSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void getDomainSearchSignalFull(OAIHttpRequestWorker *worker, OAIDomainSearchResponse summary);
     void getDomainTransferSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
@@ -334,6 +330,7 @@ Q_SIGNALS:
     void getNewDomainSignalFull(OAIHttpRequestWorker *worker, OAIDomainOrder summary);
     void patchDomainsSignalFull(OAIHttpRequestWorker *worker);
     void postDomainRenewalSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
+    void postDomainSearchSignalFull(OAIHttpRequestWorker *worker);
     void postDomainTransferSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void putDomainsSignalFull(OAIHttpRequestWorker *worker);
     void updateDomainContactSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
@@ -353,8 +350,6 @@ Q_SIGNALS:
     void getDomainInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDomainLookupSignalError(OAIDomainLookupResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDomainNameserversSignalError(OAIDomainNameserverGetResponse<OAIDomainNameserverGetResponse_inner> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getDomainOrderFieldsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getDomainOrderSearchResultsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDomainRenewalSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDomainSearchSignalError(OAIDomainSearchResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDomainTransferSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -364,6 +359,7 @@ Q_SIGNALS:
     void getNewDomainSignalError(OAIDomainOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void patchDomainsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void postDomainRenewalSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void postDomainSearchSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void postDomainTransferSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void putDomainsSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateDomainContactSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -383,8 +379,6 @@ Q_SIGNALS:
     void getDomainInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDomainLookupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDomainNameserversSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getDomainOrderFieldsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void getDomainOrderSearchResultsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDomainRenewalSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDomainSearchSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getDomainTransferSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -394,6 +388,7 @@ Q_SIGNALS:
     void getNewDomainSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void patchDomainsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postDomainRenewalSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void postDomainSearchSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postDomainTransferSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void putDomainsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateDomainContactSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);

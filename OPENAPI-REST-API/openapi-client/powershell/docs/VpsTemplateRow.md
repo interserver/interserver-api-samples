@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsTemplateRow = Initialize-PSOpenAPIToolsVpsTemplateRow  -TemplateId null `
+$VpsTemplateRow = Initialize-InterserverApiVpsTemplateRow  -TemplateId null `
  -TemplateType null `
  -TemplateOs null `
  -TemplateVersion null `

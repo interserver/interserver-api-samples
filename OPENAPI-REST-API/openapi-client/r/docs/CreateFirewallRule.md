@@ -1,4 +1,4 @@
-# openapi::CreateFirewallRule
+# interserverapi::CreateFirewallRule
 
 Create firewall rule for your ip
 

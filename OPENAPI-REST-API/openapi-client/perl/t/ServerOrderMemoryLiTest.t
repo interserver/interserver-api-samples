@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ServerOrderMemoryLi');
+use_ok('InterServerAPI::Object::ServerOrderMemoryLi');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ServerOrderMemoryLi->new();
+#my $instance = InterServerAPI::Object::ServerOrderMemoryLi->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ServerOrderMemoryLi');
+#isa_ok($instance, 'InterServerAPI::Object::ServerOrderMemoryLi');
 
 
 done_testing();

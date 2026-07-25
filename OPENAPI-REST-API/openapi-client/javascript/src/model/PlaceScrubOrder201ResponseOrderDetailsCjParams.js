@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The PlaceScrubOrder201ResponseOrderDetailsCjParams model module.
  * @module model/PlaceScrubOrder201ResponseOrderDetailsCjParams
- * @version 0.9.0
+ * @version 1.0.0
  */
 class PlaceScrubOrder201ResponseOrderDetailsCjParams {
     /**

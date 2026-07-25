@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.backup_extra_info_tables import BackupExtraInfoTables
+from interserver_api_client.models.backup_extra_info_tables import BackupExtraInfoTables
 
 class TestBackupExtraInfoTables(unittest.TestCase):
     """BackupExtraInfoTables unit test stubs"""
@@ -36,10 +36,10 @@ class TestBackupExtraInfoTables(unittest.TestCase):
         model = BackupExtraInfoTables()
         if include_optional:
             return BackupExtraInfoTables(
-                ip_info = openapi_client.models.backup_ip_info.BackupIPInfo(
+                ip_info = interserver_api_client.models.backup_ip_info.BackupIPInfo(
                     title = 'IP Information', 
                     rows = [
-                        openapi_client.models.backup_ip_info_row.BackupIPInfoRow(
+                        interserver_api_client.models.backup_ip_info_row.BackupIPInfoRow(
                             desc = 'Netmask', 
                             value = '255.255.255.248', )
                         ], )

@@ -1,4 +1,4 @@
-# openapi::DomainAllInfo
+# interserverapi::DomainAllInfo
 
 Complete domain registration information returned from the registrar, including contacts, nameservers, and expiry dates.
 

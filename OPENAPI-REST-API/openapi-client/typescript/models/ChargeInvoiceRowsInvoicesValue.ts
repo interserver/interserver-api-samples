@@ -114,8 +114,5 @@ export class ChargeInvoiceRowsInvoicesValue {
     }
 }
 
-export enum ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1
-}
+    export type ChargeInvoiceRowsInvoicesValueInvoicesPaidEnum = "0" | "1" ;
 

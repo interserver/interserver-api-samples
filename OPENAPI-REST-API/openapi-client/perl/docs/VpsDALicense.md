@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsDALicense
+# InterServerAPI::Object::VpsDALicense
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsDALicense;
+use InterServerAPI::Object::VpsDALicense;
 ```
 
 ## Properties

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_service_type import DomainServiceType
+from interserver_api_client.models.domain_service_type import DomainServiceType
 
 class TestDomainServiceType(unittest.TestCase):
     """DomainServiceType unit test stubs"""

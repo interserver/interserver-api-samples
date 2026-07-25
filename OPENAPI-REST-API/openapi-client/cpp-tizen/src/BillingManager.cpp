@@ -48,158 +48,6 @@ static gpointer __BillingManagerthreadFunc(gpointer data)
 }
 
 
-static bool addAccountCreditCardProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	void(* handler)(SuccessTextResponse, Error, void* )
-	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
-	
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-	SuccessTextResponse out;
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-
-
-		if (isprimitive("SuccessTextResponse")) {
-			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
-			json_node_free(pJson);
-
-			if ("SuccessTextResponse" == "std::string") {
-				string* val = (std::string*)(&out);
-				if (val->empty() && p_chunk.size>4) {
-					*val = string(p_chunk.memory, p_chunk.size);
-				}
-			}
-		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-		}
-		handler(out, error, userData);
-		return true;
-		//TODO: handle case where json parsing has an error
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		 handler(out, error, userData);
-		return false;
-			}
-}
-
-static bool addAccountCreditCardHelper(char * accessToken,
-	std::string name, std::string address, std::string city, std::string state, std::string country, std::string zip, std::string cc, std::string ccExp, std::string ccCcv2, 
-	void(* handler)(SuccessTextResponse, Error, void* )
-	, void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: multipart/form-data");
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/account/creditcards");
-	int pos;
-
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("POST");
-
-	if(strcmp("PUT", "POST") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = addAccountCreditCardProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_free_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), addAccountCreditCardProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __BillingManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool BillingManager::addAccountCreditCardAsync(char * accessToken,
-	std::string name, std::string address, std::string city, std::string state, std::string country, std::string zip, std::string cc, std::string ccExp, std::string ccCcv2, 
-	void(* handler)(SuccessTextResponse, Error, void* )
-	, void* userData)
-{
-	return addAccountCreditCardHelper(accessToken,
-	name, address, city, state, country, zip, cc, ccExp, ccCcv2, 
-	handler, userData, true);
-}
-
-bool BillingManager::addAccountCreditCardSync(char * accessToken,
-	std::string name, std::string address, std::string city, std::string state, std::string country, std::string zip, std::string cc, std::string ccExp, std::string ccCcv2, 
-	void(* handler)(SuccessTextResponse, Error, void* )
-	, void* userData)
-{
-	return addAccountCreditCardHelper(accessToken,
-	name, address, city, state, country, zip, cc, ccExp, ccCcv2, 
-	handler, userData, false);
-}
-
 static bool addBillingCreditCardProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -527,158 +375,6 @@ bool BillingManager::addBillingPrepaySync(char * accessToken,
 {
 	return addBillingPrepayHelper(accessToken,
 	billingPrepayRequest, 
-	handler, userData, false);
-}
-
-static bool deleteAccountCreditCardProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	void(* handler)(std::string, Error, void* )
-	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
-	
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-	std::string out;
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-
-
-		if (isprimitive("std::string")) {
-			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "std::string", "std::string");
-			json_node_free(pJson);
-
-			if ("std::string" == "std::string") {
-				string* val = (std::string*)(&out);
-				if (val->empty() && p_chunk.size>4) {
-					*val = string(p_chunk.memory, p_chunk.size);
-				}
-			}
-		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-		}
-		handler(out, error, userData);
-		return true;
-		//TODO: handle case where json parsing has an error
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		 handler(out, error, userData);
-		return false;
-			}
-}
-
-static bool deleteAccountCreditCardHelper(char * accessToken,
-	std::string id, 
-	void(* handler)(std::string, Error, void* )
-	, void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/account/creditcards/{id}");
-	int pos;
-
-	string s_id("{");
-	s_id.append("id");
-	s_id.append("}");
-	pos = url.find(s_id);
-	url.erase(pos, s_id.length());
-	url.insert(pos, stringify(&id, "std::string"));
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("DELETE");
-
-	if(strcmp("PUT", "DELETE") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = deleteAccountCreditCardProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_free_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), deleteAccountCreditCardProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __BillingManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool BillingManager::deleteAccountCreditCardAsync(char * accessToken,
-	std::string id, 
-	void(* handler)(std::string, Error, void* )
-	, void* userData)
-{
-	return deleteAccountCreditCardHelper(accessToken,
-	id, 
-	handler, userData, true);
-}
-
-bool BillingManager::deleteAccountCreditCardSync(char * accessToken,
-	std::string id, 
-	void(* handler)(std::string, Error, void* )
-	, void* userData)
-{
-	return deleteAccountCreditCardHelper(accessToken,
-	id, 
 	handler, userData, false);
 }
 
@@ -1291,6 +987,151 @@ bool BillingManager::getAffiliateBannersSync(char * accessToken,
 	handler, userData, false);
 }
 
+static bool getAffiliateDownloadProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	
+	void(* handler)(Error, void* ) = reinterpret_cast<void(*)(Error, void* )> (voidHandler);
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+		handler(error, userData);
+		return true;
+
+
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		handler(error, userData);
+		return false;
+	}
+}
+
+static bool getAffiliateDownloadHelper(char * accessToken,
+	std::string st, std::string ex, int year, 
+	
+	void(* handler)(Error, void* ) , void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+
+	itemAtq = stringify(&st, "std::string");
+	queryParams.insert(pair<string, string>("st", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("st");
+	}
+
+
+	itemAtq = stringify(&ex, "std::string");
+	queryParams.insert(pair<string, string>("ex", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("ex");
+	}
+
+
+	itemAtq = stringify(&year, "int");
+	queryParams.insert(pair<string, string>("year", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("year");
+	}
+
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	string url("/affiliate/download");
+	int pos;
+
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("GET");
+
+	if(strcmp("PUT", "GET") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(BillingManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = getAffiliateDownloadProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (BillingManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getAffiliateDownloadProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __BillingManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool BillingManager::getAffiliateDownloadAsync(char * accessToken,
+	std::string st, std::string ex, int year, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return getAffiliateDownloadHelper(accessToken,
+	st, ex, year, 
+	handler, userData, true);
+}
+
+bool BillingManager::getAffiliateDownloadSync(char * accessToken,
+	std::string st, std::string ex, int year, 
+	
+	void(* handler)(Error, void* ) , void* userData)
+{
+	return getAffiliateDownloadHelper(accessToken,
+	st, ex, year, 
+	handler, userData, false);
+}
+
 static bool getAffiliateRichReportProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -1600,17 +1441,17 @@ bool BillingManager::getAffiliateSalesGraphSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool getAffiliateSalesReportProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+static bool getAffiliateSignupsProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
-	void(* handler)(TextResponse, Error, void* )
-	= reinterpret_cast<void(*)(TextResponse, Error, void* )> (voidHandler);
+	void(* handler)(GetAffiliateSignups_200_response, Error, void* )
+	= reinterpret_cast<void(*)(GetAffiliateSignups_200_response, Error, void* )> (voidHandler);
 	
 	JsonNode* pJson;
 	char * data = p_chunk.memory;
 
 	
-	TextResponse out;
+	GetAffiliateSignups_200_response out;
 
 	if (code >= 200 && code < 300) {
 		Error error(code, string("No Error"));
@@ -1618,12 +1459,12 @@ static bool getAffiliateSalesReportProcessor(MemoryStruct_s p_chunk, long code, 
 
 
 
-		if (isprimitive("TextResponse")) {
+		if (isprimitive("GetAffiliateSignups_200_response")) {
 			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "TextResponse", "TextResponse");
+			jsonToValue(&out, pJson, "GetAffiliateSignups_200_response", "GetAffiliateSignups_200_response");
 			json_node_free(pJson);
 
-			if ("TextResponse" == "std::string") {
+			if ("GetAffiliateSignups_200_response" == "std::string") {
 				string* val = (std::string*)(&out);
 				if (val->empty() && p_chunk.size>4) {
 					*val = string(p_chunk.memory, p_chunk.size);
@@ -1660,9 +1501,9 @@ static bool getAffiliateSalesReportProcessor(MemoryStruct_s p_chunk, long code, 
 			}
 }
 
-static bool getAffiliateSalesReportHelper(char * accessToken,
-	
-	void(* handler)(TextResponse, Error, void* )
+static bool getAffiliateSignupsHelper(char * accessToken,
+	std::string st, 
+	void(* handler)(GetAffiliateSignups_200_response, Error, void* )
 	, void* userData, bool isAsync)
 {
 
@@ -1678,11 +1519,18 @@ static bool getAffiliateSalesReportHelper(char * accessToken,
 	map <string, string> queryParams;
 	string itemAtq;
 	
+
+	itemAtq = stringify(&st, "std::string");
+	queryParams.insert(pair<string, string>("st", itemAtq));
+	if( itemAtq.empty()==true){
+		queryParams.erase("st");
+	}
+
 	string mBody = "";
 	JsonNode* node;
 	JsonArray* json_array;
 
-	string url("/affiliate/sales_report");
+	string url("/affiliate/signups");
 	int pos;
 
 
@@ -1701,7 +1549,7 @@ static bool getAffiliateSalesReportHelper(char * accessToken,
 	if(!isAsync){
 		NetClient::easycurl(BillingManager::getBasePath(), url, myhttpmethod, queryParams,
 			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = getAffiliateSalesReportProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+		bool retval = getAffiliateSignupsProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
 
 		curl_slist_free_all(headerList);
 		if (p_chunk) {
@@ -1719,7 +1567,7 @@ static bool getAffiliateSalesReportHelper(char * accessToken,
 		RequestInfo *requestInfo = NULL;
 
 		requestInfo = new(nothrow) RequestInfo (BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getAffiliateSalesReportProcessor);;
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getAffiliateSignupsProcessor);;
 		if(requestInfo == NULL)
 			return false;
 
@@ -1731,23 +1579,23 @@ static bool getAffiliateSalesReportHelper(char * accessToken,
 
 
 
-bool BillingManager::getAffiliateSalesReportAsync(char * accessToken,
-	
-	void(* handler)(TextResponse, Error, void* )
+bool BillingManager::getAffiliateSignupsAsync(char * accessToken,
+	std::string st, 
+	void(* handler)(GetAffiliateSignups_200_response, Error, void* )
 	, void* userData)
 {
-	return getAffiliateSalesReportHelper(accessToken,
-	
+	return getAffiliateSignupsHelper(accessToken,
+	st, 
 	handler, userData, true);
 }
 
-bool BillingManager::getAffiliateSalesReportSync(char * accessToken,
-	
-	void(* handler)(TextResponse, Error, void* )
+bool BillingManager::getAffiliateSignupsSync(char * accessToken,
+	std::string st, 
+	void(* handler)(GetAffiliateSignups_200_response, Error, void* )
 	, void* userData)
 {
-	return getAffiliateSalesReportHelper(accessToken,
-	
+	return getAffiliateSignupsHelper(accessToken,
+	st, 
 	handler, userData, false);
 }
 
@@ -2804,165 +2652,6 @@ bool BillingManager::getBillingPrePaysSync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool getInvoicesProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	void(* handler)(std::list<Invoice>, Error, void* )
-	= reinterpret_cast<void(*)(std::list<Invoice>, Error, void* )> (voidHandler);
-	
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	std::list<Invoice> out;
-	
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-
-		pJson = json_from_string(data, NULL);
-		JsonArray * jsonarray = json_node_get_array (pJson);
-		guint length = json_array_get_length (jsonarray);
-		for(guint i = 0; i < length; i++){
-			JsonNode* myJson = json_array_get_element (jsonarray, i);
-			char * singlenodestr = json_to_string(myJson, false);
-			Invoice singlemodel;
-			singlemodel.fromJson(singlenodestr);
-			out.push_front(singlemodel);
-			g_free(static_cast<gpointer>(singlenodestr));
-			json_node_free(myJson);
-		}
-		json_array_unref (jsonarray);
-		json_node_free(pJson);
-
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		 handler(out, error, userData);
-		return false;
-			}
-}
-
-static bool getInvoicesHelper(char * accessToken,
-	std::string searchString, int skip, int limit, 
-	void(* handler)(std::list<Invoice>, Error, void* )
-	, void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-
-	itemAtq = stringify(&searchString, "std::string");
-	queryParams.insert(pair<string, string>("searchString", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("searchString");
-	}
-
-
-	itemAtq = stringify(&skip, "int");
-	queryParams.insert(pair<string, string>("skip", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("skip");
-	}
-
-
-	itemAtq = stringify(&limit, "int");
-	queryParams.insert(pair<string, string>("limit", itemAtq));
-	if( itemAtq.empty()==true){
-		queryParams.erase("limit");
-	}
-
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/invoices");
-	int pos;
-
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("GET");
-
-	if(strcmp("PUT", "GET") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = getInvoicesProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_free_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), getInvoicesProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __BillingManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool BillingManager::getInvoicesAsync(char * accessToken,
-	std::string searchString, int skip, int limit, 
-	void(* handler)(std::list<Invoice>, Error, void* )
-	, void* userData)
-{
-	return getInvoicesHelper(accessToken,
-	searchString, skip, limit, 
-	handler, userData, true);
-}
-
-bool BillingManager::getInvoicesSync(char * accessToken,
-	std::string searchString, int skip, int limit, 
-	void(* handler)(std::list<Invoice>, Error, void* )
-	, void* userData)
-{
-	return getInvoicesHelper(accessToken,
-	searchString, skip, limit, 
-	handler, userData, false);
-}
-
 static bool initiatePaymentProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -3045,7 +2734,7 @@ static bool initiatePaymentHelper(char * accessToken,
 	JsonNode* node;
 	JsonArray* json_array;
 
-	string url("/pay/{method}/{invoices}");
+	string url("/billing/pay/{method}/{invoices}");
 	int pos;
 
 	string s_method("{");
@@ -3123,6 +2812,177 @@ bool BillingManager::initiatePaymentSync(char * accessToken,
 {
 	return initiatePaymentHelper(accessToken,
 	method, invoices, 
+	handler, userData, false);
+}
+
+static bool patchBillingCreditCardVerifyProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
+	void(* voidHandler)())
+{
+	void(* handler)(SuccessTextResponse, Error, void* )
+	= reinterpret_cast<void(*)(SuccessTextResponse, Error, void* )> (voidHandler);
+	
+	JsonNode* pJson;
+	char * data = p_chunk.memory;
+
+	
+	SuccessTextResponse out;
+
+	if (code >= 200 && code < 300) {
+		Error error(code, string("No Error"));
+
+
+
+
+		if (isprimitive("SuccessTextResponse")) {
+			pJson = json_from_string(data, NULL);
+			jsonToValue(&out, pJson, "SuccessTextResponse", "SuccessTextResponse");
+			json_node_free(pJson);
+
+			if ("SuccessTextResponse" == "std::string") {
+				string* val = (std::string*)(&out);
+				if (val->empty() && p_chunk.size>4) {
+					*val = string(p_chunk.memory, p_chunk.size);
+				}
+			}
+		} else {
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+			out.fromJson(data);
+			char *jsonStr =  out.toJson();
+			printf("\n%s\n", jsonStr);
+			g_free(static_cast<gpointer>(jsonStr));
+			
+		}
+		handler(out, error, userData);
+		return true;
+		//TODO: handle case where json parsing has an error
+
+	} else {
+		Error error;
+		if (errormsg != NULL) {
+			error = Error(code, string(errormsg));
+		} else if (p_chunk.memory != NULL) {
+			error = Error(code, string(p_chunk.memory));
+		} else {
+			error = Error(code, string("Unknown Error"));
+		}
+		 handler(out, error, userData);
+		return false;
+			}
+}
+
+static bool patchBillingCreditCardVerifyHelper(char * accessToken,
+	int id, std::shared_ptr<PatchBillingCreditCardVerify_request> patchBillingCreditCardVerifyRequest, 
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData, bool isAsync)
+{
+
+	//TODO: maybe delete headerList after its used to free up space?
+	struct curl_slist *headerList = NULL;
+
+	
+	string accessHeader = "Authorization: Bearer ";
+	accessHeader.append(accessToken);
+	headerList = curl_slist_append(headerList, accessHeader.c_str());
+	headerList = curl_slist_append(headerList, "Content-Type: application/json");
+	headerList = curl_slist_append(headerList, "Content-Type: multipart/form-data");
+
+	map <string, string> queryParams;
+	string itemAtq;
+	
+	string mBody = "";
+	JsonNode* node;
+	JsonArray* json_array;
+
+	if (isprimitive("PatchBillingCreditCardVerify_request")) {
+		node = converttoJson(&patchBillingCreditCardVerifyRequest, "PatchBillingCreditCardVerify_request", "");
+	}
+	
+	char *jsonStr =  patchBillingCreditCardVerifyRequest.toJson();
+	node = json_from_string(jsonStr, NULL);
+	g_free(static_cast<gpointer>(jsonStr));
+	
+
+	char *jsonStr1 =  json_to_string(node, false);
+	mBody.append(jsonStr1);
+	g_free(static_cast<gpointer>(jsonStr1));
+
+	string url("/billing/creditcards/{id}/verify");
+	int pos;
+
+	string s_id("{");
+	s_id.append("id");
+	s_id.append("}");
+	pos = url.find(s_id);
+	url.erase(pos, s_id.length());
+	url.insert(pos, stringify(&id, "int"));
+
+	//TODO: free memory of errormsg, memorystruct
+	MemoryStruct_s* p_chunk = new MemoryStruct_s();
+	long code;
+	char* errormsg = NULL;
+	string myhttpmethod("PATCH");
+
+	if(strcmp("PUT", "PATCH") == 0){
+		if(strcmp("", mBody.c_str()) == 0){
+			mBody.append("{}");
+		}
+	}
+
+	if(!isAsync){
+		NetClient::easycurl(BillingManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg);
+		bool retval = patchBillingCreditCardVerifyProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
+
+		curl_slist_free_all(headerList);
+		if (p_chunk) {
+			if(p_chunk->memory) {
+				free(p_chunk->memory);
+			}
+			delete (p_chunk);
+		}
+		if (errormsg) {
+			free(errormsg);
+		}
+		return retval;
+	} else{
+		GThread *thread = NULL;
+		RequestInfo *requestInfo = NULL;
+
+		requestInfo = new(nothrow) RequestInfo (BillingManager::getBasePath(), url, myhttpmethod, queryParams,
+			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), patchBillingCreditCardVerifyProcessor);;
+		if(requestInfo == NULL)
+			return false;
+
+		thread = g_thread_new(NULL, __BillingManagerthreadFunc, static_cast<gpointer>(requestInfo));
+		return true;
+	}
+}
+
+
+
+
+bool BillingManager::patchBillingCreditCardVerifyAsync(char * accessToken,
+	int id, std::shared_ptr<PatchBillingCreditCardVerify_request> patchBillingCreditCardVerifyRequest, 
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
+{
+	return patchBillingCreditCardVerifyHelper(accessToken,
+	id, patchBillingCreditCardVerifyRequest, 
+	handler, userData, true);
+}
+
+bool BillingManager::patchBillingCreditCardVerifySync(char * accessToken,
+	int id, std::shared_ptr<PatchBillingCreditCardVerify_request> patchBillingCreditCardVerifyRequest, 
+	void(* handler)(SuccessTextResponse, Error, void* )
+	, void* userData)
+{
+	return patchBillingCreditCardVerifyHelper(accessToken,
+	id, patchBillingCreditCardVerifyRequest, 
 	handler, userData, false);
 }
 
@@ -3297,158 +3157,6 @@ bool BillingManager::postBillingCreditCardVerifySync(char * accessToken,
 	handler, userData, false);
 }
 
-static bool updateAccountCreditCardProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	void(* handler)(std::string, Error, void* )
-	= reinterpret_cast<void(*)(std::string, Error, void* )> (voidHandler);
-	
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-	std::string out;
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-
-
-		if (isprimitive("std::string")) {
-			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "std::string", "std::string");
-			json_node_free(pJson);
-
-			if ("std::string" == "std::string") {
-				string* val = (std::string*)(&out);
-				if (val->empty() && p_chunk.size>4) {
-					*val = string(p_chunk.memory, p_chunk.size);
-				}
-			}
-		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-		}
-		handler(out, error, userData);
-		return true;
-		//TODO: handle case where json parsing has an error
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		 handler(out, error, userData);
-		return false;
-			}
-}
-
-static bool updateAccountCreditCardHelper(char * accessToken,
-	int id, 
-	void(* handler)(std::string, Error, void* )
-	, void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/account/creditcards/{id}");
-	int pos;
-
-	string s_id("{");
-	s_id.append("id");
-	s_id.append("}");
-	pos = url.find(s_id);
-	url.erase(pos, s_id.length());
-	url.insert(pos, stringify(&id, "int"));
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("POST");
-
-	if(strcmp("PUT", "POST") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = updateAccountCreditCardProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_free_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), updateAccountCreditCardProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __BillingManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool BillingManager::updateAccountCreditCardAsync(char * accessToken,
-	int id, 
-	void(* handler)(std::string, Error, void* )
-	, void* userData)
-{
-	return updateAccountCreditCardHelper(accessToken,
-	id, 
-	handler, userData, true);
-}
-
-bool BillingManager::updateAccountCreditCardSync(char * accessToken,
-	int id, 
-	void(* handler)(std::string, Error, void* )
-	, void* userData)
-{
-	return updateAccountCreditCardHelper(accessToken,
-	id, 
-	handler, userData, false);
-}
-
 static bool updateAffiliateDockSetupProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
 	void(* voidHandler)())
 {
@@ -3597,158 +3305,6 @@ bool BillingManager::updateAffiliateDockSetupSync(char * accessToken,
 	, void* userData)
 {
 	return updateAffiliateDockSetupHelper(accessToken,
-	affiliateDockTitle, affiliateDockDescription, referrerCoupon, 
-	handler, userData, false);
-}
-
-static bool updateAffiliateLandingPageProcessor(MemoryStruct_s p_chunk, long code, char* errormsg, void* userData,
-	void(* voidHandler)())
-{
-	void(* handler)(TextResponse, Error, void* )
-	= reinterpret_cast<void(*)(TextResponse, Error, void* )> (voidHandler);
-	
-	JsonNode* pJson;
-	char * data = p_chunk.memory;
-
-	
-	TextResponse out;
-
-	if (code >= 200 && code < 300) {
-		Error error(code, string("No Error"));
-
-
-
-
-		if (isprimitive("TextResponse")) {
-			pJson = json_from_string(data, NULL);
-			jsonToValue(&out, pJson, "TextResponse", "TextResponse");
-			json_node_free(pJson);
-
-			if ("TextResponse" == "std::string") {
-				string* val = (std::string*)(&out);
-				if (val->empty() && p_chunk.size>4) {
-					*val = string(p_chunk.memory, p_chunk.size);
-				}
-			}
-		} else {
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-			out.fromJson(data);
-			char *jsonStr =  out.toJson();
-			printf("\n%s\n", jsonStr);
-			g_free(static_cast<gpointer>(jsonStr));
-			
-		}
-		handler(out, error, userData);
-		return true;
-		//TODO: handle case where json parsing has an error
-
-	} else {
-		Error error;
-		if (errormsg != NULL) {
-			error = Error(code, string(errormsg));
-		} else if (p_chunk.memory != NULL) {
-			error = Error(code, string(p_chunk.memory));
-		} else {
-			error = Error(code, string("Unknown Error"));
-		}
-		 handler(out, error, userData);
-		return false;
-			}
-}
-
-static bool updateAffiliateLandingPageHelper(char * accessToken,
-	std::string affiliateDockTitle, std::string affiliateDockDescription, std::string referrerCoupon, 
-	void(* handler)(TextResponse, Error, void* )
-	, void* userData, bool isAsync)
-{
-
-	//TODO: maybe delete headerList after its used to free up space?
-	struct curl_slist *headerList = NULL;
-
-	
-	string accessHeader = "Authorization: Bearer ";
-	accessHeader.append(accessToken);
-	headerList = curl_slist_append(headerList, accessHeader.c_str());
-	headerList = curl_slist_append(headerList, "Content-Type: multipart/form-data");
-	headerList = curl_slist_append(headerList, "Content-Type: application/json");
-
-	map <string, string> queryParams;
-	string itemAtq;
-	
-	string mBody = "";
-	JsonNode* node;
-	JsonArray* json_array;
-
-	string url("/affiliate/landing_pg");
-	int pos;
-
-
-	//TODO: free memory of errormsg, memorystruct
-	MemoryStruct_s* p_chunk = new MemoryStruct_s();
-	long code;
-	char* errormsg = NULL;
-	string myhttpmethod("POST");
-
-	if(strcmp("PUT", "POST") == 0){
-		if(strcmp("", mBody.c_str()) == 0){
-			mBody.append("{}");
-		}
-	}
-
-	if(!isAsync){
-		NetClient::easycurl(BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg);
-		bool retval = updateAffiliateLandingPageProcessor(*p_chunk, code, errormsg, userData,reinterpret_cast<void(*)()>(handler));
-
-		curl_slist_free_all(headerList);
-		if (p_chunk) {
-			if(p_chunk->memory) {
-				free(p_chunk->memory);
-			}
-			delete (p_chunk);
-		}
-		if (errormsg) {
-			free(errormsg);
-		}
-		return retval;
-	} else{
-		GThread *thread = NULL;
-		RequestInfo *requestInfo = NULL;
-
-		requestInfo = new(nothrow) RequestInfo (BillingManager::getBasePath(), url, myhttpmethod, queryParams,
-			mBody, headerList, p_chunk, &code, errormsg, userData, reinterpret_cast<void(*)()>(handler), updateAffiliateLandingPageProcessor);;
-		if(requestInfo == NULL)
-			return false;
-
-		thread = g_thread_new(NULL, __BillingManagerthreadFunc, static_cast<gpointer>(requestInfo));
-		return true;
-	}
-}
-
-
-
-
-bool BillingManager::updateAffiliateLandingPageAsync(char * accessToken,
-	std::string affiliateDockTitle, std::string affiliateDockDescription, std::string referrerCoupon, 
-	void(* handler)(TextResponse, Error, void* )
-	, void* userData)
-{
-	return updateAffiliateLandingPageHelper(accessToken,
-	affiliateDockTitle, affiliateDockDescription, referrerCoupon, 
-	handler, userData, true);
-}
-
-bool BillingManager::updateAffiliateLandingPageSync(char * accessToken,
-	std::string affiliateDockTitle, std::string affiliateDockDescription, std::string referrerCoupon, 
-	void(* handler)(TextResponse, Error, void* )
-	, void* userData)
-{
-	return updateAffiliateLandingPageHelper(accessToken,
 	affiliateDockTitle, affiliateDockDescription, referrerCoupon, 
 	handler, userData, false);
 }

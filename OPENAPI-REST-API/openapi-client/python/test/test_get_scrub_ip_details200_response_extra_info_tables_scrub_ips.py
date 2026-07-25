@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_scrub_ip_details200_response_extra_info_tables_scrub_ips import GetScrubIpDetails200ResponseExtraInfoTablesScrubIps
+from interserver_api_client.models.get_scrub_ip_details200_response_extra_info_tables_scrub_ips import GetScrubIpDetails200ResponseExtraInfoTablesScrubIps
 
 class TestGetScrubIpDetails200ResponseExtraInfoTablesScrubIps(unittest.TestCase):
     """GetScrubIpDetails200ResponseExtraInfoTablesScrubIps unit test stubs"""
@@ -38,7 +38,7 @@ class TestGetScrubIpDetails200ResponseExtraInfoTablesScrubIps(unittest.TestCase)
             return GetScrubIpDetails200ResponseExtraInfoTablesScrubIps(
                 title = '',
                 rows = [
-                    openapi_client.models.get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner.getScrubIpDetails_200_response_extraInfoTables_scrub_ips_rows_inner(
+                    interserver_api_client.models.get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner.getScrubIpDetails_200_response_extraInfoTables_scrub_ips_rows_inner(
                         desc = '', 
                         value = '', )
                     ]

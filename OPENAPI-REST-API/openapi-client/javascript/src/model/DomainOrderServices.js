@@ -17,7 +17,7 @@ import DomainOrderServices10001 from './DomainOrderServices10001';
 /**
  * The DomainOrderServices model module.
  * @module model/DomainOrderServices
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainOrderServices {
     /**

@@ -15,4 +15,8 @@ Dashboard module configuration for webhosting services.
 |**listLink** | **String** | Link to view websites list. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

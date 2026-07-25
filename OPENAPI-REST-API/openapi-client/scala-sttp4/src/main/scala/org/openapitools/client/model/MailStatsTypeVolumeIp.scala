@@ -18,4 +18,3 @@ case class MailStatsTypeVolumeIp(
   `3_3_3_3`: Option[Int] = None,
   `4_4_4_4`: Option[Int] = None
 )
-

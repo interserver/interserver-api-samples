@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_service_info import QuickserverServiceInfo
+from interserver_api_client.models.quickserver_service_info import QuickserverServiceInfo
 
 class TestQuickserverServiceInfo(unittest.TestCase):
     """QuickserverServiceInfo unit test stubs"""

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { DomainAllInfoAttributesContactSet } from './api';
+import { DomainAllInfoAttributesContactSet } from '@interserver/myadmin-client';
 
 const instance: DomainAllInfoAttributesContactSet = {
     owner,

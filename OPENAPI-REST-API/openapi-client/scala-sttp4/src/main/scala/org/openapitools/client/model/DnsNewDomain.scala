@@ -22,4 +22,3 @@ case class DnsNewDomain(
   /* IP Address to point the domain to. */
   ip: String
 )
-

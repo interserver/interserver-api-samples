@@ -1,4 +1,4 @@
-# openapi::LicensesOrder
+# interserverapi::LicensesOrder
 
 Available license packages and pricing for ordering a new software license.
 

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { WebsitesOrderJsonServices } from './api';
+import { WebsitesOrderJsonServices } from '@interserver/myadmin-client';
 
 const instance: WebsitesOrderJsonServices = {
     _11447,

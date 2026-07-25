@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainDnssecRequest = Initialize-PSOpenAPIToolsDomainDnssecRequest  -Algorithm null `
+$DomainDnssecRequest = Initialize-InterserverApiDomainDnssecRequest  -Algorithm null `
  -DigestType null `
  -Digest null `
  -KeyTag null

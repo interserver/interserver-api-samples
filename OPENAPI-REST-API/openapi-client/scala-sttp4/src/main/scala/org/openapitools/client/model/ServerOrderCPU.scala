@@ -67,4 +67,3 @@ case class ServerOrderCPU(
   /* Display of monthly CPU price. */
   monthly_price_display: Option[String] = None
 )
-

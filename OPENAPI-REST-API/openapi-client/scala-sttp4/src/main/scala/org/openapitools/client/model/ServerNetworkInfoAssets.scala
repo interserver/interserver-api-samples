@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class ServerNetworkInfoAssets(
   `3497`: ServerAsset
 )
-

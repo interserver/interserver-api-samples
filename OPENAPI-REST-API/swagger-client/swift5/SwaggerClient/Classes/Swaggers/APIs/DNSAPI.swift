@@ -11,7 +11,7 @@ import Alamofire
 
 open class DNSAPI {
     /**
-     Create DNS Domain
+     Create a new authoritative DNS zone seeded with apex A + NS + SOA records
 
      - parameter domain: (form)  
      - parameter ip: (form)  
@@ -25,7 +25,7 @@ open class DNSAPI {
 
 
     /**
-     Create DNS Domain
+     Create a new authoritative DNS zone seeded with apex A + NS + SOA records
      - POST /dns
 
      - API Key:
@@ -58,7 +58,7 @@ open class DNSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Create DNS Domain
+     Create a new authoritative DNS zone seeded with apex A + NS + SOA records
 
      - parameter body: (body)  
      - parameter completion: completion handler to receive the data and the error objects
@@ -71,7 +71,7 @@ open class DNSAPI {
 
 
     /**
-     Create DNS Domain
+     Create a new authoritative DNS zone seeded with apex A + NS + SOA records
      - POST /dns
 
      - API Key:
@@ -103,7 +103,7 @@ open class DNSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Add DNS Record to Domain
+     Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
 
      - parameter name: (form)  
      - parameter type: (form)  
@@ -125,7 +125,7 @@ open class DNSAPI {
 
 
     /**
-     Add DNS Record to Domain
+     Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
      - POST /dns/{id}
 
      - API Key:
@@ -161,7 +161,7 @@ open class DNSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Add DNS Record to Domain
+     Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
 
      - parameter body: (body)  
      - parameter _id: (path) The DNS Domain ID. 
@@ -179,7 +179,7 @@ open class DNSAPI {
 
 
     /**
-     Add DNS Record to Domain
+     Add a DNS record (A, AAAA, MX, TXT, CNAME, NS, SRV, CAA, ...) to a zone
      - POST /dns/{id}
 
      - API Key:
@@ -211,7 +211,7 @@ open class DNSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Delete DNS Domain
+     Permanently delete a DNS zone and every record it contains
 
      - parameter _id: (path) The DNS domain ID to delete. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -224,7 +224,7 @@ open class DNSAPI {
 
 
     /**
-     Delete DNS Domain
+     Permanently delete a DNS zone and every record it contains
      - DELETE /dns/{id}
 
      - API Key:
@@ -259,7 +259,7 @@ open class DNSAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Delete DNS Record
+     Permanently delete one DNS record from a zone — zone itself is preserved
 
      - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      - parameter recordId: (path) The DNS record ID within the domain. Use the record &#x60;id&#x60; from &#x60;GET /dns/{id}&#x60; to identify the record. 
@@ -273,7 +273,7 @@ open class DNSAPI {
 
 
     /**
-     Delete DNS Record
+     Permanently delete one DNS record from a zone — zone itself is preserved
      - DELETE /dns/{domainId}/{recordId}
 
      - API Key:
@@ -312,7 +312,7 @@ open class DNSAPI {
         return requestBuilder.init(method: "DELETE", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List Domain DNS Records
+     List every DNS record in one zone with the IDs needed to edit or delete them
 
      - parameter _id: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
      - parameter completion: completion handler to receive the data and the error objects
@@ -325,7 +325,7 @@ open class DNSAPI {
 
 
     /**
-     List Domain DNS Records
+     List every DNS record in one zone with the IDs needed to edit or delete them
      - GET /dns/{id}
 
      - API Key:
@@ -379,7 +379,7 @@ open class DNSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     List DNS Domains
+     List DNS zones hosted on the account with each zone's apex A-record IP
 
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -391,7 +391,7 @@ open class DNSAPI {
 
 
     /**
-     List DNS Domains
+     List DNS zones hosted on the account with each zone's apex A-record IP
      - GET /dns
 
      - API Key:
@@ -427,7 +427,7 @@ open class DNSAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
     /**
-     Update DNS Record
+     Replace values on an existing DNS record (name, type, content, ttl, priority)
 
      - parameter name: (form)  
      - parameter type: (form)  
@@ -449,7 +449,7 @@ open class DNSAPI {
 
 
     /**
-     Update DNS Record
+     Replace values on an existing DNS record (name, type, content, ttl, priority)
      - POST /dns/{domainId}/{recordId}
 
      - API Key:
@@ -496,7 +496,7 @@ open class DNSAPI {
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
     /**
-     Update DNS Record
+     Replace values on an existing DNS record (name, type, content, ttl, priority)
 
      - parameter body: (body) The request data to update a dns record. 
      - parameter domainId: (path) The DNS domain ID. Use the &#x60;id&#x60; from &#x60;GET /dns&#x60; to identify the domain. 
@@ -511,7 +511,7 @@ open class DNSAPI {
 
 
     /**
-     Update DNS Record
+     Replace values on an existing DNS record (name, type, content, ttl, priority)
      - POST /dns/{domainId}/{recordId}
 
      - API Key:

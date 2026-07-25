@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { QuickserverAddons } from './api';
+import { QuickserverAddons } from '@interserver/myadmin-client';
 
 const instance: QuickserverAddons = {
     title,

@@ -45,6 +45,7 @@ local openapiclient_get_account_info_401_response = require "openapiclient.model
 local openapiclient_get_order_detail_200_response = require "openapiclient.model.get_order_detail_200_response"
 local openapiclient_get_scrub_ip_details_200_response = require "openapiclient.model.get_scrub_ip_details_200_response"
 local openapiclient_place_scrub_order_201_response = require "openapiclient.model.place_scrub_order_201_response"
+local openapiclient_put_scrub_ips_200_response = require "openapiclient.model.put_scrub_ips_200_response"
 local openapiclient_scrub_ips_delete_rule_200_response = require "openapiclient.model.scrub_ips_delete_rule_200_response"
 local openapiclient_scrub_ips_delete_rule_400_response = require "openapiclient.model.scrub_ips_delete_rule_400_response"
 local openapiclient_scrub_ips_delete_rule_500_response = require "openapiclient.model.scrub_ips_delete_rule_500_response"
@@ -857,6 +858,66 @@ function scrub_ips_api:place_scrub_order(scrub_ip_place_order)
 			return nil, err3
 		end
 		return openapiclient_place_scrub_order_201_response.cast(result), headers
+	else
+		local body, err, errno2 = stream:get_body_as_string()
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		-- return the error message (http body)
+		return nil, http_status, body
+	end
+end
+
+function scrub_ips_api:put_scrub_ips(scrub_ip_place_order)
+	local req = http_request.new_from_uri({
+		scheme = self.default_scheme;
+		host = self.host;
+		port = self.port;
+		path = string.format("%s/scrub_ips/order",
+			self.basePath);
+	})
+
+	-- set HTTP verb
+	req.headers:upsert(":method", "PUT")
+	-- TODO: create a function to select proper accept
+	--local var_content_type = { "application/json" }
+	req.headers:upsert("accept", "application/json")
+
+	-- TODO: create a function to select proper content-type
+	--local var_accept = { "application/json" }
+	req.headers:upsert("content-type", "application/json")
+
+	req:set_body(dkjson.encode(scrub_ip_place_order))
+
+	-- api key in headers 'X-API-KEY'
+	if self.api_key['X-API-KEY'] then
+		req.headers:upsert("apiKeyAuth", self.api_key['X-API-KEY'])
+	end
+	-- api key in headers 'sessionid'
+	if self.api_key['sessionid'] then
+		req.headers:upsert("sessionIdHeaderAuth", self.api_key['sessionid'])
+	end
+
+	-- make the HTTP call
+	local headers, stream, errno = req:go()
+	if not headers then
+		return nil, stream, errno
+	end
+	local http_status = headers:get(":status")
+	if http_status:sub(1,1) == "2" then
+		local body, err, errno2 = stream:get_body_as_string()
+		-- exception when getting the HTTP body
+		if not body then
+			return nil, err, errno2
+		end
+		stream:shutdown()
+		local result, _, err3 = dkjson.decode(body)
+		-- exception when decoding the HTTP body
+		if result == nil then
+			return nil, err3
+		end
+		return openapiclient_put_scrub_ips_200_response.cast(result), headers
 	else
 		local body, err, errno2 = stream:get_body_as_string()
 		if not body then

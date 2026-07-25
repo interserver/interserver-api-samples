@@ -1,4 +1,4 @@
-# openapi::ServersCancel200Response
+# interserverapi::ServersCancel200Response
 
 
 ## Properties

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AddServer200Response = Initialize-PSOpenAPIToolsAddServer200Response  -Text Order Completed `
+$AddServer200Response = Initialize-InterserverApiAddServer200Response  -Text Order Completed `
  -Invoice null `
  -Order null
 ```

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LicenseServiceType model module.
  * @module model/LicenseServiceType
- * @version 0.9.0
+ * @version 1.0.0
  */
 class LicenseServiceType {
     /**

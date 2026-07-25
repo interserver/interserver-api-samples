@@ -1,4 +1,4 @@
-# InterServerManagementApi.ServerOrderOS
+# InterserverApiClient.ServerOrderOS
 
 ## Properties
 

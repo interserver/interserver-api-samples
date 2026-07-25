@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.backup_extra_info_tables import BackupExtraInfoTables
+from interserver_api_client.models.backup_extra_info_tables import BackupExtraInfoTables
 
 # TODO update the JSON string below
 json = "{}"

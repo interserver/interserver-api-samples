@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsDAData();
+    instance = new InterserverApiClient.VpsDAData();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('VpsDAData', function() {
     it('should create an instance of VpsDAData', function() {
       // uncomment below and update the code to test VpsDAData
-      //var instance = new InterServerManagementApi.VpsDAData();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsDAData);
+      //var instance = new InterserverApiClient.VpsDAData();
+      //expect(instance).to.be.a(InterserverApiClient.VpsDAData);
     });
 
     it('should have the property free (base name: "free")', function() {
       // uncomment below and update the code to test the property free
-      //var instance = new InterServerManagementApi.VpsDAData();
+      //var instance = new InterserverApiClient.VpsDAData();
       //expect(instance).to.be();
     });
 

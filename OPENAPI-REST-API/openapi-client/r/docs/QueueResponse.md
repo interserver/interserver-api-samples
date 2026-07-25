@@ -1,4 +1,4 @@
-# openapi::QueueResponse
+# interserverapi::QueueResponse
 
 Response after sending an action queue to a service.
 

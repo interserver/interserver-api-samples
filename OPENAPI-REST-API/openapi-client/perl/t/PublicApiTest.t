@@ -24,10 +24,22 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::PublicApi');
+use_ok('InterServerAPI::PublicApi');
 
-my $api = OpenAPIClient::PublicApi->new();
-isa_ok($api, 'OpenAPIClient::PublicApi');
+my $api = InterServerAPI::PublicApi->new();
+isa_ok($api, 'InterServerAPI::PublicApi');
+
+#
+# get_account_currencies test
+#
+# uncomment below and update the test
+#my $get_account_currencies_result = $api->get_account_currencies();
+
+#
+# get_account_locales test
+#
+# uncomment below and update the test
+#my $get_account_locales_result = $api->get_account_locales();
 
 #
 # get_captcha test

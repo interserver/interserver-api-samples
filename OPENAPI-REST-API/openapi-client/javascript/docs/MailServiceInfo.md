@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailServiceInfo
+# InterserverApiClient.MailServiceInfo
 
 ## Properties
 

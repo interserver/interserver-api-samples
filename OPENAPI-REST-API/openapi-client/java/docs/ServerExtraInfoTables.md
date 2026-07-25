@@ -10,4 +10,8 @@
 |**assets** | [**ServerAssets**](ServerAssets.md) |  |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

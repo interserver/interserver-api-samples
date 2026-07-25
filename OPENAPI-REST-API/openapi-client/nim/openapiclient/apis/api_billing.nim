@@ -26,14 +26,15 @@ import ../models/model_billing_invoice_list
 import ../models/model_billing_payment_method_request
 import ../models/model_billing_prepay_request
 import ../models/model_billing_verify_cc_request
-import ../models/model_invoice
 import ../models/model_monthly_counts
 import ../models/model_status_monthly_breakdown
 import ../models/model_success_text_response
 import ../models/model_text_response
 import ../models/model_get_account_info401response
+import ../models/model_get_affiliate_signups200response
 import ../models/model_initiate_payment200response
 import ../models/model_object
+import ../models/model_patch_billing_credit_card_verify_request
 
 const basepath = "https://my.interserver.net/apiv2"
 
@@ -50,27 +51,8 @@ template constructResult[T](response: Response): untyped =
     (none(T.typedesc), response)
 
 
-proc addAccountCreditCard*(httpClient: HttpClient, name: string, address: string, city: string, state: string, country: string, zip: string, cc: string, ccExp: string, ccCcv2: string): (Option[SuccessTextResponse], Response) =
-  ## Add Credit Card to Account
-  httpClient.headers["Content-Type"] = "multipart/form-data"
-  let multipart_data = newMultipartData({
-    "name": $name, # 
-    "address": $address, # 
-    "city": $city, # 
-    "state": $state, # 
-    "country": $country, # 
-    "zip": $zip, # 
-    "cc": $cc, # 
-    "cc_exp": $ccExp, # 
-    "cc_ccv2": $ccCcv2, # 
-  })
-
-  let response = httpClient.post(basepath & "/account/creditcards", multipart=multipart_data)
-  constructResult[SuccessTextResponse](response)
-
-
 proc addBillingCreditCard*(httpClient: HttpClient, billingAddCcRequest: BillingAddCcRequest): (Option[SuccessTextResponse], Response) =
-  ## Add Credit Card for Billing
+  ## Store a credit card on the account — may return a verification flow
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & "/billing/creditcards", $(%billingAddCcRequest))
@@ -78,57 +60,64 @@ proc addBillingCreditCard*(httpClient: HttpClient, billingAddCcRequest: BillingA
 
 
 proc addBillingPrepay*(httpClient: HttpClient, billingPrepayRequest: BillingPrepayRequest): (Option[SuccessTextResponse], Response) =
-  ## Create Prepay Deposit
+  ## Create a prepay deposit and return an invoice id to fund it
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & "/billing/prepays", $(%billingPrepayRequest))
   constructResult[SuccessTextResponse](response)
 
 
-proc deleteAccountCreditCard*(httpClient: HttpClient, id: string): (Option[string], Response) =
-  ## Remove Credit Card
-
-  let response = httpClient.delete(basepath & fmt"/account/creditcards/{id}")
-  constructResult[string](response)
-
-
 proc deleteBillingCreditCard*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Delete Credit Card
+  ## Remove a stored credit card from the account
 
   let response = httpClient.delete(basepath & fmt"/billing/creditcards/{id}")
   constructResult[SuccessTextResponse](response)
 
 
 proc deleteBillingInvoice*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Delete Invoice
+  ## Cancel a pending unpaid invoice — and its pending service or repeat invoice
 
   let response = httpClient.delete(basepath & fmt"/billing/invoices/{id}")
   constructResult[SuccessTextResponse](response)
 
 
 proc deleteBillingPrepay*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Delete Prepay Balance
+  ## Delete an unfunded prepay or strip its unpaid funding invoices
 
   let response = httpClient.delete(basepath & fmt"/billing/prepays/{id}")
   constructResult[SuccessTextResponse](response)
 
 
 proc getAffiliateBanners*(httpClient: HttpClient): (Option[seq[AffiliateBannerRow]], Response) =
-  ## List Affiliate Banner Assets
+  ## List affiliate banner image assets with filename and dimensions
 
   let response = httpClient.get(basepath & "/affiliate/banners")
   constructResult[seq[AffiliateBannerRow]](response)
 
 
+proc getAffiliateDownload*(httpClient: HttpClient, st: string, ex: string, year: int): Response =
+  ## Export the affiliate signup report as CSV, XLS, XLSX, or PDF file download
+  var query_params_list: seq[(string, string)] = @[]
+  if $st != "":
+    query_params_list.add(("st", $st))
+  if $ex != "":
+    query_params_list.add(("ex", $ex))
+  if $year != "":
+    query_params_list.add(("year", $year))
+  let url_encoded_query_params = encodeQuery(query_params_list)
+  httpClient.get(basepath & "/affiliate/download" & "?" & url_encoded_query_params)
+
+
+
 proc getAffiliateRichReport*(httpClient: HttpClient): (Option[TextResponse], Response) =
-  ## Get Affiliate Performance Report
+  ## Read a combined affiliate performance summary (HTML payload)
 
   let response = httpClient.get(basepath & "/affiliate/rich_report")
   constructResult[TextResponse](response)
 
 
 proc getAffiliateSalesGraph*(httpClient: HttpClient, days: int): (Option[StatusMonthlyBreakdown], Response) =
-  ## Get Affiliate Sales Graph Data
+  ## Read aggregated affiliate sales time-series (monthly buckets) for chart rendering
   var query_params_list: seq[(string, string)] = @[]
   if $days != "":
     query_params_list.add(("days", $days))
@@ -138,15 +127,19 @@ proc getAffiliateSalesGraph*(httpClient: HttpClient, days: int): (Option[StatusM
   constructResult[StatusMonthlyBreakdown](response)
 
 
-proc getAffiliateSalesReport*(httpClient: HttpClient): (Option[TextResponse], Response) =
-  ## Get Affiliate Sales Report
+proc getAffiliateSignups*(httpClient: HttpClient, st: string): (Option[getAffiliateSignups_200_response], Response) =
+  ## Read affiliate signup stats and per-customer conversion data
+  var query_params_list: seq[(string, string)] = @[]
+  if $st != "":
+    query_params_list.add(("st", $st))
+  let url_encoded_query_params = encodeQuery(query_params_list)
 
-  let response = httpClient.get(basepath & "/affiliate/sales_report")
-  constructResult[TextResponse](response)
+  let response = httpClient.get(basepath & "/affiliate/signups" & "?" & url_encoded_query_params)
+  constructResult[getAffiliateSignups_200_response](response)
 
 
 proc getAffiliateTrafficGraph*(httpClient: HttpClient, days: int): (Option[Table[string, int]], Response) =
-  ## Get Affiliate Traffic Graph Data
+  ## Read aggregated affiliate referral click/visit time-series for chart rendering
   var query_params_list: seq[(string, string)] = @[]
   if $days != "":
     query_params_list.add(("days", $days))
@@ -157,86 +150,72 @@ proc getAffiliateTrafficGraph*(httpClient: HttpClient, days: int): (Option[Table
 
 
 proc getAffiliateWebTraffic*(httpClient: HttpClient): (Option[seq[AffiliateTrafficRow]], Response) =
-  ## List Affiliate Web Traffic Entries
+  ## List the 20 most recent affiliate referral visits with IP, referrer, timestamp
 
   let response = httpClient.get(basepath & "/affiliate/web_traffic")
   constructResult[seq[AffiliateTrafficRow]](response)
 
 
 proc getBillingCart*(httpClient: HttpClient): (Option[JsonNode], Response) =
-  ## Get Shopping Cart Contents
+  ## Read the current shopping cart contents, totals, and available payment methods
 
   let response = httpClient.get(basepath & "/billing/cart")
   constructResult[JsonNode](response)
 
 
 proc getBillingCreditCardVerify*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Get Credit Card Verification Requirements
+  ## Probe whether a stored card still needs micro-charge verification
 
   let response = httpClient.get(basepath & fmt"/billing/creditcards/{id}/verify")
   constructResult[SuccessTextResponse](response)
 
 
 proc getBillingInvoice*(httpClient: HttpClient, id: int): (Option[Table[string, string]], Response) =
-  ## Get Invoice Details
+  ## Read full invoice detail — line items, totals, paid status, customer info
 
   let response = httpClient.get(basepath & fmt"/billing/invoices/{id}")
   constructResult[Table[string, string]](response)
 
 
 proc getBillingInvoices*(httpClient: HttpClient): (Option[BillingInvoiceList], Response) =
-  ## List Account Invoices
+  ## List every invoice on the account with summary totals and paid/unpaid status
 
   let response = httpClient.get(basepath & "/billing/invoices")
   constructResult[BillingInvoiceList](response)
 
 
 proc getBillingPrePays*(httpClient: HttpClient): (Option[JsonNode], Response) =
-  ## List Prepay Balances
+  ## List prepay deposits on the account — remaining balance and auto-use flags
 
   let response = httpClient.get(basepath & "/billing/prepays")
   constructResult[JsonNode](response)
 
 
-proc getInvoices*(httpClient: HttpClient, searchString: string, skip: int, limit: int): (Option[seq[Invoice]], Response) =
-  ## Get Invoices
-  var query_params_list: seq[(string, string)] = @[]
-  if $searchString != "":
-    query_params_list.add(("searchString", $searchString))
-  if $skip != "":
-    query_params_list.add(("skip", $skip))
-  if $limit != "":
-    query_params_list.add(("limit", $limit))
-  let url_encoded_query_params = encodeQuery(query_params_list)
-
-  let response = httpClient.get(basepath & "/invoices" & "?" & url_encoded_query_params)
-  constructResult[seq[Invoice]](response)
-
-
 proc initiatePayment*(httpClient: HttpClient, `method`: string, invoices: string): (Option[initiatePayment_200_response], Response) =
-  ## Initiate Payment
+  ## Pay invoices through the chosen gateway — returns the next-step action
 
-  let response = httpClient.get(basepath & fmt"/pay/{method}/{invoices}")
+  let response = httpClient.get(basepath & fmt"/billing/pay/{method}/{invoices}")
   constructResult[initiatePayment_200_response](response)
 
 
+proc patchBillingCreditCardVerify*(httpClient: HttpClient, id: int, patchBillingCreditCardVerifyRequest: PatchBillingCreditCardVerifyRequest): (Option[SuccessTextResponse], Response) =
+  ## Place two micro-charges on the card to start CVV verification (step 1 of 2)
+  httpClient.headers["Content-Type"] = "application/json"
+
+  let response = httpClient.patch(basepath & fmt"/billing/creditcards/{id}/verify", $(%patchBillingCreditCardVerifyRequest))
+  constructResult[SuccessTextResponse](response)
+
+
 proc postBillingCreditCardVerify*(httpClient: HttpClient, id: int, billingVerifyCcRequest: BillingVerifyCcRequest): (Option[SuccessTextResponse], Response) =
-  ## Submit Credit Card Verification
+  ## Submit two micro-charge amounts to finalize card verification (step 2 of 2)
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & fmt"/billing/creditcards/{id}/verify", $(%billingVerifyCcRequest))
   constructResult[SuccessTextResponse](response)
 
 
-proc updateAccountCreditCard*(httpClient: HttpClient, id: int): (Option[string], Response) =
-  ## Update Credit Card
-
-  let response = httpClient.post(basepath & fmt"/account/creditcards/{id}")
-  constructResult[string](response)
-
-
 proc updateAffiliateDockSetup*(httpClient: HttpClient, affiliateDockTitle: string, affiliateDockDescription: string, referrerCoupon: string): (Option[TextResponse], Response) =
-  ## Configure Affiliate Dock Settings
+  ## Configure the affiliate landing dock title, description, and referrer coupon
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "affiliate_dock_title": $affiliateDockTitle, # 
@@ -248,21 +227,8 @@ proc updateAffiliateDockSetup*(httpClient: HttpClient, affiliateDockTitle: strin
   constructResult[TextResponse](response)
 
 
-proc updateAffiliateLandingPage*(httpClient: HttpClient, affiliateDockTitle: string, affiliateDockDescription: string, referrerCoupon: string): (Option[TextResponse], Response) =
-  ## Configure Affiliate Landing Page
-  httpClient.headers["Content-Type"] = "multipart/form-data"
-  let multipart_data = newMultipartData({
-    "affiliate_dock_title": $affiliateDockTitle, # 
-    "affiliate_dock_description": $affiliateDockDescription, # 
-    "referrer_coupon": $referrerCoupon, # 
-  })
-
-  let response = httpClient.post(basepath & "/affiliate/landing_pg", multipart=multipart_data)
-  constructResult[TextResponse](response)
-
-
 proc updateAffiliatePaymentSetup*(httpClient: HttpClient, affiliatePaypal: string, affiliatePaymentMethod: string): (Option[TextResponse], Response) =
-  ## Configure Affiliate Payout Preferences
+  ## Configure how affiliate commissions get paid out (PayPal or internal prepay)
   httpClient.headers["Content-Type"] = "multipart/form-data"
   let multipart_data = newMultipartData({
     "affiliate_paypal": $affiliatePaypal, # 
@@ -274,14 +240,14 @@ proc updateAffiliatePaymentSetup*(httpClient: HttpClient, affiliatePaypal: strin
 
 
 proc updateBillingCreditCard*(httpClient: HttpClient, id: int): (Option[SuccessTextResponse], Response) =
-  ## Update Credit Card Details
+  ## Refresh stored card expiration and re-trigger MaxMind fraud scoring
 
   let response = httpClient.post(basepath & fmt"/billing/creditcards/{id}")
   constructResult[SuccessTextResponse](response)
 
 
 proc updateBillingPaymentMethod*(httpClient: HttpClient, billingPaymentMethodRequest: BillingPaymentMethodRequest): (Option[SuccessTextResponse], Response) =
-  ## Update Default Payment Method
+  ## Set the account's default payment method for recurring/auto charges
   httpClient.headers["Content-Type"] = "application/json"
 
   let response = httpClient.post(basepath & "/billing/payment_method", $(%billingPaymentMethodRequest))

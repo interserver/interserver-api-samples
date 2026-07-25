@@ -1,4 +1,4 @@
-# openapi::VpsOrderServiceTypes32
+# interserverapi::VpsOrderServiceTypes32
 
 
 ## Properties

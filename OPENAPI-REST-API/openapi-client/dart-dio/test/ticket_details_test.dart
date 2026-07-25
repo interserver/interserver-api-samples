@@ -1,48 +1,48 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for TicketDetails
 void main() {
-  final instance = TicketDetailsBuilder();
-  // TODO add properties to the builder and call build()
+  final TicketDetails? instance = /* TicketDetails(...) */ null;
+  // TODO add properties to the entity
 
   group(TicketDetails, () {
-    // int ticketid
+    // Optional<int?> ticketid
     test('to test the property `ticketid`', () async {
       // TODO
     });
 
-    // String ticketmaskid
+    // Optional<String?> ticketmaskid
     test('to test the property `ticketmaskid`', () async {
       // TODO
     });
 
-    // String department
+    // Optional<String?> department
     test('to test the property `department`', () async {
       // TODO
     });
 
-    // String status
+    // Optional<String?> status
     test('to test the property `status`', () async {
       // TODO
     });
 
-    // String priority
+    // Optional<String?> priority
     test('to test the property `priority`', () async {
       // TODO
     });
 
-    // String subject
+    // Optional<String?> subject
     test('to test the property `subject`', () async {
       // TODO
     });
 
-    // String createdOn
+    // Optional<String?> createdOn
     test('to test the property `createdOn`', () async {
       // TODO
     });
 
-    // String updatedOn
+    // Optional<String?> updatedOn
     test('to test the property `updatedOn`', () async {
       // TODO
     });

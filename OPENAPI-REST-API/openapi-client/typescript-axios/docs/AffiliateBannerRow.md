@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AffiliateBannerRow } from './api';
+import { AffiliateBannerRow } from '@interserver/myadmin-client';
 
 const instance: AffiliateBannerRow = {
     image,

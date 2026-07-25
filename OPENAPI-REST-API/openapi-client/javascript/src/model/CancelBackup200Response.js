@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CancelBackup200Response model module.
  * @module model/CancelBackup200Response
- * @version 0.9.0
+ * @version 1.0.0
  */
 class CancelBackup200Response {
     /**

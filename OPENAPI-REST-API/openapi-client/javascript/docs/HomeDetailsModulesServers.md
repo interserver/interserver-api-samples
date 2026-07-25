@@ -1,4 +1,4 @@
-# InterServerManagementApi.HomeDetailsModulesServers
+# InterserverApiClient.HomeDetailsModulesServers
 
 ## Properties
 

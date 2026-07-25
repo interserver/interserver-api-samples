@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ScrubIpPlaceOrder');
+use_ok('InterServerAPI::Object::ScrubIpPlaceOrder');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ScrubIpPlaceOrder->new();
+#my $instance = InterServerAPI::Object::ScrubIpPlaceOrder->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ScrubIpPlaceOrder');
+#isa_ok($instance, 'InterServerAPI::Object::ScrubIpPlaceOrder');
 
 
 done_testing();

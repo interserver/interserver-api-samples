@@ -133,33 +133,6 @@ void OpenAPIAccountApi::HandleResponse(FHttpResponsePtr HttpResponse, bool bSucc
 	InOutResponse.SetHttpResponseCode(EHttpResponseCodes::RequestTimeout);
 }
 
-FHttpRequestPtr OpenAPIAccountApi::ChangeAccountUsername(const ChangeAccountUsernameRequest& Request, const FChangeAccountUsernameDelegate& Delegate /*= FChangeAccountUsernameDelegate()*/) const
-{
-	if (!IsValid())
-		return nullptr;
-
-	FHttpRequestRef HttpRequest = CreateHttpRequest(Request);
-	HttpRequest->SetURL(*(Url + Request.ComputePath()));
-
-	for(const auto& It : AdditionalHeaderParams)
-	{
-		HttpRequest->SetHeader(It.Key, It.Value);
-	}
-
-	Request.SetupHttpRequest(HttpRequest);
-
-	HttpRequest->OnProcessRequestComplete().BindRaw(this, &OpenAPIAccountApi::OnChangeAccountUsernameResponse, Delegate);
-	HttpRequest->ProcessRequest();
-	return HttpRequest;
-}
-
-void OpenAPIAccountApi::OnChangeAccountUsernameResponse(FHttpRequestPtr HttpRequest, FHttpResponsePtr HttpResponse, bool bSucceeded, FChangeAccountUsernameDelegate Delegate) const
-{
-	ChangeAccountUsernameResponse Response;
-	HandleResponse(HttpResponse, bSucceeded, Response);
-	Delegate.ExecuteIfBound(Response);
-}
-
 FHttpRequestPtr OpenAPIAccountApi::DeleteAccountOauthName(const DeleteAccountOauthNameRequest& Request, const FDeleteAccountOauthNameDelegate& Delegate /*= FDeleteAccountOauthNameDelegate()*/) const
 {
 	if (!IsValid())

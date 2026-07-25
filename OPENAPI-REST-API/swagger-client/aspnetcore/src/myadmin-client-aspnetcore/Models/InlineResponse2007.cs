@@ -27,12 +27,44 @@ namespace myadmin-client-aspnetcore.Models
     public partial class InlineResponse2007 : IEquatable<InlineResponse2007>
     { 
         /// <summary>
-        /// Whether the 2FA verification succeeded and the user is now logged in.
+        /// Whether the user was logged in to an existing account.
         /// </summary>
-        /// <value>Whether the 2FA verification succeeded and the user is now logged in.</value>
+        /// <value>Whether the user was logged in to an existing account.</value>
 
         [DataMember(Name="login")]
         public bool? Login { get; set; }
+
+        /// <summary>
+        /// Whether a new account was created.
+        /// </summary>
+        /// <value>Whether a new account was created.</value>
+
+        [DataMember(Name="signup")]
+        public bool? Signup { get; set; }
+
+        /// <summary>
+        /// Whether the OAuth provider was linked to an existing account.
+        /// </summary>
+        /// <value>Whether the OAuth provider was linked to an existing account.</value>
+
+        [DataMember(Name="linked")]
+        public bool? Linked { get; set; }
+
+        /// <summary>
+        /// The account ID associated with the OAuth login.
+        /// </summary>
+        /// <value>The account ID associated with the OAuth login.</value>
+
+        [DataMember(Name="account_id")]
+        public int? AccountId { get; set; }
+
+        /// <summary>
+        /// Error code if additional verification is needed (e.g. &#x60;2fa_required&#x60;).
+        /// </summary>
+        /// <value>Error code if additional verification is needed (e.g. &#x60;2fa_required&#x60;).</value>
+
+        [DataMember(Name="error_code")]
+        public string ErrorCode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -43,6 +75,10 @@ namespace myadmin-client-aspnetcore.Models
             var sb = new StringBuilder();
             sb.Append("class InlineResponse2007 {\n");
             sb.Append("  Login: ").Append(Login).Append("\n");
+            sb.Append("  Signup: ").Append(Signup).Append("\n");
+            sb.Append("  Linked: ").Append(Linked).Append("\n");
+            sb.Append("  AccountId: ").Append(AccountId).Append("\n");
+            sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,6 +119,26 @@ namespace myadmin-client-aspnetcore.Models
                     Login == other.Login ||
                     Login != null &&
                     Login.Equals(other.Login)
+                ) && 
+                (
+                    Signup == other.Signup ||
+                    Signup != null &&
+                    Signup.Equals(other.Signup)
+                ) && 
+                (
+                    Linked == other.Linked ||
+                    Linked != null &&
+                    Linked.Equals(other.Linked)
+                ) && 
+                (
+                    AccountId == other.AccountId ||
+                    AccountId != null &&
+                    AccountId.Equals(other.AccountId)
+                ) && 
+                (
+                    ErrorCode == other.ErrorCode ||
+                    ErrorCode != null &&
+                    ErrorCode.Equals(other.ErrorCode)
                 );
         }
 
@@ -98,6 +154,14 @@ namespace myadmin-client-aspnetcore.Models
                 // Suitable nullity checks etc, of course :)
                     if (Login != null)
                     hashCode = hashCode * 59 + Login.GetHashCode();
+                    if (Signup != null)
+                    hashCode = hashCode * 59 + Signup.GetHashCode();
+                    if (Linked != null)
+                    hashCode = hashCode * 59 + Linked.GetHashCode();
+                    if (AccountId != null)
+                    hashCode = hashCode * 59 + AccountId.GetHashCode();
+                    if (ErrorCode != null)
+                    hashCode = hashCode * 59 + ErrorCode.GetHashCode();
                 return hashCode;
             }
         }

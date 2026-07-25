@@ -23,9 +23,11 @@ import org.openapitools.client.models.PlaceBuyNowServerRequest
 import org.openapitools.client.models.ReverseDnsEntries
 import scala.collection.immutable.Seq
 import org.openapitools.client.models.Server
+import org.openapitools.client.models.ServerBulkIpmiPowerResponse
 import org.openapitools.client.models.ServerIpmiLiveInfo
 import org.openapitools.client.models.ServerIpmiPowerRequestAction
 import org.openapitools.client.models.ServerOrder
+import org.openapitools.client.models.ServerOrderPostRequest
 import org.openapitools.client.models.ServerRow
 import org.openapitools.client.models.ServersBuyNowError
 import org.openapitools.client.models.ServersBuyNowResponse
@@ -36,7 +38,7 @@ import org.openapitools.client.models.*
 
 trait ServersApiEndpoints[F[*]] {
 
-  def addServer()(using auth: _Authorization.ApiKey): F[AddServer200Response]
+  def addServer(serverOrderPostRequest: ServerOrderPostRequest)(using auth: _Authorization.ApiKey): F[AddServer200Response]
   def buyItNowServerOrder()(using auth: _Authorization.ApiKey): F[BuyItNowServerOrder200Response]
   def getMPServers()(using auth: _Authorization.ApiKey): F[BuyItNowList]
   def getNewServer()(using auth: _Authorization.ApiKey): F[ServerOrder]
@@ -47,7 +49,7 @@ trait ServersApiEndpoints[F[*]] {
   def getServersWelcomeEmail(id: Int)(using auth: _Authorization.ApiKey): F[SuccessTextResponse]
   def placeBuyNowServer(placeBuyNowServerRequest: Option[PlaceBuyNowServerRequest] = None)(using auth: _Authorization.ApiKey): F[ServersBuyNowResponse]
   def postServerReverseDns(id: Int, reverseDnsEntries: ReverseDnsEntries)(using auth: _Authorization.ApiKey): F[TextResponse]
-  def putServers()(using auth: _Authorization.ApiKey): F[Unit]
+  def serverBulkIpmiPowerGet(ids: String)(using auth: _Authorization.ApiKey): F[ServerBulkIpmiPowerResponse]
   def serverIpmiLiveGet(id: Int)(using auth: _Authorization.ApiKey): F[ServerIpmiLiveInfo]
   def serverIpmiLivePost(id: Int, ip: String, asset: Option[Int] = None)(using auth: _Authorization.ApiKey): F[ServerIpmiLiveInfo]
   def serverIpmiPowerGet(id: Int)(using auth: _Authorization.ApiKey): F[TextResponse]
@@ -67,15 +69,15 @@ class ServersApiEndpointsImpl[F[*]: Concurrent](
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
 
-  override def addServer()(using auth: _Authorization.ApiKey): F[AddServer200Response] = {
+  override def addServer(serverOrderPostRequest: ServerOrderPostRequest)(using auth: _Authorization.ApiKey): F[AddServer200Response] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
 
-    _executeRequest[Unit, AddServer200Response](
+    _executeRequest[ServerOrderPostRequest, AddServer200Response](
       method = "POST",
       path = s"/servers/order",
-      body = None,
+      body = Some(serverOrderPostRequest),
       formParameters = None,
       queryParameters = Nil,
       requestHeaders = requestHeaders,
@@ -278,21 +280,25 @@ class ServersApiEndpointsImpl[F[*]: Concurrent](
     }
   }
 
-  override def putServers()(using auth: _Authorization.ApiKey): F[Unit] = {
+  override def serverBulkIpmiPowerGet(ids: String)(using auth: _Authorization.ApiKey): F[ServerBulkIpmiPowerResponse] = {
     val requestHeaders = Seq(
       Some("Content-Type" -> "application/json")
     ).flatten
+    val queryParameters = (
+      Some(Seq("ids" -> ids))
+    ).toSeq.flatten
 
-    _executeRequest[Unit, Unit](
-      method = "PUT",
-      path = s"/servers/order",
+    _executeRequest[Unit, ServerBulkIpmiPowerResponse](
+      method = "GET",
+      path = s"/servers/bulk/ipmi_power",
       body = None,
       formParameters = None,
-      queryParameters = Nil,
+      queryParameters = queryParameters,
       requestHeaders = requestHeaders,
       auth = Some(auth)) {
         
-        case r if r.status.code == 200 => Concurrent[F].pure(())
+        case r if r.status.code == 200 => parseJson[F, ServerBulkIpmiPowerResponse]("ServerBulkIpmiPowerResponse", r)
+        case r if r.status.code == 400 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
         case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
     }
   }

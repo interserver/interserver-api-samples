@@ -21,4 +21,3 @@ case class VpsCPData(
   /* Monthly cost in cents for the control panel license. */
   cost: Option[Int] = None
 )
-

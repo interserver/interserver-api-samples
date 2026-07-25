@@ -1,4 +1,4 @@
-# openapi::VpsTrafficTotalsResposne
+# interserverapi::VpsTrafficTotalsResposne
 
 VPS Traffic Totals Section
 

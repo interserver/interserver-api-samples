@@ -20,4 +20,3 @@ case class TimezoneUpdate(
   /* The time zone */
   timezone: String
 )
-

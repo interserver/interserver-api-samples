@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for WebsiteBackupsInner
 void main() {
-  final instance = WebsiteBackupsInnerBuilder();
-  // TODO add properties to the builder and call build()
+  final WebsiteBackupsInner? instance = /* WebsiteBackupsInner(...) */ null;
+  // TODO add properties to the entity
 
   group(WebsiteBackupsInner, () {
     // String name
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // int size
+    // Optional<int?> size
     test('to test the property `size`', () async {
       // TODO
     });

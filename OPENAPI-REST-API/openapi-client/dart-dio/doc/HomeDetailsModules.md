@@ -1,20 +1,20 @@
-# openapi.model.HomeDetailsModules
+# interserver_api.model.HomeDetailsModules
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**domains** | [**HomeDetailsModulesDomains**](HomeDetailsModulesDomains.md) |  | [optional] 
-**webhosting** | [**HomeDetailsModulesWebhosting**](HomeDetailsModulesWebhosting.md) |  | [optional] 
-**vps** | [**HomeDetailsModulesVps**](HomeDetailsModulesVps.md) |  | [optional] 
-**licenses** | [**HomeDetailsModulesLicenses**](HomeDetailsModulesLicenses.md) |  | [optional] 
-**backups** | [**HomeDetailsModulesBackups**](HomeDetailsModulesBackups.md) |  | [optional] 
-**servers** | [**HomeDetailsModulesServers**](HomeDetailsModulesServers.md) |  | [optional] 
-**quickservers** | [**HomeDetailsModulesQuickservers**](HomeDetailsModulesQuickservers.md) |  | [optional] 
+**domains** | [**Optional&lt;HomeDetailsModulesDomains?&gt;**](HomeDetailsModulesDomains.md) |  | [optional] 
+**webhosting** | [**Optional&lt;HomeDetailsModulesWebhosting?&gt;**](HomeDetailsModulesWebhosting.md) |  | [optional] 
+**vps** | [**Optional&lt;HomeDetailsModulesVps?&gt;**](HomeDetailsModulesVps.md) |  | [optional] 
+**licenses** | [**Optional&lt;HomeDetailsModulesLicenses?&gt;**](HomeDetailsModulesLicenses.md) |  | [optional] 
+**backups** | [**Optional&lt;HomeDetailsModulesBackups?&gt;**](HomeDetailsModulesBackups.md) |  | [optional] 
+**servers** | [**Optional&lt;HomeDetailsModulesServers?&gt;**](HomeDetailsModulesServers.md) |  | [optional] 
+**quickservers** | [**Optional&lt;HomeDetailsModulesQuickservers?&gt;**](HomeDetailsModulesQuickservers.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

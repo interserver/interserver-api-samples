@@ -29,8 +29,10 @@ import org.openapitools.client.api.GetAccountInfo401Response
 import org.openapitools.client.api.PlaceBuyNowServerRequest
 import org.openapitools.client.api.ReverseDnsEntries
 import org.openapitools.client.api.Server
+import org.openapitools.client.api.ServerBulkIpmiPowerResponse
 import org.openapitools.client.api.ServerIpmiLiveInfo
 import org.openapitools.client.api.ServerOrder
+import org.openapitools.client.api.ServerOrderPostRequest
 import org.openapitools.client.api.ServerRow
 import org.openapitools.client.api.ServersBuyNowError
 import org.openapitools.client.api.ServersBuyNowResponse
@@ -44,7 +46,7 @@ object ServersApi {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addServer(host: String): Task[AddServer200Response] = {
+  def addServer(host: String, ServerOrderPostRequest: ServerOrderPostRequest): Task[AddServer200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[AddServer200Response] = jsonOf[AddServer200Response]
 
     val path = "/servers/order"
@@ -59,7 +61,7 @@ object ServersApi {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(ServerOrderPostRequest)
       resp          <- client.expect[AddServer200Response](req)
 
     } yield resp
@@ -275,21 +277,23 @@ object ServersApi {
     } yield resp
   }
 
-  def putServers(host: String): Task[Unit] = {
-    val path = "/servers/order"
+  def serverBulkIpmiPowerGet(host: String, ids: String)(implicit idsQuery: QueryParam[String]): Task[ServerBulkIpmiPowerResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[ServerBulkIpmiPowerResponse] = jsonOf[ServerBulkIpmiPowerResponse]
 
-    val httpMethod = Method.PUT
+    val path = "/servers/bulk/ipmi_power"
+
+    val httpMethod = Method.GET
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("ids", Some(idsQuery.toParamString(ids))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(host + path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[ServerBulkIpmiPowerResponse](req)
 
     } yield resp
   }
@@ -427,7 +431,7 @@ class HttpServiceServersApi(service: HttpService) {
 
   def escape(value: String): String = URLEncoder.encode(value, "utf-8").replaceAll("\\+", "%20")
 
-  def addServer(): Task[AddServer200Response] = {
+  def addServer(ServerOrderPostRequest: ServerOrderPostRequest): Task[AddServer200Response] = {
     implicit val returnTypeDecoder: EntityDecoder[AddServer200Response] = jsonOf[AddServer200Response]
 
     val path = "/servers/order"
@@ -442,7 +446,7 @@ class HttpServiceServersApi(service: HttpService) {
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
-      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
+      req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType)).withBody(ServerOrderPostRequest)
       resp          <- client.expect[AddServer200Response](req)
 
     } yield resp
@@ -658,21 +662,23 @@ class HttpServiceServersApi(service: HttpService) {
     } yield resp
   }
 
-  def putServers(): Task[Unit] = {
-    val path = "/servers/order"
+  def serverBulkIpmiPowerGet(ids: String)(implicit idsQuery: QueryParam[String]): Task[ServerBulkIpmiPowerResponse] = {
+    implicit val returnTypeDecoder: EntityDecoder[ServerBulkIpmiPowerResponse] = jsonOf[ServerBulkIpmiPowerResponse]
 
-    val httpMethod = Method.PUT
+    val path = "/servers/bulk/ipmi_power"
+
+    val httpMethod = Method.GET
     val contentType = `Content-Type`(MediaType.`application/json`)
     val headers = Headers(
       )
     val queryParams = Query(
-      )
+      ("ids", Some(idsQuery.toParamString(ids))))
 
     for {
       uri           <- Task.fromDisjunction(Uri.fromString(path))
       uriWithParams =  uri.copy(query = queryParams)
       req           =  Request(method = httpMethod, uri = uriWithParams, headers = headers.put(contentType))
-      resp          <- client.fetch[Unit](req)(_ => Task.now(()))
+      resp          <- client.expect[ServerBulkIpmiPowerResponse](req)
 
     } yield resp
   }

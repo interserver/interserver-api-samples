@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::QuickserverOrderVersionCentosstream8');
+use_ok('InterServerAPI::Object::QuickserverOrderVersionCentosstream8');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::QuickserverOrderVersionCentosstream8->new();
+#my $instance = InterServerAPI::Object::QuickserverOrderVersionCentosstream8->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::QuickserverOrderVersionCentosstream8');
+#isa_ok($instance, 'InterServerAPI::Object::QuickserverOrderVersionCentosstream8');
 
 
 done_testing();

@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.VpsOrderPutResponse();
+    instance = new InterserverApiClient.VpsOrderPutResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,139 +50,139 @@
   describe('VpsOrderPutResponse', function() {
     it('should create an instance of VpsOrderPutResponse', function() {
       // uncomment below and update the code to test VpsOrderPutResponse
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.VpsOrderPutResponse);
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
+      //expect(instance).to.be.a(InterserverApiClient.VpsOrderPutResponse);
     });
 
     it('should have the property _continue (base name: "continue")', function() {
       // uncomment below and update the code to test the property _continue
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property errors (base name: "errors")', function() {
       // uncomment below and update the code to test the property errors
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property coupon_code (base name: "coupon_code")', function() {
       // uncomment below and update the code to test the property coupon_code
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property service_cost (base name: "service_cost")', function() {
       // uncomment below and update the code to test the property service_cost
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property slice_cost (base name: "slice_cost")', function() {
       // uncomment below and update the code to test the property slice_cost
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property service_type (base name: "service_type")', function() {
       // uncomment below and update the code to test the property service_type
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property repeat_slice_cost (base name: "repeat_slice_cost")', function() {
       // uncomment below and update the code to test the property repeat_slice_cost
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property original_slice_cost (base name: "original_slice_cost")', function() {
       // uncomment below and update the code to test the property original_slice_cost
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property original_cost (base name: "original_cost")', function() {
       // uncomment below and update the code to test the property original_cost
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property repeat_service_cost (base name: "repeat_service_cost")', function() {
       // uncomment below and update the code to test the property repeat_service_cost
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property monthly_service_cost (base name: "monthly_service_cost")', function() {
       // uncomment below and update the code to test the property monthly_service_cost
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property custid (base name: "custid")', function() {
       // uncomment below and update the code to test the property custid
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property os (base name: "os")', function() {
       // uncomment below and update the code to test the property os
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property slices (base name: "slices")', function() {
       // uncomment below and update the code to test the property slices
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property platform (base name: "platform")', function() {
       // uncomment below and update the code to test the property platform
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property controlpanel (base name: "controlpanel")', function() {
       // uncomment below and update the code to test the property controlpanel
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property period (base name: "period")', function() {
       // uncomment below and update the code to test the property period
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property location (base name: "location")', function() {
       // uncomment below and update the code to test the property location
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property version (base name: "version")', function() {
       // uncomment below and update the code to test the property version
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property hostname (base name: "hostname")', function() {
       // uncomment below and update the code to test the property hostname
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property coupon (base name: "coupon")', function() {
       // uncomment below and update the code to test the property coupon
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 
     it('should have the property rootpass (base name: "rootpass")', function() {
       // uncomment below and update the code to test the property rootpass
-      //var instance = new InterServerManagementApi.VpsOrderPutResponse();
+      //var instance = new InterserverApiClient.VpsOrderPutResponse();
       //expect(instance).to.be();
     });
 

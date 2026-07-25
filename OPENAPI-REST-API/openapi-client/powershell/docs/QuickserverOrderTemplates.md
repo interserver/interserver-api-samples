@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverOrderTemplates = Initialize-PSOpenAPIToolsQuickserverOrderTemplates  -Ubuntu null
+$QuickserverOrderTemplates = Initialize-InterserverApiQuickserverOrderTemplates  -Ubuntu null
 ```
 
 - Convert the resource to JSON

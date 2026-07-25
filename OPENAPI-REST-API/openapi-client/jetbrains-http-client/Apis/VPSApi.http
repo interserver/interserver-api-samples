@@ -1,11 +1,12 @@
 ## VPSApi
 
-### Place VPS Order
-## Place VPS Order
+### Place a new VPS order, create the invoice, and queue provisioning
+## Place a new VPS order, create the invoice, and queue provisioning
 POST https://my.interserver.net/apiv2/vps/order
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -25,84 +26,94 @@ sessionid: {{apiKey}}
 }
 
 
-### Delete VPS Backup
-## Delete VPS Backup
+### Permanently delete a VPS backup file by name (irreversible)
+## Permanently delete a VPS backup file by name (irreversible)
 DELETE https://my.interserver.net/apiv2/vps/{{id}}/backups?all={{all}}&file={{file}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Blocks SMTP
-## Blocks SMTP
+### Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
+## Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
 GET https://my.interserver.net/apiv2/vps/{{id}}/block_smtp
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Disable CD Drive
-## Disable CD Drive
+### Remove the virtual CD/DVD device entirely from the VPS configuration
+## Remove the virtual CD/DVD device entirely from the VPS configuration
 GET https://my.interserver.net/apiv2/vps/{{id}}/disable_cd
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Disable Quotas
-## Disable Quotas
+### Disable per-user disk quota enforcement inside the VPS guest OS
+## Disable per-user disk quota enforcement inside the VPS guest OS
 GET https://my.interserver.net/apiv2/vps/{{id}}/disable_quota
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Eject CD Drive
-## Eject CD Drive
+### Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
+## Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
 GET https://my.interserver.net/apiv2/vps/{{id}}/eject_cd
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Enable Quotas
-## Enable Quotas
+### Enable per-user disk quota enforcement inside the VPS guest OS
+## Enable per-user disk quota enforcement inside the VPS guest OS
 GET https://my.interserver.net/apiv2/vps/{{id}}/enable_quota
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Restart VPS
-## Restart VPS
+### Reboot the VPS — preferred over stop+start for software changes
+## Reboot the VPS — preferred over stop+start for software changes
 GET https://my.interserver.net/apiv2/vps/{{id}}/restart
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Start VPS
-## Start VPS
+### Power on a stopped VPS instance
+## Power on a stopped VPS instance
 GET https://my.interserver.net/apiv2/vps/{{id}}/start
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Stop VPS
-## Stop VPS
+### Power off a running VPS — billing continues until cancellation
+## Power off a running VPS — billing continues until cancellation
 GET https://my.interserver.net/apiv2/vps/{{id}}/stop
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Download VPS Backup
-## Download VPS Backup
+### Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
+## Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
 PATCH https://my.interserver.net/apiv2/vps/{{id}}/backups?all={{all}}
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -112,224 +123,286 @@ sessionid: {{apiKey}}
 }
 
 
-### VPS Ordering Information
-## VPS Ordering Information
+### Get the VPS order catalog — platforms, OS templates, locations, pricing
+## Get the VPS order catalog — platforms, OS templates, locations, pricing
 GET https://my.interserver.net/apiv2/vps/order
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Get VPS Backups List
-## Get VPS Backups List
-GET https://my.interserver.net/apiv2/vps/{{id}}/backups?all={{all}}
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### HD Space Addon Info
-## HD Space Addon Info
-GET https://my.interserver.net/apiv2/vps/{{id}}/buy_hd_space
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Additional IP Addon Info
-## Additional IP Addon Info
-GET https://my.interserver.net/apiv2/vps/{{id}}/buy_ip
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Get Timezone Info
-## Get Timezone Info
-GET https://my.interserver.net/apiv2/vps/{{id}}/change_timezone
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Get VPS Order
-## Get VPS Order
-GET https://my.interserver.net/apiv2/vps/{{id}}
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Get VPS Invoices
-## Get VPS Invoices
-GET https://my.interserver.net/apiv2/vps/{{id}}/invoices
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### List VPS Orders
-## List VPS Orders
-GET https://my.interserver.net/apiv2/vps
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### VPS Reinstall OS Options
-## VPS Reinstall OS Options
-GET https://my.interserver.net/apiv2/vps/{{id}}/reinstall_os
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Reverse DNS Info
-## Reverse DNS Info
-GET https://my.interserver.net/apiv2/vps/{{id}}/reverse_dns
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### VNC Setup Info
-## VNC Setup Info
-GET https://my.interserver.net/apiv2/vps/{{id}}/setup_vnc
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Slice Upgrade Info
-## Slice Upgrade Info
-GET https://my.interserver.net/apiv2/vps/{{id}}/slices
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Get Traffic Usage
-## Get Traffic Usage
-GET https://my.interserver.net/apiv2/vps/{{id}}/traffic_usage
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Get View Desktop Info
-## Get View Desktop Info
-GET https://my.interserver.net/apiv2/vps/{{id}}/view_desktop
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Resend VPS Welcome Email
-## Resend VPS Welcome Email
-GET https://my.interserver.net/apiv2/vps/{{id}}/welcome_email
-Accept: application/json
-Cookie: sessionid={{cookieKey}}
-X-API-KEY: {{apiKey}}
-sessionid: {{apiKey}}
-
-### Start a VPS Backup
-## Start a VPS Backup
+### Trigger a manual on-demand snapshot/backup of the VPS
+## Trigger a manual on-demand snapshot/backup of the VPS
 GET https://my.interserver.net/apiv2/vps/{{id}}/backup
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Purchase HD Space Addon
-## Purchase HD Space Addon
+### List existing backups for the VPS across Swift, MinIO, and ZFS
+## List existing backups for the VPS across Swift, MinIO, and ZFS
+GET https://my.interserver.net/apiv2/vps/{{id}}/backups?all={{all}}
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get current additional disk size and per-GB monthly cost for the VPS
+## Get current additional disk size and per-GB monthly cost for the VPS
+GET https://my.interserver.net/apiv2/vps/{{id}}/buy_hd_space
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Read current additional IPs, cap, and per-IP monthly cost for the VPS
+## Read current additional IPs, cap, and per-IP monthly cost for the VPS
+GET https://my.interserver.net/apiv2/vps/{{id}}/buy_ip
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Read the VPS&#39;s current hostname before changing it
+## Read the VPS&#39;s current hostname before changing it
+GET https://my.interserver.net/apiv2/vps/{{id}}/change_hostname
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Pre-flight check before changing the VPS root password
+## Pre-flight check before changing the VPS root password
+GET https://my.interserver.net/apiv2/vps/{{id}}/change_root_password
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List IANA timezones supported by the VPS guest OS
+## List IANA timezones supported by the VPS guest OS
+GET https://my.interserver.net/apiv2/vps/{{id}}/change_timezone
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Get full details for one VPS — IPs, hostname, OS, slices, status, addons
+## Get full details for one VPS — IPs, hostname, OS, slices, status, addons
+GET https://my.interserver.net/apiv2/vps/{{id}}
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List ISO templates that can be mounted in the VPS virtual CD drive
+## List ISO templates that can be mounted in the VPS virtual CD drive
+GET https://my.interserver.net/apiv2/vps/{{id}}/insert_cd
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List all billing invoices associated with this specific VPS
+## List all billing invoices associated with this specific VPS
+GET https://my.interserver.net/apiv2/vps/{{id}}/invoices
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List all VPS services on the customer&#39;s account
+## List all VPS services on the customer&#39;s account
+GET https://my.interserver.net/apiv2/vps
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### List OS templates compatible with this VPS&#39;s hypervisor for reinstall
+## List OS templates compatible with this VPS&#39;s hypervisor for reinstall
+GET https://my.interserver.net/apiv2/vps/{{id}}/reinstall_os
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Pre-flight check before resetting the VPS root password to a random value
+## Pre-flight check before resetting the VPS root password to a random value
+GET https://my.interserver.net/apiv2/vps/{{id}}/reset_password
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Read the current PTR (reverse-DNS) records for every IP on the VPS
+## Read the current PTR (reverse-DNS) records for every IP on the VPS
+GET https://my.interserver.net/apiv2/vps/{{id}}/reverse_dns
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Read current VNC console connection info for the VPS
+## Read current VNC console connection info for the VPS
+GET https://my.interserver.net/apiv2/vps/{{id}}/setup_vnc
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Read current slice count, min/max range, and prorated per-slice upgrade cost
+## Read current slice count, min/max range, and prorated per-slice upgrade cost
+GET https://my.interserver.net/apiv2/vps/{{id}}/slices
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Read bandwidth traffic usage data for the VPS
+## Read bandwidth traffic usage data for the VPS
+GET https://my.interserver.net/apiv2/vps/{{id}}/traffic_usage
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
+## Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
+GET https://my.interserver.net/apiv2/vps/{{id}}/view_desktop
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Resend the welcome email containing VPS IP, hostname, and root credentials
+## Resend the welcome email containing VPS IP, hostname, and root credentials
+GET https://my.interserver.net/apiv2/vps/{{id}}/welcome_email
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Buy or resize the VPS additional-disk addon and create a prorated invoice
+## Buy or resize the VPS additional-disk addon and create a prorated invoice
 POST https://my.interserver.net/apiv2/vps/{{id}}/buy_hd_space
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Purchase Additional IP
-## Purchase Additional IP
+### Purchase one additional IP for the VPS and create the invoice
+## Purchase one additional IP for the VPS and create the invoice
 POST https://my.interserver.net/apiv2/vps/{{id}}/buy_ip
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update VPS Hostname
-## Update VPS Hostname
+### Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
+## Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
 POST https://my.interserver.net/apiv2/vps/{{id}}/change_hostname
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Change VPS Root Password
-## Change VPS Root Password
+### Set a specific new root/Administrator password on the VPS
+## Set a specific new root/Administrator password on the VPS
 POST https://my.interserver.net/apiv2/vps/{{id}}/change_root_password
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Change VPS Timezone
-## Change VPS Timezone
+### Set the system timezone on the VPS guest OS
+## Set the system timezone on the VPS guest OS
 POST https://my.interserver.net/apiv2/vps/{{id}}/change_timezone
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Change Webuzo Password
-## Change Webuzo Password
+### Rotate the Webuzo control panel admin password (re-auth required)
+## Rotate the Webuzo control panel admin password (re-auth required)
 POST https://my.interserver.net/apiv2/vps/{{id}}/change_webuzo_password
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Insert CD in VPS
-## Insert CD in VPS
+### Mount an ISO image in the VPS virtual CD drive from a URL
+## Mount an ISO image in the VPS virtual CD drive from a URL
 POST https://my.interserver.net/apiv2/vps/{{id}}/insert_cd
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Reinstall VPS OS
-## Reinstall VPS OS
+### Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
+## Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
 POST https://my.interserver.net/apiv2/vps/{{id}}/reinstall_os
 Content-Type: multipart/form-data
 Content-Type: application/json
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Reset VPS Password
-## Reset VPS Password
+### Reset the VPS root password to a server-generated random value
+## Reset the VPS root password to a server-generated random value
 POST https://my.interserver.net/apiv2/vps/{{id}}/reset_password
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Restore VPS from Backup
-## Restore VPS from Backup
+### Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
+## Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
 POST https://my.interserver.net/apiv2/vps/{{id}}/restore
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -340,12 +413,13 @@ sessionid: {{apiKey}}
 }
 
 
-### Update Reverse DNS
-## Update Reverse DNS
+### Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
+## Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
 POST https://my.interserver.net/apiv2/vps/{{id}}/reverse_dns
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -355,36 +429,49 @@ sessionid: {{apiKey}}
 }
 
 
-### Setup VNC
-## Setup VNC
+### Provision or refresh the VNC console endpoint for the VPS
+## Provision or refresh the VNC console endpoint for the VPS
 POST https://my.interserver.net/apiv2/vps/{{id}}/setup_vnc
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Purchase Slice Upgrade
-## Purchase Slice Upgrade
+### Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
+## Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
 POST https://my.interserver.net/apiv2/vps/{{id}}/slices
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Update View Desktop
-## Update View Desktop
+### Search/filter VPS bandwidth usage with custom criteria (reserved)
+## Search/filter VPS bandwidth usage with custom criteria (reserved)
+POST https://my.interserver.net/apiv2/vps/{{id}}/traffic_usage
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Refresh the remote-desktop session connection info after IP/hostname changes
+## Refresh the remote-desktop session connection info after IP/hostname changes
 POST https://my.interserver.net/apiv2/vps/{{id}}/view_desktop
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Validate VPS Order
-## Validate VPS Order
+### Validate a VPS order configuration and quote the cost — dry run, no charge
+## Validate a VPS order configuration and quote the cost — dry run, no charge
 PUT https://my.interserver.net/apiv2/vps/order
 Content-Type: application/json
 Content-Type: multipart/form-data
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
@@ -404,18 +491,29 @@ sessionid: {{apiKey}}
 }
 
 
-### Update VPS Order
-## Update VPS Order
-POST https://my.interserver.net/apiv2/vps/{{id}}
+### Preview cost to set additional VPS disk to a target GB size — dry run
+## Preview cost to set additional VPS disk to a target GB size — dry run
+PUT https://my.interserver.net/apiv2/vps/{{id}}/buy_hd_space
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}
 
-### Cancel VPS Service
-## Cancel VPS Service
+### Update editable settings on a VPS service record
+## Update editable settings on a VPS service record
+POST https://my.interserver.net/apiv2/vps/{{id}}
+Accept: application/json
+true
+Cookie: sessionid={{cookieKey}}
+X-API-KEY: {{apiKey}}
+sessionid: {{apiKey}}
+
+### Cancel a VPS service at the end of the current billing cycle
+## Cancel a VPS service at the end of the current billing cycle
 DELETE https://my.interserver.net/apiv2/vps/{{id}}
 Accept: application/json
+true
 Cookie: sessionid={{cookieKey}}
 X-API-KEY: {{apiKey}}
 sessionid: {{apiKey}}

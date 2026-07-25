@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for VpsTrafficDataSectionResponse
 void main() {
-  final instance = VpsTrafficDataSectionResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final VpsTrafficDataSectionResponse? instance = /* VpsTrafficDataSectionResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(VpsTrafficDataSectionResponse, () {
     // String name
@@ -12,7 +12,7 @@ void main() {
       // TODO
     });
 
-    // BuiltList<VPSTrafficDataDataSectionResponse> data
+    // List<VPSTrafficDataDataSectionResponse> data
     test('to test the property `data`', () async {
       // TODO
     });

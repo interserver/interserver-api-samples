@@ -14,4 +14,8 @@ Request payload for adding DNSSEC DS records to a domain.
 |**keyTag** | **List&lt;Integer&gt;** | List of key tag values corresponding to each record. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

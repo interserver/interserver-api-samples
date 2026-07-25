@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_services_vps import HomeServicesVps
+from interserver_api_client.models.home_services_vps import HomeServicesVps
 
 class TestHomeServicesVps(unittest.TestCase):
     """HomeServicesVps unit test stubs"""
@@ -36,7 +36,7 @@ class TestHomeServicesVps(unittest.TestCase):
         model = HomeServicesVps()
         if include_optional:
             return HomeServicesVps(
-                links = openapi_client.models.home_services_vps_links.HomeServicesVpsLinks(
+                links = interserver_api_client.models.home_services_vps_links.HomeServicesVpsLinks(
                     465503 = 'vps465503', 
                     2500081 = 'vps2500081', 
                     2578866 = 'vps2578866', ),

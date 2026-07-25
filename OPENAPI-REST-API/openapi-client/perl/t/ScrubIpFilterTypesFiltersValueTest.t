@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::ScrubIpFilterTypesFiltersValue');
+use_ok('InterServerAPI::Object::ScrubIpFilterTypesFiltersValue');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::ScrubIpFilterTypesFiltersValue->new();
+#my $instance = InterServerAPI::Object::ScrubIpFilterTypesFiltersValue->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::ScrubIpFilterTypesFiltersValue');
+#isa_ok($instance, 'InterServerAPI::Object::ScrubIpFilterTypesFiltersValue');
 
 
 done_testing();

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailDeliverabilityResponse = Initialize-PSOpenAPIToolsMailDeliverabilityResponse  -Stat null `
+$MailDeliverabilityResponse = Initialize-InterserverApiMailDeliverabilityResponse  -Stat null `
  -Percent null `
  -TableData null
 ```

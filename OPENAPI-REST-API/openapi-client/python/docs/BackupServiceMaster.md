@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.backup_service_master import BackupServiceMaster
+from interserver_api_client.models.backup_service_master import BackupServiceMaster
 
 # TODO update the JSON string below
 json = "{}"

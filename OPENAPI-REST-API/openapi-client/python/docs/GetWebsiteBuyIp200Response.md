@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.get_website_buy_ip200_response import GetWebsiteBuyIp200Response
+from interserver_api_client.models.get_website_buy_ip200_response import GetWebsiteBuyIp200Response
 
 # TODO update the JSON string below
 json = "{}"

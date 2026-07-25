@@ -1,4 +1,4 @@
-# SwaggerClient::CreateFilter
+# InterserverApiClient::CreateFilter
 
 ## Properties
 Name | Type | Description | Notes

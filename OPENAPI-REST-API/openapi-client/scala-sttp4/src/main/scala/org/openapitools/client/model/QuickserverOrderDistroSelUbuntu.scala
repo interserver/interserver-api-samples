@@ -16,4 +16,3 @@ case class QuickserverOrderDistroSelUbuntu(
   /* Selected distribution for Ubuntu. */
   Ubuntu: Option[String] = None
 )
-

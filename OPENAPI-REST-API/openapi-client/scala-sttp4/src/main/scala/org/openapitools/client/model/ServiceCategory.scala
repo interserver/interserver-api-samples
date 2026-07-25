@@ -22,4 +22,3 @@ case class ServiceCategory(
   category_tag: String,
   category_module: String
 )
-

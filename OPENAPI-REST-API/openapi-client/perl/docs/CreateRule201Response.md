@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CreateRule201Response
+# InterServerAPI::Object::CreateRule201Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CreateRule201Response;
+use InterServerAPI::Object::CreateRule201Response;
 ```
 
 ## Properties

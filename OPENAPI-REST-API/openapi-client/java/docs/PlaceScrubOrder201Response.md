@@ -12,4 +12,8 @@
 |**orderDetails** | [**PlaceScrubOrder201ResponseOrderDetails**](PlaceScrubOrder201ResponseOrderDetails.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

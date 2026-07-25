@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PatchOauthTwoFactor200Response } from './api';
+import { PatchOauthTwoFactor200Response } from '@interserver/myadmin-client';
 
 const instance: PatchOauthTwoFactor200Response = {
     login,

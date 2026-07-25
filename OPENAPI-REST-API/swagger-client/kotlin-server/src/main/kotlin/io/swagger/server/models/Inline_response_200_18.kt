@@ -10,20 +10,15 @@
 * Do not edit the class manually.
 */package io.swagger.server.models
 
-import io.swagger.server.models.InlineResponse20018Ips
-import io.swagger.server.models.InlineResponse20018PackageCosts
-import io.swagger.server.models.InlineResponse20018ServiceTypes
 
 /**
  * 
- * @param packageCosts 
- * @param serviceTypes 
- * @param ips 
+ * @param success 
+ * @param text 
  */
 data class InlineResponse20018 (
 
-    val packageCosts: InlineResponse20018PackageCosts? = null,
-    val serviceTypes: kotlin.Array<InlineResponse20018ServiceTypes>? = null,
-    val ips: kotlin.Array<InlineResponse20018Ips>? = null
+    val success: kotlin.Boolean? = null,
+    val text: kotlin.String? = null
 ) {
 }

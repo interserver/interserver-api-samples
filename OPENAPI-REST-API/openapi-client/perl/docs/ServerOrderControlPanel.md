@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::ServerOrderControlPanel
+# InterServerAPI::Object::ServerOrderControlPanel
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::ServerOrderControlPanel;
+use InterServerAPI::Object::ServerOrderControlPanel;
 ```
 
 ## Properties

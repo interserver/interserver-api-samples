@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsIPInfo = Initialize-PSOpenAPIToolsVpsIPInfo  -Title IP Information `
+$VpsIPInfo = Initialize-InterserverApiVpsIPInfo  -Title IP Information `
  -Rows null
 ```
 

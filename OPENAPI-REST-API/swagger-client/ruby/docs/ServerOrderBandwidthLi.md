@@ -1,4 +1,4 @@
-# SwaggerClient::ServerOrderBandwidthLi
+# InterserverApiClient::ServerOrderBandwidthLi
 
 ## Properties
 Name | Type | Description | Notes

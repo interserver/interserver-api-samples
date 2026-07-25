@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.webhosting_cancel200_response import WebhostingCancel200Response
+from interserver_api_client.models.webhosting_cancel200_response import WebhostingCancel200Response
 
 class TestWebhostingCancel200Response(unittest.TestCase):
     """WebhostingCancel200Response unit test stubs"""

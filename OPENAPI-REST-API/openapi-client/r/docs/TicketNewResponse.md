@@ -1,4 +1,4 @@
-# openapi::TicketNewResponse
+# interserverapi::TicketNewResponse
 
 Response returned after creating a new support ticket.
 

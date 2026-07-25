@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::MailSchema
+# InterServerAPI::Object::MailSchema
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::MailSchema;
+use InterServerAPI::Object::MailSchema;
 ```
 
 ## Properties

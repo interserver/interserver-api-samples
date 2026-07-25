@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.HomeServicesBackups();
+    instance = new InterserverApiClient.HomeServicesBackups();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('HomeServicesBackups', function() {
     it('should create an instance of HomeServicesBackups', function() {
       // uncomment below and update the code to test HomeServicesBackups
-      //var instance = new InterServerManagementApi.HomeServicesBackups();
-      //expect(instance).to.be.a(InterServerManagementApi.HomeServicesBackups);
+      //var instance = new InterserverApiClient.HomeServicesBackups();
+      //expect(instance).to.be.a(InterserverApiClient.HomeServicesBackups);
     });
 
     it('should have the property links (base name: "links")', function() {
       // uncomment below and update the code to test the property links
-      //var instance = new InterServerManagementApi.HomeServicesBackups();
+      //var instance = new InterserverApiClient.HomeServicesBackups();
       //expect(instance).to.be();
     });
 
     it('should have the property count (base name: "count")', function() {
       // uncomment below and update the code to test the property count
-      //var instance = new InterServerManagementApi.HomeServicesBackups();
+      //var instance = new InterserverApiClient.HomeServicesBackups();
       //expect(instance).to.be();
     });
 

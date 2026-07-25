@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsDAData = Initialize-PSOpenAPIToolsVpsDAData  -Free null
+$VpsDAData = Initialize-InterserverApiVpsDAData  -Free null
 ```
 
 - Convert the resource to JSON

@@ -23,4 +23,3 @@ case class HomeTicketStatusView(
   /* Status corresponding to view number 6. */
   `6`: Option[String] = None
 )
-

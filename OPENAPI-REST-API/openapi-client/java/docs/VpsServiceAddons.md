@@ -25,4 +25,8 @@ Add-on services and IP address information for a VPS, including control panel li
 |**rdata** | **List&lt;String&gt;** | Raw add-on data entries. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

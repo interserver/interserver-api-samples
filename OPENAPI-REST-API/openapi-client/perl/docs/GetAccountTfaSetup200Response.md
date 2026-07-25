@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::GetAccountTfaSetup200Response
+# InterServerAPI::Object::GetAccountTfaSetup200Response
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::GetAccountTfaSetup200Response;
+use InterServerAPI::Object::GetAccountTfaSetup200Response;
 ```
 
 ## Properties

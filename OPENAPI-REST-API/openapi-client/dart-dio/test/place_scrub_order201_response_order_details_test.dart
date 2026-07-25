@@ -1,33 +1,33 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for PlaceScrubOrder201ResponseOrderDetails
 void main() {
-  final instance = PlaceScrubOrder201ResponseOrderDetailsBuilder();
-  // TODO add properties to the builder and call build()
+  final PlaceScrubOrder201ResponseOrderDetails? instance = /* PlaceScrubOrder201ResponseOrderDetails(...) */ null;
+  // TODO add properties to the entity
 
   group(PlaceScrubOrder201ResponseOrderDetails, () {
-    // int totalCost
+    // Optional<int?> totalCost
     test('to test the property `totalCost`', () async {
       // TODO
     });
 
-    // int serviceId
+    // Optional<int?> serviceId
     test('to test the property `serviceId`', () async {
       // TODO
     });
 
-    // int invoiceId
+    // Optional<int?> invoiceId
     test('to test the property `invoiceId`', () async {
       // TODO
     });
 
-    // String invoiceDescription
+    // Optional<String?> invoiceDescription
     test('to test the property `invoiceDescription`', () async {
       // TODO
     });
 
-    // PlaceScrubOrder201ResponseOrderDetailsCjParams cjParams
+    // Optional<PlaceScrubOrder201ResponseOrderDetailsCjParams?> cjParams
     test('to test the property `cjParams`', () async {
       // TODO
     });

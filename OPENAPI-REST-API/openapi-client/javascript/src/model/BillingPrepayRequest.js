@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The BillingPrepayRequest model module.
  * @module model/BillingPrepayRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class BillingPrepayRequest {
     /**

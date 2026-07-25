@@ -1,4 +1,4 @@
-# openapi::ServerOrderFieldLabels
+# interserverapi::ServerOrderFieldLabels
 
 Field labels for the server order.
 

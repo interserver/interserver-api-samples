@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::PatchOauthTwoFactorRequest');
+use_ok('InterServerAPI::Object::PatchOauthTwoFactorRequest');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::PatchOauthTwoFactorRequest->new();
+#my $instance = InterServerAPI::Object::PatchOauthTwoFactorRequest->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::PatchOauthTwoFactorRequest');
+#isa_ok($instance, 'InterServerAPI::Object::PatchOauthTwoFactorRequest');
 
 
 done_testing();

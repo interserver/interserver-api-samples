@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::WebsiteServiceMaster
+# InterServerAPI::Object::WebsiteServiceMaster
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::WebsiteServiceMaster;
+use InterServerAPI::Object::WebsiteServiceMaster;
 ```
 
 ## Properties

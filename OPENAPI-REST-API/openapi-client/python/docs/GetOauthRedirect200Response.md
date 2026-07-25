@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.get_oauth_redirect200_response import GetOauthRedirect200Response
+from interserver_api_client.models.get_oauth_redirect200_response import GetOauthRedirect200Response
 
 # TODO update the JSON string below
 json = "{}"

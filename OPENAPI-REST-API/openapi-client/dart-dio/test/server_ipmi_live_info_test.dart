@@ -1,33 +1,33 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for ServerIpmiLiveInfo
 void main() {
-  final instance = ServerIpmiLiveInfoBuilder();
-  // TODO add properties to the builder and call build()
+  final ServerIpmiLiveInfo? instance = /* ServerIpmiLiveInfo(...) */ null;
+  // TODO add properties to the entity
 
   group(ServerIpmiLiveInfo, () {
-    // String text
+    // Optional<String?> text
     test('to test the property `text`', () async {
       // TODO
     });
 
-    // String publicIp
+    // Optional<String?> publicIp
     test('to test the property `publicIp`', () async {
       // TODO
     });
 
-    // String allowedIp
+    // Optional<String?> allowedIp
     test('to test the property `allowedIp`', () async {
       // TODO
     });
 
-    // String clientUsername
+    // Optional<String?> clientUsername
     test('to test the property `clientUsername`', () async {
       // TODO
     });
 
-    // String clientPassword
+    // Optional<String?> clientPassword
     test('to test the property `clientPassword`', () async {
       // TODO
     });

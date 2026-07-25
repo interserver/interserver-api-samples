@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_order_location_stock1 import VpsOrderLocationStock1
+from interserver_api_client.models.vps_order_location_stock1 import VpsOrderLocationStock1
 
 class TestVpsOrderLocationStock1(unittest.TestCase):
     """VpsOrderLocationStock1 unit test stubs"""

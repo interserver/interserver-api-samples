@@ -1,13 +1,13 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for QuickserverOrderServerDetails
 void main() {
-  final instance = QuickserverOrderServerDetailsBuilder();
-  // TODO add properties to the builder and call build()
+  final QuickserverOrderServerDetails? instance = /* QuickserverOrderServerDetails(...) */ null;
+  // TODO add properties to the entity
 
   group(QuickserverOrderServerDetails, () {
-    // QuickserverOrderServerDetails381 n381
+    // Optional<QuickserverOrderServerDetails381?> n381
     test('to test the property `n381`', () async {
       // TODO
     });

@@ -212,10 +212,10 @@ ServerSwitchport <- R6::R6Class(
         self$`graph_id` <- this_object$`graph_id`
       }
       if (!is.null(this_object$`vlans`)) {
-        self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("openapi"))
+        self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`vlans6`)) {
-        self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("openapi"))
+        self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`asset_id`)) {
         self$`asset_id` <- this_object$`asset_id`
@@ -248,8 +248,8 @@ ServerSwitchport <- R6::R6Class(
       self$`blade` <- this_object$`blade`
       self$`justport` <- this_object$`justport`
       self$`graph_id` <- this_object$`graph_id`
-      self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("openapi"))
-      self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("openapi"))
+      self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("interserverapi"))
+      self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("interserverapi"))
       self$`asset_id` <- this_object$`asset_id`
       self
     },

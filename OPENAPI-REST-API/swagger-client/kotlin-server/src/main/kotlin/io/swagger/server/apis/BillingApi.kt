@@ -44,9 +44,10 @@ import io.swagger.server.models.BillingInvoiceList
 import io.swagger.server.models.BillingPaymentMethodRequest
 import io.swagger.server.models.BillingPrepayRequest
 import io.swagger.server.models.BillingVerifyCcRequest
-import io.swagger.server.models.InlineResponse2009
+import io.swagger.server.models.IdVerifyBody
+import io.swagger.server.models.InlineResponse2001
+import io.swagger.server.models.InlineResponse20010
 import io.swagger.server.models.InlineResponse401
-import io.swagger.server.models.Invoice
 import io.swagger.server.models.MonthlyCounts
 import io.swagger.server.models.StatusMonthlyBreakdown
 import io.swagger.server.models.SuccessTextResponse
@@ -56,23 +57,6 @@ import io.swagger.server.models.TextResponse
 fun Route.BillingApi() {
     val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
-    post<Paths.addAccountCreditCard> {  _: Paths.addAccountCreditCard ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """{
-  "success" : true,
-  "text" : "Ok"
-}"""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
     post<Paths.addBillingCreditCard> {  _: Paths.addBillingCreditCard ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
@@ -100,20 +84,6 @@ fun Route.BillingApi() {
   "success" : true,
   "text" : "Ok"
 }"""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
-    delete<Paths.deleteAccountCreditCard> {  _: Paths.deleteAccountCreditCard ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """"""""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -194,6 +164,14 @@ fun Route.BillingApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
+    get<Paths.getAffiliateDownload> {  _: Paths.getAffiliateDownload ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            call.respond(HttpStatusCode.NotImplemented)
+        }
+    }
     get<Paths.getAffiliateRichReport> {  _: Paths.getAffiliateRichReport ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
@@ -228,14 +206,14 @@ fun Route.BillingApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
-    get<Paths.getAffiliateSalesReport> {  _: Paths.getAffiliateSalesReport ->
+    get<Paths.getAffiliateSignups> {  _: Paths.getAffiliateSignups ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
             val exampleContentString = """{
-  "text" : "You were successfull."
+  "data" : { }
 }"""
             
             when(exampleContentType) {
@@ -366,24 +344,6 @@ fun Route.BillingApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
-    get<Paths.getInvoices> {  _: Paths.getInvoices ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """[ {
-  "id" : 0
-}, {
-  "id" : 0
-} ]"""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
     get<Paths.initiatePayment> {  _: Paths.initiatePayment ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
@@ -397,6 +357,23 @@ fun Route.BillingApi() {
   "text" : "text",
   "type" : "redirect",
   "items" : { }
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    patch<Paths.patchBillingCreditCardVerify> {  _: Paths.patchBillingCreditCardVerify ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true,
+  "text" : "Ok"
 }"""
             
             when(exampleContentType) {
@@ -422,37 +399,7 @@ fun Route.BillingApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
-    post<Paths.updateAccountCreditCard> {  _: Paths.updateAccountCreditCard ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """"""""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
     post<Paths.updateAffiliateDockSetup> {  _: Paths.updateAffiliateDockSetup ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """{
-  "text" : "You were successfull."
-}"""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
-    post<Paths.updateAffiliateLandingPage> {  _: Paths.updateAffiliateLandingPage ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)

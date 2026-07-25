@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TicketPostDetailsInner } from './api';
+import { TicketPostDetailsInner } from '@interserver/myadmin-client';
 
 const instance: TicketPostDetailsInner = {
     post_id,

@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_client_link import ServerClientLink
+from interserver_api_client.models.server_client_link import ServerClientLink
 
 class TestServerClientLink(unittest.TestCase):
     """ServerClientLink unit test stubs"""

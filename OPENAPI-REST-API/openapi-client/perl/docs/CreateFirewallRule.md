@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CreateFirewallRule
+# InterServerAPI::Object::CreateFirewallRule
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CreateFirewallRule;
+use InterServerAPI::Object::CreateFirewallRule;
 ```
 
 ## Properties

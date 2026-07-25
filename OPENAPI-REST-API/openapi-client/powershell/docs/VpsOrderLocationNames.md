@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderLocationNames = Initialize-PSOpenAPIToolsVpsOrderLocationNames  -Var3 Equinix NY4
+$VpsOrderLocationNames = Initialize-InterserverApiVpsOrderLocationNames  -Var3 Equinix NY4
 ```
 
 - Convert the resource to JSON

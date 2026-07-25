@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoCountryCurrencies = Initialize-PSOpenAPIToolsAccountInfoCountryCurrencies 
+$AccountInfoCountryCurrencies = Initialize-InterserverApiAccountInfoCountryCurrencies 
 ```
 
 - Convert the resource to JSON

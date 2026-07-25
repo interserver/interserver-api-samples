@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.vps_order import VpsOrder
+from interserver_api_client.models.vps_order import VpsOrder
 
 class TestVpsOrder(unittest.TestCase):
     """VpsOrder unit test stubs"""
@@ -57,33 +57,33 @@ class TestVpsOrder(unittest.TestCase):
                 bw_type = '2',
                 bw_total = 2,
                 max_slices = '16',
-                platform_packages = openapi_client.models.vps_order_platform_packages.VpsOrder_platformPackages(
+                platform_packages = interserver_api_client.models.vps_order_platform_packages.VpsOrder_platformPackages(
                     kvm = 32, 
                     kvmstorage = 57, 
                     hyperv = 54, ),
-                platform_names = openapi_client.models.vps_order_platform_names.VpsOrder_platformNames(
+                platform_names = interserver_api_client.models.vps_order_platform_names.VpsOrder_platformNames(
                     kvm = 'KVM', 
                     kvmstorage = 'KVM Storage', 
                     hyperv = 'HyperV', ),
-                package_costs = openapi_client.models.vps_order_package_costs.VpsOrder_packageCosts(
+                package_costs = interserver_api_client.models.vps_order_package_costs.VpsOrder_packageCosts(
                     57 = 6, ),
-                location_stock = openapi_client.models.vps_order_location_stock.VpsOrder_locationStock(
-                    1 = openapi_client.models.vps_order_location_stock_1.VpsOrder_locationStock_1(
+                location_stock = interserver_api_client.models.vps_order_location_stock.VpsOrder_locationStock(
+                    1 = interserver_api_client.models.vps_order_location_stock_1.VpsOrder_locationStock_1(
                         kvm = True, 
                         kvmstorage = True, 
                         hyperv = True, ), ),
-                location_names = openapi_client.models.vps_order_location_names.VpsOrder_locationNames(
+                location_names = interserver_api_client.models.vps_order_location_names.VpsOrder_locationNames(
                     3 = 'Equinix NY4', ),
-                os_names = openapi_client.models.vps_order_os_names.VpsOrder_osNames(
+                os_names = interserver_api_client.models.vps_order_os_names.VpsOrder_osNames(
                     opensuse = 'OpenSUSE', 
                     ubuntu = 'Ubuntu', ),
-                templates = openapi_client.models.vps_order_templates.VpsOrder_templates(
-                    hyperv = openapi_client.models.vps_order_templates_hyperv.VpsOrder_templates_hyperv(
-                        windows = openapi_client.models.vps_order_templates_hyperv_windows.VpsOrder_templates_hyperv_windows(
+                templates = interserver_api_client.models.vps_order_templates.VpsOrder_templates(
+                    hyperv = interserver_api_client.models.vps_order_templates_hyperv.VpsOrder_templates_hyperv(
+                        windows = interserver_api_client.models.vps_order_templates_hyperv_windows.VpsOrder_templates_hyperv_windows(
                             windows2019_standard = '2019 Standard', 
                             windows2022 = '2022', ), ), ),
-                service_types = openapi_client.models.vps_order_service_types.VpsOrder_serviceTypes(
-                    32 = openapi_client.models.vps_order_service_types_32.VpsOrder_serviceTypes_32(
+                service_types = interserver_api_client.models.vps_order_service_types.VpsOrder_serviceTypes(
+                    32 = interserver_api_client.models.vps_order_service_types_32.VpsOrder_serviceTypes_32(
                         services_id = '32', 
                         services_name = 'KVM Windows VPS Slice', 
                         services_cost = '10.00', 
@@ -119,33 +119,33 @@ class TestVpsOrder(unittest.TestCase):
                 bw_type = '2',
                 bw_total = 2,
                 max_slices = '16',
-                platform_packages = openapi_client.models.vps_order_platform_packages.VpsOrder_platformPackages(
+                platform_packages = interserver_api_client.models.vps_order_platform_packages.VpsOrder_platformPackages(
                     kvm = 32, 
                     kvmstorage = 57, 
                     hyperv = 54, ),
-                platform_names = openapi_client.models.vps_order_platform_names.VpsOrder_platformNames(
+                platform_names = interserver_api_client.models.vps_order_platform_names.VpsOrder_platformNames(
                     kvm = 'KVM', 
                     kvmstorage = 'KVM Storage', 
                     hyperv = 'HyperV', ),
-                package_costs = openapi_client.models.vps_order_package_costs.VpsOrder_packageCosts(
+                package_costs = interserver_api_client.models.vps_order_package_costs.VpsOrder_packageCosts(
                     57 = 6, ),
-                location_stock = openapi_client.models.vps_order_location_stock.VpsOrder_locationStock(
-                    1 = openapi_client.models.vps_order_location_stock_1.VpsOrder_locationStock_1(
+                location_stock = interserver_api_client.models.vps_order_location_stock.VpsOrder_locationStock(
+                    1 = interserver_api_client.models.vps_order_location_stock_1.VpsOrder_locationStock_1(
                         kvm = True, 
                         kvmstorage = True, 
                         hyperv = True, ), ),
-                location_names = openapi_client.models.vps_order_location_names.VpsOrder_locationNames(
+                location_names = interserver_api_client.models.vps_order_location_names.VpsOrder_locationNames(
                     3 = 'Equinix NY4', ),
-                os_names = openapi_client.models.vps_order_os_names.VpsOrder_osNames(
+                os_names = interserver_api_client.models.vps_order_os_names.VpsOrder_osNames(
                     opensuse = 'OpenSUSE', 
                     ubuntu = 'Ubuntu', ),
-                templates = openapi_client.models.vps_order_templates.VpsOrder_templates(
-                    hyperv = openapi_client.models.vps_order_templates_hyperv.VpsOrder_templates_hyperv(
-                        windows = openapi_client.models.vps_order_templates_hyperv_windows.VpsOrder_templates_hyperv_windows(
+                templates = interserver_api_client.models.vps_order_templates.VpsOrder_templates(
+                    hyperv = interserver_api_client.models.vps_order_templates_hyperv.VpsOrder_templates_hyperv(
+                        windows = interserver_api_client.models.vps_order_templates_hyperv_windows.VpsOrder_templates_hyperv_windows(
                             windows2019_standard = '2019 Standard', 
                             windows2022 = '2022', ), ), ),
-                service_types = openapi_client.models.vps_order_service_types.VpsOrder_serviceTypes(
-                    32 = openapi_client.models.vps_order_service_types_32.VpsOrder_serviceTypes_32(
+                service_types = interserver_api_client.models.vps_order_service_types.VpsOrder_serviceTypes(
+                    32 = interserver_api_client.models.vps_order_service_types_32.VpsOrder_serviceTypes_32(
                         services_id = '32', 
                         services_name = 'KVM Windows VPS Slice', 
                         services_cost = '10.00', 

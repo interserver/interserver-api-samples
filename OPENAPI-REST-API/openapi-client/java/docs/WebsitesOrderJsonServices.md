@@ -11,4 +11,8 @@ Schema for the jsonServices field in WebsitesOrder
 |**_11447** | **String** | JSON services description |  |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

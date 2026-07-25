@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.home_services_vps_links import HomeServicesVpsLinks
+from interserver_api_client.models.home_services_vps_links import HomeServicesVpsLinks
 
 class TestHomeServicesVpsLinks(unittest.TestCase):
     """HomeServicesVpsLinks unit test stubs"""

@@ -1,4 +1,4 @@
-# InterServerManagementApi.DeleteFirewallRule
+# InterserverApiClient.DeleteFirewallRule
 
 ## Properties
 

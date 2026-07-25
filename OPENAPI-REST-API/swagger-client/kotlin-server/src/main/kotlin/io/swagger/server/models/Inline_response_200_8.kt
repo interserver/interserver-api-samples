@@ -13,12 +13,11 @@
 
 /**
  * 
- * @param success 
- * @param text 
+ * @param login Whether the 2FA verification succeeded and the user is now logged in.
  */
 data class InlineResponse2008 (
 
-    val success: kotlin.Boolean,
-    val text: kotlin.String
+    /* Whether the 2FA verification succeeded and the user is now logged in. */
+    val login: kotlin.Boolean? = null
 ) {
 }

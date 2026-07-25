@@ -45,4 +45,3 @@ case class DomainContactDetails(
   /* Last name for the contact. */
   last_name: Option[String] = None
 )
-

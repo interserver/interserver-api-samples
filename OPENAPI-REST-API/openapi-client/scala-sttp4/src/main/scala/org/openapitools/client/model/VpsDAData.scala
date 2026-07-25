@@ -18,4 +18,3 @@ package org.openapitools.client.model
 case class VpsDAData(
   free: Option[VpsDALicense] = None
 )
-

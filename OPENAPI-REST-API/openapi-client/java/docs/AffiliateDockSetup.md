@@ -13,4 +13,8 @@ Affiliate Landing Page information.
 |**referrerCoupon** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

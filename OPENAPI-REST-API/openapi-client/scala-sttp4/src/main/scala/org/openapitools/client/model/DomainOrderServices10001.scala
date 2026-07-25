@@ -39,4 +39,3 @@ case class DomainOrderServices10001(
   /* Hidden flag for Service */
   services_hidden: Option[String] = None
 )
-

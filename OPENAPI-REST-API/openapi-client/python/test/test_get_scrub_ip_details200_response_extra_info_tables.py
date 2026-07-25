@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.get_scrub_ip_details200_response_extra_info_tables import GetScrubIpDetails200ResponseExtraInfoTables
+from interserver_api_client.models.get_scrub_ip_details200_response_extra_info_tables import GetScrubIpDetails200ResponseExtraInfoTables
 
 class TestGetScrubIpDetails200ResponseExtraInfoTables(unittest.TestCase):
     """GetScrubIpDetails200ResponseExtraInfoTables unit test stubs"""
@@ -36,10 +36,10 @@ class TestGetScrubIpDetails200ResponseExtraInfoTables(unittest.TestCase):
         model = GetScrubIpDetails200ResponseExtraInfoTables()
         if include_optional:
             return GetScrubIpDetails200ResponseExtraInfoTables(
-                scrub_ips = openapi_client.models.get_scrub_ip_details_200_response_extra_info_tables_scrub_ips.getScrubIpDetails_200_response_extraInfoTables_scrub_ips(
+                scrub_ips = interserver_api_client.models.get_scrub_ip_details_200_response_extra_info_tables_scrub_ips.getScrubIpDetails_200_response_extraInfoTables_scrub_ips(
                     title = '', 
                     rows = [
-                        openapi_client.models.get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner.getScrubIpDetails_200_response_extraInfoTables_scrub_ips_rows_inner(
+                        interserver_api_client.models.get_scrub_ip_details_200_response_extra_info_tables_scrub_ips_rows_inner.getScrubIpDetails_200_response_extraInfoTables_scrub_ips_rows_inner(
                             desc = '', 
                             value = '', )
                         ], )

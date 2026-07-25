@@ -1,4 +1,4 @@
-# SwaggerClient::DomainTechContact
+# InterserverApiClient::DomainTechContact
 
 ## Properties
 Name | Type | Description | Notes

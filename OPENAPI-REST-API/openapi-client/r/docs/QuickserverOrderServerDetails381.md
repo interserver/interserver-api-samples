@@ -1,4 +1,4 @@
-# openapi::QuickserverOrderServerDetails381
+# interserverapi::QuickserverOrderServerDetails381
 
 
 ## Properties

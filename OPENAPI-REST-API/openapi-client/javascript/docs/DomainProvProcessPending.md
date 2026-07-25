@@ -1,4 +1,4 @@
-# InterServerManagementApi.DomainProvProcessPending
+# InterserverApiClient.DomainProvProcessPending
 
 ## Properties
 

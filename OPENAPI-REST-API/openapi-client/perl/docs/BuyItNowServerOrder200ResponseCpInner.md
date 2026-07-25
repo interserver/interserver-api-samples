@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BuyItNowServerOrder200ResponseCpInner
+# InterServerAPI::Object::BuyItNowServerOrder200ResponseCpInner
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BuyItNowServerOrder200ResponseCpInner;
+use InterServerAPI::Object::BuyItNowServerOrder200ResponseCpInner;
 ```
 
 ## Properties

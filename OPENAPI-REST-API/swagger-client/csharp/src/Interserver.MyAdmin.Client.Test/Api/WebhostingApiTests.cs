@@ -69,7 +69,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void AddWebsiteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.AddWebsite();
+            //WebsiteOrderPostRequest body = null;
+            //var response = instance.AddWebsite(body);
             //Assert.IsInstanceOf<ServiceOrderPostResponse> (response, "response is ServiceOrderPostResponse");
         }
         /// <summary>
@@ -91,7 +92,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //int? id = null;
             //var response = instance.GetWebsiteBuyIp(id);
-            //Assert.IsInstanceOf<InlineResponse20024> (response, "response is InlineResponse20024");
+            //Assert.IsInstanceOf<InlineResponse20026> (response, "response is InlineResponse20026");
         }
         /// <summary>
         /// Test GetWebsiteInfo
@@ -179,7 +180,7 @@ namespace Interserver.MyAdmin.Client.Test
             //IdBuyIpBody body = null;
             //int? id = null;
             //var response = instance.PostWebsiteBuyIp(body, id);
-            //Assert.IsInstanceOf<InlineResponse20025> (response, "response is InlineResponse20025");
+            //Assert.IsInstanceOf<InlineResponse20027> (response, "response is InlineResponse20027");
         }
         /// <summary>
         /// Test PostWebsiteMigration
@@ -191,7 +192,7 @@ namespace Interserver.MyAdmin.Client.Test
             //IdMigrationBody body = null;
             //int? id = null;
             //var response = instance.PostWebsiteMigration(body, id);
-            //Assert.IsInstanceOf<InlineResponse20026> (response, "response is InlineResponse20026");
+            //Assert.IsInstanceOf<InlineResponse20028> (response, "response is InlineResponse20028");
         }
         /// <summary>
         /// Test PostWebsitesReverseDns
@@ -212,7 +213,8 @@ namespace Interserver.MyAdmin.Client.Test
         public void PutWebsitesTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //instance.PutWebsites();
+            //WebsiteOrderPutRequest body = null;
+            //instance.PutWebsites(body);
             
         }
         /// <summary>
@@ -235,7 +237,7 @@ namespace Interserver.MyAdmin.Client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string id = null;
             //var response = instance.WebhostingCancel(id);
-            //Assert.IsInstanceOf<InlineResponse20023> (response, "response is InlineResponse20023");
+            //Assert.IsInstanceOf<InlineResponse20025> (response, "response is InlineResponse20025");
         }
     }
 

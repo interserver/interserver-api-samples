@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MonthlyCounts } from './api';
+import { MonthlyCounts } from '@interserver/myadmin-client';
 
 const instance: MonthlyCounts = {
 };

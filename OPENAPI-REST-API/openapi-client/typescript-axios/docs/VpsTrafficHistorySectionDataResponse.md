@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsTrafficHistorySectionDataResponse } from './api';
+import { VpsTrafficHistorySectionDataResponse } from '@interserver/myadmin-client';
 
 const instance: VpsTrafficHistorySectionDataResponse = {
 };

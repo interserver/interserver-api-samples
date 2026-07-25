@@ -1,4 +1,4 @@
-# openapi::MailAlertsResponseInner
+# interserverapi::MailAlertsResponseInner
 
 
 ## Properties

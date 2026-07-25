@@ -1,4 +1,4 @@
-# openapi::ServerIpmiLiveRequest
+# interserverapi::ServerIpmiLiveRequest
 
 Request body to setup an IPMI Live connection.
 

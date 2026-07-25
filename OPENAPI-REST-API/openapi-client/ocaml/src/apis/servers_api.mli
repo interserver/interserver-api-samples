@@ -5,7 +5,7 @@
  *
  *)
 
-val add_server : unit -> Add_server_200_response.t Lwt.t
+val add_server : server_order_post_request_t:Server_order_post_request.t -> Add_server_200_response.t Lwt.t
 val buy_it_now_server_order : unit -> Buy_it_now_server_order_200_response.t Lwt.t
 val get_mp_servers : unit -> Buy_it_now_list.t Lwt.t
 val get_new_server : unit -> Server_order.t Lwt.t
@@ -16,7 +16,7 @@ val get_server_reverse_dns : id:int32 -> Reverse_dns_entries.t Lwt.t
 val get_servers_welcome_email : id:int32 -> Success_text_response.t Lwt.t
 val place_buy_now_server : place_buy_now_server_request_t:Place_buy_now_server_request.t -> unit -> Servers_buy_now_response.t Lwt.t
 val post_server_reverse_dns : id:int32 -> reverse_dns_entries_t:Reverse_dns_entries.t -> Text_response.t Lwt.t
-val put_servers : unit -> unit Lwt.t
+val server_bulk_ipmi_power_get : ids:string -> Server_bulk_ipmi_power_response.t Lwt.t
 val server_ipmi_live_get : id:int32 -> Server_ipmi_live_info.t Lwt.t
 val server_ipmi_live_post : id:int32 -> ip:string -> ?asset:int32 -> unit -> Server_ipmi_live_info.t Lwt.t
 val server_ipmi_power_get : id:int32 -> Text_response.t Lwt.t

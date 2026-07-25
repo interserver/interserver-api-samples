@@ -141,6 +141,11 @@ public:
 
     /**
     * @param[in]  id qint32 [required]
+    */
+    virtual void getVpsBackup(const qint32 &id);
+
+    /**
+    * @param[in]  id qint32 [required]
     * @param[in]  all QString [optional]
     */
     virtual void getVpsBackups(const qint32 &id, const ::OpenAPI::OptionalParam<QString> &all = ::OpenAPI::OptionalParam<QString>());
@@ -158,12 +163,27 @@ public:
     /**
     * @param[in]  id qint32 [required]
     */
+    virtual void getVpsChangeHostname(const qint32 &id);
+
+    /**
+    * @param[in]  id qint32 [required]
+    */
+    virtual void getVpsChangeRootPassword(const qint32 &id);
+
+    /**
+    * @param[in]  id qint32 [required]
+    */
     virtual void getVpsChangeTimezone(const qint32 &id);
 
     /**
     * @param[in]  id qint32 [required]
     */
     virtual void getVpsInfo(const qint32 &id);
+
+    /**
+    * @param[in]  id qint32 [required]
+    */
+    virtual void getVpsInsertCd(const qint32 &id);
 
     /**
     * @param[in]  id qint32 [required]
@@ -177,6 +197,11 @@ public:
     * @param[in]  id qint32 [required]
     */
     virtual void getVpsReinstallOs(const qint32 &id);
+
+    /**
+    * @param[in]  id qint32 [required]
+    */
+    virtual void getVpsResetPassword(const qint32 &id);
 
     /**
     * @param[in]  id qint32 [required]
@@ -207,11 +232,6 @@ public:
     * @param[in]  id QString [required]
     */
     virtual void getVpsWelcomeEmail(const QString &id);
-
-    /**
-    * @param[in]  id qint32 [required]
-    */
-    virtual void postVpsBackup(const qint32 &id);
 
     /**
     * @param[in]  id qint32 [required]
@@ -291,12 +311,22 @@ public:
     /**
     * @param[in]  id qint32 [required]
     */
+    virtual void postVpsTrafficUsage(const qint32 &id);
+
+    /**
+    * @param[in]  id qint32 [required]
+    */
     virtual void postVpsViewDesktop(const qint32 &id);
 
     /**
     * @param[in]  oai_vps_order_put_request OAIVpsOrderPutRequest [optional]
     */
     virtual void putVps(const ::OpenAPI::OptionalParam<OAIVpsOrderPutRequest> &oai_vps_order_put_request = ::OpenAPI::OptionalParam<OAIVpsOrderPutRequest>());
+
+    /**
+    * @param[in]  id qint32 [required]
+    */
+    virtual void putVpsBuyHdSpace(const qint32 &id);
 
     /**
     * @param[in]  id QString [required]
@@ -350,21 +380,25 @@ private:
     void doVpsStopCallback(OAIHttpRequestWorker *worker);
     void downloadVpsBackupCallback(OAIHttpRequestWorker *worker);
     void getNewVpsCallback(OAIHttpRequestWorker *worker);
+    void getVpsBackupCallback(OAIHttpRequestWorker *worker);
     void getVpsBackupsCallback(OAIHttpRequestWorker *worker);
     void getVpsBuyHdSpaceCallback(OAIHttpRequestWorker *worker);
     void getVpsBuyIpCallback(OAIHttpRequestWorker *worker);
+    void getVpsChangeHostnameCallback(OAIHttpRequestWorker *worker);
+    void getVpsChangeRootPasswordCallback(OAIHttpRequestWorker *worker);
     void getVpsChangeTimezoneCallback(OAIHttpRequestWorker *worker);
     void getVpsInfoCallback(OAIHttpRequestWorker *worker);
+    void getVpsInsertCdCallback(OAIHttpRequestWorker *worker);
     void getVpsInvoicesCallback(OAIHttpRequestWorker *worker);
     void getVpsListCallback(OAIHttpRequestWorker *worker);
     void getVpsReinstallOsCallback(OAIHttpRequestWorker *worker);
+    void getVpsResetPasswordCallback(OAIHttpRequestWorker *worker);
     void getVpsReverseDnsCallback(OAIHttpRequestWorker *worker);
     void getVpsSetupVncCallback(OAIHttpRequestWorker *worker);
     void getVpsSlicesCallback(OAIHttpRequestWorker *worker);
     void getVpsTrafficUsageCallback(OAIHttpRequestWorker *worker);
     void getVpsViewDesktopCallback(OAIHttpRequestWorker *worker);
     void getVpsWelcomeEmailCallback(OAIHttpRequestWorker *worker);
-    void postVpsBackupCallback(OAIHttpRequestWorker *worker);
     void postVpsBuyHdSpaceCallback(OAIHttpRequestWorker *worker);
     void postVpsBuyIpCallback(OAIHttpRequestWorker *worker);
     void postVpsChangeHostnameCallback(OAIHttpRequestWorker *worker);
@@ -378,8 +412,10 @@ private:
     void postVpsReverseDnsCallback(OAIHttpRequestWorker *worker);
     void postVpsSetupVncCallback(OAIHttpRequestWorker *worker);
     void postVpsSlicesCallback(OAIHttpRequestWorker *worker);
+    void postVpsTrafficUsageCallback(OAIHttpRequestWorker *worker);
     void postVpsViewDesktopCallback(OAIHttpRequestWorker *worker);
     void putVpsCallback(OAIHttpRequestWorker *worker);
+    void putVpsBuyHdSpaceCallback(OAIHttpRequestWorker *worker);
     void updateVpsInfoCallback(OAIHttpRequestWorker *worker);
     void vPSCancelCallback(OAIHttpRequestWorker *worker);
 
@@ -397,21 +433,25 @@ Q_SIGNALS:
     void doVpsStopSignal(OAIQueueResponse summary);
     void downloadVpsBackupSignal(OAIDownloadQsBackup_200_response summary);
     void getNewVpsSignal(OAIVpsOrder summary);
+    void getVpsBackupSignal(OAIQueueResponse summary);
     void getVpsBackupsSignal(OAIVpsBackupRows<OAIVpsBackupRow> summary);
     void getVpsBuyHdSpaceSignal();
     void getVpsBuyIpSignal();
+    void getVpsChangeHostnameSignal();
+    void getVpsChangeRootPasswordSignal();
     void getVpsChangeTimezoneSignal(QList<QString> summary);
     void getVpsInfoSignal(OAIVps summary);
+    void getVpsInsertCdSignal();
     void getVpsInvoicesSignal(OAIChargeInvoiceRows summary);
     void getVpsListSignal(QList<OAIVpsRow> summary);
     void getVpsReinstallOsSignal(OAIVpsTemplatesList summary);
+    void getVpsResetPasswordSignal();
     void getVpsReverseDnsSignal(OAIReverseDnsEntries summary);
     void getVpsSetupVncSignal();
     void getVpsSlicesSignal();
     void getVpsTrafficUsageSignal(OAIVpsTrafficResponse summary);
     void getVpsViewDesktopSignal();
     void getVpsWelcomeEmailSignal(OAISuccessTextResponse summary);
-    void postVpsBackupSignal(OAIQueueResponse summary);
     void postVpsBuyHdSpaceSignal();
     void postVpsBuyIpSignal();
     void postVpsChangeHostnameSignal(OAIQueueResponse summary);
@@ -425,8 +465,10 @@ Q_SIGNALS:
     void postVpsReverseDnsSignal(OAITextResponse summary);
     void postVpsSetupVncSignal(OAIQueueResponse summary);
     void postVpsSlicesSignal();
+    void postVpsTrafficUsageSignal();
     void postVpsViewDesktopSignal();
     void putVpsSignal(OAIVpsOrderPutResponse summary);
+    void putVpsBuyHdSpaceSignal();
     void updateVpsInfoSignal(OAISuccessTextResponse summary);
     void vPSCancelSignal(OAIVPSCancel_200_response summary);
 
@@ -443,21 +485,25 @@ Q_SIGNALS:
     void doVpsStopSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void downloadVpsBackupSignalFull(OAIHttpRequestWorker *worker, OAIDownloadQsBackup_200_response summary);
     void getNewVpsSignalFull(OAIHttpRequestWorker *worker, OAIVpsOrder summary);
+    void getVpsBackupSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void getVpsBackupsSignalFull(OAIHttpRequestWorker *worker, OAIVpsBackupRows<OAIVpsBackupRow> summary);
     void getVpsBuyHdSpaceSignalFull(OAIHttpRequestWorker *worker);
     void getVpsBuyIpSignalFull(OAIHttpRequestWorker *worker);
+    void getVpsChangeHostnameSignalFull(OAIHttpRequestWorker *worker);
+    void getVpsChangeRootPasswordSignalFull(OAIHttpRequestWorker *worker);
     void getVpsChangeTimezoneSignalFull(OAIHttpRequestWorker *worker, QList<QString> summary);
     void getVpsInfoSignalFull(OAIHttpRequestWorker *worker, OAIVps summary);
+    void getVpsInsertCdSignalFull(OAIHttpRequestWorker *worker);
     void getVpsInvoicesSignalFull(OAIHttpRequestWorker *worker, OAIChargeInvoiceRows summary);
     void getVpsListSignalFull(OAIHttpRequestWorker *worker, QList<OAIVpsRow> summary);
     void getVpsReinstallOsSignalFull(OAIHttpRequestWorker *worker, OAIVpsTemplatesList summary);
+    void getVpsResetPasswordSignalFull(OAIHttpRequestWorker *worker);
     void getVpsReverseDnsSignalFull(OAIHttpRequestWorker *worker, OAIReverseDnsEntries summary);
     void getVpsSetupVncSignalFull(OAIHttpRequestWorker *worker);
     void getVpsSlicesSignalFull(OAIHttpRequestWorker *worker);
     void getVpsTrafficUsageSignalFull(OAIHttpRequestWorker *worker, OAIVpsTrafficResponse summary);
     void getVpsViewDesktopSignalFull(OAIHttpRequestWorker *worker);
     void getVpsWelcomeEmailSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
-    void postVpsBackupSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void postVpsBuyHdSpaceSignalFull(OAIHttpRequestWorker *worker);
     void postVpsBuyIpSignalFull(OAIHttpRequestWorker *worker);
     void postVpsChangeHostnameSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
@@ -471,8 +517,10 @@ Q_SIGNALS:
     void postVpsReverseDnsSignalFull(OAIHttpRequestWorker *worker, OAITextResponse summary);
     void postVpsSetupVncSignalFull(OAIHttpRequestWorker *worker, OAIQueueResponse summary);
     void postVpsSlicesSignalFull(OAIHttpRequestWorker *worker);
+    void postVpsTrafficUsageSignalFull(OAIHttpRequestWorker *worker);
     void postVpsViewDesktopSignalFull(OAIHttpRequestWorker *worker);
     void putVpsSignalFull(OAIHttpRequestWorker *worker, OAIVpsOrderPutResponse summary);
+    void putVpsBuyHdSpaceSignalFull(OAIHttpRequestWorker *worker);
     void updateVpsInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void vPSCancelSignalFull(OAIHttpRequestWorker *worker, OAIVPSCancel_200_response summary);
 
@@ -488,21 +536,25 @@ Q_SIGNALS:
     void doVpsStopSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void downloadVpsBackupSignalError(OAIDownloadQsBackup_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getNewVpsSignalError(OAIVpsOrder summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getVpsBackupSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsBackupsSignalError(OAIVpsBackupRows<OAIVpsBackupRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsBuyHdSpaceSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsBuyIpSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getVpsChangeHostnameSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getVpsChangeRootPasswordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsChangeTimezoneSignalError(QList<QString> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsInfoSignalError(OAIVps summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getVpsInsertCdSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsInvoicesSignalError(OAIChargeInvoiceRows summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsListSignalError(QList<OAIVpsRow> summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsReinstallOsSignalError(OAIVpsTemplatesList summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getVpsResetPasswordSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsReverseDnsSignalError(OAIReverseDnsEntries summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsSetupVncSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsSlicesSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsTrafficUsageSignalError(OAIVpsTrafficResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsViewDesktopSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsWelcomeEmailSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void postVpsBackupSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsBuyHdSpaceSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsBuyIpSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsChangeHostnameSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -516,8 +568,10 @@ Q_SIGNALS:
     void postVpsReverseDnsSignalError(OAITextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsSetupVncSignalError(OAIQueueResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsSlicesSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
+    void postVpsTrafficUsageSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsViewDesktopSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void putVpsSignalError(OAIVpsOrderPutResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void putVpsBuyHdSpaceSignalError(QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateVpsInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void vPSCancelSignalError(OAIVPSCancel_200_response summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
@@ -533,21 +587,25 @@ Q_SIGNALS:
     void doVpsStopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void downloadVpsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getNewVpsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getVpsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsBackupsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsBuyHdSpaceSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsBuyIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getVpsChangeHostnameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getVpsChangeRootPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsChangeTimezoneSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getVpsInsertCdSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsInvoicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsListSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsReinstallOsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void getVpsResetPasswordSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsSetupVncSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsSlicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsTrafficUsageSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsViewDesktopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void getVpsWelcomeEmailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
-    void postVpsBackupSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsBuyHdSpaceSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsBuyIpSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsChangeHostnameSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -561,8 +619,10 @@ Q_SIGNALS:
     void postVpsReverseDnsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsSetupVncSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsSlicesSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void postVpsTrafficUsageSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void postVpsViewDesktopSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void putVpsSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void putVpsBuyHdSpaceSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateVpsInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void vPSCancelSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 

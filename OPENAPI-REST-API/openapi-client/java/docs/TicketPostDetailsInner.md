@@ -22,8 +22,12 @@
 
 | Name | Value |
 |---- | -----|
-| USER | &quot;User&quot; |
-| STAFF | &quot;Staff&quot; |
+| User | &quot;User&quot; |
+| Staff | &quot;Staff&quot; |
 
+
+## Implemented Interfaces
+
+* Serializable
 
 

@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.api.domains_api import DomainsApi  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.api.domains_api import DomainsApi  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestDomainsApi(unittest.TestCase):
@@ -31,203 +31,196 @@ class TestDomainsApi(unittest.TestCase):
     def test_add_domain(self):
         """Test case for add_domain
 
-        Place Domain Order  # noqa: E501
+        Place a new domain registration or transfer order, generate billing invoice  # noqa: E501
         """
         pass
 
     def test_add_domain_dnssec(self):
         """Test case for add_domain_dnssec
 
-        Add Domain DNSSEC Records  # noqa: E501
+        Register DNSSEC DS records on the domain at OpenSRS  # noqa: E501
         """
         pass
 
     def test_add_domain_nameserver(self):
         """Test case for add_domain_nameserver
 
-        Add Registered Nameserver  # noqa: E501
+        Register a new nameserver host with glue IP at the registry (registered nameserver)  # noqa: E501
         """
         pass
 
     def test_cancel_domain(self):
         """Test case for cancel_domain
 
-        Cancel Domain Order  # noqa: E501
+        Cancel a domain order in the billing system to stop auto-renewals  # noqa: E501
         """
         pass
 
     def test_delete_domain_dnssec(self):
         """Test case for delete_domain_dnssec
 
-        Remove Domain DNSSEC Records  # noqa: E501
+        Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)  # noqa: E501
         """
         pass
 
     def test_delete_domain_nameserver(self):
         """Test case for delete_domain_nameserver
 
-        Delete Registered Nameserver  # noqa: E501
+        Remove one registered nameserver glue record from the domain  # noqa: E501
         """
         pass
 
     def test_get_domain_contact(self):
         """Test case for get_domain_contact
 
-        Get Domain Contact Details  # noqa: E501
+        Read the current registrant/admin/tech/billing contact field set for a domain  # noqa: E501
         """
         pass
 
     def test_get_domain_dnssec(self):
         """Test case for get_domain_dnssec
 
-        Get Domain DNSSEC Records  # noqa: E501
+        Read the DNSSEC DS record set currently registered with the registrar  # noqa: E501
         """
         pass
 
     def test_get_domain_info(self):
         """Test case for get_domain_info
 
-        Get Domain Order  # noqa: E501
+        Read full billing, registrar, and service detail for one domain  # noqa: E501
         """
         pass
 
     def test_get_domain_invoices(self):
         """Test case for get_domain_invoices
 
-        Get Domain Invoices  # noqa: E501
+        List all billing invoices scoped to one domain order  # noqa: E501
         """
         pass
 
     def test_get_domain_lookup(self):
         """Test case for get_domain_lookup
 
-        Lookup Domain Availability and Pricing  # noqa: E501
+        Check availability, premium status, and pricing for a specific domain  # noqa: E501
         """
         pass
 
     def test_get_domain_nameservers(self):
         """Test case for get_domain_nameservers
 
-        List Registered Nameservers  # noqa: E501
-        """
-        pass
-
-    def test_get_domain_order_fields(self):
-        """Test case for get_domain_order_fields
-
-        Get Domain Order Fields  # noqa: E501
-        """
-        pass
-
-    def test_get_domain_order_search_results(self):
-        """Test case for get_domain_order_search_results
-
-        Get Domain Order Search Results  # noqa: E501
+        List registered nameserver hosts and glue IP addresses for a domain  # noqa: E501
         """
         pass
 
     def test_get_domain_renewal(self):
         """Test case for get_domain_renewal
 
-        Start Domain Renewal Flow  # noqa: E501
+        Read renewal pricing, expiry, and whether a renewal invoice already exists  # noqa: E501
         """
         pass
 
     def test_get_domain_search(self):
         """Test case for get_domain_search
 
-        Search Domain Suggestions  # noqa: E501
+        Get registrar-suggested domain alternatives and bulk availability for a search term  # noqa: E501
         """
         pass
 
     def test_get_domain_transfer(self):
         """Test case for get_domain_transfer
 
-        Start Domain Transfer Flow  # noqa: E501
+        Read OpenSRS transfer status for an in-progress domain transfer order  # noqa: E501
         """
         pass
 
     def test_get_domain_whois_privacy(self):
         """Test case for get_domain_whois_privacy
 
-        Get Whois Privacy Status  # noqa: E501
+        Read Whois privacy availability, current state, and add-on pricing for a domain  # noqa: E501
         """
         pass
 
     def test_get_domains_list(self):
         """Test case for get_domains_list
 
-        List Domain Orders  # noqa: E501
+        List every domain registration on the account with billing and registration metadata  # noqa: E501
         """
         pass
 
     def test_get_domains_welcome_email(self):
         """Test case for get_domains_welcome_email
 
-        Resend Domain Welcome Email  # noqa: E501
+        Resend the domain welcome email with registration details and management instructions  # noqa: E501
         """
         pass
 
     def test_get_new_domain(self):
         """Test case for get_new_domain
 
-        Get Domain Ordering Information  # noqa: E501
+        Read the buyable domain TLD service catalog and Whois privacy pricing  # noqa: E501
         """
         pass
 
     def test_patch_domains(self):
         """Test case for patch_domains
 
-        Validate Domain Order  # noqa: E501
+        Validate posted domain-order field values before committing — dry run  # noqa: E501
         """
         pass
 
     def test_post_domain_renewal(self):
         """Test case for post_domain_renewal
 
-        Request Domain Renewal  # noqa: E501
+        Submit a domain renewal request and generate the renewal invoice  # noqa: E501
+        """
+        pass
+
+    def test_post_domain_search(self):
+        """Test case for post_domain_search
+
+        Get the full order form data for a hostname in one round-trip (search → order preview)  # noqa: E501
         """
         pass
 
     def test_post_domain_transfer(self):
         """Test case for post_domain_transfer
 
-        Request Domain Transfer  # noqa: E501
+        Re-poll OpenSRS transfer status for a domain order via POST  # noqa: E501
         """
         pass
 
     def test_put_domains(self):
         """Test case for put_domains
 
-        Domain Order Search  # noqa: E501
+        Preview per-TLD field requirements for a domain order — no commit  # noqa: E501
         """
         pass
 
     def test_update_domain_contact(self):
         """Test case for update_domain_contact
 
-        Update Domain Contact Details  # noqa: E501
+        Update registrant/admin contact details and push them to OpenSRS  # noqa: E501
         """
         pass
 
     def test_update_domain_info(self):
         """Test case for update_domain_info
 
-        Update Domain Order  # noqa: E501
+        POST mutation hook for the domain detail page (use dedicated ops where possible)  # noqa: E501
         """
         pass
 
     def test_update_domain_nameservers(self):
         """Test case for update_domain_nameservers
 
-        Replace Nameserver Set  # noqa: E501
+        Replace the full authoritative-nameserver delegation list at the registrar  # noqa: E501
         """
         pass
 
     def test_update_domain_whois_privacy(self):
         """Test case for update_domain_whois_privacy
 
-        Update Whois Privacy  # noqa: E501
+        Order, enable, or cancel the Whois privacy add-on for a domain  # noqa: E501
         """
         pass
 

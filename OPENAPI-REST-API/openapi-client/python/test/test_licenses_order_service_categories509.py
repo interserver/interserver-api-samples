@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.licenses_order_service_categories509 import LicensesOrderServiceCategories509
+from interserver_api_client.models.licenses_order_service_categories509 import LicensesOrderServiceCategories509
 
 class TestLicensesOrderServiceCategories509(unittest.TestCase):
     """LicensesOrderServiceCategories509 unit test stubs"""

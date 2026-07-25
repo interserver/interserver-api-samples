@@ -15,4 +15,8 @@ The data to submit in the login request.
 |**tfa** | **String** | Two Factor Authentication Response. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::GetOrderDetail200ResponseServiceTypesInner
+# InterServerAPI::Object::GetOrderDetail200ResponseServiceTypesInner
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::GetOrderDetail200ResponseServiceTypesInner;
+use InterServerAPI::Object::GetOrderDetail200ResponseServiceTypesInner;
 ```
 
 ## Properties

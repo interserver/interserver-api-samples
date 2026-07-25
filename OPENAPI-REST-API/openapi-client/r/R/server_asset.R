@@ -837,13 +837,13 @@ ServerAsset <- R6::R6Class(
         self$`comment` <- this_object$`comment`
       }
       if (!is.null(this_object$`switchports`)) {
-        self$`switchports` <- ApiClient$new()$deserializeObj(this_object$`switchports`, "array[integer]", loadNamespace("openapi"))
+        self$`switchports` <- ApiClient$new()$deserializeObj(this_object$`switchports`, "array[integer]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`vlans`)) {
-        self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("openapi"))
+        self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`vlans6`)) {
-        self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("openapi"))
+        self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`lease`)) {
         `lease_object` <- ServerLease$new()
@@ -915,9 +915,9 @@ ServerAsset <- R6::R6Class(
       self$`rack_x` <- this_object$`rack_x`
       self$`rack_y` <- this_object$`rack_y`
       self$`comment` <- this_object$`comment`
-      self$`switchports` <- ApiClient$new()$deserializeObj(this_object$`switchports`, "array[integer]", loadNamespace("openapi"))
-      self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("openapi"))
-      self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("openapi"))
+      self$`switchports` <- ApiClient$new()$deserializeObj(this_object$`switchports`, "array[integer]", loadNamespace("interserverapi"))
+      self$`vlans` <- ApiClient$new()$deserializeObj(this_object$`vlans`, "array[character]", loadNamespace("interserverapi"))
+      self$`vlans6` <- ApiClient$new()$deserializeObj(this_object$`vlans6`, "array[character]", loadNamespace("interserverapi"))
       self$`lease` <- ServerLease$new()$fromJSON(jsonlite::toJSON(this_object$`lease`, auto_unbox = TRUE, digits = NA))
       self
     },

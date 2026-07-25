@@ -1,4 +1,4 @@
-# openapi::BuyItNowRowCpuInnerOneOf
+# interserverapi::BuyItNowRowCpuInnerOneOf
 
 
 ## Properties

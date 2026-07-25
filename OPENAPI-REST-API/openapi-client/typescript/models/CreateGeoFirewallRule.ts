@@ -68,8 +68,5 @@ export class CreateGeoFirewallRule {
     }
 }
 
-export enum CreateGeoFirewallRuleXdpActionEnum {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1
-}
+    export type CreateGeoFirewallRuleXdpActionEnum = "0" | "1" ;
 

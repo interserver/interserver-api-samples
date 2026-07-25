@@ -17,7 +17,7 @@ import ServerOrderCPU from './ServerOrderCPU';
 /**
  * The ServerOrderCpuLi model module.
  * @module model/ServerOrderCpuLi
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderCpuLi {
     /**

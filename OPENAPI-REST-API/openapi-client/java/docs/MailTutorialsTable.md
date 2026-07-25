@@ -12,4 +12,8 @@ A table of tutorial links displayed for a mail service.
 |**rows** | [**List&lt;MailTutorialsTableRow&gt;**](MailTutorialsTableRow.md) | The rows of the tutorials table. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,4 +1,4 @@
-# openapi::VpsTrafficHistorySectionResponse
+# interserverapi::VpsTrafficHistorySectionResponse
 
 VPS Traffic History Hour and Day Sections
 

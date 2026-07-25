@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+    instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,79 +50,79 @@
   describe('GetScrubIpDetails200ResponseServiceInfo', function() {
     it('should create an instance of GetScrubIpDetails200ResponseServiceInfo', function() {
       // uncomment below and update the code to test GetScrubIpDetails200ResponseServiceInfo
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
-      //expect(instance).to.be.a(InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo);
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
+      //expect(instance).to.be.a(InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo);
     });
 
     it('should have the property scrub_ip_id (base name: "scrub_ip_id")', function() {
       // uncomment below and update the code to test the property scrub_ip_id
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_type (base name: "scrub_ip_type")', function() {
       // uncomment below and update the code to test the property scrub_ip_type
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_custid (base name: "scrub_ip_custid")', function() {
       // uncomment below and update the code to test the property scrub_ip_custid
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_order_date (base name: "scrub_ip_order_date")', function() {
       // uncomment below and update the code to test the property scrub_ip_order_date
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_ip (base name: "scrub_ip_ip")', function() {
       // uncomment below and update the code to test the property scrub_ip_ip
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_service_id (base name: "scrub_ip_service_id")', function() {
       // uncomment below and update the code to test the property scrub_ip_service_id
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_service_module (base name: "scrub_ip_service_module")', function() {
       // uncomment below and update the code to test the property scrub_ip_service_module
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_status (base name: "scrub_ip_status")', function() {
       // uncomment below and update the code to test the property scrub_ip_status
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_invoice (base name: "scrub_ip_invoice")', function() {
       // uncomment below and update the code to test the property scrub_ip_invoice
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_currency (base name: "scrub_ip_currency")', function() {
       // uncomment below and update the code to test the property scrub_ip_currency
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_coupon (base name: "scrub_ip_coupon")', function() {
       // uncomment below and update the code to test the property scrub_ip_coupon
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 
     it('should have the property scrub_ip_comment (base name: "scrub_ip_comment")', function() {
       // uncomment below and update the code to test the property scrub_ip_comment
-      //var instance = new InterServerManagementApi.GetScrubIpDetails200ResponseServiceInfo();
+      //var instance = new InterserverApiClient.GetScrubIpDetails200ResponseServiceInfo();
       //expect(instance).to.be();
     });
 

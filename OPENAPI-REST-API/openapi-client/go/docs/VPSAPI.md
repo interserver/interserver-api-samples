@@ -4,50 +4,56 @@ All URIs are relative to *https://my.interserver.net/apiv2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddVps**](VPSAPI.md#AddVps) | **Post** /vps/order | Place VPS Order
-[**DeleteVpsBackup**](VPSAPI.md#DeleteVpsBackup) | **Delete** /vps/{id}/backups | Delete VPS Backup
-[**DoVpsBlockSmtp**](VPSAPI.md#DoVpsBlockSmtp) | **Get** /vps/{id}/block_smtp | Blocks SMTP
-[**DoVpsDisableCd**](VPSAPI.md#DoVpsDisableCd) | **Get** /vps/{id}/disable_cd | Disable CD Drive
-[**DoVpsDisableQuota**](VPSAPI.md#DoVpsDisableQuota) | **Get** /vps/{id}/disable_quota | Disable Quotas
-[**DoVpsEjectCd**](VPSAPI.md#DoVpsEjectCd) | **Get** /vps/{id}/eject_cd | Eject CD Drive
-[**DoVpsEnableQuota**](VPSAPI.md#DoVpsEnableQuota) | **Get** /vps/{id}/enable_quota | Enable Quotas
-[**DoVpsRestart**](VPSAPI.md#DoVpsRestart) | **Get** /vps/{id}/restart | Restart VPS
-[**DoVpsStart**](VPSAPI.md#DoVpsStart) | **Get** /vps/{id}/start | Start VPS
-[**DoVpsStop**](VPSAPI.md#DoVpsStop) | **Get** /vps/{id}/stop | Stop VPS
-[**DownloadVpsBackup**](VPSAPI.md#DownloadVpsBackup) | **Patch** /vps/{id}/backups | Download VPS Backup
-[**GetNewVps**](VPSAPI.md#GetNewVps) | **Get** /vps/order | VPS Ordering Information
-[**GetVpsBackups**](VPSAPI.md#GetVpsBackups) | **Get** /vps/{id}/backups | Get VPS Backups List
-[**GetVpsBuyHdSpace**](VPSAPI.md#GetVpsBuyHdSpace) | **Get** /vps/{id}/buy_hd_space | HD Space Addon Info
-[**GetVpsBuyIp**](VPSAPI.md#GetVpsBuyIp) | **Get** /vps/{id}/buy_ip | Additional IP Addon Info
-[**GetVpsChangeTimezone**](VPSAPI.md#GetVpsChangeTimezone) | **Get** /vps/{id}/change_timezone | Get Timezone Info
-[**GetVpsInfo**](VPSAPI.md#GetVpsInfo) | **Get** /vps/{id} | Get VPS Order
-[**GetVpsInvoices**](VPSAPI.md#GetVpsInvoices) | **Get** /vps/{id}/invoices | Get VPS Invoices
-[**GetVpsList**](VPSAPI.md#GetVpsList) | **Get** /vps | List VPS Orders
-[**GetVpsReinstallOs**](VPSAPI.md#GetVpsReinstallOs) | **Get** /vps/{id}/reinstall_os | VPS Reinstall OS Options
-[**GetVpsReverseDns**](VPSAPI.md#GetVpsReverseDns) | **Get** /vps/{id}/reverse_dns | Reverse DNS Info
-[**GetVpsSetupVnc**](VPSAPI.md#GetVpsSetupVnc) | **Get** /vps/{id}/setup_vnc | VNC Setup Info
-[**GetVpsSlices**](VPSAPI.md#GetVpsSlices) | **Get** /vps/{id}/slices | Slice Upgrade Info
-[**GetVpsTrafficUsage**](VPSAPI.md#GetVpsTrafficUsage) | **Get** /vps/{id}/traffic_usage | Get Traffic Usage
-[**GetVpsViewDesktop**](VPSAPI.md#GetVpsViewDesktop) | **Get** /vps/{id}/view_desktop | Get View Desktop Info
-[**GetVpsWelcomeEmail**](VPSAPI.md#GetVpsWelcomeEmail) | **Get** /vps/{id}/welcome_email | Resend VPS Welcome Email
-[**PostVpsBackup**](VPSAPI.md#PostVpsBackup) | **Get** /vps/{id}/backup | Start a VPS Backup
-[**PostVpsBuyHdSpace**](VPSAPI.md#PostVpsBuyHdSpace) | **Post** /vps/{id}/buy_hd_space | Purchase HD Space Addon
-[**PostVpsBuyIp**](VPSAPI.md#PostVpsBuyIp) | **Post** /vps/{id}/buy_ip | Purchase Additional IP
-[**PostVpsChangeHostname**](VPSAPI.md#PostVpsChangeHostname) | **Post** /vps/{id}/change_hostname | Update VPS Hostname
-[**PostVpsChangeRootPassword**](VPSAPI.md#PostVpsChangeRootPassword) | **Post** /vps/{id}/change_root_password | Change VPS Root Password
-[**PostVpsChangeTimezone**](VPSAPI.md#PostVpsChangeTimezone) | **Post** /vps/{id}/change_timezone | Change VPS Timezone
-[**PostVpsChangeWebuzoPassword**](VPSAPI.md#PostVpsChangeWebuzoPassword) | **Post** /vps/{id}/change_webuzo_password | Change Webuzo Password
-[**PostVpsInsertCd**](VPSAPI.md#PostVpsInsertCd) | **Post** /vps/{id}/insert_cd | Insert CD in VPS
-[**PostVpsReinstallOs**](VPSAPI.md#PostVpsReinstallOs) | **Post** /vps/{id}/reinstall_os | Reinstall VPS OS
-[**PostVpsResetPassword**](VPSAPI.md#PostVpsResetPassword) | **Post** /vps/{id}/reset_password | Reset VPS Password
-[**PostVpsRestore**](VPSAPI.md#PostVpsRestore) | **Post** /vps/{id}/restore | Restore VPS from Backup
-[**PostVpsReverseDns**](VPSAPI.md#PostVpsReverseDns) | **Post** /vps/{id}/reverse_dns | Update Reverse DNS
-[**PostVpsSetupVnc**](VPSAPI.md#PostVpsSetupVnc) | **Post** /vps/{id}/setup_vnc | Setup VNC
-[**PostVpsSlices**](VPSAPI.md#PostVpsSlices) | **Post** /vps/{id}/slices | Purchase Slice Upgrade
-[**PostVpsViewDesktop**](VPSAPI.md#PostVpsViewDesktop) | **Post** /vps/{id}/view_desktop | Update View Desktop
-[**PutVps**](VPSAPI.md#PutVps) | **Put** /vps/order | Validate VPS Order
-[**UpdateVpsInfo**](VPSAPI.md#UpdateVpsInfo) | **Post** /vps/{id} | Update VPS Order
-[**VPSCancel**](VPSAPI.md#VPSCancel) | **Delete** /vps/{id} | Cancel VPS Service
+[**AddVps**](VPSAPI.md#AddVps) | **Post** /vps/order | Place a new VPS order, create the invoice, and queue provisioning
+[**DeleteVpsBackup**](VPSAPI.md#DeleteVpsBackup) | **Delete** /vps/{id}/backups | Permanently delete a VPS backup file by name (irreversible)
+[**DoVpsBlockSmtp**](VPSAPI.md#DoVpsBlockSmtp) | **Get** /vps/{id}/block_smtp | Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
+[**DoVpsDisableCd**](VPSAPI.md#DoVpsDisableCd) | **Get** /vps/{id}/disable_cd | Remove the virtual CD/DVD device entirely from the VPS configuration
+[**DoVpsDisableQuota**](VPSAPI.md#DoVpsDisableQuota) | **Get** /vps/{id}/disable_quota | Disable per-user disk quota enforcement inside the VPS guest OS
+[**DoVpsEjectCd**](VPSAPI.md#DoVpsEjectCd) | **Get** /vps/{id}/eject_cd | Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
+[**DoVpsEnableQuota**](VPSAPI.md#DoVpsEnableQuota) | **Get** /vps/{id}/enable_quota | Enable per-user disk quota enforcement inside the VPS guest OS
+[**DoVpsRestart**](VPSAPI.md#DoVpsRestart) | **Get** /vps/{id}/restart | Reboot the VPS — preferred over stop+start for software changes
+[**DoVpsStart**](VPSAPI.md#DoVpsStart) | **Get** /vps/{id}/start | Power on a stopped VPS instance
+[**DoVpsStop**](VPSAPI.md#DoVpsStop) | **Get** /vps/{id}/stop | Power off a running VPS — billing continues until cancellation
+[**DownloadVpsBackup**](VPSAPI.md#DownloadVpsBackup) | **Patch** /vps/{id}/backups | Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
+[**GetNewVps**](VPSAPI.md#GetNewVps) | **Get** /vps/order | Get the VPS order catalog — platforms, OS templates, locations, pricing
+[**GetVpsBackup**](VPSAPI.md#GetVpsBackup) | **Get** /vps/{id}/backup | Trigger a manual on-demand snapshot/backup of the VPS
+[**GetVpsBackups**](VPSAPI.md#GetVpsBackups) | **Get** /vps/{id}/backups | List existing backups for the VPS across Swift, MinIO, and ZFS
+[**GetVpsBuyHdSpace**](VPSAPI.md#GetVpsBuyHdSpace) | **Get** /vps/{id}/buy_hd_space | Get current additional disk size and per-GB monthly cost for the VPS
+[**GetVpsBuyIp**](VPSAPI.md#GetVpsBuyIp) | **Get** /vps/{id}/buy_ip | Read current additional IPs, cap, and per-IP monthly cost for the VPS
+[**GetVpsChangeHostname**](VPSAPI.md#GetVpsChangeHostname) | **Get** /vps/{id}/change_hostname | Read the VPS&#39;s current hostname before changing it
+[**GetVpsChangeRootPassword**](VPSAPI.md#GetVpsChangeRootPassword) | **Get** /vps/{id}/change_root_password | Pre-flight check before changing the VPS root password
+[**GetVpsChangeTimezone**](VPSAPI.md#GetVpsChangeTimezone) | **Get** /vps/{id}/change_timezone | List IANA timezones supported by the VPS guest OS
+[**GetVpsInfo**](VPSAPI.md#GetVpsInfo) | **Get** /vps/{id} | Get full details for one VPS — IPs, hostname, OS, slices, status, addons
+[**GetVpsInsertCd**](VPSAPI.md#GetVpsInsertCd) | **Get** /vps/{id}/insert_cd | List ISO templates that can be mounted in the VPS virtual CD drive
+[**GetVpsInvoices**](VPSAPI.md#GetVpsInvoices) | **Get** /vps/{id}/invoices | List all billing invoices associated with this specific VPS
+[**GetVpsList**](VPSAPI.md#GetVpsList) | **Get** /vps | List all VPS services on the customer&#39;s account
+[**GetVpsReinstallOs**](VPSAPI.md#GetVpsReinstallOs) | **Get** /vps/{id}/reinstall_os | List OS templates compatible with this VPS&#39;s hypervisor for reinstall
+[**GetVpsResetPassword**](VPSAPI.md#GetVpsResetPassword) | **Get** /vps/{id}/reset_password | Pre-flight check before resetting the VPS root password to a random value
+[**GetVpsReverseDns**](VPSAPI.md#GetVpsReverseDns) | **Get** /vps/{id}/reverse_dns | Read the current PTR (reverse-DNS) records for every IP on the VPS
+[**GetVpsSetupVnc**](VPSAPI.md#GetVpsSetupVnc) | **Get** /vps/{id}/setup_vnc | Read current VNC console connection info for the VPS
+[**GetVpsSlices**](VPSAPI.md#GetVpsSlices) | **Get** /vps/{id}/slices | Read current slice count, min/max range, and prorated per-slice upgrade cost
+[**GetVpsTrafficUsage**](VPSAPI.md#GetVpsTrafficUsage) | **Get** /vps/{id}/traffic_usage | Read bandwidth traffic usage data for the VPS
+[**GetVpsViewDesktop**](VPSAPI.md#GetVpsViewDesktop) | **Get** /vps/{id}/view_desktop | Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
+[**GetVpsWelcomeEmail**](VPSAPI.md#GetVpsWelcomeEmail) | **Get** /vps/{id}/welcome_email | Resend the welcome email containing VPS IP, hostname, and root credentials
+[**PostVpsBuyHdSpace**](VPSAPI.md#PostVpsBuyHdSpace) | **Post** /vps/{id}/buy_hd_space | Buy or resize the VPS additional-disk addon and create a prorated invoice
+[**PostVpsBuyIp**](VPSAPI.md#PostVpsBuyIp) | **Post** /vps/{id}/buy_ip | Purchase one additional IP for the VPS and create the invoice
+[**PostVpsChangeHostname**](VPSAPI.md#PostVpsChangeHostname) | **Post** /vps/{id}/change_hostname | Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
+[**PostVpsChangeRootPassword**](VPSAPI.md#PostVpsChangeRootPassword) | **Post** /vps/{id}/change_root_password | Set a specific new root/Administrator password on the VPS
+[**PostVpsChangeTimezone**](VPSAPI.md#PostVpsChangeTimezone) | **Post** /vps/{id}/change_timezone | Set the system timezone on the VPS guest OS
+[**PostVpsChangeWebuzoPassword**](VPSAPI.md#PostVpsChangeWebuzoPassword) | **Post** /vps/{id}/change_webuzo_password | Rotate the Webuzo control panel admin password (re-auth required)
+[**PostVpsInsertCd**](VPSAPI.md#PostVpsInsertCd) | **Post** /vps/{id}/insert_cd | Mount an ISO image in the VPS virtual CD drive from a URL
+[**PostVpsReinstallOs**](VPSAPI.md#PostVpsReinstallOs) | **Post** /vps/{id}/reinstall_os | Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
+[**PostVpsResetPassword**](VPSAPI.md#PostVpsResetPassword) | **Post** /vps/{id}/reset_password | Reset the VPS root password to a server-generated random value
+[**PostVpsRestore**](VPSAPI.md#PostVpsRestore) | **Post** /vps/{id}/restore | Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
+[**PostVpsReverseDns**](VPSAPI.md#PostVpsReverseDns) | **Post** /vps/{id}/reverse_dns | Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
+[**PostVpsSetupVnc**](VPSAPI.md#PostVpsSetupVnc) | **Post** /vps/{id}/setup_vnc | Provision or refresh the VNC console endpoint for the VPS
+[**PostVpsSlices**](VPSAPI.md#PostVpsSlices) | **Post** /vps/{id}/slices | Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
+[**PostVpsTrafficUsage**](VPSAPI.md#PostVpsTrafficUsage) | **Post** /vps/{id}/traffic_usage | Search/filter VPS bandwidth usage with custom criteria (reserved)
+[**PostVpsViewDesktop**](VPSAPI.md#PostVpsViewDesktop) | **Post** /vps/{id}/view_desktop | Refresh the remote-desktop session connection info after IP/hostname changes
+[**PutVps**](VPSAPI.md#PutVps) | **Put** /vps/order | Validate a VPS order configuration and quote the cost — dry run, no charge
+[**PutVpsBuyHdSpace**](VPSAPI.md#PutVpsBuyHdSpace) | **Put** /vps/{id}/buy_hd_space | Preview cost to set additional VPS disk to a target GB size — dry run
+[**UpdateVpsInfo**](VPSAPI.md#UpdateVpsInfo) | **Post** /vps/{id} | Update editable settings on a VPS service record
+[**VPSCancel**](VPSAPI.md#VPSCancel) | **Delete** /vps/{id} | Cancel a VPS service at the end of the current billing cycle
 
 
 
@@ -55,7 +61,7 @@ Method | HTTP request | Description
 
 > ServiceOrderPostResponse AddVps(ctx).VpsOrderPostRequest(vpsOrderPostRequest).Execute()
 
-Place VPS Order
+Place a new VPS order, create the invoice, and queue provisioning
 
 
 
@@ -121,7 +127,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse DeleteVpsBackup(ctx, id).File(file).All(all).Execute()
 
-Delete VPS Backup
+Permanently delete a VPS backup file by name (irreversible)
 
 
 
@@ -195,7 +201,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoVpsBlockSmtp(ctx, id).Execute()
 
-Blocks SMTP
+Block outbound SMTP (port 25) on the VPS to prevent spam/abuse
 
 
 
@@ -265,7 +271,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoVpsDisableCd(ctx, id).Execute()
 
-Disable CD Drive
+Remove the virtual CD/DVD device entirely from the VPS configuration
 
 
 
@@ -335,7 +341,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoVpsDisableQuota(ctx, id).Execute()
 
-Disable Quotas
+Disable per-user disk quota enforcement inside the VPS guest OS
 
 
 
@@ -405,7 +411,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoVpsEjectCd(ctx, id).Execute()
 
-Eject CD Drive
+Eject the mounted ISO from the VPS virtual CD drive (keep the drive)
 
 
 
@@ -475,7 +481,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoVpsEnableQuota(ctx, id).Execute()
 
-Enable Quotas
+Enable per-user disk quota enforcement inside the VPS guest OS
 
 
 
@@ -545,7 +551,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoVpsRestart(ctx, id).Execute()
 
-Restart VPS
+Reboot the VPS — preferred over stop+start for software changes
 
 
 
@@ -615,7 +621,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoVpsStart(ctx, id).Execute()
 
-Start VPS
+Power on a stopped VPS instance
 
 
 
@@ -685,7 +691,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse DoVpsStop(ctx, id).Execute()
 
-Stop VPS
+Power off a running VPS — billing continues until cancellation
 
 
 
@@ -755,7 +761,7 @@ Name | Type | Description  | Notes
 
 > DownloadQsBackup200Response DownloadVpsBackup(ctx, id).DownloadQsBackupRequest(downloadQsBackupRequest).All(all).Execute()
 
-Download VPS Backup
+Issue a 24-hour pre-signed URL to download a MinIO-backed VPS backup
 
 
 
@@ -829,7 +835,7 @@ Name | Type | Description  | Notes
 
 > VpsOrder GetNewVps(ctx).Execute()
 
-VPS Ordering Information
+Get the VPS order catalog — platforms, OS templates, locations, pricing
 
 
 
@@ -886,11 +892,81 @@ Other parameters are passed through a pointer to a apiGetNewVpsRequest struct vi
 [[Back to README]](../README.md)
 
 
+## GetVpsBackup
+
+> QueueResponse GetVpsBackup(ctx, id).Execute()
+
+Trigger a manual on-demand snapshot/backup of the VPS
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | VPS ID number
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.VPSAPI.GetVpsBackup(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VPSAPI.GetVpsBackup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetVpsBackup`: QueueResponse
+	fmt.Fprintf(os.Stdout, "Response from `VPSAPI.GetVpsBackup`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | VPS ID number | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVpsBackupRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**QueueResponse**](QueueResponse.md)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetVpsBackups
 
 > VpsBackupRows GetVpsBackups(ctx, id).All(all).Execute()
 
-Get VPS Backups List
+List existing backups for the VPS across Swift, MinIO, and ZFS
 
 
 
@@ -962,7 +1038,7 @@ Name | Type | Description  | Notes
 
 > GetVpsBuyHdSpace(ctx, id).Execute()
 
-HD Space Addon Info
+Get current additional disk size and per-GB monthly cost for the VPS
 
 
 
@@ -1030,7 +1106,7 @@ Name | Type | Description  | Notes
 
 > GetVpsBuyIp(ctx, id).Execute()
 
-Additional IP Addon Info
+Read current additional IPs, cap, and per-IP monthly cost for the VPS
 
 
 
@@ -1094,11 +1170,147 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetVpsChangeHostname
+
+> GetVpsChangeHostname(ctx, id).Execute()
+
+Read the VPS's current hostname before changing it
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | VPS ID number
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.VPSAPI.GetVpsChangeHostname(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VPSAPI.GetVpsChangeHostname``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | VPS ID number | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVpsChangeHostnameRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetVpsChangeRootPassword
+
+> GetVpsChangeRootPassword(ctx, id).Execute()
+
+Pre-flight check before changing the VPS root password
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | VPS ID number
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.VPSAPI.GetVpsChangeRootPassword(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VPSAPI.GetVpsChangeRootPassword``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | VPS ID number | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVpsChangeRootPasswordRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetVpsChangeTimezone
 
 > []string GetVpsChangeTimezone(ctx, id).Execute()
 
-Get Timezone Info
+List IANA timezones supported by the VPS guest OS
 
 
 
@@ -1168,7 +1380,7 @@ Name | Type | Description  | Notes
 
 > Vps GetVpsInfo(ctx, id).Execute()
 
-Get VPS Order
+Get full details for one VPS — IPs, hostname, OS, slices, status, addons
 
 
 
@@ -1234,11 +1446,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetVpsInsertCd
+
+> GetVpsInsertCd(ctx, id).Execute()
+
+List ISO templates that can be mounted in the VPS virtual CD drive
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | VPS ID number
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.VPSAPI.GetVpsInsertCd(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VPSAPI.GetVpsInsertCd``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | VPS ID number | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVpsInsertCdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetVpsInvoices
 
 > ChargeInvoiceRows GetVpsInvoices(ctx, id).Execute()
 
-Get VPS Invoices
+List all billing invoices associated with this specific VPS
 
 
 
@@ -1308,7 +1588,7 @@ Name | Type | Description  | Notes
 
 > []VpsRow GetVpsList(ctx).Execute()
 
-List VPS Orders
+List all VPS services on the customer's account
 
 
 
@@ -1369,7 +1649,7 @@ Other parameters are passed through a pointer to a apiGetVpsListRequest struct v
 
 > VpsTemplatesList GetVpsReinstallOs(ctx, id).Execute()
 
-VPS Reinstall OS Options
+List OS templates compatible with this VPS's hypervisor for reinstall
 
 
 
@@ -1435,11 +1715,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetVpsResetPassword
+
+> GetVpsResetPassword(ctx, id).Execute()
+
+Pre-flight check before resetting the VPS root password to a random value
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | VPS ID number
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.VPSAPI.GetVpsResetPassword(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VPSAPI.GetVpsResetPassword``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | VPS ID number | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetVpsResetPasswordRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetVpsReverseDns
 
 > ReverseDnsEntries GetVpsReverseDns(ctx, id).Execute()
 
-Reverse DNS Info
+Read the current PTR (reverse-DNS) records for every IP on the VPS
 
 
 
@@ -1509,7 +1857,7 @@ Name | Type | Description  | Notes
 
 > GetVpsSetupVnc(ctx, id).Execute()
 
-VNC Setup Info
+Read current VNC console connection info for the VPS
 
 
 
@@ -1577,7 +1925,7 @@ Name | Type | Description  | Notes
 
 > GetVpsSlices(ctx, id).Execute()
 
-Slice Upgrade Info
+Read current slice count, min/max range, and prorated per-slice upgrade cost
 
 
 
@@ -1645,7 +1993,7 @@ Name | Type | Description  | Notes
 
 > VpsTrafficResponse GetVpsTrafficUsage(ctx, id).Execute()
 
-Get Traffic Usage
+Read bandwidth traffic usage data for the VPS
 
 
 
@@ -1715,7 +2063,7 @@ Name | Type | Description  | Notes
 
 > GetVpsViewDesktop(ctx, id).Execute()
 
-Get View Desktop Info
+Read remote-desktop (RDP/HTML5) connection info for a Windows/GUI VPS
 
 
 
@@ -1783,7 +2131,7 @@ Name | Type | Description  | Notes
 
 > SuccessTextResponse GetVpsWelcomeEmail(ctx, id).Execute()
 
-Resend VPS Welcome Email
+Resend the welcome email containing VPS IP, hostname, and root credentials
 
 
 
@@ -1849,81 +2197,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## PostVpsBackup
-
-> QueueResponse PostVpsBackup(ctx, id).Execute()
-
-Start a VPS Backup
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	id := int32(56) // int32 | VPS ID number
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VPSAPI.PostVpsBackup(context.Background(), id).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `VPSAPI.PostVpsBackup``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PostVpsBackup`: QueueResponse
-	fmt.Fprintf(os.Stdout, "Response from `VPSAPI.PostVpsBackup`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**id** | **int32** | VPS ID number | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiPostVpsBackupRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**QueueResponse**](QueueResponse.md)
-
-### Authorization
-
-[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## PostVpsBuyHdSpace
 
 > PostVpsBuyHdSpace(ctx, id).Execute()
 
-Purchase HD Space Addon
+Buy or resize the VPS additional-disk addon and create a prorated invoice
 
 
 
@@ -1991,7 +2269,7 @@ Name | Type | Description  | Notes
 
 > PostVpsBuyIp(ctx, id).Execute()
 
-Purchase Additional IP
+Purchase one additional IP for the VPS and create the invoice
 
 
 
@@ -2059,7 +2337,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostVpsChangeHostname(ctx, id).Hostname(hostname).Execute()
 
-Update VPS Hostname
+Rename the VPS hostname (OpenVZ/Virtuozzo only) and auto-set PTR for the primary IP
 
 
 
@@ -2131,7 +2409,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostVpsChangeRootPassword(ctx, id).Password(password).Execute()
 
-Change VPS Root Password
+Set a specific new root/Administrator password on the VPS
 
 
 
@@ -2203,7 +2481,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostVpsChangeTimezone(ctx, id).Timezone(timezone).Execute()
 
-Change VPS Timezone
+Set the system timezone on the VPS guest OS
 
 
 
@@ -2275,7 +2553,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostVpsChangeWebuzoPassword(ctx, id).Password(password).Execute()
 
-Change Webuzo Password
+Rotate the Webuzo control panel admin password (re-auth required)
 
 
 
@@ -2347,7 +2625,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostVpsInsertCd(ctx, id).Url(url).Execute()
 
-Insert CD in VPS
+Mount an ISO image in the VPS virtual CD drive from a URL
 
 
 
@@ -2419,7 +2697,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostVpsReinstallOs(ctx, id).Template(template).LocalPassword(localPassword).Password(password).Execute()
 
-Reinstall VPS OS
+Reinstall the VPS OS (DESTRUCTIVE — wipes disk; requires re-auth)
 
 
 
@@ -2495,7 +2773,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostVpsResetPassword(ctx, id).Execute()
 
-Reset VPS Password
+Reset the VPS root password to a server-generated random value
 
 
 
@@ -2565,7 +2843,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostVpsRestore(ctx, id).RestoreRequest(restoreRequest).Execute()
 
-Restore VPS from Backup
+Restore the VPS from a backup (DESTRUCTIVE — overwrites disk)
 
 
 
@@ -2637,7 +2915,7 @@ Name | Type | Description  | Notes
 
 > TextResponse PostVpsReverseDns(ctx, id).ReverseDnsEntries(reverseDnsEntries).Execute()
 
-Update Reverse DNS
+Bulk-update PTR (reverse-DNS) records for one or more VPS IPs
 
 
 
@@ -2709,7 +2987,7 @@ Name | Type | Description  | Notes
 
 > QueueResponse PostVpsSetupVnc(ctx, id).Execute()
 
-Setup VNC
+Provision or refresh the VNC console endpoint for the VPS
 
 
 
@@ -2779,7 +3057,7 @@ Name | Type | Description  | Notes
 
 > PostVpsSlices(ctx, id).Execute()
 
-Purchase Slice Upgrade
+Upgrade or downgrade the VPS slice count (creates prorated invoice on upgrade)
 
 
 
@@ -2843,11 +3121,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PostVpsTrafficUsage
+
+> PostVpsTrafficUsage(ctx, id).Execute()
+
+Search/filter VPS bandwidth usage with custom criteria (reserved)
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | VPS ID number
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.VPSAPI.PostVpsTrafficUsage(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VPSAPI.PostVpsTrafficUsage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | VPS ID number | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPostVpsTrafficUsageRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## PostVpsViewDesktop
 
 > PostVpsViewDesktop(ctx, id).Execute()
 
-Update View Desktop
+Refresh the remote-desktop session connection info after IP/hostname changes
 
 
 
@@ -2915,7 +3261,7 @@ Name | Type | Description  | Notes
 
 > VpsOrderPutResponse PutVps(ctx).VpsOrderPutRequest(vpsOrderPutRequest).Execute()
 
-Validate VPS Order
+Validate a VPS order configuration and quote the cost — dry run, no charge
 
 
 
@@ -2977,11 +3323,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## PutVpsBuyHdSpace
+
+> PutVpsBuyHdSpace(ctx, id).Execute()
+
+Preview cost to set additional VPS disk to a target GB size — dry run
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	id := int32(56) // int32 | VPS ID number
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.VPSAPI.PutVpsBuyHdSpace(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `VPSAPI.PutVpsBuyHdSpace``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**id** | **int32** | VPS ID number | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiPutVpsBuyHdSpaceRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[sessionIdCookieAuth](../README.md#sessionIdCookieAuth), [apiKeyAuth](../README.md#apiKeyAuth), [sessionIdHeaderAuth](../README.md#sessionIdHeaderAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## UpdateVpsInfo
 
 > SuccessTextResponse UpdateVpsInfo(ctx, id).Execute()
 
-Update VPS Order
+Update editable settings on a VPS service record
 
 
 
@@ -3051,7 +3465,7 @@ Name | Type | Description  | Notes
 
 > VPSCancel200Response VPSCancel(ctx, id).Execute()
 
-Cancel VPS Service
+Cancel a VPS service at the end of the current billing cycle
 
 
 

@@ -18,4 +18,3 @@ case class HomeServicesBackups(
   /* Number of backups. */
   count: Option[Int] = None
 )
-

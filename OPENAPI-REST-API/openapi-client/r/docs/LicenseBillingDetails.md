@@ -1,4 +1,4 @@
-# openapi::LicenseBillingDetails
+# interserverapi::LicenseBillingDetails
 
 Billing information for a software license including payment status, billing cycle, and cost.
 

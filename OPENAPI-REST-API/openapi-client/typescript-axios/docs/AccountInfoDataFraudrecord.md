@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { AccountInfoDataFraudrecord } from './api';
+import { AccountInfoDataFraudrecord } from '@interserver/myadmin-client';
 
 const instance: AccountInfoDataFraudrecord = {
     score,

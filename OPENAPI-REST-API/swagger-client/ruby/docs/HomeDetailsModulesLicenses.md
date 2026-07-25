@@ -1,4 +1,4 @@
-# SwaggerClient::HomeDetailsModulesLicenses
+# InterserverApiClient::HomeDetailsModulesLicenses
 
 ## Properties
 Name | Type | Description | Notes

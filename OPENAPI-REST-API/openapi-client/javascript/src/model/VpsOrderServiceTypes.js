@@ -17,7 +17,7 @@ import VpsOrderServiceTypes32 from './VpsOrderServiceTypes32';
 /**
  * The VpsOrderServiceTypes model module.
  * @module model/VpsOrderServiceTypes
- * @version 0.9.0
+ * @version 1.0.0
  */
 class VpsOrderServiceTypes {
     /**

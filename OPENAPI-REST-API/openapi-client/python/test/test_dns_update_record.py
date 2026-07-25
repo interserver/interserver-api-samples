@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.dns_update_record import DnsUpdateRecord
+from interserver_api_client.models.dns_update_record import DnsUpdateRecord
 
 class TestDnsUpdateRecord(unittest.TestCase):
     """DnsUpdateRecord unit test stubs"""

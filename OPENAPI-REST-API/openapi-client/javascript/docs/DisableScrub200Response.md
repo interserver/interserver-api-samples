@@ -1,4 +1,4 @@
-# InterServerManagementApi.DisableScrub200Response
+# InterserverApiClient.DisableScrub200Response
 
 ## Properties
 

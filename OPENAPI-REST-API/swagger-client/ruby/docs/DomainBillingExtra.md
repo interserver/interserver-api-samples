@@ -1,4 +1,4 @@
-# SwaggerClient::DomainBillingExtra
+# InterserverApiClient::DomainBillingExtra
 
 ## Properties
 Name | Type | Description | Notes

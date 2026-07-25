@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_row import QuickserverRow
+from interserver_api_client.models.quickserver_row import QuickserverRow
 
 class TestQuickserverRow(unittest.TestCase):
     """QuickserverRow unit test stubs"""

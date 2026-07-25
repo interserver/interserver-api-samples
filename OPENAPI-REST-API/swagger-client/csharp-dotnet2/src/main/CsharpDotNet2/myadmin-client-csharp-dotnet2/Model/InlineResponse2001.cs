@@ -13,18 +13,12 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class InlineResponse2001 {
     /// <summary>
-    /// Gets or Sets Success
+    /// Affiliate signup statistics and client-side data.
     /// </summary>
-    [DataMember(Name="success", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "success")]
-    public bool? Success { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Text
-    /// </summary>
-    [DataMember(Name="text", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "text")]
-    public string Text { get; set; }
+    /// <value>Affiliate signup statistics and client-side data.</value>
+    [DataMember(Name="data", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "data")]
+    public Object Data { get; set; }
 
 
     /// <summary>
@@ -34,8 +28,7 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse2001 {\n");
-      sb.Append("  Success: ").Append(Success).Append("\n");
-      sb.Append("  Text: ").Append(Text).Append("\n");
+      sb.Append("  Data: ").Append(Data).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

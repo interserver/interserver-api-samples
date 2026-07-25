@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::LicensesOrderPackageCosts
+# InterServerAPI::Object::LicensesOrderPackageCosts
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::LicensesOrderPackageCosts;
+use InterServerAPI::Object::LicensesOrderPackageCosts;
 ```
 
 ## Properties

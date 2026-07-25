@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.add_server200_response import AddServer200Response
+from interserver_api_client.models.add_server200_response import AddServer200Response
 
 class TestAddServer200Response(unittest.TestCase):
     """AddServer200Response unit test stubs"""

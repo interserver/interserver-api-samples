@@ -1,4 +1,4 @@
-# SwaggerClient::DomainAllInfoAttributes
+# InterserverApiClient::DomainAllInfoAttributes
 
 ## Properties
 Name | Type | Description | Notes

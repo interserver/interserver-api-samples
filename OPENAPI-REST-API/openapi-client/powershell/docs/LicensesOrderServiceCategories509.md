@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$LicensesOrderServiceCategories509 = Initialize-PSOpenAPIToolsLicensesOrderServiceCategories509  -CategoryId 509 `
+$LicensesOrderServiceCategories509 = Initialize-InterserverApiLicensesOrderServiceCategories509  -CategoryId 509 `
  -CategoryName Webuzo `
  -CategoryTag webuzo `
  -CategoryModule licenses

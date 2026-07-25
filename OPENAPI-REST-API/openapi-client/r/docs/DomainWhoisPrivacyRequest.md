@@ -1,4 +1,4 @@
-# openapi::DomainWhoisPrivacyRequest
+# interserverapi::DomainWhoisPrivacyRequest
 
 Request payload for enabling or disabling Whois privacy.
 

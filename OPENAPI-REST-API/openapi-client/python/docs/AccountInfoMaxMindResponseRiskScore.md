@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.account_info_max_mind_response_risk_score import AccountInfoMaxMindResponseRiskScore
+from interserver_api_client.models.account_info_max_mind_response_risk_score import AccountInfoMaxMindResponseRiskScore
 
 # TODO update the JSON string below
 json = "{}"

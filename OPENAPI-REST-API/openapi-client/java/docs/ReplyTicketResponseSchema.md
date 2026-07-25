@@ -11,4 +11,8 @@
 |**postId** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

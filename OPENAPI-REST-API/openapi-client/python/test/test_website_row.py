@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.website_row import WebsiteRow
+from interserver_api_client.models.website_row import WebsiteRow
 
 class TestWebsiteRow(unittest.TestCase):
     """WebsiteRow unit test stubs"""

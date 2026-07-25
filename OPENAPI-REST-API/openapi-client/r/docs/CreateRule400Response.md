@@ -1,4 +1,4 @@
-# openapi::CreateRule400Response
+# interserverapi::CreateRule400Response
 
 
 ## Properties

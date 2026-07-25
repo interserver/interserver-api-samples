@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$VpsOrderOsNames = Initialize-PSOpenAPIToolsVpsOrderOsNames  -Opensuse OpenSUSE `
+$VpsOrderOsNames = Initialize-InterserverApiVpsOrderOsNames  -Opensuse OpenSUSE `
  -Ubuntu Ubuntu
 ```
 

@@ -1,4 +1,4 @@
-# SwaggerClient::ServerOrderCpLi
+# InterserverApiClient::ServerOrderCpLi
 
 ## Properties
 Name | Type | Description | Notes

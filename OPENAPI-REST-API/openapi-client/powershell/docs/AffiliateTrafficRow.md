@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AffiliateTrafficRow = Initialize-PSOpenAPIToolsAffiliateTrafficRow  -TrafficId null `
+$AffiliateTrafficRow = Initialize-InterserverApiAffiliateTrafficRow  -TrafficId null `
  -TrafficIp null `
  -TrafficUrl null `
  -TrafficAffiliate null `

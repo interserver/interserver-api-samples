@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The HomeServicesWebhostingLinks model module.
  * @module model/HomeServicesWebhostingLinks
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeServicesWebhostingLinks {
     /**

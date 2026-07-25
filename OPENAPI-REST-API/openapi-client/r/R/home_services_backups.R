@@ -88,7 +88,7 @@ HomeServicesBackups <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`links`)) {
-        self$`links` <- ApiClient$new()$deserializeObj(this_object$`links`, "array[character]", loadNamespace("openapi"))
+        self$`links` <- ApiClient$new()$deserializeObj(this_object$`links`, "array[character]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`count`)) {
         self$`count` <- this_object$`count`
@@ -114,7 +114,7 @@ HomeServicesBackups <- R6::R6Class(
     #' @return the instance of HomeServicesBackups
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`links` <- ApiClient$new()$deserializeObj(this_object$`links`, "array[character]", loadNamespace("openapi"))
+      self$`links` <- ApiClient$new()$deserializeObj(this_object$`links`, "array[character]", loadNamespace("interserverapi"))
       self$`count` <- this_object$`count`
       self
     },

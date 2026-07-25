@@ -1,4 +1,4 @@
-# SwaggerClient::InlineResponse2012OrderDetailsCjParams
+# InterserverApiClient::InlineResponse2012OrderDetailsCjParams
 
 ## Properties
 Name | Type | Description | Notes

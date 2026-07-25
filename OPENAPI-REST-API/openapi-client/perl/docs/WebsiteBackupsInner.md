@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::WebsiteBackupsInner
+# InterServerAPI::Object::WebsiteBackupsInner
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::WebsiteBackupsInner;
+use InterServerAPI::Object::WebsiteBackupsInner;
 ```
 
 ## Properties

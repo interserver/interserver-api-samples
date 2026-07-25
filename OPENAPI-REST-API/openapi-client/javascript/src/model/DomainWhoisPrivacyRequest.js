@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainWhoisPrivacyRequest model module.
  * @module model/DomainWhoisPrivacyRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainWhoisPrivacyRequest {
     /**

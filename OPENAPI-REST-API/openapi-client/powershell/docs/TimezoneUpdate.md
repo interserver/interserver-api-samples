@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$TimezoneUpdate = Initialize-PSOpenAPIToolsTimezoneUpdate  -Timezone America/New_York
+$TimezoneUpdate = Initialize-InterserverApiTimezoneUpdate  -Timezone America/New_York
 ```
 
 - Convert the resource to JSON

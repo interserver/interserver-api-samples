@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | [optional] 
+**_id** | **String** |  | [optional] 
 **sourceIp** | **String** |  | [optional] 
 **destinationIp** | **String** |  | [optional] 
 **protocolId** | **String** |  | [optional] 

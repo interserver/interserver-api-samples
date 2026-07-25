@@ -11,4 +11,8 @@
 |**count** | **Integer** | Number of servers. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -1,4 +1,4 @@
-# InterServerManagementApi.PostOauthCallback200Response
+# InterserverApiClient.PostOauthCallback200Response
 
 ## Properties
 

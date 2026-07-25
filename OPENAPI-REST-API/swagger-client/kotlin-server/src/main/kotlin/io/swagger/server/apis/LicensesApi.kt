@@ -35,10 +35,11 @@ import myadmin-client-kotlin-server.infrastructure.ApiPrincipal
 
 
 import io.swagger.server.models.ChargeInvoiceRows
-import io.swagger.server.models.InlineResponse2004
+import io.swagger.server.models.InlineResponse2005
 import io.swagger.server.models.InlineResponse401
 import io.swagger.server.models.IpObject
 import io.swagger.server.models.License
+import io.swagger.server.models.LicenseOrderRequest
 import io.swagger.server.models.LicenseRow
 import io.swagger.server.models.LicensesOrder
 import io.swagger.server.models.ServiceOrderPostResponse
@@ -240,14 +241,6 @@ fun Route.LicensesApi() {
                 "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
                 else -> call.respondText(exampleContentString)
             }        }
-    }
-    get<Paths.getLicenseOrderCatTagInfo> {  _: Paths.getLicenseOrderCatTagInfo ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            call.respond(HttpStatusCode.NotImplemented)
-        }
     }
     get<Paths.getLicensesWelcomeEmail> {  _: Paths.getLicensesWelcomeEmail ->
         val principal = call.authentication.principal<ApiPrincipal>()

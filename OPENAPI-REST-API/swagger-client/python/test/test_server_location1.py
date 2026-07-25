@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.server_location1 import ServerLocation1  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.server_location1 import ServerLocation1  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestServerLocation1(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestServerLocation1(unittest.TestCase):
     def testServerLocation1(self):
         """Test ServerLocation1"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.server_location1.ServerLocation1()  # noqa: E501
+        # model = interserver_api_client.models.server_location1.ServerLocation1()  # noqa: E501
         pass
 
 

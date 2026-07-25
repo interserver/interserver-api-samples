@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.domain_dnssec_records_inner import DomainDnssecRecordsInner
+from interserver_api_client.models.domain_dnssec_records_inner import DomainDnssecRecordsInner
 
 class TestDomainDnssecRecordsInner(unittest.TestCase):
     """DomainDnssecRecordsInner unit test stubs"""

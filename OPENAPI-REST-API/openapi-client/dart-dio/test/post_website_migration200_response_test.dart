@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for PostWebsiteMigration200Response
 void main() {
-  final instance = PostWebsiteMigration200ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final PostWebsiteMigration200Response? instance = /* PostWebsiteMigration200Response(...) */ null;
+  // TODO add properties to the entity
 
   group(PostWebsiteMigration200Response, () {
     // Confirmation message.
-    // String text
+    // Optional<String?> text
     test('to test the property `text`', () async {
       // TODO
     });
 
     // The support ticket ID created for tracking the migration. Use this with `/tickets/{id}` to check migration progress.
-    // int ticket
+    // Optional<int?> ticket
     test('to test the property `ticket`', () async {
       // TODO
     });

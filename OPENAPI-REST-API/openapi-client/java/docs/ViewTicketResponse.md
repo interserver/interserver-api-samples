@@ -14,4 +14,8 @@ Ticket details
 |**ticketPosts** | **TicketPostDetails** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

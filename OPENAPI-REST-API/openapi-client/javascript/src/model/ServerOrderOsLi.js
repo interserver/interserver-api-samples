@@ -17,7 +17,7 @@ import ServerOrderOS from './ServerOrderOS';
 /**
  * The ServerOrderOsLi model module.
  * @module model/ServerOrderOsLi
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServerOrderOsLi {
     /**

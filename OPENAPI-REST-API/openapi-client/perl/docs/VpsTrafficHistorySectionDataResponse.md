@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::VpsTrafficHistorySectionDataResponse
+# InterServerAPI::Object::VpsTrafficHistorySectionDataResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::VpsTrafficHistorySectionDataResponse;
+use InterServerAPI::Object::VpsTrafficHistorySectionDataResponse;
 ```
 
 ## Properties

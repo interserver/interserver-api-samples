@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BackupsOrderPackageCosts
+# InterServerAPI::Object::BackupsOrderPackageCosts
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BackupsOrderPackageCosts;
+use InterServerAPI::Object::BackupsOrderPackageCosts;
 ```
 
 ## Properties

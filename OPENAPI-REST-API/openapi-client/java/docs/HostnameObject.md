@@ -11,4 +11,8 @@ Request specifying the hostname.
 |**hostname** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

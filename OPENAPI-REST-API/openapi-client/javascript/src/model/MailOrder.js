@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailOrder model module.
  * @module model/MailOrder
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailOrder {
     /**

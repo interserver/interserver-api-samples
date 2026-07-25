@@ -1,4 +1,4 @@
-# InterServerManagementApi.BillingInvoiceList
+# InterserverApiClient.BillingInvoiceList
 
 ## Properties
 

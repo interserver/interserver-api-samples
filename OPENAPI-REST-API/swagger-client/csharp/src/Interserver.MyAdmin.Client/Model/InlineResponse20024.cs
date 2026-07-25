@@ -31,18 +31,41 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20024" /> class.
         /// </summary>
-        /// <param name="ips">A map of IP addresses to their current reverse DNS hostnames..</param>
-        public InlineResponse20024(Dictionary<string, string> ips = default(Dictionary<string, string>))
+        /// <param name="success">success (required).</param>
+        /// <param name="text">text (required).</param>
+        public InlineResponse20024(bool? success = default(bool?), string text = default(string))
         {
-            this.ips = ips;
+            // to ensure "success" is required (not null)
+            if (success == null)
+            {
+                throw new InvalidDataException("success is a required property for InlineResponse20024 and cannot be null");
+            }
+            else
+            {
+                this.success = success;
+            }
+            // to ensure "text" is required (not null)
+            if (text == null)
+            {
+                throw new InvalidDataException("text is a required property for InlineResponse20024 and cannot be null");
+            }
+            else
+            {
+                this.text = text;
+            }
         }
         
         /// <summary>
-        /// A map of IP addresses to their current reverse DNS hostnames.
+        /// Gets or Sets success
         /// </summary>
-        /// <value>A map of IP addresses to their current reverse DNS hostnames.</value>
-        [DataMember(Name="ips", EmitDefaultValue=false)]
-        public Dictionary<string, string> ips { get; set; }
+        [DataMember(Name="success", EmitDefaultValue=false)]
+        public bool? success { get; set; }
+
+        /// <summary>
+        /// Gets or Sets text
+        /// </summary>
+        [DataMember(Name="text", EmitDefaultValue=false)]
+        public string text { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,7 +75,8 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20024 {\n");
-            sb.Append("  ips: ").Append(ips).Append("\n");
+            sb.Append("  success: ").Append(success).Append("\n");
+            sb.Append("  text: ").Append(text).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,10 +112,14 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.ips == input.ips ||
-                    this.ips != null &&
-                    input.ips != null &&
-                    this.ips.SequenceEqual(input.ips)
+                    this.success == input.success ||
+                    (this.success != null &&
+                    this.success.Equals(input.success))
+                ) && 
+                (
+                    this.text == input.text ||
+                    (this.text != null &&
+                    this.text.Equals(input.text))
                 );
         }
 
@@ -104,8 +132,10 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ips != null)
-                    hashCode = hashCode * 59 + this.ips.GetHashCode();
+                if (this.success != null)
+                    hashCode = hashCode * 59 + this.success.GetHashCode();
+                if (this.text != null)
+                    hashCode = hashCode * 59 + this.text.GetHashCode();
                 return hashCode;
             }
         }

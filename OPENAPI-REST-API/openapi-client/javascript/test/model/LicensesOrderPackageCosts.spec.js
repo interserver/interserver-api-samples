@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LicensesOrderPackageCosts();
+    instance = new InterserverApiClient.LicensesOrderPackageCosts();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,13 +50,13 @@
   describe('LicensesOrderPackageCosts', function() {
     it('should create an instance of LicensesOrderPackageCosts', function() {
       // uncomment below and update the code to test LicensesOrderPackageCosts
-      //var instance = new InterServerManagementApi.LicensesOrderPackageCosts();
-      //expect(instance).to.be.a(InterServerManagementApi.LicensesOrderPackageCosts);
+      //var instance = new InterserverApiClient.LicensesOrderPackageCosts();
+      //expect(instance).to.be.a(InterserverApiClient.LicensesOrderPackageCosts);
     });
 
     it('should have the property LicensesOrderPackageCosts11468 (base name: "LicensesOrderPackageCosts11468")', function() {
       // uncomment below and update the code to test the property LicensesOrderPackageCosts11468
-      //var instance = new InterServerManagementApi.LicensesOrderPackageCosts();
+      //var instance = new InterserverApiClient.LicensesOrderPackageCosts();
       //expect(instance).to.be();
     });
 

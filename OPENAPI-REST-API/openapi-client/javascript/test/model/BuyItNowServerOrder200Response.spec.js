@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BuyItNowServerOrder200Response();
+    instance = new InterserverApiClient.BuyItNowServerOrder200Response();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('BuyItNowServerOrder200Response', function() {
     it('should create an instance of BuyItNowServerOrder200Response', function() {
       // uncomment below and update the code to test BuyItNowServerOrder200Response
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200Response();
-      //expect(instance).to.be.a(InterServerManagementApi.BuyItNowServerOrder200Response);
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200Response();
+      //expect(instance).to.be.a(InterserverApiClient.BuyItNowServerOrder200Response);
     });
 
     it('should have the property bandwidth (base name: "bandwidth")', function() {
       // uncomment below and update the code to test the property bandwidth
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200Response();
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property ips (base name: "ips")', function() {
       // uncomment below and update the code to test the property ips
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200Response();
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property os (base name: "os")', function() {
       // uncomment below and update the code to test the property os
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200Response();
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property cp (base name: "cp")', function() {
       // uncomment below and update the code to test the property cp
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200Response();
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200Response();
       //expect(instance).to.be();
     });
 
     it('should have the property raid (base name: "raid")', function() {
       // uncomment below and update the code to test the property raid
-      //var instance = new InterServerManagementApi.BuyItNowServerOrder200Response();
+      //var instance = new InterserverApiClient.BuyItNowServerOrder200Response();
       //expect(instance).to.be();
     });
 

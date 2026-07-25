@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { ScrubIpFilterTypes } from './api';
+import { ScrubIpFilterTypes } from '@interserver/myadmin-client';
 
 const instance: ScrubIpFilterTypes = {
     success,

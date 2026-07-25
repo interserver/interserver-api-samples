@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Int** | Unique identifier for the asset. | 
+**_id** | **Int** | Unique identifier for the asset. | 
 **orderId** | **String** | Order identifier for the asset. | 
 **hostname** | **String** | Hostname associated with the asset. | 
 **status** | **String** | Status of the asset. | 
@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **comments** | **String** | Comments associated with the asset. | 
 **make** | **String** | Make of the asset. | 
 **model** | **String** | Model of the asset. | 
-**description** | **String** | Description of the asset. | 
+**_description** | **String** | Description of the asset. | 
 **customerId** | **String** | Customer identifier for the asset. | 
 **externalId** | **String** | External identifier for the asset. | 
 **billingStatus** | **String** | Billing status of the asset. | 

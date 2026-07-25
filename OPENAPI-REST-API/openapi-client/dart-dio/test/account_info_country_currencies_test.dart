@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for AccountInfoCountryCurrencies
 void main() {
-  final instance = AccountInfoCountryCurrenciesBuilder();
-  // TODO add properties to the builder and call build()
+  final AccountInfoCountryCurrencies? instance = /* AccountInfoCountryCurrencies(...) */ null;
+  // TODO add properties to the entity
 
   group(AccountInfoCountryCurrencies, () {
   });

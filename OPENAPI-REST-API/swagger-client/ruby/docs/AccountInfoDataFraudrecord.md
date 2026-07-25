@@ -1,4 +1,4 @@
-# SwaggerClient::AccountInfoDataFraudrecord
+# InterserverApiClient::AccountInfoDataFraudrecord
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,16 +1,16 @@
-# openapi.model.LicensesOrder
+# interserver_api.model.LicensesOrder
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**serviceCategories** | [**LicensesOrderServiceCategories**](LicensesOrderServiceCategories.md) |  | [optional] 
-**packageCosts** | [**LicensesOrderPackageCosts**](LicensesOrderPackageCosts.md) |  | [optional] 
-**serviceTypes** | [**LicensesOrderServiceTypes**](LicensesOrderServiceTypes.md) |  | [optional] 
+**serviceCategories** | [**Optional&lt;LicensesOrderServiceCategories?&gt;**](LicensesOrderServiceCategories.md) |  | [optional] 
+**packageCosts** | [**Optional&lt;LicensesOrderPackageCosts?&gt;**](LicensesOrderPackageCosts.md) |  | [optional] 
+**serviceTypes** | [**Optional&lt;LicensesOrderServiceTypes?&gt;**](LicensesOrderServiceTypes.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

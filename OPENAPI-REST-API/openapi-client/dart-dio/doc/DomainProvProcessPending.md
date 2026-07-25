@@ -1,21 +1,21 @@
-# openapi.model.DomainProvProcessPending
+# interserver_api.model.DomainProvProcessPending
 
 ## Load the model package
 ```dart
-import 'package:openapi/api.dart';
+import 'package:interserver_api/api.dart';
 ```
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**oPSVersion** | **String** |  | [optional] 
-**responseText** | **String** |  | [optional] 
-**protocol** | **String** |  | [optional] 
-**responseCode** | **String** |  | [optional] 
-**action** | **String** |  | [optional] 
-**object** | **String** |  | [optional] 
-**isSuccess** | **String** |  | [optional] 
-**attributes** | [**DomainProvProcessPendingAttributes**](DomainProvProcessPendingAttributes.md) |  | [optional] 
+**oPSVersion** | **Optional&lt;String?&gt;** |  | [optional] 
+**responseText** | **Optional&lt;String?&gt;** |  | [optional] 
+**protocol** | **Optional&lt;String?&gt;** |  | [optional] 
+**responseCode** | **Optional&lt;String?&gt;** |  | [optional] 
+**action** | **Optional&lt;String?&gt;** |  | [optional] 
+**object** | **Optional&lt;String?&gt;** |  | [optional] 
+**isSuccess** | **Optional&lt;String?&gt;** |  | [optional] 
+**attributes** | [**Optional&lt;DomainProvProcessPendingAttributes?&gt;**](DomainProvProcessPendingAttributes.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

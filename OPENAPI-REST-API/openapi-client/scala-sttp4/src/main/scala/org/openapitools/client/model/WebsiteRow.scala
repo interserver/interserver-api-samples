@@ -30,4 +30,3 @@ case class WebsiteRow(
   /* The comment of the website. */
   website_comment: String
 )
-

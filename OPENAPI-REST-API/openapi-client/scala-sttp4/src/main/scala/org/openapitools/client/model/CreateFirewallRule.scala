@@ -26,19 +26,53 @@ case class CreateFirewallRule(
   source_ip: Option[String] = None,
   source_port: Option[Int] = None
 )
-
 object CreateFirewallRuleEnums {
 
-  type ProtocolId = ProtocolId.Value
-  type XdpAction = XdpAction.Value
-  object ProtocolId extends Enumeration {
-    val `1` = Value("1")
-    val `2` = Value("2")
+  sealed trait ProtocolId
+  object ProtocolId {
+    case object `1` extends ProtocolId
+    case object `2` extends ProtocolId
+
+    import org.json4s._
+
+    implicit object ProtocolIdSerializer extends Serializer[ProtocolId] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), ProtocolId] = {
+        case (TypeInfo(clazz, _), json) if classOf[ProtocolId].isAssignableFrom(clazz) =>
+          json match {
+            case JString("1") => `1`
+            case JString("2") => `2`
+            case other => throw new MappingException(s"Invalid ProtocolId: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case `1` => JString("1")
+        case `2` => JString("2")
+      }
+    }
   }
 
-  object XdpAction extends Enumeration {
-    val `0` = Value("0")
-    val `1` = Value("1")
-  }
+  sealed trait XdpAction
+  object XdpAction {
+    case object `0` extends XdpAction
+    case object `1` extends XdpAction
 
+    import org.json4s._
+
+    implicit object XdpActionSerializer extends Serializer[XdpAction] {
+      def deserialize(implicit format: Formats): PartialFunction[(TypeInfo, JValue), XdpAction] = {
+        case (TypeInfo(clazz, _), json) if classOf[XdpAction].isAssignableFrom(clazz) =>
+          json match {
+            case JString("0") => `0`
+            case JString("1") => `1`
+            case other => throw new MappingException(s"Invalid XdpAction: $other")
+          }
+      }
+
+      def serialize(implicit format: Formats): PartialFunction[Any, JValue] = {
+        case `0` => JString("0")
+        case `1` => JString("1")
+      }
+    }
+  }
 }

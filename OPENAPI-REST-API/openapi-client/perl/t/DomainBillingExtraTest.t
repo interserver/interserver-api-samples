@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::DomainBillingExtra');
+use_ok('InterServerAPI::Object::DomainBillingExtra');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::DomainBillingExtra->new();
+#my $instance = InterServerAPI::Object::DomainBillingExtra->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::DomainBillingExtra');
+#isa_ok($instance, 'InterServerAPI::Object::DomainBillingExtra');
 
 
 done_testing();

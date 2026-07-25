@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.mail_alerts_response_inner import MailAlertsResponseInner
+from interserver_api_client.models.mail_alerts_response_inner import MailAlertsResponseInner
 
 class TestMailAlertsResponseInner(unittest.TestCase):
     """MailAlertsResponseInner unit test stubs"""

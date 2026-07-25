@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for IpLimitRange
 void main() {
-  final instance = IpLimitRangeBuilder();
-  // TODO add properties to the builder and call build()
+  final IpLimitRange? instance = /* IpLimitRange(...) */ null;
+  // TODO add properties to the entity
 
   group(IpLimitRange, () {
     // The begining (or first) IP address in the range.

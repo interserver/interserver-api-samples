@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::WebsiteLoginResponse
+# InterServerAPI::Object::WebsiteLoginResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::WebsiteLoginResponse;
+use InterServerAPI::Object::WebsiteLoginResponse;
 ```
 
 ## Properties

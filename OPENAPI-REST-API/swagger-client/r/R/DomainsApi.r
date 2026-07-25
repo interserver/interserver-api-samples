@@ -17,91 +17,88 @@
 #' @section Methods:
 #' \describe{
 #'
-#' add_domain Place Domain Order
+#' add_domain Place a new domain registration or transfer order, generate billing invoice
 #'
 #'
-#' add_domain_dnssec Add Domain DNSSEC Records
+#' add_domain_dnssec Register DNSSEC DS records on the domain at OpenSRS
 #'
 #'
-#' add_domain_nameserver Add Registered Nameserver
+#' add_domain_nameserver Register a new nameserver host with glue IP at the registry (registered nameserver)
 #'
 #'
-#' cancel_domain Cancel Domain Order
+#' cancel_domain Cancel a domain order in the billing system to stop auto-renewals
 #'
 #'
-#' delete_domain_dnssec Remove Domain DNSSEC Records
+#' delete_domain_dnssec Clear all DNSSEC DS records on the domain (disable DNSSEC at the registrar)
 #'
 #'
-#' delete_domain_nameserver Delete Registered Nameserver
+#' delete_domain_nameserver Remove one registered nameserver glue record from the domain
 #'
 #'
-#' get_domain_contact Get Domain Contact Details
+#' get_domain_contact Read the current registrant/admin/tech/billing contact field set for a domain
 #'
 #'
-#' get_domain_dnssec Get Domain DNSSEC Records
+#' get_domain_dnssec Read the DNSSEC DS record set currently registered with the registrar
 #'
 #'
-#' get_domain_info Get Domain Order
+#' get_domain_info Read full billing, registrar, and service detail for one domain
 #'
 #'
-#' get_domain_invoices Get Domain Invoices
+#' get_domain_invoices List all billing invoices scoped to one domain order
 #'
 #'
-#' get_domain_lookup Lookup Domain Availability and Pricing
+#' get_domain_lookup Check availability, premium status, and pricing for a specific domain
 #'
 #'
-#' get_domain_nameservers List Registered Nameservers
+#' get_domain_nameservers List registered nameserver hosts and glue IP addresses for a domain
 #'
 #'
-#' get_domain_order_fields Get Domain Order Fields
+#' get_domain_renewal Read renewal pricing, expiry, and whether a renewal invoice already exists
 #'
 #'
-#' get_domain_order_search_results Get Domain Order Search Results
+#' get_domain_search Get registrar-suggested domain alternatives and bulk availability for a search term
 #'
 #'
-#' get_domain_renewal Start Domain Renewal Flow
+#' get_domain_transfer Read OpenSRS transfer status for an in-progress domain transfer order
 #'
 #'
-#' get_domain_search Search Domain Suggestions
+#' get_domain_whois_privacy Read Whois privacy availability, current state, and add-on pricing for a domain
 #'
 #'
-#' get_domain_transfer Start Domain Transfer Flow
+#' get_domains_list List every domain registration on the account with billing and registration metadata
 #'
 #'
-#' get_domain_whois_privacy Get Whois Privacy Status
+#' get_domains_welcome_email Resend the domain welcome email with registration details and management instructions
 #'
 #'
-#' get_domains_list List Domain Orders
+#' get_new_domain Read the buyable domain TLD service catalog and Whois privacy pricing
 #'
 #'
-#' get_domains_welcome_email Resend Domain Welcome Email
+#' patch_domains Validate posted domain-order field values before committing — dry run
 #'
 #'
-#' get_new_domain Get Domain Ordering Information
+#' post_domain_renewal Submit a domain renewal request and generate the renewal invoice
 #'
 #'
-#' patch_domains Validate Domain Order
+#' post_domain_search Get the full order form data for a hostname in one round-trip (search → order preview)
 #'
 #'
-#' post_domain_renewal Request Domain Renewal
+#' post_domain_transfer Re-poll OpenSRS transfer status for a domain order via POST
 #'
 #'
-#' post_domain_transfer Request Domain Transfer
+#' put_domains Preview per-TLD field requirements for a domain order — no commit
 #'
 #'
-#' put_domains Domain Order Search
+#' update_domain_contact Update registrant/admin contact details and push them to OpenSRS
 #'
 #'
-#' update_domain_contact Update Domain Contact Details
+#' update_domain_info POST mutation hook for the domain detail page (use dedicated ops where possible)
 #'
 #'
-#' update_domain_info Update Domain Order
+#' update_domain_nameservers Replace the full authoritative-nameserver delegation list at the registrar
 #'
 #'
-#' update_domain_nameservers Replace Nameserver Set
-#'
-#'
-#' update_domain_whois_privacy Update Whois Privacy
+#' update_domain_whois_privacy Order, enable, or cancel the Whois privacy add-on for a domain
 #'
 #' }
 #'
@@ -119,10 +116,16 @@ DomainsApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    add_domain = function(...){
+    add_domain = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/domains/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -241,7 +244,7 @@ DomainsApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- InlineResponse2002$new()
+        returnObject <- InlineResponse2003$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -251,14 +254,10 @@ DomainsApi <- R6::R6Class(
       }
 
     }
-    delete_domain_dnssec = function(id, action, ...){
+    delete_domain_dnssec = function(id, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
-
-      if (!missing(`action`)) {
-        queryParams['action'] <- action
-      }
 
       urlPath <- "/domains/{id}/dnssec"
       if (!missing(`id`)) {
@@ -483,62 +482,6 @@ DomainsApi <- R6::R6Class(
       }
 
     }
-    get_domain_order_fields = function(domain, reg_type, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      urlPath <- "/domains/order/{domain}/{regType}"
-      if (!missing(`domain`)) {
-        urlPath <- gsub(paste0("\\{", "domain", "\\}"), `domain`, urlPath)
-      }
-
-      if (!missing(`reg_type`)) {
-        urlPath <- gsub(paste0("\\{", "regType", "\\}"), `reg_type`, urlPath)
-      }
-
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "GET",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        # void response, no need to return anything
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
-    get_domain_order_search_results = function(domain, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      urlPath <- "/domains/order/{domain}"
-      if (!missing(`domain`)) {
-        urlPath <- gsub(paste0("\\{", "domain", "\\}"), `domain`, urlPath)
-      }
-
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "GET",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        # void response, no need to return anything
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
     get_domain_renewal = function(id, ...){
       args <- list(...)
       queryParams <- list()
@@ -727,10 +670,16 @@ DomainsApi <- R6::R6Class(
       }
 
     }
-    patch_domains = function(...){
+    patch_domains = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/domains/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -777,6 +726,32 @@ DomainsApi <- R6::R6Class(
       }
 
     }
+    post_domain_search = function(name, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/domains/search/{name}"
+      if (!missing(`name`)) {
+        urlPath <- gsub(paste0("\\{", "name", "\\}"), `name`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        # void response, no need to return anything
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
     post_domain_transfer = function(id, ...){
       args <- list(...)
       queryParams <- list()
@@ -805,10 +780,16 @@ DomainsApi <- R6::R6Class(
       }
 
     }
-    put_domains = function(...){
+    put_domains = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/domains/order"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),

@@ -12,4 +12,8 @@ Request data to trigger a restore from backup.
 |**password** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

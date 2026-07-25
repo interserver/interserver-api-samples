@@ -22,4 +22,3 @@ case class BackupOrderPostResponseCjParams(
   QTY1: Option[Int] = None,
   CURRENCY: Option[String] = None
 )
-

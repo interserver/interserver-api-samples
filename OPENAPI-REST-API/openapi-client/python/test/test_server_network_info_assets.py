@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_network_info_assets import ServerNetworkInfoAssets
+from interserver_api_client.models.server_network_info_assets import ServerNetworkInfoAssets
 
 class TestServerNetworkInfoAssets(unittest.TestCase):
     """ServerNetworkInfoAssets unit test stubs"""
@@ -36,7 +36,7 @@ class TestServerNetworkInfoAssets(unittest.TestCase):
         model = ServerNetworkInfoAssets()
         if include_optional:
             return ServerNetworkInfoAssets(
-                var_3497 = openapi_client.models.server_asset.ServerAsset(
+                var_3497 = interserver_api_client.models.server_asset.ServerAsset(
                     id = 3497, 
                     order_id = '16058', 
                     hostname = 'myserver.host.com', 
@@ -84,14 +84,14 @@ class TestServerNetworkInfoAssets(unittest.TestCase):
                     switchports = [10414], 
                     vlans = [], 
                     vlans6 = [], 
-                    lease = openapi_client.models.server_lease.ServerLease(
+                    lease = interserver_api_client.models.server_lease.ServerLease(
                         mac = '0c:c4:7a:af:35:00', 
                         authenticated = False, 
                         group = '1', ), )
             )
         else:
             return ServerNetworkInfoAssets(
-                var_3497 = openapi_client.models.server_asset.ServerAsset(
+                var_3497 = interserver_api_client.models.server_asset.ServerAsset(
                     id = 3497, 
                     order_id = '16058', 
                     hostname = 'myserver.host.com', 
@@ -139,7 +139,7 @@ class TestServerNetworkInfoAssets(unittest.TestCase):
                     switchports = [10414], 
                     vlans = [], 
                     vlans6 = [], 
-                    lease = openapi_client.models.server_lease.ServerLease(
+                    lease = interserver_api_client.models.server_lease.ServerLease(
                         mac = '0c:c4:7a:af:35:00', 
                         authenticated = False, 
                         group = '1', ), ),

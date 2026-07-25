@@ -1,4 +1,4 @@
-# openapi::HomeDetailsModulesVps
+# interserverapi::HomeDetailsModulesVps
 
 Dashboard module configuration for VPS services.
 

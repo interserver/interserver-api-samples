@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The MailExtraInfoTableRow model module.
  * @module model/MailExtraInfoTableRow
- * @version 0.9.0
+ * @version 1.0.0
  */
 class MailExtraInfoTableRow {
     /**

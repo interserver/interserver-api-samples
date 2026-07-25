@@ -39,7 +39,7 @@ export interface ServerNetworkInfoSwitchports {
  * Check if a given object implements the ServerNetworkInfoSwitchports interface.
  */
 export function instanceOfServerNetworkInfoSwitchports(value: object): value is ServerNetworkInfoSwitchports {
-    if (!('_10414' in value) || value['_10414'] === undefined) return false;
+    if ((!('_10414' in (value as Record<string, any>)) && !('10414' in (value as Record<string, any>))) || ((value as Record<string, any>)['_10414'] === undefined && (value as Record<string, any>)['10414'] === undefined)) return false;
     return true;
 }
 

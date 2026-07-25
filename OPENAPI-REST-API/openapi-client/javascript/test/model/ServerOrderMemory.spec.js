@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.ServerOrderMemory();
+    instance = new InterserverApiClient.ServerOrderMemory();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,79 +50,79 @@
   describe('ServerOrderMemory', function() {
     it('should create an instance of ServerOrderMemory', function() {
       // uncomment below and update the code to test ServerOrderMemory
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
-      //expect(instance).to.be.a(InterServerManagementApi.ServerOrderMemory);
+      //var instance = new InterserverApiClient.ServerOrderMemory();
+      //expect(instance).to.be.a(InterserverApiClient.ServerOrderMemory);
     });
 
     it('should have the property id (base name: "id")', function() {
       // uncomment below and update the code to test the property id
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property price (base name: "price")', function() {
       // uncomment below and update the code to test the property price
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property img (base name: "img")', function() {
       // uncomment below and update the code to test the property img
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property short_desc (base name: "short_desc")', function() {
       // uncomment below and update the code to test the property short_desc
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property long_desc (base name: "long_desc")', function() {
       // uncomment below and update the code to test the property long_desc
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property manu (base name: "manu")', function() {
       // uncomment below and update the code to test the property manu
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property size (base name: "size")', function() {
       // uncomment below and update the code to test the property size
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property type (base name: "type")', function() {
       // uncomment below and update the code to test the property type
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property hidden (base name: "hidden")', function() {
       // uncomment below and update the code to test the property hidden
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property monthly_price (base name: "monthly_price")', function() {
       // uncomment below and update the code to test the property monthly_price
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property drive_type (base name: "drive_type")', function() {
       // uncomment below and update the code to test the property drive_type
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 
     it('should have the property monthly_price_display (base name: "monthly_price_display")', function() {
       // uncomment below and update the code to test the property monthly_price_display
-      //var instance = new InterServerManagementApi.ServerOrderMemory();
+      //var instance = new InterserverApiClient.ServerOrderMemory();
       //expect(instance).to.be();
     });
 

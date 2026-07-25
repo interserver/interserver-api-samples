@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$AccountInfoOauthConfig = Initialize-PSOpenAPIToolsAccountInfoOauthConfig  -Callback null `
+$AccountInfoOauthConfig = Initialize-InterserverApiAccountInfoOauthConfig  -Callback null `
  -Providers null
 ```
 

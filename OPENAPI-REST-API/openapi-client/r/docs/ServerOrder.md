@@ -1,4 +1,4 @@
-# openapi::ServerOrder
+# interserverapi::ServerOrder
 
 Object representing a server order.
 

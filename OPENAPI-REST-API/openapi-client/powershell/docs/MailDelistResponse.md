@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$MailDelistResponse = Initialize-PSOpenAPIToolsMailDelistResponse  -Id null `
+$MailDelistResponse = Initialize-InterserverApiMailDelistResponse  -Id null `
  -VarLocal null `
  -Mbtrap null `
  -Subject null `

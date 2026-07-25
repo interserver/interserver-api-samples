@@ -11,4 +11,8 @@
 |**salesAtSomedomainCom** | **Integer** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

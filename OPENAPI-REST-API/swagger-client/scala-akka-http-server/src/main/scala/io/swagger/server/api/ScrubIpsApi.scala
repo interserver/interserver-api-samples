@@ -15,13 +15,14 @@ import io.swagger.server.model.ScrubIpFilterTypes
 import io.swagger.server.model.ScrubIpPlaceOrder
 import io.swagger.server.model.ScrubIpsLogRowSchema
 import io.swagger.server.model.ScrubIpsRowSchema
-import io.swagger.server.model.inline_response_200_12
 import io.swagger.server.model.inline_response_200_13
 import io.swagger.server.model.inline_response_200_14
 import io.swagger.server.model.inline_response_200_15
 import io.swagger.server.model.inline_response_200_16
 import io.swagger.server.model.inline_response_200_17
 import io.swagger.server.model.inline_response_200_18
+import io.swagger.server.model.inline_response_200_19
+import io.swagger.server.model.inline_response_200_20
 import io.swagger.server.model.inline_response_201
 import io.swagger.server.model.inline_response_201_1
 import io.swagger.server.model.inline_response_201_2
@@ -256,6 +257,21 @@ class ScrubIpsApi(
        
       }
     } ~
+    path() { 
+      put {
+        
+          
+            
+              
+                entity(as[ScrubIpPlaceOrder]){ body =>
+                  scrubIpsService.putScrubIps(body = body)
+                }
+             
+           
+         
+       
+      }
+    } ~
     path() { (id) => 
       post {
         
@@ -290,16 +306,16 @@ class ScrubIpsApi(
 
 trait ScrubIpsApiService {
 
-  def cancelScrubIp200(responseinline_response_200_13: inline_response_200_13)(implicit toEntityMarshallerinline_response_200_13: ToEntityMarshaller[inline_response_200_13]): Route =
-    complete((200, responseinline_response_200_13))
+  def cancelScrubIp200(responseinline_response_200_14: inline_response_200_14)(implicit toEntityMarshallerinline_response_200_14: ToEntityMarshaller[inline_response_200_14]): Route =
+    complete((200, responseinline_response_200_14))
   def cancelScrubIp401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Request OK, DataType: inline_response_200_13
+   * Code: 200, Message: Request OK, DataType: inline_response_200_14
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def cancelScrubIp(id: Int)
-      (implicit toEntityMarshallerinline_response_200_13: ToEntityMarshaller[inline_response_200_13], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_14: ToEntityMarshaller[inline_response_200_14], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def createFilter201(responseinline_response_201_1: inline_response_201_1)(implicit toEntityMarshallerinline_response_201_1: ToEntityMarshaller[inline_response_201_1]): Route =
     complete((201, responseinline_response_201_1))
@@ -352,8 +368,8 @@ trait ScrubIpsApiService {
   def createRule(body: CreateFirewallRule, id: Int)
       (implicit toEntityMarshallerinline_response_201: ToEntityMarshaller[inline_response_201], toEntityMarshallerinline_response_400_1: ToEntityMarshaller[inline_response_400_1], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500_2: ToEntityMarshaller[inline_response_500_2]): Route
 
-  def deleteFilter200(responseinline_response_200_17: inline_response_200_17)(implicit toEntityMarshallerinline_response_200_17: ToEntityMarshaller[inline_response_200_17]): Route =
-    complete((200, responseinline_response_200_17))
+  def deleteFilter200(responseinline_response_200_18: inline_response_200_18)(implicit toEntityMarshallerinline_response_200_18: ToEntityMarshaller[inline_response_200_18]): Route =
+    complete((200, responseinline_response_200_18))
   def deleteFilter400(responseinline_response_400_5: inline_response_400_5)(implicit toEntityMarshallerinline_response_400_5: ToEntityMarshaller[inline_response_400_5]): Route =
     complete((400, responseinline_response_400_5))
   def deleteFilter401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -361,16 +377,16 @@ trait ScrubIpsApiService {
   def deleteFilter500(responseinline_response_500_5: inline_response_500_5)(implicit toEntityMarshallerinline_response_500_5: ToEntityMarshaller[inline_response_500_5]): Route =
     complete((500, responseinline_response_500_5))
   /**
-   * Code: 200, Message: Delete filter for scrub ip, DataType: inline_response_200_17
+   * Code: 200, Message: Delete filter for scrub ip, DataType: inline_response_200_18
    * Code: 400, Message: Bad Request, DataType: inline_response_400_5
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    * Code: 500, Message: Internal Server Error, DataType: inline_response_500_5
    */
   def deleteFilter(body: CreateFilter, id: Int)
-      (implicit toEntityMarshallerinline_response_200_17: ToEntityMarshaller[inline_response_200_17], toEntityMarshallerinline_response_400_5: ToEntityMarshaller[inline_response_400_5], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500_5: ToEntityMarshaller[inline_response_500_5]): Route
+      (implicit toEntityMarshallerinline_response_200_18: ToEntityMarshaller[inline_response_200_18], toEntityMarshallerinline_response_400_5: ToEntityMarshaller[inline_response_400_5], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500_5: ToEntityMarshaller[inline_response_500_5]): Route
 
-  def disableScrub200(responseinline_response_200_15: inline_response_200_15)(implicit toEntityMarshallerinline_response_200_15: ToEntityMarshaller[inline_response_200_15]): Route =
-    complete((200, responseinline_response_200_15))
+  def disableScrub200(responseinline_response_200_16: inline_response_200_16)(implicit toEntityMarshallerinline_response_200_16: ToEntityMarshaller[inline_response_200_16]): Route =
+    complete((200, responseinline_response_200_16))
   def disableScrub400(responseinline_response_400: inline_response_400)(implicit toEntityMarshallerinline_response_400: ToEntityMarshaller[inline_response_400]): Route =
     complete((400, responseinline_response_400))
   def disableScrub401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -378,49 +394,49 @@ trait ScrubIpsApiService {
   def disableScrub500(responseinline_response_500_1: inline_response_500_1)(implicit toEntityMarshallerinline_response_500_1: ToEntityMarshaller[inline_response_500_1]): Route =
     complete((500, responseinline_response_500_1))
   /**
-   * Code: 200, Message: Request OK, DataType: inline_response_200_15
+   * Code: 200, Message: Request OK, DataType: inline_response_200_16
    * Code: 400, Message: Bad request, DataType: inline_response_400
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    * Code: 500, Message: Internal Server Error, DataType: inline_response_500_1
    */
   def disableScrub(id: Int)
-      (implicit toEntityMarshallerinline_response_200_15: ToEntityMarshaller[inline_response_200_15], toEntityMarshallerinline_response_400: ToEntityMarshaller[inline_response_400], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500_1: ToEntityMarshaller[inline_response_500_1]): Route
+      (implicit toEntityMarshallerinline_response_200_16: ToEntityMarshaller[inline_response_200_16], toEntityMarshallerinline_response_400: ToEntityMarshaller[inline_response_400], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500_1: ToEntityMarshaller[inline_response_500_1]): Route
 
-  def enableScrub200(responseinline_response_200_14: inline_response_200_14)(implicit toEntityMarshallerinline_response_200_14: ToEntityMarshaller[inline_response_200_14]): Route =
-    complete((200, responseinline_response_200_14))
+  def enableScrub200(responseinline_response_200_15: inline_response_200_15)(implicit toEntityMarshallerinline_response_200_15: ToEntityMarshaller[inline_response_200_15]): Route =
+    complete((200, responseinline_response_200_15))
   def enableScrub401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   def enableScrub500(responseinline_response_500: inline_response_500)(implicit toEntityMarshallerinline_response_500: ToEntityMarshaller[inline_response_500]): Route =
     complete((500, responseinline_response_500))
   /**
-   * Code: 200, Message: Request OK, DataType: inline_response_200_14
+   * Code: 200, Message: Request OK, DataType: inline_response_200_15
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    * Code: 500, Message: Internal Server Error, DataType: inline_response_500
    */
   def enableScrub(id: Int)
-      (implicit toEntityMarshallerinline_response_200_14: ToEntityMarshaller[inline_response_200_14], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500: ToEntityMarshaller[inline_response_500]): Route
+      (implicit toEntityMarshallerinline_response_200_15: ToEntityMarshaller[inline_response_200_15], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500: ToEntityMarshaller[inline_response_500]): Route
 
-  def getOrderDetail200(responseinline_response_200_18: inline_response_200_18)(implicit toEntityMarshallerinline_response_200_18: ToEntityMarshaller[inline_response_200_18]): Route =
-    complete((200, responseinline_response_200_18))
+  def getOrderDetail200(responseinline_response_200_19: inline_response_200_19)(implicit toEntityMarshallerinline_response_200_19: ToEntityMarshaller[inline_response_200_19]): Route =
+    complete((200, responseinline_response_200_19))
   def getOrderDetail401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Order details, DataType: inline_response_200_18
+   * Code: 200, Message: Order details, DataType: inline_response_200_19
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def getOrderDetail()
-      (implicit toEntityMarshallerinline_response_200_18: ToEntityMarshaller[inline_response_200_18], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_19: ToEntityMarshaller[inline_response_200_19], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def getScrubIpDetails200(responseinline_response_200_12: inline_response_200_12)(implicit toEntityMarshallerinline_response_200_12: ToEntityMarshaller[inline_response_200_12]): Route =
-    complete((200, responseinline_response_200_12))
+  def getScrubIpDetails200(responseinline_response_200_13: inline_response_200_13)(implicit toEntityMarshallerinline_response_200_13: ToEntityMarshaller[inline_response_200_13]): Route =
+    complete((200, responseinline_response_200_13))
   def getScrubIpDetails401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Scrub IP service details including firewall rules and filters., DataType: inline_response_200_12
+   * Code: 200, Message: Scrub IP service details including firewall rules and filters., DataType: inline_response_200_13
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def getScrubIpDetails(id: Int)
-      (implicit toEntityMarshallerinline_response_200_12: ToEntityMarshaller[inline_response_200_12], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_13: ToEntityMarshaller[inline_response_200_13], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getScrubIpFilterTypes200(responseScrubIpFilterTypes: ScrubIpFilterTypes)(implicit toEntityMarshallerScrubIpFilterTypes: ToEntityMarshaller[ScrubIpFilterTypes]): Route =
     complete((200, responseScrubIpFilterTypes))
@@ -480,8 +496,19 @@ trait ScrubIpsApiService {
   def placeScrubOrder(body: ScrubIpPlaceOrder)
       (implicit toEntityMarshallerinline_response_201_2: ToEntityMarshaller[inline_response_201_2], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def scrubIpsDeleteGeoRule200(responseinline_response_200_16: inline_response_200_16)(implicit toEntityMarshallerinline_response_200_16: ToEntityMarshaller[inline_response_200_16]): Route =
-    complete((200, responseinline_response_200_16))
+  def putScrubIps200(responseinline_response_200_20: inline_response_200_20)(implicit toEntityMarshallerinline_response_200_20: ToEntityMarshaller[inline_response_200_20]): Route =
+    complete((200, responseinline_response_200_20))
+  def putScrubIps401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
+    complete((401, responseinline_response_401))
+  /**
+   * Code: 200, Message: Scrub IP order validation result., DataType: inline_response_200_20
+   * Code: 401, Message: Unauthorized, DataType: inline_response_401
+   */
+  def putScrubIps(body: ScrubIpPlaceOrder)
+      (implicit toEntityMarshallerinline_response_200_20: ToEntityMarshaller[inline_response_200_20], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+
+  def scrubIpsDeleteGeoRule200(responseinline_response_200_17: inline_response_200_17)(implicit toEntityMarshallerinline_response_200_17: ToEntityMarshaller[inline_response_200_17]): Route =
+    complete((200, responseinline_response_200_17))
   def scrubIpsDeleteGeoRule400(responseinline_response_400_2: inline_response_400_2)(implicit toEntityMarshallerinline_response_400_2: ToEntityMarshaller[inline_response_400_2]): Route =
     complete((400, responseinline_response_400_2))
   def scrubIpsDeleteGeoRule401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -489,16 +516,16 @@ trait ScrubIpsApiService {
   def scrubIpsDeleteGeoRule500(responseinline_response_500_3: inline_response_500_3)(implicit toEntityMarshallerinline_response_500_3: ToEntityMarshaller[inline_response_500_3]): Route =
     complete((500, responseinline_response_500_3))
   /**
-   * Code: 200, Message: Delete firewall rule for scrub ip, DataType: inline_response_200_16
+   * Code: 200, Message: Delete firewall rule for scrub ip, DataType: inline_response_200_17
    * Code: 400, Message: Bad Request, DataType: inline_response_400_2
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    * Code: 500, Message: Internal Server Error, DataType: inline_response_500_3
    */
   def scrubIpsDeleteGeoRule(body: Delete Geo Firewall Rule, id: Int)
-      (implicit toEntityMarshallerinline_response_200_16: ToEntityMarshaller[inline_response_200_16], toEntityMarshallerinline_response_400_2: ToEntityMarshaller[inline_response_400_2], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500_3: ToEntityMarshaller[inline_response_500_3]): Route
+      (implicit toEntityMarshallerinline_response_200_17: ToEntityMarshaller[inline_response_200_17], toEntityMarshallerinline_response_400_2: ToEntityMarshaller[inline_response_400_2], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500_3: ToEntityMarshaller[inline_response_500_3]): Route
 
-  def scrubIpsDeleteRule200(responseinline_response_200_16: inline_response_200_16)(implicit toEntityMarshallerinline_response_200_16: ToEntityMarshaller[inline_response_200_16]): Route =
-    complete((200, responseinline_response_200_16))
+  def scrubIpsDeleteRule200(responseinline_response_200_17: inline_response_200_17)(implicit toEntityMarshallerinline_response_200_17: ToEntityMarshaller[inline_response_200_17]): Route =
+    complete((200, responseinline_response_200_17))
   def scrubIpsDeleteRule400(responseinline_response_400_2: inline_response_400_2)(implicit toEntityMarshallerinline_response_400_2: ToEntityMarshaller[inline_response_400_2]): Route =
     complete((400, responseinline_response_400_2))
   def scrubIpsDeleteRule401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
@@ -506,13 +533,13 @@ trait ScrubIpsApiService {
   def scrubIpsDeleteRule500(responseinline_response_500_3: inline_response_500_3)(implicit toEntityMarshallerinline_response_500_3: ToEntityMarshaller[inline_response_500_3]): Route =
     complete((500, responseinline_response_500_3))
   /**
-   * Code: 200, Message: Delete firewall rule for scrub ip, DataType: inline_response_200_16
+   * Code: 200, Message: Delete firewall rule for scrub ip, DataType: inline_response_200_17
    * Code: 400, Message: Bad Request, DataType: inline_response_400_2
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    * Code: 500, Message: Internal Server Error, DataType: inline_response_500_3
    */
   def scrubIpsDeleteRule(body: Delete Firewall Rule, id: Int)
-      (implicit toEntityMarshallerinline_response_200_16: ToEntityMarshaller[inline_response_200_16], toEntityMarshallerinline_response_400_2: ToEntityMarshaller[inline_response_400_2], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500_3: ToEntityMarshaller[inline_response_500_3]): Route
+      (implicit toEntityMarshallerinline_response_200_17: ToEntityMarshaller[inline_response_200_17], toEntityMarshallerinline_response_400_2: ToEntityMarshaller[inline_response_400_2], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401], toEntityMarshallerinline_response_500_3: ToEntityMarshaller[inline_response_500_3]): Route
 
 }
 
@@ -530,7 +557,7 @@ trait ScrubIpsApiMarshaller {
   implicit def fromRequestUnmarshallerScrubIpPlaceOrder: FromRequestUnmarshaller[ScrubIpPlaceOrder]
 
 
-  implicit def toEntityMarshallerinline_response_200_13: ToEntityMarshaller[inline_response_200_13]
+  implicit def toEntityMarshallerinline_response_200_14: ToEntityMarshaller[inline_response_200_14]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -558,7 +585,7 @@ trait ScrubIpsApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_500_2: ToEntityMarshaller[inline_response_500_2]
 
-  implicit def toEntityMarshallerinline_response_200_17: ToEntityMarshaller[inline_response_200_17]
+  implicit def toEntityMarshallerinline_response_200_18: ToEntityMarshaller[inline_response_200_18]
 
   implicit def toEntityMarshallerinline_response_400_5: ToEntityMarshaller[inline_response_400_5]
 
@@ -566,7 +593,7 @@ trait ScrubIpsApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_500_5: ToEntityMarshaller[inline_response_500_5]
 
-  implicit def toEntityMarshallerinline_response_200_15: ToEntityMarshaller[inline_response_200_15]
+  implicit def toEntityMarshallerinline_response_200_16: ToEntityMarshaller[inline_response_200_16]
 
   implicit def toEntityMarshallerinline_response_400: ToEntityMarshaller[inline_response_400]
 
@@ -574,17 +601,17 @@ trait ScrubIpsApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_500_1: ToEntityMarshaller[inline_response_500_1]
 
-  implicit def toEntityMarshallerinline_response_200_14: ToEntityMarshaller[inline_response_200_14]
+  implicit def toEntityMarshallerinline_response_200_15: ToEntityMarshaller[inline_response_200_15]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
   implicit def toEntityMarshallerinline_response_500: ToEntityMarshaller[inline_response_500]
 
-  implicit def toEntityMarshallerinline_response_200_18: ToEntityMarshaller[inline_response_200_18]
+  implicit def toEntityMarshallerinline_response_200_19: ToEntityMarshaller[inline_response_200_19]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_12: ToEntityMarshaller[inline_response_200_12]
+  implicit def toEntityMarshallerinline_response_200_13: ToEntityMarshaller[inline_response_200_13]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -608,7 +635,11 @@ trait ScrubIpsApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_16: ToEntityMarshaller[inline_response_200_16]
+  implicit def toEntityMarshallerinline_response_200_20: ToEntityMarshaller[inline_response_200_20]
+
+  implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
+
+  implicit def toEntityMarshallerinline_response_200_17: ToEntityMarshaller[inline_response_200_17]
 
   implicit def toEntityMarshallerinline_response_400_2: ToEntityMarshaller[inline_response_400_2]
 
@@ -616,7 +647,7 @@ trait ScrubIpsApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_500_3: ToEntityMarshaller[inline_response_500_3]
 
-  implicit def toEntityMarshallerinline_response_200_16: ToEntityMarshaller[inline_response_200_16]
+  implicit def toEntityMarshallerinline_response_200_17: ToEntityMarshaller[inline_response_200_17]
 
   implicit def toEntityMarshallerinline_response_400_2: ToEntityMarshaller[inline_response_400_2]
 

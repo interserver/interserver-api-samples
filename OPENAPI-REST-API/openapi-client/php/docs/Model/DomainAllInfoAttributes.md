@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contactSet** | [**\Interserver\MyAdmin\Model\DomainAllInfoAttributesContactSet**](DomainAllInfoAttributesContactSet.md) |  | [optional]
+**contactSet** | [**\Interserver\\MyAdmin\Model\DomainAllInfoAttributesContactSet**](DomainAllInfoAttributesContactSet.md) |  | [optional]
 **registryCreatedate** | **string** |  | [optional]
 **registryExpiredate** | **string** |  | [optional]
 **tldData** | **string** |  | [optional]
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **autoRenew** | **string** |  | [optional]
 **sponsoringRsp** | **string** |  | [optional]
 **gdprConsentStatus** | **string** |  | [optional]
-**nameserverList** | [**\Interserver\MyAdmin\Model\DomainNameServer[]**](DomainNameServer.md) |  | [optional]
+**nameserverList** | [**\Interserver\\MyAdmin\Model\DomainNameServer[]**](DomainNameServer.md) |  | [optional]
 **registryUpdatedate** | **string** |  | [optional]
 **affiliateId** | **string** |  | [optional]
 **expiredate** | **string** |  | [optional]

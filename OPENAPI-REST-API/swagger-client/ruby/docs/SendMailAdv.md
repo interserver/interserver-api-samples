@@ -1,4 +1,4 @@
-# SwaggerClient::SendMailAdv
+# InterserverApiClient::SendMailAdv
 
 ## Properties
 Name | Type | Description | Notes

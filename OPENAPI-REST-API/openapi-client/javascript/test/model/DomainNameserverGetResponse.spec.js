@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.DomainNameserverGetResponse();
+    instance = new InterserverApiClient.DomainNameserverGetResponse();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('DomainNameserverGetResponse', function() {
     it('should create an instance of DomainNameserverGetResponse', function() {
       // uncomment below and update the code to test DomainNameserverGetResponse
-      //var instance = new InterServerManagementApi.DomainNameserverGetResponse();
-      //expect(instance).to.be.a(InterServerManagementApi.DomainNameserverGetResponse);
+      //var instance = new InterserverApiClient.DomainNameserverGetResponse();
+      //expect(instance).to.be.a(InterserverApiClient.DomainNameserverGetResponse);
     });
 
   });

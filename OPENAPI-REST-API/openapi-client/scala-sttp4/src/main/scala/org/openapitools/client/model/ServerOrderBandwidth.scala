@@ -39,4 +39,3 @@ case class ServerOrderBandwidth(
   /* Display of monthly bandwidth price. */
   monthly_price_display: Option[String] = None
 )
-

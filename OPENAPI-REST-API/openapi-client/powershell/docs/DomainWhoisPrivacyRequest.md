@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainWhoisPrivacyRequest = Initialize-PSOpenAPIToolsDomainWhoisPrivacyRequest  -Func enable `
+$DomainWhoisPrivacyRequest = Initialize-InterserverApiDomainWhoisPrivacyRequest  -Func enable `
  -CsrfToken null `
  -DomainFirstname null `
  -DomainLastname null `

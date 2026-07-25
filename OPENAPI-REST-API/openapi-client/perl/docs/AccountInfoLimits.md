@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::AccountInfoLimits
+# InterServerAPI::Object::AccountInfoLimits
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::AccountInfoLimits;
+use InterServerAPI::Object::AccountInfoLimits;
 ```
 
 ## Properties

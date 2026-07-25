@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **vIsShallow** | **bool** |  | [optional]
-**dep** | [**\Interserver\MyAdmin\Model\LoginSubmissionExampleGRecaptchaResponseDep**](LoginSubmissionExampleGRecaptchaResponseDep.md) |  | [optional]
+**dep** | [**\Interserver\\MyAdmin\Model\LoginSubmissionExampleGRecaptchaResponseDep**](LoginSubmissionExampleGRecaptchaResponseDep.md) |  | [optional]
 **vIsRef** | **bool** |  | [optional]
 **rawValue** | **string** |  | [optional]
 **value** | **string** |  | [optional]

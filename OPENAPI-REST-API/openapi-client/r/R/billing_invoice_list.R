@@ -85,7 +85,7 @@ BillingInvoiceList <- R6::R6Class(
     fromJSON = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
       if (!is.null(this_object$`rows`)) {
-        self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[object]", loadNamespace("openapi"))
+        self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[object]", loadNamespace("interserverapi"))
       }
       if (!is.null(this_object$`summary`)) {
         self$`summary` <- this_object$`summary`
@@ -111,7 +111,7 @@ BillingInvoiceList <- R6::R6Class(
     #' @return the instance of BillingInvoiceList
     fromJSONString = function(input_json) {
       this_object <- jsonlite::fromJSON(input_json)
-      self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[object]", loadNamespace("openapi"))
+      self$`rows` <- ApiClient$new()$deserializeObj(this_object$`rows`, "array[object]", loadNamespace("interserverapi"))
       self$`summary` <- this_object$`summary`
       self
     },

@@ -17,4 +17,8 @@
 |**CURRENCY** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

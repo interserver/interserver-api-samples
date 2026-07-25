@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.quickserver_billing_details import QuickserverBillingDetails
+from interserver_api_client.models.quickserver_billing_details import QuickserverBillingDetails
 
 class TestQuickserverBillingDetails(unittest.TestCase):
     """QuickserverBillingDetails unit test stubs"""
@@ -44,7 +44,7 @@ class TestQuickserverBillingDetails(unittest.TestCase):
                 service_currency = 'USD',
                 service_currency_symbol = '$',
                 service_cost_info = '49.00',
-                service_extra = openapi_client.models.quickserver_service_extra.QuickserverServiceExtra(
+                service_extra = interserver_api_client.models.quickserver_service_extra.QuickserverServiceExtra(
                     platform = 'kvm', ),
                 service_extra_json = '{"platform":"kvm"}'
             )

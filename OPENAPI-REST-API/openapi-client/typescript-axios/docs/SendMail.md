@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { SendMail } from './api';
+import { SendMail } from '@interserver/myadmin-client';
 
 const instance: SendMail = {
     to,

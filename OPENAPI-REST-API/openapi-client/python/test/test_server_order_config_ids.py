@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.server_order_config_ids import ServerOrderConfigIds
+from interserver_api_client.models.server_order_config_ids import ServerOrderConfigIds
 
 class TestServerOrderConfigIds(unittest.TestCase):
     """ServerOrderConfigIds unit test stubs"""

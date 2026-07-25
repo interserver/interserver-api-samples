@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.buy_it_now_row import BuyItNowRow
+from interserver_api_client.models.buy_it_now_row import BuyItNowRow
 
 class TestBuyItNowRow(unittest.TestCase):
     """BuyItNowRow unit test stubs"""

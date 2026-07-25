@@ -1,4 +1,4 @@
-# openapi::ServerRow
+# interserverapi::ServerRow
 
 A result row from the `Servers` `GET` request.
 

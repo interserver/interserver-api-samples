@@ -12,4 +12,8 @@
 |**ip** | [**MailStatsTypeVolumeIp**](MailStatsTypeVolumeIp.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

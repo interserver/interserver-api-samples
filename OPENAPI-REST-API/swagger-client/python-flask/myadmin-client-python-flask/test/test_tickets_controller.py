@@ -24,7 +24,7 @@ class TestTicketsController(BaseTestCase):
     def test_add_new_ticket(self):
         """Test case for add_new_ticket
 
-        Create New Ticket
+        Open a new helpdesk ticket, optionally linked to a service and attachments
         """
         body = TicketNew()
         data = dict(subject='subject_example',
@@ -43,7 +43,7 @@ class TestTicketsController(BaseTestCase):
     def test_close_ticket(self):
         """Test case for close_ticket
 
-        Close Ticket
+        Close an open support ticket via simple GET request (no body required)
         """
         response = self.client.open(
             '/apiv2/tickets/{id}/close'.format(id='id_example'),
@@ -54,7 +54,7 @@ class TestTicketsController(BaseTestCase):
     def test_delete_ticket_info(self):
         """Test case for delete_ticket_info
 
-        Close Ticket
+        Close a customer ticket via DELETE verb (closes only, never destroys data)
         """
         response = self.client.open(
             '/apiv2/tickets/{id}'.format(id=1.2),
@@ -65,7 +65,7 @@ class TestTicketsController(BaseTestCase):
     def test_get_new_ticket(self):
         """Test case for get_new_ticket
 
-        Gets Information for creating a new ticket.
+        Fetch services and product options to populate the new-ticket form
         """
         response = self.client.open(
             '/apiv2/tickets/new',
@@ -76,7 +76,7 @@ class TestTicketsController(BaseTestCase):
     def test_get_ticket_info(self):
         """Test case for get_ticket_info
 
-        Get Ticket Information
+        Get full ticket details including subject, status, and the reply thread
         """
         response = self.client.open(
             '/apiv2/tickets/{id}'.format(id=1.2),
@@ -87,7 +87,7 @@ class TestTicketsController(BaseTestCase):
     def test_get_tickets_list(self):
         """Test case for get_tickets_list
 
-        List Support Tickets
+        List the authenticated account's support tickets with status and date filters
         """
         query_string = [('page', 1),
                         ('period', '30'),
@@ -102,7 +102,7 @@ class TestTicketsController(BaseTestCase):
     def test_post_ticket_info(self):
         """Test case for post_ticket_info
 
-        Reply To Ticket
+        Append a reply (and optional attachment, server-access fields) to a ticket
         """
         response = self.client.open(
             '/apiv2/tickets/{id}'.format(id=1.2),
@@ -113,7 +113,7 @@ class TestTicketsController(BaseTestCase):
     def test_post_tickets_list(self):
         """Test case for post_tickets_list
 
-        Search Support Tickets
+        Search the authenticated account's tickets by subject, email, or mask ID
         """
         response = self.client.open(
             '/apiv2/tickets',
@@ -124,7 +124,7 @@ class TestTicketsController(BaseTestCase):
     def test_put_ticket_info(self):
         """Test case for put_ticket_info
 
-        Update Ticket
+        Update a ticket's properties such as subject or status (stub, not implemented)
         """
         response = self.client.open(
             '/apiv2/tickets/{id}'.format(id=1.2),
@@ -135,7 +135,7 @@ class TestTicketsController(BaseTestCase):
     def test_reply_ticket(self):
         """Test case for reply_ticket
 
-        Reply Ticket
+        Post a simple text reply to an existing ticket thread (no attachments)
         """
         body = ReplyTicketRequest()
         data = dict(content='content_example')
@@ -151,7 +151,7 @@ class TestTicketsController(BaseTestCase):
     def test_update_ticket_info(self):
         """Test case for update_ticket_info
 
-        Update Ticket
+        Update a ticket's custom field values (server-access details, etc.)
         """
         body = UpdateTicket()
         data = dict(ip='ip_example',

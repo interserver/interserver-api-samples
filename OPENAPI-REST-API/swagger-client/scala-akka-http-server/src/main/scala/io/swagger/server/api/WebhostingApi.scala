@@ -15,12 +15,14 @@ import io.swagger.server.model.TextResponse
 import io.swagger.server.model.Website
 import io.swagger.server.model.WebsiteBackups
 import io.swagger.server.model.WebsiteLoginResponse
+import io.swagger.server.model.WebsiteOrderPostRequest
+import io.swagger.server.model.WebsiteOrderPutRequest
 import io.swagger.server.model.WebsiteRow
 import io.swagger.server.model.WebsitesOrder
-import io.swagger.server.model.inline_response_200_23
-import io.swagger.server.model.inline_response_200_24
 import io.swagger.server.model.inline_response_200_25
 import io.swagger.server.model.inline_response_200_26
+import io.swagger.server.model.inline_response_200_27
+import io.swagger.server.model.inline_response_200_28
 import io.swagger.server.model.inline_response_401
 
 class WebhostingApi(
@@ -36,9 +38,9 @@ class WebhostingApi(
           
             
               
-                
-                  webhostingService.addWebsite()
-               
+                entity(as[WebsiteOrderPostRequest]){ body =>
+                  webhostingService.addWebsite(body = body)
+                }
              
            
          
@@ -231,9 +233,9 @@ class WebhostingApi(
           
             
               
-                
-                  webhostingService.putWebsites()
-               
+                entity(as[WebsiteOrderPutRequest]){ body =>
+                  webhostingService.putWebsites(body = body)
+                }
              
            
          
@@ -279,10 +281,10 @@ trait WebhostingApiService {
   def addWebsite401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
+   * Code: 200, Message: Order placed successfully. Use the invoice ID to proceed to payment via &#x60;/billing/pay/{method}/{invoices}&#x60; or view the invoice at &#x60;/billing/invoices/{id}&#x60;., DataType: ServiceOrderPostResponse
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def addWebsite()
+  def addWebsite(body: WebsiteOrderPostRequest)
       (implicit toEntityMarshallerServiceOrderPostResponse: ToEntityMarshaller[ServiceOrderPostResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getNewWebsite200(responseWebsitesOrder: WebsitesOrder)(implicit toEntityMarshallerWebsitesOrder: ToEntityMarshaller[WebsitesOrder]): Route =
@@ -296,16 +298,16 @@ trait WebhostingApiService {
   def getNewWebsite()
       (implicit toEntityMarshallerWebsitesOrder: ToEntityMarshaller[WebsitesOrder], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def getWebsiteBuyIp200(responseinline_response_200_24: inline_response_200_24)(implicit toEntityMarshallerinline_response_200_24: ToEntityMarshaller[inline_response_200_24]): Route =
-    complete((200, responseinline_response_200_24))
+  def getWebsiteBuyIp200(responseinline_response_200_26: inline_response_200_26)(implicit toEntityMarshallerinline_response_200_26: ToEntityMarshaller[inline_response_200_26]): Route =
+    complete((200, responseinline_response_200_26))
   def getWebsiteBuyIp401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Current IP addresses and their reverse DNS hostnames for the website., DataType: inline_response_200_24
+   * Code: 200, Message: Current IP addresses and their reverse DNS hostnames for the website., DataType: inline_response_200_26
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def getWebsiteBuyIp(id: Int)
-      (implicit toEntityMarshallerinline_response_200_24: ToEntityMarshaller[inline_response_200_24], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_26: ToEntityMarshaller[inline_response_200_26], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def getWebsiteInfo200(responseWebsite: Website)(implicit toEntityMarshallerWebsite: ToEntityMarshaller[Website]): Route =
     complete((200, responseWebsite))
@@ -384,27 +386,27 @@ trait WebhostingApiService {
   def gettWebsiteReverseDns(id: Int)
       (implicit toEntityMarshallerReverseDnsEntries: ToEntityMarshaller[ReverseDnsEntries], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def postWebsiteBuyIp200(responseinline_response_200_25: inline_response_200_25)(implicit toEntityMarshallerinline_response_200_25: ToEntityMarshaller[inline_response_200_25]): Route =
-    complete((200, responseinline_response_200_25))
+  def postWebsiteBuyIp200(responseinline_response_200_27: inline_response_200_27)(implicit toEntityMarshallerinline_response_200_27: ToEntityMarshaller[inline_response_200_27]): Route =
+    complete((200, responseinline_response_200_27))
   def postWebsiteBuyIp401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: DNS update result., DataType: inline_response_200_25
+   * Code: 200, Message: DNS update result., DataType: inline_response_200_27
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def postWebsiteBuyIp(body: Id_buy_ip_body, ips: String, id: Int)
-      (implicit toEntityMarshallerinline_response_200_25: ToEntityMarshaller[inline_response_200_25], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_27: ToEntityMarshaller[inline_response_200_27], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def postWebsiteMigration200(responseinline_response_200_26: inline_response_200_26)(implicit toEntityMarshallerinline_response_200_26: ToEntityMarshaller[inline_response_200_26]): Route =
-    complete((200, responseinline_response_200_26))
+  def postWebsiteMigration200(responseinline_response_200_28: inline_response_200_28)(implicit toEntityMarshallerinline_response_200_28: ToEntityMarshaller[inline_response_200_28]): Route =
+    complete((200, responseinline_response_200_28))
   def postWebsiteMigration401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Migration request submitted., DataType: inline_response_200_26
+   * Code: 200, Message: Migration request submitted., DataType: inline_response_200_28
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def postWebsiteMigration(body: Id_migration_body, custPortal: String, regEmail: String, password: String, ctrlPanel: String, ftpUsername: String, ftpPassword: String, siteBusyMig: String, splReqMig: String, domainReg: String, dataMig: String, domainRegPortal: String, domainRegEmail: String, domainRegPassword: String, id: Int)
-      (implicit toEntityMarshallerinline_response_200_26: ToEntityMarshaller[inline_response_200_26], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_28: ToEntityMarshaller[inline_response_200_28], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def postWebsitesReverseDns200(responseTextResponse: TextResponse)(implicit toEntityMarshallerTextResponse: ToEntityMarshaller[TextResponse]): Route =
     complete((200, responseTextResponse))
@@ -425,7 +427,7 @@ trait WebhostingApiService {
    * Code: 200, Message: Validate Website order response
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
-  def putWebsites()
+  def putWebsites(body: WebsiteOrderPutRequest)
       (implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
   def updateWebsiteInfo200(responseSuccessTextResponse: SuccessTextResponse)(implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse]): Route =
@@ -439,21 +441,25 @@ trait WebhostingApiService {
   def updateWebsiteInfo(id: String)
       (implicit toEntityMarshallerSuccessTextResponse: ToEntityMarshaller[SuccessTextResponse], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
-  def webhostingCancel200(responseinline_response_200_23: inline_response_200_23)(implicit toEntityMarshallerinline_response_200_23: ToEntityMarshaller[inline_response_200_23]): Route =
-    complete((200, responseinline_response_200_23))
+  def webhostingCancel200(responseinline_response_200_25: inline_response_200_25)(implicit toEntityMarshallerinline_response_200_25: ToEntityMarshaller[inline_response_200_25]): Route =
+    complete((200, responseinline_response_200_25))
   def webhostingCancel401(responseinline_response_401: inline_response_401)(implicit toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route =
     complete((401, responseinline_response_401))
   /**
-   * Code: 200, Message: Website cancel, DataType: inline_response_200_23
+   * Code: 200, Message: Website cancel, DataType: inline_response_200_25
    * Code: 401, Message: Unauthorized, DataType: inline_response_401
    */
   def webhostingCancel(id: String)
-      (implicit toEntityMarshallerinline_response_200_23: ToEntityMarshaller[inline_response_200_23], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
+      (implicit toEntityMarshallerinline_response_200_25: ToEntityMarshaller[inline_response_200_25], toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]): Route
 
 }
 
 trait WebhostingApiMarshaller {
+  implicit def fromRequestUnmarshallerWebsiteOrderPutRequest: FromRequestUnmarshaller[WebsiteOrderPutRequest]
+
   implicit def fromRequestUnmarshallerId_buy_ip_body: FromRequestUnmarshaller[Id_buy_ip_body]
+
+  implicit def fromRequestUnmarshallerWebsiteOrderPostRequest: FromRequestUnmarshaller[WebsiteOrderPostRequest]
 
   implicit def fromRequestUnmarshallerReverseDnsEntries: FromRequestUnmarshaller[ReverseDnsEntries]
 
@@ -468,7 +474,7 @@ trait WebhostingApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_24: ToEntityMarshaller[inline_response_200_24]
+  implicit def toEntityMarshallerinline_response_200_26: ToEntityMarshaller[inline_response_200_26]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -500,11 +506,11 @@ trait WebhostingApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_25: ToEntityMarshaller[inline_response_200_25]
+  implicit def toEntityMarshallerinline_response_200_27: ToEntityMarshaller[inline_response_200_27]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_26: ToEntityMarshaller[inline_response_200_26]
+  implicit def toEntityMarshallerinline_response_200_28: ToEntityMarshaller[inline_response_200_28]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
@@ -518,7 +524,7 @@ trait WebhostingApiMarshaller {
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 
-  implicit def toEntityMarshallerinline_response_200_23: ToEntityMarshaller[inline_response_200_23]
+  implicit def toEntityMarshallerinline_response_200_25: ToEntityMarshaller[inline_response_200_25]
 
   implicit def toEntityMarshallerinline_response_401: ToEntityMarshaller[inline_response_401]
 

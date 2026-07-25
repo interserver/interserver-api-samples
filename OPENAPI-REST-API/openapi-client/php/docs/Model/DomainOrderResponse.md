@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **protocol** | **string** |  | [optional]
 **isSuccess** | **string** |  | [optional]
 **action** | **string** |  | [optional]
-**attributes** | [**\Interserver\MyAdmin\Model\DomainOrderResponseAttributes**](DomainOrderResponseAttributes.md) |  | [optional]
+**attributes** | [**\Interserver\\MyAdmin\Model\DomainOrderResponseAttributes**](DomainOrderResponseAttributes.md) |  | [optional]
 **responseText** | **string** |  | [optional]
 **object** | **string** |  | [optional]
 **responseCode** | **string** |  | [optional]

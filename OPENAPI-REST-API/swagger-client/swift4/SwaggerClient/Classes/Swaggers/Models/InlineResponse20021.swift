@@ -11,12 +11,18 @@ import Foundation
 public struct InlineResponse20021: Codable {
 
 
-    public var success: Bool
+    /** Status message. */
+    public var text: String?
 
-    public var text: String
-    public init(success: Bool, text: String) { 
-        self.success = success
+    /** Invoice ID for payment. */
+    public var invoice: Int?
+
+    /** Server order ID. */
+    public var order: Int?
+    public init(text: String? = nil, invoice: Int? = nil, order: Int? = nil) { 
         self.text = text
+        self.invoice = invoice
+        self.order = order
     }
 
 }

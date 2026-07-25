@@ -19,6 +19,7 @@
 #include "OAIOauth.h"
 
 #include "OAIChargeInvoiceRows.h"
+#include "OAIDeleteMailAlert_request.h"
 #include "OAIDenyRuleNew.h"
 #include "OAIDenyRuleRecord.h"
 #include "OAIGenericResponse.h"
@@ -33,6 +34,7 @@
 #include "OAIMailDeliverabilityResponse.h"
 #include "OAIMailLog.h"
 #include "OAIMailOrder.h"
+#include "OAIMailOrderRequest.h"
 #include "OAIMailRow.h"
 #include "OAIMailSchema.h"
 #include "OAIMailStatsType.h"
@@ -80,8 +82,10 @@ public:
     QString getParamStyleSuffix(const QString &style);
     QString getParamStyleDelimiter(const QString &style, const QString &name, bool isExplode);
 
-
-    virtual void addMail();
+    /**
+    * @param[in]  oai_mail_order_request OAIMailOrderRequest [required]
+    */
+    virtual void addMail(const OAIMailOrderRequest &oai_mail_order_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -97,9 +101,9 @@ public:
 
     /**
     * @param[in]  id qint32 [required]
-    * @param[in]  alert_id qint32 [required]
+    * @param[in]  oai_delete_mail_alert_request OAIDeleteMailAlert_request [required]
     */
-    virtual void deleteMailAlert(const qint32 &id, const qint32 &alert_id);
+    virtual void deleteMailAlert(const qint32 &id, const OAIDeleteMailAlert_request &oai_delete_mail_alert_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -176,8 +180,10 @@ public:
     */
     virtual void postMailDelist(const qint32 &id, const OAIMailDelistRequest &oai_mail_delist_request);
 
-
-    virtual void putMail();
+    /**
+    * @param[in]  oai_mail_order_request OAIMailOrderRequest [required]
+    */
+    virtual void putMail(const OAIMailOrderRequest &oai_mail_order_request);
 
     /**
     * @param[in]  id qint32 [required]
@@ -206,6 +212,13 @@ public:
     * @param[in]  id QString [required]
     */
     virtual void updateMailInfo(const QString &id);
+
+    /**
+    * @param[in]  id qint32 [required]
+    * @param[in]  rule QString [required]
+    * @param[in]  oai_deny_rule_new OAIDenyRuleNew [required]
+    */
+    virtual void updateRule(const qint32 &id, const QString &rule, const OAIDenyRuleNew &oai_deny_rule_new);
 
     /**
     * @param[in]  id qint32 [required]
@@ -285,6 +298,7 @@ private:
     void sendMailCallback(OAIHttpRequestWorker *worker);
     void updateMailAlertCallback(OAIHttpRequestWorker *worker);
     void updateMailInfoCallback(OAIHttpRequestWorker *worker);
+    void updateRuleCallback(OAIHttpRequestWorker *worker);
     void viewMailLogCallback(OAIHttpRequestWorker *worker);
 
 Q_SIGNALS:
@@ -314,6 +328,7 @@ Q_SIGNALS:
     void sendMailSignal(OAIGenericResponse summary);
     void updateMailAlertSignal(OAISuccessTextResponse summary);
     void updateMailInfoSignal(OAISuccessTextResponse summary);
+    void updateRuleSignal(OAIGenericResponse summary);
     void viewMailLogSignal(OAIMailLog summary);
 
 
@@ -342,6 +357,7 @@ Q_SIGNALS:
     void sendMailSignalFull(OAIHttpRequestWorker *worker, OAIGenericResponse summary);
     void updateMailAlertSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
     void updateMailInfoSignalFull(OAIHttpRequestWorker *worker, OAISuccessTextResponse summary);
+    void updateRuleSignalFull(OAIHttpRequestWorker *worker, OAIGenericResponse summary);
     void viewMailLogSignalFull(OAIHttpRequestWorker *worker, OAIMailLog summary);
 
     void addMailSignalError(OAIServiceOrderPostResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -369,6 +385,7 @@ Q_SIGNALS:
     void sendMailSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateMailAlertSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateMailInfoSignalError(OAISuccessTextResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateRuleSignalError(OAIGenericResponse summary, QNetworkReply::NetworkError error_type, const QString &error_str);
     void viewMailLogSignalError(OAIMailLog summary, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void addMailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
@@ -396,6 +413,7 @@ Q_SIGNALS:
     void sendMailSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateMailAlertSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void updateMailInfoSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
+    void updateRuleSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
     void viewMailLogSignalErrorFull(OAIHttpRequestWorker *worker, QNetworkReply::NetworkError error_type, const QString &error_str);
 
     void abortRequestsSignal();

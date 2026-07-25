@@ -1,21 +1,22 @@
-import { DynamicModule, HttpService, HttpModule, Module, Global, Provider } from '@nestjs/common';
+import { DynamicModule, Module, Global, Provider } from '@nestjs/common';
+import { HttpModule, HttpService } from '@nestjs/axios';
 import { AsyncConfiguration, Configuration, ConfigurationFactory } from './configuration';
 
 import { AccountService } from './api/account.service';
 import { BackupsService } from './api/backups.service';
 import { BillingService } from './api/billing.service';
-import { DNSService } from './api/dNS.service';
+import { DNSService } from './api/dns.service';
 import { DomainsService } from './api/domains.service';
-import { FloatingIPsService } from './api/floatingIPs.service';
+import { FloatingIPsService } from './api/floating-ips.service';
 import { LicensesService } from './api/licenses.service';
 import { MailService } from './api/mail.service';
 import { PublicService } from './api/public.service';
-import { QuickServersService } from './api/quickServers.service';
-import { SSLCertificatesService } from './api/sSLCertificates.service';
-import { ScrubIpsService } from './api/scrubIps.service';
+import { QuickServersService } from './api/quick-servers.service';
+import { SSLCertificatesService } from './api/ssl-certificates.service';
+import { ScrubIpsService } from './api/scrub-ips.service';
 import { ServersService } from './api/servers.service';
 import { TicketsService } from './api/tickets.service';
-import { VPSService } from './api/vPS.service';
+import { VPSService } from './api/vps.service';
 import { WebhostingService } from './api/webhosting.service';
 
 @Global()

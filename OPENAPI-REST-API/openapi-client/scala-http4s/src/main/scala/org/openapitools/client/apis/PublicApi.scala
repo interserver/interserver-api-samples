@@ -17,6 +17,7 @@ import org.http4s.client.Client as Http4sClient
 import org.openapitools.client.models.BuyItNowList
 import org.openapitools.client.models.CaptchaResponse
 import org.openapitools.client.models.GetAccountInfo401Response
+import org.openapitools.client.models.GetAccountLocales200ResponseValue
 import org.openapitools.client.models.GetCountriesFetchByParameter
 import org.openapitools.client.models.GetOauthRedirect200Response
 import io.circe.Json
@@ -35,6 +36,8 @@ import org.openapitools.client.models.*
 
 trait PublicApiEndpoints[F[*]] {
 
+  def getAccountCurrencies()(using auth: _Authorization.ApiKey): F[Seq[String]]
+  def getAccountLocales()(using auth: _Authorization.ApiKey): F[Map[String, GetAccountLocales200ResponseValue]]
   def getCaptcha()(using auth: _Authorization.ApiKey): F[CaptchaResponse]
   def getCountries(fetchBy: Option[GetCountriesFetchByParameter] = None)(using auth: _Authorization.ApiKey): F[Json]
   def getInfo()(using auth: _Authorization.ApiKey): F[ServicesInfo]
@@ -59,6 +62,44 @@ class PublicApiEndpointsImpl[F[*]: Concurrent](
   import JsonSupports.*
   import io.circe.syntax.EncoderOps
   import cats.implicits.toFlatMapOps
+
+  override def getAccountCurrencies()(using auth: _Authorization.ApiKey): F[Seq[String]] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, Seq[String]](
+      method = "GET",
+      path = s"/account/currencies",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => parseJson[F, Seq[String]]("Seq[String]", r)
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
+
+  override def getAccountLocales()(using auth: _Authorization.ApiKey): F[Map[String, GetAccountLocales200ResponseValue]] = {
+    val requestHeaders = Seq(
+      Some("Content-Type" -> "application/json")
+    ).flatten
+
+    _executeRequest[Unit, Map[String, GetAccountLocales200ResponseValue]](
+      method = "GET",
+      path = s"/account/locales",
+      body = None,
+      formParameters = None,
+      queryParameters = Nil,
+      requestHeaders = requestHeaders,
+      auth = Some(auth)) {
+        
+        case r if r.status.code == 200 => parseJson[F, Map[String, GetAccountLocales200ResponseValue]]("Map[String, GetAccountLocales200ResponseValue]", r)
+        case r if r.status.code == 401 => parseJson[F, GetAccountInfo401Response]("GetAccountInfo401Response", r).flatMap(res => Concurrent[F].raiseError(_FailedRequest(r.status.code, r.status.reason, Some(res.asJson))))
+    }
+  }
 
   override def getCaptcha()(using auth: _Authorization.ApiKey): F[CaptchaResponse] = {
     val requestHeaders = Seq(

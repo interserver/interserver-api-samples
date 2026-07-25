@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$BackupServiceInfo = Initialize-PSOpenAPIToolsBackupServiceInfo  -BackupId 21163 `
+$BackupServiceInfo = Initialize-InterserverApiBackupServiceInfo  -BackupId 21163 `
  -BackupServer 38 `
  -BackupUsername st21163 `
  -BackupType 10831 `

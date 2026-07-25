@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$ServerLocations = Initialize-PSOpenAPIToolsServerLocations  -Var1 null
+$ServerLocations = Initialize-InterserverApiServerLocations  -Var1 null
 ```
 
 - Convert the resource to JSON

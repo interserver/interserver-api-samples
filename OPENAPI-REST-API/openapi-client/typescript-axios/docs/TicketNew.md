@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { TicketNew } from './api';
+import { TicketNew } from '@interserver/myadmin-client';
 
 const instance: TicketNew = {
     subject,

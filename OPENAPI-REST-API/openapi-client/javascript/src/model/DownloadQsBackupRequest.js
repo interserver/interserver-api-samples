@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DownloadQsBackupRequest model module.
  * @module model/DownloadQsBackupRequest
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DownloadQsBackupRequest {
     /**

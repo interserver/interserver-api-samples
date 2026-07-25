@@ -1,4 +1,4 @@
-# InterServerManagementApi.CreateRule201Response
+# InterserverApiClient.CreateRule201Response
 
 ## Properties
 

@@ -15,4 +15,8 @@ Dashboard module configuration for software license services.
 |**listLink** | **String** | Link to view licenses list. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

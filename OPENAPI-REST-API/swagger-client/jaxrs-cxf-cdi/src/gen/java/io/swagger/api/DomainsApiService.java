@@ -19,7 +19,7 @@ import io.swagger.model.DomainOrder;
 import io.swagger.model.DomainRow;
 import io.swagger.model.DomainSearchResponse;
 import io.swagger.model.DomainWhoisPrivacyRequest;
-import io.swagger.model.InlineResponse2002;
+import io.swagger.model.InlineResponse2003;
 import io.swagger.model.InlineResponse401;
 import io.swagger.model.ServiceOrderPostResponse;
 import io.swagger.model.SuccessTextResponse;
@@ -34,13 +34,13 @@ import javax.ws.rs.core.SecurityContext;
 
 
 public interface DomainsApiService {
-      public Response addDomain(SecurityContext securityContext);
+      public Response addDomain(Map<String, Object> body, SecurityContext securityContext);
       public Response addDomainDnssec(DomainDnssecRequest body, Integer id, SecurityContext securityContext);
       public Response addDomainDnssec(List<Integer> algorithm, List<Integer> digestType, List<String> digest, List<Integer> keyTag, Integer id, SecurityContext securityContext);
       public Response addDomainNameserver(DomainNameserverPostRequest body, Integer id, SecurityContext securityContext);
       public Response addDomainNameserver(String name, String ipAddress, Integer id, SecurityContext securityContext);
       public Response cancelDomain(Integer id, SecurityContext securityContext);
-      public Response deleteDomainDnssec(Integer id, String action, SecurityContext securityContext);
+      public Response deleteDomainDnssec(Integer id, SecurityContext securityContext);
       public Response deleteDomainNameserver(Integer id, Integer index, SecurityContext securityContext);
       public Response getDomainContact(Integer id, SecurityContext securityContext);
       public Response getDomainDnssec(Integer id, SecurityContext securityContext);
@@ -48,8 +48,6 @@ public interface DomainsApiService {
       public Response getDomainInvoices(Integer id, SecurityContext securityContext);
       public Response getDomainLookup(String name, SecurityContext securityContext);
       public Response getDomainNameservers(Integer id, SecurityContext securityContext);
-      public Response getDomainOrderFields(String domain, String regType, SecurityContext securityContext);
-      public Response getDomainOrderSearchResults(String domain, SecurityContext securityContext);
       public Response getDomainRenewal(Integer id, SecurityContext securityContext);
       public Response getDomainSearch(String name, SecurityContext securityContext);
       public Response getDomainTransfer(Integer id, SecurityContext securityContext);
@@ -57,13 +55,14 @@ public interface DomainsApiService {
       public Response getDomainsList(SecurityContext securityContext);
       public Response getDomainsWelcomeEmail(Integer id, SecurityContext securityContext);
       public Response getNewDomain(SecurityContext securityContext);
-      public Response patchDomains(SecurityContext securityContext);
+      public Response patchDomains(Map<String, Object> body, SecurityContext securityContext);
       public Response postDomainRenewal(Integer id, SecurityContext securityContext);
+      public Response postDomainSearch(String name, SecurityContext securityContext);
       public Response postDomainTransfer(Integer id, SecurityContext securityContext);
-      public Response putDomains(SecurityContext securityContext);
+      public Response putDomains(Map<String, Object> body, SecurityContext securityContext);
       public Response updateDomainContact(DomainContactDetails body, Integer id, SecurityContext securityContext);
       public Response updateDomainContact(String status, String state, String orgName, String country, String postalCode, String email, String fax, String address2, String address3, String address1, String city, String phone, String firstName, String lastName, Integer id, SecurityContext securityContext);
-      public Response updateDomainInfo(String id, SecurityContext securityContext);
+      public Response updateDomainInfo(Integer id, SecurityContext securityContext);
       public Response updateDomainNameservers(DomainNameserverPutRequest body, Integer id, SecurityContext securityContext);
       public Response updateDomainNameservers(List<String> nameserver, Integer id, SecurityContext securityContext);
       public Response updateDomainWhoisPrivacy(DomainWhoisPrivacyRequest body, Integer id, SecurityContext securityContext);

@@ -19,4 +19,3 @@ case class WebsitesOrderPackages(
   /* Package description */
   `11447`: String
 )
-

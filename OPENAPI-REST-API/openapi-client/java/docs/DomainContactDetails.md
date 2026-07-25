@@ -24,4 +24,8 @@ Contact details used for domain registrant/admin/technical/billing records.
 |**lastName** | **String** | Last name for the contact. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

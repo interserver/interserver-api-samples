@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::LoginServiceCounts
+# InterServerAPI::Object::LoginServiceCounts
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::LoginServiceCounts;
+use InterServerAPI::Object::LoginServiceCounts;
 ```
 
 ## Properties

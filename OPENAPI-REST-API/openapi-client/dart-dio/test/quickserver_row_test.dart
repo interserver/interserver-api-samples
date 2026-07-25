@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for QuickserverRow
 void main() {
-  final instance = QuickserverRowBuilder();
-  // TODO add properties to the builder and call build()
+  final QuickserverRow? instance = /* QuickserverRow(...) */ null;
+  // TODO add properties to the entity
 
   group(QuickserverRow, () {
     // The id of the qs.

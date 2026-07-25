@@ -21,4 +21,3 @@ case class AffiliateDockSetup(
   affiliate_dock_description: Option[String] = None,
   referrer_coupon: Option[String] = None
 )
-

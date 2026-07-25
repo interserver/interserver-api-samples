@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The DomainNameServer model module.
  * @module model/DomainNameServer
- * @version 0.9.0
+ * @version 1.0.0
  */
 class DomainNameServer {
     /**

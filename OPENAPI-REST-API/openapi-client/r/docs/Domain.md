@@ -1,4 +1,4 @@
-# openapi::Domain
+# interserverapi::Domain
 
 Full detail view of a domain service including billing, contacts, DNS, and configuration.
 

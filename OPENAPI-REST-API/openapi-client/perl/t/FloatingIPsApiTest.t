@@ -24,16 +24,17 @@ use lib 'lib';
 use strict;
 use warnings;
 
-use_ok('OpenAPIClient::FloatingIPsApi');
+use_ok('InterServerAPI::FloatingIPsApi');
 
-my $api = OpenAPIClient::FloatingIPsApi->new();
-isa_ok($api, 'OpenAPIClient::FloatingIPsApi');
+my $api = InterServerAPI::FloatingIPsApi->new();
+isa_ok($api, 'InterServerAPI::FloatingIPsApi');
 
 #
 # add_floating_ip test
 #
 # uncomment below and update the test
-#my $add_floating_ip_result = $api->add_floating_ip();
+#my $add_floating_ip_floating_ip_order_request = undef; # replace NULL with a proper value
+#my $add_floating_ip_result = $api->add_floating_ip(floating_ip_order_request => $add_floating_ip_floating_ip_order_request);
 
 #
 # floating_ips_cancel test
@@ -87,7 +88,8 @@ isa_ok($api, 'OpenAPIClient::FloatingIPsApi');
 # put_floating_ips test
 #
 # uncomment below and update the test
-#my $put_floating_ips_result = $api->put_floating_ips();
+#my $put_floating_ips_floating_ip_order_request = undef; # replace NULL with a proper value
+#my $put_floating_ips_result = $api->put_floating_ips(floating_ip_order_request => $put_floating_ips_floating_ip_order_request);
 
 #
 # update_floating_ip_info test

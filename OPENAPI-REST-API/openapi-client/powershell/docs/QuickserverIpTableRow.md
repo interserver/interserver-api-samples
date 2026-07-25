@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$QuickserverIpTableRow = Initialize-PSOpenAPIToolsQuickserverIpTableRow  -Desc Netmask `
+$QuickserverIpTableRow = Initialize-InterserverApiQuickserverIpTableRow  -Desc Netmask `
  -Value 
 ```
 

@@ -18,4 +18,8 @@ Registrar response metadata returned after a domain order.
 |**responseCode** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

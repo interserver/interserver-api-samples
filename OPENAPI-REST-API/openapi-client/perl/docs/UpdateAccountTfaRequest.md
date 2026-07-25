@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::UpdateAccountTfaRequest
+# InterServerAPI::Object::UpdateAccountTfaRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::UpdateAccountTfaRequest;
+use InterServerAPI::Object::UpdateAccountTfaRequest;
 ```
 
 ## Properties

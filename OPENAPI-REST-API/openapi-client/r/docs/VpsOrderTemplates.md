@@ -1,4 +1,4 @@
-# openapi::VpsOrderTemplates
+# interserverapi::VpsOrderTemplates
 
 Templates
 

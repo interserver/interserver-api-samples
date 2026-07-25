@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::VpsDALicense');
+use_ok('InterServerAPI::Object::VpsDALicense');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::VpsDALicense->new();
+#my $instance = InterServerAPI::Object::VpsDALicense->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::VpsDALicense');
+#isa_ok($instance, 'InterServerAPI::Object::VpsDALicense');
 
 
 done_testing();

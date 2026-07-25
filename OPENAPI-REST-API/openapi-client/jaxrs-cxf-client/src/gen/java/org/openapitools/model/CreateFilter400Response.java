@@ -27,7 +27,7 @@ public class CreateFilter400Response  {
    * @return success
   **/
   @JsonProperty("success")
-  public Boolean getSuccess() {
+  public Boolean isSuccess() {
     return success;
   }
 

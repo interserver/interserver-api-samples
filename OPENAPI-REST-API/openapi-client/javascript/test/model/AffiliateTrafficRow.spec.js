@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.AffiliateTrafficRow();
+    instance = new InterserverApiClient.AffiliateTrafficRow();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,43 +50,43 @@
   describe('AffiliateTrafficRow', function() {
     it('should create an instance of AffiliateTrafficRow', function() {
       // uncomment below and update the code to test AffiliateTrafficRow
-      //var instance = new InterServerManagementApi.AffiliateTrafficRow();
-      //expect(instance).to.be.a(InterServerManagementApi.AffiliateTrafficRow);
+      //var instance = new InterserverApiClient.AffiliateTrafficRow();
+      //expect(instance).to.be.a(InterserverApiClient.AffiliateTrafficRow);
     });
 
     it('should have the property traffic_id (base name: "traffic_id")', function() {
       // uncomment below and update the code to test the property traffic_id
-      //var instance = new InterServerManagementApi.AffiliateTrafficRow();
+      //var instance = new InterserverApiClient.AffiliateTrafficRow();
       //expect(instance).to.be();
     });
 
     it('should have the property traffic_ip (base name: "traffic_ip")', function() {
       // uncomment below and update the code to test the property traffic_ip
-      //var instance = new InterServerManagementApi.AffiliateTrafficRow();
+      //var instance = new InterserverApiClient.AffiliateTrafficRow();
       //expect(instance).to.be();
     });
 
     it('should have the property traffic_url (base name: "traffic_url")', function() {
       // uncomment below and update the code to test the property traffic_url
-      //var instance = new InterServerManagementApi.AffiliateTrafficRow();
+      //var instance = new InterserverApiClient.AffiliateTrafficRow();
       //expect(instance).to.be();
     });
 
     it('should have the property traffic_affiliate (base name: "traffic_affiliate")', function() {
       // uncomment below and update the code to test the property traffic_affiliate
-      //var instance = new InterServerManagementApi.AffiliateTrafficRow();
+      //var instance = new InterserverApiClient.AffiliateTrafficRow();
       //expect(instance).to.be();
     });
 
     it('should have the property traffic_referrer (base name: "traffic_referrer")', function() {
       // uncomment below and update the code to test the property traffic_referrer
-      //var instance = new InterServerManagementApi.AffiliateTrafficRow();
+      //var instance = new InterserverApiClient.AffiliateTrafficRow();
       //expect(instance).to.be();
     });
 
     it('should have the property traffic_timestamp (base name: "traffic_timestamp")', function() {
       // uncomment below and update the code to test the property traffic_timestamp
-      //var instance = new InterServerManagementApi.AffiliateTrafficRow();
+      //var instance = new InterserverApiClient.AffiliateTrafficRow();
       //expect(instance).to.be();
     });
 

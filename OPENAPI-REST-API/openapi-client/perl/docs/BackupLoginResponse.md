@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BackupLoginResponse
+# InterServerAPI::Object::BackupLoginResponse
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BackupLoginResponse;
+use InterServerAPI::Object::BackupLoginResponse;
 ```
 
 ## Properties

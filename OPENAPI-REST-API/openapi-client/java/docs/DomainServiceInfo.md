@@ -22,4 +22,8 @@ Detailed domain service record for a domain order.
 |**domainCoupon** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

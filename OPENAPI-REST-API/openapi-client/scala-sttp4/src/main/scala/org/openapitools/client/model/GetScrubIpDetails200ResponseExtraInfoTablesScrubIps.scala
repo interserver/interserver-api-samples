@@ -16,4 +16,3 @@ case class GetScrubIpDetails200ResponseExtraInfoTablesScrubIps(
   title: Option[String] = None,
   rows: Option[Seq[GetScrubIpDetails200ResponseExtraInfoTablesScrubIpsRowsInner]] = None
 )
-

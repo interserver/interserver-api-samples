@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::QuickserverOrderDistroSelUbuntu
+# InterServerAPI::Object::QuickserverOrderDistroSelUbuntu
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::QuickserverOrderDistroSelUbuntu;
+use InterServerAPI::Object::QuickserverOrderDistroSelUbuntu;
 ```
 
 ## Properties

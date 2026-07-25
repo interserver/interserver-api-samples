@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.MailAlertsResponseInner();
+    instance = new InterserverApiClient.MailAlertsResponseInner();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,37 +50,37 @@
   describe('MailAlertsResponseInner', function() {
     it('should create an instance of MailAlertsResponseInner', function() {
       // uncomment below and update the code to test MailAlertsResponseInner
-      //var instance = new InterServerManagementApi.MailAlertsResponseInner();
-      //expect(instance).to.be.a(InterServerManagementApi.MailAlertsResponseInner);
+      //var instance = new InterserverApiClient.MailAlertsResponseInner();
+      //expect(instance).to.be.a(InterserverApiClient.MailAlertsResponseInner);
     });
 
     it('should have the property alert_id (base name: "alert_id")', function() {
       // uncomment below and update the code to test the property alert_id
-      //var instance = new InterServerManagementApi.MailAlertsResponseInner();
+      //var instance = new InterserverApiClient.MailAlertsResponseInner();
       //expect(instance).to.be();
     });
 
     it('should have the property alert_type (base name: "alert_type")', function() {
       // uncomment below and update the code to test the property alert_type
-      //var instance = new InterServerManagementApi.MailAlertsResponseInner();
+      //var instance = new InterserverApiClient.MailAlertsResponseInner();
       //expect(instance).to.be();
     });
 
     it('should have the property alert_value (base name: "alert_value")', function() {
       // uncomment below and update the code to test the property alert_value
-      //var instance = new InterServerManagementApi.MailAlertsResponseInner();
+      //var instance = new InterserverApiClient.MailAlertsResponseInner();
       //expect(instance).to.be();
     });
 
     it('should have the property alert_to (base name: "alert_to")', function() {
       // uncomment below and update the code to test the property alert_to
-      //var instance = new InterServerManagementApi.MailAlertsResponseInner();
+      //var instance = new InterserverApiClient.MailAlertsResponseInner();
       //expect(instance).to.be();
     });
 
     it('should have the property alert_enabled (base name: "alert_enabled")', function() {
       // uncomment below and update the code to test the property alert_enabled
-      //var instance = new InterServerManagementApi.MailAlertsResponseInner();
+      //var instance = new InterserverApiClient.MailAlertsResponseInner();
       //expect(instance).to.be();
     });
 

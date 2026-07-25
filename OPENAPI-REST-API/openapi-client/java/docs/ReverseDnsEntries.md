@@ -11,4 +11,8 @@ The Reverse DNS entries.
 |**ips** | **Map&lt;String, Object&gt;** | The IPs you have access to and their current reverse dns mapping. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

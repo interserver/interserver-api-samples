@@ -20,4 +20,8 @@ Billing information for a domain service including payment status, dates, and co
 |**serviceExtraJson** | **String** | Raw JSON string of extra billing data. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

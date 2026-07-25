@@ -20,4 +20,8 @@ Billing information for a dedicated server service including payment status, bil
 |**serviceExtraJson** | **String** |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

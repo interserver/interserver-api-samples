@@ -258,7 +258,7 @@ ServerOrder <- R6::R6Class(
         self$`cp_li` <- `cp_li_object`
       }
       if (!is.null(this_object$`raid_li`)) {
-        self$`raid_li` <- ApiClient$new()$deserializeObj(this_object$`raid_li`, "array[ServerOrderRAID]", loadNamespace("openapi"))
+        self$`raid_li` <- ApiClient$new()$deserializeObj(this_object$`raid_li`, "array[ServerOrderRAID]", loadNamespace("interserverapi"))
       }
       self
     },
@@ -291,7 +291,7 @@ ServerOrder <- R6::R6Class(
       self$`ips_li` <- ServerOrderIpsLi$new()$fromJSON(jsonlite::toJSON(this_object$`ips_li`, auto_unbox = TRUE, digits = NA))
       self$`os_li` <- ServerOrderOsLi$new()$fromJSON(jsonlite::toJSON(this_object$`os_li`, auto_unbox = TRUE, digits = NA))
       self$`cp_li` <- ServerOrderCpLi$new()$fromJSON(jsonlite::toJSON(this_object$`cp_li`, auto_unbox = TRUE, digits = NA))
-      self$`raid_li` <- ApiClient$new()$deserializeObj(this_object$`raid_li`, "array[ServerOrderRAID]", loadNamespace("openapi"))
+      self$`raid_li` <- ApiClient$new()$deserializeObj(this_object$`raid_li`, "array[ServerOrderRAID]", loadNamespace("interserverapi"))
       self
     },
 

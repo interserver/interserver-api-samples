@@ -1,4 +1,4 @@
-# openapi::DomainProvProcessPendingAttributes
+# interserverapi::DomainProvProcessPendingAttributes
 
 
 ## Properties

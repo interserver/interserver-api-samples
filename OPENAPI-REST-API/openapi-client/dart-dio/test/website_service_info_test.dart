@@ -1,98 +1,98 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for WebsiteServiceInfo
 void main() {
-  final instance = WebsiteServiceInfoBuilder();
-  // TODO add properties to the builder and call build()
+  final WebsiteServiceInfo? instance = /* WebsiteServiceInfo(...) */ null;
+  // TODO add properties to the entity
 
   group(WebsiteServiceInfo, () {
     // Website ID
-    // String websiteId
+    // Optional<String?> websiteId
     test('to test the property `websiteId`', () async {
       // TODO
     });
 
     // Website server
-    // String websiteServer
+    // Optional<String?> websiteServer
     test('to test the property `websiteServer`', () async {
       // TODO
     });
 
     // Website type
-    // String websiteType
+    // Optional<String?> websiteType
     test('to test the property `websiteType`', () async {
       // TODO
     });
 
     // Currency of the website
-    // String websiteCurrency
+    // Optional<String?> websiteCurrency
     test('to test the property `websiteCurrency`', () async {
       // TODO
     });
 
     // Order date of the website
-    // String websiteOrderDate
+    // Optional<String?> websiteOrderDate
     test('to test the property `websiteOrderDate`', () async {
       // TODO
     });
 
     // Customer ID of the website
-    // String websiteCustid
+    // Optional<String?> websiteCustid
     test('to test the property `websiteCustid`', () async {
       // TODO
     });
 
     // IP address of the website
-    // String websiteIp
+    // Optional<String?> websiteIp
     test('to test the property `websiteIp`', () async {
       // TODO
     });
 
     // Status of the website
-    // String websiteStatus
+    // Optional<String?> websiteStatus
     test('to test the property `websiteStatus`', () async {
       // TODO
     });
 
     // Invoice of the website
-    // String websiteInvoice
+    // Optional<String?> websiteInvoice
     test('to test the property `websiteInvoice`', () async {
       // TODO
     });
 
     // Coupon for the website
-    // String websiteCoupon
+    // Optional<String?> websiteCoupon
     test('to test the property `websiteCoupon`', () async {
       // TODO
     });
 
     // Extra information in JSON format for the website
-    // String websiteExtra
+    // Optional<String?> websiteExtra
     test('to test the property `websiteExtra`', () async {
       // TODO
     });
 
     // Hostname of the website
-    // String websiteHostname
+    // Optional<String?> websiteHostname
     test('to test the property `websiteHostname`', () async {
       // TODO
     });
 
     // Comment for the website
-    // String websiteComment
+    // Optional<String?> websiteComment
     test('to test the property `websiteComment`', () async {
       // TODO
     });
 
     // Username for the website
-    // String websiteUsername
+    // Optional<String?> websiteUsername
     test('to test the property `websiteUsername`', () async {
       // TODO
     });
 
     // Server status of the website
-    // String websiteServerStatus
+    // Optional<String?> websiteServerStatus
     test('to test the property `websiteServerStatus`', () async {
       // TODO
     });

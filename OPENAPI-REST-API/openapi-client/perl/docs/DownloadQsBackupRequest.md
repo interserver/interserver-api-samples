@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::DownloadQsBackupRequest
+# InterServerAPI::Object::DownloadQsBackupRequest
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::DownloadQsBackupRequest;
+use InterServerAPI::Object::DownloadQsBackupRequest;
 ```
 
 ## Properties

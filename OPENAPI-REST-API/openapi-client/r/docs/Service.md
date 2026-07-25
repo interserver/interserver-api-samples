@@ -1,4 +1,4 @@
-# openapi::Service
+# interserverapi::Service
 
 An individual package tied to one of our services.
 

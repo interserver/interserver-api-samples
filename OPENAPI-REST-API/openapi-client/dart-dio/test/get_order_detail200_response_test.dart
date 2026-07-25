@@ -1,23 +1,23 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for GetOrderDetail200Response
 void main() {
-  final instance = GetOrderDetail200ResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final GetOrderDetail200Response? instance = /* GetOrderDetail200Response(...) */ null;
+  // TODO add properties to the entity
 
   group(GetOrderDetail200Response, () {
-    // GetOrderDetail200ResponsePackageCosts packageCosts
+    // Optional<GetOrderDetail200ResponsePackageCosts?> packageCosts
     test('to test the property `packageCosts`', () async {
       // TODO
     });
 
-    // BuiltList<GetOrderDetail200ResponseServiceTypesInner> serviceTypes
+    // Optional<List<GetOrderDetail200ResponseServiceTypesInner>?> serviceTypes
     test('to test the property `serviceTypes`', () async {
       // TODO
     });
 
-    // BuiltList<GetOrderDetail200ResponseIpsInner> ips
+    // Optional<List<GetOrderDetail200ResponseIpsInner>?> ips
     test('to test the property `ips`', () async {
       // TODO
     });

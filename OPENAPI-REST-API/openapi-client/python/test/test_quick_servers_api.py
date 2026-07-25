@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.api.quick_servers_api import QuickServersApi
+from interserver_api_client.api.quick_servers_api import QuickServersApi
 
 
 class TestQuickServersApi(unittest.TestCase):
@@ -30,308 +30,308 @@ class TestQuickServersApi(unittest.TestCase):
     def test_add_qs(self) -> None:
         """Test case for add_qs
 
-        Place QuickServer Order
+        Place a QuickServer order, generating a real invoice and queuing provisioning
         """
         pass
 
     def test_delete_qs_backup(self) -> None:
         """Test case for delete_qs_backup
 
-        Delete QuickServer Backup
+        Permanently delete a QuickServer backup file from object storage
         """
         pass
 
     def test_do_qs_block_smtp(self) -> None:
         """Test case for do_qs_block_smtp
 
-        Block QuickServer SMTP
+        Block outbound SMTP traffic on a QuickServer to halt mail abuse
         """
         pass
 
     def test_do_qs_disable_cd(self) -> None:
         """Test case for do_qs_disable_cd
 
-        Disable CD Drive
+        Disable the virtual CD/DVD drive device on a QuickServer
         """
         pass
 
     def test_do_qs_disable_quota(self) -> None:
         """Test case for do_qs_disable_quota
 
-        Disable Quotas
+        Disable disk-quota enforcement at OS level on a QuickServer
         """
         pass
 
     def test_do_qs_eject_cd(self) -> None:
         """Test case for do_qs_eject_cd
 
-        Eject CD Drive
+        Eject the currently mounted ISO from a QuickServer's virtual CD drive
         """
         pass
 
     def test_do_qs_enable_quota(self) -> None:
         """Test case for do_qs_enable_quota
 
-        Enable Quotas
+        Enable disk-quota enforcement at OS level on a QuickServer
         """
         pass
 
     def test_do_qs_restart(self) -> None:
         """Test case for do_qs_restart
 
-        Restart QuickServer
+        Reboot a QuickServer with a graceful OS-level restart
         """
         pass
 
     def test_do_qs_start(self) -> None:
         """Test case for do_qs_start
 
-        Start QuickServer
+        Power on a QuickServer that is currently stopped or pending boot
         """
         pass
 
     def test_do_qs_stop(self) -> None:
         """Test case for do_qs_stop
 
-        Stop QuickServer
+        Power off a QuickServer with a graceful shutdown command
         """
         pass
 
     def test_download_qs_backup(self) -> None:
         """Test case for download_qs_backup
 
-        Download QuickServer Backup
+        Generate a 24-hour pre-signed download URL for a QuickServer backup
         """
         pass
 
     def test_get_new_qs(self) -> None:
         """Test case for get_new_qs
 
-        Get QuickServer Ordering Information
+        Get QuickServer order form metadata and available plans/templates
+        """
+        pass
+
+    def test_get_qs_backup(self) -> None:
+        """Test case for get_qs_backup
+
+        Queue creation of a new QuickServer backup snapshot (note: GET triggers job)
         """
         pass
 
     def test_get_qs_backups(self) -> None:
         """Test case for get_qs_backups
 
-        List QuickServer Backups
+        List available QuickServer backups across Swift, MinIO, and ZFS storage
         """
         pass
 
     def test_get_qs_change_hostname(self) -> None:
         """Test case for get_qs_change_hostname
 
-        Get QuickServer Hostname
+        Get current QuickServer hostname plus change rules and platform support
         """
         pass
 
     def test_get_qs_change_root_password(self) -> None:
         """Test case for get_qs_change_root_password
 
-        Get Change Root Password Info
+        Get metadata for QuickServer root/OS password change requirements
         """
         pass
 
     def test_get_qs_change_timezone(self) -> None:
         """Test case for get_qs_change_timezone
 
-        Get Timezone Info
+        List timezones the QuickServer can be set to via change_timezone
         """
         pass
 
     def test_get_qs_change_webuzo_password(self) -> None:
         """Test case for get_qs_change_webuzo_password
 
-        Webuzo Change Pass Info
+        Get metadata for changing the Webuzo control panel admin password
         """
         pass
 
     def test_get_qs_info(self) -> None:
         """Test case for get_qs_info
 
-        Get QuickServer Order
+        Get full details for one QuickServer including credentials and links
         """
         pass
 
     def test_get_qs_insert_cd(self) -> None:
         """Test case for get_qs_insert_cd
 
-        Insert CD Information
+        List ISO images available to mount on a QuickServer's virtual CD
         """
         pass
 
     def test_get_qs_invoices(self) -> None:
         """Test case for get_qs_invoices
 
-        Get QuickServer Invoices
+        List billing invoices charged for one QuickServer service
         """
         pass
 
     def test_get_qs_list(self) -> None:
         """Test case for get_qs_list
 
-        List QuickServers
+        List QuickServer rapid-deploy dedicated servers on the account
         """
         pass
 
     def test_get_qs_reinstall_os(self) -> None:
         """Test case for get_qs_reinstall_os
 
-        QuickServer Reinstall OS Options
+        List OS templates available for a QuickServer reinstall
         """
         pass
 
     def test_get_qs_reset_password(self) -> None:
         """Test case for get_qs_reset_password
 
-        Reset QuickServer Password Info
+        Get options for QuickServer randomized root password reset
         """
         pass
 
     def test_get_qs_reverse_dns(self) -> None:
         """Test case for get_qs_reverse_dns
 
-        Reverse DNS Info
+        Get reverse DNS (PTR) records for all of a QuickServer's IPs
         """
         pass
 
     def test_get_qs_setup_vnc(self) -> None:
         """Test case for get_qs_setup_vnc
 
-        VNC Setup Info
+        Get current VNC console connection details for a QuickServer
         """
         pass
 
     def test_get_qs_traffic_usage(self) -> None:
         """Test case for get_qs_traffic_usage
 
-        Get Traffic Usage
+        Get bandwidth usage for the QuickServer's current billing period
         """
         pass
 
     def test_get_qs_view_desktop(self) -> None:
         """Test case for get_qs_view_desktop
 
-        Get View Desktop Info
+        Get the full QuickServer dashboard view payload (rich format)
         """
         pass
 
     def test_get_qs_welcome_email(self) -> None:
         """Test case for get_qs_welcome_email
 
-        Resend QuickServer Welcome Email
-        """
-        pass
-
-    def test_post_qs_backup(self) -> None:
-        """Test case for post_qs_backup
-
-        Create QuickServer Backup
+        Resend the QuickServer welcome email with login credentials
         """
         pass
 
     def test_post_qs_change_hostname(self) -> None:
         """Test case for post_qs_change_hostname
 
-        Update QuickServer Hostname
+        Change a QuickServer's system hostname (OpenVZ/Virtuozzo only)
         """
         pass
 
     def test_post_qs_change_root_password(self) -> None:
         """Test case for post_qs_change_root_password
 
-        Change Root Password
+        Change QuickServer root/administrator password to a chosen value
         """
         pass
 
     def test_post_qs_change_timezone(self) -> None:
         """Test case for post_qs_change_timezone
 
-        Change QuickServer Timezone
+        Change the system timezone on a QuickServer to a catalog entry
         """
         pass
 
     def test_post_qs_change_webuzo_password(self) -> None:
         """Test case for post_qs_change_webuzo_password
 
-        Change Webuzo Password
+        Change Webuzo control panel admin password live (synchronous, not queued)
         """
         pass
 
     def test_post_qs_insert_cd(self) -> None:
         """Test case for post_qs_insert_cd
 
-        Insert CD in QuickServer
+        Mount an ISO image as the QuickServer's virtual CD via URL
         """
         pass
 
     def test_post_qs_reinstall_os(self) -> None:
         """Test case for post_qs_reinstall_os
 
-        Reinstall QuickServer OS
+        Reinstall the operating system on a QuickServer (DESTRUCTIVE — wipes disk)
         """
         pass
 
     def test_post_qs_reset_password(self) -> None:
         """Test case for post_qs_reset_password
 
-        Reset QuickServer Password
+        Reset QuickServer root password to a server-generated random value
         """
         pass
 
     def test_post_qs_reverse_dns(self) -> None:
         """Test case for post_qs_reverse_dns
 
-        Update Reverse DNS
+        Update reverse DNS (PTR) records for a QuickServer's IPs
         """
         pass
 
     def test_post_qs_setup_vnc(self) -> None:
         """Test case for post_qs_setup_vnc
 
-        Setup VNC
+        Configure the source IP allowed to reach a QuickServer's VNC console
         """
         pass
 
     def test_post_qs_traffic_usage(self) -> None:
         """Test case for post_qs_traffic_usage
 
-        Search Traffic Usage
+        Query QuickServer bandwidth usage via POST (filtered variant)
         """
         pass
 
     def test_post_qs_view_desktop(self) -> None:
         """Test case for post_qs_view_desktop
 
-        Update View Desktop
+        Submit changes and re-fetch the QuickServer dashboard view payload
         """
         pass
 
     def test_post_quick_server_restore(self) -> None:
         """Test case for post_quick_server_restore
 
-        Restore QuickServer from Backup
+        Restore a QuickServer from a backup (DESTRUCTIVE — overwrites disk)
         """
         pass
 
     def test_put_qs(self) -> None:
         """Test case for put_qs
 
-        Validate QuickServer Order
+        Validate a QuickServer order without charging or provisioning
         """
         pass
 
     def test_quickservers_cancel(self) -> None:
         """Test case for quickservers_cancel
 
-        Cancel QuickServer Order
+        Cancel a QuickServer service at the end of the current billing cycle
         """
         pass
 
     def test_update_qs_info(self) -> None:
         """Test case for update_qs_info
 
-        Update QuickServer Order
+        Update QuickServer order metadata or stored settings without OS impact
         """
         pass
 

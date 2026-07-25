@@ -1,4 +1,4 @@
-# SwaggerClient::DenyRuleRecord
+# InterserverApiClient::DenyRuleRecord
 
 ## Properties
 Name | Type | Description | Notes

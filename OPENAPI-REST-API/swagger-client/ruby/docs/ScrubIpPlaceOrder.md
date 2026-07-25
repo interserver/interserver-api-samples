@@ -1,4 +1,4 @@
-# SwaggerClient::ScrubIpPlaceOrder
+# InterserverApiClient::ScrubIpPlaceOrder
 
 ## Properties
 Name | Type | Description | Notes

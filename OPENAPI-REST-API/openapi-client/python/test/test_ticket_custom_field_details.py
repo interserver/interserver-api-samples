@@ -15,7 +15,7 @@
 
 import unittest
 
-from openapi_client.models.ticket_custom_field_details import TicketCustomFieldDetails
+from interserver_api_client.models.ticket_custom_field_details import TicketCustomFieldDetails
 
 class TestTicketCustomFieldDetails(unittest.TestCase):
     """TicketCustomFieldDetails unit test stubs"""

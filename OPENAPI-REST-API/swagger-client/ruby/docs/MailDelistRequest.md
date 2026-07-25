@@ -1,4 +1,4 @@
-# SwaggerClient::MailDelistRequest
+# InterserverApiClient::MailDelistRequest
 
 ## Properties
 Name | Type | Description | Notes

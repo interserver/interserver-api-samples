@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```python
-from openapi_client.models.generic_response import GenericResponse
+from interserver_api_client.models.generic_response import GenericResponse
 
 # TODO update the JSON string below
 json = "{}"

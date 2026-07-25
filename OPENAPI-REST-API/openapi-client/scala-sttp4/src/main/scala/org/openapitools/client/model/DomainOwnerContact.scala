@@ -31,4 +31,3 @@ case class DomainOwnerContact(
   phone: Option[String] = None,
   address1: Option[String] = None
 )
-

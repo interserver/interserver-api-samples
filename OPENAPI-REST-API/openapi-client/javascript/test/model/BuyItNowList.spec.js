@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.BuyItNowList();
+    instance = new InterserverApiClient.BuyItNowList();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,8 +50,8 @@
   describe('BuyItNowList', function() {
     it('should create an instance of BuyItNowList', function() {
       // uncomment below and update the code to test BuyItNowList
-      //var instance = new InterServerManagementApi.BuyItNowList();
-      //expect(instance).to.be.a(InterServerManagementApi.BuyItNowList);
+      //var instance = new InterserverApiClient.BuyItNowList();
+      //expect(instance).to.be.a(InterserverApiClient.BuyItNowList);
     });
 
   });

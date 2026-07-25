@@ -17,7 +17,7 @@ import ServiceCategory from './ServiceCategory';
 /**
  * The ServiceCategories model module.
  * @module model/ServiceCategories
- * @version 0.9.0
+ * @version 1.0.0
  */
 class ServiceCategories {
     /**

@@ -38,7 +38,7 @@ import javax.annotation.Generated;
   DomainLookupResponse.JSON_PROPERTY_CURRENCIES
 })
 @JsonTypeName("DomainLookupResponse")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-04-02T08:03:28.685588550-04:00[America/New_York]", comments = "Generator version: 7.21.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-07-25T04:26:48.248789158-04:00[America/New_York]", comments = "Generator version: 7.24.0")
 @Introspected
 public class DomainLookupResponse {
     public static final String JSON_PROPERTY_AVAILABLE = "available";
@@ -89,7 +89,7 @@ public class DomainLookupResponse {
     @Nullable
     @JsonProperty(JSON_PROPERTY_AVAILABLE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Boolean getAvailable() {
+    public Boolean isAvailable() {
         return available;
     }
 
@@ -111,7 +111,7 @@ public class DomainLookupResponse {
     @Nullable
     @JsonProperty(JSON_PROPERTY_PREMIUM)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Boolean getPremium() {
+    public Boolean isPremium() {
         return premium;
     }
 
@@ -133,7 +133,7 @@ public class DomainLookupResponse {
     @Nullable
     @JsonProperty(JSON_PROPERTY_WEBSITE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Boolean getWebsite() {
+    public Boolean isWebsite() {
         return website;
     }
 
@@ -155,7 +155,7 @@ public class DomainLookupResponse {
     @Nullable
     @JsonProperty(JSON_PROPERTY_DOMAIN_SERVICE)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Boolean getDomainService() {
+    public Boolean isDomainService() {
         return domainService;
     }
 
@@ -199,7 +199,7 @@ public class DomainLookupResponse {
     @Nullable
     @JsonProperty(JSON_PROPERTY_WHOIS_PRIVACY)
     @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-    public Boolean getWhoisPrivacy() {
+    public Boolean isWhoisPrivacy() {
         return whoisPrivacy;
     }
 

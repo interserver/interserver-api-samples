@@ -24,4 +24,3 @@ case class PostOauthCallback200Response(
   /* Error code if additional verification is needed (e.g. `2fa_required`). */
   error_code: Option[String] = None
 )
-

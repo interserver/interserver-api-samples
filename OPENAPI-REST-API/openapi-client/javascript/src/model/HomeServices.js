@@ -22,7 +22,7 @@ import HomeServicesWebhosting from './HomeServicesWebhosting';
 /**
  * The HomeServices model module.
  * @module model/HomeServices
- * @version 0.9.0
+ * @version 1.0.0
  */
 class HomeServices {
     /**

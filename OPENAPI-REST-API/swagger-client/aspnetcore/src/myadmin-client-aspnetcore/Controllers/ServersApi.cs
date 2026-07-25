@@ -28,9 +28,10 @@ namespace myadmin-client-aspnetcore.Controllers
     public class ServersApiController : ControllerBase
     { 
         /// <summary>
-        /// Place Server Order
+        /// Place a custom dedicated server order, creating a real billable invoice
         /// </summary>
-        /// <remarks>Places an order for a new dedicated server. Use &#x60;PUT /servers/order&#x60; to validate the order first.</remarks>
+        /// <remarks>Submits a fully custom dedicated server order. Creates a &#x60;pending&#x60; &#x60;servers&#x60; row, a &#x60;Repeat_Invoice&#x60;, and the first invoice, then emails customer + admin. Caveat: real billable order — confirm with the user first. Body (form fields): &#x60;cpu&#x60; (id from &#x60;cpu_li&#x60;), &#x60;hd[]&#x60; (array of drive ids), &#x60;memory&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;os&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (ids from &#x60;getNewServer&#x60;), &#x60;region&#x60; (region_id), &#x60;servername&#x60; (valid hostname), &#x60;rootpass&#x60;, &#x60;tos&#x60; (must be true), optional &#x60;comment&#x60;. &#x60;account.server_order_discount&#x60; (if set) applies. Returns: &#x60;{ text:&#x27;Order Completed&#x27;, invoice, order }&#x60;. Errors: 422 &#x27;Missing/Invalid &lt;field&gt;&#x27;; 401 unauth. Sibling ops: &#x60;getNewServer&#x60; (options), &#x60;placeBuyNowServer&#x60; (pre-built path), &#x60;getServerInfo&#x60; (view new order), &#x60;getServerInvoices&#x60;.</remarks>
+        /// <param name="body"></param>
         /// <response code="200">Server order placed successfully.</response>
         /// <response code="401">Unauthorized</response>
         [HttpPost]
@@ -38,12 +39,12 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("AddServer")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20019), description: "Server order placed successfully.")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20021), description: "Server order placed successfully.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
-        public virtual IActionResult AddServer()
+        public virtual IActionResult AddServer([FromBody]ServerOrderPostRequest body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20019));
+            // return StatusCode(200, default(InlineResponse20021));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
@@ -51,15 +52,15 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"text\" : \"Order Completed\",\n  \"invoice\" : 0,\n  \"order\" : 6\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20019>(exampleJson)
-                        : default(InlineResponse20019);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20021>(exampleJson)
+                        : default(InlineResponse20021);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// Get Buy Now Server Options
+        /// Get configurable options for a Rapid Deploy / coupon dedicated server
         /// </summary>
-        /// <remarks>Returns the configuration options and pricing for buy-it-now dedicated servers, including available bandwidth packages, IP blocks, operating systems, control panels, and RAID configurations. Use the returned option IDs when placing an order via &#x60;POST /servers/order/buy_now_server&#x60;.</remarks>
+        /// <remarks>Step 1 of the Rapid Deploy / coupon dedicated server order flow. Returns options + pricing for either a marketplace asset (&#x60;a&#x3D;&lt;asset_id&gt;&#x60;) or a coupon (&#x60;c&#x3D;&lt;coupon_name&gt;&#x60;) so the order form can be rendered before &#x60;placeBuyNowServer&#x60;. Read-only; no charge. Sibling ops: &#x60;placeBuyNowServer&#x60; (commit), &#x60;getMPServers&#x60; (browse marketplace), &#x60;addServer&#x60; (custom build flow).  **Query (one required):** - &#x60;a&#x60; (integer) — asset_id from &#x60;getMPServers&#x60;. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Returns:** &#x60;{ bandwidth[], ips[], os[], cp[], raid[], regions[], a?: {asset + items}, c?: {coupon + region} }&#x60;. Each option row is &#x60;{ id, short_desc, long_desc, monthly_price }&#x60; — feed those ids into &#x60;placeBuyNowServer&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;No Server Coupon or Market-Place Asset Specified&#x27;&#x60; when neither &#x60;a&#x60; nor &#x60;c&#x60; is passed. - &#x60;400&#x60; — &#x60;&#x27;Invalid Asset ID&#x27;&#x60; / &#x60;&#x27;No Server Coupon with that name&#x27;&#x60;. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; (asset already in-cart) or &#x60;&#x27;Server Out of stock&#x27;&#x60; (coupon). - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Next:** &#x60;placeBuyNowServer&#x60; (commit the order). - **Browse:** &#x60;getMPServers&#x60;. - **Custom build alternative:** &#x60;addServer&#x60;. </remarks>
         /// <response code="200">Available server configurations with pricing and hardware options.</response>
         /// <response code="401">Unauthorized</response>
         [HttpGet]
@@ -67,12 +68,12 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("BuyItNowServerOrder")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20027), description: "Available server configurations with pricing and hardware options.")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20029), description: "Available server configurations with pricing and hardware options.")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult BuyItNowServerOrder()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20027));
+            // return StatusCode(200, default(InlineResponse20029));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
@@ -80,15 +81,15 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"os\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"5\",\n    \"short_desc\" : \"FreeBSD\",\n    \"long_desc\" : \"Latest FreeBSD 6.x OS<br><pre>CP(s): cPanel/DirectAdmin</pre>\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"5\",\n    \"short_desc\" : \"FreeBSD\",\n    \"long_desc\" : \"Latest FreeBSD 6.x OS<br><pre>CP(s): cPanel/DirectAdmin</pre>\"\n  } ],\n  \"bandwidth\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"10\",\n    \"short_desc\" : \"1GBPS Unmetered\",\n    \"long_desc\" : \"\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"10\",\n    \"short_desc\" : \"1GBPS Unmetered\",\n    \"long_desc\" : \"\"\n  } ],\n  \"ips\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"9\",\n    \"short_desc\" : \"1 Vlan Ip (/30)\",\n    \"long_desc\" : \"1 IP In personal Vlan\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"9\",\n    \"short_desc\" : \"1 Vlan Ip (/30)\",\n    \"long_desc\" : \"1 IP In personal Vlan\"\n  } ],\n  \"cp\" : [ {\n    \"monthly_price\" : \"0\",\n    \"os_type\" : \"\",\n    \"id\" : \"1\",\n    \"short_desc\" : \"None\",\n    \"long_desc\" : \"\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"os_type\" : \"\",\n    \"id\" : \"1\",\n    \"short_desc\" : \"None\",\n    \"long_desc\" : \"\"\n  } ],\n  \"raid\" : [ {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"0\",\n    \"short_desc\" : \"No Raid\",\n    \"long_desc\" : \"No Raid\"\n  }, {\n    \"monthly_price\" : \"0\",\n    \"id\" : \"0\",\n    \"short_desc\" : \"No Raid\",\n    \"long_desc\" : \"No Raid\"\n  } ]\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20027>(exampleJson)
-                        : default(InlineResponse20027);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20029>(exampleJson)
+                        : default(InlineResponse20029);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// List Marketplace Servers
+        /// List Rapid Deploy (Buy-It-Now) marketplace dedicated servers with live pricing
         /// </summary>
-        /// <remarks>Returns the list of available Rapid Deploy dedicated servers with current pricing. Each entry includes CPU, memory, disk, bandwidth, IP allocation, and location details. These servers are pre-configured and can be provisioned immediately after purchase.</remarks>
+        /// <remarks>Use to browse pre-built dedicated servers ready for immediate provisioning (Rapid Deploy / marketplace). No params, no body. Pulls live inventory from &#x60;mynew.interserver.net/ajax/server_a.php&#x60;. Returns: array of &#x60;{ server_id, cpu: [model, {img,type,speed,num_cpus,num_cores}], memory, disk, bandwidth, ips, location, price }&#x60;. The &#x60;server_id&#x60; is the marketplace asset id — feed it into &#x60;buyItNowServerOrder&#x60; (GET options for asset &#x60;?a&#x3D;&lt;id&gt;&#x60;) and &#x60;placeBuyNowServer&#x60; (POST to commit). Errors: 401 if session expired. Sibling ops: &#x60;buyItNowServerOrder&#x60; (configure asset), &#x60;placeBuyNowServer&#x60; (purchase), &#x60;getNewServer&#x60;/&#x60;addServer&#x60; (custom-spec build, not pre-built), &#x60;getServerList&#x60; (already-owned servers).</remarks>
         /// <response code="200">Marketplace Buy it now servers list</response>
         /// <response code="401">Unauthorized</response>
         [HttpGet]
@@ -115,9 +116,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Server Ordering Information
+        /// Get custom dedicated server ordering options, regions, and pricing
         /// </summary>
-        /// <remarks>Retrieves available server configurations and pricing for ordering a new dedicated server.</remarks>
+        /// <remarks>Use before placing a fully custom (non-Rapid-Deploy) dedicated server order to discover available CPUs, drives, memory tiers, OS images, control panels, RAID levels, bandwidth packages, IP blocks, and regions with monthly prices. No params, no body. Returns: object with &#x60;config_li&#x60; keyed by category (&#x60;cpu_li&#x60;, &#x60;hd_li&#x60;, &#x60;memory_li&#x60;, &#x60;bandwidth_li&#x60;, &#x60;ips_li&#x60;, &#x60;os_li&#x60;, &#x60;cp_li&#x60;, &#x60;raid_li&#x60;) plus &#x60;regions&#x60;. Use returned IDs as POST values for &#x60;addServer&#x60;. Note &#x60;hd_li&#x60; and &#x60;memory_li&#x60; are nested by &#x60;cpu&#x60; id — the chosen CPU constrains valid drive/memory options. Errors: 401 if not authenticated. Sibling ops: &#x60;addServer&#x60; (commits the order), &#x60;buyItNowServerOrder&#x60; (pre-built marketplace alternative), &#x60;getMPServers&#x60; (browse marketplace).</remarks>
         /// <response code="200">Server Ordering details</response>
         /// <response code="401">Unauthorized</response>
         [HttpGet]
@@ -144,9 +145,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Get Server Order
+        /// Get full hardware, network, and lifecycle details for a dedicated server
         /// </summary>
-        /// <remarks>Returns detailed information about a specific server including its hardware configuration, IPs, and status.</remarks>
+        /// <remarks>Use to fetch complete configuration for one dedicated server — hardware, network/VLAN/IP layout, asset assignments, location, status, billing references, and client action links. Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Returns: &#x60;ViewServer::getDetails()&#x60; shape: &#x60;serviceInfo&#x60;, &#x60;networkInfo&#x60; (vlans + assets, with &#x60;ipmi_admin_username&#x60;/&#x60;ipmi_admin_password&#x60; and admin lease creds REDACTED for client safety), normalized &#x60;client_links&#x60;, &#x60;serviceType&#x60;. &#x60;admin_links&#x60;/raw &#x60;settings&#x60;/&#x60;csrf&#x60; stripped. Errors: 404 not owned; 401 unauth. Sibling ops: &#x60;getServerInvoices&#x60;, &#x60;serverIpmiLiveGet&#x60;, &#x60;serverIpmiPowerGet&#x60; (single — prefer &#x60;serverBulkIpmiPowerGet&#x60; for many), &#x60;getServerReverseDns&#x60;, &#x60;getServersWelcomeEmail&#x60;, &#x60;serversCancel&#x60;.</remarks>
         /// <param name="id">Server ID number.</param>
         /// <response code="200">Server details</response>
         /// <response code="401">Unauthorized</response>
@@ -174,9 +175,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Get Server Invoices
+        /// List billing invoices (charges + payments) tied to one dedicated server
         /// </summary>
-        /// <remarks>Returns the billing invoices associated with this dedicated server.</remarks>
+        /// <remarks>Use to retrieve the invoice history for a single dedicated server — e.g. before a cancel, refund, or to show outstanding balances. Path param: &#x60;id&#x60; (integer server_id from &#x60;getServerList&#x60;). No body. Inherits from &#x60;MyAdmin\\Api\\Billing\\InvoicesList&#x60; with module&#x3D;servers. Returns: &#x60;ChargeInvoiceRows&#x60; array — invoice rows with id, date, amount, status, currency, line items. Errors: 404 if &#x60;id&#x60; not owned by the caller; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current service state), &#x60;serversCancel&#x60; (cancel), &#x60;getBillingInvoice&#x60; (single invoice by invoice id), &#x60;getVpsInvoices&#x60;/&#x60;getDomainInvoices&#x60; for other modules, &#x60;getServersWelcomeEmail&#x60; to resend setup info.</remarks>
         /// <param name="id">Server ID number</param>
         /// <response code="200">Get Invoices response</response>
         /// <response code="401">Unauthorized</response>
@@ -204,9 +205,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// List Servers
+        /// List all dedicated servers owned by the authenticated customer
         /// </summary>
-        /// <remarks>Returns all dedicated server services on the account with their current status and configuration.</remarks>
+        /// <remarks>Use to enumerate physical bare-metal dedicated servers on the calling account. No params, no body. Filters &#x60;servers&#x60; by session &#x60;account_id&#x60;. Returns: array of &#x60;{ server_id, account_lid, server_hostname, server_status }&#x60;. Use &#x60;server_id&#x60; with &#x60;getServerInfo&#x60; for full hardware/network/IPMI details, &#x60;getServerInvoices&#x60; for billing, or &#x60;serverIpmiPowerGet&#x60; for chassis power state. Errors: 401 if not authenticated; empty array if account owns no servers. Sibling ops: &#x60;getServerInfo&#x60; (details), &#x60;getVpsList&#x60; (virtual instead of physical hardware), &#x60;getMPServers&#x60; (purchasable inventory, not owned). For IPMI status across many servers in one call, prefer &#x60;serverBulkIpmiPowerGet&#x60;.</remarks>
         /// <response code="200">The listing of &#x60;Servers&#x60; services on your account.</response>
         /// <response code="401">Unauthorized</response>
         [HttpGet]
@@ -233,9 +234,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Reverse DNS Info
+        /// List current reverse-DNS (PTR) records for a dedicated server&#x27;s IPs
         /// </summary>
-        /// <remarks>Returns the current reverse DNS (PTR record) entries for the server&#x27;s IP addresses.</remarks>
+        /// <remarks>Use to read the existing PTR/rDNS hostnames assigned to each public IP in the server&#x27;s VLANs — typically before calling &#x60;postServerReverseDns&#x60; to update them. Path param: &#x60;id&#x60; (integer server_id). No body. Walks &#x60;networkInfo.vlans&#x60;, expands each network to usable host IPs (handles /31 and /32 edge cases), and resolves each via &#x60;get_hostname()&#x60;. Returns: &#x60;{ ips: { &#x27;&lt;ipv4&gt;&#x27;: &#x27;&lt;ptr_or_empty_string&gt;&#x27;, ... } }&#x60;. Empty string indicates no PTR set. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: &#x60;postServerReverseDns&#x60; (update PTRs), &#x60;getServerInfo&#x60; (full network), &#x60;getVpsReverseDns&#x60; for VPS, &#x60;getDomainNameservers&#x60; / DNS endpoints for forward records. Note rDNS propagation is delegated to the in-addr.arpa zone — changes are not always instant.</remarks>
         /// <param name="id">Server ID number</param>
         /// <response code="200">Servers Reverse DNS info response</response>
         /// <response code="401">Unauthorized</response>
@@ -263,9 +264,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Resend Server Welcome Email
+        /// Resend the dedicated server welcome email with setup credentials
         /// </summary>
-        /// <remarks>Resends the welcome email for the order.</remarks>
+        /// <remarks>Use when the customer asks for the original setup/login info to be re-sent (root password, IPs, control-panel URL). Path param: &#x60;id&#x60; (integer server_id, must be &#x60;active&#x60;). No body. Invokes &#x60;server_welcome_email($id)&#x60; which re-sends the welcome message to the account&#x27;s email. Returns: &#x60;{ text:&#x27;Welcome Email has been resent.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active (cancelled/pending/suspended); 401 unauth. Caveat: re-sending is rate-sensitive; do not call repeatedly in a loop. The email may contain root credentials — confirm intent before triggering. Sibling ops: &#x60;getServerInfo&#x60; (status check), &#x60;getServerInvoices&#x60;, &#x60;getVpsWelcomeEmail&#x60; for VPS, &#x60;getDomainsWelcomeEmail&#x60; for domains.</remarks>
         /// <param name="id">Server ID number</param>
         /// <response code="200">A response indicating the operation completed successfully with a text message.</response>
         /// <response code="401">Unauthorized</response>
@@ -293,9 +294,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Place Buy Now Server Order
+        /// Place a Rapid Deploy / coupon dedicated server order; creates real invoice
         /// </summary>
-        /// <remarks>Places an order for a buy-it-now dedicated server. Use &#x60;GET /servers/order/buy_now_server&#x60; to retrieve available server configurations and their IDs before ordering.</remarks>
+        /// <remarks>Step 2 of the Rapid Deploy / coupon order flow. Commits a marketplace asset OR coupon-based dedicated server order. Inserts the &#x60;servers&#x60; row, creates a &#x60;Repeat_Invoice&#x60; plus the first &#x60;invoices&#x60; row, marks the asset &#x60;MarketPlace-Incart&#x60; (or decrements &#x60;server_coupons.in_stock&#x60;), then emails customer + admin. **Real billable order — confirm intent first.** Sibling ops: &#x60;buyItNowServerOrder&#x60; (catalog), &#x60;getServerInfo&#x60; (poll provisioning), &#x60;getServerInvoices&#x60; (billing), &#x60;addServer&#x60; (custom build alternative).  **Query (one required, same as &#x60;buyItNowServerOrder&#x60;):** - &#x60;a&#x60; (integer) — asset_id. - &#x60;c&#x60; (string) — &#x60;server_coupons.name&#x60;.  **Body fields:** - &#x60;hostname&#x60; (string, required) — valid FQDN; validated by &#x60;valid_hostname&#x60;. - &#x60;enablepassword&#x60; (boolean, optional, default &#x60;false&#x60;) — when true the client must supply &#x60;rootPassword&#x60;; otherwise a secure password is generated server-side via &#x60;generate_password()&#x60;. - &#x60;rootPassword&#x60; (string, required when &#x60;enablepassword&#x3D;true&#x60;) — must be ≥8 chars with at least one uppercase, lowercase, digit, and special character (&#x60;valid_password&#x60;). - &#x60;os&#x60;, &#x60;bandwidth&#x60;, &#x60;ips&#x60;, &#x60;cp&#x60;, &#x60;raid&#x60; (integer, optional) — option ids from &#x60;buyItNowServerOrder&#x60;; defaults &#x60;30&#x60; / &#x60;10&#x60; / &#x60;9&#x60; / &#x60;1&#x60; / &#x60;0&#x60; applied when missing. - &#x60;comments&#x60; (string, optional) — appended to the order comment.  **Returns:** &#x60;201 { success: true, text: &#x27;Server order is placed.&#x27;, service_id, invoice_id }&#x60;.  **Auth:** Session/API key.  **Errors:** - &#x60;400&#x60; — &#x60;&#x27;Server Hostname is missing.&#x27;&#x60; / &#x60;&#x27;Invalid Hostname!&#x27;&#x60; / &#x60;&#x27;Server Password is missing.&#x27;&#x60; / password complexity message. - &#x60;409&#x60; — &#x60;&#x27;Server already sold!&#x27;&#x60; / &#x60;&#x27;Server Out of stock.&#x27;&#x60; - &#x60;401&#x60; — unauthenticated.  **Side effects:** inserts &#x60;servers&#x60; row, creates &#x60;repeat_invoices&#x60; + &#x60;invoices&#x60; rows, updates &#x60;assets.status&#x60; or &#x60;server_coupons.in_stock&#x60;, queues admin + customer welcome emails.  **Related calls:** - **Prerequisite:** &#x60;buyItNowServerOrder&#x60;. - **Next:** &#x60;getBillingInvoice&#x60; + &#x60;initiatePayment&#x60; to pay, then poll &#x60;getServerInfo&#x60; for provisioning state. - **Custom build alternative:** &#x60;addServer&#x60;. </remarks>
         /// <param name="body"></param>
         /// <response code="200">Order placed successfully.</response>
         /// <response code="400">Order validation failed.</response>
@@ -332,9 +333,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Update Reverse DNS
+        /// Update reverse-DNS (PTR) hostnames on a dedicated server&#x27;s IPs
         /// </summary>
-        /// <remarks>Updates the reverse DNS (PTR record) entries for the server&#x27;s IP addresses.</remarks>
+        /// <remarks>Use to set or remove PTR records for the server&#x27;s public IPs. Path param: &#x60;id&#x60; (server_id). Body: &#x60;ips&#x60; (object mapping &#x60;&#x27;&lt;ipv4&gt;&#x27;&#x60; to desired hostname; empty string removes the PTR). Only IPs that already exist on the server&#x27;s VLANs and whose hostname differs from current are updated; each diff calls &#x60;reverse_dns($ip, $host, &#x27;set_reverse&#x27;|&#x27;remove_reverse&#x27;)&#x60;. Returns: &#x60;{ message, success:bool }&#x60;. &#x60;success:false&#x60; with &#x27;No valid IPs were passed or there were no changes&#x27; when nothing to update; otherwise reports update count. Errors: 404 invalid id; 401 unauth. Caveats: caller can only set PTRs for IPs they actually own; rDNS propagation is async — do not assume immediate visibility downstream. Sibling ops: &#x60;getServerReverseDns&#x60; (read first), &#x60;getServerInfo&#x60;, VPS counterpart &#x60;postVpsReverseDns&#x60;.</remarks>
         /// <param name="body"></param>
         /// <param name="id">Server ID number</param>
         /// <response code="200">Update Server Reverse DNS response</response>
@@ -363,32 +364,44 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Validate Server Order
+        /// Read IPMI chassis power status for many dedicated servers in one call
         /// </summary>
-        /// <remarks>Validates a server order before placing it. Use this to check for errors before committing to a purchase.</remarks>
-        /// <response code="200">Validate Server order response</response>
+        /// <remarks>Use when you need power status for several owned servers at once (dashboards, mass health checks). Each server is queried independently; per-server failures (invalid id, inactive service, no asset, BMC error) are reported in the same response without aborting the batch. Read-only — does NOT change power state. Query: &#x60;ids&#x60; (required) — comma-separated string &#x60;?ids&#x3D;2313,2314,2315&#x60; OR repeated &#x60;ids[]&#x60; array. Duplicates de-duped; non-positive ints become per-row errors. Returns: &#x60;{ results: [ { id, asset?, text|error } ] }&#x60;. Errors: 400 &#x27;No server IDs provided.&#x27; if &#x60;ids&#x60; empty/missing; 401 unauth. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (single-server equivalent), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power; no bulk equivalent — call per server), &#x60;getServerList&#x60; (discover ids).</remarks>
+        /// <param name="ids">Comma-separated list of Server IDs to query (e.g. &#x60;2313,2314,2315&#x60;). May also be passed as repeated &#x60;ids[]&#x60; query parameters.</param>
+        /// <response code="200">Bulk IPMI power status response, one entry per requested server.</response>
+        /// <response code="400">The specified resource was not found</response>
         /// <response code="401">Unauthorized</response>
-        [HttpPut]
-        [Route("/apiv2/servers/order")]
+        [HttpGet]
+        [Route("/apiv2/servers/bulk/ipmi_power")]
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
-        [SwaggerOperation("PutServers")]
+        [SwaggerOperation("ServerBulkIpmiPowerGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(ServerBulkIpmiPowerResponse), description: "Bulk IPMI power status response, one entry per requested server.")]
+        [SwaggerResponse(statusCode: 400, type: typeof(InlineResponse401), description: "The specified resource was not found")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
-        public virtual IActionResult PutServers()
+        public virtual IActionResult ServerBulkIpmiPowerGet([FromQuery][Required()]string ids)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200);
+            // return StatusCode(200, default(ServerBulkIpmiPowerResponse));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(InlineResponse401));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
-
-            throw new NotImplementedException();
+            string exampleJson = null;
+            exampleJson = "{\n  \"results\" : [ {\n    \"id\" : 2313,\n    \"asset\" : 5432,\n    \"text\" : \"Chassis Power is on\"\n  }, {\n    \"id\" : 2314,\n    \"error\" : \"Service is not active\"\n  }, {\n    \"id\" : 2315,\n    \"error\" : \"Invalid Service Passed\"\n  } ]\n}";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<ServerBulkIpmiPowerResponse>(exampleJson)
+                        : default(ServerBulkIpmiPowerResponse);            //TODO: Change the data returned
+            return new ObjectResult(example);
         }
 
         /// <summary>
-        /// Server IPMI Live Information
+        /// Read current IPMI Live whitelist + KVM gateway URL for a dedicated server
         /// </summary>
-        /// <remarks>Returns the current IPMI live connection information for the server.</remarks>
+        /// <remarks>Reads the active IPMI Live session for a dedicated server — the temporary whitelisted public IP, the customer-side IPMI gateway URL, and the IPMI client (read-only) credentials so the customer can open the KVM/console. Looks up the asset&#x27;s IPMI IP, the location&#x27;s IPMI group, and any active &#x60;ipmi_ips&#x60; lease (3-hour TTL). Sibling ops: &#x60;serverIpmiLivePost&#x60; (allocate whitelist slot), &#x60;serverIpmiPowerGet&#x60; / &#x60;serverIpmiPowerPost&#x60; (chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id from &#x60;getServerList&#x60;.  **Body / query:** None. Optionally pass &#x60;asset&#x60; (asset_id) to target a specific asset; default is first asset.  **Returns:** when an active lease exists &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60;. When no lease yet: &#x60;{ text: &#x27;Setup not yet completed&#x27; }&#x60; — then call &#x60;serverIpmiLivePost&#x60; to allocate a slot.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60; when the asset/location is not configured for IPMI Live.  **Caveat:** returns &#x60;client_password&#x60; — never log/echo verbatim.  **Related calls:** - **Allocate:** &#x60;serverIpmiLivePost&#x60;. - **Chassis power:** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverIpmiPowerPost&#x60;. </remarks>
         /// <param name="id">Server ID number</param>
         /// <response code="200">Response from the Servers IPMI Live information request.</response>
         /// <response code="404">The specified resource was not found</response>
@@ -416,9 +429,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Server IPMI Live Setup
+        /// Whitelist an IP for IPMI Live KVM gateway access (3-hour lease)
         /// </summary>
-        /// <remarks>Configures IPMI live access by whitelisting your current IP address for connections to the server&#x27;s IPMI management interface.</remarks>
+        /// <remarks>Allocates / refreshes an IPMI Live whitelist slot so the customer&#x27;s specified IP can reach the BMC&#x27;s KVM/console for 3 hours. Picks a free &#x60;ipmi_ips&#x60; row for the location&#x27;s &#x60;ipmi_group&#x60;, refreshes the lease if the same IP is already allocated, otherwise pushes the new whitelist via &#x60;ipmi_live_setup()&#x60;. Sibling ops: &#x60;serverIpmiLiveGet&#x60; (read current lease), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — chassis power).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;ip&#x60; (string, required) — public IPv4 to whitelist. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text (html), public_ip, allowed_ip, client_username, client_password }&#x60; for KVM login.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;An Invalid IP was passed.&#x27;&#x60;, &#x60;&#x27;No Live IPs are currently free for use with the IPMI Gateway. Please wait &lt;duration&gt; for the next IP to free up.&#x27;&#x60;, &#x60;&#x27;There was an error communicating with the IPMI Management server&#x27;&#x60;, &#x60;&#x27;No IPMI IP Set&#x27;&#x60; / &#x60;&#x27;Invalid IPMI IP&#x27;&#x60; / &#x60;&#x27;Live IPMI not Available for this location.&#x27;&#x60;.  **Caveat:** returns IPMI client password — handle securely; whitelist exposes the BMC briefly.  **Related calls:** - **Read current lease:** &#x60;serverIpmiLiveGet&#x60;. - **Power control:** &#x60;serverIpmiPowerPost&#x60;. </remarks>
         /// <param name="body"></param>
         /// <param name="id">Server ID number</param>
         /// <response code="200">Response from the Servers IPMI Live information request.</response>
@@ -447,9 +460,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Get IPMI Power Status
+        /// Read IPMI chassis power status for a dedicated server (single)
         /// </summary>
-        /// <remarks>Returns the chassis power status from ipmi.</remarks>
+        /// <remarks>Use to check whether a server&#x27;s chassis is currently &#x60;on&#x60;/&#x60;off&#x60; via IPMI before issuing a power action. Path param: &#x60;id&#x60; (integer server_id). Optional body &#x60;asset&#x60; (asset_id — defaults to first asset). Issues &#x60;ipmitool power status&#x60; against the asset&#x27;s &#x60;ipmi_ip&#x60; using its location IPMI group/credentials. Returns: &#x60;{ text:&#x27;Chassis Power is on&#x27; }&#x60; (or &#x27;off&#x27;). Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if service not active; &#x27;There was an error sending the IPMI command&#x27; if BMC unreachable. Caveat: BMCs occasionally rate-limit — back off on repeated errors. Sibling ops: &#x60;serverBulkIpmiPowerGet&#x60; (preferred when polling many servers — single round-trip), &#x60;serverIpmiPowerPost&#x60; (DESTRUCTIVE — change power), &#x60;getServerInfo&#x60; (full state), &#x60;serverIpmiLiveGet&#x60; (IPMI Live KVM).</remarks>
         /// <param name="id">Server ID number</param>
         /// <response code="200">Response with a text message field.</response>
         /// <response code="401">Unauthorized</response>
@@ -477,9 +490,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Server IPMI Power
+        /// DESTRUCTIVE — change chassis power state on a bare-metal server
         /// </summary>
-        /// <remarks>Uses the IPMI interface to set the Power status on the server.</remarks>
+        /// <remarks>Sends an IPMI chassis power command (&#x60;on&#x60;, &#x60;off&#x60;, &#x60;cycle&#x60;, &#x60;reset&#x60;, &#x60;soft&#x60;) to a customer&#x27;s physical dedicated server. **DESTRUCTIVE on running hardware:** &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; are forced power events that can corrupt filesystems, lose un-flushed data, or break in-flight workloads. &#x60;soft&#x60; requests an ACPI shutdown (safer when the guest OS is responsive). Always confirm intent with the operator. Sibling ops: &#x60;serverIpmiPowerGet&#x60; (read first), &#x60;serverBulkIpmiPowerGet&#x60; (status only), &#x60;serverIpmiLivePost&#x60; (KVM access).  **Path:** &#x60;id&#x60; (integer, required) — server_id.  **Body fields:** - &#x60;action&#x60; (string, required) — one of &#x60;on&#x60; / &#x60;off&#x60; / &#x60;cycle&#x60; / &#x60;reset&#x60; / &#x60;soft&#x60;. - &#x60;asset&#x60; (integer, optional) — asset_id; defaults to first asset on the server.  **Returns:** &#x60;{ text: &#x27;Power command sent. Response: &lt;ipmi output&gt;&#x27; }&#x60;.  **Auth:** Session/API key. Ownership enforced via &#x60;server_custid&#x60;.  **Errors:** - &#x60;422&#x60; / inline error text — &#x60;Invalid Action&#x60; when &#x60;action&#x60; is not in the allowed set. - &#x60;404&#x60; — &#x60;id&#x60; not owned, or &#x60;asset&#x60; not on this server. - &#x60;409&#x60; — service not &#x60;active&#x60;. - &#x60;200&#x60; with error text — &#x60;&#x27;There was an error sending the IPMI command.&#x27;&#x60; when BMC is unreachable or rate-limiting.  **Related calls:** - **Status (single / bulk):** &#x60;serverIpmiPowerGet&#x60;, &#x60;serverBulkIpmiPowerGet&#x60;. - **KVM console:** &#x60;serverIpmiLivePost&#x60;. </remarks>
         /// <param name="body"></param>
         /// <param name="id">Server ID number</param>
         /// <response code="200">Response with a text message field.</response>
@@ -508,9 +521,9 @@ namespace myadmin-client-aspnetcore.Controllers
         }
 
         /// <summary>
-        /// Cancel Server Service
+        /// Cancel a dedicated server service at the end of the current billing cycle
         /// </summary>
-        /// <remarks>Cancels the dedicated server service. The server will be deprovisioned and billing will stop at the end of the current billing cycle.</remarks>
+        /// <remarks>Submits a cancellation request for a dedicated server. The server is deprovisioned and recurring billing stops at the end of the current billing cycle (not an immediate refund). Path param: &#x60;id&#x60; (integer server_id, from &#x60;getServerList&#x60;). No body. Caveat: billing-affecting action — always confirm with the user. Hardware-attached data may be wiped on deprovisioning. Returns: &#x60;{ success:bool, text:&#x27;Servers is canceled.&#x27; }&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 409 if already cancelled or non-active; 401 unauth. Sibling ops: &#x60;getServerInfo&#x60; (current status), &#x60;getServerInvoices&#x60; (outstanding charges), VPS counterpart &#x60;VPSCancel&#x60;. To re-order after cancel use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;.</remarks>
         /// <param name="id">Server ID number</param>
         /// <response code="200">Servers Cancel</response>
         /// <response code="401">Unauthorized</response>
@@ -519,12 +532,12 @@ namespace myadmin-client-aspnetcore.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("ServersCancel")]
-        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20020), description: "Servers Cancel")]
+        [SwaggerResponse(statusCode: 200, type: typeof(InlineResponse20022), description: "Servers Cancel")]
         [SwaggerResponse(statusCode: 401, type: typeof(InlineResponse401), description: "Unauthorized")]
         public virtual IActionResult ServersCancel([FromRoute][Required]int? id)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(InlineResponse20020));
+            // return StatusCode(200, default(InlineResponse20022));
 
             //TODO: Uncomment the next line to return response 401 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(401, default(InlineResponse401));
@@ -532,15 +545,15 @@ namespace myadmin-client-aspnetcore.Controllers
             exampleJson = "{\n  \"success\" : true,\n  \"text\" : \"Servers is canceled.\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<InlineResponse20020>(exampleJson)
-                        : default(InlineResponse20020);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<InlineResponse20022>(exampleJson)
+                        : default(InlineResponse20022);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
         /// <summary>
-        /// Update Server Order
+        /// Update settings on a dedicated server order (shares handler with view)
         /// </summary>
-        /// <remarks>Updates settings on a dedicated server order.</remarks>
+        /// <remarks>Use to modify metadata on an existing dedicated server order. Path param: &#x60;id&#x60; (integer server_id). Currently this method shares the same handler as &#x60;getServerInfo&#x60; (&#x60;View::go()&#x60;) — no dedicated update fields are processed; treat it as deprecated/no-op pending field-specific endpoints. For hostname, password, or rDNS changes use the dedicated ops below. Returns: same payload shape as &#x60;getServerInfo&#x60;. Errors: 404 if &#x60;id&#x60; not owned by caller; 401 unauth. Sibling ops: prefer &#x60;postServerReverseDns&#x60; (rDNS), &#x60;serverIpmiPowerPost&#x60; (power), &#x60;serverIpmiLivePost&#x60; (IPMI access), &#x60;serversCancel&#x60; (cancel). For new orders use &#x60;addServer&#x60; or &#x60;placeBuyNowServer&#x60;. View-only: &#x60;getServerInfo&#x60;.</remarks>
         /// <param name="id">Server ID number.</param>
         /// <response code="200">A response indicating the operation completed successfully with a text message.</response>
         /// <response code="401">Unauthorized</response>

@@ -25,12 +25,12 @@ use strict;
 use warnings;
 
 
-use_ok('OpenAPIClient::Object::BackupIPInfo');
+use_ok('InterServerAPI::Object::BackupIPInfo');
 
 # uncomment below and update the test
-#my $instance = OpenAPIClient::Object::BackupIPInfo->new();
+#my $instance = InterServerAPI::Object::BackupIPInfo->new();
 #
-#isa_ok($instance, 'OpenAPIClient::Object::BackupIPInfo');
+#isa_ok($instance, 'InterServerAPI::Object::BackupIPInfo');
 
 
 done_testing();

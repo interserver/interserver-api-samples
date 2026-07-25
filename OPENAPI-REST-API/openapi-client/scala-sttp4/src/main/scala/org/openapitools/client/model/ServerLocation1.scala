@@ -20,4 +20,3 @@ case class ServerLocation1(
   location_description: Option[String] = None,
   location_ipmi_group: Option[Int] = None
 )
-

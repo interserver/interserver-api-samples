@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.delete_firewall_rule import DeleteFirewallRule  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.delete_firewall_rule import DeleteFirewallRule  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestDeleteFirewallRule(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestDeleteFirewallRule(unittest.TestCase):
     def testDeleteFirewallRule(self):
         """Test DeleteFirewallRule"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.delete_firewall_rule.DeleteFirewallRule()  # noqa: E501
+        # model = interserver_api_client.models.delete_firewall_rule.DeleteFirewallRule()  # noqa: E501
         pass
 
 

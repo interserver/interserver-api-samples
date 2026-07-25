@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::CreateGeoFirewallRule
+# InterServerAPI::Object::CreateGeoFirewallRule
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::CreateGeoFirewallRule;
+use InterServerAPI::Object::CreateGeoFirewallRule;
 ```
 
 ## Properties

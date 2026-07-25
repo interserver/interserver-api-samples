@@ -26,7 +26,7 @@ import VpsServiceMaster from './VpsServiceMaster';
 /**
  * The Vps model module.
  * @module model/Vps
- * @version 0.9.0
+ * @version 1.0.0
  */
 class Vps {
     /**

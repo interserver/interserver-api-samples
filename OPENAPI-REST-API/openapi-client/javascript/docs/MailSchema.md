@@ -1,4 +1,4 @@
-# InterServerManagementApi.MailSchema
+# InterserverApiClient.MailSchema
 
 ## Properties
 

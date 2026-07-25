@@ -1,10 +1,10 @@
 import 'package:test/test.dart';
-import 'package:openapi/openapi.dart';
+import 'package:interserver_api/interserver_api.dart';
 
 // tests for GenericResponse
 void main() {
-  final instance = GenericResponseBuilder();
-  // TODO add properties to the builder and call build()
+  final GenericResponse? instance = /* GenericResponse(...) */ null;
+  // TODO add properties to the entity
 
   group(GenericResponse, () {
     // String status

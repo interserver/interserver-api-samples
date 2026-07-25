@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.LicensesOrder();
+    instance = new InterserverApiClient.LicensesOrder();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,25 +50,25 @@
   describe('LicensesOrder', function() {
     it('should create an instance of LicensesOrder', function() {
       // uncomment below and update the code to test LicensesOrder
-      //var instance = new InterServerManagementApi.LicensesOrder();
-      //expect(instance).to.be.a(InterServerManagementApi.LicensesOrder);
+      //var instance = new InterserverApiClient.LicensesOrder();
+      //expect(instance).to.be.a(InterserverApiClient.LicensesOrder);
     });
 
     it('should have the property serviceCategories (base name: "serviceCategories")', function() {
       // uncomment below and update the code to test the property serviceCategories
-      //var instance = new InterServerManagementApi.LicensesOrder();
+      //var instance = new InterserverApiClient.LicensesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property packageCosts (base name: "packageCosts")', function() {
       // uncomment below and update the code to test the property packageCosts
-      //var instance = new InterServerManagementApi.LicensesOrder();
+      //var instance = new InterserverApiClient.LicensesOrder();
       //expect(instance).to.be();
     });
 
     it('should have the property serviceTypes (base name: "serviceTypes")', function() {
       // uncomment below and update the code to test the property serviceTypes
-      //var instance = new InterServerManagementApi.LicensesOrder();
+      //var instance = new InterserverApiClient.LicensesOrder();
       //expect(instance).to.be();
     });
 

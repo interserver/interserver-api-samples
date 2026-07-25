@@ -1,4 +1,4 @@
-# InterServerManagementApi.LoginServiceCounts
+# InterserverApiClient.LoginServiceCounts
 
 ## Properties
 

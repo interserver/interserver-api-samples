@@ -21,4 +21,3 @@ case class VpsTrafficUsageAverageSectionResponse(
   count: Int,
   value: Int
 )
-

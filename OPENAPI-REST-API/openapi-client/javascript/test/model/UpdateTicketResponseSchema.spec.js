@@ -20,15 +20,15 @@
     factory(require('expect.js'), require(process.cwd()+'/src/index'));
   } else {
     // Browser globals (root is window)
-    factory(root.expect, root.InterServerManagementApi);
+    factory(root.expect, root.InterserverApiClient);
   }
-}(this, function(expect, InterServerManagementApi) {
+}(this, function(expect, InterserverApiClient) {
   'use strict';
 
   var instance;
 
   beforeEach(function() {
-    instance = new InterServerManagementApi.UpdateTicketResponseSchema();
+    instance = new InterserverApiClient.UpdateTicketResponseSchema();
   });
 
   var getProperty = function(object, getter, property) {
@@ -50,19 +50,19 @@
   describe('UpdateTicketResponseSchema', function() {
     it('should create an instance of UpdateTicketResponseSchema', function() {
       // uncomment below and update the code to test UpdateTicketResponseSchema
-      //var instance = new InterServerManagementApi.UpdateTicketResponseSchema();
-      //expect(instance).to.be.a(InterServerManagementApi.UpdateTicketResponseSchema);
+      //var instance = new InterserverApiClient.UpdateTicketResponseSchema();
+      //expect(instance).to.be.a(InterserverApiClient.UpdateTicketResponseSchema);
     });
 
     it('should have the property success (base name: "success")', function() {
       // uncomment below and update the code to test the property success
-      //var instance = new InterServerManagementApi.UpdateTicketResponseSchema();
+      //var instance = new InterserverApiClient.UpdateTicketResponseSchema();
       //expect(instance).to.be();
     });
 
     it('should have the property message (base name: "message")', function() {
       // uncomment below and update the code to test the property message
-      //var instance = new InterServerManagementApi.UpdateTicketResponseSchema();
+      //var instance = new InterserverApiClient.UpdateTicketResponseSchema();
       //expect(instance).to.be();
     });
 

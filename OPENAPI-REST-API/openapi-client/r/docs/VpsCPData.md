@@ -1,4 +1,4 @@
-# openapi::VpsCPData
+# interserverapi::VpsCPData
 
 Control panel license options available for a VPS.
 

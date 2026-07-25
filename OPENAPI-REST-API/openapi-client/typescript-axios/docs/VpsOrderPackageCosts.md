@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { VpsOrderPackageCosts } from './api';
+import { VpsOrderPackageCosts } from '@interserver/myadmin-client';
 
 const instance: VpsOrderPackageCosts = {
     _57,

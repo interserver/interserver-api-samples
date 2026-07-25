@@ -11,4 +11,8 @@ Users details.
 |**modules** | [**HomeDetailsModules**](HomeDetailsModules.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Serializable
+
 

@@ -31,27 +31,18 @@ namespace Interserver.MyAdmin.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse20026" /> class.
         /// </summary>
-        /// <param name="text">Confirmation message..</param>
-        /// <param name="ticket">The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress..</param>
-        public InlineResponse20026(string text = default(string), int? ticket = default(int?))
+        /// <param name="ips">A map of IP addresses to their current reverse DNS hostnames..</param>
+        public InlineResponse20026(Dictionary<string, string> ips = default(Dictionary<string, string>))
         {
-            this.text = text;
-            this.ticket = ticket;
+            this.ips = ips;
         }
         
         /// <summary>
-        /// Confirmation message.
+        /// A map of IP addresses to their current reverse DNS hostnames.
         /// </summary>
-        /// <value>Confirmation message.</value>
-        [DataMember(Name="text", EmitDefaultValue=false)]
-        public string text { get; set; }
-
-        /// <summary>
-        /// The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.
-        /// </summary>
-        /// <value>The support ticket ID created for tracking the migration. Use this with &#x60;/tickets/{id}&#x60; to check migration progress.</value>
-        [DataMember(Name="ticket", EmitDefaultValue=false)]
-        public int? ticket { get; set; }
+        /// <value>A map of IP addresses to their current reverse DNS hostnames.</value>
+        [DataMember(Name="ips", EmitDefaultValue=false)]
+        public Dictionary<string, string> ips { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,8 +52,7 @@ namespace Interserver.MyAdmin.Client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse20026 {\n");
-            sb.Append("  text: ").Append(text).Append("\n");
-            sb.Append("  ticket: ").Append(ticket).Append("\n");
+            sb.Append("  ips: ").Append(ips).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,14 +88,10 @@ namespace Interserver.MyAdmin.Client.Model
 
             return 
                 (
-                    this.text == input.text ||
-                    (this.text != null &&
-                    this.text.Equals(input.text))
-                ) && 
-                (
-                    this.ticket == input.ticket ||
-                    (this.ticket != null &&
-                    this.ticket.Equals(input.ticket))
+                    this.ips == input.ips ||
+                    this.ips != null &&
+                    input.ips != null &&
+                    this.ips.SequenceEqual(input.ips)
                 );
         }
 
@@ -118,10 +104,8 @@ namespace Interserver.MyAdmin.Client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.text != null)
-                    hashCode = hashCode * 59 + this.text.GetHashCode();
-                if (this.ticket != null)
-                    hashCode = hashCode * 59 + this.ticket.GetHashCode();
+                if (this.ips != null)
+                    hashCode = hashCode * 59 + this.ips.GetHashCode();
                 return hashCode;
             }
         }

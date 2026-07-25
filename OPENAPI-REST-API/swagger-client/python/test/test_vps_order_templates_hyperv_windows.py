@@ -14,9 +14,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import myadmin-client-python
-from myadmin-client-python.models.vps_order_templates_hyperv_windows import VpsOrderTemplatesHypervWindows  # noqa: E501
-from myadmin-client-python.rest import ApiException
+import interserver_api_client
+from interserver_api_client.models.vps_order_templates_hyperv_windows import VpsOrderTemplatesHypervWindows  # noqa: E501
+from interserver_api_client.rest import ApiException
 
 
 class TestVpsOrderTemplatesHypervWindows(unittest.TestCase):
@@ -31,7 +31,7 @@ class TestVpsOrderTemplatesHypervWindows(unittest.TestCase):
     def testVpsOrderTemplatesHypervWindows(self):
         """Test VpsOrderTemplatesHypervWindows"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = myadmin-client-python.models.vps_order_templates_hyperv_windows.VpsOrderTemplatesHypervWindows()  # noqa: E501
+        # model = interserver_api_client.models.vps_order_templates_hyperv_windows.VpsOrderTemplatesHypervWindows()  # noqa: E501
         pass
 
 

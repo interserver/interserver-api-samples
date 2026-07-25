@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainDnssecRecordsInner = Initialize-PSOpenAPIToolsDomainDnssecRecordsInner  -Algorithm null `
+$DomainDnssecRecordsInner = Initialize-InterserverApiDomainDnssecRecordsInner  -Algorithm null `
  -DigestType null `
  -Digest null `
  -KeyTag null

@@ -31,4 +31,3 @@ case class ServerOrderFieldLabels(
   /* Hard Drives field label */
   hd: Option[ServerOrderFieldLabel] = None
 )
-

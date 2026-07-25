@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 
 - Prepare the resource
 ```powershell
-$DomainNameServer = Initialize-PSOpenAPIToolsDomainNameServer  -Sortorder null `
+$DomainNameServer = Initialize-InterserverApiDomainNameServer  -Sortorder null `
  -Name null `
  -Ipaddress null
 ```

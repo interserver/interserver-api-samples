@@ -1,4 +1,4 @@
-# openapi::VpsOrderServiceTypes
+# interserverapi::VpsOrderServiceTypes
 
 Service Types
 

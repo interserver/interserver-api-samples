@@ -80,8 +80,5 @@ export class UpdateTicket {
     }
 }
 
-export enum UpdateTicketCustomerServerAccessEnum {
-    Y = 'y',
-    N = 'n'
-}
+    export type UpdateTicketCustomerServerAccessEnum = "y" | "n" ;
 

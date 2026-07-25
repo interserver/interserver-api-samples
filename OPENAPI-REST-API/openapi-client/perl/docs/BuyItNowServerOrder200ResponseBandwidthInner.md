@@ -1,8 +1,8 @@
-# OpenAPIClient::Object::BuyItNowServerOrder200ResponseBandwidthInner
+# InterServerAPI::Object::BuyItNowServerOrder200ResponseBandwidthInner
 
 ## Load the model package
 ```perl
-use OpenAPIClient::Object::BuyItNowServerOrder200ResponseBandwidthInner;
+use InterServerAPI::Object::BuyItNowServerOrder200ResponseBandwidthInner;
 ```
 
 ## Properties

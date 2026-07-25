@@ -1,4 +1,4 @@
-# openapi::QuickserverAddonsRow
+# interserverapi::QuickserverAddonsRow
 
 A single add-on item associated with a QuickServer service.
 
