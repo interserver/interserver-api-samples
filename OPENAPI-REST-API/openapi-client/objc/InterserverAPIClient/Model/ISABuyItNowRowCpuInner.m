@@ -1,0 +1,34 @@
+#import "ISABuyItNowRowCpuInner.h"
+
+@implementation ISABuyItNowRowCpuInner
+
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    // initialize property's default value, if any
+    
+  }
+  return self;
+}
+
+
+/**
+ * Maps json key to property name.
+ * This method is used by `JSONModel`.
+ */
++ (JSONKeyMapper *)keyMapper {
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"img": @"img", @"type": @"type", @"speed": @"speed", @"numCpus": @"num_cpus", @"numCores": @"num_cores" }];
+}
+
+/**
+ * Indicates whether the property with the given name is optional.
+ * If `propertyName` is optional, then return `YES`, otherwise return `NO`.
+ * This method is used by `JSONModel`.
+ */
++ (BOOL)propertyIsOptional:(NSString *)propertyName {
+
+  NSArray *optionalProperties = @[@"img", @"type", @"speed", @"numCpus", @"numCores"];
+  return [optionalProperties containsObject:propertyName];
+}
+
+@end

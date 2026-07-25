@@ -1,0 +1,128 @@
+name:           interserver-api-client
+version:        0.1.0.0
+synopsis:       Auto-generated interserver-api-client API Client
+description:    .
+                Client library for calling the InterServer Management API API based on http-client.
+                .
+                host: my.interserver.net
+                .
+                base path: https://my.interserver.net/apiv2
+                .
+                InterServer Management API API version: 0.9.0
+                .
+                OpenAPI version: 3.0.3
+                .
+                Generator version: 7.24.0
+                .
+category:       Web
+homepage:       https://openapi-generator.tech
+author:         Author Name Here
+maintainer:     author.name@email.com
+copyright:      YEAR - AUTHOR
+license:        UnspecifiedLicense
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    README.md
+    openapi.yaml
+
+Flag UseKatip
+  Description: Use the katip package to provide logging (if false, use the default monad-logger package)
+  Default:     True
+  Manual:      True
+
+library
+  hs-source-dirs:
+      lib
+  ghc-options: -Wall -funbox-strict-fields
+  build-depends:
+      aeson >=1.0 && <3.0
+    , base >=4.7 && <5.0
+    , base64-bytestring >1.0 && <2.0
+    , bytestring >=0.10.0
+    , case-insensitive
+    , containers >=0.5.0.0 && <0.8
+    , deepseq >= 1.4 && <1.6
+    , exceptions >= 0.4
+    , http-api-data >= 0.3.4 && <0.7
+    , http-client >=0.5 && <0.8
+    , http-client-tls
+    , http-media >= 0.4 && < 0.9
+    , http-types >=0.8 && <0.13
+    , iso8601-time >=0.1.3 && <0.2.0
+    , microlens >= 0.4.3
+    , mtl >=2.2.1
+    , network >=2.6.2 && <3.9
+    , random >=1.1
+    , safe-exceptions <0.2
+    , text >=0.11 && <3
+    , time >=1.5
+    , transformers >=0.4.0.0
+    , unordered-containers
+    , vector >=0.10.9 && <0.14
+  other-modules:
+      Paths_interserver_api_client
+  exposed-modules:
+      Interserver.Api
+      Interserver.Api.API
+      Interserver.Api.API.Account
+      Interserver.Api.API.Backups
+      Interserver.Api.API.Billing
+      Interserver.Api.API.DNS
+      Interserver.Api.API.Domains
+      Interserver.Api.API.FloatingIPs
+      Interserver.Api.API.Licenses
+      Interserver.Api.API.Mail
+      Interserver.Api.API.Public
+      Interserver.Api.API.QuickServers
+      Interserver.Api.API.SSLCertificates
+      Interserver.Api.API.ScrubIps
+      Interserver.Api.API.Servers
+      Interserver.Api.API.Tickets
+      Interserver.Api.API.VPS
+      Interserver.Api.API.Webhosting
+      Interserver.Api.Client
+      Interserver.Api.Core
+      Interserver.Api.Logging
+      Interserver.Api.MimeTypes
+      Interserver.Api.Model
+      Interserver.Api.ModelLens
+  default-language: Haskell2010
+
+  if flag(UseKatip)
+      build-depends: katip >=0.8 && < 1.0
+      other-modules: Interserver.Api.LoggingKatip
+      cpp-options: -DUSE_KATIP
+  else
+      build-depends: monad-logger >=0.3 && <0.4
+      other-modules: Interserver.Api.LoggingMonadLogger
+      cpp-options: -DUSE_MONAD_LOGGER
+
+test-suite tests
+  type: exitcode-stdio-1.0
+  main-is: Test.hs
+  hs-source-dirs:
+      tests
+  ghc-options: -Wall -fno-warn-orphans
+  build-depends:
+      interserver-api-client
+    , QuickCheck
+    , aeson
+    , base >=4.7 && <5.0
+    , bytestring >=0.10.0
+    , containers
+    , hspec >=1.8
+    , iso8601-time
+    , mtl >=2.2.1
+    , semigroups
+    , text
+    , time
+    , transformers >=0.4.0.0
+    , unordered-containers
+    , vector
+  other-modules:
+      ApproxEq
+      Instances
+      PropMime
+  default-language: Haskell2010

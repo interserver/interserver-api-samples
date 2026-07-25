@@ -1,0 +1,92 @@
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+
+// ignore_for_file: unused_element
+import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:equatable/src/equatable_utils.dart';
+import 'package:interserver_api/src/optional.dart';
+
+part 'scrub_ips_delete_rule200_response.g.dart';
+
+
+@CopyWith()
+@JsonSerializable(
+  checked: true,
+  createToJson: true,
+  disallowUnrecognizedKeys: false,
+  explicitToJson: true,
+)
+class ScrubIpsDeleteRule200Response {
+  /// Returns a new [ScrubIpsDeleteRule200Response] instance.
+  ScrubIpsDeleteRule200Response({
+
+    this.success = const Optional.absent(),
+
+    this.text = const Optional.absent(),
+  });
+
+  @OptionalConverter()
+  @JsonKey(
+    
+    name: r'success',
+    required: false,
+    includeIfNull: false,
+    readValue: readOptionalValue,
+  )
+
+
+  final Optional<bool?> success;
+
+
+
+  @OptionalConverter()
+  @JsonKey(
+    
+    name: r'text',
+    required: false,
+    includeIfNull: false,
+    readValue: readOptionalValue,
+  )
+
+
+  final Optional<String?> text;
+
+
+
+
+    bool operator ==(Object other) {
+      return identical(this, other) ||
+      other is ScrubIpsDeleteRule200Response &&
+      runtimeType == other.runtimeType &&
+      equals(
+        [
+            success,
+            text,
+        ],
+        [
+            other.success,
+            other.text,
+        ]
+      );
+    }
+
+
+    @override
+    int get hashCode => runtimeType.hashCode ^ mapPropsToHashCode([
+        success,
+        text,
+    ],);
+
+  factory ScrubIpsDeleteRule200Response.fromJson(Map<String, dynamic> json) => _$ScrubIpsDeleteRule200ResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ScrubIpsDeleteRule200ResponseToJson(this);
+
+  @override
+  String toString() {
+    return toJson().toString();
+  }
+
+}
+

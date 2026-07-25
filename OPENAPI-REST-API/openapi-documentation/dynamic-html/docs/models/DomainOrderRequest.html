@@ -1,0 +1,34 @@
+
+<h2>DomainOrderRequest</h2>
+<ul class="parameter">
+  <li class="param-required-true">hostname : String
+    <br/>Fully-qualified domain to register or transfer (e.g. example.com).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">type : String
+    <br/>Order type.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>register</dd>
+            <dd>transfer</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">coupon : String
+    <br/>Coupon code (addDomain only).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">whoisUnderscoreprivacy : String
+    <br/>Set to \&quot;enable\&quot; to add Whois privacy (addDomain only).
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>enable</dd>
+            <dd>disable</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>

@@ -1,0 +1,39 @@
+require "json"
+
+module InterserverApiClient
+  module Api
+  class Billing::Prepays
+    def initialize(@conn : Connection); end
+
+    # Create a prepay deposit and return an invoice id to fund it Creates a prepay row (&#x60;prepays&#x60; table) at the requested amount and inserts a matching &#x60;invoices&#x60; row (&#x60;Prepay ID {pid} Invoice&#x60;) that the customer must pay through &#x60;initiatePayment&#x60; before the balance becomes usable. The prepay is added with &#x60;PREPAY_TYPE_ANY&#x60; / &#x60;PREPAY_SERVICE_ANY&#x60; defaults via &#x60;add_prepay()&#x60;. Use to seed an account balance the customer can later spend via &#x60;method&#x3D;prepay&#x60; at checkout. **Real money** — funding the returned invoice charges a real payment method. Sibling ops: &#x60;getBillingPrePays&#x60;, &#x60;deleteBillingPrepay&#x60;, &#x60;getBillingInvoice&#x60;, &#x60;initiatePayment&#x60;.  **Body fields (JSON or multipart, schema &#x60;BillingPrepayRequest&#x60;):** - &#x60;amount&#x60; (number, required) — deposit size in account currency. **Minimum $10**; smaller values are rejected. - &#x60;module&#x60; (string, required) — service module scope (&#x60;default&#x60; for any service, or specific like &#x60;vps&#x60;, &#x60;webhosting&#x60;). - &#x60;automatic_use&#x60; (bool, required) — when &#x60;true&#x60;, the balance auto-applies to future invoices in the scoped module.  **Returns:** &#x60;{text: \&quot;Thank you! Prepay created! Kindly pay the invoice to activate the prepay fund.\&quot;, invoice: &lt;integer&gt;}&#x60; — pass &#x60;invoice&#x60; to &#x60;initiatePayment&#x60; (use a real &#x60;method&#x60; like &#x60;cc&#x60; / &#x60;paypal&#x60;, not &#x60;prepay&#x60; — you can&#39;t fund a prepay with a prepay).  **Side effects:** - Inserts &#x60;prepays&#x60; row. - Inserts &#x60;invoices&#x60; row (&#x60;invoices_description &#x3D; \&quot;Prepay ID {pid} Invoice\&quot;&#x60;, &#x60;invoices_paid&#x3D;0&#x60;, &#x60;invoices_module&#x3D;&#39;default&#39;&#x60;).  **Auth:** Session/API key.  **Errors:** - &#x60;Sorry! Minimum prepay amount is $10.00&#x60; — amount below floor. - &#x60;Something went wrong! Try again or contact our support team!&#x60; — invoice insert failed. - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Confirm invoice:** &#x60;getBillingInvoice&#x60; with the returned &#x60;invoice&#x60; id. - **Pay it:** &#x60;initiatePayment&#x60; (&#x60;method&#x3D;cc|paypal|...&#x60;, not &#x60;prepay&#x60;). - **Verify it&#39;s now usable:** &#x60;getBillingPrePays&#x60; (look for &#x60;prepay_remaining &gt; 0&#x60;). - **Cancel before paying:** &#x60;deleteBillingPrepay&#x60;.  **Example happy path:** &#x60;&#x60;&#x60;text POST /apiv2/billing/prepays { \&quot;amount\&quot;: 100, \&quot;module\&quot;: \&quot;default\&quot;, \&quot;automatic_use\&quot;: true } -&gt; { \&quot;text\&quot;: \&quot;...\&quot;, \&quot;invoice\&quot;: 25296701 } GET /apiv2/billing/pay/cc/25296701 -&gt; { \&quot;type\&quot;: \&quot;single\&quot;, \&quot;text\&quot;: \&quot;Payment processed.\&quot; } GET /apiv2/billing/prepays -&gt; [{ \&quot;prepay_id\&quot;: 99, \&quot;prepay_remaining\&quot;: 100, ... }] &#x60;&#x60;&#x60; 
+    def create(billing_prepay_request : InterserverApiClient::BillingPrepayRequest) : Response(InterserverApiClient::SuccessTextResponse)
+      @conn.request(InterserverApiClient::SuccessTextResponse,
+        method: :POST,
+        path: "/billing/prepays",
+        body: billing_prepay_request,
+        accept: %w[application/json],
+        content_type: %w[application/json multipart/form-data],
+        auth: %w[sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth])
+    end
+
+    # Delete an unfunded prepay or strip its unpaid funding invoices Removes a prepay from the account, with one safety rule: a prepay that still has usable credit (&#x60;prepay_remaining &gt; $0.01&#x60;) cannot be deleted *unless* it also has unpaid funding invoices we can clean up — in which case those unpaid &#x60;invoices&#x60; rows are deleted and the prepay row stays. Use to back out a never-funded prepay, or to surface stuck unpaid funding invoices. **Irreversible** — funded credit is unrecoverable through this endpoint. Sibling ops: &#x60;getBillingPrePays&#x60;, &#x60;addBillingPrepay&#x60;, &#x60;deleteBillingInvoice&#x60;.  **Path param:** - &#x60;id&#x60; (integer, required) — prepay id from &#x60;getBillingPrePays.prepay_id&#x60;.  **Body:** None.  **Returns:** - When unpaid funding invoices were stripped but prepay still has funds: &#x60;\&quot;PrePay {id} Unpaid Invoices Deleted\&quot;&#x60;. - When the prepay row was deleted: &#x60;\&quot;PrePay {id} deleted.\&quot;&#x60;.  **Side effects:** - Deletes any unpaid &#x60;invoices&#x60; rows matching &#x60;invoices_description &#x3D; \&quot;Prepay ID {id} Invoice\&quot;&#x60; and &#x60;invoices_paid&#x3D;0&#x60;. - Deletes the &#x60;prepays&#x60; row when remaining balance ≤ $0.01.  **Auth:** Session/API key.  **Errors:** - &#x60;Invalid Prepay&#x60; — &#x60;id&#x60; not found. - &#x60;That prepay still hands funds available on it&#x60; — funds remain AND no unpaid invoices to clean up. - &#x60;There was an error deleting the prepay, please contact support&#x60; — delete affected 0 rows. - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **List first:** &#x60;getBillingPrePays&#x60;. - **Re-add later:** &#x60;addBillingPrepay&#x60;. - **Cancel a specific funding invoice:** &#x60;deleteBillingInvoice&#x60; (routes prepay invoices here automatically). 
+    def delete(id : Int32) : Response(InterserverApiClient::SuccessTextResponse)
+      @conn.request(InterserverApiClient::SuccessTextResponse,
+        method: :DELETE,
+        path: "/billing/prepays/{id}".sub("{id}", InterserverApiClient.enc(id)),
+        accept: %w[application/json],
+        auth: %w[sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth])
+    end
+
+    # List prepay deposits on the account — remaining balance and auto-use flags Returns every prepay deposit on the account — funded or pending — with remaining balances, modules they&#39;re scoped to, and the &#x60;automatic_use&#x60; flag controlling whether the balance auto-applies to future invoices. Use to gate &#x60;method&#x3D;prepay&#x60; at checkout (a prepay must be funded to count toward payment) or to render a prepays management page. Read-only. &#x60;csrf_token&#x60; is stripped from the helper output. Sibling ops: &#x60;addBillingPrepay&#x60; (top up), &#x60;deleteBillingPrepay&#x60; (remove), &#x60;initiatePayment&#x60; (&#x60;method&#x3D;prepay&#x60;), &#x60;getBillingCart&#x60;.  **Path/Query/Body:** None.  **Returns:** Object with per-prepay rows: - &#x60;prepay_id&#x60; (integer). - &#x60;prepay_module&#x60; (string) — service module the prepay is scoped to (or &#x60;default&#x60; for any). - &#x60;prepay_amount&#x60; (decimal) — original deposit amount. - &#x60;prepay_remaining&#x60; (decimal) — funds left. - &#x60;prepay_automatic_use&#x60; (bool) — auto-apply to invoices. - &#x60;prepay_paid&#x60; (bool) — whether the funding invoice has been paid (unpaid prepays are listed but unusable).  **Auth:** Session/API key.  **Errors:** - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Top up:** &#x60;addBillingPrepay&#x60; (returns an invoice id you then pay via &#x60;initiatePayment&#x60;). - **Pay with prepay:** &#x60;initiatePayment&#x60; with &#x60;method&#x3D;prepay&#x60;. - **Remove an unfunded prepay:** &#x60;deleteBillingPrepay&#x60;. - **Cart view:** &#x60;getBillingCart&#x60; (includes prepay summary). 
+    def list() : Response(JSON::Any)
+      @conn.request(JSON::Any,
+        method: :GET,
+        path: "/billing/prepays",
+        accept: %w[application/json],
+        auth: %w[sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth])
+    end
+  end
+  end
+
+end

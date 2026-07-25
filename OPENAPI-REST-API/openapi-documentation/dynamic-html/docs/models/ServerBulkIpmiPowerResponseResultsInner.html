@@ -1,0 +1,22 @@
+
+<h2>ServerBulkIpmiPowerResponseResultsInner</h2>
+<ul class="parameter">
+  <li class="param-required-false">id : Integer
+    <br/>Server ID this result corresponds to.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">asset : Integer
+    <br/>Asset ID that was queried for the server (omitted on errors before asset selection).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">text : String
+    <br/>IPMI power-status output for this server.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">error : String
+    <br/>Error message for this server, if processing failed (mutually exclusive with &#x60;text&#x60;).
+  </li>
+</ul>

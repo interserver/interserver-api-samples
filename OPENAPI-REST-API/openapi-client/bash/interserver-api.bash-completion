@@ -1,0 +1,865 @@
+# interserver-api completion                               -*- shell-script -*-
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# !
+# ! Note:
+# !
+# ! THIS SCRIPT HAS BEEN AUTOMATICALLY GENERATED USING
+# ! openapi-generator (https://openapi-generator.tech)
+# ! FROM OPENAPI SPECIFICATION IN JSON.
+# !
+# ! Generator version: 7.24.0
+# !
+# !
+# ! System wide installation:
+# !
+# ! $ sudo cp interserver-api.bash-completion /etc/bash-completion.d/interserver-api
+# !
+# !
+# ! User home installation (add this line to .bash_profile):
+# !
+# ! [ -r ~/interserver-api.bash-completion ] && source ~/interserver-api.bash-completion
+# !
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+declare -A mime_type_abbreviations
+# text/*
+mime_type_abbreviations["text"]="text/plain"
+mime_type_abbreviations["html"]="text/html"
+mime_type_abbreviations["md"]="text/x-markdown"
+mime_type_abbreviations["csv"]="text/csv"
+mime_type_abbreviations["css"]="text/css"
+mime_type_abbreviations["rtf"]="text/rtf"
+# application/*
+mime_type_abbreviations["json"]="application/json"
+mime_type_abbreviations["xml"]="application/xml"
+mime_type_abbreviations["yaml"]="application/yaml"
+mime_type_abbreviations["js"]="application/javascript"
+mime_type_abbreviations["bin"]="application/octet-stream"
+mime_type_abbreviations["rdf"]="application/rdf+xml"
+# image/*
+mime_type_abbreviations["jpg"]="image/jpeg"
+mime_type_abbreviations["png"]="image/png"
+mime_type_abbreviations["gif"]="image/gif"
+mime_type_abbreviations["bmp"]="image/bmp"
+mime_type_abbreviations["tiff"]="image/tiff"
+
+
+#
+# Check if this is OSX, if so defined custom init_completion
+#
+if [[ `uname` =~ "Darwin" ]]; then
+    __osx_init_completion()
+    {
+        COMPREPLY=()
+        _get_comp_words_by_ref cur prev words cword
+    }
+fi
+
+_interserver-api()
+{
+    local cur
+    local prev
+    local words
+    local cword
+
+    # The reference of currently selected REST operation
+    local operation=""
+
+    # The list of available operation in the REST service
+    # It's modelled as an associative array for efficient key lookup
+    declare -A operations
+    operations["deleteAccountOauthName"]=1
+    operations["deleteAccountTfa"]=1
+    operations["deleteIpLimit"]=1
+    operations["getAccountInfo"]=1
+    operations["getAccountTfaSetup"]=1
+    operations["getHome"]=1
+    operations["getSearch"]=1
+    operations["logout"]=1
+    operations["logoutAccountOauth"]=1
+    operations["updateAccountApiKey"]=1
+    operations["updateAccountFeatures"]=1
+    operations["updateAccountInfo"]=1
+    operations["updateAccountIpLimits"]=1
+    operations["updateAccountPassword"]=1
+    operations["updateAccountSshKey"]=1
+    operations["updateAccountTfa"]=1
+    operations["addBackup"]=1
+    operations["cancelBackup"]=1
+    operations["getBackupInfo"]=1
+    operations["getBackupInvoices"]=1
+    operations["getBackupLogin"]=1
+    operations["getBackupsList"]=1
+    operations["getBackupsWelcomeEmail"]=1
+    operations["getNewBackup"]=1
+    operations["updateBackupInfo"]=1
+    operations["validateBackupOrder"]=1
+    operations["addBillingCreditCard"]=1
+    operations["addBillingPrepay"]=1
+    operations["deleteBillingCreditCard"]=1
+    operations["deleteBillingInvoice"]=1
+    operations["deleteBillingPrepay"]=1
+    operations["getAffiliateBanners"]=1
+    operations["getAffiliateDownload"]=1
+    operations["getAffiliateRichReport"]=1
+    operations["getAffiliateSalesGraph"]=1
+    operations["getAffiliateSignups"]=1
+    operations["getAffiliateTrafficGraph"]=1
+    operations["getAffiliateWebTraffic"]=1
+    operations["getBillingCart"]=1
+    operations["getBillingCreditCardVerify"]=1
+    operations["getBillingInvoice"]=1
+    operations["getBillingInvoices"]=1
+    operations["getBillingPrePays"]=1
+    operations["initiatePayment"]=1
+    operations["patchBillingCreditCardVerify"]=1
+    operations["postBillingCreditCardVerify"]=1
+    operations["updateAffiliateDockSetup"]=1
+    operations["updateAffiliatePaymentSetup"]=1
+    operations["updateBillingCreditCard"]=1
+    operations["updateBillingPaymentMethod"]=1
+    operations["addDnsDomain"]=1
+    operations["addDnsRecord"]=1
+    operations["deleteDnsDomain"]=1
+    operations["deleteDnsRecord"]=1
+    operations["getDnsDomain"]=1
+    operations["getDnsList"]=1
+    operations["updateDnsRecord"]=1
+    operations["addDomain"]=1
+    operations["addDomainDnssec"]=1
+    operations["addDomainNameserver"]=1
+    operations["cancelDomain"]=1
+    operations["deleteDomainDnssec"]=1
+    operations["deleteDomainNameserver"]=1
+    operations["getDomainContact"]=1
+    operations["getDomainDnssec"]=1
+    operations["getDomainInfo"]=1
+    operations["getDomainInvoices"]=1
+    operations["getDomainLookup"]=1
+    operations["getDomainNameservers"]=1
+    operations["getDomainRenewal"]=1
+    operations["getDomainSearch"]=1
+    operations["getDomainTransfer"]=1
+    operations["getDomainWhoisPrivacy"]=1
+    operations["getDomainsList"]=1
+    operations["getDomainsWelcomeEmail"]=1
+    operations["getNewDomain"]=1
+    operations["patchDomains"]=1
+    operations["postDomainRenewal"]=1
+    operations["postDomainSearch"]=1
+    operations["postDomainTransfer"]=1
+    operations["putDomains"]=1
+    operations["updateDomainContact"]=1
+    operations["updateDomainInfo"]=1
+    operations["updateDomainNameservers"]=1
+    operations["updateDomainWhoisPrivacy"]=1
+    operations["addFloatingIp"]=1
+    operations["floatingIpsCancel"]=1
+    operations["getFloatingIpInfo"]=1
+    operations["getFloatingIpInvoices"]=1
+    operations["getFloatingIpsList"]=1
+    operations["getFloatingIpsWelcomeEmail"]=1
+    operations["getNewFloatingIp"]=1
+    operations["postFloatingIpsChangeIp"]=1
+    operations["putFloatingIps"]=1
+    operations["updateFloatingIpInfo"]=1
+    operations["addLicense"]=1
+    operations["getLicenseInfo"]=1
+    operations["getLicenseInvoices"]=1
+    operations["getLicenseList"]=1
+    operations["getLicensesWelcomeEmail"]=1
+    operations["getNewLicense"]=1
+    operations["licensesCancel"]=1
+    operations["postLicenseChangeIp"]=1
+    operations["putLicenses"]=1
+    operations["updateLicenseInfo"]=1
+    operations["addMail"]=1
+    operations["addRule"]=1
+    operations["createMailAlert"]=1
+    operations["deleteMailAlert"]=1
+    operations["deleteRule"]=1
+    operations["delistBlock"]=1
+    operations["getMailAlerts"]=1
+    operations["getMailBlocks"]=1
+    operations["getMailDelist"]=1
+    operations["getMailDeliverability"]=1
+    operations["getMailInfo"]=1
+    operations["getMailInvoices"]=1
+    operations["getMailList"]=1
+    operations["getMailWelcomeEmail"]=1
+    operations["getNewMail"]=1
+    operations["getRules"]=1
+    operations["getStats"]=1
+    operations["mailCancel"]=1
+    operations["postMailDelist"]=1
+    operations["putMail"]=1
+    operations["resetMailPassword"]=1
+    operations["sendAdvMail"]=1
+    operations["sendMail"]=1
+    operations["updateMailAlert"]=1
+    operations["updateMailInfo"]=1
+    operations["updateRule"]=1
+    operations["viewMailLog"]=1
+    operations["getAccountCurrencies"]=1
+    operations["getAccountLocales"]=1
+    operations["getCaptcha"]=1
+    operations["getCountries"]=1
+    operations["getInfo"]=1
+    operations["getLoginInfo"]=1
+    operations["getMPServers"]=1
+    operations["getOauthRedirect"]=1
+    operations["getTimezones"]=1
+    operations["patchOauthTwoFactor"]=1
+    operations["pingServer"]=1
+    operations["postOauthCallback"]=1
+    operations["submitLogin"]=1
+    operations["submitSignup"]=1
+    operations["addQs"]=1
+    operations["deleteQsBackup"]=1
+    operations["doQsBlockSmtp"]=1
+    operations["doQsDisableCd"]=1
+    operations["doQsDisableQuota"]=1
+    operations["doQsEjectCd"]=1
+    operations["doQsEnableQuota"]=1
+    operations["doQsRestart"]=1
+    operations["doQsStart"]=1
+    operations["doQsStop"]=1
+    operations["downloadQsBackup"]=1
+    operations["getNewQs"]=1
+    operations["getQsBackup"]=1
+    operations["getQsBackups"]=1
+    operations["getQsChangeHostname"]=1
+    operations["getQsChangeRootPassword"]=1
+    operations["getQsChangeTimezone"]=1
+    operations["getQsChangeWebuzoPassword"]=1
+    operations["getQsInfo"]=1
+    operations["getQsInsertCd"]=1
+    operations["getQsInvoices"]=1
+    operations["getQsList"]=1
+    operations["getQsReinstallOs"]=1
+    operations["getQsResetPassword"]=1
+    operations["getQsReverseDns"]=1
+    operations["getQsSetupVnc"]=1
+    operations["getQsTrafficUsage"]=1
+    operations["getQsViewDesktop"]=1
+    operations["getQsWelcomeEmail"]=1
+    operations["postQsChangeHostname"]=1
+    operations["postQsChangeRootPassword"]=1
+    operations["postQsChangeTimezone"]=1
+    operations["postQsChangeWebuzoPassword"]=1
+    operations["postQsInsertCd"]=1
+    operations["postQsReinstallOs"]=1
+    operations["postQsResetPassword"]=1
+    operations["postQsReverseDns"]=1
+    operations["postQsSetupVnc"]=1
+    operations["postQsTrafficUsage"]=1
+    operations["postQsViewDesktop"]=1
+    operations["postQuickServerRestore"]=1
+    operations["putQs"]=1
+    operations["quickserversCancel"]=1
+    operations["updateQsInfo"]=1
+    operations["addSsl"]=1
+    operations["getNewSsl"]=1
+    operations["getSslInfo"]=1
+    operations["getSslInvoices"]=1
+    operations["getSslList"]=1
+    operations["getSslWelcomeEmail"]=1
+    operations["putSsl"]=1
+    operations["sslCancel"]=1
+    operations["updateSslInfo"]=1
+    operations["cancelScrubIp"]=1
+    operations["createFilter"]=1
+    operations["createGeoRule"]=1
+    operations["createRule"]=1
+    operations["deleteFilter"]=1
+    operations["disableScrub"]=1
+    operations["enableScrub"]=1
+    operations["getOrderDetail"]=1
+    operations["getScrubIpDetails"]=1
+    operations["getScrubIpFilterTypes"]=1
+    operations["getScrubIpInvoices"]=1
+    operations["getScrubIpLogs"]=1
+    operations["getScrubIpsList"]=1
+    operations["placeScrubOrder"]=1
+    operations["putScrubIps"]=1
+    operations["scrubIpsDeleteGeoRule"]=1
+    operations["scrubIpsDeleteRule"]=1
+    operations["addServer"]=1
+    operations["buyItNowServerOrder"]=1
+    operations["getMPServers"]=1
+    operations["getNewServer"]=1
+    operations["getServerInfo"]=1
+    operations["getServerInvoices"]=1
+    operations["getServerList"]=1
+    operations["getServerReverseDns"]=1
+    operations["getServersWelcomeEmail"]=1
+    operations["placeBuyNowServer"]=1
+    operations["postServerReverseDns"]=1
+    operations["serverBulkIpmiPowerGet"]=1
+    operations["serverIpmiLiveGet"]=1
+    operations["serverIpmiLivePost"]=1
+    operations["serverIpmiPowerGet"]=1
+    operations["serverIpmiPowerPost"]=1
+    operations["serversCancel"]=1
+    operations["updateServerInfo"]=1
+    operations["addNewTicket"]=1
+    operations["closeTicket"]=1
+    operations["deleteTicketInfo"]=1
+    operations["getNewTicket"]=1
+    operations["getTicketInfo"]=1
+    operations["getTicketsList"]=1
+    operations["postTicketInfo"]=1
+    operations["postTicketsList"]=1
+    operations["putTicketInfo"]=1
+    operations["replyTicket"]=1
+    operations["updateTicketInfo"]=1
+    operations["addVps"]=1
+    operations["deleteVpsBackup"]=1
+    operations["doVpsBlockSmtp"]=1
+    operations["doVpsDisableCd"]=1
+    operations["doVpsDisableQuota"]=1
+    operations["doVpsEjectCd"]=1
+    operations["doVpsEnableQuota"]=1
+    operations["doVpsRestart"]=1
+    operations["doVpsStart"]=1
+    operations["doVpsStop"]=1
+    operations["downloadVpsBackup"]=1
+    operations["getNewVps"]=1
+    operations["getVpsBackup"]=1
+    operations["getVpsBackups"]=1
+    operations["getVpsBuyHdSpace"]=1
+    operations["getVpsBuyIp"]=1
+    operations["getVpsChangeHostname"]=1
+    operations["getVpsChangeRootPassword"]=1
+    operations["getVpsChangeTimezone"]=1
+    operations["getVpsInfo"]=1
+    operations["getVpsInsertCd"]=1
+    operations["getVpsInvoices"]=1
+    operations["getVpsList"]=1
+    operations["getVpsReinstallOs"]=1
+    operations["getVpsResetPassword"]=1
+    operations["getVpsReverseDns"]=1
+    operations["getVpsSetupVnc"]=1
+    operations["getVpsSlices"]=1
+    operations["getVpsTrafficUsage"]=1
+    operations["getVpsViewDesktop"]=1
+    operations["getVpsWelcomeEmail"]=1
+    operations["postVpsBuyHdSpace"]=1
+    operations["postVpsBuyIp"]=1
+    operations["postVpsChangeHostname"]=1
+    operations["postVpsChangeRootPassword"]=1
+    operations["postVpsChangeTimezone"]=1
+    operations["postVpsChangeWebuzoPassword"]=1
+    operations["postVpsInsertCd"]=1
+    operations["postVpsReinstallOs"]=1
+    operations["postVpsResetPassword"]=1
+    operations["postVpsRestore"]=1
+    operations["postVpsReverseDns"]=1
+    operations["postVpsSetupVnc"]=1
+    operations["postVpsSlices"]=1
+    operations["postVpsTrafficUsage"]=1
+    operations["postVpsViewDesktop"]=1
+    operations["putVps"]=1
+    operations["putVpsBuyHdSpace"]=1
+    operations["updateVpsInfo"]=1
+    operations["vPSCancel"]=1
+    operations["addWebsite"]=1
+    operations["getNewWebsite"]=1
+    operations["getWebsiteBuyIp"]=1
+    operations["getWebsiteInfo"]=1
+    operations["getWebsiteInvoices"]=1
+    operations["getWebsiteList"]=1
+    operations["getWebsitesBackups"]=1
+    operations["getWebsitesLogin"]=1
+    operations["getWebsitesWelcomeEmail"]=1
+    operations["gettWebsiteReverseDns"]=1
+    operations["postWebsiteBuyIp"]=1
+    operations["postWebsiteMigration"]=1
+    operations["postWebsitesReverseDns"]=1
+    operations["putWebsites"]=1
+    operations["updateWebsiteInfo"]=1
+    operations["webhostingCancel"]=1
+
+    # An associative array of operations to their parameters
+    # Only include path, query and header parameters
+    declare -A operation_parameters
+    operation_parameters["deleteAccountOauthName"]="name= "
+    operation_parameters["deleteAccountTfa"]=""
+    operation_parameters["deleteIpLimit"]=""
+    operation_parameters["getAccountInfo"]=""
+    operation_parameters["getAccountTfaSetup"]=""
+    operation_parameters["getHome"]=""
+    operation_parameters["getSearch"]=""
+    operation_parameters["logout"]=""
+    operation_parameters["logoutAccountOauth"]="name= "
+    operation_parameters["updateAccountApiKey"]=""
+    operation_parameters["updateAccountFeatures"]=""
+    operation_parameters["updateAccountInfo"]=""
+    operation_parameters["updateAccountIpLimits"]=""
+    operation_parameters["updateAccountPassword"]=""
+    operation_parameters["updateAccountSshKey"]=""
+    operation_parameters["updateAccountTfa"]=""
+    operation_parameters["addBackup"]=""
+    operation_parameters["cancelBackup"]="id= "
+    operation_parameters["getBackupInfo"]="id= "
+    operation_parameters["getBackupInvoices"]="id= "
+    operation_parameters["getBackupLogin"]="id= "
+    operation_parameters["getBackupsList"]=""
+    operation_parameters["getBackupsWelcomeEmail"]="id= "
+    operation_parameters["getNewBackup"]=""
+    operation_parameters["updateBackupInfo"]="id= "
+    operation_parameters["validateBackupOrder"]=""
+    operation_parameters["addBillingCreditCard"]=""
+    operation_parameters["addBillingPrepay"]=""
+    operation_parameters["deleteBillingCreditCard"]="id= "
+    operation_parameters["deleteBillingInvoice"]="id= "
+    operation_parameters["deleteBillingPrepay"]="id= "
+    operation_parameters["getAffiliateBanners"]=""
+    operation_parameters["getAffiliateDownload"]="st= ex= year= "
+    operation_parameters["getAffiliateRichReport"]=""
+    operation_parameters["getAffiliateSalesGraph"]="days= "
+    operation_parameters["getAffiliateSignups"]="st= "
+    operation_parameters["getAffiliateTrafficGraph"]="days= "
+    operation_parameters["getAffiliateWebTraffic"]=""
+    operation_parameters["getBillingCart"]=""
+    operation_parameters["getBillingCreditCardVerify"]="id= "
+    operation_parameters["getBillingInvoice"]="id= "
+    operation_parameters["getBillingInvoices"]=""
+    operation_parameters["getBillingPrePays"]=""
+    operation_parameters["initiatePayment"]="method= invoices= "
+    operation_parameters["patchBillingCreditCardVerify"]="id= "
+    operation_parameters["postBillingCreditCardVerify"]="id= "
+    operation_parameters["updateAffiliateDockSetup"]=""
+    operation_parameters["updateAffiliatePaymentSetup"]=""
+    operation_parameters["updateBillingCreditCard"]="id= "
+    operation_parameters["updateBillingPaymentMethod"]=""
+    operation_parameters["addDnsDomain"]=""
+    operation_parameters["addDnsRecord"]="id= "
+    operation_parameters["deleteDnsDomain"]="id= "
+    operation_parameters["deleteDnsRecord"]="domainId= recordId= "
+    operation_parameters["getDnsDomain"]="id= "
+    operation_parameters["getDnsList"]=""
+    operation_parameters["updateDnsRecord"]="domainId= recordId= "
+    operation_parameters["addDomain"]=""
+    operation_parameters["addDomainDnssec"]="id= "
+    operation_parameters["addDomainNameserver"]="id= "
+    operation_parameters["cancelDomain"]="id= "
+    operation_parameters["deleteDomainDnssec"]="id= "
+    operation_parameters["deleteDomainNameserver"]="id= index= "
+    operation_parameters["getDomainContact"]="id= "
+    operation_parameters["getDomainDnssec"]="id= "
+    operation_parameters["getDomainInfo"]="id= "
+    operation_parameters["getDomainInvoices"]="id= "
+    operation_parameters["getDomainLookup"]="name= "
+    operation_parameters["getDomainNameservers"]="id= "
+    operation_parameters["getDomainRenewal"]="id= "
+    operation_parameters["getDomainSearch"]="name= "
+    operation_parameters["getDomainTransfer"]="id= "
+    operation_parameters["getDomainWhoisPrivacy"]="id= "
+    operation_parameters["getDomainsList"]=""
+    operation_parameters["getDomainsWelcomeEmail"]="id= "
+    operation_parameters["getNewDomain"]=""
+    operation_parameters["patchDomains"]=""
+    operation_parameters["postDomainRenewal"]="id= "
+    operation_parameters["postDomainSearch"]="name= "
+    operation_parameters["postDomainTransfer"]="id= "
+    operation_parameters["putDomains"]=""
+    operation_parameters["updateDomainContact"]="id= "
+    operation_parameters["updateDomainInfo"]="id= "
+    operation_parameters["updateDomainNameservers"]="id= "
+    operation_parameters["updateDomainWhoisPrivacy"]="id= "
+    operation_parameters["addFloatingIp"]=""
+    operation_parameters["floatingIpsCancel"]="id= "
+    operation_parameters["getFloatingIpInfo"]="id= "
+    operation_parameters["getFloatingIpInvoices"]="id= "
+    operation_parameters["getFloatingIpsList"]=""
+    operation_parameters["getFloatingIpsWelcomeEmail"]="id= "
+    operation_parameters["getNewFloatingIp"]=""
+    operation_parameters["postFloatingIpsChangeIp"]="id= "
+    operation_parameters["putFloatingIps"]=""
+    operation_parameters["updateFloatingIpInfo"]="id= "
+    operation_parameters["addLicense"]=""
+    operation_parameters["getLicenseInfo"]="id= "
+    operation_parameters["getLicenseInvoices"]="id= "
+    operation_parameters["getLicenseList"]=""
+    operation_parameters["getLicensesWelcomeEmail"]="id= "
+    operation_parameters["getNewLicense"]=""
+    operation_parameters["licensesCancel"]="id= "
+    operation_parameters["postLicenseChangeIp"]="id= "
+    operation_parameters["putLicenses"]=""
+    operation_parameters["updateLicenseInfo"]="id= "
+    operation_parameters["addMail"]=""
+    operation_parameters["addRule"]="id= "
+    operation_parameters["createMailAlert"]="id= "
+    operation_parameters["deleteMailAlert"]="id= "
+    operation_parameters["deleteRule"]="id= rule= "
+    operation_parameters["delistBlock"]="id= "
+    operation_parameters["getMailAlerts"]="id= "
+    operation_parameters["getMailBlocks"]="id= "
+    operation_parameters["getMailDelist"]="id= "
+    operation_parameters["getMailDeliverability"]="id= "
+    operation_parameters["getMailInfo"]="id= "
+    operation_parameters["getMailInvoices"]="id= "
+    operation_parameters["getMailList"]=""
+    operation_parameters["getMailWelcomeEmail"]="id= "
+    operation_parameters["getNewMail"]=""
+    operation_parameters["getRules"]="id= "
+    operation_parameters["getStats"]="id= time= "
+    operation_parameters["mailCancel"]="id= "
+    operation_parameters["postMailDelist"]="id= "
+    operation_parameters["putMail"]=""
+    operation_parameters["resetMailPassword"]="id= "
+    operation_parameters["sendAdvMail"]="id= "
+    operation_parameters["sendMail"]="id= "
+    operation_parameters["updateMailAlert"]="id= "
+    operation_parameters["updateMailInfo"]="id= "
+    operation_parameters["updateRule"]="id= rule= "
+    operation_parameters["viewMailLog"]="id= id= origin= mx= from= to= subject= mailid= messageId= replyto= headerfrom= delivered= skip= limit= startDate= endDate= sort= dir= groupby= "
+    operation_parameters["getAccountCurrencies"]=""
+    operation_parameters["getAccountLocales"]=""
+    operation_parameters["getCaptcha"]=""
+    operation_parameters["getCountries"]="fetch_by= "
+    operation_parameters["getInfo"]=""
+    operation_parameters["getLoginInfo"]=""
+    operation_parameters["getMPServers"]=""
+    operation_parameters["getOauthRedirect"]="provider= "
+    operation_parameters["getTimezones"]=""
+    operation_parameters["patchOauthTwoFactor"]=""
+    operation_parameters["pingServer"]=""
+    operation_parameters["postOauthCallback"]="provider= "
+    operation_parameters["submitLogin"]=""
+    operation_parameters["submitSignup"]=""
+    operation_parameters["addQs"]=""
+    operation_parameters["deleteQsBackup"]="id= all= file= "
+    operation_parameters["doQsBlockSmtp"]="id= "
+    operation_parameters["doQsDisableCd"]="id= "
+    operation_parameters["doQsDisableQuota"]="id= "
+    operation_parameters["doQsEjectCd"]="id= "
+    operation_parameters["doQsEnableQuota"]="id= "
+    operation_parameters["doQsRestart"]="id= "
+    operation_parameters["doQsStart"]="id= "
+    operation_parameters["doQsStop"]="id= "
+    operation_parameters["downloadQsBackup"]="id= all= "
+    operation_parameters["getNewQs"]=""
+    operation_parameters["getQsBackup"]="id= "
+    operation_parameters["getQsBackups"]="id= all= "
+    operation_parameters["getQsChangeHostname"]="id= "
+    operation_parameters["getQsChangeRootPassword"]="id= "
+    operation_parameters["getQsChangeTimezone"]="id= "
+    operation_parameters["getQsChangeWebuzoPassword"]="id= "
+    operation_parameters["getQsInfo"]="id= "
+    operation_parameters["getQsInsertCd"]="id= "
+    operation_parameters["getQsInvoices"]="id= "
+    operation_parameters["getQsList"]=""
+    operation_parameters["getQsReinstallOs"]="id= "
+    operation_parameters["getQsResetPassword"]="id= "
+    operation_parameters["getQsReverseDns"]="id= "
+    operation_parameters["getQsSetupVnc"]="id= "
+    operation_parameters["getQsTrafficUsage"]="id= "
+    operation_parameters["getQsViewDesktop"]="id= "
+    operation_parameters["getQsWelcomeEmail"]="id= "
+    operation_parameters["postQsChangeHostname"]="id= "
+    operation_parameters["postQsChangeRootPassword"]="id= "
+    operation_parameters["postQsChangeTimezone"]="id= "
+    operation_parameters["postQsChangeWebuzoPassword"]="id= "
+    operation_parameters["postQsInsertCd"]="id= "
+    operation_parameters["postQsReinstallOs"]="id= "
+    operation_parameters["postQsResetPassword"]="id= "
+    operation_parameters["postQsReverseDns"]="id= "
+    operation_parameters["postQsSetupVnc"]="id= "
+    operation_parameters["postQsTrafficUsage"]="id= "
+    operation_parameters["postQsViewDesktop"]="id= "
+    operation_parameters["postQuickServerRestore"]="id= "
+    operation_parameters["putQs"]=""
+    operation_parameters["quickserversCancel"]="id= "
+    operation_parameters["updateQsInfo"]="id= "
+    operation_parameters["addSsl"]=""
+    operation_parameters["getNewSsl"]=""
+    operation_parameters["getSslInfo"]="id= "
+    operation_parameters["getSslInvoices"]="id= "
+    operation_parameters["getSslList"]=""
+    operation_parameters["getSslWelcomeEmail"]="id= "
+    operation_parameters["putSsl"]=""
+    operation_parameters["sslCancel"]="id= "
+    operation_parameters["updateSslInfo"]="id= "
+    operation_parameters["cancelScrubIp"]="id= "
+    operation_parameters["createFilter"]="id= "
+    operation_parameters["createGeoRule"]="id= "
+    operation_parameters["createRule"]="id= "
+    operation_parameters["deleteFilter"]="id= "
+    operation_parameters["disableScrub"]="id= "
+    operation_parameters["enableScrub"]="id= "
+    operation_parameters["getOrderDetail"]=""
+    operation_parameters["getScrubIpDetails"]="id= "
+    operation_parameters["getScrubIpFilterTypes"]=""
+    operation_parameters["getScrubIpInvoices"]="id= "
+    operation_parameters["getScrubIpLogs"]="id= "
+    operation_parameters["getScrubIpsList"]=""
+    operation_parameters["placeScrubOrder"]=""
+    operation_parameters["putScrubIps"]=""
+    operation_parameters["scrubIpsDeleteGeoRule"]="id= "
+    operation_parameters["scrubIpsDeleteRule"]="id= "
+    operation_parameters["addServer"]=""
+    operation_parameters["buyItNowServerOrder"]=""
+    operation_parameters["getMPServers"]=""
+    operation_parameters["getNewServer"]=""
+    operation_parameters["getServerInfo"]="id= "
+    operation_parameters["getServerInvoices"]="id= "
+    operation_parameters["getServerList"]=""
+    operation_parameters["getServerReverseDns"]="id= "
+    operation_parameters["getServersWelcomeEmail"]="id= "
+    operation_parameters["placeBuyNowServer"]=""
+    operation_parameters["postServerReverseDns"]="id= "
+    operation_parameters["serverBulkIpmiPowerGet"]="ids= "
+    operation_parameters["serverIpmiLiveGet"]="id= "
+    operation_parameters["serverIpmiLivePost"]="id= "
+    operation_parameters["serverIpmiPowerGet"]="id= "
+    operation_parameters["serverIpmiPowerPost"]="id= "
+    operation_parameters["serversCancel"]="id= "
+    operation_parameters["updateServerInfo"]="id= "
+    operation_parameters["addNewTicket"]=""
+    operation_parameters["closeTicket"]="id= "
+    operation_parameters["deleteTicketInfo"]="id= "
+    operation_parameters["getNewTicket"]=""
+    operation_parameters["getTicketInfo"]="id= "
+    operation_parameters["getTicketsList"]="page= period= view= "
+    operation_parameters["postTicketInfo"]="id= "
+    operation_parameters["postTicketsList"]=""
+    operation_parameters["putTicketInfo"]="id= "
+    operation_parameters["replyTicket"]="id= "
+    operation_parameters["updateTicketInfo"]="id= "
+    operation_parameters["addVps"]=""
+    operation_parameters["deleteVpsBackup"]="id= all= file= "
+    operation_parameters["doVpsBlockSmtp"]="id= "
+    operation_parameters["doVpsDisableCd"]="id= "
+    operation_parameters["doVpsDisableQuota"]="id= "
+    operation_parameters["doVpsEjectCd"]="id= "
+    operation_parameters["doVpsEnableQuota"]="id= "
+    operation_parameters["doVpsRestart"]="id= "
+    operation_parameters["doVpsStart"]="id= "
+    operation_parameters["doVpsStop"]="id= "
+    operation_parameters["downloadVpsBackup"]="id= all= "
+    operation_parameters["getNewVps"]=""
+    operation_parameters["getVpsBackup"]="id= "
+    operation_parameters["getVpsBackups"]="id= all= "
+    operation_parameters["getVpsBuyHdSpace"]="id= "
+    operation_parameters["getVpsBuyIp"]="id= "
+    operation_parameters["getVpsChangeHostname"]="id= "
+    operation_parameters["getVpsChangeRootPassword"]="id= "
+    operation_parameters["getVpsChangeTimezone"]="id= "
+    operation_parameters["getVpsInfo"]="id= "
+    operation_parameters["getVpsInsertCd"]="id= "
+    operation_parameters["getVpsInvoices"]="id= "
+    operation_parameters["getVpsList"]=""
+    operation_parameters["getVpsReinstallOs"]="id= "
+    operation_parameters["getVpsResetPassword"]="id= "
+    operation_parameters["getVpsReverseDns"]="id= "
+    operation_parameters["getVpsSetupVnc"]="id= "
+    operation_parameters["getVpsSlices"]="id= "
+    operation_parameters["getVpsTrafficUsage"]="id= "
+    operation_parameters["getVpsViewDesktop"]="id= "
+    operation_parameters["getVpsWelcomeEmail"]="id= "
+    operation_parameters["postVpsBuyHdSpace"]="id= "
+    operation_parameters["postVpsBuyIp"]="id= "
+    operation_parameters["postVpsChangeHostname"]="id= "
+    operation_parameters["postVpsChangeRootPassword"]="id= "
+    operation_parameters["postVpsChangeTimezone"]="id= "
+    operation_parameters["postVpsChangeWebuzoPassword"]="id= "
+    operation_parameters["postVpsInsertCd"]="id= "
+    operation_parameters["postVpsReinstallOs"]="id= "
+    operation_parameters["postVpsResetPassword"]="id= "
+    operation_parameters["postVpsRestore"]="id= "
+    operation_parameters["postVpsReverseDns"]="id= "
+    operation_parameters["postVpsSetupVnc"]="id= "
+    operation_parameters["postVpsSlices"]="id= "
+    operation_parameters["postVpsTrafficUsage"]="id= "
+    operation_parameters["postVpsViewDesktop"]="id= "
+    operation_parameters["putVps"]=""
+    operation_parameters["putVpsBuyHdSpace"]="id= "
+    operation_parameters["updateVpsInfo"]="id= "
+    operation_parameters["vPSCancel"]="id= "
+    operation_parameters["addWebsite"]=""
+    operation_parameters["getNewWebsite"]=""
+    operation_parameters["getWebsiteBuyIp"]="id= "
+    operation_parameters["getWebsiteInfo"]="id= "
+    operation_parameters["getWebsiteInvoices"]="id= "
+    operation_parameters["getWebsiteList"]=""
+    operation_parameters["getWebsitesBackups"]="id= "
+    operation_parameters["getWebsitesLogin"]="id= "
+    operation_parameters["getWebsitesWelcomeEmail"]="id= "
+    operation_parameters["gettWebsiteReverseDns"]="id= "
+    operation_parameters["postWebsiteBuyIp"]="id= "
+    operation_parameters["postWebsiteMigration"]="id= "
+    operation_parameters["postWebsitesReverseDns"]="id= "
+    operation_parameters["putWebsites"]=""
+    operation_parameters["updateWebsiteInfo"]="id= "
+    operation_parameters["webhostingCancel"]="id= "
+
+    # An associative array of possible values for enum parameters
+    declare -A operation_parameters_enum_values
+    operation_parameters_enum_values["initiatePayment::method"]=""
+    operation_parameters_enum_values["initiatePayment::method"]=""
+
+    #
+    # Check if this is OSX and use special __osx_init_completion function
+    #
+    if [[ `uname` =~ "Darwin" ]]; then
+        __osx_init_completion || return
+    else
+        _init_completion -s || return
+    fi
+
+
+    # Check if operation is already in the command line provided
+    for word in "${words[@]}"; do
+        if [[ -n $word && ${operations[$word]} ]]; then
+            operation="${word}"
+        fi
+    done
+
+    if [[ -z $operation ]]; then
+        case $prev in
+            --ciphers|--connect-timeout|-C|--continue-at|-F|--form|--form-string|\
+            --ftp-account|--ftp-alternative-to-user|-P|--ftp-port|-H|--header|-h|\
+            --help|--hostpubmd5|--keepalive-time|--krb|--limit-rate|--local-port|\
+            --mail-from|--mail-rcpt|--max-filesize|--max-redirs|-m|--max-time|\
+            --pass|--proto|--proto-redir|--proxy-user|--proxy1.0|-Q|--quote|-r|\
+            --range|-X|--request|--retry|--retry-delay|--retry-max-time|\
+            --socks5-gssapi-service|-t|--telnet-option|--tftp-blksize|-z|\
+            --time-cond|--url|-u|--user|-A|--user-agent|-V|--version|-w|\
+            --write-out|--resolve|--tlsuser|--tlspassword|--about)
+                return
+                ;;
+            -K|--config|-b|--cookie|-c|--cookie-jar|-D|--dump-header|--egd-file|\
+            --key|--libcurl|-o|--output|--random-file|-T|--upload-file|--trace|\
+            --trace-ascii|--netrc-file)
+                _filedir
+                return
+                ;;
+            --cacert|-E|--cert)
+                _filedir '@(c?(e)rt|cer|pem|der)'
+                return
+                ;;
+            --capath)
+                _filedir -d
+                return
+                ;;
+            --cert-type|--key-type)
+                COMPREPLY=( $( compgen -W 'DER PEM ENG' -- "$cur" ) )
+                return
+                ;;
+            --crlfile)
+                _filedir crl
+                return
+                ;;
+            -d|--data|--data-ascii|--data-binary|--data-urlencode)
+                if [[ $cur == \@* ]]; then
+                    cur=${cur:1}
+                    _filedir
+                    COMPREPLY=( "${COMPREPLY[@]/#/@}" )
+                fi
+                return
+                ;;
+            --delegation)
+                COMPREPLY=( $( compgen -W 'none policy always' -- "$cur" ) )
+                return
+                ;;
+            --engine)
+                COMPREPLY=( $( compgen -W 'list' -- "$cur" ) )
+                return
+                ;;
+            --ftp-method)
+                COMPREPLY=( $( compgen -W 'multicwd nocwd singlecwd' -- "$cur" ) )
+                return
+                ;;
+            --ftp-ssl-ccc-mode)
+                COMPREPLY=( $( compgen -W 'active passive' -- "$cur" ) )
+                return
+                ;;
+            --interface)
+                _available_interfaces -a
+                return
+                ;;
+            -x|--proxy|--socks4|--socks4a|--socks5|--socks5-hostname)
+                _known_hosts_real
+                return
+                ;;
+            --pubkey)
+                _filedir pub
+                return
+                ;;
+            --stderr)
+                COMPREPLY=( $( compgen -W '-' -- "$cur" ) )
+                _filedir
+                return
+                ;;
+            --tlsauthtype)
+                COMPREPLY=( $( compgen -W 'SRP' -- "$cur" ) )
+                return
+                ;;
+            --host)
+                COMPREPLY=( $( compgen -W 'http:// https://' -- "$cur" ) )
+                return
+                ;;
+            -ct|--content-type|-ac|--accept)
+                COMPREPLY=( $( compgen -W '${!mime_type_abbreviations[*]}' -- "$cur" ) )
+                return
+                ;;
+        esac
+    fi
+
+    #
+    # Complete the server address based on ~/.ssh/known_hosts
+    # and ~/.ssh/config
+    #
+    local prefix=${COMP_WORDS[COMP_CWORD-2]}
+    local colon=${COMP_WORDS[COMP_CWORD-1]}
+    if [[ "$colon" == ":" && ( $prefix == "https" || $prefix == "http" ) ]]; then
+        COMPREPLY=()
+        local comp_ssh_hosts=`[[ -f ~/.ssh/known_hosts ]] && \
+                              ( cat ~/.ssh/known_hosts | \
+                              grep '^[a-zA-Z0-9]' | \
+                              cut -f 1 -d ' ' | \
+                              sed -e s/,.*//g | \
+                              grep -v ^# | \
+                              uniq | \
+                              grep -v "\[" ) ;
+                              [[ -f ~/.ssh/config ]] && \
+                              ( cat ~/.ssh/config | \
+                              grep "^Host " | \
+                              awk '{print $2}' )`
+        COMPREPLY=( $( compgen -P '//' -W '${comp_ssh_hosts}' -- "${cur:2}") )
+        return
+    fi
+
+    #
+    # Complete the interserver-api and cURL's arguments
+    #
+    if [[ $cur == -* ]]; then
+        COMPREPLY=( $( compgen -W '$(_parse_help curl) $(_parse_help $1)' -- "$cur" ) )
+        return
+    fi
+
+    #
+    # If the argument starts with a letter this could be either an operation
+    # or an operation parameter
+    # When $cur is empty, suggest the list of operations by default
+    #
+    if [[ $cur =~ ^[A-Za-z_0-9]* ]]; then
+        # If operation has not been yet selected, suggest the list of operations
+        # otherwise suggest arguments of this operation as declared in the
+        # OpenAPI specification
+        if [[ -z $operation ]]; then
+            COMPREPLY=( $(compgen -W '${!operations[*]}' -- ${cur}) )
+        else
+            COMPREPLY=( $(compgen -W '${operation_parameters[$operation]}' -- ${cur}) )
+            compopt -o nospace
+        fi
+        return
+    fi
+
+} &&
+complete -F _interserver-api interserver-api
+
+# ex: ts=4 sw=4 et filetype=sh

@@ -1,0 +1,77 @@
+-module(interserver_api_vps_order_put_response).
+
+-export([encode/1]).
+
+-export_type([interserver_api_vps_order_put_response/0]).
+
+-type interserver_api_vps_order_put_response() ::
+    #{ 'continue' => boolean(),
+       'errors' => list(),
+       'coupon_code' => integer(),
+       'service_cost' => integer(),
+       'slice_cost' => integer(),
+       'service_type' => integer(),
+       'repeat_slice_cost' => integer(),
+       'original_slice_cost' => integer(),
+       'original_cost' => integer(),
+       'repeat_service_cost' => integer(),
+       'monthly_service_cost' => integer(),
+       'custid' => binary(),
+       'os' => binary(),
+       'slices' => binary(),
+       'platform' => binary(),
+       'controlpanel' => binary(),
+       'period' => integer(),
+       'location' => integer(),
+       'version' => binary(),
+       'hostname' => binary(),
+       'coupon' => binary(),
+       'rootpass' => binary()
+     }.
+
+encode(#{ 'continue' := Continue,
+          'errors' := Errors,
+          'coupon_code' := CouponCode,
+          'service_cost' := ServiceCost,
+          'slice_cost' := SliceCost,
+          'service_type' := ServiceType,
+          'repeat_slice_cost' := RepeatSliceCost,
+          'original_slice_cost' := OriginalSliceCost,
+          'original_cost' := OriginalCost,
+          'repeat_service_cost' := RepeatServiceCost,
+          'monthly_service_cost' := MonthlyServiceCost,
+          'custid' := Custid,
+          'os' := Os,
+          'slices' := Slices,
+          'platform' := Platform,
+          'controlpanel' := Controlpanel,
+          'period' := Period,
+          'location' := Location,
+          'version' := Version,
+          'hostname' := Hostname,
+          'coupon' := Coupon,
+          'rootpass' := Rootpass
+        }) ->
+    #{ 'continue' => Continue,
+       'errors' => Errors,
+       'coupon_code' => CouponCode,
+       'service_cost' => ServiceCost,
+       'slice_cost' => SliceCost,
+       'service_type' => ServiceType,
+       'repeat_slice_cost' => RepeatSliceCost,
+       'original_slice_cost' => OriginalSliceCost,
+       'original_cost' => OriginalCost,
+       'repeat_service_cost' => RepeatServiceCost,
+       'monthly_service_cost' => MonthlyServiceCost,
+       'custid' => Custid,
+       'os' => Os,
+       'slices' => Slices,
+       'platform' => Platform,
+       'controlpanel' => Controlpanel,
+       'period' => Period,
+       'location' => Location,
+       'version' => Version,
+       'hostname' => Hostname,
+       'coupon' => Coupon,
+       'rootpass' => Rootpass
+     }.

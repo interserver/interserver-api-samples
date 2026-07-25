@@ -1,0 +1,108 @@
+
+<h2>SslOrderRequest</h2>
+<ul class="parameter">
+  <li class="param-required-true">ssl : Integer
+    <br/>SSL package service type id from getNewSsl.serviceTypes.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">hostname : String
+    <br/>Domain the certificate is issued for. Wildcard certs require *.domain.com format.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">approverUnderscoreemail : String
+    <br/>Domain-control approver email (required for all SSL orders).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">frequency : Integer
+    <br/>Billing frequency in months (12, 24, or 36).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">coupon : String
+    <br/>Coupon code.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">csrUnderscoretype : String
+    <br/>Whether the CSR is server-generated or customer-provided.
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>generated</dd>
+            <dd>provided</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">csr : String
+    <br/>PEM-encoded CSR (&gt;&#x3D; 2048-bit) when csr_type&#x3D;provided.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">firstname : String
+    <br/>Contact first name (defaults from account).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">lastname : String
+    <br/>Contact last name (defaults from account).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">email : String
+    <br/>Contact email (defaults from account).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">address : String
+    <br/>Contact address (defaults from account).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">city : String
+    <br/>Contact city (defaults from account).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">state : String
+    <br/>Contact state/region (defaults from account).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">zip : String
+    <br/>Contact postal code (defaults from account).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">country : String
+    <br/>Contact country (defaults from account).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">phone : String
+    <br/>Contact phone (defaults from account).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">company : String
+    <br/>Contact company/organization (defaults from account).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">department : String
+    <br/>Contact department (defaults to Administration).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">agency : String
+    <br/>EV certificate incorporating agency (only for EV packages).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">businessUnderscorecategory : String
+    <br/>EV certificate business category (only for EV packages).
+  </li>
+</ul>

@@ -1,0 +1,9 @@
+# Description: C++ package and library name.
+packageName: CppBoostBeastOpenAPIClient
+
+# Description: C++ namespace for models (convention: name.space.model).
+modelPackage: org.openapitools.client.model
+
+# Description: C++ namespace for apis (convention: name.space.api).
+apiPackage: org.openapitools.client.api
+

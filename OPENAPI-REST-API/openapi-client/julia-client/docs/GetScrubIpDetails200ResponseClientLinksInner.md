@@ -1,0 +1,17 @@
+# GetScrubIpDetails200ResponseClientLinksInner
+
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**`label`** | **`String`** |  | [optional] [default to nothing]
+**`link`** | **`String`** |  | [optional] [default to nothing]
+**`icon`** | **`String`** |  | [optional] [default to nothing]
+**`icon_text`** | **`String`** |  | [optional] [default to nothing]
+**`help_text`** | **`String`** |  | [optional] [default to nothing]
+**`other_attr`** | **`String`** |  | [optional] [default to nothing]
+
+
+[[Back to Model list]](../README.md#models) [[Back to API list]](../README.md#api-endpoints) [[Back to README]](../README.md)
+
+

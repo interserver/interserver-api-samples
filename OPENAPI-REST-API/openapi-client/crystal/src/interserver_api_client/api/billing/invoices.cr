@@ -1,0 +1,37 @@
+require "json"
+
+module InterserverApiClient
+  module Api
+  class Billing::Invoices
+    def initialize(@conn : Connection); end
+
+    # Cancel a pending unpaid invoice — and its pending service or repeat invoice Cancels an unpaid invoice and cleans up the records it represents. Behavior depends on what the invoice funds: a **prepay** invoice is routed to &#x60;deleteBillingPrepay&#x60;; an **initial service charge** (where &#x60;repeat_invoices_id&#x60; matches the service&#39;s &#x60;_invoice&#x60; field) deletes the &#x60;repeat_invoices&#x60; row, all child &#x60;invoices&#x60;, AND the pending service row from the module&#39;s table; an **addon/recurring** invoice just deletes that one &#x60;invoices&#x60; row plus its &#x60;repeat_invoices&#x60; row. **Only invoices for services in &#x60;pending&#x60; status can be deleted** — once provisioned, the service must be cancelled via the per-service Cancel endpoint instead. **Irreversible**. Sibling ops: &#x60;getBillingInvoice&#x60;, &#x60;deleteBillingPrepay&#x60;, &#x60;VPSCancel&#x60; / &#x60;CancelDomain&#x60; / &#x60;mailCancel&#x60; / &#x60;webhostingCancel&#x60; / etc.  **Path param:** - &#x60;id&#x60; (integer, required) — invoice id (&#x60;invoices_type&#x3D;1&#x60;, ownership enforced via &#x60;invoices_custid&#x60;).  **Body:** None.  **Returns:** &#x60;Invoice Deleted&#x60; text.  **Side effects:** (depends on invoice type) - **Prepay invoice** (description matches &#x60;Prepay ID N Invoice&#x60;) — delegates to &#x60;deleteBillingPrepay($pid)&#x60;. - **Initial service invoice** (&#x60;repeat_invoices_id &#x3D;&#x3D; service._invoice&#x60;) — deletes:   - the &#x60;repeat_invoices&#x60; row,   - every &#x60;invoices&#x60; row for that service,   - the service row in &#x60;{settings[&#39;TABLE&#39;]}&#x60;. - **Addon/recurring invoice** — deletes only the matching &#x60;repeat_invoices&#x60; row and the single &#x60;invoices&#x60; row.  **Auth:** Session/API key. Ownership enforced.  **Errors:** - &#x60;Invalid invoice&#x60; — &#x60;id&#x60; not found or wrong owner. - &#x60;Invalid service&#x60; — invoice references a service that no longer exists. - &#x60;Can only delete invoices for pending services or prepays&#x60; — service is &#x60;active&#x60;/&#x60;suspended&#x60;/&#x60;cancelled&#x60;. - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **List candidates:** &#x60;getBillingInvoices&#x60;. - **Detail first:** &#x60;getBillingInvoice&#x60;. - **For active services:** &#x60;VPSCancel&#x60;, &#x60;CancelDomain&#x60;, &#x60;mailCancel&#x60;, &#x60;webhostingCancel&#x60;, &#x60;licensesCancel&#x60;, &#x60;sslCancel&#x60;, &#x60;cancelScrubIp&#x60;, &#x60;floating_ipsCancel&#x60;, &#x60;cancelBackup&#x60;, &#x60;quickserversCancel&#x60;, &#x60;serversCancel&#x60; — these use &#x60;Billing\\CancelService::go()&#x60;. - **For prepay invoices:** &#x60;deleteBillingPrepay&#x60; (delegated automatically). 
+    def delete(id : Int32) : Response(InterserverApiClient::SuccessTextResponse)
+      @conn.request(InterserverApiClient::SuccessTextResponse,
+        method: :DELETE,
+        path: "/billing/invoices/{id}".sub("{id}", InterserverApiClient.enc(id)),
+        accept: %w[application/json],
+        auth: %w[sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth])
+    end
+
+    # Read full invoice detail — line items, totals, paid status, customer info Returns the full rendered invoice payload for a single invoice — backed by &#x60;get_invoice_data()&#x60;, the same helper that builds the email-style invoice document. Use to confirm the exact balance due and the invoice description before calling &#x60;initiatePayment&#x60;, or to render an invoice viewer page. Read-only. The response is an email-style/HTML payload (not a structured line-item array) — for a structured cart-style summary use &#x60;getBillingCart&#x60;. The response includes a Link to &#x60;deleteBillingInvoice&#x60; for unpaid pending-service invoices. Sibling ops: &#x60;getBillingInvoices&#x60;, &#x60;deleteBillingInvoice&#x60;, &#x60;initiatePayment&#x60;, &#x60;getBillingCart&#x60;, per-service &#x60;getVpsInvoices&#x60; / &#x60;getMailInvoices&#x60; / etc.  **Path param:** - &#x60;id&#x60; (integer, required) — invoice id from &#x60;getBillingInvoices.rows[].id&#x60;, from an order endpoint&#39;s response (e.g. &#x60;addVps.iid&#x60;), or from a per-service invoice list.  **Body:** None.  **Returns:** &#x60;BillingInvoiceDetail&#x60; — full rendered invoice payload (email body) with line items, totals, customer/billing info, and paid status. The exact shape mirrors what gets sent to the customer.  **Auth:** Session/API key. Ownership enforced through the invoice&#39;s &#x60;invoices_custid&#x60;.  **Errors:** - &#x60;Invalid Invoice&#x60; — &#x60;id&#x60; not found or owned by another account. - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Pay it:** &#x60;initiatePayment&#x60; (&#x60;/billing/pay/{method}/{id}&#x60;). - **Delete if pending/unpaid:** &#x60;deleteBillingInvoice&#x60;. - **List all:** &#x60;getBillingInvoices&#x60;. - **Cart-style summary across all unpaid:** &#x60;getBillingCart&#x60;. 
+    def get(id : Int32) : Response(InterserverApiClient::BillingInvoiceDetail)
+      @conn.request(InterserverApiClient::BillingInvoiceDetail,
+        method: :GET,
+        path: "/billing/invoices/{id}".sub("{id}", InterserverApiClient.enc(id)),
+        accept: %w[application/json],
+        auth: %w[sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth])
+    end
+
+    # List every invoice on the account with summary totals and paid/unpaid status Returns the customer&#39;s complete invoice ledger — every charge, paid or unpaid, across every service module. Use to render a billing-history page, find an unpaid invoice id to pass to &#x60;initiatePayment&#x60;, or audit recent activity. Server-side strips the first synthetic header row from &#x60;get_view_invoices()&#x60; and reindexes the array. Read-only. The response includes a Link to &#x60;getBillingInvoice&#x60; for drilling into any row. Sibling ops: &#x60;getBillingInvoice&#x60;, &#x60;deleteBillingInvoice&#x60;, &#x60;initiatePayment&#x60;, &#x60;getBillingCart&#x60;, &#x60;getBillingPrePays&#x60;.  **Path/Query/Body:** None.  **Returns:** &#x60;BillingInvoiceList&#x60; — object containing: - &#x60;rows&#x60; (array) — per-invoice summaries: &#x60;id&#x60;, &#x60;amount&#x60;, &#x60;paid&#x60;, &#x60;description&#x60;, &#x60;date&#x60;, &#x60;due_date&#x60;, &#x60;module&#x60;, &#x60;service&#x60; (service-id within the module), &#x60;currency&#x60;. - Aggregate totals across the array (totals object: &#x60;total&#x60;, &#x60;paid_total&#x60;, &#x60;unpaid_total&#x60;).  **Auth:** Session/API key.  **Errors:** - &#x60;401&#x60; — unauthenticated.  **Related calls:** - **Drill into one invoice:** &#x60;getBillingInvoice&#x60;. - **Pay an unpaid invoice:** &#x60;initiatePayment&#x60;. - **Cancel an unpaid pending-service invoice:** &#x60;deleteBillingInvoice&#x60; (only works on pending services / unpaid prepays). - **Per-service invoices instead:** &#x60;getVpsInvoices&#x60;, &#x60;getDomainInvoices&#x60;, &#x60;getMailInvoices&#x60;, &#x60;getBackupInvoices&#x60;, etc. 
+    def list() : Response(InterserverApiClient::BillingInvoiceList)
+      @conn.request(InterserverApiClient::BillingInvoiceList,
+        method: :GET,
+        path: "/billing/invoices",
+        accept: %w[application/json],
+        auth: %w[sessionIdCookieAuth apiKeyAuth sessionIdHeaderAuth])
+    end
+  end
+  end
+
+end

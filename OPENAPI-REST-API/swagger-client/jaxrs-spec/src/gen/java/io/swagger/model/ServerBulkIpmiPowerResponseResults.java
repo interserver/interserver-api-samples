@@ -1,0 +1,146 @@
+package io.swagger.model;
+
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+
+import io.swagger.annotations.*;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class ServerBulkIpmiPowerResponseResults   {
+
+  private @Valid Integer id = null;
+
+  private @Valid Integer asset = null;
+
+  private @Valid String text = null;
+
+  private @Valid String error = null;
+
+  /**
+   * Server ID this result corresponds to.
+   **/
+  public ServerBulkIpmiPowerResponseResults id(Integer id) {
+    this.id = id;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "2313", value = "Server ID this result corresponds to.")
+  @JsonProperty("id")
+  @NotNull
+
+  public Integer getId() {
+    return id;
+  }
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  /**
+   * Asset ID that was queried for the server (omitted on errors before asset selection).
+   **/
+  public ServerBulkIpmiPowerResponseResults asset(Integer asset) {
+    this.asset = asset;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "5432", value = "Asset ID that was queried for the server (omitted on errors before asset selection).")
+  @JsonProperty("asset")
+  @NotNull
+
+  public Integer getAsset() {
+    return asset;
+  }
+  public void setAsset(Integer asset) {
+    this.asset = asset;
+  }
+
+  /**
+   * IPMI power-status output for this server.
+   **/
+  public ServerBulkIpmiPowerResponseResults text(String text) {
+    this.text = text;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Chassis Power is on", value = "IPMI power-status output for this server.")
+  @JsonProperty("text")
+  @NotNull
+
+  public String getText() {
+    return text;
+  }
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  /**
+   * Error message for this server, if processing failed (mutually exclusive with &#x60;text&#x60;).
+   **/
+  public ServerBulkIpmiPowerResponseResults error(String error) {
+    this.error = error;
+    return this;
+  }
+
+  
+  @ApiModelProperty(example = "Service is not active", value = "Error message for this server, if processing failed (mutually exclusive with `text`).")
+  @JsonProperty("error")
+  @NotNull
+
+  public String getError() {
+    return error;
+  }
+  public void setError(String error) {
+    this.error = error;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ServerBulkIpmiPowerResponseResults serverBulkIpmiPowerResponseResults = (ServerBulkIpmiPowerResponseResults) o;
+    return Objects.equals(id, serverBulkIpmiPowerResponseResults.id) &&
+        Objects.equals(asset, serverBulkIpmiPowerResponseResults.asset) &&
+        Objects.equals(text, serverBulkIpmiPowerResponseResults.text) &&
+        Objects.equals(error, serverBulkIpmiPowerResponseResults.error);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, asset, text, error);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ServerBulkIpmiPowerResponseResults {\n");
+    
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    asset: ").append(toIndentedString(asset)).append("\n");
+    sb.append("    text: ").append(toIndentedString(text)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

@@ -1,0 +1,16 @@
+# interserver_api.model.GetAccountLocales200ResponseValue
+
+## Load the model package
+```dart
+import 'package:interserver_api/api.dart';
+```
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **Optional&lt;String?&gt;** | English display name of the locale. | [optional] 
+**localName** | **Optional&lt;String?&gt;** | Display name of the locale in its own language. | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

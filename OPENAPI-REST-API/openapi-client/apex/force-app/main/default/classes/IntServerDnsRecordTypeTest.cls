@@ -1,0 +1,59 @@
+@isTest
+private class IntServerDnsRecordTypeTest {
+    @isTest
+    private static void allowableValues() {
+        Set<IntServerDnsRecordType> expected = new Set<IntServerDnsRecordType>{
+            IntServerDnsRecordType.A,
+            IntServerDnsRecordType.A6,
+            IntServerDnsRecordType.AAAA,
+            IntServerDnsRecordType.AFSDB,
+            IntServerDnsRecordType.ALIAS,
+            IntServerDnsRecordType.CAA,
+            IntServerDnsRecordType.CDNSKEY,
+            IntServerDnsRecordType.CDS,
+            IntServerDnsRecordType.CERT,
+            IntServerDnsRecordType.CNAME,
+            IntServerDnsRecordType.DHCID,
+            IntServerDnsRecordType.DLV,
+            IntServerDnsRecordType.DNSKEY,
+            IntServerDnsRecordType.DNAME,
+            IntServerDnsRecordType.DS,
+            IntServerDnsRecordType.EUI48,
+            IntServerDnsRecordType.EUI64,
+            IntServerDnsRecordType.HINFO,
+            IntServerDnsRecordType.IPSECKEY,
+            IntServerDnsRecordType.KEY,
+            IntServerDnsRecordType.KX,
+            IntServerDnsRecordType.LOC,
+            IntServerDnsRecordType.MAILA,
+            IntServerDnsRecordType.MAILB,
+            IntServerDnsRecordType.MINFO,
+            IntServerDnsRecordType.MR,
+            IntServerDnsRecordType.MX,
+            IntServerDnsRecordType.NAPTR,
+            IntServerDnsRecordType.NS,
+            IntServerDnsRecordType.NSEC,
+            IntServerDnsRecordType.NSEC3,
+            IntServerDnsRecordType.NSEC3PARAM,
+            IntServerDnsRecordType.OPENPGPKEY,
+            IntServerDnsRecordType.OPT,
+            IntServerDnsRecordType.PTR,
+            IntServerDnsRecordType.RKEY,
+            IntServerDnsRecordType.RP,
+            IntServerDnsRecordType.RRSIG,
+            IntServerDnsRecordType.SIG,
+            IntServerDnsRecordType.SOA,
+            IntServerDnsRecordType.SPF,
+            IntServerDnsRecordType.SRV,
+            IntServerDnsRecordType.SSHFP,
+            IntServerDnsRecordType.TLSA,
+            IntServerDnsRecordType.TKEY,
+            IntServerDnsRecordType.TSIG,
+            IntServerDnsRecordType.TXT,
+            IntServerDnsRecordType.WKS,
+            IntServerDnsRecordType.URI_
+        };
+        Set<IntServerDnsRecordType> actual  = new Set<IntServerDnsRecordType>(IntServerDnsRecordType.values());
+        System.assertEquals(expected, actual);
+    }
+}

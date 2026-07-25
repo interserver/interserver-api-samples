@@ -1,0 +1,47 @@
+
+<h2>WebsiteOrderPostRequest</h2>
+<ul class="parameter">
+  <li class="param-required-true">hostname : String
+    <br/>Primary FQDN for the website. Must pass valid_hostname() and the keyword blocklist.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">packageId : Integer
+    <br/>Plan id from getNewWebsite.serviceTypes[].services_id (must be buyable).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">rootpass : String
+    <br/>Control-panel admin password. If blank, a random password is generated server-side.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">period : Integer
+    <br/>Billing cycle in months (1 / 6 / 12 / 24 / 36).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">coupon : String
+    <br/>Coupon code.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">serviceOfferId : Integer
+    <br/>Promo bundle id from getNewWebsite.serviceOffers.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">script : Integer
+    <br/>Auto-installer id (0 &#x3D; none).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">comment : String
+    <br/>Free-form note saved on the service row.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">registerDomain : Boolean
+    <br/>When true and enableDomainRegistering&#x3D;true from the catalog, also registers/transfers the domain through the order.
+  </li>
+</ul>

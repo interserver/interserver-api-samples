@@ -1,0 +1,67 @@
+
+<h2>ServerOrderPostRequest</h2>
+<ul class="parameter">
+  <li class="param-required-true">cpu : Integer
+    <br/>CPU configuration id from config_li.cpu_li. Constrains valid hd/memory options.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">hd : ServerOrderPostRequest_hd
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">memory : Integer
+    <br/>Memory configuration id from config_li.memory_li[cpu].
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">bandwidth : Integer
+    <br/>Bandwidth configuration id from config_li.bandwidth_li.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">ips : Integer
+    <br/>IP block configuration id from config_li.ips_li.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">os : Integer
+    <br/>Operating System configuration id from config_li.os_li.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">cp : Integer
+    <br/>Control Panel configuration id from config_li.cp_li.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">raid : Integer
+    <br/>RAID configuration id from config_li.raid_li.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">region : Integer
+    <br/>Region id from the regions list.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">servername : String
+    <br/>Server hostname. Must pass valid_hostname().
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">rootpass : String
+    <br/>Root password for the server.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">tos : Boolean
+    <br/>Terms-of-service acceptance. Must be true to place the order.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-false">comment : String
+    <br/>Optional free-form order comment.
+  </li>
+</ul>

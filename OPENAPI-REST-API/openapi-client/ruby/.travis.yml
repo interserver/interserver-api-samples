@@ -1,0 +1,11 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.7
+  - 3.0
+  - 3.1
+script:
+  - bundle install --path vendor/bundle
+  - bundle exec rspec
+  - gem build inter_server_client.gemspec
+  - gem install ./inter_server_client-1.0.0.gem
