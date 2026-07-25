@@ -12,14 +12,14 @@
 # Parameter & Model Sorting
 # ============================================================================
 
-# Sort method arguments to place required parameters before optional parameters
-sortParamsByRequiredFlag: "true"
+# Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
 
-# Sort model properties to place required parameters before optional parameters
-sortModelPropertiesByRequiredFlag: "true"
+# Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
 
-# Ensure parameter names are unique in an operation
-ensureUniqueParams: "true"
+# Ensure parameter names are unique
+ensureUniqueParams: true
 
 # ============================================================================
 # Naming Conventions
@@ -40,7 +40,7 @@ legacyDiscriminatorBehavior: "true"
 
 # If the server adds new enum cases unknown by old spec/client,
 # client will fail to parse. Enable to add 'unknown_default_open_api' case
-enumUnknownDefaultCase: "false"
+enumUnknownDefaultCase: true
 
 # ============================================================================
 # Additional Properties

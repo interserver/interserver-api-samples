@@ -33,3 +33,15 @@ onlyInterfaces: false
 
 # Generate main.go, go.mod, and Dockerfile (full application)
 outputAsLibrary: false
+
+# Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true
+
+# Sort required parameters first in generated function signatures
+sortParamsByRequiredFlag: true
+
+# Sort required model properties first in generated structs
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure parameter names are unique (prevents conflicts with same-named params)
+ensureUniqueParams: true

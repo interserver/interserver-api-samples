@@ -28,6 +28,6 @@ allowUnicodeIdentifiers: false
 prependFormOrBodyParameters: false
 legacyDiscriminatorBehavior: true
 disallowAdditionalPropertiesIfNotPresent: true
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true
 
 # Global properties (passed via -p flag when running generate)

@@ -129,3 +129,6 @@ allowUnicodeIdentifiers: false
 
 # Add form or body parameters to the beginning of the parameter list
 prependFormOrBodyParameters: false
+
+# If the server adds new enum cases, handle gracefully
+enumUnknownDefaultCase: true

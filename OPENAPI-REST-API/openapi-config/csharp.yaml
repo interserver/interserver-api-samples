@@ -77,3 +77,12 @@ useCompareNetObjects: false
 # Description: Make API response's headers case-insensitive
 caseInsensitiveResponseHeaders: false
 
+# Description: Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
+
+# Description: Ensure parameter names are unique.
+ensureUniqueParams: true
+
+# Description: Allow unknown enum values in deserialization.
+enumUnknownDefaultCase: true
+

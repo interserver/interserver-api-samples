@@ -80,3 +80,5 @@ useMethodAndPath: false
 # Description: Use titles for tables, rather than wrapping tables instead their own section (default: false)
 useTableTitles: false
 
+enumUnknownDefaultCase: true
+

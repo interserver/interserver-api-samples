@@ -23,7 +23,7 @@ legacyDiscriminatorBehavior: true
 disallowAdditionalPropertiesIfNotPresent: true
 
 # If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse the network response.
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true
 
 # Crystal Shard Configuration
 # Proper shard naming following Crystal conventions (snake_case for shard, CamelCase for module)

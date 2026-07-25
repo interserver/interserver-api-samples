@@ -35,7 +35,7 @@ disallowAdditionalPropertiesIfNotPresent: true
 #         No changes to the enum's are made, this is the default option.
 #    true
 #         With this option enabled, each enum will have a new case, 'unknown_default_open_api', so that when the enum case sent by the server is not known by the client/spec, can safely be decoded to this case.
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true
 
 # Description: library template (sub-template)
 # Available Values:

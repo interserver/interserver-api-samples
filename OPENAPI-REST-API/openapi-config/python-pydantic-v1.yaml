@@ -7,11 +7,11 @@ packageName: openapi_client
 # Description: python package version.
 packageVersion: 1.0.0
 
-# Description: python package URL.
-# packageUrl: 
-
 # Description: Hides the generation timestamp when files are generated.
 hideGenerationTimestamp: true
+
+# Description: python package URL.
+# packageUrl: 
 
 # Description: Specifies that only a library source code is to be generated.
 generateSourceCodeOnly: false
@@ -40,5 +40,19 @@ library: urllib3
 #         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
 #    true
 #         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
+disallowAdditionalPropertiesIfNotPresent: false
+
+# Description: Sort parameters by required flag.
+sortParamsByRequiredFlag: true
+
+# Description: Sort model properties by required flag.
+sortModelPropertiesByRequiredFlag: true
+
+# Description: Ensure parameter names are unique across all operations.
+ensureUniqueParams: true
+
+# Description: CRITICAL - Handle unknown enum values by default case (forward compatibility).
+# When an enum receives an unknown value, it will default to the first defined enum value
+# instead of failing validation. Essential for forward-compatible API clients.
+enumUnknownDefaultCase: true
 

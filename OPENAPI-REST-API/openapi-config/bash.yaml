@@ -47,4 +47,4 @@ basicAuthEnvironmentVariable: "INTERSERVER_API_CREDS"
 apiKeyAuthEnvironmentVariable: "INTERSERVER_API_KEY"
 
 # Handle unknown enum cases gracefully
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true

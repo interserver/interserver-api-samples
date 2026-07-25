@@ -52,5 +52,14 @@ disallowAdditionalPropertiesIfNotPresent: true
 # Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
 ensureUniqueParams: true
 
+# Description: Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
+
+# Description: Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
+
+# Description: Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true
+
 # Description: Add form or body parameters to the beginning of the parameter list.
 prependFormOrBodyParameters: false

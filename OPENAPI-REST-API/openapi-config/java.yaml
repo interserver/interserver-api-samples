@@ -130,7 +130,7 @@ generateApiTests: false
 generateModelTests: false
 
 # If the server adds new enum cases, handle gracefully
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true
 
 # ===================
 # Compatibility Options

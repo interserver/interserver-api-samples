@@ -19,3 +19,18 @@ hideGenerationTimestamp: true
 
 # Description: Add form or body parameters to the beginning of the parameter list.
 prependFormOrBodyParameters: false
+
+# Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
+
+# boolean, toggles whether unicode identifiers are allowed in names or not, default is false
+allowUnicodeIdentifiers: false
+
+# Set to false for generators with better support for discriminators.
+legacyDiscriminatorBehavior: true
+
+# If false, the 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
+disallowAdditionalPropertiesIfNotPresent: true
+
+# If the server adds new enum cases, handle gracefully
+enumUnknownDefaultCase: true

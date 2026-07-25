@@ -12,3 +12,15 @@ packageVersion: 1.0.0-1
 # Description: Hides the generation timestamp when files are generated.
 # Set to true to avoid unnecessary diffs in generated files
 hideGenerationTimestamp: "true"
+
+# Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
+
+# Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure parameter names are unique
+ensureUniqueParams: true
+
+# Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true

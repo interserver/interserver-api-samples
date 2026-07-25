@@ -67,3 +67,6 @@ jsonLibrary: json4s
 # Description: Top-level package name, which defines 'apiPackage', 'modelPackage', 'invokerPackage'
 mainPackage: org.openapitools.client
 
+# Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true
+

@@ -22,8 +22,8 @@ legacyDiscriminatorBehavior: true
 # Disallow additional properties if not present (strict schema validation)
 disallowAdditionalPropertiesIfNotPresent: false
 
-# Don't add unknown enum cases (safe default for predictable APIs)
-enumUnknownDefaultCase: false
+# Allow unknown enum cases to be handled gracefully
+enumUnknownDefaultCase: true
 
 # Prefix for generated classes - prevents overwriting existing classes in the org
 # Using 'IntServer' prefix for InterServer API classes

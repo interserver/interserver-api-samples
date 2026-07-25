@@ -74,7 +74,7 @@ prependFormOrBodyParameters: true
 disallowAdditionalPropertiesIfNotPresent: false
 
 # Handle unknown enum cases gracefully
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true
 
 # Legacy discriminator behavior (set to false for better OAS compliance)
 legacyDiscriminatorBehavior: false

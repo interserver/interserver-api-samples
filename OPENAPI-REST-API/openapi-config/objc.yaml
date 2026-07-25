@@ -22,3 +22,21 @@ gitRepoURL: "https://github.com/detain/interserver-api-samples"
 
 # Hide generation timestamp to avoid unnecessary file changes
 hideGenerationTimestamp: "true"
+
+# Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
+
+# Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
+
+# Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+ensureUniqueParams: true
+
+# Set to false for generators with better support for discriminators.
+legacyDiscriminatorBehavior: true
+
+# If false, the 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
+disallowAdditionalPropertiesIfNotPresent: true
+
+# Handle unknown enum cases gracefully
+enumUnknownDefaultCase: true

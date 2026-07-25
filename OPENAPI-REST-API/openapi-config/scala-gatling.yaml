@@ -7,6 +7,9 @@ sortModelPropertiesByRequiredFlag: true
 # Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
 ensureUniqueParams: true
 
+# Description: Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true
+
 # Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
 allowUnicodeIdentifiers: false
 

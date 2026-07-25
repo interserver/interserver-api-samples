@@ -22,4 +22,16 @@ library: urllib3
 # Map number types properly for Python 3.8+ compatibility
 mapNumberTo: Union[StrictFloat, StrictInt]
 
+# Ensure required parameters appear first in method signatures for clarity
+sortParamsByRequiredFlag: true
+
+# Ensure required model properties appear first in class definitions for clarity
+sortModelPropertiesByRequiredFlag: true
+
+# Prevent duplicate parameter names across all operations
+ensureUniqueParams: true
+
+# Handle unknown enum values gracefully instead of failing - CRITICAL for forward compatibility
+# When a server returns an enum value not in the current spec, use a default case instead of raising an error
+enumUnknownDefaultCase: true
 

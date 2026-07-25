@@ -35,4 +35,5 @@ legacyDiscriminatorBehavior: false
 disallowAdditionalPropertiesIfNotPresent: false
 
 # If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse the network response.
-enumUnknownDefaultCase: false
+# Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true

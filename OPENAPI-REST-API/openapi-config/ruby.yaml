@@ -68,4 +68,4 @@ library: faraday
 # If the server adds new enum cases that are unknown by an old spec/client,
 # the client will fail to parse the network response. With this option enabled,
 # each enum will have a new case, 'unknown_default_open_api'.
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true

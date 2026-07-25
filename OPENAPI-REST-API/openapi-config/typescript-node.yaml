@@ -60,7 +60,7 @@ disallowAdditionalPropertiesIfNotPresent: false
 nullSafeAdditionalProps: false
 
 # If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true
 
 # === Metadata ===
 # Hide the generation timestamp in generated code

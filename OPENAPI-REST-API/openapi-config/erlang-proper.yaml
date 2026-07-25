@@ -4,3 +4,15 @@ packageName: openapi
 # Description: Erlang application version
 packageVersion: "1.0.0"
 
+# Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
+
+# Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure parameter names are unique
+ensureUniqueParams: true
+
+# Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true
+

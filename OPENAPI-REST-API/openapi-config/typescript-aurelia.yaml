@@ -53,3 +53,6 @@ snapshot: false
 # Description: Set to make additional properties types declare that their indexer may return undefined
 nullSafeAdditionalProps: false
 
+# Description: If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse
+enumUnknownDefaultCase: true
+

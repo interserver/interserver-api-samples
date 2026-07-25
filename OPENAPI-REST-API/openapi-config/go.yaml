@@ -58,3 +58,15 @@ generateUnmarshalJSON: true
 # Description: Handle unknown enum cases gracefully
 # When server sends unknown enum values, client can safely decode to 'unknown_default_open_api'
 enumUnknownDefaultCase: true
+
+# Description: Sort parameters by required flag
+# Required parameters appear first for better API discoverability
+sortParamsByRequiredFlag: true
+
+# Description: Sort model properties by required flag
+# Required properties appear first in struct definitions for clearer contracts
+sortModelPropertiesByRequiredFlag: true
+
+# Description: Ensure parameter names are unique
+# Prevents naming conflicts when multiple parameters have the same name
+ensureUniqueParams: true

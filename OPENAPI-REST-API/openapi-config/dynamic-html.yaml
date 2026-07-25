@@ -25,3 +25,5 @@ prependFormOrBodyParameters: false
 # Description: artifact version in generated pom.xml. This also becomes part of the generated library's filename
 # artifactVersion: 
 
+enumUnknownDefaultCase: true
+

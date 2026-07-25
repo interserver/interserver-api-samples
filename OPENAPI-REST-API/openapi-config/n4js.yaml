@@ -16,3 +16,15 @@
 # Description: Iff true a default implementation of the api executer interface is generated.
 # generateDefaultApiExecuter: 
 
+# Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
+
+# Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure parameter names are unique
+ensureUniqueParams: true
+
+# Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true
+

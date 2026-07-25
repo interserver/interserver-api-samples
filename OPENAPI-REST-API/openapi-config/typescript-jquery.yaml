@@ -59,3 +59,6 @@ nullSafeAdditionalProps: false
 # Description: When using this in legacy app using mix of typescript and javascript, this will only declare jquery and not import it
 jqueryAlreadyImported: false
 
+# Description: If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse
+enumUnknownDefaultCase: true
+

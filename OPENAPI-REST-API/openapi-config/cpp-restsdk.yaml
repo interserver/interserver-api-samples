@@ -22,3 +22,18 @@ variableNameFirstCharacterUppercase: true
 
 # Generate Google Mock classes for APIs (disabled by default for cleaner output)
 # generateGMocksForApis: false
+
+# Sort parameters so required params appear before optional params
+# This improves readability and ensures required parameters are always declared first
+sortParamsByRequiredFlag: true
+
+# Sort model properties so required properties appear before optional properties
+# This ensures required fields are declared first in C++ struct definitions
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure parameter names are unique to avoid naming conflicts
+# Prevents duplicate parameter names which could cause compilation errors
+ensureUniqueParams: true
+
+# Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true

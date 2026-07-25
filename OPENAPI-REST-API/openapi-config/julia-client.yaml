@@ -11,3 +11,15 @@ exportModels: "true"
 # Whether to generate code to export operation names
 # Note: quoted because Julia codegen has a bug with boolean parsing
 exportOperations: "true"
+
+# Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
+
+# Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure parameter names are unique
+ensureUniqueParams: true
+
+# Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true

@@ -35,3 +35,6 @@ hideGenerationTimestamp: true
 # Description: use ES6 templates
 useES6: false
 
+# Description: Handle unknown enum cases gracefully for forward compatibility
+enumUnknownDefaultCase: true
+

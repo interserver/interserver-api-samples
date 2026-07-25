@@ -62,3 +62,6 @@ withInterfaces: false
 # Description: Setting this property to true will generate functions with a single argument containing all API endpoint parameters instead of one argument per parameter.
 useSingleRequestParameter: true
 
+# Description: If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse
+enumUnknownDefaultCase: true
+

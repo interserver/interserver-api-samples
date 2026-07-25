@@ -7,3 +7,15 @@ reservedWordPrefix: r_
 # Description: Make first character of variable name uppercase (eg. value -> Value)
 variableNameFirstCharacterUppercase: true
 
+# Sort method arguments to place required parameters before optional parameters.
+sortParamsByRequiredFlag: true
+
+# Sort model properties to place required parameters before optional parameters.
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure parameter names are unique in an operation.
+ensureUniqueParams: true
+
+# If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse the network response. With this option enabled, each enum will have a new case, 'unknown_default_open_api', so that when the server sends an enum case that is not known by the client/spec, they can safely fallback to this case.
+enumUnknownDefaultCase: true
+

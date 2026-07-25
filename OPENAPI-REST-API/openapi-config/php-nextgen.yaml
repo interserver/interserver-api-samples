@@ -47,7 +47,7 @@ allowUnicodeIdentifiers: false
 # Enum Options
 # ===================
 # If the server adds new enum cases that are unknown, handle gracefully
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true
 
 # ===================
 # Compatibility Options

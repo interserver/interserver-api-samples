@@ -68,3 +68,6 @@ useRxJS6: false
 # Description: Use discriminators to create tagged unions instead of extending interfaces.
 taggedUnions: false
 
+# Description: If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse
+enumUnknownDefaultCase: true
+

@@ -33,3 +33,20 @@ library: reqwest
 
 # Default features for reqwest
 reqwestDefaultFeatures: native-tls
+
+# Sort endpoint parameters so required parameters appear first in generated code
+# This improves API ergonomics by making mandatory params immediately visible
+sortParamsByRequiredFlag: true
+
+# Sort model struct fields so required properties appear before optional ones
+# Enhances code clarity and matches Rust's preference for mandatory-first structs
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure unique parameter names across operations to prevent naming conflicts
+# Critical for avoiding shadowing and compilation errors in generated clients
+ensureUniqueParams: true
+
+# CRITICAL: Handle unknown enum values gracefully with a default case
+# Forward-compatible: allows API to add new enum values without breaking clients
+# Generated code will include a catch-all variant for unrecognized values
+enumUnknownDefaultCase: true

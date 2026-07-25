@@ -29,6 +29,14 @@ legacyDiscriminatorBehavior: true
 #         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
 disallowAdditionalPropertiesIfNotPresent: true
 
+# Description: If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse the network response. With this option enabled, each enum will have a new case, 'unknown_default_open_api', so that when the server sends an enum case that is not known by the client/spec, they can safely fallback to this case.
+# Available Values:
+#    false
+#         No changes to the enum's are made, this is the default option.
+#    true
+#         With this option enabled, each enum will have a new case, 'unknown_default_open_api', so that when the enum case sent by the server is not known by the client/spec, can safely be decoded to this case.
+enumUnknownDefaultCase: true
+
 # Description: name of the project (Default: generated from info.title or "openapi-clj-client")
 # projectName: 
 

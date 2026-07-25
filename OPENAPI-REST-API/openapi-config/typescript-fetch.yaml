@@ -71,3 +71,6 @@ typescriptThreePlus: false
 # Description: Setting this property to true will remove any runtime checks on the request and response payloads. Payloads will be casted to their expected types.
 withoutRuntimeChecks: false
 
+# Description: If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse
+enumUnknownDefaultCase: true
+

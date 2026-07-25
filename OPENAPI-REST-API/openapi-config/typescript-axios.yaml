@@ -85,7 +85,7 @@ stringEnums: false
 enumPropertyNamingReplaceSpecialChar: false
 
 # If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse the network response
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true
 
 # === Additional Properties ===
 # If false, the 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications

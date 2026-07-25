@@ -51,7 +51,7 @@ bigDecimalAsString: true
 # ===================
 enumPropertyNaming: original
 useEnumCaseInsensitive: false
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true
 
 # ===================
 # Compatibility Options

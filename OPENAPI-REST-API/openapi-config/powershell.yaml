@@ -51,6 +51,31 @@ discardReadOnly: false
 useOneOfDiscriminatorLookup: true
 
 # ============================================================================
+# PARAMETER AND MODEL ORDERING
+# ============================================================================
+
+# Sort parameters so required params appear before optional ones
+# Improves cmdlet usability and follows PowerShell best practices
+sortParamsByRequiredFlag: true
+
+# Sort model properties so required properties appear before optional ones
+# Ensures consistent and predictable generated model structures
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure unique parameter names across all operations
+# Prevents naming conflicts when same param exists in different locations
+ensureUniqueParams: true
+
+# ============================================================================
+# ENUM HANDLING
+# ============================================================================
+
+# Handle unknown enum values by using the default case
+# CRITICAL: Ensures forward compatibility when new enum values are added
+# Generated code will handle unrecognized enum values gracefully instead of failing
+enumUnknownDefaultCase: true
+
+# ============================================================================
 # SCHEMA COMPLIANCE
 # ============================================================================
 

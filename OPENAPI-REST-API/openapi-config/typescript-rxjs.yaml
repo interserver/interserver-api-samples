@@ -59,3 +59,6 @@ nullSafeAdditionalProps: false
 # Description: Setting this property to true will generate API controller methods with support for subscribing to request progress.
 withProgressSubscriber: false
 
+# Description: If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse
+enumUnknownDefaultCase: true
+

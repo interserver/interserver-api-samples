@@ -30,28 +30,34 @@ legacyDiscriminatorBehavior: true
 disallowAdditionalPropertiesIfNotPresent: true
 
 # Description: Library name in generated code
-# pubLibrary: 
+pubLibrary: interserver_api
 
 # Description: Name in generated pubspec
-# pubName: 
+pubName: interserver_api
 
 # Description: Version in generated pubspec
-# pubVersion: 
+pubVersion: 1.0.0
 
 # Description: Description in generated pubspec
-# pubDescription: 
+pubDescription: Interserver API client generated from OpenAPI spec
 
 # Description: Author name in generated pubspec
-# pubAuthor: 
+pubAuthor: Interserver
 
 # Description: Email address of the author in generated pubspec
-# pubAuthorEmail: 
+pubAuthorEmail: support@interserver.net
 
 # Description: Homepage in generated pubspec
-# pubHomepage: 
+pubHomepage: https://interserver.net
+
+# Description: Repository in generated pubspec
+pubRepository: https://github.com/interserver/interserver-api-samples
 
 # Description: Allow the 'x-enum-values' extension for enums
-# useEnumExtension: 
+useEnumExtension: true
+
+# Description: If the server adds new enum cases, handle them gracefully
+enumUnknownDefaultCase: true 
 
 # Description: Source folder for generated code
 # sourceFolder: 

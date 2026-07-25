@@ -23,7 +23,7 @@ legacyDiscriminatorBehavior: true
 disallowAdditionalPropertiesIfNotPresent: true
 
 # If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse the network response.
-enumUnknownDefaultCase: false
+enumUnknownDefaultCase: true
 
 # Hides the generation timestamp when files are generated.
 hideGenerationTimestamp: true
