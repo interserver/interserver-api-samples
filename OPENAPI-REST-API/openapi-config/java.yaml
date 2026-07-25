@@ -1,248 +1,174 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
+# OpenAPI Generator Configuration for Java Client
+# Optimized for Java 11+ with security best practices
+
+# ===================
+# Package Naming
+# ===================
+# Root package for generated code
+invokerPackage: io.interserver.client
+
+# Package for generated models
+modelPackage: io.interserver.client.model
+
+# Package for generated API classes
+apiPackage: io.interserver.client.api
+
+# ===================
+# POM Metadata
+# ===================
+groupId: io.interserver
+artifactId: interserver-api-client
+artifactVersion: 1.0.0
+artifactUrl: https://github.com/interserver/interserver-api-samples
+artifactDescription: Interserver API Java Client
+licenseName: MIT
+licenseUrl: https://opensource.org/licenses/MIT
+
+# SCM (can be customized per project)
+scmConnection: scm:git:git@github.com:interserver/interserver-api-samples.git
+scmDeveloperConnection: scm:git:git@github.com:interserver/interserver-api-samples.git
+scmUrl: https://github.com/interserver/interserver-api-samples
+
+# Developer info
+developerName: Interserver Development Team
+developerEmail: dev@interserver.net
+developerOrganization: Interserver, Inc.
+developerOrganizationUrl: https://www.interserver.net
+
+# ===================
+# Code Generation Options
+# ===================
+# Sort method arguments to place required parameters before optional parameters
 sortParamsByRequiredFlag: true
 
-# Description: Sort model properties to place required parameters before optional parameters.
+# Sort model properties to place required parameters before optional parameters
 sortModelPropertiesByRequiredFlag: true
 
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+# Ensure parameter names are unique in an operation
 ensureUniqueParams: true
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
-allowUnicodeIdentifiers: false
+# Hides the generation timestamp when files are generated
+hideGenerationTimestamp: true
 
-# Description: Add form or body parameters to the beginning of the parameter list.
-prependFormOrBodyParameters: false
-
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
-legacyDiscriminatorBehavior: true
-
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
-
-# Description: package for generated models
-modelPackage: org.openapitools.client.model
-
-# Description: package for generated api classes
-apiPackage: org.openapitools.client.api
-
-# Description: root package for generated code
-invokerPackage: org.openapitools.client
-
-# Description: groupId in generated pom.xml
-groupId: org.openapitools
-
-# Description: artifactId in generated pom.xml. This also becomes part of the generated library's filename
-artifactId: openapi-java-client
-
-# Description: artifact version in generated pom.xml. This also becomes part of the generated library's filename
-artifactVersion: 1.0.0
-
-# Description: artifact URL in generated pom.xml
-artifactUrl: https://github.com/openapitools/openapi-generator
-
-# Description: artifact description in generated pom.xml
-artifactDescription: OpenAPI Java
-
-# Description: SCM connection in generated pom.xml
-scmConnection: scm:git:git@github.com:openapitools/openapi-generator.git
-
-# Description: SCM developer connection in generated pom.xml
-scmDeveloperConnection: scm:git:git@github.com:openapitools/openapi-generator.git
-
-# Description: SCM URL in generated pom.xml
-scmUrl: https://github.com/openapitools/openapi-generator
-
-# Description: developer name in generated pom.xml
-developerName: OpenAPI-Generator Contributors
-
-# Description: developer email in generated pom.xml
-developerEmail: team@openapitools.org
-
-# Description: developer organization in generated pom.xml
-developerOrganization: OpenAPITools.org
-
-# Description: developer organization URL in generated pom.xml
-developerOrganizationUrl: http://openapitools.org
-
-# Description: The name of the license
-licenseName: Unlicense
-
-# Description: The URL of the license
-licenseUrl: http://unlicense.org
-
-# Description: source folder for generated code
+# Source folder for generated code
 sourceFolder: src/main/java
 
-# Description: boolean - toggle "implements Serializable" for generated models
-serializableModel: false
+# ===================
+# Model Options
+# ===================
+# Toggle "implements Serializable" for generated models
+serializableModel: true
 
-# Description: Treat BigDecimal values as Strings to avoid precision loss.
-bigDecimalAsString: false
+# Treat BigDecimal values as Strings to avoid precision loss
+bigDecimalAsString: true
 
-# Description: whether to use fully qualified name for classes under java.util. This option only works for Java API client
-fullJavaUtil: false
-
-# Description: Whether the discriminator value lookup should be case-sensitive or not. This option only works for Java API client
-discriminatorCaseSensitive: true
-
-# Description: Hides the generation timestamp when files are generated.
-hideGenerationTimestamp: false
-
-# Description: whether to include support for application/xml content type and include XML annotations in the model (works with libraries that provide support for JSON and XML)
-withXml: false
-
-# Description: Option. Date library to use
-# Available Values:
-#    joda
-#         Joda (for legacy app only)
-#    legacy
-#         Legacy java.util.Date (if you really have a good reason not to use threetenbp
-#    java8-localdatetime
-#         Java 8 using LocalDateTime (for legacy app only)
-#    java8
-#         Java 8 native JSR310 (preferred for jdk 1.8+) - note: this also sets "java8" to true
-#    threetenbp
-#         Backport of JSR310 (preferred for jdk < 1.8)
-dateLibrary: threetenbp
-
-# Description: Use Java8 classes instead of third party equivalents. Starting in 5.x, JDK8 is the default and the support for JDK7, JDK6 has been dropped
-# Available Values:
-#    true
-#         Use Java 8 classes such as Base64
-#    false
-#         Various third party libraries as needed
+# Use Java8 classes instead of third party equivalents
 java8: true
 
-# Description: Disable HTML escaping of JSON strings when using gson (needed to avoid problems with byte[] fields)
-disableHtmlEscaping: false
-
-# Description: Set booleanGetterPrefix
-booleanGetterPrefix: get
-
-# Description: Ignore anyOf keyword in enum
-ignoreAnyOfInEnum: false
-
-# Description: Additional annotations for model type(class level annotations)
-# additionalModelTypeAnnotations: 
-
-# Description: Additional annotations for enum type(class level annotations)
-# additionalEnumTypeAnnotations: 
-
-# Description: Enable OpenAPI Jackson Nullable library
+# Enable OpenAPI Jackson Nullable library
 openApiNullable: true
 
-# Description: parent groupId in generated pom N.B. parentGroupId, parentArtifactId and parentVersion must all be specified for any of them to take effect
-# parentGroupId: 
+# Set boolean getter prefix (use 'is' instead of deprecated 'get')
+booleanGetterPrefix: is
 
-# Description: parent artifactId in generated pom N.B. parentGroupId, parentArtifactId and parentVersion must all be specified for any of them to take effect
-# parentArtifactId: 
+# Ignore anyOf keyword in enum
+ignoreAnyOfInEnum: false
 
-# Description: parent version in generated pom N.B. parentGroupId, parentArtifactId and parentVersion must all be specified for any of them to take effect
-# parentVersion: 
+# Whether the discriminator value lookup should be case-sensitive
+discriminatorCaseSensitive: true
 
-# Description: Uses a SNAPSHOT version.
-# Available Values:
-#    true
-#         Use a SnapShot Version
-#    false
-#         Use a Release Version
-# snapshotVersion: 
-
-# Description: Whether to use the RxJava adapter with the retrofit2 library. IMPORTANT: this option has been deprecated and will be removed in the 5.x release.
-useRxJava: false
-
-# Description: Whether to use the RxJava2 adapter with the retrofit2 library.
-useRxJava2: false
-
-# Description: Whether to use the RxJava3 adapter with the retrofit2 library.
-useRxJava3: false
-
-# Description: Whether to generate models for Android that implement Parcelable with the okhttp-gson library.
-parcelableModel: false
-
-# Description: Use Play! Async HTTP client (Play WS API)
-usePlayWS: false
-
-# Description: Version of Play! Framework (possible values "play24" (Deprecated), "play25" (Deprecated), "play26" (Default))
-# playVersion: 
-
-# Description: Use BeanValidation API annotations
-useBeanValidation: false
-
-# Description: Perform BeanValidation
-performBeanValidation: false
-
-# Description: Send gzip-encoded requests
-useGzipFeature: false
-
-# Description: Use RuntimeException instead of Exception
-useRuntimeException: false
-
-# Description: If true, async handlers will be used, instead of the sync version
-asyncNative: false
-
-# Description: Use org.apache.commons.lang3.builder for equals and hashCode in the models. WARNING: This will fail under a security manager, unless the appropriate permissions are set up correctly and also there's potential performance impact.
-useReflectionEqualsHashCode: false
-
-# Description: Make API response's headers case-insensitive. Available on okhttp-gson, jersey2 libraries
-caseInsensitiveResponseHeaders: false
-
-# Description: Framework for microprofile. Possible values "kumuluzee"
-# microprofileFramework: 
-
-# Description: Use alternative types instead of java.io.File to allow passing bytes without a file on disk. Available on resttemplate library
-useAbstractionForFiles: false
-
-# Description: Generate operations dynamically at runtime from an OAS
-dynamicOperations: false
-
-# Description: library template (sub-template) to use
-# Available Values:
-#    jersey1
-#         HTTP client: Jersey client 1.19.x. JSON processing: Jackson 2.9.x. Enable gzip request encoding using '-DuseGzipFeature=true'. IMPORTANT NOTE: jersey 1.x is no longer actively maintained so please upgrade to 'jersey2' or other HTTP libaries instead.
-#    jersey2
-#         HTTP client: Jersey client 2.25.1. JSON processing: Jackson 2.9.x
-#    feign
-#         HTTP client: OpenFeign 10.x. JSON processing: Jackson 2.9.x.
-#    okhttp-gson
-#         [DEFAULT] HTTP client: OkHttp 3.x. JSON processing: Gson 2.8.x. Enable Parcelable models on Android using '-DparcelableModel=true'. Enable gzip request encoding using '-DuseGzipFeature=true'.
-#    retrofit2
-#         HTTP client: OkHttp 3.x. JSON processing: Gson 2.x (Retrofit 2.3.0). Enable the RxJava adapter using '-DuseRxJava[2/3]=true'. (RxJava 1.x or 2.x or 3.x)
-#    resttemplate
-#         HTTP client: Spring RestTemplate 4.x. JSON processing: Jackson 2.9.x
-#    webclient
-#         HTTP client: Spring WebClient 5.x. JSON processing: Jackson 2.9.x
-#    resteasy
-#         HTTP client: Resteasy client 3.x. JSON processing: Jackson 2.9.x
-#    vertx
-#         HTTP client: VertX client 3.x. JSON processing: Jackson 2.9.x
-#    google-api-client
-#         HTTP client: Google API client 1.x. JSON processing: Jackson 2.9.x
-#    rest-assured
-#         HTTP client: rest-assured : 4.x. JSON processing: Gson 2.x or Jackson 2.10.x. Only for Java 8
-#    native
-#         HTTP client: Java native HttpClient. JSON processing: Jackson 2.9.x. Only for Java11+
-#    microprofile
-#         HTTP client: Microprofile client 1.x. JSON processing: Jackson 2.9.x
+# ===================
+# Library Selection
+# ===================
+# HTTP client library template
+# okhttp-gson: HTTP client: OkHttp 4.11.0. JSON processing: Gson 2.10.1
+# resttemplate: HTTP client: Spring RestTemplate 5.3.33
+# native: Java native HttpClient (Java 11+)
 library: okhttp-gson
 
-# Description: Serialization library, default depends from the library
-# Available Values:
-#    jsonb
-#         Use JSON-B as serialization library
-#    jackson
-#         Use Jackson as serialization library
-#    gson
-#         Use Gson as serialization library
-# serializationLibrary: 
+# ===================
+# Serialization
+# ===================
+# Use Gson as serialization library (default for okhttp-gson)
+serializationLibrary: gson
 
+# Disable HTML escaping of JSON strings when using gson
+disableHtmlEscaping: true
+
+# ===================
+# Additional Features
+# ===================
+# Whether to include support for application/xml content type
+withXml: false
+
+# Use BeanValidation API annotations
+useBeanValidation: false
+
+# Perform BeanValidation
+performBeanValidation: false
+
+# Use RuntimeException instead of Exception
+useRuntimeException: true
+
+# Make API response's headers case-insensitive
+caseInsensitiveResponseHeaders: false
+
+# Use alternative types instead of java.io.File
+useAbstractionForFiles: false
+
+# ===================
+# Enum Options
+# ===================
+# Naming convention for enum properties
+enumPropertyNaming: original
+
+# Use enum case insensitive comparison
+useEnumCaseInsensitive: false
+
+# Disable test generation
+generateApiTests: false
+generateModelTests: false
+
+# If the server adds new enum cases, handle gracefully
+enumUnknownDefaultCase: false
+
+# ===================
+# Compatibility Options
+# ===================
+# Legacy discriminator behavior
+legacyDiscriminatorBehavior: true
+
+# If false, the 'additionalProperties' implementation is compliant with OAS
+disallowAdditionalPropertiesIfNotPresent: false
+
+# Allow unicode identifiers in names
+allowUnicodeIdentifiers: false
+
+# Add form or body parameters to the beginning of the parameter list
+prependFormOrBodyParameters: false
+
+# ===================
+# Documentation
+# ===================
+# Select the OpenAPI documentation provider
+# none: Do not publish an OpenAPI specification
+documentationProvider: none
+
+# Select the complementary documentation annotation library
+# none: Do not annotate Model and Api with complementary annotations
+annotationLibrary: none
+
+# ===================
+# Security Notes
+# ===================
+# IMPORTANT: After generation, ensure pom.xml uses secure dependency versions:
+# - jackson-databind >= 2.21.5 (CVE-2024-51111, CVE-2024-51112)
+# - okhttp >= 4.12.0 (for CVE fixes)
+# - tomcat-embed-core >= 10.1.20 (if using Spring/Resteasy)
+#
+# Add to your pom.xml <dependencyManagement> section:
+# <dependency>
+#   <groupId>com.fasterxml.jackson.core</groupId>
+#   <artifactId>jackson-databind</artifactId>
+#   <version>2.21.5</version>
+# </dependency>

@@ -1,75 +1,69 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
+# OpenAPI Generator Configuration for Android Client
+# Optimized for Android with Volley and Gson
+
+# ===================
+# Package Naming (Android reverse-domain style)
+# ===================
+invokerPackage: net.interserver.api.client
+modelPackage: net.interserver.api.client.model
+apiPackage: net.interserver.api.client.api
+
+# ===================
+# Android Manifest & Build Metadata
+# ===================
+groupId: net.interserver
+artifactId: interserver-api-android
+artifactVersion: "1.0.0"
+artifactUrl: https://github.com/interserver/interserver-api-samples
+artifactDescription: Interserver API Android Client
+licenseName: MIT
+licenseUrl: https://opensource.org/licenses/MIT
+
+# Developer info
+developerName: Interserver Development Team
+developerEmail: dev@interserver.net
+developerOrganization: Interserver, Inc.
+developerOrganizationUrl: https://www.interserver.net
+
+# ===================
+# Source & Library Options
+# ===================
+sourceFolder: src/main/java
+
+# Library template: volley (default, actively maintained)
+library: volley
+
+# ===================
+# Code Generation Options
+# ===================
 sortParamsByRequiredFlag: true
-
-# Description: Sort model properties to place required parameters before optional parameters.
 sortModelPropertiesByRequiredFlag: true
-
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
 ensureUniqueParams: true
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
-allowUnicodeIdentifiers: false
+# ===================
+# Model Options
+# ===================
+serializableModel: true
+bigDecimalAsString: true
 
-# Description: Add form or body parameters to the beginning of the parameter list.
+# ===================
+# Enum Options
+# ===================
+enumPropertyNaming: original
+useEnumCaseInsensitive: false
+enumUnknownDefaultCase: false
+
+# ===================
+# Compatibility Options
+# ===================
+legacyDiscriminatorBehavior: true
+disallowAdditionalPropertiesIfNotPresent: false
+allowUnicodeIdentifiers: false
 prependFormOrBodyParameters: false
 
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
-legacyDiscriminatorBehavior: true
-
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
-
-# Description: package for generated models
-# modelPackage: 
-
-# Description: package for generated api classes
-# apiPackage: 
-
-# Description: root package for generated code
-# invokerPackage: 
-
-# Description: groupId for use in the generated build.gradle and pom.xml
-# groupId: 
-
-# Description: artifactId for use in the generated build.gradle and pom.xml
-# artifactId: 
-
-# Description: artifact version for use in the generated build.gradle and pom.xml
-# artifactVersion: 
-
-# Description: source folder for generated code
-# sourceFolder: 
-
-# Description: A flag to toggle android-maven gradle plugin.
-useAndroidMavenGradlePlugin: true
-
-# Description: gradleVersion version for use in the generated build.gradle
-# androidGradleVersion: 
-
-# Description: compileSdkVersion version for use in the generated build.gradle
-# androidSdkVersion: 
-
-# Description: buildToolsVersion version for use in the generated build.gradle
-# androidBuildToolsVersion: 
-
-# Description: boolean - toggle "implements Serializable" for generated models
-serializableModel: false
-
-# Description: library template (sub-template) to use
-# Available Values:
-#    volley
-#         HTTP client: Volley 1.0.19 (default)
-#    httpclient
-#         HTTP client: Apache HttpClient 4.3.6. JSON processing: Gson 2.3.1. IMPORTANT: Android client using HttpClient is not actively maintained and will be depecreated in the next major release.
-# library: 
-
+# ===================
+# Additional Features
+# ===================
+withXml: false
+caseInsensitiveResponseHeaders: false
+useAbstractionForFiles: false

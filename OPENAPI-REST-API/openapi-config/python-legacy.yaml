@@ -10,8 +10,7 @@ packageVersion: 1.0.0
 # Description: python package URL.
 # packageUrl: 
 
-# Description: Sort method arguments to place required parameters before optional parameters.
-sortParamsByRequiredFlag: true
+
 
 # Description: Hides the generation timestamp when files are generated.
 hideGenerationTimestamp: true

@@ -7,7 +7,5 @@
   "packageName": "Interserver.MyAdmin.Client",
   "gitUserId": "interserver",
   "gitRepoId": "myadmin-client-csharp",
-  "packageTitle": "MyAdmin C# Client",
-  "packageDescription": "MyAdmin Email API client for C#",
   "targetFramework": "net8.0"
 }

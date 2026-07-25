@@ -1,154 +1,131 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
+# OpenAPI Generator config for Groovy
+# Optimized for interserver-api-samples project
+
+# Sort method arguments to place required parameters before optional parameters.
 sortParamsByRequiredFlag: true
 
-# Description: Sort model properties to place required parameters before optional parameters.
+# Sort model properties to place required parameters before optional parameters.
 sortModelPropertiesByRequiredFlag: true
 
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+# Whether to ensure parameter names are unique in an operation (rename parameters that are not).
 ensureUniqueParams: true
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
+# boolean, toggles whether unicode identifiers are allowed in names or not, default is false
 allowUnicodeIdentifiers: false
 
-# Description: Add form or body parameters to the beginning of the parameter list.
-prependFormOrBodyParameters: false
+# Add form or body parameters to the beginning of the parameter list.
+prependFormOrBodyParameters: true
 
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
+# Set to false for generators with better support for discriminators.
 legacyDiscriminatorBehavior: true
 
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
+# If false, the 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
 disallowAdditionalPropertiesIfNotPresent: true
 
-# Description: package for generated models
-modelPackage: org.openapitools.model
+# Package for generated models - interserver brand
+modelPackage: com.interserver.model
 
-# Description: package for generated api classes
-apiPackage: org.openapitools.api
+# Package for generated api classes - interserver brand
+apiPackage: com.interserver.api
 
-# Description: root package for generated code
-invokerPackage: org.openapitools.api
+# Root package for generated code - interserver brand
+invokerPackage: com.interserver
 
-# Description: groupId in generated pom.xml
-groupId: org.openapitools
+# groupId in generated pom.xml
+groupId: com.interserver
 
-# Description: artifactId in generated pom.xml. This also becomes part of the generated library's filename
-artifactId: openapi-groovy
+# artifactId in generated pom.xml
+artifactId: interserver-api-client
 
-# Description: artifact version in generated pom.xml. This also becomes part of the generated library's filename
+# artifact version in generated pom.xml
 artifactVersion: 1.0.0
 
-# Description: SCM connection in generated pom.xml
-scmConnection: scm:git:git@github.com:openapitools/openapi-generator.git
+# SCM connection in generated pom.xml
+scmConnection: scm:git:git@github.com:interserver/interserver-api-samples.git
 
-# Description: SCM developer connection in generated pom.xml
-scmDeveloperConnection: scm:git:git@github.com:openapitools/openapi-generator.git
+# SCM developer connection in generated pom.xml
+scmDeveloperConnection: scm:git:git@github.com:interserver/interserver-api-samples.git
 
-# Description: SCM URL in generated pom.xml
-scmUrl: https://github.com/openapitools/openapi-generator
+# SCM URL in generated pom.xml
+scmUrl: https://github.com/interserver/interserver-api-samples
 
-# Description: developer name in generated pom.xml
-developerName: OpenAPI-Generator Contributors
+# Developer name in generated pom.xml
+developerName: Interserver API Team
 
-# Description: developer email in generated pom.xml
-developerEmail: team@openapitools.org
+# Developer email in generated pom.xml
+developerEmail: api@interserver.com
 
-# Description: developer organization in generated pom.xml
-developerOrganization: OpenAPITools.org
+# Developer organization in generated pom.xml
+developerOrganization: Interserver
 
-# Description: developer organization URL in generated pom.xml
-developerOrganizationUrl: http://openapitools.org
+# Developer organization URL in generated pom.xml
+developerOrganizationUrl: https://www.interserver.net
 
-# Description: The name of the license
-licenseName: Unlicense
+# The name of the license
+licenseName: MIT
 
-# Description: The URL of the license
-licenseUrl: http://unlicense.org
+# The URL of the license
+licenseUrl: https://opensource.org/licenses/MIT
 
-# Description: source folder for generated code
+# Source folder for generated code
 sourceFolder: src/main/groovy
 
-# Description: boolean - toggle "implements Serializable" for generated models
+# boolean - toggle "implements Serializable" for generated models
 serializableModel: false
 
-# Description: Treat BigDecimal values as Strings to avoid precision loss.
-bigDecimalAsString: false
+# Treat BigDecimal values as Strings to avoid precision loss.
+bigDecimalAsString: true
 
-# Description: whether to use fully qualified name for classes under java.util. This option only works for Java API client
-fullJavaUtil: false
-
-# Description: Whether the discriminator value lookup should be case-sensitive or not. This option only works for Java API client
+# Whether the discriminator value lookup should be case-sensitive or not.
 discriminatorCaseSensitive: true
 
-# Description: Hides the generation timestamp when files are generated.
-hideGenerationTimestamp: false
+# Hides the generation timestamp when files are generated.
+hideGenerationTimestamp: true
 
-# Description: whether to include support for application/xml content type and include XML annotations in the model (works with libraries that provide support for JSON and XML)
+# Whether to include support for application/xml content type and include XML annotations in the model
 withXml: false
 
-# Description: Option. Date library to use
-# Available Values:
-#    joda
-#         Joda (for legacy app only)
-#    legacy
-#         Legacy java.util.Date (if you really have a good reason not to use threetenbp
-#    java8-localdatetime
-#         Java 8 using LocalDateTime (for legacy app only)
-#    java8
-#         Java 8 native JSR310 (preferred for jdk 1.8+) - note: this also sets "java8" to true
-#    threetenbp
-#         Backport of JSR310 (preferred for jdk < 1.8)
-dateLibrary: legacy
+# Use Java 8 native JSR310 for date/time (preferred for jdk 1.8+)
+dateLibrary: java8
 
-# Description: Use Java8 classes instead of third party equivalents. Starting in 5.x, JDK8 is the default and the support for JDK7, JDK6 has been dropped
-# Available Values:
-#    true
-#         Use Java 8 classes such as Base64
-#    false
-#         Various third party libraries as needed
-java8: true
-
-# Description: Disable HTML escaping of JSON strings when using gson (needed to avoid problems with byte[] fields)
+# Disable HTML escaping of JSON strings when using gson
 disableHtmlEscaping: false
 
-# Description: Set booleanGetterPrefix
+# Set booleanGetterPrefix
 booleanGetterPrefix: get
 
-# Description: Ignore anyOf keyword in enum
+# Ignore anyOf keyword in enum
 ignoreAnyOfInEnum: false
 
-# Description: Additional annotations for model type(class level annotations)
-# additionalModelTypeAnnotations: 
-
-# Description: Additional annotations for enum type(class level annotations)
-# additionalEnumTypeAnnotations: 
-
-# Description: Enable OpenAPI Jackson Nullable library
+# Enable OpenAPI Jackson Nullable library
 openApiNullable: true
 
-# Description: parent groupId in generated pom N.B. parentGroupId, parentArtifactId and parentVersion must all be specified for any of them to take effect
-# parentGroupId: 
+# Whether to generate builders for models
+generateBuilders: true
 
-# Description: parent artifactId in generated pom N.B. parentGroupId, parentArtifactId and parentVersion must all be specified for any of them to take effect
-# parentArtifactId: 
+# Whether to generate a constructor for all arguments
+generateConstructorWithAllArgs: false
 
-# Description: parent version in generated pom N.B. parentGroupId, parentArtifactId and parentVersion must all be specified for any of them to take effect
-# parentVersion: 
+# Initialize containers (array/set/map) to empty containers instead of null by default
+defaultToEmptyContainer: false
 
-# Description: Uses a SNAPSHOT version.
-# Available Values:
-#    true
-#         Use a SnapShot Version
-#    false
-#         Use a Release Version
-# snapshotVersion: 
+# Set containers (array, set, map) default to null
+containerDefaultToNull: true
 
+# Naming convention for enum properties
+enumPropertyNaming: MACRO_CASE
+
+# Skip header parameters in the generated API methods using @ApiImplicitParams annotation
+implicitHeaders: false
+
+# If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse the network response. With this option enabled, each enum will have a new case, 'unknown_default_open_api'
+enumUnknownDefaultCase: false
+
+# Ignore discriminator field type for Jackson serialization
+disableDiscriminatorJsonIgnoreProperties: false
+
+# Fix camelCase when starting with $ sign
+camelCaseDollarSign: false
+
+# Whether to use Jakarta EE namespace instead of javax
+useJakartaEe: false

@@ -1,24 +1,24 @@
-# Description: C++ namespace for models (convention: name.space.model).
-modelPackage: org.openapitools.client.model
+# C++ REST SDK (cpprestsdk) OpenAPI Generator Configuration
+# Optimized for InterServer API client library generation
 
-# Description: C++ namespace for apis (convention: name.space.api).
-apiPackage: org.openapitools.client.api
+# C++ package (library) name - proper CamelCase naming
+packageName: InterserverApiClient
 
-# Description: C++ package version.
+# C++ namespace for models (convention: name.space.model)
+# Using reverse domain notation with :: separator for C++
+modelPackage: net.interserver.api.model
+
+# C++ namespace for apis (convention: name.space.api)
+apiPackage: net.interserver.api
+
+# C++ package version
 packageVersion: 1.0.0
 
-# Description: C++ preprocessor to place before the class name for handling dllexport/dllimport.
-declspec: 
-
-# Description: The default include statement that should be placed in all headers for including things like the declspec (convention: #include "Commons.h" 
-defaultInclude: 
-
-# Description: Generate Google Mock classes for APIs.
-# generateGMocksForApis: 
-
-# Description: Prefix to prepend to reserved words in order to avoid conflicts
+# Prefix to prepend to reserved words in order to avoid conflicts
 reservedWordPrefix: r_
 
-# Description: Make first character of variable name uppercase (eg. value -> Value)
+# Make first character of variable name uppercase (eg. value -> Value)
 variableNameFirstCharacterUppercase: true
 
+# Generate Google Mock classes for APIs (disabled by default for cleaner output)
+# generateGMocksForApis: false

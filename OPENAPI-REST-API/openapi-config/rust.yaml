@@ -1,26 +1,35 @@
-# Description: Rust package name (convention: lowercase).
-packageName: myadmin
+# OpenAPI Generator Rust Client Configuration
+# Optimized for async/await with Tokio and Reqwest
 
-# Description: Rust package version.
+# Rust package name (snake_case convention)
+packageName: myadmin_api_client
+
+# Rust package version
 packageVersion: 1.0.0
 
-# Description: Hides the generation timestamp when files are generated.
+# Hide generation timestamp to keep builds reproducible
 hideGenerationTimestamp: true
 
-# Description: Setting this property to true will generate functions with a single argument containing all API endpoint parameters instead of one argument per parameter.
-useSingleRequestParameter: false
+# Use single request parameter for cleaner API calls
+useSingleRequestParameter: true
 
-# Description: If set, generate async function call instead. This option is for 'reqwest' library only
+# Enable async/await support with Tokio
 supportAsync: true
 
-# Description: If set, return type wraps an enum of all possible 2xx schemas. This option is for 'reqwest' library only
-supportMultipleResponses: false
+# Use Serde for JSON serialization (enabled by default but explicit for clarity)
+# Note: serde is automatically included with reqwest template
 
-# Description: library template (sub-template) to use.
-# Available Values:
-#    hyper
-#         HTTP client: Hyper.
-#    reqwest
-#         HTTP client: Reqwest.
+# Use chrono for date/time parsing
+useChrono: true
+
+# Prefer unsigned integers where appropriate
+preferUnsignedInt: true
+
+# Use best fitting integer types based on min/max constraints
+bestFitInt: true
+
+# Use reqwest with native-tls for HTTPS support
 library: reqwest
 
+# Default features for reqwest
+reqwestDefaultFeatures: native-tls

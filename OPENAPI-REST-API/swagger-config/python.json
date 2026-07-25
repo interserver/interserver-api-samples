@@ -1,11 +1,11 @@
 {
-  "sortParamsByRequiredFlag": "true",
-  "ensureUniqueParams": "true",
-  "allowUnicodeIdentifiers": "true",
-  "hideGenerationTimestamp": "true",
-  "artifactVersion": "1.0.0",
-  "packageName": "myadmin-client-python",
-  "gitUserId": "interserver",
-  "gitRepoId": "myadmin-client-python"
+  "packageName": "interserver_api_client",
+  "projectName": "interserver-api-client",
+  "packageVersion": "1.0.0",
+  "packageUrl": "https://github.com/detain/interserver-api-samples",
+  "sortParamsByRequiredFlag": true,
+  "hideGenerationTimestamp": true,
+  "allowUnicodeIdentifiers": true,
+  "ensureUniqueParams": true,
+  "library": "urllib3"
 }
-

@@ -1,9 +1,13 @@
-# Description: Julia client package name.
-packageName: APIClient
+# OpenAPI Generator configuration for Julia client
+# Optimized for Interserver API
 
-# Description: Whether to generate code to export model names.
-exportModels: false
+# Julia package name (UpperCamelCase per Julia conventions)
+packageName: InterserverAPIClient
 
-# Description: Whether to generate code to export operation names.
-exportOperations: false
+# Whether to generate code to export model names
+# Note: quoted because Julia codegen has a bug with boolean parsing
+exportModels: "true"
 
+# Whether to generate code to export operation names
+# Note: quoted because Julia codegen has a bug with boolean parsing
+exportOperations: "true"

@@ -67,7 +67,7 @@ separateErrorChannel: true
 jodaTimeVersion: 2.10.13
 
 # Description: The version of json4s library
-json4sVersion: 4.0.6
+json4sVersion: 3.6.13
 
 # Description: Json library to use. Possible values are: json4s and circe.
 jsonLibrary: json4s

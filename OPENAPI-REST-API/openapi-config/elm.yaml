@@ -1,0 +1,5 @@
+# Elm Generator Config
+#
+# NOTE: The Elm generator (cliOptions.clear()) accepts ZERO configurable options.
+# All generator options are silently ignored.
+# This file is retained for documentation purposes only.

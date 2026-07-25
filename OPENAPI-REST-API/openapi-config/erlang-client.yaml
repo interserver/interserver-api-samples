@@ -1,6 +1,9 @@
-# Description: Erlang application name (convention: lowercase).
-packageName: openapi
+# Erlang Client Generator Configuration
+# OpenAPI Generator - erlang-client
 
-# Description: Erlang application version
-packageVersion: 1.0.0
+# Erlang application name (convention: lowercase)
+# Use lowercase with underscores for proper Erlang module naming
+packageName: interserver_api
 
+# Erlang application version
+packageVersion: "1.0.0"

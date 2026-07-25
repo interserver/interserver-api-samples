@@ -1,24 +1,24 @@
-# Description: Should generate core data models
-coreData: false
+# OpenAPI Generator Configuration for Objective-C
+# Optimized for InterServer API Client Library
 
-# Description: prefix for generated classes (convention: Abbreviation of pod name e.g. `HN` for `HackerNews`).`
-classPrefix: OAI
+# Should generate core data models (disabled for lightweight HTTP-only client)
+coreData: "false"
 
-# Description: cocoapods package name (convention: CameCase).
-podName: OpenAPIClient
+# Prefix for generated classes (ISA = InterServer API)
+classPrefix: "ISA"
 
-# Description: cocoapods package version.
-podVersion: 1.0.0
+# CocoaPods package name (convention: CameCase)
+podName: "InterserverAPIClient"
 
-# Description: Name to use in the podspec file.
-authorName: OpenAPI
+# CocoaPods package version
+podVersion: "1.0.0"
 
-# Description: Email to use in the podspec file.
-authorEmail: team@openapitools.org
+# Author information
+authorName: "InterServer"
+authorEmail: "api@interserver.net"
 
-# Description: URL for the git repo where this podspec should point to.
-gitRepoURL: https://github.com/openapitools/openapi-generator
+# Git repository for the API client
+gitRepoURL: "https://github.com/detain/interserver-api-samples"
 
-# Description: Hides the generation timestamp when files are generated.
-hideGenerationTimestamp: true
-
+# Hide generation timestamp to avoid unnecessary file changes
+hideGenerationTimestamp: "true"

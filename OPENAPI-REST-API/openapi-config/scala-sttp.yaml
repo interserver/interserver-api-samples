@@ -50,7 +50,7 @@ modelPropertyNaming: camelCase
 dateLibrary: java8
 
 # Description: The version of sttp client
-sttpClientVersion: 2.2.0
+sttpClientVersion: 3.2.0
 
 # Description: Whether to return response as F[Either[ResponseError[ErrorType], ReturnType]]] or to flatten response's error raising them through enclosing monad (F[ReturnType]).
 separateErrorChannel: true
@@ -59,10 +59,7 @@ separateErrorChannel: true
 jodaTimeVersion: 2.10.6
 
 # Description: The version of json4s library
-json4sVersion: 3.6.8
-
-# Description: The version of circe library
-circeVersion: 0.13.0
+json4sVersion: 3.6.12
 
 # Description: Json library to use. Possible values are: json4s and circe.
 jsonLibrary: json4s

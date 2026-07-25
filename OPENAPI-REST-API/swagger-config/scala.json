@@ -1,11 +1,14 @@
 {
-  "sortParamsByRequiredFlag": "true",
-  "ensureUniqueParams": "true",
-  "allowUnicodeIdentifiers": "true",
-  "hideGenerationTimestamp": "true",
+  "hideGenerationTimestamp": true,
+  "sortParamsByRequiredFlag": true,
+  "ensureUniqueParams": true,
+  "allowUnicodeIdentifiers": false,
+  "packageName": "com.interserver.myadmin",
+  "modelPackage": "com.interserver.myadmin.model",
+  "apiPackage": "com.interserver.myadmin.api",
+  "groupId": "com.interserver",
+  "artifactId": "myadmin-client-scala",
   "artifactVersion": "1.0.0",
-  "packageName": "myadmin-client-scala",
-  "gitUserId": "interserver",
-  "gitRepoId": "myadmin-client-scala"
+  "sourceFolder": "src/main/scala",
+  "library": "okhttp-gson"
 }
-

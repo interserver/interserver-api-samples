@@ -1,10 +1,10 @@
 {
-  "sortParamsByRequiredFlag": "true",
-  "ensureUniqueParams": "true",
-  "allowUnicodeIdentifiers": "true",
-  "hideGenerationTimestamp": "true",
-  "artifactVersion": "1.0.0",
-  "packageName": "myadmin",
+  "packageName": "interserver-api-client",
+  "hideGenerationTimestamp": true,
+  "sortParamsByRequiredFlag": true,
+  "ensureUniqueParams": true,
+  "allowUnicodeIdentifiers": true,
+  "packageVersion": "1.0.0",
   "gitUserId": "interserver",
-  "gitRepoId": "myadmin-client-go"
+  "gitRepoId": "interserver-api-client"
 }

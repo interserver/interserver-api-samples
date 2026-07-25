@@ -1,17 +1,8 @@
 {
-  "sortParamsByRequiredFlag": "true",
-  "ensureUniqueParams": "true",
-  "allowUnicodeIdentifiers": "true",
-  "modelPackage": "Model",
-  "apiPackage": "Api",
-  "variableNamingConvention": "camelCase",
-  "invokerPackage": "Interserver\\MyAdmin",
-  "packagePath": "",
-  "srcBasePath": "src",
-  "gitUserId": "interserver",
-  "gitRepoId": "myadmin-client-php",
-  "composerVendorName": "interserver",
-  "composerProjectName": "myadmin-client-php",
+  "invokerPackage": "InterserverApiClient",
   "artifactVersion": "1.0.0",
-  "hideGenerationTimestamp": "true"
+  "hideGenerationTimestamp": true,
+  "allowUnicodeIdentifiers": true,
+  "sortParamsByRequiredFlag": true,
+  "ensureUniqueParams": true
 }

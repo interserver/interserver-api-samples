@@ -1,18 +1,49 @@
+# OpenAPI Generator PHP Client Configuration
+# Optimized for Interserver\MyAdmin namespace
+
+# Git repository info
 gitRepoId: myadmin-client-php
 gitUserId: interserver
+
+# Package naming (PSR-compatible)
+# Note: Double backslash required in YAML for literal backslash in namespace
+invokerPackage: Interserver\\MyAdmin
+packageName: InterserverMyAdmin
+modelPackage: Model
+apiPackage: Api
+
+# Composer-specific settings
+composerPackageName: interserver/myadmin
+
+# Source layout
+srcBasePath: src
+
+# Artifact info
+artifactId: myadmin-api-client
+artifactVersion: 1.0.0
+
+# PHP naming conventions
+variableNamingConvention: camelCase
+
+# Generation options
+hideGenerationTimestamp: true
 sortParamsByRequiredFlag: true
 sortModelPropertiesByRequiredFlag: true
 ensureUniqueParams: true
-allowUnicodeIdentifiers: true
+
+# Parameter handling
 prependFormOrBodyParameters: false
+allowUnicodeIdentifiers: false
+
+# Discriminator behavior
 legacyDiscriminatorBehavior: false
 disallowAdditionalPropertiesIfNotPresent: false
-modelPackage: Model 
-apiPackage: Api 
-variableNamingConvention: camelCase
-invokerPackage: Interserver\MyAdmin 
-packageName: MyAdmin 
-srcBasePath: src
-artifactId: Api 
-artifactVersion: 1.0.0 
-hideGenerationTimestamp: true
+
+# HTTP library - psr-18 for HTTP client abstraction (avoids Guzzle CVE-2026-55568)
+library: psr-18
+
+# Enum handling - use unknown_default_open_api for forward compatibility
+enumUnknownDefaultCase: true
+
+# Modern PHP features - disabled for broader compatibility
+modern: false

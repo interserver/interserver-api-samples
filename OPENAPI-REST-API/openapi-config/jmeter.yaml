@@ -1,31 +1,36 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
+# JMeter Generator Configuration for InterServer API
+# Optimized for proper test plan and element naming
+
+# Sort method arguments - required params first for cleaner test data
 sortParamsByRequiredFlag: true
 
-# Description: Sort model properties to place required parameters before optional parameters.
+# Sort model properties - required properties first
 sortModelPropertiesByRequiredFlag: true
 
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+# Ensure unique parameter names to avoid conflicts
 ensureUniqueParams: true
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
+# Disable unicode identifiers for cleaner element names
 allowUnicodeIdentifiers: false
 
-# Description: Add form or body parameters to the beginning of the parameter list.
-prependFormOrBodyParameters: false
+# Place form/body parameters at the beginning of parameter list
+prependFormOrBodyParameters: true
 
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
+# Keep legacy discriminator behavior for compatibility
 legacyDiscriminatorBehavior: true
 
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
+# Disallow additional properties if not present (strict schema validation)
+disallowAdditionalPropertiesIfNotPresent: false
 
+# Handle unknown enum cases gracefully
+enumUnknownDefaultCase: true
+
+# Test Plan naming - use API title for meaningful test plan name
+# This will use the info.title from openapi.yaml
+# The classname will be derived from the API name
+
+# Element naming conventions:
+# - TestPlan: Uses classname (API name)
+# - ThreadGroup: Uses operationId
+# - HTTPSamplerProxy: Uses operationId
+# - CSVDataSet: Uses operationId

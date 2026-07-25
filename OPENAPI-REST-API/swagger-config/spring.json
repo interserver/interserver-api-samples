@@ -1,11 +1,17 @@
 {
-  "sortParamsByRequiredFlag": "true",
-  "ensureUniqueParams": "true",
-  "allowUnicodeIdentifiers": "true",
-  "hideGenerationTimestamp": "true",
+  "hideGenerationTimestamp": true,
+  "sortParamsByRequiredFlag": true,
+  "ensureUniqueParams": true,
+  "allowUnicodeIdentifiers": false,
+  "java8": true,
+  "dateLibrary": "java8",
+  "invokerPackage": "com.interserver.myadmin",
+  "modelPackage": "com.interserver.myadmin.model",
+  "apiPackage": "com.interserver.myadmin.api",
+  "groupId": "com.interserver",
+  "artifactId": "myadmin-client-spring",
   "artifactVersion": "1.0.0",
-  "packageName": "myadmin-client-spring",
-  "gitUserId": "interserver",
-  "gitRepoId": "myadmin-client-spring"
+  "artifactDescription": "InterServer MyAdmin API Spring Client",
+  "sourceFolder": "src/main/java",
+  "singleContentTypes": false
 }
-

@@ -1,5 +1,8 @@
+# C# (.NET) OpenAPI Generator Configuration
+# Optimized for .NET 6/7/8 with HttpClient and modern C# features
+
 # Description: C# package name (convention: Title.Case).
-packageName: Org.OpenAPITools
+packageName: Interserver.MyAdmin
 
 # Description: C# package version.
 packageVersion: 1.0.0
@@ -8,58 +11,24 @@ packageVersion: 1.0.0
 sourceFolder: src
 
 # Description: The GUID that will be associated with the C# project
-# packageGuid: 
+packageGuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
 
 # Description: Prefix interfaces with a community standard or widely accepted prefix.
 interfacePrefix: I
 
-# Description: The identifier of the license
-# licenseId: 
-
 # Description: Release note, default to 'Minor update'.
 releaseNote: Minor update
 
-# Description: Tags to identify the package
-# packageTags: 
+# Description: The target .NET framework version. Use net8.0 for modern .NET 6/7/8 compatibility.
+# To target multiple frameworks, use `;` as the separator, e.g. `netstandard2.1;net8.0`
+targetFramework: net8.0
 
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
-
-# Description: The target .NET framework version.
-# Available Values:
-#    netstandard1.3
-#         .NET Standard 1.3 compatible
-#    netstandard1.4
-#         .NET Standard 1.4 compatible
-#    netstandard1.5
-#         .NET Standard 1.5 compatible
-#    netstandard1.6
-#         .NET Standard 1.6 compatible
-#    netstandard2.0
-#         .NET Standard 2.0 compatible
-#    netstandard2.1
-#         .NET Standard 2.1 compatible
-#    netcoreapp2.0
-#         .NET Core 2.0 compatible
-#    netcoreapp2.1
-#         .NET Core 2.1 compatible
-#    netcoreapp3.0
-#         .NET Core 3.0 compatible
-#    netcoreapp3.1
-#         .NET Core 3.1 compatible
-#    net47
-#         .NET Framework 4.7 compatible
-#    net5.0
-#         .NET 5.0 compatible
-targetFramework: netstandard2.0
-
-# Description: Naming convention for the property: 'camelCase', 'PascalCase', 'snake_case' and 'original', which keeps the original name
+# Description: Naming convention for the property: 'camelCase', 'PascalCase', 'snake_case' and 'original'
 modelPropertyNaming: PascalCase
+
+# Description: Use nullable annotations in the project. Only supported on C# 8 / ASP.NET Core 3.1 or newer.
+# Starting in .NET 6.0 the default is true.
+nullableReferenceTypes: true
 
 # Description: Hides the generation timestamp when files are generated.
 hideGenerationTimestamp: true
@@ -88,14 +57,15 @@ optionalEmitDefaultValues: false
 # Description: Generate {PackageName}.csproj.
 optionalProjectFile: true
 
+# Description: Use the new format (.NET Core) for .NET project files (.csproj).
+# This is required for modern .NET SDK-style projects.
+netCoreProjectFile: true
+
 # Description: Generates code with reduced access modifiers; allows embedding elsewhere without exposing non-public API calls to consumers.
 nonPublicApi: false
 
 # Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
 allowUnicodeIdentifiers: false
-
-# Description: Use the new format (.NET Core) for .NET project files (.csproj).
-netCoreProjectFile: false
 
 # Description: Generates self-validatable models.
 validatable: true
@@ -106,11 +76,23 @@ useOneOfDiscriminatorLookup: false
 # Description: Make API response's headers case-insensitive
 caseInsensitiveResponseHeaders: false
 
+# Description: Overrides Equals and GetHashCode methods.
+equatable: true
+
+# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications.
+disallowAdditionalPropertiesIfNotPresent: true
+
 # Description: HTTP library template (sub-template) to use
 # Available Values:
-#    httpclient
-#         HttpClient (https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient) (Experimental. May subject to breaking changes without further notice.)
-#    restsharp
-#         RestSharp (https://github.com/restsharp/RestSharp)
-library: restsharp
+#    generichost - HttpClient, Generic Host integration, and System.Text.Json (recommended for .NET 6+)
+#    httpclient  - HttpClient and Newtonsoft (Experimental)
+#    restsharp   - RestSharp (legacy, consider migrating)
+#    unityWebRequest - UnityWebRequest (Experimental)
+library: httpclient
 
+# Description: Use the new format for .NET project files (.csproj).
+# Already set via netCoreProjectFile above, but explicit for clarity.
+# useSourceGeneration: false
+
+# Description: Generate code that exposes public virtual hooks on ApiClient to customize low-level HTTP requests
+useVirtualForHooks: false

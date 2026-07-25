@@ -1,41 +1,60 @@
+# Go OpenAPI Generator Configuration
+# Optimized for interserver-api-samples REST API client generation
+
 # Description: Go package name (convention: lowercase).
-packageName: myadmin
+# Using lowercase as per Go module naming conventions
+packageName: interserver_api_client
 
 # Description: Go package version.
+# Matches the API specification version
 packageVersion: 1.0.0
 
 # Description: Hides the generation timestamp when files are generated.
+# Set to true to avoid unnecessary diffs in generated files
 hideGenerationTimestamp: true
 
 # Description: whether the generated Go module is a submodule
 isGoSubmodule: false
 
-# Description: whether to include support for application/xml content type and include XML annotations in the model (works with libraries that provide support for JSON and XML)
+# Description: whether to include support for application/xml content type and include XML annotations in the model
 withXml: false
 
 # Description: Prefix enum with class name
+# Disabled to keep enum names simpler and more Go-like
 enumClassPrefix: false
 
-# Description: whether to prefix struct with the class name. e.g. DeletePetOpts => PetApiDeletePetOpts
+# Description: whether to prefix struct with the class name
+# Disabled for cleaner model names
 structPrefix: false
 
 # Description: whether to include AWS v4 signature support
+# Only enable if using AWS signing
 withAWSV4Signature: false
 
 # Description: Generate interfaces for api classes
-generateInterfaces: false
+# Enabled for better Go patterns and dependency injection
+generateInterfaces: true
 
 # Description: Add form or body parameters to the beginning of the parameter list.
 prependFormOrBodyParameters: false
 
-# Description: Use the discriminator's mapping in oneOf to speed up the model lookup. IMPORTANT: Validation (e.g. one and only one match in oneOf's schemas) will be skipped.
+# Description: Use the discriminator's mapping in oneOf to speed up the model lookup.
 useOneOfDiscriminatorLookup: false
 
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
+# Description: If false, the 'additionalProperties' implementation is compliant with OAS and JSON schema.
+# When false, additionalProperties must be explicitly set in the spec.
+# This provides stricter typing - only enable additionalProperties where explicitly defined.
+disallowAdditionalPropertiesIfNotPresent: false
 
+# Description: Generate go.mod and go.sum
+withGoMod: true
+
+# Description: Generate MarshalJSON method for models
+generateMarshalJSON: true
+
+# Description: Generate UnmarshalJSON method for models
+generateUnmarshalJSON: true
+
+# Description: Handle unknown enum cases gracefully
+# When server sends unknown enum values, client can safely decode to 'unknown_default_open_api'
+enumUnknownDefaultCase: true

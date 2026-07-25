@@ -121,7 +121,7 @@ dateLibrary: java8
 disableHtmlEscaping: false
 
 # Description: Set booleanGetterPrefix
-booleanGetterPrefix: get
+booleanGetterPrefix: is
 
 # Description: Ignore anyOf keyword in enum
 ignoreAnyOfInEnum: false
@@ -165,7 +165,7 @@ testOutput: ${project.build.directory}/generated-test-sources/openapi
 # title: 
 
 # Description: Micronaut version, only >=3.0.0 versions are supported
-micronautVersion: 3.4.3
+micronautVersion: 4.4.0
 
 # Description: Micronaut application name (Defaults to the artifactId value)
 applicationName: openapi-micronaut-client

@@ -1,14 +1,17 @@
+# OpenAPI Generator configuration for Python client
+# Generator: python-pydantic-v1 (no python-nextgen exists)
+
 # Description: python package name (convention: snake_case).
 packageName: openapi_client
 
 # Description: python project name in setup.py (e.g. petstore-api).
-# projectName: 
+# projectName: openapi_client
 
 # Description: python package version.
-packageVersion: 1.0.0
+packageVersion: "1.0.0"
 
 # Description: python package URL.
-# packageUrl: 
+# packageUrl: https://github.com/example/openapi-client
 
 # Description: Hides the generation timestamp when files are generated.
 hideGenerationTimestamp: true
@@ -17,25 +20,37 @@ hideGenerationTimestamp: true
 generateSourceCodeOnly: false
 
 # Description: Set the recursion limit. If not set, use the system default value.
-# recursionLimit: 
+# recursionLimit: 3000
 
 # Description: Map number to Union[StrictFloat, StrictInt], StrictStr or float.
-mapNumberTo: Union[StrictFloat, StrictInt]
+mapNumberTo: "Union[StrictFloat, StrictInt]"
 
-# Description: datetime format for query parameters
-datetimeFormat: %Y-%m-%dT%H:%M:%S%z
+# Description: datetime format for query parameters (YAML requires quotes for % characters)
+datetimeFormat: "%Y-%m-%dT%H:%M:%S%z"
 
 # Description: date format for query parameters
-dateFormat: %Y-%m-%d
+dateFormat: "%Y-%m-%d"
+
+# Description: Use the discriminator's mapping in oneOf to speed up the model lookup.
+useOneOfDiscriminatorLookup: false
 
 # Description: library template (sub-template) to use: asyncio, tornado (deprecated), urllib3
+# NOTE: asyncio uses aiohttp (not httpx) for async HTTP
 library: urllib3
 
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
+# Description: If false, the 'additionalProperties' implementation (set to true by default)
+# is compliant with the OAS and JSON schema specifications.
 # Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
+#    false - The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
+#    true - Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
 disallowAdditionalPropertiesIfNotPresent: true
 
+
+
+
+
+# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+ensureUniqueParams: true
+
+# Description: Add form or body parameters to the beginning of the parameter list.
+prependFormOrBodyParameters: false

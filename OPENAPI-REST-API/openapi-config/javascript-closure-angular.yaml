@@ -33,5 +33,5 @@ disallowAdditionalPropertiesIfNotPresent: true
 hideGenerationTimestamp: true
 
 # Description: use ES6 templates
-useEs6: false
+useES6: false
 

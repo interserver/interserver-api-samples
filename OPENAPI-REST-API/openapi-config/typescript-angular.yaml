@@ -27,7 +27,7 @@ legacyDiscriminatorBehavior: true
 #         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
 #    true
 #         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
+disallowAdditionalPropertiesIfNotPresent: false
 
 # Description: Suffix that will be appended to all enum names.
 enumNameSuffix: Enum
@@ -39,7 +39,7 @@ enumPropertyNaming: PascalCase
 modelPropertyNaming: original
 
 # Description: Generate code that conforms to ES6.
-supportsES6: false
+supportsES6: true
 
 # Description: The name under which you want to publish generated npm package. Required to generate a full package
 # npmName: 

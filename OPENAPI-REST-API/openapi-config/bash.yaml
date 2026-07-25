@@ -1,55 +1,50 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
+# OpenAPI Generator Configuration for Bash HTTP Client
+# Optimized for cURL-based HTTP calls with proper error handling
+
+# Sort method arguments - required params first for clearer API calls
 sortParamsByRequiredFlag: true
 
-# Description: Sort model properties to place required parameters before optional parameters.
+# Sort model properties - required properties first
 sortModelPropertiesByRequiredFlag: true
 
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+# Ensure unique parameter names to avoid conflicts
 ensureUniqueParams: true
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
+# Allow unicode in identifiers for international API support
 allowUnicodeIdentifiers: false
 
-# Description: Add form or body parameters to the beginning of the parameter list.
-prependFormOrBodyParameters: false
+# Place form/body params at the beginning for consistent structure
+prependFormOrBodyParameters: true
 
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
+# Use legacy discriminator behavior for OAS3 compatibility
 legacyDiscriminatorBehavior: true
 
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
+# Disallow additional properties if not explicitly present in schema
 disallowAdditionalPropertiesIfNotPresent: true
 
-# Description: Default cURL options
-# curlOptions: 
+# Default cURL options for robust HTTP calls with error handling
+curlOptions: "--fail --silent --show-error --connect-timeout 30 --max-time 60"
 
-# Description: Convert all Markdown Markup into terminal formatting
-processMarkdown: false
+# Convert Markdown markup to terminal formatting for help/doc output
+processMarkdown: true
 
-# Description: The name of the script that will be generated (e.g. petstore-cli)
-# scriptName: 
+# Script name for generated CLI tool
+scriptName: "interserver-api"
 
-# Description: Whether to generate the Bash completion script
+# Disable bash completion (can be enabled if shell completion is needed)
 generateBashCompletion: false
 
-# Description: Whether to generate the Zsh completion script
+# Disable zsh completion
 generateZshCompletion: false
 
-# Description: Name of environment variable where host can be defined (e.g. PETSTORE_HOST='http://api.openapitools.org:8080')
-# hostEnvironmentVariable: 
+# Environment variable for API host
+hostEnvironmentVariable: "INTERSERVER_API_HOST"
 
-# Description: Name of environment variable where username and password can be defined (e.g. PETSTORE_CREDS='username:password')
-# basicAuthEnvironmentVariable: 
+# Environment variable for basic auth credentials
+basicAuthEnvironmentVariable: "INTERSERVER_API_CREDS"
 
-# Description: Name of environment variable where API key can be defined (e.g. PETSTORE_APIKEY='kjhasdGASDa5asdASD')
-apiKeyAuthEnvironmentVariable: false
+# Environment variable for API key authentication
+apiKeyAuthEnvironmentVariable: "INTERSERVER_API_KEY"
 
+# Handle unknown enum cases gracefully
+enumUnknownDefaultCase: false

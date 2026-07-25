@@ -1,11 +1,9 @@
 {
-  "sortParamsByRequiredFlag": "true",
-  "ensureUniqueParams": "true",
-  "allowUnicodeIdentifiers": "true",
-  "hideGenerationTimestamp": "true",
-  "artifactVersion": "1.0.0",
-  "packageName": "myadmin-client-ruby",
-  "gitUserId": "interserver",
-  "gitRepoId": "myadmin-client-ruby"
+  "moduleName": "InterserverApiClient",
+  "gemName": "interserver-api-client",
+  "gemVersion": "1.0.0",
+  "hideGenerationTimestamp": true,
+  "sortParamsByRequiredFlag": true,
+  "ensureUniqueParams": true,
+  "allowUnicodeIdentifiers": true
 }
-

@@ -1,70 +1,108 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
-sortParamsByRequiredFlag: true
+# OpenAPI Generator Configuration for TypeScript-Axios
+# Optimized for @interserver/myadmin-client npm package
 
-# Description: Sort model properties to place required parameters before optional parameters.
-sortModelPropertiesByRequiredFlag: true
+# === Npm Package Settings ===
+# The name under which you want to publish generated npm package
+npmName: "@interserver/myadmin-client"
 
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
-ensureUniqueParams: true
+# The version of your npm package
+npmVersion: "1.0.0"
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
-allowUnicodeIdentifiers: false
-
-# Description: Add form or body parameters to the beginning of the parameter list.
-prependFormOrBodyParameters: false
-
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
-legacyDiscriminatorBehavior: true
-
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
-
-# Description: Suffix that will be appended to all enum names.
-enumNameSuffix: Enum
-
-# Description: Naming convention for enum properties: 'camelCase', 'PascalCase', 'snake_case', 'UPPERCASE', and 'original'
-enumPropertyNaming: PascalCase
-
-# Description: Naming convention for the property: 'camelCase', 'PascalCase', 'snake_case' and 'original', which keeps the original name. Only change it if you provide your own run-time code for (de-)serialization of models
-modelPropertyNaming: original
-
-# Description: Generate code that conforms to ES6.
-supportsES6: false
-
-# Description: The name under which you want to publish generated npm package. Required to generate a full package
-# npmName: 
-
-# Description: The version of your npm package. If not provided, using the version from the OpenAPI specification file.
-npmVersion: 1.0.0
-
-# Description: When setting this property to true, the version will be suffixed with -SNAPSHOT.yyyyMMddHHmm
+# When setting this property to true, the version will be suffixed with -SNAPSHOT.yyyyMMddHHmm
 snapshot: false
 
-# Description: Set to make additional properties types declare that their indexer may return undefined
+# The name of the license
+licenseName: "MIT"
+
+# === ES6+ and Module Settings ===
+# Generate code that conforms to ES6 (required for modern TypeScript)
+supportsES6: true
+
+# Use this property to set an url of your private npmRepo in the package.json
+# npmRepository: "https://npm.pkg.github.com/"
+
+# File extension to use with relative imports (.js for ESM compatibility)
+importFileExtension: ".js"
+
+# Setting this property to true will add imports for NodeJS
+withNodeImports: false
+
+# === Model and API Organization ===
+# Put the model and api in separate folders and in separate classes
+# This requires modelPackage and apiPackage to be set
+withSeparateModelsAndApi: true
+
+# Package for generated models
+modelPackage: "model"
+
+# Package for generated api classes
+apiPackage: "api"
+
+# === Type Safety and Interfaces ===
+# Setting this property to true will generate interfaces next to the default class implementations
+withInterfaces: true
+
+# Set to make additional properties types declare that their indexer may return undefined
 nullSafeAdditionalProps: false
 
-# Description: Use this property to set an url of your private npmRepo in the package.json
-# npmRepository: 
+# === Naming Conventions ===
+# Naming convention for the property
+modelPropertyNaming: "camelCase"
 
-# Description: Setting this property to true will generate interfaces next to the default class implementations.
-withInterfaces: false
+# Naming convention for parameters
+paramNaming: "camelCase"
 
-# Description: Put the model and api in separate folders and in separate classes
-withSeparateModelsAndApi: false
+# Naming convention for enum properties
+enumPropertyNaming: "PascalCase"
 
-# Description: Don't prefix enum names with class names
+# Suffix that will be appended to all enum names
+enumNameSuffix: "Enum"
+
+# Don't prefix enum names with class names
 withoutPrefixEnums: false
 
-# Description: Setting this property to true will generate functions with a single argument containing all API endpoint parameters instead of one argument per parameter.
-useSingleRequestParameter: false
+# === Parameter Handling ===
+# Sort method arguments to place required parameters before optional parameters
+sortParamsByRequiredFlag: true
 
+# Sort model properties to place required parameters before optional parameters
+sortModelPropertiesByRequiredFlag: true
+
+# Whether to ensure parameter names are unique in an operation
+ensureUniqueParams: true
+
+# Add form or body parameters to the beginning of the parameter list
+prependFormOrBodyParameters: true
+
+# Setting this property to true will generate functions with a single argument containing all API endpoint parameters
+useSingleRequestParameter: true
+
+# === Enum Handling ===
+# Generate string enums instead of objects for enum values
+stringEnums: false
+
+# Set to true to replace '-' and '+' symbols with 'minus_' and 'plus_' in enum of type string
+enumPropertyNamingReplaceSpecialChar: false
+
+# If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse the network response
+enumUnknownDefaultCase: false
+
+# === Additional Properties ===
+# If false, the 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications
+disallowAdditionalPropertiesIfNotPresent: false
+
+# Set to true for safer handling of polymorphic schemas
+legacyDiscriminatorBehavior: true
+
+# boolean, toggles whether unicode identifiers are allowed in names or not
+allowUnicodeIdentifiers: false
+
+# === Axios Specific ===
+# Use this property to override the axios version in package.json
+axiosVersion: "^1.16.0"
+
+# whether to include AWS v4 signature support
+withAWSV4Signature: false
+
+# Use square brackets in array names
+useSquareBracketsInArrayNames: false

@@ -1,3 +1,6 @@
+# OpenAPI Generator Swift Combine Client Configuration
+generatorName: swift5
+
 # Description: Sort method arguments to place required parameters before optional parameters.
 sortParamsByRequiredFlag: true
 

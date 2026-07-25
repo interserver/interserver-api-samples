@@ -1,30 +1,25 @@
-# Description: python package name (convention: snake_case).
-packageName: openapi_client
+# OpenAPI Generator Python Client Configuration
+# Optimized for interserver-api-samples project
 
-# Description: python project name in setup.py (e.g. petstore-api).
-# projectName: 
+# Package naming (snake_case convention)
+packageName: interserver_api_client
 
-# Description: python package version.
+# Python project name in setup.py
+projectName: interserver-api-client
+
+# Package version
 packageVersion: 1.0.0
 
-# Description: python package URL.
-# packageUrl: 
+# Package URL
+packageUrl: https://github.com/detain/interserver-api-samples
 
-# Description: Hides the generation timestamp when files are generated.
+# Hide generation timestamp for reproducible builds
 hideGenerationTimestamp: true
 
-# Description: Specifies that only a library source code is to be generated.
-generateSourceCodeOnly: false
-
-# Description: use the nose test framework
-useNose: false
-
-# Description: Set the recursion limit. If not set, use the system default value.
-# recursionLimit: 
-
-# Description: library template (sub-template) to use: asyncio, tornado, urllib3
+# Library template - urllib3 is the safe default (avoids CVE-2026-13006 affecting python_multipart)
 library: urllib3
 
-# Description: when accessing unset attribute, return `None` instead of raising `ApiAttributeError`
-pythonAttrNoneIfUnset: false
+# Map number types properly for Python 3.8+ compatibility
+mapNumberTo: Union[StrictFloat, StrictInt]
+
 

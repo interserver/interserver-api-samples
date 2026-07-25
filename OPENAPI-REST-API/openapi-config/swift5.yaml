@@ -1,96 +1,114 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
+# OpenAPI Generator Swift5 Client Configuration
+# Optimized for Swift 5.x with modern patterns
+
+# =============================================================================
+# PROJECT IDENTITY
+# =============================================================================
+
+# Project name in Xcode - used for module name and Xcode project
+projectName: InterserverAPIClient
+
+# Prefix for API names (e.g., "Pet" => "Pet" or with prefix "API_Pet")
+# apiNamePrefix: ""
+
+# =============================================================================
+# SWIFT 5.x MODERN FEATURES
+# =============================================================================
+
+# Use Result type for API responses (Swift 5 standard library)
+# This provides a cleaner error handling pattern than throws
+responseAs: Result
+
+# Use final classes for models instead of structs
+# Better for inheritance and JSON decoding/encoding
+useClasses: true
+
+# Make models conform to Hashable for collection usage
+hashableModels: true
+
+# Make models conform to Identifiable when an id is present
+identifiableModels: true
+
+# Make properties readonly where possible
+readonlyProperties: true
+
+# =============================================================================
+# CODE QUALITY & SAFETY
+# =============================================================================
+
+# Sort required parameters first in method signatures
 sortParamsByRequiredFlag: true
 
-# Description: Sort model properties to place required parameters before optional parameters.
+# Sort model properties to place required parameters first
 sortModelPropertiesByRequiredFlag: true
 
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+# Ensure unique parameter names across operations
 ensureUniqueParams: true
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
+# Allow unicode identifiers in names
 allowUnicodeIdentifiers: false
 
-# Description: Add form or body parameters to the beginning of the parameter list.
+# Add form/body parameters at the beginning of parameter list
 prependFormOrBodyParameters: false
 
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
+# Generate model additional properties support
+generateModelAdditionalProperties: true
+
+# Validation rules for model properties
+validatable: true
+
+# Escape reserved words using backticks
+useBacktickEscapes: true
+
+# =============================================================================
+# COMPATIBILITY OPTIONS
+# =============================================================================
+
+# Legacy discriminator behavior for backward compatibility
 legacyDiscriminatorBehavior: true
 
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
+# Disallow additional properties if not explicitly present
 disallowAdditionalPropertiesIfNotPresent: true
 
-# Description: Project name in Xcode
-# projectName: 
+# Handle unknown enum cases gracefully
+enumUnknownDefaultCase: true
 
-# Description: Optionally use libraries to manage response.  Currently PromiseKit, RxSwift, Result, Combine are available.
-# responseAs: 
+# Handle unknown cases in oneOf schemas
+oneOfUnknownDefaultCase: true
 
-# Description: Generates code with reduced access modifiers; allows embedding elsewhere without exposing non-public API calls to consumers.(default: false)
-# nonPublicApi: 
+# Use custom date type without time
+useCustomDateWithoutTime: false
 
-# Description: Add additional properties and methods for Objective-C compatibility (default: false)
-# objcCompatible: 
+# =============================================================================
+# OBJECTIVE-C COMPATIBILITY
+# =============================================================================
 
-# Description: Source information used for Podspec
-# podSource: 
+# Add additional properties and methods for Objective-C compatibility
+objcCompatible: true
 
-# Description: Version used for Podspec
-# podVersion: 
+# =============================================================================
+# HIDE GENERATION METADATA
+# =============================================================================
 
-# Description: Authors used for Podspec
-# podAuthors: 
-
-# Description: Social Media URL used for Podspec
-# podSocialMediaURL: 
-
-# Description: License used for Podspec
-# podLicense: 
-
-# Description: Homepage used for Podspec
-# podHomepage: 
-
-# Description: Summary used for Podspec
-# podSummary: 
-
-# Description: Description used for Podspec
-# podDescription: 
-
-# Description: Screenshots used for Podspec
-# podScreenshots: 
-
-# Description: Documentation URL used for Podspec
-# podDocumentationURL: 
-
-# Description: Make properties readonly (default: false)
-# readonlyProperties: 
-
-# Description: Flag to make all the API classes inner-class of {{projectName}}API
-# swiftUseApiNamespace: 
-
-# Description: Hides the generation timestamp when files are generated.
+# Hide the generation timestamp in file headers
 hideGenerationTimestamp: true
 
-# Description: Accept and cast values for simple types (string->bool, string->int, int->string)
-lenientTypeCast: false
+# =============================================================================
+# XCODE PROJECT OPTIONS
+# =============================================================================
 
-# Description: Prefix that will be appended to all API names ('tags'). Default: empty string. e.g. Pet => Pet.
-# apiNamePrefix: 
+# Use Swift Package Manager file structure
+useSPMFileStructure: true
 
-# Description: Library template (sub-template) to use
-# Available Values:
-#    urlsession
-#         [DEFAULT] HTTP client: URLSession
-#    alamofire
-#         HTTP client: Alamofire
+# Additional Swift attributes for model declarations
+# additionalModelObjectAttributes: "@MainActor"
+
+# Additional Swift modules to import in model files
+# additionalModelImports: "Foundation"
+
+# =============================================================================
+# HTTP LIBRARY
+# =============================================================================
+
+# HTTP client library: urlsession (default), alamofire, vapor
 library: urlsession
-

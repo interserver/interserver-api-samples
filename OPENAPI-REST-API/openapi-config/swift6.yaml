@@ -1,145 +1,121 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
-sortParamsByRequiredFlag: true
+# OpenAPI Generator Swift6 Client Configuration
+# Optimized for Swift 6.x with modern concurrency and patterns
 
-# Description: Sort model properties to place required parameters before optional parameters.
-sortModelPropertiesByRequiredFlag: true
+# =============================================================================
+# PROJECT IDENTITY
+# =============================================================================
 
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
-ensureUniqueParams: true
+# Project name in Xcode - used for module name and Xcode project
+projectName: InterserverAPIClient
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
-allowUnicodeIdentifiers: false
+# Prefix for API names ('tags'). Default: empty string.
+# apiNamePrefix: ""
 
-# Description: Add form or body parameters to the beginning of the parameter list.
-prependFormOrBodyParameters: false
+# =============================================================================
+# SWIFT 6.x MODERN FEATURES
+# =============================================================================
 
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C# have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
-legacyDiscriminatorBehavior: true
+# Use AsyncAwait for API responses (Swift 6 native concurrency)
+# Valid options: AsyncAwait, Combine, RxSwift, PromiseKit, ObjcBlock
+responseAs: AsyncAwait
 
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
+# Use final classes for models instead of structs
+# Better for inheritance and JSON decoding/encoding in Swift 6
+useClasses: true
 
-# Description: If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse the network response.With this option enabled, each enum will have a new case, 'unknown_default_open_api', so that when the server sends an enum case that is not known by the client/spec, they can safely fallback to this case.
-# Available Values:
-#    false
-#         No changes to the enum's are made, this is the default option.
-#    true
-#         With this option enabled, each enum will have a new case, 'unknown_default_open_api', so that when the enum case sent by the server is not known by the client/spec, can safely be decoded to this case.
-enumUnknownDefaultCase: false
-
-# Description: Project name in Xcode
-# projectName: 
-
-# Description: Optionally use libraries to manage response.  Currently AsyncAwait, Combine, Result, RxSwift, ObjcBlock, PromiseKit are available.
-# responseAs: 
-
-# Description: Generates code with reduced access modifiers; allows embedding elsewhere without exposing non-public API calls to consumers.(default: false)
-# nonPublicApi: 
-
-# Description: Add additional properties and methods for Objective-C compatibility (default: false)
-# objcCompatible: 
-
-# Description: Source information used for Podspec
-# podSource: 
-
-# Description: Version used for Podspec
-# podVersion: 
-
-# Description: Authors used for Podspec
-# podAuthors: 
-
-# Description: Social Media URL used for Podspec
-# podSocialMediaURL: 
-
-# Description: License used for Podspec
-# podLicense: 
-
-# Description: Homepage used for Podspec
-# podHomepage: 
-
-# Description: Summary used for Podspec
-# podSummary: 
-
-# Description: Description used for Podspec
-# podDescription: 
-
-# Description: Screenshots used for Podspec
-# podScreenshots: 
-
-# Description: Documentation URL used for Podspec
-# podDocumentationURL: 
-
-# Description: Make properties readonly (default: false)
-# readonlyProperties: 
-
-# Description: Flag to make all the API classes inner-class of {{projectName}}API
-# swiftUseApiNamespace: 
-
-# Description: Hides the generation timestamp when files are generated.
-hideGenerationTimestamp: true
-
-# Description: Escape reserved words using backticks (default: false)
-useBacktickEscapes: false
-
-# Description: Generate model additional properties (default: true)
-generateModelAdditionalProperties: true
-
-# Description: Add unknownDefault case to oneOf enum (default: false)
-oneOfUnknownDefaultCase: false
-
-# Description: Prefix that will be appended to all API names ('tags'). Default: empty string. e.g. Pet => Pet.
-# apiNamePrefix: 
-
-# Description: Use SPM file structure and set the source path to Sources/{{projectName}} (default: true).
-# useSPMFileStructure: 
-
-# Description: Set a custom source path instead of Sources/{{projectName}}.
-# swiftPackagePath: 
-
-# Description: Use final classes for models instead of structs (default: false)
-useClasses: false
-
-# Description: Make hashable models (default: true)
+# Make models conform to Hashable for collection usage
 hashableModels: true
 
-# Description: Make models conform to Identifiable when an id is present (default: true)
+# Make models conform to Identifiable when an id is present
 identifiableModels: true
 
-# Description: Make models conform to JSONEncodable protocol (default: true)
+# Make models conform to JSONEncodable protocol
 useJsonEncodable: true
 
-# Description: Map File and Binary to Data (default: false)
-mapFileBinaryToData: false
+# Make properties readonly where possible
+readonlyProperties: true
 
-# Description: Uses a custom type to decode and encode dates without time information to support OpenAPIs date format (default: false)
-useCustomDateWithoutTime: false
+# =============================================================================
+# CODE QUALITY & SAFETY
+# =============================================================================
 
-# Description: Make validation rules and validator for model properties (default: true)
+# Sort required parameters first in method signatures
+sortParamsByRequiredFlag: true
+
+# Sort model properties to place required parameters first
+sortModelPropertiesByRequiredFlag: true
+
+# Ensure unique parameter names across operations
+ensureUniqueParams: true
+
+# Allow unicode identifiers in names
+allowUnicodeIdentifiers: false
+
+# Add form/body parameters at the beginning of parameter list
+prependFormOrBodyParameters: false
+
+# Generate model additional properties support
+generateModelAdditionalProperties: true
+
+# Validation rules for model properties
 validatable: true
 
-# Description: Make api calls using a static method (default: true)
+# Escape reserved words using backticks
+useBacktickEscapes: true
+
+# =============================================================================
+# COMPATIBILITY OPTIONS
+# =============================================================================
+
+# Legacy discriminator behavior for backward compatibility
+legacyDiscriminatorBehavior: true
+
+# Disallow additional properties if not explicitly present
+disallowAdditionalPropertiesIfNotPresent: true
+
+# Handle unknown enum cases gracefully
+enumUnknownDefaultCase: true
+
+# Handle unknown cases in oneOf schemas
+oneOfUnknownDefaultCase: true
+
+# Map File and Binary to Data type
+mapFileBinaryToData: true
+
+# Use custom date type without time
+useCustomDateWithoutTime: false
+
+# =============================================================================
+# OBJECTIVE-C COMPATIBILITY
+# =============================================================================
+
+# Add additional properties and methods for Objective-C compatibility
+objcCompatible: true
+
+# =============================================================================
+# SWIFT 6 CONCURRENCY
+# =============================================================================
+
+# Make api calls using a static method (default: true)
 apiStaticMethod: true
 
-# Description: Make combine usages deferred (default: true)
-combineDeferred: true
+# =============================================================================
+# HIDE GENERATION METADATA
+# =============================================================================
 
-# Description: Library template (sub-template) to use
-# Available Values:
-#    urlsession
-#         [DEFAULT] HTTP client: URLSession
-#    alamofire
-#         HTTP client: Alamofire
-#    vapor
-#         HTTP client: Vapor
+# Hide the generation timestamp in file headers
+hideGenerationTimestamp: true
+
+# =============================================================================
+# SWIFT PACKAGE MANAGER
+# =============================================================================
+
+# Use Swift Package Manager file structure
+useSPMFileStructure: true
+
+# =============================================================================
+# HTTP LIBRARY
+# =============================================================================
+
+# HTTP client library: urlsession (default), alamofire, vapor
 library: urlsession
-

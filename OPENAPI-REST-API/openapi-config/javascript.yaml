@@ -1,82 +1,89 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
+# OpenAPI Generator JavaScript Client Configuration
+# Optimized for ES6+, Node.js/Browser compatibility, and npm package standards
+
+# === Sorting Options ===
+# Sort method arguments to place required parameters before optional parameters
 sortParamsByRequiredFlag: true
 
-# Description: Sort model properties to place required parameters before optional parameters.
+# Sort model properties to place required parameters before optional parameters
 sortModelPropertiesByRequiredFlag: true
 
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+# Ensure parameter names are unique in an operation
 ensureUniqueParams: true
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
+# === Unicode & Naming ===
+# Disallow unicode identifiers in names (keeps names ASCII-safe for npm)
 allowUnicodeIdentifiers: false
 
-# Description: Add form or body parameters to the beginning of the parameter list.
+# Add form or body parameters to the beginning of the parameter list
 prependFormOrBodyParameters: false
 
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
-legacyDiscriminatorBehavior: true
+# === Discriminator & Schema Options ===
+# Set to false for better discriminator support (true is legacy behavior)
+legacyDiscriminatorBehavior: false
 
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
+# Ensure additionalProperties behavior is OAS-compliant
+disallowAdditionalPropertiesIfNotPresent: false
 
-# Description: source folder for generated code
+# Handle unknown enum cases gracefully (adds unknown_default_open_api case)
+enumUnknownDefaultCase: true
+
+# === Source & Package Structure ===
+# Source folder for generated code
 sourceFolder: src
 
-# Description: root package for generated code
-# invokerPackage: 
+# Package for API classes (empty = root level)
+# apiPackage: api
 
-# Description: package for generated api classes
-# apiPackage: 
+# Package for model classes (empty = root level)
+# modelPackage: model
 
-# Description: package for generated models
-# modelPackage: 
+# === npm Package Metadata ===
+# Name of the npm package
+projectName: interserver-api-client
 
-# Description: name of the project (Default: generated from info.title or "openapi-js-client")
-# projectName: 
+# Module name for AMD/Node/globals
+moduleName: InterserverApiClient
 
-# Description: module name for AMD, Node or globals (Default: generated from <projectName>)
-# moduleName: 
+# Project description
+projectDescription: "InterServer Management API - JavaScript client library for managing InterServer services including hosting, VPS, dedicated servers, domains, email, and billing."
 
-# Description: description of the project (Default: using info.description or "Client library of <projectName>")
-# projectDescription: 
+# Project version
+projectVersion: "1.0.0"
 
-# Description: version of the project (Default: using info.version or "1.0.0")
-# projectVersion: 
+# License name
+licenseName: "MIT"
 
-# Description: name of the license the project uses (Default: using info.license.name)
-# licenseName: 
+# === JavaScript/ES6+ Options ===
+# Use Promises for async/await support instead of callbacks
+usePromises: true
 
-# Description: use Promises as return values from the client API, instead of superagent callbacks
-usePromises: false
-
-# Description: generate getters and setters for model properties
-emitModelMethods: false
-
-# Description: generate JSDoc comments
-emitJSDoc: true
-
-# Description: use JavaScript prototype chains & delegation for inheritance
-useInheritance: true
-
-# Description: Hides the generation timestamp when files are generated.
-hideGenerationTimestamp: true
-
-# Description: use JavaScript ES6 (ECMAScript 6). Default is ES6. (This option has been deprecated and will be removed in the 5.x release as ES5 is no longer supported)
+# Use JavaScript ES6 (ECMAScript 6) - Required for modern async/await
 useES6: true
 
-# Description: Naming convention for the property: 'camelCase', 'PascalCase', 'snake_case' and 'original', which keeps the original name
+# Use JavaScript prototype chains & delegation for inheritance
+useInheritance: true
+
+# Use URLSearchParams instead of deprecated querystring library
+useURLSearchParams: true
+
+# === Model & Property Options ===
+# Naming convention for properties: camelCase, PascalCase, snake_case, or original
 modelPropertyNaming: camelCase
 
-# Description: Use this property to set an url your private npmRepo in the package.json
-# npmRepository: 
+# Generate getters and setters for model properties
+emitModelMethods: false
 
+# Generate JSDoc comments
+emitJSDoc: true
+
+# === Output Options ===
+# Hide the generation timestamp when files are generated
+hideGenerationTimestamp: true
+
+# Skip setting default user-agent in ApiClient
+skipDefaultUserAgent: false
+
+# === Library Template ===
+# JavaScript client library template
+library: javascript

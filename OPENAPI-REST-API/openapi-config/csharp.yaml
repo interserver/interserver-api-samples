@@ -59,9 +59,6 @@ optionalEmitDefaultValues: false
 # Description: Generate {PackageName}.csproj.
 optionalProjectFile: true
 
-# Description: Specifies a AssemblyDescription for the .NET Framework global assembly attributes stored in the AssemblyInfo file.
-generatePropertyChanged: false
-
 # Description: Generates code with reduced access modifiers; allows embedding elsewhere without exposing non-public API calls to consumers.
 nonPublicApi: false
 

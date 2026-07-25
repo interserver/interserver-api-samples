@@ -1,5 +1,9 @@
+# OpenAPI Generator Perl Client Configuration
+# Optimized for interserver-api-samples project
+
 # Description: Perl module name (convention: CamelCase or Long::Module).
-moduleName: OpenAPIClient
+# Using proper Perl namespace convention for API client
+moduleName: InterServerAPI
 
 # Description: Perl module version.
 moduleVersion: 1.0.0
@@ -15,4 +19,3 @@ hideGenerationTimestamp: true
 
 # Description: Add form or body parameters to the beginning of the parameter list.
 prependFormOrBodyParameters: false
-

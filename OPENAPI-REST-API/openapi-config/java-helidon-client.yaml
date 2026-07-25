@@ -101,7 +101,7 @@ useOneOfInterfaces: false
 dateLibrary: java8
 
 # Description: Set booleanGetterPrefix
-booleanGetterPrefix: get
+booleanGetterPrefix: is
 
 # Description: Ignore anyOf keyword in enum
 ignoreAnyOfInEnum: false

@@ -1,20 +1,23 @@
-# Description: R package name (convention: lowercase).
-packageName: openapi
+# OpenAPI Generator R Client Configuration
+# Optimized for interserver-api-samples
 
-# Description: R package version.
+# R package name (convention: lowercase)
+packageName: interserverapi
+
+# R package version
 packageVersion: 1.0.0
 
-# Description: Hides the generation timestamp when files are generated.
-hideGenerationTimestamp: true
+# Hide generation timestamp when files are generated
+hideGenerationTimestamp: "true"
 
-# Description: Throw an exception on non success response codes
-returnExceptionOnFailure: false
+# Use httr for HTTP requests
+library: httr
 
-# Description: Specify the exception handling package
-# Available Values:
-#    default
-#         Use stop() for raising exceptions.
-#    rlang
-#         Use rlang package for exceptions.
+# Throw an exception on non success response codes
+returnExceptionOnFailure: "false"
+
+# Exception handling package
 exceptionPackage: default
 
+# Keep additionalProperties behavior compliant with OAS/JSON schema
+disallowAdditionalPropertiesIfNotPresent: "true"

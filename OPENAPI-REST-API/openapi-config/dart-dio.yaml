@@ -1,69 +1,119 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
+# OpenAPI Generator Configuration for Dart/Dio (Flutter)
+# Optimized for Flutter applications with Dio HTTP client
+
+# ====================
+# Package Information
+# ====================
+
+# Library name in generated code
+pubLibrary: interserver_api
+
+# Name in generated pubspec
+pubName: interserver_api
+
+# Version in generated pubspec
+pubVersion: 1.0.0
+
+# Description in generated pubspec
+pubDescription: Interserver API client generated from OpenAPI spec
+
+# Author name in generated pubspec
+pubAuthor: Interserver
+
+# Email address of the author in generated pubspec
+pubAuthorEmail: support@interserver.net
+
+# Homepage in generated pubspec
+pubHomepage: https://interserver.net
+
+# Repository in generated pubspec
+pubRepository: https://github.com/interserver/interserver-api-samples
+
+# ====================
+# Generation Options
+# ====================
+
+# Hide the generation timestamp in generated files
+hideGenerationTimestamp: true
+
+# Source folder for generated code
+sourceFolder: lib
+
+# ====================
+# Dart/Flutter Options
+# ====================
+
+# Use Optional<T> to distinguish absent, null, and present for optional fields (Dart 3+ null safety)
+useOptional: true
+
+# Only apply Optional<T> to PATCH operation request bodies (requires useOptional=true)
+patchOnly: false
+
+# Add 'final' to class properties, making them immutable
+useFinalProperties: true
+
+# Whether properties are marked as final when using Json Serializable for serialization
+finalProperties: true
+
+# ====================
+# Serialization Options
+# ====================
+
+# Specify serialization library
+# Available values: built_value (default), json_serializable
+serializationLibrary: json_serializable
+
+# Specify equality check method (only for json_serializable)
+# Available values: default, equatable
+equalityCheckMethod: equatable
+
+# ====================
+# Date/Time Options
+# ====================
+
+# Specify Date library
+# Available values: core (Dart core library), timemachine (Flutter timezone support)
+dateLibrary: timemachine
+
+# ====================
+# Parameter/Model Options
+# ====================
+
+# Sort method arguments to place required parameters before optional parameters
 sortParamsByRequiredFlag: true
 
-# Description: Sort model properties to place required parameters before optional parameters.
+# Sort model properties to place required parameters before optional parameters
 sortModelPropertiesByRequiredFlag: true
 
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+# Ensure parameter names are unique in an operation
 ensureUniqueParams: true
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
+# Add form or body parameters to the beginning of the parameter list
+prependFormOrBodyParameters: true
+
+# ====================
+# Enum Options
+# ====================
+
+# Allow the 'x-enum-values' extension for enums
+useEnumExtension: true
+
+# If the server adds new enum cases, handle them gracefully
+enumUnknownDefaultCase: true
+
+# ====================
+# Discriminator Options
+# ====================
+
+# Set to false for generators with better support for discriminators
+legacyDiscriminatorBehavior: false
+
+# If false, the 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications
+disallowAdditionalPropertiesIfNotPresent: false
+
+# ====================
+# Naming Options
+# ====================
+
+# Boolean, toggles whether unicode identifiers are allowed in names or not
 allowUnicodeIdentifiers: false
-
-# Description: Add form or body parameters to the beginning of the parameter list.
-prependFormOrBodyParameters: false
-
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
-legacyDiscriminatorBehavior: true
-
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
-
-# Description: Library name in generated code
-# pubLibrary: 
-
-# Description: Name in generated pubspec
-# pubName: 
-
-# Description: Version in generated pubspec
-# pubVersion: 
-
-# Description: Description in generated pubspec
-# pubDescription: 
-
-# Description: Author name in generated pubspec
-# pubAuthor: 
-
-# Description: Email address of the author in generated pubspec
-# pubAuthorEmail: 
-
-# Description: Homepage in generated pubspec
-# pubHomepage: 
-
-# Description: Allow the 'x-enum-values' extension for enums
-# useEnumExtension: 
-
-# Description: Source folder for generated code
-# sourceFolder: 
-
-# Description: Make all fields nullable in the JSON payload
-# nullableFields: 
-
-# Description: Option. Date library to use
-# Available Values:
-#    core
-#         Dart core library (DateTime)
-#    timemachine
-#         Time Machine is date and time library for Flutter, Web, and Server with support for timezones, calendars, cultures, formatting and parsing.
-dateLibrary: core
-

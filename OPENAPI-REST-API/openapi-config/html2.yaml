@@ -1,22 +1,26 @@
+# OpenAPI HTML2 Documentation Generator Configuration
+# Optimized for InterServer Management API documentation
+
+# Application metadata
+appName: "InterServer Management API"
+appDescription: "REST API for managing InterServer services including domains, hosting, VPS, dedicated servers, backups, mail, SSL certificates, and billing operations."
+
+# Links and contact
+infoUrl: "https://www.interserver.net/"
+infoEmail: "support@interserver.net"
+
+# License
+licenseInfo: "Copyright 2024 InterServer Inc. All rights reserved."
+licenseUrl: "https://www.interserver.net/terms-of-service.html"
+
+# HTML2-specific options
+
+# Common generator options
 sortParamsByRequiredFlag: true
 sortModelPropertiesByRequiredFlag: true
 ensureUniqueParams: true
-allowUnicodeIdentifiers: true
+allowUnicodeIdentifiers: false
 prependFormOrBodyParameters: false
 legacyDiscriminatorBehavior: false
 disallowAdditionalPropertiesIfNotPresent: false
-appName: MyAdmin API 
-appDescription: API interface for sending mail through the MyAdmin system. 
-infoUrl: https://mail.baby/ 
-infoEmail: support@mail.baby 
-licenseInfo: GNU GPL v3 
-licenseUrl: https://www.gnu.org/licenses/gpl-3.0.en.html 
-invokerPackage: MyAdmin 
-#phpInvokerPackage: interserver/myadmin-client-php
-phpInvokerPackage: Interserver\MyAdmin 
-perlModuleName: MyAdminApi 
-pythonPackageName: MyAdminApi
-packageName: MyAdmin 
-groupId: com.mail.baby 
-artifactId: MyAdmin 
-artifactVersion: 1.0.0
+enumUnknownDefaultCase: false

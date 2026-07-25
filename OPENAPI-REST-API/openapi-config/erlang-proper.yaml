@@ -2,5 +2,5 @@
 packageName: openapi
 
 # Description: Erlang application version
-packageVersion: 1.0.0
+packageVersion: "1.0.0"
 

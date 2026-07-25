@@ -1,34 +1,38 @@
-# Description: Sort method arguments to place required parameters before optional parameters.
+# OpenAPI Generator configuration for Ada
+# Optimized for Interserver API client generation
+
+# Hide the generation timestamp in generated files
+hideGenerationTimestamp: true
+
+# Sort method arguments to place required parameters before optional parameters.
 sortParamsByRequiredFlag: true
 
-# Description: Sort model properties to place required parameters before optional parameters.
+# Sort model properties to place required parameters before optional parameters.
 sortModelPropertiesByRequiredFlag: true
 
-# Description: Whether to ensure parameter names are unique in an operation (rename parameters that are not).
+# Whether to ensure parameter names are unique in an operation (rename parameters that are not).
 ensureUniqueParams: true
 
-# Description: boolean, toggles whether unicode identifiers are allowed in names or not, default is false
+# boolean, toggles whether unicode identifiers are allowed in names or not, default is false
 allowUnicodeIdentifiers: false
 
-# Description: Add form or body parameters to the beginning of the parameter list.
+# Add form or body parameters to the beginning of the parameter list.
 prependFormOrBodyParameters: false
 
-# Description: Set to false for generators with better support for discriminators. (Python, Java, Go, PowerShell, C#have this enabled by default).
-# Available Values:
-#    true
-#         The mapping in the discriminator includes descendent schemas that allOf inherit from self and the discriminator mapping schemas in the OAS document.
-#    false
-#         The mapping in the discriminator includes any descendent schemas that allOf inherit from self, any oneOf schemas, any anyOf schemas, any x-discriminator-values, and the discriminator mapping schemas in the OAS document AND Codegen validates that oneOf and anyOf schemas contain the required discriminator and throws an error if the discriminator is missing.
-legacyDiscriminatorBehavior: true
+# GNAT project name - Proper Ada package naming
+projectName: Interserver_Api
 
-# Description: If false, the 'additionalProperties' implementation (set to true by default) is compliant with the OAS and JSON schema specifications. If true (default), keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-# Available Values:
-#    false
-#         The 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
-#    true
-#         Keep the old (incorrect) behaviour that 'additionalProperties' is set to false by default.
-disallowAdditionalPropertiesIfNotPresent: true
+# Use AWS HTTP support library
+httpSupport: aws
 
-# Description: GNAT project name
-projectName: defaultProject
+# The name of the Ada package which provides support for OpenAPI
+openApiName: Swagger
 
+# Set to false for generators with better support for discriminators.
+legacyDiscriminatorBehavior: false
+
+# If false, the 'additionalProperties' implementation is compliant with the OAS and JSON schema specifications.
+disallowAdditionalPropertiesIfNotPresent: false
+
+# If the server adds new enum cases, that are unknown by an old spec/client, the client will fail to parse the network response.
+enumUnknownDefaultCase: false

@@ -1,9 +1,14 @@
+# Lua OpenAPI Generator Configuration
+# Optimized for interserver-api-samples REST API client generation
+
 # Description: Lua package name (convention: single word).
+# Using openapiclient as per Lua module naming conventions (all lowercase, single word)
 packageName: openapiclient
 
 # Description: Lua package version.
+# Matches the API specification version
 packageVersion: 1.0.0-1
 
 # Description: Hides the generation timestamp when files are generated.
-hideGenerationTimestamp: true
-
+# Set to true to avoid unnecessary diffs in generated files
+hideGenerationTimestamp: "true"

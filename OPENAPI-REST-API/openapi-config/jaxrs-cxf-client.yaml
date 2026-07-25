@@ -127,7 +127,7 @@ java8: true
 disableHtmlEscaping: false
 
 # Description: Set booleanGetterPrefix
-booleanGetterPrefix: get
+booleanGetterPrefix: is
 
 # Description: Ignore anyOf keyword in enum
 ignoreAnyOfInEnum: false
